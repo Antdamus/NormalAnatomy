@@ -66,6 +66,31 @@ Map buckets into card types deliberately:
 
 -----------------------------------------------------
 
+EXTRACTION MAP RULE
+
+For a full article, create an extraction map before card generation when the article contains multiple meaningful buckets.
+
+The extraction map should:
+- list the supported buckets
+- identify the best card family for each bucket
+- order buckets according to the mastery progression rules
+- make clear which buckets are foundational and which are advanced
+
+The extraction map is especially important for staged generation.
+
+-----------------------------------------------------
+
+FOUNDATION-FIRST DECOMPOSITION RULE
+
+Do not let decomposition jump straight to variants, traps, or mechanisms before the article's foundational normal anchors are secured.
+
+In general:
+- named structures, landmarks, relationships, and normal appearance anchors should be mapped first
+- review strategy should be mapped before higher-order pitfalls
+- variants, mimics, discriminators, and mechanisms should be layered on top of established foundations
+
+-----------------------------------------------------
+
 NO PATHOLOGY DEFAULT RULE
 
 Do not let a normal-anatomy article drift into pathology-deck behavior.

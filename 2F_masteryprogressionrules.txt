@@ -1,0 +1,69 @@
+SECTION PURPOSE
+
+This file defines the pedagogic order for extracting and generating NORMAL-engine cards from a full topic.
+
+The goal is topic mastery, not merely card count.
+
+-----------------------------------------------------
+
+MASTERY PROGRESSION RULE
+
+When extracting a full article, prioritize supported content in this order:
+
+1) foundational structures and landmarks
+2) normal spatial relationships
+3) modality-specific normal appearance anchors
+4) exam-approach and review-sequence rules
+5) normal variants and pseudolesions
+6) discriminators between normal, variant, and abnormal
+7) mechanism-style explanations
+
+This order is mandatory unless the source contains only a narrow subset.
+
+-----------------------------------------------------
+
+FOUNDATION-FIRST RULE
+
+Do not overproduce:
+- variants
+- traps
+- mimics
+- mechanisms
+
+before the foundational normal anchors are established.
+
+If the article supports foundational anchors, they must be encoded before advanced or failure-mode cards dominate the output.
+
+-----------------------------------------------------
+
+MASTERY BALANCE RULE
+
+For long or multi-bucket topics:
+- ensure the card set contains enough foundational anatomy and normal-appearance anchors to support later trap or discriminator cards
+- do not let pitfall-heavy output outnumber the anchors needed to understand those pitfalls
+- do not let variant cards dominate a topic whose core normal relationships have not yet been encoded
+
+-----------------------------------------------------
+
+PROGRESSION-TO-CARD-FAMILY RULE
+
+Typical progression by card family:
+- foundational structures, landmarks, and normal appearance anchors -> NORMAL UNKNOWN or NORMAL HIGH-YIELD
+- review sequence and approach anchors -> NORMAL HIGH-YIELD
+- variants and mimics -> NORMAL BOARDS TRAP or NORMAL HIGH-YIELD
+- true separators -> NORMAL DIFFERENTIAL DRILL
+- why a normal pattern or discriminator works -> NORMAL MECHANISM
+
+This is a prioritization rule, not a new trigger system.
+
+-----------------------------------------------------
+
+MASTERY AUDIT RULE
+
+Before final export for a full topic, confirm:
+- the foundational buckets were not skipped
+- the topic has enough anatomy and normal-review anchors to support higher-order cards
+- advanced cards are layered on top of established normal understanding
+
+If the output is trap-heavy or variant-heavy without adequate foundations:
+- rebalance before export

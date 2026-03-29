@@ -125,6 +125,24 @@ G) Source and summary integrity
 - if a card does not originate from RadPrimer or STATdx, summary must be blank
 - summary must remain article-only with no Core mixing, no outside facts, and no unsupported inference
 
+G2) Image-optional article integrity
+- the absence of usable images is not a structural failure
+- zero NORMAL UNKNOWN cards is valid when no usable source-supported images exist
+- do not force Section A or image-first extraction when the article has no usable images
+- do not fabricate Image, Image_Annotated, or Question to create image-based cards
+- concept-driven card families may export without any image-based notes when source-supported
+
+G3) Mastery progression integrity
+- for full-topic extraction, foundational anatomy and normal-review anchors must not be skipped in favor of variants, traps, or mechanisms
+- advanced cards must sit on top of established foundational anchors when the source supports those foundations
+- if the final set is trap-heavy or variant-heavy without adequate anchors, rebalance before export
+
+G4) Adaptive generation integrity
+- do not assume one-shot generation for every article
+- if the article is long, multi-bucket, or otherwise high complexity, use staged generation or staged internal planning before export
+- one-shot generation is acceptable for short, focused, low-complexity articles
+- quality and coverage outrank speed
+
 H) Front-side blinding
 - front fields must preserve the intended cognitive task
 - no front may leak the answer through wording, captions, or extra fields
@@ -177,6 +195,13 @@ TAG ARCHITECTURE RULE
 
 Keep the existing shared tagging architecture.
 Do not invent a separate tag schema just for the normal engine unless the wider system explicitly adopts it.
+
+Tag logic should remain compatible with downstream automatic generation.
+
+Therefore:
+- keep the Tags column in the shared TSV shape
+- do not force verbose manual per-card tag writing during routine card-content generation unless the workflow explicitly requires it
+- ensure tag axes remain derivable from card structure, source, modality, entity type, region or system, and yield when supported
 
 -----------------------------------------------------
 

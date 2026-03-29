@@ -1,0 +1,100 @@
+SECTION PURPOSE
+
+This file defines the NORMAL engine's tag architecture at the policy level.
+
+Tags remain part of the shared TSV/export architecture, but in this workflow they are generated automatically downstream.
+
+Therefore this file defines:
+- tag axes
+- tag expectations
+- compatibility rules
+
+It does NOT require verbose manual tag writing during normal card-content generation unless a workflow explicitly asks for it.
+
+-----------------------------------------------------
+
+SHARED TAG ARCHITECTURE RULE
+
+Keep the existing shared tagging architecture.
+Do not invent a separate incompatible NORMAL-only schema.
+
+NORMAL-engine tag logic must remain derivable inside the shared downstream tagging pipeline.
+
+-----------------------------------------------------
+
+CONCEPTUAL TAG AXES
+
+The NORMAL engine should conceptually support tags across these axes:
+- Engine
+- CardType
+- Source
+- EntityType
+- Modality
+- Region or System
+- Yield
+- optional distinctions such as Variant, Mimic, Approach, or Pitfall when supported by the wider shared system
+
+-----------------------------------------------------
+
+TAG DERIVATION RULE
+
+Downstream automatic tagging may derive tags from:
+- the active engine
+- the triggered card type
+- source provenance
+- entity definition
+- modality context
+- region or system context
+- yield or board-relevance level
+- supported distinctions such as variant, mimic, approach, or pitfall
+
+Tags should be derivable from card structure and supported content.
+Do not fabricate unsupported tags.
+
+-----------------------------------------------------
+
+MANUAL TAGGING RULE
+
+Do not burden routine card-content generation with manual per-card tag composition unless the workflow explicitly requires it.
+
+The content generator should focus on:
+- correct card structure
+- correct field usage
+- correct source support
+- correct pedagogic sequencing
+
+Tag population may occur automatically downstream.
+
+-----------------------------------------------------
+
+REQUIRED VS OPTIONAL TAG EXPECTATIONS
+
+Conceptually required axes:
+- Engine
+- CardType
+- Source when known
+
+Conceptually preferred axes when supported by the content or workflow:
+- EntityType
+- Modality
+- Region or System
+- Yield
+
+Optional axes only when clearly supported and recognized by the wider shared system:
+- Variant
+- Mimic
+- Approach
+- Pitfall
+
+-----------------------------------------------------
+
+TAG SAFETY RULE
+
+Tags must remain supportable by the actual card content and source.
+
+Do not:
+- fabricate region tags not supported by the topic
+- fabricate modality tags for concept-only cards with no modality anchor
+- fabricate variant or pitfall distinctions when the card does not actually encode them
+
+The tag policy should help downstream automation, not distort the card set.

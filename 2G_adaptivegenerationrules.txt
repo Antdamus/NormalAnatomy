@@ -1,0 +1,83 @@
+SECTION PURPOSE
+
+This file defines when the NORMAL engine may use one-shot generation and when it should switch to staged generation.
+
+Quality and coverage take priority over speed.
+
+-----------------------------------------------------
+
+ONE-SHOT GENERATION RULE
+
+One-shot generation is allowed when the article is:
+- short
+- focused on one narrow concept cluster
+- low complexity
+- supported by a small number of clean buckets
+- unlikely to lose pedagogic sequence if generated in one pass
+
+One-shot generation is a permission, not a default mandate.
+
+-----------------------------------------------------
+
+STAGED GENERATION RULE
+
+Use staged generation when the article is:
+- long
+- multi-bucket
+- multi-modality
+- image-heavy
+- rich in variants, pitfalls, or discriminators
+- likely to suffer from coverage loss or bad sequencing if generated in one pass
+
+When quality would drop in one-shot mode, staged generation is preferred.
+
+-----------------------------------------------------
+
+PREFERRED STAGED WORKFLOW
+
+For staged generation, use this order:
+
+1) full-source coverage audit
+2) extraction map or bucket map
+3) generate cards by bucket, section, or card family
+4) perform a final structural and pedagogic audit
+5) export only after the audit passes
+
+-----------------------------------------------------
+
+ADAPTIVE DECISION RULE
+
+Before generating cards from a full article, decide intentionally:
+- one-shot
+OR
+- staged
+
+Base the decision on:
+- article length
+- bucket count
+- conceptual breadth
+- number of supported images
+- number of supported variants, mimics, or traps
+- risk of losing mastery progression in a one-pass output
+
+Do not blindly generate everything in one shot for long articles.
+
+-----------------------------------------------------
+
+STAGED-GENERATION CONTENT RULE
+
+When staged generation is used:
+- generate foundational mastery anchors before advanced buckets
+- keep bucket boundaries clear
+- avoid mixing every supported card family into the first pass
+- defer final export until the structural and pedagogic audit is complete
+
+-----------------------------------------------------
+
+SMALL-ARTICLE EFFICIENCY RULE
+
+Do not force staging for every tiny article.
+
+If the article is small and low complexity:
+- one-shot generation is acceptable
+- coverage audit and structural rules still apply

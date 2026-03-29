@@ -17,6 +17,8 @@ ORDER = [
     "2C_summaryrule.txt",
     "2D_examapproachrules.txt",
     "2E_articledecompositionrules.txt",
+    "2F_masteryprogressionrules.txt",
+    "2G_adaptivegenerationrules.txt",
     "3_cardtypesrules.txt",
     "3B_fieldmatrix_normal.txt",
     "imagerules.txt",
@@ -26,6 +28,7 @@ ORDER = [
     "7_boardstrap.txt",
     "8_highyield.txt",
     "9_radiopediadrill.txt",
+    "tagrules_normal.txt",
     "outputrule.txt",
 ]
 
@@ -38,6 +41,8 @@ LABELS = {
     "2C_summaryrule.txt": "SUMMARY RULE",
     "2D_examapproachrules.txt": "EXAM APPROACH RULES",
     "2E_articledecompositionrules.txt": "ARTICLE DECOMPOSITION RULES",
+    "2F_masteryprogressionrules.txt": "MASTERY PROGRESSION RULES",
+    "2G_adaptivegenerationrules.txt": "ADAPTIVE GENERATION RULES",
     "3_cardtypesrules.txt": "CARD TYPES + TRIGGERS",
     "3B_fieldmatrix_normal.txt": "NORMAL FIELD MATRIX",
     "imagerules.txt": "IMAGE RULES",
@@ -47,6 +52,7 @@ LABELS = {
     "7_boardstrap.txt": "BOARDS TRAP RULES",
     "8_highyield.txt": "HIGH-YIELD RULES",
     "9_radiopediadrill.txt": "RADIOPAEDIA DRILL RULES (FUTURE)",
+    "tagrules_normal.txt": "NORMAL TAG RULES",
     "outputrule.txt": "OUTPUT / TSV RULES",
 }
 

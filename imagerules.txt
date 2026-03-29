@@ -21,6 +21,25 @@ Do not add an image just to imitate an UNKNOWN card if the learning point is pur
 
 -----------------------------------------------------
 
+IMAGE-OPTIONAL ARTICLE RULE
+
+The NORMAL engine does not require images for every article.
+
+Therefore:
+- image-based extraction is optional
+- NORMAL UNKNOWN cards are optional
+- Section A or image-first extraction may be absent
+- the absence of usable images is not a workflow failure
+
+If an article has no usable source-supported images:
+- do not fabricate Image
+- do not fabricate Image_Annotated
+- do not fabricate Question
+- do not fabricate UNKNOWN cards
+- proceed with concept-driven card types only when supported
+
+-----------------------------------------------------
+
 IMAGE / QUESTION SAFETY RULE
 
 Question may be populated only for NORMAL UNKNOWN.

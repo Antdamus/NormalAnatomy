@@ -44,6 +44,38 @@ Only source-supported buckets may generate cards.
 
 -----------------------------------------------------
 
+COMPLEXITY ASSESSMENT RULE
+
+After the whole-source bucket audit, classify the article workflow as either:
+- one-shot appropriate
+OR
+- staged generation preferred
+
+Use staged generation when the article is:
+- long
+- multi-bucket
+- multi-modality
+- image-heavy
+- rich in variants, mimics, and pitfalls
+- dependent on a review sequence or extraction map to preserve quality
+
+Do not default every full article to one-shot generation.
+
+-----------------------------------------------------
+
+POST-AUDIT HANDOFF RULE
+
+After bucket audit:
+- hand off pedagogic ordering to 2F_masteryprogressionrules.txt
+- hand off workflow mode choice to 2G_adaptivegenerationrules.txt
+
+Coverage audit is not complete until:
+- all relevant buckets have been checked
+- article complexity has been assessed
+- the generation mode has been chosen intentionally
+
+-----------------------------------------------------
+
 NO PATHOLOGY-COLLAPSE RULE
 
 Do not collapse a normal-anatomy article into pathology-style output just because it mentions disease mimicry.
