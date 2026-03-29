@@ -29,15 +29,73 @@ RADIOPAEDIA DRILL is reserved for a future explicit workflow using the Radiopaed
 
 -----------------------------------------------------
 
+TRIGGER DEPENDENCY RULES
+
+If Differentials is populated:
+- Differential_Q must be populated
+- Imaging_Differentiation must be populated
+- Question must be blank
+
+If Mechanism is populated:
+- Mechanism_Q must be populated
+- Entity_Label must be populated
+- Question must be blank
+
+If Boards_Trap is populated:
+- Boards_Trap_Q must be populated
+- Entity_Label must be populated
+- Question must be blank
+
+If High_Yield_Q is populated:
+- High_Yield_A must be populated
+- Question must be blank
+
+If Image is populated and the note is not NORMAL UNKNOWN:
+- Question must remain blank
+
+-----------------------------------------------------
+
 TRIGGER SAFETY ENFORCEMENT
 
 If Image is populated but Question is empty:
 - the card must NOT be treated as NORMAL UNKNOWN
 
-Any non-NORMAL-UNKNOWN card that includes Image must keep Question empty.
-
 Populate only the fields required for the card type you are intentionally creating.
 No unintended card types may be generated.
+
+-----------------------------------------------------
+
+DUAL-TRIGGER PROHIBITION
+
+The following trigger combinations are forbidden on the same note:
+- Question plus Differentials
+- Question plus Mechanism
+- Question plus Boards_Trap
+- Question plus High_Yield_Q
+- Differentials plus Mechanism
+- Differentials plus Boards_Trap
+- Differentials plus High_Yield_Q
+- Mechanism plus Boards_Trap
+- Mechanism plus High_Yield_Q
+- Boards_Trap plus High_Yield_Q
+
+If more than one trigger path is populated:
+- the note is structurally invalid
+- clear the unintended field(s) or split into separate notes
+
+-----------------------------------------------------
+
+FIELD POPULATION DISCIPLINE
+
+The existence of a field in the shared note type does NOT justify populating it.
+
+Never fill a field:
+- just because it exists
+- to make a card feel more complete
+- to mirror another card type
+- to avoid a blank
+
+Only populate a field when the intended card type explicitly allows it.
 
 -----------------------------------------------------
 
@@ -47,7 +105,7 @@ Fronts must contain only the elements required by their specific template.
 
 No front may include:
 - answer leakage
-- named diagnoses unless the card intentionally requires a bounded mimic-rejection anchor
+- named diagnoses unless the card intentionally requires a tightly bounded mimic-rejection anchor
 - caption-derived answer statements
 - management clues
 - interpretive hints that collapse the task
@@ -89,7 +147,7 @@ Exam-approach content must stay inside the existing card types.
 
 Preferred mappings:
 - review sequence, landmark checklist, completeness rules -> NORMAL HIGH-YIELD
-- why a phase/sequence/plane helps -> NORMAL MECHANISM
+- why a phase, sequence, or plane helps -> NORMAL MECHANISM
 - common overcall or omission errors -> NORMAL BOARDS TRAP
 - image-based anchor landmark identification -> NORMAL UNKNOWN
 - true discriminator tasks -> NORMAL DIFFERENTIAL DRILL

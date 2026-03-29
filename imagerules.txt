@@ -1,6 +1,6 @@
 SECTION PURPOSE
 
-This file governs image usage for the NORMAL engine.
+This file governs image usage and image-question safety for the NORMAL engine.
 
 -----------------------------------------------------
 
@@ -15,9 +15,26 @@ Appropriate uses:
 - modality-specific normal appearance
 - variant recognition
 - pseudolesion or mimic recognition
-- sequence/phase comparison when source-supported
+- sequence or phase comparison when source-supported
 
 Do not add an image just to imitate an UNKNOWN card if the learning point is purely conceptual.
+
+-----------------------------------------------------
+
+IMAGE / QUESTION SAFETY RULE
+
+Question may be populated only for NORMAL UNKNOWN.
+
+Therefore:
+- NORMAL UNKNOWN requires Image and Question
+- any non-NORMAL-UNKNOWN card may include Image only if Question remains blank
+- Image must never be used to justify populating Question on a non-UNKNOWN card
+
+If Image is present and a non-UNKNOWN trigger field is populated:
+- Question must remain blank
+
+If Image, Question, and another trigger field coexist:
+- the note is structurally invalid
 
 -----------------------------------------------------
 
@@ -33,7 +50,7 @@ Do not break:
 
 If multiple images are used:
 - preserve source order exactly
-- preserve annotated/non-annotated pairing exactly
+- preserve annotated and non-annotated pairing exactly
 
 -----------------------------------------------------
 
@@ -61,18 +78,6 @@ Images must not leak the answer through:
 - front-side wording that names the target directly
 
 The image should support recognition, not replace it.
-
------------------------------------------------------
-
-IMAGE + CARD-TYPE RULE
-
-For NORMAL UNKNOWN:
-- Image is required
-- Question is required
-
-For other card types:
-- Image is optional
-- if Image is populated, Question must remain blank unless the card is intentionally NORMAL UNKNOWN
 
 -----------------------------------------------------
 

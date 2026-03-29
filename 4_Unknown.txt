@@ -6,6 +6,20 @@ This is the primary image-recognition card type for the NORMAL engine.
 
 -----------------------------------------------------
 
+TRIGGER CONDITION
+
+NORMAL UNKNOWN exists only when BOTH are populated:
+- Image
+- Question
+
+If either is missing:
+- this is not NORMAL UNKNOWN
+
+If any non-UNKNOWN trigger field is also populated:
+- the note is structurally invalid
+
+-----------------------------------------------------
+
 WHEN TO USE NORMAL UNKNOWN
 
 Use NORMAL UNKNOWN when the learner must identify from the image:
@@ -21,33 +35,36 @@ This is NOT a disease-diagnosis card.
 
 -----------------------------------------------------
 
-REQUIRED FIELD SHAPE
+FIELD MATRIX
 
 Required:
 - Clinical_Context
 - Image
 - Question
 
-Usually populated:
-- Entity_Label
-
-Often useful:
+Conditionally allowed:
 - Image_Annotated
+- Entity_Label
 - Imaging_Differentiation
-- Original_Caption when workflow requires it
-- summary when source is full RadPrimer or STATdx
+- Original_Caption
+- summary when required by source hierarchy
 
-Usually blank:
+Normally blank:
 - Most_Likely_Diagnosis
 - Differential_Q
-- Differentials
 - Mechanism_Q
-- Mechanism
 - Boards_Trap_Q
+- High_Yield_A
+
+Forbidden:
+- Differentials
+- Mechanism
 - Boards_Trap
 - High_Yield_Q
-- High_Yield_A
-- Radiopaedia fields
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
 
 -----------------------------------------------------
 
@@ -63,12 +80,32 @@ Good question goals:
 - decide whether the finding is normal, a variant, or abnormal
 - identify the feature that keeps the appearance from being overcalled
 
-Do not ask a multi-step essay question.
-Do not ask for broad pathology differential lists.
+Question must NOT:
+- name the answer
+- embed discriminator prose that solves the card
+- ask for a broad pathology differential
+- become a multi-step essay prompt
 
 -----------------------------------------------------
 
-ANSWER SHAPE RULE
+FRONT-SIDE BLINDING
+
+Front should contain only the fields required by the shared template for this card type:
+- Clinical_Context
+- Image
+- Question
+
+Clinical_Context should remain:
+- short
+- neutral
+- non-diagnostic
+- unique at the note level
+
+Do not leak the answer through front wording, captions, or label text.
+
+-----------------------------------------------------
+
+BACK-SIDE RULE
 
 Entity_Label should hold the target answer or core concept label.
 
@@ -78,6 +115,7 @@ Imaging_Differentiation may briefly explain:
 - what feature marks it as a variant rather than pathology
 
 Do not turn the back into a long narrative.
+Do not populate forbidden trigger fields to add extra teaching.
 
 -----------------------------------------------------
 
@@ -87,16 +125,20 @@ NORMAL UNKNOWN is an appropriate home for exam-approach content only when the ap
 
 Examples:
 - "Identify the first landmark that should anchor review of this study."
-- "What normal relationship is being confirmed on this phase/sequence?"
+- "What normal relationship is being confirmed on this phase or sequence?"
 
-If the teaching point is a general review checklist rather than image recognition, use NORMAL HIGH-YIELD instead.
+If the teaching point is a general review checklist rather than image recognition:
+- use NORMAL HIGH-YIELD instead
 
 -----------------------------------------------------
 
-UNKNOWN SAFETY RULE
+UNKNOWN SAFETY CHECK
 
-Do not generate NORMAL UNKNOWN when:
-- there is no image
-- the image does not support recognition
-- the question leaks the answer
-- the learning goal is primarily explanatory rather than recognitional
+Before export, confirm:
+- Image is populated
+- Question is populated
+- no non-UNKNOWN trigger fields are populated
+- forbidden fields are blank
+- the question does not leak the answer
+- the image truly supports recognition
+- summary is populated only when required

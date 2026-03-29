@@ -1,0 +1,259 @@
+SECTION PURPOSE
+
+This file transfers the pathology engine's architectural discipline into the NORMAL engine without importing pathology semantics.
+
+It defines:
+- required fields
+- conditionally allowed fields
+- normally blank fields
+- forbidden fields
+- trigger dependencies
+- anti-dual-trigger rules
+
+Blank is better than accidental triggering.
+
+-----------------------------------------------------
+
+GLOBAL MATRIX RULE
+
+For any single note, populate only the fields needed for the one intended card type.
+
+If a trigger field for another card type is populated by accident, the note is structurally invalid.
+
+Trigger fields are:
+- Question together with Image -> NORMAL UNKNOWN
+- Differentials -> NORMAL DIFFERENTIAL DRILL
+- Mechanism -> NORMAL MECHANISM
+- Boards_Trap -> NORMAL BOARDS TRAP
+- High_Yield_Q -> NORMAL HIGH-YIELD
+
+-----------------------------------------------------
+
+GLOBAL FORBIDDEN FILLER RULE
+
+Never populate any field with:
+- filler
+- N/A
+- none
+- not applicable
+- pseudo-diagnoses
+- fake differentials
+- pseudo-mechanisms
+- unsupported claims
+- duplicated content inserted only to avoid blanks
+
+If a field is not needed, leave it blank.
+
+-----------------------------------------------------
+
+NORMAL UNKNOWN - FIELD MATRIX
+
+Required:
+- Clinical_Context
+- Image
+- Question
+
+Conditionally allowed:
+- Image_Annotated
+- Entity_Label
+- Imaging_Differentiation
+- Original_Caption
+- summary when required by source hierarchy
+
+Normally blank:
+- Most_Likely_Diagnosis
+- Differential_Q
+- Mechanism_Q
+- Boards_Trap_Q
+- High_Yield_A
+
+Forbidden:
+- Differentials
+- Mechanism
+- Boards_Trap
+- High_Yield_Q
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
+
+Isolation rule:
+- If Question is populated for an image card, the note is NORMAL UNKNOWN and must not populate another trigger field.
+
+-----------------------------------------------------
+
+NORMAL DIFFERENTIAL DRILL - FIELD MATRIX
+
+Required:
+- Clinical_Context
+- Differential_Q
+- Differentials
+- Imaging_Differentiation
+
+Conditionally allowed:
+- Image when the discrimination task is image-grounded
+- Image_Annotated when paired image support is required
+- Entity_Label
+- Most_Likely_Diagnosis only as diagnosis-only anchor if truly needed
+- Original_Caption only when image workflow requires it
+- summary when required by source hierarchy
+
+Normally blank:
+- Question
+- Mechanism_Q
+- Boards_Trap_Q
+- High_Yield_A
+
+Forbidden:
+- Mechanism
+- Boards_Trap
+- High_Yield_Q
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
+
+Isolation rule:
+- If Differentials is populated, Question must be blank and no other trigger field may be populated.
+
+-----------------------------------------------------
+
+NORMAL MECHANISM - FIELD MATRIX
+
+Required:
+- Clinical_Context
+- Entity_Label
+- Mechanism_Q
+- Mechanism
+
+Conditionally allowed:
+- Image only when the explanation truly depends on a specific figure or comparison
+- Image_Annotated only when the image is allowed and annotated support is necessary
+- Imaging_Differentiation
+- Original_Caption only when image workflow requires it
+- summary when required by source hierarchy
+
+Normally blank:
+- Question
+- Most_Likely_Diagnosis
+- Differential_Q
+- Boards_Trap_Q
+- High_Yield_A
+
+Forbidden:
+- Differentials
+- Boards_Trap
+- High_Yield_Q
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
+
+Isolation rule:
+- If Mechanism is populated, all other trigger fields must remain blank.
+
+-----------------------------------------------------
+
+NORMAL BOARDS TRAP - FIELD MATRIX
+
+Required:
+- Clinical_Context
+- Entity_Label
+- Boards_Trap_Q
+- Boards_Trap
+
+Conditionally allowed:
+- Image when the trap is inherently visual
+- Image_Annotated when annotated image support exists
+- Imaging_Differentiation
+- Original_Caption when non-annotated image display requires a caption
+- Most_Likely_Diagnosis only as diagnosis-only anchor if truly needed
+- summary when required by source hierarchy
+
+Normally blank:
+- Question
+- Differential_Q
+- Mechanism_Q
+- High_Yield_A
+
+Forbidden:
+- Differentials
+- Mechanism
+- High_Yield_Q
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
+
+Isolation rule:
+- If Boards_Trap is populated, all other trigger fields must remain blank.
+
+-----------------------------------------------------
+
+NORMAL HIGH-YIELD - FIELD MATRIX
+
+Required:
+- Clinical_Context
+- High_Yield_Q
+- High_Yield_A
+
+Conditionally allowed:
+- Entity_Label
+- Image when a figure materially improves the concept
+- Image_Annotated when annotated image support is necessary
+- Imaging_Differentiation
+- Original_Caption when image workflow requires it
+- summary when required by source hierarchy
+
+Normally blank:
+- Question
+- Most_Likely_Diagnosis
+- Differential_Q
+- Mechanism_Q
+- Boards_Trap_Q
+
+Forbidden:
+- Differentials
+- Mechanism
+- Boards_Trap
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
+
+Isolation rule:
+- If High_Yield_Q is populated, all other trigger fields must remain blank.
+
+-----------------------------------------------------
+
+IMAGE / QUESTION COUPLING RULE
+
+Question may be populated only for NORMAL UNKNOWN.
+
+Therefore:
+- Image + Question = NORMAL UNKNOWN
+- Image without Question may support another card type
+- Any non-NORMAL-UNKNOWN note with Image must keep Question blank
+
+If Image and a non-UNKNOWN trigger field coexist while Question is also populated:
+- the note is structurally invalid
+
+-----------------------------------------------------
+
+DUAL-TRIGGER BLOCKER
+
+The following combinations are forbidden on one note:
+- Differentials + Mechanism
+- Differentials + Boards_Trap
+- Differentials + High_Yield_Q
+- Mechanism + Boards_Trap
+- Mechanism + High_Yield_Q
+- Boards_Trap + High_Yield_Q
+- Question + any non-UNKNOWN trigger field
+
+If any forbidden combination appears:
+- clear the unintended field(s)
+OR
+- split into separate notes
+
+Do not export a dual-trigger note.

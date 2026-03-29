@@ -7,6 +7,22 @@ It is not the default output for normal-anatomy material.
 
 -----------------------------------------------------
 
+TRIGGER CONDITION
+
+NORMAL DIFFERENTIAL DRILL exists only when:
+- Differentials is populated
+
+If Differentials is populated, the note must also contain:
+- Differential_Q
+- Imaging_Differentiation
+
+Question must remain blank.
+
+If any other trigger field is populated:
+- the note is structurally invalid
+
+-----------------------------------------------------
+
 WHEN TO USE NORMAL DIFFERENTIAL DRILL
 
 Use it only when the source teaches a real separator between:
@@ -19,31 +35,52 @@ Do NOT use it for routine anatomy naming.
 
 -----------------------------------------------------
 
-REQUIRED FIELD SHAPE
+FIELD MATRIX
 
 Required:
 - Clinical_Context
-- Differentials
-
-Usually populated:
 - Differential_Q
-- Entity_Label
+- Differentials
 - Imaging_Differentiation
 
-Conditional:
-- Image only if it genuinely supports the discrimination task
-- summary when source is full RadPrimer or STATdx
+Conditionally allowed:
+- Image when the discrimination task is image-grounded
+- Image_Annotated when paired image support is needed
+- Entity_Label
+- Most_Likely_Diagnosis only as diagnosis-only anchor if truly needed
+- Original_Caption only when image workflow requires it
+- summary when required by source hierarchy
 
-Usually blank:
+Normally blank:
 - Question
-- Most_Likely_Diagnosis unless a bounded diagnosis-style answer is truly required
 - Mechanism_Q
-- Mechanism
 - Boards_Trap_Q
+- High_Yield_A
+
+Forbidden:
+- Mechanism
 - Boards_Trap
 - High_Yield_Q
-- High_Yield_A
-- Radiopaedia fields
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
+
+-----------------------------------------------------
+
+FRONT-SIDE BLINDING
+
+Front may contain only:
+- Clinical_Context
+- Differential_Q
+- Image stack if present
+
+Front must NOT contain:
+- diagnosis names
+- differential names
+- named signs
+- caption-derived answer phrases
+- interpretive prose that gives away the separator
 
 -----------------------------------------------------
 
@@ -68,9 +105,9 @@ Bad uses:
 
 DISCRIMINATOR RULE
 
-The card must teach the dominant separator.
+Imaging_Differentiation must teach the dominant separator.
 
-Use Imaging_Differentiation for the key discriminator, such as:
+Use it for the key discriminator, such as:
 - preserved normal relationship
 - expected enhancement pattern
 - expected vessel course
@@ -78,15 +115,18 @@ Use Imaging_Differentiation for the key discriminator, such as:
 - expected sequence behavior
 - stable landmark position
 
-If there is no meaningful discriminator, do not create this card.
+If there is no meaningful discriminator:
+- do not create this card
 
 -----------------------------------------------------
 
-DIFFERENTIAL SAFETY RULE
+DIFFERENTIAL SAFETY CHECK
 
-Do not fabricate:
-- differential options
-- discriminator features
-- pathology alternatives
-
-If the source only implies a separator weakly, omit the card.
+Before export, confirm:
+- Differentials is populated intentionally
+- Differential_Q is populated
+- Imaging_Differentiation is populated
+- Question is blank
+- no other trigger fields are populated
+- forbidden fields are blank
+- the front does not leak the answer

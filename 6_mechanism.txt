@@ -6,6 +6,22 @@ This card type explains why a normal appearance looks the way it does.
 
 -----------------------------------------------------
 
+TRIGGER CONDITION
+
+NORMAL MECHANISM exists only when:
+- Mechanism is populated
+
+If Mechanism is populated, the note must also contain:
+- Mechanism_Q
+- Entity_Label
+
+Question must remain blank.
+
+If any other trigger field is populated:
+- the note is structurally invalid
+
+-----------------------------------------------------
+
 WHEN TO USE NORMAL MECHANISM
 
 Use NORMAL MECHANISM only when the source explicitly supports an explanation such as:
@@ -20,33 +36,50 @@ Do NOT use this card for routine naming or definition recall.
 
 -----------------------------------------------------
 
-REQUIRED FIELD SHAPE
+FIELD MATRIX
 
 Required:
 - Clinical_Context
+- Entity_Label
+- Mechanism_Q
 - Mechanism
 
-Usually populated:
-- Mechanism_Q
-- Entity_Label
-
-Often useful:
+Conditionally allowed:
+- Image only when the explanation truly depends on a figure or comparison
+- Image_Annotated when annotated support is necessary
 - Imaging_Differentiation
-- summary when source is full RadPrimer or STATdx
+- Original_Caption only when image workflow requires it
+- summary when required by source hierarchy
 
-Conditional:
-- Image if the explanation is tied to a specific figure or comparison
-
-Usually blank:
-- Question unless intentionally NORMAL UNKNOWN
+Normally blank:
+- Question
 - Most_Likely_Diagnosis
 - Differential_Q
-- Differentials
 - Boards_Trap_Q
+- High_Yield_A
+
+Forbidden:
+- Differentials
 - Boards_Trap
 - High_Yield_Q
-- High_Yield_A
-- Radiopaedia fields
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
+
+-----------------------------------------------------
+
+FRONT-SIDE BLINDING
+
+Front should contain only the fields required by the shared template for this card type.
+
+Mechanism_Q should:
+- be direct
+- ask why or how
+- focus on causal understanding
+- avoid repeating the answer in the wording
+
+Do not leak the explanation on the front.
 
 -----------------------------------------------------
 
@@ -77,10 +110,18 @@ Examples:
 - why a given MRI sequence clarifies a normal structure
 - why starting with a certain landmark reduces mislocalization
 
-If the source gives only the rule without the reason, use NORMAL HIGH-YIELD instead.
+If the source gives only the rule without the reason:
+- use NORMAL HIGH-YIELD instead
 
 -----------------------------------------------------
 
-MECHANISM SAFETY RULE
+MECHANISM SAFETY CHECK
 
-If the source does not explicitly support the explanation, do not generate this card.
+Before export, confirm:
+- Mechanism is populated intentionally
+- Mechanism_Q is populated
+- Entity_Label is populated
+- Question is blank
+- no other trigger fields are populated
+- forbidden fields are blank
+- the explanation is explicitly source-supported

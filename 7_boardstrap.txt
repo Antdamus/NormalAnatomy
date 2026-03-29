@@ -6,6 +6,22 @@ This card type captures normal findings that are commonly overcalled or misread.
 
 -----------------------------------------------------
 
+TRIGGER CONDITION
+
+NORMAL BOARDS TRAP exists only when:
+- Boards_Trap is populated
+
+If Boards_Trap is populated, the note must also contain:
+- Boards_Trap_Q
+- Entity_Label
+
+Question must remain blank.
+
+If any other trigger field is populated:
+- the note is structurally invalid
+
+-----------------------------------------------------
+
 WHEN TO USE NORMAL BOARDS TRAP
 
 Use NORMAL BOARDS TRAP for:
@@ -20,31 +36,51 @@ This is a high-value card type in the NORMAL engine.
 
 -----------------------------------------------------
 
-REQUIRED FIELD SHAPE
+FIELD MATRIX
 
 Required:
 - Clinical_Context
+- Entity_Label
+- Boards_Trap_Q
 - Boards_Trap
 
-Usually populated:
-- Boards_Trap_Q
-- Entity_Label
+Conditionally allowed:
+- Image when the trap is inherently visual
+- Image_Annotated when annotated support exists
 - Imaging_Differentiation
+- Original_Caption when non-annotated image display needs a caption
+- Most_Likely_Diagnosis only as diagnosis-only anchor if truly needed
+- summary when required by source hierarchy
 
-Conditional:
-- Image when the trap is image-grounded
-- summary when source is full RadPrimer or STATdx
-
-Usually blank:
-- Question unless intentionally NORMAL UNKNOWN
-- Most_Likely_Diagnosis unless absolutely required for a bounded mimic rejection
+Normally blank:
+- Question
 - Differential_Q
-- Differentials unless true discrimination is separately intended
 - Mechanism_Q
+- High_Yield_A
+
+Forbidden:
+- Differentials
 - Mechanism
 - High_Yield_Q
-- High_Yield_A
-- Radiopaedia fields
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
+
+-----------------------------------------------------
+
+FRONT-SIDE BLINDING
+
+Front may contain only:
+- Clinical_Context
+- Boards_Trap_Q
+- Image if the trap is visual
+
+Front must NOT contain:
+- answer leakage
+- differential lists
+- caption-derived answer prose
+- named diagnoses unless a tightly bounded neutral anchor is unavoidable
 
 -----------------------------------------------------
 
@@ -52,21 +88,10 @@ TRAP CONTENT RULE
 
 Boards_Trap must encode:
 - what the trap is
-AND
 - what feature, check, maneuver, or landmark keeps the reader safe
+- the key discriminator that resolves the ambiguity
 
 Do not stop at naming the trap.
-
------------------------------------------------------
-
-QUESTION RULE
-
-Boards_Trap_Q should ask for one of the following:
-- the pitfall itself
-- the key reason it is not pathology
-- the safety check that prevents overcall
-
-Do not write a broad essay prompt.
 
 -----------------------------------------------------
 
@@ -79,12 +104,18 @@ Examples of valid separator categories:
 - preserved normal anatomy
 - lack of aggressive behavior
 - expected course or attachment
-- phase/sequence consistency
+- phase or sequence consistency
 - stability of a normal interface
 
 -----------------------------------------------------
 
-TRAP SAFETY RULE
+TRAP SAFETY CHECK
 
-Do not invent classic traps.
-Do not exaggerate rarity into a boards pearl unless the source supports the teaching value.
+Before export, confirm:
+- Boards_Trap is populated intentionally
+- Boards_Trap_Q is populated
+- Entity_Label is populated
+- Question is blank
+- no other trigger fields are populated
+- forbidden fields are blank
+- the trap is specific and source-supported
