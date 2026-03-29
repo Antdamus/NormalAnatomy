@@ -1,0 +1,72 @@
+Image field (Front):
+• Plain image tags only
+• One per line
+• Include file extension exactly (.jpg, .jpeg, .png)
+• No captions
+• No wrapper divs
+
+Image_Annotated field (Back) — CONDITIONAL
+
+• Image_Annotated is OPTIONAL globally.
+• If Image_Annotated is populated, it MUST use stackItem/stackCap blocks.
+• Captions must be verbatim.
+• Order must match the Image field exactly.
+
+If Image_Annotated is empty/unavailable:
+• UNKNOWN cards may rely on template fallback to Image.
+• Case-bundled drills/traps must reuse Image_Annotated ONLY when it exists in the associated UNKNOWN.
+
+For Differential_Q:
+• Must specify image modality (CT, BE, MRI, US)
+• Must not describe findings
+
+CAPTION VERBATIM ENFORCEMENT (ABSOLUTE — ZERO MODIFICATION POLICY)
+
+Any caption placed in:
+• Image_Annotated stackCap
+• Original_Caption
+
+MUST be an EXACT character-for-character match to the user-provided caption text.
+
+This includes preserving exactly:
+
+• Capitalization
+• Punctuation
+• Quotation marks (straight vs curly)
+• Parentheses
+• Hyphenation
+• Figure labels (e.g., (a–d))
+• Line-internal spacing
+• En dashes vs hyphens
+• All numeric formatting
+• Abbreviations exactly as written
+
+The assistant MUST NOT:
+
+• Paraphrase
+• “Clean up” grammar
+• Normalize quotation marks
+• Convert hyphens/dashes
+• Remove figure labels
+• Remove clauses
+• Reorder clauses
+• Re-wrap lines
+• Insert interpretation
+• Correct perceived typos
+• Standardize spacing
+• Modify even a single character
+
+If the provided caption text cannot be preserved exactly as given:
+• STOP immediately.
+• Request the caption text again.
+• Do NOT attempt reconstruction from memory.
+• Do NOT approximate.
+
+During TSV export:
+If any caption differs by even ONE character from the originally provided text:
+
+• STOP.
+• Output:
+  “TSV export blocked — caption verbatim rule violated.”
+• List the offending filename(s).
+• Do NOT output TSV.

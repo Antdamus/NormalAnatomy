@@ -1,0 +1,560 @@
+MECHANISM CARD RULES
+
+Card Type: MECHANISM
+
+Trigger Condition:
+• A MECHANISM card is generated when the Mechanism field is populated.
+
+Required meaningful fields:
+• Clinical_Context
+• Entity_Label
+• Mechanism_Q
+• Mechanism
+
+All other fields must remain blank unless intentionally generating another card type.
+
+PURPOSE OF MECHANISM CARDS
+
+Mechanism cards exist to encode:
+
+• Why an imaging appearance occurs
+• Why a disease behaves the way it does in radiologic terms
+• The causal pathophysiology behind exam-relevant findings
+• Mechanistic reasoning that improves interpretation
+• Why a discriminator between entities works
+• The ground-up biologic chain from normal tissue organization → injury trigger or neoplastic transformation → cellular/microanatomic disruption → stromal/vascular remodeling when relevant → gross pathologic change → imaging manifestation
+
+They are NOT for:
+• Pure descriptive imaging findings
+• Differential lists
+• Management algorithms
+• Epidemiology unless directly mechanistic
+• Trivia
+• Non-causal associations
+• Vague one-line physiology that does not explain the actual tissue process
+
+STANDALONE ARCHITECTURE (MANDATORY)
+
+Mechanism cards are STANDALONE notes.
+
+They are not case-bundled notes.
+
+Clinical_Context is required only because it is part of the note type structure and Anki generation architecture.
+
+For every Mechanism card:
+
+• Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic ID
+• Clinical_Context must contain NOTHING else
+• Entity_Label MUST be populated
+• Entity_Label MUST identify the disease/entity only
+• Entity_Label must NOT contain findings, discriminators, management cues, or answer-revealing phrasing
+
+If the 12-character Clinical_Context ID is missing:
+• The card must NOT be generated
+
+If Clinical_Context contains clinical prose instead of the unique ID:
+• Rewrite before TSV export
+
+FRONT-SIDE RULES
+
+Front contains ONLY:
+• Entity_Label
+• Mechanism_Q
+
+No:
+• Imaging descriptions
+• Differential hints
+• Management clues
+• Embedded answers
+• Clinical vignettes
+• Extra context beyond the required Entity_Label
+
+The question must focus on causal understanding.
+
+Mechanism_Q should:
+• Be direct
+• Be board-relevant
+• Ask why or how an imaging appearance or discriminator occurs
+• Avoid repeating the answer in the wording
+
+Preferred examples:
+• “Why does active Crohn disease produce stratified mural enhancement on contrast CT?”
+• “Why can portal venous occlusion produce cavernous transformation?”
+• “Why does bowel ischemia produce diminished mural enhancement?”
+• “Why does acute pancreatitis produce peripancreatic fat stranding and fluid?”
+• “Why does necrotizing pancreatitis show nonenhancing pancreatic tissue?”
+
+Disallowed examples:
+• “Explain Crohn disease.”
+• “What are the imaging findings of bowel ischemia?”
+• “Why does the diseased thickened hyperenhancing bowel wall look abnormal?”
+
+BACK-SIDE RULES
+
+Back contains ONLY:
+• Mechanism
+
+The Mechanism must:
+
+• Explain the causal process clearly
+• Be board-relevant
+• Be explicitly supported by allowed sources
+• Avoid speculation
+• Avoid invented physiology
+• Be as detailed as needed to preserve the true biologic chain when that chain is central to understanding the imaging pattern
+• Prefer depth over superficial brevity when the mechanism is foundational to the disease
+
+Formatting rule:
+• No literal newline characters in TSV output
+• Use <br> only when internal formatting is needed
+
+MECHANISM DEPTH RULE (MANDATORY)
+
+For major disease processes in which imaging depends on the underlying tissue injury pattern
+(e.g., pancreatitis, ischemia, inflammatory bowel disease, fibrosis, necrosis, abscess formation, obstruction, vascular compromise, tumor infiltration),
+the Mechanism field MUST go beyond a minimal radiology-facing summary.
+
+When source support is sufficient, the explanation MUST be built from the ground up using this ladder:
+
+Normal substrate / baseline organization
+• Identify the relevant cells, layers, ducts, vessels, tissue compartments, or fascial planes
+• Example: acinar cells, zymogen granules, ducts, lysosomes, bowel wall layers, portal venous channels
+
+Primary insult / trigger
+• What initiates the pathologic process
+• Example: obstruction, ischemia, enzyme activation, infection, inflammatory injury, vascular compromise
+
+Cellular / microanatomic consequence
+• What changes at the cell/tissue level
+• This level is REQUIRED when it is central to the disease mechanism
+• Example: compartment mixing, enzyme activation, vascular leak, endothelial injury, fat necrosis, epithelial destruction, pressure elevation, ischemic devitalization
+
+Propagation step
+• How the initial injury amplifies itself
+• Example: one enzyme activating others, continuing secretion into a disconnected system, inflammatory mediator cascade, ongoing leakage, superinfection of dead tissue
+
+Gross / mesoscopic pathologic consequence
+• What happens at the organ, tissue-plane, or compartment level
+
+Imaging manifestation
+• How the above appears on CT / MR / US / radiograph
+
+Board discriminator / interpretation pivot
+• Why this mechanism helps separate the entity from a mimic or explain a key imaging feature
+
+This ladder is mandatory for:
+• Foundational disease mechanisms
+• Complication mechanisms
+• Imaging discriminator mechanisms
+• Processes where superficial phrasing would lose the true causal logic
+
+HISTOLOGY / MICROANATOMIC DETAIL RULE (MANDATORY WHEN CENTRAL)
+
+If the mechanism fundamentally depends on compartmentalization, cell biology, tissue-layer injury, or duct/vascular architecture,
+the Mechanism field MUST explicitly include that level of detail.
+
+Examples of REQUIRED detail when relevant:
+• Which cells or compartments are normally separated
+• What mixes abnormally after injury
+• Which enzyme, mediator, or tissue component becomes activated
+• Which downstream processes are triggered
+• Which tissue compartment is destroyed, edematous, necrotic, hemorrhagic, fibrotic, or obstructed
+• Why the gross imaging pattern follows from that microscopic event
+
+For example, in pancreatitis, a high-quality mechanism should not stop at:
+• “Enzymes leak and cause inflammation.”
+
+It should instead explain, when source-supported and appropriate:
+• that digestive enzymes are normally compartmentalized
+• that acinar injury / ductal obstruction / pressure change can disrupt this separation
+• that premature activation of trypsinogen can occur
+• that trypsin activates other proteolytic/lipolytic enzymes
+• that this produces autodigestion, vascular injury, fat necrosis, edema, necrosis, and fluid tracking
+• and how those tissue effects become imaging findings
+
+This level of explanation is preferred whenever it materially improves durable understanding.
+
+TUMOR HISTO-ARCHITECTURAL DEPTH RULE
+(MANDATORY FOR PRIMARY TUMORS, MAJOR MASS LESIONS, AND PREMALIGNANT-TO-MALIGNANT EVOLUTION CHAINS WHEN CENTRAL)
+
+For tumor and mass-forming entities, when imaging behavior, discriminator logic, or natural history depends on tissue origin, background architecture, stromal remodeling, or precursor-lesion evolution, the Mechanism field MUST go beyond a generic “neoplasm enhances because it is vascular” explanation.
+
+In these entities, the Mechanism field MUST explain the tumor as a biologic process unfolding within a specific native tissue architecture.
+
+When source support is sufficient, the explanation MUST include, when relevant:
+
+1) CELL / LINEAGE OF ORIGIN
+• Identify the tumor’s cell of origin, differentiation lineage, or dominant cellular program
+• Examples:
+  - hepatocellular differentiation
+  - ductal epithelial origin
+  - neuroendocrine origin
+  - mesenchymal / stromal origin
+• If exact cell of origin is not explicitly established in source, state only what is source-supported
+• Do NOT overstate uncertain lineage
+
+2) NORMAL TISSUE ARCHITECTURE
+• Explain the normal microanatomic organization of the organ from which the tumor arises
+• Include the native compartments, supporting cells, vascular arrangement, ductal arrangement, stromal scaffold, and relevant zonal/layered organization when central
+• Examples:
+  - liver: hepatocytes, plates/trabeculae, sinusoids, Kupffer cells, stellate cells, portal triads, central veins, acinar zonation
+  - pancreas: acini, centroacinar cells, ducts, islets, stromal framework
+  - bowel: mucosa, submucosa, muscularis propria, serosa, crypt-villus architecture
+  - kidney: tubules, glomeruli, cortex/medulla, collecting system
+• This section is REQUIRED when the later tumor behavior cannot be understood without the native architecture
+
+3) BACKGROUND TISSUE STATE / PRECURSOR ENVIRONMENT
+• Explain the tissue condition in which the tumor develops when that condition is central
+• Examples:
+  - chronic inflammation
+  - fibrosis / cirrhosis
+  - duct obstruction
+  - metaplasia / dysplasia sequence
+  - chronic viral injury
+  - steatohepatitis
+• If the tumor classically arises in a remodeled substrate, that substrate should be explicitly described
+
+4) PRECURSOR LESION OR EVOLUTION CHAIN
+• If a recognized progression pathway exists, include it
+• Examples:
+  - regenerative nodule → dysplastic nodule → early carcinoma → progressed carcinoma
+  - adenoma-carcinoma sequence
+  - chronic injury → metaplasia → dysplasia → carcinoma
+• If no accepted precursor sequence exists, do NOT invent one
+
+5) STROMAL / FIBROTIC / ARCHITECTURAL REMODELING
+• Explain how fibrosis, stromal reaction, septa, capsule, pseudocapsule, scar, desmoplasia, necrosis, hemorrhage, or compartment distortion develop when they are important to imaging
+• This is REQUIRED when tumor behavior depends on background fibrosis or stromal remodeling
+• Example:
+  - bridging fibrosis partitions parenchyma into nodules
+  - desmoplastic stroma causes delayed enhancement
+  - pseudocapsule reflects compressed parenchyma/fibrosis at the tumor margin
+
+6) VASCULAR REMODELING / PERFUSION SHIFT
+• Explain how blood supply changes as the lesion evolves
+• This is REQUIRED when enhancement behavior is central to diagnosis
+• Examples:
+  - loss of normal portal venous supply
+  - development of unpaired arteries
+  - arterialization of tumor
+  - venous invasion / tumor in vein
+  - ischemic or necrotic regions from mismatched perfusion
+• The mechanism must connect vascular remodeling directly to enhancement pattern
+
+7) GROWTH PATTERN WITHIN NATIVE ARCHITECTURE
+• Explain how the tumor expands through, replaces, distorts, infiltrates, compresses, or invades the native tissue
+• Examples:
+  - trabecular growth
+  - pseudoglandular/acinar growth
+  - infiltrative permeative spread
+  - expansile nodular growth
+  - intraductal spread
+  - vascular invasion
+• This should explain morphology, margins, multiplicity, and compartment predilection when source-supported
+
+8) IMAGING CONSEQUENCE
+• Explicitly connect the above architecture and tumor evolution to the imaging appearance
+• The explanation must answer:
+  - why the lesion enhances the way it does
+  - why it washes out or retains contrast
+  - why it contains fat, necrosis, hemorrhage, scar, capsule, calcification, diffusion restriction, or targetoid features if source-supported
+  - why it invades vessels, ducts, fascia, or adjacent organs
+• This step is mandatory
+• The mechanism must not stop at histology alone
+
+9) MAJOR DISCRIMINATOR / MIMIC SEPARATION
+• End by stating why this developmental / architectural mechanism helps distinguish the tumor from major mimics
+• Examples:
+  - why HCC differs from dysplastic nodules
+  - why cholangiocarcinoma enhances differently
+  - why metastases are less likely to invade a specific vessel
+• This discriminator step is REQUIRED when it materially improves board-level reasoning
+
+TUMOR-SPECIFIC DEPTH STANDARD
+
+For major tumor entities, a high-quality mechanism should usually follow this ladder:
+
+normal organ architecture
+→ chronic injury / altered substrate (if relevant)
+→ precursor lesion or remodeling pathway
+→ malignant transformation
+→ vascular / stromal remodeling
+→ growth pattern
+→ imaging manifestation
+→ discriminator from mimics
+
+If compressing the answer would erase this chain,
+the assistant MUST prefer the deeper explanation.
+
+TUMOR RULE — WHAT MUST NOT HAPPEN
+
+For tumor mechanism cards, the assistant MUST NOT:
+
+• reduce the answer to “malignant tumors are hypervascular”
+• skip the normal tissue architecture when it is central
+• skip the background fibrotic / precursor substrate when it explains tumor behavior
+• provide generic oncology prose detached from organ-specific structure
+• invent cell of origin, precursor lesions, or stromal biology not supported by allowed sources or permitted external literature
+• drift into treatment algorithms, staging systems, or epidemiology unless directly mechanistic
+• restate imaging findings without explaining why they arise from the underlying architecture
+
+WEAK TUMOR EXAMPLE (PROHIBITED):
+“HCC enhances because it is a vascular tumor.”
+
+STILL TOO WEAK (DISFAVORED):
+“HCC arises in cirrhosis and becomes hypervascular, so it enhances and washes out.”
+
+QUALITY-FLOOR TUMOR EXAMPLE (ALLOWED):
+“In cirrhosis, repeated hepatocyte injury and regeneration within fibrotic parenchyma produce regenerative and dysplastic nodules. As malignant transformation develops, the lesion loses normal portal tract architecture and acquires increasing unpaired arterial supply, so it becomes arterially hyperenhancing relative to background liver. Because the surrounding liver enhances progressively on portal venous/delayed phases while the tumor lacks normal hepatocellular/portal perfusion behavior, the lesion becomes relatively hypointense/hypodense (‘washout’). This evolution within a cirrhotic nodular substrate helps distinguish HCC from regenerative or dysplastic nodules, which often lack the full arterialization-washout pattern.”
+
+WHEN THIS RULE IS MANDATORY
+
+This rule is mandatory when:
+• the entity is a primary tumor or major mass lesion
+AND
+• understanding tumor behavior depends on native tissue architecture, precursor evolution, stromal remodeling, fibrosis, or vascular remodeling
+AND
+• the deeper explanation materially improves interpretation, discrimination, or durable conceptual mastery
+
+WHEN THIS RULE IS NOT REQUIRED
+
+This full tumor-depth format is NOT required for:
+• trivial tumor facts
+• cards whose only purpose is a narrow complication mechanism
+• lesions where the deeper architecture does not materially improve interpretation
+• purely threshold-based or staging-based facts better encoded as High-Yield cards
+
+If the tumor-specific architecture does not improve interpretation,
+do NOT force this depth.
+
+EXTERNAL LITERATURE ALIGNMENT
+
+If the allowed source hierarchy does not provide sufficient histo-architectural depth for the tumor mechanism, external literature MAY be used ONLY under the existing external literature exception.
+
+In that setting, external literature may support:
+• normal microanatomy needed to understand tumor development
+• precursor lesion evolution
+• fibrosis/stromal remodeling
+• vascular remodeling
+• organ-specific histologic growth pattern
+
+However:
+• the imaging findings themselves must remain source-supported
+• the deeper tumor-biology explanation must remain standard, widely accepted, and non-controversial
+• no unsupported molecular/speculative oncology content may be introduced
+• all existing traceability rules remain mandatory
+
+DEPTH VS BREVITY RULE
+
+The Mechanism must be:
+• As concise as possible
+BUT
+• Not so compressed that the cellular/tissue logic is lost
+
+Therefore:
+• “Concise” does NOT mean one-paragraph superficiality
+• “Do not expand into full pathology essays” means:
+
+do not add irrelevant pathology
+
+do not drift into management
+
+do not add broad textbook review unrelated to the imaging pivot
+
+It does NOT mean:
+• omit the histology-to-imaging chain when that chain is the point of the card
+
+If a short answer would erase the true causal ladder,
+the assistant MUST prefer the deeper explanation.
+
+INFLATION RULE
+
+Do NOT generate mechanism cards for:
+
+• Obvious or trivial mechanisms
+• Redundant explanations already encoded elsewhere
+• Mechanisms that do not improve interpretation
+• Non-causal descriptive statements
+
+Each mechanism card must encode a meaningful radiologic reasoning pivot.
+
+However:
+• A mechanism card is STILL justified if the mechanism is foundational and high-yield,
+even if it requires more detail than usual,
+provided it improves interpretation or durable conceptual mastery.
+
+INTEGRITY RULE
+
+Mechanism cards must NOT:
+
+• Duplicate High-Yield threshold logic
+• Duplicate Differential Drill reasoning without adding mechanism
+• Expand beyond explicitly supported content unless allowed under the external literature exception
+• Introduce unsupported physiologic claims
+• Use generic filler pathophysiology that does not explain the image
+
+Quality over quantity.
+
+MECHANISM QUALITY FLOOR (IMAGING-PIVOT REQUIREMENT — MANDATORY)
+
+A Mechanism card MUST encode a radiologic reasoning pivot,
+NOT merely a generic pathophysiologic statement.
+
+Each mechanism must satisfy at least ONE of the following:
+
+• Explain WHY a specific imaging appearance occurs
+• Explain WHY a discriminator between mimics works
+• Explain WHY enhancement behaves a certain way
+• Explain WHY a board trap occurs
+• Explain WHY a pattern localizes to a specific layer or compartment
+• Explain WHY a complication develops in imaging terms
+
+The mechanism MUST:
+
+• Explicitly connect pathophysiology → imaging manifestation
+• Contain a causal chain, not just an association
+• Influence interpretation or discrimination
+• Include the microanatomic/histologic step when that step is necessary to make the chain intelligible
+
+The mechanism MUST NOT:
+
+• Restate imaging findings descriptively
+• State obvious textbook physiology without imaging linkage
+• Repeat content already encoded in UNKNOWN reasoning
+• Encode trivial or self-evident cause-effect statements
+• Substitute vague words like “inflammation causes changes” when the actual tissue mechanism is knowable and relevant
+
+Weak example (PROHIBITED):
+“Inflammation causes wall thickening.”
+
+Still too weak (DISFAVORED):
+“Enzymes leak and cause inflammation around the pancreas.”
+
+Quality-floor example (ALLOWED):
+“Acinar injury disrupts normal intracellular/ductal compartmentalization of digestive enzymes, allowing premature trypsinogen activation; activated trypsin then triggers other digestive enzymes, causing autodigestive injury, vascular leak, fat necrosis, edema, and peripancreatic inflammatory fluid, which appear on imaging as fat stranding and fluid around the gland.”
+
+If a proposed mechanism does not reach this quality floor:
+• DO NOT generate the card
+• Omit it entirely
+
+Mechanism cards exist to deepen durable mastery,
+not inflate card count.
+
+MECHANISM SOURCE POLICY (SYSTEM-RULE ALIGNED)
+
+Mechanism explanations should preferentially use content explicitly stated in:
+
+• Core Radiology
+• RadPrimer
+• STATdx
+• Radiopaedia
+
+If the allowed sources describe imaging findings but do NOT explain the causal basis in enough depth:
+
+• External literature MAY be used ONLY under the
+“EXTERNAL MEDICAL LITERATURE — LIMITED EXCEPTION (STRICT)”
+defined in SYSTEM RULES
+
+This exception explicitly includes:
+• deeper histology-level or microanatomic explanation
+• compartment-level explanation
+• enzyme cascade explanation
+• vascular / ductal / fascial-plane mechanism explanation
+
+ONLY when:
+• the disease entity and imaging findings are already source-supported
+• the deeper explanation is needed to satisfy the Mechanism Depth Rule
+• the explanation reflects standard, widely accepted medical consensus
+
+When external literature is used for a Mechanism card:
+
+• The Mechanism field MUST explicitly include the line:
+“External literature source (not stated in Core/RadPrimer/STATdx/Radiopaedia).”
+
+• The Mechanism field MUST also include, immediately after that line:
+“Source: [stable link]”
+
+• Both lines must appear inside the Mechanism field itself
+• Silent external sourcing is prohibited
+• The source link must point to the exact article, guideline, review, or reference supporting the card
+• Acceptable links include:
+  - DOI URL
+  - PubMed URL
+  - journal article landing page
+  - guideline page
+• If multiple sources were reviewed, use the single most directly supporting source for the final wording of the card
+• If no stable source link is available, do NOT generate the externally sourced mechanism card
+• The imaging findings themselves must remain source-supported
+• No new imaging features may be introduced
+• No management rules may be introduced
+• The explanation must reflect widely accepted, textbook-level consensus
+• If credible sources conflict or are controversial → DO NOT generate the card
+• If the mechanism requires speculative MRI physics or niche theory → DO NOT generate the card
+
+If no reliable mechanism explanation is available:
+• Omit the Mechanism card entirely
+
+SUMMARY FIELD RULE
+
+If a Mechanism card originates from RadPrimer/STATdx:
+
+• summary MUST be populated
+• It must follow the global Summary Field Rule
+• It must be derived from full-article review
+• It must be article-only
+• It must contain no Core mixing
+• It must contain no inference
+
+If the card does NOT originate from RadPrimer/STATdx:
+• summary must remain blank
+
+FIELD ISOLATION RULE
+
+To preserve architecture safety, a Mechanism card should populate only the fields needed for the Mechanism template and note structure.
+
+For standalone Mechanism cards:
+
+Required:
+• Clinical_Context
+• Entity_Label
+• Mechanism_Q
+• Mechanism
+
+Allowed when required by source/workflow:
+• summary
+
+All other fields should remain blank, including:
+• Image
+• Image_Annotated
+• Question
+• Most_Likely_Diagnosis
+• Differential_Q
+• Differentials
+• Imaging_Differentiation
+• Original_Caption
+• Boards_Trap_Q
+• Boards_Trap
+• High_Yield_Q
+• High_Yield_A
+• Radiopaedia_Link
+• Radiopaedia_Case_Context
+• Radiopaedia_Case_Summary
+• Radiopaedia_Case_Differential
+
+QUALITY CHECK BEFORE TSV
+
+Confirm:
+
+• Mechanism trigger is valid (Mechanism populated)
+• Clinical_Context contains a unique 12-character alphanumeric/symbolic ID and nothing else
+• Entity_Label contains disease/entity name only
+• Mechanism_Q is focused on causal understanding
+• Mechanism satisfies the imaging-pivot quality floor
+• Mechanism satisfies the Mechanism Depth Rule when applicable
+• Histology / microanatomic detail is included when central to the process
+• No forbidden fields are populated
+• Any external literature use is explicitly labeled inside the Mechanism field
+• Summary, if required, satisfies the global Summary Field Rule
+• No literal newline characters
+• Only <br> is used for internal formatting
+• No fabricated claims

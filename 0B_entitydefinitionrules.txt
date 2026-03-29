@@ -1,0 +1,113 @@
+SECTION PURPOSE
+
+This file defines what counts as the target entity in the NORMAL engine.
+It prevents normal-anatomy content from being mislabeled as disease content.
+
+-----------------------------------------------------
+
+TARGET ENTITY TYPES (ALLOWED)
+
+In this engine, the target entity may be any of the following:
+
+1) Structure
+- a named organ, vessel, duct, nerve, ligament, muscle, bone, joint, fascial plane, space, or compartment
+
+2) Region
+- an anatomic territory or portion of a structure
+- examples: pancreatic head region, renal sinus, posterior fossa cisterns
+
+3) Landmark
+- a named imaging landmark used to orient a normal study
+- examples: portal vein bifurcation, SMA-SMV relationship, quadrigeminal cistern
+
+4) Physiologic Appearance
+- an expected normal appearance caused by normal physiology
+- examples: enhancement pattern, signal intensity pattern, normal layering, expected fluid or gas distribution when source-supported
+
+5) Normal Variant
+- a named or clearly described non-pathologic variant appearance
+- examples: prominent column of Bertin, junctional cortical defect, persistent fetal lobulation
+
+6) Pseudolesion or Mimic
+- a normal structure, contour, fold, interface, vessel, artifact, or physiologic state that may simulate disease
+
+7) Modality-Specific Normal Concept
+- a normal concept that only makes sense in relation to modality, sequence, plane, or phase
+- examples: normal corticomedullary differentiation, expected T1/T2 relationship, expected bowel wall appearance on a specific phase
+
+8) Exam-Approach Concept
+- a review-order rule, orientation anchor, landmark checklist, sequence priority, phase priority, or completeness rule for reading a normal exam
+
+-----------------------------------------------------
+
+ENTITY LABEL RULE
+
+Entity_Label must store the true learning target as a concise noun phrase or concept label.
+
+Entity_Label may contain:
+- the structure name
+- the variant name
+- the pitfall name
+- the landmark name
+- the normal appearance concept
+- the exam-approach concept
+
+Entity_Label must NOT contain:
+- long explanation text
+- multiple unrelated entities
+- filler
+- unsupported synonyms
+- a fake diagnosis label for a pure normal card
+
+-----------------------------------------------------
+
+ENTITY RESOLUTION RULE
+
+Before writing a card, determine which entity type is being taught.
+
+If the source is mainly teaching:
+- "what this is" -> structure, region, landmark, variant, or mimic
+- "what it should look like" -> physiologic appearance or modality-specific normal concept
+- "how to review the study" -> exam-approach concept
+- "why it looks that way" -> modality-specific normal concept or physiologic appearance, usually for NORMAL MECHANISM
+
+Do not default every card to a diagnosis-style entity.
+
+-----------------------------------------------------
+
+VARIANT VS MIMIC RULE
+
+Do not merge these categories automatically.
+
+- A normal variant is a real non-pathologic anatomic or developmental alternative.
+- A pseudolesion or mimic is a normal appearance that can be mistaken for pathology.
+
+Some entities may qualify as both.
+If so, the card must clearly state which educational role is being tested.
+
+-----------------------------------------------------
+
+EXAM-APPROACH ENTITY RULE
+
+Exam-approach concepts are valid target entities in this engine.
+
+They include:
+- first landmark to identify
+- sequence in which to review a study
+- plane/sequence/phase that best establishes a normal relationship
+- minimum normal checklist for a complete review
+- maneuver or discriminator that prevents overcalling disease
+
+These are not new card types.
+They are entities that must be mapped into the existing allowed card types.
+
+-----------------------------------------------------
+
+ENTITY SAFETY RULE
+
+If the source does not clearly support a named entity or concept:
+- leave Entity_Label blank only when the card type can function without it
+OR
+- omit the card
+
+Do not invent an entity name.

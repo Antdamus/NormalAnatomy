@@ -1,0 +1,101 @@
+CARD TYPE: NORMAL HIGH-YIELD
+
+SECTION PURPOSE
+
+This is the default compact concept card for non-image-first normal content.
+
+-----------------------------------------------------
+
+WHEN TO USE NORMAL HIGH-YIELD
+
+Use it for compact, source-supported teaching points such as:
+- anatomy definitions
+- landmark rules
+- normal appearance anchors
+- approach rules
+- review sequence
+- normal checklist items
+- measurement or morphology rules when explicitly supported
+- normal variant anchors
+- concise "what makes this normal" teaching points
+
+This is the preferred home for exam-approach content when image recognition is not the primary task.
+
+-----------------------------------------------------
+
+REQUIRED FIELD SHAPE
+
+Required:
+- Clinical_Context
+- High_Yield_Q
+- High_Yield_A
+
+Usually populated:
+- Entity_Label
+
+Often useful:
+- Imaging_Differentiation
+- summary when source is full RadPrimer or STATdx
+
+Conditional:
+- Image if a figure materially improves the concept, but keep Question blank
+
+Usually blank:
+- Question
+- Most_Likely_Diagnosis
+- Differential_Q
+- Differentials
+- Mechanism_Q
+- Mechanism
+- Boards_Trap_Q
+- Boards_Trap
+- Radiopaedia fields
+
+-----------------------------------------------------
+
+HIGH-YIELD QUESTION RULE
+
+High_Yield_Q should ask for one compact learning target:
+- definition
+- landmark
+- checklist item
+- review-order rule
+- key normal appearance anchor
+- variant anchor
+
+Do not combine multiple unrelated asks in one prompt.
+
+-----------------------------------------------------
+
+HIGH-YIELD ANSWER RULE
+
+High_Yield_A should be compact, structured, and operational.
+
+Good content forms:
+- one-sentence definition
+- short checklist
+- short ordered review sequence
+- compact modality anchor
+- concise normal-vs-variant separator
+
+Do NOT turn High_Yield_A into an unstructured paragraph dump.
+
+-----------------------------------------------------
+
+EXAM-APPROACH RULE
+
+NORMAL HIGH-YIELD is the preferred card type for:
+- landmark checklist
+- normal workflow anchors
+- review sequence
+- what constitutes a complete normal review
+- concise overcall-prevention checklist items
+
+If the source gives a reason why the rule works, that reason may be better encoded separately as NORMAL MECHANISM.
+
+-----------------------------------------------------
+
+HIGH-YIELD SAFETY RULE
+
+Do not create a high-yield card from vague general advice.
+The answer must rest on a concrete source-supported rule.

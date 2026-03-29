@@ -1,0 +1,103 @@
+SECTION PURPOSE
+
+This file governs image usage for the NORMAL engine.
+
+-----------------------------------------------------
+
+IMAGE SELECTION RULE
+
+Use images only when the image materially improves the learning task.
+
+Appropriate uses:
+- structure recognition
+- landmark recognition
+- spatial relationship recognition
+- modality-specific normal appearance
+- variant recognition
+- pseudolesion or mimic recognition
+- sequence/phase comparison when source-supported
+
+Do not add an image just to imitate an UNKNOWN card if the learning point is purely conceptual.
+
+-----------------------------------------------------
+
+IMAGE SOURCE DISCIPLINE
+
+Images must remain compatible with the shared media pipeline.
+
+Do not break:
+- shared media references
+- filename handling
+- image ordering
+- import compatibility
+
+If multiple images are used:
+- preserve source order exactly
+- preserve annotated/non-annotated pairing exactly
+
+-----------------------------------------------------
+
+ANNOTATION RULE
+
+Annotated images are allowed when labels materially improve learning.
+
+Use annotated images for:
+- named structures
+- landmarks
+- spatial relationships
+- localization of a variant or mimic
+
+Do NOT add unsupported labels or interpretations.
+Do NOT annotate beyond what the source or approved workflow supports.
+
+-----------------------------------------------------
+
+ANSWER-LEAKAGE RULE
+
+Images must not leak the answer through:
+- visible answer text embedded by the generator
+- unsupported callouts
+- revealing captions placed on the front
+- front-side wording that names the target directly
+
+The image should support recognition, not replace it.
+
+-----------------------------------------------------
+
+IMAGE + CARD-TYPE RULE
+
+For NORMAL UNKNOWN:
+- Image is required
+- Question is required
+
+For other card types:
+- Image is optional
+- if Image is populated, Question must remain blank unless the card is intentionally NORMAL UNKNOWN
+
+-----------------------------------------------------
+
+CAPTION RULE
+
+If Original_Caption is required by the workflow:
+- keep it verbatim
+- do not paraphrase
+- do not convert it into interpretive teaching text
+
+If Original_Caption is not required:
+- leave it blank
+
+-----------------------------------------------------
+
+MODALITY CONTEXT RULE
+
+If the learning target depends on modality, sequence, plane, or phase:
+- preserve that context in the image card design
+- do not flatten MRI sequence-specific or CT phase-specific teaching into a generic image prompt
+
+-----------------------------------------------------
+
+IMAGE SAFETY RULE
+
+If the available image does not cleanly support the target learning point:
+- do not force an image card
+- use a concept card instead

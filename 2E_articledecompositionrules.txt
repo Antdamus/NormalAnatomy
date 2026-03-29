@@ -1,0 +1,100 @@
+SECTION PURPOSE
+
+This file explains how to decompose a full RadPrimer or STATdx article into card-worthy content buckets for the NORMAL engine.
+
+The goal is to extract the full educational value of a normal-anatomy article without defaulting to pathology-style output.
+
+-----------------------------------------------------
+
+ARTICLE DECOMPOSITION BUCKETS
+
+For each full article, inspect whether it contains content for any of these buckets:
+
+1) Named structures
+- what structures must be recognized
+
+2) Spatial relationships
+- what normal adjacency, course, or orientation relationships matter
+
+3) Landmark identifiers
+- what landmarks anchor orientation or review
+
+4) Modality appearance anchors
+- what expected normal appearance is emphasized on ultrasound, CT, MRI, or radiograph
+
+5) Exam approach steps
+- what to look at first
+- what order to review
+- what must be checked to complete a normal read
+
+6) Plane / sequence / phase logic
+- what plane, sequence, or phase best demonstrates the normal concept
+
+7) Measurement / morphology concepts
+- only when explicitly supported by source
+
+8) Normal variants
+- what variant patterns are described as non-pathologic
+
+9) Pseudolesions / mimics
+- what normal findings may be mistaken for disease
+
+10) Pitfalls
+- where readers overcall or mislocalize the normal finding
+
+11) Discriminators
+- what feature separates normal from abnormal, or variant from pathology
+
+12) Mechanistic explanations
+- why the normal appearance looks the way it does
+- why modality or phase matters
+
+13) Landmark-based review strategy
+- what sequence of landmarks or structures creates a reliable normal review
+
+-----------------------------------------------------
+
+DECOMPOSITION-TO-CARD-TYPE RULE
+
+Map buckets into card types deliberately:
+
+- named structures, landmarks, spatial relationships, and normal appearance anchors -> usually NORMAL UNKNOWN or NORMAL HIGH-YIELD
+- exam approach steps and landmark-based review strategy -> usually NORMAL HIGH-YIELD
+- plane / sequence / phase logic and mechanism-style explanations -> usually NORMAL MECHANISM
+- variants, mimics, pitfalls, and overcall risks -> usually NORMAL BOARDS TRAP or NORMAL DIFFERENTIAL DRILL
+- true discrimination between normal, variant, and pathology -> NORMAL DIFFERENTIAL DRILL
+
+-----------------------------------------------------
+
+NO PATHOLOGY DEFAULT RULE
+
+Do not let a normal-anatomy article drift into pathology-deck behavior.
+
+If the article mentions abnormal entities only to teach separation, then:
+- keep the card centered on the normal entity or discriminator
+- limit abnormal mentions to what is required for the separator
+
+-----------------------------------------------------
+
+EXTRACTION GRANULARITY RULE
+
+Split article content into distinct card-worthy units.
+
+Do NOT compress the article into:
+- one broad anatomy card
+- one generic summary card
+- one differential list
+
+Also do NOT oversplit into trivial fragments.
+
+Each card should test one stable, source-supported learning unit.
+
+-----------------------------------------------------
+
+DECOMPOSITION SAFETY RULE
+
+If a bucket is unsupported, leave it empty.
+If a supported bucket does not fit any allowed card type, omit it rather than inventing a new trigger.
+
+If you believe a future new card type could help, leave a clearly labeled recommendation comment outside the card-generation workflow.
+Do NOT implement a new card type.

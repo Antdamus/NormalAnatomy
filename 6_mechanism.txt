@@ -1,0 +1,86 @@
+CARD TYPE: NORMAL MECHANISM
+
+SECTION PURPOSE
+
+This card type explains why a normal appearance looks the way it does.
+
+-----------------------------------------------------
+
+WHEN TO USE NORMAL MECHANISM
+
+Use NORMAL MECHANISM only when the source explicitly supports an explanation such as:
+- anatomic basis of a normal appearance
+- developmental basis of a normal variant
+- physiologic basis of an expected appearance
+- modality-specific reason a structure appears a certain way
+- reason a sequence, plane, or phase best demonstrates a normal concept
+- reason a discriminator or review step works
+
+Do NOT use this card for routine naming or definition recall.
+
+-----------------------------------------------------
+
+REQUIRED FIELD SHAPE
+
+Required:
+- Clinical_Context
+- Mechanism
+
+Usually populated:
+- Mechanism_Q
+- Entity_Label
+
+Often useful:
+- Imaging_Differentiation
+- summary when source is full RadPrimer or STATdx
+
+Conditional:
+- Image if the explanation is tied to a specific figure or comparison
+
+Usually blank:
+- Question unless intentionally NORMAL UNKNOWN
+- Most_Likely_Diagnosis
+- Differential_Q
+- Differentials
+- Boards_Trap_Q
+- Boards_Trap
+- High_Yield_Q
+- High_Yield_A
+- Radiopaedia fields
+
+-----------------------------------------------------
+
+MECHANISM CONTENT RULE
+
+Mechanism should explain one causal or explanatory teaching point clearly and compactly.
+
+Valid targets:
+- why fluid, signal, enhancement, or contour looks normal on a given modality
+- why a sequence or phase improves confidence
+- why a variant has its typical appearance
+- why a landmark or relationship is reliable
+
+Avoid:
+- pseudo-mechanisms
+- vague statements like "because of anatomy"
+- speculative physiology
+- long essays
+
+-----------------------------------------------------
+
+EXAM-APPROACH MECHANISM RULE
+
+Exam-approach content belongs here only when the source gives a reason.
+
+Examples:
+- why portal venous phase is the best phase for a normal relationship
+- why a given MRI sequence clarifies a normal structure
+- why starting with a certain landmark reduces mislocalization
+
+If the source gives only the rule without the reason, use NORMAL HIGH-YIELD instead.
+
+-----------------------------------------------------
+
+MECHANISM SAFETY RULE
+
+If the source does not explicitly support the explanation, do not generate this card.

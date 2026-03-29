@@ -1,0 +1,90 @@
+CARD TYPE: NORMAL BOARDS TRAP
+
+SECTION PURPOSE
+
+This card type captures normal findings that are commonly overcalled or misread.
+
+-----------------------------------------------------
+
+WHEN TO USE NORMAL BOARDS TRAP
+
+Use NORMAL BOARDS TRAP for:
+- normal mimics of disease
+- pseudolesions
+- variants mistaken for pathology
+- structures commonly overcalled
+- modality-specific normal misreads
+- omission traps in reviewing a normal exam
+
+This is a high-value card type in the NORMAL engine.
+
+-----------------------------------------------------
+
+REQUIRED FIELD SHAPE
+
+Required:
+- Clinical_Context
+- Boards_Trap
+
+Usually populated:
+- Boards_Trap_Q
+- Entity_Label
+- Imaging_Differentiation
+
+Conditional:
+- Image when the trap is image-grounded
+- summary when source is full RadPrimer or STATdx
+
+Usually blank:
+- Question unless intentionally NORMAL UNKNOWN
+- Most_Likely_Diagnosis unless absolutely required for a bounded mimic rejection
+- Differential_Q
+- Differentials unless true discrimination is separately intended
+- Mechanism_Q
+- Mechanism
+- High_Yield_Q
+- High_Yield_A
+- Radiopaedia fields
+
+-----------------------------------------------------
+
+TRAP CONTENT RULE
+
+Boards_Trap must encode:
+- what the trap is
+AND
+- what feature, check, maneuver, or landmark keeps the reader safe
+
+Do not stop at naming the trap.
+
+-----------------------------------------------------
+
+QUESTION RULE
+
+Boards_Trap_Q should ask for one of the following:
+- the pitfall itself
+- the key reason it is not pathology
+- the safety check that prevents overcall
+
+Do not write a broad essay prompt.
+
+-----------------------------------------------------
+
+OVERCALL-PREVENTION RULE
+
+Imaging_Differentiation is strongly encouraged for this card type.
+Use it to state the separator that prevents misdiagnosis.
+
+Examples of valid separator categories:
+- preserved normal anatomy
+- lack of aggressive behavior
+- expected course or attachment
+- phase/sequence consistency
+- stability of a normal interface
+
+-----------------------------------------------------
+
+TRAP SAFETY RULE
+
+Do not invent classic traps.
+Do not exaggerate rarity into a boards pearl unless the source supports the teaching value.

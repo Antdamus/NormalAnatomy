@@ -1,0 +1,102 @@
+CARD TYPE: NORMAL UNKNOWN
+
+SECTION PURPOSE
+
+This is the primary image-recognition card type for the NORMAL engine.
+
+-----------------------------------------------------
+
+WHEN TO USE NORMAL UNKNOWN
+
+Use NORMAL UNKNOWN when the learner must identify from the image:
+- a structure
+- a landmark
+- a spatial relationship
+- an expected normal appearance
+- a normal physiologic appearance
+- a normal variant
+- the key normal feature preventing overcall
+
+This is NOT a disease-diagnosis card.
+
+-----------------------------------------------------
+
+REQUIRED FIELD SHAPE
+
+Required:
+- Clinical_Context
+- Image
+- Question
+
+Usually populated:
+- Entity_Label
+
+Often useful:
+- Image_Annotated
+- Imaging_Differentiation
+- Original_Caption when workflow requires it
+- summary when source is full RadPrimer or STATdx
+
+Usually blank:
+- Most_Likely_Diagnosis
+- Differential_Q
+- Differentials
+- Mechanism_Q
+- Mechanism
+- Boards_Trap_Q
+- Boards_Trap
+- High_Yield_Q
+- High_Yield_A
+- Radiopaedia fields
+
+-----------------------------------------------------
+
+QUESTION DESIGN RULE
+
+Question should ask for one image-based recognition task only.
+
+Good question goals:
+- identify the labeled structure
+- identify the landmark anchoring the review
+- identify the normal relationship shown
+- identify the expected normal appearance
+- decide whether the finding is normal, a variant, or abnormal
+- identify the feature that keeps the appearance from being overcalled
+
+Do not ask a multi-step essay question.
+Do not ask for broad pathology differential lists.
+
+-----------------------------------------------------
+
+ANSWER SHAPE RULE
+
+Entity_Label should hold the target answer or core concept label.
+
+Imaging_Differentiation may briefly explain:
+- why it is normal
+- what makes the relationship normal
+- what feature marks it as a variant rather than pathology
+
+Do not turn the back into a long narrative.
+
+-----------------------------------------------------
+
+LANDMARK RULE
+
+NORMAL UNKNOWN is an appropriate home for exam-approach content only when the approach concept is image-grounded.
+
+Examples:
+- "Identify the first landmark that should anchor review of this study."
+- "What normal relationship is being confirmed on this phase/sequence?"
+
+If the teaching point is a general review checklist rather than image recognition, use NORMAL HIGH-YIELD instead.
+
+-----------------------------------------------------
+
+UNKNOWN SAFETY RULE
+
+Do not generate NORMAL UNKNOWN when:
+- there is no image
+- the image does not support recognition
+- the question leaks the answer
+- the learning goal is primarily explanatory rather than recognitional

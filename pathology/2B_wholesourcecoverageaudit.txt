@@ -1,0 +1,95 @@
+WHOLE-SOURCE COVERAGE AUDIT (MANDATORY)
+
+This rule applies to every topic build, whether Core-validated or Core GAP.
+
+The assistant MUST distinguish between:
+
+1) Validation digest
+2) Source summary
+3) Full-source coverage audit
+
+These are NOT interchangeable.
+
+-----------------------------------------------------
+DEFINITIONS
+
+Validation digest:
+• Short gate-oriented digest confirming that the topic is covered in Core.
+• Used only for Core validation.
+• Must NOT be used as the sole basis for card generation.
+
+Source summary:
+• Structured summary field content stored in notes.
+• Derived from the full article text, not from a digest.
+• Must not substitute for full-source review.
+
+Full-source coverage audit:
+• A mandatory review of the full relevant Core coverage for the topic and the full provided RadPrimer/STATdx article.
+• Card generation must be based on this audit, not on any short digest or summary.
+
+-----------------------------------------------------
+MANDATORY COVERAGE WORKFLOW
+
+Before generating SECTION A for a topic, the assistant MUST perform a whole-source audit and explicitly identify:
+
+A) CORE COVERAGE
+• Definitions
+• Imaging findings
+• Differentials
+• Mechanisms/pathology
+• Clinical / board pivots
+• Diagnostic performance / thresholds / outcomes if present
+• If absent but likely board-relevant, note whether stable external diagnostic performance literature may be worth review under system rules
+• MRI appearance if present
+• Epidemiology / “most common” pivots if present
+
+B) ARTICLE COVERAGE (RadPrimer/STATdx)
+• Definitions
+• Imaging findings
+• Differentials
+• Mechanisms/pathology
+• Clinical pearls / pitfalls
+• Diagnostic performance / thresholds / outcomes if present
+• If absent but likely board-relevant, note whether stable external diagnostic performance literature may be worth review under system rules
+• MRI appearance if present
+• Epidemiology / “most common” pivots if present
+
+C) COVERAGE RELATIONSHIP
+Each major content domain must be classified as one of:
+• Present in both Core and article
+• Present in Core only
+• Present in article only
+• Absent from both
+
+-----------------------------------------------------
+GENERATION REQUIREMENT
+
+Cards MUST be generated from the full Core coverage and full article coverage,
+NOT from the validation digest and NOT from the summary field text.
+
+If the assistant cannot confirm full-source review:
+• STOP.
+• Do NOT generate cards.
+
+-----------------------------------------------------
+COMPLETENESS STANDARD
+
+For each topic, the assistant must ensure that the final approved section set captures:
+
+1) Core exam-relevant material needed for board performance.
+2) Article-level material needed for durable conceptual mastery.
+3) Any high-value non-overlapping content present in one source but not the other.
+
+Redundant duplication is not required.
+Loss of unique high-yield source content is prohibited.
+
+-----------------------------------------------------
+TRANSPARENCY RULE
+
+Before SECTION A preview, output a short Whole-Source Coverage Note:
+
+• “Whole-source coverage audit completed from full Core pages and full article text.”
+• “Card generation will use full-source review, not digest summary.”
+
+If Core GAP pathway is used:
+• “Whole-source coverage audit completed from full article text only (Core GAP invoked).”

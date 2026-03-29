@@ -1,0 +1,92 @@
+CARD TYPE: NORMAL DIFFERENTIAL DRILL
+
+SECTION PURPOSE
+
+This card type teaches true discrimination.
+It is not the default output for normal-anatomy material.
+
+-----------------------------------------------------
+
+WHEN TO USE NORMAL DIFFERENTIAL DRILL
+
+Use it only when the source teaches a real separator between:
+- normal and abnormal
+- normal variant and pathology
+- pseudolesion and true lesion
+- two closely related mimic entities when the discriminator is the key teaching point
+
+Do NOT use it for routine anatomy naming.
+
+-----------------------------------------------------
+
+REQUIRED FIELD SHAPE
+
+Required:
+- Clinical_Context
+- Differentials
+
+Usually populated:
+- Differential_Q
+- Entity_Label
+- Imaging_Differentiation
+
+Conditional:
+- Image only if it genuinely supports the discrimination task
+- summary when source is full RadPrimer or STATdx
+
+Usually blank:
+- Question
+- Most_Likely_Diagnosis unless a bounded diagnosis-style answer is truly required
+- Mechanism_Q
+- Mechanism
+- Boards_Trap_Q
+- Boards_Trap
+- High_Yield_Q
+- High_Yield_A
+- Radiopaedia fields
+
+-----------------------------------------------------
+
+DIFFERENTIAL CONTENT RULE
+
+The Differentials field must stay tightly bounded.
+
+Include only realistic competitors that the source actually teaches for the card's purpose.
+Do NOT inflate into a pathology-deck style list.
+
+Good uses:
+- variant vs mass
+- pseudolesion vs true lesion
+- normal developmental appearance vs abnormal finding
+
+Bad uses:
+- broad disease catalogues
+- speculative alternatives
+- filler entries added to make the field non-empty
+
+-----------------------------------------------------
+
+DISCRIMINATOR RULE
+
+The card must teach the dominant separator.
+
+Use Imaging_Differentiation for the key discriminator, such as:
+- preserved normal relationship
+- expected enhancement pattern
+- expected vessel course
+- lack of mass effect
+- expected sequence behavior
+- stable landmark position
+
+If there is no meaningful discriminator, do not create this card.
+
+-----------------------------------------------------
+
+DIFFERENTIAL SAFETY RULE
+
+Do not fabricate:
+- differential options
+- discriminator features
+- pathology alternatives
+
+If the source only implies a separator weakly, omit the card.

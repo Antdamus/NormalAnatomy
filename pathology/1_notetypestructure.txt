@@ -1,0 +1,29 @@
+Note Type: core_rad_notetype
+
+Field Order (DO NOT ALTER):
+
+1. Clinical_Context
+2. Image
+3. Image_Annotated
+4. Question
+5. Most_Likely_Diagnosis
+6. Entity_Label
+7. Differential_Q
+8. Differentials
+9. Imaging_Differentiation
+10. Original_Caption
+11. Mechanism_Q
+12. Mechanism
+13. Boards_Trap_Q
+14. Boards_Trap
+15. High_Yield_Q
+16. High_Yield_A
+17. Radiopaedia_Link
+18. Radiopaedia_Case_Context
+19. Radiopaedia_Case_Summary
+20. Radiopaedia_Case_Differential
+21. summary
+
+TSV Output = 21 fields above + Tags column (22 columns total).
+
+Clinical_Context can NEVER be empty.

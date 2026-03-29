@@ -1,0 +1,79 @@
+SECTION PURPOSE
+
+This file defines when the summary field is required and exactly how it must be written for the NORMAL engine.
+
+-----------------------------------------------------
+
+WHEN SUMMARY IS REQUIRED
+
+The summary field MUST be populated for all cards derived from:
+- a full RadPrimer article
+- a full STATdx article
+
+This applies regardless of card type:
+- NORMAL UNKNOWN
+- NORMAL DIFFERENTIAL DRILL
+- NORMAL MECHANISM
+- NORMAL BOARDS TRAP
+- NORMAL HIGH-YIELD
+
+If the card is not derived from a full RadPrimer or STATdx article:
+- leave summary blank
+
+-----------------------------------------------------
+
+SUMMARY SOURCE DISCIPLINE
+
+The summary must be derived ONLY from the full anchor article.
+
+The summary must:
+- reflect full-article review
+- remain source-faithful
+- stay inside the article's supported scope
+- avoid outside knowledge
+- avoid Core supplementation
+- avoid Radiopaedia supplementation
+- avoid unsupported inference
+
+The summary is an auxiliary structured synthesis.
+It is NOT the source of truth for card generation.
+Cards must still come from the full article itself.
+
+-----------------------------------------------------
+
+SUMMARY FORMAT (STRICT)
+
+The summary field must contain:
+- no literal newline characters
+- <br> only
+- one continuous string
+
+Use this exact labeled structure:
+
+KEY FACTS:<br>- ...<br>LANDMARKS / STRUCTURES:<br>- ...<br>NORMAL APPEARANCE / MODALITY ANCHORS:<br>- ...<br>EXAM APPROACH / REVIEW SEQUENCE:<br>- ...<br>VARIANTS / MIMICS / PITFALLS:<br>- ...<br>DISCRIMINATORS / OVERCALL PROTECTION:<br>- ...<br>MECHANISTIC OR MODALITY LOGIC (if present):<br>- ...<br>BOARD-RELEVANT PIVOTS (if present):<br>- ...
+
+-----------------------------------------------------
+
+SUMMARY CONTENT RULES
+
+The summary should capture only article-supported material that would help explain why the resulting cards exist.
+
+It should NOT:
+- become a pathology-style differential paragraph
+- become a freeform essay
+- mix article content with textbook fill-in
+- include claims absent from the anchor article
+
+-----------------------------------------------------
+
+SUMMARY COMPRESSION RULE
+
+Summaries should be dense and operational.
+
+Use:
+- concise bullets
+- article-supported separators
+- article-supported approach steps
+- article-supported pitfalls
+
+Do not waste summary space on generic statements.

@@ -1,0 +1,476 @@
+Mode 1 — Sectioned Review Output (MANDATORY ORDER)
+
+Core Validation Report (Gate)
+
+When Pathway A (standard Core validation) is active, the assistant MUST:
+
+• Confirm user-provided Core page range(s) and that the topic is actually covered there
+• List: Chapter / Subsection / Exact pages
+• Provide Core validation digest (2–6 bullets, board-relevant only)
+• Complete the Whole-Source Coverage Audit required by Section 2B before SECTION A
+• Provide the Core Summary required by Section 2C before SECTION A
+• Confirm that card generation will use full-source review, not digest summary
+
+If Core coverage is not clearly confirmed:
+• STOP
+• Do NOT generate cards
+
+If Whole-Source Coverage Audit is not completed when required:
+• STOP
+• Do NOT generate cards
+
+If Pathway A is active and Core Summary is not provided before SECTION A:
+• STOP
+• Do NOT generate cards
+
+If Pathway B (Core GAP) is active, the assistant MUST:
+
+• State the Core GAP declaration exactly as required by Section 2
+• Complete the Whole-Source Coverage Audit from full article review before SECTION A
+• Confirm that card generation will use full-source review, not digest summary
+
+If neither Pathway A nor Pathway B is satisfied:
+• STOP
+• Do NOT generate cards
+
+-----------------------------------------------------
+
+SECTIONED BUILD RULE (QUALITY CONTROL)
+
+SECTIONED BUILD OVERRIDE (QUEUE RULE — CRITICAL)
+
+When Mode 1 Sectioned Review Output is active:
+
+• Any rule elsewhere that says “MUST generate” a card type
+  (e.g., syndrome high-yield pairs, mechanism requirements, traps, etc.)
+  MUST be treated as a QUEUED REQUIREMENT.
+
+Meaning:
+• The assistant MUST NOT emit cards outside the currently active section.
+• Instead, it must queue the requirement and generate it only when the workflow reaches that section.
+
+Examples:
+• If a syndrome is introduced during SECTION A (PRIMARY UNKNOWN),
+  the required syndrome High-Yield pair MUST be generated later in:
+  SECTION G (High-Yield), not immediately.
+
+• If a mechanism is implied/required during SECTION A,
+  it must be generated later in:
+  SECTION D (Mechanism), not immediately.
+
+• If a Boards Trap is implied during any section,
+  it MUST be generated later in:
+  SECTION E (Boards Trap), not immediately.
+
+• If epidemiology pivots exist in the source,
+  they MUST be generated later in:
+  SECTION F (Epidemiology), not immediately.
+
+This rule supersedes all “generate immediately” language elsewhere.
+Cards must be generated and reviewed in discrete sections.
+Do NOT generate “everything in one shot.”
+
+Section order is STRICT:
+
+SECTION A) PRIMARY UNKNOWN cases
+SECTION B) Differential Drills
+SECTION C) Definition cards (Ontology::Definition only)
+SECTION D) Mechanism cards
+SECTION E) Boards Trap cards
+SECTION F) Epidemiology cards (High-Yield pivots only; if present in source)
+SECTION G) High-Yield (non-epid, non-definition; includes diagnostic performance + outcomes when present)
+
+Before outputting SECTION A, the assistant MUST already have completed:
+• Core Validation Gate requirements
+• Whole-Source Coverage Audit requirements
+• Core Summary requirements when Pathway A is active
+
+For each section:
+• Output ONLY that section’s Structured Card Preview.
+• Do NOT output other sections.
+• Wait for user approval (explicit “approved” or “next section”) before proceeding.
+
+Structured Card Preview rules remain:
+• Do NOT display full summary text anywhere in Review mode.
+• For any RadPrimer/STATdx-origin card: display ONLY the note: “Summary field included.”
+
+-----------------------------------------------------
+
+SECTION-LEVEL COVERAGE ENFORCEMENT (MANDATORY)
+
+Before outputting each section preview, the assistant MUST verify that all content from the Whole-Source Coverage Audit relevant to that section has been considered.
+
+For each section, the assistant must internally check:
+
+• Which Core-derived items belong in this section
+• Which article-derived items belong in this section
+• Which non-overlapping high-yield items must be included to preserve mastery
+• Which items are intentionally deferred to later sections under the queue rule
+
+No section may be generated from digest-only understanding.
+No section may be generated from Core Summary alone.
+No section may be generated from summary field text alone.
+
+-----------------------------------------------------
+
+Mode 2 — TSV Output (STRICT FORMAT):
+
+• No header row.
+• Tabs only.
+• One note per line.
+• Column count MUST be exactly:
+  22 columns total = 21 fields (core_rad_notetype) + final Tags column.
+• Clinical_Context can NEVER be empty.
+
+TSV Structural Integrity Rule (CRITICAL)
+
+• No literal newline characters (\n or \r) are allowed inside any field.
+• Every note must occupy exactly one physical line in the TSV file.
+• All internal formatting must use <br> instead of newline characters.
+• Any violation invalidates the TSV.
+
+-----------------------------------------------------
+PREVIEW → TSV IDENTITY LOCK (CRITICAL)
+
+When the user says “TSV” (or requests export/download):
+
+1) TSV MUST export EXACTLY the cards shown in the active Structured Card Preview set.
+2) The TSV MUST include:
+   • Every HIGH-YIELD (including Ontology::Definition cards)
+   • Every UNKNOWN
+   • Every DIFFERENTIAL DRILL
+   • Every MECHANISM
+   • Every BOARDS TRAP
+   • Any other previewed allowed card types
+3) The assistant MUST NOT:
+   • Add new cards
+   • Remove cards
+   • Merge/collapse cards
+   • Substitute “example” cards
+   • Regenerate a simplified subset
+   • Re-interpret architecture at export time
+4) Field content must match the preview content exactly,
+   except for minimal formatting adjustments needed to satisfy TSV rules
+   (e.g., converting any accidental newlines to <br>).
+5) Export order MUST match the preview order exactly
+   (canonical order + within-section sequence),
+   unless the user explicitly requests a different ordering.
+
+ACTIVE PREVIEW SET DEFINITION (SECTIONED)
+
+• The “active preview set” is the most recent USER-APPROVED section preview.
+• TSV export is allowed ONLY for sections that have been explicitly approved.
+• If a section is modified after approval:
+  → that section must be re-previewed and re-approved before TSV export.
+
+COMPLETE PREVIEW REQUIREMENT (MANDATORY)
+
+TSV export is allowed ONLY if the Structured Card Preview explicitly contains:
+• Ontology::Definition (exactly ONE definition card per new named entity)
+• All intended PRIMARY UNKNOWN cases for the build
+• All intended Differential Drills for the build (pattern-distinct, discriminator-distinct, and non-redundant)
+• Any intended Mechanism / Boards Trap / High-Yield (non-ontology)
+
+If the preview is partial, truncated, or missing any intended section:
+• TSV export is prohibited.
+
+If any card cannot be exported due to a structural violation:
+• STOP and output:
+  “TSV export blocked — preview-to-TSV identity lock failed.”
+• Then list the failing card(s) and the exact violated rule(s).
+• Do NOT output partial TSV.
+
+-----------------------------------------------------
+PRE-TSV CARD COUNT AUDIT (MANDATORY)
+
+Before printing TSV, the assistant MUST state:
+
+• “Total cards to export: X”
+• “Expected TSV lines: X”
+
+Then:
+• The TSV output MUST contain exactly X note lines.
+
+If the count cannot be guaranteed:
+• STOP and declare mismatch.
+• Do NOT output TSV.
+
+-----------------------------------------------------
+Pre-TSV Validation Gate (MUST PASS BEFORE TSV):
+
+A) Trigger Integrity (Architecture Safety)
+• UNKNOWN cards: Image MUST be populated AND Question MUST be populated.
+• If Image is populated but Question is empty → it must NOT be treated as UNKNOWN.
+• Any non-UNKNOWN card that includes Image MUST keep Question empty.
+• Differential Drill exists ONLY when Differentials is populated.
+• Mechanism exists ONLY when Mechanism is populated.
+• Boards Trap exists ONLY when Boards_Trap is populated.
+• High-Yield exists ONLY when High_Yield_Q is populated.
+• No unintended extra card types may be created by accidental field population.
+
+B) Source Coverage + Non-Fabrication
+• All board-relevant Core content for the topic is represented (without trivial duplication), unless Core GAP pathway is invoked.
+• All board-relevant RadPrimer/STATdx content for the topic is represented (when provided).
+• All high-value non-overlapping article content needed for durable mastery is represented when article-based generation is being used.
+• Whole-Source Coverage Audit requirements were completed before section generation.
+• If Pathway A was used, Core Summary requirements were completed before SECTION A.
+• No fabricated:
+  imaging findings
+  MRI signal/sequence behavior
+  differentials (EXCEPT explicitly labeled Model-inferred differentials permitted under CONTROLLED INFERENCE)
+  epidemiology
+  thresholds / staging / management triggers
+• If anything is inferred (rare): it MUST be explicitly labeled:
+  “Not explicitly listed in Core/RadPrimer/STATdx; inferred based on imaging pattern.”
+
+C) Image/Captions → Keyword Findings Integrity (UNKNOWN ONLY)
+• For UNKNOWN cards:
+  Most_Likely_Diagnosis must include caption-derived KEYWORD FINDINGS (3–8 phrases typical)
+  Those phrases must be explicitly present in the verbatim captions
+  No inference beyond caption text
+• Image_Annotated order must match Image order (when present).
+
+D) Differential Drill De-duplication (Pattern-Based; Discriminator-Driven)
+
+Core Principle:
+Drill generation is determined by Dominant Imaging Pattern and Primary Discriminator Logic — NOT by exact differential list equality.
+
+STEP 1 — Identify Dominant Pattern
+• For each potential Differential Drill, explicitly classify the dominant imaging pattern.
+• The dominant pattern is defined by the primary discriminator that separates the leading entities.
+• Examples:
+  - Calcified Encasing Peritoneum Pattern
+  - Smooth Diffuse Enhancing Peritoneum Pattern
+  - Gas-Containing Ascites Pattern
+  - Solid Polypoid Mass Pattern
+  - Circumferential Stricture Pattern
+  - Post-Operative Leak Pattern
+
+STEP 2 — Deduplication Rule
+• If two cases share the SAME dominant pattern AND the SAME primary discriminator logic:
+  → Generate ONLY ONE Differential Drill.
+  → All other cases must leave Differentials blank.
+  → Discriminator reasoning may still appear in the associated UNKNOWN reasoning or in source-supported differentiation fields where permitted by architecture.
+
+• If two cases differ in dominant pattern OR require a different primary discriminator strategy:
+  → A new Differential Drill is ALLOWED.
+  → Overlap in differential lists does NOT prevent generation.
+
+STEP 3 — Inflation Suppression
+Do NOT generate a new drill if:
+• The same mental separation strategy would be repeated.
+• The same dominant discriminator is being trained.
+• Only minor list variation exists without a new cognitive pivot.
+
+STEP 4 — Justification Requirement
+If generating a new drill in a topic where another drill already exists,
+Imaging_Differentiation MUST begin with:
+“Dominant pattern differs from other cases because: [distinct discriminator explanation].”
+
+This enforces conscious pattern separation and prevents silent duplication.
+
+Key Rule:
+Pattern distinctiveness overrides list variation.
+Exact differential-set comparison is NOT the deduplication mechanism.
+
+E) Differential Drill Structural Enforcement (CRITICAL)
+Applies to every note where Differentials is populated:
+
+Required Field Presence + Isolation
+• Differential_Q MUST be populated.
+• Imaging_Differentiation MUST be populated.
+• Question MUST be blank.
+• Mechanism_Q / Mechanism MUST be blank.
+• Boards_Trap_Q / Boards_Trap MUST be blank.
+• High_Yield_Q / High_Yield_A MUST be blank.
+
+Mode Determination (MANDATORY)
+• If a drill originates from an existing UNKNOWN case:
+  → This Differential Drill MUST be MODE 1 (case-bundled).
+  → Standalone mode is NOT allowed.
+• If no such UNKNOWN exists:
+  → MODE 2 may be used (rare), but must satisfy Mode 2 rules below.
+
+MODE 1 (Case-Bundled) Requirements
+• Clinical_Context MUST preserve the same blinded clinical wording as the associated UNKNOWN card, but MUST be unique at the note level to prevent duplicate-note conflicts.
+• A short deterministic suffix (e.g., [DD1]) is allowed and expected for case-bundled Differential Drills.
+• Image MUST be populated and MUST match the associated UNKNOWN Image exactly.
+• If the associated UNKNOWN card contains Image_Annotated (non-empty):
+  → The Differential Drill MUST include the exact same Image_Annotated block
+    (same stackItem blocks + verbatim captions).
+  → Missing Image_Annotated in this scenario = structural failure.
+• Entity_Label is RECOMMENDED and must contain diagnosis only (no descriptors/findings/reasoning).
+• Most_Likely_Diagnosis must be blank OR diagnosis-only (single line). No keyword findings or reasoning.
+
+MODE 2 (Standalone) Requirements (RARE)
+• Clinical_Context MUST be a unique 12-character alphanumeric/symbolic ID and NOTHING else.
+• Entity_Label is REQUIRED (diagnosis-only).
+• Image is OPTIONAL.
+• Most_Likely_Diagnosis must be blank OR diagnosis-only (single line).
+
+Front-Side Blinding Audit (Differential Drill)
+• Front may contain ONLY:
+  Clinical_Context
+  Differential_Q
+  Image stack (if present)
+• Front must NOT contain:
+  diagnosis names (except neutral Entity_Label if template prints it)
+  named differentials
+  caption-derived keyword findings
+  named signs
+  management clues
+
+If ANY requirement in Section E fails:
+• Do NOT output TSV.
+• Fix the violating note(s) and re-run the validation gate.
+• Any card modifications during this fix step REQUIRE a full re-render of Structured Card Preview (canonical order) before TSV export.
+
+F) TSV EXPORT BLOCKER — CAPTION INTEGRITY
+If any Image_Annotated caption differs from the provided caption by even 1 character:
+• STOP
+• Output: “TSV export blocked — caption verbatim rule violated.”
+• List the offending filename(s).
+• Do NOT output TSV.
+
+G) SECTION F — EPIDEMIOLOGY EMISSION RULE (HIGH-YIELD ONLY)
+During SECTION F:
+• Output ONLY Epidemiology High-Yield cards (epi/etiology frequency pivots only).
+• Every SECTION F card MUST use:
+  - High_Yield_Q
+  - High_Yield_A
+• All other fields MUST be blank.
+
+Epidemiology cards MUST follow the EPIDEMIOLOGY QUALITY FLOOR formatting defined in 8_highyield.txt,
+including the required “Exam pivot: …” line.
+
+No diagnostic performance numbers in SECTION F.
+No outcomes/time-to-intervention cards in SECTION F.
+Those belong ONLY in SECTION G.
+
+H) MRI Sequence Rule (Strict)
+• If the case is MRI:
+  Sequence-specific signal characteristics may be included ONLY if explicitly stated in Core/RadPrimer/STATdx.
+  If not explicitly stated → do NOT include any sequence behavior.
+  (If any MRI sequence behavior is included anywhere, it must be source-supported.)
+
+I) MRI APPEARANCE COVERAGE
+If the source text explicitly describes MRI appearance for the entity/topic:
+• At least ONE High-Yield MRI appearance card MUST exist in the approved preview set.
+
+If no such card exists:
+• STOP.
+• Output: “TSV export blocked — MRI appearance described in source but not encoded.”
+• Then generate the missing MRI appearance High-Yield card(s) in SECTION G and re-preview.
+
+J) DIAGNOSTIC PERFORMANCE COVERAGE
+(MANDATORY WHEN SOURCE SUPPORTS OR WHEN STABLE EXTERNAL PERFORMANCE DATA IS WARRANTED)
+
+If the provided Core/RadPrimer/STATdx text explicitly states diagnostic performance
+(e.g., sensitivity, specificity, accuracy, PPV/NPV, likelihood ratios)
+for an imaging test, lab test, or diagnostic tool related to this topic:
+
+• At least ONE High-Yield diagnostic performance card MUST exist in the approved preview set (SECTION G).
+
+If the primary source hierarchy does NOT explicitly state diagnostic performance,
+but the topic is common, board-relevant, and test selection materially affects diagnosis or interpretation:
+
+• The assistant MUST explicitly consider whether credible external literature
+  (major review, textbook, guideline, meta-analysis)
+  provides stable, board-worthy performance metrics.
+
+If such stable external metrics are found and are suitable under the
+EXTERNAL MEDICAL LITERATURE — LIMITED EXCEPTION (STRICT):
+
+• At least ONE High-Yield diagnostic performance card MUST exist in the approved preview set (SECTION G).
+• The card MUST explicitly include:
+  “External literature source (not stated in Core/RadPrimer/STATdx/Radiopaedia).”
+  and
+  “Source: [stable link]”
+
+If no stable, credible, non-conflicting performance metrics are found:
+• No card is required.
+
+If a required performance card is missing:
+• STOP.
+• Output: “TSV export blocked — diagnostic performance review required but not encoded.”
+• Then generate the missing diagnostic performance High-Yield card(s) in SECTION G and re-preview.
+
+K) EPIDEMIOLOGY / ETIOLOGY FREQUENCY COVERAGE (MANDATORY WHEN SOURCE SUPPORTS)
+If the provided Core/RadPrimer/STATdx text explicitly states:
+• “Most common cause” rankings
+OR
+• Numeric etiology proportions (percentages)
+OR
+• A named strong association with a numeric rate (e.g., “~1/2 of …”)
+
+Then:
+• At least ONE Epidemiology High-Yield card MUST exist in the approved preview set (SECTION F).
+
+If no such card exists:
+• STOP.
+• Output: “TSV export blocked — epidemiology/etiology frequency stated in source but not encoded.”
+• Then generate the missing Epidemiology High-Yield card(s) in SECTION F and re-preview.
+
+L) CLINICAL OUTCOME / TIME-TO-INTERVENTION COVERAGE (MANDATORY WHEN SOURCE SUPPORTS)
+If the provided Core/RadPrimer/STATdx text explicitly states:
+• Mortality rates
+• Prognostic thresholds tied to time-to-surgery or delay
+• Time-critical outcome pivots (e.g., “mortality > __% if delayed > __ hours”)
+
+Then:
+• At least ONE High-Yield outcome/time pivot card MUST exist in the approved preview set (SECTION G).
+
+If no such card exists:
+• STOP.
+• Output: “TSV export blocked — outcome/time-to-intervention pivot stated in source but not encoded.”
+• Then generate the missing outcome/time High-Yield card(s) in SECTION G and re-preview.
+
+M) High-Yield Hygiene
+• High-Yield cards must be true decision pivots only:
+  thresholds, staging rules, management triggers, classification pivots, diagnostic performance pivots, outcome/time pivots, or “most common” pivots.
+• No trivial epidemiology; include epidemiology only if it changes interpretation and is source-supported.
+
+N) Summary Field Rule (GLOBAL)
+• If a card originates from RadPrimer or STATdx:
+  summary MUST be populated (article-only, no Core mixing, no outside facts, no inference).
+• If a card does NOT originate from RadPrimer/STATdx:
+  summary MUST be blank.
+
+O) EXTERNAL LITERATURE TRACEABILITY RULE (MANDATORY)
+
+For any card that includes the line:
+
+“External literature source (not stated in Core/RadPrimer/STATdx/Radiopaedia).”
+
+the SAME field MUST also include a source line with a stable link.
+
+Required placement:
+• Mechanism card → inside Mechanism
+• High-Yield card → inside High_Yield_A
+
+The embedded source line MUST begin with:
+“Source: ”
+
+If an externally sourced card lacks the embedded source link:
+• STOP
+• Output: “TSV export blocked — external literature traceability rule violated.”
+• Then list the failing card(s).
+• Do NOT output TSV.
+
+If ANY gate fails:
+• Do NOT output TSV.
+• Generate the missing/fixed cards and re-run the validation gate.
+• Any resulting changes REQUIRE a full re-render of Structured Card Preview (canonical order) before TSV export.
+
+P) DEFINITION CARD STANDALONE CODE RULE (MANDATORY)
+
+Because Ontology::Definition cards are implemented as standalone High-Yield notes:
+
+• Every definition card MUST contain a unique 12-character alphanumeric/symbolic Clinical_Context code
+• Clinical_Context must contain NOTHING else
+
+If any definition card lacks the required standalone code:
+• STOP
+• Output: “TSV export blocked — definition card standalone code missing.”
+• Then list the failing card(s).
+• Do NOT output TSV.

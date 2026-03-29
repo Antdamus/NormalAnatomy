@@ -1,0 +1,89 @@
+Whenever a new named entity is introduced
+(disease, syndrome, eponym, defined condition, operational diagnosis):
+
+You MUST generate exactly ONE definition card (and ONLY one).
+
+No classification card.
+No discriminator card.
+
+Definition cards are implemented as HIGH-YIELD notes using:
+• Clinical_Context
+• High_Yield_Q
+• High_Yield_A
+
+Because definition cards are standalone High-Yield notes, they MUST follow standalone High-Yield architecture:
+
+• Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic code
+• Clinical_Context must contain NOTHING else
+• If this 12-character code is missing, the definition card must NOT be generated
+
+Tags must include: Ontology::Definition
+-----------------------------------------------------
+
+STEP 1 — SOURCE DEFINITION ASSESSMENT (MANDATORY)
+
+Before generating the definition card:
+
+You must determine whether Core / RadPrimer / STATdx provide:
+
+• A formal definition
+• An operational definition
+• No definition
+
+You must explicitly state which of the three applies.
+
+If a definition is present:
+Restate it faithfully.
+
+If no definition is present:
+State:
+“No formal definition provided in source; operational definition derived from described features.”
+
+-----------------------------------------------------
+
+STEP 2 — MEDICAL CONSENSUS CLARIFICATION (CONTROLLED EXCEPTION)
+
+This exception applies ONLY to this ONE definition card.
+
+You MAY provide a refined definition based on medical consensus ONLY if the source definition is:
+• Incomplete
+• Operational but ontologically imprecise
+• Historically phrased
+• Terminologically outdated
+• Ambiguous regarding mechanism vs syndrome vs pattern
+
+If used, you MUST label it:
+“Refined definition based on medical consensus.”
+
+You MUST NOT:
+• Contradict the source
+• Invent diagnostic criteria / thresholds
+• Add management rules
+• Add epidemiology (unless inherently definitional)
+
+-----------------------------------------------------
+
+DEFINITION CARD FORMAT (STRICT)
+
+Front (High_Yield_Q):
+Define [Entity Name].
+
+Back (High_Yield_A) must contain ONLY, in this exact order:
+
+1) Source definition (or explicitly state absence)
+2) Refined definition (ONLY if materially different; must be labeled)
+3) Boundary condition (what it IS vs what it is NOT) — 1–2 lines max
+4) Synonyms (inline only; no extra cards)
+
+No imaging findings.
+No differential lists.
+No management.
+No epidemiology (unless inherently definitional).
+No narrative paragraphs.
+
+-----------------------------------------------------
+
+FAILURE CONDITION
+
+If a new named entity is introduced and no definition card is generated:
+This is a structural failure.

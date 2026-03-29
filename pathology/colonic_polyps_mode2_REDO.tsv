@@ -1,0 +1,86 @@
+Adult undergoing colorectal screening.	<img src="ColPolyp2.jpg"><br>	<div class="stackItem">
+  <img src="ColPolyp2_annot.jpg">
+  <div class="stackCap">Single-contrast barium enema demonstrates a tubulovillous adenoma with a large head <img src="arrow_BC.png"> and a long stalk <img src="arrow_BO.png">. A small sessile polyp <img src="arrow_BS.png"> is also seen.</div>
+</div>	Most likely diagnosis?	Tubulovillous adenoma (pedunculated) + additional sessile polyp
+Caption-derived keyword findings:
+- Single-contrast barium enema
+- tubulovillous adenoma
+- large head
+- long stalk
+- small sessile polyp
+Reasoning: Pedunculated morphology (head + stalk) is described, and an additional sessile polyp is also explicitly noted in the caption.																Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Disease Entity::ColonicPolyp Modality::BE Yield::Moderate
+Adult undergoing colorectal screening.	<img src="ColPolyp3.jpg"><br>	<div class="stackItem">
+  <img src="ColPolyp3_annot.jpg">
+  <div class="stackCap">Air-contrast barium enema shows a polyp with a long stalk <img src="arrow_WS.png"> and a large head  <img src="arrow_WO.png">, a typical appearance for a tubular adenoma.</div>
+</div>	Most likely diagnosis?	Tubular adenoma (pedunculated)
+Caption-derived keyword findings:
+- Air-contrast barium enema
+- long stalk
+- large head
+- typical appearance for a tubular adenoma
+Reasoning: The caption explicitly calls this appearance typical for a tubular adenoma with a long stalk and large head.																Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Disease Entity::ColonicPolyp Modality::BE Yield::Moderate
+Adult undergoing colorectal screening.	<img src="ColPolyp4.jpg"><br>	<div class="stackItem">
+  <img src="ColPolyp4_annot.jpg">
+  <div class="stackCap">Air-contrast barium enema shows a small polyp on a short stalk <img src="arrow_WS.png">. The outer rim of the Mexican hat sign is the head of the polyp, while the inner ring is the stalk.</div>
+</div>	Most likely diagnosis?	Pedunculated colonic polyp (adenomatous)
+Caption-derived keyword findings:
+- Air-contrast barium enema
+- small polyp on a short stalk
+- Mexican hat sign
+- outer rim
+- inner ring
+- head of the polyp
+- stalk
+Reasoning: The caption defines the concentric ring configuration (outer rim = head; inner ring = stalk), supporting a pedunculated polyp.																Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Disease Entity::ColonicPolyp Modality::BE Yield::High
+Adult with known diverticulosis undergoing colon evaluation.	<img src="ColPolyp5.jpg"><br>	<div class="stackItem">
+  <img src="ColPolyp5_annot.jpg">
+  <div class="stackCap">Air-contrast barium enema shows numerous diverticula <img src="arrow_WS.png"> and a large, pedunculated polyp on a stalk <img src="arrow_BS.png"> in this patient with a tubulovillous adenoma. In a patient with known diverticulosis, it is often much easier to perform and interpret a single-contrast rather than an air- (double-) contrast barium enema.</div>
+</div>	Most likely diagnosis?	Pedunculated tubulovillous adenoma in a patient with diverticulosis
+Caption-derived keyword findings:
+- Air-contrast barium enema
+- numerous diverticula
+- large, pedunculated polyp on a stalk
+- tubulovillous adenoma
+- known diverticulosis
+- easier to perform and interpret a single-contrast
+Reasoning: The caption explicitly labels a large pedunculated polyp on a stalk as tubulovillous adenoma and notes coexisting diverticulosis and technique preference.																Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Disease Entity::ColonicPolyp Modality::BE Yield::Moderate
+Adult undergoing colorectal screening.	<img src="ColPolyp6.jpg"><br>	<div class="stackItem">
+  <img src="ColPolyp6_annot.jpg">
+  <div class="stackCap">Air-contrast barium enema shows a small sessile tubular adenoma <img src="arrow_WS.png">. The dome of the "bowler hat" points toward the colonic lumen.</div>
+</div>	Most likely diagnosis?	Sessile tubular adenoma
+Caption-derived keyword findings:
+- Air-contrast barium enema
+- small sessile tubular adenoma
+- bowler hat
+- dome
+- points toward the colonic lumen
+Reasoning: The caption identifies a sessile tubular adenoma and specifies the bowler-hat orientation (dome toward the lumen).																Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Disease Entity::ColonicPolyp Modality::BE Yield::High
+Adult undergoing colorectal screening.	<img src="ColPolyp7.jpg"><br>	<div class="stackItem">
+  <img src="ColPolyp7_annot.jpg">
+  <div class="stackCap">Axial CT colonography demonstrates a small, sessile adenomatous polyp <img src="arrow_WS.png"> arising from the cecum.</div>
+</div>	Most likely diagnosis?	Sessile adenomatous polyp (cecum)
+Caption-derived keyword findings:
+- Axial CT colonography
+- small, sessile adenomatous polyp
+- arising from the cecum
+Reasoning: The caption directly describes a small sessile adenomatous polyp arising from the cecum on CT colonography.																Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Disease Entity::ColonicPolyp Modality::CTC Yield::Moderate
+Adult undergoing colorectal screening.	<img src="ColPolyp4.jpg"><br>	<div class="stackItem">
+  <img src="ColPolyp4_annot.jpg">
+  <div class="stackCap">Air-contrast barium enema shows a small polyp on a short stalk <img src="arrow_WS.png">. The outer rim of the Mexican hat sign is the head of the polyp, while the inner ring is the stalk.</div>
+</div>		Colonic polyp	Colonic polyp	Air-contrast barium enema. Based on the image, name 3 key differentials and give 1 best discriminator for each.	Retained fecal debris; Colonic diverticulosis / inverted diverticulum; Intramural mass (lipoma); Colon carcinoma	Retained fecal debris: should be mobile and on the dependent surface; often irregular with internal contrast or gas; bowel prep/tagging and positional comparisons help avoid confusion.
+Diverticulosis / inverted diverticulum: can simulate a polyp on BE en face; patient rotation/profile view helps show an outpouching rather than a protruding mucosal mass; CT colonography typically clarifies.
+Lipoma: CT is diagnostic by fat density.
+Carcinoma: any polyp can contain invasive carcinoma; definitive distinction requires colonoscopy/biopsy.												Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Concept Entity::ColonicPolyp Modality::BE Yield::High
+WBX1R107KXMN														For Familial adenomatous polyposis (FAP), what is the typical presentation (classic features)?	Autosomal-dominant syndrome with innumerable premalignant adenomatous colon polyps and ~100% colon cancer risk; prophylactic colectomy is standard prevention.						Core::GI::Colon ::Disease Entity::FAP Yield::High
+UCALC3ZLWE0A														Named syndrome: innumerable premalignant adenomatous colon polyps + ~100% colon cancer risk → what is the syndrome?	Familial adenomatous polyposis (FAP).						Core::GI::Colon ::Disease Entity::FAP Yield::High
+BKH1PIVLQLB0														For Gardner syndrome, what is the typical presentation (classic features)?	FAP variant: colon polyps plus desmoid tumors, osteomas, papillary thyroid cancer, epidermoid cysts.						Core::GI::Colon ::Disease Entity::GardnerSyndrome Yield::High
+VV3DXG2W1DUJ														Named syndrome: FAP + desmoids + osteomas + papillary thyroid cancer + epidermoid cysts → what is the syndrome?	Gardner syndrome.						Core::GI::Colon ::Disease Entity::GardnerSyndrome Yield::High
+OY2Y9IV10PH1														For Turcot syndrome, what is the typical presentation (classic features)?	FAP variant: colon polyps plus CNS tumors (gliomas and medulloblastomas).						Core::GI::Colon ::Disease Entity::TurcotSyndrome Yield::High
+S19VHS5T0JQD														Named syndrome: FAP + CNS tumors (gliomas/medulloblastomas) → what is the syndrome?	Turcot syndrome.						Core::GI::Colon ::Disease Entity::TurcotSyndrome Yield::High
+XOJS735T6WFH														For Lynch syndrome (HNPCC), what is the typical presentation (classic features)?	Autosomal-dominant syndrome due to DNA mismatch repair causing microsatellite instability colon cancer; associated cancers include endometrial, gastric, small bowel, liver, and biliary malignancies.						Core::GI::Colon ::Disease Entity::LynchSyndrome Yield::High
+8NV8PU7PW6P6														Named syndrome: DNA mismatch repair → microsatellite instability colon cancer + associated endometrial cancer → what is the syndrome?	Lynch syndrome (HNPCC).						Core::GI::Colon ::Disease Entity::LynchSyndrome Yield::High
+B1D0A48ZPX0F														For Cronkhite–Canada, what is the typical presentation (classic features)?	Non-inherited hamartomatous polyposis plus abnormal skin pigmentation, alopecia, and nail dystrophy (onychodystrophy).						Core::GI::Colon ::Disease Entity::CronkhiteCanada Yield::High
+9GI9NX75SS0E														Named syndrome: hamartomatous GI polyps + skin pigmentation changes + alopecia + nail dystrophy → what is the syndrome?	Cronkhite–Canada syndrome.						Core::GI::Colon ::Disease Entity::CronkhiteCanada Yield::High
+XZZWV091GZOP														On CT colonography, what polyp size is generally not reported?	Polyps ≤ 5 mm are generally not reported.					Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Concept Entity::CTColonography Yield::High
+EYW9AG9CRRQG														On BE or CT colonography, what polyp size should be referred for colonoscopic polypectomy?	Any polyp ≥ 1 cm should undergo colonoscopic polypectomy.					Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Concept Entity::ColonicPolyp Yield::High
+TU7K05KCUUY3														In C-RADS colorectal findings, what are the recommended follow-up intervals for C1 vs C2, and what is recommended for C3/C4?	C1: repeat in 5–10 years. C2: surveillance within 3 years. C3/C4: consider colonoscopy/biopsy.					Colonic polyps are focal mucosal masses protruding into the lumen. CT colonography and air/double-contrast barium enema show smooth intraluminal nodules that may be sessile, pedunculated, or flat; classic barium enema appearances include Mexican-hat and bowler-hat configurations, and carpet lesions can be subtle. CT colonography relies on bowel prep and stool tagging plus supine/prone acquisitions to distinguish stool from true polyps. Polyps ≤5 mm are generally not reported, while polyps ≥1 cm are referred for colonoscopic polypectomy. Key mimics include retained fecal debris, diverticula/inverted diverticulum, intramural masses (e.g., lipoma), and carcinoma; C-RADS standardizes reporting with follow-up recommendations.	Core::GI::Colon ::Concept Entity::CTColonography Yield::High

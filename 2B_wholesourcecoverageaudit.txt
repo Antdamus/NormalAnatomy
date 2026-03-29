@@ -1,0 +1,84 @@
+SECTION PURPOSE
+
+This file forces whole-source review and prevents under-extraction of normal-anatomy articles.
+
+-----------------------------------------------------
+
+WHOLE-SOURCE COVERAGE RULE
+
+Before generating cards, review the full source article and audit all card-worthy content buckets.
+
+Do NOT stop after extracting only:
+- one named structure
+- one variant
+- one mimic
+- one figure caption
+- one summary paragraph
+
+Normal-anatomy articles often contain multiple independent teaching buckets.
+The engine must audit all of them.
+
+-----------------------------------------------------
+
+COVERAGE AUDIT CHECKLIST
+
+For each full RadPrimer or STATdx article, explicitly check whether the source supports any of the following:
+
+1) named structures
+2) spatial relationships
+3) landmark identifiers
+4) modality-specific normal appearance anchors
+5) exam approach or review-order rules
+6) relevant planes, sequences, or phases
+7) completeness checklist items
+8) measurement or morphology concepts
+9) normal variants
+10) pseudolesions or mimics
+11) pitfalls or overcall risks
+12) discriminator points between normal, variant, and abnormal
+13) mechanism-style explanations for normal appearance
+14) board-relevant pivots or classic traps
+
+Every bucket must be checked.
+Only source-supported buckets may generate cards.
+
+-----------------------------------------------------
+
+NO PATHOLOGY-COLLAPSE RULE
+
+Do not collapse a normal-anatomy article into pathology-style output just because it mentions disease mimicry.
+
+If the source is still fundamentally teaching normal content, keep the output centered on:
+- normal recognition
+- normal review strategy
+- variant recognition
+- pitfall resistance
+
+-----------------------------------------------------
+
+FIGURE CAPTION RULE
+
+Do not let a single figure caption dominate the extraction.
+
+Image cards may use figures, but the card set must still reflect the full article when the workflow requires full-source review.
+
+-----------------------------------------------------
+
+COVERAGE-TO-CARD RULE
+
+Checking a bucket does NOT mean forcing a card.
+
+Generate a card only when the bucket contains:
+- a distinct learning target
+- enough specificity to support a clean card
+- a fit within the allowed card types
+
+If a bucket lacks enough support, omit the card rather than invent details.
+
+-----------------------------------------------------
+
+AUDIT FAILURE RULE
+
+If the source was not reviewed in full, or if major supported buckets were ignored:
+STOP.
+Do not generate cards.

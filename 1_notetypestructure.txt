@@ -1,0 +1,245 @@
+Note Type: core_rad_notetype
+
+Field Order (DO NOT ALTER):
+
+1. Clinical_Context
+2. Image
+3. Image_Annotated
+4. Question
+5. Most_Likely_Diagnosis
+6. Entity_Label
+7. Differential_Q
+8. Differentials
+9. Imaging_Differentiation
+10. Original_Caption
+11. Mechanism_Q
+12. Mechanism
+13. Boards_Trap_Q
+14. Boards_Trap
+15. High_Yield_Q
+16. High_Yield_A
+17. Radiopaedia_Link
+18. Radiopaedia_Case_Context
+19. Radiopaedia_Case_Summary
+20. Radiopaedia_Case_Differential
+21. summary
+
+TSV output = the 21 fields above + Tags column (22 columns total).
+
+Clinical_Context can NEVER be empty.
+
+-----------------------------------------------------
+
+SHARED CHASSIS RULE
+
+The NORMAL engine must reuse the same:
+- note type
+- field order
+- TSV structure
+- media pipeline
+- import workflow
+- ID logic
+- tag architecture
+
+Do NOT invent new fields.
+Do NOT reorder fields.
+Do NOT create a second note type.
+
+The NORMAL engine changes field usage and content rules, not the chassis.
+
+-----------------------------------------------------
+
+FIELD-USAGE PRINCIPLE
+
+Each field may be:
+- required
+- optional
+- conditionally allowed
+- normally blank
+- forbidden for a given card instance
+
+Do NOT force content into a field just because the field exists.
+
+If a field does not naturally fit the learning goal, leave it blank.
+Blank is preferred over fake content.
+
+-----------------------------------------------------
+
+GLOBAL FIELD INTERPRETATION FOR THE NORMAL ENGINE
+
+Question
+- image-based recognition prompt for a structure, relationship, appearance, variant, mimic, or landmark
+
+Entity_Label
+- the true target entity for the card
+
+Imaging_Differentiation
+- why the appearance is normal, why it is a variant, what keeps it from being overcalled, or what discriminator matters most
+
+Mechanism
+- why a normal appearance looks the way it does, why a sequence/phase matters, or why a variant exists
+
+Boards_Trap
+- a normal mimic, pitfall, pseudolesion, or overcall-protection rule
+
+High_Yield_Q / High_Yield_A
+- compact definition, landmark rule, approach rule, checklist, modality anchor, measurement rule, or variant anchor
+
+Radiopaedia fields
+- reserved for the future Radiopaedia-specific workflow only
+
+-----------------------------------------------------
+
+FIELD RULES
+
+1) Clinical_Context
+Required always.
+
+Allowed forms:
+- short neutral case context for an image-based card
+- age/sex only when source-supported and useful
+- modality or exam context only when needed for the learning task
+- a unique short standalone code for a concept-only card when no real clinical context exists
+
+Do NOT fabricate history.
+
+2) Image
+Required for image-based cards.
+Optional for concept-only cards.
+
+Use for:
+- structure recognition
+- relationship recognition
+- modality appearance
+- normal variants
+- pseudolesions
+- landmark identification
+
+3) Image_Annotated
+Optional.
+Strongly encouraged when labels materially improve learning.
+
+If populated:
+- preserve image order exactly
+- remain source-faithful
+- do not add unsupported interpretation
+
+4) Question
+Required for NORMAL UNKNOWN.
+Normally blank for other card types unless the shared template requires it.
+
+Allowed goals:
+- identify the structure, relationship, variant, or landmark
+- identify the expected normal appearance
+- decide normal vs variant vs abnormal
+- identify the feature preventing overcall
+
+5) Most_Likely_Diagnosis
+Normally blank.
+
+Allowed only when a bounded mimic-rejection design truly requires diagnosis-style wording.
+Do NOT insert fake answers such as "normal study" or "none."
+
+6) Entity_Label
+High-value field in this engine.
+Use a concise target entity, not an essay.
+
+7) Differential_Q
+Normally blank.
+Allowed only for true discrimination tasks.
+
+8) Differentials
+Normally blank.
+Populate only when intentionally creating NORMAL DIFFERENTIAL DRILL.
+
+9) Imaging_Differentiation
+High-value field in this engine.
+
+Use for:
+- why this is normal
+- why this is a variant
+- what separates the mimic from pathology
+- what feature or step makes the review safe
+
+10) Original_Caption
+Populate only when required by the image/template workflow.
+Do not paraphrase a verbatim caption field.
+
+11) Mechanism_Q
+Normally blank.
+Use only for true explanatory cards.
+
+12) Mechanism
+Normally blank.
+Use only for true explanatory content supported by source.
+
+13) Boards_Trap_Q
+Optional.
+Useful for pitfall-focused cards.
+
+14) Boards_Trap
+Optional.
+Useful for mimics, pseudolesions, and overcall-prevention logic.
+
+15) High_Yield_Q
+Optional.
+Primary field for compact approach rules, definitions, landmark checklists, and normal anchors.
+
+16) High_Yield_A
+Optional.
+Keep compact, structured, and source-faithful.
+
+17-20) Radiopaedia fields
+Leave blank unless intentionally generating the future RADIOPAEDIA DRILL workflow.
+
+21) summary
+Required only for cards derived from a full RadPrimer or STATdx article.
+Blank otherwise.
+
+-----------------------------------------------------
+
+DEFAULT PURE NORMAL CARD SHAPE
+
+Usual pattern:
+- Clinical_Context = populated
+- Image = populated if image-based
+- Image_Annotated = optional
+- Question = populated only for NORMAL UNKNOWN
+- Most_Likely_Diagnosis = blank
+- Entity_Label = populated when a clear target exists
+- Differential_Q = blank unless intentional drill
+- Differentials = blank unless intentional drill
+- Imaging_Differentiation = optional but often valuable
+- Original_Caption = conditional
+- Mechanism_Q = blank unless intentional mechanism card
+- Mechanism = blank unless intentional mechanism card
+- Boards_Trap_Q / Boards_Trap = optional
+- High_Yield_Q / High_Yield_A = optional
+- Radiopaedia fields = blank unless intentionally used
+- summary = source-dependent
+
+-----------------------------------------------------
+
+FIELD HYGIENE RULE
+
+Never populate a field with:
+- filler
+- repetition
+- fake differentials
+- fake diagnoses
+- pseudo-mechanisms
+- unsupported claims
+- "N/A"
+
+Blank is better than false structure.
+
+-----------------------------------------------------
+
+COMPATIBILITY RULE
+
+All normal-engine outputs must remain fully compatible with:
+- shared TSV export
+- shared import workflow
+- shared media references
+- shared tags
+- shared automation pipeline

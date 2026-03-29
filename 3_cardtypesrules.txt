@@ -1,8 +1,3 @@
-══════════════════════════════════════════════════════════════════════════════
-SECTION: CARD TYPES + TRIGGERS
-FILE:    3_cardtypesrules.txt
-══════════════════════════════════════════════════════════════════════════════
-
 Allowed Card Types:
 
 A) NORMAL UNKNOWN
@@ -10,109 +5,58 @@ B) NORMAL DIFFERENTIAL DRILL
 C) NORMAL MECHANISM
 D) NORMAL BOARDS TRAP
 E) NORMAL HIGH-YIELD
-F) RADIOPAEDIA DRILL (to be implemented later)
+F) RADIOPAEDIA DRILL (future workflow only)
 
-No other card types allowed.
+No other card types are allowed.
 
 -----------------------------------------------------
 
 CARD-TYPE TRIGGER RULES (STRICT)
 
-• NORMAL UNKNOWN is generated ONLY when BOTH:
-    - Image field is populated
-    AND
-    - Question field is populated.
+NORMAL UNKNOWN is generated only when BOTH are populated:
+- Image
+- Question
 
-• NORMAL DIFFERENTIAL DRILL is generated ONLY when the Differentials field is populated.
+NORMAL DIFFERENTIAL DRILL is generated only when Differentials is populated.
 
-• NORMAL MECHANISM is generated ONLY when the Mechanism field is populated.
+NORMAL MECHANISM is generated only when Mechanism is populated.
 
-• NORMAL BOARDS TRAP is generated ONLY when the Boards_Trap field is populated.
+NORMAL BOARDS TRAP is generated only when Boards_Trap is populated.
 
-• NORMAL HIGH-YIELD is generated ONLY when the High_Yield_Q field is populated.
+NORMAL HIGH-YIELD is generated only when High_Yield_Q is populated.
 
-• RADIOPAEDIA DRILL will be generated later when Radiopaedia-specific fields are intentionally populated.
+RADIOPAEDIA DRILL is reserved for a future explicit workflow using the Radiopaedia-specific fields.
 
 -----------------------------------------------------
 
 TRIGGER SAFETY ENFORCEMENT
 
-• If Image is populated but Question is EMPTY → the card must NOT be treated as NORMAL UNKNOWN.
+If Image is populated but Question is empty:
+- the card must NOT be treated as NORMAL UNKNOWN
 
-• Any non-NORMAL-UNKNOWN card that includes Image MUST keep Question empty.
+Any non-NORMAL-UNKNOWN card that includes Image must keep Question empty.
 
-• Fields must NOT be populated unless that card type is intentionally being created.
-
-• No unintended card types may be generated.
-
------------------------------------------------------
-
-GLOBAL SUMMARY FIELD RULE (CRITICAL)
-
-The summary field MUST be populated for ALL cards that originate from:
-• RadPrimer
-• STATdx
-
-This applies regardless of card type:
-• NORMAL UNKNOWN
-• NORMAL DIFFERENTIAL DRILL
-• NORMAL MECHANISM
-• NORMAL BOARDS TRAP
-• NORMAL HIGH-YIELD
-
-If a card does NOT originate from RadPrimer/STATdx:
-• The summary field must remain blank.
+Populate only the fields required for the card type you are intentionally creating.
+No unintended card types may be generated.
 
 -----------------------------------------------------
 
-SUMMARY SOURCE DISCIPLINE (MANDATORY)
+FRONT-SIDE BLINDING RULE
 
-The summary field MUST be derived ONLY from the FULL specific RadPrimer/STATdx article or case provided.
-
-The summary MUST:
-• reflect full-article review, not a short digest, excerpt, or previously compressed summary
-• be based on the entire provided article/case text relevant to the topic
-• NOT mix in Core content
-• NOT add outside knowledge
-• NOT include inferred material
-• NOT substitute for full-source review
-
-The summary is an auxiliary structured synthesis.
-It is NOT the source of truth for card generation.
-
-Cards must be generated from the full source itself.
-
------------------------------------------------------
-
-SUMMARY FORMAT (STRICT)
-
-CRITICAL:
-• Output must contain NO literal newline characters
-• Use <br> only
-
-Use this exact labeled structure in ONE continuous string:
-
-KEY FACTS:<br>- ...<br>IMAGING APPROACH:<br>- ...<br>KEY IMAGING FINDINGS:<br>- ...<br>DIFFERENTIALS / SEPARATORS:<br>- ...<br>PITFALLS / PEARLS:<br>- ...<br>CLINICAL / ANATOMIC / MECHANISTIC LOGIC (if present):<br>- ...<br>BOARD-RELEVANT PIVOTS (if present):<br>- ...
-
------------------------------------------------------
-
-FRONT-SIDE BLINDING RULE (GLOBAL)
-
-Fronts must contain ONLY the elements required by their specific template.
+Fronts must contain only the elements required by their specific template.
 
 No front may include:
-• pathology answer leakage
-• named diagnoses unless the card type explicitly allows a neutral anchor
-• imaging descriptors that collapse the task
-• caption-derived answer statements
-• management clues
-• unnecessary interpretive hints
+- answer leakage
+- named diagnoses unless the card intentionally requires a bounded mimic-rejection anchor
+- caption-derived answer statements
+- management clues
+- interpretive hints that collapse the task
 
 All fronts must preserve:
-• anatomy recognition
-• normal-pattern recognition
-• normal-vs-variant discrimination
-• pitfall resistance
+- anatomy recognition
+- normal-pattern recognition
+- normal-vs-variant discrimination
+- pitfall resistance
 
 -----------------------------------------------------
 
@@ -122,91 +66,35 @@ These card types exist to train NORMAL material, not pathology-first diagnosis.
 
 In this engine:
 
-• NORMAL UNKNOWN
-  = identify a normal structure, normal relationship, expected normal appearance, normal physiologic state, or normal variant from image review
+NORMAL UNKNOWN
+- identify a normal structure, landmark, relationship, expected normal appearance, physiologic appearance, or normal variant from image review
 
-• NORMAL DIFFERENTIAL DRILL
-  = distinguish normal vs variant vs abnormal, or one mimic vs another, using the dominant discriminator
+NORMAL DIFFERENTIAL DRILL
+- distinguish normal vs abnormal, variant vs pathology, or mimic vs lesion using the dominant discriminator
 
-• NORMAL MECHANISM
-  = explain the developmental, physiologic, anatomic, or modality-based reason a normal appearance or variant looks the way it does
+NORMAL MECHANISM
+- explain the anatomic, developmental, physiologic, modality, sequence, or phase-based reason a normal appearance or discriminator works
 
-• NORMAL BOARDS TRAP
-  = encode classic normal mimics, pseudolesions, overcalls, and normal variants commonly mistaken for pathology
+NORMAL BOARDS TRAP
+- encode classic normal mimics, pseudolesions, overcalls, omission traps, and normal variants commonly mistaken for pathology
 
-• NORMAL HIGH-YIELD
-  = encode compact anatomy definitions, landmark rules, modality-specific normal appearance rules, normal measurements, and variant anchors
-
------------------------------------------------------
-
-NORMAL UNKNOWN — CORE IDENTITY
-
-NORMAL UNKNOWN is the primary image-recognition card type for this engine.
-
-It exists to force:
-• structure recognition
-• normal relationship recognition
-• modality-specific normal appearance recognition
-• normal variant recognition
-• normal-vs-abnormal boundary awareness
-
-It is NOT a disease-diagnosis card.
+NORMAL HIGH-YIELD
+- encode compact anatomy definitions, landmark rules, approach rules, modality anchors, checklist items, normal measurements when source-supported, and variant anchors
 
 -----------------------------------------------------
 
-NORMAL DIFFERENTIAL DRILL — CORE IDENTITY
+EXAM-APPROACH MAPPING RULE
 
-NORMAL DIFFERENTIAL DRILL is a discrimination card, not a naming card.
+Exam-approach content must stay inside the existing card types.
 
-It exists to force:
-• normal vs abnormal separation
-• normal variant vs pathology separation
-• mimic separation
-• recall of the best discriminator
+Preferred mappings:
+- review sequence, landmark checklist, completeness rules -> NORMAL HIGH-YIELD
+- why a phase/sequence/plane helps -> NORMAL MECHANISM
+- common overcall or omission errors -> NORMAL BOARDS TRAP
+- image-based anchor landmark identification -> NORMAL UNKNOWN
+- true discriminator tasks -> NORMAL DIFFERENTIAL DRILL
 
-Do NOT generate one unless the teaching point truly requires discrimination.
-
------------------------------------------------------
-
-NORMAL MECHANISM — CORE IDENTITY
-
-NORMAL MECHANISM is a standalone explanation card.
-
-It exists to encode:
-• why a normal appearance looks the way it does
-• why a developmental variant exists
-• why a physiologic state creates a particular imaging appearance
-• why a landmark or discriminator works
-
-It is NOT for routine naming.
-
------------------------------------------------------
-
-NORMAL BOARDS TRAP — CORE IDENTITY
-
-NORMAL BOARDS TRAP exists to encode:
-• normal mimics of disease
-• pseudolesions
-• structures commonly overcalled
-• variants mistaken for pathology
-• modality-specific normal misreads
-
-This is a high-value card type in the normal engine.
-
------------------------------------------------------
-
-NORMAL HIGH-YIELD — CORE IDENTITY
-
-NORMAL HIGH-YIELD exists to encode:
-• anatomy definitions
-• landmark rules
-• modality-specific normal appearance anchors
-• normal measurement rules
-• developmental sequence facts
-• variant definitions
-• concise “what makes this normal” teaching points
-
-Use NORMAL HIGH-YIELD when image recognition is not the primary task.
+Do not invent a new approach card type.
 
 -----------------------------------------------------
 
@@ -215,11 +103,10 @@ ARCHITECTURE SAFETY RULE
 The same field can only mean one trigger at a time.
 
 Therefore:
-
-• Never populate Differentials unless intentionally generating a NORMAL DIFFERENTIAL DRILL.
-• Never populate Mechanism unless intentionally generating a NORMAL MECHANISM card.
-• Never populate Boards_Trap unless intentionally generating a NORMAL BOARDS TRAP card.
-• Never populate High_Yield_Q unless intentionally generating a NORMAL HIGH-YIELD card.
-• Never populate Question for a non-NORMAL-UNKNOWN image card.
+- never populate Differentials unless intentionally generating NORMAL DIFFERENTIAL DRILL
+- never populate Mechanism unless intentionally generating NORMAL MECHANISM
+- never populate Boards_Trap unless intentionally generating NORMAL BOARDS TRAP
+- never populate High_Yield_Q unless intentionally generating NORMAL HIGH-YIELD
+- never populate Question for a non-NORMAL-UNKNOWN image card
 
 This rule is absolute.

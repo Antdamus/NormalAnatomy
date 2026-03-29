@@ -1,0 +1,92 @@
+SECTION PURPOSE
+
+This file defines the explicit source hierarchy for the NORMAL engine.
+It replaces any older Core-first assumption.
+
+-----------------------------------------------------
+
+PRIMARY SOURCE HIERARCHY FOR THE NORMAL ENGINE
+
+Use sources in this order of authority:
+
+1) User-provided RadPrimer article
+2) STATdx
+3) Core Radiology
+4) Radiopaedia (last resort only)
+
+This hierarchy is mandatory for:
+- normal anatomy
+- normal modality appearance
+- normal variants
+- pseudolesions and mimics
+- exam approach
+- review sequence
+- sequence/phase/plane priorities
+
+Do NOT pretend Core is the primary driver for this engine.
+
+-----------------------------------------------------
+
+SOURCE USAGE RULES
+
+If a full RadPrimer article is provided:
+- treat it as the primary anchor source
+- derive the summary from that full article only
+- do not overwrite RadPrimer-supported content with Core phrasing
+
+If no RadPrimer article is provided but full STATdx content is provided:
+- treat STATdx as the primary anchor source
+- derive the summary from that full article only
+
+Core Radiology is tertiary in this engine.
+Use it only to support or backfill concepts not fully developed in the primary article, and only when this does not conflict with the higher-priority source.
+
+Radiopaedia is last resort only.
+Use it only when the needed normal concept is absent from higher-priority sources and the concept is narrow, stable, and clearly described.
+
+-----------------------------------------------------
+
+SOURCE CONFLICT RULE
+
+If allowed sources differ, resolve by hierarchy:
+- RadPrimer overrides STATdx, Core, and Radiopaedia
+- STATdx overrides Core and Radiopaedia
+- Core overrides Radiopaedia
+
+Do not silently blend conflicting claims into one smoothed statement.
+If the conflict matters and cannot be resolved cleanly, omit the disputed claim.
+
+-----------------------------------------------------
+
+OUTSIDE LITERATURE RULE
+
+Outside literature remains forbidden by default.
+
+The narrow exception is limited to stable quantitative normal facts that are truly necessary and absent from the allowed hierarchy.
+Do not use outside literature to enrich definitions, variants, workflows, or interpretation advice.
+
+-----------------------------------------------------
+
+SUMMARY DISCIPLINE RULE
+
+For RadPrimer- or STATdx-derived cards:
+- summary is required
+- summary must be derived only from the full anchor article
+- do not mix in Core
+- do not mix in Radiopaedia
+- do not add outside knowledge
+
+For Core-derived cards without RadPrimer/STATdx anchor content:
+- summary must remain blank
+
+-----------------------------------------------------
+
+FULL-SOURCE REVIEW RULE
+
+Do not generate cards from:
+- memory of a RadPrimer article
+- excerpts only
+- cached digest text
+- prior summaries
+
+The engine must behave as a full-article extraction workflow, not a recollection workflow.

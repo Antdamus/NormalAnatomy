@@ -1,0 +1,107 @@
+SECTION PURPOSE
+
+This file governs exam-approach educational content for the NORMAL engine.
+
+Exam-approach content is allowed and important in this engine.
+It must be mapped into the existing card types.
+It does NOT justify creating new card types.
+
+-----------------------------------------------------
+
+EXAM-APPROACH CONTENT (ALLOWED)
+
+This includes source-supported rules about:
+- how to approach an ultrasound, CT, or MRI exam
+- what landmarks to identify first
+- what planes matter
+- what sequences matter
+- what phases matter
+- what constitutes a complete normal review
+- how to review structures in a safe order
+- how to avoid overcalling disease in a normal study
+
+-----------------------------------------------------
+
+CARD-TYPE MAPPING RULE
+
+Map exam-approach content into the existing allowed card types as follows:
+
+NORMAL HIGH-YIELD
+- compact approach rules
+- landmark checklist
+- normal workflow anchors
+- review sequence
+- complete-normal-review rules
+
+NORMAL MECHANISM
+- why a plane, sequence, or phase is helpful
+- why a structure changes appearance across modalities
+- why a normal discriminator works
+
+NORMAL BOARDS TRAP
+- classic approach errors
+- omission traps
+- pseudolesions created by incomplete review
+- overcall-prone normal findings
+
+NORMAL UNKNOWN
+- image-based first-landmark identification
+- recognition of the structure or relationship that anchors the review
+
+NORMAL DIFFERENTIAL DRILL
+- use only when the approach lesson depends on true discrimination
+- examples: normal vs abnormal, variant vs pathology, mimic vs lesion
+
+No new card type is required for exam-approach content.
+
+-----------------------------------------------------
+
+APPROACH CONTENT SHAPE RULE
+
+Approach content must remain specific and cardable.
+
+Good targets:
+- first landmark to find
+- order of review
+- best phase to confirm a normal relationship
+- key sequence for identifying a normal structure
+- minimum checklist for a complete normal read
+- feature that prevents overcalling pathology
+
+Bad targets:
+- long freeform protocol essays
+- generic "systematic review is important" statements
+- unsupported workflow advice
+
+-----------------------------------------------------
+
+MODALITY-SPECIFIC RULE
+
+When the source provides modality-specific approach content, preserve the modality.
+
+Examples of valid distinctions:
+- ultrasound first-pass landmark logic
+- CT phase-dependent review logic
+- MRI sequence-dependent normal appearance logic
+
+Do not flatten modality-specific advice into generic anatomy prose.
+
+-----------------------------------------------------
+
+OVERCALL-PREVENTION RULE
+
+If the source teaches how to avoid overcalling disease in a normal study, preserve that teaching point.
+
+Usually map it to:
+- Boards_Trap / Boards_Trap_Q
+OR
+- Imaging_Differentiation
+OR
+- High_Yield_A when the teaching point is compact and checklist-style
+
+-----------------------------------------------------
+
+APPROACH SAFETY RULE
+
+Do not create an exam-approach card unless the source supports a concrete actionable rule.
+Do not invent review sequences, landmark priorities, or protocol preferences.

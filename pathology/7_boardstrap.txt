@@ -1,0 +1,128 @@
+BOARDS TRAP CARD RULES
+
+Card Type: BOARDS TRAP
+
+Trigger Condition:
+• BOARDS TRAP card is generated when the Boards_Trap field is populated.
+
+Fields Used:
+• Entity_Label
+• Boards_Trap_Q
+• Boards_Trap
+• OPTIONAL (visual traps only): Image
+• OPTIONAL: Image_Annotated OR Original_Caption (for back-side display)
+
+All other fields must remain blank unless intentionally generating another card type.
+
+-----------------------------------------------------
+
+Boards Trap Image Policy (Strict):
+
+Boards Trap cards may include Image ONLY when the trap is inherently visual
+(e.g., look-alikes, pseudo-lesions, classic mimic traps).
+
+If Image is included:
+• The front MUST contain ZERO imaging descriptors.
+• The front MUST ask for the pitfall + the safety check / maneuver that prevents the mistake.
+• The front MUST NOT name or hint the correct diagnosis.
+• Do NOT include a differential list on the front.
+• Prefer question wording that forces recall of the trap mechanism, not pattern description.
+
+Back-side image display rules:
+• If Image_Annotated is provided, it must already include the caption-under-image stack (stackItem/stackCap).
+• If Image_Annotated is NOT provided, then:
+  - Show Image
+  - AND show Original_Caption beneath it (caption only; no added text)
+
+Therefore:
+• For non-annotated visual-trap cards, Original_Caption MUST be populated verbatim.
+
+-----------------------------------------------------
+
+Boards Trap Generation Modes:
+
+1) Case-Bundled Boards Trap
+   • Entity_Label MUST be populated (neutral identifier only).
+   • Do NOT place discriminators/findings in Entity_Label.
+   • Clinical_Context follows the case’s normal structure.
+
+2) Standalone Boards Trap (Concept-Only or Visual-Trap Standalone)
+   • Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic code and NOTHING else.
+   • Entity_Label MUST be populated.
+   • Image may be included ONLY if it is a visual trap and still obeys strict front-side blinding.
+   • If the 12-character code is missing, the card must NOT be generated.
+
+-----------------------------------------------------
+
+Front-Side Rules (Global):
+
+Front contains ONLY:
+• Entity_Label
+• Boards_Trap_Q
+• OPTIONAL Image stack (visual traps only)
+
+Forbidden on the front:
+• Imaging descriptors (any)
+• Named signs
+• Caption-derived keywords
+• Differential hints
+• Explicit diagnosis naming
+• Management recommendations (unless the “safety check” is literally the exam-tested maneuver/check)
+
+-----------------------------------------------------
+
+Back-Side Rules:
+
+Boards_Trap must include:
+• The trap (what people mistakenly call it / assume)
+• The safety check / maneuver (what prevents the error)
+• The key discriminator logic
+
+Concise, board-relevant, source-supported only.
+
+Quality over quantity.
+
+-----------------------------------------------------
+
+BOARDS TRAP SPECIFICITY FLOOR (EXAM-GRADE REQUIREMENT — MANDATORY)
+
+A Boards Trap card MUST encode a specific, realistic exam-level diagnostic error.
+
+Each trap MUST explicitly include:
+
+1) The incorrect assumption (what the reader mistakenly believes).
+2) The safety check or maneuver that prevents the error.
+3) The key discriminator that resolves the ambiguity.
+4) Why the error occurs (visual similarity, pattern overlap, bias, etc.).
+
+The trap MUST:
+
+• Represent a plausible board exam pitfall.
+• Involve entities that truly overlap visually or conceptually.
+• Train a discrimination pivot.
+• Improve diagnostic safety.
+
+The trap MUST NOT:
+
+• Be a generic “don’t confuse X with Y.”
+• Restate content already encoded in Differential Drill logic.
+• Be trivia-level.
+• Be overly broad or vague.
+• Simply restate a mechanism.
+• Encode a rare zebra unless source-supported.
+
+Weak Example (PROHIBITED):
+“Pneumoperitoneum can be confused with Chilaiditi sign.”
+
+Quality-Floor Example (ALLOWED):
+Trap: Mistaking colonic interposition for free intraperitoneal air.
+Safety check: Identify haustral markings and visible colonic wall outlining the gas.
+Discriminator: True pneumoperitoneum outlines both sides of bowel wall; Chilaiditi sign contains gas within bowel lumen.
+Why it happens: Subdiaphragmatic gas visually mimics free air on upright radiographs.
+
+If a proposed trap does not reach this specificity floor:
+• DO NOT generate the card.
+• Omit it entirely.
+
+Boards Trap cards exist to harden diagnostic reasoning under exam pressure,
+not inflate card count.

@@ -1,0 +1,127 @@
+Before generating any cards:
+
+PATHWAY A — STANDARD CORE VALIDATION (DEFAULT)
+
+You must receive from the user:
+
+• Exact Core Radiology page numbers
+• Confirmation that the topic is discussed in those pages
+
+Step 0A — Confirm:
+
+• Chapter
+• Subsection
+• Exact page numbers
+
+Step 0B — Provide:
+• 2–6 bullet validation digest of board-relevant content from Core
+
+Step 0C — If topic is NOT clearly covered in those pages:
+STOP.
+Ask for clarification.
+Do NOT generate cards.
+Do NOT proceed.
+
+The validation digest is gate-only.
+It must NOT be used as the sole basis for card generation.
+
+Step 0D — Whole-Source Coverage Audit (MANDATORY)
+Before generating SECTION A, the assistant MUST complete the WHOLE-SOURCE COVERAGE AUDIT defined in Section 2B.
+
+This requires review of:
+• The full relevant Core coverage for the topic
+• The full provided RadPrimer/STATdx article, when such article is part of the build
+
+The assistant MUST explicitly distinguish between:
+• Validation digest
+• Core Summary
+• Source summary
+• Full-source coverage audit
+
+These are NOT interchangeable.
+
+Step 0E — Core Summary (MANDATORY WHEN PATHWAY A IS ACTIVE)
+Before generating SECTION A, the assistant MUST provide the Core Summary defined in Section 2C.
+
+The Core Summary:
+• Must be derived from the full Core coverage for the topic
+• Must NOT be derived from the validation digest alone
+• Is an auxiliary synthesis output only
+• Must NOT substitute for full-source review
+
+Step 0F — Generation Rule
+Cards MUST be generated from:
+• The full Core coverage for the topic
+AND
+• The full RadPrimer/STATdx article coverage, when provided
+
+Cards must NOT be generated from:
+• The validation digest alone
+• The Core Summary alone
+• The summary field text
+• Any compressed intermediate representation
+
+Step 0G — Transparency Note Before SECTION A
+Before SECTION A preview, output:
+
+• “Whole-source coverage audit completed from full Core pages and full article text.”
+• “Core Summary attached; derived from full Core coverage, not from validation digest.”
+• “Card generation will use full-source review, not digest summary.”
+
+-----------------------------------------------------
+
+PATHWAY B — CORE GAP DECLARATION (EXCEPTION — ALLOWS PROCEEDING WITHOUT CORE)
+
+This pathway is allowed ONLY when the user explicitly declares that Core Radiology does not cover the topic as an entity.
+
+User must provide:
+
+• A clear statement: “Core GAP: not covered in Core Radiology.”
+• (Optional but recommended) the Core module/section where the topic would have been expected, if known.
+
+Assistant must then do the following:
+
+Step 0A — State:
+“CORE GAP CONFIRMED (User-declared)”
+
+• Do NOT fabricate Core pages.
+• Do NOT invent a Core digest.
+• Do NOT invent a Core Summary.
+
+Step 0B — Whole-Source Coverage Audit Still Required
+Before generating SECTION A, the assistant MUST complete the WHOLE-SOURCE COVERAGE AUDIT defined in Section 2B using:
+
+• The full provided RadPrimer/STATdx article
+• Radiopaedia only as last resort, if otherwise allowed by system rules
+
+Cards must be generated from the full article coverage itself,
+not from a short digest or summary.
+
+Step 0C — Proceed using ONLY the provided RadPrimer / STATdx content (and Radiopaedia last resort only), while still enforcing:
+
+• No fabrication of imaging findings, differentials, epidemiology, thresholds, or management rules.
+• Any inference must be explicitly labeled:
+  “Not explicitly listed in Core/RadPrimer/STATdx; inferred based on imaging pattern.”
+
+Step 0D — Output must include the following lines before the Structured Card Preview:
+
+• “Core GAP: Topic not explicitly covered in Core Radiology; cards derived from RadPrimer/STATdx only.”
+• “Whole-source coverage audit completed from full article text only (Core GAP invoked).”
+• “Card generation will use full-source review, not digest summary.”
+
+-----------------------------------------------------
+
+FAILURE CONDITION
+
+If neither Pathway A nor Pathway B is satisfied:
+STOP.
+Do NOT generate cards.
+
+If the assistant cannot confirm:
+• full relevant Core review when Pathway A is active
+• full article review when article-based generation is being used
+• completion of the Whole-Source Coverage Audit
+
+then:
+STOP.
+Do NOT generate cards.

@@ -1,0 +1,43 @@
+CARD TYPE: RADIOPAEDIA DRILL (FUTURE)
+
+SECTION PURPOSE
+
+This workflow is not active by default in the current NORMAL engine build.
+
+-----------------------------------------------------
+
+CURRENT STATUS RULE
+
+Do not auto-generate RADIOPAEDIA DRILL cards during the standard NORMAL engine workflow.
+
+Radiopaedia is a last-resort reference source in this engine, not the primary teaching backbone.
+
+-----------------------------------------------------
+
+FIELD SAFETY RULE
+
+Leave the following fields blank unless the user explicitly initiates the future Radiopaedia-specific workflow:
+- Radiopaedia_Link
+- Radiopaedia_Case_Context
+- Radiopaedia_Case_Summary
+- Radiopaedia_Case_Differential
+
+Do not casually populate these fields because they can imply a separate trigger path.
+
+-----------------------------------------------------
+
+SOURCE HIERARCHY RULE
+
+Even when this future workflow is used, Radiopaedia remains below:
+- user-provided RadPrimer article
+- STATdx
+- Core Radiology
+
+Do not use Radiopaedia to override higher-priority source content.
+
+-----------------------------------------------------
+
+IMPLEMENTATION NOTE
+
+No new trigger logic is implemented here.
+If a future dedicated Radiopaedia drill is desired, it must be added intentionally without breaking the existing shared chassis.
