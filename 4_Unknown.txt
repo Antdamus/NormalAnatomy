@@ -15,7 +15,7 @@ NORMAL UNKNOWN exists only when BOTH are populated:
 If either is missing:
 - this is not NORMAL UNKNOWN
 
-If any non-UNKNOWN trigger field is also populated:
+If any non-UNKNOWN trigger field or front-driving prompt family is also populated:
 - the note is structurally invalid
 
 -----------------------------------------------------
@@ -49,18 +49,16 @@ Conditionally allowed:
 - Original_Caption
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Most_Likely_Diagnosis
 - Differential_Q
-- Mechanism_Q
-- Boards_Trap_Q
-- High_Yield_A
-
-Forbidden:
 - Differentials
+- Mechanism_Q
 - Mechanism
+- Boards_Trap_Q
 - Boards_Trap
 - High_Yield_Q
+- High_Yield_A
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
 - Radiopaedia_Case_Summary
@@ -115,7 +113,7 @@ Imaging_Differentiation may briefly explain:
 - what feature marks it as a variant rather than pathology
 
 Do not turn the back into a long narrative.
-Do not populate forbidden trigger fields to add extra teaching.
+Do not populate forbidden fields to add extra teaching.
 
 -----------------------------------------------------
 
@@ -137,8 +135,11 @@ UNKNOWN SAFETY CHECK
 Before export, confirm:
 - Image is populated
 - Question is populated
+- Question is the only front-driving prompt family
 - no non-UNKNOWN trigger fields are populated
-- forbidden fields are blank
+- no forbidden fields are populated
+- Image_Annotated is blank unless Image is populated
+- Original_Caption is blank unless Image is populated
 - the question does not leak the answer
 - the image truly supports recognition
 - summary is populated only when required

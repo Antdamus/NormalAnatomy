@@ -29,7 +29,7 @@ RADIOPAEDIA DRILL is reserved for a future explicit workflow using the Radiopaed
 
 -----------------------------------------------------
 
-TRIGGER DEPENDENCY RULES
+FORWARD DEPENDENCY RULES
 
 If Differentials is populated:
 - Differential_Q must be populated
@@ -52,6 +52,45 @@ If High_Yield_Q is populated:
 
 If Image is populated and the note is not NORMAL UNKNOWN:
 - Question must remain blank
+
+-----------------------------------------------------
+
+REVERSE DEPENDENCY RULES
+
+If Differential_Q is populated:
+- Differentials must be populated
+
+If Mechanism_Q is populated:
+- Mechanism must be populated
+
+If Boards_Trap_Q is populated:
+- Boards_Trap must be populated
+
+If High_Yield_A is populated:
+- High_Yield_Q must be populated
+
+If Image_Annotated is populated:
+- Image must be populated
+
+If Original_Caption is populated:
+- Image must be populated
+
+Orphan companion fields are forbidden.
+
+-----------------------------------------------------
+
+SINGLE FRONT FAMILY RULE
+
+Only ONE of the following front-driving prompt families may be populated on a note:
+- Question
+- Differential_Q
+- Mechanism_Q
+- Boards_Trap_Q
+- High_Yield_Q
+
+If more than one is populated:
+- the note is structurally invalid
+- split into separate notes
 
 -----------------------------------------------------
 

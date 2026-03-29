@@ -5,9 +5,10 @@ This file transfers the pathology engine's architectural discipline into the NOR
 It defines:
 - required fields
 - conditionally allowed fields
-- normally blank fields
 - forbidden fields
 - trigger dependencies
+- reverse dependencies
+- single-front-family exclusivity
 - anti-dual-trigger rules
 
 Blank is better than accidental triggering.
@@ -26,6 +27,15 @@ Trigger fields are:
 - Mechanism -> NORMAL MECHANISM
 - Boards_Trap -> NORMAL BOARDS TRAP
 - High_Yield_Q -> NORMAL HIGH-YIELD
+
+Front-driving prompt families are:
+- Question
+- Differential_Q
+- Mechanism_Q
+- Boards_Trap_Q
+- High_Yield_Q
+
+Only one front-driving prompt family may be populated on a note.
 
 -----------------------------------------------------
 
@@ -46,6 +56,22 @@ If a field is not needed, leave it blank.
 
 -----------------------------------------------------
 
+GLOBAL REVERSE-DEPENDENCY RULES
+
+The following companion fields may not appear alone:
+- Differential_Q without Differentials
+- Mechanism_Q without Mechanism
+- Boards_Trap_Q without Boards_Trap
+- High_Yield_A without High_Yield_Q
+- Image_Annotated without Image
+- Original_Caption without Image
+
+If any orphan companion field appears:
+- the note is structurally invalid
+- clear the orphan field or complete the intended card type
+
+-----------------------------------------------------
+
 NORMAL UNKNOWN - FIELD MATRIX
 
 Required:
@@ -60,25 +86,23 @@ Conditionally allowed:
 - Original_Caption
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Most_Likely_Diagnosis
 - Differential_Q
-- Mechanism_Q
-- Boards_Trap_Q
-- High_Yield_A
-
-Forbidden:
 - Differentials
+- Mechanism_Q
 - Mechanism
+- Boards_Trap_Q
 - Boards_Trap
 - High_Yield_Q
+- High_Yield_A
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
 - Radiopaedia_Case_Summary
 - Radiopaedia_Case_Differential
 
 Isolation rule:
-- If Question is populated for an image card, the note is NORMAL UNKNOWN and must not populate another trigger field.
+- If Question is populated for an image card, the note is NORMAL UNKNOWN and must not populate any other trigger field or front-driving prompt family.
 
 -----------------------------------------------------
 
@@ -98,23 +122,21 @@ Conditionally allowed:
 - Original_Caption only when image workflow requires it
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Question
 - Mechanism_Q
-- Boards_Trap_Q
-- High_Yield_A
-
-Forbidden:
 - Mechanism
+- Boards_Trap_Q
 - Boards_Trap
 - High_Yield_Q
+- High_Yield_A
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
 - Radiopaedia_Case_Summary
 - Radiopaedia_Case_Differential
 
 Isolation rule:
-- If Differentials is populated, Question must be blank and no other trigger field may be populated.
+- If Differentials is populated, Question must be blank, Differential_Q must be the only front-driving prompt family, and no other trigger field may be populated.
 
 -----------------------------------------------------
 
@@ -133,24 +155,22 @@ Conditionally allowed:
 - Original_Caption only when image workflow requires it
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Question
 - Most_Likely_Diagnosis
 - Differential_Q
-- Boards_Trap_Q
-- High_Yield_A
-
-Forbidden:
 - Differentials
+- Boards_Trap_Q
 - Boards_Trap
 - High_Yield_Q
+- High_Yield_A
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
 - Radiopaedia_Case_Summary
 - Radiopaedia_Case_Differential
 
 Isolation rule:
-- If Mechanism is populated, all other trigger fields must remain blank.
+- If Mechanism is populated, Mechanism_Q must be the only front-driving prompt family and all other trigger fields must remain blank.
 
 -----------------------------------------------------
 
@@ -170,23 +190,21 @@ Conditionally allowed:
 - Most_Likely_Diagnosis only as diagnosis-only anchor if truly needed
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Question
 - Differential_Q
-- Mechanism_Q
-- High_Yield_A
-
-Forbidden:
 - Differentials
+- Mechanism_Q
 - Mechanism
 - High_Yield_Q
+- High_Yield_A
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
 - Radiopaedia_Case_Summary
 - Radiopaedia_Case_Differential
 
 Isolation rule:
-- If Boards_Trap is populated, all other trigger fields must remain blank.
+- If Boards_Trap is populated, Boards_Trap_Q must be the only front-driving prompt family and all other trigger fields must remain blank.
 
 -----------------------------------------------------
 
@@ -205,16 +223,14 @@ Conditionally allowed:
 - Original_Caption when image workflow requires it
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Question
 - Most_Likely_Diagnosis
 - Differential_Q
-- Mechanism_Q
-- Boards_Trap_Q
-
-Forbidden:
 - Differentials
+- Mechanism_Q
 - Mechanism
+- Boards_Trap_Q
 - Boards_Trap
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
@@ -222,7 +238,7 @@ Forbidden:
 - Radiopaedia_Case_Differential
 
 Isolation rule:
-- If High_Yield_Q is populated, all other trigger fields must remain blank.
+- If High_Yield_Q is populated, High_Yield_Q must be the only front-driving prompt family and all other trigger fields must remain blank.
 
 -----------------------------------------------------
 
@@ -233,10 +249,12 @@ Question may be populated only for NORMAL UNKNOWN.
 Therefore:
 - Image + Question = NORMAL UNKNOWN
 - Image without Question may support another card type
-- Any non-NORMAL-UNKNOWN note with Image must keep Question blank
+- any non-NORMAL-UNKNOWN note with Image must keep Question blank
 
 If Image and a non-UNKNOWN trigger field coexist while Question is also populated:
 - the note is structurally invalid
+
+Annotated-only image notes are not supported by this engine.
 
 -----------------------------------------------------
 

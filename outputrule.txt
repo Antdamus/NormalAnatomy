@@ -81,32 +81,56 @@ A) Trigger integrity
 - NORMAL HIGH-YIELD exists only when High_Yield_Q is populated
 - no dual-trigger note may be exported
 
-B) Required-field integrity
+B) Forward dependency integrity
 - if Differentials is populated, Differential_Q and Imaging_Differentiation must be populated
 - if Mechanism is populated, Mechanism_Q and Entity_Label must be populated
 - if Boards_Trap is populated, Boards_Trap_Q and Entity_Label must be populated
 - if High_Yield_Q is populated, High_Yield_A must be populated
 
-C) Forbidden-field integrity
-- UNKNOWN must leave all non-UNKNOWN trigger fields blank
-- DIFFERENTIAL DRILL must leave Question, Mechanism, Boards_Trap, and High_Yield_Q blank
-- MECHANISM must leave Question, Differentials, Boards_Trap, and High_Yield_Q blank
-- BOARDS TRAP must leave Question, Differentials, Mechanism, and High_Yield_Q blank
-- HIGH-YIELD must leave Question, Differentials, Mechanism, and Boards_Trap blank
+C) Reverse dependency integrity
+- if Differential_Q is populated, Differentials must also be populated
+- if Mechanism_Q is populated, Mechanism must also be populated
+- if Boards_Trap_Q is populated, Boards_Trap must also be populated
+- if High_Yield_A is populated, High_Yield_Q must also be populated
+- if Image_Annotated is populated, Image must also be populated
+- if Original_Caption is populated, Image must also be populated
+- orphan companion fields are structural failures
 
-D) Source and summary integrity
+D) Single-front-family integrity
+- only one of the following may be populated on a note:
+  Question
+  Differential_Q
+  Mechanism_Q
+  Boards_Trap_Q
+  High_Yield_Q
+- if more than one is populated, split the content into separate notes
+
+E) Forbidden-field integrity
+- UNKNOWN must leave all non-UNKNOWN trigger fields and front-driving prompt families blank
+- DIFFERENTIAL DRILL must leave Question, Mechanism_Q, Mechanism, Boards_Trap_Q, Boards_Trap, High_Yield_Q, and High_Yield_A blank
+- MECHANISM must leave Question, Most_Likely_Diagnosis, Differential_Q, Differentials, Boards_Trap_Q, Boards_Trap, High_Yield_Q, and High_Yield_A blank
+- BOARDS TRAP must leave Question, Differential_Q, Differentials, Mechanism_Q, Mechanism, High_Yield_Q, and High_Yield_A blank
+- HIGH-YIELD must leave Question, Most_Likely_Diagnosis, Differential_Q, Differentials, Mechanism_Q, Mechanism, Boards_Trap_Q, and Boards_Trap blank
+
+F) Image dependency integrity
+- annotated-only image notes are not supported
+- Image_Annotated must remain subordinate to Image
+- Original_Caption must remain subordinate to Image
+- image support fields must not create hidden prompt-family contamination
+
+G) Source and summary integrity
 - whole-source review requirements must be satisfied before card generation
 - summary must never substitute for full-source review
 - if a card originates from RadPrimer or STATdx, summary must be populated
 - if a card does not originate from RadPrimer or STATdx, summary must be blank
 - summary must remain article-only with no Core mixing, no outside facts, and no unsupported inference
 
-E) Front-side blinding
+H) Front-side blinding
 - front fields must preserve the intended cognitive task
 - no front may leak the answer through wording, captions, or extra fields
 - image-containing non-UNKNOWN cards must keep Question blank
 
-F) Field hygiene
+I) Field hygiene
 - blank is better than fake content
 - do not export filler
 - do not export N/A
@@ -129,11 +153,12 @@ For every note where Differentials is populated:
 - Question must be blank
 - Mechanism_Q and Mechanism must be blank
 - Boards_Trap_Q and Boards_Trap must be blank
-- High_Yield_Q and High_Yield_A must be blank unless the note is split into a separate card
+- High_Yield_Q and High_Yield_A must be blank
 
 If the note is image-grounded:
 - Image may be populated
 - Image_Annotated may be populated when needed
+- Original_Caption may be populated only when Image is populated
 
 -----------------------------------------------------
 

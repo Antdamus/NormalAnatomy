@@ -18,7 +18,7 @@ If Differentials is populated, the note must also contain:
 
 Question must remain blank.
 
-If any other trigger field is populated:
+If any other trigger field or front-driving prompt family is populated:
 - the note is structurally invalid
 
 -----------------------------------------------------
@@ -51,16 +51,14 @@ Conditionally allowed:
 - Original_Caption only when image workflow requires it
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Question
 - Mechanism_Q
-- Boards_Trap_Q
-- High_Yield_A
-
-Forbidden:
 - Mechanism
+- Boards_Trap_Q
 - Boards_Trap
 - High_Yield_Q
+- High_Yield_A
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
 - Radiopaedia_Case_Summary
@@ -125,8 +123,11 @@ DIFFERENTIAL SAFETY CHECK
 Before export, confirm:
 - Differentials is populated intentionally
 - Differential_Q is populated
+- Differential_Q is the only front-driving prompt family
 - Imaging_Differentiation is populated
 - Question is blank
 - no other trigger fields are populated
-- forbidden fields are blank
+- no forbidden fields are populated
+- Image_Annotated is blank unless Image is populated
+- Original_Caption is blank unless Image is populated
 - the front does not leak the answer

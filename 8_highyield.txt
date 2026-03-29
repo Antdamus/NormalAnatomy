@@ -16,7 +16,7 @@ If High_Yield_Q is populated, the note must also contain:
 
 Question must remain blank.
 
-If any other trigger field is populated:
+If any other trigger field or front-driving prompt family is populated:
 - the note is structurally invalid
 
 -----------------------------------------------------
@@ -53,16 +53,14 @@ Conditionally allowed:
 - Original_Caption when image workflow requires it
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Question
 - Most_Likely_Diagnosis
 - Differential_Q
-- Mechanism_Q
-- Boards_Trap_Q
-
-Forbidden:
 - Differentials
+- Mechanism_Q
 - Mechanism
+- Boards_Trap_Q
 - Boards_Trap
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
@@ -117,7 +115,10 @@ HIGH-YIELD SAFETY CHECK
 Before export, confirm:
 - High_Yield_Q is populated intentionally
 - High_Yield_A is populated
+- High_Yield_Q is the only front-driving prompt family
 - Question is blank
 - no other trigger fields are populated
-- forbidden fields are blank
+- no forbidden fields are populated
+- Image_Annotated is blank unless Image is populated
+- Original_Caption is blank unless Image is populated
 - the answer is concrete and source-supported

@@ -17,7 +17,7 @@ If Mechanism is populated, the note must also contain:
 
 Question must remain blank.
 
-If any other trigger field is populated:
+If any other trigger field or front-driving prompt family is populated:
 - the note is structurally invalid
 
 -----------------------------------------------------
@@ -51,17 +51,15 @@ Conditionally allowed:
 - Original_Caption only when image workflow requires it
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Question
 - Most_Likely_Diagnosis
 - Differential_Q
-- Boards_Trap_Q
-- High_Yield_A
-
-Forbidden:
 - Differentials
+- Boards_Trap_Q
 - Boards_Trap
 - High_Yield_Q
+- High_Yield_A
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
 - Radiopaedia_Case_Summary
@@ -120,8 +118,11 @@ MECHANISM SAFETY CHECK
 Before export, confirm:
 - Mechanism is populated intentionally
 - Mechanism_Q is populated
+- Mechanism_Q is the only front-driving prompt family
 - Entity_Label is populated
 - Question is blank
 - no other trigger fields are populated
-- forbidden fields are blank
+- no forbidden fields are populated
+- Image_Annotated is blank unless Image is populated
+- Original_Caption is blank unless Image is populated
 - the explanation is explicitly source-supported

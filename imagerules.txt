@@ -1,6 +1,6 @@
 SECTION PURPOSE
 
-This file governs image usage and image-question safety for the NORMAL engine.
+This file governs image usage, image dependency, and image-question safety for the NORMAL engine.
 
 -----------------------------------------------------
 
@@ -35,6 +35,23 @@ If Image is present and a non-UNKNOWN trigger field is populated:
 
 If Image, Question, and another trigger field coexist:
 - the note is structurally invalid
+
+-----------------------------------------------------
+
+IMAGE DEPENDENCY RULES
+
+Image_Annotated must not be populated unless Image is also populated.
+
+Original_Caption must remain blank unless Image is also populated.
+
+Annotated-only image notes are not supported by this engine.
+
+Image support fields must not create hidden card-family contamination.
+
+Therefore:
+- Image_Annotated does not authorize a note by itself
+- Original_Caption does not authorize a note by itself
+- image support fields must remain subordinate to the intended card type
 
 -----------------------------------------------------
 

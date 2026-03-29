@@ -17,7 +17,7 @@ If Boards_Trap is populated, the note must also contain:
 
 Question must remain blank.
 
-If any other trigger field is populated:
+If any other trigger field or front-driving prompt family is populated:
 - the note is structurally invalid
 
 -----------------------------------------------------
@@ -52,16 +52,14 @@ Conditionally allowed:
 - Most_Likely_Diagnosis only as diagnosis-only anchor if truly needed
 - summary when required by source hierarchy
 
-Normally blank:
+Forbidden:
 - Question
 - Differential_Q
-- Mechanism_Q
-- High_Yield_A
-
-Forbidden:
 - Differentials
+- Mechanism_Q
 - Mechanism
 - High_Yield_Q
+- High_Yield_A
 - Radiopaedia_Link
 - Radiopaedia_Case_Context
 - Radiopaedia_Case_Summary
@@ -114,8 +112,11 @@ TRAP SAFETY CHECK
 Before export, confirm:
 - Boards_Trap is populated intentionally
 - Boards_Trap_Q is populated
+- Boards_Trap_Q is the only front-driving prompt family
 - Entity_Label is populated
 - Question is blank
 - no other trigger fields are populated
-- forbidden fields are blank
+- no forbidden fields are populated
+- Image_Annotated is blank unless Image is populated
+- Original_Caption is blank unless Image is populated
 - the trap is specific and source-supported
