@@ -18,8 +18,8 @@
   /**********************
    * SETTINGS YOU EDIT
    **********************/
-  const FILE_PREFIX = "NormalArticle"; // change per document
-  const INCLUDE = "all"; // "all", "none", "2,4,5", or [2,4,5]
+  const FILE_PREFIX = "ScalpandCalvarialVault"; // change per document
+  const INCLUDE = ""; // "all", "none", "2,4,5", or [2,4,5]
   const CASE_MAP = []; // e.g. [[2,3],[8,9]] ; leave [] for auto-solo grouping
   const SOURCE_NOTE = ""; // optional free-text note about source/article context
   const CORE_NOTE = ""; // optional tertiary Core cross-check note
