@@ -1,0 +1,34 @@
+ULTRASOUND APPEARANCE ENCODING RULE (MANDATORY WHEN SOURCE SUPPORTS)
+
+If the provided Core/RadPrimer/STATdx source explicitly describes ultrasound appearance
+(echogenicity, echotexture, posterior acoustic behavior, Doppler vascularity, compressibility, cystic-versus-solid morphology, source-stated sonographic signs/artifacts, or ultrasound-specific discriminator features):
+
+You MUST generate at least ONE dedicated High-Yield card encoding that ultrasound appearance.
+
+(If Sectioned Build mode is active, this requirement is QUEUED and must be emitted only in SECTION G.)
+
+Rules:
+- Ultrasound details may be included ONLY if explicitly stated in the source.
+- Include the sonographic feature exactly as written when possible.
+- Include Doppler, posterior acoustic behavior, compressibility, mobility, wall layering, maneuver findings, or source-named artifacts/signs ONLY if explicitly stated.
+- Do NOT infer Doppler behavior unless source-supported.
+- Do NOT infer posterior acoustic enhancement or shadowing unless source-supported.
+- Do NOT infer compressibility unless source-supported.
+- Do NOT infer wall stratification unless source-supported.
+- Do NOT infer mobility, sludge/debris behavior, twinkle, ring-down, comet-tail, reverberation, or other ultrasound-specific artifact/sign behavior unless source-supported.
+- Do NOT generalize beyond the specific source statement.
+- Keep the card tight: 2-6 short lines max.
+
+Recommended format:
+
+High_Yield_Q:
+"Ultrasound appearance pivot for [ENTITY]: what is the key sonographic appearance (as stated in source)?"
+
+High_Yield_A:
+- Sonographic feature: [source-stated appearance]
+- Doppler / acoustic / compressibility feature: [only if explicitly stated]
+- Exam pivot: [one line: why this helps recognize or discriminate]
+
+If the ultrasound description is too long:
+- Split into multiple High-Yield cards ONLY if each card is its own distinct exam pivot.
+- Otherwise omit lower-value details.

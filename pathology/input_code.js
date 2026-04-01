@@ -13,11 +13,11 @@
   /**********************
    * SETTINGS YOU EDIT
    **********************/
-  const FILE_PREFIX = "PancreaticDuctalCarcinoma"; // <-- change per document
-  const INCLUDE = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]; // "all" OR "2,4,5,8"
-  const CASE_MAP = [[5,6],[15,16],[17,18],[19,20],[21,22],[23,24],[25,26],[27,28]]; // e.g. [[2,5],[8,9]] ; leave [] for auto-solo everything
+  const FILE_PREFIX = "KidneyRCC"; // <-- change per document
+  const INCLUDE = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]; // "all" OR "2,4,5,8"
+  const CASE_MAP = [[5,6],[7,8],[9,10,11,12],[13,14],[15,16]]; // e.g. [[2,5],[8,9]] ; leave [] for auto-solo everything
   const CORE_GAP = false; // <-- true = Pathway B (Core GAP), false = Pathway A (Core covered)
-  const CORE_SECTION = "only found a mention in page 155"; // <-- edit (ignored if CORE_GAP=true)
+  const CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it"; // <-- edit (ignored if CORE_GAP=true)
   const CORE_PAGES = ""; // <-- edit (ignored if CORE_GAP=true)
   const DOWNLOAD_IMAGES = true; // set false if you only want copy-to-clipboard
   const DOWNLOAD_PLAIN = true; // plain (no arrows)

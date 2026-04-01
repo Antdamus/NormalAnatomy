@@ -1,60 +1,60 @@
 Allowed Card Types:
 
-A) UNKNOWN  
-B) DIFFERENTIAL DRILL  
-C) MECHANISM  
-D) BOARDS TRAP  
-E) HIGH-YIELD  
+A) UNKNOWN
+B) DIFFERENTIAL DRILL
+C) MECHANISM
+D) BOARDS TRAP
+E) HIGH-YIELD
 F) RADIOPAEDIA DRILL (to be implemented later)
 
 No other card types allowed.
 
 -----------------------------------------------------
 
-Card-Type Trigger Rules (Field → Card Type Mapping):
+Card-Type Trigger Rules (Field -> Card Type Mapping):
 
-• UNKNOWN is generated ONLY when BOTH:
+- UNKNOWN is generated ONLY when BOTH:
     - Image field is populated
     AND
     - Question field is populated.
 
-• DIFFERENTIAL DRILL is generated when the Differentials field is populated.
+- DIFFERENTIAL DRILL is generated when the Differentials field is populated.
 
-• MECHANISM is generated when the Mechanism field is populated.
+- MECHANISM is generated when the Mechanism field is populated.
 
-• BOARDS TRAP is generated when the Boards_Trap field is populated.
+- BOARDS TRAP is generated when the Boards_Trap field is populated.
 
-• HIGH-YIELD is generated when the High_Yield_Q field is populated.
+- HIGH-YIELD is generated when the High_Yield_Q field is populated.
 
-• RADIOPAEDIA DRILL will be generated later when Radiopaedia-specific fields are intentionally populated.
+- RADIOPAEDIA DRILL will be generated later when Radiopaedia-specific fields are intentionally populated.
 
 -----------------------------------------------------
 
 Trigger Safety Enforcement:
 
-• If Image is populated but Question is EMPTY → the card must NOT be treated as UNKNOWN.
+- If Image is populated but Question is EMPTY -> the card must NOT be treated as UNKNOWN.
   (This allows images to safely exist in Boards Trap or Differential Drill.)
 
-• Any non-UNKNOWN card that includes Image MUST keep Question empty.
+- Any non-UNKNOWN card that includes Image MUST keep Question empty.
 
-• Fields must NOT be populated unless that card type is intentionally being created.
+- Fields must NOT be populated unless that card type is intentionally being created.
 
-• No unintended card types may be generated.
+- No unintended card types may be generated.
 
 -----------------------------------------------------
 
-Summary Field Rule (GLOBAL — CRITICAL):
+Summary Field Rule (GLOBAL - CRITICAL):
 
 The summary field MUST be populated for ALL cards that originate from:
-    • RadPrimer
-    • STATdx
+    - RadPrimer
+    - STATdx
 
 This applies regardless of card type:
-    • UNKNOWN
-    • DIFFERENTIAL DRILL
-    • MECHANISM
-    • BOARDS TRAP
-    • HIGH-YIELD
+    - UNKNOWN
+    - DIFFERENTIAL DRILL
+    - MECHANISM
+    - BOARDS TRAP
+    - HIGH-YIELD
 
 -----------------------------------------------------
 SUMMARY SOURCE DISCIPLINE (MANDATORY)
@@ -62,14 +62,14 @@ SUMMARY SOURCE DISCIPLINE (MANDATORY)
 The summary field MUST be derived ONLY from the FULL specific RadPrimer/STATdx article or case provided.
 
 The summary MUST:
-• Reflect full-article review, not a short digest, excerpt, or previously compressed summary
-• Be based on the entire provided article/case text relevant to the topic
-• NOT mix in Core Radiology content
-• NOT add outside knowledge
-• NOT include inferred material
-• NOT be generated from the Core validation digest
-• NOT be generated from the Core Summary
-• NOT substitute for full-source review
+- Reflect full-article review, not a short digest, excerpt, or previously compressed summary
+- Be based on the entire provided article/case text relevant to the topic
+- NOT mix in Core Radiology content
+- NOT add outside knowledge
+- NOT include inferred material
+- NOT be generated from the Core validation digest
+- NOT be generated from the Core Summary
+- NOT substitute for full-source review
 
 The summary is an auxiliary structured synthesis.
 It is NOT the source of truth for card generation.
@@ -81,10 +81,10 @@ SUMMARY PURPOSE (QUALITY STANDARD)
 The summary is a high-yield reconstruction aid, not a terse note fragment.
 
 Its purpose is to:
-• Preserve the major teaching architecture of the article
-• Capture the article’s most exam-relevant distinctions and discriminators
-• Retain high-value pearls, pitfalls, and separators
-• Provide enough detail that the main teaching points of the article can be recovered without reopening it
+- Preserve the major teaching architecture of the article
+- Capture the article's most exam-relevant distinctions and discriminators
+- Retain high-value pearls, pitfalls, and separators
+- Provide enough detail that the main teaching points of the article can be recovered without reopening it
 
 Over-compression that removes meaningful distinctions is prohibited.
 
@@ -92,8 +92,8 @@ Over-compression that removes meaningful distinctions is prohibited.
 SUMMARY FORMAT (STRICT)
 
 CRITICAL:
-• Output must contain NO literal newline characters
-• Use <br> only
+- Output must contain NO literal newline characters
+- Use <br> only
 
 Use this exact labeled structure in ONE continuous string:
 
@@ -105,34 +105,35 @@ SUMMARY CONTENT REQUIREMENTS
 Every bullet must be directly supported by the article text.
 
 The summary should:
-• Preserve important qualifiers exactly in meaning
+- Preserve important qualifiers exactly in meaning
   (e.g., most common, usually, classic, uncommon, rare, often, may)
-• Include high-value negatives when the article emphasizes them
-• Capture key discriminators, not just isolated facts
-• Preserve distinctions between similar entities when the article teaches them separately
-• Prefer board-style bullets over long prose, but still remain information-dense
-• Usually contain approximately 10–20 bullets total across sections when the source supports that level of detail
+- Include high-value negatives when the article emphasizes them
+- Capture key discriminators, not just isolated facts
+- Preserve distinctions between similar entities when the article teaches them separately
+- Prefer board-style bullets over long prose, but still remain information-dense
+- Usually contain approximately 10-20 bullets total across sections when the source supports that level of detail
 
 The summary must NOT:
-• Collapse distinct concepts into one vague bullet
-• Become a generic mini-cheat-sheet detached from the article’s actual structure
-• Include management, thresholds, or epidemiology unless explicitly stated in the article
-• Add MRI behavior unless explicitly stated in the article
-• Introduce outside synthesis from Core, Radiopaedia, or external literature
+- Collapse distinct concepts into one vague bullet
+- Become a generic mini-cheat-sheet detached from the article's actual structure
+- Include management, thresholds, or epidemiology unless explicitly stated in the article
+- Add MRI behavior unless explicitly stated in the article
+- Add ultrasound behavior unless explicitly stated in the article
+- Introduce outside synthesis from Core, Radiopaedia, or external literature
 
 -----------------------------------------------------
 FAILURE CONDITION
 
 If a card originates from RadPrimer or STATdx and its summary field is:
-• missing
-• clearly derived from a digest instead of full article review
-• overly compressed to the point that key distinctions are lost
-• contaminated with Core or outside knowledge
+- missing
+- clearly derived from a digest instead of full article review
+- overly compressed to the point that key distinctions are lost
+- contaminated with Core or outside knowledge
 
 then the card is structurally incomplete and must not be exported.
 
 If a card does NOT originate from RadPrimer/STATdx:
-• The summary field must remain blank.
+- The summary field must remain blank.
 
 -----------------------------------------------------
 
@@ -141,15 +142,15 @@ Front-Side Blinding Rule (Global):
 Fronts must contain ONLY the elements required by their specific template.
 
 No front may include:
-• Diagnosis labels (unless template explicitly allows neutral Entity_Label)
-• Named signs
-• Imaging descriptors
-• Differential hints
-• Caption-derived findings
-• Management clues
-• Any form of diagnosis leakage
+- Diagnosis labels (unless template explicitly allows neutral Entity_Label)
+- Named signs
+- Imaging descriptors
+- Differential hints
+- Caption-derived findings
+- Management clues
+- Any form of diagnosis leakage
 
 All fronts must preserve:
-• Cognitive integrity
-• Pattern-recognition training
-• Diagnostic discrimination training
+- Cognitive integrity
+- Pattern-recognition training
+- Diagnostic discrimination training

@@ -1,0 +1,41 @@
+ULTRASOUND-SPECIFIC COVERAGE + EXPORT VALIDATION
+
+Q) ULTRASOUND NON-FABRICATION RULE (STRICT)
+If ultrasound appearance is discussed anywhere in the build:
+- Do NOT invent echogenicity.
+- Do NOT invent echotexture.
+- Do NOT invent posterior acoustic enhancement or shadowing.
+- Do NOT invent Doppler flow or vascularity.
+- Do NOT invent compressibility.
+- Do NOT invent wall layering or stratification.
+- Do NOT invent mobility or maneuver findings.
+- Do NOT invent twinkle, ring-down, comet-tail, reverberation, sludge/debris behavior, or any other ultrasound-specific artifact/sign.
+
+All ultrasound content must remain explicitly source-supported.
+
+-----------------------------------------------------
+
+R) ULTRASOUND APPEARANCE COVERAGE
+If the source text explicitly describes ultrasound appearance for the entity/topic:
+- At least ONE High-Yield ultrasound appearance card MUST exist in the approved preview set.
+
+If no such card exists:
+- STOP.
+- Output: "TSV export blocked - ultrasound appearance described in source but not encoded."
+- Then generate the missing ultrasound appearance High-Yield card(s) in SECTION G and re-preview.
+
+-----------------------------------------------------
+
+S) ULTRASOUND APPEARANCE REVIEW SCOPE
+Ultrasound appearance may include, when explicitly source-supported:
+- echogenicity
+- echotexture
+- posterior acoustic enhancement or shadowing
+- Doppler vascularity
+- compressibility
+- cystic-versus-solid morphology
+- source-stated sonographic signs or artifacts
+- ultrasound-specific discriminator features
+- ultrasound-specific exam pivots
+
+These details must not be generalized beyond the source.

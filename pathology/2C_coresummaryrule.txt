@@ -8,14 +8,14 @@ The Core Summary is NOT the same as the validation digest.
 DEFINITIONS
 
 Validation digest:
-• Short gate-oriented confirmation that the topic is covered in Core.
-• Used only for Core validation.
-• Must NOT be used as the sole basis for card generation.
+- Short gate-oriented confirmation that the topic is covered in Core.
+- Used only for Core validation.
+- Must NOT be used as the sole basis for card generation.
 
 Core Summary:
-• A higher-quality structured synthesis of the FULL relevant Core coverage for the topic.
-• Must be based on the full Core pages/subsection(s) relevant to the topic, not the short validation digest.
-• Exists to preserve the board-relevant teaching from Core in a reusable, high-information form.
+- A higher-quality structured synthesis of the FULL relevant Core coverage for the topic.
+- Must be based on the full Core pages/subsection(s) relevant to the topic, not the short validation digest.
+- Exists to preserve the board-relevant teaching from Core in a reusable, high-information form.
 
 -----------------------------------------------------
 MANDATORY REQUIREMENT
@@ -24,14 +24,15 @@ When Pathway A is active, the assistant MUST provide a Core Summary before SECTI
 
 The Core Summary must be derived from the full Core coverage for the topic and must explicitly assess and include, when present:
 
-• Definition / entity framing
-• Core imaging findings
-• Major differentials or discriminators
-• Key mechanism / pathology links
-• Clinical / board pivots
-• MRI appearance
-• Diagnostic performance / thresholds / outcomes
-• Epidemiology / “most common” pivots
+- Definition / entity framing
+- Core imaging findings
+- Major differentials or discriminators
+- Key mechanism / pathology links
+- Clinical / board pivots
+- MRI appearance
+- Ultrasound appearance
+- Diagnostic performance / thresholds / outcomes
+- Epidemiology / "most common" pivots
 
 If a domain is not present in Core, the assistant should omit it rather than fabricate it.
 
@@ -48,21 +49,21 @@ FORMAT STANDARD
 
 The Core Summary must be:
 
-• Concise but high-information-density
-• Board-oriented
-• Faithful to Core wording and emphasis
-• Structured enough to preserve the major teaching architecture of the topic
-• Free of outside knowledge unless explicitly allowed elsewhere by system rules
+- Concise but high-information-density
+- Board-oriented
+- Faithful to Core wording and emphasis
+- Structured enough to preserve the major teaching architecture of the topic
+- Free of outside knowledge unless explicitly allowed elsewhere by system rules
 
 The Core Summary should prioritize:
-• Exam-relevant discriminators
-• Core teaching pivots
-• Important negatives / limitations when emphasized by Core
-• Relationships between imaging pattern and diagnosis when explicitly supported by Core
+- Exam-relevant discriminators
+- Core teaching pivots
+- Important negatives / limitations when emphasized by Core
+- Relationships between imaging pattern and diagnosis when explicitly supported by Core
 
 -----------------------------------------------------
 TRANSPARENCY RULE
 
 Before SECTION A preview, when Pathway A is active, output a short note:
 
-• “Core Summary attached; derived from full Core coverage, not from validation digest.”
+- "Core Summary attached; derived from full Core coverage, not from validation digest."

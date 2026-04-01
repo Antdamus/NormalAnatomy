@@ -7,7 +7,7 @@ import sys
 PROMPT_DIR = Path(".")
 OUTPUT_FILE = PROMPT_DIR / "FULL_PROMPT.txt"
 
-# ✅ Explicit order = deterministic build
+# Explicit order = deterministic build
 ORDER = [
     "0_systemrules.txt",
     "0B_entitydefinitionrules.txt",
@@ -22,8 +22,10 @@ ORDER = [
     "6_mechanism.txt",
     "7_boardstrap.txt",
     "8_highyield.txt",
+    "8B_ultrasoundappearance.txt",
     "9_radiopediadrill.txt",
     "outputrule.txt",
+    "outputB_ultrasoundvalidation.txt",
 ]
 
 LABELS = {
@@ -40,13 +42,15 @@ LABELS = {
     "6_mechanism.txt": "MECHANISM CARD RULES",
     "7_boardstrap.txt": "BOARDS TRAP RULES",
     "8_highyield.txt": "HIGH-YIELD RULES",
+    "8B_ultrasoundappearance.txt": "ULTRASOUND APPEARANCE RULES",
     "9_radiopediadrill.txt": "RADIOPAEDIA DRILL RULES (FUTURE)",
     "outputrule.txt": "OUTPUT / TSV RULES",
+    "outputB_ultrasoundvalidation.txt": "ULTRASOUND VALIDATION RULES",
 }
 
 # Watch settings
-POLL_SECONDS = 0.35     # how often to check for changes
-DEBOUNCE_SECONDS = 0.25 # coalesce rapid consecutive saves
+POLL_SECONDS = 0.35
+DEBOUNCE_SECONDS = 0.25
 
 
 def read_text(path: Path) -> str:
@@ -54,7 +58,7 @@ def read_text(path: Path) -> str:
 
 
 def banner(title: str, fname: str) -> str:
-    line = "═" * 78
+    line = "=" * 78
     return (
         f"\n{line}\n"
         f"SECTION: {title}\n"
@@ -106,7 +110,7 @@ def build() -> None:
 
     merged = "\n".join(parts).strip() + "\n"
     OUTPUT_FILE.write_text(merged, encoding="utf-8")
-    print(f"✅ Built: {OUTPUT_FILE.resolve()}")
+    print(f"Built: {OUTPUT_FILE.resolve()}")
 
 
 def watch() -> None:
@@ -115,7 +119,7 @@ def watch() -> None:
     # Initial build
     build()
     last_snap = snapshot(files)
-    print(f"👀 Watching for changes… (Ctrl+C to stop)")
+    print("Watching for changes... (Ctrl+C to stop)")
 
     last_change_time: float | None = None
 
@@ -137,7 +141,7 @@ def watch() -> None:
             try:
                 build()
             except Exception as e:
-                print(f"⚠️ Build error: {e}")
+                print(f"Build error: {e}")
             last_change_time = None
 
 
@@ -145,5 +149,5 @@ if __name__ == "__main__":
     try:
         watch()
     except KeyboardInterrupt:
-        print("\n🛑 Stopped.")
+        print("\nStopped.")
         sys.exit(0)
