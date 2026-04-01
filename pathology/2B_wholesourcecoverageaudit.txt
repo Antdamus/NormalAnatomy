@@ -64,6 +64,41 @@ Each major content domain must be classified as one of:
 - Absent from both
 
 -----------------------------------------------------
+SECTION A CASE INVENTORY INITIALIZATION (MANDATORY)
+
+Before generating or previewing SECTION A, the assistant MUST also create a PRIMARY UNKNOWN case inventory for every user-provided case intended for SECTION A review.
+
+For this inventory, the assistant MUST:
+- Enumerate every user-provided intended SECTION A case
+- Assign each case a case index
+- Mark each indexed case as either:
+  ELIGIBLE for PRIMARY UNKNOWN
+  OR
+  EXCLUDED from PRIMARY UNKNOWN
+- Provide a one-line exclusion reason for every EXCLUDED case
+
+Allowed exclusion reasons are limited to:
+- no usable image exists
+- no usable caption/image pair exists
+- the case is structurally unusable for UNKNOWN generation
+- the user explicitly instructed exclusion
+- the case is intentionally reserved for another explicitly stated workflow
+
+The assistant must NOT:
+- omit a user-provided intended case silently
+- exclude a case because it seems redundant
+- exclude a case because another case is more representative
+- merge two eligible cases into one PRIMARY UNKNOWN
+- silently defer an eligible case to another section
+
+If uncertainty exists about whether a case belongs in SECTION A:
+- default to listing it in the inventory
+- then explicitly mark it ELIGIBLE or EXCLUDED
+- never omit it silently
+
+This inventory is mandatory groundwork for the SECTION A ledger and the one-case-one-UNKNOWN cardinality check enforced at preview and export time.
+
+-----------------------------------------------------
 GENERATION REQUIREMENT
 
 Cards MUST be generated from the full Core coverage and full article coverage,

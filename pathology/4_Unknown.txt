@@ -26,6 +26,16 @@ Safety Rule:
 • If Image is populated but Question is blank → must NOT be treated as UNKNOWN.
 • Any non-UNKNOWN card type that includes Image MUST keep Question blank.
 
+SECTION A Cardinality Rule (MANDATORY):
+• Every ELIGIBLE SECTION A case must produce exactly ONE PRIMARY UNKNOWN note.
+• Do NOT merge two eligible cases into one UNKNOWN.
+• Do NOT substitute a representative example for a real provided case.
+• Do NOT silently defer an eligible case to another section.
+• Before SECTION A preview, every eligible case must already have a one-to-one mapping:
+  Case index -> PRIMARY UNKNOWN note.
+• If any eligible case has no mapped PRIMARY UNKNOWN note:
+  SECTION A is structurally incomplete and must not be previewed or exported.
+
 ══════════════════════════════════════════════════════════════════════════════
 FIELD USAGE (UNKNOWN)
 
@@ -70,6 +80,8 @@ No fabrication allowed:
 • No invented epidemiology
 • No invented thresholds
 • No inferred MRI behavior unless explicitly stated
+• No inferred ultrasound behavior unless explicitly stated
+• No inferred echogenicity, echotexture, posterior acoustic behavior, Doppler behavior, compressibility, or source-named sonographic signs/artifacts unless explicitly source-supported
 
 If inference is unavoidable, explicitly state:
 “Not explicitly listed in Core/RadPrimer/STATdx; inferred based on imaging pattern.”
@@ -360,6 +372,7 @@ QUALITY CHECK BEFORE TSV
 
 Confirm:
 • UNKNOWN trigger valid (Image + Question both present)
+• SECTION A case mapping exists for every eligible PRIMARY UNKNOWN case
 • Clinical_Context is clinically realistic but non-diagnostic
 • Clinical_Context does not create diagnosis leakage
 • Clinical_Context contains clinical history only and no imaging-history / workup-history leakage
