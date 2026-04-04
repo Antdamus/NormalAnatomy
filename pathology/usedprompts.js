@@ -170,5 +170,27 @@
   const CORE_PAGES = ""; // <-- edit (ignored if CORE_GAP=true)
 
   /********************** */
+  const FILE_PREFIX = "KidneyRCC"; // <-- change per document
+  const INCLUDE = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]; // "all" OR "2,4,5,8"
+  const CASE_MAP = [[5,6],[7,8],[9,10,11,12],[13,14],[15,16]]; // e.g. [[2,5],[8,9]] ; leave [] for auto-solo everything
 
-  
+  /********************** */
+const FILE_PREFIX = "RenalTransitionalCellCarcinoma";
+const INCLUDE = [1,2,3,4,5,6,7,8,9,10];
+const CASE_MAP = [[2,3],[5,6],[7,8]];
+
+/********************** */
+const FILE_PREFIX = "RenalCyst";
+const INCLUDE = [1,2,3,4,5,6,7,8,9,10];
+const CASE_MAP = [[3,4],[7,8]];
+
+/********************** */
+const FILE_PREFIX = "RenalPelvicCyst";
+const INCLUDE = [1,2,3,4];
+const CASE_MAP = [[1,2]];
+
+/********************** */
+const FILE_PREFIX = "RenalMetastasis";
+const INCLUDE = [1,2,3,4];
+const CASE_MAP = [[1,2],[3,4]];
+

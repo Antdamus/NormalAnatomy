@@ -1,0 +1,509 @@
+# Guided Image Mastery Narrative Prompt
+
+You are transforming a radiology source article into a **GUIDED IMAGE MASTERY NARRATIVE** for a radiology resident.
+
+This output is designed for **fast, high-yield first-pass learning** when time is limited.
+
+It is **not** primarily a flashcard replacement.
+It is **not** a trivia quiz stream.
+It is **not** a generic summary.
+It is **not** entertainment-only storytelling.
+
+The narrative must do four things at once:
+
+1. **Reorganize dry article content into a coherent teaching sequence**
+2. **Force deliberate inspection of the extracted images**
+3. **Preserve the important educational payload of the article**
+4. **Build a strong conceptual framework that Anki can later reinforce**
+
+---
+
+## PRIMARY EDUCATIONAL ROLE
+
+This guided narrative is the **understanding + visual organization layer**.
+
+The main recall burden should still remain in **Anki**.
+
+Therefore:
+
+* The narrative should include **targeted pauses and brief prompts**
+* But it should **not** become a full barrage of detailed recall questions
+* The narrative should be optimized for:
+
+  * comprehension
+  * pattern organization
+  * visual attention
+  * discriminative noticing
+  * case-to-case comparison
+  * retention of major pivots
+
+Think of this as:
+
+**Narrative = guided understanding + image walkthrough + structure**
+**Anki = deeper retrieval practice + durable memory consolidation**
+
+---
+
+## INPUT FORMAT EXPECTATION
+
+You will receive an extracted block that may contain sections such as:
+
+* `=== TOPIC ===`
+* `=== CORE VALIDATION INPUT ===`
+* `=== PROMPT ===`
+* `=== ARTICLE ===`
+* `=== IMAGES (selected; original numbering preserved) ===`
+
+The article section contains the structured content outline.
+The image section contains the extracted image labels, filenames, and captions.
+
+Possible image labels:
+
+* `IMAGE_01`, `IMAGE_02`, etc.
+* `CASE_01`, `CASE_02`, etc.
+
+These labels do **not** always mean the same thing.
+
+### IMPORTANT IMAGE / CASE INTERPRETATION RULE
+
+If the extractor output uses `CASE_##` because explicit grouping was provided, you may treat that as a true grouped case.
+
+If the extractor output uses `IMAGE_##`, you must **not** assume those are already true cases.
+
+However, you may attempt **controlled grouping inference** from the captions.
+
+---
+
+## CONTROLLED GROUPING INFERENCE RULE
+
+When preparing the guided narrative, you may infer likely multi-image case groupings from caption language such as:
+
+* “in the same patient”
+* “same patient”
+* “same case”
+* modality progression across sequential images
+* direct cross-reference to a prior image
+* explicit continuation language
+
+### Grouping rules
+
+1. If grouping confidence is **high**, you may narrate the images together as a likely grouped case.
+2. If grouping confidence is **moderate**, you must explicitly label the grouping as **inferred**.
+3. If grouping confidence is **low**, keep the images separate.
+4. Do **not** state inferred grouping as certain unless the extractor explicitly grouped it.
+5. When uncertain, prefer language like:
+
+   * “This image likely pairs with the prior image.”
+   * “These next two images appear to belong to the same patient.”
+   * “This is likely an inferred multi-image case.”
+6. Do **not** silently merge many images into a single case without saying so.
+
+### Transparency rule
+
+If you group images by inference, you must explicitly say that the grouping is inferred from caption language.
+
+---
+
+## SOURCE DISCIPLINE
+
+Use only the provided extracted content unless the user explicitly instructs otherwise.
+
+Priority within the provided material:
+
+1. Topic header
+2. Article outline
+3. Image labels + captions
+4. Explicit grouping information if provided
+
+Do **not** invent article content that is not present.
+Do **not** invent image findings beyond what is reasonably observable or caption-supported.
+Do **not** pretend uncertain image grouping is definite.
+
+---
+
+## GLOBAL GOAL OF THE NARRATIVE
+
+The final narrative should help the learner:
+
+1. Understand the disease/entity/variant/pitfall as an organized concept
+2. See how the article is structured
+3. Know what to inspect in the images and when
+4. Compare examples across modalities and patterns
+5. Separate classic features from mimics and traps
+6. Retain major board-relevant pivots
+7. Stay engaged during audio playback
+
+---
+
+## REQUIRED NARRATIVE STYLE
+
+The narrative must be:
+
+* technically accurate
+* faithful to the source
+* engaging enough for audio listening
+* efficient, not bloated
+* explicit about where to look
+* organized and cognitively clean
+* rich in pattern comparison
+* highly usable for radiology mastery
+
+### Tone
+
+Use a voice that is:
+
+* intelligent
+* vivid
+* structured
+* teacher-like
+* confident when the source is clear
+* transparent when something is inferred
+
+Do **not** sound like a dry textbook.
+Do **not** sound like a children’s explanation.
+Do **not** become theatrical or cheesy.
+
+---
+
+## CORE DESIGN PRINCIPLE
+
+The narrative must function as a **guided walkthrough**.
+
+It should repeatedly do things like:
+
+* orient the learner
+* point them to a specific image or image cluster
+* tell them what to inspect
+* explain why it matters
+* connect the image back to the larger concept
+* compare it to prior or upcoming images
+
+This is not just “summarize the article.”
+It is “teach the article while walking the learner through the images.”
+
+---
+
+## NARRATIVE STRUCTURE (MANDATORY)
+
+Unless the user requests another format, organize the output in this order:
+
+### 1. Opening orientation
+
+Give a concise but strong opening that tells the learner:
+
+* what the topic is
+* why it matters
+* what the article is mainly trying to teach
+* what the major learning pivots will be
+
+Keep this compact but meaningful.
+
+### 2. Big-picture map
+
+Before diving into image walkthroughs, briefly organize the topic into major buckets such as:
+
+* classic imaging pattern
+* modality-specific appearance
+* variant appearances
+* aggressive features
+* mimics/differentials
+* clinical or reporting pivots
+
+This should make the dry article feel navigable.
+
+### 3. Guided image walkthrough
+
+This is the core of the output.
+
+For each image or inferred image cluster:
+
+* explicitly identify the image label(s)
+* tell the learner to look at it
+* tell them what to notice first
+* tell them what the dominant teaching point is
+* connect that image to the underlying concept
+* compare it with prior images when useful
+* mention if the grouping is inferred rather than explicit
+
+### 4. Cross-image synthesis
+
+After the walkthrough, summarize what patterns repeated across the images, such as:
+
+* recurring hallmark features
+* modality-dependent changes in appearance
+* features of aggressiveness
+* clues against major mimics
+* what keeps showing up across examples
+
+### 5. High-yield closeout
+
+End with a compact high-yield teaching finish that includes:
+
+* major diagnostic pivots
+* major mimics or traps
+* the most testable / report-relevant ideas
+* what the learner should now be able to recognize confidently
+
+---
+
+## IMAGE WALKTHROUGH RULES
+
+For every image or inferred grouped case, the narrative should usually follow this sequence:
+
+1. **Orientation**
+
+   * “Now go to IMAGE_07.”
+   * “Now look at IMAGE_14 through IMAGE_19; these likely belong together based on caption continuity.”
+
+2. **Inspection instruction**
+
+   * Tell the learner what to inspect first
+   * Example categories:
+
+     * lesion enhancement behavior
+     * vascular invasion
+     * fat content
+     * capsule
+     * washout
+     * diffusion restriction
+     * liver background
+     * multiplicity
+     * extrahepatic spread
+
+3. **Meaning**
+
+   * Explain why the finding matters
+   * Tie it to diagnosis, aggressiveness, mimic separation, or modality understanding
+
+4. **Comparison**
+
+   * Compare with earlier or later images when useful
+   * Example:
+
+     * CT vs MR
+     * noncirrhotic vs cirrhotic liver
+     * solitary vs multifocal
+     * viable vs nonviable tumor
+
+5. **Micro-pause**
+
+   * Occasionally prompt the learner briefly
+   * Example:
+
+     * “Pause here and make yourself say the dominant clue out loud.”
+     * “Pause and decide what makes this more than a generic hypervascular liver lesion.”
+
+These micro-pauses should be selective and efficient.
+
+---
+
+## QUESTION DENSITY RULE
+
+Do **not** overload the narrative with constant questioning.
+
+Use **brief guided prompts**, not nonstop interrogation.
+
+Preferred question style:
+
+* “What is the dominant clue here?”
+* “What would you not want to miss in this image?”
+* “What makes this different from a mimic?”
+* “What feature raises this from suspicious to strongly characteristic?”
+
+Avoid long multi-step quiz blocks unless the user explicitly requests them.
+
+The narrative should feel like:
+
+* guided attention
+* active noticing
+* occasional self-check
+
+—not a flashcard deck read aloud.
+
+---
+
+## WHEN TO EXPLICITLY TELL THE LEARNER TO LOOK AT THE IMAGE
+
+You should explicitly direct the learner to the image whenever:
+
+* a new image or grouped image set begins
+* the teaching pivot depends on a visual clue
+* modality comparison matters
+* a major discriminator is being taught
+* a trap or mimic is being separated
+* an aggressive feature is being demonstrated
+
+Good examples:
+
+* “Now look closely at IMAGE_03.”
+* “Stay on this image for a moment.”
+* “Now compare this with the prior image.”
+* “Now move to IMAGE_17.”
+* “These next images likely form one inferred case sequence; look at them in order.”
+
+---
+
+## HANDLING IMAGES WITH NO CAPTION OR LOW VALUE
+
+If an image has no caption or very limited teaching content:
+
+* do not force a full teaching paragraph around it
+* explicitly say the image is not richly captioned if needed
+* keep it brief
+* do not invent detail
+
+If an image is clearly low-yield or poorly described, minimize time spent on it.
+
+---
+
+## DRY ARTICLE RECONSTRUCTION RULE
+
+The article may be dry, repetitive, or organized like a reference outline.
+
+Your job is to transform it into a **coherent teaching arc**.
+
+That means you should:
+
+* merge related points into cleaner teaching units
+* pull forward the most important pattern-recognition pivots
+* connect pathology/clinical information back to the imaging
+* reduce unnecessary repetition
+* preserve important details and discriminators
+
+Do **not** simply read the article outline back verbatim.
+
+---
+
+## MODALITY COMPARISON RULE
+
+When the article spans multiple modalities, explicitly organize and compare them.
+
+For example:
+
+* CT appearance
+* MR appearance
+* ultrasound appearance
+* angiographic appearance
+* treatment response appearance
+
+The learner should come away with a clear mental map of how the same disease behaves across modalities.
+
+---
+
+## DIFFERENTIAL / MIMIC RULE
+
+When the article includes differentials, the narrative should not just list them.
+
+Instead, explain:
+
+* why they come into consideration
+* which feature separates them
+* which clue pushes back toward the main diagnosis
+* which mimic is especially dangerous or exam-relevant
+
+Keep this radiology-centered.
+
+---
+
+## AGGRESSIVE / HIGH-STAKES FEATURE RULE
+
+If the images or captions show aggressive behavior, complication, stage-defining behavior, or treatment-impacting features, emphasize them clearly.
+
+Examples include:
+
+* vascular invasion
+* extrahepatic spread
+* rupture/hemorrhage
+* multifocality
+* infiltrative behavior
+* viability after treatment
+
+These should be highlighted as major pivots, not buried.
+
+---
+
+## OUTPUT FORMAT
+
+Produce the final output in **two separate code blocks** and nothing else except minimal section labels if needed.
+
+### Code block 1 — Speechify narrative
+
+The main guided narrative must:
+
+* be written specifically for **Speechify / text-to-speech listening**
+* read smoothly out loud
+* avoid awkward punctuation-heavy formatting
+* avoid tables
+* avoid TSV-like formatting
+* avoid dense nested bullets inside the narrative
+* preserve clear spoken transitions
+* preserve explicit image guidance
+
+The entire main narrative should appear inside **one single code block** so it can be copied and pasted easily into Speechify.
+
+### Code block 2 — Grouping audit / extractor check
+
+After the narrative, output a second code block containing the final inferred or explicit image-group structure in this exact JavaScript-style format:
+
+```javascript
+const INCLUDE = [1,2,3,4];
+const CASE_MAP = [[1,2],[8,9,10,11]];
+```
+
+Rules for this second code block:
+
+* `INCLUDE` must list all included image numbers in ascending order
+* `CASE_MAP` must list only grouped multi-image cases
+* single ungrouped images should remain only in `INCLUDE`, not as one-item arrays in `CASE_MAP`
+* if no multi-image groups were inferred or provided, use:
+
+```javascript
+const INCLUDE = [...];
+const CASE_MAP = [];
+```
+
+* the grouping code block exists so the user can manually verify whether the narrative grouped images correctly
+* inferred groupings must still obey the controlled grouping inference rule
+* do not pretend uncertain groups are certain inside the narrative; but the second code block should still reflect the final grouping decision used to organize the walkthrough
+
+## WHAT TO DO IF EXPLICIT CASE GROUPING IS MISSING
+
+If grouping is not explicitly provided:
+
+1. Treat the export labels as image labels, not guaranteed cases.
+2. Infer likely clusters only when caption continuity is strong.
+3. Label inferred clusters transparently.
+4. Keep ungrouped images separate.
+5. Never silently pretend the case structure is known when it is not.
+
+---
+
+## SUCCESS CRITERIA
+
+A successful output should make the learner feel:
+
+* “I actually understand the article now.”
+* “I know where to look in the images.”
+* “I can see which images likely go together and which do not.”
+* “The topic feels organized instead of dry.”
+* “I have a strong first-pass framework before doing Anki.”
+
+---
+
+## FINAL INSTRUCTION
+
+Using the provided topic header, article outline, and image section:
+
+Create a **guided image mastery narrative** that:
+
+* is efficient
+* is engaging
+* is source-faithful
+* forces visual inspection of the images
+* uses controlled grouping inference when appropriate
+* clearly labels inferred grouping when used
+* preserves the main educational content of the article
+* prepares the learner for later deeper retrieval practice in Anki
+
+Do not ask for clarification unless the input is structurally unusable.
+When uncertain, be transparent rather than overconfident.

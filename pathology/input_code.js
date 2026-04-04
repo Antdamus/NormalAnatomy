@@ -13,13 +13,15 @@
   /**********************
    * SETTINGS YOU EDIT
    **********************/
-  const FILE_PREFIX = "KidneyRCC"; // <-- change per document
-  const INCLUDE = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]; // "all" OR "2,4,5,8"
-  const CASE_MAP = [[5,6],[7,8],[9,10,11,12],[13,14],[15,16]]; // e.g. [[2,5],[8,9]] ; leave [] for auto-solo everything
+const FILE_PREFIX = "HCC";
+const INCLUDE = "all";
+const CASE_MAP = [];
+
+
   const CORE_GAP = false; // <-- true = Pathway B (Core GAP), false = Pathway A (Core covered)
   const CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it"; // <-- edit (ignored if CORE_GAP=true)
   const CORE_PAGES = ""; // <-- edit (ignored if CORE_GAP=true)
-  const DOWNLOAD_IMAGES = true; // set false if you only want copy-to-clipboard
+  const DOWNLOAD_IMAGES = false; // set false if you only want copy-to-clipboard
   const DOWNLOAD_PLAIN = true; // plain (no arrows)
   const DOWNLOAD_ANNOTATED = true; // annotated (with arrows)
   const DOWNLOAD_DELAY_MS = 1000; // 1 second delay between downloads
@@ -56,6 +58,8 @@
     ta.innerHTML = s ?? "";
     return ta.value;
   };
+
+  const cleanText = (s) => String(s || "").replace(/\s+/g, " ").trim();
 
   const rewriteRadPrimerArrowSrcToAnki = (html) => {
     return (html || "").replace(
@@ -114,33 +118,84 @@
     return lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
   };
 
-  const buildCases = (selectedNums) => {
-    const selectedSet = new Set(selectedNums);
+  const extractTitleFromImageParams = (selector) => {
+    const el = document.querySelector(selector);
+    const raw = el?.getAttribute("imageparams") || "";
+    if (!raw) return "";
 
-    const normalizedGroups = (Array.isArray(CASE_MAP) ? CASE_MAP : [])
-      .map((grp) =>
-        (Array.isArray(grp) ? grp : [])
-          .map((n) => parseInt(n, 10))
-          .filter((n) => selectedSet.has(n))
-      )
-      .filter((grp) => grp.length >= 2);
+    const query = raw.startsWith("?") ? raw.slice(1) : raw;
+    const params = new URLSearchParams(query);
+    return cleanText(params.get("parentTitle") || "");
+  };
 
-    const used = new Set();
-    normalizedGroups.forEach((grp) => grp.forEach((n) => used.add(n)));
+  const getArticleTitle = () => {
+    const candidates = [
+      document.querySelector("h1.document-name-js.page-heading-js")?.textContent,
+      document.querySelector("#content .page-heading h1")?.textContent,
+      document.querySelector(".page-heading h1")?.textContent,
+      document.querySelector("head > title")?.textContent,
+      extractTitleFromImageParams("#focusImageData"),
+      extractTitleFromImageParams("#imageData"),
+    ];
 
-    const singles = selectedNums.filter((n) => !used.has(n)).map((n) => [n]);
-
-    const cases = [...normalizedGroups, ...singles];
-
-    const seen = new Set();
-    const deduped = [];
-    for (const grp of cases) {
-      const cleaned = grp.filter((n) => (seen.has(n) ? false : (seen.add(n), true)));
-      if (cleaned.length) deduped.push(cleaned);
+    for (let title of candidates) {
+      title = cleanText(title);
+      if (!title) continue;
+      title = title.replace(/^Document:\s*/i, "");
+      if (title) return title;
     }
 
-    return deduped;
+    return "";
   };
+
+
+  const buildTopicBlock = (title) => {
+    const topic = cleanText(title) || "[TOPIC NOT FOUND]";
+    return [
+      "=== TOPIC ===",
+      `PRIMARY TOPIC: ${topic}`,
+      `CENTERING TOPIC FOR THIS CHAT: ${topic}`,
+      `USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: ${topic}`
+    ].join("\n");
+  };
+
+
+  
+const buildCases = (selectedNums) => {
+  const selectedSet = new Set(selectedNums);
+
+  const normalizedGroups = (Array.isArray(CASE_MAP) ? CASE_MAP : [])
+    .map((grp) =>
+      (Array.isArray(grp) ? grp : [])
+        .map((n) => parseInt(n, 10))
+        .filter((n) => selectedSet.has(n))
+    )
+    .filter((grp) => grp.length >= 2);
+
+  const used = new Set();
+  normalizedGroups.forEach((grp) => grp.forEach((n) => used.add(n)));
+
+  const singles = selectedNums
+    .filter((n) => !used.has(n))
+    .map((n) => [n]);
+
+  const groups = [...normalizedGroups, ...singles];
+
+  const seen = new Set();
+  const deduped = [];
+
+  for (const grp of groups) {
+    const cleaned = grp.filter((n) => {
+      if (seen.has(n)) return false;
+      seen.add(n);
+      return true;
+    });
+
+    if (cleaned.length) deduped.push(cleaned);
+  }
+
+  return deduped;
+};
 
   const safeCopy = (text) => {
     try {
@@ -278,6 +333,7 @@
   clone.querySelectorAll("script, style, noscript").forEach((el) => el.remove());
   stripRefsSectionIfPresent(clone);
 
+  const articleTitle = getArticleTitle();
   const articleOutline = domToOutline(clone);
 
   /**********************
@@ -286,41 +342,50 @@
   const cases = buildCases(selectedNums);
   const byIndex = new Map(allImages.map((x) => [x.originalIndex, x]));
 
-  const buildImagesBlock = () => {
-    const lines = [];
-    lines.push("=== IMAGES (selected; original numbering preserved) ===");
+const buildImagesBlock = () => {
+  const lines = [];
+  lines.push("=== IMAGES (selected; original numbering preserved) ===");
 
-    cases.forEach((grp, caseIdx) => {
-      const caseLabel = `CASE_${String(caseIdx + 1).padStart(2, "0")}`;
-      lines.push("");
-      lines.push(`${caseLabel}: ${grp.join(", ")}`);
+  const hasExplicitCaseMap =
+    Array.isArray(CASE_MAP) &&
+    CASE_MAP.some((grp) => Array.isArray(grp) && grp.length >= 2);
 
-      grp.forEach((n) => {
-        const item = byIndex.get(n);
-        if (!item) return;
+  const labelPrefix = hasExplicitCaseMap ? "CASE" : "IMAGE";
 
-        lines.push(`  ${item.baseName}`);
-        if (DOWNLOAD_PLAIN) lines.push(`    Image: ${item.plainFilename}`);
-        if (DOWNLOAD_ANNOTATED) lines.push(`    Image_Annotated: ${item.annotFilename}`);
-        lines.push(`    Caption: ${item.caption}`);
-      });
+  cases.forEach((grp, idx) => {
+    const blockLabel = `${labelPrefix}_${String(idx + 1).padStart(2, "0")}`;
+
+    lines.push("");
+    lines.push(`${blockLabel}: ${grp.join(", ")}`);
+
+    grp.forEach((n) => {
+      const item = byIndex.get(n);
+      if (!item) return;
+
+      lines.push(`  ${item.baseName}`);
+      if (DOWNLOAD_PLAIN) lines.push(`    Image: ${item.plainFilename}`);
+      if (DOWNLOAD_ANNOTATED) lines.push(`    Image_Annotated: ${item.annotFilename}`);
+      lines.push(`    Caption: ${item.caption}`);
     });
+  });
 
-    return lines.join("\n").trim();
-  };
+  return lines.join("\n").trim();
+};
 
   /**********************
    * 4) BUILD ONE-SHOT OUTPUT (Core Gate + Prompt + Article + Images)
    **********************/
   const out =
-`=== CORE VALIDATION INPUT ===
+`${buildTopicBlock(articleTitle)}
+
+=== CORE VALIDATION INPUT ===
 ${buildCoreGatePreamble()}
 
 === PROMPT ===
 ${PROMPT_TEXT}
 
 === ARTICLE ===
-${articleOutline || "[Article extraction failed]"}
+${articleTitle ? `TITLE: ${articleTitle}\n\n` : ""}${articleOutline || "[Article extraction failed]"}
 
 ${buildImagesBlock()}
 `;
@@ -338,7 +403,7 @@ ${buildImagesBlock()}
     }))
   );
 
-  console.log("✅ Copied to clipboard: CORE VALIDATION INPUT + PROMPT + ARTICLE (no references) + IMAGES (selected, original numbering preserved).");
+  console.log("✅ Copied to clipboard: CORE VALIDATION INPUT + PROMPT + ARTICLE (with title) + IMAGES (selected, original numbering preserved).");
 
   /**********************
    * 5) OPTIONAL: DOWNLOAD IMAGES (with delay)
@@ -366,14 +431,19 @@ ${buildImagesBlock()}
   if (DOWNLOAD_IMAGES) runDownloads();
 
   return {
-    copiedChars: out.length,
-    totalImagesOnPage: allImages.length,
-    selected: selectedNums,
-    cases,
-    downloadsEnabled: DOWNLOAD_IMAGES,
-    downloadDelayMs: DOWNLOAD_DELAY_MS,
-    coreGap: CORE_GAP,
-    coreSection: CORE_SECTION,
-    corePages: CORE_PAGES
-  };
+  copiedChars: out.length,
+  totalImagesOnPage: allImages.length,
+  selected: selectedNums,
+  cases,
+  labelMode:
+    Array.isArray(CASE_MAP) && CASE_MAP.some((grp) => Array.isArray(grp) && grp.length >= 2)
+      ? "CASE"
+      : "IMAGE",
+  downloadsEnabled: DOWNLOAD_IMAGES,
+  downloadDelayMs: DOWNLOAD_DELAY_MS,
+  coreGap: CORE_GAP,
+  coreSection: CORE_SECTION,
+  corePages: CORE_PAGES,
+  articleTitle
+};
 })();
