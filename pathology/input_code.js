@@ -1,26 +1,27 @@
 (() => {
   /**********************************************************************
-   RADPrimer → “One Shot” Exporter (Article + Captions + Optional Downloads)
+   RADPrimer -> "One Shot" Exporter (Article + Captions + Optional Downloads)
    ----------------------------------------------------------------------
-   ✅ Copies to clipboard:
-      1) CORE VALIDATION INPUT (auto from toggles below)
-      2) YOUR PROMPT (customizable below)
-      3) ARTICLE (structured outline, page-like hierarchy)
-      4) IMAGES (your selected original image numbers, with filenames + captions)
+   Copies to clipboard:
+      1) TOPIC
+      2) CORE VALIDATION INPUT (auto from toggles below)
+      3) YOUR PROMPT (injected from FULL_PROMPT.txt or pathologynarrative.txt)
+      4) ARTICLE (structured outline, page-like hierarchy)
+      5) IMAGES (your selected original image numbers, with filenames + captions)
          - Includes BOTH plain + annotated filenames per image (if enabled)
   **********************************************************************/
 
   /**********************
    * SETTINGS YOU EDIT
    **********************/
-const FILE_PREFIX = "HCC";
-const INCLUDE = "all";
-const CASE_MAP = [];
+  const FILE_PREFIX = "ColonCancer";
+const INCLUDE = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
+const CASE_MAP = [[3,4],[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18,19],[20,21,22]];
 
-
-  const CORE_GAP = false; // <-- true = Pathway B (Core GAP), false = Pathway A (Core covered)
-  const CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it"; // <-- edit (ignored if CORE_GAP=true)
-  const CORE_PAGES = ""; // <-- edit (ignored if CORE_GAP=true)
+  const CORE_GAP = false; // true = Pathway B (Core GAP), false = Pathway A (Core covered)
+  const CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it";
+  const CORE_PAGES = "";
+  const INCLUDE_CORE_VALIDATION_INPUT = true; // auto-set by injector; true for card/full-prompt workflows, false for narrative workflows
   const DOWNLOAD_IMAGES = false; // set false if you only want copy-to-clipboard
   const DOWNLOAD_PLAIN = true; // plain (no arrows)
   const DOWNLOAD_ANNOTATED = true; // annotated (with arrows)
@@ -31,19 +32,21 @@ const CASE_MAP = [];
   const KEEP_CAPTION_HTML = true;
 
   /**********************************************************************
-   * ✅ NEW: CORE VALIDATION / GAP TOGGLES (EDIT THESE EACH RUN)
+   * CORE VALIDATION / GAP TOGGLES
    *
    * If CORE_GAP = true:
    *   Script injects your required Pathway B line:
-   *   “Core GAP: Topic not explicitly covered in Core Radiology; cards derived from RadPrimer/STATdx only.”
+   *   "Core GAP: Topic not explicitly covered in Core Radiology; cards derived from RadPrimer/STATdx only."
    *
    * If CORE_GAP = false:
    *   Script injects your Pathway A coverage line using CORE_SECTION + CORE_PAGES.
    **********************************************************************/
 
-
   /**********************
-   * YOUR PROMPT (AUTO-INJECTED BY YOUR PYTHON BUILDER)
+   * YOUR PROMPT
+   * Replaced by inject_prompt.py or inject_prompt_intoedgescript.py.
+   * The injected prompt may be the standard FULL_PROMPT.txt build or
+   * a dedicated narrative prompt such as pathologynarrative.txt.
    **********************/
   const PROMPT_TEXT =
 `=== PROMPTTEXT ===`;
@@ -148,54 +151,51 @@ const CASE_MAP = [];
     return "";
   };
 
-
   const buildTopicBlock = (title) => {
     const topic = cleanText(title) || "[TOPIC NOT FOUND]";
     return [
       "=== TOPIC ===",
       `PRIMARY TOPIC: ${topic}`,
       `CENTERING TOPIC FOR THIS CHAT: ${topic}`,
-      `USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: ${topic}`
+      `USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: ${topic}`,
     ].join("\n");
   };
 
+  const buildCases = (selectedNums) => {
+    const selectedSet = new Set(selectedNums);
 
-  
-const buildCases = (selectedNums) => {
-  const selectedSet = new Set(selectedNums);
+    const normalizedGroups = (Array.isArray(CASE_MAP) ? CASE_MAP : [])
+      .map((grp) =>
+        (Array.isArray(grp) ? grp : [])
+          .map((n) => parseInt(n, 10))
+          .filter((n) => selectedSet.has(n))
+      )
+      .filter((grp) => grp.length >= 2);
 
-  const normalizedGroups = (Array.isArray(CASE_MAP) ? CASE_MAP : [])
-    .map((grp) =>
-      (Array.isArray(grp) ? grp : [])
-        .map((n) => parseInt(n, 10))
-        .filter((n) => selectedSet.has(n))
-    )
-    .filter((grp) => grp.length >= 2);
+    const used = new Set();
+    normalizedGroups.forEach((grp) => grp.forEach((n) => used.add(n)));
 
-  const used = new Set();
-  normalizedGroups.forEach((grp) => grp.forEach((n) => used.add(n)));
+    const singles = selectedNums
+      .filter((n) => !used.has(n))
+      .map((n) => [n]);
 
-  const singles = selectedNums
-    .filter((n) => !used.has(n))
-    .map((n) => [n]);
+    const groups = [...normalizedGroups, ...singles];
 
-  const groups = [...normalizedGroups, ...singles];
+    const seen = new Set();
+    const deduped = [];
 
-  const seen = new Set();
-  const deduped = [];
+    for (const grp of groups) {
+      const cleaned = grp.filter((n) => {
+        if (seen.has(n)) return false;
+        seen.add(n);
+        return true;
+      });
 
-  for (const grp of groups) {
-    const cleaned = grp.filter((n) => {
-      if (seen.has(n)) return false;
-      seen.add(n);
-      return true;
-    });
+      if (cleaned.length) deduped.push(cleaned);
+    }
 
-    if (cleaned.length) deduped.push(cleaned);
-  }
-
-  return deduped;
-};
+    return deduped;
+  };
 
   const safeCopy = (text) => {
     try {
@@ -214,7 +214,7 @@ const buildCases = (selectedNums) => {
         "#reference-list",
         "ol#reference-list",
         '[id*="Selected-References"]',
-        '[rel="Selected-References"]'
+        '[rel="Selected-References"]',
       ].join(",")
     ).forEach((el) => el.remove());
 
@@ -242,24 +242,21 @@ const buildCases = (selectedNums) => {
   };
 
   /**********************
-   * ✅ NEW: CORE PREAMBLE BUILDER (AUTO-INJECTED)
+   * CORE PREAMBLE BUILDER
    **********************/
   const buildCoreGatePreamble = () => {
     if (CORE_GAP) {
       return [
-        "Core GAP: Topic not explicitly covered in Core Radiology; cards derived from RadPrimer/STATdx only."
+        "Core GAP: Topic not explicitly covered in Core Radiology; cards derived from RadPrimer/STATdx only.",
       ].join("\n");
     }
 
-    // Pathway A: user declares pages/section
     const section = String(CORE_SECTION || "").trim();
     const pages = String(CORE_PAGES || "").trim();
 
-    // Keep it simple + explicit.
-    // (Even if left blank, it won’t break the script; you’ll just see blanks in the output.)
     return [
       `Core coverage confirmed by user: ${section || "[SECTION NOT PROVIDED]"}`,
-      `Core pages (user-provided): ${pages || "[PAGES NOT PROVIDED]"}`
+      `Core pages (user-provided): ${pages || "[PAGES NOT PROVIDED]"}`,
     ].join("\n");
   };
 
@@ -303,7 +300,7 @@ const buildCases = (selectedNums) => {
       plainFilename,
       annotFilename,
       plainUrl,
-      annotUrl
+      annotUrl,
     };
   });
 
@@ -342,44 +339,45 @@ const buildCases = (selectedNums) => {
   const cases = buildCases(selectedNums);
   const byIndex = new Map(allImages.map((x) => [x.originalIndex, x]));
 
-const buildImagesBlock = () => {
-  const lines = [];
-  lines.push("=== IMAGES (selected; original numbering preserved) ===");
+  const buildImagesBlock = () => {
+    const lines = [];
+    lines.push("=== IMAGES (selected; original numbering preserved) ===");
 
-  const hasExplicitCaseMap =
-    Array.isArray(CASE_MAP) &&
-    CASE_MAP.some((grp) => Array.isArray(grp) && grp.length >= 2);
+    const hasExplicitCaseMap =
+      Array.isArray(CASE_MAP) &&
+      CASE_MAP.some((grp) => Array.isArray(grp) && grp.length >= 2);
 
-  const labelPrefix = hasExplicitCaseMap ? "CASE" : "IMAGE";
+    const labelPrefix = hasExplicitCaseMap ? "CASE" : "IMAGE";
 
-  cases.forEach((grp, idx) => {
-    const blockLabel = `${labelPrefix}_${String(idx + 1).padStart(2, "0")}`;
+    cases.forEach((grp, idx) => {
+      const blockLabel = `${labelPrefix}_${String(idx + 1).padStart(2, "0")}`;
 
-    lines.push("");
-    lines.push(`${blockLabel}: ${grp.join(", ")}`);
+      lines.push("");
+      lines.push(`${blockLabel}: ${grp.join(", ")}`);
 
-    grp.forEach((n) => {
-      const item = byIndex.get(n);
-      if (!item) return;
+      grp.forEach((n) => {
+        const item = byIndex.get(n);
+        if (!item) return;
 
-      lines.push(`  ${item.baseName}`);
-      if (DOWNLOAD_PLAIN) lines.push(`    Image: ${item.plainFilename}`);
-      if (DOWNLOAD_ANNOTATED) lines.push(`    Image_Annotated: ${item.annotFilename}`);
-      lines.push(`    Caption: ${item.caption}`);
+        lines.push(`  ${item.baseName}`);
+        if (DOWNLOAD_PLAIN) lines.push(`    Image: ${item.plainFilename}`);
+        if (DOWNLOAD_ANNOTATED) lines.push(`    Image_Annotated: ${item.annotFilename}`);
+        lines.push(`    Caption: ${item.caption}`);
+      });
     });
-  });
 
-  return lines.join("\n").trim();
-};
+    return lines.join("\n").trim();
+  };
 
   /**********************
    * 4) BUILD ONE-SHOT OUTPUT (Core Gate + Prompt + Article + Images)
    **********************/
-  const out =
-`${buildTopicBlock(articleTitle)}
+  const coreValidationBlock = INCLUDE_CORE_VALIDATION_INPUT
+    ? `\n\n=== CORE VALIDATION INPUT ===\n${buildCoreGatePreamble()}`
+    : "";
 
-=== CORE VALIDATION INPUT ===
-${buildCoreGatePreamble()}
+  const out =
+`${buildTopicBlock(articleTitle)}${coreValidationBlock}
 
 === PROMPT ===
 ${PROMPT_TEXT}
@@ -399,11 +397,15 @@ ${buildImagesBlock()}
       plain: x.plainFilename,
       annot: x.annotFilename,
       captionLength: (x.caption || "").length,
-      imageId: x.imageId
+      imageId: x.imageId,
     }))
   );
 
-  console.log("✅ Copied to clipboard: CORE VALIDATION INPUT + PROMPT + ARTICLE (with title) + IMAGES (selected, original numbering preserved).");
+  console.log(
+    INCLUDE_CORE_VALIDATION_INPUT
+      ? 'Copied to clipboard: TOPIC + CORE VALIDATION INPUT + PROMPT + ARTICLE + IMAGES (selected, original numbering preserved).'
+      : 'Copied to clipboard: TOPIC + PROMPT + ARTICLE + IMAGES (selected, original numbering preserved).'
+  );
 
   /**********************
    * 5) OPTIONAL: DOWNLOAD IMAGES (with delay)
@@ -425,25 +427,25 @@ ${buildImagesBlock()}
       if (DOWNLOAD_PLAIN) await downloadOne(img.plainUrl, img.plainFilename);
       if (DOWNLOAD_ANNOTATED) await downloadOne(img.annotUrl, img.annotFilename);
     }
-    console.log(`✅ Download complete. Files named like ${FILE_PREFIX}2.jpg and ${FILE_PREFIX}2_annot.jpg (original numbering preserved).`);
+    console.log(`Download complete. Files named like ${FILE_PREFIX}2.jpg and ${FILE_PREFIX}2_annot.jpg (original numbering preserved).`);
   };
 
   if (DOWNLOAD_IMAGES) runDownloads();
 
   return {
-  copiedChars: out.length,
-  totalImagesOnPage: allImages.length,
-  selected: selectedNums,
-  cases,
-  labelMode:
-    Array.isArray(CASE_MAP) && CASE_MAP.some((grp) => Array.isArray(grp) && grp.length >= 2)
-      ? "CASE"
-      : "IMAGE",
-  downloadsEnabled: DOWNLOAD_IMAGES,
-  downloadDelayMs: DOWNLOAD_DELAY_MS,
-  coreGap: CORE_GAP,
-  coreSection: CORE_SECTION,
-  corePages: CORE_PAGES,
-  articleTitle
-};
+    copiedChars: out.length,
+    totalImagesOnPage: allImages.length,
+    selected: selectedNums,
+    cases,
+    labelMode:
+      Array.isArray(CASE_MAP) && CASE_MAP.some((grp) => Array.isArray(grp) && grp.length >= 2)
+        ? "CASE"
+        : "IMAGE",
+    downloadsEnabled: DOWNLOAD_IMAGES,
+    downloadDelayMs: DOWNLOAD_DELAY_MS,
+    coreGap: CORE_GAP,
+    coreSection: CORE_SECTION,
+    corePages: CORE_PAGES,
+    articleTitle,
+  };
 })();

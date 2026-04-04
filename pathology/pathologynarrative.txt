@@ -100,7 +100,26 @@ When preparing the guided narrative, you may infer likely multi-image case group
 
 ### Transparency rule
 
-If you group images by inference, you must explicitly say that the grouping is inferred from caption language.
+If you group images by inference, you must explicitly acknowledge that the grouping is inferred from caption language.
+This should normally happen once near the beginning of the narrative, not as a repeated local disclaimer.
+
+---
+
+## GLOBAL GROUPING TRANSPARENCY RULE
+
+If any multi-image groupings are inferred from caption continuity rather than explicitly provided by the extractor:
+
+* acknowledge that once near the beginning of the narrative in a compact orientation note
+* after that, proceed naturally with the grouped walkthrough
+* re-mention uncertainty locally only if a particular grouping is especially weak or ambiguous
+* do not repeatedly insert the same inferred-grouping disclaimer throughout the narrative
+* avoid repetitive phrasing such as:
+
+  * “these likely belong together”
+  * “this is an inferred grouping”
+  * “this grouping is inferred”
+
+unless that local uncertainty genuinely matters
 
 ---
 
@@ -422,6 +441,48 @@ These should be highlighted as major pivots, not buried.
 
 ---
 
+## INTEGRATED FACT RETENTION RULE
+
+Important non-image article facts must be woven into the narrative itself, not appended as a detached list.
+
+This includes facts such as:
+
+* important numbers
+* modality performance data
+* memorable epidemiology
+* pathology/genetics
+* staging/prognosis
+* treatment/follow-up facts
+
+Rules:
+
+* integrate these facts only when they naturally strengthen the current teaching point
+* attach them to the relevant image discussion, modality comparison, disease progression explanation, recurrence discussion, or closeout synthesis
+* prefer contextualized integration over isolated listing
+* make the integration feel seamless, elegant, and cumulative rather than bolted on
+* the narrative should not feel like image discussion plus random fact insertion
+* it should feel like one continuous teaching script in which images, modality reasoning, numbers, performance data, pathology, prognosis, and clinical pivots reinforce each other
+* avoid dumping disconnected facts
+* no source-emphasized non-image fact may be omitted just because it lacks a clean image anchor
+* if a fact is important but has no natural image anchor, integrate it into the opening map, cross-image synthesis, or high-yield closeout instead of creating a separate fact list
+
+---
+
+## NARRATIVE FLOW RULE
+
+The final script must feel like one coherent spoken teaching performance.
+
+Rules:
+
+* transitions must be smooth
+* facts should be integrated into the surrounding explanation, not dropped in mechanically
+* the narrative should sound elegant, natural, and cumulative
+* each new idea should build on the previous one
+* repetition should be purposeful, not formulaic
+* the script should be beautiful to listen to in Speechify
+
+---
+
 ## OUTPUT FORMAT
 
 Produce the final output in **two separate code blocks** and nothing else except minimal section labels if needed.
@@ -503,7 +564,13 @@ Create a **guided image mastery narrative** that:
 * uses controlled grouping inference when appropriate
 * clearly labels inferred grouping when used
 * preserves the main educational content of the article
+* integrates important non-image article facts seamlessly into the narrative at the point where they become meaningful
+* does not append them as a disconnected fact dump
+* maintains beautiful spoken flow
+* avoids repetitive local inference disclaimers after the initial grouping note unless truly needed
 * prepares the learner for later deeper retrieval practice in Anki
+
+Before finishing, verify that the major image teaching points and the major source-emphasized non-image facts were both incorporated into the narrative.
 
 Do not ask for clarification unless the input is structurally unusable.
 When uncertain, be transparent rather than overconfident.

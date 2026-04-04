@@ -2,29 +2,35 @@
 # -*- coding: utf-8 -*-
 
 """
-inject_prompt.py (v2)
+inject_prompt.py (v3)
 ---------------------
-Reads FULL_PROMPT.txt and injects it into the RADPrimer One Shot Exporter JS,
+Reads a selected prompt file and injects it into the pathology JS exporter,
 replacing ONLY the contents of:
 
   const PROMPT_TEXT = ` ... `;
 
-NEW:
-- Optional Core status header injection:
-    * --core-gap            -> prepends a Core GAP declaration line
-    * --core-ref "..."      -> prepends a Core coverage reference line
-  (If neither is provided, prompt text is injected unchanged.)
+Prompt selection:
+- Default prompt remains FULL_PROMPT.txt
+- --prompt <file> selects any prompt file explicitly
+- --narrative selects pathologynarrative.txt when --prompt is omitted
+
+Optional Core status header injection:
+- --core-gap            -> prepends a Core GAP declaration line
+- --core-ref "..."      -> prepends a Core coverage reference line
 
 Usage examples:
 
-1) Core GAP:
-  python inject_prompt.py --js radprimer_one_shot.js --prompt FULL_PROMPT.txt --core-gap --out radprimer_one_shot_injected.js
+1) Standard prompt:
+  python inject_prompt.py --js input_code.js --inplace
 
-2) Core covered (pages/section):
-  python inject_prompt.py --js radprimer_one_shot.js --prompt FULL_PROMPT.txt --core-ref "GI / Colon — p213–222 (IBD section)" --out radprimer_one_shot_injected.js
+2) Narrative prompt:
+  python inject_prompt.py --js input_code.js --narrative --inplace
 
-3) In-place overwrite:
-  python inject_prompt.py --js radprimer_one_shot.js --prompt FULL_PROMPT.txt --core-gap --inplace
+3) Explicit prompt path:
+  python inject_prompt.py --js input_code.js --prompt pathologynarrative.txt --out input_code_injected.js
+
+4) Core covered (pages/section):
+  python inject_prompt.py --js input_code.js --core-ref "GI / Colon - p213-222 (IBD section)" --inplace
 """
 
 from __future__ import annotations
@@ -35,6 +41,10 @@ import re
 import sys
 
 
+DEFAULT_PROMPT = "FULL_PROMPT.txt"
+NARRATIVE_PROMPT = "pathologynarrative.txt"
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+
 PROMPT_BLOCK_RE = re.compile(
     r"""
     (const\s+PROMPT_TEXT\s*=\s*)      # group 1: assignment start
@@ -43,6 +53,9 @@ PROMPT_BLOCK_RE = re.compile(
     (`\s*;)                           # group 4: closing backtick + semicolon
     """,
     re.DOTALL | re.VERBOSE,
+)
+CORE_VALIDATION_FLAG_RE = re.compile(
+    r"(const\s+INCLUDE_CORE_VALIDATION_INPUT\s*=\s*)(true|false)(\s*;)"
 )
 
 CORE_GAP_LINE = "Core GAP: Topic not explicitly covered in Core Radiology; cards derived from RadPrimer/STATdx only."
@@ -100,26 +113,64 @@ def inject_prompt(js_code: str, new_prompt_raw: str) -> str:
 
     new_prompt_safe = escape_for_js_template_literal(new_prompt_raw.rstrip() + "\n")
 
-    # Replace ONLY the matched block (first occurrence)
     start, end = m.span()
     return js_code[:start] + prefix + new_prompt_safe + suffix + js_code[end:]
+
+
+def set_core_validation_visibility(js_code: str, include_core_validation: bool) -> str:
+    replacement = rf"\g<1>{'true' if include_core_validation else 'false'}\g<3>"
+    if CORE_VALIDATION_FLAG_RE.search(js_code):
+        return CORE_VALIDATION_FLAG_RE.sub(replacement, js_code, count=1)
+    return js_code
+
+
+def resolve_prompt_path(prompt_arg: str | None, narrative: bool) -> pathlib.Path:
+    if prompt_arg:
+        raw = pathlib.Path(prompt_arg)
+    elif narrative:
+        raw = pathlib.Path(NARRATIVE_PROMPT)
+    else:
+        raw = pathlib.Path(DEFAULT_PROMPT)
+
+    if raw.is_absolute() or raw.exists():
+        return raw
+
+    fallback = SCRIPT_DIR / raw
+    return fallback if fallback.exists() else raw
+
+
+def resolve_js_path(js_arg: str) -> pathlib.Path:
+    raw = pathlib.Path(js_arg)
+    if raw.is_absolute() or raw.exists():
+        return raw
+
+    fallback = SCRIPT_DIR / raw
+    return fallback if fallback.exists() else raw
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--js", required=True, help="Path to the JS file containing the exporter code.")
-    ap.add_argument("--prompt", required=True, help="Path to FULL_PROMPT.txt (the generated prompt).")
+    ap.add_argument(
+        "--prompt",
+        default=None,
+        help=f"Prompt file to inject. Defaults to {DEFAULT_PROMPT}; use --narrative for {NARRATIVE_PROMPT}.",
+    )
+    ap.add_argument(
+        "--narrative",
+        action="store_true",
+        help=f"Use {NARRATIVE_PROMPT} when --prompt is not provided.",
+    )
     ap.add_argument("--out", default=None, help="Output JS path. If omitted and not --inplace, adds _injected.js")
     ap.add_argument("--inplace", action="store_true", help="Overwrite the input JS file in place.")
 
-    # NEW controls
     ap.add_argument("--core-gap", action="store_true", help="Prepend Core GAP declaration line to the prompt.")
-    ap.add_argument("--core-ref", default=None, help='Prepend Core coverage reference, e.g. "GI / Colon — p213–222".')
+    ap.add_argument("--core-ref", default=None, help='Prepend Core coverage reference, e.g. "GI / Colon - p213-222".')
 
     args = ap.parse_args()
 
-    js_path = pathlib.Path(args.js)
-    prompt_path = pathlib.Path(args.prompt)
+    js_path = resolve_js_path(args.js)
+    prompt_path = resolve_prompt_path(args.prompt, args.narrative)
 
     if not js_path.exists():
         print(f"ERROR: JS file not found: {js_path}", file=sys.stderr)
@@ -135,6 +186,10 @@ def main() -> int:
         header = build_core_header(core_gap=args.core_gap, core_ref=args.core_ref)
         prompt_with_header = header + prompt_raw
         updated = inject_prompt(js_code, prompt_with_header)
+        updated = set_core_validation_visibility(
+            updated,
+            include_core_validation=(prompt_path.name != NARRATIVE_PROMPT),
+        )
     except Exception as e:
         print(f"ERROR: {e}", file=sys.stderr)
         return 3
@@ -153,7 +208,8 @@ def main() -> int:
     else:
         core_msg = "No Core header injected."
 
-    print(f"✅ Injected prompt from '{prompt_path.name}' into '{out_path.name}'. {core_msg}")
+    prompt_mode = "narrative" if prompt_path.name == NARRATIVE_PROMPT else "standard"
+    print(f"Injected {prompt_mode} prompt from '{prompt_path.name}' into '{out_path.name}'. {core_msg}")
     return 0
 
 
