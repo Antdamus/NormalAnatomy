@@ -143,3 +143,8 @@ Before export, confirm:
 - the question does not leak the answer
 - the image truly supports recognition
 - summary is populated only when required
+
+If the workflow explicitly states that no pictures are being provided for the run:
+- generate zero NORMAL UNKNOWN cards
+- do not fabricate image-driven prompts
+- do not attempt to convert text-only content into fake UNKNOWN cards

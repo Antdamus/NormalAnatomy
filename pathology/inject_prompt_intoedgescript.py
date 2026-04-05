@@ -649,6 +649,9 @@ def build_settings_block(include_core_validation: bool, narrative_mode: bool) ->
         case_map = []
         download_images = False
         auto_file_prefix_from_title = True
+    elif MODE == "chatgpt_cards":
+        file_prefix = ""
+        auto_file_prefix_from_title = True
 
     lines = [
         f"  const FILE_PREFIX = {format_js_value(file_prefix)};",

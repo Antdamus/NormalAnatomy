@@ -38,6 +38,12 @@ If an article has no usable source-supported images:
 - do not fabricate UNKNOWN cards
 - proceed with concept-driven card types only when supported
 
+If the workflow explicitly states that no pictures are being provided for the run:
+- treat that as a deliberate no-image workflow
+- do not create NORMAL UNKNOWN cards
+- do not ask for or expect image recovery inside the run
+- proceed with non-image card families only
+
 -----------------------------------------------------
 
 IMAGE / QUESTION SAFETY RULE
@@ -87,6 +93,11 @@ Do not break:
 If multiple images are used:
 - preserve source order exactly
 - preserve annotated and non-annotated pairing exactly
+
+If the extracted input labels image blocks as `CASE_##`:
+- treat each provided case block as an explicit input unit
+- account for every provided case block during generation
+- do not silently omit a provided case block
 
 -----------------------------------------------------
 

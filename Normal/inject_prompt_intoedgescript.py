@@ -19,16 +19,16 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 # "chatgpt_cards" -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no Codex workflow preamble
 # "codex_cards"   -> uses FULL_PROMPT.txt with Codex workflow preamble
 # "no_pictures"   -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no image selection, no downloads
-MODE = "narrative"
+MODE = "chatgpt_cards"
 VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards", "no_pictures"}
 
 # Single control surface for Edge injection.
-FILE_PREFIX = " "
-INCLUDE = ""
-CASE_MAP = []
+FILE_PREFIX = ""
+INCLUDE = [1,2,3,4,6,7,8,9,10,11,12];
+CASE_MAP = [];
 SOURCE_NOTE = ""
 CORE_NOTE = ""
-DOWNLOAD_IMAGES = False
+DOWNLOAD_IMAGES = True
 DOWNLOAD_PLAIN = True
 DOWNLOAD_ANNOTATED = True
 DOWNLOAD_DELAY_MS = 1000
@@ -58,6 +58,38 @@ Do not skip audits.
 Do not silently export through a failed gate.
 
 If all gates pass, continue autonomously through final TSV export in the same response.
+"""
+
+CHATGPT_CASE_ACCOUNTING_PROMPT = r"""# Case Accounting Override For ChatGPT Cards
+
+For this run, treat every provided `CASE_##` block in the extracted input as a mandatory input case unit.
+
+You must:
+- review every provided case
+- account for every provided case
+- use every provided case where the workflow requires case handling
+- never silently omit a provided case
+- never leave a provided case behind without explicitly accounting for it
+
+If a provided case cannot generate the expected card family:
+- state the exact reason
+- repair it if repairable
+- otherwise classify it explicitly rather than silently dropping it
+"""
+
+NO_PICTURES_MODE_PROMPT = r"""# No Pictures Mode Override
+
+For this run, no images are being provided to the model.
+
+Therefore:
+- do not expect image blocks
+- do not ask for missing pictures
+- do not fabricate image findings
+- do not fabricate image-based cases
+- do not create NORMAL UNKNOWN cards
+- proceed using only the article text and the standard NORMAL-engine rules for non-image card families
+
+Zero NORMAL UNKNOWN cards is expected in this mode.
 """
 
 CODEX_WORKFLOW_PROMPT = r"""# Codex Master Workflow Prompt for Sectioned NORMAL-Engine Anki Card Generation
@@ -240,7 +272,7 @@ Requirements:
 
 JS_SETTINGS_BLOCK_RE = re.compile(
     r"(const\s+FILE_PREFIX\s*=\s*.*?"
-    r"const\s+AUTO_FILE_PREFIX_FROM_TITLE\s*=\s*.*?;\s*)"
+    r"const\s+FORCE_CASE_LABELS\s*=\s*.*?;\s*)"
     r"(\n\s*/\*{22,}\n\s+\* YOUR PROMPT)",
     re.S,
 )
@@ -343,6 +375,7 @@ def build_settings_block(narrative_mode: bool) -> str:
     case_map = CASE_MAP
     download_images = DOWNLOAD_IMAGES
     auto_file_prefix_from_title = AUTO_FILE_PREFIX_FROM_TITLE
+    force_case_labels = False
 
     if narrative_mode:
         file_prefix = ""
@@ -350,6 +383,10 @@ def build_settings_block(narrative_mode: bool) -> str:
         case_map = []
         download_images = False
         auto_file_prefix_from_title = True
+    elif MODE == "chatgpt_cards":
+        file_prefix = ""
+        auto_file_prefix_from_title = True
+        force_case_labels = True
     elif MODE == "no_pictures":
         file_prefix = ""
         include = "none"
@@ -370,6 +407,7 @@ def build_settings_block(narrative_mode: bool) -> str:
         f"  const KEEP_CAPTION_HTML = {format_js_value(KEEP_CAPTION_HTML)};",
         f"  const STRIP_ARROW_TAGS_IN_CAPTION_TEXT = {format_js_value(STRIP_ARROW_TAGS_IN_CAPTION_TEXT)};",
         f"  const AUTO_FILE_PREFIX_FROM_TITLE = {format_js_value(auto_file_prefix_from_title)};",
+        f"  const FORCE_CASE_LABELS = {format_js_value(force_case_labels)};",
     ]
     return "\n".join(lines)
 
@@ -423,6 +461,10 @@ def main() -> int:
     final_prompt_text = prompt_text
     if selected_mode in {"chatgpt_cards", "no_pictures"} and not narrative_mode:
         final_prompt_text = f"{CHATGPT_AUTONOMOUS_PROMPT}\n\n{prompt_text}"
+    if selected_mode == "chatgpt_cards" and not narrative_mode:
+        final_prompt_text = f"{CHATGPT_AUTONOMOUS_PROMPT}\n\n{CHATGPT_CASE_ACCOUNTING_PROMPT}\n\n{prompt_text}"
+    elif selected_mode == "no_pictures" and not narrative_mode:
+        final_prompt_text = f"{CHATGPT_AUTONOMOUS_PROMPT}\n\n{NO_PICTURES_MODE_PROMPT}\n\n{prompt_text}"
     elif selected_mode == "codex_cards" and not narrative_mode:
         final_prompt_text = f"{CHATGPT_AUTONOMOUS_PROMPT}\n\n{CODEX_WORKFLOW_PROMPT}\n\n{prompt_text}"
 

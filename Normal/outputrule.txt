@@ -131,6 +131,13 @@ G2) Image-optional article integrity
 - do not force Section A or image-first extraction when the article has no usable images
 - do not fabricate Image, Image_Annotated, or Question to create image-based cards
 - concept-driven card families may export without any image-based notes when source-supported
+- if the workflow explicitly states that no pictures are being provided for the run, zero NORMAL UNKNOWN cards is the expected outcome
+- in that no-picture workflow, do not treat the absence of UNKNOWN cards as a coverage failure
+
+G2B) Case-accounting integrity for case-labeled input
+- if the extracted input presents image blocks as `CASE_##`, every provided case block must be accounted for
+- no provided case block may be silently omitted
+- if a case cannot support the expected image-driven card family, the output must make that explicit rather than dropping it silently
 
 G3) Mastery progression integrity
 - for full-topic extraction, foundational anatomy and normal-review anchors must not be skipped in favor of variants, traps, or mechanisms

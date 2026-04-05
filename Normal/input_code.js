@@ -30,6 +30,7 @@
   const KEEP_CAPTION_HTML = true;
   const STRIP_ARROW_TAGS_IN_CAPTION_TEXT = false;
   const AUTO_FILE_PREFIX_FROM_TITLE = false;
+  const FORCE_CASE_LABELS = false;
 
   /**********************
    * YOUR PROMPT (AUTO-INJECTED)
@@ -259,8 +260,14 @@
       return lines.join("\n");
     }
 
+    const hasExplicitCaseMap =
+      Array.isArray(CASE_MAP) &&
+      CASE_MAP.some((group) => Array.isArray(group) && group.length >= 2);
+
+    const labelPrefix = (FORCE_CASE_LABELS || hasExplicitCaseMap) ? "CASE" : "IMAGE";
+
     cases.forEach((group, caseIdx) => {
-      const caseLabel = `CASE_${String(caseIdx + 1).padStart(2, "0")}`;
+      const caseLabel = `${labelPrefix}_${String(caseIdx + 1).padStart(2, "0")}`;
       lines.push("");
       lines.push(`${caseLabel}: ${group.join(", ")}`);
 
