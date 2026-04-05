@@ -75,6 +75,16 @@
     return "";
   };
 
+  const buildTopicBlock = (title) => {
+    const topic = cleanText(title) || "[TOPIC NOT FOUND]";
+    return [
+      "=== TOPIC ===",
+      `PRIMARY TOPIC: ${topic}`,
+      `CENTERING TOPIC FOR THIS CHAT: ${topic}`,
+      `USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: ${topic}`
+    ].join("\n");
+  };
+
   const slugifyFilePrefix = (text) => {
     const cleaned = cleanText(text)
       .replace(/^Document:\s*/i, "")
@@ -294,6 +304,7 @@
   const clone = articleRoot.cloneNode(true);
   clone.querySelectorAll("script, style, noscript").forEach((el) => el.remove());
   stripRefsSectionIfPresent(clone);
+  const articleTitle = getArticleTitle();
   const articleOutline = domToOutline(clone);
 
   /**********************
@@ -345,7 +356,9 @@
    * 3) BUILD OUTPUT
    **********************/
   const out =
-`${buildWorkflowContext({
+`${buildTopicBlock(articleTitle)}
+
+${buildWorkflowContext({
   hasImagesOnPage: allImages.length > 0,
   selectedCount: selectedImages.length
 })}
@@ -354,7 +367,7 @@
 ${PROMPT_TEXT}
 
 === ARTICLE ===
-${articleOutline || "[Article extraction failed]"}
+${articleTitle ? `TITLE: ${articleTitle}\n\n` : ""}${articleOutline || "[Article extraction failed]"}
 
 ${buildImagesBlock(cases, byIndex)}
 `;
@@ -408,6 +421,7 @@ ${buildImagesBlock(cases, byIndex)}
     cases,
     downloadsEnabled: DOWNLOAD_IMAGES,
     autoFilePrefixFromTitle: AUTO_FILE_PREFIX_FROM_TITLE,
+    articleTitle,
     sourceNote: SOURCE_NOTE,
     coreNote: CORE_NOTE
   };

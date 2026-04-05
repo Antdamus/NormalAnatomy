@@ -19,11 +19,11 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 # "chatgpt_cards" -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no Codex workflow preamble
 # "codex_cards"   -> uses FULL_PROMPT.txt with Codex workflow preamble
 # "no_pictures"   -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no image selection, no downloads
-MODE = "no_pictures"
+MODE = "narrative"
 VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards", "no_pictures"}
 
 # Single control surface for Edge injection.
-FILE_PREFIX = "ScalpandCalvarialVault"
+FILE_PREFIX = " "
 INCLUDE = ""
 CASE_MAP = []
 SOURCE_NOTE = ""
