@@ -30,6 +30,7 @@ const CASE_MAP = [[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]];
   // Captions: remove inline arrow <img> tags from caption text?
   const STRIP_ARROW_TAGS_IN_CAPTION_TEXT = false;
   const KEEP_CAPTION_HTML = true;
+  const AUTO_FILE_PREFIX_FROM_TITLE = false;
 
   /**********************************************************************
    * CORE VALIDATION / GAP TOGGLES
@@ -161,6 +162,16 @@ const CASE_MAP = [[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]];
     ].join("\n");
   };
 
+  const slugifyFilePrefix = (s) => {
+    const cleaned = cleanText(s)
+      .replace(/^Document:\s*/i, "")
+      .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
+      .replace(/\s+/g, "_")
+      .replace(/_+/g, "_")
+      .replace(/^_+|_+$/g, "");
+    return cleaned || "image";
+  };
+
   const buildCases = (selectedNums) => {
     const selectedSet = new Set(selectedNums);
 
@@ -269,6 +280,10 @@ const CASE_MAP = [[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]];
     return;
   }
 
+  const resolvedFilePrefix = slugifyFilePrefix(
+    AUTO_FILE_PREFIX_FROM_TITLE ? getArticleTitle() : FILE_PREFIX
+  );
+
   const allImages = thumbs.map((img, idx0) => {
     const originalIndex = idx0 + 1;
     const a = img.closest("a[rel]");
@@ -285,7 +300,7 @@ const CASE_MAP = [[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]];
       captionDecoded = captionDecoded.replace(/\s+/g, " ").trim();
     }
 
-    const baseName = `${FILE_PREFIX}${originalIndex}`;
+    const baseName = `${resolvedFilePrefix}${originalIndex}`;
     const plainFilename = `${baseName}.jpg`;
     const annotFilename = `${baseName}_annot.jpg`;
 
@@ -443,6 +458,7 @@ ${buildImagesBlock()}
         : "IMAGE",
     downloadsEnabled: DOWNLOAD_IMAGES,
     downloadDelayMs: DOWNLOAD_DELAY_MS,
+    autoFilePrefixFromTitle: AUTO_FILE_PREFIX_FROM_TITLE,
     coreGap: CORE_GAP,
     coreSection: CORE_SECTION,
     corePages: CORE_PAGES,
