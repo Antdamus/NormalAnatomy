@@ -118,7 +118,11 @@ If the counts do NOT match:
 For each section:
 • Output ONLY that section’s Structured Card Preview.
 • Do NOT output other sections.
-• Wait for user approval (explicit “approved” or “next section”) before proceeding.
+• Wait for user approval (explicit “approved” or “next section”) before proceeding, UNLESS an autonomous batch mode override is present.
+• If an autonomous batch mode override is present:
+  → section previews are internal validation checkpoints
+  → do NOT pause for user approval between sections
+  → do NOT output user-facing section-by-section previews unless a hard stop or major repair explanation must be shown
 
 Structured Card Preview rules remain:
 • Do NOT display full summary text anywhere in Review mode.
@@ -188,10 +192,17 @@ When the user says “TSV” (or requests export/download):
 
 ACTIVE PREVIEW SET DEFINITION (SECTIONED)
 
-• The “active preview set” is the most recent USER-APPROVED section preview.
-• TSV export is allowed ONLY for sections that have been explicitly approved.
-• If a section is modified after approval:
-  → that section must be re-previewed and re-approved before TSV export.
+• In standard manual mode:
+  → The “active preview set” is the most recent USER-APPROVED section preview.
+  → TSV export is allowed ONLY for sections that have been explicitly approved.
+  → If a section is modified after approval:
+    → that section must be re-previewed and re-approved before TSV export.
+
+• If an autonomous batch mode override is present:
+  → The “active preview set” is the most recent internally validated section or full-deck snapshot that passed all automatic checks.
+  → TSV export is allowed ONLY for sections that have passed automatic validation.
+  → If a section is modified after repair:
+    → that section must be internally re-validated before TSV export.
 
 COMPLETE PREVIEW REQUIREMENT (MANDATORY)
 

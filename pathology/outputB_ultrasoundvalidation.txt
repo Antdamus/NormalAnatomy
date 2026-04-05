@@ -24,6 +24,10 @@ If no such card exists:
 - Output: "TSV export blocked - ultrasound appearance described in source but not encoded."
 - Then generate the missing ultrasound appearance High-Yield card(s) in SECTION G and re-preview.
 
+If an autonomous batch mode override is present:
+- "approved preview set" means the most recent automatically validated section or full-deck snapshot.
+- "re-preview" means internally re-validate after repair, not pause for user approval.
+
 -----------------------------------------------------
 
 S) ULTRASOUND APPEARANCE REVIEW SCOPE

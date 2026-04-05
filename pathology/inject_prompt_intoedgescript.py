@@ -16,9 +16,9 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 
 # Operating mode:
 # "narrative"     -> uses pathologynarrative.txt, all images, no downloads, no Codex workflow preamble
-# "chatgpt_cards" -> uses FULL_PROMPT.txt without Codex workflow preamble
+# "chatgpt_cards" -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no Codex workflow preamble
 # "codex_cards"   -> uses FULL_PROMPT.txt with Codex workflow preamble
-MODE = "codex_cards"
+MODE = "chatgpt_cards"
 VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards"}
 
 # Single control surface for Edge injection.
@@ -29,13 +29,50 @@ CASE_MAP = [[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]]
 CORE_GAP = False
 CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it"
 CORE_PAGES = ""
-DOWNLOAD_IMAGES = True
+DOWNLOAD_IMAGES = False
 DOWNLOAD_PLAIN = True
 DOWNLOAD_ANNOTATED = True
 DOWNLOAD_DELAY_MS = 1000
 STRIP_ARROW_TAGS_IN_CAPTION_TEXT = False
 KEEP_CAPTION_HTML = True
 AUTO_FILE_PREFIX_FROM_TITLE = False
+
+CHATGPT_AUTONOMOUS_PROMPT = r"""# Autonomous Execution Override
+
+For this run, operate in autonomous batch mode.
+
+Do not stop to ask for user permission between section previews, audits, repairs, or export steps after the Core Validation Gate is satisfied.
+
+Exception:
+You may and should ask the user for clarification when the Core Validation Gate is not yet satisfied, including:
+- whether to use Pathway A or Pathway B
+- which Core section/chapter/pages correlate to the topic
+- whether Core GAP is being explicitly invoked
+
+Once the Core Validation Gate is satisfied, continue autonomously.
+
+If the embedded prompt says to wait for user approval, explicit "approved," "next section," or re-approval after revision, treat that requirement as pre-authorized for this run.
+
+In autonomous batch mode:
+- section previews are internal validation checkpoints unless a hard stop or major repair explanation must be shown
+- do not output user-facing section-by-section previews by default
+- "approved preview set" means the most recent internally validated section or full-deck snapshot that passed automatic checks
+- "re-preview" means internally re-validate after repair, not pause for user approval
+
+You must still:
+- perform every required audit
+- validate each section before export
+- repair fixable failures before moving on
+- stop on true hard-stop failures
+- stop if required source information is missing or cannot be validated
+- stop if the Core Validation Gate cannot be satisfied from the provided information
+
+Do not skip workflow steps.
+Do not skip audits.
+Do not silently export through a failed gate.
+
+If all gates pass, continue autonomously through final TSV export in the same response.
+"""
 
 CODEX_WORKFLOW_PROMPT = r"""# Codex Master Workflow Prompt for Sectioned Anki Card Generation
 
@@ -691,9 +728,12 @@ def main() -> int:
     )
     js_code = set_core_validation_visibility(js_code, include_core_validation)
     final_prompt_text = prompt_text
+    if selected_mode == "chatgpt_cards" and not narrative_mode:
+        final_prompt_text = f"{CHATGPT_AUTONOMOUS_PROMPT}\n\n{prompt_text}"
+
     codex_workflow_enabled = (selected_mode == "codex_cards") and not narrative_mode
     if codex_workflow_enabled:
-        final_prompt_text = f"{CODEX_WORKFLOW_PROMPT}\n\n{prompt_text}"
+        final_prompt_text = f"{CHATGPT_AUTONOMOUS_PROMPT}\n\n{CODEX_WORKFLOW_PROMPT}\n\n{prompt_text}"
 
     safe_prompt = escape_for_js_template_literal(final_prompt_text)
     final_js = js_code.replace(MARKER, safe_prompt)
