@@ -83,7 +83,7 @@
 
 /********************** */
 
-    const FILE_PREFIX = "UShydronephrosis"; // <-- change per document
+  const FILE_PREFIX = "UShydronephrosis"; // <-- change per document
   const INCLUDE = [1,2,3,4,5,6,7,8,9,10]; // "all" OR "2,4,5,8"
   const CASE_MAP = [[5,6],[7,8]]; // e.g. [[2,5],[8,9]] ; leave [] for auto-solo everything
   const CORE_GAP = false; // <-- true = Pathway B (Core GAP), false = Pathway A (Core covered)
@@ -193,4 +193,6 @@ const CASE_MAP = [[1,2]];
 const FILE_PREFIX = "RenalMetastasis";
 const INCLUDE = [1,2,3,4];
 const CASE_MAP = [[1,2],[3,4]];
+
+/********************** */
 
