@@ -18,8 +18,9 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 # "narrative"     -> uses normalnarrative.txt, all images, no downloads, no Codex workflow preamble
 # "chatgpt_cards" -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no Codex workflow preamble
 # "codex_cards"   -> uses FULL_PROMPT.txt with Codex workflow preamble
-MODE = "narrative"
-VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards"}
+# "no_pictures"   -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no image selection, no downloads
+MODE = "no_pictures"
+VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards", "no_pictures"}
 
 # Single control surface for Edge injection.
 FILE_PREFIX = "ScalpandCalvarialVault"
@@ -286,7 +287,7 @@ def resolve_mode(prompt_arg: str | None, narrative_flag: bool) -> str:
     mode = MODE.strip().lower()
     if mode not in VALID_MODES:
         raise SystemExit(
-            f"ERROR: Invalid MODE '{MODE}'. Use one of: narrative, chatgpt_cards, codex_cards."
+            f"ERROR: Invalid MODE '{MODE}'. Use one of: narrative, chatgpt_cards, codex_cards, no_pictures."
         )
 
     if narrative_flag:
@@ -296,7 +297,7 @@ def resolve_mode(prompt_arg: str | None, narrative_flag: bool) -> str:
         prompt_name = Path(prompt_arg).name.lower()
         if prompt_name == NARRATIVE_PROMPT.lower():
             return "narrative"
-        return "codex_cards" if mode == "codex_cards" else "chatgpt_cards"
+        return mode if mode in {"codex_cards", "no_pictures"} else "chatgpt_cards"
 
     return mode
 
@@ -346,6 +347,12 @@ def build_settings_block(narrative_mode: bool) -> str:
     if narrative_mode:
         file_prefix = ""
         include = "all"
+        case_map = []
+        download_images = False
+        auto_file_prefix_from_title = True
+    elif MODE == "no_pictures":
+        file_prefix = ""
+        include = "none"
         case_map = []
         download_images = False
         auto_file_prefix_from_title = True
@@ -414,7 +421,7 @@ def main() -> int:
     js_code = inject_settings_block(js_code, narrative_mode=narrative_mode)
 
     final_prompt_text = prompt_text
-    if selected_mode == "chatgpt_cards" and not narrative_mode:
+    if selected_mode in {"chatgpt_cards", "no_pictures"} and not narrative_mode:
         final_prompt_text = f"{CHATGPT_AUTONOMOUS_PROMPT}\n\n{prompt_text}"
     elif selected_mode == "codex_cards" and not narrative_mode:
         final_prompt_text = f"{CHATGPT_AUTONOMOUS_PROMPT}\n\n{CODEX_WORKFLOW_PROMPT}\n\n{prompt_text}"
