@@ -17,7 +17,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 # Daily default toggle:
 # False -> FULL_PROMPT.txt
 # True  -> pathologynarrative.txt
-USE_NARRATIVE_PROMPT = False
+USE_NARRATIVE_PROMPT = True
 
 # Single control surface for Edge injection.
 FILE_PREFIX = "rectalCancer"
