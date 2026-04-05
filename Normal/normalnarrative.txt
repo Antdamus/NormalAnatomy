@@ -1,0 +1,405 @@
+# Guided Normal Anatomy Mastery Narrative Prompt
+
+You are transforming a radiology source article into a **GUIDED NORMAL ANATOMY MASTERY NARRATIVE** for a radiology resident.
+
+This output is designed for **fast, high-yield first-pass understanding** of normal anatomy, normal appearance, normal variants, normal review strategy, and normal interpretive pitfalls.
+
+It is **not** primarily a flashcard deck.
+It is **not** a pathology-first explanation.
+It is **not** a diagnosis quiz stream.
+It is **not** a generic article summary.
+
+The narrative must function as the **understanding + visual organization layer** that prepares the learner for later Anki reinforcement.
+
+Like the pathology narrative workflow, this normal-anatomy narrative is expected to be **image-driven**:
+
+* all extracted images should be used
+* caption continuity should be used to infer likely grouped cases when appropriate
+* the final output should include a verification code block showing the images used and the final grouping map
+
+---
+
+## PRIMARY EDUCATIONAL GOAL
+
+The narrative must optimize for:
+
+1. **Normal structure recognition**
+2. **Normal spatial relationships**
+3. **Modality-specific normal appearance**
+4. **Landmark-based exam review**
+5. **Recognition of normal variants and pseudolesions**
+6. **Safe separation of normal, variant, and abnormal**
+
+It must **not** force normal material into pathology-style diagnosis logic.
+
+Think of it this way:
+
+**Narrative = guided understanding + visual organization + exam review strategy**
+**Anki = later retrieval practice + durable consolidation**
+
+---
+
+## ENGINE BOUNDARY
+
+This narrative is for:
+
+* normal anatomy
+* normal modality appearance
+* normal physiologic appearance
+* normal variants
+* pseudolesions and mimics of disease
+* landmark recognition
+* image review strategy for normal exams
+* modality-specific approach rules for ultrasound, CT, and MRI
+
+This narrative is **not** for:
+
+* disease-first diagnosis logic
+* pathology-style differential listing as the default mode
+* speculative management or treatment content
+
+If the source is fundamentally pathology-centered, that belongs in the pathology engine instead.
+
+---
+
+## INPUT FORMAT EXPECTATION
+
+You will receive an extracted block that may contain sections such as:
+
+* `=== WORKFLOW CONTEXT ===`
+* `=== PROMPT ===`
+* `=== ARTICLE ===`
+* `=== IMAGES (optional; original numbering preserved when present) ===`
+
+The article contains the structured source outline.
+The image section contains extracted filenames and captions.
+
+For this narrative workflow, assume the image block is part of the intended teaching payload.
+
+You should:
+
+* use all extracted images unless the input is structurally unusable
+* inspect all captions carefully
+* infer likely multi-image groupings when caption continuity is strong
+* organize the narrative around the final image set and grouping logic
+
+Do **not** silently ignore images just because the article also has strong text content.
+
+---
+
+## WHOLE-SOURCE REVIEW RULE
+
+The narrative must be built from the **full provided article**, not from:
+
+* one figure caption
+* one summary paragraph
+* one named structure
+* compressed memory
+* generic anatomy knowledge
+
+You must preserve the article's full teaching payload when it contains multiple independent buckets.
+
+Examples of buckets that may need integration:
+
+* named structures
+* spatial relationships
+* landmark identifiers
+* modality-specific normal appearance anchors
+* review-order rules
+* planes, sequences, or phases
+* completeness checklist items
+* measurements or morphology anchors
+* normal variants
+* pseudolesions or mimics
+* pitfalls and overcall risks
+* discriminator points between normal, variant, and abnormal
+* mechanism-style explanations for why a normal appearance looks the way it does
+* board-relevant pivots
+
+Do not let one catchy figure dominate the narrative if the article teaches much more than that.
+
+---
+
+## MASTERY PROGRESSION RULE
+
+The narrative should usually teach the topic in this progression when the source supports it:
+
+1. **Foundational structures and landmarks**
+2. **Normal spatial relationships**
+3. **Modality-specific normal appearance anchors**
+4. **Exam-approach and review-sequence rules**
+5. **Normal variants and pseudolesions**
+6. **Discriminators between normal, variant, and abnormal**
+7. **Mechanism-style explanations**
+
+This is crucial.
+
+Do **not** let the narrative become trap-heavy, mimic-heavy, or variant-heavy before the learner first understands the core normal anchors.
+
+If the source supports foundations, build those foundations first.
+
+---
+
+## IMAGE INTERPRETATION RULE
+
+If the extractor output uses `CASE_##`, you may treat that as an explicit grouped case.
+
+If the extractor output lists separate images, do **not** silently assume they are the same case unless the captions strongly support that.
+
+You may use controlled grouping inference when caption continuity is strong, but when confidence is weak, prefer keeping images separate.
+
+If grouping is inferred rather than explicit:
+
+* acknowledge that briefly near the beginning
+* do not keep repeating the same disclaimer
+* do not state weak grouping as certain
+
+If the image block is structurally unusable, be transparent about that rather than inventing case structure.
+
+---
+
+## IMAGE-DRIVEN TEACHING RULE
+
+The narrative should use the extracted images to teach:
+
+* what landmark to find first
+* how to orient yourself
+* what normal should look like on that modality
+* what relationship or feature matters most
+* what could be overcalled if you review the image badly
+
+Important non-image article facts should still be integrated at the point where they become meaningful, but the image set should drive the walkthrough.
+
+---
+
+## MODALITY-SPECIFIC RULE
+
+If the source contains modality-specific teaching, preserve it clearly.
+
+Do not flatten:
+
+* ultrasound landmark logic
+* CT phase logic
+* MRI sequence logic
+* modality-dependent normal appearance
+
+into bland generic anatomy prose.
+
+The learner should feel that the narrative is teaching them **how to review the exam**, not just naming structures in the abstract.
+
+---
+
+## EXAM-APPROACH RULE
+
+Approach content is important in the NORMAL engine.
+
+Preserve concrete, source-supported lessons such as:
+
+* what landmark to identify first
+* what order to review structures in
+* what plane matters most
+* what sequence or phase clarifies a normal structure
+* what constitutes a complete normal review
+* what feature prevents overcalling pathology
+
+Do **not** drift into vague advice like:
+
+* "be systematic"
+* "review carefully"
+* "correlate clinically"
+
+unless the article gives a specific actionable version of that idea.
+
+---
+
+## NORMAL CATEGORY DISTINCTION RULE
+
+The narrative must keep these categories distinct:
+
+* true normal structure
+* expected normal appearance
+* physiologic normal appearance
+* developmental appearance
+* normal variant
+* pseudolesion or mimic
+* true abnormality
+* exam-approach concept
+
+Do not blur them together.
+
+When teaching a variant or mimic, make sure the learner understands **why** it is still normal, variant, or pseudolesional rather than pathologic.
+
+---
+
+## PITFALL AND OVERCALL RULE
+
+If the source teaches overcall prevention, preserve that teaching point.
+
+These moments are especially valuable in the NORMAL engine.
+
+Teach them in a way that helps the learner answer questions like:
+
+* Why could this be mistaken for disease?
+* What feature keeps it in the normal or variant category?
+* What landmark, plane, sequence, or relationship prevents the overcall?
+* What review mistake creates the false impression of pathology?
+
+These should feel operational, not decorative.
+
+---
+
+## DIFFERENTIAL / DISCRIMINATOR RULE
+
+Do **not** default to pathology-style differential narration.
+
+Use discriminator-style discussion only when the source truly supports it, such as:
+
+* normal vs abnormal
+* variant vs pathology
+* pseudolesion vs lesion
+
+When you do this, keep the emphasis on **what separates them**, not on broad disease-list recitation.
+
+---
+
+## NARRATIVE STYLE RULE
+
+The narrative should feel like a skilled senior resident or attending walking a trainee through how to actually understand and review the topic.
+
+It should be:
+
+* clear
+* cumulative
+* elegant
+* operational
+* image-aware
+* anatomy-first
+* modality-aware
+
+It should include short pauses and targeted prompts, but it should **not** become a barrage of quiz questions.
+
+The tone should support:
+
+* comprehension
+* orientation
+* pattern recognition
+* safe interpretation
+* retention of major pivots
+
+---
+
+## ORGANIZATION RULE
+
+Choose the teaching structure that best fits the source.
+
+Good organizing frames include:
+
+* region-first walkthrough
+* landmark-first orientation
+* modality-by-modality comparison
+* sequence or phase review order
+* foundational anatomy first, then variants and pitfalls
+
+Do not simply echo the article headings if they are educationally weak.
+Do use them when they already produce a strong progression.
+
+---
+
+## NON-FABRICATION RULE
+
+Do not invent:
+
+* anatomy relationships
+* imaging findings
+* variants
+* prevalence
+* measurements
+* physiologic explanations
+* modality behavior
+* pitfalls
+* workflow steps
+* sequence or phase claims
+
+If a detail is not supported by the provided source, omit it rather than filling it in from generic anatomy memory.
+
+Blank is better than false.
+
+---
+
+## NARRATIVE FLOW RULE
+
+The final script must feel like one coherent spoken teaching performance.
+
+Rules:
+
+* transitions must be smooth
+* facts should be integrated into the surrounding explanation, not dropped in mechanically
+* the narrative should sound elegant, natural, and cumulative
+* each new idea should build on the previous one
+* repetition should be purposeful, not formulaic
+* the script should be beautiful to listen to in Speechify
+
+---
+
+## OUTPUT FORMAT
+
+Produce the final output in **two separate code blocks** and nothing else except minimal section labels if needed.
+
+### Code block 1 — Speechify narrative
+
+The main guided narrative must:
+
+* be written specifically for **Speechify / text-to-speech listening**
+* read smoothly out loud
+* avoid awkward punctuation-heavy formatting
+* avoid tables
+* avoid TSV-like formatting
+* avoid dense nested bullets inside the narrative
+* preserve clear spoken transitions
+* preserve explicit image guidance
+
+The entire main narrative should appear inside **one single code block** so it can be copied and pasted easily into Speechify.
+
+### Code block 2 — Grouping audit / extractor check
+
+After the narrative, output a second code block containing the final inferred or explicit image-group structure in this exact JavaScript-style format:
+
+```javascript
+const INCLUDE = [1,2,3,4];
+const CASE_MAP = [[1,2],[8,9,10,11]];
+```
+
+Rules for this second code block:
+
+* `INCLUDE` must list all included image numbers in ascending order
+* `CASE_MAP` must list only grouped multi-image cases
+* single ungrouped images should remain only in `INCLUDE`, not as one-item arrays in `CASE_MAP`
+* if no multi-image groups were inferred or provided, use:
+
+```javascript
+const INCLUDE = [...];
+const CASE_MAP = [];
+```
+
+* the grouping code block exists so the user can manually verify whether the narrative grouped images correctly
+* inferred groupings must still obey the controlled grouping inference rule
+* do not pretend uncertain groups are certain inside the narrative; but the second code block should still reflect the final grouping decision used to organize the walkthrough
+
+---
+
+## FINAL INSTRUCTION
+
+Create a **guided normal anatomy mastery narrative** that:
+
+* preserves the full-source teaching payload
+* builds foundations before advanced pitfalls
+* emphasizes landmarks, relationships, normal appearance, and review strategy
+* clearly distinguishes normal, variant, mimic, and abnormal
+* uses all extracted images and organizes them intelligently
+* uses controlled grouping inference when appropriate
+* clearly labels inferred grouping when used
+* integrates important non-image article facts seamlessly at the point where they matter
+* prepares the learner for later Anki reinforcement
+
+Do not ask for clarification unless the input is structurally unusable.
+When uncertain, be transparent rather than overconfident.

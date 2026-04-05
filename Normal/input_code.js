@@ -29,6 +29,7 @@
   const DOWNLOAD_DELAY_MS = 1000;
   const KEEP_CAPTION_HTML = true;
   const STRIP_ARROW_TAGS_IN_CAPTION_TEXT = false;
+  const AUTO_FILE_PREFIX_FROM_TITLE = false;
 
   /**********************
    * YOUR PROMPT (AUTO-INJECTED)
@@ -47,11 +48,41 @@
     return ta.value;
   };
 
+  const cleanText = (text) => String(text || "").replace(/\s+/g, " ").trim();
+
   const rewriteRadPrimerArrowSrcToAnki = (html) => {
     return (html || "").replace(
       /<img[^>]*src=['"]\/img\/arrows\/([A-Za-z0-9_]+)\.png['"][^>]*\/?>/g,
       '<img src="arrow_$1.png">'
     );
+  };
+
+  const getArticleTitle = () => {
+    const candidates = [
+      document.querySelector("h1.document-name-js.page-heading-js")?.textContent,
+      document.querySelector("#content .page-heading h1")?.textContent,
+      document.querySelector(".page-heading h1")?.textContent,
+      document.querySelector("head > title")?.textContent
+    ];
+
+    for (let title of candidates) {
+      title = cleanText(title);
+      if (!title) continue;
+      title = title.replace(/^Document:\s*/i, "");
+      if (title) return title;
+    }
+
+    return "";
+  };
+
+  const slugifyFilePrefix = (text) => {
+    const cleaned = cleanText(text)
+      .replace(/^Document:\s*/i, "")
+      .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
+      .replace(/\s+/g, "_")
+      .replace(/_+/g, "_")
+      .replace(/^_+|_+$/g, "");
+    return cleaned || "image";
   };
 
   const normalizeIncludeInput = (includeValue) => {
@@ -269,6 +300,9 @@
    * 2) IMAGES (OPTIONAL)
    **********************/
   const thumbs = Array.from(document.querySelectorAll("#gallery img[data-caption]"));
+  const resolvedFilePrefix = slugifyFilePrefix(
+    AUTO_FILE_PREFIX_FROM_TITLE ? getArticleTitle() : FILE_PREFIX
+  );
   const allImages = thumbs.map((img, idx0) => {
     const originalIndex = idx0 + 1;
     const anchor = img.closest("a[rel]");
@@ -285,7 +319,7 @@
       captionDecoded = captionDecoded.replace(/\s+/g, " ").trim();
     }
 
-    const baseName = `${FILE_PREFIX}${originalIndex}`;
+    const baseName = `${resolvedFilePrefix}${originalIndex}`;
     const plainFilename = `${baseName}.jpg`;
     const annotFilename = `${baseName}_annot.jpg`;
 
@@ -359,7 +393,7 @@ ${buildImagesBlock(cases, byIndex)}
       if (DOWNLOAD_ANNOTATED) await downloadOne(img.annotUrl, img.annotFilename);
     }
     console.log(
-      `Download complete. Files named like ${FILE_PREFIX}2.jpg and ${FILE_PREFIX}2_annot.jpg.`
+      `Download complete. Files named like ${resolvedFilePrefix}2.jpg and ${resolvedFilePrefix}2_annot.jpg.`
     );
   };
 
@@ -373,6 +407,7 @@ ${buildImagesBlock(cases, byIndex)}
     selectedImages: selectedNums,
     cases,
     downloadsEnabled: DOWNLOAD_IMAGES,
+    autoFilePrefixFromTitle: AUTO_FILE_PREFIX_FROM_TITLE,
     sourceNote: SOURCE_NOTE,
     coreNote: CORE_NOTE
   };
