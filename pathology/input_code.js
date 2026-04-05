@@ -14,15 +14,15 @@
   /**********************
    * SETTINGS YOU EDIT
    **********************/
-  const FILE_PREFIX = "ColonCancer";
+  const FILE_PREFIX = "rectalCancer";
 const INCLUDE = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
-const CASE_MAP = [[3,4],[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18,19],[20,21,22]];
+const CASE_MAP = [[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]];
 
   const CORE_GAP = false; // true = Pathway B (Core GAP), false = Pathway A (Core covered)
   const CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it";
   const CORE_PAGES = "";
   const INCLUDE_CORE_VALIDATION_INPUT = true; // auto-set by injector; true for card/full-prompt workflows, false for narrative workflows
-  const DOWNLOAD_IMAGES = false; // set false if you only want copy-to-clipboard
+  const DOWNLOAD_IMAGES = true; // set false if you only want copy-to-clipboard
   const DOWNLOAD_PLAIN = true; // plain (no arrows)
   const DOWNLOAD_ANNOTATED = true; // annotated (with arrows)
   const DOWNLOAD_DELAY_MS = 1000; // 1 second delay between downloads
