@@ -23,13 +23,13 @@ VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards"}
 
 # Single control surface for Edge injection.
 FILE_PREFIX = "rectalCancer"
-INCLUDE = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]
-CASE_MAP = [[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]]
+INCLUDE = [1,2,3,4,5,6,7,8,9,10];
+CASE_MAP = [[7,8]];
 
 CORE_GAP = False
 CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it"
 CORE_PAGES = ""
-DOWNLOAD_IMAGES = False
+DOWNLOAD_IMAGES = True
 DOWNLOAD_PLAIN = True
 DOWNLOAD_ANNOTATED = True
 DOWNLOAD_DELAY_MS = 1000

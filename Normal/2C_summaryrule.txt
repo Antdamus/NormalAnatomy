@@ -28,6 +28,8 @@ The summary must be derived ONLY from the full anchor article.
 
 The summary must:
 - reflect full-article review
+- be article-level rather than card-level
+- remain identical across all cards generated from the same article
 - remain source-faithful
 - stay inside the article's supported scope
 - avoid outside knowledge
@@ -45,18 +47,50 @@ SUMMARY FORMAT (STRICT)
 
 The summary field must contain:
 - no literal newline characters
-- <br> only
-- one continuous string
+- one continuous Anki-safe HTML string
+- no raw markdown markers such as #, ##, **, *, -, or markdown tables
 
-Use this exact labeled structure:
+Use simple Anki-safe HTML only:
+- <b>
+- <br>
+- <div>
+- <ul>
+- <ol>
+- <li>
 
-KEY FACTS:<br>- ...<br>LANDMARKS / STRUCTURES:<br>- ...<br>NORMAL APPEARANCE / MODALITY ANCHORS:<br>- ...<br>EXAM APPROACH / REVIEW SEQUENCE:<br>- ...<br>VARIANTS / MIMICS / PITFALLS:<br>- ...<br>DISCRIMINATORS / OVERCALL PROTECTION:<br>- ...<br>MECHANISTIC OR MODALITY LOGIC (if present):<br>- ...<br>BOARD-RELEVANT PIVOTS (if present):<br>- ...
+The summary must begin with:
+- 1-2 sentences summarizing the main topic from the article only
+
+Then use clearly labeled sections only when supported by the article.
+
+Preferred section labels:
+- <b>Key Imaging Findings</b>
+- <b>Differential Diagnosis</b>
+- <b>Clinical Presentation</b>
+- <b>Pearls / Pitfalls</b>
+- <b>Key Measurements / Criteria / Scoring Systems</b>
+- other article-supported labels when needed for readability in the NORMAL workflow, such as landmarks, structures, review approach, variants, discriminators, or modality anchors
+
+End with:
+- a concise <b>Super Summary</b> section
+
+Use bullets generously for readability.
+Omit unsupported sections rather than fabricating them.
 
 -----------------------------------------------------
 
 SUMMARY CONTENT RULES
 
 The summary should capture only article-supported material that would help explain why the resulting cards exist.
+
+It should prioritize radiology study usefulness, especially:
+- imaging findings
+- high-yield radiology anchors
+- measurements
+- criteria
+- scoring systems
+- discriminators
+- pitfalls
 
 It should NOT:
 - become a pathology-style differential paragraph

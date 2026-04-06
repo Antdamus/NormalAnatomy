@@ -155,6 +155,7 @@ Mode 2 — TSV Output (STRICT FORMAT):
 • Column count MUST be exactly:
   22 columns total = 21 fields (core_rad_notetype) + final Tags column.
 • Clinical_Context can NEVER be empty.
+• The final Tags column MUST remain present and MUST be blank / empty for every exported row.
 
 TSV Structural Integrity Rule (CRITICAL)
 
@@ -162,6 +163,12 @@ TSV Structural Integrity Rule (CRITICAL)
 • Every note must occupy exactly one physical line in the TSV file.
 • All internal formatting must use <br> instead of newline characters.
 • Any violation invalidates the TSV.
+
+Summary HTML Rule (TSV)
+• The `summary` field must render as simple Anki-safe HTML, not raw markdown.
+• Allowed summary HTML should remain limited to simple tags such as:
+  <b> <br> <div> <ul> <ol> <li>
+• The same article-level summary content must be reused identically across all cards from the same article/case bundle.
 
 -----------------------------------------------------
 PREVIEW → TSV IDENTITY LOCK (CRITICAL)
