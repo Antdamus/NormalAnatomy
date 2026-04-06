@@ -76,14 +76,15 @@ summary
 When generating TSV:
 
 • Add ONE final extra column at the end: **Tags**
+• The final **Tags** column must remain present but blank / empty for every row
 • **No header row**
 • Tabs only
 • One note per line
 • Standalone concept cards MUST be included
 • Clinical_Context field can NEVER be empty
 
-TSV column order is exactly the 19 fields above, followed by Tags.
-So TSV has **20 columns total: 19 fields + Tags**.
+TSV column order is exactly the note fields above, followed by Tags.
+The final TSV tag column is an empty placeholder in this workflow.
 
 ---
 
@@ -541,15 +542,9 @@ If gaps exist → generate additional required cards before TSV.
 
 ---
 
-## TAGGING (MANDATORY)
+## TAGGING
 
-SPACE-separated:
-
-Core::<Module>::<Submodule>
-::Disease / ::Concept / ::DifferentialDrill / ::RadiopaediaDrill
-Entity tag
-Optional modality tag
-Yield::High or Yield::Moderate
+The final TSV tag column remains part of the shared export shape, but it should be left blank / empty in this workflow.
 
 ---
 
