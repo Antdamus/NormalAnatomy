@@ -57,11 +57,25 @@ Use simple Anki-safe HTML only:
 - <ul>
 - <ol>
 - <li>
+- light inline style attributes only when they improve hierarchy and remain robust in Anki
 
 The summary must begin with:
-- 1-2 sentences summarizing the main topic from the article only
+- a visually distinct title block using the source article's actual title or main topic
+- then 1-2 sentences summarizing the main topic from the article only
+
+The title block should:
+- stand out visually from the rest of the summary
+- use simple HTML hierarchy such as a bold title inside a <div>
+- avoid hardcoded example entities
+- allow light emoji only when it genuinely improves scanability
 
 Then use clearly labeled sections only when supported by the article.
+
+The summary should read like a polished radiology study handout:
+- visually readable first
+- easy to scan
+- not plain or paragraph-heavy
+- organized with clear spacing between major sections
 
 Preferred section labels:
 - <b>Key Imaging Findings</b>
@@ -71,10 +85,31 @@ Preferred section labels:
 - <b>Key Measurements / Criteria / Scoring Systems</b>
 - other article-supported labels when needed for readability in the NORMAL workflow, such as landmarks, structures, review approach, variants, discriminators, or modality anchors
 
+Preferred section order when supported by the article:
+- overview
+- Key Imaging Findings
+- Differential Diagnosis
+- Clinical Presentation / Demographics
+- Pearls / Pitfalls / Diagnostic Checklist
+- Super Summary
+
+Within Key Imaging Findings:
+- group findings by modality when the article supports modality-specific organization
+- do not flatten modality-specific findings into one mixed list
+
+Preferred imaging subsections when supported:
+- <b>Radiography / Best Initial Test</b>
+- <b>CT</b>
+- <b>MR Imaging</b>
+- <b>Ultrasound / Other</b>
+- <b>Distribution / Hallmark Signs</b>
+
 End with:
 - a concise <b>Super Summary</b> section
 
 Use bullets generously for readability.
+Prefer compact, high-yield bullets rather than long prose bullets.
+Each bullet should ideally communicate one radiology takeaway.
 Omit unsupported sections rather than fabricating them.
 
 -----------------------------------------------------
@@ -91,6 +126,15 @@ It should prioritize radiology study usefulness, especially:
 - scoring systems
 - discriminators
 - pitfalls
+
+Elevate into dedicated bullets or subsections when source-supported:
+- hallmark signs
+- favored locations or distributions
+- measurements
+- criteria
+- scoring systems
+- diagnostic pivots
+- review checklists
 
 It should NOT:
 - become a pathology-style differential paragraph
@@ -109,5 +153,8 @@ Use:
 - article-supported separators
 - article-supported approach steps
 - article-supported pitfalls
+- strong visual hierarchy
+- spacing between major sections
+- visually distinct headers and, when useful, subsection headers
 
 Do not waste summary space on generic statements.
