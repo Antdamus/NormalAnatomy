@@ -61,6 +61,7 @@ Use simple Anki-safe HTML only:
 
 The summary must begin with:
 - a visually distinct title block using the source article's actual title or main topic
+- the title block should include a clean emoji or icon anchor
 - then 1-2 sentences summarizing the main topic from the article only
 
 The title block should:
@@ -77,7 +78,17 @@ The summary should read like a polished radiology study handout:
 - not plain or paragraph-heavy
 - organized with clear spacing between major sections
 
+Formatting hierarchy rules:
+- major section headers must be on their own line
+- subsection headers must also be on their own line
+- explanatory content should appear underneath as bullets or nested bullets
+- do NOT use inline `Header: long sentence` formatting for the main outline
+- after the initial 1-2 sentence summary, prefer bullet-based and hierarchical formatting over prose blocks
+- when choosing between fewer longer bullets versus more shorter nested bullets, prefer more shorter nested bullets
+
 Preferred section labels:
+- <b>Abbreviations / Acronyms</b> when source-supported
+- <b>Summary</b>
 - <b>Key Imaging Findings</b>
 - <b>Differential Diagnosis</b>
 - <b>Clinical Presentation</b>
@@ -86,6 +97,7 @@ Preferred section labels:
 - other article-supported labels when needed for readability in the NORMAL workflow, such as landmarks, structures, review approach, variants, discriminators, or modality anchors
 
 Preferred section order when supported by the article:
+- Abbreviations / Acronyms
 - overview
 - Key Imaging Findings
 - Differential Diagnosis
@@ -93,9 +105,21 @@ Preferred section order when supported by the article:
 - Pearls / Pitfalls / Diagnostic Checklist
 - Super Summary
 
+Major sections should use tasteful emoji or icon anchors for readability.
+Use varied, clean icons with restraint.
+Every major section header should use a visible emoji or icon anchor, not the title only.
+Do not use the same icon for every section unless necessary.
+Permission is granted to vary icons or color-style icons for readability and scanability.
+
+Allowed emoji / icon palette for title and major section headers:
+- 🟥 🟦 🟨 🟩 🟪 🟧 ⬛ ⬜
+- 🔴 🔵 🟢 🟡 🟣 🟠 ⚫ ⚪
+- 🧠 🔑 ⚖️ 🧑‍⚕️ 💡 🧾 📌 📚 📝 🔍 📖 🧬 🩻 🖼️ 📊 🧭 🚩 ✅ ⭐ ⚠️ 🧪 🏷️ 📍 🎯 🛠️ 🔬 🗂️ 📎 ✳️ 🔶 🔷 ♦️ ▪️
+
 Within Key Imaging Findings:
 - group findings by modality when the article supports modality-specific organization
 - do not flatten modality-specific findings into one mixed list
+- modality subsection titles must be on their own lines with bullets beneath them
 
 Preferred imaging subsections when supported:
 - <b>Radiography / Best Initial Test</b>
@@ -110,6 +134,7 @@ End with:
 Use bullets generously for readability.
 Prefer compact, high-yield bullets rather than long prose bullets.
 Each bullet should ideally communicate one radiology takeaway.
+Use nested bullets when helpful to split longer concepts into smaller reviewable chunks.
 Omit unsupported sections rather than fabricating them.
 
 -----------------------------------------------------
@@ -128,6 +153,7 @@ It should prioritize radiology study usefulness, especially:
 - pitfalls
 
 Elevate into dedicated bullets or subsections when source-supported:
+- article-defined abbreviations or acronyms
 - hallmark signs
 - favored locations or distributions
 - measurements
@@ -156,5 +182,6 @@ Use:
 - strong visual hierarchy
 - spacing between major sections
 - visually distinct headers and, when useful, subsection headers
+- hierarchical bullets with nested sub-bullets when needed for readability
 
 Do not waste summary space on generic statements.
