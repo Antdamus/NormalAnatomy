@@ -62,8 +62,14 @@ Therefore:
 - use <br> where internal formatting is required
 
 For summary specifically:
-- use <br> only
+- use simple Anki-safe HTML only
 - no literal newline characters
+- do not emit raw markdown syntax
+- keep the same article-level summary content across all rows derived from the same article
+
+For Tags specifically:
+- keep the final Tags column present in every TSV row
+- export the final Tags column as blank / empty for every row
 
 -----------------------------------------------------
 
@@ -207,8 +213,10 @@ Tag logic should remain compatible with downstream automatic generation.
 
 Therefore:
 - keep the Tags column in the shared TSV shape
-- do not force verbose manual per-card tag writing during routine card-content generation unless the workflow explicitly requires it
-- ensure tag axes remain derivable from card structure, source, modality, entity type, region or system, and yield when supported
+- do not populate the final Tags column during TSV export in this workflow
+- export the final Tags column as blank / empty for every row
+- keep all note fields and their order unchanged
+- preserve downstream compatibility by leaving the tag column present but blank
 
 -----------------------------------------------------
 

@@ -17,7 +17,8 @@ Because definition cards are standalone High-Yield notes, they MUST follow stand
 • Clinical_Context must contain NOTHING else
 • If this 12-character code is missing, the definition card must NOT be generated
 
-Tags must include: Ontology::Definition
+Definition status is encoded by the card's role and field structure.
+Do NOT populate the final TSV Tags column for definition cards.
 -----------------------------------------------------
 
 STEP 1 — SOURCE DEFINITION ASSESSMENT (MANDATORY)

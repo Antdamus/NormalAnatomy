@@ -34,7 +34,8 @@ High-Yield fields MUST NOT be used for Ontology Spine cards.
 Ontology encoding is DEFINITION-ONLY and must be implemented ONLY via:
 • High_Yield_Q
 • High_Yield_A
-with Tags including: Ontology::Definition
+Definition status must be inferred from note structure and workflow role, not from TSV tags.
+Do NOT populate the final TSV Tags column.
 
 Do NOT create:
 • Ontology classification cards

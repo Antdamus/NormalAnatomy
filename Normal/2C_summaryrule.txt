@@ -28,6 +28,8 @@ The summary must be derived ONLY from the full anchor article.
 
 The summary must:
 - reflect full-article review
+- be article-level rather than card-level
+- remain identical across all cards generated from the same article
 - remain source-faithful
 - stay inside the article's supported scope
 - avoid outside knowledge
@@ -45,18 +47,120 @@ SUMMARY FORMAT (STRICT)
 
 The summary field must contain:
 - no literal newline characters
-- <br> only
-- one continuous string
+- one continuous Anki-safe HTML string
+- no raw markdown markers such as #, ##, **, *, -, or markdown tables
 
-Use this exact labeled structure:
+Use simple Anki-safe HTML only:
+- <b>
+- <br>
+- <div>
+- <ul>
+- <ol>
+- <li>
+- light inline style attributes only when they improve hierarchy and remain robust in Anki
 
-KEY FACTS:<br>- ...<br>LANDMARKS / STRUCTURES:<br>- ...<br>NORMAL APPEARANCE / MODALITY ANCHORS:<br>- ...<br>EXAM APPROACH / REVIEW SEQUENCE:<br>- ...<br>VARIANTS / MIMICS / PITFALLS:<br>- ...<br>DISCRIMINATORS / OVERCALL PROTECTION:<br>- ...<br>MECHANISTIC OR MODALITY LOGIC (if present):<br>- ...<br>BOARD-RELEVANT PIVOTS (if present):<br>- ...
+The summary must begin with:
+- a visually distinct title block using the source article's actual title or main topic
+- the title block should include a clean emoji or icon anchor
+- then 1-2 sentences summarizing the main topic from the article only
+
+The title block should:
+- stand out visually from the rest of the summary
+- use simple HTML hierarchy such as a bold title inside a <div>
+- avoid hardcoded example entities
+- allow light emoji only when it genuinely improves scanability
+
+Then use clearly labeled sections only when supported by the article.
+
+The summary should read like a polished radiology study handout:
+- visually readable first
+- easy to scan
+- not plain or paragraph-heavy
+- organized with clear spacing between major sections
+
+Formatting hierarchy rules:
+- major section headers must be on their own line
+- subsection headers must also be on their own line
+- explanatory content should appear underneath as bullets or nested bullets
+- do NOT use inline `Header: long sentence` formatting for the main outline
+- after the initial 1-2 sentence summary, prefer bullet-based and hierarchical formatting over prose blocks
+- when choosing between fewer longer bullets versus more shorter nested bullets, prefer more shorter nested bullets
+
+Preferred section labels:
+- <b>Abbreviations / Acronyms</b> when source-supported
+- <b>Summary</b>
+- <b>Key Imaging Findings</b>
+- <b>Differential Diagnosis</b>
+- <b>Clinical Presentation</b>
+- <b>Pearls / Pitfalls</b>
+- <b>Key Measurements / Criteria / Scoring Systems</b>
+- other article-supported labels when needed for readability in the NORMAL workflow, such as landmarks, structures, review approach, variants, discriminators, or modality anchors
+
+Preferred section order when supported by the article:
+- Abbreviations / Acronyms
+- overview
+- Key Imaging Findings
+- Differential Diagnosis
+- Clinical Presentation / Demographics
+- Pearls / Pitfalls / Diagnostic Checklist
+- Super Summary
+
+Major sections should use tasteful emoji or icon anchors for readability.
+Use varied, clean icons with restraint.
+Every major section header should use a visible emoji or icon anchor, not the title only.
+Do not use the same icon for every section unless necessary.
+Permission is granted to vary icons or color-style icons for readability and scanability.
+
+Allowed emoji / icon palette for title and major section headers:
+- 🟥 🟦 🟨 🟩 🟪 🟧 ⬛ ⬜
+- 🔴 🔵 🟢 🟡 🟣 🟠 ⚫ ⚪
+- 🧠 🔑 ⚖️ 🧑‍⚕️ 💡 🧾 📌 📚 📝 🔍 📖 🧬 🩻 🖼️ 📊 🧭 🚩 ✅ ⭐ ⚠️ 🧪 🏷️ 📍 🎯 🛠️ 🔬 🗂️ 📎 ✳️ 🔶 🔷 ♦️ ▪️
+
+Within Key Imaging Findings:
+- group findings by modality when the article supports modality-specific organization
+- do not flatten modality-specific findings into one mixed list
+- modality subsection titles must be on their own lines with bullets beneath them
+
+Preferred imaging subsections when supported:
+- <b>Radiography / Best Initial Test</b>
+- <b>CT</b>
+- <b>MR Imaging</b>
+- <b>Ultrasound / Other</b>
+- <b>Distribution / Hallmark Signs</b>
+
+End with:
+- a concise <b>Super Summary</b> section
+
+Use bullets generously for readability.
+Prefer compact, high-yield bullets rather than long prose bullets.
+Each bullet should ideally communicate one radiology takeaway.
+Use nested bullets when helpful to split longer concepts into smaller reviewable chunks.
+Omit unsupported sections rather than fabricating them.
 
 -----------------------------------------------------
 
 SUMMARY CONTENT RULES
 
 The summary should capture only article-supported material that would help explain why the resulting cards exist.
+
+It should prioritize radiology study usefulness, especially:
+- imaging findings
+- high-yield radiology anchors
+- measurements
+- criteria
+- scoring systems
+- discriminators
+- pitfalls
+
+Elevate into dedicated bullets or subsections when source-supported:
+- article-defined abbreviations or acronyms
+- hallmark signs
+- favored locations or distributions
+- measurements
+- criteria
+- scoring systems
+- diagnostic pivots
+- review checklists
 
 It should NOT:
 - become a pathology-style differential paragraph
@@ -75,5 +179,9 @@ Use:
 - article-supported separators
 - article-supported approach steps
 - article-supported pitfalls
+- strong visual hierarchy
+- spacing between major sections
+- visually distinct headers and, when useful, subsection headers
+- hierarchical bullets with nested sub-bullets when needed for readability
 
 Do not waste summary space on generic statements.
