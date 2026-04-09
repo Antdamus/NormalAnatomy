@@ -156,6 +156,13 @@ G4) Adaptive generation integrity
 - one-shot generation is acceptable for short, focused, low-complexity articles
 - quality and coverage outrank speed
 
+G5) Visibility and localization integrity
+- do not export a card that falsely implies a mainly topographically inferred structure is crisply and directly visible on routine imaging
+- if the target is mainly inferred, convert the teaching into a localization-oriented card or broaden it into an orientation-anchor card
+- localization teaching must live inside existing explanatory fields only; do not add schema columns
+- where relevant, explanatory back-side content should distinguish directly visible versus variably visible versus mainly inferred
+- cards should prefer stable landmark systems over low-yield micro-localization inflation
+
 H) Front-side blinding
 - front fields must preserve the intended cognitive task
 - no front may leak the answer through wording, captions, or extra fields

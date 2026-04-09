@@ -47,6 +47,14 @@ Do NOT create a second note type.
 
 The NORMAL engine changes field usage and content rules, not the chassis.
 
+Localization support must therefore be mapped into existing explanatory fields such as:
+- Imaging_Differentiation
+- Mechanism
+- Boards_Trap
+- High_Yield_A
+
+Do not create new fields just to hold visibility or localization teaching.
+
 -----------------------------------------------------
 
 FIELD-USAGE PRINCIPLE
@@ -73,15 +81,21 @@ Entity_Label
 
 Imaging_Differentiation
 - why the appearance is normal, why it is a variant, what keeps it from being overcalled, or what discriminator matters most
+- visibility classification when useful
+- practical landmark-based localization support
+- concise "seen directly vs inferred topographically" teaching
 
 Mechanism
 - why a normal appearance looks the way it does, why a sequence or phase matters, or why a variant exists
+- why a localization rule works when the source explicitly supports the reason
 
 Boards_Trap
 - a normal mimic, pitfall, pseudolesion, or overcall-protection rule
+- including what visible landmarks prevent a mistaken lesion call
 
 High_Yield_Q / High_Yield_A
 - compact definition, landmark rule, approach rule, checklist, modality anchor, measurement rule, or variant anchor
+- orientation-anchor and localization-rule content when image recognition is not the main task
 
 Radiopaedia fields
 - reserved for the future Radiopaedia-specific workflow only

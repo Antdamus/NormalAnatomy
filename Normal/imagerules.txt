@@ -19,6 +19,23 @@ Appropriate uses:
 
 Do not add an image just to imitate an UNKNOWN card if the learning point is purely conceptual.
 
+If the main teaching point is topographic localization of a structure that is not reliably resolved on routine imaging:
+- prefer a localization card over a fake crisp-identification image card
+- use the image only if it genuinely helps anchor the visible landmarks used for localization
+
+-----------------------------------------------------
+
+IMAGE IDENTIFICATION SAFETY RULE
+
+Do not generate image-identification cards that ask the learner to identify a structure as though it were clearly visible if the structure is usually topographically inferred.
+
+Instead:
+- convert those to localization cards
+- or phrase them as "Which visible landmarks help localize X?"
+- or "Where would X lie relative to Y and Z on MRI/CT?"
+
+This is especially important for small nuclei, tracts, and fine subdivisions that are often not discretely resolved on routine clinical studies.
+
 -----------------------------------------------------
 
 IMAGE-OPTIONAL ARTICLE RULE
@@ -145,6 +162,10 @@ MODALITY CONTEXT RULE
 If the learning target depends on modality, sequence, plane, or phase:
 - preserve that context in the image card design
 - do not flatten MRI sequence-specific or CT phase-specific teaching into a generic image prompt
+
+If the image comes from an annotated teaching figure or unusually high-resolution depiction:
+- do not let that alone justify claiming routine clinical visibility
+- preserve modality honesty in the associated teaching fields
 
 -----------------------------------------------------
 

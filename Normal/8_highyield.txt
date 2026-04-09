@@ -33,6 +33,10 @@ Use it for compact, source-supported teaching points such as:
 - measurement or morphology rules when explicitly supported
 - normal variant anchors
 - concise "what makes this normal" teaching points
+- visibility classification when operationally useful
+- orientation-anchor cards
+- concise landmark-based localization rules for less-visible structures
+- anatomy-first stroke or focal-lesion localization anchors when source-compatible
 
 This is the preferred home for exam-approach content when image recognition is not the primary task.
 
@@ -91,8 +95,17 @@ Good content forms:
 - short ordered review sequence
 - compact modality anchor
 - concise normal-vs-variant separator
+- concise visibility statement
+- short landmark-based localization rule
+- short "localize this by first identifying..." rule
 
 Do NOT turn High_Yield_A into an unstructured paragraph dump.
+
+When localization support is relevant, High_Yield_A should ideally include:
+- the primary visible landmarks
+- the best plane or modality when source-supported
+- the relative position language that makes localization practical
+- a concise rule that distinguishes directly seen from topographically inferred
 
 -----------------------------------------------------
 
@@ -104,6 +117,8 @@ NORMAL HIGH-YIELD is the preferred card type for:
 - review sequence
 - what constitutes a complete normal review
 - concise overcall-prevention checklist items
+- orientation-anchor cards
+- localization cards for structures that are mainly inferred rather than crisply seen
 
 If the source gives a reason why the rule works:
 - that reason may be better encoded separately as NORMAL MECHANISM

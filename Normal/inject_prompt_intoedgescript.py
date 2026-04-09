@@ -19,16 +19,16 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 # "chatgpt_cards" -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no Codex workflow preamble
 # "codex_cards"   -> uses FULL_PROMPT.txt with Codex workflow preamble
 # "no_pictures"   -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no image selection, no downloads
-MODE = "narrative"
+MODE = "chatgpt_cards"
 VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards", "no_pictures"}
 
 # Single control surface for Edge injection.
 FILE_PREFIX = ""
-INCLUDE = [1,2,3,4,6,7,8,9,10,11,12];
+INCLUDE = "all"  # "all", "none", "2,4,5", or [2,4,5];
 CASE_MAP = [];
 SOURCE_NOTE = ""
 CORE_NOTE = ""
-DOWNLOAD_IMAGES = False
+DOWNLOAD_IMAGES = True
 DOWNLOAD_PLAIN = True
 DOWNLOAD_ANNOTATED = True
 DOWNLOAD_DELAY_MS = 1000

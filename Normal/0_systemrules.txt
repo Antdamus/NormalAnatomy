@@ -62,6 +62,8 @@ If a claim is not explicitly supported by an allowed source, you must either:
 - omit it
 OR
 - label it under the narrow approved external-literature exception
+OR
+- keep it inside the narrow approved localization-overlay exception
 
 Blank is better than false content.
 
@@ -75,6 +77,8 @@ Cards must be generated from full-source review, not from:
 - memory
 - generic anatomy knowledge
 - outside knowledge inserted for convenience
+
+The only exception is the narrow approved localization overlay for practical MRI/CT localization of a named structure when the source is otherwise thin on that operational teaching point.
 
 If full-source review cannot be confirmed:
 STOP.
@@ -106,6 +110,7 @@ When used, you must:
 - avoid speculative or controversial additions
 
 This exception does NOT allow general outside-knowledge insertion.
+It also does NOT replace the separate narrow localization-overlay exception defined below.
 
 -----------------------------------------------------
 
@@ -136,6 +141,100 @@ The engine must explicitly distinguish among:
 - exam-approach concept
 
 These categories must not be blurred.
+
+-----------------------------------------------------
+
+VISIBILITY TAXONOMY RULE
+
+For every important normal-anatomy structure, classify the structure as one of:
+- directly visible on routine MRI/CT
+- variably visible or better appreciated on MRI, high-resolution imaging, or certain planes/sequences
+- not reliably resolved as a discrete structure on routine imaging and therefore mainly localized topographically
+
+Cards must not falsely imply that a mainly topographically localized structure is directly seen as a crisp standalone object.
+
+-----------------------------------------------------
+
+LANDMARK-BASED LOCALIZATION RULE
+
+For structures that are not straightforwardly visible, teach how to localize them using visible anchors.
+
+The engine should favor practical anchors such as:
+- ventricles
+- cisterns
+- peduncles
+- brainstem level
+- major fissures
+- hemisphere versus vermis
+- large nuclei when truly visible
+- deep gray versus white matter
+- ventricular or cisternal adjacency
+- medial/lateral and dorsal/ventral position
+
+Preferred teaching language includes:
+- "Localize this by first identifying..."
+- "This is usually inferred relative to..."
+- "On routine imaging, do not expect a crisp discrete structure; instead use..."
+
+-----------------------------------------------------
+
+STROKE / FOCAL LESION LOCALIZATION UTILITY RULE
+
+Normal-anatomy cards should help the learner localize a future infarct or focal lesion.
+
+When relevant and source-compatible, teach:
+- the visible regional anchor
+- the vascular territory or neighborhood when source-supported or high-confidence
+- the key adjacency that helps localize a lesion
+- the distinction between directly seen versus inferred by topography
+
+This must remain anatomy-first.
+Do not drift into disease-differential mode unless the existing card family already permits bounded discriminator teaching.
+
+-----------------------------------------------------
+
+CONTROLLED EXTERNAL LOCALIZATION SUPPORT RULE
+
+Primary content must still come from the source article and image set.
+
+However, if the source names a structure but does not adequately teach how to find it on MRI or CT, the engine may add a limited radiology localization overlay drawn from established neuroanatomy and neuroradiology knowledge.
+
+Guardrails:
+- use only for practical localization
+- do not invent niche or uncertain details
+- do not add unsupported measurements
+- do not import advanced microanatomy that exceeds routine imaging usefulness
+- do not present the external overlay as if explicitly stated in the source
+
+If the wider system supports provenance markers or tags, such additions may be tagged as a localization overlay.
+If not, integrate them briefly and conservatively into existing explanatory fields only.
+
+-----------------------------------------------------
+
+MODALITY-SPECIFIC HONESTY RULE
+
+Cards must respect modality ceilings.
+
+Do not imply that a structure is routinely visible on CT if that is mainly an MRI localization.
+Do not imply that an ultrahigh-field or atlas-level visualization is the same as routine clinical visibility.
+
+When appropriate, state whether the learner should expect:
+- routine MRI visibility
+- better appreciation on MRI than CT
+- mainly topographic localization on routine imaging
+
+-----------------------------------------------------
+
+DECK INFLATION GUARDRAIL
+
+Do not create large numbers of low-yield micro-localization cards.
+
+Prefer fewer, richer cards that teach a stable anchor system.
+Create dedicated cards only when the structure is:
+- high-yield
+- repeatedly used for localization
+- lesion-relevant
+- or a common source of overcall or confusion
 
 -----------------------------------------------------
 

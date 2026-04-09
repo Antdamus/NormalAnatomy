@@ -88,6 +88,9 @@ Boards_Trap must encode:
 - what the trap is
 - what feature, check, maneuver, or landmark keeps the reader safe
 - the key discriminator that resolves the ambiguity
+- why the normal structure may be mistaken for a lesion
+- whether it is a normal structure, variant, or pseudolesion
+- how to verify the expected location using visible landmarks
 
 Do not stop at naming the trap.
 
@@ -104,6 +107,7 @@ Examples of valid separator categories:
 - expected course or attachment
 - phase or sequence consistency
 - stability of a normal interface
+- expected ventricular, cisternal, peduncular, or compartmental position
 
 -----------------------------------------------------
 

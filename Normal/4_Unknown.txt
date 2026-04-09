@@ -33,6 +33,13 @@ Use NORMAL UNKNOWN when the learner must identify from the image:
 
 This is NOT a disease-diagnosis card.
 
+Use NORMAL UNKNOWN only when the image truly supports recognition of the target or of a genuine high-yield orientation anchor.
+
+If the named target is usually mainly topographically inferred rather than directly seen:
+- do not force a pure identification UNKNOWN card
+- convert it to a localization-focused card, usually NORMAL HIGH-YIELD
+- or ask instead for the visible anchor landmark if that is the real image-grounded task
+
 -----------------------------------------------------
 
 FIELD MATRIX
@@ -83,6 +90,7 @@ Question must NOT:
 - embed discriminator prose that solves the card
 - ask for a broad pathology differential
 - become a multi-step essay prompt
+- ask the learner to name a small nucleus, tract, or subdivision as though it were crisply visible when the real task is topographic inference
 
 -----------------------------------------------------
 
@@ -111,6 +119,9 @@ Imaging_Differentiation may briefly explain:
 - why it is normal
 - what makes the relationship normal
 - what feature marks it as a variant rather than pathology
+- whether the target is directly visible, variably visible, or mainly inferred
+- which visible landmarks make the localization safe
+- the concise practical localization rule when that materially improves the card
 
 Do not turn the back into a long narrative.
 Do not populate forbidden fields to add extra teaching.

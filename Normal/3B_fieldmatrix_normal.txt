@@ -86,6 +86,9 @@ Conditionally allowed:
 - Original_Caption
 - summary when required by source hierarchy
 
+Back-side use note:
+- Imaging_Differentiation is the preferred place for concise visibility-status and localization support when needed
+
 Forbidden:
 - Most_Likely_Diagnosis
 - Differential_Q
@@ -222,6 +225,9 @@ Conditionally allowed:
 - Imaging_Differentiation
 - Original_Caption when image workflow requires it
 - summary when required by source hierarchy
+
+Back-side use note:
+- High_Yield_A is the preferred home for compact landmark-based localization rules, orientation anchors, and visibility honesty when image recognition is not the main task
 
 Forbidden:
 - Question

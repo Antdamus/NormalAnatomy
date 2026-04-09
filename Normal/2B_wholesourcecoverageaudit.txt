@@ -38,6 +38,10 @@ For each full RadPrimer or STATdx article, explicitly check whether the source s
 12) discriminator points between normal, variant, and abnormal
 13) mechanism-style explanations for normal appearance
 14) board-relevant pivots or classic traps
+15) visibility status of key structures (directly visible, variably visible, or mainly topographically inferred)
+16) practical landmark-based localization rules
+17) orientation anchors that should be identified first
+18) lesion- or stroke-localization-relevant adjacencies when anatomy-first and source-compatible
 
 Every bucket must be checked.
 Only source-supported buckets may generate cards.

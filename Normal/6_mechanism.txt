@@ -31,6 +31,7 @@ Use NORMAL MECHANISM only when the source explicitly supports an explanation suc
 - modality-specific reason a structure appears a certain way
 - reason a sequence, plane, or phase best demonstrates a normal concept
 - reason a discriminator or review step works
+- reason a landmark-based localization rule works
 
 Do NOT use this card for routine naming or definition recall.
 
@@ -90,6 +91,7 @@ Valid targets:
 - why a sequence or phase improves confidence
 - why a variant has its typical appearance
 - why a landmark or relationship is reliable
+- why one visible anchor is safer than pretending the target itself is clearly seen
 
 Avoid:
 - pseudo-mechanisms

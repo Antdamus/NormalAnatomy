@@ -11,12 +11,14 @@ MASTERY PROGRESSION RULE
 When extracting a full article, prioritize supported content in this order:
 
 1) foundational structures and landmarks
-2) normal spatial relationships
-3) modality-specific normal appearance anchors
-4) exam-approach and review-sequence rules
-5) normal variants and pseudolesions
-6) discriminators between normal, variant, and abnormal
-7) mechanism-style explanations
+2) orientation anchors and directly visible imaging anchors
+3) normal spatial relationships
+4) modality-specific normal appearance anchors
+5) topographic localization rules for less-visible structures
+6) exam-approach and review-sequence rules
+7) normal variants and pseudolesions
+8) discriminators between normal, variant, and abnormal
+9) mechanism-style explanations
 
 This order is mandatory unless the source contains only a narrow subset.
 
@@ -48,8 +50,8 @@ For long or multi-bucket topics:
 PROGRESSION-TO-CARD-FAMILY RULE
 
 Typical progression by card family:
-- foundational structures, landmarks, and normal appearance anchors -> NORMAL UNKNOWN or NORMAL HIGH-YIELD
-- review sequence and approach anchors -> NORMAL HIGH-YIELD
+- foundational structures, landmarks, directly visible anchors, and normal appearance anchors -> NORMAL UNKNOWN or NORMAL HIGH-YIELD
+- orientation anchors, topographic localization rules, and review sequence anchors -> NORMAL HIGH-YIELD
 - variants and mimics -> NORMAL BOARDS TRAP or NORMAL HIGH-YIELD
 - true separators -> NORMAL DIFFERENTIAL DRILL
 - why a normal pattern or discriminator works -> NORMAL MECHANISM

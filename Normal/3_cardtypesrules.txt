@@ -180,6 +180,18 @@ NORMAL HIGH-YIELD
 
 -----------------------------------------------------
 
+VISIBILITY-FIRST CANDIDATE EVALUATION RULE
+
+For each candidate anatomy entity, ask in order:
+- Is this structure a true high-yield imaging anchor?
+- Is it directly visible, variably visible, or mainly inferred?
+- If not directly visible, what visible structures best localize it?
+- Is it worth a dedicated card, or should it be folded into a broader orientation/localization card to avoid deck inflation?
+
+Do not create a dedicated note just because a named structure appears once in the text.
+
+-----------------------------------------------------
+
 EXAM-APPROACH MAPPING RULE
 
 Exam-approach content must stay inside the existing card types.
@@ -192,6 +204,18 @@ Preferred mappings:
 - true discriminator tasks -> NORMAL DIFFERENTIAL DRILL
 
 Do not invent a new approach card type.
+
+-----------------------------------------------------
+
+CARD-TYPE SELECTION FOR LOCALIZATION RULE
+
+Preferred mappings for localization-focused teaching are:
+- directly visible high-yield anchors -> NORMAL UNKNOWN or NORMAL HIGH-YIELD
+- variably visible structures with stable landmark logic -> NORMAL HIGH-YIELD, sometimes NORMAL UNKNOWN when the image truly supports recognition
+- mainly topographically inferred structures -> NORMAL HIGH-YIELD, or NORMAL BOARDS TRAP when mislocalization creates a recurrent overcall
+- causal explanation of why a localization rule or sequence works -> NORMAL MECHANISM
+
+If the structure is mainly topographically inferred, do not default to a pure image-identification UNKNOWN card.
 
 -----------------------------------------------------
 
