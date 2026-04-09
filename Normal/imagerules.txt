@@ -38,6 +38,35 @@ This is especially important for small nuclei, tracts, and fine subdivisions tha
 
 -----------------------------------------------------
 
+CAPTION PEARL EXTRACTION RULE
+
+Captions must be reviewed independently from NORMAL UNKNOWN eligibility.
+
+Useful captions may supply:
+- landmark pearls
+- localization clues
+- sequence, phase, or plane pearls
+- vascular territory clues
+- pseudolesion distinctions
+- pitfall prevention
+- visibility-status clarifications
+- structure-to-structure relationships
+
+Do not discard an informative caption merely because it does not justify an image-based UNKNOWN card.
+
+-----------------------------------------------------
+
+IMAGE UTILITY TRIAGE RULE
+
+For each image-caption pair, classify it separately as:
+- UNKNOWN-worthy image
+- support-only image
+- non-contributory image
+
+A support-only image/caption pair may still feed non-UNKNOWN cards and explanatory fields even if it does not justify an image-based UNKNOWN card.
+
+-----------------------------------------------------
+
 IMAGE-OPTIONAL ARTICLE RULE
 
 The NORMAL engine does not require images for every article.
@@ -60,6 +89,17 @@ If the workflow explicitly states that no pictures are being provided for the ru
 - do not create NORMAL UNKNOWN cards
 - do not ask for or expect image recovery inside the run
 - proceed with non-image card families only
+
+-----------------------------------------------------
+
+CAPTIONS-ONLY WORKFLOW RULE
+
+When the workflow context says captions are being extracted as supplemental source text only:
+- do not expect image files
+- do not create image-based UNKNOWN cards by default
+- mine captions for supportable pearls
+- route useful caption content into existing card families such as NORMAL HIGH-YIELD, NORMAL BOARDS TRAP, NORMAL MECHANISM, NORMAL DIFFERENTIAL DRILL, and explanatory back-side fields
+- do not treat caption presence alone as justification for an image card
 
 -----------------------------------------------------
 

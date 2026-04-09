@@ -40,6 +40,10 @@ NO_IMAGES_LINE = (
     "Image workflow note: No usable source-supported images are available; "
     "Section A / NORMAL UNKNOWN cards may be absent."
 )
+CAPTIONS_ONLY_LINE = (
+    "Image workflow note: captions extracted as supplemental source text only; "
+    "no image-based UNKNOWN cards are expected by default."
+)
 
 
 def read_text(path: pathlib.Path) -> str:
@@ -55,7 +59,12 @@ def escape_for_js_template_literal(text: str) -> str:
     return text
 
 
-def build_workflow_header(core_gap: bool, core_ref: str | None, no_images: bool) -> str:
+def build_workflow_header(
+    core_gap: bool,
+    core_ref: str | None,
+    no_images: bool,
+    captions_only: bool,
+) -> str:
     if core_gap and core_ref:
         raise ValueError("Choose only one: --core-gap or --core-ref.")
 
@@ -67,6 +76,8 @@ def build_workflow_header(core_gap: bool, core_ref: str | None, no_images: bool)
 
     if no_images:
         lines.append(NO_IMAGES_LINE)
+    if captions_only:
+        lines.append(CAPTIONS_ONLY_LINE)
 
     if not lines:
         return ""
@@ -115,6 +126,11 @@ def main() -> int:
         action="store_true",
         help="Prepend an image-optional workflow note for articles with no usable images.",
     )
+    parser.add_argument(
+        "--captions-only",
+        action="store_true",
+        help="Prepend a captions-only supplemental-source workflow note.",
+    )
 
     args = parser.parse_args()
 
@@ -136,6 +152,7 @@ def main() -> int:
             core_gap=args.core_gap,
             core_ref=args.core_ref,
             no_images=args.no_images,
+            captions_only=args.captions_only,
         )
         updated = inject_prompt(js_code, header + prompt_text)
     except Exception as exc:

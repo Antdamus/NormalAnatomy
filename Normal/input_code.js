@@ -7,6 +7,7 @@
      2) YOUR PROMPT
      3) ARTICLE (structured outline)
      4) IMAGES (optional; selected image numbers with filenames + captions)
+     5) CAPTIONS-ONLY supplemental block when requested
 
    This mirrors the pathology workflow pattern, but the NORMAL engine is
    image-optional:
@@ -30,6 +31,7 @@
   const KEEP_CAPTION_HTML = true;
   const STRIP_ARROW_TAGS_IN_CAPTION_TEXT = false;
   const AUTO_FILE_PREFIX_FROM_TITLE = false;
+  const EXTRACT_CAPTIONS_ONLY = false;
   const FORCE_CASE_LABELS = false;
 
   /**********************
@@ -239,7 +241,11 @@
       lines.push(`Optional Core note: ${CORE_NOTE.trim()}`);
     }
 
-    if (hasImagesOnPage && selectedCount > 0) {
+    if (EXTRACT_CAPTIONS_ONLY) {
+      lines.push(
+        `Image workflow: captions extracted as supplemental source text only from ${selectedCount} selected gallery item(s); image-based NORMAL UNKNOWN cards may be absent and are not expected by default.`
+      );
+    } else if (hasImagesOnPage && selectedCount > 0) {
       lines.push(`Image workflow: ${selectedCount} image(s) selected for optional image-based extraction.`);
     } else {
       lines.push(
@@ -280,6 +286,26 @@
         if (DOWNLOAD_ANNOTATED) lines.push(`    Image_Annotated: ${item.annotFilename}`);
         lines.push(`    Caption: ${item.caption}`);
       });
+    });
+
+    return lines.join("\n");
+  };
+
+  const buildCaptionsOnlyBlock = (selectedImages) => {
+    const lines = ["=== IMAGE CAPTIONS AS SUPPLEMENTAL SOURCE ==="];
+
+    if (!selectedImages.length) {
+      lines.push(
+        "[No captions selected or available. Do not force image placeholders, image blocks, or NORMAL UNKNOWN cards.]"
+      );
+      return lines.join("\n");
+    }
+
+    selectedImages.forEach((item, idx0) => {
+      const captionLabel = `CAPTION_${String(idx0 + 1).padStart(2, "0")}`;
+      lines.push("");
+      lines.push(`${captionLabel}: original image ${item.originalIndex}`);
+      lines.push(`  Caption: ${item.caption}`);
     });
 
     return lines.join("\n");
@@ -353,7 +379,11 @@
     };
   });
 
-  const selectedNums = parseInclude(INCLUDE, allImages.length);
+  const includeRaw = normalizeIncludeInput(INCLUDE);
+  let selectedNums = parseInclude(INCLUDE, allImages.length);
+  if (EXTRACT_CAPTIONS_ONLY && !selectedNums.length && !includeRaw) {
+    selectedNums = Array.from({ length: allImages.length }, (_, i) => i + 1);
+  }
   const selectedSet = new Set(selectedNums);
   const selectedImages = allImages.filter((x) => selectedSet.has(x.originalIndex));
   const cases = buildCases(selectedNums);
@@ -376,7 +406,7 @@ ${PROMPT_TEXT}
 === ARTICLE ===
 ${articleTitle ? `TITLE: ${articleTitle}\n\n` : ""}${articleOutline || "[Article extraction failed]"}
 
-${buildImagesBlock(cases, byIndex)}
+${EXTRACT_CAPTIONS_ONLY ? buildCaptionsOnlyBlock(selectedImages) : buildImagesBlock(cases, byIndex)}
 `;
 
   safeCopy(out);
@@ -395,7 +425,9 @@ ${buildImagesBlock(cases, byIndex)}
   }
 
   console.log(
-    "Copied to clipboard: WORKFLOW CONTEXT + PROMPT + ARTICLE + optional IMAGES block."
+    EXTRACT_CAPTIONS_ONLY
+      ? "Copied to clipboard: WORKFLOW CONTEXT + PROMPT + ARTICLE + supplemental caption block."
+      : "Copied to clipboard: WORKFLOW CONTEXT + PROMPT + ARTICLE + optional IMAGES block."
   );
 
   /**********************

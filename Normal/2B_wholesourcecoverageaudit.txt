@@ -42,6 +42,7 @@ For each full RadPrimer or STATdx article, explicitly check whether the source s
 16) practical landmark-based localization rules
 17) orientation anchors that should be identified first
 18) lesion- or stroke-localization-relevant adjacencies when anatomy-first and source-compatible
+19) informative caption pearls that add landmark, localization, modality, vascular, pitfall, or review-order value
 
 Every bucket must be checked.
 Only source-supported buckets may generate cards.
@@ -97,6 +98,11 @@ FIGURE CAPTION RULE
 Do not let a single figure caption dominate the extraction.
 
 Image cards may use figures, but the card set must still reflect the full article when the workflow requires full-source review.
+
+If captions are extracted as supplemental source text only:
+- review them as a separate support layer
+- mine them for supportable pearls
+- do not let caption presence alone force image-based UNKNOWN generation
 
 -----------------------------------------------------
 

@@ -140,6 +140,12 @@ G2) Image-optional article integrity
 - if the workflow explicitly states that no pictures are being provided for the run, zero NORMAL UNKNOWN cards is the expected outcome
 - in that no-picture workflow, do not treat the absence of UNKNOWN cards as a coverage failure
 
+G2C) Captions-only workflow integrity
+- if the workflow context says captions are being extracted as supplemental source text only, zero NORMAL UNKNOWN cards is acceptable
+- captions-only mode is not a workflow failure
+- do not fabricate Image, Image_Annotated, or Question fields just because captions were present
+- informative captions should still be mined for supportable pearls and routed into existing non-UNKNOWN card families or explanatory fields
+
 G2B) Case-accounting integrity for case-labeled input
 - if the extracted input presents image blocks as `CASE_##`, every provided case block must be accounted for
 - no provided case block may be silently omitted
