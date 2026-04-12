@@ -20,7 +20,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 # "codex_cards"   -> uses FULL_PROMPT.txt with Codex workflow preamble
 # "no_pictures"   -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no image selection, no downloads
 # "captions_only" -> uses FULL_PROMPT.txt with autonomous audit/run instructions, captions extracted as supplemental text only
-MODE = "chatgpt_cards"
+MODE = "chatgpt_cards"  # "narrative", "chatgpt_cards", "codex_cards", "no_pictures", or "captions_only"
 VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards", "no_pictures", "captions_only"}
 
 # Single control surface for Edge injection.
