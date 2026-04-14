@@ -24,6 +24,7 @@
   const CASE_MAP = []; // e.g. [[2,3],[8,9]] ; leave [] for auto-solo grouping
   const SOURCE_NOTE = ""; // optional free-text note about source/article context
   const CORE_NOTE = ""; // optional tertiary Core cross-check note
+  const PRIMARY_SOURCE_LABEL = "RadPrimer"; // e.g. RadPrimer, Radiopaedia
   const DOWNLOAD_IMAGES = false; // set true if you want browser downloads
   const DOWNLOAD_PLAIN = true;
   const DOWNLOAD_ANNOTATED = true;
@@ -256,6 +257,21 @@
     return lines.join("\n");
   };
 
+  const buildSourceAttributionBlock = () => {
+    const lines = ["=== SOURCE ATTRIBUTION ==="];
+    const primary = cleanText(PRIMARY_SOURCE_LABEL) || "[PRIMARY SOURCE NOT PROVIDED]";
+    lines.push(`Primary source label: ${primary}`);
+
+    if (SOURCE_NOTE.trim()) {
+      lines.push(`Source note: ${SOURCE_NOTE.trim()}`);
+    }
+    if (CORE_NOTE.trim()) {
+      lines.push(`Core cross-check note: ${CORE_NOTE.trim()}`);
+    }
+
+    return lines.join("\n");
+  };
+
   const buildImagesBlock = (cases, byIndex) => {
     const lines = ["=== IMAGES (optional; original numbering preserved when present) ==="];
 
@@ -407,6 +423,8 @@ ${PROMPT_TEXT}
 ${articleTitle ? `TITLE: ${articleTitle}\n\n` : ""}${articleOutline || "[Article extraction failed]"}
 
 ${EXTRACT_CAPTIONS_ONLY ? buildCaptionsOnlyBlock(selectedImages) : buildImagesBlock(cases, byIndex)}
+
+${buildSourceAttributionBlock()}
 `;
 
   safeCopy(out);

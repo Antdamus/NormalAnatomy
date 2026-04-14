@@ -16,12 +16,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 
 # Operating mode:
 # "narrative"     -> uses normalnarrative.txt, all images, no downloads, no Codex workflow preamble
+# "narrative_with_images" -> uses normalnarrative.txt, all images, downloads enabled, no Codex workflow preamble
 # "chatgpt_cards" -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no Codex workflow preamble
 # "codex_cards"   -> uses FULL_PROMPT.txt with Codex workflow preamble
 # "no_pictures"   -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no image selection, no downloads
 # "captions_only" -> uses FULL_PROMPT.txt with autonomous audit/run instructions, captions extracted as supplemental text only
-MODE = "chatgpt_cards"  # "narrative", "chatgpt_cards", "codex_cards", "no_pictures", or "captions_only"
-VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards", "no_pictures", "captions_only"}
+MODE = "captions_only"  # "narrative", "narrative_with_images", "chatgpt_cards", "codex_cards", "no_pictures", or "captions_only"
+VALID_MODES = {"narrative", "narrative_with_images", "chatgpt_cards", "codex_cards", "no_pictures", "captions_only"}
 
 # Single control surface for Edge injection.
 FILE_PREFIX = ""
@@ -29,6 +30,7 @@ INCLUDE = "all"  # "all", "none", "2,4,5", or [2,4,5];
 CASE_MAP = [];
 SOURCE_NOTE = ""
 CORE_NOTE = ""
+PRIMARY_SOURCE_LABEL = "RadPrimer"
 DOWNLOAD_IMAGES = True
 DOWNLOAD_PLAIN = True
 DOWNLOAD_ANNOTATED = True
@@ -335,7 +337,7 @@ def resolve_mode(prompt_arg: str | None, narrative_flag: bool) -> str:
     mode = MODE.strip().lower()
     if mode not in VALID_MODES:
         raise SystemExit(
-            f"ERROR: Invalid MODE '{MODE}'. Use one of: narrative, chatgpt_cards, codex_cards, no_pictures, captions_only."
+            f"ERROR: Invalid MODE '{MODE}'. Use one of: narrative, narrative_with_images, chatgpt_cards, codex_cards, no_pictures, captions_only."
         )
 
     if narrative_flag:
@@ -344,7 +346,7 @@ def resolve_mode(prompt_arg: str | None, narrative_flag: bool) -> str:
     if prompt_arg:
         prompt_name = Path(prompt_arg).name.lower()
         if prompt_name == NARRATIVE_PROMPT.lower():
-            return "narrative"
+            return "narrative_with_images" if mode == "narrative_with_images" else "narrative"
         return mode if mode in {"codex_cards", "no_pictures", "captions_only"} else "chatgpt_cards"
 
     return mode
@@ -398,7 +400,7 @@ def build_settings_block(narrative_mode: bool) -> str:
         file_prefix = ""
         include = "all"
         case_map = []
-        download_images = False
+        download_images = MODE == "narrative_with_images"
         auto_file_prefix_from_title = True
     elif MODE == "chatgpt_cards":
         file_prefix = ""
@@ -423,6 +425,7 @@ def build_settings_block(narrative_mode: bool) -> str:
         f"  const CASE_MAP = {format_js_value(case_map)}; // e.g. [[2,3],[8,9]] ; leave [] for auto-solo grouping",
         f"  const SOURCE_NOTE = {format_js_value(SOURCE_NOTE)}; // optional free-text note about source/article context",
         f"  const CORE_NOTE = {format_js_value(CORE_NOTE)}; // optional tertiary Core cross-check note",
+        f"  const PRIMARY_SOURCE_LABEL = {format_js_value(PRIMARY_SOURCE_LABEL)}; // e.g. RadPrimer, Radiopaedia",
         f"  const DOWNLOAD_IMAGES = {format_js_value(download_images)}; // set true if you want browser downloads",
         f"  const DOWNLOAD_PLAIN = {format_js_value(DOWNLOAD_PLAIN)};",
         f"  const DOWNLOAD_ANNOTATED = {format_js_value(DOWNLOAD_ANNOTATED)};",
@@ -465,7 +468,7 @@ def main() -> int:
     args = ap.parse_args()
 
     selected_mode = resolve_mode(args.prompt, args.narrative)
-    narrative_mode = selected_mode == "narrative"
+    narrative_mode = selected_mode in {"narrative", "narrative_with_images"}
     prompt_path = resolve_prompt_path(args.prompt, narrative_mode)
     input_js_path = resolve_js_path(args.js)
 
