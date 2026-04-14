@@ -14,7 +14,14 @@ This engine must optimize for:
 - modality-specific normal appearance
 - normal variants and pseudolesions
 - landmark-based exam review
+- practical MRI/CT identification of structures of interest
 - safe separation of normal, normal variant, and abnormal
+
+The end goal is to make the learner:
+- a better radiology reader
+- better at structure identification and localization
+- better at avoiding common interpretive errors
+- better at connecting anatomy to clinically useful localization and judgment
 
 This engine must NOT force normal material into pathology-style diagnosis logic.
 
@@ -125,6 +132,85 @@ Cards must train one of the following:
 - what makes a normal review complete on a given modality
 
 Do NOT force "most likely diagnosis?" logic unless the learning task truly requires bounded mimic rejection inside the normal engine.
+
+-----------------------------------------------------
+
+RADIOLOGY IDENTIFICATION PRIORITY RULE
+
+Even when the source article is gross-anatomy heavy, the card set must translate that material into radiology identification skill.
+
+The engine should repeatedly help the learner answer:
+- what can I identify first on the scan
+- which structures are the main visible anchors
+- what is directly appreciable versus mainly inferred
+- how do I place the target structure relative to those anchors
+
+Pure taxonomy or list recall may be used when the list itself is high-yield, but it must not become the dominant deck mode when the same material can be taught as a practical imaging anchor system.
+
+Cards should aim to make the learner better at finding the structure of interest on the source-highlighted modality, including MRI, CT, or ultrasound when applicable, not merely reciting its name or contents from memory.
+
+-----------------------------------------------------
+
+ANCHOR-BEFORE-INVENTORY RULE
+
+When the source supports both:
+- a visible anchor system
+- and an inventory of named structures, contents, or boundaries
+
+prefer encoding the anchor system first.
+
+The learner should first know:
+- what to find first
+- what organizes the region
+- what can be seen directly
+- what is then placed relative to those anchors
+
+Only then should the engine layer on narrower inventory or contents cards when they add genuine identification value.
+
+-----------------------------------------------------
+
+ONE MAP MOVE PER CARD RULE
+
+Each card should ideally teach one stable imaging "map move."
+
+Examples:
+- identify the first anchor at a given level
+- place a compartment relative to a visible landmark
+- distinguish directly visible versus inferred structure placement
+- use one specific separator to avoid an overcall
+- use one modality-specific view, plane, or sweep to establish a relationship
+
+Do not let one card try to teach an entire regional atlas unless the source only supports one compact overview target.
+
+-----------------------------------------------------
+
+WHY-DO-I-CARE RULE
+
+When source-supported, important anatomy cards should also answer why the structure or relationship matters clinically.
+
+Valid clinical-utility links include:
+- lesion localization
+- stroke localization
+- procedural or surgical relevance
+- avoidance of a common overcall
+- recognition of a normal variant that changes interpretation
+
+This must remain anatomy-first and normal-engine compatible.
+Do not force every card into a pathology lecture, but do not let important anatomy float free of clinical usefulness when the source supports the connection.
+
+-----------------------------------------------------
+
+ANTI-TRIVIA RULE
+
+Do not create a standalone card for a fact that does not materially improve at least one of the following:
+- structure identification
+- localization
+- review strategy
+- discrimination between normal, variant, and abnormal
+- overcall prevention
+- clinically useful radiology judgment
+
+If a fact is accurate but low-yield and does not improve reading skill, fold it into a stronger card or omit it.
 
 -----------------------------------------------------
 
@@ -243,6 +329,7 @@ OUTPUT PHILOSOPHY
 This engine should produce cards that are:
 - anatomy-first
 - image-grounded when appropriate
+- identification-centered
 - modality-aware
 - approach-aware
 - concise

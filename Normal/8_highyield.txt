@@ -37,8 +37,12 @@ Use it for compact, source-supported teaching points such as:
 - orientation-anchor cards
 - concise landmark-based localization rules for less-visible structures
 - anatomy-first stroke or focal-lesion localization anchors when source-compatible
+- compact reverse-localization cards that teach what region or compartment is being localized from visible landmarks
+- compact synthesis review cards when they create a stronger reading framework
 
 This is the preferred home for exam-approach content when image recognition is not the primary task.
+
+It is also the main bridge between source anatomy content and practical radiology identification when the card does not need an image front.
 
 -----------------------------------------------------
 
@@ -83,6 +87,15 @@ High_Yield_Q should:
 - avoid embedded answers
 - avoid turning into a paragraph prompt
 
+When both forms are source-supported, prefer fronts that train practical localization or review navigation over fronts that only ask for a bare list of structures.
+
+Examples of stronger front forms:
+- "Which landmarks should anchor review of..."
+- "How do you localize..."
+- "What is the safest way to place..."
+- "Which visible structures help identify..."
+- "If a finding is centered here relative to these anchors, what space or compartment are you localizing to?"
+
 -----------------------------------------------------
 
 HIGH-YIELD ANSWER RULE
@@ -99,6 +112,12 @@ Good content forms:
 - short landmark-based localization rule
 - short "localize this by first identifying..." rule
 
+Preferred answer shape by modality when source-supported:
+- MRI/CT: visible anchor -> relative position -> visibility honesty -> practical placement rule
+- Ultrasound: echogenic or interface anchor -> probe plane or sweep -> continuity or branching clue -> practical placement rule
+
+When clinically useful and source-supported, High_Yield_A may end with one compact line explaining why this localization matters for real interpretation.
+
 Do NOT turn High_Yield_A into an unstructured paragraph dump.
 
 When localization support is relevant, High_Yield_A should ideally include:
@@ -106,6 +125,23 @@ When localization support is relevant, High_Yield_A should ideally include:
 - the best plane or modality when source-supported
 - the relative position language that makes localization practical
 - a concise rule that distinguishes directly seen from topographically inferred
+
+For ultrasound-focused topics, High_Yield_A may instead or additionally emphasize:
+- the key echogenic anchor
+- the lumen, wall, or interface that should be identified first
+- branching or continuity clues
+- the probe plane or sweep that best establishes the relationship
+
+If the answer names multiple structures or compartments, organize them around a usable imaging map rather than a flat recitation list.
+
+For example, prefer grouping by:
+- anchor region or level
+- visible landmark first, then less-visible related structure
+- supratentorial versus infratentorial review path
+
+over a bare unordered catalogue.
+
+If the card still reads like an inventory after this translation, it should usually be merged, rewritten, or omitted.
 
 -----------------------------------------------------
 
@@ -137,3 +173,4 @@ Before export, confirm:
 - Image_Annotated is blank unless Image is populated
 - Original_Caption is blank unless Image is populated
 - the answer is concrete and source-supported
+- if the card is broad or overview-style, it still improves practical structure identification rather than only testing memorized enumeration

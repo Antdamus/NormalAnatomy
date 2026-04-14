@@ -52,6 +52,10 @@ For each full article, inspect whether it contains content for any of these buck
 13) Landmark-based review strategy
 - what sequence of landmarks or structures creates a reliable normal review
 
+14) Radiology identification anchors
+- what directly visible structures organize practical MRI, CT, or ultrasound localization
+- what less-visible structures are placed relative to them
+
 -----------------------------------------------------
 
 DECOMPOSITION-TO-CARD-TYPE RULE
@@ -59,10 +63,17 @@ DECOMPOSITION-TO-CARD-TYPE RULE
 Map buckets into card types deliberately:
 
 - named structures, landmarks, spatial relationships, and normal appearance anchors -> usually NORMAL UNKNOWN or NORMAL HIGH-YIELD
-- exam approach steps and landmark-based review strategy -> usually NORMAL HIGH-YIELD
+- exam approach steps, landmark-based review strategy, and radiology identification anchors -> usually NORMAL HIGH-YIELD
 - plane / sequence / phase logic and mechanism-style explanations -> usually NORMAL MECHANISM
 - variants, mimics, pitfalls, and overcall risks -> usually NORMAL BOARDS TRAP or NORMAL DIFFERENTIAL DRILL
 - true discrimination between normal, variant, and pathology -> NORMAL DIFFERENTIAL DRILL
+
+When a source paragraph is gross-anatomy heavy, first ask whether it is better expressed as:
+- a visible-anchor card
+- a localization card
+- a review-order card
+
+before defaulting to a list-style anatomy card.
 
 -----------------------------------------------------
 
@@ -113,6 +124,70 @@ Do NOT compress the article into:
 Also do NOT oversplit into trivial fragments.
 
 Each card should test one stable, source-supported learning unit.
+
+When possible, that unit should correspond to one usable imaging move rather than one isolated memorized fact.
+
+-----------------------------------------------------
+
+OVERVIEW CARD COMPRESSION RULE
+
+Do not create multiple neighboring broad overview cards that repeat the same map of spaces with minor reshuffling.
+
+When adjacent candidate cards substantially overlap, prefer:
+- one stronger regional anchor card
+- one orientation/review-order card
+- one or more focused follow-up cards only when they add genuinely new localization utility
+
+The goal is a stable anchor system, not a stack of near-duplicate list cards.
+
+-----------------------------------------------------
+
+CAPTION PEARL ADMISSION RULE
+
+Caption-derived content must earn its place in the deck.
+
+Prefer a caption-derived card only when the caption materially improves one of the following:
+- practical localization
+- visible-anchor recognition
+- modality, sequence, phase, or probe-plane understanding
+- vascular or compartmental orientation
+- overcall prevention
+- normal-variant honesty
+
+If a caption only restates a low-yield fact without improving identification skill, fold it into a stronger card or omit it.
+
+-----------------------------------------------------
+
+MODEST CARD COUNT, HIGHER DENSITY RULE
+
+Prefer fewer stronger cards over a larger number of thin or overlapping cards.
+
+It is acceptable to generate fewer cards if doing so improves:
+- identification skill
+- localization clarity
+- review-path teaching
+- nonredundancy
+- long-term usefulness in practice
+
+-----------------------------------------------------
+
+MATERIAL-TO-IMAGING TRANSLATION RULE
+
+If the article teaches boundaries, contents, or compartment names, convert that material into imaging-useful form whenever possible.
+
+Good translation moves include:
+- organizing the answer around visible anchor structures
+- stating which structures are directly appreciable
+- stating which structures are mainly localized topographically
+- linking the compartment to a practical modality-specific review move
+
+For ultrasound-heavy topics, this includes:
+- echogenic anchor recognition
+- lumen or wall interface recognition
+- branching-pattern localization
+- probe-plane and sweep-based orientation
+
+Do not reduce radiology anatomy to textbook recitation when the source supports a more operational framing.
 
 -----------------------------------------------------
 
