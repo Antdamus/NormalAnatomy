@@ -29,6 +29,7 @@ The narrative must optimize for:
 4. **Landmark-based exam review**
 5. **Recognition of normal variants and pseudolesions**
 6. **Safe separation of normal, variant, and abnormal**
+7. **Clinically useful radiology understanding**
 
 It must **not** force normal material into pathology-style diagnosis logic.
 
@@ -51,6 +52,7 @@ This narrative is for:
 * landmark recognition
 * image review strategy for normal exams
 * modality-specific approach rules for ultrasound, CT, and MRI
+* clinically useful anatomy understanding that improves localization and interpretation
 
 This narrative is **not** for:
 
@@ -59,6 +61,23 @@ This narrative is **not** for:
 * speculative management or treatment content
 
 If the source is fundamentally pathology-centered, that belongs in the pathology engine instead.
+
+These principles apply across normal anatomy domains, including:
+
+* neuroradiology
+* musculoskeletal radiology
+* thoracic imaging
+* abdominal imaging
+* pelvic imaging
+* vascular anatomy
+* ultrasound anatomy
+
+The specific anchors will change by body part and modality, but the core teaching goal does not:
+
+* identify what is directly appreciable
+* use visible anchors first
+* localize less-obvious structures safely
+* understand why the anatomy matters in real interpretation
 
 ---
 
@@ -156,6 +175,35 @@ If grouping is inferred rather than explicit:
 
 If the image block is structurally unusable, be transparent about that rather than inventing case structure.
 
+If the final teaching plan uses grouped images, the narrative should reference them in the easiest learner-facing way.
+
+Preferred style:
+
+* "group 2, image 1"
+* "the third image in group 4"
+
+Avoid relying on the original global image number alone when grouped teaching is being used.
+
+If useful for audit clarity, you may mention the original image number once in parentheses, but the spoken teaching should primarily follow group-relative numbering.
+
+When the captions make the grouping logic clear, name the group by its practical series identity rather than by an abstract group number alone.
+
+Preferred examples:
+
+* "the axial T2 group, image 1"
+* "the coronal MRI group, image 3"
+* "the sagittal run, image 2"
+
+When the series identity is clear from the captions, the narrative should:
+
+* introduce the run once
+* state how the run progresses when relevant, such as inferior to superior, posterior to anterior, left to right, or proximal to distal
+* then count images within that run, not from the full global article numbering
+
+If helpful, you may mention the original article image number once in parentheses, but do not make the lecture depend on that numbering for followability.
+
+For normal-anatomy lectures specifically, when the captions clearly describe grouped sequential images by modality and plane, prefer grouped run references by default.
+
 ---
 
 ## IMAGE-DRIVEN TEACHING RULE
@@ -199,13 +247,22 @@ Examples of acceptable anchor types include:
 * dentate nucleus when visible
 * major fissures when appreciable
 
+For non-neuro topics, use the same principle with the source-appropriate anchors, such as:
+
+* cortex versus medulla
+* tendon insertion versus myotendinous junction
+* articular surface versus adjacent recess
+* vessel lumen versus surrounding wall
+* fascial plane versus adjacent compartment
+* echogenic landmark versus deeper target on ultrasound
+
 This prelude should help the learner know what to find on the scan first, not overwhelm them with a long anatomy inventory.
 
 ---
 
 ## RADIOLOGY LOCALIZATION AND VISIBILITY RULE
 
-For normal neuroanatomy topics, the narrative must explicitly distinguish three categories:
+For normal anatomy topics, the narrative must explicitly distinguish three categories:
 
 1. **Directly visible on routine MRI or CT**
 2. **Variably visible, sequence-dependent, field-strength-dependent, or better appreciated than sharply resolved**
@@ -223,6 +280,16 @@ For category 2 and category 3 structures, the narrative must teach how to find t
 * relationship to vermis versus hemisphere
 * relationship to cortex versus deep white matter
 * relationship to midline versus lateral compartment
+
+For non-neuro topics, use the analogous source-appropriate anchors, such as:
+
+* cortex versus medulla
+* tendon, ligament, or labrum relative to bone landmark
+* recess, capsule, or bursa relative to joint contour
+* lumen, wall, and branch point relationships
+* superficial versus deep compartment
+* near-field versus far-field ultrasound relationship
+* expected fascial, muscular, or osseous boundary
 
 The narrative must never pretend that a structure is crisply seen if it is mainly inferred by position.
 
@@ -282,6 +349,16 @@ Do **not** drift into vague advice like:
 * "correlate clinically"
 
 unless the article gives a specific actionable version of that idea.
+
+The learner should come away better at reading the study, not just better at reciting anatomy.
+
+The narrative should favor a guided reading rhythm such as:
+
+* identify anchor A
+* confirm relationship B
+* then move to adjacent structure or compartment C
+
+This should feel natural and lecture-like, not like a rigid checklist recital.
 
 ---
 
@@ -350,6 +427,8 @@ The narrative should specifically teach:
 * what visible landmarks prevent the error
 * what review mistake typically produces the overcall
 
+When the source supports it, explicitly name the likely wrong read and the exact anchor or maneuver that corrects it.
+
 ---
 
 ## DIFFERENTIAL / DISCRIMINATOR RULE
@@ -383,6 +462,15 @@ Keep this anatomy-first.
 
 Do **not** let the narrative turn into a pathology lecture.
 
+For non-neuro topics, use the same principle in the source-appropriate form:
+
+* lesion compartment localization
+* tendon or ligament localization
+* joint-space or recess localization
+* vascular branch-territory localization
+* procedural relevance
+* overcall prevention
+
 ---
 
 ## NARRATIVE STYLE RULE
@@ -409,6 +497,8 @@ The tone should support:
 * safe interpretation
 * retention of major pivots
 
+Keep the tone warm and elegant, but do not let elegance dilute the practical reading lesson.
+
 ---
 
 ## OUTPUT STYLE UPGRADE FOR NARRATIVE
@@ -421,8 +511,24 @@ It should repeatedly and naturally answer questions like:
 * What do I use as my anchors?
 * What is truly visible versus inferred?
 * How do I localize this if a stroke lands here?
+* Why does this matter in real interpretation?
 
 This should improve practical scan localization without becoming stiff or repetitive.
+
+For non-neuro topics, replace the stroke phrasing with the equivalent clinically useful form, such as:
+
+* How do I localize a lesion here?
+* How do I avoid miscalling this normal structure?
+* Why does this relationship matter when reading the study?
+
+The narrative should preserve modality honesty often enough that the learner does not lose track of what is:
+
+* directly visible
+* variably appreciable
+* mainly inferred
+
+But do this with restraint.
+Do not repeat the same visibility disclaimer so often that the lecture becomes clunky.
 
 ---
 
@@ -498,6 +604,23 @@ Rules:
 * each new idea should build on the previous one
 * repetition should be purposeful, not formulaic
 * the script should be beautiful to listen to in Speechify
+
+The narrative should integrate three layers smoothly:
+
+* reader layer: what to identify first, and how to localize it
+* concept layer: what the structure or relationship means anatomically
+* clinical layer: why that anatomy matters for interpretation, localization, procedures, or avoiding error
+
+Do not over-narrate low-yield details that add little to long-term reading skill.
+Use the narrative to build the mental framework; leave dense memorization burden to the later card layer.
+
+The narrative should therefore be:
+
+* selective rather than exhaustive
+* memorable rather than encyclopedic
+* practical rather than bloated
+
+End with a compact spoken mental map of the review path or anchor system when that helps the learner consolidate the topic.
 
 ---
 
