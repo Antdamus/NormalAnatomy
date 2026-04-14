@@ -29,6 +29,7 @@ CASE_MAP = [[7,8]];
 CORE_GAP = False
 CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it"
 CORE_PAGES = ""
+PRIMARY_SOURCE_LABEL = "RadPrimer"
 DOWNLOAD_IMAGES = True
 DOWNLOAD_PLAIN = True
 DOWNLOAD_ANNOTATED = True
@@ -661,6 +662,7 @@ def build_settings_block(include_core_validation: bool, narrative_mode: bool) ->
         f"  const CORE_GAP = {format_js_value(CORE_GAP)}; // true = Pathway B (Core GAP), false = Pathway A (Core covered)",
         f"  const CORE_SECTION = {format_js_value(CORE_SECTION)};",
         f"  const CORE_PAGES = {format_js_value(CORE_PAGES)};",
+        f"  const PRIMARY_SOURCE_LABEL = {format_js_value(PRIMARY_SOURCE_LABEL)}; // e.g. RadPrimer, Radiopaedia",
         f"  const INCLUDE_CORE_VALIDATION_INPUT = {format_js_value(include_core_validation)}; // auto-set by injector; true for card/full-prompt workflows, false for narrative workflows",
         f"  const DOWNLOAD_IMAGES = {format_js_value(download_images)}; // set false if you only want copy-to-clipboard",
         f"  const DOWNLOAD_PLAIN = {format_js_value(DOWNLOAD_PLAIN)}; // plain (no arrows)",

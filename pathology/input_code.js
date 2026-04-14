@@ -21,6 +21,7 @@ const CASE_MAP = [[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]];
   const CORE_GAP = false; // true = Pathway B (Core GAP), false = Pathway A (Core covered)
   const CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it";
   const CORE_PAGES = "";
+  const PRIMARY_SOURCE_LABEL = "RadPrimer"; // e.g. RadPrimer, Radiopaedia
   const INCLUDE_CORE_VALIDATION_INPUT = true; // auto-set by injector; true for card/full-prompt workflows, false for narrative workflows
   const DOWNLOAD_IMAGES = true; // set false if you only want copy-to-clipboard
   const DOWNLOAD_PLAIN = true; // plain (no arrows)
@@ -271,6 +272,22 @@ const CASE_MAP = [[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]];
     ].join("\n");
   };
 
+  const buildSourceAttributionBlock = () => {
+    const lines = ["=== SOURCE ATTRIBUTION ==="];
+    const primary = cleanText(PRIMARY_SOURCE_LABEL) || "[PRIMARY SOURCE NOT PROVIDED]";
+    lines.push(`Primary source label: ${primary}`);
+
+    if (!CORE_GAP && (String(CORE_SECTION || "").trim() || String(CORE_PAGES || "").trim())) {
+      lines.push(
+        `Core cross-check: ${String(CORE_SECTION || "").trim() || "[SECTION NOT PROVIDED]"}${String(CORE_PAGES || "").trim() ? ` | pages: ${String(CORE_PAGES || "").trim()}` : ""}`
+      );
+    } else if (CORE_GAP) {
+      lines.push("Core status: Core GAP invoked for this run.");
+    }
+
+    return lines.join("\n");
+  };
+
   /**********************
    * 1) CAPTIONS + IMAGE IDS (from thumbnails)
    **********************/
@@ -401,6 +418,8 @@ ${PROMPT_TEXT}
 ${articleTitle ? `TITLE: ${articleTitle}\n\n` : ""}${articleOutline || "[Article extraction failed]"}
 
 ${buildImagesBlock()}
+
+${buildSourceAttributionBlock()}
 `;
 
   safeCopy(out);
