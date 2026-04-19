@@ -192,6 +192,35 @@ Do not create a dedicated note just because a named structure appears once in th
 
 -----------------------------------------------------
 
+ATOMIC RETRIEVAL UNIT RULE
+
+Each card should test one primary retrieval target.
+
+Do not combine multiple independent retrieval tasks into one card.
+
+Common overpacked combinations that usually require splitting:
+- boundaries/location of a space PLUS contents of that space
+- localization rule PLUS full structure inventory
+- modality appearance PLUS variant/pitfall unless the pitfall is the reason the appearance matters
+- definition PLUS clinical relevance PLUS review sequence
+- multiple adjacent compartments that each require separate landmarks
+
+Allowed multi-fact answers are limited to facts that directly support the same retrieval target.
+
+Multiple boundaries or adjacent landmarks are allowed in one card when they all serve the same localization target.
+Do not split a boundary-rich localization card merely because it uses several boundaries to place one structure or space.
+
+In general:
+- one primary answer
+- up to 2-3 supporting anchors
+- one compact clinical or overcall relevance line when source-supported
+
+If the answer needs more than 3-4 distinct facts, split it unless it is a rare intentional synthesis card.
+
+Long integrative teaching belongs in the narrative, not in routine Anki backs.
+
+-----------------------------------------------------
+
 EXAM-APPROACH MAPPING RULE
 
 Exam-approach content must stay inside the existing card types.

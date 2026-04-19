@@ -182,6 +182,16 @@ G5B) Radiology-identification integrity
 - synthesis cards should remain few and operational, not summary-like or bloated
 - standalone trivia that does not improve reading skill or judgment should be omitted
 
+G5C) Atomic retrieval integrity
+- each card must have one primary retrieval target
+- routine cards should not combine boundaries/location, contents, imaging localization, modality appearance, pitfall, and clinical relevance into one overloaded answer
+- boundaries/location of a space and contents of that space are usually separate retrieval targets
+- multiple boundaries or adjacent landmarks are acceptable when they all support one localization target
+- localization method and full structure inventory are usually separate retrieval targets
+- if a card answer contains more than 3-4 distinct facts, audit it for splitting
+- synthesis cards are the only routine exception, and they must be explicitly compact, intentional, and few
+- if a card is overloaded, split it into separate cards or rewrite it around one primary map move before export
+
 H) Front-side blinding
 - front fields must preserve the intended cognitive task
 - no front may leak the answer through wording, captions, or extra fields

@@ -120,6 +120,19 @@ When clinically useful and source-supported, High_Yield_A may end with one compa
 
 Do NOT turn High_Yield_A into an unstructured paragraph dump.
 
+Do NOT combine separate answer families in one High_Yield_A unless they are inseparable for the single retrieval target.
+
+Usually split when the answer combines:
+- where a structure or space is located
+- what boundaries define it
+- what contents traverse it
+- how to localize it on imaging
+- why it matters clinically
+
+For example, "where is this cistern" and "what nerves and vessels are inside it" are usually two different retrieval targets unless the question is explicitly a compact synthesis map.
+
+However, several boundaries may stay together when the question is specifically a localization question and all boundaries are needed to place one structure, space, compartment, or recess.
+
 When localization support is relevant, High_Yield_A should ideally include:
 - the primary visible landmarks
 - the best plane or modality when source-supported
@@ -174,3 +187,4 @@ Before export, confirm:
 - Original_Caption is blank unless Image is populated
 - the answer is concrete and source-supported
 - if the card is broad or overview-style, it still improves practical structure identification rather than only testing memorized enumeration
+- the answer does not combine boundaries/location, contents, localization method, and clinical relevance into one overloaded card unless intentionally marked by the question as a compact synthesis card
