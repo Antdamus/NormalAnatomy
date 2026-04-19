@@ -109,14 +109,30 @@ Use simple Anki-safe HTML only:
 
 The summary must begin with:
 - a visually distinct title block using the source article's actual title or main topic
-- the title block should include a clean emoji or icon anchor
+- the title block should include a clean encoded icon anchor
 - then 1-2 sentences summarizing the main topic from the source article/case only
+
+SUMMARY ICON ENCODING RULE
+
+For TSV export, do not write literal emoji characters directly into any field, including the summary field.
+
+When the summary requires emoji or icon anchors, encode them as HTML numeric character references instead of literal Unicode characters.
+
+Examples:
+- Use `&#x1F9ED;` instead of the compass emoji
+- Use `&#x1F50D;` instead of the magnifying glass emoji
+- Use `&#x26A0;&#xFE0F;` instead of the warning emoji
+- Use `&#x2B50;` instead of the star emoji
+
+This prevents PowerShell, console, clipboard, browser-copy, or intermediate script encoding from converting icons into question marks during TSV generation.
+
+The summary should still render with icons in Anki/HTML, but the TSV text itself must remain ASCII-safe.
 
 The title block should:
 - stand out visually from the rest of the summary
 - use simple HTML hierarchy such as a bold title inside a <div>
 - avoid hardcoded example entities
-- allow light emoji only when it genuinely improves scanability
+- allow light icon anchors only when they genuinely improve scanability, and encode them as HTML numeric character references
 
 Then use clearly labeled sections only when supported by the source article/case.
 
@@ -154,16 +170,21 @@ Preferred section order when supported by the article:
 - Pearls / Pitfalls / Diagnostic Checklist
 - Super Summary
 
-Major sections should use tasteful emoji or icon anchors for readability.
+Major sections should use tasteful encoded icon anchors for readability.
 Use varied, clean icons with restraint.
-Every major section header should use a visible emoji or icon anchor, not the title only.
+Every major section header should use a visible encoded icon anchor, emitted for TSV export as an HTML numeric character reference rather than as a literal emoji character.
 Do not use the same icon for every section unless necessary.
 Permission is granted to vary icons or color-style icons for readability and scanability.
 
-Allowed emoji / icon palette for title and major section headers:
-- 🟥 🟦 🟨 🟩 🟪 🟧 ⬛ ⬜
-- 🔴 🔵 🟢 🟡 🟣 🟠 ⚫ ⚪
-- 🧠 🔑 ⚖️ 🧑‍⚕️ 💡 🧾 📌 📚 📝 🔍 📖 🧬 🩻 🖼️ 📊 🧭 🚩 ✅ ⭐ ⚠️ 🧪 🏷️ 📍 🎯 🛠️ 🔬 🗂️ 📎 ✳️ 🔶 🔷 ♦️ ▪️
+Allowed encoded icon palette for title and major section headers:
+
+The palette defines the intended rendered icons. During TSV generation, icons must be emitted as HTML numeric character references, not literal Unicode emoji.
+
+Do not copy, emit, or rely on any literal/non-ASCII legacy icon samples that may appear in older prompt copies. Only entity-encoded icon anchors are valid for TSV output.
+
+Examples from the allowed palette:
+- colored squares/circles: `&#x1F7E5;`, `&#x1F7E6;`, `&#x1F7E8;`, `&#x1F7E9;`, `&#x1F7EA;`, `&#x1F7E7;`, `&#x2B1B;`, `&#x2B1C;`, `&#x1F534;`, `&#x1F535;`, `&#x1F7E2;`, `&#x1F7E1;`, `&#x1F7E3;`, `&#x1F7E0;`, `&#x26AB;`, `&#x26AA;`
+- common radiology-study icons: `&#x1F9E0;`, `&#x1F511;`, `&#x2696;&#xFE0F;`, `&#x1F4A1;`, `&#x1F9FE;`, `&#x1F4CC;`, `&#x1F4DA;`, `&#x1F4DD;`, `&#x1F50D;`, `&#x1F4D6;`, `&#x1F9EC;`, `&#x1FA7B;`, `&#x1F5BC;&#xFE0F;`, `&#x1F4CA;`, `&#x1F9ED;`, `&#x1F6A9;`, `&#x2705;`, `&#x2B50;`, `&#x26A0;&#xFE0F;`, `&#x1F9EA;`, `&#x1F3F7;&#xFE0F;`, `&#x1F4CD;`, `&#x1F3AF;`, `&#x1F6E0;&#xFE0F;`, `&#x1F52C;`, `&#x1F5C2;&#xFE0F;`, `&#x1F4CE;`, `&#x2733;&#xFE0F;`, `&#x1F536;`, `&#x1F537;`, `&#x2666;&#xFE0F;`, `&#x25AA;&#xFE0F;`
 
 Within Key Imaging Findings:
 - group findings by modality when the article supports modality-specific organization

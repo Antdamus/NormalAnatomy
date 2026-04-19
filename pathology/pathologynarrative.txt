@@ -140,6 +140,24 @@ Do **not** pretend uncertain image grouping is definite.
 
 ---
 
+## IMAGE COMPLETENESS RULE
+
+If an image section is provided, every provided image must be accounted for.
+
+This is mandatory.
+
+* Do not skip images.
+* Do not silently exclude images because they seem repetitive, low-yield, poorly captioned, or hard to integrate.
+* Every provided image number must appear in the narrative walkthrough, either individually or as part of an explicitly stated grouped case.
+* Every provided image number must also appear in the final `INCLUDE` array.
+* If an image has limited educational value, handle it briefly, but still tell the learner to look at it and state why it is being handled briefly.
+* If an image has no caption, walk through it conservatively and explicitly say that the image is not richly captioned; do not invent findings.
+* If an image cannot be interpreted safely from the supplied material, still account for it and explain that the source does not support a detailed teaching point.
+
+Only omit an image if the user explicitly says to exclude it.
+
+---
+
 ## GLOBAL GOAL OF THE NARRATIVE
 
 The final narrative should help the learner:
@@ -234,6 +252,8 @@ This should make the dry article feel navigable.
 
 This is the core of the output.
 
+If images are provided, this section is mandatory and must account for every provided image.
+
 For each image or inferred image cluster:
 
 * explicitly identify the image label(s)
@@ -243,6 +263,8 @@ For each image or inferred image cluster:
 * connect that image to the underlying concept
 * compare it with prior images when useful
 * mention if the grouping is inferred rather than explicit
+
+Do not skip any provided image. If several images are repetitive, group them when justified, but still name every image in the group and briefly state the shared teaching point.
 
 ### 4. Cross-image synthesis
 
@@ -267,7 +289,9 @@ End with a compact high-yield teaching finish that includes:
 
 ## IMAGE WALKTHROUGH RULES
 
-For every image or inferred grouped case, the narrative should usually follow this sequence:
+For every provided image or inferred grouped case, the narrative should usually follow this sequence:
+
+Every provided image must be walked through. The walkthrough may be compact for repetitive or low-information images, but it must still explicitly identify the image and give the learner a reason to inspect it.
 
 1. **Orientation**
 
@@ -366,12 +390,39 @@ Good examples:
 
 If an image has no caption or very limited teaching content:
 
+* do not skip it
 * do not force a full teaching paragraph around it
 * explicitly say the image is not richly captioned if needed
 * keep it brief
 * do not invent detail
 
-If an image is clearly low-yield or poorly described, minimize time spent on it.
+If an image is clearly low-yield or poorly described, minimize time spent on it while still naming the image and directing the learner to look at it.
+
+If multiple low-yield images are present:
+
+* you may group them as a brief sequence if grouping is explicit or strongly supported
+* every image number must still be named
+* the final `INCLUDE` array must still contain every provided image number
+
+---
+
+## NO-IMAGE OR LOW-IMAGE FALLBACK
+
+If no image section is provided, or if the image section is structurally empty, convert the task into a **guided pathology concept mastery narrative** rather than pretending an image walkthrough exists.
+
+In that fallback:
+
+* organize the article by diagnostic buckets, modality choices, discriminators, mechanisms, classifications, board pivots, and pitfalls
+* use the same source discipline and narrative flow rules
+* do not fabricate image descriptions
+* still output the second code block as:
+
+```javascript
+const INCLUDE = [];
+const CASE_MAP = [];
+```
+
+If images are provided but the article is mostly a broad approach or classification article, still walk through every image first, then use opening map, cross-image synthesis, and closeout sections to teach the non-image article architecture.
 
 ---
 
@@ -513,9 +564,11 @@ const CASE_MAP = [[1,2],[8,9,10,11]];
 
 Rules for this second code block:
 
-* `INCLUDE` must list all included image numbers in ascending order
+* `INCLUDE` must list all provided image numbers in ascending order unless the user explicitly excluded specific images
 * `CASE_MAP` must list only grouped multi-image cases
 * single ungrouped images should remain only in `INCLUDE`, not as one-item arrays in `CASE_MAP`
+* Every image number in `INCLUDE` must have been explicitly walked through in the narrative
+* If any provided image was not walked through, the output is incomplete and must be repaired before finalizing
 * if no multi-image groups were inferred or provided, use:
 
 ```javascript
@@ -561,6 +614,7 @@ Create a **guided image mastery narrative** that:
 * is engaging
 * is source-faithful
 * forces visual inspection of the images
+* walks through every provided image without skipping any image
 * uses controlled grouping inference when appropriate
 * clearly labels inferred grouping when used
 * preserves the main educational content of the article
@@ -570,7 +624,7 @@ Create a **guided image mastery narrative** that:
 * avoids repetitive local inference disclaimers after the initial grouping note unless truly needed
 * prepares the learner for later deeper retrieval practice in Anki
 
-Before finishing, verify that the major image teaching points and the major source-emphasized non-image facts were both incorporated into the narrative.
+Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, and that the major image teaching points and the major source-emphasized non-image facts were both incorporated into the narrative.
 
 Do not ask for clarification unless the input is structurally unusable.
 When uncertain, be transparent rather than overconfident.

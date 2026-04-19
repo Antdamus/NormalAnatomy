@@ -171,6 +171,8 @@ Summary HTML Rule (TSV)
 • Allowed summary HTML should remain limited to simple tags such as:
   <b> <br> <div> <ul> <ol> <li>
 • The same article-level summary content must be reused identically across all cards from the same article/case bundle.
+• The `summary` field must not contain literal emoji or other non-ASCII icon characters.
+• Any summary icon anchor must be encoded as an HTML numeric character reference, such as `&#x1F50D;`, so TSV text stays ASCII-safe and does not turn into question marks during clipboard/console handling.
 
 -----------------------------------------------------
 PREVIEW → TSV IDENTITY LOCK (CRITICAL)
@@ -508,6 +510,10 @@ N) Summary Field Rule (GLOBAL)
   summary MUST be populated (article-only, no Core mixing, no outside facts, no inference).
 • If a card does NOT originate from RadPrimer/STATdx:
   summary MUST be blank.
+• If summary uses icon anchors:
+  they MUST be HTML numeric character references, not literal emoji.
+• If a populated summary contains literal emoji/non-ASCII icon characters likely to become `???` during TSV handling:
+  STOP and repair the summary before export.
 
 O) EXTERNAL LITERATURE TRACEABILITY RULE (MANDATORY)
 
