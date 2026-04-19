@@ -417,9 +417,9 @@ In that fallback:
 * do not fabricate image descriptions
 * still output the second code block as:
 
-```javascript
-const INCLUDE = [];
-const CASE_MAP = [];
+```text
+INCLUDE = []
+CASE_MAP = []
 ```
 
 If images are provided but the article is mostly a broad approach or classification article, still walk through every image first, then use opening map, cross-image synthesis, and closeout sections to teach the non-image article architecture.
@@ -555,11 +555,11 @@ The entire main narrative should appear inside **one single code block** so it c
 
 ### Code block 2 — Grouping audit / extractor check
 
-After the narrative, output a second code block containing the final inferred or explicit image-group structure in this exact JavaScript-style format:
+After the narrative, output a second code block containing the final inferred or explicit image-group structure in this exact plain audit format:
 
-```javascript
-const INCLUDE = [1,2,3,4];
-const CASE_MAP = [[1,2],[8,9,10,11]];
+```text
+INCLUDE = [1,2,3,4]
+CASE_MAP = [[1,2],[8,9,10,11]]
 ```
 
 Rules for this second code block:
@@ -571,9 +571,9 @@ Rules for this second code block:
 * If any provided image was not walked through, the output is incomplete and must be repaired before finalizing
 * if no multi-image groups were inferred or provided, use:
 
-```javascript
-const INCLUDE = [...];
-const CASE_MAP = [];
+```text
+INCLUDE = [...]
+CASE_MAP = []
 ```
 
 * the grouping code block exists so the user can manually verify whether the narrative grouped images correctly

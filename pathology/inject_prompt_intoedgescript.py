@@ -22,9 +22,10 @@ MODE = "chatgpt_cards"
 VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards"}
 
 # Single control surface for Edge injection.
-FILE_PREFIX = "handOA"
-INCLUDE = [1,2,3,4,5,6,7,8,9,10];
-CASE_MAP = [[7,8]];
+FILE_PREFIX = ""
+INCLUDE = [1,2,3,4,5,6,7,8,9,10,11,12];
+CASE_MAP = [];
+
 
 CORE_GAP = False
 CORE_SECTION = "it might be in mulitple regions of the book so you are going to have to look through it"
