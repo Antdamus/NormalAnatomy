@@ -220,6 +220,85 @@ It is “teach the article while walking the learner through the images.”
 
 ---
 
+## ORGANIZING SPINE RULE
+
+Before writing the narrative, first infer the article's **best organizing spine**.
+
+The organizing spine is the main structure that makes the topic easiest to understand and remember.
+
+Choose the structure that best fits the source, such as:
+
+* fracture pattern or morphology
+* disease subtype or diagnostic bucket
+* modality
+* severity or aggressiveness
+* mechanism or timeline
+* differential branches
+* diagnostic workflow
+* anatomy-based distribution
+
+Then rebuild the narrative around that spine rather than around the raw article order, unless the source article order is already clearly optimal.
+
+Rules:
+
+* name the major buckets early in the opening orientation or big-picture map
+* make the learner feel that the topic has a clean internal architecture
+* do not let the narrative become a sequence of detached pearls before the organizing framework is clear
+* if the article contains many facts, classifications, and cases, the narrative must still present them through the chosen structure rather than as serial accumulation
+* prefer approximately 3-6 major buckets when the source supports that range
+* if the first pass creates too many weak buckets, merge them into stronger, more memorable categories
+* do not create a taxonomy that is more complex than the article actually needs
+
+If the source supports more than one possible structure, prefer the one that best improves:
+
+* recognition
+* discrimination
+* comparison across cases
+* later retrieval in Anki
+
+---
+
+## CASE-TO-STRUCTURE INTEGRATION RULE
+
+Cases and images must serve the organizing spine, not interrupt it.
+
+When introducing a case or grouped image set, make clear why it belongs where it does. For example:
+
+* it is a classic example of bucket A
+* it contrasts with bucket B
+* it shows progression from one pattern to another
+* it demonstrates a pitfall inside the current framework
+* it refines or stress-tests the current category
+
+Do not let cases feel like isolated stops on a tour.
+
+The learner should feel that each case strengthens the structure already being built.
+
+---
+
+## NO ORPHAN FACTS RULE
+
+Do not output detached fact clusters.
+
+Any important non-image fact should be attached to one of the following:
+
+* a diagnostic bucket
+* a case comparison
+* a mechanism explanation
+* a modality comparison
+* a reporting/management pivot
+* a closeout synthesis point
+
+Before including a fact, implicitly ask:
+
+* Why is this fact here?
+* What part of the framework does it support?
+* Does it change recognition, differential, severity, prognosis, or reporting?
+
+If it does not strengthen the framework, omit it unless the source makes it essential.
+
+---
+
 ## NARRATIVE STRUCTURE (MANDATORY)
 
 Unless the user requests another format, organize the output in this order:
@@ -248,6 +327,22 @@ Before diving into image walkthroughs, briefly organize the topic into major buc
 
 This should make the dry article feel navigable.
 
+This map is not filler.
+It should declare the organizing spine that will control the rest of the narrative.
+
+Whenever possible:
+
+* make the buckets mutually clarifying rather than redundant
+* present them in the order that best supports understanding
+* keep the map concise but structurally strong enough that later cases clearly fit into it
+
+Use a macro-before-micro flow whenever the source supports it:
+
+* broad pattern or category first
+* then subtype, contrast, or branch point
+* then case-level detail
+* then pearl, pitfall, or reporting implication
+
 ### 3. Guided image walkthrough
 
 This is the core of the output.
@@ -265,6 +360,12 @@ For each image or inferred image cluster:
 * mention if the grouping is inferred rather than explicit
 
 Do not skip any provided image. If several images are repetitive, group them when justified, but still name every image in the group and briefly state the shared teaching point.
+
+When the walkthrough moves from one major bucket to another:
+
+* explicitly signal the transition
+* make clear why the next bucket is distinct from the prior one
+* preserve momentum so the learner feels guided through one coherent framework rather than reset into a new mini-lecture
 
 ### 4. Cross-image synthesis
 
@@ -439,8 +540,14 @@ That means you should:
 * connect pathology/clinical information back to the imaging
 * reduce unnecessary repetition
 * preserve important details and discriminators
+* reorganize the material into the best teaching architecture supported by the source
+* make the governing framework clear before accumulating details
+* convert loose lists into buckets, contrasts, progressions, or decision branches whenever the source supports that move
+* preserve important details, but place them after the learner already knows the bucket they belong to
+* move from macro pattern to micro detail whenever the source supports that sequencing
 
 Do **not** simply read the article outline back verbatim.
+Do **not** preserve a weak source order if a clearer, more memorable order is available from the same source.
 
 ---
 
@@ -472,6 +579,7 @@ Instead, explain:
 * which mimic is especially dangerous or exam-relevant
 
 Keep this radiology-centered.
+Whenever possible, place differentials inside the organizing spine so they function as branch points or contrast buckets rather than as an appended list.
 
 ---
 
@@ -516,6 +624,10 @@ Rules:
 * avoid dumping disconnected facts
 * no source-emphasized non-image fact may be omitted just because it lacks a clean image anchor
 * if a fact is important but has no natural image anchor, integrate it into the opening map, cross-image synthesis, or high-yield closeout instead of creating a separate fact list
+* whenever possible, place the fact at the exact moment where it helps distinguish one bucket from another or clarifies why the current case belongs in its category
+* if several facts belong to the same bucket, compress them into a clean local synthesis rather than scattering them as trivia fragments
+
+When finishing a major bucket, provide a brief one-line takeaway that states the core recognition or discrimination lesson of that bucket before moving on.
 
 ---
 
@@ -615,6 +727,8 @@ Create a **guided image mastery narrative** that:
 * is source-faithful
 * forces visual inspection of the images
 * walks through every provided image without skipping any image
+* infers and uses the strongest organizing spine supported by the source
+* integrates cases into that structure instead of presenting them as isolated stops
 * uses controlled grouping inference when appropriate
 * clearly labels inferred grouping when used
 * preserves the main educational content of the article
@@ -624,7 +738,7 @@ Create a **guided image mastery narrative** that:
 * avoids repetitive local inference disclaimers after the initial grouping note unless truly needed
 * prepares the learner for later deeper retrieval practice in Anki
 
-Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, and that the major image teaching points and the major source-emphasized non-image facts were both incorporated into the narrative.
+Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that the article has been rebuilt around a clear organizing framework, and that the major image teaching points and the major source-emphasized non-image facts were both incorporated into the narrative.
 
 Do not ask for clarification unless the input is structurally unusable.
 When uncertain, be transparent rather than overconfident.
