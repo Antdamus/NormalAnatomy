@@ -72,6 +72,28 @@ If the extractor output uses `IMAGE_##`, you must **not** assume those are alrea
 
 However, you may attempt **controlled grouping inference** from the captions.
 
+For the spoken narrative itself, convert image labels into **speech-friendly references**.
+
+Examples:
+
+* `IMAGE_01` -> `IMAGE ONE`
+* `IMAGE_02` -> `IMAGE TWO`
+* `IMAGE_14 through IMAGE_19` -> `IMAGES FOURTEEN THROUGH NINETEEN`
+
+Do not read image labels aloud with underscores or leading zeros in the Speechify narrative.
+
+Also normalize speech-confusing modality abbreviations in the spoken narrative.
+
+Examples:
+
+* say `MRI` instead of `MR`
+* say `CT` as written
+* prefer speech-friendly phrasing such as `T1-weighted MRI` rather than abbreviated strings that text-to-speech may mangle
+
+Do not use bare `MR` in the Speechify narrative, because text-to-speech may pronounce it as `mister`.
+
+Preserve the exact numeric accounting internally for the grouping audit code block, but make the spoken walkthrough sound natural to a listener.
+
 ---
 
 ## CONTROLLED GROUPING INFERENCE RULE
@@ -97,6 +119,7 @@ When preparing the guided narrative, you may infer likely multi-image case group
    * “These next two images appear to belong to the same patient.”
    * “This is likely an inferred multi-image case.”
 6. Do **not** silently merge many images into a single case without saying so.
+7. If a pathology photograph or gross specimen is being linked to an imaging case by caption continuity rather than an explicit same-patient statement, keep the wording cautious and do not overstate certainty.
 
 ### Transparency rule
 
@@ -313,6 +336,8 @@ Give a concise but strong opening that tells the learner:
 * what the major learning pivots will be
 
 Keep this compact but meaningful.
+In most cases, keep the opening to no more than two short paragraphs before moving into the structural map.
+Do not spend so long in the opening that visual engagement is delayed.
 
 ### 2. Big-picture map
 
@@ -342,6 +367,13 @@ Use a macro-before-micro flow whenever the source supports it:
 * then subtype, contrast, or branch point
 * then case-level detail
 * then pearl, pitfall, or reporting implication
+
+For each major bucket, prefer the following micro-template when the source supports it:
+
+* what this bucket is
+* what the images in this bucket demonstrate
+* what separates this bucket from the nearest mimic, neighboring subtype, or competing branch
+* one-line takeaway
 
 ### 3. Guided image walkthrough
 
@@ -386,6 +418,10 @@ End with a compact high-yield teaching finish that includes:
 * the most testable / report-relevant ideas
 * what the learner should now be able to recognize confidently
 
+The closeout must remain inside the same organizing spine established earlier.
+Do not let the ending relapse into detached lecture notes or a loose checklist that ignores the framework used in the main walkthrough.
+Whenever possible, close by briefly revisiting the same major buckets in compressed form rather than inventing a new end-stage structure.
+
 ---
 
 ## IMAGE WALKTHROUGH RULES
@@ -396,8 +432,8 @@ Every provided image must be walked through. The walkthrough may be compact for 
 
 1. **Orientation**
 
-   * “Now go to IMAGE_07.”
-   * “Now look at IMAGE_14 through IMAGE_19; these likely belong together based on caption continuity.”
+   * “Now go to IMAGE SEVEN.”
+   * “Now look at IMAGES FOURTEEN THROUGH NINETEEN; these likely belong together based on caption continuity.”
 
 2. **Inspection instruction**
 
@@ -479,10 +515,10 @@ You should explicitly direct the learner to the image whenever:
 
 Good examples:
 
-* “Now look closely at IMAGE_03.”
+* “Now look closely at IMAGE THREE.”
 * “Stay on this image for a moment.”
 * “Now compare this with the prior image.”
-* “Now move to IMAGE_17.”
+* “Now move to IMAGE SEVENTEEN.”
 * “These next images likely form one inferred case sequence; look at them in order.”
 
 ---
@@ -626,6 +662,9 @@ Rules:
 * if a fact is important but has no natural image anchor, integrate it into the opening map, cross-image synthesis, or high-yield closeout instead of creating a separate fact list
 * whenever possible, place the fact at the exact moment where it helps distinguish one bucket from another or clarifies why the current case belongs in its category
 * if several facts belong to the same bucket, compress them into a clean local synthesis rather than scattering them as trivia fragments
+* preserve smaller but still meaningful article details when they improve specificity, such as classic demographics, favored location/distribution, subtype frequency, named contrast behavior, laboratory negatives, multiplicity thresholds, or uncommon-but-explicit imaging clues
+* do not drop an article-supported detail merely because it is less dramatic than hemorrhage, rupture, or malignancy if it still helps the learner reconstruct the topic accurately
+* when a detail is lower-stakes but still educationally useful, integrate it briefly rather than omitting it entirely
 
 When finishing a major bucket, provide a brief one-line takeaway that states the core recognition or discrimination lesson of that bucket before moving on.
 
@@ -729,16 +768,19 @@ Create a **guided image mastery narrative** that:
 * walks through every provided image without skipping any image
 * infers and uses the strongest organizing spine supported by the source
 * integrates cases into that structure instead of presenting them as isolated stops
+* keeps the opening brief so the learner reaches the visual material quickly
+* uses speech-friendly image references in the narrative, such as `IMAGE ONE` or `IMAGES FIVE THROUGH TEN`, rather than underscore-based labels
 * uses controlled grouping inference when appropriate
 * clearly labels inferred grouping when used
 * preserves the main educational content of the article
 * integrates important non-image article facts seamlessly into the narrative at the point where they become meaningful
 * does not append them as a disconnected fact dump
+* preserves article-supported smaller details when they materially improve specificity or reconstruction of the topic
 * maintains beautiful spoken flow
 * avoids repetitive local inference disclaimers after the initial grouping note unless truly needed
 * prepares the learner for later deeper retrieval practice in Anki
 
-Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that the article has been rebuilt around a clear organizing framework, and that the major image teaching points and the major source-emphasized non-image facts were both incorporated into the narrative.
+Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that the article has been rebuilt around a clear organizing framework, that the ending still follows that framework, that inferred case links are not overstated, and that the major image teaching points plus the major and smaller source-emphasized non-image facts were both incorporated into the narrative.
 
 Do not ask for clarification unless the input is structurally unusable.
 When uncertain, be transparent rather than overconfident.
