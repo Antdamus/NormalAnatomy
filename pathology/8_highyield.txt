@@ -116,6 +116,23 @@ No:
 
 The question must be direct, precise, and testable.
 
+DIRECT FACT-RECALL WORDING RULE (MANDATORY)
+
+Prefer question stems that ask for the imaging fact, number, threshold, or behavior directly.
+
+Good:
+- "What percentage of adenomas are iso- to hyperintense on hepatobiliary phase?"
+- "What is the expected MRI appearance of HNF1A-mutated hepatic adenoma?"
+- "What CT enhancement pattern is described for inflammatory hepatic adenoma?"
+- "What sonographic appearance is source-supported for hepatic adenoma?"
+
+Avoid meta stems such as:
+- "What did the source review support encoding?"
+- "What did the literature search show?"
+- "What was or was not explicitly stated by the source?" unless the absence itself is the board-tested fact
+
+High-Yield cards should test the medicine/radiology itself, not the bookkeeping around the source review.
+
 ONE DOMINANT RETRIEVAL TARGET (MANDATORY)
 
 Each High-Yield card must test one dominant retrieval target.
@@ -245,26 +262,56 @@ You MUST generate at least ONE dedicated High-Yield card encoding that MRI appea
 (If Sectioned Build mode is active, this requirement is QUEUED and must be emitted only in SECTION G.)
 
 Rules:
-• MRI details may be included ONLY if explicitly stated in the source.
-• Include the sequence name(s) exactly as written (e.g., T1, T2, DWI, post-contrast).
-• Do NOT infer unmentioned sequences or signal characteristics.
-• Do NOT generalize beyond the specific source statement.
-• Keep the card tight: 2–6 short lines max.
+- MRI details may be included ONLY if explicitly stated in the source.
+- Include the sequence name(s) exactly as written (for example T1, T2, DWI, post-contrast).
+- Do NOT infer unmentioned sequences or signal characteristics.
+- Do NOT generalize beyond the specific source statement.
+- Keep the card tight: 2-6 short lines max.
 
 Recommended format:
 
 High_Yield_Q:
-“MRI appearance pivot for [ENTITY]: what is the key MRI signal/enhancement pattern (as stated in source)?”
+"For [ENTITY], what MRI signal and enhancement pattern is expected (as stated in source)?"
 
 High_Yield_A:
-• Sequence: [source-stated sequence] → [source-stated appearance]
-• (repeat for other sequences only if source states them)
-• Exam pivot: [one line: why this helps discriminate or recognize]
+- Sequence: [source-stated sequence] -> [source-stated appearance]
+- Repeat for other sequences only if source states them.
+- Exam pivot: [one line: why this helps discriminate or recognize]
 
 If the MRI description is too long:
-• Split into multiple High-Yield cards ONLY if each card is its own distinct pivot.
-• Otherwise omit lower-value details.
------------------------------------------------------
+- Split into multiple High-Yield cards ONLY if each card is its own distinct pivot.
+- Otherwise omit lower-value details.
+
+CT APPEARANCE ENCODING RULE (MANDATORY WHEN SOURCE SUPPORTS)
+
+If the provided Core/RadPrimer/STATdx source explicitly describes CT appearance
+(attenuation, enhancement pattern, calcification, necrosis, hemorrhage density, capsule, washout, or source-stated CT discriminator features):
+
+You MUST generate at least ONE dedicated High-Yield card encoding that CT appearance.
+
+(If Sectioned Build mode is active, this requirement is QUEUED and must be emitted only in SECTION G.)
+
+Rules:
+- CT details may be included ONLY if explicitly stated in the source.
+- Include noncontrast versus postcontrast phase behavior exactly as written when possible.
+- Do NOT infer washout, calcification, hemorrhage density, fat, or capsule unless source-supported.
+- Do NOT generalize beyond the specific source statement.
+- Keep the card tight: 2-6 short lines max.
+
+Recommended format:
+
+High_Yield_Q:
+"For [ENTITY], what CT attenuation and enhancement pattern is expected (as stated in source)?"
+
+High_Yield_A:
+- Noncontrast CT: [source-stated appearance]
+- Postcontrast / phase behavior: [source-stated appearance]
+- Additional CT clue: [calcification / hemorrhage / capsule / necrosis only if source-stated]
+- Exam pivot: [one line: why this helps recognize or discriminate]
+
+If the CT description is too long:
+- Split into multiple High-Yield cards ONLY if each card is its own distinct pivot.
+- Otherwise omit lower-value details.
 
 STRUCTURAL FRAMEWORK ENCODING RULE (MANDATORY WHEN SOURCE SUPPORTS)
 
@@ -474,15 +521,28 @@ If multiple external sources conflict:
 
 Every performance card MUST include:
 
-• One short line:
-  “Exam pivot: ____.”
+??? One short line:
+  ???Exam pivot: ____.???
 
 This must explain how the number changes test-taking or interpretation.
 
 If no pivot exists:
-• Do NOT generate the card.
+??? Do NOT generate the card.
 
------------------------------------------------------
+4B) NEGATIVE-EVIDENCE META CARD BAN
+
+Do NOT generate a High-Yield card whose main point is merely that:
+??? no sensitivity/specificity was provided
+??? no PPV/NPV was stated
+??? the source did not report likelihood ratios
+??? the source review did not find performance metrics
+
+Absence of metrics is NOT itself a High-Yield retrieval target.
+
+Instead:
+??? if source-supported quantitative exceptions, thresholds, or imaging percentages exist, ask those directly
+??? if no actionable number exists, generate no performance card
+??? do NOT replace a missing performance card with a meta-review card
 
 5) INFLATION CONTROL
 

@@ -22,7 +22,7 @@ Rules:
 Recommended format:
 
 High_Yield_Q:
-"Ultrasound appearance pivot for [ENTITY]: what is the key sonographic appearance (as stated in source)?"
+"For [ENTITY], what sonographic appearance is expected (as stated in source)?"
 
 High_Yield_A:
 - Sonographic feature: [source-stated appearance]

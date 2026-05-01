@@ -531,6 +531,21 @@ If the deck is visibly imbalanced toward low-yield definitions, repetitive manag
 â€¢ STOP.
 â€¢ Repair the deck before TSV export.
 
+P0) PERFORMANCE META-CARD BAN (MANDATORY)
+If no source-stated or permitted external diagnostic performance metric exists:
+??? No performance card is required.
+??? Do NOT generate a fallback card whose main point is that no sensitivity, specificity, PPV, NPV, or likelihood-ratio metric was stated.
+??? Prefer direct source-supported quantitative cards only when an actual number, threshold, or exception rate is present.
+
+P1) CT APPEARANCE COVERAGE (MANDATORY WHEN SOURCE SUPPORTS)
+If the source text explicitly describes CT appearance for the entity/topic:
+??? At least ONE High-Yield CT appearance card MUST exist in the approved preview set.
+
+If no such card exists:
+??? STOP.
+??? Output: "TSV export blocked - CT appearance described in source but not encoded."
+??? Then generate the missing CT appearance High-Yield card(s) in SECTION G and re-preview.
+
 P) Summary Field Rule (GLOBAL)
 â€¢ If a card originates from Core Radiology, RadPrimer, or STATdx:
   summary MUST be populated.

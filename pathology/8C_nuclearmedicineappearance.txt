@@ -18,7 +18,7 @@ Rules:
 Recommended format:
 
 High_Yield_Q:
-"Nuclear medicine appearance pivot for [ENTITY]: what is the key tracer-based appearance (as stated in source)?"
+"For [ENTITY], what nuclear medicine appearance is expected (as stated in source)?"
 
 High_Yield_A:
 - Tracer / exam: [source-stated tracer or study]
