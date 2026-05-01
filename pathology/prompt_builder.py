@@ -23,9 +23,11 @@ ORDER = [
     "7_boardstrap.txt",
     "8_highyield.txt",
     "8B_ultrasoundappearance.txt",
+    "8C_nuclearmedicineappearance.txt",
     "9_radiopediadrill.txt",
     "outputrule.txt",
     "outputB_ultrasoundvalidation.txt",
+    "outputC_nuclearmedicinevalidation.txt",
 ]
 
 LABELS = {
@@ -43,9 +45,11 @@ LABELS = {
     "7_boardstrap.txt": "BOARDS TRAP RULES",
     "8_highyield.txt": "HIGH-YIELD RULES",
     "8B_ultrasoundappearance.txt": "ULTRASOUND APPEARANCE RULES",
+    "8C_nuclearmedicineappearance.txt": "NUCLEAR MEDICINE APPEARANCE RULES",
     "9_radiopediadrill.txt": "RADIOPAEDIA DRILL RULES (FUTURE)",
     "outputrule.txt": "OUTPUT / TSV RULES",
     "outputB_ultrasoundvalidation.txt": "ULTRASOUND VALIDATION RULES",
+    "outputC_nuclearmedicinevalidation.txt": "NUCLEAR MEDICINE VALIDATION RULES",
 }
 
 # Watch settings

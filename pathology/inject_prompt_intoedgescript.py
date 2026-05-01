@@ -210,6 +210,8 @@ You must review and classify the available source material across domains such a
 * clinical pivots
 * MRI appearance
 * ultrasound appearance
+* nuclear medicine appearance
+* structural framework / subtype map if present
 * diagnostic performance
 * epidemiology / "most common" pivots
 * prognosis / outcomes
@@ -358,6 +360,8 @@ You must enforce:
 * diagnostic performance cards when required
 * MRI appearance cards when required
 * ultrasound appearance cards when required
+* nuclear medicine appearance cards when required
+* structural framework High-Yield cards when source-supported and required
 * outcome / prognosis / follow-up pivots when source-supported and required
 * no trivial card inflation
 
@@ -426,6 +430,8 @@ The audit must explicitly check:
 * caption verbatim integrity
 * MRI appearance coverage when required
 * ultrasound appearance coverage when required
+* nuclear medicine appearance coverage when required
+* structural framework coverage when required
 * diagnostic performance coverage when required
 * epidemiology coverage when required
 * outcome/time-to-intervention coverage when required

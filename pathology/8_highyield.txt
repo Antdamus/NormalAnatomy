@@ -22,6 +22,7 @@ High-Yield cards exist to encode:
 • Management triggers
 • Staging rules
 • Classification pivots
+• Structural subtype / algorithm pivots that change interpretation
 • “Most common…” statements
 • Epidemiologic pivots that change interpretation
 • Board-relevant discriminators
@@ -43,7 +44,7 @@ Do NOT create:
 • Any multi-card “ontology spine”
 
 High-Yield fields remain reserved for true board pivots
-(thresholds, staging, management triggers, classification pivots, “most common” pivots),
+(thresholds, staging, management triggers, classification pivots, structural subtype/framework pivots, “most common” pivots),
 EXCEPT the single allowed Definition card per new entity.
 -----------------------------------------------------
 
@@ -237,6 +238,45 @@ High_Yield_A:
 If the MRI description is too long:
 • Split into multiple High-Yield cards ONLY if each card is its own distinct pivot.
 • Otherwise omit lower-value details.
+-----------------------------------------------------
+
+STRUCTURAL FRAMEWORK ENCODING RULE (MANDATORY WHEN SOURCE SUPPORTS)
+
+If the provided Core/RadPrimer/STATdx source explicitly teaches a compact, high-yield organizing framework
+(such as 3-5 named subtypes, risk buckets, classification branches, or a diagnostic algorithm)
+and that framework materially changes diagnosis, differential ranking, risk stratification, or management:
+
+You MUST generate at least ONE dedicated High-Yield card encoding that framework.
+
+(If Sectioned Build mode is active, this requirement is QUEUED and must be emitted only in SECTION G.)
+
+Rules:
+• Use this only for source-supported frameworks that improve interpretation.
+• Prefer frameworks with approximately 3-5 major branches.
+• Do NOT convert sprawling ontologies or long textbook taxonomies into giant recall lists.
+• Do NOT create a framework card if the source does not clearly teach a usable framework.
+• Preserve the source's actual branch labels whenever possible instead of renaming them into vague buckets.
+• Each branch in the answer must include a short discriminator, risk pivot, or management pivot.
+• Keep the answer compact enough for active recall: usually 3-5 bullets total.
+• Prefer one anchor framework card over multiple fragmented subtype cards unless the source also gives distinct threshold or management pivots worth separating.
+• The goal is structural recall: after reviewing the card, the learner should be able to recreate the article's main subtype/risk map, not just recite disconnected facts.
+
+Recommended format:
+
+High_Yield_Q:
+“For [ENTITY], what is the key diagnostic/risk framework (as stated in source)?”
+
+High_Yield_A:
+• [Bucket / subtype / branch 1] → [1-line discriminator or risk pivot]
+• [Bucket / subtype / branch 2] → [1-line discriminator or risk pivot]
+• [Bucket / subtype / branch 3] → [1-line discriminator or risk pivot]
+• (extend only if the source clearly supports a compact 4th or 5th branch)
+• Exam pivot: [one line: how this framework organizes recognition or management]
+
+If the framework is larger than 5 branches:
+• compress it to the highest-yield source-supported branches only, if that remains faithful
+• otherwise do NOT generate the framework card
+
 -----------------------------------------------------
 
 Inflation Rule:

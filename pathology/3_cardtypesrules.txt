@@ -153,6 +153,7 @@ Formatting hierarchy rules:
 Preferred section labels:
 - <b>Abbreviations / Acronyms</b> when source-supported
 - <b>Summary</b>
+- <b>Subtype / Risk Framework</b> when source-supported
 - <b>Key Imaging Findings</b>
 - <b>Differential Diagnosis</b>
 - <b>Clinical Presentation</b>
@@ -164,6 +165,7 @@ Preferred section labels:
 Preferred section order when supported by the article:
 - Abbreviations / Acronyms
 - overview
+- Subtype / Risk Framework
 - Key Imaging Findings
 - Differential Diagnosis
 - Clinical Presentation / Demographics
@@ -190,12 +192,16 @@ Within Key Imaging Findings:
 - group findings by modality when the article supports modality-specific organization
 - do not flatten modality-specific findings into one mixed list
 - modality subsection titles must be on their own lines with bullets beneath them
+- if the article includes a compact subtype/risk/algorithm framework, keep imaging bullets aligned to that framework when helpful rather than mixing unrelated subtype details together
+- if nuclear medicine is explicitly discussed, give it its own named subsection rather than burying it under generic "other" findings
 
 Preferred imaging subsections when supported:
 - <b>Radiography / Best Initial Test</b>
 - <b>CT</b>
 - <b>MR Imaging</b>
-- <b>Ultrasound / Other</b>
+- <b>Ultrasound</b>
+- <b>Nuclear Medicine</b>
+- <b>Other</b> when truly needed
 - <b>Distribution / Hallmark Signs</b>
 
 End with:

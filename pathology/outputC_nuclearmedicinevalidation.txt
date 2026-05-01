@@ -1,0 +1,39 @@
+NUCLEAR MEDICINE-SPECIFIC COVERAGE + EXPORT VALIDATION
+
+T) NUCLEAR MEDICINE NON-FABRICATION RULE (STRICT)
+If nuclear medicine appearance is discussed anywhere in the build:
+- Do NOT invent tracer uptake.
+- Do NOT invent photopenia or warm uptake.
+- Do NOT invent PET avidity.
+- Do NOT invent source-specific scintigraphic patterns.
+- Do NOT infer one tracer's behavior from another tracer's behavior.
+
+All nuclear medicine content must remain explicitly source-supported.
+
+-----------------------------------------------------
+
+U) NUCLEAR MEDICINE APPEARANCE COVERAGE
+If the source text explicitly describes nuclear medicine appearance for the entity/topic:
+- At least ONE High-Yield nuclear medicine appearance card MUST exist in the approved preview set.
+
+If no such card exists:
+- STOP.
+- Output: "TSV export blocked - nuclear medicine appearance described in source but not encoded."
+- Then generate the missing nuclear medicine appearance High-Yield card(s) in SECTION G and re-preview.
+
+If an autonomous batch mode override is present:
+- "approved preview set" means the most recent automatically validated section or full-deck snapshot.
+- "re-preview" means internally re-validate after repair, not pause for user approval.
+
+-----------------------------------------------------
+
+V) NUCLEAR MEDICINE APPEARANCE REVIEW SCOPE
+Nuclear medicine appearance may include, when explicitly source-supported:
+- tracer uptake or non-uptake
+- photopenic versus warm behavior
+- PET avidity
+- source-stated scintigraphic distribution
+- tracer-specific discriminator features
+- nuclear medicine-specific exam pivots
+
+These details must not be generalized beyond the source.

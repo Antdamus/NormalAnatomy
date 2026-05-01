@@ -1,0 +1,30 @@
+NUCLEAR MEDICINE APPEARANCE ENCODING RULE (MANDATORY WHEN SOURCE SUPPORTS)
+
+If the provided Core/RadPrimer/STATdx source explicitly describes nuclear medicine appearance
+(for example tracer uptake or non-uptake, photopenia, warm-versus-cold behavior, scintigraphic distribution, PET avidity, tracer-specific discriminator behavior, or source-named nuclear medicine pivots):
+
+You MUST generate at least ONE dedicated High-Yield card encoding that nuclear medicine appearance.
+
+(If Sectioned Build mode is active, this requirement is QUEUED and must be emitted only in SECTION G.)
+
+Rules:
+- Nuclear medicine details may be included ONLY if explicitly stated in the source.
+- Include the tracer or exam name exactly as written when possible.
+- Do NOT infer uptake, photopenia, avidity, washout, or physiologic distribution unless source-supported.
+- Do NOT generalize one tracer's behavior to another tracer.
+- Do NOT convert source silence into a negative finding.
+- Keep the card tight: 2-6 short lines max.
+
+Recommended format:
+
+High_Yield_Q:
+"Nuclear medicine appearance pivot for [ENTITY]: what is the key tracer-based appearance (as stated in source)?"
+
+High_Yield_A:
+- Tracer / exam: [source-stated tracer or study]
+- Appearance: [source-stated uptake, photopenia, or other behavior]
+- Exam pivot: [one line: why this helps recognize or discriminate]
+
+If the nuclear medicine description is too long:
+- Split into multiple High-Yield cards ONLY if each card is its own distinct exam pivot.
+- Otherwise omit lower-value details.
