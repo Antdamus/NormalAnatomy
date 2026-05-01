@@ -46,6 +46,7 @@ Trigger Safety Enforcement:
 Summary Field Rule (GLOBAL - CRITICAL):
 
 The summary field MUST be populated for ALL cards that originate from:
+    - Core Radiology
     - RadPrimer
     - STATdx
 
@@ -57,16 +58,21 @@ This applies regardless of card type:
     - HIGH-YIELD
 
 -----------------------------------------------------
-SUMMARY SOURCE DISCIPLINE (MANDATORY)
+SUMMARY SOURCE DISCIPLINE + PROVENANCE (MANDATORY)
 
-The summary field MUST be derived ONLY from the FULL specific RadPrimer/STATdx article or case provided.
+The summary field MUST be derived from the FULL allowed source set active for that run.
+
+That means:
+- Core-only mode -> summary is Core-only
+- Article-only mode -> summary is article-only
+- Core + Article synthesis mode -> summary may synthesize across the validated Core coverage and the provided article
 
 The summary MUST:
 - Reflect full-article review, not a short digest, excerpt, or previously compressed summary
-- Be based on the entire provided article/case text relevant to the topic
+- Be based on the entire allowed source set relevant to the topic
 - Be article-level rather than card-level
 - Remain identical across all cards generated from the same article/case bundle
-- NOT mix in Core Radiology content
+- Explicitly declare its source basis near the top
 - NOT add outside knowledge
 - NOT include inferred material
 - NOT be generated from the Core validation digest
@@ -75,7 +81,7 @@ The summary MUST:
 
 The summary is an auxiliary structured synthesis.
 It is NOT the source of truth for card generation.
-Cards must be generated from the full article itself.
+Cards must be generated from the full allowed source set itself.
 
 -----------------------------------------------------
 SUMMARY PURPOSE (QUALITY STANDARD)
@@ -110,7 +116,16 @@ Use simple Anki-safe HTML only:
 The summary must begin with:
 - a visually distinct title block using the source article's actual title or main topic
 - the title block should include a clean encoded icon anchor
-- then 1-2 sentences summarizing the main topic from the source article/case only
+- then 1-2 sentences summarizing the main topic from the active allowed source set only
+
+Immediately after the title block, the summary MUST include a short provenance line such as:
+- <b>Source Basis:</b> Core-only
+- <b>Source Basis:</b> RadPrimer-only
+- <b>Source Basis:</b> STATdx-only
+- <b>Source Basis:</b> Core + RadPrimer synthesis
+- <b>Source Basis:</b> Core + STATdx synthesis
+
+If mixed-source mode is active, the provenance line should also clarify that the summary reflects synthesis across the allowed source set rather than a single article alone.
 
 SUMMARY ICON ENCODING RULE
 

@@ -518,17 +518,31 @@ N) High-Yield Hygiene
   thresholds, staging rules, management triggers, classification pivots, structural subtype/framework pivots, diagnostic performance pivots, outcome/time pivots, or â€œmost commonâ€ pivots.
 â€¢ No trivial epidemiology; include epidemiology only if it changes interpretation and is source-supported.
 
-O) Summary Field Rule (GLOBAL)
-â€¢ If a card originates from RadPrimer or STATdx:
-  summary MUST be populated (article-only, no Core mixing, no outside facts, no inference).
-â€¢ If a card does NOT originate from RadPrimer/STATdx:
-  summary MUST be blank.
+O) FINAL DECK-BALANCE AUDIT (MANDATORY)
+Before TSV export, explicitly check the final approved deck for balance:
+â€¢ Are there too many definition cards relative to true recognition/discriminator cards?
+â€¢ Are there enough image-recognition cards for the provided cases?
+â€¢ Is there at least one compact framework card when the source supports a subtype/risk algorithm?
+â€¢ Are modality pivots represented when source-supported (MRI / ultrasound / nuclear medicine / CT as applicable)?
+â€¢ Are management and risk cards present but not crowding out recognition?
+â€¢ Are compare/contrast cards limited to decision-changing comparisons?
+
+If the deck is visibly imbalanced toward low-yield definitions, repetitive management pivots, or duplicated recognition moves:
+â€¢ STOP.
+â€¢ Repair the deck before TSV export.
+
+P) Summary Field Rule (GLOBAL)
+â€¢ If a card originates from Core Radiology, RadPrimer, or STATdx:
+  summary MUST be populated.
+â€¢ The summary MUST declare its source basis near the top:
+  Core-only, RadPrimer-only, STATdx-only, Core + RadPrimer synthesis, or Core + STATdx synthesis.
+â€¢ The summary MUST stay inside the active allowed source set for that run.
 â€¢ If summary uses icon anchors:
   they MUST be HTML numeric character references, not literal emoji.
 â€¢ If a populated summary contains literal emoji/non-ASCII icon characters likely to become `???` during TSV handling:
   STOP and repair the summary before export.
 
-P) EXTERNAL LITERATURE TRACEABILITY RULE (MANDATORY)
+Q) EXTERNAL LITERATURE TRACEABILITY RULE (MANDATORY)
 
 For any card that includes the line:
 
@@ -554,7 +568,7 @@ If ANY gate fails:
 â€¢ Generate the missing/fixed cards and re-run the validation gate.
 â€¢ Any resulting changes REQUIRE a full re-render of Structured Card Preview (canonical order) before TSV export.
 
-P) DEFINITION CARD STANDALONE CODE RULE (MANDATORY)
+R) DEFINITION CARD STANDALONE CODE RULE (MANDATORY)
 
 Because definition cards are implemented as standalone High-Yield notes:
 

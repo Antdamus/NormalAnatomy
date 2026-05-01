@@ -18,13 +18,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 # "narrative"     -> uses pathologynarrative.txt, all images, no downloads, no Codex workflow preamble
 # "chatgpt_cards" -> uses FULL_PROMPT.txt with autonomous audit/run instructions, no Codex workflow preamble
 # "codex_cards"   -> uses FULL_PROMPT.txt with Codex workflow preamble
-MODE = "narrative"
+MODE = "chatgpt_cards"
 VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards"}
 
 # Single control surface for Edge injection.
 FILE_PREFIX = ""
-INCLUDE = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-CASE_MAP = []
+INCLUDE = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34]
+CASE_MAP = [[5,6,7,8,9,10],[11,12,13,14,15],[17,18,19],[21,22,23,24],[25,26],[27,28,29],[30,31,32],[33,34]]
 
 
 CORE_GAP = False

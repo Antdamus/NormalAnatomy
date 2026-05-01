@@ -7,29 +7,29 @@ No classification card.
 No discriminator card.
 
 Definition cards are implemented as HIGH-YIELD notes using:
-• Clinical_Context
-• High_Yield_Q
-• High_Yield_A
+â€¢ Clinical_Context
+â€¢ High_Yield_Q
+â€¢ High_Yield_A
 
 Because definition cards are standalone High-Yield notes, they MUST follow standalone High-Yield architecture:
 
-• Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic code
-• Clinical_Context must contain NOTHING else
-• If this 12-character code is missing, the definition card must NOT be generated
+â€¢ Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic code
+â€¢ Clinical_Context must contain NOTHING else
+â€¢ If this 12-character code is missing, the definition card must NOT be generated
 
 Definition status is encoded by the card's role and field structure.
 Do NOT populate the final TSV Tags column for definition cards.
 -----------------------------------------------------
 
-STEP 1 — SOURCE DEFINITION ASSESSMENT (MANDATORY)
+STEP 1 â€” SOURCE DEFINITION ASSESSMENT (MANDATORY)
 
 Before generating the definition card:
 
 You must determine whether Core / RadPrimer / STATdx provide:
 
-• A formal definition
-• An operational definition
-• No definition
+â€¢ A formal definition
+â€¢ An operational definition
+â€¢ No definition
 
 You must explicitly state which of the three applies.
 
@@ -38,29 +38,32 @@ Restate it faithfully.
 
 If no definition is present:
 State:
-“No formal definition provided in source; operational definition derived from described features.”
+â€œNo formal definition provided in source; operational definition derived from described features.â€
 
 -----------------------------------------------------
 
-STEP 2 — MEDICAL CONSENSUS CLARIFICATION (CONTROLLED EXCEPTION)
+STEP 2 â€” REFINED OPERATIONAL DEFINITION (CONTROLLED EXCEPTION)
 
-This exception applies ONLY to this ONE definition card.
+This clarification step applies ONLY to this ONE definition card.
 
-You MAY provide a refined definition based on medical consensus ONLY if the source definition is:
-• Incomplete
-• Operational but ontologically imprecise
-• Historically phrased
-• Terminologically outdated
-• Ambiguous regarding mechanism vs syndrome vs pattern
+You MAY provide a refined operational definition ONLY if the allowed source set for this run
+(Core / RadPrimer / STATdx, depending on the active source-integration mode)
+is:
+â€¢ Incomplete
+â€¢ Operational but ontologically imprecise
+â€¢ Historically phrased
+â€¢ Terminologically outdated
+â€¢ Ambiguous regarding mechanism vs syndrome vs pattern
 
 If used, you MUST label it:
-“Refined definition based on medical consensus.”
+â€œRefined operational definition based on the allowed source set.â€
 
 You MUST NOT:
-• Contradict the source
-• Invent diagnostic criteria / thresholds
-• Add management rules
-• Add epidemiology (unless inherently definitional)
+â€¢ Contradict the source
+â€¢ Invent diagnostic criteria / thresholds
+â€¢ Add management rules
+â€¢ Add epidemiology (unless inherently definitional)
+â€¢ Add outside knowledge unless it separately qualifies under the external-literature exception and is explicitly traced
 
 -----------------------------------------------------
 
@@ -73,7 +76,7 @@ Back (High_Yield_A) must contain ONLY, in this exact order:
 
 1) Source definition (or explicitly state absence)
 2) Refined definition (ONLY if materially different; must be labeled)
-3) Boundary condition (what it IS vs what it is NOT) — 1–2 lines max
+3) Boundary condition (what it IS vs what it is NOT) â€” 1â€“2 lines max
 4) Synonyms (inline only; no extra cards)
 
 No imaging findings.
@@ -88,3 +91,4 @@ FAILURE CONDITION
 
 If a new named entity is introduced and no definition card is generated:
 This is a structural failure.
+

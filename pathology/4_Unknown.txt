@@ -1,71 +1,71 @@
-UNKNOWN CARD — FULL GENERATION PROMPT (core_rad_notetype)
+UNKNOWN CARD â€” FULL GENERATION PROMPT (core_rad_notetype)
 
 PURPOSE
 Generate board-grade Primary UNKNOWN image cards that force:
-• True pattern recognition
-• Diagnostic reasoning
-• Caption-to-image reconciliation
-• Mini-differential discipline
+â€¢ True pattern recognition
+â€¢ Diagnostic reasoning
+â€¢ Caption-to-image reconciliation
+â€¢ Mini-differential discipline
 
 With strict front-side blinding and zero leakage.
 This version is aligned to the simplified UNKNOWN template.
 
-══════════════════════════════════════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 CARD TYPE + TRIGGER (ARCHITECTURE-SAFE)
 
 Card Type: PRIMARY UNKNOWN
 
 Trigger Condition (MANDATORY):
-• Image is populated
+â€¢ Image is populated
 AND
-• Question is populated
+â€¢ Question is populated
 
-If either is missing → this is NOT an UNKNOWN card.
+If either is missing â†’ this is NOT an UNKNOWN card.
 
 Safety Rule:
-• If Image is populated but Question is blank → must NOT be treated as UNKNOWN.
-• Any non-UNKNOWN card type that includes Image MUST keep Question blank.
+â€¢ If Image is populated but Question is blank â†’ must NOT be treated as UNKNOWN.
+â€¢ Any non-UNKNOWN card type that includes Image MUST keep Question blank.
 
 SECTION A Cardinality Rule (MANDATORY):
-• Every ELIGIBLE SECTION A case must produce exactly ONE PRIMARY UNKNOWN note.
-• Do NOT merge two eligible cases into one UNKNOWN.
-• Do NOT substitute a representative example for a real provided case.
-• Do NOT silently defer an eligible case to another section.
-• Before SECTION A preview, every eligible case must already have a one-to-one mapping:
+â€¢ Every ELIGIBLE SECTION A case must produce exactly ONE PRIMARY UNKNOWN note.
+â€¢ Do NOT merge two eligible cases into one UNKNOWN.
+â€¢ Do NOT substitute a representative example for a real provided case.
+â€¢ Do NOT silently defer an eligible case to another section.
+â€¢ Before SECTION A preview, every eligible case must already have a one-to-one mapping:
   Case index -> PRIMARY UNKNOWN note.
-• If any eligible case has no mapped PRIMARY UNKNOWN note:
+â€¢ If any eligible case has no mapped PRIMARY UNKNOWN note:
   SECTION A is structurally incomplete and must not be previewed or exported.
 
-══════════════════════════════════════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 FIELD USAGE (UNKNOWN)
 
 Front (Template Renders Only These)
-• Clinical_Context
-• Question
-• Image
+â€¢ Clinical_Context
+â€¢ Question
+â€¢ Image
 No other field appears on front.
 
 Back (Required)
-• Most_Likely_Diagnosis
-• Image_Annotated (preferred) OR fallback to Image
-• summary (REQUIRED if RadPrimer/STATdx-derived; must follow the global Summary Field Rule)
+â€¢ Most_Likely_Diagnosis
+â€¢ Image_Annotated (preferred) OR fallback to Image
+â€¢ summary (REQUIRED if RadPrimer/STATdx-derived; must follow the global Summary Field Rule)
 
 FIELDS THAT MUST REMAIN BLANK FOR UNKNOWN
 (To prevent accidental generation of other card types)
-• Differential_Q
-• Differentials
-• Mechanism_Q
-• Mechanism
-• Boards_Trap_Q
-• Boards_Trap
-• High_Yield_Q
-• High_Yield_A
-• Entity_Label
-• Any standalone drill fields
+â€¢ Differential_Q
+â€¢ Differentials
+â€¢ Mechanism_Q
+â€¢ Mechanism
+â€¢ Boards_Trap_Q
+â€¢ Boards_Trap
+â€¢ High_Yield_Q
+â€¢ High_Yield_A
+â€¢ Entity_Label
+â€¢ Any standalone drill fields
 
 UNKNOWN must remain structurally isolated.
 
-══════════════════════════════════════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 SOURCE HIERARCHY (MANDATORY)
 
 All medical claims must come from, in order:
@@ -75,39 +75,50 @@ All medical claims must come from, in order:
 4) Radiopaedia (last resort only)
 
 No fabrication allowed:
-• No invented imaging findings
-• No invented differentials (EXCEPT explicitly labeled Model-inferred differentials under CONTROLLED INFERENCE)
-• No invented epidemiology
-• No invented thresholds
-• No inferred MRI behavior unless explicitly stated
-• No inferred ultrasound behavior unless explicitly stated
-• No inferred echogenicity, echotexture, posterior acoustic behavior, Doppler behavior, compressibility, or source-named sonographic signs/artifacts unless explicitly source-supported
+â€¢ No invented imaging findings
+â€¢ No invented differentials (EXCEPT explicitly labeled Model-inferred differentials under CONTROLLED INFERENCE)
+â€¢ No invented epidemiology
+â€¢ No invented thresholds
+â€¢ No inferred MRI behavior unless explicitly stated
+â€¢ No inferred ultrasound behavior unless explicitly stated
+â€¢ No inferred echogenicity, echotexture, posterior acoustic behavior, Doppler behavior, compressibility, or source-named sonographic signs/artifacts unless explicitly source-supported
 
 If inference is unavoidable, explicitly state:
-“Not explicitly listed in Core/RadPrimer/STATdx; inferred based on imaging pattern.”
+â€œNot explicitly listed in Core/RadPrimer/STATdx; inferred based on imaging pattern.â€
 
 UNKNOWN generation must follow:
-• the Whole-Source Coverage Audit requirement
-• the Core Summary / Core Validation rules when Pathway A is active
-• the global Summary Field Rule
-• full-source review, not digest-only or summary-only generation
+â€¢ the Whole-Source Coverage Audit requirement
+â€¢ the Core Summary / Core Validation rules when Pathway A is active
+â€¢ the global Summary Field Rule
+â€¢ full-source review, not digest-only or summary-only generation
 
-══════════════════════════════════════════════════════════════════════════════
-FRONT-SIDE BLINDING RULE (STRICT — ZERO LEAKAGE)
+CASE UNIQUENESS / DISTINCT TEACHING ANGLE RULE
+
+If two UNKNOWN cases within the same topic teach the same dominant recognition move,
+you may still keep both when both cases are required by the Section A cardinality rule.
+
+But in that scenario:
+â€¢ Do NOT duplicate the same reasoning paragraph mechanically.
+â€¢ Give each case a distinct teaching emphasis anchored to its actual images/captions.
+â€¢ Distinct angles may include subtype clue, complication, modality pivot, mimic problem, or risk context.
+â€¢ If no distinct teaching angle exists, the case may still remain as an UNKNOWN card, but the reasoning must stay concise and not pretend novelty.
+
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+FRONT-SIDE BLINDING RULE (STRICT â€” ZERO LEAKAGE)
 
 Because the template renders Clinical_Context + Question + Image, these must be hardened.
 
 Clinical_Context (HARD CONSTRAINT)
 
 Clinical_Context should be:
-• Short
-• Neutral
-• Clinically realistic
-• Non-diagnostic
-• Usually one line
-• Clinical-history only
-• Unique at the note level
-• End with a unique 12-character alphanumeric code
+â€¢ Short
+â€¢ Neutral
+â€¢ Clinically realistic
+â€¢ Non-diagnostic
+â€¢ Usually one line
+â€¢ Clinical-history only
+â€¢ Unique at the note level
+â€¢ End with a unique 12-character alphanumeric code
 
 Preferred content hierarchy:
 1) Age / sex
@@ -115,87 +126,87 @@ Preferred content hierarchy:
 3) Optional duration or broad nonspecific clinical circumstance ONLY if it does not collapse the differential
 
 Clinical_Context may include:
-• Age
-• Sex
-• Broad symptom clusters (pain, fever, distention, bleeding, obstruction symptoms, weight loss, diarrhea, vomiting)
-• Optional duration
-• Broad nonspecific clinical circumstance only if it remains truly non-diagnostic
+â€¢ Age
+â€¢ Sex
+â€¢ Broad symptom clusters (pain, fever, distention, bleeding, obstruction symptoms, weight loss, diarrhea, vomiting)
+â€¢ Optional duration
+â€¢ Broad nonspecific clinical circumstance only if it remains truly non-diagnostic
 
 Clinical_Context must NOT include:
-• Imaging history
-• Prior imaging results
-• Modality context
-• Staging/surveillance/workup context
-• Disease-specific risk framing that materially collapses the differential
-• Any oncologic history when metastasis/lymphoma/recurrence would become strongly guessable before image review
+â€¢ Imaging history
+â€¢ Prior imaging results
+â€¢ Modality context
+â€¢ Staging/surveillance/workup context
+â€¢ Disease-specific risk framing that materially collapses the differential
+â€¢ Any oncologic history when metastasis/lymphoma/recurrence would become strongly guessable before image review
 
 Examples of FORBIDDEN imaging-history / workup phrasing:
-• “abnormal liver imaging”
-• “indeterminate liver lesion”
-• “follow-up CT”
-• “undergoing liver staging”
-• “liver mass on MRI”
-• “diffuse low-attenuation liver abnormality”
-• “surveillance imaging”
-• “restaging study”
+â€¢ â€œabnormal liver imagingâ€
+â€¢ â€œindeterminate liver lesionâ€
+â€¢ â€œfollow-up CTâ€
+â€¢ â€œundergoing liver stagingâ€
+â€¢ â€œliver mass on MRIâ€
+â€¢ â€œdiffuse low-attenuation liver abnormalityâ€
+â€¢ â€œsurveillance imagingâ€
+â€¢ â€œrestaging studyâ€
 
 Examples of FORBIDDEN diagnosis-collapsing context:
-• “known malignancy”
-• “oncology patient”
-• “metastatic cancer”
-• “hematologic malignancy”
-• “history of lymphoma”
-• “immunocompromised” when lymphoma becomes strongly guessable
-• “cirrhosis” when the target is HCC
-• any similarly narrowing context that lets a strong test-taker predict the answer before seeing the image
+â€¢ â€œknown malignancyâ€
+â€¢ â€œoncology patientâ€
+â€¢ â€œmetastatic cancerâ€
+â€¢ â€œhematologic malignancyâ€
+â€¢ â€œhistory of lymphomaâ€
+â€¢ â€œimmunocompromisedâ€ when lymphoma becomes strongly guessable
+â€¢ â€œcirrhosisâ€ when the target is HCC
+â€¢ any similarly narrowing context that lets a strong test-taker predict the answer before seeing the image
 
 Clinical_Context should preferably preserve real case framing when source-supported,
 but must be rewritten if the original wording creates diagnostic leakage.
 
 UNKNOWN Clinical_Context format rule (MANDATORY):
-• Every UNKNOWN card MUST end its Clinical_Context with a unique 12-character alphanumeric code.
-• This code is REQUIRED for every UNKNOWN card, even if the clinical wording is already unique.
-• The code exists to guarantee note-level uniqueness across the deck and prevent Anki duplicate-note conflicts.
+â€¢ Every UNKNOWN card MUST end its Clinical_Context with a unique 12-character alphanumeric code.
+â€¢ This code is REQUIRED for every UNKNOWN card, even if the clinical wording is already unique.
+â€¢ The code exists to guarantee note-level uniqueness across the deck and prevent Anki duplicate-note conflicts.
 
 Format:
-• [clinical history][space][12-character alphanumeric code]
+â€¢ [clinical history][space][12-character alphanumeric code]
 
 Examples:
-• “64-year-old woman with abdominal pain and fever A7K2M9Q4T1XZ”
-• “52-year-old man with abdominal distention and vomiting H3P8L2N6R5YW”
+â€¢ â€œ64-year-old woman with abdominal pain and fever A7K2M9Q4T1XZâ€
+â€¢ â€œ52-year-old man with abdominal distention and vomiting H3P8L2N6R5YWâ€
 
 Code rules:
-• Exactly 12 characters
-• Alphanumeric only
-• No spaces inside the code
-• No punctuation inside the code
-• Must be unique across the entire deck
-• Must appear at the very end of Clinical_Context
-• Must not replace the clinical wording
-• Must not contain medical meaning
-• Must not encode the diagnosis
-• Must not encode the section/card type in a human-readable way
+â€¢ Exactly 12 characters
+â€¢ Alphanumeric only
+â€¢ No spaces inside the code
+â€¢ No punctuation inside the code
+â€¢ Must be unique across the entire deck
+â€¢ Must appear at the very end of Clinical_Context
+â€¢ Must not replace the clinical wording
+â€¢ Must not contain medical meaning
+â€¢ Must not encode the diagnosis
+â€¢ Must not encode the section/card type in a human-readable way
 
 If the clinical wording is already unique:
-• Still append the 12-character code.
+â€¢ Still append the 12-character code.
 
 If two UNKNOWN cards have identical blinded clinical wording:
-• Keep the wording if appropriate, but assign different 12-character codes.
+â€¢ Keep the wording if appropriate, but assign different 12-character codes.
 
 If adding the code would be omitted or forgotten:
-• The UNKNOWN card must be considered structurally incomplete and must not be exported.
+â€¢ The UNKNOWN card must be considered structurally incomplete and must not be exported.
 
 Clinical_Context must NOT include:
-• The target diagnosis
-• Any near-diagnostic disease label
+â€¢ The target diagnosis
+â€¢ Any near-diagnostic disease label
   (e.g., cirrhosis, Crohn disease, TB, appendicitis, carcinomatosis, peritonitis, pancreatitis, cholangitis, HCC)
-• Etiologic adjectives implying the answer
+â€¢ Etiologic adjectives implying the answer
   (alcoholic, tuberculous, spontaneous bacterial, post-anastomotic leak, embolic, malignant when it collapses the differential, etc.)
-• Named signs
-• Imaging descriptors
+â€¢ Named signs
+â€¢ Imaging descriptors
   (ascites, thickening, calcifications, ectopic gas, nodularity, fistula, obstruction pattern, target sign, whirl sign, etc.)
-• Histologic or management clues
-• Any wording that reduces the card to recognition-by-clinical-hint rather than image-based reasoning
+â€¢ Histologic or management clues
+â€¢ Any wording that reduces the card to recognition-by-clinical-hint rather than image-based reasoning
 
 Leakage test:
 If Clinical_Context would allow a strong test-taker to guess the answer before looking at the image,
@@ -205,51 +216,51 @@ Stricter leakage test for UNKNOWN cards:
 If the context tells the reader why the study was obtained, what another study already showed, what disease is already suspected, or what major diagnostic bucket the patient belongs to (e.g., oncology, lymphoma, cirrhosis, postoperative leak workup), then the Clinical_Context is too leading and must be rewritten unless that information still leaves a broad image-based differential.
 
 When uncertain, prefer the minimum safe form:
-• age/sex
-• 1 broad symptom cluster
-• optional duration
+â€¢ age/sex
+â€¢ 1 broad symptom cluster
+â€¢ optional duration
 and nothing else.
 
 Preferred examples:
-• “64-year-old woman with abdominal pain and fever”
-• “52-year-old man with abdominal distention and vomiting”
-• “34-year-old woman with chronic diarrhea”
-• “71-year-old man with weight loss and abdominal pain”
-• “46-year-old patient with abdominal pain”
+â€¢ â€œ64-year-old woman with abdominal pain and feverâ€
+â€¢ â€œ52-year-old man with abdominal distention and vomitingâ€
+â€¢ â€œ34-year-old woman with chronic diarrheaâ€
+â€¢ â€œ71-year-old man with weight loss and abdominal painâ€
+â€¢ â€œ46-year-old patient with abdominal painâ€
 
 Disfavored / too leading examples:
-• “64-year-old woman with Crohn disease and perianal pain”
-• “58-year-old man with cirrhosis and abdominal distention”
-• “Post-anastomotic leak after bowel surgery”
-• “Patient with suspected peritoneal carcinomatosis”
-• “Patient with known malignancy and liver lesions”
-• “67-year-old woman with indeterminate liver lesion on MRI”
-• “Patient undergoing liver staging”
-• “Immunocompromised patient with multifocal liver masses”
+â€¢ â€œ64-year-old woman with Crohn disease and perianal painâ€
+â€¢ â€œ58-year-old man with cirrhosis and abdominal distentionâ€
+â€¢ â€œPost-anastomotic leak after bowel surgeryâ€
+â€¢ â€œPatient with suspected peritoneal carcinomatosisâ€
+â€¢ â€œPatient with known malignancy and liver lesionsâ€
+â€¢ â€œ67-year-old woman with indeterminate liver lesion on MRIâ€
+â€¢ â€œPatient undergoing liver stagingâ€
+â€¢ â€œImmunocompromised patient with multifocal liver massesâ€
 If Clinical_Context narrows the diagnosis too much:
-• Rewrite it before TSV.
+â€¢ Rewrite it before TSV.
 
 Question (LOCKED)
 
 Default (strongly preferred):
-• Most likely diagnosis?
+â€¢ Most likely diagnosis?
 
 No alternative phrasing unless:
-• Explicitly supported by source
+â€¢ Explicitly supported by source
 AND
-• Does not narrow the diagnostic space
+â€¢ Does not narrow the diagnostic space
 
 Question must NEVER include:
-• Disease names
-• Named signs
-• Pattern descriptors
-• “Complication of…”
-• “Cause of…”
-• Etiologic hints
+â€¢ Disease names
+â€¢ Named signs
+â€¢ Pattern descriptors
+â€¢ â€œComplication ofâ€¦â€
+â€¢ â€œCause ofâ€¦â€
+â€¢ Etiologic hints
 
-When uncertain → use default question.
+When uncertain â†’ use default question.
 
-══════════════════════════════════════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 IMAGE FIELD RULES (FRONT)
 
 Plain images only:
@@ -257,45 +268,45 @@ Plain images only:
 <img src="FILE2.ext"><br>
 
 Allowed:
-• .jpg
-• .jpeg
-• .png
+â€¢ .jpg
+â€¢ .jpeg
+â€¢ .png
 
 Order must match Image_Annotated.
 No captions on front.
 
-══════════════════════════════════════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 BACK-SIDE CONTENT RULES
 
-Most_Likely_Diagnosis (REQUIRED — STRICT ORDER)
+Most_Likely_Diagnosis (REQUIRED â€” STRICT ORDER)
 
 This field must contain the following, in EXACT order:
 
 1) Single Best Diagnosis (one line)
-• One diagnosis only
-• No hedging
-• No differential names here
+â€¢ One diagnosis only
+â€¢ No hedging
+â€¢ No differential names here
 
-2) Caption-Derived KEYWORD FINDINGS (3–8 short phrases)
-• Must be explicitly present in the verbatim caption text
-• Must be observational (anatomic/finding-based)
-• No full caption copying
-• No fabricated features
+2) Caption-Derived KEYWORD FINDINGS (3â€“8 short phrases)
+â€¢ Must be explicitly present in the verbatim caption text
+â€¢ Must be observational (anatomic/finding-based)
+â€¢ No full caption copying
+â€¢ No fabricated features
 
 Safety filter:
-• Remove any phrase that contains the diagnosis name
-• Remove any phrase stating “classic for …”
-• Remove explicit answer statements
-• Keywords must reflect findings that should have been identifiable visually or caption-supported
+â€¢ Remove any phrase that contains the diagnosis name
+â€¢ Remove any phrase stating â€œclassic for â€¦â€
+â€¢ Remove explicit answer statements
+â€¢ Keywords must reflect findings that should have been identifiable visually or caption-supported
 
 3) Tight Reasoning
-• Explain why findings support the diagnosis
-• Mention overlap with key mimics only if source-supported
-• No invented imaging claims
-• No management thresholds unless explicitly supported
-• Must reflect full-source review, not digest-only reasoning
+â€¢ Explain why findings support the diagnosis
+â€¢ Mention overlap with key mimics only if source-supported
+â€¢ No invented imaging claims
+â€¢ No management thresholds unless explicitly supported
+â€¢ Must reflect full-source review, not digest-only reasoning
 
-4) Mini-Differential — REQUIRED (VERTICAL FORMAT)
+4) Mini-Differential â€” REQUIRED (VERTICAL FORMAT)
 Append exactly:
 <br><br>Differential:<br>
 DxA<br>
@@ -303,13 +314,13 @@ DxB<br>
 DxC
 
 Rules:
-• Must be separated from reasoning by <br><br>
-• Must use <br> between items
-• 2–4 realistic mimics only
-• Diagnosis names only
-• No explanations
-• Must remain inside Most_Likely_Diagnosis
-• Do NOT populate Differentials field
+â€¢ Must be separated from reasoning by <br><br>
+â€¢ Must use <br> between items
+â€¢ 2â€“4 realistic mimics only
+â€¢ Diagnosis names only
+â€¢ No explanations
+â€¢ Must remain inside Most_Likely_Diagnosis
+â€¢ Do NOT populate Differentials field
 
 If none listed explicitly in Core/RadPrimer/STATdx, you MAY include a short model-inferred list ONLY if it clearly follows from the caption-described imaging pattern.
 
@@ -322,77 +333,78 @@ Otherwise, use:
 <br><br>Differential:<br>(none listed in source)
 
 Rules (for model-inferred differentials):
-• 2–4 items only
-• Must be plausible, common mimics for the pattern
-• No rare entities unless the caption specifically implies them
-• No explanatory text—diagnosis names only
+â€¢ 2â€“4 items only
+â€¢ Must be plausible, common mimics for the pattern
+â€¢ No rare entities unless the caption specifically implies them
+â€¢ No explanatory textâ€”diagnosis names only
 
 This mini-differential does NOT trigger a Differential Drill.
 
 Imaging_Differentiation (OPTIONAL)
 Populate only if:
-• It adds real discrimination value
-• It is source-supported
-• It does not duplicate reasoning
-• It does not become a second essay
+â€¢ It adds real discrimination value
+â€¢ It is source-supported
+â€¢ It does not duplicate reasoning
+â€¢ It does not become a second essay
 
 Image_Annotated (BACK DISPLAY)
 Preferred format:
 <div class="stackItem"><img src="FILE_annot.ext"><div class="stackCap">VERBATIM CAPTION</div></div>
 
 Rules:
-• Caption must be verbatim
-• One caption per image
-• Order matches Image field
-• No interpretation inside stackCap
+â€¢ Caption must be verbatim
+â€¢ One caption per image
+â€¢ Order matches Image field
+â€¢ No interpretation inside stackCap
 
 If no annotated images:
-• Back will display Image automatically (template fallback)
+â€¢ Back will display Image automatically (template fallback)
 
-══════════════════════════════════════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 SUMMARY FIELD RULE
 
 Populate summary (REQUIRED) if:
-• Case originates from RadPrimer/STATdx article
-• Summary is required under the global Summary Field Rule
+â€¢ Case originates from RadPrimer/STATdx article
+â€¢ Summary is required under the global Summary Field Rule
 
 For UNKNOWN cards, the summary must:
-• Be derived only from the FULL specific article/case provided
-• Reflect full-article review, not a digest, excerpt, or compressed intermediate summary
-• Not mix in Core content
-• Not add outside knowledge
-• Not include inferred material
-• Follow the exact global summary structure and quality standard
+â€¢ Be derived only from the FULL specific article/case provided
+â€¢ Reflect full-article review, not a digest, excerpt, or compressed intermediate summary
+â€¢ Not mix in Core content
+â€¢ Not add outside knowledge
+â€¢ Not include inferred material
+â€¢ Follow the exact global summary structure and quality standard
 
 If the card does NOT originate from RadPrimer/STATdx:
-• Leave summary blank.
+â€¢ Leave summary blank.
 
-══════════════════════════════════════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 QUALITY CHECK BEFORE TSV
 
 Confirm:
-• UNKNOWN trigger valid (Image + Question both present)
-• SECTION A case mapping exists for every eligible PRIMARY UNKNOWN case
-• Clinical_Context is clinically realistic but non-diagnostic
-• Clinical_Context does not create diagnosis leakage
-• Clinical_Context contains clinical history only and no imaging-history / workup-history leakage
-• Clinical_Context ends with a unique 12-character alphanumeric code
-• The 12-character code is unique across all UNKNOWN cards in the build
-• Question is generic and non-narrowing
-• All forbidden fields blank
-• Most_Likely_Diagnosis contains:
+â€¢ UNKNOWN trigger valid (Image + Question both present)
+â€¢ SECTION A case mapping exists for every eligible PRIMARY UNKNOWN case
+â€¢ Clinical_Context is clinically realistic but non-diagnostic
+â€¢ Clinical_Context does not create diagnosis leakage
+â€¢ Clinical_Context contains clinical history only and no imaging-history / workup-history leakage
+â€¢ Clinical_Context ends with a unique 12-character alphanumeric code
+â€¢ The 12-character code is unique across all UNKNOWN cards in the build
+â€¢ Question is generic and non-narrowing
+â€¢ All forbidden fields blank
+â€¢ Most_Likely_Diagnosis contains:
   - Diagnosis
   - Keyword findings
   - Reasoning
   - REQUIRED mini-differential
-• Any mini-differential inference is explicitly labeled when required
-• Summary, if required, satisfies the global summary rule
-• No literal newline characters
-• Only <br> used for formatting
-• No fabricated claims
+â€¢ Any mini-differential inference is explicitly labeled when required
+â€¢ Summary, if required, satisfies the global summary rule
+â€¢ No literal newline characters
+â€¢ Only <br> used for formatting
+â€¢ No fabricated claims
 
 If any UNKNOWN card lacks the required trailing 12-character alphanumeric code in Clinical_Context:
-• STOP
-• Output: “TSV export blocked — UNKNOWN Clinical_Context unique code missing.”
-• Then list the failing card(s).
-• Do NOT output TSV.
+â€¢ STOP
+â€¢ Output: â€œTSV export blocked â€” UNKNOWN Clinical_Context unique code missing.â€
+â€¢ Then list the failing card(s).
+â€¢ Do NOT output TSV.
+
