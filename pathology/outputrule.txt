@@ -218,7 +218,7 @@ ACTIVE PREVIEW SET DEFINITION (SECTIONED)
 COMPLETE PREVIEW REQUIREMENT (MANDATORY)
 
 TSV export is allowed ONLY if the Structured Card Preview explicitly contains:
-â€¢ Definition cards (exactly ONE definition card per new named entity)
+â€¢ Definition cards ONLY for high-yield source-emphasized definitions, diagnostic criteria, named syndrome definitions, or important boundary definitions
 â€¢ All intended PRIMARY UNKNOWN cases for the build
 â€¢ All intended Differential Drills for the build (pattern-distinct, discriminator-distinct, and non-redundant)
 â€¢ Any intended Mechanism / Boards Trap / High-Yield (non-ontology)
@@ -521,6 +521,7 @@ N) High-Yield Hygiene
 O) FINAL DECK-BALANCE AUDIT (MANDATORY)
 Before TSV export, explicitly check the final approved deck for balance:
 â€¢ Are there too many definition cards relative to true recognition/discriminator cards?
+â€¢ Are definition cards limited to definitions that change diagnosis, differential ranking, reporting, risk, or management?
 â€¢ Are there enough image-recognition cards for the provided cases?
 â€¢ Is there at least one compact framework card when the source supports a subtype/risk algorithm?
 â€¢ Are modality pivots represented when source-supported (MRI / ultrasound / nuclear medicine / CT as applicable)?

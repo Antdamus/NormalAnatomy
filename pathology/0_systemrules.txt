@@ -108,6 +108,21 @@ They are permitted ONLY in the following two situations:
    AND
    - The mechanism is necessary to meet the Mechanism Quality Floor.
 
+   This includes standard, widely accepted explanations for WHY a source-stated
+   appearance occurs on MRI, CT, PET/nuclear medicine, ultrasound, radiograph,
+   or fluoroscopy, including histology-to-imaging, microanatomic, vascular,
+   ductal, stromal, tracer-distribution, or tissue-composition mechanisms.
+
+3) Histologic origin / tissue-architecture explanations inside Mechanism cards
+   when:
+   - The disease entity is source-supported,
+   AND
+   - Knowing the tissue or cell lineage, layer of origin, native architecture,
+     or histologic growth pattern materially improves interpretation,
+     differential diagnosis, or long-term conceptual mastery,
+   AND
+   - The explanation remains standard, widely accepted, and explicitly traced.
+
 When using external literature under this exception, you MUST:
 
 - Explicitly label it INSIDE THE CARD CONTENT at the point of use as:
@@ -135,6 +150,8 @@ When using external literature under this exception, you MUST:
 - Preserve numbers exactly as written (no rounding, averaging, or merging studies).
 - Not introduce new imaging findings beyond what the source already states.
 - Not introduce management rules unless explicitly requested by the user.
+- Not introduce new epidemiology, staging, prognosis, or treatment facts outside
+  the mechanism question being answered.
 - Not rely on speculative or controversial mechanisms.
 - Omit the card entirely if credible sources conflict.
 

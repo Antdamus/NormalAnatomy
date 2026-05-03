@@ -181,6 +181,39 @@ Only omit an image if the user explicitly says to exclude it.
 
 ---
 
+## IMAGE ORDER FLEXIBILITY RULE
+
+The narrative must be image-complete, but it does NOT have to preserve the raw image order.
+
+After choosing the organizing spine, arrange the image walkthrough in the order that best supports teaching and retention.
+
+Allowed image-ordering strategies include:
+
+* subtype or diagnostic bucket order
+* mechanism-to-imaging order
+* modality order
+* severity / complication order
+* classic pattern first, then variants and mimics
+* benign-to-aggressive or low-risk-to-high-risk progression
+* diagnostic workflow order
+* timeline / disease evolution order
+
+Rules:
+
+* Do not force IMAGE ONE, then IMAGE TWO, then IMAGE THREE if that weakens the teaching structure.
+* If the image order is changed, make the transitions clear so the learner understands why the next image appears now.
+* Keep true same-patient or same-case groups together unless there is a strong teaching reason to split them.
+* Do not split an explicitly grouped case without explaining why.
+* If images are reordered, still name every provided image in the narrative and include every provided image number in the final `INCLUDE` array.
+* The final grouping audit still uses the original numeric image numbers, even if the spoken narrative walks through them in a different order.
+* Reordering must improve structure; do not reorder randomly or just for novelty.
+
+The best output should feel like:
+
+**The image order serves the teaching framework; the final audit preserves the original image accounting.**
+
+---
+
 ## GLOBAL GOAL OF THE NARRATIVE
 
 The final narrative should help the learner:
@@ -380,6 +413,11 @@ For each major bucket, prefer the following micro-template when the source suppo
 This is the core of the output.
 
 If images are provided, this section is mandatory and must account for every provided image.
+
+The walkthrough order should follow the chosen organizing spine, not automatically the raw extracted image order.
+
+If raw image order is already the clearest teaching order, use it.
+If another order teaches better, reorder the image or image clusters deliberately.
 
 For each image or inferred image cluster:
 
@@ -719,6 +757,7 @@ Rules for this second code block:
 * `CASE_MAP` must list only grouped multi-image cases
 * single ungrouped images should remain only in `INCLUDE`, not as one-item arrays in `CASE_MAP`
 * Every image number in `INCLUDE` must have been explicitly walked through in the narrative
+* The spoken narrative may walk through images in a different teaching order; `INCLUDE` still stays numeric for accounting
 * If any provided image was not walked through, the output is incomplete and must be repaired before finalizing
 * if no multi-image groups were inferred or provided, use:
 

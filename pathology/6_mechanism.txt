@@ -115,6 +115,31 @@ Mechanism cards should answer one of these two questions:
 If the proposed mechanism merely restates histology or pathology labels without improving image understanding,
 do NOT generate the card.
 
+MECHANISM CLARITY ESCALATION RULE
+
+If Core/RadPrimer/STATdx/Radiopaedia states an imaging appearance but gives a thin, vague, or incomplete explanation for WHY it occurs, the assistant SHOULD use the external-literature exception to improve the mechanism card when the mechanism is high-yield.
+
+This is especially appropriate for:
+- T1 / T2 / DWI / ADC signal mechanisms
+- CT attenuation, enhancement, washout, calcification, fat, hemorrhage, necrosis, or capsule mechanisms
+- PET or nuclear medicine tracer uptake / non-uptake mechanisms
+- ultrasound echogenicity, shadowing, Doppler, compressibility, cystic/solid, or artifact mechanisms
+- radiograph density, mineralization, lysis/sclerosis, periosteal reaction, or gas/fluid mechanisms
+- histology-to-imaging explanations where tissue composition drives the appearance
+
+Rules:
+- The imaging appearance being explained MUST already be source-supported.
+- External literature may clarify the causal mechanism, but may NOT add a new imaging appearance.
+- The card must explicitly label and link any externally introduced mechanism detail inside the Mechanism field.
+- If no stable source link can be provided, omit the externally clarified mechanism card.
+
+Preferred mechanism question style:
+- "Why is [source-stated pathology] T2 hyperintense?"
+- "Why does [source-stated pathology] show low T1 signal?"
+- "Why does [source-stated pathology] enhance avidly on arterial-phase CT?"
+- "Why is [source-stated pathology] FDG-avid / photopenic / tracer-avid?"
+- "What histologic/tissue feature explains the [source-stated imaging pattern]?"
+
 NUCLEAR MEDICINE / TRACER SAFETY
 
 Do NOT infer tracer uptake, photopenia, avidity, retention, or non-retention from tissue architecture alone.
@@ -193,6 +218,24 @@ It should instead explain, when source-supported and appropriate:
 â€¢ and how those tissue effects become imaging findings
 
 This level of explanation is preferred whenever it materially improves durable understanding.
+
+HISTOLOGIC ORIGIN / TISSUE ARCHITECTURE CARD RULE
+
+When the source describes a named disease, tumor, inflammatory process, congenital abnormality, or mass-like lesion whose origin or tissue architecture is important, the assistant SHOULD generate a Mechanism card that directly tests the histologic origin or architectural substrate if it improves interpretation or durable mastery.
+
+Allowed question styles:
+- "From what histologic lineage or tissue architecture does [ENTITY] arise?"
+- "What tissue layer or compartment is primarily involved in [ENTITY]?"
+- "What histologic growth pattern explains the imaging behavior of [ENTITY]?"
+- "What normal tissue architecture is lost, replaced, or distorted in [ENTITY]?"
+
+The answer must:
+- identify the cell lineage, tissue layer, compartment, or architectural substrate when source-supported or externally traced
+- explain why that origin matters radiologically
+- connect the histologic point to at least one source-stated imaging behavior, discriminator, or complication
+- avoid standalone pathology trivia that does not improve image interpretation
+
+External literature may be used for this histologic-origin explanation only under the global external-literature exception, with the required label and source link inside the Mechanism field.
 
 TUMOR HISTO-ARCHITECTURAL DEPTH RULE
 (MANDATORY FOR PRIMARY TUMORS, MAJOR MASS LESIONS, AND PREMALIGNANT-TO-MALIGNANT EVOLUTION CHAINS WHEN CENTRAL)
@@ -520,10 +563,10 @@ If a Mechanism card originates from RadPrimer/STATdx:
 
 â€¢ summary MUST be populated
 â€¢ It must follow the global Summary Field Rule
-â€¢ It must be derived from full-article review
-â€¢ It must be article-only
-â€¢ It must contain no Core mixing
-â€¢ It must contain no inference
+â€¢ It must be derived from the full active allowed source set
+â€¢ It must declare source basis according to the global Summary Field Rule
+â€¢ It must not present mixed-source synthesis as article-only
+â€¢ It must contain no unsupported inference
 
 If the card does NOT originate from RadPrimer/STATdx:
 â€¢ summary must remain blank

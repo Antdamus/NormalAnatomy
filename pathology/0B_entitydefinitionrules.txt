@@ -1,69 +1,101 @@
-Whenever a new named entity is introduced
-(disease, syndrome, eponym, defined condition, operational diagnosis):
+ENTITY DEFINITION CARD RULES
 
-You MUST generate exactly ONE definition card (and ONLY one).
+Definition cards are selective.
+
+They are NOT mandatory for every new disease/entity name.
+
+Generate a definition card ONLY when the definition itself is high-yield.
+
+Definition cards SHOULD be generated when the source definition establishes:
+- a formal diagnostic criterion or threshold
+- a named syndrome, eponym, or operational diagnosis whose definition is tested
+- a classification boundary that changes diagnosis, risk, reporting, or management
+- a source-emphasized definition that prevents a common misconception
+- a definition that distinguishes the entity from a close mimic
+- a term whose meaning is not obvious from the name
+- an important inclusion/exclusion boundary
+
+Definition cards SHOULD NOT be generated for ordinary disease names when the card would only say:
+- "X is a benign/malignant neoplasm"
+- "X is an inflammatory/infectious condition"
+- "X is a mass/lesion involving [organ]"
+- "X is a congenital/developmental abnormality"
+unless the source is clearly making that definition for a diagnostic reason.
+
+If a definition card is generated, generate exactly ONE definition card for that entity.
 
 No classification card.
 No discriminator card.
 
 Definition cards are implemented as HIGH-YIELD notes using:
-â€¢ Clinical_Context
-â€¢ High_Yield_Q
-â€¢ High_Yield_A
+- Clinical_Context
+- High_Yield_Q
+- High_Yield_A
 
 Because definition cards are standalone High-Yield notes, they MUST follow standalone High-Yield architecture:
-
-â€¢ Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic code
-â€¢ Clinical_Context must contain NOTHING else
-â€¢ If this 12-character code is missing, the definition card must NOT be generated
+- Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic code
+- Clinical_Context must contain NOTHING else
+- If this 12-character code is missing, the definition card must NOT be generated
 
 Definition status is encoded by the card's role and field structure.
 Do NOT populate the final TSV Tags column for definition cards.
+
 -----------------------------------------------------
 
-STEP 1 â€” SOURCE DEFINITION ASSESSMENT (MANDATORY)
+DEFINITION VALUE TEST (MANDATORY)
 
-Before generating the definition card:
+Before generating any definition card, ask:
 
-You must determine whether Core / RadPrimer / STATdx provide:
+"Would recalling this definition change diagnosis, differential ranking, reporting, risk stratification, or management?"
 
-â€¢ A formal definition
-â€¢ An operational definition
-â€¢ No definition
+If YES:
+- generate the definition card
 
-You must explicitly state which of the three applies.
+If NO:
+- do NOT generate the definition card
+- preserve the fact in the summary only, unless it belongs better in a mechanism or high-yield card
+
+-----------------------------------------------------
+
+SOURCE DEFINITION ASSESSMENT
+
+Before generating a definition card, determine whether Core / RadPrimer / STATdx provide:
+- a formal definition
+- an operational definition
+- no definition
 
 If a definition is present:
-Restate it faithfully.
+- restate it faithfully
 
-If no definition is present:
-State:
-â€œNo formal definition provided in source; operational definition derived from described features.â€
+If no formal definition is present but the term is still high-yield:
+- state: "No formal definition provided in source; operational definition derived from described features."
+
+If the source definition is low-yield or merely restates the disease name:
+- do NOT generate the definition card
 
 -----------------------------------------------------
 
-STEP 2 â€” REFINED OPERATIONAL DEFINITION (CONTROLLED EXCEPTION)
+REFINED OPERATIONAL DEFINITION (CONTROLLED EXCEPTION)
 
-This clarification step applies ONLY to this ONE definition card.
+This clarification step applies ONLY to a generated definition card.
 
 You MAY provide a refined operational definition ONLY if the allowed source set for this run
-(Core / RadPrimer / STATdx, depending on the active source-integration mode)
-is:
-â€¢ Incomplete
-â€¢ Operational but ontologically imprecise
-â€¢ Historically phrased
-â€¢ Terminologically outdated
-â€¢ Ambiguous regarding mechanism vs syndrome vs pattern
+(Core / RadPrimer / STATdx, depending on the active source-integration mode) is:
+- incomplete
+- operational but ontologically imprecise
+- historically phrased
+- terminologically outdated
+- ambiguous regarding mechanism vs syndrome vs pattern
 
 If used, you MUST label it:
-â€œRefined operational definition based on the allowed source set.â€
+"Refined operational definition based on the allowed source set."
 
 You MUST NOT:
-â€¢ Contradict the source
-â€¢ Invent diagnostic criteria / thresholds
-â€¢ Add management rules
-â€¢ Add epidemiology (unless inherently definitional)
-â€¢ Add outside knowledge unless it separately qualifies under the external-literature exception and is explicitly traced
+- contradict the source
+- invent diagnostic criteria / thresholds
+- add management rules
+- add epidemiology unless inherently definitional
+- add outside knowledge unless it separately qualifies under the external-literature exception and is explicitly traced
 
 -----------------------------------------------------
 
@@ -72,23 +104,24 @@ DEFINITION CARD FORMAT (STRICT)
 Front (High_Yield_Q):
 Define [Entity Name].
 
-Back (High_Yield_A) must contain ONLY, in this exact order:
-
-1) Source definition (or explicitly state absence)
-2) Refined definition (ONLY if materially different; must be labeled)
-3) Boundary condition (what it IS vs what it is NOT) â€” 1â€“2 lines max
-4) Synonyms (inline only; no extra cards)
+Back (High_Yield_A) must contain ONLY, in this order:
+1) Source definition, or explicitly state absence
+2) Refined definition, ONLY if materially different and labeled
+3) Boundary condition: what it IS vs what it is NOT, 1-2 lines max
+4) Synonyms, inline only; no extra cards
 
 No imaging findings.
 No differential lists.
 No management.
-No epidemiology (unless inherently definitional).
+No epidemiology unless inherently definitional.
 No narrative paragraphs.
 
 -----------------------------------------------------
 
 FAILURE CONDITION
 
-If a new named entity is introduced and no definition card is generated:
+If a source-emphasized definition, diagnostic criterion, named syndrome definition, or important boundary definition is present and no definition card is generated:
 This is a structural failure.
 
+If an ordinary disease/entity name is introduced but no high-yield definition boundary exists:
+Omitting the definition card is correct and is NOT a structural failure.
