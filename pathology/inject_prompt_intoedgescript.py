@@ -24,7 +24,7 @@ VALID_MODES = {"narrative", "chatgpt_cards", "codex_cards"}
 # Single control surface for Edge injection.
 FILE_PREFIX = ""
 INCLUDE = [1,2,3,4,5,6,7,8,9,10]
-CASE_MAP = [[3,4],[7,8]]
+CASE_MAP = [[3,4],[5,6],[7,8]]
 
 
 CORE_GAP = False
