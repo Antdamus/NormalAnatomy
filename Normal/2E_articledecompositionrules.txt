@@ -20,7 +20,7 @@ For each full article, inspect whether it contains content for any of these buck
 - what landmarks anchor orientation or review
 
 4) Modality appearance anchors
-- what expected normal appearance is emphasized on ultrasound, CT, MRI, or radiograph
+- what expected normal appearance is emphasized on ultrasound, CT, MRI, nuclear medicine, PET/SPECT, or radiograph
 
 5) Exam approach steps
 - what to look at first
@@ -56,6 +56,15 @@ For each full article, inspect whether it contains content for any of these buck
 - what directly visible structures organize practical MRI, CT, or ultrasound localization
 - what less-visible structures are placed relative to them
 
+15) Ultrasound-specific anchors
+- what echogenic structure, interface, lumen, wall, Doppler pattern, dynamic maneuver, probe plane, or sweep organizes normal recognition
+- what ultrasound artifact, variant, or pseudolesion could be overcalled
+
+16) Nuclear medicine-specific anchors
+- what tracer or exam is being described
+- what normal biodistribution, physiologic uptake, non-uptake, excretion, photopenia, timing, or pseudolesion pattern is emphasized
+- what tracer-specific pitfall could be overcalled as disease
+
 -----------------------------------------------------
 
 DECOMPOSITION-TO-CARD-TYPE RULE
@@ -67,6 +76,8 @@ Map buckets into card types deliberately:
 - plane / sequence / phase logic and mechanism-style explanations -> usually NORMAL MECHANISM
 - variants, mimics, pitfalls, and overcall risks -> usually NORMAL BOARDS TRAP or NORMAL DIFFERENTIAL DRILL
 - true discrimination between normal, variant, and pathology -> NORMAL DIFFERENTIAL DRILL
+- ultrasound-specific anchors -> existing card types using 8B_ultrasoundappearance.txt
+- nuclear medicine-specific anchors -> existing card types using 8C_nuclearmedicineappearance.txt
 
 When a source paragraph is gross-anatomy heavy, first ask whether it is better expressed as:
 - a visible-anchor card
@@ -186,6 +197,13 @@ For ultrasound-heavy topics, this includes:
 - lumen or wall interface recognition
 - branching-pattern localization
 - probe-plane and sweep-based orientation
+
+For nuclear medicine-heavy topics, this includes:
+- tracer-specific normal biodistribution
+- physiologic uptake and excretion pathways
+- timing or phase when source-supported
+- normal variants and pseudolesions that alter uptake or apparent activity
+- the discriminator that prevents mistaking physiologic activity for disease
 
 Do not reduce radiology anatomy to textbook recitation when the source supports a more operational framing.
 

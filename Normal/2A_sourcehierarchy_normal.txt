@@ -62,8 +62,19 @@ OUTSIDE LITERATURE RULE
 
 Outside literature remains forbidden by default.
 
-The narrow exception is limited to stable quantitative normal facts that are truly necessary and absent from the allowed hierarchy.
-Do not use outside literature to enrich definitions, variants, workflows, or interpretation advice.
+Narrow exceptions are allowed only for:
+- stable quantitative normal facts that are truly necessary and absent from the allowed hierarchy
+- stable diagnostic-performance facts when the source raises a performance question but gives incomplete details
+- mechanism, developmental, physiologic, histologic, sequence/phase, or modality-physics clarification when the anchor source states the appearance or discriminator but does not clearly explain why it occurs
+
+External literature may clarify why an article-supported pattern occurs.
+It must not introduce new standalone anatomy facts, variants, workflows, interpretation rules, or disease claims.
+
+When outside literature is used in a card back:
+- label it explicitly inside the same field as: "External literature source (not stated in RadPrimer/STATdx/Core/Radiopaedia):"
+- include the exact source link in the same field
+- keep the article-supported fact and the external explanation distinguishable
+- do not add the outside content to the article-level summary
 
 -----------------------------------------------------
 

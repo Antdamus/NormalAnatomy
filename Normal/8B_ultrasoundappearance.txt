@@ -1,0 +1,136 @@
+NORMAL ULTRASOUND APPEARANCE ENCODING RULE
+
+SECTION PURPOSE
+
+This module governs ultrasound-specific normal anatomy, normal appearance, variants, and pitfalls in the NORMAL engine.
+
+It does not create a new card type.
+Ultrasound content must be routed into existing card families.
+
+-----------------------------------------------------
+
+TRIGGER CONDITION
+
+Apply this module when the source explicitly describes or demonstrates ultrasound-specific content, including:
+- normal echogenicity or echotexture
+- wall, lumen, interface, fascial plane, cortex, medulla, tendon, nerve, vessel, or duct appearance
+- posterior acoustic behavior
+- Doppler flow pattern or vascularity
+- compressibility, mobility, reducibility, peristalsis, or dynamic maneuver
+- probe position, plane, sweep, window, or graded-compression approach
+- normal variant or physiologic appearance on ultrasound
+- artifact or pseudolesion that may be mistaken for disease
+- ultrasound-specific normal-vs-abnormal discriminator
+
+Do not force ultrasound cards when the source only mentions ultrasound as a possible modality without describing a usable appearance, approach, or pitfall.
+
+-----------------------------------------------------
+
+CARD-TYPE ROUTING
+
+Route ultrasound content as follows:
+
+NORMAL UNKNOWN
+- image-based recognition of a normal structure, relationship, interface, or variant on ultrasound
+
+NORMAL HIGH-YIELD
+- expected normal sonographic appearance
+- first-pass ultrasound landmark or sweep rule
+- compact checklist for finding a structure
+- Doppler or dynamic maneuver rule when the source supports it
+
+NORMAL MECHANISM
+- why a normal structure has a specific echogenicity, shadowing, enhancement, Doppler pattern, or dynamic behavior
+- why a probe plane or maneuver demonstrates the relationship
+- may use approved external mechanism clarification when the source states the appearance but gives a thin explanation
+
+NORMAL BOARDS TRAP
+- normal ultrasound mimics, artifacts, pseudolesions, or variants that can be overcalled
+
+NORMAL DIFFERENTIAL DRILL
+- true ultrasound separator between normal/variant/pseudolesion and pathology
+
+-----------------------------------------------------
+
+ULTRASOUND CONTENT RULE
+
+Ultrasound cards should preserve the source-stated modality details.
+
+When source-supported, include:
+- echogenicity or echotexture
+- key visible anchor
+- interface, wall, lumen, or layer relationship
+- posterior acoustic feature
+- Doppler feature
+- dynamic behavior or maneuver
+- probe plane, window, or sweep
+- one practical interpretation pivot
+
+Do not infer ultrasound properties from anatomy alone.
+
+Do NOT infer:
+- Doppler flow
+- compressibility
+- mobility
+- posterior enhancement
+- shadowing
+- twinkle, ring-down, comet-tail, reverberation, anisotropy, mirror artifact, or other artifact behavior
+- probe maneuver or patient positioning
+
+unless the source states it or it is being used under the approved external mechanism clarification rule and is clearly labeled.
+
+-----------------------------------------------------
+
+ULTRASOUND QUESTION SHAPING RULE
+
+Prefer direct, modality-specific fronts:
+- "On ultrasound, what normal appearance is expected for [structure]?"
+- "Which ultrasound landmark should anchor localization of [structure]?"
+- "What probe sweep or plane best confirms [relationship]?"
+- "Which ultrasound feature prevents overcalling [normal variant/pseudolesion] as pathology?"
+- "What Doppler or dynamic feature supports the normal interpretation?"
+
+Avoid vague fronts:
+- "What does ultrasound show?"
+- "What did the source say about ultrasound?"
+- "Describe the ultrasound findings."
+
+-----------------------------------------------------
+
+ULTRASOUND ANSWER SHAPE
+
+Keep answers compact and operational.
+
+Recommended structure:
+- Anchor: [first visible structure or interface]
+- Appearance: [source-stated echogenicity/texture/wall/lumen/layer feature]
+- Maneuver / Doppler / acoustic feature: [only if source-supported]
+- Interpretation pivot: [how this helps identify normal anatomy or avoid overcall]
+
+For dynamic ultrasound, preserve the action:
+- probe compression
+- Valsalva
+- position change
+- swallowing
+- breathing
+- flexion/extension
+- active or passive motion
+
+For Doppler, preserve the type when stated:
+- color Doppler
+- power Doppler
+- spectral Doppler
+- arterial versus venous waveform
+- expected flow direction or absence of flow
+
+-----------------------------------------------------
+
+ULTRASOUND SAFETY CHECK
+
+Before export, confirm:
+- ultrasound details are source-supported or clearly labeled under the approved external mechanism clarification rule
+- the card teaches one ultrasound retrieval target
+- the front does not leak the answer
+- the answer does not become a generic anatomy paragraph
+- Doppler, acoustic, dynamic, and artifact claims are not invented
+- disease mimics remain bounded to normal-engine overcall prevention or true discriminator teaching

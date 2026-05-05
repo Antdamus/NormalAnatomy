@@ -1,0 +1,148 @@
+NORMAL NUCLEAR MEDICINE APPEARANCE ENCODING RULE
+
+SECTION PURPOSE
+
+This module governs nuclear medicine and molecular imaging content in the NORMAL engine.
+
+It covers normal biodistribution, physiologic uptake, normal variants, pseudolesions, tracer-specific pitfalls, and source-supported normal-vs-abnormal discriminators.
+
+It does not create a new card type.
+Nuclear medicine content must be routed into existing card families.
+
+-----------------------------------------------------
+
+TRIGGER CONDITION
+
+Apply this module when the source explicitly describes or demonstrates nuclear medicine content, including:
+- PET, PET/CT, PET/MRI
+- SPECT or SPECT/CT
+- planar scintigraphy
+- bone scan
+- HIDA scan
+- renal scan
+- thyroid/parathyroid scan
+- tagged red blood cell scan
+- white blood cell scan
+- sulfur colloid scan
+- MIBG, Octreoscan, DOTATATE, PSMA, FDG, NaF, sestamibi, iodine, gallium, or other named tracer behavior
+- physiologic uptake or excretion
+- normal biodistribution
+- tracer-specific expected non-uptake
+- normal variants or pseudolesions
+- disease mimics created by physiologic uptake or altered flow
+- nuclear medicine discriminator features
+
+Do not force nuclear medicine cards when the source only names a nuclear study without describing a usable appearance, uptake pattern, biodistribution, or pitfall.
+
+-----------------------------------------------------
+
+CARD-TYPE ROUTING
+
+Route nuclear medicine content as follows:
+
+NORMAL UNKNOWN
+- image-based recognition of physiologic uptake, normal distribution, normal excretion, or a normal variant when the figure supports it
+
+NORMAL HIGH-YIELD
+- expected tracer distribution
+- normal uptake or non-uptake pattern
+- physiologic excretion route
+- compact tracer-specific normal checklist
+- normal variant or pseudolesion anchor
+
+NORMAL MECHANISM
+- why a tracer localizes normally to a tissue, organ, excretory pathway, or physiologic process
+- why a normal variant or pseudolesion creates uptake, photopenia, or altered distribution
+- may use approved external mechanism clarification when the source states the pattern but gives a thin explanation
+
+NORMAL BOARDS TRAP
+- physiologic uptake or normal biodistribution that may be mistaken for disease
+- tracer-specific pseudolesion
+- altered normal flow or excretion pattern that creates a false lesion impression
+
+NORMAL DIFFERENTIAL DRILL
+- true separator between physiologic uptake/variant/pseudolesion and pathology
+
+-----------------------------------------------------
+
+NUCLEAR MEDICINE CONTENT RULE
+
+Nuclear medicine cards must be tracer-specific.
+
+When source-supported, include:
+- exact tracer or exam name
+- expected physiologic uptake, excretion, distribution, or non-uptake
+- phase or timing if stated
+- planar versus SPECT/SPECT-CT versus PET/PET-CT context when relevant
+- normal variant or pseudolesion pattern
+- one practical interpretation pivot
+
+Do not generalize one tracer's behavior to another tracer.
+
+Do NOT infer:
+- uptake intensity
+- avidity
+- photopenia
+- washout
+- retention
+- delayed activity
+- physiologic distribution
+- excretion route
+- sensitivity, specificity, or performance
+
+unless explicitly stated by the source or clearly labeled under an approved external clarification rule.
+
+Do not convert source silence into a negative nuclear medicine finding.
+
+-----------------------------------------------------
+
+NUCLEAR MEDICINE QUESTION SHAPING RULE
+
+Prefer direct, tracer-specific fronts:
+- "What physiologic uptake pattern is expected for [tracer/exam]?"
+- "Which normal biodistribution pattern prevents overcalling disease on [study]?"
+- "For [structure/process], what nuclear medicine appearance is expected with [tracer]?"
+- "What tracer-specific pitfall can mimic disease in [region]?"
+- "What feature separates physiologic uptake from pathology on [study]?"
+
+Avoid vague fronts:
+- "What did nuclear medicine show?"
+- "What did the source say about PET?"
+- "Describe the scan."
+
+-----------------------------------------------------
+
+NUCLEAR MEDICINE ANSWER SHAPE
+
+Keep answers compact and operational.
+
+Recommended structure:
+- Tracer / exam: [exact source-stated study]
+- Normal pattern: [uptake, non-uptake, photopenia, excretion, biodistribution, or variant]
+- Timing / phase: [only if source-supported]
+- Interpretation pivot: [how this prevents overcall or supports normal recognition]
+
+For physiologic uptake, identify the normal tissue/process when source-supported:
+- metabolism
+- blood pool
+- hepatobiliary excretion
+- renal excretion
+- osteoblastic activity
+- reticuloendothelial uptake
+- iodine trapping/organification
+- receptor expression
+
+If the mechanism is not clear in the article but the pattern is source-supported, use NORMAL MECHANISM with the approved external-source label rather than hiding the outside explanation in an unlabeled answer.
+
+-----------------------------------------------------
+
+NUCLEAR MEDICINE SAFETY CHECK
+
+Before export, confirm:
+- the tracer or exam is named when the source names it
+- the card teaches one nuclear medicine retrieval target
+- physiologic uptake and pathologic uptake are not blurred
+- the answer does not generalize across tracers
+- performance metrics are not fabricated
+- outside mechanism support is explicitly labeled when used
+- disease mimics remain bounded to normal-engine overcall prevention or true discriminator teaching

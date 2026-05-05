@@ -43,6 +43,8 @@ For each full RadPrimer or STATdx article, explicitly check whether the source s
 17) orientation anchors that should be identified first
 18) lesion- or stroke-localization-relevant adjacencies when anatomy-first and source-compatible
 19) informative caption pearls that add landmark, localization, modality, vascular, pitfall, or review-order value
+20) ultrasound-specific normal appearance, probe approach, Doppler, dynamic maneuver, artifact, or pseudolesion content
+21) nuclear medicine or molecular imaging content, including tracer-specific normal biodistribution, physiologic uptake, excretion, pseudolesion, or pitfall content
 
 Every bucket must be checked.
 Only source-supported buckets may generate cards.

@@ -96,6 +96,28 @@ Examples of stronger front forms:
 - "Which visible structures help identify..."
 - "If a finding is centered here relative to these anchors, what space or compartment are you localizing to?"
 
+DIRECT STRUCTURE-RECALL / NO-METADATA FRONT RULE (MANDATORY)
+
+High_Yield_Q must ask for the anatomy, landmark, relationship, sequence, boundary, normal variant, or review move itself.
+
+Strong front forms include:
+- "What ordered review path should be followed for..."
+- "Which landmarks define..."
+- "How do you localize..."
+- "What is the normal course of..."
+- "Which visible anchors separate this normal variant from a pitfall?"
+- "What layer-by-layer or compartment-by-compartment structure should be checked?"
+
+Do NOT generate source-bookkeeping, prompt-bookkeeping, or extraction-audit fronts such as:
+- "What did the source review support encoding?"
+- "What does the article say is important?"
+- "What information was included in this section?"
+- "What should be encoded from this source?"
+- "What does the prompt require?"
+- "What did the extraction identify?"
+
+If a draft front has this metadata shape, convert it into a direct anatomy or review-path question, or omit the card.
+
 -----------------------------------------------------
 
 HIGH-YIELD ANSWER RULE
@@ -158,6 +180,28 @@ If the card still reads like an inventory after this translation, it should usua
 
 -----------------------------------------------------
 
+STRUCTURAL / ORDERED FRAMEWORK CARD RULE
+
+When the source teaches a specific structure that must be followed, generate at least one NORMAL HIGH-YIELD card that preserves that structure as a usable map.
+
+This applies to:
+- ordered review sequence
+- layer-by-layer anatomy
+- central-to-peripheral or proximal-to-distal vessel, duct, nerve, or tract course
+- compartment, space, or boundary map
+- branch, segment, or level map
+- visible-to-inferred landmark path
+- normal variant or pseudolesion separation algorithm
+- modality-specific exam approach
+
+When order matters, High_Yield_A must preserve the order using arrows, numbered short steps, or a clearly ordered phrase.
+
+Prefer one compact framework card before several isolated detail cards when the source is teaching a map. If the framework has more than about 6 parts, split it by region, level, course, or compartment instead of creating one overloaded card.
+
+Do not scatter a structural framework into disconnected trivia cards before the learner has a card that teaches the framework itself.
+
+-----------------------------------------------------
+
 EXAM-APPROACH RULE
 
 NORMAL HIGH-YIELD is the preferred card type for:
@@ -187,4 +231,6 @@ Before export, confirm:
 - Original_Caption is blank unless Image is populated
 - the answer is concrete and source-supported
 - if the card is broad or overview-style, it still improves practical structure identification rather than only testing memorized enumeration
+- the front asks a direct anatomy, landmark, sequence, or review-path question rather than source-review or prompt metadata
+- when the source states an ordered structure or required review path, the answer preserves that order
 - the answer does not combine boundaries/location, contents, localization method, and clinical relevance into one overloaded card unless intentionally marked by the question as a compact synthesis card

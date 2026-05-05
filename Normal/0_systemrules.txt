@@ -85,7 +85,9 @@ Cards must be generated from full-source review, not from:
 - generic anatomy knowledge
 - outside knowledge inserted for convenience
 
-The only exception is the narrow approved localization overlay for practical MRI/CT localization of a named structure when the source is otherwise thin on that operational teaching point.
+The only exceptions are:
+- the approved external-literature exception for mechanism, development, stable quantitative, or performance clarification
+- the approved localization overlay for practical MRI/CT localization of a named structure when the source is otherwise thin on that operational teaching point
 
 If full-source review cannot be confirmed:
 STOP.
@@ -106,17 +108,26 @@ EXTERNAL MEDICAL LITERATURE - DEFAULT FORBIDDEN
 
 External literature is forbidden by default.
 
-It is permitted only when ALL of the following are true:
+It is permitted only for narrow clarification in the following situations:
+
+1) Stable quantitative or performance clarification
 - a quantitative normal measurement, developmental timing point, or stable performance metric is required
 - the value is not explicitly stated in the allowed hierarchy
 - the value is standard, stable, and non-controversial
 
+2) Mechanism or development clarification
+- the anchor source states a normal appearance, normal variant, developmental appearance, modality behavior, or discriminator
+- the source explanation is absent, thin, or unclear
+- the outside source is used only to explain why the already-source-supported pattern occurs
+- the added explanation improves durable understanding of anatomy, development, physiology, sequence/phase behavior, or modality physics
+
 When used, you must:
-- label it explicitly inside the same field as: "External literature source (not stated in RadPrimer/STATdx/Core/Radiopaedia)."
+- label it explicitly inside the same field as: "External literature source (not stated in RadPrimer/STATdx/Core/Radiopaedia):"
 - include the exact source link in the same field
 - avoid speculative or controversial additions
+- distinguish article-supported facts from externally clarified mechanism
 
-This exception does NOT allow general outside-knowledge insertion.
+This exception does NOT allow general outside-knowledge insertion, unsupported variants, new workflows, new disease claims, or extra trivia.
 It also does NOT replace the separate narrow localization-overlay exception defined below.
 
 -----------------------------------------------------

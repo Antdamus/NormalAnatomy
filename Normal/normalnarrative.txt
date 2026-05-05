@@ -104,6 +104,10 @@ You should:
 
 Do **not** silently ignore images just because the article also has strong text content.
 
+Every provided image must be accounted for in the spoken narrative and in the final `INCLUDE` array.
+
+If an image is repetitive, low-yield, or weakly captioned, handle it briefly, but still tell the learner why it is being covered briefly.
+
 ---
 
 ## WHOLE-SOURCE REVIEW RULE
@@ -136,6 +140,47 @@ Examples of buckets that may need integration:
 * board-relevant pivots
 
 Do not let one catchy figure dominate the narrative if the article teaches much more than that.
+
+---
+
+## ORGANIZING SPINE RULE
+
+Before writing the narrative, infer the article's best teaching structure.
+
+The organizing spine is the main structure that makes the normal anatomy easiest to understand, localize, and remember.
+
+Choose the structure that best fits the source, such as:
+
+* region-first walkthrough
+* landmark-first orientation
+* visible-to-inferred structure progression
+* modality-by-modality comparison
+* sequence, plane, or phase review order
+* central-to-peripheral or proximal-to-distal anatomy
+* foundational anatomy first, then variants and pitfalls
+* normal appearance first, then pseudolesions and overcall traps
+* workflow order used by a radiologist reviewing the exam
+
+Then rebuild the narrative around that spine rather than around weak article order or raw image order, unless the source order is already clearly optimal.
+
+Rules:
+
+* name the major buckets early in the opening orientation or orientation anchors
+* make the learner feel that the topic has a clean internal map
+* teach directly visible anchors before structures that are mainly inferred by position
+* attach variants, pitfalls, and pseudolesions to the relevant normal anchor rather than listing them later as detached facts
+* prefer approximately 3-6 major buckets when the source supports that range
+* if the first pass creates too many weak buckets, merge them into stronger learner-facing categories
+* do not create a taxonomy more complex than the article needs
+
+If the source supports more than one possible structure, prefer the one that best improves:
+
+* localization
+* scan-review behavior
+* spatial relationships
+* modality-specific recognition
+* safe separation of normal, variant, mimic, and abnormal
+* later retrieval in Anki
 
 ---
 
@@ -203,6 +248,41 @@ When the series identity is clear from the captions, the narrative should:
 If helpful, you may mention the original article image number once in parentheses, but do not make the lecture depend on that numbering for followability.
 
 For normal-anatomy lectures specifically, when the captions clearly describe grouped sequential images by modality and plane, prefer grouped run references by default.
+
+---
+
+## IMAGE ORDER FLEXIBILITY RULE
+
+The narrative must be image-complete, but it does NOT have to preserve the raw extracted image order.
+
+After choosing the organizing spine, arrange the image walkthrough in the order that best supports teaching and retention.
+
+Allowed image-ordering strategies include:
+
+* foundational landmark images first
+* best orientation image first, even if it is not `IMAGE ONE`
+* modality order
+* plane or sequence order
+* visible-to-inferred structure order
+* region-to-region review order
+* normal appearance first, then variants and pseudolesions
+* central-to-peripheral, proximal-to-distal, superior-to-inferior, or other spatial progression
+* clinical review workflow order
+
+Rules:
+
+* Do not force IMAGE ONE, then IMAGE TWO, then IMAGE THREE if that weakens the teaching structure.
+* If the raw image order is already the clearest teaching order, use it.
+* If the image order is changed, make transitions clear so the learner understands why the next image appears now.
+* Keep true sequential runs or same-case groups together unless there is a strong teaching reason to split them.
+* Do not split an explicitly grouped run without explaining why.
+* If images are reordered, still name every provided image or grouped run in the narrative.
+* The final grouping audit still uses the original numeric image numbers, even if the spoken narrative walks through them in a different order.
+* Reordering must improve the teaching structure; do not reorder randomly or just for novelty.
+
+The best output should feel like:
+
+**The image order serves the teaching framework; the final audit preserves the original image accounting.**
 
 ---
 
@@ -536,6 +616,10 @@ Do not repeat the same visibility disclaimer so often that the lecture becomes c
 
 Choose the teaching structure that best fits the source.
 
+This rule works together with the ORGANIZING SPINE RULE above.
+
+The narrative should be organized by the best pedagogic structure, not by whichever order the article or extractor happened to use.
+
 Good organizing frames include:
 
 * region-first walkthrough
@@ -546,6 +630,8 @@ Good organizing frames include:
 
 Do not simply echo the article headings if they are educationally weak.
 Do use them when they already produce a strong progression.
+
+Images should be placed inside this structure. Cover every image, but place each image or grouped run where it best teaches the normal-anatomy map.
 
 ---
 
@@ -657,6 +743,8 @@ Rules for this second code block:
 * `INCLUDE` must list all included image numbers in ascending order
 * `CASE_MAP` must list only grouped multi-image cases
 * single ungrouped images should remain only in `INCLUDE`, not as one-item arrays in `CASE_MAP`
+* the spoken narrative may walk through images in a different teaching order; `INCLUDE` still stays numeric for accounting
+* every image number in `INCLUDE` must have been explicitly covered in the narrative
 * if no multi-image groups were inferred or provided, use:
 
 ```javascript

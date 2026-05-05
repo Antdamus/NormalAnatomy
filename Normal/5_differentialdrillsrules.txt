@@ -30,6 +30,7 @@ Use it only when the source teaches a real separator between:
 - normal variant and pathology
 - pseudolesion and true lesion
 - two closely related mimic entities when the discriminator is the key teaching point
+- a normal structure/variant and a disease mimic specifically discussed by the article
 
 Do NOT use it for routine anatomy naming.
 Do NOT use it just because comparison feels educational in the abstract.
@@ -94,11 +95,14 @@ Good uses:
 - variant vs mass
 - pseudolesion vs true lesion
 - normal developmental appearance vs abnormal finding
+- normal structure or variant vs a specific disease mimic named by the source
+- expected normal appearance vs pathology overcall when the separator changes interpretation
 
 Bad uses:
 - broad disease catalogues
 - speculative alternatives
 - filler entries added to make the field non-empty
+- disease lists that do not teach a specific imaging separator
 
 Comparison cards should survive only when they sharpen judgment in a way that will help the learner read studies better.
 
@@ -134,3 +138,4 @@ Before export, confirm:
 - Image_Annotated is blank unless Image is populated
 - Original_Caption is blank unless Image is populated
 - the front does not leak the answer
+- disease mimics are included only when source-supported and tied to a real discriminator

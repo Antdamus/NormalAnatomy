@@ -11,11 +11,12 @@ It does NOT justify creating new card types.
 EXAM-APPROACH CONTENT (ALLOWED)
 
 This includes source-supported rules about:
-- how to approach an ultrasound, CT, or MRI exam
+- how to approach an ultrasound, CT, MRI, nuclear medicine, PET/SPECT, or scintigraphic exam
 - what landmarks to identify first
 - what planes matter
 - what sequences matter
 - what phases matter
+- what tracer, uptake phase, delayed phase, excretion route, or biodistribution pattern matters
 - what constitutes a complete normal review
 - how to review structures in a safe order
 - how to avoid overcalling disease in a normal study
@@ -117,6 +118,14 @@ When ultrasound is the source-highlighted modality, visible anchors may also inc
 - probe plane or sweep direction
 - near-field versus deep-field relationships
 
+When nuclear medicine is the source-highlighted modality, anchors may include:
+- exact tracer or exam
+- expected physiologic uptake
+- expected non-uptake or photopenia
+- excretion pathway
+- delayed or phase-specific distribution when source-supported
+- planar versus SPECT/SPECT-CT versus PET/PET-CT localization context
+
 If a broad card does none of that and only reproduces a taxonomy list, prefer rewriting it into an anchor-based review card or folding it into a stronger localization card.
 
 -----------------------------------------------------
@@ -174,6 +183,8 @@ Examples of valid distinctions:
 - ultrasound first-pass landmark logic
 - CT phase-dependent review logic
 - MRI sequence-dependent normal appearance logic
+- nuclear medicine tracer-specific biodistribution and physiologic uptake logic
+- PET/SPECT localization or attenuation-correction pitfall logic when source-supported
 
 Do not flatten modality-specific advice into generic anatomy prose.
 

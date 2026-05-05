@@ -31,6 +31,7 @@ Use NORMAL BOARDS TRAP for:
 - structures commonly overcalled
 - modality-specific normal misreads
 - omission traps in reviewing a normal exam
+- disease-mimic situations named by the source where the key task is to avoid overcalling a normal structure, normal variant, or physiologic appearance
 
 This is a high-value card type in the NORMAL engine.
 
@@ -94,6 +95,11 @@ Boards_Trap must encode:
 
 Do not stop at naming the trap.
 When source-supported, include why avoiding this trap matters clinically for safer interpretation.
+
+If the source names a disease mimic, keep the card normal-engine compatible:
+- the front should ask how to avoid the overcall or what separator proves the finding is normal/variant/pseudolesion
+- the back should emphasize the normal anchor and discriminator
+- do not expand into a pathology lecture or broad disease differential
 
 -----------------------------------------------------
 

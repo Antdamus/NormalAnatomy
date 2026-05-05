@@ -189,8 +189,51 @@ G5C) Atomic retrieval integrity
 - multiple boundaries or adjacent landmarks are acceptable when they all support one localization target
 - localization method and full structure inventory are usually separate retrieval targets
 - if a card answer contains more than 3-4 distinct facts, audit it for splitting
-- synthesis cards are the only routine exception, and they must be explicitly compact, intentional, and few
+- synthesis, framework, pathway, and ordered-sequence cards are the only routine exceptions, and they must be explicitly compact, intentional, and few
+- a framework/pathway exception is valid only when the one tested concept is the map itself, not a bundle of unrelated facts
 - if a card is overloaded, split it into separate cards or rewrite it around one primary map move before export
+
+G5D) Normal structure/framework integrity
+- if the source teaches an ordered review path, layer stack, vessel/duct/nerve course, tract course, compartment/boundary map, branch/segment map, or modality workflow, at least one card must encode that structure as a usable framework
+- when order matters, the answer must preserve the order
+- if the deck contains many isolated anatomy facts from a structured topic but no map, sequence, or framework card, repair the deck before export
+- if a framework is too large, split it by region, level, course, or compartment rather than flattening it into trivia
+- framework cards should support practical image review, localization, or normal-variant discrimination
+
+G5E) Metadata-card ban
+- do not export cards whose main target is source-review bookkeeping, prompt metadata, extraction audit, or generator decisions
+- banned front shapes include "what did the source review support encoding", "what was included", "what does the prompt require", "what information was extracted", and similar variants
+- banned back shapes include statements whose main function is "the source did/did not include this metric" unless the actual tested target is a direct anatomy or imaging fact
+- convert metadata-shaped drafts into direct anatomy, landmark, review-path, normal-appearance, mechanism, or pitfall questions
+- if conversion leaves no useful retrieval target, omit the card
+
+G5F) External mechanism/development provenance integrity
+- outside literature may appear only in mechanism/development/physiology/modality-physics clarification, stable quantitative facts, stable performance facts, or the approved localization overlay
+- outside literature must clarify an article-supported fact; it must not introduce a new unsupported card target
+- any externally supported explanation must include the exact label "External literature source (not stated in RadPrimer/STATdx/Core/Radiopaedia):" and an exact source link in the same field
+- article-supported facts and externally clarified explanations must remain distinguishable
+- summary must remain article-only and must not include outside literature content
+
+G5G) Normal mimic and disease-mimic integrity
+- if the source names disease mimics or pathology overcalls, encode them when they materially improve normal-vs-abnormal discrimination or pitfall resistance
+- route true separator tasks to NORMAL DIFFERENTIAL DRILL
+- route overcall-prevention/pseudolesion traps to NORMAL BOARDS TRAP
+- do not inflate into broad pathology differential lists
+- the card must remain anchored to normal anatomy, normal appearance, variant recognition, or pseudolesion recognition
+
+G5H) Ultrasound-specific integrity
+- if the source supports ultrasound-specific normal appearance, probe approach, Doppler, dynamic maneuver, artifact, pseudolesion, or discriminator content, encode it using the existing card families and the ultrasound module
+- ultrasound cards must preserve the source-stated probe plane, sweep, echogenicity, interface, Doppler, acoustic, artifact, or dynamic feature when given
+- do not infer Doppler, compressibility, posterior acoustic behavior, or artifact behavior unless source-supported or clearly labeled under the approved external mechanism clarification rule
+- ultrasound cards should teach one sonographic retrieval target, not a generic modality paragraph
+
+G5I) Nuclear medicine-specific integrity
+- if the source supports nuclear medicine, PET/SPECT, scintigraphy, or tracer-specific normal appearance content, encode it using the existing card families and the nuclear medicine module
+- nuclear medicine cards must name the tracer or exam when the source names it
+- do not generalize one tracer's uptake, biodistribution, photopenia, washout, retention, or excretion behavior to another tracer
+- do not convert source silence into a negative finding
+- physiologic uptake, normal variants, and pseudolesions should be encoded when they prevent overcall or improve normal recognition
+- nuclear medicine cards should teach one tracer-specific retrieval target, not a generic modality paragraph
 
 H) Front-side blinding
 - front fields must preserve the intended cognitive task

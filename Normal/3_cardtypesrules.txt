@@ -157,6 +157,23 @@ All fronts must preserve:
 
 -----------------------------------------------------
 
+GLOBAL NO-METADATA CARD RULE
+
+Cards must not ask about prompt workflow, source review, extraction audit, what the article contained, what the source supported encoding, or what a generator decided to include.
+
+Do not export fronts such as:
+- "What did the source review support encoding?"
+- "What information was included in this article?"
+- "What does the prompt require?"
+- "What did extraction identify?"
+- "What should be encoded from this source?"
+
+Convert those drafts into direct anatomy, landmark, normal-appearance, review-sequence, mechanism, or pitfall questions. If no direct learning target remains, omit the card.
+
+Back fields may include source-supported teaching content, but they must not read like generation metadata or internal audit notes.
+
+-----------------------------------------------------
+
 GLOBAL INTERPRETIVE RULE
 
 These card types exist to train NORMAL material, not pathology-first diagnosis.
@@ -177,6 +194,31 @@ NORMAL BOARDS TRAP
 
 NORMAL HIGH-YIELD
 - encode compact anatomy definitions, landmark rules, approach rules, modality anchors, checklist items, normal measurements when source-supported, and variant anchors
+
+-----------------------------------------------------
+
+STRUCTURAL TEACHING PRIORITY RULE
+
+If the source is organized around a structure that must be followed, the deck must first teach that structure as a usable map before relying on isolated detail cards.
+
+Examples include:
+- ordered review sequence
+- vessel, duct, nerve, or tract course
+- layer stack
+- compartment or space boundaries
+- branch, segment, or level map
+- visible landmark to inferred anatomy pathway
+- normal variant versus pseudolesion decision path
+- modality-specific normal exam approach
+
+Preferred mappings:
+- the framework itself -> NORMAL HIGH-YIELD
+- why the framework works -> NORMAL MECHANISM
+- visible anchor landmark -> NORMAL UNKNOWN or NORMAL HIGH-YIELD
+- common overcall from breaking the framework -> NORMAL BOARDS TRAP
+- normal-vs-abnormal discriminator -> NORMAL DIFFERENTIAL DRILL
+
+When order matters, the answer must preserve the order. Do not scramble source-stated sequences into flat unordered lists.
 
 -----------------------------------------------------
 
@@ -215,7 +257,16 @@ In general:
 - up to 2-3 supporting anchors
 - one compact clinical or overcall relevance line when source-supported
 
-If the answer needs more than 3-4 distinct facts, split it unless it is a rare intentional synthesis card.
+If the answer needs more than 3-4 distinct facts, split it unless it is a rare intentional framework, pathway, sequence, or synthesis card.
+
+Framework/pathway exceptions are allowed only when the single retrieval target is the structure of the map itself, such as:
+- an ordered review path
+- a vessel, duct, nerve, or tract course
+- a layer stack
+- a compartment map
+- a normal variant decision pathway
+
+Even then, the answer must stay organized, ordered when order matters, and compact enough for active recall.
 
 Long integrative teaching belongs in the narrative, not in routine Anki backs.
 

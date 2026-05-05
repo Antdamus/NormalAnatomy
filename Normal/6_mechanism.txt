@@ -24,7 +24,9 @@ If any other trigger field or front-driving prompt family is populated:
 
 WHEN TO USE NORMAL MECHANISM
 
-Use NORMAL MECHANISM only when the source explicitly supports an explanation such as:
+Use NORMAL MECHANISM when the source explicitly supports an explanation, or when the source states the appearance/discriminator and an approved external source is needed to clarify why it occurs.
+
+Valid explanation targets include:
 - anatomic basis of a normal appearance
 - developmental basis of a normal variant
 - physiologic basis of an expected appearance
@@ -101,6 +103,31 @@ Avoid:
 
 -----------------------------------------------------
 
+EXTERNAL MECHANISM / DEVELOPMENT CLARIFICATION RULE
+
+If the article states a normal appearance, developmental pattern, variant, imaging discriminator, sequence behavior, or modality behavior but does not clearly explain why it occurs, NORMAL MECHANISM may use an outside medical source to clarify the mechanism.
+
+Appropriate external clarification targets include:
+- embryologic or developmental basis
+- normal histologic or tissue-composition basis
+- anatomy or physiology behind a normal appearance
+- why a normal variant creates a specific contour, signal, attenuation, enhancement, or uptake pattern
+- why a phase, plane, sequence, or modality demonstrates the relationship
+- why a normal mimic resembles pathology and which mechanism explains the resemblance
+
+External clarification may only explain an article-supported fact.
+It must not add a new standalone card target, unsupported variant, unsupported workflow, unsupported disease claim, or speculative teaching point.
+
+When external literature is used, Mechanism must include:
+- the article-supported fact first
+- the external explanation second
+- this exact provenance label: "External literature source (not stated in RadPrimer/STATdx/Core/Radiopaedia):"
+- the exact source link in the same field
+
+If a reliable outside source cannot be identified, keep the mechanism source-limited or omit the card.
+
+-----------------------------------------------------
+
 EXAM-APPROACH MECHANISM RULE
 
 Exam-approach content belongs here only when the source gives a reason.
@@ -127,4 +154,4 @@ Before export, confirm:
 - no forbidden fields are populated
 - Image_Annotated is blank unless Image is populated
 - Original_Caption is blank unless Image is populated
-- the explanation is explicitly source-supported
+- the explanation is explicitly source-supported, or clearly labeled under the approved external mechanism/development clarification rule
