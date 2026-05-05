@@ -260,7 +260,7 @@ After choosing the organizing spine, arrange the image walkthrough in the order 
 Allowed image-ordering strategies include:
 
 * foundational landmark images first
-* best orientation image first, even if it is not `IMAGE ONE`
+* best orientation image first, even if it is not `image one`
 * modality order
 * plane or sequence order
 * visible-to-inferred structure order
@@ -271,7 +271,7 @@ Allowed image-ordering strategies include:
 
 Rules:
 
-* Do not force IMAGE ONE, then IMAGE TWO, then IMAGE THREE if that weakens the teaching structure.
+* Do not force image one, then image two, then image three if that weakens the teaching structure.
 * If the raw image order is already the clearest teaching order, use it.
 * If the image order is changed, make transitions clear so the learner understands why the next image appears now.
 * Keep true sequential runs or same-case groups together unless there is a strong teaching reason to split them.

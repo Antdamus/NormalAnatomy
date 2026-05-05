@@ -76,9 +76,9 @@ For the spoken narrative itself, convert image labels into **speech-friendly ref
 
 Examples:
 
-* `IMAGE_01` -> `IMAGE ONE`
-* `IMAGE_02` -> `IMAGE TWO`
-* `IMAGE_14 through IMAGE_19` -> `IMAGES FOURTEEN THROUGH NINETEEN`
+* `IMAGE_01` -> `image one`
+* `IMAGE_02` -> `image two`
+* `IMAGE_14 through IMAGE_19` -> `images fourteen through nineteen`
 
 Do not read image labels aloud with underscores or leading zeros in the Speechify narrative.
 
@@ -200,7 +200,7 @@ Allowed image-ordering strategies include:
 
 Rules:
 
-* Do not force IMAGE ONE, then IMAGE TWO, then IMAGE THREE if that weakens the teaching structure.
+* Do not force image one, then image two, then image three if that weakens the teaching structure.
 * If the image order is changed, make the transitions clear so the learner understands why the next image appears now.
 * Keep true same-patient or same-case groups together unless there is a strong teaching reason to split them.
 * Do not split an explicitly grouped case without explaining why.
@@ -470,8 +470,8 @@ Every provided image must be walked through. The walkthrough may be compact for 
 
 1. **Orientation**
 
-   * “Now go to IMAGE SEVEN.”
-   * “Now look at IMAGES FOURTEEN THROUGH NINETEEN; these likely belong together based on caption continuity.”
+   * “Now go to image seven.”
+   * “Now look at images fourteen through nineteen; these likely belong together based on caption continuity.”
 
 2. **Inspection instruction**
 
@@ -553,10 +553,10 @@ You should explicitly direct the learner to the image whenever:
 
 Good examples:
 
-* “Now look closely at IMAGE THREE.”
+* “Now look closely at image three.”
 * “Stay on this image for a moment.”
 * “Now compare this with the prior image.”
-* “Now move to IMAGE SEVENTEEN.”
+* “Now move to image seventeen.”
 * “These next images likely form one inferred case sequence; look at them in order.”
 
 ---
@@ -808,7 +808,7 @@ Create a **guided image mastery narrative** that:
 * infers and uses the strongest organizing spine supported by the source
 * integrates cases into that structure instead of presenting them as isolated stops
 * keeps the opening brief so the learner reaches the visual material quickly
-* uses speech-friendly image references in the narrative, such as `IMAGE ONE` or `IMAGES FIVE THROUGH TEN`, rather than underscore-based labels
+* uses speech-friendly image references in the narrative, such as `image one` or `images five through ten`, rather than underscore-based labels
 * uses controlled grouping inference when appropriate
 * clearly labels inferred grouping when used
 * preserves the main educational content of the article
