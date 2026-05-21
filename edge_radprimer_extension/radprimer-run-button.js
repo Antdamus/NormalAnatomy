@@ -446,9 +446,11 @@
     });
     shadow.querySelector('[data-field="engine"]').addEventListener("change", () => {
       populateModeSelect(host);
+      applyNarrativeModeDefaults(host);
       syncSpeechifyAvailability(host);
     });
     shadow.querySelector('[data-field="mode"]').addEventListener("change", () => {
+      applyNarrativeModeDefaults(host);
       syncSpeechifyAvailability(host);
     });
     shadow.querySelector('[data-field="autoSendToSpeechify"]').addEventListener("change", () => {
@@ -530,6 +532,21 @@
     }
   };
 
+  const applyNarrativeModeDefaults = (host) => {
+    const values = {
+      engine: field(host, "engine")?.value || DEFAULTS.engine,
+      mode: field(host, "mode")?.value || DEFAULTS.mode
+    };
+    if (!isNarrativeSpeechifyMode(values)) return;
+
+    field(host, "include").value = "all";
+    field(host, "caseMap").value = "";
+    field(host, "openChatGPT").checked = true;
+    field(host, "autoSubmitChatGPT").checked = true;
+    field(host, "autoSendToSpeechify").checked = true;
+    field(host, "speechifyAutoSave").checked = true;
+  };
+
   const openModal = async (host) => {
     const settings = await getStoredSettings();
     populateEngineSelect(host);
@@ -552,6 +569,7 @@
       if (el.type === "checkbox") el.checked = Boolean(values[key]);
       else el.value = values[key] ?? "";
     }
+    applyNarrativeModeDefaults(host);
     syncSpeechifyAvailability(host);
   };
 
@@ -566,6 +584,14 @@
     if (values.autoSendToSpeechify) {
       values.openChatGPT = true;
       values.autoSubmitChatGPT = true;
+    }
+    if (isNarrativeSpeechifyMode(values)) {
+      values.include = "all";
+      values.caseMap = "";
+      values.openChatGPT = true;
+      values.autoSubmitChatGPT = true;
+      values.autoSendToSpeechify = true;
+      values.speechifyAutoSave = true;
     }
     if (!isNarrativeSpeechifyMode(values)) {
       values.autoSendToSpeechify = false;

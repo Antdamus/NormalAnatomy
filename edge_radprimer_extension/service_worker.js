@@ -83,6 +83,18 @@ function normalizeSettings(rawSettings = {}) {
   settings.speechifyFolderId = folder.id;
   settings.speechifyFolderName = "";
 
+  if (isNarrativeSpeechifyMode(settings)) {
+    settings.include = "all";
+    settings.caseMap = "";
+    settings.openChatGPT = true;
+    settings.autoSubmitChatGPT = true;
+    settings.autoSendToSpeechify = true;
+    settings.speechifyAutoSave = true;
+  } else {
+    settings.autoSendToSpeechify = false;
+    settings.speechifyAutoSave = false;
+  }
+
   if (settings.autoSendToSpeechify) {
     settings.openChatGPT = true;
     settings.autoSubmitChatGPT = true;

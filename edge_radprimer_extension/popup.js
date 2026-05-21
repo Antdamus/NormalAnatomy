@@ -182,6 +182,17 @@ function syncSpeechifyAvailability() {
   }
 }
 
+function applyNarrativeModeDefaults() {
+  if (!isNarrativeSpeechifyMode(currentEngineMode())) return;
+
+  $("include").value = "all";
+  $("caseMap").value = "";
+  $("openChatGPT").checked = true;
+  $("autoSubmitChatGPT").checked = true;
+  $("autoSendToSpeechify").checked = true;
+  $("speechifyAutoSave").checked = true;
+}
+
 function parseCaseMapGroups(value) {
   const raw = String(value || "");
   if (raw.includes("[[")) {
@@ -227,8 +238,8 @@ function readForm() {
   return {
     engine,
     mode,
-    include: $("include").value.trim(),
-    caseMap: $("caseMap").value.trim(),
+    include: speechifyEligible ? "all" : $("include").value.trim(),
+    caseMap: speechifyEligible ? "" : $("caseMap").value.trim(),
     coreGap: $("coreGap").checked,
     coreSection: $("coreSection").value.trim(),
     corePages: $("corePages").value.trim(),
@@ -239,13 +250,13 @@ function readForm() {
     downloadAnnotated: $("downloadAnnotated").checked,
     keepCaptionHtml: $("keepCaptionHtml").checked,
     autoGroupNonNarrative: $("autoGroupNonNarrative").checked,
-    openChatGPT,
-    autoSubmitChatGPT,
+    openChatGPT: speechifyEligible ? true : openChatGPT,
+    autoSubmitChatGPT: speechifyEligible ? true : autoSubmitChatGPT,
     chatgptUrl: $("chatgptUrl").value.trim(),
     chatgptInstruction: $("chatgptInstruction").value.trim(),
     chatgptTimeoutSec: $("chatgptTimeoutSec").value.trim(),
-    autoSendToSpeechify,
-    speechifyAutoSave: speechifyEligible && $("speechifyAutoSave").checked,
+    autoSendToSpeechify: speechifyEligible ? true : autoSendToSpeechify,
+    speechifyAutoSave: speechifyEligible ? true : speechifyEligible && $("speechifyAutoSave").checked,
     speechifyAutoPlayAfterSave: false,
     speechifyFolderUrl: speechifyFolder.url,
     speechifyFolderName: DEFAULTS.speechifyFolderName,
@@ -286,6 +297,7 @@ function applyForm(values) {
   $("speechifyAutoSave").checked = values.speechifyAutoSave ?? DEFAULTS.speechifyAutoSave;
   $("speechifyFolderUrl").value = getStoredSpeechifyFolderUrl(values);
   syncPanels();
+  applyNarrativeModeDefaults();
   syncSpeechifyAvailability();
 }
 
@@ -663,11 +675,13 @@ async function init() {
   $("engine").addEventListener("change", async () => {
     populateModes($("engine").value, $("mode").value);
     syncPanels();
+    applyNarrativeModeDefaults();
     syncSpeechifyAvailability();
     await saveForm();
   });
 
   $("mode").addEventListener("change", async () => {
+    applyNarrativeModeDefaults();
     syncSpeechifyAvailability();
     await saveForm();
   });
