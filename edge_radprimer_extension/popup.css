@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 420px;
+  margin: 0;
+  font: 13px/1.35 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #17202a;
+  background: #f7f8fa;
+}
+
+main {
+  padding: 14px;
+}
+
+header {
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+p {
+  margin: 0;
+  color: #53616f;
+}
+
+label {
+  display: block;
+  font-weight: 650;
+  margin-bottom: 8px;
+}
+
+select,
+input[type="text"],
+textarea {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+  border: 1px solid #c9d1da;
+  border-radius: 6px;
+  background: white;
+  color: #17202a;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.panel {
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid #dce2e8;
+  border-radius: 8px;
+  background: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+}
+
+.check input {
+  margin: 0;
+}
+
+.checks {
+  display: flex;
+  gap: 16px;
+  margin: 4px 0 8px;
+}
+
+button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  border: 0;
+  border-radius: 7px;
+  background: #1f6feb;
+  color: white;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #eef2f6;
+  color: #17202a;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+pre {
+  min-height: 58px;
+  max-height: 170px;
+  overflow: auto;
+  margin: 10px 0 0;
+  padding: 10px;
+  border-radius: 7px;
+  background: #101820;
+  color: #d6e4ff;
+  white-space: pre-wrap;
+}

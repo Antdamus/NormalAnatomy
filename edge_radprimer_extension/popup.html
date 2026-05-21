@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RadPrimer Prompt Runner</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>RadPrimer Runner</h1>
+        <p>Extract the current article into your Normal or Pathology workflow.</p>
+      </header>
+
+      <section class="grid">
+        <label>
+          Engine
+          <select id="engine">
+            <option value="pathology">Pathology / disease</option>
+            <option value="normal">Normal anatomy</option>
+          </select>
+        </label>
+
+        <label>
+          Mode
+          <select id="mode"></select>
+        </label>
+      </section>
+
+      <section class="grid">
+        <label>
+          Include images
+          <input id="include" type="text" placeholder="all, none, or 1,2,5">
+        </label>
+
+        <label>
+          Case map
+          <input id="caseMap" type="text" placeholder="1,2; 5,6">
+        </label>
+      </section>
+
+      <section id="pathologyOptions" class="panel">
+        <label class="check">
+          <input id="coreGap" type="checkbox">
+          Core GAP
+        </label>
+        <label>
+          Core section / note
+          <textarea id="coreSection" rows="3"></textarea>
+        </label>
+        <label>
+          Core pages
+          <input id="corePages" type="text" placeholder="optional">
+        </label>
+      </section>
+
+      <section id="normalOptions" class="panel hidden">
+        <label>
+          Source note
+          <textarea id="sourceNote" rows="2" placeholder="optional"></textarea>
+        </label>
+        <label>
+          Core note
+          <textarea id="coreNote" rows="2" placeholder="optional"></textarea>
+        </label>
+      </section>
+
+      <section class="panel">
+        <label class="check">
+          <input id="downloadImages" type="checkbox">
+          Download selected images
+        </label>
+        <div class="checks">
+          <label class="check"><input id="downloadPlain" type="checkbox" checked> plain</label>
+          <label class="check"><input id="downloadAnnotated" type="checkbox" checked> annotated</label>
+        </div>
+        <label class="check">
+          <input id="keepCaptionHtml" type="checkbox" checked>
+          Keep arrow HTML in captions
+        </label>
+      </section>
+
+      <section class="panel">
+        <label class="check">
+          <input id="openChatGPT" type="checkbox">
+          Open ChatGPT project and fill box
+        </label>
+        <label class="check">
+          <input id="autoSubmitChatGPT" type="checkbox">
+          Submit, wait, and copy final response
+        </label>
+        <label>
+          Project URL
+          <input id="chatgptUrl" type="text" placeholder="https://chatgpt.com/.../project">
+        </label>
+        <label>
+          Composer instruction
+          <textarea id="chatgptInstruction" rows="2"></textarea>
+        </label>
+        <label>
+          Wait timeout, seconds
+          <input id="chatgptTimeoutSec" type="text" placeholder="900">
+        </label>
+      </section>
+
+      <button id="run">Extract + copy prompt package</button>
+      <button id="refreshPrompts" class="secondary">Check packaged prompts</button>
+
+      <pre id="status">Ready.</pre>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,776 @@
+# Guided Normal Anatomy Mastery Narrative Prompt
+
+You are transforming a radiology source article into a **GUIDED NORMAL ANATOMY MASTERY NARRATIVE** for a radiology resident.
+
+This output is designed for **fast, high-yield first-pass understanding** of normal anatomy, normal appearance, normal variants, normal review strategy, and normal interpretive pitfalls.
+
+It is **not** primarily a flashcard deck.
+It is **not** a pathology-first explanation.
+It is **not** a diagnosis quiz stream.
+It is **not** a generic article summary.
+
+The narrative must function as the **understanding + visual organization layer** that prepares the learner for later Anki reinforcement.
+
+Like the pathology narrative workflow, this normal-anatomy narrative is expected to be **image-driven**:
+
+* all extracted images should be used
+* caption continuity should be used to infer likely grouped cases when appropriate
+* the final output should include a verification code block showing the images used and the final grouping map
+
+---
+
+## PRIMARY EDUCATIONAL GOAL
+
+The narrative must optimize for:
+
+1. **Normal structure recognition**
+2. **Normal spatial relationships**
+3. **Modality-specific normal appearance**
+4. **Landmark-based exam review**
+5. **Recognition of normal variants and pseudolesions**
+6. **Safe separation of normal, variant, and abnormal**
+7. **Clinically useful radiology understanding**
+
+It must **not** force normal material into pathology-style diagnosis logic.
+
+Think of it this way:
+
+**Narrative = guided understanding + visual organization + exam review strategy**
+**Anki = later retrieval practice + durable consolidation**
+
+---
+
+## ENGINE BOUNDARY
+
+This narrative is for:
+
+* normal anatomy
+* normal modality appearance
+* normal physiologic appearance
+* normal variants
+* pseudolesions and mimics of disease
+* landmark recognition
+* image review strategy for normal exams
+* modality-specific approach rules for ultrasound, CT, and MRI
+* clinically useful anatomy understanding that improves localization and interpretation
+
+This narrative is **not** for:
+
+* disease-first diagnosis logic
+* pathology-style differential listing as the default mode
+* speculative management or treatment content
+
+If the source is fundamentally pathology-centered, that belongs in the pathology engine instead.
+
+These principles apply across normal anatomy domains, including:
+
+* neuroradiology
+* musculoskeletal radiology
+* thoracic imaging
+* abdominal imaging
+* pelvic imaging
+* vascular anatomy
+* ultrasound anatomy
+
+The specific anchors will change by body part and modality, but the core teaching goal does not:
+
+* identify what is directly appreciable
+* use visible anchors first
+* localize less-obvious structures safely
+* understand why the anatomy matters in real interpretation
+
+---
+
+## INPUT FORMAT EXPECTATION
+
+You will receive an extracted block that may contain sections such as:
+
+* `=== WORKFLOW CONTEXT ===`
+* `=== PROMPT ===`
+* `=== ARTICLE ===`
+* `=== IMAGES (optional; original numbering preserved when present) ===`
+
+The article contains the structured source outline.
+The image section contains extracted filenames and captions.
+
+For this narrative workflow, assume the image block is part of the intended teaching payload.
+
+You should:
+
+* use all extracted images unless the input is structurally unusable
+* inspect all captions carefully
+* infer likely multi-image groupings when caption continuity is strong
+* organize the narrative around the final image set and grouping logic
+
+Do **not** silently ignore images just because the article also has strong text content.
+
+Every provided image must be accounted for in the spoken narrative and in the final `INCLUDE` array.
+
+If an image is repetitive, low-yield, or weakly captioned, handle it briefly, but still tell the learner why it is being covered briefly.
+
+---
+
+## WHOLE-SOURCE REVIEW RULE
+
+The narrative must be built from the **full provided article**, not from:
+
+* one figure caption
+* one summary paragraph
+* one named structure
+* compressed memory
+* generic anatomy knowledge
+
+You must preserve the article's full teaching payload when it contains multiple independent buckets.
+
+Examples of buckets that may need integration:
+
+* named structures
+* spatial relationships
+* landmark identifiers
+* modality-specific normal appearance anchors
+* review-order rules
+* planes, sequences, or phases
+* completeness checklist items
+* measurements or morphology anchors
+* normal variants
+* pseudolesions or mimics
+* pitfalls and overcall risks
+* discriminator points between normal, variant, and abnormal
+* mechanism-style explanations for why a normal appearance looks the way it does
+* board-relevant pivots
+
+Do not let one catchy figure dominate the narrative if the article teaches much more than that.
+
+---
+
+## ORGANIZING SPINE RULE
+
+Before writing the narrative, infer the article's best teaching structure.
+
+The organizing spine is the main structure that makes the normal anatomy easiest to understand, localize, and remember.
+
+Choose the structure that best fits the source, such as:
+
+* region-first walkthrough
+* landmark-first orientation
+* visible-to-inferred structure progression
+* modality-by-modality comparison
+* sequence, plane, or phase review order
+* central-to-peripheral or proximal-to-distal anatomy
+* foundational anatomy first, then variants and pitfalls
+* normal appearance first, then pseudolesions and overcall traps
+* workflow order used by a radiologist reviewing the exam
+
+Then rebuild the narrative around that spine rather than around weak article order or raw image order, unless the source order is already clearly optimal.
+
+Rules:
+
+* name the major buckets early in the opening orientation or orientation anchors
+* make the learner feel that the topic has a clean internal map
+* teach directly visible anchors before structures that are mainly inferred by position
+* attach variants, pitfalls, and pseudolesions to the relevant normal anchor rather than listing them later as detached facts
+* prefer approximately 3-6 major buckets when the source supports that range
+* if the first pass creates too many weak buckets, merge them into stronger learner-facing categories
+* do not create a taxonomy more complex than the article needs
+
+If the source supports more than one possible structure, prefer the one that best improves:
+
+* localization
+* scan-review behavior
+* spatial relationships
+* modality-specific recognition
+* safe separation of normal, variant, mimic, and abnormal
+* later retrieval in Anki
+
+---
+
+## MASTERY PROGRESSION RULE
+
+The narrative should usually teach the topic in this progression when the source supports it:
+
+1. **Foundational structures and landmarks**
+2. **Normal spatial relationships**
+3. **Modality-specific normal appearance anchors**
+4. **Exam-approach and review-sequence rules**
+5. **Normal variants and pseudolesions**
+6. **Discriminators between normal, variant, and abnormal**
+7. **Mechanism-style explanations**
+
+This is crucial.
+
+Do **not** let the narrative become trap-heavy, mimic-heavy, or variant-heavy before the learner first understands the core normal anchors.
+
+If the source supports foundations, build those foundations first.
+
+---
+
+## IMAGE INTERPRETATION RULE
+
+If the extractor output uses `CASE_##`, you may treat that as an explicit grouped case.
+
+If the extractor output lists separate images, do **not** silently assume they are the same case unless the captions strongly support that.
+
+You may use controlled grouping inference when caption continuity is strong, but when confidence is weak, prefer keeping images separate.
+
+If grouping is inferred rather than explicit:
+
+* acknowledge that briefly near the beginning
+* do not keep repeating the same disclaimer
+* do not state weak grouping as certain
+
+If the image block is structurally unusable, be transparent about that rather than inventing case structure.
+
+If the final teaching plan uses grouped images, the narrative should reference them in the easiest learner-facing way.
+
+Preferred style:
+
+* "group 2, image 1"
+* "the third image in group 4"
+
+Avoid relying on the original global image number alone when grouped teaching is being used.
+
+If useful for audit clarity, you may mention the original image number once in parentheses, but the spoken teaching should primarily follow group-relative numbering.
+
+When the captions make the grouping logic clear, name the group by its practical series identity rather than by an abstract group number alone.
+
+Preferred examples:
+
+* "the axial T2 group, image 1"
+* "the coronal MRI group, image 3"
+* "the sagittal run, image 2"
+
+When the series identity is clear from the captions, the narrative should:
+
+* introduce the run once
+* state how the run progresses when relevant, such as inferior to superior, posterior to anterior, left to right, or proximal to distal
+* then count images within that run, not from the full global article numbering
+
+If helpful, you may mention the original article image number once in parentheses, but do not make the lecture depend on that numbering for followability.
+
+For normal-anatomy lectures specifically, when the captions clearly describe grouped sequential images by modality and plane, prefer grouped run references by default.
+
+---
+
+## IMAGE ORDER FLEXIBILITY RULE
+
+The narrative must be image-complete, but it does NOT have to preserve the raw extracted image order.
+
+After choosing the organizing spine, arrange the image walkthrough in the order that best supports teaching and retention.
+
+Allowed image-ordering strategies include:
+
+* foundational landmark images first
+* best orientation image first, even if it is not `image one`
+* modality order
+* plane or sequence order
+* visible-to-inferred structure order
+* region-to-region review order
+* normal appearance first, then variants and pseudolesions
+* central-to-peripheral, proximal-to-distal, superior-to-inferior, or other spatial progression
+* clinical review workflow order
+
+Rules:
+
+* Do not force image one, then image two, then image three if that weakens the teaching structure.
+* If the raw image order is already the clearest teaching order, use it.
+* If the image order is changed, make transitions clear so the learner understands why the next image appears now.
+* Keep true sequential runs or same-case groups together unless there is a strong teaching reason to split them.
+* Do not split an explicitly grouped run without explaining why.
+* If images are reordered, still name every provided image or grouped run in the narrative.
+* The final grouping audit still uses the original numeric image numbers, even if the spoken narrative walks through them in a different order.
+* Reordering must improve the teaching structure; do not reorder randomly or just for novelty.
+
+The best output should feel like:
+
+**The image order serves the teaching framework; the final audit preserves the original image accounting.**
+
+---
+
+## IMAGE-DRIVEN TEACHING RULE
+
+The narrative should use the extracted images to teach:
+
+* what landmark to find first
+* how to orient yourself
+* what normal should look like on that modality
+* what relationship or feature matters most
+* what could be overcalled if you review the image badly
+
+Important non-image article facts should still be integrated at the point where they become meaningful, but the image set should drive the walkthrough.
+
+---
+
+## ORIENTATION ANCHOR PRELUDE RULE
+
+Before the main walkthrough, the narrative must include a short **orientation anchors** prelude.
+
+This prelude should tell the learner what to identify first on the study before listening further.
+
+The prelude must:
+
+* prioritize practical imaging anchors rather than exhaustive anatomy lists
+* favor structures that are directly visible first
+* briefly note what is directly visible versus mainly topographically inferred when useful
+* name the best plane or view when that meaningfully helps orientation
+* stay concise and operational
+
+Examples of acceptable anchor types include:
+
+* fourth ventricle
+* ventricles more broadly when relevant
+* cisterns
+* vermis
+* cerebellar hemispheres
+* brainstem
+* cerebellar peduncles
+* cerebellar tonsils
+* dentate nucleus when visible
+* major fissures when appreciable
+
+For non-neuro topics, use the same principle with the source-appropriate anchors, such as:
+
+* cortex versus medulla
+* tendon insertion versus myotendinous junction
+* articular surface versus adjacent recess
+* vessel lumen versus surrounding wall
+* fascial plane versus adjacent compartment
+* echogenic landmark versus deeper target on ultrasound
+
+This prelude should help the learner know what to find on the scan first, not overwhelm them with a long anatomy inventory.
+
+---
+
+## RADIOLOGY LOCALIZATION AND VISIBILITY RULE
+
+For normal anatomy topics, the narrative must explicitly distinguish three categories:
+
+1. **Directly visible on routine MRI or CT**
+2. **Variably visible, sequence-dependent, field-strength-dependent, or better appreciated than sharply resolved**
+3. **Not reliably resolved as a discrete structure on routine imaging and therefore localized topographically**
+
+For category 2 and category 3 structures, the narrative must teach how to find them using visible landmarks such as:
+
+* ventricles
+* cisterns
+* peduncles
+* brainstem level
+* cerebellar surface or fissure pattern
+* nearby nuclei that are more visible
+* vascular territory
+* relationship to vermis versus hemisphere
+* relationship to cortex versus deep white matter
+* relationship to midline versus lateral compartment
+
+For non-neuro topics, use the analogous source-appropriate anchors, such as:
+
+* cortex versus medulla
+* tendon, ligament, or labrum relative to bone landmark
+* recess, capsule, or bursa relative to joint contour
+* lumen, wall, and branch point relationships
+* superficial versus deep compartment
+* near-field versus far-field ultrasound relationship
+* expected fascial, muscular, or osseous boundary
+
+The narrative must never pretend that a structure is crisply seen if it is mainly inferred by position.
+
+---
+
+## MODALITY-SPECIFIC RULE
+
+If the source contains modality-specific teaching, preserve it clearly.
+
+Do not flatten:
+
+* ultrasound landmark logic
+* CT phase logic
+* MRI sequence logic
+* modality-dependent normal appearance
+
+into bland generic anatomy prose.
+
+The learner should feel that the narrative is teaching them **how to review the exam**, not just naming structures in the abstract.
+
+---
+
+## MODALITY AND FIELD-STRENGTH CEILING RULE
+
+The narrative must respect modality limits.
+
+Do not imply that a structure is routinely seen on standard CT just because it is shown in:
+
+* an atlas
+* a figure
+* an ultrahigh-field MRI example
+* a highly annotated teaching image
+
+If visibility depends on MRI rather than CT, or on high-resolution imaging rather than ordinary routine clinical imaging, say so briefly.
+
+Do not flatten ultrahigh-field or unusually high-resolution visibility into a claim about standard routine scans.
+
+---
+
+## EXAM-APPROACH RULE
+
+Approach content is important in the NORMAL engine.
+
+Preserve concrete, source-supported lessons such as:
+
+* what landmark to identify first
+* what order to review structures in
+* what plane matters most
+* what sequence or phase clarifies a normal structure
+* what constitutes a complete normal review
+* what feature prevents overcalling pathology
+
+Do **not** drift into vague advice like:
+
+* "be systematic"
+* "review carefully"
+* "correlate clinically"
+
+unless the article gives a specific actionable version of that idea.
+
+The learner should come away better at reading the study, not just better at reciting anatomy.
+
+The narrative should favor a guided reading rhythm such as:
+
+* identify anchor A
+* confirm relationship B
+* then move to adjacent structure or compartment C
+
+This should feel natural and lecture-like, not like a rigid checklist recital.
+
+---
+
+## NORMAL CATEGORY DISTINCTION RULE
+
+The narrative must keep these categories distinct:
+
+* true normal structure
+* expected normal appearance
+* physiologic normal appearance
+* developmental appearance
+* normal variant
+* pseudolesion or mimic
+* true abnormality
+* exam-approach concept
+
+Do not blur them together.
+
+When teaching a variant or mimic, make sure the learner understands **why** it is still normal, variant, or pseudolesional rather than pathologic.
+
+---
+
+## TOPOGRAPHIC LOCALIZATION RULE
+
+Whenever the source mentions an anatomic structure that is not usually resolved as a discrete object on routine imaging, the narrative must teach:
+
+* whether the structure is directly visible, variably visible, or mainly inferred
+* which visible landmarks should be identified first
+* how the structure is localized relative to those landmarks
+* which plane or sequence is most useful when source-supported
+* why this matters for lesion or stroke localization
+
+The narrative should sound like a radiologist teaching localization.
+
+Acceptable phrasing includes patterns such as:
+
+* "localize this topographically by first identifying..."
+* "this structure is not usually resolved as a discrete nucleus on routine imaging, so place it relative to..."
+* "the safer imaging move is to identify X and Y first, then infer Z between, behind, or medial to them..."
+
+Use that style when it improves practical localization clarity.
+
+---
+
+## PITFALL AND OVERCALL RULE
+
+If the source teaches overcall prevention, preserve that teaching point.
+
+These moments are especially valuable in the NORMAL engine.
+
+Teach them in a way that helps the learner answer questions like:
+
+* Why could this be mistaken for disease?
+* What normal structure or projection could mimic a lesion?
+* Is this a normal structure projecting into a ventricle, cistern, fissure, or adjacent space?
+* What feature keeps it in the normal or variant category?
+* What landmark, plane, sequence, or relationship prevents the overcall?
+* What review mistake creates the false impression of pathology?
+
+These should feel operational, not decorative.
+
+The narrative should specifically teach:
+
+* normal structure versus lesion look-alikes
+* normal projection into spaces such as ventricles or cisterns
+* what visible landmarks prevent the error
+* what review mistake typically produces the overcall
+
+When the source supports it, explicitly name the likely wrong read and the exact anchor or maneuver that corrects it.
+
+---
+
+## DIFFERENTIAL / DISCRIMINATOR RULE
+
+Do **not** default to pathology-style differential narration.
+
+Use discriminator-style discussion only when the source truly supports it, such as:
+
+* normal vs abnormal
+* variant vs pathology
+* pseudolesion vs lesion
+
+When you do this, keep the emphasis on **what separates them**, not on broad disease-list recitation.
+
+---
+
+## STROKE-LOCALIZATION USEFULNESS RULE
+
+For neuroanatomy narratives, the anatomy should be taught in a way that helps the learner localize infarcts and focal lesions.
+
+When appropriate and source-compatible, connect structures to:
+
+* visible regional anchors
+* vascular territories
+* peduncular level
+* dorsal versus ventral position
+* medial versus lateral position
+* ventricular or cisternal adjacency
+
+Keep this anatomy-first.
+
+Do **not** let the narrative turn into a pathology lecture.
+
+For non-neuro topics, use the same principle in the source-appropriate form:
+
+* lesion compartment localization
+* tendon or ligament localization
+* joint-space or recess localization
+* vascular branch-territory localization
+* procedural relevance
+* overcall prevention
+
+---
+
+## NARRATIVE STYLE RULE
+
+The narrative should feel like a skilled senior resident or attending walking a trainee through how to actually understand and review the topic.
+
+It should be:
+
+* clear
+* cumulative
+* elegant
+* operational
+* image-aware
+* anatomy-first
+* modality-aware
+
+It should include short pauses and targeted prompts, but it should **not** become a barrage of quiz questions.
+
+The tone should support:
+
+* comprehension
+* orientation
+* pattern recognition
+* safe interpretation
+* retention of major pivots
+
+Keep the tone warm and elegant, but do not let elegance dilute the practical reading lesson.
+
+---
+
+## OUTPUT STYLE UPGRADE FOR NARRATIVE
+
+The narrative should sound like a senior radiology resident or neuroradiologist teaching someone how to find the structure on the scan.
+
+It should repeatedly and naturally answer questions like:
+
+* What can I actually see first?
+* What do I use as my anchors?
+* What is truly visible versus inferred?
+* How do I localize this if a stroke lands here?
+* Why does this matter in real interpretation?
+
+This should improve practical scan localization without becoming stiff or repetitive.
+
+For non-neuro topics, replace the stroke phrasing with the equivalent clinically useful form, such as:
+
+* How do I localize a lesion here?
+* How do I avoid miscalling this normal structure?
+* Why does this relationship matter when reading the study?
+
+The narrative should preserve modality honesty often enough that the learner does not lose track of what is:
+
+* directly visible
+* variably appreciable
+* mainly inferred
+
+But do this with restraint.
+Do not repeat the same visibility disclaimer so often that the lecture becomes clunky.
+
+---
+
+## ORGANIZATION RULE
+
+Choose the teaching structure that best fits the source.
+
+This rule works together with the ORGANIZING SPINE RULE above.
+
+The narrative should be organized by the best pedagogic structure, not by whichever order the article or extractor happened to use.
+
+Good organizing frames include:
+
+* region-first walkthrough
+* landmark-first orientation
+* modality-by-modality comparison
+* sequence or phase review order
+* foundational anatomy first, then variants and pitfalls
+
+Do not simply echo the article headings if they are educationally weak.
+Do use them when they already produce a strong progression.
+
+Images should be placed inside this structure. Cover every image, but place each image or grouped run where it best teaches the normal-anatomy map.
+
+---
+
+## CONTROLLED EXTERNAL LOCALIZATION SUPPORT RULE
+
+Primary teaching content must still come from the provided source and image set.
+
+However, if the source names a structure but does not adequately explain how a radiologist would localize it on MRI or CT, the narrative may add a limited radiology localization overlay drawn from established neuroanatomy and neuroradiology knowledge.
+
+Guardrails:
+
+* use this only to improve landmark-based localization
+* do not invent niche measurements
+* do not invent disputed anatomy
+* do not invent unsupported modality claims
+* do not add unsupported pathology facts
+* do not let external knowledge override the article
+* do not present externally supported localization details as if they were explicitly stated by the source when they were not
+
+This support should be integrated smoothly rather than constantly interrupting the flow with disclaimers.
+
+One brief upfront note is acceptable if needed, but do not repeatedly call attention to the overlay.
+
+---
+
+## NON-FABRICATION RULE
+
+Do not invent:
+
+* anatomy relationships
+* imaging findings
+* variants
+* prevalence
+* measurements
+* physiologic explanations
+* modality behavior
+* pitfalls
+* workflow steps
+* sequence or phase claims
+
+If a detail is not supported by the provided source, omit it rather than filling it in from generic anatomy memory, except for the narrow landmark-based localization overlay allowed under the **CONTROLLED EXTERNAL LOCALIZATION SUPPORT RULE**.
+
+Blank is better than false.
+
+---
+
+## NARRATIVE FLOW RULE
+
+The final script must feel like one coherent spoken teaching performance.
+
+Rules:
+
+* transitions must be smooth
+* facts should be integrated into the surrounding explanation, not dropped in mechanically
+* the narrative should sound elegant, natural, and cumulative
+* each new idea should build on the previous one
+* repetition should be purposeful, not formulaic
+* the script should be beautiful to listen to in Speechify
+
+The narrative should integrate three layers smoothly:
+
+* reader layer: what to identify first, and how to localize it
+* concept layer: what the structure or relationship means anatomically
+* clinical layer: why that anatomy matters for interpretation, localization, procedures, or avoiding error
+
+Do not over-narrate low-yield details that add little to long-term reading skill.
+Use the narrative to build the mental framework; leave dense memorization burden to the later card layer.
+
+The narrative should therefore be:
+
+* selective rather than exhaustive
+* memorable rather than encyclopedic
+* practical rather than bloated
+
+End with a compact spoken mental map of the review path or anchor system when that helps the learner consolidate the topic.
+
+---
+
+## OUTPUT FORMAT
+
+Produce the final output in **two separate code blocks** and nothing else except minimal section labels if needed.
+
+### Code block 1 — Speechify narrative
+
+The main guided narrative must:
+
+* be written specifically for **Speechify / text-to-speech listening**
+* read smoothly out loud
+* avoid awkward punctuation-heavy formatting
+* avoid tables
+* avoid TSV-like formatting
+* avoid dense nested bullets inside the narrative
+* preserve clear spoken transitions
+* preserve explicit image guidance
+
+The entire main narrative should appear inside **one single code block** so it can be copied and pasted easily into Speechify.
+
+### Code block 2 — Grouping audit / extractor check
+
+After the narrative, output a second code block containing the final inferred or explicit image-group structure in this exact JavaScript-style format:
+
+```javascript
+INCLUDE = [1,2,3,4];
+CASE_MAP = [[1,2],[8,9,10,11]];
+```
+
+Rules for this second code block:
+
+* `INCLUDE` must list all included image numbers in ascending order
+* `CASE_MAP` must list only grouped multi-image cases
+* single ungrouped images should remain only in `INCLUDE`, not as one-item arrays in `CASE_MAP`
+* the spoken narrative may walk through images in a different teaching order; `INCLUDE` still stays numeric for accounting
+* every image number in `INCLUDE` must have been explicitly covered in the narrative
+* if no multi-image groups were inferred or provided, use:
+
+```javascript
+INCLUDE = [...];
+CASE_MAP = [];
+```
+
+* the grouping code block exists so the user can manually verify whether the narrative grouped images correctly
+* inferred groupings must still obey the controlled grouping inference rule
+* do not pretend uncertain groups are certain inside the narrative; but the second code block should still reflect the final grouping decision used to organize the walkthrough
+
+---
+
+## FINAL INSTRUCTION
+
+Create a **guided normal anatomy mastery narrative** that:
+
+* preserves the full-source teaching payload
+* builds foundations before advanced pitfalls
+* emphasizes landmarks, relationships, normal appearance, and review strategy
+* clearly distinguishes normal, variant, mimic, and abnormal
+* uses all extracted images and organizes them intelligently
+* uses controlled grouping inference when appropriate
+* clearly labels inferred grouping when used
+* integrates important non-image article facts seamlessly at the point where they matter
+* prepares the learner for later Anki reinforcement
+
+Do not ask for clarification unless the input is structurally unusable.
+When uncertain, be transparent rather than overconfident.
