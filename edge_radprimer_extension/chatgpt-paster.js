@@ -51,8 +51,9 @@
     return null;
   };
 
-  const sendProgress = (phase, message) => {
-    createOrUpdateOverlay({ phase, message });
+  const sendProgress = (phase, message, compact = false) => {
+    if (compact) createOrUpdateCompactStatus({ phase, message });
+    else createOrUpdateOverlay({ phase, message });
   };
 
   const getComposerEditor = () => {
@@ -153,6 +154,39 @@
     }
   };
 
+  const setContentEditableTextFast = async (editor, text) => {
+    editor.focus();
+    const fragment = document.createDocumentFragment();
+    const lines = String(text || "").replace(/\r\n/g, "\n").split("\n");
+    let lastBlock = null;
+
+    lines.forEach((line) => {
+      const block = document.createElement("p");
+      if (line) {
+        block.appendChild(document.createTextNode(line));
+      } else {
+        block.appendChild(document.createElement("br"));
+      }
+      fragment.appendChild(block);
+      lastBlock = block;
+    });
+
+    editor.replaceChildren(fragment);
+
+    if (lastBlock) {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(lastBlock);
+      range.collapse(true);
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+    }
+
+    dispatchEditorInput(editor, text);
+    await sleep(100);
+    return getComposerText(editor).trim().length > 0;
+  };
+
   const insertIntoContentEditable = async (editor, text) => {
     editor.focus();
     const chunkSize = 15000;
@@ -178,13 +212,15 @@
     }
   };
 
-  const clearAndFillComposer = async (editor, text) => {
+  const clearAndFillComposer = async (editor, text, preferFastSet = false) => {
     await focusComposer(editor);
     if (editor.tagName === "TEXTAREA") {
       setTextareaValue(editor, "");
       setTextareaValue(editor, text);
       return;
     }
+
+    if (preferFastSet && (await setContentEditableTextFast(editor, text))) return;
 
     clearContentEditable(editor);
     await insertIntoContentEditable(editor, text);
@@ -322,12 +358,12 @@
     editor.dispatchEvent(new KeyboardEvent("keyup", common));
   };
 
-  const submitPrompt = async (editor) => {
+  const submitPrompt = async (editor, compactProgress = false) => {
     const before = getRunSnapshot();
     const sendButton = await waitForSendButtonAfterTextInsertion(20000);
 
     if (sendButton) {
-      sendProgress("SENDING", "Trying ChatGPT send button...");
+      sendProgress("SENDING", "Trying ChatGPT send button...", compactProgress);
       try {
         sendButton.click();
       } catch {}
@@ -339,12 +375,20 @@
       if (await waitForGenerationStart(before, 3500)) return true;
     }
 
-    sendProgress("SENDING", "Send button did not start generation; trying composer form submit...");
+    sendProgress(
+      "SENDING",
+      "Send button did not start generation; trying composer form submit...",
+      compactProgress
+    );
     if (submitComposerForm(editor, sendButton)) {
       if (await waitForGenerationStart(before, 3500)) return true;
     }
 
-    sendProgress("SENDING", "Form submit did not start generation; trying Enter key fallback...");
+    sendProgress(
+      "SENDING",
+      "Form submit did not start generation; trying Enter key fallback...",
+      compactProgress
+    );
     pressEnterInComposer(editor);
     if (await waitForGenerationStart(before, 5000)) return true;
 
@@ -764,6 +808,55 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
 
+  const createOrUpdateCompactStatus = ({ phase, message, done, error } = {}) => {
+    let host = document.getElementById("radprimer-runner-compact-status");
+    if (!host) {
+      host = document.createElement("div");
+      host.id = "radprimer-runner-compact-status";
+      host.style.position = "fixed";
+      host.style.zIndex = "2147483647";
+      host.style.right = "18px";
+      host.style.bottom = "18px";
+      document.documentElement.appendChild(host);
+
+      const shadow = host.attachShadow({ mode: "open" });
+      shadow.innerHTML = `
+        <style>
+          :host { all: initial; }
+          .chip {
+            max-width: min(360px, calc(100vw - 36px));
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, .92);
+            color: #edf4ff;
+            box-shadow: 0 12px 36px rgba(0,0,0,.32);
+            border: 1px solid rgba(255,255,255,.14);
+            backdrop-filter: blur(12px);
+            font: 12px/1.35 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          }
+          .phase {
+            color: #9ec5ff;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-right: 6px;
+          }
+          .error .phase { color: #ffb4b4; }
+          .msg { color: #dbe7f8; }
+        </style>
+        <div class="chip">
+          <span class="phase"></span>
+          <span class="msg"></span>
+        </div>
+      `;
+    }
+
+    const shadow = host.shadowRoot;
+    shadow.querySelector(".chip").classList.toggle("error", Boolean(error));
+    if (phase) shadow.querySelector(".phase").textContent = phase;
+    if (message) shadow.querySelector(".msg").textContent = message;
+    if (done) setTimeout(() => host.remove(), 1800);
+  };
+
   const createOrUpdateOverlay = ({ phase, message, text, error } = {}) => {
     let host = document.getElementById("radprimer-runner-overlay");
     if (!host) {
@@ -873,7 +966,8 @@
     speechify,
     preserveAuditBlock
   }) => {
-    sendProgress("WAITING_FOR_COMPOSER", "Waiting for ChatGPT composer...");
+    const compactProgress = Boolean(autoSubmit && !waitForResult);
+    sendProgress("WAITING_FOR_COMPOSER", "Waiting for ChatGPT composer...", compactProgress);
     const editor = await waitForComposerEditor();
     if (!editor) throw new Error("Login required or ChatGPT composer not available.");
 
@@ -881,10 +975,10 @@
       localStorage.removeItem("oai/apps/conversationDrafts");
     } catch {}
 
-    sendProgress("FILLING_PROMPT", "Clearing and filling composer...");
-    await clearAndFillComposer(editor, promptText);
+    sendProgress("FILLING_PROMPT", "Clearing and filling composer...", compactProgress);
+    await clearAndFillComposer(editor, promptText, compactProgress);
 
-    sendProgress("VERIFYING_PROMPT", "Verifying prompt was inserted...");
+    sendProgress("VERIFYING_PROMPT", "Verifying prompt was inserted...", compactProgress);
     if (!composerLooksFilled(editor, promptText)) {
       const visibleTextLength = normalizeForComposerCheck(getComposerText(editor)).length;
       if (!visibleTextLength) {
@@ -892,7 +986,8 @@
       }
       sendProgress(
         "VERIFYING_PROMPT",
-        "Exact prompt verification was weak, but composer contains text. Trying Send..."
+        "Exact prompt verification was weak, but composer contains text. Trying Send...",
+        compactProgress
       );
     }
 
@@ -905,10 +1000,15 @@
       return { chars: promptText.length, submitted: false };
     }
 
-    sendProgress("SENDING", "Submitting prompt...");
-    await submitPrompt(editor);
+    sendProgress("SENDING", "Submitting prompt...", compactProgress);
+    await submitPrompt(editor, compactProgress);
     await activateCurrentTab();
     if (!waitForResult) {
+      createOrUpdateCompactStatus({
+        phase: "SENT",
+        message: "Prompt sent to ChatGPT.",
+        done: true
+      });
       return { chars: promptText.length, submitted: true };
     }
 
