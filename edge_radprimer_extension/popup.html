@@ -103,6 +103,25 @@
         </label>
       </section>
 
+      <section class="panel">
+        <label class="check">
+          <input id="autoSendToSpeechify" type="checkbox">
+          Send final ChatGPT response to Speechify
+        </label>
+        <label class="check">
+          <input id="speechifyAutoSave" type="checkbox">
+          Auto-save Speechify text file
+        </label>
+        <label>
+          Speechify folder name
+          <input id="speechifyFolderName" type="text" placeholder="Musculoskeletal">
+        </label>
+        <label>
+          Speechify folder ID
+          <input id="speechifyFolderId" type="text" placeholder="folder UUID">
+        </label>
+      </section>
+
       <button id="run">Extract + copy prompt package</button>
       <button id="refreshPrompts" class="secondary">Check packaged prompts</button>
 

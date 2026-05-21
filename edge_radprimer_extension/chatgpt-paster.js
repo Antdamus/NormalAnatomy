@@ -339,7 +339,9 @@
   const normalizeExtractedText = (text) => {
     return String(text || "")
       .replace(/\u00a0/g, " ")
+      .replace(/\r\n/g, "\n")
       .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n[ \t]+/g, "\n")
       .replace(/\n{4,}/g, "\n\n\n")
       .trim();
   };
@@ -373,7 +375,139 @@
       )
       .forEach((el) => el.remove());
 
-    return normalizeExtractedText(clone.innerText || clone.textContent || "");
+    return normalizeExtractedText(serializeMarkdownNode(clone));
+  };
+
+  const inlineText = (node) => {
+    return String(node?.innerText || node?.textContent || "")
+      .replace(/\u00a0/g, " ")
+      .replace(/[ \t]+\n/g, "\n")
+      .trim();
+  };
+
+  const getDirectText = (node) => {
+    let text = "";
+    for (const child of node.childNodes || []) {
+      if (child.nodeType === Node.TEXT_NODE) text += child.textContent || "";
+    }
+    return text.trim();
+  };
+
+  const serializeList = (listEl, depth = 0) => {
+    const ordered = listEl.tagName === "OL";
+    let index = Number(listEl.getAttribute("start") || "1");
+    const lines = [];
+
+    for (const item of Array.from(listEl.children).filter((el) => el.tagName === "LI")) {
+      const nestedLists = Array.from(item.children).filter((el) => el.matches("ul, ol"));
+      const clone = item.cloneNode(true);
+      clone.querySelectorAll("ul, ol").forEach((el) => el.remove());
+
+      const marker = ordered ? `${index}. ` : "- ";
+      const indent = "  ".repeat(depth);
+      const body = inlineText(clone).replace(/\n+/g, "\n" + indent + "  ");
+      lines.push(`${indent}${marker}${body}`.trimEnd());
+
+      for (const nested of nestedLists) {
+        const nestedText = serializeList(nested, depth + 1);
+        if (nestedText) lines.push(nestedText);
+      }
+
+      index += 1;
+    }
+
+    return lines.join("\n");
+  };
+
+  const serializeTable = (tableEl) => {
+    const rows = Array.from(tableEl.querySelectorAll("tr")).map((row) => {
+      return Array.from(row.querySelectorAll("th, td"))
+        .map((cell) => inlineText(cell).replace(/\s*\n+\s*/g, " "))
+        .join("\t");
+    });
+    return rows.filter(Boolean).join("\n");
+  };
+
+  const serializePre = (preEl) => {
+    const code = preEl.querySelector("code") || preEl.querySelector(".cm-content") || preEl;
+    return String(code.innerText || code.textContent || "").replace(/\u00a0/g, " ").trimEnd();
+  };
+
+  const serializeMarkdownNode = (root) => {
+    const blocks = [];
+
+    const walk = (node) => {
+      if (!node) return;
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = String(node.textContent || "").trim();
+        if (text) blocks.push(text);
+        return;
+      }
+
+      if (node.nodeType !== Node.ELEMENT_NODE) return;
+      const tag = node.tagName;
+
+      if (tag === "BR") {
+        blocks.push("\n");
+        return;
+      }
+
+      if (["H1", "H2", "H3", "H4", "H5", "H6", "P"].includes(tag)) {
+        const text = inlineText(node);
+        if (text) blocks.push(text);
+        return;
+      }
+
+      if (tag === "UL" || tag === "OL") {
+        const text = serializeList(node);
+        if (text) blocks.push(text);
+        return;
+      }
+
+      if (tag === "PRE") {
+        const text = serializePre(node);
+        if (text) blocks.push(text);
+        return;
+      }
+
+      if (tag === "BLOCKQUOTE") {
+        const text = Array.from(node.childNodes)
+          .map((child) => serializeMarkdownNode(child))
+          .filter(Boolean)
+          .join("\n\n")
+          .split("\n")
+          .map((line) => (line ? `> ${line}` : ">"))
+          .join("\n");
+        if (text) blocks.push(text);
+        return;
+      }
+
+      if (tag === "TABLE") {
+        const text = serializeTable(node);
+        if (text) blocks.push(text);
+        return;
+      }
+
+      const direct = getDirectText(node);
+      const blockChildren = Array.from(node.children).filter((child) =>
+        child.matches("h1,h2,h3,h4,h5,h6,p,ul,ol,pre,blockquote,table,div")
+      );
+
+      if (direct && !blockChildren.length) {
+        blocks.push(inlineText(node));
+        return;
+      }
+
+      for (const child of node.childNodes) walk(child);
+    };
+
+    walk(root);
+
+    return blocks
+      .join("\n\n")
+      .replace(/\n\n\n+/g, "\n\n")
+      .replace(/\n\n\n+/g, "\n\n")
+      .trim();
   };
 
   const extractLatestAssistantText = () => {
@@ -449,6 +583,19 @@
       ta.remove();
       return ok;
     }
+  };
+
+  const sendSpeechifyCreateMessage = (payload) => {
+    return new Promise((resolve) => {
+      chrome.runtime.sendMessage({ type: "CREATE_SPEECHIFY_LECTURE", payload }, (response) => {
+        const err = chrome.runtime.lastError;
+        if (err) {
+          resolve({ ok: false, error: err.message });
+          return;
+        }
+        resolve(response || { ok: false, error: "No Speechify response returned." });
+      });
+    });
   };
 
   const downloadTextFile = (text, filename) => {
@@ -564,7 +711,7 @@
     }
   };
 
-  const runPrompt = async ({ promptText, autoSubmit, waitForResult, timeoutMs }) => {
+  const runPrompt = async ({ promptText, autoSubmit, waitForResult, timeoutMs, speechify }) => {
     sendProgress("WAITING_FOR_COMPOSER", "Waiting for ChatGPT composer...");
     const editor = await waitForComposerEditor();
     if (!editor) throw new Error("Login required or ChatGPT composer not available.");
@@ -618,13 +765,33 @@
       text: result.text
     });
 
+    let speechifyResult = null;
+    if (speechify && result.text) {
+      sendProgress("OPENING_SPEECHIFY", "Opening Speechify and creating text file...");
+      speechifyResult = await sendSpeechifyCreateMessage({
+        title: speechify.title || "",
+        text: result.text,
+        folder: speechify.folder,
+        autoSave: speechify.autoSave !== false
+      });
+
+      createOrUpdateOverlay({
+        phase: speechifyResult?.ok ? "SPEECHIFY_DONE" : "SPEECHIFY_ERROR",
+        message: speechifyResult?.ok
+          ? "Speechify text file created."
+          : `Speechify failed: ${speechifyResult?.error || "unknown error"}`,
+        text: result.text
+      });
+    }
+
     return {
       chars: promptText.length,
       submitted: true,
       assistantText: result.text,
       assistantChars: result.text.length,
       partial: Boolean(result.partial),
-      copied
+      copied,
+      speechify: speechifyResult
     };
   };
 
@@ -636,7 +803,8 @@
         promptText: String(message.text || ""),
         autoSubmit: Boolean(message.autoSubmit),
         waitForResult: Boolean(message.waitForResult),
-        timeoutMs: Math.max(30000, Number(message.timeoutMs || 900000))
+        timeoutMs: Math.max(30000, Number(message.timeoutMs || 900000)),
+        speechify: message.speechify || null
       });
       sendResponse({ ok: true, ...result });
     })().catch((error) => {

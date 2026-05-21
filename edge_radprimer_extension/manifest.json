@@ -7,7 +7,8 @@
   "host_permissions": [
     "https://app.radprimer.com/*",
     "https://chatgpt.com/*",
-    "https://chat.openai.com/*"
+    "https://chat.openai.com/*",
+    "https://app.speechify.com/*"
   ],
   "action": {
     "default_title": "RadPrimer Prompt Runner",
@@ -22,6 +23,11 @@
       "js": ["chatgpt-draft-guard.js"],
       "run_at": "document_start",
       "world": "MAIN"
+    },
+    {
+      "matches": ["https://app.speechify.com/*"],
+      "js": ["speechify-paster.js"],
+      "run_at": "document_idle"
     }
   ]
 }

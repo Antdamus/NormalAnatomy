@@ -48,7 +48,22 @@ const DEFAULTS = {
   autoSubmitChatGPT: false,
   chatgptUrl: "https://chatgpt.com/g/g-p-69e5418624448191a7a74b18f607688b-pediatrics/project",
   chatgptInstruction: "make sure you do not truncate the text and read the entire message",
-  chatgptTimeoutSec: "900"
+  chatgptTimeoutSec: "900",
+  autoSendToSpeechify: true,
+  speechifyAutoSave: true,
+  speechifyAutoPlayAfterSave: false,
+  speechifyFolderName: "Musculoskeletal",
+  speechifyFolderId: "c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
+  speechifyFolderChain: [
+    {
+      name: "Pediatric",
+      id: "e8b38956-af1b-4a58-a31a-8040936033ff"
+    },
+    {
+      name: "Musculoskeletal",
+      id: "c00e2ad9-89b5-4829-9884-cde0dc8b82a7"
+    }
+  ]
 };
 
 const $ = (id) => document.getElementById(id);
@@ -71,7 +86,11 @@ const fields = [
   "autoSubmitChatGPT",
   "chatgptUrl",
   "chatgptInstruction",
-  "chatgptTimeoutSec"
+  "chatgptTimeoutSec",
+  "autoSendToSpeechify",
+  "speechifyAutoSave",
+  "speechifyFolderName",
+  "speechifyFolderId"
 ];
 
 function setStatus(text) {
@@ -99,6 +118,10 @@ function syncPanels() {
 }
 
 function readForm() {
+  const autoSendToSpeechify = $("autoSendToSpeechify").checked;
+  const autoSubmitChatGPT = $("autoSubmitChatGPT").checked || autoSendToSpeechify;
+  const openChatGPT = $("openChatGPT").checked || autoSubmitChatGPT;
+
   return {
     engine: $("engine").value,
     mode: $("mode").value,
@@ -113,11 +136,17 @@ function readForm() {
     downloadPlain: $("downloadPlain").checked,
     downloadAnnotated: $("downloadAnnotated").checked,
     keepCaptionHtml: $("keepCaptionHtml").checked,
-    openChatGPT: $("openChatGPT").checked,
-    autoSubmitChatGPT: $("autoSubmitChatGPT").checked,
+    openChatGPT,
+    autoSubmitChatGPT,
     chatgptUrl: $("chatgptUrl").value.trim(),
     chatgptInstruction: $("chatgptInstruction").value.trim(),
     chatgptTimeoutSec: $("chatgptTimeoutSec").value.trim(),
+    autoSendToSpeechify,
+    speechifyAutoSave: $("speechifyAutoSave").checked,
+    speechifyAutoPlayAfterSave: false,
+    speechifyFolderName: $("speechifyFolderName").value.trim(),
+    speechifyFolderId: $("speechifyFolderId").value.trim(),
+    speechifyFolderChain: DEFAULTS.speechifyFolderChain,
     stripArrowTags: false,
     primarySourceLabel: "RadPrimer"
   };
@@ -137,11 +166,20 @@ function applyForm(values) {
   $("downloadPlain").checked = values.downloadPlain ?? DEFAULTS.downloadPlain;
   $("downloadAnnotated").checked = values.downloadAnnotated ?? DEFAULTS.downloadAnnotated;
   $("keepCaptionHtml").checked = values.keepCaptionHtml ?? DEFAULTS.keepCaptionHtml;
-  $("openChatGPT").checked = values.openChatGPT ?? DEFAULTS.openChatGPT;
-  $("autoSubmitChatGPT").checked = values.autoSubmitChatGPT ?? DEFAULTS.autoSubmitChatGPT;
+  const autoSendToSpeechify = values.autoSendToSpeechify ?? DEFAULTS.autoSendToSpeechify;
+  $("openChatGPT").checked =
+    (values.openChatGPT ?? DEFAULTS.openChatGPT) ||
+    (values.autoSubmitChatGPT ?? DEFAULTS.autoSubmitChatGPT) ||
+    autoSendToSpeechify;
+  $("autoSubmitChatGPT").checked =
+    (values.autoSubmitChatGPT ?? DEFAULTS.autoSubmitChatGPT) || autoSendToSpeechify;
   $("chatgptUrl").value = values.chatgptUrl ?? DEFAULTS.chatgptUrl;
   $("chatgptInstruction").value = values.chatgptInstruction ?? DEFAULTS.chatgptInstruction;
   $("chatgptTimeoutSec").value = values.chatgptTimeoutSec ?? DEFAULTS.chatgptTimeoutSec;
+  $("autoSendToSpeechify").checked = autoSendToSpeechify;
+  $("speechifyAutoSave").checked = values.speechifyAutoSave ?? DEFAULTS.speechifyAutoSave;
+  $("speechifyFolderName").value = values.speechifyFolderName ?? DEFAULTS.speechifyFolderName;
+  $("speechifyFolderId").value = values.speechifyFolderId ?? DEFAULTS.speechifyFolderId;
   syncPanels();
 }
 
@@ -227,7 +265,20 @@ function waitForTabComplete(tabId) {
   });
 }
 
-function sendChatGptFillMessage(tabId, text, settings) {
+function sendChatGptFillMessage(tabId, text, settings, articleTitle) {
+  const speechifyPayload =
+    settings.autoSendToSpeechify && settings.autoSubmitChatGPT
+      ? {
+          title: buildSpeechifyTitle(articleTitle, ""),
+          folder: {
+            name: settings.speechifyFolderName || DEFAULTS.speechifyFolderName,
+            id: settings.speechifyFolderId || DEFAULTS.speechifyFolderId,
+            parentChain: settings.speechifyFolderChain || DEFAULTS.speechifyFolderChain
+          },
+          autoSave: settings.speechifyAutoSave !== false
+        }
+      : null;
+
   return new Promise((resolve, reject) => {
     chrome.tabs.sendMessage(
       tabId,
@@ -236,7 +287,8 @@ function sendChatGptFillMessage(tabId, text, settings) {
         text,
         autoSubmit: Boolean(settings.autoSubmitChatGPT),
         waitForResult: Boolean(settings.autoSubmitChatGPT),
-        timeoutMs: Math.max(30, parseInt(settings.chatgptTimeoutSec || "900", 10) || 900) * 1000
+        timeoutMs: Math.max(30, parseInt(settings.chatgptTimeoutSec || "900", 10) || 900) * 1000,
+        speechify: speechifyPayload
       },
       (response) => {
         const err = chrome.runtime.lastError;
@@ -247,7 +299,55 @@ function sendChatGptFillMessage(tabId, text, settings) {
   });
 }
 
-async function openChatGptAndFill(settings, packageText) {
+function makeSpeechifyTitleFromText(text) {
+  const lines = String(text || "")
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  let title = lines[0] || "ChatGPT Lecture";
+  title = title.replace(/^#+\s*/, "").replace(/^Title:\s*/i, "").trim();
+  if (title.length > 100) title = title.slice(0, 100).trim();
+  return title || "ChatGPT Lecture";
+}
+
+function buildSpeechifyTitle(articleTitle, text) {
+  if (articleTitle?.trim()) return articleTitle.trim().slice(0, 100);
+  return makeSpeechifyTitleFromText(text);
+}
+
+function sendSpeechifyCreateMessage(payload) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "CREATE_SPEECHIFY_LECTURE", payload }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+async function createSpeechifyLecture(settings, articleTitle, text) {
+  const folder = {
+    name: settings.speechifyFolderName || DEFAULTS.speechifyFolderName,
+    id: settings.speechifyFolderId || DEFAULTS.speechifyFolderId,
+    parentChain: settings.speechifyFolderChain || DEFAULTS.speechifyFolderChain
+  };
+
+  const response = await sendSpeechifyCreateMessage({
+    title: buildSpeechifyTitle(articleTitle, text),
+    text,
+    folder,
+    autoSave: settings.speechifyAutoSave !== false
+  });
+
+  if (!response?.ok) {
+    throw new Error(response?.error || "Could not create Speechify text file.");
+  }
+
+  return response.result;
+}
+
+async function openChatGptAndFill(settings, packageText, articleTitle = "") {
   const url = settings.chatgptUrl || DEFAULTS.chatgptUrl;
   if (!/^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(url)) {
     throw new Error("ChatGPT URL must start with https://chatgpt.com/ or https://chat.openai.com/");
@@ -265,8 +365,7 @@ async function openChatGptAndFill(settings, packageText) {
     files: ["chatgpt-paster.js"]
   });
 
-  const response = await sendChatGptFillMessage(tab.id, composerText, settings);
-  await chrome.tabs.update(tab.id, { active: true });
+  const response = await sendChatGptFillMessage(tab.id, composerText, settings, articleTitle);
 
   if (!response?.ok) {
     throw new Error(response?.error || "Could not fill ChatGPT composer.");
@@ -356,6 +455,7 @@ async function run() {
     }
 
     let chatgptLine = "ChatGPT opening disabled.";
+    let speechifyLine = "Speechify disabled.";
     if (settings.openChatGPT) {
       setStatus(
         settings.autoSubmitChatGPT
@@ -363,11 +463,22 @@ async function run() {
           : "Opening ChatGPT project and filling message box..."
       );
       try {
-        const fillResponse = await openChatGptAndFill(settings, response.output);
+        const fillResponse = await openChatGptAndFill(
+          settings,
+          response.output,
+          response.meta?.title || ""
+        );
         if (settings.autoSubmitChatGPT) {
           if (fillResponse.assistantText) {
             await copyText(fillResponse.assistantText);
             chatgptLine = `Submitted and copied final ChatGPT response (${fillResponse.assistantChars} chars).`;
+            if (fillResponse.speechify?.ok) {
+              speechifyLine = `Created Speechify file: ${fillResponse.speechify.result?.title || "untitled"}.`;
+            } else if (fillResponse.speechify?.error) {
+              speechifyLine = `Speechify failed; final response remains on clipboard. ${fillResponse.speechify.error}`;
+            } else if (settings.autoSendToSpeechify) {
+              speechifyLine = "Speechify was requested, but no Speechify result was returned.";
+            }
           } else {
             chatgptLine = "Submitted to ChatGPT, but no assistant response text was returned.";
           }
@@ -389,7 +500,8 @@ async function run() {
         `Cases/groups: ${(meta.cases || []).map((g) => `[${g.join(",")}]`).join(" ") || "none"}`,
         `Characters: ${meta.outputChars || response.output.length}`,
         downloadLine,
-        chatgptLine
+        chatgptLine,
+        speechifyLine
       ].join("\n")
     );
   } catch (error) {
@@ -422,6 +534,14 @@ async function init() {
   $("autoSubmitChatGPT").addEventListener("change", async () => {
     if ($("autoSubmitChatGPT").checked) {
       $("openChatGPT").checked = true;
+    }
+    await saveForm();
+  });
+
+  $("autoSendToSpeechify").addEventListener("change", async () => {
+    if ($("autoSendToSpeechify").checked) {
+      $("openChatGPT").checked = true;
+      $("autoSubmitChatGPT").checked = true;
     }
     await saveForm();
   });
