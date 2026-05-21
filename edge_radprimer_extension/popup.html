@@ -78,6 +78,10 @@
           <input id="keepCaptionHtml" type="checkbox" checked>
           Keep arrow HTML in captions
         </label>
+        <label class="check">
+          <input id="autoGroupNonNarrative" type="checkbox" checked>
+          Auto-group card modes before final run
+        </label>
       </section>
 
       <section class="panel">
@@ -87,7 +91,7 @@
         </label>
         <label class="check">
           <input id="autoSubmitChatGPT" type="checkbox">
-          Submit, wait, and copy final response
+          Submit automatically
         </label>
         <label>
           Project URL
@@ -106,20 +110,17 @@
       <section class="panel">
         <label class="check">
           <input id="autoSendToSpeechify" type="checkbox">
-          Send final ChatGPT response to Speechify
+          Send narrative response to Speechify
         </label>
         <label class="check">
           <input id="speechifyAutoSave" type="checkbox">
           Auto-save Speechify text file
         </label>
         <label>
-          Speechify folder name
-          <input id="speechifyFolderName" type="text" placeholder="Musculoskeletal">
+          Speechify folder link
+          <input id="speechifyFolderUrl" type="text" placeholder="https://app.speechify.com/?folder=...">
         </label>
-        <label>
-          Speechify folder ID
-          <input id="speechifyFolderId" type="text" placeholder="folder UUID">
-        </label>
+        <p class="muted">Speechify is used only for Normal Narrative, Normal Narrative + image downloads, and Pathology Narrative.</p>
       </section>
 
       <button id="run">Extract + copy prompt package</button>

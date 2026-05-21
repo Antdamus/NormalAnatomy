@@ -3,7 +3,16 @@
   "name": "RadPrimer Prompt Runner",
   "version": "0.1.0",
   "description": "Extract RadPrimer articles and build Normal or Pathology prompt packages from Edge.",
-  "permissions": ["activeTab", "scripting", "downloads", "clipboardWrite", "storage", "tabs"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "clipboardWrite",
+    "clipboardRead",
+    "storage",
+    "tabs",
+    "windows"
+  ],
   "host_permissions": [
     "https://app.radprimer.com/*",
     "https://chatgpt.com/*",
@@ -18,6 +27,11 @@
     "service_worker": "service_worker.js"
   },
   "content_scripts": [
+    {
+      "matches": ["https://app.radprimer.com/*"],
+      "js": ["radprimer-run-button.js"],
+      "run_at": "document_idle"
+    },
     {
       "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
       "js": ["chatgpt-draft-guard.js"],

@@ -111,6 +111,48 @@
     dispatchEditorInput(editor);
   };
 
+  const insertTextDomFallback = (editor, text) => {
+    editor.focus();
+    const selection = window.getSelection();
+    let range = selection?.rangeCount ? selection.getRangeAt(0) : null;
+
+    if (!range || !editor.contains(range.commonAncestorContainer)) {
+      range = document.createRange();
+      range.selectNodeContents(editor);
+      range.collapse(false);
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+    }
+
+    const fragment = document.createDocumentFragment();
+    const parts = String(text || "").split("\n");
+    let lastNode = null;
+
+    parts.forEach((part, index) => {
+      if (part) {
+        const node = document.createTextNode(part);
+        fragment.appendChild(node);
+        lastNode = node;
+      }
+      if (index < parts.length - 1) {
+        const br = document.createElement("br");
+        fragment.appendChild(br);
+        lastNode = br;
+      }
+    });
+
+    range.deleteContents();
+    range.insertNode(fragment);
+
+    if (lastNode) {
+      const after = document.createRange();
+      after.setStartAfter(lastNode);
+      after.collapse(true);
+      selection?.removeAllRanges();
+      selection?.addRange(after);
+    }
+  };
+
   const insertIntoContentEditable = async (editor, text) => {
     editor.focus();
     const chunkSize = 15000;
@@ -128,7 +170,7 @@
       }
 
       if (!inserted) {
-        editor.textContent = `${editor.textContent || ""}${chunk}`;
+        insertTextDomFallback(editor, chunk);
       }
 
       dispatchEditorInput(editor, chunk);
@@ -351,6 +393,17 @@
     const includeIndex = value.search(/(^|\n)\s*INCLUDE\s*=\s*\[[^\n]*/);
     if (includeIndex < 0) return value.trim();
 
+    const beforeInclude = value
+      .slice(0, includeIndex)
+      .replace(/```(?:text|javascript)?/gi, "")
+      .trim();
+    const hasCaseMap = /CASE_MAP\s*=\s*\[/i.test(value.slice(includeIndex));
+
+    // Grouping preflight responses are only the audit block. Preserve them.
+    // Full narratives include the same block at the end, where it should be
+    // stripped before clipboard/Speechify delivery.
+    if (!beforeInclude && hasCaseMap) return value.trim();
+
     return value
       .slice(0, includeIndex)
       .replace(/\n?```(?:text|javascript)?\s*$/i, "")
@@ -428,8 +481,41 @@
     return rows.filter(Boolean).join("\n");
   };
 
+  const collectTextWithBreaks = (node) => {
+    if (!node) return "";
+    if (node.nodeType === Node.TEXT_NODE) return node.textContent || "";
+    if (node.nodeType !== Node.ELEMENT_NODE) return "";
+
+    const tag = node.tagName;
+    if (tag === "BR") return "\n";
+
+    const isLine =
+      node.classList?.contains("cm-line") ||
+      node.getAttribute("role") === "presentation" ||
+      node.matches?.(".cm-line");
+
+    let text = "";
+    for (const child of node.childNodes || []) {
+      text += collectTextWithBreaks(child);
+    }
+
+    if (isLine && !text.endsWith("\n")) text += "\n";
+    return text;
+  };
+
   const serializePre = (preEl) => {
-    const code = preEl.querySelector("code") || preEl.querySelector(".cm-content") || preEl;
+    const cmLines = Array.from(preEl.querySelectorAll(".cm-line"));
+    if (cmLines.length) {
+      return cmLines
+        .map((line) => collectTextWithBreaks(line).replace(/\n+$/g, ""))
+        .join("\n")
+        .replace(/\u00a0/g, " ")
+        .trimEnd();
+    }
+
+    const code = preEl.querySelector(".cm-content") || preEl.querySelector("code") || preEl;
+    const withBreaks = collectTextWithBreaks(code).replace(/\u00a0/g, " ").trimEnd();
+    if (withBreaks.includes("\n")) return withBreaks;
     return String(code.innerText || code.textContent || "").replace(/\u00a0/g, " ").trimEnd();
   };
 
@@ -521,7 +607,43 @@
     };
   };
 
-  const waitForFinalAssistantResponse = async ({ timeoutMs, stableMs }) => {
+  const readClipboardText = async () => {
+    try {
+      if (!navigator.clipboard?.readText) return "";
+      return await navigator.clipboard.readText();
+    } catch {
+      return "";
+    }
+  };
+
+  const extractViaNativeCopyButton = async (latestTurn, fallbackText) => {
+    const button = latestTurn?.querySelector(SELECTORS.copyResponseButton);
+    if (!button || !isVisible(button)) return "";
+
+    const before = await readClipboardText();
+    try {
+      clickLikeUser(button);
+    } catch {
+      try {
+        button.click();
+      } catch {
+        return "";
+      }
+    }
+
+    await sleep(700);
+    const copied = await readClipboardText();
+    const text = normalizeExtractedText(copied);
+    if (!text) return "";
+
+    const fallbackLength = String(fallbackText || "").length;
+    const beforeLooksDifferent = !before || normalizeExtractedText(before) !== text;
+    const lengthLooksPlausible = !fallbackLength || text.length >= Math.min(500, fallbackLength * 0.5);
+
+    return beforeLooksDifferent && lengthLooksPlausible ? text : "";
+  };
+
+  const waitForFinalAssistantResponse = async ({ timeoutMs, stableMs, stripAuditBlock = true }) => {
     const start = Date.now();
     let lastText = "";
     let lastChangedAt = Date.now();
@@ -549,7 +671,12 @@
         sendProgress("RESPONSE_STABLE_WAIT", "Response is stable. Capturing final text...");
         await sleep(500);
         const finalResult = extractLatestAssistantText();
-        const cleanedText = stripTrailingImageAuditBlock(finalResult.text || text);
+        const nativeCopiedText = await extractViaNativeCopyButton(
+          finalResult.latestTurn || latestTurn,
+          finalResult.text || text
+        );
+        const rawText = nativeCopiedText || finalResult.text || text;
+        const cleanedText = stripAuditBlock ? stripTrailingImageAuditBlock(rawText) : rawText.trim();
         return {
           text: cleanedText,
           partial: false
@@ -560,7 +687,10 @@
     }
 
     if (lastText) {
-      return { text: stripTrailingImageAuditBlock(lastText), partial: true };
+      return {
+        text: stripAuditBlock ? stripTrailingImageAuditBlock(lastText) : lastText.trim(),
+        partial: true
+      };
     }
 
     throw new Error("Timed out waiting for assistant response.");
@@ -596,6 +726,30 @@
         resolve(response || { ok: false, error: "No Speechify response returned." });
       });
     });
+  };
+
+  const activateCurrentTab = () => {
+    return new Promise((resolve) => {
+      chrome.runtime.sendMessage({ type: "ACTIVATE_SENDER_TAB" }, (response) => {
+        const err = chrome.runtime.lastError;
+        if (err) {
+          resolve({ ok: false, error: err.message });
+          return;
+        }
+        resolve(response || { ok: false });
+      });
+    });
+  };
+
+  const sendCompletionMessage = (type, payload, result) => {
+    if (!type) return;
+    try {
+      chrome.runtime.sendMessage({
+        type,
+        completionPayload: payload || null,
+        result: result || null
+      });
+    } catch {}
   };
 
   const downloadTextFile = (text, filename) => {
@@ -711,7 +865,14 @@
     }
   };
 
-  const runPrompt = async ({ promptText, autoSubmit, waitForResult, timeoutMs, speechify }) => {
+  const runPrompt = async ({
+    promptText,
+    autoSubmit,
+    waitForResult,
+    timeoutMs,
+    speechify,
+    preserveAuditBlock
+  }) => {
     sendProgress("WAITING_FOR_COMPOSER", "Waiting for ChatGPT composer...");
     const editor = await waitForComposerEditor();
     if (!editor) throw new Error("Login required or ChatGPT composer not available.");
@@ -746,13 +907,15 @@
 
     sendProgress("SENDING", "Submitting prompt...");
     await submitPrompt(editor);
+    await activateCurrentTab();
     if (!waitForResult) {
       return { chars: promptText.length, submitted: true };
     }
 
     const result = await waitForFinalAssistantResponse({
       timeoutMs,
-      stableMs: 3000
+      stableMs: 3000,
+      stripAuditBlock: !preserveAuditBlock
     });
 
     sendProgress("COPYING", "Copying final response to clipboard...");
@@ -798,13 +961,40 @@
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message?.type !== "CHATGPT_FILL_COMPOSER") return false;
 
+    if (message.backgroundRun) {
+      runPrompt({
+        promptText: String(message.text || ""),
+        autoSubmit: Boolean(message.autoSubmit),
+        waitForResult: Boolean(message.waitForResult),
+        timeoutMs: Math.max(30000, Number(message.timeoutMs || 900000)),
+        speechify: message.speechify || null,
+        preserveAuditBlock: Boolean(message.preserveAuditBlock)
+      })
+        .then((result) => {
+          sendCompletionMessage(message.completionMessageType, message.completionPayload, result);
+        })
+        .catch((error) => {
+          createOrUpdateOverlay({
+            phase: "ERROR",
+            error: String(error?.message || error)
+          });
+          sendCompletionMessage(message.completionMessageType, message.completionPayload, {
+            ok: false,
+            error: String(error?.message || error)
+          });
+        });
+      sendResponse({ ok: true, started: true });
+      return false;
+    }
+
     (async () => {
       const result = await runPrompt({
         promptText: String(message.text || ""),
         autoSubmit: Boolean(message.autoSubmit),
         waitForResult: Boolean(message.waitForResult),
         timeoutMs: Math.max(30000, Number(message.timeoutMs || 900000)),
-        speechify: message.speechify || null
+        speechify: message.speechify || null,
+        preserveAuditBlock: Boolean(message.preserveAuditBlock)
       });
       sendResponse({ ok: true, ...result });
     })().catch((error) => {

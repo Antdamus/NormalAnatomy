@@ -64,8 +64,9 @@
     }
     if (raw === "none" || !raw) return [];
 
-    const nums = raw
-      .split(/[,\s]+/)
+    const includeMatch = raw.match(/include\s*=\s*\[([\s\S]*?)\]/i);
+    const numberSource = includeMatch ? includeMatch[1] : raw;
+    const nums = (numberSource.match(/\d+/g) || [])
       .map((x) => parseInt(x, 10))
       .filter((n) => Number.isFinite(n) && n >= 1 && n <= maxN);
 
@@ -75,7 +76,21 @@
 
   const parseCaseMap = (value) => {
     if (Array.isArray(value)) return value;
-    return String(value || "")
+    const raw = String(value || "");
+    const caseStart = raw.search(/case_map\s*=/i);
+    if (caseStart >= 0 || raw.includes("[[")) {
+      const source = caseStart >= 0 ? raw.slice(caseStart) : raw;
+      const groups = (source.match(/\[[^\[\]]+\]/g) || [])
+        .map((group) =>
+          (group.match(/\d+/g) || [])
+            .map((n) => parseInt(n, 10))
+            .filter((n) => Number.isFinite(n))
+        )
+        .filter((group) => group.length >= 2);
+      if (groups.length) return groups;
+    }
+
+    return raw
       .split(";")
       .map((group) =>
         group

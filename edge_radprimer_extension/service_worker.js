@@ -1,9 +1,143 @@
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const PROMPT_FILES = {
+  pathology: {
+    chatgpt_cards: "prompts/pathology_chatgpt_cards.txt",
+    codex_cards: "prompts/pathology_codex_cards.txt",
+    narrative: "prompts/pathology_narrative.txt"
+  },
+  normal: {
+    chatgpt_cards: "prompts/normal_chatgpt_cards.txt",
+    codex_cards: "prompts/normal_codex_cards.txt",
+    narrative: "prompts/normal_narrative.txt",
+    narrative_with_images: "prompts/normal_narrative.txt",
+    no_pictures: "prompts/normal_no_pictures.txt",
+    captions_only: "prompts/normal_captions_only.txt"
+  }
+};
+
+const GROUPING_PREFLIGHT_PROMPT = "prompts/grouping_preflight.txt";
+const PENDING_GROUPING_PREFIX = "radprimerGroupingPending:";
+
+const DEFAULTS = {
+  engine: "pathology",
+  mode: "chatgpt_cards",
+  include: "all",
+  caseMap: "",
+  coreGap: false,
+  coreSection: "it might be in multiple regions of the book so you are going to have to look through it",
+  corePages: "",
+  sourceNote: "",
+  coreNote: "",
+  downloadImages: true,
+  downloadPlain: true,
+  downloadAnnotated: true,
+  keepCaptionHtml: true,
+  autoGroupNonNarrative: true,
+  openChatGPT: false,
+  autoSubmitChatGPT: false,
+  chatgptUrl: "https://chatgpt.com/g/g-p-69e5418624448191a7a74b18f607688b-pediatrics/project",
+  chatgptInstruction: "make sure you do not truncate the text and read the entire message",
+  chatgptTimeoutSec: "900",
+  autoSendToSpeechify: true,
+  speechifyAutoSave: true,
+  speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
+  speechifyFolderName: "Musculoskeletal",
+  speechifyFolderId: "c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
+  speechifyFolderChain: [
+    {
+      name: "Pediatric",
+      id: "e8b38956-af1b-4a58-a31a-8040936033ff"
+    },
+    {
+      name: "Musculoskeletal",
+      id: "c00e2ad9-89b5-4829-9884-cde0dc8b82a7"
+    }
+  ]
+};
+
 function buildSpeechifyFolderUrl(folderId) {
   const url = new URL("https://app.speechify.com/");
   if (folderId) url.searchParams.set("folder", folderId);
   return url.toString();
+}
+
+function parseSpeechifyFolderUrl(rawValue) {
+  const raw = String(rawValue || "").trim();
+  if (!raw) return { url: DEFAULTS.speechifyFolderUrl, id: DEFAULTS.speechifyFolderId };
+  const url = new URL(raw);
+  if (url.hostname !== "app.speechify.com") {
+    throw new Error("Speechify folder link must start with https://app.speechify.com/");
+  }
+  const id = url.searchParams.get("folder") || "";
+  if (!id) throw new Error("Speechify folder link must include a ?folder=... value.");
+  return { url: buildSpeechifyFolderUrl(id), id };
+}
+
+function normalizeSettings(rawSettings = {}) {
+  const settings = { ...DEFAULTS, ...rawSettings };
+  const folder = parseSpeechifyFolderUrl(
+    settings.speechifyFolderUrl || buildSpeechifyFolderUrl(settings.speechifyFolderId)
+  );
+  settings.speechifyFolderUrl = folder.url;
+  settings.speechifyFolderId = folder.id;
+  settings.speechifyFolderName = "";
+
+  if (settings.autoSendToSpeechify) {
+    settings.openChatGPT = true;
+    settings.autoSubmitChatGPT = true;
+  }
+
+  return settings;
+}
+
+function isNarrativeSpeechifyMode(settings) {
+  if (!settings) return false;
+  if (settings.engine === "pathology") return settings.mode === "narrative";
+  if (settings.engine === "normal") {
+    return settings.mode === "narrative" || settings.mode === "narrative_with_images";
+  }
+  return false;
+}
+
+async function loadRunnerSettings() {
+  const stored = await chrome.storage.local.get("radprimerRunnerSettings");
+  return normalizeSettings(stored.radprimerRunnerSettings || {});
+}
+
+async function loadPrompt(engine, mode) {
+  const file = PROMPT_FILES[engine]?.[mode];
+  if (!file) throw new Error(`No packaged prompt for ${engine}/${mode}`);
+  const response = await fetch(chrome.runtime.getURL(file));
+  if (!response.ok) throw new Error(`Could not load ${file}`);
+  return response.text();
+}
+
+async function loadGroupingPreflightPrompt() {
+  const response = await fetch(chrome.runtime.getURL(GROUPING_PREFLIGHT_PROMPT));
+  if (!response.ok) throw new Error(`Could not load ${GROUPING_PREFLIGHT_PROMPT}`);
+  return response.text();
+}
+
+function sendTabMessage(tabId, message) {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.sendMessage(tabId, message, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+async function sendPageStatus(tabId, phase, message, extra = {}) {
+  try {
+    await sendTabMessage(tabId, {
+      type: "RADPRIMER_PAGE_RUN_STATUS",
+      phase,
+      message,
+      ...extra
+    });
+  } catch {}
 }
 
 function waitForTabComplete(tabId, timeoutMs = 60000, label = "tab") {
@@ -111,6 +245,406 @@ async function createSpeechifyLectureFromChatGPT({ title, text, folder, autoSave
   return response.result;
 }
 
+async function ensureRadPrimerExtractor(tabId) {
+  await chrome.scripting.executeScript({
+    target: { tabId },
+    files: ["content-extractor.js"]
+  });
+}
+
+async function extractRadPrimerArticle(tabId, settings, promptText) {
+  await ensureRadPrimerExtractor(tabId);
+  const response = await sendTabMessage(tabId, {
+    type: "RADPRIMER_EXTRACT",
+    config: {
+      ...settings,
+      promptText,
+      forceCaseLabels: settings.engine === "normal" && settings.mode === "chatgpt_cards"
+    }
+  });
+  if (!response?.ok) throw new Error(response?.error || "Extraction failed.");
+  return response;
+}
+
+async function downloadSelectedImages(files) {
+  const list = Array.isArray(files) ? files : [];
+  for (const file of list) {
+    if (!file?.url || !file?.filename) continue;
+    await chrome.downloads.download({
+      url: file.url,
+      filename: file.filename,
+      saveAs: false
+    });
+    await sleep(250);
+  }
+  return list.length;
+}
+
+async function installChatGptDraftQuotaGuard(tabId) {
+  await chrome.scripting.executeScript({
+    target: { tabId },
+    world: "MAIN",
+    func: () => {
+      const guardKey = "__radprimerConversationDraftQuotaGuard";
+      if (window[guardKey]) return;
+      window[guardKey] = true;
+
+      try {
+        localStorage.removeItem("oai/apps/conversationDrafts");
+      } catch {}
+
+      const originalSetItem = Storage.prototype.setItem;
+      Storage.prototype.setItem = function patchedSetItem(key, value) {
+        const keyText = String(key || "");
+        const isChatGptDraft =
+          keyText === "oai/apps/conversationDrafts" ||
+          keyText.includes("conversationDrafts");
+
+        if (isChatGptDraft) {
+          try {
+            return originalSetItem.call(this, key, value);
+          } catch (error) {
+            if (
+              error?.name === "QuotaExceededError" ||
+              String(error?.message || "").includes("quota")
+            ) {
+              console.warn(
+                "[RadPrimer Runner] Suppressed ChatGPT draft localStorage quota error for long automated prompt."
+              );
+              return;
+            }
+            throw error;
+          }
+        }
+
+        return originalSetItem.call(this, key, value);
+      };
+    }
+  });
+}
+
+function makeSpeechifyTitleFromText(text) {
+  const lines = String(text || "")
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  let title = lines[0] || "ChatGPT Lecture";
+  title = title.replace(/^#+\s*/, "").replace(/^Title:\s*/i, "").trim();
+  if (title.length > 100) title = title.slice(0, 100).trim();
+  return title || "ChatGPT Lecture";
+}
+
+function buildSpeechifyTitle(articleTitle, text) {
+  if (articleTitle?.trim()) return articleTitle.trim().slice(0, 100);
+  return makeSpeechifyTitleFromText(text);
+}
+
+function buildSpeechifyPayload(settings, articleTitle) {
+  if (
+    !settings.autoSendToSpeechify ||
+    !settings.autoSubmitChatGPT ||
+    !isNarrativeSpeechifyMode(settings)
+  ) {
+    return null;
+  }
+
+  return {
+    title: buildSpeechifyTitle(articleTitle, ""),
+    folder: {
+      name: settings.speechifyFolderName || "",
+      id: settings.speechifyFolderId || DEFAULTS.speechifyFolderId,
+      parentChain: settings.speechifyFolderChain || DEFAULTS.speechifyFolderChain
+    },
+    autoSave: settings.speechifyAutoSave !== false
+  };
+}
+
+function buildChatGptComposerText(settings, packageText) {
+  const instruction = settings.chatgptInstruction || DEFAULTS.chatgptInstruction;
+  return `${instruction}\n\n${packageText}`;
+}
+
+async function openChatGptAndStart(settings, packageText, articleTitle, options = {}) {
+  const url = settings.chatgptUrl || DEFAULTS.chatgptUrl;
+  if (!/^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(url)) {
+    throw new Error("ChatGPT URL must start with https://chatgpt.com/ or https://chat.openai.com/");
+  }
+
+  const composerText = buildChatGptComposerText(settings, packageText);
+  const tab = await chrome.tabs.create({ url, active: false });
+
+  await waitForTabComplete(tab.id, 45000, "ChatGPT");
+  await installChatGptDraftQuotaGuard(tab.id);
+  await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ["chatgpt-paster.js"]
+  });
+
+  const response = await sendTabMessage(tab.id, {
+    type: "CHATGPT_FILL_COMPOSER",
+    text: composerText,
+    autoSubmit: Boolean(settings.autoSubmitChatGPT),
+    waitForResult: Boolean(
+      options.waitForResult ?? (settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings))
+    ),
+    timeoutMs: Math.max(30, parseInt(settings.chatgptTimeoutSec || "900", 10) || 900) * 1000,
+    speechify: options.speechify === undefined ? buildSpeechifyPayload(settings, articleTitle) : options.speechify,
+    backgroundRun: options.backgroundRun !== false,
+    preserveAuditBlock: Boolean(options.preserveAuditBlock),
+    completionMessageType: options.completionMessageType,
+    completionPayload: options.completionPayload || null
+  });
+
+  if (!response?.ok) throw new Error(response?.error || "Could not start ChatGPT workflow.");
+  return response;
+}
+
+function isNonNarrativeMode(settings) {
+  return Boolean(settings) && !isNarrativeSpeechifyMode(settings);
+}
+
+function parseCaseMapGroups(value) {
+  return String(value || "")
+    .split(";")
+    .map((group) =>
+      group
+        .split(/[,\s]+/)
+        .map((n) => parseInt(n, 10))
+        .filter((n) => Number.isFinite(n))
+    )
+    .filter((group) => group.length >= 2);
+}
+
+function shouldRunGroupingPreflight(settings) {
+  if (!settings?.autoGroupNonNarrative) return false;
+  if (!settings.openChatGPT || !settings.autoSubmitChatGPT) return false;
+  if (!isNonNarrativeMode(settings)) return false;
+  if (settings.engine === "normal" && settings.mode === "no_pictures") return false;
+  if (String(settings.include || "").trim().toLowerCase() === "none") return false;
+  return parseCaseMapGroups(settings.caseMap).length === 0;
+}
+
+function parseNumberArray(raw) {
+  return String(raw || "")
+    .match(/\d+/g)
+    ?.map((n) => parseInt(n, 10))
+    .filter((n) => Number.isFinite(n)) || [];
+}
+
+function parseGroupingAudit(text) {
+  const value = String(text || "");
+  const includeMatch = value.match(/INCLUDE\s*=\s*\[([\s\S]*?)\]/i);
+  if (!includeMatch) throw new Error("Grouping result did not include an INCLUDE array.");
+
+  const include = parseNumberArray(includeMatch[1]);
+  if (!include.length) throw new Error("Grouping INCLUDE array was empty.");
+
+  const caseStart = value.search(/CASE_MAP\s*=/i);
+  let caseMap = [];
+  if (caseStart >= 0) {
+    const afterCase = value.slice(caseStart);
+    const outerStart = afterCase.indexOf("[");
+    if (outerStart >= 0) {
+      let depth = 0;
+      let outerEnd = -1;
+      for (let i = outerStart; i < afterCase.length; i += 1) {
+        const ch = afterCase[i];
+        if (ch === "[") depth += 1;
+        if (ch === "]") {
+          depth -= 1;
+          if (depth === 0) {
+            outerEnd = i;
+            break;
+          }
+        }
+      }
+      const rawCaseMap = outerEnd >= 0 ? afterCase.slice(outerStart, outerEnd + 1) : "";
+      const groupMatches = rawCaseMap.match(/\[[^\[\]]+\]/g) || [];
+      caseMap = groupMatches.map(parseNumberArray).filter((group) => group.length >= 2);
+    }
+  }
+
+  const includeText = include.join(",");
+  const caseMapText = caseMap.map((group) => group.join(",")).join("; ");
+
+  return {
+    include,
+    caseMap,
+    includeText,
+    caseMapText
+  };
+}
+
+async function savePendingGroupingRun(pendingId, payload) {
+  await chrome.storage.local.set({ [`${PENDING_GROUPING_PREFIX}${pendingId}`]: payload });
+}
+
+async function takePendingGroupingRun(pendingId) {
+  const key = `${PENDING_GROUPING_PREFIX}${pendingId}`;
+  const stored = await chrome.storage.local.get(key);
+  return stored[key] || null;
+}
+
+async function clearPendingGroupingRun(pendingId) {
+  await chrome.storage.local.remove(`${PENDING_GROUPING_PREFIX}${pendingId}`);
+}
+
+async function runFinalCardModeAfterGrouping(pending, groupingText) {
+  const grouping = parseGroupingAudit(groupingText);
+  const settings = {
+    ...pending.settings,
+    include: grouping.includeText,
+    caseMap: grouping.caseMapText,
+    autoSendToSpeechify: false
+  };
+
+  await chrome.storage.local.set({ radprimerRunnerSettings: settings });
+
+  const radPrimerTabId = pending.radPrimerTabId;
+  await sendPageStatus(
+    radPrimerTabId,
+    "Grouping",
+    `Applied grouping: INCLUDE = [${grouping.includeText}] | CASE_MAP = ${grouping.caseMapText || "[]"}.`
+  );
+
+  await chrome.tabs.update(radPrimerTabId, { active: true });
+  const radPrimerTab = await chrome.tabs.get(radPrimerTabId);
+  if (radPrimerTab?.windowId) await chrome.windows.update(radPrimerTab.windowId, { focused: true });
+
+  const promptText = await loadPrompt(settings.engine, settings.mode);
+  await sendPageStatus(radPrimerTabId, "Extracting", "Rebuilding final prompt package with grouped images...");
+  const extraction = await extractRadPrimerArticle(radPrimerTabId, settings, promptText);
+
+  if (settings.downloadImages && extraction.downloadFiles?.length) {
+    await sendPageStatus(radPrimerTabId, "Images", "Downloading grouped image files...");
+    const count = await downloadSelectedImages(extraction.downloadFiles);
+    await sendPageStatus(radPrimerTabId, "Images", `Downloaded ${count} image file(s).`);
+  }
+
+  await sendPageStatus(radPrimerTabId, "ChatGPT", "Opening ChatGPT with the final card prompt...");
+  await openChatGptAndStart(settings, extraction.output, extraction.meta?.title || "", {
+    waitForResult: false,
+    speechify: null
+  });
+
+  await sendPageStatus(radPrimerTabId, "Sent", "Grouped card-mode prompt sent to ChatGPT.", {
+    done: true
+  });
+}
+
+async function runRadPrimerFromPage(tab) {
+  if (!tab?.id || !/^https:\/\/app\.radprimer\.com\//.test(tab.url || "")) {
+    throw new Error("Open a RadPrimer article page first.");
+  }
+
+  await sendPageStatus(tab.id, "Loading", "Loading saved runner settings...");
+  const settings = await loadRunnerSettings();
+
+  await sendPageStatus(tab.id, "Prompt", `Loading ${settings.engine}/${settings.mode} prompt...`);
+  const promptText = await loadPrompt(settings.engine, settings.mode);
+
+  await sendPageStatus(tab.id, "Extracting", "Extracting article and image captions...");
+  const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+
+  if (settings.downloadImages && extraction.downloadFiles?.length) {
+    await sendPageStatus(tab.id, "Images", "Downloading selected image files...");
+    const count = await downloadSelectedImages(extraction.downloadFiles);
+    await sendPageStatus(tab.id, "Images", `Downloaded ${count} image file(s).`);
+  }
+
+  if (!settings.openChatGPT) {
+    await sendPageStatus(
+      tab.id,
+      "Done",
+      "Extraction complete. ChatGPT opening is disabled in saved settings.",
+      { done: true }
+    );
+    return {
+      message: "Extraction complete. ChatGPT opening is disabled in saved settings."
+    };
+  }
+
+  if (shouldRunGroupingPreflight(settings) && extraction.meta?.totalImagesOnPage > 1) {
+    await sendPageStatus(
+      tab.id,
+      "Grouping",
+      "Running image-grouping preflight before the card prompt..."
+    );
+
+    const groupingPromptText = await loadGroupingPreflightPrompt();
+    const groupingSettings = {
+      ...settings,
+      mode: "grouping_preflight",
+      promptText: groupingPromptText,
+      include: settings.include || "all",
+      caseMap: "",
+      downloadImages: false,
+      autoSendToSpeechify: false
+    };
+    const groupingExtraction = await extractRadPrimerArticle(tab.id, groupingSettings, groupingPromptText);
+    const pendingId = crypto.randomUUID();
+    await savePendingGroupingRun(pendingId, {
+      radPrimerTabId: tab.id,
+      settings,
+      articleTitle: extraction.meta?.title || "",
+      createdAt: Date.now()
+    });
+
+    await openChatGptAndStart(
+      {
+        ...settings,
+        autoSubmitChatGPT: true,
+        autoSendToSpeechify: false
+      },
+      groupingExtraction.output,
+      groupingExtraction.meta?.title || "",
+      {
+        waitForResult: true,
+        speechify: null,
+        preserveAuditBlock: true,
+        completionMessageType: "RADPRIMER_GROUPING_PREFLIGHT_DONE",
+        completionPayload: { pendingId, radPrimerTabId: tab.id }
+      }
+    );
+
+    await sendPageStatus(
+      tab.id,
+      "Grouping",
+      "Grouping preflight sent to ChatGPT. The final card prompt will run automatically after the grouping result is captured.",
+      { done: true }
+    );
+
+    return {
+      message:
+        "Grouping preflight sent to ChatGPT. The final card prompt will run automatically after the grouping result is captured."
+    };
+  }
+
+  const willWaitForNarrative = settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings);
+  await sendPageStatus(
+    tab.id,
+    "ChatGPT",
+    willWaitForNarrative
+      ? "Opening ChatGPT and starting the narrative job..."
+      : "Opening ChatGPT, focusing it, and sending the prompt..."
+  );
+  await openChatGptAndStart(settings, extraction.output, extraction.meta?.title || "");
+  await sendPageStatus(
+    tab.id,
+    "Sent",
+    willWaitForNarrative
+      ? "Sent to ChatGPT. The ChatGPT tab will capture the narrative and send it to Speechify if enabled."
+      : "Sent to ChatGPT. This mode stops after submission.",
+    { done: true }
+  );
+
+  return {
+    message: willWaitForNarrative
+      ? "Sent to ChatGPT. The ChatGPT tab will capture the narrative and send it to Speechify if enabled."
+      : "Sent to ChatGPT. This mode stops after submission."
+  };
+}
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "DOWNLOAD_IMAGES") {
     (async () => {
@@ -137,6 +671,81 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const result = await createSpeechifyLectureFromChatGPT(message.payload || {});
       sendResponse({ ok: true, result });
     })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "ACTIVATE_SENDER_TAB") {
+    (async () => {
+      const tabId = _sender?.tab?.id;
+      const windowId = _sender?.tab?.windowId;
+      if (!tabId) throw new Error("No sender tab available to activate.");
+      await chrome.tabs.update(tabId, { active: true });
+      if (windowId) await chrome.windows.update(windowId, { focused: true });
+      sendResponse({ ok: true });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RUN_RADPRIMER_FROM_PAGE") {
+    (async () => {
+      const tab = _sender?.tab;
+      const result = await runRadPrimerFromPage(tab);
+      sendResponse({ ok: true, ...result });
+    })().catch(async (error) => {
+      const tabId = _sender?.tab?.id;
+      if (tabId) {
+        await sendPageStatus(tabId, "Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RUN_RADPRIMER_FROM_TAB_ID") {
+    (async () => {
+      const tabId = message.tabId;
+      if (!tabId) throw new Error("No RadPrimer tab id was provided.");
+      const tab = await chrome.tabs.get(tabId);
+      const result = await runRadPrimerFromPage(tab);
+      sendResponse({ ok: true, ...result });
+    })().catch(async (error) => {
+      const tabId = message.tabId;
+      if (tabId) {
+        await sendPageStatus(tabId, "Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RADPRIMER_GROUPING_PREFLIGHT_DONE") {
+    (async () => {
+      const pendingId = message.completionPayload?.pendingId;
+      if (!pendingId) throw new Error("Missing grouping preflight pending id.");
+      const pending = await takePendingGroupingRun(pendingId);
+      if (!pending) throw new Error("Could not find pending RadPrimer grouping run.");
+      await runFinalCardModeAfterGrouping(pending, message.result?.assistantText || "");
+      await clearPendingGroupingRun(pendingId);
+      sendResponse({ ok: true });
+    })().catch(async (error) => {
+      const tabId = message.completionPayload?.radPrimerTabId;
+      if (tabId) {
+        await sendPageStatus(tabId, "Grouping Error", String(error?.message || error), {
+          error: true
+        });
+      }
       sendResponse({ ok: false, error: String(error?.message || error) });
     });
 

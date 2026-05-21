@@ -44,6 +44,7 @@ const DEFAULTS = {
   downloadPlain: true,
   downloadAnnotated: true,
   keepCaptionHtml: true,
+  autoGroupNonNarrative: true,
   openChatGPT: false,
   autoSubmitChatGPT: false,
   chatgptUrl: "https://chatgpt.com/g/g-p-69e5418624448191a7a74b18f607688b-pediatrics/project",
@@ -52,6 +53,7 @@ const DEFAULTS = {
   autoSendToSpeechify: true,
   speechifyAutoSave: true,
   speechifyAutoPlayAfterSave: false,
+  speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
   speechifyFolderName: "Musculoskeletal",
   speechifyFolderId: "c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
   speechifyFolderChain: [
@@ -82,6 +84,7 @@ const fields = [
   "downloadPlain",
   "downloadAnnotated",
   "keepCaptionHtml",
+  "autoGroupNonNarrative",
   "openChatGPT",
   "autoSubmitChatGPT",
   "chatgptUrl",
@@ -89,8 +92,7 @@ const fields = [
   "chatgptTimeoutSec",
   "autoSendToSpeechify",
   "speechifyAutoSave",
-  "speechifyFolderName",
-  "speechifyFolderId"
+  "speechifyFolderUrl"
 ];
 
 function setStatus(text) {
@@ -117,14 +119,114 @@ function syncPanels() {
   $("normalOptions").classList.toggle("hidden", engine !== "normal");
 }
 
+function buildSpeechifyFolderUrl(folderId) {
+  const url = new URL("https://app.speechify.com/");
+  if (folderId) url.searchParams.set("folder", folderId);
+  return url.toString();
+}
+
+function parseSpeechifyFolderUrl(rawValue) {
+  const raw = String(rawValue || "").trim();
+  if (!raw) {
+    return {
+      url: DEFAULTS.speechifyFolderUrl,
+      id: DEFAULTS.speechifyFolderId
+    };
+  }
+
+  const url = new URL(raw);
+  if (url.hostname !== "app.speechify.com") {
+    throw new Error("Speechify folder link must start with https://app.speechify.com/");
+  }
+
+  const id = url.searchParams.get("folder") || "";
+  if (!id) {
+    throw new Error("Speechify folder link must include a ?folder=... value.");
+  }
+
+  return {
+    url: buildSpeechifyFolderUrl(id),
+    id
+  };
+}
+
+function getStoredSpeechifyFolderUrl(values) {
+  if (values.speechifyFolderUrl) return values.speechifyFolderUrl;
+  if (values.speechifyFolderId) return buildSpeechifyFolderUrl(values.speechifyFolderId);
+  return DEFAULTS.speechifyFolderUrl;
+}
+
+function isNarrativeSpeechifyMode(settings) {
+  if (!settings) return false;
+  if (settings.engine === "pathology") return settings.mode === "narrative";
+  if (settings.engine === "normal") {
+    return settings.mode === "narrative" || settings.mode === "narrative_with_images";
+  }
+  return false;
+}
+
+function currentEngineMode() {
+  return {
+    engine: $("engine").value || DEFAULTS.engine,
+    mode: $("mode").value || DEFAULTS.mode
+  };
+}
+
+function syncSpeechifyAvailability() {
+  const eligible = isNarrativeSpeechifyMode(currentEngineMode());
+  $("autoSendToSpeechify").disabled = !eligible;
+  $("speechifyAutoSave").disabled = !eligible;
+  if (!eligible) {
+    $("autoSendToSpeechify").checked = false;
+    $("speechifyAutoSave").checked = false;
+  }
+}
+
+function parseCaseMapGroups(value) {
+  const raw = String(value || "");
+  if (raw.includes("[[")) {
+    return (raw.match(/\[[^\[\]]+\]/g) || [])
+      .map((group) =>
+        (group.match(/\d+/g) || [])
+          .map((n) => parseInt(n, 10))
+          .filter((n) => Number.isFinite(n))
+      )
+      .filter((group) => group.length >= 2);
+  }
+
+  return raw
+    .split(";")
+    .map((group) =>
+      group
+        .split(/[,\s]+/)
+        .map((n) => parseInt(n, 10))
+        .filter((n) => Number.isFinite(n))
+    )
+    .filter((group) => group.length >= 2);
+}
+
+function shouldDelegateGroupingPreflight(settings) {
+  if (!settings.autoGroupNonNarrative) return false;
+  if (!settings.openChatGPT || !settings.autoSubmitChatGPT) return false;
+  if (isNarrativeSpeechifyMode(settings)) return false;
+  if (settings.engine === "normal" && settings.mode === "no_pictures") return false;
+  if (String(settings.include || "").trim().toLowerCase() === "none") return false;
+  return parseCaseMapGroups(settings.caseMap).length === 0;
+}
+
 function readForm() {
-  const autoSendToSpeechify = $("autoSendToSpeechify").checked;
+  const engine = $("engine").value;
+  const mode = $("mode").value;
+  const speechifyEligible = isNarrativeSpeechifyMode({ engine, mode });
+  const autoSendToSpeechify = speechifyEligible && $("autoSendToSpeechify").checked;
   const autoSubmitChatGPT = $("autoSubmitChatGPT").checked || autoSendToSpeechify;
   const openChatGPT = $("openChatGPT").checked || autoSubmitChatGPT;
 
+  const speechifyFolder = parseSpeechifyFolderUrl($("speechifyFolderUrl").value);
+
   return {
-    engine: $("engine").value,
-    mode: $("mode").value,
+    engine,
+    mode,
     include: $("include").value.trim(),
     caseMap: $("caseMap").value.trim(),
     coreGap: $("coreGap").checked,
@@ -136,16 +238,18 @@ function readForm() {
     downloadPlain: $("downloadPlain").checked,
     downloadAnnotated: $("downloadAnnotated").checked,
     keepCaptionHtml: $("keepCaptionHtml").checked,
+    autoGroupNonNarrative: $("autoGroupNonNarrative").checked,
     openChatGPT,
     autoSubmitChatGPT,
     chatgptUrl: $("chatgptUrl").value.trim(),
     chatgptInstruction: $("chatgptInstruction").value.trim(),
     chatgptTimeoutSec: $("chatgptTimeoutSec").value.trim(),
     autoSendToSpeechify,
-    speechifyAutoSave: $("speechifyAutoSave").checked,
+    speechifyAutoSave: speechifyEligible && $("speechifyAutoSave").checked,
     speechifyAutoPlayAfterSave: false,
-    speechifyFolderName: $("speechifyFolderName").value.trim(),
-    speechifyFolderId: $("speechifyFolderId").value.trim(),
+    speechifyFolderUrl: speechifyFolder.url,
+    speechifyFolderName: DEFAULTS.speechifyFolderName,
+    speechifyFolderId: speechifyFolder.id,
     speechifyFolderChain: DEFAULTS.speechifyFolderChain,
     stripArrowTags: false,
     primarySourceLabel: "RadPrimer"
@@ -166,6 +270,8 @@ function applyForm(values) {
   $("downloadPlain").checked = values.downloadPlain ?? DEFAULTS.downloadPlain;
   $("downloadAnnotated").checked = values.downloadAnnotated ?? DEFAULTS.downloadAnnotated;
   $("keepCaptionHtml").checked = values.keepCaptionHtml ?? DEFAULTS.keepCaptionHtml;
+  $("autoGroupNonNarrative").checked =
+    values.autoGroupNonNarrative ?? DEFAULTS.autoGroupNonNarrative;
   const autoSendToSpeechify = values.autoSendToSpeechify ?? DEFAULTS.autoSendToSpeechify;
   $("openChatGPT").checked =
     (values.openChatGPT ?? DEFAULTS.openChatGPT) ||
@@ -178,9 +284,9 @@ function applyForm(values) {
   $("chatgptTimeoutSec").value = values.chatgptTimeoutSec ?? DEFAULTS.chatgptTimeoutSec;
   $("autoSendToSpeechify").checked = autoSendToSpeechify;
   $("speechifyAutoSave").checked = values.speechifyAutoSave ?? DEFAULTS.speechifyAutoSave;
-  $("speechifyFolderName").value = values.speechifyFolderName ?? DEFAULTS.speechifyFolderName;
-  $("speechifyFolderId").value = values.speechifyFolderId ?? DEFAULTS.speechifyFolderId;
+  $("speechifyFolderUrl").value = getStoredSpeechifyFolderUrl(values);
   syncPanels();
+  syncSpeechifyAvailability();
 }
 
 async function saveForm() {
@@ -231,6 +337,16 @@ function sendDownloadMessage(files) {
   });
 }
 
+function sendRunFromTabMessage(tabId) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "RUN_RADPRIMER_FROM_TAB_ID", tabId }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
 function waitForTabComplete(tabId) {
   return new Promise((resolve, reject) => {
     let finished = false;
@@ -266,12 +382,13 @@ function waitForTabComplete(tabId) {
 }
 
 function sendChatGptFillMessage(tabId, text, settings, articleTitle) {
+  const shouldWaitForNarrative = settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings);
   const speechifyPayload =
-    settings.autoSendToSpeechify && settings.autoSubmitChatGPT
+    settings.autoSendToSpeechify && shouldWaitForNarrative
       ? {
           title: buildSpeechifyTitle(articleTitle, ""),
           folder: {
-            name: settings.speechifyFolderName || DEFAULTS.speechifyFolderName,
+            name: settings.speechifyFolderName || "",
             id: settings.speechifyFolderId || DEFAULTS.speechifyFolderId,
             parentChain: settings.speechifyFolderChain || DEFAULTS.speechifyFolderChain
           },
@@ -286,7 +403,7 @@ function sendChatGptFillMessage(tabId, text, settings, articleTitle) {
         type: "CHATGPT_FILL_COMPOSER",
         text,
         autoSubmit: Boolean(settings.autoSubmitChatGPT),
-        waitForResult: Boolean(settings.autoSubmitChatGPT),
+        waitForResult: Boolean(shouldWaitForNarrative),
         timeoutMs: Math.max(30, parseInt(settings.chatgptTimeoutSec || "900", 10) || 900) * 1000,
         speechify: speechifyPayload
       },
@@ -328,7 +445,7 @@ function sendSpeechifyCreateMessage(payload) {
 
 async function createSpeechifyLecture(settings, articleTitle, text) {
   const folder = {
-    name: settings.speechifyFolderName || DEFAULTS.speechifyFolderName,
+    name: settings.speechifyFolderName || "",
     id: settings.speechifyFolderId || DEFAULTS.speechifyFolderId,
     parentChain: settings.speechifyFolderChain || DEFAULTS.speechifyFolderChain
   };
@@ -427,9 +544,18 @@ async function run() {
   try {
     const settings = readForm();
     await saveForm();
+    const tab = await getActiveTab();
+
+    if (shouldDelegateGroupingPreflight(settings)) {
+      setStatus("Starting grouping preflight through the page runner...");
+      const delegated = await sendRunFromTabMessage(tab.id);
+      if (!delegated?.ok) throw new Error(delegated?.error || "Grouping preflight failed.");
+      setStatus(delegated.message || "Grouping preflight started.");
+      return;
+    }
+
     setStatus("Loading packaged prompt...");
     const promptText = await loadPrompt(settings.engine, settings.mode);
-    const tab = await getActiveTab();
     await ensureContentScript(tab.id);
 
     setStatus("Extracting RadPrimer article...");
@@ -457,10 +583,14 @@ async function run() {
     let chatgptLine = "ChatGPT opening disabled.";
     let speechifyLine = "Speechify disabled.";
     if (settings.openChatGPT) {
+      const shouldWaitForNarrative =
+        settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings);
       setStatus(
-        settings.autoSubmitChatGPT
+        shouldWaitForNarrative
           ? "Opening ChatGPT, submitting, and waiting for final response..."
-          : "Opening ChatGPT project and filling message box..."
+          : settings.autoSubmitChatGPT
+            ? "Opening ChatGPT and submitting prompt..."
+            : "Opening ChatGPT project and filling message box..."
       );
       try {
         const fillResponse = await openChatGptAndFill(
@@ -468,7 +598,7 @@ async function run() {
           response.output,
           response.meta?.title || ""
         );
-        if (settings.autoSubmitChatGPT) {
+        if (shouldWaitForNarrative) {
           if (fillResponse.assistantText) {
             await copyText(fillResponse.assistantText);
             chatgptLine = `Submitted and copied final ChatGPT response (${fillResponse.assistantChars} chars).`;
@@ -481,6 +611,11 @@ async function run() {
             }
           } else {
             chatgptLine = "Submitted to ChatGPT, but no assistant response text was returned.";
+          }
+        } else if (settings.autoSubmitChatGPT) {
+          chatgptLine = "Submitted to ChatGPT. This mode stops after submission.";
+          if (settings.autoSendToSpeechify && !isNarrativeSpeechifyMode(settings)) {
+            speechifyLine = "Speechify skipped because this is not a narrative mode.";
           }
         } else {
           chatgptLine = `Filled ChatGPT composer (${fillResponse.chars} chars). Not submitted.`;
@@ -528,6 +663,12 @@ async function init() {
   $("engine").addEventListener("change", async () => {
     populateModes($("engine").value, $("mode").value);
     syncPanels();
+    syncSpeechifyAvailability();
+    await saveForm();
+  });
+
+  $("mode").addEventListener("change", async () => {
+    syncSpeechifyAvailability();
     await saveForm();
   });
 

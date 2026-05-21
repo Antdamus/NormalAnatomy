@@ -49,8 +49,10 @@ If `Submit, wait, and copy final response` is enabled, the extension will:
 
 1. Fill the ChatGPT composer.
 2. Click the send button.
-3. Wait until the assistant response appears finished or the timeout is reached.
-4. Copy the latest assistant response to the clipboard.
+3. For narrative modes only, wait until the assistant response appears finished or the timeout is reached.
+4. For narrative modes only, copy the latest assistant response to the clipboard and optionally send it to Speechify.
+
+For non-narrative card modes, automatic submission stops after the prompt is sent to ChatGPT. If `Auto-group card modes before final run` is enabled and no case map is already supplied, the page button first runs a grouping-only ChatGPT preflight, captures the returned `INCLUDE` / `CASE_MAP`, applies that grouping to the saved settings, and then launches the final card prompt.
 
 This mode is best-effort because ChatGPT's web UI can change. The ChatGPT page also shows a floating result box with status, final text, Copy again, Download .txt, and Close buttons. Keep the extension popup open when possible, but the ChatGPT page itself now also tries to copy the final response and display it in the overlay. If waiting or scraping fails, the original full prompt package remains on the clipboard.
 

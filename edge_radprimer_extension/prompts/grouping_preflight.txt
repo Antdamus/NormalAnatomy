@@ -1,0 +1,40 @@
+# RadPrimer Image Grouping Preflight
+
+You are not writing the final radiology narrative or cards.
+
+Your only job is to infer the image accounting needed for a later extraction run.
+
+You will receive a full RadPrimer-style extracted article with image captions. Use the article and captions only to determine:
+
+1. Which provided images should be included.
+2. Which images are true or likely multi-image same-patient / same-case groups.
+
+Use the same conservative grouping logic as the guided narrative workflow:
+
+- Group images when captions explicitly say "same patient", "same case", "same patient as", or direct continuation language.
+- You may infer grouping from strong sequential caption continuity, modality progression, or pathology/imaging continuation, but do not force weak links.
+- Do not group images merely because they are adjacent.
+- Do not create one-item groups.
+- Do not exclude images unless the input explicitly says they were excluded.
+- Keep all included image numbers in ascending numeric order.
+
+Output only one plain code block and nothing else.
+
+The code block must use exactly this format:
+
+```text
+INCLUDE = [1,2,3,4]
+CASE_MAP = [[1,2],[8,9,10,11]]
+```
+
+If there are no multi-image groups, output:
+
+```text
+INCLUDE = [1,2,3,4]
+CASE_MAP = []
+```
+
+Do not write a narrative.
+Do not explain your reasoning outside the code block.
+Do not include markdown tables.
+Do not include any other text.
