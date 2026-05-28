@@ -18,6 +18,8 @@ const PROMPT_FILES = {
 
 const GROUPING_PREFLIGHT_PROMPT = "prompts/grouping_preflight.txt";
 const PENDING_GROUPING_PREFIX = "radprimerGroupingPending:";
+const IMAGE_DOWNLOAD_SUBFOLDER = "RadPrimer";
+const ANKI_WATCHER_MANIFEST_FILENAME = "_radprimer_anki_manifest.json";
 
 const DEFAULTS = {
   engine: "pathology",
@@ -32,6 +34,7 @@ const DEFAULTS = {
   downloadImages: true,
   downloadPlain: true,
   downloadAnnotated: true,
+  sendImagesToAnki: false,
   keepCaptionHtml: true,
   autoGroupNonNarrative: true,
   openChatGPT: false,
@@ -278,18 +281,195 @@ async function extractRadPrimerArticle(tabId, settings, promptText) {
   return response;
 }
 
-async function downloadSelectedImages(files) {
-  const list = Array.isArray(files) ? files : [];
+function getDownloadBasename(filename) {
+  const raw = String(filename || "radprimer-image.jpg").trim();
+  const base = raw.split(/[\\/]/).pop() || "radprimer-image.jpg";
+  return base.replace(/[<>:"/\\|?*\x00-\x1F]/g, "_");
+}
+
+function getStagedDownloadFilename(filename) {
+  return `${IMAGE_DOWNLOAD_SUBFOLDER}/${getDownloadBasename(filename)}`;
+}
+
+function isRadPrimerStagedDownload(item) {
+  const filename = String(item?.filename || "").replace(/\//g, "\\").toLowerCase();
+  return filename.includes("\\downloads\\radprimer\\");
+}
+
+async function clearRadPrimerDownloadFolder() {
+  const items = await chrome.downloads.search({});
+  const staged = items.filter(isRadPrimerStagedDownload);
+  let removed = 0;
+
+  for (const item of staged) {
+    try {
+      if (item.state === "complete") await chrome.downloads.removeFile(item.id);
+      removed += 1;
+    } catch {}
+
+    try {
+      await chrome.downloads.erase({ id: item.id });
+    } catch {}
+  }
+
+  return removed;
+}
+
+function waitForDownloadComplete(downloadId, timeoutMs = 90000) {
+  return new Promise((resolve, reject) => {
+    const start = Date.now();
+    let finished = false;
+
+    const cleanup = () => {
+      chrome.downloads.onChanged.removeListener(listener);
+      clearInterval(timer);
+    };
+
+    const done = (item) => {
+      if (finished) return;
+      finished = true;
+      cleanup();
+      resolve(item);
+    };
+
+    const fail = (error) => {
+      if (finished) return;
+      finished = true;
+      cleanup();
+      reject(error);
+    };
+
+    const check = async () => {
+      try {
+        const [item] = await chrome.downloads.search({ id: downloadId });
+        if (!item) return;
+        if (item.state === "complete") done(item);
+        if (item.state === "interrupted") {
+          fail(new Error(item.error || `Image download ${downloadId} was interrupted.`));
+        }
+      } catch (error) {
+        fail(error);
+      }
+    };
+
+    const listener = (delta) => {
+      if (delta.id !== downloadId || !delta.state?.current) return;
+      check();
+    };
+
+    const timer = setInterval(() => {
+      if (Date.now() - start > timeoutMs) {
+        fail(new Error("Timed out waiting for image download to complete."));
+        return;
+      }
+      check();
+    }, 500);
+
+    chrome.downloads.onChanged.addListener(listener);
+    check();
+  });
+}
+
+function bytesToBase64(bytes) {
+  const chunkSize = 0x8000;
+  let binary = "";
+
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    const chunk = bytes.subarray(i, i + chunkSize);
+    binary += String.fromCharCode.apply(null, chunk);
+  }
+
+  return btoa(binary);
+}
+
+function textToDataUrl(text) {
+  const bytes = new TextEncoder().encode(String(text || ""));
+  return `data:application/json;base64,${bytesToBase64(bytes)}`;
+}
+
+async function writeAnkiWatcherManifest(files, settings = {}) {
+  const expectedFiles = files.map((file) => getDownloadBasename(file.filename));
+  const manifest = {
+    version: 1,
+    runId: crypto.randomUUID(),
+    createdAt: new Date().toISOString(),
+    copyToAnki: Boolean(settings.sendImagesToAnki),
+    stagingFolder: "Downloads\\RadPrimer",
+    ankiMediaFolder: "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media",
+    expectedFiles
+  };
+
+  const downloadId = await chrome.downloads.download({
+    url: textToDataUrl(JSON.stringify(manifest, null, 2)),
+    filename: getStagedDownloadFilename(ANKI_WATCHER_MANIFEST_FILENAME),
+    conflictAction: "overwrite",
+    saveAs: false
+  });
+  await waitForDownloadComplete(downloadId);
+  return manifest;
+}
+
+async function downloadSelectedImages(files, settings = {}) {
+  const list = Array.isArray(files) ? files.filter((file) => file?.url && file?.filename) : [];
+  const result = {
+    count: 0,
+    clearedCount: 0,
+    ankiWatcherRequested: Boolean(settings.sendImagesToAnki),
+    ankiExpectedCount: 0
+  };
+
+  if (!list.length) return result;
+
+  result.clearedCount = await clearRadPrimerDownloadFolder();
+  const manifest = await writeAnkiWatcherManifest(list, settings);
+  result.ankiExpectedCount = manifest.copyToAnki ? manifest.expectedFiles.length : 0;
+
   for (const file of list) {
-    if (!file?.url || !file?.filename) continue;
-    await chrome.downloads.download({
+    const downloadId = await chrome.downloads.download({
       url: file.url,
-      filename: file.filename,
+      filename: getStagedDownloadFilename(file.filename),
+      conflictAction: "overwrite",
       saveAs: false
     });
-    await sleep(250);
+    await waitForDownloadComplete(downloadId);
+    result.count += 1;
+    await sleep(100);
   }
-  return list.length;
+
+  return result;
+}
+
+function describeImageDownloadResult(result) {
+  const pieces = [
+    `Downloaded ${result.count || 0} image file(s) to Downloads\\${IMAGE_DOWNLOAD_SUBFOLDER}.`
+  ];
+  if (result.clearedCount) {
+    pieces.push(`Cleared ${result.clearedCount} previous staged file(s).`);
+  }
+  if (result.ankiWatcherRequested) {
+    pieces.push(`Anki watcher enabled for ${result.ankiExpectedCount || result.count || 0} image file(s).`);
+  }
+  return pieces.join(" ");
+}
+
+function getImageOnlySettings(settings) {
+  const imageSettings = {
+    ...settings,
+    downloadImages: true,
+    openChatGPT: false,
+    autoSubmitChatGPT: false,
+    autoSendToSpeechify: false,
+    speechifyAutoSave: false
+  };
+
+  const include = String(imageSettings.include || "").trim().toLowerCase();
+  if (!include || include === "none") imageSettings.include = "all";
+  if (!imageSettings.downloadPlain && !imageSettings.downloadAnnotated) {
+    imageSettings.downloadPlain = true;
+    imageSettings.downloadAnnotated = true;
+  }
+
+  return imageSettings;
 }
 
 async function installChatGptDraftQuotaGuard(tabId) {
@@ -529,8 +709,8 @@ async function runFinalCardModeAfterGrouping(pending, groupingText) {
 
   if (settings.downloadImages && extraction.downloadFiles?.length) {
     await sendPageStatus(radPrimerTabId, "Images", "Downloading grouped image files...");
-    const count = await downloadSelectedImages(extraction.downloadFiles);
-    await sendPageStatus(radPrimerTabId, "Images", `Downloaded ${count} image file(s).`);
+    const result = await downloadSelectedImages(extraction.downloadFiles, settings);
+    await sendPageStatus(radPrimerTabId, "Images", describeImageDownloadResult(result));
   }
 
   await sendPageStatus(radPrimerTabId, "ChatGPT", "Opening ChatGPT with the final card prompt...");
@@ -560,8 +740,8 @@ async function runRadPrimerFromPage(tab) {
 
   if (settings.downloadImages && extraction.downloadFiles?.length) {
     await sendPageStatus(tab.id, "Images", "Downloading selected image files...");
-    const count = await downloadSelectedImages(extraction.downloadFiles);
-    await sendPageStatus(tab.id, "Images", `Downloaded ${count} image file(s).`);
+    const result = await downloadSelectedImages(extraction.downloadFiles, settings);
+    await sendPageStatus(tab.id, "Images", describeImageDownloadResult(result));
   }
 
   if (!settings.openChatGPT) {
@@ -657,20 +837,43 @@ async function runRadPrimerFromPage(tab) {
   };
 }
 
+async function runRadPrimerImageDownloadOnly(tab) {
+  if (!tab?.id || !/^https:\/\/app\.radprimer\.com\//.test(tab.url || "")) {
+    throw new Error("Open a RadPrimer article page first.");
+  }
+
+  await sendPageStatus(tab.id, "Images", "Preparing image-only download...");
+  const settings = getImageOnlySettings(await loadRunnerSettings());
+  const promptText = await loadPrompt(settings.engine, settings.mode);
+
+  await sendPageStatus(tab.id, "Extracting", "Extracting selected image list...");
+  const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+
+  if (!extraction.downloadFiles?.length) {
+    const message = "No image files were selected for download.";
+    await sendPageStatus(tab.id, "Images", message, { done: true });
+    return { message, meta: extraction.meta || null };
+  }
+
+  await sendPageStatus(tab.id, "Images", "Downloading images only...");
+  const result = await downloadSelectedImages(extraction.downloadFiles, settings);
+  const message = describeImageDownloadResult(result);
+  await sendPageStatus(tab.id, "Done", message, { done: true });
+
+  return {
+    message,
+    meta: extraction.meta || null,
+    download: result
+  };
+}
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "DOWNLOAD_IMAGES") {
     (async () => {
       const files = Array.isArray(message.files) ? message.files : [];
-      for (const file of files) {
-        if (!file?.url || !file?.filename) continue;
-        await chrome.downloads.download({
-          url: file.url,
-          filename: file.filename,
-          saveAs: false
-        });
-        await sleep(message.delayMs || 250);
-      }
-      sendResponse({ ok: true, count: files.length });
+      const settings = { ...DEFAULTS, ...(message.settings || {}) };
+      const result = await downloadSelectedImages(files, settings);
+      sendResponse({ ok: true, ...result });
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
     });
@@ -733,6 +936,25 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const tabId = message.tabId;
       if (tabId) {
         await sendPageStatus(tabId, "Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RUN_RADPRIMER_IMAGE_DOWNLOAD_ONLY") {
+    (async () => {
+      const tab =
+        message.tabId ? await chrome.tabs.get(message.tabId) : _sender?.tab;
+      const result = await runRadPrimerImageDownloadOnly(tab);
+      sendResponse({ ok: true, ...result });
+    })().catch(async (error) => {
+      const tabId = message.tabId || _sender?.tab?.id;
+      if (tabId) {
+        await sendPageStatus(tabId, "Image Error", String(error?.message || error), {
           error: true
         });
       }

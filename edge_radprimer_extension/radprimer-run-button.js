@@ -33,6 +33,7 @@
     downloadImages: true,
     downloadPlain: true,
     downloadAnnotated: true,
+    sendImagesToAnki: false,
     keepCaptionHtml: true,
     autoGroupNonNarrative: true,
     openChatGPT: true,
@@ -339,6 +340,13 @@
                 <path d="M19.4 15a1.8 1.8 0 0 0 .36 1.98l.04.04a2.1 2.1 0 0 1-2.97 2.97l-.04-.04a1.8 1.8 0 0 0-1.98-.36 1.8 1.8 0 0 0-1.09 1.65V21.3a2.1 2.1 0 0 1-4.2 0v-.06a1.8 1.8 0 0 0-1.09-1.65 1.8 1.8 0 0 0-1.98.36l-.04.04a2.1 2.1 0 1 1-2.97-2.97l.04-.04A1.8 1.8 0 0 0 3.8 15a1.8 1.8 0 0 0-1.65-1.09H2.1a2.1 2.1 0 0 1 0-4.2h.06A1.8 1.8 0 0 0 3.8 8.62a1.8 1.8 0 0 0-.36-1.98l-.04-.04A2.1 2.1 0 0 1 6.37 3.63l.04.04a1.8 1.8 0 0 0 1.98.36A1.8 1.8 0 0 0 9.48 2.38V2.1a2.1 2.1 0 0 1 4.2 0v.28a1.8 1.8 0 0 0 1.09 1.65 1.8 1.8 0 0 0 1.98-.36l.04-.04a2.1 2.1 0 1 1 2.97 2.97l-.04.04a1.8 1.8 0 0 0-.36 1.98 1.8 1.8 0 0 0 1.65 1.09h.28a2.1 2.1 0 0 1 0 4.2h-.28A1.8 1.8 0 0 0 19.4 15Z" stroke="currentColor" stroke-width="1.7"/>
               </svg>
             </button>
+            <button class="icon image-only" type="button" title="Download images only">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16h-11A2.5 2.5 0 0 1 4 13.5v-7Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M7 13l2.7-2.7 2.1 2.1L14.2 10 17 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 17v4m0 0 2-2m-2 2-2-2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
             <button class="primary quick-run" type="button" title="Run with saved settings">
               <span class="spark" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
@@ -399,8 +407,10 @@
                     <label class="check"><input data-field="downloadImages" type="checkbox"> Download selected images</label>
                     <label class="check"><input data-field="downloadPlain" type="checkbox"> Plain images</label>
                     <label class="check"><input data-field="downloadAnnotated" type="checkbox"> Annotated images</label>
+                    <label class="check"><input data-field="sendImagesToAnki" type="checkbox"> Local watcher copies images to Anki</label>
                     <label class="check"><input data-field="keepCaptionHtml" type="checkbox"> Keep arrow HTML</label>
                   </div>
+                  <span class="hint wide">Image files stage in Downloads\\RadPrimer. The local watcher mirrors checked runs into Anki collection.media.</span>
                 </div>
               </details>
 
@@ -430,6 +440,7 @@
 
               <div class="modal-actions">
                 <button class="ghost save-only" type="button">Save settings</button>
+                <button class="ghost download-config" type="button">Save and download images</button>
                 <button class="run-config" type="button">Save and run</button>
               </div>
             </div>
@@ -439,6 +450,7 @@
     `;
 
     shadow.querySelector(".quick-run").addEventListener("click", () => runFromPage(host));
+    shadow.querySelector(".image-only").addEventListener("click", () => downloadImagesOnly(host));
     shadow.querySelector(".configure").addEventListener("click", () => openModal(host));
     shadow.querySelector(".close").addEventListener("click", () => closeModal(host));
     shadow.querySelector(".backdrop").addEventListener("click", (event) => {
@@ -469,6 +481,11 @@
       await saveSettings(readModalSettings(host));
       closeModal(host);
       runFromPage(host);
+    });
+    shadow.querySelector(".download-config").addEventListener("click", async () => {
+      await saveSettings(readModalSettings(host));
+      closeModal(host);
+      downloadImagesOnly(host);
     });
 
     return host;
@@ -613,8 +630,10 @@
   const setRunning = (host, running) => {
     const quick = host.shadowRoot.querySelector(".quick-run");
     const config = host.shadowRoot.querySelector(".configure");
+    const imageOnly = host.shadowRoot.querySelector(".image-only");
     quick.disabled = running;
     config.disabled = running;
+    imageOnly.disabled = running;
     quick.querySelector(".label").textContent = running ? "Running..." : "Run lecture";
   };
 
@@ -634,6 +653,26 @@
         return;
       }
       setStatus(host, "Done", response.message || "Workflow started.");
+      setRunning(host, false);
+    });
+  };
+
+  const downloadImagesOnly = (host) => {
+    setRunning(host, true);
+    setStatus(host, "Images", "Downloading images only...");
+    chrome.runtime.sendMessage({ type: "RUN_RADPRIMER_IMAGE_DOWNLOAD_ONLY" }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) {
+        setStatus(host, "Image Error", err.message, true);
+        setRunning(host, false);
+        return;
+      }
+      if (!response?.ok) {
+        setStatus(host, "Image Error", response?.error || "Image download failed.", true);
+        setRunning(host, false);
+        return;
+      }
+      setStatus(host, "Images Done", response.message || "Image download complete.");
       setRunning(host, false);
     });
   };

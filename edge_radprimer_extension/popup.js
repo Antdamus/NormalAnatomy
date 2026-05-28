@@ -43,6 +43,7 @@ const DEFAULTS = {
   downloadImages: true,
   downloadPlain: true,
   downloadAnnotated: true,
+  sendImagesToAnki: false,
   keepCaptionHtml: true,
   autoGroupNonNarrative: true,
   openChatGPT: false,
@@ -83,6 +84,7 @@ const fields = [
   "downloadImages",
   "downloadPlain",
   "downloadAnnotated",
+  "sendImagesToAnki",
   "keepCaptionHtml",
   "autoGroupNonNarrative",
   "openChatGPT",
@@ -248,6 +250,7 @@ function readForm() {
     downloadImages: $("downloadImages").checked,
     downloadPlain: $("downloadPlain").checked,
     downloadAnnotated: $("downloadAnnotated").checked,
+    sendImagesToAnki: $("sendImagesToAnki").checked,
     keepCaptionHtml: $("keepCaptionHtml").checked,
     autoGroupNonNarrative: $("autoGroupNonNarrative").checked,
     openChatGPT: speechifyEligible ? true : openChatGPT,
@@ -280,6 +283,7 @@ function applyForm(values) {
   $("downloadImages").checked = values.downloadImages ?? DEFAULTS.downloadImages;
   $("downloadPlain").checked = values.downloadPlain ?? DEFAULTS.downloadPlain;
   $("downloadAnnotated").checked = values.downloadAnnotated ?? DEFAULTS.downloadAnnotated;
+  $("sendImagesToAnki").checked = values.sendImagesToAnki ?? DEFAULTS.sendImagesToAnki;
   $("keepCaptionHtml").checked = values.keepCaptionHtml ?? DEFAULTS.keepCaptionHtml;
   $("autoGroupNonNarrative").checked =
     values.autoGroupNonNarrative ?? DEFAULTS.autoGroupNonNarrative;
@@ -339,9 +343,9 @@ function sendExtractMessage(tabId, config) {
   });
 }
 
-function sendDownloadMessage(files) {
+function sendDownloadMessage(files, settings) {
   return new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage({ type: "DOWNLOAD_IMAGES", files, delayMs: 250 }, (response) => {
+    chrome.runtime.sendMessage({ type: "DOWNLOAD_IMAGES", files, settings, delayMs: 250 }, (response) => {
       const err = chrome.runtime.lastError;
       if (err) reject(new Error(err.message));
       else resolve(response);
@@ -352,6 +356,16 @@ function sendDownloadMessage(files) {
 function sendRunFromTabMessage(tabId) {
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage({ type: "RUN_RADPRIMER_FROM_TAB_ID", tabId }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+function sendImageDownloadOnlyMessage(tabId) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "RUN_RADPRIMER_IMAGE_DOWNLOAD_ONLY", tabId }, (response) => {
       const err = chrome.runtime.lastError;
       if (err) reject(new Error(err.message));
       else resolve(response);
@@ -585,9 +599,12 @@ async function run() {
     let downloadLine = "Downloads disabled.";
     if (settings.downloadImages && response.downloadFiles?.length) {
       setStatus("Downloading selected images...");
-      const downloadResponse = await sendDownloadMessage(response.downloadFiles);
+      const downloadResponse = await sendDownloadMessage(response.downloadFiles, settings);
       if (!downloadResponse?.ok) throw new Error(downloadResponse?.error || "Download failed.");
-      downloadLine = `Downloaded ${downloadResponse.count} file(s).`;
+      downloadLine = `Downloaded ${downloadResponse.count} file(s) to Downloads\\RadPrimer.`;
+      if (downloadResponse.ankiWatcherRequested) {
+        downloadLine += ` Anki watcher enabled for ${downloadResponse.ankiExpectedCount || downloadResponse.count} file(s).`;
+      }
     } else if (settings.downloadImages) {
       downloadLine = "No selected image files to download.";
     }
@@ -668,6 +685,32 @@ async function checkPrompts() {
   }
 }
 
+async function downloadImagesOnly() {
+  const button = $("downloadImagesOnly");
+  button.disabled = true;
+  try {
+    await saveForm();
+    const tab = await getActiveTab();
+    setStatus("Downloading images only...");
+    const response = await sendImageDownloadOnlyMessage(tab.id);
+    if (!response?.ok) throw new Error(response?.error || "Image download failed.");
+
+    const meta = response.meta || {};
+    setStatus(
+      [
+        response.message || "Image download complete.",
+        `Title: ${meta.title || "[not found]"}`,
+        `Selected: ${(meta.selectedImages || []).join(", ") || "none"}`,
+        `Cases/groups: ${(meta.cases || []).map((g) => `[${g.join(",")}]`).join(" ") || "none"}`
+      ].join("\n")
+    );
+  } catch (error) {
+    setStatus(`Image download error: ${error?.message || error}`);
+  } finally {
+    button.disabled = false;
+  }
+}
+
 async function init() {
   const stored = await chrome.storage.local.get("radprimerRunnerSettings");
   applyForm({ ...DEFAULTS, ...(stored.radprimerRunnerSettings || {}) });
@@ -709,6 +752,7 @@ async function init() {
   }
 
   $("run").addEventListener("click", run);
+  $("downloadImagesOnly").addEventListener("click", downloadImagesOnly);
   $("refreshPrompts").addEventListener("click", checkPrompts);
 }
 

@@ -82,6 +82,11 @@
           <input id="autoGroupNonNarrative" type="checkbox" checked>
           Auto-group card modes before final run
         </label>
+        <label class="check">
+          <input id="sendImagesToAnki" type="checkbox">
+          Let local watcher copy images to Anki media
+        </label>
+        <p class="muted">Images stage in Downloads\RadPrimer. The local watcher mirrors checked runs into Anki collection.media.</p>
       </section>
 
       <section class="panel">
@@ -124,6 +129,7 @@
       </section>
 
       <button id="run">Extract + copy prompt package</button>
+      <button id="downloadImagesOnly" class="secondary">Download images only</button>
       <button id="refreshPrompts" class="secondary">Check packaged prompts</button>
 
       <pre id="status">Ready.</pre>

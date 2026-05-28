@@ -33,7 +33,11 @@ This copies the current Normal and Pathology prompts into `edge_radprimer_extens
 7. Optionally enable `Open ChatGPT project and fill box`.
 8. Click `Extract + copy prompt package`.
 
-The complete prompt package is copied to the clipboard. If image downloads are enabled, selected images are downloaded using the same filename pattern as the old console workflow.
+The complete prompt package is copied to the clipboard. If image downloads are enabled, selected images are staged under `Downloads\RadPrimer` using the same filename pattern as the old console workflow. Before a new image download run, the extension clears prior `Downloads\RadPrimer` files that Edge still has in download history, writes a small run manifest, then downloads the current selected image set with overwrite behavior.
+
+If "Let local watcher copy images to Anki media" is enabled, start `tools\start-radprimer-anki-watcher.cmd` and leave it open. The watcher mirrors checked RadPrimer image runs from `Downloads\RadPrimer` into `C:\Users\josem.000\AppData\Roaming\Anki2\User 1\collection.media`.
+
+If you already ran a prompt and forgot to enable image downloads, use `Download images only` from the popup or the image icon on the RadPrimer page. It forces the image download stage for the current article without opening ChatGPT or Speechify.
 
 When ChatGPT project handoff is enabled, the extension opens the configured project URL and fills the composer with:
 
