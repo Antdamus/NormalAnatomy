@@ -33,7 +33,6 @@
     downloadImages: true,
     downloadPlain: true,
     downloadAnnotated: true,
-    sendImagesToAnki: false,
     keepCaptionHtml: true,
     autoGroupNonNarrative: true,
     openChatGPT: true,
@@ -407,10 +406,9 @@
                     <label class="check"><input data-field="downloadImages" type="checkbox"> Download selected images</label>
                     <label class="check"><input data-field="downloadPlain" type="checkbox"> Plain images</label>
                     <label class="check"><input data-field="downloadAnnotated" type="checkbox"> Annotated images</label>
-                    <label class="check"><input data-field="sendImagesToAnki" type="checkbox"> Local watcher copies images to Anki</label>
                     <label class="check"><input data-field="keepCaptionHtml" type="checkbox"> Keep arrow HTML</label>
                   </div>
-                  <span class="hint wide">Image files stage in Downloads\\RadPrimer. The local watcher mirrors checked runs into Anki collection.media.</span>
+                  <span class="hint wide">Image files stage in Downloads\\RadPrimer. If the watcher window is open, it mirrors image files into Anki collection.media.</span>
                 </div>
               </details>
 

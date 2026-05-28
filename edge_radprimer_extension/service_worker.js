@@ -19,7 +19,6 @@ const PROMPT_FILES = {
 const GROUPING_PREFLIGHT_PROMPT = "prompts/grouping_preflight.txt";
 const PENDING_GROUPING_PREFIX = "radprimerGroupingPending:";
 const IMAGE_DOWNLOAD_SUBFOLDER = "RadPrimer";
-const ANKI_WATCHER_MANIFEST_FILENAME = "_radprimer_anki_manifest.json";
 
 const DEFAULTS = {
   engine: "pathology",
@@ -34,7 +33,6 @@ const DEFAULTS = {
   downloadImages: true,
   downloadPlain: true,
   downloadAnnotated: true,
-  sendImagesToAnki: false,
   keepCaptionHtml: true,
   autoGroupNonNarrative: true,
   openChatGPT: false,
@@ -370,59 +368,16 @@ function waitForDownloadComplete(downloadId, timeoutMs = 90000) {
   });
 }
 
-function bytesToBase64(bytes) {
-  const chunkSize = 0x8000;
-  let binary = "";
-
-  for (let i = 0; i < bytes.length; i += chunkSize) {
-    const chunk = bytes.subarray(i, i + chunkSize);
-    binary += String.fromCharCode.apply(null, chunk);
-  }
-
-  return btoa(binary);
-}
-
-function textToDataUrl(text) {
-  const bytes = new TextEncoder().encode(String(text || ""));
-  return `data:application/json;base64,${bytesToBase64(bytes)}`;
-}
-
-async function writeAnkiWatcherManifest(files, settings = {}) {
-  const expectedFiles = files.map((file) => getDownloadBasename(file.filename));
-  const manifest = {
-    version: 1,
-    runId: crypto.randomUUID(),
-    createdAt: new Date().toISOString(),
-    copyToAnki: Boolean(settings.sendImagesToAnki),
-    stagingFolder: "Downloads\\RadPrimer",
-    ankiMediaFolder: "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media",
-    expectedFiles
-  };
-
-  const downloadId = await chrome.downloads.download({
-    url: textToDataUrl(JSON.stringify(manifest, null, 2)),
-    filename: getStagedDownloadFilename(ANKI_WATCHER_MANIFEST_FILENAME),
-    conflictAction: "overwrite",
-    saveAs: false
-  });
-  await waitForDownloadComplete(downloadId);
-  return manifest;
-}
-
 async function downloadSelectedImages(files, settings = {}) {
   const list = Array.isArray(files) ? files.filter((file) => file?.url && file?.filename) : [];
   const result = {
     count: 0,
-    clearedCount: 0,
-    ankiWatcherRequested: Boolean(settings.sendImagesToAnki),
-    ankiExpectedCount: 0
+    clearedCount: 0
   };
 
   if (!list.length) return result;
 
   result.clearedCount = await clearRadPrimerDownloadFolder();
-  const manifest = await writeAnkiWatcherManifest(list, settings);
-  result.ankiExpectedCount = manifest.copyToAnki ? manifest.expectedFiles.length : 0;
 
   for (const file of list) {
     const downloadId = await chrome.downloads.download({
@@ -445,9 +400,6 @@ function describeImageDownloadResult(result) {
   ];
   if (result.clearedCount) {
     pieces.push(`Cleared ${result.clearedCount} previous staged file(s).`);
-  }
-  if (result.ankiWatcherRequested) {
-    pieces.push(`Anki watcher enabled for ${result.ankiExpectedCount || result.count || 0} image file(s).`);
   }
   return pieces.join(" ");
 }

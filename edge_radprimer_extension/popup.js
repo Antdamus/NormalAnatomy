@@ -43,7 +43,6 @@ const DEFAULTS = {
   downloadImages: true,
   downloadPlain: true,
   downloadAnnotated: true,
-  sendImagesToAnki: false,
   keepCaptionHtml: true,
   autoGroupNonNarrative: true,
   openChatGPT: false,
@@ -84,7 +83,6 @@ const fields = [
   "downloadImages",
   "downloadPlain",
   "downloadAnnotated",
-  "sendImagesToAnki",
   "keepCaptionHtml",
   "autoGroupNonNarrative",
   "openChatGPT",
@@ -250,7 +248,6 @@ function readForm() {
     downloadImages: $("downloadImages").checked,
     downloadPlain: $("downloadPlain").checked,
     downloadAnnotated: $("downloadAnnotated").checked,
-    sendImagesToAnki: $("sendImagesToAnki").checked,
     keepCaptionHtml: $("keepCaptionHtml").checked,
     autoGroupNonNarrative: $("autoGroupNonNarrative").checked,
     openChatGPT: speechifyEligible ? true : openChatGPT,
@@ -283,7 +280,6 @@ function applyForm(values) {
   $("downloadImages").checked = values.downloadImages ?? DEFAULTS.downloadImages;
   $("downloadPlain").checked = values.downloadPlain ?? DEFAULTS.downloadPlain;
   $("downloadAnnotated").checked = values.downloadAnnotated ?? DEFAULTS.downloadAnnotated;
-  $("sendImagesToAnki").checked = values.sendImagesToAnki ?? DEFAULTS.sendImagesToAnki;
   $("keepCaptionHtml").checked = values.keepCaptionHtml ?? DEFAULTS.keepCaptionHtml;
   $("autoGroupNonNarrative").checked =
     values.autoGroupNonNarrative ?? DEFAULTS.autoGroupNonNarrative;
@@ -602,9 +598,6 @@ async function run() {
       const downloadResponse = await sendDownloadMessage(response.downloadFiles, settings);
       if (!downloadResponse?.ok) throw new Error(downloadResponse?.error || "Download failed.");
       downloadLine = `Downloaded ${downloadResponse.count} file(s) to Downloads\\RadPrimer.`;
-      if (downloadResponse.ankiWatcherRequested) {
-        downloadLine += ` Anki watcher enabled for ${downloadResponse.ankiExpectedCount || downloadResponse.count} file(s).`;
-      }
     } else if (settings.downloadImages) {
       downloadLine = "No selected image files to download.";
     }
