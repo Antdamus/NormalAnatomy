@@ -25,6 +25,8 @@
       'button[data-testid="stop-button"], button[aria-label*="Stop"], button[aria-label*="stop"], button[aria-label*="Stop generating"], button[aria-label*="Stop streaming"]'
   };
 
+  const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
+
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const isVisible = (el) => {
@@ -454,6 +456,45 @@
       .trim();
   };
 
+  const stripOuterCodeFence = (text) => {
+    const value = String(text || "").trim();
+    const match = value.match(/^```(?:tsv|text|csv)?\s*([\s\S]*?)\s*```$/i);
+    return match ? match[1].trim() : value;
+  };
+
+  const looksLikeInlineCardTsv = (text) => {
+    const value = stripOuterCodeFence(text);
+    const lines = value
+      .split(/\n+/)
+      .map((line) => line.trimEnd())
+      .filter(Boolean);
+    const tabbedLines = lines.filter((line) => (line.match(/\t/g) || []).length >= 8);
+    const strongTabbedLines = lines.filter((line) => (line.match(/\t/g) || []).length >= 15);
+    return strongTabbedLines.length >= 2 || tabbedLines.length >= 4;
+  };
+
+  const looksLikeCardTsvDownloadReady = (text) => {
+    const value = String(text || "");
+    return value.includes(CARD_AUDIT_DOWNLOAD_SENTINEL);
+  };
+
+  const expectedOutputMessage = (expectedOutputKind) => {
+    if (expectedOutputKind === "card_tsv_download") {
+      return "Assistant responded, but it has not shown the TSV download sentinel yet. Waiting for the final card export...";
+    }
+    if (expectedOutputKind === "card_tsv") {
+      return "Assistant responded, but it is not inline TSV yet. Waiting for the final card export...";
+    }
+    return "Assistant responded, but the expected output is not ready yet.";
+  };
+
+  const outputMatchesExpectation = (text, expectedOutputKind) => {
+    if (!expectedOutputKind) return true;
+    if (expectedOutputKind === "card_tsv") return looksLikeInlineCardTsv(text);
+    if (expectedOutputKind === "card_tsv_download") return looksLikeCardTsvDownloadReady(text);
+    return true;
+  };
+
   const extractCleanMarkdownText = (markdownRoot) => {
     if (!markdownRoot) return "";
     const clone = markdownRoot.cloneNode(true);
@@ -687,7 +728,12 @@
     return beforeLooksDifferent && lengthLooksPlausible ? text : "";
   };
 
-  const waitForFinalAssistantResponse = async ({ timeoutMs, stableMs, stripAuditBlock = true }) => {
+  const waitForFinalAssistantResponse = async ({
+    timeoutMs,
+    stableMs,
+    stripAuditBlock = true,
+    expectedOutputKind = ""
+  }) => {
     const start = Date.now();
     let lastText = "";
     let lastChangedAt = Date.now();
@@ -721,6 +767,15 @@
         );
         const rawText = nativeCopiedText || finalResult.text || text;
         const cleanedText = stripAuditBlock ? stripTrailingImageAuditBlock(rawText) : rawText.trim();
+        if (!outputMatchesExpectation(cleanedText, expectedOutputKind)) {
+          lastChangedAt = Date.now();
+          sendProgress(
+            "WAITING_FOR_EXPECTED_OUTPUT",
+            expectedOutputMessage(expectedOutputKind)
+          );
+          await sleep(750);
+          continue;
+        }
         return {
           text: cleanedText,
           partial: false
@@ -731,8 +786,12 @@
     }
 
     if (lastText) {
+      const cleanedLastText = stripAuditBlock ? stripTrailingImageAuditBlock(lastText) : lastText.trim();
+      if (!outputMatchesExpectation(cleanedLastText, expectedOutputKind)) {
+        throw new Error(`Timed out waiting for expected ChatGPT output. ${expectedOutputMessage(expectedOutputKind)}`);
+      }
       return {
-        text: stripAuditBlock ? stripTrailingImageAuditBlock(lastText) : lastText.trim(),
+        text: cleanedLastText,
         partial: true
       };
     }
@@ -792,8 +851,91 @@
         type,
         completionPayload: payload || null,
         result: result || null
+      }, async (response) => {
+        if (chrome.runtime.lastError) return;
+        if (!response?.clipboardText) return;
+
+        const copied = await copyToClipboard(response.clipboardText);
+        createOrUpdateOverlay({
+          phase: copied ? "AUDIT_READY" : "AUDIT_READY_COPY_FAILED",
+          message: copied
+            ? "Audit wake-up message copied to clipboard."
+            : "Audit bundle saved, but wake-up message clipboard copy may have failed.",
+          text: response.clipboardText
+        });
       });
     } catch {}
+  };
+
+  const sendRuntimeRequest = (message) => {
+    return new Promise((resolve) => {
+      try {
+        chrome.runtime.sendMessage(message, (response) => {
+          const err = chrome.runtime.lastError;
+          if (err) {
+            resolve({ ok: false, error: err.message });
+            return;
+          }
+          resolve(response || { ok: false, error: "No response returned." });
+        });
+      } catch (error) {
+        resolve({ ok: false, error: String(error?.message || error) });
+      }
+    });
+  };
+
+  const findCardTsvDownloadButton = () => {
+    const latestTurn = getLatestAssistantTurn();
+    const candidates = Array.from(
+      latestTurn?.querySelectorAll("button, a[download], a[href]") || []
+    ).filter(isVisible);
+    const downloadButtons = candidates.filter((button) => {
+      const text = String(button.innerText || button.textContent || button.getAttribute("aria-label") || "");
+      const href = String(button.getAttribute("href") || button.getAttribute("download") || "");
+      return /download/i.test(text) && /tsv|cards?|anki|file/i.test(`${text} ${href}`);
+    });
+    return downloadButtons[0] || candidates.find((button) => /download/i.test(button.innerText || "")) || null;
+  };
+
+  const captureCardTsvDownload = async (completionPayload, sentinelText) => {
+    if (!completionPayload?.pendingId) throw new Error("Missing card-audit pending id for TSV download capture.");
+
+    sendProgress("PREPARING_CARD_TSV_DOWNLOAD", "Preparing audit bundle for ChatGPT TSV download...");
+    const prepared = await sendRuntimeRequest({
+      type: "RADPRIMER_CARD_AUDIT_PREPARE_DOWNLOAD",
+      completionPayload,
+      sentinelText
+    });
+    if (!prepared?.ok) throw new Error(prepared?.error || "Could not prepare card audit download bundle.");
+
+    const button = await waitFor(() => findCardTsvDownloadButton(), 15000, 250);
+    if (!button) throw new Error("Could not find the ChatGPT TSV download button.");
+
+    sendProgress("DOWNLOADING_CARD_TSV", "Clicking ChatGPT TSV download...");
+    clickLikeUser(button);
+
+    const completed = await sendRuntimeRequest({
+      type: "RADPRIMER_CARD_AUDIT_WAIT_DOWNLOAD",
+      completionPayload,
+      timeoutMs: 180000
+    });
+    if (!completed?.ok) throw new Error(completed?.error || "Timed out waiting for ChatGPT TSV download.");
+
+    let copied = false;
+    if (completed.clipboardText) copied = await copyToClipboard(completed.clipboardText);
+    createOrUpdateOverlay({
+      phase: copied ? "AUDIT_READY" : "AUDIT_READY_COPY_FAILED",
+      message: copied
+        ? "TSV download captured. Audit wake-up message copied to clipboard."
+        : "TSV download captured, but wake-up message clipboard copy may have failed.",
+      text: completed.clipboardText || ""
+    });
+
+    return {
+      bundle: completed.bundle || null,
+      clipboardText: completed.clipboardText || "",
+      copiedWakeMessage: copied
+    };
   };
 
   const downloadTextFile = (text, filename) => {
@@ -958,13 +1100,109 @@
     }
   };
 
+  const installChatGptTsvRecoveryButton = () => {
+    if (document.getElementById("radprimer-chatgpt-tsv-recovery")) return;
+
+    const host = document.createElement("div");
+    host.id = "radprimer-chatgpt-tsv-recovery";
+    host.style.position = "fixed";
+    host.style.zIndex = "2147483646";
+    host.style.right = "18px";
+    host.style.top = "86px";
+    document.documentElement.appendChild(host);
+
+    const shadow = host.attachShadow({ mode: "open" });
+    shadow.innerHTML = `
+      <style>
+        :host { all: initial; }
+        .wrap {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          padding: 8px;
+          border-radius: 999px;
+          background: rgba(18, 24, 33, .84);
+          border: 1px solid rgba(255,255,255,.16);
+          box-shadow: 0 16px 48px rgba(0,0,0,.34);
+          backdrop-filter: blur(16px);
+          font: 12px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        button {
+          border: 0;
+          border-radius: 999px;
+          padding: 9px 12px;
+          background: #dbeafe;
+          color: #0f172a;
+          cursor: pointer;
+          font: inherit;
+          font-weight: 850;
+          letter-spacing: 0;
+          white-space: nowrap;
+        }
+        button:hover { background: #bfdbfe; }
+        button:disabled { cursor: wait; opacity: .72; }
+        .dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 99px;
+          background: #93c5fd;
+          box-shadow: 0 0 0 4px rgba(147,197,253,.16);
+        }
+      </style>
+      <div class="wrap">
+        <span class="dot" aria-hidden="true"></span>
+        <button type="button" title="Capture the latest ChatGPT TSV download into the RadPrimer audit bundle">Capture TSV</button>
+      </div>
+    `;
+
+    shadow.querySelector("button").addEventListener("click", async () => {
+      const button = shadow.querySelector("button");
+      button.disabled = true;
+      button.textContent = "Capturing...";
+      createOrUpdateCompactStatus({
+        phase: "TSV",
+        message: "Capturing latest TSV download..."
+      });
+
+      const response = await sendRuntimeRequest({
+        type: "RECOVER_CARD_AUDIT_TSV_FROM_CHATGPT_TAB"
+      });
+
+      if (!response?.ok) {
+        createOrUpdateOverlay({
+          phase: "ERROR",
+          error: response?.error || "Could not capture the latest TSV download."
+        });
+        button.disabled = false;
+        button.textContent = "Capture TSV";
+        return;
+      }
+
+      if (response.clipboardText) await copyToClipboard(response.clipboardText);
+      createOrUpdateOverlay({
+        phase: "AUDIT_READY",
+        message: "TSV download captured. Audit wake-up message copied to clipboard.",
+        text: response.clipboardText || ""
+      });
+      createOrUpdateCompactStatus({
+        phase: "DONE",
+        message: "TSV captured.",
+        done: true
+      });
+      button.disabled = false;
+      button.textContent = "Capture TSV";
+    });
+  };
+
   const runPrompt = async ({
     promptText,
     autoSubmit,
     waitForResult,
     timeoutMs,
     speechify,
-    preserveAuditBlock
+    preserveAuditBlock,
+    expectedOutputKind,
+    completionPayload
   }) => {
     const compactProgress = Boolean(autoSubmit && !waitForResult);
     sendProgress("WAITING_FOR_COMPOSER", "Waiting for ChatGPT composer...", compactProgress);
@@ -975,8 +1213,13 @@
       localStorage.removeItem("oai/apps/conversationDrafts");
     } catch {}
 
+    const preferFastComposerFill =
+      compactProgress ||
+      expectedOutputKind === "card_tsv_download" ||
+      String(promptText || "").length > 12000;
+
     sendProgress("FILLING_PROMPT", "Clearing and filling composer...", compactProgress);
-    await clearAndFillComposer(editor, promptText, compactProgress);
+    await clearAndFillComposer(editor, promptText, preferFastComposerFill);
 
     sendProgress("VERIFYING_PROMPT", "Verifying prompt was inserted...", compactProgress);
     if (!composerLooksFilled(editor, promptText)) {
@@ -1015,8 +1258,22 @@
     const result = await waitForFinalAssistantResponse({
       timeoutMs,
       stableMs: 3000,
-      stripAuditBlock: !preserveAuditBlock
+      stripAuditBlock: !preserveAuditBlock,
+      expectedOutputKind
     });
+
+    if (expectedOutputKind === "card_tsv_download") {
+      const auditDownload = await captureCardTsvDownload(completionPayload, result.text);
+      return {
+        chars: promptText.length,
+        submitted: true,
+        assistantText: result.text,
+        assistantChars: result.text.length,
+        partial: Boolean(result.partial),
+        auditDownload,
+        suppressCompletionMessage: true
+      };
+    }
 
     sendProgress("COPYING", "Copying final response to clipboard...");
     const copied = await copyToClipboard(result.text);
@@ -1059,6 +1316,29 @@
   };
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+    if (message?.type === "CHATGPT_CAPTURE_LATEST_CARD_TSV_DOWNLOAD") {
+      (async () => {
+        const result = extractLatestAssistantText();
+        const auditDownload = await captureCardTsvDownload(
+          message.completionPayload || {},
+          result.text || ""
+        );
+        sendResponse({
+          ok: true,
+          auditDownload,
+          clipboardText: auditDownload.clipboardText || ""
+        });
+      })().catch((error) => {
+        createOrUpdateOverlay({
+          phase: "ERROR",
+          error: String(error?.message || error)
+        });
+        sendResponse({ ok: false, error: String(error?.message || error) });
+      });
+
+      return true;
+    }
+
     if (message?.type !== "CHATGPT_FILL_COMPOSER") return false;
 
     if (message.backgroundRun) {
@@ -1068,10 +1348,14 @@
         waitForResult: Boolean(message.waitForResult),
         timeoutMs: Math.max(30000, Number(message.timeoutMs || 900000)),
         speechify: message.speechify || null,
-        preserveAuditBlock: Boolean(message.preserveAuditBlock)
+        preserveAuditBlock: Boolean(message.preserveAuditBlock),
+        expectedOutputKind: String(message.expectedOutputKind || ""),
+        completionPayload: message.completionPayload || null
       })
         .then((result) => {
-          sendCompletionMessage(message.completionMessageType, message.completionPayload, result);
+          if (!result?.suppressCompletionMessage) {
+            sendCompletionMessage(message.completionMessageType, message.completionPayload, result);
+          }
         })
         .catch((error) => {
           createOrUpdateOverlay({
@@ -1094,7 +1378,9 @@
         waitForResult: Boolean(message.waitForResult),
         timeoutMs: Math.max(30000, Number(message.timeoutMs || 900000)),
         speechify: message.speechify || null,
-        preserveAuditBlock: Boolean(message.preserveAuditBlock)
+        preserveAuditBlock: Boolean(message.preserveAuditBlock),
+        expectedOutputKind: String(message.expectedOutputKind || ""),
+        completionPayload: message.completionPayload || null
       });
       sendResponse({ ok: true, ...result });
     })().catch((error) => {
@@ -1105,4 +1391,10 @@
 
     return true;
   });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", installChatGptTsvRecoveryButton, { once: true });
+  } else {
+    installChatGptTsvRecoveryButton();
+  }
 })();

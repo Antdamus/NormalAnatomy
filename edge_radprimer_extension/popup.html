@@ -82,6 +82,10 @@
           <input id="autoGroupNonNarrative" type="checkbox" checked>
           Auto-group card modes before final run
         </label>
+        <label class="check">
+          <input id="captureCardAuditBundle" type="checkbox">
+          Capture card audit bundle
+        </label>
         <p class="muted">Images stage in Downloads\RadPrimer. If the watcher window is open, it mirrors image files into Anki collection.media.</p>
       </section>
 
@@ -106,6 +110,10 @@
           Wait timeout, seconds
           <input id="chatgptTimeoutSec" type="text" placeholder="900">
         </label>
+        <label>
+          Card audit timeout, seconds
+          <input id="cardAuditTimeoutSec" type="text" placeholder="3600">
+        </label>
       </section>
 
       <section class="panel">
@@ -126,6 +134,8 @@
 
       <button id="run">Extract + copy prompt package</button>
       <button id="downloadImagesOnly" class="secondary">Download images only</button>
+      <button id="recoverCardAuditTsv" class="secondary">Capture latest TSV download</button>
+      <button id="exportAuditSource" class="secondary">Export audit source bundle</button>
       <button id="refreshPrompts" class="secondary">Check packaged prompts</button>
 
       <pre id="status">Ready.</pre>

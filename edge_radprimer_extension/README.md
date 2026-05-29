@@ -33,7 +33,7 @@ This copies the current Normal and Pathology prompts into `edge_radprimer_extens
 7. Optionally enable `Open ChatGPT project and fill box`.
 8. Click `Extract + copy prompt package`.
 
-The complete prompt package is copied to the clipboard. If image downloads are enabled, selected images are staged under `Downloads\RadPrimer` using the same filename pattern as the old console workflow. Before a new image download run, the extension clears prior `Downloads\RadPrimer` files that Edge still has in download history, writes a small run manifest, then downloads the current selected image set with overwrite behavior.
+The complete prompt package is copied to the clipboard. If image downloads are enabled, selected images are staged under `Downloads\RadPrimer` using the same filename pattern as the old console workflow. Before a new image download run, the extension clears prior `Downloads\RadPrimer` files that Edge still has in download history, then downloads the current selected image set with overwrite behavior.
 
 To mirror images into Anki, start `tools\start-radprimer-anki-watcher.cmd` and leave it open. The watcher copies stable image files from `Downloads\RadPrimer` into `C:\Users\josem.000\AppData\Roaming\Anki2\User 1\collection.media`, matching the manual copy-paste workflow.
 
@@ -58,7 +58,18 @@ If `Submit, wait, and copy final response` is enabled, the extension will:
 
 For non-narrative card modes, automatic submission stops after the prompt is sent to ChatGPT. If `Auto-group card modes before final run` is enabled and no case map is already supplied, the page button first runs a grouping-only ChatGPT preflight, captures the returned `INCLUDE` / `CASE_MAP`, applies that grouping to the saved settings, and then launches the final card prompt.
 
-This mode is best-effort because ChatGPT's web UI can change. The ChatGPT page also shows a floating result box with status, final text, Copy again, Download .txt, and Close buttons. Keep the extension popup open when possible, but the ChatGPT page itself now also tries to copy the final response and display it in the overlay. If waiting or scraping fails, the original full prompt package remains on the clipboard.
+If `Capture card audit bundle` is enabled for a card mode, the final card prompt asks ChatGPT to create a downloadable TSV and print the `RADPRIMER_CARD_TSV_DOWNLOAD_READY` sentinel. The extension then clicks the ChatGPT TSV download button, routes that download directly into the audit bundle as `generated_cards.tsv`, and stages the rest of the bundle under `Downloads\RadPrimerAudit`. Each bundle includes:
+
+- `source_package.txt`
+- `generated_cards.tsv`
+- `metadata.json`
+- `audit_instructions.md`
+
+Codex automation can import completed bundles directly from `Downloads\RadPrimerAudit` into `C:\Users\josem.000\NormalAnatomy\radprimer_audit_queue` with `tools\import-latest-radprimer-audit-bundle.ps1`. You can also start `tools\start-radprimer-audit-watcher.cmd` and leave it open if you want live mirroring. The local queue lets Codex audit bundles against the original article package and write corrected outputs without extra file-access prompts.
+
+After an audit bundle is saved, the ChatGPT tab replaces the clipboard with a short wake-up message for Codex. Paste that message into this thread when you want the bundle audited; there is no always-on heartbeat required.
+
+This mode is best-effort because ChatGPT's web UI can change. The ChatGPT page also shows a floating status/result box while it waits, clicks the TSV download, and copies the audit wake-up message. Keep the extension popup open when possible. If waiting or scraping fails, the original full prompt package remains on the clipboard.
 
 ## Notes
 

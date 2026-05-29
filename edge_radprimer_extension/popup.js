@@ -45,11 +45,13 @@ const DEFAULTS = {
   downloadAnnotated: true,
   keepCaptionHtml: true,
   autoGroupNonNarrative: true,
+  captureCardAuditBundle: false,
   openChatGPT: false,
   autoSubmitChatGPT: false,
   chatgptUrl: "https://chatgpt.com/g/g-p-69e5418624448191a7a74b18f607688b-pediatrics/project",
   chatgptInstruction: "make sure you do not truncate the text and read the entire message",
   chatgptTimeoutSec: "900",
+  cardAuditTimeoutSec: "3600",
   autoSendToSpeechify: true,
   speechifyAutoSave: true,
   speechifyAutoPlayAfterSave: false,
@@ -85,11 +87,13 @@ const fields = [
   "downloadAnnotated",
   "keepCaptionHtml",
   "autoGroupNonNarrative",
+  "captureCardAuditBundle",
   "openChatGPT",
   "autoSubmitChatGPT",
   "chatgptUrl",
   "chatgptInstruction",
   "chatgptTimeoutSec",
+  "cardAuditTimeoutSec",
   "autoSendToSpeechify",
   "speechifyAutoSave",
   "speechifyFolderUrl"
@@ -165,6 +169,14 @@ function isNarrativeSpeechifyMode(settings) {
   return false;
 }
 
+function isNonNarrativeMode(settings) {
+  return Boolean(settings) && !isNarrativeSpeechifyMode(settings);
+}
+
+function shouldCaptureCardAuditBundle(settings) {
+  return Boolean(settings?.captureCardAuditBundle) && isNonNarrativeMode(settings);
+}
+
 function currentEngineMode() {
   return {
     engine: $("engine").value || DEFAULTS.engine,
@@ -174,12 +186,15 @@ function currentEngineMode() {
 
 function syncSpeechifyAvailability() {
   const eligible = isNarrativeSpeechifyMode(currentEngineMode());
+  const auditEligible = isNonNarrativeMode(currentEngineMode());
   $("autoSendToSpeechify").disabled = !eligible;
   $("speechifyAutoSave").disabled = !eligible;
+  $("captureCardAuditBundle").disabled = !auditEligible;
   if (!eligible) {
     $("autoSendToSpeechify").checked = false;
     $("speechifyAutoSave").checked = false;
   }
+  if (!auditEligible) $("captureCardAuditBundle").checked = false;
 }
 
 function applyNarrativeModeDefaults() {
@@ -229,8 +244,11 @@ function readForm() {
   const engine = $("engine").value;
   const mode = $("mode").value;
   const speechifyEligible = isNarrativeSpeechifyMode({ engine, mode });
+  const captureCardAuditBundle =
+    !speechifyEligible && Boolean($("captureCardAuditBundle").checked);
   const autoSendToSpeechify = speechifyEligible && $("autoSendToSpeechify").checked;
-  const autoSubmitChatGPT = $("autoSubmitChatGPT").checked || autoSendToSpeechify;
+  const autoSubmitChatGPT =
+    $("autoSubmitChatGPT").checked || autoSendToSpeechify || captureCardAuditBundle;
   const openChatGPT = $("openChatGPT").checked || autoSubmitChatGPT;
 
   const speechifyFolder = parseSpeechifyFolderUrl($("speechifyFolderUrl").value);
@@ -250,11 +268,13 @@ function readForm() {
     downloadAnnotated: $("downloadAnnotated").checked,
     keepCaptionHtml: $("keepCaptionHtml").checked,
     autoGroupNonNarrative: $("autoGroupNonNarrative").checked,
+    captureCardAuditBundle,
     openChatGPT: speechifyEligible ? true : openChatGPT,
-    autoSubmitChatGPT: speechifyEligible ? true : autoSubmitChatGPT,
+    autoSubmitChatGPT: speechifyEligible || captureCardAuditBundle ? true : autoSubmitChatGPT,
     chatgptUrl: $("chatgptUrl").value.trim(),
     chatgptInstruction: $("chatgptInstruction").value.trim(),
     chatgptTimeoutSec: $("chatgptTimeoutSec").value.trim(),
+    cardAuditTimeoutSec: $("cardAuditTimeoutSec").value.trim(),
     autoSendToSpeechify: speechifyEligible ? true : autoSendToSpeechify,
     speechifyAutoSave: speechifyEligible ? true : speechifyEligible && $("speechifyAutoSave").checked,
     speechifyAutoPlayAfterSave: false,
@@ -283,16 +303,22 @@ function applyForm(values) {
   $("keepCaptionHtml").checked = values.keepCaptionHtml ?? DEFAULTS.keepCaptionHtml;
   $("autoGroupNonNarrative").checked =
     values.autoGroupNonNarrative ?? DEFAULTS.autoGroupNonNarrative;
+  $("captureCardAuditBundle").checked =
+    values.captureCardAuditBundle ?? DEFAULTS.captureCardAuditBundle;
   const autoSendToSpeechify = values.autoSendToSpeechify ?? DEFAULTS.autoSendToSpeechify;
   $("openChatGPT").checked =
     (values.openChatGPT ?? DEFAULTS.openChatGPT) ||
     (values.autoSubmitChatGPT ?? DEFAULTS.autoSubmitChatGPT) ||
+    (values.captureCardAuditBundle ?? DEFAULTS.captureCardAuditBundle) ||
     autoSendToSpeechify;
   $("autoSubmitChatGPT").checked =
-    (values.autoSubmitChatGPT ?? DEFAULTS.autoSubmitChatGPT) || autoSendToSpeechify;
+    (values.autoSubmitChatGPT ?? DEFAULTS.autoSubmitChatGPT) ||
+    (values.captureCardAuditBundle ?? DEFAULTS.captureCardAuditBundle) ||
+    autoSendToSpeechify;
   $("chatgptUrl").value = values.chatgptUrl ?? DEFAULTS.chatgptUrl;
   $("chatgptInstruction").value = values.chatgptInstruction ?? DEFAULTS.chatgptInstruction;
   $("chatgptTimeoutSec").value = values.chatgptTimeoutSec ?? DEFAULTS.chatgptTimeoutSec;
+  $("cardAuditTimeoutSec").value = values.cardAuditTimeoutSec ?? DEFAULTS.cardAuditTimeoutSec;
   $("autoSendToSpeechify").checked = autoSendToSpeechify;
   $("speechifyAutoSave").checked = values.speechifyAutoSave ?? DEFAULTS.speechifyAutoSave;
   $("speechifyFolderUrl").value = getStoredSpeechifyFolderUrl(values);
@@ -319,6 +345,12 @@ async function getActiveTab() {
   if (!/^https:\/\/app\.radprimer\.com\//.test(tab.url || "")) {
     throw new Error("Open a RadPrimer article page first.");
   }
+  return tab;
+}
+
+async function getActiveBrowserTab() {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab?.id) throw new Error("No active tab found.");
   return tab;
 }
 
@@ -362,6 +394,26 @@ function sendRunFromTabMessage(tabId) {
 function sendImageDownloadOnlyMessage(tabId) {
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage({ type: "RUN_RADPRIMER_IMAGE_DOWNLOAD_ONLY", tabId }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+function sendRecoverCardAuditTsvMessage(tabId) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "RECOVER_CARD_AUDIT_TSV_FROM_CHATGPT_TAB", tabId }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+function sendExportAuditSourceMessage(tabId) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "EXPORT_RADPRIMER_AUDIT_SOURCE_ONLY", tabId }, (response) => {
       const err = chrome.runtime.lastError;
       if (err) reject(new Error(err.message));
       else resolve(response);
@@ -568,10 +620,16 @@ async function run() {
     await saveForm();
     const tab = await getActiveTab();
 
-    if (shouldDelegateGroupingPreflight(settings)) {
-      setStatus("Starting grouping preflight through the page runner...");
+    if (shouldDelegateGroupingPreflight(settings) || shouldCaptureCardAuditBundle(settings)) {
+      setStatus(
+        shouldDelegateGroupingPreflight(settings)
+          ? "Starting grouping preflight through the page runner..."
+          : "Starting card audit capture through the page runner..."
+      );
       const delegated = await sendRunFromTabMessage(tab.id);
-      if (!delegated?.ok) throw new Error(delegated?.error || "Grouping preflight failed.");
+      if (!delegated?.ok) {
+        throw new Error(delegated?.error || "Page-runner workflow failed.");
+      }
       setStatus(delegated.message || "Grouping preflight started.");
       return;
     }
@@ -704,6 +762,60 @@ async function downloadImagesOnly() {
   }
 }
 
+async function recoverCardAuditTsv() {
+  const button = $("recoverCardAuditTsv");
+  button.disabled = true;
+  try {
+    const tab = await getActiveBrowserTab();
+    if (!/^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(tab.url || "")) {
+      throw new Error("Open the completed ChatGPT conversation tab, then click this recovery button.");
+    }
+
+    setStatus("Capturing latest ChatGPT TSV download...");
+    const response = await sendRecoverCardAuditTsvMessage(tab.id);
+    if (!response?.ok) throw new Error(response?.error || "TSV recovery failed.");
+
+    const wakeMessage = response.clipboardText || response.auditDownload?.clipboardText || "";
+    if (wakeMessage) await copyText(wakeMessage);
+    setStatus(
+      [
+        "Captured latest ChatGPT TSV download.",
+        `Bundle: ${response.bundle?.downloadFolder || response.auditDownload?.bundle?.downloadFolder || "[created]"}`,
+        wakeMessage ? "Audit wake-up message copied to clipboard." : "No wake-up message was returned."
+      ].join("\n")
+    );
+  } catch (error) {
+    setStatus(`TSV recovery error: ${error?.message || error}`);
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function exportAuditSource() {
+  const button = $("exportAuditSource");
+  button.disabled = true;
+  try {
+    await saveForm();
+    const tab = await getActiveTab();
+    setStatus("Exporting source-only audit bundle...");
+    const response = await sendExportAuditSourceMessage(tab.id);
+    if (!response?.ok) throw new Error(response?.error || "Source-only export failed.");
+
+    if (response.clipboardText) await copyText(response.clipboardText);
+    setStatus(
+      [
+        response.message || "Source-only audit bundle exported.",
+        `Bundle: ${response.bundle?.downloadFolder || "[created]"}`,
+        response.clipboardText ? "Source-only wake-up message copied to clipboard." : "No wake-up message was returned."
+      ].join("\n")
+    );
+  } catch (error) {
+    setStatus(`Audit source export error: ${error?.message || error}`);
+  } finally {
+    button.disabled = false;
+  }
+}
+
 async function init() {
   const stored = await chrome.storage.local.get("radprimerRunnerSettings");
   applyForm({ ...DEFAULTS, ...(stored.radprimerRunnerSettings || {}) });
@@ -737,6 +849,14 @@ async function init() {
     await saveForm();
   });
 
+  $("captureCardAuditBundle").addEventListener("change", async () => {
+    if ($("captureCardAuditBundle").checked) {
+      $("openChatGPT").checked = true;
+      $("autoSubmitChatGPT").checked = true;
+    }
+    await saveForm();
+  });
+
   for (const id of fields) {
     $(id).addEventListener("change", saveForm);
     if ($(id).tagName === "TEXTAREA" || $(id).type === "text") {
@@ -746,6 +866,8 @@ async function init() {
 
   $("run").addEventListener("click", run);
   $("downloadImagesOnly").addEventListener("click", downloadImagesOnly);
+  $("recoverCardAuditTsv").addEventListener("click", recoverCardAuditTsv);
+  $("exportAuditSource").addEventListener("click", exportAuditSource);
   $("refreshPrompts").addEventListener("click", checkPrompts);
 }
 

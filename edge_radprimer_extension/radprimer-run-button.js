@@ -35,11 +35,13 @@
     downloadAnnotated: true,
     keepCaptionHtml: true,
     autoGroupNonNarrative: true,
+    captureCardAuditBundle: false,
     openChatGPT: true,
     autoSubmitChatGPT: true,
     chatgptUrl: "https://chatgpt.com/g/g-p-69e5418624448191a7a74b18f607688b-pediatrics/project",
     chatgptInstruction: "make sure you do not truncate the text and read the entire message",
     chatgptTimeoutSec: "900",
+    cardAuditTimeoutSec: "3600",
     autoSendToSpeechify: true,
     speechifyAutoSave: true,
     speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7"
@@ -309,6 +311,7 @@
           display: flex;
           gap: 10px;
           justify-content: flex-end;
+          flex-wrap: wrap;
           padding-top: 18px;
         }
         .ghost {
@@ -385,12 +388,13 @@
                 <div class="checks">
                   <label class="check"><input data-field="openChatGPT" type="checkbox"> Open ChatGPT</label>
                   <label class="check"><input data-field="autoSubmitChatGPT" type="checkbox"> Submit automatically</label>
+                  <label class="check"><input data-field="captureCardAuditBundle" type="checkbox"> Capture card audit bundle</label>
                   <label class="check"><input data-field="autoSendToSpeechify" type="checkbox"> Send narrative to Speechify</label>
                   <label class="check"><input data-field="speechifyAutoSave" type="checkbox"> Auto-save Speechify</label>
                 </div>
                 <div class="grid spaced">
                   <label class="wide">Speechify folder link<input data-field="speechifyFolderUrl" type="text"></label>
-                  <span class="hint wide">Speechify runs only for Normal Narrative, Normal Narrative + image downloads, and Pathology Narrative. Card modes stop after ChatGPT submission.</span>
+                  <span class="hint wide">Speechify runs only for narrative modes. Card audit capture is optional and waits for the generated TSV before staging a bundle.</span>
                 </div>
               </section>
 
@@ -432,6 +436,7 @@
                     <label class="wide">ChatGPT project URL<input data-field="chatgptUrl" type="text"></label>
                     <label class="wide">Composer instruction<textarea data-field="chatgptInstruction"></textarea></label>
                     <label>Wait timeout, seconds<input data-field="chatgptTimeoutSec" type="text"></label>
+                    <label>Card audit timeout, seconds<input data-field="cardAuditTimeoutSec" type="text"></label>
                   </div>
                 </div>
               </details>
@@ -439,6 +444,7 @@
               <div class="modal-actions">
                 <button class="ghost save-only" type="button">Save settings</button>
                 <button class="ghost download-config" type="button">Save and download images</button>
+                <button class="ghost audit-source-config" type="button">Export audit source</button>
                 <button class="run-config" type="button">Save and run</button>
               </div>
             </div>
@@ -470,6 +476,13 @@
         field(host, "autoSubmitChatGPT").checked = true;
       }
     });
+    shadow.querySelector('[data-field="captureCardAuditBundle"]').addEventListener("change", () => {
+      const captureAudit = field(host, "captureCardAuditBundle").checked;
+      if (captureAudit) {
+        field(host, "openChatGPT").checked = true;
+        field(host, "autoSubmitChatGPT").checked = true;
+      }
+    });
     shadow.querySelector(".save-only").addEventListener("click", async () => {
       await saveSettings(readModalSettings(host));
       setStatus(host, "Saved", "Settings saved.");
@@ -484,6 +497,11 @@
       await saveSettings(readModalSettings(host));
       closeModal(host);
       downloadImagesOnly(host);
+    });
+    shadow.querySelector(".audit-source-config").addEventListener("click", async () => {
+      await saveSettings(readModalSettings(host));
+      closeModal(host);
+      exportAuditSourceOnly(host);
     });
 
     return host;
@@ -535,16 +553,20 @@
       mode: field(host, "mode")?.value || DEFAULTS.mode
     };
     const eligible = isNarrativeSpeechifyMode(values);
+    const auditEligible = !eligible;
     const autoSend = field(host, "autoSendToSpeechify");
     const autoSave = field(host, "speechifyAutoSave");
+    const audit = field(host, "captureCardAuditBundle");
     if (!autoSend || !autoSave) return;
 
     autoSend.disabled = !eligible;
     autoSave.disabled = !eligible;
+    if (audit) audit.disabled = !auditEligible;
     if (!eligible) {
       autoSend.checked = false;
       autoSave.checked = false;
     }
+    if (!auditEligible && audit) audit.checked = false;
   };
 
   const applyNarrativeModeDefaults = (host) => {
@@ -558,6 +580,7 @@
     field(host, "caseMap").value = "";
     field(host, "openChatGPT").checked = true;
     field(host, "autoSubmitChatGPT").checked = true;
+    field(host, "captureCardAuditBundle").checked = false;
     field(host, "autoSendToSpeechify").checked = true;
     field(host, "speechifyAutoSave").checked = true;
   };
@@ -596,7 +619,7 @@
       values[key] = el.type === "checkbox" ? el.checked : el.value.trim();
     }
 
-    if (values.autoSendToSpeechify) {
+    if (values.autoSendToSpeechify || values.captureCardAuditBundle) {
       values.openChatGPT = true;
       values.autoSubmitChatGPT = true;
     }
@@ -607,6 +630,7 @@
       values.autoSubmitChatGPT = true;
       values.autoSendToSpeechify = true;
       values.speechifyAutoSave = true;
+      values.captureCardAuditBundle = false;
     }
     if (!isNarrativeSpeechifyMode(values)) {
       values.autoSendToSpeechify = false;
@@ -671,6 +695,29 @@
         return;
       }
       setStatus(host, "Images Done", response.message || "Image download complete.");
+      setRunning(host, false);
+    });
+  };
+
+  const exportAuditSourceOnly = (host) => {
+    setRunning(host, true);
+    setStatus(host, "Audit Source", "Exporting source-only audit bundle...");
+    chrome.runtime.sendMessage({ type: "EXPORT_RADPRIMER_AUDIT_SOURCE_ONLY" }, async (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) {
+        setStatus(host, "Audit Source Error", err.message, true);
+        setRunning(host, false);
+        return;
+      }
+      if (!response?.ok) {
+        setStatus(host, "Audit Source Error", response?.error || "Source-only export failed.", true);
+        setRunning(host, false);
+        return;
+      }
+      try {
+        if (response.clipboardText) await navigator.clipboard.writeText(response.clipboardText);
+      } catch {}
+      setStatus(host, "Audit Source Ready", response.message || "Source-only audit bundle exported.");
       setRunning(host, false);
     });
   };

@@ -39,6 +39,11 @@
       "world": "MAIN"
     },
     {
+      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+      "js": ["chatgpt-paster.js"],
+      "run_at": "document_idle"
+    },
+    {
       "matches": ["https://app.speechify.com/*"],
       "js": ["speechify-paster.js"],
       "run_at": "document_idle"

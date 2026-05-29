@@ -18,7 +18,20 @@ const PROMPT_FILES = {
 
 const GROUPING_PREFLIGHT_PROMPT = "prompts/grouping_preflight.txt";
 const PENDING_GROUPING_PREFIX = "radprimerGroupingPending:";
+const PENDING_CARD_AUDIT_PREFIX = "radprimerCardAuditPending:";
 const IMAGE_DOWNLOAD_SUBFOLDER = "RadPrimer";
+const CARD_AUDIT_SUBFOLDER = "RadPrimerAudit";
+const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
+const CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION = [
+  "AUTOMATED CAPTURE REQUIREMENT:",
+  "When you reach final card export, create a downloadable TSV file instead of printing the TSV rows in chat.",
+  "Do not print the TSV inline. Do not wrap the TSV in a code block.",
+  "After the download button/link is created, print this exact sentinel block as plain text:",
+  CARD_AUDIT_DOWNLOAD_SENTINEL,
+  "FILENAME: radprimer_cards.tsv",
+  "EXPECTED_ROWS: <number of TSV rows>",
+  "If you need Core pages or clarification first, ask for that information, then after the user answers, create the downloadable TSV and print the sentinel block."
+].join("\n");
 
 const DEFAULTS = {
   engine: "pathology",
@@ -35,11 +48,13 @@ const DEFAULTS = {
   downloadAnnotated: true,
   keepCaptionHtml: true,
   autoGroupNonNarrative: true,
+  captureCardAuditBundle: false,
   openChatGPT: false,
   autoSubmitChatGPT: false,
   chatgptUrl: "https://chatgpt.com/g/g-p-69e5418624448191a7a74b18f607688b-pediatrics/project",
   chatgptInstruction: "make sure you do not truncate the text and read the entire message",
   chatgptTimeoutSec: "900",
+  cardAuditTimeoutSec: "3600",
   autoSendToSpeechify: true,
   speechifyAutoSave: true,
   speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
@@ -56,6 +71,9 @@ const DEFAULTS = {
     }
   ]
 };
+
+let activeCardAuditDownload = null;
+const pendingImageDownloadFilenames = new Map();
 
 function buildSpeechifyFolderUrl(folderId) {
   const url = new URL("https://app.speechify.com/");
@@ -101,6 +119,11 @@ function normalizeSettings(rawSettings = {}) {
     settings.autoSubmitChatGPT = true;
   }
 
+  if (shouldCaptureCardAuditBundle(settings)) {
+    settings.openChatGPT = true;
+    settings.autoSubmitChatGPT = true;
+  }
+
   return settings;
 }
 
@@ -111,6 +134,16 @@ function isNarrativeSpeechifyMode(settings) {
     return settings.mode === "narrative" || settings.mode === "narrative_with_images";
   }
   return false;
+}
+
+function shouldCaptureCardAuditBundle(settings) {
+  return Boolean(settings?.captureCardAuditBundle) && isNonNarrativeMode(settings);
+}
+
+function timeoutMsFromSeconds(value, fallbackSeconds, minimumSeconds = 30) {
+  const parsed = parseInt(value || "", 10);
+  const seconds = Number.isFinite(parsed) && parsed > 0 ? parsed : fallbackSeconds;
+  return Math.max(minimumSeconds, seconds) * 1000;
 }
 
 async function loadRunnerSettings() {
@@ -289,6 +322,16 @@ function getStagedDownloadFilename(filename) {
   return `${IMAGE_DOWNLOAD_SUBFOLDER}/${getDownloadBasename(filename)}`;
 }
 
+function normalizeDownloadUrl(url) {
+  try {
+    const parsed = new URL(String(url || ""));
+    parsed.hash = "";
+    return parsed.href;
+  } catch {
+    return String(url || "");
+  }
+}
+
 function isRadPrimerStagedDownload(item) {
   const filename = String(item?.filename || "").replace(/\//g, "\\").toLowerCase();
   return filename.includes("\\downloads\\radprimer\\");
@@ -368,7 +411,62 @@ function waitForDownloadComplete(downloadId, timeoutMs = 90000) {
   });
 }
 
+function getCardAuditGeneratedCardsPath(folderName) {
+  return `${CARD_AUDIT_SUBFOLDER}/${folderName}/generated_cards.tsv`;
+}
+
+function isLikelyChatGptGeneratedDownload(item) {
+  const url = String(item?.url || "").toLowerCase();
+  const filename = String(item?.filename || "").toLowerCase();
+  const mime = String(item?.mime || "").toLowerCase();
+
+  if (url.includes("chatgpt.com") || url.includes("chat.openai.com")) return true;
+  if (url.startsWith("blob:") && url.includes("chatgpt")) return true;
+  if (filename.endsWith(".tsv") || filename.includes("tsv")) return true;
+  if (mime.includes("tab-separated") || mime.includes("text/tab") || mime.includes("text/plain")) {
+    return true;
+  }
+  return false;
+}
+
+function handleCardAuditDownloadFilename(downloadItem, suggest) {
+  const imageFilename = pendingImageDownloadFilenames.get(normalizeDownloadUrl(downloadItem?.url));
+  if (imageFilename) {
+    suggest({
+      filename: imageFilename,
+      conflictAction: "overwrite"
+    });
+    return;
+  }
+
+  const active = activeCardAuditDownload;
+  if (!active || active.downloadId || Date.now() > active.expiresAt) return;
+  if (downloadItem?.byExtensionId === chrome.runtime.id) return;
+  if (!isLikelyChatGptGeneratedDownload(downloadItem)) return;
+
+  active.downloadId = downloadItem.id;
+  active.originalDownload = {
+    url: downloadItem.url || "",
+    filename: downloadItem.filename || "",
+    mime: downloadItem.mime || "",
+    likelyChatGptGeneratedDownload: isLikelyChatGptGeneratedDownload(downloadItem)
+  };
+
+  suggest({
+    filename: getCardAuditGeneratedCardsPath(active.folderName),
+    conflictAction: "overwrite"
+  });
+}
+
+if (chrome.downloads?.onDeterminingFilename) {
+  chrome.downloads.onDeterminingFilename.addListener(handleCardAuditDownloadFilename);
+}
+
 async function downloadSelectedImages(files, settings = {}) {
+  if (activeCardAuditDownload && !activeCardAuditDownload.downloadId) {
+    activeCardAuditDownload = null;
+  }
+
   const list = Array.isArray(files) ? files.filter((file) => file?.url && file?.filename) : [];
   const result = {
     count: 0,
@@ -380,13 +478,20 @@ async function downloadSelectedImages(files, settings = {}) {
   result.clearedCount = await clearRadPrimerDownloadFolder();
 
   for (const file of list) {
+    const stagedFilename = getStagedDownloadFilename(file.filename);
+    const normalizedUrl = normalizeDownloadUrl(file.url);
+    pendingImageDownloadFilenames.set(normalizedUrl, stagedFilename);
     const downloadId = await chrome.downloads.download({
       url: file.url,
-      filename: getStagedDownloadFilename(file.filename),
+      filename: stagedFilename,
       conflictAction: "overwrite",
       saveAs: false
     });
-    await waitForDownloadComplete(downloadId);
+    try {
+      await waitForDownloadComplete(downloadId);
+    } finally {
+      pendingImageDownloadFilenames.delete(normalizedUrl);
+    }
     result.count += 1;
     await sleep(100);
   }
@@ -402,6 +507,323 @@ function describeImageDownloadResult(result) {
     pieces.push(`Cleared ${result.clearedCount} previous staged file(s).`);
   }
   return pieces.join(" ");
+}
+
+function sanitizeDownloadPathPart(value, fallback = "radprimer") {
+  const text = String(value || "")
+    .replace(/[<>:"/\\|?*\x00-\x1F]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 90);
+
+  return (text || fallback)
+    .replace(/\s+/g, "_")
+    .replace(/_+/g, "_");
+}
+
+function bytesToBase64(bytes) {
+  let binary = "";
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    const chunk = bytes.subarray(i, i + chunkSize);
+    binary += String.fromCharCode(...chunk);
+  }
+  return btoa(binary);
+}
+
+function textToDataUrl(text, mimeType = "text/plain;charset=utf-8") {
+  const bytes = new TextEncoder().encode(String(text || ""));
+  return `data:${mimeType};base64,${bytesToBase64(bytes)}`;
+}
+
+function stripOuterCodeFence(text) {
+  const value = String(text || "").trim();
+  const match = value.match(/^```(?:tsv|text|csv)?\s*([\s\S]*?)\s*```$/i);
+  return match ? match[1].trim() : value;
+}
+
+function looksLikeInlineCardTsv(text) {
+  const value = stripOuterCodeFence(text);
+  const lines = value
+    .split(/\n+/)
+    .map((line) => line.trimEnd())
+    .filter(Boolean);
+  const tabbedLines = lines.filter((line) => (line.match(/\t/g) || []).length >= 8);
+  const strongTabbedLines = lines.filter((line) => (line.match(/\t/g) || []).length >= 15);
+  return strongTabbedLines.length >= 2 || tabbedLines.length >= 4;
+}
+
+function buildAuditInstructions(metadata) {
+  return [
+    "# RadPrimer Card Audit Bundle",
+    "",
+    "Audit goal: compare `generated_cards.tsv` against `source_package.txt` and produce a corrected, higher-yield TSV when needed.",
+    "",
+    "Checklist:",
+    "- Preserve the existing TSV schema and column order.",
+    "- Remove cards that test prompt metadata, source-review bookkeeping, generator decisions, or vague audit statements.",
+    "- Split overloaded cards when one front is asking for too many independent facts.",
+    "- Add missing high-yield cards only when the source package supports them.",
+    "- Improve mechanism and histology explanations when they are unclear; explicitly label any outside clarification added during review.",
+    "- Keep one main concept per card unless the card is intentionally testing a pathway or structured comparison.",
+    "- Check image-based cards against the selected image list and grouped cases in `metadata.json`.",
+    "- Keep source attribution on the back of cards when the note type supports it.",
+    "",
+    "Suggested final outputs:",
+    "- `corrected_cards.tsv`",
+    "- `audit_report.md` with high-signal changes and remaining uncertainties",
+    "",
+    `Topic: ${metadata.articleTitle || "[unknown]"}`,
+    `Engine/mode: ${metadata.engine || ""}/${metadata.mode || ""}`,
+    `Created: ${metadata.createdAt || ""}`
+  ].join("\n");
+}
+
+function buildAuditWakeMessage(bundle) {
+  const downloadFolder = bundle?.downloadFolder || `Downloads\\${CARD_AUDIT_SUBFOLDER}`;
+  return [
+    "Audit the latest RadPrimer card-audit bundle.",
+    "",
+    `The browser staged bundle is here: ${downloadFolder}`,
+    "",
+    "Please do the full card-quality audit:",
+    "1. From C:\\Users\\josem.000\\NormalAnatomy, import the newest complete bundle by running or emulating edge_radprimer_extension\\tools\\import-latest-radprimer-audit-bundle.ps1.",
+    "2. Read C:\\Users\\josem.000\\NormalAnatomy\\radprimer_audit_queue\\_latest_radprimer_audit_bundle.txt.",
+    "3. In that bundle, compare source_package.txt, generated_cards.tsv, metadata.json, and audit_instructions.md.",
+    "4. Write corrected_cards.tsv, audit_report.md, and _codex_audit_done.txt in the same bundle folder.",
+    "",
+    "Preserve the TSV schema and column order. Remove metadata/bookkeeping cards, split overloaded cards, add missing source-supported high-yield cards, and improve unclear mechanism or histology explanations while labeling any outside clarification."
+  ].join("\n");
+}
+
+function buildSourceOnlyWakeMessage(bundle) {
+  const downloadFolder = bundle?.downloadFolder || `Downloads\\${CARD_AUDIT_SUBFOLDER}`;
+  return [
+    "I exported a RadPrimer audit source-only bundle.",
+    "",
+    `The source bundle is here: ${downloadFolder}`,
+    "",
+    "Use this together with the generated ChatGPT TSV if I provide it separately.",
+    "The bundle contains source_package.txt, metadata.json, audit_instructions.md, and _source_only_bundle.txt.",
+    "",
+    "Please compare the generated TSV against the source package, preserve the TSV schema and column order, remove weak/meta cards, split overloaded cards, add missing source-supported high-yield cards, and produce corrected_cards.tsv plus audit_report.md."
+  ].join("\n");
+}
+
+async function downloadAuditTextFile(folderName, filename, text, mimeType = "text/plain;charset=utf-8") {
+  const downloadId = await chrome.downloads.download({
+    url: textToDataUrl(text, mimeType),
+    filename: `${CARD_AUDIT_SUBFOLDER}/${folderName}/${filename}`,
+    conflictAction: "overwrite",
+    saveAs: false
+  });
+  await waitForDownloadComplete(downloadId, 120000);
+  return downloadId;
+}
+
+function createCardAuditMetadata(pending, createdAt, generated = {}) {
+  return {
+    createdAt,
+    articleTitle: pending.articleTitle || pending.extractionMeta?.title || "radprimer_cards",
+    sourceUrl: pending.radPrimerUrl || "",
+    engine: pending.settings?.engine || "",
+    mode: pending.settings?.mode || "",
+    selectedImages: pending.extractionMeta?.selectedImages || [],
+    cases: pending.extractionMeta?.cases || [],
+    totalImagesOnPage: pending.extractionMeta?.totalImagesOnPage ?? null,
+    outputChars: pending.sourcePackage?.length || 0,
+    generatedChars: generated.generatedChars ?? null,
+    generatedRawChars: generated.generatedRawChars ?? null,
+    generatedViaDownload: Boolean(generated.generatedViaDownload),
+    sourceOnlyBundle: Boolean(generated.sourceOnlyBundle),
+    downloadSentinel: generated.downloadSentinel || "",
+    downloadFiles: (pending.downloadFiles || []).map((file) => ({
+      filename: file.filename,
+      label: file.label || "",
+      imageNumber: file.imageNumber || null
+    })),
+    settings: {
+      include: pending.settings?.include || "",
+      caseMap: pending.settings?.caseMap || "",
+      coreGap: Boolean(pending.settings?.coreGap),
+      coreSection: pending.settings?.coreSection || "",
+      corePages: pending.settings?.corePages || "",
+      sourceNote: pending.settings?.sourceNote || "",
+      coreNote: pending.settings?.coreNote || ""
+    }
+  };
+}
+
+async function stageCardAuditBundle({ pending, assistantText }) {
+  const createdAt = new Date().toISOString();
+  const title = pending.articleTitle || pending.extractionMeta?.title || "radprimer_cards";
+  const folderName = `${sanitizeDownloadPathPart(title)}_${createdAt.replace(/[:.]/g, "-")}`;
+  const generatedCards = stripOuterCodeFence(assistantText);
+  const metadata = createCardAuditMetadata(pending, createdAt, {
+    generatedChars: generatedCards.length,
+    generatedRawChars: String(assistantText || "").length
+  });
+
+  await downloadAuditTextFile(folderName, "source_package.txt", pending.sourcePackage || "");
+  await downloadAuditTextFile(folderName, "generated_cards.tsv", generatedCards);
+  if (generatedCards !== String(assistantText || "").trim()) {
+    await downloadAuditTextFile(folderName, "generated_cards_raw.txt", assistantText || "");
+  }
+  await downloadAuditTextFile(
+    folderName,
+    "metadata.json",
+    JSON.stringify(metadata, null, 2),
+    "application/json;charset=utf-8"
+  );
+  await downloadAuditTextFile(folderName, "audit_instructions.md", buildAuditInstructions(metadata), "text/markdown;charset=utf-8");
+  await downloadAuditTextFile(
+    folderName,
+    "_bundle_complete.txt",
+    `complete=true\ncreatedAt=${createdAt}\narticleTitle=${title}\n`
+  );
+
+  return {
+    folderName,
+    downloadFolder: `Downloads\\${CARD_AUDIT_SUBFOLDER}\\${folderName}`,
+    metadata
+  };
+}
+
+async function stageCardAuditSourceOnlyBundle({ pending, sourceLabel = "source_only" }) {
+  const createdAt = new Date().toISOString();
+  const title = pending.articleTitle || pending.extractionMeta?.title || "radprimer_source";
+  const folderName = `${sanitizeDownloadPathPart(title)}_${sourceLabel}_${createdAt.replace(/[:.]/g, "-")}`;
+  const metadata = createCardAuditMetadata(pending, createdAt, {
+    sourceOnlyBundle: true
+  });
+
+  await downloadAuditTextFile(folderName, "source_package.txt", pending.sourcePackage || "");
+  await downloadAuditTextFile(
+    folderName,
+    "metadata.json",
+    JSON.stringify(metadata, null, 2),
+    "application/json;charset=utf-8"
+  );
+  await downloadAuditTextFile(folderName, "audit_instructions.md", buildAuditInstructions(metadata), "text/markdown;charset=utf-8");
+  await downloadAuditTextFile(
+    folderName,
+    "_source_only_bundle.txt",
+    `sourceOnly=true\ncreatedAt=${createdAt}\narticleTitle=${title}\n`
+  );
+
+  return {
+    folderName,
+    downloadFolder: `Downloads\\${CARD_AUDIT_SUBFOLDER}\\${folderName}`,
+    metadata
+  };
+}
+
+async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "" }) {
+  if (!pendingId) throw new Error("Missing card audit pending id.");
+  const pending = await takePendingCardAuditRun(pendingId);
+  if (!pending) throw new Error("Could not find pending RadPrimer card audit run.");
+
+  const createdAt = new Date().toISOString();
+  const title = pending.articleTitle || pending.extractionMeta?.title || "radprimer_cards";
+  const folderName = `${sanitizeDownloadPathPart(title)}_${createdAt.replace(/[:.]/g, "-")}`;
+  const metadata = createCardAuditMetadata(pending, createdAt, {
+    generatedViaDownload: true,
+    downloadSentinel: sentinelText
+  });
+
+  await sendPageStatus(
+    pending.radPrimerTabId,
+    "Audit Bundle",
+    "Preparing audit bundle and waiting for ChatGPT TSV download..."
+  );
+
+  await downloadAuditTextFile(folderName, "source_package.txt", pending.sourcePackage || "");
+  await downloadAuditTextFile(
+    folderName,
+    "metadata.json",
+    JSON.stringify(metadata, null, 2),
+    "application/json;charset=utf-8"
+  );
+  await downloadAuditTextFile(folderName, "audit_instructions.md", buildAuditInstructions(metadata), "text/markdown;charset=utf-8");
+
+  activeCardAuditDownload = {
+    pendingId,
+    folderName,
+    metadata,
+    pending,
+    createdAt,
+    expiresAt: Date.now() + 10 * 60 * 1000,
+    downloadId: null,
+    originalDownload: null
+  };
+
+  return {
+    folderName,
+    downloadFolder: `Downloads\\${CARD_AUDIT_SUBFOLDER}\\${folderName}`,
+    metadata
+  };
+}
+
+async function waitForPreparedCardAuditDownload(pendingId, timeoutMs = 180000) {
+  const active = activeCardAuditDownload;
+  if (!active || active.pendingId !== pendingId) {
+    throw new Error("No prepared card-audit TSV download is active.");
+  }
+
+  const start = Date.now();
+  while (!active.downloadId && Date.now() - start < timeoutMs) {
+    await sleep(250);
+  }
+
+  if (!active.downloadId) {
+    activeCardAuditDownload = null;
+    throw new Error("Timed out waiting for ChatGPT to start the TSV download.");
+  }
+
+  const downloadedItem = await waitForDownloadComplete(active.downloadId, timeoutMs);
+  const pending = active.pending;
+  const metadata = {
+    ...active.metadata,
+    generatedDownload: {
+      originalFilename: active.originalDownload?.filename || downloadedItem?.filename || "",
+      originalUrl: active.originalDownload?.url || downloadedItem?.url || "",
+      mime: active.originalDownload?.mime || downloadedItem?.mime || "",
+      downloadId: active.downloadId
+    }
+  };
+
+  await downloadAuditTextFile(
+    active.folderName,
+    "metadata.json",
+    JSON.stringify(metadata, null, 2),
+    "application/json;charset=utf-8"
+  );
+  await downloadAuditTextFile(
+    active.folderName,
+    "_bundle_complete.txt",
+    `complete=true\ncreatedAt=${active.createdAt}\narticleTitle=${metadata.articleTitle}\ngeneratedCards=downloaded\n`
+  );
+
+  const bundle = {
+    folderName: active.folderName,
+    downloadFolder: `Downloads\\${CARD_AUDIT_SUBFOLDER}\\${active.folderName}`,
+    metadata
+  };
+
+  await clearPendingCardAuditRun(pendingId);
+  activeCardAuditDownload = null;
+
+  await sendPageStatus(
+    pending.radPrimerTabId,
+    "Audit Bundle Ready",
+    `Saved card audit bundle: ${bundle.downloadFolder}. Wake-up message will be copied to the clipboard.`,
+    { done: true }
+  );
+
+  return {
+    bundle,
+    clipboardText: buildAuditWakeMessage(bundle)
+  };
 }
 
 function getImageOnlySettings(settings) {
@@ -467,6 +889,14 @@ async function installChatGptDraftQuotaGuard(tabId) {
   });
 }
 
+async function ensureChatGptPaster(tabId) {
+  await installChatGptDraftQuotaGuard(tabId);
+  await chrome.scripting.executeScript({
+    target: { tabId },
+    files: ["chatgpt-paster.js"]
+  });
+}
+
 function makeSpeechifyTitleFromText(text) {
   const lines = String(text || "")
     .split(/\n+/)
@@ -503,9 +933,10 @@ function buildSpeechifyPayload(settings, articleTitle) {
   };
 }
 
-function buildChatGptComposerText(settings, packageText) {
+function buildChatGptComposerText(settings, packageText, options = {}) {
   const instruction = settings.chatgptInstruction || DEFAULTS.chatgptInstruction;
-  return `${instruction}\n\n${packageText}`;
+  const extraInstruction = String(options.extraComposerInstruction || "").trim();
+  return [instruction, extraInstruction, packageText].filter(Boolean).join("\n\n");
 }
 
 async function openChatGptAndStart(settings, packageText, articleTitle, options = {}) {
@@ -514,15 +945,11 @@ async function openChatGptAndStart(settings, packageText, articleTitle, options 
     throw new Error("ChatGPT URL must start with https://chatgpt.com/ or https://chat.openai.com/");
   }
 
-  const composerText = buildChatGptComposerText(settings, packageText);
+  const composerText = buildChatGptComposerText(settings, packageText, options);
   const tab = await chrome.tabs.create({ url, active: false });
 
   await waitForTabComplete(tab.id, 45000, "ChatGPT");
-  await installChatGptDraftQuotaGuard(tab.id);
-  await chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    files: ["chatgpt-paster.js"]
-  });
+  await ensureChatGptPaster(tab.id);
 
   const response = await sendTabMessage(tab.id, {
     type: "CHATGPT_FILL_COMPOSER",
@@ -531,10 +958,11 @@ async function openChatGptAndStart(settings, packageText, articleTitle, options 
     waitForResult: Boolean(
       options.waitForResult ?? (settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings))
     ),
-    timeoutMs: Math.max(30, parseInt(settings.chatgptTimeoutSec || "900", 10) || 900) * 1000,
+    timeoutMs: options.timeoutMs || timeoutMsFromSeconds(settings.chatgptTimeoutSec, 900, 30),
     speechify: options.speechify === undefined ? buildSpeechifyPayload(settings, articleTitle) : options.speechify,
     backgroundRun: options.backgroundRun !== false,
     preserveAuditBlock: Boolean(options.preserveAuditBlock),
+    expectedOutputKind: options.expectedOutputKind || "",
     completionMessageType: options.completionMessageType,
     completionPayload: options.completionPayload || null
   });
@@ -633,6 +1061,73 @@ async function clearPendingGroupingRun(pendingId) {
   await chrome.storage.local.remove(`${PENDING_GROUPING_PREFIX}${pendingId}`);
 }
 
+async function savePendingCardAuditRun(pendingId, payload) {
+  await chrome.storage.local.set({ [`${PENDING_CARD_AUDIT_PREFIX}${pendingId}`]: payload });
+}
+
+async function takePendingCardAuditRun(pendingId) {
+  const key = `${PENDING_CARD_AUDIT_PREFIX}${pendingId}`;
+  const stored = await chrome.storage.local.get(key);
+  return stored[key] || null;
+}
+
+async function clearPendingCardAuditRun(pendingId) {
+  await chrome.storage.local.remove(`${PENDING_CARD_AUDIT_PREFIX}${pendingId}`);
+}
+
+async function getLatestPendingCardAuditRun() {
+  const stored = await chrome.storage.local.get(null);
+  return Object.entries(stored)
+    .filter(([key, value]) => key.startsWith(PENDING_CARD_AUDIT_PREFIX) && value)
+    .map(([key, pending]) => ({
+      pendingId: key.slice(PENDING_CARD_AUDIT_PREFIX.length),
+      pending
+    }))
+    .sort((a, b) => (b.pending?.createdAt || 0) - (a.pending?.createdAt || 0))[0] || null;
+}
+
+async function openFinalCardPrompt(settings, extraction, tab, statusPrefix = "card prompt") {
+  const articleTitle = extraction.meta?.title || "";
+
+  if (!shouldCaptureCardAuditBundle(settings)) {
+    await openChatGptAndStart(settings, extraction.output, articleTitle, {
+      waitForResult: false,
+      speechify: null
+    });
+    return {
+      message: `Sent ${statusPrefix} to ChatGPT. This mode stops after submission.`,
+      capturing: false
+    };
+  }
+
+  const pendingId = crypto.randomUUID();
+  await savePendingCardAuditRun(pendingId, {
+    radPrimerTabId: tab.id,
+    radPrimerUrl: tab.url || "",
+    settings,
+    articleTitle,
+    sourcePackage: extraction.output,
+    extractionMeta: extraction.meta || {},
+    downloadFiles: extraction.downloadFiles || [],
+    createdAt: Date.now()
+  });
+
+  await openChatGptAndStart(settings, extraction.output, articleTitle, {
+    waitForResult: true,
+    speechify: null,
+    extraComposerInstruction: CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION,
+    expectedOutputKind: "card_tsv_download",
+    timeoutMs: timeoutMsFromSeconds(settings.cardAuditTimeoutSec, 3600, 600),
+    completionMessageType: "RADPRIMER_CARD_AUDIT_CAPTURE_DONE",
+    completionPayload: { pendingId, radPrimerTabId: tab.id }
+  });
+
+  return {
+    message: `Sent ${statusPrefix} to ChatGPT. The generated cards will be captured into an audit bundle.`,
+    capturing: true
+  };
+}
+
 async function runFinalCardModeAfterGrouping(pending, groupingText) {
   const grouping = parseGroupingAudit(groupingText);
   const settings = {
@@ -665,15 +1160,20 @@ async function runFinalCardModeAfterGrouping(pending, groupingText) {
     await sendPageStatus(radPrimerTabId, "Images", describeImageDownloadResult(result));
   }
 
-  await sendPageStatus(radPrimerTabId, "ChatGPT", "Opening ChatGPT with the final card prompt...");
-  await openChatGptAndStart(settings, extraction.output, extraction.meta?.title || "", {
-    waitForResult: false,
-    speechify: null
-  });
+  await sendPageStatus(
+    radPrimerTabId,
+    "ChatGPT",
+    shouldCaptureCardAuditBundle(settings)
+      ? "Opening ChatGPT with the final card prompt and audit capture enabled..."
+      : "Opening ChatGPT with the final card prompt..."
+  );
+  const finalRun = await openFinalCardPrompt(settings, extraction, radPrimerTab, "grouped card-mode prompt");
 
-  await sendPageStatus(radPrimerTabId, "Sent", "Grouped card-mode prompt sent to ChatGPT.", {
+  await sendPageStatus(radPrimerTabId, "Sent", finalRun.message || "Grouped card-mode prompt sent to ChatGPT.", {
     done: true
   });
+
+  return finalRun;
 }
 
 async function runRadPrimerFromPage(tab) {
@@ -689,8 +1189,10 @@ async function runRadPrimerFromPage(tab) {
 
   await sendPageStatus(tab.id, "Extracting", "Extracting article and image captions...");
   const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  const willRunGroupingPreflight =
+    shouldRunGroupingPreflight(settings) && extraction.meta?.totalImagesOnPage > 1;
 
-  if (settings.downloadImages && extraction.downloadFiles?.length) {
+  if (!willRunGroupingPreflight && settings.downloadImages && extraction.downloadFiles?.length) {
     await sendPageStatus(tab.id, "Images", "Downloading selected image files...");
     const result = await downloadSelectedImages(extraction.downloadFiles, settings);
     await sendPageStatus(tab.id, "Images", describeImageDownloadResult(result));
@@ -708,7 +1210,7 @@ async function runRadPrimerFromPage(tab) {
     };
   }
 
-  if (shouldRunGroupingPreflight(settings) && extraction.meta?.totalImagesOnPage > 1) {
+  if (willRunGroupingPreflight) {
     await sendPageStatus(
       tab.id,
       "Grouping",
@@ -729,6 +1231,7 @@ async function runRadPrimerFromPage(tab) {
     const pendingId = crypto.randomUUID();
     await savePendingGroupingRun(pendingId, {
       radPrimerTabId: tab.id,
+      radPrimerUrl: tab.url || "",
       settings,
       articleTitle: extraction.meta?.title || "",
       createdAt: Date.now()
@@ -765,19 +1268,29 @@ async function runRadPrimerFromPage(tab) {
   }
 
   const willWaitForNarrative = settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings);
+  const willCaptureCardAudit = shouldCaptureCardAuditBundle(settings);
   await sendPageStatus(
     tab.id,
     "ChatGPT",
     willWaitForNarrative
       ? "Opening ChatGPT and starting the narrative job..."
+      : willCaptureCardAudit
+        ? "Opening ChatGPT, sending the card prompt, and capturing the generated cards for audit..."
       : "Opening ChatGPT, focusing it, and sending the prompt..."
   );
-  await openChatGptAndStart(settings, extraction.output, extraction.meta?.title || "");
+  let finalRun = null;
+  if (willCaptureCardAudit) {
+    finalRun = await openFinalCardPrompt(settings, extraction, tab, "card-mode prompt");
+  } else {
+    await openChatGptAndStart(settings, extraction.output, extraction.meta?.title || "");
+  }
   await sendPageStatus(
     tab.id,
     "Sent",
     willWaitForNarrative
       ? "Sent to ChatGPT. The ChatGPT tab will capture the narrative and send it to Speechify if enabled."
+      : willCaptureCardAudit
+        ? finalRun?.message || "Sent to ChatGPT. The generated cards will be captured into an audit bundle."
       : "Sent to ChatGPT. This mode stops after submission.",
     { done: true }
   );
@@ -785,6 +1298,8 @@ async function runRadPrimerFromPage(tab) {
   return {
     message: willWaitForNarrative
       ? "Sent to ChatGPT. The ChatGPT tab will capture the narrative and send it to Speechify if enabled."
+      : willCaptureCardAudit
+        ? finalRun?.message || "Sent to ChatGPT. The generated cards will be captured into an audit bundle."
       : "Sent to ChatGPT. This mode stops after submission."
   };
 }
@@ -816,6 +1331,79 @@ async function runRadPrimerImageDownloadOnly(tab) {
     message,
     meta: extraction.meta || null,
     download: result
+  };
+}
+
+async function exportRadPrimerAuditSourceOnly(tab) {
+  if (!tab?.id || !/^https:\/\/app\.radprimer\.com\//.test(tab.url || "")) {
+    throw new Error("Open a RadPrimer article page first.");
+  }
+
+  await sendPageStatus(tab.id, "Audit Source", "Extracting source-only audit bundle...");
+  const settings = {
+    ...(await loadRunnerSettings()),
+    downloadImages: false,
+    openChatGPT: false,
+    autoSubmitChatGPT: false,
+    autoSendToSpeechify: false,
+    speechifyAutoSave: false
+  };
+  const promptText = await loadPrompt(settings.engine, settings.mode);
+  const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  const pending = {
+    radPrimerTabId: tab.id,
+    radPrimerUrl: tab.url || "",
+    settings,
+    articleTitle: extraction.meta?.title || "",
+    sourcePackage: extraction.output,
+    extractionMeta: extraction.meta || {},
+    downloadFiles: extraction.downloadFiles || [],
+    createdAt: Date.now()
+  };
+  const bundle = await stageCardAuditSourceOnlyBundle({ pending });
+  const clipboardText = buildSourceOnlyWakeMessage(bundle);
+
+  await sendPageStatus(
+    tab.id,
+    "Audit Source Ready",
+    `Saved source-only audit bundle: ${bundle.downloadFolder}.`,
+    { done: true }
+  );
+
+  return {
+    bundle,
+    clipboardText,
+    message: `Saved source-only audit bundle: ${bundle.downloadFolder}.`
+  };
+}
+
+async function recoverLatestCardAuditDownloadFromChatGptTab(tab) {
+  if (!tab?.id || !/^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(tab.url || "")) {
+    throw new Error("Open the completed ChatGPT conversation tab first.");
+  }
+
+  const latest = await getLatestPendingCardAuditRun();
+  if (!latest) {
+    throw new Error("No pending card-audit run was found. If needed, export an audit source bundle from the RadPrimer article.");
+  }
+
+  await ensureChatGptPaster(tab.id);
+  const response = await sendTabMessage(tab.id, {
+    type: "CHATGPT_CAPTURE_LATEST_CARD_TSV_DOWNLOAD",
+    completionPayload: {
+      pendingId: latest.pendingId,
+      radPrimerTabId: latest.pending.radPrimerTabId
+    }
+  });
+
+  if (!response?.ok) {
+    throw new Error(response?.error || "Could not capture the latest ChatGPT TSV download.");
+  }
+
+  return {
+    ...response,
+    clipboardText: response.auditDownload?.clipboardText || response.clipboardText || "",
+    bundle: response.auditDownload?.bundle || response.bundle || null
   };
 }
 
@@ -916,6 +1504,36 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     return true;
   }
 
+  if (message?.type === "EXPORT_RADPRIMER_AUDIT_SOURCE_ONLY") {
+    (async () => {
+      const tab = message.tabId ? await chrome.tabs.get(message.tabId) : _sender?.tab;
+      const result = await exportRadPrimerAuditSourceOnly(tab);
+      sendResponse({ ok: true, ...result });
+    })().catch(async (error) => {
+      const tabId = message.tabId || _sender?.tab?.id;
+      if (tabId) {
+        await sendPageStatus(tabId, "Audit Source Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RECOVER_CARD_AUDIT_TSV_FROM_CHATGPT_TAB") {
+    (async () => {
+      const tab = message.tabId ? await chrome.tabs.get(message.tabId) : _sender?.tab;
+      const result = await recoverLatestCardAuditDownloadFromChatGptTab(tab);
+      sendResponse({ ok: true, ...result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
   if (message?.type === "RADPRIMER_GROUPING_PREFLIGHT_DONE") {
     (async () => {
       const pendingId = message.completionPayload?.pendingId;
@@ -929,6 +1547,93 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const tabId = message.completionPayload?.radPrimerTabId;
       if (tabId) {
         await sendPageStatus(tabId, "Grouping Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RADPRIMER_CARD_AUDIT_PREPARE_DOWNLOAD") {
+    (async () => {
+      const pendingId = message.completionPayload?.pendingId;
+      const bundle = await prepareCardAuditDownloadBundle({
+        pendingId,
+        sentinelText: message.sentinelText || ""
+      });
+      sendResponse({ ok: true, bundle });
+    })().catch(async (error) => {
+      const tabId = message.completionPayload?.radPrimerTabId;
+      if (tabId) {
+        await sendPageStatus(tabId, "Audit Bundle Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RADPRIMER_CARD_AUDIT_WAIT_DOWNLOAD") {
+    (async () => {
+      const pendingId = message.completionPayload?.pendingId;
+      const result = await waitForPreparedCardAuditDownload(pendingId, message.timeoutMs || 180000);
+      sendResponse({ ok: true, ...result });
+    })().catch(async (error) => {
+      const tabId = message.completionPayload?.radPrimerTabId;
+      if (tabId) {
+        await sendPageStatus(tabId, "Audit Bundle Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RADPRIMER_CARD_AUDIT_CAPTURE_DONE") {
+    (async () => {
+      const pendingId = message.completionPayload?.pendingId;
+      if (!pendingId) throw new Error("Missing card audit pending id.");
+      const pending = await takePendingCardAuditRun(pendingId);
+      if (!pending) throw new Error("Could not find pending RadPrimer card audit run.");
+
+      if (message.result?.ok === false) {
+        if (activeCardAuditDownload?.pendingId === pendingId) activeCardAuditDownload = null;
+        throw new Error(message.result.error || "ChatGPT card capture failed.");
+      }
+
+      const assistantText = message.result?.assistantText || "";
+      if (!assistantText.trim()) throw new Error("ChatGPT card capture returned no text.");
+      if (!looksLikeInlineCardTsv(assistantText)) {
+        throw new Error(
+          "ChatGPT finished, but the legacy captured response did not look like TSV."
+        );
+      }
+
+      await sendPageStatus(
+        pending.radPrimerTabId,
+        "Audit Bundle",
+        "Saving generated cards and source package into Downloads\\RadPrimerAudit..."
+      );
+      const bundle = await stageCardAuditBundle({ pending, assistantText });
+      const clipboardText = buildAuditWakeMessage(bundle);
+      await clearPendingCardAuditRun(pendingId);
+      await sendPageStatus(
+        pending.radPrimerTabId,
+        "Audit Bundle Ready",
+        `Saved card audit bundle: ${bundle.downloadFolder}. Wake-up message will be copied to the clipboard.`,
+        { done: true }
+      );
+      sendResponse({ ok: true, bundle, clipboardText });
+    })().catch(async (error) => {
+      const tabId = message.completionPayload?.radPrimerTabId;
+      if (tabId) {
+        await sendPageStatus(tabId, "Audit Bundle Error", String(error?.message || error), {
           error: true
         });
       }
