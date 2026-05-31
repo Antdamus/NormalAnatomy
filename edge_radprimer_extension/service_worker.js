@@ -97,6 +97,7 @@ const DEFAULTS = {
 };
 
 let activeCardAuditDownload = null;
+let lastSpeechifyPlayerTabId = null;
 const pendingImageDownloadFilenames = new Map();
 
 function buildSpeechifyFolderUrl(folderId) {
@@ -317,23 +318,57 @@ async function getSpeechifyTab({ focus = false, createIfMissing = false } = {}) 
   return tab;
 }
 
+async function getSpeechifyPlayerStates(tabs) {
+  const states = [];
+  let lastError = null;
+
+  for (const tab of tabs) {
+    if (!tab?.id) continue;
+    try {
+      const response = await sendSpeechifyMessageWithInjection(tab.id, {
+        type: "SPEECHIFY_PLAYER_REMOTE",
+        action: "state"
+      });
+      if (response?.ok && response.result?.available) {
+        states.push({ tab, state: response.result });
+      } else if (!response?.ok) {
+        lastError = new Error(response?.error || "Speechify player state failed.");
+      }
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  return { states, lastError };
+}
+
+function chooseSpeechifyPlayerState(states) {
+  if (!states.length) return null;
+  return (
+    states.find((item) => item.state?.isPlaying) ||
+    states.find((item) => item.tab?.id === lastSpeechifyPlayerTabId) ||
+    states.find((item) => item.tab?.active) ||
+    states[0]
+  );
+}
+
+async function focusSpeechifyTab(tab) {
+  const focusedTab = await chrome.tabs.update(tab.id, { active: true });
+  if (focusedTab.windowId) await chrome.windows.update(focusedTab.windowId, { focused: true });
+  return focusedTab;
+}
+
 async function sendSpeechifyPlayerRemote(payload = {}) {
   const action = String(payload.action || "state");
   const tabs = await chrome.tabs.query({ url: ["https://app.speechify.com/*"] });
 
   if (action === "focus") {
-    for (const candidate of tabs) {
-      try {
-        const response = await sendSpeechifyMessageWithInjection(candidate.id, {
-          type: "SPEECHIFY_PLAYER_REMOTE",
-          action: "state"
-        });
-        if (response?.ok) {
-          const tab = await chrome.tabs.update(candidate.id, { active: true });
-          if (tab.windowId) await chrome.windows.update(tab.windowId, { focused: true });
-          return response.result;
-        }
-      } catch {}
+    const { states } = await getSpeechifyPlayerStates(tabs);
+    const chosen = chooseSpeechifyPlayerState(states);
+    if (chosen?.tab?.id) {
+      await focusSpeechifyTab(chosen.tab);
+      lastSpeechifyPlayerTabId = chosen.tab.id;
+      return chosen.state;
     }
 
     const tab = await getSpeechifyTab({ focus: true, createIfMissing: true });
@@ -347,15 +382,33 @@ async function sendSpeechifyPlayerRemote(payload = {}) {
     throw new Error("No Speechify tab is open. Open the Speechify lecture/player tab first.");
   }
 
+  const { states, lastError: stateError } = await getSpeechifyPlayerStates(tabs);
+  const chosen = chooseSpeechifyPlayerState(states);
+
+  if (action === "state") {
+    if (chosen?.state) {
+      lastSpeechifyPlayerTabId = chosen.tab.id;
+      return chosen.state;
+    }
+    throw stateError || new Error("No Speechify player is visible. Open a Speechify lecture/player tab first.");
+  }
+
+  const orderedTabs = chosen?.tab?.id
+    ? [chosen.tab, ...tabs.filter((tab) => tab.id !== chosen.tab.id)]
+    : tabs;
+
   let lastError = null;
-  for (const tab of tabs) {
+  for (const tab of orderedTabs) {
     try {
       const response = await sendSpeechifyMessageWithInjection(tab.id, {
         ...payload,
         type: "SPEECHIFY_PLAYER_REMOTE",
         action
       });
-      if (response?.ok) return response.result;
+      if (response?.ok) {
+        lastSpeechifyPlayerTabId = tab.id;
+        return response.result;
+      }
       lastError = new Error(response?.error || "Speechify player command failed.");
     } catch (error) {
       lastError = error;

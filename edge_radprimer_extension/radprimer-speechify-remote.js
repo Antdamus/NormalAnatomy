@@ -108,6 +108,14 @@
           color: rgba(226, 232, 240, 0.72);
           font-weight: 800;
         }
+        .bubble-section {
+          max-width: 116px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: #bfdbfe;
+          font-weight: 900;
+        }
         .panel {
           position: absolute;
           left: 0;
@@ -231,6 +239,7 @@
           <span class="dot"></span>
           <span class="bubble-label">Audio</span>
           <span class="bubble-time">--:--</span>
+          <span class="bubble-section" hidden></span>
         </button>
         <div class="panel" role="group" aria-label="Speechify remote">
           <div class="top">
@@ -301,16 +310,21 @@
     const title = shadow.querySelector(".title");
     const time = shadow.querySelector(".time");
     const bubbleTime = shadow.querySelector(".bubble-time");
+    const bubbleSection = shadow.querySelector(".bubble-section");
     const fill = shadow.querySelector(".fill");
     const playButtons = shadow.querySelectorAll(".panel .play");
     const status = shadow.querySelector(".status");
     const dot = shadow.querySelector(".dot");
     const speed = normalizeSpeed(state?.speed || "");
+    const sectionLabel = state?.lectureSection?.label || "";
 
     root.classList.toggle("busy", busy);
     title.textContent = state?.title || "Speechify";
     time.textContent = state?.elapsed && state?.duration ? `${state.elapsed} / ${state.duration}` : "--:-- / --:--";
     bubbleTime.textContent = state?.elapsed || "--:--";
+    bubbleSection.textContent = sectionLabel;
+    bubbleSection.hidden = !sectionLabel;
+    bubbleSection.title = sectionLabel ? `Current lecture section: ${sectionLabel}` : "";
     fill.style.width = `${Math.max(0, Math.min(100, Number(state?.progress || 0)))}%`;
     playButtons.forEach((button) => {
       button.textContent = state?.isPlaying ? "Pause" : "Play";
@@ -324,7 +338,8 @@
     if (errorMessage) {
       status.textContent = errorMessage;
     } else if (state?.available) {
-      status.textContent = state.speed ? `${state.speed} speed` : "Connected";
+      const speedText = state.speed ? `${state.speed} speed` : "Connected";
+      status.textContent = sectionLabel ? `${speedText} / ${sectionLabel}` : speedText;
     } else {
       status.textContent = "Open a Speechify lecture tab first.";
     }
