@@ -5,6 +5,27 @@
   const STYLE_ID = "radprimer-image-tools-style";
   const HOST_ID = "radprimer-image-zoom-host";
   const FLOATING_CONTROL_ID = "radprimer-floating-zoom-control";
+  const SHORTCUT_STORAGE_KEY = "radprimerZoomShortcutSettings";
+  const DEFAULT_SHORTCUTS = {
+    close: "s",
+    previous: "k",
+    next: "l",
+    caption: "t",
+    annotation: "a",
+    zoomIn: "+",
+    zoomOut: "-",
+    reset: "0"
+  };
+  const SHORTCUT_ACTIONS = [
+    ["close", "Close zoom"],
+    ["previous", "Previous image"],
+    ["next", "Next image"],
+    ["caption", "Hide/show caption"],
+    ["annotation", "Arrows on/off"],
+    ["zoomIn", "Zoom in"],
+    ["zoomOut", "Zoom out"],
+    ["reset", "Reset zoom"]
+  ];
 
   let zoomState = {
     open: false,
@@ -19,9 +40,13 @@
     captionCollapsed: false,
     annotated: true,
     imageId: "",
-    imageUrl: ""
+    imageUrl: "",
+    imageNumber: null,
+    total: null
   };
   let lastOpenAt = 0;
+  let shortcutSettings = { ...DEFAULT_SHORTCUTS };
+  let shortcutCaptureAction = "";
 
   function injectPageStyle() {
     if (document.getElementById(STYLE_ID)) return;
@@ -144,6 +169,43 @@
     );
   }
 
+  function normalizeShortcutKey(value) {
+    const raw = String(value || "");
+    if (raw === " " || raw.toLowerCase() === "spacebar") return "Space";
+    if (raw.length === 1) return raw.toLowerCase();
+    return raw;
+  }
+
+  function displayShortcutKey(value) {
+    const key = normalizeShortcutKey(value);
+    if (!key) return "Unassigned";
+    if (key === "Space") return "Space";
+    if (key === "ArrowLeft") return "Left arrow";
+    if (key === "ArrowRight") return "Right arrow";
+    if (key === "ArrowUp") return "Up arrow";
+    if (key === "ArrowDown") return "Down arrow";
+    if (key === "+") return "+";
+    if (key.length === 1) return key.toUpperCase();
+    return key;
+  }
+
+  async function loadShortcutSettings() {
+    try {
+      const stored = await chrome.storage.local.get(SHORTCUT_STORAGE_KEY);
+      const saved = stored?.[SHORTCUT_STORAGE_KEY] || {};
+      shortcutSettings = { ...DEFAULT_SHORTCUTS, ...saved };
+    } catch {
+      shortcutSettings = { ...DEFAULT_SHORTCUTS };
+    }
+    renderShortcutPanel();
+  }
+
+  async function saveShortcutSettings() {
+    try {
+      await chrome.storage.local.set({ [SHORTCUT_STORAGE_KEY]: shortcutSettings });
+    } catch {}
+  }
+
   function getActiveImageElement() {
     const candidates = Array.from(
       document.querySelectorAll(
@@ -192,6 +254,44 @@
       document.querySelector(`#docLB a[rel="${cssEscape(imageId)}"] img[data-figureno]`) ||
       document.querySelector(`#gallery a[rel="${cssEscape(imageId)}"] img[data-figureno]`)
     );
+  }
+
+  function getImageThumbs() {
+    const thumbs = Array.from(
+      document.querySelectorAll(
+        [
+          "#docLB a.trigger img[data-figureno]",
+          "#docLB a.image-thumb-js img[data-figureno]",
+          "#gallery a.image-thumb-js img[data-figureno]"
+        ].join(",")
+      )
+    );
+    const seen = new Map();
+
+    thumbs.forEach((thumb, index) => {
+      const anchor = thumb.closest("a");
+      const imageId = anchor?.getAttribute("rel") || "";
+      const key = imageId || `thumb-${index}`;
+      if (!seen.has(key)) seen.set(key, thumb);
+    });
+
+    return Array.from(seen.values()).sort((a, b) => imageNumberFromThumb(a, 0) - imageNumberFromThumb(b, 0));
+  }
+
+  function getInfoFromThumb(thumb, fallbackIndex = 0) {
+    const anchor = thumb?.closest("a");
+    const imageId = anchor?.getAttribute("rel") || "";
+    const imageNumber = thumb ? imageNumberFromThumb(thumb, fallbackIndex) : null;
+    const total = parseInt(thumb?.dataset?.groupcount || "", 10);
+
+    return {
+      active: null,
+      thumb,
+      imageId,
+      imageNumber,
+      total: Number.isFinite(total) ? total : getImageThumbs().length || null,
+      captionHtml: buildCaptionHtml(thumb?.dataset?.caption || "")
+    };
   }
 
   function getActiveImageInfo() {
@@ -479,6 +579,94 @@
           pointer-events: auto;
         }
 
+        .image-jump {
+          height: 42px;
+          min-width: 92px;
+          max-width: 128px;
+          border: 1px solid rgba(191, 219, 254, 0.38);
+          border-radius: 999px;
+          background: rgba(30, 41, 59, 0.9);
+          color: #f8fafc;
+          padding: 0 10px;
+          font: 850 14px/1 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          cursor: pointer;
+          outline: none;
+          box-shadow: 0 12px 34px rgba(0, 0, 0, 0.36);
+        }
+
+        .image-jump:hover,
+        .image-jump:focus {
+          background: rgba(51, 65, 85, 0.96);
+        }
+
+        .shortcut-panel {
+          position: absolute;
+          top: 70px;
+          right: 18px;
+          z-index: 4;
+          width: 286px;
+          max-width: calc(100vw - 36px);
+          padding: 12px;
+          border-radius: 16px;
+          background: rgba(11, 17, 29, 0.94);
+          border: 1px solid rgba(191, 219, 254, 0.28);
+          box-shadow: 0 24px 76px rgba(0, 0, 0, 0.42);
+          backdrop-filter: blur(16px);
+          pointer-events: auto;
+        }
+
+        .shortcut-panel[hidden] {
+          display: none;
+        }
+
+        .shortcut-head {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          margin-bottom: 9px;
+          color: rgba(248, 250, 252, 0.9);
+          font-size: 13px;
+          font-weight: 850;
+        }
+
+        .shortcut-reset {
+          min-width: auto;
+          width: auto;
+          height: 28px;
+          padding: 0 10px;
+          border-radius: 999px;
+          font-size: 11px;
+          box-shadow: none;
+        }
+
+        .shortcut-list {
+          display: grid;
+          gap: 7px;
+        }
+
+        .shortcut-row {
+          display: grid;
+          grid-template-columns: 1fr 86px;
+          align-items: center;
+          gap: 8px;
+          color: rgba(226, 232, 240, 0.86);
+          font-size: 12px;
+        }
+
+        .shortcut-key {
+          min-width: 0;
+          height: 30px;
+          border-radius: 999px;
+          font-size: 12px;
+          box-shadow: none;
+        }
+
+        .shortcut-key.listening {
+          color: #0f172a;
+          background: #bfdbfe;
+        }
+
         button {
           min-width: 42px;
           height: 42px;
@@ -545,11 +733,20 @@
             <span class="caption-pill-label">Caption hidden</span>
           </button>
           <div class="tools">
+            <select class="image-jump" title="Jump to image"></select>
             <button class="zoom-out" type="button" title="Zoom out">-</button>
             <button class="zoom-in" type="button" title="Zoom in">+</button>
             <button class="reset" type="button" title="Reset">1:1</button>
+            <button class="shortcut-toggle" type="button" title="Keyboard shortcuts">Keys</button>
             <button class="close" type="button" title="Close">x</button>
           </div>
+        </div>
+        <div class="shortcut-panel" hidden>
+          <div class="shortcut-head">
+            <span>Zoom shortcuts</span>
+            <button class="shortcut-reset" type="button">Reset</button>
+          </div>
+          <div class="shortcut-list"></div>
         </div>
         <div class="stage">
           <img alt="RadPrimer image">
@@ -560,6 +757,16 @@
 
     shadow.querySelector(".close").addEventListener("click", closeZoomViewer);
     shadow.querySelector(".caption-pill").addEventListener("click", toggleCaption);
+    shadow.querySelector(".image-jump").addEventListener("change", (event) => {
+      navigateZoomToImageNumber(parseInt(event.currentTarget.value || "", 10));
+    });
+    shadow.querySelector(".shortcut-toggle").addEventListener("click", toggleShortcutPanel);
+    shadow.querySelector(".shortcut-reset").addEventListener("click", resetShortcutSettings);
+    shadow.querySelector(".shortcut-list").addEventListener("click", (event) => {
+      const button = event.target?.closest?.("[data-shortcut-action]");
+      if (!button) return;
+      startShortcutCapture(button.dataset.shortcutAction);
+    });
     shadow.querySelector(".zoom-in").addEventListener("click", () => zoomBy(1.25));
     shadow.querySelector(".zoom-out").addEventListener("click", () => zoomBy(1 / 1.25));
     shadow.querySelector(".reset").addEventListener("click", resetZoom);
@@ -580,7 +787,88 @@
       applyTransform();
     });
 
+    renderShortcutPanel();
     return host;
+  }
+
+  function imageLabelFromInfo(info) {
+    if (!info?.imageNumber) return "image";
+    return info.total ? `image ${info.imageNumber}/${info.total}` : `image ${info.imageNumber}`;
+  }
+
+  function updateImageJump(shadow, currentNumber) {
+    const select = shadow.querySelector(".image-jump");
+    if (!select) return;
+
+    const infos = getImageThumbs()
+      .map((thumb, index) => getInfoFromThumb(thumb, index))
+      .filter((info) => info.imageNumber);
+
+    select.innerHTML = "";
+    infos.forEach((info) => {
+      const option = document.createElement("option");
+      option.value = String(info.imageNumber);
+      option.textContent = info.total ? `${info.imageNumber}/${info.total}` : `image ${info.imageNumber}`;
+      select.appendChild(option);
+    });
+
+    select.value = currentNumber ? String(currentNumber) : "";
+    select.style.display = infos.length > 1 ? "" : "none";
+  }
+
+  function syncUnderlyingThumbnail(info) {
+    const anchor = info?.thumb?.closest("a");
+    if (!anchor) return;
+    try {
+      anchor.click();
+      scheduleEnhancement();
+    } catch {}
+  }
+
+  function setZoomViewerImage(info, options = {}) {
+    const host = ensureZoomHost();
+    const shadow = host.shadowRoot;
+    const annotated =
+      typeof options.annotated === "boolean"
+        ? options.annotated
+        : imageUrlIsAnnotated(options.sourceUrl || zoomState.imageUrl);
+    const imageUrl =
+      buildImageUrl(info.imageId, annotated) ||
+      setImageUrlAnnotated(options.sourceUrl || zoomState.imageUrl, annotated);
+
+    if (!imageUrl) return false;
+
+    const imageLabel = imageLabelFromInfo(info);
+    shadow.querySelector(".stage > img").src = imageUrl;
+    shadow.querySelector(".image-number").textContent = imageLabel;
+    shadow.querySelector(".caption").innerHTML = info.captionHtml || "RadPrimer image";
+    shadow.querySelector(".caption-pill-label").textContent = `${imageLabel} caption`;
+    updateImageJump(shadow, info.imageNumber);
+
+    if (options.syncThumb) syncUnderlyingThumbnail(info);
+
+    host.style.display = "block";
+    zoomState = {
+      ...zoomState,
+      open: true,
+      dragging: false,
+      annotated,
+      imageId: info.imageId,
+      imageUrl,
+      imageNumber: info.imageNumber,
+      total: info.total || null,
+      captionCollapsed: options.resetCaption ? false : zoomState.captionCollapsed
+    };
+
+    if (options.resetView) {
+      zoomState.scale = 1;
+      zoomState.x = 0;
+      zoomState.y = 0;
+    }
+
+    applyCaptionState();
+    applyTransform();
+    return true;
   }
 
   function openZoomViewer() {
@@ -591,35 +879,12 @@
       return;
     }
 
-    const host = ensureZoomHost();
-    const shadow = host.shadowRoot;
-    const imageLabel = info.imageNumber
-      ? info.total
-        ? `image ${info.imageNumber}/${info.total}`
-        : `image ${info.imageNumber}`
-      : "image";
-    const annotated = imageUrlIsAnnotated(src);
-    const imageUrl = buildImageUrl(info.imageId, annotated) || src;
-
-    shadow.querySelector(".stage > img").src = imageUrl;
-    shadow.querySelector(".image-number").textContent = imageLabel;
-    shadow.querySelector(".caption").innerHTML = info.captionHtml || "RadPrimer image";
-    shadow.querySelector(".caption-pill-label").textContent = `${imageLabel} caption`;
-    host.style.display = "block";
-    zoomState = {
-      ...zoomState,
-      open: true,
-      scale: 1,
-      x: 0,
-      y: 0,
-      dragging: false,
-      captionCollapsed: false,
-      annotated,
-      imageId: info.imageId,
-      imageUrl
-    };
-    applyCaptionState();
-    applyTransform();
+    setZoomViewerImage(info, {
+      sourceUrl: src,
+      annotated: imageUrlIsAnnotated(src),
+      resetView: true,
+      resetCaption: true
+    });
   }
 
   function openZoomViewerFromEvent(event) {
@@ -658,6 +923,82 @@
     applyCaptionState();
   }
 
+  function getShortcutPanel() {
+    return document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".shortcut-panel") || null;
+  }
+
+  function renderShortcutPanel() {
+    const host = document.getElementById(HOST_ID);
+    if (!host?.shadowRoot) return;
+    const list = host.shadowRoot.querySelector(".shortcut-list");
+    if (!list) return;
+
+    list.innerHTML = "";
+    SHORTCUT_ACTIONS.forEach(([id, label]) => {
+      const row = document.createElement("div");
+      row.className = "shortcut-row";
+      const labelEl = document.createElement("span");
+      labelEl.textContent = label;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "shortcut-key";
+      button.dataset.shortcutAction = id;
+      button.textContent =
+        shortcutCaptureAction === id ? "Press key..." : displayShortcutKey(shortcutSettings[id]);
+      button.classList.toggle("listening", shortcutCaptureAction === id);
+      row.append(labelEl, button);
+      list.appendChild(row);
+    });
+  }
+
+  function toggleShortcutPanel() {
+    const panel = getShortcutPanel();
+    if (!panel) return;
+    panel.hidden = !panel.hidden;
+    shortcutCaptureAction = "";
+    renderShortcutPanel();
+  }
+
+  function startShortcutCapture(actionId) {
+    if (!SHORTCUT_ACTIONS.some(([id]) => id === actionId)) return;
+    shortcutCaptureAction = actionId;
+    const panel = getShortcutPanel();
+    if (panel) panel.hidden = false;
+    renderShortcutPanel();
+  }
+
+  async function assignShortcutFromEvent(event) {
+    if (!shortcutCaptureAction) return false;
+    event.preventDefault();
+    event.stopPropagation();
+
+    const key = normalizeShortcutKey(event.key);
+    if (key === "Escape") {
+      shortcutCaptureAction = "";
+      renderShortcutPanel();
+      return true;
+    }
+
+    if (key) {
+      shortcutSettings = {
+        ...shortcutSettings,
+        [shortcutCaptureAction]: key
+      };
+      shortcutCaptureAction = "";
+      await saveShortcutSettings();
+      renderShortcutPanel();
+    }
+
+    return true;
+  }
+
+  async function resetShortcutSettings() {
+    shortcutSettings = { ...DEFAULT_SHORTCUTS };
+    shortcutCaptureAction = "";
+    await saveShortcutSettings();
+    renderShortcutPanel();
+  }
+
   function toggleAnnotation() {
     if (!zoomState.open) return;
     const nextAnnotated = !zoomState.annotated;
@@ -670,6 +1011,64 @@
     zoomState.imageUrl = nextUrl;
     img.src = nextUrl;
     applyTransform();
+  }
+
+  function getZoomNavigationInfos() {
+    return getImageThumbs()
+      .map((thumb, index) => getInfoFromThumb(thumb, index))
+      .filter((info) => info.imageId && info.imageNumber);
+  }
+
+  function getCurrentZoomIndex(infos) {
+    let index = infos.findIndex((info) => info.imageId === zoomState.imageId);
+    if (index >= 0) return index;
+    index = infos.findIndex((info) => info.imageNumber === zoomState.imageNumber);
+    return index >= 0 ? index : 0;
+  }
+
+  function navigateZoomBy(delta) {
+    if (!zoomState.open) return;
+    const infos = getZoomNavigationInfos();
+    if (!infos.length) return;
+
+    const currentIndex = getCurrentZoomIndex(infos);
+    const nextIndex = (currentIndex + delta + infos.length) % infos.length;
+    setZoomViewerImage(infos[nextIndex], {
+      annotated: zoomState.annotated,
+      resetView: true,
+      syncThumb: true
+    });
+  }
+
+  function navigateZoomToImageNumber(imageNumber) {
+    if (!zoomState.open || !Number.isFinite(imageNumber)) return;
+    const info = getZoomNavigationInfos().find((candidate) => candidate.imageNumber === imageNumber);
+    if (!info) return;
+
+    setZoomViewerImage(info, {
+      annotated: zoomState.annotated,
+      resetView: true,
+      syncThumb: true
+    });
+  }
+
+  function shortcutMatches(event, actionId) {
+    const saved = normalizeShortcutKey(shortcutSettings[actionId]);
+    const pressed = normalizeShortcutKey(event.key);
+    if (!saved || !pressed) return false;
+    if (saved === pressed) return true;
+    return actionId === "zoomIn" && saved === "+" && pressed === "=";
+  }
+
+  function performShortcutAction(actionId) {
+    if (actionId === "close") closeZoomViewer();
+    else if (actionId === "previous") navigateZoomBy(-1);
+    else if (actionId === "next") navigateZoomBy(1);
+    else if (actionId === "caption") toggleCaption();
+    else if (actionId === "annotation") toggleAnnotation();
+    else if (actionId === "zoomIn") zoomBy(1.25);
+    else if (actionId === "zoomOut") zoomBy(1 / 1.25);
+    else if (actionId === "reset") resetZoom();
   }
 
   function clamp(value, min, max) {
@@ -807,38 +1206,33 @@
     button.style.display = "inline-flex";
   }
 
-  function handleKeydown(event) {
+  async function handleKeydown(event) {
     if (!zoomState.open) return;
+
+    if (shortcutCaptureAction) {
+      await assignShortcutFromEvent(event);
+      return;
+    }
+
     if (event.ctrlKey || event.metaKey || event.altKey) return;
 
     const key = String(event.key || "").toLowerCase();
-    if (key === "escape" || key === "s") {
+    const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+    const inControl = Boolean(target?.closest?.("select, input, textarea, button, [contenteditable='true']"));
+
+    if (key === "escape") {
       event.preventDefault();
       closeZoomViewer();
       return;
     }
-    if (key === "t") {
-      event.preventDefault();
-      toggleCaption();
-      return;
-    }
-    if (key === "a") {
-      event.preventDefault();
-      toggleAnnotation();
-      return;
-    }
-    if (event.key === "+" || event.key === "=") {
-      event.preventDefault();
-      zoomBy(1.25);
-    }
-    if (event.key === "-") {
-      event.preventDefault();
-      zoomBy(1 / 1.25);
-    }
-    if (event.key === "0") {
-      event.preventDefault();
-      resetZoom();
-    }
+
+    if (inControl) return;
+
+    const action = SHORTCUT_ACTIONS.find(([id]) => shortcutMatches(event, id))?.[0] || "";
+    if (!action) return;
+
+    event.preventDefault();
+    performShortcutAction(action);
   }
 
   let scheduled = false;
@@ -854,6 +1248,7 @@
   document.addEventListener("click", handleDocumentClick, true);
   document.addEventListener("keydown", handleKeydown);
   document.addEventListener("radprimer-open-image-zoom", openZoomViewer);
+  loadShortcutSettings();
 
   const observer = new MutationObserver(scheduleEnhancement);
   observer.observe(document.documentElement, {
