@@ -16,7 +16,10 @@
     startY: 0,
     originX: 0,
     originY: 0,
-    captionCollapsed: false
+    captionCollapsed: false,
+    annotated: true,
+    imageId: "",
+    imageUrl: ""
   };
   let lastOpenAt = 0;
 
@@ -348,6 +351,39 @@
     }
   }
 
+  function buildImageUrl(imageId, annotated) {
+    if (!imageId) return "";
+    return new URL(
+      `/images/${imageId}?style=xlarge&annotated=${annotated ? "true" : "false"}`,
+      location.origin
+    ).href;
+  }
+
+  function setImageUrlAnnotated(src, annotated) {
+    if (!src) return "";
+    try {
+      const url = new URL(src.replace(/&amp;/g, "&"), location.href);
+      url.searchParams.set("style", "xlarge");
+      url.searchParams.set("annotated", annotated ? "true" : "false");
+      return url.href;
+    } catch {
+      return src;
+    }
+  }
+
+  function imageUrlIsAnnotated(src) {
+    try {
+      const value = new URL(src.replace(/&amp;/g, "&"), location.href).searchParams.get("annotated");
+      return value !== "false";
+    } catch {
+      return true;
+    }
+  }
+
+  function getZoomImageUrl(annotated) {
+    return buildImageUrl(zoomState.imageId, annotated) || setImageUrlAnnotated(zoomState.imageUrl, annotated);
+  }
+
   function ensureZoomHost() {
     let host = document.getElementById(HOST_ID);
     if (host?.shadowRoot) return host;
@@ -562,8 +598,10 @@
         ? `image ${info.imageNumber}/${info.total}`
         : `image ${info.imageNumber}`
       : "image";
+    const annotated = imageUrlIsAnnotated(src);
+    const imageUrl = buildImageUrl(info.imageId, annotated) || src;
 
-    shadow.querySelector(".stage > img").src = src;
+    shadow.querySelector(".stage > img").src = imageUrl;
     shadow.querySelector(".image-number").textContent = imageLabel;
     shadow.querySelector(".caption").innerHTML = info.captionHtml || "RadPrimer image";
     shadow.querySelector(".caption-pill-label").textContent = `${imageLabel} caption`;
@@ -575,7 +613,10 @@
       x: 0,
       y: 0,
       dragging: false,
-      captionCollapsed: false
+      captionCollapsed: false,
+      annotated,
+      imageId: info.imageId,
+      imageUrl
     };
     applyCaptionState();
     applyTransform();
@@ -617,6 +658,20 @@
     applyCaptionState();
   }
 
+  function toggleAnnotation() {
+    if (!zoomState.open) return;
+    const nextAnnotated = !zoomState.annotated;
+    const nextUrl = getZoomImageUrl(nextAnnotated);
+    if (!nextUrl) return;
+
+    const img = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".stage > img");
+    if (!img) return;
+    zoomState.annotated = nextAnnotated;
+    zoomState.imageUrl = nextUrl;
+    img.src = nextUrl;
+    applyTransform();
+  }
+
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
   }
@@ -644,7 +699,24 @@
     zoomBy(event.deltaY < 0 ? 1.14 : 1 / 1.14);
   }
 
+  function isPointInsideZoomImage(event) {
+    const img = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".stage > img");
+    if (!img) return false;
+    const rect = img.getBoundingClientRect();
+    return (
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom
+    );
+  }
+
   function onPointerDown(event) {
+    if (!isPointInsideZoomImage(event)) {
+      closeZoomViewer();
+      return;
+    }
+
     const stage = event.currentTarget;
     zoomState.dragging = true;
     zoomState.startX = event.clientX;
@@ -748,6 +820,11 @@
     if (key === "t") {
       event.preventDefault();
       toggleCaption();
+      return;
+    }
+    if (key === "a") {
+      event.preventDefault();
+      toggleAnnotation();
       return;
     }
     if (event.key === "+" || event.key === "=") {
