@@ -221,7 +221,9 @@
     return [
       "Pathway A - Core Radiology cross-check available or requested.",
       `Core section/chapter/pages: ${section || "[SECTION NOT PROVIDED]"}${pages ? ` | pages: ${pages}` : ""}`,
-      "Use the provided Core information only if actually supplied in the prompt or user context. Do not fabricate Core details."
+      "Use Core information only if it is actually supplied in this prompt/user context or retrievable from ChatGPT project/source files in the current run.",
+      "If ChatGPT can find the relevant Core pages/section in project/source files, it may use them without asking the user to provide page numbers; it must state the retrieved Core source basis when visible.",
+      "If Core cannot be retrieved, proceed from the provided article only and label the deck RadPrimer-only/STATdx-only; do not fabricate Core details or Core + article synthesis."
     ].join("\n");
   };
 

@@ -332,6 +332,35 @@ The learner should feel that each case strengthens the structure already being b
 
 ---
 
+## LOCAL CONTINUITY / ANTI-CHUNKING RULE
+
+The narrative should not feel like a series of separate image reports.
+
+After the organizing spine is chosen, every image or image cluster should have a clear job inside that spine:
+
+* establish the classic pattern
+* explain the mechanism behind the appearance
+* show a modality-specific version of the same concept
+* introduce a variant, mimic, complication, or management pivot
+* contrast with the immediately prior image or prepare the next image
+
+When moving from one image or cluster to the next, use bridge logic whenever the source supports it.
+
+Preferred transitions should sound like:
+
+* "Now that you have seen the classic pattern, move to image..."
+* "This next case stress-tests the same rule because..."
+* "Compare that with the next image, where the same disease behaves differently..."
+* "The prior image showed the diagnosis; this one shows why it matters clinically..."
+
+Avoid repetitive block structure where every image begins, develops, and ends as an isolated mini-lecture.
+
+If several images belong to the same diagnostic bucket, first name the bucket, then let the images build one local arc inside that bucket. Do not reset the whole topic for each image.
+
+If an image truly cannot be integrated because the caption is sparse or disconnected, handle it briefly and say why it is a limited standalone teaching point.
+
+---
+
 ## NO ORPHAN FACTS RULE
 
 Do not output detached fact clusters.
@@ -352,6 +381,36 @@ Before including a fact, implicitly ask:
 * Does it change recognition, differential, severity, prognosis, or reporting?
 
 If it does not strengthen the framework, omit it unless the source makes it essential.
+
+---
+
+## CONTENT-IN-CONTEXT RULE
+
+Do not create isolated lecture chunks of article content.
+
+The best place for a fact is usually the moment when an image, image cluster, bucket transition, or comparison makes that fact useful.
+
+Examples of good placement:
+
+* introduce mechanism immediately after an image shows the appearance that mechanism explains
+* introduce epidemiology when the patient or risk setting in a case makes that epidemiology meaningful
+* introduce pathology when the image appearance needs a tissue-level explanation
+* introduce differential diagnosis when an image could plausibly be mistaken for a mimic
+* introduce management or prognosis when an image shows size, complication, aggressive behavior, distribution, or another decision-changing feature
+* introduce modality strengths when moving from one modality or phase to another
+
+Avoid long standalone blocks such as:
+
+* a separate epidemiology dump after the image walkthrough
+* a separate pathology dump disconnected from the image appearance
+* a separate management dump when no case or imaging feature has created the need for it
+* a differential list that is not tied to a visual branch point or imaging discriminator
+
+If important content has no natural image anchor, place it compactly in the opening map, a transition between buckets, cross-image synthesis, or high-yield closeout. Even there, frame it as part of the organizing structure rather than as a loose list.
+
+Use between-image transitions as teaching space. A good transition can carry one or two article facts when those facts explain why the next image matters.
+
+Before finalizing, scan for any paragraph that could be removed without changing the image walkthrough or organizing framework. If such a paragraph exists, either integrate it into the relevant image/bucket or compress it into the closeout.
 
 ---
 
@@ -447,6 +506,10 @@ After the walkthrough, summarize what patterns repeated across the images, such 
 * clues against major mimics
 * what keeps showing up across examples
 
+This section should synthesize what the learner already saw.
+Do not use cross-image synthesis as a place to introduce a long new block of unrelated clinical, pathology, management, or epidemiology content.
+If a remaining source fact must be included here because it had no natural image anchor, connect it explicitly to the repeated image pattern or to the organizing spine.
+
 ### 5. High-yield closeout
 
 End with a compact high-yield teaching finish that includes:
@@ -459,6 +522,7 @@ End with a compact high-yield teaching finish that includes:
 The closeout must remain inside the same organizing spine established earlier.
 Do not let the ending relapse into detached lecture notes or a loose checklist that ignores the framework used in the main walkthrough.
 Whenever possible, close by briefly revisiting the same major buckets in compressed form rather than inventing a new end-stage structure.
+Do not save major article content for the closeout if it could have been taught more naturally at the relevant image, transition, or bucket.
 
 ---
 

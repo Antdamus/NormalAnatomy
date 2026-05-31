@@ -1,22 +1,45 @@
+CORE ACCESS OVERRIDE (CURRENT EXTENSION WORKFLOW)
+
+Pathway A requires actual Core content in the current run. Valid Core content can be exact Core excerpts/pages in the prompt, exact user-provided Core text, or retrievable ChatGPT project/source-file content from an uploaded Core Radiology PDF. A note such as "look through Core" or "it might be in multiple regions" is only permission to search; it is not source support.
+
+If Core can be retrieved from project/source files, state the Core source basis before card generation: visible source/file name, chapter/section/page range when available, and the specific Core facts being used.
+
+If Core cannot be retrieved or quoted in the current run but a full RadPrimer/STATdx article is provided, proceed Article-only rather than fabricating Core. In that case:
+- do not create a Core validation digest
+- do not create a Core Summary
+- do not create Core-only cards
+- do not label the summary as Core + RadPrimer or Core + STATdx
+- do not encode Core-derived percentages, thresholds, imaging rules, differentials, or management pivots
+- label the source basis as RadPrimer-only or STATdx-only
+
+If neither Core nor a full article source is available, stop and ask for clarification.
+
 Before generating any cards:
 
-PATHWAY A — STANDARD CORE VALIDATION (DEFAULT)
+PATHWAY A â€” STANDARD CORE VALIDATION (DEFAULT)
 
-You must receive from the user:
+Pathway A is satisfied when actual Core Radiology content is found in the current run.
 
-• Exact Core Radiology page numbers
-• Confirmation that the topic is discussed in those pages
+The user does NOT have to provide exact page numbers if the assistant can locate the relevant Core pages/section through available ChatGPT project/source files, uploaded Core PDF content, or exact Core text already present in the chat. If the assistant finds the relevant Core content independently, it may proceed without asking the user for pages.
 
-Step 0A — Confirm:
+Acceptable Core evidence includes, but is not limited to:
 
-• Chapter
-• Subsection
-• Exact page numbers
+- exact Core excerpts/pages supplied in the prompt
+- exact user-provided Core text/pages
+- Core content independently retrieved from ChatGPT project/source files, including an uploaded Core Radiology PDF
 
-Step 0B — Provide:
-• 2–6 bullet validation digest of board-relevant content from Core
+Step 0A - Confirm whatever retrieval metadata is visible:
 
-Step 0C — If topic is NOT clearly covered in those pages:
+Confirm any available chapter/source file, subsection/topic heading, and page numbers. If page numbers are not exposed by ChatGPT project/source retrieval, state that Core content was retrieved but page numbers were not visible.
+
+â€¢ Chapter
+â€¢ Subsection
+â€¢ Exact page numbers
+
+Step 0B â€” Provide:
+â€¢ 2â€“6 bullet validation digest of board-relevant content from Core
+
+Step 0C â€” If topic is NOT clearly covered in the retrieved/supplied Core content:
 STOP.
 Ask for clarification.
 Do NOT generate cards.
@@ -25,89 +48,89 @@ Do NOT proceed.
 The validation digest is gate-only.
 It must NOT be used as the sole basis for card generation.
 
-Step 0D — Whole-Source Coverage Audit (MANDATORY)
+Step 0D â€” Whole-Source Coverage Audit (MANDATORY)
 Before generating SECTION A, the assistant MUST complete the WHOLE-SOURCE COVERAGE AUDIT defined in Section 2B.
 
 This requires review of:
-• The full relevant Core coverage for the topic
-• The full provided RadPrimer/STATdx article, when such article is part of the build
+â€¢ The full relevant Core coverage for the topic
+â€¢ The full provided RadPrimer/STATdx article, when such article is part of the build
 
 The assistant MUST explicitly distinguish between:
-• Validation digest
-• Core Summary
-• Source summary
-• Full-source coverage audit
+â€¢ Validation digest
+â€¢ Core Summary
+â€¢ Source summary
+â€¢ Full-source coverage audit
 
 These are NOT interchangeable.
 
-Step 0E — Core Summary (MANDATORY WHEN PATHWAY A IS ACTIVE)
+Step 0E â€” Core Summary (MANDATORY WHEN PATHWAY A IS ACTIVE)
 Before generating SECTION A, the assistant MUST provide the Core Summary defined in Section 2C.
 
 The Core Summary:
-• Must be derived from the full Core coverage for the topic
-• Must NOT be derived from the validation digest alone
-• Is an auxiliary synthesis output only
-• Must NOT substitute for full-source review
+â€¢ Must be derived from the full Core coverage for the topic
+â€¢ Must NOT be derived from the validation digest alone
+â€¢ Is an auxiliary synthesis output only
+â€¢ Must NOT substitute for full-source review
 
-Step 0F — Generation Rule
+Step 0F â€” Generation Rule
 Cards MUST be generated from:
-• The full Core coverage for the topic
+â€¢ The full Core coverage for the topic
 AND
-• The full RadPrimer/STATdx article coverage, when provided
+â€¢ The full RadPrimer/STATdx article coverage, when provided
 
 Cards must NOT be generated from:
-• The validation digest alone
-• The Core Summary alone
-• The summary field text
-• Any compressed intermediate representation
+â€¢ The validation digest alone
+â€¢ The Core Summary alone
+â€¢ The summary field text
+â€¢ Any compressed intermediate representation
 
-Step 0G — Transparency Note Before SECTION A
+Step 0G â€” Transparency Note Before SECTION A
 Before SECTION A preview, output:
 
-• “Whole-source coverage audit completed from full Core pages and full article text.”
-• “Core Summary attached; derived from full Core coverage, not from validation digest.”
-• “Card generation will use full-source review, not digest summary.”
+â€¢ â€œWhole-source coverage audit completed from full Core pages and full article text.â€
+â€¢ â€œCore Summary attached; derived from full Core coverage, not from validation digest.â€
+â€¢ â€œCard generation will use full-source review, not digest summary.â€
 
 -----------------------------------------------------
 
-PATHWAY B — CORE GAP DECLARATION (EXCEPTION — ALLOWS PROCEEDING WITHOUT CORE)
+PATHWAY B â€” CORE GAP DECLARATION (EXCEPTION â€” ALLOWS PROCEEDING WITHOUT CORE)
 
 This pathway is allowed ONLY when the user explicitly declares that Core Radiology does not cover the topic as an entity.
 
 User must provide:
 
-• A clear statement: “Core GAP: not covered in Core Radiology.”
-• (Optional but recommended) the Core module/section where the topic would have been expected, if known.
+â€¢ A clear statement: â€œCore GAP: not covered in Core Radiology.â€
+â€¢ (Optional but recommended) the Core module/section where the topic would have been expected, if known.
 
 Assistant must then do the following:
 
-Step 0A — State:
-“CORE GAP CONFIRMED (User-declared)”
+Step 0A â€” State:
+â€œCORE GAP CONFIRMED (User-declared)â€
 
-• Do NOT fabricate Core pages.
-• Do NOT invent a Core digest.
-• Do NOT invent a Core Summary.
+â€¢ Do NOT fabricate Core pages.
+â€¢ Do NOT invent a Core digest.
+â€¢ Do NOT invent a Core Summary.
 
-Step 0B — Whole-Source Coverage Audit Still Required
+Step 0B â€” Whole-Source Coverage Audit Still Required
 Before generating SECTION A, the assistant MUST complete the WHOLE-SOURCE COVERAGE AUDIT defined in Section 2B using:
 
-• The full provided RadPrimer/STATdx article
-• Radiopaedia only as last resort, if otherwise allowed by system rules
+â€¢ The full provided RadPrimer/STATdx article
+â€¢ Radiopaedia only as last resort, if otherwise allowed by system rules
 
 Cards must be generated from the full article coverage itself,
 not from a short digest or summary.
 
-Step 0C — Proceed using ONLY the provided RadPrimer / STATdx content (and Radiopaedia last resort only), while still enforcing:
+Step 0C â€” Proceed using ONLY the provided RadPrimer / STATdx content (and Radiopaedia last resort only), while still enforcing:
 
-• No fabrication of imaging findings, differentials, epidemiology, thresholds, or management rules.
-• Any inference must be explicitly labeled:
-  “Not explicitly listed in Core/RadPrimer/STATdx; inferred based on imaging pattern.”
+â€¢ No fabrication of imaging findings, differentials, epidemiology, thresholds, or management rules.
+â€¢ Any inference must be explicitly labeled:
+  â€œNot explicitly listed in Core/RadPrimer/STATdx; inferred based on imaging pattern.â€
 
-Step 0D — Output must include the following lines before the Structured Card Preview:
+Step 0D â€” Output must include the following lines before the Structured Card Preview:
 
-• “Core GAP: Topic not explicitly covered in Core Radiology; cards derived from RadPrimer/STATdx only.”
-• “Whole-source coverage audit completed from full article text only (Core GAP invoked).”
-• “Card generation will use full-source review, not digest summary.”
+â€¢ â€œCore GAP: Topic not explicitly covered in Core Radiology; cards derived from RadPrimer/STATdx only.â€
+â€¢ â€œWhole-source coverage audit completed from full article text only (Core GAP invoked).â€
+â€¢ â€œCard generation will use full-source review, not digest summary.â€
 
 -----------------------------------------------------
 
@@ -118,9 +141,9 @@ STOP.
 Do NOT generate cards.
 
 If the assistant cannot confirm:
-• full relevant Core review when Pathway A is active
-• full article review when article-based generation is being used
-• completion of the Whole-Source Coverage Audit
+â€¢ full relevant Core review when Pathway A is active
+â€¢ full article review when article-based generation is being used
+â€¢ completion of the Whole-Source Coverage Audit
 
 then:
 STOP.

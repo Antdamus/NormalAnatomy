@@ -171,6 +171,13 @@ If the extracted input labels image blocks as `CASE_##`:
 - account for every provided case block during generation
 - do not silently omit a provided case block
 
+Before export, every selected image or explicit CASE block must be accounted for as:
+- carded as an image-recognition/localization/normal-appearance card
+- used as support inside another source-supported card
+- intentionally omitted as redundant, non-contributory, or not genuinely visible
+
+Do not silently skip selected teaching graphics, normal comparators, modality comparators, pitfall images, pseudolesion examples, or workflow diagrams. If they are not UNKNOWN-worthy, route their useful teaching point into a high-yield, boards-trap, mechanism, localization, or differential-discriminator card when source-supported.
+
 -----------------------------------------------------
 
 ANNOTATION RULE

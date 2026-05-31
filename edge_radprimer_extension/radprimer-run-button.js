@@ -43,7 +43,7 @@
     chatgptTimeoutSec: "900",
     cardAuditTimeoutSec: "3600",
     autoSendToSpeechify: true,
-    speechifyAutoSave: true,
+    speechifyAutoSave: false,
     speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7"
   };
 
@@ -145,6 +145,7 @@
           border: 1px solid rgba(255,255,255,.14);
           backdrop-filter: blur(16px);
           display: none;
+          cursor: pointer;
         }
         .status.show { display: block; }
         .phase {
@@ -390,7 +391,7 @@
                   <label class="check"><input data-field="autoSubmitChatGPT" type="checkbox"> Submit automatically</label>
                   <label class="check"><input data-field="captureCardAuditBundle" type="checkbox"> Capture card audit bundle</label>
                   <label class="check"><input data-field="autoSendToSpeechify" type="checkbox"> Send narrative to Speechify</label>
-                  <label class="check"><input data-field="speechifyAutoSave" type="checkbox"> Auto-save Speechify</label>
+                  <label class="check"><input data-field="speechifyAutoSave" type="checkbox"> Auto-save Speechify (manual save)</label>
                 </div>
                 <div class="grid spaced">
                   <label class="wide">Speechify folder link<input data-field="speechifyFolderUrl" type="text"></label>
@@ -456,6 +457,7 @@
     shadow.querySelector(".quick-run").addEventListener("click", () => runFromPage(host));
     shadow.querySelector(".image-only").addEventListener("click", () => downloadImagesOnly(host));
     shadow.querySelector(".configure").addEventListener("click", () => openModal(host));
+    shadow.querySelector(".status").addEventListener("click", () => dismissStatus(host));
     shadow.querySelector(".close").addEventListener("click", () => closeModal(host));
     shadow.querySelector(".backdrop").addEventListener("click", (event) => {
       if (event.target === event.currentTarget) closeModal(host);
@@ -560,11 +562,11 @@
     if (!autoSend || !autoSave) return;
 
     autoSend.disabled = !eligible;
-    autoSave.disabled = !eligible;
+    autoSave.disabled = true;
+    autoSave.checked = false;
     if (audit) audit.disabled = !auditEligible;
     if (!eligible) {
       autoSend.checked = false;
-      autoSave.checked = false;
     }
     if (!auditEligible && audit) audit.checked = false;
   };
@@ -582,7 +584,7 @@
     field(host, "autoSubmitChatGPT").checked = true;
     field(host, "captureCardAuditBundle").checked = false;
     field(host, "autoSendToSpeechify").checked = true;
-    field(host, "speechifyAutoSave").checked = true;
+    field(host, "speechifyAutoSave").checked = false;
   };
 
   const openModal = async (host) => {
@@ -594,6 +596,17 @@
 
   const closeModal = (host) => {
     host.shadowRoot.querySelector(".backdrop").classList.remove("open");
+  };
+
+  const dismissStatus = (host) => {
+    clearTimeout(host.__radprimerStatusTimer);
+    const status = host.shadowRoot.querySelector(".status");
+    status.classList.remove("show");
+    status.classList.remove("error");
+  };
+
+  const shouldAutoDismissStatus = (phase) => {
+    return /done|ready|saved|sent|complete|started/i.test(String(phase || ""));
   };
 
   const writeModalSettings = (host, settings) => {
@@ -629,7 +642,7 @@
       values.openChatGPT = true;
       values.autoSubmitChatGPT = true;
       values.autoSendToSpeechify = true;
-      values.speechifyAutoSave = true;
+      values.speechifyAutoSave = false;
       values.captureCardAuditBundle = false;
     }
     if (!isNarrativeSpeechifyMode(values)) {
@@ -643,10 +656,16 @@
   const setStatus = (host, phase, message, isError = false) => {
     const shadow = host.shadowRoot;
     const status = shadow.querySelector(".status");
+    clearTimeout(host.__radprimerStatusTimer);
     status.classList.add("show");
     status.classList.toggle("error", Boolean(isError));
+    status.title = "Click to dismiss";
     shadow.querySelector(".phase").textContent = phase || "";
     shadow.querySelector(".msg").textContent = message || "";
+
+    if (!isError && shouldAutoDismissStatus(phase)) {
+      host.__radprimerStatusTimer = setTimeout(() => dismissStatus(host), 7000);
+    }
   };
 
   const setRunning = (host, running) => {

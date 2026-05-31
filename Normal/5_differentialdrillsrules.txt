@@ -103,6 +103,7 @@ Bad uses:
 - speculative alternatives
 - filler entries added to make the field non-empty
 - disease lists that do not teach a specific imaging separator
+- complications, outcomes, associations, or downstream transformations unless the source explicitly frames them as mimics/differentials for the normal finding
 
 Comparison cards should survive only when they sharpen judgment in a way that will help the learner read studies better.
 

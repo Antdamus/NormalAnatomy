@@ -89,10 +89,28 @@
             backdrop-filter: blur(18px);
             border: 1px solid rgba(255,255,255,.12);
           }
+          .head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 6px;
+          }
           .title {
             font-weight: 750;
             font-size: 14px;
-            margin-bottom: 6px;
+          }
+          .close {
+            width: 24px;
+            height: 24px;
+            display: grid;
+            place-items: center;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(255,255,255,.12);
+            color: white;
+            cursor: pointer;
+            font: 700 14px/1 system-ui, sans-serif;
           }
           .phase {
             font-size: 12px;
@@ -105,16 +123,25 @@
           }
         </style>
         <div class="box">
-          <div class="title">Speechify automation</div>
+          <div class="head">
+            <div class="title">Speechify automation</div>
+            <button class="close" type="button" title="Close" aria-label="Close">x</button>
+          </div>
           <div class="phase" id="phase"></div>
           <div class="message" id="message"></div>
         </div>
       `;
+      shadow.querySelector(".close").addEventListener("click", () => host.remove());
     }
 
     const shadow = host.shadowRoot;
+    clearTimeout(host.__radprimerDismissTimer);
     shadow.getElementById("phase").textContent = phase || "";
     shadow.getElementById("message").textContent = message || "";
+
+    if (["DONE", "READY_TO_SAVE"].includes(String(phase || "").toUpperCase())) {
+      host.__radprimerDismissTimer = setTimeout(() => host.remove(), 7000);
+    }
   };
 
   const waitForSpeechifyLibrary = async (timeoutMs = 60000) => {
@@ -379,7 +406,7 @@
     });
     await fillSpeechifyAddTextModal({ title: finalTitle, text });
 
-    if (autoSave !== false) {
+    if (autoSave === true) {
       createOrUpdateSpeechifyOverlay({
         phase: "SAVING_FILE",
         message: "Saving Speechify file..."
@@ -393,11 +420,11 @@
     } else {
       createOrUpdateSpeechifyOverlay({
         phase: "READY_TO_SAVE",
-        message: "Speechify text is filled. Auto-save is off."
+        message: "Speechify text is filled. Click Save File when you are ready."
       });
     }
 
-    return { title: finalTitle, folder };
+    return { title: finalTitle, folder, autoSaved: autoSave === true };
   };
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {

@@ -390,3 +390,17 @@ The goal:
 Maximum discrimination  
 Minimum redundancy  
 Board-optimized pattern mastery
+
+---
+
+# COMPLICATION / OUTCOME IS NOT A DIFFERENTIAL RULE
+
+Do not list complications, outcomes, risk states, associations, or downstream transformations as differentials unless the source explicitly frames them as differential diagnoses or imaging mimics.
+
+Examples:
+
+* "may progress to osteonecrosis" is a complication/outcome, not automatically a differential.
+* "malignant transformation risk" is a risk/outcome, not automatically a differential.
+* "rupture" or "hemorrhage" is a complication unless the source asks the reader to distinguish it as a mimic.
+
+If a complication is high yield, encode it as a mechanism, boards trap, risk/management, or high-yield card. Do not force it into Differentials.

@@ -56,7 +56,7 @@ const DEFAULTS = {
   chatgptTimeoutSec: "900",
   cardAuditTimeoutSec: "3600",
   autoSendToSpeechify: true,
-  speechifyAutoSave: true,
+  speechifyAutoSave: false,
   speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
   speechifyFolderName: "Musculoskeletal",
   speechifyFolderId: "c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
@@ -108,7 +108,7 @@ function normalizeSettings(rawSettings = {}) {
     settings.openChatGPT = true;
     settings.autoSubmitChatGPT = true;
     settings.autoSendToSpeechify = true;
-    settings.speechifyAutoSave = true;
+    settings.speechifyAutoSave = false;
   } else {
     settings.autoSendToSpeechify = false;
     settings.speechifyAutoSave = false;
@@ -283,7 +283,7 @@ async function createSpeechifyLectureFromChatGPT({ title, text, folder, autoSave
     title,
     text,
     folder,
-    autoSave: autoSave !== false
+    autoSave: autoSave === true
   };
 
   const response = await sendSpeechifyMessageWithInjection(tab.id, payload);
@@ -929,7 +929,7 @@ function buildSpeechifyPayload(settings, articleTitle) {
       id: settings.speechifyFolderId || DEFAULTS.speechifyFolderId,
       parentChain: settings.speechifyFolderChain || DEFAULTS.speechifyFolderChain
     },
-    autoSave: settings.speechifyAutoSave !== false
+    autoSave: settings.speechifyAutoSave === true
   };
 }
 

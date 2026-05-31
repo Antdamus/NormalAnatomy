@@ -1,5 +1,20 @@
 CORE SUMMARY RULE (MANDATORY WHEN CORE PATHWAY A IS USED)
 
+CORE SUMMARY SOURCE-PROOF ADDENDUM
+
+Generate a Core Summary only when actual Core content is available in the current run from exact prompt excerpts, user-provided Core text/pages, or retrievable ChatGPT project/source-file content from an uploaded Core Radiology PDF.
+
+If the assistant independently finds the relevant Core pages/section in ChatGPT project/source files, Core Summary is allowed and should proceed without asking the user for page numbers. The summary must still state the retrieved source basis and page/section metadata when visible.
+
+Do not generate a Core Summary from:
+- a request to "look through Core"
+- a guessed section
+- a validation note without the underlying Core content
+- memory
+- the RadPrimer/STATdx article
+
+If Core is unavailable but the full article is provided, skip Core Summary and use Article-only generation with RadPrimer-only or STATdx-only source basis.
+
 If the topic is validated through Core Radiology (Pathway A), the assistant MUST generate a Core Summary for the topic before generating SECTION A.
 
 The Core Summary is NOT the same as the validation digest.

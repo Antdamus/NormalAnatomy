@@ -975,6 +975,7 @@
             border: 1px solid rgba(255,255,255,.14);
             backdrop-filter: blur(12px);
             font: 12px/1.35 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            cursor: pointer;
           }
           .phase {
             color: #9ec5ff;
@@ -990,6 +991,8 @@
           <span class="msg"></span>
         </div>
       `;
+      host.title = "Click to dismiss";
+      host.addEventListener("click", () => host.remove());
     }
 
     const shadow = host.shadowRoot;
@@ -1287,18 +1290,26 @@
 
     let speechifyResult = null;
     if (speechify && result.text) {
-      sendProgress("OPENING_SPEECHIFY", "Opening Speechify and creating text file...");
+      const speechifyAutoSave = speechify.autoSave === true;
+      sendProgress(
+        "OPENING_SPEECHIFY",
+        speechifyAutoSave
+          ? "Opening Speechify and creating text file..."
+          : "Opening Speechify and filling the Add Text form..."
+      );
       speechifyResult = await sendSpeechifyCreateMessage({
         title: speechify.title || "",
         text: result.text,
         folder: speechify.folder,
-        autoSave: speechify.autoSave !== false
+        autoSave: speechifyAutoSave
       });
 
       createOrUpdateOverlay({
         phase: speechifyResult?.ok ? "SPEECHIFY_DONE" : "SPEECHIFY_ERROR",
         message: speechifyResult?.ok
-          ? "Speechify text file created."
+          ? speechifyAutoSave
+            ? "Speechify text file created."
+            : "Speechify form filled. Click Save File in Speechify."
           : `Speechify failed: ${speechifyResult?.error || "unknown error"}`,
         text: result.text
       });

@@ -62,6 +62,21 @@ If the provided caption text cannot be preserved exactly as given:
 • Do NOT attempt reconstruction from memory.
 • Do NOT approximate.
 
+-----------------------------------------------------
+
+SELECTED IMAGE / CASE COVERAGE AUDIT
+
+Before TSV export, account for every selected image block or explicit CASE block supplied in the input.
+
+For each selected image or grouped case, mark it as one of:
+- carded as a primary image-recognition case
+- used as support inside another source-supported card
+- intentionally omitted as redundant or non-contributory
+
+Do not silently skip a selected image or case. If a selected image is a teaching graphic, flowchart, site map, gross/pathology photo, normal comparator, modality comparator, or pitfall image, it may deserve a high-yield or mechanism-style card even when it is not a classic "most likely diagnosis" case.
+
+If any selected image/case is unaccounted for, stop and repair the deck before TSV export.
+
 During TSV export:
 If any caption differs by even ONE character from the originally provided text:
 

@@ -41,6 +41,16 @@ If no RadPrimer article is provided but full STATdx content is provided:
 Core Radiology is tertiary in this engine.
 Use it only to support or backfill concepts not fully developed in the primary article, and only when this does not conflict with the higher-priority source.
 
+Core content is allowed only when it is actually available in the current run. Valid Core evidence means exact Core text/pages in the prompt, exact user-provided Core excerpts/pages, or retrievable ChatGPT project/source-file content from an uploaded Core Radiology PDF or equivalent source. A note such as "look through Core" is permission to search, not source support.
+
+If the assistant independently finds the relevant Core pages/section inside the available ChatGPT project/source files, it may use that Core content without asking the user for page numbers. It must still state the retrieved Core source basis when visible.
+
+If Core cannot be retrieved or quoted in the current run:
+- do not add Core-derived facts
+- do not label any card or summary as Core-supported
+- keep RadPrimer/STATdx-derived summaries article-only
+- proceed with the higher-priority available source rather than fabricating Core coverage
+
 Radiopaedia is last resort only.
 Use it only when the needed normal concept is absent from higher-priority sources and the concept is narrow, stable, and clearly described.
 

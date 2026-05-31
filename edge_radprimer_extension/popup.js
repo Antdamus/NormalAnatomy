@@ -53,7 +53,7 @@ const DEFAULTS = {
   chatgptTimeoutSec: "900",
   cardAuditTimeoutSec: "3600",
   autoSendToSpeechify: true,
-  speechifyAutoSave: true,
+  speechifyAutoSave: false,
   speechifyAutoPlayAfterSave: false,
   speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
   speechifyFolderName: "Musculoskeletal",
@@ -188,11 +188,11 @@ function syncSpeechifyAvailability() {
   const eligible = isNarrativeSpeechifyMode(currentEngineMode());
   const auditEligible = isNonNarrativeMode(currentEngineMode());
   $("autoSendToSpeechify").disabled = !eligible;
-  $("speechifyAutoSave").disabled = !eligible;
+  $("speechifyAutoSave").disabled = true;
+  $("speechifyAutoSave").checked = false;
   $("captureCardAuditBundle").disabled = !auditEligible;
   if (!eligible) {
     $("autoSendToSpeechify").checked = false;
-    $("speechifyAutoSave").checked = false;
   }
   if (!auditEligible) $("captureCardAuditBundle").checked = false;
 }
@@ -205,7 +205,7 @@ function applyNarrativeModeDefaults() {
   $("openChatGPT").checked = true;
   $("autoSubmitChatGPT").checked = true;
   $("autoSendToSpeechify").checked = true;
-  $("speechifyAutoSave").checked = true;
+  $("speechifyAutoSave").checked = false;
 }
 
 function parseCaseMapGroups(value) {
@@ -276,7 +276,7 @@ function readForm() {
     chatgptTimeoutSec: $("chatgptTimeoutSec").value.trim(),
     cardAuditTimeoutSec: $("cardAuditTimeoutSec").value.trim(),
     autoSendToSpeechify: speechifyEligible ? true : autoSendToSpeechify,
-    speechifyAutoSave: speechifyEligible ? true : speechifyEligible && $("speechifyAutoSave").checked,
+    speechifyAutoSave: false,
     speechifyAutoPlayAfterSave: false,
     speechifyFolderUrl: speechifyFolder.url,
     speechifyFolderName: DEFAULTS.speechifyFolderName,
@@ -466,7 +466,7 @@ function sendChatGptFillMessage(tabId, text, settings, articleTitle) {
             id: settings.speechifyFolderId || DEFAULTS.speechifyFolderId,
             parentChain: settings.speechifyFolderChain || DEFAULTS.speechifyFolderChain
           },
-          autoSave: settings.speechifyAutoSave !== false
+          autoSave: settings.speechifyAutoSave === true
         }
       : null;
 
@@ -528,7 +528,7 @@ async function createSpeechifyLecture(settings, articleTitle, text) {
     title: buildSpeechifyTitle(articleTitle, text),
     text,
     folder,
-    autoSave: settings.speechifyAutoSave !== false
+    autoSave: settings.speechifyAutoSave === true
   });
 
   if (!response?.ok) {
@@ -683,7 +683,9 @@ async function run() {
             await copyText(fillResponse.assistantText);
             chatgptLine = `Submitted and copied final ChatGPT response (${fillResponse.assistantChars} chars).`;
             if (fillResponse.speechify?.ok) {
-              speechifyLine = `Created Speechify file: ${fillResponse.speechify.result?.title || "untitled"}.`;
+              speechifyLine = fillResponse.speechify.result?.autoSaved
+                ? `Created Speechify file: ${fillResponse.speechify.result?.title || "untitled"}.`
+                : `Filled Speechify form: ${fillResponse.speechify.result?.title || "untitled"}. Click Save File in Speechify.`;
             } else if (fillResponse.speechify?.error) {
               speechifyLine = `Speechify failed; final response remains on clipboard. ${fillResponse.speechify.error}`;
             } else if (settings.autoSendToSpeechify) {
