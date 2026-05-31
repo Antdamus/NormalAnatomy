@@ -351,6 +351,7 @@ async function sendSpeechifyPlayerRemote(payload = {}) {
   for (const tab of tabs) {
     try {
       const response = await sendSpeechifyMessageWithInjection(tab.id, {
+        ...payload,
         type: "SPEECHIFY_PLAYER_REMOTE",
         action
       });

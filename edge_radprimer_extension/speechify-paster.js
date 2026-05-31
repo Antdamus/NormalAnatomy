@@ -62,6 +62,13 @@
     return candidates.find(isVisible) || candidates[0] || null;
   };
 
+  const normalizeSpeedLabel = (value) => {
+    return cleanDisplayText(value)
+      .replace(/\s+/g, "")
+      .replace(/\.0x$/i, "x")
+      .toLowerCase();
+  };
+
   const clickVisible = (selector, label) => {
     const el = firstVisible(selector);
     if (!el) throw new Error(`Speechify ${label} button was not found.`);
@@ -208,8 +215,68 @@
     };
   };
 
-  const runSpeechifyPlayerRemote = async ({ action }) => {
+  const getElementSpeedText = (el) => {
+    return cleanDisplayText(
+      el?.innerText ||
+        el?.textContent ||
+        el?.getAttribute?.("aria-label") ||
+        el?.getAttribute?.("data-value") ||
+        ""
+    );
+  };
+
+  const findSpeechifySpeedOption = (targetSpeed) => {
+    const wanted = normalizeSpeedLabel(targetSpeed);
+    if (!wanted) return null;
+
+    const currentButton = firstVisible(SPEECHIFY_SELECTORS.playerSpeedButton);
+    const candidates = Array.from(
+      document.querySelectorAll(
+        [
+          "button",
+          '[role="menuitem"]',
+          '[role="option"]',
+          '[role="button"]',
+          '[data-testid*="speed"]',
+          "[data-value]"
+        ].join(",")
+      )
+    ).filter((el) => el && el !== currentButton && isVisible(el));
+
+    return (
+      candidates.find((el) => normalizeSpeedLabel(getElementSpeedText(el)) === wanted) ||
+      candidates.find((el) => normalizeSpeedLabel(getElementSpeedText(el)).includes(wanted)) ||
+      null
+    );
+  };
+
+  const setSpeechifySpeed = async (targetSpeed) => {
+    const wanted = normalizeSpeedLabel(targetSpeed);
+    if (!wanted) throw new Error("No Speechify speed was requested.");
+
+    const current = normalizeSpeedLabel(getSpeechifyPlayerState().speed);
+    if (current === wanted) return getSpeechifyPlayerState();
+
+    clickVisible(SPEECHIFY_SELECTORS.playerSpeedButton, "speed");
+
+    let option = null;
+    await waitUntil(
+      () => {
+        option = findSpeechifySpeedOption(wanted);
+        return Boolean(option);
+      },
+      5000,
+      `Speechify speed option ${targetSpeed} was not found.`
+    );
+
+    option.click();
+    await sleep(350);
+    return getSpeechifyPlayerState();
+  };
+
+  const runSpeechifyPlayerRemote = async ({ action, speed }) => {
     const normalizedAction = String(action || "state");
+    let state = null;
 
     if (normalizedAction === "playPause") {
       clickVisible(SPEECHIFY_SELECTORS.playerPlayButton, "play/pause");
@@ -223,11 +290,13 @@
     } else if (normalizedAction === "speed") {
       clickVisible(SPEECHIFY_SELECTORS.playerSpeedButton, "speed");
       await sleep(220);
+    } else if (normalizedAction === "setSpeed") {
+      state = await setSpeechifySpeed(speed);
     } else if (normalizedAction !== "state" && normalizedAction !== "focus") {
       throw new Error(`Unsupported Speechify player action: ${normalizedAction}`);
     }
 
-    const state = getSpeechifyPlayerState();
+    state = state || getSpeechifyPlayerState();
     if (!state.available) {
       throw new Error("No Speechify player is visible. Open a Speechify lecture/player tab first.");
     }

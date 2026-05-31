@@ -3,7 +3,6 @@
   window.__radprimerSpeechifyRemoteLoaded = true;
 
   const HOST_ID = "radprimer-speechify-remote-host";
-  const COLLAPSED_KEY = "radprimerSpeechifyRemoteCollapsed";
   const POLL_MS = 2500;
 
   let lastState = null;
@@ -16,8 +15,8 @@
     host = document.createElement("div");
     host.id = HOST_ID;
     host.style.position = "fixed";
-    host.style.left = "22px";
-    host.style.bottom = "24px";
+    host.style.left = "18px";
+    host.style.bottom = "18px";
     host.style.zIndex = "2147483647";
     document.documentElement.appendChild(host);
 
@@ -28,6 +27,7 @@
         .root {
           font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           color: #f8fafc;
+          position: relative;
         }
         button {
           border: 0;
@@ -35,15 +35,70 @@
           font: inherit;
           letter-spacing: 0;
         }
-        .remote {
-          width: 390px;
-          max-width: calc(100vw - 44px);
-          border-radius: 18px;
-          padding: 12px 14px 13px;
-          background: rgba(13, 18, 29, 0.92);
-          border: 1px solid rgba(191, 219, 254, 0.28);
+        .bubble {
+          height: 42px;
+          min-width: 92px;
+          padding: 0 13px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          border-radius: 999px;
+          background: rgba(11, 17, 29, 0.86);
+          color: #f8fafc;
+          border: 1px solid rgba(191, 219, 254, 0.24);
+          box-shadow: 0 14px 42px rgba(0, 0, 0, 0.28);
+          backdrop-filter: blur(16px);
+          font-size: 12px;
+          font-weight: 900;
+          transition: transform .14s ease, background .14s ease, opacity .14s ease;
+        }
+        .bubble:hover {
+          transform: translateY(-1px);
+          background: rgba(15, 23, 42, 0.96);
+        }
+        .dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 999px;
+          background: #64748b;
+          box-shadow: 0 0 0 4px rgba(100, 116, 139, 0.14);
+          flex: 0 0 auto;
+        }
+        .dot.playing {
+          background: #22c55e;
+          box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.16);
+        }
+        .bubble-label {
+          line-height: 1;
+        }
+        .bubble-time {
+          color: rgba(226, 232, 240, 0.72);
+          font-weight: 800;
+        }
+        .panel {
+          position: absolute;
+          left: 0;
+          bottom: 50px;
+          width: 302px;
+          max-width: calc(100vw - 36px);
+          border-radius: 16px;
+          padding: 11px;
+          background: rgba(11, 17, 29, 0.94);
+          border: 1px solid rgba(191, 219, 254, 0.26);
           box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
           backdrop-filter: blur(18px);
+          opacity: 0;
+          transform: translateY(8px) scale(.985);
+          transform-origin: bottom left;
+          pointer-events: none;
+          transition: opacity .14s ease, transform .14s ease;
+        }
+        .root:hover .panel,
+        .root:focus-within .panel {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          pointer-events: auto;
         }
         .top {
           display: flex;
@@ -57,104 +112,95 @@
           font-size: 12px;
           line-height: 1.2;
           font-weight: 850;
-          color: rgba(248, 250, 252, 0.92);
+          color: rgba(248, 250, 252, 0.9);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
         }
         .time {
           flex: 0 0 auto;
-          font-size: 12px;
-          font-weight: 800;
-          color: rgba(226, 232, 240, 0.78);
+          font-size: 11px;
+          font-weight: 850;
+          color: rgba(226, 232, 240, 0.72);
         }
         .bar {
-          height: 4px;
+          height: 3px;
           overflow: hidden;
           border-radius: 999px;
-          background: rgba(148, 163, 184, 0.23);
-          margin-bottom: 11px;
+          background: rgba(148, 163, 184, 0.22);
+          margin-bottom: 9px;
         }
         .fill {
           width: 0%;
           height: 100%;
           border-radius: inherit;
-          background: linear-gradient(90deg, #93c5fd, #818cf8);
+          background: linear-gradient(90deg, #bae6fd, #a5b4fc);
           transition: width .22s ease;
         }
         .controls {
           display: grid;
-          grid-template-columns: 54px 1fr 54px 58px 34px;
-          gap: 8px;
+          grid-template-columns: 52px 1fr 52px 42px;
+          gap: 7px;
           align-items: center;
+          margin-bottom: 8px;
         }
-        .control {
-          height: 38px;
+        .control, .open {
+          height: 34px;
           border-radius: 999px;
-          background: rgba(30, 41, 59, 0.92);
+          background: rgba(30, 41, 59, 0.9);
           color: #f8fafc;
-          font-size: 13px;
+          font-size: 12px;
           font-weight: 900;
           border: 1px solid rgba(191, 219, 254, 0.18);
         }
-        .control:hover {
+        .control:hover, .open:hover, .speed:hover {
           background: rgba(51, 65, 85, 0.98);
         }
         .play {
-          background: linear-gradient(135deg, rgba(59, 130, 246, 0.98), rgba(99, 102, 241, 0.98));
-          box-shadow: 0 12px 30px rgba(59, 130, 246, 0.24);
+          background: linear-gradient(135deg, rgba(56, 189, 248, 0.94), rgba(129, 140, 248, 0.96));
+          box-shadow: 0 10px 26px rgba(59, 130, 246, 0.22);
         }
-        .mini {
-          height: 38px;
+        .speed-row {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 5px;
+        }
+        .speed {
+          height: 28px;
           border-radius: 999px;
-          background: rgba(15, 23, 42, 0.74);
-          color: rgba(226, 232, 240, 0.9);
-          border: 1px solid rgba(191, 219, 254, 0.18);
-          font-size: 12px;
+          background: rgba(15, 23, 42, 0.72);
+          color: rgba(226, 232, 240, 0.86);
+          border: 1px solid rgba(191, 219, 254, 0.15);
+          font-size: 11px;
           font-weight: 850;
         }
+        .speed.active {
+          color: #0f172a;
+          background: #bfdbfe;
+          border-color: rgba(255, 255, 255, 0.54);
+        }
         .status {
-          margin-top: 8px;
-          min-height: 16px;
-          font-size: 11px;
-          line-height: 1.3;
-          color: rgba(226, 232, 240, 0.7);
-        }
-        .bubble {
-          display: none;
-          height: 46px;
-          padding: 0 15px;
-          align-items: center;
-          gap: 8px;
-          border-radius: 999px;
-          background: rgba(13, 18, 29, 0.92);
-          color: #f8fafc;
-          border: 1px solid rgba(191, 219, 254, 0.28);
-          box-shadow: 0 16px 46px rgba(0, 0, 0, 0.3);
-          backdrop-filter: blur(18px);
-          font-size: 13px;
-          font-weight: 900;
-        }
-        .collapsed .remote { display: none; }
-        .collapsed .bubble { display: inline-flex; }
-        .dot {
-          width: 9px;
-          height: 9px;
-          border-radius: 999px;
-          background: #64748b;
-          box-shadow: 0 0 0 4px rgba(100, 116, 139, 0.16);
-        }
-        .dot.playing {
-          background: #22c55e;
-          box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.16);
+          margin-top: 7px;
+          min-height: 14px;
+          font-size: 10.5px;
+          line-height: 1.28;
+          color: rgba(226, 232, 240, 0.62);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .busy button {
-          opacity: .72;
+          opacity: .7;
           pointer-events: none;
         }
       </style>
       <div class="root">
-        <div class="remote" role="group" aria-label="Speechify remote">
+        <button class="bubble" type="button" data-action="playPause" title="Speechify play/pause">
+          <span class="dot"></span>
+          <span class="bubble-label">Audio</span>
+          <span class="bubble-time">--:--</span>
+        </button>
+        <div class="panel" role="group" aria-label="Speechify remote">
           <div class="top">
             <div class="title">Speechify</div>
             <div class="time">--:-- / --:--</div>
@@ -164,31 +210,40 @@
             <button class="control" type="button" data-action="back10" title="Back 10 seconds">-10</button>
             <button class="control play" type="button" data-action="playPause" title="Play or pause">Play</button>
             <button class="control" type="button" data-action="forward10" title="Forward 10 seconds">+10</button>
-            <button class="mini" type="button" data-action="focus" title="Open Speechify tab">Open</button>
-            <button class="mini" type="button" data-action="collapse" title="Collapse">x</button>
+            <button class="open" type="button" data-action="focus" title="Open Speechify tab">Open</button>
+          </div>
+          <div class="speed-row" aria-label="Speechify speed">
+            <button class="speed" type="button" data-speed="0.8x">0.8</button>
+            <button class="speed" type="button" data-speed="1x">1</button>
+            <button class="speed" type="button" data-speed="1.2x">1.2</button>
+            <button class="speed" type="button" data-speed="1.5x">1.5</button>
+            <button class="speed" type="button" data-speed="1.7x">1.7</button>
+            <button class="speed" type="button" data-speed="2x">2</button>
           </div>
           <div class="status">Looking for Speechify...</div>
         </div>
-        <button class="bubble" type="button" title="Show Speechify remote">
-          <span class="dot"></span>
-          <span>Audio</span>
-        </button>
       </div>
     `;
 
     shadow.querySelectorAll("[data-action]").forEach((button) => {
       button.addEventListener("click", () => handleAction(host, button.dataset.action));
     });
-    shadow.querySelector(".bubble").addEventListener("click", () => setCollapsed(host, false));
 
-    setCollapsed(host, localStorage.getItem(COLLAPSED_KEY) === "true");
+    shadow.querySelectorAll("[data-speed]").forEach((button) => {
+      button.addEventListener("click", () => handleAction(host, "setSpeed", button.dataset.speed));
+    });
+
     return host;
   }
 
-  function setCollapsed(host, collapsed) {
-    const root = host.shadowRoot.querySelector(".root");
-    root.classList.toggle("collapsed", collapsed);
-    localStorage.setItem(COLLAPSED_KEY, String(collapsed));
+  function normalizeSpeed(value) {
+    return String(value || "")
+      .replace(/\u00A0/g, " ")
+      .replace(/Ã—/g, "x")
+      .replace(/×/g, "x")
+      .replace(/\s+/g, "")
+      .replace(/\.0x$/i, "x")
+      .toLowerCase();
   }
 
   function sendRemoteMessage(payload) {
@@ -213,24 +268,33 @@
     const root = shadow.querySelector(".root");
     const title = shadow.querySelector(".title");
     const time = shadow.querySelector(".time");
+    const bubbleTime = shadow.querySelector(".bubble-time");
     const fill = shadow.querySelector(".fill");
-    const play = shadow.querySelector('[data-action="playPause"]');
+    const playButtons = shadow.querySelectorAll(".panel .play");
     const status = shadow.querySelector(".status");
     const dot = shadow.querySelector(".dot");
+    const speed = normalizeSpeed(state?.speed || "");
 
     root.classList.toggle("busy", busy);
     title.textContent = state?.title || "Speechify";
     time.textContent = state?.elapsed && state?.duration ? `${state.elapsed} / ${state.duration}` : "--:-- / --:--";
+    bubbleTime.textContent = state?.elapsed || "--:--";
     fill.style.width = `${Math.max(0, Math.min(100, Number(state?.progress || 0)))}%`;
-    play.textContent = state?.isPlaying ? "Pause" : "Play";
+    playButtons.forEach((button) => {
+      button.textContent = state?.isPlaying ? "Pause" : "Play";
+    });
     dot.classList.toggle("playing", Boolean(state?.isPlaying));
+
+    shadow.querySelectorAll("[data-speed]").forEach((button) => {
+      button.classList.toggle("active", normalizeSpeed(button.dataset.speed) === speed);
+    });
 
     if (errorMessage) {
       status.textContent = errorMessage;
     } else if (state?.available) {
       status.textContent = state.speed ? `${state.speed} speed` : "Connected";
     } else {
-      status.textContent = "Open a Speechify lecture tab, then press refresh.";
+      status.textContent = "Open a Speechify lecture tab first.";
     }
   }
 
@@ -245,17 +309,12 @@
     }
   }
 
-  async function handleAction(host, action) {
-    if (action === "collapse") {
-      setCollapsed(host, true);
-      return;
-    }
-
+  async function handleAction(host, action, speed = "") {
     busy = true;
     renderState(host, lastState);
 
     try {
-      const state = await sendRemoteMessage({ action });
+      const state = await sendRemoteMessage({ action, speed });
       lastState = state;
       renderState(host, state);
     } catch (error) {
