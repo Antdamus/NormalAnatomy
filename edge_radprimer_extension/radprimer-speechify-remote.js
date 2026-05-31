@@ -4,9 +4,41 @@
 
   const HOST_ID = "radprimer-speechify-remote-host";
   const POLL_MS = 2500;
+  const SHORTCUT_STORAGE_KEY = "radprimerZoomShortcutSettings";
+  const DEFAULT_PLAYER_SHORTCUTS = {
+    playerPlayPause: "p",
+    playerBack10: "ArrowLeft",
+    playerForward10: "ArrowRight"
+  };
 
   let lastState = null;
   let busy = false;
+  let playerShortcutSettings = { ...DEFAULT_PLAYER_SHORTCUTS };
+
+  function normalizeShortcutKey(value) {
+    const raw = String(value || "");
+    if (raw === " " || raw.toLowerCase() === "spacebar") return "Space";
+    if (raw.length === 1) return raw.toLowerCase();
+    return raw;
+  }
+
+  async function loadPlayerShortcutSettings() {
+    try {
+      const stored = await chrome.storage.local.get(SHORTCUT_STORAGE_KEY);
+      const saved = stored?.[SHORTCUT_STORAGE_KEY] || {};
+      playerShortcutSettings = { ...DEFAULT_PLAYER_SHORTCUTS, ...saved };
+    } catch {
+      playerShortcutSettings = { ...DEFAULT_PLAYER_SHORTCUTS };
+    }
+  }
+
+  function shortcutMatches(event, actionId) {
+    const saved = normalizeShortcutKey(playerShortcutSettings[actionId]);
+    const pressed = normalizeShortcutKey(event.key);
+    if (!saved || !pressed) return false;
+    if (saved === pressed) return true;
+    return saved === "+" && pressed === "=";
+  }
 
   function ensureHost() {
     let host = document.getElementById(HOST_ID);
@@ -334,15 +366,16 @@
   }
 
   function handleKeyboardShortcuts(event) {
-    if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+    if (document.documentElement.dataset.radprimerShortcutCapture === "true") return;
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
     if (isEditableTarget(event.target)) return;
 
     const key = String(event.key || "").toLowerCase();
     let action = "";
 
-    if (key === "arrowleft") action = "back10";
-    if (key === "arrowright") action = "forward10";
-    if (key === " " || key === "spacebar" || key === "p" || key === "mediaplaypause") {
+    if (shortcutMatches(event, "playerBack10")) action = "back10";
+    else if (shortcutMatches(event, "playerForward10")) action = "forward10";
+    else if (shortcutMatches(event, "playerPlayPause") || key === "mediaplaypause") {
       action = "playPause";
     }
 
@@ -353,6 +386,11 @@
   }
 
   ensureHost();
+  loadPlayerShortcutSettings();
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName !== "local" || !changes[SHORTCUT_STORAGE_KEY]) return;
+    loadPlayerShortcutSettings();
+  });
   document.addEventListener("keydown", handleKeyboardShortcuts, true);
   refreshState({ quiet: true });
   setInterval(() => refreshState({ quiet: true }), POLL_MS);

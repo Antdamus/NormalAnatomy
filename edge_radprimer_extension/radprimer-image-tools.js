@@ -14,7 +14,10 @@
     annotation: "a",
     zoomIn: "+",
     zoomOut: "-",
-    reset: "0"
+    reset: "0",
+    playerPlayPause: "p",
+    playerBack10: "ArrowLeft",
+    playerForward10: "ArrowRight"
   };
   const SHORTCUT_ACTIONS = [
     ["close", "Close zoom"],
@@ -24,7 +27,10 @@
     ["annotation", "Arrows on/off"],
     ["zoomIn", "Zoom in"],
     ["zoomOut", "Zoom out"],
-    ["reset", "Reset zoom"]
+    ["reset", "Reset zoom"],
+    ["playerPlayPause", "Audio play/pause"],
+    ["playerBack10", "Audio back 10 sec"],
+    ["playerForward10", "Audio forward 10 sec"]
   ];
 
   let zoomState = {
@@ -204,6 +210,14 @@
     try {
       await chrome.storage.local.set({ [SHORTCUT_STORAGE_KEY]: shortcutSettings });
     } catch {}
+  }
+
+  function setShortcutCaptureState(active) {
+    if (active) {
+      document.documentElement.dataset.radprimerShortcutCapture = "true";
+    } else {
+      delete document.documentElement.dataset.radprimerShortcutCapture;
+    }
   }
 
   function getActiveImageElement() {
@@ -743,7 +757,7 @@
         </div>
         <div class="shortcut-panel" hidden>
           <div class="shortcut-head">
-            <span>Zoom shortcuts</span>
+            <span>Study shortcuts</span>
             <button class="shortcut-reset" type="button">Reset</button>
           </div>
           <div class="shortcut-list"></div>
@@ -909,6 +923,8 @@
     host.style.display = "none";
     zoomState.open = false;
     zoomState.dragging = false;
+    shortcutCaptureAction = "";
+    setShortcutCaptureState(false);
   }
 
   function applyCaptionState() {
@@ -956,12 +972,14 @@
     if (!panel) return;
     panel.hidden = !panel.hidden;
     shortcutCaptureAction = "";
+    setShortcutCaptureState(false);
     renderShortcutPanel();
   }
 
   function startShortcutCapture(actionId) {
     if (!SHORTCUT_ACTIONS.some(([id]) => id === actionId)) return;
     shortcutCaptureAction = actionId;
+    setShortcutCaptureState(true);
     const panel = getShortcutPanel();
     if (panel) panel.hidden = false;
     renderShortcutPanel();
@@ -975,6 +993,7 @@
     const key = normalizeShortcutKey(event.key);
     if (key === "Escape") {
       shortcutCaptureAction = "";
+      setShortcutCaptureState(false);
       renderShortcutPanel();
       return true;
     }
@@ -985,6 +1004,7 @@
         [shortcutCaptureAction]: key
       };
       shortcutCaptureAction = "";
+      setShortcutCaptureState(false);
       await saveShortcutSettings();
       renderShortcutPanel();
     }
@@ -995,6 +1015,7 @@
   async function resetShortcutSettings() {
     shortcutSettings = { ...DEFAULT_SHORTCUTS };
     shortcutCaptureAction = "";
+    setShortcutCaptureState(false);
     await saveShortcutSettings();
     renderShortcutPanel();
   }
@@ -1060,6 +1081,15 @@
     return actionId === "zoomIn" && saved === "+" && pressed === "=";
   }
 
+  function sendSpeechifyPlayerAction(action) {
+    try {
+      chrome.runtime.sendMessage({
+        type: "SPEECHIFY_PLAYER_REMOTE",
+        payload: { action }
+      });
+    } catch {}
+  }
+
   function performShortcutAction(actionId) {
     if (actionId === "close") closeZoomViewer();
     else if (actionId === "previous") navigateZoomBy(-1);
@@ -1069,6 +1099,9 @@
     else if (actionId === "zoomIn") zoomBy(1.25);
     else if (actionId === "zoomOut") zoomBy(1 / 1.25);
     else if (actionId === "reset") resetZoom();
+    else if (actionId === "playerPlayPause") sendSpeechifyPlayerAction("playPause");
+    else if (actionId === "playerBack10") sendSpeechifyPlayerAction("back10");
+    else if (actionId === "playerForward10") sendSpeechifyPlayerAction("forward10");
   }
 
   function clamp(value, min, max) {
