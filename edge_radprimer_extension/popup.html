@@ -132,6 +132,37 @@
         <p class="muted">Speechify is used only for Normal Narrative, Normal Narrative + image downloads, and Pathology Narrative.</p>
       </section>
 
+      <section class="panel">
+        <label class="check">
+          <input id="createAnkiImportFile" type="checkbox">
+          Create Anki import TSV after audit
+        </label>
+        <label>
+          Deck routing
+          <select id="ankiDeckMode">
+            <option value="auto">Auto from RadPrimer breadcrumb</option>
+            <option value="manual">Manual parent deck</option>
+          </select>
+        </label>
+        <label>
+          Pathology root deck
+          <input id="ankiPathologyRoot" type="text" placeholder="Corebook">
+        </label>
+        <label>
+          Normal root deck
+          <input id="ankiNormalRoot" type="text" placeholder="RadprimerNormal">
+        </label>
+        <label>
+          Manual parent deck
+          <input id="ankiDeckRoot" type="text" placeholder="Corebook::MSK::Trauma::Introduction to Osseous Trauma">
+        </label>
+        <label>
+          Anki note type
+          <input id="ankiNoteType" type="text" placeholder="core_rad_notetype_v2">
+        </label>
+        <p class="muted">Auto routing uses root deck + RadPrimer breadcrumb. Manual routing uses manual parent deck + article title.</p>
+      </section>
+
       <button id="run">Extract + copy prompt package</button>
       <button id="downloadImagesOnly" class="secondary">Download images only</button>
       <button id="recoverCardAuditTsv" class="secondary">Capture latest TSV download</button>

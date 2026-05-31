@@ -875,6 +875,20 @@ Pathway A requires actual Core content in the current run. Valid Core content ca
 
 If Core can be retrieved from project/source files, state the Core source basis before card generation: visible source/file name, chapter/section/page range when available, and the specific Core facts being used.
 
+CORE EVIDENCE LEDGER REQUIREMENT
+
+If any Core Radiology content is used in cards, summaries, mechanisms, differentials, imaging rules, performance facts, or management pivots, maintain a concise Core evidence ledger during the run.
+
+The ledger must include:
+- Core evidence status: USED, NOT_USED, CORE_GAP, or CLARIFICATION_NEEDED
+- visible Core source/file name when available
+- chapter/section/page range when available
+- a short list of exact Core facts used
+- the card questions/IDs or card types affected by those Core facts
+- limitations, especially if page numbers are not visible or Core was searched but not found
+
+If Core is available only through ChatGPT project/source files, this ledger is mandatory because the downstream Codex audit cannot see those project files unless you export the evidence.
+
 If Core cannot be retrieved or quoted in the current run but a full RadPrimer/STATdx article is provided, proceed Article-only rather than fabricating Core. In that case:
 - do not create a Core validation digest
 - do not create a Core Summary

@@ -1,0 +1,306 @@
+{
+  "articleTitle": "Pelvis Stress Fractures",
+  "createdAt": 1780241007226.0,
+  "radPrimerUrl": "https://app.radprimer.com/document/710d1543-3f23-4e7d-a8d7-8062e2d6a12c/lesson/657e0ece-922a-4a72-8c0f-6eb2ac59ac7d",
+  "settings": {
+    "autoGroupNonNarrative": true,
+    "autoSendToSpeechify": false,
+    "autoSubmitChatGPT": true,
+    "captureCardAuditBundle": true,
+    "cardAuditTimeoutSec": "3600",
+    "caseMap": "2,3; 5,6; 8,9; 11,12,13; 14,15; 17,18",
+    "chatgptInstruction": "make sure you do not truncate the text and read the entire message",
+    "chatgptTimeoutSec": "900",
+    "chatgptUrl": "https://chatgpt.com/g/g-p-69e5418624448191a7a74b18f607688b-pediatrics/project",
+    "coreGap": false,
+    "coreNote": "",
+    "corePages": "",
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "downloadAnnotated": true,
+    "downloadImages": true,
+    "downloadPlain": true,
+    "engine": "pathology",
+    "include": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+    "keepCaptionHtml": false,
+    "mode": "chatgpt_cards",
+    "openChatGPT": true,
+    "sourceNote": "",
+    "speechifyAutoSave": false,
+    "speechifyFolderChain": [
+      {
+        "id": "e8b38956-af1b-4a58-a31a-8040936033ff",
+        "name": "Pediatric"
+      },
+      {
+        "id": "c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
+        "name": "Musculoskeletal"
+      }
+    ],
+    "speechifyFolderId": "1d672140-e8a5-4cce-86b3-b9e5aaceb50b",
+    "speechifyFolderName": "",
+    "speechifyFolderUrl": "https://app.speechify.com/?folder=1d672140-e8a5-4cce-86b3-b9e5aaceb50b"
+  },
+  "extractionMeta": {
+    "cases": [
+      [
+        2,
+        3
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        11,
+        12,
+        13
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        1
+      ],
+      [
+        4
+      ],
+      [
+        7
+      ],
+      [
+        10
+      ],
+      [
+        16
+      ],
+      [
+        19
+      ],
+      [
+        20
+      ],
+      [
+        21
+      ],
+      [
+        22
+      ]
+    ],
+    "outputChars": 189616,
+    "selectedImages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "title": "Pelvis Stress Fractures",
+    "totalImagesOnPage": 22
+  },
+  "downloadFiles": [
+    {
+      "filename": "Pelvis_Stress_Fractures2.jpg",
+      "url": "https://app.radprimer.com/images/6854e558-28b0-4ca1-8508-1e545a5c1680?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures2_annot.jpg",
+      "url": "https://app.radprimer.com/images/6854e558-28b0-4ca1-8508-1e545a5c1680?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures3.jpg",
+      "url": "https://app.radprimer.com/images/33fb5abe-1124-48e3-910a-f9cf4b2c24dc?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures3_annot.jpg",
+      "url": "https://app.radprimer.com/images/33fb5abe-1124-48e3-910a-f9cf4b2c24dc?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures5.jpg",
+      "url": "https://app.radprimer.com/images/e650d598-0cca-4c71-a008-ecefc4437d2c?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures5_annot.jpg",
+      "url": "https://app.radprimer.com/images/e650d598-0cca-4c71-a008-ecefc4437d2c?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures6.jpg",
+      "url": "https://app.radprimer.com/images/99f5e0f7-5da4-457f-902e-039a175f4f7a?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures6_annot.jpg",
+      "url": "https://app.radprimer.com/images/99f5e0f7-5da4-457f-902e-039a175f4f7a?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures8.jpg",
+      "url": "https://app.radprimer.com/images/8ed46454-2e9d-40ff-8a75-b1183668dd96?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures8_annot.jpg",
+      "url": "https://app.radprimer.com/images/8ed46454-2e9d-40ff-8a75-b1183668dd96?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures9.jpg",
+      "url": "https://app.radprimer.com/images/508a488a-7cfd-478c-8bf8-32419ae18ac7?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures9_annot.jpg",
+      "url": "https://app.radprimer.com/images/508a488a-7cfd-478c-8bf8-32419ae18ac7?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures11.jpg",
+      "url": "https://app.radprimer.com/images/a95b25e4-e692-4889-bef5-1b538ecec174?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures11_annot.jpg",
+      "url": "https://app.radprimer.com/images/a95b25e4-e692-4889-bef5-1b538ecec174?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures12.jpg",
+      "url": "https://app.radprimer.com/images/88289904-5775-49a8-8c63-f945869b428a?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures12_annot.jpg",
+      "url": "https://app.radprimer.com/images/88289904-5775-49a8-8c63-f945869b428a?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures13.jpg",
+      "url": "https://app.radprimer.com/images/2f318e15-2829-4083-a733-f65903e5084e?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures13_annot.jpg",
+      "url": "https://app.radprimer.com/images/2f318e15-2829-4083-a733-f65903e5084e?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures14.jpg",
+      "url": "https://app.radprimer.com/images/f3c0affe-ad55-4d09-a8ac-08f306e9e3d2?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures14_annot.jpg",
+      "url": "https://app.radprimer.com/images/f3c0affe-ad55-4d09-a8ac-08f306e9e3d2?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures15.jpg",
+      "url": "https://app.radprimer.com/images/85c2ee3c-90ad-4b48-9d42-42b5d84890ac?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures15_annot.jpg",
+      "url": "https://app.radprimer.com/images/85c2ee3c-90ad-4b48-9d42-42b5d84890ac?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures17.jpg",
+      "url": "https://app.radprimer.com/images/5b86a963-afd0-4e78-aad1-0b1369af0e24?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures17_annot.jpg",
+      "url": "https://app.radprimer.com/images/5b86a963-afd0-4e78-aad1-0b1369af0e24?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures18.jpg",
+      "url": "https://app.radprimer.com/images/f79a6732-515e-4e72-b73c-c171410dd00a?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures18_annot.jpg",
+      "url": "https://app.radprimer.com/images/f79a6732-515e-4e72-b73c-c171410dd00a?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures1.jpg",
+      "url": "https://app.radprimer.com/images/f58bb23b-5392-41be-b322-de0474caf654?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures1_annot.jpg",
+      "url": "https://app.radprimer.com/images/f58bb23b-5392-41be-b322-de0474caf654?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures4.jpg",
+      "url": "https://app.radprimer.com/images/a6fece16-cff0-4d42-a970-b1d5ba4b6e59?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures4_annot.jpg",
+      "url": "https://app.radprimer.com/images/a6fece16-cff0-4d42-a970-b1d5ba4b6e59?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures7.jpg",
+      "url": "https://app.radprimer.com/images/ccadb31c-5ad4-4795-b6c4-9b7d4f497f79?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures7_annot.jpg",
+      "url": "https://app.radprimer.com/images/ccadb31c-5ad4-4795-b6c4-9b7d4f497f79?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures10.jpg",
+      "url": "https://app.radprimer.com/images/112b0f0d-aee0-4aaf-a4ea-728b7d70fa9b?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures10_annot.jpg",
+      "url": "https://app.radprimer.com/images/112b0f0d-aee0-4aaf-a4ea-728b7d70fa9b?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures16.jpg",
+      "url": "https://app.radprimer.com/images/f6100488-9f89-4a32-a905-943aeeb7d8c2?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures16_annot.jpg",
+      "url": "https://app.radprimer.com/images/f6100488-9f89-4a32-a905-943aeeb7d8c2?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures19.jpg",
+      "url": "https://app.radprimer.com/images/0aa6929e-1e0a-4a1b-ba16-3d42b454d3b7?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures19_annot.jpg",
+      "url": "https://app.radprimer.com/images/0aa6929e-1e0a-4a1b-ba16-3d42b454d3b7?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures20.jpg",
+      "url": "https://app.radprimer.com/images/417cdd40-54ce-496d-933f-ca49f277b9fa?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures20_annot.jpg",
+      "url": "https://app.radprimer.com/images/417cdd40-54ce-496d-933f-ca49f277b9fa?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures21.jpg",
+      "url": "https://app.radprimer.com/images/c7bd3a89-b34d-4f68-a8bc-a227df9446bd?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures21_annot.jpg",
+      "url": "https://app.radprimer.com/images/c7bd3a89-b34d-4f68-a8bc-a227df9446bd?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures22.jpg",
+      "url": "https://app.radprimer.com/images/f3b18636-3d18-46c8-b330-4ad31c137a6a?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Pelvis_Stress_Fractures22_annot.jpg",
+      "url": "https://app.radprimer.com/images/f3b18636-3d18-46c8-b330-4ad31c137a6a?style=xlarge&annotated=true"
+    }
+  ],
+  "recoveredFrom": "C:\\Users\\josem.000\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Local Extension Settings\\fmdoafmodgecbcabgonodllkoolbafgp",
+  "recoveryNote": "Reconstructed by Codex because staged browser bundle contained only generated_cards.tsv and no _bundle_complete marker."
+}

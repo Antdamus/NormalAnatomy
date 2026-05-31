@@ -62,8 +62,13 @@ If `Capture card audit bundle` is enabled for a card mode, the final card prompt
 
 - `source_package.txt`
 - `generated_cards.tsv`
+- `core_evidence.txt`
 - `metadata.json`
 - `audit_instructions.md`
+
+`core_evidence.txt` is captured from a required ChatGPT evidence block. If ChatGPT used Core Radiology from project files or uploaded PDFs that Codex cannot directly see, it must summarize the visible Core source basis, the specific Core facts used, and which cards those facts affected. If no Core content was used or retrievable, the file records that status so the audit can avoid unverifiable Core-only claims.
+
+If `Create Anki import TSV after audit` is enabled, the audit instructions also ask Codex to write `corrected_cards_anki_import.tsv`. That file prepends Anki text-import directives such as `#separator:tab`, `#html:true`, `#notetype:core_rad_notetype_v2`, and `#deck:<target deck>` to the corrected rows. In auto routing mode, the extension reads the RadPrimer breadcrumb, drops the generic `Basic` level, maps common sections such as `Musculoskeletal` to `MSK`, and builds the deck under `Corebook` for pathology runs or `RadprimerNormal` for normal runs. For example, `Basic > Musculoskeletal > Musculoskeletal: Trauma > Introduction to Osseous Trauma > Pelvis Stress Fractures` becomes `Corebook::MSK::Trauma::Introduction to Osseous Trauma::Pelvis Stress Fractures`. Manual routing mode remains available and uses `Manual parent deck + article title`.
 
 Codex automation can import completed bundles directly from `Downloads\RadPrimerAudit` into `C:\Users\josem.000\NormalAnatomy\radprimer_audit_queue` with `tools\import-latest-radprimer-audit-bundle.ps1`. You can also start `tools\start-radprimer-audit-watcher.cmd` and leave it open if you want live mirroring. The local queue lets Codex audit bundles against the original article package and write corrected outputs without extra file-access prompts.
 

@@ -46,6 +46,38 @@
     return "";
   };
 
+  const getBreadcrumbTrail = (title) => {
+    const selectors = [
+      ".breadcrumbs-js .nav-node-link-js",
+      ".breadcrumbs .nav-node-link-js",
+      ".breadcrumbs-js li",
+      ".breadcrumbs li"
+    ];
+
+    let nodes = [];
+    for (const selector of selectors) {
+      nodes = Array.from(document.querySelectorAll(selector));
+      if (nodes.length) break;
+    }
+
+    const seen = new Set();
+    const trail = [];
+    for (const node of nodes) {
+      const text = cleanText(node.textContent);
+      const key = text.toLowerCase();
+      if (!text || seen.has(key)) continue;
+      seen.add(key);
+      trail.push(text);
+    }
+
+    const cleanTitle = cleanText(title);
+    if (cleanTitle && cleanText(trail.at(-1)).toLowerCase() !== cleanTitle.toLowerCase()) {
+      trail.push(cleanTitle);
+    }
+
+    return trail;
+  };
+
   const slugifyFilePrefix = (text) => {
     const cleaned = cleanText(text)
       .replace(/^Document:\s*/i, "")
@@ -205,6 +237,11 @@
       `CENTERING TOPIC FOR THIS CHAT: ${topic}`,
       `USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: ${topic}`
     ].join("\n");
+  };
+
+  const buildBreadcrumbBlock = (breadcrumbTrail) => {
+    if (!Array.isArray(breadcrumbTrail) || !breadcrumbTrail.length) return "";
+    return ["=== RADPRIMER BREADCRUMB ===", breadcrumbTrail.join(" > ")].join("\n");
   };
 
   const buildCoreGatePreamble = (config) => {
@@ -372,6 +409,10 @@
 
   const buildOutput = (config) => {
     const title = getArticleTitle();
+    const breadcrumbTrail = getBreadcrumbTrail(title);
+    const headerBlock = [buildTopicBlock(title), buildBreadcrumbBlock(breadcrumbTrail)]
+      .filter(Boolean)
+      .join("\n\n");
     const articleOutline = getArticleOutline();
     const allImages = getImages(config, title);
 
@@ -393,7 +434,7 @@
           ? buildCaptionsOnlyBlock(selectedImages)
           : buildImagesBlock(config, cases, byIndex);
 
-      output = `${buildTopicBlock(title)}
+      output = `${headerBlock}
 
 ${buildWorkflowContext(config, allImages.length > 0, selectedImages.length)}
 
@@ -411,7 +452,7 @@ ${buildSourceAttributionBlock(config)}
       const coreValidationBlock =
         config.mode === "narrative" ? "" : `\n\n=== CORE VALIDATION INPUT ===\n${buildCoreGatePreamble(config)}`;
 
-      output = `${buildTopicBlock(title)}${coreValidationBlock}
+      output = `${headerBlock}${coreValidationBlock}
 
 === PROMPT ===
 ${config.promptText}
@@ -439,6 +480,7 @@ ${buildSourceAttributionBlock(config)}
       downloadFiles,
       meta: {
         title,
+        breadcrumbTrail,
         totalImagesOnPage: allImages.length,
         selectedImages: selectedNums,
         cases,

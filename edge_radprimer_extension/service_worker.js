@@ -22,10 +22,28 @@ const PENDING_CARD_AUDIT_PREFIX = "radprimerCardAuditPending:";
 const IMAGE_DOWNLOAD_SUBFOLDER = "RadPrimer";
 const CARD_AUDIT_SUBFOLDER = "RadPrimerAudit";
 const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
+const CORE_EVIDENCE_BEGIN = "CORE_EVIDENCE_FILE_BEGIN";
+const CORE_EVIDENCE_END = "CORE_EVIDENCE_FILE_END";
 const CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION = [
   "AUTOMATED CAPTURE REQUIREMENT:",
   "When you reach final card export, create a downloadable TSV file instead of printing the TSV rows in chat.",
   "Do not print the TSV inline. Do not wrap the TSV in a code block.",
+  "",
+  "CORE EVIDENCE REQUIREMENT FOR CODEX AUDIT:",
+  "If any Core Radiology content was used, you must also print a compact Core evidence block outside the TSV download. This block is for the audit bundle only and must not be included inside the TSV file.",
+  "If no Core content was actually retrieved/used, still print the block with CORE_EVIDENCE_STATUS: NOT_USED.",
+  "Use this exact plain-text wrapper:",
+  CORE_EVIDENCE_BEGIN,
+  "CORE_EVIDENCE_STATUS: USED | NOT_USED | CORE_GAP | CLARIFICATION_NEEDED",
+  "CORE_SOURCE_BASIS: visible Core source/file/chapter/section/page range when available; if page numbers are not visible, say so.",
+  "CORE_FACTS_USED:",
+  "- concise bullet facts from Core that affected cards, summaries, mechanisms, differentials, or management.",
+  "CORE_DERIVED_CARDS:",
+  "- card questions/IDs or card types that used the Core facts.",
+  "CORE_LIMITATIONS:",
+  "- anything not found, not retrievable, or inferred from non-Core sources.",
+  CORE_EVIDENCE_END,
+  "",
   "After the download button/link is created, print this exact sentinel block as plain text:",
   CARD_AUDIT_DOWNLOAD_SENTINEL,
   "FILENAME: radprimer_cards.tsv",
@@ -55,6 +73,12 @@ const DEFAULTS = {
   chatgptInstruction: "make sure you do not truncate the text and read the entire message",
   chatgptTimeoutSec: "900",
   cardAuditTimeoutSec: "3600",
+  createAnkiImportFile: true,
+  ankiDeckMode: "auto",
+  ankiPathologyRoot: "Corebook",
+  ankiNormalRoot: "RadprimerNormal",
+  ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+  ankiNoteType: "core_rad_notetype_v2",
   autoSendToSpeechify: true,
   speechifyAutoSave: false,
   speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
@@ -521,6 +545,140 @@ function sanitizeDownloadPathPart(value, fallback = "radprimer") {
     .replace(/_+/g, "_");
 }
 
+function sanitizeAnkiDeckPart(value, fallback = "RadPrimer Article") {
+  const text = String(value || "")
+    .replace(/\r?\n/g, " ")
+    .replace(/::/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return text || fallback;
+}
+
+function sanitizeAnkiDeckPath(value) {
+  return String(value || "")
+    .split("::")
+    .map((part) => sanitizeAnkiDeckPart(part, ""))
+    .filter(Boolean)
+    .join("::");
+}
+
+function normalizeAnkiDeckPartForCompare(value) {
+  return sanitizeAnkiDeckPart(value, "").toLowerCase();
+}
+
+const ANKI_BREADCRUMB_SKIP = new Set(["basic"]);
+const ANKI_BREADCRUMB_ALIASES = new Map(
+  [
+    ["Musculoskeletal", "MSK"],
+    ["Gastrointestinal", "GI"],
+    ["Genitourinary", "GU"],
+    ["Neuroradiology", "Neuro"],
+    ["Pediatric", "Pediatrics"],
+    ["Interventional Radiology", "IR"]
+  ].map(([from, to]) => [from.toLowerCase(), to])
+);
+
+function mapAnkiBreadcrumbPart(value) {
+  const part = sanitizeAnkiDeckPart(value, "");
+  if (!part) return "";
+  return ANKI_BREADCRUMB_ALIASES.get(part.toLowerCase()) || part;
+}
+
+function pushUniqueDeckPart(parts, part) {
+  const cleaned = sanitizeAnkiDeckPart(part, "");
+  if (!cleaned) return;
+  const last = parts.at(-1);
+  if (last && normalizeAnkiDeckPartForCompare(last) === normalizeAnkiDeckPartForCompare(cleaned)) {
+    return;
+  }
+  parts.push(cleaned);
+}
+
+function buildAnkiBreadcrumbDeckParts(breadcrumbTrail, title) {
+  const parts = [];
+  const titleText = sanitizeAnkiDeckPart(title, "");
+
+  for (const rawPart of Array.isArray(breadcrumbTrail) ? breadcrumbTrail : []) {
+    const cleaned = sanitizeAnkiDeckPart(rawPart, "");
+    if (!cleaned || ANKI_BREADCRUMB_SKIP.has(cleaned.toLowerCase())) continue;
+
+    const colonMatch = cleaned.match(/^(.+?)\s*:\s*(.+)$/);
+    if (colonMatch) {
+      const prefix = mapAnkiBreadcrumbPart(colonMatch[1]);
+      const suffix = sanitizeAnkiDeckPart(colonMatch[2], "");
+      pushUniqueDeckPart(parts, prefix);
+      pushUniqueDeckPart(parts, suffix);
+      continue;
+    }
+
+    pushUniqueDeckPart(parts, mapAnkiBreadcrumbPart(cleaned));
+  }
+
+  if (titleText && normalizeAnkiDeckPartForCompare(parts.at(-1)) !== normalizeAnkiDeckPartForCompare(titleText)) {
+    pushUniqueDeckPart(parts, titleText);
+  }
+
+  return parts;
+}
+
+function getAutoAnkiRoot(settings) {
+  if (settings?.engine === "normal") {
+    return sanitizeAnkiDeckPath(settings.ankiNormalRoot || DEFAULTS.ankiNormalRoot);
+  }
+  return sanitizeAnkiDeckPath(settings?.ankiPathologyRoot || DEFAULTS.ankiPathologyRoot);
+}
+
+function normalizeAnkiDeckMode(value) {
+  return value === "manual" ? "manual" : "auto";
+}
+
+function buildAnkiDeckTarget(pending) {
+  const settings = pending?.settings || {};
+  const title = sanitizeAnkiDeckPart(
+    pending?.articleTitle || pending?.extractionMeta?.title || "RadPrimer Article"
+  );
+  const breadcrumbTrail = Array.isArray(pending?.extractionMeta?.breadcrumbTrail)
+    ? pending.extractionMeta.breadcrumbTrail
+    : [];
+  const deckMode = normalizeAnkiDeckMode(settings.ankiDeckMode);
+
+  if (deckMode === "manual") {
+    const deckRoot = sanitizeAnkiDeckPath(settings.ankiDeckRoot || DEFAULTS.ankiDeckRoot);
+    return {
+      deckMode,
+      deckRoot,
+      deckParts: [title],
+      breadcrumbTrail,
+      deckName: deckRoot ? `${deckRoot}::${title}` : title
+    };
+  }
+
+  const deckRoot = getAutoAnkiRoot(settings);
+  const rootParts = deckRoot.split("::").filter(Boolean);
+  const deckParts = buildAnkiBreadcrumbDeckParts(breadcrumbTrail, title);
+
+  while (
+    rootParts.length &&
+    deckParts.length &&
+    normalizeAnkiDeckPartForCompare(rootParts.at(-1)) === normalizeAnkiDeckPartForCompare(deckParts[0])
+  ) {
+    deckParts.shift();
+  }
+
+  const finalParts = [...rootParts, ...(deckParts.length ? deckParts : [title])];
+  return {
+    deckMode,
+    deckRoot,
+    deckParts: finalParts,
+    breadcrumbTrail,
+    deckName: finalParts.join("::") || title
+  };
+}
+
+function buildAnkiDeckName(pending) {
+  return buildAnkiDeckTarget(pending).deckName;
+}
+
 function bytesToBase64(bytes) {
   let binary = "";
   const chunkSize = 0x8000;
@@ -553,25 +711,94 @@ function looksLikeInlineCardTsv(text) {
   return strongTabbedLines.length >= 2 || tabbedLines.length >= 4;
 }
 
+function extractCoreEvidenceBlock(text) {
+  const value = String(text || "");
+  const begin = value.indexOf(CORE_EVIDENCE_BEGIN);
+  if (begin < 0) {
+    return {
+      text: [
+        "CORE_EVIDENCE_STATUS: NOT_PROVIDED",
+        "CORE_SOURCE_BASIS: No Core evidence block was found in the captured ChatGPT response.",
+        "CORE_FACTS_USED:",
+        "- None auditable from ChatGPT output.",
+        "CORE_DERIVED_CARDS:",
+        "- Unknown; audit should treat Core-specific claims as unverified unless source_package.txt contains direct Core text.",
+        "CORE_LIMITATIONS:",
+        "- ChatGPT may have used project files, but this bundle did not capture evidence for Codex verification."
+      ].join("\n"),
+      status: "NOT_PROVIDED",
+      provided: false
+    };
+  }
+
+  const contentStart = begin + CORE_EVIDENCE_BEGIN.length;
+  const end = value.indexOf(CORE_EVIDENCE_END, contentStart);
+  const raw = end >= 0 ? value.slice(contentStart, end) : value.slice(contentStart);
+  const cleaned = raw
+    .replace(/```(?:text|markdown|md)?/gi, "")
+    .replace(/```/g, "")
+    .trim();
+  const statusMatch = cleaned.match(/CORE_EVIDENCE_STATUS\s*:\s*([A-Z_]+)/i);
+  const status = statusMatch ? statusMatch[1].toUpperCase() : "UNKNOWN";
+
+  return {
+    text: cleaned || "CORE_EVIDENCE_STATUS: EMPTY\nCORE_SOURCE_BASIS: Empty Core evidence block.",
+    status,
+    provided: true
+  };
+}
+
+function stripCoreEvidenceBlock(text) {
+  const value = String(text || "");
+  const begin = value.indexOf(CORE_EVIDENCE_BEGIN);
+  if (begin < 0) return value;
+  const contentStart = begin + CORE_EVIDENCE_BEGIN.length;
+  const end = value.indexOf(CORE_EVIDENCE_END, contentStart);
+  const removeEnd = end >= 0 ? end + CORE_EVIDENCE_END.length : value.length;
+  return `${value.slice(0, begin)}\n${value.slice(removeEnd)}`.trim();
+}
+
 function buildAuditInstructions(metadata) {
+  const ankiDeckName = metadata.anki?.deckName || "";
+  const ankiNoteType = metadata.anki?.noteType || DEFAULTS.ankiNoteType;
   return [
     "# RadPrimer Card Audit Bundle",
     "",
-    "Audit goal: compare `generated_cards.tsv` against `source_package.txt` and produce a corrected, higher-yield TSV when needed.",
+    "Audit goal: compare `generated_cards.tsv` against `source_package.txt` and `core_evidence.txt` when present, then produce a corrected, higher-yield TSV when needed.",
     "",
     "Checklist:",
     "- Preserve the existing TSV schema and column order.",
     "- Remove cards that test prompt metadata, source-review bookkeeping, generator decisions, or vague audit statements.",
     "- Split overloaded cards when one front is asking for too many independent facts.",
-    "- Add missing high-yield cards only when the source package supports them.",
+    "- Add missing high-yield cards only when the source package or captured Core evidence supports them.",
     "- Improve mechanism and histology explanations when they are unclear; explicitly label any outside clarification added during review.",
     "- Keep one main concept per card unless the card is intentionally testing a pathway or structured comparison.",
     "- Check image-based cards against the selected image list and grouped cases in `metadata.json`.",
     "- Keep source attribution on the back of cards when the note type supports it.",
+    "- Treat Core-specific claims as auditable only if supported by `core_evidence.txt` or direct Core text inside `source_package.txt`.",
+    "- If `core_evidence.txt` says NOT_PROVIDED, EMPTY, or CLARIFICATION_NEEDED, remove or relabel Core-only claims unless independently supported by the visible bundle files.",
     "",
     "Suggested final outputs:",
     "- `corrected_cards.tsv`",
+    metadata.anki?.createImportFile
+      ? "- `corrected_cards_anki_import.tsv` with Anki import headers for the target deck"
+      : "",
     "- `audit_report.md` with high-signal changes and remaining uncertainties",
+    "",
+    metadata.anki?.createImportFile
+      ? [
+          "Anki import file rule:",
+          `- Target note type: \`${ankiNoteType}\``,
+          `- Target deck: \`${ankiDeckName}\``,
+          "- Create `corrected_cards_anki_import.tsv` by prepending these lines to the corrected TSV rows:",
+          "  `#separator:tab`",
+          "  `#html:true`",
+          `  \`#notetype:${ankiNoteType}\``,
+          `  \`#deck:${ankiDeckName}\``,
+          "- Do not add a field header row after those import directives.",
+          "- Keep `corrected_cards.tsv` as the clean no-header 22-column audit output."
+        ].join("\n")
+      : "",
     "",
     `Topic: ${metadata.articleTitle || "[unknown]"}`,
     `Engine/mode: ${metadata.engine || ""}/${metadata.mode || ""}`,
@@ -589,10 +816,11 @@ function buildAuditWakeMessage(bundle) {
     "Please do the full card-quality audit:",
     "1. From C:\\Users\\josem.000\\NormalAnatomy, import the newest complete bundle by running or emulating edge_radprimer_extension\\tools\\import-latest-radprimer-audit-bundle.ps1.",
     "2. Read C:\\Users\\josem.000\\NormalAnatomy\\radprimer_audit_queue\\_latest_radprimer_audit_bundle.txt.",
-    "3. In that bundle, compare source_package.txt, generated_cards.tsv, metadata.json, and audit_instructions.md.",
+    "3. In that bundle, compare source_package.txt, generated_cards.tsv, metadata.json, audit_instructions.md, and core_evidence.txt if present.",
     "4. Write corrected_cards.tsv, audit_report.md, and _codex_audit_done.txt in the same bundle folder.",
+    "5. If metadata.json contains an Anki deck target, also write corrected_cards_anki_import.tsv with Anki import headers so Anki can create/select the target subdeck automatically.",
     "",
-    "Preserve the TSV schema and column order. Remove metadata/bookkeeping cards, split overloaded cards, add missing source-supported high-yield cards, and improve unclear mechanism or histology explanations while labeling any outside clarification."
+    "Preserve the TSV schema and column order. Remove metadata/bookkeeping cards, split overloaded cards, add missing source-supported high-yield cards, and improve unclear mechanism or histology explanations while labeling any outside clarification. Treat Core-specific claims as verified only when core_evidence.txt or source_package.txt contains auditable Core support."
   ].join("\n");
 }
 
@@ -622,6 +850,7 @@ async function downloadAuditTextFile(folderName, filename, text, mimeType = "tex
 }
 
 function createCardAuditMetadata(pending, createdAt, generated = {}) {
+  const ankiTarget = buildAnkiDeckTarget(pending);
   return {
     createdAt,
     articleTitle: pending.articleTitle || pending.extractionMeta?.title || "radprimer_cards",
@@ -631,12 +860,32 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
     selectedImages: pending.extractionMeta?.selectedImages || [],
     cases: pending.extractionMeta?.cases || [],
     totalImagesOnPage: pending.extractionMeta?.totalImagesOnPage ?? null,
+    breadcrumbTrail: pending.extractionMeta?.breadcrumbTrail || [],
     outputChars: pending.sourcePackage?.length || 0,
     generatedChars: generated.generatedChars ?? null,
     generatedRawChars: generated.generatedRawChars ?? null,
     generatedViaDownload: Boolean(generated.generatedViaDownload),
     sourceOnlyBundle: Boolean(generated.sourceOnlyBundle),
     downloadSentinel: generated.downloadSentinel || "",
+    coreEvidence: {
+      status: generated.coreEvidenceStatus || "",
+      provided: Boolean(generated.coreEvidenceProvided),
+      chars: generated.coreEvidenceChars ?? null,
+      filename: generated.coreEvidenceFilename || "core_evidence.txt"
+    },
+    anki: {
+      createImportFile: pending.settings?.createAnkiImportFile !== false,
+      deckMode: ankiTarget.deckMode,
+      deckRoot: ankiTarget.deckRoot,
+      manualDeckRoot: pending.settings?.ankiDeckRoot || DEFAULTS.ankiDeckRoot,
+      pathologyRoot: pending.settings?.ankiPathologyRoot || DEFAULTS.ankiPathologyRoot,
+      normalRoot: pending.settings?.ankiNormalRoot || DEFAULTS.ankiNormalRoot,
+      breadcrumbTrail: ankiTarget.breadcrumbTrail,
+      deckParts: ankiTarget.deckParts,
+      deckName: ankiTarget.deckName,
+      noteType: pending.settings?.ankiNoteType || DEFAULTS.ankiNoteType,
+      importFilename: "corrected_cards_anki_import.tsv"
+    },
     downloadFiles: (pending.downloadFiles || []).map((file) => ({
       filename: file.filename,
       label: file.label || "",
@@ -649,7 +898,13 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
       coreSection: pending.settings?.coreSection || "",
       corePages: pending.settings?.corePages || "",
       sourceNote: pending.settings?.sourceNote || "",
-      coreNote: pending.settings?.coreNote || ""
+      coreNote: pending.settings?.coreNote || "",
+      createAnkiImportFile: pending.settings?.createAnkiImportFile !== false,
+      ankiDeckMode: pending.settings?.ankiDeckMode || DEFAULTS.ankiDeckMode,
+      ankiPathologyRoot: pending.settings?.ankiPathologyRoot || DEFAULTS.ankiPathologyRoot,
+      ankiNormalRoot: pending.settings?.ankiNormalRoot || DEFAULTS.ankiNormalRoot,
+      ankiDeckRoot: pending.settings?.ankiDeckRoot || DEFAULTS.ankiDeckRoot,
+      ankiNoteType: pending.settings?.ankiNoteType || DEFAULTS.ankiNoteType
     }
   };
 }
@@ -658,14 +913,19 @@ async function stageCardAuditBundle({ pending, assistantText }) {
   const createdAt = new Date().toISOString();
   const title = pending.articleTitle || pending.extractionMeta?.title || "radprimer_cards";
   const folderName = `${sanitizeDownloadPathPart(title)}_${createdAt.replace(/[:.]/g, "-")}`;
-  const generatedCards = stripOuterCodeFence(assistantText);
+  const coreEvidence = extractCoreEvidenceBlock(assistantText);
+  const generatedCards = stripOuterCodeFence(stripCoreEvidenceBlock(assistantText));
   const metadata = createCardAuditMetadata(pending, createdAt, {
     generatedChars: generatedCards.length,
-    generatedRawChars: String(assistantText || "").length
+    generatedRawChars: String(assistantText || "").length,
+    coreEvidenceStatus: coreEvidence.status,
+    coreEvidenceProvided: coreEvidence.provided,
+    coreEvidenceChars: coreEvidence.text.length
   });
 
   await downloadAuditTextFile(folderName, "source_package.txt", pending.sourcePackage || "");
   await downloadAuditTextFile(folderName, "generated_cards.tsv", generatedCards);
+  await downloadAuditTextFile(folderName, "core_evidence.txt", coreEvidence.text);
   if (generatedCards !== String(assistantText || "").trim()) {
     await downloadAuditTextFile(folderName, "generated_cards_raw.txt", assistantText || "");
   }
@@ -726,9 +986,13 @@ async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "" }) 
   const createdAt = new Date().toISOString();
   const title = pending.articleTitle || pending.extractionMeta?.title || "radprimer_cards";
   const folderName = `${sanitizeDownloadPathPart(title)}_${createdAt.replace(/[:.]/g, "-")}`;
+  const coreEvidence = extractCoreEvidenceBlock(sentinelText);
   const metadata = createCardAuditMetadata(pending, createdAt, {
     generatedViaDownload: true,
-    downloadSentinel: sentinelText
+    downloadSentinel: sentinelText,
+    coreEvidenceStatus: coreEvidence.status,
+    coreEvidenceProvided: coreEvidence.provided,
+    coreEvidenceChars: coreEvidence.text.length
   });
 
   await sendPageStatus(
@@ -738,6 +1002,7 @@ async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "" }) 
   );
 
   await downloadAuditTextFile(folderName, "source_package.txt", pending.sourcePackage || "");
+  await downloadAuditTextFile(folderName, "core_evidence.txt", coreEvidence.text);
   await downloadAuditTextFile(
     folderName,
     "metadata.json",
@@ -752,6 +1017,7 @@ async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "" }) 
     metadata,
     pending,
     createdAt,
+    coreEvidence,
     expiresAt: Date.now() + 10 * 60 * 1000,
     downloadId: null,
     originalDownload: null
@@ -936,7 +1202,7 @@ function buildSpeechifyPayload(settings, articleTitle) {
 function buildChatGptComposerText(settings, packageText, options = {}) {
   const instruction = settings.chatgptInstruction || DEFAULTS.chatgptInstruction;
   const extraInstruction = String(options.extraComposerInstruction || "").trim();
-  return [instruction, extraInstruction, packageText].filter(Boolean).join("\n\n");
+  return [instruction, packageText, extraInstruction].filter(Boolean).join("\n\n");
 }
 
 async function openChatGptAndStart(settings, packageText, articleTitle, options = {}) {

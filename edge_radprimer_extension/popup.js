@@ -52,6 +52,12 @@ const DEFAULTS = {
   chatgptInstruction: "make sure you do not truncate the text and read the entire message",
   chatgptTimeoutSec: "900",
   cardAuditTimeoutSec: "3600",
+  createAnkiImportFile: true,
+  ankiDeckMode: "auto",
+  ankiPathologyRoot: "Corebook",
+  ankiNormalRoot: "RadprimerNormal",
+  ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+  ankiNoteType: "core_rad_notetype_v2",
   autoSendToSpeechify: true,
   speechifyAutoSave: false,
   speechifyAutoPlayAfterSave: false,
@@ -94,6 +100,12 @@ const fields = [
   "chatgptInstruction",
   "chatgptTimeoutSec",
   "cardAuditTimeoutSec",
+  "createAnkiImportFile",
+  "ankiDeckMode",
+  "ankiPathologyRoot",
+  "ankiNormalRoot",
+  "ankiDeckRoot",
+  "ankiNoteType",
   "autoSendToSpeechify",
   "speechifyAutoSave",
   "speechifyFolderUrl"
@@ -275,6 +287,12 @@ function readForm() {
     chatgptInstruction: $("chatgptInstruction").value.trim(),
     chatgptTimeoutSec: $("chatgptTimeoutSec").value.trim(),
     cardAuditTimeoutSec: $("cardAuditTimeoutSec").value.trim(),
+    createAnkiImportFile: $("createAnkiImportFile").checked,
+    ankiDeckMode: $("ankiDeckMode").value || DEFAULTS.ankiDeckMode,
+    ankiPathologyRoot: $("ankiPathologyRoot").value.trim(),
+    ankiNormalRoot: $("ankiNormalRoot").value.trim(),
+    ankiDeckRoot: $("ankiDeckRoot").value.trim(),
+    ankiNoteType: $("ankiNoteType").value.trim(),
     autoSendToSpeechify: speechifyEligible ? true : autoSendToSpeechify,
     speechifyAutoSave: false,
     speechifyAutoPlayAfterSave: false,
@@ -319,6 +337,13 @@ function applyForm(values) {
   $("chatgptInstruction").value = values.chatgptInstruction ?? DEFAULTS.chatgptInstruction;
   $("chatgptTimeoutSec").value = values.chatgptTimeoutSec ?? DEFAULTS.chatgptTimeoutSec;
   $("cardAuditTimeoutSec").value = values.cardAuditTimeoutSec ?? DEFAULTS.cardAuditTimeoutSec;
+  $("createAnkiImportFile").checked =
+    values.createAnkiImportFile ?? DEFAULTS.createAnkiImportFile;
+  $("ankiDeckMode").value = values.ankiDeckMode ?? DEFAULTS.ankiDeckMode;
+  $("ankiPathologyRoot").value = values.ankiPathologyRoot ?? DEFAULTS.ankiPathologyRoot;
+  $("ankiNormalRoot").value = values.ankiNormalRoot ?? DEFAULTS.ankiNormalRoot;
+  $("ankiDeckRoot").value = values.ankiDeckRoot ?? DEFAULTS.ankiDeckRoot;
+  $("ankiNoteType").value = values.ankiNoteType ?? DEFAULTS.ankiNoteType;
   $("autoSendToSpeechify").checked = autoSendToSpeechify;
   $("speechifyAutoSave").checked = values.speechifyAutoSave ?? DEFAULTS.speechifyAutoSave;
   $("speechifyFolderUrl").value = getStoredSpeechifyFolderUrl(values);

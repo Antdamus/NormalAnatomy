@@ -42,6 +42,12 @@
     chatgptInstruction: "make sure you do not truncate the text and read the entire message",
     chatgptTimeoutSec: "900",
     cardAuditTimeoutSec: "3600",
+    createAnkiImportFile: true,
+    ankiDeckMode: "auto",
+    ankiPathologyRoot: "Corebook",
+    ankiNormalRoot: "RadprimerNormal",
+    ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    ankiNoteType: "core_rad_notetype_v2",
     autoSendToSpeechify: true,
     speechifyAutoSave: false,
     speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7"
@@ -396,6 +402,27 @@
                 <div class="grid spaced">
                   <label class="wide">Speechify folder link<input data-field="speechifyFolderUrl" type="text"></label>
                   <span class="hint wide">Speechify runs only for narrative modes. Card audit capture is optional and waits for the generated TSV before staging a bundle.</span>
+                </div>
+              </section>
+
+              <section class="card">
+                <div class="card-title">
+                  <h3>Anki import</h3>
+                  <span class="hint">Audit output can carry the deck target.</span>
+                </div>
+                <div class="checks">
+                  <label class="check"><input data-field="createAnkiImportFile" type="checkbox"> Create Anki import TSV after audit</label>
+                </div>
+                <div class="grid spaced">
+                  <label class="wide">Deck routing<select data-field="ankiDeckMode">
+                    <option value="auto">Auto from RadPrimer breadcrumb</option>
+                    <option value="manual">Manual parent deck</option>
+                  </select></label>
+                  <label>Pathology root deck<input data-field="ankiPathologyRoot" type="text"></label>
+                  <label>Normal root deck<input data-field="ankiNormalRoot" type="text"></label>
+                  <label class="wide">Manual parent deck<input data-field="ankiDeckRoot" type="text"></label>
+                  <label class="wide">Anki note type<input data-field="ankiNoteType" type="text"></label>
+                  <span class="hint wide">Auto routing uses the RadPrimer breadcrumb. Pathology starts under Corebook; normal starts under RadprimerNormal.</span>
                 </div>
               </section>
 
