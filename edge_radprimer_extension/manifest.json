@@ -29,7 +29,7 @@
   "content_scripts": [
     {
       "matches": ["https://app.radprimer.com/*"],
-      "js": ["radprimer-run-button.js"],
+      "js": ["radprimer-run-button.js", "radprimer-image-tools.js"],
       "run_at": "document_idle"
     },
     {

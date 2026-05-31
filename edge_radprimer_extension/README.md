@@ -39,6 +39,8 @@ To mirror images into Anki, start `tools\start-radprimer-anki-watcher.cmd` and l
 
 If you already ran a prompt and forgot to enable image downloads, use `Download images only` from the popup or the image icon on the RadPrimer page. It forces the image download stage for the current article without opening ChatGPT or Speechify.
 
+The RadPrimer image lightbox is also enhanced by the extension. Gallery thumbnails receive visible one-based image number badges that match the narrative prompts, and the main image or zoom icon opens a custom viewer with wheel zoom, button zoom, drag-to-pan, double-click zoom toggle, reset, and Escape-to-close.
+
 When ChatGPT project handoff is enabled, the extension opens the configured project URL and fills the composer with:
 
 ```text
