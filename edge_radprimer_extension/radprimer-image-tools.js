@@ -15,7 +15,8 @@
     startX: 0,
     startY: 0,
     originX: 0,
-    originY: 0
+    originY: 0,
+    captionCollapsed: false
   };
   let lastOpenAt = 0;
 
@@ -398,6 +399,37 @@
           pointer-events: auto;
         }
 
+        .caption-pill {
+          display: none;
+          align-items: center;
+          gap: 8px;
+          max-width: min(340px, calc(100vw - 180px));
+          height: 38px;
+          padding: 0 13px;
+          border-radius: 999px;
+          background: rgba(15, 23, 42, 0.82);
+          border: 1px solid rgba(148, 163, 184, 0.34);
+          box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+          color: rgba(248, 250, 252, 0.92);
+          font-size: 13px;
+          font-weight: 850;
+          pointer-events: auto;
+        }
+
+        .caption-pill-label {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .viewer.captions-collapsed .title {
+          display: none;
+        }
+
+        .viewer.captions-collapsed .caption-pill {
+          display: inline-flex;
+        }
+
         .image-number {
           font-weight: 850;
           color: #bfdbfe;
@@ -466,24 +498,16 @@
         }
 
         .footer {
-          position: absolute;
-          left: 18px;
-          bottom: 18px;
-          max-width: min(980px, calc(100vw - 36px));
-          z-index: 3;
-          padding: 10px 14px;
-          border-radius: 12px;
-          background: rgba(15, 23, 42, 0.82);
-          border: 1px solid rgba(148, 163, 184, 0.28);
-          color: rgba(248, 250, 252, 0.88);
-          font-size: 13px;
-          line-height: 1.35;
+          display: none;
         }
       </style>
 
       <div class="viewer" role="dialog" aria-modal="true" aria-label="RadPrimer zoom viewer">
         <div class="topbar">
           <div class="title"><span class="image-number"></span><span class="caption"></span></div>
+          <button class="caption-pill" type="button" title="Show caption">
+            <span class="caption-pill-label">Caption hidden</span>
+          </button>
           <div class="tools">
             <button class="zoom-out" type="button" title="Zoom out">-</button>
             <button class="zoom-in" type="button" title="Zoom in">+</button>
@@ -499,6 +523,7 @@
     `;
 
     shadow.querySelector(".close").addEventListener("click", closeZoomViewer);
+    shadow.querySelector(".caption-pill").addEventListener("click", toggleCaption);
     shadow.querySelector(".zoom-in").addEventListener("click", () => zoomBy(1.25));
     shadow.querySelector(".zoom-out").addEventListener("click", () => zoomBy(1 / 1.25));
     shadow.querySelector(".reset").addEventListener("click", resetZoom);
@@ -541,6 +566,7 @@
     shadow.querySelector(".stage > img").src = src;
     shadow.querySelector(".image-number").textContent = imageLabel;
     shadow.querySelector(".caption").innerHTML = info.captionHtml || "RadPrimer image";
+    shadow.querySelector(".caption-pill-label").textContent = `${imageLabel} caption`;
     host.style.display = "block";
     zoomState = {
       ...zoomState,
@@ -548,8 +574,10 @@
       scale: 1,
       x: 0,
       y: 0,
-      dragging: false
+      dragging: false,
+      captionCollapsed: false
     };
+    applyCaptionState();
     applyTransform();
   }
 
@@ -575,6 +603,18 @@
     host.style.display = "none";
     zoomState.open = false;
     zoomState.dragging = false;
+  }
+
+  function applyCaptionState() {
+    const viewer = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".viewer");
+    if (!viewer) return;
+    viewer.classList.toggle("captions-collapsed", Boolean(zoomState.captionCollapsed));
+  }
+
+  function toggleCaption() {
+    if (!zoomState.open) return;
+    zoomState.captionCollapsed = !zoomState.captionCollapsed;
+    applyCaptionState();
   }
 
   function clamp(value, min, max) {
@@ -697,10 +737,31 @@
 
   function handleKeydown(event) {
     if (!zoomState.open) return;
-    if (event.key === "Escape") closeZoomViewer();
-    if (event.key === "+" || event.key === "=") zoomBy(1.25);
-    if (event.key === "-") zoomBy(1 / 1.25);
-    if (event.key === "0") resetZoom();
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
+
+    const key = String(event.key || "").toLowerCase();
+    if (key === "escape" || key === "s") {
+      event.preventDefault();
+      closeZoomViewer();
+      return;
+    }
+    if (key === "t") {
+      event.preventDefault();
+      toggleCaption();
+      return;
+    }
+    if (event.key === "+" || event.key === "=") {
+      event.preventDefault();
+      zoomBy(1.25);
+    }
+    if (event.key === "-") {
+      event.preventDefault();
+      zoomBy(1 / 1.25);
+    }
+    if (event.key === "0") {
+      event.preventDefault();
+      resetZoom();
+    }
   }
 
   let scheduled = false;

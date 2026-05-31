@@ -90,8 +90,14 @@
         }
         .actions {
           display: flex;
-          gap: 8px;
+          gap: 4px;
           align-items: center;
+          padding: 6px;
+          border-radius: 999px;
+          background: rgba(11, 17, 29, 0.86);
+          border: 1px solid rgba(191, 219, 254, 0.22);
+          box-shadow: 0 16px 46px rgba(0, 0, 0, 0.28);
+          backdrop-filter: blur(16px);
         }
         button {
           border: 0;
@@ -101,29 +107,39 @@
         }
         .primary, .icon {
           color: #fff;
-          background: linear-gradient(135deg, rgba(20, 105, 255, .98), rgba(80, 58, 220, .98));
-          box-shadow: 0 16px 42px rgba(31, 111, 235, .28), 0 6px 16px rgba(12, 18, 28, .24);
-          transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease;
+          background: rgba(30, 41, 59, 0.86);
+          transition: transform .16s ease, background .16s ease, opacity .16s ease, width .16s ease;
         }
         .primary {
           border-radius: 999px;
-          padding: 13px 18px;
+          width: 40px;
+          height: 38px;
+          padding: 0 10px;
           display: flex;
           align-items: center;
-          gap: 10px;
-          font-size: 14px;
-          font-weight: 800;
+          justify-content: center;
+          gap: 0;
+          font-size: 12px;
+          font-weight: 850;
+          overflow: hidden;
         }
         .icon {
-          width: 46px;
-          height: 46px;
+          width: 38px;
+          height: 38px;
           border-radius: 999px;
           display: grid;
           place-items: center;
         }
         .primary:hover, .icon:hover {
           transform: translateY(-1px);
-          box-shadow: 0 20px 48px rgba(31, 111, 235, .34), 0 8px 20px rgba(12, 18, 28, .28);
+          background: rgba(51, 65, 85, 0.96);
+        }
+        .actions:hover .primary,
+        .primary:focus-visible {
+          width: 124px;
+          gap: 8px;
+          background: linear-gradient(135deg, rgba(56, 189, 248, 0.94), rgba(129, 140, 248, 0.96));
+          box-shadow: 0 10px 26px rgba(59, 130, 246, 0.22);
         }
         .primary[disabled], .icon[disabled] {
           cursor: default;
@@ -131,13 +147,25 @@
           transform: none;
         }
         .spark {
-          width: 20px;
-          height: 20px;
+          width: 22px;
+          height: 22px;
           border-radius: 50%;
           background: rgba(255,255,255,.18);
           display: grid;
           place-items: center;
           flex: 0 0 auto;
+        }
+        .quick-run .label {
+          max-width: 0;
+          opacity: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          transition: max-width .16s ease, opacity .16s ease;
+        }
+        .actions:hover .quick-run .label,
+        .quick-run:focus-visible .label {
+          max-width: 90px;
+          opacity: 1;
         }
         svg { width: 16px; height: 16px; display: block; }
         .status {

@@ -325,7 +325,35 @@
     }
   }
 
+  function isEditableTarget(target) {
+    const el = target instanceof Element ? target : target?.parentElement;
+    if (!el) return false;
+    return Boolean(
+      el.closest('input, textarea, select, [contenteditable="true"], [role="textbox"]')
+    );
+  }
+
+  function handleKeyboardShortcuts(event) {
+    if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+    if (isEditableTarget(event.target)) return;
+
+    const key = String(event.key || "").toLowerCase();
+    let action = "";
+
+    if (key === "arrowleft") action = "back10";
+    if (key === "arrowright") action = "forward10";
+    if (key === " " || key === "spacebar" || key === "p" || key === "mediaplaypause") {
+      action = "playPause";
+    }
+
+    if (!action) return;
+    event.preventDefault();
+    event.stopPropagation();
+    handleAction(ensureHost(), action);
+  }
+
   ensureHost();
+  document.addEventListener("keydown", handleKeyboardShortcuts, true);
   refreshState({ quiet: true });
   setInterval(() => refreshState({ quiet: true }), POLL_MS);
 })();
