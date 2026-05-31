@@ -355,7 +355,7 @@
     host.id = HOST_ID;
     host.style.position = "fixed";
     host.style.inset = "0";
-    host.style.zIndex = "2147483647";
+    host.style.zIndex = "2147483646";
     host.style.display = "none";
     document.documentElement.appendChild(host);
 

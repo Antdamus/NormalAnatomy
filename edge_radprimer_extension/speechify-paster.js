@@ -14,7 +14,16 @@
     dialog: '[role="dialog"][aria-modal="true"], #headlessui-portal-root [role="dialog"]',
     titleInput: "input#textImportTitle",
     textTextarea: "textarea#textImportText",
-    saveButton: 'button[data-testid="add-text-save-button"]'
+    saveButton: 'button[data-testid="add-text-save-button"]',
+    playerPlayButton: 'button[data-testid="player-play-button"]',
+    playerBackwardButton: 'button[data-testid="player-backward-button"]',
+    playerForwardButton: 'button[data-testid="player-forward-button"]',
+    playerSpeedButton: 'button[data-testid="player-speed-button"]',
+    playerVoiceButton: 'button[data-testid="player-voice-button"]',
+    progressBar: '[role="progressbar"][aria-label="Listening progress"]',
+    progressTimeToggle: 'button[data-testid="progress-time-toggle"]',
+    progressDurationToggle: 'button[data-testid="progress-duration-toggle"]',
+    navFileActionButton: 'button[data-testid="nav-file-action-button"]'
   };
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -37,6 +46,30 @@
       style.display !== "none" &&
       style.opacity !== "0"
     );
+  };
+
+  const cleanDisplayText = (value) => {
+    return String(value || "")
+      .replace(/\u00A0/g, " ")
+      .replace(/Ã—/g, "x")
+      .replace(/×/g, "x")
+      .replace(/\s+/g, " ")
+      .trim();
+  };
+
+  const firstVisible = (selector) => {
+    const candidates = Array.from(document.querySelectorAll(selector));
+    return candidates.find(isVisible) || candidates[0] || null;
+  };
+
+  const clickVisible = (selector, label) => {
+    const el = firstVisible(selector);
+    if (!el) throw new Error(`Speechify ${label} button was not found.`);
+    if (el.disabled || el.getAttribute("aria-disabled") === "true") {
+      throw new Error(`Speechify ${label} button is disabled.`);
+    }
+    el.click();
+    return el;
   };
 
   const waitUntil = async (predicate, timeoutMs, errorMessage) => {
@@ -142,6 +175,63 @@
     if (["DONE", "READY_TO_SAVE"].includes(String(phase || "").toUpperCase())) {
       host.__radprimerDismissTimer = setTimeout(() => host.remove(), 7000);
     }
+  };
+
+  const getSpeechifyPlayerState = () => {
+    const playButton = firstVisible(SPEECHIFY_SELECTORS.playerPlayButton);
+    const progressBar = firstVisible(SPEECHIFY_SELECTORS.progressBar);
+    const timeButton = firstVisible(SPEECHIFY_SELECTORS.progressTimeToggle);
+    const durationButton = firstVisible(SPEECHIFY_SELECTORS.progressDurationToggle);
+    const speedButton = firstVisible(SPEECHIFY_SELECTORS.playerSpeedButton);
+    const voiceButton = firstVisible(SPEECHIFY_SELECTORS.playerVoiceButton);
+    const titleButton = firstVisible(SPEECHIFY_SELECTORS.navFileActionButton);
+    const playLabel = cleanDisplayText(playButton?.getAttribute("aria-label") || "");
+    const progress = parseFloat(progressBar?.getAttribute("aria-valuenow") || "");
+
+    return {
+      available: Boolean(playButton),
+      isPlaying: /^pause\b/i.test(playLabel),
+      playLabel,
+      elapsed: cleanDisplayText(timeButton?.innerText || ""),
+      duration: cleanDisplayText(durationButton?.innerText || ""),
+      progress: Number.isFinite(progress) ? progress : 0,
+      speed: cleanDisplayText(
+        speedButton?.innerText ||
+          (speedButton?.getAttribute("aria-label") || "").replace(/^Speed:\s*/i, "")
+      ),
+      voice: cleanDisplayText(
+        voiceButton?.dataset?.voiceName ||
+          (voiceButton?.getAttribute("aria-label") || "").replace(/^Voice:\s*/i, "")
+      ),
+      title: cleanDisplayText(titleButton?.innerText || document.title.replace(/\s*\|\s*Speechify\s*$/i, "")),
+      url: location.href
+    };
+  };
+
+  const runSpeechifyPlayerRemote = async ({ action }) => {
+    const normalizedAction = String(action || "state");
+
+    if (normalizedAction === "playPause") {
+      clickVisible(SPEECHIFY_SELECTORS.playerPlayButton, "play/pause");
+      await sleep(220);
+    } else if (normalizedAction === "back10") {
+      clickVisible(SPEECHIFY_SELECTORS.playerBackwardButton, "back 10 seconds");
+      await sleep(220);
+    } else if (normalizedAction === "forward10") {
+      clickVisible(SPEECHIFY_SELECTORS.playerForwardButton, "forward 10 seconds");
+      await sleep(220);
+    } else if (normalizedAction === "speed") {
+      clickVisible(SPEECHIFY_SELECTORS.playerSpeedButton, "speed");
+      await sleep(220);
+    } else if (normalizedAction !== "state" && normalizedAction !== "focus") {
+      throw new Error(`Unsupported Speechify player action: ${normalizedAction}`);
+    }
+
+    const state = getSpeechifyPlayerState();
+    if (!state.available) {
+      throw new Error("No Speechify player is visible. Open a Speechify lecture/player tab first.");
+    }
+    return state;
   };
 
   const waitForSpeechifyLibrary = async (timeoutMs = 60000) => {
@@ -428,6 +518,17 @@
   };
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+    if (message?.type === "SPEECHIFY_PLAYER_REMOTE") {
+      runSpeechifyPlayerRemote(message)
+        .then((result) => sendResponse({ ok: true, result }))
+        .catch((error) => {
+          console.error("[Speechify remote error]", error);
+          sendResponse({ ok: false, error: String(error?.message || error) });
+        });
+
+      return true;
+    }
+
     if (message?.type !== "SPEECHIFY_CREATE_TEXT_NOTE") return false;
 
     runSpeechifyCreateTextNote(message)

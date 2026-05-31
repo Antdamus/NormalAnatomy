@@ -297,6 +297,73 @@ async function sendSpeechifyMessageWithInjection(tabId, payload) {
   }
 }
 
+async function getSpeechifyTab({ focus = false, createIfMissing = false } = {}) {
+  const tabs = await chrome.tabs.query({ url: ["https://app.speechify.com/*"] });
+  let tab = tabs.find((candidate) => candidate.active) || tabs[0] || null;
+
+  if (!tab && createIfMissing) {
+    tab = await chrome.tabs.create({ url: "https://app.speechify.com/", active: focus });
+  }
+
+  if (!tab?.id) {
+    throw new Error("No Speechify tab is open. Open the Speechify lecture/player tab first.");
+  }
+
+  if (focus) {
+    tab = await chrome.tabs.update(tab.id, { active: true });
+    if (tab.windowId) await chrome.windows.update(tab.windowId, { focused: true });
+  }
+
+  return tab;
+}
+
+async function sendSpeechifyPlayerRemote(payload = {}) {
+  const action = String(payload.action || "state");
+  const tabs = await chrome.tabs.query({ url: ["https://app.speechify.com/*"] });
+
+  if (action === "focus") {
+    for (const candidate of tabs) {
+      try {
+        const response = await sendSpeechifyMessageWithInjection(candidate.id, {
+          type: "SPEECHIFY_PLAYER_REMOTE",
+          action: "state"
+        });
+        if (response?.ok) {
+          const tab = await chrome.tabs.update(candidate.id, { active: true });
+          if (tab.windowId) await chrome.windows.update(tab.windowId, { focused: true });
+          return response.result;
+        }
+      } catch {}
+    }
+
+    const tab = await getSpeechifyTab({ focus: true, createIfMissing: true });
+    throw new Error(
+      `Opened Speechify, but no player is visible in the current Speechify tab. ` +
+        `Open the lecture/player page first.`
+    );
+  }
+
+  if (!tabs.length) {
+    throw new Error("No Speechify tab is open. Open the Speechify lecture/player tab first.");
+  }
+
+  let lastError = null;
+  for (const tab of tabs) {
+    try {
+      const response = await sendSpeechifyMessageWithInjection(tab.id, {
+        type: "SPEECHIFY_PLAYER_REMOTE",
+        action
+      });
+      if (response?.ok) return response.result;
+      lastError = new Error(response?.error || "Speechify player command failed.");
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error("Speechify player command failed.");
+}
+
 async function createSpeechifyLectureFromChatGPT({ title, text, folder, autoSave }) {
   if (!text?.trim()) throw new Error("No cleaned ChatGPT text was provided for Speechify.");
 
@@ -1690,6 +1757,17 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "CREATE_SPEECHIFY_LECTURE") {
     (async () => {
       const result = await createSpeechifyLectureFromChatGPT(message.payload || {});
+      sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "SPEECHIFY_PLAYER_REMOTE") {
+    (async () => {
+      const result = await sendSpeechifyPlayerRemote(message.payload || {});
       sendResponse({ ok: true, result });
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
