@@ -185,6 +185,30 @@
     return active?.closest(".right") || active?.closest(".large-image") || active?.parentElement || null;
   }
 
+  function getVisibleCaptionHtml(active) {
+    const containers = [
+      active?.closest(".right"),
+      active?.closest(".large-image"),
+      document.querySelector("#docLB")
+    ].filter(Boolean);
+
+    const selectors = [
+      ".imageCaption [class*='caption-text']",
+      ".imageCaption .inner",
+      ".imageCaption"
+    ];
+
+    for (const container of containers) {
+      for (const selector of selectors) {
+        const nodes = Array.from(container.querySelectorAll(selector));
+        const node = nodes.find(isVisible) || nodes[0];
+        if (node?.innerHTML?.trim()) return node.innerHTML;
+      }
+    }
+
+    return "";
+  }
+
   function getThumbForImageId(imageId) {
     if (!imageId) return null;
     return (
@@ -204,12 +228,15 @@
 
     const imageNumber = activeThumb ? imageNumberFromThumb(activeThumb, 0) : null;
     const total = parseInt(activeThumb?.dataset?.groupcount || "", 10);
+    const liveCaptionHtml = getVisibleCaptionHtml(active);
+    const thumbCaptionHtml = activeThumb?.dataset?.caption || "";
+
     return {
       active,
       imageId,
       imageNumber,
       total: Number.isFinite(total) ? total : null,
-      caption: cleanCaption(activeThumb?.dataset?.caption || "")
+      captionHtml: buildCaptionHtml(liveCaptionHtml || thumbCaptionHtml)
     };
   }
 
@@ -227,15 +254,104 @@
     badge.textContent = info.total ? `image ${info.imageNumber}/${info.total}` : `image ${info.imageNumber}`;
   }
 
-  function cleanCaption(caption) {
+  const ARROW_ALT = {
+    BO: "Black open arrow",
+    BS: "Black solid arrow",
+    BC: "Black curved arrow",
+    CC: "Cyan curved arrow",
+    CO: "Cyan open arrow",
+    CS: "Cyan solid arrow",
+    WO: "White open arrow",
+    WS: "White solid arrow",
+    WC: "White curved arrow"
+  };
+
+  function escapeRegExp(value) {
+    return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function arrowSrc(code) {
+    return new URL(`/img/arrows/${code}.png`, location.origin).href;
+  }
+
+  function makeArrowImage(code) {
+    const img = document.createElement("img");
+    img.setAttribute("src", arrowSrc(code));
+    img.setAttribute("alt", ARROW_ALT[code] || `${code} arrow`);
+    return img;
+  }
+
+  function replaceArrowPhraseTextNodes(root) {
+    const phrases = Object.entries(ARROW_ALT).map(([code, phrase]) => ({ code, phrase }));
+    const phrasePattern = new RegExp(phrases.map(({ phrase }) => escapeRegExp(phrase)).join("|"), "g");
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach((node) => {
+      const text = node.nodeValue || "";
+      if (!phrasePattern.test(text)) {
+        phrasePattern.lastIndex = 0;
+        return;
+      }
+
+      phrasePattern.lastIndex = 0;
+      const fragment = document.createDocumentFragment();
+      let lastIndex = 0;
+      let match;
+
+      while ((match = phrasePattern.exec(text))) {
+        if (match.index > lastIndex) {
+          fragment.append(document.createTextNode(text.slice(lastIndex, match.index)));
+        }
+
+        const phrase = match[0];
+        const arrow = phrases.find((entry) => entry.phrase === phrase);
+        if (arrow) fragment.append(makeArrowImage(arrow.code));
+        lastIndex = match.index + phrase.length;
+      }
+
+      if (lastIndex < text.length) fragment.append(document.createTextNode(text.slice(lastIndex)));
+      node.replaceWith(fragment);
+    });
+  }
+
+  function buildCaptionHtml(caption) {
     const holder = document.createElement("div");
     holder.innerHTML = String(caption || "");
+
     holder.querySelectorAll("img").forEach((img) => {
-      const alt = img.getAttribute("alt") || "arrow";
-      img.replaceWith(` ${alt} `);
+      const src = img.getAttribute("src") || "";
+      const match = src.match(/\/img\/arrows\/([A-Za-z0-9_]+)\.png/i);
+      if (!match) {
+        img.remove();
+        return;
+      }
+      const code = match[1].toUpperCase();
+      img.setAttribute("src", arrowSrc(code));
+      img.setAttribute("alt", img.getAttribute("alt") || ARROW_ALT[code] || `${code} arrow`);
+      img.removeAttribute("style");
+      img.removeAttribute("class");
     });
-    return (holder.textContent || holder.innerText || "")
+
+    holder.innerHTML = holder.innerHTML.replace(/#([A-Za-z]{2})#/g, (_full, rawCode) => {
+      const code = rawCode.toUpperCase();
+      if (!ARROW_ALT[code]) return _full;
+      return `<img src="${arrowSrc(code)}" alt="${ARROW_ALT[code]}">`;
+    });
+
+    replaceArrowPhraseTextNodes(holder);
+
+    holder.querySelectorAll("*").forEach((el) => {
+      if (el.tagName.toLowerCase() === "img") return;
+      el.replaceWith(...Array.from(el.childNodes));
+    });
+
+    return holder.innerHTML
       .replace(/\s+/g, " ")
+      .replace(/\s+(<img\b)/g, " $1")
+      .replace(/(<\/img>|>)\s+/g, "$1 ")
       .trim();
   }
 
@@ -353,7 +469,7 @@
           cursor: grabbing;
         }
 
-        img {
+        .stage > img {
           max-width: 94vw;
           max-height: 88vh;
           transform-origin: center center;
@@ -361,6 +477,19 @@
           pointer-events: none;
           image-rendering: auto;
           box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.22), 0 30px 90px rgba(0, 0, 0, 0.45);
+        }
+
+        .caption img {
+          display: inline-block !important;
+          width: 1.45em !important;
+          height: 1.45em !important;
+          max-width: 1.45em !important;
+          max-height: 1.45em !important;
+          object-fit: contain !important;
+          margin: 0 0.16em !important;
+          vertical-align: -0.32em !important;
+          box-shadow: none !important;
+          pointer-events: none;
         }
 
         .footer {
@@ -436,9 +565,9 @@
         : `image ${info.imageNumber}`
       : "image";
 
-    shadow.querySelector("img").src = src;
+    shadow.querySelector(".stage > img").src = src;
     shadow.querySelector(".image-number").textContent = imageLabel;
-    shadow.querySelector(".caption").textContent = info.caption || "RadPrimer image";
+    shadow.querySelector(".caption").innerHTML = info.captionHtml || "RadPrimer image";
     host.style.display = "block";
     zoomState = {
       ...zoomState,
@@ -492,7 +621,7 @@
   }
 
   function applyTransform() {
-    const img = document.getElementById(HOST_ID)?.shadowRoot?.querySelector("img");
+    const img = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".stage > img");
     if (!img) return;
     img.style.transform = `translate(${zoomState.x}px, ${zoomState.y}px) scale(${zoomState.scale})`;
   }
