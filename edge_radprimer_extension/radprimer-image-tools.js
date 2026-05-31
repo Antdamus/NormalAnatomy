@@ -75,34 +75,7 @@
 
       #docLB .rp-open-zoom-control,
       #radprimer-floating-zoom-control {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        z-index: 10000;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        min-height: 36px;
-        padding: 8px 12px;
-        border: 1px solid rgba(255, 255, 255, 0.78);
-        border-radius: 999px;
-        background: rgba(8, 13, 24, 0.9);
-        color: #fff;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-        font: 800 13px/1 Arial, Helvetica, sans-serif;
-        cursor: zoom-in;
-      }
-
-      #radprimer-floating-zoom-control {
-        position: fixed;
-        top: 18px;
-        right: 18px;
-        z-index: 2147483646;
-      }
-
-      #docLB .rp-open-zoom-control:hover,
-      #radprimer-floating-zoom-control:hover {
-        background: rgba(20, 33, 57, 0.96);
+        display: none !important;
       }
     `;
     document.documentElement.appendChild(style);
