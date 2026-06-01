@@ -10,7 +10,8 @@
   const DEFAULT_PLAYER_SHORTCUTS = {
     playerPlayPause: "p",
     playerBack10: "ArrowLeft",
-    playerForward10: "ArrowRight"
+    playerForward10: "ArrowRight",
+    playerJumpImage: "x"
   };
 
   let lastState = null;
@@ -114,12 +115,19 @@
           font-weight: 800;
         }
         .bubble-section {
-          max-width: 116px;
+          max-width: 220px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           color: #bfdbfe;
           font-weight: 900;
+        }
+        .bubble-section.can-jump {
+          cursor: pointer;
+          text-decoration: underline;
+          text-decoration-thickness: 1px;
+          text-underline-offset: 3px;
+          text-decoration-color: rgba(191, 219, 254, 0.52);
         }
         .panel {
           position: absolute;
@@ -314,6 +322,12 @@
       button.addEventListener("click", () => handleAction(host, button.dataset.action));
     });
 
+    shadow.querySelector(".bubble-section").addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      jumpToCurrentImage();
+    });
+
     shadow.querySelectorAll("[data-speed]").forEach((button) => {
       button.addEventListener("click", () => handleAction(host, "setSpeed", button.dataset.speed));
     });
@@ -386,6 +400,49 @@
     };
   }
 
+  function getSectionImageNumber(section) {
+    const direct = Number(section?.imageNumber);
+    if (Number.isFinite(direct) && direct > 0) return direct;
+
+    const imageText = String(section?.image || section?.label || "");
+    const imageMatch = imageText.match(/\bimage\s+(\d+)\b/i);
+    if (imageMatch) return Number(imageMatch[1]);
+
+    if (Array.isArray(section?.groupNumbers) && section.groupNumbers.length) {
+      const first = Number(section.groupNumbers[0]);
+      if (Number.isFinite(first) && first > 0) return first;
+    }
+
+    const groupText = String(section?.group || "");
+    const groupMatch = groupText.match(/\bgroup\s+(\d+)\b/i);
+    return groupMatch ? Number(groupMatch[1]) : null;
+  }
+
+  function getCompactSectionDisplay(section, fallbackDisplay = "") {
+    const imageNumber = getSectionImageNumber(section);
+    const group = String(section?.group || "");
+    if (imageNumber && group) return `image ${imageNumber} / ${group}`;
+    if (imageNumber) return `image ${imageNumber}`;
+    return fallbackDisplay;
+  }
+
+  function jumpToCurrentImage() {
+    const host = ensureHost();
+    const imageNumber = getSectionImageNumber(lastState?.lectureSection);
+    if (!imageNumber) {
+      showSyncNotice(host, "warn", "No current image number is available yet.");
+      return false;
+    }
+
+    document.dispatchEvent(
+      new CustomEvent("radprimer-navigate-image", {
+        detail: { imageNumber, source: "speechify-audio-pill" }
+      })
+    );
+    showSyncNotice(host, "success", `Jumped to image ${imageNumber}.`);
+    return true;
+  }
+
   function showSyncNotice(host, kind, message) {
     const notice = host?.shadowRoot?.querySelector(".sync-notice");
     if (!notice) return;
@@ -420,15 +477,18 @@
     const sectionDisplay = sectionLabel
       ? `${exactPrefix}${sectionLabel}${section?.highlightStale ? " (estimated)" : ""}`
       : "";
+    const compactSectionDisplay = getCompactSectionDisplay(section, sectionDisplay);
+    const sectionImageNumber = getSectionImageNumber(section);
 
     root.classList.toggle("busy", busy);
     title.textContent = state?.title || "Speechify";
     time.textContent = state?.elapsed && state?.duration ? `${state.elapsed} / ${state.duration}` : "--:-- / --:--";
     bubbleTime.textContent = state?.elapsed || "--:--";
-    bubbleSection.textContent = sectionDisplay;
+    bubbleSection.textContent = compactSectionDisplay;
     bubbleSection.hidden = !sectionLabel;
+    bubbleSection.classList.toggle("can-jump", Boolean(sectionImageNumber));
     bubbleSection.title = sectionLabel
-      ? `Current lecture section: ${sectionDisplay}${section?.source ? `\nSource: ${section.source}` : ""}${
+      ? `Current lecture section: ${sectionDisplay}${sectionImageNumber ? `\nClick or press X to jump to image ${sectionImageNumber}.` : ""}${section?.source ? `\nSource: ${section.source}` : ""}${
           section?.textPreview ? `\n\n${section.textPreview}` : ""
         }`
       : "";
@@ -460,10 +520,10 @@
       const speedText = state.speed ? `${state.speed} speed` : "Connected";
       if (section?.estimated) {
         status.textContent = sectionLabel
-          ? `${section?.pinnedToSync ? "Synced anchor" : section?.calibratedEstimate ? "Calibrated estimate" : "Estimated"} / ${sectionDisplay}`
+          ? `${section?.pinnedToSync ? "Synced anchor" : section?.calibratedEstimate ? "Calibrated estimate" : "Estimated"} / ${compactSectionDisplay}`
           : "Estimated from RadPrimer clock";
       } else {
-        status.textContent = sectionLabel ? `${speedText} / ${sectionLabel}` : speedText;
+        status.textContent = sectionLabel ? `${speedText} / ${compactSectionDisplay}` : speedText;
       }
     } else {
       status.textContent = "Open a Speechify lecture tab first.";
@@ -548,6 +608,7 @@
 
     if (shortcutMatches(event, "playerBack10")) action = "back10";
     else if (shortcutMatches(event, "playerForward10")) action = "forward10";
+    else if (shortcutMatches(event, "playerJumpImage")) action = "jumpImage";
     else if (shortcutMatches(event, "playerPlayPause") || key === "mediaplaypause") {
       action = "playPause";
     }
@@ -555,7 +616,8 @@
     if (!action) return;
     event.preventDefault();
     event.stopPropagation();
-    handleAction(ensureHost(), action);
+    if (action === "jumpImage") jumpToCurrentImage();
+    else handleAction(ensureHost(), action);
   }
 
   ensureHost();
@@ -565,6 +627,9 @@
     loadPlayerShortcutSettings();
   });
   document.addEventListener("keydown", handleKeyboardShortcuts, true);
+  document.addEventListener("radprimer-speechify-jump-current-image", () => {
+    jumpToCurrentImage();
+  });
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible" && Date.now() <= pollActiveUntil) {
       refreshState({ quiet: true });

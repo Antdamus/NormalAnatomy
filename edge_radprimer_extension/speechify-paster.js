@@ -438,6 +438,10 @@
   };
 
   const getSectionMaxImageNumber = (section) => {
+    if (Number.isFinite(Number(section?.imageNumber))) return Number(section.imageNumber);
+    if (Array.isArray(section?.groupNumbers) && section.groupNumbers.length) {
+      return Math.max(...section.groupNumbers.map(Number).filter(Number.isFinite));
+    }
     const text = [section?.image, section?.group, section?.label].filter(Boolean).join(" ");
     const numbers = parseImageNumbers(text).map((item) => item.value).filter(Number.isFinite);
     return numbers.length ? Math.max(...numbers) : null;
@@ -449,6 +453,8 @@
       label: section.label || "",
       group: section.group || "",
       image: section.image || "",
+      imageNumber: Number.isFinite(Number(section.imageNumber)) ? Number(section.imageNumber) : null,
+      groupNumbers: Array.isArray(section.groupNumbers) ? section.groupNumbers : [],
       textFraction: Number.isFinite(Number(section.textFraction)) ? Number(section.textFraction) : null,
       textIndex: Number.isFinite(Number(section.textIndex)) ? Number(section.textIndex) : null,
       activeText: section.activeText || "",
@@ -620,12 +626,15 @@
     const groupLabel = groupNumbers.length >= 2 ? `group ${compactImageNumbers(groupNumbers)}` : "";
     const imageLabel = currentImage ? `image ${currentImage}` : "";
     const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : groupLabel || imageLabel;
+    const targetImageNumber = currentImage || groupNumbers[0] || null;
 
     return label
       ? {
           label,
           group: groupLabel,
           image: imageLabel,
+          imageNumber: targetImageNumber,
+          groupNumbers,
           source: sourceName,
           textFraction,
           textIndex: boundedIndex,
@@ -1084,12 +1093,15 @@
     const groupLabel = groupNumbers.length >= 2 ? `group ${compactImageNumbers(groupNumbers)}` : "";
     const imageLabel = currentImage ? `image ${currentImage}` : "";
     const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : groupLabel || imageLabel;
+    const targetImageNumber = currentImage || groupNumbers[0] || null;
 
     return label
       ? {
           label,
           group: groupLabel,
           image: imageLabel,
+          imageNumber: targetImageNumber,
+          groupNumbers,
           source: context.source,
           highlightAvailable: context.source?.startsWith("highlight") || false,
           activeText,
@@ -1249,12 +1261,15 @@
         ? `image ${currentImage}`
         : "";
     const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : imageLabel || groupLabel;
+    const targetImageNumber = currentImage || groupNumbers[0] || null;
 
     return label
       ? {
           label,
           group: groupLabel,
           image: imageLabel,
+          imageNumber: targetImageNumber,
+          groupNumbers,
           source: "timeline",
           estimated: true,
           clockSource,

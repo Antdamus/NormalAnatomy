@@ -18,7 +18,8 @@
     reset: "0",
     playerPlayPause: "p",
     playerBack10: "ArrowLeft",
-    playerForward10: "ArrowRight"
+    playerForward10: "ArrowRight",
+    playerJumpImage: "x"
   };
   const SHORTCUT_ACTIONS = [
     ["close", "Close zoom"],
@@ -31,7 +32,8 @@
     ["reset", "Reset zoom"],
     ["playerPlayPause", "Audio play/pause"],
     ["playerBack10", "Audio back 10 sec"],
-    ["playerForward10", "Audio forward 10 sec"]
+    ["playerForward10", "Audio forward 10 sec"],
+    ["playerJumpImage", "Audio jump to image"]
   ];
 
   let zoomState = {
@@ -1081,15 +1083,20 @@
   }
 
   function navigateZoomToImageNumber(imageNumber) {
-    if (!zoomState.open || !Number.isFinite(imageNumber)) return;
+    if (!Number.isFinite(imageNumber)) return;
     const info = getZoomNavigationInfos().find((candidate) => candidate.imageNumber === imageNumber);
     if (!info) return;
 
     setZoomViewerImage(info, {
-      annotated: zoomState.annotated,
+      annotated: zoomState.open ? zoomState.annotated : true,
       resetView: true,
       syncThumb: true
     });
+  }
+
+  function handleNavigateImageEvent(event) {
+    const imageNumber = Number(event?.detail?.imageNumber);
+    navigateZoomToImageNumber(imageNumber);
   }
 
   function shortcutMatches(event, actionId) {
@@ -1109,6 +1116,12 @@
     } catch {}
   }
 
+  function dispatchSpeechifyJumpToCurrentImage() {
+    try {
+      document.dispatchEvent(new CustomEvent("radprimer-speechify-jump-current-image"));
+    } catch {}
+  }
+
   function performShortcutAction(actionId) {
     if (actionId === "close") closeZoomViewer();
     else if (actionId === "previous") navigateZoomBy(-1);
@@ -1121,6 +1134,7 @@
     else if (actionId === "playerPlayPause") sendSpeechifyPlayerAction("playPause");
     else if (actionId === "playerBack10") sendSpeechifyPlayerAction("back10");
     else if (actionId === "playerForward10") sendSpeechifyPlayerAction("forward10");
+    else if (actionId === "playerJumpImage") dispatchSpeechifyJumpToCurrentImage();
   }
 
   function clamp(value, min, max) {
@@ -1328,6 +1342,7 @@
   document.addEventListener("click", handleDocumentClick, true);
   document.addEventListener("keydown", handleKeydown);
   document.addEventListener("radprimer-open-image-zoom", openZoomViewer);
+  document.addEventListener("radprimer-navigate-image", handleNavigateImageEvent);
   loadShortcutSettings();
 
   const observer = new MutationObserver(scheduleEnhancement);
