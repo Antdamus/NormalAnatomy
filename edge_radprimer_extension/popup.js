@@ -61,6 +61,7 @@ const DEFAULTS = {
   autoSendToSpeechify: true,
   speechifyAutoSave: false,
   speechifyAutoPlayAfterSave: false,
+  speechifyKeepAwake: false,
   speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
   speechifyFolderName: "Musculoskeletal",
   speechifyFolderId: "c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
@@ -108,6 +109,7 @@ const fields = [
   "ankiNoteType",
   "autoSendToSpeechify",
   "speechifyAutoSave",
+  "speechifyKeepAwake",
   "speechifyFolderUrl"
 ];
 
@@ -296,6 +298,7 @@ function readForm() {
     autoSendToSpeechify: speechifyEligible ? true : autoSendToSpeechify,
     speechifyAutoSave: false,
     speechifyAutoPlayAfterSave: false,
+    speechifyKeepAwake: $("speechifyKeepAwake").checked,
     speechifyFolderUrl: speechifyFolder.url,
     speechifyFolderName: DEFAULTS.speechifyFolderName,
     speechifyFolderId: speechifyFolder.id,
@@ -346,6 +349,7 @@ function applyForm(values) {
   $("ankiNoteType").value = values.ankiNoteType ?? DEFAULTS.ankiNoteType;
   $("autoSendToSpeechify").checked = autoSendToSpeechify;
   $("speechifyAutoSave").checked = values.speechifyAutoSave ?? DEFAULTS.speechifyAutoSave;
+  $("speechifyKeepAwake").checked = values.speechifyKeepAwake ?? DEFAULTS.speechifyKeepAwake;
   $("speechifyFolderUrl").value = getStoredSpeechifyFolderUrl(values);
   syncPanels();
   applyNarrativeModeDefaults();

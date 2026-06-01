@@ -6,6 +6,7 @@
   const HOST_ID = "radprimer-image-zoom-host";
   const FLOATING_CONTROL_ID = "radprimer-floating-zoom-control";
   const SHORTCUT_STORAGE_KEY = "radprimerZoomShortcutSettings";
+  const ZOOM_BIND_VERSION = "2026-05-31-large-image-click";
   const DEFAULT_SHORTCUTS = {
     close: "s",
     previous: "k",
@@ -104,7 +105,11 @@
         pointer-events: none;
       }
 
-      #docLB .active-image-js {
+      #docLB .active-image-js,
+      #docLB .right .image,
+      #docLB .large-image .image,
+      #docLB .right [style*="background-image"],
+      #docLB .large-image [style*="background-image"] {
         cursor: zoom-in !important;
       }
 
@@ -226,11 +231,23 @@
         [
           "#docLB .right .active-image-js",
           "#docLB .large-image .active-image-js",
-          "#docLB .active-image-js"
+          "#docLB .active-image-js",
+          "#docLB .right .image[id]",
+          "#docLB .large-image .image[id]",
+          "#docLB .right [style*='background-image']",
+          "#docLB .large-image [style*='background-image']",
+          "#docLB [style*='background-image'][id]"
         ].join(",")
       )
     );
     return candidates.find(isVisible) || candidates[0] || null;
+  }
+
+  function getBackgroundImageElementFrom(target) {
+    const el = target instanceof Element ? target : null;
+    if (!el) return null;
+    if (el.matches("[style*='background-image']")) return el;
+    return el.closest("[style*='background-image']") || el.querySelector?.("[style*='background-image']") || null;
   }
 
   function getActiveImageContainer() {
@@ -308,8 +325,9 @@
     };
   }
 
-  function getActiveImageInfo() {
-    const active = getActiveImageElement();
+  function getActiveImageInfo(sourceElement = null) {
+    const sourceImage = getBackgroundImageElementFrom(sourceElement);
+    const active = getActiveImageElement() || sourceImage;
     const imageId = active?.id || "";
     const thumb = getThumbForImageId(imageId);
     const activeThumb =
@@ -885,8 +903,8 @@
     return true;
   }
 
-  function openZoomViewer() {
-    const info = getActiveImageInfo();
+  function openZoomViewer(sourceElement = null) {
+    const info = getActiveImageInfo(sourceElement);
     const src = extractBackgroundUrl(info.active);
     if (!src) {
       console.warn("[RadPrimer image tools] Could not find active image URL for zoom viewer.");
@@ -901,7 +919,7 @@
     });
   }
 
-  function openZoomViewerFromEvent(event) {
+  function openZoomViewerFromEvent(event, sourceElement = null) {
     const now = Date.now();
     if (now - lastOpenAt < 250) {
       event?.preventDefault?.();
@@ -914,7 +932,8 @@
     event?.preventDefault?.();
     event?.stopPropagation?.();
     event?.stopImmediatePropagation?.();
-    openZoomViewer();
+    const target = sourceElement || (event?.target instanceof Element ? event.target : null);
+    openZoomViewer(target);
   }
 
   function closeZoomViewer() {
@@ -1173,24 +1192,52 @@
     stage.releasePointerCapture?.(event.pointerId);
   }
 
+  function getZoomOpenTarget(target) {
+    const el = target instanceof Element ? target : target?.parentElement;
+    if (!el || !el.closest("#docLB")) return null;
+
+    const directControl = el.closest(
+      "#docLB .rp-open-zoom-control, #radprimer-floating-zoom-control, #docLB .view-large-js, #docLB #image-zoom"
+    );
+    if (directControl) return getActiveImageElement() || directControl;
+
+    if (
+      el.closest(
+        "#docLB .left, #docLB .imageGroupContainer, #docLB a.trigger, #docLB a.image-thumb-js, #docLB .imageCaption"
+      )
+    ) {
+      return null;
+    }
+
+    return el.closest(
+      "#docLB .active-image-js, #docLB .right .image, #docLB .large-image .image, #docLB .right [style*='background-image'], #docLB .large-image [style*='background-image']"
+    );
+  }
+
   function handleDocumentClick(event) {
     const target = event.target instanceof Element ? event.target : event.target?.parentElement;
-    if (!target) return;
-    const zoomButton = target.closest("#docLB .view-large-js, #docLB #image-zoom");
-    const activeImage = target.closest("#docLB .active-image-js");
-    if (!zoomButton && !activeImage) return;
+    const opener = getZoomOpenTarget(target);
+    if (!opener) return;
 
-    openZoomViewerFromEvent(event);
+    openZoomViewerFromEvent(event, opener);
   }
 
   function bindZoomOpenTargets() {
     const targets = document.querySelectorAll(
-      "#docLB .active-image-js, #docLB .view-large-js, #docLB #image-zoom"
+      [
+        "#docLB .active-image-js",
+        "#docLB .right .image",
+        "#docLB .large-image .image",
+        "#docLB .right [style*='background-image']",
+        "#docLB .large-image [style*='background-image']",
+        "#docLB .view-large-js",
+        "#docLB #image-zoom"
+      ].join(",")
     );
 
     targets.forEach((target) => {
-      if (target.dataset.radprimerZoomBound === "true") return;
-      target.dataset.radprimerZoomBound = "true";
+      if (target.dataset.radprimerZoomBound === ZOOM_BIND_VERSION) return;
+      target.dataset.radprimerZoomBound = ZOOM_BIND_VERSION;
       target.addEventListener("click", openZoomViewerFromEvent, true);
       target.addEventListener("pointerup", openZoomViewerFromEvent, true);
     });

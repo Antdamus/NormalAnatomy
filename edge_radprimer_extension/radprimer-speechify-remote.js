@@ -3,7 +3,9 @@
   window.__radprimerSpeechifyRemoteLoaded = true;
 
   const HOST_ID = "radprimer-speechify-remote-host";
-  const POLL_MS = 2500;
+  const ACTIVE_POLL_MS = 2500;
+  const HOVER_WAKE_MS = 120000;
+  const COMMAND_WAKE_MS = 30 * 60 * 1000;
   const SHORTCUT_STORAGE_KEY = "radprimerZoomShortcutSettings";
   const DEFAULT_PLAYER_SHORTCUTS = {
     playerPlayPause: "p",
@@ -13,6 +15,9 @@
 
   let lastState = null;
   let busy = false;
+  let pollTimer = null;
+  let pollActiveUntil = 0;
+  let syncNoticeTimer = null;
   let playerShortcutSettings = { ...DEFAULT_PLAYER_SHORTCUTS };
 
   function normalizeShortcutKey(value) {
@@ -120,7 +125,7 @@
           position: absolute;
           left: 0;
           bottom: 50px;
-          width: 302px;
+          width: 350px;
           max-width: calc(100vw - 36px);
           border-radius: 16px;
           padding: 11px;
@@ -179,7 +184,7 @@
         }
         .controls {
           display: grid;
-          grid-template-columns: 52px 1fr 52px 42px;
+          grid-template-columns: 44px 1fr 44px 48px 48px 50px;
           gap: 7px;
           align-items: center;
           margin-bottom: 8px;
@@ -229,6 +234,42 @@
           overflow: hidden;
           text-overflow: ellipsis;
         }
+        .sync-notice {
+          position: absolute;
+          left: 0;
+          bottom: 50px;
+          max-width: min(360px, calc(100vw - 36px));
+          padding: 10px 12px;
+          border-radius: 14px;
+          border: 1px solid rgba(191, 219, 254, 0.24);
+          background: rgba(15, 23, 42, 0.96);
+          color: #f8fafc;
+          box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
+          backdrop-filter: blur(18px);
+          font-size: 11.5px;
+          line-height: 1.28;
+          font-weight: 850;
+          opacity: 0;
+          transform: translateY(8px) scale(.98);
+          pointer-events: none;
+          transition: opacity .16s ease, transform .16s ease;
+        }
+        .sync-notice.show {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        .sync-notice.success {
+          border-color: rgba(74, 222, 128, 0.44);
+          background: rgba(20, 83, 45, 0.92);
+        }
+        .sync-notice.warn {
+          border-color: rgba(250, 204, 21, 0.42);
+          background: rgba(113, 63, 18, 0.94);
+        }
+        .sync-notice.fail {
+          border-color: rgba(248, 113, 113, 0.44);
+          background: rgba(127, 29, 29, 0.94);
+        }
         .busy button {
           opacity: .7;
           pointer-events: none;
@@ -252,6 +293,8 @@
             <button class="control play" type="button" data-action="playPause" title="Play or pause">Play</button>
             <button class="control" type="button" data-action="forward10" title="Forward 10 seconds">+10</button>
             <button class="open" type="button" data-action="focus" title="Open Speechify tab">Open</button>
+            <button class="open" type="button" data-action="calibrate" title="Briefly focus Speechify and sync the current highlighted text">Sync</button>
+            <button class="open" type="button" data-action="updateCache" title="Update cached script from the current Speechify text">Cache</button>
           </div>
           <div class="speed-row" aria-label="Speechify speed">
             <button class="speed" type="button" data-speed="0.8x">0.8</button>
@@ -261,8 +304,9 @@
             <button class="speed" type="button" data-speed="1.7x">1.7</button>
             <button class="speed" type="button" data-speed="2x">2</button>
           </div>
-          <div class="status">Looking for Speechify...</div>
+          <div class="status">Hover to connect Speechify.</div>
         </div>
+        <div class="sync-notice" role="status" aria-live="polite"></div>
       </div>
     `;
 
@@ -273,6 +317,10 @@
     shadow.querySelectorAll("[data-speed]").forEach((button) => {
       button.addEventListener("click", () => handleAction(host, "setSpeed", button.dataset.speed));
     });
+
+    const root = shadow.querySelector(".root");
+    root.addEventListener("mouseenter", () => activateRemotePolling(HOVER_WAKE_MS));
+    root.addEventListener("focusin", () => activateRemotePolling(HOVER_WAKE_MS));
 
     return host;
   }
@@ -304,6 +352,56 @@
     });
   }
 
+  function getSyncNotice(state) {
+    const section = state?.lectureSection || null;
+    const label = section?.label || "";
+    if (state?.calibrated || state?.syncStatus === "matched") {
+      return {
+        kind: "success",
+        message: state?.syncMessage || `Sync locked: matched Speechify text to the script${label ? ` at ${label}` : ""}.`
+      };
+    }
+    if (state?.calibrationPreserved || state?.syncStatus === "preserved") {
+      return {
+        kind: "warn",
+        message: state?.syncMessage || `Sync checked: no new script match, keeping previous anchor${label ? ` at ${label}` : ""}.`
+      };
+    }
+    return {
+      kind: "fail",
+      message: state?.syncMessage || "Sync failed: highlighted Speechify text did not match the cached script."
+    };
+  }
+
+  function getCacheNotice(state) {
+    if (state?.cacheUpdated) {
+      return {
+        kind: "success",
+        message: state?.cacheMessage || "Cache updated from the full Speechify reader text."
+      };
+    }
+    return {
+      kind: "fail",
+      message: "Cache update failed: could not read the current Speechify text."
+    };
+  }
+
+  function showSyncNotice(host, kind, message) {
+    const notice = host?.shadowRoot?.querySelector(".sync-notice");
+    if (!notice) return;
+    clearTimeout(syncNoticeTimer);
+    notice.textContent = message || "";
+    notice.hidden = false;
+    notice.className = `sync-notice ${kind || ""}`.trim();
+    requestAnimationFrame(() => notice.classList.add("show"));
+    syncNoticeTimer = setTimeout(() => {
+      notice.classList.remove("show");
+      setTimeout(() => {
+        if (!notice.classList.contains("show")) notice.hidden = true;
+      }, 180);
+    }, 5200);
+  }
+
   function renderState(host, state, errorMessage = "") {
     const shadow = host.shadowRoot;
     const root = shadow.querySelector(".root");
@@ -316,15 +414,24 @@
     const status = shadow.querySelector(".status");
     const dot = shadow.querySelector(".dot");
     const speed = normalizeSpeed(state?.speed || "");
-    const sectionLabel = state?.lectureSection?.label || "";
+    const section = state?.lectureSection || null;
+    const sectionLabel = section?.label || "";
+    const exactPrefix = section?.estimated ? "~ " : "";
+    const sectionDisplay = sectionLabel
+      ? `${exactPrefix}${sectionLabel}${section?.highlightStale ? " (estimated)" : ""}`
+      : "";
 
     root.classList.toggle("busy", busy);
     title.textContent = state?.title || "Speechify";
     time.textContent = state?.elapsed && state?.duration ? `${state.elapsed} / ${state.duration}` : "--:-- / --:--";
     bubbleTime.textContent = state?.elapsed || "--:--";
-    bubbleSection.textContent = sectionLabel;
+    bubbleSection.textContent = sectionDisplay;
     bubbleSection.hidden = !sectionLabel;
-    bubbleSection.title = sectionLabel ? `Current lecture section: ${sectionLabel}` : "";
+    bubbleSection.title = sectionLabel
+      ? `Current lecture section: ${sectionDisplay}${section?.source ? `\nSource: ${section.source}` : ""}${
+          section?.textPreview ? `\n\n${section.textPreview}` : ""
+        }`
+      : "";
     fill.style.width = `${Math.max(0, Math.min(100, Number(state?.progress || 0)))}%`;
     playButtons.forEach((button) => {
       button.textContent = state?.isPlaying ? "Pause" : "Play";
@@ -337,9 +444,27 @@
 
     if (errorMessage) {
       status.textContent = errorMessage;
+    } else if (state?.calibrated) {
+      status.textContent = sectionLabel
+        ? `Synced from Speechify / ${sectionDisplay || sectionLabel}`
+        : "Synced from Speechify";
+    } else if (state?.syncAttempted) {
+      status.textContent =
+        state?.syncMessage ||
+        (sectionLabel
+          ? `Sync checked / ${sectionDisplay || sectionLabel}`
+          : "Sync checked, but no full-narrative anchor was found.");
+    } else if (state?.cacheUpdated) {
+      status.textContent = state?.cacheMessage || "Cache updated from current Speechify text.";
     } else if (state?.available) {
       const speedText = state.speed ? `${state.speed} speed` : "Connected";
-      status.textContent = sectionLabel ? `${speedText} / ${sectionLabel}` : speedText;
+      if (section?.estimated) {
+        status.textContent = sectionLabel
+          ? `${section?.pinnedToSync ? "Synced anchor" : section?.calibratedEstimate ? "Calibrated estimate" : "Estimated"} / ${sectionDisplay}`
+          : "Estimated from RadPrimer clock";
+      } else {
+        status.textContent = sectionLabel ? `${speedText} / ${sectionLabel}` : speedText;
+      }
     } else {
       status.textContent = "Open a Speechify lecture tab first.";
     }
@@ -350,13 +475,34 @@
     try {
       const state = await sendRemoteMessage({ action: "state" });
       lastState = state;
+      if (state?.isPlaying) {
+        pollActiveUntil = Math.max(pollActiveUntil, Date.now() + COMMAND_WAKE_MS);
+      }
       renderState(host, state);
     } catch (error) {
       if (!quiet) renderState(host, lastState, String(error?.message || error));
     }
   }
 
+  function scheduleNextRefresh() {
+    clearTimeout(pollTimer);
+    if (document.visibilityState !== "visible" || Date.now() > pollActiveUntil) return;
+    pollTimer = setTimeout(async () => {
+      if (document.visibilityState !== "visible" || Date.now() > pollActiveUntil) return;
+      await refreshState({ quiet: true });
+      scheduleNextRefresh();
+    }, ACTIVE_POLL_MS);
+  }
+
+  function activateRemotePolling(durationMs = HOVER_WAKE_MS, { immediate = true } = {}) {
+    pollActiveUntil = Math.max(pollActiveUntil, Date.now() + durationMs);
+    if (document.visibilityState !== "visible") return;
+    if (immediate) refreshState({ quiet: true });
+    scheduleNextRefresh();
+  }
+
   async function handleAction(host, action, speed = "") {
+    activateRemotePolling(COMMAND_WAKE_MS, { immediate: false });
     busy = true;
     renderState(host, lastState);
 
@@ -364,8 +510,20 @@
       const state = await sendRemoteMessage({ action, speed });
       lastState = state;
       renderState(host, state);
+      if (action === "calibrate") {
+        const notice = getSyncNotice(state);
+        showSyncNotice(host, notice.kind, notice.message);
+      } else if (action === "updateCache") {
+        const notice = getCacheNotice(state);
+        showSyncNotice(host, notice.kind, notice.message);
+      }
     } catch (error) {
       renderState(host, lastState, String(error?.message || error));
+      if (action === "calibrate") {
+        showSyncNotice(host, "fail", `Sync failed: ${String(error?.message || error)}`);
+      } else if (action === "updateCache") {
+        showSyncNotice(host, "fail", `Cache update failed: ${String(error?.message || error)}`);
+      }
     } finally {
       busy = false;
       renderState(host, lastState);
@@ -407,6 +565,12 @@
     loadPlayerShortcutSettings();
   });
   document.addEventListener("keydown", handleKeyboardShortcuts, true);
-  refreshState({ quiet: true });
-  setInterval(() => refreshState({ quiet: true }), POLL_MS);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && Date.now() <= pollActiveUntil) {
+      refreshState({ quiet: true });
+      scheduleNextRefresh();
+    } else {
+      clearTimeout(pollTimer);
+    }
+  });
 })();

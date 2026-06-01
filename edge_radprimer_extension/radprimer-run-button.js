@@ -50,6 +50,7 @@
     ankiNoteType: "core_rad_notetype_v2",
     autoSendToSpeechify: true,
     speechifyAutoSave: false,
+    speechifyKeepAwake: false,
     speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7"
   };
 
@@ -426,6 +427,7 @@
                   <label class="check"><input data-field="captureCardAuditBundle" type="checkbox"> Capture card audit bundle</label>
                   <label class="check"><input data-field="autoSendToSpeechify" type="checkbox"> Send narrative to Speechify</label>
                   <label class="check"><input data-field="speechifyAutoSave" type="checkbox"> Auto-save Speechify (manual save)</label>
+                  <label class="check"><input data-field="speechifyKeepAwake" type="checkbox"> Keep Speechify awake</label>
                 </div>
                 <div class="grid spaced">
                   <label class="wide">Speechify folder link<input data-field="speechifyFolderUrl" type="text"></label>
