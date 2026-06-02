@@ -34,6 +34,27 @@ LIGHTBOX_CSS = r"""
 
 .ankiLightboxOverlay.preparing .ankiLightboxImage {
   opacity: 0;
+  visibility: hidden;
+}
+
+.ankiLightboxOverlay.error .ankiLightboxImage {
+  display: none !important;
+}
+
+.ankiLightboxError {
+  display: none;
+  max-width: min(720px, calc(100vw - 48px));
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(30, 30, 30, 0.96);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.ankiLightboxOverlay.error .ankiLightboxError {
+  display: block;
 }
 
 .ankiLightboxImage {
@@ -97,18 +118,101 @@ LIGHTBOX_CSS = r"""
 
 
 LIGHTBOX_SCRIPT = r"""
+<span data-anki-rad-lightbox-scope="core_rad_notetype_v2" style="display:none"></span>
 <script>
 (function() {
-  if (window.__ankiRadLightboxV3Installed) return;
-  window.__ankiRadLightboxV3Installed = true;
+  if (window.__ankiRadLightboxV6Installed) return;
+  window.__ankiRadLightboxV6Installed = true;
 
-  var overlay, zoomImg;
+  var overlay, zoomImg, errorBox;
   var scale = 1, tx = 0, ty = 0;
   var dragging = false, lastX = 0, lastY = 0;
   var openToken = 0;
+  var scopeSelector = '[data-anki-rad-lightbox-scope="core_rad_notetype_v2"]';
+  var observerInstalled = false;
+
+  function isScopeActive() {
+    return !!document.querySelector(scopeSelector);
+  }
+
+  function isIoScopeActive() {
+    return !!document.querySelector("[data-anki-io-lightbox-scope]");
+  }
+
+  function closeAnyLightboxes() {
+    var overlays = document.querySelectorAll(".ankiLightboxOverlay");
+    for (var i = 0; i < overlays.length; i++) {
+      overlays[i].classList.remove("open");
+      overlays[i].classList.remove("preparing");
+      overlays[i].classList.remove("error");
+      var img = overlays[i].querySelector(".ankiLightboxImage");
+      if (img) img.removeAttribute("src");
+      if (!isScopeActive() && overlays[i].parentNode) {
+        overlays[i].parentNode.removeChild(overlays[i]);
+      }
+    }
+
+    if (overlay && !document.documentElement.contains(overlay)) {
+      overlay = null;
+      zoomImg = null;
+      errorBox = null;
+    }
+    dragging = false;
+  }
+
+  function installGlobalFirewall() {
+    if (window.__ankiRadLightboxGlobalFirewallInstalled) return;
+    window.__ankiRadLightboxGlobalFirewallInstalled = true;
+
+    window.addEventListener("click", function(e) {
+      var img = closestImage(e.target);
+
+      if (isIoScopeActive()) return;
+
+      if (isScopeActive()) {
+        if (!img) return;
+        if (img.classList && img.classList.contains("ankiLightboxImage")) return;
+        if (img.closest && img.closest(".stackCap")) return;
+        if (typeof window.__ankiRadLightboxOpenFromFirewall === "function") {
+          e.preventDefault();
+          e.stopPropagation();
+          if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+          window.__ankiRadLightboxOpenFromFirewall(img.currentSrc || img.src);
+        }
+        return;
+      }
+
+      if (!img) {
+        closeAnyLightboxes();
+        return;
+      }
+
+      closeAnyLightboxes();
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+    }, true);
+  }
+
+  function installScopeObserver() {
+    if (observerInstalled) return;
+    observerInstalled = true;
+    installGlobalFirewall();
+
+    var root = document.body || document.documentElement;
+    if (!root || !window.MutationObserver) return;
+
+    var observer = new MutationObserver(function() {
+      if (!isScopeActive()) closeAnyLightboxes();
+    });
+
+    observer.observe(root, { childList: true, subtree: true });
+  }
 
   function ensureOverlay() {
     if (overlay) return;
+    installScopeObserver();
+    installGlobalFirewall();
 
     overlay = document.createElement("div");
     overlay.className = "ankiLightboxOverlay";
@@ -119,11 +223,13 @@ LIGHTBOX_SCRIPT = r"""
         '<button type="button" data-action="in">+</button>' +
         '<button type="button" data-action="close">x</button>' +
       '</div>' +
-      '<img class="ankiLightboxImage" alt="Zoomed image" draggable="false">' +
+      '<img class="ankiLightboxImage" alt="" draggable="false">' +
+      '<div class="ankiLightboxError">Unable to load the larger image. Close this modal and try the image again.</div>' +
       '<div class="ankiLightboxHint">Wheel or +/- to zoom. Drag to pan. Esc closes.</div>';
 
     document.body.appendChild(overlay);
     zoomImg = overlay.querySelector(".ankiLightboxImage");
+    errorBox = overlay.querySelector(".ankiLightboxError");
 
     overlay.addEventListener("click", function(e) {
       if (e.target === overlay) closeLightbox();
@@ -171,6 +277,10 @@ LIGHTBOX_SCRIPT = r"""
 
     document.addEventListener("keydown", function(e) {
       if (!overlay || !overlay.classList.contains("open")) return;
+      if (!isScopeActive()) {
+        closeAnyLightboxes();
+        return;
+      }
       if (e.key === "Escape") closeLightbox();
       if (e.key === "+") changeZoom(0.25);
       if (e.key === "-") changeZoom(-0.25);
@@ -200,6 +310,8 @@ LIGHTBOX_SCRIPT = r"""
 
   function revealAfterLayout(token) {
     if (!overlay || !zoomImg || token !== openToken) return;
+    if (!zoomImg.complete && !zoomImg.naturalWidth) return;
+    overlay.classList.remove("error");
     resetView();
     forcePaint();
     requestAnimationFrame(function() {
@@ -214,6 +326,10 @@ LIGHTBOX_SCRIPT = r"""
 
   function openLightbox(src) {
     ensureOverlay();
+    if (!isScopeActive()) {
+      closeAnyLightboxes();
+      return;
+    }
     if (!src) return;
 
     openToken += 1;
@@ -221,10 +337,20 @@ LIGHTBOX_SCRIPT = r"""
 
     overlay.classList.add("open");
     overlay.classList.add("preparing");
+    overlay.classList.remove("error");
+    if (errorBox) {
+      errorBox.textContent = "Unable to load the larger image. Close this modal and try the image again.";
+    }
     resetView();
 
-    zoomImg.onload = function() { revealAfterLayout(token); };
-    zoomImg.onerror = function() { revealAfterLayout(token); };
+    zoomImg.onload = function() {
+      revealAfterLayout(token);
+    };
+    zoomImg.onerror = function() {
+      if (token !== openToken) return;
+      overlay.classList.remove("preparing");
+      overlay.classList.add("error");
+    };
 
     zoomImg.removeAttribute("src");
     forcePaint();
@@ -234,22 +360,29 @@ LIGHTBOX_SCRIPT = r"""
       zoomImg.decode().then(function() {
         revealAfterLayout(token);
       }).catch(function() {
-        revealAfterLayout(token);
+        if (token !== openToken) return;
+        if (zoomImg.complete && zoomImg.naturalWidth) revealAfterLayout(token);
       });
     }
 
-    if (zoomImg.complete) {
+    if (zoomImg.complete && zoomImg.naturalWidth) {
       setTimeout(function() { revealAfterLayout(token); }, 0);
     }
 
-    setTimeout(function() { revealAfterLayout(token); }, 220);
+    setTimeout(function() {
+      if (token !== openToken) return;
+      if (zoomImg.complete && zoomImg.naturalWidth) revealAfterLayout(token);
+    }, 220);
   }
+
+  window.__ankiRadLightboxOpenFromFirewall = openLightbox;
 
   function closeLightbox() {
     if (!overlay) return;
     openToken += 1;
     overlay.classList.remove("open");
     overlay.classList.remove("preparing");
+    overlay.classList.remove("error");
     dragging = false;
     if (zoomImg) {
       zoomImg.classList.remove("dragging");
@@ -273,6 +406,12 @@ LIGHTBOX_SCRIPT = r"""
   }
 
   document.addEventListener("click", function(e) {
+    installGlobalFirewall();
+    if (!isScopeActive()) {
+      closeAnyLightboxes();
+      return;
+    }
+
     var img = closestImage(e.target);
     if (!img) return;
     if (img.classList && img.classList.contains("ankiLightboxImage")) return;
@@ -294,9 +433,76 @@ CSS_RE = re.compile(
 )
 
 SCRIPT_RE = re.compile(
-    r"<script>\s*\(function\(\)\s*\{\s*if\s*\(window\.__ankiRadLightboxV[23]Installed\)[\s\S]*?\}\)\(\);\s*</script>",
+    r"(?:<span\s+data-anki-rad-lightbox-scope=[\"']core_rad_notetype_v2[\"'][^>]*></span>\s*)?<script>\s*\(function\(\)\s*\{\s*if\s*\(window\.__ankiRadLightboxV[23456]Installed\)[\s\S]*?\}\)\(\);\s*</script>",
     re.MULTILINE,
 )
+
+
+IMMEDIATE_FIREWALL_JS = r"""
+(function() {
+  if (window.__ankiRadLightboxImmediateFirewallInstalled) return;
+  window.__ankiRadLightboxImmediateFirewallInstalled = true;
+
+  function isScopeActive() {
+    return !!document.querySelector('[data-anki-rad-lightbox-scope="core_rad_notetype_v2"]');
+  }
+
+  function isIoScopeActive() {
+    return !!document.querySelector("[data-anki-io-lightbox-scope]");
+  }
+
+  function closestImage(el) {
+    if (!el) return null;
+    if (el.closest) return el.closest("img");
+    while (el && el !== document) {
+      if (el.tagName && el.tagName.toLowerCase() === "img") return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  function removeLightboxOverlays() {
+    var overlays = document.querySelectorAll(".ankiLightboxOverlay");
+    for (var i = 0; i < overlays.length; i++) {
+      if (overlays[i].parentNode) overlays[i].parentNode.removeChild(overlays[i]);
+    }
+  }
+
+  removeLightboxOverlays();
+
+  window.addEventListener("click", function(e) {
+    var img = closestImage(e.target);
+
+    if (isIoScopeActive()) return;
+
+    if (isScopeActive()) {
+      if (!img) return;
+      if (img.classList && img.classList.contains("ankiLightboxImage")) return;
+      if (img.closest && img.closest(".stackCap")) return;
+      if (typeof window.__ankiRadLightboxOpenFromFirewall === "function") {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        window.__ankiRadLightboxOpenFromFirewall(img.currentSrc || img.src);
+      } else {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+      }
+      return;
+    }
+
+    if (!img) {
+      removeLightboxOverlays();
+      return;
+    }
+    removeLightboxOverlays();
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+  }, true);
+})();
+"""
 
 
 def get_model_manager():
@@ -363,6 +569,14 @@ def main():
         )
 
     save_model(mm, model)
+
+    try:
+        reviewer = getattr(mw, "reviewer", None)
+        web = getattr(reviewer, "web", None)
+        if web is not None and hasattr(web, "eval"):
+            web.eval(IMMEDIATE_FIREWALL_JS)
+    except Exception as exc:
+        print("Warning: saved template, but could not patch the currently open reviewer webview:", exc)
 
     try:
         mw.col.setMod()
