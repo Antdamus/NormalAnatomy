@@ -13,7 +13,11 @@
     source: "a",
     zoomIn: "+",
     zoomOut: "-",
-    reset: "0"
+    reset: "0",
+    playerPlayPause: "p",
+    playerBack10: "ArrowLeft",
+    playerForward10: "ArrowRight",
+    playerJumpImage: "x"
   };
 
   let shortcuts = { ...DEFAULT_SHORTCUTS };
@@ -44,7 +48,11 @@
     ["source", "Large/thumbnail source"],
     ["zoomIn", "Zoom in"],
     ["zoomOut", "Zoom out"],
-    ["reset", "Reset zoom"]
+    ["reset", "Reset zoom"],
+    ["playerPlayPause", "Audio play/pause"],
+    ["playerBack10", "Audio back 10 sec"],
+    ["playerForward10", "Audio forward 10 sec"],
+    ["playerJumpImage", "Audio jump to image"]
   ];
 
   function injectStyle() {
@@ -364,7 +372,7 @@
     host.id = HOST_ID;
     host.style.position = "fixed";
     host.style.inset = "0";
-    host.style.zIndex = "2147483647";
+    host.style.zIndex = "2147483646";
     host.style.display = "none";
     document.documentElement.appendChild(host);
 
@@ -854,6 +862,26 @@
     return action === "zoomIn" && saved === "+" && pressed === "=";
   }
 
+  function sendSpeechifyPlayerAction(action) {
+    try {
+      chrome.runtime.sendMessage({
+        type: "SPEECHIFY_PLAYER_REMOTE",
+        payload: { action }
+      });
+    } catch {}
+  }
+
+  function dispatchSpeechifyJumpToCurrentImage() {
+    try {
+      document.dispatchEvent(new CustomEvent("radprimer-speechify-jump-current-image"));
+    } catch {}
+  }
+
+  function handleNavigateImageEvent(event) {
+    const imageNumber = Number(event?.detail?.imageNumber);
+    navigateToNumber(imageNumber);
+  }
+
   async function assignShortcutFromEvent(event) {
     if (!captureAction) return false;
     event.preventDefault();
@@ -880,6 +908,10 @@
     else if (action === "zoomIn") zoomBy(1.25);
     else if (action === "zoomOut") zoomBy(1 / 1.25);
     else if (action === "reset") resetZoom();
+    else if (action === "playerPlayPause") sendSpeechifyPlayerAction("playPause");
+    else if (action === "playerBack10") sendSpeechifyPlayerAction("back10");
+    else if (action === "playerForward10") sendSpeechifyPlayerAction("forward10");
+    else if (action === "playerJumpImage") dispatchSpeechifyJumpToCurrentImage();
   }
 
   async function handleKeydown(event) {
@@ -983,6 +1015,7 @@
   enhanceStatDxModal();
   document.addEventListener("click", handleDocumentClick, true);
   document.addEventListener("keydown", handleKeydown, true);
+  document.addEventListener("radprimer-navigate-image", handleNavigateImageEvent);
   new MutationObserver(scheduleEnhance).observe(document.documentElement, {
     childList: true,
     subtree: true,

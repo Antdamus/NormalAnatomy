@@ -6,7 +6,9 @@
   const ACTIVE_POLL_MS = 2500;
   const HOVER_WAKE_MS = 120000;
   const COMMAND_WAKE_MS = 30 * 60 * 1000;
-  const SHORTCUT_STORAGE_KEY = "radprimerZoomShortcutSettings";
+  const SHORTCUT_STORAGE_KEY = location.hostname.includes("statdx.com")
+    ? "statdxZoomShortcutSettings"
+    : "radprimerZoomShortcutSettings";
   const DEFAULT_PLAYER_SHORTCUTS = {
     playerPlayPause: "p",
     playerBack10: "ArrowLeft",
