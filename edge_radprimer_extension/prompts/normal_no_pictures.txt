@@ -2666,6 +2666,37 @@ If multiple images are used:
 - preserve source order exactly
 - preserve annotated and non-annotated pairing exactly
 
+MULTI-IMAGE TEMPORAL / PROCEDURAL CONTEXT-LABEL RULE
+
+If a single card uses multiple images and the captions clearly indicate that the images are not all from the same timepoint, phase, status, view state, or procedural state, the image stack must make that relationship explicit before the relevant image is shown.
+
+Caption-supported context examples include:
+- baseline / initial study
+- follow-up or later study, including a stated interval
+- preoperative / postoperative
+- pre-procedure / post-procedure
+- before treatment / after treatment
+- arterial phase / portal venous phase / delayed phase
+- precontrast / postcontrast
+- neutral normal-comparison or variant-comparison image
+- same subject after intervention, progression, resolution, or expected postoperative/treatment change
+
+Rules:
+- Add a brief neutral context label immediately before each affected image.
+- The label must be derived only from the source caption or explicit case grouping.
+- The label must clarify time, phase, sequence, view state, or procedural status.
+- The label must not name a hidden structure, diagnosis, named sign, answer, differential, or caption-derived visual clue that would solve the card on the front.
+- Do not add context labels to single-image cards.
+- Do not add context labels to multi-image stacks when all images are clearly same-time, same-status, or same-sequence without meaningful time/procedure/phase/view-state change.
+- Do not modify the verbatim caption in Image_Annotated stackCap or Original_Caption.
+- This rule is a narrow exception to any usual front-side plain-image/no-wrapper rule.
+
+Allowed front-side Image format when the exception is needed:
+<div class="stackItem"><div class="stackContext">Initial image.</div><img src="FILE1.ext"></div><br><div class="stackItem"><div class="stackContext">Follow-up image 2 weeks later.</div><img src="FILE2.ext"></div>
+
+Allowed back-side Image_Annotated format when the exception is needed:
+<div class="stackItem"><div class="stackContext">Postoperative image.</div><img src="FILE2_annot.ext"><div class="stackCap">VERBATIM CAPTION</div></div>
+
 If the extracted input labels image blocks as `CASE_##`:
 - treat each provided case block as an explicit input unit
 - account for every provided case block during generation
@@ -2898,6 +2929,7 @@ Before export, confirm:
 - Original_Caption is blank unless Image is populated
 - the question does not leak the answer
 - the image truly supports recognition
+- if multiple images have caption-supported time/procedure/phase/view-state differences, neutral context labels appear before the affected images without leaking the answer or altering captions
 - summary is populated only when required
 
 If the workflow explicitly states that no pictures are being provided for the run:
@@ -4187,6 +4219,7 @@ F) Image dependency integrity
 - Image_Annotated must remain subordinate to Image
 - Original_Caption must remain subordinate to Image
 - image support fields must not create hidden prompt-family contamination
+- if a multi-image card has caption-supported time/procedure/phase/view-state differences, neutral context labels must appear before the affected images, must not leak the answer, and must not alter verbatim captions
 
 G) Source and summary integrity
 - whole-source review requirements must be satisfied before card generation

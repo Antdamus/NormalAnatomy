@@ -1080,6 +1080,37 @@ SECTION: IMAGE RULES
 FILE:    imagerules.txt
 ==============================================================================
 
+MULTI-IMAGE TEMPORAL / PROCEDURAL CONTEXT-LABEL RULE
+
+If a single card uses multiple images and the captions clearly indicate that the images are not all from the same timepoint, phase, status, or procedural state, the image stack must make that relationship explicit before the relevant image is shown.
+
+Caption-supported context examples include:
+- baseline / initial study
+- follow-up or later study, including a stated interval
+- preoperative / postoperative
+- pre-procedure / post-procedure
+- before treatment / after treatment
+- arterial phase / portal venous phase / delayed phase
+- precontrast / postcontrast
+- same patient after intervention
+- progression, resolution, recurrence, complication, or treatment effect over time
+
+Rules:
+- Add a brief neutral context label immediately before each affected image.
+- The label must be derived only from the source caption or explicit case grouping.
+- The label must clarify time, phase, or procedural status.
+- The label must not name the diagnosis, named sign, key finding, differential, management answer, or any caption-derived visual clue that would solve the card on the front.
+- Do not add context labels to single-image cards.
+- Do not add context labels to multi-image stacks when all images are clearly same-time, same-status, or same-sequence without meaningful time/procedure/phase change.
+- Do not modify the verbatim caption in Image_Annotated stackCap or Original_Caption.
+- This rule is a narrow exception to the usual front-side plain-image/no-wrapper rule.
+
+Allowed front-side Image format when the exception is needed:
+<div class="stackItem"><div class="stackContext">Initial arterial-phase image.</div><img src="FILE1.ext"></div><br><div class="stackItem"><div class="stackContext">Portal venous-phase image from the same study.</div><img src="FILE2.ext"></div>
+
+Allowed back-side Image_Annotated format when the exception is needed:
+<div class="stackItem"><div class="stackContext">Follow-up image 6 months later.</div><img src="FILE2_annot.ext"><div class="stackCap">VERBATIM CAPTION</div></div>
+
 Image field (Front):
 • Plain image tags only
 • One per line
@@ -1574,6 +1605,7 @@ Confirm:
   - REQUIRED mini-differential
 â€¢ Any mini-differential inference is explicitly labeled when required
 â€¢ Summary, if required, satisfies the global summary rule
+â€¢ If a multi-image card has caption-supported time/procedure/phase differences, neutral context labels appear before the affected images, do not leak the answer, and do not alter verbatim captions
 â€¢ No literal newline characters
 â€¢ Only <br> used for formatting
 â€¢ No fabricated claims
@@ -3735,6 +3767,7 @@ C) Image/Captions â†’ Keyword Findings Integrity (UNKNOWN ONLY)
   Those phrases must be explicitly present in the verbatim captions
   No inference beyond caption text
 â€¢ Image_Annotated order must match Image order (when present).
+â€¢ If a multi-image card has caption-supported time/procedure/phase differences, neutral context labels appear before the affected images, do not leak the answer, and do not alter verbatim captions.
 
 D) Differential Drill De-duplication (Pattern-Based; Discriminator-Driven)
 
