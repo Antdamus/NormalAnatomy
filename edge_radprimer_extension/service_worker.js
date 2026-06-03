@@ -586,24 +586,66 @@ async function createSpeechifyLectureFromChatGPT({ title, text, folder, autoSave
   return response.result;
 }
 
+function getArticleSourceFromUrl(url) {
+  const raw = String(url || "");
+  if (/^https:\/\/app\.radprimer\.com\//.test(raw)) {
+    return {
+      kind: "radprimer",
+      label: "RadPrimer",
+      displayName: "RadPrimer",
+      extractorFile: "content-extractor.js"
+    };
+  }
+  if (/^https:\/\/app\.statdx\.com\//.test(raw)) {
+    return {
+      kind: "statdx",
+      label: "STATdx",
+      displayName: "STATdx",
+      extractorFile: "statdx-content-extractor.js"
+    };
+  }
+  return null;
+}
+
+function getArticleSourceFromTab(tab) {
+  return getArticleSourceFromUrl(tab?.url || "");
+}
+
+function assertSupportedArticleTab(tab) {
+  const source = getArticleSourceFromTab(tab);
+  if (!tab?.id || !source) {
+    throw new Error("Open a RadPrimer or STATdx article page first.");
+  }
+  return source;
+}
+
 async function ensureRadPrimerExtractor(tabId) {
+  const tab = await chrome.tabs.get(tabId);
+  const source = assertSupportedArticleTab(tab);
   await chrome.scripting.executeScript({
     target: { tabId },
-    files: ["content-extractor.js"]
+    files: [source.extractorFile]
   });
+  return source;
 }
 
 async function extractRadPrimerArticle(tabId, settings, promptText) {
-  await ensureRadPrimerExtractor(tabId);
+  const source = await ensureRadPrimerExtractor(tabId);
   const response = await sendTabMessage(tabId, {
     type: "RADPRIMER_EXTRACT",
     config: {
       ...settings,
+      primarySourceLabel: source.label,
       promptText,
       forceCaseLabels: settings.engine === "normal" && settings.mode === "chatgpt_cards"
     }
   });
   if (!response?.ok) throw new Error(response?.error || "Extraction failed.");
+  response.meta = {
+    ...(response.meta || {}),
+    sourceKind: response.meta?.sourceKind || source.kind,
+    primarySourceLabel: response.meta?.primarySourceLabel || source.label
+  };
   return response;
 }
 
@@ -1714,9 +1756,7 @@ async function runFinalCardModeAfterGrouping(pending, groupingText) {
 }
 
 async function runRadPrimerFromPage(tab) {
-  if (!tab?.id || !/^https:\/\/app\.radprimer\.com\//.test(tab.url || "")) {
-    throw new Error("Open a RadPrimer article page first.");
-  }
+  const articleSource = assertSupportedArticleTab(tab);
 
   await sendPageStatus(tab.id, "Loading", "Loading saved runner settings...");
   const settings = await loadRunnerSettings();
@@ -1724,7 +1764,7 @@ async function runRadPrimerFromPage(tab) {
   await sendPageStatus(tab.id, "Prompt", `Loading ${settings.engine}/${settings.mode} prompt...`);
   const promptText = await loadPrompt(settings.engine, settings.mode);
 
-  await sendPageStatus(tab.id, "Extracting", "Extracting article and image captions...");
+  await sendPageStatus(tab.id, "Extracting", `Extracting ${articleSource.displayName} article and image captions...`);
   const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
   const willRunGroupingPreflight =
     shouldRunGroupingPreflight(settings) && extraction.meta?.totalImagesOnPage > 1;
@@ -1842,15 +1882,13 @@ async function runRadPrimerFromPage(tab) {
 }
 
 async function runRadPrimerImageDownloadOnly(tab) {
-  if (!tab?.id || !/^https:\/\/app\.radprimer\.com\//.test(tab.url || "")) {
-    throw new Error("Open a RadPrimer article page first.");
-  }
+  const articleSource = assertSupportedArticleTab(tab);
 
   await sendPageStatus(tab.id, "Images", "Preparing image-only download...");
   const settings = getImageOnlySettings(await loadRunnerSettings());
   const promptText = await loadPrompt(settings.engine, settings.mode);
 
-  await sendPageStatus(tab.id, "Extracting", "Extracting selected image list...");
+  await sendPageStatus(tab.id, "Extracting", `Extracting selected ${articleSource.displayName} image list...`);
   const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
 
   if (!extraction.downloadFiles?.length) {
@@ -1872,9 +1910,7 @@ async function runRadPrimerImageDownloadOnly(tab) {
 }
 
 async function exportRadPrimerAuditSourceOnly(tab) {
-  if (!tab?.id || !/^https:\/\/app\.radprimer\.com\//.test(tab.url || "")) {
-    throw new Error("Open a RadPrimer article page first.");
-  }
+  assertSupportedArticleTab(tab);
 
   await sendPageStatus(tab.id, "Audit Source", "Extracting source-only audit bundle...");
   const settings = {
@@ -1921,7 +1957,7 @@ async function recoverLatestCardAuditDownloadFromChatGptTab(tab) {
 
   const latest = await getLatestPendingCardAuditRun();
   if (!latest) {
-    throw new Error("No pending card-audit run was found. If needed, export an audit source bundle from the RadPrimer article.");
+    throw new Error("No pending card-audit run was found. If needed, export an audit source bundle from the article page.");
   }
 
   await ensureChatGptPaster(tab.id);
@@ -2016,7 +2052,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "RUN_RADPRIMER_FROM_TAB_ID") {
     (async () => {
       const tabId = message.tabId;
-      if (!tabId) throw new Error("No RadPrimer tab id was provided.");
+      if (!tabId) throw new Error("No article tab id was provided.");
       const tab = await chrome.tabs.get(tabId);
       const result = await runRadPrimerFromPage(tab);
       sendResponse({ ok: true, ...result });

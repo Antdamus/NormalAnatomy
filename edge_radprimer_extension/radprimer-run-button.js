@@ -3,6 +3,7 @@
   window.__radprimerRunnerPageButtonLoaded = true;
 
   const HOST_ID = "radprimer-runner-page-button";
+  const SOURCE_LABEL = location.hostname.includes("statdx") ? "STATdx" : "RadPrimer";
 
   const MODE_OPTIONS = {
     pathology: [
@@ -396,10 +397,10 @@
           </div>
         </div>
         <div class="backdrop">
-          <div class="modal" role="dialog" aria-modal="true" aria-label="RadPrimer runner settings">
+          <div class="modal" role="dialog" aria-modal="true" aria-label="Article runner settings">
             <div class="modal-head">
               <div>
-                <h2>Run this RadPrimer article</h2>
+                <h2>Run this ${SOURCE_LABEL} article</h2>
                 <p class="sub">Choose the engine, mode, images, ChatGPT, and Speechify path for this run.</p>
               </div>
               <button class="close" type="button" aria-label="Close">x</button>
@@ -445,14 +446,14 @@
                 </div>
                 <div class="grid spaced">
                   <label class="wide">Deck routing<select data-field="ankiDeckMode">
-                    <option value="auto">Auto from RadPrimer breadcrumb</option>
+                    <option value="auto">Auto from article breadcrumb</option>
                     <option value="manual">Manual parent deck</option>
                   </select></label>
                   <label>Pathology root deck<input data-field="ankiPathologyRoot" type="text"></label>
                   <label>Normal root deck<input data-field="ankiNormalRoot" type="text"></label>
                   <label class="wide">Manual parent deck<input data-field="ankiDeckRoot" type="text"></label>
                   <label class="wide">Anki note type<input data-field="ankiNoteType" type="text"></label>
-                  <span class="hint wide">Auto routing uses the RadPrimer breadcrumb. Pathology starts under Corebook; normal starts under RadprimerNormal.</span>
+                  <span class="hint wide">Auto routing uses the article breadcrumb when available. Pathology starts under Corebook; normal starts under RadprimerNormal.</span>
                 </div>
               </section>
 
@@ -737,7 +738,7 @@
 
   const runFromPage = (host) => {
     setRunning(host, true);
-    setStatus(host, "Starting", "Starting RadPrimer workflow...");
+    setStatus(host, "Starting", `Starting ${SOURCE_LABEL} workflow...`);
     chrome.runtime.sendMessage({ type: "RUN_RADPRIMER_FROM_PAGE" }, (response) => {
       const err = chrome.runtime.lastError;
       if (err) {

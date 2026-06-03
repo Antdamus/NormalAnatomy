@@ -368,11 +368,22 @@ async function loadPrompt(engine, mode) {
   return response.text();
 }
 
+function getArticleSourceFromUrl(url) {
+  const raw = String(url || "");
+  if (/^https:\/\/app\.radprimer\.com\//.test(raw)) {
+    return { kind: "radprimer", label: "RadPrimer", extractorFile: "content-extractor.js" };
+  }
+  if (/^https:\/\/app\.statdx\.com\//.test(raw)) {
+    return { kind: "statdx", label: "STATdx", extractorFile: "statdx-content-extractor.js" };
+  }
+  return null;
+}
+
 async function getActiveTab() {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   if (!tab?.id) throw new Error("No active tab found.");
-  if (!/^https:\/\/app\.radprimer\.com\//.test(tab.url || "")) {
-    throw new Error("Open a RadPrimer article page first.");
+  if (!getArticleSourceFromUrl(tab.url)) {
+    throw new Error("Open a RadPrimer or STATdx article page first.");
   }
   return tab;
 }
@@ -384,10 +395,14 @@ async function getActiveBrowserTab() {
 }
 
 async function ensureContentScript(tabId) {
+  const tab = await chrome.tabs.get(tabId);
+  const source = getArticleSourceFromUrl(tab.url);
+  if (!source) throw new Error("Open a RadPrimer or STATdx article page first.");
   await chrome.scripting.executeScript({
     target: { tabId },
-    files: ["content-extractor.js"]
+    files: [source.extractorFile]
   });
+  return source;
 }
 
 function sendExtractMessage(tabId, config) {
@@ -667,7 +682,7 @@ async function run() {
     const promptText = await loadPrompt(settings.engine, settings.mode);
     await ensureContentScript(tab.id);
 
-    setStatus("Extracting RadPrimer article...");
+    setStatus(`Extracting ${getArticleSourceFromUrl(tab.url)?.label || "article"} article...`);
     const response = await sendExtractMessage(tab.id, {
       ...settings,
       promptText,
