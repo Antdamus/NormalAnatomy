@@ -1,0 +1,343 @@
+{
+  "createdAt": "2026-06-03T03:28:52.083Z",
+  "articleTitle": "Splenic Trauma",
+  "sourceUrl": "https://app.statdx.com/document/splenic-trauma/4b65c811-f4e8-4106-a22f-4e7fc9d2bf44?term=splenic%20trauma&searchType=documents&category=All&documentTypeFilters=all",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "cases": [
+    [
+      3,
+      4
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      7
+    ],
+    [
+      8
+    ],
+    [
+      9
+    ],
+    [
+      10
+    ],
+    [
+      17
+    ],
+    [
+      18
+    ],
+    [
+      19
+    ],
+    [
+      20
+    ]
+  ],
+  "totalImagesOnPage": 20,
+  "breadcrumbTrail": [
+    "Gastrointestinal",
+    "Diagnosis",
+    "Spleen",
+    "Trauma",
+    "Splenic Trauma"
+  ],
+  "outputChars": 192526,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Core Pathway A satisfied. I verified Core Radiology coverage in the uploaded Core PDF under GI → Spleen → Splenic trauma, visible page markers GI:170–171.\n\nWhole-source coverage audit completed from full Core pages and full article text.\nCore Summary attached; derived from full Core coverage, not from validation digest.\nCard generation used full-source review, not digest summary.\n\nCore Summary: Core emphasizes that splenic trauma is best assessed on portal venous phase because arterial heterogeneous splenic enhancement can mimic or mask injury; lacerations appear as linear/branching decreased attenuation on contrast CT; hematomas may be subcapsular or intraparenchymal; active extravasation enlarges or changes on delayed imaging, unlike contained pseudoaneurysm/AVF; pseudoaneurysm has high rupture risk; and the 2018 AAST spleen injury scale incorporates vascular injury and active bleeding.\n\nTotal cards to export: 39\nExpected TSV lines: 39\n\nDownload: [radprimer_cards.tsv](sandbox:/mnt/data/radprimer_cards.tsv)\n\nCORE_EVIDENCE_FILE_BEGIN\nCORE_EVIDENCE_STATUS: USED\nCORE_SOURCE_BASIS: Uploaded Core Radiology PDF, “Core Radiology: A Visual Approach to Diagnostic Imaging,” GI chapter, Spleen section, “Splenic trauma,” visible page markers GI:170–171; exact PDF absolute page numbers not separately exposed.\nCORE_FACTS_USED:\n\n* The spleen is the most commonly injured abdominal organ in blunt trauma.\n* Splenectomy increases subsequent sepsis risk, supporting splenic preservation/conservative management.\n* Portal venous phase is required for splenic parenchymal injury evaluation because arterial heterogeneous enhancement can mask or mimic injury.\n* Splenic hematoma is hypoattenuating relative to enhanced spleen and hyperattenuating relative to unenhanced spleen; usually subcapsular, less often intraparenchymal.\n* Splenic laceration is best seen on contrast-enhanced CT as a linear or branching area of decreased attenuation.\n* Active extravasation increases in size or attenuation on delayed imaging due to pooling of extravasated blood.\n* Pseudoaneurysm/AVF are contained vascular injuries that do not enlarge on delayed imaging; splenic arteriography distinguishes pseudoaneurysm from AVF.\n* Pseudoaneurysm is caused by intima/media injury and is contained only by adventitia, with high rupture risk if untreated.\n* 2018 AAST spleen injury scale incorporates CT vascular injuries, including active bleeding, pseudoaneurysm, and AVF.\n* AAST grade IV includes intraparenchymal vascular injury/contained active bleeding or central-vessel laceration with >25% devascularization; grade V includes extraparenchymal active bleeding or shattered spleen.\nCORE_DERIVED_CARDS:\n* Summary field across all exported cards.\n* Mechanism cards on portal venous phase evaluation, delayed-phase extravasation-vs-pseudoaneurysm distinction, and pseudoaneurysm rupture risk.\n* Boards trap cards on arterial-phase mimic/masking pitfall and delayed imaging for vascular injury.\n* High-yield cards on CT phase strategy, AAST-OIS framework, vascular injury/intervention pivots, and reporting grade.\n* UNKNOWN card reasoning where Core facts supported laceration, hematoma, extravasation, pseudoaneurysm, and AAST grading interpretation.\nCORE_LIMITATIONS:\n* Core did not provide the full STATdx-specific selected-image captions; those were derived from the supplied STATdx article/image block.\n* Core did not provide the STATdx numeric hemoperitoneum/perisplenic clot HU thresholds, FAST/DPL false-negative percentages, polytrauma proportions, delayed reimaging timing, or nonoperative-management failure rates; those were taken from the supplied STATdx article.\nCORE_EVIDENCE_FILE_END\n\nRADPRIMER_CARD_TSV_DOWNLOAD_READY\nFILENAME: radprimer_cards.tsv\nEXPECTED_ROWS: 39",
+  "coreEvidence": {
+    "status": "USED",
+    "provided": true,
+    "chars": 2607,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "Basic",
+      "Gastrointestinal",
+      "Spleen",
+      "Splenic Trauma"
+    ],
+    "deckParts": [
+      "Corebook",
+      "GI",
+      "Spleen",
+      "Splenic Trauma"
+    ],
+    "deckName": "Corebook::GI::Spleen::Splenic Trauma",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [
+    {
+      "filename": "Splenic_Trauma3.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma3_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma4.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma4_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma5.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma5_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma6.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma6_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma11.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma11_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma12.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma12_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma13.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma13_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma14.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma14_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma15.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma15_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma16.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma16_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma1.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma1_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma2.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma2_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma7.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma7_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma8.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma8_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma9.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma9_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma10.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma10_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma17.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma17_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma18.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma18_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma19.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma19_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma20.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Splenic_Trauma20_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    }
+  ],
+  "settings": {
+    "include": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+    "caseMap": "3,4; 5,6; 11,12; 13,14; 15,16",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  }
+}

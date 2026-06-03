@@ -27,6 +27,26 @@ function Test-CopyCandidate {
   return $true
 }
 
+function Get-RelativePathCompat {
+  param(
+    [string]$BasePath,
+    [string]$TargetPath
+  )
+
+  $baseFull = [System.IO.Path]::GetFullPath($BasePath)
+  if (-not $baseFull.EndsWith([System.IO.Path]::DirectorySeparatorChar)) {
+    $baseFull = $baseFull + [System.IO.Path]::DirectorySeparatorChar
+  }
+
+  $targetFull = [System.IO.Path]::GetFullPath($TargetPath)
+  $baseUri = New-Object System.Uri($baseFull)
+  $targetUri = New-Object System.Uri($targetFull)
+  $relativeUri = $baseUri.MakeRelativeUri($targetUri)
+  $relative = [System.Uri]::UnescapeDataString($relativeUri.ToString())
+
+  return $relative.Replace('/', [System.IO.Path]::DirectorySeparatorChar)
+}
+
 function Wait-ForStableFile {
   param([string]$Path)
 
@@ -65,7 +85,7 @@ function Copy-AuditFile {
   }
 
   $fresh = Get-Item -LiteralPath $File.FullName
-  $relative = [System.IO.Path]::GetRelativePath($SourceDir, $fresh.FullName)
+  $relative = Get-RelativePathCompat -BasePath $SourceDir -TargetPath $fresh.FullName
   $destination = Join-Path $DestinationDir $relative
   $destinationParent = Split-Path -Parent $destination
   $signature = "{0}|{1}|{2}" -f $relative, $fresh.Length, $fresh.LastWriteTimeUtc.Ticks

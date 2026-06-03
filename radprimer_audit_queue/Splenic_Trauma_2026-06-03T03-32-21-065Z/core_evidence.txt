@@ -1,0 +1,23 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Uploaded Core Radiology PDF, “Core Radiology: A Visual Approach to Diagnostic Imaging,” GI chapter, Spleen section, “Splenic trauma,” visible page markers GI:170–171; exact PDF absolute page numbers not separately exposed.
+CORE_FACTS_USED:
+
+- The spleen is the most commonly injured abdominal organ in blunt trauma.
+- Splenectomy increases subsequent sepsis risk, supporting splenic preservation/conservative management.
+- Portal venous phase is required for splenic parenchymal injury evaluation because arterial heterogeneous enhancement can mask or mimic injury.
+- Splenic hematoma is hypoattenuating relative to enhanced spleen and hyperattenuating relative to unenhanced spleen; usually subcapsular, less often intraparenchymal.
+- Splenic laceration is best seen on contrast-enhanced CT as a linear or branching area of decreased attenuation.
+- Active extravasation increases in size or attenuation on delayed imaging due to pooling of extravasated blood.
+- Pseudoaneurysm/AVF are contained vascular injuries that do not enlarge on delayed imaging; splenic arteriography distinguishes pseudoaneurysm from AVF.
+- Pseudoaneurysm is caused by intima/media injury and is contained only by adventitia, with high rupture risk if untreated.
+- 2018 AAST spleen injury scale incorporates CT vascular injuries, including active bleeding, pseudoaneurysm, and AVF.
+- AAST grade IV includes intraparenchymal vascular injury/contained active bleeding or central-vessel laceration with >25% devascularization; grade V includes extraparenchymal active bleeding or shattered spleen.
+CORE_DERIVED_CARDS:
+- Summary field across all exported cards.
+- Mechanism cards on portal venous phase evaluation, delayed-phase extravasation-vs-pseudoaneurysm distinction, and pseudoaneurysm rupture risk.
+- Boards trap cards on arterial-phase mimic/masking pitfall and delayed imaging for vascular injury.
+- High-yield cards on CT phase strategy, AAST-OIS framework, vascular injury/intervention pivots, and reporting grade.
+- UNKNOWN card reasoning where Core facts supported laceration, hematoma, extravasation, pseudoaneurysm, and AAST grading interpretation.
+CORE_LIMITATIONS:
+- Core did not provide the full STATdx-specific selected-image captions; those were derived from the supplied STATdx article/image block.
+- Core did not provide the STATdx numeric hemoperitoneum/perisplenic clot HU thresholds, FAST/DPL false-negative percentages, polytrauma proportions, delayed reimaging timing, or nonoperative-management failure rates; those were taken from the supplied STATdx article.

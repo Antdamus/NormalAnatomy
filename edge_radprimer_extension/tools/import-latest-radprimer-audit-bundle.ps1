@@ -6,6 +6,26 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+function Get-RelativePathCompat {
+  param(
+    [string]$BasePath,
+    [string]$TargetPath
+  )
+
+  $baseFull = [System.IO.Path]::GetFullPath($BasePath)
+  if (-not $baseFull.EndsWith([System.IO.Path]::DirectorySeparatorChar)) {
+    $baseFull = $baseFull + [System.IO.Path]::DirectorySeparatorChar
+  }
+
+  $targetFull = [System.IO.Path]::GetFullPath($TargetPath)
+  $baseUri = New-Object System.Uri($baseFull)
+  $targetUri = New-Object System.Uri($targetFull)
+  $relativeUri = $baseUri.MakeRelativeUri($targetUri)
+  $relative = [System.Uri]::UnescapeDataString($relativeUri.ToString())
+
+  return $relative.Replace('/', [System.IO.Path]::DirectorySeparatorChar)
+}
+
 function Wait-ForStableFile {
   param([string]$Path)
 
@@ -65,7 +85,7 @@ $destinationBundle = Join-Path $DestinationDir $latest.Name
 New-Item -ItemType Directory -Path $destinationBundle -Force | Out-Null
 
 foreach ($file in $sourceFiles) {
-  $relative = [System.IO.Path]::GetRelativePath($latest.FullName, $file.FullName)
+  $relative = Get-RelativePathCompat -BasePath $latest.FullName -TargetPath $file.FullName
   $destinationFile = Join-Path $destinationBundle $relative
   $destinationParent = Split-Path -Parent $destinationFile
   New-Item -ItemType Directory -Path $destinationParent -Force | Out-Null

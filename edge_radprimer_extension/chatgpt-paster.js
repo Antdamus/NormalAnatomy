@@ -886,15 +886,55 @@
 
   const findCardTsvDownloadButton = () => {
     const latestTurn = getLatestAssistantTurn();
-    const candidates = Array.from(
-      latestTurn?.querySelectorAll("button, a[download], a[href]") || []
-    ).filter(isVisible);
-    const downloadButtons = candidates.filter((button) => {
-      const text = String(button.innerText || button.textContent || button.getAttribute("aria-label") || "");
-      const href = String(button.getAttribute("href") || button.getAttribute("download") || "");
-      return /download/i.test(text) && /tsv|cards?|anki|file/i.test(`${text} ${href}`);
-    });
-    return downloadButtons[0] || candidates.find((button) => /download/i.test(button.innerText || "")) || null;
+    const roots = [
+      latestTurn,
+      latestTurn ? getMarkdownRoot(getFinalAssistantMessage(latestTurn)) : null,
+      document.querySelector(SELECTORS.main)
+    ].filter(Boolean);
+
+    const seen = new Set();
+    const candidates = roots
+      .flatMap((root) => Array.from(root.querySelectorAll("button, a[download], a[href], [role='button'], [data-testid]")))
+      .filter((el) => {
+        if (!el || seen.has(el) || !isVisible(el)) return false;
+        seen.add(el);
+        return true;
+      });
+
+    const candidateText = (el) =>
+      [
+        el.innerText,
+        el.textContent,
+        el.getAttribute?.("aria-label"),
+        el.getAttribute?.("title"),
+        el.getAttribute?.("download"),
+        el.getAttribute?.("href"),
+        el.getAttribute?.("data-testid")
+      ]
+        .filter(Boolean)
+        .join(" ");
+
+    const scoreCandidate = (el) => {
+      const text = candidateText(el);
+      const lower = text.toLowerCase();
+      let score = 0;
+
+      if (/radprimer[_-]?cards\.tsv/i.test(text)) score += 100;
+      if (/\.tsv\b/i.test(text)) score += 80;
+      if (/sandbox:\/|\/mnt\/data|download|attachment|file/i.test(text)) score += 25;
+      if (/cards?|anki|tsv/i.test(text)) score += 20;
+      if (/copy|share|sources|regenerate|thumb|more actions|read aloud/i.test(text)) score -= 50;
+      if (lower.includes(CARD_AUDIT_DOWNLOAD_SENTINEL.toLowerCase())) score -= 50;
+
+      return score;
+    };
+
+    const ranked = candidates
+      .map((el) => ({ el, score: scoreCandidate(el) }))
+      .filter((item) => item.score >= 60)
+      .sort((a, b) => b.score - a.score);
+
+    return ranked[0]?.el || candidates.find((el) => /download/i.test(candidateText(el))) || null;
   };
 
   const captureCardTsvDownload = async (completionPayload, sentinelText) => {
