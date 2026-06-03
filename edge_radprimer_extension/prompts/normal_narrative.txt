@@ -251,6 +251,46 @@ For normal-anatomy lectures specifically, when the captions clearly describe gro
 
 ---
 
+## ARROW / ANNOTATION VERBALIZATION RULE
+
+Many image captions contain inline arrow image tags such as `<img src="arrow_WO.png">`.
+
+These arrow tags are not decorative. They are source-supported visual anchors for the anatomy, landmark, normal variant, pseudolesion, or pitfall being taught.
+
+When walking through any image or grouped run, you must explicitly verbalize the caption-supported arrows/callouts so the learner can follow the image without reading the caption separately.
+
+Use speech-friendly language such as:
+
+* "the white open arrow marks..."
+* "the white solid arrow points to..."
+* "the black open arrow identifies..."
+* "the cyan solid arrow highlights..."
+
+Common arrow code meanings:
+
+* `WO` = white open arrow
+* `WS` = white solid arrow
+* `WC` = white curved arrow
+* `BO` = black open arrow
+* `BS` = black solid arrow
+* `BC` = black curved arrow
+* `CO` = cyan open arrow
+* `CS` = cyan solid arrow
+* `CC` = cyan curved arrow
+
+Rules:
+
+* Do not read the HTML tag or filename aloud.
+* Do not say only "the arrow" when multiple arrows are present; distinguish the arrows by color/style when the code allows it.
+* Integrate arrow callouts into the anatomy teaching flow instead of dumping the caption.
+* If multiple arrows are present, describe them in the order that best supports image inspection: usually orientation landmark first, then the target structure, then related boundaries or pitfalls.
+* If the caption has arrow tags but the surrounding caption text does not clearly state what an arrow marks, do not invent a structure. Use cautious language such as "the marked callout corresponds to the caption-described landmark."
+* If an image has arrows, the local image explanation should usually name what each arrow/callout is showing before moving on to broader anatomy facts.
+
+The goal is that during audio playback the learner hears exactly how the arrows connect to the visible landmarks.
+
+---
+
 ## IMAGE ORDER FLEXIBILITY RULE
 
 The narrative must be image-complete, but it does NOT have to preserve the raw extracted image order.

@@ -58,6 +58,7 @@ const DEFAULTS = {
   ankiNormalRoot: "RadprimerNormal",
   ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
   ankiNoteType: "core_rad_notetype_v2",
+  preferRadPrimerHierarchyForStatdx: true,
   autoSendToSpeechify: true,
   speechifyAutoSave: false,
   speechifyAutoPlayAfterSave: false,
@@ -107,6 +108,7 @@ const fields = [
   "ankiNormalRoot",
   "ankiDeckRoot",
   "ankiNoteType",
+  "preferRadPrimerHierarchyForStatdx",
   "autoSendToSpeechify",
   "speechifyAutoSave",
   "speechifyKeepAwake",
@@ -295,6 +297,7 @@ function readForm() {
     ankiNormalRoot: $("ankiNormalRoot").value.trim(),
     ankiDeckRoot: $("ankiDeckRoot").value.trim(),
     ankiNoteType: $("ankiNoteType").value.trim(),
+    preferRadPrimerHierarchyForStatdx: $("preferRadPrimerHierarchyForStatdx").checked,
     autoSendToSpeechify: speechifyEligible ? true : autoSendToSpeechify,
     speechifyAutoSave: false,
     speechifyAutoPlayAfterSave: false,
@@ -347,6 +350,8 @@ function applyForm(values) {
   $("ankiNormalRoot").value = values.ankiNormalRoot ?? DEFAULTS.ankiNormalRoot;
   $("ankiDeckRoot").value = values.ankiDeckRoot ?? DEFAULTS.ankiDeckRoot;
   $("ankiNoteType").value = values.ankiNoteType ?? DEFAULTS.ankiNoteType;
+  $("preferRadPrimerHierarchyForStatdx").checked =
+    values.preferRadPrimerHierarchyForStatdx ?? DEFAULTS.preferRadPrimerHierarchyForStatdx;
   $("autoSendToSpeechify").checked = autoSendToSpeechify;
   $("speechifyAutoSave").checked = values.speechifyAutoSave ?? DEFAULTS.speechifyAutoSave;
   $("speechifyKeepAwake").checked = values.speechifyKeepAwake ?? DEFAULTS.speechifyKeepAwake;
@@ -458,6 +463,16 @@ function sendRecoverCardAuditTsvMessage(tabId) {
 function sendExportAuditSourceMessage(tabId) {
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage({ type: "EXPORT_RADPRIMER_AUDIT_SOURCE_ONLY", tabId }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+function sendExportSourceCompareMessage(tabId) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "EXPORT_ARTICLE_SOURCE_COMPARISON", tabId }, (response) => {
       const err = chrome.runtime.lastError;
       if (err) reject(new Error(err.message));
       else resolve(response);
@@ -862,6 +877,31 @@ async function exportAuditSource() {
   }
 }
 
+async function exportSourceCompare() {
+  const button = $("exportSourceCompare");
+  button.disabled = true;
+  try {
+    await saveForm();
+    const tab = await getActiveTab();
+    setStatus("Exporting comparison source bundle...");
+    const response = await sendExportSourceCompareMessage(tab.id);
+    if (!response?.ok) throw new Error(response?.error || "Comparison source export failed.");
+
+    if (response.clipboardText) await copyText(response.clipboardText);
+    setStatus(
+      [
+        response.message || "Comparison source bundle exported.",
+        `Bundle: ${response.bundle?.downloadFolder || "[created]"}`,
+        response.clipboardText ? "Comparison wake-up message copied to clipboard." : "No wake-up message was returned."
+      ].join("\n")
+    );
+  } catch (error) {
+    setStatus(`Comparison source export error: ${error?.message || error}`);
+  } finally {
+    button.disabled = false;
+  }
+}
+
 async function init() {
   const stored = await chrome.storage.local.get("radprimerRunnerSettings");
   applyForm({ ...DEFAULTS, ...(stored.radprimerRunnerSettings || {}) });
@@ -914,6 +954,7 @@ async function init() {
   $("downloadImagesOnly").addEventListener("click", downloadImagesOnly);
   $("recoverCardAuditTsv").addEventListener("click", recoverCardAuditTsv);
   $("exportAuditSource").addEventListener("click", exportAuditSource);
+  $("exportSourceCompare").addEventListener("click", exportSourceCompare);
   $("refreshPrompts").addEventListener("click", checkPrompts);
 }
 

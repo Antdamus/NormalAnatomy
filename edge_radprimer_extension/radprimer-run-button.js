@@ -49,6 +49,7 @@
     ankiNormalRoot: "RadprimerNormal",
     ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
     ankiNoteType: "core_rad_notetype_v2",
+    preferRadPrimerHierarchyForStatdx: true,
     autoSendToSpeechify: true,
     speechifyAutoSave: false,
     speechifyKeepAwake: false,
@@ -443,6 +444,7 @@
                 </div>
                 <div class="checks">
                   <label class="check"><input data-field="createAnkiImportFile" type="checkbox"> Create Anki import TSV after audit</label>
+                  <label class="check"><input data-field="preferRadPrimerHierarchyForStatdx" type="checkbox"> Use saved RadPrimer hierarchy for matching STATdx topics</label>
                 </div>
                 <div class="grid spaced">
                   <label class="wide">Deck routing<select data-field="ankiDeckMode">
@@ -453,7 +455,7 @@
                   <label>Normal root deck<input data-field="ankiNormalRoot" type="text"></label>
                   <label class="wide">Manual parent deck<input data-field="ankiDeckRoot" type="text"></label>
                   <label class="wide">Anki note type<input data-field="ankiNoteType" type="text"></label>
-                  <span class="hint wide">Auto routing uses the article breadcrumb when available. Pathology starts under Corebook; normal starts under RadprimerNormal.</span>
+                  <span class="hint wide">Auto routing uses the article breadcrumb when available. STATdx can reuse the saved RadPrimer hierarchy for the same title.</span>
                 </div>
               </section>
 
@@ -504,6 +506,7 @@
                 <button class="ghost save-only" type="button">Save settings</button>
                 <button class="ghost download-config" type="button">Save and download images</button>
                 <button class="ghost audit-source-config" type="button">Export audit source</button>
+                <button class="ghost compare-source-config" type="button">Export comparison source</button>
                 <button class="run-config" type="button">Save and run</button>
               </div>
             </div>
@@ -562,6 +565,11 @@
       await saveSettings(readModalSettings(host));
       closeModal(host);
       exportAuditSourceOnly(host);
+    });
+    shadow.querySelector(".compare-source-config").addEventListener("click", async () => {
+      await saveSettings(readModalSettings(host));
+      closeModal(host);
+      exportSourceComparisonOnly(host);
     });
 
     return host;
@@ -795,6 +803,29 @@
         if (response.clipboardText) await navigator.clipboard.writeText(response.clipboardText);
       } catch {}
       setStatus(host, "Audit Source Ready", response.message || "Source-only audit bundle exported.");
+      setRunning(host, false);
+    });
+  };
+
+  const exportSourceComparisonOnly = (host) => {
+    setRunning(host, true);
+    setStatus(host, "Compare Source", "Exporting comparison source bundle...");
+    chrome.runtime.sendMessage({ type: "EXPORT_ARTICLE_SOURCE_COMPARISON" }, async (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) {
+        setStatus(host, "Compare Source Error", err.message, true);
+        setRunning(host, false);
+        return;
+      }
+      if (!response?.ok) {
+        setStatus(host, "Compare Source Error", response?.error || "Comparison source export failed.", true);
+        setRunning(host, false);
+        return;
+      }
+      try {
+        if (response.clipboardText) await navigator.clipboard.writeText(response.clipboardText);
+      } catch {}
+      setStatus(host, "Compare Source Ready", response.message || "Comparison source bundle exported.");
       setRunning(host, false);
     });
   };

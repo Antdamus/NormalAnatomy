@@ -19,11 +19,14 @@ const PROMPT_FILES = {
 const GROUPING_PREFLIGHT_PROMPT = "prompts/grouping_preflight.txt";
 const PENDING_GROUPING_PREFIX = "radprimerGroupingPending:";
 const PENDING_CARD_AUDIT_PREFIX = "radprimerCardAuditPending:";
+const RADPRIMER_HIERARCHY_PREFIX = "radprimerCanonicalHierarchy:";
 const IMAGE_DOWNLOAD_SUBFOLDER = "RadPrimer";
 const CARD_AUDIT_SUBFOLDER = "RadPrimerAudit";
+const SOURCE_COMPARE_SUBFOLDER = "RadPrimerSourceComparison";
 const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
 const CORE_EVIDENCE_BEGIN = "CORE_EVIDENCE_FILE_BEGIN";
 const CORE_EVIDENCE_END = "CORE_EVIDENCE_FILE_END";
+const pendingTextDownloadFilenames = [];
 const CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION = [
   "AUTOMATED CAPTURE REQUIREMENT:",
   "When you reach final card export, create a downloadable TSV file instead of printing the TSV rows in chat.",
@@ -79,6 +82,7 @@ const DEFAULTS = {
   ankiNormalRoot: "RadprimerNormal",
   ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
   ankiNoteType: "core_rad_notetype_v2",
+  preferRadPrimerHierarchyForStatdx: true,
   autoSendToSpeechify: true,
   speechifyAutoSave: false,
   speechifyKeepAwake: false,
@@ -646,6 +650,8 @@ async function extractRadPrimerArticle(tabId, settings, promptText) {
     sourceKind: response.meta?.sourceKind || source.kind,
     primarySourceLabel: response.meta?.primarySourceLabel || source.label
   };
+  await rememberRadPrimerHierarchyFromExtraction(response, settings, response.meta?.sourceUrl || "");
+  await applySavedRadPrimerHierarchyToExtraction(response, settings);
   return response;
 }
 
@@ -767,6 +773,24 @@ function isLikelyChatGptGeneratedDownload(item) {
 }
 
 function handleCardAuditDownloadFilename(downloadItem, suggest) {
+  const normalizedDownloadUrl = normalizeDownloadUrl(downloadItem?.url);
+  const textIndex = pendingTextDownloadFilenames.findIndex(
+    (entry) => entry.url === normalizedDownloadUrl
+  );
+  const extensionTextIndex =
+    textIndex >= 0
+      ? textIndex
+      : downloadItem?.byExtensionId === chrome.runtime.id && pendingTextDownloadFilenames.length
+        ? 0
+        : -1;
+  if (extensionTextIndex >= 0) {
+    suggest({
+      filename: pendingTextDownloadFilenames[extensionTextIndex].filename,
+      conflictAction: "overwrite"
+    });
+    return;
+  }
+
   const imageFilename = pendingImageDownloadFilenames.get(normalizeDownloadUrl(downloadItem?.url));
   if (imageFilename) {
     suggest({
@@ -858,6 +882,15 @@ function sanitizeDownloadPathPart(value, fallback = "radprimer") {
     .replace(/_+/g, "_");
 }
 
+function buildSourceCompareDownloadPlan(title, sourceLabel) {
+  const articlePart = sanitizeDownloadPathPart(title, "radiology_source");
+  const sourcePart = sanitizeDownloadPathPart(sourceLabel, "source");
+  return {
+    articleFolderName: articlePart,
+    fileBaseName: `${sourcePart}_${articlePart}`
+  };
+}
+
 function sanitizeAnkiDeckPart(value, fallback = "RadPrimer Article") {
   const text = String(value || "")
     .replace(/\r?\n/g, " ")
@@ -877,6 +910,18 @@ function sanitizeAnkiDeckPath(value) {
 
 function normalizeAnkiDeckPartForCompare(value) {
   return sanitizeAnkiDeckPart(value, "").toLowerCase();
+}
+
+function normalizeArticleTitleKey(value) {
+  return sanitizeAnkiDeckPart(value, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function getRadPrimerHierarchyStorageKey(title) {
+  const key = normalizeArticleTitleKey(title);
+  return key ? `${RADPRIMER_HIERARCHY_PREFIX}${key}` : "";
 }
 
 const ANKI_BREADCRUMB_SKIP = new Set(["basic"]);
@@ -954,6 +999,22 @@ function buildAnkiDeckTarget(pending) {
     ? pending.extractionMeta.breadcrumbTrail
     : [];
   const deckMode = normalizeAnkiDeckMode(settings.ankiDeckMode);
+  const hierarchyOverride = pending?.extractionMeta?.ankiHierarchyOverride;
+
+  if (deckMode === "auto" && hierarchyOverride?.deckName) {
+    return {
+      deckMode,
+      deckRoot: hierarchyOverride.deckRoot || getAutoAnkiRoot(settings),
+      deckParts: Array.isArray(hierarchyOverride.deckParts)
+        ? hierarchyOverride.deckParts
+        : String(hierarchyOverride.deckName).split("::").filter(Boolean),
+      breadcrumbTrail: Array.isArray(hierarchyOverride.breadcrumbTrail)
+        ? hierarchyOverride.breadcrumbTrail
+        : breadcrumbTrail,
+      deckName: sanitizeAnkiDeckPath(hierarchyOverride.deckName) || title,
+      hierarchySource: hierarchyOverride.sourceLabel || "RadPrimer"
+    };
+  }
 
   if (deckMode === "manual") {
     const deckRoot = sanitizeAnkiDeckPath(settings.ankiDeckRoot || DEFAULTS.ankiDeckRoot);
@@ -990,6 +1051,62 @@ function buildAnkiDeckTarget(pending) {
 
 function buildAnkiDeckName(pending) {
   return buildAnkiDeckTarget(pending).deckName;
+}
+
+async function rememberRadPrimerHierarchyFromExtraction(extraction, settings, sourceUrl = "") {
+  const meta = extraction?.meta || {};
+  if (meta.sourceKind !== "radprimer") return null;
+
+  const title = meta.title || "";
+  const key = getRadPrimerHierarchyStorageKey(title);
+  if (!key) return null;
+
+  const pending = {
+    settings,
+    articleTitle: title,
+    extractionMeta: {
+      ...meta,
+      ankiHierarchyOverride: null
+    }
+  };
+  const target = buildAnkiDeckTarget(pending);
+  const hierarchy = {
+    title,
+    sourceLabel: "RadPrimer",
+    sourceKind: "radprimer",
+    sourceUrl,
+    breadcrumbTrail: meta.breadcrumbTrail || [],
+    deckRoot: target.deckRoot || "",
+    deckParts: target.deckParts || [],
+    deckName: target.deckName || "",
+    createdAt: new Date().toISOString()
+  };
+
+  if (!hierarchy.deckName) return null;
+  await chrome.storage.local.set({ [key]: hierarchy });
+  return hierarchy;
+}
+
+async function applySavedRadPrimerHierarchyToExtraction(extraction, settings) {
+  const meta = extraction?.meta || {};
+  if (settings?.preferRadPrimerHierarchyForStatdx === false) return null;
+  if (meta.sourceKind !== "statdx") return null;
+
+  const key = getRadPrimerHierarchyStorageKey(meta.title || "");
+  if (!key) return null;
+
+  const stored = await chrome.storage.local.get(key);
+  const hierarchy = stored[key];
+  if (!hierarchy?.deckName) return null;
+
+  extraction.meta = {
+    ...meta,
+    ankiHierarchyOverride: {
+      ...hierarchy,
+      appliedToSourceLabel: meta.primarySourceLabel || "STATdx"
+    }
+  };
+  return hierarchy;
 }
 
 function bytesToBase64(bytes) {
@@ -1151,15 +1268,94 @@ function buildSourceOnlyWakeMessage(bundle) {
   ].join("\n");
 }
 
+function buildSourceCompareInstructions(metadata) {
+  return [
+    "# Source Comparison Bundle",
+    "",
+    "Purpose: compare this source package against another source package for the same radiology topic, usually RadPrimer vs STATdx.",
+    "",
+    "Comparison goals:",
+    "- Decide which source should be the primary generator source for this topic.",
+    "- Identify which source is stronger for image recognition, mechanisms, histology/pathology, differentials, modality-specific findings, nuclear medicine, ultrasound, management, and board-style traps.",
+    "- Recommend whether to use one source alone or a merged extraction plan.",
+    "- Protect review load: flag facts that are narrative-only, suspend-worthy, or too low-yield for first-pass cards.",
+    "- Preserve source attribution. Do not merge facts in a way that makes it unclear where they came from.",
+    "",
+    "Preferred output when comparing two bundles:",
+    "1. Source recommendation: RadPrimer only, STATdx only, or merged.",
+    "2. What each source contributes best.",
+    "3. Missing or weak areas in each source.",
+    "4. Recommended card-generation plan: image cards, mechanism cards, differential cards, high-yield cards, and cards to avoid.",
+    "5. Narrative plan if a Speechify lecture is being generated.",
+    "",
+    `Topic: ${metadata.articleTitle || "[unknown]"}`,
+    `Source: ${metadata.sourceLabel || metadata.primarySourceLabel || "[unknown]"}`,
+    `Engine/mode at export: ${metadata.engine || ""}/${metadata.mode || ""}`,
+    `Created: ${metadata.createdAt || ""}`
+  ].join("\n");
+}
+
+function buildSourceCompareWakeMessage(bundle) {
+  const downloadFolder = bundle?.downloadFolder || `Downloads\\${SOURCE_COMPARE_SUBFOLDER}`;
+  const sourceLabel = bundle?.metadata?.sourceLabel || bundle?.metadata?.primarySourceLabel || "source";
+  const files = bundle?.files || {};
+  const lines = [
+    "I exported a radiology source-comparison bundle.",
+    "",
+    `Source: ${sourceLabel}`,
+    `Bundle: ${downloadFolder}`
+  ];
+  if (files.sourcePackage) lines.push(`Source package: ${downloadFolder}\\${files.sourcePackage}`);
+  if (files.metadata) lines.push(`Metadata: ${downloadFolder}\\${files.metadata}`);
+  if (files.instructions) lines.push(`Instructions: ${downloadFolder}\\${files.instructions}`);
+  lines.push(
+    "",
+    "When I provide another source-comparison bundle for the same topic, compare the two source packages and recommend which one should drive the narrative/cards, or whether they should be merged.",
+    "",
+    "Focus on my goals: image recognition, mechanisms, histology/pathology when relevant, differential diagnosis, modality-specific patterns including ultrasound/nuclear medicine, board traps, and review-load control."
+  );
+  return lines.join("\n");
+}
+
 async function downloadAuditTextFile(folderName, filename, text, mimeType = "text/plain;charset=utf-8") {
-  const downloadId = await chrome.downloads.download({
-    url: textToDataUrl(text, mimeType),
-    filename: `${CARD_AUDIT_SUBFOLDER}/${folderName}/${filename}`,
-    conflictAction: "overwrite",
-    saveAs: false
+  return downloadTextFileToPath(
+    `${CARD_AUDIT_SUBFOLDER}/${folderName}/${filename}`,
+    text,
+    mimeType
+  );
+}
+
+async function downloadTextFileToPath(relativeFilename, text, mimeType = "text/plain;charset=utf-8") {
+  const url = textToDataUrl(text, mimeType);
+  const normalizedUrl = normalizeDownloadUrl(url);
+  pendingTextDownloadFilenames.push({
+    url: normalizedUrl,
+    filename: relativeFilename
   });
-  await waitForDownloadComplete(downloadId, 120000);
-  return downloadId;
+
+  try {
+    const downloadId = await chrome.downloads.download({
+      url,
+      filename: relativeFilename,
+      conflictAction: "overwrite",
+      saveAs: false
+    });
+    await waitForDownloadComplete(downloadId, 120000);
+    return downloadId;
+  } finally {
+    const index = pendingTextDownloadFilenames.findIndex(
+      (entry) => entry.url === normalizedUrl && entry.filename === relativeFilename
+    );
+    if (index >= 0) pendingTextDownloadFilenames.splice(index, 1);
+  }
+}
+
+async function downloadSourceCompareTextFile(folderName, filename, text, mimeType = "text/plain;charset=utf-8") {
+  return downloadTextFileToPath(
+    `${SOURCE_COMPARE_SUBFOLDER}/${folderName}/${filename}`,
+    text,
+    mimeType
+  );
 }
 
 function createCardAuditMetadata(pending, createdAt, generated = {}) {
@@ -1196,6 +1392,7 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
       breadcrumbTrail: ankiTarget.breadcrumbTrail,
       deckParts: ankiTarget.deckParts,
       deckName: ankiTarget.deckName,
+      hierarchySource: ankiTarget.hierarchySource || pending.extractionMeta?.primarySourceLabel || "",
       noteType: pending.settings?.ankiNoteType || DEFAULTS.ankiNoteType,
       importFilename: "corrected_cards_anki_import.tsv"
     },
@@ -1217,6 +1414,8 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
       ankiPathologyRoot: pending.settings?.ankiPathologyRoot || DEFAULTS.ankiPathologyRoot,
       ankiNormalRoot: pending.settings?.ankiNormalRoot || DEFAULTS.ankiNormalRoot,
       ankiDeckRoot: pending.settings?.ankiDeckRoot || DEFAULTS.ankiDeckRoot,
+      preferRadPrimerHierarchyForStatdx:
+        pending.settings?.preferRadPrimerHierarchyForStatdx ?? DEFAULTS.preferRadPrimerHierarchyForStatdx,
       ankiNoteType: pending.settings?.ankiNoteType || DEFAULTS.ankiNoteType
     }
   };
@@ -1287,6 +1486,65 @@ async function stageCardAuditSourceOnlyBundle({ pending, sourceLabel = "source_o
   return {
     folderName,
     downloadFolder: `Downloads\\${CARD_AUDIT_SUBFOLDER}\\${folderName}`,
+    metadata
+  };
+}
+
+async function stageSourceCompareBundle({ pending }) {
+  const createdAt = new Date().toISOString();
+  const title = pending.articleTitle || pending.extractionMeta?.title || "radiology_source";
+  const sourceLabel =
+    pending.extractionMeta?.primarySourceLabel ||
+    pending.extractionMeta?.sourceKind ||
+    pending.settings?.primarySourceLabel ||
+    "source";
+  const downloadPlan = buildSourceCompareDownloadPlan(title, sourceLabel);
+  const metadata = {
+    ...createCardAuditMetadata(pending, createdAt, {
+      sourceOnlyBundle: true
+    }),
+    sourceComparisonBundle: true,
+    sourceComparisonFolder: `${SOURCE_COMPARE_SUBFOLDER}/${downloadPlan.articleFolderName}`,
+    sourceComparisonFileBase: downloadPlan.fileBaseName,
+    sourceLabel,
+    sourceKind: pending.extractionMeta?.sourceKind || "",
+    primarySourceLabel: pending.extractionMeta?.primarySourceLabel || sourceLabel
+  };
+
+  const sourcePackageFilename = `${downloadPlan.fileBaseName}_source_package.txt`;
+  const metadataFilename = `${downloadPlan.fileBaseName}_metadata.json`;
+  const instructionsFilename = `${downloadPlan.fileBaseName}_source_compare_instructions.md`;
+  const markerFilename = `${downloadPlan.fileBaseName}_source_compare_bundle.txt`;
+
+  await downloadSourceCompareTextFile(downloadPlan.articleFolderName, sourcePackageFilename, pending.sourcePackage || "");
+  await downloadSourceCompareTextFile(
+    downloadPlan.articleFolderName,
+    metadataFilename,
+    JSON.stringify(metadata, null, 2),
+    "application/json;charset=utf-8"
+  );
+  await downloadSourceCompareTextFile(
+    downloadPlan.articleFolderName,
+    instructionsFilename,
+    buildSourceCompareInstructions(metadata),
+    "text/markdown;charset=utf-8"
+  );
+  await downloadSourceCompareTextFile(
+    downloadPlan.articleFolderName,
+    markerFilename,
+    `sourceCompare=true\ncreatedAt=${createdAt}\narticleTitle=${title}\nsourceLabel=${sourceLabel}\n`
+  );
+
+  return {
+    folderName: downloadPlan.articleFolderName,
+    fileBaseName: downloadPlan.fileBaseName,
+    downloadFolder: `Downloads\\${SOURCE_COMPARE_SUBFOLDER}\\${downloadPlan.articleFolderName}`,
+    files: {
+      sourcePackage: sourcePackageFilename,
+      metadata: metadataFilename,
+      instructions: instructionsFilename,
+      marker: markerFilename
+    },
     metadata
   };
 }
@@ -1950,6 +2208,47 @@ async function exportRadPrimerAuditSourceOnly(tab) {
   };
 }
 
+async function exportArticleSourceComparison(tab) {
+  const articleSource = assertSupportedArticleTab(tab);
+
+  await sendPageStatus(tab.id, "Compare Source", `Extracting ${articleSource.displayName} comparison source bundle...`);
+  const settings = {
+    ...(await loadRunnerSettings()),
+    downloadImages: false,
+    openChatGPT: false,
+    autoSubmitChatGPT: false,
+    autoSendToSpeechify: false,
+    speechifyAutoSave: false
+  };
+  const promptText = await loadPrompt(settings.engine, settings.mode);
+  const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  const pending = {
+    radPrimerTabId: tab.id,
+    radPrimerUrl: tab.url || "",
+    settings,
+    articleTitle: extraction.meta?.title || "",
+    sourcePackage: extraction.output,
+    extractionMeta: extraction.meta || {},
+    downloadFiles: extraction.downloadFiles || [],
+    createdAt: Date.now()
+  };
+  const bundle = await stageSourceCompareBundle({ pending });
+  const clipboardText = buildSourceCompareWakeMessage(bundle);
+
+  await sendPageStatus(
+    tab.id,
+    "Compare Source Ready",
+    `Saved comparison source bundle: ${bundle.downloadFolder}.`,
+    { done: true }
+  );
+
+  return {
+    bundle,
+    clipboardText,
+    message: `Saved comparison source bundle: ${bundle.downloadFolder}.`
+  };
+}
+
 async function recoverLatestCardAuditDownloadFromChatGptTab(tab) {
   if (!tab?.id || !/^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(tab.url || "")) {
     throw new Error("Open the completed ChatGPT conversation tab first.");
@@ -2097,6 +2396,24 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const tabId = message.tabId || _sender?.tab?.id;
       if (tabId) {
         await sendPageStatus(tabId, "Audit Source Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "EXPORT_ARTICLE_SOURCE_COMPARISON") {
+    (async () => {
+      const tab = message.tabId ? await chrome.tabs.get(message.tabId) : _sender?.tab;
+      const result = await exportArticleSourceComparison(tab);
+      sendResponse({ ok: true, ...result });
+    })().catch(async (error) => {
+      const tabId = message.tabId || _sender?.tab?.id;
+      if (tabId) {
+        await sendPageStatus(tabId, "Compare Source Error", String(error?.message || error), {
           error: true
         });
       }

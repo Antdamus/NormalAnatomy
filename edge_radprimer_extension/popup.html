@@ -164,13 +164,18 @@
           Anki note type
           <input id="ankiNoteType" type="text" placeholder="core_rad_notetype_v2">
         </label>
-        <p class="muted">Auto routing uses root deck + RadPrimer breadcrumb. Manual routing uses manual parent deck + article title.</p>
+        <label class="check">
+          <input id="preferRadPrimerHierarchyForStatdx" type="checkbox">
+          Use saved RadPrimer hierarchy for matching STATdx topics
+        </label>
+        <p class="muted">Auto routing uses root deck + article breadcrumb. When enabled, STATdx topics reuse the saved RadPrimer hierarchy for the same title.</p>
       </section>
 
       <button id="run">Extract + copy prompt package</button>
       <button id="downloadImagesOnly" class="secondary">Download images only</button>
       <button id="recoverCardAuditTsv" class="secondary">Capture latest TSV download</button>
       <button id="exportAuditSource" class="secondary">Export audit source bundle</button>
+      <button id="exportSourceCompare" class="secondary">Export comparison source</button>
       <button id="refreshPrompts" class="secondary">Check packaged prompts</button>
 
       <pre id="status">Ready.</pre>
