@@ -17,7 +17,7 @@ This copies the current Normal and Pathology prompts into `edge_radprimer_extens
 1. Open `edge://extensions`.
 2. Enable `Developer mode`.
 3. Choose `Load unpacked`.
-4. Select `C:\Users\josem.000\NormalAnatomy\edge_radprimer_extension`.
+4. Select this repo's `edge_radprimer_extension` folder. On Windows this may be `C:\Users\josem.000\NormalAnatomy\edge_radprimer_extension`; on this Mac it is `/Users/rafa2093/Library/CloudStorage/OneDrive-Personal/Desktop/Programming/Anki Engine Jose/NormalAnatomy/edge_radprimer_extension`.
 
 ## Use
 
@@ -35,7 +35,12 @@ This copies the current Normal and Pathology prompts into `edge_radprimer_extens
 
 The complete prompt package is copied to the clipboard. If image downloads are enabled, selected images are staged under `Downloads\RadPrimer` using the same filename pattern as the old console workflow. Before a new image download run, the extension clears prior `Downloads\RadPrimer` files that Edge still has in download history, then downloads the current selected image set with overwrite behavior.
 
-To mirror images into Anki, start `tools\start-radprimer-anki-watcher.cmd` and leave it open. The watcher copies stable image files from `Downloads\RadPrimer` into `C:\Users\josem.000\AppData\Roaming\Anki2\User 1\collection.media`, matching the manual copy-paste workflow.
+To mirror images into Anki, start the platform watcher and leave it open:
+
+- Windows: `tools\start-radprimer-anki-watcher.cmd`
+- macOS: `tools/start-radprimer-anki-watcher.command`
+
+The watcher copies stable image files from `Downloads\RadPrimer` into the Anki media folder, matching the manual copy-paste workflow. On Windows the default target is `%APPDATA%\Anki2\User 1\collection.media`; on macOS it is `~/Library/Application Support/Anki2/User 1/collection.media`.
 
 If you already ran a prompt and forgot to enable image downloads, use `Download images only` from the popup or the image icon on the RadPrimer page. It forces the image download stage for the current article without opening ChatGPT or Speechify.
 
@@ -72,7 +77,14 @@ If `Capture card audit bundle` is enabled for a card mode, the final card prompt
 
 If `Create Anki import TSV after audit` is enabled, the audit instructions also ask Codex to write `corrected_cards_anki_import.tsv`. That file prepends Anki text-import directives such as `#separator:tab`, `#html:true`, `#notetype:core_rad_notetype_v2`, and `#deck:<target deck>` to the corrected rows. In auto routing mode, the extension reads the RadPrimer breadcrumb, drops the generic `Basic` level, maps common sections such as `Musculoskeletal` to `MSK`, and builds the deck under `Corebook` for pathology runs or `RadprimerNormal` for normal runs. For example, `Basic > Musculoskeletal > Musculoskeletal: Trauma > Introduction to Osseous Trauma > Pelvis Stress Fractures` becomes `Corebook::MSK::Trauma::Introduction to Osseous Trauma::Pelvis Stress Fractures`. Manual routing mode remains available and uses `Manual parent deck + article title`.
 
-Codex automation can import completed bundles directly from `Downloads\RadPrimerAudit` into `C:\Users\josem.000\NormalAnatomy\radprimer_audit_queue` with `tools\import-latest-radprimer-audit-bundle.ps1`. You can also start `tools\start-radprimer-audit-watcher.cmd` and leave it open if you want live mirroring. The local queue lets Codex audit bundles against the original article package and write corrected outputs without extra file-access prompts.
+Codex automation can import completed bundles directly from `Downloads\RadPrimerAudit` into this repo's `radprimer_audit_queue`.
+
+- Windows one-time import: `tools\import-latest-radprimer-audit-bundle.ps1`
+- macOS one-time import: `tools/import-latest-radprimer-audit-bundle.command`
+- Windows live mirror: `tools\start-radprimer-audit-watcher.cmd`
+- macOS live mirror: `tools/start-radprimer-audit-watcher.command`
+
+The local queue lets Codex audit bundles against the original article package and write corrected outputs without extra file-access prompts.
 
 After an audit bundle is saved, the ChatGPT tab replaces the clipboard with a short wake-up message for Codex. Paste that message into this thread when you want the bundle audited; there is no always-on heartbeat required.
 

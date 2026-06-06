@@ -1,0 +1,210 @@
+{
+  "createdAt": "2026-06-06T15:32:49.268Z",
+  "articleTitle": "Traumatic Aortic Injury",
+  "sourceUrl": "https://app.radprimer.com/document/e32745ac-4438-41cc-a44a-7106fbbfc657/lesson/367f0d13-3ad0-44ef-baf5-b23daa56edc5",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "cases": [
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      7
+    ],
+    [
+      8
+    ]
+  ],
+  "totalImagesOnPage": 10,
+  "breadcrumbTrail": [
+    "Basic",
+    "Thoracic",
+    "Trauma",
+    "Traumatic Aortic Injury"
+  ],
+  "outputChars": 184236,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Core Validation Gate satisfied: Core Radiology content was retrieved from the uploaded Core PDF under **Vascular Imaging → Traumatic aortic injury, pages 547–549**, with additional IR treatment mention on **IR page 604**.\n\nWhole-source coverage audit completed from full Core-retrieved content and the full RadPrimer article text.\nCore Summary was incorporated into the shared Anki summary field; card generation used Core + RadPrimer synthesis, not the digest alone.\n\nTotal cards to export: 33\nExpected TSV lines: 33\n\nDownload: [radprimer_cards.tsv](sandbox:/mnt/data/radprimer_cards.tsv)\n\nCORE_EVIDENCE_FILE_BEGIN\nCORE_EVIDENCE_STATUS: USED\nCORE_SOURCE_BASIS: Core Radiology: A Visual Approach to Diagnostic Imaging, 2nd edition; uploaded Core PDF. Vascular Imaging chapter, Traumatic aortic injury section, visible pages Vascular 547–549; additional Interventional Radiology trauma/aortic injury coverage visible on IR page 604.\nCORE_FACTS_USED:\n\n* CTA is the gold standard / modality of choice for suspected traumatic aortic injury.\n* Classic injury locations are relatively fixed aortic levels, especially the aortic isthmus; also root and hiatus.\n* Direct CT signs include intimal irregularity/flap, pseudoaneurysm, dissection, and intramural hematoma.\n* Mediastinal hemorrhage separated from an intact aorta by a fat plane can be presumed venous; hemorrhage contacting the aortic wall suggests aortic injury.\n* Minimal aortic injury is approximately 10–30% of blunt traumatic aortic injuries in Core and involves only the intima.\n* Mechanisms include rapid deceleration, shearing forces, water-hammer phenomenon, and osseous pinch.\n* Chronic post-traumatic pseudoaneurysm may show peripheral calcification and thrombus.\n* Open surgical repair is described in Core/IR as gold standard historically, with endovascular stent-graft repair increasingly performed.\nCORE_DERIVED_CARDS:\n* UNKNOWN reasoning for acute traumatic aortic injury cases, especially isthmus localization and direct CTA sign interpretation.\n* Differential Drill distinguishing true aortic injury from branch-vessel infundibulum / ductus diverticulum / venous mediastinal hemorrhage.\n* Mechanism card: “Why is the aortic isthmus the classic site of traumatic aortic injury?”\n* Mechanism card: “Why does a traumatic aortic pseudoaneurysm represent contained rupture rather than a stable lesion?”\n* Boards Trap card about venous mediastinal hemorrhage versus aortic wall injury.\n* High-Yield cards covering CTA as modality of choice, minimal aortic injury frequency, and chronic pseudoaneurysm imaging.\nCORE_LIMITATIONS:\n* Core did not provide the RadPrimer-specific CTA sensitivity/specificity values, radiographic sign percentages, SVS grading treatment details, BP targets, TEVAR-over-open recommendations, or untreated mortality figures; those were taken from the provided RadPrimer article only.\nCORE_EVIDENCE_FILE_END\n\nRADPRIMER_CARD_TSV_DOWNLOAD_READY\nFILENAME: radprimer_cards.tsv\nEXPECTED_ROWS: 33",
+  "coreEvidence": {
+    "status": "USED",
+    "provided": true,
+    "chars": 2255,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "Basic",
+      "Thoracic",
+      "Trauma",
+      "Traumatic Aortic Injury"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Thoracic",
+      "Trauma",
+      "Traumatic Aortic Injury"
+    ],
+    "deckName": "Corebook::Thoracic::Trauma::Traumatic Aortic Injury",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [
+    {
+      "filename": "Traumatic_Aortic_Injury1.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury1_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury2.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury2_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury3.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury3_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury4.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury4_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury5.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury5_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury6.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury6_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury9.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury9_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury10.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury10_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury7.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury7_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury8.jpg",
+      "label": "",
+      "imageNumber": null
+    },
+    {
+      "filename": "Traumatic_Aortic_Injury8_annot.jpg",
+      "label": "",
+      "imageNumber": null
+    }
+  ],
+  "settings": {
+    "include": "1,2,3,4,5,6,7,8,9,10",
+    "caseMap": "1,2; 3,4; 5,6; 9,10",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "radprimer_cards.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_0000000051b0720c8199698a892a660f&ts=494655&p=fs&cid=1&sig=4a1a00a8476c47f5829759fec7dc2547078913ea75c43e85ff8352b5ad413bd4&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 53
+  }
+}

@@ -1,0 +1,21 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Core Radiology: A Visual Approach to Diagnostic Imaging, 2nd edition; uploaded Core PDF. Vascular Imaging chapter, Traumatic aortic injury section, visible pages Vascular 547–549; additional Interventional Radiology trauma/aortic injury coverage visible on IR page 604.
+CORE_FACTS_USED:
+
+* CTA is the gold standard / modality of choice for suspected traumatic aortic injury.
+* Classic injury locations are relatively fixed aortic levels, especially the aortic isthmus; also root and hiatus.
+* Direct CT signs include intimal irregularity/flap, pseudoaneurysm, dissection, and intramural hematoma.
+* Mediastinal hemorrhage separated from an intact aorta by a fat plane can be presumed venous; hemorrhage contacting the aortic wall suggests aortic injury.
+* Minimal aortic injury is approximately 10–30% of blunt traumatic aortic injuries in Core and involves only the intima.
+* Mechanisms include rapid deceleration, shearing forces, water-hammer phenomenon, and osseous pinch.
+* Chronic post-traumatic pseudoaneurysm may show peripheral calcification and thrombus.
+* Open surgical repair is described in Core/IR as gold standard historically, with endovascular stent-graft repair increasingly performed.
+CORE_DERIVED_CARDS:
+* UNKNOWN reasoning for acute traumatic aortic injury cases, especially isthmus localization and direct CTA sign interpretation.
+* Differential Drill distinguishing true aortic injury from branch-vessel infundibulum / ductus diverticulum / venous mediastinal hemorrhage.
+* Mechanism card: “Why is the aortic isthmus the classic site of traumatic aortic injury?”
+* Mechanism card: “Why does a traumatic aortic pseudoaneurysm represent contained rupture rather than a stable lesion?”
+* Boards Trap card about venous mediastinal hemorrhage versus aortic wall injury.
+* High-Yield cards covering CTA as modality of choice, minimal aortic injury frequency, and chronic pseudoaneurysm imaging.
+CORE_LIMITATIONS:
+* Core did not provide the RadPrimer-specific CTA sensitivity/specificity values, radiographic sign percentages, SVS grading treatment details, BP targets, TEVAR-over-open recommendations, or untreated mortality figures; those were taken from the provided RadPrimer article only.

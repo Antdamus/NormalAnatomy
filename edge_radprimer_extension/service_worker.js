@@ -26,6 +26,8 @@ const SOURCE_COMPARE_SUBFOLDER = "RadPrimerSourceComparison";
 const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
 const CORE_EVIDENCE_BEGIN = "CORE_EVIDENCE_FILE_BEGIN";
 const CORE_EVIDENCE_END = "CORE_EVIDENCE_FILE_END";
+const MAC_NORMAL_ANATOMY_REPO_HINT =
+  "/Users/rafa2093/Library/CloudStorage/OneDrive-Personal/Desktop/Programming/Anki Engine Jose/NormalAnatomy";
 const pendingTextDownloadFilenames = [];
 const CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION = [
   "AUTOMATED CAPTURE REQUIREMENT:",
@@ -1236,16 +1238,58 @@ function buildAuditInstructions(metadata) {
   ].join("\n");
 }
 
-function buildAuditWakeMessage(bundle) {
-  const downloadFolder = bundle?.downloadFolder || `Downloads\\${CARD_AUDIT_SUBFOLDER}`;
+async function getPlatformOs() {
+  try {
+    const info = await chrome.runtime.getPlatformInfo();
+    return info?.os || "";
+  } catch {
+    return "";
+  }
+}
+
+function getAuditDownloadFolderForPlatform(bundle, platformOs = "") {
+  const folderName = bundle?.folderName || "";
+  if (platformOs === "mac" || platformOs === "linux" || platformOs === "openbsd") {
+    return folderName
+      ? `~/Downloads/${CARD_AUDIT_SUBFOLDER}/${folderName}`
+      : `~/Downloads/${CARD_AUDIT_SUBFOLDER}`;
+  }
+
+  return bundle?.downloadFolder || `Downloads\\${CARD_AUDIT_SUBFOLDER}`;
+}
+
+function buildAuditImportSteps(platformOs = "") {
+  if (platformOs === "mac") {
+    return [
+      `1. From the NormalAnatomy repo root on this Mac, run \`edge_radprimer_extension/tools/import-latest-radprimer-audit-bundle.command\`. Repo path hint: \`${MAC_NORMAL_ANATOMY_REPO_HINT}\`.`,
+      "   If the .command launcher is blocked by macOS, run `python3 edge_radprimer_extension/tools/radprimer_watchers.py import-latest-audit-bundle` from the repo root instead.",
+      "2. Read `radprimer_audit_queue/_latest_radprimer_audit_bundle.txt`."
+    ];
+  }
+
+  if (platformOs === "linux" || platformOs === "openbsd") {
+    return [
+      "1. From the NormalAnatomy repo root, run `python3 edge_radprimer_extension/tools/radprimer_watchers.py import-latest-audit-bundle`.",
+      "2. Read `radprimer_audit_queue/_latest_radprimer_audit_bundle.txt`."
+    ];
+  }
+
+  return [
+    "1. From `C:\\Users\\josem.000\\NormalAnatomy`, import the newest complete bundle by running `edge_radprimer_extension\\tools\\import-latest-radprimer-audit-bundle.ps1`.",
+    "2. Read `C:\\Users\\josem.000\\NormalAnatomy\\radprimer_audit_queue\\_latest_radprimer_audit_bundle.txt`."
+  ];
+}
+
+function buildAuditWakeMessage(bundle, platformOs = "") {
+  const downloadFolder = getAuditDownloadFolderForPlatform(bundle, platformOs);
+  const importSteps = buildAuditImportSteps(platformOs);
   return [
     "Audit the latest RadPrimer card-audit bundle.",
     "",
     `The browser staged bundle is here: ${downloadFolder}`,
     "",
     "Please do the full card-quality audit:",
-    "1. From C:\\Users\\josem.000\\NormalAnatomy, import the newest complete bundle by running or emulating edge_radprimer_extension\\tools\\import-latest-radprimer-audit-bundle.ps1.",
-    "2. Read C:\\Users\\josem.000\\NormalAnatomy\\radprimer_audit_queue\\_latest_radprimer_audit_bundle.txt.",
+    ...importSteps,
     "3. In that bundle, compare source_package.txt, generated_cards.tsv, metadata.json, audit_instructions.md, and core_evidence.txt if present.",
     "4. Write corrected_cards.tsv, audit_report.md, and _codex_audit_done.txt in the same bundle folder.",
     "5. If metadata.json contains an Anki deck target, also write corrected_cards_anki_import.tsv with Anki import headers so Anki can create/select the target subdeck automatically.",
@@ -1254,12 +1298,16 @@ function buildAuditWakeMessage(bundle) {
   ].join("\n");
 }
 
-function buildSourceOnlyWakeMessage(bundle) {
-  const downloadFolder = bundle?.downloadFolder || `Downloads\\${CARD_AUDIT_SUBFOLDER}`;
+function buildSourceOnlyWakeMessage(bundle, platformOs = "") {
+  const downloadFolder = getAuditDownloadFolderForPlatform(bundle, platformOs);
+  const importSteps = buildAuditImportSteps(platformOs);
   return [
     "I exported a RadPrimer audit source-only bundle.",
     "",
     `The source bundle is here: ${downloadFolder}`,
+    "",
+    "Import it into the local queue first:",
+    ...importSteps,
     "",
     "Use this together with the generated ChatGPT TSV if I provide it separately.",
     "The bundle contains source_package.txt, metadata.json, audit_instructions.md, and _source_only_bundle.txt.",
@@ -1659,7 +1707,7 @@ async function waitForPreparedCardAuditDownload(pendingId, timeoutMs = 180000) {
 
   return {
     bundle,
-    clipboardText: buildAuditWakeMessage(bundle)
+    clipboardText: buildAuditWakeMessage(bundle, await getPlatformOs())
   };
 }
 
@@ -2192,7 +2240,7 @@ async function exportRadPrimerAuditSourceOnly(tab) {
     createdAt: Date.now()
   };
   const bundle = await stageCardAuditSourceOnlyBundle({ pending });
-  const clipboardText = buildSourceOnlyWakeMessage(bundle);
+  const clipboardText = buildSourceOnlyWakeMessage(bundle, await getPlatformOs());
 
   await sendPageStatus(
     tab.id,
@@ -2522,7 +2570,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         "Saving generated cards and source package into Downloads\\RadPrimerAudit..."
       );
       const bundle = await stageCardAuditBundle({ pending, assistantText });
-      const clipboardText = buildAuditWakeMessage(bundle);
+      const clipboardText = buildAuditWakeMessage(bundle, await getPlatformOs());
       await clearPendingCardAuditRun(pendingId);
       await sendPageStatus(
         pending.radPrimerTabId,
