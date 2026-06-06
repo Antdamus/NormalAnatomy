@@ -760,16 +760,49 @@ function getCardAuditGeneratedCardsPath(folderName) {
 
 function isLikelyChatGptGeneratedDownload(item) {
   const url = String(item?.url || "").toLowerCase();
+  const finalUrl = String(item?.finalUrl || "").toLowerCase();
   const filename = String(item?.filename || "").toLowerCase();
   const mime = String(item?.mime || "").toLowerCase();
+  const referrer = String(item?.referrer || "").toLowerCase();
 
   if (url.includes("chatgpt.com") || url.includes("chat.openai.com")) return true;
+  if (finalUrl.includes("chatgpt.com") || finalUrl.includes("chat.openai.com")) return true;
+  if (referrer.includes("chatgpt.com") || referrer.includes("chat.openai.com")) return true;
+  if (url.includes("/mnt/data/") || finalUrl.includes("/mnt/data/")) return true;
+  if (url.includes("sandbox:") || finalUrl.includes("sandbox:")) return true;
   if (url.startsWith("blob:") && url.includes("chatgpt")) return true;
   if (filename.endsWith(".tsv") || filename.includes("tsv")) return true;
   if (mime.includes("tab-separated") || mime.includes("text/tab") || mime.includes("text/plain")) {
     return true;
   }
   return false;
+}
+
+function downloadItemSnapshot(item) {
+  return {
+    id: item?.id || null,
+    url: item?.url || "",
+    finalUrl: item?.finalUrl || "",
+    filename: item?.filename || "",
+    mime: item?.mime || "",
+    referrer: item?.referrer || "",
+    tabId: item?.tabId ?? null,
+    byExtensionId: item?.byExtensionId || "",
+    likelyChatGptGeneratedDownload: isLikelyChatGptGeneratedDownload(item)
+  };
+}
+
+function isActiveCardAuditDownloadCandidate(downloadItem, active = activeCardAuditDownload) {
+  if (!active || Date.now() > active.expiresAt) return false;
+  if (downloadItem?.byExtensionId === chrome.runtime.id) return false;
+
+  const itemTabId = Number(downloadItem?.tabId);
+  const activeTabId = Number(active.chatGptTabId);
+  if (active.chatGptTabId && Number.isFinite(itemTabId) && itemTabId === activeTabId) {
+    return true;
+  }
+
+  return isLikelyChatGptGeneratedDownload(downloadItem);
 }
 
 function handleCardAuditDownloadFilename(downloadItem, suggest) {
@@ -801,17 +834,12 @@ function handleCardAuditDownloadFilename(downloadItem, suggest) {
   }
 
   const active = activeCardAuditDownload;
-  if (!active || active.downloadId || Date.now() > active.expiresAt) return;
-  if (downloadItem?.byExtensionId === chrome.runtime.id) return;
-  if (!isLikelyChatGptGeneratedDownload(downloadItem)) return;
+  if (!active || Date.now() > active.expiresAt) return;
+  if (active.downloadId && active.downloadId !== downloadItem.id) return;
+  if (!isActiveCardAuditDownloadCandidate(downloadItem, active)) return;
 
   active.downloadId = downloadItem.id;
-  active.originalDownload = {
-    url: downloadItem.url || "",
-    filename: downloadItem.filename || "",
-    mime: downloadItem.mime || "",
-    likelyChatGptGeneratedDownload: isLikelyChatGptGeneratedDownload(downloadItem)
-  };
+  active.originalDownload = downloadItemSnapshot(downloadItem);
 
   suggest({
     filename: getCardAuditGeneratedCardsPath(active.folderName),
@@ -821,6 +849,19 @@ function handleCardAuditDownloadFilename(downloadItem, suggest) {
 
 if (chrome.downloads?.onDeterminingFilename) {
   chrome.downloads.onDeterminingFilename.addListener(handleCardAuditDownloadFilename);
+}
+
+function handleCardAuditDownloadCreated(downloadItem) {
+  const active = activeCardAuditDownload;
+  if (!active || active.downloadId || Date.now() > active.expiresAt) return;
+  if (!isActiveCardAuditDownloadCandidate(downloadItem, active)) return;
+
+  active.downloadId = downloadItem.id;
+  active.originalDownload = downloadItemSnapshot(downloadItem);
+}
+
+if (chrome.downloads?.onCreated) {
+  chrome.downloads.onCreated.addListener(handleCardAuditDownloadCreated);
 }
 
 async function downloadSelectedImages(files, settings = {}) {
@@ -1549,7 +1590,7 @@ async function stageSourceCompareBundle({ pending }) {
   };
 }
 
-async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "" }) {
+async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "", chatGptTabId = null }) {
   if (!pendingId) throw new Error("Missing card audit pending id.");
   const pending = await takePendingCardAuditRun(pendingId);
   if (!pending) throw new Error("Could not find pending RadPrimer card audit run.");
@@ -1589,6 +1630,8 @@ async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "" }) 
     pending,
     createdAt,
     coreEvidence,
+    preparedAtMs: Date.now(),
+    chatGptTabId,
     expiresAt: Date.now() + 10 * 60 * 1000,
     downloadId: null,
     originalDownload: null
@@ -1601,32 +1644,68 @@ async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "" }) 
   };
 }
 
-async function waitForPreparedCardAuditDownload(pendingId, timeoutMs = 180000) {
+function isDownloadInPreparedCardAuditBundle(item, active) {
+  if (!item || !active?.folderName) return false;
+  const filename = String(item.filename || "").replace(/\//g, "\\").toLowerCase();
+  const expected = getCardAuditGeneratedCardsPath(active.folderName).replace(/\//g, "\\").toLowerCase();
+  return filename.endsWith(expected);
+}
+
+async function findPreparedCardAuditDownload(active) {
+  if (!active) return null;
+  const startedAfter = new Date(Math.max(0, (active.preparedAtMs || Date.now()) - 30000)).toISOString();
+  const items = await chrome.downloads.search({ startedAfter });
+
+  const routed = items
+    .filter((item) => isDownloadInPreparedCardAuditBundle(item, active))
+    .sort((a, b) => (b.startTime || "").localeCompare(a.startTime || ""))[0];
+  if (routed) return routed;
+
+  return items
+    .filter((item) => isActiveCardAuditDownloadCandidate(item, active))
+    .sort((a, b) => (b.startTime || "").localeCompare(a.startTime || ""))[0] || null;
+}
+
+async function redownloadCardAuditTsvToBundle(downloadedItem, active) {
+  const sourceUrl = downloadedItem?.finalUrl || downloadedItem?.url || "";
+  if (!sourceUrl || /^blob:|^filesystem:/i.test(sourceUrl)) return null;
+
+  const downloadId = await chrome.downloads.download({
+    url: sourceUrl,
+    filename: getCardAuditGeneratedCardsPath(active.folderName),
+    conflictAction: "overwrite",
+    saveAs: false
+  });
+  return waitForDownloadComplete(downloadId, 120000);
+}
+
+async function completePreparedCardAuditBundleFromGeneratedCards({
+  pendingId,
+  generatedCards,
+  generatedDownload = {},
+  generatedCardsMode = "downloaded"
+}) {
   const active = activeCardAuditDownload;
   if (!active || active.pendingId !== pendingId) {
-    throw new Error("No prepared card-audit TSV download is active.");
+    throw new Error("No prepared card-audit TSV bundle is active.");
   }
 
-  const start = Date.now();
-  while (!active.downloadId && Date.now() - start < timeoutMs) {
-    await sleep(250);
+  const text = String(generatedCards || "");
+  if (text.trim()) {
+    await downloadAuditTextFile(
+      active.folderName,
+      "generated_cards.tsv",
+      text,
+      "text/tab-separated-values;charset=utf-8"
+    );
+  } else if (generatedCardsMode !== "downloaded") {
+    throw new Error("No generated TSV text was provided.");
   }
 
-  if (!active.downloadId) {
-    activeCardAuditDownload = null;
-    throw new Error("Timed out waiting for ChatGPT to start the TSV download.");
-  }
-
-  const downloadedItem = await waitForDownloadComplete(active.downloadId, timeoutMs);
   const pending = active.pending;
   const metadata = {
     ...active.metadata,
-    generatedDownload: {
-      originalFilename: active.originalDownload?.filename || downloadedItem?.filename || "",
-      originalUrl: active.originalDownload?.url || downloadedItem?.url || "",
-      mime: active.originalDownload?.mime || downloadedItem?.mime || "",
-      downloadId: active.downloadId
-    }
+    generatedDownload
   };
 
   await downloadAuditTextFile(
@@ -1638,7 +1717,7 @@ async function waitForPreparedCardAuditDownload(pendingId, timeoutMs = 180000) {
   await downloadAuditTextFile(
     active.folderName,
     "_bundle_complete.txt",
-    `complete=true\ncreatedAt=${active.createdAt}\narticleTitle=${metadata.articleTitle}\ngeneratedCards=downloaded\n`
+    `complete=true\ncreatedAt=${active.createdAt}\narticleTitle=${metadata.articleTitle}\ngeneratedCards=${generatedCardsMode}\n`
   );
 
   const bundle = {
@@ -1661,6 +1740,56 @@ async function waitForPreparedCardAuditDownload(pendingId, timeoutMs = 180000) {
     bundle,
     clipboardText: buildAuditWakeMessage(bundle)
   };
+}
+
+async function waitForPreparedCardAuditDownload(pendingId, timeoutMs = 180000) {
+  const active = activeCardAuditDownload;
+  if (!active || active.pendingId !== pendingId) {
+    throw new Error("No prepared card-audit TSV download is active.");
+  }
+
+  const start = Date.now();
+  while (!active.downloadId && Date.now() - start < timeoutMs) {
+    const found = await findPreparedCardAuditDownload(active);
+    if (found?.id) {
+      active.downloadId = found.id;
+      active.originalDownload = active.originalDownload || downloadItemSnapshot(found);
+      break;
+    }
+    await sleep(250);
+  }
+
+  if (!active.downloadId) {
+    activeCardAuditDownload = null;
+    throw new Error("Timed out waiting for ChatGPT to start the TSV download.");
+  }
+
+  let downloadedItem = await waitForDownloadComplete(active.downloadId, timeoutMs);
+  let reroutedDownload = null;
+  if (!isDownloadInPreparedCardAuditBundle(downloadedItem, active)) {
+    reroutedDownload = await redownloadCardAuditTsvToBundle(downloadedItem, active);
+    if (!reroutedDownload || !isDownloadInPreparedCardAuditBundle(reroutedDownload, active)) {
+      activeCardAuditDownload = null;
+      throw new Error(
+        "ChatGPT TSV download completed, but Edge did not route it into the RadPrimer audit bundle as generated_cards.tsv."
+      );
+    }
+    downloadedItem = reroutedDownload;
+  }
+  return completePreparedCardAuditBundleFromGeneratedCards({
+    pendingId,
+    generatedCards: "",
+    generatedCardsMode: "downloaded",
+    generatedDownload: {
+      originalFilename: active.originalDownload?.filename || downloadedItem?.filename || "",
+      originalUrl: active.originalDownload?.url || downloadedItem?.url || "",
+      originalFinalUrl: active.originalDownload?.finalUrl || downloadedItem?.finalUrl || "",
+      mime: active.originalDownload?.mime || downloadedItem?.mime || "",
+      downloadId: active.downloadId,
+      routedFilename: downloadedItem?.filename || "",
+      reroutedDownloadId: reroutedDownload?.id || null
+    }
+  });
 }
 
 function getImageOnlySettings(settings) {
@@ -1912,7 +2041,53 @@ async function clearPendingCardAuditRun(pendingId) {
   await chrome.storage.local.remove(`${PENDING_CARD_AUDIT_PREFIX}${pendingId}`);
 }
 
-async function getLatestPendingCardAuditRun() {
+function normalizeAuditMatchText(value) {
+  return String(value || "")
+    .replace(/[_-]+/g, " ")
+    .replace(/[^a-z0-9]+/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function extractTopicLabelsFromText(text) {
+  const value = String(text || "");
+  const labels = [];
+  const patterns = [
+    /PRIMARY TOPIC:\s*([^\n\r]+)/gi,
+    /CENTERING TOPIC FOR THIS CHAT:\s*([^\n\r]+)/gi,
+    /USE THIS AS THE CHAT TITLE\s*\/\s*WORKING TOPIC LABEL:\s*([^\n\r]+)/gi,
+    /Topic:\s*([^\n\r]+)/gi
+  ];
+
+  for (const pattern of patterns) {
+    let match;
+    while ((match = pattern.exec(value))) {
+      const label = String(match[1] || "")
+        .replace(/\s{2,}.*/, "")
+        .replace(/[.。]\s*$/, "")
+        .trim();
+      if (label && label.length <= 160) labels.push(label);
+    }
+  }
+
+  return labels;
+}
+
+function uniqueAuditLabels(values) {
+  const seen = new Set();
+  return values
+    .map((value) => String(value || "").trim())
+    .filter(Boolean)
+    .filter((value) => {
+      const key = normalizeAuditMatchText(value);
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+}
+
+async function getAllPendingCardAuditRuns() {
   const stored = await chrome.storage.local.get(null);
   return Object.entries(stored)
     .filter(([key, value]) => key.startsWith(PENDING_CARD_AUDIT_PREFIX) && value)
@@ -1920,7 +2095,95 @@ async function getLatestPendingCardAuditRun() {
       pendingId: key.slice(PENDING_CARD_AUDIT_PREFIX.length),
       pending
     }))
-    .sort((a, b) => (b.pending?.createdAt || 0) - (a.pending?.createdAt || 0))[0] || null;
+    .sort((a, b) => (b.pending?.createdAt || 0) - (a.pending?.createdAt || 0));
+}
+
+async function getLatestPendingCardAuditRun() {
+  return (await getAllPendingCardAuditRuns())[0] || null;
+}
+
+function getPendingCardAuditTitleLabels(pending) {
+  return uniqueAuditLabels([
+    pending?.articleTitle,
+    pending?.extractionMeta?.title,
+    pending?.extractionMeta?.primaryTopic,
+    pending?.extractionMeta?.workingTopic,
+    ...(Array.isArray(pending?.extractionMeta?.breadcrumbTrail) ? pending.extractionMeta.breadcrumbTrail : []),
+    ...extractTopicLabelsFromText(String(pending?.sourcePackage || "").slice(0, 12000))
+  ]);
+}
+
+function scorePendingCardAuditMatch(pending, normalizedHints) {
+  const labels = getPendingCardAuditTitleLabels(pending);
+  let score = 0;
+
+  for (const label of labels) {
+    const normalizedLabel = normalizeAuditMatchText(label);
+    if (!normalizedLabel || normalizedLabel.length < 4) continue;
+
+    for (const normalizedHint of normalizedHints) {
+      if (!normalizedHint || normalizedHint.length < 4) continue;
+
+      if (normalizedLabel === normalizedHint) {
+        score = Math.max(score, 100);
+      } else if (
+        normalizedLabel.length >= 8 &&
+        normalizedHint.length >= 8 &&
+        (normalizedLabel.includes(normalizedHint) || normalizedHint.includes(normalizedLabel))
+      ) {
+        score = Math.max(score, 80);
+      }
+    }
+  }
+
+  return score;
+}
+
+function describePendingCardAuditRun(entry) {
+  const labels = getPendingCardAuditTitleLabels(entry?.pending);
+  const title = labels[0] || entry?.pendingId || "untitled";
+  const stamp = entry?.pending?.createdAt ? new Date(entry.pending.createdAt).toLocaleString() : "unknown time";
+  return `${title} (${stamp})`;
+}
+
+async function choosePendingCardAuditRunForChatContext(context = {}) {
+  const pendingRuns = await getAllPendingCardAuditRuns();
+  if (!pendingRuns.length) {
+    throw new Error("No pending card-audit run was found. If needed, export an audit source bundle from the article page.");
+  }
+
+  const titleHints = uniqueAuditLabels([
+    ...(Array.isArray(context?.titleHints) ? context.titleHints : []),
+    ...extractTopicLabelsFromText(context?.snippet || ""),
+    context?.pageTitle
+  ]).filter((hint) => normalizeAuditMatchText(hint) !== "chatgpt");
+
+  const normalizedHints = uniqueAuditLabels(titleHints)
+    .map(normalizeAuditMatchText)
+    .filter((hint) => hint.length >= 4);
+
+  if (!normalizedHints.length) {
+    if (pendingRuns.length === 1) return pendingRuns[0];
+    throw new Error(
+      `Could not identify the current ChatGPT topic. Pending audit runs: ${pendingRuns.map(describePendingCardAuditRun).join(" | ")}.`
+    );
+  }
+
+  const matches = pendingRuns
+    .map((entry) => ({
+      entry,
+      score: scorePendingCardAuditMatch(entry.pending, normalizedHints)
+    }))
+    .filter((match) => match.score > 0)
+    .sort((a, b) => b.score - a.score || (b.entry.pending?.createdAt || 0) - (a.entry.pending?.createdAt || 0));
+
+  if (matches.length) return matches[0].entry;
+
+  throw new Error(
+    `No pending card-audit run matched this ChatGPT page (${titleHints.join(" / ")}). Pending audit runs: ${pendingRuns
+      .map(describePendingCardAuditRun)
+      .join(" | ")}.`
+  );
 }
 
 async function openFinalCardPrompt(settings, extraction, tab, statusPrefix = "card prompt") {
@@ -2254,12 +2517,12 @@ async function recoverLatestCardAuditDownloadFromChatGptTab(tab) {
     throw new Error("Open the completed ChatGPT conversation tab first.");
   }
 
-  const latest = await getLatestPendingCardAuditRun();
-  if (!latest) {
-    throw new Error("No pending card-audit run was found. If needed, export an audit source bundle from the article page.");
-  }
-
   await ensureChatGptPaster(tab.id);
+  const contextResponse = await sendTabMessage(tab.id, {
+    type: "CHATGPT_GET_CARD_AUDIT_CONTEXT"
+  });
+  const chatContext = contextResponse?.ok ? contextResponse.context || {} : {};
+  const latest = await choosePendingCardAuditRunForChatContext(chatContext);
   const response = await sendTabMessage(tab.id, {
     type: "CHATGPT_CAPTURE_LATEST_CARD_TSV_DOWNLOAD",
     completionPayload: {
@@ -2275,7 +2538,9 @@ async function recoverLatestCardAuditDownloadFromChatGptTab(tab) {
   return {
     ...response,
     clipboardText: response.auditDownload?.clipboardText || response.clipboardText || "",
-    bundle: response.auditDownload?.bundle || response.bundle || null
+    bundle: response.auditDownload?.bundle || response.bundle || null,
+    matchedArticleTitle: latest.pending.articleTitle || latest.pending.extractionMeta?.title || "",
+    chatContext
   };
 }
 
@@ -2462,7 +2727,8 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const pendingId = message.completionPayload?.pendingId;
       const bundle = await prepareCardAuditDownloadBundle({
         pendingId,
-        sentinelText: message.sentinelText || ""
+        sentinelText: message.sentinelText || "",
+        chatGptTabId: _sender?.tab?.id || null
       });
       sendResponse({ ok: true, bundle });
     })().catch(async (error) => {
@@ -2482,6 +2748,32 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     (async () => {
       const pendingId = message.completionPayload?.pendingId;
       const result = await waitForPreparedCardAuditDownload(pendingId, message.timeoutMs || 180000);
+      sendResponse({ ok: true, ...result });
+    })().catch(async (error) => {
+      const tabId = message.completionPayload?.radPrimerTabId;
+      if (tabId) {
+        await sendPageStatus(tabId, "Audit Bundle Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RADPRIMER_CARD_AUDIT_FINALIZE_TSV_TEXT") {
+    (async () => {
+      const pendingId = message.completionPayload?.pendingId;
+      const result = await completePreparedCardAuditBundleFromGeneratedCards({
+        pendingId,
+        generatedCards: message.generatedCards || "",
+        generatedCardsMode: "direct-link-text",
+        generatedDownload: {
+          ...(message.source || {}),
+          directTextCapture: true
+        }
+      });
       sendResponse({ ok: true, ...result });
     })().catch(async (error) => {
       const tabId = message.completionPayload?.radPrimerTabId;

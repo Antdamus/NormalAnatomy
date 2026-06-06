@@ -692,6 +692,53 @@
     };
   };
 
+  const unique = (values) => {
+    const seen = new Set();
+    return values
+      .map((value) => String(value || "").trim())
+      .filter(Boolean)
+      .filter((value) => {
+        const key = value.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+  };
+
+  const extractCardAuditPageContext = () => {
+    const mainText = String(document.querySelector(SELECTORS.main)?.innerText || document.body?.innerText || "");
+    const titleHints = [];
+    const patterns = [
+      /PRIMARY TOPIC:\s*([^\n\r]+)/gi,
+      /CENTERING TOPIC FOR THIS CHAT:\s*([^\n\r]+)/gi,
+      /USE THIS AS THE CHAT TITLE\s*\/\s*WORKING TOPIC LABEL:\s*([^\n\r]+)/gi,
+      /Topic:\s*([^\n\r]+)/gi
+    ];
+
+    for (const pattern of patterns) {
+      let match;
+      while ((match = pattern.exec(mainText))) {
+        const value = String(match[1] || "")
+          .replace(/\s{2,}.*/, "")
+          .replace(/[.。]\s*$/, "")
+          .trim();
+        if (value && value.length <= 160) titleHints.push(value);
+      }
+    }
+
+    const headings = Array.from(document.querySelectorAll("h1, h2, [data-testid='conversation-title']"))
+      .map((el) => el.innerText || el.textContent || "")
+      .filter((text) => text && text.length <= 160);
+
+    return {
+      titleHints: unique([...titleHints, ...headings]),
+      url: location.href,
+      pageTitle: document.title || "",
+      hasDownloadSentinel: mainText.includes(CARD_AUDIT_DOWNLOAD_SENTINEL),
+      snippet: mainText.slice(0, 4000)
+    };
+  };
+
   const readClipboardText = async () => {
     try {
       if (!navigator.clipboard?.readText) return "";
@@ -884,6 +931,20 @@
     });
   };
 
+  const sendRuntimeRequestWithTimeout = (message, timeoutMs, timeoutMessage) => {
+    return Promise.race([
+      sendRuntimeRequest(message),
+      new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            ok: false,
+            error: timeoutMessage || "Timed out waiting for extension background response."
+          });
+        }, timeoutMs);
+      })
+    ]);
+  };
+
   const findCardTsvDownloadButton = () => {
     const latestTurn = getLatestAssistantTurn();
     const roots = [
@@ -919,11 +980,15 @@
       const lower = text.toLowerCase();
       let score = 0;
 
+      if (/download\s+(?:the\s+)?(?:.+?\s+)?tsv/i.test(text)) score += 140;
+      if (/tsv\s+download/i.test(text)) score += 140;
+      if (/download\s+(?:the\s+)?radprimer/i.test(text)) score += 130;
       if (/radprimer[_-]?cards\.tsv/i.test(text)) score += 100;
       if (/\.tsv\b/i.test(text)) score += 80;
       if (/sandbox:\/|\/mnt\/data|download|attachment|file/i.test(text)) score += 25;
       if (/cards?|anki|tsv/i.test(text)) score += 20;
-      if (/copy|share|sources|regenerate|thumb|more actions|read aloud/i.test(text)) score -= 50;
+      if (/copy|share|sources|regenerate|thumb|more actions|read aloud/i.test(text)) score -= 80;
+      if (/uploaded|pasted text|core radiology|pdf|source/i.test(text) && !/tsv/i.test(text)) score -= 80;
       if (lower.includes(CARD_AUDIT_DOWNLOAD_SENTINEL.toLowerCase())) score -= 50;
 
       return score;
@@ -934,7 +999,81 @@
       .filter((item) => item.score >= 60)
       .sort((a, b) => b.score - a.score);
 
-    return ranked[0]?.el || candidates.find((el) => /download/i.test(candidateText(el))) || null;
+    return (
+      ranked[0]?.el ||
+      candidates.find((el) => /download\s+(?:the\s+)?(?:.+?\s+)?tsv|tsv\s+download/i.test(candidateText(el))) ||
+      candidates.find((el) => /radprimer[_-]?cards\.tsv|\.tsv\b/i.test(candidateText(el))) ||
+      candidates.find((el) => /download/i.test(candidateText(el)) && /tsv|cards?/i.test(candidateText(el))) ||
+      null
+    );
+  };
+
+  const findDownloadAnchorForElement = (el) => {
+    if (!el) return null;
+    if (el.matches?.("a[href]")) return el;
+
+    const closest = el.closest?.("a[href]");
+    if (closest) return closest;
+
+    const roots = [
+      el,
+      el.parentElement,
+      el.closest?.("[data-testid], [role='group'], article, section")
+    ].filter(Boolean);
+
+    for (const root of roots) {
+      const anchors = Array.from(root.querySelectorAll?.("a[href]") || []);
+      const match = anchors.find((anchor) => {
+        const text = [
+          anchor.href,
+          anchor.getAttribute("download"),
+          anchor.innerText,
+          anchor.textContent,
+          anchor.getAttribute("aria-label"),
+          anchor.getAttribute("title")
+        ]
+          .filter(Boolean)
+          .join(" ");
+        return /\.tsv\b|radprimer[_-]?cards|download|sandbox:\/|\/mnt\/data/i.test(text);
+      });
+      if (match) return match;
+    }
+
+    return null;
+  };
+
+  const looksLikeDownloadedCardTsv = (text) => {
+    const value = String(text || "").trim();
+    if (!value) return false;
+    const lines = value.split(/\r?\n/).filter((line) => line.trim());
+    if (!lines.length) return false;
+    const tabbedLines = lines.filter((line) => line.split("\t").length >= 20);
+    return tabbedLines.length >= Math.min(2, lines.length);
+  };
+
+  const readCardTsvFromDownloadElement = async (el) => {
+    const anchor = findDownloadAnchorForElement(el);
+    const href = anchor?.href || "";
+    if (!href) return null;
+    if (/^sandbox:/i.test(href)) return null;
+
+    try {
+      const response = await fetch(href);
+      if (!response.ok) return null;
+      const text = await response.text();
+      if (!looksLikeDownloadedCardTsv(text)) return null;
+      return {
+        text,
+        source: {
+          method: "chatgpt-download-link-fetch",
+          href,
+          download: anchor.getAttribute("download") || "",
+          contentType: response.headers.get("content-type") || ""
+        }
+      };
+    } catch {
+      return null;
+    }
   };
 
   const captureCardTsvDownload = async (completionPayload, sentinelText) => {
@@ -951,14 +1090,47 @@
     const button = await waitFor(() => findCardTsvDownloadButton(), 15000, 250);
     if (!button) throw new Error("Could not find the ChatGPT TSV download button.");
 
+    sendProgress("READING_CARD_TSV_DOWNLOAD", "Trying direct TSV capture from ChatGPT download link...");
+    const directTsv = await readCardTsvFromDownloadElement(button);
+    if (directTsv?.text) {
+      const completed = await sendRuntimeRequest({
+        type: "RADPRIMER_CARD_AUDIT_FINALIZE_TSV_TEXT",
+        completionPayload,
+        generatedCards: directTsv.text,
+        source: directTsv.source
+      });
+      if (!completed?.ok) throw new Error(completed?.error || "Could not stage downloaded TSV text.");
+
+      let copied = false;
+      if (completed.clipboardText) copied = await copyToClipboard(completed.clipboardText);
+      createOrUpdateOverlay({
+        phase: copied ? "AUDIT_READY" : "AUDIT_READY_COPY_FAILED",
+        message: copied
+          ? "TSV captured directly. Audit wake-up message copied to clipboard."
+          : "TSV captured directly, but wake-up message clipboard copy may have failed.",
+        text: completed.clipboardText || ""
+      });
+
+      return {
+        bundle: completed.bundle || null,
+        clipboardText: completed.clipboardText || "",
+        copiedWakeMessage: copied,
+        directCapture: true
+      };
+    }
+
     sendProgress("DOWNLOADING_CARD_TSV", "Clicking ChatGPT TSV download...");
     clickLikeUser(button);
 
-    const completed = await sendRuntimeRequest({
-      type: "RADPRIMER_CARD_AUDIT_WAIT_DOWNLOAD",
-      completionPayload,
-      timeoutMs: 180000
-    });
+    const completed = await sendRuntimeRequestWithTimeout(
+      {
+        type: "RADPRIMER_CARD_AUDIT_WAIT_DOWNLOAD",
+        completionPayload,
+        timeoutMs: 180000
+      },
+      95000,
+      "Clicked the ChatGPT TSV download, but the extension could not confirm the matching audit-bundle capture. If the TSV downloaded, use Capture TSV again after reloading the extension."
+    );
     if (!completed?.ok) throw new Error(completed?.error || "Timed out waiting for ChatGPT TSV download.");
 
     let copied = false;
@@ -1194,7 +1366,7 @@
       </style>
       <div class="wrap">
         <span class="dot" aria-hidden="true"></span>
-        <button type="button" title="Capture the latest ChatGPT TSV download into the RadPrimer audit bundle">Capture TSV</button>
+        <button type="button" title="Capture this ChatGPT TSV into the matching RadPrimer audit bundle">Capture TSV</button>
       </div>
     `;
 
@@ -1367,6 +1539,19 @@
   };
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+    if (message?.type === "CHATGPT_GET_CARD_AUDIT_CONTEXT") {
+      try {
+        sendResponse({
+          ok: true,
+          context: extractCardAuditPageContext()
+        });
+      } catch (error) {
+        sendResponse({ ok: false, error: String(error?.message || error) });
+      }
+
+      return true;
+    }
+
     if (message?.type === "CHATGPT_CAPTURE_LATEST_CARD_TSV_DOWNLOAD") {
       (async () => {
         const result = extractLatestAssistantText();

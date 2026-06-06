@@ -1,0 +1,112 @@
+{
+  "createdAt": "2026-06-06T16:59:25.999Z",
+  "articleTitle": "Traumatic Aortic Injury",
+  "sourceUrl": "https://app.radprimer.com/document/e32745ac-4438-41cc-a44a-7106fbbfc657/lesson/367f0d13-3ad0-44ef-baf5-b23daa56edc5",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "cases": [
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      7
+    ],
+    [
+      8
+    ]
+  ],
+  "totalImagesOnPage": 10,
+  "breadcrumbTrail": [
+    "Basic",
+    "Thoracic",
+    "Trauma",
+    "Traumatic Aortic Injury"
+  ],
+  "outputChars": 188444,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Core source was retrieved from the uploaded Core Radiology PDF, including the Vascular “Aortic trauma” section and IR aortic injury treatment note.\n\nCORE_EVIDENCE_FILE_BEGIN\nCORE_EVIDENCE_STATUS: USED\nCORE_SOURCE_BASIS: Core Radiology, Second Edition, uploaded PDF: junzi-shi-core-radiology-a-visual-approach-to.pdf; Vascular Imaging chapter, Aortic trauma, Vascular:547-548; Interventional Radiology chapter, Aortic injury, IR:604. PDF page numbers visible locally as pages 559-560 and 616.\nCORE_FACTS_USED:\n\n- Traumatic aortic injuries occur at relatively fixed aortic levels: root, isthmus, and hiatus; isthmus is the most common location.\n- CTA is the gold standard for suspected traumatic aortic injury.\n- Direct CT signs include intimal irregularity, dissection flap, pseudoaneurysm, and intramural hematoma.\n- Mediastinal hemorrhage separated from an intact aorta by a fat plane may be venous; hemorrhage contacting the aortic wall suggests aortic injury.\n- Minimal aortic injury involves only the intima; common CT findings include intimal irregularity, small intimal flap <1 cm, no/little periaortic hematoma, intraluminal thrombus, or intramural hematoma.\n- Post-traumatic pseudoaneurysm is a contained rupture; classic location is the aortic isthmus.\n- Chronic pseudoaneurysm may have peripheral calcification and thrombus.\n- IR section confirms CTA as gold standard and notes open repair historically/gold standard with endovascular stent-graft repair increasingly performed.\nCORE_DERIVED_CARDS:\n- UNKNOWN reasoning for acute TAI, traumatic pseudoaneurysm, chronic pseudoaneurysm, and ductus diverticulum mimic cards.\n- Differential drills using direct wall injury, fat-plane/hematoma contact, chronic calcified pseudoaneurysm, and branch/ductus mimic discriminators.\n- Definition cards for traumatic aortic injury, minimal aortic injury, and traumatic aortic pseudoaneurysm.\n- Mechanism cards on isthmus vulnerability, mediastinal hemorrhage relationship to aortic wall, and pseudoaneurysm instability.\n- Boards trap cards on “contained rupture” language and ductus diverticulum overcall.\n- High-yield cards on CTA gold-standard role, direct CTA signs, SVS grading/management pivots, and mimic differentiation.\nCORE_LIMITATIONS:\n- Core provided a focused aortic trauma section but did not include all RadPrimer percentages, management targets, or full differential list; those were taken from the provided RadPrimer article.\n- No external literature was used.\nCORE_EVIDENCE_FILE_END\n\nRADPRIMER_CARD_TSV_DOWNLOAD_READY\nFILENAME: radprimer_cards.tsv\nEXPECTED_ROWS: 34",
+  "coreEvidence": {
+    "status": "USED",
+    "provided": true,
+    "chars": 2298,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "Basic",
+      "Thoracic",
+      "Trauma",
+      "Traumatic Aortic Injury"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Thoracic",
+      "Trauma",
+      "Traumatic Aortic Injury"
+    ],
+    "deckName": "Corebook::Thoracic::Trauma::Traumatic Aortic Injury",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [],
+  "settings": {
+    "include": "1,2,3,4,5,6,7,8,9,10",
+    "caseMap": "1,2; 3,4; 5,6; 9,10",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "radprimer_cards.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000b5c071f591bfaf46314c1188&ts=494656&p=fs&cid=1&sig=9a18bfe27689799120a2b1a88744e8f3d84026c26989b6da54df6e41ed42741a&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000b5c071f591bfaf46314c1188&ts=494656&p=fs&cid=1&sig=9a18bfe27689799120a2b1a88744e8f3d84026c26989b6da54df6e41ed42741a&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 4825,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Traumatic_Aortic_Injury_2026-06-06T16-59-25-999Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}

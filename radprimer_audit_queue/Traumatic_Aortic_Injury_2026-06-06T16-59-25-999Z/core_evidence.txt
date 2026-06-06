@@ -1,0 +1,22 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Core Radiology, Second Edition, uploaded PDF: junzi-shi-core-radiology-a-visual-approach-to.pdf; Vascular Imaging chapter, Aortic trauma, Vascular:547-548; Interventional Radiology chapter, Aortic injury, IR:604. PDF page numbers visible locally as pages 559-560 and 616.
+CORE_FACTS_USED:
+
+- Traumatic aortic injuries occur at relatively fixed aortic levels: root, isthmus, and hiatus; isthmus is the most common location.
+- CTA is the gold standard for suspected traumatic aortic injury.
+- Direct CT signs include intimal irregularity, dissection flap, pseudoaneurysm, and intramural hematoma.
+- Mediastinal hemorrhage separated from an intact aorta by a fat plane may be venous; hemorrhage contacting the aortic wall suggests aortic injury.
+- Minimal aortic injury involves only the intima; common CT findings include intimal irregularity, small intimal flap <1 cm, no/little periaortic hematoma, intraluminal thrombus, or intramural hematoma.
+- Post-traumatic pseudoaneurysm is a contained rupture; classic location is the aortic isthmus.
+- Chronic pseudoaneurysm may have peripheral calcification and thrombus.
+- IR section confirms CTA as gold standard and notes open repair historically/gold standard with endovascular stent-graft repair increasingly performed.
+CORE_DERIVED_CARDS:
+- UNKNOWN reasoning for acute TAI, traumatic pseudoaneurysm, chronic pseudoaneurysm, and ductus diverticulum mimic cards.
+- Differential drills using direct wall injury, fat-plane/hematoma contact, chronic calcified pseudoaneurysm, and branch/ductus mimic discriminators.
+- Definition cards for traumatic aortic injury, minimal aortic injury, and traumatic aortic pseudoaneurysm.
+- Mechanism cards on isthmus vulnerability, mediastinal hemorrhage relationship to aortic wall, and pseudoaneurysm instability.
+- Boards trap cards on “contained rupture” language and ductus diverticulum overcall.
+- High-yield cards on CTA gold-standard role, direct CTA signs, SVS grading/management pivots, and mimic differentiation.
+CORE_LIMITATIONS:
+- Core provided a focused aortic trauma section but did not include all RadPrimer percentages, management targets, or full differential list; those were taken from the provided RadPrimer article.
+- No external literature was used.
