@@ -76,6 +76,12 @@ Codex automation can import completed bundles directly from `Downloads\RadPrimer
 
 After an audit bundle is saved, the ChatGPT tab replaces the clipboard with a short wake-up message for Codex. Paste that message into this thread when you want the bundle audited; there is no always-on heartbeat required.
 
+The `Build master source` button is a Codex handoff, not a ChatGPT synthesis step. First export comparison sources from the matching RadPrimer and STATdx article pages. The button then stages a paired request bundle under `Downloads\RadiologyMasterSource`, including `RadPrimer_source_package.txt`, `STATdx_source_package.txt`, source metadata, image registries, and `master_source_request.md`, and copies a Codex wake-up message to the clipboard. Codex can import the newest completed request into `C:\Users\josem.000\NormalAnatomy\master_source_queue` with `tools\import-latest-master-source-bundle.ps1` and write `master_source_package.txt`, `master_source_manifest.json`, `image_registry.json`, `master_source_import.json`, `master_source_report.md`, and `_codex_master_source_done.txt` there.
+
+After Codex finishes the fused source, import `master_source_import.json` from the popup's `Import master source files` control and enable `Use imported RadPrimer + STATdx master source`. Narrative and card runs then use the fused source package instead of the live page extraction, while still preserving the normal prompt format. The master source prompt includes `MASTER IMAGE REGISTRY` and `MASTER SOURCE MANIFEST` blocks so ChatGPT and Codex can distinguish `RP-05`/`RadPrimer image 5` from `SDX-04`/`STATdx image 4`. Audit metadata also keeps `imageRegistry`, `masterImageIds`, and `sourceQualifiedImages`, so mixed-source cards can be traced back to the exact source image.
+
+When the Speechify audio pill can identify a source-qualified current image, its jump action is also source-aware. A `RadPrimer image` jump stays in RadPrimer; a `STATdx image` jump focuses an open STATdx article tab and dispatches the image navigation there. Keep the relevant source article tabs open if you want cross-source image jumping during a fused lecture.
+
 This mode is best-effort because ChatGPT's web UI can change. The ChatGPT page also shows a floating status/result box while it waits, clicks the TSV download, and copies the audit wake-up message. Keep the extension popup open when possible. If waiting or scraping fails, the original full prompt package remains on the clipboard.
 
 ## Notes

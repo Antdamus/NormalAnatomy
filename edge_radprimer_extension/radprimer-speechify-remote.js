@@ -420,28 +420,89 @@
     return groupMatch ? Number(groupMatch[1]) : null;
   }
 
+  function getSectionSourceKind(section) {
+    const raw = String(section?.sourceKind || section?.sourceLabel || "").toLowerCase();
+    if (raw.includes("statdx") || raw.includes("stat dx") || raw.includes("sdx")) return "statdx";
+    if (raw.includes("radprimer") || raw === "rp") return "radprimer";
+    return "";
+  }
+
+  function getSectionSourceDisplay(section) {
+    const kind = getSectionSourceKind(section);
+    if (kind === "statdx") return "STATdx";
+    if (kind === "radprimer") return "RadPrimer";
+    return "";
+  }
+
+  function getCurrentPageSourceKind() {
+    if (/app\.statdx\.com$/i.test(location.hostname)) return "statdx";
+    if (/app\.radprimer\.com$/i.test(location.hostname)) return "radprimer";
+    return "";
+  }
+
   function getCompactSectionDisplay(section, fallbackDisplay = "") {
     const imageNumber = getSectionImageNumber(section);
     const group = String(section?.group || "");
-    if (imageNumber && group) return `image ${imageNumber} / ${group}`;
-    if (imageNumber) return `image ${imageNumber}`;
+    const sourcePrefix = getSectionSourceDisplay(section);
+    const imageText = imageNumber ? `${sourcePrefix ? `${sourcePrefix} ` : ""}image ${imageNumber}` : "";
+    if (imageText && group) return `${imageText} / ${group}`;
+    if (imageText) return imageText;
     return fallbackDisplay;
+  }
+
+  function requestSourceImageJump(detail) {
+    return new Promise((resolve, reject) => {
+      chrome.runtime.sendMessage({ type: "RADPRIMER_NAVIGATE_SOURCE_IMAGE", ...detail }, (response) => {
+        const error = chrome.runtime.lastError;
+        if (error) {
+          reject(new Error(error.message));
+          return;
+        }
+        if (!response?.ok) {
+          reject(new Error(response?.error || "Could not jump to source image."));
+          return;
+        }
+        resolve(response);
+      });
+    });
   }
 
   function jumpToCurrentImage() {
     const host = ensureHost();
-    const imageNumber = getSectionImageNumber(lastState?.lectureSection);
+    const section = lastState?.lectureSection;
+    const imageNumber = getSectionImageNumber(section);
     if (!imageNumber) {
       showSyncNotice(host, "warn", "No current image number is available yet.");
       return false;
     }
 
-    document.dispatchEvent(
-      new CustomEvent("radprimer-navigate-image", {
-        detail: { imageNumber, source: "speechify-audio-pill" }
+    const sourceKind = getSectionSourceKind(section);
+    const sourceLabel = getSectionSourceDisplay(section);
+    const currentSourceKind = getCurrentPageSourceKind();
+    const detail = {
+      imageNumber,
+      sourceKind,
+      sourceLabel,
+      source: "speechify-audio-pill"
+    };
+
+    if (!sourceKind || sourceKind === currentSourceKind) {
+      document.dispatchEvent(new CustomEvent("radprimer-navigate-image", { detail }));
+      showSyncNotice(host, "success", `Jumped to ${sourceLabel ? `${sourceLabel} ` : ""}image ${imageNumber}.`);
+      return true;
+    }
+
+    requestSourceImageJump(detail)
+      .then(() => {
+        showSyncNotice(host, "success", `Opened ${sourceLabel || sourceKind} image ${imageNumber}.`);
       })
-    );
-    showSyncNotice(host, "success", `Jumped to image ${imageNumber}.`);
+      .catch((error) => {
+        showSyncNotice(
+          host,
+          "fail",
+          `Could not open ${sourceLabel || sourceKind} image ${imageNumber}: ${String(error?.message || error)}`
+        );
+      });
     return true;
   }
 
@@ -490,7 +551,7 @@
     bubbleSection.hidden = !sectionLabel;
     bubbleSection.classList.toggle("can-jump", Boolean(sectionImageNumber));
     bubbleSection.title = sectionLabel
-      ? `Current lecture section: ${sectionDisplay}${sectionImageNumber ? `\nClick or press X to jump to image ${sectionImageNumber}.` : ""}${section?.source ? `\nSource: ${section.source}` : ""}${
+      ? `Current lecture section: ${sectionDisplay}${sectionImageNumber ? `\nClick or press X to jump to ${getSectionSourceDisplay(section) ? `${getSectionSourceDisplay(section)} ` : ""}image ${sectionImageNumber}.` : ""}${section?.source ? `\nSource: ${section.source}` : ""}${
           section?.textPreview ? `\n\n${section.textPreview}` : ""
         }`
       : "";

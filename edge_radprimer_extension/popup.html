@@ -171,11 +171,30 @@
         <p class="muted">Auto routing uses root deck + article breadcrumb. When enabled, STATdx topics reuse the saved RadPrimer hierarchy for the same title.</p>
       </section>
 
+      <section class="panel">
+        <label class="check">
+          <input id="useMasterSource" type="checkbox">
+          Use imported RadPrimer + STATdx master source
+        </label>
+        <label>
+          Source pairing key
+          <input id="sourcePairingKey" type="text" placeholder="Optional shared topic key">
+        </label>
+        <label>
+          Import master source files
+          <input id="masterSourceFiles" type="file" multiple accept=".json,.txt,.md">
+        </label>
+        <button id="importMasterSource" class="secondary">Import master source</button>
+        <button id="showMasterSource" class="secondary">Show imported master source</button>
+        <p class="muted">Use the same source pairing key for RadPrimer and STATdx when their titles differ. Best import is <code>master_source_import.json</code>. Separate <code>master_source_package.txt</code>, <code>master_source_manifest.json</code>, and <code>image_registry.json</code> also work.</p>
+      </section>
+
       <button id="run">Extract + copy prompt package</button>
       <button id="downloadImagesOnly" class="secondary">Download images only</button>
       <button id="recoverCardAuditTsv" class="secondary">Capture latest TSV download</button>
       <button id="exportAuditSource" class="secondary">Export audit source bundle</button>
       <button id="exportSourceCompare" class="secondary">Export comparison source</button>
+      <button id="buildMasterSource" class="secondary">Build master source</button>
       <button id="refreshPrompts" class="secondary">Check packaged prompts</button>
 
       <pre id="status">Ready.</pre>

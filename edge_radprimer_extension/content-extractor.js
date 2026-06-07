@@ -470,8 +470,32 @@ ${buildSourceAttributionBlock(config)}
     if (config.downloadImages) {
       const ordered = cases.flat().map((n) => byIndex.get(n)).filter(Boolean);
       for (const image of ordered) {
-        if (config.downloadPlain) downloadFiles.push({ url: image.plainUrl, filename: image.plainFilename });
-        if (config.downloadAnnotated) downloadFiles.push({ url: image.annotUrl, filename: image.annotFilename });
+        if (config.downloadPlain) {
+          downloadFiles.push({
+            url: image.plainUrl,
+            filename: image.plainFilename,
+            imageNumber: image.originalIndex,
+            imageId: image.imageId,
+            baseName: image.baseName,
+            variant: "plain",
+            sourceKind: "radprimer",
+            sourceLabel: "RadPrimer",
+            caption: image.caption
+          });
+        }
+        if (config.downloadAnnotated) {
+          downloadFiles.push({
+            url: image.annotUrl,
+            filename: image.annotFilename,
+            imageNumber: image.originalIndex,
+            imageId: image.imageId,
+            baseName: image.baseName,
+            variant: "annotated",
+            sourceKind: "radprimer",
+            sourceLabel: "RadPrimer",
+            caption: image.caption
+          });
+        }
       }
     }
 

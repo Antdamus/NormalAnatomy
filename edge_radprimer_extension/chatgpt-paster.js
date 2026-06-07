@@ -904,10 +904,10 @@
 
         const copied = await copyToClipboard(response.clipboardText);
         createOrUpdateOverlay({
-          phase: copied ? "AUDIT_READY" : "AUDIT_READY_COPY_FAILED",
+          phase: copied ? "BUNDLE_READY" : "BUNDLE_READY_COPY_FAILED",
           message: copied
-            ? "Audit wake-up message copied to clipboard."
-            : "Audit bundle saved, but wake-up message clipboard copy may have failed.",
+            ? "Bundle wake-up message copied to clipboard."
+            : "Bundle saved, but wake-up message clipboard copy may have failed.",
           text: response.clipboardText
         });
       });

@@ -59,6 +59,8 @@ const DEFAULTS = {
   ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
   ankiNoteType: "core_rad_notetype_v2",
   preferRadPrimerHierarchyForStatdx: true,
+  useMasterSource: false,
+  sourcePairingKey: "",
   autoSendToSpeechify: true,
   speechifyAutoSave: false,
   speechifyAutoPlayAfterSave: false,
@@ -109,6 +111,8 @@ const fields = [
   "ankiDeckRoot",
   "ankiNoteType",
   "preferRadPrimerHierarchyForStatdx",
+  "useMasterSource",
+  "sourcePairingKey",
   "autoSendToSpeechify",
   "speechifyAutoSave",
   "speechifyKeepAwake",
@@ -298,6 +302,8 @@ function readForm() {
     ankiDeckRoot: $("ankiDeckRoot").value.trim(),
     ankiNoteType: $("ankiNoteType").value.trim(),
     preferRadPrimerHierarchyForStatdx: $("preferRadPrimerHierarchyForStatdx").checked,
+    useMasterSource: $("useMasterSource").checked,
+    sourcePairingKey: $("sourcePairingKey").value.trim(),
     autoSendToSpeechify: speechifyEligible ? true : autoSendToSpeechify,
     speechifyAutoSave: false,
     speechifyAutoPlayAfterSave: false,
@@ -352,6 +358,8 @@ function applyForm(values) {
   $("ankiNoteType").value = values.ankiNoteType ?? DEFAULTS.ankiNoteType;
   $("preferRadPrimerHierarchyForStatdx").checked =
     values.preferRadPrimerHierarchyForStatdx ?? DEFAULTS.preferRadPrimerHierarchyForStatdx;
+  $("useMasterSource").checked = values.useMasterSource ?? DEFAULTS.useMasterSource;
+  $("sourcePairingKey").value = values.sourcePairingKey ?? DEFAULTS.sourcePairingKey;
   $("autoSendToSpeechify").checked = autoSendToSpeechify;
   $("speechifyAutoSave").checked = values.speechifyAutoSave ?? DEFAULTS.speechifyAutoSave;
   $("speechifyKeepAwake").checked = values.speechifyKeepAwake ?? DEFAULTS.speechifyKeepAwake;
@@ -450,6 +458,49 @@ function sendImageDownloadOnlyMessage(tabId) {
   });
 }
 
+function sendImportMasterSourceMessage(files) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "IMPORT_MASTER_SOURCE_CACHE", files }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+function sendGetMasterSourceMessage() {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "GET_MASTER_SOURCE_CACHE" }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+function readFileAsText(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = () => reject(reader.error || new Error(`Could not read ${file?.name || "file"}.`));
+    reader.readAsText(file);
+  });
+}
+
+async function readMasterSourceFileInput() {
+  const input = $("masterSourceFiles");
+  const files = Array.from(input?.files || []);
+  if (!files.length) throw new Error("Choose master_source_import.json or the master source files first.");
+  return Promise.all(
+    files.map(async (file) => ({
+      name: file.name,
+      size: file.size,
+      type: file.type,
+      text: await readFileAsText(file)
+    }))
+  );
+}
+
 function sendRecoverCardAuditTsvMessage(tabId) {
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage({ type: "RECOVER_CARD_AUDIT_TSV_FROM_CHATGPT_TAB", tabId }, (response) => {
@@ -473,6 +524,16 @@ function sendExportAuditSourceMessage(tabId) {
 function sendExportSourceCompareMessage(tabId) {
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage({ type: "EXPORT_ARTICLE_SOURCE_COMPARISON", tabId }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+function sendBuildMasterSourceMessage(tabId) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "BUILD_MASTER_SOURCE_FROM_ARTICLE", tabId }, (response) => {
       const err = chrome.runtime.lastError;
       if (err) reject(new Error(err.message));
       else resolve(response);
@@ -679,9 +740,11 @@ async function run() {
     await saveForm();
     const tab = await getActiveTab();
 
-    if (shouldDelegateGroupingPreflight(settings) || shouldCaptureCardAuditBundle(settings)) {
+    if (settings.useMasterSource || shouldDelegateGroupingPreflight(settings) || shouldCaptureCardAuditBundle(settings)) {
       setStatus(
-        shouldDelegateGroupingPreflight(settings)
+        settings.useMasterSource
+          ? "Starting master-source run through the page runner..."
+          : shouldDelegateGroupingPreflight(settings)
           ? "Starting grouping preflight through the page runner..."
           : "Starting card audit capture through the page runner..."
       );
@@ -689,7 +752,7 @@ async function run() {
       if (!delegated?.ok) {
         throw new Error(delegated?.error || "Page-runner workflow failed.");
       }
-      setStatus(delegated.message || "Grouping preflight started.");
+      setStatus(delegated.message || "Master-source workflow started.");
       return;
     }
 
@@ -902,6 +965,86 @@ async function exportSourceCompare() {
   }
 }
 
+async function buildMasterSource() {
+  const button = $("buildMasterSource");
+  button.disabled = true;
+  try {
+    await saveForm();
+    const tab = await getActiveTab();
+    setStatus("Building master source package from cached RadPrimer + STATdx comparison sources...");
+    const response = await sendBuildMasterSourceMessage(tab.id);
+    if (!response?.ok) throw new Error(response?.error || "Master source build failed.");
+
+    if (response.clipboardText) await copyText(response.clipboardText);
+    setStatus(
+      [
+        response.message || "Master source request bundle prepared.",
+        response.bundle?.downloadFolder ? `Bundle: ${response.bundle.downloadFolder}` : "",
+        response.cachedSources?.length ? `Sources: ${response.cachedSources.join(", ")}` : "",
+        response.clipboardText ? "Codex wake-up message copied to clipboard." : ""
+      ].filter(Boolean).join("\n")
+    );
+  } catch (error) {
+    setStatus(`Master source error: ${error?.message || error}`);
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function importMasterSource() {
+  const button = $("importMasterSource");
+  button.disabled = true;
+  try {
+    const files = await readMasterSourceFileInput();
+    setStatus("Importing master source into extension storage...");
+    const response = await sendImportMasterSourceMessage(files);
+    if (!response?.ok) throw new Error(response?.error || "Master source import failed.");
+
+    $("useMasterSource").checked = true;
+    await saveForm();
+
+    const source = response.masterSource || {};
+    setStatus(
+      [
+        "Imported master source.",
+        `Title: ${source.articleTitle || "[unknown]"}`,
+        `Images: ${source.imageCount ?? 0}`,
+        `Downloadable image files: ${source.downloadFileCount ?? 0}`,
+        `Characters: ${source.outputChars ?? 0}`,
+        "Use imported master source is now enabled."
+      ].join("\n")
+    );
+  } catch (error) {
+    setStatus(`Master source import error: ${error?.message || error}`);
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function showMasterSource() {
+  try {
+    const response = await sendGetMasterSourceMessage();
+    if (!response?.ok) throw new Error(response?.error || "Could not read imported master source.");
+    const source = response.masterSource;
+    if (!source) {
+      setStatus("No master source is imported yet.");
+      return;
+    }
+    setStatus(
+      [
+        "Imported master source is available.",
+        `Title: ${source.articleTitle || "[unknown]"}`,
+        `Imported: ${source.importedAt || "[unknown]"}`,
+        `Images: ${source.imageCount ?? 0}`,
+        `Downloadable image files: ${source.downloadFileCount ?? 0}`,
+        `Characters: ${source.outputChars ?? 0}`
+      ].join("\n")
+    );
+  } catch (error) {
+    setStatus(`Master source status error: ${error?.message || error}`);
+  }
+}
+
 async function init() {
   const stored = await chrome.storage.local.get("radprimerRunnerSettings");
   applyForm({ ...DEFAULTS, ...(stored.radprimerRunnerSettings || {}) });
@@ -955,6 +1098,9 @@ async function init() {
   $("recoverCardAuditTsv").addEventListener("click", recoverCardAuditTsv);
   $("exportAuditSource").addEventListener("click", exportAuditSource);
   $("exportSourceCompare").addEventListener("click", exportSourceCompare);
+  $("buildMasterSource").addEventListener("click", buildMasterSource);
+  $("importMasterSource").addEventListener("click", importMasterSource);
+  $("showMasterSource").addEventListener("click", showMasterSource);
   $("refreshPrompts").addEventListener("click", checkPrompts);
 }
 

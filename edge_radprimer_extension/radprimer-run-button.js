@@ -50,6 +50,8 @@
     ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
     ankiNoteType: "core_rad_notetype_v2",
     preferRadPrimerHierarchyForStatdx: true,
+    useMasterSource: false,
+    sourcePairingKey: "",
     autoSendToSpeechify: true,
     speechifyAutoSave: false,
     speechifyKeepAwake: false,
@@ -445,8 +447,10 @@
                 <div class="checks">
                   <label class="check"><input data-field="createAnkiImportFile" type="checkbox"> Create Anki import TSV after audit</label>
                   <label class="check"><input data-field="preferRadPrimerHierarchyForStatdx" type="checkbox"> Use saved RadPrimer hierarchy for matching STATdx topics</label>
+                  <label class="check"><input data-field="useMasterSource" type="checkbox"> Use imported master source</label>
                 </div>
                 <div class="grid spaced">
+                  <label class="wide">Source pairing key<input data-field="sourcePairingKey" type="text" placeholder="Optional shared topic key"></label>
                   <label class="wide">Deck routing<select data-field="ankiDeckMode">
                     <option value="auto">Auto from article breadcrumb</option>
                     <option value="manual">Manual parent deck</option>
@@ -455,7 +459,7 @@
                   <label>Normal root deck<input data-field="ankiNormalRoot" type="text"></label>
                   <label class="wide">Manual parent deck<input data-field="ankiDeckRoot" type="text"></label>
                   <label class="wide">Anki note type<input data-field="ankiNoteType" type="text"></label>
-                  <span class="hint wide">Auto routing uses the article breadcrumb when available. STATdx can reuse the saved RadPrimer hierarchy for the same title.</span>
+                  <span class="hint wide">Auto routing uses the article breadcrumb when available. STATdx can reuse the saved RadPrimer hierarchy for the same title. If RadPrimer and STATdx titles differ, use the same source pairing key on both pages.</span>
                 </div>
               </section>
 
@@ -507,6 +511,7 @@
                 <button class="ghost download-config" type="button">Save and download images</button>
                 <button class="ghost audit-source-config" type="button">Export audit source</button>
                 <button class="ghost compare-source-config" type="button">Export comparison source</button>
+                <button class="ghost master-source-config" type="button">Build master source</button>
                 <button class="run-config" type="button">Save and run</button>
               </div>
             </div>
@@ -570,6 +575,11 @@
       await saveSettings(readModalSettings(host));
       closeModal(host);
       exportSourceComparisonOnly(host);
+    });
+    shadow.querySelector(".master-source-config").addEventListener("click", async () => {
+      await saveSettings(readModalSettings(host));
+      closeModal(host);
+      buildMasterSource(host);
     });
 
     return host;
@@ -826,6 +836,29 @@
         if (response.clipboardText) await navigator.clipboard.writeText(response.clipboardText);
       } catch {}
       setStatus(host, "Compare Source Ready", response.message || "Comparison source bundle exported.");
+      setRunning(host, false);
+    });
+  };
+
+  const buildMasterSource = (host) => {
+    setRunning(host, true);
+    setStatus(host, "Master Source", "Building master source package...");
+    chrome.runtime.sendMessage({ type: "BUILD_MASTER_SOURCE_FROM_ARTICLE" }, async (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) {
+        setStatus(host, "Master Source Error", err.message, true);
+        setRunning(host, false);
+        return;
+      }
+      if (!response?.ok) {
+        setStatus(host, "Master Source Error", response?.error || "Master source build failed.", true);
+        setRunning(host, false);
+        return;
+      }
+      try {
+        if (response.clipboardText) await navigator.clipboard.writeText(response.clipboardText);
+      } catch {}
+      setStatus(host, "Master Source Ready", response.message || "Master source request bundle prepared.");
       setRunning(host, false);
     });
   };

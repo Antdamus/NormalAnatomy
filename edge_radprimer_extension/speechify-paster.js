@@ -419,22 +419,58 @@
   const extractImageMentions = (text) => {
     const source = cleanDisplayText(text);
     const mentions = [];
-    const mentionRe = /\b(images?)\s+([^.?!;:]{1,160})/gi;
+    const mentionRe = /\b(?:(RadPrimer|STATdx|STAT dx|RP|SDX)\s+)?(images?)\s+([^.?!;:]{1,160})/gi;
     let match;
 
     while ((match = mentionRe.exec(source)) !== null) {
-      const numbers = expandRangeIfNeeded(parseImageNumbers(match[2]), match[2]);
+      const sourceLabelRaw = cleanDisplayText(match[1] || "");
+      const sourceKind = /stat\s*dx|sdx/i.test(sourceLabelRaw)
+        ? "statdx"
+        : /radprimer|rp/i.test(sourceLabelRaw)
+          ? "radprimer"
+          : "";
+      const sourceLabel = sourceKind === "statdx" ? "STATdx" : sourceKind === "radprimer" ? "RadPrimer" : "";
+      const numbers = expandRangeIfNeeded(parseImageNumbers(match[3]), match[3]);
       if (!numbers.length) continue;
 
       mentions.push({
-        plural: /^images$/i.test(match[1]),
+        plural: /^images$/i.test(match[2]),
         numbers,
         index: match.index,
-        text: cleanDisplayText(match[0])
+        text: cleanDisplayText(match[0]),
+        sourceKind,
+        sourceLabel
       });
     }
 
-    return mentions;
+    const codeRe = /\b(RP|SDX)[-\s]?(\d{1,3})(?:\s*(?:through|thru|to|-|\u2013|\u2014)\s*(?:(RP|SDX)[-\s]?)?(\d{1,3}))?\b/gi;
+    while ((match = codeRe.exec(source)) !== null) {
+      const sourceCode = String(match[1] || "").toUpperCase();
+      const endSourceCode = String(match[3] || sourceCode).toUpperCase();
+      if (endSourceCode !== sourceCode) continue;
+
+      const start = Number(match[2]);
+      const end = Number(match[4]);
+      if (!Number.isFinite(start) || start <= 0) continue;
+
+      const numbers =
+        Number.isFinite(end) && end > start && end - start <= 80
+          ? Array.from({ length: end - start + 1 }, (_, index) => start + index)
+          : [start];
+      const sourceKind = sourceCode === "SDX" ? "statdx" : "radprimer";
+      const sourceLabel = sourceKind === "statdx" ? "STATdx" : "RadPrimer";
+
+      mentions.push({
+        plural: numbers.length > 1,
+        numbers,
+        index: match.index,
+        text: cleanDisplayText(match[0]),
+        sourceKind,
+        sourceLabel
+      });
+    }
+
+    return mentions.sort((a, b) => a.index - b.index);
   };
 
   const getSectionMaxImageNumber = (section) => {
@@ -454,6 +490,8 @@
       group: section.group || "",
       image: section.image || "",
       imageNumber: Number.isFinite(Number(section.imageNumber)) ? Number(section.imageNumber) : null,
+      sourceKind: section.sourceKind || "",
+      sourceLabel: section.sourceLabel || "",
       groupNumbers: Array.isArray(section.groupNumbers) ? section.groupNumbers : [],
       textFraction: Number.isFinite(Number(section.textFraction)) ? Number(section.textFraction) : null,
       textIndex: Number.isFinite(Number(section.textIndex)) ? Number(section.textIndex) : null,
@@ -627,6 +665,7 @@
     const imageLabel = currentImage ? `image ${currentImage}` : "";
     const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : groupLabel || imageLabel;
     const targetImageNumber = currentImage || groupNumbers[0] || null;
+    const sourceMention = lastSingular?.sourceKind ? lastSingular : currentMention;
 
     return label
       ? {
@@ -634,6 +673,8 @@
           group: groupLabel,
           image: imageLabel,
           imageNumber: targetImageNumber,
+          sourceKind: sourceMention?.sourceKind || "",
+          sourceLabel: sourceMention?.sourceLabel || "",
           groupNumbers,
           source: sourceName,
           textFraction,
@@ -1094,6 +1135,7 @@
     const imageLabel = currentImage ? `image ${currentImage}` : "";
     const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : groupLabel || imageLabel;
     const targetImageNumber = currentImage || groupNumbers[0] || null;
+    const sourceMention = singularMentions.at(-1) || blockPluralMention || mentions.at(-1);
 
     return label
       ? {
@@ -1101,6 +1143,8 @@
           group: groupLabel,
           image: imageLabel,
           imageNumber: targetImageNumber,
+          sourceKind: sourceMention?.sourceKind || "",
+          sourceLabel: sourceMention?.sourceLabel || "",
           groupNumbers,
           source: context.source,
           highlightAvailable: context.source?.startsWith("highlight") || false,
@@ -1262,6 +1306,7 @@
         : "";
     const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : imageLabel || groupLabel;
     const targetImageNumber = currentImage || groupNumbers[0] || null;
+    const sourceMention = singularMentions.at(-1) || recentPlural || currentMention;
 
     return label
       ? {
@@ -1269,6 +1314,8 @@
           group: groupLabel,
           image: imageLabel,
           imageNumber: targetImageNumber,
+          sourceKind: sourceMention?.sourceKind || "",
+          sourceLabel: sourceMention?.sourceLabel || "",
           groupNumbers,
           source: "timeline",
           estimated: true,

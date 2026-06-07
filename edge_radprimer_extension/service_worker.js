@@ -23,6 +23,10 @@ const RADPRIMER_HIERARCHY_PREFIX = "radprimerCanonicalHierarchy:";
 const IMAGE_DOWNLOAD_SUBFOLDER = "RadPrimer";
 const CARD_AUDIT_SUBFOLDER = "RadPrimerAudit";
 const SOURCE_COMPARE_SUBFOLDER = "RadPrimerSourceComparison";
+const MASTER_SOURCE_SUBFOLDER = "RadiologyMasterSource";
+const SOURCE_COMPARE_CACHE_PREFIX = "radprimerSourceCompareCache:";
+const MASTER_SOURCE_CACHE_KEY = "radprimerLatestMasterSource";
+const MASTER_SOURCE_CACHE_PREFIX = "radprimerMasterSourceCache:";
 const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
 const CORE_EVIDENCE_BEGIN = "CORE_EVIDENCE_FILE_BEGIN";
 const CORE_EVIDENCE_END = "CORE_EVIDENCE_FILE_END";
@@ -52,6 +56,11 @@ const CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION = [
   "FILENAME: radprimer_cards.tsv",
   "EXPECTED_ROWS: <number of TSV rows>",
   "If you need Core pages or clarification first, ask for that information, then after the user answers, create the downloadable TSV and print the sentinel block."
+].join("\n");
+const SOURCE_COMPARE_EXTRACTION_PROMPT = [
+  "Source-comparison extraction only.",
+  "Do not generate a narrative or cards from this package.",
+  "Preserve article hierarchy, source text, image filenames, selected image captions, arrows/annotations, source attribution, Core evidence if present, and Anki/breadcrumb metadata when available."
 ].join("\n");
 
 const DEFAULTS = {
@@ -83,6 +92,8 @@ const DEFAULTS = {
   ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
   ankiNoteType: "core_rad_notetype_v2",
   preferRadPrimerHierarchyForStatdx: true,
+  useMasterSource: false,
+  sourcePairingKey: "",
   autoSendToSpeechify: true,
   speechifyAutoSave: false,
   speechifyKeepAwake: false,
@@ -134,6 +145,7 @@ function normalizeSettings(rawSettings = {}) {
   settings.speechifyFolderUrl = folder.url;
   settings.speechifyFolderId = folder.id;
   settings.speechifyFolderName = "";
+  settings.sourcePairingKey = String(settings.sourcePairingKey || "").trim();
 
   if (isNarrativeSpeechifyMode(settings)) {
     settings.include = "all";
@@ -623,6 +635,96 @@ function assertSupportedArticleTab(tab) {
   return source;
 }
 
+function normalizeArticleSourceKind(value) {
+  const raw = String(value || "").toLowerCase();
+  if (raw.includes("statdx") || raw.includes("stat dx") || raw.includes("sdx")) return "statdx";
+  if (raw.includes("radprimer") || raw === "rp") return "radprimer";
+  return "";
+}
+
+function getArticleSourceForKind(sourceKind) {
+  const kind = normalizeArticleSourceKind(sourceKind);
+  if (kind === "radprimer") {
+    return {
+      kind,
+      label: "RadPrimer",
+      displayName: "RadPrimer",
+      extractorFile: "content-extractor.js",
+      imageToolsFile: "radprimer-image-tools.js",
+      tabUrlPattern: "https://app.radprimer.com/*"
+    };
+  }
+  if (kind === "statdx") {
+    return {
+      kind,
+      label: "STATdx",
+      displayName: "STATdx",
+      extractorFile: "statdx-content-extractor.js",
+      imageToolsFile: "statdx-image-tools.js",
+      tabUrlPattern: "https://app.statdx.com/*"
+    };
+  }
+  return null;
+}
+
+async function navigateSourceImage({ imageNumber, sourceKind, sourceLabel }, senderTab = null) {
+  const numericImage = Number(imageNumber);
+  if (!Number.isFinite(numericImage) || numericImage <= 0) {
+    throw new Error("No valid image number was provided.");
+  }
+
+  const source = getArticleSourceForKind(sourceKind || sourceLabel);
+  if (!source) throw new Error("No RadPrimer/STATdx source was provided for this image jump.");
+
+  const senderSource = getArticleSourceFromTab(senderTab);
+  let tab =
+    senderTab?.id && senderSource?.kind === source.kind
+      ? senderTab
+      : null;
+
+  if (!tab?.id) {
+    const tabs = await chrome.tabs.query({ url: [source.tabUrlPattern] });
+    tab =
+      tabs.find((candidate) => candidate.active && candidate.windowId === senderTab?.windowId) ||
+      tabs.find((candidate) => candidate.active) ||
+      tabs[0] ||
+      null;
+  }
+
+  if (!tab?.id) {
+    throw new Error(`Open a ${source.label} article tab first.`);
+  }
+
+  const focusedTab = await chrome.tabs.update(tab.id, { active: true });
+  if (focusedTab.windowId) await chrome.windows.update(focusedTab.windowId, { focused: true });
+
+  await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: [source.imageToolsFile]
+  });
+  await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: (detail) => {
+      document.dispatchEvent(new CustomEvent("radprimer-navigate-image", { detail }));
+    },
+    args: [
+      {
+        imageNumber: numericImage,
+        sourceKind: source.kind,
+        sourceLabel: source.label,
+        source: "speechify-audio-pill"
+      }
+    ]
+  });
+
+  return {
+    sourceKind: source.kind,
+    sourceLabel: source.label,
+    imageNumber: numericImage,
+    tabId: tab.id
+  };
+}
+
 async function ensureRadPrimerExtractor(tabId) {
   const tab = await chrome.tabs.get(tabId);
   const source = assertSupportedArticleTab(tab);
@@ -930,6 +1032,433 @@ function buildSourceCompareDownloadPlan(title, sourceLabel) {
     articleFolderName: articlePart,
     fileBaseName: `${sourcePart}_${articlePart}`
   };
+}
+
+function normalizeSourceCompareKind(sourceKind, sourceLabel) {
+  const raw = `${sourceKind || ""} ${sourceLabel || ""}`.toLowerCase();
+  if (raw.includes("statdx") || raw.includes("stat dx")) return "statdx";
+  if (raw.includes("radprimer") || raw.includes("rad primer")) return "radprimer";
+  return sanitizeDownloadPathPart(sourceLabel || sourceKind || "source", "source").toLowerCase();
+}
+
+function sourceCompareDisplayLabel(source) {
+  if (!source) return "Source";
+  if (source.sourceKind === "radprimer") return "RadPrimer";
+  if (source.sourceKind === "statdx") return "STATdx";
+  return source.sourceLabel || source.primarySourceLabel || "Source";
+}
+
+const SOURCE_COMPARE_TITLE_STOPWORDS = new Set([
+  "a",
+  "an",
+  "and",
+  "case",
+  "cases",
+  "diagnosis",
+  "disease",
+  "for",
+  "imaging",
+  "in",
+  "of",
+  "on",
+  "radprimer",
+  "statdx",
+  "the",
+  "to",
+  "with"
+]);
+
+const SOURCE_COMPARE_TOKEN_ALIASES = new Map([
+  ["aortic", "aorta"],
+  ["arterial", "artery"],
+  ["arteries", "artery"],
+  ["calcaneal", "calcaneus"],
+  ["fractures", "fracture"],
+  ["injuries", "injury"],
+  ["lesions", "lesion"],
+  ["neoplasms", "neoplasm"],
+  ["splenic", "spleen"],
+  ["traumatic", "trauma"],
+  ["tumors", "tumor"],
+  ["vascular", "vessel"]
+]);
+
+function getSourcePairingKey(title, settings = {}) {
+  const manualKey = String(settings?.sourcePairingKey || "").trim();
+  return normalizeArticleTitleKey(manualKey || title);
+}
+
+function getSourceCompareCacheKey(title, settings = {}) {
+  const key = getSourcePairingKey(title, settings);
+  return key ? `${SOURCE_COMPARE_CACHE_PREFIX}${key}` : "";
+}
+
+function getSourceCompareCacheKeyFromPairingKey(pairingKey) {
+  const key = normalizeArticleTitleKey(pairingKey);
+  return key ? `${SOURCE_COMPARE_CACHE_PREFIX}${key}` : "";
+}
+
+function uniqueSourceCompareStrings(values) {
+  const seen = new Set();
+  return values
+    .map((value) => String(value || "").trim())
+    .filter(Boolean)
+    .filter((value) => {
+      const key = normalizeArticleTitleKey(value);
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+}
+
+function normalizeSourceCompareTitleToken(token) {
+  const raw = String(token || "").toLowerCase();
+  if (!raw || SOURCE_COMPARE_TITLE_STOPWORDS.has(raw)) return "";
+  if (SOURCE_COMPARE_TOKEN_ALIASES.has(raw)) return SOURCE_COMPARE_TOKEN_ALIASES.get(raw);
+  if (raw.endsWith("ies") && raw.length > 4) return `${raw.slice(0, -3)}y`;
+  if (raw.endsWith("s") && raw.length > 4) return raw.slice(0, -1);
+  return raw;
+}
+
+function getComparableTitleTokens(value) {
+  return normalizeArticleTitleKey(value)
+    .split("_")
+    .map(normalizeSourceCompareTitleToken)
+    .filter(Boolean);
+}
+
+function scoreSourceCompareTitleSimilarity(left, right) {
+  const leftKey = normalizeArticleTitleKey(left);
+  const rightKey = normalizeArticleTitleKey(right);
+  if (!leftKey || !rightKey) return 0;
+  if (leftKey === rightKey) return 1;
+
+  const leftTokens = new Set(getComparableTitleTokens(left));
+  const rightTokens = new Set(getComparableTitleTokens(right));
+  if (!leftTokens.size || !rightTokens.size) return 0;
+
+  const intersection = [...leftTokens].filter((token) => rightTokens.has(token)).length;
+  const union = new Set([...leftTokens, ...rightTokens]).size || 1;
+  const jaccard = intersection / union;
+  const containment = intersection / Math.min(leftTokens.size, rightTokens.size);
+  let score = Math.max(jaccard, containment * 0.84);
+
+  if (leftKey.includes(rightKey) || rightKey.includes(leftKey)) score = Math.max(score, 0.92);
+  return Math.min(score, 1);
+}
+
+function getSourceCompareTitleCandidates(cache) {
+  const sources = Object.values(cache?.sources || {});
+  return uniqueSourceCompareStrings([
+    cache?.articleTitle,
+    ...(Array.isArray(cache?.articleTitles) ? cache.articleTitles : []),
+    ...sources.flatMap((source) => [
+      source.articleTitle,
+      source.metadata?.articleTitle,
+      source.metadata?.title,
+      source.metadata?.primaryTopic,
+      source.metadata?.workingTopic,
+      ...(Array.isArray(source.metadata?.breadcrumbTrail) ? source.metadata.breadcrumbTrail.slice(-2) : [])
+    ])
+  ]);
+}
+
+function scoreSourceCompareCacheForTitle(cache, title) {
+  return getSourceCompareTitleCandidates(cache).reduce(
+    (best, candidate) => Math.max(best, scoreSourceCompareTitleSimilarity(title, candidate)),
+    0
+  );
+}
+
+function getSourceCompareCacheSourceKinds(cache) {
+  return new Set(Object.keys(cache?.sources || {}).filter(Boolean));
+}
+
+function hasUsefulSourceForPairing(candidateCache, currentCache) {
+  const currentKinds = getSourceCompareCacheSourceKinds(currentCache);
+  return Object.keys(candidateCache?.sources || {}).some((kind) => !currentKinds.has(kind));
+}
+
+function mergeSourceCompareCaches(primaryCache = {}, secondaryCache = {}, matchInfo = null) {
+  return {
+    ...secondaryCache,
+    ...primaryCache,
+    sources: {
+      ...(secondaryCache.sources || {}),
+      ...(primaryCache.sources || {})
+    },
+    articleTitle: primaryCache.articleTitle || secondaryCache.articleTitle || "",
+    titleKey: primaryCache.titleKey || secondaryCache.titleKey || "",
+    sourcePairingKey: primaryCache.sourcePairingKey || secondaryCache.sourcePairingKey || "",
+    articleTitles: uniqueSourceCompareStrings([
+      primaryCache.articleTitle,
+      secondaryCache.articleTitle,
+      ...(Array.isArray(primaryCache.articleTitles) ? primaryCache.articleTitles : []),
+      ...(Array.isArray(secondaryCache.articleTitles) ? secondaryCache.articleTitles : []),
+      ...getSourceCompareTitleCandidates(primaryCache),
+      ...getSourceCompareTitleCandidates(secondaryCache)
+    ]),
+    updatedAt: new Date().toISOString(),
+    fuzzyMatchedSourceCompare: matchInfo || primaryCache.fuzzyMatchedSourceCompare || null
+  };
+}
+
+async function getAllSourceCompareCaches() {
+  const stored = await chrome.storage.local.get(null);
+  return Object.entries(stored)
+    .filter(([key, value]) => key.startsWith(SOURCE_COMPARE_CACHE_PREFIX) && value?.sources)
+    .map(([key, cache]) => ({ key, cache }));
+}
+
+async function findBestSourceCompareCacheMatch({ title, currentCache, currentKey }) {
+  const currentKinds = getSourceCompareCacheSourceKinds(currentCache);
+  const scored = (await getAllSourceCompareCaches())
+    .filter(({ key, cache }) => key !== currentKey && hasUsefulSourceForPairing(cache, currentCache))
+    .map(({ key, cache }) => ({
+      key,
+      cache,
+      score: scoreSourceCompareCacheForTitle(cache, title),
+      titles: getSourceCompareTitleCandidates(cache),
+      sourceKinds: [...getSourceCompareCacheSourceKinds(cache)]
+    }))
+    .filter((candidate) => candidate.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  const best = scored[0] || null;
+  const second = scored[1] || null;
+  if (!best) return { match: null, candidates: scored.slice(0, 4) };
+
+  const decisiveEnough = best.score >= 0.88 || !second || best.score - second.score >= 0.08;
+  const hasNeededSource = best.sourceKinds.some((kind) => !currentKinds.has(kind));
+  if (best.score >= 0.64 && decisiveEnough && hasNeededSource) {
+    return { match: best, candidates: scored.slice(0, 4) };
+  }
+
+  return { match: null, candidates: scored.slice(0, 4) };
+}
+
+function summarizeCachedComparisonSources(cache) {
+  const sources = Object.values(cache?.sources || {});
+  if (!sources.length) return "No comparison sources cached yet.";
+  return sources
+    .map((source) => `${sourceCompareDisplayLabel(source)} (${source.cachedAt || "cached"})`)
+    .join(", ");
+}
+
+async function cacheSourceCompareBundle({ pending, bundle }) {
+  const metadata = bundle?.metadata || {};
+  const title = metadata.articleTitle || pending?.articleTitle || pending?.extractionMeta?.title || "";
+  const sourcePairingKey = getSourcePairingKey(title, pending?.settings || {});
+  const key = getSourceCompareCacheKeyFromPairingKey(sourcePairingKey);
+  if (!key) return null;
+
+  const sourceKind = normalizeSourceCompareKind(
+    metadata.sourceKind || pending?.extractionMeta?.sourceKind,
+    metadata.sourceLabel || metadata.primarySourceLabel || pending?.extractionMeta?.primarySourceLabel
+  );
+  const sourceLabel = metadata.sourceLabel || metadata.primarySourceLabel || sourceKind;
+  const stored = await chrome.storage.local.get(key);
+  const cache = stored[key] || {
+    articleTitle: title,
+    titleKey: normalizeArticleTitleKey(title),
+    sourcePairingKey,
+    articleTitles: [],
+    createdAt: new Date().toISOString(),
+    sources: {}
+  };
+
+  cache.articleTitle = cache.articleTitle || title;
+  cache.titleKey = cache.titleKey || normalizeArticleTitleKey(title);
+  cache.sourcePairingKey = cache.sourcePairingKey || sourcePairingKey;
+  cache.articleTitles = uniqueSourceCompareStrings([
+    ...(Array.isArray(cache.articleTitles) ? cache.articleTitles : []),
+    cache.articleTitle,
+    title,
+    metadata.articleTitle,
+    metadata.title,
+    metadata.primaryTopic,
+    metadata.workingTopic,
+    ...(Array.isArray(metadata.breadcrumbTrail) ? metadata.breadcrumbTrail.slice(-2) : [])
+  ]);
+  cache.updatedAt = new Date().toISOString();
+  cache.sources = {
+    ...(cache.sources || {}),
+    [sourceKind]: {
+      sourceKind,
+      sourceLabel,
+      primarySourceLabel: metadata.primarySourceLabel || sourceLabel,
+      articleTitle: title,
+      sourcePairingKey,
+      sourceUrl: metadata.sourceUrl || pending?.radPrimerUrl || "",
+      sourcePackage: pending?.sourcePackage || "",
+      metadata,
+      imageRegistry: Array.isArray(metadata.imageRegistry) ? metadata.imageRegistry : buildSourceImageRegistryFromPending(pending),
+      downloadFiles: Array.isArray(metadata.downloadFiles) ? metadata.downloadFiles : pending?.downloadFiles || [],
+      files: bundle?.files || {},
+      downloadFolder: bundle?.downloadFolder || "",
+      fileBaseName: bundle?.fileBaseName || "",
+      cachedAt: new Date().toISOString(),
+      outputChars: String(pending?.sourcePackage || "").length
+    }
+  };
+
+  await chrome.storage.local.set({ [key]: cache });
+  return cache;
+}
+
+async function getSourceCompareCache(title, settings = {}) {
+  const key = getSourceCompareCacheKey(title, settings);
+  if (!key) return null;
+  const stored = await chrome.storage.local.get(key);
+  return stored[key] || null;
+}
+
+async function getSourceCompareCacheByPairingKey(pairingKey) {
+  const key = getSourceCompareCacheKeyFromPairingKey(pairingKey);
+  if (!key) return null;
+  const stored = await chrome.storage.local.get(key);
+  return stored[key] || null;
+}
+
+function getMasterSourcePairFromCache(cache) {
+  const sources = cache?.sources || {};
+  const radPrimer = sources.radprimer || null;
+  const statdx = sources.statdx || null;
+  if (radPrimer && statdx) return [radPrimer, statdx];
+  return [];
+}
+
+function buildMasterSourceDownloadPlan(title) {
+  const articlePart = sanitizeDownloadPathPart(title, "radiology_master_source");
+  return {
+    articleFolderName: articlePart,
+    fileBaseName: `MasterSource_${articlePart}`
+  };
+}
+
+function getMasterSourceCacheKey(title) {
+  const key = normalizeArticleTitleKey(title);
+  return key ? `${MASTER_SOURCE_CACHE_PREFIX}${key}` : "";
+}
+
+function normalizeImageRegistrySourceKind(sourceKind, sourceLabel) {
+  return normalizeSourceCompareKind(sourceKind, sourceLabel);
+}
+
+function normalizeImageRegistryEntry(entry = {}, fallback = {}) {
+  const sourceKind = normalizeImageRegistrySourceKind(
+    entry.sourceKind || entry.source || fallback.sourceKind,
+    entry.sourceLabel || fallback.sourceLabel
+  );
+  const sourceLabel =
+    entry.sourceLabel ||
+    entry.source ||
+    fallback.sourceLabel ||
+    (sourceKind === "statdx" ? "STATdx" : sourceKind === "radprimer" ? "RadPrimer" : "Source");
+  const sourceImageNumber = Number(
+    entry.sourceImageNumber ?? entry.imageNumber ?? entry.originalIndex ?? fallback.imageNumber
+  );
+  const masterImageId =
+    entry.masterImageId ||
+    entry.masterId ||
+    `${sourceKind === "statdx" ? "SDX" : sourceKind === "radprimer" ? "RP" : "SRC"}-${String(
+      Number.isFinite(sourceImageNumber) ? sourceImageNumber : fallback.index || 0
+    ).padStart(2, "0")}`;
+
+  return {
+    ...entry,
+    masterImageId,
+    sourceKind,
+    sourceLabel,
+    sourceImageNumber: Number.isFinite(sourceImageNumber) ? sourceImageNumber : null,
+    filename: entry.filename || entry.plainFilename || fallback.filename || "",
+    plainFilename: entry.plainFilename || (entry.variant === "plain" ? entry.filename : "") || fallback.plainFilename || "",
+    annotatedFilename:
+      entry.annotatedFilename ||
+      entry.annotFilename ||
+      (entry.variant === "annotated" ? entry.filename : "") ||
+      fallback.annotatedFilename ||
+      "",
+    plainUrl: entry.plainUrl || (entry.variant === "plain" ? entry.url : "") || fallback.plainUrl || "",
+    annotatedUrl:
+      entry.annotatedUrl ||
+      entry.annotUrl ||
+      (entry.variant === "annotated" ? entry.url : "") ||
+      fallback.annotatedUrl ||
+      "",
+    caption: entry.caption || fallback.caption || "",
+    baseName: entry.baseName || fallback.baseName || "",
+    group: entry.group || fallback.group || "",
+    usedFor: Array.isArray(entry.usedFor) ? entry.usedFor : fallback.usedFor || []
+  };
+}
+
+function buildSourceImageRegistryFromPending(pending = {}) {
+  const files = Array.isArray(pending.downloadFiles) ? pending.downloadFiles : [];
+  const sourceKind = pending.extractionMeta?.sourceKind || "";
+  const sourceLabel = pending.extractionMeta?.primarySourceLabel || pending.extractionMeta?.sourceLabel || "";
+  const byKey = new Map();
+
+  for (const file of files) {
+    const imageNumber = Number(file.imageNumber);
+    const key = `${file.sourceKind || sourceKind || "source"}:${Number.isFinite(imageNumber) ? imageNumber : file.baseName || file.filename}`;
+    const previous = byKey.get(key) || {};
+    const next = normalizeImageRegistryEntry(
+      {
+        ...previous,
+        sourceKind: file.sourceKind || sourceKind,
+        sourceLabel: file.sourceLabel || sourceLabel,
+        sourceImageNumber: Number.isFinite(imageNumber) ? imageNumber : previous.sourceImageNumber,
+        imageId: file.imageId || previous.imageId || "",
+        baseName: file.baseName || previous.baseName || "",
+        caption: file.caption || previous.caption || "",
+        plainFilename: file.variant === "plain" ? file.filename : previous.plainFilename,
+        annotatedFilename: file.variant === "annotated" ? file.filename : previous.annotatedFilename,
+        plainUrl: file.variant === "plain" ? file.url : previous.plainUrl,
+        annotatedUrl: file.variant === "annotated" ? file.url : previous.annotatedUrl
+      },
+      { sourceKind, sourceLabel }
+    );
+    byKey.set(key, next);
+  }
+
+  return Array.from(byKey.values()).sort((a, b) => {
+    const sourceCompare = String(a.sourceKind || "").localeCompare(String(b.sourceKind || ""));
+    if (sourceCompare) return sourceCompare;
+    return Number(a.sourceImageNumber || 0) - Number(b.sourceImageNumber || 0);
+  });
+}
+
+function flattenRegistryToDownloadFiles(imageRegistry = []) {
+  const files = [];
+  for (const rawEntry of Array.isArray(imageRegistry) ? imageRegistry : []) {
+    const entry = normalizeImageRegistryEntry(rawEntry);
+    if (entry.plainUrl && entry.plainFilename) {
+      files.push({
+        url: entry.plainUrl,
+        filename: entry.plainFilename,
+        imageNumber: entry.sourceImageNumber,
+        masterImageId: entry.masterImageId,
+        sourceKind: entry.sourceKind,
+        sourceLabel: entry.sourceLabel,
+        variant: "plain",
+        caption: entry.caption
+      });
+    }
+    if (entry.annotatedUrl && entry.annotatedFilename) {
+      files.push({
+        url: entry.annotatedUrl,
+        filename: entry.annotatedFilename,
+        imageNumber: entry.sourceImageNumber,
+        masterImageId: entry.masterImageId,
+        sourceKind: entry.sourceKind,
+        sourceLabel: entry.sourceLabel,
+        variant: "annotated",
+        caption: entry.caption
+      });
+    }
+  }
+  return files;
 }
 
 function sanitizeAnkiDeckPart(value, fallback = "RadPrimer Article") {
@@ -1352,10 +1881,72 @@ function buildSourceCompareWakeMessage(bundle) {
   lines.push(
     "",
     "When I provide another source-comparison bundle for the same topic, compare the two source packages and recommend which one should drive the narrative/cards, or whether they should be merged.",
+    "In the extension, once both RadPrimer and STATdx comparison sources have been exported for this title, use Build master source to create the fused upstream package automatically.",
     "",
     "Focus on my goals: image recognition, mechanisms, histology/pathology when relevant, differential diagnosis, modality-specific patterns including ultrasound/nuclear medicine, board traps, and review-load control."
   );
   return lines.join("\n");
+}
+
+function buildMasterSourceRequestInstructions(metadata) {
+  return [
+    "# Master Source Request Bundle",
+    "",
+    "Purpose: this bundle contains paired source packages that Codex should fuse into one master source artifact.",
+    "",
+    "Expected Codex outputs in the imported queue bundle:",
+    "- master_source_package.txt",
+    "- master_source_manifest.json",
+    "- image_registry.json",
+    "- master_source_import.json",
+    "- master_source_report.md",
+    "- _codex_master_source_done.txt",
+    "",
+    "Rules:",
+    "- Use RadPrimer as the canonical hierarchy/backbone when a RadPrimer source is present.",
+    "- Use STATdx as supplemental depth when it is stronger for image examples, modality-specific detail, mechanisms, management, or differential nuance.",
+    "- Preserve source attribution with labels such as [RadPrimer], [STATdx], or [Both].",
+    "- Do not invent Core Radiology support. Treat Core-specific claims as verified only if the provided source packages contain auditable Core evidence.",
+    "- Do not create cards or a lecture yet. Create only the fused master source package and report.",
+    "- Do not omit images from either source package. If an image should not drive future cards/lecture, keep it in an image audit section with a reason.",
+    "- Preserve grouping, time-lapse, procedure, or follow-up context when captions imply it.",
+    "- Use source-qualified image labels throughout the fused package. Prefer labels like RadPrimer image 5, STATdx image 4, RP-05, and SDX-04 over bare image numbers when images from both sources are present.",
+    "- The fused package must be directly usable as the article/source package for later narrative and card generation.",
+    "",
+    "Required image registry contract:",
+    "- image_registry.json must be a JSON array.",
+    "- Each image object must include masterImageId, sourceKind, sourceLabel, sourceImageNumber, caption, usedFor, plainFilename/annotatedFilename when known, and plainUrl/annotatedUrl when known.",
+    "- masterImageId should be RP-01, RP-02, etc. for RadPrimer and SDX-01, SDX-02, etc. for STATdx unless a clearer stable source code exists.",
+    "- If a source image should be excluded from future teaching, keep it in the registry with usedFor: [] and explain why in master_source_report.md.",
+    "",
+    "Required manifest/import contract:",
+    "- master_source_manifest.json must include articleTitle, canonicalHierarchy, sourcePriority, sourceCoverage, imageCountBySource, and sourceAttributionRules.",
+    "- master_source_import.json must be a single JSON object with: version, articleTitle, createdAt, packageText, manifest, imageRegistry.",
+    "- packageText in master_source_import.json must be exactly the same text written to master_source_package.txt.",
+    "",
+    `Topic: ${metadata.articleTitle || "[unknown]"}`,
+    `Created: ${metadata.createdAt || ""}`,
+    `Sources: ${(metadata.sources || []).map((source) => source.sourceLabel || source.sourceKind).join(", ")}`
+  ].join("\n");
+}
+
+function buildMasterSourceWakeMessage(bundle) {
+  const downloadFolder = bundle?.downloadFolder || `Downloads\\${MASTER_SOURCE_SUBFOLDER}`;
+  return [
+    "Create the master radiology source package from the staged browser bundle.",
+    "",
+    `The browser staged bundle is here: ${downloadFolder}`,
+    "",
+    "Please do the full master-source synthesis:",
+    "1. From C:\\Users\\josem.000\\NormalAnatomy, import the newest complete master-source request bundle by running or emulating edge_radprimer_extension\\tools\\import-latest-master-source-bundle.ps1.",
+    "2. Read C:\\Users\\josem.000\\NormalAnatomy\\master_source_queue\\_latest_master_source_bundle.txt.",
+    "3. In that bundle, compare RadPrimer_source_package.txt, STATdx_source_package.txt, RadPrimer_metadata.json, STATdx_metadata.json, metadata.json, and master_source_request.md.",
+    "4. Write master_source_package.txt, master_source_manifest.json, image_registry.json, master_source_import.json, master_source_report.md, and _codex_master_source_done.txt in the same imported bundle folder.",
+    "",
+    "Use RadPrimer as the canonical hierarchy/backbone when present. Use STATdx as supplemental depth for stronger images, captions, mechanisms, differentials, modality-specific detail, or management. Preserve source attribution and image grouping/time-lapse/procedure context. Do not generate cards or a lecture yet.",
+    "",
+    "Important: the extension will later import master_source_import.json. Make its packageText source-qualified, with image labels like RadPrimer image 5 / RP-05 and STATdx image 4 / SDX-04 whenever both sources contribute images."
+  ].join("\n");
 }
 
 async function downloadAuditTextFile(folderName, filename, text, mimeType = "text/plain;charset=utf-8") {
@@ -1399,6 +1990,14 @@ async function downloadSourceCompareTextFile(folderName, filename, text, mimeTyp
   );
 }
 
+async function downloadMasterSourceTextFile(folderName, filename, text, mimeType = "text/plain;charset=utf-8") {
+  return downloadTextFileToPath(
+    `${MASTER_SOURCE_SUBFOLDER}/${folderName}/${filename}`,
+    text,
+    mimeType
+  );
+}
+
 function createCardAuditMetadata(pending, createdAt, generated = {}) {
   const ankiTarget = buildAnkiDeckTarget(pending);
   return {
@@ -1408,6 +2007,8 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
     engine: pending.settings?.engine || "",
     mode: pending.settings?.mode || "",
     selectedImages: pending.extractionMeta?.selectedImages || [],
+    masterImageIds: pending.extractionMeta?.masterImageIds || [],
+    sourceQualifiedImages: pending.extractionMeta?.sourceQualifiedImages || [],
     cases: pending.extractionMeta?.cases || [],
     totalImagesOnPage: pending.extractionMeta?.totalImagesOnPage ?? null,
     breadcrumbTrail: pending.extractionMeta?.breadcrumbTrail || [],
@@ -1440,8 +2041,17 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
     downloadFiles: (pending.downloadFiles || []).map((file) => ({
       filename: file.filename,
       label: file.label || "",
-      imageNumber: file.imageNumber || null
+      imageNumber: file.imageNumber || null,
+      masterImageId: file.masterImageId || "",
+      sourceKind: file.sourceKind || pending.extractionMeta?.sourceKind || "",
+      sourceLabel: file.sourceLabel || pending.extractionMeta?.primarySourceLabel || "",
+      variant: file.variant || "",
+      url: file.url || ""
     })),
+    imageRegistry: Array.isArray(pending.extractionMeta?.imageRegistry)
+      ? pending.extractionMeta.imageRegistry
+      : buildSourceImageRegistryFromPending(pending),
+    masterSource: pending.extractionMeta?.masterSource || null,
     settings: {
       include: pending.settings?.include || "",
       caseMap: pending.settings?.caseMap || "",
@@ -1547,6 +2157,8 @@ async function stageSourceCompareBundle({ pending }) {
     sourceComparisonBundle: true,
     sourceComparisonFolder: `${SOURCE_COMPARE_SUBFOLDER}/${downloadPlan.articleFolderName}`,
     sourceComparisonFileBase: downloadPlan.fileBaseName,
+    sourcePairingKey: getSourcePairingKey(title, pending.settings || {}),
+    sourcePairingKeyRaw: pending.settings?.sourcePairingKey || "",
     sourceLabel,
     sourceKind: pending.extractionMeta?.sourceKind || "",
     primarySourceLabel: pending.extractionMeta?.primarySourceLabel || sourceLabel
@@ -1587,6 +2199,308 @@ async function stageSourceCompareBundle({ pending }) {
       marker: markerFilename
     },
     metadata
+  };
+}
+
+async function stageMasterSourceRequestBundle({
+  articleTitle,
+  sources,
+  sourceCompareCacheKey,
+  sourcePairingKey,
+  sourcePairingMatch
+}) {
+  const createdAt = new Date().toISOString();
+  const title = articleTitle || "radiology_master_source";
+  const downloadPlan = buildMasterSourceDownloadPlan(title);
+  const folderName = `${downloadPlan.articleFolderName}_${createdAt.replace(/[:.]/g, "-")}`;
+  const sourceList = Array.isArray(sources) ? sources : [];
+  const metadata = {
+    createdAt,
+    articleTitle: title,
+    masterSourceRequestBundle: true,
+    sourceCompareCacheKey: sourceCompareCacheKey || "",
+    sourcePairingKey: sourcePairingKey || "",
+    sourcePairingMatch: sourcePairingMatch || null,
+    sourceCount: sourceList.length,
+    sources: sourceList.map((source) => ({
+      sourceKind: source.sourceKind || "",
+      sourceLabel: sourceCompareDisplayLabel(source),
+      sourceUrl: source.sourceUrl || "",
+      cachedAt: source.cachedAt || "",
+      outputChars: source.outputChars ?? String(source.sourcePackage || "").length,
+      downloadFolder: source.downloadFolder || "",
+      fileBaseName: source.fileBaseName || "",
+      metadata: {
+        articleTitle: source.metadata?.articleTitle || source.articleTitle || "",
+        sourceComparisonFolder: source.metadata?.sourceComparisonFolder || "",
+        anki: source.metadata?.anki || null,
+        breadcrumbTrail: source.metadata?.breadcrumbTrail || [],
+        imageRegistry: Array.isArray(source.metadata?.imageRegistry)
+          ? source.metadata.imageRegistry
+          : Array.isArray(source.imageRegistry)
+            ? source.imageRegistry
+            : []
+      },
+      imageRegistry: Array.isArray(source.metadata?.imageRegistry)
+        ? source.metadata.imageRegistry
+        : Array.isArray(source.imageRegistry)
+          ? source.imageRegistry
+          : [],
+      downloadFiles: Array.isArray(source.metadata?.downloadFiles)
+        ? source.metadata.downloadFiles
+        : Array.isArray(source.downloadFiles)
+          ? source.downloadFiles
+          : []
+    }))
+  };
+
+  const metadataFilename = "metadata.json";
+  const instructionsFilename = "master_source_request.md";
+  const markerFilename = "_master_source_request_complete.txt";
+
+  await downloadMasterSourceTextFile(
+    folderName,
+    metadataFilename,
+    JSON.stringify(metadata, null, 2),
+    "application/json;charset=utf-8"
+  );
+  await downloadMasterSourceTextFile(
+    folderName,
+    instructionsFilename,
+    buildMasterSourceRequestInstructions(metadata),
+    "text/markdown;charset=utf-8"
+  );
+
+  for (const source of sourceList) {
+    const sourceLabel = sanitizeDownloadPathPart(sourceCompareDisplayLabel(source), "Source");
+    await downloadMasterSourceTextFile(
+      folderName,
+      `${sourceLabel}_source_package.txt`,
+      source.sourcePackage || ""
+    );
+    await downloadMasterSourceTextFile(
+      folderName,
+      `${sourceLabel}_metadata.json`,
+      JSON.stringify(source.metadata || {}, null, 2),
+      "application/json;charset=utf-8"
+    );
+  }
+
+  await downloadMasterSourceTextFile(
+    folderName,
+    markerFilename,
+    `masterSourceRequest=true\ncreatedAt=${createdAt}\narticleTitle=${title}\nsources=${sourceList.map(sourceCompareDisplayLabel).join(", ")}\n`
+  );
+
+  return {
+    folderName,
+    fileBaseName: downloadPlan.fileBaseName,
+    downloadFolder: `Downloads\\${MASTER_SOURCE_SUBFOLDER}\\${folderName}`,
+    files: {
+      metadata: metadataFilename,
+      request: instructionsFilename,
+      marker: markerFilename
+    },
+    metadata
+  };
+}
+
+function parseJsonMaybe(text, fallback = null) {
+  const raw = String(text || "").trim();
+  if (!raw) return fallback;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return fallback;
+  }
+}
+
+function pickNamedFile(files, patterns) {
+  const list = Array.isArray(files) ? files : [];
+  return list.find((file) => patterns.some((pattern) => pattern.test(String(file?.name || "")))) || null;
+}
+
+function normalizeMasterSourceCache(input = {}) {
+  const articleTitle =
+    input.articleTitle ||
+    input.manifest?.articleTitle ||
+    input.metadata?.articleTitle ||
+    "Radiology Master Source";
+  const packageText = String(input.packageText || input.sourcePackage || input.masterSourcePackage || "").trim();
+  if (!packageText) throw new Error("Master source import did not include packageText/master_source_package.txt.");
+
+  const manifest = input.manifest && typeof input.manifest === "object" ? input.manifest : {};
+  const imageRegistryRaw = Array.isArray(input.imageRegistry)
+    ? input.imageRegistry
+    : Array.isArray(input.images)
+      ? input.images
+      : [];
+  const imageRegistry = imageRegistryRaw.map((entry, index) =>
+    normalizeImageRegistryEntry(entry, { index: index + 1 })
+  );
+  const createdAt = input.createdAt || manifest.createdAt || new Date().toISOString();
+  const importedAt = new Date().toISOString();
+  const cache = {
+    version: 1,
+    sourceKind: "master",
+    sourceLabel: "RadPrimer + STATdx master source",
+    articleTitle,
+    titleKey: normalizeArticleTitleKey(articleTitle),
+    createdAt,
+    importedAt,
+    packageText,
+    manifest: {
+      ...manifest,
+      articleTitle: manifest.articleTitle || articleTitle
+    },
+    imageRegistry,
+    downloadFiles: flattenRegistryToDownloadFiles(imageRegistry),
+    outputChars: packageText.length
+  };
+
+  if (!cache.titleKey) throw new Error("Master source import has no usable article title.");
+  return cache;
+}
+
+function buildMasterSourceCacheFromFiles(files = []) {
+  const importFile = pickNamedFile(files, [/master[_-]source[_-]import\.json$/i]);
+  if (importFile) {
+    const parsed = parseJsonMaybe(importFile.text);
+    if (!parsed || typeof parsed !== "object") throw new Error("master_source_import.json is not valid JSON.");
+    return normalizeMasterSourceCache(parsed);
+  }
+
+  const packageFile = pickNamedFile(files, [/master[_-]source[_-]package\.txt$/i]);
+  const manifestFile = pickNamedFile(files, [/master[_-]source[_-]manifest\.json$/i]);
+  const registryFile = pickNamedFile(files, [/image[_-]registry\.json$/i]);
+
+  if (!packageFile) throw new Error("Select master_source_import.json or master_source_package.txt.");
+  const manifest = parseJsonMaybe(manifestFile?.text, {});
+  const imageRegistry = parseJsonMaybe(registryFile?.text, []);
+  if (registryFile && !Array.isArray(imageRegistry)) {
+    throw new Error("image_registry.json must contain a JSON array.");
+  }
+
+  return normalizeMasterSourceCache({
+    articleTitle: manifest?.articleTitle || "",
+    packageText: packageFile.text,
+    manifest,
+    imageRegistry
+  });
+}
+
+async function storeMasterSourceCache(cache) {
+  const finalCache = normalizeMasterSourceCache(cache);
+  const titleKey = getMasterSourceCacheKey(finalCache.articleTitle);
+  const payload = {
+    [MASTER_SOURCE_CACHE_KEY]: finalCache
+  };
+  if (titleKey) payload[titleKey] = finalCache;
+  await chrome.storage.local.set(payload);
+  return finalCache;
+}
+
+async function getLatestMasterSourceCache() {
+  const stored = await chrome.storage.local.get(MASTER_SOURCE_CACHE_KEY);
+  return stored[MASTER_SOURCE_CACHE_KEY] || null;
+}
+
+function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
+  const title = masterSource?.articleTitle || "Radiology Master Source";
+  const manifestText = JSON.stringify(masterSource?.manifest || {}, null, 2);
+  const registryText = JSON.stringify(masterSource?.imageRegistry || [], null, 2);
+  const sourcePackage = String(masterSource?.packageText || "").trim();
+
+  return [
+    "=== MASTER SOURCE MODE ===",
+    "Use the fused master source below as the active article/source package for this run.",
+    "Image references are source-qualified. Preserve labels such as RP-05, SDX-04, RadPrimer image 5, and STATdx image 4.",
+    "If images from both sources are used, never collapse them into bare image numbers without source labels.",
+    "",
+    "=== TOPIC ===",
+    `PRIMARY TOPIC: ${title}`,
+    `CENTERING TOPIC FOR THIS CHAT: ${title}`,
+    `USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: ${title}`,
+    "",
+    settings.mode === "narrative" || settings.mode === "narrative_with_images"
+      ? ""
+      : `=== CORE VALIDATION INPUT ===\n${[
+          settings.coreGap
+            ? "Pathway B - Core GAP explicitly invoked."
+            : "Pathway A - Core Radiology cross-check available or requested.",
+          settings.coreGap
+            ? "Core GAP: use only the fused master source plus any explicitly supplied Core evidence."
+            : `Core section/chapter/pages: ${settings.coreSection || "[SECTION NOT PROVIDED]"}${
+                settings.corePages ? ` | pages: ${settings.corePages}` : ""
+              }`,
+          "Treat Core-specific claims as verified only when the fused source or imported evidence explicitly supports them."
+        ].join("\n")}`,
+    "",
+    "=== PROMPT ===",
+    promptText,
+    "",
+    "=== FUSED MASTER SOURCE PACKAGE ===",
+    sourcePackage || "[master_source_package.txt was empty]",
+    "",
+    "=== MASTER IMAGE REGISTRY ===",
+    registryText,
+    "",
+    "=== MASTER SOURCE MANIFEST ===",
+    manifestText,
+    "",
+    "=== SOURCE ATTRIBUTION ===",
+    "Primary source label: RadPrimer + STATdx master source",
+    "Source note: Generated by Codex from paired RadPrimer and STATdx comparison bundles."
+  ]
+    .filter((part) => part !== "")
+    .join("\n");
+}
+
+function buildMasterSourceExtraction(settings, promptText, masterSource) {
+  const title = masterSource?.articleTitle || "Radiology Master Source";
+  const imageRegistry = Array.isArray(masterSource?.imageRegistry) ? masterSource.imageRegistry : [];
+  const selectedImages = imageRegistry
+    .map((entry, index) => entry.sourceImageNumber || index + 1)
+    .filter((value) => Number.isFinite(Number(value)));
+  const sourceQualifiedImages = imageRegistry
+    .map((entry) => ({
+      masterImageId: entry.masterImageId || "",
+      sourceKind: entry.sourceKind || "",
+      sourceLabel: entry.sourceLabel || "",
+      sourceImageNumber: entry.sourceImageNumber || null,
+      label:
+        entry.masterImageId ||
+        `${entry.sourceLabel || entry.sourceKind || "Source"} image ${entry.sourceImageNumber || ""}`.trim(),
+      caption: entry.caption || ""
+    }))
+    .filter((entry) => entry.masterImageId || entry.sourceImageNumber);
+  const cases = imageRegistry
+    .filter((entry) => Array.isArray(entry.groupNumbers) && entry.groupNumbers.length)
+    .map((entry) => entry.groupNumbers);
+
+  return {
+    output: buildMasterSourcePromptPackage(settings, promptText, masterSource),
+    downloadFiles: Array.isArray(masterSource?.downloadFiles)
+      ? masterSource.downloadFiles
+      : flattenRegistryToDownloadFiles(imageRegistry),
+    meta: {
+      title,
+      sourceKind: "master",
+      primarySourceLabel: "RadPrimer + STATdx master source",
+      breadcrumbTrail: masterSource?.manifest?.canonicalHierarchy || [],
+      totalImagesOnPage: imageRegistry.length,
+      selectedImages,
+      masterImageIds: sourceQualifiedImages.map((entry) => entry.masterImageId).filter(Boolean),
+      sourceQualifiedImages,
+      cases,
+      imageRegistry,
+      outputChars: String(masterSource?.packageText || "").length,
+      masterSource: {
+        importedAt: masterSource?.importedAt || "",
+        createdAt: masterSource?.createdAt || "",
+        sourceLabel: masterSource?.sourceLabel || "RadPrimer + STATdx master source"
+      }
+    }
   };
 }
 
@@ -1954,6 +2868,7 @@ function parseCaseMapGroups(value) {
 }
 
 function shouldRunGroupingPreflight(settings) {
+  if (settings?.useMasterSource) return false;
   if (!settings?.autoGroupNonNarrative) return false;
   if (!settings.openChatGPT || !settings.autoSubmitChatGPT) return false;
   if (!isNonNarrativeMode(settings)) return false;
@@ -2285,8 +3200,18 @@ async function runRadPrimerFromPage(tab) {
   await sendPageStatus(tab.id, "Prompt", `Loading ${settings.engine}/${settings.mode} prompt...`);
   const promptText = await loadPrompt(settings.engine, settings.mode);
 
-  await sendPageStatus(tab.id, "Extracting", `Extracting ${articleSource.displayName} article and image captions...`);
-  const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  let extraction;
+  if (settings.useMasterSource) {
+    await sendPageStatus(tab.id, "Master Source", "Loading imported fused master source...");
+    const masterSource = await getLatestMasterSourceCache();
+    if (!masterSource?.packageText) {
+      throw new Error("Use master source is enabled, but no imported master source was found. Import master_source_import.json in the popup first.");
+    }
+    extraction = buildMasterSourceExtraction(settings, promptText, masterSource);
+  } else {
+    await sendPageStatus(tab.id, "Extracting", `Extracting ${articleSource.displayName} article and image captions...`);
+    extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  }
   const willRunGroupingPreflight =
     shouldRunGroupingPreflight(settings) && extraction.meta?.totalImagesOnPage > 1;
 
@@ -2325,7 +3250,9 @@ async function runRadPrimerFromPage(tab) {
       downloadImages: false,
       autoSendToSpeechify: false
     };
-    const groupingExtraction = await extractRadPrimerArticle(tab.id, groupingSettings, groupingPromptText);
+    const groupingExtraction = settings.useMasterSource
+      ? buildMasterSourceExtraction(groupingSettings, groupingPromptText, await getLatestMasterSourceCache())
+      : await extractRadPrimerArticle(tab.id, groupingSettings, groupingPromptText);
     const pendingId = crypto.randomUUID();
     await savePendingGroupingRun(pendingId, {
       radPrimerTabId: tab.id,
@@ -2442,7 +3369,7 @@ async function exportRadPrimerAuditSourceOnly(tab) {
     autoSendToSpeechify: false,
     speechifyAutoSave: false
   };
-  const promptText = await loadPrompt(settings.engine, settings.mode);
+  const promptText = SOURCE_COMPARE_EXTRACTION_PROMPT;
   const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
   const pending = {
     radPrimerTabId: tab.id,
@@ -2483,7 +3410,7 @@ async function exportArticleSourceComparison(tab) {
     autoSendToSpeechify: false,
     speechifyAutoSave: false
   };
-  const promptText = await loadPrompt(settings.engine, settings.mode);
+  const promptText = SOURCE_COMPARE_EXTRACTION_PROMPT;
   const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
   const pending = {
     radPrimerTabId: tab.id,
@@ -2496,19 +3423,105 @@ async function exportArticleSourceComparison(tab) {
     createdAt: Date.now()
   };
   const bundle = await stageSourceCompareBundle({ pending });
+  const cache = await cacheSourceCompareBundle({ pending, bundle });
   const clipboardText = buildSourceCompareWakeMessage(bundle);
+  const cacheMessage = cache
+    ? ` Cached sources for this title: ${summarizeCachedComparisonSources(cache)}.`
+    : "";
 
   await sendPageStatus(
     tab.id,
     "Compare Source Ready",
-    `Saved comparison source bundle: ${bundle.downloadFolder}.`,
+    `Saved comparison source bundle: ${bundle.downloadFolder}.${cacheMessage}`,
     { done: true }
   );
 
   return {
     bundle,
+    cache,
     clipboardText,
-    message: `Saved comparison source bundle: ${bundle.downloadFolder}.`
+    message: `Saved comparison source bundle: ${bundle.downloadFolder}.${cacheMessage}`
+  };
+}
+
+async function runMasterSourceFromPage(tab) {
+  assertSupportedArticleTab(tab);
+
+  await sendPageStatus(tab.id, "Master Source", "Exporting and caching the current article source...");
+  const settings = await loadRunnerSettings();
+  const currentExport = await exportArticleSourceComparison(tab);
+  const title = currentExport.bundle?.metadata?.articleTitle || currentExport.bundle?.metadata?.title || "";
+  const sourcePairingKey = currentExport.bundle?.metadata?.sourcePairingKey || getSourcePairingKey(title, settings);
+  const sourceCompareCacheKey = getSourceCompareCacheKeyFromPairingKey(sourcePairingKey);
+  let cache = (sourcePairingKey && (await getSourceCompareCacheByPairingKey(sourcePairingKey))) || currentExport.cache;
+  let pair = getMasterSourcePairFromCache(cache);
+  let sourcePairingMatch = null;
+
+  if (pair.length < 2) {
+    const fuzzy = await findBestSourceCompareCacheMatch({
+      title,
+      currentCache: cache,
+      currentKey: sourceCompareCacheKey
+    });
+
+    if (fuzzy.match) {
+      sourcePairingMatch = {
+        type: "fuzzy-title",
+        score: Number(fuzzy.match.score.toFixed(3)),
+        matchedCacheKey: fuzzy.match.key,
+        matchedTitles: fuzzy.match.titles,
+        matchedSources: fuzzy.match.sourceKinds
+      };
+      cache = mergeSourceCompareCaches(cache, fuzzy.match.cache, sourcePairingMatch);
+      pair = getMasterSourcePairFromCache(cache);
+
+      if (sourceCompareCacheKey) {
+        await chrome.storage.local.set({ [sourceCompareCacheKey]: cache });
+      }
+    }
+  }
+
+  if (pair.length < 2) {
+    const available = summarizeCachedComparisonSources(cache);
+    const fuzzy = await findBestSourceCompareCacheMatch({
+      title,
+      currentCache: cache,
+      currentKey: sourceCompareCacheKey
+    });
+    const candidateText = fuzzy.candidates?.length
+      ? ` Closest cached title candidates: ${fuzzy.candidates
+          .slice(0, 3)
+          .map((candidate) => `${candidate.titles[0] || candidate.key} (${candidate.score.toFixed(2)})`)
+          .join("; ")}.`
+      : "";
+    throw new Error(
+      `Master source needs both RadPrimer and STATdx comparison exports for "${title || "this topic"}". ` +
+      `Currently cached: ${available}.${candidateText} ` +
+      `If the source titles differ, set the same Source pairing key on both pages, export each comparison source once, then run Build Master Source again.`
+    );
+  }
+
+  const bundle = await stageMasterSourceRequestBundle({
+    articleTitle: title,
+    sources: pair,
+    sourceCompareCacheKey,
+    sourcePairingKey,
+    sourcePairingMatch
+  });
+  const clipboardText = buildMasterSourceWakeMessage(bundle);
+  const matchNote = sourcePairingMatch
+    ? ` Fuzzy matched cached source "${sourcePairingMatch.matchedTitles?.[0] || sourcePairingMatch.matchedCacheKey}" (score ${sourcePairingMatch.score}).`
+    : ` Pairing key: ${sourcePairingKey || "article title"}.`;
+  const message = `Prepared Codex master-source request bundle: ${bundle.downloadFolder}.${matchNote} Wake-up message copied to clipboard.`;
+  await sendPageStatus(tab.id, "Master Source Ready", message, { done: true });
+
+  return {
+    message,
+    bundle,
+    clipboardText,
+    sourcePairingKey,
+    sourcePairingMatch,
+    cachedSources: pair.map(sourceCompareDisplayLabel)
   };
 }
 
@@ -2545,6 +3558,49 @@ async function recoverLatestCardAuditDownloadFromChatGptTab(tab) {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === "IMPORT_MASTER_SOURCE_CACHE") {
+    (async () => {
+      const cache = buildMasterSourceCacheFromFiles(message.files || []);
+      const stored = await storeMasterSourceCache(cache);
+      sendResponse({
+        ok: true,
+        masterSource: {
+          articleTitle: stored.articleTitle,
+          importedAt: stored.importedAt,
+          outputChars: stored.outputChars,
+          imageCount: stored.imageRegistry.length,
+          downloadFileCount: stored.downloadFiles.length
+        }
+      });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "GET_MASTER_SOURCE_CACHE") {
+    (async () => {
+      const stored = await getLatestMasterSourceCache();
+      sendResponse({
+        ok: true,
+        masterSource: stored
+          ? {
+              articleTitle: stored.articleTitle,
+              importedAt: stored.importedAt,
+              outputChars: stored.outputChars,
+              imageCount: stored.imageRegistry?.length || 0,
+              downloadFileCount: stored.downloadFiles?.length || 0
+            }
+          : null
+      });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
   if (message?.type === "DOWNLOAD_IMAGES") {
     (async () => {
       const files = Array.isArray(message.files) ? message.files : [];
@@ -2572,6 +3628,17 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "SPEECHIFY_PLAYER_REMOTE") {
     (async () => {
       const result = await sendSpeechifyPlayerRemote(message.payload || {}, _sender?.tab || null);
+      sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RADPRIMER_NAVIGATE_SOURCE_IMAGE") {
+    (async () => {
+      const result = await navigateSourceImage(message || {}, _sender?.tab || null);
       sendResponse({ ok: true, result });
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
@@ -2679,6 +3746,24 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const tabId = message.tabId || _sender?.tab?.id;
       if (tabId) {
         await sendPageStatus(tabId, "Compare Source Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "BUILD_MASTER_SOURCE_FROM_ARTICLE") {
+    (async () => {
+      const tab = message.tabId ? await chrome.tabs.get(message.tabId) : _sender?.tab;
+      const result = await runMasterSourceFromPage(tab);
+      sendResponse({ ok: true, ...result });
+    })().catch(async (error) => {
+      const tabId = message.tabId || _sender?.tab?.id;
+      if (tabId) {
+        await sendPageStatus(tabId, "Master Source Error", String(error?.message || error), {
           error: true
         });
       }
