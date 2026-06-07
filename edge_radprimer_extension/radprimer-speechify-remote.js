@@ -20,7 +20,7 @@
   let busy = false;
   let pollTimer = null;
   let pollActiveUntil = 0;
-  let syncNoticeTimer = null;
+  let remoteNoticeTimer = null;
   let playerShortcutSettings = { ...DEFAULT_PLAYER_SHORTCUTS };
 
   function normalizeShortcutKey(value) {
@@ -194,7 +194,7 @@
         }
         .controls {
           display: grid;
-          grid-template-columns: 44px 1fr 44px 48px 48px 50px;
+          grid-template-columns: 44px 1fr 44px 56px;
           gap: 7px;
           align-items: center;
           margin-bottom: 8px;
@@ -244,7 +244,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
         }
-        .sync-notice {
+        .remote-notice {
           position: absolute;
           left: 0;
           bottom: 50px;
@@ -264,19 +264,19 @@
           pointer-events: none;
           transition: opacity .16s ease, transform .16s ease;
         }
-        .sync-notice.show {
+        .remote-notice.show {
           opacity: 1;
           transform: translateY(0) scale(1);
         }
-        .sync-notice.success {
+        .remote-notice.success {
           border-color: rgba(74, 222, 128, 0.44);
           background: rgba(20, 83, 45, 0.92);
         }
-        .sync-notice.warn {
+        .remote-notice.warn {
           border-color: rgba(250, 204, 21, 0.42);
           background: rgba(113, 63, 18, 0.94);
         }
-        .sync-notice.fail {
+        .remote-notice.fail {
           border-color: rgba(248, 113, 113, 0.44);
           background: rgba(127, 29, 29, 0.94);
         }
@@ -303,8 +303,6 @@
             <button class="control play" type="button" data-action="playPause" title="Play or pause">Play</button>
             <button class="control" type="button" data-action="forward10" title="Forward 10 seconds">+10</button>
             <button class="open" type="button" data-action="focus" title="Open Speechify tab">Open</button>
-            <button class="open" type="button" data-action="calibrate" title="Briefly focus Speechify and sync the current highlighted text">Sync</button>
-            <button class="open" type="button" data-action="updateCache" title="Update cached script from the current Speechify text">Cache</button>
           </div>
           <div class="speed-row" aria-label="Speechify speed">
             <button class="speed" type="button" data-speed="0.8x">0.8</button>
@@ -316,7 +314,7 @@
           </div>
           <div class="status">Hover to connect Speechify.</div>
         </div>
-        <div class="sync-notice" role="status" aria-live="polite"></div>
+        <div class="remote-notice" role="status" aria-live="polite"></div>
       </div>
     `;
 
@@ -366,40 +364,6 @@
         resolve(response.result || {});
       });
     });
-  }
-
-  function getSyncNotice(state) {
-    const section = state?.lectureSection || null;
-    const label = section?.label || "";
-    if (state?.calibrated || state?.syncStatus === "matched") {
-      return {
-        kind: "success",
-        message: state?.syncMessage || `Sync locked: matched Speechify text to the script${label ? ` at ${label}` : ""}.`
-      };
-    }
-    if (state?.calibrationPreserved || state?.syncStatus === "preserved") {
-      return {
-        kind: "warn",
-        message: state?.syncMessage || `Sync checked: no new script match, keeping previous anchor${label ? ` at ${label}` : ""}.`
-      };
-    }
-    return {
-      kind: "fail",
-      message: state?.syncMessage || "Sync failed: highlighted Speechify text did not match the cached script."
-    };
-  }
-
-  function getCacheNotice(state) {
-    if (state?.cacheUpdated) {
-      return {
-        kind: "success",
-        message: state?.cacheMessage || "Cache updated from the full Speechify reader text."
-      };
-    }
-    return {
-      kind: "fail",
-      message: "Cache update failed: could not read the current Speechify text."
-    };
   }
 
   function getSectionImageNumber(section) {
@@ -464,7 +428,7 @@
     const section = lastState?.lectureSection;
     const imageNumber = getSectionImageNumber(section);
     if (!imageNumber) {
-      showSyncNotice(host, "warn", "No current image number is available yet.");
+      showRemoteNotice(host, "warn", "No current image number is available yet.");
       return false;
     }
 
@@ -480,16 +444,16 @@
 
     if (!sourceKind || sourceKind === currentSourceKind) {
       document.dispatchEvent(new CustomEvent("radprimer-navigate-image", { detail }));
-      showSyncNotice(host, "success", `Jumped to ${sourceLabel ? `${sourceLabel} ` : ""}image ${imageNumber}.`);
+      showRemoteNotice(host, "success", `Jumped to ${sourceLabel ? `${sourceLabel} ` : ""}image ${imageNumber}.`);
       return true;
     }
 
     requestSourceImageJump(detail)
       .then(() => {
-        showSyncNotice(host, "success", `Opened ${sourceLabel || sourceKind} image ${imageNumber}.`);
+        showRemoteNotice(host, "success", `Opened ${sourceLabel || sourceKind} image ${imageNumber}.`);
       })
       .catch((error) => {
-        showSyncNotice(
+        showRemoteNotice(
           host,
           "fail",
           `Could not open ${sourceLabel || sourceKind} image ${imageNumber}: ${String(error?.message || error)}`
@@ -498,15 +462,15 @@
     return true;
   }
 
-  function showSyncNotice(host, kind, message) {
-    const notice = host?.shadowRoot?.querySelector(".sync-notice");
+  function showRemoteNotice(host, kind, message) {
+    const notice = host?.shadowRoot?.querySelector(".remote-notice");
     if (!notice) return;
-    clearTimeout(syncNoticeTimer);
+    clearTimeout(remoteNoticeTimer);
     notice.textContent = message || "";
     notice.hidden = false;
-    notice.className = `sync-notice ${kind || ""}`.trim();
+    notice.className = `remote-notice ${kind || ""}`.trim();
     requestAnimationFrame(() => notice.classList.add("show"));
-    syncNoticeTimer = setTimeout(() => {
+    remoteNoticeTimer = setTimeout(() => {
       notice.classList.remove("show");
       setTimeout(() => {
         if (!notice.classList.contains("show")) notice.hidden = true;
@@ -528,10 +492,7 @@
     const speed = normalizeSpeed(state?.speed || "");
     const section = state?.lectureSection || null;
     const sectionLabel = section?.label || "";
-    const exactPrefix = section?.estimated ? "~ " : "";
-    const sectionDisplay = sectionLabel
-      ? `${exactPrefix}${sectionLabel}${section?.highlightStale ? " (estimated)" : ""}`
-      : "";
+    const sectionDisplay = sectionLabel || "";
     const compactSectionDisplay = getCompactSectionDisplay(section, sectionDisplay);
     const sectionImageNumber = getSectionImageNumber(section);
 
@@ -559,27 +520,9 @@
 
     if (errorMessage) {
       status.textContent = errorMessage;
-    } else if (state?.calibrated) {
-      status.textContent = sectionLabel
-        ? `Synced from Speechify / ${sectionDisplay || sectionLabel}`
-        : "Synced from Speechify";
-    } else if (state?.syncAttempted) {
-      status.textContent =
-        state?.syncMessage ||
-        (sectionLabel
-          ? `Sync checked / ${sectionDisplay || sectionLabel}`
-          : "Sync checked, but no full-narrative anchor was found.");
-    } else if (state?.cacheUpdated) {
-      status.textContent = state?.cacheMessage || "Cache updated from current Speechify text.";
     } else if (state?.available) {
       const speedText = state.speed ? `${state.speed} speed` : "Connected";
-      if (section?.estimated) {
-        status.textContent = sectionLabel
-          ? `${section?.pinnedToSync ? "Synced anchor" : section?.calibratedEstimate ? "Calibrated estimate" : "Estimated"} / ${compactSectionDisplay}`
-          : "Estimated from RadPrimer clock";
-      } else {
-        status.textContent = sectionLabel ? `${speedText} / ${compactSectionDisplay}` : speedText;
-      }
+      status.textContent = sectionLabel ? `${speedText} / ${compactSectionDisplay}` : speedText;
     } else {
       status.textContent = "Open a Speechify lecture tab first.";
     }
@@ -625,20 +568,8 @@
       const state = await sendRemoteMessage({ action, speed });
       lastState = state;
       renderState(host, state);
-      if (action === "calibrate") {
-        const notice = getSyncNotice(state);
-        showSyncNotice(host, notice.kind, notice.message);
-      } else if (action === "updateCache") {
-        const notice = getCacheNotice(state);
-        showSyncNotice(host, notice.kind, notice.message);
-      }
     } catch (error) {
       renderState(host, lastState, String(error?.message || error));
-      if (action === "calibrate") {
-        showSyncNotice(host, "fail", `Sync failed: ${String(error?.message || error)}`);
-      } else if (action === "updateCache") {
-        showSyncNotice(host, "fail", `Cache update failed: ${String(error?.message || error)}`);
-      }
     } finally {
       busy = false;
       renderState(host, lastState);

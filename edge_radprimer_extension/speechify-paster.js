@@ -65,9 +65,6 @@
   const TENS_WORDS = "twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety";
   const NUMBER_WORD_PATTERN = `(?:(?:${TENS_WORDS})(?:[-\\s]+(?:${UNIT_WORDS}))?|${TEEN_WORDS}|${UNIT_WORDS}|zero)`;
   const NUMBER_TOKEN_RE = new RegExp(`\\b(?:\\d{1,3}|${NUMBER_WORD_PATTERN})\\b`, "gi");
-  const SPEECHIFY_LECTURE_CACHE_KEY = "radprimerSpeechifyLectureCache";
-
-  let speechifyLectureCache = null;
   let playerClockState = {
     elapsedSeconds: null,
     durationSeconds: null,
@@ -75,14 +72,6 @@
     isPlaying: false,
     updatedAt: 0,
     rawElapsedSeconds: null
-  };
-  let readerFullTextCache = { text: "", updatedAt: 0 };
-  let lectureSectionCache = { key: "", value: null, updatedAt: 0 };
-  let lectureGroupImageHold = {
-    groupKey: "",
-    sourceKind: "",
-    imageNumber: null,
-    updatedAt: 0
   };
   let lectureExplicitImageState = {
     sourceKind: "",
@@ -96,21 +85,6 @@
     textPreview: "",
     updatedAt: 0
   };
-  let lectureTimelineCalibration = {
-    titleKey: "",
-    textFraction: null,
-    textIndex: null,
-    anchorImageNumber: null,
-    anchorSection: null,
-    elapsedSeconds: null,
-    durationSeconds: null,
-    updatedAt: 0
-  };
-  let speechTimelineCache = {
-    key: "",
-    segments: [],
-    totalWeight: 0
-  };
   let readerHighlightState = {
     signature: "",
     changedAt: 0,
@@ -118,49 +92,9 @@
     source: "",
     lastContext: null
   };
+  let currentLectureIdentity = "";
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-  const resetReaderCalibration = ({ preserveTimeline = false } = {}) => {
-    readerHighlightState = {
-      signature: "",
-      changedAt: 0,
-      checkedAt: 0,
-      source: "",
-      lastContext: null
-    };
-    lectureSectionCache = { key: "", value: null, updatedAt: 0 };
-    lectureGroupImageHold = {
-      groupKey: "",
-      sourceKind: "",
-      imageNumber: null,
-      updatedAt: 0
-    };
-    lectureExplicitImageState = {
-      sourceKind: "",
-      sourceLabel: "",
-      imageNumber: null,
-      groupNumbers: [],
-      groupLabel: "",
-      imageLabel: "",
-      label: "",
-      activeText: "",
-      textPreview: "",
-      updatedAt: 0
-    };
-    if (!preserveTimeline) {
-      lectureTimelineCalibration = {
-        titleKey: "",
-        textFraction: null,
-        textIndex: null,
-        anchorImageNumber: null,
-        anchorSection: null,
-        elapsedSeconds: null,
-        durationSeconds: null,
-        updatedAt: 0
-      };
-    }
-  };
 
   const normalize = (value) => {
     return String(value || "")
@@ -194,156 +128,6 @@
   const firstVisible = (selector) => {
     const candidates = Array.from(document.querySelectorAll(selector));
     return candidates.find(isVisible) || candidates[0] || null;
-  };
-
-  const loadSpeechifyLectureCache = async () => {
-    try {
-      const stored = await chrome.storage.local.get(SPEECHIFY_LECTURE_CACHE_KEY);
-      speechifyLectureCache = stored?.[SPEECHIFY_LECTURE_CACHE_KEY] || null;
-    } catch {
-      speechifyLectureCache = null;
-    }
-  };
-
-  loadSpeechifyLectureCache();
-
-  try {
-    chrome.storage.onChanged.addListener((changes, areaName) => {
-      if (areaName !== "local") return;
-      if (changes[SPEECHIFY_LECTURE_CACHE_KEY]) {
-        speechifyLectureCache = changes[SPEECHIFY_LECTURE_CACHE_KEY].newValue || null;
-      }
-    });
-  } catch {}
-
-  const rememberSpeechifyLecture = async ({ title, text }) => {
-    const finalTitle = cleanDisplayText(title || "");
-    const finalText = String(text || "");
-    if (!finalText.trim()) return;
-
-    const entry = {
-      title: finalTitle,
-      normalizedTitle: normalize(finalTitle),
-      text: finalText,
-      savedAt: Date.now()
-    };
-    const previousByTitle = speechifyLectureCache?.byTitle || {};
-    const byTitle = { ...previousByTitle, [entry.normalizedTitle || "__latest__"]: entry };
-    const sortedKeys = Object.keys(byTitle).sort((a, b) => {
-      return (byTitle[b]?.savedAt || 0) - (byTitle[a]?.savedAt || 0);
-    });
-
-    for (const key of sortedKeys.slice(5)) delete byTitle[key];
-
-    const nextCache = { latest: entry, byTitle };
-    speechifyLectureCache = nextCache;
-
-    try {
-      await chrome.storage.local.set({ [SPEECHIFY_LECTURE_CACHE_KEY]: nextCache });
-    } catch (error) {
-      console.warn("[RadPrimer Speechify] Could not cache lecture text for progress tracking.", error);
-    }
-  };
-
-  const getCachedLectureTextForTitle = (title) => {
-    const normalizedTitle = normalize(title);
-    const byTitle = speechifyLectureCache?.byTitle || {};
-    if (normalizedTitle && byTitle[normalizedTitle]?.text) return byTitle[normalizedTitle].text;
-
-    const latest = speechifyLectureCache?.latest;
-    if (!latest?.text) return "";
-
-    const latestTitle = normalize(latest.title);
-    const fuzzyTitleMatch =
-      normalizedTitle &&
-      latestTitle &&
-      (latestTitle === normalizedTitle ||
-        latestTitle.includes(normalizedTitle) ||
-        normalizedTitle.includes(latestTitle));
-
-    if (!normalizedTitle || fuzzyTitleMatch) {
-      return latest.text;
-    }
-
-    return "";
-  };
-
-  const getReaderBlockEntries = () => {
-    const scroller = firstVisible(SPEECHIFY_SELECTORS.readerScrollContainer);
-    const scrollTop = scroller?.scrollTop || window.scrollY || 0;
-    return Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.readerBlocks))
-      .map((block) => {
-        const text = cleanDisplayText(block.textContent || "");
-        if (!text) return null;
-        const positioned = block.closest?.('[style*="top:"]') || block.parentElement;
-        const styleText = positioned?.getAttribute?.("style") || "";
-        const topMatch = styleText.match(/\btop:\s*([0-9.]+)px/i);
-        const top = topMatch
-          ? Number.parseFloat(topMatch[1])
-          : block.getBoundingClientRect().top + scrollTop;
-        return {
-          text,
-          top: Number.isFinite(top) ? top : scrollTop
-        };
-      })
-      .filter(Boolean);
-  };
-
-  const getReaderFullText = ({ force = false } = {}) => {
-    const now = Date.now();
-    if (!force && readerFullTextCache.text && now - readerFullTextCache.updatedAt < 15000) {
-      return readerFullTextCache.text;
-    }
-
-    readerFullTextCache = { text: getReaderBlockEntries().map((entry) => entry.text).join("\n\n"), updatedAt: now };
-    return readerFullTextCache.text;
-  };
-
-  const scrapeFullReaderText = async ({ timeoutMs = 25000 } = {}) => {
-    const scroller = firstVisible(SPEECHIFY_SELECTORS.readerScrollContainer);
-    if (!scroller) throw new Error("Speechify reader scroll container was not found.");
-
-    const originalTop = scroller.scrollTop || 0;
-    const start = Date.now();
-    const entries = new Map();
-    const rememberVisibleBlocks = () => {
-      getReaderBlockEntries().forEach((entry) => {
-        const key = `${Math.round(entry.top)}|${entry.text.slice(0, 160)}`;
-        entries.set(key, entry);
-      });
-    };
-
-    const scrollTo = async (top) => {
-      scroller.scrollTop = Math.max(0, top);
-      scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
-      await sleep(120);
-      rememberVisibleBlocks();
-    };
-
-    rememberVisibleBlocks();
-    await scrollTo(0);
-
-    let maxScroll = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
-    const step = Math.max(360, Math.floor((scroller.clientHeight || 800) * 0.72));
-    let current = 0;
-
-    while (current < maxScroll && Date.now() - start < timeoutMs) {
-      current = Math.min(maxScroll, current + step);
-      await scrollTo(current);
-      maxScroll = Math.max(maxScroll, scroller.scrollHeight - scroller.clientHeight);
-    }
-
-    await scrollTo(maxScroll);
-    await scrollTo(originalTop);
-
-    const text = Array.from(entries.values())
-      .sort((a, b) => a.top - b.top)
-      .map((entry) => entry.text)
-      .filter(Boolean)
-      .join("\n\n");
-
-    readerFullTextCache = { text, updatedAt: Date.now() };
-    return text;
   };
 
   const getReadableFrameDocuments = () => {
@@ -584,73 +368,12 @@
     return mentions.sort((a, b) => a.index - b.index);
   };
 
-  const ORDINAL_GROUP_INDEX = {
-    first: 0,
-    "1st": 0,
-    one: 0,
-    second: 1,
-    "2nd": 1,
-    two: 1,
-    third: 2,
-    "3rd": 2,
-    three: 2,
-    fourth: 3,
-    "4th": 3,
-    four: 3,
-    fifth: 4,
-    "5th": 4,
-    five: 4,
-    sixth: 5,
-    "6th": 5,
-    six: 5,
-    seventh: 6,
-    "7th": 6,
-    seven: 6,
-    eighth: 7,
-    "8th": 7,
-    eight: 7,
-    ninth: 8,
-    "9th": 8,
-    nine: 8,
-    tenth: 9,
-    "10th": 9,
-    ten: 9
-  };
-
   const getOrderedGroupNumbers = (groupNumbers) => uniqueSortedNumbers(groupNumbers || []);
-
-  const getGroupKey = (groupNumbers) => getOrderedGroupNumbers(groupNumbers).join("/");
-
-  const getHeldImageForGroup = (groupNumbers, sourceKind = "") => {
-    const group = getOrderedGroupNumbers(groupNumbers);
-    if (group.length < 2) return null;
-
-    const heldImage = Number(lectureGroupImageHold.imageNumber);
-    if (!Number.isFinite(heldImage) || !group.includes(heldImage)) return null;
-    if (lectureGroupImageHold.groupKey !== getGroupKey(group)) return null;
-
-    if (Date.now() - Number(lectureGroupImageHold.updatedAt || 0) > 20 * 60 * 1000) return null;
-    return heldImage;
-  };
-
-  const rememberLectureImageSection = (section) => {
-    const group = getOrderedGroupNumbers(section?.groupNumbers || []);
-    const image = Number(section?.imageNumber);
-    if (group.length < 2 || !Number.isFinite(image) || !group.includes(image)) return;
-    if (section?.estimated || section?.highlightStale) return;
-
-    lectureGroupImageHold = {
-      groupKey: getGroupKey(group),
-      sourceKind: section.sourceKind || "",
-      imageNumber: image,
-      updatedAt: Date.now()
-    };
-  };
 
   const rememberExplicitImageSection = (section) => {
     const image = Number(section?.imageNumber);
     if (!Number.isFinite(image) || image <= 0) return;
-    if (section?.estimated || section?.highlightStale) return;
+    if (section?.highlightStale) return;
 
     lectureExplicitImageState = {
       sourceKind: section.sourceKind || "",
@@ -685,125 +408,26 @@
     };
   };
 
-  const resolveRelativeGroupImageNumber = (text, groupNumbers, previousImage = null) => {
-    const group = getOrderedGroupNumbers(groupNumbers);
-    if (group.length < 2) return null;
-
-    const source = cleanDisplayText(text).toLowerCase();
-    if (!source) return null;
-
-    const ordinalWordPattern = Object.keys(ORDINAL_GROUP_INDEX)
-      .map((word) => word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-      .join("|");
-    const imageNoun = "(?:image|view|radiograph|film|scan|slice|case|panel|example)";
-    const ordinalBeforeImageRe = new RegExp(
-      `\\b(?:the\\s+)?(${ordinalWordPattern}|last|final)\\s+${imageNoun}s?\\b`,
-      "gi"
-    );
-    const imageBeforeOrdinalRe = new RegExp(
-      `\\b${imageNoun}\\s+(?:number\\s+)?(${ordinalWordPattern})\\s+(?:in|of|from)\\s+(?:the\\s+)?(?:group|set|pair|sequence|cluster)\\b`,
-      "gi"
-    );
-    const sentenceOrdinalRe = new RegExp(
-      `\\b(?:start(?:ing)?\\s+with|begin(?:ning)?\\s+with|move\\s+to|go\\s+to|look\\s+at|then|next|now)\\s+(?:the\\s+)?(${ordinalWordPattern}|last|final)\\b`,
-      "gi"
-    );
-
-    const cueMatches = [];
-    [ordinalBeforeImageRe, imageBeforeOrdinalRe, sentenceOrdinalRe].forEach((regex) => {
-      regex.lastIndex = 0;
-      let match;
-      while ((match = regex.exec(source)) !== null) {
-        cueMatches.push({ token: match[1], index: match.index, type: "ordinal" });
-      }
-    });
-
-    const nextRe = /\b(?:next|following|subsequent)\s+(?:image|view|radiograph|film|scan|slice|case|panel|example)\b/gi;
-    let nextMatch;
-    while ((nextMatch = nextRe.exec(source)) !== null) {
-      cueMatches.push({ token: "next", index: nextMatch.index, type: "next" });
-    }
-
-    const cue = cueMatches.sort((a, b) => a.index - b.index).at(-1);
-
-    if (cue?.type === "ordinal") {
-      const token = cue.token;
-      if (token === "last" || token === "final") return group.at(-1) || null;
-      const ordinalIndex = ORDINAL_GROUP_INDEX[token];
-      if (Number.isFinite(ordinalIndex) && ordinalIndex >= 0 && ordinalIndex < group.length) {
-        return group[ordinalIndex];
-      }
-    }
-
-    if (cue?.type === "next") {
-      const previousIndex = group.indexOf(Number(previousImage));
-      if (previousIndex >= 0 && previousIndex + 1 < group.length) return group[previousIndex + 1];
-    }
-
-    return null;
-  };
-
-  const resolveImageSectionTarget = ({
-    currentImage,
-    groupNumbers,
-    activeText,
-    textPreview,
-    contextText,
-    previousImage,
-    heldImage
-  } = {}) => {
-    const group = getOrderedGroupNumbers(groupNumbers);
-    let image = Number.isFinite(Number(currentImage)) ? Number(currentImage) : null;
-    const stableHeldImage = Number.isFinite(Number(heldImage)) ? Number(heldImage) : null;
-
-    if (!image && group.length >= 2 && group.includes(stableHeldImage)) {
-      image = stableHeldImage;
-    }
-
-    if (group.length >= 2) {
-      const preciseRelativeImage = resolveRelativeGroupImageNumber(activeText, group, image || previousImage);
-      const relativeImage =
-        preciseRelativeImage ||
-        (!image || !activeText
-          ? resolveRelativeGroupImageNumber(
-              [textPreview, contextText].filter(Boolean).join(" "),
-              group,
-              image || previousImage
-            )
-          : null);
-      if (relativeImage) image = relativeImage;
-    }
-
-    if (image && group.length >= 2 && !group.includes(image)) image = null;
-
-    const groupLabel = group.length >= 2 ? `group ${compactImageNumbers(group)}` : "";
-    const imageLabel = image ? `image ${image}` : "";
-    const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : groupLabel || imageLabel;
-
-    return {
-      groupNumbers: group,
-      groupLabel,
-      imageNumber: image || null,
-      imageLabel,
-      label
+  const resetStrictImagePointerState = () => {
+    lectureExplicitImageState = {
+      sourceKind: "",
+      sourceLabel: "",
+      imageNumber: null,
+      groupNumbers: [],
+      groupLabel: "",
+      imageLabel: "",
+      label: "",
+      activeText: "",
+      textPreview: "",
+      updatedAt: 0
     };
-  };
-
-  const getFocusedSentenceFromBlock = (blockText, focusText) => {
-    const block = cleanDisplayText(blockText);
-    const focus = cleanDisplayText(focusText);
-    if (!block || focus.length < 3) return "";
-
-    const index = block.toLowerCase().indexOf(focus.toLowerCase());
-    if (index < 0) return "";
-
-    const before = block.slice(0, index);
-    const after = block.slice(index + focus.length);
-    const sentenceStart = Math.max(before.lastIndexOf("."), before.lastIndexOf("?"), before.lastIndexOf("!")) + 1;
-    const afterStops = [after.indexOf("."), after.indexOf("?"), after.indexOf("!")].filter((n) => n >= 0);
-    const sentenceEnd = afterStops.length ? index + focus.length + Math.min(...afterStops) + 1 : block.length;
-
-    return block.slice(sentenceStart, sentenceEnd).trim();
+    readerHighlightState = {
+      signature: "",
+      changedAt: 0,
+      checkedAt: 0,
+      source: "",
+      lastContext: null
+    };
   };
 
   const findTextIndexSimple = (sourceText, targetText) => {
@@ -813,562 +437,103 @@
     return source.toLowerCase().indexOf(target.toLowerCase());
   };
 
-  const pickMentionBeforeFocus = (mentions, focusIndex) => {
-    if (!Array.isArray(mentions) || !mentions.length) return null;
-    const singulars = mentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
-    if (!singulars.length) return null;
-    if (!Number.isFinite(focusIndex) || focusIndex < 0) return singulars.at(-1) || null;
+  const getStrictMentionImageNumber = (mention) => {
+    if (!mention || mention.plural) return null;
+    const direct = Number(mention.imageNumber);
+    if (Number.isFinite(direct) && direct > 0) return direct;
 
-    return (
-      singulars
-        .filter((mention) => mention.index <= focusIndex)
-        .sort((a, b) => b.index - a.index)[0] ||
-      singulars.sort((a, b) => Math.abs(a.index - focusIndex) - Math.abs(b.index - focusIndex))[0] ||
-      null
-    );
+    const numbers = Array.isArray(mention.numbers)
+      ? mention.numbers.map(Number).filter((value) => Number.isFinite(value) && value > 0)
+      : [];
+    return numbers.length === 1 ? numbers[0] : null;
   };
 
-  const buildDirectContextLectureImageSection = ({ activeText, blockText, sourceName, highlightText }) => {
-    const rawActive = cleanDisplayText(activeText);
-    const block = cleanDisplayText(blockText);
-    const focus = cleanDisplayText(highlightText);
-    const rawActiveContainsFocus =
-      focus && rawActive ? rawActive.toLowerCase().includes(focus.toLowerCase()) : false;
-    const focusedSentence = focus && block ? getFocusedSentenceFromBlock(block, focus) : "";
-    let active = rawActive;
-    if (
-      focusedSentence &&
-      (!rawActiveContainsFocus ||
-        !rawActive ||
-        focusedSentence.length <= Math.max(80, Math.floor(rawActive.length * 0.75)))
-    ) {
-      active = focusedSentence;
-    }
-    const sourceText = active || block;
-    if (!sourceText) return null;
-
-    const activeMentions = extractImageMentions(active);
-    const blockMentions = extractImageMentions(block);
-    const activeSingulars = activeMentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
-    const blockSingulars = blockMentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
-    const focusIndexInActive = focus && active ? findTextIndexSimple(active, focus) : -1;
-    const activeIndex = active && block ? findTextIndexSimple(block, active) : -1;
-    const focusIndexInBlock = focus && block ? findTextIndexSimple(block, focus) : -1;
-    const activeEndIndex = activeIndex >= 0 ? activeIndex + active.length : -1;
-    const priorBlockSingulars =
-      focusIndexInBlock >= 0
-        ? blockSingulars.filter((mention) => mention.index <= Math.max(focusIndexInBlock, activeEndIndex))
-        : activeIndex >= 0
-          ? blockSingulars.filter((mention) => mention.index <= activeEndIndex)
-          : blockSingulars;
-    const mentions = activeMentions.length ? activeMentions : focus ? priorBlockSingulars : blockMentions;
-    if (!mentions.length) return null;
-    const currentMention =
-      pickMentionBeforeFocus(activeMentions, focusIndexInActive) ||
-      (activeMentions.length === 1 && activeMentions[0].numbers?.length === 1 ? activeMentions[0] : null) ||
-      (focus ? null : pickMentionBeforeFocus(blockMentions, focusIndexInBlock)) ||
-      priorBlockSingulars.at(-1) ||
-      null;
-    let currentImage = currentMention?.imageNumber || currentMention?.numbers?.[0] || null;
-    let groupMention = null;
-    let groupNumbers = [];
-
-    if (currentImage) {
-      const groupCandidates = blockMentions.filter((mention) => {
-        if (!mention.plural || mention.numbers.length < 2) return false;
-        if (mention.numbers.includes(currentImage)) return true;
-        if (activeIndex < 0) return false;
-        return mention.index <= activeIndex && activeIndex - mention.index < 1200;
-      });
-      groupMention = groupCandidates.at(-1) || null;
-      groupNumbers = groupMention
-        ? groupMention.numbers.includes(currentImage)
-          ? groupMention.numbers
-          : uniqueSortedNumbers([...groupMention.numbers, currentImage])
-        : [];
-    } else {
-      groupMention =
-        activeMentions.find((mention) => mention.plural && mention.numbers.length >= 2) ||
-        blockMentions.find((mention) => mention.plural && mention.numbers.length >= 2) ||
-        null;
-      groupNumbers = groupMention?.numbers || [];
-    }
-
-    if (!currentImage && !groupNumbers.length) {
-      const allNumbers = uniqueSortedNumbers(mentions.flatMap((mention) => mention.numbers));
-      if (allNumbers.length === 1) currentImage = allNumbers[0];
-    }
-
-    const target = resolveImageSectionTarget({
-      currentImage,
-      groupNumbers,
-      activeText: active,
-      textPreview: sourceText.slice(0, 280),
-      contextText: block,
-      previousImage: currentImage,
-      heldImage: getHeldImageForGroup(
-        groupNumbers,
-        currentMention?.sourceKind || groupMention?.sourceKind || mentions.at(-1)?.sourceKind || ""
-      )
-    });
-    const sourceMention =
-      (target.imageNumber
-        ? priorBlockSingulars.find((mention) => {
-            return mention.numbers?.includes(target.imageNumber) && (currentMention?.sourceKind ? mention.sourceKind : true);
-          }) || priorBlockSingulars.find((mention) => mention.numbers?.includes(target.imageNumber))
-        : null) ||
-      (currentMention?.sourceKind ? currentMention : null) ||
-      groupMention ||
-      currentMention ||
-      mentions.at(-1);
-
-    return target.label
-      ? {
-          label: target.label,
-          group: target.groupLabel,
-          image: target.imageLabel,
-          imageNumber: target.imageNumber,
-          sourceKind: sourceMention?.sourceKind || "",
-          sourceLabel: sourceMention?.sourceLabel || "",
-          groupNumbers: target.groupNumbers,
-          source: sourceName,
-          activeText: active,
-          textPreview: sourceText.slice(0, 280)
-        }
-      : null;
+  const isStrictImageMention = (mention) => {
+    if (!/\bimage\b/i.test(String(mention?.text || ""))) return false;
+    return Number.isFinite(Number(getStrictMentionImageNumber(mention)));
   };
 
-  const getSectionMaxImageNumber = (section) => {
-    if (Number.isFinite(Number(section?.imageNumber))) return Number(section.imageNumber);
-    if (Array.isArray(section?.groupNumbers) && section.groupNumbers.length) {
-      return Math.max(...section.groupNumbers.map(Number).filter(Number.isFinite));
-    }
-    const text = [section?.image, section?.group, section?.label].filter(Boolean).join(" ");
-    const numbers = parseImageNumbers(text).map((item) => item.value).filter(Number.isFinite);
-    return numbers.length ? Math.max(...numbers) : null;
-  };
+  const getStrictCutoffIndexForContext = (context) => {
+    const blockText = cleanDisplayText(context?.blockText || "");
+    const activeText = cleanDisplayText(context?.activeText || "");
+    const highlightText = cleanDisplayText(context?.highlightText || "");
+    const candidates = [];
 
-  const makeAnchorSectionSnapshot = (section) => {
-    if (!section) return null;
-    return {
-      label: section.label || "",
-      group: section.group || "",
-      image: section.image || "",
-      imageNumber: Number.isFinite(Number(section.imageNumber)) ? Number(section.imageNumber) : null,
-      sourceKind: section.sourceKind || "",
-      sourceLabel: section.sourceLabel || "",
-      groupNumbers: Array.isArray(section.groupNumbers) ? section.groupNumbers : [],
-      textFraction: Number.isFinite(Number(section.textFraction)) ? Number(section.textFraction) : null,
-      textIndex: Number.isFinite(Number(section.textIndex)) ? Number(section.textIndex) : null,
-      activeText: section.activeText || "",
-      textPreview: section.textPreview || "",
-      source: "sync-anchor"
-    };
-  };
-
-  const findTextIndexLoose = (sourceText, targetText) => {
-    const source = cleanDisplayText(sourceText);
-    const target = cleanDisplayText(targetText);
-    if (!source || !target || target.length < 4) return -1;
-
-    const lowerSource = source.toLowerCase();
-    const lowerTarget = target.toLowerCase();
-    let index = lowerSource.indexOf(lowerTarget);
-    if (index >= 0) return index;
-
-    const chunks = [
-      lowerTarget.slice(0, 220),
-      lowerTarget.slice(0, 140),
-      lowerTarget.slice(0, 90),
-      lowerTarget.slice(Math.max(0, lowerTarget.length - 220)),
-      lowerTarget.slice(Math.max(0, lowerTarget.length - 140))
-    ]
-      .map((chunk) => chunk.trim())
-      .filter((chunk) => chunk.length >= 40);
-
-    for (const chunk of chunks) {
-      index = lowerSource.indexOf(chunk);
-      if (index >= 0) return index;
+    const activeIndex = Number(context?.activeTextIndex);
+    if (Number.isFinite(activeIndex) && activeIndex >= 0) {
+      candidates.push(activeIndex + Math.max(1, activeText.length));
+    } else if (activeText && blockText) {
+      const foundActive = findTextIndexSimple(blockText, activeText);
+      if (foundActive >= 0) candidates.push(foundActive + Math.max(1, activeText.length));
     }
 
-    return -1;
-  };
-
-  const hasCrossImageSynthesisCue = (text) => {
-    return /\b(cross[- ]image synthesis|synthesize (?:across )?(?:the )?images|synthesis across images|now synthesize (?:the )?images|synthesize the images|step back and integrate|across (?:all )?(?:the )?(?:images|radiographs|cases))\b/i.test(
-      text || ""
-    );
-  };
-
-  const hasCloseoutCue = (text) => {
-    return /\b(high[- ]yield closeout|highest[- ]yield closeout|final framework|final takeaways?|after reviewing|after this set|by the end|for first[- ]pass mastery)\b/i.test(
-      text || ""
-    );
-  };
-
-  const inferSpecialLectureSection = ({ source, boundedIndex, sourceName, activeText, textPreview, textFraction }) => {
-    const cleanSource = cleanDisplayText(source);
-    const lowerContext = cleanDisplayText(activeText || textPreview || "").toLowerCase();
-    const contextPreview = textPreview || cleanSource.slice(Math.max(0, boundedIndex - 140), boundedIndex + 180);
-
-    if (hasCrossImageSynthesisCue(lowerContext)) {
-      return {
-        label: "cross-image synthesis",
-        source: sourceName,
-        sectionType: "cross-image synthesis",
-        textFraction,
-        textIndex: boundedIndex,
-        activeText,
-        textPreview: contextPreview
-      };
+    const focusIndex = Number(context?.focusTextIndex);
+    if (Number.isFinite(focusIndex) && focusIndex >= 0) {
+      candidates.push(focusIndex + Math.max(1, highlightText.length));
+    } else if (highlightText && blockText) {
+      const foundHighlight = findTextIndexSimple(blockText, highlightText);
+      if (foundHighlight >= 0) candidates.push(foundHighlight + Math.max(1, highlightText.length));
     }
 
-    if (cleanSource) {
-      const before = cleanSource.slice(0, Math.max(0, boundedIndex)).toLowerCase();
-      const lastCross = Math.max(
-        before.lastIndexOf("cross-image synthesis"),
-        before.lastIndexOf("cross image synthesis"),
-        before.lastIndexOf("now synthesize the images"),
-        before.lastIndexOf("synthesize the images"),
-        before.lastIndexOf("step back and integrate")
-      );
-      if (lastCross >= 0) {
-        const lastCloseout = Math.max(
-          before.lastIndexOf("high-yield closeout"),
-          before.lastIndexOf("highest-yield closeout"),
-          before.lastIndexOf("final framework"),
-          before.lastIndexOf("final takeaway"),
-          before.lastIndexOf("after reviewing"),
-          before.lastIndexOf("for first-pass mastery")
-        );
-        if (lastCross > lastCloseout) {
-          return {
-            label: "cross-image synthesis",
-            source: sourceName,
-            sectionType: "cross-image synthesis",
-            textFraction,
-            textIndex: boundedIndex,
-            activeText,
-            textPreview: contextPreview
-          };
-        }
-      }
-    }
-
-    return null;
+    if (!candidates.length) return blockText.length;
+    return Math.max(0, Math.min(blockText.length, Math.max(...candidates)));
   };
 
-  const buildLectureImageSectionFromMentions = ({ source, focusIndex, sourceName, activeText, textPreview }) => {
-    const cleanSource = cleanDisplayText(source);
-    if (!cleanSource || !Number.isFinite(focusIndex) || focusIndex < 0) return null;
+  const getStrictGroupForMention = (mentions, currentMention) => {
+    if (!currentMention) return [];
+    const currentImage = Number(getStrictMentionImageNumber(currentMention));
+    if (!Number.isFinite(currentImage)) return [];
 
-    const boundedIndex = Math.max(0, Math.min(cleanSource.length - 1, focusIndex));
-    const textFraction = cleanSource.length > 1 ? boundedIndex / (cleanSource.length - 1) : 0;
-    const mentions = extractImageMentions(cleanSource);
-    const lowerContext = cleanDisplayText(activeText || textPreview || "").toLowerCase();
-    const specialSection = inferSpecialLectureSection({
-      source: cleanSource,
-      boundedIndex,
-      sourceName,
-      activeText,
-      textPreview,
-      textFraction
-    });
-    if (specialSection) return specialSection;
-
-    if (!mentions.length) {
-      if (boundedIndex < cleanSource.length * 0.12 || /\b(opening|orientation|big[- ]picture|organizing spine|before the images?)\b/i.test(lowerContext)) {
-        return {
-          label: "intro",
-          source: sourceName,
-          textFraction,
-          textIndex: boundedIndex,
-          activeText,
-          textPreview: textPreview || cleanSource.slice(0, 220)
-        };
-      }
-
-      if (boundedIndex > cleanSource.length * 0.86 || hasCloseoutCue(lowerContext) || /\b(wrap[- ]?up|closeout)\b/i.test(lowerContext)) {
-        return {
-          label: "wrap-up",
-          source: sourceName,
-          textFraction,
-          textIndex: boundedIndex,
-          activeText,
-          textPreview: textPreview || cleanSource.slice(Math.max(0, boundedIndex - 110), boundedIndex + 110)
-        };
-      }
-
-      return null;
-    }
-
-    const priorMentions = mentions.filter((mention) => mention.index <= boundedIndex);
-    const currentMention = priorMentions.at(-1) || mentions[0];
-    const recentPlural = priorMentions
-      .filter((mention) => mention.plural && mention.numbers.length >= 2 && boundedIndex - mention.index < 3000)
+    const sourceKind = currentMention.sourceKind || "";
+    const plural = mentions
+      .filter((mention) => {
+        if (!mention.plural || !Array.isArray(mention.numbers) || mention.numbers.length < 2) return false;
+        if (!mention.numbers.includes(currentImage)) return false;
+        if (sourceKind && mention.sourceKind && mention.sourceKind !== sourceKind) return false;
+        if (mention.index > currentMention.index) return false;
+        return currentMention.index - mention.index <= 2500;
+      })
       .at(-1);
-    const currentNumbers = uniqueSortedNumbers(currentMention?.numbers || []);
-    const singularMentions = priorMentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
-    const lastSingular = singularMentions.at(-1);
-    let currentImage = lastSingular?.numbers?.at(-1) || null;
-    let groupNumbers =
-      recentPlural?.numbers?.length >= 2
-        ? recentPlural.numbers
-        : currentMention?.plural && currentNumbers.length >= 2
-          ? currentNumbers
-          : [];
 
-    if (currentImage && groupNumbers.length >= 2 && !groupNumbers.includes(currentImage)) {
-      if (lastSingular && recentPlural && lastSingular.index > recentPlural.index && lastSingular.index - recentPlural.index < 900) {
-        groupNumbers = uniqueSortedNumbers([...groupNumbers, currentImage]);
-      } else {
-        groupNumbers = [];
-      }
-    }
-
-    if (!currentImage && !groupNumbers.length && currentNumbers.length === 1) {
-      currentImage = currentNumbers[0];
-    }
-
-    const sectionPreview = textPreview || cleanSource.slice(Math.max(0, boundedIndex - 160), boundedIndex + 180);
-    const target = resolveImageSectionTarget({
-      currentImage,
-      groupNumbers,
-      activeText,
-      textPreview: sectionPreview,
-      contextText: lowerContext,
-      previousImage: currentImage,
-      heldImage: getHeldImageForGroup(
-        groupNumbers,
-        lastSingular?.sourceKind || recentPlural?.sourceKind || currentMention?.sourceKind || ""
-      )
-    });
-    const sourceMention =
-      target.imageNumber && lastSingular?.numbers?.includes(target.imageNumber)
-        ? lastSingular
-        : lastSingular?.sourceKind
-          ? lastSingular
-          : currentMention;
-
-    return target.label
-      ? {
-          label: target.label,
-          group: target.groupLabel,
-          image: target.imageLabel,
-          imageNumber: target.imageNumber,
-          sourceKind: sourceMention?.sourceKind || "",
-          sourceLabel: sourceMention?.sourceLabel || "",
-          groupNumbers: target.groupNumbers,
-          source: sourceName,
-          textFraction,
-          textIndex: boundedIndex,
-          activeText,
-          textPreview: sectionPreview
-        }
-      : null;
+    return plural?.numbers || [];
   };
 
-  const getSectionSourceText = (title, allowReaderFallback = true) => {
-    return cleanDisplayText(getCachedLectureTextForTitle(title) || (allowReaderFallback ? getReaderFullText() : ""));
-  };
+  const buildStrictLiveImageSection = (context) => {
+    const blockText = cleanDisplayText(context?.blockText || "");
+    if (!blockText) return null;
 
-  const clamp01 = (value) => Math.max(0, Math.min(1, value));
+    const cutoff = getStrictCutoffIndexForContext(context);
+    const mentions = extractImageMentions(blockText).filter((mention) => mention.index <= cutoff);
+    const currentMention = mentions.filter(isStrictImageMention).at(-1);
+    if (!currentMention) return null;
 
-  const titleCalibrationKey = (title) => normalize(title || document.title.replace(/\s*\|\s*Speechify\s*$/i, ""));
+    const currentImage = Number(getStrictMentionImageNumber(currentMention));
+    const groupNumbers = getStrictGroupForMention(mentions, currentMention);
+    if (!Number.isFinite(currentImage) || currentImage <= 0) return null;
 
-  const getRawTimelineFraction = ({ progress, elapsedSeconds, durationSeconds } = {}) => {
-    const numericProgress = Number(progress);
-    const numericElapsed = Number(elapsedSeconds);
-    const numericDuration = Number(durationSeconds);
+    const group = getOrderedGroupNumbers(groupNumbers);
+    const safeGroup = group.includes(currentImage) ? group : [];
+    const groupLabel = safeGroup.length >= 2 ? `group ${compactImageNumbers(safeGroup)}` : "";
+    const imageLabel = `image ${currentImage}`;
+    const label = groupLabel ? `${groupLabel} / ${imageLabel}` : imageLabel;
 
-    if (
-      Number.isFinite(numericElapsed) &&
-      Number.isFinite(numericDuration) &&
-      numericDuration > 0
-    ) {
-      return clamp01(numericElapsed / numericDuration);
-    }
-
-    if (Number.isFinite(numericProgress) && numericProgress > 0) {
-      return clamp01(numericProgress / 100);
-    }
-
-    return null;
-  };
-
-  const getAnchoredTimelineFraction = (timing = {}) => {
-    const rawFraction = getRawTimelineFraction(timing);
-    if (!Number.isFinite(rawFraction)) return null;
-
-    const titleKey = titleCalibrationKey(timing.title);
-    const calibration = lectureTimelineCalibration;
-    if (
-      !calibration?.titleKey ||
-      calibration.titleKey !== titleKey ||
-      !Number.isFinite(calibration.textFraction) ||
-      !Number.isFinite(calibration.elapsedSeconds) ||
-      !Number.isFinite(calibration.durationSeconds)
-    ) {
-      return rawFraction;
-    }
-
-    const elapsed = Number(timing.elapsedSeconds);
-    const duration = Number(timing.durationSeconds) || calibration.durationSeconds;
-    if (!Number.isFinite(elapsed) || !Number.isFinite(duration) || duration <= 0) return rawFraction;
-
-    const anchorElapsed = Math.max(0, Math.min(duration, calibration.elapsedSeconds));
-    const anchorFraction = clamp01(calibration.textFraction);
-    if (elapsed >= anchorElapsed) {
-      const remainingSeconds = Math.max(0.001, duration - anchorElapsed);
-      return clamp01(anchorFraction + ((elapsed - anchorElapsed) / remainingSeconds) * (1 - anchorFraction));
-    }
-
-    if (anchorElapsed > 0) {
-      return clamp01(anchorFraction * (elapsed / anchorElapsed));
-    }
-
-    return rawFraction;
-  };
-
-  const speechTimelineKey = (source) => {
-    return `${source.length}|${source.slice(0, 90)}|${source.slice(-90)}`;
-  };
-
-  const estimateSpeechWeight = (text) => {
-    const source = String(text || "");
-    const words = source.match(/[A-Za-z0-9]+(?:[-'][A-Za-z0-9]+)?/g) || [];
-    const numericTokens = source.match(/\b\d+(?:[.,]\d+)?\b/g) || [];
-    const acronyms = source.match(/\b[A-Z]{2,}\b/g) || [];
-    const commas = source.match(/[,;]/g) || [];
-    const strongPauses = source.match(/[.!?:]/g) || [];
-    const imageMentions = source.match(/\bimages?\s+\w+/gi) || [];
-
-    return Math.max(
-      0.5,
-      words.length +
-        numericTokens.length * 0.35 +
-        acronyms.length * 0.18 +
-        commas.length * 0.16 +
-        strongPauses.length * 0.38 +
-        imageMentions.length * 0.25
-    );
-  };
-
-  const pushSpeechSegment = (segments, source, start, end) => {
-    const boundedStart = Math.max(0, Math.min(source.length, start));
-    const boundedEnd = Math.max(boundedStart, Math.min(source.length, end));
-    const text = source.slice(boundedStart, boundedEnd).trim();
-    if (!text) return;
-
-    const segment = {
-      start: boundedStart,
-      end: boundedEnd,
-      weight: estimateSpeechWeight(text),
-      cumulativeStart: 0,
-      cumulativeEnd: 0
+    return {
+      label,
+      group: groupLabel,
+      image: imageLabel,
+      imageNumber: currentImage,
+      sourceKind: currentMention.sourceKind || "",
+      sourceLabel: currentMention.sourceLabel || "",
+      groupNumbers: safeGroup,
+      source: "strict-live-image-mention",
+      activeText: cleanDisplayText(context?.activeText || ""),
+      textPreview: cleanDisplayText(context?.activeText || context?.highlightText || "").slice(0, 240),
+      highlightAvailable: true,
+      highlightStale: false,
+      canCalibrateTimeline: false,
+      textIndexSource: "strict-live-image-mention",
+      textIndex: null
     };
-    segments.push(segment);
-  };
-
-  const splitSpeechSegment = (segments, source, start, end) => {
-    let cursor = start;
-    while (end - cursor > 360) {
-      const windowEnd = Math.min(end, cursor + 310);
-      const chunk = source.slice(cursor, windowEnd);
-      const softBreak = Math.max(chunk.lastIndexOf(","), chunk.lastIndexOf(";"), chunk.lastIndexOf(" "));
-      const cut = softBreak >= 160 ? cursor + softBreak + 1 : windowEnd;
-      pushSpeechSegment(segments, source, cursor, cut);
-      cursor = cut;
-    }
-    pushSpeechSegment(segments, source, cursor, end);
-  };
-
-  const getSpeechTimeline = (sourceText) => {
-    const source = cleanDisplayText(sourceText);
-    const key = speechTimelineKey(source);
-    if (speechTimelineCache.key === key) return speechTimelineCache;
-
-    const segments = [];
-    const sentenceRe = /[^.!?]+[.!?]+|[^.!?]+$/g;
-    let match;
-    while ((match = sentenceRe.exec(source)) !== null) {
-      splitSpeechSegment(segments, source, match.index, match.index + match[0].length);
-    }
-    if (!segments.length && source) pushSpeechSegment(segments, source, 0, source.length);
-
-    let cumulative = 0;
-    segments.forEach((segment) => {
-      segment.cumulativeStart = cumulative;
-      cumulative += segment.weight;
-      segment.cumulativeEnd = cumulative;
-    });
-
-    speechTimelineCache = {
-      key,
-      segments,
-      totalWeight: cumulative || 1
-    };
-    return speechTimelineCache;
-  };
-
-  const getTimelineWeightAtIndex = (timeline, index) => {
-    const segments = timeline?.segments || [];
-    if (!segments.length) return 0;
-
-    const boundedIndex = Math.max(0, index);
-    const segment =
-      segments.find((candidate) => boundedIndex >= candidate.start && boundedIndex <= candidate.end) ||
-      (boundedIndex < segments[0].start ? segments[0] : segments.at(-1));
-    const span = Math.max(1, segment.end - segment.start);
-    const localFraction = clamp01((boundedIndex - segment.start) / span);
-    return segment.cumulativeStart + segment.weight * localFraction;
-  };
-
-  const getTimelineIndexAtWeight = (timeline, weight) => {
-    const segments = timeline?.segments || [];
-    if (!segments.length) return 0;
-
-    const target = Math.max(0, Math.min(timeline.totalWeight || 1, weight));
-    const segment =
-      segments.find((candidate) => target >= candidate.cumulativeStart && target <= candidate.cumulativeEnd) ||
-      segments.at(-1);
-    const spanWeight = Math.max(0.001, segment.cumulativeEnd - segment.cumulativeStart);
-    const localFraction = clamp01((target - segment.cumulativeStart) / spanWeight);
-    return Math.round(segment.start + (segment.end - segment.start) * localFraction);
-  };
-
-  const getWeightedTimelineTextIndex = ({ source, title, progress, elapsedSeconds, durationSeconds } = {}) => {
-    const timeline = getSpeechTimeline(source);
-    const rawFraction = getRawTimelineFraction({ progress, elapsedSeconds, durationSeconds });
-    if (!Number.isFinite(rawFraction)) return null;
-
-    const duration = Number(durationSeconds);
-    const elapsed = Number(elapsedSeconds);
-    let targetWeight = rawFraction * timeline.totalWeight;
-    const calibration = lectureTimelineCalibration;
-
-    if (
-      calibration?.titleKey &&
-      calibration.titleKey === titleCalibrationKey(title) &&
-      Number.isFinite(calibration.textIndex) &&
-      Number.isFinite(calibration.elapsedSeconds) &&
-      Number.isFinite(calibration.durationSeconds) &&
-      Number.isFinite(duration) &&
-      duration > 0 &&
-      Number.isFinite(elapsed)
-    ) {
-      const anchorWeight = getTimelineWeightAtIndex(timeline, calibration.textIndex);
-      const anchorElapsed = Math.max(0, Math.min(duration, calibration.elapsedSeconds));
-      if (elapsed >= anchorElapsed) {
-        const remainingSeconds = Math.max(0.001, duration - anchorElapsed);
-        targetWeight =
-          anchorWeight + ((elapsed - anchorElapsed) / remainingSeconds) * (timeline.totalWeight - anchorWeight);
-      } else if (anchorElapsed > 0) {
-        targetWeight = anchorWeight * (elapsed / anchorElapsed);
-      }
-    }
-
-    return getTimelineIndexAtWeight(timeline, targetWeight);
   };
 
   const getSentenceAroundText = (blockText, activeText) => {
@@ -1388,10 +553,12 @@
     return block.slice(sentenceStart, sentenceEnd).trim();
   };
 
-  const getSentenceAroundIndex = (blockText, index, activeLength = 0) => {
+  const getSentenceInfoAroundIndex = (blockText, index, activeLength = 0) => {
     const block = cleanDisplayText(blockText);
     const startIndex = Number(index);
-    if (!block || !Number.isFinite(startIndex) || startIndex < 0) return "";
+    if (!block || !Number.isFinite(startIndex) || startIndex < 0) {
+      return { text: "", index: -1 };
+    }
 
     const boundedIndex = Math.max(0, Math.min(block.length, startIndex));
     const focusLength = Math.max(0, Number(activeLength) || 0);
@@ -1403,7 +570,14 @@
       ? Math.min(block.length, boundedIndex + focusLength + Math.min(...afterStops) + 1)
       : block.length;
 
-    return block.slice(sentenceStart, sentenceEnd).trim();
+    return {
+      text: block.slice(sentenceStart, sentenceEnd).trim(),
+      index: sentenceStart
+    };
+  };
+
+  const getSentenceAroundIndex = (blockText, index, activeLength = 0) => {
+    return getSentenceInfoAroundIndex(blockText, index, activeLength).text;
   };
 
   const getSpeechifyAutoscrollCueText = (blockText = "") => {
@@ -1441,6 +615,47 @@
     let node;
     while ((node = walker.nextNode())) nodes.push(node);
     return nodes;
+  };
+
+  const getElementTextIndexWithinBlock = (block, el) => {
+    if (!block || !el || block === el || !block.contains(el)) return -1;
+
+    const textNodes = getTextNodesUnder(block);
+    let rawPrefix = "";
+
+    for (const node of textNodes) {
+      if (el.contains(node)) {
+        return cleanDisplayText(rawPrefix).length;
+      }
+      rawPrefix += node.nodeValue || "";
+    }
+
+    return -1;
+  };
+
+  const getReaderActiveContextForElement = (block, el, text) => {
+    const blockText = cleanDisplayText(block?.textContent || "");
+    const highlightText = cleanDisplayText(text || "");
+    if (!blockText) {
+      return { activeText: "", activeTextIndex: -1, focusTextIndex: -1 };
+    }
+
+    const elementIndex = getElementTextIndexWithinBlock(block, el);
+    if (elementIndex >= 0) {
+      const sentenceInfo = getSentenceInfoAroundIndex(blockText, elementIndex, highlightText.length);
+      return {
+        activeText: sentenceInfo.text || blockText,
+        activeTextIndex: sentenceInfo.index >= 0 ? sentenceInfo.index : 0,
+        focusTextIndex: elementIndex
+      };
+    }
+
+    const activeText = getSentenceAroundText(blockText, highlightText);
+    return {
+      activeText,
+      activeTextIndex: activeText ? findTextIndexSimple(blockText, activeText) : -1,
+      focusTextIndex: highlightText ? findTextIndexSimple(blockText, highlightText) : -1
+    };
   };
 
   const findCueOccurrenceIndexNearRect = (block, cueText, targetRect) => {
@@ -1656,11 +871,15 @@
 
       const block = getReaderContextBlockForElement(el, root);
       const blockText = cleanDisplayText(block.textContent || "");
+      const activeContext = getReaderActiveContextForElement(block, el, text);
+      const activeText = activeContext.activeText;
       return {
-        activeText: getSentenceAroundText(blockText, text),
+        activeText,
+        activeTextIndex: activeContext.activeTextIndex,
         blockText,
         highlightText: cleanDisplayText(text),
-        highlightSignature: `${cleanDisplayText(text).slice(0, 180)}|${blockText.slice(0, 360)}`.slice(0, 900),
+        focusTextIndex: activeContext.focusTextIndex,
+        highlightSignature: `${cleanDisplayText(text).slice(0, 180)}|${activeText.slice(0, 220)}|${blockText.slice(0, 260)}`.slice(0, 900),
         source: "highlight"
       };
     }
@@ -1675,11 +894,15 @@
       const block = getReaderContextBlockForElement(el, root);
       const blockText = cleanDisplayText(block.textContent || "");
       if (!blockText) continue;
+      const activeContext = getReaderActiveContextForElement(block, el, text);
+      const activeText = activeContext.activeText;
       return {
-        activeText: getSentenceAroundText(blockText, text),
+        activeText,
+        activeTextIndex: activeContext.activeTextIndex,
         blockText,
         highlightText: text,
-        highlightSignature: `${text.slice(0, 180)}|${blockText.slice(0, 360)}`.slice(0, 900),
+        focusTextIndex: activeContext.focusTextIndex,
+        highlightSignature: `${text.slice(0, 180)}|${activeText.slice(0, 220)}|${blockText.slice(0, 260)}`.slice(0, 900),
         source: "highlight-painted"
       };
     }
@@ -1781,468 +1004,6 @@
     };
   };
 
-  const getBestVisibleReaderContext = () => {
-    const blocks = Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.readerBlocks))
-      .filter(isVisible)
-      .map((block) => {
-        const rect = block.getBoundingClientRect();
-        const visibleTop = Math.max(rect.top, 0);
-        const visibleBottom = Math.min(rect.bottom, window.innerHeight);
-        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-        const center = rect.top + rect.height / 2;
-        const targetY = window.innerHeight * 0.46;
-        return {
-          block,
-          rect,
-          visibleHeight,
-          score: Math.abs(center - targetY) - visibleHeight * 0.2
-        };
-      })
-      .filter((item) => item.visibleHeight > 0);
-
-    blocks.sort((a, b) => a.score - b.score);
-    const best = blocks[0]?.block || null;
-    if (!best) return null;
-
-    return {
-      activeText: "",
-      blockText: cleanDisplayText(best.textContent || ""),
-      source: "visible"
-    };
-  };
-
-  const inferContextLectureImageSection = () => {
-    const context = getHighlightedReaderContext() || getBestVisibleReaderContext();
-    const activeText = context?.activeText || "";
-    const blockText = context?.blockText || "";
-    const sourceText = activeText || blockText;
-    if (!sourceText) return null;
-
-    const directSection = buildDirectContextLectureImageSection({
-      activeText,
-      blockText,
-      highlightText: context?.highlightText || "",
-      sourceName: context.source
-    });
-    if (directSection) {
-      return {
-        ...directSection,
-        highlightAvailable: context.source?.startsWith("highlight") || false
-      };
-    }
-
-    const activeMentions = extractImageMentions(activeText);
-    const blockMentions = extractImageMentions(blockText);
-    const mentions = activeMentions.length ? activeMentions : blockMentions;
-    const lower = sourceText.toLowerCase();
-
-    if (hasCrossImageSynthesisCue(lower)) {
-      return {
-        label: "cross-image synthesis",
-        source: context.source,
-        sectionType: "cross-image synthesis",
-        highlightAvailable: context.source?.startsWith("highlight") || false,
-        activeText,
-        textPreview: sourceText.slice(0, 220)
-      };
-    }
-
-    if (!mentions.length) {
-      let label = "";
-      if (/\b(opening|orientation|big[- ]picture|organizing spine|before the images?)\b/i.test(lower)) {
-        label = "intro";
-      } else if (hasCloseoutCue(lower) || /\b(wrap[- ]?up|closeout)\b/i.test(lower)) {
-        label = "wrap-up";
-      }
-      return label
-        ? {
-            label,
-            source: context.source,
-            highlightAvailable: context.source?.startsWith("highlight") || false,
-            activeText,
-            textPreview: sourceText.slice(0, 220)
-          }
-        : null;
-    }
-
-    const blockPluralMention = blockMentions.find((mention) => mention.plural && mention.numbers.length >= 2);
-    const allNumbers = uniqueSortedNumbers(mentions.flatMap((mention) => mention.numbers));
-    const blockNumbers = uniqueSortedNumbers(blockMentions.flatMap((mention) => mention.numbers));
-    let groupNumbers =
-      blockPluralMention?.numbers?.length >= 2
-        ? blockPluralMention.numbers
-        : activeMentions.length
-          ? []
-          : blockNumbers.length >= 2
-            ? blockNumbers
-            : [];
-    const singularMentions = mentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
-    let currentImage = null;
-
-    if (activeMentions.length) {
-      const activeSingular = singularMentions.at(-1);
-      currentImage = activeSingular?.numbers?.at(-1) || null;
-    }
-
-    if (!currentImage && !groupNumbers.length && allNumbers.length === 1) {
-      currentImage = allNumbers[0];
-    }
-
-    if (currentImage && groupNumbers.length >= 2 && !groupNumbers.includes(currentImage)) {
-      const currentMention = singularMentions.find((mention) => mention.numbers?.includes(currentImage));
-      if (
-        currentMention &&
-        blockPluralMention &&
-        currentMention.index > blockPluralMention.index &&
-        currentMention.index - blockPluralMention.index < 900
-      ) {
-        groupNumbers = uniqueSortedNumbers([...groupNumbers, currentImage]);
-      } else {
-        groupNumbers = [];
-      }
-    }
-
-    const target = resolveImageSectionTarget({
-      currentImage,
-      groupNumbers,
-      activeText,
-      textPreview: sourceText.slice(0, 260),
-      contextText: blockText,
-      previousImage: currentImage || singularMentions.at(-1)?.numbers?.at(-1) || null,
-      heldImage: getHeldImageForGroup(
-        groupNumbers,
-        singularMentions.find((mention) => mention.numbers?.includes(currentImage))?.sourceKind ||
-          singularMentions.at(-1)?.sourceKind ||
-          blockPluralMention?.sourceKind ||
-          mentions.at(-1)?.sourceKind ||
-          ""
-      )
-    });
-    const sourceMention =
-      singularMentions.find((mention) => mention.numbers?.includes(currentImage)) ||
-      singularMentions.at(-1) ||
-      blockPluralMention ||
-      mentions.at(-1);
-
-    return target.label
-      ? {
-          label: target.label,
-          group: target.groupLabel,
-          image: target.imageLabel,
-          imageNumber: target.imageNumber,
-          sourceKind: sourceMention?.sourceKind || "",
-          sourceLabel: sourceMention?.sourceLabel || "",
-          groupNumbers: target.groupNumbers,
-          source: context.source,
-          highlightAvailable: context.source?.startsWith("highlight") || false,
-          activeText,
-          textPreview: sourceText.slice(0, 220)
-        }
-      : null;
-  };
-
-  const inferActiveTextLectureImageSection = ({ context, title, highlightAvailable, highlightStale, highlightAgeMs }) => {
-    const activeText = cleanDisplayText(context?.activeText || "");
-    const blockText = cleanDisplayText(context?.blockText || "");
-    const cachedSourceText = cleanDisplayText(getCachedLectureTextForTitle(title));
-    const sourceText = cachedSourceText || getReaderFullText();
-    const sourceIsCachedScript = Boolean(cachedSourceText);
-    const lookupText = activeText || blockText;
-    let section = null;
-
-    const directContextSection = buildDirectContextLectureImageSection({
-      activeText,
-      blockText,
-      highlightText: context?.highlightText || "",
-      sourceName: context?.source || "highlight"
-    });
-    if (directContextSection) {
-      return {
-        ...directContextSection,
-        canCalibrateTimeline: false,
-        textIndexSource: "visible-context",
-        textIndex: null,
-        highlightAvailable,
-        highlightStale,
-        highlightAgeMs
-      };
-    }
-
-    if (highlightAvailable && !highlightStale && lookupText) {
-      const heldSection = getLastExplicitImageSection(context?.source || "held-explicit");
-      if (heldSection) {
-        return {
-          ...heldSection,
-          canCalibrateTimeline: false,
-          textIndexSource: "held-explicit",
-          textIndex: null,
-          highlightAvailable,
-          highlightStale,
-          highlightAgeMs,
-          activeText: activeText || heldSection.activeText,
-          textPreview: lookupText.slice(0, 240) || heldSection.textPreview
-        };
-      }
-    }
-
-    if (sourceText && lookupText) {
-      let focusIndex = findTextIndexLoose(sourceText, lookupText);
-      if (focusIndex >= 0) {
-        const hasLiveHighlight = Boolean(highlightAvailable && !highlightStale && activeText);
-        const focusOffset = hasLiveHighlight
-          ? Math.min(Math.max(20, Math.floor(activeText.length * 0.45)), 120)
-          : Math.min(lookupText.length, 260);
-        focusIndex += focusOffset;
-        section = buildLectureImageSectionFromMentions({
-          source: sourceText,
-          focusIndex,
-          sourceName: context.source || "highlight",
-          activeText,
-          textPreview: lookupText.slice(0, 240)
-        });
-        if (section) {
-          section = {
-            ...section,
-            canCalibrateTimeline: sourceIsCachedScript,
-            textIndexSource: sourceIsCachedScript ? "cached-script" : "reader-visible",
-            textIndex: sourceIsCachedScript ? section.textIndex : null
-          };
-        }
-      }
-    }
-
-    if (!section && blockText) {
-      section = buildLectureImageSectionFromMentions({
-        source: blockText,
-        focusIndex: blockText.length - 1,
-        sourceName: context.source || "highlight",
-        activeText,
-        textPreview: blockText.slice(0, 240)
-      });
-      if (section) {
-        section = {
-          ...section,
-          canCalibrateTimeline: false,
-          textIndexSource: "local",
-          textIndex: null
-        };
-      }
-    }
-
-    return section
-      ? {
-          ...section,
-          highlightAvailable,
-          highlightStale,
-          highlightAgeMs
-        }
-      : null;
-  };
-
-  const inferTimelineLectureImageSection = ({
-    title,
-    progress,
-    elapsedSeconds,
-    durationSeconds,
-    clockSource,
-    allowReaderFallback = false
-  } = {}) => {
-    const cachedText = getCachedLectureTextForTitle(title) || (allowReaderFallback ? getReaderFullText() : "");
-    const source = cleanDisplayText(cachedText);
-    if (!source) return null;
-
-    const index = getWeightedTimelineTextIndex({
-      source,
-      title,
-      progress,
-      elapsedSeconds,
-      durationSeconds
-    });
-
-    if (!Number.isFinite(index)) return null;
-
-    const boundedIndex = Math.max(0, Math.min(source.length - 1, index));
-    const fraction = source.length > 1 ? boundedIndex / (source.length - 1) : 0;
-    const specialSection = inferSpecialLectureSection({
-      source,
-      boundedIndex,
-      sourceName: "timeline",
-      activeText: "",
-      textPreview: source.slice(Math.max(0, boundedIndex - 140), boundedIndex + 180),
-      textFraction: fraction
-    });
-    if (specialSection) {
-      return {
-        ...specialSection,
-        estimated: true,
-        clockSource
-      };
-    }
-    const mentions = extractImageMentions(source);
-
-    if (!mentions.length) {
-      if (fraction < 0.12) {
-        return {
-          label: "intro",
-          source: "timeline",
-          estimated: true,
-          clockSource,
-          textFraction: fraction,
-          textIndex: boundedIndex,
-          textPreview: source.slice(0, 220)
-        };
-      }
-      if (fraction > 0.86) {
-        return {
-          label: "wrap-up",
-          source: "timeline",
-          estimated: true,
-          clockSource,
-          textFraction: fraction,
-          textIndex: boundedIndex,
-          textPreview: source.slice(Math.max(0, boundedIndex - 110), boundedIndex + 110)
-        };
-      }
-      return null;
-    }
-
-    const priorMentions = mentions.filter((mention) => mention.index <= boundedIndex);
-    const currentMention = priorMentions.at(-1) || mentions[0];
-    const recentPlural = priorMentions
-      .filter((mention) => mention.plural && mention.numbers.length >= 2 && boundedIndex - mention.index < 2200)
-      .at(-1);
-
-    const currentNumbers = uniqueSortedNumbers(currentMention?.numbers || []);
-    const singularMentions = priorMentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
-    const currentImage =
-      currentNumbers.length === 1
-        ? currentNumbers[0]
-        : !currentMention?.plural && currentNumbers.length
-          ? currentNumbers.at(-1)
-          : null;
-    let groupNumbers =
-      recentPlural?.numbers?.length >= 2
-        ? recentPlural.numbers
-        : currentMention?.plural && currentNumbers.length >= 2
-          ? currentNumbers
-          : [];
-    if (currentImage && groupNumbers.length >= 2 && !groupNumbers.includes(currentImage)) {
-      const currentSingular = singularMentions.find((mention) => mention.numbers?.includes(currentImage));
-      if (
-        currentSingular &&
-        recentPlural &&
-        currentSingular.index > recentPlural.index &&
-        currentSingular.index - recentPlural.index < 900
-      ) {
-        groupNumbers = uniqueSortedNumbers([...groupNumbers, currentImage]);
-      } else {
-        groupNumbers = [];
-      }
-    }
-    const sectionPreview = source.slice(Math.max(0, boundedIndex - 180), boundedIndex + 220);
-    const target = resolveImageSectionTarget({
-      currentImage,
-      groupNumbers,
-      activeText: "",
-      textPreview: sectionPreview,
-      contextText: sectionPreview,
-      previousImage: currentImage || singularMentions.at(-1)?.numbers?.at(-1) || null,
-      heldImage: getHeldImageForGroup(
-        groupNumbers,
-        singularMentions.find((mention) => mention.numbers?.includes(currentImage))?.sourceKind ||
-          singularMentions.at(-1)?.sourceKind ||
-          recentPlural?.sourceKind ||
-          currentMention?.sourceKind ||
-          ""
-      )
-    });
-    const sourceMention =
-      singularMentions.find((mention) => mention.numbers?.includes(target.imageNumber)) ||
-      singularMentions.at(-1) ||
-      recentPlural ||
-      currentMention;
-
-    return target.label
-      ? {
-          label: target.label,
-          group: target.groupLabel,
-          image: target.imageLabel,
-          imageNumber: target.imageNumber,
-          sourceKind: sourceMention?.sourceKind || "",
-          sourceLabel: sourceMention?.sourceLabel || "",
-          groupNumbers: target.groupNumbers,
-          source: "timeline",
-          estimated: true,
-          clockSource,
-          textFraction: fraction,
-          textIndex: boundedIndex,
-          textPreview: sectionPreview
-        }
-      : null;
-  };
-
-  const calibrateOwnedClockFromSection = (section, timing = {}) => {
-    if (!section || section.highlightStale || section.estimated) return;
-    if (section.canCalibrateTimeline === false || section.textIndexSource !== "cached-script") return;
-    const fraction = Number(section.textFraction);
-    const elapsed = Number(timing.elapsedSeconds);
-    const duration = Number(timing.durationSeconds);
-    const source = cleanDisplayText(getCachedLectureTextForTitle(timing.title));
-    if (!source || source.length < 2) return;
-    const textIndex = Number.isFinite(Number(section.textIndex))
-      ? Number(section.textIndex)
-      : source.length > 1
-        ? Math.round(clamp01(fraction) * (source.length - 1))
-        : null;
-    if (!Number.isFinite(fraction) || fraction < 0 || fraction > 1) return;
-    if (!Number.isFinite(elapsed) || elapsed < 0) return;
-    if (!Number.isFinite(duration) || duration <= 0) return;
-    if (!Number.isFinite(textIndex)) return;
-
-    lectureTimelineCalibration = {
-      titleKey: titleCalibrationKey(timing.title),
-      textFraction: clamp01(fraction),
-      textIndex: Math.max(0, Math.min(Math.max(0, source.length - 1), textIndex)),
-      anchorImageNumber: getSectionMaxImageNumber(section),
-      anchorSection: makeAnchorSectionSnapshot(section),
-      elapsedSeconds: Math.max(0, Math.min(duration, elapsed)),
-      durationSeconds: duration,
-      updatedAt: Date.now()
-    };
-  };
-
-  const shouldPinToCalibrationAnchor = (section, timing = {}) => {
-    const calibration = lectureTimelineCalibration;
-    if (!section || !calibration?.anchorSection) return false;
-    if (calibration.titleKey !== titleCalibrationKey(timing.title)) return false;
-
-    const elapsed = Number(timing.elapsedSeconds);
-    const anchorElapsed = Number(calibration.elapsedSeconds);
-    if (!Number.isFinite(elapsed) || !Number.isFinite(anchorElapsed)) return false;
-    if (elapsed < anchorElapsed - 4) return false;
-
-    const anchorMax = Number(calibration.anchorImageNumber);
-    if (!Number.isFinite(anchorMax)) return false;
-
-    const sectionMax = Number(getSectionMaxImageNumber(section));
-    return !Number.isFinite(sectionMax) || sectionMax < anchorMax;
-  };
-
-  const pinToCalibrationAnchor = (section, timing = {}) => {
-    if (!shouldPinToCalibrationAnchor(section, timing)) return section;
-    const anchor = lectureTimelineCalibration.anchorSection;
-    return {
-      ...section,
-      ...anchor,
-      source: "owned-clock-sync-anchor",
-      estimated: true,
-      calibratedEstimate: true,
-      pinnedToSync: true,
-      textPreview: section?.textPreview || anchor.textPreview || "",
-      activeText: anchor.activeText || section?.activeText || ""
-    };
-  };
-
   const inferLectureImageSection = (timing = {}) => {
     const highlightInfo = trackHighlightedReaderContext({
       context: getHighlightedReaderContext(),
@@ -2250,72 +1011,33 @@
       tabAudible: Boolean(timing.tabAudible)
     });
 
-    if (highlightInfo.context) {
-      const highlightSection = inferActiveTextLectureImageSection({
-        context: highlightInfo.context,
-        title: timing.title,
-        highlightAvailable: highlightInfo.highlightAvailable,
-        highlightStale: highlightInfo.highlightStale,
-        highlightAgeMs: highlightInfo.highlightAgeMs
-      });
-
-      if (highlightSection && !highlightInfo.highlightStale) {
-        calibrateOwnedClockFromSection(highlightSection, timing);
-        rememberExplicitImageSection(highlightSection);
-        rememberLectureImageSection(highlightSection);
-        return highlightSection;
+    if (highlightInfo.context && !highlightInfo.highlightStale) {
+      const strictSection = buildStrictLiveImageSection(highlightInfo.context);
+      if (strictSection) {
+        rememberExplicitImageSection(strictSection);
+        return strictSection;
       }
+
+      const heldSection = getLastExplicitImageSection("strict-held-image");
+      return heldSection
+        ? {
+            ...heldSection,
+            highlightAvailable: true,
+            highlightStale: false,
+            source: "strict-held-image"
+          }
+        : null;
     }
 
-    const cacheKey = [
-      normalize(timing.title || ""),
-      document.visibilityState,
-      timing.clockSource || "",
-      Math.floor(Number(timing.elapsedSeconds || 0) / 4),
-      Math.floor(Number(timing.progress || 0)),
-      readerHighlightState.signature.slice(0, 48)
-    ].join("|");
-    const now = Date.now();
-    if (lectureSectionCache.key === cacheKey && now - lectureSectionCache.updatedAt < 3500) {
-      return lectureSectionCache.value;
-    }
-
-    let contextSection = highlightInfo.highlightStale ? null : inferContextLectureImageSection();
-    if (contextSection) {
-      contextSection = {
-        ...contextSection,
-        highlightAvailable: highlightInfo.highlightAvailable,
-        highlightStale: highlightInfo.highlightStale,
-        highlightAgeMs: highlightInfo.highlightAgeMs
-      };
-      rememberExplicitImageSection(contextSection);
-      rememberLectureImageSection(contextSection);
-      lectureSectionCache = { key: cacheKey, value: contextSection, updatedAt: now };
-      return contextSection;
-    }
-
-    const finalSection = pinToCalibrationAnchor(
-      inferTimelineLectureImageSection({ ...timing, allowReaderFallback: true }),
-      timing
-    );
-    const decoratedSection = finalSection
+    const heldSection = getLastExplicitImageSection("strict-held-image");
+    return heldSection
       ? {
-          ...finalSection,
-          source: finalSection.source === "owned-clock-sync-anchor" ? finalSection.source : "owned-clock",
-          estimated: true,
-          calibratedEstimate:
-            Boolean(lectureTimelineCalibration.anchorSection) &&
-            lectureTimelineCalibration.titleKey === titleCalibrationKey(timing.title) &&
-            Number.isFinite(lectureTimelineCalibration.textFraction),
+          ...heldSection,
           highlightAvailable: highlightInfo.highlightAvailable,
           highlightStale: highlightInfo.highlightStale,
-          highlightAgeMs: highlightInfo.highlightAgeMs
+          source: "strict-held-image"
         }
       : null;
-
-    rememberLectureImageSection(decoratedSection);
-    lectureSectionCache = { key: cacheKey, value: decoratedSection, updatedAt: now };
-    return decoratedSection;
   };
 
   const normalizeSpeedLabel = (value) => {
@@ -2592,6 +1314,11 @@
     const title = cleanDisplayText(
       titleButton?.innerText || document.title.replace(/\s*\|\s*Speechify\s*$/i, "")
     );
+    const lectureIdentity = normalize(title || location.href);
+    if (lectureIdentity && lectureIdentity !== currentLectureIdentity) {
+      currentLectureIdentity = lectureIdentity;
+      resetStrictImagePointerState();
+    }
     const speedText = cleanDisplayText(
       speedButton?.innerText ||
         (speedButton?.getAttribute("aria-label") || "").replace(/^Speed:\s*/i, "")
@@ -2698,7 +1425,6 @@
   const runSpeechifyPlayerRemote = async ({ action, speed, tabAudible }) => {
     const normalizedAction = String(action || "state");
     const stateOptions = { tabAudible: Boolean(tabAudible) };
-    const previousCalibrationUpdatedAt = Number(lectureTimelineCalibration.updatedAt || 0);
     let state = null;
 
     if (normalizedAction === "playPause") {
@@ -2717,33 +1443,6 @@
       await sleep(220);
     } else if (normalizedAction === "setSpeed") {
       state = await setSpeechifySpeed(speed, stateOptions);
-    } else if (normalizedAction === "calibrate") {
-      resetReaderCalibration({ preserveTimeline: true });
-      await sleep(350);
-    } else if (normalizedAction === "updateCache") {
-      const currentState = getSpeechifyPlayerState(stateOptions);
-      const context = getHighlightedReaderContext() || getBestVisibleReaderContext();
-      const lookupText = cleanDisplayText(context?.activeText || context?.blockText || "");
-      const readerText = await scrapeFullReaderText();
-      if (!readerText.trim()) {
-        throw new Error("Could not read the current Speechify text to update the cache.");
-      }
-      const verificationIndex = lookupText ? findTextIndexLoose(readerText, lookupText) : -1;
-      if (lookupText && verificationIndex < 0) {
-        throw new Error(
-          "Cache scrape finished, but the current Speechify sentence was not found inside it. Try pausing Speechify, then press Cache again."
-        );
-      }
-      await rememberSpeechifyLecture({
-        title: currentState.title || document.title.replace(/\s*\|\s*Speechify\s*$/i, ""),
-        text: readerText
-      });
-      resetReaderCalibration();
-      state = {
-        ...getSpeechifyPlayerState(stateOptions),
-        cacheVerified: Boolean(lookupText && verificationIndex >= 0),
-        cacheVerificationPreview: lookupText.slice(0, 180)
-      };
     } else if (normalizedAction !== "state" && normalizedAction !== "focus") {
       throw new Error(`Unsupported Speechify player action: ${normalizedAction}`);
     }
@@ -2751,39 +1450,6 @@
     state = state || getSpeechifyPlayerState(stateOptions);
     if (!state.available) {
       throw new Error("No Speechify player is visible. Open a Speechify lecture/player tab first.");
-    }
-    if (normalizedAction === "calibrate") {
-      const calibrationUpdated = Number(lectureTimelineCalibration.updatedAt || 0) > previousCalibrationUpdatedAt;
-      const calibrationMatchesTitle =
-        lectureTimelineCalibration.titleKey === titleCalibrationKey(state.title) &&
-        Boolean(lectureTimelineCalibration.anchorSection);
-      const syncLabel = state.lectureSection?.label || lectureTimelineCalibration.anchorSection?.label || "";
-      const calibrated = Boolean(calibrationUpdated && calibrationMatchesTitle);
-      const calibrationPreserved = Boolean(!calibrationUpdated && calibrationMatchesTitle);
-      const syncStatus = calibrated ? "matched" : calibrationPreserved ? "preserved" : "failed";
-      const syncMessage = calibrated
-        ? `Sync locked: matched Speechify text to the script${syncLabel ? ` at ${syncLabel}` : ""}.`
-        : calibrationPreserved
-          ? `Sync checked: no new script match, keeping previous anchor${syncLabel ? ` at ${syncLabel}` : ""}.`
-          : "Sync failed: highlighted Speechify text did not match the cached script.";
-      return {
-        ...state,
-        calibrated,
-        syncAttempted: true,
-        calibrationPreserved,
-        syncStatus,
-        syncMessage
-      };
-    }
-    if (normalizedAction === "updateCache") {
-      const cacheText = getCachedLectureTextForTitle(state.title);
-      const verifiedSuffix = state.cacheVerified ? " Verified current sentence." : "";
-      return {
-        ...state,
-        cacheUpdated: true,
-        cacheChars: cacheText.length,
-        cacheMessage: `Cache updated from full Speechify reader scrape (${cacheText.length.toLocaleString()} characters).${verifiedSuffix} Press Sync to lock to the updated script.`
-      };
     }
     return state;
   };
@@ -2987,7 +1653,6 @@
       return textareaValueMatchesSource(textArea.value || "", text);
     }, 15000, "Speechify textarea did not accept the full text.");
 
-    await rememberSpeechifyLecture({ title: finalTitle, text: normalizeTextareaText(textArea.value || text) });
     await waitForSaveEnabled();
   };
 
