@@ -32,6 +32,7 @@
     sourceNote: "",
     coreNote: "",
     downloadImages: true,
+    cardModeDownloadImagesDisabled: false,
     downloadPlain: true,
     downloadAnnotated: true,
     keepCaptionHtml: true,
@@ -83,10 +84,16 @@
     shadow.innerHTML = `
       <style>
         :host { all: initial; }
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
         .root {
           font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           font-size: 16px;
           color: #0f172a;
+          min-width: 0;
         }
         .dock {
           display: flex;
@@ -277,13 +284,15 @@
         .modal-body {
           padding: 0 30px 28px;
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(340px, .9fr);
+          grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
           gap: 16px;
+          min-width: 0;
         }
         .grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 14px;
+          min-width: 0;
         }
         .wide { grid-column: 1 / -1; }
         .spaced { margin-top: 14px; }
@@ -294,6 +303,7 @@
           padding: 18px;
           margin-top: 0;
           box-shadow: 0 12px 34px rgba(15, 23, 42, .055);
+          min-width: 0;
         }
         .card.master-card {
           grid-column: 1 / -1;
@@ -325,9 +335,13 @@
           font-size: 12px;
           font-weight: 800;
           color: #1e293b;
+          min-width: 0;
+          overflow-wrap: anywhere;
         }
         input[type="text"], select, textarea {
           width: 100%;
+          max-width: 100%;
+          min-width: 0;
           margin-top: 5px;
           border: 1px solid #cbd5e1;
           background: #fff;
@@ -347,6 +361,7 @@
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 10px;
+          min-width: 0;
         }
         .check {
           display: flex;
@@ -358,8 +373,35 @@
           border: 1px solid #e2e8f0;
           font-size: 12px;
           font-weight: 750;
+          min-width: 0;
+          overflow-wrap: anywhere;
+          line-height: 1.25;
         }
-        .check input { margin: 0; }
+        .check input {
+          margin: 0;
+          flex: 0 0 auto;
+        }
+        @media (max-width: 900px) {
+          .modal-body {
+            grid-template-columns: 1fr;
+          }
+        }
+        @media (max-width: 640px) {
+          .backdrop { padding: 14px; }
+          .modal {
+            width: calc(100vw - 28px);
+            border-radius: 22px;
+          }
+          .modal-head,
+          .modal-body {
+            padding-left: 18px;
+            padding-right: 18px;
+          }
+          .grid,
+          .checks {
+            grid-template-columns: 1fr;
+          }
+        }
         details {
           grid-column: 1 / -1;
           margin-top: 14px;
@@ -508,6 +550,11 @@
                 <div class="grid">
                   <label>Engine<select data-field="engine"></select></label>
                   <label>Mode<select data-field="mode"></select></label>
+                  <label class="check wide"><input data-field="downloadImages" type="checkbox"> Download selected images</label>
+                  <label class="wide">ChatGPT project URL<input data-field="chatgptUrl" type="text"></label>
+                  <label>Pathology root deck<input data-field="ankiPathologyRoot" type="text"></label>
+                  <label>Normal root deck<input data-field="ankiNormalRoot" type="text"></label>
+                  <span class="hint wide">Card modes download the curated image set by default. Auto deck routing attaches the article breadcrumb under the selected root deck.</span>
                 </div>
               </section>
 
@@ -564,8 +611,6 @@
                     <option value="auto">Auto from article breadcrumb</option>
                     <option value="manual">Manual parent deck</option>
                   </select></label>
-                  <label>Pathology root deck<input data-field="ankiPathologyRoot" type="text"></label>
-                  <label>Normal root deck<input data-field="ankiNormalRoot" type="text"></label>
                   <label class="wide">Manual parent deck<input data-field="ankiDeckRoot" type="text"></label>
                   <label class="wide">Anki note type<input data-field="ankiNoteType" type="text"></label>
                   <span class="hint wide">Auto routing uses the article breadcrumb when available. STATdx can reuse the saved RadPrimer hierarchy for the same title. If RadPrimer and STATdx titles differ, use the same source pairing key on both pages.</span>
@@ -581,7 +626,6 @@
                   </div>
                   <div class="checks" style="margin-top: 12px;">
                     <label class="check"><input data-field="autoGroupNonNarrative" type="checkbox"> Auto-group card modes first</label>
-                    <label class="check"><input data-field="downloadImages" type="checkbox"> Download selected images</label>
                     <label class="check"><input data-field="downloadPlain" type="checkbox"> Plain images</label>
                     <label class="check"><input data-field="downloadAnnotated" type="checkbox"> Annotated images</label>
                     <label class="check"><input data-field="keepCaptionHtml" type="checkbox"> Keep arrow HTML</label>
@@ -607,7 +651,6 @@
                 <summary>ChatGPT details</summary>
                 <div class="details-body">
                   <div class="grid">
-                    <label class="wide">ChatGPT project URL<input data-field="chatgptUrl" type="text"></label>
                     <label class="wide">Composer instruction<textarea data-field="chatgptInstruction"></textarea></label>
                     <label>Wait timeout, seconds<input data-field="chatgptTimeoutSec" type="text"></label>
                     <label>Card audit timeout, seconds<input data-field="cardAuditTimeoutSec" type="text"></label>
@@ -640,11 +683,22 @@
     shadow.querySelector('[data-field="engine"]').addEventListener("change", () => {
       populateModeSelect(host);
       applyNarrativeModeDefaults(host);
+      applyCardModeDefaults(host);
       syncSpeechifyAvailability(host);
     });
     shadow.querySelector('[data-field="mode"]').addEventListener("change", () => {
       applyNarrativeModeDefaults(host);
+      applyCardModeDefaults(host);
       syncSpeechifyAvailability(host);
+    });
+    shadow.querySelector('[data-field="downloadImages"]').addEventListener("change", () => {
+      const values = {
+        engine: field(host, "engine")?.value || DEFAULTS.engine,
+        mode: field(host, "mode")?.value || DEFAULTS.mode
+      };
+      if (isCardCreationMode(values)) {
+        host.__radprimerCardModeDownloadImagesDisabled = !field(host, "downloadImages").checked;
+      }
     });
     shadow.querySelector('[data-field="autoSendToSpeechify"]').addEventListener("change", () => {
       const autoSend = field(host, "autoSendToSpeechify").checked;
@@ -778,6 +832,15 @@
     return false;
   };
 
+  const shouldNarrativeDownloadImages = (values) => {
+    return values?.engine === "normal" && values.mode === "narrative_with_images";
+  };
+
+  const isCardCreationMode = (values) => {
+    if (!values) return false;
+    return !isNarrativeSpeechifyMode(values);
+  };
+
   const syncSpeechifyAvailability = (host) => {
     const values = {
       engine: field(host, "engine")?.value || DEFAULTS.engine,
@@ -814,6 +877,20 @@
     field(host, "captureCardAuditBundle").checked = false;
     field(host, "autoSendToSpeechify").checked = true;
     field(host, "speechifyAutoSave").checked = false;
+    const downloadImages = field(host, "downloadImages");
+    if (downloadImages) downloadImages.checked = shouldNarrativeDownloadImages(values);
+    host.__radprimerCardModeDownloadImagesDisabled = false;
+  };
+
+  const applyCardModeDefaults = (host) => {
+    const values = {
+      engine: field(host, "engine")?.value || DEFAULTS.engine,
+      mode: field(host, "mode")?.value || DEFAULTS.mode
+    };
+    if (!isCardCreationMode(values)) return;
+    if (host.__radprimerCardModeDownloadImagesDisabled) return;
+    const downloadImages = field(host, "downloadImages");
+    if (downloadImages) downloadImages.checked = true;
   };
 
   const openModal = async (host) => {
@@ -844,6 +921,10 @@
 
   const writeModalSettings = (host, settings) => {
     const values = { ...DEFAULTS, ...settings };
+    const hasExplicitCardImagePreference = Object.prototype.hasOwnProperty.call(
+      settings || {},
+      "cardModeDownloadImagesDisabled"
+    );
     field(host, "engine").value = values.engine || DEFAULTS.engine;
     populateModeSelect(host, values.mode || DEFAULTS.mode);
 
@@ -853,7 +934,10 @@
       if (el.type === "checkbox") el.checked = Boolean(values[key]);
       else el.value = values[key] ?? "";
     }
+    host.__radprimerCardModeDownloadImagesDisabled =
+      hasExplicitCardImagePreference && Boolean(values.cardModeDownloadImagesDisabled);
     applyNarrativeModeDefaults(host);
+    applyCardModeDefaults(host);
     syncSpeechifyAvailability(host);
   };
 
@@ -877,10 +961,13 @@
       values.autoSendToSpeechify = true;
       values.speechifyAutoSave = false;
       values.captureCardAuditBundle = false;
+      values.downloadImages = shouldNarrativeDownloadImages(values);
+      values.cardModeDownloadImagesDisabled = false;
     }
     if (!isNarrativeSpeechifyMode(values)) {
       values.autoSendToSpeechify = false;
       values.speechifyAutoSave = false;
+      values.cardModeDownloadImagesDisabled = !values.downloadImages;
     }
 
     return values;

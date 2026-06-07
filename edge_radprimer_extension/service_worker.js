@@ -75,6 +75,7 @@ const DEFAULTS = {
   sourceNote: "",
   coreNote: "",
   downloadImages: true,
+  cardModeDownloadImagesDisabled: false,
   downloadPlain: true,
   downloadAnnotated: true,
   keepCaptionHtml: true,
@@ -155,9 +156,12 @@ function normalizeSettings(rawSettings = {}) {
     settings.autoSubmitChatGPT = true;
     settings.autoSendToSpeechify = true;
     settings.speechifyAutoSave = false;
+    settings.downloadImages = shouldNarrativeDownloadImages(settings);
+    settings.cardModeDownloadImagesDisabled = false;
   } else {
     settings.autoSendToSpeechify = false;
     settings.speechifyAutoSave = false;
+    settings.downloadImages = settings.cardModeDownloadImagesDisabled ? false : true;
   }
 
   if (settings.autoSendToSpeechify) {
@@ -180,6 +184,10 @@ function isNarrativeSpeechifyMode(settings) {
     return settings.mode === "narrative" || settings.mode === "narrative_with_images";
   }
   return false;
+}
+
+function shouldNarrativeDownloadImages(settings) {
+  return settings?.engine === "normal" && settings.mode === "narrative_with_images";
 }
 
 function shouldCaptureCardAuditBundle(settings) {
@@ -3512,8 +3520,22 @@ async function runFinalCardModeAfterGrouping(pending, groupingText) {
   if (radPrimerTab?.windowId) await chrome.windows.update(radPrimerTab.windowId, { focused: true });
 
   const promptText = await loadPrompt(settings.engine, settings.mode);
-  await sendPageStatus(radPrimerTabId, "Extracting", "Rebuilding final prompt package with grouped images...");
-  const extraction = await extractRadPrimerArticle(radPrimerTabId, settings, promptText);
+  let extraction;
+  if (settings.useMasterSource) {
+    await sendPageStatus(
+      radPrimerTabId,
+      "Master Source",
+      "Rebuilding final grouped prompt package from imported fused master source..."
+    );
+    const masterSource = await getLatestMasterSourceCache();
+    if (!masterSource?.packageText) {
+      throw new Error("Use master source is enabled, but no imported master source was found. Import master_source_import.json first.");
+    }
+    extraction = buildMasterSourceExtraction(settings, promptText, masterSource);
+  } else {
+    await sendPageStatus(radPrimerTabId, "Extracting", "Rebuilding final prompt package with grouped images...");
+    extraction = await extractRadPrimerArticle(radPrimerTabId, settings, promptText);
+  }
 
   if (settings.downloadImages && extraction.downloadFiles?.length) {
     await sendPageStatus(radPrimerTabId, "Images", "Downloading grouped image files...");

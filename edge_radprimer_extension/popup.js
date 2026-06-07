@@ -41,6 +41,7 @@ const DEFAULTS = {
   sourceNote: "",
   coreNote: "",
   downloadImages: true,
+  cardModeDownloadImagesDisabled: false,
   downloadPlain: true,
   downloadAnnotated: true,
   keepCaptionHtml: true,
@@ -189,8 +190,16 @@ function isNarrativeSpeechifyMode(settings) {
   return false;
 }
 
+function shouldNarrativeDownloadImages(settings) {
+  return settings?.engine === "normal" && settings.mode === "narrative_with_images";
+}
+
 function isNonNarrativeMode(settings) {
   return Boolean(settings) && !isNarrativeSpeechifyMode(settings);
+}
+
+function isCardCreationMode(settings) {
+  return isNonNarrativeMode(settings);
 }
 
 function shouldCaptureCardAuditBundle(settings) {
@@ -218,7 +227,8 @@ function syncSpeechifyAvailability() {
 }
 
 function applyNarrativeModeDefaults() {
-  if (!isNarrativeSpeechifyMode(currentEngineMode())) return;
+  const engineMode = currentEngineMode();
+  if (!isNarrativeSpeechifyMode(engineMode)) return;
 
   $("include").value = "all";
   $("caseMap").value = "";
@@ -226,6 +236,13 @@ function applyNarrativeModeDefaults() {
   $("autoSubmitChatGPT").checked = true;
   $("autoSendToSpeechify").checked = true;
   $("speechifyAutoSave").checked = false;
+  $("downloadImages").checked = shouldNarrativeDownloadImages(engineMode);
+}
+
+function applyCardModeDefaults(values = {}) {
+  if (!isCardCreationMode(currentEngineMode())) return;
+  if (values.cardModeDownloadImagesDisabled) return;
+  $("downloadImages").checked = true;
 }
 
 function parseCaseMapGroups(value) {
@@ -264,8 +281,10 @@ function readForm() {
   const engine = $("engine").value;
   const mode = $("mode").value;
   const speechifyEligible = isNarrativeSpeechifyMode({ engine, mode });
+  const narrativeDownloadImages = shouldNarrativeDownloadImages({ engine, mode });
   const captureCardAuditBundle =
     !speechifyEligible && Boolean($("captureCardAuditBundle").checked);
+  const cardModeDownloadImagesDisabled = !speechifyEligible && !$("downloadImages").checked;
   const autoSendToSpeechify = speechifyEligible && $("autoSendToSpeechify").checked;
   const autoSubmitChatGPT =
     $("autoSubmitChatGPT").checked || autoSendToSpeechify || captureCardAuditBundle;
@@ -283,7 +302,12 @@ function readForm() {
     corePages: $("corePages").value.trim(),
     sourceNote: $("sourceNote").value.trim(),
     coreNote: $("coreNote").value.trim(),
-    downloadImages: $("downloadImages").checked,
+    downloadImages: speechifyEligible
+      ? narrativeDownloadImages
+      : cardModeDownloadImagesDisabled
+        ? false
+        : $("downloadImages").checked,
+    cardModeDownloadImagesDisabled: speechifyEligible ? false : cardModeDownloadImagesDisabled,
     downloadPlain: $("downloadPlain").checked,
     downloadAnnotated: $("downloadAnnotated").checked,
     keepCaptionHtml: $("keepCaptionHtml").checked,
@@ -366,6 +390,7 @@ function applyForm(values) {
   $("speechifyFolderUrl").value = getStoredSpeechifyFolderUrl(values);
   syncPanels();
   applyNarrativeModeDefaults();
+  applyCardModeDefaults(values);
   syncSpeechifyAvailability();
 }
 
@@ -1053,12 +1078,14 @@ async function init() {
     populateModes($("engine").value, $("mode").value);
     syncPanels();
     applyNarrativeModeDefaults();
+    applyCardModeDefaults();
     syncSpeechifyAvailability();
     await saveForm();
   });
 
   $("mode").addEventListener("change", async () => {
     applyNarrativeModeDefaults();
+    applyCardModeDefaults();
     syncSpeechifyAvailability();
     await saveForm();
   });

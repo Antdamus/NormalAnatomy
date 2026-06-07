@@ -1,0 +1,763 @@
+{
+  "articleTitle": "Neuropathic (Charcot) Arthropathy",
+  "createdAt": "2026-06-07T07:54:45.324390+00:00",
+  "canonicalHierarchy": {
+    "source": "RadPrimer",
+    "breadcrumbTrail": [
+      "Basic",
+      "Musculoskeletal",
+      "Musculoskeletal: Trauma",
+      "Introduction to Osseous Trauma",
+      "Charcot (Neuropathic)"
+    ],
+    "ankiDeckTarget": "Corebook::MSK::Trauma::Introduction to Osseous Trauma::Charcot (Neuropathic)"
+  },
+  "sourcePriority": [
+    "RadPrimer backbone/hierarchy",
+    "STATdx supplemental depth and visual reinforcement"
+  ],
+  "sourceCoverage": {
+    "radprimerImageCoverageBySTATdx": [
+      {
+        "radprimerImageId": "RP-01",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-23"
+        ],
+        "action": "Keep RadPrimer image 1; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-02",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-19"
+        ],
+        "action": "Keep RadPrimer image 2; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-03",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-20"
+        ],
+        "action": "Keep RadPrimer image 3; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-04",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-22"
+        ],
+        "action": "Keep RadPrimer image 4; archive duplicate STATdx image 22; select STATdx image 21 as a nonduplicate adjacent-slice supplement."
+      },
+      {
+        "radprimerImageId": "RP-05",
+        "classification": "conceptualReplacement",
+        "statdxMatches": [
+          "SDX-01",
+          "SDX-34",
+          "SDX-35"
+        ],
+        "action": "Keep RadPrimer image 5 and select STATdx diabetic foot alternatives for recognition reinforcement."
+      },
+      {
+        "radprimerImageId": "RP-06",
+        "classification": "conceptualReplacement",
+        "statdxMatches": [
+          "SDX-03",
+          "SDX-04",
+          "SDX-36"
+        ],
+        "action": "Keep RadPrimer image 6 and select distinct STATdx CT views for modality reinforcement."
+      },
+      {
+        "radprimerImageId": "RP-07",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-15"
+        ],
+        "action": "Keep RadPrimer image 7; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-08",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-16"
+        ],
+        "action": "Keep RadPrimer image 8; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-09",
+        "classification": "notCovered",
+        "statdxMatches": [],
+        "action": "Keep; no STATdx duplicate or equivalent fluid-collection/biopsy-negative MR example."
+      },
+      {
+        "radprimerImageId": "RP-10",
+        "classification": "notCovered",
+        "statdxMatches": [],
+        "action": "Keep; no STATdx duplicate or equivalent axial MR tendon-sheath/fluid example."
+      },
+      {
+        "radprimerImageId": "RP-11",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-05"
+        ],
+        "action": "Keep RadPrimer image 11; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-12",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-06"
+        ],
+        "action": "Keep RadPrimer image 12; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-13",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-11"
+        ],
+        "action": "Keep RadPrimer image 13; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-14",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-12"
+        ],
+        "action": "Keep RadPrimer image 14; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-15",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-09"
+        ],
+        "action": "Keep RadPrimer image 15; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-16",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-10"
+        ],
+        "action": "Keep RadPrimer image 16; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-17",
+        "classification": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-07"
+        ],
+        "action": "Keep both. Same disease/etiology concept but visually distinct knee examples; not the same screenshot."
+      },
+      {
+        "radprimerImageId": "RP-18",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-08"
+        ],
+        "action": "Keep RadPrimer image 18; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-19",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-24"
+        ],
+        "action": "Keep RadPrimer image 19; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-20",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-25"
+        ],
+        "action": "Keep RadPrimer image 20; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-21",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-26"
+        ],
+        "action": "Keep RadPrimer image 21; archive STATdx duplicate."
+      },
+      {
+        "radprimerImageId": "RP-22",
+        "classification": "notCovered",
+        "statdxMatches": [],
+        "action": "Keep; STATdx does not duplicate the cirrhosis/etiology CT context image."
+      }
+    ],
+    "summary": {
+      "radprimerImages": 22,
+      "statdxImages": 36,
+      "selectedPrimaryImages": 42,
+      "archiveOptionalDuplicates": 16,
+      "statdxExactDuplicateImagesArchived": 16,
+      "statdxSupplementalImagesSelected": 20
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 22,
+    "STATdx": 36
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer] for facts only present in RadPrimer.",
+    "Use [STATdx] for facts only present in STATdx.",
+    "Use [Both] for shared concepts across both sources.",
+    "Treat Core-specific claims as verified only if the package contains auditable Core evidence; none was provided here."
+  ],
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-13",
+    "RP-14",
+    "RP-15",
+    "RP-16",
+    "RP-17",
+    "RP-18",
+    "RP-19",
+    "RP-20",
+    "RP-21",
+    "RP-22",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-07",
+    "SDX-13",
+    "SDX-14",
+    "SDX-17",
+    "SDX-18",
+    "SDX-21",
+    "SDX-27",
+    "SDX-28",
+    "SDX-29",
+    "SDX-30",
+    "SDX-31",
+    "SDX-32",
+    "SDX-33",
+    "SDX-34",
+    "SDX-35",
+    "SDX-36"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-05",
+    "SDX-06",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-15",
+    "SDX-16",
+    "SDX-19",
+    "SDX-20",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26"
+  ],
+  "sourceSelectionPlan": {
+    "textToKeep": {
+      "RadPrimer": [
+        "Canonical hierarchy/backbone and concise board-style teaching spine.",
+        "5 Ds with normal bone density emphasis, rapid destructive behavior, large effusions, debris distant from joint, and location-to-etiology mapping.",
+        "MR problem-solving language for Charcot foot versus osteomyelitis, especially T1/postcontrast emphasis, confluent T1 infection pattern, sinus tract and air clues, reactive enhancement caveat.",
+        "Differentials: osteomyelitis/septic joint, chondrosarcoma shoulder mimic, OA/inflammatory arthritis, and discitis spine."
+      ],
+      "STATdx": [
+        "Progressive polyneuropathy definition and expanded radiographic early/middle/late-stage features.",
+        "Eichenholtz and Sanders-Frykberg classification details for foot/ankle cards when useful.",
+        "Management/prognosis details including long-term surveillance, infection prevention, revascularization/ulcer management, mobility preservation, and refractory amputation/reconstruction context.",
+        "Additional epidemiology/etiology points including amyloidosis, meningomyelocele, wrist, and diabetic prevalence wording.",
+        "Supplemental image clusters retained for recognition reinforcement and modality/stage/location variety."
+      ]
+    },
+    "textToDownweightOrSkip": [
+      "Do not duplicate the full RadPrimer and STATdx article outlines verbatim when generating narrative/cards; use the merged teaching spine.",
+      "Do not repeat both long and short image labels in human-facing prose. Say \"STATdx image 35,\" not \"STATdx image 35 / SDX-35.\"",
+      "Do not treat conceptual replacements as duplicates; retain visually distinct examples for recognition learning."
+    ],
+    "imageCurationPolicy": "Exact duplicates are archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "Exact duplicate decisions require image_evidence files, same source image IDs, perceptual/pixel evidence, or explicit source/manual note. Caption-only or diagnosis-only similarity is not enough.",
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse clusters are atomic unless the report explicitly documents a safe cross-source merge or split.",
+      "intentionalSplits": [
+        "STATdx images 19-22 are the same diabetic foot MRI cluster as RadPrimer images 2-4 plus an added STATdx adjacent slice. RadPrimer images 2-4 are selected, STATdx images 19, 20, and 22 are archived as exact same-image duplicates, and STATdx image 21 is selected as an adjacent-slice supplement. This is a cross-source merged cluster, not an isolated dropped teaching step."
+      ],
+      "noOtherIntentionalSplits": true
+    },
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "humanLabel": "RadPrimer image 1",
+        "plainUrl": "https://app.radprimer.com/images/cfb1c82f-1e74-4190-8493-1dee3dc750be?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/cfb1c82f-1e74-4190-8493-1dee3dc750be?style=xlarge&annotated=true",
+        "downloadFilename": "RP-01_RadPrimer_image_01_plain_cfb1c82f.jpg",
+        "caption": "Graphic shows common (red) and less common (yellow) sites of Charcot joints. Etiology is suggested by location."
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "humanLabel": "RadPrimer image 2",
+        "plainUrl": "https://app.radprimer.com/images/5f329baf-02ed-40af-966c-1fb5d353f318?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/5f329baf-02ed-40af-966c-1fb5d353f318?style=xlarge&annotated=true",
+        "downloadFilename": "RP-02_RadPrimer_image_02_plain_5f329baf.jpg",
+        "caption": "Sagittal T1WI MR, part of a series in a patient with diabetic Charcot foot, shows numerous abnormalities. Charcot joints are noted at navicular cuneiforms <img src=\"arrow_WO.png\">. There is ↓ signal in the plantar soft tissues, with confluent ↓ signal in the adjacent cuboid <img src=\"arrow_WC.png\">, concerning for osteomyelitis. It also shows diffuse ↓ signals throughout the talus <img src=\"arrow_WS.png\">, an unexpected finding."
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "humanLabel": "RadPrimer image 3",
+        "plainUrl": "https://app.radprimer.com/images/9ee79d0e-52b3-4e94-9cdf-609a824f50b7?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9ee79d0e-52b3-4e94-9cdf-609a824f50b7?style=xlarge&annotated=true",
+        "downloadFilename": "RP-03_RadPrimer_image_03_plain_9ee79d0e.jpg",
+        "caption": "Sagittal STIR MR in the same patient further defines the talar abnormality as an insufficiency fracture of the dome <img src=\"arrow_WS.png\">."
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "humanLabel": "RadPrimer image 4",
+        "plainUrl": "https://app.radprimer.com/images/23ae97bc-ff62-4916-a795-433f149d9d42?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/23ae97bc-ff62-4916-a795-433f149d9d42?style=xlarge&annotated=true",
+        "downloadFilename": "RP-04_RadPrimer_image_04_plain_23ae97bc.jpg",
+        "caption": "Sagittal T1WI C+ FS MR, adjacent slice, shows a wedge-shaped region of hypointensity <img src=\"arrow_WS.png\">, representing a segment of osteonecrosis (ON) in the body of the talus. Remember that the talus is prone to ON and that the tarsal bones are prone to insufficiency fracture in diabetic feet. Sinus track <img src=\"arrow_WC.png\"> led to the cuboid, confirming osteomyelitis, which was suspected based on both T1 and STIR."
+      },
+      {
+        "masterImageId": "RP-05",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 5,
+        "humanLabel": "RadPrimer image 5",
+        "plainUrl": "https://app.radprimer.com/images/3830e8af-732d-4a4f-a47e-e8a23ece6833?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/3830e8af-732d-4a4f-a47e-e8a23ece6833?style=xlarge&annotated=true",
+        "downloadFilename": "RP-05_RadPrimer_image_05_plain_3830e8af.jpg",
+        "caption": "AP radiograph shows swelling about the tarsometatarsal joints <img src=\"arrow_WS.png\">. Careful observation reveals fragmentation <img src=\"arrow_WC.png\"> at the base of the 3rd metatarsal, with likely fragmentation of the bases of the 4th and 5th as well. There was no history of trauma; this is a Charcot foot."
+      },
+      {
+        "masterImageId": "RP-06",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 6,
+        "humanLabel": "RadPrimer image 6",
+        "plainUrl": "https://app.radprimer.com/images/652a5d5e-f585-4654-a53f-3c414906b529?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/652a5d5e-f585-4654-a53f-3c414906b529?style=xlarge&annotated=true",
+        "downloadFilename": "RP-06_RadPrimer_image_06_plain_652a5d5e.jpg",
+        "caption": "Short-axis CT, same patient, proves the fragmentation and mild subluxation of the metatarsal bases <img src=\"arrow_WS.png\">; it is often far more severe than suspected on the basis of radiographs. As one would expect, the patient is diabetic."
+      },
+      {
+        "masterImageId": "RP-07",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 7,
+        "humanLabel": "RadPrimer image 7",
+        "plainUrl": "https://app.radprimer.com/images/87a6d677-302a-403b-a312-8b002364dec4?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/87a6d677-302a-403b-a312-8b002364dec4?style=xlarge&annotated=true",
+        "downloadFilename": "RP-07_RadPrimer_image_07_plain_87a6d677.jpg",
+        "caption": "Lateral radiograph shows an old and healed calcaneal insufficiency avulsion fracture <img src=\"arrow_WS.png\">, typical in diabetics. The talonavicular joint shows concavity of the articular surface of the talus, along with some sclerosis <img src=\"arrow_WO.png\">, suspicious for early Charcot joint."
+      },
+      {
+        "masterImageId": "RP-08",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 8,
+        "humanLabel": "RadPrimer image 8",
+        "plainUrl": "https://app.radprimer.com/images/f6eeb5fa-1e4c-4339-b248-a696696a56ce?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f6eeb5fa-1e4c-4339-b248-a696696a56ce?style=xlarge&annotated=true",
+        "downloadFilename": "RP-08_RadPrimer_image_08_plain_f6eeb5fa.jpg",
+        "caption": "Lateral radiograph of the same foot 2 months later shows ongoing destruction at the talonavicular joint <img src=\"arrow_WO.png\">. Debris has migrated dorsal to the talus, contained within a distended joint capsule <img src=\"arrow_WC.png\">. This is a classic Charcot joint."
+      },
+      {
+        "masterImageId": "RP-09",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 9,
+        "humanLabel": "RadPrimer image 9",
+        "plainUrl": "https://app.radprimer.com/images/3f2c4644-8fae-4bb9-ae93-faf890b69cc9?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/3f2c4644-8fae-4bb9-ae93-faf890b69cc9?style=xlarge&annotated=true",
+        "downloadFilename": "RP-09_RadPrimer_image_09_plain_3f2c4644.jpg",
+        "caption": "Sagittal T1WI C+ FS MR in a Charcot foot shows fluid collections (some containing debris) surrounding the ankle <img src=\"arrow_WS.png\"> and abnormal signal within the distal tibia <img src=\"arrow_WC.png\">. Metallic artifact obscures the subtalar, talonavicular, and calcaneocuboid joints."
+      },
+      {
+        "masterImageId": "RP-10",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 10,
+        "humanLabel": "RadPrimer image 10",
+        "plainUrl": "https://app.radprimer.com/images/9b66faea-81ee-4439-a458-0f0ba80fada1?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9b66faea-81ee-4439-a458-0f0ba80fada1?style=xlarge&annotated=true",
+        "downloadFilename": "RP-10_RadPrimer_image_10_plain_9b66faea.jpg",
+        "caption": "Axial T1WI C+ FS MR in the same patient shows fluid collections in the soft tissues <img src=\"arrow_WS.png\"> and tendon sheaths <img src=\"arrow_WO.png\">. These are neuropathic fluid collections. Bones enhance, related to reactive change. There was no infection at biopsy."
+      },
+      {
+        "masterImageId": "RP-11",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 11,
+        "humanLabel": "RadPrimer image 11",
+        "plainUrl": "https://app.radprimer.com/images/089ac603-0719-483f-b425-c2ef2773aece?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/089ac603-0719-483f-b425-c2ef2773aece?style=xlarge&annotated=true",
+        "downloadFilename": "RP-11_RadPrimer_image_11_plain_089ac603.jpg",
+        "caption": "AP radiograph shows a dislocated shoulder with severe fragmentation and bony debris. The placement of the debris suggests massive distension of the glenohumeral joint and subacromial/subdeltoid bursa <img src=\"arrow_WS.png\">. The combination of findings is typical of Charcot (neuropathic) shoulder."
+      },
+      {
+        "masterImageId": "RP-12",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 12,
+        "humanLabel": "RadPrimer image 12",
+        "plainUrl": "https://app.radprimer.com/images/db68416b-33ca-47a9-9b6e-cf1db8ec49d2?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/db68416b-33ca-47a9-9b6e-cf1db8ec49d2?style=xlarge&annotated=true",
+        "downloadFilename": "RP-12_RadPrimer_image_12_plain_db68416b.jpg",
+        "caption": "Sagittal T2 MR, same patient, shows a large cervicothoracic syrinx <img src=\"arrow_WS.png\">. Syringomyelia is the most common etiology of Charcot changes in the glenohumeral joint."
+      },
+      {
+        "masterImageId": "RP-13",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 13,
+        "humanLabel": "RadPrimer image 13",
+        "plainUrl": "https://app.radprimer.com/images/b5bb3273-bea5-48bf-a9e3-1e5a4e0ca809?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/b5bb3273-bea5-48bf-a9e3-1e5a4e0ca809?style=xlarge&annotated=true",
+        "downloadFilename": "RP-13_RadPrimer_image_13_plain_b5bb3273.jpg",
+        "caption": "Lateral radiograph of a paraplegic shows a burst fracture of L1 treated with partial corpectomy, strut graft <img src=\"arrow_WS.png\">, and posterior rods. Note the osseous destruction and instability at the next 2 levels <img src=\"arrow_WO.png\">. These Charcot vertebrae are typically located immediately caudad to the stabilized spine."
+      },
+      {
+        "masterImageId": "RP-14",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 14,
+        "humanLabel": "RadPrimer image 14",
+        "plainUrl": "https://app.radprimer.com/images/a30caa98-a881-4d42-89e1-ec5faffbb3b4?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/a30caa98-a881-4d42-89e1-ec5faffbb3b4?style=xlarge&annotated=true",
+        "downloadFilename": "RP-14_RadPrimer_image_14_plain_a30caa98.jpg",
+        "caption": "Lateral radiograph shows significant subluxation and destruction of endplates with osseous debris at 2 adjacent levels <img src=\"arrow_WS.png\">. This paraplegic patient developed instability and Charcot spine."
+      },
+      {
+        "masterImageId": "RP-15",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 15,
+        "humanLabel": "RadPrimer image 15",
+        "plainUrl": "https://app.radprimer.com/images/82a2f7b4-c568-4b69-b7cd-d8d132402e60?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/82a2f7b4-c568-4b69-b7cd-d8d132402e60?style=xlarge&annotated=true",
+        "downloadFilename": "RP-15_RadPrimer_image_15_plain_82a2f7b4.jpg",
+        "caption": "AP radiograph shows ragged destructive changes of the femoral condyle and osseous debris <img src=\"arrow_WC.png\"> in a young patient. His contralateral AP knee had similar abnormalities."
+      },
+      {
+        "masterImageId": "RP-16",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 16,
+        "humanLabel": "RadPrimer image 16",
+        "plainUrl": "https://app.radprimer.com/images/07dc9b68-180b-48a8-a341-2a57c1836c3d?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/07dc9b68-180b-48a8-a341-2a57c1836c3d?style=xlarge&annotated=true",
+        "downloadFilename": "RP-16_RadPrimer_image_16_plain_07dc9b68.jpg",
+        "caption": "Axial T2WI MR in the same patient shows a large effusion and 1 of multiple pieces of osteocartilaginous debris <img src=\"arrow_WS.png\">. This patient's knees show the debris, distension, and destruction typical of neuropathic joints. The etiology in this case is congenital insensitivity to pain."
+      },
+      {
+        "masterImageId": "RP-17",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 17,
+        "humanLabel": "RadPrimer image 17",
+        "plainUrl": "https://app.radprimer.com/images/bbd416f9-8769-468f-ae44-75eddc41231e?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/bbd416f9-8769-468f-ae44-75eddc41231e?style=xlarge&annotated=true",
+        "downloadFilename": "RP-17_RadPrimer_image_17_plain_bbd416f9.jpg",
+        "caption": "AP radiograph shows an unusual case of neuropathic joint, resulting from congenital indifference to pain. The left knee shows severe disruption with subluxation, fragmentation, attempted repair, and complete destruction of the joint."
+      },
+      {
+        "masterImageId": "RP-18",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 18,
+        "humanLabel": "RadPrimer image 18",
+        "plainUrl": "https://app.radprimer.com/images/c045d0a4-c606-43e0-8578-e57b0fb37d2c?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/c045d0a4-c606-43e0-8578-e57b0fb37d2c?style=xlarge&annotated=true",
+        "downloadFilename": "RP-18_RadPrimer_image_18_plain_c045d0a4.jpg",
+        "caption": "Lateral radiograph of contralateral limb in same patient shows just as severe disruption with destruction of the tibiotalar, subtalar, and midfoot joints. Congenital indifference to pain is an unusual cause of Charcot joint and is often polyarticular."
+      },
+      {
+        "masterImageId": "RP-19",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 19,
+        "humanLabel": "RadPrimer image 19",
+        "plainUrl": "https://app.radprimer.com/images/f77c289f-bf9f-45de-a5ab-255d85ea8c39?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f77c289f-bf9f-45de-a5ab-255d85ea8c39?style=xlarge&annotated=true",
+        "downloadFilename": "RP-19_RadPrimer_image_19_plain_f77c289f.jpg",
+        "caption": "AP radiograph in a middle-aged patient gives the initial impression of uncomplicated osteoarthritis, with cartilage loss <img src=\"arrow_WO.png\">, large subchondral cyst formation <img src=\"arrow_WC.png\">, superolateral subluxation of the hip, and calcar buttressing <img src=\"arrow_WS.png\">."
+      },
+      {
+        "masterImageId": "RP-20",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 20,
+        "humanLabel": "RadPrimer image 20",
+        "plainUrl": "https://app.radprimer.com/images/5c9a55b6-3491-4023-a026-240fc102cda2?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/5c9a55b6-3491-4023-a026-240fc102cda2?style=xlarge&annotated=true",
+        "downloadFilename": "RP-20_RadPrimer_image_20_plain_5c9a55b6.jpg",
+        "caption": "Coronal CT, obtained 2 months later in the same patient, shows severe and rapid progression of destruction of the femoral head and acetabulum. Abundant debris <img src=\"arrow_WS.png\"> is seen within the joint."
+      },
+      {
+        "masterImageId": "RP-21",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 21,
+        "humanLabel": "RadPrimer image 21",
+        "plainUrl": "https://app.radprimer.com/images/a332eb74-af90-4a91-a369-df369b8562d7?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/a332eb74-af90-4a91-a369-df369b8562d7?style=xlarge&annotated=true",
+        "downloadFilename": "RP-21_RadPrimer_image_21_plain_a332eb74.jpg",
+        "caption": "AP radiograph in the same patient 7 months later shows the classic hatchet sign <img src=\"arrow_WS.png\"> of rapid destruction of the hip. The rapidity of the destruction and the appearance suggest a diagnosis of rapidly destructive osteoarthritis of the hip. However, one must also consider Charcot arthropathy as an etiology."
+      },
+      {
+        "masterImageId": "RP-22",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 22,
+        "humanLabel": "RadPrimer image 22",
+        "plainUrl": "https://app.radprimer.com/images/0dffc783-6437-4dca-aa13-fb3838741bb8?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/0dffc783-6437-4dca-aa13-fb3838741bb8?style=xlarge&annotated=true",
+        "downloadFilename": "RP-22_RadPrimer_image_22_plain_0dffc783.jpg",
+        "caption": "Axial CT from the same patient shows a small, nodular liver, typical of cirrhosis. The most common etiology of Charcot hip is alcoholism; the cirrhosis proves the etiology in this case."
+      },
+      {
+        "masterImageId": "SDX-01",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 1,
+        "humanLabel": "STATdx image 1",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/18076cd5-35e5-4f40-9b48-7c6bd52a6b4f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/18076cd5-35e5-4f40-9b48-7c6bd52a6b4f?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-01_STATdx_image_01_plain_18076cd5.jpg",
+        "caption": "AP view of hypertrophic Charcot arthropathy of the foot in a middle-aged woman with chronic foot swelling and deformity shows lateral subluxation <img src=\"arrow_CS.png\"> at the 2nd-5th tarsometatarsal (TMT) joints and chronic-appearing smooth periosteal reaction <img src=\"arrow_BS.png\">. An old healed 2nd metatarsal neck fracture <img src=\"arrow_WS.png\"> is also present."
+      },
+      {
+        "masterImageId": "SDX-02",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 2,
+        "humanLabel": "STATdx image 2",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/322c7ab7-5a51-4972-a9bf-3a49b46ba4dc?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/322c7ab7-5a51-4972-a9bf-3a49b46ba4dc?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-02_STATdx_image_02_plain_322c7ab7.jpg",
+        "caption": "Weight-bearing lateral view in the same patient shows hypertrophic changes at the Lisfranc joint with flattened arch and likely tarsal joint destruction <img src=\"arrow_WS.png\">."
+      },
+      {
+        "masterImageId": "SDX-03",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 3,
+        "humanLabel": "STATdx image 3",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/076812ff-109a-4c72-b215-a0aec6e2159e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/076812ff-109a-4c72-b215-a0aec6e2159e?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-03_STATdx_image_03_plain_076812ff.jpg",
+        "caption": "Reformatted long-axis NECT in the same patient shows prominent erosion-like changes <img src=\"arrow_CS.png\"> and bone production <img src=\"arrow_WS.png\"> involving the 2nd-5th TMT joints with subluxation, consistent with Charcot arthropathy."
+      },
+      {
+        "masterImageId": "SDX-04",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 4,
+        "humanLabel": "STATdx image 4",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e87c97d9-219b-4c4b-b017-e556e7ef62fc?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e87c97d9-219b-4c4b-b017-e556e7ef62fc?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-04_STATdx_image_04_plain_e87c97d9.jpg",
+        "caption": "Sagittal NECT in the same patient shows the advanced degree of joint destruction at the navicular-medial cuneiform articulation <img src=\"arrow_WS.png\"> to greater detail, as compared to the radiographs."
+      },
+      {
+        "masterImageId": "SDX-07",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 7,
+        "humanLabel": "STATdx image 7",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/bb083b11-87bb-44c4-a938-cbaab7d984e5?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/bb083b11-87bb-44c4-a938-cbaab7d984e5?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-07_STATdx_image_07_plain_bb083b11.jpg",
+        "caption": "AP view of a hypertrophic neuropathic knee in a 22-year-old with congenital insensitivity to pain showing the classic Ds of density <img src=\"arrow_CS.png\">, dislocation, and debris <img src=\"arrow_BS.png\"> is shown. Lack of sensation (neuropathy) would be needed to continue walking on this knee to cause this destruction."
+      },
+      {
+        "masterImageId": "SDX-13",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 13,
+        "humanLabel": "STATdx image 13",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/69c9d503-22a9-4015-963c-56e007e236d8?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/69c9d503-22a9-4015-963c-56e007e236d8?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-13_STATdx_image_13_plain_69c9d503.jpg",
+        "caption": "AP view of the pelvis shows destruction of the left hip <img src=\"arrow_WC.png\">, typical of a Charcot joint, in this case from tabes dorsalis. The multiple foci of metallic density within the soft tissues of the buttocks were from heavy metal injections for the treatment of syphilis, a historic treatment."
+      },
+      {
+        "masterImageId": "SDX-14",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 14,
+        "humanLabel": "STATdx image 14",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3ca8bb44-034b-4de5-95e8-0263ea26af9d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3ca8bb44-034b-4de5-95e8-0263ea26af9d?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-14_STATdx_image_14_plain_3ca8bb44.jpg",
+        "caption": "AP view of the hip in a patient with syphilis shows femoral shaft fracture, dislocation of the femoral head, and joint destruction with scattered debris about the joint. This is typical of a Charcot joint at the hip."
+      },
+      {
+        "masterImageId": "SDX-17",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 17,
+        "humanLabel": "STATdx image 17",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/d164f265-0ff8-44d0-ba85-a7c061dbe3ea?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/d164f265-0ff8-44d0-ba85-a7c061dbe3ea?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-17_STATdx_image_17_plain_d164f265.jpg",
+        "caption": "PA view of the wrist shows neuropathic carpometacarpal joints <img src=\"arrow_WS.png\">. There is vascular calcification <img src=\"arrow_WC.png\">. This is carpal diabetes-related Charcot arthropathy."
+      },
+      {
+        "masterImageId": "SDX-18",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 18,
+        "humanLabel": "STATdx image 18",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/44015073-3d70-42fb-a739-72e8dc519ce8?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/44015073-3d70-42fb-a739-72e8dc519ce8?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-18_STATdx_image_18_plain_44015073.jpg",
+        "caption": "Coronal T1 MR in a patient with Charcot shoulder shows a dislocated and destroyed humeral head <img src=\"arrow_WS.png\"> surrounded by fluid in the distended joint <img src=\"arrow_WO.png\">. The fluid communicates between the glenohumeral joint and subdeltoid bursa through a rotator cuff tear."
+      },
+      {
+        "masterImageId": "SDX-21",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 21,
+        "humanLabel": "STATdx image 21",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8084c5ea-a46a-4c51-96d0-625e1c84cf93?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8084c5ea-a46a-4c51-96d0-625e1c84cf93?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-21_STATdx_image_21_plain_8084c5ea.jpg",
+        "caption": "Sagittal T1 C+ FS MR in the same patient shows the talus fracture <img src=\"arrow_WS.png\">. It also shows a sinus track extending from the skin ulcer to the cuboid <img src=\"arrow_WC.png\">, confirming osteomyelitis there. Note the enhancement of the cuboid <img src=\"arrow_CS.png\">."
+      },
+      {
+        "masterImageId": "SDX-27",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 27,
+        "humanLabel": "STATdx image 27",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/54f85c3f-7835-4905-a66b-ba131d5c5aef?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/54f85c3f-7835-4905-a66b-ba131d5c5aef?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-27_STATdx_image_27_plain_54f85c3f.jpg",
+        "caption": "AP radiograph of the shoulder shows destructive changes within the glenohumeral joint, resulting in a straight cut-off appearance of the humeral head <img src=\"arrow_WS.png\">. The humerus is dislocated from the glenoid. There is a huge effusion with debris located within it in the subscapularis recess <img src=\"arrow_WO.png\">. These are typical findings of a Charcot shoulder. The patient proved to have syringomyelia."
+      },
+      {
+        "masterImageId": "SDX-28",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 28,
+        "humanLabel": "STATdx image 28",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3360e3ee-6be5-4182-af94-fadabe3dd03b?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3360e3ee-6be5-4182-af94-fadabe3dd03b?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-28_STATdx_image_28_plain_3360e3ee.jpg",
+        "caption": "Lateral radiograph of the ankle shows a long-term Charcot joint involving both the hindfoot and midfoot. The talus has completely resorbed in the process, leaving the tibia articulating with the morphologically abnormal calcaneus. Additionally, the navicular is without proximal articulation, and the calcaneus is significantly subluxated relative to the cuboid."
+      },
+      {
+        "masterImageId": "SDX-29",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 29,
+        "humanLabel": "STATdx image 29",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/75f31c19-be7b-4c97-9c69-622af08efab6?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/75f31c19-be7b-4c97-9c69-622af08efab6?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-29_STATdx_image_29_plain_75f31c19.jpg",
+        "caption": "AP radiograph of the foot in the same patient shows the severe destructive change of the hindfoot and midfoot. This patient also has a plantar-lateral ulceration, which does not approach bone."
+      },
+      {
+        "masterImageId": "SDX-30",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 30,
+        "humanLabel": "STATdx image 30",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9c462ec1-731f-4eb0-815f-22d2083f61bb?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9c462ec1-731f-4eb0-815f-22d2083f61bb?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-30_STATdx_image_30_plain_9c462ec1.jpg",
+        "caption": "AP radiograph of the foot in a patient with peripheral insensate neuropathy shows a classic Charcot foot involving the talonavicular <img src=\"arrow_WS.png\"> and calcaneocuboid <img src=\"arrow_WO.png\"> joints."
+      },
+      {
+        "masterImageId": "SDX-31",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 31,
+        "humanLabel": "STATdx image 31",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/151effc0-ae6f-4409-8ebd-3e256c279c30?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/151effc0-ae6f-4409-8ebd-3e256c279c30?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-31_STATdx_image_31_plain_151effc0.jpg",
+        "caption": "Axial CT in a patient with Charcot shoulder shows an enormous effusion extending from the shoulder down around the proximal shaft of the humerus <img src=\"arrow_WS.png\">. The fluid contains abundant bone debris and could be mistaken for mineralized soft tissue masses."
+      },
+      {
+        "masterImageId": "SDX-32",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 32,
+        "humanLabel": "STATdx image 32",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/15bcf2a6-5b12-4327-a2e9-540bac6dc118?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/15bcf2a6-5b12-4327-a2e9-540bac6dc118?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-32_STATdx_image_32_plain_15bcf2a6.jpg",
+        "caption": "Sagittal radiograph shows Charcot osteoarthropathy with disorganization of the Chopart (hindfoot-midfoot) joint <img src=\"arrow_WC.png\">. The patient is diabetic, and little debris is visible in this atrophic joint. There was a clinically unsuspected subacute fibula fracture <img src=\"arrow_WS.png\"> as well."
+      },
+      {
+        "masterImageId": "SDX-33",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 33,
+        "humanLabel": "STATdx image 33",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/fc353500-e90c-4329-8c74-117fbf0b1563?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/fc353500-e90c-4329-8c74-117fbf0b1563?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-33_STATdx_image_33_plain_fc353500.jpg",
+        "caption": "AP radiograph of the knee shows fragmentation and a tense effusion, which decompresses down fascial planes of the leg. This decompression carries bony debris distal to the joint <img src=\"arrow_WS.png\">. This is a typical Charcot knee in a patient with acquired syphilis."
+      },
+      {
+        "masterImageId": "SDX-34",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 34,
+        "humanLabel": "STATdx image 34",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8c0cf194-f372-4670-80fc-07c1abaf0cd0?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8c0cf194-f372-4670-80fc-07c1abaf0cd0?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-34_STATdx_image_34_plain_8c0cf194.jpg",
+        "caption": "AP radiograph of the foot shows lateral dislocation of the metatarsals <img src=\"arrow_WS.png\"> relative to the tarsals. The medial cortex of the 1st metatarsal should align perfectly with the medial cortex of the medial cuneiform. Vascular calcification <img src=\"arrow_WC.png\"> is present. This is a Lisfranc dislocation resulting from diabetic neuropathy."
+      },
+      {
+        "masterImageId": "SDX-35",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 35,
+        "humanLabel": "STATdx image 35",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8ff53129-3f80-48e7-8736-d4d89074e82a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8ff53129-3f80-48e7-8736-d4d89074e82a?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-35_STATdx_image_35_plain_8ff53129.jpg",
+        "caption": "Lateral radiograph of the foot shows diffuse soft tissue swelling about the metatarsals and dorsal subluxation of one of the bases <img src=\"arrow_WS.png\">. This should raise suspicion for Charcot joint."
+      },
+      {
+        "masterImageId": "SDX-36",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 36,
+        "humanLabel": "STATdx image 36",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/01680d45-46ff-4d00-9b9f-6161e6187f67?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/01680d45-46ff-4d00-9b9f-6161e6187f67?annotated=true&size=1000&quality=90",
+        "downloadFilename": "SDX-36_STATdx_image_36_plain_01680d45.jpg",
+        "caption": "Sagittal CT in the same patient shows fragmentation at the bases of multiple metatarsals <img src=\"arrow_WS.png\"> and cuboid. This patient was diabetic, and the images demonstrate classic findings and location of diabetic Charcot joint."
+      }
+    ],
+    "archiveDuplicates": [
+      "SDX-05",
+      "SDX-06",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-15",
+      "SDX-16",
+      "SDX-19",
+      "SDX-20",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26"
+    ],
+    "generatorInstructions": [
+      "Use the RadPrimer hierarchy as the skeleton, then insert STATdx depth where it improves mechanisms, staging, differential nuance, modality detail, or image recognition.",
+      "For narrative mode, organize by mechanism and imaging pattern first, then use images nonsequentially when that teaches better. All selected primary images must be covered.",
+      "When discussing an image, explicitly explain what each arrowed finding is pointing to when the caption provides arrow context.",
+      "When a case has follow-up/time-lapse/procedure/adjacent-slice context, state that context before the image is introduced.",
+      "For cards, use one main concept per card unless the card intentionally tests a pathway or structured comparison. Preserve source attribution on card backs."
+    ]
+  },
+  "visualAuditArtifacts": {
+    "contactSheets": [
+      "_visual_audit/RadPrimer_image_evidence.jpg",
+      "_visual_audit/STATdx_image_evidence.jpg",
+      "_visual_audit/candidate_overlap_pairs.jpg"
+    ],
+    "captionTable": "_visual_audit/image_caption_table.txt"
+  }
+}
