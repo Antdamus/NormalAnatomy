@@ -5,55 +5,59 @@ Created: 2026-06-07T03:16:17.014011+00:00
 
 ## Recommendation
 
-Use RadPrimer as the canonical hierarchy/backbone and STATdx as supplemental depth. STATdx does not fully cover the RadPrimer image set, so all RadPrimer images remain in the primary teaching set. Duplicate STATdx images were archived; high-value nonduplicate STATdx images were added as supplemental primary images.
+Use RadPrimer as the canonical hierarchy/backbone and STATdx as supplemental depth. STATdx does not fully cover the RadPrimer image set, so all RadPrimer images remain in the primary teaching set. Only exact duplicate STATdx recovery images are archived; visually distinct near-duplicate/alternate same-pattern STATdx images are retained as recognition-reinforcement primary images.
 
 ## Image Coverage Gate
 
 STATdx fully covers RadPrimer image set: **No**.
 
-- RP-01: exact duplicate; STATdx match(es): SDX-23; decision: Keep RadPrimer map as canonical; archive STATdx duplicate.
-- RP-02: near duplicate; STATdx match(es): SDX-19; decision: Keep RadPrimer atomic diabetic-foot MR cluster RP-02..RP-04; archive STATdx alternate cluster.
-- RP-03: near duplicate; STATdx match(es): SDX-20; decision: Keep RadPrimer same-patient cluster; archive STATdx alternate.
-- RP-04: near duplicate; STATdx match(es): SDX-21, SDX-22; decision: Keep RadPrimer adjacent-slice talar ON/infection problem-solving cluster intact; archive STATdx alternate cluster.
+- RP-01: exact duplicate; STATdx match(es): SDX-23; decision: Keep RadPrimer map as canonical; archive STATdx exact duplicate.
+- RP-02: near duplicate; STATdx match(es): SDX-19; decision: Keep RadPrimer atomic diabetic-foot MR cluster RP-02..RP-04; retain STATdx alternate cluster as recognition reinforcement.
+- RP-03: near duplicate; STATdx match(es): SDX-20; decision: Keep RadPrimer same-patient cluster; retain STATdx alternate as recognition reinforcement.
+- RP-04: near duplicate; STATdx match(es): SDX-21, SDX-22; decision: Keep RadPrimer adjacent-slice talar ON/infection problem-solving cluster intact; retain STATdx alternate/adjacent-slice examples as recognition reinforcement.
 - RP-05: conceptual replacement; STATdx match(es): SDX-34, SDX-35, SDX-36; decision: Keep RadPrimer radiograph/CT TMT cluster; add STATdx Lisfranc/TMT cluster as primary supplement, not replacement.
 - RP-06: conceptual replacement; STATdx match(es): SDX-36; decision: Keep RadPrimer CT proof with RP-05; add STATdx CT as separate supplemental diabetic-foot example.
-- RP-07: near duplicate; STATdx match(es): SDX-15; decision: Keep RadPrimer talonavicular early/progression pair RP-07..RP-08; archive STATdx duplicate pair.
-- RP-08: near duplicate; STATdx match(es): SDX-16; decision: Keep RadPrimer follow-up pair; archive STATdx duplicate pair.
+- RP-07: near duplicate; STATdx match(es): SDX-15; decision: Keep RadPrimer talonavicular early/progression pair RP-07..RP-08; retain STATdx alternate pair as recognition reinforcement.
+- RP-08: near duplicate; STATdx match(es): SDX-16; decision: Keep RadPrimer follow-up pair; retain STATdx alternate pair as recognition reinforcement.
 - RP-09: not covered; STATdx match(es): none; decision: Keep RadPrimer because it teaches neuropathic fluid collections/reactive change vs infection.
 - RP-10: not covered; STATdx match(es): none; decision: Keep RadPrimer with RP-09 because same-patient biopsy-negative infection mimic cluster.
-- RP-11: near duplicate; STATdx match(es): SDX-05; decision: Keep RadPrimer shoulder radiograph + syrinx pair; archive STATdx duplicate radiograph.
-- RP-12: near duplicate; STATdx match(es): SDX-06; decision: Keep RadPrimer syrinx proof; archive STATdx duplicate spine MR.
-- RP-13: near duplicate; STATdx match(es): SDX-11; decision: Keep RadPrimer paraplegic spine pair; archive STATdx duplicate.
-- RP-14: near duplicate; STATdx match(es): SDX-12; decision: Keep RadPrimer paraplegic spine pair; archive STATdx duplicate.
-- RP-15: near duplicate; STATdx match(es): SDX-09; decision: Keep RadPrimer congenital-insensitivity knee pair; archive STATdx duplicate.
-- RP-16: near duplicate; STATdx match(es): SDX-10; decision: Keep RadPrimer knee MR with same-patient radiograph; archive STATdx duplicate.
+- RP-11: near duplicate; STATdx match(es): SDX-05; decision: Keep RadPrimer shoulder radiograph + syrinx pair; retain STATdx shoulder example as recognition reinforcement.
+- RP-12: near duplicate; STATdx match(es): SDX-06; decision: Keep RadPrimer syrinx proof; retain STATdx syrinx proof as recognition reinforcement.
+- RP-13: near duplicate; STATdx match(es): SDX-11; decision: Keep RadPrimer paraplegic spine pair; retain STATdx spine example as recognition reinforcement.
+- RP-14: near duplicate; STATdx match(es): SDX-12; decision: Keep RadPrimer paraplegic spine pair; retain STATdx spine example as recognition reinforcement.
+- RP-15: near duplicate; STATdx match(es): SDX-09; decision: Keep RadPrimer congenital-insensitivity knee pair; retain STATdx knee example as recognition reinforcement.
+- RP-16: near duplicate; STATdx match(es): SDX-10; decision: Keep RadPrimer knee MR with same-patient radiograph; retain STATdx MR example as recognition reinforcement.
 - RP-17: conceptual replacement; STATdx match(es): SDX-07, SDX-08; decision: Keep RadPrimer polyarticular congenital-indifference example; add STATdx knee/ankle examples as primary supplements.
 - RP-18: conceptual replacement; STATdx match(es): SDX-08; decision: Keep RadPrimer contralateral limb pair; add STATdx atrophic ankle as separate primary supplement.
-- RP-19: near duplicate; STATdx match(es): SDX-24; decision: Keep RadPrimer hip time-lapse/alcohol-cirrhosis cluster RP-19..RP-22; archive STATdx alternate.
-- RP-20: exact duplicate; STATdx match(es): SDX-25; decision: Keep RadPrimer time-lapse cluster; archive STATdx duplicate CT.
-- RP-21: near duplicate; STATdx match(es): SDX-26; decision: Keep RadPrimer 7-month hip progression and hatchet sign; archive STATdx 2-month alternate to avoid timeline confusion.
+- RP-19: near duplicate; STATdx match(es): SDX-24; decision: Keep RadPrimer hip time-lapse/alcohol-cirrhosis cluster RP-19..RP-22; retain STATdx alternate hip progression example as recognition reinforcement.
+- RP-20: exact duplicate; STATdx match(es): SDX-25; decision: Keep RadPrimer time-lapse cluster; archive STATdx exact duplicate CT.
+- RP-21: near duplicate; STATdx match(es): SDX-26; decision: Keep RadPrimer 7-month hip progression and hatchet sign; retain STATdx 2-month alternate as recognition reinforcement, while clearly source-labeling it to avoid timeline confusion.
 - RP-22: not covered; STATdx match(es): none; decision: Keep RadPrimer because cirrhosis CT proves alcoholism etiology for Charcot hip.
 
 ## Curated Image Counts
 
 - RadPrimer images available: 22
 - STATdx images available: 36
-- Primary teaching images selected: 42
-- Archive optional images: 16
+- Primary teaching images selected: 56
+- Archive optional images: 2
 - Primary RadPrimer images: 22
-- Primary STATdx images: 20
+- Primary STATdx images: 34
 
 ## Primary STATdx Supplements
 
-Selected STATdx primary images: SDX-01, SDX-02, SDX-03, SDX-04, SDX-07, SDX-08, SDX-13, SDX-14, SDX-17, SDX-18, SDX-27, SDX-28, SDX-29, SDX-30, SDX-31, SDX-32, SDX-33, SDX-34, SDX-35, SDX-36
+Selected STATdx primary images: SDX-01, SDX-02, SDX-03, SDX-04, SDX-05, SDX-06, SDX-07, SDX-08, SDX-09, SDX-10, SDX-11, SDX-12, SDX-13, SDX-14, SDX-15, SDX-16, SDX-17, SDX-18, SDX-19, SDX-20, SDX-21, SDX-22, SDX-24, SDX-26, SDX-27, SDX-28, SDX-29, SDX-30, SDX-31, SDX-32, SDX-33, SDX-34, SDX-35, SDX-36
 
-These were kept because they add diabetic TMT/Lisfranc breadth, weight-bearing/CT detail, congenital pain atrophic ankle, tabes/syphilis hip and knee examples, diabetic wrist, shoulder MR/CT mass-mimic detail, severe hindfoot/midfoot examples, and additional Charcot foot recognition patterns.
+These were kept because they add diabetic TMT/Lisfranc breadth, weight-bearing/CT detail, congenital pain atrophic ankle, tabes/syphilis hip and knee examples, diabetic wrist, shoulder MR/CT mass-mimic detail, severe hindfoot/midfoot examples, and additional Charcot foot recognition patterns. Near-duplicate/alternate same-pattern examples are intentionally kept because repeated visual exposure builds image recognition.
 
 ## Archived STATdx Duplicates
 
-Archived optional STATdx images: SDX-05, SDX-06, SDX-09, SDX-10, SDX-11, SDX-12, SDX-15, SDX-16, SDX-19, SDX-20, SDX-21, SDX-22, SDX-23, SDX-24, SDX-25, SDX-26
+Archived optional STATdx images: SDX-23, SDX-25
 
-These are preserved in the registry but excluded from the default download plan because they duplicate RadPrimer images or duplicate an already stronger RadPrimer cluster.
+These are preserved in the registry but excluded from the default download plan only because they were marked as exact duplicate/recovery images. Former near-duplicate/alternate cluster examples were restored to the primary set as recognition reinforcement.
+
+## Recognition-Reinforcement Repair
+
+This bundle was repaired after review of the learning goal. Near-duplicate and alternate same-disease examples are useful for radiology image recognition, so they should not be archived merely because they repeat a pattern. SDX-05, SDX-06, SDX-09, SDX-10, SDX-11, SDX-12, SDX-15, SDX-16, SDX-19, SDX-20, SDX-21, SDX-22, SDX-24, SDX-26 were restored to the primary teaching set as recognition-reinforcement images. SDX-23 and SDX-25 remain archived as exact duplicate/recovery images based on the coverage report.
 
 ## Atomic Cluster Guardrails
 
@@ -71,3 +75,4 @@ These are preserved in the registry but excluded from the default download plan 
 - `master_source_import.json`
 - `master_source_report.md`
 - `_codex_master_source_done.txt`
+- `_codex_master_source_repaired.txt`

@@ -28,7 +28,7 @@
     "statdxCoverageMatches": [
       "SDX-23"
     ],
-    "coverageDecision": "Keep RadPrimer map as canonical; archive STATdx duplicate."
+    "coverageDecision": "Keep RadPrimer map as canonical; archive STATdx exact duplicate."
   },
   {
     "annotatedFilename": "RP-02_RadPrimer_annotated_Charcot__Neuropathic_2_annot.jpg",
@@ -58,7 +58,7 @@
     "statdxCoverageMatches": [
       "SDX-19"
     ],
-    "coverageDecision": "Keep RadPrimer atomic diabetic-foot MR cluster RP-02..RP-04; archive STATdx alternate cluster."
+    "coverageDecision": "Keep RadPrimer atomic diabetic-foot MR cluster RP-02..RP-04; retain STATdx alternate cluster as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-03_RadPrimer_annotated_Charcot__Neuropathic_3_annot.jpg",
@@ -88,7 +88,7 @@
     "statdxCoverageMatches": [
       "SDX-20"
     ],
-    "coverageDecision": "Keep RadPrimer same-patient cluster; archive STATdx alternate."
+    "coverageDecision": "Keep RadPrimer same-patient cluster; retain STATdx alternate as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-04_RadPrimer_annotated_Charcot__Neuropathic_4_annot.jpg",
@@ -119,7 +119,7 @@
       "SDX-21",
       "SDX-22"
     ],
-    "coverageDecision": "Keep RadPrimer adjacent-slice talar ON/infection problem-solving cluster intact; archive STATdx alternate cluster."
+    "coverageDecision": "Keep RadPrimer adjacent-slice talar ON/infection problem-solving cluster intact; retain STATdx alternate/adjacent-slice examples as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-05_RadPrimer_annotated_Charcot__Neuropathic_5_annot.jpg",
@@ -211,7 +211,7 @@
     "statdxCoverageMatches": [
       "SDX-15"
     ],
-    "coverageDecision": "Keep RadPrimer talonavicular early/progression pair RP-07..RP-08; archive STATdx duplicate pair."
+    "coverageDecision": "Keep RadPrimer talonavicular early/progression pair RP-07..RP-08; retain STATdx alternate pair as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-08_RadPrimer_annotated_Charcot__Neuropathic_8_annot.jpg",
@@ -241,7 +241,7 @@
     "statdxCoverageMatches": [
       "SDX-16"
     ],
-    "coverageDecision": "Keep RadPrimer follow-up pair; archive STATdx duplicate pair."
+    "coverageDecision": "Keep RadPrimer follow-up pair; retain STATdx alternate pair as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-09_RadPrimer_annotated_Charcot__Neuropathic_9_annot.jpg",
@@ -327,7 +327,7 @@
     "statdxCoverageMatches": [
       "SDX-05"
     ],
-    "coverageDecision": "Keep RadPrimer shoulder radiograph + syrinx pair; archive STATdx duplicate radiograph."
+    "coverageDecision": "Keep RadPrimer shoulder radiograph + syrinx pair; retain STATdx shoulder example as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-12_RadPrimer_annotated_Charcot__Neuropathic_12_annot.jpg",
@@ -357,7 +357,7 @@
     "statdxCoverageMatches": [
       "SDX-06"
     ],
-    "coverageDecision": "Keep RadPrimer syrinx proof; archive STATdx duplicate spine MR."
+    "coverageDecision": "Keep RadPrimer syrinx proof; retain STATdx syrinx proof as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-13_RadPrimer_annotated_Charcot__Neuropathic_13_annot.jpg",
@@ -387,7 +387,7 @@
     "statdxCoverageMatches": [
       "SDX-11"
     ],
-    "coverageDecision": "Keep RadPrimer paraplegic spine pair; archive STATdx duplicate."
+    "coverageDecision": "Keep RadPrimer paraplegic spine pair; retain STATdx spine example as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-14_RadPrimer_annotated_Charcot__Neuropathic_14_annot.jpg",
@@ -417,7 +417,7 @@
     "statdxCoverageMatches": [
       "SDX-12"
     ],
-    "coverageDecision": "Keep RadPrimer paraplegic spine pair; archive STATdx duplicate."
+    "coverageDecision": "Keep RadPrimer paraplegic spine pair; retain STATdx spine example as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-15_RadPrimer_annotated_Charcot__Neuropathic_15_annot.jpg",
@@ -447,7 +447,7 @@
     "statdxCoverageMatches": [
       "SDX-09"
     ],
-    "coverageDecision": "Keep RadPrimer congenital-insensitivity knee pair; archive STATdx duplicate."
+    "coverageDecision": "Keep RadPrimer congenital-insensitivity knee pair; retain STATdx knee example as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-16_RadPrimer_annotated_Charcot__Neuropathic_16_annot.jpg",
@@ -477,7 +477,7 @@
     "statdxCoverageMatches": [
       "SDX-10"
     ],
-    "coverageDecision": "Keep RadPrimer knee MR with same-patient radiograph; archive STATdx duplicate."
+    "coverageDecision": "Keep RadPrimer knee MR with same-patient radiograph; retain STATdx MR example as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-17_RadPrimer_annotated_Charcot__Neuropathic_17_annot.jpg",
@@ -568,7 +568,7 @@
     "statdxCoverageMatches": [
       "SDX-24"
     ],
-    "coverageDecision": "Keep RadPrimer hip time-lapse/alcohol-cirrhosis cluster RP-19..RP-22; archive STATdx alternate."
+    "coverageDecision": "Keep RadPrimer hip time-lapse/alcohol-cirrhosis cluster RP-19..RP-22; retain STATdx alternate hip progression example as recognition reinforcement."
   },
   {
     "annotatedFilename": "RP-20_RadPrimer_annotated_Charcot__Neuropathic_20_annot.jpg",
@@ -598,7 +598,7 @@
     "statdxCoverageMatches": [
       "SDX-25"
     ],
-    "coverageDecision": "Keep RadPrimer time-lapse cluster; archive STATdx duplicate CT."
+    "coverageDecision": "Keep RadPrimer time-lapse cluster; archive STATdx exact duplicate CT."
   },
   {
     "annotatedFilename": "RP-21_RadPrimer_annotated_Charcot__Neuropathic_21_annot.jpg",
@@ -628,7 +628,7 @@
     "statdxCoverageMatches": [
       "SDX-26"
     ],
-    "coverageDecision": "Keep RadPrimer 7-month hip progression and hatchet sign; archive STATdx 2-month alternate to avoid timeline confusion."
+    "coverageDecision": "Keep RadPrimer 7-month hip progression and hatchet sign; retain STATdx 2-month alternate as recognition reinforcement, while clearly source-labeling it to avoid timeline confusion."
   },
   {
     "annotatedFilename": "RP-22_RadPrimer_annotated_Charcot__Neuropathic_22_annot.jpg",
@@ -767,7 +767,7 @@
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/aa5219d4-cfb0-4d01-8fb6-3a4f9a4591cc?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy5",
     "caption": "AP view shows a dislocated shoulder with severe fragmentation and resorption of the humeral head with bone debris. The placement of the debris suggests massive distention of the glenohumeral joint and subacromial-subdeltoid bursa <img src=\"arrow_WS.png\">. The combination of findings is typical of Charcot (neuropathic) shoulder.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy5.jpg",
     "group": "",
     "imageId": "aa5219d4-cfb0-4d01-8fb6-3a4f9a4591cc",
@@ -777,21 +777,23 @@
     "sourceImageNumber": 5,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 5 / SDX-05",
     "caseClusterId": "SDX-C02-shoulder-syrinx-duplicate",
     "caseClusterNote": "",
-    "downloadDecisionReason": "Archived: near-duplicate of RP-11 shoulder radiograph.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate shoulder radiograph near RP-11, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-06_STATdx_annotated_Neuropathic__Charcot__Arthropathy6_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/a53d746c-44ad-4ef9-83fd-a796331843bd?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy6",
     "caption": "Sagittal T2 MR of the cervical spine in the same patient shows a large cervicothoracic syrinx <img src=\"arrow_WS.png\">. Syringomyelia is the most common etiology of Charcot changes in the glenohumeral joint.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy6.jpg",
     "group": "",
     "imageId": "a53d746c-44ad-4ef9-83fd-a796331843bd",
@@ -801,14 +803,16 @@
     "sourceImageNumber": 6,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 6 / SDX-06",
     "caseClusterId": "SDX-C02-shoulder-syrinx-duplicate",
     "caseClusterNote": "",
-    "downloadDecisionReason": "Archived: near-duplicate of RP-12 syrinx proof.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate syrinx proof near RP-12, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-07_STATdx_annotated_Neuropathic__Charcot__Arthropathy7_annot.jpg",
@@ -867,7 +871,7 @@
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/3b46c055-aa25-4fad-b53a-0cd5e3de464d?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy9",
     "caption": "AP view of the knee shows ragged destructive changes of the femoral condyle and osseous debris <img src=\"arrow_WC.png\"> in a young patient. His contralateral AP knee had similar abnormalities.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy9.jpg",
     "group": "",
     "imageId": "3b46c055-aa25-4fad-b53a-0cd5e3de464d",
@@ -877,21 +881,23 @@
     "sourceImageNumber": 9,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 9 / SDX-09",
     "caseClusterId": "SDX-C03-congenital-pain-knee-ankle",
     "caseClusterNote": "",
-    "downloadDecisionReason": "Archived: near-duplicate of RP-15 knee radiograph.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate knee radiograph near RP-15, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-10_STATdx_annotated_Neuropathic__Charcot__Arthropathy10_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/274135bb-40cb-4312-a19b-e59c1e260563?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy10",
     "caption": "Axial T2 MR in the same patient shows a large effusion and 1 of multiple pieces of osteocartilaginous debris <img src=\"arrow_WS.png\">. This patient's knees show the debris, distention, and destruction typical of neuropathic joints. The etiology in this case is congenital insensitivity to pain.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy10.jpg",
     "group": "",
     "imageId": "274135bb-40cb-4312-a19b-e59c1e260563",
@@ -901,21 +907,23 @@
     "sourceImageNumber": 10,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 10 / SDX-10",
     "caseClusterId": "SDX-C03-congenital-pain-knee-ankle",
     "caseClusterNote": "",
-    "downloadDecisionReason": "Archived: near-duplicate of RP-16 knee MR.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate knee MR near RP-16, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-11_STATdx_annotated_Neuropathic__Charcot__Arthropathy11_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/6cd539d1-f6f0-4065-8ba1-0cf1db8d4cd7?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy11",
     "caption": "Lateral view of the thoracolumbar spine in a paraplegic patient shows a burst fracture of L1 treated with partial corpectomy, strut graft <img src=\"arrow_WS.png\">, and posterior rods. Note the bone destruction and instability at the next 2 levels <img src=\"arrow_WO.png\">, consistent with spinal neuropathic arthropathy.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy11.jpg",
     "group": "",
     "imageId": "6cd539d1-f6f0-4065-8ba1-0cf1db8d4cd7",
@@ -925,21 +933,23 @@
     "sourceImageNumber": 11,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 11 / SDX-11",
     "caseClusterId": "SDX-C04-spinal-neuroarthropathy-duplicate",
     "caseClusterNote": "",
-    "downloadDecisionReason": "Archived: near-duplicate of RP-13 Charcot spine.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate Charcot spine example near RP-13, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-12_STATdx_annotated_Neuropathic__Charcot__Arthropathy12_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ed4d977-84e1-4f8d-802c-fa7e53e220fd?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy12",
     "caption": "Lateral view of the thoracolumbar spine shows significant subluxation and destruction of endplates with bone debris at 2 adjacent levels <img src=\"arrow_WS.png\">. This paraplegic patient developed instability and spinal neuroarthropathy.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy12.jpg",
     "group": "",
     "imageId": "6ed4d977-84e1-4f8d-802c-fa7e53e220fd",
@@ -949,14 +959,16 @@
     "sourceImageNumber": 12,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 12 / SDX-12",
     "caseClusterId": "SDX-C04-spinal-neuroarthropathy-duplicate",
     "caseClusterNote": "",
-    "downloadDecisionReason": "Archived: near-duplicate of RP-14 Charcot spine.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate Charcot spine example near RP-14, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-13_STATdx_annotated_Neuropathic__Charcot__Arthropathy13_annot.jpg",
@@ -1015,7 +1027,7 @@
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/408643b0-d51e-40be-a7c1-3222e6e8edb3?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy15",
     "caption": "Lateral view shows a healed calcaneus insufficiency avulsion fracture <img src=\"arrow_WS.png\">, typical in diabetic patients. The talonavicular joint shows concavity of the articular surface of the talus, along with some sclerosis <img src=\"arrow_WO.png\">, suspicious for early Charcot joint.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy15.jpg",
     "group": "",
     "imageId": "408643b0-d51e-40be-a7c1-3222e6e8edb3",
@@ -1025,21 +1037,23 @@
     "sourceImageNumber": 15,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 15 / SDX-15",
     "caseClusterId": "SDX-C06-talonavicular-progression-duplicate",
     "caseClusterNote": "",
-    "downloadDecisionReason": "Archived: near-duplicate of RP-07 early talonavicular Charcot.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate early talonavicular Charcot example near RP-07, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-16_STATdx_annotated_Neuropathic__Charcot__Arthropathy16_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/e2d17a31-f4e2-4c60-9960-fe66618f07e5?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy16",
     "caption": "Lateral view in the same patient 2 months later shows ongoing destruction at the talonavicular joint <img src=\"arrow_WO.png\">. Debris has migrated dorsal to the talus, contained within a distended joint capsule <img src=\"arrow_WC.png\">. This is classic Charcot arthropathy progression.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy16.jpg",
     "group": "",
     "imageId": "e2d17a31-f4e2-4c60-9960-fe66618f07e5",
@@ -1049,14 +1063,16 @@
     "sourceImageNumber": 16,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 16 / SDX-16",
     "caseClusterId": "SDX-C06-talonavicular-progression-duplicate",
     "caseClusterNote": "",
-    "downloadDecisionReason": "Archived: near-duplicate of RP-08 follow-up progression.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate follow-up progression example near RP-08, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-17_STATdx_annotated_Neuropathic__Charcot__Arthropathy17_annot.jpg",
@@ -1115,7 +1131,7 @@
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/5911ef9e-0a0c-490d-a700-c7d49ec8a3bc?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy19",
     "caption": "Sagittal T1 MR in a patient with diabetic Charcot foot shows numerous abnormalities. There is dislocation of the naviculocuneiform joints <img src=\"arrow_WO.png\">. There is decreased signal in the plantar aspect of the cuboid <img src=\"arrow_WC.png\"> with confluent fat replacement under the cuboid <img src=\"arrow_CS.png\"> underlying an ulcer. There is diffuse decreased signal throughout the talus <img src=\"arrow_WS.png\">.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy19.jpg",
     "group": "",
     "imageId": "5911ef9e-0a0c-490d-a700-c7d49ec8a3bc",
@@ -1125,21 +1141,23 @@
     "sourceImageNumber": 19,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 19 / SDX-19",
     "caseClusterId": "SDX-C09-diabetic-foot-mr-duplicate",
     "caseClusterNote": "Atomic alternate cluster archived; overlaps RP-02..RP-04.",
-    "downloadDecisionReason": "Archived: alternate duplicate of RP-02 diabetic MR cluster.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate diabetic MR cluster example near RP-02, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-20_STATdx_annotated_Neuropathic__Charcot__Arthropathy20_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/2ac30cb4-8292-4872-b503-14deb30efa8b?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy20",
     "caption": "Sagittal STIR MR in the same patient shows the talus abnormality as an insufficiency fracture of the dome <img src=\"arrow_WS.png\">. There is mild edema in the cuboid <img src=\"arrow_CS.png\">.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy20.jpg",
     "group": "",
     "imageId": "2ac30cb4-8292-4872-b503-14deb30efa8b",
@@ -1149,21 +1167,23 @@
     "sourceImageNumber": 20,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 20 / SDX-20",
     "caseClusterId": "SDX-C09-diabetic-foot-mr-duplicate",
     "caseClusterNote": "Atomic alternate cluster archived; overlaps RP-02..RP-04.",
-    "downloadDecisionReason": "Archived: alternate duplicate of RP-03 talar insufficiency fracture.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate talar insufficiency fracture example near RP-03, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-21_STATdx_annotated_Neuropathic__Charcot__Arthropathy21_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/8084c5ea-a46a-4c51-96d0-625e1c84cf93?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy21",
     "caption": "Sagittal T1 C+ FS MR in the same patient shows the talus fracture <img src=\"arrow_WS.png\">. It also shows a sinus track extending from the skin ulcer to the cuboid <img src=\"arrow_WC.png\">, confirming osteomyelitis there. Note the enhancement of the cuboid <img src=\"arrow_CS.png\">.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy21.jpg",
     "group": "",
     "imageId": "8084c5ea-a46a-4c51-96d0-625e1c84cf93",
@@ -1173,21 +1193,23 @@
     "sourceImageNumber": 21,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 21 / SDX-21",
     "caseClusterId": "SDX-C09-diabetic-foot-mr-duplicate",
     "caseClusterNote": "Atomic alternate cluster archived; overlaps RP-02..RP-04.",
-    "downloadDecisionReason": "Archived: alternate duplicate/adjacent detail of RP-04 infection problem solving.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate adjacent-slice infection problem-solving example near RP-04, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-22_STATdx_annotated_Neuropathic__Charcot__Arthropathy22_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/57b4c919-32f2-4555-a158-6ff393e04226?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy22",
     "caption": "Sagittal T1 C+ FS MR, adjacent image in the same patient, shows a wedge-shaped region of lack of enhancement <img src=\"arrow_WS.png\"> or segment of osteonecrosis at the talus.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy22.jpg",
     "group": "",
     "imageId": "57b4c919-32f2-4555-a158-6ff393e04226",
@@ -1197,21 +1219,23 @@
     "sourceImageNumber": 22,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 22 / SDX-22",
     "caseClusterId": "SDX-C09-diabetic-foot-mr-duplicate",
     "caseClusterNote": "Atomic alternate cluster archived; overlaps RP-02..RP-04.",
-    "downloadDecisionReason": "Archived: alternate duplicate of RP-04 talar osteonecrosis.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate talar osteonecrosis example near RP-04, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-23_STATdx_annotated_Neuropathic__Charcot__Arthropathy23_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/34074c20-e3dc-40c6-b478-777dcad28366?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy23",
     "caption": "Graphic shows common (red) and less common (yellow) sites of Charcot joints. Etiology is suggested by location.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "archiveOptionalDuplicate",
     "filename": "Neuropathic_(Charcot)_Arthropathy23.jpg",
     "group": "",
     "imageId": "34074c20-e3dc-40c6-b478-777dcad28366",
@@ -1228,14 +1252,14 @@
     "downloadDecisionReason": "Archived: exact duplicate of RP-01 location map.",
     "includeInNarrativeDefault": false,
     "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "radPrimerCoverageRole": "exact duplicate archive"
   },
   {
     "annotatedFilename": "SDX-24_STATdx_annotated_Neuropathic__Charcot__Arthropathy24_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/81ffcf88-98bb-486a-afd9-7b7dde663285?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy24",
     "caption": "AP radiograph in a middle-aged patient gives the initial impression of uncomplicated osteoarthritis with joint space loss <img src=\"arrow_WO.png\">, large subchondral cyst formation <img src=\"arrow_WC.png\">, superolateral subluxation of the femoral head, and calcar buttressing <img src=\"arrow_WS.png\">.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy24.jpg",
     "group": "",
     "imageId": "81ffcf88-98bb-486a-afd9-7b7dde663285",
@@ -1245,21 +1269,23 @@
     "sourceImageNumber": 24,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 24 / SDX-24",
     "caseClusterId": "SDX-C11-hip-progression-duplicate",
     "caseClusterNote": "Atomic alternate hip progression cluster archived; RadPrimer retained because it has stronger timeline plus cirrhosis proof.",
-    "downloadDecisionReason": "Archived: near-duplicate of RP-19 initial hip OA-like view.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate initial hip OA-like view near RP-19, retained for pattern recognition.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-25_STATdx_annotated_Neuropathic__Charcot__Arthropathy25_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/4d2d10a0-55d3-4223-ba69-6b8027acb2a4?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy25",
     "caption": "Coronal CT, obtained 2 months later in the same patient, shows severe and rapid progression of destruction of the femoral head and acetabulum. Abundant debris <img src=\"arrow_WS.png\"> is present within the joint.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "archiveOptionalDuplicate",
     "filename": "Neuropathic_(Charcot)_Arthropathy25.jpg",
     "group": "",
     "imageId": "4d2d10a0-55d3-4223-ba69-6b8027acb2a4",
@@ -1272,18 +1298,18 @@
     "usedFor": [],
     "sourceQualifiedLabel": "STATdx image 25 / SDX-25",
     "caseClusterId": "SDX-C11-hip-progression-duplicate",
-    "caseClusterNote": "Atomic alternate hip progression cluster archived; RadPrimer retained because it has stronger timeline plus cirrhosis proof.",
-    "downloadDecisionReason": "Archived: near/exact duplicate of RP-20 2-month CT progression.",
+    "caseClusterNote": "Atomic alternate hip progression cluster preserved as archive because it was marked as an exact duplicate/recovery view of RP-20.",
+    "downloadDecisionReason": "Archived: exact duplicate/recovery image of RP-20 2-month CT progression.",
     "includeInNarrativeDefault": false,
     "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "radPrimerCoverageRole": "exact duplicate archive"
   },
   {
     "annotatedFilename": "SDX-26_STATdx_annotated_Neuropathic__Charcot__Arthropathy26_annot.jpg",
     "annotatedUrl": "https://app.statdx.com/image/thumbnail/bf324bfe-5cb8-41df-ad64-2ac1843157c8?annotated=true&size=1000&quality=90",
     "baseName": "Neuropathic_(Charcot)_Arthropathy26",
     "caption": "AP radiograph of the same patient 2 months later demonstrates the progression to a atrophic neuropathic arthropathy of the hip and shows the classic hatchet sign <img src=\"arrow_WS.png\"> of resorption.",
-    "downloadRecommendation": "archiveOptional",
+    "downloadRecommendation": "primaryTeachingSet",
     "filename": "Neuropathic_(Charcot)_Arthropathy26.jpg",
     "group": "",
     "imageId": "bf324bfe-5cb8-41df-ad64-2ac1843157c8",
@@ -1293,14 +1319,16 @@
     "sourceImageNumber": 26,
     "sourceKind": "statdx",
     "sourceLabel": "STATdx",
-    "usedFor": [],
+    "usedFor": [
+      "recognitionReinforcement"
+    ],
     "sourceQualifiedLabel": "STATdx image 26 / SDX-26",
     "caseClusterId": "SDX-C11-hip-progression-duplicate",
     "caseClusterNote": "Atomic alternate hip progression cluster archived; RadPrimer retained because it has stronger timeline plus cirrhosis proof.",
-    "downloadDecisionReason": "Archived: alternate hip progression duplicate; RadPrimer retained because timeline plus cirrhosis proof is stronger.",
-    "includeInNarrativeDefault": false,
-    "includeInCardsDefault": false,
-    "radPrimerCoverageRole": "duplicate archive"
+    "downloadDecisionReason": "Repaired: retained as recognition reinforcement because it is a visually distinct near-duplicate/alternate same-pattern example, not a proven exact duplicate. Recognition reinforcement: alternate hip progression example near RP-21, retained with source-labeling to avoid timeline confusion.",
+    "includeInNarrativeDefault": true,
+    "includeInCardsDefault": true,
+    "radPrimerCoverageRole": "recognition reinforcement"
   },
   {
     "annotatedFilename": "SDX-27_STATdx_annotated_Neuropathic__Charcot__Arthropathy27_annot.jpg",

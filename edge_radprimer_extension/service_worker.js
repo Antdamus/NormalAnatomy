@@ -24,6 +24,7 @@ const IMAGE_DOWNLOAD_SUBFOLDER = "RadPrimer";
 const CARD_AUDIT_SUBFOLDER = "RadPrimerAudit";
 const SOURCE_COMPARE_SUBFOLDER = "RadPrimerSourceComparison";
 const MASTER_SOURCE_SUBFOLDER = "RadiologyMasterSource";
+const IMAGE_EVIDENCE_SUBFOLDER = "image_evidence";
 const SOURCE_COMPARE_CACHE_PREFIX = "radprimerSourceCompareCache:";
 const MASTER_SOURCE_CACHE_KEY = "radprimerLatestMasterSource";
 const MASTER_SOURCE_CACHE_PREFIX = "radprimerMasterSourceCache:";
@@ -1053,6 +1054,148 @@ function buildSourceCompareDownloadPlan(title, sourceLabel, folderLabel = "") {
   };
 }
 
+function getSourceImageShortPrefix(sourceKind, sourceLabel) {
+  const kind = normalizeSourceCompareKind(sourceKind, sourceLabel);
+  if (kind === "statdx") return "SDX";
+  if (kind === "radprimer") return "RP";
+  return "SRC";
+}
+
+function getSourceImageMasterId(sourceKind, sourceLabel, sourceImageNumber) {
+  const number = Number(sourceImageNumber);
+  const suffix = Number.isFinite(number) && number > 0 ? String(number).padStart(2, "0") : "00";
+  return `${getSourceImageShortPrefix(sourceKind, sourceLabel)}-${suffix}`;
+}
+
+function getImageEvidenceExtension(value, fallbackUrl = "") {
+  const raw = `${value || ""} ${fallbackUrl || ""}`.toLowerCase();
+  const match = raw.match(/\.(jpe?g|png|webp|gif|bmp|tiff?)(?:[\s?#]|$)/i);
+  if (!match) return "jpg";
+  const ext = match[1].toLowerCase();
+  return ext === "jpeg" ? "jpg" : ext;
+}
+
+function buildImageEvidenceFilename(entry = {}, variant = "plain") {
+  const sourceImageNumber = Number(entry.sourceImageNumber ?? entry.imageNumber);
+  const masterImageId =
+    entry.masterImageId ||
+    getSourceImageMasterId(entry.sourceKind, entry.sourceLabel, sourceImageNumber);
+  const sourceLabel = getSourceFilenameLabel(entry.sourceKind, entry.sourceLabel);
+  const numberPart =
+    Number.isFinite(sourceImageNumber) && sourceImageNumber > 0
+      ? `image_${String(sourceImageNumber).padStart(2, "0")}`
+      : "image";
+  const imageId = String(entry.imageId || "").replace(/[^a-z0-9-]/gi, "");
+  const imageIdPart = imageId ? imageId.slice(0, 8) : "";
+  const ext = getImageEvidenceExtension(
+    variant === "annotated" ? entry.annotatedFilename || entry.filename : entry.plainFilename || entry.filename,
+    variant === "annotated" ? entry.annotatedUrl || entry.url : entry.plainUrl || entry.url
+  );
+  return [masterImageId, sourceLabel, numberPart, variant, imageIdPart]
+    .filter(Boolean)
+    .map((part) => sanitizeDownloadPathPart(part, "image"))
+    .join("_")
+    .concat(`.${ext}`);
+}
+
+function buildImageEvidenceManifest(imageRegistry = [], evidenceFolderName = IMAGE_EVIDENCE_SUBFOLDER) {
+  return (Array.isArray(imageRegistry) ? imageRegistry : [])
+    .map((entry, index) => normalizeImageRegistryEntry(entry, { index: index + 1 }))
+    .map((entry) => {
+      const variant = entry.plainUrl ? "plain" : entry.annotatedUrl ? "annotated" : "";
+      const evidenceUrl = variant === "annotated" ? entry.annotatedUrl : entry.plainUrl;
+      const evidenceFilename = variant
+        ? `${evidenceFolderName}/${buildImageEvidenceFilename(entry, variant)}`
+        : "";
+      return {
+        masterImageId: entry.masterImageId,
+        sourceKind: entry.sourceKind,
+        sourceLabel: entry.sourceLabel,
+        sourceImageNumber: entry.sourceImageNumber,
+        imageId: entry.imageId || "",
+        baseName: entry.baseName || "",
+        caption: entry.caption || "",
+        evidenceVariant: variant,
+        evidenceUrl,
+        evidenceFilename,
+        duplicateEvidenceRole:
+          "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        downloaded: false,
+        downloadError: ""
+      };
+    })
+    .filter((entry) => entry.evidenceUrl && entry.evidenceFilename);
+}
+
+function attachImageEvidenceToRegistry(imageRegistry = [], evidenceEntries = []) {
+  const byId = new Map(
+    (Array.isArray(evidenceEntries) ? evidenceEntries : []).map((entry) => [entry.masterImageId, entry])
+  );
+  return (Array.isArray(imageRegistry) ? imageRegistry : []).map((entry, index) => {
+    const normalized = normalizeImageRegistryEntry(entry, { index: index + 1 });
+    const evidence = byId.get(normalized.masterImageId);
+    if (!evidence) return normalized;
+    return {
+      ...normalized,
+      visualEvidence: {
+        evidenceFilename: evidence.evidenceFilename,
+        evidenceVariant: evidence.evidenceVariant,
+        evidenceUrl: evidence.evidenceUrl,
+        downloaded: Boolean(evidence.downloaded),
+        downloadError: evidence.downloadError || "",
+        duplicateEvidenceRole: evidence.duplicateEvidenceRole
+      }
+    };
+  });
+}
+
+function buildImageEvidenceBlock(entries = [], folder = IMAGE_EVIDENCE_SUBFOLDER) {
+  const list = Array.isArray(entries) ? entries : [];
+  return {
+    folder,
+    purpose:
+      "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+    duplicateClassificationRule:
+      "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+    entries: list
+  };
+}
+
+async function downloadUrlToPath(url, relativeFilename, timeoutMs = 120000) {
+  const normalizedUrl = normalizeDownloadUrl(url);
+  pendingImageDownloadFilenames.set(normalizedUrl, relativeFilename);
+  try {
+    const downloadId = await chrome.downloads.download({
+      url,
+      filename: relativeFilename,
+      conflictAction: "overwrite",
+      saveAs: false
+    });
+    await waitForDownloadComplete(downloadId, timeoutMs);
+    return downloadId;
+  } finally {
+    pendingImageDownloadFilenames.delete(normalizedUrl);
+  }
+}
+
+async function downloadImageEvidenceFiles(rootSubfolder, folderName, evidenceEntries = []) {
+  const list = Array.isArray(evidenceEntries) ? evidenceEntries : [];
+  for (const entry of list) {
+    if (!entry.evidenceUrl || !entry.evidenceFilename) continue;
+    const relativeFilename = `${rootSubfolder}/${folderName}/${entry.evidenceFilename}`;
+    try {
+      await downloadUrlToPath(entry.evidenceUrl, relativeFilename, 150000);
+      entry.downloaded = true;
+      entry.downloadError = "";
+    } catch (error) {
+      entry.downloaded = false;
+      entry.downloadError = String(error?.message || error);
+    }
+    await sleep(75);
+  }
+  return list;
+}
+
 function normalizeSourceCompareKind(sourceKind, sourceLabel) {
   const raw = `${sourceKind || ""} ${sourceLabel || ""}`.toLowerCase();
   if (raw.includes("statdx") || raw.includes("stat dx")) return "statdx";
@@ -1893,6 +2036,7 @@ function buildSourceCompareInstructions(metadata) {
     "- Recommend whether to use one source alone or a merged extraction plan.",
     "- Protect review load: flag facts that are narrative-only, suspend-worthy, or too low-yield for first-pass cards.",
     "- Preserve source attribution. Do not merge facts in a way that makes it unclear where they came from.",
+    "- If image_evidence files are present, use them for visual comparison. Do not classify two images as exact duplicates from captions alone.",
     "",
     "Preferred output when comparing two bundles:",
     "1. Source recommendation: RadPrimer only, STATdx only, or merged.",
@@ -1904,7 +2048,8 @@ function buildSourceCompareInstructions(metadata) {
     `Topic: ${metadata.articleTitle || "[unknown]"}`,
     `Source: ${metadata.sourceLabel || metadata.primarySourceLabel || "[unknown]"}`,
     `Engine/mode at export: ${metadata.engine || ""}/${metadata.mode || ""}`,
-    `Created: ${metadata.createdAt || ""}`
+    `Created: ${metadata.createdAt || ""}`,
+    `Image evidence files: ${metadata.imageEvidence?.entries?.length || 0}`
   ].join("\n");
 }
 
@@ -1921,6 +2066,7 @@ function buildSourceCompareWakeMessage(bundle) {
   if (files.sourcePackage) lines.push(`Source package: ${downloadFolder}\\${files.sourcePackage}`);
   if (files.metadata) lines.push(`Metadata: ${downloadFolder}\\${files.metadata}`);
   if (files.instructions) lines.push(`Instructions: ${downloadFolder}\\${files.instructions}`);
+  if (files.imageEvidence) lines.push(`Image evidence manifest: ${downloadFolder}\\${files.imageEvidence}`);
   lines.push(
     "",
     "When I provide another source-comparison bundle for the same topic, compare the two source packages and recommend which one should drive the narrative/cards, or whether they should be merged.",
@@ -1952,8 +2098,13 @@ function buildMasterSourceRequestInstructions(metadata) {
     "- Do not invent Core Radiology support. Treat Core-specific claims as verified only if the provided source packages contain auditable Core evidence.",
     "- Do not create cards or a lecture yet. Create only the fused master source package and report.",
     "- First run an image coverage gate: determine which RadPrimer images are exact duplicates, near duplicates, conceptual replacements, or not covered by STATdx.",
+    "- If image_evidence files are present, use those actual image files for visual duplicate classification. Caption similarity, matching diagnosis, or matching case wording is not enough to call an image an exact duplicate.",
+    "- Exact duplicate status requires visual evidence: same image file/source image ID, same pixel/perceptual appearance, same slice/screenshot, or a direct manual/source note. If that evidence is absent or uncertain, label the relationship near duplicate or conceptual replacement and keep the image primary.",
     "- Do not discard a RadPrimer image unless STATdx clearly replaces the same teaching need. If unsure, keep the RadPrimer image in the primary teaching set.",
-    "- Do not omit images from the registry. Separate images into a primaryTeachingSet for future narrative/cards and archiveOptionalDuplicates for recovery/complete-source review.",
+    "- For image-recognition learning, near duplicates are valuable reinforcement, not waste. If a source image is a different patient, projection, slice, stage, severity, modality, or visually distinct example of the same disease pattern, keep it in the primaryTeachingSet and label its role as recognitionReinforcement.",
+    "- Conceptual replacements should not remove images by default. If two images teach the same diagnosis but look different, keep both in the primaryTeachingSet unless one is a literal duplicate or unusable.",
+    "- Archive only true duplicate/recovery images by default: same image, same slice, same screenshot, trivial size variant, or same visual content with only caption/source differences. If exact duplicate status is uncertain, keep the image primary.",
+    "- Do not omit images from the registry. Separate images into a primaryTeachingSet for future narrative/cards, recognitionReinforcement images within that primary set, and archiveOptionalDuplicates for literal duplicate/recovery/complete-source review.",
     "- Treat same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse image groups as atomic teaching clusters. If one image from that cluster is selected, include the companion images needed to understand the case.",
     "- Do not replace or archive a single image inside a source case cluster unless the whole cluster is replaced by an equivalent cluster from the other source, or unless master_source_report.md explicitly explains why splitting the cluster is safe.",
     "- master_source_report.md must list any selected/archived case-cluster splits and the reason. If there are no intentional splits, say that no source case cluster was intentionally split.",
@@ -1964,14 +2115,18 @@ function buildMasterSourceRequestInstructions(metadata) {
     "Required image registry contract:",
     "- image_registry.json must be a JSON array.",
     "- Each image object must include masterImageId, sourceKind, sourceLabel, sourceImageNumber, caption, usedFor, downloadRecommendation, plainFilename/annotatedFilename when known, and plainUrl/annotatedUrl when known.",
+    "- When provided, carry visualEvidence.evidenceFilename/evidenceVariant/downloaded into each image object so future repairs can audit duplicate decisions against the actual staged images.",
     "- masterImageId should be RP-01, RP-02, etc. for RadPrimer and SDX-01, SDX-02, etc. for STATdx unless a clearer stable source code exists.",
-    "- downloadRecommendation must be primaryTeachingSet for images to download/use by default and archiveOptionalDuplicate for duplicate/recovery images that should not drive default cards/lecture.",
+    "- downloadRecommendation must be primaryTeachingSet for images to download/use by default and archiveOptionalDuplicate only for exact duplicate/recovery images that should not drive default cards/lecture.",
+    "- For retained near duplicates or alternate same-pattern examples, set downloadRecommendation: primaryTeachingSet and include usedFor values such as recognitionReinforcement, alternateExample, modalityVariant, stageVariant, or severityVariant as appropriate.",
     "- Downloadable filenames should be source-qualified, for example RP-05_RadPrimer_plain_<original>.jpg and SDX-04_STATdx_plain_<original>.jpg, so Anki fields can reference the exact source image.",
-    "- If a source image should be excluded from future teaching, keep it in the registry with downloadRecommendation: archiveOptionalDuplicate or usedFor: [] and explain why in master_source_report.md.",
+    "- If a source image should be excluded from future teaching, keep it in the registry with downloadRecommendation: archiveOptionalDuplicate or usedFor: [] and explain why in master_source_report.md. The reason must explicitly say exact duplicate, same image/slice/screenshot, unusable, or another concrete non-teaching reason.",
     "",
     "Required manifest/import contract:",
     "- master_source_manifest.json must include articleTitle, canonicalHierarchy, sourcePriority, sourceCoverage, imageCountBySource, sourceAttributionRules, selectedPrimaryImageIds, archiveOptionalImageIds, and sourceSelectionPlan.",
     "- sourceSelectionPlan must state what text to keep from each source, what to downweight/skip, the primary image download/use set, archive duplicates, and generator instructions for narrative/cards.",
+    "- sourceSelectionPlan must include imageCurationPolicy: exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "- sourceSelectionPlan must include duplicateEvidencePolicy: exactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
     "- sourceSelectionPlan must include a caseClusterGuardrails section describing atomic cluster rules and any intentional cluster splits.",
     "- master_source_import.json must be a single JSON object with: version, articleTitle, createdAt, packageText, manifest, imageRegistry, sourceSelectionPlan, selectedPrimaryImageIds, and archiveOptionalImageIds.",
     "- packageText in master_source_import.json must be exactly the same text written to master_source_package.txt.",
@@ -1982,7 +2137,8 @@ function buildMasterSourceRequestInstructions(metadata) {
     metadata.sourcePairingMatch
       ? `Source pairing match: ${metadata.sourcePairingMatch.type || "matched"} score ${metadata.sourcePairingMatch.score || ""} from ${metadata.sourcePairingMatch.matchedTitles?.[0] || metadata.sourcePairingMatch.matchedCacheKey || "[unknown]"}`
       : "Source pairing match: exact/manual cache",
-    `Sources: ${(metadata.sources || []).map((source) => source.sourceLabel || source.sourceKind).join(", ")}`
+    `Sources: ${(metadata.sources || []).map((source) => source.sourceLabel || source.sourceKind).join(", ")}`,
+    `Image evidence files: ${metadata.imageEvidence?.entries?.length || 0}`
   ].join("\n");
 }
 
@@ -1997,9 +2153,10 @@ function buildMasterSourceWakeMessage(bundle) {
     "1. From C:\\Users\\josem.000\\NormalAnatomy, import the newest complete master-source request bundle by running or emulating edge_radprimer_extension\\tools\\import-latest-master-source-bundle.ps1.",
     "2. Read C:\\Users\\josem.000\\NormalAnatomy\\master_source_queue\\_latest_master_source_bundle.txt.",
     "3. In that bundle, compare RadPrimer_source_package.txt, STATdx_source_package.txt, RadPrimer_metadata.json, STATdx_metadata.json, metadata.json, and master_source_request.md.",
-    "4. Write master_source_package.txt, master_source_manifest.json, image_registry.json, master_source_import.json, master_source_report.md, and _codex_master_source_done.txt in the same imported bundle folder.",
+    "4. If image_evidence_manifest.json and image_evidence/ are present, inspect those actual image files before classifying anything as an exact duplicate.",
+    "5. Write master_source_package.txt, master_source_manifest.json, image_registry.json, master_source_import.json, master_source_report.md, and _codex_master_source_done.txt in the same imported bundle folder.",
     "",
-    "Use RadPrimer as the canonical hierarchy/backbone when present. Before merging, check whether STATdx fully covers the RadPrimer image set and mark each RadPrimer image as exact duplicate, near duplicate, conceptual replacement, or not covered. Use STATdx as supplemental depth for stronger images, captions, mechanisms, differentials, modality-specific detail, or management. Preserve source attribution and image grouping/time-lapse/procedure context. Treat same-patient/follow-up/procedure/adjacent-slice/time-lapse clusters as atomic unless an explicit documented split is safe. Do not generate cards or a lecture yet.",
+    "Use RadPrimer as the canonical hierarchy/backbone when present. Before merging, check whether STATdx fully covers the RadPrimer image set and mark each RadPrimer image as exact duplicate, near duplicate, conceptual replacement, or not covered. Use actual image_evidence files, same stable source image IDs, image hashes, or explicit manual/source notes before calling anything an exact duplicate; captions alone are not enough. Use STATdx as supplemental depth for stronger images, captions, mechanisms, differentials, modality-specific detail, or management. Preserve source attribution and image grouping/time-lapse/procedure context. Treat same-patient/follow-up/procedure/adjacent-slice/time-lapse clusters as atomic unless an explicit documented split is safe. For image-recognition learning, archive only true duplicates or unusable images by default. Near duplicates, alternate same-disease examples, and conceptual replacements should remain selected as recognition reinforcement unless they are literally the same image/slice/screenshot. Do not generate cards or a lecture yet.",
     "",
     "Important: the extension will later import master_source_import.json. Make its packageText source-qualified with clean human-facing labels like RadPrimer image 5 and STATdx image 4 whenever both sources contribute images. Keep RP-05 and SDX-04 in the image registry, manifest, filenames, and traceability fields, but do not force both the long label and short code into the same narrative-facing prose. Also include selectedPrimaryImageIds/archiveOptionalImageIds and sourceSelectionPlan.imageDownloadPlan so the extension can download only curated primary images with source-qualified filenames."
   ].join("\n");
@@ -2208,6 +2365,19 @@ async function stageSourceCompareBundle({ pending }) {
   const sourcePairingKey = getSourcePairingKey(title, pending.settings || {});
   const sourcePairingFolderLabel = pending.settings?.sourcePairingKey || title;
   const downloadPlan = buildSourceCompareDownloadPlan(title, sourceLabel, sourcePairingFolderLabel);
+  let imageRegistry = Array.isArray(pending.extractionMeta?.imageRegistry)
+    ? pending.extractionMeta.imageRegistry
+    : buildSourceImageRegistryFromPending(pending);
+  let imageEvidenceEntries = buildImageEvidenceManifest(
+    imageRegistry,
+    `${downloadPlan.fileBaseName}_${IMAGE_EVIDENCE_SUBFOLDER}`
+  );
+  imageEvidenceEntries = await downloadImageEvidenceFiles(
+    SOURCE_COMPARE_SUBFOLDER,
+    downloadPlan.articleFolderName,
+    imageEvidenceEntries
+  );
+  imageRegistry = attachImageEvidenceToRegistry(imageRegistry, imageEvidenceEntries);
   const metadata = {
     ...createCardAuditMetadata(pending, createdAt, {
       sourceOnlyBundle: true
@@ -2220,12 +2390,18 @@ async function stageSourceCompareBundle({ pending }) {
     sourcePairingFolder: downloadPlan.articleFolderName,
     sourceLabel,
     sourceKind: pending.extractionMeta?.sourceKind || "",
-    primarySourceLabel: pending.extractionMeta?.primarySourceLabel || sourceLabel
+    primarySourceLabel: pending.extractionMeta?.primarySourceLabel || sourceLabel,
+    imageRegistry,
+    imageEvidence: buildImageEvidenceBlock(
+      imageEvidenceEntries,
+      `${downloadPlan.fileBaseName}_${IMAGE_EVIDENCE_SUBFOLDER}`
+    )
   };
 
   const sourcePackageFilename = `${downloadPlan.fileBaseName}_source_package.txt`;
   const metadataFilename = `${downloadPlan.fileBaseName}_metadata.json`;
   const instructionsFilename = `${downloadPlan.fileBaseName}_source_compare_instructions.md`;
+  const evidenceFilename = `${downloadPlan.fileBaseName}_image_evidence_manifest.json`;
   const markerFilename = `${downloadPlan.fileBaseName}_source_compare_bundle.txt`;
 
   await downloadSourceCompareTextFile(downloadPlan.articleFolderName, sourcePackageFilename, pending.sourcePackage || "");
@@ -2243,6 +2419,12 @@ async function stageSourceCompareBundle({ pending }) {
   );
   await downloadSourceCompareTextFile(
     downloadPlan.articleFolderName,
+    evidenceFilename,
+    JSON.stringify(metadata.imageEvidence, null, 2),
+    "application/json;charset=utf-8"
+  );
+  await downloadSourceCompareTextFile(
+    downloadPlan.articleFolderName,
     markerFilename,
     `sourceCompare=true\ncreatedAt=${createdAt}\narticleTitle=${title}\nsourceLabel=${sourceLabel}\nsourcePairingKey=${metadata.sourcePairingKey || ""}\nsourcePairingFolder=${metadata.sourcePairingFolder || ""}\n`
   );
@@ -2255,6 +2437,7 @@ async function stageSourceCompareBundle({ pending }) {
       sourcePackage: sourcePackageFilename,
       metadata: metadataFilename,
       instructions: instructionsFilename,
+      imageEvidence: evidenceFilename,
       marker: markerFilename
     },
     metadata
@@ -2312,9 +2495,34 @@ async function stageMasterSourceRequestBundle({
           : []
     }))
   };
+  const allImageEvidenceEntries = [];
+  for (const sourceSummary of metadata.sources) {
+    const evidenceFolderName = `${IMAGE_EVIDENCE_SUBFOLDER}/${sanitizeDownloadPathPart(
+      sourceSummary.sourceLabel || sourceSummary.sourceKind || "Source",
+      "Source"
+    )}`;
+    let imageRegistry = Array.isArray(sourceSummary.imageRegistry) ? sourceSummary.imageRegistry : [];
+    let imageEvidenceEntries = buildImageEvidenceManifest(imageRegistry, evidenceFolderName);
+    imageEvidenceEntries = await downloadImageEvidenceFiles(
+      MASTER_SOURCE_SUBFOLDER,
+      folderName,
+      imageEvidenceEntries
+    );
+    imageRegistry = attachImageEvidenceToRegistry(imageRegistry, imageEvidenceEntries);
+    sourceSummary.imageRegistry = imageRegistry;
+    sourceSummary.imageEvidence = buildImageEvidenceBlock(imageEvidenceEntries, evidenceFolderName);
+    sourceSummary.metadata = {
+      ...(sourceSummary.metadata || {}),
+      imageRegistry,
+      imageEvidence: sourceSummary.imageEvidence
+    };
+    allImageEvidenceEntries.push(...imageEvidenceEntries);
+  }
+  metadata.imageEvidence = buildImageEvidenceBlock(allImageEvidenceEntries);
 
   const metadataFilename = "metadata.json";
   const instructionsFilename = "master_source_request.md";
+  const evidenceFilename = "image_evidence_manifest.json";
   const markerFilename = "_master_source_request_complete.txt";
 
   await downloadMasterSourceTextFile(
@@ -2329,9 +2537,20 @@ async function stageMasterSourceRequestBundle({
     buildMasterSourceRequestInstructions(metadata),
     "text/markdown;charset=utf-8"
   );
+  await downloadMasterSourceTextFile(
+    folderName,
+    evidenceFilename,
+    JSON.stringify(metadata.imageEvidence, null, 2),
+    "application/json;charset=utf-8"
+  );
 
   for (const source of sourceList) {
     const sourceLabel = sanitizeDownloadPathPart(sourceCompareDisplayLabel(source), "Source");
+    const enrichedSourceMetadata =
+      metadata.sources.find((item) => item.sourceKind === source.sourceKind)?.metadata ||
+      metadata.sources.find((item) => sourceCompareDisplayLabel(item) === sourceCompareDisplayLabel(source))?.metadata ||
+      source.metadata ||
+      {};
     await downloadMasterSourceTextFile(
       folderName,
       `${sourceLabel}_source_package.txt`,
@@ -2340,7 +2559,7 @@ async function stageMasterSourceRequestBundle({
     await downloadMasterSourceTextFile(
       folderName,
       `${sourceLabel}_metadata.json`,
-      JSON.stringify(source.metadata || {}, null, 2),
+      JSON.stringify(enrichedSourceMetadata, null, 2),
       "application/json;charset=utf-8"
     );
   }
@@ -2358,6 +2577,7 @@ async function stageMasterSourceRequestBundle({
     files: {
       metadata: metadataFilename,
       request: instructionsFilename,
+      imageEvidence: evidenceFilename,
       marker: markerFilename
     },
     metadata
