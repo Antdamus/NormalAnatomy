@@ -409,15 +409,7 @@
     const imageText = String(section?.image || section?.label || "");
     const imageMatch = imageText.match(/\bimage\s+(\d+)\b/i);
     if (imageMatch) return Number(imageMatch[1]);
-
-    if (Array.isArray(section?.groupNumbers) && section.groupNumbers.length) {
-      const first = Number(section.groupNumbers[0]);
-      if (Number.isFinite(first) && first > 0) return first;
-    }
-
-    const groupText = String(section?.group || "");
-    const groupMatch = groupText.match(/\bgroup\s+(\d+)\b/i);
-    return groupMatch ? Number(groupMatch[1]) : null;
+    return null;
   }
 
   function getSectionSourceKind(section) {

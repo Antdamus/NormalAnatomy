@@ -26,6 +26,7 @@
     navFileActionButton: 'button[data-testid="nav-file-action-button"]',
     readerScrollContainer: '[data-reader-scroll-container="true"]',
     readerBlocks: '[data-reader-scroll-container="true"] .reader-api-block, .reader-api-block',
+    autoscrollCue: '[data-testid="autoscroll-button"] [class*="bg-hglt-prim"]',
     media: "audio, video"
   };
 
@@ -77,6 +78,24 @@
   };
   let readerFullTextCache = { text: "", updatedAt: 0 };
   let lectureSectionCache = { key: "", value: null, updatedAt: 0 };
+  let lectureGroupImageHold = {
+    groupKey: "",
+    sourceKind: "",
+    imageNumber: null,
+    updatedAt: 0
+  };
+  let lectureExplicitImageState = {
+    sourceKind: "",
+    sourceLabel: "",
+    imageNumber: null,
+    groupNumbers: [],
+    groupLabel: "",
+    imageLabel: "",
+    label: "",
+    activeText: "",
+    textPreview: "",
+    updatedAt: 0
+  };
   let lectureTimelineCalibration = {
     titleKey: "",
     textFraction: null,
@@ -111,6 +130,24 @@
       lastContext: null
     };
     lectureSectionCache = { key: "", value: null, updatedAt: 0 };
+    lectureGroupImageHold = {
+      groupKey: "",
+      sourceKind: "",
+      imageNumber: null,
+      updatedAt: 0
+    };
+    lectureExplicitImageState = {
+      sourceKind: "",
+      sourceLabel: "",
+      imageNumber: null,
+      groupNumbers: [],
+      groupLabel: "",
+      imageLabel: "",
+      label: "",
+      activeText: "",
+      textPreview: "",
+      updatedAt: 0
+    };
     if (!preserveTimeline) {
       lectureTimelineCalibration = {
         titleKey: "",
@@ -382,6 +419,73 @@
     return numbers;
   };
 
+  const parseLeadingImageNumbers = (text) => {
+    const source = String(text || "");
+    const numbers = [];
+    let lastEnd = 0;
+    let match;
+
+    NUMBER_TOKEN_RE.lastIndex = 0;
+    while ((match = NUMBER_TOKEN_RE.exec(source)) !== null) {
+      const raw = match[0];
+      const value = parseImageNumberToken(raw);
+      if (!Number.isFinite(value) || value <= 0) continue;
+
+      const gap = source.slice(lastEnd, match.index);
+      const connectorOnly =
+        numbers.length === 0
+          ? /^[\s,;:([{]*$/i.test(gap)
+          : /^[\s,;/&+\-\u2013\u2014]*(?:and|or|through|thru|to)?[\s,;/&+\-\u2013\u2014]*$/i.test(gap);
+
+      if (!connectorOnly) break;
+
+      numbers.push({ value, index: match.index, raw });
+      lastEnd = match.index + raw.length;
+    }
+
+    return numbers;
+  };
+
+  const parseFirstImageNumberPhrase = (text) => {
+    const source = String(text || "").replace(/^[\s,;:([{]+/, "");
+    const numberRe = new RegExp(`^(\\d{1,3}|${NUMBER_WORD_PATTERN})\\b`, "i");
+    const match = source.match(numberRe);
+    if (!match) return null;
+
+    const value = parseImageNumberToken(match[1]);
+    if (!Number.isFinite(value) || value <= 0) return null;
+
+    return {
+      value,
+      index: String(text || "").indexOf(match[1]),
+      raw: match[1]
+    };
+  };
+
+  const trimNonImageNumberTail = (text) => {
+    return String(text || "")
+      .replace(
+        new RegExp(
+          `,\\s+(?:\\d{1,3}|${NUMBER_WORD_PATTERN})\\s+(?:months?|years?|weeks?|days?|hours?|minutes?)\\b[\\s\\S]*$`,
+          "i"
+        ),
+        ""
+      )
+      .replace(
+        /\b(?:months?|years?|weeks?|days?|hours?|minutes?)\s+(?:later|earlier|after|before)\b[\s\S]*$/i,
+        ""
+      );
+  };
+
+  const parseImageMentionNumbers = (segment, isPlural) => {
+    const cleanSegment = trimNonImageNumberTail(segment);
+    if (!isPlural) {
+      const first = parseFirstImageNumberPhrase(cleanSegment);
+      return first ? [first.value] : [];
+    }
+    return expandRangeIfNeeded(parseLeadingImageNumbers(cleanSegment), cleanSegment);
+  };
+
   const uniqueSortedNumbers = (numbers) => {
     return Array.from(new Set(numbers.filter((n) => Number.isFinite(n) && n > 0))).sort(
       (a, b) => a - b
@@ -419,7 +523,11 @@
   const extractImageMentions = (text) => {
     const source = cleanDisplayText(text);
     const mentions = [];
-    const mentionRe = /\b(?:(RadPrimer|STATdx|STAT dx|RP|SDX)\s+)?(images?)\s+([^.?!;:]{1,160})/gi;
+    const sourcePrefixPattern = "(?:RadPrimer|STATdx|STAT dx|RP|SDX)";
+    const mentionRe = new RegExp(
+      `\\b(?:(${sourcePrefixPattern})\\s+)?(images?)\\s+((?:(?!\\b${sourcePrefixPattern}\\s+images?\\b)[^.?!;:]){1,160})`,
+      "gi"
+    );
     let match;
 
     while ((match = mentionRe.exec(source)) !== null) {
@@ -430,12 +538,14 @@
           ? "radprimer"
           : "";
       const sourceLabel = sourceKind === "statdx" ? "STATdx" : sourceKind === "radprimer" ? "RadPrimer" : "";
-      const numbers = expandRangeIfNeeded(parseImageNumbers(match[3]), match[3]);
+      const isPlural = /^images$/i.test(match[2]);
+      const numbers = parseImageMentionNumbers(match[3], isPlural);
       if (!numbers.length) continue;
 
       mentions.push({
-        plural: /^images$/i.test(match[2]),
+        plural: isPlural,
         numbers,
+        imageNumber: !isPlural || numbers.length === 1 ? numbers[0] : null,
         index: match.index,
         text: cleanDisplayText(match[0]),
         sourceKind,
@@ -463,6 +573,7 @@
       mentions.push({
         plural: numbers.length > 1,
         numbers,
+        imageNumber: numbers.length === 1 ? numbers[0] : null,
         index: match.index,
         text: cleanDisplayText(match[0]),
         sourceKind,
@@ -471,6 +582,360 @@
     }
 
     return mentions.sort((a, b) => a.index - b.index);
+  };
+
+  const ORDINAL_GROUP_INDEX = {
+    first: 0,
+    "1st": 0,
+    one: 0,
+    second: 1,
+    "2nd": 1,
+    two: 1,
+    third: 2,
+    "3rd": 2,
+    three: 2,
+    fourth: 3,
+    "4th": 3,
+    four: 3,
+    fifth: 4,
+    "5th": 4,
+    five: 4,
+    sixth: 5,
+    "6th": 5,
+    six: 5,
+    seventh: 6,
+    "7th": 6,
+    seven: 6,
+    eighth: 7,
+    "8th": 7,
+    eight: 7,
+    ninth: 8,
+    "9th": 8,
+    nine: 8,
+    tenth: 9,
+    "10th": 9,
+    ten: 9
+  };
+
+  const getOrderedGroupNumbers = (groupNumbers) => uniqueSortedNumbers(groupNumbers || []);
+
+  const getGroupKey = (groupNumbers) => getOrderedGroupNumbers(groupNumbers).join("/");
+
+  const getHeldImageForGroup = (groupNumbers, sourceKind = "") => {
+    const group = getOrderedGroupNumbers(groupNumbers);
+    if (group.length < 2) return null;
+
+    const heldImage = Number(lectureGroupImageHold.imageNumber);
+    if (!Number.isFinite(heldImage) || !group.includes(heldImage)) return null;
+    if (lectureGroupImageHold.groupKey !== getGroupKey(group)) return null;
+
+    if (Date.now() - Number(lectureGroupImageHold.updatedAt || 0) > 20 * 60 * 1000) return null;
+    return heldImage;
+  };
+
+  const rememberLectureImageSection = (section) => {
+    const group = getOrderedGroupNumbers(section?.groupNumbers || []);
+    const image = Number(section?.imageNumber);
+    if (group.length < 2 || !Number.isFinite(image) || !group.includes(image)) return;
+    if (section?.estimated || section?.highlightStale) return;
+
+    lectureGroupImageHold = {
+      groupKey: getGroupKey(group),
+      sourceKind: section.sourceKind || "",
+      imageNumber: image,
+      updatedAt: Date.now()
+    };
+  };
+
+  const rememberExplicitImageSection = (section) => {
+    const image = Number(section?.imageNumber);
+    if (!Number.isFinite(image) || image <= 0) return;
+    if (section?.estimated || section?.highlightStale) return;
+
+    lectureExplicitImageState = {
+      sourceKind: section.sourceKind || "",
+      sourceLabel: section.sourceLabel || "",
+      imageNumber: image,
+      groupNumbers: getOrderedGroupNumbers(section.groupNumbers || []),
+      groupLabel: section.group || "",
+      imageLabel: section.image || `image ${image}`,
+      label: section.label || `image ${image}`,
+      activeText: section.activeText || "",
+      textPreview: section.textPreview || "",
+      updatedAt: Date.now()
+    };
+  };
+
+  const getLastExplicitImageSection = (sourceName = "held-explicit") => {
+    const image = Number(lectureExplicitImageState.imageNumber);
+    if (!Number.isFinite(image) || image <= 0) return null;
+    if (Date.now() - Number(lectureExplicitImageState.updatedAt || 0) > 60 * 60 * 1000) return null;
+
+    return {
+      label: lectureExplicitImageState.label || `image ${image}`,
+      group: lectureExplicitImageState.groupLabel || "",
+      image: lectureExplicitImageState.imageLabel || `image ${image}`,
+      imageNumber: image,
+      sourceKind: lectureExplicitImageState.sourceKind || "",
+      sourceLabel: lectureExplicitImageState.sourceLabel || "",
+      groupNumbers: getOrderedGroupNumbers(lectureExplicitImageState.groupNumbers || []),
+      source: sourceName,
+      activeText: lectureExplicitImageState.activeText || "",
+      textPreview: lectureExplicitImageState.textPreview || ""
+    };
+  };
+
+  const resolveRelativeGroupImageNumber = (text, groupNumbers, previousImage = null) => {
+    const group = getOrderedGroupNumbers(groupNumbers);
+    if (group.length < 2) return null;
+
+    const source = cleanDisplayText(text).toLowerCase();
+    if (!source) return null;
+
+    const ordinalWordPattern = Object.keys(ORDINAL_GROUP_INDEX)
+      .map((word) => word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+      .join("|");
+    const imageNoun = "(?:image|view|radiograph|film|scan|slice|case|panel|example)";
+    const ordinalBeforeImageRe = new RegExp(
+      `\\b(?:the\\s+)?(${ordinalWordPattern}|last|final)\\s+${imageNoun}s?\\b`,
+      "gi"
+    );
+    const imageBeforeOrdinalRe = new RegExp(
+      `\\b${imageNoun}\\s+(?:number\\s+)?(${ordinalWordPattern})\\s+(?:in|of|from)\\s+(?:the\\s+)?(?:group|set|pair|sequence|cluster)\\b`,
+      "gi"
+    );
+    const sentenceOrdinalRe = new RegExp(
+      `\\b(?:start(?:ing)?\\s+with|begin(?:ning)?\\s+with|move\\s+to|go\\s+to|look\\s+at|then|next|now)\\s+(?:the\\s+)?(${ordinalWordPattern}|last|final)\\b`,
+      "gi"
+    );
+
+    const cueMatches = [];
+    [ordinalBeforeImageRe, imageBeforeOrdinalRe, sentenceOrdinalRe].forEach((regex) => {
+      regex.lastIndex = 0;
+      let match;
+      while ((match = regex.exec(source)) !== null) {
+        cueMatches.push({ token: match[1], index: match.index, type: "ordinal" });
+      }
+    });
+
+    const nextRe = /\b(?:next|following|subsequent)\s+(?:image|view|radiograph|film|scan|slice|case|panel|example)\b/gi;
+    let nextMatch;
+    while ((nextMatch = nextRe.exec(source)) !== null) {
+      cueMatches.push({ token: "next", index: nextMatch.index, type: "next" });
+    }
+
+    const cue = cueMatches.sort((a, b) => a.index - b.index).at(-1);
+
+    if (cue?.type === "ordinal") {
+      const token = cue.token;
+      if (token === "last" || token === "final") return group.at(-1) || null;
+      const ordinalIndex = ORDINAL_GROUP_INDEX[token];
+      if (Number.isFinite(ordinalIndex) && ordinalIndex >= 0 && ordinalIndex < group.length) {
+        return group[ordinalIndex];
+      }
+    }
+
+    if (cue?.type === "next") {
+      const previousIndex = group.indexOf(Number(previousImage));
+      if (previousIndex >= 0 && previousIndex + 1 < group.length) return group[previousIndex + 1];
+    }
+
+    return null;
+  };
+
+  const resolveImageSectionTarget = ({
+    currentImage,
+    groupNumbers,
+    activeText,
+    textPreview,
+    contextText,
+    previousImage,
+    heldImage
+  } = {}) => {
+    const group = getOrderedGroupNumbers(groupNumbers);
+    let image = Number.isFinite(Number(currentImage)) ? Number(currentImage) : null;
+    const stableHeldImage = Number.isFinite(Number(heldImage)) ? Number(heldImage) : null;
+
+    if (!image && group.length >= 2 && group.includes(stableHeldImage)) {
+      image = stableHeldImage;
+    }
+
+    if (group.length >= 2) {
+      const preciseRelativeImage = resolveRelativeGroupImageNumber(activeText, group, image || previousImage);
+      const relativeImage =
+        preciseRelativeImage ||
+        (!image || !activeText
+          ? resolveRelativeGroupImageNumber(
+              [textPreview, contextText].filter(Boolean).join(" "),
+              group,
+              image || previousImage
+            )
+          : null);
+      if (relativeImage) image = relativeImage;
+    }
+
+    if (image && group.length >= 2 && !group.includes(image)) image = null;
+
+    const groupLabel = group.length >= 2 ? `group ${compactImageNumbers(group)}` : "";
+    const imageLabel = image ? `image ${image}` : "";
+    const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : groupLabel || imageLabel;
+
+    return {
+      groupNumbers: group,
+      groupLabel,
+      imageNumber: image || null,
+      imageLabel,
+      label
+    };
+  };
+
+  const getFocusedSentenceFromBlock = (blockText, focusText) => {
+    const block = cleanDisplayText(blockText);
+    const focus = cleanDisplayText(focusText);
+    if (!block || focus.length < 3) return "";
+
+    const index = block.toLowerCase().indexOf(focus.toLowerCase());
+    if (index < 0) return "";
+
+    const before = block.slice(0, index);
+    const after = block.slice(index + focus.length);
+    const sentenceStart = Math.max(before.lastIndexOf("."), before.lastIndexOf("?"), before.lastIndexOf("!")) + 1;
+    const afterStops = [after.indexOf("."), after.indexOf("?"), after.indexOf("!")].filter((n) => n >= 0);
+    const sentenceEnd = afterStops.length ? index + focus.length + Math.min(...afterStops) + 1 : block.length;
+
+    return block.slice(sentenceStart, sentenceEnd).trim();
+  };
+
+  const findTextIndexSimple = (sourceText, targetText) => {
+    const source = cleanDisplayText(sourceText);
+    const target = cleanDisplayText(targetText);
+    if (!source || !target) return -1;
+    return source.toLowerCase().indexOf(target.toLowerCase());
+  };
+
+  const pickMentionBeforeFocus = (mentions, focusIndex) => {
+    if (!Array.isArray(mentions) || !mentions.length) return null;
+    const singulars = mentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
+    if (!singulars.length) return null;
+    if (!Number.isFinite(focusIndex) || focusIndex < 0) return singulars.at(-1) || null;
+
+    return (
+      singulars
+        .filter((mention) => mention.index <= focusIndex)
+        .sort((a, b) => b.index - a.index)[0] ||
+      singulars.sort((a, b) => Math.abs(a.index - focusIndex) - Math.abs(b.index - focusIndex))[0] ||
+      null
+    );
+  };
+
+  const buildDirectContextLectureImageSection = ({ activeText, blockText, sourceName, highlightText }) => {
+    const rawActive = cleanDisplayText(activeText);
+    const block = cleanDisplayText(blockText);
+    const focus = cleanDisplayText(highlightText);
+    const rawActiveContainsFocus =
+      focus && rawActive ? rawActive.toLowerCase().includes(focus.toLowerCase()) : false;
+    const focusedSentence = focus && block ? getFocusedSentenceFromBlock(block, focus) : "";
+    let active = rawActive;
+    if (
+      focusedSentence &&
+      (!rawActiveContainsFocus ||
+        !rawActive ||
+        focusedSentence.length <= Math.max(80, Math.floor(rawActive.length * 0.75)))
+    ) {
+      active = focusedSentence;
+    }
+    const sourceText = active || block;
+    if (!sourceText) return null;
+
+    const activeMentions = extractImageMentions(active);
+    const blockMentions = extractImageMentions(block);
+    const activeSingulars = activeMentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
+    const blockSingulars = blockMentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
+    const focusIndexInActive = focus && active ? findTextIndexSimple(active, focus) : -1;
+    const activeIndex = active && block ? findTextIndexSimple(block, active) : -1;
+    const focusIndexInBlock = focus && block ? findTextIndexSimple(block, focus) : -1;
+    const activeEndIndex = activeIndex >= 0 ? activeIndex + active.length : -1;
+    const priorBlockSingulars =
+      focusIndexInBlock >= 0
+        ? blockSingulars.filter((mention) => mention.index <= Math.max(focusIndexInBlock, activeEndIndex))
+        : activeIndex >= 0
+          ? blockSingulars.filter((mention) => mention.index <= activeEndIndex)
+          : blockSingulars;
+    const mentions = activeMentions.length ? activeMentions : focus ? priorBlockSingulars : blockMentions;
+    if (!mentions.length) return null;
+    const currentMention =
+      pickMentionBeforeFocus(activeMentions, focusIndexInActive) ||
+      (activeMentions.length === 1 && activeMentions[0].numbers?.length === 1 ? activeMentions[0] : null) ||
+      (focus ? null : pickMentionBeforeFocus(blockMentions, focusIndexInBlock)) ||
+      priorBlockSingulars.at(-1) ||
+      null;
+    let currentImage = currentMention?.imageNumber || currentMention?.numbers?.[0] || null;
+    let groupMention = null;
+    let groupNumbers = [];
+
+    if (currentImage) {
+      const groupCandidates = blockMentions.filter((mention) => {
+        if (!mention.plural || mention.numbers.length < 2) return false;
+        if (mention.numbers.includes(currentImage)) return true;
+        if (activeIndex < 0) return false;
+        return mention.index <= activeIndex && activeIndex - mention.index < 1200;
+      });
+      groupMention = groupCandidates.at(-1) || null;
+      groupNumbers = groupMention
+        ? groupMention.numbers.includes(currentImage)
+          ? groupMention.numbers
+          : uniqueSortedNumbers([...groupMention.numbers, currentImage])
+        : [];
+    } else {
+      groupMention =
+        activeMentions.find((mention) => mention.plural && mention.numbers.length >= 2) ||
+        blockMentions.find((mention) => mention.plural && mention.numbers.length >= 2) ||
+        null;
+      groupNumbers = groupMention?.numbers || [];
+    }
+
+    if (!currentImage && !groupNumbers.length) {
+      const allNumbers = uniqueSortedNumbers(mentions.flatMap((mention) => mention.numbers));
+      if (allNumbers.length === 1) currentImage = allNumbers[0];
+    }
+
+    const target = resolveImageSectionTarget({
+      currentImage,
+      groupNumbers,
+      activeText: active,
+      textPreview: sourceText.slice(0, 280),
+      contextText: block,
+      previousImage: currentImage,
+      heldImage: getHeldImageForGroup(
+        groupNumbers,
+        currentMention?.sourceKind || groupMention?.sourceKind || mentions.at(-1)?.sourceKind || ""
+      )
+    });
+    const sourceMention =
+      (target.imageNumber
+        ? priorBlockSingulars.find((mention) => {
+            return mention.numbers?.includes(target.imageNumber) && (currentMention?.sourceKind ? mention.sourceKind : true);
+          }) || priorBlockSingulars.find((mention) => mention.numbers?.includes(target.imageNumber))
+        : null) ||
+      (currentMention?.sourceKind ? currentMention : null) ||
+      groupMention ||
+      currentMention ||
+      mentions.at(-1);
+
+    return target.label
+      ? {
+          label: target.label,
+          group: target.groupLabel,
+          image: target.imageLabel,
+          imageNumber: target.imageNumber,
+          sourceKind: sourceMention?.sourceKind || "",
+          sourceLabel: sourceMention?.sourceLabel || "",
+          groupNumbers: target.groupNumbers,
+          source: sourceName,
+          activeText: active,
+          textPreview: sourceText.slice(0, 280)
+        }
+      : null;
   };
 
   const getSectionMaxImageNumber = (section) => {
@@ -654,33 +1119,51 @@
           : [];
 
     if (currentImage && groupNumbers.length >= 2 && !groupNumbers.includes(currentImage)) {
-      groupNumbers = [];
+      if (lastSingular && recentPlural && lastSingular.index > recentPlural.index && lastSingular.index - recentPlural.index < 900) {
+        groupNumbers = uniqueSortedNumbers([...groupNumbers, currentImage]);
+      } else {
+        groupNumbers = [];
+      }
     }
 
     if (!currentImage && !groupNumbers.length && currentNumbers.length === 1) {
       currentImage = currentNumbers[0];
     }
 
-    const groupLabel = groupNumbers.length >= 2 ? `group ${compactImageNumbers(groupNumbers)}` : "";
-    const imageLabel = currentImage ? `image ${currentImage}` : "";
-    const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : groupLabel || imageLabel;
-    const targetImageNumber = currentImage || groupNumbers[0] || null;
-    const sourceMention = lastSingular?.sourceKind ? lastSingular : currentMention;
+    const sectionPreview = textPreview || cleanSource.slice(Math.max(0, boundedIndex - 160), boundedIndex + 180);
+    const target = resolveImageSectionTarget({
+      currentImage,
+      groupNumbers,
+      activeText,
+      textPreview: sectionPreview,
+      contextText: lowerContext,
+      previousImage: currentImage,
+      heldImage: getHeldImageForGroup(
+        groupNumbers,
+        lastSingular?.sourceKind || recentPlural?.sourceKind || currentMention?.sourceKind || ""
+      )
+    });
+    const sourceMention =
+      target.imageNumber && lastSingular?.numbers?.includes(target.imageNumber)
+        ? lastSingular
+        : lastSingular?.sourceKind
+          ? lastSingular
+          : currentMention;
 
-    return label
+    return target.label
       ? {
-          label,
-          group: groupLabel,
-          image: imageLabel,
-          imageNumber: targetImageNumber,
+          label: target.label,
+          group: target.groupLabel,
+          image: target.imageLabel,
+          imageNumber: target.imageNumber,
           sourceKind: sourceMention?.sourceKind || "",
           sourceLabel: sourceMention?.sourceLabel || "",
-          groupNumbers,
+          groupNumbers: target.groupNumbers,
           source: sourceName,
           textFraction,
           textIndex: boundedIndex,
           activeText,
-          textPreview: textPreview || cleanSource.slice(Math.max(0, boundedIndex - 110), boundedIndex + 110)
+          textPreview: sectionPreview
         }
       : null;
   };
@@ -905,6 +1388,238 @@
     return block.slice(sentenceStart, sentenceEnd).trim();
   };
 
+  const getSentenceAroundIndex = (blockText, index, activeLength = 0) => {
+    const block = cleanDisplayText(blockText);
+    const startIndex = Number(index);
+    if (!block || !Number.isFinite(startIndex) || startIndex < 0) return "";
+
+    const boundedIndex = Math.max(0, Math.min(block.length, startIndex));
+    const focusLength = Math.max(0, Number(activeLength) || 0);
+    const before = block.slice(0, boundedIndex);
+    const after = block.slice(Math.min(block.length, boundedIndex + focusLength));
+    const sentenceStart = Math.max(before.lastIndexOf("."), before.lastIndexOf("?"), before.lastIndexOf("!")) + 1;
+    const afterStops = [after.indexOf("."), after.indexOf("?"), after.indexOf("!")].filter((n) => n >= 0);
+    const sentenceEnd = afterStops.length
+      ? Math.min(block.length, boundedIndex + focusLength + Math.min(...afterStops) + 1)
+      : block.length;
+
+    return block.slice(sentenceStart, sentenceEnd).trim();
+  };
+
+  const getSpeechifyAutoscrollCueText = (blockText = "") => {
+    const block = cleanDisplayText(blockText).toLowerCase();
+    const cues = Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.autoscrollCue))
+      .map((el) => cleanDisplayText(el.textContent || ""))
+      .filter((text) => text.length >= 2 && text.length <= 80);
+
+    if (!cues.length) return "";
+    return cues.find((text) => block && block.includes(text.toLowerCase())) || cues[0] || "";
+  };
+
+  const getPrimarySvgHighlightRect = (block) => {
+    if (!block) return null;
+    const primarySvg =
+      block.querySelector('svg[style*="--color-hglt-prim"]') ||
+      block.querySelector('[style*="--color-hglt-prim"] svg') ||
+      block.querySelector('[style*="--color-hglt-prim"]');
+    if (!primarySvg) return null;
+
+    const rect = primarySvg.getBoundingClientRect();
+    if (!rect || !rect.width || !rect.height) return null;
+    return rect;
+  };
+
+  const getTextNodesUnder = (root) => {
+    if (!root) return [];
+    const nodes = [];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        return cleanDisplayText(node.nodeValue || "") ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+
+    let node;
+    while ((node = walker.nextNode())) nodes.push(node);
+    return nodes;
+  };
+
+  const findCueOccurrenceIndexNearRect = (block, cueText, targetRect) => {
+    const cue = cleanDisplayText(cueText);
+    const blockText = cleanDisplayText(block?.textContent || "");
+    if (!block || cue.length < 2 || !blockText) return -1;
+
+    const lowerCue = cue.toLowerCase();
+    const textNodes = getTextNodesUnder(block);
+    let globalRawOffset = 0;
+    let best = null;
+
+    for (const node of textNodes) {
+      const raw = node.nodeValue || "";
+      const lowerRaw = raw.toLowerCase();
+      let localIndex = lowerRaw.indexOf(lowerCue);
+
+      while (localIndex >= 0) {
+        let score = globalRawOffset + localIndex;
+
+        if (targetRect) {
+          try {
+            const range = document.createRange();
+            range.setStart(node, localIndex);
+            range.setEnd(node, Math.min(raw.length, localIndex + cue.length));
+            const rects = Array.from(range.getClientRects()).filter((rect) => rect.width && rect.height);
+            range.detach?.();
+
+            const targetX = targetRect.left + targetRect.width / 2;
+            const targetY = targetRect.top + targetRect.height / 2;
+            const bestRectDistance = rects.length
+              ? Math.min(
+                  ...rects.map((rect) => {
+                    const dx = rect.left + rect.width / 2 - targetX;
+                    const dy = rect.top + rect.height / 2 - targetY;
+                    return Math.hypot(dx, dy);
+                  })
+                )
+              : 5000;
+            score = bestRectDistance;
+          } catch {}
+        }
+
+        const rawPrefix = textNodes
+          .slice(0, textNodes.indexOf(node))
+          .map((item) => item.nodeValue || "")
+          .join("");
+        const normalizedIndex = cleanDisplayText(rawPrefix + raw.slice(0, localIndex)).length;
+        if (!best || score < best.score) {
+          best = { score, index: normalizedIndex };
+        }
+
+        localIndex = lowerRaw.indexOf(lowerCue, localIndex + Math.max(1, cue.length));
+      }
+
+      globalRawOffset += raw.length;
+    }
+
+    if (best) return best.index;
+    return blockText.toLowerCase().indexOf(lowerCue);
+  };
+
+  const getSvgAnchoredReaderContext = (block) => {
+    const blockText = cleanDisplayText(block?.textContent || "");
+    if (!blockText) return null;
+
+    const cue = getSpeechifyAutoscrollCueText(blockText);
+    if (!cue) return null;
+
+    const cueIndex = findCueOccurrenceIndexNearRect(block, cue, getPrimarySvgHighlightRect(block));
+    if (cueIndex < 0) return null;
+
+    const activeText = getSentenceAroundIndex(blockText, cueIndex, cue.length) || getSentenceAroundText(blockText, cue);
+    return {
+      activeText: activeText || blockText,
+      blockText,
+      highlightText: cue,
+      highlightSignature: `${cue}|${blockText.slice(0, 360)}|${cueIndex}`.slice(0, 900),
+      source: "highlight-svg-cue"
+    };
+  };
+
+  const getReaderContextBlockForElement = (el, root) => {
+    if (!el) return null;
+
+    const preferred = el.closest?.(".reader-api-block") || el.closest?.("p");
+    const preferredText = cleanDisplayText(preferred?.textContent || "");
+    if (preferred && preferredText.length >= 24) return preferred;
+
+    let current = el.parentElement;
+    const rootEl = root === document ? document.body : root;
+    let best = preferred || el;
+
+    while (current && current !== rootEl && current !== document.body && current !== document.documentElement) {
+      const text = cleanDisplayText(current.textContent || "");
+      if (text.length >= 80 && text.length <= 3500) {
+        best = current;
+        break;
+      }
+      if (text.length > cleanDisplayText(best?.textContent || "").length && text.length <= 3500) {
+        best = current;
+      }
+      current = current.parentElement;
+    }
+
+    return best || el;
+  };
+
+  const isPaintedReaderHighlightElement = (el) => {
+    if (!el || !isVisible(el)) return false;
+    const text = cleanDisplayText(el.textContent || "");
+    if (!text || text.length > 1200) return false;
+
+    const style = getComputedStyle(el);
+    const bg = style.backgroundColor;
+    const painted = bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)";
+    if (!painted) return false;
+
+    const className = String(el.className || "").toLowerCase();
+    if (/(button|control|toolbar|menu|popover|tooltip)/i.test(className)) return false;
+
+    return true;
+  };
+
+  const parseCssRgb = (value) => {
+    const match = String(value || "").match(/rgba?\(([^)]+)\)/i);
+    if (!match) return null;
+    const parts = match[1]
+      .split(",")
+      .map((part) => Number(String(part).trim()))
+      .filter(Number.isFinite);
+    if (parts.length < 3) return null;
+    return { r: parts[0], g: parts[1], b: parts[2], a: parts.length >= 4 ? parts[3] : 1 };
+  };
+
+  const getHighlightColorScore = (el) => {
+    const rgb = parseCssRgb(getComputedStyle(el).backgroundColor);
+    if (!rgb || rgb.a === 0) return 0;
+
+    const max = Math.max(rgb.r, rgb.g, rgb.b);
+    const min = Math.min(rgb.r, rgb.g, rgb.b);
+    const saturation = max - min;
+    const bluePurpleBias = rgb.b - Math.min(rgb.r, rgb.g);
+    const grayPenalty = saturation < 18 ? 220 : 0;
+    const activeBlueBonus = bluePurpleBias > 18 ? -260 : bluePurpleBias > 8 ? -120 : 0;
+    const purpleSentenceBonus = rgb.b > rgb.r + 8 && rgb.b > rgb.g + 4 ? -130 : 0;
+
+    return grayPenalty + activeBlueBonus + purpleSentenceBonus;
+  };
+
+  const scoreReaderHighlightCandidate = (el) => {
+    if (!el) return Number.POSITIVE_INFINITY;
+    const text = cleanDisplayText(el.textContent || "");
+    const tagName = String(el.tagName || "").toUpperCase();
+    const className = String(el.className || "").toLowerCase();
+    const bg = getComputedStyle(el).backgroundColor;
+    const explicit =
+      el.matches?.('[aria-current="true"], [data-current="true"], [data-active="true"], mark') ||
+      /(highlight|hglt|listening|current)/i.test(className);
+    const painted = bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)";
+
+    let score = 0;
+    if (explicit) score -= 250;
+    if (painted) score -= 80;
+    if (/^(MARK|SPAN|STRONG|EM)$/i.test(tagName)) score -= 80;
+    if (/^(P|DIV|SECTION|ARTICLE)$/i.test(tagName)) score += 160;
+
+    if (text.length <= 0) score += 10000;
+    else if (text.length <= 80) score += text.length;
+    else if (text.length <= 260) score += 120 + text.length * 0.25;
+    else score += 600 + text.length;
+
+    score += getHighlightColorScore(el);
+
+    const rect = el.getBoundingClientRect();
+    score += Math.max(0, rect.height - 90) * 4;
+    return score;
+  };
+
   const getHighlightedReaderContext = () => {
     const root = firstVisible(SPEECHIFY_SELECTORS.readerScrollContainer) || document;
     const candidates = Array.from(
@@ -921,7 +1636,9 @@
           "mark"
         ].join(",")
       )
-    ).slice(0, 80);
+    )
+      .slice(0, 120)
+      .sort((a, b) => scoreReaderHighlightCandidate(a) - scoreReaderHighlightCandidate(b));
 
     for (const el of candidates) {
       if (!isVisible(el)) continue;
@@ -937,13 +1654,33 @@
 
       if (!explicit && !painted) continue;
 
-      const block = el.closest(".reader-api-block") || el.closest("p") || el;
+      const block = getReaderContextBlockForElement(el, root);
       const blockText = cleanDisplayText(block.textContent || "");
       return {
         activeText: getSentenceAroundText(blockText, text),
         blockText,
-        highlightSignature: cleanDisplayText(text).slice(0, 700),
+        highlightText: cleanDisplayText(text),
+        highlightSignature: `${cleanDisplayText(text).slice(0, 180)}|${blockText.slice(0, 360)}`.slice(0, 900),
         source: "highlight"
+      };
+    }
+
+    const paintedTextCandidates = Array.from(root.querySelectorAll("mark, span, strong, em, p, div"))
+      .slice(0, 3000)
+      .filter(isPaintedReaderHighlightElement)
+      .sort((a, b) => scoreReaderHighlightCandidate(a) - scoreReaderHighlightCandidate(b));
+
+    for (const el of paintedTextCandidates) {
+      const text = cleanDisplayText(el.textContent || "");
+      const block = getReaderContextBlockForElement(el, root);
+      const blockText = cleanDisplayText(block.textContent || "");
+      if (!blockText) continue;
+      return {
+        activeText: getSentenceAroundText(blockText, text),
+        blockText,
+        highlightText: text,
+        highlightSignature: `${text.slice(0, 180)}|${blockText.slice(0, 360)}`.slice(0, 900),
+        source: "highlight-painted"
       };
     }
 
@@ -963,6 +1700,9 @@
     for (const block of svgMarkedBlocks) {
       const blockText = cleanDisplayText(block.textContent || "");
       if (!blockText) continue;
+      const anchoredContext = getSvgAnchoredReaderContext(block);
+      if (anchoredContext) return anchoredContext;
+
       const svgSignature = Array.from(
         block.querySelectorAll("svg path, svg rect, svg polygon, svg polyline, svg circle, svg ellipse")
       )
@@ -988,6 +1728,7 @@
       return {
         activeText: blockText,
         blockText,
+        highlightText: "",
         highlightSignature: `${blockText.slice(0, 180)}|${svgSignature}`.slice(0, 900),
         source: "highlight-svg"
       };
@@ -1029,10 +1770,13 @@
     }
 
     const ageMs = readerHighlightState.changedAt ? now - readerHighlightState.changedAt : 0;
+    const visibleLiveHighlight = Boolean(
+      document.visibilityState === "visible" && String(context.source || "").startsWith("highlight")
+    );
     return {
       context,
       highlightAvailable: true,
-      highlightStale: Boolean((isPlaying || tabAudible) && ageMs > 15000),
+      highlightStale: Boolean(!visibleLiveHighlight && (isPlaying || tabAudible) && ageMs > 15000),
       highlightAgeMs: ageMs
     };
   };
@@ -1074,6 +1818,19 @@
     const sourceText = activeText || blockText;
     if (!sourceText) return null;
 
+    const directSection = buildDirectContextLectureImageSection({
+      activeText,
+      blockText,
+      highlightText: context?.highlightText || "",
+      sourceName: context.source
+    });
+    if (directSection) {
+      return {
+        ...directSection,
+        highlightAvailable: context.source?.startsWith("highlight") || false
+      };
+    }
+
     const activeMentions = extractImageMentions(activeText);
     const blockMentions = extractImageMentions(blockText);
     const mentions = activeMentions.length ? activeMentions : blockMentions;
@@ -1111,7 +1868,7 @@
     const blockPluralMention = blockMentions.find((mention) => mention.plural && mention.numbers.length >= 2);
     const allNumbers = uniqueSortedNumbers(mentions.flatMap((mention) => mention.numbers));
     const blockNumbers = uniqueSortedNumbers(blockMentions.flatMap((mention) => mention.numbers));
-    const groupNumbers =
+    let groupNumbers =
       blockPluralMention?.numbers?.length >= 2
         ? blockPluralMention.numbers
         : activeMentions.length
@@ -1131,21 +1888,51 @@
       currentImage = allNumbers[0];
     }
 
-    const groupLabel = groupNumbers.length >= 2 ? `group ${compactImageNumbers(groupNumbers)}` : "";
-    const imageLabel = currentImage ? `image ${currentImage}` : "";
-    const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : groupLabel || imageLabel;
-    const targetImageNumber = currentImage || groupNumbers[0] || null;
-    const sourceMention = singularMentions.at(-1) || blockPluralMention || mentions.at(-1);
+    if (currentImage && groupNumbers.length >= 2 && !groupNumbers.includes(currentImage)) {
+      const currentMention = singularMentions.find((mention) => mention.numbers?.includes(currentImage));
+      if (
+        currentMention &&
+        blockPluralMention &&
+        currentMention.index > blockPluralMention.index &&
+        currentMention.index - blockPluralMention.index < 900
+      ) {
+        groupNumbers = uniqueSortedNumbers([...groupNumbers, currentImage]);
+      } else {
+        groupNumbers = [];
+      }
+    }
 
-    return label
+    const target = resolveImageSectionTarget({
+      currentImage,
+      groupNumbers,
+      activeText,
+      textPreview: sourceText.slice(0, 260),
+      contextText: blockText,
+      previousImage: currentImage || singularMentions.at(-1)?.numbers?.at(-1) || null,
+      heldImage: getHeldImageForGroup(
+        groupNumbers,
+        singularMentions.find((mention) => mention.numbers?.includes(currentImage))?.sourceKind ||
+          singularMentions.at(-1)?.sourceKind ||
+          blockPluralMention?.sourceKind ||
+          mentions.at(-1)?.sourceKind ||
+          ""
+      )
+    });
+    const sourceMention =
+      singularMentions.find((mention) => mention.numbers?.includes(currentImage)) ||
+      singularMentions.at(-1) ||
+      blockPluralMention ||
+      mentions.at(-1);
+
+    return target.label
       ? {
-          label,
-          group: groupLabel,
-          image: imageLabel,
-          imageNumber: targetImageNumber,
+          label: target.label,
+          group: target.groupLabel,
+          image: target.imageLabel,
+          imageNumber: target.imageNumber,
           sourceKind: sourceMention?.sourceKind || "",
           sourceLabel: sourceMention?.sourceLabel || "",
-          groupNumbers,
+          groupNumbers: target.groupNumbers,
           source: context.source,
           highlightAvailable: context.source?.startsWith("highlight") || false,
           activeText,
@@ -1163,10 +1950,49 @@
     const lookupText = activeText || blockText;
     let section = null;
 
+    const directContextSection = buildDirectContextLectureImageSection({
+      activeText,
+      blockText,
+      highlightText: context?.highlightText || "",
+      sourceName: context?.source || "highlight"
+    });
+    if (directContextSection) {
+      return {
+        ...directContextSection,
+        canCalibrateTimeline: false,
+        textIndexSource: "visible-context",
+        textIndex: null,
+        highlightAvailable,
+        highlightStale,
+        highlightAgeMs
+      };
+    }
+
+    if (highlightAvailable && !highlightStale && lookupText) {
+      const heldSection = getLastExplicitImageSection(context?.source || "held-explicit");
+      if (heldSection) {
+        return {
+          ...heldSection,
+          canCalibrateTimeline: false,
+          textIndexSource: "held-explicit",
+          textIndex: null,
+          highlightAvailable,
+          highlightStale,
+          highlightAgeMs,
+          activeText: activeText || heldSection.activeText,
+          textPreview: lookupText.slice(0, 240) || heldSection.textPreview
+        };
+      }
+    }
+
     if (sourceText && lookupText) {
       let focusIndex = findTextIndexLoose(sourceText, lookupText);
       if (focusIndex >= 0) {
-        focusIndex += Math.min(lookupText.length, 320);
+        const hasLiveHighlight = Boolean(highlightAvailable && !highlightStale && activeText);
+        const focusOffset = hasLiveHighlight
+          ? Math.min(Math.max(20, Math.floor(activeText.length * 0.45)), 120)
+          : Math.min(lookupText.length, 260);
+        focusIndex += focusOffset;
         section = buildLectureImageSectionFromMentions({
           source: sourceText,
           focusIndex,
@@ -1287,42 +2113,70 @@
       .at(-1);
 
     const currentNumbers = uniqueSortedNumbers(currentMention?.numbers || []);
+    const singularMentions = priorMentions.filter((mention) => !mention.plural || mention.numbers.length === 1);
     const currentImage =
       currentNumbers.length === 1
         ? currentNumbers[0]
         : !currentMention?.plural && currentNumbers.length
           ? currentNumbers.at(-1)
           : null;
-    const groupNumbers =
+    let groupNumbers =
       recentPlural?.numbers?.length >= 2
         ? recentPlural.numbers
         : currentMention?.plural && currentNumbers.length >= 2
           ? currentNumbers
           : [];
-    const groupLabel = groupNumbers.length >= 2 ? `group ${compactImageNumbers(groupNumbers)}` : "";
-    const imageLabel =
-      currentImage && (!groupNumbers.length || groupNumbers.includes(currentImage))
-        ? `image ${currentImage}`
-        : "";
-    const label = groupLabel && imageLabel ? `${groupLabel} / ${imageLabel}` : imageLabel || groupLabel;
-    const targetImageNumber = currentImage || groupNumbers[0] || null;
-    const sourceMention = singularMentions.at(-1) || recentPlural || currentMention;
+    if (currentImage && groupNumbers.length >= 2 && !groupNumbers.includes(currentImage)) {
+      const currentSingular = singularMentions.find((mention) => mention.numbers?.includes(currentImage));
+      if (
+        currentSingular &&
+        recentPlural &&
+        currentSingular.index > recentPlural.index &&
+        currentSingular.index - recentPlural.index < 900
+      ) {
+        groupNumbers = uniqueSortedNumbers([...groupNumbers, currentImage]);
+      } else {
+        groupNumbers = [];
+      }
+    }
+    const sectionPreview = source.slice(Math.max(0, boundedIndex - 180), boundedIndex + 220);
+    const target = resolveImageSectionTarget({
+      currentImage,
+      groupNumbers,
+      activeText: "",
+      textPreview: sectionPreview,
+      contextText: sectionPreview,
+      previousImage: currentImage || singularMentions.at(-1)?.numbers?.at(-1) || null,
+      heldImage: getHeldImageForGroup(
+        groupNumbers,
+        singularMentions.find((mention) => mention.numbers?.includes(currentImage))?.sourceKind ||
+          singularMentions.at(-1)?.sourceKind ||
+          recentPlural?.sourceKind ||
+          currentMention?.sourceKind ||
+          ""
+      )
+    });
+    const sourceMention =
+      singularMentions.find((mention) => mention.numbers?.includes(target.imageNumber)) ||
+      singularMentions.at(-1) ||
+      recentPlural ||
+      currentMention;
 
-    return label
+    return target.label
       ? {
-          label,
-          group: groupLabel,
-          image: imageLabel,
-          imageNumber: targetImageNumber,
+          label: target.label,
+          group: target.groupLabel,
+          image: target.imageLabel,
+          imageNumber: target.imageNumber,
           sourceKind: sourceMention?.sourceKind || "",
           sourceLabel: sourceMention?.sourceLabel || "",
-          groupNumbers,
+          groupNumbers: target.groupNumbers,
           source: "timeline",
           estimated: true,
           clockSource,
           textFraction: fraction,
           textIndex: boundedIndex,
-          textPreview: source.slice(Math.max(0, boundedIndex - 110), boundedIndex + 110)
+          textPreview: sectionPreview
         }
       : null;
   };
@@ -1407,6 +2261,8 @@
 
       if (highlightSection && !highlightInfo.highlightStale) {
         calibrateOwnedClockFromSection(highlightSection, timing);
+        rememberExplicitImageSection(highlightSection);
+        rememberLectureImageSection(highlightSection);
         return highlightSection;
       }
     }
@@ -1432,6 +2288,8 @@
         highlightStale: highlightInfo.highlightStale,
         highlightAgeMs: highlightInfo.highlightAgeMs
       };
+      rememberExplicitImageSection(contextSection);
+      rememberLectureImageSection(contextSection);
       lectureSectionCache = { key: cacheKey, value: contextSection, updatedAt: now };
       return contextSection;
     }
@@ -1455,6 +2313,7 @@
         }
       : null;
 
+    rememberLectureImageSection(decoratedSection);
     lectureSectionCache = { key: cacheKey, value: decoratedSection, updatedAt: now };
     return decoratedSection;
   };
