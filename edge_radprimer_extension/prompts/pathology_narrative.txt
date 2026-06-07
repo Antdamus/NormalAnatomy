@@ -61,6 +61,7 @@ Possible image labels:
 
 * `IMAGE_01`, `IMAGE_02`, etc.
 * `CASE_01`, `CASE_02`, etc.
+* source-qualified fused-source labels such as `RadPrimer image 5`, `STATdx image 35`, `RP-05`, or `SDX-35`
 
 These labels do **not** always mean the same thing.
 
@@ -79,8 +80,24 @@ Examples:
 * `IMAGE_01` -> `image one`
 * `IMAGE_02` -> `image two`
 * `IMAGE_14 through IMAGE_19` -> `images fourteen through nineteen`
+* `RadPrimer image 5 / RP-05` -> `RadPrimer image five`
+* `STATdx image 35 / SDX-35` -> `STATdx image thirty five`
 
 Do not read image labels aloud with underscores or leading zeros in the Speechify narrative.
+
+For fused RadPrimer plus STATdx source packages, do **not** say both the long source label and the short code in the spoken narrative.
+
+Correct:
+
+* `STATdx image thirty five`
+* `RadPrimer image five`
+
+Incorrect:
+
+* `STATdx image thirty five, SDX thirty five`
+* `RadPrimer image five, RP five`
+
+Keep short labels such as `SDX-35` and `RP-05` only for internal accounting, download filenames, card metadata, audit blocks, or traceability. They should not be read aloud in the lecture when the long source-qualified image reference is already present.
 
 Also normalize speech-confusing modality abbreviations in the spoken narrative.
 
@@ -913,6 +930,7 @@ Create a **guided image mastery narrative** that:
 * integrates cases into that structure instead of presenting them as isolated stops
 * keeps the opening brief so the learner reaches the visual material quickly
 * uses speech-friendly image references in the narrative, such as `image one` or `images five through ten`, rather than underscore-based labels
+* uses only one spoken source-qualified reference per fused-source image, such as `STATdx image thirty five`, without also reading `SDX thirty five`
 * uses controlled grouping inference when appropriate
 * clearly labels inferred grouping when used
 * preserves the main educational content of the article

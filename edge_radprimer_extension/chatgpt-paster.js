@@ -456,6 +456,40 @@
       .trim();
   };
 
+  const IMAGE_REF_NUMBER_PATTERN = "(?:\\d+|[a-z]+(?:[-\\s]+[a-z]+){0,4})";
+
+  const stripDuplicateSpokenSourceCodes = (text) => {
+    let value = String(text || "");
+
+    const sourceCodePairs = [
+      { source: "STATdx", code: "SDX" },
+      { source: "RadPrimer", code: "RP" }
+    ];
+
+    for (const { source, code } of sourceCodePairs) {
+      const sourceImage = `${source}\\s+image\\s+${IMAGE_REF_NUMBER_PATTERN}`;
+      const shortCode = `${code}[-\\s]*${IMAGE_REF_NUMBER_PATTERN}`;
+      const commaOrSlashPattern = new RegExp(
+        `\\b(${sourceImage})\\s*(?:,|/)\\s*${shortCode}(?=\\s*[,.;:)\\]\\n]|\\s*$)`,
+        "gi"
+      );
+      const parentheticalPattern = new RegExp(
+        `\\b(${sourceImage})\\s*\\(\\s*${shortCode}\\s*\\)`,
+        "gi"
+      );
+
+      value = value
+        .replace(commaOrSlashPattern, "$1")
+        .replace(parentheticalPattern, "$1");
+    }
+
+    return value.trim();
+  };
+
+  const cleanNarrativeTextForDelivery = (text) => {
+    return stripDuplicateSpokenSourceCodes(text);
+  };
+
   const stripOuterCodeFence = (text) => {
     const value = String(text || "").trim();
     const match = value.match(/^```(?:tsv|text|csv)?\s*([\s\S]*?)\s*```$/i);
@@ -814,7 +848,8 @@
         );
         const rawText = nativeCopiedText || finalResult.text || text;
         const cleanedText = stripAuditBlock ? stripTrailingImageAuditBlock(rawText) : rawText.trim();
-        if (!outputMatchesExpectation(cleanedText, expectedOutputKind)) {
+        const deliveryText = expectedOutputKind ? cleanedText : cleanNarrativeTextForDelivery(cleanedText);
+        if (!outputMatchesExpectation(deliveryText, expectedOutputKind)) {
           lastChangedAt = Date.now();
           sendProgress(
             "WAITING_FOR_EXPECTED_OUTPUT",
@@ -824,7 +859,7 @@
           continue;
         }
         return {
-          text: cleanedText,
+          text: deliveryText,
           partial: false
         };
       }
@@ -834,11 +869,12 @@
 
     if (lastText) {
       const cleanedLastText = stripAuditBlock ? stripTrailingImageAuditBlock(lastText) : lastText.trim();
-      if (!outputMatchesExpectation(cleanedLastText, expectedOutputKind)) {
+      const deliveryLastText = expectedOutputKind ? cleanedLastText : cleanNarrativeTextForDelivery(cleanedLastText);
+      if (!outputMatchesExpectation(deliveryLastText, expectedOutputKind)) {
         throw new Error(`Timed out waiting for expected ChatGPT output. ${expectedOutputMessage(expectedOutputKind)}`);
       }
       return {
-        text: cleanedLastText,
+        text: deliveryLastText,
         partial: true
       };
     }

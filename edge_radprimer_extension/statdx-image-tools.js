@@ -277,6 +277,18 @@
     };
   }
 
+  function getArticleMediaCardForImage(imageId) {
+    if (!imageId) return null;
+    const directCard = document.querySelector(`#media-${cssEscape(imageId)}`)?.closest(".media-card");
+    if (directCard) return directCard;
+
+    return (
+      Array.from(document.querySelectorAll(`img[src*="${imageId}"]`))
+        .map((img) => img.closest(".media-card"))
+        .find(Boolean) || null
+    );
+  }
+
   function getTitleForImage(imageId) {
     const title = document.querySelector(`#imageTitleId-${cssEscape(imageId)} .qa-imageTitle`);
     return title?.textContent?.trim() || document.title.replace(/\s+\|\s+STATdx\s*$/i, "").trim();
@@ -286,7 +298,11 @@
     const node =
       document.querySelector(`#imageCaptionId-${cssEscape(imageId)} .qa-imageCaption`) ||
       document.querySelector(`#imageCaptionId-${cssEscape(imageId)} .image-overlay-caption`);
-    return node?.innerHTML?.trim() || "";
+    if (node?.innerHTML?.trim()) return node.innerHTML.trim();
+
+    const mediaCard = getArticleMediaCardForImage(imageId);
+    const articleCaption = mediaCard?.querySelector(".qa-media-card__caption, .media-card__caption");
+    return articleCaption?.innerHTML?.trim() || "";
   }
 
   function makeLargeUrl(imageId) {
@@ -712,13 +728,48 @@
   }
 
   function getVisibleThumbnailButtonByNumber(imageNumber) {
-    return Array.from(document.querySelectorAll("#mediaModal .gallery-thumbnail-btn, #mediaModal .ThumbnailImage")).find(
+    const match = Array.from(document.querySelectorAll("#mediaModal .gallery-thumbnail-btn, #mediaModal .ThumbnailImage")).find(
       (candidate, index) => {
         const num = imageNumberFromElement(candidate.querySelector("img") || candidate, index);
         const button = candidate.querySelector("button") || candidate;
         return num === imageNumber && isVisible(button);
       }
-    )?.querySelector("button");
+    );
+    return match ? match.querySelector("button") || match : null;
+  }
+
+  function getImageInfoByNumber(imageNumber) {
+    return getImageInfos().find((candidate) => Number(candidate.imageNumber) === Number(imageNumber)) || null;
+  }
+
+  function enrichImageInfo(info, options = {}) {
+    if (!info?.imageId) return info;
+    const forcedNumber = Number(options.forceImageNumber);
+    const activeInfo = getActiveInfo();
+    const activeMatches = activeInfo?.imageId === info.imageId;
+
+    return {
+      ...info,
+      imageNumber: Number.isFinite(forcedNumber) ? forcedNumber : info.imageNumber || activeInfo?.imageNumber,
+      total: info.total || activeInfo?.total || getTotalImages(),
+      captionHtml:
+        getCaptionHtmlForImage(info.imageId) ||
+        (activeMatches ? activeInfo.captionHtml : "") ||
+        info.captionHtml ||
+        "",
+      title: getTitleForImage(info.imageId) || (activeMatches ? activeInfo.title : "") || info.title || ""
+    };
+  }
+
+  async function waitForCaptionForImage(imageId, timeoutMs = 900) {
+    if (!imageId) return "";
+    const start = Date.now();
+    while (Date.now() - start < timeoutMs) {
+      const caption = getCaptionHtmlForImage(imageId);
+      if (caption) return caption;
+      await sleep(60);
+    }
+    return getCaptionHtmlForImage(imageId);
   }
 
   function sleep(ms) {
@@ -737,8 +788,9 @@
 
   async function refreshViewerFromNative(options = {}) {
     await sleep(options.delayMs ?? 90);
-    const info = getActiveInfo();
+    let info = getActiveInfo();
     if (!info.imageId) return false;
+    info = enrichImageInfo(info, { forceImageNumber: options.forceImageNumber });
     return setViewerImage(info, {
       resetView: options.resetView !== false,
       sourceMode: zoomState.sourceMode
@@ -763,17 +815,28 @@
     if (index < 0) index = infos.findIndex((info) => info.imageNumber === zoomState.imageNumber);
     if (index < 0) index = 0;
     const next = infos[(index + delta + infos.length) % infos.length];
-    setViewerImage(next, { resetView: true });
+    setViewerImage(enrichImageInfo(next), { resetView: true });
   }
 
   async function navigateToNumber(imageNumber) {
     if (!Number.isFinite(imageNumber)) return;
+    const targetInfo = getImageInfoByNumber(imageNumber);
     const thumbButton = getVisibleThumbnailButtonByNumber(imageNumber);
     if (thumbButton) {
       const previousId = getNativeActiveImageId();
       thumbButton.click();
       await waitForNativeImageChange(previousId);
-      await refreshViewerFromNative({ resetView: true });
+      if (targetInfo?.imageId) {
+        await waitForCaptionForImage(targetInfo.imageId);
+        setViewerImage(enrichImageInfo(targetInfo, { forceImageNumber: imageNumber }), { resetView: true });
+      } else {
+        await refreshViewerFromNative({ resetView: true, forceImageNumber: imageNumber });
+      }
+      return;
+    }
+
+    if (targetInfo?.imageId) {
+      setViewerImage(enrichImageInfo(targetInfo, { forceImageNumber: imageNumber }), { resetView: true });
       return;
     }
 
@@ -784,14 +847,28 @@
       const backward = (current - imageNumber + total) % total;
       const delta = forward <= backward ? 1 : -1;
       const steps = Math.min(forward, backward);
+      let completedPath = steps === 0;
       for (let i = 0; i < steps; i += 1) {
+        completedPath = false;
         if (!(await clickNativeNavigation(delta))) break;
+        completedPath = i === steps - 1;
+      }
+      if (Number(zoomState.imageNumber) !== Number(imageNumber)) {
+        const alternateDelta = delta > 0 ? -1 : 1;
+        const alternateSteps = delta > 0 ? backward : forward;
+        completedPath = alternateSteps === 0;
+        for (let i = 0; i < alternateSteps; i += 1) {
+          completedPath = false;
+          if (!(await clickNativeNavigation(alternateDelta))) break;
+          completedPath = i === alternateSteps - 1;
+          if (Number(zoomState.imageNumber) === Number(imageNumber)) break;
+        }
+      }
+      if (completedPath) {
+        await refreshViewerFromNative({ resetView: true, forceImageNumber: imageNumber });
       }
       return;
     }
-
-    const info = getImageInfos().find((candidate) => candidate.imageNumber === imageNumber);
-    if (info) setViewerImage(info, { resetView: true });
   }
 
   function clamp(value, min, max) {

@@ -95,6 +95,15 @@ The image section contains extracted filenames and captions.
 
 For this narrative workflow, assume the image block is part of the intended teaching payload.
 
+If the input is a fused RadPrimer plus STATdx master source, images may have both long source labels and short traceability codes, such as `RadPrimer image 5 / RP-05` or `STATdx image 35 / SDX-35`.
+
+For the spoken narrative, say only one clean source-qualified image reference:
+
+* `RadPrimer image 5 / RP-05` -> `RadPrimer image five`
+* `STATdx image 35 / SDX-35` -> `STATdx image thirty five`
+
+Do **not** say both the long source label and the short code aloud. Avoid cluttered phrasing such as `STATdx image thirty five, SDX thirty five`. Keep `RP-05` and `SDX-35` for internal accounting, filenames, card metadata, audit blocks, or traceability only.
+
 You should:
 
 * use all extracted images unless the input is structurally unusable
@@ -807,6 +816,7 @@ Create a **guided normal anatomy mastery narrative** that:
 * emphasizes landmarks, relationships, normal appearance, and review strategy
 * clearly distinguishes normal, variant, mimic, and abnormal
 * uses all extracted images and organizes them intelligently
+* uses only one spoken source-qualified reference per fused-source image, such as `STATdx image thirty five`, without also reading `SDX thirty five`
 * uses controlled grouping inference when appropriate
 * clearly labels inferred grouping when used
 * integrates important non-image article facts seamlessly at the point where they matter

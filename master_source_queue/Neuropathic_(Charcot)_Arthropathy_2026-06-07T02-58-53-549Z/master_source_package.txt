@@ -1,0 +1,438 @@
+=== MASTER RADIOLOGY SOURCE PACKAGE ===
+TITLE: Charcot (Neuropathic) / Neuropathic (Charcot) Arthropathy
+SOURCE PAIRING KEY: charcot_neuropathic
+CANONICAL HIERARCHY: Basic > Musculoskeletal > Musculoskeletal: Trauma > Introduction to Osseous Trauma > Charcot (Neuropathic)
+CANONICAL ANKI DECK: Corebook::MSK::Trauma::Introduction to Osseous Trauma::Charcot (Neuropathic)
+PRIMARY BACKBONE: RadPrimer
+SUPPLEMENTAL SOURCE: STATdx
+
+SOURCE DECISION:
+RadPrimer should drive the teaching order because its hierarchy and image progression are cleaner: location map, diabetic foot MR problem-solving, diabetic TMT foot, talonavicular progression, fluid/infection mimic, shoulder/syrinx, spine, congenital pain knee/lower limb, and rapidly destructive hip/alcoholism. STATdx should supplement with broader image recognition and staging/classification detail, especially hypertrophic diabetic Lisfranc/TMT foot, wrist, tabes/syphilis hip and knee, severe atrophic hindfoot/midfoot, shoulder mass-mimic CT/MR, Sanders-Frykberg zones, and Eichenholtz stages.
+
+STATDX COVERAGE OF RADPRIMER IMAGE SET:
+STATdx does not fully cover the RadPrimer image set. It contains exact or near duplicates for several RadPrimer examples, but RadPrimer has important not-covered or stronger atomic clusters: biopsy-negative fluid collection/infection mimic (RP-09..RP-10), cirrhosis etiology proof in hip Charcot (RP-22), and several cleaner same-patient timelines. Therefore all RadPrimer images remain in the primary teaching set, while duplicate STATdx images are archived.
+
+=== RADPRIMER IMAGE COVERAGE GATE ===
+- RP-01: exact duplicate; STATdx match(es): SDX-23; decision: Keep RadPrimer map as canonical; archive STATdx duplicate.
+- RP-02: near duplicate; STATdx match(es): SDX-19; decision: Keep RadPrimer atomic diabetic-foot MR cluster RP-02..RP-04; archive STATdx alternate cluster.
+- RP-03: near duplicate; STATdx match(es): SDX-20; decision: Keep RadPrimer same-patient cluster; archive STATdx alternate.
+- RP-04: near duplicate; STATdx match(es): SDX-21, SDX-22; decision: Keep RadPrimer adjacent-slice talar ON/infection problem-solving cluster intact; archive STATdx alternate cluster.
+- RP-05: conceptual replacement; STATdx match(es): SDX-34, SDX-35, SDX-36; decision: Keep RadPrimer radiograph/CT TMT cluster; add STATdx Lisfranc/TMT cluster as primary supplement, not replacement.
+- RP-06: conceptual replacement; STATdx match(es): SDX-36; decision: Keep RadPrimer CT proof with RP-05; add STATdx CT as separate supplemental diabetic-foot example.
+- RP-07: near duplicate; STATdx match(es): SDX-15; decision: Keep RadPrimer talonavicular early/progression pair RP-07..RP-08; archive STATdx duplicate pair.
+- RP-08: near duplicate; STATdx match(es): SDX-16; decision: Keep RadPrimer follow-up pair; archive STATdx duplicate pair.
+- RP-09: not covered; STATdx match(es): none; decision: Keep RadPrimer because it teaches neuropathic fluid collections/reactive change vs infection.
+- RP-10: not covered; STATdx match(es): none; decision: Keep RadPrimer with RP-09 because same-patient biopsy-negative infection mimic cluster.
+- RP-11: near duplicate; STATdx match(es): SDX-05; decision: Keep RadPrimer shoulder radiograph + syrinx pair; archive STATdx duplicate radiograph.
+- RP-12: near duplicate; STATdx match(es): SDX-06; decision: Keep RadPrimer syrinx proof; archive STATdx duplicate spine MR.
+- RP-13: near duplicate; STATdx match(es): SDX-11; decision: Keep RadPrimer paraplegic spine pair; archive STATdx duplicate.
+- RP-14: near duplicate; STATdx match(es): SDX-12; decision: Keep RadPrimer paraplegic spine pair; archive STATdx duplicate.
+- RP-15: near duplicate; STATdx match(es): SDX-09; decision: Keep RadPrimer congenital-insensitivity knee pair; archive STATdx duplicate.
+- RP-16: near duplicate; STATdx match(es): SDX-10; decision: Keep RadPrimer knee MR with same-patient radiograph; archive STATdx duplicate.
+- RP-17: conceptual replacement; STATdx match(es): SDX-07, SDX-08; decision: Keep RadPrimer polyarticular congenital-indifference example; add STATdx knee/ankle examples as primary supplements.
+- RP-18: conceptual replacement; STATdx match(es): SDX-08; decision: Keep RadPrimer contralateral limb pair; add STATdx atrophic ankle as separate primary supplement.
+- RP-19: near duplicate; STATdx match(es): SDX-24; decision: Keep RadPrimer hip time-lapse/alcohol-cirrhosis cluster RP-19..RP-22; archive STATdx alternate.
+- RP-20: exact duplicate; STATdx match(es): SDX-25; decision: Keep RadPrimer time-lapse cluster; archive STATdx duplicate CT.
+- RP-21: near duplicate; STATdx match(es): SDX-26; decision: Keep RadPrimer 7-month hip progression and hatchet sign; archive STATdx 2-month alternate to avoid timeline confusion.
+- RP-22: not covered; STATdx match(es): none; decision: Keep RadPrimer because cirrhosis CT proves alcoholism etiology for Charcot hip.
+
+=== CURATED MASTER CONTENT ===
+
+Terminology and definition:
+- RadPrimer: Charcot equals neuropathic joint; a severely and rapidly destructive joint process, with etiology often suggested by location.
+- STATdx: progressive joint destruction secondary to long-term polyneuropathy. Use this wording when teaching the mechanism, but keep RadPrimer as the canonical label.
+
+Core imaging spine:
+- Teach the multiple Ds / 5 Ds: normal or patient-appropriate bone density, joint distension, bony debris, cartilage or joint destruction, and joint disorganization/dislocation/deformity. STATdx also emphasizes increased density/sclerosis as part of the D pattern.
+- Location suggests etiology: shoulder and wrist can reflect syringomyelia; wrist and foot/ankle commonly diabetes; spine follows spinal cord injury, tabes, or diabetes, especially mobile segments caudad to a stabilized segment; hip suggests alcohol or tabes; knee suggests tabes, congenital pain indifference/insensitivity, or steroid injection; ankle/foot strongly suggests diabetes and often involves Lisfranc/TMT before talonavicular, intertarsal, Chopart, tibiotalar, or subtalar joints.
+- Morphology: hypertrophic form has prominent debris (classically knee); atrophic form has resorbed debris and is common in diabetic ankle/foot; combined forms are also common.
+- Rate of destruction can be very fast and may rival septic arthritis. Rapid hip destruction can mimic rapidly destructive osteoarthritis unless neuropathic etiology is considered.
+
+Mechanism and pathology:
+- Use RadPrimer as backbone: altered sympathetic control of osseous blood flow may cause hyperemia and active bone resorption; blunted pain/proprioception allows relaxation of supporting structures, chronic instability, recurrent microtrauma under abnormal loading, osseous fragmentation, and joint disorganization.
+- Use STATdx supplemental phrasing: polyneuropathy drives decreased pain sensation and proprioception; abnormal vascular innervation and microrepetitive trauma create osteoclast/osteoblast imbalance and osteolysis/bone resorption.
+- Gross/surgical feature from both sources: significant cartilaginous and osseous debris within synovial membrane.
+
+Imaging modality teaching:
+- Radiographs are central for diagnosis and long-term surveillance. Early disease may look normal or like osteoarthritis, with subtle subluxation, osteopenia, arch collapse in foot, or mixed cystic/erosion-like and productive changes. Middle/late disease shows debris, dislocation/subluxation, disorganization, large effusions, bone proliferation, sclerosis, and deformity.
+- CT is not usually required for diagnosis but is excellent for proving articular destruction, fragmentation, subluxation, and debris location; it can prevent undercalling TMT/Lisfranc destruction and can show massive debris-containing effusions that mimic mineralized masses.
+- MR is for early detection and problem solving. It shows marrow edema, subchondral fracture lines, effusion, soft-tissue edema, debris, intraarticular bodies, destruction, and disorganization. In the infected Charcot foot problem, T1 and postcontrast images are more useful than fluid-sensitive sequences. Confluent low T1 signal, gas/sinus tract to abnormal bone, abscess, and less debris favor superimposed osteomyelitis; hazy/reticular low T1 signal and fat replacement/reactive change favor neuropathic change. Significant overlap exists.
+
+Classification and staging from STATdx:
+- Sanders-Frykberg foot/ankle zones: Zone I intermetatarsal/MTP; Zone II TMT; Zone III tarsal; Zone IV ankle/subtalar; Zone V calcaneus.
+- Eichenholtz radiologic staging: Stage 0 normal; Stage I dislocation/fragmentation/debris with or without osteopenia; Stage II sclerosis, coalescence, resorption of fine debris, and ankylosis of large fragments; Stage III well-corticated fragments, decreased sclerosis, and chronic osseous remodeling.
+
+Differential and traps:
+- Infection/septic joint/osteomyelitis can coexist with Charcot. Ulcer, gas, sinus tract to abnormal bone, abscess, and confluent T1 marrow replacement support infection; disc gas at the spine favors spinal neuroarthropathy. Aspiration may be needed in difficult spine cases.
+- Sarcoma/chondrosarcoma trap: Charcot shoulder or other debris-containing effusions can mimic a soft-tissue mass or chondroid matrix. Charcot debris is osseous and intraarticular/effusion-based; sarcoma is typically extraarticular and matrix is not just floating articular debris.
+- Osteoarthritis or inflammatory/metabolic arthropathy trap: early OA can resemble early Charcot, but Charcot has larger effusions, more prominent debris, dislocation/subluxation, and much faster destruction.
+- Hip trap: initial radiograph may look like osteoarthritis, but rapid progression to debris, acetabular/femoral destruction, hatchet sign, and an etiology clue such as alcoholism/cirrhosis should trigger Charcot.
+
+Clinical issues and treatment:
+- Swelling, instability, deformity, numbness, paresthesia, and sometimes near-normal proprioception can occur; careful neurologic exam may reveal reduced deep pain/proprioception.
+- Diabetes is a major modern cause, especially in lower limb; RadPrimer/STATdx state 15% of diabetic patients develop Charcot joints. STATdx notes more than 10-year diabetes history is a major risk factor. Twenty percent of syringomyelia patients develop Charcot joints; 10-20% of tabes dorsalis patients develop Charcot joints worldwide.
+- Natural history: progressive and sometimes rapid destruction; worsening alignment increases risk of ulceration and eventual osteomyelitis.
+- Treatment is multidisciplinary: control/prevent infection, manage ulcers, revascularize if clinically indicated, preserve function and mobility, reconstruction/arthrodesis if conservative care fails, amputation in refractory cases. RadPrimer notes arthrodesis is difficult and recurrence/major complications occur in about 25%.
+
+=== SELECTED PRIMARY IMAGE SET ===
+- RadPrimer image 1 / RP-01 | primaryTeachingSet | Cluster: RP-C01-location-map
+  Caption: Graphic shows common (red) and less common (yellow) sites of Charcot joints. Etiology is suggested by location.
+  Use: location-etiology map; opening organizer
+  Plain filename: RP-01_RadPrimer_plain_Charcot__Neuropathic_1.jpg
+  Annotated filename: RP-01_RadPrimer_annotated_Charcot__Neuropathic_1_annot.jpg
+
+- RadPrimer image 2 / RP-02 | primaryTeachingSet | Cluster: RP-C02-diabetic-foot-mr-infection-fracture-on
+  Caption: Sagittal T1WI MR, part of a series in a patient with diabetic Charcot foot, shows numerous abnormalities. Charcot joints are noted at navicular cuneiforms <img src="arrow_WO.png">. There is ↓ signal in the plantar soft tissues, with confluent ↓ signal in the adjacent cuboid <img src="arrow_WC.png">, concerning for osteomyelitis. It also shows diffuse ↓ signals throughout the talus <img src="arrow_WS.png">, an unexpected finding.
+  Use: Charcot foot vs osteomyelitis MR problem solving
+  Plain filename: RP-02_RadPrimer_plain_Charcot__Neuropathic_2.jpg
+  Annotated filename: RP-02_RadPrimer_annotated_Charcot__Neuropathic_2_annot.jpg
+
+- RadPrimer image 3 / RP-03 | primaryTeachingSet | Cluster: RP-C02-diabetic-foot-mr-infection-fracture-on
+  Caption: Sagittal STIR MR in the same patient further defines the talar abnormality as an insufficiency fracture of the dome <img src="arrow_WS.png">.
+  Use: talar insufficiency fracture in diabetic foot
+  Plain filename: RP-03_RadPrimer_plain_Charcot__Neuropathic_3.jpg
+  Annotated filename: RP-03_RadPrimer_annotated_Charcot__Neuropathic_3_annot.jpg
+
+- RadPrimer image 4 / RP-04 | primaryTeachingSet | Cluster: RP-C02-diabetic-foot-mr-infection-fracture-on
+  Caption: Sagittal T1WI C+ FS MR, adjacent slice, shows a wedge-shaped region of hypointensity <img src="arrow_WS.png">, representing a segment of osteonecrosis (ON) in the body of the talus. Remember that the talus is prone to ON and that the tarsal bones are prone to insufficiency fracture in diabetic feet. Sinus track <img src="arrow_WC.png"> led to the cuboid, confirming osteomyelitis, which was suspected based on both T1 and STIR.
+  Use: talar osteonecrosis and sinus tract/osteomyelitis clue
+  Plain filename: RP-04_RadPrimer_plain_Charcot__Neuropathic_4.jpg
+  Annotated filename: RP-04_RadPrimer_annotated_Charcot__Neuropathic_4_annot.jpg
+
+- RadPrimer image 5 / RP-05 | primaryTeachingSet | Cluster: RP-C03-diabetic-tmt-radiograph-ct
+  Caption: AP radiograph shows swelling about the tarsometatarsal joints <img src="arrow_WS.png">. Careful observation reveals fragmentation <img src="arrow_WC.png"> at the base of the 3rd metatarsal, with likely fragmentation of the bases of the 4th and 5th as well. There was no history of trauma; this is a Charcot foot.
+  Use: TMT Charcot radiographic suspicion
+  Plain filename: RP-05_RadPrimer_plain_Charcot__Neuropathic_5.jpg
+  Annotated filename: RP-05_RadPrimer_annotated_Charcot__Neuropathic_5_annot.jpg
+
+- RadPrimer image 6 / RP-06 | primaryTeachingSet | Cluster: RP-C03-diabetic-tmt-radiograph-ct
+  Caption: Short-axis CT, same patient, proves the fragmentation and mild subluxation of the metatarsal bases <img src="arrow_WS.png">; it is often far more severe than suspected on the basis of radiographs. As one would expect, the patient is diabetic.
+  Use: CT proof of TMT fragmentation/subluxation
+  Plain filename: RP-06_RadPrimer_plain_Charcot__Neuropathic_6.jpg
+  Annotated filename: RP-06_RadPrimer_annotated_Charcot__Neuropathic_6_annot.jpg
+
+- RadPrimer image 7 / RP-07 | primaryTeachingSet | Cluster: RP-C04-talonavicular-progression
+  Caption: Lateral radiograph shows an old and healed calcaneal insufficiency avulsion fracture <img src="arrow_WS.png">, typical in diabetics. The talonavicular joint shows concavity of the articular surface of the talus, along with some sclerosis <img src="arrow_WO.png">, suspicious for early Charcot joint.
+  Use: early talonavicular Charcot
+  Plain filename: RP-07_RadPrimer_plain_Charcot__Neuropathic_7.jpg
+  Annotated filename: RP-07_RadPrimer_annotated_Charcot__Neuropathic_7_annot.jpg
+
+- RadPrimer image 8 / RP-08 | primaryTeachingSet | Cluster: RP-C04-talonavicular-progression
+  Caption: Lateral radiograph of the same foot 2 months later shows ongoing destruction at the talonavicular joint <img src="arrow_WO.png">. Debris has migrated dorsal to the talus, contained within a distended joint capsule <img src="arrow_WC.png">. This is a classic Charcot joint.
+  Use: 2-month progression with dorsal debris
+  Plain filename: RP-08_RadPrimer_plain_Charcot__Neuropathic_8.jpg
+  Annotated filename: RP-08_RadPrimer_annotated_Charcot__Neuropathic_8_annot.jpg
+
+- RadPrimer image 9 / RP-09 | primaryTeachingSet | Cluster: RP-C05-fluid-collections-biopsy-negative
+  Caption: Sagittal T1WI C+ FS MR in a Charcot foot shows fluid collections (some containing debris) surrounding the ankle <img src="arrow_WS.png"> and abnormal signal within the distal tibia <img src="arrow_WC.png">. Metallic artifact obscures the subtalar, talonavicular, and calcaneocuboid joints.
+  Use: fluid collections mimicking abscess
+  Plain filename: RP-09_RadPrimer_plain_Charcot__Neuropathic_9.jpg
+  Annotated filename: RP-09_RadPrimer_annotated_Charcot__Neuropathic_9_annot.jpg
+
+- RadPrimer image 10 / RP-10 | primaryTeachingSet | Cluster: RP-C05-fluid-collections-biopsy-negative
+  Caption: Axial T1WI C+ FS MR in the same patient shows fluid collections in the soft tissues <img src="arrow_WS.png"> and tendon sheaths <img src="arrow_WO.png">. These are neuropathic fluid collections. Bones enhance, related to reactive change. There was no infection at biopsy.
+  Use: reactive enhancement and biopsy-negative infection mimic
+  Plain filename: RP-10_RadPrimer_plain_Charcot__Neuropathic_10.jpg
+  Annotated filename: RP-10_RadPrimer_annotated_Charcot__Neuropathic_10_annot.jpg
+
+- RadPrimer image 11 / RP-11 | primaryTeachingSet | Cluster: RP-C06-shoulder-syrinx
+  Caption: AP radiograph shows a dislocated shoulder with severe fragmentation and bony debris. The placement of the debris suggests massive distension of the glenohumeral joint and subacromial/subdeltoid bursa <img src="arrow_WS.png">. The combination of findings is typical of Charcot (neuropathic) shoulder.
+  Use: Charcot shoulder with massive effusion/debris
+  Plain filename: RP-11_RadPrimer_plain_Charcot__Neuropathic_11.jpg
+  Annotated filename: RP-11_RadPrimer_annotated_Charcot__Neuropathic_11_annot.jpg
+
+- RadPrimer image 12 / RP-12 | primaryTeachingSet | Cluster: RP-C06-shoulder-syrinx
+  Caption: Sagittal T2 MR, same patient, shows a large cervicothoracic syrinx <img src="arrow_WS.png">. Syringomyelia is the most common etiology of Charcot changes in the glenohumeral joint.
+  Use: syringomyelia etiology proof
+  Plain filename: RP-12_RadPrimer_plain_Charcot__Neuropathic_12.jpg
+  Annotated filename: RP-12_RadPrimer_annotated_Charcot__Neuropathic_12_annot.jpg
+
+- RadPrimer image 13 / RP-13 | primaryTeachingSet | Cluster: RP-C07-paraplegic-charcot-spine
+  Caption: Lateral radiograph of a paraplegic shows a burst fracture of L1 treated with partial corpectomy, strut graft <img src="arrow_WS.png">, and posterior rods. Note the osseous destruction and instability at the next 2 levels <img src="arrow_WO.png">. These Charcot vertebrae are typically located immediately caudad to the stabilized spine.
+  Use: Charcot spine after spinal cord injury/stabilization
+  Plain filename: RP-13_RadPrimer_plain_Charcot__Neuropathic_13.jpg
+  Annotated filename: RP-13_RadPrimer_annotated_Charcot__Neuropathic_13_annot.jpg
+
+- RadPrimer image 14 / RP-14 | primaryTeachingSet | Cluster: RP-C07-paraplegic-charcot-spine
+  Caption: Lateral radiograph shows significant subluxation and destruction of endplates with osseous debris at 2 adjacent levels <img src="arrow_WS.png">. This paraplegic patient developed instability and Charcot spine.
+  Use: spinal destruction/subluxation/debris
+  Plain filename: RP-14_RadPrimer_plain_Charcot__Neuropathic_14.jpg
+  Annotated filename: RP-14_RadPrimer_annotated_Charcot__Neuropathic_14_annot.jpg
+
+- RadPrimer image 15 / RP-15 | primaryTeachingSet | Cluster: RP-C08-congenital-insensitivity-knee
+  Caption: AP radiograph shows ragged destructive changes of the femoral condyle and osseous debris <img src="arrow_WC.png"> in a young patient. His contralateral AP knee had similar abnormalities.
+  Use: hypertrophic Charcot knee
+  Plain filename: RP-15_RadPrimer_plain_Charcot__Neuropathic_15.jpg
+  Annotated filename: RP-15_RadPrimer_annotated_Charcot__Neuropathic_15_annot.jpg
+
+- RadPrimer image 16 / RP-16 | primaryTeachingSet | Cluster: RP-C08-congenital-insensitivity-knee
+  Caption: Axial T2WI MR in the same patient shows a large effusion and 1 of multiple pieces of osteocartilaginous debris <img src="arrow_WS.png">. This patient's knees show the debris, distension, and destruction typical of neuropathic joints. The etiology in this case is congenital insensitivity to pain.
+  Use: MR debris/effusion in congenital insensitivity knee
+  Plain filename: RP-16_RadPrimer_plain_Charcot__Neuropathic_16.jpg
+  Annotated filename: RP-16_RadPrimer_annotated_Charcot__Neuropathic_16_annot.jpg
+
+- RadPrimer image 17 / RP-17 | primaryTeachingSet | Cluster: RP-C09-congenital-indifference-polyarticular
+  Caption: AP radiograph shows an unusual case of neuropathic joint, resulting from congenital indifference to pain. The left knee shows severe disruption with subluxation, fragmentation, attempted repair, and complete destruction of the joint.
+  Use: polyarticular congenital indifference lower-limb destruction
+  Plain filename: RP-17_RadPrimer_plain_Charcot__Neuropathic_17.jpg
+  Annotated filename: RP-17_RadPrimer_annotated_Charcot__Neuropathic_17_annot.jpg
+
+- RadPrimer image 18 / RP-18 | primaryTeachingSet | Cluster: RP-C09-congenital-indifference-polyarticular
+  Caption: Lateral radiograph of contralateral limb in same patient shows just as severe disruption with destruction of the tibiotalar, subtalar, and midfoot joints. Congenital indifference to pain is an unusual cause of Charcot joint and is often polyarticular.
+  Use: contralateral ankle/midfoot destruction
+  Plain filename: RP-18_RadPrimer_plain_Charcot__Neuropathic_18.jpg
+  Annotated filename: RP-18_RadPrimer_annotated_Charcot__Neuropathic_18_annot.jpg
+
+- RadPrimer image 19 / RP-19 | primaryTeachingSet | Cluster: RP-C10-rapidly-destructive-hip-alcohol
+  Caption: AP radiograph in a middle-aged patient gives the initial impression of uncomplicated osteoarthritis, with cartilage loss <img src="arrow_WO.png">, large subchondral cyst formation <img src="arrow_WC.png">, superolateral subluxation of the hip, and calcar buttressing <img src="arrow_WS.png">.
+  Use: hip Charcot mimicking osteoarthritis initially
+  Plain filename: RP-19_RadPrimer_plain_Charcot__Neuropathic_19.jpg
+  Annotated filename: RP-19_RadPrimer_annotated_Charcot__Neuropathic_19_annot.jpg
+
+- RadPrimer image 20 / RP-20 | primaryTeachingSet | Cluster: RP-C10-rapidly-destructive-hip-alcohol
+  Caption: Coronal CT, obtained 2 months later in the same patient, shows severe and rapid progression of destruction of the femoral head and acetabulum. Abundant debris <img src="arrow_WS.png"> is seen within the joint.
+  Use: rapid CT progression within 2 months
+  Plain filename: RP-20_RadPrimer_plain_Charcot__Neuropathic_20.jpg
+  Annotated filename: RP-20_RadPrimer_annotated_Charcot__Neuropathic_20_annot.jpg
+
+- RadPrimer image 21 / RP-21 | primaryTeachingSet | Cluster: RP-C10-rapidly-destructive-hip-alcohol
+  Caption: AP radiograph in the same patient 7 months later shows the classic hatchet sign <img src="arrow_WS.png"> of rapid destruction of the hip. The rapidity of the destruction and the appearance suggest a diagnosis of rapidly destructive osteoarthritis of the hip. However, one must also consider Charcot arthropathy as an etiology.
+  Use: hatchet sign and rapid destructive hip
+  Plain filename: RP-21_RadPrimer_plain_Charcot__Neuropathic_21.jpg
+  Annotated filename: RP-21_RadPrimer_annotated_Charcot__Neuropathic_21_annot.jpg
+
+- RadPrimer image 22 / RP-22 | primaryTeachingSet | Cluster: RP-C10-rapidly-destructive-hip-alcohol
+  Caption: Axial CT from the same patient shows a small, nodular liver, typical of cirrhosis. The most common etiology of Charcot hip is alcoholism; the cirrhosis proves the etiology in this case.
+  Use: cirrhosis proof of alcoholism etiology
+  Plain filename: RP-22_RadPrimer_plain_Charcot__Neuropathic_22.jpg
+  Annotated filename: RP-22_RadPrimer_annotated_Charcot__Neuropathic_22_annot.jpg
+
+- STATdx image 1 / SDX-01 | primaryTeachingSet | Cluster: SDX-C01-hypertrophic-foot-tmt-lisfranc
+  Caption: AP view of hypertrophic Charcot arthropathy of the foot in a middle-aged woman with chronic foot swelling and deformity shows lateral subluxation <img src="arrow_CS.png"> at the 2nd-5th tarsometatarsal (TMT) joints and chronic-appearing smooth periosteal reaction <img src="arrow_BS.png">. An old healed 2nd metatarsal neck fracture <img src="arrow_WS.png"> is also present.
+  Use: supplemental hypertrophic diabetic TMT/Lisfranc AP
+  Plain filename: SDX-01_STATdx_plain_Neuropathic__Charcot__Arthropathy1.jpg
+  Annotated filename: SDX-01_STATdx_annotated_Neuropathic__Charcot__Arthropathy1_annot.jpg
+
+- STATdx image 2 / SDX-02 | primaryTeachingSet | Cluster: SDX-C01-hypertrophic-foot-tmt-lisfranc
+  Caption: Weight-bearing lateral view in the same patient shows hypertrophic changes at the Lisfranc joint with flattened arch and likely tarsal joint destruction <img src="arrow_WS.png">.
+  Use: weight-bearing arch collapse/Lisfranc view
+  Plain filename: SDX-02_STATdx_plain_Neuropathic__Charcot__Arthropathy2.jpg
+  Annotated filename: SDX-02_STATdx_annotated_Neuropathic__Charcot__Arthropathy2_annot.jpg
+
+- STATdx image 3 / SDX-03 | primaryTeachingSet | Cluster: SDX-C01-hypertrophic-foot-tmt-lisfranc
+  Caption: Reformatted long-axis NECT in the same patient shows prominent erosion-like changes <img src="arrow_CS.png"> and bone production <img src="arrow_WS.png"> involving the 2nd-5th TMT joints with subluxation, consistent with Charcot arthropathy.
+  Use: CT reformatted erosion-like/proliferative TMT changes
+  Plain filename: SDX-03_STATdx_plain_Neuropathic__Charcot__Arthropathy3.jpg
+  Annotated filename: SDX-03_STATdx_annotated_Neuropathic__Charcot__Arthropathy3_annot.jpg
+
+- STATdx image 4 / SDX-04 | primaryTeachingSet | Cluster: SDX-C01-hypertrophic-foot-tmt-lisfranc
+  Caption: Sagittal NECT in the same patient shows the advanced degree of joint destruction at the navicular-medial cuneiform articulation <img src="arrow_WS.png"> to greater detail, as compared to the radiographs.
+  Use: sagittal CT navicular-medial cuneiform destruction
+  Plain filename: SDX-04_STATdx_plain_Neuropathic__Charcot__Arthropathy4.jpg
+  Annotated filename: SDX-04_STATdx_annotated_Neuropathic__Charcot__Arthropathy4_annot.jpg
+
+- STATdx image 7 / SDX-07 | primaryTeachingSet | Cluster: SDX-C03-congenital-pain-knee-ankle
+  Caption: AP view of a hypertrophic neuropathic knee in a 22-year-old with congenital insensitivity to pain showing the classic Ds of density <img src="arrow_CS.png">, dislocation, and debris <img src="arrow_BS.png"> is shown. Lack of sensation (neuropathy) would be needed to continue walking on this knee to cause this destruction.
+  Use: classic D signs in congenital-pain knee
+  Plain filename: SDX-07_STATdx_plain_Neuropathic__Charcot__Arthropathy7.jpg
+  Annotated filename: SDX-07_STATdx_annotated_Neuropathic__Charcot__Arthropathy7_annot.jpg
+
+- STATdx image 8 / SDX-08 | primaryTeachingSet | Cluster: SDX-C03-congenital-pain-knee-ankle
+  Caption: Lateral radiograph of the ankle in a patient with congenital indifference to pain shows severe atrophic Charcot arthropathy changes of the ankle and hindfoot. Multiple joints often are involved in these patients.
+  Use: atrophic ankle/hindfoot in congenital indifference
+  Plain filename: SDX-08_STATdx_plain_Neuropathic__Charcot__Arthropathy8.jpg
+  Annotated filename: SDX-08_STATdx_annotated_Neuropathic__Charcot__Arthropathy8_annot.jpg
+
+- STATdx image 13 / SDX-13 | primaryTeachingSet | Cluster: SDX-C05-syphilis-tabes-hip
+  Caption: AP view of the pelvis shows destruction of the left hip <img src="arrow_WC.png">, typical of a Charcot joint, in this case from tabes dorsalis. The multiple foci of metallic density within the soft tissues of the buttocks were from heavy metal injections for the treatment of syphilis, a historic treatment.
+  Use: tabes dorsalis hip recognition and historical syphilis treatment clue
+  Plain filename: SDX-13_STATdx_plain_Neuropathic__Charcot__Arthropathy13.jpg
+  Annotated filename: SDX-13_STATdx_annotated_Neuropathic__Charcot__Arthropathy13_annot.jpg
+
+- STATdx image 14 / SDX-14 | primaryTeachingSet | Cluster: SDX-C05-syphilis-tabes-hip
+  Caption: AP view of the hip in a patient with syphilis shows femoral shaft fracture, dislocation of the femoral head, and joint destruction with scattered debris about the joint. This is typical of a Charcot joint at the hip.
+  Use: syphilitic hip Charcot with fracture/dislocation/debris
+  Plain filename: SDX-14_STATdx_plain_Neuropathic__Charcot__Arthropathy14.jpg
+  Annotated filename: SDX-14_STATdx_annotated_Neuropathic__Charcot__Arthropathy14_annot.jpg
+
+- STATdx image 17 / SDX-17 | primaryTeachingSet | Cluster: SDX-C07-diabetic-wrist
+  Caption: PA view of the wrist shows neuropathic carpometacarpal joints <img src="arrow_WS.png">. There is vascular calcification <img src="arrow_WC.png">. This is carpal diabetes-related Charcot arthropathy.
+  Use: diabetic wrist Charcot plus vascular calcification
+  Plain filename: SDX-17_STATdx_plain_Neuropathic__Charcot__Arthropathy17.jpg
+  Annotated filename: SDX-17_STATdx_annotated_Neuropathic__Charcot__Arthropathy17_annot.jpg
+
+- STATdx image 18 / SDX-18 | primaryTeachingSet | Cluster: SDX-C08-shoulder-mr-bursa-fluid
+  Caption: Coronal T1 MR in a patient with Charcot shoulder shows a dislocated and destroyed humeral head <img src="arrow_WS.png"> surrounded by fluid in the distended joint <img src="arrow_WO.png">. The fluid communicates between the glenohumeral joint and subdeltoid bursa through a rotator cuff tear.
+  Use: shoulder MR fluid communicating to subdeltoid bursa through rotator cuff tear
+  Plain filename: SDX-18_STATdx_plain_Neuropathic__Charcot__Arthropathy18.jpg
+  Annotated filename: SDX-18_STATdx_annotated_Neuropathic__Charcot__Arthropathy18_annot.jpg
+
+- STATdx image 27 / SDX-27 | primaryTeachingSet | Cluster: SDX-C12-shoulder-cutoff-mass-mimic
+  Caption: AP radiograph of the shoulder shows destructive changes within the glenohumeral joint, resulting in a straight cut-off appearance of the humeral head <img src="arrow_WS.png">. The humerus is dislocated from the glenoid. There is a huge effusion with debris located within it in the subscapularis recess <img src="arrow_WO.png">. These are typical findings of a Charcot shoulder. The patient proved to have syringomyelia.
+  Use: shoulder straight cut-off/mass-mimic effusion
+  Plain filename: SDX-27_STATdx_plain_Neuropathic__Charcot__Arthropathy27.jpg
+  Annotated filename: SDX-27_STATdx_annotated_Neuropathic__Charcot__Arthropathy27_annot.jpg
+
+- STATdx image 28 / SDX-28 | primaryTeachingSet | Cluster: SDX-C13-severe-hindfoot-midfoot
+  Caption: Lateral radiograph of the ankle shows a long-term Charcot joint involving both the hindfoot and midfoot. The talus has completely resorbed in the process, leaving the tibia articulating with the morphologically abnormal calcaneus. Additionally, the navicular is without proximal articulation, and the calcaneus is significantly subluxated relative to the cuboid.
+  Use: severe long-term hindfoot/midfoot with talar resorption
+  Plain filename: SDX-28_STATdx_plain_Neuropathic__Charcot__Arthropathy28.jpg
+  Annotated filename: SDX-28_STATdx_annotated_Neuropathic__Charcot__Arthropathy28_annot.jpg
+
+- STATdx image 29 / SDX-29 | primaryTeachingSet | Cluster: SDX-C13-severe-hindfoot-midfoot
+  Caption: AP radiograph of the foot in the same patient shows the severe destructive change of the hindfoot and midfoot. This patient also has a plantar-lateral ulceration, which does not approach bone.
+  Use: same severe foot AP with ulcer not approaching bone
+  Plain filename: SDX-29_STATdx_plain_Neuropathic__Charcot__Arthropathy29.jpg
+  Annotated filename: SDX-29_STATdx_annotated_Neuropathic__Charcot__Arthropathy29_annot.jpg
+
+- STATdx image 30 / SDX-30 | primaryTeachingSet | Cluster: SDX-C14-talonavicular-calcaneocuboid-foot
+  Caption: AP radiograph of the foot in a patient with peripheral insensate neuropathy shows a classic Charcot foot involving the talonavicular <img src="arrow_WS.png"> and calcaneocuboid <img src="arrow_WO.png"> joints.
+  Use: talonavicular and calcaneocuboid Charcot foot
+  Plain filename: SDX-30_STATdx_plain_Neuropathic__Charcot__Arthropathy30.jpg
+  Annotated filename: SDX-30_STATdx_annotated_Neuropathic__Charcot__Arthropathy30_annot.jpg
+
+- STATdx image 31 / SDX-31 | primaryTeachingSet | Cluster: SDX-C15-shoulder-effusion-mass-mimic-ct
+  Caption: Axial CT in a patient with Charcot shoulder shows an enormous effusion extending from the shoulder down around the proximal shaft of the humerus <img src="arrow_WS.png">. The fluid contains abundant bone debris and could be mistaken for mineralized soft tissue masses.
+  Use: shoulder CT massive effusion with bony debris mimicking soft tissue mass
+  Plain filename: SDX-31_STATdx_plain_Neuropathic__Charcot__Arthropathy31.jpg
+  Annotated filename: SDX-31_STATdx_annotated_Neuropathic__Charcot__Arthropathy31_annot.jpg
+
+- STATdx image 32 / SDX-32 | primaryTeachingSet | Cluster: SDX-C16-atrophic-chopart-fibula
+  Caption: Sagittal radiograph shows Charcot osteoarthropathy with disorganization of the Chopart (hindfoot-midfoot) joint <img src="arrow_WC.png">. The patient is diabetic, and little debris is visible in this atrophic joint. There was a clinically unsuspected subacute fibula fracture <img src="arrow_WS.png"> as well.
+  Use: atrophic Chopart disease with clinically unsuspected fibula fracture
+  Plain filename: SDX-32_STATdx_plain_Neuropathic__Charcot__Arthropathy32.jpg
+  Annotated filename: SDX-32_STATdx_annotated_Neuropathic__Charcot__Arthropathy32_annot.jpg
+
+- STATdx image 33 / SDX-33 | primaryTeachingSet | Cluster: SDX-C17-syphilis-knee-decompression
+  Caption: AP radiograph of the knee shows fragmentation and a tense effusion, which decompresses down fascial planes of the leg. This decompression carries bony debris distal to the joint <img src="arrow_WS.png">. This is a typical Charcot knee in a patient with acquired syphilis.
+  Use: syphilis knee debris decompressing down fascial planes
+  Plain filename: SDX-33_STATdx_plain_Neuropathic__Charcot__Arthropathy33.jpg
+  Annotated filename: SDX-33_STATdx_annotated_Neuropathic__Charcot__Arthropathy33_annot.jpg
+
+- STATdx image 34 / SDX-34 | primaryTeachingSet | Cluster: SDX-C18-diabetic-lisfranc-tmt
+  Caption: AP radiograph of the foot shows lateral dislocation of the metatarsals <img src="arrow_WS.png"> relative to the tarsals. The medial cortex of the 1st metatarsal should align perfectly with the medial cortex of the medial cuneiform. Vascular calcification <img src="arrow_WC.png"> is present. This is a Lisfranc dislocation resulting from diabetic neuropathy.
+  Use: Lisfranc alignment/vascular calcification
+  Plain filename: SDX-34_STATdx_plain_Neuropathic__Charcot__Arthropathy34.jpg
+  Annotated filename: SDX-34_STATdx_annotated_Neuropathic__Charcot__Arthropathy34_annot.jpg
+
+- STATdx image 35 / SDX-35 | primaryTeachingSet | Cluster: SDX-C18-diabetic-lisfranc-tmt
+  Caption: Lateral radiograph of the foot shows diffuse soft tissue swelling about the metatarsals and dorsal subluxation of one of the bases <img src="arrow_WS.png">. This should raise suspicion for Charcot joint.
+  Use: lateral soft tissue swelling/dorsal base subluxation
+  Plain filename: SDX-35_STATdx_plain_Neuropathic__Charcot__Arthropathy35.jpg
+  Annotated filename: SDX-35_STATdx_annotated_Neuropathic__Charcot__Arthropathy35_annot.jpg
+
+- STATdx image 36 / SDX-36 | primaryTeachingSet | Cluster: SDX-C18-diabetic-lisfranc-tmt
+  Caption: Sagittal CT in the same patient shows fragmentation at the bases of multiple metatarsals <img src="arrow_WS.png"> and cuboid. This patient was diabetic, and the images demonstrate classic findings and location of diabetic Charcot joint.
+  Use: CT fragmentation at multiple metatarsal bases/cuboid
+  Plain filename: SDX-36_STATdx_plain_Neuropathic__Charcot__Arthropathy36.jpg
+  Annotated filename: SDX-36_STATdx_annotated_Neuropathic__Charcot__Arthropathy36_annot.jpg
+
+
+=== ARCHIVE OPTIONAL / DUPLICATE IMAGE SET ===
+- STATdx image 5 / SDX-05 | archiveOptional | Cluster: SDX-C02-shoulder-syrinx-duplicate
+  Caption: AP view shows a dislocated shoulder with severe fragmentation and resorption of the humeral head with bone debris. The placement of the debris suggests massive distention of the glenohumeral joint and subacromial-subdeltoid bursa <img src="arrow_WS.png">. The combination of findings is typical of Charcot (neuropathic) shoulder.
+  Use: Archived: near-duplicate of RP-11 shoulder radiograph.
+  Plain filename: SDX-05_STATdx_plain_Neuropathic__Charcot__Arthropathy5.jpg
+  Annotated filename: SDX-05_STATdx_annotated_Neuropathic__Charcot__Arthropathy5_annot.jpg
+
+- STATdx image 6 / SDX-06 | archiveOptional | Cluster: SDX-C02-shoulder-syrinx-duplicate
+  Caption: Sagittal T2 MR of the cervical spine in the same patient shows a large cervicothoracic syrinx <img src="arrow_WS.png">. Syringomyelia is the most common etiology of Charcot changes in the glenohumeral joint.
+  Use: Archived: near-duplicate of RP-12 syrinx proof.
+  Plain filename: SDX-06_STATdx_plain_Neuropathic__Charcot__Arthropathy6.jpg
+  Annotated filename: SDX-06_STATdx_annotated_Neuropathic__Charcot__Arthropathy6_annot.jpg
+
+- STATdx image 9 / SDX-09 | archiveOptional | Cluster: SDX-C03-congenital-pain-knee-ankle
+  Caption: AP view of the knee shows ragged destructive changes of the femoral condyle and osseous debris <img src="arrow_WC.png"> in a young patient. His contralateral AP knee had similar abnormalities.
+  Use: Archived: near-duplicate of RP-15 knee radiograph.
+  Plain filename: SDX-09_STATdx_plain_Neuropathic__Charcot__Arthropathy9.jpg
+  Annotated filename: SDX-09_STATdx_annotated_Neuropathic__Charcot__Arthropathy9_annot.jpg
+
+- STATdx image 10 / SDX-10 | archiveOptional | Cluster: SDX-C03-congenital-pain-knee-ankle
+  Caption: Axial T2 MR in the same patient shows a large effusion and 1 of multiple pieces of osteocartilaginous debris <img src="arrow_WS.png">. This patient's knees show the debris, distention, and destruction typical of neuropathic joints. The etiology in this case is congenital insensitivity to pain.
+  Use: Archived: near-duplicate of RP-16 knee MR.
+  Plain filename: SDX-10_STATdx_plain_Neuropathic__Charcot__Arthropathy10.jpg
+  Annotated filename: SDX-10_STATdx_annotated_Neuropathic__Charcot__Arthropathy10_annot.jpg
+
+- STATdx image 11 / SDX-11 | archiveOptional | Cluster: SDX-C04-spinal-neuroarthropathy-duplicate
+  Caption: Lateral view of the thoracolumbar spine in a paraplegic patient shows a burst fracture of L1 treated with partial corpectomy, strut graft <img src="arrow_WS.png">, and posterior rods. Note the bone destruction and instability at the next 2 levels <img src="arrow_WO.png">, consistent with spinal neuropathic arthropathy.
+  Use: Archived: near-duplicate of RP-13 Charcot spine.
+  Plain filename: SDX-11_STATdx_plain_Neuropathic__Charcot__Arthropathy11.jpg
+  Annotated filename: SDX-11_STATdx_annotated_Neuropathic__Charcot__Arthropathy11_annot.jpg
+
+- STATdx image 12 / SDX-12 | archiveOptional | Cluster: SDX-C04-spinal-neuroarthropathy-duplicate
+  Caption: Lateral view of the thoracolumbar spine shows significant subluxation and destruction of endplates with bone debris at 2 adjacent levels <img src="arrow_WS.png">. This paraplegic patient developed instability and spinal neuroarthropathy.
+  Use: Archived: near-duplicate of RP-14 Charcot spine.
+  Plain filename: SDX-12_STATdx_plain_Neuropathic__Charcot__Arthropathy12.jpg
+  Annotated filename: SDX-12_STATdx_annotated_Neuropathic__Charcot__Arthropathy12_annot.jpg
+
+- STATdx image 15 / SDX-15 | archiveOptional | Cluster: SDX-C06-talonavicular-progression-duplicate
+  Caption: Lateral view shows a healed calcaneus insufficiency avulsion fracture <img src="arrow_WS.png">, typical in diabetic patients. The talonavicular joint shows concavity of the articular surface of the talus, along with some sclerosis <img src="arrow_WO.png">, suspicious for early Charcot joint.
+  Use: Archived: near-duplicate of RP-07 early talonavicular Charcot.
+  Plain filename: SDX-15_STATdx_plain_Neuropathic__Charcot__Arthropathy15.jpg
+  Annotated filename: SDX-15_STATdx_annotated_Neuropathic__Charcot__Arthropathy15_annot.jpg
+
+- STATdx image 16 / SDX-16 | archiveOptional | Cluster: SDX-C06-talonavicular-progression-duplicate
+  Caption: Lateral view in the same patient 2 months later shows ongoing destruction at the talonavicular joint <img src="arrow_WO.png">. Debris has migrated dorsal to the talus, contained within a distended joint capsule <img src="arrow_WC.png">. This is classic Charcot arthropathy progression.
+  Use: Archived: near-duplicate of RP-08 follow-up progression.
+  Plain filename: SDX-16_STATdx_plain_Neuropathic__Charcot__Arthropathy16.jpg
+  Annotated filename: SDX-16_STATdx_annotated_Neuropathic__Charcot__Arthropathy16_annot.jpg
+
+- STATdx image 19 / SDX-19 | archiveOptional | Cluster: SDX-C09-diabetic-foot-mr-duplicate
+  Caption: Sagittal T1 MR in a patient with diabetic Charcot foot shows numerous abnormalities. There is dislocation of the naviculocuneiform joints <img src="arrow_WO.png">. There is decreased signal in the plantar aspect of the cuboid <img src="arrow_WC.png"> with confluent fat replacement under the cuboid <img src="arrow_CS.png"> underlying an ulcer. There is diffuse decreased signal throughout the talus <img src="arrow_WS.png">.
+  Use: Archived: alternate duplicate of RP-02 diabetic MR cluster.
+  Plain filename: SDX-19_STATdx_plain_Neuropathic__Charcot__Arthropathy19.jpg
+  Annotated filename: SDX-19_STATdx_annotated_Neuropathic__Charcot__Arthropathy19_annot.jpg
+
+- STATdx image 20 / SDX-20 | archiveOptional | Cluster: SDX-C09-diabetic-foot-mr-duplicate
+  Caption: Sagittal STIR MR in the same patient shows the talus abnormality as an insufficiency fracture of the dome <img src="arrow_WS.png">. There is mild edema in the cuboid <img src="arrow_CS.png">.
+  Use: Archived: alternate duplicate of RP-03 talar insufficiency fracture.
+  Plain filename: SDX-20_STATdx_plain_Neuropathic__Charcot__Arthropathy20.jpg
+  Annotated filename: SDX-20_STATdx_annotated_Neuropathic__Charcot__Arthropathy20_annot.jpg
+
+- STATdx image 21 / SDX-21 | archiveOptional | Cluster: SDX-C09-diabetic-foot-mr-duplicate
+  Caption: Sagittal T1 C+ FS MR in the same patient shows the talus fracture <img src="arrow_WS.png">. It also shows a sinus track extending from the skin ulcer to the cuboid <img src="arrow_WC.png">, confirming osteomyelitis there. Note the enhancement of the cuboid <img src="arrow_CS.png">.
+  Use: Archived: alternate duplicate/adjacent detail of RP-04 infection problem solving.
+  Plain filename: SDX-21_STATdx_plain_Neuropathic__Charcot__Arthropathy21.jpg
+  Annotated filename: SDX-21_STATdx_annotated_Neuropathic__Charcot__Arthropathy21_annot.jpg
+
+- STATdx image 22 / SDX-22 | archiveOptional | Cluster: SDX-C09-diabetic-foot-mr-duplicate
+  Caption: Sagittal T1 C+ FS MR, adjacent image in the same patient, shows a wedge-shaped region of lack of enhancement <img src="arrow_WS.png"> or segment of osteonecrosis at the talus.
+  Use: Archived: alternate duplicate of RP-04 talar osteonecrosis.
+  Plain filename: SDX-22_STATdx_plain_Neuropathic__Charcot__Arthropathy22.jpg
+  Annotated filename: SDX-22_STATdx_annotated_Neuropathic__Charcot__Arthropathy22_annot.jpg
+
+- STATdx image 23 / SDX-23 | archiveOptional | Cluster: SDX-C10-location-map-duplicate
+  Caption: Graphic shows common (red) and less common (yellow) sites of Charcot joints. Etiology is suggested by location.
+  Use: Archived: exact duplicate of RP-01 location map.
+  Plain filename: SDX-23_STATdx_plain_Neuropathic__Charcot__Arthropathy23.jpg
+  Annotated filename: SDX-23_STATdx_annotated_Neuropathic__Charcot__Arthropathy23_annot.jpg
+
+- STATdx image 24 / SDX-24 | archiveOptional | Cluster: SDX-C11-hip-progression-duplicate
+  Caption: AP radiograph in a middle-aged patient gives the initial impression of uncomplicated osteoarthritis with joint space loss <img src="arrow_WO.png">, large subchondral cyst formation <img src="arrow_WC.png">, superolateral subluxation of the femoral head, and calcar buttressing <img src="arrow_WS.png">.
+  Use: Archived: near-duplicate of RP-19 initial hip OA-like view.
+  Plain filename: SDX-24_STATdx_plain_Neuropathic__Charcot__Arthropathy24.jpg
+  Annotated filename: SDX-24_STATdx_annotated_Neuropathic__Charcot__Arthropathy24_annot.jpg
+
+- STATdx image 25 / SDX-25 | archiveOptional | Cluster: SDX-C11-hip-progression-duplicate
+  Caption: Coronal CT, obtained 2 months later in the same patient, shows severe and rapid progression of destruction of the femoral head and acetabulum. Abundant debris <img src="arrow_WS.png"> is present within the joint.
+  Use: Archived: near/exact duplicate of RP-20 2-month CT progression.
+  Plain filename: SDX-25_STATdx_plain_Neuropathic__Charcot__Arthropathy25.jpg
+  Annotated filename: SDX-25_STATdx_annotated_Neuropathic__Charcot__Arthropathy25_annot.jpg
+
+- STATdx image 26 / SDX-26 | archiveOptional | Cluster: SDX-C11-hip-progression-duplicate
+  Caption: AP radiograph of the same patient 2 months later demonstrates the progression to a atrophic neuropathic arthropathy of the hip and shows the classic hatchet sign <img src="arrow_WS.png"> of resorption.
+  Use: Archived: alternate hip progression duplicate; RadPrimer retained because timeline plus cirrhosis proof is stronger.
+  Plain filename: SDX-26_STATdx_plain_Neuropathic__Charcot__Arthropathy26.jpg
+  Annotated filename: SDX-26_STATdx_annotated_Neuropathic__Charcot__Arthropathy26_annot.jpg
+
+
+=== IMAGE USE INSTRUCTIONS FOR FUTURE NARRATIVE/CARD GENERATION ===
+- Always use source-qualified image labels when referencing images: e.g., RadPrimer image 5 / RP-05, STATdx image 34 / SDX-34.
+- If a case is a same-patient, adjacent-slice, follow-up, procedure, or etiology-proof cluster, introduce that relationship before the images are shown or tested.
+- If using a duplicate archived STATdx image, state why it was intentionally substituted for or added to a RadPrimer image.
+- Do not renumber images across sources into a single unlabeled sequence unless the extension has generated a source-qualified display registry.
+- For Anki cards, use the selected primary image IDs by default. Archive optional images should not be used unless the generator needs a replacement or a second example.
+
+=== SOURCE ATTRIBUTION ===
+- RadPrimer supplied the canonical article hierarchy, most same-patient teaching sequences, and the primary source facts for the 5 Ds, location-to-etiology map, Charcot foot vs osteomyelitis MR trap, debris/effusion mass mimic, and pathology mechanism.
+- STATdx supplied supplemental source facts for early disease, radiographic surveillance, Sanders-Frykberg and Eichenholtz classifications, additional etiologies such as amyloidosis/meningomyelocele, tabes/syphilis examples, diabetic wrist Charcot, severe hindfoot/midfoot examples, and several mass-mimic shoulder/foot cases.

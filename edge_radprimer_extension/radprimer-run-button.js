@@ -85,6 +85,7 @@
         :host { all: initial; }
         .root {
           font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          font-size: 16px;
           color: #0f172a;
         }
         .dock {
@@ -174,8 +175,11 @@
         }
         svg { width: 16px; height: 16px; display: block; }
         .status {
-          width: 360px;
-          max-width: calc(100vw - 44px);
+          position: fixed;
+          top: 24px;
+          right: 24px;
+          z-index: 6;
+          width: min(430px, calc(100vw - 48px));
           border-radius: 12px;
           padding: 10px 12px;
           background: rgba(14, 20, 30, .92);
@@ -206,21 +210,27 @@
           inset: 0;
           display: none;
           place-items: center;
-          background: rgba(6, 10, 18, .42);
-          backdrop-filter: blur(10px);
+          padding: 28px;
+          background:
+            radial-gradient(circle at 18% 12%, rgba(191, 219, 254, .34), transparent 30%),
+            radial-gradient(circle at 84% 8%, rgba(167, 139, 250, .22), transparent 26%),
+            rgba(6, 10, 18, .44);
+          backdrop-filter: blur(14px);
+          z-index: 4;
         }
         .backdrop.open { display: grid; }
         .modal {
-          width: min(820px, calc(100vw - 38px));
-          max-height: min(84vh, 840px);
+          width: min(1120px, calc(100vw - 56px));
+          max-height: min(88vh, 900px);
           overflow: auto;
-          border-radius: 24px;
-          background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.98));
-          border: 1px solid rgba(148, 163, 184, .28);
-          box-shadow: 0 34px 110px rgba(15, 23, 42, .34);
+          border-radius: 28px;
+          background:
+            linear-gradient(145deg, rgba(255,255,255,.98), rgba(246,249,255,.98));
+          border: 1px solid rgba(191, 219, 254, .48);
+          box-shadow: 0 38px 120px rgba(15, 23, 42, .36);
         }
         .modal-head {
-          padding: 24px 26px 18px;
+          padding: 28px 30px 16px;
           display: flex;
           justify-content: space-between;
           gap: 16px;
@@ -246,8 +256,29 @@
           color: #0f172a;
           font-weight: 900;
         }
+        .modal-status {
+          display: none;
+          position: sticky;
+          top: 0;
+          margin: 0 30px 16px;
+          z-index: 7;
+          border-radius: 16px;
+          padding: 12px 14px;
+          background: linear-gradient(135deg, rgba(15, 23, 42, .94), rgba(30, 41, 59, .92));
+          border: 1px solid rgba(191, 219, 254, .28);
+          color: #f8fbff;
+          box-shadow: 0 16px 44px rgba(15, 23, 42, .18);
+          cursor: pointer;
+        }
+        .modal-status.show { display: block; }
+        .modal-status.error { background: linear-gradient(135deg, rgba(69, 10, 10, .94), rgba(127, 29, 29, .9)); }
+        .modal-status .phase { margin-bottom: 4px; }
+        .modal-status .msg { font-size: 13px; }
         .modal-body {
-          padding: 0 26px 24px;
+          padding: 0 30px 28px;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(340px, .9fr);
+          gap: 16px;
         }
         .grid {
           display: grid;
@@ -258,13 +289,20 @@
         .spaced { margin-top: 14px; }
         .card {
           border: 1px solid #e2e8f0;
-          border-radius: 18px;
+          border-radius: 20px;
           background: rgba(255,255,255,.82);
-          padding: 16px;
-          margin-top: 14px;
+          padding: 18px;
+          margin-top: 0;
           box-shadow: 0 12px 34px rgba(15, 23, 42, .055);
         }
-        .card:first-child { margin-top: 0; }
+        .card.master-card {
+          grid-column: 1 / -1;
+          background:
+            linear-gradient(135deg, rgba(239, 246, 255, .98), rgba(255,255,255,.92));
+          border-color: rgba(147, 197, 253, .7);
+        }
+        .card.anki-card { grid-column: 1 / -1; }
+        .card.advanced-card { grid-column: 1 / -1; }
         .card-title {
           display: flex;
           justify-content: space-between;
@@ -323,6 +361,7 @@
         }
         .check input { margin: 0; }
         details {
+          grid-column: 1 / -1;
           margin-top: 14px;
           border: 1px solid #e2e8f0;
           border-radius: 16px;
@@ -348,6 +387,7 @@
           padding: 0 15px 15px;
         }
         .modal-actions {
+          grid-column: 1 / -1;
           display: flex;
           gap: 10px;
           justify-content: flex-end;
@@ -359,13 +399,60 @@
           padding: 10px 13px;
           background: #eef2f7;
           color: #0f172a;
+          font-size: 13px;
           font-weight: 850;
+        }
+        .file-row {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+        input[type="file"] {
+          width: 100%;
+          margin-top: 5px;
+          border: 1px dashed #bfdbfe;
+          background: #f8fbff;
+          color: #1e293b;
+          border-radius: 12px;
+          padding: 10px 11px;
+          font: inherit;
+          font-size: 12px;
+        }
+        input[type="file"]::file-selector-button {
+          border: 0;
+          border-radius: 10px;
+          padding: 8px 11px;
+          margin-right: 10px;
+          background: #dbeafe;
+          color: #0f172a;
+          font-weight: 850;
+          cursor: pointer;
+        }
+        .master-actions {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 10px;
+        }
+        .master-actions .ghost {
+          min-height: 42px;
+          background: #e8f1ff;
+          border: 1px solid rgba(147, 197, 253, .54);
+        }
+        .master-card .checks {
+          grid-template-columns: minmax(0, 480px);
+        }
+        @media (max-width: 860px) {
+          .modal-body { grid-template-columns: 1fr; }
+          .master-actions { grid-template-columns: 1fr; }
+          .checks { grid-template-columns: 1fr; }
         }
         .run-config {
           border-radius: 10px;
           padding: 10px 15px;
           background: #1f6feb;
           color: #fff;
+          font-size: 13px;
           font-weight: 850;
         }
       </style>
@@ -408,8 +495,12 @@
               </div>
               <button class="close" type="button" aria-label="Close">x</button>
             </div>
+            <div class="modal-status" role="status" aria-live="polite">
+              <div class="phase">Ready</div>
+              <div class="msg">Ready.</div>
+            </div>
             <div class="modal-body">
-              <section class="card">
+              <section class="card mode-card">
                 <div class="card-title">
                   <h3>Teaching Mode</h3>
                   <span class="hint">The only choice you usually need.</span>
@@ -420,7 +511,7 @@
                 </div>
               </section>
 
-              <section class="card">
+              <section class="card destination-card">
                 <div class="card-title">
                   <h3>Destinations</h3>
                   <span class="hint">ChatGPT creates it. Speechify stores it.</span>
@@ -439,7 +530,27 @@
                 </div>
               </section>
 
-              <section class="card">
+              <section class="card master-card">
+                <div class="card-title">
+                  <h3>Master source</h3>
+                  <span class="hint">Use fused RadPrimer + STATdx packages.</span>
+                </div>
+                <div class="checks">
+                  <label class="check"><input data-field="useMasterSource" type="checkbox"> Use imported master source</label>
+                </div>
+                <div class="grid spaced">
+                  <label class="wide">Source pairing key<input data-field="sourcePairingKey" type="text" placeholder="Optional shared topic key"></label>
+                  <label class="wide">Import master source files<input class="master-source-files" type="file" multiple accept=".json,.txt,.md"></label>
+                  <div class="wide master-actions">
+                    <button class="ghost import-master-source" type="button">Import master source</button>
+                    <button class="ghost show-master-source" type="button">Show imported source</button>
+                    <button class="ghost master-source-config" type="button">Build master source</button>
+                  </div>
+                  <span class="hint wide">Best import is master_source_import.json. Once imported, narrative and card runs use the fused source instead of the live page extraction.</span>
+                </div>
+              </section>
+
+              <section class="card anki-card">
                 <div class="card-title">
                   <h3>Anki import</h3>
                   <span class="hint">Audit output can carry the deck target.</span>
@@ -447,10 +558,8 @@
                 <div class="checks">
                   <label class="check"><input data-field="createAnkiImportFile" type="checkbox"> Create Anki import TSV after audit</label>
                   <label class="check"><input data-field="preferRadPrimerHierarchyForStatdx" type="checkbox"> Use saved RadPrimer hierarchy for matching STATdx topics</label>
-                  <label class="check"><input data-field="useMasterSource" type="checkbox"> Use imported master source</label>
                 </div>
                 <div class="grid spaced">
-                  <label class="wide">Source pairing key<input data-field="sourcePairingKey" type="text" placeholder="Optional shared topic key"></label>
                   <label class="wide">Deck routing<select data-field="ankiDeckMode">
                     <option value="auto">Auto from article breadcrumb</option>
                     <option value="manual">Manual parent deck</option>
@@ -511,7 +620,6 @@
                 <button class="ghost download-config" type="button">Save and download images</button>
                 <button class="ghost audit-source-config" type="button">Export audit source</button>
                 <button class="ghost compare-source-config" type="button">Export comparison source</button>
-                <button class="ghost master-source-config" type="button">Build master source</button>
                 <button class="run-config" type="button">Save and run</button>
               </div>
             </div>
@@ -524,6 +632,7 @@
     shadow.querySelector(".image-only").addEventListener("click", () => downloadImagesOnly(host));
     shadow.querySelector(".configure").addEventListener("click", () => openModal(host));
     shadow.querySelector(".status").addEventListener("click", () => dismissStatus(host));
+    shadow.querySelector(".modal-status").addEventListener("click", () => dismissStatus(host));
     shadow.querySelector(".close").addEventListener("click", () => closeModal(host));
     shadow.querySelector(".backdrop").addEventListener("click", (event) => {
       if (event.target === event.currentTarget) closeModal(host);
@@ -581,11 +690,55 @@
       closeModal(host);
       buildMasterSource(host);
     });
+    shadow.querySelector(".import-master-source").addEventListener("click", () => importMasterSource(host));
+    shadow.querySelector(".show-master-source").addEventListener("click", () => showMasterSource(host));
 
     return host;
   };
 
   const field = (host, name) => host.shadowRoot.querySelector(`[data-field="${name}"]`);
+
+  const readFileAsText = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ""));
+      reader.onerror = () => reject(reader.error || new Error(`Could not read ${file?.name || "file"}.`));
+      reader.readAsText(file);
+    });
+
+  const readMasterSourceFileInput = async (host) => {
+    const input = host.shadowRoot.querySelector(".master-source-files");
+    const files = Array.from(input?.files || []);
+    if (!files.length) {
+      throw new Error("Choose master_source_import.json or the master source files first.");
+    }
+    return Promise.all(
+      files.map(async (file) => ({
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        text: await readFileAsText(file)
+      }))
+    );
+  };
+
+  const sendImportMasterSourceMessage = (files) =>
+    new Promise((resolve, reject) => {
+      chrome.runtime.sendMessage({ type: "IMPORT_MASTER_SOURCE_CACHE", files }, (response) => {
+        const err = chrome.runtime.lastError;
+        if (err) reject(new Error(err.message));
+        else resolve(response);
+      });
+    });
+
+  const sendGetMasterSourceMessage = () =>
+    new Promise((resolve, reject) => {
+      chrome.runtime.sendMessage({ type: "GET_MASTER_SOURCE_CACHE" }, (response) => {
+        const err = chrome.runtime.lastError;
+        if (err) reject(new Error(err.message));
+        else resolve(response);
+      });
+    });
 
   const populateEngineSelect = (host) => {
     const select = field(host, "engine");
@@ -674,11 +827,15 @@
     host.shadowRoot.querySelector(".backdrop").classList.remove("open");
   };
 
+  const statusSurfaces = (host) =>
+    Array.from(host.shadowRoot.querySelectorAll(".status, .modal-status"));
+
   const dismissStatus = (host) => {
     clearTimeout(host.__radprimerStatusTimer);
-    const status = host.shadowRoot.querySelector(".status");
-    status.classList.remove("show");
-    status.classList.remove("error");
+    for (const status of statusSurfaces(host)) {
+      status.classList.remove("show");
+      status.classList.remove("error");
+    }
   };
 
   const shouldAutoDismissStatus = (phase) => {
@@ -731,13 +888,21 @@
 
   const setStatus = (host, phase, message, isError = false) => {
     const shadow = host.shadowRoot;
-    const status = shadow.querySelector(".status");
+    const modalOpen = shadow.querySelector(".backdrop")?.classList.contains("open");
     clearTimeout(host.__radprimerStatusTimer);
-    status.classList.add("show");
-    status.classList.toggle("error", Boolean(isError));
-    status.title = "Click to dismiss";
-    shadow.querySelector(".phase").textContent = phase || "";
-    shadow.querySelector(".msg").textContent = message || "";
+    for (const status of statusSurfaces(host)) {
+      const isModalStatus = status.classList.contains("modal-status");
+      if ((isModalStatus && !modalOpen) || (!isModalStatus && modalOpen)) {
+        status.classList.remove("show");
+        status.classList.remove("error");
+        continue;
+      }
+      status.classList.add("show");
+      status.classList.toggle("error", Boolean(isError));
+      status.title = "Click to dismiss";
+      status.querySelector(".phase").textContent = phase || "";
+      status.querySelector(".msg").textContent = message || "";
+    }
 
     if (!isError && shouldAutoDismissStatus(phase)) {
       host.__radprimerStatusTimer = setTimeout(() => dismissStatus(host), 7000);
@@ -861,6 +1026,78 @@
       setStatus(host, "Master Source Ready", response.message || "Master source request bundle prepared.");
       setRunning(host, false);
     });
+  };
+
+  const importMasterSource = async (host) => {
+    const button = host.shadowRoot.querySelector(".import-master-source");
+    const originalText = button.textContent;
+    button.disabled = true;
+    button.textContent = "Importing...";
+    try {
+      const files = await readMasterSourceFileInput(host);
+      setStatus(host, "Master Source", "Importing master source into extension storage...");
+      const response = await sendImportMasterSourceMessage(files);
+      if (!response?.ok) {
+        throw new Error(response?.error || "Master source import failed.");
+      }
+
+      field(host, "useMasterSource").checked = true;
+      await saveSettings(readModalSettings(host));
+
+      const source = response.masterSource || {};
+      setStatus(
+        host,
+        "Master Source Imported",
+        [
+          "Imported master source.",
+          `Title: ${source.articleTitle || "[unknown]"}`,
+          `Images: ${source.imageCount ?? 0}`,
+          `Downloadable image files: ${source.downloadFileCount ?? 0}`,
+          `Characters: ${source.outputChars ?? 0}`,
+          "Use imported master source is now enabled."
+        ].join("\n")
+      );
+    } catch (error) {
+      setStatus(host, "Master Source Error", error?.message || String(error), true);
+    } finally {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+  };
+
+  const showMasterSource = async (host) => {
+    const button = host.shadowRoot.querySelector(".show-master-source");
+    const originalText = button.textContent;
+    button.disabled = true;
+    button.textContent = "Checking...";
+    try {
+      const response = await sendGetMasterSourceMessage();
+      if (!response?.ok) {
+        throw new Error(response?.error || "Could not read imported master source.");
+      }
+      const source = response.masterSource;
+      if (!source) {
+        setStatus(host, "Master Source", "No master source is imported yet.");
+        return;
+      }
+      setStatus(
+        host,
+        "Master Source Ready",
+        [
+          "Imported master source is available.",
+          `Title: ${source.articleTitle || "[unknown]"}`,
+          `Imported: ${source.importedAt || "[unknown]"}`,
+          `Images: ${source.imageCount ?? 0}`,
+          `Downloadable image files: ${source.downloadFileCount ?? 0}`,
+          `Characters: ${source.outputChars ?? 0}`
+        ].join("\n")
+      );
+    } catch (error) {
+      setStatus(host, "Master Source Error", error?.message || String(error), true);
+    } finally {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
   };
 
   chrome.runtime.onMessage.addListener((message) => {

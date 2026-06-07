@@ -1,0 +1,991 @@
+{
+  "anki": {
+    "breadcrumbTrail": [
+      "Basic",
+      "Musculoskeletal",
+      "Musculoskeletal: Trauma",
+      "Introduction to Osseous Trauma",
+      "Charcot (Neuropathic)"
+    ],
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckName": "Corebook::MSK::Trauma::Introduction to Osseous Trauma::Charcot (Neuropathic)",
+    "deckParts": [
+      "Corebook",
+      "MSK",
+      "Trauma",
+      "Introduction to Osseous Trauma",
+      "Charcot (Neuropathic)"
+    ],
+    "deckRoot": "Corebook",
+    "hierarchySource": "RadPrimer",
+    "importFilename": "corrected_cards_anki_import.tsv",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "normalRoot": "RadprimerNormal",
+    "noteType": "core_rad_notetype_v2",
+    "pathologyRoot": "Corebook"
+  },
+  "articleTitle": "Charcot (Neuropathic)",
+  "breadcrumbTrail": [
+    "Basic",
+    "Musculoskeletal",
+    "Musculoskeletal: Trauma",
+    "Introduction to Osseous Trauma",
+    "Charcot (Neuropathic)"
+  ],
+  "cases": [
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7
+    ],
+    [
+      8
+    ],
+    [
+      9
+    ],
+    [
+      10
+    ],
+    [
+      11
+    ],
+    [
+      12
+    ],
+    [
+      13
+    ],
+    [
+      14
+    ],
+    [
+      15
+    ],
+    [
+      16
+    ],
+    [
+      17
+    ],
+    [
+      18
+    ],
+    [
+      19
+    ],
+    [
+      20
+    ],
+    [
+      21
+    ],
+    [
+      22
+    ]
+  ],
+  "coreEvidence": {
+    "chars": null,
+    "filename": "core_evidence.txt",
+    "provided": false,
+    "status": ""
+  },
+  "createdAt": "2026-06-07T02:58:22.349Z",
+  "downloadFiles": [
+    {
+      "filename": "Charcot_(Neuropathic)1.jpg",
+      "imageNumber": 1,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/cfb1c82f-1e74-4190-8493-1dee3dc750be?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)1_annot.jpg",
+      "imageNumber": 1,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/cfb1c82f-1e74-4190-8493-1dee3dc750be?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)2.jpg",
+      "imageNumber": 2,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/5f329baf-02ed-40af-966c-1fb5d353f318?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)2_annot.jpg",
+      "imageNumber": 2,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/5f329baf-02ed-40af-966c-1fb5d353f318?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)3.jpg",
+      "imageNumber": 3,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/9ee79d0e-52b3-4e94-9cdf-609a824f50b7?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)3_annot.jpg",
+      "imageNumber": 3,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/9ee79d0e-52b3-4e94-9cdf-609a824f50b7?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)4.jpg",
+      "imageNumber": 4,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/23ae97bc-ff62-4916-a795-433f149d9d42?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)4_annot.jpg",
+      "imageNumber": 4,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/23ae97bc-ff62-4916-a795-433f149d9d42?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)5.jpg",
+      "imageNumber": 5,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/3830e8af-732d-4a4f-a47e-e8a23ece6833?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)5_annot.jpg",
+      "imageNumber": 5,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/3830e8af-732d-4a4f-a47e-e8a23ece6833?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)6.jpg",
+      "imageNumber": 6,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/652a5d5e-f585-4654-a53f-3c414906b529?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)6_annot.jpg",
+      "imageNumber": 6,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/652a5d5e-f585-4654-a53f-3c414906b529?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)7.jpg",
+      "imageNumber": 7,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/87a6d677-302a-403b-a312-8b002364dec4?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)7_annot.jpg",
+      "imageNumber": 7,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/87a6d677-302a-403b-a312-8b002364dec4?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)8.jpg",
+      "imageNumber": 8,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/f6eeb5fa-1e4c-4339-b248-a696696a56ce?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)8_annot.jpg",
+      "imageNumber": 8,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/f6eeb5fa-1e4c-4339-b248-a696696a56ce?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)9.jpg",
+      "imageNumber": 9,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/3f2c4644-8fae-4bb9-ae93-faf890b69cc9?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)9_annot.jpg",
+      "imageNumber": 9,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/3f2c4644-8fae-4bb9-ae93-faf890b69cc9?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)10.jpg",
+      "imageNumber": 10,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/9b66faea-81ee-4439-a458-0f0ba80fada1?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)10_annot.jpg",
+      "imageNumber": 10,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/9b66faea-81ee-4439-a458-0f0ba80fada1?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)11.jpg",
+      "imageNumber": 11,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/089ac603-0719-483f-b425-c2ef2773aece?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)11_annot.jpg",
+      "imageNumber": 11,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/089ac603-0719-483f-b425-c2ef2773aece?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)12.jpg",
+      "imageNumber": 12,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/db68416b-33ca-47a9-9b6e-cf1db8ec49d2?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)12_annot.jpg",
+      "imageNumber": 12,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/db68416b-33ca-47a9-9b6e-cf1db8ec49d2?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)13.jpg",
+      "imageNumber": 13,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/b5bb3273-bea5-48bf-a9e3-1e5a4e0ca809?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)13_annot.jpg",
+      "imageNumber": 13,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/b5bb3273-bea5-48bf-a9e3-1e5a4e0ca809?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)14.jpg",
+      "imageNumber": 14,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/a30caa98-a881-4d42-89e1-ec5faffbb3b4?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)14_annot.jpg",
+      "imageNumber": 14,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/a30caa98-a881-4d42-89e1-ec5faffbb3b4?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)15.jpg",
+      "imageNumber": 15,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/82a2f7b4-c568-4b69-b7cd-d8d132402e60?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)15_annot.jpg",
+      "imageNumber": 15,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/82a2f7b4-c568-4b69-b7cd-d8d132402e60?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)16.jpg",
+      "imageNumber": 16,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/07dc9b68-180b-48a8-a341-2a57c1836c3d?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)16_annot.jpg",
+      "imageNumber": 16,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/07dc9b68-180b-48a8-a341-2a57c1836c3d?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)17.jpg",
+      "imageNumber": 17,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/bbd416f9-8769-468f-ae44-75eddc41231e?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)17_annot.jpg",
+      "imageNumber": 17,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/bbd416f9-8769-468f-ae44-75eddc41231e?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)18.jpg",
+      "imageNumber": 18,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/c045d0a4-c606-43e0-8578-e57b0fb37d2c?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)18_annot.jpg",
+      "imageNumber": 18,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/c045d0a4-c606-43e0-8578-e57b0fb37d2c?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)19.jpg",
+      "imageNumber": 19,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/f77c289f-bf9f-45de-a5ab-255d85ea8c39?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)19_annot.jpg",
+      "imageNumber": 19,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/f77c289f-bf9f-45de-a5ab-255d85ea8c39?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)20.jpg",
+      "imageNumber": 20,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/5c9a55b6-3491-4023-a026-240fc102cda2?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)20_annot.jpg",
+      "imageNumber": 20,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/5c9a55b6-3491-4023-a026-240fc102cda2?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)21.jpg",
+      "imageNumber": 21,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/a332eb74-af90-4a91-a369-df369b8562d7?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)21_annot.jpg",
+      "imageNumber": 21,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/a332eb74-af90-4a91-a369-df369b8562d7?style=xlarge&annotated=true",
+      "variant": "annotated"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)22.jpg",
+      "imageNumber": 22,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/0dffc783-6437-4dca-aa13-fb3838741bb8?style=xlarge&annotated=false",
+      "variant": "plain"
+    },
+    {
+      "filename": "Charcot_(Neuropathic)22_annot.jpg",
+      "imageNumber": 22,
+      "label": "",
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "url": "https://app.radprimer.com/images/0dffc783-6437-4dca-aa13-fb3838741bb8?style=xlarge&annotated=true",
+      "variant": "annotated"
+    }
+  ],
+  "downloadSentinel": "",
+  "engine": "pathology",
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": false,
+  "imageRegistry": [
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)1_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/cfb1c82f-1e74-4190-8493-1dee3dc750be?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)1",
+      "caption": "Graphic shows common (red) and less common (yellow) sites of Charcot joints. Etiology is suggested by location.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)1.jpg",
+      "group": "",
+      "imageId": "cfb1c82f-1e74-4190-8493-1dee3dc750be",
+      "masterImageId": "RP-01",
+      "plainFilename": "Charcot_(Neuropathic)1.jpg",
+      "plainUrl": "https://app.radprimer.com/images/cfb1c82f-1e74-4190-8493-1dee3dc750be?style=xlarge&annotated=false",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)2_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/5f329baf-02ed-40af-966c-1fb5d353f318?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)2",
+      "caption": "Sagittal T1WI MR, part of a series in a patient with diabetic Charcot foot, shows numerous abnormalities. Charcot joints are noted at navicular cuneiforms <img src=\"arrow_WO.png\">. There is ↓ signal in the plantar soft tissues, with confluent ↓ signal in the adjacent cuboid <img src=\"arrow_WC.png\">, concerning for osteomyelitis. It also shows diffuse ↓ signals throughout the talus <img src=\"arrow_WS.png\">, an unexpected finding.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)2.jpg",
+      "group": "",
+      "imageId": "5f329baf-02ed-40af-966c-1fb5d353f318",
+      "masterImageId": "RP-02",
+      "plainFilename": "Charcot_(Neuropathic)2.jpg",
+      "plainUrl": "https://app.radprimer.com/images/5f329baf-02ed-40af-966c-1fb5d353f318?style=xlarge&annotated=false",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)3_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/9ee79d0e-52b3-4e94-9cdf-609a824f50b7?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)3",
+      "caption": "Sagittal STIR MR in the same patient further defines the talar abnormality as an insufficiency fracture of the dome <img src=\"arrow_WS.png\">.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)3.jpg",
+      "group": "",
+      "imageId": "9ee79d0e-52b3-4e94-9cdf-609a824f50b7",
+      "masterImageId": "RP-03",
+      "plainFilename": "Charcot_(Neuropathic)3.jpg",
+      "plainUrl": "https://app.radprimer.com/images/9ee79d0e-52b3-4e94-9cdf-609a824f50b7?style=xlarge&annotated=false",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)4_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/23ae97bc-ff62-4916-a795-433f149d9d42?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)4",
+      "caption": "Sagittal T1WI C+ FS MR, adjacent slice, shows a wedge-shaped region of hypointensity <img src=\"arrow_WS.png\">, representing a segment of osteonecrosis (ON) in the body of the talus. Remember that the talus is prone to ON and that the tarsal bones are prone to insufficiency fracture in diabetic feet. Sinus track <img src=\"arrow_WC.png\"> led to the cuboid, confirming osteomyelitis, which was suspected based on both T1 and STIR.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)4.jpg",
+      "group": "",
+      "imageId": "23ae97bc-ff62-4916-a795-433f149d9d42",
+      "masterImageId": "RP-04",
+      "plainFilename": "Charcot_(Neuropathic)4.jpg",
+      "plainUrl": "https://app.radprimer.com/images/23ae97bc-ff62-4916-a795-433f149d9d42?style=xlarge&annotated=false",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)5_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/3830e8af-732d-4a4f-a47e-e8a23ece6833?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)5",
+      "caption": "AP radiograph shows swelling about the tarsometatarsal joints <img src=\"arrow_WS.png\">. Careful observation reveals fragmentation <img src=\"arrow_WC.png\"> at the base of the 3rd metatarsal, with likely fragmentation of the bases of the 4th and 5th as well. There was no history of trauma; this is a Charcot foot.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)5.jpg",
+      "group": "",
+      "imageId": "3830e8af-732d-4a4f-a47e-e8a23ece6833",
+      "masterImageId": "RP-05",
+      "plainFilename": "Charcot_(Neuropathic)5.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3830e8af-732d-4a4f-a47e-e8a23ece6833?style=xlarge&annotated=false",
+      "sourceImageNumber": 5,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)6_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/652a5d5e-f585-4654-a53f-3c414906b529?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)6",
+      "caption": "Short-axis CT, same patient, proves the fragmentation and mild subluxation of the metatarsal bases <img src=\"arrow_WS.png\">; it is often far more severe than suspected on the basis of radiographs. As one would expect, the patient is diabetic.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)6.jpg",
+      "group": "",
+      "imageId": "652a5d5e-f585-4654-a53f-3c414906b529",
+      "masterImageId": "RP-06",
+      "plainFilename": "Charcot_(Neuropathic)6.jpg",
+      "plainUrl": "https://app.radprimer.com/images/652a5d5e-f585-4654-a53f-3c414906b529?style=xlarge&annotated=false",
+      "sourceImageNumber": 6,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)7_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/87a6d677-302a-403b-a312-8b002364dec4?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)7",
+      "caption": "Lateral radiograph shows an old and healed calcaneal insufficiency avulsion fracture <img src=\"arrow_WS.png\">, typical in diabetics. The talonavicular joint shows concavity of the articular surface of the talus, along with some sclerosis <img src=\"arrow_WO.png\">, suspicious for early Charcot joint.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)7.jpg",
+      "group": "",
+      "imageId": "87a6d677-302a-403b-a312-8b002364dec4",
+      "masterImageId": "RP-07",
+      "plainFilename": "Charcot_(Neuropathic)7.jpg",
+      "plainUrl": "https://app.radprimer.com/images/87a6d677-302a-403b-a312-8b002364dec4?style=xlarge&annotated=false",
+      "sourceImageNumber": 7,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)8_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/f6eeb5fa-1e4c-4339-b248-a696696a56ce?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)8",
+      "caption": "Lateral radiograph of the same foot 2 months later shows ongoing destruction at the talonavicular joint <img src=\"arrow_WO.png\">. Debris has migrated dorsal to the talus, contained within a distended joint capsule <img src=\"arrow_WC.png\">. This is a classic Charcot joint.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)8.jpg",
+      "group": "",
+      "imageId": "f6eeb5fa-1e4c-4339-b248-a696696a56ce",
+      "masterImageId": "RP-08",
+      "plainFilename": "Charcot_(Neuropathic)8.jpg",
+      "plainUrl": "https://app.radprimer.com/images/f6eeb5fa-1e4c-4339-b248-a696696a56ce?style=xlarge&annotated=false",
+      "sourceImageNumber": 8,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)9_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/3f2c4644-8fae-4bb9-ae93-faf890b69cc9?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)9",
+      "caption": "Sagittal T1WI C+ FS MR in a Charcot foot shows fluid collections (some containing debris) surrounding the ankle <img src=\"arrow_WS.png\"> and abnormal signal within the distal tibia <img src=\"arrow_WC.png\">. Metallic artifact obscures the subtalar, talonavicular, and calcaneocuboid joints.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)9.jpg",
+      "group": "",
+      "imageId": "3f2c4644-8fae-4bb9-ae93-faf890b69cc9",
+      "masterImageId": "RP-09",
+      "plainFilename": "Charcot_(Neuropathic)9.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3f2c4644-8fae-4bb9-ae93-faf890b69cc9?style=xlarge&annotated=false",
+      "sourceImageNumber": 9,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)10_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/9b66faea-81ee-4439-a458-0f0ba80fada1?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)10",
+      "caption": "Axial T1WI C+ FS MR in the same patient shows fluid collections in the soft tissues <img src=\"arrow_WS.png\"> and tendon sheaths <img src=\"arrow_WO.png\">. These are neuropathic fluid collections. Bones enhance, related to reactive change. There was no infection at biopsy.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)10.jpg",
+      "group": "",
+      "imageId": "9b66faea-81ee-4439-a458-0f0ba80fada1",
+      "masterImageId": "RP-10",
+      "plainFilename": "Charcot_(Neuropathic)10.jpg",
+      "plainUrl": "https://app.radprimer.com/images/9b66faea-81ee-4439-a458-0f0ba80fada1?style=xlarge&annotated=false",
+      "sourceImageNumber": 10,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)11_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/089ac603-0719-483f-b425-c2ef2773aece?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)11",
+      "caption": "AP radiograph shows a dislocated shoulder with severe fragmentation and bony debris. The placement of the debris suggests massive distension of the glenohumeral joint and subacromial/subdeltoid bursa <img src=\"arrow_WS.png\">. The combination of findings is typical of Charcot (neuropathic) shoulder.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)11.jpg",
+      "group": "",
+      "imageId": "089ac603-0719-483f-b425-c2ef2773aece",
+      "masterImageId": "RP-11",
+      "plainFilename": "Charcot_(Neuropathic)11.jpg",
+      "plainUrl": "https://app.radprimer.com/images/089ac603-0719-483f-b425-c2ef2773aece?style=xlarge&annotated=false",
+      "sourceImageNumber": 11,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)12_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/db68416b-33ca-47a9-9b6e-cf1db8ec49d2?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)12",
+      "caption": "Sagittal T2 MR, same patient, shows a large cervicothoracic syrinx <img src=\"arrow_WS.png\">. Syringomyelia is the most common etiology of Charcot changes in the glenohumeral joint.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)12.jpg",
+      "group": "",
+      "imageId": "db68416b-33ca-47a9-9b6e-cf1db8ec49d2",
+      "masterImageId": "RP-12",
+      "plainFilename": "Charcot_(Neuropathic)12.jpg",
+      "plainUrl": "https://app.radprimer.com/images/db68416b-33ca-47a9-9b6e-cf1db8ec49d2?style=xlarge&annotated=false",
+      "sourceImageNumber": 12,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)13_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/b5bb3273-bea5-48bf-a9e3-1e5a4e0ca809?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)13",
+      "caption": "Lateral radiograph of a paraplegic shows a burst fracture of L1 treated with partial corpectomy, strut graft <img src=\"arrow_WS.png\">, and posterior rods. Note the osseous destruction and instability at the next 2 levels <img src=\"arrow_WO.png\">. These Charcot vertebrae are typically located immediately caudad to the stabilized spine.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)13.jpg",
+      "group": "",
+      "imageId": "b5bb3273-bea5-48bf-a9e3-1e5a4e0ca809",
+      "masterImageId": "RP-13",
+      "plainFilename": "Charcot_(Neuropathic)13.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b5bb3273-bea5-48bf-a9e3-1e5a4e0ca809?style=xlarge&annotated=false",
+      "sourceImageNumber": 13,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)14_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/a30caa98-a881-4d42-89e1-ec5faffbb3b4?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)14",
+      "caption": "Lateral radiograph shows significant subluxation and destruction of endplates with osseous debris at 2 adjacent levels <img src=\"arrow_WS.png\">. This paraplegic patient developed instability and Charcot spine.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)14.jpg",
+      "group": "",
+      "imageId": "a30caa98-a881-4d42-89e1-ec5faffbb3b4",
+      "masterImageId": "RP-14",
+      "plainFilename": "Charcot_(Neuropathic)14.jpg",
+      "plainUrl": "https://app.radprimer.com/images/a30caa98-a881-4d42-89e1-ec5faffbb3b4?style=xlarge&annotated=false",
+      "sourceImageNumber": 14,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)15_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/82a2f7b4-c568-4b69-b7cd-d8d132402e60?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)15",
+      "caption": "AP radiograph shows ragged destructive changes of the femoral condyle and osseous debris <img src=\"arrow_WC.png\"> in a young patient. His contralateral AP knee had similar abnormalities.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)15.jpg",
+      "group": "",
+      "imageId": "82a2f7b4-c568-4b69-b7cd-d8d132402e60",
+      "masterImageId": "RP-15",
+      "plainFilename": "Charcot_(Neuropathic)15.jpg",
+      "plainUrl": "https://app.radprimer.com/images/82a2f7b4-c568-4b69-b7cd-d8d132402e60?style=xlarge&annotated=false",
+      "sourceImageNumber": 15,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)16_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/07dc9b68-180b-48a8-a341-2a57c1836c3d?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)16",
+      "caption": "Axial T2WI MR in the same patient shows a large effusion and 1 of multiple pieces of osteocartilaginous debris <img src=\"arrow_WS.png\">. This patient's knees show the debris, distension, and destruction typical of neuropathic joints. The etiology in this case is congenital insensitivity to pain.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)16.jpg",
+      "group": "",
+      "imageId": "07dc9b68-180b-48a8-a341-2a57c1836c3d",
+      "masterImageId": "RP-16",
+      "plainFilename": "Charcot_(Neuropathic)16.jpg",
+      "plainUrl": "https://app.radprimer.com/images/07dc9b68-180b-48a8-a341-2a57c1836c3d?style=xlarge&annotated=false",
+      "sourceImageNumber": 16,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)17_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/bbd416f9-8769-468f-ae44-75eddc41231e?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)17",
+      "caption": "AP radiograph shows an unusual case of neuropathic joint, resulting from congenital indifference to pain. The left knee shows severe disruption with subluxation, fragmentation, attempted repair, and complete destruction of the joint.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)17.jpg",
+      "group": "",
+      "imageId": "bbd416f9-8769-468f-ae44-75eddc41231e",
+      "masterImageId": "RP-17",
+      "plainFilename": "Charcot_(Neuropathic)17.jpg",
+      "plainUrl": "https://app.radprimer.com/images/bbd416f9-8769-468f-ae44-75eddc41231e?style=xlarge&annotated=false",
+      "sourceImageNumber": 17,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)18_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/c045d0a4-c606-43e0-8578-e57b0fb37d2c?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)18",
+      "caption": "Lateral radiograph of contralateral limb in same patient shows just as severe disruption with destruction of the tibiotalar, subtalar, and midfoot joints. Congenital indifference to pain is an unusual cause of Charcot joint and is often polyarticular.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)18.jpg",
+      "group": "",
+      "imageId": "c045d0a4-c606-43e0-8578-e57b0fb37d2c",
+      "masterImageId": "RP-18",
+      "plainFilename": "Charcot_(Neuropathic)18.jpg",
+      "plainUrl": "https://app.radprimer.com/images/c045d0a4-c606-43e0-8578-e57b0fb37d2c?style=xlarge&annotated=false",
+      "sourceImageNumber": 18,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)19_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/f77c289f-bf9f-45de-a5ab-255d85ea8c39?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)19",
+      "caption": "AP radiograph in a middle-aged patient gives the initial impression of uncomplicated osteoarthritis, with cartilage loss <img src=\"arrow_WO.png\">, large subchondral cyst formation <img src=\"arrow_WC.png\">, superolateral subluxation of the hip, and calcar buttressing <img src=\"arrow_WS.png\">.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)19.jpg",
+      "group": "",
+      "imageId": "f77c289f-bf9f-45de-a5ab-255d85ea8c39",
+      "masterImageId": "RP-19",
+      "plainFilename": "Charcot_(Neuropathic)19.jpg",
+      "plainUrl": "https://app.radprimer.com/images/f77c289f-bf9f-45de-a5ab-255d85ea8c39?style=xlarge&annotated=false",
+      "sourceImageNumber": 19,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)20_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/5c9a55b6-3491-4023-a026-240fc102cda2?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)20",
+      "caption": "Coronal CT, obtained 2 months later in the same patient, shows severe and rapid progression of destruction of the femoral head and acetabulum. Abundant debris <img src=\"arrow_WS.png\"> is seen within the joint.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)20.jpg",
+      "group": "",
+      "imageId": "5c9a55b6-3491-4023-a026-240fc102cda2",
+      "masterImageId": "RP-20",
+      "plainFilename": "Charcot_(Neuropathic)20.jpg",
+      "plainUrl": "https://app.radprimer.com/images/5c9a55b6-3491-4023-a026-240fc102cda2?style=xlarge&annotated=false",
+      "sourceImageNumber": 20,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)21_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/a332eb74-af90-4a91-a369-df369b8562d7?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)21",
+      "caption": "AP radiograph in the same patient 7 months later shows the classic hatchet sign <img src=\"arrow_WS.png\"> of rapid destruction of the hip. The rapidity of the destruction and the appearance suggest a diagnosis of rapidly destructive osteoarthritis of the hip. However, one must also consider Charcot arthropathy as an etiology.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)21.jpg",
+      "group": "",
+      "imageId": "a332eb74-af90-4a91-a369-df369b8562d7",
+      "masterImageId": "RP-21",
+      "plainFilename": "Charcot_(Neuropathic)21.jpg",
+      "plainUrl": "https://app.radprimer.com/images/a332eb74-af90-4a91-a369-df369b8562d7?style=xlarge&annotated=false",
+      "sourceImageNumber": 21,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    },
+    {
+      "annotatedFilename": "Charcot_(Neuropathic)22_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/0dffc783-6437-4dca-aa13-fb3838741bb8?style=xlarge&annotated=true",
+      "baseName": "Charcot_(Neuropathic)22",
+      "caption": "Axial CT from the same patient shows a small, nodular liver, typical of cirrhosis. The most common etiology of Charcot hip is alcoholism; the cirrhosis proves the etiology in this case.",
+      "downloadRecommendation": "",
+      "filename": "Charcot_(Neuropathic)22.jpg",
+      "group": "",
+      "imageId": "0dffc783-6437-4dca-aa13-fb3838741bb8",
+      "masterImageId": "RP-22",
+      "plainFilename": "Charcot_(Neuropathic)22.jpg",
+      "plainUrl": "https://app.radprimer.com/images/0dffc783-6437-4dca-aa13-fb3838741bb8?style=xlarge&annotated=false",
+      "sourceImageNumber": 22,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": []
+    }
+  ],
+  "masterImageIds": [],
+  "masterSource": null,
+  "mode": "narrative",
+  "outputChars": 20113,
+  "primarySourceLabel": "RadPrimer",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "settings": {
+    "ankiDeckMode": "auto",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "ankiNormalRoot": "RadprimerNormal",
+    "ankiNoteType": "core_rad_notetype_v2",
+    "ankiPathologyRoot": "Corebook",
+    "caseMap": "",
+    "coreGap": false,
+    "coreNote": "",
+    "corePages": "",
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "createAnkiImportFile": true,
+    "include": "all",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "sourceNote": ""
+  },
+  "sourceComparisonBundle": true,
+  "sourceComparisonFileBase": "RadPrimer_Charcot_(Neuropathic)",
+  "sourceComparisonFolder": "RadPrimerSourceComparison/Charcot_(Neuropathic)",
+  "sourceKind": "radprimer",
+  "sourceLabel": "RadPrimer",
+  "sourceOnlyBundle": true,
+  "sourcePairingFolder": "Charcot_(Neuropathic)",
+  "sourcePairingKey": "charcot_neuropathic",
+  "sourcePairingKeyRaw": "Charcot (Neuropathic)",
+  "sourceQualifiedImages": [],
+  "sourceUrl": "https://app.radprimer.com/document/4cf14531-c1aa-47a4-b72d-478e24859752/lesson/657e0ece-922a-4a72-8c0f-6eb2ac59ac7d",
+  "totalImagesOnPage": 22
+}

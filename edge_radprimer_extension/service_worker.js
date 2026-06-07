@@ -767,6 +767,24 @@ function getStagedDownloadFilename(filename) {
   return `${IMAGE_DOWNLOAD_SUBFOLDER}/${getDownloadBasename(filename)}`;
 }
 
+function getSourceFilenameLabel(sourceKind, sourceLabel) {
+  const kind = normalizeArticleSourceKind(sourceKind || sourceLabel);
+  if (kind === "statdx") return "STATdx";
+  if (kind === "radprimer") return "RadPrimer";
+  return sanitizeDownloadPathPart(sourceLabel || sourceKind || "Source", "Source");
+}
+
+function buildSourceQualifiedImageFilename(file = {}) {
+  const base = getDownloadBasename(file.filename || file.plainFilename || file.annotatedFilename || "image.jpg");
+  const masterImageId = sanitizeDownloadPathPart(file.masterImageId || "", "");
+  const sourceLabel = getSourceFilenameLabel(file.sourceKind, file.sourceLabel);
+  const variant = file.variant === "annotated" ? "annotated" : file.variant === "plain" ? "plain" : "";
+  const prefix = [masterImageId, sourceLabel, variant].filter(Boolean).join("_");
+  if (!prefix) return base;
+  if (base.toLowerCase().startsWith(prefix.toLowerCase())) return base;
+  return `${prefix}_${base}`;
+}
+
 function normalizeDownloadUrl(url) {
   try {
     const parsed = new URL(String(url || ""));
@@ -1025,11 +1043,12 @@ function sanitizeDownloadPathPart(value, fallback = "radprimer") {
     .replace(/_+/g, "_");
 }
 
-function buildSourceCompareDownloadPlan(title, sourceLabel) {
+function buildSourceCompareDownloadPlan(title, sourceLabel, folderLabel = "") {
   const articlePart = sanitizeDownloadPathPart(title, "radiology_source");
+  const folderPart = sanitizeDownloadPathPart(folderLabel || title, "radiology_source");
   const sourcePart = sanitizeDownloadPathPart(sourceLabel, "source");
   return {
-    articleFolderName: articlePart,
+    articleFolderName: folderPart,
     fileBaseName: `${sourcePart}_${articlePart}`
   };
 }
@@ -1074,7 +1093,8 @@ const SOURCE_COMPARE_TOKEN_ALIASES = new Map([
   ["arteries", "artery"],
   ["calcaneal", "calcaneus"],
   ["fractures", "fracture"],
-  ["injuries", "injury"],
+  ["injuries", "trauma"],
+  ["injury", "trauma"],
   ["lesions", "lesion"],
   ["neoplasms", "neoplasm"],
   ["splenic", "spleen"],
@@ -1389,7 +1409,8 @@ function normalizeImageRegistryEntry(entry = {}, fallback = {}) {
     caption: entry.caption || fallback.caption || "",
     baseName: entry.baseName || fallback.baseName || "",
     group: entry.group || fallback.group || "",
-    usedFor: Array.isArray(entry.usedFor) ? entry.usedFor : fallback.usedFor || []
+    usedFor: Array.isArray(entry.usedFor) ? entry.usedFor : fallback.usedFor || [],
+    downloadRecommendation: entry.downloadRecommendation || fallback.downloadRecommendation || ""
   };
 }
 
@@ -1429,12 +1450,24 @@ function buildSourceImageRegistryFromPending(pending = {}) {
   });
 }
 
+function shouldUseRegistryEntryForMasterDownload(entry, hasExplicitRecommendations) {
+  if (!hasExplicitRecommendations) return true;
+  return entry.downloadRecommendation === "primaryTeachingSet";
+}
+
 function flattenRegistryToDownloadFiles(imageRegistry = []) {
   const files = [];
-  for (const rawEntry of Array.isArray(imageRegistry) ? imageRegistry : []) {
-    const entry = normalizeImageRegistryEntry(rawEntry);
+  const normalizedEntries = (Array.isArray(imageRegistry) ? imageRegistry : []).map((entry) =>
+    normalizeImageRegistryEntry(entry)
+  );
+  const hasExplicitRecommendations = normalizedEntries.some((entry) =>
+    ["primaryTeachingSet", "archiveOptionalDuplicate"].includes(entry.downloadRecommendation)
+  );
+
+  for (const entry of normalizedEntries) {
+    if (!shouldUseRegistryEntryForMasterDownload(entry, hasExplicitRecommendations)) continue;
     if (entry.plainUrl && entry.plainFilename) {
-      files.push({
+      const file = {
         url: entry.plainUrl,
         filename: entry.plainFilename,
         imageNumber: entry.sourceImageNumber,
@@ -1442,11 +1475,16 @@ function flattenRegistryToDownloadFiles(imageRegistry = []) {
         sourceKind: entry.sourceKind,
         sourceLabel: entry.sourceLabel,
         variant: "plain",
-        caption: entry.caption
+        caption: entry.caption,
+        downloadRecommendation: entry.downloadRecommendation
+      };
+      files.push({
+        ...file,
+        filename: buildSourceQualifiedImageFilename(file)
       });
     }
     if (entry.annotatedUrl && entry.annotatedFilename) {
-      files.push({
+      const file = {
         url: entry.annotatedUrl,
         filename: entry.annotatedFilename,
         imageNumber: entry.sourceImageNumber,
@@ -1454,7 +1492,12 @@ function flattenRegistryToDownloadFiles(imageRegistry = []) {
         sourceKind: entry.sourceKind,
         sourceLabel: entry.sourceLabel,
         variant: "annotated",
-        caption: entry.caption
+        caption: entry.caption,
+        downloadRecommendation: entry.downloadRecommendation
+      };
+      files.push({
+        ...file,
+        filename: buildSourceQualifiedImageFilename(file)
       });
     }
   }
@@ -1908,24 +1951,37 @@ function buildMasterSourceRequestInstructions(metadata) {
     "- Preserve source attribution with labels such as [RadPrimer], [STATdx], or [Both].",
     "- Do not invent Core Radiology support. Treat Core-specific claims as verified only if the provided source packages contain auditable Core evidence.",
     "- Do not create cards or a lecture yet. Create only the fused master source package and report.",
-    "- Do not omit images from either source package. If an image should not drive future cards/lecture, keep it in an image audit section with a reason.",
+    "- First run an image coverage gate: determine which RadPrimer images are exact duplicates, near duplicates, conceptual replacements, or not covered by STATdx.",
+    "- Do not discard a RadPrimer image unless STATdx clearly replaces the same teaching need. If unsure, keep the RadPrimer image in the primary teaching set.",
+    "- Do not omit images from the registry. Separate images into a primaryTeachingSet for future narrative/cards and archiveOptionalDuplicates for recovery/complete-source review.",
+    "- Treat same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse image groups as atomic teaching clusters. If one image from that cluster is selected, include the companion images needed to understand the case.",
+    "- Do not replace or archive a single image inside a source case cluster unless the whole cluster is replaced by an equivalent cluster from the other source, or unless master_source_report.md explicitly explains why splitting the cluster is safe.",
+    "- master_source_report.md must list any selected/archived case-cluster splits and the reason. If there are no intentional splits, say that no source case cluster was intentionally split.",
     "- Preserve grouping, time-lapse, procedure, or follow-up context when captions imply it.",
-    "- Use source-qualified image labels throughout the fused package. Prefer labels like RadPrimer image 5, STATdx image 4, RP-05, and SDX-04 over bare image numbers when images from both sources are present.",
+    "- Use source-qualified image labels throughout the fused package. For human-facing prose, prefer one clean display label such as RadPrimer image 5 or STATdx image 4. Keep short labels such as RP-05 and SDX-04 in registry fields, filenames, metadata, and traceability notes rather than repeating both labels in the same prose sentence.",
     "- The fused package must be directly usable as the article/source package for later narrative and card generation.",
     "",
     "Required image registry contract:",
     "- image_registry.json must be a JSON array.",
-    "- Each image object must include masterImageId, sourceKind, sourceLabel, sourceImageNumber, caption, usedFor, plainFilename/annotatedFilename when known, and plainUrl/annotatedUrl when known.",
+    "- Each image object must include masterImageId, sourceKind, sourceLabel, sourceImageNumber, caption, usedFor, downloadRecommendation, plainFilename/annotatedFilename when known, and plainUrl/annotatedUrl when known.",
     "- masterImageId should be RP-01, RP-02, etc. for RadPrimer and SDX-01, SDX-02, etc. for STATdx unless a clearer stable source code exists.",
-    "- If a source image should be excluded from future teaching, keep it in the registry with usedFor: [] and explain why in master_source_report.md.",
+    "- downloadRecommendation must be primaryTeachingSet for images to download/use by default and archiveOptionalDuplicate for duplicate/recovery images that should not drive default cards/lecture.",
+    "- Downloadable filenames should be source-qualified, for example RP-05_RadPrimer_plain_<original>.jpg and SDX-04_STATdx_plain_<original>.jpg, so Anki fields can reference the exact source image.",
+    "- If a source image should be excluded from future teaching, keep it in the registry with downloadRecommendation: archiveOptionalDuplicate or usedFor: [] and explain why in master_source_report.md.",
     "",
     "Required manifest/import contract:",
-    "- master_source_manifest.json must include articleTitle, canonicalHierarchy, sourcePriority, sourceCoverage, imageCountBySource, and sourceAttributionRules.",
-    "- master_source_import.json must be a single JSON object with: version, articleTitle, createdAt, packageText, manifest, imageRegistry.",
+    "- master_source_manifest.json must include articleTitle, canonicalHierarchy, sourcePriority, sourceCoverage, imageCountBySource, sourceAttributionRules, selectedPrimaryImageIds, archiveOptionalImageIds, and sourceSelectionPlan.",
+    "- sourceSelectionPlan must state what text to keep from each source, what to downweight/skip, the primary image download/use set, archive duplicates, and generator instructions for narrative/cards.",
+    "- sourceSelectionPlan must include a caseClusterGuardrails section describing atomic cluster rules and any intentional cluster splits.",
+    "- master_source_import.json must be a single JSON object with: version, articleTitle, createdAt, packageText, manifest, imageRegistry, sourceSelectionPlan, selectedPrimaryImageIds, and archiveOptionalImageIds.",
     "- packageText in master_source_import.json must be exactly the same text written to master_source_package.txt.",
     "",
     `Topic: ${metadata.articleTitle || "[unknown]"}`,
     `Created: ${metadata.createdAt || ""}`,
+    `Source pairing key: ${metadata.sourcePairingKey || "[article title]"}`,
+    metadata.sourcePairingMatch
+      ? `Source pairing match: ${metadata.sourcePairingMatch.type || "matched"} score ${metadata.sourcePairingMatch.score || ""} from ${metadata.sourcePairingMatch.matchedTitles?.[0] || metadata.sourcePairingMatch.matchedCacheKey || "[unknown]"}`
+      : "Source pairing match: exact/manual cache",
     `Sources: ${(metadata.sources || []).map((source) => source.sourceLabel || source.sourceKind).join(", ")}`
   ].join("\n");
 }
@@ -1943,9 +1999,9 @@ function buildMasterSourceWakeMessage(bundle) {
     "3. In that bundle, compare RadPrimer_source_package.txt, STATdx_source_package.txt, RadPrimer_metadata.json, STATdx_metadata.json, metadata.json, and master_source_request.md.",
     "4. Write master_source_package.txt, master_source_manifest.json, image_registry.json, master_source_import.json, master_source_report.md, and _codex_master_source_done.txt in the same imported bundle folder.",
     "",
-    "Use RadPrimer as the canonical hierarchy/backbone when present. Use STATdx as supplemental depth for stronger images, captions, mechanisms, differentials, modality-specific detail, or management. Preserve source attribution and image grouping/time-lapse/procedure context. Do not generate cards or a lecture yet.",
+    "Use RadPrimer as the canonical hierarchy/backbone when present. Before merging, check whether STATdx fully covers the RadPrimer image set and mark each RadPrimer image as exact duplicate, near duplicate, conceptual replacement, or not covered. Use STATdx as supplemental depth for stronger images, captions, mechanisms, differentials, modality-specific detail, or management. Preserve source attribution and image grouping/time-lapse/procedure context. Treat same-patient/follow-up/procedure/adjacent-slice/time-lapse clusters as atomic unless an explicit documented split is safe. Do not generate cards or a lecture yet.",
     "",
-    "Important: the extension will later import master_source_import.json. Make its packageText source-qualified, with image labels like RadPrimer image 5 / RP-05 and STATdx image 4 / SDX-04 whenever both sources contribute images."
+    "Important: the extension will later import master_source_import.json. Make its packageText source-qualified with clean human-facing labels like RadPrimer image 5 and STATdx image 4 whenever both sources contribute images. Keep RP-05 and SDX-04 in the image registry, manifest, filenames, and traceability fields, but do not force both the long label and short code into the same narrative-facing prose. Also include selectedPrimaryImageIds/archiveOptionalImageIds and sourceSelectionPlan.imageDownloadPlan so the extension can download only curated primary images with source-qualified filenames."
   ].join("\n");
 }
 
@@ -2149,7 +2205,9 @@ async function stageSourceCompareBundle({ pending }) {
     pending.extractionMeta?.sourceKind ||
     pending.settings?.primarySourceLabel ||
     "source";
-  const downloadPlan = buildSourceCompareDownloadPlan(title, sourceLabel);
+  const sourcePairingKey = getSourcePairingKey(title, pending.settings || {});
+  const sourcePairingFolderLabel = pending.settings?.sourcePairingKey || title;
+  const downloadPlan = buildSourceCompareDownloadPlan(title, sourceLabel, sourcePairingFolderLabel);
   const metadata = {
     ...createCardAuditMetadata(pending, createdAt, {
       sourceOnlyBundle: true
@@ -2157,8 +2215,9 @@ async function stageSourceCompareBundle({ pending }) {
     sourceComparisonBundle: true,
     sourceComparisonFolder: `${SOURCE_COMPARE_SUBFOLDER}/${downloadPlan.articleFolderName}`,
     sourceComparisonFileBase: downloadPlan.fileBaseName,
-    sourcePairingKey: getSourcePairingKey(title, pending.settings || {}),
+    sourcePairingKey,
     sourcePairingKeyRaw: pending.settings?.sourcePairingKey || "",
+    sourcePairingFolder: downloadPlan.articleFolderName,
     sourceLabel,
     sourceKind: pending.extractionMeta?.sourceKind || "",
     primarySourceLabel: pending.extractionMeta?.primarySourceLabel || sourceLabel
@@ -2185,7 +2244,7 @@ async function stageSourceCompareBundle({ pending }) {
   await downloadSourceCompareTextFile(
     downloadPlan.articleFolderName,
     markerFilename,
-    `sourceCompare=true\ncreatedAt=${createdAt}\narticleTitle=${title}\nsourceLabel=${sourceLabel}\n`
+    `sourceCompare=true\ncreatedAt=${createdAt}\narticleTitle=${title}\nsourceLabel=${sourceLabel}\nsourcePairingKey=${metadata.sourcePairingKey || ""}\nsourcePairingFolder=${metadata.sourcePairingFolder || ""}\n`
   );
 
   return {
@@ -2335,9 +2394,17 @@ function normalizeMasterSourceCache(input = {}) {
     : Array.isArray(input.images)
       ? input.images
       : [];
-  const imageRegistry = imageRegistryRaw.map((entry, index) =>
-    normalizeImageRegistryEntry(entry, { index: index + 1 })
-  );
+  const selectedPrimaryIds = getMasterSourcePrimaryImageIds(input, manifest);
+  const archiveOptionalIds = getMasterSourceArchiveImageIds(input, manifest);
+  const imageRegistry = imageRegistryRaw.map((entry, index) => {
+    const normalized = normalizeImageRegistryEntry(entry, { index: index + 1 });
+    if (selectedPrimaryIds.size && selectedPrimaryIds.has(normalized.masterImageId)) {
+      normalized.downloadRecommendation = "primaryTeachingSet";
+    } else if (archiveOptionalIds.has(normalized.masterImageId)) {
+      normalized.downloadRecommendation = "archiveOptionalDuplicate";
+    }
+    return normalized;
+  });
   const createdAt = input.createdAt || manifest.createdAt || new Date().toISOString();
   const importedAt = new Date().toISOString();
   const cache = {
@@ -2351,15 +2418,57 @@ function normalizeMasterSourceCache(input = {}) {
     packageText,
     manifest: {
       ...manifest,
-      articleTitle: manifest.articleTitle || articleTitle
+      articleTitle: manifest.articleTitle || articleTitle,
+      selectedPrimaryImageIds: Array.from(selectedPrimaryIds),
+      archiveOptionalImageIds: Array.from(archiveOptionalIds)
     },
     imageRegistry,
+    selectedPrimaryImageIds: Array.from(selectedPrimaryIds),
+    archiveOptionalImageIds: Array.from(archiveOptionalIds),
     downloadFiles: flattenRegistryToDownloadFiles(imageRegistry),
     outputChars: packageText.length
   };
 
   if (!cache.titleKey) throw new Error("Master source import has no usable article title.");
   return cache;
+}
+
+function collectMasterImageIdsFromPlan(planGroup = {}) {
+  const ids = new Set();
+  for (const value of Object.values(planGroup || {})) {
+    if (!Array.isArray(value)) continue;
+    value.forEach((id) => {
+      const text = String(id || "").trim();
+      if (text) ids.add(text);
+    });
+  }
+  return ids;
+}
+
+function getMasterSourcePrimaryImageIds(input = {}, manifest = {}) {
+  const explicit = Array.isArray(input.selectedPrimaryImageIds)
+    ? input.selectedPrimaryImageIds
+    : Array.isArray(manifest.selectedPrimaryImageIds)
+      ? manifest.selectedPrimaryImageIds
+      : [];
+  const ids = new Set(explicit.map((id) => String(id || "").trim()).filter(Boolean));
+  const plan = input.sourceSelectionPlan || manifest.sourceSelectionPlan || {};
+  const primaryPlan = plan?.imageDownloadPlan?.primaryTeachingSet || {};
+  collectMasterImageIdsFromPlan(primaryPlan).forEach((id) => ids.add(id));
+  return ids;
+}
+
+function getMasterSourceArchiveImageIds(input = {}, manifest = {}) {
+  const explicit = Array.isArray(input.archiveOptionalImageIds)
+    ? input.archiveOptionalImageIds
+    : Array.isArray(manifest.archiveOptionalImageIds)
+      ? manifest.archiveOptionalImageIds
+      : [];
+  const ids = new Set(explicit.map((id) => String(id || "").trim()).filter(Boolean));
+  const plan = input.sourceSelectionPlan || manifest.sourceSelectionPlan || {};
+  const archivePlan = plan?.imageDownloadPlan?.archiveOptionalDuplicates || {};
+  collectMasterImageIdsFromPlan(archivePlan).forEach((id) => ids.add(id));
+  return ids;
 }
 
 function buildMasterSourceCacheFromFiles(files = []) {
@@ -2414,8 +2523,9 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
   return [
     "=== MASTER SOURCE MODE ===",
     "Use the fused master source below as the active article/source package for this run.",
-    "Image references are source-qualified. Preserve labels such as RP-05, SDX-04, RadPrimer image 5, and STATdx image 4.",
+    "Image references are source-qualified. Preserve labels such as RP-05, SDX-04, RadPrimer image 5, and STATdx image 4 in metadata, card image fields, audit blocks, and download/file references.",
     "If images from both sources are used, never collapse them into bare image numbers without source labels.",
+    "For narrative prose meant to be spoken aloud, say only one clean source-qualified reference per image, such as RadPrimer image 5 or STATdx image 4. Do not say both the long label and the short code, such as STATdx image 4, SDX-04.",
     "",
     "=== TOPIC ===",
     `PRIMARY TOPIC: ${title}`,
@@ -2459,10 +2569,22 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
 function buildMasterSourceExtraction(settings, promptText, masterSource) {
   const title = masterSource?.articleTitle || "Radiology Master Source";
   const imageRegistry = Array.isArray(masterSource?.imageRegistry) ? masterSource.imageRegistry : [];
-  const selectedImages = imageRegistry
+  const downloadableIds = new Set(
+    Array.isArray(masterSource?.downloadFiles)
+      ? masterSource.downloadFiles.map((file) => file.masterImageId).filter(Boolean)
+      : []
+  );
+  const selectedPrimaryIds = new Set(
+    Array.isArray(masterSource?.selectedPrimaryImageIds) ? masterSource.selectedPrimaryImageIds : []
+  );
+  const activePrimaryIds = downloadableIds.size ? downloadableIds : selectedPrimaryIds;
+  const primaryImageRegistry = activePrimaryIds.size
+    ? imageRegistry.filter((entry) => activePrimaryIds.has(entry.masterImageId))
+    : imageRegistry;
+  const selectedImages = primaryImageRegistry
     .map((entry, index) => entry.sourceImageNumber || index + 1)
     .filter((value) => Number.isFinite(Number(value)));
-  const sourceQualifiedImages = imageRegistry
+  const sourceQualifiedImages = primaryImageRegistry
     .map((entry) => ({
       masterImageId: entry.masterImageId || "",
       sourceKind: entry.sourceKind || "",
@@ -2474,7 +2596,7 @@ function buildMasterSourceExtraction(settings, promptText, masterSource) {
       caption: entry.caption || ""
     }))
     .filter((entry) => entry.masterImageId || entry.sourceImageNumber);
-  const cases = imageRegistry
+  const cases = primaryImageRegistry
     .filter((entry) => Array.isArray(entry.groupNumbers) && entry.groupNumbers.length)
     .map((entry) => entry.groupNumbers);
 
@@ -2491,9 +2613,13 @@ function buildMasterSourceExtraction(settings, promptText, masterSource) {
       totalImagesOnPage: imageRegistry.length,
       selectedImages,
       masterImageIds: sourceQualifiedImages.map((entry) => entry.masterImageId).filter(Boolean),
+      archiveOptionalImageIds: Array.isArray(masterSource?.archiveOptionalImageIds)
+        ? masterSource.archiveOptionalImageIds
+        : [],
       sourceQualifiedImages,
       cases,
       imageRegistry,
+      primaryImageRegistry,
       outputChars: String(masterSource?.packageText || "").length,
       masterSource: {
         importedAt: masterSource?.importedAt || "",
@@ -3336,11 +3462,23 @@ async function runRadPrimerImageDownloadOnly(tab) {
   const settings = getImageOnlySettings(await loadRunnerSettings());
   const promptText = await loadPrompt(settings.engine, settings.mode);
 
-  await sendPageStatus(tab.id, "Extracting", `Extracting selected ${articleSource.displayName} image list...`);
-  const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  let extraction;
+  if (settings.useMasterSource) {
+    await sendPageStatus(tab.id, "Master Source", "Loading imported fused master source image plan...");
+    const masterSource = await getLatestMasterSourceCache();
+    if (!masterSource?.packageText) {
+      throw new Error("Use master source is enabled, but no imported master source was found. Import master_source_import.json first.");
+    }
+    extraction = buildMasterSourceExtraction(settings, promptText, masterSource);
+  } else {
+    await sendPageStatus(tab.id, "Extracting", `Extracting selected ${articleSource.displayName} image list...`);
+    extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  }
 
   if (!extraction.downloadFiles?.length) {
-    const message = "No image files were selected for download.";
+    const message = settings.useMasterSource
+      ? "No curated master-source image URLs were available to download. Re-export the RadPrimer/STATdx comparison sources so their metadata includes image URLs, then rebuild/import the master source."
+      : "No image files were selected for download.";
     await sendPageStatus(tab.id, "Images", message, { done: true });
     return { message, meta: extraction.meta || null };
   }
@@ -3363,7 +3501,9 @@ async function exportRadPrimerAuditSourceOnly(tab) {
   await sendPageStatus(tab.id, "Audit Source", "Extracting source-only audit bundle...");
   const settings = {
     ...(await loadRunnerSettings()),
-    downloadImages: false,
+    // Keep image URL metadata in source-only bundles. This does not download files here;
+    // it only asks the extractor to include URL-bearing downloadFiles/imageRegistry.
+    downloadImages: true,
     openChatGPT: false,
     autoSubmitChatGPT: false,
     autoSendToSpeechify: false,
@@ -3404,7 +3544,10 @@ async function exportArticleSourceComparison(tab) {
   await sendPageStatus(tab.id, "Compare Source", `Extracting ${articleSource.displayName} comparison source bundle...`);
   const settings = {
     ...(await loadRunnerSettings()),
-    downloadImages: false,
+    // Keep image URL metadata in comparison bundles so a later fused master source
+    // can download only its curated image set. This does not download files here;
+    // it only asks the extractor to include URL-bearing downloadFiles/imageRegistry.
+    downloadImages: true,
     openChatGPT: false,
     autoSubmitChatGPT: false,
     autoSendToSpeechify: false,
