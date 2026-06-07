@@ -243,6 +243,9 @@
           gap: 16px;
           align-items: flex-start;
         }
+        .modal-head > div:first-child {
+          min-width: 0;
+        }
         h2 {
           margin: 0 0 6px;
           font-size: 22px;
@@ -254,6 +257,64 @@
           color: #64748b;
           font-size: 13.5px;
           max-width: 560px;
+        }
+        .master-source-banner {
+          margin-top: 12px;
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          width: min(100%, 720px);
+          min-height: 38px;
+          padding: 9px 12px;
+          border-radius: 999px;
+          background: rgba(248, 250, 252, .9);
+          border: 1px solid rgba(203, 213, 225, .86);
+          color: #475569;
+          font-size: 12.5px;
+          font-weight: 750;
+          line-height: 1.25;
+          overflow: hidden;
+        }
+        .master-source-banner .dot {
+          width: 9px;
+          height: 9px;
+          border-radius: 999px;
+          flex: 0 0 auto;
+          background: #94a3b8;
+          box-shadow: 0 0 0 4px rgba(148, 163, 184, .15);
+        }
+        .master-source-banner .copy {
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .master-source-banner.active {
+          background: linear-gradient(135deg, rgba(236, 253, 245, .96), rgba(239, 246, 255, .96));
+          border-color: rgba(34, 197, 94, .32);
+          color: #14532d;
+        }
+        .master-source-banner.active .dot {
+          background: #22c55e;
+          box-shadow: 0 0 0 4px rgba(34, 197, 94, .14);
+        }
+        .master-source-banner.loaded {
+          background: rgba(239, 246, 255, .96);
+          border-color: rgba(147, 197, 253, .55);
+          color: #1e3a8a;
+        }
+        .master-source-banner.loaded .dot {
+          background: #3b82f6;
+          box-shadow: 0 0 0 4px rgba(59, 130, 246, .14);
+        }
+        .master-source-banner.error {
+          background: rgba(254, 242, 242, .96);
+          border-color: rgba(248, 113, 113, .38);
+          color: #7f1d1d;
+        }
+        .master-source-banner.error .dot {
+          background: #ef4444;
+          box-shadow: 0 0 0 4px rgba(239, 68, 68, .14);
         }
         .close {
           width: 36px;
@@ -313,6 +374,46 @@
         }
         .card.anki-card { grid-column: 1 / -1; }
         .card.advanced-card { grid-column: 1 / -1; }
+        details.card {
+          padding: 0;
+        }
+        details.card .collapse-summary {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          padding: 18px;
+          list-style: none;
+        }
+        details.card .collapse-summary h3 {
+          margin: 0;
+          font-size: 14px;
+          color: #0f172a;
+          flex: 0 0 auto;
+        }
+        details.card .collapse-summary .hint {
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        details.card .collapse-summary::after {
+          content: "+";
+          color: #64748b;
+          font-weight: 900;
+          font-size: 16px;
+          flex: 0 0 auto;
+        }
+        details.card[open] .collapse-summary::after {
+          content: "-";
+        }
+        details.card .collapse-summary::-webkit-details-marker {
+          display: none;
+        }
+        details.card .collapsible-body {
+          padding: 0 18px 18px;
+        }
         .card-title {
           display: flex;
           justify-content: space-between;
@@ -400,6 +501,14 @@
           .grid,
           .checks {
             grid-template-columns: 1fr;
+          }
+          details.card .collapse-summary {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+          details.card .collapse-summary::after {
+            position: absolute;
+            right: 18px;
           }
         }
         details {
@@ -534,6 +643,10 @@
               <div>
                 <h2>Run this ${SOURCE_LABEL} article</h2>
                 <p class="sub">Choose the engine, mode, images, ChatGPT, and Speechify path for this run.</p>
+                <div class="master-source-banner" data-role="masterSourceBanner" title="Master source status">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="copy">Checking imported master source...</span>
+                </div>
               </div>
               <button class="close" type="button" aria-label="Close">x</button>
             </div>
@@ -577,11 +690,12 @@
                 </div>
               </section>
 
-              <section class="card master-card">
-                <div class="card-title">
+              <details class="card master-card collapsible-card">
+                <summary class="collapse-summary">
                   <h3>Master source</h3>
                   <span class="hint">Use fused RadPrimer + STATdx packages.</span>
-                </div>
+                </summary>
+                <div class="collapsible-body">
                 <div class="checks">
                   <label class="check"><input data-field="useMasterSource" type="checkbox"> Use imported master source</label>
                 </div>
@@ -595,13 +709,15 @@
                   </div>
                   <span class="hint wide">Best import is master_source_import.json. Once imported, narrative and card runs use the fused source instead of the live page extraction.</span>
                 </div>
-              </section>
+                </div>
+              </details>
 
-              <section class="card anki-card">
-                <div class="card-title">
+              <details class="card anki-card collapsible-card">
+                <summary class="collapse-summary">
                   <h3>Anki import</h3>
                   <span class="hint">Audit output can carry the deck target.</span>
-                </div>
+                </summary>
+                <div class="collapsible-body">
                 <div class="checks">
                   <label class="check"><input data-field="createAnkiImportFile" type="checkbox"> Create Anki import TSV after audit</label>
                   <label class="check"><input data-field="preferRadPrimerHierarchyForStatdx" type="checkbox"> Use saved RadPrimer hierarchy for matching STATdx topics</label>
@@ -615,7 +731,8 @@
                   <label class="wide">Anki note type<input data-field="ankiNoteType" type="text"></label>
                   <span class="hint wide">Auto routing uses the article breadcrumb when available. STATdx can reuse the saved RadPrimer hierarchy for the same title. If RadPrimer and STATdx titles differ, use the same source pairing key on both pages.</span>
                 </div>
-              </section>
+                </div>
+              </details>
 
               <details>
                 <summary>Images and case grouping</summary>
@@ -699,6 +816,9 @@
       if (isCardCreationMode(values)) {
         host.__radprimerCardModeDownloadImagesDisabled = !field(host, "downloadImages").checked;
       }
+    });
+    shadow.querySelector('[data-field="useMasterSource"]').addEventListener("change", () => {
+      refreshMasterSourceBanner(host);
     });
     shadow.querySelector('[data-field="autoSendToSpeechify"]').addEventListener("change", () => {
       const autoSend = field(host, "autoSendToSpeechify").checked;
@@ -793,6 +913,60 @@
         else resolve(response);
       });
     });
+
+  const setMasterSourceBanner = (host, state, message) => {
+    const banner = host.shadowRoot.querySelector('[data-role="masterSourceBanner"]');
+    if (!banner) return;
+    banner.classList.remove("active", "loaded", "error");
+    if (state) banner.classList.add(state);
+    const copy = banner.querySelector(".copy");
+    if (copy) copy.textContent = message;
+    banner.title = message;
+  };
+
+  const masterSourceTitle = (source) => {
+    return String(source?.articleTitle || "imported master source").trim();
+  };
+
+  const refreshMasterSourceBanner = async (host) => {
+    const active = Boolean(field(host, "useMasterSource")?.checked);
+    setMasterSourceBanner(host, "", "Checking imported master source...");
+    try {
+      const response = await sendGetMasterSourceMessage();
+      if (!response?.ok) {
+        throw new Error(response?.error || "Could not read imported master source.");
+      }
+      const source = response.masterSource;
+      if (!source) {
+        setMasterSourceBanner(
+          host,
+          active ? "error" : "",
+          active
+            ? "Use imported master source is enabled, but no master source is imported yet."
+            : "No master source imported. Narratives/cards will use the current article page."
+        );
+        return;
+      }
+      const title = masterSourceTitle(source);
+      const imagePart =
+        Number.isFinite(source.imageCount) && source.imageCount > 0
+          ? ` ${source.imageCount} images.`
+          : "";
+      setMasterSourceBanner(
+        host,
+        active ? "active" : "loaded",
+        active
+          ? `Master source active: ${title}.${imagePart} Narratives/cards will use fused master-source information, not this live page.`
+          : `Master source loaded: ${title}.${imagePart} This run will use the live article page unless master source is enabled.`
+      );
+    } catch (error) {
+      setMasterSourceBanner(
+        host,
+        "error",
+        `Could not check master source status: ${error?.message || error}`
+      );
+    }
+  };
 
   const populateEngineSelect = (host) => {
     const select = field(host, "engine");
@@ -897,6 +1071,7 @@
     const settings = await getStoredSettings();
     populateEngineSelect(host);
     writeModalSettings(host, settings);
+    await refreshMasterSourceBanner(host);
     host.shadowRoot.querySelector(".backdrop").classList.add("open");
   };
 
@@ -1144,8 +1319,10 @@
           "Use imported master source is now enabled."
         ].join("\n")
       );
+      await refreshMasterSourceBanner(host);
     } catch (error) {
       setStatus(host, "Master Source Error", error?.message || String(error), true);
+      await refreshMasterSourceBanner(host);
     } finally {
       button.disabled = false;
       button.textContent = originalText;
@@ -1165,6 +1342,7 @@
       const source = response.masterSource;
       if (!source) {
         setStatus(host, "Master Source", "No master source is imported yet.");
+        await refreshMasterSourceBanner(host);
         return;
       }
       setStatus(
@@ -1179,8 +1357,10 @@
           `Characters: ${source.outputChars ?? 0}`
         ].join("\n")
       );
+      await refreshMasterSourceBanner(host);
     } catch (error) {
       setStatus(host, "Master Source Error", error?.message || String(error), true);
+      await refreshMasterSourceBanner(host);
     } finally {
       button.disabled = false;
       button.textContent = originalText;
