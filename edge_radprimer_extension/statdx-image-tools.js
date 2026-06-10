@@ -23,6 +23,7 @@
   let shortcuts = { ...DEFAULT_SHORTCUTS };
   let captureAction = "";
   let lastOpenAt = 0;
+  let articleMediaRegistry = { key: "", infos: [] };
   let zoomState = {
     open: false,
     scale: 1,
@@ -37,7 +38,10 @@
     sourceMode: "large",
     imageId: "",
     imageNumber: null,
-    total: null
+    total: null,
+    imageOrder: [],
+    imageCursor: -1,
+    orderKey: ""
   };
 
   const SHORTCUT_ACTIONS = [
@@ -178,7 +182,7 @@
     );
   }
 
-  function imageNumberFromElement(el, fallbackIndex = 0) {
+  function explicitImageNumberFromElement(el) {
     const container = el?.closest(".gallery-thumbnail-btn, .gallery-thumbnail-container, .ThumbnailImage");
     const visibleNumber = parseInt(container?.querySelector(".thumbnail-image__number")?.textContent || "", 10);
     if (Number.isFinite(visibleNumber)) return visibleNumber;
@@ -190,6 +194,12 @@
     const labelMatch = label.match(/image\s+(\d+)\s+of\s+(\d+)/i);
     if (labelMatch) return parseInt(labelMatch[1], 10);
 
+    return null;
+  }
+
+  function imageNumberFromElement(el, fallbackIndex = 0) {
+    const explicitNumber = explicitImageNumberFromElement(el);
+    if (Number.isFinite(explicitNumber)) return explicitNumber;
     return fallbackIndex + 1;
   }
 
@@ -207,11 +217,119 @@
     );
     if (Number.isFinite(galleryTotal)) return galleryTotal;
 
-    return getImageInfos().length || null;
+    return null;
+  }
+
+  function getArticleTitle() {
+    return document.title.replace(/\s+\|\s+STATdx\s*$/i, "").trim();
+  }
+
+  function getMediaGroupName(card) {
+    const group = card?.closest(".media-group, .qa-media-group");
+    return (
+      group?.querySelector(".media-group__name, .qa-media-group__name")?.textContent?.trim() || ""
+    );
+  }
+
+  function getMediaCardImageId(card) {
+    if (!card) return "";
+    return (
+      imageIdFromString(card.id) ||
+      imageIdFromString(card.querySelector(".ThumbnailImage[id], [id^='media-'], button[id]")?.id) ||
+      imageIdFromString(
+        card
+          .querySelector("img[src*='/image/thumbnail/'], img[src*='/image/']")
+          ?.getAttribute("src")
+      )
+    );
+  }
+
+  function getArticleMediaCards() {
+    return Array.from(
+      document.querySelectorAll(
+        [
+          ".media-group .media-card",
+          ".qa-media-group .qa-media-card",
+          ".media-card.qa-media-card"
+        ].join(",")
+      )
+    ).filter((card) => !card.closest("#mediaModal"));
+  }
+
+  function buildArticleMediaRegistry() {
+    const key = getOrderKey();
+    const seen = new Map();
+
+    getArticleMediaCards().forEach((card) => {
+      const imageId = getMediaCardImageId(card);
+      if (!imageId || seen.has(imageId)) return;
+      const captionNode = card.querySelector(".qa-media-card__caption, .media-card__caption");
+      const img = card.querySelector("img[src*='/image/thumbnail/'], img[src*='/image/']");
+      seen.set(imageId, {
+        imageId,
+        imageNumber: seen.size + 1,
+        total: null,
+        captionHtml: captionNode?.innerHTML?.trim() || "",
+        title: getArticleTitle(),
+        groupName: getMediaGroupName(card),
+        hasExplicitNumber: true,
+        isArticleCanonical: true,
+        imageSrc: img?.getAttribute("src") || "",
+        domOrder: seen.size
+      });
+    });
+
+    const infos = Array.from(seen.values());
+    infos.forEach((info) => {
+      info.total = infos.length || null;
+    });
+    articleMediaRegistry = { key, infos };
+    return infos;
+  }
+
+  function getArticleMediaRegistry({ force = false } = {}) {
+    if (!force && articleMediaRegistry.key === getOrderKey() && articleMediaRegistry.infos.length) {
+      return articleMediaRegistry.infos;
+    }
+    return buildArticleMediaRegistry();
+  }
+
+  function getCaptionTabButton() {
+    return Array.from(document.querySelectorAll("button")).find((button) => {
+      const text = button.textContent?.replace(/\s+/g, " ").trim().toLowerCase() || "";
+      return text === "caption" && isVisible(button);
+    });
+  }
+
+  async function ensureArticleCaptionView(timeoutMs = 1800) {
+    const existing = getArticleMediaRegistry({ force: true });
+    if (existing.some((info) => info.captionHtml)) return true;
+
+    const captionButton = getCaptionTabButton();
+    if (captionButton && captionButton.getAttribute("aria-current") !== "true") {
+      captionButton.click();
+    }
+
+    const start = Date.now();
+    while (Date.now() - start < timeoutMs) {
+      const infos = getArticleMediaRegistry({ force: true });
+      if (infos.some((info) => info.captionHtml)) return true;
+      await sleep(80);
+    }
+
+    getArticleMediaRegistry({ force: true });
+    return false;
   }
 
   function getImageInfos() {
     const seen = new Map();
+    const explicitTotal = getTotalImages();
+    const articleInfos = getArticleMediaRegistry();
+
+    articleInfos.forEach((info) => {
+      seen.set(info.imageId, { ...info });
+    });
+
     const candidates = Array.from(
       document.querySelectorAll(
         [
@@ -227,23 +345,141 @@
 
     candidates.forEach((el, index) => {
       const imageId = imageIdFromElement(el);
-      if (!imageId || seen.has(imageId)) return;
-      const imageNumber = imageNumberFromElement(el, index);
-      seen.set(imageId, {
+      if (!imageId) return;
+      const explicitNumber = explicitImageNumberFromElement(el);
+      const existing = seen.get(imageId);
+      const candidate = {
         imageId,
-        imageNumber,
-        total: getTotalImages(),
+        imageNumber: Number.isFinite(explicitNumber) ? explicitNumber : null,
+        total: explicitTotal || articleInfos.length || null,
         captionHtml: getCaptionHtmlForImage(imageId),
-        title: getTitleForImage(imageId)
+        title: getTitleForImage(imageId),
+        hasExplicitNumber: Number.isFinite(explicitNumber),
+        isNativeLargeImage: Boolean(el.closest("#mediaModal .large-media")),
+        domOrder: index
+      };
+
+      if (!existing) {
+        seen.set(imageId, candidate);
+        return;
+      }
+
+      const shouldUseCandidateNumber =
+        !existing.isArticleCanonical && !existing.hasExplicitNumber && candidate.hasExplicitNumber;
+      const shouldUseCandidateOrdering =
+        !existing.isArticleCanonical &&
+        !existing.hasExplicitNumber &&
+        !candidate.hasExplicitNumber &&
+        existing.isNativeLargeImage &&
+        !candidate.isNativeLargeImage;
+
+      seen.set(imageId, {
+        ...existing,
+        imageNumber: shouldUseCandidateNumber ? candidate.imageNumber : existing.imageNumber,
+        total: existing.total || candidate.total,
+        captionHtml: existing.captionHtml || candidate.captionHtml,
+        title: existing.title || candidate.title,
+        hasExplicitNumber: existing.hasExplicitNumber || candidate.hasExplicitNumber,
+        isArticleCanonical: existing.isArticleCanonical || false,
+        isNativeLargeImage: existing.isNativeLargeImage && candidate.isNativeLargeImage,
+        domOrder: shouldUseCandidateOrdering ? candidate.domOrder : Math.min(existing.domOrder ?? index, candidate.domOrder ?? index)
       });
     });
 
     const infos = Array.from(seen.values());
-    infos.sort((a, b) => (a.imageNumber || 9999) - (b.imageNumber || 9999));
+    infos.sort((a, b) => {
+      const aNumber = Number.isFinite(Number(a.imageNumber)) ? Number(a.imageNumber) : null;
+      const bNumber = Number.isFinite(Number(b.imageNumber)) ? Number(b.imageNumber) : null;
+      if (aNumber !== null && bNumber !== null && aNumber !== bNumber) return aNumber - bNumber;
+      return (Number(a.domOrder) || 0) - (Number(b.domOrder) || 0);
+    });
+    const inferredTotal = explicitTotal || infos.length || null;
     infos.forEach((info, index) => {
       if (!Number.isFinite(info.imageNumber)) info.imageNumber = index + 1;
+      info.total = info.total || inferredTotal;
     });
     return infos;
+  }
+
+  function getOrderKey() {
+    return `${location.origin}${location.pathname}${location.search}`;
+  }
+
+  function mergeImageInfo(base, incoming) {
+    const next = { ...(base || {}), ...(incoming || {}) };
+    const incomingNumber = Number(incoming?.imageNumber);
+    const baseNumber = Number(base?.imageNumber);
+    const incomingTotal = Number(incoming?.total);
+    const baseTotal = Number(base?.total);
+    const incomingHasExplicitNumber = incoming?.hasExplicitNumber === true;
+    const baseIsArticleCanonical = base?.isArticleCanonical === true;
+    next.imageNumber =
+      Number.isFinite(incomingNumber) &&
+      !baseIsArticleCanonical &&
+      (incomingHasExplicitNumber || !Number.isFinite(baseNumber))
+        ? incomingNumber
+        : Number.isFinite(baseNumber)
+          ? baseNumber
+          : null;
+    next.total = Number.isFinite(incomingTotal) ? incomingTotal : Number.isFinite(baseTotal) ? baseTotal : null;
+    next.captionHtml = incoming?.captionHtml || base?.captionHtml || "";
+    next.title = incoming?.title || base?.title || "";
+    next.hasExplicitNumber = base?.hasExplicitNumber || incoming?.hasExplicitNumber || false;
+    next.isArticleCanonical = base?.isArticleCanonical || incoming?.isArticleCanonical || false;
+    return next;
+  }
+
+  function refreshZoomImageOrder(extraInfos = []) {
+    const key = getOrderKey();
+    const previous = zoomState.orderKey === key && Array.isArray(zoomState.imageOrder) ? zoomState.imageOrder : [];
+    const byId = new Map();
+
+    const add = (info) => {
+      if (!info?.imageId) return;
+      byId.set(info.imageId, mergeImageInfo(byId.get(info.imageId), info));
+    };
+
+    const currentInfos = getImageInfos();
+    (currentInfos.length ? currentInfos : previous).forEach(add);
+    extraInfos.forEach(add);
+
+    const ordered = Array.from(byId.values()).sort((a, b) => {
+      const aNumber = Number.isFinite(Number(a.imageNumber)) ? Number(a.imageNumber) : Number.POSITIVE_INFINITY;
+      const bNumber = Number.isFinite(Number(b.imageNumber)) ? Number(b.imageNumber) : Number.POSITIVE_INFINITY;
+      if (aNumber !== bNumber) return aNumber - bNumber;
+      return String(a.imageId).localeCompare(String(b.imageId));
+    });
+
+    const inferredTotal =
+      Math.max(
+        0,
+        ...ordered.map((info) => Number(info.total) || 0),
+        ...ordered.map((info) => Number(info.imageNumber) || 0),
+        ordered.length
+      ) || null;
+
+    ordered.forEach((info, index) => {
+      if (!Number.isFinite(Number(info.imageNumber))) info.imageNumber = index + 1;
+      info.total = info.total || inferredTotal;
+    });
+
+    zoomState.imageOrder = ordered;
+    zoomState.orderKey = key;
+    return ordered;
+  }
+
+  function findImageInfoInOrder(imageNumberOrId, ordered = refreshZoomImageOrder()) {
+    if (typeof imageNumberOrId === "string") {
+      return ordered.find((info) => info.imageId === imageNumberOrId) || null;
+    }
+    return ordered.find((info) => Number(info.imageNumber) === Number(imageNumberOrId)) || null;
+  }
+
+  function getImageCursor(info, ordered = refreshZoomImageOrder()) {
+    if (!info) return -1;
+    let index = ordered.findIndex((candidate) => candidate.imageId === info.imageId);
+    if (index < 0) index = ordered.findIndex((candidate) => Number(candidate.imageNumber) === Number(info.imageNumber));
+    return index;
   }
 
   function getActiveImageElement() {
@@ -587,10 +823,10 @@
     return info?.total ? `image ${info.imageNumber}/${info.total}` : `image ${info?.imageNumber || ""}`;
   }
 
-  function updateJumpSelect(currentNumber) {
+  function updateJumpSelect(currentNumber, orderedInfos = null) {
     const select = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".image-jump");
     if (!select) return;
-    const infos = getImageInfos();
+    const infos = orderedInfos || refreshZoomImageOrder();
     select.innerHTML = "";
     infos.forEach((info) => {
       const option = document.createElement("option");
@@ -607,23 +843,37 @@
     const host = ensureHost();
     const shadow = host.shadowRoot;
     const mode = options.sourceMode || zoomState.sourceMode || "large";
-    const url = imageUrlFor(info, mode);
+    const ordered = refreshZoomImageOrder([info]);
+    const orderedInfo = findImageInfoInOrder(info.imageId, ordered) || info;
+    const finalInfo = {
+      ...orderedInfo,
+      ...info,
+      imageNumber: Number.isFinite(Number(orderedInfo.imageNumber)) ? orderedInfo.imageNumber : info.imageNumber,
+      total: info.total || orderedInfo.total || ordered.length || null,
+      captionHtml: info.captionHtml || orderedInfo.captionHtml || "",
+      title: info.title || orderedInfo.title || ""
+    };
+    const cursor = getImageCursor(finalInfo, ordered);
+    const url = imageUrlFor(finalInfo, mode);
 
     shadow.querySelector(".stage > img").src = url;
-    shadow.querySelector(".image-number").textContent = imageLabel(info);
-    shadow.querySelector(".caption").innerHTML = sanitizeCaptionHtml(info.captionHtml) || info.title || "STATdx image";
+    shadow.querySelector(".image-number").textContent = imageLabel(finalInfo);
+    shadow.querySelector(".caption").innerHTML = sanitizeCaptionHtml(finalInfo.captionHtml) || finalInfo.title || "STATdx image";
     shadow.querySelector(".source").textContent = mode === "thumbnail" ? "Thumb" : "Large";
-    updateJumpSelect(info.imageNumber);
+    updateJumpSelect(finalInfo.imageNumber, ordered);
 
     host.style.display = "block";
     zoomState = {
       ...zoomState,
       open: true,
       dragging: false,
-      imageId: info.imageId,
-      imageNumber: info.imageNumber,
-      total: info.total,
-      sourceMode: mode
+      imageId: finalInfo.imageId,
+      imageNumber: finalInfo.imageNumber,
+      total: finalInfo.total,
+      sourceMode: mode,
+      imageOrder: ordered,
+      imageCursor: cursor,
+      orderKey: getOrderKey()
     };
 
     if (options.resetView) {
@@ -657,7 +907,8 @@
     return holder.innerHTML.replace(/\s+/g, " ").trim();
   }
 
-  function openViewer(sourceElement = null) {
+  async function openViewer(sourceElement = null) {
+    await ensureArticleCaptionView();
     const info = getActiveInfo(sourceElement);
     if (!info.imageId) return;
     setViewerImage(info, { resetView: true });
@@ -675,7 +926,9 @@
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation?.();
-    openViewer(sourceElement || event.target);
+    openViewer(sourceElement || event.target).catch((error) => {
+      console.warn("[STATdx image tools] Could not open zoom viewer.", error);
+    });
   }
 
   function closeViewer() {
@@ -710,38 +963,6 @@
     setViewerImage(info, { sourceMode: nextMode, resetView: false });
   }
 
-  function getNativeActiveImageId() {
-    return (
-      document.querySelector("#mediaModal .large-media[data-media-id]")?.getAttribute("data-media-id") ||
-      imageIdFromElement(getActiveImageElement())
-    );
-  }
-
-  function getNativeNavigationButton(delta) {
-    const selector =
-      delta > 0
-        ? "#mediaModal .qa-imageScrollRightLink, #mediaModal button[aria-label='Next image']"
-        : "#mediaModal .qa-imageScrollLeftLink, #mediaModal button[aria-label='Previous image']";
-    return Array.from(document.querySelectorAll(selector)).find((button) => {
-      return isVisible(button) && !button.disabled && button.getAttribute("aria-disabled") !== "true";
-    });
-  }
-
-  function getVisibleThumbnailButtonByNumber(imageNumber) {
-    const match = Array.from(document.querySelectorAll("#mediaModal .gallery-thumbnail-btn, #mediaModal .ThumbnailImage")).find(
-      (candidate, index) => {
-        const num = imageNumberFromElement(candidate.querySelector("img") || candidate, index);
-        const button = candidate.querySelector("button") || candidate;
-        return num === imageNumber && isVisible(button);
-      }
-    );
-    return match ? match.querySelector("button") || match : null;
-  }
-
-  function getImageInfoByNumber(imageNumber) {
-    return getImageInfos().find((candidate) => Number(candidate.imageNumber) === Number(imageNumber)) || null;
-  }
-
   function enrichImageInfo(info, options = {}) {
     if (!info?.imageId) return info;
     const forcedNumber = Number(options.forceImageNumber);
@@ -761,58 +982,21 @@
     };
   }
 
-  async function waitForCaptionForImage(imageId, timeoutMs = 900) {
-    if (!imageId) return "";
-    const start = Date.now();
-    while (Date.now() - start < timeoutMs) {
-      const caption = getCaptionHtmlForImage(imageId);
-      if (caption) return caption;
-      await sleep(60);
-    }
-    return getCaptionHtmlForImage(imageId);
-  }
-
   function sleep(ms) {
     return new Promise((resolve) => window.setTimeout(resolve, ms));
   }
 
-  async function waitForNativeImageChange(previousId, timeoutMs = 1400) {
-    const start = Date.now();
-    while (Date.now() - start < timeoutMs) {
-      const currentId = getNativeActiveImageId();
-      if (currentId && currentId !== previousId) return currentId;
-      await sleep(60);
-    }
-    return getNativeActiveImageId();
-  }
-
-  async function refreshViewerFromNative(options = {}) {
-    await sleep(options.delayMs ?? 90);
-    let info = getActiveInfo();
-    if (!info.imageId) return false;
-    info = enrichImageInfo(info, { forceImageNumber: options.forceImageNumber });
-    return setViewerImage(info, {
-      resetView: options.resetView !== false,
-      sourceMode: zoomState.sourceMode
-    });
-  }
-
-  async function clickNativeNavigation(delta) {
-    const button = getNativeNavigationButton(delta);
-    if (!button) return false;
-    const previousId = getNativeActiveImageId();
-    button.click();
-    await waitForNativeImageChange(previousId);
-    return refreshViewerFromNative({ resetView: true });
-  }
-
   async function navigateBy(delta) {
-    if (await clickNativeNavigation(delta)) return;
-
-    const infos = getImageInfos();
+    await ensureArticleCaptionView();
+    const infos = refreshZoomImageOrder();
     if (!infos.length) return;
-    let index = infos.findIndex((info) => info.imageId === zoomState.imageId);
-    if (index < 0) index = infos.findIndex((info) => info.imageNumber === zoomState.imageNumber);
+    let index = getImageCursor(
+      {
+        imageId: zoomState.imageId,
+        imageNumber: zoomState.imageNumber
+      },
+      infos
+    );
     if (index < 0) index = 0;
     const next = infos[(index + delta + infos.length) % infos.length];
     setViewerImage(enrichImageInfo(next), { resetView: true });
@@ -820,53 +1004,11 @@
 
   async function navigateToNumber(imageNumber) {
     if (!Number.isFinite(imageNumber)) return;
-    const targetInfo = getImageInfoByNumber(imageNumber);
-    const thumbButton = getVisibleThumbnailButtonByNumber(imageNumber);
-    if (thumbButton) {
-      const previousId = getNativeActiveImageId();
-      thumbButton.click();
-      await waitForNativeImageChange(previousId);
-      if (targetInfo?.imageId) {
-        await waitForCaptionForImage(targetInfo.imageId);
-        setViewerImage(enrichImageInfo(targetInfo, { forceImageNumber: imageNumber }), { resetView: true });
-      } else {
-        await refreshViewerFromNative({ resetView: true, forceImageNumber: imageNumber });
-      }
-      return;
-    }
-
+    await ensureArticleCaptionView();
+    const ordered = refreshZoomImageOrder();
+    const targetInfo = findImageInfoInOrder(imageNumber, ordered);
     if (targetInfo?.imageId) {
       setViewerImage(enrichImageInfo(targetInfo, { forceImageNumber: imageNumber }), { resetView: true });
-      return;
-    }
-
-    const current = Number(zoomState.imageNumber || getActiveInfo().imageNumber);
-    const total = Number(zoomState.total || getTotalImages() || 0);
-    if (Number.isFinite(current) && total > 0) {
-      const forward = (imageNumber - current + total) % total;
-      const backward = (current - imageNumber + total) % total;
-      const delta = forward <= backward ? 1 : -1;
-      const steps = Math.min(forward, backward);
-      let completedPath = steps === 0;
-      for (let i = 0; i < steps; i += 1) {
-        completedPath = false;
-        if (!(await clickNativeNavigation(delta))) break;
-        completedPath = i === steps - 1;
-      }
-      if (Number(zoomState.imageNumber) !== Number(imageNumber)) {
-        const alternateDelta = delta > 0 ? -1 : 1;
-        const alternateSteps = delta > 0 ? backward : forward;
-        completedPath = alternateSteps === 0;
-        for (let i = 0; i < alternateSteps; i += 1) {
-          completedPath = false;
-          if (!(await clickNativeNavigation(alternateDelta))) break;
-          completedPath = i === alternateSteps - 1;
-          if (Number(zoomState.imageNumber) === Number(imageNumber)) break;
-        }
-      }
-      if (completedPath) {
-        await refreshViewerFromNative({ resetView: true, forceImageNumber: imageNumber });
-      }
       return;
     }
   }
