@@ -133,7 +133,7 @@
           Speechify folder link
           <input id="speechifyFolderUrl" type="text" placeholder="https://app.speechify.com/?folder=...">
         </label>
-        <p class="muted">Speechify is used only for Normal Narrative, Normal Narrative + image downloads, and Pathology Narrative.</p>
+        <p class="muted">Speechify is used only for narrative mode.</p>
       </section>
 
       <section class="panel">
@@ -189,13 +189,14 @@
         <p class="muted">Use the same source pairing key for RadPrimer and STATdx when their titles differ. Best import is <code>master_source_import.json</code>. Separate <code>master_source_package.txt</code>, <code>master_source_manifest.json</code>, and <code>image_registry.json</code> also work.</p>
       </section>
 
-      <button id="run">Extract + copy prompt package</button>
-      <button id="downloadImagesOnly" class="secondary">Download images only</button>
-      <button id="recoverCardAuditTsv" class="secondary">Capture latest TSV download</button>
-      <button id="exportAuditSource" class="secondary">Export audit source bundle</button>
-      <button id="exportSourceCompare" class="secondary">Export comparison source</button>
-      <button id="buildMasterSource" class="secondary">Build master source</button>
-      <button id="refreshPrompts" class="secondary">Check packaged prompts</button>
+      <button id="run">Run selected workflow</button>
+      <button id="downloadImagesOnly" class="secondary" hidden>Download images only</button>
+      <button id="buildIoQueue" class="secondary" hidden>Build IO queue</button>
+      <button id="recoverCardAuditTsv" class="secondary" hidden>Capture latest TSV download</button>
+      <button id="exportAuditSource" class="secondary" hidden>Export audit source bundle</button>
+      <button id="exportSourceCompare" class="secondary" hidden>Export comparison source</button>
+      <button id="buildMasterSource" class="secondary" hidden>Build master source</button>
+      <button id="refreshPrompts" class="secondary" hidden>Check packaged prompts</button>
 
       <pre id="status">Ready.</pre>
     </main>

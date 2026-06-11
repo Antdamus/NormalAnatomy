@@ -91,31 +91,85 @@ You will receive an extracted block that may contain sections such as:
 * `=== IMAGES (optional; original numbering preserved when present) ===`
 
 The article contains the structured source outline.
-The image section contains extracted filenames and captions.
+The image section contains extracted image labels, filenames, and captions.
 
 For this narrative workflow, assume the image block is part of the intended teaching payload.
 
-If the input is a fused RadPrimer plus STATdx master source, images may have both long source labels and short traceability codes, such as `RadPrimer image 5 / RP-05` or `STATdx image 35 / SDX-35`.
+Possible image labels include:
 
-For the spoken narrative, say only one clean source-qualified image reference:
+* `IMAGE_01`, `IMAGE_02`, etc.
+* `CASE_01`, `CASE_02`, etc.
+* source-qualified fused-source labels such as `RadPrimer image 5`, `STATdx image 35`, `RP-05`, or `SDX-35`
 
+These labels do **not** always mean the same thing.
+
+### Important Image / Case Interpretation Rule
+
+If the extractor output uses `CASE_##` because explicit grouping was provided, you may treat that as a true grouped case or run.
+
+If the extractor output uses `IMAGE_##`, you must **not** assume those are already true cases.
+
+However, you may attempt **controlled grouping inference** from captions, source labels, modality progression, plane progression, and explicit continuation language.
+
+For the spoken narrative itself, convert image labels into **speech-friendly references**.
+
+Examples:
+
+* `IMAGE_01` -> `image one`
+* `IMAGE_02` -> `image two`
+* `IMAGE_14 through IMAGE_19` -> `images fourteen through nineteen`
 * `RadPrimer image 5 / RP-05` -> `RadPrimer image five`
 * `STATdx image 35 / SDX-35` -> `STATdx image thirty five`
 
-Do **not** say both the long source label and the short code aloud. Avoid cluttered phrasing such as `STATdx image thirty five, SDX thirty five`. Keep `RP-05` and `SDX-35` for internal accounting, filenames, card metadata, audit blocks, or traceability only.
+Do not read image labels aloud with underscores, leading zeros, raw filenames, or short traceability codes.
 
-You should:
+For fused RadPrimer plus STATdx source packages, the audio must mention the source in a clean, listener-friendly way when the source label is available.
 
-* use all extracted images unless the input is structurally unusable
-* inspect all captions carefully
-* infer likely multi-image groupings when caption continuity is strong
-* organize the narrative around the final image set and grouping logic
+Correct:
 
-Do **not** silently ignore images just because the article also has strong text content.
+* `STATdx image thirty five`
+* `RadPrimer image five`
+* `Now compare the RadPrimer coronal group with the STATdx axial group`
 
-Every provided image must be accounted for in the spoken narrative and in the final `INCLUDE` array.
+Incorrect:
 
-If an image is repetitive, low-yield, or weakly captioned, handle it briefly, but still tell the learner why it is being covered briefly.
+* `STATdx image thirty five, SDX thirty five`
+* `RadPrimer image five, RP five`
+* `image underscore zero five`
+
+Keep short labels such as `SDX-35` and `RP-05` only for internal accounting, download filenames, card metadata, audit blocks, or traceability. They should not be read aloud when the long source-qualified image reference is already present.
+
+Also normalize speech-confusing modality abbreviations in the spoken narrative.
+
+Examples:
+
+* say `MRI` instead of `MR`
+* say `CT` as written
+* prefer speech-friendly phrasing such as `T1-weighted MRI` rather than abbreviated strings that text-to-speech may mangle
+
+Do not use bare `MR` in the Speechify narrative, because text-to-speech may pronounce it as `mister`.
+
+Preserve the exact numeric accounting internally for the grouping audit code block, but make the spoken walkthrough sound natural to a listener.
+
+---
+
+## SOURCE-AWARE AUDIO RULE
+
+The narrative should mention sources in the audio when source labels help the learner orient the image set.
+
+Use source names as orientation, not as citation clutter.
+
+Good source-aware audio behavior:
+
+* When a fused RadPrimer / STATdx package is provided, identify the source of each image or grouped run in the spoken walkthrough.
+* If several consecutive images come from the same source, name the source at the start of the run, then continue naturally.
+* If the walkthrough switches sources, say so briefly so the learner understands the comparison.
+* If one source is supplying anatomy overview and another is supplying richer modality examples, make that division explicit when it improves learning.
+* If source labels are absent, do not invent them.
+
+The source mention should help the learner answer: "Which source image am I looking at, and why is it being used here?"
+
+It should not turn the audio into a bibliography.
 
 ---
 
@@ -213,40 +267,85 @@ If the source supports foundations, build those foundations first.
 
 ---
 
-## IMAGE INTERPRETATION RULE
+## IMAGE COMPLETENESS RULE
 
-If the extractor output uses `CASE_##`, you may treat that as an explicit grouped case.
+If an image section is provided, every provided image must be accounted for.
 
-If the extractor output lists separate images, do **not** silently assume they are the same case unless the captions strongly support that.
+This is mandatory.
 
-You may use controlled grouping inference when caption continuity is strong, but when confidence is weak, prefer keeping images separate.
+* Do not skip images.
+* Do not silently exclude images because they seem repetitive, low-yield, poorly captioned, disconnected from the article text, or hard to integrate.
+* Every provided image number must appear in the spoken narrative walkthrough, either individually or as part of an explicitly stated grouped run.
+* Every provided image number must also appear in the final `INCLUDE` array.
+* If an image has limited educational value, handle it briefly, but still tell the learner to look at it and state why it is being handled briefly.
+* If an image has no caption, walk through it conservatively and explicitly say that the image is not richly captioned; do not invent findings.
+* If an image cannot be interpreted safely from the supplied material, still account for it and explain that the source does not support a detailed teaching point.
 
-If grouping is inferred rather than explicit:
+Only omit an image if the user explicitly says to exclude it.
 
-* acknowledge that briefly near the beginning
-* do not keep repeating the same disclaimer
-* do not state weak grouping as certain
+---
+
+## CONTROLLED GROUPING INFERENCE RULE
+
+When preparing the guided narrative, you may infer likely multi-image cases or normal-anatomy runs from caption language and image structure.
+
+Strong grouping signals include:
+
+* explicit `CASE_##` grouping from the extractor
+* "same patient", "same case", or direct continuation language
+* sequential slices through the same anatomic region
+* modality progression across adjacent images
+* plane or sequence progression across adjacent images
+* paired normal/variant or normal/pseudolesion comparisons
+* direct caption cross-reference to a prior or upcoming image
+
+Grouping rules:
+
+1. If grouping confidence is **high**, narrate the images together as a grouped case, grouped run, or grouped comparison.
+2. If grouping confidence is **moderate**, explicitly label the grouping as inferred.
+3. If grouping confidence is **low**, keep the images separate.
+4. Do **not** state inferred grouping as certain unless the extractor explicitly grouped it.
+5. Do **not** silently merge many images into one run without telling the learner what the run is.
+
+When uncertain, prefer language like:
+
+* "This next image likely pairs with the prior image."
+* "These next images appear to form a sequential run through the same region."
+* "This is likely an inferred normal-anatomy comparison rather than an explicitly labeled case."
 
 If the image block is structurally unusable, be transparent about that rather than inventing case structure.
 
-If the final teaching plan uses grouped images, the narrative should reference them in the easiest learner-facing way.
+---
+
+## GLOBAL GROUPING TRANSPARENCY RULE
+
+If any multi-image grouping is inferred from caption continuity rather than explicitly provided by the extractor:
+
+* acknowledge that once near the beginning of the narrative in a compact orientation note
+* after that, proceed naturally with the grouped walkthrough
+* re-mention uncertainty locally only if a particular grouping is especially weak or ambiguous
+* do not repeatedly insert the same inferred-grouping disclaimer throughout the narrative
+* avoid repetitive phrasing such as "this is inferred" or "this grouping is inferred" unless the uncertainty genuinely matters
+
+The listener should understand which image sets are explicit and which are inferred, but the lecture should still flow.
+
+---
+
+## NORMAL RUN NAMING RULE
+
+If the final teaching plan uses grouped images, reference them in the easiest learner-facing way.
 
 Preferred style:
 
-* "group 2, image 1"
-* "the third image in group 4"
+* "the axial T2 group, image one"
+* "the coronal MRI run, image three"
+* "the sagittal run, image two"
+* "the RadPrimer coronal group"
+* "the STATdx axial comparison"
 
-Avoid relying on the original global image number alone when grouped teaching is being used.
-
-If useful for audit clarity, you may mention the original image number once in parentheses, but the spoken teaching should primarily follow group-relative numbering.
+Avoid relying on original global image numbers alone when grouped teaching is being used.
 
 When the captions make the grouping logic clear, name the group by its practical series identity rather than by an abstract group number alone.
-
-Preferred examples:
-
-* "the axial T2 group, image 1"
-* "the coronal MRI group, image 3"
-* "the sagittal run, image 2"
 
 When the series identity is clear from the captions, the narrative should:
 
@@ -254,9 +353,9 @@ When the series identity is clear from the captions, the narrative should:
 * state how the run progresses when relevant, such as inferior to superior, posterior to anterior, left to right, or proximal to distal
 * then count images within that run, not from the full global article numbering
 
-If helpful, you may mention the original article image number once in parentheses, but do not make the lecture depend on that numbering for followability.
+If helpful for audit clarity, mention the original article image number once in parentheses, but do not make the lecture depend on that numbering for followability.
 
-For normal-anatomy lectures specifically, when the captions clearly describe grouped sequential images by modality and plane, prefer grouped run references by default.
+For normal-anatomy lectures, when captions clearly describe grouped sequential images by modality and plane, prefer grouped run references by default.
 
 ---
 
@@ -346,6 +445,112 @@ The narrative should use the extracted images to teach:
 * what could be overcalled if you review the image badly
 
 Important non-image article facts should still be integrated at the point where they become meaningful, but the image set should drive the walkthrough.
+
+---
+
+## IMAGE-TO-STRUCTURE INTEGRATION RULE
+
+Images and grouped runs must serve the organizing spine, not interrupt it.
+
+When introducing an image or grouped run, make clear why it belongs where it does.
+
+Examples:
+
+* it establishes the landmark system
+* it shows what is directly visible before less-visible structures are localized
+* it demonstrates a plane, sequence, or modality-specific normal appearance
+* it contrasts normal with a normal variant or pseudolesion
+* it shows a common overcall trap inside the current framework
+* it stress-tests the review pathway by changing plane, modality, or level
+
+Do not let images feel like isolated stops on a tour.
+
+The learner should feel that each image strengthens the normal-anatomy map already being built.
+
+---
+
+## LOCAL CONTINUITY / ANTI-CHUNKING RULE
+
+The narrative should not feel like a series of separate image reports.
+
+After the organizing spine is chosen, every image or image cluster should have a clear job inside that spine:
+
+* establish the first orientation anchor
+* explain a spatial relationship
+* show a modality-specific version of the same structure
+* move from directly visible anatomy to safely inferred anatomy
+* introduce a normal variant, pseudolesion, or overcall trap
+* contrast with the immediately prior image or prepare the next image
+
+When moving from one image or cluster to the next, use bridge logic whenever the source supports it.
+
+Preferred transitions should sound like:
+
+* "Now that you have the midline anchor, move to..."
+* "This next image keeps the same landmark but changes the plane..."
+* "Compare that with the next image, where the normal variant creates the trap..."
+* "The prior image showed what you can see directly; this one shows what you localize by relationship..."
+
+Avoid repetitive block structure where every image begins, develops, and ends as an isolated mini-lecture.
+
+If several images belong to the same normal-anatomy bucket, first name the bucket, then let the images build one local arc inside that bucket. Do not reset the whole topic for each image.
+
+If an image truly cannot be integrated because the caption is sparse or disconnected, handle it briefly and say why it is a limited standalone teaching point.
+
+---
+
+## NO ORPHAN FACTS RULE
+
+Do not output detached fact clusters.
+
+Any important non-image fact should be attached to one of the following:
+
+* a landmark or spatial relationship
+* an image or grouped run
+* a modality comparison
+* an exam-review step
+* a normal variant or pseudolesion
+* an overcall-prevention point
+* a clinical localization or procedural relevance point
+* a closeout synthesis point
+
+Before including a fact, implicitly ask:
+
+* Why is this fact here?
+* What part of the normal-anatomy framework does it support?
+* Does it improve recognition, localization, review strategy, overcall prevention, or later Anki retrieval?
+
+If it does not strengthen the framework, omit it unless the source makes it essential.
+
+---
+
+## CONTENT-IN-CONTEXT RULE
+
+Do not create isolated lecture chunks of article content.
+
+The best place for a fact is usually the moment when an image, grouped run, bucket transition, or comparison makes that fact useful.
+
+Examples of good placement:
+
+* introduce a spatial relationship when an image shows the neighboring landmark
+* introduce a modality rule when moving from CT to MRI, ultrasound, nuclear medicine, or radiography
+* introduce a visibility limitation when the learner might otherwise expect a crisp structure
+* introduce a pseudolesion or normal variant when the image creates the overcall risk
+* introduce clinical usefulness when the anatomy explains localization, procedural planning, or a common interpretive error
+* introduce mechanism when it explains why a normal appearance looks the way it does
+
+Avoid long standalone blocks such as:
+
+* a separate anatomy list after the image walkthrough
+* a separate variant dump disconnected from the relevant normal anchor
+* a separate modality paragraph when no image or review step has created the need for it
+* a broad pathology differential list that is not tied to a normal/variant/mimic discriminator
+
+If important content has no natural image anchor, place it compactly in the opening map, a transition between buckets, cross-image synthesis, or high-yield closeout. Even there, frame it as part of the organizing structure rather than as a loose list.
+
+Use between-image transitions as teaching space. A good transition can carry one or two article facts when those facts explain why the next image matters.
+
+Before finalizing, scan for any paragraph that could be removed without changing the image walkthrough or organizing framework. If such a paragraph exists, either integrate it into the relevant image/bucket or compress it into the closeout.
 
 ---
 
@@ -684,6 +889,126 @@ Images should be placed inside this structure. Cover every image, but place each
 
 ---
 
+## NARRATIVE STRUCTURE (MANDATORY)
+
+Unless the user requests another format, organize the spoken narrative in this order:
+
+### 1. Opening orientation
+
+Give a concise but strong opening that tells the learner:
+
+* what the topic is
+* why the normal anatomy matters for real interpretation
+* what the article is mainly trying to teach
+* what the major learning pivots will be
+
+Keep this compact but meaningful.
+In most cases, keep the opening to no more than two short paragraphs before moving into the structural map.
+Do not spend so long in the opening that visual engagement is delayed.
+
+### 2. Big-picture normal-anatomy map
+
+Before diving into the images, briefly organize the topic into major buckets such as:
+
+* visible landmarks
+* spatial relationships
+* modality-specific normal appearance
+* review order
+* variants and pseudolesions
+* overcall traps
+* practical localization or clinical usefulness
+
+This should make the dry article feel navigable.
+
+This map is not filler.
+It should declare the organizing spine that controls the rest of the narrative.
+
+Whenever possible:
+
+* make the buckets mutually clarifying rather than redundant
+* present them in the order that best supports understanding
+* keep the map concise but structurally strong enough that later images clearly fit into it
+
+Use a macro-before-micro flow whenever the source supports it:
+
+* broad landmark or review pathway first
+* then local spatial relationships
+* then modality, plane, sequence, or phase differences
+* then variant, pseudolesion, or overcall trap
+* then compact clinical usefulness or closeout synthesis
+
+### 3. Orientation anchors
+
+Before the main walkthrough, name the first landmarks or review moves the learner should use.
+
+This section should answer:
+
+* what should I find first?
+* what is directly visible?
+* what is mainly localized by relationship?
+* which source image or image run best establishes the map?
+
+### 4. Guided image walkthrough
+
+This is the core of the output.
+
+If images are provided, this section is mandatory and must account for every provided image.
+
+The walkthrough order should follow the chosen organizing spine, not automatically the raw extracted image order.
+
+If raw image order is already the clearest teaching order, use it.
+If another order teaches better, reorder the image or image clusters deliberately.
+
+For each image or inferred image cluster:
+
+* explicitly identify the source-aware image label when available
+* tell the learner to look at it
+* tell them what to notice first
+* verbalize caption-supported arrows or callouts
+* tell them what the dominant normal-anatomy teaching point is
+* connect that image to the underlying landmark, relationship, modality rule, or pitfall
+* compare it with prior images when useful
+* mention if the grouping is inferred rather than explicit
+
+Do not skip any provided image. If several images are repetitive, group them when justified, but still name every image in the group and briefly state the shared teaching point.
+
+When the walkthrough moves from one major bucket to another:
+
+* explicitly signal the transition
+* make clear why the next bucket is distinct from the prior one
+* preserve momentum so the learner feels guided through one coherent framework rather than reset into a new mini-lecture
+
+### 5. Cross-image synthesis
+
+After the walkthrough, summarize what patterns repeated across the images, such as:
+
+* recurring landmarks
+* repeated spatial relationships
+* modality-dependent appearance changes
+* visibility limits
+* repeated variants or pseudolesions
+* common overcall traps
+* the review path that keeps showing up across examples
+
+This section should synthesize what the learner already saw.
+Do not use cross-image synthesis as a place to introduce a long new block of unrelated facts.
+If a remaining source fact must be included here because it had no natural image anchor, connect it explicitly to the repeated image pattern or organizing spine.
+
+### 6. High-yield closeout
+
+End with a compact high-yield teaching finish that includes:
+
+* the practical review path
+* the most important normal landmarks
+* the main visibility or modality caveats
+* the major variants, pseudolesions, or traps
+* what the learner should now be able to recognize confidently
+
+The closeout must remain inside the same organizing spine established earlier.
+Do not let the ending relapse into detached lecture notes or a loose checklist that ignores the framework used in the main walkthrough.
+
+---
+
 ## CONTROLLED EXTERNAL LOCALIZATION SUPPORT RULE
 
 Primary teaching content must still come from the provided source and image set.
@@ -759,6 +1084,29 @@ End with a compact spoken mental map of the review path or anchor system when th
 
 ---
 
+## NO-IMAGE OR LOW-IMAGE FALLBACK
+
+If no image section is provided, or if the image section is structurally empty, convert the task into a **guided normal anatomy concept mastery narrative** rather than pretending an image walkthrough exists.
+
+In that fallback:
+
+* state briefly that no usable image section was provided
+* build the narrative around the article's best normal-anatomy organizing spine
+* emphasize landmarks, relationships, modality appearance, variants, pseudolesions, overcall traps, and review strategy
+* do not fabricate image descriptions
+* do not create fake image numbers
+* still use the same source discipline and narrative flow rules
+* end the audit block as:
+
+```text
+INCLUDE = []
+CASE_MAP = []
+```
+
+If images are provided but the article is mostly a broad approach, classification, or review-strategy article, still walk through every image first, then use the opening map, cross-image synthesis, and closeout sections to teach the non-image article architecture.
+
+---
+
 ## OUTPUT FORMAT
 
 Produce the final output in **two separate code blocks** and nothing else except minimal section labels if needed.
@@ -780,30 +1128,41 @@ The entire main narrative should appear inside **one single code block** so it c
 
 ### Code block 2 — Grouping audit / extractor check
 
-After the narrative, output a second code block containing the final inferred or explicit image-group structure in this exact JavaScript-style format:
+After the narrative, output a second code block containing the final inferred or explicit image-group structure in this exact plain audit format:
 
-```javascript
-INCLUDE = [1,2,3,4];
-CASE_MAP = [[1,2],[8,9,10,11]];
+```text
+INCLUDE = [1,2,3,4]
+CASE_MAP = [[1,2],[8,9,10,11]]
 ```
 
 Rules for this second code block:
 
-* `INCLUDE` must list all included image numbers in ascending order
+* `INCLUDE` must list all provided image numbers in ascending order unless the user explicitly excluded specific images
 * `CASE_MAP` must list only grouped multi-image cases
 * single ungrouped images should remain only in `INCLUDE`, not as one-item arrays in `CASE_MAP`
-* the spoken narrative may walk through images in a different teaching order; `INCLUDE` still stays numeric for accounting
-* every image number in `INCLUDE` must have been explicitly covered in the narrative
+* The spoken narrative may walk through images in a different teaching order; `INCLUDE` still stays numeric for accounting
+* Every image number in `INCLUDE` must have been explicitly walked through in the narrative
+* If any provided image was not walked through, the output is incomplete and must be repaired before finalizing
 * if no multi-image groups were inferred or provided, use:
 
-```javascript
-INCLUDE = [...];
-CASE_MAP = [];
+```text
+INCLUDE = [...]
+CASE_MAP = []
 ```
 
 * the grouping code block exists so the user can manually verify whether the narrative grouped images correctly
 * inferred groupings must still obey the controlled grouping inference rule
 * do not pretend uncertain groups are certain inside the narrative; but the second code block should still reflect the final grouping decision used to organize the walkthrough
+
+## WHAT TO DO IF EXPLICIT CASE GROUPING IS MISSING
+
+If grouping is not explicitly provided:
+
+1. Treat export labels as image labels, not guaranteed cases.
+2. Infer likely clusters only when caption continuity, source labels, modality progression, or plane progression are strong.
+3. Label inferred clusters transparently.
+4. Keep ungrouped images separate.
+5. Never silently pretend the case structure is known when it is not.
 
 ---
 
@@ -812,15 +1171,20 @@ CASE_MAP = [];
 Create a **guided normal anatomy mastery narrative** that:
 
 * preserves the full-source teaching payload
+* speaks source labels cleanly when source-qualified images are provided
 * builds foundations before advanced pitfalls
 * emphasizes landmarks, relationships, normal appearance, and review strategy
 * clearly distinguishes normal, variant, mimic, and abnormal
-* uses all extracted images and organizes them intelligently
+* walks through every provided image without skipping any image
+* verbalizes caption-supported arrows and callouts in speech-friendly language
+* organizes images intelligently and may reorder them when that improves the teaching spine
 * uses only one spoken source-qualified reference per fused-source image, such as `STATdx image thirty five`, without also reading `SDX thirty five`
 * uses controlled grouping inference when appropriate
 * clearly labels inferred grouping when used
 * integrates important non-image article facts seamlessly at the point where they matter
 * prepares the learner for later Anki reinforcement
+
+Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that arrows/callouts have been verbalized when captions support them, that source-qualified images are named cleanly in the audio, that the article has been rebuilt around a clear organizing framework, and that inferred image links are not overstated.
 
 Do not ask for clarification unless the input is structurally unusable.
 When uncertain, be transparent rather than overconfident.

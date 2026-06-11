@@ -5,20 +5,16 @@
   const HOST_ID = "radprimer-runner-page-button";
   const SOURCE_LABEL = location.hostname.includes("statdx") ? "STATdx" : "RadPrimer";
 
+  const WORKFLOW_MODE_OPTIONS = [
+    ["io_queue", "Build IO queue"],
+    ["no_pictures", "Build cards without images"],
+    ["chatgpt_cards", "Build cards with images"],
+    ["narrative", "Narrative mode"]
+  ];
+
   const MODE_OPTIONS = {
-    pathology: [
-      ["chatgpt_cards", "Cards - ChatGPT autonomous"],
-      ["codex_cards", "Cards - Codex workflow"],
-      ["narrative", "Narrative"]
-    ],
-    normal: [
-      ["chatgpt_cards", "Cards - ChatGPT autonomous"],
-      ["codex_cards", "Cards - Codex workflow"],
-      ["narrative_with_images", "Narrative + image downloads"],
-      ["narrative", "Narrative"],
-      ["no_pictures", "Cards - no pictures"],
-      ["captions_only", "Cards - captions only"]
-    ]
+    pathology: WORKFLOW_MODE_OPTIONS,
+    normal: WORKFLOW_MODE_OPTIONS
   };
 
   const DEFAULTS = {
@@ -620,7 +616,7 @@
                 <path d="M19.4 15a1.8 1.8 0 0 0 .36 1.98l.04.04a2.1 2.1 0 0 1-2.97 2.97l-.04-.04a1.8 1.8 0 0 0-1.98-.36 1.8 1.8 0 0 0-1.09 1.65V21.3a2.1 2.1 0 0 1-4.2 0v-.06a1.8 1.8 0 0 0-1.09-1.65 1.8 1.8 0 0 0-1.98.36l-.04.04a2.1 2.1 0 1 1-2.97-2.97l.04-.04A1.8 1.8 0 0 0 3.8 15a1.8 1.8 0 0 0-1.65-1.09H2.1a2.1 2.1 0 0 1 0-4.2h.06A1.8 1.8 0 0 0 3.8 8.62a1.8 1.8 0 0 0-.36-1.98l-.04-.04A2.1 2.1 0 0 1 6.37 3.63l.04.04a1.8 1.8 0 0 0 1.98.36A1.8 1.8 0 0 0 9.48 2.38V2.1a2.1 2.1 0 0 1 4.2 0v.28a1.8 1.8 0 0 0 1.09 1.65 1.8 1.8 0 0 0 1.98-.36l.04-.04a2.1 2.1 0 1 1 2.97 2.97l-.04.04a1.8 1.8 0 0 0-.36 1.98 1.8 1.8 0 0 0 1.65 1.09h.28a2.1 2.1 0 0 1 0 4.2h-.28A1.8 1.8 0 0 0 19.4 15Z" stroke="currentColor" stroke-width="1.7"/>
               </svg>
             </button>
-            <button class="icon image-only" type="button" title="Download images only">
+            <button class="icon image-only" type="button" title="Download images only" hidden>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16h-11A2.5 2.5 0 0 1 4 13.5v-7Z" stroke="currentColor" stroke-width="1.8"/>
                 <path d="M7 13l2.7-2.7 2.1 2.1L14.2 10 17 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -705,7 +701,7 @@
                   <div class="wide master-actions">
                     <button class="ghost import-master-source" type="button">Import master source</button>
                     <button class="ghost show-master-source" type="button">Show imported source</button>
-                    <button class="ghost master-source-config" type="button">Build master source</button>
+                    <button class="ghost master-source-config" type="button" hidden>Build master source</button>
                   </div>
                   <span class="hint wide">Best import is master_source_import.json. Once imported, narrative and card runs use the fused source instead of the live page extraction.</span>
                 </div>
@@ -777,10 +773,11 @@
 
               <div class="modal-actions">
                 <button class="ghost save-only" type="button">Save settings</button>
-                <button class="ghost download-config" type="button">Save and download images</button>
-                <button class="ghost audit-source-config" type="button">Export audit source</button>
-                <button class="ghost compare-source-config" type="button">Export comparison source</button>
-                <button class="run-config" type="button">Save and run</button>
+                <button class="ghost download-config" type="button" hidden>Save and download images</button>
+                <button class="ghost io-queue-config" type="button" hidden>Build IO queue</button>
+                <button class="ghost audit-source-config" type="button" hidden>Export audit source</button>
+                <button class="ghost compare-source-config" type="button" hidden>Export comparison source</button>
+                <button class="run-config" type="button">Save and run selected workflow</button>
               </div>
             </div>
           </div>
@@ -800,11 +797,15 @@
     shadow.querySelector('[data-field="engine"]').addEventListener("change", () => {
       populateModeSelect(host);
       applyNarrativeModeDefaults(host);
+      applyIoQueueModeDefaults(host);
+      applyNoPictureModeDefaults(host);
       applyCardModeDefaults(host);
       syncSpeechifyAvailability(host);
     });
     shadow.querySelector('[data-field="mode"]').addEventListener("change", () => {
       applyNarrativeModeDefaults(host);
+      applyIoQueueModeDefaults(host);
+      applyNoPictureModeDefaults(host);
       applyCardModeDefaults(host);
       syncSpeechifyAvailability(host);
     });
@@ -848,6 +849,11 @@
       await saveSettings(readModalSettings(host));
       closeModal(host);
       downloadImagesOnly(host);
+    });
+    shadow.querySelector(".io-queue-config").addEventListener("click", async () => {
+      await saveSettings(readModalSettings(host));
+      closeModal(host);
+      buildIoQueue(host);
     });
     shadow.querySelector(".audit-source-config").addEventListener("click", async () => {
       await saveSettings(readModalSettings(host));
@@ -992,16 +998,26 @@
       option.textContent = label;
       select.appendChild(option);
     }
-    const allowed = MODE_OPTIONS[engine].map(([value]) => value);
-    select.value = allowed.includes(selectedMode) ? selectedMode : allowed[0];
+    select.value = normalizeVisibleMode(engine, selectedMode);
     syncSpeechifyAvailability(host);
+  };
+
+  const normalizeVisibleMode = (engine, mode) => {
+    const allowed = MODE_OPTIONS[engine]?.map(([value]) => value) || [];
+    if (allowed.includes(mode)) return mode;
+    if (mode === "narrative_with_images") return "narrative";
+    if (mode === "no_pictures") return "no_pictures";
+    if (mode === "chatgpt_cards" || mode === "codex_cards" || mode === "captions_only") {
+      return "chatgpt_cards";
+    }
+    return allowed.includes(DEFAULTS.mode) ? DEFAULTS.mode : allowed[0];
   };
 
   const isNarrativeSpeechifyMode = (values) => {
     if (!values) return false;
     if (values.engine === "pathology") return values.mode === "narrative";
     if (values.engine === "normal") {
-      return values.mode === "narrative" || values.mode === "narrative_with_images";
+      return values.mode === "narrative";
     }
     return false;
   };
@@ -1010,9 +1026,13 @@
     return values?.engine === "normal" && values.mode === "narrative_with_images";
   };
 
+  const isIoQueueMode = (values) => values?.mode === "io_queue";
+
+  const isNoPictureCardMode = (values) => values?.mode === "no_pictures";
+
   const isCardCreationMode = (values) => {
     if (!values) return false;
-    return !isNarrativeSpeechifyMode(values);
+    return !isNarrativeSpeechifyMode(values) && !isIoQueueMode(values);
   };
 
   const syncSpeechifyAvailability = (host) => {
@@ -1021,7 +1041,7 @@
       mode: field(host, "mode")?.value || DEFAULTS.mode
     };
     const eligible = isNarrativeSpeechifyMode(values);
-    const auditEligible = !eligible;
+    const auditEligible = !eligible && !isIoQueueMode(values);
     const autoSend = field(host, "autoSendToSpeechify");
     const autoSave = field(host, "speechifyAutoSave");
     const audit = field(host, "captureCardAuditBundle");
@@ -1056,15 +1076,58 @@
     host.__radprimerCardModeDownloadImagesDisabled = false;
   };
 
+  const applyIoQueueModeDefaults = (host) => {
+    const values = {
+      engine: field(host, "engine")?.value || DEFAULTS.engine,
+      mode: field(host, "mode")?.value || DEFAULTS.mode
+    };
+    if (!isIoQueueMode(values)) return;
+
+    field(host, "include").value = "all";
+    field(host, "caseMap").value = "";
+    field(host, "downloadImages").checked = true;
+    field(host, "downloadPlain").checked = false;
+    field(host, "downloadAnnotated").checked = true;
+    field(host, "openChatGPT").checked = false;
+    field(host, "autoSubmitChatGPT").checked = false;
+    field(host, "captureCardAuditBundle").checked = false;
+    field(host, "autoSendToSpeechify").checked = false;
+    field(host, "speechifyAutoSave").checked = false;
+    host.__radprimerCardModeDownloadImagesDisabled = false;
+  };
+
+  const applyNoPictureModeDefaults = (host) => {
+    const values = {
+      engine: field(host, "engine")?.value || DEFAULTS.engine,
+      mode: field(host, "mode")?.value || DEFAULTS.mode
+    };
+    if (!isNoPictureCardMode(values)) return;
+
+    field(host, "include").value = "none";
+    field(host, "caseMap").value = "";
+    field(host, "downloadImages").checked = false;
+    field(host, "downloadPlain").checked = false;
+    field(host, "downloadAnnotated").checked = false;
+    host.__radprimerCardModeDownloadImagesDisabled = true;
+  };
+
   const applyCardModeDefaults = (host) => {
     const values = {
       engine: field(host, "engine")?.value || DEFAULTS.engine,
       mode: field(host, "mode")?.value || DEFAULTS.mode
     };
     if (!isCardCreationMode(values)) return;
+    if (isNoPictureCardMode(values)) {
+      applyNoPictureModeDefaults(host);
+      return;
+    }
     if (host.__radprimerCardModeDownloadImagesDisabled) return;
     const downloadImages = field(host, "downloadImages");
     if (downloadImages) downloadImages.checked = true;
+    const downloadPlain = field(host, "downloadPlain");
+    const downloadAnnotated = field(host, "downloadAnnotated");
+    if (downloadPlain) downloadPlain.checked = true;
+    if (downloadAnnotated) downloadAnnotated.checked = true;
   };
 
   const openModal = async (host) => {
@@ -1101,7 +1164,8 @@
       "cardModeDownloadImagesDisabled"
     );
     field(host, "engine").value = values.engine || DEFAULTS.engine;
-    populateModeSelect(host, values.mode || DEFAULTS.mode);
+    values.mode = normalizeVisibleMode(values.engine || DEFAULTS.engine, values.mode || DEFAULTS.mode);
+    populateModeSelect(host, values.mode);
 
     for (const key of Object.keys(DEFAULTS)) {
       const el = field(host, key);
@@ -1112,6 +1176,8 @@
     host.__radprimerCardModeDownloadImagesDisabled =
       hasExplicitCardImagePreference && Boolean(values.cardModeDownloadImagesDisabled);
     applyNarrativeModeDefaults(host);
+    applyIoQueueModeDefaults(host);
+    applyNoPictureModeDefaults(host);
     applyCardModeDefaults(host);
     syncSpeechifyAvailability(host);
   };
@@ -1123,6 +1189,7 @@
       if (!el) continue;
       values[key] = el.type === "checkbox" ? el.checked : el.value.trim();
     }
+    values.mode = normalizeVisibleMode(values.engine || DEFAULTS.engine, values.mode || DEFAULTS.mode);
 
     if (values.autoSendToSpeechify || values.captureCardAuditBundle) {
       values.openChatGPT = true;
@@ -1139,10 +1206,34 @@
       values.downloadImages = shouldNarrativeDownloadImages(values);
       values.cardModeDownloadImagesDisabled = false;
     }
+    if (isIoQueueMode(values)) {
+      values.include = "all";
+      values.caseMap = "";
+      values.downloadImages = true;
+      values.downloadPlain = false;
+      values.downloadAnnotated = true;
+      values.openChatGPT = false;
+      values.autoSubmitChatGPT = false;
+      values.autoSendToSpeechify = false;
+      values.speechifyAutoSave = false;
+      values.captureCardAuditBundle = false;
+      values.cardModeDownloadImagesDisabled = false;
+      values.useMasterSource = false;
+    }
+    if (isNoPictureCardMode(values)) {
+      values.include = "none";
+      values.caseMap = "";
+      values.downloadImages = false;
+      values.downloadPlain = false;
+      values.downloadAnnotated = false;
+      values.cardModeDownloadImagesDisabled = true;
+    }
     if (!isNarrativeSpeechifyMode(values)) {
       values.autoSendToSpeechify = false;
       values.speechifyAutoSave = false;
-      values.cardModeDownloadImagesDisabled = !values.downloadImages;
+      if (!isIoQueueMode(values) && !isNoPictureCardMode(values)) {
+        values.cardModeDownloadImagesDisabled = !values.downloadImages;
+      }
     }
 
     return values;
@@ -1175,9 +1266,11 @@
     const quick = host.shadowRoot.querySelector(".quick-run");
     const config = host.shadowRoot.querySelector(".configure");
     const imageOnly = host.shadowRoot.querySelector(".image-only");
+    const ioQueue = host.shadowRoot.querySelector(".io-queue-config");
     quick.disabled = running;
     config.disabled = running;
     imageOnly.disabled = running;
+    if (ioQueue) ioQueue.disabled = running;
     quick.querySelector(".label").textContent = running ? "Running..." : "Run lecture";
   };
 
@@ -1217,6 +1310,26 @@
         return;
       }
       setStatus(host, "Images Done", response.message || "Image download complete.");
+      setRunning(host, false);
+    });
+  };
+
+  const buildIoQueue = (host) => {
+    setRunning(host, true);
+    setStatus(host, "IO Queue", "Downloading annotated images and building queue.json...");
+    chrome.runtime.sendMessage({ type: "RUN_RADPRIMER_IO_QUEUE" }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) {
+        setStatus(host, "IO Queue Error", err.message, true);
+        setRunning(host, false);
+        return;
+      }
+      if (!response?.ok) {
+        setStatus(host, "IO Queue Error", response?.error || "IO queue build failed.", true);
+        setRunning(host, false);
+        return;
+      }
+      setStatus(host, "IO Queue Ready", response.message || "Image Occlusion queue built.");
       setRunning(host, false);
     });
   };

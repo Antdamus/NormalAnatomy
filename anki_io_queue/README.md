@@ -2,14 +2,18 @@
 
 This folder contains a first-pass pipeline for reusing your existing extraction workflow:
 
-1. Your current `input_code.js` extracts article text, image numbers, filenames, and captions.
-2. `build_queue.py` converts that extracted text into a queue JSON.
-3. The Anki add-on in `anki_addon/` walks through that queue one item at a time while you work in Image Occlusion.
+1. The Edge extension extracts article text, image numbers, filenames, and captions.
+2. The in-page modal can now build the queue automatically with `Build IO queue`.
+3. `build_queue.py` remains as a fallback converter for extracted text.
+4. The Anki add-on in `anki_addon/` walks through that queue one item at a time while you work in Image Occlusion.
 
 ## What This Version Does
 
 It gives you:
 
+* one-click IO queue prep from the in-page RadPrimer/STATdx modal
+* annotated image download into `Downloads\RadPrimerIOQueue\images`
+* automatic `Downloads\RadPrimerIOQueue\queue.json` generation
 * queue generation from your extracted text
 * one queue item per extracted image
 * stable numbering and caption carry-through
@@ -32,8 +36,9 @@ This first version does **not** directly drive the Image Occlusion add-on intern
 
 So the current intended workflow is:
 
-1. Open the queue runner in Anki.
-2. Load the queue JSON.
+1. In the article modal, click `Build IO queue`.
+2. Open the queue runner in Anki.
+3. The runner auto-loads `Downloads\RadPrimerIOQueue\queue.json` when it exists, or you can click `Load Default Queue`.
 3. For the current item:
    * the runner can auto-copy the current image to the clipboard
    * paste/use it inside Image Occlusion
@@ -63,7 +68,7 @@ python anki_io_queue\build_queue.py --from-clipboard queue.json
 If you omit the output path in clipboard mode, it defaults to:
 
 ```powershell
-C:\Users\josem.000\NormalAnatomy\anki_io_queue\queue.json
+C:\Users\<you>\Downloads\RadPrimerIOQueue\queue.json
 ```
 
 If you just run the file with no arguments at all, it now does the same thing:
@@ -75,7 +80,7 @@ python anki_io_queue\build_queue.py
 That means:
 
 * input comes from the clipboard
-* output is written to `anki_io_queue\queue.json`
+* output is written to `Downloads\RadPrimerIOQueue\queue.json`
 
 Optional:
 
@@ -84,6 +89,10 @@ python anki_io_queue\build_queue.py extracted.txt queue.json --images-dir C:\pat
 ```
 
 If `--images-dir` is omitted, the builder will use:
+
+`C:\Users\<you>\Downloads\RadPrimerIOQueue\images`
+
+when that folder exists, then falls back to:
 
 `C:\Users\josem.000\Documents\repository`
 

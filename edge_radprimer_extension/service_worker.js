@@ -3,6 +3,7 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const PROMPT_FILES = {
   pathology: {
     chatgpt_cards: "prompts/pathology_chatgpt_cards.txt",
+    no_pictures: "prompts/pathology_chatgpt_cards.txt",
     codex_cards: "prompts/pathology_codex_cards.txt",
     narrative: "prompts/pathology_narrative.txt"
   },
@@ -21,6 +22,8 @@ const PENDING_GROUPING_PREFIX = "radprimerGroupingPending:";
 const PENDING_CARD_AUDIT_PREFIX = "radprimerCardAuditPending:";
 const RADPRIMER_HIERARCHY_PREFIX = "radprimerCanonicalHierarchy:";
 const IMAGE_DOWNLOAD_SUBFOLDER = "RadPrimer";
+const IO_QUEUE_SUBFOLDER = "RadPrimerIOQueue";
+const IO_QUEUE_IMAGE_SUBFOLDER = `${IO_QUEUE_SUBFOLDER}/images`;
 const CARD_AUDIT_SUBFOLDER = "RadPrimerAudit";
 const SOURCE_COMPARE_SUBFOLDER = "RadPrimerSourceComparison";
 const MASTER_SOURCE_SUBFOLDER = "RadiologyMasterSource";
@@ -141,6 +144,7 @@ function parseSpeechifyFolderUrl(rawValue) {
 
 function normalizeSettings(rawSettings = {}) {
   const settings = { ...DEFAULTS, ...rawSettings };
+  settings.mode = normalizeVisibleMode(settings.engine || DEFAULTS.engine, settings.mode || DEFAULTS.mode);
   const folder = parseSpeechifyFolderUrl(
     settings.speechifyFolderUrl || buildSpeechifyFolderUrl(settings.speechifyFolderId)
   );
@@ -158,6 +162,28 @@ function normalizeSettings(rawSettings = {}) {
     settings.speechifyAutoSave = false;
     settings.downloadImages = shouldNarrativeDownloadImages(settings);
     settings.cardModeDownloadImagesDisabled = false;
+  } else if (isIoQueueMode(settings)) {
+    settings.include = "all";
+    settings.caseMap = "";
+    settings.openChatGPT = false;
+    settings.autoSubmitChatGPT = false;
+    settings.autoSendToSpeechify = false;
+    settings.speechifyAutoSave = false;
+    settings.downloadImages = true;
+    settings.downloadPlain = false;
+    settings.downloadAnnotated = true;
+    settings.captureCardAuditBundle = false;
+    settings.cardModeDownloadImagesDisabled = false;
+    settings.useMasterSource = false;
+  } else if (isNoPictureCardMode(settings)) {
+    settings.include = "none";
+    settings.caseMap = "";
+    settings.autoSendToSpeechify = false;
+    settings.speechifyAutoSave = false;
+    settings.downloadImages = false;
+    settings.downloadPlain = false;
+    settings.downloadAnnotated = false;
+    settings.cardModeDownloadImagesDisabled = true;
   } else {
     settings.autoSendToSpeechify = false;
     settings.speechifyAutoSave = false;
@@ -177,17 +203,33 @@ function normalizeSettings(rawSettings = {}) {
   return settings;
 }
 
+function normalizeVisibleMode(engine, mode) {
+  const visibleModes = ["io_queue", "no_pictures", "chatgpt_cards", "narrative"];
+  if (visibleModes.includes(mode)) return mode;
+  if (mode === "narrative_with_images") return "narrative";
+  if (mode === "codex_cards" || mode === "captions_only") return "chatgpt_cards";
+  return DEFAULTS.mode;
+}
+
 function isNarrativeSpeechifyMode(settings) {
   if (!settings) return false;
   if (settings.engine === "pathology") return settings.mode === "narrative";
   if (settings.engine === "normal") {
-    return settings.mode === "narrative" || settings.mode === "narrative_with_images";
+    return settings.mode === "narrative";
   }
   return false;
 }
 
 function shouldNarrativeDownloadImages(settings) {
   return settings?.engine === "normal" && settings.mode === "narrative_with_images";
+}
+
+function isIoQueueMode(settings) {
+  return settings?.mode === "io_queue";
+}
+
+function isNoPictureCardMode(settings) {
+  return settings?.mode === "no_pictures";
 }
 
 function shouldCaptureCardAuditBundle(settings) {
@@ -772,8 +814,8 @@ function getDownloadBasename(filename) {
   return base.replace(/[<>:"/\\|?*\x00-\x1F]/g, "_");
 }
 
-function getStagedDownloadFilename(filename) {
-  return `${IMAGE_DOWNLOAD_SUBFOLDER}/${getDownloadBasename(filename)}`;
+function getStagedDownloadFilename(filename, subfolder = IMAGE_DOWNLOAD_SUBFOLDER) {
+  return `${subfolder}/${getDownloadBasename(filename)}`;
 }
 
 function getSourceFilenameLabel(sourceKind, sourceLabel) {
@@ -804,14 +846,22 @@ function normalizeDownloadUrl(url) {
   }
 }
 
-function isRadPrimerStagedDownload(item) {
+function isDownloadInSubfolder(item, subfolder) {
   const filename = String(item?.filename || "").replace(/\//g, "\\").toLowerCase();
-  return filename.includes("\\downloads\\radprimer\\");
+  const normalizedSubfolder = String(subfolder || "")
+    .replace(/\//g, "\\")
+    .toLowerCase()
+    .replace(/^\\+|\\+$/g, "");
+  return Boolean(normalizedSubfolder) && filename.includes(`\\downloads\\${normalizedSubfolder}\\`);
 }
 
-async function clearRadPrimerDownloadFolder() {
+function isRadPrimerStagedDownload(item) {
+  return isDownloadInSubfolder(item, IMAGE_DOWNLOAD_SUBFOLDER);
+}
+
+async function clearDownloadSubfolder(subfolder) {
   const items = await chrome.downloads.search({});
-  const staged = items.filter(isRadPrimerStagedDownload);
+  const staged = items.filter((item) => isDownloadInSubfolder(item, subfolder));
   let removed = 0;
 
   for (const item of staged) {
@@ -826,6 +876,10 @@ async function clearRadPrimerDownloadFolder() {
   }
 
   return removed;
+}
+
+async function clearRadPrimerDownloadFolder() {
+  return clearDownloadSubfolder(IMAGE_DOWNLOAD_SUBFOLDER);
 }
 
 function waitForDownloadComplete(downloadId, timeoutMs = 90000) {
@@ -993,23 +1047,29 @@ if (chrome.downloads?.onCreated) {
   chrome.downloads.onCreated.addListener(handleCardAuditDownloadCreated);
 }
 
-async function downloadSelectedImages(files, settings = {}) {
+async function downloadSelectedImages(files, settings = {}, options = {}) {
   if (activeCardAuditDownload && !activeCardAuditDownload.downloadId) {
     activeCardAuditDownload = null;
   }
 
   const list = Array.isArray(files) ? files.filter((file) => file?.url && file?.filename) : [];
+  const subfolder = options.subfolder || IMAGE_DOWNLOAD_SUBFOLDER;
+  const clearSubfolder = options.clearSubfolder || subfolder;
   const result = {
     count: 0,
-    clearedCount: 0
+    clearedCount: 0,
+    subfolder,
+    downloads: []
   };
 
   if (!list.length) return result;
 
-  result.clearedCount = await clearRadPrimerDownloadFolder();
+  if (options.clear !== false) {
+    result.clearedCount = await clearDownloadSubfolder(clearSubfolder);
+  }
 
   for (const file of list) {
-    const stagedFilename = getStagedDownloadFilename(file.filename);
+    const stagedFilename = getStagedDownloadFilename(file.filename, subfolder);
     const normalizedUrl = normalizeDownloadUrl(file.url);
     pendingImageDownloadFilenames.set(normalizedUrl, stagedFilename);
     const downloadId = await chrome.downloads.download({
@@ -1018,12 +1078,21 @@ async function downloadSelectedImages(files, settings = {}) {
       conflictAction: "overwrite",
       saveAs: false
     });
+    let completedItem = null;
     try {
-      await waitForDownloadComplete(downloadId);
+      completedItem = await waitForDownloadComplete(downloadId);
     } finally {
       pendingImageDownloadFilenames.delete(normalizedUrl);
     }
     result.count += 1;
+    result.downloads.push({
+      ...file,
+      requestedFilename: file.filename,
+      stagedFilename,
+      downloadedFilename: completedItem?.filename || stagedFilename,
+      downloadId,
+      state: completedItem?.state || ""
+    });
     await sleep(100);
   }
 
@@ -1032,12 +1101,128 @@ async function downloadSelectedImages(files, settings = {}) {
 
 function describeImageDownloadResult(result) {
   const pieces = [
-    `Downloaded ${result.count || 0} image file(s) to Downloads\\${IMAGE_DOWNLOAD_SUBFOLDER}.`
+    `Downloaded ${result.count || 0} image file(s) to Downloads\\${result.subfolder || IMAGE_DOWNLOAD_SUBFOLDER}.`
   ];
   if (result.clearedCount) {
     pieces.push(`Cleared ${result.clearedCount} previous staged file(s).`);
   }
   return pieces.join(" ");
+}
+
+function padQueueIndex(value) {
+  return String(value || 0).padStart(2, "0");
+}
+
+function getFileImageNumber(file = {}, fallback = 0) {
+  const candidates = [
+    file.imageNumber,
+    file.sourceImageNumber,
+    file.sourceNumber,
+    file.originalIndex
+  ];
+  for (const candidate of candidates) {
+    const number = Number(candidate);
+    if (Number.isFinite(number) && number > 0) return number;
+  }
+  return fallback;
+}
+
+function getQueueImageBaseName(file = {}) {
+  if (file.baseName) return String(file.baseName);
+  const name = getDownloadBasename(file.requestedFilename || file.filename || "");
+  return name.replace(/_annot(?=\.[^.]+$)/i, "").replace(/\.[^.]+$/, "") || "image";
+}
+
+function findDownloadedFileForQueue(downloads = [], sourceNumber, variant) {
+  const number = Number(sourceNumber);
+  return downloads.find((file) => {
+    if (variant && file.variant !== variant) return false;
+    return getFileImageNumber(file) === number;
+  }) || null;
+}
+
+function buildIoQueuePayload(extraction, downloadResult = {}) {
+  const meta = extraction?.meta || {};
+  const downloads = Array.isArray(downloadResult.downloads) ? downloadResult.downloads : [];
+  const downloadedNumbers = [
+    ...new Set(downloads.map((file, index) => getFileImageNumber(file, index + 1)).filter(Boolean))
+  ];
+  const rawGroups = Array.isArray(meta.cases) && meta.cases.length
+    ? meta.cases
+    : (Array.isArray(meta.selectedImages) && meta.selectedImages.length
+      ? meta.selectedImages.map((number) => [number])
+      : downloadedNumbers.map((number) => [number]));
+  const groups = rawGroups
+    .map((group) => (Array.isArray(group) ? group : [group])
+      .map((value) => Number(value))
+      .filter((value) => Number.isFinite(value) && value > 0))
+    .filter((group) => group.length);
+
+  const items = [];
+  groups.forEach((group, groupIndex) => {
+    const blockKind = group.length > 1 ? "CASE" : "IMAGE";
+    const blockIndex = groupIndex + 1;
+    const blockLabel = `${blockKind}_${padQueueIndex(blockIndex)}`;
+
+    group.forEach((sourceNumber, itemIndex) => {
+      const plain = findDownloadedFileForQueue(downloads, sourceNumber, "plain");
+      const annotated = findDownloadedFileForQueue(downloads, sourceNumber, "annotated");
+      const file = annotated || plain || downloads.find((entry) => getFileImageNumber(entry) === sourceNumber) || null;
+      if (!file) return;
+
+      const imageFilename = plain ? getDownloadBasename(plain.requestedFilename || plain.filename) : "";
+      const annotatedFilename = annotated ? getDownloadBasename(annotated.requestedFilename || annotated.filename) : "";
+      const imagePath = plain?.downloadedFilename || "";
+      const annotatedPath = annotated?.downloadedFilename || "";
+
+      items.push({
+        queue_id: `${blockLabel}:${sourceNumber || itemIndex + 1}`,
+        article_title: meta.title || "",
+        topic: meta.title || "",
+        block_label: blockLabel,
+        block_kind: blockKind,
+        block_index: blockIndex,
+        group_numbers: group,
+        source_number: sourceNumber || itemIndex + 1,
+        base_name: getQueueImageBaseName(file),
+        image_filename: imageFilename,
+        annotated_filename: annotatedFilename,
+        caption: file.caption || "",
+        image_path: imagePath,
+        annotated_path: annotatedPath,
+        preferred_path: annotatedPath || imagePath,
+        status: "pending",
+        notes: ""
+      });
+    });
+  });
+
+  return {
+    article_title: meta.title || "",
+    topic: meta.title || "",
+    total_items: items.length,
+    items
+  };
+}
+
+async function downloadIoQueueFiles(extraction, downloadResult) {
+  const queue = buildIoQueuePayload(extraction, downloadResult);
+  if (!queue.items.length) {
+    throw new Error("No Image Occlusion queue items could be built from the downloaded image set.");
+  }
+
+  await downloadTextFileToPath(
+    `${IO_QUEUE_SUBFOLDER}/source_package.txt`,
+    extraction.output || "",
+    "text/plain;charset=utf-8"
+  );
+  await downloadTextFileToPath(
+    `${IO_QUEUE_SUBFOLDER}/queue.json`,
+    JSON.stringify(queue, null, 2),
+    "application/json;charset=utf-8"
+  );
+
+  return queue;
 }
 
 function sanitizeDownloadPathPart(value, fallback = "radprimer") {
@@ -3206,7 +3391,7 @@ async function openChatGptAndStart(settings, packageText, articleTitle, options 
 }
 
 function isNonNarrativeMode(settings) {
-  return Boolean(settings) && !isNarrativeSpeechifyMode(settings);
+  return Boolean(settings) && !isNarrativeSpeechifyMode(settings) && !isIoQueueMode(settings);
 }
 
 function parseCaseMapGroups(value) {
@@ -3226,7 +3411,7 @@ function shouldRunGroupingPreflight(settings) {
   if (!settings?.autoGroupNonNarrative) return false;
   if (!settings.openChatGPT || !settings.autoSubmitChatGPT) return false;
   if (!isNonNarrativeMode(settings)) return false;
-  if (settings.engine === "normal" && settings.mode === "no_pictures") return false;
+  if (isNoPictureCardMode(settings)) return false;
   if (String(settings.include || "").trim().toLowerCase() === "none") return false;
   return parseCaseMapGroups(settings.caseMap).length === 0;
 }
@@ -3565,6 +3750,11 @@ async function runRadPrimerFromPage(tab) {
   await sendPageStatus(tab.id, "Loading", "Loading saved runner settings...");
   const settings = await loadRunnerSettings();
 
+  if (isIoQueueMode(settings)) {
+    await sendPageStatus(tab.id, "IO Queue", "Building image-occlusion queue from this article...");
+    return runRadPrimerIoQueue(tab);
+  }
+
   await sendPageStatus(tab.id, "Prompt", `Loading ${settings.engine}/${settings.mode} prompt...`);
   const promptText = await loadPrompt(settings.engine, settings.mode);
 
@@ -3734,6 +3924,76 @@ async function runRadPrimerImageDownloadOnly(tab) {
     message,
     meta: extraction.meta || null,
     download: result
+  };
+}
+
+async function runRadPrimerIoQueue(tab) {
+  const articleSource = assertSupportedArticleTab(tab);
+
+  await sendPageStatus(tab.id, "IO Queue", "Preparing annotated Image Occlusion queue...");
+  const storedSettings = await loadRunnerSettings();
+  const settings = {
+    ...storedSettings,
+    mode: "chatgpt_cards",
+    include: "all",
+    downloadImages: true,
+    downloadPlain: false,
+    downloadAnnotated: true,
+    keepCaptionHtml: true,
+    openChatGPT: false,
+    autoSubmitChatGPT: false,
+    autoSendToSpeechify: false,
+    speechifyAutoSave: false
+  };
+  const promptText = await loadPrompt(settings.engine, settings.mode);
+
+  let extraction;
+  if (settings.useMasterSource) {
+    await sendPageStatus(tab.id, "Master Source", "Loading imported fused master source image plan...");
+    const masterSource = await getLatestMasterSourceCache();
+    if (!masterSource?.packageText) {
+      throw new Error("Use master source is enabled, but no imported master source was found. Import master_source_import.json first.");
+    }
+    extraction = buildMasterSourceExtraction(settings, promptText, masterSource);
+    const annotatedFiles = (extraction.downloadFiles || []).filter((file) =>
+      file.variant === "annotated" || /_annot(?=\.)/i.test(String(file.filename || ""))
+    );
+    if (annotatedFiles.length) extraction = { ...extraction, downloadFiles: annotatedFiles };
+  } else {
+    await sendPageStatus(tab.id, "Extracting", `Extracting all ${articleSource.displayName} image captions for IO...`);
+    extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  }
+
+  if (!extraction.downloadFiles?.length) {
+    const message = "No annotated image files were available for the Image Occlusion queue.";
+    await sendPageStatus(tab.id, "IO Queue", message, { done: true });
+    return { message, meta: extraction.meta || null };
+  }
+
+  await sendPageStatus(tab.id, "Images", "Downloading annotated images into the IO queue folder...");
+  const downloadResult = await downloadSelectedImages(extraction.downloadFiles, settings, {
+    subfolder: IO_QUEUE_IMAGE_SUBFOLDER,
+    clearSubfolder: IO_QUEUE_SUBFOLDER
+  });
+
+  await sendPageStatus(tab.id, "Queue", "Writing Image Occlusion queue.json...");
+  const queue = await downloadIoQueueFiles(extraction, downloadResult);
+  const message = [
+    `Built Image Occlusion queue with ${queue.total_items} item(s).`,
+    `Annotated images and queue.json are in Downloads\\${IO_QUEUE_SUBFOLDER}.`,
+    "Open Anki -> Tools -> Image Occlusion Queue Runner; the add-on can load this default queue."
+  ].join(" ");
+  await sendPageStatus(tab.id, "IO Queue Ready", message, { done: true });
+
+  return {
+    message,
+    meta: extraction.meta || null,
+    download: downloadResult,
+    queue: {
+      totalItems: queue.total_items,
+      folder: IO_QUEUE_SUBFOLDER,
+      queuePath: `${IO_QUEUE_SUBFOLDER}/queue.json`
+    }
   };
 }
 
@@ -4095,6 +4355,25 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const tabId = message.tabId || _sender?.tab?.id;
       if (tabId) {
         await sendPageStatus(tabId, "Image Error", String(error?.message || error), {
+          error: true
+        });
+      }
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RUN_RADPRIMER_IO_QUEUE") {
+    (async () => {
+      const tab =
+        message.tabId ? await chrome.tabs.get(message.tabId) : _sender?.tab;
+      const result = await runRadPrimerIoQueue(tab);
+      sendResponse({ ok: true, ...result });
+    })().catch(async (error) => {
+      const tabId = message.tabId || _sender?.tab?.id;
+      if (tabId) {
+        await sendPageStatus(tabId, "IO Queue Error", String(error?.message || error), {
           error: true
         });
       }

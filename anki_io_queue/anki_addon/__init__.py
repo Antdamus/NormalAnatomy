@@ -26,6 +26,7 @@ from aqt.qt import (
 from aqt.utils import showInfo, tooltip
 
 DEFAULT_REPOSITORY_DIR = Path(r"C:\Users\josem.000\Documents\repository")
+DEFAULT_QUEUE_PATH = Path.home() / "Downloads" / "RadPrimerIOQueue" / "queue.json"
 CAPTION_FIELD_CANDIDATES = [
     "Back Extra",
     "Header",
@@ -97,6 +98,7 @@ class IOQueueDialog(QDialog):
         self.auto_open_io_checkbox.setChecked(True)
 
         load_button = QPushButton("Load Queue")
+        load_default_button = QPushButton("Load Default Queue")
         open_io_button = QPushButton("Open Current in IO")
         prev_button = QPushButton("Previous")
         next_button = QPushButton("Next Pending")
@@ -107,6 +109,7 @@ class IOQueueDialog(QDialog):
         skip_button = QPushButton("Skip")
 
         load_button.clicked.connect(self.load_queue)
+        load_default_button.clicked.connect(self.load_default_queue)
         open_io_button.clicked.connect(self.launch_current_into_image_occlusion)
         prev_button.clicked.connect(self.prev_item)
         next_button.clicked.connect(self.next_pending)
@@ -124,6 +127,7 @@ class IOQueueDialog(QDialog):
 
         button_row = QHBoxLayout()
         button_row.addWidget(load_button)
+        button_row.addWidget(load_default_button)
         button_row.addWidget(open_io_button)
         button_row.addWidget(prev_button)
         button_row.addWidget(next_button)
@@ -143,18 +147,36 @@ class IOQueueDialog(QDialog):
         layout.addWidget(self.caption_box)
         layout.addLayout(button_row)
         self.setLayout(layout)
+        QTimer.singleShot(0, self.load_default_queue_if_available)
 
     def load_queue(self) -> None:
+        initial_dir = DEFAULT_QUEUE_PATH.parent if DEFAULT_QUEUE_PATH.parent.exists() else Path.home()
         path_str, _ = QFileDialog.getOpenFileName(
             self,
             "Load Image Occlusion Queue",
-            str(Path.home()),
+            str(initial_dir),
             "Queue JSON (*.json)",
         )
         if not path_str:
             return
 
-        path = Path(path_str)
+        self._load_queue_path(Path(path_str))
+
+    def load_default_queue(self) -> None:
+        if not DEFAULT_QUEUE_PATH.exists():
+            QMessageBox.warning(
+                self,
+                "Default queue missing",
+                f"Could not find the default queue:\n{DEFAULT_QUEUE_PATH}",
+            )
+            return
+        self._load_queue_path(DEFAULT_QUEUE_PATH)
+
+    def load_default_queue_if_available(self) -> None:
+        if DEFAULT_QUEUE_PATH.exists():
+            self._load_queue_path(DEFAULT_QUEUE_PATH)
+
+    def _load_queue_path(self, path: Path) -> None:
         data = json.loads(path.read_text(encoding="utf-8"))
         self.queue_path = path
         self.entries = [QueueEntry(**item) for item in data.get("items", [])]

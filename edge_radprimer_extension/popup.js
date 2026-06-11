@@ -1,22 +1,19 @@
+const WORKFLOW_MODE_OPTIONS = [
+  ["io_queue", "Build IO queue"],
+  ["no_pictures", "Build cards without images"],
+  ["chatgpt_cards", "Build cards with images"],
+  ["narrative", "Narrative mode"]
+];
+
 const MODE_OPTIONS = {
-  pathology: [
-    ["chatgpt_cards", "Cards - ChatGPT autonomous"],
-    ["codex_cards", "Cards - Codex workflow"],
-    ["narrative", "Narrative"]
-  ],
-  normal: [
-    ["chatgpt_cards", "Cards - ChatGPT autonomous"],
-    ["codex_cards", "Cards - Codex workflow"],
-    ["narrative_with_images", "Narrative + image downloads"],
-    ["narrative", "Narrative"],
-    ["no_pictures", "Cards - no pictures"],
-    ["captions_only", "Cards - captions only"]
-  ]
+  pathology: WORKFLOW_MODE_OPTIONS,
+  normal: WORKFLOW_MODE_OPTIONS
 };
 
 const PROMPT_FILES = {
   pathology: {
     chatgpt_cards: "prompts/pathology_chatgpt_cards.txt",
+    no_pictures: "prompts/pathology_chatgpt_cards.txt",
     codex_cards: "prompts/pathology_codex_cards.txt",
     narrative: "prompts/pathology_narrative.txt"
   },
@@ -134,8 +131,18 @@ function populateModes(engine, selectedMode) {
     modeEl.appendChild(option);
   }
 
-  const allowed = MODE_OPTIONS[engine].map(([value]) => value);
-  modeEl.value = allowed.includes(selectedMode) ? selectedMode : allowed[0];
+  modeEl.value = normalizeVisibleMode(engine, selectedMode);
+}
+
+function normalizeVisibleMode(engine, mode) {
+  const allowed = MODE_OPTIONS[engine]?.map(([value]) => value) || [];
+  if (allowed.includes(mode)) return mode;
+  if (mode === "narrative_with_images") return "narrative";
+  if (mode === "no_pictures") return "no_pictures";
+  if (mode === "chatgpt_cards" || mode === "codex_cards" || mode === "captions_only") {
+    return "chatgpt_cards";
+  }
+  return allowed.includes(DEFAULTS.mode) ? DEFAULTS.mode : allowed[0];
 }
 
 function syncPanels() {
@@ -185,7 +192,7 @@ function isNarrativeSpeechifyMode(settings) {
   if (!settings) return false;
   if (settings.engine === "pathology") return settings.mode === "narrative";
   if (settings.engine === "normal") {
-    return settings.mode === "narrative" || settings.mode === "narrative_with_images";
+    return settings.mode === "narrative";
   }
   return false;
 }
@@ -194,8 +201,16 @@ function shouldNarrativeDownloadImages(settings) {
   return settings?.engine === "normal" && settings.mode === "narrative_with_images";
 }
 
+function isIoQueueMode(settings) {
+  return settings?.mode === "io_queue";
+}
+
+function isNoPictureCardMode(settings) {
+  return settings?.mode === "no_pictures";
+}
+
 function isNonNarrativeMode(settings) {
-  return Boolean(settings) && !isNarrativeSpeechifyMode(settings);
+  return Boolean(settings) && !isNarrativeSpeechifyMode(settings) && !isIoQueueMode(settings);
 }
 
 function isCardCreationMode(settings) {
@@ -239,10 +254,38 @@ function applyNarrativeModeDefaults() {
   $("downloadImages").checked = shouldNarrativeDownloadImages(engineMode);
 }
 
+function applyIoQueueModeDefaults() {
+  if (!isIoQueueMode(currentEngineMode())) return;
+  $("include").value = "all";
+  $("caseMap").value = "";
+  $("downloadImages").checked = true;
+  $("downloadPlain").checked = false;
+  $("downloadAnnotated").checked = true;
+  $("openChatGPT").checked = false;
+  $("autoSubmitChatGPT").checked = false;
+  $("autoSendToSpeechify").checked = false;
+  $("captureCardAuditBundle").checked = false;
+}
+
+function applyNoPictureModeDefaults() {
+  if (!isNoPictureCardMode(currentEngineMode())) return;
+  $("include").value = "none";
+  $("caseMap").value = "";
+  $("downloadImages").checked = false;
+  $("downloadPlain").checked = false;
+  $("downloadAnnotated").checked = false;
+}
+
 function applyCardModeDefaults(values = {}) {
   if (!isCardCreationMode(currentEngineMode())) return;
+  if (isNoPictureCardMode(currentEngineMode())) {
+    applyNoPictureModeDefaults();
+    return;
+  }
   if (values.cardModeDownloadImagesDisabled) return;
   $("downloadImages").checked = true;
+  $("downloadPlain").checked = true;
+  $("downloadAnnotated").checked = true;
 }
 
 function parseCaseMapGroups(value) {
@@ -271,23 +314,27 @@ function parseCaseMapGroups(value) {
 function shouldDelegateGroupingPreflight(settings) {
   if (!settings.autoGroupNonNarrative) return false;
   if (!settings.openChatGPT || !settings.autoSubmitChatGPT) return false;
+  if (isIoQueueMode(settings)) return false;
   if (isNarrativeSpeechifyMode(settings)) return false;
-  if (settings.engine === "normal" && settings.mode === "no_pictures") return false;
+  if (isNoPictureCardMode(settings)) return false;
   if (String(settings.include || "").trim().toLowerCase() === "none") return false;
   return parseCaseMapGroups(settings.caseMap).length === 0;
 }
 
 function readForm() {
   const engine = $("engine").value;
-  const mode = $("mode").value;
+  const mode = normalizeVisibleMode(engine, $("mode").value);
+  const ioQueueMode = isIoQueueMode({ engine, mode });
+  const noPictureMode = isNoPictureCardMode({ engine, mode });
   const speechifyEligible = isNarrativeSpeechifyMode({ engine, mode });
   const narrativeDownloadImages = shouldNarrativeDownloadImages({ engine, mode });
   const captureCardAuditBundle =
-    !speechifyEligible && Boolean($("captureCardAuditBundle").checked);
-  const cardModeDownloadImagesDisabled = !speechifyEligible && !$("downloadImages").checked;
-  const autoSendToSpeechify = speechifyEligible && $("autoSendToSpeechify").checked;
+    !speechifyEligible && !ioQueueMode && Boolean($("captureCardAuditBundle").checked);
+  const cardModeDownloadImagesDisabled =
+    !speechifyEligible && !ioQueueMode && ($("downloadImages").checked === false || noPictureMode);
+  const autoSendToSpeechify = speechifyEligible && !ioQueueMode && $("autoSendToSpeechify").checked;
   const autoSubmitChatGPT =
-    $("autoSubmitChatGPT").checked || autoSendToSpeechify || captureCardAuditBundle;
+    !ioQueueMode && ($("autoSubmitChatGPT").checked || autoSendToSpeechify || captureCardAuditBundle);
   const openChatGPT = $("openChatGPT").checked || autoSubmitChatGPT;
 
   const speechifyFolder = parseSpeechifyFolderUrl($("speechifyFolderUrl").value);
@@ -295,26 +342,30 @@ function readForm() {
   return {
     engine,
     mode,
-    include: speechifyEligible ? "all" : $("include").value.trim(),
-    caseMap: speechifyEligible ? "" : $("caseMap").value.trim(),
+    include: speechifyEligible || ioQueueMode ? "all" : noPictureMode ? "none" : $("include").value.trim(),
+    caseMap: speechifyEligible || ioQueueMode || noPictureMode ? "" : $("caseMap").value.trim(),
     coreGap: $("coreGap").checked,
     coreSection: $("coreSection").value.trim(),
     corePages: $("corePages").value.trim(),
     sourceNote: $("sourceNote").value.trim(),
     coreNote: $("coreNote").value.trim(),
-    downloadImages: speechifyEligible
-      ? narrativeDownloadImages
-      : cardModeDownloadImagesDisabled
+    downloadImages: ioQueueMode
+      ? true
+      : noPictureMode
         ? false
-        : $("downloadImages").checked,
-    cardModeDownloadImagesDisabled: speechifyEligible ? false : cardModeDownloadImagesDisabled,
-    downloadPlain: $("downloadPlain").checked,
-    downloadAnnotated: $("downloadAnnotated").checked,
+        : speechifyEligible
+          ? narrativeDownloadImages
+          : cardModeDownloadImagesDisabled
+            ? false
+            : $("downloadImages").checked,
+    cardModeDownloadImagesDisabled: speechifyEligible || ioQueueMode ? false : cardModeDownloadImagesDisabled,
+    downloadPlain: ioQueueMode || noPictureMode ? false : $("downloadPlain").checked,
+    downloadAnnotated: ioQueueMode ? true : noPictureMode ? false : $("downloadAnnotated").checked,
     keepCaptionHtml: $("keepCaptionHtml").checked,
     autoGroupNonNarrative: $("autoGroupNonNarrative").checked,
     captureCardAuditBundle,
-    openChatGPT: speechifyEligible ? true : openChatGPT,
-    autoSubmitChatGPT: speechifyEligible || captureCardAuditBundle ? true : autoSubmitChatGPT,
+    openChatGPT: ioQueueMode ? false : speechifyEligible ? true : openChatGPT,
+    autoSubmitChatGPT: ioQueueMode ? false : speechifyEligible || captureCardAuditBundle ? true : autoSubmitChatGPT,
     chatgptUrl: $("chatgptUrl").value.trim(),
     chatgptInstruction: $("chatgptInstruction").value.trim(),
     chatgptTimeoutSec: $("chatgptTimeoutSec").value.trim(),
@@ -390,6 +441,8 @@ function applyForm(values) {
   $("speechifyFolderUrl").value = getStoredSpeechifyFolderUrl(values);
   syncPanels();
   applyNarrativeModeDefaults();
+  applyIoQueueModeDefaults();
+  applyNoPictureModeDefaults();
   applyCardModeDefaults(values);
   syncSpeechifyAvailability();
 }
@@ -476,6 +529,16 @@ function sendRunFromTabMessage(tabId) {
 function sendImageDownloadOnlyMessage(tabId) {
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage({ type: "RUN_RADPRIMER_IMAGE_DOWNLOAD_ONLY", tabId }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+function sendIoQueueMessage(tabId) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "RUN_RADPRIMER_IO_QUEUE", tabId }, (response) => {
       const err = chrome.runtime.lastError;
       if (err) reject(new Error(err.message));
       else resolve(response);
@@ -765,6 +828,14 @@ async function run() {
     await saveForm();
     const tab = await getActiveTab();
 
+    if (isIoQueueMode(settings)) {
+      setStatus("Building image-occlusion queue...");
+      const response = await sendIoQueueMessage(tab.id);
+      if (!response?.ok) throw new Error(response?.error || "IO queue build failed.");
+      setStatus(response.message || "IO queue package created.");
+      return;
+    }
+
     if (settings.useMasterSource || shouldDelegateGroupingPreflight(settings) || shouldCaptureCardAuditBundle(settings)) {
       setStatus(
         settings.useMasterSource
@@ -878,6 +949,10 @@ async function run() {
 async function checkPrompts() {
   try {
     const settings = readForm();
+    if (isIoQueueMode(settings)) {
+      setStatus("IO queue mode uses the extractor and queue builder; no packaged prompt is needed.");
+      return;
+    }
     const text = await loadPrompt(settings.engine, settings.mode);
     setStatus(`Packaged prompt OK: ${settings.engine}/${settings.mode}\nCharacters: ${text.length}`);
   } catch (error) {
@@ -906,6 +981,33 @@ async function downloadImagesOnly() {
     );
   } catch (error) {
     setStatus(`Image download error: ${error?.message || error}`);
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function buildIoQueue() {
+  const button = $("buildIoQueue");
+  button.disabled = true;
+  try {
+    await saveForm();
+    const tab = await getActiveTab();
+    setStatus("Building Image Occlusion queue...");
+    const response = await sendIoQueueMessage(tab.id);
+    if (!response?.ok) throw new Error(response?.error || "IO queue build failed.");
+
+    const meta = response.meta || {};
+    const queue = response.queue || {};
+    setStatus(
+      [
+        response.message || "Image Occlusion queue built.",
+        `Title: ${meta.title || "[not found]"}`,
+        `Queue items: ${queue.totalItems ?? "unknown"}`,
+        `Folder: Downloads\\${queue.folder || "RadPrimerIOQueue"}`
+      ].join("\n")
+    );
+  } catch (error) {
+    setStatus(`IO queue error: ${error?.message || error}`);
   } finally {
     button.disabled = false;
   }
@@ -1078,6 +1180,8 @@ async function init() {
     populateModes($("engine").value, $("mode").value);
     syncPanels();
     applyNarrativeModeDefaults();
+    applyIoQueueModeDefaults();
+    applyNoPictureModeDefaults();
     applyCardModeDefaults();
     syncSpeechifyAvailability();
     await saveForm();
@@ -1085,6 +1189,8 @@ async function init() {
 
   $("mode").addEventListener("change", async () => {
     applyNarrativeModeDefaults();
+    applyIoQueueModeDefaults();
+    applyNoPictureModeDefaults();
     applyCardModeDefaults();
     syncSpeechifyAvailability();
     await saveForm();
@@ -1122,6 +1228,7 @@ async function init() {
 
   $("run").addEventListener("click", run);
   $("downloadImagesOnly").addEventListener("click", downloadImagesOnly);
+  $("buildIoQueue").addEventListener("click", buildIoQueue);
   $("recoverCardAuditTsv").addEventListener("click", recoverCardAuditTsv);
   $("exportAuditSource").addEventListener("click", exportAuditSource);
   $("exportSourceCompare").addEventListener("click", exportSourceCompare);

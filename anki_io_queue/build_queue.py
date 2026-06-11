@@ -11,7 +11,9 @@ from pathlib import Path
 from typing import Iterable
 
 DEFAULT_REPOSITORY_DIR = Path(r"C:\Users\josem.000\Documents\repository")
-DEFAULT_OUTPUT_PATH = Path(__file__).resolve().parent / "queue.json"
+DEFAULT_IO_QUEUE_DIR = Path.home() / "Downloads" / "RadPrimerIOQueue"
+DEFAULT_IO_IMAGES_DIR = DEFAULT_IO_QUEUE_DIR / "images"
+DEFAULT_OUTPUT_PATH = DEFAULT_IO_QUEUE_DIR / "queue.json"
 
 TOPIC_RE = re.compile(r"^PRIMARY TOPIC:\s*(.+?)\s*$")
 TITLE_RE = re.compile(r"^TITLE:\s*(.+?)\s*$")
@@ -241,6 +243,8 @@ def main() -> int:
     output_path = Path(args.output) if args.output else DEFAULT_OUTPUT_PATH
     if args.images_dir:
         images_dir = Path(args.images_dir)
+    elif DEFAULT_IO_IMAGES_DIR.exists():
+        images_dir = DEFAULT_IO_IMAGES_DIR
     elif DEFAULT_REPOSITORY_DIR.exists():
         images_dir = DEFAULT_REPOSITORY_DIR
     else:
