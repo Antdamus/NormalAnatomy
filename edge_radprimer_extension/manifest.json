@@ -16,6 +16,9 @@
   "host_permissions": [
     "https://app.radprimer.com/*",
     "https://app.statdx.com/*",
+    "https://radiopaedia.org/*",
+    "https://www.radiopaedia.org/*",
+    "https://prod-assets-static.radiopaedia.org/*",
     "https://chatgpt.com/*",
     "https://chat.openai.com/*",
     "https://app.speechify.com/*"
@@ -36,6 +39,17 @@
     {
       "matches": ["https://app.statdx.com/*"],
       "js": ["radprimer-run-button.js", "statdx-image-tools.js", "radprimer-speechify-remote.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://radiopaedia.org/*", "https://www.radiopaedia.org/*"],
+      "js": ["radiopaedia-pacs-bridge.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://radiopaedia.org/*", "https://www.radiopaedia.org/*"],
+      "js": ["radiopaedia-pacs-viewer.js"],
       "run_at": "document_idle"
     },
     {
