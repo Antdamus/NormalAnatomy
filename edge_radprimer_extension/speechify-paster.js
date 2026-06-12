@@ -83,14 +83,8 @@
     label: "",
     activeText: "",
     textPreview: "",
+    debug: "",
     updatedAt: 0
-  };
-  let readerHighlightState = {
-    signature: "",
-    changedAt: 0,
-    checkedAt: 0,
-    source: "",
-    lastContext: null
   };
   let currentLectureIdentity = "";
 
@@ -116,6 +110,17 @@
     );
   };
 
+  const isVisibleThroughAncestors = (el) => {
+    if (!isVisible(el)) return false;
+    let current = el;
+    while (current && current !== document.body && current !== document.documentElement) {
+      const style = getComputedStyle(current);
+      if (style.visibility === "hidden" || style.display === "none" || style.opacity === "0") return false;
+      current = current.parentElement;
+    }
+    return true;
+  };
+
   const cleanDisplayText = (value) => {
     return String(value || "")
       .replace(/\u00A0/g, " ")
@@ -123,6 +128,31 @@
       .replace(/×/g, "x")
       .replace(/\s+/g, " ")
       .trim();
+  };
+
+  const escapeRegExp = (value) => {
+    return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  };
+
+  const makeWholeCueRegex = (cueText) => {
+    const cue = cleanDisplayText(cueText);
+    if (!cue) return null;
+    return new RegExp(`(^|[^A-Za-z0-9])(${escapeRegExp(cue)})(?=$|[^A-Za-z0-9])`, "gi");
+  };
+
+  const findCueOffsetsInText = (text, cueText) => {
+    const source = cleanDisplayText(text);
+    const cue = cleanDisplayText(cueText);
+    const re = makeWholeCueRegex(cue);
+    if (!source || !cue || !re) return [];
+
+    const offsets = [];
+    let match;
+    while ((match = re.exec(source)) !== null) {
+      offsets.push(match.index + String(match[1] || "").length);
+      if (re.lastIndex <= match.index) re.lastIndex = match.index + 1;
+    }
+    return offsets;
   };
 
   const firstVisible = (selector) => {
@@ -385,6 +415,7 @@
       label: section.label || `image ${image}`,
       activeText: section.activeText || "",
       textPreview: section.textPreview || "",
+      debug: section.debug || "",
       updatedAt: Date.now()
     };
   };
@@ -404,7 +435,8 @@
       groupNumbers: getOrderedGroupNumbers(lectureExplicitImageState.groupNumbers || []),
       source: sourceName,
       activeText: lectureExplicitImageState.activeText || "",
-      textPreview: lectureExplicitImageState.textPreview || ""
+      textPreview: lectureExplicitImageState.textPreview || "",
+      debug: lectureExplicitImageState.debug || ""
     };
   };
 
@@ -419,14 +451,8 @@
       label: "",
       activeText: "",
       textPreview: "",
+      debug: "",
       updatedAt: 0
-    };
-    readerHighlightState = {
-      signature: "",
-      changedAt: 0,
-      checkedAt: 0,
-      source: "",
-      lastContext: null
     };
   };
 
@@ -458,6 +484,22 @@
     const activeText = cleanDisplayText(context?.activeText || "");
     const highlightText = cleanDisplayText(context?.highlightText || "");
     const candidates = [];
+
+    if (context?.source === "explicit-highlighted-sentence") {
+      const activeIndex = Number(context?.activeTextIndex);
+      if (Number.isFinite(activeIndex) && activeIndex >= 0) {
+        return Math.max(0, Math.min(blockText.length, activeIndex + Math.max(1, activeText.length)));
+      }
+      return -1;
+    }
+
+    if (context?.source === "explicit-live-cursor") {
+      const focusIndex = Number(context?.focusTextIndex);
+      if (Number.isFinite(focusIndex) && focusIndex >= 0) {
+        return Math.max(0, Math.min(blockText.length, focusIndex + Math.max(1, highlightText.length)));
+      }
+      return -1;
+    }
 
     const activeIndex = Number(context?.activeTextIndex);
     if (Number.isFinite(activeIndex) && activeIndex >= 0) {
@@ -498,12 +540,73 @@
     return plural?.numbers || [];
   };
 
+  const getLiveMentionWindow = (blockText, cutoff, afterChars = 160, blockElement = null, anchorRect = null) => {
+    if (afterChars && typeof afterChars === "object" && "nodeType" in afterChars) {
+      anchorRect = blockElement;
+      blockElement = afterChars;
+      afterChars = 160;
+    }
+
+    const safeAfterChars = Number.isFinite(Number(afterChars)) ? Number(afterChars) : 160;
+    const renderedPrefix = getRenderedTextBeforeRect(blockElement, anchorRect);
+    if (renderedPrefix) {
+      const start = Math.max(0, renderedPrefix.length - 2600);
+      const text = renderedPrefix.slice(start);
+      return {
+        text,
+        start,
+        end: renderedPrefix.length,
+        mentions: extractImageMentions(text).map((mention) => ({
+          ...mention,
+          index: mention.index + start
+        })),
+        source: "rendered-prefix"
+      };
+    }
+
+    const block = cleanDisplayText(blockText);
+    const end = Math.max(0, Math.min(block.length, Number(cutoff) || 0));
+    if (!block || end <= 0) return { text: "", start: 0, end: 0, mentions: [], source: "text-index" };
+
+    const start = Math.max(0, end - 2200);
+    const windowEnd = Math.min(block.length, end + safeAfterChars);
+    const text = block.slice(start, windowEnd);
+    const mentions = extractImageMentions(text)
+      .map((mention) => ({
+        ...mention,
+        index: mention.index + start
+      }))
+      .filter((mention) => mention.index <= end);
+
+    return { text, start, end, mentions, source: "text-index" };
+  };
+
   const buildStrictLiveImageSection = (context) => {
     const blockText = cleanDisplayText(context?.blockText || "");
     if (!blockText) return null;
 
     const cutoff = getStrictCutoffIndexForContext(context);
-    const mentions = extractImageMentions(blockText).filter((mention) => mention.index <= cutoff);
+    if (!Number.isFinite(cutoff) || cutoff < 0) return null;
+
+    let mentions = [];
+    if (context?.source === "explicit-highlighted-sentence") {
+      const activeIndex = Math.max(0, Number(context?.activeTextIndex) || 0);
+      mentions = extractImageMentions(context.activeText || "").map((mention) => ({
+        ...mention,
+        index: mention.index + activeIndex
+      }));
+    } else {
+      const liveMentions = Array.isArray(context?.liveMentions) ? context.liveMentions : [];
+      const liveWindow = context?.source === "explicit-live-cursor" && !liveMentions.length
+        ? getLiveMentionWindow(blockText, cutoff, 160, context?.blockElement, context?.cursorRect)
+        : null;
+      mentions = liveMentions.length
+        ? liveMentions
+        : liveWindow?.mentions?.length
+          ? liveWindow.mentions
+        : extractImageMentions(blockText).filter((mention) => mention.index <= cutoff);
+    }
+
     const currentMention = mentions.filter(isStrictImageMention).at(-1);
     if (!currentMention) return null;
 
@@ -528,29 +631,13 @@
       source: "strict-live-image-mention",
       activeText: cleanDisplayText(context?.activeText || ""),
       textPreview: cleanDisplayText(context?.activeText || context?.highlightText || "").slice(0, 240),
+      debug: cleanDisplayText(context?.debug || ""),
       highlightAvailable: true,
       highlightStale: false,
       canCalibrateTimeline: false,
       textIndexSource: "strict-live-image-mention",
       textIndex: null
     };
-  };
-
-  const getSentenceAroundText = (blockText, activeText) => {
-    const block = cleanDisplayText(blockText);
-    const active = cleanDisplayText(activeText);
-    if (!block || active.length < 4) return active || block;
-
-    const index = block.toLowerCase().indexOf(active.toLowerCase());
-    if (index < 0) return active || block;
-
-    const before = block.slice(0, index);
-    const after = block.slice(index + active.length);
-    const sentenceStart = Math.max(before.lastIndexOf("."), before.lastIndexOf("?"), before.lastIndexOf("!")) + 1;
-    const afterStops = [after.indexOf("."), after.indexOf("?"), after.indexOf("!")].filter((n) => n >= 0);
-    const sentenceEnd = afterStops.length ? index + active.length + Math.min(...afterStops) + 1 : block.length;
-
-    return block.slice(sentenceStart, sentenceEnd).trim();
   };
 
   const getSentenceInfoAroundIndex = (blockText, index, activeLength = 0) => {
@@ -576,31 +663,122 @@
     };
   };
 
-  const getSentenceAroundIndex = (blockText, index, activeLength = 0) => {
-    return getSentenceInfoAroundIndex(blockText, index, activeLength).text;
+  const getSpeechifyAutoscrollCueInfo = (blockText = "") => {
+    const block = cleanDisplayText(blockText).toLowerCase();
+    const cues = Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.autoscrollCue))
+      .map((el) => ({
+        el,
+        text: cleanDisplayText(el.textContent || "")
+      }))
+      .filter((item) => item.text.length >= 2 && item.text.length <= 80);
+
+    const cue = cues.find((item) => block && findCueOffsetsInText(block, item.text).length) || cues[0] || null;
+    if (!cue) return { text: "", rect: null };
+
+    const rect = isVisibleThroughAncestors(cue.el) ? cue.el.getBoundingClientRect() : null;
+    return {
+      text: cue.text,
+      rect: rect && rect.width && rect.height ? rect : null
+    };
   };
 
   const getSpeechifyAutoscrollCueText = (blockText = "") => {
-    const block = cleanDisplayText(blockText).toLowerCase();
-    const cues = Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.autoscrollCue))
-      .map((el) => cleanDisplayText(el.textContent || ""))
-      .filter((text) => text.length >= 2 && text.length <= 80);
-
-    if (!cues.length) return "";
-    return cues.find((text) => block && block.includes(text.toLowerCase())) || cues[0] || "";
+    return getSpeechifyAutoscrollCueInfo(blockText).text;
   };
 
-  const getPrimarySvgHighlightRect = (block) => {
-    if (!block) return null;
+  const makeClientRect = (left, top, right, bottom) => {
+    const safeLeft = Math.min(left, right);
+    const safeTop = Math.min(top, bottom);
+    const safeRight = Math.max(left, right);
+    const safeBottom = Math.max(top, bottom);
+    return {
+      left: safeLeft,
+      top: safeTop,
+      right: safeRight,
+      bottom: safeBottom,
+      width: safeRight - safeLeft,
+      height: safeBottom - safeTop
+    };
+  };
+
+  const getSvgGraphicClientRect = (el) => {
+    if (!el) return null;
+
+    try {
+      if (typeof el.getBBox === "function" && typeof el.getScreenCTM === "function") {
+        const box = el.getBBox();
+        const matrix = el.getScreenCTM();
+        if (box && matrix && Number.isFinite(box.width) && Number.isFinite(box.height) && box.width > 0 && box.height > 0) {
+          const points = [
+            new DOMPoint(box.x, box.y).matrixTransform(matrix),
+            new DOMPoint(box.x + box.width, box.y).matrixTransform(matrix),
+            new DOMPoint(box.x, box.y + box.height).matrixTransform(matrix),
+            new DOMPoint(box.x + box.width, box.y + box.height).matrixTransform(matrix)
+          ];
+          const rect = makeClientRect(
+            Math.min(...points.map((point) => point.x)),
+            Math.min(...points.map((point) => point.y)),
+            Math.max(...points.map((point) => point.x)),
+            Math.max(...points.map((point) => point.y))
+          );
+          if (rect.width > 0 && rect.height > 0) return rect;
+        }
+      }
+    } catch {}
+
+    const rect = el.getBoundingClientRect?.();
+    return rect && rect.width > 0 && rect.height > 0 ? rect : null;
+  };
+
+  const getPrimarySvgHighlightRects = (block) => {
+    if (!block) return [];
     const primarySvg =
       block.querySelector('svg[style*="--color-hglt-prim"]') ||
       block.querySelector('[style*="--color-hglt-prim"] svg') ||
       block.querySelector('[style*="--color-hglt-prim"]');
-    if (!primarySvg) return null;
+    if (!primarySvg) return [];
+
+    const shapes = Array.from(
+      primarySvg.querySelectorAll?.("path, rect, polygon, polyline, circle, ellipse") || []
+    )
+      .map(getSvgGraphicClientRect)
+      .filter((rect) => rect && rect.width > 0 && rect.height > 0)
+      .filter((rect) => rect.width <= 900 && rect.height <= 240);
+
+    if (shapes.length) return shapes;
 
     const rect = primarySvg.getBoundingClientRect();
-    if (!rect || !rect.width || !rect.height) return null;
-    return rect;
+    if (!rect || !rect.width || !rect.height) return [];
+    if (rect.height > 240 || rect.width > 900) return [];
+    return [rect];
+  };
+
+  const getPrimarySvgHighlightRect = (block) => {
+    const rects = getPrimarySvgHighlightRects(block);
+    return rects.length ? rects[rects.length - 1] : null;
+  };
+
+  const getSecondarySvgHighlightRects = (block) => {
+    if (!block) return [];
+    const secondarySvgs = Array.from(
+      block.querySelectorAll('svg[style*="--color-hglt-sec"], [style*="--color-hglt-sec"] svg')
+    );
+
+    return secondarySvgs
+      .flatMap((svg) => Array.from(svg.querySelectorAll?.("path, rect, polygon, polyline, circle, ellipse") || []))
+      .map(getSvgGraphicClientRect)
+      .filter((rect) => rect && rect.width > 0 && rect.height > 0)
+      .filter((rect) => rect.width <= 1200 && rect.height <= 260);
+  };
+
+  const rectIntersects = (a, b, padding = 3) => {
+    if (!a || !b) return false;
+    return (
+      a.right >= b.left - padding &&
+      a.left <= b.right + padding &&
+      a.bottom >= b.top - padding &&
+      a.top <= b.bottom + padding
+    );
   };
 
   const getTextNodesUnder = (root) => {
@@ -617,44 +795,145 @@
     return nodes;
   };
 
-  const getElementTextIndexWithinBlock = (block, el) => {
-    if (!block || !el || block === el || !block.contains(el)) return -1;
+  const getTextRangeCoveredByRects = (block, highlightRects) => {
+    const blockText = cleanDisplayText(block?.textContent || "");
+    if (!block || !blockText || !highlightRects?.length) return null;
 
     const textNodes = getTextNodesUnder(block);
     let rawPrefix = "";
+    const covered = [];
 
     for (const node of textNodes) {
-      if (el.contains(node)) {
-        return cleanDisplayText(rawPrefix).length;
+      const raw = node.nodeValue || "";
+      const wordRe = /\S+/g;
+      let match;
+
+      while ((match = wordRe.exec(raw)) !== null) {
+        try {
+          const range = document.createRange();
+          range.setStart(node, match.index);
+          range.setEnd(node, Math.min(raw.length, match.index + match[0].length));
+          const rects = Array.from(range.getClientRects()).filter((rect) => rect.width && rect.height);
+          range.detach?.();
+          if (!rects.some((rect) => highlightRects.some((highlightRect) => rectIntersects(rect, highlightRect)))) {
+            continue;
+          }
+
+          covered.push({
+            start: cleanDisplayText(rawPrefix + raw.slice(0, match.index)).length,
+            end: cleanDisplayText(rawPrefix + raw.slice(0, match.index + match[0].length)).length
+          });
+        } catch {}
       }
-      rawPrefix += node.nodeValue || "";
+
+      rawPrefix += raw;
     }
 
-    return -1;
+    if (!covered.length) return null;
+    const start = Math.max(0, Math.min(...covered.map((item) => item.start)));
+    const end = Math.min(blockText.length, Math.max(...covered.map((item) => item.end)));
+    if (end <= start) return null;
+
+    return {
+      text: blockText.slice(start, end).trim(),
+      start,
+      end
+    };
   };
 
-  const getReaderActiveContextForElement = (block, el, text) => {
-    const blockText = cleanDisplayText(block?.textContent || "");
-    const highlightText = cleanDisplayText(text || "");
-    if (!blockText) {
-      return { activeText: "", activeTextIndex: -1, focusTextIndex: -1 };
+  const rectIsBeforeOrAtAnchor = (rect, anchorRect) => {
+    if (!rect || !anchorRect) return false;
+    const lineSlack = Math.max(4, Math.min(18, anchorRect.height * 0.75));
+    if (rect.bottom < anchorRect.top - lineSlack) return true;
+
+    const sameLine =
+      rect.top <= anchorRect.bottom + lineSlack &&
+      rect.bottom >= anchorRect.top - lineSlack;
+    return sameLine && rect.left <= anchorRect.right + lineSlack;
+  };
+
+  const getRenderedTextBeforeRect = (block, anchorRect) => {
+    if (!block || !anchorRect) return "";
+
+    const textNodes = getTextNodesUnder(block);
+    const words = [];
+    for (const node of textNodes) {
+      const raw = node.nodeValue || "";
+      const wordRe = /\S+/g;
+      let match;
+
+      while ((match = wordRe.exec(raw)) !== null) {
+        try {
+          const range = document.createRange();
+          range.setStart(node, match.index);
+          range.setEnd(node, Math.min(raw.length, match.index + match[0].length));
+          const rects = Array.from(range.getClientRects()).filter((rect) => rect.width && rect.height);
+          range.detach?.();
+
+          if (rects.some((rect) => rectIsBeforeOrAtAnchor(rect, anchorRect))) {
+            words.push(match[0]);
+          }
+        } catch {}
+      }
     }
 
-    const elementIndex = getElementTextIndexWithinBlock(block, el);
-    if (elementIndex >= 0) {
-      const sentenceInfo = getSentenceInfoAroundIndex(blockText, elementIndex, highlightText.length);
-      return {
-        activeText: sentenceInfo.text || blockText,
-        activeTextIndex: sentenceInfo.index >= 0 ? sentenceInfo.index : 0,
-        focusTextIndex: elementIndex
-      };
+    return cleanDisplayText(words.join(" "));
+  };
+
+  const findHighlightedCueRange = (ranges, cueText, focusIndex = -1) => {
+    const cue = cleanDisplayText(cueText);
+    if (!cue) return null;
+
+    const matches = (ranges || [])
+      .flatMap((range) => {
+        const offsets = findCueOffsetsInText(range?.text || "", cue);
+        return offsets.map((cueOffset) => {
+          const cueIndex = Math.max(0, Number(range.start) || 0) + cueOffset;
+          const distance = Number.isFinite(focusIndex) && focusIndex >= 0
+            ? Math.abs(cueIndex - focusIndex)
+            : Number.MAX_SAFE_INTEGER - cueIndex;
+          return {
+            ...range,
+            cueIndex,
+            distance
+          };
+        });
+      })
+      .sort((a, b) => a.distance - b.distance || b.cueIndex - a.cueIndex);
+
+    return matches[0] || null;
+  };
+
+  const getLiveSentenceInfoForFocus = (block, blockText, focusIndex, cueText = "") => {
+    const secondaryRanges = getSecondarySvgHighlightRects(block)
+      .map((rect) => getTextRangeCoveredByRects(block, [rect]))
+      .filter((range) => range?.text);
+    const cueRange = findHighlightedCueRange(secondaryRanges, cueText, focusIndex);
+    const highlightedRange =
+      cueRange ||
+      secondaryRanges.find((range) => focusIndex >= range.start - 3 && focusIndex <= range.end + 3);
+    const sentenceFocus = Number.isFinite(cueRange?.cueIndex) ? cueRange.cueIndex : focusIndex;
+
+    if (highlightedRange) {
+      const sentenceInfo = getSentenceInfoAroundIndex(
+        blockText,
+        sentenceFocus,
+        Math.max(1, cleanDisplayText(cueText).length || highlightedRange.end - highlightedRange.start)
+      );
+      return sentenceInfo.text ? sentenceInfo : highlightedRange;
     }
 
-    const activeText = getSentenceAroundText(blockText, highlightText);
+    return getSentenceInfoAroundIndex(blockText, focusIndex, Math.max(1, cleanDisplayText(cueText).length));
+  };
+
+  const getReaderFocusPoint = (block) => {
+    const root = firstVisible(SPEECHIFY_SELECTORS.readerScrollContainer);
+    const rect = root?.getBoundingClientRect?.() || block?.getBoundingClientRect?.();
+    if (!rect || !rect.width || !rect.height) return null;
     return {
-      activeText,
-      activeTextIndex: activeText ? findTextIndexSimple(blockText, activeText) : -1,
-      focusTextIndex: highlightText ? findTextIndexSimple(blockText, highlightText) : -1
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height * 0.45,
+      rect
     };
   };
 
@@ -663,379 +942,271 @@
     const blockText = cleanDisplayText(block?.textContent || "");
     if (!block || cue.length < 2 || !blockText) return -1;
 
-    const lowerCue = cue.toLowerCase();
+    const cueRe = makeWholeCueRegex(cue);
+    if (!cueRe) return -1;
+    const focusPoint = targetRect
+      ? {
+          x: targetRect.left + targetRect.width / 2,
+          y: targetRect.top + targetRect.height / 2,
+          rect: targetRect
+        }
+      : getReaderFocusPoint(block);
     const textNodes = getTextNodesUnder(block);
-    let globalRawOffset = 0;
+    let rawPrefix = "";
     let best = null;
 
     for (const node of textNodes) {
       const raw = node.nodeValue || "";
-      const lowerRaw = raw.toLowerCase();
-      let localIndex = lowerRaw.indexOf(lowerCue);
+      const re = makeWholeCueRegex(cue);
+      let match;
 
-      while (localIndex >= 0) {
-        let score = globalRawOffset + localIndex;
+      while ((match = re.exec(raw)) !== null) {
+        const localIndex = match.index + String(match[1] || "").length;
+        let score = cleanDisplayText(rawPrefix + raw.slice(0, localIndex)).length;
 
-        if (targetRect) {
-          try {
-            const range = document.createRange();
-            range.setStart(node, localIndex);
-            range.setEnd(node, Math.min(raw.length, localIndex + cue.length));
-            const rects = Array.from(range.getClientRects()).filter((rect) => rect.width && rect.height);
-            range.detach?.();
+        try {
+          const range = document.createRange();
+          range.setStart(node, localIndex);
+          range.setEnd(node, Math.min(raw.length, localIndex + cue.length));
+          const rects = Array.from(range.getClientRects()).filter((rect) => rect.width && rect.height);
+          range.detach?.();
 
-            const targetX = targetRect.left + targetRect.width / 2;
-            const targetY = targetRect.top + targetRect.height / 2;
-            const bestRectDistance = rects.length
-              ? Math.min(
-                  ...rects.map((rect) => {
-                    const dx = rect.left + rect.width / 2 - targetX;
-                    const dy = rect.top + rect.height / 2 - targetY;
-                    return Math.hypot(dx, dy);
-                  })
-                )
-              : 5000;
+          if (rects.length && focusPoint) {
+            const rootRect = focusPoint.rect;
+            const bestRectDistance = Math.min(
+              ...rects.map((rect) => {
+                const dx = rect.left + rect.width / 2 - focusPoint.x;
+                const dy = rect.top + rect.height / 2 - focusPoint.y;
+                const outsideViewport = targetRect
+                  ? 0
+                  : rect.bottom < rootRect.top || rect.top > rootRect.bottom || rect.right < rootRect.left || rect.left > rootRect.right
+                    ? 2500
+                    : 0;
+                return Math.hypot(dx, dy) + outsideViewport;
+              })
+            );
             score = bestRectDistance;
-          } catch {}
-        }
+          }
+        } catch {}
 
-        const rawPrefix = textNodes
-          .slice(0, textNodes.indexOf(node))
-          .map((item) => item.nodeValue || "")
-          .join("");
         const normalizedIndex = cleanDisplayText(rawPrefix + raw.slice(0, localIndex)).length;
         if (!best || score < best.score) {
           best = { score, index: normalizedIndex };
         }
 
-        localIndex = lowerRaw.indexOf(lowerCue, localIndex + Math.max(1, cue.length));
+        if (re.lastIndex <= match.index) re.lastIndex = match.index + 1;
       }
 
-      globalRawOffset += raw.length;
+      rawPrefix += raw;
     }
 
     if (best) return best.index;
-    return blockText.toLowerCase().indexOf(lowerCue);
+    return findCueOffsetsInText(blockText, cue)[0] ?? -1;
   };
 
-  const getSvgAnchoredReaderContext = (block) => {
+  const findTextIndexNearRect = (block, targetRect) => {
+    const blockText = cleanDisplayText(block?.textContent || "");
+    if (!block || !targetRect || !blockText) return -1;
+
+    const targetX = targetRect.left + targetRect.width / 2;
+    const targetY = targetRect.top + targetRect.height / 2;
+    const textNodes = getTextNodesUnder(block);
+    let rawPrefix = "";
+    let best = null;
+
+    for (const node of textNodes) {
+      const raw = node.nodeValue || "";
+      const wordRe = /\S+/g;
+      let match;
+
+      while ((match = wordRe.exec(raw)) !== null) {
+        try {
+          const range = document.createRange();
+          range.setStart(node, match.index);
+          range.setEnd(node, Math.min(raw.length, match.index + match[0].length));
+          const rects = Array.from(range.getClientRects()).filter((rect) => rect.width && rect.height);
+          range.detach?.();
+
+          if (!rects.length) continue;
+
+          const distance = Math.min(
+            ...rects.map((rect) => {
+              const dx = rect.left + rect.width / 2 - targetX;
+              const dy = rect.top + rect.height / 2 - targetY;
+              return Math.hypot(dx, dy);
+            })
+          );
+          const normalizedIndex = cleanDisplayText(rawPrefix + raw.slice(0, match.index)).length;
+          if (!best || distance < best.distance) {
+            best = { distance, index: normalizedIndex };
+          }
+        } catch {}
+      }
+
+      rawPrefix += raw;
+    }
+
+    return best ? best.index : -1;
+  };
+
+  const getLiveReaderBlocks = () => {
+    const root = firstVisible(SPEECHIFY_SELECTORS.readerScrollContainer) || document;
+    return Array.from(root.querySelectorAll(SPEECHIFY_SELECTORS.readerBlocks))
+      .filter(isVisible)
+      .filter((block) => cleanDisplayText(block.textContent || ""));
+  };
+
+  const getSimpleLiveReaderContext = () => {
+    const blocks = getLiveReaderBlocks();
+    if (!blocks.length) return null;
+
+    const cursorContexts = blocks
+      .map((item) => {
+        const primaryRects = getPrimarySvgHighlightRects(item);
+        if (!primaryRects.length) return null;
+
+        const blockText = cleanDisplayText(item?.textContent || "");
+        if (!blockText) return null;
+        const cue = getSpeechifyAutoscrollCueText(blockText);
+
+        const cursor = primaryRects
+          .map((rect) => {
+            const primaryCueRange = cue
+              ? findHighlightedCueRange(
+                  [getTextRangeCoveredByRects(item, [rect])].filter((range) => range?.text),
+                  cue,
+                  -1
+                )
+              : null;
+            const cueIndex = Number.isFinite(primaryCueRange?.cueIndex)
+              ? primaryCueRange.cueIndex
+              : cue
+                ? findCueOccurrenceIndexNearRect(item, cue, rect)
+                : -1;
+            return {
+              rect,
+              primaryCueRange,
+              cueIndex,
+              focusIndex: cueIndex >= 0 ? cueIndex : findTextIndexNearRect(item, rect)
+            };
+          })
+          .filter((candidate) => candidate.focusIndex >= 0)
+          .sort((a, b) => a.focusIndex - b.focusIndex)
+          .at(-1);
+        if (!cursor) return null;
+
+        const sentenceInfo = getLiveSentenceInfoForFocus(item, blockText, cursor.focusIndex, cue);
+        const liveWindow = getLiveMentionWindow(
+          blockText,
+          cursor.focusIndex + Math.max(1, cleanDisplayText(cue).length),
+          160,
+          item,
+          cursor.rect
+        );
+        const activeText = liveWindow.mentions.length ? liveWindow.text : sentenceInfo.text || "";
+
+        return {
+          activeText,
+          activeTextIndex: liveWindow.mentions.length
+            ? liveWindow.start
+            : sentenceInfo.start ?? (sentenceInfo.index >= 0 ? sentenceInfo.index : cursor.focusIndex),
+          blockText,
+          highlightText: cue || "",
+          focusTextIndex: cursor.focusIndex,
+          source: "explicit-live-cursor",
+          debug: `cue=${cue || "-"} focus=${cursor.focusIndex} primary=${Number.isFinite(cursor.primaryCueRange?.cueIndex) ? cursor.primaryCueRange.cueIndex : "-"} win=${liveWindow.source || "-"} mentions=${liveWindow.mentions.map((mention) => mention.imageNumber || mention.numbers?.[0]).join("/") || "-"} active=${activeText.slice(0, 90)}`,
+          liveMentions: liveWindow.mentions,
+          blockElement: item,
+          cursorRect: cursor.rect
+        };
+      })
+      .filter(Boolean);
+    if (cursorContexts.length) return cursorContexts.at(-1);
+
+    const cueText = getSpeechifyAutoscrollCueText();
+    const block =
+      blocks.find((item) => getPrimarySvgHighlightRect(item)) ||
+      blocks.find((item) => findCueOffsetsInText(item.textContent || "", cueText).length) ||
+      blocks[0];
     const blockText = cleanDisplayText(block?.textContent || "");
     if (!blockText) return null;
 
-    const cue = getSpeechifyAutoscrollCueText(blockText);
-    if (!cue) return null;
+    const cueInfo = getSpeechifyAutoscrollCueInfo(blockText);
+    const targetRect = getPrimarySvgHighlightRect(block) || cueInfo.rect;
+    const cue = cueInfo.text;
+    const highlightedCueRange = cue
+      ? findHighlightedCueRange(
+          [
+            targetRect ? getTextRangeCoveredByRects(block, [targetRect]) : null,
+            ...getSecondarySvgHighlightRects(block)
+            .map((rect) => getTextRangeCoveredByRects(block, [rect]))
+          ].filter((range) => range?.text),
+          cue,
+          -1
+        )
+      : null;
+    const focusIndex = Number.isFinite(highlightedCueRange?.cueIndex)
+      ? highlightedCueRange.cueIndex
+      : cue && targetRect
+        ? findCueOccurrenceIndexNearRect(block, cue, targetRect)
+        : targetRect
+          ? findTextIndexNearRect(block, targetRect)
+          : cue
+            ? findCueOccurrenceIndexNearRect(block, cue, null)
+            : -1;
+    if (focusIndex < 0) return null;
 
-    const cueIndex = findCueOccurrenceIndexNearRect(block, cue, getPrimarySvgHighlightRect(block));
-    if (cueIndex < 0) return null;
-
-    const activeText = getSentenceAroundIndex(blockText, cueIndex, cue.length) || getSentenceAroundText(blockText, cue);
+    const sentenceInfo = getLiveSentenceInfoForFocus(block, blockText, focusIndex, cue);
+    const liveWindow = getLiveMentionWindow(
+      blockText,
+      focusIndex + Math.max(1, cleanDisplayText(cue).length),
+      160,
+      block,
+      targetRect
+    );
+    const activeText = liveWindow.mentions.length ? liveWindow.text : sentenceInfo.text || "";
     return {
-      activeText: activeText || blockText,
+      activeText,
+      activeTextIndex: liveWindow.mentions.length
+        ? liveWindow.start
+        : sentenceInfo.start ?? (sentenceInfo.index >= 0 ? sentenceInfo.index : focusIndex),
       blockText,
       highlightText: cue,
-      highlightSignature: `${cue}|${blockText.slice(0, 360)}|${cueIndex}`.slice(0, 900),
-      source: "highlight-svg-cue"
+      focusTextIndex: focusIndex,
+      source: "explicit-live-cursor",
+      debug: `cue=${cue || "-"} focus=${focusIndex} highlighted=${Number.isFinite(highlightedCueRange?.cueIndex) ? highlightedCueRange.cueIndex : "-"} win=${liveWindow.source || "-"} mentions=${liveWindow.mentions.map((mention) => mention.imageNumber || mention.numbers?.[0]).join("/") || "-"} active=${activeText.slice(0, 90)}`,
+      liveMentions: liveWindow.mentions,
+      blockElement: block,
+      cursorRect: targetRect
     };
   };
 
-  const getReaderContextBlockForElement = (el, root) => {
-    if (!el) return null;
-
-    const preferred = el.closest?.(".reader-api-block") || el.closest?.("p");
-    const preferredText = cleanDisplayText(preferred?.textContent || "");
-    if (preferred && preferredText.length >= 24) return preferred;
-
-    let current = el.parentElement;
-    const rootEl = root === document ? document.body : root;
-    let best = preferred || el;
-
-    while (current && current !== rootEl && current !== document.body && current !== document.documentElement) {
-      const text = cleanDisplayText(current.textContent || "");
-      if (text.length >= 80 && text.length <= 3500) {
-        best = current;
-        break;
-      }
-      if (text.length > cleanDisplayText(best?.textContent || "").length && text.length <= 3500) {
-        best = current;
-      }
-      current = current.parentElement;
-    }
-
-    return best || el;
-  };
-
-  const isPaintedReaderHighlightElement = (el) => {
-    if (!el || !isVisible(el)) return false;
-    const text = cleanDisplayText(el.textContent || "");
-    if (!text || text.length > 1200) return false;
-
-    const style = getComputedStyle(el);
-    const bg = style.backgroundColor;
-    const painted = bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)";
-    if (!painted) return false;
-
-    const className = String(el.className || "").toLowerCase();
-    if (/(button|control|toolbar|menu|popover|tooltip)/i.test(className)) return false;
-
-    return true;
-  };
-
-  const parseCssRgb = (value) => {
-    const match = String(value || "").match(/rgba?\(([^)]+)\)/i);
-    if (!match) return null;
-    const parts = match[1]
-      .split(",")
-      .map((part) => Number(String(part).trim()))
-      .filter(Number.isFinite);
-    if (parts.length < 3) return null;
-    return { r: parts[0], g: parts[1], b: parts[2], a: parts.length >= 4 ? parts[3] : 1 };
-  };
-
-  const getHighlightColorScore = (el) => {
-    const rgb = parseCssRgb(getComputedStyle(el).backgroundColor);
-    if (!rgb || rgb.a === 0) return 0;
-
-    const max = Math.max(rgb.r, rgb.g, rgb.b);
-    const min = Math.min(rgb.r, rgb.g, rgb.b);
-    const saturation = max - min;
-    const bluePurpleBias = rgb.b - Math.min(rgb.r, rgb.g);
-    const grayPenalty = saturation < 18 ? 220 : 0;
-    const activeBlueBonus = bluePurpleBias > 18 ? -260 : bluePurpleBias > 8 ? -120 : 0;
-    const purpleSentenceBonus = rgb.b > rgb.r + 8 && rgb.b > rgb.g + 4 ? -130 : 0;
-
-    return grayPenalty + activeBlueBonus + purpleSentenceBonus;
-  };
-
-  const scoreReaderHighlightCandidate = (el) => {
-    if (!el) return Number.POSITIVE_INFINITY;
-    const text = cleanDisplayText(el.textContent || "");
-    const tagName = String(el.tagName || "").toUpperCase();
-    const className = String(el.className || "").toLowerCase();
-    const bg = getComputedStyle(el).backgroundColor;
-    const explicit =
-      el.matches?.('[aria-current="true"], [data-current="true"], [data-active="true"], mark') ||
-      /(highlight|hglt|listening|current)/i.test(className);
-    const painted = bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)";
-
-    let score = 0;
-    if (explicit) score -= 250;
-    if (painted) score -= 80;
-    if (/^(MARK|SPAN|STRONG|EM)$/i.test(tagName)) score -= 80;
-    if (/^(P|DIV|SECTION|ARTICLE)$/i.test(tagName)) score += 160;
-
-    if (text.length <= 0) score += 10000;
-    else if (text.length <= 80) score += text.length;
-    else if (text.length <= 260) score += 120 + text.length * 0.25;
-    else score += 600 + text.length;
-
-    score += getHighlightColorScore(el);
-
-    const rect = el.getBoundingClientRect();
-    score += Math.max(0, rect.height - 90) * 4;
-    return score;
-  };
-
-  const getHighlightedReaderContext = () => {
-    const root = firstVisible(SPEECHIFY_SELECTORS.readerScrollContainer) || document;
-    const candidates = Array.from(
-      root.querySelectorAll(
-        [
-          '[aria-current="true"]',
-          '[data-current="true"]',
-          '[data-active="true"]',
-          '[data-testid*="current"]',
-          '[data-testid*="listening"]',
-          '[class*="highlight"]',
-          '[class*="hglt"]',
-          '[class*="listening"]',
-          "mark"
-        ].join(",")
-      )
-    )
-      .slice(0, 120)
-      .sort((a, b) => scoreReaderHighlightCandidate(a) - scoreReaderHighlightCandidate(b));
-
-    for (const el of candidates) {
-      if (!isVisible(el)) continue;
-      const text = cleanDisplayText(el.textContent || "");
-      if (!text) continue;
-
-      const className = String(el.className || "").toLowerCase();
-      const bg = getComputedStyle(el).backgroundColor;
-      const explicit =
-        el.matches?.('[aria-current="true"], [data-current="true"], [data-active="true"], mark') ||
-        /(highlight|hglt|listening|current)/i.test(className);
-      const painted = bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)";
-
-      if (!explicit && !painted) continue;
-
-      const block = getReaderContextBlockForElement(el, root);
-      const blockText = cleanDisplayText(block.textContent || "");
-      const activeContext = getReaderActiveContextForElement(block, el, text);
-      const activeText = activeContext.activeText;
-      return {
-        activeText,
-        activeTextIndex: activeContext.activeTextIndex,
-        blockText,
-        highlightText: cleanDisplayText(text),
-        focusTextIndex: activeContext.focusTextIndex,
-        highlightSignature: `${cleanDisplayText(text).slice(0, 180)}|${activeText.slice(0, 220)}|${blockText.slice(0, 260)}`.slice(0, 900),
-        source: "highlight"
-      };
-    }
-
-    const paintedTextCandidates = Array.from(root.querySelectorAll("mark, span, strong, em, p, div"))
-      .slice(0, 3000)
-      .filter(isPaintedReaderHighlightElement)
-      .sort((a, b) => scoreReaderHighlightCandidate(a) - scoreReaderHighlightCandidate(b));
-
-    for (const el of paintedTextCandidates) {
-      const text = cleanDisplayText(el.textContent || "");
-      const block = getReaderContextBlockForElement(el, root);
-      const blockText = cleanDisplayText(block.textContent || "");
-      if (!blockText) continue;
-      const activeContext = getReaderActiveContextForElement(block, el, text);
-      const activeText = activeContext.activeText;
-      return {
-        activeText,
-        activeTextIndex: activeContext.activeTextIndex,
-        blockText,
-        highlightText: text,
-        focusTextIndex: activeContext.focusTextIndex,
-        highlightSignature: `${text.slice(0, 180)}|${activeText.slice(0, 220)}|${blockText.slice(0, 260)}`.slice(0, 900),
-        source: "highlight-painted"
-      };
-    }
-
-    const svgMarkedBlocks = Array.from(
-      root.querySelectorAll(
-        [
-          ".reader-api-block:has(svg path)",
-          ".reader-api-block:has(svg rect)",
-          ".reader-api-block:has(svg polygon)",
-          ".reader-api-block:has(svg polyline)",
-          ".reader-api-block:has(svg circle)",
-          ".reader-api-block:has(svg ellipse)"
-        ].join(",")
-      )
-    ).filter(isVisible);
-
-    for (const block of svgMarkedBlocks) {
-      const blockText = cleanDisplayText(block.textContent || "");
-      if (!blockText) continue;
-      const anchoredContext = getSvgAnchoredReaderContext(block);
-      if (anchoredContext) return anchoredContext;
-
-      const svgSignature = Array.from(
-        block.querySelectorAll("svg path, svg rect, svg polygon, svg polyline, svg circle, svg ellipse")
-      )
-        .map((el) => {
-          return [
-            el.tagName,
-            el.getAttribute("d"),
-            el.getAttribute("points"),
-            el.getAttribute("x"),
-            el.getAttribute("y"),
-            el.getAttribute("width"),
-            el.getAttribute("height"),
-            el.getAttribute("cx"),
-            el.getAttribute("cy"),
-            el.getAttribute("r"),
-            el.getAttribute("style"),
-            el.getAttribute("fill")
-          ]
-            .filter(Boolean)
-            .join(":");
-        })
-        .join("|");
-      return {
-        activeText: blockText,
-        blockText,
-        highlightText: "",
-        highlightSignature: `${blockText.slice(0, 180)}|${svgSignature}`.slice(0, 900),
-        source: "highlight-svg"
-      };
-    }
-
-    return null;
-  };
-
-  const trackHighlightedReaderContext = ({ context, isPlaying = false, tabAudible = false } = {}) => {
-    const now = Date.now();
-    if (!context) {
-      readerHighlightState.checkedAt = now;
-      return {
-        context: null,
-        highlightAvailable: false,
-        highlightStale: false,
-        highlightAgeMs: readerHighlightState.changedAt ? now - readerHighlightState.changedAt : null
-      };
-    }
-
-    const signature = cleanDisplayText(
-      context.highlightSignature || context.activeText || context.blockText || ""
-    ).slice(0, 900);
-    if (signature && signature !== readerHighlightState.signature) {
-      readerHighlightState = {
-        signature,
-        changedAt: now,
-        checkedAt: now,
-        source: context.source,
-        lastContext: context
-      };
-    } else {
-      readerHighlightState = {
-        ...readerHighlightState,
-        checkedAt: now,
-        source: context.source || readerHighlightState.source,
-        lastContext: context
-      };
-    }
-
-    const ageMs = readerHighlightState.changedAt ? now - readerHighlightState.changedAt : 0;
-    const visibleLiveHighlight = Boolean(
-      document.visibilityState === "visible" && String(context.source || "").startsWith("highlight")
-    );
-    return {
-      context,
-      highlightAvailable: true,
-      highlightStale: Boolean(!visibleLiveHighlight && (isPlaying || tabAudible) && ageMs > 15000),
-      highlightAgeMs: ageMs
-    };
-  };
-
-  const inferLectureImageSection = (timing = {}) => {
-    const highlightInfo = trackHighlightedReaderContext({
-      context: getHighlightedReaderContext(),
-      isPlaying: Boolean(timing.isPlaying),
-      tabAudible: Boolean(timing.tabAudible)
-    });
-
-    if (highlightInfo.context && !highlightInfo.highlightStale) {
-      const strictSection = buildStrictLiveImageSection(highlightInfo.context);
+  const inferLectureImageSection = () => {
+    // Keep this deliberately simple: update only on explicit image mentions before the live cursor.
+    const context = getSimpleLiveReaderContext();
+    if (context) {
+      const strictSection = buildStrictLiveImageSection(context);
       if (strictSection) {
         rememberExplicitImageSection(strictSection);
-        return strictSection;
+        return {
+          ...strictSection,
+          source: "explicit-live-image-mention",
+          highlightAvailable: true,
+          highlightStale: false
+        };
       }
-
-      const heldSection = getLastExplicitImageSection("strict-held-image");
-      return heldSection
-        ? {
-            ...heldSection,
-            highlightAvailable: true,
-            highlightStale: false,
-            source: "strict-held-image"
-          }
-        : null;
     }
 
-    const heldSection = getLastExplicitImageSection("strict-held-image");
+    const heldSection = getLastExplicitImageSection("explicit-held-image");
     return heldSection
       ? {
           ...heldSection,
-          highlightAvailable: highlightInfo.highlightAvailable,
-          highlightStale: highlightInfo.highlightStale,
-          source: "strict-held-image"
+          highlightAvailable: Boolean(context),
+          highlightStale: false,
+          source: "explicit-held-image",
+          activeText: cleanDisplayText(context?.activeText || heldSection.activeText || ""),
+          textPreview: cleanDisplayText(context?.activeText || heldSection.textPreview || "").slice(0, 240),
+          debug: cleanDisplayText(context?.debug || heldSection.debug || "")
         }
       : null;
   };
@@ -1296,6 +1467,21 @@
     };
   };
 
+  const getSpeechifyPlayState = ({ tabAudible = false } = {}) => {
+    const playButton = firstVisible(SPEECHIFY_SELECTORS.playerPlayButton);
+    const media = getActiveMediaElement();
+    const playLabel = cleanDisplayText(playButton?.getAttribute("aria-label") || "");
+    const mediaIsPlaying = Boolean(media && !media.paused && !media.ended);
+    const labelSaysPause = /^pause\b/i.test(playLabel);
+    const labelSaysPlay = /^(play|resume)\b/i.test(playLabel);
+
+    return {
+      available: Boolean(playButton),
+      playLabel,
+      isPlaying: labelSaysPause || (!labelSaysPlay && (mediaIsPlaying || Boolean(tabAudible)))
+    };
+  };
+
   const getSpeechifyPlayerState = ({ tabAudible = false } = {}) => {
     const playButton = firstVisible(SPEECHIFY_SELECTORS.playerPlayButton);
     const progressBar = firstVisible(SPEECHIFY_SELECTORS.progressBar);
@@ -1305,10 +1491,10 @@
     const voiceButton = firstVisible(SPEECHIFY_SELECTORS.playerVoiceButton);
     const titleButton = firstVisible(SPEECHIFY_SELECTORS.navFileActionButton);
     const media = getActiveMediaElement();
-    const playLabel = cleanDisplayText(playButton?.getAttribute("aria-label") || "");
+    const playState = getSpeechifyPlayState({ tabAudible });
+    const playLabel = playState.playLabel;
     const progress = parseFloat(progressBar?.getAttribute("aria-valuenow") || "");
-    const mediaIsPlaying = Boolean(media && !media.paused && !media.ended);
-    const isPlaying = Boolean(tabAudible) || mediaIsPlaying || /^pause\b/i.test(playLabel);
+    const isPlaying = playState.isPlaying;
     const rawElapsed = cleanDisplayText(timeButton?.innerText || "");
     const rawDuration = cleanDisplayText(durationButton?.innerText || "");
     const title = cleanDisplayText(
@@ -1422,14 +1608,26 @@
     return getSpeechifyPlayerState(stateOptions);
   };
 
+  const waitForSpeechifyPlayStateFlip = async (previousIsPlaying, stateOptions = {}, timeoutMs = 1500) => {
+    const start = Date.now();
+    while (Date.now() - start < timeoutMs) {
+      const current = getSpeechifyPlayState(stateOptions);
+      if (current.available && current.isPlaying !== previousIsPlaying) return true;
+      await sleep(50);
+    }
+    return false;
+  };
+
   const runSpeechifyPlayerRemote = async ({ action, speed, tabAudible }) => {
     const normalizedAction = String(action || "state");
     const stateOptions = { tabAudible: Boolean(tabAudible) };
     let state = null;
 
     if (normalizedAction === "playPause") {
+      const before = getSpeechifyPlayState(stateOptions);
       clickVisible(SPEECHIFY_SELECTORS.playerPlayButton, "play/pause");
-      await sleep(220);
+      if (before.available) await waitForSpeechifyPlayStateFlip(before.isPlaying, stateOptions);
+      else await sleep(120);
     } else if (normalizedAction === "back10") {
       clickVisible(SPEECHIFY_SELECTORS.playerBackwardButton, "back 10 seconds");
       adjustPlayerClock(-10);

@@ -3,7 +3,8 @@
   window.__radprimerSpeechifyRemoteLoaded = true;
 
   const HOST_ID = "radprimer-speechify-remote-host";
-  const ACTIVE_POLL_MS = 2500;
+  const ACTIVE_POLL_MS = 250;
+  const IDLE_POLL_MS = 2500;
   const HOVER_WAKE_MS = 120000;
   const COMMAND_WAKE_MS = 30 * 60 * 1000;
   const SHORTCUT_STORAGE_KEY = location.hostname.includes("statdx.com")
@@ -506,7 +507,7 @@
     bubbleSection.title = sectionLabel
       ? `Current lecture section: ${sectionDisplay}${sectionImageNumber ? `\nClick or press X to jump to ${getSectionSourceDisplay(section) ? `${getSectionSourceDisplay(section)} ` : ""}image ${sectionImageNumber}.` : ""}${section?.source ? `\nSource: ${section.source}` : ""}${
           section?.textPreview ? `\n\n${section.textPreview}` : ""
-        }`
+        }${section?.debug ? `\n\nDebug: ${section.debug}` : ""}`
       : "";
     fill.style.width = `${Math.max(0, Math.min(100, Number(state?.progress || 0)))}%`;
     playButtons.forEach((button) => {
@@ -545,11 +546,12 @@
   function scheduleNextRefresh() {
     clearTimeout(pollTimer);
     if (document.visibilityState !== "visible" || Date.now() > pollActiveUntil) return;
+    const delayMs = lastState?.isPlaying ? ACTIVE_POLL_MS : IDLE_POLL_MS;
     pollTimer = setTimeout(async () => {
       if (document.visibilityState !== "visible" || Date.now() > pollActiveUntil) return;
       await refreshState({ quiet: true });
       scheduleNextRefresh();
-    }, ACTIVE_POLL_MS);
+    }, delayMs);
   }
 
   function activateRemotePolling(durationMs = HOVER_WAKE_MS, { immediate = true } = {}) {
@@ -561,6 +563,14 @@
 
   async function handleAction(host, action, speed = "") {
     activateRemotePolling(COMMAND_WAKE_MS, { immediate: false });
+    const previousState = lastState;
+    if (action === "playPause" && lastState?.available) {
+      lastState = {
+        ...lastState,
+        isPlaying: !lastState.isPlaying,
+        playLabel: lastState.isPlaying ? "Play" : "Pause"
+      };
+    }
     busy = true;
     renderState(host, lastState);
 
@@ -569,6 +579,7 @@
       lastState = state;
       renderState(host, state);
     } catch (error) {
+      if (previousState) lastState = previousState;
       renderState(host, lastState, String(error?.message || error));
     } finally {
       busy = false;
@@ -608,6 +619,7 @@
 
   ensureHost();
   loadPlayerShortcutSettings();
+  activateRemotePolling(COMMAND_WAKE_MS);
   chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName !== "local" || !changes[SHORTCUT_STORAGE_KEY]) return;
     loadPlayerShortcutSettings();

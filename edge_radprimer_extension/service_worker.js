@@ -406,7 +406,7 @@ async function getSpeechifyPlayerStates(tabs) {
           tab,
           state: {
             ...response.result,
-            isPlaying: Boolean(response.result?.isPlaying || tab.audible),
+            isPlaying: Boolean(response.result?.isPlaying),
             tabAudible: Boolean(tab.audible)
           }
         });
@@ -424,10 +424,10 @@ async function getSpeechifyPlayerStates(tabs) {
 function chooseSpeechifyPlayerState(states) {
   if (!states.length) return null;
   return (
-    states.find((item) => item.tab?.audible || item.state?.tabAudible) ||
     states.find((item) => item.state?.isPlaying) ||
     states.find((item) => item.tab?.id === lastSpeechifyPlayerTabId) ||
     states.find((item) => item.tab?.active) ||
+    states.find((item) => item.tab?.audible || item.state?.tabAudible) ||
     states[0]
   );
 }
@@ -571,7 +571,7 @@ async function sendSpeechifyPlayerRemote(payload = {}, senderTab = null) {
       lastSpeechifyPlayerTabId = focusedTab.id;
       return {
         ...response.result,
-        isPlaying: Boolean(response.result?.isPlaying || updatedTab?.audible || focusedTab?.audible),
+        isPlaying: Boolean(response.result?.isPlaying),
         tabAudible: Boolean(updatedTab?.audible || focusedTab?.audible),
         calibrated: Boolean(response.result?.calibrated),
         syncAttempted: action === "calibrate" ? true : Boolean(response.result?.syncAttempted)
@@ -583,6 +583,39 @@ async function sendSpeechifyPlayerRemote(payload = {}, senderTab = null) {
 
   if (!tabs.length) {
     throw new Error("No Speechify tab is open. Open the Speechify lecture/player tab first.");
+  }
+
+  if (lastSpeechifyPlayerTabId) {
+    const preferredTab = tabs.find((tab) => tab.id === lastSpeechifyPlayerTabId);
+    if (preferredTab?.id) {
+      try {
+        const response = await sendSpeechifyMessageWithInjection(preferredTab.id, {
+          ...payload,
+          type: "SPEECHIFY_PLAYER_REMOTE",
+          action,
+          tabAudible: Boolean(preferredTab.audible)
+        });
+        if (response?.ok) {
+          let updatedTab = preferredTab;
+          try {
+            updatedTab = await chrome.tabs.get(preferredTab.id);
+          } catch {}
+          lastSpeechifyPlayerTabId = preferredTab.id;
+          const result = {
+            ...response.result,
+            isPlaying: Boolean(response.result?.isPlaying),
+            tabAudible: Boolean(updatedTab?.audible || preferredTab.audible)
+          };
+          if (action === "state") {
+            return {
+              ...result,
+              speechifyAwakeWindow: Boolean(updatedTab?.windowId && updatedTab.windowId !== senderTab?.windowId)
+            };
+          }
+          return result;
+        }
+      } catch {}
+    }
   }
 
   const { states, lastError: stateError } = await getSpeechifyPlayerStates(tabs);
@@ -622,7 +655,7 @@ async function sendSpeechifyPlayerRemote(payload = {}, senderTab = null) {
         } catch {}
         return {
           ...response.result,
-          isPlaying: Boolean(response.result?.isPlaying || updatedTab?.audible || tab.audible),
+          isPlaying: Boolean(response.result?.isPlaying),
           tabAudible: Boolean(updatedTab?.audible || tab.audible)
         };
       }
