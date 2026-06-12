@@ -6,9 +6,28 @@
   const HOST_ID = "radprimer-image-zoom-host";
   const FLOATING_CONTROL_ID = "radprimer-floating-zoom-control";
   const SHORTCUT_STORAGE_KEY = "radprimerZoomShortcutSettings";
+  const RUNNER_SETTINGS_KEY = "radprimerRunnerSettings";
   const ZOOM_BIND_VERSION = "2026-05-31-large-image-click";
   const MIN_DISPLAY_VALUE = 0.2;
   const MAX_DISPLAY_VALUE = 4;
+  const RUNNER_DEFAULTS = {
+    engine: "pathology",
+    ankiDeckMode: "auto",
+    ankiPathologyRoot: "Corebook",
+    ankiNormalRoot: "RadprimerNormal",
+    ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma"
+  };
+  const ANKI_BREADCRUMB_SKIP = new Set(["basic"]);
+  const ANKI_BREADCRUMB_ALIASES = new Map(
+    [
+      ["Musculoskeletal", "MSK"],
+      ["Gastrointestinal", "GI"],
+      ["Genitourinary", "GU"],
+      ["Neuroradiology", "Neuro"],
+      ["Pediatric", "Pediatrics"],
+      ["Interventional Radiology", "IR"]
+    ].map(([from, to]) => [from.toLowerCase(), to])
+  );
   const DEFAULT_SHORTCUTS = {
     close: "s",
     previous: "k",
@@ -68,6 +87,12 @@
   let lastOpenAt = 0;
   let shortcutSettings = { ...DEFAULT_SHORTCUTS };
   let shortcutCaptureAction = "";
+
+  function cleanText(value) {
+    return String(value || "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
 
   function injectPageStyle() {
     if (document.getElementById(STYLE_ID)) return;
@@ -212,6 +237,227 @@
     if (key === "+") return "+";
     if (key.length === 1) return key.toUpperCase();
     return key;
+  }
+
+  function extractTitleFromImageParams(selector) {
+    const raw = document.querySelector(selector)?.getAttribute("imageparams") || "";
+    if (!raw) return "";
+
+    try {
+      const query = raw.startsWith("?") ? raw.slice(1) : raw;
+      return cleanText(new URLSearchParams(query).get("parentTitle") || "");
+    } catch {
+      return "";
+    }
+  }
+
+  function getArticleTitle() {
+    const candidates = [
+      document.querySelector("h1.document-name-js.page-heading-js")?.textContent,
+      document.querySelector("#content .page-heading h1")?.textContent,
+      document.querySelector(".page-heading h1")?.textContent,
+      extractTitleFromImageParams("#focusImageData"),
+      extractTitleFromImageParams("#imageData"),
+      document.querySelector("head > title")?.textContent
+    ];
+
+    for (let title of candidates) {
+      title = cleanText(title).replace(/^Document:\s*/i, "");
+      if (title) return title;
+    }
+    return "";
+  }
+
+  function sanitizeAnkiBreadcrumbPart(value) {
+    return cleanText(value)
+      .replace(/::/g, " ")
+      .replace(/[\\/\t\r\n]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function sanitizeAnkiDeckPath(value) {
+    return String(value || "")
+      .split("::")
+      .map((part) => sanitizeAnkiBreadcrumbPart(part))
+      .filter(Boolean)
+      .join("::");
+  }
+
+  function normalizeAnkiDeckPartForCompare(value) {
+    return sanitizeAnkiBreadcrumbPart(value).toLowerCase();
+  }
+
+  function mapAnkiBreadcrumbPart(value) {
+    const part = sanitizeAnkiBreadcrumbPart(value);
+    if (!part) return "";
+    return ANKI_BREADCRUMB_ALIASES.get(part.toLowerCase()) || part;
+  }
+
+  function pushUniqueDeckPart(parts, part) {
+    const cleaned = sanitizeAnkiBreadcrumbPart(part);
+    if (!cleaned) return;
+    const last = parts.at(-1);
+    if (last && normalizeAnkiDeckPartForCompare(last) === normalizeAnkiDeckPartForCompare(cleaned)) return;
+    parts.push(cleaned);
+  }
+
+  function getBreadcrumbTrail() {
+    const selectors = [
+      ".breadcrumbs-js .nav-node-link-js",
+      ".breadcrumbs .nav-node-link-js",
+      ".breadcrumbs-js li",
+      ".breadcrumbs li",
+      ".breadcrumb .nav-node-link-js",
+      ".breadcrumb li",
+      "[class*='breadcrumb'] .nav-node-link-js",
+      "[class*='breadcrumb'] li"
+    ];
+
+    let nodes = [];
+    for (const selector of selectors) {
+      nodes = Array.from(document.querySelectorAll(selector)).filter(isVisible);
+      if (nodes.length) break;
+    }
+
+    const seen = new Set();
+    const trail = [];
+    nodes.forEach((node) => {
+      const text = sanitizeAnkiBreadcrumbPart(node.textContent);
+      const key = text.toLowerCase();
+      if (!text || seen.has(key)) return;
+      seen.add(key);
+      trail.push(text);
+    });
+
+    const title = sanitizeAnkiBreadcrumbPart(getArticleTitle());
+    if (title && trail.at(-1)?.toLowerCase() !== title.toLowerCase()) {
+      trail.push(title);
+    }
+    return trail;
+  }
+
+  function getAnkiBreadcrumbText() {
+    return getBreadcrumbTrail()
+      .map(sanitizeAnkiBreadcrumbPart)
+      .filter(Boolean)
+      .join("::");
+  }
+
+  async function getRunnerSettings() {
+    try {
+      const stored = await chrome.storage.local.get(RUNNER_SETTINGS_KEY);
+      return { ...RUNNER_DEFAULTS, ...(stored?.[RUNNER_SETTINGS_KEY] || {}) };
+    } catch {
+      return { ...RUNNER_DEFAULTS };
+    }
+  }
+
+  function getSelectedAnkiRoot(settings) {
+    if (String(settings?.ankiDeckMode || "auto").toLowerCase() === "manual") {
+      return sanitizeAnkiDeckPath(settings.ankiDeckRoot || RUNNER_DEFAULTS.ankiDeckRoot);
+    }
+    if (settings?.engine === "normal") {
+      return sanitizeAnkiDeckPath(settings.ankiNormalRoot || RUNNER_DEFAULTS.ankiNormalRoot);
+    }
+    return sanitizeAnkiDeckPath(settings?.ankiPathologyRoot || RUNNER_DEFAULTS.ankiPathologyRoot);
+  }
+
+  function buildRootedBreadcrumbText(breadcrumbTrail, root) {
+    const parts = sanitizeAnkiDeckPath(root).split("::").filter(Boolean);
+    const title = sanitizeAnkiBreadcrumbPart(getArticleTitle());
+
+    for (const rawPart of Array.isArray(breadcrumbTrail) ? breadcrumbTrail : []) {
+      const cleaned = sanitizeAnkiBreadcrumbPart(rawPart);
+      if (!cleaned || ANKI_BREADCRUMB_SKIP.has(cleaned.toLowerCase())) continue;
+
+      const colonMatch = cleaned.match(/^(.+?)\s*:\s*(.+)$/);
+      if (colonMatch) {
+        pushUniqueDeckPart(parts, mapAnkiBreadcrumbPart(colonMatch[1]));
+        pushUniqueDeckPart(parts, sanitizeAnkiBreadcrumbPart(colonMatch[2]));
+        continue;
+      }
+
+      pushUniqueDeckPart(parts, mapAnkiBreadcrumbPart(cleaned));
+    }
+
+    if (title && normalizeAnkiDeckPartForCompare(parts.at(-1)) !== normalizeAnkiDeckPartForCompare(title)) {
+      pushUniqueDeckPart(parts, title);
+    }
+
+    return parts.join("::");
+  }
+
+  async function getRootedAnkiBreadcrumbText() {
+    const settings = await getRunnerSettings();
+    const root = getSelectedAnkiRoot(settings);
+    return buildRootedBreadcrumbText(getBreadcrumbTrail(), root);
+  }
+
+  async function copyTextToClipboard(text) {
+    if (!text) return false;
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {}
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    textarea.style.top = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    let copied = false;
+    try {
+      copied = document.execCommand("copy");
+    } catch {
+      copied = false;
+    } finally {
+      textarea.remove();
+    }
+    return copied;
+  }
+
+  async function copyAnkiBreadcrumb() {
+    const button = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".copy-breadcrumb");
+    const previousText = button?.textContent || "Crumb";
+    const breadcrumb = getAnkiBreadcrumbText();
+    const copied = await copyTextToClipboard(breadcrumb);
+
+    if (button) {
+      button.textContent = copied ? "Copied" : "No crumb";
+      button.title = breadcrumb || "No RadPrimer breadcrumb found";
+      window.setTimeout(() => {
+        button.textContent = previousText;
+      }, 1200);
+    }
+
+    if (!copied && breadcrumb) {
+      console.warn("[RadPrimer image tools] Could not copy breadcrumb to clipboard.", breadcrumb);
+    }
+    return copied;
+  }
+
+  async function copyRootedAnkiBreadcrumb() {
+    const button = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".copy-root-breadcrumb");
+    const previousText = button?.textContent || "Root";
+    const breadcrumb = await getRootedAnkiBreadcrumbText();
+    const copied = await copyTextToClipboard(breadcrumb);
+
+    if (button) {
+      button.textContent = copied ? "Copied" : "No root";
+      button.title = breadcrumb || "No RadPrimer breadcrumb found";
+      window.setTimeout(() => {
+        button.textContent = previousText;
+      }, 1200);
+    }
+
+    if (!copied && breadcrumb) {
+      console.warn("[RadPrimer image tools] Could not copy rooted breadcrumb to clipboard.", breadcrumb);
+    }
+    return copied;
   }
 
   async function loadShortcutSettings() {
@@ -827,6 +1073,8 @@
               <button class="level-up" type="button" title="Increase brightness">L+</button>
               <button class="invert-window" type="button" title="Invert display">Inv</button>
               <button class="reset-window" type="button" title="Reset window/level">WL 0</button>
+              <button class="copy-breadcrumb" type="button" title="Copy RadPrimer breadcrumb as Anki hierarchy">Crumb</button>
+              <button class="copy-root-breadcrumb" type="button" title="Copy breadcrumb under selected Anki root">Root</button>
               <button class="close" type="button" title="Close">x</button>
             </div>
           </div>
@@ -867,6 +1115,8 @@
     shadow.querySelector(".level-up").addEventListener("click", () => adjustWindowing({ brightnessDelta: 0.08 }));
     shadow.querySelector(".invert-window").addEventListener("click", toggleWindowInvert);
     shadow.querySelector(".reset-window").addEventListener("click", resetWindowing);
+    shadow.querySelector(".copy-breadcrumb").addEventListener("click", copyAnkiBreadcrumb);
+    shadow.querySelector(".copy-root-breadcrumb").addEventListener("click", copyRootedAnkiBreadcrumb);
 
     const stage = shadow.querySelector(".stage");
     stage.addEventListener("wheel", onZoomWheel, { passive: false });

@@ -1,0 +1,86 @@
+{
+  "createdAt": "2026-06-12T02:26:29.582Z",
+  "articleTitle": "Vertebral Body and Ligaments",
+  "sourceUrl": "https://app.radprimer.com/document/5ce663a2-c8e8-4a8d-b30e-86b189345b46/lesson/54e95c88-60e9-4f2c-a97a-bb7c6d61e76e",
+  "engine": "normal",
+  "mode": "no_pictures",
+  "selectedImages": [],
+  "masterImageIds": [],
+  "sourceQualifiedImages": [],
+  "cases": [],
+  "totalImagesOnPage": 47,
+  "breadcrumbTrail": [
+    "Basic",
+    "Neuroradiology",
+    "Spine",
+    "Anatomy: Spinal Osseous Structures, Ligaments, and Muscles",
+    "Vertebral Body and Ligaments"
+  ],
+  "outputChars": 166323,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Created the downloadable TSV file:\n\n[Download radprimer_cards.tsv](sandbox:/mnt/data/radprimer_cards.tsv)\n\nCORE_EVIDENCE_FILE_BEGIN\nCORE_EVIDENCE_STATUS: NOT_USED\nCORE_SOURCE_BASIS: No Core Radiology content was retrieved or used for this run.\nCORE_FACTS_USED:\n\n* None.\nCORE_DERIVED_CARDS:\n* None.\nCORE_LIMITATIONS:\n* Cards and summary were derived from the provided RadPrimer article only.\nCORE_EVIDENCE_FILE_END\n\nRADPRIMER_CARD_TSV_DOWNLOAD_READY\nFILENAME: radprimer_cards.tsv\nEXPECTED_ROWS: 23",
+  "coreEvidence": {
+    "status": "NOT_USED",
+    "provided": true,
+    "chars": 258,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "RadprimerNormal",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "Basic",
+      "Neuroradiology",
+      "Spine",
+      "Anatomy: Spinal Osseous Structures, Ligaments, and Muscles",
+      "Vertebral Body and Ligaments"
+    ],
+    "deckParts": [
+      "RadprimerNormal",
+      "Neuro",
+      "Spine",
+      "Anatomy",
+      "Spinal Osseous Structures, Ligaments, and Muscles",
+      "Vertebral Body and Ligaments"
+    ],
+    "deckName": "RadprimerNormal::Neuro::Spine::Anatomy::Spinal Osseous Structures, Ligaments, and Muscles::Vertebral Body and Ligaments",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [],
+  "imageRegistry": [],
+  "masterSource": null,
+  "settings": {
+    "include": "none",
+    "caseMap": "",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "radprimer_cards.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000c2d4722f9d74ae16152e9e95&ts=494786&p=fs&cid=1&sig=7af5a74cd1ef40b333462b2c6a721bcb7b0c9d0c9d12107122dd4ff4a8ce0e0b&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000c2d4722f9d74ae16152e9e95&ts=494786&p=fs&cid=1&sig=7af5a74cd1ef40b333462b2c6a721bcb7b0c9d0c9d12107122dd4ff4a8ce0e0b&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 5160,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Vertebral_Body_and_Ligaments_2026-06-12T02-26-29-582Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}
