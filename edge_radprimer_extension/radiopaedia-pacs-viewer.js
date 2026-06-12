@@ -9,6 +9,8 @@
   const BRIDGE_REQUEST_EVENT = "radiopaedia-pacs-bridge-request";
   const BRIDGE_RESPONSE_EVENT = "radiopaedia-pacs-bridge-response";
   const BRIDGE_TIMEOUT_MS = 900;
+  const MIN_DISPLAY_VALUE = 0.2;
+  const MAX_DISPLAY_VALUE = 4;
 
   const state = {
     open: false,
@@ -16,13 +18,19 @@
     activeKey: "",
     imageUrl: "",
     scale: 1,
+    windowBrightness: 1,
+    windowContrast: 1,
+    inverted: false,
     x: 0,
     y: 0,
     dragging: false,
+    windowing: false,
     startX: 0,
     startY: 0,
     originX: 0,
     originY: 0,
+    windowOriginBrightness: 1,
+    windowOriginContrast: 1,
     frameStacks: new Map(),
     bridgeSeries: [],
     bridgeSeq: 0,
@@ -130,6 +138,7 @@
         label: "",
         modality: "",
         sequenceNumber: null,
+        seriesNumberLabel: "",
         seriesId: ""
       };
       state.frameStacks.set(key, stack);
@@ -151,6 +160,7 @@
       sliceNumber: info.sliceNumber,
       totalSlices: info.totalSlices,
       label: info.label,
+      seriesNumberLabel: info.seriesNumberLabel,
       modality: info.modality
     };
   }
@@ -163,6 +173,7 @@
     stack.label = info.label || stack.label;
     stack.modality = info.modality || stack.modality;
     stack.sequenceNumber = Number.isFinite(info.sequenceNumber) ? info.sequenceNumber : stack.sequenceNumber;
+    stack.seriesNumberLabel = info.seriesNumberLabel || stack.seriesNumberLabel;
     stack.seriesId = info.seriesId || stack.seriesId;
     if (Number.isFinite(info.totalSlices)) stack.totalSlices = info.totalSlices;
     if (Number.isFinite(info.sliceNumber)) {
@@ -200,6 +211,7 @@
       sliceNumber: frame?.sliceNumber || (Number.isFinite(frame?.frameIdx) ? frame.frameIdx + 1 : null),
       totalSlices: seriesInfo.totalSlices,
       label: seriesInfo.label,
+      seriesNumberLabel: seriesInfo.seriesNumberLabel,
       modality: seriesInfo.modality,
       bridgeFrameIndex: frame?.frameIdx,
       bridgeAvailable: true
@@ -227,6 +239,7 @@
         sliceNumber: frameIdx + 1,
         totalSlices: Number.isFinite(raw.totalSlices) ? raw.totalSlices : frames.length,
         label: raw.label || `Series ${Number.isFinite(raw.sequenceNumber) ? raw.sequenceNumber : index + 1}`,
+        seriesNumberLabel: raw.seriesNumberLabel || `Series ${Number.isFinite(raw.sequenceNumber) ? raw.sequenceNumber : index + 1}`,
         modality: raw.modality || bridgeState.modality || getModalityLabel(),
         bridgeFrameIndex: frameIdx,
         bridgeAvailable: true
@@ -240,6 +253,7 @@
         stack.label = seriesInfo.label;
         stack.modality = seriesInfo.modality;
         stack.sequenceNumber = seriesInfo.sequenceNumber;
+        stack.seriesNumberLabel = seriesInfo.seriesNumberLabel;
         stack.seriesId = seriesInfo.seriesId;
         frames.forEach((item, frameIndex) => {
           const snapshot = makeBridgeFrameInfo(seriesInfo, {
@@ -366,7 +380,10 @@
 
   function statusText(info) {
     if (!info) return "No Radiopaedia series detected.";
-    const pieces = [info.modality, info.label, sliceText(info)];
+    const seriesNumber = info.seriesNumberLabel && info.seriesNumberLabel !== info.label
+      ? info.seriesNumberLabel
+      : "";
+    const pieces = [info.modality, seriesNumber, sliceText(info)];
     const progress = getStackProgress(info);
     if (progress) pieces.push(progress);
     if (info.viewport) pieces.push(info.viewport);
@@ -655,6 +672,8 @@
         .tools {
           display: flex;
           align-items: center;
+          justify-content: flex-end;
+          flex-wrap: wrap;
           gap: 7px;
         }
         .tools button {
@@ -693,6 +712,9 @@
         }
         .stage.dragging {
           cursor: grabbing;
+        }
+        .stage.windowing {
+          cursor: crosshair;
         }
         .stage img {
           position: absolute;
@@ -790,6 +812,12 @@
               <button class="zoom-out" type="button" title="Zoom out">-</button>
               <button class="zoom-in" type="button" title="Zoom in">+</button>
               <button class="reset" type="button" title="Reset view">1:1</button>
+              <button class="window-down" type="button" title="Lower display window">W-</button>
+              <button class="window-up" type="button" title="Raise display window">W+</button>
+              <button class="level-down" type="button" title="Darker display level">L-</button>
+              <button class="level-up" type="button" title="Brighter display level">L+</button>
+              <button class="invert wide" type="button" title="Invert display">Inv</button>
+              <button class="reset-window wide" type="button" title="Reset display window">WL 0</button>
               <button class="sync wide" type="button" title="Sync with the live Radiopaedia viewport">Sync</button>
               <button class="close" type="button" title="Close">x</button>
             </div>
@@ -799,7 +827,7 @@
             <div class="empty" hidden>No rendered Radiopaedia image detected yet.</div>
           </div>
           <div class="footer">
-            <span class="hint">Mouse wheel/up/down: slices. Ctrl/Alt + wheel: zoom. Drag: pan. Double-click: zoom toggle.</span>
+            <span class="hint">Wheel/up/down: slices. Ctrl/Alt + wheel: zoom. Shift + wheel/drag: display window. Drag: pan.</span>
             <span class="bridge">Bridge pending</span>
             <span class="scale">100%</span>
           </div>
@@ -815,6 +843,12 @@
     shadow.querySelector(".zoom-in").addEventListener("click", () => zoomBy(1.2));
     shadow.querySelector(".zoom-out").addEventListener("click", () => zoomBy(1 / 1.2));
     shadow.querySelector(".reset").addEventListener("click", resetView);
+    shadow.querySelector(".window-up").addEventListener("click", () => adjustWindow({ contrastMultiplier: 1.15 }));
+    shadow.querySelector(".window-down").addEventListener("click", () => adjustWindow({ contrastMultiplier: 1 / 1.15 }));
+    shadow.querySelector(".level-up").addEventListener("click", () => adjustWindow({ brightnessDelta: 0.08 }));
+    shadow.querySelector(".level-down").addEventListener("click", () => adjustWindow({ brightnessDelta: -0.08 }));
+    shadow.querySelector(".invert").addEventListener("click", toggleInvert);
+    shadow.querySelector(".reset-window").addEventListener("click", resetWindowing);
     shadow.querySelector(".sync").addEventListener("click", () => syncFromPage({ preferVisible: true }));
 
     const stage = shadow.querySelector(".stage");
@@ -870,7 +904,13 @@
       label.textContent = info.label;
       const sub = document.createElement("span");
       sub.className = "sub";
-      sub.textContent = [sliceText(info), getStackProgress(info), info.viewport, info.visible ? "" : "snapshot"]
+      sub.textContent = [
+        info.seriesNumberLabel && info.seriesNumberLabel !== info.label ? info.seriesNumberLabel : "",
+        sliceText(info),
+        getStackProgress(info),
+        info.viewport,
+        info.visible ? "" : "snapshot"
+      ]
         .filter(Boolean)
         .join(" | ");
       meta.append(label, sub);
@@ -888,7 +928,7 @@
     const bridge = shadow.querySelector(".bridge");
     if (title) title.textContent = info ? `${info.label} - ${sliceText(info)}` : "No sequence selected";
     if (subtitle) subtitle.textContent = statusText(info);
-    if (scale) scale.textContent = `${Math.round(state.scale * 100)}%`;
+    if (scale) scale.textContent = displayStatusText();
     if (bridge) {
       bridge.textContent = bridgeStatusText();
       bridge.title = state.bridgeStatus === "connected"
@@ -1168,6 +1208,10 @@
 
   function onStageWheel(event) {
     event.preventDefault();
+    if (event.shiftKey) {
+      adjustWindow({ contrastMultiplier: event.deltaY < 0 ? 1.08 : 1 / 1.08 });
+      return;
+    }
     if (event.ctrlKey || event.altKey || event.metaKey) {
       zoomBy(event.deltaY < 0 ? 1.15 : 1 / 1.15);
       return;
@@ -1178,6 +1222,51 @@
   function zoomBy(multiplier) {
     state.scale = Math.max(0.25, Math.min(12, state.scale * multiplier));
     applyTransform();
+  }
+
+  function clampDisplayValue(value) {
+    return Math.max(MIN_DISPLAY_VALUE, Math.min(MAX_DISPLAY_VALUE, value));
+  }
+
+  function adjustWindow(options = {}) {
+    if (Number.isFinite(options.contrastMultiplier)) {
+      state.windowContrast = clampDisplayValue(state.windowContrast * options.contrastMultiplier);
+    }
+    if (Number.isFinite(options.brightnessDelta)) {
+      state.windowBrightness = clampDisplayValue(state.windowBrightness + options.brightnessDelta);
+    }
+    applyTransform();
+  }
+
+  function resetWindowing() {
+    state.windowBrightness = 1;
+    state.windowContrast = 1;
+    state.inverted = false;
+    applyTransform();
+  }
+
+  function toggleInvert() {
+    state.inverted = !state.inverted;
+    applyTransform();
+  }
+
+  function displayFilter() {
+    const filters = [
+      `brightness(${state.windowBrightness})`,
+      `contrast(${state.windowContrast})`
+    ];
+    if (state.inverted) filters.push("invert(1)");
+    return filters.join(" ");
+  }
+
+  function displayStatusText() {
+    const pieces = [`${Math.round(state.scale * 100)}%`];
+    if (state.windowContrast !== 1 || state.windowBrightness !== 1 || state.inverted) {
+      pieces.push(`W${Math.round(state.windowContrast * 100)}`);
+      pieces.push(`L${Math.round(state.windowBrightness * 100)}`);
+      if (state.inverted) pieces.push("Inv");
+    }
+    return pieces.join(" ");
   }
 
   function resetView() {
@@ -1191,6 +1280,7 @@
     const img = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".stage img");
     if (!img) return;
     img.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
+    img.style.filter = displayFilter();
     updateStatus(getActiveSeries());
   }
 
@@ -1209,6 +1299,17 @@
   function onPointerDown(event) {
     if (!pointerInsideImage(event)) return;
     const stage = event.currentTarget;
+    if (event.shiftKey) {
+      state.windowing = true;
+      state.startX = event.clientX;
+      state.startY = event.clientY;
+      state.windowOriginBrightness = state.windowBrightness;
+      state.windowOriginContrast = state.windowContrast;
+      stage.classList.add("windowing");
+      stage.setPointerCapture?.(event.pointerId);
+      return;
+    }
+
     state.dragging = true;
     state.startX = event.clientX;
     state.startY = event.clientY;
@@ -1219,6 +1320,15 @@
   }
 
   function onPointerMove(event) {
+    if (state.windowing) {
+      const dx = event.clientX - state.startX;
+      const dy = event.clientY - state.startY;
+      state.windowContrast = clampDisplayValue(state.windowOriginContrast * Math.exp(dx / 260));
+      state.windowBrightness = clampDisplayValue(state.windowOriginBrightness - dy / 260);
+      applyTransform();
+      return;
+    }
+
     if (!state.dragging) return;
     state.x = state.originX + event.clientX - state.startX;
     state.y = state.originY + event.clientY - state.startY;
@@ -1227,7 +1337,9 @@
 
   function onPointerUp(event) {
     const stage = event.currentTarget;
+    state.windowing = false;
     state.dragging = false;
+    stage.classList.remove("windowing");
     stage.classList.remove("dragging");
     stage.releasePointerCapture?.(event.pointerId);
   }
@@ -1253,7 +1365,9 @@
       "_",
       "0",
       "f",
-      "F"
+      "F",
+      "i",
+      "I"
     ];
     if (!handledKeys.includes(key)) return;
 
@@ -1268,6 +1382,7 @@
     else if (key === "+" || key === "=") zoomBy(1.2);
     else if (key === "-" || key === "_") zoomBy(1 / 1.2);
     else if (key === "0" || key === "f" || key === "F") resetView();
+    else if (key === "i" || key === "I") toggleInvert();
   }
 
   function scheduleRefresh() {

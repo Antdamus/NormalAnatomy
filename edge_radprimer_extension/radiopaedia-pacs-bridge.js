@@ -196,6 +196,21 @@
     return match ? parseInt(match[1], 10) : fallbackIndex + 1;
   }
 
+  function labelPart(value) {
+    return String(value || "")
+      .replace(/[_-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function seriesLabel(series, sequenceNumber) {
+    const parts = [
+      labelPart(series?.perspective),
+      labelPart(series?.specifics)
+    ].filter(Boolean);
+    return parts.length ? parts.join(" ") : `Series ${sequenceNumber}`;
+  }
+
   function getViewports(api) {
     try {
       return typeof api.R === "function" ? api.R() : [];
@@ -249,13 +264,18 @@
         const viewport = viewports.find((item) => String(item.seriesId?.() || "") === String(series.series_id));
         const frameIdx = seriesFrameIndex(viewport, series);
         const sequenceNumber = sequenceFromSeries(series, index);
+        const label = seriesLabel(series, sequenceNumber);
         return {
           key: String(series.series_id),
           seriesId: series.series_id,
           order: index,
           visible: Boolean(viewport && !viewport.props?.hidden),
           viewport: typeof viewport?.props?.slot === "number" ? `Viewport ${viewport.props.slot + 1}` : "",
-          label: `Series ${sequenceNumber}`,
+          label,
+          seriesNumberLabel: `Series ${sequenceNumber}`,
+          perspective: labelPart(series.perspective),
+          specifics: labelPart(series.specifics),
+          contentType: labelPart(series.content_type),
           modality,
           sequenceNumber,
           frameIdx,
