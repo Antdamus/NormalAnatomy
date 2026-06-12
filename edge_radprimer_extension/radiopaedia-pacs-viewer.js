@@ -4,6 +4,7 @@
 
   const HOST_ID = "radiopaedia-pacs-viewer-host";
   const LAUNCHER_ID = "radiopaedia-pacs-viewer-launcher";
+  const SHORTCUT_STORAGE_KEY = "radiopaediaPacsShortcutSettings";
   const REFRESH_DELAY_MS = 120;
   const SYNC_DELAYS = [70, 180, 360, 700];
   const BRIDGE_REQUEST_EVENT = "radiopaedia-pacs-bridge-request";
@@ -11,6 +12,43 @@
   const BRIDGE_TIMEOUT_MS = 900;
   const MIN_DISPLAY_VALUE = 0.2;
   const MAX_DISPLAY_VALUE = 4;
+  const PRELOAD_AHEAD = 18;
+  const PRELOAD_BEHIND = 8;
+  const PRELOAD_CONCURRENCY = 4;
+  const MAX_PRELOADED_IMAGES = 160;
+  const SLICE_SCRUB_PX = 26;
+  const DEFAULT_SHORTCUTS = {
+    close: "Escape",
+    previousSeries: "ArrowLeft",
+    nextSeries: "ArrowRight",
+    previousSlice: "ArrowUp",
+    nextSlice: "ArrowDown",
+    zoomIn: "+",
+    zoomOut: "-",
+    resetView: "0",
+    resetWindow: "w",
+    invert: "i",
+    sync: "r",
+    toggleDefaultDrag: "d",
+    panDrag: "Space",
+    windowDrag: "Shift"
+  };
+  const SHORTCUT_ACTIONS = [
+    ["close", "Close viewer"],
+    ["previousSeries", "Previous series"],
+    ["nextSeries", "Next series"],
+    ["previousSlice", "Previous slice"],
+    ["nextSlice", "Next slice"],
+    ["zoomIn", "Zoom in"],
+    ["zoomOut", "Zoom out"],
+    ["resetView", "Reset zoom/pan"],
+    ["resetWindow", "Reset window/level"],
+    ["invert", "Invert display"],
+    ["sync", "Sync viewport"],
+    ["toggleDefaultDrag", "Toggle default drag"],
+    ["panDrag", "Pan drag key"],
+    ["windowDrag", "Window/level drag key"]
+  ];
 
   const state = {
     open: false,
@@ -31,13 +69,25 @@
     originY: 0,
     windowOriginBrightness: 1,
     windowOriginContrast: 1,
+    sliceScrubbing: false,
+    scrubOriginSlice: null,
+    scrubLastSlice: null,
     frameStacks: new Map(),
     bridgeSeries: [],
     bridgeSeq: 0,
+    bridgeSetSeq: 0,
     bridgeRequests: new Map(),
     bridgeStatus: "pending",
     bridgeError: "",
     bridgeApiUrl: "",
+    imageCache: new Map(),
+    preloadQueue: [],
+    activePreloads: 0,
+    cacheGeneration: 0,
+    shortcutSettings: { ...DEFAULT_SHORTCUTS },
+    shortcutCaptureAction: "",
+    pressedKeys: new Set(),
+    defaultDragMode: "slice",
     suppressOwnKeyCapture: false,
     lastScrollAt: 0,
     refreshTimer: 0
@@ -78,6 +128,151 @@
 
   function getImageUrl(img) {
     return normalizeUrl(img?.currentSrc || img?.src || img?.getAttribute?.("src") || "");
+  }
+
+  function normalizeShortcutKey(value) {
+    const raw = String(value || "");
+    if (raw === " " || raw.toLowerCase() === "spacebar") return "Space";
+    if (/^esc$/i.test(raw)) return "Escape";
+    if (/^ctrl$/i.test(raw)) return "Control";
+    if (/^cmd$/i.test(raw)) return "Meta";
+    if (raw.length === 1) return raw.toLowerCase();
+    return raw;
+  }
+
+  function displayShortcutKey(value) {
+    const key = normalizeShortcutKey(value);
+    if (!key) return "Unassigned";
+    if (key === "Space") return "Space";
+    if (key === "Control") return "Ctrl";
+    if (key === "Meta") return "Meta";
+    if (key === "ArrowLeft") return "Left arrow";
+    if (key === "ArrowRight") return "Right arrow";
+    if (key === "ArrowUp") return "Up arrow";
+    if (key === "ArrowDown") return "Down arrow";
+    if (key.length === 1) return key.toUpperCase();
+    return key;
+  }
+
+  function isEditableTarget(target) {
+    return (
+      target instanceof HTMLInputElement ||
+      target instanceof HTMLTextAreaElement ||
+      target instanceof HTMLSelectElement ||
+      Boolean(target?.isContentEditable)
+    );
+  }
+
+  function getShortcutPanel() {
+    return document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".shortcut-panel") || null;
+  }
+
+  function renderShortcutPanel() {
+    const host = document.getElementById(HOST_ID);
+    if (!host?.shadowRoot) return;
+    const list = host.shadowRoot.querySelector(".shortcut-list");
+    if (!list) return;
+
+    list.innerHTML = "";
+    SHORTCUT_ACTIONS.forEach(([id, label]) => {
+      const row = document.createElement("div");
+      row.className = "shortcut-row";
+      const labelEl = document.createElement("span");
+      labelEl.textContent = label;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "shortcut-key";
+      button.dataset.shortcutAction = id;
+      button.textContent =
+        state.shortcutCaptureAction === id
+          ? "Press key..."
+          : displayShortcutKey(state.shortcutSettings[id]);
+      button.classList.toggle("listening", state.shortcutCaptureAction === id);
+      row.append(labelEl, button);
+      list.appendChild(row);
+    });
+  }
+
+  async function loadShortcutSettings() {
+    try {
+      const stored = await chrome.storage.local.get(SHORTCUT_STORAGE_KEY);
+      state.shortcutSettings = {
+        ...DEFAULT_SHORTCUTS,
+        ...(stored?.[SHORTCUT_STORAGE_KEY] || {})
+      };
+    } catch {
+      state.shortcutSettings = { ...DEFAULT_SHORTCUTS };
+    }
+    renderShortcutPanel();
+  }
+
+  async function saveShortcutSettings() {
+    try {
+      await chrome.storage.local.set({ [SHORTCUT_STORAGE_KEY]: state.shortcutSettings });
+    } catch {}
+  }
+
+  async function resetShortcutSettings() {
+    state.shortcutSettings = { ...DEFAULT_SHORTCUTS };
+    state.shortcutCaptureAction = "";
+    await saveShortcutSettings();
+    renderShortcutPanel();
+  }
+
+  function toggleShortcutPanel() {
+    const panel = getShortcutPanel();
+    if (!panel) return;
+    panel.hidden = !panel.hidden;
+    state.shortcutCaptureAction = "";
+    renderShortcutPanel();
+  }
+
+  function startShortcutCapture(actionId) {
+    if (!SHORTCUT_ACTIONS.some(([id]) => id === actionId)) return;
+    state.shortcutCaptureAction = actionId;
+    const panel = getShortcutPanel();
+    if (panel) panel.hidden = false;
+    renderShortcutPanel();
+  }
+
+  async function assignShortcutFromEvent(event) {
+    if (!state.shortcutCaptureAction) return false;
+    event.preventDefault();
+    event.stopPropagation();
+
+    const key = normalizeShortcutKey(event.key);
+    if (key === "Escape") {
+      state.shortcutCaptureAction = "";
+      renderShortcutPanel();
+      return true;
+    }
+
+    state.shortcutSettings = {
+      ...state.shortcutSettings,
+      [state.shortcutCaptureAction]: key === "Backspace" || key === "Delete" ? "" : key
+    };
+    state.shortcutCaptureAction = "";
+    await saveShortcutSettings();
+    renderShortcutPanel();
+    return true;
+  }
+
+  function shortcutMatches(event, actionId) {
+    const saved = normalizeShortcutKey(state.shortcutSettings[actionId]);
+    const pressed = normalizeShortcutKey(event.key);
+    if (!saved || !pressed) return false;
+    if (saved === pressed) return true;
+    return actionId === "zoomIn" && saved === "+" && pressed === "=";
+  }
+
+  function shortcutHeld(event, actionId) {
+    const saved = normalizeShortcutKey(state.shortcutSettings[actionId]);
+    if (!saved) return false;
+    if (saved === "Shift") return Boolean(event?.shiftKey) || state.pressedKeys.has(saved);
+    if (saved === "Control") return Boolean(event?.ctrlKey) || state.pressedKeys.has(saved);
+    if (saved === "Alt") return Boolean(event?.altKey) || state.pressedKeys.has(saved);
+    if (saved === "Meta") return Boolean(event?.metaKey) || state.pressedKeys.has(saved);
+    return state.pressedKeys.has(saved);
   }
 
   function parseImagePath(url) {
@@ -194,6 +389,15 @@
     if (known && total) return `${known}/${total} loaded`;
     if (known > 1) return `${known} loaded`;
     return "";
+  }
+
+  function getCachedImageCount(info) {
+    if (!info?.key) return 0;
+    let count = 0;
+    state.imageCache.forEach((entry) => {
+      if (entry.seriesKey === info.key && entry.status === "loaded") count += 1;
+    });
+    return count;
   }
 
   function makeBridgeFrameInfo(seriesInfo, frame) {
@@ -386,6 +590,8 @@
     const pieces = [info.modality, seriesNumber, sliceText(info)];
     const progress = getStackProgress(info);
     if (progress) pieces.push(progress);
+    const cachedImages = getCachedImageCount(info);
+    if (cachedImages) pieces.push(`${cachedImages} cached`);
     if (info.viewport) pieces.push(info.viewport);
     if (!info.visible) pieces.push("snapshot");
     return pieces.filter(Boolean).join(" | ");
@@ -470,7 +676,12 @@
 
   function renderSyncedInfo(info, options = {}) {
     renderSequenceList();
-    if (state.open && info) setImage(info, { resetView: Boolean(options.resetView) });
+    if (state.open && info) {
+      setImage(info, {
+        resetView: Boolean(options.resetView),
+        preloadDirection: options.preloadDirection || 0
+      });
+    }
     if (state.open && !info) showEmpty();
   }
 
@@ -635,6 +846,7 @@
           line-height: 1.35;
         }
         .main {
+          position: relative;
           min-width: 0;
           display: grid;
           grid-template-rows: auto minmax(0, 1fr) auto;
@@ -697,6 +909,59 @@
         .tools .slice-step {
           min-width: 58px;
         }
+        .shortcut-panel {
+          position: absolute;
+          top: 62px;
+          right: 12px;
+          z-index: 5;
+          width: min(340px, calc(100vw - 32px));
+          max-height: min(540px, calc(100vh - 96px));
+          overflow: auto;
+          padding: 12px;
+          border-radius: 8px;
+          background: rgba(11, 15, 22, .96);
+          border: 1px solid rgba(96, 165, 250, .34);
+          box-shadow: 0 24px 70px rgba(0, 0, 0, .48);
+        }
+        .shortcut-head {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          color: #e5e7eb;
+          font-size: 12px;
+          font-weight: 850;
+          margin-bottom: 10px;
+        }
+        .shortcut-head button,
+        .shortcut-key {
+          min-width: 86px;
+          height: 30px;
+          border-radius: 7px;
+          border: 1px solid rgba(148, 163, 184, .26);
+          background: #162033;
+          color: #e5e7eb;
+          font-size: 11px;
+          font-weight: 850;
+          cursor: pointer;
+        }
+        .shortcut-list {
+          display: grid;
+          gap: 7px;
+        }
+        .shortcut-row {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          align-items: center;
+          gap: 10px;
+          color: #cbd5e1;
+          font-size: 12px;
+          line-height: 1.2;
+        }
+        .shortcut-key.listening {
+          background: #bfdbfe;
+          color: #0f172a;
+        }
         .stage {
           position: relative;
           min-width: 0;
@@ -715,6 +980,9 @@
         }
         .stage.windowing {
           cursor: crosshair;
+        }
+        .stage.slicing {
+          cursor: ns-resize;
         }
         .stage img {
           position: absolute;
@@ -796,7 +1064,7 @@
             <span>Click a sequence, then scroll the stack in the main pane.</span>
           </div>
           <div class="sequence-list"></div>
-          <div class="side-foot">Wheel or up/down scrolls the native Radiopaedia stack and loads slices into this viewer. Ctrl/Alt + wheel zooms. Drag pans.</div>
+          <div class="side-foot">Left-drag scrubs slices by default. D toggles left-drag between slices and pan. Shift + drag adjusts display window.</div>
         </aside>
         <main class="main">
           <div class="topbar">
@@ -819,15 +1087,23 @@
               <button class="invert wide" type="button" title="Invert display">Inv</button>
               <button class="reset-window wide" type="button" title="Reset display window">WL 0</button>
               <button class="sync wide" type="button" title="Sync with the live Radiopaedia viewport">Sync</button>
+              <button class="keys wide" type="button" title="Keyboard shortcuts">Keys</button>
               <button class="close" type="button" title="Close">x</button>
             </div>
+          </div>
+          <div class="shortcut-panel" hidden>
+            <div class="shortcut-head">
+              <span>Study shortcuts</span>
+              <button class="shortcut-reset" type="button">Reset</button>
+            </div>
+            <div class="shortcut-list"></div>
           </div>
           <div class="stage">
             <img alt="Radiopaedia image">
             <div class="empty" hidden>No rendered Radiopaedia image detected yet.</div>
           </div>
           <div class="footer">
-            <span class="hint">Wheel/up/down: slices. Ctrl/Alt + wheel: zoom. Shift + wheel/drag: display window. Drag: pan.</span>
+            <span class="hint">Left-drag follows the current drag mode. D toggles slices/pan. Shift + wheel/drag: display window.</span>
             <span class="bridge">Bridge pending</span>
             <span class="scale">100%</span>
           </div>
@@ -850,6 +1126,13 @@
     shadow.querySelector(".invert").addEventListener("click", toggleInvert);
     shadow.querySelector(".reset-window").addEventListener("click", resetWindowing);
     shadow.querySelector(".sync").addEventListener("click", () => syncFromPage({ preferVisible: true }));
+    shadow.querySelector(".keys").addEventListener("click", toggleShortcutPanel);
+    shadow.querySelector(".shortcut-reset").addEventListener("click", resetShortcutSettings);
+    shadow.querySelector(".shortcut-list").addEventListener("click", (event) => {
+      const button = event.target?.closest?.("[data-shortcut-action]");
+      if (!button) return;
+      startShortcutCapture(button.dataset.shortcutAction);
+    });
 
     const stage = shadow.querySelector(".stage");
     stage.addEventListener("wheel", onStageWheel, { passive: false });
@@ -867,6 +1150,7 @@
     });
 
     document.documentElement.appendChild(host);
+    renderShortcutPanel();
     return host;
   }
 
@@ -957,6 +1241,7 @@
       };
     }
     if (img.src !== info.imageUrl) img.src = info.imageUrl;
+    queueImagePreload(info, { priority: true });
     img.hidden = false;
     img.style.display = "";
     empty.hidden = true;
@@ -969,6 +1254,7 @@
     }
 
     applyTransform();
+    preloadStackAround(info, options.preloadDirection || 0);
     renderSequenceList();
     updateStatus(info);
     return true;
@@ -1002,6 +1288,14 @@
     if (host) host.style.display = "none";
     state.open = false;
     state.dragging = false;
+    state.windowing = false;
+    state.sliceScrubbing = false;
+    state.scrubOriginSlice = null;
+    state.scrubLastSlice = null;
+    state.shortcutCaptureAction = "";
+    state.pressedKeys.clear();
+    clearImageCache();
+    renderShortcutPanel();
   }
 
   function activateSeries(key, options = {}) {
@@ -1055,6 +1349,152 @@
       visible: info.visible ?? cached.visible,
       totalSlices: info.totalSlices || cached.totalSlices || stack.totalSlices
     };
+  }
+
+  function clearImageCache() {
+    state.cacheGeneration += 1;
+    state.preloadQueue = [];
+    state.imageCache.forEach((entry) => {
+      entry.cancelled = true;
+      if (entry.img) {
+        entry.img.onload = null;
+        entry.img.onerror = null;
+        entry.img.src = "";
+      }
+    });
+    state.imageCache.clear();
+    state.activePreloads = 0;
+  }
+
+  function trimImageCache() {
+    if (state.imageCache.size <= MAX_PRELOADED_IMAGES) return;
+    const currentUrl = normalizeUrl(state.imageUrl);
+    const removable = Array.from(state.imageCache.values())
+      .filter((entry) => entry.status !== "loading" && entry.url !== currentUrl)
+      .sort((a, b) => a.lastUsed - b.lastUsed);
+
+    while (state.imageCache.size > MAX_PRELOADED_IMAGES && removable.length) {
+      const entry = removable.shift();
+      entry.cancelled = true;
+      if (entry.img) {
+        entry.img.onload = null;
+        entry.img.onerror = null;
+        entry.img.src = "";
+      }
+      state.imageCache.delete(entry.url);
+    }
+  }
+
+  function pumpPreloadQueue() {
+    while (state.open && state.activePreloads < PRELOAD_CONCURRENCY && state.preloadQueue.length) {
+      const entry = state.preloadQueue.shift();
+      if (!entry || entry.cancelled || entry.status !== "queued") continue;
+      if (entry.generation !== state.cacheGeneration) continue;
+
+      entry.status = "loading";
+      entry.lastUsed = Date.now();
+      state.activePreloads += 1;
+
+      const img = new Image();
+      img.decoding = "async";
+      if ("fetchPriority" in img) img.fetchPriority = entry.priority ? "high" : "low";
+      entry.img = img;
+
+      let settled = false;
+      const finish = (status) => {
+        if (settled) return;
+        settled = true;
+        img.onload = null;
+        img.onerror = null;
+
+        if (
+          !entry.cancelled &&
+          entry.generation === state.cacheGeneration &&
+          state.imageCache.get(entry.url) === entry
+        ) {
+          entry.status = status;
+          entry.lastUsed = Date.now();
+          if (state.open && entry.seriesKey === state.activeKey) updateStatus(getActiveSeries());
+        }
+
+        if (entry.generation === state.cacheGeneration) {
+          state.activePreloads = Math.max(0, state.activePreloads - 1);
+          trimImageCache();
+          pumpPreloadQueue();
+        }
+      };
+
+      const finishLoaded = () => {
+        if (typeof img.decode === "function") {
+          img.decode().then(() => finish("loaded")).catch(() => finish("loaded"));
+          return;
+        }
+        finish("loaded");
+      };
+
+      img.onload = finishLoaded;
+      img.onerror = () => finish("error");
+      img.src = entry.url;
+      if (img.complete && img.naturalWidth > 0) finishLoaded();
+    }
+  }
+
+  function queueImagePreload(frame, options = {}) {
+    const url = normalizeUrl(frame?.imageUrl || "");
+    if (!url) return;
+
+    const existing = state.imageCache.get(url);
+    if (existing) {
+      existing.lastUsed = Date.now();
+      if (options.priority && existing.status === "queued") {
+        existing.priority = true;
+        state.preloadQueue = state.preloadQueue.filter((entry) => entry !== existing);
+        state.preloadQueue.unshift(existing);
+      }
+      return;
+    }
+
+    const entry = {
+      url,
+      img: null,
+      status: "queued",
+      priority: Boolean(options.priority),
+      seriesKey: frame.key,
+      sliceNumber: frame.sliceNumber,
+      lastUsed: Date.now(),
+      generation: state.cacheGeneration,
+      cancelled: false
+    };
+
+    state.imageCache.set(url, entry);
+    if (entry.priority) state.preloadQueue.unshift(entry);
+    else state.preloadQueue.push(entry);
+    trimImageCache();
+    pumpPreloadQueue();
+  }
+
+  function preloadStackAround(info, direction = 0) {
+    if (!state.open || !info?.key) return;
+    const stack = getFrameStack(info.key);
+    const current = Number.isFinite(info.sliceNumber) ? info.sliceNumber : stack?.currentSlice;
+    if (!Number.isFinite(current)) return;
+
+    const total = info.totalSlices || stack?.totalSlices || null;
+    const primary = direction < 0 ? -1 : 1;
+    const offsets = [0];
+    for (let step = 1; step <= PRELOAD_AHEAD; step += 1) {
+      offsets.push(step * primary);
+      if (step <= PRELOAD_BEHIND) offsets.push(-step * primary);
+    }
+
+    offsets.forEach((offset, index) => {
+      const sliceNumber = current + offset;
+      if (sliceNumber < 1) return;
+      if (Number.isFinite(total) && sliceNumber > total) return;
+      const frame = getCachedFrame(info, sliceNumber);
+      if (!frame?.imageUrl) return;
+      queueImagePreload(frame, { priority: index < 5 });
+    });
   }
 
   function getNextSliceNumber(info, direction) {
@@ -1164,13 +1604,16 @@
     return didWheel || didKey;
   }
 
-  function setBridgeFrame(info, sliceNumber) {
+  function setBridgeFrame(info, sliceNumber, options = {}) {
     if (!info?.bridgeAvailable || !Number.isFinite(sliceNumber)) return Promise.resolve(false);
+    const sequence = Number.isFinite(options.sequence) ? options.sequence : state.bridgeSetSeq + 1;
+    state.bridgeSetSeq = Math.max(state.bridgeSetSeq, sequence);
     const frameIdx = Math.max(0, sliceNumber - 1);
     return requestBridge("set-frame", {
       seriesId: info.seriesId || info.key,
       frameIdx
     }).then((response) => {
+      if (sequence !== state.bridgeSetSeq) return true;
       setBridgeStatus(response, "Could not set Radiopaedia frame");
       if (!response?.ok || !applyBridgeState(response.state)) {
         updateStatus(getActiveSeries());
@@ -1179,24 +1622,32 @@
       const synced = state.series.find((item) => item.key === info.key) ||
         state.series.find((item) => String(item.seriesId) === String(info.seriesId)) ||
         selectInfoAfterSync();
-      renderSyncedInfo(synced, { resetView: false });
+      renderSyncedInfo(synced, {
+        resetView: false,
+        preloadDirection: options.preloadDirection || 0
+      });
       return true;
     });
   }
 
-  function scrollStack(direction) {
+  function setSliceNumber(sliceNumber, options = {}) {
     collectSeries();
     const info = getActiveSeries();
     if (!info) return false;
 
-    const nextSlice = getNextSliceNumber(info, direction);
-    const cached = getCachedFrame(info, nextSlice);
+    const direction = options.direction || Math.sign(sliceNumber - (info.sliceNumber || 0)) || 1;
+    const stack = getFrameStack(info.key);
+    const total = info.totalSlices || stack?.totalSlices;
+    const targetSlice = Number.isFinite(total)
+      ? Math.max(1, Math.min(total, sliceNumber))
+      : Math.max(1, sliceNumber);
+    const cached = getCachedFrame(info, targetSlice);
     if (cached && cached.imageUrl !== state.imageUrl) {
-      setImage(cached, { resetView: false });
+      setImage(cached, { resetView: false, preloadDirection: direction });
     }
 
     if (info.bridgeAvailable) {
-      setBridgeFrame(info, nextSlice).then((ok) => {
+      setBridgeFrame(info, targetSlice, { preloadDirection: direction }).then((ok) => {
         if (!ok && !cached) driveNativeStack(direction);
       });
       return true;
@@ -1206,9 +1657,19 @@
     return droveNativeStack || Boolean(cached);
   }
 
+  function scrollStack(direction) {
+    collectSeries();
+    const info = getActiveSeries();
+    if (!info) return false;
+
+    const nextSlice = getNextSliceNumber(info, direction);
+    if (!Number.isFinite(nextSlice)) return false;
+    return setSliceNumber(nextSlice, { direction });
+  }
+
   function onStageWheel(event) {
     event.preventDefault();
-    if (event.shiftKey) {
+    if (shortcutHeld(event, "windowDrag")) {
       adjustWindow({ contrastMultiplier: event.deltaY < 0 ? 1.08 : 1 / 1.08 });
       return;
     }
@@ -1260,7 +1721,7 @@
   }
 
   function displayStatusText() {
-    const pieces = [`${Math.round(state.scale * 100)}%`];
+    const pieces = [`${Math.round(state.scale * 100)}%`, `Drag ${state.defaultDragMode}`];
     if (state.windowContrast !== 1 || state.windowBrightness !== 1 || state.inverted) {
       pieces.push(`W${Math.round(state.windowContrast * 100)}`);
       pieces.push(`L${Math.round(state.windowBrightness * 100)}`);
@@ -1274,6 +1735,11 @@
     state.x = 0;
     state.y = 0;
     applyTransform();
+  }
+
+  function toggleDefaultDragMode() {
+    state.defaultDragMode = state.defaultDragMode === "pan" ? "slice" : "pan";
+    updateStatus(getActiveSeries());
   }
 
   function applyTransform() {
@@ -1297,9 +1763,11 @@
   }
 
   function onPointerDown(event) {
+    if (event.button !== 0) return;
     if (!pointerInsideImage(event)) return;
+    event.preventDefault();
     const stage = event.currentTarget;
-    if (event.shiftKey) {
+    if (shortcutHeld(event, "windowDrag")) {
       state.windowing = true;
       state.startX = event.clientX;
       state.startY = event.clientY;
@@ -1310,16 +1778,42 @@
       return;
     }
 
-    state.dragging = true;
+    if (shortcutHeld(event, "panDrag") || state.defaultDragMode === "pan") {
+      state.dragging = true;
+      state.startX = event.clientX;
+      state.startY = event.clientY;
+      state.originX = state.x;
+      state.originY = state.y;
+      stage.classList.add("dragging");
+      stage.setPointerCapture?.(event.pointerId);
+      return;
+    }
+
+    const info = getActiveSeries();
+    const stack = getFrameStack(info?.key);
+    const currentSlice = info?.sliceNumber || stack?.currentSlice;
+    if (!Number.isFinite(currentSlice)) return;
+    state.sliceScrubbing = true;
     state.startX = event.clientX;
     state.startY = event.clientY;
-    state.originX = state.x;
-    state.originY = state.y;
-    stage.classList.add("dragging");
+    state.scrubOriginSlice = currentSlice;
+    state.scrubLastSlice = currentSlice;
+    stage.classList.add("slicing");
     stage.setPointerCapture?.(event.pointerId);
   }
 
   function onPointerMove(event) {
+    if (state.sliceScrubbing) {
+      const offset = Math.round((event.clientY - state.startY) / SLICE_SCRUB_PX);
+      const targetSlice = state.scrubOriginSlice + offset;
+      if (Number.isFinite(targetSlice) && targetSlice !== state.scrubLastSlice) {
+        const direction = Math.sign(targetSlice - state.scrubLastSlice) || 1;
+        state.scrubLastSlice = targetSlice;
+        setSliceNumber(targetSlice, { direction });
+      }
+      return;
+    }
+
     if (state.windowing) {
       const dx = event.clientX - state.startX;
       const dy = event.clientY - state.startY;
@@ -1337,52 +1831,54 @@
 
   function onPointerUp(event) {
     const stage = event.currentTarget;
+    state.sliceScrubbing = false;
     state.windowing = false;
     state.dragging = false;
+    state.scrubOriginSlice = null;
+    state.scrubLastSlice = null;
+    stage.classList.remove("slicing");
     stage.classList.remove("windowing");
     stage.classList.remove("dragging");
     stage.releasePointerCapture?.(event.pointerId);
   }
 
-  function handleKeydown(event) {
+  function performShortcutAction(actionId) {
+    if (actionId === "close") closeViewer();
+    else if (actionId === "previousSeries") activateRelativeSeries(-1);
+    else if (actionId === "nextSeries") activateRelativeSeries(1);
+    else if (actionId === "previousSlice") scrollStack(-1);
+    else if (actionId === "nextSlice") scrollStack(1);
+    else if (actionId === "zoomIn") zoomBy(1.2);
+    else if (actionId === "zoomOut") zoomBy(1 / 1.2);
+    else if (actionId === "resetView") resetView();
+    else if (actionId === "resetWindow") resetWindowing();
+    else if (actionId === "invert") toggleInvert();
+    else if (actionId === "sync") syncFromPage({ preferVisible: true });
+    else if (actionId === "toggleDefaultDrag") toggleDefaultDragMode();
+  }
+
+  async function handleKeydown(event) {
+    const key = normalizeShortcutKey(event.key);
+    if (key) state.pressedKeys.add(key);
+
+    if (await assignShortcutFromEvent(event)) return;
     if (state.suppressOwnKeyCapture) return;
     if (!state.open) return;
-    if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
+    if (isEditableTarget(event.target)) return;
 
-    const key = event.key;
-    const handledKeys = [
-      "Escape",
-      "ArrowLeft",
-      "ArrowRight",
-      "ArrowUp",
-      "ArrowDown",
-      "PageUp",
-      "PageDown",
-      " ",
-      "+",
-      "=",
-      "-",
-      "_",
-      "0",
-      "f",
-      "F",
-      "i",
-      "I"
-    ];
-    if (!handledKeys.includes(key)) return;
+    for (const [actionId] of SHORTCUT_ACTIONS) {
+      if (!shortcutMatches(event, actionId)) continue;
+      event.preventDefault();
+      event.stopPropagation();
+      if (actionId === "panDrag" || actionId === "windowDrag") return;
+      performShortcutAction(actionId);
+      return;
+    }
+  }
 
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (key === "Escape") closeViewer();
-    else if (key === "ArrowLeft") activateRelativeSeries(-1);
-    else if (key === "ArrowRight") activateRelativeSeries(1);
-    else if (key === "ArrowUp" || key === "PageUp") scrollStack(-1);
-    else if (key === "ArrowDown" || key === "PageDown" || key === " ") scrollStack(1);
-    else if (key === "+" || key === "=") zoomBy(1.2);
-    else if (key === "-" || key === "_") zoomBy(1 / 1.2);
-    else if (key === "0" || key === "f" || key === "F") resetView();
-    else if (key === "i" || key === "I") toggleInvert();
+  function handleKeyup(event) {
+    const key = normalizeShortcutKey(event.key);
+    if (key) state.pressedKeys.delete(key);
   }
 
   function scheduleRefresh() {
@@ -1415,10 +1911,13 @@
   function init() {
     if (!isRadiopaediaCasePage()) return;
     ensureLauncher();
+    loadShortcutSettings();
     collectSeries();
     startObserver();
     document.addEventListener(BRIDGE_RESPONSE_EVENT, onBridgeResponse);
     document.addEventListener("keydown", handleKeydown, true);
+    document.addEventListener("keyup", handleKeyup, true);
+    window.addEventListener("blur", () => state.pressedKeys.clear());
     refreshFromBridge({ preferVisible: true });
     window.setTimeout(() => {
       ensureLauncher();

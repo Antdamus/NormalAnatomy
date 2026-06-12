@@ -5,6 +5,8 @@
   const STYLE_ID = "statdx-image-tools-style";
   const HOST_ID = "statdx-image-zoom-host";
   const STORAGE_KEY = "statdxZoomShortcutSettings";
+  const MIN_DISPLAY_VALUE = 0.2;
+  const MAX_DISPLAY_VALUE = 4;
   const DEFAULT_SHORTCUTS = {
     close: "s",
     previous: "k",
@@ -14,6 +16,8 @@
     zoomIn: "+",
     zoomOut: "-",
     reset: "0",
+    resetWindow: "w",
+    invertWindow: "i",
     playerPlayPause: "p",
     playerBack10: "ArrowLeft",
     playerForward10: "ArrowRight",
@@ -34,6 +38,12 @@
     startY: 0,
     originX: 0,
     originY: 0,
+    windowBrightness: 1,
+    windowContrast: 1,
+    inverted: false,
+    windowing: false,
+    windowOriginBrightness: 1,
+    windowOriginContrast: 1,
     captionCollapsed: false,
     sourceMode: "large",
     imageId: "",
@@ -53,6 +63,8 @@
     ["zoomIn", "Zoom in"],
     ["zoomOut", "Zoom out"],
     ["reset", "Reset zoom"],
+    ["resetWindow", "Reset window/level"],
+    ["invertWindow", "Invert display"],
     ["playerPlayPause", "Audio play/pause"],
     ["playerBack10", "Audio back 10 sec"],
     ["playerForward10", "Audio forward 10 sec"],
@@ -678,10 +690,13 @@
           box-shadow: none !important;
         }
         .tools {
+          position: relative;
           margin-left: auto;
           display: flex;
           gap: 8px;
           align-items: center;
+          flex-wrap: nowrap;
+          justify-content: flex-end;
           pointer-events: auto;
           padding: 8px;
           border-radius: 18px;
@@ -700,6 +715,28 @@
         }
         button:hover, select:hover { background: rgba(51, 65, 85, 0.98); }
         select { min-width: 90px; }
+        .control-panel {
+          position: absolute;
+          top: calc(100% + 10px);
+          right: 0;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(58px, auto));
+          gap: 8px;
+          width: max-content;
+          max-width: min(420px, calc(100vw - 36px));
+          padding: 10px;
+          border-radius: 16px;
+          background: rgba(11, 17, 29, 0.95);
+          border: 1px solid rgba(191, 219, 254, 0.28);
+          box-shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
+          backdrop-filter: blur(16px);
+        }
+        .control-panel[hidden] { display: none; }
+        .control-panel .image-jump {
+          grid-column: 1 / -1;
+          width: 100%;
+          max-width: none;
+        }
         .caption-pill { display: none; }
         .viewer.captions-collapsed .title { display: none; }
         .viewer.captions-collapsed .caption-pill {
@@ -754,11 +791,12 @@
           cursor: grab;
         }
         .stage.dragging { cursor: grabbing; }
+        .stage.windowing { cursor: crosshair; }
         .stage > img {
           max-width: 94vw;
           max-height: 90vh;
           transform-origin: center center;
-          will-change: transform;
+          will-change: transform, filter;
           pointer-events: none;
           box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.22), 0 30px 90px rgba(0, 0, 0, 0.45);
         }
@@ -768,13 +806,22 @@
           <div class="title"><span class="image-number"></span><span class="caption"></span></div>
           <button class="caption-pill" type="button">Caption</button>
           <div class="tools">
-            <select class="image-jump" title="Jump to image"></select>
-            <button class="zoom-out" type="button" title="Zoom out">-</button>
-            <button class="zoom-in" type="button" title="Zoom in">+</button>
-            <button class="reset" type="button" title="Reset zoom">1:1</button>
-            <button class="source" type="button" title="Toggle large/thumbnail source">Src</button>
+            <button class="control-toggle" type="button" title="Image controls" aria-expanded="false">Controls</button>
             <button class="keys" type="button" title="Keyboard shortcuts">Keys</button>
-            <button class="close" type="button" title="Close">x</button>
+            <div class="control-panel" hidden>
+              <select class="image-jump" title="Jump to image"></select>
+              <button class="zoom-out" type="button" title="Zoom out">-</button>
+              <button class="zoom-in" type="button" title="Zoom in">+</button>
+              <button class="reset" type="button" title="Reset zoom">1:1</button>
+              <button class="window-down" type="button" title="Decrease window contrast">W-</button>
+              <button class="window-up" type="button" title="Increase window contrast">W+</button>
+              <button class="level-down" type="button" title="Decrease brightness">L-</button>
+              <button class="level-up" type="button" title="Increase brightness">L+</button>
+              <button class="invert-window" type="button" title="Invert display">Inv</button>
+              <button class="reset-window" type="button" title="Reset window/level">WL 0</button>
+              <button class="source" type="button" title="Toggle large/thumbnail source">Src</button>
+              <button class="close" type="button" title="Close">x</button>
+            </div>
           </div>
         </div>
         <div class="shortcut-panel" hidden>
@@ -794,7 +841,14 @@
     shadow.querySelector(".zoom-in").addEventListener("click", () => zoomBy(1.25));
     shadow.querySelector(".zoom-out").addEventListener("click", () => zoomBy(1 / 1.25));
     shadow.querySelector(".reset").addEventListener("click", resetZoom);
+    shadow.querySelector(".window-down").addEventListener("click", () => adjustWindowing({ contrastMultiplier: 1 / 1.15 }));
+    shadow.querySelector(".window-up").addEventListener("click", () => adjustWindowing({ contrastMultiplier: 1.15 }));
+    shadow.querySelector(".level-down").addEventListener("click", () => adjustWindowing({ brightnessDelta: -0.08 }));
+    shadow.querySelector(".level-up").addEventListener("click", () => adjustWindowing({ brightnessDelta: 0.08 }));
+    shadow.querySelector(".invert-window").addEventListener("click", toggleWindowInvert);
+    shadow.querySelector(".reset-window").addEventListener("click", resetWindowing);
     shadow.querySelector(".source").addEventListener("click", toggleSourceMode);
+    shadow.querySelector(".control-toggle").addEventListener("click", toggleControlPanel);
     shadow.querySelector(".keys").addEventListener("click", toggleShortcutPanel);
     shadow.querySelector(".shortcut-reset").addEventListener("click", resetShortcuts);
     shadow.querySelector(".shortcut-list").addEventListener("click", (event) => {
@@ -936,7 +990,9 @@
     if (host) host.style.display = "none";
     zoomState.open = false;
     zoomState.dragging = false;
+    zoomState.windowing = false;
     captureAction = "";
+    setControlPanelOpen(false);
   }
 
   function applyCaptionState() {
@@ -948,6 +1004,21 @@
     if (!zoomState.open) return;
     zoomState.captionCollapsed = !zoomState.captionCollapsed;
     applyCaptionState();
+  }
+
+  function setControlPanelOpen(open) {
+    const shadow = document.getElementById(HOST_ID)?.shadowRoot;
+    const panel = shadow?.querySelector(".control-panel");
+    const toggle = shadow?.querySelector(".control-toggle");
+    if (!panel || !toggle) return;
+    panel.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  function toggleControlPanel() {
+    const panel = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".control-panel");
+    if (!panel) return;
+    setControlPanelOpen(panel.hidden);
   }
 
   function toggleSourceMode() {
@@ -1029,13 +1100,54 @@
     applyTransform();
   }
 
+  function displayFilter() {
+    const filters = [
+      `brightness(${zoomState.windowBrightness})`,
+      `contrast(${zoomState.windowContrast})`
+    ];
+    if (zoomState.inverted) filters.push("invert(1)");
+    return filters.join(" ");
+  }
+
+  function adjustWindowing({ brightnessDelta = 0, contrastMultiplier = 1 } = {}) {
+    zoomState.windowBrightness = clamp(
+      zoomState.windowBrightness + brightnessDelta,
+      MIN_DISPLAY_VALUE,
+      MAX_DISPLAY_VALUE
+    );
+    zoomState.windowContrast = clamp(
+      zoomState.windowContrast * contrastMultiplier,
+      MIN_DISPLAY_VALUE,
+      MAX_DISPLAY_VALUE
+    );
+    applyTransform();
+  }
+
+  function resetWindowing() {
+    zoomState.windowBrightness = 1;
+    zoomState.windowContrast = 1;
+    zoomState.inverted = false;
+    applyTransform();
+  }
+
+  function toggleWindowInvert() {
+    zoomState.inverted = !zoomState.inverted;
+    applyTransform();
+  }
+
   function applyTransform() {
     const img = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".stage > img");
-    if (img) img.style.transform = `translate(${zoomState.x}px, ${zoomState.y}px) scale(${zoomState.scale})`;
+    if (!img) return;
+    img.style.transform = `translate(${zoomState.x}px, ${zoomState.y}px) scale(${zoomState.scale})`;
+    img.style.filter = displayFilter();
   }
 
   function onWheel(event) {
     event.preventDefault();
+    if (event.shiftKey) {
+      adjustWindowing({ contrastMultiplier: event.deltaY < 0 ? 1.08 : 1 / 1.08 });
+      return;
+    }
     zoomBy(event.deltaY < 0 ? 1.14 : 1 / 1.14);
   }
 
@@ -1051,6 +1163,16 @@
       closeViewer();
       return;
     }
+    if (event.shiftKey) {
+      zoomState.windowing = true;
+      zoomState.startX = event.clientX;
+      zoomState.startY = event.clientY;
+      zoomState.windowOriginBrightness = zoomState.windowBrightness;
+      zoomState.windowOriginContrast = zoomState.windowContrast;
+      event.currentTarget.classList.add("windowing");
+      event.currentTarget.setPointerCapture?.(event.pointerId);
+      return;
+    }
     zoomState.dragging = true;
     zoomState.startX = event.clientX;
     zoomState.startY = event.clientY;
@@ -1061,6 +1183,23 @@
   }
 
   function onPointerMove(event) {
+    if (zoomState.windowing) {
+      const dx = event.clientX - zoomState.startX;
+      const dy = event.clientY - zoomState.startY;
+      zoomState.windowContrast = clamp(
+        zoomState.windowOriginContrast * Math.exp(dx / 260),
+        MIN_DISPLAY_VALUE,
+        MAX_DISPLAY_VALUE
+      );
+      zoomState.windowBrightness = clamp(
+        zoomState.windowOriginBrightness - dy / 260,
+        MIN_DISPLAY_VALUE,
+        MAX_DISPLAY_VALUE
+      );
+      applyTransform();
+      return;
+    }
+
     if (!zoomState.dragging) return;
     zoomState.x = zoomState.originX + event.clientX - zoomState.startX;
     zoomState.y = zoomState.originY + event.clientY - zoomState.startY;
@@ -1069,7 +1208,8 @@
 
   function onPointerUp(event) {
     zoomState.dragging = false;
-    event.currentTarget.classList.remove("dragging");
+    zoomState.windowing = false;
+    event.currentTarget.classList.remove("dragging", "windowing");
     event.currentTarget.releasePointerCapture?.(event.pointerId);
   }
 
@@ -1127,6 +1267,8 @@
     else if (action === "zoomIn") zoomBy(1.25);
     else if (action === "zoomOut") zoomBy(1 / 1.25);
     else if (action === "reset") resetZoom();
+    else if (action === "resetWindow") resetWindowing();
+    else if (action === "invertWindow") toggleWindowInvert();
     else if (action === "playerPlayPause") sendSpeechifyPlayerAction("playPause");
     else if (action === "playerBack10") sendSpeechifyPlayerAction("back10");
     else if (action === "playerForward10") sendSpeechifyPlayerAction("forward10");
@@ -1174,6 +1316,7 @@
   function toggleShortcutPanel() {
     const panel = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".shortcut-panel");
     if (!panel) return;
+    setControlPanelOpen(false);
     panel.hidden = !panel.hidden;
     captureAction = "";
     renderShortcutPanel();
