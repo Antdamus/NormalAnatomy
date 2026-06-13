@@ -95,6 +95,7 @@
     rangeCineBusy: false,
     rangeCineCurrent: null,
     rangeCineDirection: 1,
+    rangeCineMode: "pingpong",
     rangeCineSpeed: DEFAULT_CINE_SPEED,
     rangeCineIntervalMs: cineSpeedToIntervalMs(DEFAULT_CINE_SPEED)
   };
@@ -466,7 +467,7 @@
           </div>
           <div class="selected" data-role="selected"></div>
           <div class="status" data-role="status"></div>
-          <div class="hint">Alt+I panel, Alt+B boxes. Space plays only the detected range.</div>
+          <div class="hint">Space ping-pong. [ backward, ] forward. 1/2/3 axial/coronal/sagittal.</div>
         </div>
       </section>
     `;
@@ -1371,6 +1372,38 @@
     startRangeCine();
   }
 
+  async function startDirectionalRangeCine(direction) {
+    const normalizedDirection = direction < 0 ? -1 : 1;
+    const mode = normalizedDirection < 0 ? "backward" : "forward";
+    if (state.rangeCineRunning && state.rangeCineMode === mode) {
+      stopRangeCine();
+      return;
+    }
+
+    const result = getValidCineRange();
+    if (!result.ok) {
+      setStatus(result.reason);
+      return;
+    }
+
+    stopRangeCine({ quiet: true });
+    const range = result.range;
+    const sliceInfo = getSliceInfo();
+    const current = Number.isFinite(sliceInfo.value) && sliceInfo.value >= range.startSlice && sliceInfo.value <= range.endSlice
+      ? sliceInfo.value
+      : normalizedDirection > 0 ? range.startSlice : range.endSlice;
+
+    state.rangeCineRunning = true;
+    state.rangeCineCurrent = current;
+    state.rangeCineDirection = normalizedDirection;
+    state.rangeCineMode = mode;
+    refreshPanel();
+    setStatus(`Playing range ${range.startSlice}-${range.endSlice} ${mode}.`, 0);
+    await stepRangeCine(range);
+    if (!state.rangeCineRunning) return;
+    startRangeCineTimer(range);
+  }
+
   async function startRangeCine() {
     const result = getValidCineRange();
     if (!result.ok) {
@@ -1388,13 +1421,12 @@
     state.rangeCineRunning = true;
     state.rangeCineCurrent = current;
     state.rangeCineDirection = current >= range.endSlice ? -1 : 1;
+    state.rangeCineMode = "pingpong";
     refreshPanel();
     setStatus(`Playing range ${range.startSlice}-${range.endSlice} back and forth.`, 0);
     await stepRangeCine(range);
     if (!state.rangeCineRunning) return;
-    state.rangeCineTimer = setInterval(() => {
-      stepRangeCine(range);
-    }, state.rangeCineIntervalMs);
+    startRangeCineTimer(range);
   }
 
   function stopRangeCine(options = {}) {
@@ -1406,8 +1438,16 @@
     state.rangeCineRunning = false;
     state.rangeCineBusy = false;
     state.rangeCineDirection = 1;
+    state.rangeCineMode = "pingpong";
     refreshPanel();
     if (!options.quiet && wasRunning) setStatus("Range cine stopped.");
+  }
+
+  function startRangeCineTimer(range) {
+    if (state.rangeCineTimer) clearInterval(state.rangeCineTimer);
+    state.rangeCineTimer = setInterval(() => {
+      stepRangeCine(range);
+    }, state.rangeCineIntervalMs);
   }
 
   function setCineSpeed(value, options = {}) {
@@ -1416,13 +1456,8 @@
     state.rangeCineIntervalMs = cineSpeedToIntervalMs(speed);
 
     if (state.rangeCineRunning) {
-      if (state.rangeCineTimer) clearInterval(state.rangeCineTimer);
       const result = getValidCineRange();
-      if (result.ok) {
-        state.rangeCineTimer = setInterval(() => {
-          stepRangeCine(result.range);
-        }, state.rangeCineIntervalMs);
-      }
+      if (result.ok) startRangeCineTimer(result.range);
     }
 
     if (options.save !== false) savePageState();
@@ -1453,7 +1488,11 @@
       }
       const direction = state.rangeCineDirection || 1;
       let nextSlice = slice + direction;
-      if (range.startSlice === range.endSlice) {
+      if (state.rangeCineMode === "forward") {
+        nextSlice = nextSlice > range.endSlice ? range.startSlice : nextSlice;
+      } else if (state.rangeCineMode === "backward") {
+        nextSlice = nextSlice < range.startSlice ? range.endSlice : nextSlice;
+      } else if (range.startSlice === range.endSlice) {
         nextSlice = range.startSlice;
       } else if (nextSlice > range.endSlice) {
         state.rangeCineDirection = -1;
@@ -1677,6 +1716,117 @@
     return ranges;
   }
 
+  async function switchPlane(targetPlane) {
+    const plane = normalizePlaneName(targetPlane);
+    if (!plane) {
+      setStatus("Unknown plane.");
+      return;
+    }
+
+    stopRangeCine({ quiet: true });
+    const currentPlane = normalizePlaneName(getSeriesInfo().selectedPlane);
+    if (currentPlane === plane) {
+      setStatus(`Already on ${plane}.`);
+      return;
+    }
+
+    const menuButton = findPlaneSelectorButton();
+    if (menuButton) {
+      clickElement(menuButton);
+      await delay(260);
+    }
+
+    let option = await waitFor(() => findPlaneOption(plane), 1800, 120);
+    if (!option && menuButton) {
+      clickElement(menuButton);
+      await delay(260);
+      option = await waitFor(() => findPlaneOption(plane), 1200, 120);
+    }
+
+    if (!option) {
+      setStatus(`Could not find ${plane}. Open All series/plane menu, then try Alt+1/2/3 again.`, 7000);
+      return;
+    }
+
+    clickElement(option);
+    setStatus(`Switching to ${plane}...`);
+  }
+
+  function normalizePlaneName(value) {
+    const match = String(value || "").match(/\b(Axial|Coronal|Sagittal)\b/i);
+    if (!match) return "";
+    return match[1].charAt(0).toUpperCase() + match[1].slice(1).toLowerCase();
+  }
+
+  function findPlaneSelectorButton() {
+    const currentPlane = normalizePlaneName(getSeriesInfo().selectedPlane);
+    const candidates = Array.from(document.body.querySelectorAll("button,[role='button'],div,span"))
+      .filter((element) => element !== state.host && isVisible(element))
+      .filter((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top > 185 || rect.height < 28 || rect.height > 120 || rect.width < 54 || rect.width > 460) return false;
+        const text = cleanText(element.getAttribute("title") || element.textContent || "");
+        return /\b(Axial|Coronal|Sagittal|All series)\b/i.test(text);
+      });
+
+    candidates.sort((a, b) => scorePlaneSelector(b, currentPlane) - scorePlaneSelector(a, currentPlane));
+    return candidates[0] || null;
+  }
+
+  function scorePlaneSelector(element, currentPlane) {
+    const rect = element.getBoundingClientRect();
+    const text = cleanText(element.getAttribute("title") || element.textContent || "");
+    const normalizedText = normalizeText(text);
+    let score = 0;
+    if (currentPlane && normalizeText(text) === normalizeText(currentPlane)) score += 28;
+    if (currentPlane && normalizedText.includes(normalizeText(currentPlane))) score += 12;
+    if (/all series/i.test(text)) score += 10;
+    if (element.matches("button,[role='button']")) score += 8;
+    if (element.querySelector("img,svg")) score += 4;
+    if (rect.left > window.innerWidth * 0.36 && rect.left < window.innerWidth * 0.92) score += 8;
+    score -= Math.max(0, cleanText(text).length - 40) / 8;
+    score -= Math.abs(rect.height - 48) / 10;
+    return score;
+  }
+
+  function findPlaneOption(targetPlane) {
+    const expected = normalizeText(targetPlane);
+    const candidates = Array.from(document.body.querySelectorAll("button,li,a,p,span,div,[role='option'],[role='menuitem'],[role='button']"))
+      .filter((element) => element !== state.host && isVisible(element))
+      .map((element) => ({
+        element,
+        text: cleanText(element.getAttribute("title") || element.textContent || "")
+      }))
+      .filter((item) => normalizeText(item.text) === expected)
+      .filter((item) => {
+        const rect = item.element.getBoundingClientRect();
+        return rect.width >= 24 && rect.width <= 440 && rect.height >= 16 && rect.height <= 96;
+      });
+
+    candidates.sort((a, b) => scorePlaneOption(b.element, targetPlane) - scorePlaneOption(a.element, targetPlane));
+    return candidates.length ? getPlaneOptionClickTarget(candidates[0].element) : null;
+  }
+
+  function scorePlaneOption(element, targetPlane) {
+    const rect = element.getBoundingClientRect();
+    let score = 0;
+    if (element.matches("button,li,a,[role='option'],[role='menuitem'],[role='button']")) score += 14;
+    if (element.closest("[class*='dropdown'],[class*='menu'],[class*='select'],[role='listbox'],[role='menu']")) score += 16;
+    if (rect.left > window.innerWidth * 0.28) score += 8;
+    if (rect.top < 260) score += 4;
+    return score;
+  }
+
+  function getPlaneOptionClickTarget(element) {
+    const selector = "button,li,a,[role='option'],[role='menuitem'],[role='button'],[class*='item'],[class*='option']";
+    let node = element;
+    while (node && node !== document.body && node !== document.documentElement) {
+      if (node.matches && node.matches(selector) && isVisible(node)) return node;
+      node = node.parentElement;
+    }
+    return element;
+  }
+
   function getSeriesInfo() {
     const titleCandidates = Array.from(document.querySelectorAll("[class*='title'],[title],p,span,button,div"))
       .filter((element) => isVisible(element))
@@ -1691,9 +1841,42 @@
   }
 
   function inferSelectedPlane(candidates) {
+    const domPlane = inferSelectedPlaneFromDom();
+    if (domPlane) return domPlane;
+    const exact = candidates
+      .map((candidate) => cleanText(candidate))
+      .find((candidate) => /^(Axial|Sagittal|Coronal)$/i.test(candidate));
+    if (exact) return normalizePlaneName(exact);
     const joined = candidates.join(" ");
     const match = joined.match(/\b(Axial|Sagittal|Coronal|3D\s*-\s*[^,\n]+)/i);
     return match ? cleanText(match[0]) : "";
+  }
+
+  function inferSelectedPlaneFromDom() {
+    const candidates = Array.from(document.querySelectorAll("button,[role='button'],div,span,p"))
+      .filter((element) => element !== state.host && isVisible(element))
+      .map((element) => ({
+        element,
+        plane: normalizePlaneName(cleanText(element.getAttribute("title") || element.textContent || ""))
+      }))
+      .filter((item) => item.plane);
+
+    candidates.sort((a, b) => scoreSelectedPlaneCandidate(b.element) - scoreSelectedPlaneCandidate(a.element));
+    return candidates.length && scoreSelectedPlaneCandidate(candidates[0].element) > 0 ? candidates[0].plane : "";
+  }
+
+  function scoreSelectedPlaneCandidate(element) {
+    const rect = element.getBoundingClientRect();
+    const text = cleanText(element.getAttribute("title") || element.textContent || "");
+    let score = 0;
+    if (/^(Axial|Sagittal|Coronal)$/i.test(text)) score += 16;
+    if (element.matches("button,[role='button']")) score += 8;
+    if (rect.top < 185) score += 10;
+    if (rect.left > window.innerWidth * 0.32 && rect.left < window.innerWidth * 0.92) score += 12;
+    if (rect.width >= 54 && rect.width <= 460 && rect.height >= 28 && rect.height <= 120) score += 6;
+    if (rect.left < window.innerWidth * 0.24) score -= 8;
+    score -= Math.max(0, text.length - 40) / 8;
+    return score;
   }
 
   function getVisibleLabelElements() {
@@ -1827,9 +2010,22 @@
 
   function onKeyDown(event) {
     if (event.__imaiosCineToolsHandled) return;
-    if (isPlainSpaceEvent(event) && !isEditableTarget(event.target)) {
+    const isEditing = isEditableEventTarget(event);
+    if (isPlainSpaceEvent(event) && !isEditing) {
       markKeyboardEventHandled(event);
       toggleRangeCine();
+      return;
+    }
+    const cineDirection = getDirectionalCineHotkey(event);
+    if (cineDirection && !isEditing) {
+      markKeyboardEventHandled(event);
+      startDirectionalRangeCine(cineDirection);
+      return;
+    }
+    const targetPlane = getPlaneHotkey(event);
+    if (targetPlane && !isEditing) {
+      markKeyboardEventHandled(event);
+      switchPlane(targetPlane);
       return;
     }
 
@@ -1851,7 +2047,7 @@
 
   function onKeyUp(event) {
     if (event.__imaiosCineToolsHandled) return;
-    if (isPlainSpaceEvent(event) && !isEditableTarget(event.target)) {
+    if ((isPlainSpaceEvent(event) || getDirectionalCineHotkey(event) || getPlaneHotkey(event)) && !isEditableEventTarget(event)) {
       markKeyboardEventHandled(event);
     }
   }
@@ -1859,6 +2055,26 @@
   function isPlainSpaceEvent(event) {
     return !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey
       && (event.code === "Space" || event.key === " " || event.key === "Spacebar");
+  }
+
+  function getDirectionalCineHotkey(event) {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return 0;
+    if (event.key === "]" || event.code === "BracketRight") return 1;
+    if (event.key === "[" || event.code === "BracketLeft") return -1;
+    return 0;
+  }
+
+  function getPlaneHotkey(event) {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return "";
+    if (event.key === "1" || event.code === "Digit1") return "Axial";
+    if (event.key === "2" || event.code === "Digit2") return "Coronal";
+    if (event.key === "3" || event.code === "Digit3") return "Sagittal";
+    return "";
+  }
+
+  function isEditableEventTarget(event) {
+    const path = typeof event.composedPath === "function" ? event.composedPath() : [event.target];
+    return path.some((node) => node instanceof Element && isEditableTarget(node));
   }
 
   function isEditableTarget(target) {
