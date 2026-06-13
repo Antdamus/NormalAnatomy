@@ -74,6 +74,9 @@
   const APP_ID = "imaios-cine-tools";
   const PAGE_STORAGE_KEY = `${APP_ID}:page:${location.origin}${location.pathname}`;
   const PREFS_STORAGE_KEY = `${APP_ID}:prefs`;
+  const CINE_SPEED_MIN = 1;
+  const CINE_SPEED_MAX = 20;
+  const DEFAULT_CINE_SPEED = 5;
   const state = {
     activePresetId: PRESETS[0].id,
     selectedStructures: [],
@@ -91,7 +94,9 @@
     rangeCineRunning: false,
     rangeCineBusy: false,
     rangeCineCurrent: null,
-    rangeCineIntervalMs: 120
+    rangeCineDirection: 1,
+    rangeCineSpeed: DEFAULT_CINE_SPEED,
+    rangeCineIntervalMs: cineSpeedToIntervalMs(DEFAULT_CINE_SPEED)
   };
 
   async function init() {
@@ -122,6 +127,9 @@
       if (prefs.panelPosition && Number.isFinite(prefs.panelPosition.left) && Number.isFinite(prefs.panelPosition.top)) {
         state.panelPosition = prefs.panelPosition;
       }
+      if (Number.isFinite(prefs.rangeCineSpeed)) {
+        setCineSpeed(prefs.rangeCineSpeed, { save: false, refresh: false });
+      }
     } catch (error) {
       console.warn("IMAIOS Cine Tools: could not load saved state", error);
     }
@@ -138,7 +146,8 @@
         collapsed: state.collapsed
       }));
       localStorage.setItem(PREFS_STORAGE_KEY, JSON.stringify({
-        panelPosition: state.panelPosition
+        panelPosition: state.panelPosition,
+        rangeCineSpeed: state.rangeCineSpeed
       }));
     } catch (error) {
       console.warn("IMAIOS Cine Tools: could not save state", error);
@@ -341,6 +350,30 @@
           user-select: text;
         }
 
+        .speed-row {
+          display: grid;
+          grid-template-columns: 44px 1fr 44px;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .speed-row label,
+        .speed-value {
+          font-size: 11px;
+          line-height: 1.2;
+          color: rgba(245,247,250,0.78);
+        }
+
+        .speed-value {
+          text-align: right;
+          white-space: nowrap;
+        }
+
+        input[type="range"] {
+          width: 100%;
+          accent-color: #1f8ddc;
+        }
+
         .box-layer {
           position: fixed;
           inset: 0;
@@ -425,6 +458,11 @@
             <button class="primary" type="button" data-action="play-range">Play range</button>
             <button type="button" data-action="stop-range">Stop cine</button>
           </div>
+          <div class="speed-row">
+            <label for="${APP_ID}-speed">Speed</label>
+            <input id="${APP_ID}-speed" type="range" min="${CINE_SPEED_MIN}" max="${CINE_SPEED_MAX}" step="1" data-role="cine-speed">
+            <span class="speed-value" data-role="cine-speed-value"></span>
+          </div>
           <div class="selected" data-role="selected"></div>
           <div class="status" data-role="status"></div>
           <div class="hint">Alt+I panel, Alt+B boxes. Space plays only the detected range.</div>
@@ -503,6 +541,9 @@
     root.querySelector("[data-action='go-range-start']").addEventListener("click", goToRangeStart);
     root.querySelector("[data-action='play-range']").addEventListener("click", toggleRangeCine);
     root.querySelector("[data-action='stop-range']").addEventListener("click", stopRangeCine);
+    root.querySelector("[data-role='cine-speed']").addEventListener("input", (event) => {
+      setCineSpeed(parseNumber(event.target.value));
+    });
     root.querySelector("[data-role='drag-panel']").addEventListener("pointerdown", startPanelDrag);
   }
 
@@ -517,6 +558,8 @@
     const togglePanel = root.querySelector("[data-action='toggle-panel']");
     const toggleBoxes = root.querySelector("[data-action='toggle-boxes']");
     const playRange = root.querySelector("[data-action='play-range']");
+    const cineSpeed = root.querySelector("[data-role='cine-speed']");
+    const cineSpeedValue = root.querySelector("[data-role='cine-speed-value']");
 
     panel.classList.toggle("collapsed", state.collapsed);
     panel.style.left = `${state.panelPosition.left}px`;
@@ -527,6 +570,8 @@
     togglePanel.textContent = state.collapsed ? "+" : "-";
     toggleBoxes.textContent = state.boxesVisible ? "Hide boxes" : "Show boxes";
     playRange.textContent = state.rangeCineRunning ? "Pause range" : "Play range";
+    cineSpeed.value = String(state.rangeCineSpeed);
+    cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
 
     const names = state.selectedStructures.length ? state.selectedStructures : preset.structures;
     selected.textContent = names.join(", ");
@@ -1153,6 +1198,11 @@
       lockedStructures,
       confirmedLockedCount: countLockedMatches(requestedStructures),
       cineRange,
+      cinePlayback: {
+        mode: "bounded ping-pong",
+        speed: state.rangeCineSpeed,
+        intervalMs: state.rangeCineIntervalMs
+      },
       capturePlan: {
         front: "Record the IMAIOS cine in Pins mode so only point markers are shown.",
         back: "Record the same cine with Pins off so the labels and leader lines are visible."
@@ -1243,9 +1293,11 @@
 
     state.rangeCineRunning = true;
     state.rangeCineCurrent = current;
+    state.rangeCineDirection = current >= range.endSlice ? -1 : 1;
     refreshPanel();
-    setStatus(`Playing range ${range.startSlice}-${range.endSlice}.`, 0);
+    setStatus(`Playing range ${range.startSlice}-${range.endSlice} back and forth.`, 0);
     await stepRangeCine(range);
+    if (!state.rangeCineRunning) return;
     state.rangeCineTimer = setInterval(() => {
       stepRangeCine(range);
     }, state.rangeCineIntervalMs);
@@ -1259,8 +1311,39 @@
     const wasRunning = state.rangeCineRunning;
     state.rangeCineRunning = false;
     state.rangeCineBusy = false;
+    state.rangeCineDirection = 1;
     refreshPanel();
     if (!options.quiet && wasRunning) setStatus("Range cine stopped.");
+  }
+
+  function setCineSpeed(value, options = {}) {
+    const speed = clamp(Math.round(Number(value) || DEFAULT_CINE_SPEED), CINE_SPEED_MIN, CINE_SPEED_MAX);
+    state.rangeCineSpeed = speed;
+    state.rangeCineIntervalMs = cineSpeedToIntervalMs(speed);
+
+    if (state.rangeCineRunning) {
+      if (state.rangeCineTimer) clearInterval(state.rangeCineTimer);
+      const result = getValidCineRange();
+      if (result.ok) {
+        state.rangeCineTimer = setInterval(() => {
+          stepRangeCine(result.range);
+        }, state.rangeCineIntervalMs);
+      }
+    }
+
+    if (options.save !== false) savePageState();
+    if (options.refresh !== false) refreshPanel();
+  }
+
+  function cineSpeedToIntervalMs(speed) {
+    const normalized = clamp(Number(speed) || DEFAULT_CINE_SPEED, CINE_SPEED_MIN, CINE_SPEED_MAX);
+    if (normalized <= DEFAULT_CINE_SPEED) {
+      return Math.round(280 - ((normalized - CINE_SPEED_MIN) * 40));
+    }
+    if (normalized <= 10) {
+      return Math.round(120 - ((normalized - DEFAULT_CINE_SPEED) * 16));
+    }
+    return Math.round(40 - ((normalized - 10) * 2));
   }
 
   async function stepRangeCine(range) {
@@ -1274,7 +1357,18 @@
         setStatus(moved.reason);
         return;
       }
-      state.rangeCineCurrent = slice >= range.endSlice ? range.startSlice : slice + 1;
+      const direction = state.rangeCineDirection || 1;
+      let nextSlice = slice + direction;
+      if (range.startSlice === range.endSlice) {
+        nextSlice = range.startSlice;
+      } else if (nextSlice > range.endSlice) {
+        state.rangeCineDirection = -1;
+        nextSlice = range.endSlice - 1;
+      } else if (nextSlice < range.startSlice) {
+        state.rangeCineDirection = 1;
+        nextSlice = range.startSlice + 1;
+      }
+      state.rangeCineCurrent = nextSlice;
     } finally {
       state.rangeCineBusy = false;
     }
