@@ -11,7 +11,8 @@
     "clipboardRead",
     "storage",
     "tabs",
-    "windows"
+    "windows",
+    "debugger"
   ],
   "host_permissions": [
     "https://app.radprimer.com/*",
@@ -21,7 +22,9 @@
     "https://prod-assets-static.radiopaedia.org/*",
     "https://chatgpt.com/*",
     "https://chat.openai.com/*",
-    "https://app.speechify.com/*"
+    "https://app.speechify.com/*",
+    "https://imaios.com/*",
+    "https://www.imaios.com/*"
   ],
   "action": {
     "default_title": "RadPrimer Prompt Runner",
@@ -61,6 +64,11 @@
     {
       "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
       "js": ["chatgpt-paster.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://imaios.com/*", "https://www.imaios.com/*"],
+      "js": ["imaios-cine-tools.js"],
       "run_at": "document_idle"
     }
   ]

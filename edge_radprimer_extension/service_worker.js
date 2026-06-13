@@ -4235,7 +4235,49 @@ async function recoverLatestCardAuditDownloadFromChatGptTab(tab) {
   };
 }
 
+async function dispatchTabMouseClick(tabId, x, y) {
+  if (!tabId) throw new Error("No tab id available for mouse click.");
+  if (!Number.isFinite(x) || !Number.isFinite(y)) {
+    throw new Error("Mouse click coordinates were not finite.");
+  }
+
+  const target = { tabId };
+  await chrome.debugger.attach(target, "1.3");
+  try {
+    const point = { x: Math.round(x), y: Math.round(y), button: "left", clickCount: 1 };
+    await chrome.debugger.sendCommand(target, "Input.dispatchMouseEvent", {
+      type: "mouseMoved",
+      x: point.x,
+      y: point.y
+    });
+    await chrome.debugger.sendCommand(target, "Input.dispatchMouseEvent", {
+      type: "mousePressed",
+      ...point,
+      buttons: 1
+    });
+    await chrome.debugger.sendCommand(target, "Input.dispatchMouseEvent", {
+      type: "mouseReleased",
+      ...point,
+      buttons: 0
+    });
+  } finally {
+    await chrome.debugger.detach(target).catch(() => {});
+  }
+}
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === "IMAIOS_DISPATCH_MOUSE_CLICK") {
+    (async () => {
+      const tabId = _sender?.tab?.id;
+      await dispatchTabMouseClick(tabId, Number(message.x), Number(message.y));
+      sendResponse({ ok: true });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
   if (message?.type === "IMPORT_MASTER_SOURCE_CACHE") {
     (async () => {
       const cache = buildMasterSourceCacheFromFiles(message.files || []);
