@@ -441,9 +441,10 @@
             <button type="button" data-action="toggle-boxes">Hide boxes</button>
             <button class="danger" type="button" data-action="clear-boxes">Clear</button>
           </div>
-          <div class="row">
+          <div class="row three">
             <button type="button" data-action="copy-manifest">Copy manifest</button>
             <button type="button" data-action="copy-prompt">Copy prompt</button>
+            <button type="button" data-action="copy-labels">Copy labels</button>
           </div>
           <div class="row">
             <button type="button" data-action="copy-probe">Copy probe</button>
@@ -534,6 +535,7 @@
     });
     root.querySelector("[data-action='copy-manifest']").addEventListener("click", copyManifest);
     root.querySelector("[data-action='copy-prompt']").addEventListener("click", copyPrompt);
+    root.querySelector("[data-action='copy-labels']").addEventListener("click", copyAvailableLabels);
     root.querySelector("[data-action='copy-probe']").addEventListener("click", copyViewerProbe);
     root.querySelector("[data-action='copy-slice']").addEventListener("click", copySliceProbe);
     root.querySelector("[data-action='copy-range']").addEventListener("click", copyCineRangeText);
@@ -1234,6 +1236,98 @@
     ].join("\n");
     await writeClipboard(prompt);
     setStatus("Card prompt copied.");
+  }
+
+  async function copyAvailableLabels() {
+    const exportData = buildAvailableLabelsExport();
+    await writeClipboard(JSON.stringify(exportData, null, 2));
+    const muscleSuffix = exportData.muscleLikeLabels.length ? `, ${exportData.muscleLikeLabels.length} muscle-like` : "";
+    setStatus(`Copied ${exportData.labels.length} labels${muscleSuffix}.`);
+  }
+
+  function buildAvailableLabelsExport() {
+    const entries = getAvailableStructureEntries();
+    const labels = unique(entries.map((entry) => entry.label)).sort(compareLabels);
+    const muscleLikeLabels = labels.filter(isMuscleLikeLabel);
+    const sourceCounts = entries.reduce((counts, entry) => {
+      counts[entry.source] = (counts[entry.source] || 0) + 1;
+      return counts;
+    }, {});
+
+    return {
+      kind: "imaios-available-labels",
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      counts: {
+        labels: labels.length,
+        muscleLikeLabels: muscleLikeLabels.length,
+        rawEntries: entries.length
+      },
+      sourceCounts,
+      muscleLikeLabels,
+      labels
+    };
+  }
+
+  function getAvailableStructureEntries() {
+    const entries = [];
+    const addEntry = (label, source, href = "") => {
+      const cleaned = normalizeStructureLabel(label);
+      if (!isLikelyStructureLabel(cleaned)) return;
+      entries.push({ label: cleaned, source, href });
+    };
+
+    for (const link of document.querySelectorAll("a[href*='/e-anatomy/anatomical-structures/'],a[href*='/anatomical-structures/']")) {
+      addEntry(link.textContent || link.getAttribute("title") || "", "anatomical-structure-link", link.href || link.getAttribute("href") || "");
+    }
+
+    for (const element of document.querySelectorAll(".navi-link,.list-structure--container-tag,.structure-title-component,[class*='structure-title']")) {
+      addEntry(element.textContent || element.getAttribute("title") || "", "structure-dom");
+    }
+
+    for (const name of getLockedStructureNames()) {
+      addEntry(name, "locked-structure");
+    }
+
+    const seen = new Set();
+    return entries.filter((entry) => {
+      const key = normalizeText(entry.label);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  function normalizeStructureLabel(label) {
+    return cleanText(label)
+      .replace(/^[+×]\s*/i, "")
+      .replace(/^x\s+/i, "")
+      .replace(/\s*[+×]\s*$/i, "")
+      .replace(/\s+x\s*$/i, "")
+      .replace(/\s+\(\s*$/, "")
+      .trim();
+  }
+
+  function isLikelyStructureLabel(label) {
+    if (!label || label.length < 2 || label.length > 120) return false;
+    if (/https?:|www\.|@/.test(label)) return false;
+    if (/^[\d\s/.,:;()_-]+$/.test(label)) return false;
+    if (/^(home|products|pricing|solutions|resources|subscribe|search|menu|languages|contact us|definition|related terms|additional terms|references|bibliography|anatomical hierarchy|all series|apply preset|apply list|reset list|copy manifest|copy prompt|copy labels|copy probe|copy slice|copy range|range json|go start|play range|stop cine|speed)$/i.test(label)) {
+      return false;
+    }
+    if (/^(human anatomy|e-anatomy|anatomical structures|anatomical parts)$/i.test(label)) return false;
+    return true;
+  }
+
+  function isMuscleLikeLabel(label) {
+    return /\b(muscle|muscles|platysma|trapezius|sternocleidomastoid|scalenus|scalene|digastric|mylohyoid|geniohyoid|stylohyoid|sternohyoid|sternothyroid|thyrohyoid|omohyoid|longus|splenius|semispinalis|levator scapulae|obliquus|rectus capitis|vocalis|cricothyroid|arytenoid|constrictor)\b/i.test(label);
+  }
+
+  function compareLabels(a, b) {
+    return a.localeCompare(b, undefined, { sensitivity: "base" });
   }
 
   async function copyCineRangeText() {
