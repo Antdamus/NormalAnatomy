@@ -77,6 +77,30 @@
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
   const DEFAULT_CINE_SPEED = 5;
+  const HOTKEY_ACTIONS = [
+    { id: "pingpong", label: "Cine ping-pong" },
+    { id: "cineBackward", label: "Cine backward" },
+    { id: "cineForward", label: "Cine forward" },
+    { id: "pinsOn", label: "Show pins" },
+    { id: "labelsOn", label: "Show labels" },
+    { id: "axial", label: "Axial plane" },
+    { id: "coronal", label: "Coronal plane" },
+    { id: "sagittal", label: "Sagittal plane" },
+    { id: "togglePanel", label: "Panel" },
+    { id: "toggleBoxes", label: "Boxes" }
+  ];
+  const DEFAULT_HOTKEYS = {
+    pingpong: { code: "Space", key: " ", alt: false, ctrl: false, meta: false, shift: false },
+    cineBackward: { code: "BracketLeft", key: "[", alt: false, ctrl: false, meta: false, shift: false },
+    cineForward: { code: "BracketRight", key: "]", alt: false, ctrl: false, meta: false, shift: false },
+    pinsOn: { code: "KeyP", key: "p", alt: false, ctrl: false, meta: false, shift: false },
+    labelsOn: { code: "KeyL", key: "l", alt: false, ctrl: false, meta: false, shift: false },
+    axial: { code: "Digit1", key: "1", alt: false, ctrl: false, meta: false, shift: false },
+    coronal: { code: "Digit2", key: "2", alt: false, ctrl: false, meta: false, shift: false },
+    sagittal: { code: "Digit3", key: "3", alt: false, ctrl: false, meta: false, shift: false },
+    togglePanel: { code: "KeyI", key: "i", alt: true, ctrl: false, meta: false, shift: false },
+    toggleBoxes: { code: "KeyB", key: "b", alt: true, ctrl: false, meta: false, shift: false }
+  };
   const state = {
     activePresetId: PRESETS[0].id,
     selectedStructures: [],
@@ -97,7 +121,10 @@
     rangeCineDirection: 1,
     rangeCineMode: "pingpong",
     rangeCineSpeed: DEFAULT_CINE_SPEED,
-    rangeCineIntervalMs: cineSpeedToIntervalMs(DEFAULT_CINE_SPEED)
+    rangeCineIntervalMs: cineSpeedToIntervalMs(DEFAULT_CINE_SPEED),
+    hotkeys: createDefaultHotkeys(),
+    keyEditorOpen: false,
+    captureHotkeyAction: ""
   };
 
   async function init() {
@@ -131,6 +158,9 @@
       if (Number.isFinite(prefs.rangeCineSpeed)) {
         setCineSpeed(prefs.rangeCineSpeed, { save: false, refresh: false });
       }
+      if (prefs.hotkeys && typeof prefs.hotkeys === "object") {
+        state.hotkeys = mergeHotkeys(prefs.hotkeys);
+      }
     } catch (error) {
       console.warn("IMAIOS Cine Tools: could not load saved state", error);
     }
@@ -148,7 +178,8 @@
       }));
       localStorage.setItem(PREFS_STORAGE_KEY, JSON.stringify({
         panelPosition: state.panelPosition,
-        rangeCineSpeed: state.rangeCineSpeed
+        rangeCineSpeed: state.rangeCineSpeed,
+        hotkeys: state.hotkeys
       }));
     } catch (error) {
       console.warn("IMAIOS Cine Tools: could not save state", error);
@@ -194,6 +225,12 @@
     const presetOptions = PRESETS.map((preset) => (
       `<option value="${escapeHtml(preset.id)}">${escapeHtml(preset.label)}</option>`
     )).join("");
+    const hotkeyRows = HOTKEY_ACTIONS.map((action) => `
+      <div class="key-row">
+        <span>${escapeHtml(action.label)}</span>
+        <button type="button" data-hotkey-action="${escapeHtml(action.id)}"></button>
+      </div>
+    `).join("");
 
     return `
       <style>
@@ -415,6 +452,61 @@
           bottom: 0;
           cursor: nwse-resize;
         }
+
+        .key-modal {
+          position: fixed;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          padding: 14px;
+          background: rgba(0,0,0,0.42);
+          pointer-events: auto;
+          z-index: 2147483647;
+        }
+
+        .key-modal.hidden {
+          display: none;
+        }
+
+        .key-dialog {
+          width: min(360px, calc(100vw - 28px));
+          max-height: calc(100vh - 32px);
+          overflow: auto;
+          border: 1px solid rgba(255,255,255,0.18);
+          border-radius: 8px;
+          background: rgba(24, 27, 31, 0.98);
+          box-shadow: 0 18px 42px rgba(0,0,0,0.48);
+          color: #f5f7fa;
+        }
+
+        .key-header,
+        .key-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+          padding: 9px 10px;
+          background: rgba(255,255,255,0.06);
+        }
+
+        .key-list {
+          display: grid;
+          gap: 6px;
+          padding: 10px;
+        }
+
+        .key-row {
+          display: grid;
+          grid-template-columns: 1fr 112px;
+          align-items: center;
+          gap: 8px;
+          font-size: 12px;
+        }
+
+        .key-row button.capturing {
+          border-color: rgba(58, 158, 255, 0.82);
+          background: rgba(22, 128, 224, 0.88);
+        }
       </style>
       <div class="box-layer" data-role="box-layer"></div>
       <section class="panel" data-role="panel" aria-label="IMAIOS cine tools">
@@ -428,9 +520,10 @@
             <button class="primary" type="button" data-action="apply-preset">Apply preset</button>
             <button type="button" data-action="stop-search">Stop</button>
           </div>
-          <div class="row">
+          <div class="row three">
             <button type="button" data-action="set-pins">Set pins</button>
             <button type="button" data-action="set-labels">Show labels</button>
+            <button type="button" data-action="open-key-editor">Keys</button>
           </div>
           <textarea data-role="custom-list" spellcheck="false"></textarea>
           <div class="row">
@@ -467,9 +560,22 @@
           </div>
           <div class="selected" data-role="selected"></div>
           <div class="status" data-role="status"></div>
-          <div class="hint">Space ping-pong. [ backward, ] forward. 1/2/3 axial/coronal/sagittal.</div>
+          <div class="hint" data-role="hotkey-hint"></div>
         </div>
       </section>
+      <div class="key-modal hidden" data-role="key-modal">
+        <div class="key-dialog" role="dialog" aria-label="IMAIOS cine shortcuts">
+          <div class="key-header">
+            <strong>Shortcuts</strong>
+            <button class="icon-button" type="button" data-action="close-key-editor" title="Close shortcuts">x</button>
+          </div>
+          <div class="key-list" data-role="key-list">${hotkeyRows}</div>
+          <div class="key-footer">
+            <button type="button" data-action="reset-hotkeys">Reset</button>
+            <span class="hint">Click an action, then press a key. Esc cancels.</span>
+          </div>
+        </div>
+      </div>
     `;
   }
 
@@ -513,6 +619,29 @@
     root.querySelector("[data-action='set-labels']").addEventListener("click", async () => {
       const result = await setPinsMode(false);
       setStatus(result.ok ? "Pins mode disabled." : result.reason);
+    });
+    root.querySelector("[data-action='open-key-editor']").addEventListener("click", () => {
+      state.keyEditorOpen = true;
+      state.captureHotkeyAction = "";
+      refreshPanel();
+    });
+    root.querySelector("[data-action='close-key-editor']").addEventListener("click", () => {
+      state.keyEditorOpen = false;
+      state.captureHotkeyAction = "";
+      refreshPanel();
+    });
+    root.querySelector("[data-action='reset-hotkeys']").addEventListener("click", () => {
+      state.hotkeys = createDefaultHotkeys();
+      state.captureHotkeyAction = "";
+      savePageState();
+      refreshPanel();
+      setStatus("Shortcuts reset.");
+    });
+    root.querySelectorAll("[data-hotkey-action]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.captureHotkeyAction = button.getAttribute("data-hotkey-action") || "";
+        refreshPanel();
+      });
     });
     root.querySelector("[data-action='reset-list']").addEventListener("click", () => {
       state.selectedStructures = [];
@@ -563,6 +692,8 @@
     const playRange = root.querySelector("[data-action='play-range']");
     const cineSpeed = root.querySelector("[data-role='cine-speed']");
     const cineSpeedValue = root.querySelector("[data-role='cine-speed-value']");
+    const keyModal = root.querySelector("[data-role='key-modal']");
+    const hotkeyHint = root.querySelector("[data-role='hotkey-hint']");
 
     panel.classList.toggle("collapsed", state.collapsed);
     panel.style.left = `${state.panelPosition.left}px`;
@@ -575,6 +706,13 @@
     playRange.textContent = state.rangeCineRunning ? "Pause range" : "Play range";
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
+    keyModal.classList.toggle("hidden", !state.keyEditorOpen);
+    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes.`;
+    root.querySelectorAll("[data-hotkey-action]").forEach((button) => {
+      const actionId = button.getAttribute("data-hotkey-action") || "";
+      button.textContent = state.captureHotkeyAction === actionId ? "Press key..." : formatHotkey(state.hotkeys[actionId]);
+      button.classList.toggle("capturing", state.captureHotkeyAction === actionId);
+    });
 
     const names = state.selectedStructures.length ? state.selectedStructures : preset.structures;
     selected.textContent = names.join(", ");
@@ -2008,68 +2146,207 @@
     textarea.remove();
   }
 
-  function onKeyDown(event) {
-    if (event.__imaiosCineToolsHandled) return;
-    const isEditing = isEditableEventTarget(event);
-    if (isPlainSpaceEvent(event) && !isEditing) {
-      markKeyboardEventHandled(event);
-      toggleRangeCine();
-      return;
+  function createDefaultHotkeys() {
+    return Object.fromEntries(Object.entries(DEFAULT_HOTKEYS).map(([actionId, binding]) => (
+      [actionId, normalizeHotkeyBinding(binding)]
+    )));
+  }
+
+  function mergeHotkeys(savedHotkeys) {
+    const merged = createDefaultHotkeys();
+    for (const action of HOTKEY_ACTIONS) {
+      if (Object.prototype.hasOwnProperty.call(savedHotkeys, action.id)) {
+        const binding = normalizeHotkeyBinding(savedHotkeys[action.id]);
+        merged[action.id] = binding;
+      }
     }
-    const cineDirection = getDirectionalCineHotkey(event);
-    if (cineDirection && !isEditing) {
-      markKeyboardEventHandled(event);
-      startDirectionalRangeCine(cineDirection);
-      return;
-    }
-    const targetPlane = getPlaneHotkey(event);
-    if (targetPlane && !isEditing) {
-      markKeyboardEventHandled(event);
-      switchPlane(targetPlane);
+    return merged;
+  }
+
+  function normalizeHotkeyBinding(binding) {
+    if (!binding || typeof binding !== "object" || !binding.code) return null;
+    return {
+      code: String(binding.code),
+      key: typeof binding.key === "string" ? binding.key : "",
+      alt: Boolean(binding.alt),
+      ctrl: Boolean(binding.ctrl),
+      meta: Boolean(binding.meta),
+      shift: Boolean(binding.shift)
+    };
+  }
+
+  function handleHotkeyCapture(event) {
+    markKeyboardEventHandled(event);
+    const actionId = state.captureHotkeyAction;
+    if (!actionId) return;
+
+    if (event.key === "Escape") {
+      state.captureHotkeyAction = "";
+      refreshPanel();
       return;
     }
 
-    if (!event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-    const key = event.key.toLowerCase();
-    if (key === "i") {
-      state.collapsed = !state.collapsed;
+    if (event.key === "Backspace" || event.key === "Delete") {
+      state.hotkeys[actionId] = null;
+      state.captureHotkeyAction = "";
       savePageState();
       refreshPanel();
+      setStatus("Shortcut cleared.");
+      return;
+    }
+
+    const binding = hotkeyFromEvent(event);
+    if (!binding) {
+      setStatus("Press a non-modifier key.");
+      return;
+    }
+
+    for (const otherAction of HOTKEY_ACTIONS) {
+      if (otherAction.id !== actionId && hotkeyBindingsEqual(state.hotkeys[otherAction.id], binding)) {
+        state.hotkeys[otherAction.id] = null;
+      }
+    }
+    state.hotkeys[actionId] = binding;
+    state.captureHotkeyAction = "";
+    savePageState();
+    refreshPanel();
+    setStatus(`${getHotkeyActionLabel(actionId)} set to ${formatHotkey(binding)}.`);
+  }
+
+  function hotkeyFromEvent(event) {
+    if (["Alt", "Control", "Meta", "Shift"].includes(event.key)) return null;
+    return {
+      code: event.code || event.key,
+      key: event.key || event.code,
+      alt: Boolean(event.altKey),
+      ctrl: Boolean(event.ctrlKey),
+      meta: Boolean(event.metaKey),
+      shift: Boolean(event.shiftKey)
+    };
+  }
+
+  function getHotkeyActionForEvent(event) {
+    const action = HOTKEY_ACTIONS.find((item) => hotkeyMatchesEvent(state.hotkeys[item.id], event));
+    return action ? action.id : "";
+  }
+
+  function hotkeyMatchesEvent(binding, event) {
+    if (!binding || !binding.code) return false;
+    return Boolean(binding.alt) === Boolean(event.altKey) &&
+      Boolean(binding.ctrl) === Boolean(event.ctrlKey) &&
+      Boolean(binding.meta) === Boolean(event.metaKey) &&
+      Boolean(binding.shift) === Boolean(event.shiftKey) &&
+      String(binding.code) === String(event.code || event.key);
+  }
+
+  function hotkeyBindingsEqual(a, b) {
+    if (!a || !b) return false;
+    return a.code === b.code &&
+      Boolean(a.alt) === Boolean(b.alt) &&
+      Boolean(a.ctrl) === Boolean(b.ctrl) &&
+      Boolean(a.meta) === Boolean(b.meta) &&
+      Boolean(a.shift) === Boolean(b.shift);
+  }
+
+  function formatHotkey(binding) {
+    if (!binding || !binding.code) return "None";
+    const parts = [];
+    if (binding.ctrl) parts.push("Ctrl");
+    if (binding.alt) parts.push("Alt");
+    if (binding.shift) parts.push("Shift");
+    if (binding.meta) parts.push("Meta");
+    parts.push(hotkeyKeyLabel(binding));
+    return parts.join("+");
+  }
+
+  function hotkeyKeyLabel(binding) {
+    const code = String(binding.code || "");
+    if (code === "Space") return "Space";
+    if (code === "BracketLeft") return "[";
+    if (code === "BracketRight") return "]";
+    if (/^Digit\d$/.test(code)) return code.replace("Digit", "");
+    if (/^Key[A-Z]$/.test(code)) return code.replace("Key", "");
+    if (code === "Backquote") return "`";
+    if (code === "Minus") return "-";
+    if (code === "Equal") return "=";
+    if (code === "Semicolon") return ";";
+    if (code === "Quote") return "'";
+    if (code === "Comma") return ",";
+    if (code === "Period") return ".";
+    if (code === "Slash") return "/";
+    if (code === "Backslash") return "\\";
+    return cleanText(binding.key || code);
+  }
+
+  function getHotkeyActionLabel(actionId) {
+    const action = HOTKEY_ACTIONS.find((item) => item.id === actionId);
+    return action ? action.label : "Shortcut";
+  }
+
+  function onKeyDown(event) {
+    if (event.__imaiosCineToolsHandled) return;
+    if (state.captureHotkeyAction) {
+      handleHotkeyCapture(event);
+      return;
+    }
+    if (state.keyEditorOpen) {
+      if (event.key === "Escape") {
+        state.keyEditorOpen = false;
+        state.captureHotkeyAction = "";
+        refreshPanel();
+        markKeyboardEventHandled(event);
+      }
+      return;
+    }
+
+    const isEditing = isEditableEventTarget(event);
+    const actionId = getHotkeyActionForEvent(event);
+    if (actionId && !isEditing) {
       markKeyboardEventHandled(event);
-    } else if (key === "b") {
-      state.boxesVisible = !state.boxesVisible;
-      savePageState();
-      renderBoxes();
-      refreshPanel();
-      markKeyboardEventHandled(event);
+      executeHotkeyAction(actionId);
+      return;
     }
   }
 
   function onKeyUp(event) {
     if (event.__imaiosCineToolsHandled) return;
-    if ((isPlainSpaceEvent(event) || getDirectionalCineHotkey(event) || getPlaneHotkey(event)) && !isEditableEventTarget(event)) {
+    if ((state.captureHotkeyAction || state.keyEditorOpen || getHotkeyActionForEvent(event)) && !isEditableEventTarget(event)) {
       markKeyboardEventHandled(event);
     }
   }
 
-  function isPlainSpaceEvent(event) {
-    return !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey
-      && (event.code === "Space" || event.key === " " || event.key === "Spacebar");
+  function executeHotkeyAction(actionId) {
+    if (actionId === "pingpong") {
+      toggleRangeCine();
+    } else if (actionId === "cineBackward") {
+      startDirectionalRangeCine(-1);
+    } else if (actionId === "cineForward") {
+      startDirectionalRangeCine(1);
+    } else if (actionId === "pinsOn") {
+      applyPinsHotkey(true);
+    } else if (actionId === "labelsOn") {
+      applyPinsHotkey(false);
+    } else if (actionId === "axial") {
+      switchPlane("Axial");
+    } else if (actionId === "coronal") {
+      switchPlane("Coronal");
+    } else if (actionId === "sagittal") {
+      switchPlane("Sagittal");
+    } else if (actionId === "togglePanel") {
+      state.collapsed = !state.collapsed;
+      savePageState();
+      refreshPanel();
+    } else if (actionId === "toggleBoxes") {
+      state.boxesVisible = !state.boxesVisible;
+      savePageState();
+      renderBoxes();
+      refreshPanel();
+    }
   }
 
-  function getDirectionalCineHotkey(event) {
-    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return 0;
-    if (event.key === "]" || event.code === "BracketRight") return 1;
-    if (event.key === "[" || event.code === "BracketLeft") return -1;
-    return 0;
-  }
-
-  function getPlaneHotkey(event) {
-    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return "";
-    if (event.key === "1" || event.code === "Digit1") return "Axial";
-    if (event.key === "2" || event.code === "Digit2") return "Coronal";
-    if (event.key === "3" || event.code === "Digit3") return "Sagittal";
-    return "";
+  async function applyPinsHotkey(enabled) {
+    const result = await setPinsMode(enabled);
+    setStatus(result.ok ? (enabled ? "Pins mode enabled." : "Labels shown.") : result.reason);
   }
 
   function isEditableEventTarget(event) {
