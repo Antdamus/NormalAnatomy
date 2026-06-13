@@ -81,6 +81,8 @@
     { id: "pingpong", label: "Cine ping-pong" },
     { id: "cineBackward", label: "Cine backward" },
     { id: "cineForward", label: "Cine forward" },
+    { id: "speedDown", label: "Speed down" },
+    { id: "speedUp", label: "Speed up" },
     { id: "pinsOn", label: "Show pins" },
     { id: "labelsOn", label: "Show labels" },
     { id: "axial", label: "Axial plane" },
@@ -93,6 +95,8 @@
     pingpong: { code: "Space", key: " ", alt: false, ctrl: false, meta: false, shift: false },
     cineBackward: { code: "BracketLeft", key: "[", alt: false, ctrl: false, meta: false, shift: false },
     cineForward: { code: "BracketRight", key: "]", alt: false, ctrl: false, meta: false, shift: false },
+    speedDown: { code: "Minus", key: "-", alt: false, ctrl: false, meta: false, shift: false },
+    speedUp: { code: "Equal", key: "=", alt: false, ctrl: false, meta: false, shift: false },
     pinsOn: { code: "KeyP", key: "p", alt: false, ctrl: false, meta: false, shift: false },
     labelsOn: { code: "KeyL", key: "l", alt: false, ctrl: false, meta: false, shift: false },
     axial: { code: "Digit1", key: "1", alt: false, ctrl: false, meta: false, shift: false },
@@ -707,7 +711,7 @@
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
-    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes.`;
+    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes.`;
     root.querySelectorAll("[data-hotkey-action]").forEach((button) => {
       const actionId = button.getAttribute("data-hotkey-action") || "";
       button.textContent = state.captureHotkeyAction === actionId ? "Press key..." : formatHotkey(state.hotkeys[actionId]);
@@ -1602,6 +1606,12 @@
     if (options.refresh !== false) refreshPanel();
   }
 
+  function adjustCineSpeed(delta) {
+    const nextSpeed = clamp(state.rangeCineSpeed + delta, CINE_SPEED_MIN, CINE_SPEED_MAX);
+    setCineSpeed(nextSpeed);
+    setStatus(`Cine speed ${nextSpeed} (${Math.round(1000 / state.rangeCineIntervalMs)} fps).`);
+  }
+
   function cineSpeedToIntervalMs(speed) {
     const normalized = clamp(Number(speed) || DEFAULT_CINE_SPEED, CINE_SPEED_MIN, CINE_SPEED_MAX);
     if (normalized <= DEFAULT_CINE_SPEED) {
@@ -1862,31 +1872,26 @@
     }
 
     stopRangeCine({ quiet: true });
-    const currentPlane = normalizePlaneName(getSeriesInfo().selectedPlane);
-    if (currentPlane === plane) {
-      setStatus(`Already on ${plane}.`);
-      return;
-    }
-
     const menuButton = findPlaneSelectorButton();
+    const menuRect = menuButton ? menuButton.getBoundingClientRect() : null;
     if (menuButton) {
-      clickElement(menuButton);
+      await realMouseClick(menuButton, 0.5, 0.5);
       await delay(260);
     }
 
-    let option = await waitFor(() => findPlaneOption(plane), 1800, 120);
+    let option = await waitFor(() => findPlaneOption(plane, menuRect), 1800, 120);
     if (!option && menuButton) {
-      clickElement(menuButton);
+      await realMouseClick(menuButton, 0.5, 0.5);
       await delay(260);
-      option = await waitFor(() => findPlaneOption(plane), 1200, 120);
+      option = await waitFor(() => findPlaneOption(plane, menuRect), 1200, 120);
     }
 
     if (!option) {
-      setStatus(`Could not find ${plane}. Open All series/plane menu, then try Alt+1/2/3 again.`, 7000);
+      setStatus(`Could not find ${plane}. Open the plane menu once, then press the hotkey again.`, 7000);
       return;
     }
 
-    clickElement(option);
+    await realMouseClick(option, 0.5, 0.5);
     setStatus(`Switching to ${plane}...`);
   }
 
@@ -1897,8 +1902,11 @@
   }
 
   function findPlaneSelectorButton() {
+    const quickSelector = findQuickSeriesSelectorButton();
+    if (quickSelector) return quickSelector;
+
     const currentPlane = normalizePlaneName(getSeriesInfo().selectedPlane);
-    const candidates = Array.from(document.body.querySelectorAll("button,[role='button'],div,span"))
+    const candidates = Array.from(document.body.querySelectorAll("output,button,[role='button'],[role='combobox'],div,span"))
       .filter((element) => element !== state.host && isVisible(element))
       .filter((element) => {
         const rect = element.getBoundingClientRect();
@@ -1909,6 +1917,40 @@
 
     candidates.sort((a, b) => scorePlaneSelector(b, currentPlane) - scorePlaneSelector(a, currentPlane));
     return candidates[0] || null;
+  }
+
+  function findQuickSeriesSelectorButton() {
+    const candidates = Array.from(document.body.querySelectorAll(
+      [
+        "output.series-quick-select__output",
+        "[class*='series-quick-select__output']",
+        "[role='combobox'][aria-controls='list_box']",
+        "[role='combobox'][class*='series']"
+      ].join(",")
+    ))
+      .filter((element) => element !== state.host && isVisible(element))
+      .filter((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top > 220 || rect.height < 24 || rect.height > 120 || rect.width < 70 || rect.width > 520) return false;
+        const text = cleanText(element.getAttribute("aria-label") || element.getAttribute("title") || element.textContent || "");
+        return /\b(All series|Axial|Coronal|Sagittal|3D)\b/i.test(text) || element.className.toString().includes("series-quick-select");
+      });
+
+    candidates.sort((a, b) => scoreQuickSeriesSelector(b) - scoreQuickSeriesSelector(a));
+    return candidates[0] || null;
+  }
+
+  function scoreQuickSeriesSelector(element) {
+    const rect = element.getBoundingClientRect();
+    const text = cleanText(element.getAttribute("aria-label") || element.getAttribute("title") || element.textContent || "");
+    let score = 0;
+    if (element.matches("output.series-quick-select__output,[class*='series-quick-select__output']")) score += 50;
+    if (element.matches("[role='combobox']")) score += 20;
+    if (/\b(All series|Axial|Coronal|Sagittal|3D)\b/i.test(text)) score += 12;
+    if (rect.top < 170) score += 8;
+    if (rect.left > window.innerWidth * 0.25 && rect.left < window.innerWidth * 0.9) score += 8;
+    score -= Math.abs(rect.height - 48) / 8;
+    return score;
   }
 
   function scorePlaneSelector(element, currentPlane) {
@@ -1927,9 +1969,12 @@
     return score;
   }
 
-  function findPlaneOption(targetPlane) {
+  function findPlaneOption(targetPlane, menuRect = null) {
+    const quickOption = findQuickSeriesOption(targetPlane, menuRect);
+    if (quickOption) return quickOption;
+
     const expected = normalizeText(targetPlane);
-    const candidates = Array.from(document.body.querySelectorAll("button,li,a,p,span,div,[role='option'],[role='menuitem'],[role='button']"))
+    let candidates = Array.from(document.body.querySelectorAll("button,li,a,p,span,div,[role='option'],[role='menuitem'],[role='button']"))
       .filter((element) => element !== state.host && isVisible(element))
       .map((element) => ({
         element,
@@ -1941,15 +1986,74 @@
         return rect.width >= 24 && rect.width <= 440 && rect.height >= 16 && rect.height <= 96;
       });
 
-    candidates.sort((a, b) => scorePlaneOption(b.element, targetPlane) - scorePlaneOption(a.element, targetPlane));
+    const nearbyCandidates = menuRect ? candidates.filter((item) => isNearPlaneMenu(item.element, menuRect)) : [];
+    if (nearbyCandidates.length) candidates = nearbyCandidates;
+
+    candidates.sort((a, b) => scorePlaneOption(b.element, targetPlane, menuRect) - scorePlaneOption(a.element, targetPlane, menuRect));
     return candidates.length ? getPlaneOptionClickTarget(candidates[0].element) : null;
   }
 
-  function scorePlaneOption(element, targetPlane) {
+  function findQuickSeriesOption(targetSeries, menuRect = null) {
+    const expected = normalizeText(targetSeries);
+    const options = getVisibleQuickSeriesOptions()
+      .map((element) => ({
+        element,
+        name: getQuickSeriesOptionName(element)
+      }))
+      .filter((item) => normalizeText(item.name) === expected);
+
+    const nearbyOptions = menuRect ? options.filter((item) => isNearPlaneMenu(item.element, menuRect)) : [];
+    const candidates = nearbyOptions.length ? nearbyOptions : options;
+    candidates.sort((a, b) => scoreQuickSeriesOption(b.element, menuRect) - scoreQuickSeriesOption(a.element, menuRect));
+    return candidates.length ? candidates[0].element : null;
+  }
+
+  function getVisibleQuickSeriesOptions() {
+    return Array.from(document.body.querySelectorAll(
+      [
+        ".series-quick-select-option[role='option']",
+        ".series-quick-select-option",
+        "[role='option'][class*='series-quick-select']"
+      ].join(",")
+    ))
+      .filter((element) => element !== state.host && isVisible(element));
+  }
+
+  function getQuickSeriesOptionName(element) {
+    const nameElement = element.querySelector(".series-quick-select-option__name");
+    if (nameElement) return cleanText(nameElement.textContent || "");
+    const imageAlt = element.querySelector("img[alt]")?.getAttribute("alt");
+    if (imageAlt) return cleanText(imageAlt);
+    return cleanText(element.getAttribute("title") || element.getAttribute("aria-label") || element.textContent || "");
+  }
+
+  function scoreQuickSeriesOption(element, menuRect = null) {
+    const rect = element.getBoundingClientRect();
+    let score = 0;
+    if (element.matches(".series-quick-select-option")) score += 40;
+    if (element.matches("[role='option']")) score += 16;
+    if (element.querySelector(".series-quick-select-option__name")) score += 12;
+    if (element.closest(".series-quick-select__scrollbox,[role='listbox']")) score += 16;
+    if (menuRect && isNearPlaneMenu(element, menuRect)) score += 18;
+    if (rect.width >= 70 && rect.width <= 520 && rect.height >= 24 && rect.height <= 80) score += 8;
+    return score;
+  }
+
+  function isNearPlaneMenu(element, menuRect) {
+    const rect = element.getBoundingClientRect();
+    const left = menuRect.left - 120;
+    const right = menuRect.right + 180;
+    const top = menuRect.top - 40;
+    const bottom = menuRect.bottom + 420;
+    return rect.right >= left && rect.left <= right && rect.bottom >= top && rect.top <= bottom;
+  }
+
+  function scorePlaneOption(element, targetPlane, menuRect = null) {
     const rect = element.getBoundingClientRect();
     let score = 0;
     if (element.matches("button,li,a,[role='option'],[role='menuitem'],[role='button']")) score += 14;
     if (element.closest("[class*='dropdown'],[class*='menu'],[class*='select'],[role='listbox'],[role='menu']")) score += 16;
+    if (menuRect && isNearPlaneMenu(element, menuRect)) score += 18;
     if (rect.left > window.innerWidth * 0.28) score += 8;
     if (rect.top < 260) score += 4;
     return score;
@@ -1966,6 +2070,10 @@
   }
 
   function getSeriesInfo() {
+    const quickSelector = findQuickSeriesSelectorButton();
+    const visibleSeriesOptions = unique(getVisibleQuickSeriesOptions()
+      .map((element) => getQuickSeriesOptionName(element))
+      .filter(Boolean));
     const titleCandidates = Array.from(document.querySelectorAll("[class*='title'],[title],p,span,button,div"))
       .filter((element) => isVisible(element))
       .map((element) => cleanText(element.getAttribute("title") || element.textContent || ""))
@@ -1974,8 +2082,17 @@
 
     return {
       visibleTextCandidates: unique(titleCandidates),
+      selectedSeries: quickSelector ? cleanQuickSeriesSelectorText(quickSelector) : "",
+      availableSeries: visibleSeriesOptions,
+      seriesSelectorFound: Boolean(quickSelector),
       selectedPlane: inferSelectedPlane(titleCandidates)
     };
+  }
+
+  function cleanQuickSeriesSelectorText(element) {
+    const clone = element.cloneNode(true);
+    clone.querySelectorAll("svg,img").forEach((node) => node.remove());
+    return cleanText(clone.textContent || "");
   }
 
   function inferSelectedPlane(candidates) {
@@ -2232,11 +2349,15 @@
 
   function hotkeyMatchesEvent(binding, event) {
     if (!binding || !binding.code) return false;
-    return Boolean(binding.alt) === Boolean(event.altKey) &&
+    const modifiersMatch = Boolean(binding.alt) === Boolean(event.altKey) &&
       Boolean(binding.ctrl) === Boolean(event.ctrlKey) &&
       Boolean(binding.meta) === Boolean(event.metaKey) &&
-      Boolean(binding.shift) === Boolean(event.shiftKey) &&
-      String(binding.code) === String(event.code || event.key);
+      Boolean(binding.shift) === Boolean(event.shiftKey);
+    if (!modifiersMatch) return false;
+    if (String(binding.code) === String(event.code || event.key)) return true;
+    const bindingKey = normalizeHotkeyKey(binding.key || hotkeyKeyLabel(binding));
+    const eventKey = normalizeHotkeyKey(event.key || event.code);
+    return Boolean(bindingKey && eventKey && bindingKey === eventKey);
   }
 
   function hotkeyBindingsEqual(a, b) {
@@ -2276,6 +2397,13 @@
     if (code === "Slash") return "/";
     if (code === "Backslash") return "\\";
     return cleanText(binding.key || code);
+  }
+
+  function normalizeHotkeyKey(value) {
+    const text = String(value || "");
+    if (text === " ") return "space";
+    if (/^space(bar)?$/i.test(text)) return "space";
+    return text.trim().toLowerCase();
   }
 
   function getHotkeyActionLabel(actionId) {
@@ -2322,6 +2450,10 @@
       startDirectionalRangeCine(-1);
     } else if (actionId === "cineForward") {
       startDirectionalRangeCine(1);
+    } else if (actionId === "speedDown") {
+      adjustCineSpeed(-1);
+    } else if (actionId === "speedUp") {
+      adjustCineSpeed(1);
     } else if (actionId === "pinsOn") {
       applyPinsHotkey(true);
     } else if (actionId === "labelsOn") {
