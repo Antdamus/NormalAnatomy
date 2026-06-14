@@ -115,6 +115,15 @@
     { id: "axial", label: "Axial plane" },
     { id: "coronal", label: "Coronal plane" },
     { id: "sagittal", label: "Sagittal plane" },
+    { id: "series1", label: "Series slot 1" },
+    { id: "series2", label: "Series slot 2" },
+    { id: "series3", label: "Series slot 3" },
+    { id: "series4", label: "Series slot 4" },
+    { id: "series5", label: "Series slot 5" },
+    { id: "series6", label: "Series slot 6" },
+    { id: "series7", label: "Series slot 7" },
+    { id: "series8", label: "Series slot 8" },
+    { id: "series9", label: "Series slot 9" },
     { id: "togglePanel", label: "Panel" },
     { id: "toggleBoxes", label: "Boxes" }
   ];
@@ -129,6 +138,15 @@
     axial: { code: "Digit1", key: "1", alt: false, ctrl: false, meta: false, shift: false },
     coronal: { code: "Digit2", key: "2", alt: false, ctrl: false, meta: false, shift: false },
     sagittal: { code: "Digit3", key: "3", alt: false, ctrl: false, meta: false, shift: false },
+    series1: { code: "Digit1", key: "1", alt: true, ctrl: false, meta: false, shift: false },
+    series2: { code: "Digit2", key: "2", alt: true, ctrl: false, meta: false, shift: false },
+    series3: { code: "Digit3", key: "3", alt: true, ctrl: false, meta: false, shift: false },
+    series4: { code: "Digit4", key: "4", alt: true, ctrl: false, meta: false, shift: false },
+    series5: { code: "Digit5", key: "5", alt: true, ctrl: false, meta: false, shift: false },
+    series6: { code: "Digit6", key: "6", alt: true, ctrl: false, meta: false, shift: false },
+    series7: { code: "Digit7", key: "7", alt: true, ctrl: false, meta: false, shift: false },
+    series8: { code: "Digit8", key: "8", alt: true, ctrl: false, meta: false, shift: false },
+    series9: { code: "Digit9", key: "9", alt: true, ctrl: false, meta: false, shift: false },
     togglePanel: { code: "KeyI", key: "i", alt: true, ctrl: false, meta: false, shift: false },
     toggleBoxes: { code: "KeyB", key: "b", alt: true, ctrl: false, meta: false, shift: false }
   };
@@ -738,7 +756,7 @@
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
-    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes.`;
+    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
     root.querySelectorAll("[data-hotkey-action]").forEach((button) => {
       const actionId = button.getAttribute("data-hotkey-action") || "";
       button.textContent = state.captureHotkeyAction === actionId ? "Press key..." : formatHotkey(state.hotkeys[actionId]);
@@ -1549,8 +1567,7 @@
 
   async function startDirectionalRangeCine(direction) {
     const normalizedDirection = direction < 0 ? -1 : 1;
-    const mode = normalizedDirection < 0 ? "backward" : "forward";
-    if (state.rangeCineRunning && state.rangeCineMode === mode) {
+    if (state.rangeCineRunning && state.rangeCineMode === "pingpong" && state.rangeCineDirection === normalizedDirection) {
       stopRangeCine();
       return;
     }
@@ -1571,9 +1588,9 @@
     state.rangeCineRunning = true;
     state.rangeCineCurrent = current;
     state.rangeCineDirection = normalizedDirection;
-    state.rangeCineMode = mode;
+    state.rangeCineMode = "pingpong";
     refreshPanel();
-    setStatus(`Playing range ${range.startSlice}-${range.endSlice} ${mode}.`, 0);
+    setStatus(`Playing range ${range.startSlice}-${range.endSlice} ${normalizedDirection < 0 ? "backward" : "forward"}, then ping-pong.`, 0);
     await stepRangeCine(range);
     if (!state.rangeCineRunning) return;
     startRangeCineTimer(range);
@@ -1660,32 +1677,50 @@
     if (!state.rangeCineRunning || state.rangeCineBusy) return;
     state.rangeCineBusy = true;
     try {
-      const slice = Number.isFinite(state.rangeCineCurrent) ? state.rangeCineCurrent : range.startSlice;
+      const slice = getNextRangeCineSlice(range);
       const moved = await setViewerSlice(slice);
       if (!moved.ok) {
         stopRangeCine({ quiet: true });
         setStatus(moved.reason);
         return;
       }
-      const direction = state.rangeCineDirection || 1;
-      let nextSlice = slice + direction;
-      if (state.rangeCineMode === "forward") {
-        nextSlice = nextSlice > range.endSlice ? range.startSlice : nextSlice;
-      } else if (state.rangeCineMode === "backward") {
-        nextSlice = nextSlice < range.startSlice ? range.endSlice : nextSlice;
-      } else if (range.startSlice === range.endSlice) {
-        nextSlice = range.startSlice;
-      } else if (nextSlice > range.endSlice) {
-        state.rangeCineDirection = -1;
-        nextSlice = range.endSlice - 1;
-      } else if (nextSlice < range.startSlice) {
-        state.rangeCineDirection = 1;
-        nextSlice = range.startSlice + 1;
-      }
-      state.rangeCineCurrent = nextSlice;
+      state.rangeCineCurrent = slice;
     } finally {
       state.rangeCineBusy = false;
     }
+  }
+
+  function getNextRangeCineSlice(range) {
+    const start = Math.round(range.startSlice);
+    const end = Math.round(range.endSlice);
+    if (start === end) return start;
+
+    const fallback = state.rangeCineDirection < 0 ? end : start;
+    const current = Number.isFinite(state.rangeCineCurrent)
+      ? clamp(Math.round(state.rangeCineCurrent), start, end)
+      : fallback;
+
+    if (state.rangeCineMode === "forward") {
+      return current >= end ? start : current + 1;
+    }
+
+    if (state.rangeCineMode === "backward") {
+      return current <= start ? end : current - 1;
+    }
+
+    let direction = state.rangeCineDirection || 1;
+    let nextSlice = current + direction;
+
+    if (nextSlice > end) {
+      direction = -1;
+      nextSlice = end - 1;
+    } else if (nextSlice < start) {
+      direction = 1;
+      nextSlice = start + 1;
+    }
+
+    state.rangeCineDirection = direction;
+    return nextSlice;
   }
 
   function getValidCineRange() {
@@ -1907,10 +1942,7 @@
     stopRangeCine({ quiet: true });
     const menuButton = findPlaneSelectorButton();
     const menuRect = menuButton ? menuButton.getBoundingClientRect() : null;
-    if (menuButton) {
-      await realMouseClick(menuButton, 0.5, 0.5);
-      await delay(260);
-    }
+    await openSeriesMenuIfNeeded(menuButton, menuRect);
 
     let option = await waitFor(() => findPlaneOption(plane, menuRect), 1800, 120);
     if (!option && menuButton) {
@@ -1925,7 +1957,48 @@
     }
 
     await realMouseClick(option, 0.5, 0.5);
-    setStatus(`Switching to ${plane}...`);
+    setStatus(`Switching to ${getPlaneOptionLabel(option) || plane}...`);
+  }
+
+  async function switchSeriesSlot(slotNumber) {
+    const slot = Number(slotNumber);
+    if (!Number.isInteger(slot) || slot < 1) {
+      setStatus("Unknown series slot.");
+      return;
+    }
+
+    stopRangeCine({ quiet: true });
+    const menuButton = findPlaneSelectorButton();
+    const menuRect = menuButton ? menuButton.getBoundingClientRect() : null;
+    await openSeriesMenuIfNeeded(menuButton, menuRect);
+
+    let option = await waitFor(() => findQuickSeriesOptionBySlot(slot, menuRect), 1800, 120);
+    if (!option && menuButton) {
+      await realMouseClick(menuButton, 0.5, 0.5);
+      await delay(260);
+      option = await waitFor(() => findQuickSeriesOptionBySlot(slot, menuRect), 1200, 120);
+    }
+
+    if (!option) {
+      setStatus(`Could not find series slot ${slot}. Open All series once, then press the hotkey again.`, 7000);
+      return;
+    }
+
+    const name = getQuickSeriesOptionName(option) || `series slot ${slot}`;
+    await realMouseClick(option, 0.5, 0.5);
+    setStatus(`Switching to ${name}...`);
+  }
+
+  async function openSeriesMenuIfNeeded(menuButton, menuRect) {
+    if (getVisibleQuickSeriesOptionsNear(menuRect).length) return;
+    if (!menuButton) return;
+    await realMouseClick(menuButton, 0.5, 0.5);
+    await delay(260);
+  }
+
+  function getPlaneOptionLabel(option) {
+    if (!option) return "";
+    return getQuickSeriesOptionName(option) || cleanText(option.getAttribute("title") || option.textContent || "");
   }
 
   function normalizePlaneName(value) {
@@ -1966,7 +2039,7 @@
         const rect = element.getBoundingClientRect();
         if (rect.top > 220 || rect.height < 24 || rect.height > 120 || rect.width < 70 || rect.width > 520) return false;
         const text = cleanText(element.getAttribute("aria-label") || element.getAttribute("title") || element.textContent || "");
-        return /\b(All series|Axial|Coronal|Sagittal|3D)\b/i.test(text) || element.className.toString().includes("series-quick-select");
+        return /\b(All series|Axial|Coronal|Sagittal|3D)\b/i.test(text) || String(element.className || "").includes("series-quick-select");
       });
 
     candidates.sort((a, b) => scoreQuickSeriesSelector(b) - scoreQuickSeriesSelector(a));
@@ -2033,12 +2106,39 @@
         element,
         name: getQuickSeriesOptionName(element)
       }))
-      .filter((item) => normalizeText(item.name) === expected);
+      .filter((item) => quickSeriesNameMatches(item.name, expected));
 
     const nearbyOptions = menuRect ? options.filter((item) => isNearPlaneMenu(item.element, menuRect)) : [];
     const candidates = nearbyOptions.length ? nearbyOptions : options;
-    candidates.sort((a, b) => scoreQuickSeriesOption(b.element, menuRect) - scoreQuickSeriesOption(a.element, menuRect));
+    candidates.sort((a, b) => (
+      scoreQuickSeriesOption(b.element, menuRect) - scoreQuickSeriesOption(a.element, menuRect) ||
+      a.element.getBoundingClientRect().top - b.element.getBoundingClientRect().top
+    ));
     return candidates.length ? candidates[0].element : null;
+  }
+
+  function findQuickSeriesOptionBySlot(slotNumber, menuRect = null) {
+    const options = getVisibleQuickSeriesOptionsNear(menuRect)
+      .map((element) => ({
+        element,
+        name: getQuickSeriesOptionName(element)
+      }))
+      .filter((item) => item.name && !isAllSeriesName(item.name));
+    return options[slotNumber - 1]?.element || null;
+  }
+
+  function quickSeriesNameMatches(name, expected) {
+    const normalizedName = normalizeText(name);
+    if (!normalizedName || !expected) return false;
+    if (normalizedName === expected) return true;
+    if (/^(axial|coronal|sagittal)$/.test(expected)) {
+      return normalizedName.startsWith(`${expected} `) || normalizedName.startsWith(`${expected}-`);
+    }
+    return false;
+  }
+
+  function isAllSeriesName(name) {
+    return /^all series$/i.test(cleanText(name));
   }
 
   function getVisibleQuickSeriesOptions() {
@@ -2050,6 +2150,16 @@
       ].join(",")
     ))
       .filter((element) => element !== state.host && isVisible(element));
+  }
+
+  function getVisibleQuickSeriesOptionsNear(menuRect = null) {
+    const options = getVisibleQuickSeriesOptions();
+    const nearbyOptions = menuRect ? options.filter((element) => isNearPlaneMenu(element, menuRect)) : [];
+    const candidates = nearbyOptions.length ? nearbyOptions : options;
+    return candidates.sort((a, b) => (
+      a.getBoundingClientRect().top - b.getBoundingClientRect().top ||
+      a.getBoundingClientRect().left - b.getBoundingClientRect().left
+    ));
   }
 
   function getQuickSeriesOptionName(element) {
@@ -2497,6 +2607,8 @@
       switchPlane("Coronal");
     } else if (actionId === "sagittal") {
       switchPlane("Sagittal");
+    } else if (/^series[1-9]$/.test(actionId)) {
+      switchSeriesSlot(Number(actionId.replace("series", "")));
     } else if (actionId === "togglePanel") {
       state.collapsed = !state.collapsed;
       savePageState();
