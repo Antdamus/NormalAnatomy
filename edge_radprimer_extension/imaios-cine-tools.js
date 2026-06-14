@@ -50,6 +50,33 @@
       ]
     },
     {
+      id: "cervical-paraspinal-space",
+      label: "Cervical paraspinal space",
+      structures: [
+        "Longus colli muscle",
+        "Longus capitis muscle",
+        "Scalenus anterior muscle",
+        "Scalenus medius muscle",
+        "Scalenus posterior muscle",
+        "Levator scapulae",
+        "Splenius capitis muscle",
+        "Splenius colli muscle",
+        "Semispinalis capitis muscle",
+        "Semispinalis colli muscle",
+        "Rectus capitis posterior major muscle",
+        "Rectus capitis posterior minor muscle",
+        "Obliquus superior capitis muscle",
+        "Obliquus inferior capitis muscle"
+      ],
+      learningFrame: [
+        "Anterior prevertebral column: longus colli and longus capitis, immediately anterior to the cervical vertebral bodies and clivus/upper cervical spine.",
+        "Lateral vertebral/rib column: anterior, middle, and posterior scalenes, lateral to the transverse processes; anterior and middle scalenes frame the interscalene region.",
+        "Posterolateral scapular bridge: levator scapulae, running from upper cervical transverse processes toward the superior medial scapula between the scalenes and posterior extensor layer.",
+        "Posterior extensor sheets: splenius capitis/colli more superficial-lateral, semispinalis capitis/colli deeper-medial along the posterior elements.",
+        "Suboccipital cap: rectus capitis posterior major/minor and obliquus capitis superior/inferior at C0-C2, best learned as the small deep muscles around the atlanto-occipital/atlantoaxial region."
+      ]
+    },
+    {
       id: "posterior-neck",
       label: "Posterior neck",
       structures: [
@@ -1342,6 +1369,7 @@
       requestedStructures,
       lockedStructures,
       confirmedLockedCount: countLockedMatches(requestedStructures),
+      learningFrame: getActivePreset().learningFrame || [],
       cineRange,
       cinePlayback: {
         mode: "bounded ping-pong",
@@ -1366,12 +1394,17 @@
 
   async function copyPrompt() {
     const structures = state.selectedStructures.length ? state.selectedStructures : parseCustomList();
+    const learningFrame = getActivePreset().learningFrame || [];
     const prompt = [
       "Create a compact Anki set for identifying these neck muscles on IMAIOS head and neck CT cine clips:",
       "",
       structures.map((name) => `- ${name}`).join("\n"),
       "",
+      learningFrame.length ? "Use this learning framework to group the cards:" : "",
+      learningFrame.length ? learningFrame.map((line) => `- ${line}`).join("\n") : "",
+      learningFrame.length ? "" : "",
       "Use the clips as the visual prompt. Make cards that test image identification first, then add the minimum anatomy needed to prevent confusion with neighboring muscles.",
+      "When a preset supplies a learning framework, create one compact framework card first, then focused identification cards grouped by that framework.",
       "For each structure, include plane-specific recognition cues for axial, coronal, and sagittal review when useful. Include relationships, attachments, and action/innervation only when they help localization or high-yield discrimination.",
       "Avoid pathology framing. Keep the cards anatomy-first and concise.",
       "",
