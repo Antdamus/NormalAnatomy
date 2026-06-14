@@ -1,0 +1,6 @@
+{
+  "folder": "image_evidence",
+  "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+  "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+  "entries": []
+}

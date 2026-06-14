@@ -228,6 +228,17 @@ function currentEngineMode() {
   };
 }
 
+async function syncSourceCompareButtons() {
+  let isArticleSource = false;
+  try {
+    const tab = await getActiveBrowserTab();
+    isArticleSource = Boolean(getArticleSourceFromUrl(tab.url || ""));
+  } catch {}
+
+  $("exportSourceCompare").hidden = !isArticleSource;
+  $("buildMasterSource").hidden = !isArticleSource;
+}
+
 function syncSpeechifyAvailability() {
   const eligible = isNarrativeSpeechifyMode(currentEngineMode());
   const auditEligible = isNonNarrativeMode(currentEngineMode());
@@ -619,14 +630,50 @@ function sendExportSourceCompareMessage(tabId) {
   });
 }
 
-function sendBuildMasterSourceMessage(tabId) {
+function sendBuildMasterSourceMessage(tabId, options = {}) {
   return new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage({ type: "BUILD_MASTER_SOURCE_FROM_ARTICLE", tabId }, (response) => {
+    chrome.runtime.sendMessage({
+      type: "BUILD_MASTER_SOURCE_FROM_ARTICLE",
+      tabId,
+      selectedPairingTitle: options.selectedPairingTitle || ""
+    }, (response) => {
       const err = chrome.runtime.lastError;
       if (err) reject(new Error(err.message));
       else resolve(response);
     });
   });
+}
+
+function promptForMasterSourceTitleChoice(response) {
+  const choices = Array.isArray(response?.titleChoices) ? response.titleChoices : [];
+  if (!choices.length) return null;
+
+  const lines = choices.map((choice, index) => (
+    `${index + 1}. ${choice.sourceLabel || choice.sourceKind || "Source"}: ${choice.title || "[title not found]"}`
+  ));
+  const answer = window.prompt(
+    [
+      "RadPrimer and STATdx article titles differ.",
+      "Cancel to stop the build, or enter the number/title to use as the shared master-source topic.",
+      "",
+      ...lines
+    ].join("\n"),
+    "1"
+  );
+  if (answer === null) return null;
+
+  const trimmed = answer.trim();
+  const index = Number(trimmed);
+  if (Number.isInteger(index) && index >= 1 && index <= choices.length) {
+    return choices[index - 1].title || "";
+  }
+
+  const exact = choices.find((choice) => normalizeTitleForChoice(choice.title) === normalizeTitleForChoice(trimmed));
+  return exact?.title || "";
+}
+
+function normalizeTitleForChoice(value) {
+  return String(value || "").replace(/\s+/g, " ").trim().toLowerCase();
 }
 
 function waitForTabComplete(tabId) {
@@ -880,6 +927,7 @@ async function run() {
 
     let chatgptLine = "ChatGPT opening disabled.";
     let speechifyLine = "Speechify disabled.";
+    let imaiosLine = "IMaios chunks not checked.";
     if (settings.openChatGPT) {
       const shouldWaitForNarrative =
         settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings);
@@ -900,6 +948,15 @@ async function run() {
           if (fillResponse.assistantText) {
             await copyText(fillResponse.assistantText);
             chatgptLine = `Submitted and copied final ChatGPT response (${fillResponse.assistantChars} chars).`;
+            if (fillResponse.imaios?.ok) {
+              imaiosLine = `IMaios opened and imported ${fillResponse.imaios.result?.chunkCount || fillResponse.imaiosChunkLibrary?.chunks?.length || 0} chunks.`;
+            } else if (fillResponse.imaios?.error) {
+              imaiosLine = `IMaios import failed; use Copy IMaios chunks in the ChatGPT tab. ${fillResponse.imaios.error}`;
+            } else {
+              imaiosLine = fillResponse.imaiosChunkLibrary?.chunks?.length
+                ? `IMaios chunk JSON found (${fillResponse.imaiosChunkLibrary.chunks.length} chunks). Use Copy IMaios chunks in the ChatGPT tab.`
+                : "No IMaios chunk JSON found in the captured response.";
+            }
             if (fillResponse.speechify?.ok) {
               speechifyLine = fillResponse.speechify.result?.autoSaved
                 ? `Created Speechify file: ${fillResponse.speechify.result?.title || "untitled"}.`
@@ -936,6 +993,7 @@ async function run() {
         `Characters: ${meta.outputChars || response.output.length}`,
         downloadLine,
         chatgptLine,
+        imaiosLine,
         speechifyLine
       ].join("\n")
     );
@@ -1098,8 +1156,17 @@ async function buildMasterSource() {
   try {
     await saveForm();
     const tab = await getActiveTab();
-    setStatus("Building master source package from cached RadPrimer + STATdx comparison sources...");
-    const response = await sendBuildMasterSourceMessage(tab.id);
+    setStatus("Exporting open RadPrimer + STATdx sources and building master source package...");
+    let response = await sendBuildMasterSourceMessage(tab.id);
+    if (!response?.ok && response?.errorCode === "MASTER_SOURCE_TITLE_MISMATCH") {
+      const selectedPairingTitle = promptForMasterSourceTitleChoice(response);
+      if (!selectedPairingTitle) {
+        setStatus("Master source build cancelled before exporting because the open article titles differ.");
+        return;
+      }
+      setStatus(`Using shared master-source title: ${selectedPairingTitle}\nExporting both open sources...`);
+      response = await sendBuildMasterSourceMessage(tab.id, { selectedPairingTitle });
+    }
     if (!response?.ok) throw new Error(response?.error || "Master source build failed.");
 
     if (response.clipboardText) await copyText(response.clipboardText);
@@ -1107,6 +1174,7 @@ async function buildMasterSource() {
       [
         response.message || "Master source request bundle prepared.",
         response.bundle?.downloadFolder ? `Bundle: ${response.bundle.downloadFolder}` : "",
+        response.exportedSources?.length ? `Exported: ${response.exportedSources.join(", ")}` : "",
         response.cachedSources?.length ? `Sources: ${response.cachedSources.join(", ")}` : "",
         response.clipboardText ? "Codex wake-up message copied to clipboard." : ""
       ].filter(Boolean).join("\n")
@@ -1175,6 +1243,7 @@ async function showMasterSource() {
 async function init() {
   const stored = await chrome.storage.local.get("radprimerRunnerSettings");
   applyForm({ ...DEFAULTS, ...(stored.radprimerRunnerSettings || {}) });
+  await syncSourceCompareButtons();
 
   $("engine").addEventListener("change", async () => {
     populateModes($("engine").value, $("mode").value);

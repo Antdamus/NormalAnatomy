@@ -27,10 +27,12 @@ const IO_QUEUE_IMAGE_SUBFOLDER = `${IO_QUEUE_SUBFOLDER}/images`;
 const CARD_AUDIT_SUBFOLDER = "RadPrimerAudit";
 const SOURCE_COMPARE_SUBFOLDER = "RadPrimerSourceComparison";
 const MASTER_SOURCE_SUBFOLDER = "RadiologyMasterSource";
+const IMAIOS_LABEL_REPOSITORY_SUBFOLDER = "IMAIOSLabelRepository";
 const IMAGE_EVIDENCE_SUBFOLDER = "image_evidence";
 const SOURCE_COMPARE_CACHE_PREFIX = "radprimerSourceCompareCache:";
 const MASTER_SOURCE_CACHE_KEY = "radprimerLatestMasterSource";
 const MASTER_SOURCE_CACHE_PREFIX = "radprimerMasterSourceCache:";
+const IMAIOS_LABEL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-repository";
 const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
 const CORE_EVIDENCE_BEGIN = "CORE_EVIDENCE_FILE_BEGIN";
 const CORE_EVIDENCE_END = "CORE_EVIDENCE_FILE_END";
@@ -367,6 +369,163 @@ async function sendSpeechifyMessageWithInjection(tabId, payload) {
     await sleep(500);
     return sendSpeechifyMessage(tabId, payload);
   }
+}
+
+let imaiosModuleCatalogCache = null;
+
+async function loadImaiosModuleCatalog() {
+  if (imaiosModuleCatalogCache) return imaiosModuleCatalogCache;
+  try {
+    const response = await fetch(chrome.runtime.getURL("imaios_module_catalog.json"));
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const catalog = await response.json();
+    imaiosModuleCatalogCache = Array.isArray(catalog.modules) ? catalog.modules : [];
+  } catch (error) {
+    console.warn("Could not load IMaiOS module catalog", error);
+    imaiosModuleCatalogCache = [];
+  }
+  return imaiosModuleCatalogCache;
+}
+
+function normalizeImaiosRouteText(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/\bcomputed tomography\b/g, "ct")
+    .replace(/\bmagnetic resonance imaging\b/g, "mri")
+    .replace(/\binternal auditory canal\b/g, "iac")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function tokenizeImaiosRouteText(value) {
+  const stopWords = new Set(["and", "the", "of", "for", "with", "anatomy", "module", "atlas", "imaging"]);
+  return normalizeImaiosRouteText(value)
+    .split(" ")
+    .filter((token) => token.length > 1 && !stopWords.has(token));
+}
+
+function getImaiosChunkRouteQuery(library) {
+  const chunks = Array.isArray(library?.chunks) ? library.chunks : [];
+  return [
+    library?.topic,
+    library?.source,
+    ...chunks.flatMap((chunk) => [
+      chunk?.modality,
+      chunk?.imaiosModality,
+      chunk?.module,
+      chunk?.title,
+      chunk?.id
+    ])
+  ].filter(Boolean).join(" ");
+}
+
+function scoreImaiosModule(module, query) {
+  const queryText = normalizeImaiosRouteText(query);
+  if (!queryText) return 0;
+  const queryTokens = new Set(tokenizeImaiosRouteText(queryText));
+  const candidates = [
+    module.name,
+    module.key,
+    module.moduleCode,
+    module.href,
+    ...(Array.isArray(module.aliases) ? module.aliases : [])
+  ].filter(Boolean);
+
+  let bestScore = 0;
+  for (const candidate of candidates) {
+    const candidateText = normalizeImaiosRouteText(candidate);
+    if (!candidateText) continue;
+    let score = 0;
+    if (candidateText === queryText) score += 200;
+    if (queryText.includes(candidateText) || candidateText.includes(queryText)) score += 80;
+
+    const candidateTokens = new Set(tokenizeImaiosRouteText(candidateText));
+    let overlap = 0;
+    for (const token of candidateTokens) {
+      if (queryTokens.has(token)) overlap += 1;
+    }
+    if (overlap) {
+      score += overlap * 12;
+      score += Math.round((overlap / Math.max(1, candidateTokens.size)) * 40);
+    }
+
+    for (const modality of ["ct", "mri", "mra", "cta", "pet", "cbct", "xray", "radiography"]) {
+      if (queryTokens.has(modality) && candidateTokens.has(modality)) score += 18;
+      if (queryTokens.has(modality) && !candidateTokens.has(modality)) score -= 12;
+    }
+
+    if (candidateText.includes("temporal bone") && queryText.includes("temporal bone")) score += 70;
+    if (candidateText.includes("inner ear") && queryText.includes("inner ear")) score += 60;
+    if (candidateText.includes("iac") && queryText.includes("iac")) score += 60;
+    if (candidateText.includes("head and neck") && queryText.includes("head and neck")) score += 35;
+
+    bestScore = Math.max(bestScore, score);
+  }
+
+  return bestScore + Math.min(10, Number(module.occurrences || 0));
+}
+
+async function getImaiosChunkLibraryTargetUrl(library) {
+  const chunks = Array.isArray(library?.chunks) ? library.chunks : [];
+  const explicitUrl = chunks
+    .map((chunk) => String(chunk?.modalityUrl || chunk?.url || "").trim())
+    .find((url) => /^https:\/\/(www\.)?imaios\.com\/.+/i.test(url));
+  if (explicitUrl) return explicitUrl;
+
+  const modules = await loadImaiosModuleCatalog();
+  const query = getImaiosChunkRouteQuery(library);
+  const scored = modules
+    .map((module) => ({ module, score: scoreImaiosModule(module, query) }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  if (scored[0]?.module?.url && scored[0].score >= 35) return scored[0].module.url;
+  return "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone";
+}
+
+async function openOrFocusImaiosTab(targetUrl) {
+  const tabs = await chrome.tabs.query({ url: ["https://imaios.com/*", "https://www.imaios.com/*"] });
+  let tab = tabs?.[0];
+  if (tab?.id) {
+    tab = await chrome.tabs.update(tab.id, { active: true, url: targetUrl });
+  } else {
+    tab = await chrome.tabs.create({ url: targetUrl, active: true });
+  }
+  await waitForTabComplete(tab.id, 60000, "IMAIOS");
+  return tab;
+}
+
+async function sendImaiosMessageWithInjection(tabId, payload) {
+  try {
+    return await sendTabMessage(tabId, payload);
+  } catch (_error) {
+    await chrome.scripting.executeScript({
+      target: { tabId },
+      files: ["imaios-cine-tools.js"]
+    });
+    await sleep(1000);
+    return sendTabMessage(tabId, payload);
+  }
+}
+
+async function openImaiosAndImportChunks(library) {
+  if (!library || library.kind !== "imaios-chunk-library" || !Array.isArray(library.chunks)) {
+    throw new Error("No valid IMaios chunk library was provided.");
+  }
+  const targetUrl = await getImaiosChunkLibraryTargetUrl(library);
+  const tab = await openOrFocusImaiosTab(targetUrl);
+  const response = await sendImaiosMessageWithInjection(tab.id, {
+    type: "IMAIOS_IMPORT_CHUNKS",
+    library
+  });
+  if (!response?.ok) throw new Error(response?.error || "IMAIOS chunk import failed.");
+  return {
+    ...response,
+    tabId: tab.id,
+    url: targetUrl
+  };
 }
 
 async function getSpeechifyTab({ focus = false, createIfMissing = false } = {}) {
@@ -719,6 +878,21 @@ function assertSupportedArticleTab(tab) {
   return source;
 }
 
+class MasterSourceTitleMismatchError extends Error {
+  constructor({ current, companionTabs }) {
+    const choices = [current, ...companionTabs].filter(Boolean);
+    super(
+      [
+        "RadPrimer and STATdx article titles differ.",
+        "Choose which open tab title should be used as the shared master-source topic, or cancel the build.",
+        ...choices.map((choice, index) => `${index + 1}. ${choice.sourceLabel}: ${choice.title || "[title not found]"}`)
+      ].join("\n")
+    );
+    this.code = "MASTER_SOURCE_TITLE_MISMATCH";
+    this.titleChoices = choices;
+  }
+}
+
 function normalizeArticleSourceKind(value) {
   const raw = String(value || "").toLowerCase();
   if (raw.includes("statdx") || raw.includes("stat dx") || raw.includes("sdx")) return "statdx";
@@ -821,12 +995,14 @@ async function ensureRadPrimerExtractor(tabId) {
 
 async function extractRadPrimerArticle(tabId, settings, promptText) {
   const source = await ensureRadPrimerExtractor(tabId);
+  const imaiosLabelRepository = await loadImaiosLabelRepository();
   const response = await sendTabMessage(tabId, {
     type: "RADPRIMER_EXTRACT",
     config: {
       ...settings,
       primarySourceLabel: source.label,
       promptText,
+      imaiosLabelRepository,
       forceCaseLabels: settings.engine === "normal" && settings.mode === "chatgpt_cards"
     }
   });
@@ -839,6 +1015,237 @@ async function extractRadPrimerArticle(tabId, settings, promptText) {
   await rememberRadPrimerHierarchyFromExtraction(response, settings, response.meta?.sourceUrl || "");
   await applySavedRadPrimerHierarchyToExtraction(response, settings);
   return response;
+}
+
+async function loadImaiosLabelRepository() {
+  try {
+    const stored = await chrome.storage.local.get(IMAIOS_LABEL_REPOSITORY_STORAGE_KEY);
+    const repository = stored?.[IMAIOS_LABEL_REPOSITORY_STORAGE_KEY] || null;
+    if (repository && typeof repository === "object" && countImaiosRepositoryLabels(repository) > 0) {
+      return repository;
+    }
+    return await pullImaiosLabelRepositoryFromOpenTabs();
+  } catch (error) {
+    console.warn("Could not load IMaios label repository", error);
+    return await pullImaiosLabelRepositoryFromOpenTabs();
+  }
+}
+
+async function pullImaiosLabelRepositoryFromOpenTabs() {
+  try {
+    const tabs = await chrome.tabs.query({ url: ["https://imaios.com/*", "https://www.imaios.com/*"] });
+    for (const tab of tabs) {
+      if (!tab?.id) continue;
+      try {
+        const response = await sendImaiosMessageWithInjection(tab.id, {
+          type: "GET_IMAIOS_LABEL_REPOSITORY"
+        });
+        const repository = response?.repository;
+        if (response?.ok && repository && countImaiosRepositoryLabels(repository) > 0) {
+          await chrome.storage.local.set({ [IMAIOS_LABEL_REPOSITORY_STORAGE_KEY]: repository });
+          return repository;
+        }
+      } catch (error) {
+        console.warn("Could not read IMaios label repository from tab", tab.id, error);
+      }
+    }
+  } catch (error) {
+    console.warn("Could not query IMaios tabs for label repository", error);
+  }
+  return null;
+}
+
+function normalizeImaiosRepositoryForBackup(repository) {
+  const source = repository && typeof repository === "object" ? repository : {};
+  return {
+    kind: "imaios-label-repository",
+    version: Number(source.version) || 1,
+    updatedAt: source.updatedAt || new Date().toISOString(),
+    backupCreatedAt: new Date().toISOString(),
+    modalities: Array.isArray(source.modalities) ? source.modalities : [],
+    labels: Array.isArray(source.labels) ? source.labels : [],
+    moduleLabels: source.moduleLabels && typeof source.moduleLabels === "object" ? source.moduleLabels : {},
+    importInstructions: [
+      "Recovery: open an IMaios module with the extension panel loaded.",
+      "Copy this entire JSON file to the clipboard.",
+      "Click Import labels in the IMaios Cine panel.",
+      "Then run ChatGPT/RadPrimer automation again; the saved labels will be injected into future prompts."
+    ]
+  };
+}
+
+function countImaiosRepositoryLabels(repository) {
+  return Object.values(repository?.moduleLabels || {})
+    .reduce((total, module) => total + (Array.isArray(module?.labels) ? module.labels.length : 0), 0);
+}
+
+function createImaiosBackupTimestamp(value = new Date()) {
+  return value.toISOString().replace(/[:.]/g, "-");
+}
+
+function buildImaiosLabelRepositoryRedoPrompt(repository) {
+  const backup = normalizeImaiosRepositoryForBackup(repository);
+  const modules = Object.values(backup.moduleLabels || {})
+    .filter((module) => module && Array.isArray(module.labels) && module.labels.length)
+    .sort((a, b) => String(a.name || a.key || "").localeCompare(String(b.name || b.key || "")));
+  const moduleCount = modules.length;
+  const labelCount = countImaiosRepositoryLabels(backup);
+  if (!moduleCount || !labelCount) {
+    throw new Error("No saved IMaios module labels are available in extension storage or open IMaios tabs. Open the IMaios module where labels were saved and refresh it, or copy Downloads\\IMAIOSLabelRepository\\imaios_label_repository_latest.json and click Import labels in the IMaios panel.");
+  }
+
+  const repositoryBlock = modules.map((module) => [
+    `MODULE = ${module.name || module.key || "IMaios module"}`,
+    `MODULE_KEY = ${module.key || ""}`,
+    module.url ? `URL = ${module.url}` : "",
+    "AVAILABLE_LABELS:",
+    ...module.labels
+  ].filter(Boolean).join("\n")).join("\n\n");
+
+  const promptText = [
+    "Redo only the IMaios anatomy label output from this same conversation.",
+    "",
+    "Use the article/source/images already present above. Do not rewrite the Speechify narrative. Do not regenerate cards. Do not redo the image grouping audit except where needed to preserve chunk context.",
+    "",
+    "Your task now:",
+    "1. Re-infer the anatomy concepts needed for the topic already discussed above.",
+    "2. Select exact labels only from the latest IMaios label repository below.",
+    "3. If a concept has no exact/synonym/component match, put it in a gap-review block instead of inventing a label.",
+    "4. Output separate small IMaios copy-paste code blocks, one teachable chunk per block.",
+    "5. Finish with one valid JSON code block with kind `imaios-chunk-library`.",
+    "",
+    "For every JSON label object include:",
+    "- concept",
+    "- preferredLabel, copied exactly from AVAILABLE_LABELS",
+    "- aliases",
+    "- matchStatus: exact | synonym-from-repository | component-match | candidate",
+    "- status: verified",
+    "- moduleKey",
+    "- note when useful",
+    "",
+    "For unmatched concepts include `unmatchedConcepts` in the JSON and a human gap-review code block with:",
+    "NEEDED = structure or concept",
+    "TRY_LABELS = label 1 | label 2 | label 3",
+    "MATCH_STATUS = unmatched | component-match | wrong-modality | needs-other-resource",
+    "REASON = why this concept could not be represented by one verified repository label",
+    "",
+    "=== IMAIOS LABEL REPOSITORY ===",
+    `Repository modules: ${moduleCount}`,
+    `Repository labels: ${labelCount}`,
+    "",
+    repositoryBlock
+  ].join("\n");
+
+  return {
+    promptText,
+    moduleCount,
+    labelCount
+  };
+}
+
+async function downloadImaiosLabelRepositoryBackup(repository, options = {}) {
+  const backup = normalizeImaiosRepositoryForBackup(repository);
+  const moduleCount = Object.keys(backup.moduleLabels || {}).length;
+  const labelCount = countImaiosRepositoryLabels(backup);
+  if (!moduleCount || !labelCount) {
+    throw new Error("No saved IMaios module labels are available to back up.");
+  }
+
+  await chrome.storage.local.set({ [IMAIOS_LABEL_REPOSITORY_STORAGE_KEY]: backup });
+  const text = JSON.stringify(backup, null, 2);
+  const latestFilename = `${IMAIOS_LABEL_REPOSITORY_SUBFOLDER}/imaios_label_repository_latest.json`;
+  const timestamp = createImaiosBackupTimestamp();
+  const snapshotFilename = `${IMAIOS_LABEL_REPOSITORY_SUBFOLDER}/snapshots/imaios_label_repository_${timestamp}.json`;
+  const latestDownloadId = await downloadTextFileToPath(
+    latestFilename,
+    text,
+    "application/json;charset=utf-8"
+  );
+  let snapshotDownloadId = null;
+  if (options.snapshot !== false) {
+    snapshotDownloadId = await downloadTextFileToPath(
+      snapshotFilename,
+      text,
+      "application/json;charset=utf-8"
+    );
+  }
+
+  return {
+    moduleCount,
+    labelCount,
+    downloadFolder: `Downloads\\${IMAIOS_LABEL_REPOSITORY_SUBFOLDER}`,
+    latestFilename,
+    snapshotFilename: options.snapshot === false ? "" : snapshotFilename,
+    latestDownloadId,
+    snapshotDownloadId
+  };
+}
+
+function cleanArticleTitleText(value) {
+  return String(value || "")
+    .replace(/\s+/g, " ")
+    .replace(/^Document:\s*/i, "")
+    .replace(/\s*\|\s*STATdx.*$/i, "")
+    .trim();
+}
+
+async function extractArticleTitleFromTab(tab) {
+  assertSupportedArticleTab(tab);
+  try {
+    const results = await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: () => {
+        const clean = (text) => String(text || "").replace(/\s+/g, " ").trim();
+        const titleFromImageParams = (selector) => {
+          const raw = document.querySelector(selector)?.getAttribute("imageparams") || "";
+          if (!raw) return "";
+          const query = raw.startsWith("?") ? raw.slice(1) : raw;
+          return clean(new URLSearchParams(query).get("parentTitle") || "");
+        };
+        const candidates = location.hostname.includes("statdx")
+          ? [
+              document.querySelector(".document-header__document-title")?.textContent,
+              document.querySelector("h1")?.textContent,
+              document.querySelector("head > title")?.textContent
+            ]
+          : [
+              document.querySelector("h1.document-name-js.page-heading-js")?.textContent,
+              document.querySelector("#content .page-heading h1")?.textContent,
+              document.querySelector(".page-heading h1")?.textContent,
+              document.querySelector("head > title")?.textContent,
+              titleFromImageParams("#focusImageData"),
+              titleFromImageParams("#imageData")
+            ];
+        for (let title of candidates) {
+          title = clean(title)
+            .replace(/^Document:\s*/i, "")
+            .replace(/\s*\|\s*STATdx.*$/i, "")
+            .trim();
+          if (title) return title;
+        }
+        return "";
+      }
+    });
+    const title = cleanArticleTitleText(results?.[0]?.result || "");
+    if (title) return title;
+  } catch {}
+  return cleanArticleTitleText(tab.title || "");
+}
+
+async function findOpenCompanionArticleTabs(tab) {
+  const currentSource = assertSupportedArticleTab(tab);
+  const companionKind = currentSource.kind === "radprimer" ? "statdx" : "radprimer";
+  const companionSource = getArticleSourceForKind(companionKind);
+  const tabs = await chrome.tabs.query({ url: [companionSource.tabUrlPattern] });
+  return tabs
+    .filter((candidate) => candidate.id && candidate.id !== tab.id)
+    .sort((a, b) => {
+      const aSameWindow = a.windowId === tab.windowId ? 1 : 0;
+      const bSameWindow = b.windowId === tab.windowId ? 1 : 0;
+      if (aSameWindow !== bSameWindow) return bSameWindow - aSameWindow;
+      if (a.active !== b.active) return a.active ? -1 : 1;
+      return (b.lastAccessed || 0) - (a.lastAccessed || 0);
+    });
 }
 
 function getDownloadBasename(filename) {
@@ -4073,16 +4480,23 @@ async function exportRadPrimerAuditSourceOnly(tab) {
   };
 }
 
-async function exportArticleSourceComparison(tab) {
+async function exportArticleSourceComparison(tab, options = {}) {
   const articleSource = assertSupportedArticleTab(tab);
 
   await sendPageStatus(tab.id, "Compare Source", `Extracting ${articleSource.displayName} comparison source bundle...`);
   const settings = {
     ...(await loadRunnerSettings()),
+    ...(options.settingsOverride || {}),
     // Keep image URL metadata in comparison bundles so a later fused master source
     // can download only its curated image set. This does not download files here;
     // it only asks the extractor to include URL-bearing downloadFiles/imageRegistry.
+    mode: "chatgpt_cards",
+    include: "all",
+    caseMap: "",
     downloadImages: true,
+    downloadPlain: true,
+    downloadAnnotated: true,
+    keepCaptionHtml: true,
     openChatGPT: false,
     autoSubmitChatGPT: false,
     autoSendToSpeechify: false,
@@ -4122,65 +4536,103 @@ async function exportArticleSourceComparison(tab) {
   };
 }
 
-async function runMasterSourceFromPage(tab) {
-  assertSupportedArticleTab(tab);
-
-  await sendPageStatus(tab.id, "Master Source", "Exporting and caching the current article source...");
-  const settings = await loadRunnerSettings();
-  const currentExport = await exportArticleSourceComparison(tab);
-  const title = currentExport.bundle?.metadata?.articleTitle || currentExport.bundle?.metadata?.title || "";
-  const sourcePairingKey = currentExport.bundle?.metadata?.sourcePairingKey || getSourcePairingKey(title, settings);
-  const sourceCompareCacheKey = getSourceCompareCacheKeyFromPairingKey(sourcePairingKey);
-  let cache = (sourcePairingKey && (await getSourceCompareCacheByPairingKey(sourcePairingKey))) || currentExport.cache;
-  let pair = getMasterSourcePairFromCache(cache);
-  let sourcePairingMatch = null;
-
-  if (pair.length < 2) {
-    const fuzzy = await findBestSourceCompareCacheMatch({
-      title,
-      currentCache: cache,
-      currentKey: sourceCompareCacheKey
-    });
-
-    if (fuzzy.match) {
-      sourcePairingMatch = {
-        type: "fuzzy-title",
-        score: Number(fuzzy.match.score.toFixed(3)),
-        matchedCacheKey: fuzzy.match.key,
-        matchedTitles: fuzzy.match.titles,
-        matchedSources: fuzzy.match.sourceKinds
-      };
-      cache = mergeSourceCompareCaches(cache, fuzzy.match.cache, sourcePairingMatch);
-      pair = getMasterSourcePairFromCache(cache);
-
-      if (sourceCompareCacheKey) {
-        await chrome.storage.local.set({ [sourceCompareCacheKey]: cache });
-      }
-    }
+async function runMasterSourceFromPage(tab, options = {}) {
+  const currentSource = assertSupportedArticleTab(tab);
+  const companionTabs = await findOpenCompanionArticleTabs(tab);
+  const companionSource = getArticleSourceForKind(currentSource.kind === "radprimer" ? "statdx" : "radprimer");
+  if (!companionTabs.length) {
+    throw new Error(`Open a ${companionSource.label} article tab for the same topic, then run Build master source again.`);
   }
+
+  await sendPageStatus(tab.id, "Master Source", "Checking open RadPrimer/STATdx article titles...");
+  const currentTitle = await extractArticleTitleFromTab(tab);
+  const companionTitleEntries = [];
+  for (const companionTab of companionTabs) {
+    const companionTabSource = assertSupportedArticleTab(companionTab);
+    companionTitleEntries.push({
+      tab: companionTab,
+      tabId: companionTab.id,
+      sourceKind: companionTabSource.kind,
+      sourceLabel: companionTabSource.label,
+      title: await extractArticleTitleFromTab(companionTab),
+      url: companionTab.url || ""
+    });
+  }
+
+  const currentChoice = {
+    tabId: tab.id,
+    sourceKind: currentSource.kind,
+    sourceLabel: currentSource.label,
+    title: currentTitle,
+    url: tab.url || ""
+  };
+  const currentTitleKey = normalizeArticleTitleKey(currentTitle);
+  let companionChoice =
+    companionTitleEntries.find((entry) => normalizeArticleTitleKey(entry.title) === currentTitleKey) ||
+    companionTitleEntries[0];
+  const titlesMatch = Boolean(
+    currentTitleKey &&
+    normalizeArticleTitleKey(companionChoice.title) === currentTitleKey
+  );
+
+  const selectedPairingTitle = cleanArticleTitleText(options.selectedPairingTitle || "");
+  let canonicalTitle = titlesMatch ? currentTitle : selectedPairingTitle;
+  if (!titlesMatch && !canonicalTitle) {
+    throw new MasterSourceTitleMismatchError({
+      current: currentChoice,
+      companionTabs: companionTitleEntries.map(({ tab, ...entry }) => entry)
+    });
+  }
+
+  const allowedTitleKeys = new Set(
+    [currentChoice, ...companionTitleEntries].map((entry) => normalizeArticleTitleKey(entry.title)).filter(Boolean)
+  );
+  if (!titlesMatch && !allowedTitleKeys.has(normalizeArticleTitleKey(canonicalTitle))) {
+    throw new MasterSourceTitleMismatchError({
+      current: currentChoice,
+      companionTabs: companionTitleEntries.map(({ tab, ...entry }) => entry)
+    });
+  }
+
+  const selectedCompanion = companionTitleEntries.find(
+    (entry) => normalizeArticleTitleKey(entry.title) === normalizeArticleTitleKey(canonicalTitle)
+  );
+  if (selectedCompanion) companionChoice = selectedCompanion;
+  canonicalTitle = canonicalTitle || currentTitle || companionChoice.title || "radiology_master_source";
+
+  const sourcePairingKey = getSourcePairingKey(canonicalTitle, { sourcePairingKey: canonicalTitle });
+  const sourceCompareCacheKey = getSourceCompareCacheKeyFromPairingKey(sourcePairingKey);
+  const settingsOverride = { sourcePairingKey: canonicalTitle };
+
+  await sendPageStatus(tab.id, "Master Source", `Exporting ${currentSource.label} comparison source...`);
+  const currentExport = await exportArticleSourceComparison(tab, { settingsOverride });
+  await sendPageStatus(companionChoice.tabId, "Master Source", `Exporting ${companionChoice.sourceLabel} comparison source...`);
+  const companionExport = await exportArticleSourceComparison(companionChoice.tab, { settingsOverride });
+
+  let cache = (sourcePairingKey && (await getSourceCompareCacheByPairingKey(sourcePairingKey))) || currentExport.cache || companionExport.cache;
+  let pair = getMasterSourcePairFromCache(cache);
+  let sourcePairingMatch = titlesMatch
+    ? null
+    : {
+        type: "manual-title-choice",
+        selectedTitle: canonicalTitle,
+        sourceTitles: [currentChoice, { ...companionChoice, tab: undefined }].map((entry) => ({
+          sourceKind: entry.sourceKind,
+          sourceLabel: entry.sourceLabel,
+          title: entry.title,
+          url: entry.url
+        }))
+      };
 
   if (pair.length < 2) {
     const available = summarizeCachedComparisonSources(cache);
-    const fuzzy = await findBestSourceCompareCacheMatch({
-      title,
-      currentCache: cache,
-      currentKey: sourceCompareCacheKey
-    });
-    const candidateText = fuzzy.candidates?.length
-      ? ` Closest cached title candidates: ${fuzzy.candidates
-          .slice(0, 3)
-          .map((candidate) => `${candidate.titles[0] || candidate.key} (${candidate.score.toFixed(2)})`)
-          .join("; ")}.`
-      : "";
     throw new Error(
-      `Master source needs both RadPrimer and STATdx comparison exports for "${title || "this topic"}". ` +
-      `Currently cached: ${available}.${candidateText} ` +
-      `If the source titles differ, set the same Source pairing key on both pages, export each comparison source once, then run Build Master Source again.`
+      `Master source expected RadPrimer and STATdx after exporting both open tabs, but only found: ${available}.`
     );
   }
 
   const bundle = await stageMasterSourceRequestBundle({
-    articleTitle: title,
+    articleTitle: canonicalTitle,
     sources: pair,
     sourceCompareCacheKey,
     sourcePairingKey,
@@ -4188,7 +4640,7 @@ async function runMasterSourceFromPage(tab) {
   });
   const clipboardText = buildMasterSourceWakeMessage(bundle);
   const matchNote = sourcePairingMatch
-    ? ` Fuzzy matched cached source "${sourcePairingMatch.matchedTitles?.[0] || sourcePairingMatch.matchedCacheKey}" (score ${sourcePairingMatch.score}).`
+    ? ` Shared title: "${canonicalTitle}".`
     : ` Pairing key: ${sourcePairingKey || "article title"}.`;
   const message = `Prepared Codex master-source request bundle: ${bundle.downloadFolder}.${matchNote} Wake-up message copied to clipboard.`;
   await sendPageStatus(tab.id, "Master Source Ready", message, { done: true });
@@ -4199,7 +4651,11 @@ async function runMasterSourceFromPage(tab) {
     clipboardText,
     sourcePairingKey,
     sourcePairingMatch,
-    cachedSources: pair.map(sourceCompareDisplayLabel)
+    cachedSources: pair.map(sourceCompareDisplayLabel),
+    exportedSources: [
+      currentExport.bundle?.metadata?.sourceLabel || currentSource.label,
+      companionExport.bundle?.metadata?.sourceLabel || companionChoice.sourceLabel
+    ].filter(Boolean)
   };
 }
 
@@ -4338,6 +4794,43 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     (async () => {
       const result = await createSpeechifyLectureFromChatGPT(message.payload || {});
       sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "OPEN_IMAIOS_CHUNKS") {
+    (async () => {
+      const result = await openImaiosAndImportChunks(message.library || message.payload?.library || message.payload || {});
+      sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "BACKUP_IMAIOS_LABEL_REPOSITORY") {
+    (async () => {
+      const repository = message.repository || message.payload?.repository || await loadImaiosLabelRepository();
+      const result = await downloadImaiosLabelRepositoryBackup(repository, {
+        snapshot: message.snapshot !== false
+      });
+      sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "BUILD_IMAIOS_REDO_PROMPT") {
+    (async () => {
+      const repository = await loadImaiosLabelRepository();
+      const result = buildImaiosLabelRepositoryRedoPrompt(repository);
+      sendResponse({ ok: true, ...result });
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
     });
@@ -4497,7 +4990,9 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "BUILD_MASTER_SOURCE_FROM_ARTICLE") {
     (async () => {
       const tab = message.tabId ? await chrome.tabs.get(message.tabId) : _sender?.tab;
-      const result = await runMasterSourceFromPage(tab);
+      const result = await runMasterSourceFromPage(tab, {
+        selectedPairingTitle: message.selectedPairingTitle || ""
+      });
       sendResponse({ ok: true, ...result });
     })().catch(async (error) => {
       const tabId = message.tabId || _sender?.tab?.id;
@@ -4506,7 +5001,12 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
           error: true
         });
       }
-      sendResponse({ ok: false, error: String(error?.message || error) });
+      sendResponse({
+        ok: false,
+        error: String(error?.message || error),
+        errorCode: error?.code || "",
+        titleChoices: Array.isArray(error?.titleChoices) ? error.titleChoices : []
+      });
     });
 
     return true;

@@ -1,0 +1,1084 @@
+{
+  "kind": "imaios-module-catalog",
+  "version": 1,
+  "source": "C:/Users/josem.000/Documents/imaiosenatomyoage.txt",
+  "generatedAt": "2026-06-14T20:59:09.463Z",
+  "count": 84,
+  "modules": [
+    {
+      "key": "lower-limb-ankle-and-foot-ct",
+      "name": "Ankle and foot CT",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/ankle-and-foot-ct",
+      "href": "/en/e-anatomy/lower-limb/ankle-and-foot-ct",
+      "moduleCode": "ankle-foot-ct",
+      "access": "paid",
+      "aliases": [
+        "CT Ankle and foot",
+        "ankle foot ct"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "lower-limb-ankle-mri",
+      "name": "Ankle MRI",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/ankle-mri",
+      "href": "/en/e-anatomy/lower-limb/ankle-mri",
+      "moduleCode": "ankle-mri-3t",
+      "access": "paid",
+      "aliases": [
+        "MRI Ankle",
+        "ankle mri 3t"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "brain-arteriography-brain",
+      "name": "Arteriography brain",
+      "url": "https://www.imaios.com/en/e-anatomy/brain/arteriography-brain",
+      "href": "/en/e-anatomy/brain/arteriography-brain",
+      "moduleCode": "brain-angiogram-dsa",
+      "access": "paid",
+      "aliases": [
+        "brain angiogram dsa"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "lower-limb-arteriography-lower-extremity",
+      "name": "Arteriography lower extremity",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/arteriography-lower-extremity",
+      "href": "/en/e-anatomy/lower-limb/arteriography-lower-extremity",
+      "moduleCode": "lower-limb-angiogram-dsa",
+      "access": "free",
+      "aliases": [
+        "lower limb angiogram dsa"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "upper-limb-arteriography-upper-extremity",
+      "name": "Arteriography upper extremity",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/arteriography-upper-extremity",
+      "href": "/en/e-anatomy/upper-limb/arteriography-upper-extremity",
+      "moduleCode": "upper-limb-angiogram-dsa",
+      "access": "free",
+      "aliases": [
+        "upper limb angiogram dsa"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "whole-body-autonomic-nervous-system",
+      "name": "Autonomic nervous system",
+      "url": "https://www.imaios.com/en/e-anatomy/whole-body/autonomic-nervous-system",
+      "href": "/en/e-anatomy/whole-body/autonomic-nervous-system",
+      "moduleCode": "sna-anatomie",
+      "access": "paid",
+      "aliases": [
+        "sna anatomie"
+      ],
+      "occurrences": 1
+    },
+    {
+      "key": "brain-brain",
+      "name": "Brain",
+      "url": "https://www.imaios.com/en/e-anatomy/brain/brain",
+      "href": "/en/e-anatomy/brain/brain",
+      "moduleCode": "cerveau-anatomie",
+      "access": "paid",
+      "aliases": [
+        "cerveau anatomie"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "thorax-bronchoscopy",
+      "name": "Bronchoscopy",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/bronchoscopy",
+      "href": "/en/e-anatomy/thorax/bronchoscopy",
+      "moduleCode": "bronchi-endoscopy",
+      "access": "free",
+      "aliases": [
+        "bronchi endoscopy"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "thorax-cardiac-mri",
+      "name": "Cardiac MRI",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/cardiac-mri",
+      "href": "/en/e-anatomy/thorax/cardiac-mri",
+      "moduleCode": "cardiac-mri",
+      "access": "paid",
+      "aliases": [
+        "MRI Cardiac"
+      ],
+      "occurrences": 5
+    },
+    {
+      "key": "head-and-neck-carotid-artery-surgical-approach",
+      "name": "Carotid artery - Surgical approach",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/carotid-artery-surgical-approach",
+      "href": "/en/e-anatomy/head-and-neck/carotid-artery-surgical-approach",
+      "moduleCode": "surgical-approach-carotid",
+      "access": "free",
+      "aliases": [
+        "carotid artery surgical approach",
+        "surgical approach carotid"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "thorax-coronarography",
+      "name": "Coronarography",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/coronarography",
+      "href": "/en/e-anatomy/thorax/coronarography",
+      "moduleCode": "coronarographie",
+      "access": "paid",
+      "aliases": [
+        "coronarographie"
+      ],
+      "occurrences": 5
+    },
+    {
+      "key": "brain-cranial-nerves",
+      "name": "Cranial nerves",
+      "url": "https://www.imaios.com/en/e-anatomy/brain/cranial-nerves",
+      "href": "/en/e-anatomy/brain/cranial-nerves",
+      "moduleCode": "nerfs-craniens-anatomie",
+      "access": "paid",
+      "aliases": [
+        "nerfs craniens anatomie"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "brain-cranial-nerves-mri",
+      "name": "Cranial nerves MRI",
+      "url": "https://www.imaios.com/en/e-anatomy/brain/cranial-nerves-mri",
+      "href": "/en/e-anatomy/brain/cranial-nerves-mri",
+      "moduleCode": "cranial-nerves-mr",
+      "access": "paid",
+      "aliases": [
+        "MRI Cranial nerves",
+        "cranial nerves mr"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "upper-limb-ct-arthrography-elbow",
+      "name": "CT arthrography elbow",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/ct-arthrography-elbow",
+      "href": "/en/e-anatomy/upper-limb/ct-arthrography-elbow",
+      "moduleCode": "coude-arthroscanner",
+      "access": "paid",
+      "aliases": [
+        "arthrography elbow CT",
+        "coude arthroscanner"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "lower-limb-ct-arthrography-knee",
+      "name": "CT arthrography knee",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/ct-arthrography-knee",
+      "href": "/en/e-anatomy/lower-limb/ct-arthrography-knee",
+      "moduleCode": "genou-arthroscanner",
+      "access": "paid",
+      "aliases": [
+        "arthrography knee CT",
+        "genou arthroscanner"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "upper-limb-ct-arthrography-shoulder",
+      "name": "CT arthrography shoulder",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/ct-arthrography-shoulder",
+      "href": "/en/e-anatomy/upper-limb/ct-arthrography-shoulder",
+      "moduleCode": "shoulder-ct-arthrogram",
+      "access": "paid",
+      "aliases": [
+        "arthrography shoulder CT",
+        "shoulder ct arthrogram"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "thorax-ct-axial-chest",
+      "name": "CT axial chest",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/ct-axial-chest",
+      "href": "/en/e-anatomy/thorax/ct-axial-chest",
+      "moduleCode": "thorax",
+      "access": "paid",
+      "aliases": [
+        "axial chest CT",
+        "thorax"
+      ],
+      "occurrences": 8
+    },
+    {
+      "key": "abdomen-and-pelvis-ct-axial-male-abdomen-and-pelvis",
+      "name": "CT axial male abdomen and pelvis",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/ct-axial-male-abdomen-and-pelvis",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/ct-axial-male-abdomen-and-pelvis",
+      "moduleCode": "abdomen",
+      "access": "paid",
+      "aliases": [
+        "axial male abdomen and pelvis CT",
+        "abdomen"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "whole-body-ct-body-lymph-nodes",
+      "name": "CT body (lymph nodes)",
+      "url": "https://www.imaios.com/en/e-anatomy/whole-body/ct-body-lymph-nodes",
+      "href": "/en/e-anatomy/whole-body/ct-body-lymph-nodes",
+      "moduleCode": "aires-radiotherapie",
+      "access": "paid",
+      "aliases": [
+        "body (lymph nodes) CT",
+        "ct body lymph nodes",
+        "aires radiotherapie"
+      ],
+      "occurrences": 20
+    },
+    {
+      "key": "brain-ct-brain",
+      "name": "CT brain",
+      "url": "https://www.imaios.com/en/e-anatomy/brain/ct-brain",
+      "href": "/en/e-anatomy/brain/ct-brain",
+      "moduleCode": "brain-ct",
+      "access": "paid",
+      "aliases": [
+        "brain CT",
+        "brain ct"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "thorax-ct-chest",
+      "name": "CT chest",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/ct-chest",
+      "href": "/en/e-anatomy/thorax/ct-chest",
+      "moduleCode": "thorax-ct",
+      "access": "paid",
+      "aliases": [
+        "chest CT",
+        "thorax ct"
+      ],
+      "occurrences": 8
+    },
+    {
+      "key": "head-and-neck-ct-face",
+      "name": "CT face",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-face",
+      "href": "/en/e-anatomy/head-and-neck/ct-face",
+      "moduleCode": "face",
+      "access": "paid",
+      "aliases": [
+        "face CT",
+        "face"
+      ],
+      "occurrences": 10
+    },
+    {
+      "key": "head-and-neck-ct-head-and-neck",
+      "name": "CT head and neck",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-head-and-neck",
+      "href": "/en/e-anatomy/head-and-neck/ct-head-and-neck",
+      "moduleCode": "Head-Neck-CT",
+      "access": "paid",
+      "aliases": [
+        "head and neck CT",
+        "Head Neck CT",
+        "Head neck",
+        "Face and neck"
+      ],
+      "occurrences": 19
+    },
+    {
+      "key": "spine-ct-lumbar-spine",
+      "name": "CT lumbar spine",
+      "url": "https://www.imaios.com/en/e-anatomy/spine/ct-lumbar-spine",
+      "href": "/en/e-anatomy/spine/ct-lumbar-spine",
+      "moduleCode": "lumbar-spine-ct",
+      "access": "paid",
+      "aliases": [
+        "lumbar spine CT",
+        "lumbar spine ct"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "abdomen-and-pelvis-ct-peritoneal-cavity",
+      "name": "CT peritoneal cavity",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/ct-peritoneal-cavity",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/ct-peritoneal-cavity",
+      "moduleCode": "abdominopelvic-cavity-ct",
+      "access": "paid",
+      "aliases": [
+        "peritoneal cavity CT",
+        "abdominopelvic cavity ct"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "head-and-neck-ct-temporal-bone",
+      "name": "CT temporal bone",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone",
+      "href": "/en/e-anatomy/head-and-neck/ct-temporal-bone",
+      "moduleCode": "rocher",
+      "access": "paid",
+      "aliases": [
+        "temporal bone CT",
+        "rocher",
+        "Temporal bone CT",
+        "Petrous bone CT",
+        "Petrous temporal bone CT"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "thorax-cta-coronary-arteries",
+      "name": "CTA coronary arteries",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/cta-coronary-arteries",
+      "href": "/en/e-anatomy/thorax/cta-coronary-arteries",
+      "moduleCode": "coeur",
+      "access": "paid",
+      "aliases": [
+        "coronary arteries CTA",
+        "coeur"
+      ],
+      "occurrences": 5
+    },
+    {
+      "key": "head-and-neck-dental-cbct",
+      "name": "Dental CBCT",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/dental-cbct",
+      "href": "/en/e-anatomy/head-and-neck/dental-cbct",
+      "moduleCode": "dental-cbct",
+      "access": "paid",
+      "aliases": [
+        "Cone beam CT dental",
+        "Dental cone beam CT"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "abdomen-and-pelvis-digestive-system",
+      "name": "Digestive system",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/digestive-system",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/digestive-system",
+      "moduleCode": "digestive-system-illustrations",
+      "access": "paid",
+      "aliases": [
+        "digestive system illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "head-and-neck-ear",
+      "name": "Ear",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/ear",
+      "href": "/en/e-anatomy/head-and-neck/ear",
+      "moduleCode": "ear-illustrations",
+      "access": "paid",
+      "aliases": [
+        "ear illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "head-and-neck-eye",
+      "name": "Eye",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/eye",
+      "href": "/en/e-anatomy/head-and-neck/eye",
+      "moduleCode": "eye-illustrations",
+      "access": "free",
+      "aliases": [
+        "eye illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "whole-body-fdg-pet-ct-whole-body",
+      "name": "FDG-PET/CT whole body",
+      "url": "https://www.imaios.com/en/e-anatomy/whole-body/fdg-pet-ct-whole-body",
+      "href": "/en/e-anatomy/whole-body/fdg-pet-ct-whole-body",
+      "moduleCode": "pet-ct",
+      "access": "paid",
+      "aliases": [
+        "whole body FDG-PET/CT",
+        "fdg pet ct whole body",
+        "pet ct",
+        "PET CT whole body",
+        "FDG PET CT"
+      ],
+      "occurrences": 20
+    },
+    {
+      "key": "abdomen-and-pelvis-female-abdomen-pelvis-ct",
+      "name": "Female abdomen-pelvis CT",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/female-abdomen-pelvis-ct",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/female-abdomen-pelvis-ct",
+      "moduleCode": "abdomen-ct-human-female",
+      "access": "paid",
+      "aliases": [
+        "CT Female abdomen-pelvis",
+        "female abdomen pelvis ct",
+        "abdomen ct human female"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "abdomen-and-pelvis-female-pelvis",
+      "name": "Female pelvis",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/female-pelvis",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/female-pelvis",
+      "moduleCode": "pelvis-female-illustrations",
+      "access": "paid",
+      "aliases": [
+        "pelvis female illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "lower-limb-forefoot-mri",
+      "name": "Forefoot MRI",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/forefoot-mri",
+      "href": "/en/e-anatomy/lower-limb/forefoot-mri",
+      "moduleCode": "forefoot-mri",
+      "access": "paid",
+      "aliases": [
+        "MRI Forefoot"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "thorax-heart",
+      "name": "Heart",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/heart",
+      "href": "/en/e-anatomy/thorax/heart",
+      "moduleCode": "coeur-illustrations",
+      "access": "free",
+      "aliases": [
+        "coeur illustrations"
+      ],
+      "occurrences": 5
+    },
+    {
+      "key": "lower-limb-hip-mri",
+      "name": "Hip MRI",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/hip-mri",
+      "href": "/en/e-anatomy/lower-limb/hip-mri",
+      "moduleCode": "hip-mri-3t",
+      "access": "paid",
+      "aliases": [
+        "MRI Hip",
+        "hip mri 3t"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "thorax-integumentary-system",
+      "name": "Integumentary system",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/integumentary-system",
+      "href": "/en/e-anatomy/thorax/integumentary-system",
+      "moduleCode": "integument-illustrations",
+      "access": "free",
+      "aliases": [
+        "integument illustrations"
+      ],
+      "occurrences": 1
+    },
+    {
+      "key": "lower-limb-knee-mri",
+      "name": "Knee MRI",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/knee-mri",
+      "href": "/en/e-anatomy/lower-limb/knee-mri",
+      "moduleCode": "knee-mri-3t",
+      "access": "paid",
+      "aliases": [
+        "MRI Knee",
+        "knee mri 3t"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "abdomen-and-pelvis-laparoscopy-female-pelvis",
+      "name": "Laparoscopy female pelvis",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/laparoscopy-female-pelvis",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/laparoscopy-female-pelvis",
+      "moduleCode": "female-pelvis-laparoscopy",
+      "access": "free",
+      "aliases": [
+        "female pelvis laparoscopy"
+      ],
+      "occurrences": 1
+    },
+    {
+      "key": "lower-limb-leg-arteries-and-bones",
+      "name": "Leg arteries and bones",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/leg-arteries-and-bones",
+      "href": "/en/e-anatomy/lower-limb/leg-arteries-and-bones",
+      "moduleCode": "lower-limb-arteries",
+      "access": "free",
+      "aliases": [
+        "lower limb arteries"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "lower-limb-lower-extremity",
+      "name": "Lower extremity",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/lower-extremity",
+      "href": "/en/e-anatomy/lower-limb/lower-extremity",
+      "moduleCode": "mi-anatomie",
+      "access": "paid",
+      "aliases": [
+        "mi anatomie"
+      ],
+      "occurrences": 13
+    },
+    {
+      "key": "lower-limb-lower-limb-cta",
+      "name": "Lower limb CTA",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/lower-limb-cta",
+      "href": "/en/e-anatomy/lower-limb/lower-limb-cta",
+      "moduleCode": "lower-limb-cta",
+      "access": "paid",
+      "aliases": [
+        "CTA Lower limb"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "thorax-lungs",
+      "name": "Lungs",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/lungs",
+      "href": "/en/e-anatomy/thorax/lungs",
+      "moduleCode": "poumons-illustrations",
+      "access": "paid",
+      "aliases": [
+        "poumons illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "abdomen-and-pelvis-magnetic-resonance-cholangiopancreatography",
+      "name": "Magnetic Resonance Cholangiopancreatography",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/magnetic-resonance-cholangiopancreatography",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/magnetic-resonance-cholangiopancreatography",
+      "moduleCode": "cholangiopancreatography-mr",
+      "access": "paid",
+      "aliases": [
+        "cholangiopancreatography mr"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "abdomen-and-pelvis-male-pelvis",
+      "name": "Male pelvis",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/male-pelvis",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/male-pelvis",
+      "moduleCode": "pelvis-male-illustrations",
+      "access": "paid",
+      "aliases": [
+        "pelvis male illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "thorax-mediastinum",
+      "name": "Mediastinum",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/mediastinum",
+      "href": "/en/e-anatomy/thorax/mediastinum",
+      "moduleCode": "mediastin-illustrations",
+      "access": "paid",
+      "aliases": [
+        "mediastin illustrations"
+      ],
+      "occurrences": 5
+    },
+    {
+      "key": "upper-limb-mr-arthrography-shoulder",
+      "name": "MR arthrography shoulder",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/mr-arthrography-shoulder",
+      "href": "/en/e-anatomy/upper-limb/mr-arthrography-shoulder",
+      "moduleCode": "shoulder-mr-arthrography",
+      "access": "paid",
+      "aliases": [
+        "arthrography shoulder MR",
+        "shoulder mr arthrography"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "brain-mr-cerebral-venography",
+      "name": "MR cerebral venography",
+      "url": "https://www.imaios.com/en/e-anatomy/brain/mr-cerebral-venography",
+      "href": "/en/e-anatomy/brain/mr-cerebral-venography",
+      "moduleCode": "brain-venography-mr",
+      "access": "paid",
+      "aliases": [
+        "cerebral venography MR",
+        "brain venography mr"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "brain-mra-brain",
+      "name": "MRA brain",
+      "url": "https://www.imaios.com/en/e-anatomy/brain/mra-brain",
+      "href": "/en/e-anatomy/brain/mra-brain",
+      "moduleCode": "brain-tof",
+      "access": "paid",
+      "aliases": [
+        "brain MRA",
+        "brain tof"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "lower-limb-mri-ankle-and-hindfoot",
+      "name": "MRI ankle and hindfoot",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/mri-ankle-and-hindfoot",
+      "href": "/en/e-anatomy/lower-limb/mri-ankle-and-hindfoot",
+      "moduleCode": "cheville",
+      "access": "paid",
+      "aliases": [
+        "ankle and hindfoot MRI",
+        "cheville"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "brain-mri-axial-brain",
+      "name": "MRI axial brain",
+      "url": "https://www.imaios.com/en/e-anatomy/brain/mri-axial-brain",
+      "href": "/en/e-anatomy/brain/mri-axial-brain",
+      "moduleCode": "cerveau",
+      "access": "free",
+      "aliases": [
+        "axial brain MRI",
+        "cerveau"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "upper-limb-mri-brachial-plexus",
+      "name": "MRI brachial plexus",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/mri-brachial-plexus",
+      "href": "/en/e-anatomy/upper-limb/mri-brachial-plexus",
+      "moduleCode": "Brachial-Plexus-MR",
+      "access": "paid",
+      "aliases": [
+        "brachial plexus MRI",
+        "Brachial Plexus MR"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "brain-mri-brain",
+      "name": "MRI brain",
+      "url": "https://www.imaios.com/en/e-anatomy/brain/mri-brain",
+      "href": "/en/e-anatomy/brain/mri-brain",
+      "moduleCode": "brain3dmri",
+      "access": "paid",
+      "aliases": [
+        "brain MRI",
+        "brain3dmri"
+      ],
+      "occurrences": 10
+    },
+    {
+      "key": "spine-mri-cervical-spine",
+      "name": "MRI cervical spine",
+      "url": "https://www.imaios.com/en/e-anatomy/spine/mri-cervical-spine",
+      "href": "/en/e-anatomy/spine/mri-cervical-spine",
+      "moduleCode": "cervical-spine-mri",
+      "access": "paid",
+      "aliases": [
+        "cervical spine MRI",
+        "cervical spine mri"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "upper-limb-mri-elbow",
+      "name": "MRI elbow",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/mri-elbow",
+      "href": "/en/e-anatomy/upper-limb/mri-elbow",
+      "moduleCode": "elbow-mri-3d",
+      "access": "paid",
+      "aliases": [
+        "elbow MRI",
+        "elbow mri 3d"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "abdomen-and-pelvis-mri-female-pelvis",
+      "name": "MRI female pelvis",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/mri-female-pelvis",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/mri-female-pelvis",
+      "moduleCode": "pelvis",
+      "access": "paid",
+      "aliases": [
+        "female pelvis MRI",
+        "pelvis"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "upper-limb-mri-finger-of-hand",
+      "name": "MRI finger of hand",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/mri-finger-of-hand",
+      "href": "/en/e-anatomy/upper-limb/mri-finger-of-hand",
+      "moduleCode": "finger-mri",
+      "access": "paid",
+      "aliases": [
+        "finger of hand MRI",
+        "finger mri"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "upper-limb-mri-hand",
+      "name": "MRI hand",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/mri-hand",
+      "href": "/en/e-anatomy/upper-limb/mri-hand",
+      "moduleCode": "hand-mr",
+      "access": "paid",
+      "aliases": [
+        "hand MRI",
+        "hand mr"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "head-and-neck-mri-head-and-neck",
+      "name": "MRI head and neck",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/mri-head-and-neck",
+      "href": "/en/e-anatomy/head-and-neck/mri-head-and-neck",
+      "moduleCode": "face-cou-irm",
+      "access": "paid",
+      "aliases": [
+        "head and neck MRI",
+        "face cou irm",
+        "Head neck",
+        "Face and neck"
+      ],
+      "occurrences": 10
+    },
+    {
+      "key": "head-and-neck-mri-inner-ear-and-iac",
+      "name": "MRI inner ear and IAC",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/mri-inner-ear-and-iac",
+      "href": "/en/e-anatomy/head-and-neck/mri-inner-ear-and-iac",
+      "moduleCode": "inner-ear-mri",
+      "access": "paid",
+      "aliases": [
+        "inner ear and IAC MRI",
+        "inner ear mri",
+        "Internal auditory canal MRI",
+        "IAC MRI",
+        "Inner ear MRI"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "lower-limb-mri-lower-extremity",
+      "name": "MRI lower extremity",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/mri-lower-extremity",
+      "href": "/en/e-anatomy/lower-limb/mri-lower-extremity",
+      "moduleCode": "lowerlimb",
+      "access": "paid",
+      "aliases": [
+        "lower extremity MRI",
+        "lowerlimb"
+      ],
+      "occurrences": 13
+    },
+    {
+      "key": "spine-mri-lumbar-spine",
+      "name": "MRI lumbar spine",
+      "url": "https://www.imaios.com/en/e-anatomy/spine/mri-lumbar-spine",
+      "href": "/en/e-anatomy/spine/mri-lumbar-spine",
+      "moduleCode": "lumbar-spine-mri",
+      "access": "paid",
+      "aliases": [
+        "lumbar spine MRI",
+        "lumbar spine mri"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "abdomen-and-pelvis-mri-male-pelvis",
+      "name": "MRI male pelvis",
+      "url": "https://www.imaios.com/en/e-anatomy/abdomen-and-pelvis/mri-male-pelvis",
+      "href": "/en/e-anatomy/abdomen-and-pelvis/mri-male-pelvis",
+      "moduleCode": "Pelvis-Male-MR",
+      "access": "paid",
+      "aliases": [
+        "male pelvis MRI",
+        "Pelvis Male MR"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "upper-limb-mri-shoulder",
+      "name": "MRI shoulder",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/mri-shoulder",
+      "href": "/en/e-anatomy/upper-limb/mri-shoulder",
+      "moduleCode": "shoulder",
+      "access": "paid",
+      "aliases": [
+        "shoulder MRI",
+        "shoulder"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "upper-limb-mri-thumb",
+      "name": "MRI thumb",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/mri-thumb",
+      "href": "/en/e-anatomy/upper-limb/mri-thumb",
+      "moduleCode": "thumb-hand-mri",
+      "access": "paid",
+      "aliases": [
+        "thumb MRI",
+        "thumb hand mri"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "upper-limb-mri-upper-extremity",
+      "name": "MRI upper extremity",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/mri-upper-extremity",
+      "href": "/en/e-anatomy/upper-limb/mri-upper-extremity",
+      "moduleCode": "upper-limb",
+      "access": "paid",
+      "aliases": [
+        "upper extremity MRI",
+        "upper limb"
+      ],
+      "occurrences": 13
+    },
+    {
+      "key": "upper-limb-mri-wrist",
+      "name": "MRI wrist",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/mri-wrist",
+      "href": "/en/e-anatomy/upper-limb/mri-wrist",
+      "moduleCode": "wrist-mri-3d",
+      "access": "paid",
+      "aliases": [
+        "wrist MRI",
+        "wrist mri 3d"
+      ],
+      "occurrences": 7
+    },
+    {
+      "key": "head-and-neck-nasal-cavity",
+      "name": "Nasal cavity",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/nasal-cavity",
+      "href": "/en/e-anatomy/head-and-neck/nasal-cavity",
+      "moduleCode": "nose-nasal-cavity-illustrations",
+      "access": "free",
+      "aliases": [
+        "nose nasal cavity illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "head-and-neck-nasal-fibroscopy",
+      "name": "Nasal fibroscopy",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/nasal-fibroscopy",
+      "href": "/en/e-anatomy/head-and-neck/nasal-fibroscopy",
+      "moduleCode": "nasal-cavity-larynx-endoscopy",
+      "access": "free",
+      "aliases": [
+        "nasal cavity larynx endoscopy"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "head-and-neck-oral-cavity",
+      "name": "Oral cavity",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/oral-cavity",
+      "href": "/en/e-anatomy/head-and-neck/oral-cavity",
+      "moduleCode": "mouth-oral-cavity-illustrations",
+      "access": "free",
+      "aliases": [
+        "mouth oral cavity illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "head-and-neck-orbit-mri",
+      "name": "Orbit MRI",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/orbit-mri",
+      "href": "/en/e-anatomy/head-and-neck/orbit-mri",
+      "moduleCode": "eye-mri",
+      "access": "paid",
+      "aliases": [
+        "MRI Orbit",
+        "eye mri"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "whole-body-radiography-chest-abdomen-pelvis",
+      "name": "Radiography chest abdomen pelvis",
+      "url": "https://www.imaios.com/en/e-anatomy/whole-body/radiography-chest-abdomen-pelvis",
+      "href": "/en/e-anatomy/whole-body/radiography-chest-abdomen-pelvis",
+      "moduleCode": "thorax-abdomen-radiographs",
+      "access": "free",
+      "aliases": [
+        "chest abdomen pelvis Radiography",
+        "thorax abdomen radiographs"
+      ],
+      "occurrences": 14
+    },
+    {
+      "key": "lower-limb-radiography-lower-extremity",
+      "name": "Radiography lower extremity",
+      "url": "https://www.imaios.com/en/e-anatomy/lower-limb/radiography-lower-extremity",
+      "href": "/en/e-anatomy/lower-limb/radiography-lower-extremity",
+      "moduleCode": "membre-inferieur-radiographies",
+      "access": "free",
+      "aliases": [
+        "lower extremity Radiography",
+        "membre inferieur radiographies"
+      ],
+      "occurrences": 13
+    },
+    {
+      "key": "spine-radiography-spine",
+      "name": "Radiography spine",
+      "url": "https://www.imaios.com/en/e-anatomy/spine/radiography-spine",
+      "href": "/en/e-anatomy/spine/radiography-spine",
+      "moduleCode": "rachis-radios",
+      "access": "free",
+      "aliases": [
+        "spine Radiography",
+        "rachis radios"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "upper-limb-radiography-upper-extremity",
+      "name": "Radiography upper extremity",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/radiography-upper-extremity",
+      "href": "/en/e-anatomy/upper-limb/radiography-upper-extremity",
+      "moduleCode": "ms-radios",
+      "access": "paid",
+      "aliases": [
+        "upper extremity Radiography",
+        "ms radios"
+      ],
+      "occurrences": 13
+    },
+    {
+      "key": "head-and-neck-skull",
+      "name": "Skull",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/skull",
+      "href": "/en/e-anatomy/head-and-neck/skull",
+      "moduleCode": "cranium-illustrations",
+      "access": "paid",
+      "aliases": [
+        "cranium illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "spine-spinal-cord",
+      "name": "Spinal cord",
+      "url": "https://www.imaios.com/en/e-anatomy/spine/spinal-cord",
+      "href": "/en/e-anatomy/spine/spinal-cord",
+      "moduleCode": "moelle-spinale-anatomie",
+      "access": "paid",
+      "aliases": [
+        "moelle spinale anatomie"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "spine-spine",
+      "name": "Spine",
+      "url": "https://www.imaios.com/en/e-anatomy/spine/spine",
+      "href": "/en/e-anatomy/spine/spine",
+      "moduleCode": "rachis-dos-anatomie",
+      "access": "paid",
+      "aliases": [
+        "rachis dos anatomie"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "head-and-neck-teeth",
+      "name": "Teeth",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/teeth",
+      "href": "/en/e-anatomy/head-and-neck/teeth",
+      "moduleCode": "dental-anatomy-illustrations",
+      "access": "free",
+      "aliases": [
+        "dental anatomy illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "head-and-neck-temporomandibular-joint",
+      "name": "Temporomandibular joint",
+      "url": "https://www.imaios.com/en/e-anatomy/head-and-neck/temporomandibular-joint",
+      "href": "/en/e-anatomy/head-and-neck/temporomandibular-joint",
+      "moduleCode": "temporomandibular-joint-mri",
+      "access": "free",
+      "aliases": [
+        "temporomandibular joint mri",
+        "TMJ",
+        "TMJ MRI"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "thorax-thoracic-wall-breast",
+      "name": "Thoracic wall-Breast",
+      "url": "https://www.imaios.com/en/e-anatomy/thorax/thoracic-wall-breast",
+      "href": "/en/e-anatomy/thorax/thoracic-wall-breast",
+      "moduleCode": "paroi-thorax-sein-illustrations",
+      "access": "paid",
+      "aliases": [
+        "thoracic wall breast",
+        "paroi thorax sein illustrations"
+      ],
+      "occurrences": 4
+    },
+    {
+      "key": "upper-limb-upper-extremity",
+      "name": "Upper extremity",
+      "url": "https://www.imaios.com/en/e-anatomy/upper-limb/upper-extremity",
+      "href": "/en/e-anatomy/upper-limb/upper-extremity",
+      "moduleCode": "ms-anatomie",
+      "access": "paid",
+      "aliases": [
+        "ms anatomie"
+      ],
+      "occurrences": 13
+    },
+    {
+      "key": "whole-body-visible-human-project",
+      "name": "Visible Human Project",
+      "url": "https://www.imaios.com/en/e-anatomy/whole-body/visible-human-project",
+      "href": "/en/e-anatomy/whole-body/visible-human-project",
+      "moduleCode": "vhp-male-whole-body",
+      "access": "paid",
+      "aliases": [
+        "vhp male whole body"
+      ],
+      "occurrences": 7
+    }
+  ]
+}

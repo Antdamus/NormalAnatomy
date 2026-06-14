@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IMaios Chunk Library",
+  "type": "object",
+  "required": ["kind", "version", "chunks"],
+  "properties": {
+    "kind": {
+      "const": "imaios-chunk-library"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "topic": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "chunks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "labels"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "modality": {
+            "type": "string"
+          },
+          "modalityUrl": {
+            "type": "string"
+          },
+          "learningOrder": {
+            "type": "integer"
+          },
+          "source": {
+            "type": "string"
+          },
+          "learningFrame": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "required": ["preferredLabel"],
+                  "properties": {
+                    "preferredLabel": {
+                      "type": "string"
+                    },
+                    "aliases": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "status": {
+                      "enum": ["verified", "candidate", "unavailable"]
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

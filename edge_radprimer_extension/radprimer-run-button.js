@@ -239,6 +239,12 @@
           gap: 16px;
           align-items: flex-start;
         }
+        .modal-head-actions {
+          display: flex;
+          gap: 10px;
+          align-items: flex-start;
+          flex: 0 0 auto;
+        }
         .modal-head > div:first-child {
           min-width: 0;
         }
@@ -319,6 +325,15 @@
           background: #eef2f7;
           color: #0f172a;
           font-weight: 900;
+        }
+        .top-master-source {
+          border-radius: 999px;
+          padding: 10px 14px;
+          background: #dbeafe;
+          color: #1e3a8a;
+          font-size: 13px;
+          font-weight: 900;
+          white-space: nowrap;
         }
         .modal-status {
           display: none;
@@ -489,6 +504,13 @@
             width: calc(100vw - 28px);
             border-radius: 22px;
           }
+          .modal-head {
+            flex-direction: column;
+          }
+          .modal-head-actions {
+            width: 100%;
+            justify-content: space-between;
+          }
           .modal-head,
           .modal-body {
             padding-left: 18px;
@@ -644,7 +666,10 @@
                   <span class="copy">Checking imported master source...</span>
                 </div>
               </div>
-              <button class="close" type="button" aria-label="Close">x</button>
+              <div class="modal-head-actions">
+                <button class="top-master-source master-source-config" type="button" hidden>Build master source</button>
+                <button class="close" type="button" aria-label="Close">x</button>
+              </div>
             </div>
             <div class="modal-status" role="status" aria-live="polite">
               <div class="phase">Ready</div>
@@ -701,7 +726,6 @@
                   <div class="wide master-actions">
                     <button class="ghost import-master-source" type="button">Import master source</button>
                     <button class="ghost show-master-source" type="button">Show imported source</button>
-                    <button class="ghost master-source-config" type="button" hidden>Build master source</button>
                   </div>
                   <span class="hint wide">Best import is master_source_import.json. Once imported, narrative and card runs use the fused source instead of the live page extraction.</span>
                 </div>
@@ -1134,6 +1158,7 @@
     const settings = await getStoredSettings();
     populateEngineSelect(host);
     writeModalSettings(host, settings);
+    syncSourceCompareControls(host);
     await refreshMasterSourceBanner(host);
     host.shadowRoot.querySelector(".backdrop").classList.add("open");
   };
@@ -1266,12 +1291,53 @@
     const quick = host.shadowRoot.querySelector(".quick-run");
     const config = host.shadowRoot.querySelector(".configure");
     const imageOnly = host.shadowRoot.querySelector(".image-only");
-    const ioQueue = host.shadowRoot.querySelector(".io-queue-config");
     quick.disabled = running;
     config.disabled = running;
     imageOnly.disabled = running;
-    if (ioQueue) ioQueue.disabled = running;
+    for (const selector of [
+      ".io-queue-config",
+      ".audit-source-config",
+      ".compare-source-config",
+      ".master-source-config"
+    ]) {
+      const button = host.shadowRoot.querySelector(selector);
+      if (button) button.disabled = running;
+    }
     quick.querySelector(".label").textContent = running ? "Running..." : "Run lecture";
+  };
+
+  const syncSourceCompareControls = (host) => {
+    for (const selector of [".compare-source-config", ".master-source-config"]) {
+      const button = host.shadowRoot.querySelector(selector);
+      if (button) button.hidden = false;
+    }
+  };
+
+  const normalizeTitleForChoice = (value) => String(value || "").replace(/\s+/g, " ").trim().toLowerCase();
+
+  const promptForMasterSourceTitleChoice = (response) => {
+    const choices = Array.isArray(response?.titleChoices) ? response.titleChoices : [];
+    if (!choices.length) return null;
+    const lines = choices.map((choice, index) => (
+      `${index + 1}. ${choice.sourceLabel || choice.sourceKind || "Source"}: ${choice.title || "[title not found]"}`
+    ));
+    const answer = window.prompt(
+      [
+        "RadPrimer and STATdx article titles differ.",
+        "Cancel to stop the build, or enter the number/title to use as the shared master-source topic.",
+        "",
+        ...lines
+      ].join("\n"),
+      "1"
+    );
+    if (answer === null) return null;
+    const trimmed = answer.trim();
+    const index = Number(trimmed);
+    if (Number.isInteger(index) && index >= 1 && index <= choices.length) {
+      return choices[index - 1].title || "";
+    }
+    const exact = choices.find((choice) => normalizeTitleForChoice(choice.title) === normalizeTitleForChoice(trimmed));
+    return exact?.title || "";
   };
 
   const runFromPage = (host) => {
@@ -1382,12 +1448,24 @@
 
   const buildMasterSource = (host) => {
     setRunning(host, true);
-    setStatus(host, "Master Source", "Building master source package...");
-    chrome.runtime.sendMessage({ type: "BUILD_MASTER_SOURCE_FROM_ARTICLE" }, async (response) => {
+    setStatus(host, "Master Source", "Exporting open RadPrimer + STATdx sources and building master source package...");
+    const sendBuildMessage = (selectedPairingTitle = "") => {
+      chrome.runtime.sendMessage({ type: "BUILD_MASTER_SOURCE_FROM_ARTICLE", selectedPairingTitle }, async (response) => {
       const err = chrome.runtime.lastError;
       if (err) {
         setStatus(host, "Master Source Error", err.message, true);
         setRunning(host, false);
+        return;
+      }
+      if (!response?.ok && response?.errorCode === "MASTER_SOURCE_TITLE_MISMATCH") {
+        const titleChoice = promptForMasterSourceTitleChoice(response);
+        if (!titleChoice) {
+          setStatus(host, "Master Source", "Build cancelled before exporting because the open article titles differ.");
+          setRunning(host, false);
+          return;
+        }
+        setStatus(host, "Master Source", `Using shared title: ${titleChoice}. Exporting both open sources...`);
+        sendBuildMessage(titleChoice);
         return;
       }
       if (!response?.ok) {
@@ -1400,7 +1478,9 @@
       } catch {}
       setStatus(host, "Master Source Ready", response.message || "Master source request bundle prepared.");
       setRunning(host, false);
-    });
+      });
+    };
+    sendBuildMessage();
   };
 
   const importMasterSource = async (host) => {

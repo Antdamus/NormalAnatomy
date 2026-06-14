@@ -4,6 +4,47 @@
 
   const cleanText = (text) => String(text || "").replace(/\s+/g, " ").trim();
 
+  const buildImaiosLabelRepositoryBlock = (repository, title, articleOutline) => {
+    const modules = Object.values(repository?.moduleLabels || {})
+      .filter((module) => module && Array.isArray(module.labels) && module.labels.length);
+    if (!modules.length) return "";
+
+    const haystack = `${title || ""} ${String(articleOutline || "").slice(0, 4000)}`.toLowerCase();
+    const tokens = Array.from(new Set((haystack.match(/[a-z][a-z0-9-]{3,}/g) || [])
+      .filter((token) => !/^(with|from|this|that|which|when|then|they|their|image|figure|radiograph|computed|tomography|magnetic|resonance)$/i.test(token))));
+
+    const scored = modules.map((module) => {
+      const moduleText = `${module.name || ""} ${module.key || ""} ${module.url || ""}`.toLowerCase();
+      const labelText = module.labels.slice(0, 250).join(" ").toLowerCase();
+      let score = 0;
+      for (const token of tokens) {
+        if (moduleText.includes(token)) score += 4;
+        if (labelText.includes(token)) score += 1;
+      }
+      return { module, score };
+    }).sort((a, b) => b.score - a.score);
+
+    const selected = scored.filter((item) => item.score > 0).slice(0, 3);
+    const fallback = selected.length ? selected : scored.slice(0, Math.min(3, scored.length));
+
+    const moduleBlocks = fallback.map(({ module, score }) => [
+      `MODULE = ${module.name || module.key || "IMaios module"}`,
+      `MODULE_KEY = ${module.key || ""}`,
+      module.url ? `URL = ${module.url}` : "",
+      `MATCH_SCORE = ${score}`,
+      "AVAILABLE_LABELS:",
+      ...module.labels
+    ].filter(Boolean).join("\n"));
+
+    return [
+      "=== IMAIOS LABEL REPOSITORY ===",
+      "Use this as the available IMaios label universe for the IMaios anatomy output.",
+      "Choose exact labels from these lists when possible. If a needed anatomy concept has no usable exact/synonym/component match, put it in the gap-review block instead of inventing a label.",
+      "",
+      ...moduleBlocks
+    ].join("\n\n");
+  };
+
   const decodeHtml = (text) => {
     const ta = document.createElement("textarea");
     ta.innerHTML = text ?? "";
@@ -428,6 +469,11 @@
     const byIndex = new Map(allImages.map((image) => [image.originalIndex, image]));
 
     let output;
+    const imaiosLabelRepositoryBlock = buildImaiosLabelRepositoryBlock(
+      config.imaiosLabelRepository,
+      title,
+      articleOutline
+    );
     if (config.engine === "normal") {
       const imageBlock =
         config.mode === "captions_only"
@@ -444,6 +490,7 @@ ${config.promptText}
 === ARTICLE ===
 ${title ? `TITLE: ${title}\n\n` : ""}${articleOutline || "[Article extraction failed]"}
 
+${imaiosLabelRepositoryBlock ? `${imaiosLabelRepositoryBlock}\n\n` : ""}
 ${imageBlock}
 
 ${buildSourceAttributionBlock(config)}
@@ -460,6 +507,7 @@ ${config.promptText}
 === ARTICLE ===
 ${title ? `TITLE: ${title}\n\n` : ""}${articleOutline || "[Article extraction failed]"}
 
+${imaiosLabelRepositoryBlock ? `${imaiosLabelRepositoryBlock}\n\n` : ""}
 ${buildImagesBlock(config, cases, byIndex)}
 
 ${buildSourceAttributionBlock(config)}

@@ -844,9 +844,124 @@ Rules:
 
 ---
 
+## IMAIOS ANATOMY LABEL OUTPUT
+
+After the Speechify narrative and image grouping audit, also produce organized IMaios anatomy label blocks.
+These blocks are for the user's IMaios engine, so each code block must be copy-paste ready.
+
+Core rules:
+
+* do not create one giant undifferentiated anatomy list
+* organize labels into the order a learner should study the anatomy visually
+* each IMaios block must represent one teachable anatomical chunk
+* put the chunk title outside the code block
+* inside each code block, output only labels, one label per line
+* inside each IMaios code block, do not use bullets, numbering, explanations, comments, headings, or blank-line prose
+* choose labels that are directly needed to understand the pathology, complications, routes of spread, surgical danger zones, and image findings
+* prefer structures that can be found visually in IMaios over abstract disease concepts
+* avoid disease names, findings, maneuvers, diagnoses, and teaching comments inside IMaios code blocks
+* preserve practical visual relationships: region first, pathway next, then small parts, danger landmarks, spread routes, and differential traps
+
+If an `IMAIOS LABEL REPOSITORY` section is provided in the user/source input:
+
+* treat that repository as the available label universe and choose labels from it, not from memory
+* first infer the anatomy concepts the learner needs for the pathology, then map each concept to the best available repository label
+* prefer exact repository labels; use repository aliases/synonyms only to map source language to the available preferred label
+* if a needed structure is known by multiple medical names, output the repository's preferred label only
+* do not output unavailable labels in an IMaios copy-paste block
+* if an important needed concept has no exact or acceptable synonym in the repository, omit it from the copy-paste block and place it in the separate gap-review block
+* if a concept is better represented by multiple smaller available labels, use those smaller labels in the paste block and document the parent concept in the gap-review block as `component-match`
+* when the repository lists modality or atlas availability, organize labels by the modality/atlas where the learner should inspect them
+* never treat a near synonym as verified unless the repository label itself is present; the selected `preferredLabel` must be a literal available label
+* choose the smallest useful set of repository labels that covers the concept without bloating the learning chunk
+
+If no `IMAIOS LABEL REPOSITORY` section is provided:
+
+* output the best candidate IMaios-style labels from anatomy knowledge and source context
+* still keep the blocks copy-paste ready
+* do not claim repository verification
+* add a final gap-review code block only if there are obvious synonym or availability uncertainties
+
+The optional gap-review block, when needed, must use this plain format:
+
+```text
+NEEDED = structure or concept
+TRY_LABELS = label 1 | label 2 | label 3
+MATCH_STATUS = unmatched | component-match | wrong-modality | needs-other-resource
+REASON = why this concept could not be represented by one verified repository label
+```
+
+The gap-review block is not for direct IMaios paste. It is for updating the central repository.
+
+When a repository is provided, the IMaios section must be built from these internal steps, even if you do not print the intermediate reasoning:
+
+1. Concept extraction: list the anatomy concepts required by the article and images.
+2. Label resolution: select exact available labels from the repository for each concept.
+3. Gap review: separate concepts with no usable label, concepts that require several component labels, and concepts that likely belong in another modality/module.
+4. Chunking: output paste-ready code blocks using only selected repository labels.
+
+Also produce one final extension-import JSON code block after the human paste blocks.
+That JSON block is not for direct IMaios paste; it is for the IMaios Cine extension's `Import chunks` button.
+
+The extension-import JSON must use this shape:
+
+```json
+{
+  "kind": "imaios-chunk-library",
+  "version": 1,
+  "topic": "article or pathology topic",
+  "source": "pathology narrative output",
+  "chunks": [
+    {
+      "id": "stable-kebab-case-id",
+      "title": "Learner-facing chunk title",
+      "modality": "best IMaios modality or atlas name",
+      "modalityUrl": "optional IMaios URL if known",
+      "learningOrder": 1,
+      "labels": [
+        {
+          "concept": "Anatomy concept being covered",
+          "preferredLabel": "Exact or best candidate IMaios label",
+          "aliases": ["source synonym", "alternate medical name"],
+          "matchStatus": "exact | synonym-from-repository | component-match | candidate",
+          "status": "verified or candidate",
+          "moduleKey": "repository module key if known",
+          "note": "brief verification note only when useful"
+        }
+      ],
+      "unmatchedConcepts": [
+        {
+          "concept": "needed concept with no single selected label",
+          "tryLabels": ["possible available component labels"],
+          "reason": "why this needs review or another resource"
+        }
+      ],
+      "learningFrame": [
+        "brief reason this chunk is learned before or after another chunk"
+      ]
+    }
+  ]
+}
+```
+
+For the JSON block:
+
+* make each JSON chunk correspond to one human IMaios label code block
+* keep `preferredLabel` identical to the label used in the matching human paste block whenever it is repository verified
+* when a repository is provided, every `preferredLabel` with `status: "verified"` must be copied exactly from the available repository labels
+* include `concept` for the learner-facing anatomy idea, even when the selected IMaios label uses different wording
+* use `matchStatus: "component-match"` only when the concept is intentionally represented by several available labels
+* put concepts with no selected available label into `unmatchedConcepts`, not into `labels`
+* when no repository is provided, mark labels as `candidate`
+* include aliases for common synonyms so the extension can try alternate IMaios names
+* keep disease names, findings, and complications out of `labels` unless IMaios literally exposes them as labels
+* keep JSON valid, with no comments or trailing commas
+
+---
+
 ## OUTPUT FORMAT
 
-Produce the final output in **two separate code blocks** and nothing else except minimal section labels if needed.
+Produce the final output in separate code blocks and nothing else except minimal section labels if needed.
 
 ### Code block 1 — Speechify narrative
 
@@ -890,6 +1005,25 @@ CASE_MAP = []
 * the grouping code block exists so the user can manually verify whether the narrative grouped images correctly
 * inferred groupings must still obey the controlled grouping inference rule
 * do not pretend uncertain groups are certain inside the narrative; but the second code block should still reflect the final grouping decision used to organize the walkthrough
+
+### Code blocks 3+ — IMaios anatomy label chunks
+
+After the grouping audit, output separate IMaios anatomy blocks.
+
+For each block:
+
+* use a short section label outside the code block, for example `IMaios block 1 - Temporal bone fracture framework`
+* inside the code block, output only labels, one per line
+* each block should be small enough to paste into the IMaios engine as a focused learning task
+* order blocks by pathology-learning sequence, not alphabetically
+* for pathology topics, include the normal structures needed to understand where the disease lives, how it spreads, what it injures, and what mimics it
+* if modality-specific label availability is provided, include the modality in the outside block title, not inside the code block
+* if no useful IMaios anatomy targets exist, output one code block containing `IMAIOS_LABELS = []`
+
+### Final code block - IMaios extension chunk JSON
+
+Output one final `json` code block containing the `imaios-chunk-library` object described above.
+This block should collect the same chunks as the human IMaios paste blocks, with aliases and modality guidance preserved for the extension.
 
 ## WHAT TO DO IF EXPLICIT CASE GROUPING IS MISSING
 

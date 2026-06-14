@@ -13,7 +13,8 @@
     libraryItemTitles: '[data-testid="library-item-title"]',
     dialog: '[role="dialog"][aria-modal="true"], #headlessui-portal-root [role="dialog"]',
     titleInput: "input#textImportTitle",
-    textTextarea: "textarea#textImportText",
+    textTextarea:
+      'textarea#textImportText, [data-testid="library-text-import-editor"][contenteditable="true"], [role="textbox"][contenteditable="true"][aria-label="Type or paste text here"]',
     saveButton: 'button[data-testid="add-text-save-button"]',
     playerPlayButton: 'button[data-testid="player-play-button"]',
     playerBackwardButton: 'button[data-testid="player-backward-button"]',
@@ -1795,6 +1796,45 @@
     el.dispatchEvent(new Event("change", { bubbles: true }));
   };
 
+  const setContentEditableValue = (el, value) => {
+    el.focus();
+
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    const inserted = document.execCommand?.("insertText", false, value);
+    if (!inserted || !textareaValueMatchesSource(el.innerText || el.textContent || "", value)) {
+      el.textContent = value;
+    }
+
+    el.dispatchEvent(
+      new InputEvent("input", {
+        bubbles: true,
+        inputType: "insertFromPaste",
+        data: value
+      })
+    );
+    el.dispatchEvent(new Event("change", { bubbles: true }));
+  };
+
+  const setSpeechifyTextFieldValue = (el, value) => {
+    if (el instanceof HTMLTextAreaElement || el instanceof HTMLInputElement) {
+      setNativeValue(el, value);
+    } else if (el?.isContentEditable) {
+      setContentEditableValue(el, value);
+    } else {
+      throw new Error("Speechify text field is not editable.");
+    }
+  };
+
+  const getSpeechifyTextFieldValue = (el) => {
+    if (el instanceof HTMLTextAreaElement || el instanceof HTMLInputElement) return el.value || "";
+    return el?.innerText || el?.textContent || "";
+  };
+
   const normalizeTextareaText = (value) => {
     return String(value || "").replace(/\r\n/g, "\n").replace(/\r/g, "\n");
   };
@@ -1845,10 +1885,10 @@
     setNativeValue(titleInput, finalTitle);
 
     textArea.focus();
-    setNativeValue(textArea, text);
+    setSpeechifyTextFieldValue(textArea, text);
 
     await waitUntil(() => {
-      return textareaValueMatchesSource(textArea.value || "", text);
+      return textareaValueMatchesSource(getSpeechifyTextFieldValue(textArea), text);
     }, 15000, "Speechify textarea did not accept the full text.");
 
     await waitForSaveEnabled();

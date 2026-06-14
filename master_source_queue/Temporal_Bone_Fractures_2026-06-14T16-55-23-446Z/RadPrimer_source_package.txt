@@ -1,0 +1,239 @@
+=== TOPIC ===
+PRIMARY TOPIC: Temporal Bone Fractures
+CENTERING TOPIC FOR THIS CHAT: Temporal Bone Fractures
+USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: Temporal Bone Fractures
+
+=== RADPRIMER BREADCRUMB ===
+Basic > Neuroradiology > Head and Neck > Facial Trauma and Other H&N Emergencies > Temporal Bone Fractures
+
+=== WORKFLOW CONTEXT ===
+Image workflow: 10 image(s) selected for optional image-based extraction.
+
+=== PROMPT ===
+Source-comparison extraction only.
+Do not generate a narrative or cards from this package.
+Preserve article hierarchy, source text, image filenames, selected image captions, arrows/annotations, source attribution, Core evidence if present, and Anki/breadcrumb metadata when available.
+
+=== ARTICLE ===
+TITLE: Temporal Bone Fractures
+
+KEY FACTS
+- Imaging
+  - Bone algorithm MDCT with coronal reconstructions, CTA/MRA for suspected vascular injury
+    - Dedicated brain imaging critical to evaluate for intracranial injuries (present in up to 90%)
+  - Longitudinal fractures: Vertical plane parallels long axis of petrous ridge (PR)
+    - External auditory canal (EAC), middle ear (ME)/ossicular involvement common; otic capsule (OC) involvement rare
+  - Transverse fractures: Perpendicular to PR long axis
+    - OC involvement, facial nerve (CNVII) injury very common; EAC/ME involvement rare
+  - Oblique fractures: Mixed features, typically horizontal and parallel to PR long axis
+  - OC-violating vs. OC-sparing classification better predicts complications, such as sensorineural hearing loss, CNVII injury, and CSF leak
+  - Ossicular injuries: Dislocations > > fractures, incus most commonly involved
+  - CNVII injuries: Most commonly at geniculate ganglion; symptoms often resolve spontaneously
+  - All varieties: Assess for tegmen fracture (CSF leak), carotid canal injury, extension to central skull base, intracranial, and cervical spine injury
+- Top Differential Diagnoses
+  - Pseudofractures: Sutures, fissures, canaliculi, aqueducts
+  - Incus interpostion procedure
+- Diagnostic Checklist
+  - Always assess most clinically relevant structures: CNVII canal, otic capsule, tegmen, carotid canal, ossicles
+  - Do not misdiagnose pseudofracture
+  - Consider CTA/MRA if carotid canal fracture and CTV/MRV if dural sinus/jugular formen region fracture
+
+TERMINOLOGY
+- Definitions
+  - Traumatic injury of temporal bone ± ossicle injury
+
+IMAGING
+- General Features
+  - Best diagnostic clue
+    - Bone CT shows fracture line
+    - Secondary signs include hemotympanum, pneumolabyrinth, intracranial (IC) or extracranial air/hemorrhage near mastoid
+      - Unexplained parapharyngeal space air should prompt search for mastoid fracture
+  - Location
+    - Petrous temporal bone (includes mastoid)
+  - Size
+    - May be widely diastatic or subtle
+  - Morphology
+    - Classification best correlating with outcome: Otic capsule violating (OCV) vs. OC sparing (OCS)
+      - OCS fractures: Majority of fractures; commonly extend to middle ear and cause conductive hearing loss (CHL) or mixed
+      - OCV fractures: Minority (5-20%) have increased incidence of sensorineural hearing loss (SNHL), CNVII injury, and CSF leak
+    - Older classification is longitudinal vs. transverse (relative to long axis of petrous ridge)
+      - Roughly corresponds to OCS vs. OCV
+      - Many fractures actually oblique or mixed
+- CT Findings
+  - Bone CT
+    - OCS fractures
+      - Often involve temporal squamosa, external auditory canal (EAC), tympanic membrane (TM), and middle ear (ME); usually spare otic capsule
+        - Hemotympanum and ossicular disruption common
+      - CNVII canal involvement most often occurs at geniculate or tympanic segments
+        - CNVII injury less common than with OCV fractures
+    - OCV fractures
+      - Often extend from occipital area (foramen magnum) through petrous pyramid and otic capsule
+        - May involve jugular foramen, foramen lacerum, internal auditory canal (IAC)
+      - Frequent CNVII injury, often at geniculate or IAC
+      - CSF leak, SNHL, IC complications common
+      - EAC, TM, and ME involved less commonly than in longitudinal fractures
+    - Ossicular injuries
+      - Dislocations > > fractures
+        - Incus most commonly fractured ossicle
+      - Incudostapedial > incudomalleolar > complete incus dislocation
+      - Stapediovestibular disruption: Increasingly diagnosed with high-resolution MDCT
+      - Malleus dislocation rare (supported by malleal ligaments, TM attachments)
+    - Perilymph fistula (PLF): Oval or round window rupture with communication between ME and membranous labyrinth
+      - Subtle findings include pneumolabyrinth and fluid at oval/round windows
+    - All fracture types: Assess for tegmen fractures, carotid canal injuries, propagation to central skull base, and IC and cervical spine injuries
+      - Up to 90% of patients with temporal bone fractures have concomitant IC injury and up to 9% have cervical spine injury
+  - CTA
+    - Consider CTA if fracture extends to carotid canal
+      - Carotid canal fracture only moderately associated with internal carotid artery (ICA) injury
+        - Risk similar to other findings not typically associated with ICA injury (e.g., subdural hematoma)
+  - CTV
+    - Consider CTV if fracture extends to dural venous sinus or jugular bulb
+    - Both carotid and dural venous sinus injuries are rare
+- MR Findings
+  - T1WI
+    - Hemotympanum, hemolabyrinth (low signal acutely, high signal subacutely)
+    - ICA injury: Dissection (fried-egg sign) or occlusion (loss of ICA flow void)
+  - T2WI
+    - ME and mastoid debris appears hyperintense
+    - Look for hypointense line of intact dura over tegmen on coronal images if CSF leak suspected
+    - Loss of expected high signal in labyrinth may indicate hemolabyrinth, pneumolabyrinth, or posttraumatic labyrinthitis ossificans if subacute imaging
+  - T1WI C+
+    - Most valuable for suspected subacute IC complications (meningitis, abscess)
+    - CNVII, membranous labyrinth may enhance when involved by fracture
+  - MRA
+    - ICA occlusion or dissection, carotid cavernous fistula
+  - MRV
+    - Sigmoid sinus or jugular vein thrombosis
+- Imaging Recommendations
+  - Best imaging tool
+    - Temporal bone CT
+  - Protocol advice
+    - Bone algorithm MDCT with reconstructed coronal images
+      - 3D CT reconstructions helpful for clarifying fracture orientation, ossicular alignment
+    - Routine brain CT or MR for IC complications
+    - Consider CTA/MRA if involves carotid canal, CTV/MRV if involves dural sinus or jugular foramen
+
+DIFFERENTIAL DIAGNOSIS
+- Pseudofractures
+  - Sclerotic, well-corticated margins, typically bilateral and symmetric
+  - Sutures/fissures
+    - External: Temporoparietal, petrooccipital, sphenopetrosal (angular), occipitomastoid
+    - Internal: Petrotympanic, petrosquamosal, tympanosquamous, tympanomastoid
+  - Canaliculi
+    - Mastoid, inferior tympanic, subarcuate (petromastoid canal), singular canaliculi
+  - Aqueducts
+    - Cochlear, vestibular aqueducts
+- Incus Interposition Procedure
+  - Surgical remodeling/realignment of incus to bridge deficient ossicular chain and correct CHL
+  - Mimics chronic incus dislocation
+- Mastoiditis/Mastoid Effusion
+  - Preexisting mastoid or ME opacification may not reflect hemotympanum or CSF leak
+
+PATHOLOGY
+- General Features
+  - Etiology
+    - Temporal bone fracture requires application of great force, typically high-velocity impact
+      - Motor vehicle accident (MVA) most common etiology
+    - Longitudinal fractures due to lateral impact
+    - Transverse fracture due to occipital or frontal impact
+    - Tympanic plate fracture due to blow on chin
+
+CLINICAL ISSUES
+- Presentation
+  - Most common signs/symptoms
+    - Physical findings: Periauricular swelling and ecchymosis (Battle sign), EAC hemorrhage, hemotympanum
+    - CHL: Initially may reflect hemotympanum ± TM injury
+      - If persistent, must evaluate for ossicular injury
+    - SNHL: Injury to OC, IAC, brainstem, or PLF
+      - If fracture absent, may reflect labyrinthine concussion
+      - Intralabyrinthine hemorrhage may ultimately lead to labyrinthitis ossificans
+    - Facial nerve dysfunction: CNVII injuries represent spectrum from stretching/crushing/compression to complete transection
+      - Delayed paresis often reflects reversible injury; typically managed conservatively
+      - Immediate, complete paralysis: Poor prognosis for recovery; may be managed surgically
+    - CSF leak: Most resolve spontaneously within 7 days
+      - Surgery for persistent leak
+      - ≤ 10% develop meningitis
+    - Vertigo: Common after even minor head trauma
+      - When severe/persistent, may reflect brainstem injury, labyrinthine concussion, benign paroxysmal positional vertigo, Ménière syndrome (endolymphatic hydrops), PLF
+    - Perilymphatic fistula: Symptoms often vague; dizziness, vertigo, imbalance, fluctuating SNHL
+      - Early detection facilitates surgical repair, hearing preservation
+    - Chronic presentations
+      - Acquired cephalocele
+      - Acquired cholesteatoma
+        - Squamous invasion of fracture site
+      - EAC stenosis
+  - Other signs/symptoms
+    - IC pathology on CT in up to 90%
+      - Extracerebral (epidural, subdural, subarachnoid) or intracerebral (contusion, diffuse axonal injury)
+    - CNVI injury
+    - Trismus if glenoid fossa is involved
+- Demographics
+  - Age
+    - All ages; CNVII paralysis less common in pediatric temporal bone fractures
+  - Sex
+    - M > F
+  - Epidemiology
+    - Most common fractures of skull base
+    - Incidence is increasing, likely reflecting increasing traffic and population
+- Natural History & Prognosis
+  - Related to presence or absence of facial nerve injury, ossicular injury, PLF, IC complications
+- Treatment
+  - Management of severe head injury is priority
+  - Anticoagulation ± endovascular therapy for carotid injury
+  - Antibiotics if CSF leak is present
+  - Management of CNVII injuries remains controversial; most advocate observation ± steroids for paresis
+    - Surgical decompression or CNVII repair may be performed in patients with immediate paralysis
+
+DIAGNOSTIC CHECKLIST
+- Consider
+  - Systematically assess most clinically relevant structures: CNVII canal, otic capsule, tegmen, carotid canal, ossicles
+  - Do not forget to evaluate IC contents
+- Image Interpretation Pearls
+  - Check contralateral side to exclude pseudofracture
+- Reporting Tips
+  - Classify fractures with regard to both anatomic (longitudinal/transverse/oblique) and OCV/sparing criteria
+
+=== IMAGES (optional; original numbering preserved when present) ===
+
+IMAGE_01: 1
+  Temporal_Bone_Fractures1
+    Caption: Axial bone CT in a 42-year-old man status post trauma from a motor vehicle accident shows an otic capsule-violating medial transverse fracture through the posterior aspect of the petrous ridge, extending to the basal turn of the cochlea <img src="arrow_BS.png">.
+
+IMAGE_02: 2
+  Temporal_Bone_Fractures2
+    Caption: Axial bone CT in the same patient, slightly more superior than the preceding image, shows the fracture plane extending into the posteromedial aspect of the vestibule <img src="arrow_BS.png">. There is associated near-complete opacification of the middle ear cavity and mastoid air cells.
+
+IMAGE_03: 3
+  Temporal_Bone_Fractures3
+    Caption: Axial bone CT in a 25-year-old woman status post fall shows a capsule-sparing longitudinal fracture in the mastoid complex <img src="arrow_WS.png"> and widening of the incudomallear joint <img src="arrow_WO.png">, consistent with ossicular disruption.
+
+IMAGE_04: 4
+  Temporal_Bone_Fractures4
+    Caption: Sagittal bone CT reformation in the same patient depicts separation of the malleus <img src="arrow_WS.png"> and incus <img src="arrow_WO.png">. Disruption of the tegmen tympani is also visible <img src="arrow_WC.png">. The fracture plane also breaches the external auditory canal into the TMJ <img src="arrow_BS.png">.
+
+IMAGE_05: 5
+  Temporal_Bone_Fractures5
+    Caption: Coronal bone CT in a 73-year-old man with right-sided hearing loss and a history of trauma 1 month earlier shows a vertically oriented fracture <img src="arrow_WS.png"> involving the lateral semicircular canal.
+
+IMAGE_06: 6
+  Temporal_Bone_Fractures6
+    Caption: Axial CISS MR in the same patient demonstrates loss of the normal hyperintense T2 signal in the right lateral semicircular canal <img src="arrow_WS.png">, which can indicate hemolabyrinth or posttraumatic labyrinthitis ossificans. Notice normal T2 hyperintensity in the left lateral semicircular canal <img src="arrow_WO.png">.
+
+IMAGE_07: 7
+  Temporal_Bone_Fractures7
+    Caption: Axial bone CT in a 1-year-old child status post fall from a chair onto a tile floor demonstrates a subtle longitudinal fracture along the anterior margin of the mastoid air cells <img src="arrow_WS.png"> with associated pneumolabyrinth <img src="arrow_BO.png"> in the vestibule.
+
+IMAGE_08: 8
+  Temporal_Bone_Fractures8
+    Caption: Oblique bone window reformation ~ 45° in sagittal/coronal planes in a 58-year-old man with trauma shows separation of the malleoincudal joint <img src="arrow_WS.png"> and malrotation of the malleus and incus.
+
+IMAGE_09: 9
+  Temporal_Bone_Fractures9
+    Caption: Coronal bone CT in a 15-year-old patient who suffered a longitudinal otic capsule-sparing temporal bone fracture 8 years ago demonstrates a large tegmen tympani defect <img src="arrow_WS.png"> at the site of the original fracture plane and middle ear opacification, concerning for cephalocele. Note the ossicle displacement laterally <img src="arrow_WO.png">.
+
+IMAGE_10: 10
+  Temporal_Bone_Fractures10
+    Caption: Coronal T2WI FSE MR in the same patient confirms herniation of the inferior right temporal lobe <img src="arrow_WS.png"> through the tegmen tympani defect, consistent with posttraumatic cephalocele.
+
+=== SOURCE ATTRIBUTION ===
+Primary source label: RadPrimer

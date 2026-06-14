@@ -1,0 +1,368 @@
+{
+  "articleTitle": "Temporal Bone Fractures",
+  "createdAt": "2026-06-14T17:21:24.914856+00:00",
+  "canonicalHierarchy": {
+    "source": "RadPrimer",
+    "breadcrumbTrail": [
+      "Basic",
+      "Neuroradiology",
+      "Head and Neck",
+      "Facial Trauma and Other H&N Emergencies",
+      "Temporal Bone Fractures"
+    ],
+    "ankiDeckTarget": "RadprimerNormal::Neuro::Head and Neck::Facial Trauma and Other H&N Emergencies::Temporal Bone Fractures",
+    "sourcePairingKey": "temporal_bone_fractures",
+    "sourcePairingMatch": "exact/manual cache"
+  },
+  "sourcePriority": [
+    "RadPrimer canonical hierarchy/backbone",
+    "STATdx supplemental depth, cases, and visual reinforcement"
+  ],
+  "sourceCoverage": {
+    "textCoverage": "STATdx substantially duplicates the RadPrimer article structure and adds small modality/mechanism details plus a broader image set.",
+    "statdxFullyCoversRadPrimerImageSet": true,
+    "radprimerImageCoverageBySTATdx": [
+      {
+        "radprimerImageId": "RP-01",
+        "radprimerHumanLabel": "RadPrimer image 1",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-48"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 48 is the same axial CT slice/screenshot as RadPrimer image 1; keep RadPrimer image 1 and archive STATdx image 48."
+      },
+      {
+        "radprimerImageId": "RP-02",
+        "radprimerHumanLabel": "RadPrimer image 2",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-39"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 39 is the same axial CT slice/screenshot as RadPrimer image 2; keep RadPrimer image 2 and archive STATdx image 39."
+      },
+      {
+        "radprimerImageId": "RP-03",
+        "radprimerHumanLabel": "RadPrimer image 3",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-40"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 40 is the same axial CT slice/screenshot as RadPrimer image 3; keep RadPrimer image 3 and archive STATdx image 40."
+      },
+      {
+        "radprimerImageId": "RP-04",
+        "radprimerHumanLabel": "RadPrimer image 4",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-41"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 41 is the same sagittal CT slice/screenshot as RadPrimer image 4; keep RadPrimer image 4 and archive STATdx image 41."
+      },
+      {
+        "radprimerImageId": "RP-05",
+        "radprimerHumanLabel": "RadPrimer image 5",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-42"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 42 is the same coronal CT slice/screenshot as RadPrimer image 5; keep RadPrimer image 5 and archive STATdx image 42."
+      },
+      {
+        "radprimerImageId": "RP-06",
+        "radprimerHumanLabel": "RadPrimer image 6",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-44"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 44 is the same axial CISS MR slice/screenshot as RadPrimer image 6; keep RadPrimer image 6 and archive STATdx image 44."
+      },
+      {
+        "radprimerImageId": "RP-07",
+        "radprimerHumanLabel": "RadPrimer image 7",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-43"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 43 is the same axial CT slice/screenshot as RadPrimer image 7; keep RadPrimer image 7 and archive STATdx image 43."
+      },
+      {
+        "radprimerImageId": "RP-08",
+        "radprimerHumanLabel": "RadPrimer image 8",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-45"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 45 is the same oblique CT reformation/screenshot as RadPrimer image 8; keep RadPrimer image 8 and archive STATdx image 45."
+      },
+      {
+        "radprimerImageId": "RP-09",
+        "radprimerHumanLabel": "RadPrimer image 9",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-46"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 46 is the same coronal CT slice/screenshot as RadPrimer image 9; keep RadPrimer image 9 and archive STATdx image 46."
+      },
+      {
+        "radprimerImageId": "RP-10",
+        "radprimerHumanLabel": "RadPrimer image 10",
+        "classification": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-47"
+        ],
+        "evidenceBasis": "Visual inspection of image_evidence plain files; matching same slice/screenshot appearance. Captions were not used alone.",
+        "action": "Visual evidence shows STATdx image 47 is the same coronal T2 MR slice/screenshot as RadPrimer image 10; keep RadPrimer image 10 and archive STATdx image 47."
+      }
+    ],
+    "imageCoverageSummary": "All 10 RadPrimer images have visually exact STATdx duplicate copies in the staged evidence set; the RadPrimer versions remain canonical, and STATdx duplicate copies are archived."
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 48
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer] for hierarchy, canonical definitions, and RadPrimer captions/images.",
+    "Use [STATdx] for supplemental cases, modality-specific examples, and STATdx-only caption detail.",
+    "Use [Both] only for fused statements explicitly supported by both provided source packages.",
+    "Use clean human-facing image labels in package prose; keep short codes in registry, manifest, filenames, and traceability fields."
+  ],
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-27",
+    "SDX-28",
+    "SDX-29",
+    "SDX-30",
+    "SDX-31",
+    "SDX-32",
+    "SDX-33",
+    "SDX-34",
+    "SDX-35",
+    "SDX-36",
+    "SDX-37",
+    "SDX-38"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-39",
+    "SDX-40",
+    "SDX-41",
+    "SDX-42",
+    "SDX-43",
+    "SDX-44",
+    "SDX-45",
+    "SDX-46",
+    "SDX-47",
+    "SDX-48"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer hierarchy and article organization as the canonical backbone because RadPrimer is present and supplies the target Anki breadcrumb.",
+    "textKeepFromRadPrimer": [
+      "Core classification framework: otic-capsule violating versus sparing, plus older longitudinal/transverse/oblique descriptors.",
+      "Systematic checklist for CNVII canal, otic capsule, tegmen, carotid canal, ossicles, intracranial contents, and cervical spine.",
+      "Clinical management/prognosis points about CNVII injury, CSF leak, vascular injury, and chronic complications."
+    ],
+    "textKeepFromSTATdx": [
+      "Supplemental detail that OCV fractures more often affect labyrinthine structures, including cochlea, vestibule, and semicircular canals.",
+      "Penetrating-trauma/ossicular-chain examples and extensive visual examples of vascular, pseudofracture, chronic, and MR complications.",
+      "Additional modality-specific captions for CTA, MR, oblique reformations, and same-patient CT/MR complication clusters."
+    ],
+    "textDownweightOrSkip": [
+      "Do not duplicate identical RadPrimer/STATdx article prose when both sources say the same thing.",
+      "Do not treat Core Radiology as verified because no Core source package is present.",
+      "Do not generate cards or lecture content from this package yet."
+    ],
+    "primaryImageDownloadIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26",
+      "SDX-27",
+      "SDX-28",
+      "SDX-29",
+      "SDX-30",
+      "SDX-31",
+      "SDX-32",
+      "SDX-33",
+      "SDX-34",
+      "SDX-35",
+      "SDX-36",
+      "SDX-37",
+      "SDX-38"
+    ],
+    "archiveDuplicateIds": [
+      "SDX-39",
+      "SDX-40",
+      "SDX-41",
+      "SDX-42",
+      "SDX-43",
+      "SDX-44",
+      "SDX-45",
+      "SDX-46",
+      "SDX-47",
+      "SDX-48"
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate same-disease examples, conceptual replacements, different patients, different projections, adjacent slices, or modality variants remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "Exact duplicate decisions require visual evidence from image_evidence files, same stable source image ID, matching hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is not enough; uncertain cases stay primary.",
+    "caseClusterGuardrails": {
+      "atomicClusterRule": "Same-patient, follow-up, procedure, comparison-view, adjacent-slice, time-lapse, and CT/MR companion groups stay together when selected.",
+      "intentionalClusterSplits": [],
+      "splitPolicy": "No source case cluster was intentionally split. Duplicate STATdx tail images were archived only because the equivalent RadPrimer cluster images remain selected."
+    },
+    "imageDownloadPlan": {
+      "downloadOnly": [
+        "RP-01",
+        "RP-02",
+        "RP-03",
+        "RP-04",
+        "RP-05",
+        "RP-06",
+        "RP-07",
+        "RP-08",
+        "RP-09",
+        "RP-10",
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22",
+        "SDX-23",
+        "SDX-24",
+        "SDX-25",
+        "SDX-26",
+        "SDX-27",
+        "SDX-28",
+        "SDX-29",
+        "SDX-30",
+        "SDX-31",
+        "SDX-32",
+        "SDX-33",
+        "SDX-34",
+        "SDX-35",
+        "SDX-36",
+        "SDX-37",
+        "SDX-38"
+      ],
+      "archiveOptional": [
+        "SDX-39",
+        "SDX-40",
+        "SDX-41",
+        "SDX-42",
+        "SDX-43",
+        "SDX-44",
+        "SDX-45",
+        "SDX-46",
+        "SDX-47",
+        "SDX-48"
+      ],
+      "filenamePolicy": "Use source-qualified filenames from image_registry.downloadFilename, preserving short IDs such as RP-05 and SDX-04 in filenames/traceability while using clean labels in prose.",
+      "extensionInstruction": "Default image import should download only primaryTeachingSet images and skip archiveOptionalDuplicate images unless the user explicitly requests complete-source recovery."
+    },
+    "generatorInstructionsForNarrativeAndCards": [
+      "Use source-qualified human labels in narrative, for example RadPrimer image 5 or STATdx image 4.",
+      "Do not force both the long human label and short code into the same narrative-facing sentence; keep RP-05/SDX-04 in traceability fields.",
+      "Use RadPrimer images as the canonical backbone, then add selected STATdx images as supplemental reinforcement for visual variety and complications.",
+      "Preserve atomic case clusters when selecting image prompts or cards."
+    ]
+  },
+  "imageEvidenceInspected": {
+    "manifest": "image_evidence_manifest.json",
+    "folder": "image_evidence",
+    "contactSheetsCreatedForAudit": [
+      "_codex_work/RP_vs_STATdx_tail_pairs_dotnet.jpg",
+      "_codex_work/RadPrimer_contact_sheet_dotnet.jpg",
+      "_codex_work/STATdx_contact_sheet_dotnet.jpg"
+    ]
+  }
+}

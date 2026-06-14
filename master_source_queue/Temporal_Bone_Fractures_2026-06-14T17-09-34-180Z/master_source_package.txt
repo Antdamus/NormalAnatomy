@@ -1,0 +1,150 @@
+=== TOPIC ===
+PRIMARY TOPIC: Temporal Bone Fractures
+CENTERING TOPIC FOR THIS CHAT: Temporal Bone Fractures
+USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: Temporal Bone Fractures
+
+=== MASTER SOURCE SYNTHESIS ===
+Source package type: fused RadPrimer + STATdx master source for later narrative/card generation.
+Source priority: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth, broader image examples, modality-specific complications, and differential reinforcement.
+Do not generate cards or a lecture from this file yet.
+
+=== CANONICAL HIERARCHY ===
+[RadPrimer] Basic > Neuroradiology > Head and Neck > Facial Trauma and Other H&N Emergencies > Temporal Bone Fractures
+[STATdx supplemental breadcrumb] Head and Neck > Diagnosis > Skull Base, Facial, and Temporal Bone Trauma > Skull Base and Temporal Bone > Temporal Bone Fractures
+Anki deck target: RadprimerNormal::Neuro::Head and Neck::Facial Trauma and Other H&N Emergencies::Temporal Bone Fractures
+
+=== IMAGE COVERAGE GATE ===
+Actual staged image_evidence files were inspected before duplicate classification. STATdx includes visually exact duplicate copies of all 10 RadPrimer images; RadPrimer remains the canonical retained copy for those pairs.
+- RadPrimer image 1: exact duplicate covered by STATdx image 48. Action: keep RadPrimer image 1; archive the STATdx duplicate copy.
+- RadPrimer image 2: exact duplicate covered by STATdx image 39. Action: keep RadPrimer image 2; archive the STATdx duplicate copy.
+- RadPrimer image 3: exact duplicate covered by STATdx image 40. Action: keep RadPrimer image 3; archive the STATdx duplicate copy.
+- RadPrimer image 4: exact duplicate covered by STATdx image 41. Action: keep RadPrimer image 4; archive the STATdx duplicate copy.
+- RadPrimer image 5: exact duplicate covered by STATdx image 42. Action: keep RadPrimer image 5; archive the STATdx duplicate copy.
+- RadPrimer image 6: exact duplicate covered by STATdx image 44. Action: keep RadPrimer image 6; archive the STATdx duplicate copy.
+- RadPrimer image 7: exact duplicate covered by STATdx image 43. Action: keep RadPrimer image 7; archive the STATdx duplicate copy.
+- RadPrimer image 8: exact duplicate covered by STATdx image 45. Action: keep RadPrimer image 8; archive the STATdx duplicate copy.
+- RadPrimer image 9: exact duplicate covered by STATdx image 46. Action: keep RadPrimer image 9; archive the STATdx duplicate copy.
+- RadPrimer image 10: exact duplicate covered by STATdx image 47. Action: keep RadPrimer image 10; archive the STATdx duplicate copy.
+Archive rule used here: only the visually exact STATdx tail duplicates are archived. STATdx images 1-38 remain selected because they are distinct cases, different slices/projections/modalities, complication examples, or recognition reinforcement.
+
+=== FUSED ARTICLE BACKBONE ===
+
+KEY FACTS
+- [Both] Temporal bone fracture evaluation is primarily high-resolution bone algorithm MDCT with coronal reconstructions; CTA/MRA is considered when the fracture reaches or threatens the carotid canal, and CTV/MRV is considered for dural venous sinus or jugular foramen involvement.
+- [Both] Dedicated brain imaging is critical because intracranial injury is common, reported in up to 90% of patients with temporal bone fractures.
+- [Both] Longitudinal fractures parallel the long axis of the petrous ridge and commonly involve the external auditory canal, middle ear, and ossicular chain; otic capsule involvement is uncommon.
+- [Both] Transverse fractures are perpendicular to the petrous ridge long axis and more often violate the otic capsule, internal auditory canal, labyrinth, and facial nerve canal.
+- [Both] Oblique fractures have mixed features and are common in practice, so the older longitudinal/transverse scheme is less predictive than otic-capsule violating versus otic-capsule sparing classification.
+- [Both] Otic-capsule violation better predicts sensorineural hearing loss, facial nerve injury, CSF leak, perilymph fistula, and intracranial complications.
+- [Both] Ossicular injury is usually dislocation rather than fracture; the incus is most often involved, with incudostapedial and incudomalleolar disruptions common.
+- [Both] Always assess the facial nerve canal, otic capsule, tegmen, carotid canal, ossicles, central skull base extension, intracranial injuries, and cervical spine injuries.
+
+TERMINOLOGY
+- [Both] Temporal bone fracture is traumatic injury of the temporal bone with or without ossicular injury.
+- [Both] Otic-capsule sparing fractures form the majority and often extend through the temporal squamosa, external auditory canal, tympanic membrane, middle ear, mastoid, and tegmen.
+- [Both] Otic-capsule violating fractures are less common, roughly 5-20%, but have higher rates of sensorineural hearing loss, CNVII injury, CSF leak, pneumolabyrinth, and labyrinthine complications.
+
+IMAGING
+- [Both] Best diagnostic clue: bone CT shows a fracture line. Secondary signs include hemotympanum, mastoid or middle ear opacification, pneumolabyrinth, intracranial air/hemorrhage, or unexplained parapharyngeal air suggesting an occult mastoid fracture.
+- [Both] Otic-capsule sparing fractures commonly involve the external auditory canal, tympanic membrane, middle ear, and ossicles; CNVII canal involvement, when present, often affects the geniculate or tympanic segments.
+- [Both] Otic-capsule violating fractures may extend from occipital impact regions through the petrous pyramid, cochlea, vestibule, semicircular canals, IAC, jugular foramen, foramen lacerum, or central skull base.
+- [STATdx] STATdx adds emphasis that labyrinthine structures are more often affected in otic-capsule violating fractures than otic-capsule sparing fractures.
+- [Both] Perilymph fistula reflects oval or round window rupture with communication between middle ear and membranous labyrinth; subtle CT signs include pneumolabyrinth and fluid at the oval or round window.
+- [Both] CTA/MRA is considered when fracture involves the carotid canal; carotid canal fracture is only moderately associated with ICA injury, but vascular injury can include dissection, occlusion, or carotid-cavernous fistula.
+- [Both] CTV/MRV is considered when fracture involves a dural venous sinus, sigmoid sinus, jugular bulb, or jugular foramen region.
+- [Both] MRI can show hemotympanum/hemolabyrinth, loss of labyrinthine T2 signal from hemolabyrinth/pneumolabyrinth/posttraumatic labyrinthitis ossificans, CNVII or membranous labyrinth enhancement, meningitis/abscess, vascular dissection/occlusion, or venous thrombosis.
+
+DIFFERENTIAL DIAGNOSIS
+- [Both] Pseudofractures include sutures, fissures, canaliculi, and aqueducts; they are typically sclerotic, corticated, bilateral, and symmetric. Compare with the contralateral side.
+- [Both] External and skull-base fissures/sutures that can mimic fracture include temporoparietal, petrooccipital, sphenopetrosal, occipitomastoid, petrotympanic, petrosquamosal, tympanosquamous, and tympanomastoid lines.
+- [Both] Canaliculi and aqueducts that can mimic fracture include mastoid, inferior tympanic, subarcuate/petromastoid, singular canaliculi, cochlear aqueduct, and vestibular aqueduct.
+- [Both] Incus interposition surgery can mimic chronic incus dislocation.
+- [Both] Mastoiditis or preexisting mastoid/middle-ear effusion can mimic hemotympanum or CSF leak; correlate with trauma signs and fracture line.
+
+PATHOLOGY AND MECHANISM
+- [Both] Temporal bone fracture requires high-force impact, most commonly motor vehicle accident; longitudinal fractures tend to follow lateral impact, transverse fractures occipital or frontal impact, and tympanic plate fractures a blow to the chin.
+- [STATdx] Penetrating injury may disrupt the ossicular chain, as illustrated by STATdx image 4.
+
+CLINICAL ISSUES
+- [Both] Common signs include Battle sign, EAC hemorrhage, hemotympanum, conductive hearing loss, sensorineural hearing loss, facial nerve dysfunction, CSF leak, vertigo, and perilymphatic fistula symptoms.
+- [Both] Conductive hearing loss early after trauma may reflect hemotympanum or tympanic membrane injury; persistent conductive hearing loss should trigger careful evaluation for ossicular disruption.
+- [Both] Sensorineural hearing loss may reflect otic capsule, IAC, brainstem, perilymph fistula, hemolabyrinth, or labyrinthine concussion injury.
+- [Both] Delayed facial paresis often reflects reversible injury and is usually managed conservatively; immediate complete paralysis has worse prognosis and may lead to surgical decompression or repair depending on clinical context.
+- [Both] Most CSF leaks resolve spontaneously within 7 days; persistent leak may need surgery. Meningitis occurs in a minority of patients with CSF leak.
+- [Both] Chronic complications include acquired cephalocele, acquired cholesteatoma from squamous invasion of the fracture site, and external auditory canal stenosis.
+- [Both] Management prioritizes severe head injury; anticoagulation or endovascular therapy may be used for carotid injury, antibiotics may be used when CSF leak is present, and CNVII management remains controversial.
+
+DIAGNOSTIC CHECKLIST
+- [Both] Use a fixed search pattern: fracture orientation and otic capsule status, CNVII canal, cochlea/vestibule/SCCs/IAC, ossicles, tegmen, EAC/TMJ, carotid canal, jugular foramen/sigmoid sinus, central skull base, intracranial compartment, and cervical spine.
+- [Both] Classify using both anatomic direction and otic-capsule status in reports.
+- [Both] Do not overcall pseudofracture; look for corticated margins, symmetry, and known normal fissures/canaliculi/aqueducts.
+
+=== CURATED IMAGE TEACHING SET ===
+RadPrimer images are retained as the canonical backbone.
+- RadPrimer image 1 [RadPrimer]: Axial bone CT in a 42-year-old man status post trauma from a motor vehicle accident shows an otic capsule-violating medial transverse fracture through the posterior aspect of the petrous ridge, extending to the basal turn of the cochlea [arrow: arrow_BS.png].
+- RadPrimer image 2 [RadPrimer]: Axial bone CT in the same patient, slightly more superior than the preceding image, shows the fracture plane extending into the posteromedial aspect of the vestibule [arrow: arrow_BS.png]. There is associated near-complete opacification of the middle ear cavity and mastoid air cells.
+- RadPrimer image 3 [RadPrimer]: Axial bone CT in a 25-year-old woman status post fall shows a capsule-sparing longitudinal fracture in the mastoid complex [arrow: arrow_WS.png] and widening of the incudomallear joint [arrow: arrow_WO.png], consistent with ossicular disruption.
+- RadPrimer image 4 [RadPrimer]: Sagittal bone CT reformation in the same patient depicts separation of the malleus [arrow: arrow_WS.png] and incus [arrow: arrow_WO.png]. Disruption of the tegmen tympani is also visible [arrow: arrow_WC.png]. The fracture plane also breaches the external auditory canal into the TMJ [arrow: arrow_BS.png].
+- RadPrimer image 5 [RadPrimer]: Coronal bone CT in a 73-year-old man with right-sided hearing loss and a history of trauma 1 month earlier shows a vertically oriented fracture [arrow: arrow_WS.png] involving the lateral semicircular canal.
+- RadPrimer image 6 [RadPrimer]: Axial CISS MR in the same patient demonstrates loss of the normal hyperintense T2 signal in the right lateral semicircular canal [arrow: arrow_WS.png], which can indicate hemolabyrinth or posttraumatic labyrinthitis ossificans. Notice normal T2 hyperintensity in the left lateral semicircular canal [arrow: arrow_WO.png].
+- RadPrimer image 7 [RadPrimer]: Axial bone CT in a 1-year-old child status post fall from a chair onto a tile floor demonstrates a subtle longitudinal fracture along the anterior margin of the mastoid air cells [arrow: arrow_WS.png] with associated pneumolabyrinth [arrow: arrow_BO.png] in the vestibule.
+- RadPrimer image 8 [RadPrimer]: Oblique bone window reformation ~ 45° in sagittal/coronal planes in a 58-year-old man with trauma shows separation of the malleoincudal joint [arrow: arrow_WS.png] and malrotation of the malleus and incus.
+- RadPrimer image 9 [RadPrimer]: Coronal bone CT in a 15-year-old patient who suffered a longitudinal otic capsule-sparing temporal bone fracture 8 years ago demonstrates a large tegmen tympani defect [arrow: arrow_WS.png] at the site of the original fracture plane and middle ear opacification, concerning for cephalocele. Note the ossicle displacement laterally [arrow: arrow_WO.png].
+- RadPrimer image 10 [RadPrimer]: Coronal T2WI FSE MR in the same patient confirms herniation of the inferior right temporal lobe [arrow: arrow_WS.png] through the tegmen tympani defect, consistent with posttraumatic cephalocele.
+
+STATdx images 1-38 are retained as supplemental primary examples.
+- STATdx image 1 [STATdx]: Axial NECT of the right temporal bone in a 37-year-old man who was assaulted shows a longitudinal fracture plane [arrow: arrow_WS.png] causing subtle widening of the incudostapedial joint [arrow: arrow_WO.png] and propagating through the anterior wall of the epitympanum [arrow: arrow_WC.png].
+- STATdx image 2 [STATdx]: Axial NECT in the same patient shows an inferior continuation of the longitudinal fracture through the posterior wall of the TMJ fossa [arrow: arrow_BS.png] and eustachian tube [arrow: arrow_BO.png], and questionably into the carotid canal [arrow: arrow_WC.png]. A follow-up CTA was negative for carotid injury.
+- STATdx image 3 [STATdx]: Composite mirrored axial NECTs in a 34-year-old man show an otic capsule violating (OCV) fracture that traverses the posterior semicircular canal (SCC) [arrow: arrow_BS.png] as well as the anterior [arrow: arrow_BO.png] and posterior [arrow: arrow_BC.png] limbs of lateral SCC. Normal anatomy is visible in the right-hand panel.
+- STATdx image 4 [STATdx]: Axial NECT in a 57-year-old man who inserted a cotton swab through the tympanic membrane shows disruption of the incudostapedial joint [arrow: arrow_WS.png]. There is also a fragment of the otic capsule displaced medially into the tympanic facial nerve canal [arrow: arrow_WO.png].
+- STATdx image 5 [STATdx]: Axial NECT in a 73-year-old man with trauma shows a transverse OCV fracture plane [arrow: arrow_BS.png] extending through the vestibule. The fracture reaches the tympanic segment of the facial nerve [arrow: arrow_BO.png] more anteriorly.
+- STATdx image 6 [STATdx]: Axial NECT in the same patient shows the fracture plane reaching the round window niche [arrow: arrow_BS.png]. More anteriorly, the fracture is extending through the lateral aspect of the basal turn of the cochlea [arrow: arrow_WS.png] to the anterior aspect of the otic capsule.
+- STATdx image 7 [STATdx]: Sagittal CT in a 47-year-old man with trauma shows a fracture involving anterior [arrow: arrow_WS.png] and posterior [arrow: arrow_WO.png] walls of the external auditory canal. There is a more posterior component of the fracture breaching the tegmen mastoideum [arrow: arrow_WC.png].
+- STATdx image 8 [STATdx]: Composite mirrored sagittal images of the right and left temporal bones in the same patient show extension of a fracture plane through the right facial nerve genu [arrow: arrow_WS.png] and tegmen tympani [arrow: arrow_WO.png] in the left-hand panel. The normal left facial nerve genu [arrow: arrow_BC.png] is visible for comparison in the right-hand panel.
+- STATdx image 9 [STATdx]: Axial FLAIR MR in the same patient shows an acute subdural hematoma [arrow: arrow_WS.png], subarachnoid hemorrhage [arrow: arrow_WO.png], and a hemorrhagic contusion [arrow: arrow_WC.png] of the inferomedial frontal lobe.
+- STATdx image 10 [STATdx]: Coronal T1 C+ FS MR in the same patient shows abnormal signal in the superior internal auditory canal [arrow: arrow_WS.png]. Considering the fracture through the genu seen on CT, this signal may represent T1-intense blood products, reactive enhancement, or both. There is reactive dural enhancement along the periphery of the right temporal lobe [arrow: arrow_WO.png].
+- STATdx image 11 [STATdx]: Axial bone CT shows bilateral otic capsule-sparing fractures [arrow: arrow_BS.png] and left malleoincudal dislocation [arrow: arrow_WO.png].
+- STATdx image 12 [STATdx]: Axial bone CT shows a transverse fracture crossing the internal auditory canal and otic capsule [arrow: arrow_WC.png]. Note a tiny air bubble (pneumolabyrinth) [arrow: arrow_BS.png] in the cochlea.
+- STATdx image 13 [STATdx]: Axial bone CT reveals a longitudinal otic capsule-violating fracture [arrow: arrow_BS.png] extending from mastoid to petrous apex. Malleoincudal disruption [arrow: arrow_BO.png] is noted. Middle ear debris (hemotympanum) is present.
+- STATdx image 14 [STATdx]: Axial bone CT shows a transverse fracture [arrow: arrow_BS.png] extending through the fundus of the internal auditory canal associated with acute complete hearing loss due to cochlear nerve transection.
+- STATdx image 15 [STATdx]: Axial bone CT reveals a transverse OCV fracture extending from the posterior petrous surface [arrow: arrow_WS.png] to the vestibule [arrow: arrow_WO.png]. Note middle ear fluid from a perilymphatic fistula.
+- STATdx image 16 [STATdx]: Axial bone CT demonstrates complete incus dislocation with an incus fragment lodged within the external auditory canal [arrow: arrow_WS.png]. Tympanic membrane rupture was also present.
+- STATdx image 17 [STATdx]: Axial bone CT reveals abnormal widening of malleoincudal articulation [arrow: arrow_WS.png], consistent with traumatic dislocation. The patient was imaged because of persistent conductive hearing loss after head trauma.
+- STATdx image 18 [STATdx]: Axial CTA demonstrates lack of enhancement in the left distal internal carotid artery [arrow: arrow_WS.png] secondary to posttraumatic occlusion in a teenager with bilateral complicated temporal bone fractures (not shown) and involvement of the carotid canal [arrow: arrow_WO.png].
+- STATdx image 19 [STATdx]: Coronal bone CT shows a lucency at the junction of the long and lenticular processes of the incus [arrow: arrow_WS.png]. Persistent conductive hearing loss should prompt a careful search for ossicular injury; this subtle fracture was confirmed at surgery.
+- STATdx image 20 [STATdx]: Axial bone CT in a 16-year-old patient following a fall from a truck demonstrates a nondepressed, otic capsule-sparing longitudinal temporal bone fracture [arrow: arrow_WS.png].
+- STATdx image 21 [STATdx]: Axial bone CT in the same patient shows the posterior aspect of the longitudinal fracture [arrow: arrow_WS.png] and subtle medial subluxation of the malleus head [arrow: arrow_WO.png] seen as the "ice cream" sliding off of the "cone," consistent with ossicular dislocation.
+- STATdx image 22 [STATdx]: Axial bone CT in a 14-year-old patient following a severe head injury shows a medial transverse, OCV fracture [arrow: arrow_BS.png] traversing the vestibule with extension into the medial aspect of the tympanic facial nerve canal [arrow: arrow_BO.png].
+- STATdx image 23 [STATdx]: Axial bone CT more inferiorly in the same patient shows the typical inferior extension of the fracture across the jugular foramen [arrow: arrow_BS.png] into the round window niche [arrow: arrow_WO.png].
+- STATdx image 24 [STATdx]: Axial bone CT reveals a transverse OCV fracture extending through the labyrinthine CNVII canal [arrow: arrow_WS.png] and the vestibule [arrow: arrow_WO.png]. This medial subtype of transverse fracture often results in complete and permanent sensorineural hearing loss and facial palsy.
+- STATdx image 25 [STATdx]: Axial bone CT shows a chronic transverse fracture line extending through the otic capsule [arrow: arrow_WS.png] to the basal turn of the cochlea [arrow: arrow_WO.png], where abnormal high density in the basal turn indicates the presence of labyrinthitis ossificans.
+- STATdx image 26 [STATdx]: Axial bone CT in the same child shows a subtle longitudinal fracture involving the lateral mastoid cortex [arrow: arrow_WS.png], subtle widening of the incudomalleolar joint [arrow: arrow_WO.png], and air in the vestibule and cochlea [arrow: arrow_BC.png].
+- STATdx image 27 [STATdx]: Coronal bone CT demonstrates a large traumatic defect of the tegmen tympani [arrow: arrow_WS.png] with herniation of soft tissue into the epitympanum, representing a small acquired cephalocele. The most common complication of a tegmen fracture is transient CSF otorrhea.
+- STATdx image 28 [STATdx]: Coronal bone CT reveals pneumolabyrinth [arrow: arrow_WS.png]. Linear lucency through the otic capsule was initially diagnosed as a fracture but represents the normal singular canal [arrow: arrow_WC.png]. Comparison with the contralateral temporal bone will help exclude pseudofractures.
+- STATdx image 29 [STATdx]: Axial bone CT shows a longitudinal otic-capsule-sparing fracture [arrow: arrow_WS.png] extending to the tegmen tympani [arrow: arrow_WO.png]; thus, this patient is at risk for a CSF leak. There is widening of the incudomalleolar joint [arrow: arrow_WC.png], the most common form of ossicular disruption.
+- STATdx image 30 [STATdx]: Axial bone CT demonstrate a typical transverse, OCV temporal bone fracture [arrow: arrow_BS.png] extending through the fundus of the internal auditory canal and base of the vestibule. The middle ear fluid could be blood or perilymph.
+- STATdx image 31 [STATdx]: Axial bone CT shows a typical malleal-incudal posttraumatic dislocation [arrow: arrow_WS.png] as disruption of the normal "ice cream on a cone" relationship between the head of the malleus ("ice cream") and short process of the incus ("cone"). Opacification of the posterior middle ear and mastoid antrum is secondary to resolving blood products.
+- STATdx image 32 [STATdx]: Axial temporal bone CT shows a longitudinal temporal bone fracture [arrow: arrow_BS.png] traversing the mastoid air cells and middle ear cavity with violation of the otic capsule. The fracture extends to the oval window with air seen in the vestibule [arrow: arrow_BO.png] (pneumolabyrinth). The diffuse middle ear and mastoid debris is likely both blood and CSF.
+- STATdx image 33 [STATdx]: Axial bone CT shows an unusual longitudinal OCV fracture with medial subluxation of the malleus head [arrow: arrow_WS.png]. The fracture extends to the oval window with pneumolabyrinth [arrow: arrow_WO.png]; these findings may indicate the presence of perilymph fistula. There is medial extension to the internal auditory canal [arrow: arrow_WC.png].
+- STATdx image 34 [STATdx]: Axial NECT shows complete incus dislocation. The incus is laterally displaced into the external auditory canal [arrow: arrow_WO.png] and rotated into the horizontal plane. Its articulations with the malleus and stapes are disrupted.
+- STATdx image 35 [STATdx]: Axial bone CT demonstrates a transverse fracture that extends to the jugular bulb [arrow: arrow_WS.png] and round window niche [arrow: arrow_WO.png]. Stapediovestibular joint disruption is suggested by the alignment of the anterior stapedial crus with the posterior margin of the oval window [arrow: arrow_WC.png].
+- STATdx image 36 [STATdx]: Axial bone CT reveals a chronic fracture with medial extension to the fundus of the internal auditory canal [arrow: arrow_WS.png]. The CNVII canal is involved in the midtympanic segment [arrow: arrow_WO.png], and the incudomalleolar joint is grossly widened [arrow: arrow_WC.png].
+- STATdx image 37 [STATdx]: Axial bone CT demonstrates linear lucency through the anterior wall of the external auditory canal, representing the normal tympanosquamous fissure [arrow: arrow_WS.png]; this was initially misdiagnosed as a fracture. A true fracture line extends through the anterior aspect of the glenoid fossa [arrow: arrow_WO.png].
+- STATdx image 38 [STATdx]: Oblique reformatted bone CT ~ 45⁰ in the sagittal/coronal plane in a 58-year-old man status post motor vehicle accident is shown. The image is parallel to the petrous ridge long axis, perpendicular to a transverse fracture, which was seen on axial images (not shown). The fracture [arrow: arrow_WS.png] extends through the facial nerve genu [arrow: arrow_WO.png].
+
+STATdx images 39-48 are archived optional duplicate copies because visual inspection showed they match RadPrimer image evidence files slice-for-slice/screenshot-for-screenshot.
+- STATdx image 39 [STATdx archive]: exact duplicate of RadPrimer image 2; not selected for default download/use.
+- STATdx image 40 [STATdx archive]: exact duplicate of RadPrimer image 3; not selected for default download/use.
+- STATdx image 41 [STATdx archive]: exact duplicate of RadPrimer image 4; not selected for default download/use.
+- STATdx image 42 [STATdx archive]: exact duplicate of RadPrimer image 5; not selected for default download/use.
+- STATdx image 43 [STATdx archive]: exact duplicate of RadPrimer image 7; not selected for default download/use.
+- STATdx image 44 [STATdx archive]: exact duplicate of RadPrimer image 6; not selected for default download/use.
+- STATdx image 45 [STATdx archive]: exact duplicate of RadPrimer image 8; not selected for default download/use.
+- STATdx image 46 [STATdx archive]: exact duplicate of RadPrimer image 9; not selected for default download/use.
+- STATdx image 47 [STATdx archive]: exact duplicate of RadPrimer image 10; not selected for default download/use.
+- STATdx image 48 [STATdx archive]: exact duplicate of RadPrimer image 1; not selected for default download/use.
+
+=== SOURCE ATTRIBUTION ===
+Primary source label: RadPrimer
+Supplemental source label: STATdx
+Use [Both] only for statements supported by both provided packages. No Core Radiology source was present in this bundle.

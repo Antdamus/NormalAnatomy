@@ -101,6 +101,11 @@
   const APP_ID = "imaios-cine-tools";
   const PAGE_STORAGE_KEY = `${APP_ID}:page:${location.origin}${location.pathname}`;
   const PREFS_STORAGE_KEY = `${APP_ID}:prefs`;
+  const CHUNK_LIBRARY_STORAGE_KEY = `${APP_ID}:chunk-library`;
+  const LABEL_REPOSITORY_STORAGE_KEY = `${APP_ID}:label-repository`;
+  const EXTENSION_LABEL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-repository";
+  const EMPTY_CHUNK_LIBRARY = { version: 1, topic: "", chunks: [] };
+  const EMPTY_LABEL_REPOSITORY = { version: 1, updatedAt: "", modalities: [], labels: [], moduleLabels: {} };
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
   const DEFAULT_CINE_SPEED = 5;
@@ -171,6 +176,9 @@
     rangeCineMode: "pingpong",
     rangeCineSpeed: DEFAULT_CINE_SPEED,
     rangeCineIntervalMs: cineSpeedToIntervalMs(DEFAULT_CINE_SPEED),
+    chunkLibrary: { ...EMPTY_CHUNK_LIBRARY },
+    activeChunkId: "",
+    labelRepository: { ...EMPTY_LABEL_REPOSITORY },
     hotkeys: createDefaultHotkeys(),
     keyEditorOpen: false,
     captureHotkeyAction: ""
@@ -181,6 +189,7 @@
     if (!viewerReady) return;
 
     loadSavedState();
+    syncLabelRepositoryToExtensionStorage();
     mount();
     refreshPanel();
     window.addEventListener("fullscreenchange", remount);
@@ -210,6 +219,9 @@
       if (prefs.hotkeys && typeof prefs.hotkeys === "object") {
         state.hotkeys = mergeHotkeys(prefs.hotkeys);
       }
+      state.chunkLibrary = normalizeImportedChunkLibrary(JSON.parse(localStorage.getItem(CHUNK_LIBRARY_STORAGE_KEY) || "null"));
+      state.labelRepository = normalizeImportedLabelRepository(JSON.parse(localStorage.getItem(LABEL_REPOSITORY_STORAGE_KEY) || "null"));
+      if (page.activeChunkId && getChunkById(page.activeChunkId)) state.activeChunkId = page.activeChunkId;
     } catch (error) {
       console.warn("IMAIOS Cine Tools: could not load saved state", error);
     }
@@ -219,6 +231,7 @@
     try {
       localStorage.setItem(PAGE_STORAGE_KEY, JSON.stringify({
         activePresetId: state.activePresetId,
+        activeChunkId: state.activeChunkId,
         selectedStructures: state.selectedStructures,
         customListText: state.customListText,
         boxes: state.boxes,
@@ -274,6 +287,7 @@
     const presetOptions = PRESETS.map((preset) => (
       `<option value="${escapeHtml(preset.id)}">${escapeHtml(preset.label)}</option>`
     )).join("");
+    const chunkOptions = buildChunkOptions();
     const hotkeyRows = HOTKEY_ACTIONS.map((action) => `
       <div class="key-row">
         <span>${escapeHtml(action.label)}</span>
@@ -346,6 +360,10 @@
           grid-template-columns: 1fr 1fr 1fr;
         }
 
+        .row.four {
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
         select,
         textarea,
         button {
@@ -358,7 +376,7 @@
           width: 100%;
           border: 1px solid rgba(255,255,255,0.16);
           border-radius: 6px;
-          background: rgba(255,255,255,0.08);
+          background: #2b2f34;
           color: #f5f7fa;
           outline: none;
         }
@@ -367,6 +385,27 @@
           height: 30px;
           padding: 0 8px;
           font-size: 12px;
+        }
+
+        select:focus {
+          border-color: rgba(58, 158, 255, 0.86);
+          box-shadow: 0 0 0 2px rgba(58, 158, 255, 0.22);
+        }
+
+        select option,
+        select optgroup {
+          background: #25292e;
+          color: #f5f7fa;
+          font: 12px/1.3 Inter, "Segoe UI", Arial, sans-serif;
+        }
+
+        select option:checked {
+          background: #1f8ddc;
+          color: #ffffff;
+        }
+
+        select option:disabled {
+          color: rgba(245,247,250,0.56);
         }
 
         textarea {
@@ -417,7 +456,8 @@
 
         .hint,
         .status,
-        .selected {
+        .selected,
+        .chunk-summary {
           font-size: 11px;
           line-height: 1.35;
           color: rgba(245,247,250,0.74);
@@ -434,6 +474,16 @@
           background: rgba(255,255,255,0.06);
           max-height: 56px;
           overflow: auto;
+          user-select: text;
+        }
+
+        .chunk-summary {
+          min-height: 28px;
+          max-height: 72px;
+          overflow: auto;
+          padding: 6px 7px;
+          border-radius: 6px;
+          background: rgba(60, 132, 94, 0.12);
           user-select: text;
         }
 
@@ -569,6 +619,17 @@
             <button class="primary" type="button" data-action="apply-preset">Apply preset</button>
             <button type="button" data-action="stop-search">Stop</button>
           </div>
+          <select data-role="chunk">${chunkOptions}</select>
+          <div class="row">
+            <button class="primary" type="button" data-action="apply-chunk">Apply chunk</button>
+            <button type="button" data-action="check-chunk">Check chunk</button>
+          </div>
+          <div class="row three">
+            <button type="button" data-action="import-chunks">Import chunks</button>
+            <button type="button" data-action="import-labels">Import labels</button>
+            <button type="button" data-action="copy-chunk-template">Template</button>
+          </div>
+          <div class="chunk-summary" data-role="chunk-summary"></div>
           <div class="row three">
             <button type="button" data-action="set-pins">Set pins</button>
             <button type="button" data-action="set-labels">Show labels</button>
@@ -588,6 +649,10 @@
             <button type="button" data-action="copy-manifest">Copy manifest</button>
             <button type="button" data-action="copy-prompt">Copy prompt</button>
             <button type="button" data-action="copy-labels">Copy labels</button>
+          </div>
+          <div class="row">
+            <button type="button" data-action="save-labels">Save labels</button>
+            <button type="button" data-action="export-label-repo">Export repo</button>
           </div>
           <div class="row">
             <button type="button" data-action="copy-probe">Copy probe</button>
@@ -649,6 +714,18 @@
       const preset = getActivePreset();
       applyStructures(preset.structures, preset.label);
     });
+    root.querySelector("[data-role='chunk']").addEventListener("change", (event) => {
+      state.activeChunkId = event.target.value;
+      const chunk = getActiveChunk();
+      if (chunk) state.customListText = chunkToPreferredLabelText(chunk);
+      savePageState();
+      refreshPanel();
+    });
+    root.querySelector("[data-action='apply-chunk']").addEventListener("click", applyActiveChunk);
+    root.querySelector("[data-action='check-chunk']").addEventListener("click", checkActiveChunk);
+    root.querySelector("[data-action='import-chunks']").addEventListener("click", importChunksFromClipboard);
+    root.querySelector("[data-action='import-labels']").addEventListener("click", importLabelsFromClipboard);
+    root.querySelector("[data-action='copy-chunk-template']").addEventListener("click", copyChunkTemplate);
     root.querySelector("[data-action='apply-list']").addEventListener("click", () => {
       const names = parseCustomList();
       if (!names.length) {
@@ -715,6 +792,8 @@
     root.querySelector("[data-action='copy-manifest']").addEventListener("click", copyManifest);
     root.querySelector("[data-action='copy-prompt']").addEventListener("click", copyPrompt);
     root.querySelector("[data-action='copy-labels']").addEventListener("click", copyAvailableLabels);
+    root.querySelector("[data-action='save-labels']").addEventListener("click", saveCurrentModuleLabels);
+    root.querySelector("[data-action='export-label-repo']").addEventListener("click", exportLabelRepository);
     root.querySelector("[data-action='copy-probe']").addEventListener("click", copyViewerProbe);
     root.querySelector("[data-action='copy-slice']").addEventListener("click", copySliceProbe);
     root.querySelector("[data-action='copy-range']").addEventListener("click", copyCineRangeText);
@@ -734,6 +813,8 @@
     const preset = getActivePreset();
     const panel = root.querySelector("[data-role='panel']");
     const presetSelect = root.querySelector("[data-role='preset']");
+    const chunkSelect = root.querySelector("[data-role='chunk']");
+    const chunkSummary = root.querySelector("[data-role='chunk-summary']");
     const customList = root.querySelector("[data-role='custom-list']");
     const selected = root.querySelector("[data-role='selected']");
     const togglePanel = root.querySelector("[data-action='toggle-panel']");
@@ -748,6 +829,9 @@
     panel.style.left = `${state.panelPosition.left}px`;
     panel.style.top = `${state.panelPosition.top}px`;
     presetSelect.value = state.activePresetId;
+    chunkSelect.innerHTML = buildChunkOptions();
+    chunkSelect.value = state.activeChunkId;
+    chunkSummary.textContent = getChunkSummaryText();
     if (!state.customListText) state.customListText = preset.structures.join("\n");
     customList.value = state.customListText;
     togglePanel.textContent = state.collapsed ? "+" : "-";
@@ -771,11 +855,130 @@
     return PRESETS.find((preset) => preset.id === state.activePresetId) || PRESETS[0];
   }
 
+  function buildChunkOptions() {
+    const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
+    if (!chunks.length) return `<option value="">No imported chunks</option>`;
+    return [
+      `<option value="">Select chunk...</option>`,
+      ...chunks.map((chunk) => `<option value="${escapeHtml(chunk.id)}">${escapeHtml(chunk.title)}</option>`)
+    ].join("");
+  }
+
+  function getChunkById(id) {
+    const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
+    return chunks.find((chunk) => chunk.id === id) || null;
+  }
+
+  function getActiveChunk() {
+    return getChunkById(state.activeChunkId);
+  }
+
+  function getChunkSummaryText() {
+    const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
+    const moduleInfo = getCurrentModuleInfo();
+    const saved = getSavedLabelsForCurrentModule();
+    const savedCount = Array.isArray(saved.labels) ? saved.labels.length : 0;
+    const currentCount = getAvailableStructureEntries().length;
+    const labelStatus = savedCount
+      ? `Labels saved for this module: ${savedCount}. Current visible labels: ${currentCount}.`
+      : `No saved labels for this module yet. Current visible labels: ${currentCount}.`;
+    if (!chunks.length) return `${moduleInfo.name}: ${labelStatus} Import a chunk manifest from clipboard, then select a learning chunk here.`;
+    const chunk = getActiveChunk();
+    if (!chunk) return `${labelStatus} ${chunks.length} chunks loaded. Select one to apply or check.`;
+    const labelCount = getChunkLabelTargets(chunk).length;
+    const modality = chunk.modality ? `Modality: ${chunk.modality}. ` : "";
+    const repoCount = Array.isArray(state.labelRepository.labels) ? state.labelRepository.labels.length : 0;
+    return `${labelStatus} ${modality}${labelCount} chunk labels. ${repoCount} global repository labels loaded.`;
+  }
+
+  function chunkToPreferredLabelText(chunk) {
+    return getChunkLabelTargets(chunk).map((target) => target.preferredLabel).join("\n");
+  }
+
   function parseCustomList() {
     return state.shadow.querySelector("[data-role='custom-list']").value
       .split(/\r?\n/)
       .map((item) => item.trim())
       .filter(Boolean);
+  }
+
+  async function applyActiveChunk() {
+    const chunk = getActiveChunk();
+    if (!chunk) {
+      setStatus("Select or import a chunk first.");
+      return;
+    }
+    const targets = getChunkLabelTargets(chunk);
+    if (!targets.length) {
+      setStatus("Selected chunk has no labels.");
+      return;
+    }
+    state.customListText = chunkToPreferredLabelText(chunk);
+    state.selectedStructures = targets.map((target) => target.preferredLabel);
+    savePageState();
+    refreshPanel();
+    await applyChunkTargets(targets, chunk.title);
+  }
+
+  async function applyChunkTargets(targets, sourceLabel) {
+    if (state.searchRunning) {
+      setStatus("Search is already running.");
+      return;
+    }
+    state.searchRunning = true;
+    state.cancelSearch = false;
+    const availableMap = getCurrentAvailableLabelMap();
+    const requestedStructures = targets.map((target) => chooseBestChunkLabel(target, availableMap));
+    state.selectedStructures = unique(requestedStructures);
+    savePageState();
+    refreshPanel();
+
+    const primed = await primeModuleSearch();
+    if (!primed.ok) {
+      setStatus(primed.reason);
+      state.searchRunning = false;
+      return;
+    }
+
+    const appliedNames = [];
+    const missedNames = [];
+    for (const target of targets) {
+      if (state.cancelSearch) break;
+      const variants = getChunkLabelVariants(target, availableMap);
+      let applied = null;
+      for (const variant of variants) {
+        setStatus(`Searching ${variant}...`);
+        const result = await searchAndClickStructure(variant, { allowFallback: false });
+        if (result.ok) {
+          applied = variant;
+          break;
+        }
+        await delay(120);
+      }
+      if (!applied) {
+        const fallback = variants[0] || target.preferredLabel;
+        const result = await searchAndClickStructure(fallback, { allowFallback: true });
+        applied = result.ok ? fallback : null;
+      }
+      if (applied) {
+        appliedNames.push(applied);
+        setStatus(`Selected ${applied}.`);
+      } else {
+        missedNames.push(target.preferredLabel);
+        setStatus(`Could not select ${target.preferredLabel}.`);
+      }
+      await delay(650);
+    }
+
+    state.searchRunning = false;
+    setStatus("Checking locked structures...");
+    await delay(650);
+    const locked = countLockedMatches(appliedNames);
+    const pinsResult = await setPinsMode(true);
+    const pinsSuffix = pinsResult.ok ? " Pins on." : ` ${pinsResult.reason}`;
+    const missSuffix = missedNames.length ? ` Missed ${missedNames.length}.` : "";
+    const stopSuffix = state.cancelSearch ? " Stopped." : "";
+    setStatus(`${sourceLabel}: locked ${locked}/${targets.length}.${missSuffix}${stopSuffix}${pinsSuffix}`, 8000);
   }
 
   async function applyStructures(structures, sourceLabel) {
@@ -820,7 +1023,7 @@
     setStatus(`${sourceLabel}: locked ${locked}/${total}.${suffix}${pinsSuffix}`, 7000);
   }
 
-  async function searchAndClickStructure(structureName) {
+  async function searchAndClickStructure(structureName, options = {}) {
     const input = findModuleSearchInput();
     if (!input) {
       return { ok: false, reason: "Open the e-Anatomy viewer first; I could not find 'Search in this module'." };
@@ -834,6 +1037,9 @@
 
     const result = await waitFor(() => findSearchResult(structureName, input), 5200, 120);
     if (!result) {
+      if (options.allowFallback === false) {
+        return { ok: false, reason: `No search result for ${structureName}.` };
+      }
       pressSearchKey(input, "ArrowDown");
       await delay(120);
       pressSearchKey(input, "Enter");
@@ -1432,11 +1638,597 @@
     setStatus("Card prompt copied.");
   }
 
+  async function importChunksFromClipboard() {
+    let text = "";
+    try {
+      text = await readClipboard();
+    } catch (error) {
+      setStatus("Could not read clipboard for chunks.");
+      return;
+    }
+    try {
+      const parsed = JSON.parse(text);
+      state.chunkLibrary = normalizeImportedChunkLibrary(parsed);
+      saveChunkLibrary();
+      const chunks = state.chunkLibrary.chunks || [];
+      state.activeChunkId = chunks.length ? chunks[0].id : "";
+      if (state.activeChunkId) state.customListText = chunkToPreferredLabelText(chunks[0]);
+      savePageState();
+      refreshPanel();
+      setStatus(`Imported ${chunks.length} chunks.`);
+    } catch (error) {
+      setStatus(`Chunk import failed: ${error.message || error}`);
+    }
+  }
+
+  function importChunkLibraryObject(value) {
+    state.chunkLibrary = normalizeImportedChunkLibrary(value);
+    saveChunkLibrary();
+    const chunks = state.chunkLibrary.chunks || [];
+    state.activeChunkId = chunks.length ? chunks[0].id : "";
+    if (state.activeChunkId) state.customListText = chunkToPreferredLabelText(chunks[0]);
+    savePageState();
+    refreshPanel();
+    return {
+      chunkCount: chunks.length,
+      activeChunkId: state.activeChunkId,
+      topic: state.chunkLibrary.topic || ""
+    };
+  }
+
+  chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+    if (message?.type === "GET_IMAIOS_LABEL_REPOSITORY") {
+      sendResponse({
+        ok: true,
+        repository: state.labelRepository,
+        stats: getLabelRepositoryStats(state.labelRepository),
+        module: getCurrentModuleInfo()
+      });
+      return true;
+    }
+
+    if (message?.type !== "IMAIOS_IMPORT_CHUNKS") return false;
+    (async () => {
+      try {
+        const result = importChunkLibraryObject(message.library || message.payload || {});
+        const labelExport = buildAvailableLabelsExport();
+        let labelSaveResult = { ok: true };
+        if (labelExport.labels.length) {
+          mergeAvailableLabelsIntoRepository(labelExport);
+          labelSaveResult = await saveLabelRepository();
+        }
+        if (!labelSaveResult.ok) {
+          setStatus(`Imported ${result.chunkCount} chunks, but label save failed: ${labelSaveResult.error}`, 9000);
+        } else {
+          setStatus(`Imported ${result.chunkCount} chunks from ChatGPT. Saved ${labelExport.labels.length} module labels.`);
+        }
+        sendResponse({
+          ok: true,
+          ...result,
+          savedLabelCount: labelExport.labels.length,
+          labelSaveOk: labelSaveResult.ok,
+          module: labelExport.module,
+          error: labelSaveResult.ok ? "" : labelSaveResult.error
+        });
+      } catch (error) {
+        sendResponse({ ok: false, error: String(error?.message || error) });
+      }
+    })();
+    return true;
+  });
+
+  async function importLabelsFromClipboard() {
+    let text = "";
+    try {
+      text = await readClipboard();
+    } catch (error) {
+      setStatus("Could not read clipboard for labels.");
+      return;
+    }
+    try {
+      const parsed = JSON.parse(text);
+      if (parsed?.kind === "imaios-available-labels") {
+        mergeAvailableLabelsIntoRepository(parsed);
+      } else {
+        state.labelRepository = normalizeImportedLabelRepository(parsed);
+      }
+      const saveResult = await saveLabelRepository();
+      refreshPanel();
+      if (!saveResult.ok) {
+        setStatus(`Label import failed while saving: ${saveResult.error}`, 9000);
+        return;
+      }
+      const count = Array.isArray(state.labelRepository.labels) ? state.labelRepository.labels.length : 0;
+      const moduleCount = Object.keys(state.labelRepository.moduleLabels || {}).length;
+      setStatus(`Imported ${count} repository labels across ${moduleCount} modules.`);
+    } catch (error) {
+      setStatus(`Label import failed: ${error.message || error}`);
+    }
+  }
+
+  async function copyChunkTemplate() {
+    const template = {
+      kind: "imaios-chunk-library",
+      version: 1,
+      topic: "Temporal Bone Fractures",
+      source: "master-source",
+      chunks: [
+        {
+          id: "temporal-bone-fractures-otic-capsule",
+          title: "Otic capsule and labyrinth",
+          modality: "CT temporal bone",
+          modalityUrl: "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone",
+          learningOrder: 1,
+          labels: [
+            {
+              preferredLabel: "Otic capsule",
+              aliases: ["Bony labyrinth", "Labyrinthine capsule"],
+              status: "candidate",
+              note: "Verify exact IMAIOS wording in CT temporal bone."
+            },
+            {
+              preferredLabel: "Cochlea",
+              aliases: ["Cochlear labyrinth"],
+              status: "candidate"
+            }
+          ],
+          learningFrame: [
+            "Start with the bony labyrinth and otic capsule because fracture classification depends on whether this region is spared or violated.",
+            "Then add adjacent facial nerve, ossicular, and vascular landmarks as separate chunks."
+          ]
+        }
+      ]
+    };
+    await writeClipboard(JSON.stringify(template, null, 2));
+    setStatus("Chunk template copied.");
+  }
+
+  async function checkActiveChunk() {
+    const chunk = getActiveChunk();
+    if (!chunk) {
+      setStatus("Select or import a chunk first.");
+      return;
+    }
+    const report = buildChunkCheckReport(chunk);
+    await writeClipboard(JSON.stringify(report, null, 2));
+    setStatus(`Check copied: ${report.counts.exact} exact, ${report.counts.aliasResolved} alias, ${report.counts.unresolved} unresolved.`);
+  }
+
+  function buildChunkCheckReport(chunk) {
+    const availableMap = getCurrentAvailableLabelMap();
+    const targets = getChunkLabelTargets(chunk);
+    const rows = targets.map((target) => {
+      const variants = getChunkLabelVariants(target, availableMap);
+      const generatedAliases = getGeneratedLabelAliases(target);
+      const matched = variants.find((variant) => availableMap.has(normalizeText(variant))) || "";
+      const preferredAvailable = availableMap.has(normalizeText(target.preferredLabel));
+      const repositoryMatch = findRepositoryLabelForTarget(target);
+      return {
+        preferredLabel: target.preferredLabel,
+        aliases: target.aliases,
+        generatedAliases,
+        status: preferredAvailable ? "exact" : matched ? "alias-resolved" : repositoryMatch ? "repository-only" : "unresolved",
+        selectedLabel: matched || (repositoryMatch ? repositoryMatch.preferredLabel : target.preferredLabel),
+        matchedCurrentPageLabel: matched,
+        repositoryPreferredLabel: repositoryMatch ? repositoryMatch.preferredLabel : "",
+        notes: target.note || ""
+      };
+    });
+    return {
+      kind: "imaios-chunk-check",
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      chunk: {
+        id: chunk.id,
+        title: chunk.title,
+        modality: chunk.modality || "",
+        modalityUrl: chunk.modalityUrl || ""
+      },
+      counts: {
+        labels: rows.length,
+        exact: rows.filter((row) => row.status === "exact").length,
+        aliasResolved: rows.filter((row) => row.status === "alias-resolved").length,
+        repositoryOnly: rows.filter((row) => row.status === "repository-only").length,
+        unresolved: rows.filter((row) => row.status === "unresolved").length
+      },
+      availableLabelCount: availableMap.size,
+      labels: rows
+    };
+  }
+
+  function normalizeImportedChunkLibrary(value) {
+    const rawChunks = Array.isArray(value)
+      ? value
+      : value && Array.isArray(value.chunks)
+        ? value.chunks
+        : [];
+    const chunks = rawChunks.map(normalizeChunk).filter(Boolean);
+    return {
+      version: Number(value && value.version) || 1,
+      topic: cleanText(value && value.topic || ""),
+      source: cleanText(value && value.source || ""),
+      unmatchedConcepts: normalizeGapReviewList(value && (value.unmatchedConcepts || value.gapReview || value.needsReview)),
+      importedAt: new Date().toISOString(),
+      chunks
+    };
+  }
+
+  function normalizeChunk(value, index) {
+    if (!value || typeof value !== "object") return null;
+    const title = cleanText(value.title || value.name || value.id || `Chunk ${index + 1}`);
+    const id = cleanText(value.id || createSlug(title) || `chunk-${index + 1}`);
+    const labels = getRawChunkLabels(value).map(normalizeChunkLabel).filter(Boolean);
+    return {
+      id,
+      title,
+      modality: cleanText(value.modality || value.imaiosModality || value.module || ""),
+      modalityUrl: cleanText(value.modalityUrl || value.url || ""),
+      learningOrder: Number(value.learningOrder || value.order || index + 1),
+      labels,
+      unmatchedConcepts: normalizeGapReviewList(value.unmatchedConcepts || value.gapReview || value.needsReview),
+      learningFrame: normalizeStringList(value.learningFrame || value.learningNotes || value.notes),
+      source: cleanText(value.source || "")
+    };
+  }
+
+  function getRawChunkLabels(value) {
+    if (Array.isArray(value.labels)) return value.labels;
+    if (Array.isArray(value.structures)) return value.structures;
+    if (Array.isArray(value.imaiosLabels)) return value.imaiosLabels;
+    return [];
+  }
+
+  function normalizeChunkLabel(value) {
+    if (typeof value === "string") {
+      const preferredLabel = cleanText(value);
+      return preferredLabel ? { preferredLabel, aliases: [], status: "candidate", note: "" } : null;
+    }
+    if (!value || typeof value !== "object") return null;
+    const preferredLabel = cleanText(value.preferredLabel || value.label || value.name || value.imaiosLabel || "");
+    if (!preferredLabel) return null;
+    return {
+      concept: cleanText(value.concept || value.sourceConcept || value.neededConcept || preferredLabel),
+      preferredLabel,
+      aliases: normalizeStringList(value.aliases || value.synonyms || value.alternateLabels),
+      status: cleanText(value.status || value.matchStatus || "candidate"),
+      matchStatus: cleanText(value.matchStatus || value.status || "candidate"),
+      moduleKey: cleanText(value.moduleKey || value.module || ""),
+      note: cleanText(value.note || value.notes || "")
+    };
+  }
+
+  function normalizeGapReviewList(value) {
+    const rawItems = Array.isArray(value) ? value : value ? [value] : [];
+    return rawItems.map((item) => {
+      if (typeof item === "string") {
+        const concept = cleanText(item);
+        return concept ? { concept, tryLabels: [], reason: "" } : null;
+      }
+      if (!item || typeof item !== "object") return null;
+      const concept = cleanText(item.concept || item.needed || item.neededConcept || item.structure || item.label || "");
+      if (!concept) return null;
+      return {
+        concept,
+        tryLabels: normalizeStringList(item.tryLabels || item.try_labels || item.candidateLabels || item.suggestions),
+        reason: cleanText(item.reason || item.note || item.notes || "")
+      };
+    }).filter(Boolean);
+  }
+
+  function normalizeImportedLabelRepository(value) {
+    if (!value || typeof value !== "object") return { ...EMPTY_LABEL_REPOSITORY };
+    const rawLabels = Array.isArray(value.labels)
+      ? value.labels
+      : Array.isArray(value.muscleLikeLabels)
+        ? value.muscleLikeLabels
+        : [];
+    const labels = rawLabels.map((item) => {
+      if (typeof item === "string") {
+        const preferredLabel = cleanText(item);
+        return preferredLabel ? { preferredLabel, aliases: [], modalities: [], regions: [], status: "verified", notes: "" } : null;
+      }
+      if (!item || typeof item !== "object") return null;
+      const preferredLabel = cleanText(item.preferredLabel || item.label || item.name || "");
+      if (!preferredLabel) return null;
+      return {
+        preferredLabel,
+        aliases: normalizeStringList(item.aliases || item.synonyms),
+        modalities: normalizeStringList(item.modalities || item.modality),
+        regions: normalizeStringList(item.regions || item.region),
+        status: cleanText(item.status || "verified"),
+        notes: cleanText(item.notes || item.note || "")
+      };
+    }).filter(Boolean);
+    return {
+      kind: "imaios-label-repository",
+      version: Number(value.version) || 1,
+      updatedAt: cleanText(value.updatedAt || value.createdAt || new Date().toISOString()),
+      modalities: Array.isArray(value.modalities) ? value.modalities : [],
+      labels,
+      moduleLabels: normalizeModuleLabelMap(value.moduleLabels || value.modules || {})
+    };
+  }
+
+  function normalizeModuleLabelMap(value) {
+    const modules = {};
+    if (!value || typeof value !== "object") return modules;
+    for (const [key, rawModule] of Object.entries(value)) {
+      const moduleKey = cleanText(key);
+      if (!moduleKey) continue;
+      const rawLabels = Array.isArray(rawModule)
+        ? rawModule
+        : Array.isArray(rawModule?.labels)
+          ? rawModule.labels
+          : [];
+      modules[moduleKey] = {
+        key: moduleKey,
+        name: cleanText(rawModule?.name || rawModule?.moduleName || moduleKey),
+        url: cleanText(rawModule?.url || ""),
+        updatedAt: cleanText(rawModule?.updatedAt || rawModule?.createdAt || ""),
+        labels: unique(rawLabels.map((item) => typeof item === "string" ? item : item?.preferredLabel || item?.label || item?.name || ""))
+          .sort(compareLabels),
+        sourceCounts: rawModule?.sourceCounts && typeof rawModule.sourceCounts === "object" ? rawModule.sourceCounts : {}
+      };
+    }
+    return modules;
+  }
+
+  function getChunkLabelTargets(chunk) {
+    return Array.isArray(chunk.labels) ? chunk.labels.map(normalizeChunkLabel).filter(Boolean) : [];
+  }
+
+  function getChunkLabelVariants(target, availableMap) {
+    const repositoryMatch = findRepositoryLabelForTarget(target);
+    const variants = [
+      repositoryMatch && repositoryMatch.preferredLabel,
+      target.preferredLabel,
+      ...target.aliases,
+      ...getGeneratedLabelAliases(target),
+      repositoryMatch && Array.isArray(repositoryMatch.aliases) ? repositoryMatch.aliases : []
+    ].flat();
+    const normalized = unique(variants
+      .filter((item) => typeof item === "string" && item.trim())
+      .map((item) => cleanText(item)));
+    normalized.sort((a, b) => {
+      const aAvailable = availableMap.has(normalizeText(a)) ? 1 : 0;
+      const bAvailable = availableMap.has(normalizeText(b)) ? 1 : 0;
+      return bAvailable - aAvailable;
+    });
+    return normalized;
+  }
+
+  function getGeneratedLabelAliases(target) {
+    const source = [
+      target && target.preferredLabel,
+      ...(Array.isArray(target && target.aliases) ? target.aliases : [])
+    ].filter(Boolean).join(" | ");
+    const text = normalizeText(source);
+    const aliases = [];
+    const add = (...items) => aliases.push(...items);
+
+    if (/\bpetrous apex\b/.test(text) || /\bapex of petrous temporal bone\b/.test(text)) {
+      add("Apex of petrous part");
+    }
+    if (/\bmastoid air cells?\b/.test(text)) {
+      add("Mastoid cells");
+    }
+    if (/\bmastoid part\b/.test(text) && /\btemporal bone\b/.test(text)) {
+      add("Mastoid process", "Mastoid cells", "Mastoid antrum", "Aditus to mastoid antrum");
+    }
+    if (/\bpetrous part\b/.test(text) && /\btemporal bone\b/.test(text)) {
+      add("Petrous part", "Petrous part of temporal bone");
+    }
+    if (/\btympanic part\b/.test(text) && /\btemporal bone\b/.test(text)) {
+      add("Tympanic part", "Tympanic part of temporal bone");
+    }
+
+    return unique(aliases.map(cleanText).filter(Boolean));
+  }
+
+  function chooseBestChunkLabel(target, availableMap) {
+    return getChunkLabelVariants(target, availableMap)[0] || target.preferredLabel;
+  }
+
+  function findRepositoryLabelForTarget(target) {
+    const labels = Array.isArray(state.labelRepository.labels) ? state.labelRepository.labels : [];
+    const keys = new Set([target.preferredLabel, ...target.aliases].map(normalizeText));
+    return labels.find((entry) => {
+      const variants = [entry.preferredLabel, ...(Array.isArray(entry.aliases) ? entry.aliases : [])];
+      return variants.some((variant) => keys.has(normalizeText(variant)));
+    }) || null;
+  }
+
+  function getCurrentAvailableLabelMap() {
+    const map = new Map();
+    const saved = getSavedLabelsForCurrentModule();
+    for (const label of saved.labels || []) {
+      const key = normalizeText(label);
+      if (key && !map.has(key)) map.set(key, label);
+    }
+    for (const entry of getAvailableStructureEntries()) {
+      const key = normalizeText(entry.label);
+      if (key && !map.has(key)) map.set(key, entry.label);
+    }
+    for (const name of getLockedStructureNames()) {
+      const key = normalizeText(name);
+      if (key && !map.has(key)) map.set(key, name);
+    }
+    return map;
+  }
+
+  function getSavedLabelsForCurrentModule() {
+    const moduleKey = getCurrentModuleKey();
+    const moduleLabels = state.labelRepository?.moduleLabels || {};
+    return moduleLabels[moduleKey] || { key: moduleKey, labels: [] };
+  }
+
+  function saveChunkLibrary() {
+    try {
+      localStorage.setItem(CHUNK_LIBRARY_STORAGE_KEY, JSON.stringify(state.chunkLibrary));
+    } catch (error) {
+      console.warn("IMAIOS Cine Tools: could not save chunk library", error);
+    }
+  }
+
+  async function saveLabelRepository() {
+    try {
+      localStorage.setItem(LABEL_REPOSITORY_STORAGE_KEY, JSON.stringify(state.labelRepository));
+      await syncLabelRepositoryToExtensionStorage();
+      return { ok: true };
+    } catch (error) {
+      console.warn("IMAIOS Cine Tools: could not save label repository", error);
+      return { ok: false, error: String(error?.message || error) };
+    }
+  }
+
+  async function syncLabelRepositoryToExtensionStorage() {
+    if (!chrome?.storage?.local) return { ok: false, error: "Extension storage is unavailable." };
+    const stats = getLabelRepositoryStats(state.labelRepository);
+    if (!stats.moduleCount || !stats.labelCount) return { ok: true, skipped: true, stats };
+    await chrome.storage.local.set({ [EXTENSION_LABEL_REPOSITORY_STORAGE_KEY]: state.labelRepository });
+    return { ok: true, stats };
+  }
+
+  function getLabelRepositoryStats(repository) {
+    const moduleLabels = repository?.moduleLabels && typeof repository.moduleLabels === "object"
+      ? repository.moduleLabels
+      : {};
+    const moduleCount = Object.values(moduleLabels).filter((module) => Array.isArray(module?.labels) && module.labels.length).length;
+    const labelCount = Object.values(moduleLabels)
+      .reduce((total, module) => total + (Array.isArray(module?.labels) ? module.labels.length : 0), 0);
+    return {
+      moduleCount,
+      labelCount,
+      globalLabelCount: Array.isArray(repository?.labels) ? repository.labels.length : 0
+    };
+  }
+
+  function normalizeStringList(value) {
+    if (Array.isArray(value)) return value.map((item) => cleanText(item)).filter(Boolean);
+    if (typeof value === "string") return value.split(/\r?\n|[|;]/).map((item) => cleanText(item)).filter(Boolean);
+    return value ? [cleanText(value)].filter(Boolean) : [];
+  }
+
+  function createSlug(value) {
+    return cleanText(value)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
   async function copyAvailableLabels() {
     const exportData = buildAvailableLabelsExport();
     await writeClipboard(JSON.stringify(exportData, null, 2));
     const muscleSuffix = exportData.muscleLikeLabels.length ? `, ${exportData.muscleLikeLabels.length} muscle-like` : "";
     setStatus(`Copied ${exportData.labels.length} labels${muscleSuffix}.`);
+  }
+
+  async function saveCurrentModuleLabels() {
+    const exportData = buildAvailableLabelsExport();
+    if (!exportData.labels.length) {
+      setStatus("No visible IMaios labels found to save for this module.", 7000);
+      return;
+    }
+    const before = getSavedLabelsForCurrentModule();
+    const beforeCount = Array.isArray(before.labels) ? before.labels.length : 0;
+    const beforeKeys = new Set((before.labels || []).map(normalizeText));
+    const newCount = exportData.labels.filter((label) => !beforeKeys.has(normalizeText(label))).length;
+    const mergeResult = mergeAvailableLabelsIntoRepository(exportData);
+    const saveResult = await saveLabelRepository();
+    refreshPanel();
+    const moduleName = exportData.module.name || exportData.module.key;
+    if (!saveResult.ok) {
+      setStatus(`Label save failed for ${moduleName}: ${saveResult.error}`, 9000);
+      return;
+    }
+    const afterCount = mergeResult.labels.length;
+    const verb = beforeCount ? "Updated" : "Created";
+    const addedText = newCount ? ` Added ${newCount} new.` : " Already saved; refreshed timestamp.";
+    const backupResult = await backupLabelRepositoryToDownloads();
+    const backupText = backupResult.ok
+      ? ` Backup written to ${backupResult.result.downloadFolder}.`
+      : ` Backup failed: ${backupResult.error}`;
+    setStatus(`${verb} labels for ${moduleName}: ${afterCount} saved.${addedText}${backupText}`, 11000);
+  }
+
+  async function exportLabelRepository() {
+    const repository = normalizeImportedLabelRepository({
+      ...state.labelRepository,
+      updatedAt: new Date().toISOString()
+    });
+    state.labelRepository = repository;
+    const saveResult = await saveLabelRepository();
+    if (!saveResult.ok) {
+      setStatus(`Export failed: ${saveResult.error}`, 9000);
+      return;
+    }
+    await writeClipboard(JSON.stringify(repository, null, 2));
+    const backupResult = await backupLabelRepositoryToDownloads();
+    const moduleCount = Object.keys(repository.moduleLabels || {}).length;
+    const labelCount = Object.values(repository.moduleLabels || {})
+      .reduce((total, module) => total + (Array.isArray(module.labels) ? module.labels.length : 0), 0);
+    const backupText = backupResult.ok
+      ? ` Backup written to ${backupResult.result.downloadFolder}.`
+      : ` Backup failed: ${backupResult.error}`;
+    setStatus(`Exported repository: ${moduleCount} modules, ${labelCount} module labels copied to clipboard.${backupText}`, 11000);
+  }
+
+  async function backupLabelRepositoryToDownloads() {
+    if (!chrome?.runtime?.sendMessage) {
+      return { ok: false, error: "Extension messaging is unavailable." };
+    }
+    return new Promise((resolve) => {
+      chrome.runtime.sendMessage({
+        type: "BACKUP_IMAIOS_LABEL_REPOSITORY",
+        repository: state.labelRepository,
+        snapshot: true
+      }, (response) => {
+        const error = chrome.runtime.lastError;
+        if (error) {
+          resolve({ ok: false, error: error.message || String(error) });
+          return;
+        }
+        if (!response?.ok) {
+          resolve({ ok: false, error: response?.error || "unknown backup error" });
+          return;
+        }
+        resolve({ ok: true, result: response.result || {} });
+      });
+    });
+  }
+
+  function mergeAvailableLabelsIntoRepository(exportData) {
+    const repository = normalizeImportedLabelRepository(state.labelRepository || {});
+    const moduleKey = exportData.module?.key || getCurrentModuleKey();
+    const previous = repository.moduleLabels[moduleKey] || {};
+    const labels = unique([
+      ...(Array.isArray(previous.labels) ? previous.labels : []),
+      ...(Array.isArray(exportData.labels) ? exportData.labels : [])
+    ]).sort(compareLabels);
+
+    repository.moduleLabels[moduleKey] = {
+      key: moduleKey,
+      name: exportData.module?.name || previous.name || moduleKey,
+      url: exportData.module?.url || previous.url || location.href,
+      updatedAt: new Date().toISOString(),
+      labels,
+      sourceCounts: exportData.sourceCounts || previous.sourceCounts || {}
+    };
+    repository.updatedAt = new Date().toISOString();
+
+    const existingModalities = Array.isArray(repository.modalities) ? repository.modalities : [];
+    if (!existingModalities.some((item) => (item.key || item.name) === moduleKey)) {
+      existingModalities.push({
+        key: moduleKey,
+        name: repository.moduleLabels[moduleKey].name,
+        url: repository.moduleLabels[moduleKey].url,
+        aliases: []
+      });
+    }
+    repository.modalities = existingModalities;
+    state.labelRepository = repository;
+    return repository.moduleLabels[moduleKey];
   }
 
   function buildAvailableLabelsExport() {
@@ -1453,6 +2245,7 @@
       createdAt: new Date().toISOString(),
       pageTitle: document.title,
       url: location.href,
+      module: getCurrentModuleInfo(),
       series: getSeriesInfo(),
       slice: getSliceInfo(),
       counts: {
@@ -1464,6 +2257,37 @@
       muscleLikeLabels,
       labels
     };
+  }
+
+  function getCurrentModuleInfo() {
+    return {
+      key: getCurrentModuleKey(),
+      name: getCurrentModuleName(),
+      url: location.href,
+      pathname: location.pathname
+    };
+  }
+
+  function getCurrentModuleKey() {
+    const path = location.pathname
+      .replace(/^\/[a-z]{2}\//i, "/")
+      .replace(/^\/e-anatomy\//i, "")
+      .replace(/^\/+|\/+$/g, "")
+      .replace(/[^a-z0-9]+/gi, "-")
+      .replace(/^-+|-+$/g, "")
+      .toLowerCase();
+    return path || "current-imaios-module";
+  }
+
+  function getCurrentModuleName() {
+    const title = cleanText(document.title || "");
+    if (title) {
+      return title
+        .replace(/\s*[-|]\s*IMAIOS.*$/i, "")
+        .replace(/\s*[-|]\s*e-Anatomy.*$/i, "")
+        .trim();
+    }
+    return getCurrentModuleKey().split("-").map((part) => part ? part[0].toUpperCase() + part.slice(1) : part).join(" ");
   }
 
   function getAvailableStructureEntries() {
@@ -2404,6 +3228,13 @@
     textarea.select();
     document.execCommand("copy");
     textarea.remove();
+  }
+
+  async function readClipboard() {
+    if (navigator.clipboard && navigator.clipboard.readText) {
+      return navigator.clipboard.readText();
+    }
+    throw new Error("Clipboard read is not available in this browser context.");
   }
 
   function createDefaultHotkeys() {

@@ -1,0 +1,204 @@
+{
+  "kind": "imaios-chunk-library",
+  "version": 1,
+  "topic": "Temporal Bone Fractures",
+  "source": "master-source synthesis",
+  "chunks": [
+    {
+      "id": "temporal-bone-fractures-01-otic-capsule-labyrinth",
+      "title": "Otic capsule and bony labyrinth",
+      "modality": "CT temporal bone",
+      "modalityUrl": "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone",
+      "learningOrder": 1,
+      "source": "RadPrimer/STATdx master source anatomy scaffold",
+      "learningFrame": [
+        "Use this first because the major fracture distinction is whether the otic capsule is spared or violated.",
+        "Learn the dense otic capsule as the protective shell, then place the cochlea, vestibule, and semicircular canals inside it."
+      ],
+      "labels": [
+        {
+          "preferredLabel": "Otic capsule",
+          "aliases": ["Bony labyrinth", "Labyrinthine capsule", "Petrous labyrinth"],
+          "status": "candidate",
+          "note": "Verify exact IMAIOS label; source language often uses otic capsule."
+        },
+        {
+          "preferredLabel": "Cochlea",
+          "aliases": ["Cochlear labyrinth"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Vestibule",
+          "aliases": ["Vestibular labyrinth"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Semicircular canals",
+          "aliases": ["Bony semicircular canals", "Superior semicircular canal", "Posterior semicircular canal", "Lateral semicircular canal"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Internal acoustic meatus",
+          "aliases": ["Internal auditory canal", "IAC", "Internal acoustic canal"],
+          "status": "candidate"
+        }
+      ]
+    },
+    {
+      "id": "temporal-bone-fractures-02-middle-ear-ossicles",
+      "title": "Middle ear and ossicular chain",
+      "modality": "CT temporal bone",
+      "modalityUrl": "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone",
+      "learningOrder": 2,
+      "source": "RadPrimer/STATdx master source anatomy scaffold",
+      "learningFrame": [
+        "Use this chunk for conductive hearing loss and ossicular disruption.",
+        "Anchor the tympanic cavity first, then follow the ossicular chain from lateral to medial."
+      ],
+      "labels": [
+        {
+          "preferredLabel": "Tympanic cavity",
+          "aliases": ["Middle ear cavity", "Middle ear"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Malleus",
+          "aliases": ["Hammer"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Incus",
+          "aliases": ["Anvil"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Stapes",
+          "aliases": ["Stirrup"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Oval window",
+          "aliases": ["Vestibular window", "Fenestra vestibuli"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Round window",
+          "aliases": ["Cochlear window", "Fenestra cochleae"],
+          "status": "candidate"
+        }
+      ]
+    },
+    {
+      "id": "temporal-bone-fractures-03-facial-nerve-course",
+      "title": "Facial nerve course",
+      "modality": "CT temporal bone",
+      "modalityUrl": "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone",
+      "learningOrder": 3,
+      "source": "RadPrimer/STATdx master source anatomy scaffold",
+      "learningFrame": [
+        "Use this chunk for facial paralysis risk.",
+        "Track the canal in segments around the cochlea, geniculate ganglion, tympanic cavity, and mastoid."
+      ],
+      "labels": [
+        {
+          "preferredLabel": "Facial canal",
+          "aliases": ["Facial nerve canal", "Fallopian canal", "Canal of facial nerve"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Facial nerve",
+          "aliases": ["CN VII", "Cranial nerve VII", "Seventh cranial nerve"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Geniculate ganglion",
+          "aliases": ["Geniculate ganglion of facial nerve"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Stylomastoid foramen",
+          "aliases": ["Stylomastoid canal exit"],
+          "status": "candidate"
+        }
+      ]
+    },
+    {
+      "id": "temporal-bone-fractures-04-vascular-and-skull-base",
+      "title": "Vascular and skull base landmarks",
+      "modality": "CT temporal bone",
+      "modalityUrl": "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone",
+      "learningOrder": 4,
+      "source": "RadPrimer/STATdx master source anatomy scaffold",
+      "learningFrame": [
+        "Use this chunk for vascular complications and skull base extension.",
+        "Start anteriorly with the carotid canal, then move posteriorly to the jugular bulb/foramen and sigmoid sinus."
+      ],
+      "labels": [
+        {
+          "preferredLabel": "Carotid canal",
+          "aliases": ["Internal carotid canal", "Petrous carotid canal"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Internal carotid artery",
+          "aliases": ["ICA", "Petrous internal carotid artery", "Petrous ICA"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Jugular foramen",
+          "aliases": ["Jugular fossa"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Jugular bulb",
+          "aliases": ["Superior bulb of internal jugular vein"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Sigmoid sinus",
+          "aliases": ["Sigmoid venous sinus"],
+          "status": "candidate"
+        }
+      ]
+    },
+    {
+      "id": "temporal-bone-fractures-05-external-ear-mastoid-tegmen",
+      "title": "External ear, mastoid, and tegmen",
+      "modality": "CT temporal bone",
+      "modalityUrl": "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone",
+      "learningOrder": 5,
+      "source": "RadPrimer/STATdx master source anatomy scaffold",
+      "learningFrame": [
+        "Use this chunk for fracture extent, CSF leak pathways, hemotympanum, and mastoid involvement.",
+        "Anchor the external canal and mastoid air cells, then learn the thin tegmen roof."
+      ],
+      "labels": [
+        {
+          "preferredLabel": "External acoustic meatus",
+          "aliases": ["External auditory canal", "External acoustic canal", "EAC"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Mastoid air cells",
+          "aliases": ["Mastoid cells", "Mastoid air cell system"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Mastoid antrum",
+          "aliases": ["Antrum mastoideum"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Tegmen tympani",
+          "aliases": ["Roof of tympanic cavity", "Tympanic tegmen"],
+          "status": "candidate"
+        },
+        {
+          "preferredLabel": "Tegmen mastoideum",
+          "aliases": ["Mastoid tegmen", "Roof of mastoid antrum"],
+          "status": "candidate"
+        }
+      ]
+    }
+  ]
+}

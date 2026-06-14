@@ -1,0 +1,139 @@
+{
+  "createdAt": "2026-06-14T16:55:23.446Z",
+  "articleTitle": "Temporal Bone Fractures",
+  "masterSourceRequestBundle": true,
+  "sourceCompareCacheKey": "radprimerSourceCompareCache:temporal_bone_fractures",
+  "sourcePairingKey": "temporal_bone_fractures",
+  "sourcePairingMatch": null,
+  "sourceCount": 2,
+  "sources": [
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceUrl": "https://app.radprimer.com/document/12b6bafb-6bd8-498b-87b9-f4bb8222da57/lesson/5ed4e0f2-187d-4757-8157-58a9928b1e76",
+      "cachedAt": "2026-06-14T16:55:22.824Z",
+      "outputChars": 13886,
+      "downloadFolder": "Downloads\\RadPrimerSourceComparison\\Temporal_Bone_Fractures",
+      "fileBaseName": "RadPrimer_Temporal_Bone_Fractures",
+      "metadata": {
+        "articleTitle": "Temporal Bone Fractures",
+        "sourceComparisonFolder": "RadPrimerSourceComparison/Temporal_Bone_Fractures",
+        "anki": {
+          "breadcrumbTrail": [
+            "Basic",
+            "Neuroradiology",
+            "Head and Neck",
+            "Facial Trauma and Other H&N Emergencies",
+            "Temporal Bone Fractures"
+          ],
+          "createImportFile": true,
+          "deckMode": "auto",
+          "deckName": "RadprimerNormal::Neuro::Head and Neck::Facial Trauma and Other H&N Emergencies::Temporal Bone Fractures",
+          "deckParts": [
+            "RadprimerNormal",
+            "Neuro",
+            "Head and Neck",
+            "Facial Trauma and Other H&N Emergencies",
+            "Temporal Bone Fractures"
+          ],
+          "deckRoot": "RadprimerNormal",
+          "hierarchySource": "RadPrimer",
+          "importFilename": "corrected_cards_anki_import.tsv",
+          "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+          "normalRoot": "RadprimerNormal",
+          "noteType": "core_rad_notetype_v2",
+          "pathologyRoot": "Corebook"
+        },
+        "breadcrumbTrail": [
+          "Basic",
+          "Neuroradiology",
+          "Head and Neck",
+          "Facial Trauma and Other H&N Emergencies",
+          "Temporal Bone Fractures"
+        ],
+        "imageRegistry": [],
+        "imageEvidence": {
+          "folder": "image_evidence/RadPrimer",
+          "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+          "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+          "entries": []
+        }
+      },
+      "imageRegistry": [],
+      "downloadFiles": [],
+      "imageEvidence": {
+        "folder": "image_evidence/RadPrimer",
+        "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+        "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+        "entries": []
+      }
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceUrl": "https://app.statdx.com/document/temporal-bone-fractures/e0013293-52d5-4ad1-a71b-7f4c92a389b5?term=temporal%20bone%20fracture&searchType=documents&category=All&documentTypeFilters=all",
+      "cachedAt": "2026-06-14T16:55:23.441Z",
+      "outputChars": 26688,
+      "downloadFolder": "Downloads\\RadPrimerSourceComparison\\Temporal_Bone_Fractures",
+      "fileBaseName": "STATdx_Temporal_Bone_Fractures",
+      "metadata": {
+        "articleTitle": "Temporal Bone Fractures",
+        "sourceComparisonFolder": "RadPrimerSourceComparison/Temporal_Bone_Fractures",
+        "anki": {
+          "breadcrumbTrail": [
+            "Basic",
+            "Neuroradiology",
+            "Head and Neck",
+            "Facial Trauma and Other H&N Emergencies",
+            "Temporal Bone Fractures"
+          ],
+          "createImportFile": true,
+          "deckMode": "auto",
+          "deckName": "RadprimerNormal::Neuro::Head and Neck::Facial Trauma and Other H&N Emergencies::Temporal Bone Fractures",
+          "deckParts": [
+            "RadprimerNormal",
+            "Neuro",
+            "Head and Neck",
+            "Facial Trauma and Other H&N Emergencies",
+            "Temporal Bone Fractures"
+          ],
+          "deckRoot": "RadprimerNormal",
+          "hierarchySource": "RadPrimer",
+          "importFilename": "corrected_cards_anki_import.tsv",
+          "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+          "normalRoot": "RadprimerNormal",
+          "noteType": "core_rad_notetype_v2",
+          "pathologyRoot": "Corebook"
+        },
+        "breadcrumbTrail": [
+          "Head and Neck",
+          "Diagnosis",
+          "Skull Base, Facial, and Temporal Bone Trauma",
+          "Skull Base and Temporal Bone",
+          "Temporal Bone Fractures"
+        ],
+        "imageRegistry": [],
+        "imageEvidence": {
+          "folder": "image_evidence/STATdx",
+          "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+          "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+          "entries": []
+        }
+      },
+      "imageRegistry": [],
+      "downloadFiles": [],
+      "imageEvidence": {
+        "folder": "image_evidence/STATdx",
+        "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+        "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+        "entries": []
+      }
+    }
+  ],
+  "imageEvidence": {
+    "folder": "image_evidence",
+    "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+    "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+    "entries": []
+  }
+}

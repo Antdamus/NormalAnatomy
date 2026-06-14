@@ -492,8 +492,55 @@
 
   const stripOuterCodeFence = (text) => {
     const value = String(text || "").trim();
-    const match = value.match(/^```(?:tsv|text|csv)?\s*([\s\S]*?)\s*```$/i);
+    const match = value.match(/^```(?:tsv|text|csv|json)?\s*([\s\S]*?)\s*```$/i);
     return match ? match[1].trim() : value;
+  };
+
+  const getAssistantCodeBlocks = (markdownRoot) => {
+    if (!markdownRoot) return [];
+    return Array.from(markdownRoot.querySelectorAll("pre"))
+      .map((pre) => serializePre(pre).trim())
+      .filter(Boolean);
+  };
+
+  const parseImaiosChunkLibrary = (text) => {
+    const value = stripOuterCodeFence(text);
+    try {
+      const parsed = JSON.parse(value);
+      if (parsed && parsed.kind === "imaios-chunk-library" && Array.isArray(parsed.chunks)) {
+        return parsed;
+      }
+    } catch {}
+    return null;
+  };
+
+  const extractImaiosChunkLibraryFromText = (text) => {
+    const value = String(text || "");
+    const fencedBlocks = Array.from(value.matchAll(/```(?:json)?\s*([\s\S]*?)```/gi))
+      .map((match) => match[1].trim());
+    for (let index = fencedBlocks.length - 1; index >= 0; index -= 1) {
+      const parsed = parseImaiosChunkLibrary(fencedBlocks[index]);
+      if (parsed) return parsed;
+    }
+
+    const kindIndex = value.lastIndexOf('"kind"');
+    if (kindIndex < 0) return null;
+    const start = value.lastIndexOf("{", kindIndex);
+    const end = value.lastIndexOf("}");
+    if (start < 0 || end <= start) return null;
+    return parseImaiosChunkLibrary(value.slice(start, end + 1));
+  };
+
+  const extractLatestImaiosChunkLibrary = () => {
+    const latestTurn = getLatestAssistantTurn();
+    const finalMessage = getFinalAssistantMessage(latestTurn);
+    const markdownRoot = getMarkdownRoot(finalMessage);
+    const codeBlocks = getAssistantCodeBlocks(markdownRoot);
+    for (let index = codeBlocks.length - 1; index >= 0; index -= 1) {
+      const parsed = parseImaiosChunkLibrary(codeBlocks[index]);
+      if (parsed) return parsed;
+    }
+    return extractImaiosChunkLibraryFromText(extractCleanMarkdownText(markdownRoot));
   };
 
   const looksLikeInlineCardTsv = (text) => {
@@ -847,6 +894,7 @@
           finalResult.text || text
         );
         const rawText = nativeCopiedText || finalResult.text || text;
+        const imaiosChunkLibrary = extractImaiosChunkLibraryFromText(rawText);
         const cleanedText = stripAuditBlock ? stripTrailingImageAuditBlock(rawText) : rawText.trim();
         const deliveryText = expectedOutputKind ? cleanedText : cleanNarrativeTextForDelivery(cleanedText);
         if (!outputMatchesExpectation(deliveryText, expectedOutputKind)) {
@@ -860,6 +908,8 @@
         }
         return {
           text: deliveryText,
+          rawText,
+          imaiosChunkLibrary,
           partial: false
         };
       }
@@ -875,6 +925,8 @@
       }
       return {
         text: deliveryLastText,
+        rawText: lastText,
+        imaiosChunkLibrary: extractImaiosChunkLibraryFromText(lastText),
         partial: true
       };
     }
@@ -1351,7 +1403,7 @@
     }
   };
 
-  const installChatGptTsvRecoveryButton = () => {
+  const installChatGptRecoveryButtons = () => {
     if (document.getElementById("radprimer-chatgpt-tsv-recovery")) return;
 
     const host = document.createElement("div");
@@ -1391,6 +1443,12 @@
           white-space: nowrap;
         }
         button:hover { background: #bfdbfe; }
+        button.secondary { background: #dcfce7; }
+        button.secondary:hover { background: #bbf7d0; }
+        button.import { background: #fef3c7; }
+        button.import:hover { background: #fde68a; }
+        button.redo { background: #e9d5ff; }
+        button.redo:hover { background: #ddd6fe; }
         button:disabled { cursor: wait; opacity: .72; }
         .dot {
           width: 8px;
@@ -1402,12 +1460,15 @@
       </style>
       <div class="wrap">
         <span class="dot" aria-hidden="true"></span>
-        <button type="button" title="Capture this ChatGPT TSV into the matching RadPrimer audit bundle">Capture TSV</button>
+        <button class="tsv" type="button" title="Capture this ChatGPT TSV into the matching RadPrimer audit bundle">Capture TSV</button>
+        <button class="secondary imaios" type="button" title="Copy the latest IMaios chunk JSON for the IMaios extension">Copy IMaios chunks</button>
+        <button class="import import-imaios" type="button" title="Import the latest IMaios chunk JSON from this ChatGPT response into IMaios">Import IMaios</button>
+        <button class="redo redo-imaios" type="button" title="Ask ChatGPT to regenerate only the IMaios chunks using the latest saved label repository, then import them into IMaios">Redo + Import</button>
       </div>
     `;
 
-    shadow.querySelector("button").addEventListener("click", async () => {
-      const button = shadow.querySelector("button");
+    shadow.querySelector(".tsv").addEventListener("click", async () => {
+      const button = shadow.querySelector(".tsv");
       button.disabled = true;
       button.textContent = "Capturing...";
       createOrUpdateCompactStatus({
@@ -1442,6 +1503,153 @@
       });
       button.disabled = false;
       button.textContent = "Capture TSV";
+    });
+
+    shadow.querySelector(".imaios").addEventListener("click", async () => {
+      const button = shadow.querySelector(".imaios");
+      button.disabled = true;
+      button.textContent = "Copying...";
+      try {
+        const library = extractLatestImaiosChunkLibrary();
+        if (!library) {
+          createOrUpdateOverlay({
+            phase: "IMAIOS_NOT_FOUND",
+            error: "No valid imaios-chunk-library JSON block was found in the latest assistant response."
+          });
+          return;
+        }
+        const text = JSON.stringify(library, null, 2);
+        await copyToClipboard(text);
+        createOrUpdateOverlay({
+          phase: "IMAIOS_READY",
+          message: `Copied ${library.chunks.length} IMaios chunks. Open IMaios and click Import chunks.`,
+          text
+        });
+      } catch (error) {
+        createOrUpdateOverlay({
+          phase: "ERROR",
+          error: String(error?.message || error)
+        });
+      } finally {
+        button.disabled = false;
+        button.textContent = "Copy IMaios chunks";
+      }
+    });
+
+    const importLatestImaiosChunks = async () => {
+      const library = extractLatestImaiosChunkLibrary();
+      if (!library) {
+        return {
+          ok: false,
+          error: "No valid imaios-chunk-library JSON block was found in the latest assistant response."
+        };
+      }
+      const response = await sendRuntimeRequest({
+        type: "OPEN_IMAIOS_CHUNKS",
+        library
+      });
+      if (!response?.ok) {
+        return {
+          ok: false,
+          error: response?.error || "IMaios import failed."
+        };
+      }
+      return {
+        ok: true,
+        library,
+        result: response.result || {}
+      };
+    };
+
+    shadow.querySelector(".import-imaios").addEventListener("click", async () => {
+      const button = shadow.querySelector(".import-imaios");
+      button.disabled = true;
+      button.textContent = "Importing...";
+      try {
+        const result = await importLatestImaiosChunks();
+        if (!result.ok) {
+          createOrUpdateOverlay({
+            phase: "IMAIOS_IMPORT_ERROR",
+            error: result.error
+          });
+          return;
+        }
+        createOrUpdateOverlay({
+          phase: "IMAIOS_IMPORTED",
+          message: `Imported ${result.result.chunkCount || result.library.chunks.length} IMaios chunks. ${result.result.savedLabelCount || 0} module labels saved.`,
+          text: JSON.stringify(result.library, null, 2)
+        });
+      } catch (error) {
+        createOrUpdateOverlay({
+          phase: "ERROR",
+          error: String(error?.message || error)
+        });
+      } finally {
+        button.disabled = false;
+        button.textContent = "Import IMaios";
+      }
+    });
+
+    shadow.querySelector(".redo-imaios").addEventListener("click", async () => {
+      const button = shadow.querySelector(".redo-imaios");
+      button.disabled = true;
+      button.textContent = "Redoing...";
+      try {
+        const response = await sendRuntimeRequest({
+          type: "BUILD_IMAIOS_REDO_PROMPT"
+        });
+        if (!response?.ok || !response.promptText) {
+          createOrUpdateOverlay({
+            phase: "IMAIOS_REDO_ERROR",
+            error: response?.error || "Could not build the IMaios redo prompt."
+          });
+          return;
+        }
+        const result = await runPrompt({
+          promptText: response.promptText,
+          autoSubmit: true,
+          waitForResult: true,
+          timeoutMs: 900000,
+          speechify: null,
+          preserveAuditBlock: true,
+          expectedOutputKind: "",
+          completionPayload: null
+        });
+        if (!result.imaiosChunkLibrary?.chunks?.length) {
+          createOrUpdateOverlay({
+            phase: "IMAIOS_REDO_DONE_NO_JSON",
+            message: "ChatGPT finished, but I could not find a valid imaios-chunk-library JSON block to import.",
+            text: result.assistantText || ""
+          });
+          return;
+        }
+        if (!result.imaios?.ok) {
+          createOrUpdateOverlay({
+            phase: "IMAIOS_REDO_IMPORT_ERROR",
+            error: result.imaios?.error || "ChatGPT regenerated chunks, but IMaios import failed.",
+            text: result.assistantText || ""
+          });
+          return;
+        }
+        createOrUpdateOverlay({
+          phase: "IMAIOS_REDO_IMPORTED",
+          message: `Regenerated and imported ${result.imaios.result?.chunkCount || result.imaiosChunkLibrary.chunks.length} IMaios chunks using ${response.moduleCount || 0} saved modules and ${response.labelCount || 0} labels.`,
+          text: result.assistantText || JSON.stringify(result.imaiosChunkLibrary, null, 2)
+        });
+        createOrUpdateCompactStatus({
+          phase: "IMAIOS",
+          message: "IMaios redo imported.",
+          done: true
+        });
+      } catch (error) {
+        createOrUpdateOverlay({
+          phase: "ERROR",
+          error: String(error?.message || error)
+        });
+      } finally {
+        button.disabled = false;
+        button.textContent = "Redo + Import";
+      }
     });
   };
 
@@ -1520,6 +1728,7 @@
         submitted: true,
         assistantText: result.text,
         assistantChars: result.text.length,
+        imaiosChunkLibrary: result.imaiosChunkLibrary || null,
         partial: Boolean(result.partial),
         auditDownload,
         suppressCompletionMessage: true
@@ -1535,6 +1744,27 @@
         : "Response captured, but automatic clipboard copy may have failed.",
       text: result.text
     });
+
+    let imaiosResult = null;
+    if (result.imaiosChunkLibrary?.chunks?.length) {
+      sendProgress(
+        "OPENING_IMAIOS",
+        `Opening IMaios and importing ${result.imaiosChunkLibrary.chunks.length} chunks...`
+      );
+      imaiosResult = await sendRuntimeRequest({
+        type: "OPEN_IMAIOS_CHUNKS",
+        library: result.imaiosChunkLibrary
+      });
+      createOrUpdateOverlay({
+        phase: imaiosResult?.ok ? "IMAIOS_READY" : "IMAIOS_ERROR",
+        message: imaiosResult?.ok
+          ? imaiosResult.result?.labelSaveOk === false
+            ? `IMaios chunks imported. ${imaiosResult.result?.chunkCount || result.imaiosChunkLibrary.chunks.length} chunks loaded, but labels did not save: ${imaiosResult.result?.error || "unknown error"}`
+            : `IMaios chunks imported. ${imaiosResult.result?.chunkCount || result.imaiosChunkLibrary.chunks.length} chunks loaded. ${imaiosResult.result?.savedLabelCount || 0} module labels saved.`
+          : `IMaios import failed: ${imaiosResult?.error || "unknown error"}`,
+        text: result.text
+      });
+    }
 
     let speechifyResult = null;
     if (speechify && result.text) {
@@ -1568,8 +1798,10 @@
       submitted: true,
       assistantText: result.text,
       assistantChars: result.text.length,
+      imaiosChunkLibrary: result.imaiosChunkLibrary || null,
       partial: Boolean(result.partial),
       copied,
+      imaios: imaiosResult,
       speechify: speechifyResult
     };
   };
@@ -1665,8 +1897,8 @@
   });
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", installChatGptTsvRecoveryButton, { once: true });
+    document.addEventListener("DOMContentLoaded", installChatGptRecoveryButtons, { once: true });
   } else {
-    installChatGptTsvRecoveryButton();
+    installChatGptRecoveryButtons();
   }
 })();
