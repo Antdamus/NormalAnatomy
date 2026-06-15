@@ -2,102 +2,6 @@
   if (window.__IMAIOS_CINE_TOOLS_LOADED__) return;
   window.__IMAIOS_CINE_TOOLS_LOADED__ = true;
 
-  const PRESETS = [
-    {
-      id: "surface-landmarks",
-      label: "Surface landmarks",
-      structures: [
-        "Sternocleidomastoid muscle",
-        "Descending part of trapezius muscle",
-        "Platysma"
-      ]
-    },
-    {
-      id: "scalenes",
-      label: "Scalenes",
-      structures: [
-        "Scalenus anterior muscle",
-        "Scalenus medius muscle",
-        "Scalenus posterior muscle"
-      ]
-    },
-    {
-      id: "infrahyoid-straps",
-      label: "Infrahyoid straps",
-      structures: [
-        "Sternohyoid muscle",
-        "Sternothyroid muscle",
-        "Thyrohyoid muscle",
-        "Omohyoid muscle"
-      ]
-    },
-    {
-      id: "suprahyoid",
-      label: "Suprahyoid",
-      structures: [
-        "Digastric muscle",
-        "Mylohyoid muscle",
-        "Geniohyoid muscle",
-        "Stylohyoid muscle"
-      ]
-    },
-    {
-      id: "prevertebral",
-      label: "Prevertebral",
-      structures: [
-        "Longus colli muscle",
-        "Longus capitis muscle"
-      ]
-    },
-    {
-      id: "cervical-paraspinal-space",
-      label: "Cervical paraspinal space",
-      structures: [
-        "Longus colli muscle",
-        "Longus capitis muscle",
-        "Scalenus anterior muscle",
-        "Scalenus medius muscle",
-        "Scalenus posterior muscle",
-        "Levator scapulae",
-        "Splenius capitis muscle",
-        "Splenius colli muscle",
-        "Semispinalis capitis muscle",
-        "Semispinalis colli muscle",
-        "Rectus capitis posterior major muscle",
-        "Rectus capitis posterior minor muscle",
-        "Obliquus superior capitis muscle",
-        "Obliquus inferior capitis muscle"
-      ],
-      learningFrame: [
-        "Anterior prevertebral column: longus colli and longus capitis, immediately anterior to the cervical vertebral bodies and clivus/upper cervical spine.",
-        "Lateral vertebral/rib column: anterior, middle, and posterior scalenes, lateral to the transverse processes; anterior and middle scalenes frame the interscalene region.",
-        "Posterolateral scapular bridge: levator scapulae, running from upper cervical transverse processes toward the superior medial scapula between the scalenes and posterior extensor layer.",
-        "Posterior extensor sheets: splenius capitis/colli more superficial-lateral, semispinalis capitis/colli deeper-medial along the posterior elements.",
-        "Suboccipital cap: rectus capitis posterior major/minor and obliquus capitis superior/inferior at C0-C2, best learned as the small deep muscles around the atlanto-occipital/atlantoaxial region."
-      ]
-    },
-    {
-      id: "posterior-neck",
-      label: "Posterior neck",
-      structures: [
-        "Splenius capitis muscle",
-        "Splenius colli muscle",
-        "Semispinalis capitis muscle",
-        "Semispinalis colli muscle",
-        "Levator scapulae"
-      ]
-    },
-    {
-      id: "suboccipital",
-      label: "Suboccipital",
-      structures: [
-        "Obliquus superior capitis muscle",
-        "Obliquus inferior capitis muscle",
-        "Suboccipital muscles"
-      ]
-    }
-  ];
-
   const APP_ID = "imaios-cine-tools";
   const PAGE_STORAGE_KEY = `${APP_ID}:page:${location.origin}${location.pathname}`;
   const PREFS_STORAGE_KEY = `${APP_ID}:prefs`;
@@ -156,7 +60,6 @@
     toggleBoxes: { code: "KeyB", key: "b", alt: true, ctrl: false, meta: false, shift: false }
   };
   const state = {
-    activePresetId: PRESETS[0].id,
     selectedStructures: [],
     customListText: "",
     boxes: [],
@@ -207,7 +110,6 @@
       if (Array.isArray(page.boxes)) state.boxes = page.boxes;
       if (Array.isArray(page.selectedStructures)) state.selectedStructures = page.selectedStructures;
       if (typeof page.customListText === "string") state.customListText = page.customListText;
-      if (typeof page.activePresetId === "string") state.activePresetId = page.activePresetId;
       if (typeof page.boxesVisible === "boolean") state.boxesVisible = page.boxesVisible;
       if (typeof page.collapsed === "boolean") state.collapsed = page.collapsed;
       if (prefs.panelPosition && Number.isFinite(prefs.panelPosition.left) && Number.isFinite(prefs.panelPosition.top)) {
@@ -230,7 +132,6 @@
   function savePageState() {
     try {
       localStorage.setItem(PAGE_STORAGE_KEY, JSON.stringify({
-        activePresetId: state.activePresetId,
         activeChunkId: state.activeChunkId,
         selectedStructures: state.selectedStructures,
         customListText: state.customListText,
@@ -284,9 +185,6 @@
   }
 
   function buildMarkup() {
-    const presetOptions = PRESETS.map((preset) => (
-      `<option value="${escapeHtml(preset.id)}">${escapeHtml(preset.label)}</option>`
-    )).join("");
     const chunkOptions = buildChunkOptions();
     const hotkeyRows = HOTKEY_ACTIONS.map((action) => `
       <div class="key-row">
@@ -342,8 +240,10 @@
 
         .controls {
           display: grid;
-          gap: 8px;
+          gap: 10px;
           padding: 10px;
+          max-height: min(720px, calc(100vh - 92px));
+          overflow: auto;
         }
 
         .panel.collapsed .controls {
@@ -447,6 +347,52 @@
           border-color: rgba(255, 120, 92, 0.58);
         }
 
+        button.danger:hover {
+          background: rgba(180, 58, 44, 0.28);
+        }
+
+        .tool-section {
+          display: grid;
+          gap: 8px;
+          padding: 9px;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 8px;
+          background: rgba(255,255,255,0.045);
+        }
+
+        details.tool-section {
+          display: block;
+        }
+
+        details.tool-section > *:not(summary) {
+          margin-top: 8px;
+        }
+
+        summary {
+          cursor: pointer;
+          font-size: 12px;
+          font-weight: 750;
+          color: rgba(245,247,250,0.92);
+        }
+
+        .section-title {
+          font-size: 12px;
+          font-weight: 750;
+          color: rgba(245,247,250,0.92);
+        }
+
+        .section-note {
+          font-size: 11px;
+          line-height: 1.35;
+          color: rgba(245,247,250,0.62);
+        }
+
+        .main-actions {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 7px;
+        }
+
         .icon-button {
           width: 28px;
           min-height: 26px;
@@ -457,14 +403,19 @@
         .hint,
         .status,
         .selected,
-        .chunk-summary {
+        .chunk-summary,
+        .chunk-preview {
           font-size: 11px;
           line-height: 1.35;
           color: rgba(245,247,250,0.74);
         }
 
         .status {
-          min-height: 15px;
+          min-height: 44px;
+          padding: 8px 9px;
+          border: 1px solid rgba(77, 154, 220, 0.36);
+          border-radius: 8px;
+          background: rgba(20, 29, 38, 0.9);
           color: #8fd0ff;
         }
 
@@ -485,6 +436,40 @@
           border-radius: 6px;
           background: rgba(60, 132, 94, 0.12);
           user-select: text;
+        }
+
+        .chunk-preview {
+          display: grid;
+          gap: 6px;
+          min-height: 74px;
+          max-height: 180px;
+          overflow: auto;
+          padding: 8px 9px;
+          border-radius: 7px;
+          background: rgba(0,0,0,0.24);
+          user-select: text;
+        }
+
+        .chunk-preview-title {
+          color: #ffffff;
+          font-weight: 750;
+        }
+
+        .chunk-preview-meta {
+          color: rgba(245,247,250,0.58);
+        }
+
+        .chunk-preview-list {
+          margin: 0;
+          padding-left: 16px;
+        }
+
+        .chunk-preview-list li {
+          margin: 2px 0;
+        }
+
+        .support-hidden {
+          display: none;
         }
 
         .speed-row {
@@ -610,71 +595,95 @@
       <div class="box-layer" data-role="box-layer"></div>
       <section class="panel" data-role="panel" aria-label="IMAIOS cine tools">
         <div class="header" data-role="drag-panel">
-          <div class="title">IMAIOS Cine</div>
+          <div class="title">IMAIOS Labels</div>
           <button class="icon-button" type="button" data-action="toggle-panel" title="Minimize panel">-</button>
         </div>
         <div class="controls">
-          <select data-role="preset">${presetOptions}</select>
-          <div class="row">
-            <button class="primary" type="button" data-action="apply-preset">Apply preset</button>
-            <button type="button" data-action="stop-search">Stop</button>
+          <div class="status" data-role="status">Ready.</div>
+
+          <div class="tool-section">
+            <div class="section-title">Label repository</div>
+            <div class="section-note">Harvest search-verifies this module and saves only labels IMAIOS can actually find.</div>
+            <div class="main-actions">
+              <button class="primary" type="button" data-action="harvest-labels">Harvest labels</button>
+              <button class="danger" type="button" data-action="clear-module-labels">Clear cache</button>
+            </div>
           </div>
-          <select data-role="chunk">${chunkOptions}</select>
-          <div class="row">
-            <button class="primary" type="button" data-action="apply-chunk">Apply chunk</button>
-            <button type="button" data-action="check-chunk">Check chunk</button>
+
+          <div class="tool-section">
+            <div class="section-title">Chunks</div>
+            <select data-role="chunk">${chunkOptions}</select>
+            <div class="chunk-preview" data-role="chunk-preview"></div>
+            <div class="row">
+              <button class="primary" type="button" data-action="apply-chunk">Apply chunk</button>
+              <button type="button" data-action="check-chunk">Check chunk</button>
+            </div>
+            <div class="row">
+              <button type="button" data-action="import-chunks">Import chunks</button>
+              <button type="button" data-action="stop-search">Stop</button>
+            </div>
+            <div class="chunk-summary" data-role="chunk-summary"></div>
           </div>
-          <div class="row three">
-            <button type="button" data-action="import-chunks">Import chunks</button>
-            <button type="button" data-action="import-labels">Import labels</button>
-            <button type="button" data-action="copy-chunk-template">Template</button>
-          </div>
-          <div class="chunk-summary" data-role="chunk-summary"></div>
-          <div class="row three">
-            <button type="button" data-action="set-pins">Set pins</button>
-            <button type="button" data-action="set-labels">Show labels</button>
-            <button type="button" data-action="open-key-editor">Keys</button>
-          </div>
-          <textarea data-role="custom-list" spellcheck="false"></textarea>
-          <div class="row">
-            <button type="button" data-action="apply-list">Apply list</button>
-            <button type="button" data-action="reset-list">Reset list</button>
-          </div>
-          <div class="row three">
-            <button type="button" data-action="add-box">Add box</button>
-            <button type="button" data-action="toggle-boxes">Hide boxes</button>
-            <button class="danger" type="button" data-action="clear-boxes">Clear</button>
-          </div>
-          <div class="row three">
-            <button type="button" data-action="copy-manifest">Copy manifest</button>
-            <button type="button" data-action="copy-prompt">Copy prompt</button>
-            <button type="button" data-action="copy-labels">Copy labels</button>
-          </div>
-          <div class="row">
-            <button type="button" data-action="save-labels">Save labels</button>
-            <button type="button" data-action="export-label-repo">Export repo</button>
-          </div>
-          <div class="row">
-            <button type="button" data-action="copy-probe">Copy probe</button>
-            <button type="button" data-action="copy-slice">Copy slice</button>
-          </div>
-          <div class="row">
-            <button type="button" data-action="copy-range">Copy range</button>
-            <button type="button" data-action="copy-range-json">Range JSON</button>
-          </div>
-          <div class="row three">
-            <button type="button" data-action="go-range-start">Go start</button>
-            <button class="primary" type="button" data-action="play-range">Play range</button>
-            <button type="button" data-action="stop-range">Stop cine</button>
-          </div>
-          <div class="speed-row">
-            <label for="${APP_ID}-speed">Speed</label>
-            <input id="${APP_ID}-speed" type="range" min="${CINE_SPEED_MIN}" max="${CINE_SPEED_MAX}" step="1" data-role="cine-speed">
-            <span class="speed-value" data-role="cine-speed-value"></span>
-          </div>
-          <div class="selected" data-role="selected"></div>
-          <div class="status" data-role="status"></div>
-          <div class="hint" data-role="hotkey-hint"></div>
+
+          <details class="tool-section">
+            <summary>Manual list</summary>
+            <textarea data-role="custom-list" spellcheck="false"></textarea>
+            <div class="row">
+              <button type="button" data-action="apply-list">Apply list</button>
+              <button type="button" data-action="reset-list">Reset list</button>
+            </div>
+          </details>
+
+          <details class="tool-section">
+            <summary>Advanced</summary>
+            <div class="row">
+              <button type="button" data-action="import-labels">Import labels</button>
+              <button type="button" data-action="copy-chunk-template">Template</button>
+            </div>
+            <div class="row">
+              <button type="button" data-action="copy-labels">Copy labels</button>
+              <button type="button" data-action="export-label-repo">Export repo</button>
+            </div>
+            <div class="row">
+              <button type="button" data-action="copy-manifest">Copy manifest</button>
+              <button type="button" data-action="copy-prompt">Copy prompt</button>
+            </div>
+            <div class="row">
+              <button type="button" data-action="copy-probe">Copy probe</button>
+              <button type="button" data-action="copy-slice">Copy slice</button>
+            </div>
+          </details>
+
+          <details class="tool-section">
+            <summary>Cine and boxes</summary>
+            <div class="row three">
+              <button type="button" data-action="set-pins">Set pins</button>
+              <button type="button" data-action="set-labels">Show labels</button>
+              <button type="button" data-action="open-key-editor">Keys</button>
+            </div>
+            <div class="row three">
+              <button type="button" data-action="add-box">Add box</button>
+              <button type="button" data-action="toggle-boxes">Hide boxes</button>
+              <button class="danger" type="button" data-action="clear-boxes">Clear</button>
+            </div>
+            <div class="row">
+              <button type="button" data-action="copy-range">Copy range</button>
+              <button type="button" data-action="copy-range-json">Range JSON</button>
+            </div>
+            <div class="row three">
+              <button type="button" data-action="go-range-start">Go start</button>
+              <button class="primary" type="button" data-action="play-range">Play range</button>
+              <button type="button" data-action="stop-range">Stop cine</button>
+            </div>
+            <div class="speed-row">
+              <label for="${APP_ID}-speed">Speed</label>
+              <input id="${APP_ID}-speed" type="range" min="${CINE_SPEED_MIN}" max="${CINE_SPEED_MAX}" step="1" data-role="cine-speed">
+              <span class="speed-value" data-role="cine-speed-value"></span>
+            </div>
+            <div class="hint" data-role="hotkey-hint"></div>
+          </details>
+
+          <div class="selected support-hidden" data-role="selected"></div>
         </div>
       </section>
       <div class="key-modal hidden" data-role="key-modal">
@@ -700,19 +709,9 @@
       savePageState();
       refreshPanel();
     });
-    root.querySelector("[data-role='preset']").addEventListener("change", (event) => {
-      state.activePresetId = event.target.value;
-      state.customListText = getActivePreset().structures.join("\n");
-      savePageState();
-      refreshPanel();
-    });
     root.querySelector("[data-role='custom-list']").addEventListener("input", (event) => {
       state.customListText = event.target.value;
       savePageState();
-    });
-    root.querySelector("[data-action='apply-preset']").addEventListener("click", () => {
-      const preset = getActivePreset();
-      applyStructures(preset.structures, preset.label);
     });
     root.querySelector("[data-role='chunk']").addEventListener("change", (event) => {
       state.activeChunkId = event.target.value;
@@ -726,6 +725,8 @@
     root.querySelector("[data-action='import-chunks']").addEventListener("click", importChunksFromClipboard);
     root.querySelector("[data-action='import-labels']").addEventListener("click", importLabelsFromClipboard);
     root.querySelector("[data-action='copy-chunk-template']").addEventListener("click", copyChunkTemplate);
+    root.querySelector("[data-action='harvest-labels']").addEventListener("click", harvestCurrentModuleLabels);
+    root.querySelector("[data-action='clear-module-labels']").addEventListener("click", clearCurrentModuleSavedLabels);
     root.querySelector("[data-action='apply-list']").addEventListener("click", () => {
       const names = parseCustomList();
       if (!names.length) {
@@ -792,7 +793,6 @@
     root.querySelector("[data-action='copy-manifest']").addEventListener("click", copyManifest);
     root.querySelector("[data-action='copy-prompt']").addEventListener("click", copyPrompt);
     root.querySelector("[data-action='copy-labels']").addEventListener("click", copyAvailableLabels);
-    root.querySelector("[data-action='save-labels']").addEventListener("click", saveCurrentModuleLabels);
     root.querySelector("[data-action='export-label-repo']").addEventListener("click", exportLabelRepository);
     root.querySelector("[data-action='copy-probe']").addEventListener("click", copyViewerProbe);
     root.querySelector("[data-action='copy-slice']").addEventListener("click", copySliceProbe);
@@ -810,10 +810,10 @@
   function refreshPanel() {
     const root = state.shadow;
     if (!root) return;
-    const preset = getActivePreset();
+    const chunk = getActiveChunk();
     const panel = root.querySelector("[data-role='panel']");
-    const presetSelect = root.querySelector("[data-role='preset']");
     const chunkSelect = root.querySelector("[data-role='chunk']");
+    const chunkPreview = root.querySelector("[data-role='chunk-preview']");
     const chunkSummary = root.querySelector("[data-role='chunk-summary']");
     const customList = root.querySelector("[data-role='custom-list']");
     const selected = root.querySelector("[data-role='selected']");
@@ -828,11 +828,11 @@
     panel.classList.toggle("collapsed", state.collapsed);
     panel.style.left = `${state.panelPosition.left}px`;
     panel.style.top = `${state.panelPosition.top}px`;
-    presetSelect.value = state.activePresetId;
     chunkSelect.innerHTML = buildChunkOptions();
     chunkSelect.value = state.activeChunkId;
+    chunkPreview.innerHTML = buildChunkPreviewHtml();
     chunkSummary.textContent = getChunkSummaryText();
-    if (!state.customListText) state.customListText = preset.structures.join("\n");
+    if (!state.customListText && chunk) state.customListText = chunkToPreferredLabelText(chunk);
     customList.value = state.customListText;
     togglePanel.textContent = state.collapsed ? "+" : "-";
     toggleBoxes.textContent = state.boxesVisible ? "Hide boxes" : "Show boxes";
@@ -847,12 +847,9 @@
       button.classList.toggle("capturing", state.captureHotkeyAction === actionId);
     });
 
-    const names = state.selectedStructures.length ? state.selectedStructures : preset.structures;
+    const chunkNames = chunk ? getChunkLabelTargets(chunk).map((target) => target.preferredLabel) : [];
+    const names = state.selectedStructures.length ? state.selectedStructures : chunkNames;
     selected.textContent = names.join(", ");
-  }
-
-  function getActivePreset() {
-    return PRESETS.find((preset) => preset.id === state.activePresetId) || PRESETS[0];
   }
 
   function buildChunkOptions() {
@@ -871,6 +868,38 @@
 
   function getActiveChunk() {
     return getChunkById(state.activeChunkId);
+  }
+
+  function buildChunkPreviewHtml() {
+    const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
+    if (!chunks.length) {
+      return [
+        `<div class="chunk-preview-title">No chunks imported</div>`,
+        `<div class="chunk-preview-meta">Import a ChatGPT chunk manifest, then each selected chunk will show its exact label set here before injection.</div>`
+      ].join("");
+    }
+
+    const chunk = getActiveChunk();
+    if (!chunk) {
+      const titles = chunks.slice(0, 8).map((item) => `<li>${escapeHtml(item.title || item.id)}</li>`).join("");
+      const extra = chunks.length > 8 ? `<li>...${chunks.length - 8} more</li>` : "";
+      return [
+        `<div class="chunk-preview-title">${escapeHtml(state.chunkLibrary.topic || "Chunk set loaded")}</div>`,
+        `<div class="chunk-preview-meta">${chunks.length} chunks available. Select one to preview its labels.</div>`,
+        `<ol class="chunk-preview-list">${titles}${extra}</ol>`
+      ].join("");
+    }
+
+    const targets = getChunkLabelTargets(chunk);
+    const unavailable = targets.filter((target) => target.status && !/^(available|matched|verified|selected)$/i.test(target.status));
+    const labels = targets.map((target) => `<li>${escapeHtml(target.preferredLabel)}</li>`).join("");
+    const modality = chunk.modality ? `Modality: ${escapeHtml(chunk.modality)}. ` : "";
+    const unavailableText = unavailable.length ? ` ${unavailable.length} flagged for review.` : "";
+    return [
+      `<div class="chunk-preview-title">${escapeHtml(chunk.title || chunk.id)}</div>`,
+      `<div class="chunk-preview-meta">${modality}${targets.length} labels selected.${unavailableText}</div>`,
+      labels ? `<ol class="chunk-preview-list">${labels}</ol>` : `<div class="chunk-preview-meta">This chunk has no labels yet.</div>`
+    ].join("");
   }
 
   function getChunkSummaryText() {
@@ -1024,22 +1053,13 @@
   }
 
   async function searchAndClickStructure(structureName, options = {}) {
-    const input = findModuleSearchInput();
-    if (!input) {
-      return { ok: false, reason: "Open the e-Anatomy viewer first; I could not find 'Search in this module'." };
-    }
-
-    await focusModuleSearch(input);
-    await clearSearchInput(input);
-    await delay(160);
-    await typeSearchValue(input, structureName);
-    await delay(180);
-
-    const result = await waitFor(() => findSearchResult(structureName, input), 5200, 120);
-    if (!result) {
-      if (options.allowFallback === false) {
-        return { ok: false, reason: `No search result for ${structureName}.` };
-      }
+    const availability = await searchStructureAvailability(structureName, {
+      timeoutMs: options.timeoutMs || 5200,
+      delayMs: options.delayMs
+    });
+    const input = availability.input;
+    if (!availability.ok) {
+      if (options.allowFallback === false || !input) return availability;
       pressSearchKey(input, "ArrowDown");
       await delay(120);
       pressSearchKey(input, "Enter");
@@ -1048,8 +1068,33 @@
 
     input.focus();
     await delay(80);
-    clickElement(result);
-    return { ok: true };
+    clickElement(availability.result);
+    return { ok: true, selectedText: availability.selectedText };
+  }
+
+  async function searchStructureAvailability(structureName, options = {}) {
+    const input = findModuleSearchInput();
+    if (!input) {
+      return { ok: false, reason: "Open the e-Anatomy viewer first; I could not find 'Search in this module'." };
+    }
+
+    await focusModuleSearch(input);
+    await clearSearchInput(input);
+    await delay(options.clearDelayMs ?? 80);
+    await typeSearchValue(input, structureName, { delayMs: options.delayMs ?? 0 });
+    await delay(options.afterTypeDelayMs ?? 90);
+
+    const result = await waitFor(() => findSearchResult(structureName, input), options.timeoutMs || 1600, options.intervalMs || 80);
+    if (!result) {
+      return { ok: false, input, reason: `No search result for ${structureName}.` };
+    }
+
+    return {
+      ok: true,
+      input,
+      result,
+      selectedText: cleanSearchResultText(result.textContent || structureName) || structureName
+    };
   }
 
   async function primeModuleSearch() {
@@ -1128,9 +1173,10 @@
     await delay(90);
   }
 
-  async function typeSearchValue(input, value) {
+  async function typeSearchValue(input, value, options = {}) {
     setInputValue(input, "");
     let nextValue = "";
+    const delayMs = Number.isFinite(options.delayMs) ? Math.max(0, options.delayMs) : 14;
     for (const character of value) {
       nextValue += character;
       input.dispatchEvent(new KeyboardEvent("keydown", {
@@ -1146,8 +1192,14 @@
         cancelable: true,
         view: window
       }));
-      await delay(14);
+      if (delayMs) await delay(delayMs);
     }
+  }
+
+  function cleanSearchResultText(text) {
+    return cleanText(text)
+      .replace(/\s+(definition|related terms|additional terms)$/i, "")
+      .trim();
   }
 
   function findSearchResult(structureName, input) {
@@ -1582,18 +1634,25 @@
   }
 
   async function copyManifest() {
-    const requestedStructures = state.selectedStructures.length ? state.selectedStructures : parseCustomList();
+    const chunk = getActiveChunk();
+    const chunkStructures = chunk ? getChunkLabelTargets(chunk).map((target) => target.preferredLabel) : [];
+    const requestedStructures = state.selectedStructures.length ? state.selectedStructures : parseCustomList().length ? parseCustomList() : chunkStructures;
     const lockedStructures = getLockedStructureNames();
     const cineRange = getSuggestedCineRange();
     const manifest = {
       kind: "imaios-cine-anki-card",
       pageTitle: document.title,
       url: location.href,
-      preset: getActivePreset().label,
+      chunk: chunk ? {
+        id: chunk.id,
+        title: chunk.title,
+        modality: chunk.modality || "",
+        modalityUrl: chunk.modalityUrl || ""
+      } : null,
       requestedStructures,
       lockedStructures,
       confirmedLockedCount: countLockedMatches(requestedStructures),
-      learningFrame: getActivePreset().learningFrame || [],
+      learningFrame: chunk && Array.isArray(chunk.learningFrame) ? chunk.learningFrame : [],
       cineRange,
       cinePlayback: {
         mode: "bounded ping-pong",
@@ -1617,10 +1676,12 @@
   }
 
   async function copyPrompt() {
-    const structures = state.selectedStructures.length ? state.selectedStructures : parseCustomList();
-    const learningFrame = getActivePreset().learningFrame || [];
+    const chunk = getActiveChunk();
+    const chunkStructures = chunk ? getChunkLabelTargets(chunk).map((target) => target.preferredLabel) : [];
+    const structures = state.selectedStructures.length ? state.selectedStructures : parseCustomList().length ? parseCustomList() : chunkStructures;
+    const learningFrame = chunk && Array.isArray(chunk.learningFrame) ? chunk.learningFrame : [];
     const prompt = [
-      "Create a compact Anki set for identifying these neck muscles on IMAIOS head and neck CT cine clips:",
+      "Create a compact Anki set for identifying these structures on IMAIOS cine clips:",
       "",
       structures.map((name) => `- ${name}`).join("\n"),
       "",
@@ -1628,7 +1689,7 @@
       learningFrame.length ? learningFrame.map((line) => `- ${line}`).join("\n") : "",
       learningFrame.length ? "" : "",
       "Use the clips as the visual prompt. Make cards that test image identification first, then add the minimum anatomy needed to prevent confusion with neighboring muscles.",
-      "When a preset supplies a learning framework, create one compact framework card first, then focused identification cards grouped by that framework.",
+      "When the selected chunk supplies a learning framework, create one compact framework card first, then focused identification cards grouped by that framework.",
       "For each structure, include plane-specific recognition cues for axial, coronal, and sagittal review when useful. Include relationships, attachments, and action/innervation only when they help localization or high-yield discrimination.",
       "Avoid pathology framing. Keep the cards anatomy-first and concise.",
       "",
@@ -2086,7 +2147,6 @@
   async function syncLabelRepositoryToExtensionStorage() {
     if (!chrome?.storage?.local) return { ok: false, error: "Extension storage is unavailable." };
     const stats = getLabelRepositoryStats(state.labelRepository);
-    if (!stats.moduleCount || !stats.labelCount) return { ok: true, skipped: true, stats };
     await chrome.storage.local.set({ [EXTENSION_LABEL_REPOSITORY_STORAGE_KEY]: state.labelRepository });
     return { ok: true, stats };
   }
@@ -2125,23 +2185,173 @@
     setStatus(`Copied ${exportData.labels.length} labels${muscleSuffix}.`);
   }
 
+  async function harvestCurrentModuleLabels() {
+    await harvestCurrentModuleLabelsBySearchVerification({ dryRun: false });
+  }
+
+  async function harvestCurrentModuleLabelsBySearchVerification(options = {}) {
+    if (state.searchRunning) {
+      setStatus("Search is already running.");
+      return null;
+    }
+
+    const entries = getPreloadedModuleStructureEntries(getAvailableStructureEntries());
+    const candidateLabels = unique(entries.map((entry) => entry.label)).sort(compareLabels);
+    if (!candidateLabels.length) {
+      setStatus("No module candidate labels found to harvest.", 7000);
+      return null;
+    }
+
+    const limit = Number.isFinite(options.limit) && options.limit > 0
+      ? Math.min(candidateLabels.length, Math.round(options.limit))
+      : candidateLabels.length;
+    const testedLabels = candidateLabels.slice(0, limit);
+    const verified = [];
+    const missed = [];
+    state.searchRunning = true;
+    state.cancelSearch = false;
+    state.selectedStructures = testedLabels;
+    savePageState();
+    refreshPanel();
+
+    const primed = await primeModuleSearch();
+    if (!primed.ok) {
+      state.searchRunning = false;
+      setStatus(primed.reason, 9000);
+      return null;
+    }
+
+    for (let index = 0; index < testedLabels.length; index += 1) {
+      if (state.cancelSearch) break;
+      const label = testedLabels[index];
+      setStatus(`Harvesting ${index + 1}/${testedLabels.length}: ${label}`, 0);
+      const result = await searchStructureAvailability(label, {
+        timeoutMs: options.timeoutMs || 1300,
+        intervalMs: 70,
+        delayMs: 0,
+        clearDelayMs: 40,
+        afterTypeDelayMs: 70
+      });
+      if (result.ok) {
+        verified.push({
+          label: result.selectedText || label,
+          candidateLabel: label,
+          source: "verified-fast-search-result",
+          href: "",
+          searchMatched: true,
+          lockConfirmed: false,
+          matchReason: "exact search result found"
+        });
+      } else {
+        missed.push({ label, reason: result.reason || "no search result" });
+      }
+      await delay(70);
+    }
+
+    state.searchRunning = false;
+    const stopped = Boolean(state.cancelSearch);
+    state.cancelSearch = false;
+    const exportData = buildAvailableLabelsExport(verified, {
+      harvest: {
+        mode: "verified-fast-search",
+        dryRun: Boolean(options.dryRun),
+        candidateLabels: candidateLabels.length,
+        testedLabels: testedLabels.length,
+        verifiedLabels: verified.length,
+        missedLabels: missed.length,
+        stopped,
+        missed
+      }
+    });
+
+    if (options.dryRun) {
+      await writeClipboard(JSON.stringify({
+        kind: "imaios-verified-harvest-test",
+        createdAt: new Date().toISOString(),
+        dryRun: true,
+        module: exportData.module,
+        counts: exportData.harvest,
+        verifiedLabels: exportData.labels,
+        missed
+      }, null, 2));
+      setStatus(`Test harvest copied: ${verified.length}/${testedLabels.length} matched; ${missed.length} missed.`, 9000);
+      refreshPanel();
+      return exportData;
+    }
+
+    if (!exportData.labels.length) {
+      setStatus(`Harvest found 0 verified module labels. Nothing saved. ${missed.length} missed.`, 9000);
+      refreshPanel();
+      return exportData;
+    }
+
+    const saveResult = await saveModuleLabelExport(exportData, { mode: "harvest" });
+    if (saveResult.ok) {
+      setStatus(`Harvest saved ${saveResult.afterCount} verified labels for ${saveResult.moduleName}. ${saveResult.addedCount} new; ${missed.length} missed.${saveResult.backupText}`, 12000);
+    } else {
+      setStatus(saveResult.message, 10000);
+    }
+    refreshPanel();
+    return exportData;
+  }
+
+  async function clearCurrentModuleSavedLabels() {
+    const moduleKey = getCurrentModuleKey();
+    const previous = getSavedLabelsForCurrentModule();
+    const previousCount = Array.isArray(previous.labels) ? previous.labels.length : 0;
+    const moduleName = previous.name || getCurrentModuleName() || moduleKey;
+    if (!previousCount) {
+      setStatus(`No saved labels to clear for ${moduleName}.`, 6500);
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Clear the saved IMaios label cache for this module?\n\nModule: ${moduleName}\nSaved labels: ${previousCount}\n\nThis will also update the local backup file.`
+    );
+    if (!confirmed) {
+      setStatus("Clear cache cancelled.");
+      return;
+    }
+
+    const repository = normalizeImportedLabelRepository(state.labelRepository || {});
+    delete repository.moduleLabels[moduleKey];
+    repository.modalities = (repository.modalities || []).filter((item) => (item.key || item.name) !== moduleKey);
+    repository.updatedAt = new Date().toISOString();
+    state.labelRepository = repository;
+    const saveResult = await saveLabelRepository();
+    refreshPanel();
+    if (!saveResult.ok) {
+      setStatus(`Clear failed for ${moduleName}: ${saveResult.error}`, 9000);
+      return;
+    }
+    const backupResult = await backupLabelRepositoryToDownloads();
+    const backupText = backupResult.ok
+      ? ` Backup written to ${backupResult.result.downloadFolder}.`
+      : ` Backup failed: ${backupResult.error}`;
+    setStatus(`Cleared ${previousCount} saved labels for ${moduleName}.${backupText}`, 11000);
+  }
+
   async function saveCurrentModuleLabels() {
     const exportData = buildAvailableLabelsExport();
     if (!exportData.labels.length) {
       setStatus("No visible IMaios labels found to save for this module.", 7000);
       return;
     }
+    const result = await saveModuleLabelExport(exportData, { mode: "save" });
+    refreshPanel();
+    setStatus(result.ok ? result.message : result.message, result.ok ? 11000 : 9000);
+  }
+
+  async function saveModuleLabelExport(exportData, options = {}) {
     const before = getSavedLabelsForCurrentModule();
     const beforeCount = Array.isArray(before.labels) ? before.labels.length : 0;
     const beforeKeys = new Set((before.labels || []).map(normalizeText));
     const newCount = exportData.labels.filter((label) => !beforeKeys.has(normalizeText(label))).length;
     const mergeResult = mergeAvailableLabelsIntoRepository(exportData);
     const saveResult = await saveLabelRepository();
-    refreshPanel();
     const moduleName = exportData.module.name || exportData.module.key;
     if (!saveResult.ok) {
-      setStatus(`Label save failed for ${moduleName}: ${saveResult.error}`, 9000);
-      return;
+      return { ok: false, moduleName, message: `Label save failed for ${moduleName}: ${saveResult.error}` };
     }
     const afterCount = mergeResult.labels.length;
     const verb = beforeCount ? "Updated" : "Created";
@@ -2150,7 +2360,16 @@
     const backupText = backupResult.ok
       ? ` Backup written to ${backupResult.result.downloadFolder}.`
       : ` Backup failed: ${backupResult.error}`;
-    setStatus(`${verb} labels for ${moduleName}: ${afterCount} saved.${addedText}${backupText}`, 11000);
+    const noun = options.mode === "harvest" ? "verified labels" : "labels";
+    return {
+      ok: true,
+      moduleName,
+      beforeCount,
+      afterCount,
+      addedCount: newCount,
+      backupText,
+      message: `${verb} ${noun} for ${moduleName}: ${afterCount} saved.${addedText}${backupText}`
+    };
   }
 
   async function exportLabelRepository() {
@@ -2232,8 +2451,7 @@
     return repository.moduleLabels[moduleKey];
   }
 
-  function buildAvailableLabelsExport() {
-    const entries = getAvailableStructureEntries();
+  function buildAvailableLabelsExport(entries = getAvailableStructureEntries(), extra = {}) {
     const labels = unique(entries.map((entry) => entry.label)).sort(compareLabels);
     const muscleLikeLabels = labels.filter(isMuscleLikeLabel);
     const sourceCounts = entries.reduce((counts, entry) => {
@@ -2255,6 +2473,7 @@
         rawEntries: entries.length
       },
       sourceCounts,
+      ...(extra.harvest ? { harvest: extra.harvest } : {}),
       muscleLikeLabels,
       labels
     };
@@ -2315,6 +2534,18 @@
     return entries.filter((entry) => {
       const key = normalizeText(entry.label);
       if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  function getPreloadedModuleStructureEntries(entries = getAvailableStructureEntries()) {
+    const moduleEntries = entries.filter((entry) => entry.source === "anatomical-structure-link");
+    const source = moduleEntries.length ? moduleEntries : entries;
+    const seen = new Set();
+    return source.filter((entry) => {
+      const key = normalizeText(entry.label);
+      if (!key || seen.has(key)) return false;
       seen.add(key);
       return true;
     });

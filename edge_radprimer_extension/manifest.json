@@ -33,6 +33,12 @@
   "background": {
     "service_worker": "service_worker.js"
   },
+  "web_accessible_resources": [
+    {
+      "resources": ["imaios-page-context-probe.js"],
+      "matches": ["https://imaios.com/*", "https://www.imaios.com/*"]
+    }
+  ],
   "content_scripts": [
     {
       "matches": ["https://app.radprimer.com/*"],
