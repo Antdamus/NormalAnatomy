@@ -1862,6 +1862,7 @@
     return {
       id,
       title,
+      parentGroup: cleanText(value.parentGroup || value.group || value.region || ""),
       modality: cleanText(value.modality || value.imaiosModality || value.module || ""),
       modalityUrl: cleanText(value.modalityUrl || value.url || ""),
       learningOrder: Number(value.learningOrder || value.order || index + 1),

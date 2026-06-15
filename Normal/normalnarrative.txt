@@ -1125,6 +1125,19 @@ Core rules:
 * avoid disease names, findings, maneuvers, diagnoses, and teaching comments inside IMaios code blocks
 * preserve practical visual relationships: region first, pathway next, then small parts, variants, danger landmarks, and review targets
 
+Anatomy-aware chunk sizing:
+
+* do not group labels merely because they are anatomically related
+* each block should be the smallest useful visual learning pass for that region
+* prefer 3-7 labels per block, but use anatomy and visual review logic rather than a rigid count
+* if a candidate block grows beyond about 8 labels, split it into anatomy-aware subchunks unless the labels form one uninterrupted named chain or pathway
+* choose the split order that makes sense for the local anatomy, such as framework first, then spaces or compartments, pathways, small parts, danger landmarks, and variants or mimics
+* for temporal bone, natural subchunks may include outer bony framework, mastoid and middle ear air spaces, ossicular chain, otic capsule and labyrinth, facial nerve canal, skull base vascular landmarks, and normal fissures or pseudofracture lines
+* for spine, natural subchunks may include vertebral body and endplates, posterior elements, facets, ligaments, canal and foramina, and paraspinal soft tissues
+* for abdomen or pelvis, natural subchunks may follow organ, vascular pedicle, duct or lumen, compartment, peritoneal reflection, and danger landmark
+* if a large region is split, make every subchunk its own human code block and its own JSON chunk
+* use chunk titles that show the larger region and the subchunk focus, but keep only actual labels inside the code block
+
 If an `IMAIOS LABEL REPOSITORY` section is provided in the user/source input:
 
 * treat that repository as the available label universe and choose labels from it, not from memory
@@ -1178,6 +1191,7 @@ The extension-import JSON must use this shape:
     {
       "id": "stable-kebab-case-id",
       "title": "Learner-facing chunk title",
+      "parentGroup": "larger anatomical region when this is a subchunk",
       "modality": "best IMaios modality or atlas name",
       "modalityUrl": "optional IMaios URL if known",
       "learningOrder": 1,
@@ -1210,6 +1224,7 @@ The extension-import JSON must use this shape:
 For the JSON block:
 
 * make each JSON chunk correspond to one human IMaios label code block
+* if a large anatomy region was split, set `parentGroup` to the larger region for each subchunk
 * keep `preferredLabel` identical to the label used in the matching human paste block whenever it is repository verified
 * when a repository is provided, every `preferredLabel` with `status: "verified"` must be copied exactly from the available repository labels
 * include `concept` for the learner-facing anatomy idea, even when the selected IMaios label uses different wording
