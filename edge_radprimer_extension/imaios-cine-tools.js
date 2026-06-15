@@ -13,6 +13,7 @@
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
   const DEFAULT_CINE_SPEED = 5;
+  const REVERSE_SCROLL_STORAGE_KEY = "im_viewer-reverse-scroll";
   const HOTKEY_ACTIONS = [
     { id: "pingpong", label: "Cine ping-pong" },
     { id: "cineBackward", label: "Cine backward" },
@@ -22,6 +23,8 @@
     { id: "applyChunk", label: "Apply chunk" },
     { id: "pinsOn", label: "Show pins" },
     { id: "labelsOn", label: "Show labels" },
+    { id: "selectAll", label: "Select all labels" },
+    { id: "reverseScroll", label: "Reverse scroll" },
     { id: "clearLocked", label: "Clear locked" },
     { id: "axial", label: "Axial plane" },
     { id: "coronal", label: "Coronal plane" },
@@ -47,6 +50,8 @@
     applyChunk: { code: "Enter", key: "Enter", alt: true, ctrl: false, meta: false, shift: false },
     pinsOn: { code: "KeyP", key: "p", alt: false, ctrl: false, meta: false, shift: false },
     labelsOn: { code: "KeyL", key: "l", alt: false, ctrl: false, meta: false, shift: false },
+    selectAll: { code: "KeyA", key: "a", alt: true, ctrl: false, meta: false, shift: false },
+    reverseScroll: { code: "KeyI", key: "i", alt: false, ctrl: false, meta: false, shift: false },
     clearLocked: { code: "Delete", key: "Delete", alt: true, ctrl: false, meta: false, shift: false },
     axial: { code: "Digit1", key: "1", alt: false, ctrl: false, meta: false, shift: false },
     coronal: { code: "Digit2", key: "2", alt: false, ctrl: false, meta: false, shift: false },
@@ -89,7 +94,9 @@
     applyChunkClearFirst: true,
     hotkeys: createDefaultHotkeys(),
     keyEditorOpen: false,
-    captureHotkeyAction: ""
+    captureHotkeyAction: "",
+    reverseScrollWatchTimer: 0,
+    lastReverseScrollPlane: ""
   };
 
   async function init() {
@@ -106,6 +113,10 @@
     window.addEventListener("keyup", onKeyUp, true);
     document.addEventListener("keydown", onKeyDown, true);
     document.addEventListener("keyup", onKeyUp, true);
+    syncReverseScrollForCurrentPlane().catch(() => {});
+    state.reverseScrollWatchTimer = window.setInterval(() => {
+      syncReverseScrollForCurrentPlane().catch(() => {});
+    }, 1400);
   }
 
   function loadSavedState() {
@@ -776,8 +787,8 @@
     root.querySelector("[data-role='chunk']").addEventListener("change", (event) => {
       setActiveChunkId(event.target.value);
     });
-    root.querySelector("[data-role='quick-chunk']").addEventListener("change", (event) => {
-      setActiveChunkId(event.target.value);
+    root.querySelector("[data-role='quick-chunk']").addEventListener("change", async (event) => {
+      await setActiveChunkIdAndApply(event.target.value);
     });
     root.querySelector("[data-role='chunk-module']").addEventListener("change", (event) => {
       navigateToChunkModule(event.target.value);
@@ -931,7 +942,7 @@
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
-    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.applyChunk)} apply chunk. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.clearLocked)} clear locked. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
+    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.applyChunk)} apply chunk. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.selectAll)} select all. ${formatHotkey(state.hotkeys.reverseScroll)} reverse scroll. ${formatHotkey(state.hotkeys.clearLocked)} clear locked. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
     root.querySelectorAll("[data-hotkey-action]").forEach((button) => {
       const actionId = button.getAttribute("data-hotkey-action") || "";
       button.textContent = state.captureHotkeyAction === actionId ? "Press key..." : formatHotkey(state.hotkeys[actionId]);
@@ -1046,6 +1057,13 @@
     state.selectedStructures = [];
     savePageState();
     refreshPanel();
+  }
+
+  async function setActiveChunkIdAndApply(chunkId) {
+    setActiveChunkId(chunkId);
+    if (!chunkId) return;
+    await delay(50);
+    await applyActiveChunk();
   }
 
   function selectFirstCurrentModuleChunk() {
@@ -1616,6 +1634,109 @@
       return { ok: true, changed: true, uncertain: updated === null };
     }
     return { ok: false, reason: enabled ? "Pins toggle did not turn on." : "Pins toggle did not turn off." };
+  }
+
+  async function toggleSelectAllLabels() {
+    let row = findLabelingSettingRow("Select all");
+    if (!row) {
+      await openLabelingPanel();
+      row = await waitFor(() => findLabelingSettingRow("Select all"), 1800, 120);
+    }
+    if (!row) {
+      return { ok: false, reason: "Could not find the Select all option. Open the Anatomical Parts menu once, then press the shortcut again." };
+    }
+
+    const toggle = findSwitchControl(row);
+    const current = toggle ? isSwitchOn(toggle) : null;
+    await realMouseClick(findToggleClickTarget(row), 0.88, 0.5);
+    await delay(350);
+
+    const updatedRow = findLabelingSettingRow("Select all") || row;
+    const updatedToggle = updatedRow ? findSwitchControl(updatedRow) : toggle;
+    const updated = updatedToggle ? isSwitchOn(updatedToggle) : null;
+    return {
+      ok: true,
+      changed: updated === null || current === null ? true : updated !== current,
+      enabled: updated === null ? (current === null ? null : !current) : updated,
+      uncertain: updated === null
+    };
+  }
+
+  async function setReverseScrollMode(enabled) {
+    const row = findLabelingSettingRow("Reverse scroll");
+    const toggle = row ? findSwitchControl(row) : null;
+    const target = row ? findToggleClickTarget(row) : null;
+    const current = toggle ? isSwitchOn(toggle) : readReverseScrollPreference();
+    if (current === enabled) {
+      writeReverseScrollPreference(enabled);
+      return { ok: true, changed: false, storageOnly: !toggle, enabled };
+    }
+
+    if (target && current !== null) {
+      await realMouseClick(target, 0.88, 0.5);
+      await delay(300);
+      const updatedRow = findLabelingSettingRow("Reverse scroll") || row;
+      const updatedToggle = updatedRow ? findSwitchControl(updatedRow) : toggle;
+      const updated = updatedToggle ? isSwitchOn(updatedToggle) : readReverseScrollPreference();
+      if (updated === enabled) {
+        writeReverseScrollPreference(enabled);
+        return { ok: true, changed: true, storageOnly: false, enabled };
+      }
+    }
+
+    writeReverseScrollPreference(enabled);
+    return { ok: true, changed: current !== enabled, storageOnly: true, enabled };
+  }
+
+  async function toggleReverseScrollMode() {
+    const row = findLabelingSettingRow("Reverse scroll");
+    const toggle = row ? findSwitchControl(row) : null;
+    const current = toggle ? isSwitchOn(toggle) : readReverseScrollPreference();
+    return setReverseScrollMode(!Boolean(current));
+  }
+
+  async function syncReverseScrollForPlane(plane, options = {}) {
+    const normalizedPlane = normalizePlaneName(plane);
+    if (!normalizedPlane) return { ok: false, reason: "Unknown plane." };
+    const enabled = normalizedPlane === "Coronal";
+    const result = await setReverseScrollMode(enabled);
+    if (result.ok) state.lastReverseScrollPlane = normalizedPlane;
+    if (!options.quiet) {
+      setStatus(result.ok ? `${normalizedPlane}: reverse scroll ${enabled ? "on" : "off"}.` : result.reason, result.ok ? 3600 : 7000);
+    }
+    return result;
+  }
+
+  async function syncReverseScrollForCurrentPlane() {
+    const plane = normalizePlaneName(getSeriesInfo().selectedPlane) || inferSelectedPlaneFromDom();
+    if (!plane || plane === state.lastReverseScrollPlane) return;
+    await syncReverseScrollForPlane(plane, { quiet: true });
+  }
+
+  function readReverseScrollPreference() {
+    return parseStorageValue(localStorage.getItem(REVERSE_SCROLL_STORAGE_KEY)) === true;
+  }
+
+  function writeReverseScrollPreference(enabled) {
+    const oldValue = localStorage.getItem(REVERSE_SCROLL_STORAGE_KEY);
+    const newValue = enabled ? "true" : "false";
+    if (oldValue !== newValue) {
+      localStorage.setItem(REVERSE_SCROLL_STORAGE_KEY, newValue);
+    }
+    try {
+      window.dispatchEvent(new StorageEvent("storage", {
+        key: REVERSE_SCROLL_STORAGE_KEY,
+        oldValue,
+        newValue,
+        url: location.href,
+        storageArea: localStorage
+      }));
+    } catch (_error) {
+      window.dispatchEvent(new Event("storage"));
+    }
+    window.dispatchEvent(new CustomEvent("imaios-cine-tools:reverse-scroll-change", {
+      detail: { enabled }
+    }));
   }
 
   function findLabelingSettingRow(labelText) {
@@ -3352,7 +3473,12 @@
     }
 
     await realMouseClick(option, 0.5, 0.5);
-    setStatus(`Switching to ${getPlaneOptionLabel(option) || plane}...`);
+    const label = getPlaneOptionLabel(option) || plane;
+    setStatus(`Switching to ${label}...`);
+    await delay(520);
+    const reverseResult = await syncReverseScrollForPlane(plane, { quiet: true });
+    const reverseState = plane === "Coronal" ? "on" : "off";
+    setStatus(reverseResult.ok ? `${label}: reverse scroll ${reverseState}.` : reverseResult.reason, reverseResult.ok ? 4200 : 7000);
   }
 
   async function switchSeriesSlot(slotNumber) {
@@ -3382,6 +3508,13 @@
     const name = getQuickSeriesOptionName(option) || `series slot ${slot}`;
     await realMouseClick(option, 0.5, 0.5);
     setStatus(`Switching to ${name}...`);
+    const plane = normalizePlaneName(name);
+    if (plane) {
+      await delay(520);
+      const reverseResult = await syncReverseScrollForPlane(plane, { quiet: true });
+      const reverseState = plane === "Coronal" ? "on" : "off";
+      setStatus(reverseResult.ok ? `${name}: reverse scroll ${reverseState}.` : reverseResult.reason, reverseResult.ok ? 4200 : 7000);
+    }
   }
 
   async function openSeriesMenuIfNeeded(menuButton, menuRect) {
@@ -3738,6 +3871,7 @@
       "im_viewer_last_slice_seen-Head-Neck-CT",
       "im_viewer_last_series_seen",
       "im_viewer-pin-mode",
+      REVERSE_SCROLL_STORAGE_KEY,
       "im_viewer-overlay-opacity",
       "im_viewer-cross-references",
       "im_viewer-menu-open"
@@ -4005,6 +4139,10 @@
       applyPinsHotkey(true);
     } else if (actionId === "labelsOn") {
       applyPinsHotkey(false);
+    } else if (actionId === "selectAll") {
+      applySelectAllHotkey();
+    } else if (actionId === "reverseScroll") {
+      applyReverseScrollHotkey();
     } else if (actionId === "clearLocked") {
       clearLockedStructuresHotkey();
     } else if (actionId === "axial") {
@@ -4030,6 +4168,21 @@
   async function applyPinsHotkey(enabled) {
     const result = await setPinsMode(enabled);
     setStatus(result.ok ? (enabled ? "Pins mode enabled." : "Labels shown.") : result.reason);
+  }
+
+  async function applySelectAllHotkey() {
+    const result = await toggleSelectAllLabels();
+    if (!result.ok) {
+      setStatus(result.reason, 7000);
+      return;
+    }
+    const stateText = result.enabled === null ? "toggled" : (result.enabled ? "on" : "off");
+    setStatus(`Select all ${stateText}.`);
+  }
+
+  async function applyReverseScrollHotkey() {
+    const result = await toggleReverseScrollMode();
+    setStatus(result.ok ? `Reverse scroll ${result.enabled ? "on" : "off"}.` : result.reason, result.ok ? 3600 : 7000);
   }
 
   async function clearLockedStructuresHotkey() {
