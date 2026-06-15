@@ -1124,6 +1124,8 @@ function buildImaiosLabelRepositoryRedoPrompt(repository) {
     "- for temporal bone, natural subchunks may include outer bony framework, mastoid and middle ear air spaces, ossicular chain, otic capsule and labyrinth, facial nerve canal, skull base vascular landmarks, and normal fissures or pseudofracture lines",
     "- if a large region is split, make every subchunk its own human code block and its own JSON chunk",
     "- use chunk titles that show the larger region and the subchunk focus, but keep only actual labels inside the code block",
+    "- every JSON chunk must include moduleKey, moduleName, modality, and modalityUrl for the IMaios module its labels come from",
+    "- never mix labels from different moduleKeys inside one JSON chunk; split them into separate chunks",
     "",
     "For every JSON label object include:",
     "- concept",
@@ -1174,7 +1176,7 @@ async function downloadImaiosLabelRepositoryBackup(repository, options = {}) {
     "application/json;charset=utf-8"
   );
   let snapshotDownloadId = null;
-  if (options.snapshot !== false) {
+  if (options.snapshot === true) {
     snapshotDownloadId = await downloadTextFileToPath(
       snapshotFilename,
       text,
@@ -1187,7 +1189,7 @@ async function downloadImaiosLabelRepositoryBackup(repository, options = {}) {
     labelCount,
     downloadFolder: `Downloads\\${IMAIOS_LABEL_REPOSITORY_SUBFOLDER}`,
     latestFilename,
-    snapshotFilename: options.snapshot === false ? "" : snapshotFilename,
+    snapshotFilename: options.snapshot === true ? snapshotFilename : "",
     latestDownloadId,
     snapshotDownloadId
   };
@@ -4828,7 +4830,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     (async () => {
       const repository = message.repository || message.payload?.repository || await loadImaiosLabelRepository();
       const result = await downloadImaiosLabelRepositoryBackup(repository, {
-        snapshot: message.snapshot !== false
+        snapshot: message.snapshot === true
       });
       sendResponse({ ok: true, result });
     })().catch((error) => {

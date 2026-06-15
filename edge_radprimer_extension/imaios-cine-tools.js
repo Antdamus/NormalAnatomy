@@ -810,7 +810,18 @@
   function refreshPanel() {
     const root = state.shadow;
     if (!root) return;
-    const chunk = getActiveChunk();
+    let chunk = getActiveChunk();
+    if (chunk && !chunkMatchesCurrentModule(chunk)) {
+      state.activeChunkId = "";
+      state.customListText = "";
+      state.selectedStructures = [];
+      chunk = null;
+      savePageState();
+    }
+    if (!chunk && !state.activeChunkId && Array.isArray(state.chunkLibrary.chunks) && state.chunkLibrary.chunks.length) {
+      chunk = selectFirstCurrentModuleChunk();
+      if (chunk) savePageState();
+    }
     const panel = root.querySelector("[data-role='panel']");
     const chunkSelect = root.querySelector("[data-role='chunk']");
     const chunkPreview = root.querySelector("[data-role='chunk-preview']");
@@ -855,9 +866,12 @@
   function buildChunkOptions() {
     const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
     if (!chunks.length) return `<option value="">No imported chunks</option>`;
+    const currentModuleKey = getCurrentModuleKey();
+    const matching = chunks.filter((chunk) => chunkMatchesCurrentModule(chunk, currentModuleKey));
+    if (!matching.length) return `<option value="">No chunks for this module</option>`;
     return [
       `<option value="">Select chunk...</option>`,
-      ...chunks.map((chunk) => `<option value="${escapeHtml(chunk.id)}">${escapeHtml(chunk.title)}</option>`)
+      ...matching.map((chunk) => `<option value="${escapeHtml(chunk.id)}">${escapeHtml(chunk.title)}</option>`)
     ].join("");
   }
 
@@ -868,6 +882,57 @@
 
   function getActiveChunk() {
     return getChunkById(state.activeChunkId);
+  }
+
+  function selectFirstCurrentModuleChunk() {
+    const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
+    const currentModuleKey = getCurrentModuleKey();
+    const matchingChunk = chunks.find((chunk) => chunkMatchesCurrentModule(chunk, currentModuleKey)) || null;
+    state.activeChunkId = matchingChunk ? matchingChunk.id : "";
+    state.customListText = matchingChunk ? chunkToPreferredLabelText(matchingChunk) : "";
+    return matchingChunk;
+  }
+
+  function chunkMatchesCurrentModule(chunk, currentModuleKey = getCurrentModuleKey()) {
+    const key = getChunkModuleKey(chunk);
+    if (!key) return true;
+    return normalizeModuleKey(key) === normalizeModuleKey(currentModuleKey);
+  }
+
+  function getChunkModuleKey(chunk) {
+    const explicit = cleanText(chunk?.moduleKey || chunk?.targetModuleKey || chunk?.imaiosModuleKey || "");
+    if (explicit) return normalizeModuleKey(explicit);
+    const fromUrl = getModuleKeyFromUrl(chunk?.modalityUrl || chunk?.url || "");
+    if (fromUrl) return fromUrl;
+    const labelKeys = unique(getChunkLabelTargets(chunk).map((target) => normalizeModuleKey(target.moduleKey)).filter(Boolean));
+    if (labelKeys.length === 1) return labelKeys[0];
+    return "";
+  }
+
+  function getChunkModuleDisplayName(chunk) {
+    return cleanText(chunk?.moduleName || chunk?.targetModuleName || chunk?.modality || getChunkModuleKey(chunk) || "");
+  }
+
+  function getModuleKeyFromUrl(url) {
+    const text = cleanText(url);
+    if (!text) return "";
+    try {
+      const parsed = new URL(text, location.href);
+      return getModuleKeyFromPath(parsed.pathname);
+    } catch (_error) {
+      return "";
+    }
+  }
+
+  function normalizeModuleKey(value) {
+    const text = cleanText(value);
+    if (!text) return "";
+    if (/^https?:\/\//i.test(text)) return getModuleKeyFromUrl(text);
+    if (text.includes("/")) return getModuleKeyFromPath(text);
+    return text
+      .replace(/[^a-z0-9]+/gi, "-")
+      .replace(/^-+|-+$/g, "")
+      .toLowerCase();
   }
 
   function buildChunkPreviewHtml() {
@@ -881,12 +946,16 @@
 
     const chunk = getActiveChunk();
     if (!chunk) {
-      const titles = chunks.slice(0, 8).map((item) => `<li>${escapeHtml(item.title || item.id)}</li>`).join("");
-      const extra = chunks.length > 8 ? `<li>...${chunks.length - 8} more</li>` : "";
+      const currentModuleKey = getCurrentModuleKey();
+      const matching = chunks.filter((item) => chunkMatchesCurrentModule(item, currentModuleKey));
+      const otherCount = chunks.length - matching.length;
+      const titles = matching.slice(0, 8).map((item) => `<li>${escapeHtml(item.title || item.id)}</li>`).join("");
+      const extra = matching.length > 8 ? `<li>...${matching.length - 8} more</li>` : "";
+      const list = titles ? `<ol class="chunk-preview-list">${titles}${extra}</ol>` : "";
       return [
         `<div class="chunk-preview-title">${escapeHtml(state.chunkLibrary.topic || "Chunk set loaded")}</div>`,
-        `<div class="chunk-preview-meta">${chunks.length} chunks available. Select one to preview its labels.</div>`,
-        `<ol class="chunk-preview-list">${titles}${extra}</ol>`
+        `<div class="chunk-preview-meta">${matching.length} chunks available for this module. ${otherCount} chunks belong to other modules.</div>`,
+        list || `<div class="chunk-preview-meta">Open a matching IMaios module to use the other chunks.</div>`
       ].join("");
     }
 
@@ -894,10 +963,15 @@
     const unavailable = targets.filter((target) => target.status && !/^(available|matched|verified|selected)$/i.test(target.status));
     const labels = targets.map((target) => `<li>${escapeHtml(target.preferredLabel)}</li>`).join("");
     const modality = chunk.modality ? `Modality: ${escapeHtml(chunk.modality)}. ` : "";
+    const moduleMatch = chunkMatchesCurrentModule(chunk);
+    const moduleName = getChunkModuleDisplayName(chunk);
+    const moduleText = moduleMatch
+      ? `Current module match${moduleName ? `: ${escapeHtml(moduleName)}` : ""}. `
+      : `Other module${moduleName ? `: ${escapeHtml(moduleName)}` : ""}. Open its module before injecting. `;
     const unavailableText = unavailable.length ? ` ${unavailable.length} flagged for review.` : "";
     return [
       `<div class="chunk-preview-title">${escapeHtml(chunk.title || chunk.id)}</div>`,
-      `<div class="chunk-preview-meta">${modality}${targets.length} labels selected.${unavailableText}</div>`,
+      `<div class="chunk-preview-meta">${moduleText}${modality}${targets.length} labels selected.${unavailableText}</div>`,
       labels ? `<ol class="chunk-preview-list">${labels}</ol>` : `<div class="chunk-preview-meta">This chunk has no labels yet.</div>`
     ].join("");
   }
@@ -913,11 +987,15 @@
       : `No saved labels for this module yet. Current visible labels: ${currentCount}.`;
     if (!chunks.length) return `${moduleInfo.name}: ${labelStatus} Import a chunk manifest from clipboard, then select a learning chunk here.`;
     const chunk = getActiveChunk();
-    if (!chunk) return `${labelStatus} ${chunks.length} chunks loaded. Select one to apply or check.`;
+    const currentModuleKey = getCurrentModuleKey();
+    const currentChunkCount = chunks.filter((item) => chunkMatchesCurrentModule(item, currentModuleKey)).length;
+    const otherChunkCount = chunks.length - currentChunkCount;
+    if (!chunk) return `${labelStatus} ${currentChunkCount} chunks for this module, ${otherChunkCount} for other modules. Select one to preview.`;
     const labelCount = getChunkLabelTargets(chunk).length;
     const modality = chunk.modality ? `Modality: ${chunk.modality}. ` : "";
     const repoCount = Array.isArray(state.labelRepository.labels) ? state.labelRepository.labels.length : 0;
-    return `${labelStatus} ${modality}${labelCount} chunk labels. ${repoCount} global repository labels loaded.`;
+    const matchText = chunkMatchesCurrentModule(chunk) ? "Chunk matches this module." : "Chunk belongs to another module.";
+    return `${labelStatus} ${matchText} ${modality}${labelCount} chunk labels. ${repoCount} global repository labels loaded.`;
   }
 
   function chunkToPreferredLabelText(chunk) {
@@ -935,6 +1013,11 @@
     const chunk = getActiveChunk();
     if (!chunk) {
       setStatus("Select or import a chunk first.");
+      return;
+    }
+    if (!chunkMatchesCurrentModule(chunk)) {
+      const moduleName = getChunkModuleDisplayName(chunk) || getChunkModuleKey(chunk);
+      setStatus(`This chunk belongs to ${moduleName || "another IMAIOS module"}. Open that module before injecting.`, 9000);
       return;
     }
     const targets = getChunkLabelTargets(chunk);
@@ -1712,11 +1795,11 @@
       state.chunkLibrary = normalizeImportedChunkLibrary(parsed);
       saveChunkLibrary();
       const chunks = state.chunkLibrary.chunks || [];
-      state.activeChunkId = chunks.length ? chunks[0].id : "";
-      if (state.activeChunkId) state.customListText = chunkToPreferredLabelText(chunks[0]);
+      const activeChunk = selectFirstCurrentModuleChunk();
       savePageState();
       refreshPanel();
-      setStatus(`Imported ${chunks.length} chunks.`);
+      const currentCount = chunks.filter((chunk) => chunkMatchesCurrentModule(chunk)).length;
+      setStatus(`Imported ${chunks.length} chunks. ${currentCount} available for this module${activeChunk ? "." : "; open the matching module to use the rest."}`, 9000);
     } catch (error) {
       setStatus(`Chunk import failed: ${error.message || error}`);
     }
@@ -1726,13 +1809,14 @@
     state.chunkLibrary = normalizeImportedChunkLibrary(value);
     saveChunkLibrary();
     const chunks = state.chunkLibrary.chunks || [];
-    state.activeChunkId = chunks.length ? chunks[0].id : "";
-    if (state.activeChunkId) state.customListText = chunkToPreferredLabelText(chunks[0]);
+    const activeChunk = selectFirstCurrentModuleChunk();
     savePageState();
     refreshPanel();
     return {
       chunkCount: chunks.length,
+      currentModuleChunkCount: chunks.filter((chunk) => chunkMatchesCurrentModule(chunk)).length,
       activeChunkId: state.activeChunkId,
+      activeChunkTitle: activeChunk ? activeChunk.title : "",
       topic: state.chunkLibrary.topic || ""
     };
   }
@@ -1920,10 +2004,13 @@
     const title = cleanText(value.title || value.name || value.id || `Chunk ${index + 1}`);
     const id = cleanText(value.id || createSlug(title) || `chunk-${index + 1}`);
     const labels = getRawChunkLabels(value).map(normalizeChunkLabel).filter(Boolean);
+    const labelModuleKeys = unique(labels.map((label) => normalizeModuleKey(label.moduleKey)).filter(Boolean));
     return {
       id,
       title,
       parentGroup: cleanText(value.parentGroup || value.group || value.region || ""),
+      moduleKey: normalizeModuleKey(value.moduleKey || value.targetModuleKey || value.imaiosModuleKey || value.moduleUrl || value.modalityUrl || value.url || "") || (labelModuleKeys.length === 1 ? labelModuleKeys[0] : ""),
+      moduleName: cleanText(value.moduleName || value.targetModuleName || ""),
       modality: cleanText(value.modality || value.imaiosModality || value.module || ""),
       modalityUrl: cleanText(value.modalityUrl || value.url || ""),
       learningOrder: Number(value.learningOrder || value.order || index + 1),
@@ -2287,7 +2374,8 @@
 
     const saveResult = await saveModuleLabelExport(exportData, { mode: "harvest" });
     if (saveResult.ok) {
-      setStatus(`Harvest saved ${saveResult.afterCount} verified labels for ${saveResult.moduleName}. ${saveResult.addedCount} new; ${missed.length} missed.${saveResult.backupText}`, 12000);
+      const removedText = saveResult.removedCount ? ` ${saveResult.removedCount} stale removed;` : "";
+      setStatus(`Harvest saved ${saveResult.afterCount} verified labels for ${saveResult.moduleName}. ${saveResult.addedCount} new;${removedText} ${missed.length} missed.${saveResult.backupText}`, 12000);
     } else {
       setStatus(saveResult.message, 10000);
     }
@@ -2347,7 +2435,7 @@
     const beforeCount = Array.isArray(before.labels) ? before.labels.length : 0;
     const beforeKeys = new Set((before.labels || []).map(normalizeText));
     const newCount = exportData.labels.filter((label) => !beforeKeys.has(normalizeText(label))).length;
-    const mergeResult = mergeAvailableLabelsIntoRepository(exportData);
+    const mergeResult = mergeAvailableLabelsIntoRepository(exportData, { replaceModuleLabels: true });
     const saveResult = await saveLabelRepository();
     const moduleName = exportData.module.name || exportData.module.key;
     if (!saveResult.ok) {
@@ -2356,6 +2444,7 @@
     const afterCount = mergeResult.labels.length;
     const verb = beforeCount ? "Updated" : "Created";
     const addedText = newCount ? ` Added ${newCount} new.` : " Already saved; refreshed timestamp.";
+    const removedText = mergeResult.removedCount ? ` Removed ${mergeResult.removedCount} stale.` : "";
     const backupResult = await backupLabelRepositoryToDownloads();
     const backupText = backupResult.ok
       ? ` Backup written to ${backupResult.result.downloadFolder}.`
@@ -2367,8 +2456,9 @@
       beforeCount,
       afterCount,
       addedCount: newCount,
+      removedCount: mergeResult.removedCount || 0,
       backupText,
-      message: `${verb} ${noun} for ${moduleName}: ${afterCount} saved.${addedText}${backupText}`
+      message: `${verb} ${noun} for ${moduleName}: ${afterCount} saved.${addedText}${removedText}${backupText}`
     };
   }
 
@@ -2402,7 +2492,7 @@
       chrome.runtime.sendMessage({
         type: "BACKUP_IMAIOS_LABEL_REPOSITORY",
         repository: state.labelRepository,
-        snapshot: true
+        snapshot: false
       }, (response) => {
         const error = chrome.runtime.lastError;
         if (error) {
@@ -2418,14 +2508,19 @@
     });
   }
 
-  function mergeAvailableLabelsIntoRepository(exportData) {
+  function mergeAvailableLabelsIntoRepository(exportData, options = {}) {
     const repository = normalizeImportedLabelRepository(state.labelRepository || {});
     const moduleKey = exportData.module?.key || getCurrentModuleKey();
     const previous = repository.moduleLabels[moduleKey] || {};
-    const labels = unique([
-      ...(Array.isArray(previous.labels) ? previous.labels : []),
-      ...(Array.isArray(exportData.labels) ? exportData.labels : [])
-    ]).sort(compareLabels);
+    const previousLabels = Array.isArray(previous.labels) ? previous.labels : [];
+    const incomingLabels = Array.isArray(exportData.labels) ? exportData.labels : [];
+    const labels = options.replaceModuleLabels === false
+      ? unique([...previousLabels, ...incomingLabels]).sort(compareLabels)
+      : unique(incomingLabels).sort(compareLabels);
+    const labelKeys = new Set(labels.map(normalizeText));
+    const removedCount = options.replaceModuleLabels === false
+      ? 0
+      : previousLabels.filter((label) => !labelKeys.has(normalizeText(label))).length;
 
     repository.moduleLabels[moduleKey] = {
       key: moduleKey,
@@ -2433,7 +2528,10 @@
       url: exportData.module?.url || previous.url || location.href,
       updatedAt: new Date().toISOString(),
       labels,
-      sourceCounts: exportData.sourceCounts || previous.sourceCounts || {}
+      sourceCounts: exportData.sourceCounts || previous.sourceCounts || {},
+      updateMode: options.replaceModuleLabels === false ? "merged" : "replaced",
+      previousLabelCount: previousLabels.length,
+      removedCount
     };
     repository.updatedAt = new Date().toISOString();
 
@@ -2489,14 +2587,18 @@
   }
 
   function getCurrentModuleKey() {
-    const path = location.pathname
+    return getModuleKeyFromPath(location.pathname) || "current-imaios-module";
+  }
+
+  function getModuleKeyFromPath(pathname) {
+    const path = cleanText(pathname)
       .replace(/^\/[a-z]{2}\//i, "/")
       .replace(/^\/e-anatomy\//i, "")
       .replace(/^\/+|\/+$/g, "")
       .replace(/[^a-z0-9]+/gi, "-")
       .replace(/^-+|-+$/g, "")
       .toLowerCase();
-    return path || "current-imaios-module";
+    return path;
   }
 
   function getCurrentModuleName() {
