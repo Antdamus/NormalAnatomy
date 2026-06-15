@@ -91,6 +91,7 @@
     rangeCineSpeed: DEFAULT_CINE_SPEED,
     rangeCineIntervalMs: cineSpeedToIntervalMs(DEFAULT_CINE_SPEED),
     recordingCine: false,
+    recordPlaneScope: "current",
     chunkLibrary: { ...EMPTY_CHUNK_LIBRARY },
     activeChunkId: "",
     labelRepository: { ...EMPTY_LABEL_REPOSITORY },
@@ -99,7 +100,8 @@
     keyEditorOpen: false,
     captureHotkeyAction: "",
     reverseScrollWatchTimer: 0,
-    lastReverseScrollPlane: ""
+    lastReverseScrollPlane: "",
+    lastRestoredDrillHash: ""
   };
 
   async function init() {
@@ -117,11 +119,21 @@
     window.addEventListener("keyup", onKeyUp, true);
     document.addEventListener("keydown", onKeyDown, true);
     document.addEventListener("keyup", onKeyUp, true);
+    window.addEventListener("hashchange", () => {
+      restoreLiveDrillFromUrl({ reason: "hashchange" }).catch((error) => {
+        setStatus(`Live drill restore failed: ${error?.message || error}`, 9000);
+      });
+    });
     syncReverseScrollForCurrentPlane().catch(() => {});
     state.reverseScrollWatchTimer = window.setInterval(() => {
       syncReverseScrollForCurrentPlane().catch(() => {});
     }, 1400);
     scheduleQuietPinsResetOnLoad();
+    setTimeout(() => {
+      restoreLiveDrillFromUrl({ reason: "load" }).catch((error) => {
+        setStatus(`Live drill restore failed: ${error?.message || error}`, 9000);
+      });
+    }, 900);
   }
 
   function loadSavedState() {
@@ -145,6 +157,9 @@
       if (typeof prefs.applyChunkClearFirst === "boolean") {
         state.applyChunkClearFirst = prefs.applyChunkClearFirst;
       }
+      if (["current", "axial-coronal", "all"].includes(prefs.recordPlaneScope)) {
+        state.recordPlaneScope = prefs.recordPlaneScope;
+      }
       state.chunkLibrary = normalizeImportedChunkLibrary(JSON.parse(localStorage.getItem(CHUNK_LIBRARY_STORAGE_KEY) || "null"));
       state.labelRepository = normalizeImportedLabelRepository(JSON.parse(localStorage.getItem(LABEL_REPOSITORY_STORAGE_KEY) || "null"));
       if (page.activeChunkId && getChunkById(page.activeChunkId)) state.activeChunkId = page.activeChunkId;
@@ -167,6 +182,7 @@
         panelPosition: state.panelPosition,
         rangeCineSpeed: state.rangeCineSpeed,
         applyChunkClearFirst: state.applyChunkClearFirst,
+        recordPlaneScope: state.recordPlaneScope,
         hotkeys: state.hotkeys
       }));
     } catch (error) {
@@ -294,6 +310,23 @@
 
         .quick-chunk-bar select {
           height: 28px;
+          font-size: 11px;
+        }
+
+        .quick-capture-actions {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 6px;
+        }
+
+        .quick-capture-actions select {
+          grid-column: 1 / -1;
+          height: 26px;
+          font-size: 11px;
+        }
+
+        .quick-capture-actions button {
+          min-height: 28px;
           font-size: 11px;
         }
 
@@ -438,6 +471,16 @@
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 7px;
+        }
+
+        .capture-actions {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 7px;
+        }
+
+        .capture-scope {
+          height: 30px;
         }
 
         .check-row {
@@ -666,6 +709,11 @@
         <div class="quick-chunk-bar">
           <div class="quick-chunk-label">Current chunk</div>
           <select data-role="quick-chunk">${chunkOptions}</select>
+          <div class="quick-capture-actions">
+            <select data-role="record-plane-scope">${buildRecordPlaneScopeOptions()}</select>
+            <button class="primary" type="button" data-action="record-cine">Record pair</button>
+            <button type="button" data-action="copy-anki-video-html">HTML</button>
+          </div>
         </div>
         <div class="controls">
           <div class="status" data-role="status">Ready.</div>
@@ -690,6 +738,26 @@
             </div>
             <input class="support-hidden" type="file" accept=".json,application/json" data-role="chunk-file-input">
             <div class="chunk-summary" data-role="chunk-summary"></div>
+          </div>
+
+          <div class="tool-section">
+            <div class="section-title">Cine capture</div>
+            <select class="capture-scope" data-role="record-plane-scope">${buildRecordPlaneScopeOptions()}</select>
+            <div class="capture-actions">
+              <button class="primary" type="button" data-action="record-cine">Record pair</button>
+              <button type="button" data-action="copy-anki-video-html">Copy Anki HTML</button>
+            </div>
+            <div class="section-note">Uses the selected chunk/range and saves the pins plus labels pair for Anki.</div>
+          </div>
+
+          <div class="tool-section">
+            <div class="section-title">Live drill links</div>
+            <div class="row three">
+              <button class="primary" type="button" data-action="copy-live-drill-link">Copy link</button>
+              <button type="button" data-action="copy-live-drill-json">Copy JSON</button>
+              <button type="button" data-action="test-live-drill">Test</button>
+            </div>
+            <div class="section-note">Uses the currently locked labels to create an Anki link that reopens this module and restores the drill.</div>
           </div>
 
           <details class="tool-section">
@@ -807,6 +875,14 @@
       savePageState();
       refreshPanel();
     });
+    root.querySelectorAll("[data-role='record-plane-scope']").forEach((select) => {
+      select.addEventListener("change", (event) => {
+        const value = String(event.target.value || "current");
+        state.recordPlaneScope = ["current", "axial-coronal", "all"].includes(value) ? value : "current";
+        savePageState();
+        refreshPanel();
+      });
+    });
     root.querySelector("[data-action='apply-chunk']").addEventListener("click", applyActiveChunk);
     root.querySelector("[data-action='check-chunk']").addEventListener("click", checkActiveChunk);
     root.querySelector("[data-action='import-chunks']").addEventListener("click", importChunksFromClipboard);
@@ -893,8 +969,15 @@
     root.querySelector("[data-action='go-range-start']").addEventListener("click", goToRangeStart);
     root.querySelector("[data-action='play-range']").addEventListener("click", toggleRangeCine);
     root.querySelector("[data-action='stop-range']").addEventListener("click", stopRangeCine);
-    root.querySelector("[data-action='record-cine']").addEventListener("click", recordCurrentCineForAnki);
-    root.querySelector("[data-action='copy-anki-video-html']").addEventListener("click", copyCurrentAnkiVideoHtml);
+    root.querySelectorAll("[data-action='record-cine']").forEach((button) => {
+      button.addEventListener("click", recordCurrentCineForAnki);
+    });
+    root.querySelectorAll("[data-action='copy-anki-video-html']").forEach((button) => {
+      button.addEventListener("click", copyCurrentAnkiVideoHtml);
+    });
+    root.querySelector("[data-action='copy-live-drill-link']").addEventListener("click", copyLiveDrillLink);
+    root.querySelector("[data-action='copy-live-drill-json']").addEventListener("click", copyLiveDrillJson);
+    root.querySelector("[data-action='test-live-drill']").addEventListener("click", testLiveDrillRestore);
     root.querySelector("[data-role='cine-speed']").addEventListener("input", (event) => {
       setCineSpeed(parseNumber(event.target.value));
     });
@@ -922,13 +1005,14 @@
     const chunkSelect = root.querySelector("[data-role='chunk']");
     const chunkPreview = root.querySelector("[data-role='chunk-preview']");
     const chunkSummary = root.querySelector("[data-role='chunk-summary']");
+    const recordPlaneScopes = Array.from(root.querySelectorAll("[data-role='record-plane-scope']"));
     const applyClearFirst = root.querySelector("[data-role='apply-clear-first']");
     const customList = root.querySelector("[data-role='custom-list']");
     const selected = root.querySelector("[data-role='selected']");
     const togglePanel = root.querySelector("[data-action='toggle-panel']");
     const toggleBoxes = root.querySelector("[data-action='toggle-boxes']");
     const playRange = root.querySelector("[data-action='play-range']");
-    const recordCine = root.querySelector("[data-action='record-cine']");
+    const recordCineButtons = Array.from(root.querySelectorAll("[data-action='record-cine']"));
     const cineSpeed = root.querySelector("[data-role='cine-speed']");
     const cineSpeedValue = root.querySelector("[data-role='cine-speed-value']");
     const keyModal = root.querySelector("[data-role='key-modal']");
@@ -943,6 +1027,11 @@
     quickChunkSelect.value = state.activeChunkId;
     chunkSelect.innerHTML = buildChunkOptions();
     chunkSelect.value = state.activeChunkId;
+    recordPlaneScopes.forEach((select) => {
+      select.innerHTML = buildRecordPlaneScopeOptions();
+      select.value = state.recordPlaneScope;
+      select.disabled = Boolean(state.recordingCine);
+    });
     applyClearFirst.checked = state.applyChunkClearFirst;
     chunkPreview.innerHTML = buildChunkPreviewHtml();
     chunkSummary.textContent = getChunkSummaryText();
@@ -951,7 +1040,10 @@
     togglePanel.textContent = state.collapsed ? "+" : "-";
     toggleBoxes.textContent = state.boxesVisible ? "Hide boxes" : "Show boxes";
     playRange.textContent = state.rangeCineRunning ? "Pause range" : "Play range";
-    recordCine.textContent = state.recordingCine ? "Recording..." : "Record pair";
+    recordCineButtons.forEach((button) => {
+      button.textContent = state.recordingCine ? "Recording..." : "Record pair";
+      button.disabled = Boolean(state.recordingCine);
+    });
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
@@ -980,6 +1072,17 @@
         return `<option value="${escapeHtml(module.key)}">${escapeHtml(`${module.name} (${countText})${urlText}`)}</option>`;
       })
     ].filter(Boolean).join("");
+  }
+
+  function buildRecordPlaneScopeOptions() {
+    const options = [
+      ["current", "Current plane"],
+      ["axial-coronal", "Axial + Coronal"],
+      ["all", "All available planes"]
+    ];
+    return options.map(([value, label]) => (
+      `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`
+    )).join("");
   }
 
   function getChunkModuleEntries() {
@@ -1344,7 +1447,8 @@
   async function searchAndClickStructure(structureName, options = {}) {
     const availability = await searchStructureAvailability(structureName, {
       timeoutMs: options.timeoutMs || 5200,
-      delayMs: options.delayMs
+      delayMs: options.delayMs,
+      exact: Boolean(options.exact)
     });
     const input = availability.input;
     if (!availability.ok) {
@@ -1373,7 +1477,7 @@
     await typeSearchValue(input, structureName, { delayMs: options.delayMs ?? 0 });
     await delay(options.afterTypeDelayMs ?? 90);
 
-    const result = await waitFor(() => findSearchResult(structureName, input), options.timeoutMs || 1600, options.intervalMs || 80);
+    const result = await waitFor(() => findSearchResult(structureName, input, { exact: Boolean(options.exact) }), options.timeoutMs || 1600, options.intervalMs || 80);
     if (!result) {
       return { ok: false, input, reason: `No search result for ${structureName}.` };
     }
@@ -1491,7 +1595,7 @@
       .trim();
   }
 
-  function findSearchResult(structureName, input) {
+  function findSearchResult(structureName, input, options = {}) {
     const expected = normalizeText(structureName);
     const inputRect = input.getBoundingClientRect();
     const candidates = Array.from(document.body.querySelectorAll(
@@ -1502,9 +1606,10 @@
       .filter((element) => isNearSearchDropdown(element, inputRect))
       .map((element) => ({
         element,
-        text: normalizeText(element.textContent || "")
+        text: normalizeText(cleanSearchResultText(element.textContent || ""))
       }))
-      .filter((item) => item.text && item.text.length <= 220 && item.text.includes(expected));
+      .filter((item) => item.text && item.text.length <= 220)
+      .filter((item) => options.exact ? item.text === expected : item.text.includes(expected));
 
     candidates.sort((a, b) => scoreSearchCandidate(b, expected) - scoreSearchCandidate(a, expected));
     return candidates.length ? getSearchResultClickTarget(candidates[0].element, inputRect) : null;
@@ -2138,6 +2243,290 @@
     ].join("\n");
     await writeClipboard(prompt);
     setStatus("Card prompt copied.");
+  }
+
+  async function copyLiveDrillJson() {
+    const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: true });
+    if (!drill.ok) {
+      setStatus(drill.reason, 7000);
+      return;
+    }
+    await writeClipboard(JSON.stringify(drill.payload, null, 2));
+    setStatus(`Live drill JSON copied with ${drill.payload.labels.length} locked labels.`);
+  }
+
+  async function copyLiveDrillLink() {
+    const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: true });
+    if (!drill.ok) {
+      setStatus(drill.reason, 7000);
+      return;
+    }
+    const link = buildLiveDrillUrl(drill.payload);
+    await writeClipboard(link);
+    setStatus(`Live drill link copied with ${drill.payload.labels.length} labels.`);
+  }
+
+  async function testLiveDrillRestore() {
+    const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: true });
+    if (!drill.ok) {
+      setStatus(drill.reason, 7000);
+      return;
+    }
+    await restoreLiveDrillPayload(drill.payload, { source: "test" });
+  }
+
+  async function buildLiveDrillPayloadFromCurrent(options = {}) {
+    const lockedLabels = await collectLockedStructureNames();
+    return buildLiveDrillPayload({ ...options, lockedLabels });
+  }
+
+  function buildLiveDrillPayload(options = {}) {
+    const lockedLabels = Array.isArray(options.lockedLabels) ? options.lockedLabels : getLockedStructureNames();
+    if (options.requireLocked && !lockedLabels.length) {
+      return { ok: false, reason: "Lock at least one structure first, then copy a live drill." };
+    }
+    const chunk = getActiveChunk();
+    const slice = getSliceInfo();
+    const series = getSeriesInfo();
+    const range = getSuggestedCineRange();
+    const module = getCurrentModuleInfo();
+    const labels = buildLiveDrillLabelEntries(lockedLabels);
+    const title = chunk?.title || labels.slice(0, 4).map((item) => item.preferredLabel).join(", ") || "IMAIOS live drill";
+    const payload = {
+      kind: "imaios-live-drill",
+      version: 1,
+      id: createSlug(`${module.key}-${title}`) || `imaios-drill-${Date.now()}`,
+      title,
+      createdAt: new Date().toISOString(),
+      module,
+      viewer: {
+        plane: normalizePlaneName(series.selectedPlane) || inferSelectedPlaneFromDom() || "",
+        selectedSeries: series.selectedSeries || "",
+        slice: {
+          value: slice.value,
+          min: slice.min,
+          max: slice.max,
+          counterText: slice.counterText || ""
+        },
+        range: {
+          startSlice: range.startSlice,
+          endSlice: range.endSlice,
+          frameCount: range.frameCount,
+          basis: range.basis || ""
+        }
+      },
+      chunk: chunk ? {
+        id: chunk.id,
+        title: chunk.title,
+        modality: chunk.modality || "",
+        moduleKey: getChunkModuleKey(chunk),
+        moduleName: getChunkModuleDisplayName(chunk),
+        modalityUrl: chunk.modalityUrl || chunk.moduleUrl || chunk.url || "",
+        learningFrame: Array.isArray(chunk.learningFrame) ? chunk.learningFrame : []
+      } : null,
+      labels,
+      lockedLabels: labels.map((item) => item.preferredLabel),
+      restorePlan: {
+        clearLockedFirst: true,
+        setPinsMode: true,
+        switchPlane: Boolean(normalizePlaneName(series.selectedPlane) || inferSelectedPlaneFromDom()),
+        setSlice: Number.isFinite(slice.value)
+      }
+    };
+    return { ok: true, payload };
+  }
+
+  async function collectLockedStructureNames() {
+    let names = findLockedStructuresPanel() ? getLockedStructureNames() : [];
+    if (names.length) return names;
+    const lockedButton = findLockedStructuresButton();
+    const expectedCount = lockedButton ? getLockedStructureCountFromButton(lockedButton) : 0;
+    if (!lockedButton || !expectedCount) return names;
+
+    await realMouseClick(lockedButton, 0.5, 0.5);
+    names = await waitFor(() => {
+      const currentNames = getLockedStructureNames();
+      return currentNames.length ? currentNames : null;
+    }, 1800, 100);
+    return names || [];
+  }
+
+  function buildLiveDrillLabelEntries(lockedLabels) {
+    const availableEntries = getAvailableStructureEntries();
+    const entriesByLabel = new Map();
+    for (const entry of availableEntries) {
+      const key = normalizeText(entry.label);
+      if (key && !entriesByLabel.has(key)) entriesByLabel.set(key, entry);
+    }
+    return unique(lockedLabels).map((label) => {
+      const repositoryEntry = findRepositoryLabelForTarget({ preferredLabel: label, aliases: [] });
+      const availableEntry = entriesByLabel.get(normalizeText(label)) || null;
+      return {
+        preferredLabel: label,
+        normalizedLabel: normalizeText(label),
+        moduleKey: getCurrentModuleKey(),
+        aliases: Array.isArray(repositoryEntry?.aliases) ? repositoryEntry.aliases : [],
+        repositoryStatus: repositoryEntry?.status || "",
+        href: availableEntry?.href || repositoryEntry?.href || "",
+        source: availableEntry?.source || "locked-structure"
+      };
+    });
+  }
+
+  function buildLiveDrillUrl(payload) {
+    const url = new URL(payload?.module?.url || location.href);
+    url.hash = `imaiosDrill=${base64UrlEncode(JSON.stringify(payload))}`;
+    return url.toString();
+  }
+
+  async function restoreLiveDrillFromUrl(options = {}) {
+    const encoded = getLiveDrillHashPayload();
+    if (!encoded) return { ok: false, reason: "No live drill hash." };
+    if (state.lastRestoredDrillHash === encoded && options.reason !== "hashchange") {
+      return { ok: true, skipped: true };
+    }
+    const payload = parseLiveDrillPayload(encoded);
+    state.lastRestoredDrillHash = encoded;
+    return restoreLiveDrillPayload(payload, { source: options.reason || "url" });
+  }
+
+  async function restoreLiveDrillPayload(payload, options = {}) {
+    const labels = getLiveDrillRestoreLabels(payload);
+    if (!labels.length) throw new Error("The live drill has no labels to restore.");
+    const expectedModuleKey = normalizeModuleKey(payload?.module?.key || payload?.module?.pathname || payload?.module?.url || "");
+    const currentModuleKey = getCurrentModuleKey();
+    if (expectedModuleKey && currentModuleKey && expectedModuleKey !== currentModuleKey) {
+      throw new Error(`This drill belongs to ${payload?.module?.name || expectedModuleKey}, not the current module.`);
+    }
+
+    const searchInput = await waitFor(() => findModuleSearchInput(), 7000, 200);
+    if (!searchInput) throw new Error("Could not find IMAIOS module search to restore the drill.");
+    setStatus(`Restoring live drill: ${payload.title || labels.length + " labels"}...`, 0);
+    const clearResult = await clearLockedStructuresForApply();
+    if (!clearResult.ok) throw new Error(clearResult.reason || "Could not clear existing locked structures.");
+
+    const plane = normalizePlaneName(payload?.viewer?.plane || "");
+    if (plane) {
+      const switched = await switchPlane(plane, { quiet: true });
+      if (!switched.ok) setStatus(`Could not switch to ${plane}; restoring labels in current plane.`, 4500);
+      await delay(350);
+    }
+
+    state.selectedStructures = labels;
+    state.customListText = labels.join("\n");
+    savePageState();
+    refreshPanel();
+    const restoreResult = await applyLiveDrillLabels(labels, payload.title ? `Live drill ${payload.title}` : "Live drill");
+
+    const sliceValue = parseNumber(payload?.viewer?.slice?.value);
+    if (Number.isFinite(sliceValue)) {
+      await delay(300);
+      await setViewerSlice(sliceValue);
+    }
+    await resetQuietPinsByCyclingPins();
+    const missSuffix = restoreResult.missing.length ? ` Missing: ${restoreResult.missing.join(", ")}.` : "";
+    setStatus(`Live drill ready: ${restoreResult.locked.length}/${labels.length} labels restored.${missSuffix}`, options.source === "test" ? 11000 : 14000);
+    return { ok: restoreResult.missing.length === 0, labelCount: labels.length, ...restoreResult };
+  }
+
+  async function applyLiveDrillLabels(labels, sourceLabel) {
+    if (state.searchRunning) {
+      return { locked: [], missing: labels, attempted: [], reason: "Search is already running." };
+    }
+    state.searchRunning = true;
+    state.cancelSearch = false;
+    const requested = unique(labels);
+    const attempted = [];
+    try {
+      const primed = await primeModuleSearch();
+      if (!primed.ok) return { locked: [], missing: requested, attempted, reason: primed.reason };
+
+      await applyLiveDrillLabelPass(requested, attempted, sourceLabel, { exact: true });
+      let locked = await readLockedNamesForVerification();
+      let missing = getMissingLabels(requested, locked);
+
+      if (missing.length) {
+        setStatus(`Retrying ${missing.length} missing live-drill label${missing.length === 1 ? "" : "s"}...`, 0);
+        await applyLiveDrillLabelPass(missing, attempted, sourceLabel, { exact: false });
+        locked = await readLockedNamesForVerification();
+        missing = getMissingLabels(requested, locked);
+      }
+
+      return { locked, missing, attempted };
+    } finally {
+      state.searchRunning = false;
+    }
+  }
+
+  async function applyLiveDrillLabelPass(labels, attempted, sourceLabel, options = {}) {
+    for (const label of labels) {
+      if (state.cancelSearch) break;
+      setStatus(`${sourceLabel}: restoring ${label}...`, 0);
+      const result = await searchAndClickStructure(label, {
+        exact: Boolean(options.exact),
+        allowFallback: !options.exact,
+        timeoutMs: options.exact ? 2600 : 5200
+      });
+      attempted.push({ label, ok: Boolean(result.ok), exact: Boolean(options.exact), reason: result.reason || "" });
+      await delay(result.ok ? 760 : 220);
+    }
+  }
+
+  async function readLockedNamesForVerification() {
+    await delay(500);
+    return collectLockedStructureNames();
+  }
+
+  function getMissingLabels(requested, locked) {
+    const lockedKeys = new Set((locked || []).map(normalizeText));
+    return requested.filter((label) => !lockedKeys.has(normalizeText(label)));
+  }
+
+  function getLiveDrillRestoreLabels(payload) {
+    const labels = Array.isArray(payload?.labels)
+      ? payload.labels.map((entry) => cleanText(entry?.preferredLabel || entry?.label || ""))
+      : [];
+    const legacyLabels = Array.isArray(payload?.lockedLabels) ? payload.lockedLabels.map(cleanText) : [];
+    return unique([...labels, ...legacyLabels]);
+  }
+
+  function getLiveDrillHashPayload(hash = location.hash) {
+    const text = String(hash || "").replace(/^#/, "");
+    if (!text) return "";
+    const params = new URLSearchParams(text);
+    return params.get("imaiosDrill") || "";
+  }
+
+  function parseLiveDrillPayload(encoded) {
+    try {
+      const text = base64UrlDecode(encoded);
+      const payload = JSON.parse(text);
+      if (payload?.kind !== "imaios-live-drill") throw new Error("Unexpected drill kind.");
+      return payload;
+    } catch (error) {
+      throw new Error(`Could not parse live drill link: ${error?.message || error}`);
+    }
+  }
+
+  function base64UrlEncode(text) {
+    const bytes = new TextEncoder().encode(String(text));
+    let binary = "";
+    const chunkSize = 0x8000;
+    for (let index = 0; index < bytes.length; index += chunkSize) {
+      binary += String.fromCharCode(...bytes.slice(index, index + chunkSize));
+    }
+    return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+  }
+
+  function base64UrlDecode(value) {
+    const normalized = String(value || "").replace(/-/g, "+").replace(/_/g, "/");
+    const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, "=");
+    const binary = atob(padded);
+    const bytes = new Uint8Array(binary.length);
+    for (let index = 0; index < binary.length; index += 1) {
+      bytes[index] = binary.charCodeAt(index);
+    }
+    return new TextDecoder().decode(bytes);
   }
 
   async function importChunksFromClipboard() {
@@ -3001,9 +3390,15 @@
     return {
       key: getCurrentModuleKey(),
       name: getCurrentModuleName(),
-      url: location.href,
+      url: getCurrentUrlWithoutHash(),
       pathname: location.pathname
     };
+  }
+
+  function getCurrentUrlWithoutHash() {
+    const url = new URL(location.href);
+    url.hash = "";
+    return url.toString();
   }
 
   function getCurrentModuleKey() {
@@ -3149,8 +3544,7 @@
 
     state.recordingCine = true;
     refreshPanel();
-    const pinsMeta = buildCineRecordingMetadata(result.range, "pins");
-    const labelsMeta = buildCineRecordingMetadata(result.range, "labels");
+    const recordingPlanes = getRecordingPlanesForScope(state.recordPlaneScope);
     let stream = null;
     let croppedCapture = null;
     const previousHostDisplay = state.host ? state.host.style.display : "";
@@ -3168,23 +3562,53 @@
       const recordingStream = croppedCapture.stream;
       stopRangeCine({ quiet: true });
 
-      const pinsDownload = await recordCineVariantForAnki(recordingStream, pinsMeta, async () => {
-        await resetQuietPinsByCyclingPins();
-      });
-      const labelsDownload = await recordCineVariantForAnki(recordingStream, labelsMeta, async () => {
-        await setPinsMode(false, { openPanel: true });
-      });
+      const recordings = [];
+      const skipped = [];
+      for (const plane of recordingPlanes) {
+        const planeLabel = normalizePlaneName(plane) || normalizePlaneName(getSeriesInfo().selectedPlane) || "current";
+        if (normalizePlaneName(plane)) {
+          setStatus(`Switching to ${planeLabel} for cine capture...`, 0);
+          const switched = await switchPlane(planeLabel, { quiet: true });
+          if (!switched?.ok) {
+            skipped.push(`${planeLabel}: ${switched?.reason || "not available"}`);
+            continue;
+          }
+          await delay(700);
+        }
 
-      const html = buildAnkiVideoPairHtml(pinsMeta.filename, labelsMeta.filename);
-      const tsv = buildAnkiCineTsv(pinsMeta, html, labelsMeta);
-      const notes = buildAnkiCineNotes(pinsMeta, html, labelsMeta);
-      await downloadTextAsFile(tsv, pinsMeta.tsvPath, "text/tab-separated-values;charset=utf-8");
-      await downloadTextAsFile(notes, pinsMeta.notesPath, "text/plain;charset=utf-8");
+        const planeRangeResult = getValidCineRange();
+        if (!planeRangeResult.ok) {
+          skipped.push(`${planeLabel}: ${planeRangeResult.reason}`);
+          continue;
+        }
+
+        const pinsMeta = buildCineRecordingMetadata(planeRangeResult.range, "pins", planeLabel);
+        const labelsMeta = buildCineRecordingMetadata(planeRangeResult.range, "labels", planeLabel);
+        const pinsDownload = await recordCineVariantForAnki(recordingStream, pinsMeta, async () => {
+          await resetQuietPinsByCyclingPins();
+        });
+        const labelsDownload = await recordCineVariantForAnki(recordingStream, labelsMeta, async () => {
+          await setPinsMode(false, { openPanel: true });
+        });
+        recordings.push({ plane: pinsMeta.plane, pinsMeta, labelsMeta, pinsDownload, labelsDownload });
+      }
+
+      if (!recordings.length) {
+        throw new Error(`No planes were recorded. ${skipped.join(" ")}`.trim());
+      }
+
+      const html = buildAnkiVideoSetHtml(recordings);
+      const tsv = buildAnkiCineSetTsv(recordings, html);
+      const notes = buildAnkiCineSetNotes(recordings, html, skipped);
+      const indexPaths = buildAnkiCineSetIndexPaths(recordings, state.recordPlaneScope);
+      await downloadTextAsFile(tsv, indexPaths.tsvPath, "text/tab-separated-values;charset=utf-8");
+      await downloadTextAsFile(notes, indexPaths.notesPath, "text/plain;charset=utf-8");
       await writeClipboard(html);
       await resetQuietPinsByCyclingPins();
-      const routedPath = pinsDownload.routedFilename || pinsDownload.filename || pinsMeta.downloadPath;
+      const routedPath = recordings[0].pinsDownload.routedFilename || recordings[0].pinsDownload.filename || recordings[0].pinsMeta.downloadPath;
       const routedFolder = String(routedPath).replace(/[\\\/][^\\\/]*$/, "").replace(/\//g, "\\");
-      setStatus(`Saved cine pair to ${routedFolder || `Downloads\\${pinsMeta.downloadPath.replace(`/${pinsMeta.filename}`, "").replace(/\//g, "\\")}`}. Copied Anki HTML.`, 12000);
+      const skippedText = skipped.length ? ` Skipped ${skipped.length}: ${skipped.join("; ")}.` : "";
+      setStatus(`Saved ${recordings.length} cine pair${recordings.length === 1 ? "" : "s"} to ${routedFolder || `Downloads\\${recordings[0].pinsMeta.folder.replace(/\//g, "\\")}`}. Copied Anki HTML.${skippedText}`, 14000);
     } catch (error) {
       stopRangeCine({ quiet: true });
       setStatus(`Cine recording failed: ${error?.message || error}`, 12000);
@@ -3195,6 +3619,12 @@
       state.recordingCine = false;
       refreshPanel();
     }
+  }
+
+  function getRecordingPlanesForScope(scope) {
+    if (scope === "axial-coronal") return ["Axial", "Coronal"];
+    if (scope === "all") return ["Axial", "Coronal", "Sagittal"];
+    return ["current"];
   }
 
   async function recordCineVariantForAnki(stream, meta, prepareViewer) {
@@ -3368,10 +3798,10 @@
     return candidates.find((type) => MediaRecorder.isTypeSupported(type)) || "";
   }
 
-  function buildCineRecordingMetadata(range, variant = "pins") {
+  function buildCineRecordingMetadata(range, variant = "pins", planeOverride = "") {
     const chunk = getActiveChunk();
     const seriesInfo = getSeriesInfo();
-    const plane = normalizePlaneName(seriesInfo.selectedPlane) || "current";
+    const plane = normalizePlaneName(planeOverride) || normalizePlaneName(seriesInfo.selectedPlane) || "current";
     const chunkTitle = chunk?.title || "IMAIOS cine";
     const articleTitle = getCurrentModuleName() || document.title || "IMAIOS";
     const articleSlug = createSlug(articleTitle) || "imaios-module";
@@ -3394,6 +3824,8 @@
       variant: variantSlug,
       variantLabel: variantSlug === "labels" ? "labels" : "pins",
       filename,
+      base,
+      folder,
       downloadPath: `${folder}/${filename}`,
       tsvPath: `${folder}/${base}_anki.tsv`,
       notesPath: `${folder}/${base}_anki_html.txt`
@@ -3418,6 +3850,23 @@
     ].join("");
   }
 
+  function buildAnkiVideoSetHtml(recordings) {
+    if (!Array.isArray(recordings) || !recordings.length) return "";
+    if (recordings.length === 1) {
+      return buildAnkiVideoPairHtml(recordings[0].pinsMeta.filename, recordings[0].labelsMeta.filename);
+    }
+    return [
+      `<div class="imaios-cine-set">`,
+      ...recordings.map((item) => [
+        `<section class="imaios-cine-plane">`,
+        `<h4>${escapeHtml(item.pinsMeta.plane)}</h4>`,
+        buildAnkiVideoPairHtml(item.pinsMeta.filename, item.labelsMeta.filename),
+        `</section>`
+      ].join("")),
+      `</div>`
+    ].join("");
+  }
+
   function buildAnkiCineTsv(meta, html, labelsMeta = null) {
     return [
       ["Module", "Chunk", "Plane", "Range", "SliceHoldMs", "PinsFile", "LabelsFile", "VideoHtml"],
@@ -3432,6 +3881,33 @@
         html
       ]
     ].map((row) => row.map(tsvCell).join("\t")).join("\n");
+  }
+
+  function buildAnkiCineSetTsv(recordings, html) {
+    const header = ["Module", "Chunk", "Plane", "Range", "SliceHoldMs", "PinsFile", "LabelsFile", "VideoHtml"];
+    const rows = recordings.map((item) => [
+      item.pinsMeta.moduleName,
+      item.pinsMeta.chunkTitle,
+      item.pinsMeta.plane,
+      `${item.pinsMeta.range.startSlice || ""}-${item.pinsMeta.range.endSlice || ""}`,
+      item.pinsMeta.sliceHoldMs,
+      item.pinsMeta.filename,
+      item.labelsMeta.filename,
+      recordings.length === 1 ? html : buildAnkiVideoPairHtml(item.pinsMeta.filename, item.labelsMeta.filename)
+    ]);
+    if (recordings.length > 1) {
+      rows.push([
+        recordings[0].pinsMeta.moduleName,
+        recordings[0].pinsMeta.chunkTitle,
+        "All recorded planes",
+        "",
+        recordings[0].pinsMeta.sliceHoldMs,
+        "",
+        "",
+        html
+      ]);
+    }
+    return [header, ...rows].map((row) => row.map(tsvCell).join("\t")).join("\n");
   }
 
   function buildAnkiCineNotes(meta, html, labelsMeta = null) {
@@ -3450,6 +3926,40 @@
       "",
       "Copy the WebM into Anki media or import the TSV after placing the media file where Anki can find it."
     ].join("\n");
+  }
+
+  function buildAnkiCineSetNotes(recordings, html, skipped = []) {
+    const first = recordings[0]?.pinsMeta;
+    return [
+      "IMAIOS Anki Cine Set",
+      `Module: ${first?.moduleName || ""}`,
+      `Chunk: ${first?.chunkTitle || ""}`,
+      `Planes: ${recordings.map((item) => item.pinsMeta.plane).join(", ")}`,
+      `Slice hold: ${first?.sliceHoldMs || ""} ms per slice`,
+      skipped.length ? `Skipped: ${skipped.join("; ")}` : "",
+      "",
+      ...recordings.flatMap((item) => [
+        `${item.pinsMeta.plane}: ${item.pinsMeta.range.startSlice || ""}-${item.pinsMeta.range.endSlice || ""}`,
+        `Pins media file: ${item.pinsMeta.filename}`,
+        `Labels media file: ${item.labelsMeta.filename}`
+      ]),
+      "",
+      "Anki HTML:",
+      html,
+      "",
+      "Copy the WebM files into Anki media or import the TSV after placing the media files where Anki can find them."
+    ].filter((line) => line !== "").join("\n");
+  }
+
+  function buildAnkiCineSetIndexPaths(recordings, scope) {
+    const first = recordings[0]?.pinsMeta;
+    const planes = recordings.map((item) => item.pinsMeta.plane).join("_");
+    const base = createSlug(`${scope || "current"}_${planes || "cine"}_anki`) || `cine_${Date.now()}_anki`;
+    const folder = first?.folder || "IMAIOS/Cines/imaios-module/chunk";
+    return {
+      tsvPath: `${folder}/${base}.tsv`,
+      notesPath: `${folder}/${base}_html.txt`
+    };
   }
 
   function tsvCell(value) {
@@ -3933,11 +4443,11 @@
     return ranges;
   }
 
-  async function switchPlane(targetPlane) {
+  async function switchPlane(targetPlane, options = {}) {
     const plane = normalizePlaneName(targetPlane);
     if (!plane) {
-      setStatus("Unknown plane.");
-      return;
+      if (!options.quiet) setStatus("Unknown plane.");
+      return { ok: false, reason: "Unknown plane." };
     }
 
     stopRangeCine({ quiet: true });
@@ -3953,17 +4463,23 @@
     }
 
     if (!option) {
-      setStatus(`Could not find ${plane}. Open the plane menu once, then press the hotkey again.`, 7000);
-      return;
+      const reason = `Could not find ${plane}.`;
+      if (!options.quiet) setStatus(`${reason} Open the plane menu once, then press the hotkey again.`, 7000);
+      return { ok: false, reason };
     }
 
     await realMouseClick(option, 0.5, 0.5);
     const label = getPlaneOptionLabel(option) || plane;
-    setStatus(`Switching to ${label}...`);
+    if (!options.quiet) setStatus(`Switching to ${label}...`);
     await delay(520);
     const reverseResult = await syncReverseScrollForPlane(plane, { quiet: true });
     const reverseState = plane === "Coronal" ? "on" : "off";
-    setStatus(reverseResult.ok ? `${label}: reverse scroll ${reverseState}.` : reverseResult.reason, reverseResult.ok ? 4200 : 7000);
+    if (!options.quiet) {
+      setStatus(reverseResult.ok ? `${label}: reverse scroll ${reverseState}.` : reverseResult.reason, reverseResult.ok ? 4200 : 7000);
+    }
+    return reverseResult.ok
+      ? { ok: true, plane, label, reverseScroll: reverseState }
+      : { ok: false, reason: reverseResult.reason || `Could not switch to ${plane}.` };
   }
 
   async function switchSeriesSlot(slotNumber) {
@@ -4761,9 +5277,11 @@
   }
 
   function getLockedStructureCount() {
-    const visibleLocked = getLockedStructureNames().length;
     const button = findLockedStructuresButton();
-    return Math.max(visibleLocked, button ? getLockedStructureCountFromButton(button) : 0);
+    const buttonCount = button ? getLockedStructureCountFromButton(button) : 0;
+    if (buttonCount) return buttonCount;
+    const panel = findLockedStructuresPanel();
+    return panel ? getLockedStructureNames().length : 0;
   }
 
   function getLockedStructureCountFromButton(button) {
@@ -4825,7 +5343,11 @@
   function findLockedStructuresPanel() {
     const elements = Array.from(document.body.querySelectorAll("section,aside,div,dialog"))
       .filter((element) => element !== state.host && isVisible(element))
-      .filter((element) => /locked structures/i.test(element.textContent || ""));
+      .filter((element) => /locked structures/i.test(element.textContent || ""))
+      .filter((element) => {
+        const text = cleanText(element.textContent || "");
+        return /clear all/i.test(text) || element.querySelector("button.clear-isolate") || getLockedStructureCountFromButton(findLockedStructuresButton()) > 0;
+      });
     elements.sort((a, b) => scoreLockedStructuresPanel(b) - scoreLockedStructuresPanel(a));
     return elements[0] || null;
   }
@@ -4919,24 +5441,140 @@
   }
 
   function getLockedStructureNames() {
-    const tags = Array.from(document.querySelectorAll(
-      [
+    const panel = findLockedStructuresPanel();
+    const lockedButton = findLockedStructuresButton();
+    const lockedButtonCount = lockedButton ? getLockedStructureCountFromButton(lockedButton) : 0;
+    if (!panel && !lockedButtonCount) return [];
+    const scope = panel || document.body;
+    const selectors = panel
+      ? [
         ".list-structure--container-tag",
         "[class*='list-structure'][class*='tag']",
         "[class*='container-tag']",
-        "[class*='locked'][class*='tag']"
-      ].join(",")
+        "[class*='locked'][class*='tag']",
+        "[class*='chip']",
+        "button",
+        "[role='button']",
+        "span",
+        "div"
+      ]
+      : [
+        "[class*='locked'][class*='tag']",
+        "[class*='isolate'][class*='tag']",
+        "[class*='chip']"
+      ];
+    const candidates = Array.from(scope.querySelectorAll(
+      selectors.join(",")
     ));
-    return unique(tags
-      .filter((element) => isVisible(element))
-      .map((element) => cleanLockedStructureText(element.textContent || ""))
-      .filter((text) => text && !/^locked structures$/i.test(text)));
+    const accepted = [];
+    const scored = candidates
+      .filter((element) => element !== state.host && isVisible(element))
+      .map((element) => ({
+        element,
+        label: extractLockedChipLabel(element),
+        score: scoreLockedLabelCandidate(element, panel)
+      }))
+      .filter((item) => item.label && item.score > 0)
+      .sort((a, b) => (
+        b.score - a.score ||
+        elementArea(a.element) - elementArea(b.element)
+      ));
+
+    for (const item of scored) {
+      if (accepted.some((acceptedItem) => acceptedItem.element.contains(item.element) || item.element.contains(acceptedItem.element))) {
+        continue;
+      }
+      accepted.push(item);
+    }
+
+    return splitCompositeLockedLabelsFromKnownSets(unique(accepted.map((item) => item.label)));
+  }
+
+  function splitCompositeLockedLabelsFromKnownSets(labels) {
+    if (!Array.isArray(labels) || labels.length !== 1) return labels;
+    const compactLabel = normalizeText(labels[0]).replace(/\s+/g, "");
+    if (!compactLabel) return labels;
+
+    const chunk = getActiveChunk();
+    const knownSets = [
+      chunk ? getChunkLabelTargets(chunk).map((target) => target.preferredLabel) : [],
+      state.selectedStructures || [],
+      parseCustomListSafe(),
+      getSavedLabelsForCurrentModule().labels || []
+    ];
+
+    for (const known of knownSets) {
+      const cleaned = unique((known || []).map(cleanText).filter(Boolean));
+      if (cleaned.length < 2 || cleaned.length > 30) continue;
+      const joined = cleaned.map((item) => normalizeText(item).replace(/\s+/g, "")).join("");
+      if (joined && joined === compactLabel) return cleaned;
+    }
+    return labels;
+  }
+
+  function parseCustomListSafe() {
+    try {
+      return state.shadow ? parseCustomList() : [];
+    } catch (_error) {
+      return [];
+    }
+  }
+
+  function extractLockedChipLabel(element) {
+    const text = cleanLockedStructureText(element.textContent || "");
+    if (!isLikelyLockedStructureChipText(text)) return "";
+    return text;
+  }
+
+  function isLikelyLockedStructureChipText(text) {
+    if (!text || text.length < 2 || text.length > 90) return false;
+    if (/^(locked structures|clear all|search in this module)$/i.test(text)) return false;
+    if (/^\d+$/.test(text)) return false;
+    if (/^[x×✕✖]+$/i.test(text)) return false;
+    if (/search|select all|anatomical parts|window|menu/i.test(text)) return false;
+    return /[a-z]/i.test(text);
+  }
+
+  function scoreLockedLabelCandidate(element, panel = null) {
+    const label = extractLockedChipLabel(element);
+    if (!label) return 0;
+    if (isCompositeLockedStructureContainer(element)) return 0;
+    const rect = element.getBoundingClientRect();
+    if (rect.width < 24 || rect.width > 680 || rect.height < 18 || rect.height > 92) return 0;
+    const className = String(element.className || "");
+    let score = 1;
+    if (panel && panel.contains(element)) score += 40;
+    if (/tag|chip|isolate|locked|structure/i.test(className)) score += 28;
+    if (element.matches("button,[role='button']")) score += 12;
+    if (element.querySelector("svg")) score += 10;
+    if (rect.height >= 24 && rect.height <= 72) score += 8;
+    if (rect.width >= 48 && rect.width <= 520) score += 6;
+    score -= Math.max(0, label.length - 55) / 4;
+    return score;
+  }
+
+  function isCompositeLockedStructureContainer(element) {
+    const children = Array.from(element.children || [])
+      .filter((child) => child instanceof Element && isVisible(child))
+      .map((child) => cleanLockedStructureText(child.textContent || ""))
+      .filter(isLikelyLockedStructureChipText);
+    if (children.length > 1) return true;
+    const svgCount = element.querySelectorAll("svg").length;
+    if (svgCount > 1) return true;
+    const text = cleanLockedStructureText(element.textContent || "");
+    if (children.length === 1 && text && text !== children[0] && text.includes(children[0])) return true;
+    return false;
+  }
+
+  function elementArea(element) {
+    const rect = element.getBoundingClientRect();
+    return Math.max(0, rect.width * rect.height);
   }
 
   function cleanLockedStructureText(text) {
     return String(text)
       .replace(/[×✕✖]/g, " ")
-      .replace(/\s+x$/i, " ")
+      .replace(/\s+[x×✕✖]\s*$/i, " ")
       .replace(/\s+/g, " ")
       .trim();
   }
