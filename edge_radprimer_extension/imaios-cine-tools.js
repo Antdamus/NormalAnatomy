@@ -21,6 +21,7 @@
     { id: "speedUp", label: "Speed up" },
     { id: "pinsOn", label: "Show pins" },
     { id: "labelsOn", label: "Show labels" },
+    { id: "clearLocked", label: "Clear locked" },
     { id: "axial", label: "Axial plane" },
     { id: "coronal", label: "Coronal plane" },
     { id: "sagittal", label: "Sagittal plane" },
@@ -44,6 +45,7 @@
     speedUp: { code: "Equal", key: "=", alt: false, ctrl: false, meta: false, shift: false },
     pinsOn: { code: "KeyP", key: "p", alt: false, ctrl: false, meta: false, shift: false },
     labelsOn: { code: "KeyL", key: "l", alt: false, ctrl: false, meta: false, shift: false },
+    clearLocked: { code: "Delete", key: "Delete", alt: true, ctrl: false, meta: false, shift: false },
     axial: { code: "Digit1", key: "1", alt: false, ctrl: false, meta: false, shift: false },
     coronal: { code: "Digit2", key: "2", alt: false, ctrl: false, meta: false, shift: false },
     sagittal: { code: "Digit3", key: "3", alt: false, ctrl: false, meta: false, shift: false },
@@ -851,7 +853,7 @@
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
-    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
+    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.clearLocked)} clear locked. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
     root.querySelectorAll("[data-hotkey-action]").forEach((button) => {
       const actionId = button.getAttribute("data-hotkey-action") || "";
       button.textContent = state.captureHotkeyAction === actionId ? "Press key..." : formatHotkey(state.hotkeys[actionId]);
@@ -3766,6 +3768,8 @@
       applyPinsHotkey(true);
     } else if (actionId === "labelsOn") {
       applyPinsHotkey(false);
+    } else if (actionId === "clearLocked") {
+      clearLockedStructuresHotkey();
     } else if (actionId === "axial") {
       switchPlane("Axial");
     } else if (actionId === "coronal") {
@@ -3789,6 +3793,183 @@
   async function applyPinsHotkey(enabled) {
     const result = await setPinsMode(enabled);
     setStatus(result.ok ? (enabled ? "Pins mode enabled." : "Labels shown.") : result.reason);
+  }
+
+  async function clearLockedStructuresHotkey() {
+    const beforeCount = getLockedStructureCount();
+    if (!beforeCount) {
+      setStatus("No locked structures to clear.");
+      return;
+    }
+
+    const clearButton = await findOrOpenClearLockedButton();
+    if (!clearButton) {
+      const fallback = await clearLockedStructureChipsIndividually();
+      if (fallback.ok) {
+        state.selectedStructures = [];
+        savePageState();
+        refreshPanel();
+        setStatus(`Cleared ${fallback.clearedCount} locked structures.`);
+        return;
+      }
+      setStatus(fallback.reason || "Could not find the locked-structures Clear all button.", 7000);
+      return;
+    }
+
+    await realMouseClick(clearButton, 0.5, 0.5);
+    const cleared = await waitFor(() => getLockedStructureCount() === 0 ? true : null, 2400, 120);
+    if (cleared) {
+      state.selectedStructures = [];
+      savePageState();
+      refreshPanel();
+      setStatus(`Cleared ${beforeCount} locked structures.`);
+    } else {
+      setStatus(`Clicked Clear all, but ${getLockedStructureCount()} locked structures still appear.`, 7000);
+    }
+  }
+
+  async function findOrOpenClearLockedButton() {
+    let clearButton = findClearLockedButton();
+    if (clearButton) return clearButton;
+
+    const lockedButton = findLockedStructuresButton();
+    if (!lockedButton) return null;
+    await realMouseClick(lockedButton, 0.5, 0.5);
+    clearButton = await waitFor(() => findClearLockedButton(), 2200, 100);
+    return clearButton || null;
+  }
+
+  function findClearLockedButton() {
+    const buttons = Array.from(document.body.querySelectorAll("button.clear-isolate, button"));
+    return buttons.find((button) => (
+      button !== state.host &&
+      isVisible(button) &&
+      /^clear all$/i.test(cleanText(button.textContent || "")) &&
+      button.classList.contains("clear-isolate")
+    )) || buttons.find((button) => (
+      button !== state.host &&
+      isVisible(button) &&
+      /^clear all$/i.test(cleanText(button.textContent || ""))
+    )) || buttons.find((button) => (
+      button !== state.host &&
+      isVisible(button) &&
+      /clear all/i.test(cleanText(button.textContent || "")) &&
+      isInsideLockedStructuresPanel(button)
+    )) || null;
+  }
+
+  function findLockedStructuresButton() {
+    const buttons = Array.from(document.body.querySelectorAll(
+      "button.number-isolated, button.icon-button.number-isolated, button[aria-pressed]"
+    ));
+    const candidates = buttons
+      .filter((button) => button !== state.host && isVisible(button))
+      .map((button) => ({ button, count: getLockedStructureCountFromButton(button), score: scoreLockedStructuresButton(button) }))
+      .filter((item) => item.count > 0 || item.score > 0)
+      .sort((a, b) => (b.count - a.count) || (b.score - a.score));
+    return candidates.length ? candidates[0].button : null;
+  }
+
+  function scoreLockedStructuresButton(button) {
+    let score = 0;
+    if (button.classList.contains("number-isolated")) score += 50;
+    if (button.classList.contains("icon-button")) score += 10;
+    if (button.querySelector("svg")) score += 5;
+    if (/\d+/.test(button.textContent || "")) score += 15;
+    return score;
+  }
+
+  function getLockedStructureCount() {
+    const visibleLocked = getLockedStructureNames().length;
+    const button = findLockedStructuresButton();
+    return Math.max(visibleLocked, button ? getLockedStructureCountFromButton(button) : 0);
+  }
+
+  function getLockedStructureCountFromButton(button) {
+    if (!button) return 0;
+    const text = cleanText(button.textContent || "");
+    const match = text.match(/\d+/);
+    return match ? Number(match[0]) || 0 : 0;
+  }
+
+  async function clearLockedStructureChipsIndividually() {
+    let panel = findLockedStructuresPanel();
+    if (!panel) {
+      const lockedButton = findLockedStructuresButton();
+      if (lockedButton) {
+        await realMouseClick(lockedButton, 0.5, 0.5);
+        panel = await waitFor(() => findLockedStructuresPanel(), 1600, 100);
+      }
+    }
+    if (!panel) {
+      return { ok: false, reason: "Could not open the locked-structures panel." };
+    }
+
+    let clearedCount = 0;
+    for (let attempt = 0; attempt < 40; attempt += 1) {
+      const removeButton = findLockedChipRemoveButton();
+      if (!removeButton) break;
+      await realMouseClick(removeButton, 0.5, 0.5);
+      clearedCount += 1;
+      await delay(90);
+      if (getLockedStructureCount() === 0) break;
+    }
+
+    if (clearedCount && getLockedStructureCount() === 0) return { ok: true, clearedCount };
+    return { ok: false, reason: clearedCount ? "Clicked locked chips, but some remain." : "Could not find locked chip remove buttons." };
+  }
+
+  function findLockedChipRemoveButton() {
+    const panel = findLockedStructuresPanel();
+    const scope = panel || document.body;
+    const candidates = Array.from(scope.querySelectorAll("button,[role='button'],span,div"))
+      .filter((element) => element !== state.host && isVisible(element))
+      .filter((element) => /[×✕✖x]$/i.test(cleanText(element.textContent || "")))
+      .filter((element) => !/clear all/i.test(cleanText(element.textContent || "")));
+    candidates.sort((a, b) => scoreLockedChipRemoveButton(b) - scoreLockedChipRemoveButton(a));
+    return candidates[0] || null;
+  }
+
+  function scoreLockedChipRemoveButton(element) {
+    const text = cleanText(element.textContent || "");
+    let score = 0;
+    if (/^[×✕✖x]$/i.test(text)) score += 40;
+    if (/[×✕✖]$/.test(text)) score += 20;
+    if (/tag|chip|structure|container/i.test(element.className || "")) score += 10;
+    const rect = element.getBoundingClientRect();
+    if (rect.width >= 16 && rect.width <= 420 && rect.height >= 16 && rect.height <= 80) score += 8;
+    return score - Math.max(0, text.length - 80);
+  }
+
+  function findLockedStructuresPanel() {
+    const elements = Array.from(document.body.querySelectorAll("section,aside,div,dialog"))
+      .filter((element) => element !== state.host && isVisible(element))
+      .filter((element) => /locked structures/i.test(element.textContent || ""));
+    elements.sort((a, b) => scoreLockedStructuresPanel(b) - scoreLockedStructuresPanel(a));
+    return elements[0] || null;
+  }
+
+  function scoreLockedStructuresPanel(element) {
+    const text = cleanText(element.textContent || "");
+    const rect = element.getBoundingClientRect();
+    let score = 0;
+    if (/locked structures/i.test(text)) score += 30;
+    if (/clear all/i.test(text)) score += 40;
+    if (/[×✕✖]/.test(text)) score += 20;
+    if (element.querySelector("button.clear-isolate")) score += 40;
+    if (element.querySelector("button,[role='button']")) score += 8;
+    if (rect.width >= 220 && rect.height >= 160) score += 12;
+    score -= Math.abs((rect.width * rect.height) - 240000) / 120000;
+    return score;
+  }
+
+  function isInsideLockedStructuresPanel(element) {
+    let node = element.parentElement;
+    while (node && node !== document.body && node !== document.documentElement) {
+      if (/locked structures/i.test(node.textContent || "")) return true;
+      node = node.parentElement;
+    }
+    return false;
   }
 
   function isEditableEventTarget(event) {
