@@ -19,6 +19,7 @@
     { id: "cineForward", label: "Cine forward" },
     { id: "speedDown", label: "Speed down" },
     { id: "speedUp", label: "Speed up" },
+    { id: "applyChunk", label: "Apply chunk" },
     { id: "pinsOn", label: "Show pins" },
     { id: "labelsOn", label: "Show labels" },
     { id: "clearLocked", label: "Clear locked" },
@@ -43,6 +44,7 @@
     cineForward: { code: "BracketRight", key: "]", alt: false, ctrl: false, meta: false, shift: false },
     speedDown: { code: "Minus", key: "-", alt: false, ctrl: false, meta: false, shift: false },
     speedUp: { code: "Equal", key: "=", alt: false, ctrl: false, meta: false, shift: false },
+    applyChunk: { code: "Enter", key: "Enter", alt: true, ctrl: false, meta: false, shift: false },
     pinsOn: { code: "KeyP", key: "p", alt: false, ctrl: false, meta: false, shift: false },
     labelsOn: { code: "KeyL", key: "l", alt: false, ctrl: false, meta: false, shift: false },
     clearLocked: { code: "Delete", key: "Delete", alt: true, ctrl: false, meta: false, shift: false },
@@ -84,6 +86,7 @@
     chunkLibrary: { ...EMPTY_CHUNK_LIBRARY },
     activeChunkId: "",
     labelRepository: { ...EMPTY_LABEL_REPOSITORY },
+    applyChunkClearFirst: true,
     hotkeys: createDefaultHotkeys(),
     keyEditorOpen: false,
     captureHotkeyAction: ""
@@ -123,6 +126,9 @@
       if (prefs.hotkeys && typeof prefs.hotkeys === "object") {
         state.hotkeys = mergeHotkeys(prefs.hotkeys);
       }
+      if (typeof prefs.applyChunkClearFirst === "boolean") {
+        state.applyChunkClearFirst = prefs.applyChunkClearFirst;
+      }
       state.chunkLibrary = normalizeImportedChunkLibrary(JSON.parse(localStorage.getItem(CHUNK_LIBRARY_STORAGE_KEY) || "null"));
       state.labelRepository = normalizeImportedLabelRepository(JSON.parse(localStorage.getItem(LABEL_REPOSITORY_STORAGE_KEY) || "null"));
       if (page.activeChunkId && getChunkById(page.activeChunkId)) state.activeChunkId = page.activeChunkId;
@@ -144,6 +150,7 @@
       localStorage.setItem(PREFS_STORAGE_KEY, JSON.stringify({
         panelPosition: state.panelPosition,
         rangeCineSpeed: state.rangeCineSpeed,
+        applyChunkClearFirst: state.applyChunkClearFirst,
         hotkeys: state.hotkeys
       }));
     } catch (error) {
@@ -188,6 +195,7 @@
 
   function buildMarkup() {
     const chunkOptions = buildChunkOptions();
+    const chunkModuleOptions = buildChunkModuleOptions();
     const hotkeyRows = HOTKEY_ACTIONS.map((action) => `
       <div class="key-row">
         <span>${escapeHtml(action.label)}</span>
@@ -393,6 +401,24 @@
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 7px;
+        }
+
+        .check-row {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          min-height: 24px;
+          font-size: 11px;
+          line-height: 1.25;
+          color: rgba(245,247,250,0.76);
+          user-select: none;
+        }
+
+        .check-row input {
+          width: 15px;
+          height: 15px;
+          margin: 0;
+          accent-color: #1f8ddc;
         }
 
         .icon-button {
@@ -614,8 +640,13 @@
 
           <div class="tool-section">
             <div class="section-title">Chunks</div>
+            <select data-role="chunk-module">${chunkModuleOptions}</select>
             <select data-role="chunk">${chunkOptions}</select>
             <div class="chunk-preview" data-role="chunk-preview"></div>
+            <label class="check-row">
+              <input type="checkbox" data-role="apply-clear-first">
+              <span>Clear locked before apply</span>
+            </label>
             <div class="row">
               <button class="primary" type="button" data-action="apply-chunk">Apply chunk</button>
               <button type="button" data-action="check-chunk">Check chunk</button>
@@ -722,6 +753,14 @@
       savePageState();
       refreshPanel();
     });
+    root.querySelector("[data-role='chunk-module']").addEventListener("change", (event) => {
+      navigateToChunkModule(event.target.value);
+    });
+    root.querySelector("[data-role='apply-clear-first']").addEventListener("change", (event) => {
+      state.applyChunkClearFirst = Boolean(event.target.checked);
+      savePageState();
+      refreshPanel();
+    });
     root.querySelector("[data-action='apply-chunk']").addEventListener("click", applyActiveChunk);
     root.querySelector("[data-action='check-chunk']").addEventListener("click", checkActiveChunk);
     root.querySelector("[data-action='import-chunks']").addEventListener("click", importChunksFromClipboard);
@@ -825,9 +864,11 @@
       if (chunk) savePageState();
     }
     const panel = root.querySelector("[data-role='panel']");
+    const chunkModuleSelect = root.querySelector("[data-role='chunk-module']");
     const chunkSelect = root.querySelector("[data-role='chunk']");
     const chunkPreview = root.querySelector("[data-role='chunk-preview']");
     const chunkSummary = root.querySelector("[data-role='chunk-summary']");
+    const applyClearFirst = root.querySelector("[data-role='apply-clear-first']");
     const customList = root.querySelector("[data-role='custom-list']");
     const selected = root.querySelector("[data-role='selected']");
     const togglePanel = root.querySelector("[data-action='toggle-panel']");
@@ -841,8 +882,11 @@
     panel.classList.toggle("collapsed", state.collapsed);
     panel.style.left = `${state.panelPosition.left}px`;
     panel.style.top = `${state.panelPosition.top}px`;
+    chunkModuleSelect.innerHTML = buildChunkModuleOptions();
+    chunkModuleSelect.value = normalizeModuleKey(getCurrentModuleKey());
     chunkSelect.innerHTML = buildChunkOptions();
     chunkSelect.value = state.activeChunkId;
+    applyClearFirst.checked = state.applyChunkClearFirst;
     chunkPreview.innerHTML = buildChunkPreviewHtml();
     chunkSummary.textContent = getChunkSummaryText();
     if (!state.customListText && chunk) state.customListText = chunkToPreferredLabelText(chunk);
@@ -853,7 +897,7 @@
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
-    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.clearLocked)} clear locked. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
+    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.applyChunk)} apply chunk. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.clearLocked)} clear locked. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
     root.querySelectorAll("[data-hotkey-action]").forEach((button) => {
       const actionId = button.getAttribute("data-hotkey-action") || "";
       button.textContent = state.captureHotkeyAction === actionId ? "Press key..." : formatHotkey(state.hotkeys[actionId]);
@@ -863,6 +907,81 @@
     const chunkNames = chunk ? getChunkLabelTargets(chunk).map((target) => target.preferredLabel) : [];
     const names = state.selectedStructures.length ? state.selectedStructures : chunkNames;
     selected.textContent = names.join(", ");
+  }
+
+  function buildChunkModuleOptions() {
+    const modules = getChunkModuleEntries();
+    if (!modules.length) return `<option value="">No session modules</option>`;
+    const currentKey = normalizeModuleKey(getCurrentModuleKey());
+    const hasCurrent = modules.some((module) => module.key === currentKey);
+    return [
+      hasCurrent ? "" : `<option value="">Current module not in session</option>`,
+      ...modules.map((module) => {
+        const countText = module.chunkCount === 1 ? "1 chunk" : `${module.chunkCount} chunks`;
+        const urlText = module.url ? "" : " - no URL";
+        return `<option value="${escapeHtml(module.key)}">${escapeHtml(`${module.name} (${countText})${urlText}`)}</option>`;
+      })
+    ].filter(Boolean).join("");
+  }
+
+  function getChunkModuleEntries() {
+    const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
+    const map = new Map();
+    for (const chunk of chunks) {
+      const key = getChunkModuleKey(chunk);
+      if (!key) continue;
+      const existing = map.get(key) || {
+        key,
+        name: getChunkModuleDisplayName(chunk) || key,
+        url: getChunkModuleUrl(chunk),
+        chunkCount: 0
+      };
+      existing.chunkCount += 1;
+      if (!existing.url) existing.url = getChunkModuleUrl(chunk);
+      if ((!existing.name || existing.name === key) && getChunkModuleDisplayName(chunk)) {
+        existing.name = getChunkModuleDisplayName(chunk);
+      }
+      map.set(key, existing);
+    }
+    return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+  }
+
+  function getChunkModuleUrl(chunk) {
+    const raw = cleanText(chunk?.modalityUrl || chunk?.moduleUrl || chunk?.targetModuleUrl || chunk?.url || "");
+    if (!raw) return "";
+    try {
+      const parsed = new URL(raw, location.href);
+      if (!/imaios\.com$/i.test(parsed.hostname.replace(/^www\./i, ""))) return "";
+      return parsed.href;
+    } catch (_error) {
+      return "";
+    }
+  }
+
+  function navigateToChunkModule(moduleKey) {
+    const key = normalizeModuleKey(moduleKey);
+    if (!key) {
+      refreshPanel();
+      return;
+    }
+    if (key === normalizeModuleKey(getCurrentModuleKey())) {
+      setStatus("Already on this IMaios module.");
+      refreshPanel();
+      return;
+    }
+    const moduleEntry = getChunkModuleEntries().find((module) => module.key === key);
+    if (!moduleEntry) {
+      setStatus("That module is not in this imported chunk session.", 7000);
+      refreshPanel();
+      return;
+    }
+    if (!moduleEntry.url) {
+      setStatus(`No URL was provided for ${moduleEntry.name}. Ask ChatGPT to include modalityUrl for each chunk.`, 9000);
+      refreshPanel();
+      return;
+    }
+    setStatus(`Opening ${moduleEntry.name}...`, 0);
+    window.location.assign(moduleEntry.url);
   }
 
   function buildChunkOptions() {
@@ -1026,6 +1145,17 @@
     if (!targets.length) {
       setStatus("Selected chunk has no labels.");
       return;
+    }
+    if (state.applyChunkClearFirst) {
+      const clearResult = await clearLockedStructuresForApply();
+      if (!clearResult.ok) {
+        setStatus(`Could not clear locked structures before applying: ${clearResult.reason}`, 9000);
+        return;
+      }
+      if (clearResult.clearedCount) {
+        setStatus(`Cleared ${clearResult.clearedCount} locked structures. Applying chunk...`, 3500);
+        await delay(250);
+      }
     }
     state.customListText = chunkToPreferredLabelText(chunk);
     state.selectedStructures = targets.map((target) => target.preferredLabel);
@@ -3764,6 +3894,8 @@
       adjustCineSpeed(-1);
     } else if (actionId === "speedUp") {
       adjustCineSpeed(1);
+    } else if (actionId === "applyChunk") {
+      applyActiveChunk();
     } else if (actionId === "pinsOn") {
       applyPinsHotkey(true);
     } else if (actionId === "labelsOn") {
@@ -3796,36 +3928,42 @@
   }
 
   async function clearLockedStructuresHotkey() {
+    const result = await clearLockedStructuresForApply();
+    if (result.ok) {
+      if (result.clearedCount) {
+        state.selectedStructures = [];
+        savePageState();
+        refreshPanel();
+        setStatus(`Cleared ${result.clearedCount} locked structures.`);
+      } else {
+        setStatus("No locked structures to clear.");
+      }
+      return;
+    }
+    setStatus(result.reason || "Could not clear locked structures.", 7000);
+  }
+
+  async function clearLockedStructuresForApply() {
     const beforeCount = getLockedStructureCount();
     if (!beforeCount) {
-      setStatus("No locked structures to clear.");
-      return;
+      return { ok: true, clearedCount: 0 };
     }
 
     const clearButton = await findOrOpenClearLockedButton();
     if (!clearButton) {
       const fallback = await clearLockedStructureChipsIndividually();
       if (fallback.ok) {
-        state.selectedStructures = [];
-        savePageState();
-        refreshPanel();
-        setStatus(`Cleared ${fallback.clearedCount} locked structures.`);
-        return;
+        return { ok: true, clearedCount: fallback.clearedCount || beforeCount };
       }
-      setStatus(fallback.reason || "Could not find the locked-structures Clear all button.", 7000);
-      return;
+      return { ok: false, reason: fallback.reason || "Could not find the locked-structures Clear all button." };
     }
 
     await realMouseClick(clearButton, 0.5, 0.5);
     const cleared = await waitFor(() => getLockedStructureCount() === 0 ? true : null, 2400, 120);
-    if (cleared) {
-      state.selectedStructures = [];
-      savePageState();
-      refreshPanel();
-      setStatus(`Cleared ${beforeCount} locked structures.`);
-    } else {
-      setStatus(`Clicked Clear all, but ${getLockedStructureCount()} locked structures still appear.`, 7000);
+    if (!cleared) {
+      return { ok: false, reason: `Clicked Clear all, but ${getLockedStructureCount()} locked structures still appear.` };
     }
+    return { ok: true, clearedCount: beforeCount };
   }
 
   async function findOrOpenClearLockedButton() {
