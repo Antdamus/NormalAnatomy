@@ -13,6 +13,7 @@
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
   const DEFAULT_CINE_SPEED = 5;
+  const PIN_MODE_STORAGE_KEY = "im_viewer-pin-mode";
   const REVERSE_SCROLL_STORAGE_KEY = "im_viewer-reverse-scroll";
   const HOTKEY_ACTIONS = [
     { id: "pingpong", label: "Cine ping-pong" },
@@ -104,6 +105,7 @@
     if (!viewerReady) return;
 
     loadSavedState();
+    writePinModePreference(true);
     syncLabelRepositoryToExtensionStorage();
     mount();
     refreshPanel();
@@ -117,6 +119,7 @@
     state.reverseScrollWatchTimer = window.setInterval(() => {
       syncReverseScrollForCurrentPlane().catch(() => {});
     }, 1400);
+    scheduleQuietPinsResetOnLoad();
   }
 
   function loadSavedState() {
@@ -823,7 +826,7 @@
       setStatus("Stopping after current step.");
     });
     root.querySelector("[data-action='set-pins']").addEventListener("click", async () => {
-      const result = await setPinsMode(true);
+      const result = await resetQuietPinsByCyclingPins();
       setStatus(result.ok ? "Pins mode enabled." : result.reason);
     });
     root.querySelector("[data-action='set-labels']").addEventListener("click", async () => {
@@ -1279,8 +1282,8 @@
     setStatus("Checking locked structures...");
     await delay(650);
     const locked = countLockedMatches(appliedNames);
-    const pinsResult = await setPinsMode(true);
-    const pinsSuffix = pinsResult.ok ? " Pins on." : ` ${pinsResult.reason}`;
+    const pinsResult = await resetQuietPinsByCyclingPins();
+    const pinsSuffix = pinsResult.ok ? " Quiet pins on." : " Could not restore quiet pins.";
     const missSuffix = missedNames.length ? ` Missed ${missedNames.length}.` : "";
     const stopSuffix = state.cancelSearch ? " Stopped." : "";
     setStatus(`${sourceLabel}: locked ${locked}/${targets.length}.${missSuffix}${stopSuffix}${pinsSuffix}`, 8000);
@@ -1323,8 +1326,8 @@
     const locked = countLockedMatches(requestedStructures);
     const total = requestedStructures.length;
     const suffix = state.cancelSearch ? " Stopped." : "";
-    const pinsResult = await setPinsMode(true);
-    const pinsSuffix = pinsResult.ok ? " Pins on." : ` ${pinsResult.reason}`;
+    const pinsResult = await resetQuietPinsByCyclingPins();
+    const pinsSuffix = pinsResult.ok ? " Quiet pins on." : " Could not restore quiet pins.";
     setStatus(`${sourceLabel}: locked ${locked}/${total}.${suffix}${pinsSuffix}`, 7000);
   }
 
@@ -1609,14 +1612,23 @@
     return style.visibility !== "hidden" && style.display !== "none" && Number(style.opacity || 1) > 0.02;
   }
 
-  async function setPinsMode(enabled) {
-    let row = findLabelingSettingRow("Pins");
-    if (!row) {
+  async function setPinsMode(enabled, options = {}) {
+    const result = await setLabelingToggleMode("Pins", enabled, {
+      missingReason: "Could not find the Pins toggle.",
+      ...options
+    });
+    if (result.ok) writePinModePreference(enabled);
+    return result;
+  }
+
+  async function setLabelingToggleMode(labelText, enabled, options = {}) {
+    let row = findLabelingSettingRow(labelText);
+    if (!row && options.openPanel !== false) {
       await openLabelingPanel();
-      row = await waitFor(() => findLabelingSettingRow("Pins"), 1800, 120);
+      row = await waitFor(() => findLabelingSettingRow(labelText), 1800, 120);
     }
     if (!row) {
-      return { ok: false, reason: "Could not find the Pins toggle." };
+      return { ok: false, reason: options.missingReason || `Could not find the ${labelText} toggle.` };
     }
 
     const toggle = findSwitchControl(row);
@@ -1627,13 +1639,53 @@
     await realMouseClick(target, 0.9, 0.5);
     await delay(350);
 
-    const updatedRow = findLabelingSettingRow("Pins") || row;
+    const updatedRow = findLabelingSettingRow(labelText) || row;
     const updatedToggle = findSwitchControl(updatedRow) || toggle;
     const updated = updatedToggle ? isSwitchOn(updatedToggle) : null;
     if (updated === enabled || updated === null) {
       return { ok: true, changed: true, uncertain: updated === null };
     }
-    return { ok: false, reason: enabled ? "Pins toggle did not turn on." : "Pins toggle did not turn off." };
+    return { ok: false, reason: enabled ? `${labelText} toggle did not turn on.` : `${labelText} toggle did not turn off.` };
+  }
+
+  async function restoreQuietPinsMode(options = {}) {
+    writePinModePreference(true);
+    const pinsResult = await setPinsMode(true, options);
+    const targetedResult = await setLabelingToggleMode("Targeted labeling", false, {
+      openPanel: options.openPanel,
+      missingReason: "Could not find the Targeted labeling toggle."
+    });
+    return {
+      ok: pinsResult.ok || targetedResult.ok,
+      pins: pinsResult,
+      targetedLabeling: targetedResult
+    };
+  }
+
+  function scheduleQuietPinsResetOnLoad() {
+    writePinModePreference(true);
+    window.setTimeout(() => {
+      resetQuietPinsByCyclingPins().catch((error) => {
+        console.warn("IMAIOS Cine Tools: could not reset quiet pins on load", error);
+      });
+    }, 1800);
+  }
+
+  async function resetQuietPinsByCyclingPins() {
+    await restoreQuietPinsMode({ openPanel: false });
+    await delay(250);
+    const offResult = await setPinsMode(false, { openPanel: true });
+    await delay(250);
+    const onResult = await restoreQuietPinsMode({ openPanel: true });
+    return { ok: offResult.ok || onResult.ok, off: offResult, on: onResult };
+  }
+
+  function writePinModePreference(enabled) {
+    const oldValue = localStorage.getItem(PIN_MODE_STORAGE_KEY);
+    const newValue = enabled ? "true" : "false";
+    if (oldValue !== newValue) {
+      localStorage.setItem(PIN_MODE_STORAGE_KEY, newValue);
+    }
   }
 
   async function toggleSelectAllLabels() {
@@ -3870,7 +3922,7 @@
       "im_viewer_last_slice_seen",
       "im_viewer_last_slice_seen-Head-Neck-CT",
       "im_viewer_last_series_seen",
-      "im_viewer-pin-mode",
+      PIN_MODE_STORAGE_KEY,
       REVERSE_SCROLL_STORAGE_KEY,
       "im_viewer-overlay-opacity",
       "im_viewer-cross-references",
@@ -4166,7 +4218,7 @@
   }
 
   async function applyPinsHotkey(enabled) {
-    const result = await setPinsMode(enabled);
+    const result = enabled ? await resetQuietPinsByCyclingPins() : await setPinsMode(false);
     setStatus(result.ok ? (enabled ? "Pins mode enabled." : "Labels shown.") : result.reason);
   }
 
