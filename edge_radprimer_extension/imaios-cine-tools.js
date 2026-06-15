@@ -2393,9 +2393,9 @@
       return;
     }
 
-    const confirmed = window.confirm(
-      `Clear the saved IMaios label cache for this module?\n\nModule: ${moduleName}\nSaved labels: ${previousCount}\n\nThis will also update the local backup file.`
-    );
+    const confirmed = typeof window.confirm === "function" && window.confirm(
+      `Clear the saved IMaios label cache for this module?\n\nModule: ${moduleName}\nSaved labels: ${previousCount}\n\nThis only clears this module, but it cannot be undone from the page cache. The local backup file will be updated too.\n\nPress OK only if you meant to clear this module.`
+    ) === true;
     if (!confirmed) {
       setStatus("Clear cache cancelled.");
       return;
