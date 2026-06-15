@@ -4830,6 +4830,42 @@ async function dispatchTabMouseClick(tabId, x, y) {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === "IMAIOS_DOWNLOAD_DATA_URL") {
+    (async () => {
+      const url = String(message.url || "");
+      const filename = String(message.filename || "").replace(/^[/\\]+/, "");
+      if (!url.startsWith("data:")) throw new Error("Expected a data URL for IMAIOS download.");
+      if (!filename) throw new Error("Missing filename for IMAIOS download.");
+      const normalizedUrl = normalizeDownloadUrl(url);
+      pendingTextDownloadFilenames.push({ url: normalizedUrl, filename });
+      let completedItem = null;
+      try {
+        const downloadId = await chrome.downloads.download({
+          url,
+          filename,
+          saveAs: false,
+          conflictAction: "overwrite"
+        });
+        completedItem = await waitForDownloadComplete(downloadId, 180000);
+        sendResponse({
+          ok: true,
+          downloadId,
+          filename,
+          routedFilename: completedItem?.filename || ""
+        });
+      } finally {
+        const index = pendingTextDownloadFilenames.findIndex(
+          (entry) => entry.url === normalizedUrl && entry.filename === filename
+        );
+        if (index >= 0) pendingTextDownloadFilenames.splice(index, 1);
+      }
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
   if (message?.type === "IMAIOS_DISPATCH_MOUSE_CLICK") {
     (async () => {
       const tabId = _sender?.tab?.id;

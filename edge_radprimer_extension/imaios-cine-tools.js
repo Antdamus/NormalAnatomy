@@ -13,6 +13,7 @@
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
   const DEFAULT_CINE_SPEED = 5;
+  const ANKI_CINE_SLICE_HOLD_MS = 1000;
   const PIN_MODE_STORAGE_KEY = "im_viewer-pin-mode";
   const REVERSE_SCROLL_STORAGE_KEY = "im_viewer-reverse-scroll";
   const HOTKEY_ACTIONS = [
@@ -89,6 +90,7 @@
     rangeCineMode: "pingpong",
     rangeCineSpeed: DEFAULT_CINE_SPEED,
     rangeCineIntervalMs: cineSpeedToIntervalMs(DEFAULT_CINE_SPEED),
+    recordingCine: false,
     chunkLibrary: { ...EMPTY_CHUNK_LIBRARY },
     activeChunkId: "",
     labelRepository: { ...EMPTY_LABEL_REPOSITORY },
@@ -749,6 +751,10 @@
               <button class="primary" type="button" data-action="play-range">Play range</button>
               <button type="button" data-action="stop-range">Stop cine</button>
             </div>
+            <div class="row">
+              <button class="primary" type="button" data-action="record-cine">Record pair</button>
+              <button type="button" data-action="copy-anki-video-html">Copy Anki HTML</button>
+            </div>
             <div class="speed-row">
               <label for="${APP_ID}-speed">Speed</label>
               <input id="${APP_ID}-speed" type="range" min="${CINE_SPEED_MIN}" max="${CINE_SPEED_MAX}" step="1" data-role="cine-speed">
@@ -887,6 +893,8 @@
     root.querySelector("[data-action='go-range-start']").addEventListener("click", goToRangeStart);
     root.querySelector("[data-action='play-range']").addEventListener("click", toggleRangeCine);
     root.querySelector("[data-action='stop-range']").addEventListener("click", stopRangeCine);
+    root.querySelector("[data-action='record-cine']").addEventListener("click", recordCurrentCineForAnki);
+    root.querySelector("[data-action='copy-anki-video-html']").addEventListener("click", copyCurrentAnkiVideoHtml);
     root.querySelector("[data-role='cine-speed']").addEventListener("input", (event) => {
       setCineSpeed(parseNumber(event.target.value));
     });
@@ -920,6 +928,7 @@
     const togglePanel = root.querySelector("[data-action='toggle-panel']");
     const toggleBoxes = root.querySelector("[data-action='toggle-boxes']");
     const playRange = root.querySelector("[data-action='play-range']");
+    const recordCine = root.querySelector("[data-action='record-cine']");
     const cineSpeed = root.querySelector("[data-role='cine-speed']");
     const cineSpeedValue = root.querySelector("[data-role='cine-speed-value']");
     const keyModal = root.querySelector("[data-role='key-modal']");
@@ -942,6 +951,7 @@
     togglePanel.textContent = state.collapsed ? "+" : "-";
     toggleBoxes.textContent = state.boxesVisible ? "Hide boxes" : "Show boxes";
     playRange.textContent = state.rangeCineRunning ? "Pause range" : "Play range";
+    recordCine.textContent = state.recordingCine ? "Recording..." : "Record pair";
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
@@ -3112,6 +3122,429 @@
     const range = getSuggestedCineRange();
     await writeClipboard(JSON.stringify(range, null, 2));
     setStatus(range.startSlice ? `Range JSON copied: ${range.startSlice}-${range.endSlice}.` : "Range JSON copied.");
+  }
+
+  async function copyCurrentAnkiVideoHtml() {
+    const range = getSuggestedCineRange();
+    const pinsMeta = buildCineRecordingMetadata(range, "pins");
+    const labelsMeta = buildCineRecordingMetadata(range, "labels");
+    await writeClipboard(buildAnkiVideoPairHtml(pinsMeta.filename, labelsMeta.filename));
+    setStatus(`Copied Anki video HTML for ${pinsMeta.filename} and ${labelsMeta.filename}.`);
+  }
+
+  async function recordCurrentCineForAnki() {
+    if (state.recordingCine) {
+      setStatus("Cine recording is already running.");
+      return;
+    }
+    const result = getValidCineRange();
+    if (!result.ok) {
+      setStatus(`${result.reason} Apply/lock a chunk first, then record.`, 8000);
+      return;
+    }
+    if (!window.MediaRecorder) {
+      setStatus("MediaRecorder is not available in this browser.", 9000);
+      return;
+    }
+
+    state.recordingCine = true;
+    refreshPanel();
+    const pinsMeta = buildCineRecordingMetadata(result.range, "pins");
+    const labelsMeta = buildCineRecordingMetadata(result.range, "labels");
+    let stream = null;
+    let croppedCapture = null;
+    const previousHostDisplay = state.host ? state.host.style.display : "";
+    try {
+      setStatus("Choose the current IMAIOS tab/window to record...", 0);
+      stream = await requestCineCaptureStream();
+
+      setStatus("Expanding viewer for cine capture...", 0);
+      await ensureViewerFullscreenForRecording();
+      await delay(500);
+
+      if (state.host) state.host.style.display = "none";
+      await delay(150);
+      croppedCapture = await createCroppedCineCaptureStream(stream);
+      const recordingStream = croppedCapture.stream;
+      stopRangeCine({ quiet: true });
+
+      const pinsDownload = await recordCineVariantForAnki(recordingStream, pinsMeta, async () => {
+        await resetQuietPinsByCyclingPins();
+      });
+      const labelsDownload = await recordCineVariantForAnki(recordingStream, labelsMeta, async () => {
+        await setPinsMode(false, { openPanel: true });
+      });
+
+      const html = buildAnkiVideoPairHtml(pinsMeta.filename, labelsMeta.filename);
+      const tsv = buildAnkiCineTsv(pinsMeta, html, labelsMeta);
+      const notes = buildAnkiCineNotes(pinsMeta, html, labelsMeta);
+      await downloadTextAsFile(tsv, pinsMeta.tsvPath, "text/tab-separated-values;charset=utf-8");
+      await downloadTextAsFile(notes, pinsMeta.notesPath, "text/plain;charset=utf-8");
+      await writeClipboard(html);
+      await resetQuietPinsByCyclingPins();
+      const routedPath = pinsDownload.routedFilename || pinsDownload.filename || pinsMeta.downloadPath;
+      const routedFolder = String(routedPath).replace(/[\\\/][^\\\/]*$/, "").replace(/\//g, "\\");
+      setStatus(`Saved cine pair to ${routedFolder || `Downloads\\${pinsMeta.downloadPath.replace(`/${pinsMeta.filename}`, "").replace(/\//g, "\\")}`}. Copied Anki HTML.`, 12000);
+    } catch (error) {
+      stopRangeCine({ quiet: true });
+      setStatus(`Cine recording failed: ${error?.message || error}`, 12000);
+    } finally {
+      if (croppedCapture) croppedCapture.cleanup();
+      if (stream) stream.getTracks().forEach((track) => track.stop());
+      if (state.host) state.host.style.display = previousHostDisplay;
+      state.recordingCine = false;
+      refreshPanel();
+    }
+  }
+
+  async function recordCineVariantForAnki(stream, meta, prepareViewer) {
+    const mimeType = getSupportedVideoMimeType();
+    const recorder = new MediaRecorder(stream, {
+      mimeType,
+      videoBitsPerSecond: 3000000
+    });
+    const chunks = [];
+    recorder.addEventListener("dataavailable", (event) => {
+      if (event.data && event.data.size) chunks.push(event.data);
+    });
+
+    const stopped = new Promise((resolve, reject) => {
+      recorder.addEventListener("stop", resolve, { once: true });
+      recorder.addEventListener("error", (event) => reject(event.error || new Error("MediaRecorder failed.")), { once: true });
+    });
+
+    setStatus(`Preparing ${meta.variantLabel} cine...`, 0);
+    await prepareViewer();
+    stopRangeCine({ quiet: true });
+    await setViewerSlice(meta.range.startSlice);
+    await delay(450);
+
+    recorder.start(250);
+    setStatus(`Recording ${meta.variantLabel} cine...`, 0);
+    await playRangeOnceForward(meta.range, meta.sliceHoldMs);
+    await delay(350);
+    if (recorder.state !== "inactive") recorder.stop();
+    await stopped;
+
+    const blob = new Blob(chunks, { type: mimeType || "video/webm" });
+    if (!blob.size) throw new Error(`${meta.variantLabel} recording produced an empty video.`);
+    return downloadDataUrl(await blobToDataUrl(blob), meta.downloadPath);
+  }
+
+  async function requestCineCaptureStream() {
+    if (!navigator.mediaDevices?.getDisplayMedia) {
+      throw new Error("Screen/tab capture is not available in this browser.");
+    }
+    try {
+      return await navigator.mediaDevices.getDisplayMedia({
+        audio: false,
+        video: {
+          frameRate: { ideal: 30, max: 30 },
+          width: { ideal: 1920 },
+          height: { ideal: 1080 }
+        },
+        preferCurrentTab: true,
+        selfBrowserSurface: "include"
+      });
+    } catch (error) {
+      const message = String(error?.message || error || "");
+      if (/denied|dismissed|cancel|notallowed/i.test(message) || error?.name === "NotAllowedError") {
+        throw new Error("Recording was cancelled or blocked. Click Record pair again and choose the current IMAIOS tab/window.");
+      }
+      throw error;
+    }
+  }
+
+  async function createCroppedCineCaptureStream(sourceStream) {
+    const video = document.createElement("video");
+    video.muted = true;
+    video.playsInline = true;
+    video.srcObject = sourceStream;
+    video.style.cssText = "position:fixed;left:-99999px;top:-99999px;width:1px;height:1px;opacity:0;pointer-events:none;";
+    document.documentElement.appendChild(video);
+    await new Promise((resolve, reject) => {
+      video.addEventListener("loadedmetadata", resolve, { once: true });
+      video.addEventListener("error", () => reject(video.error || new Error("Could not initialize capture video.")), { once: true });
+    });
+    await video.play();
+
+    const crop = getCineCropRect();
+    const scaleX = video.videoWidth / Math.max(1, window.innerWidth);
+    const scaleY = video.videoHeight / Math.max(1, window.innerHeight);
+    const sourceRect = {
+      x: Math.max(0, Math.round(crop.left * scaleX)),
+      y: Math.max(0, Math.round(crop.top * scaleY)),
+      width: Math.min(video.videoWidth, Math.round(crop.width * scaleX)),
+      height: Math.min(video.videoHeight, Math.round(crop.height * scaleY))
+    };
+    sourceRect.width = Math.max(64, Math.min(sourceRect.width, video.videoWidth - sourceRect.x));
+    sourceRect.height = Math.max(64, Math.min(sourceRect.height, video.videoHeight - sourceRect.y));
+
+    const canvas = document.createElement("canvas");
+    canvas.width = sourceRect.width;
+    canvas.height = sourceRect.height;
+    canvas.style.cssText = "position:fixed;left:-99999px;top:-99999px;width:1px;height:1px;opacity:0;pointer-events:none;";
+    document.documentElement.appendChild(canvas);
+    const context = canvas.getContext("2d", { alpha: false });
+    let stopped = false;
+    const draw = () => {
+      if (stopped) return;
+      try {
+        context.drawImage(
+          video,
+          sourceRect.x,
+          sourceRect.y,
+          sourceRect.width,
+          sourceRect.height,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+      } catch (_error) {
+        // The capture stream can briefly resize during fullscreen transitions.
+      }
+      requestAnimationFrame(draw);
+    };
+    draw();
+
+    const stream = canvas.captureStream(30);
+    return {
+      stream,
+      cleanup() {
+        stopped = true;
+        stream.getTracks().forEach((track) => track.stop());
+        video.remove();
+        canvas.remove();
+      }
+    };
+  }
+
+  function getCineCropRect() {
+    const viewport = {
+      left: 0,
+      top: 0,
+      right: window.innerWidth,
+      bottom: window.innerHeight
+    };
+    const menu = findVisibleViewerMenu();
+    if (menu) {
+      const rect = menu.getBoundingClientRect();
+      if (rect.left > window.innerWidth * 0.45) viewport.right = Math.max(320, Math.round(rect.left));
+    }
+    const browserShareNotice = Array.from(document.body.querySelectorAll("div,section"))
+      .filter((element) => element !== state.host && isVisible(element))
+      .map((element) => element.getBoundingClientRect())
+      .find((rect) => rect.top > window.innerHeight * 0.78 && rect.height < 90 && rect.width > window.innerWidth * 0.4);
+    if (browserShareNotice) viewport.bottom = Math.min(viewport.bottom, Math.max(320, Math.round(browserShareNotice.top)));
+    return {
+      left: viewport.left,
+      top: viewport.top,
+      width: Math.max(320, viewport.right - viewport.left),
+      height: Math.max(240, viewport.bottom - viewport.top)
+    };
+  }
+
+  function findVisibleViewerMenu() {
+    const candidates = Array.from(document.body.querySelectorAll(
+      "nav.menu-viewer,.menu-viewer,nav[class*='menu-viewer'],[class*='menu-viewer']"
+    ))
+      .filter((element) => element !== state.host && isVisible(element))
+      .filter((element) => /labeling|display mode|advanced settings|anatomical parts|window/i.test(element.textContent || ""));
+    candidates.sort((a, b) => {
+      const ar = a.getBoundingClientRect();
+      const br = b.getBoundingClientRect();
+      return br.left - ar.left;
+    });
+    return candidates[0] || null;
+  }
+
+  function getSupportedVideoMimeType() {
+    const candidates = [
+      "video/webm;codecs=vp9",
+      "video/webm;codecs=vp8",
+      "video/webm"
+    ];
+    return candidates.find((type) => MediaRecorder.isTypeSupported(type)) || "";
+  }
+
+  function buildCineRecordingMetadata(range, variant = "pins") {
+    const chunk = getActiveChunk();
+    const seriesInfo = getSeriesInfo();
+    const plane = normalizePlaneName(seriesInfo.selectedPlane) || "current";
+    const chunkTitle = chunk?.title || "IMAIOS cine";
+    const articleTitle = getCurrentModuleName() || document.title || "IMAIOS";
+    const articleSlug = createSlug(articleTitle) || "imaios-module";
+    const chunkSlug = createSlug(chunkTitle) || "chunk";
+    const rangeSlug = `${plane.toLowerCase()}_${range.startSlice || "start"}-${range.endSlice || "end"}`;
+    const base = createSlug(`${rangeSlug}`) || `cine-${Date.now()}`;
+    const variantSlug = variant === "labels" ? "labels" : "pins";
+    const filename = `${base}_${variantSlug}.webm`;
+    const folder = `IMAIOS/Cines/${articleSlug}/${chunkSlug}`;
+    const sliceHoldMs = ANKI_CINE_SLICE_HOLD_MS;
+    const durationMs = getCineRecordingDurationMs(range, sliceHoldMs);
+    return {
+      moduleName: articleTitle,
+      articleTitle,
+      chunkTitle,
+      plane,
+      range,
+      durationMs,
+      sliceHoldMs,
+      variant: variantSlug,
+      variantLabel: variantSlug === "labels" ? "labels" : "pins",
+      filename,
+      downloadPath: `${folder}/${filename}`,
+      tsvPath: `${folder}/${base}_anki.tsv`,
+      notesPath: `${folder}/${base}_anki_html.txt`
+    };
+  }
+
+  function getCineRecordingDurationMs(range, sliceHoldMs = ANKI_CINE_SLICE_HOLD_MS) {
+    const frameCount = Math.max(1, Number(range.frameCount) || 1);
+    return Math.max(1800, Math.round(frameCount * sliceHoldMs + 700));
+  }
+
+  function buildAnkiVideoHtml(filename) {
+    return `<video controls preload="metadata" style="max-width:100%;height:auto;" src="${escapeHtml(filename)}"></video>`;
+  }
+
+  function buildAnkiVideoPairHtml(pinsFilename, labelsFilename) {
+    return [
+      `<div class="imaios-cine-pair">`,
+      `<div><strong>Pins</strong><br>${buildAnkiVideoHtml(pinsFilename)}</div>`,
+      `<div><strong>Labels</strong><br>${buildAnkiVideoHtml(labelsFilename)}</div>`,
+      `</div>`
+    ].join("");
+  }
+
+  function buildAnkiCineTsv(meta, html, labelsMeta = null) {
+    return [
+      ["Module", "Chunk", "Plane", "Range", "SliceHoldMs", "PinsFile", "LabelsFile", "VideoHtml"],
+      [
+        meta.moduleName,
+        meta.chunkTitle,
+        meta.plane,
+        `${meta.range.startSlice || ""}-${meta.range.endSlice || ""}`,
+        meta.sliceHoldMs,
+        meta.filename,
+        labelsMeta?.filename || "",
+        html
+      ]
+    ].map((row) => row.map(tsvCell).join("\t")).join("\n");
+  }
+
+  function buildAnkiCineNotes(meta, html, labelsMeta = null) {
+    return [
+      "IMAIOS Anki Cine",
+      `Module: ${meta.moduleName}`,
+      `Chunk: ${meta.chunkTitle}`,
+      `Plane: ${meta.plane}`,
+      `Range: ${meta.range.startSlice || ""}-${meta.range.endSlice || ""}`,
+      `Slice hold: ${meta.sliceHoldMs} ms per slice`,
+      `Pins media file: ${meta.filename}`,
+      labelsMeta ? `Labels media file: ${labelsMeta.filename}` : "",
+      "",
+      "Anki HTML:",
+      html,
+      "",
+      "Copy the WebM into Anki media or import the TSV after placing the media file where Anki can find it."
+    ].join("\n");
+  }
+
+  function tsvCell(value) {
+    return String(value ?? "").replace(/\t/g, " ").replace(/\r?\n/g, "<br>");
+  }
+
+  async function downloadTextAsFile(text, filename, mimeType = "text/plain;charset=utf-8") {
+    const dataUrl = `data:${mimeType},${encodeURIComponent(text)}`;
+    return downloadDataUrl(dataUrl, filename);
+  }
+
+  async function downloadDataUrl(url, filename) {
+    const response = await chrome.runtime.sendMessage({
+      type: "IMAIOS_DOWNLOAD_DATA_URL",
+      url,
+      filename
+    });
+    if (!response?.ok) throw new Error(response?.error || `Could not download ${filename}.`);
+    return response;
+  }
+
+  function blobToDataUrl(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => resolve(String(reader.result || "")), { once: true });
+      reader.addEventListener("error", () => reject(reader.error || new Error("Could not read video blob.")), { once: true });
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async function ensureViewerFullscreenForRecording() {
+    pressGlobalKey("f", "KeyF");
+    await delay(850);
+    if (looksLikeViewerFullscreen()) return { ok: true, method: "keyboard" };
+
+    const button = findViewerFullscreenButton();
+    if (!button) return { ok: false, reason: "Could not find the IMAIOS fullscreen button." };
+    const text = cleanText(button.getAttribute("title") || button.getAttribute("aria-label") || button.textContent || "");
+    if (/exit|restore|leave/i.test(text)) return { ok: true, already: true };
+    await realMouseClick(button, 0.5, 0.5);
+    await delay(750);
+    return { ok: true, clicked: true };
+  }
+
+  function pressGlobalKey(key, code = key) {
+    const active = document.activeElement;
+    if (active && typeof active.blur === "function") active.blur();
+    const eventBase = {
+      key,
+      code,
+      bubbles: true,
+      cancelable: true,
+      view: window
+    };
+    const targets = [document.body, document.documentElement, document, window].filter(Boolean);
+    for (const target of targets) {
+      target.dispatchEvent(new KeyboardEvent("keydown", eventBase));
+      target.dispatchEvent(new KeyboardEvent("keyup", eventBase));
+    }
+  }
+
+  function looksLikeViewerFullscreen() {
+    const menu = findVisibleViewerMenu();
+    const menuLeft = menu ? menu.getBoundingClientRect().left : window.innerWidth;
+    const darkAreaWidth = menuLeft;
+    return darkAreaWidth > window.innerWidth * 0.68 && window.innerHeight > 520;
+  }
+
+  function findViewerFullscreenButton() {
+    const candidates = Array.from(document.body.querySelectorAll(
+      "button.button-fullscreen,button[title*='Fullscreen'],button[aria-label*='Fullscreen'],[role='button'][title*='Fullscreen']"
+    ))
+      .filter((element) => element !== state.host && isVisible(element));
+    candidates.sort((a, b) => {
+      const ar = a.getBoundingClientRect();
+      const br = b.getBoundingClientRect();
+      const aScore = (a.matches("button.button-fullscreen") ? 30 : 0) + ar.left / 100 + ar.top / 100;
+      const bScore = (b.matches("button.button-fullscreen") ? 30 : 0) + br.left / 100 + br.top / 100;
+      return bScore - aScore;
+    });
+    return candidates[0] || null;
+  }
+
+  async function playRangeOnceForward(range, sliceHoldMs = state.rangeCineIntervalMs) {
+    stopRangeCine({ quiet: true });
+    const start = Math.round(Number(range.startSlice));
+    const end = Math.round(Number(range.endSlice));
+    if (!Number.isFinite(start) || !Number.isFinite(end) || end < start) {
+      throw new Error("The cine range is invalid.");
+    }
+    for (let slice = start; slice <= end; slice += 1) {
+      const moved = await setViewerSlice(slice);
+      if (!moved.ok) throw new Error(moved.reason || `Could not set slice ${slice}.`);
+      await delay(sliceHoldMs);
+    }
   }
 
   async function goToRangeStart() {
