@@ -28,6 +28,7 @@ const CARD_AUDIT_SUBFOLDER = "RadPrimerAudit";
 const SOURCE_COMPARE_SUBFOLDER = "RadPrimerSourceComparison";
 const MASTER_SOURCE_SUBFOLDER = "RadiologyMasterSource";
 const IMAIOS_LABEL_REPOSITORY_SUBFOLDER = "IMAIOSLabelRepository";
+const IMAIOS_CHUNK_SESSION_SUBFOLDER = "IMAIOS/ChunkSessions";
 const IMAGE_EVIDENCE_SUBFOLDER = "image_evidence";
 const SOURCE_COMPARE_CACHE_PREFIX = "radprimerSourceCompareCache:";
 const MASTER_SOURCE_CACHE_KEY = "radprimerLatestMasterSource";
@@ -1193,6 +1194,99 @@ async function downloadImaiosLabelRepositoryBackup(repository, options = {}) {
     latestDownloadId,
     snapshotDownloadId
   };
+}
+
+async function downloadImaiosChunkSessionBackup(library, options = {}) {
+  const backup = normalizeImaiosChunkSessionForBackup(library, options);
+  const articleFolderName = sanitizeDownloadPathPart(
+    backup.articleTitle || backup.topic || "imaios_chunk_session",
+    "imaios_chunk_session"
+  );
+  const text = JSON.stringify(backup, null, 2);
+  const timestamp = createImaiosBackupTimestamp();
+  const latestFilename = `${IMAIOS_CHUNK_SESSION_SUBFOLDER}/${articleFolderName}/imaios_chunk_session_latest.json`;
+  const snapshotFilename = `${IMAIOS_CHUNK_SESSION_SUBFOLDER}/${articleFolderName}/imaios_chunk_session_${timestamp}.json`;
+  const latestDownloadId = await downloadTextFileToPath(
+    latestFilename,
+    text,
+    "application/json;charset=utf-8"
+  );
+  const snapshotDownloadId = await downloadTextFileToPath(
+    snapshotFilename,
+    text,
+    "application/json;charset=utf-8"
+  );
+
+  return {
+    articleTitle: backup.articleTitle,
+    topic: backup.topic,
+    chunkCount: backup.chunkCount,
+    moduleCount: backup.moduleCount,
+    downloadFolder: `Downloads\\${IMAIOS_CHUNK_SESSION_SUBFOLDER.replace(/\//g, "\\")}\\${articleFolderName}`,
+    latestFilename,
+    snapshotFilename,
+    latestDownloadId,
+    snapshotDownloadId
+  };
+}
+
+function normalizeImaiosChunkSessionForBackup(library, options = {}) {
+  const source = library && typeof library === "object" ? library : {};
+  const chunks = Array.isArray(source.chunks) ? source.chunks : [];
+  const articleTitle = cleanArticleTitleText(
+    source.articleTitle ||
+    source.sourceTitle ||
+    source.topic ||
+    source.title ||
+    source.name ||
+    options.articleTitle ||
+    options.topic ||
+    "IMAIOS chunk session"
+  );
+  const moduleMap = new Map();
+  for (const chunk of chunks) {
+    const key = String(chunk?.moduleKey || chunk?.targetModuleKey || chunk?.imaiosModuleKey || "").trim()
+      || deriveImaiosModuleKeyFromUrl(chunk?.modalityUrl || chunk?.moduleUrl || chunk?.url || "");
+    const name = String(chunk?.moduleName || chunk?.targetModuleName || chunk?.modality || key || "Unspecified module").trim();
+    const url = String(chunk?.modalityUrl || chunk?.moduleUrl || chunk?.targetModuleUrl || chunk?.url || "").trim();
+    const mapKey = key || name;
+    if (!moduleMap.has(mapKey)) {
+      moduleMap.set(mapKey, { key, name, url, chunkCount: 0 });
+    }
+    moduleMap.get(mapKey).chunkCount += 1;
+    if (!moduleMap.get(mapKey).url && url) moduleMap.get(mapKey).url = url;
+  }
+
+  return {
+    kind: "imaios-chunk-session-backup",
+    version: 1,
+    createdAt: new Date().toISOString(),
+    articleTitle,
+    topic: String(source.topic || articleTitle || "").trim(),
+    source: String(source.source || options.source || "").trim(),
+    page: options.page || {},
+    chunkCount: chunks.length,
+    moduleCount: moduleMap.size,
+    modules: Array.from(moduleMap.values()),
+    library: source
+  };
+}
+
+function deriveImaiosModuleKeyFromUrl(url) {
+  const text = String(url || "").trim();
+  if (!text) return "";
+  try {
+    const parsed = new URL(text);
+    return parsed.pathname
+      .replace(/^\/[a-z]{2}\//i, "/")
+      .replace(/^\/e-anatomy\//i, "")
+      .replace(/^\/+|\/+$/g, "")
+      .replace(/[^a-z0-9]+/gi, "-")
+      .replace(/^-+|-+$/g, "")
+      .toLowerCase();
+  } catch (_error) {
+    return "";
+  }
 }
 
 function cleanArticleTitleText(value) {
@@ -4831,6 +4925,23 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const repository = message.repository || message.payload?.repository || await loadImaiosLabelRepository();
       const result = await downloadImaiosLabelRepositoryBackup(repository, {
         snapshot: message.snapshot === true
+      });
+      sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "BACKUP_IMAIOS_CHUNK_SESSION") {
+    (async () => {
+      const library = message.library || message.payload?.library || message.payload || {};
+      const result = await downloadImaiosChunkSessionBackup(library, {
+        articleTitle: message.articleTitle || message.payload?.articleTitle || "",
+        topic: message.topic || message.payload?.topic || "",
+        source: message.source || message.payload?.source || "",
+        page: message.page || message.payload?.page || {}
       });
       sendResponse({ ok: true, result });
     })().catch((error) => {

@@ -260,6 +260,27 @@
           display: none;
         }
 
+        .quick-chunk-bar {
+          display: grid;
+          gap: 5px;
+          padding: 8px 10px;
+          border-bottom: 1px solid rgba(255,255,255,0.09);
+          background: rgba(0,0,0,0.18);
+        }
+
+        .quick-chunk-label {
+          font-size: 10px;
+          line-height: 1.1;
+          font-weight: 750;
+          text-transform: uppercase;
+          color: rgba(245,247,250,0.52);
+        }
+
+        .quick-chunk-bar select {
+          height: 28px;
+          font-size: 11px;
+        }
+
         .row {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -626,17 +647,12 @@
           <div class="title">IMAIOS Labels</div>
           <button class="icon-button" type="button" data-action="toggle-panel" title="Minimize panel">-</button>
         </div>
+        <div class="quick-chunk-bar">
+          <div class="quick-chunk-label">Current chunk</div>
+          <select data-role="quick-chunk">${chunkOptions}</select>
+        </div>
         <div class="controls">
           <div class="status" data-role="status">Ready.</div>
-
-          <div class="tool-section">
-            <div class="section-title">Label repository</div>
-            <div class="section-note">Harvest search-verifies this module and saves only labels IMAIOS can actually find.</div>
-            <div class="main-actions">
-              <button class="primary" type="button" data-action="harvest-labels">Harvest labels</button>
-              <button class="danger" type="button" data-action="clear-module-labels">Clear cache</button>
-            </div>
-          </div>
 
           <div class="tool-section">
             <div class="section-title">Chunks</div>
@@ -651,12 +667,23 @@
               <button class="primary" type="button" data-action="apply-chunk">Apply chunk</button>
               <button type="button" data-action="check-chunk">Check chunk</button>
             </div>
-            <div class="row">
-              <button type="button" data-action="import-chunks">Import chunks</button>
+            <div class="row three">
+              <button type="button" data-action="import-chunks">Import clipboard</button>
+              <button type="button" data-action="import-chunk-file">Import file</button>
               <button type="button" data-action="stop-search">Stop</button>
             </div>
+            <input class="support-hidden" type="file" accept=".json,application/json" data-role="chunk-file-input">
             <div class="chunk-summary" data-role="chunk-summary"></div>
           </div>
+
+          <details class="tool-section">
+            <summary>Label repository</summary>
+            <div class="section-note">Harvest search-verifies this module and saves only labels IMAIOS can actually find.</div>
+            <div class="main-actions">
+              <button class="primary" type="button" data-action="harvest-labels">Harvest labels</button>
+              <button class="danger" type="button" data-action="clear-module-labels">Clear cache</button>
+            </div>
+          </details>
 
           <details class="tool-section">
             <summary>Manual list</summary>
@@ -747,11 +774,10 @@
       savePageState();
     });
     root.querySelector("[data-role='chunk']").addEventListener("change", (event) => {
-      state.activeChunkId = event.target.value;
-      const chunk = getActiveChunk();
-      if (chunk) state.customListText = chunkToPreferredLabelText(chunk);
-      savePageState();
-      refreshPanel();
+      setActiveChunkId(event.target.value);
+    });
+    root.querySelector("[data-role='quick-chunk']").addEventListener("change", (event) => {
+      setActiveChunkId(event.target.value);
     });
     root.querySelector("[data-role='chunk-module']").addEventListener("change", (event) => {
       navigateToChunkModule(event.target.value);
@@ -764,6 +790,11 @@
     root.querySelector("[data-action='apply-chunk']").addEventListener("click", applyActiveChunk);
     root.querySelector("[data-action='check-chunk']").addEventListener("click", checkActiveChunk);
     root.querySelector("[data-action='import-chunks']").addEventListener("click", importChunksFromClipboard);
+    root.querySelector("[data-action='import-chunk-file']").addEventListener("click", () => {
+      const input = root.querySelector("[data-role='chunk-file-input']");
+      if (input) input.click();
+    });
+    root.querySelector("[data-role='chunk-file-input']").addEventListener("change", importChunksFromSelectedFile);
     root.querySelector("[data-action='import-labels']").addEventListener("click", importLabelsFromClipboard);
     root.querySelector("[data-action='copy-chunk-template']").addEventListener("click", copyChunkTemplate);
     root.querySelector("[data-action='harvest-labels']").addEventListener("click", harvestCurrentModuleLabels);
@@ -865,6 +896,7 @@
     }
     const panel = root.querySelector("[data-role='panel']");
     const chunkModuleSelect = root.querySelector("[data-role='chunk-module']");
+    const quickChunkSelect = root.querySelector("[data-role='quick-chunk']");
     const chunkSelect = root.querySelector("[data-role='chunk']");
     const chunkPreview = root.querySelector("[data-role='chunk-preview']");
     const chunkSummary = root.querySelector("[data-role='chunk-summary']");
@@ -884,6 +916,8 @@
     panel.style.top = `${state.panelPosition.top}px`;
     chunkModuleSelect.innerHTML = buildChunkModuleOptions();
     chunkModuleSelect.value = normalizeModuleKey(getCurrentModuleKey());
+    quickChunkSelect.innerHTML = buildChunkOptions();
+    quickChunkSelect.value = state.activeChunkId;
     chunkSelect.innerHTML = buildChunkOptions();
     chunkSelect.value = state.activeChunkId;
     applyClearFirst.checked = state.applyChunkClearFirst;
@@ -1003,6 +1037,15 @@
 
   function getActiveChunk() {
     return getChunkById(state.activeChunkId);
+  }
+
+  function setActiveChunkId(chunkId) {
+    state.activeChunkId = chunkId || "";
+    const chunk = getActiveChunk();
+    state.customListText = chunk ? chunkToPreferredLabelText(chunk) : "";
+    state.selectedStructures = [];
+    savePageState();
+    refreshPanel();
   }
 
   function selectFirstCurrentModuleChunk() {
@@ -1924,33 +1967,83 @@
     }
     try {
       const parsed = JSON.parse(text);
-      state.chunkLibrary = normalizeImportedChunkLibrary(parsed);
-      saveChunkLibrary();
-      const chunks = state.chunkLibrary.chunks || [];
-      const activeChunk = selectFirstCurrentModuleChunk();
-      savePageState();
-      refreshPanel();
-      const currentCount = chunks.filter((chunk) => chunkMatchesCurrentModule(chunk)).length;
-      setStatus(`Imported ${chunks.length} chunks. ${currentCount} available for this module${activeChunk ? "." : "; open the matching module to use the rest."}`, 9000);
+      const result = await importChunkLibraryObject(parsed, { source: "clipboard" });
+      setChunkImportStatus(result, "Imported");
     } catch (error) {
       setStatus(`Chunk import failed: ${error.message || error}`);
     }
   }
 
-  function importChunkLibraryObject(value) {
+  async function importChunksFromSelectedFile(event) {
+    const input = event.currentTarget;
+    const file = input?.files && input.files[0] ? input.files[0] : null;
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text);
+      const result = await importChunkLibraryObject(parsed, { source: "file", fileName: file.name });
+      setChunkImportStatus(result, "Imported file");
+    } catch (error) {
+      setStatus(`Chunk file import failed: ${error.message || error}`, 9000);
+    } finally {
+      if (input) input.value = "";
+    }
+  }
+
+  async function importChunkLibraryObject(value, options = {}) {
     state.chunkLibrary = normalizeImportedChunkLibrary(value);
     saveChunkLibrary();
     const chunks = state.chunkLibrary.chunks || [];
     const activeChunk = selectFirstCurrentModuleChunk();
     savePageState();
     refreshPanel();
+    const backupResult = await backupChunkSessionToDownloads(options.source || "chatgpt");
     return {
       chunkCount: chunks.length,
       currentModuleChunkCount: chunks.filter((chunk) => chunkMatchesCurrentModule(chunk)).length,
       activeChunkId: state.activeChunkId,
       activeChunkTitle: activeChunk ? activeChunk.title : "",
-      topic: state.chunkLibrary.topic || ""
+      topic: state.chunkLibrary.topic || "",
+      backup: backupResult
     };
+  }
+
+  function setChunkImportStatus(result, prefix) {
+    const backupText = result.backup?.ok
+      ? ` Backup written to ${result.backup.result.downloadFolder}.`
+      : ` Backup failed: ${result.backup?.error || "unknown error"}`;
+    const availableText = result.activeChunkId ? "." : "; open the matching module to use the rest.";
+    setStatus(`${prefix} ${result.chunkCount} chunks. ${result.currentModuleChunkCount} available for this module${availableText}${backupText}`, 12000);
+  }
+
+  async function backupChunkSessionToDownloads(source = "") {
+    if (!chrome?.runtime?.sendMessage) {
+      return { ok: false, error: "Extension messaging is unavailable." };
+    }
+    return new Promise((resolve) => {
+      chrome.runtime.sendMessage({
+        type: "BACKUP_IMAIOS_CHUNK_SESSION",
+        library: state.chunkLibrary,
+        topic: state.chunkLibrary.topic || "",
+        source,
+        page: {
+          title: document.title,
+          url: location.href,
+          module: getCurrentModuleInfo()
+        }
+      }, (response) => {
+        const error = chrome.runtime.lastError;
+        if (error) {
+          resolve({ ok: false, error: error.message || String(error) });
+          return;
+        }
+        if (!response?.ok) {
+          resolve({ ok: false, error: response?.error || "unknown chunk backup error" });
+          return;
+        }
+        resolve({ ok: true, result: response.result || {} });
+      });
+    });
   }
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
@@ -1967,7 +2060,7 @@
     if (message?.type !== "IMAIOS_IMPORT_CHUNKS") return false;
     (async () => {
       try {
-        const result = importChunkLibraryObject(message.library || message.payload || {});
+        const result = await importChunkLibraryObject(message.library || message.payload || {}, { source: "chatgpt" });
         const labelExport = buildAvailableLabelsExport();
         let labelSaveResult = { ok: true };
         if (labelExport.labels.length) {
@@ -1977,7 +2070,10 @@
         if (!labelSaveResult.ok) {
           setStatus(`Imported ${result.chunkCount} chunks, but label save failed: ${labelSaveResult.error}`, 9000);
         } else {
-          setStatus(`Imported ${result.chunkCount} chunks from ChatGPT. Saved ${labelExport.labels.length} module labels.`);
+          const backupText = result.backup?.ok
+            ? ` Backup written to ${result.backup.result.downloadFolder}.`
+            : ` Backup failed: ${result.backup?.error || "unknown error"}`;
+          setStatus(`Imported ${result.chunkCount} chunks from ChatGPT. Saved ${labelExport.labels.length} module labels.${backupText}`, 12000);
         }
         sendResponse({
           ok: true,
@@ -2115,20 +2211,29 @@
   }
 
   function normalizeImportedChunkLibrary(value) {
-    const rawChunks = Array.isArray(value)
-      ? value
-      : value && Array.isArray(value.chunks)
-        ? value.chunks
+    const source = unwrapChunkLibraryPayload(value);
+    const rawChunks = Array.isArray(source)
+      ? source
+      : source && Array.isArray(source.chunks)
+        ? source.chunks
         : [];
     const chunks = rawChunks.map(normalizeChunk).filter(Boolean);
     return {
-      version: Number(value && value.version) || 1,
-      topic: cleanText(value && value.topic || ""),
-      source: cleanText(value && value.source || ""),
-      unmatchedConcepts: normalizeGapReviewList(value && (value.unmatchedConcepts || value.gapReview || value.needsReview)),
+      version: Number(source && source.version) || 1,
+      articleTitle: cleanText(source && (source.articleTitle || source.sourceTitle || source.title || "")),
+      topic: cleanText(source && (source.topic || source.articleTitle || source.sourceTitle || source.title || "")),
+      source: cleanText(source && source.source || ""),
+      unmatchedConcepts: normalizeGapReviewList(source && (source.unmatchedConcepts || source.gapReview || source.needsReview)),
       importedAt: new Date().toISOString(),
       chunks
     };
+  }
+
+  function unwrapChunkLibraryPayload(value) {
+    if (value?.kind === "imaios-chunk-session-backup" && value.library) return value.library;
+    if (value?.library?.kind === "imaios-chunk-library" || Array.isArray(value?.library?.chunks)) return value.library;
+    if (value?.payload?.library) return value.payload.library;
+    return value;
   }
 
   function normalizeChunk(value, index) {
