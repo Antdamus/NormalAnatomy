@@ -543,6 +543,28 @@
     return extractImaiosChunkLibraryFromText(extractCleanMarkdownText(markdownRoot));
   };
 
+  const extractLatestImaiosLiveDrillCardPlan = () => {
+    const latestTurn = getLatestAssistantTurn();
+    const finalMessage = getFinalAssistantMessage(latestTurn);
+    const markdownRoot = getMarkdownRoot(finalMessage);
+    const codeBlocks = getAssistantCodeBlocks(markdownRoot);
+    for (let index = codeBlocks.length - 1; index >= 0; index -= 1) {
+      const parsed = parseImaiosLiveDrillCardPlan(codeBlocks[index]);
+      if (parsed) {
+        return {
+          plan: parsed,
+          text: JSON.stringify(parsed, null, 2)
+        };
+      }
+    }
+
+    const text = extractCleanMarkdownText(markdownRoot);
+    const parsed = extractImaiosLiveDrillCardPlanFromText(text);
+    return parsed
+      ? { plan: parsed, text: JSON.stringify(parsed, null, 2) }
+      : null;
+  };
+
   const looksLikeInlineCardTsv = (text) => {
     const value = stripOuterCodeFence(text);
     const lines = value
@@ -1018,12 +1040,39 @@
   const sendCompletionMessage = (type, payload, result) => {
     if (!type) return;
     try {
+      if (type === "IMAIOS_LIVE_DRILL_CARD_PLAN_DONE") {
+        createOrUpdateOverlay({
+          phase: "SENDING_IMAIOS",
+          message: "Live-drill card plan captured. Sending it back to IMAIOS...",
+          text: result?.assistantText || result?.text || ""
+        });
+      }
       chrome.runtime.sendMessage({
         type,
         completionPayload: payload || null,
         result: result || null
       }, async (response) => {
-        if (chrome.runtime.lastError) return;
+        if (chrome.runtime.lastError) {
+          if (type === "IMAIOS_LIVE_DRILL_CARD_PLAN_DONE") {
+            createOrUpdateOverlay({
+              phase: "IMAIOS_SEND_ERROR",
+              error: chrome.runtime.lastError.message || "Could not send the live-drill plan to IMAIOS.",
+              text: result?.assistantText || result?.text || ""
+            });
+          }
+          return;
+        }
+        if (type === "IMAIOS_LIVE_DRILL_CARD_PLAN_DONE") {
+          createOrUpdateOverlay({
+            phase: response?.ok ? "IMAIOS_TSV_READY" : "IMAIOS_TSV_ERROR",
+            message: response?.ok
+              ? response.result?.message || response.result?.result?.message || "IMAIOS generated the live-drill TSV."
+              : `IMAIOS handoff failed: ${response?.error || "unknown error"}`,
+            error: response?.ok ? "" : response?.error || "unknown error",
+            text: result?.assistantText || result?.text || ""
+          });
+          return;
+        }
         if (!response?.clipboardText) return;
 
         const copied = await copyToClipboard(response.clipboardText);
@@ -1454,31 +1503,77 @@
     shadow.innerHTML = `
       <style>
         :host { all: initial; }
-        .wrap {
+        .shell {
+          position: relative;
           display: flex;
+          align-items: flex-end;
+          flex-direction: column;
           gap: 8px;
-          align-items: center;
-          padding: 8px;
+          font: 12px/1.25 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        .toggle {
+          border: 1px solid rgba(255,255,255,.16);
           border-radius: 999px;
-          background: rgba(18, 24, 33, .84);
+          padding: 9px 12px;
+          background: rgba(18, 24, 33, .9);
+          color: #edf4ff;
+          box-shadow: 0 16px 48px rgba(0,0,0,.34);
+          backdrop-filter: blur(16px);
+          cursor: pointer;
+          font: inherit;
+          font-weight: 850;
+          letter-spacing: 0;
+        }
+        .toggle:hover { background: rgba(30, 41, 59, .94); }
+        .panel {
+          width: 256px;
+          display: grid;
+          gap: 10px;
+          padding: 10px;
+          border-radius: 14px;
+          background: rgba(18, 24, 33, .94);
           border: 1px solid rgba(255,255,255,.16);
           box-shadow: 0 16px 48px rgba(0,0,0,.34);
           backdrop-filter: blur(16px);
-          font: 12px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          color: #edf4ff;
+        }
+        .panel.hidden { display: none; }
+        .group {
+          display: grid;
+          gap: 6px;
+          padding: 8px;
+          border-radius: 10px;
+          background: rgba(255,255,255,.055);
+        }
+        .group-title {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          color: #bfdbfe;
+          font-size: 11px;
+          font-weight: 850;
+          text-transform: uppercase;
+          letter-spacing: .04em;
+        }
+        .button-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6px;
         }
         button {
           border: 0;
-          border-radius: 999px;
-          padding: 9px 12px;
+          border-radius: 9px;
+          padding: 9px 10px;
           background: #dbeafe;
           color: #0f172a;
           cursor: pointer;
           font: inherit;
           font-weight: 850;
           letter-spacing: 0;
-          white-space: nowrap;
         }
         button:hover { background: #bfdbfe; }
+        button.primary { background: #93c5fd; }
+        button.primary:hover { background: #60a5fa; }
         button.secondary { background: #dcfce7; }
         button.secondary:hover { background: #bbf7d0; }
         button.import { background: #fef3c7; }
@@ -1494,14 +1589,99 @@
           box-shadow: 0 0 0 4px rgba(147,197,253,.16);
         }
       </style>
-      <div class="wrap">
-        <span class="dot" aria-hidden="true"></span>
-        <button class="tsv" type="button" title="Capture this ChatGPT TSV into the matching RadPrimer audit bundle">Capture TSV</button>
-        <button class="secondary imaios" type="button" title="Copy the latest IMaios chunk JSON for the IMaios extension">Copy IMaios chunks</button>
-        <button class="import import-imaios" type="button" title="Import the latest IMaios chunk JSON from this ChatGPT response into IMaios">Import IMaios</button>
-        <button class="redo redo-imaios" type="button" title="Ask ChatGPT to regenerate only the IMaios chunks using the latest saved label repository, then import them into IMaios">Redo + Import</button>
+      <div class="shell">
+        <button class="toggle" type="button" title="Open RadPrimer and IMAIOS recovery tools">Rad tools</button>
+        <div class="panel hidden">
+          <div class="group">
+            <div class="group-title"><span class="dot" aria-hidden="true"></span>Live drill cards</div>
+            <button class="primary live-drill-plan" type="button" title="Send the latest imaios-live-drill-card-plan JSON back to the open IMAIOS tab and generate TSV">Send plan to IMAIOS</button>
+          </div>
+          <div class="group">
+            <div class="group-title">IMAIOS chunks</div>
+            <div class="button-row">
+              <button class="secondary imaios" type="button" title="Copy the latest IMAIOS chunk JSON for the IMAIOS extension">Copy chunks</button>
+              <button class="import import-imaios" type="button" title="Import the latest IMAIOS chunk JSON from this ChatGPT response into IMAIOS">Import chunks</button>
+            </div>
+            <button class="redo redo-imaios" type="button" title="Ask ChatGPT to regenerate only the IMAIOS chunks using the latest saved label repository, then import them into IMAIOS">Redo chunks + import</button>
+          </div>
+          <div class="group">
+            <div class="group-title">RadPrimer audit</div>
+            <button class="tsv" type="button" title="Capture this ChatGPT TSV into the matching RadPrimer audit bundle">Capture TSV</button>
+          </div>
+        </div>
       </div>
     `;
+
+    shadow.querySelector(".toggle").addEventListener("click", () => {
+      const panel = shadow.querySelector(".panel");
+      panel.classList.toggle("hidden");
+    });
+
+    const sendLatestLiveDrillPlanToImaios = async () => {
+      const extracted = extractLatestImaiosLiveDrillCardPlan();
+      if (!extracted?.plan) {
+        return {
+          ok: false,
+          error: "No valid imaios-live-drill-card-plan JSON block was found in the latest assistant response."
+        };
+      }
+      const response = await sendRuntimeRequest({
+        type: "SEND_IMAIOS_LIVE_DRILL_CARD_PLAN",
+        assistantText: extracted.text
+      });
+      if (!response?.ok) {
+        return {
+          ok: false,
+          error: response?.error || "Could not send the live-drill card plan to IMAIOS.",
+          text: extracted.text
+        };
+      }
+      return {
+        ok: true,
+        plan: extracted.plan,
+        text: extracted.text,
+        result: response.result || {}
+      };
+    };
+
+    shadow.querySelector(".live-drill-plan").addEventListener("click", async () => {
+      const button = shadow.querySelector(".live-drill-plan");
+      button.disabled = true;
+      button.textContent = "Sending...";
+      try {
+        createOrUpdateOverlay({
+          phase: "IMAIOS_PLAN",
+          message: "Sending latest live-drill card plan to IMAIOS..."
+        });
+        const result = await sendLatestLiveDrillPlanToImaios();
+        if (!result.ok) {
+          createOrUpdateOverlay({
+            phase: "IMAIOS_PLAN_ERROR",
+            error: result.error,
+            text: result.text || ""
+          });
+          return;
+        }
+        createOrUpdateOverlay({
+          phase: "IMAIOS_TSV_READY",
+          message: result.result?.message || result.result?.result?.message || `Sent ${result.plan.cards?.length || 0} planned live-drill card groups to IMAIOS.`,
+          text: result.text
+        });
+        createOrUpdateCompactStatus({
+          phase: "IMAIOS",
+          message: "Live-drill TSV generated.",
+          done: true
+        });
+      } catch (error) {
+        createOrUpdateOverlay({
+          phase: "ERROR",
+          error: String(error?.message || error)
+        });
+      } finally {
+        button.disabled = false;
+        button.textContent = "Send plan to IMAIOS";
+      }
+    });
 
     shadow.querySelector(".tsv").addEventListener("click", async () => {
       const button = shadow.querySelector(".tsv");

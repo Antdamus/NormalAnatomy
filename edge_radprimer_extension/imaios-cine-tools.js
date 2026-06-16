@@ -12,6 +12,7 @@
   const EMPTY_CHUNK_LIBRARY = { version: 1, topic: "", chunks: [] };
   const EMPTY_LABEL_REPOSITORY = { version: 1, updatedAt: "", modalities: [], labels: [], moduleLabels: {} };
   const DEFAULT_DECK_ROOT = "IMAIOS";
+  const LIVE_DRILL_ANKI_NOTE_TYPE = "Basic";
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
   const DEFAULT_CINE_SPEED = 5;
@@ -325,21 +326,15 @@
           font-size: 11px;
         }
 
-        .quick-capture-actions {
+        .quick-card-actions {
           display: grid;
-          grid-template-columns: 1fr auto;
+          grid-template-columns: 1fr;
           gap: 6px;
         }
 
-        .quick-capture-actions select {
-          grid-column: 1 / -1;
-          height: 26px;
-          font-size: 11px;
-        }
-
-        .quick-capture-actions button {
-          min-height: 28px;
-          font-size: 11px;
+        .quick-card-actions button {
+          min-height: 30px;
+          font-size: 12px;
         }
 
         .row {
@@ -726,10 +721,8 @@
         <div class="quick-chunk-bar">
           <div class="quick-chunk-label">Current chunk</div>
           <select data-role="quick-chunk">${chunkOptions}</select>
-          <div class="quick-capture-actions">
-            <select data-role="record-plane-scope">${buildRecordPlaneScopeOptions()}</select>
-            <button class="primary" type="button" data-action="record-cine">Record pair</button>
-            <button type="button" data-action="copy-anki-video-html">HTML</button>
+          <div class="quick-card-actions">
+            <button class="primary" type="button" data-action="run-live-drill-card-automation">Create Anki cards</button>
           </div>
         </div>
         <div class="controls">
@@ -770,30 +763,34 @@
             <div class="chunk-summary" data-role="routing-summary"></div>
           </details>
 
-          <div class="tool-section">
-            <div class="section-title">Cine capture</div>
+          <details class="tool-section">
+            <summary>Cine capture</summary>
             <select class="capture-scope" data-role="record-plane-scope">${buildRecordPlaneScopeOptions()}</select>
             <div class="capture-actions">
               <button class="primary" type="button" data-action="record-cine">Record pair</button>
               <button type="button" data-action="copy-anki-video-html">Copy Anki HTML</button>
             </div>
             <div class="section-note">Uses the selected chunk/range and saves the pins plus labels pair for Anki.</div>
-          </div>
+          </details>
 
-          <div class="tool-section">
-            <div class="section-title">Live drill links</div>
+          <details class="tool-section">
+            <summary>Live drill links</summary>
             <div class="row three">
               <button class="primary" type="button" data-action="copy-live-drill-link">Copy link</button>
               <button type="button" data-action="copy-live-drill-json">Copy JSON</button>
               <button type="button" data-action="test-live-drill">Test</button>
             </div>
             <div class="row">
-              <button class="primary" type="button" data-action="run-live-drill-card-automation">Auto GPT to TSV</button>
               <button type="button" data-action="copy-live-drill-card-prompt">Copy prompt</button>
               <button type="button" data-action="import-live-drill-card-plan">Plan to TSV</button>
             </div>
+            <div class="row">
+              <button type="button" data-action="probe-locked-details">Probe label info</button>
+              <button type="button" data-action="probe-locked-details-search-pin">Probe via search pins</button>
+              <button type="button" data-action="copy-slice">Copy slice</button>
+            </div>
             <div class="section-note">Uses the currently locked labels to create Anki live-drill links. ChatGPT plans the subgroups; this extension builds the links.</div>
-          </div>
+          </details>
 
           <details class="tool-section">
             <summary>Label repository</summary>
@@ -829,7 +826,7 @@
             </div>
             <div class="row">
               <button type="button" data-action="copy-probe">Copy probe</button>
-              <button type="button" data-action="copy-slice">Copy slice</button>
+              <button type="button" data-action="probe-locked-details">Probe label info</button>
             </div>
           </details>
 
@@ -1011,7 +1008,13 @@
     root.querySelector("[data-action='copy-labels']").addEventListener("click", copyAvailableLabels);
     root.querySelector("[data-action='export-label-repo']").addEventListener("click", exportLabelRepository);
     root.querySelector("[data-action='copy-probe']").addEventListener("click", copyViewerProbe);
-    root.querySelector("[data-action='copy-slice']").addEventListener("click", copySliceProbe);
+    root.querySelectorAll("[data-action='copy-slice']").forEach((button) => {
+      button.addEventListener("click", copySliceProbe);
+    });
+    root.querySelectorAll("[data-action='probe-locked-details']").forEach((button) => {
+      button.addEventListener("click", copyLockedLabelDetailProbe);
+    });
+    root.querySelector("[data-action='probe-locked-details-search-pin']").addEventListener("click", copyLockedLabelSearchPinDetailProbe);
     root.querySelector("[data-action='copy-range']").addEventListener("click", copyCineRangeText);
     root.querySelector("[data-action='copy-range-json']").addEventListener("click", copyCineRangeJson);
     root.querySelector("[data-action='go-range-start']").addEventListener("click", goToRangeStart);
@@ -1026,7 +1029,9 @@
     root.querySelector("[data-action='copy-live-drill-link']").addEventListener("click", copyLiveDrillLink);
     root.querySelector("[data-action='copy-live-drill-json']").addEventListener("click", copyLiveDrillJson);
     root.querySelector("[data-action='test-live-drill']").addEventListener("click", testLiveDrillRestore);
-    root.querySelector("[data-action='run-live-drill-card-automation']").addEventListener("click", runLiveDrillCardAutomation);
+    root.querySelectorAll("[data-action='run-live-drill-card-automation']").forEach((button) => {
+      button.addEventListener("click", runLiveDrillCardAutomation);
+    });
     root.querySelector("[data-action='copy-live-drill-card-prompt']").addEventListener("click", copyLiveDrillCardPrompt);
     root.querySelector("[data-action='import-live-drill-card-plan']").addEventListener("click", importLiveDrillCardPlanFromClipboard);
     root.querySelector("[data-role='cine-speed']").addEventListener("input", (event) => {
@@ -2597,6 +2602,7 @@
       "- The card front will contain a live IMAIOS drill link that restores the selected module, plane, slice, and locked labels.",
       "- The learner opens the link and names the locked structures in IMAIOS before revealing the answer.",
       "- This is vocabulary and image-recognition practice, not a lecture and not pathology cards.",
+      `- The extension will export a standard Anki \`${LIVE_DRILL_ANKI_NOTE_TYPE}\` note type TSV, not Image Occlusion and not a custom radiology note type.`,
       "",
       "Hard rules:",
       "- Use only the exact `preferredLabel` strings supplied in INPUT.labels.",
@@ -2806,7 +2812,7 @@
     if (!sourcePayload) {
       return {
         ok: false,
-        message: "No saved live-drill source is available. Run Auto GPT to TSV or copy the GPT card prompt from the current locked labels first."
+        message: "No saved live-drill source is available. Click Create Anki cards or copy the GPT card prompt from the current locked labels first."
       };
     }
 
@@ -2821,13 +2827,24 @@
       return { ok: false, message: "The card plan has no cards with source labels." };
     }
 
-    const tsv = buildLiveDrillCardsTsv(plan, sourcePayload, validation.validCards);
+    const deckPath = getLiveDrillImportDeckPath(plan, sourcePayload);
+    const tsv = buildLiveDrillCardsTsv(plan, sourcePayload, validation.validCards, { deckPath });
     const outputPaths = buildLiveDrillCardOutputPaths(sourcePayload, plan);
     const normalizedPlan = {
       ...plan,
+      deckPath,
+      noteType: LIVE_DRILL_ANKI_NOTE_TYPE,
       generatedTsvAt: new Date().toISOString(),
       generatedBy: options.source || "imaios",
-      outputColumns: ["Front", "Back", "Extra", "Tags"],
+      outputColumns: ["Front", "Back", "Tags"],
+      ankiImportHeaders: {
+        separator: "tab",
+        html: true,
+        notetype: LIVE_DRILL_ANKI_NOTE_TYPE,
+        deck: deckPath,
+        columns: ["Front", "Back", "Tags"],
+        tagsColumn: 3
+      },
       sourceDrillPayload: sourcePayload,
       coverage: {
         sourceLabels: validation.sourceLabels,
@@ -2835,7 +2852,14 @@
         missingLabels: validation.missingLabels
       }
     };
-    await writeClipboard(tsv);
+    let copied = false;
+    let clipboardText = "";
+    try {
+      await writeClipboard(tsv);
+      copied = true;
+    } catch (error) {
+      clipboardText = ` Clipboard copy failed: ${error?.message || error}`;
+    }
     let downloadText = "";
     let downloaded = false;
     try {
@@ -2851,11 +2875,12 @@
       : "";
     return {
       ok: downloaded,
-      copied: true,
+      copied,
+      clipboardError: clipboardText,
       rowCount: validation.validCards.length,
       missingLabels: validation.missingLabels,
       outputPaths,
-      message: `Copied ${validation.validCards.length} live-drill TSV row${validation.validCards.length === 1 ? "" : "s"}.${missingText}${downloadText}`
+      message: `${copied ? "Copied" : "Generated"} ${validation.validCards.length} live-drill TSV row${validation.validCards.length === 1 ? "" : "s"}.${missingText}${downloadText}${clipboardText}`
     };
   }
 
@@ -3002,18 +3027,33 @@
     return planLabels.length > 0 && planLabels.every((label) => sourceKeys.has(normalizeText(label)));
   }
 
-  function buildLiveDrillCardsTsv(plan, sourcePayload, cards) {
-    const header = ["Front", "Back", "Extra", "Tags"];
+  function getLiveDrillImportDeckPath(plan, sourcePayload) {
+    const context = buildLiveDrillCardContext(sourcePayload);
+    const explicit = applyDeckRootOverride(plan?.deckPath || context.suggestedDeckPath || "");
+    if (explicit) return explicit;
+    const breadcrumb = normalizeBreadcrumbList(plan?.breadcrumb || context.breadcrumb || []);
+    return buildDeckPathFromBreadcrumb(breadcrumb);
+  }
+
+  function buildLiveDrillCardsTsv(plan, sourcePayload, cards, options = {}) {
+    const deckPath = applyDeckRootOverride(options.deckPath || getLiveDrillImportDeckPath(plan, sourcePayload));
+    const importHeaders = [
+      "#separator:tab",
+      "#html:true",
+      `#notetype:${LIVE_DRILL_ANKI_NOTE_TYPE}`,
+      `#deck:${deckPath}`,
+      "#columns:Front\tBack\tTags",
+      "#tags column:3"
+    ];
     const rows = cards.map((card, index) => {
       const cardPayload = buildLiveDrillSubPayload(sourcePayload, card, index);
       const link = buildLiveDrillUrl(cardPayload);
       const front = buildLiveDrillCardFront(card, link);
-      const back = buildLiveDrillCardBack(card);
-      const extra = buildLiveDrillCardExtra(card, sourcePayload, plan);
+      const back = buildLiveDrillBasicBack(card, sourcePayload, plan, deckPath);
       const tags = buildLiveDrillCardTags(card, sourcePayload, plan);
-      return [front, back, extra, tags];
+      return [front, back, tags];
     });
-    return [header, ...rows].map((row) => row.map(tsvCell).join("\t")).join("\n");
+    return [...importHeaders, ...rows.map((row) => row.map(tsvCell).join("\t"))].join("\n");
   }
 
   function buildLiveDrillSubPayload(sourcePayload, card, index) {
@@ -3062,18 +3102,25 @@
     ].join("");
   }
 
-  function buildLiveDrillCardExtra(card, sourcePayload, plan) {
+  function buildLiveDrillBasicBack(card, sourcePayload, plan, deckPath = "") {
+    const answer = buildLiveDrillCardBack(card);
+    const extra = buildLiveDrillCardExtra(card, sourcePayload, plan, deckPath);
+    return extra ? `${answer}<hr>${extra}` : answer;
+  }
+
+  function buildLiveDrillCardExtra(card, sourcePayload, plan, deckPath = "") {
     const viewer = sourcePayload.viewer || {};
     const range = viewer.range || {};
     const module = sourcePayload.module || {};
     const chunk = sourcePayload.chunk || {};
+    const effectiveDeckPath = applyDeckRootOverride(deckPath || plan.deckPath || "");
     return [
       `Module: ${escapeHtml(module.name || module.key || "")}`,
       `Chunk: ${escapeHtml(chunk.title || sourcePayload.title || "")}`,
       `Plane: ${escapeHtml(viewer.plane || "")}`,
       `Slice: ${escapeHtml(String(viewer.slice?.value ?? ""))}`,
       `Range: ${escapeHtml(`${range.startSlice ?? ""}-${range.endSlice ?? ""}`)}`,
-      plan.deckPath ? `Deck path: ${escapeHtml(plan.deckPath)}` : "",
+      effectiveDeckPath ? `Deck path: ${escapeHtml(effectiveDeckPath)}` : "",
       card.rationale ? `Grouping: ${escapeHtml(card.rationale)}` : ""
     ].filter(Boolean).join("<br>");
   }
@@ -5297,6 +5344,806 @@
     const probe = buildViewerProbe({ includeSliceElements: false });
     await writeClipboard(JSON.stringify(probe, null, 2));
     setStatus("Current slice probe copied.");
+  }
+
+  async function copyLockedLabelDetailProbe() {
+    const lockedLabels = await collectLockedStructureNames();
+    if (!lockedLabels.length) {
+      setStatus("Lock at least one structure first, then probe label info.", 7000);
+      return;
+    }
+
+    setStatus(`Probing ${lockedLabels.length} locked label${lockedLabels.length === 1 ? "" : "s"} using the current label display mode...`, 0);
+    const labelsResult = {
+      ok: true,
+      skipped: true,
+      reason: "Probe label info does not automatically switch label/pin mode."
+    };
+    await delay(180);
+
+    const results = [];
+    for (let index = 0; index < lockedLabels.length; index += 1) {
+      if (index > 0) {
+        await closeStructureDetailPanel();
+        await delay(360);
+      }
+      const label = lockedLabels[index];
+      setStatus(`Probing label info ${index + 1}/${lockedLabels.length}: ${label}`, 0);
+      results.push(await captureLockedLabelDetail(label, { allowSearchFallback: false }));
+      await delay(520);
+    }
+
+    const captured = results.filter((item) => item.status === "captured").length;
+    const clicked = results.filter((item) => item.click?.ok).length;
+    const visibleMatches = results.filter((item) => item.matchedElement).length;
+    const searchFallbacks = results.filter((item) => resultUsedDetailSearchFallback(item)).length;
+    const statusCounts = results.reduce((counts, item) => {
+      counts[item.status] = (counts[item.status] || 0) + 1;
+      return counts;
+    }, {});
+    const probe = {
+      kind: "imaios-locked-label-detail-probe",
+      version: 1,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      counts: {
+        lockedLabels: lockedLabels.length,
+        visibleLabelMatches: visibleMatches,
+        visibleLabelClicks: clicked,
+        searchFallbacks,
+        capturedDetails: captured,
+        missedDetails: lockedLabels.length - captured,
+        statusCounts
+      },
+      pinsModeRequest: labelsResult,
+      lockedLabels,
+      labels: results
+    };
+
+    await writeClipboard(JSON.stringify(probe, null, 2));
+    setStatus(`Locked-label detail probe copied: ${visibleMatches}/${lockedLabels.length} visible DOM matches, ${searchFallbacks} search fallback${searchFallbacks === 1 ? "" : "s"}, ${captured} captured.`, 12000);
+  }
+
+  async function copyLockedLabelSearchPinDetailProbe() {
+    const lockedLabels = await collectLockedStructureNames();
+    if (!lockedLabels.length) {
+      setStatus("Lock at least one structure first, then run the search-pin probe.", 7000);
+      return;
+    }
+    if (state.searchRunning) {
+      setStatus("A search/apply workflow is already running. Stop it before probing via search pins.", 7000);
+      return;
+    }
+
+    const sourceDrill = buildLiveDrillPayload({ lockedLabels, requireLocked: false });
+    const results = [];
+    const cleanup = [];
+    let initialClear = null;
+    let workflowError = "";
+
+    state.searchRunning = true;
+    state.cancelSearch = false;
+    setStatus(`Search-pin probe: captured ${lockedLabels.length} locked label names. Clearing locked labels...`, 0);
+
+    try {
+      await closeStructureDetailPanel();
+      initialClear = await clearLockedStructuresForApply();
+      if (!initialClear.ok) {
+        workflowError = initialClear.reason || "Could not clear locked labels before search-pin probing.";
+      } else {
+        await clearModuleSearchInputForProbe();
+        for (let index = 0; index < lockedLabels.length; index += 1) {
+          if (state.cancelSearch) {
+            workflowError = "Stopped by user.";
+            break;
+          }
+          const label = lockedLabels[index];
+          setStatus(`Search-pin probe ${index + 1}/${lockedLabels.length}: ${label}`, 0);
+          const result = await captureLockedLabelDetailViaSearchPin(label);
+          results.push(result);
+          await delay(result.status === "captured" ? 650 : 260);
+          await closeStructureDetailPanel();
+          const clearResult = await clearLockedStructuresForApply();
+          cleanup.push({ label, clearResult });
+          await clearModuleSearchInputForProbe();
+          await delay(260);
+        }
+      }
+    } catch (error) {
+      workflowError = error?.message || String(error);
+    } finally {
+      state.searchRunning = false;
+    }
+
+    let restoreResult = null;
+    if (initialClear?.ok && lockedLabels.length && !state.cancelSearch) {
+      restoreResult = await restoreLockedLabelsAfterSearchPinProbe(lockedLabels);
+    }
+
+    const captured = results.filter((item) => item.status === "captured").length;
+    const visiblePins = results.filter((item) => item.visiblePin).length;
+    const searchResultsFound = results.filter((item) => item.searchResult).length;
+    const statusCounts = results.reduce((counts, item) => {
+      counts[item.status] = (counts[item.status] || 0) + 1;
+      return counts;
+    }, {});
+    const probe = {
+      kind: "imaios-locked-label-search-pin-detail-probe",
+      version: 1,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      counts: {
+        lockedLabels: lockedLabels.length,
+        attemptedLabels: results.length,
+        searchResultsFound,
+        visiblePinsFound: visiblePins,
+        capturedDetails: captured,
+        missedDetails: lockedLabels.length - captured,
+        statusCounts
+      },
+      workflow: {
+        mode: "clear-locked-then-search-one-label-at-a-time",
+        initialClear,
+        cleanup,
+        restoreOriginalLockedLabels: restoreResult,
+        error: workflowError
+      },
+      sourceDrill: sourceDrill.ok ? sourceDrill.payload : null,
+      lockedLabels,
+      labels: results
+    };
+
+    await writeClipboard(JSON.stringify(probe, null, 2));
+    const restoreText = restoreResult?.ok ? " Restored original locked labels." : (restoreResult ? " Original labels were not fully restored." : "");
+    const errorText = workflowError ? ` Error: ${workflowError}` : "";
+    setStatus(`Search-pin detail probe copied: ${captured}/${lockedLabels.length} captured, ${visiblePins} visible pins.${restoreText}${errorText}`, 14000);
+  }
+
+  async function captureLockedLabelDetailViaSearchPin(label) {
+    const availability = await searchStructureAvailability(label, {
+      exact: true,
+      timeoutMs: 3200,
+      clearDelayMs: 90,
+      afterTypeDelayMs: 160
+    });
+
+    if (!availability.ok) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "no-search-result",
+        reason: availability.reason || "No exact module-search result matched this locked label."
+      };
+    }
+
+    const searchResult = elementProbe(availability.result);
+    const click = await realMouseClick(availability.result, 0.5, 0.5);
+    const selectedText = availability.selectedText || label;
+    await delay(420);
+
+    const autoPanel = await waitFor(() => (
+      findStructureDetailPanelForLabel(label)
+      || findStructureDetailPanelForLabel(selectedText)
+    ), 900, 80);
+    if (autoPanel) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "captured",
+        source: "search-result-auto-panel",
+        selectedText,
+        searchResult,
+        searchClick: click,
+        detail: extractStructureDetailPanelInfo(autoPanel, label)
+      };
+    }
+
+    const visiblePin = await waitFor(() => findVisibleStructureLabelElement(label), 3600, 80);
+    if (!visiblePin) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "search-result-found-but-no-visible-pin-on-current-slice",
+        reason: "The exact search result was selected, but no matching pin/label became visible on the current image. The label may be off-slice or off-plane.",
+        selectedText,
+        searchResult,
+        searchClick: click,
+        lockedCountAfterSearch: getLockedStructureCount()
+      };
+    }
+
+    const detailClick = await clickVisibleStructureLabelForDetail(visiblePin, label);
+    if (!detailClick.panel) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "visible-pin-clicked-no-detail",
+        reason: "The searched pin/label appeared, but clicking it did not open a matching definition drawer.",
+        selectedText,
+        searchResult,
+        searchClick: click,
+        visiblePin: visiblePin.probe,
+        matchScore: visiblePin.score,
+        click: detailClick.click,
+        clickAttempts: detailClick.attempts,
+        visiblePanelAfterClick: detailClick.visiblePanelAfterClick || null
+      };
+    }
+
+    return {
+      label,
+      normalizedLabel: normalizeText(label),
+      status: "captured",
+      source: "search-pin-visible-label",
+      selectedText,
+      searchResult,
+      searchClick: click,
+      visiblePin: visiblePin.probe,
+      matchScore: visiblePin.score,
+      click: detailClick.click,
+      clickAttempts: detailClick.attempts,
+      detail: extractStructureDetailPanelInfo(detailClick.panel, label)
+    };
+  }
+
+  async function clearModuleSearchInputForProbe() {
+    const input = findModuleSearchInput();
+    if (!input) return { ok: false, reason: "Could not find module search input." };
+    await clearSearchInput(input);
+    return { ok: true };
+  }
+
+  async function restoreLockedLabelsAfterSearchPinProbe(labels) {
+    try {
+      state.selectedStructures = unique(labels);
+      state.customListText = state.selectedStructures.join("\n");
+      savePageState();
+      refreshPanel();
+      setStatus("Restoring original locked labels after search-pin probe...", 0);
+      const result = await applyLiveDrillLabels(state.selectedStructures, "Search-pin probe restore");
+      return {
+        ok: !result.missing.length,
+        locked: result.locked,
+        missing: result.missing,
+        attempted: result.attempted
+      };
+    } catch (error) {
+      return { ok: false, reason: error?.message || String(error) };
+    }
+  }
+
+  function resultUsedDetailSearchFallback(item) {
+    return Boolean(item && (
+      item.searchResult
+      || item.searchFallback
+      || item.source === "module-search"
+      || item.visibleClickFallback
+    ));
+  }
+
+  async function captureLockedLabelDetail(label, options = {}) {
+    const alreadyOpenPanel = findStructureDetailPanelForLabel(label);
+    if (alreadyOpenPanel) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "captured",
+        source: "already-open-panel",
+        detail: extractStructureDetailPanelInfo(alreadyOpenPanel, label)
+      };
+    }
+
+    const target = findVisibleStructureLabelElement(label);
+    if (!target) {
+      if (options.allowSearchFallback) {
+        const searchResult = await captureLockedLabelDetailFromSearch(label);
+        if (searchResult.status === "captured") return searchResult;
+        return {
+          label,
+          normalizedLabel: normalizeText(label),
+          status: "not-visible",
+          reason: "No visible structure label element matched this locked label after labels were shown.",
+          searchFallback: searchResult
+        };
+      }
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "not-visible",
+        reason: "No visible structure label element matched this locked label after labels were shown. Automatic module-search fallback is disabled for the normal probe."
+      };
+    }
+
+    const clickResult = await clickVisibleStructureLabelForDetail(target, label);
+    if (!clickResult.panel) {
+      if (options.allowSearchFallback) {
+        const searchResult = await captureLockedLabelDetailFromSearch(label);
+        if (searchResult.status === "captured") {
+          return {
+            ...searchResult,
+            visibleClickFallback: {
+              status: "clicked-no-panel",
+            reason: "Clicked the visible label, but no matching detail panel was detected before search fallback.",
+            matchedElement: target.probe,
+            matchScore: target.score,
+            click: clickResult.click,
+            clickAttempts: clickResult.attempts
+          }
+        };
+      }
+        return {
+          label,
+          normalizedLabel: normalizeText(label),
+          status: "clicked-no-panel",
+          reason: "Clicked the visible label, but no matching detail panel was detected.",
+          matchedElement: target.probe,
+          matchScore: target.score,
+          click: clickResult.click,
+          clickAttempts: clickResult.attempts,
+          visiblePanelAfterClick: clickResult.visiblePanelAfterClick || null,
+          searchFallback: searchResult
+        };
+      }
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "clicked-no-panel",
+        reason: "Clicked the visible label, but no matching detail panel was detected. Automatic module-search fallback is disabled for the normal probe.",
+        matchedElement: target.probe,
+        matchScore: target.score,
+        click: clickResult.click,
+        clickAttempts: clickResult.attempts,
+        visiblePanelAfterClick: clickResult.visiblePanelAfterClick || null
+      };
+    }
+
+    const detail = extractStructureDetailPanelInfo(clickResult.panel, label);
+    return {
+      label,
+      normalizedLabel: normalizeText(label),
+      status: "captured",
+      matchedElement: target.probe,
+      matchScore: target.score,
+      click: clickResult.click,
+      clickAttempts: clickResult.attempts,
+      detail
+    };
+  }
+
+  async function clickVisibleStructureLabelForDetail(target, label) {
+    const attempts = buildVisibleStructureLabelClickAttempts(target.element);
+    const attempt = attempts[0];
+    if (!attempt) {
+      return { ok: false, panel: null, click: null, attempts: [] };
+    }
+    const click = await realMouseClick(attempt.element, attempt.xRatio, attempt.yRatio);
+    attempt.click = click;
+    await delay(180);
+    const panel = await waitFor(() => findStructureDetailPanelForLabel(label), attempt.waitMs, 50);
+    if (panel) {
+      return {
+        ok: true,
+        panel,
+        click,
+        attempts: [serializeVisibleLabelClickAttempt(attempt)]
+      };
+    }
+    const visiblePanel = findStructureDetailPanel("");
+    return {
+      ok: false,
+      panel: null,
+      click,
+      attempts: [serializeVisibleLabelClickAttempt(attempt)],
+      visiblePanelAfterClick: visiblePanel ? extractStructureDetailPanelInfo(visiblePanel, "") : null
+    };
+  }
+
+  function buildVisibleStructureLabelClickAttempts(element) {
+    const textChild = Array.from(element.querySelectorAll("span,p,div"))
+      .filter((child) => child !== element && isVisible(child))
+      .filter((child) => cleanText(child.textContent || "").length > 1)
+      .sort((a, b) => elementArea(b) - elementArea(a))[0] || null;
+    const attempts = [];
+    if (textChild) attempts.push({ element: textChild, xRatio: 0.5, yRatio: 0.5, target: "text-child", waitMs: 3200 });
+    attempts.push(
+      { element, xRatio: 0.5, yRatio: 0.5, target: "label-center", waitMs: 3200 }
+    );
+    const seen = new Set();
+    return attempts.filter((attempt) => {
+      const key = `${attempt.target}:${attempt.xRatio}:${attempt.yRatio}:${elementProbe(attempt.element).rect.left}:${elementProbe(attempt.element).rect.top}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  function serializeVisibleLabelClickAttempt(attempt) {
+    return {
+      target: attempt.target,
+      xRatio: attempt.xRatio,
+      yRatio: attempt.yRatio,
+      click: attempt.click || null,
+      element: elementProbe(attempt.element)
+    };
+  }
+
+  async function captureLockedLabelDetailFromSearch(label) {
+    const availability = await searchStructureAvailability(label, {
+      exact: true,
+      timeoutMs: 2600,
+      clearDelayMs: 90,
+      afterTypeDelayMs: 140
+    });
+
+    if (!availability.ok) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "search-no-result",
+        reason: availability.reason || "No exact module-search result matched this locked label."
+      };
+    }
+
+    const click = await realMouseClick(availability.result, 0.5, 0.5);
+    const selectedLabel = availability.selectedText || label;
+    const searchProbe = elementProbe(availability.result);
+    const panel = await waitFor(() => (
+      findStructureDetailPanelForLabel(label)
+      || findStructureDetailPanelForLabel(selectedLabel)
+    ), 3000, 120);
+
+    if (!panel) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "search-clicked-no-panel",
+        reason: "Clicked the exact module-search result, but no matching detail panel was detected.",
+        source: "module-search",
+        selectedText: selectedLabel,
+        searchResult: searchProbe,
+        click
+      };
+    }
+
+    return {
+      label,
+      normalizedLabel: normalizeText(label),
+      status: "captured",
+      source: "module-search",
+      selectedText: selectedLabel,
+      searchResult: searchProbe,
+      click,
+      detail: extractStructureDetailPanelInfo(panel, label)
+    };
+  }
+
+  function findStructureDetailPanelForLabel(label) {
+    const panel = findStructureDetailPanel(label);
+    if (!panel || !structureDetailPanelMatchesLabel(panel, label)) return null;
+    return panel;
+  }
+
+  function structureDetailPanelMatchesLabel(panel, label) {
+    const expected = normalizeText(label);
+    if (!expected) return false;
+    const title = normalizeText(panel.querySelector(".structure-name")?.textContent || "");
+    if (title && title === expected) return true;
+    const lines = getReadableElementText(panel).split(/\n+/).map(normalizeText).filter(Boolean);
+    return lines.slice(0, 8).some((line) => line === expected);
+  }
+
+  function findVisibleStructureLabelElement(label) {
+    const candidates = Array.from(document.querySelectorAll(
+      ".structure-title-component,[class*='structure-title'],[class*='label-title'],[class*='label-name']"
+    ))
+      .filter((element) => element !== state.host && isVisible(element))
+      .map((element) => {
+        const text = getVisibleStructureLabelText(element);
+        return {
+          element,
+          text,
+          score: scoreVisibleStructureLabelElement(element, text, label),
+          probe: elementProbe(element)
+        };
+      })
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score || elementArea(a.element) - elementArea(b.element));
+    return candidates[0] || null;
+  }
+
+  function getVisibleStructureLabelText(element) {
+    const clone = element.cloneNode(true);
+    clone.querySelectorAll("svg,style,script").forEach((node) => node.remove());
+    return normalizeStructureLabel(cleanText(
+      clone.getAttribute("title") ||
+      clone.getAttribute("aria-label") ||
+      clone.textContent ||
+      ""
+    ));
+  }
+
+  function scoreVisibleStructureLabelElement(element, text, label) {
+    const expected = normalizeText(label);
+    const actual = normalizeText(text);
+    if (!expected || !actual) return 0;
+    let score = 0;
+    if (actual === expected) score += 120;
+    else if (actual.includes(expected) || expected.includes(actual)) score += 58;
+    else return 0;
+
+    const className = String(element.className || "");
+    const rect = element.getBoundingClientRect();
+    if (/structure-title-component/i.test(className)) score += 45;
+    if (/structure-title|label/i.test(className)) score += 18;
+    if (element.querySelector("img")) score += 8;
+    if (rect.width >= 24 && rect.width <= 560) score += 8;
+    if (rect.height >= 16 && rect.height <= 140) score += 8;
+    if (rect.top >= -20 && rect.bottom <= window.innerHeight + 20) score += 5;
+    if (rect.left >= -40 && rect.right <= window.innerWidth + 40) score += 5;
+    score -= Math.max(0, actual.length - expected.length - 24) / 3;
+    return score;
+  }
+
+  function findStructureDetailPanel(expectedLabel = "") {
+    const explicit = findExplicitStructureDetailPanel(expectedLabel);
+    if (explicit) return explicit;
+
+    const candidates = Array.from(document.body.querySelectorAll("aside,section,article,main,div"))
+      .filter((element) => element !== state.host && isVisible(element))
+      .map((element) => ({
+        element,
+        score: scoreStructureDetailPanelCandidate(element, expectedLabel)
+      }))
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score || elementArea(b.element) - elementArea(a.element));
+    return candidates[0]?.element || null;
+  }
+
+  function findExplicitStructureDetailPanel(expectedLabel = "") {
+    const candidates = Array.from(document.body.querySelectorAll(
+      "#structure-details-id,.structure-details,.panel-container"
+    ))
+      .filter((element) => element !== state.host && isVisible(element))
+      .filter((element) => element.matches(".panel-container") ? Boolean(element.querySelector("#structure-details-id,.structure-details")) : true)
+      .map((element) => ({
+        element: element.matches(".panel-container") ? (element.querySelector("#structure-details-id,.structure-details") || element) : element,
+        score: scoreExplicitStructureDetailPanel(element, expectedLabel)
+      }))
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score || elementArea(b.element) - elementArea(a.element));
+    return candidates[0]?.element || null;
+  }
+
+  function scoreExplicitStructureDetailPanel(element, expectedLabel = "") {
+    const panel = element.matches(".panel-container") ? (element.querySelector("#structure-details-id,.structure-details") || element) : element;
+    if (!panel.querySelector(".structure-name,.structure-definition,#definition-viewer-preview")) return 0;
+    const title = cleanText(panel.querySelector(".structure-name")?.textContent || "");
+    const expected = normalizeText(expectedLabel);
+    let score = 150;
+    if (panel.id === "structure-details-id") score += 90;
+    if (panel.matches(".structure-details")) score += 65;
+    if (panel.querySelector(".structure-definition")) score += 35;
+    if (panel.querySelector(".structure-card-subtitle-latin")) score += 12;
+    if (expected && normalizeText(title) === expected) score += 120;
+    else if (expected && normalizeText(panel.textContent || "").includes(expected)) score += 45;
+    return score;
+  }
+
+  function scoreStructureDetailPanelCandidate(element, expectedLabel = "") {
+    const text = getReadableElementText(element);
+    if (!/\bDefinition\b/i.test(text)) return 0;
+    if (text.length < 60 || text.length > 16000) return 0;
+
+    const expected = normalizeText(expectedLabel);
+    const normalizedText = normalizeText(text);
+    const rect = element.getBoundingClientRect();
+    let score = 30;
+    if (expected && normalizedText.includes(expected)) score += 55;
+    if (rect.width >= 220 && rect.width <= Math.min(780, window.innerWidth * 0.68)) score += 22;
+    if (rect.height >= 220) score += 14;
+    if (rect.left <= window.innerWidth * 0.42) score += 12;
+    if (rect.top <= 130) score += 8;
+    if (/\bLock\b/i.test(text)) score += 8;
+    if (/\bHide\b/i.test(text)) score += 5;
+    if (/\bSee more\b/i.test(text)) score += 4;
+    if (element.matches("body,html")) score -= 120;
+    score -= Math.max(0, text.length - 5000) / 350;
+    return score;
+  }
+
+  function extractStructureDetailPanelInfo(panel, expectedLabel = "") {
+    const text = getReadableElementText(panel);
+    const lines = text.split(/\n+/).map(cleanText).filter(Boolean);
+    const title = cleanText(panel.querySelector(".structure-name")?.textContent || "") || getStructureDetailTitle(lines, expectedLabel);
+    const alternateTitle = cleanText(panel.querySelector(".structure-card-subtitle-latin")?.textContent || "") || getStructureDetailAlternateTitle(lines, title);
+    const definition = getStructuredDefinitionText(panel) || extractPanelSection(lines, "Definition", [
+      /^This definition incorporates/i,
+      /^See more$/i,
+      /^In this module$/i,
+      /^Translations$/i,
+      /^Related/i,
+      /^References$/i,
+      /^Bibliography$/i,
+      /^Anatomical hierarchy$/i
+    ]);
+    const summary = extractPanelLineBlock(lines, /^To summarize:/i, [
+      /^In this module$/i,
+      /^Translations$/i,
+      /^Related/i,
+      /^References$/i
+    ]);
+
+    return {
+      title,
+      alternateTitle,
+      definition,
+      definitionSource: getStructuredDefinitionSource(panel),
+      summary,
+      chips: getStructureDetailChips(panel, title),
+      hierarchy: getStructureDetailHierarchy(panel),
+      moduleImageCount: panel.querySelectorAll(".structure-gallery-item-image").length,
+      rawText: text.slice(0, 6000),
+      panel: elementProbe(panel)
+    };
+  }
+
+  function getStructuredDefinitionText(panel) {
+    const nodes = Array.from(panel.querySelectorAll(
+      ".structure-definition .structure-definition-html:not(.structure-definition-source),#definition-viewer-preview .structure-definition-html:not(.structure-definition-source)"
+    ));
+    const parts = nodes
+      .map((node) => cleanTextFromDefinitionNode(node))
+      .filter(Boolean)
+      .filter((text) => !/^This definition incorporates/i.test(text));
+    return cleanText(parts.join(" "));
+  }
+
+  function cleanTextFromDefinitionNode(node) {
+    const blockNodes = Array.from(node.querySelectorAll("p,li"));
+    const sourceNodes = new Set(node.querySelectorAll(".structure-definition-source"));
+    const blocks = (blockNodes.length ? blockNodes : [node])
+      .filter((block) => !sourceNodes.has(block) && !block.closest(".structure-definition-source"))
+      .map((block) => cleanText(block.textContent || ""))
+      .filter(Boolean);
+    return cleanText(blocks.join(" "));
+  }
+
+  function getStructuredDefinitionSource(panel) {
+    return cleanText(panel.querySelector(".structure-definition-source")?.textContent || "");
+  }
+
+  function getStructureDetailHierarchy(panel) {
+    const cards = Array.from(panel.querySelectorAll(".structure-hierarchy-card"))
+      .map((card) => {
+        const name = cleanText(card.querySelector(".structure-hierarchy-header--title")?.textContent || "");
+        const ancestors = Array.from(card.querySelectorAll(".structure-hierarchy-ancestor-label"))
+          .map((item) => cleanText(item.textContent || ""))
+          .filter(Boolean);
+        const children = Array.from(card.querySelectorAll(".structure-hierarchy-children-label"))
+          .map((item) => cleanText(item.textContent || ""))
+          .filter(Boolean);
+        return { name, ancestors, children };
+      })
+      .filter((card) => card.name || card.ancestors.length || card.children.length);
+    return cards.slice(0, 8);
+  }
+
+  function getReadableElementText(element) {
+    const text = element.innerText || element.textContent || "";
+    return String(text)
+      .replace(/\r/g, "\n")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function getStructureDetailTitle(lines, expectedLabel = "") {
+    const expected = normalizeText(expectedLabel);
+    const first = lines.find((line) => {
+      if (/^(Lock|Hide|Definition|See more|In this module|Menu)$/i.test(line)) return false;
+      if (line.length > 120) return false;
+      return !expected || normalizeText(line) === expected || normalizeText(line).includes(expected) || expected.includes(normalizeText(line));
+    });
+    return first || lines[0] || cleanText(expectedLabel);
+  }
+
+  function getStructureDetailAlternateTitle(lines, title) {
+    const titleIndex = lines.findIndex((line) => normalizeText(line) === normalizeText(title));
+    const candidates = lines.slice(Math.max(0, titleIndex + 1), titleIndex < 0 ? 4 : titleIndex + 5);
+    return candidates.find((line) => {
+      if (!line || normalizeText(line) === normalizeText(title)) return false;
+      if (/^(Lock|Hide|Definition|See more)$/i.test(line)) return false;
+      return line.length <= 120;
+    }) || "";
+  }
+
+  function extractPanelSection(lines, heading, stopPatterns) {
+    const start = lines.findIndex((line) => normalizeText(line) === normalizeText(heading));
+    if (start < 0) return "";
+    const collected = [];
+    for (const line of lines.slice(start + 1)) {
+      if (stopPatterns.some((pattern) => pattern.test(line))) break;
+      if (!/^(Lock|Hide)$/i.test(line)) collected.push(line);
+    }
+    return cleanText(collected.join(" "));
+  }
+
+  function extractPanelLineBlock(lines, startPattern, stopPatterns) {
+    const start = lines.findIndex((line) => startPattern.test(line));
+    if (start < 0) return "";
+    const collected = [];
+    for (const line of lines.slice(start)) {
+      if (collected.length && stopPatterns.some((pattern) => pattern.test(line))) break;
+      collected.push(line);
+    }
+    return cleanText(collected.join(" "));
+  }
+
+  function getStructureDetailChips(panel, title) {
+    const blocked = new Set(["lock", "hide", "see more", "menu", "definition", normalizeText(title)]);
+    const chips = [];
+    for (const element of panel.querySelectorAll("a,button,[role='button'],[class*='tag'],[class*='chip']")) {
+      if (!isVisible(element)) continue;
+      const text = normalizeStructureLabel(cleanText(element.textContent || element.getAttribute("title") || ""));
+      const normalized = normalizeText(text);
+      if (!text || text.length > 100 || blocked.has(normalized)) continue;
+      if (/^(x|close|share|copy|show|hide|lock)$/i.test(text)) continue;
+      chips.push({
+        label: text,
+        href: element instanceof HTMLAnchorElement ? element.href : "",
+        className: String(element.className || "")
+      });
+    }
+    const seen = new Set();
+    return chips.filter((chip) => {
+      const key = normalizeText(chip.label);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).slice(0, 12);
+  }
+
+  async function closeStructureDetailPanel() {
+    const panel = findStructureDetailPanel("");
+    if (!panel) return false;
+    const panelRect = panel.getBoundingClientRect();
+    const buttons = Array.from(panel.querySelectorAll("button,[role='button']"))
+      .filter((element) => isVisible(element))
+      .map((element) => ({
+        element,
+        score: scoreDetailPanelCloseButton(element, panelRect)
+      }))
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score);
+    const button = buttons[0]?.element || null;
+    if (!button) return false;
+    await realMouseClick(button, 0.5, 0.5);
+    await delay(180);
+    return true;
+  }
+
+  function scoreDetailPanelCloseButton(element, panelRect) {
+    const text = cleanText(element.getAttribute("aria-label") || element.getAttribute("title") || element.textContent || "");
+    const rect = element.getBoundingClientRect();
+    let score = 0;
+    if (/close/i.test(text)) score += 90;
+    if (/^(x|X)$/i.test(text)) score += 55;
+    if (element.querySelector("svg")) score += 12;
+    if (rect.top <= panelRect.top + 120) score += 18;
+    if (rect.left >= panelRect.right - 150) score += 24;
+    if (rect.right >= panelRect.right - 70) score += 30;
+    score += clamp((rect.left - (panelRect.right - 170)) / 5, 0, 28);
+    if (rect.width >= 20 && rect.width <= 90 && rect.height >= 20 && rect.height <= 90) score += 10;
+    if (/lock|hide|see more/i.test(text)) score -= 80;
+    return score;
   }
 
   function buildViewerProbe(options = {}) {

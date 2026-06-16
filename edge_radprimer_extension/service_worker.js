@@ -529,6 +529,46 @@ async function openImaiosAndImportChunks(library) {
   };
 }
 
+async function sendLiveDrillCardPlanToImaios({ assistantText = "", sourcePayload = null, imaiosTabId = 0 } = {}) {
+  const text = String(assistantText || "").trim();
+  if (!text) throw new Error("No live-drill card plan text was provided.");
+
+  let tab = null;
+  if (imaiosTabId) {
+    tab = await chrome.tabs.get(Number(imaiosTabId)).catch(() => null);
+  }
+  if (!tab?.id) {
+    const tabs = await chrome.tabs.query({ url: ["https://imaios.com/*", "https://www.imaios.com/*"] });
+    tab = tabs.find((candidate) => candidate.active) || tabs[0] || null;
+  }
+  if (!tab?.id) {
+    throw new Error("No open IMAIOS tab was found. Open the target IMAIOS module first, then retry from ChatGPT.");
+  }
+
+  try {
+    tab = await chrome.tabs.update(tab.id, { active: true });
+    if (tab.windowId) await chrome.windows.update(tab.windowId, { focused: true });
+    await sleep(400);
+  } catch {}
+
+  const response = await sendImaiosMessageWithInjection(tab.id, {
+    type: "IMAIOS_LIVE_DRILL_CARD_PLAN_READY",
+    assistantText: text,
+    sourcePayload
+  });
+  if (!response?.ok) throw new Error(response?.error || "IMAIOS could not generate the live-drill TSV.");
+
+  try {
+    await chrome.tabs.update(tab.id, { active: true });
+    if (tab.windowId) await chrome.windows.update(tab.windowId, { focused: true });
+  } catch {}
+
+  return {
+    ...response,
+    tabId: tab.id
+  };
+}
+
 async function getSpeechifyTab({ focus = false, createIfMissing = false } = {}) {
   const tabs = await chrome.tabs.query({ url: ["https://app.speechify.com/*"] });
   let tab = tabs.find((candidate) => candidate.active) || tabs[0] || null;
@@ -5084,6 +5124,21 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     return true;
   }
 
+  if (message?.type === "SEND_IMAIOS_LIVE_DRILL_CARD_PLAN") {
+    (async () => {
+      const result = await sendLiveDrillCardPlanToImaios({
+        assistantText: message.assistantText || message.text || "",
+        sourcePayload: message.sourcePayload || null,
+        imaiosTabId: message.imaiosTabId || 0
+      });
+      sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
   if (message?.type === "ACTIVATE_SENDER_TAB") {
     (async () => {
       const tabId = _sender?.tab?.id;
@@ -5117,20 +5172,11 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const assistantText = String(message.result?.assistantText || message.result?.text || "").trim();
       if (!assistantText) throw new Error("ChatGPT returned no live-drill card plan text.");
 
-      const imaiosResult = await sendImaiosMessageWithInjection(tabId, {
-        type: "IMAIOS_LIVE_DRILL_CARD_PLAN_READY",
+      const imaiosResult = await sendLiveDrillCardPlanToImaios({
         assistantText,
-        sourcePayload
+        sourcePayload,
+        imaiosTabId: tabId
       });
-      if (!imaiosResult?.ok) {
-        throw new Error(imaiosResult?.error || "IMAIOS could not generate the live-drill TSV.");
-      }
-
-      try {
-        const tab = await chrome.tabs.get(tabId);
-        await chrome.tabs.update(tabId, { active: true });
-        if (tab.windowId) await chrome.windows.update(tab.windowId, { focused: true });
-      } catch {}
 
       sendResponse({ ok: true, result: imaiosResult });
     })().catch(async (error) => {
