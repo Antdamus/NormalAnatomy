@@ -2613,11 +2613,11 @@
     const labels = getLiveDrillRestoreLabels(payload);
     if (!labels.length) return { ok: false, skipped: true, reason: "No labels were available for enrichment." };
     if (state.searchRunning) return { ok: false, skipped: true, reason: "Another search workflow is already running." };
-    if (state.liveDrillRestoreRunning || getLiveDrillHashPayload()) {
+    if (state.liveDrillRestoreRunning) {
       return {
         ok: false,
         skipped: true,
-        reason: "Current page is an opened live-drill URL; label-detail enrichment is disabled during drill review."
+        reason: "A live-drill restore is still running; label-detail enrichment is disabled until the drill is ready."
       };
     }
 
