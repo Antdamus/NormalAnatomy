@@ -1115,6 +1115,7 @@ function buildImaiosLabelRepositoryRedoPrompt(repository) {
     "4. Output separate small IMaios copy-paste code blocks, one teachable chunk per block.",
     "5. If a candidate block becomes large, split it into anatomy-aware subchunks based on the local region rather than arbitrary count alone.",
     "6. Finish with one valid JSON code block with kind `imaios-chunk-library`.",
+    "7. Preserve article routing metadata for downstream Anki/live-drill cards: include top-level `breadcrumb`, `deckPath`, and `tags` when the conversation/source provides them, and repeat or refine them on each chunk when a chunk needs more specific routing.",
     "",
     "Anatomy-aware chunk sizing:",
     "- do not group labels merely because they are anatomically related",
@@ -1126,6 +1127,7 @@ function buildImaiosLabelRepositoryRedoPrompt(repository) {
     "- if a large region is split, make every subchunk its own human code block and its own JSON chunk",
     "- use chunk titles that show the larger region and the subchunk focus, but keep only actual labels inside the code block",
     "- every JSON chunk must include moduleKey, moduleName, modality, and modalityUrl for the IMaios module its labels come from",
+    "- every JSON chunk should include breadcrumb, deckPath, and tags when the parent source or article breadcrumb is known; do not invent unsupported hierarchy when it is not known",
     "- never mix labels from different moduleKeys inside one JSON chunk; split them into separate chunks",
     "",
     "For every JSON label object include:",
@@ -1135,6 +1137,9 @@ function buildImaiosLabelRepositoryRedoPrompt(repository) {
     "- matchStatus: exact | synonym-from-repository | component-match | candidate",
     "- status: verified",
     "- moduleKey",
+    "- breadcrumb when available",
+    "- deckPath when available",
+    "- tags when available",
     "- parentGroup when this chunk is a subchunk of a larger anatomical region",
     "- note when useful",
     "",
@@ -3938,6 +3943,53 @@ async function openChatGptAndStart(settings, packageText, articleTitle, options 
   return response;
 }
 
+async function runImaiosLiveDrillCardAutomation(message, senderTab) {
+  const imaiosTabId = senderTab?.id || Number(message.imaiosTabId || 0);
+  if (!imaiosTabId) throw new Error("No IMAIOS tab was available for the live-drill card run.");
+  const promptText = String(message.promptText || "").trim();
+  if (!promptText) throw new Error("No live-drill card prompt was provided.");
+  const sourcePayload = message.sourcePayload && typeof message.sourcePayload === "object"
+    ? message.sourcePayload
+    : null;
+  if (!sourcePayload || sourcePayload.kind !== "imaios-live-drill") {
+    throw new Error("No valid live-drill source payload was provided.");
+  }
+
+  const settings = await loadRunnerSettings();
+  settings.openChatGPT = true;
+  settings.autoSubmitChatGPT = true;
+  settings.autoSendToSpeechify = false;
+  settings.speechifyAutoSave = false;
+
+  const response = await openChatGptAndStart(
+    settings,
+    promptText,
+    sourcePayload.title || "IMAIOS live drill cards",
+    {
+      waitForResult: true,
+      timeoutMs: timeoutMsFromSeconds(settings.chatgptTimeoutSec, 900, 60),
+      speechify: null,
+      backgroundRun: true,
+      preserveAuditBlock: true,
+      expectedOutputKind: "imaios_live_drill_card_plan",
+      completionMessageType: "IMAIOS_LIVE_DRILL_CARD_PLAN_DONE",
+      completionPayload: {
+        imaiosTabId,
+        sourceDrillId: sourcePayload.id || "",
+        sourcePayload
+      }
+    }
+  );
+
+  return {
+    started: Boolean(response?.started || response?.submitted || response?.ok),
+    chars: promptText.length,
+    sourceDrillId: sourcePayload.id || "",
+    title: sourcePayload.title || "",
+    message: "Sent live-drill card prompt to ChatGPT. The TSV will be generated back in IMAIOS when the plan is ready."
+  };
+}
+
 function isNonNarrativeMode(settings) {
   return Boolean(settings) && !isNarrativeSpeechifyMode(settings) && !isIoQueueMode(settings);
 }
@@ -5021,6 +5073,17 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     return true;
   }
 
+  if (message?.type === "RUN_IMAIOS_LIVE_DRILL_CARD_AUTOMATION") {
+    (async () => {
+      const result = await runImaiosLiveDrillCardAutomation(message, _sender?.tab || null);
+      sendResponse({ ok: true, ...result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
   if (message?.type === "ACTIVATE_SENDER_TAB") {
     (async () => {
       const tabId = _sender?.tab?.id;
@@ -5030,6 +5093,54 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       if (windowId) await chrome.windows.update(windowId, { focused: true });
       sendResponse({ ok: true });
     })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "IMAIOS_LIVE_DRILL_CARD_PLAN_DONE") {
+    (async () => {
+      const tabId = message.completionPayload?.imaiosTabId;
+      if (!tabId) throw new Error("Missing IMAIOS tab id for live-drill card plan.");
+      const sourcePayload = message.completionPayload?.sourcePayload || null;
+
+      if (message.result?.ok === false) {
+        const error = message.result.error || "ChatGPT live-drill card planning failed.";
+        await sendImaiosMessageWithInjection(tabId, {
+          type: "IMAIOS_LIVE_DRILL_CARD_PLAN_FAILED",
+          error
+        }).catch(() => {});
+        throw new Error(error);
+      }
+
+      const assistantText = String(message.result?.assistantText || message.result?.text || "").trim();
+      if (!assistantText) throw new Error("ChatGPT returned no live-drill card plan text.");
+
+      const imaiosResult = await sendImaiosMessageWithInjection(tabId, {
+        type: "IMAIOS_LIVE_DRILL_CARD_PLAN_READY",
+        assistantText,
+        sourcePayload
+      });
+      if (!imaiosResult?.ok) {
+        throw new Error(imaiosResult?.error || "IMAIOS could not generate the live-drill TSV.");
+      }
+
+      try {
+        const tab = await chrome.tabs.get(tabId);
+        await chrome.tabs.update(tabId, { active: true });
+        if (tab.windowId) await chrome.windows.update(tab.windowId, { focused: true });
+      } catch {}
+
+      sendResponse({ ok: true, result: imaiosResult });
+    })().catch(async (error) => {
+      const tabId = message.completionPayload?.imaiosTabId;
+      if (tabId) {
+        await sendImaiosMessageWithInjection(tabId, {
+          type: "IMAIOS_LIVE_DRILL_CARD_PLAN_FAILED",
+          error: String(error?.message || error)
+        }).catch(() => {});
+      }
       sendResponse({ ok: false, error: String(error?.message || error) });
     });
 

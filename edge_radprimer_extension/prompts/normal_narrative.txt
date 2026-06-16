@@ -1187,6 +1187,9 @@ The extension-import JSON must use this shape:
   "version": 1,
   "topic": "article or anatomy topic",
   "source": "normal narrative output",
+  "breadcrumb": ["source breadcrumb or article hierarchy when available"],
+  "deckPath": "Anki deck path using :: separators when available",
+  "tags": ["source-supported tag", "module-or-region tag"],
   "chunks": [
     {
       "id": "stable-kebab-case-id",
@@ -1194,6 +1197,9 @@ The extension-import JSON must use this shape:
       "parentGroup": "larger anatomical region when this is a subchunk",
       "modality": "best IMaios modality or atlas name",
       "modalityUrl": "optional IMaios URL if known",
+      "breadcrumb": ["same source breadcrumb, optionally refined by parentGroup and chunk title"],
+      "deckPath": "same or refined Anki deck path using :: separators",
+      "tags": ["source-supported tag", "chunk-specific tag"],
       "learningOrder": 1,
       "labels": [
         {
@@ -1224,6 +1230,9 @@ The extension-import JSON must use this shape:
 For the JSON block:
 
 * make each JSON chunk correspond to one human IMaios label code block
+* preserve source/article breadcrumb metadata when it is available; use top-level `breadcrumb`, `deckPath`, and `tags`
+* repeat or refine `breadcrumb`, `deckPath`, and `tags` inside each chunk when a chunk has a more specific parentGroup or destination
+* do not invent unsupported breadcrumb or deck hierarchy; if the source does not provide it, use the article/topic and IMaios module context conservatively
 * if a large anatomy region was split, set `parentGroup` to the larger region for each subchunk
 * keep `preferredLabel` identical to the label used in the matching human paste block whenever it is repository verified
 * when a repository is provided, every `preferredLabel` with `status: "verified"` must be copied exactly from the available repository labels

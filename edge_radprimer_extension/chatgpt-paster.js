@@ -559,12 +559,47 @@
     return value.includes(CARD_AUDIT_DOWNLOAD_SENTINEL);
   };
 
+  const parseImaiosLiveDrillCardPlan = (text) => {
+    const value = stripOuterCodeFence(text);
+    try {
+      const parsed = JSON.parse(value);
+      if (parsed && parsed.kind === "imaios-live-drill-card-plan" && Array.isArray(parsed.cards)) {
+        return parsed;
+      }
+    } catch {}
+    return null;
+  };
+
+  const extractImaiosLiveDrillCardPlanFromText = (text) => {
+    const value = String(text || "");
+    const fencedBlocks = Array.from(value.matchAll(/```(?:json)?\s*([\s\S]*?)```/gi))
+      .map((match) => match[1].trim());
+    for (let index = fencedBlocks.length - 1; index >= 0; index -= 1) {
+      const parsed = parseImaiosLiveDrillCardPlan(fencedBlocks[index]);
+      if (parsed) return parsed;
+    }
+
+    const kindIndex = value.lastIndexOf('"kind"');
+    if (kindIndex < 0) return null;
+    const start = value.lastIndexOf("{", kindIndex);
+    const end = value.lastIndexOf("}");
+    if (start < 0 || end <= start) return null;
+    return parseImaiosLiveDrillCardPlan(value.slice(start, end + 1));
+  };
+
+  const looksLikeImaiosLiveDrillCardPlan = (text) => {
+    return Boolean(extractImaiosLiveDrillCardPlanFromText(text));
+  };
+
   const expectedOutputMessage = (expectedOutputKind) => {
     if (expectedOutputKind === "card_tsv_download") {
       return "Assistant responded, but it has not shown the TSV download sentinel yet. Waiting for the final card export...";
     }
     if (expectedOutputKind === "card_tsv") {
       return "Assistant responded, but it is not inline TSV yet. Waiting for the final card export...";
+    }
+    if (expectedOutputKind === "imaios_live_drill_card_plan") {
+      return "Assistant responded, but it has not shown a valid imaios-live-drill-card-plan JSON block yet. Waiting for the final card plan...";
     }
     return "Assistant responded, but the expected output is not ready yet.";
   };
@@ -573,6 +608,7 @@
     if (!expectedOutputKind) return true;
     if (expectedOutputKind === "card_tsv") return looksLikeInlineCardTsv(text);
     if (expectedOutputKind === "card_tsv_download") return looksLikeCardTsvDownloadReady(text);
+    if (expectedOutputKind === "imaios_live_drill_card_plan") return looksLikeImaiosLiveDrillCardPlan(text);
     return true;
   };
 

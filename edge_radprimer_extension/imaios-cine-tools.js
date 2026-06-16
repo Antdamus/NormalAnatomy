@@ -7,9 +7,11 @@
   const PREFS_STORAGE_KEY = `${APP_ID}:prefs`;
   const CHUNK_LIBRARY_STORAGE_KEY = `${APP_ID}:chunk-library`;
   const LABEL_REPOSITORY_STORAGE_KEY = `${APP_ID}:label-repository`;
+  const LAST_LIVE_DRILL_CARD_SOURCE_KEY = `${APP_ID}:last-live-drill-card-source`;
   const EXTENSION_LABEL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-repository";
   const EMPTY_CHUNK_LIBRARY = { version: 1, topic: "", chunks: [] };
   const EMPTY_LABEL_REPOSITORY = { version: 1, updatedAt: "", modalities: [], labels: [], moduleLabels: {} };
+  const DEFAULT_DECK_ROOT = "IMAIOS";
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
   const DEFAULT_CINE_SPEED = 5;
@@ -73,6 +75,8 @@
   const state = {
     selectedStructures: [],
     customListText: "",
+    routingText: "",
+    routingDeckRoot: DEFAULT_DECK_ROOT,
     boxes: [],
     boxesVisible: true,
     host: null,
@@ -101,7 +105,8 @@
     captureHotkeyAction: "",
     reverseScrollWatchTimer: 0,
     lastReverseScrollPlane: "",
-    lastRestoredDrillHash: ""
+    lastRestoredDrillHash: "",
+    lastLiveDrillCardSource: null
   };
 
   async function init() {
@@ -143,6 +148,7 @@
       if (Array.isArray(page.boxes)) state.boxes = page.boxes;
       if (Array.isArray(page.selectedStructures)) state.selectedStructures = page.selectedStructures;
       if (typeof page.customListText === "string") state.customListText = page.customListText;
+      if (typeof page.routingText === "string") state.routingText = page.routingText;
       if (typeof page.boxesVisible === "boolean") state.boxesVisible = page.boxesVisible;
       if (typeof page.collapsed === "boolean") state.collapsed = page.collapsed;
       if (prefs.panelPosition && Number.isFinite(prefs.panelPosition.left) && Number.isFinite(prefs.panelPosition.top)) {
@@ -160,8 +166,12 @@
       if (["current", "axial-coronal", "all"].includes(prefs.recordPlaneScope)) {
         state.recordPlaneScope = prefs.recordPlaneScope;
       }
+      if (typeof prefs.routingDeckRoot === "string") {
+        state.routingDeckRoot = prefs.routingDeckRoot || DEFAULT_DECK_ROOT;
+      }
       state.chunkLibrary = normalizeImportedChunkLibrary(JSON.parse(localStorage.getItem(CHUNK_LIBRARY_STORAGE_KEY) || "null"));
       state.labelRepository = normalizeImportedLabelRepository(JSON.parse(localStorage.getItem(LABEL_REPOSITORY_STORAGE_KEY) || "null"));
+      state.lastLiveDrillCardSource = normalizeSavedLiveDrillSource(JSON.parse(localStorage.getItem(LAST_LIVE_DRILL_CARD_SOURCE_KEY) || "null"));
       if (page.activeChunkId && getChunkById(page.activeChunkId)) state.activeChunkId = page.activeChunkId;
     } catch (error) {
       console.warn("IMAIOS Cine Tools: could not load saved state", error);
@@ -174,6 +184,7 @@
         activeChunkId: state.activeChunkId,
         selectedStructures: state.selectedStructures,
         customListText: state.customListText,
+        routingText: state.routingText,
         boxes: state.boxes,
         boxesVisible: state.boxesVisible,
         collapsed: state.collapsed
@@ -183,6 +194,7 @@
         rangeCineSpeed: state.rangeCineSpeed,
         applyChunkClearFirst: state.applyChunkClearFirst,
         recordPlaneScope: state.recordPlaneScope,
+        routingDeckRoot: state.routingDeckRoot,
         hotkeys: state.hotkeys
       }));
     } catch (error) {
@@ -346,13 +358,15 @@
 
         select,
         textarea,
+        input[type="text"],
         button {
           box-sizing: border-box;
           font: inherit;
         }
 
         select,
-        textarea {
+        textarea,
+        input[type="text"] {
           width: 100%;
           border: 1px solid rgba(255,255,255,0.16);
           border-radius: 6px;
@@ -361,13 +375,16 @@
           outline: none;
         }
 
-        select {
+        select,
+        input[type="text"] {
           height: 30px;
           padding: 0 8px;
           font-size: 12px;
         }
 
-        select:focus {
+        select:focus,
+        textarea:focus,
+        input[type="text"]:focus {
           border-color: rgba(58, 158, 255, 0.86);
           box-shadow: 0 0 0 2px rgba(58, 158, 255, 0.22);
         }
@@ -740,6 +757,19 @@
             <div class="chunk-summary" data-role="chunk-summary"></div>
           </div>
 
+          <details class="tool-section">
+            <summary>Breadcrumb routing</summary>
+            <div class="section-note">Paste a route JSON here to apply breadcrumb/deck/tags to this imported chunk session. Deck root replaces the first segment of any pasted deckPath.</div>
+            <input type="text" data-role="routing-root" spellcheck="false" aria-label="Deck root" placeholder="IMAIOS">
+            <textarea data-role="routing-json" spellcheck="false" placeholder='{"breadcrumb":["Head and Neck","Temporal Bone"],"deckPath":"IMAIOS::Head and Neck::Temporal Bone","tags":["head_neck","temporal_bone"]}'></textarea>
+            <div class="row three">
+              <button class="primary" type="button" data-action="apply-routing-json">Apply routing</button>
+              <button type="button" data-action="copy-routing-json">Copy current</button>
+              <button class="danger" type="button" data-action="clear-routing-json">Clear route</button>
+            </div>
+            <div class="chunk-summary" data-role="routing-summary"></div>
+          </details>
+
           <div class="tool-section">
             <div class="section-title">Cine capture</div>
             <select class="capture-scope" data-role="record-plane-scope">${buildRecordPlaneScopeOptions()}</select>
@@ -757,7 +787,12 @@
               <button type="button" data-action="copy-live-drill-json">Copy JSON</button>
               <button type="button" data-action="test-live-drill">Test</button>
             </div>
-            <div class="section-note">Uses the currently locked labels to create an Anki link that reopens this module and restores the drill.</div>
+            <div class="row">
+              <button class="primary" type="button" data-action="run-live-drill-card-automation">Auto GPT to TSV</button>
+              <button type="button" data-action="copy-live-drill-card-prompt">Copy prompt</button>
+              <button type="button" data-action="import-live-drill-card-plan">Plan to TSV</button>
+            </div>
+            <div class="section-note">Uses the currently locked labels to create Anki live-drill links. ChatGPT plans the subgroups; this extension builds the links.</div>
           </div>
 
           <details class="tool-section">
@@ -861,6 +896,16 @@
       state.customListText = event.target.value;
       savePageState();
     });
+    root.querySelector("[data-role='routing-json']").addEventListener("input", (event) => {
+      state.routingText = event.target.value;
+      savePageState();
+    });
+    root.querySelector("[data-role='routing-root']").addEventListener("input", (event) => {
+      state.routingDeckRoot = cleanText(event.target.value) || DEFAULT_DECK_ROOT;
+      savePageState();
+      const routingSummary = root.querySelector("[data-role='routing-summary']");
+      if (routingSummary) routingSummary.textContent = getRoutingSummaryText();
+    });
     root.querySelector("[data-role='chunk']").addEventListener("change", (event) => {
       setActiveChunkId(event.target.value);
     });
@@ -891,6 +936,9 @@
       if (input) input.click();
     });
     root.querySelector("[data-role='chunk-file-input']").addEventListener("change", importChunksFromSelectedFile);
+    root.querySelector("[data-action='apply-routing-json']").addEventListener("click", applyRoutingJsonFromPanel);
+    root.querySelector("[data-action='copy-routing-json']").addEventListener("click", copyCurrentRoutingJson);
+    root.querySelector("[data-action='clear-routing-json']").addEventListener("click", clearCurrentRoutingMetadata);
     root.querySelector("[data-action='import-labels']").addEventListener("click", importLabelsFromClipboard);
     root.querySelector("[data-action='copy-chunk-template']").addEventListener("click", copyChunkTemplate);
     root.querySelector("[data-action='harvest-labels']").addEventListener("click", harvestCurrentModuleLabels);
@@ -978,6 +1026,9 @@
     root.querySelector("[data-action='copy-live-drill-link']").addEventListener("click", copyLiveDrillLink);
     root.querySelector("[data-action='copy-live-drill-json']").addEventListener("click", copyLiveDrillJson);
     root.querySelector("[data-action='test-live-drill']").addEventListener("click", testLiveDrillRestore);
+    root.querySelector("[data-action='run-live-drill-card-automation']").addEventListener("click", runLiveDrillCardAutomation);
+    root.querySelector("[data-action='copy-live-drill-card-prompt']").addEventListener("click", copyLiveDrillCardPrompt);
+    root.querySelector("[data-action='import-live-drill-card-plan']").addEventListener("click", importLiveDrillCardPlanFromClipboard);
     root.querySelector("[data-role='cine-speed']").addEventListener("input", (event) => {
       setCineSpeed(parseNumber(event.target.value));
     });
@@ -1005,6 +1056,9 @@
     const chunkSelect = root.querySelector("[data-role='chunk']");
     const chunkPreview = root.querySelector("[data-role='chunk-preview']");
     const chunkSummary = root.querySelector("[data-role='chunk-summary']");
+    const routingRoot = root.querySelector("[data-role='routing-root']");
+    const routingJson = root.querySelector("[data-role='routing-json']");
+    const routingSummary = root.querySelector("[data-role='routing-summary']");
     const recordPlaneScopes = Array.from(root.querySelectorAll("[data-role='record-plane-scope']"));
     const applyClearFirst = root.querySelector("[data-role='apply-clear-first']");
     const customList = root.querySelector("[data-role='custom-list']");
@@ -1035,6 +1089,9 @@
     applyClearFirst.checked = state.applyChunkClearFirst;
     chunkPreview.innerHTML = buildChunkPreviewHtml();
     chunkSummary.textContent = getChunkSummaryText();
+    routingRoot.value = getRoutingDeckRoot();
+    routingJson.value = state.routingText;
+    routingSummary.textContent = getRoutingSummaryText();
     if (!state.customListText && chunk) state.customListText = chunkToPreferredLabelText(chunk);
     customList.value = state.customListText;
     togglePanel.textContent = state.collapsed ? "+" : "-";
@@ -1294,6 +1351,244 @@
     const repoCount = Array.isArray(state.labelRepository.labels) ? state.labelRepository.labels.length : 0;
     const matchText = chunkMatchesCurrentModule(chunk) ? "Chunk matches this module." : "Chunk belongs to another module.";
     return `${labelStatus} ${matchText} ${modality}${labelCount} chunk labels. ${repoCount} global repository labels loaded.`;
+  }
+
+  function getRoutingSummaryText() {
+    const library = state.chunkLibrary || {};
+    const chunks = Array.isArray(library.chunks) ? library.chunks : [];
+    const routedChunks = chunks.filter((chunk) => {
+      const route = getChunkRoutingMetadata(chunk);
+      return route.breadcrumb.length || route.deckPath || route.tags.length;
+    }).length;
+    const route = getLibraryRoutingMetadata();
+    const parts = [];
+    if (route.breadcrumb.length) parts.push(`Breadcrumb: ${route.breadcrumb.join(" > ")}`);
+    if (route.deckPath) parts.push(`Deck: ${route.deckPath}`);
+    if (route.tags.length) parts.push(`Tags: ${route.tags.join(", ")}`);
+    if (routedChunks) parts.push(`${routedChunks}/${chunks.length} chunks have chunk-level routing.`);
+    return parts.length
+      ? [`Root: ${getRoutingDeckRoot()}`, ...parts].join(" ")
+      : `Root: ${getRoutingDeckRoot()}. No manual route saved. Paste a route JSON here if this lecture needs an explicit breadcrumb/deck path.`;
+  }
+
+  function getRoutingDeckRoot() {
+    return cleanText(state.routingDeckRoot || DEFAULT_DECK_ROOT) || DEFAULT_DECK_ROOT;
+  }
+
+  function applyDeckRootOverride(deckPath, root = getRoutingDeckRoot()) {
+    if (deckPath == null || deckPath === false) return "";
+    const path = cleanText(deckPath);
+    const deckRoot = cleanText(root) || DEFAULT_DECK_ROOT;
+    if (!path) return "";
+    const parts = path.split("::").map(cleanText).filter(Boolean);
+    if (!parts.length) return deckRoot;
+    parts[0] = deckRoot;
+    return parts.join("::");
+  }
+
+  function buildDeckPathFromBreadcrumb(breadcrumb) {
+    const deckRoot = getRoutingDeckRoot();
+    const parts = Array.isArray(breadcrumb) ? breadcrumb.map(cleanText).filter(Boolean) : [];
+    if (!parts.length) return `${deckRoot}::Live drills`;
+    if (normalizeText(parts[0]) === normalizeText(deckRoot)) return parts.join("::");
+    return [deckRoot, ...parts].join("::");
+  }
+
+  async function applyRoutingJsonFromPanel() {
+    const text = state.shadow.querySelector("[data-role='routing-json']").value || state.routingText || "";
+    if (!text.trim()) {
+      setStatus("Paste breadcrumb/deck/tag JSON first.", 7000);
+      return;
+    }
+    let routeData = null;
+    try {
+      routeData = parseRoutingJsonInput(text);
+    } catch (error) {
+      setStatus(`Routing JSON failed: ${error.message || error}`, 9000);
+      return;
+    }
+    const result = applyRoutingDataToChunkLibrary(routeData);
+    if (!result.ok) {
+      setStatus(result.message, 9000);
+      return;
+    }
+    state.routingText = "";
+    saveChunkLibrary();
+    savePageState();
+    refreshPanel();
+    const backupResult = await backupChunkSessionToDownloads("manual-routing");
+    const backupText = backupResult.ok
+      ? ` Backup written to ${backupResult.result.downloadFolder}.`
+      : ` Backup failed: ${backupResult.error || "unknown error"}`;
+    setStatus(`${result.message}${backupText}`, 12000);
+  }
+
+  function parseRoutingJsonInput(text) {
+    const parsed = JSON.parse(stripOuterJsonFence(text));
+    if (!parsed || typeof parsed !== "object") throw new Error("Expected a JSON object.");
+    if (parsed.kind === "imaios-chunk-session-backup" && parsed.library) return parsed.library;
+    if (parsed.library?.kind === "imaios-chunk-library" || Array.isArray(parsed.library?.chunks)) return parsed.library;
+    return parsed;
+  }
+
+  function stripOuterJsonFence(text) {
+    const value = String(text || "").trim();
+    const match = value.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
+    return match ? match[1].trim() : value;
+  }
+
+  function applyRoutingDataToChunkLibrary(routeData) {
+    if (!state.chunkLibrary || typeof state.chunkLibrary !== "object") {
+      state.chunkLibrary = normalizeImportedChunkLibrary(null);
+    }
+    const route = extractRoutingPatch(routeData);
+    const hasTopLevelRoute = route.breadcrumb.length || route.deckPath || route.tags.length || route.topic || route.source || route.articleTitle;
+    const patchChunks = Array.isArray(routeData.chunks) ? routeData.chunks : [];
+    if (!hasTopLevelRoute && !patchChunks.length) {
+      return { ok: false, message: "No breadcrumb, deckPath, tags, topic, source, or chunks were found in that JSON." };
+    }
+
+    if (route.articleTitle) state.chunkLibrary.articleTitle = route.articleTitle;
+    if (route.topic) state.chunkLibrary.topic = route.topic;
+    if (route.source) state.chunkLibrary.source = route.source;
+    if (route.breadcrumb.length) state.chunkLibrary.breadcrumb = route.breadcrumb;
+    if (route.deckPath) state.chunkLibrary.deckPath = route.deckPath;
+    if (route.tags.length) state.chunkLibrary.tags = route.tags;
+
+    let chunkUpdates = 0;
+    for (const patchChunk of patchChunks) {
+      const chunkRoute = extractRoutingPatch(patchChunk);
+      if (!chunkRoute.breadcrumb.length && !chunkRoute.deckPath && !chunkRoute.tags.length && !chunkRoute.parentGroup) continue;
+      const existing = findChunkForRoutingPatch(patchChunk);
+      if (!existing) continue;
+      if (chunkRoute.parentGroup) existing.parentGroup = chunkRoute.parentGroup;
+      if (chunkRoute.breadcrumb.length) existing.breadcrumb = chunkRoute.breadcrumb;
+      if (chunkRoute.deckPath) existing.deckPath = chunkRoute.deckPath;
+      if (chunkRoute.tags.length) existing.tags = chunkRoute.tags;
+      chunkUpdates += 1;
+    }
+
+    const topText = hasTopLevelRoute ? "Updated session route" : "No session-level route changed";
+    const chunkText = patchChunks.length ? ` and ${chunkUpdates}/${patchChunks.length} chunk route${patchChunks.length === 1 ? "" : "s"}` : "";
+    return { ok: true, message: `${topText}${chunkText}.` };
+  }
+
+  function extractRoutingPatch(value) {
+    const source = value && typeof value === "object" ? value : {};
+    return {
+      articleTitle: cleanText(source.articleTitle || source.sourceTitle || source.title || ""),
+      topic: cleanText(source.topic || ""),
+      source: cleanText(source.source || ""),
+      parentGroup: cleanText(source.parentGroup || source.group || source.region || ""),
+      breadcrumb: normalizeBreadcrumbList(
+        source.breadcrumb ||
+        source.breadcrumbs ||
+        source.breadcrumbTrail ||
+        source.deckBreadcrumb ||
+        source.ankiBreadcrumb ||
+        source.anki?.breadcrumb ||
+        source.anki?.breadcrumbTrail ||
+        source.metadata?.breadcrumbTrail ||
+        source.routing?.breadcrumb ||
+        source.routing?.breadcrumbTrail
+      ),
+      deckPath: applyDeckRootOverride(
+        source.deckPath ||
+        source.suggestedDeckPath ||
+        source.ankiDeckPath ||
+        source.anki?.deckPath ||
+        source.anki?.deck ||
+        source.metadata?.deckPath ||
+        source.routing?.deckPath ||
+        ""
+      ),
+      tags: normalizeStringList(
+        source.tags ||
+        source.suggestedTags ||
+        source.ankiTags ||
+        source.anki?.tags ||
+        source.metadata?.tags ||
+        source.routing?.tags
+      )
+    };
+  }
+
+  function findChunkForRoutingPatch(patchChunk) {
+    const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
+    const patchId = cleanText(patchChunk?.id || "");
+    const patchTitle = normalizeText(patchChunk?.title || patchChunk?.name || "");
+    const patchModuleKey = normalizeModuleKey(patchChunk?.moduleKey || patchChunk?.targetModuleKey || patchChunk?.modalityUrl || patchChunk?.url || "");
+    return chunks.find((chunk) => patchId && chunk.id === patchId) ||
+      chunks.find((chunk) => patchTitle && normalizeText(chunk.title) === patchTitle && (!patchModuleKey || getChunkModuleKey(chunk) === patchModuleKey)) ||
+      null;
+  }
+
+  async function copyCurrentRoutingJson() {
+    const library = state.chunkLibrary || {};
+    const route = getLibraryRoutingMetadata();
+    const chunks = Array.isArray(library.chunks) ? library.chunks : [];
+    const routedChunks = chunks.map((chunk) => {
+      const chunkRoute = getChunkRoutingMetadata(chunk);
+      if (!chunkRoute.breadcrumb.length && !chunkRoute.deckPath && !chunkRoute.tags.length) return null;
+      return {
+        id: chunk.id,
+        title: chunk.title,
+        parentGroup: chunk.parentGroup || "",
+        moduleKey: getChunkModuleKey(chunk),
+        breadcrumb: chunkRoute.breadcrumb,
+        deckPath: chunkRoute.deckPath,
+        tags: chunkRoute.tags
+      };
+    }).filter(Boolean);
+    const output = {
+      kind: "imaios-routing",
+      version: 1,
+      topic: library.topic || "",
+      source: library.source || "",
+      breadcrumb: route.breadcrumb,
+      deckPath: route.deckPath,
+      tags: route.tags,
+      chunks: routedChunks
+    };
+    await writeClipboard(JSON.stringify(output, null, 2));
+    setStatus("Current routing JSON copied.");
+  }
+
+  async function clearCurrentRoutingMetadata() {
+    const route = getLibraryRoutingMetadata();
+    const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
+    const routedChunks = chunks.filter((chunk) => {
+      const chunkRoute = getChunkRoutingMetadata(chunk);
+      return chunkRoute.breadcrumb.length || chunkRoute.deckPath || chunkRoute.tags.length;
+    });
+    if (!route.breadcrumb.length && !route.deckPath && !route.tags.length && !routedChunks.length) {
+      setStatus("No routing metadata is currently saved.");
+      return;
+    }
+    const confirmed = typeof window.confirm === "function" && window.confirm(
+      `Clear manual breadcrumb/deck/tags for this imported chunk session?\n\nSession route: ${route.breadcrumb.length || route.deckPath || route.tags.length ? "yes" : "no"}\nChunk-level routes: ${routedChunks.length}\n\nThis updates the local chunk-session backup too.`
+    ) === true;
+    if (!confirmed) {
+      setStatus("Clear routing cancelled.");
+      return;
+    }
+    delete state.chunkLibrary.breadcrumb;
+    delete state.chunkLibrary.deckPath;
+    delete state.chunkLibrary.tags;
+    for (const chunk of chunks) {
+      delete chunk.breadcrumb;
+      delete chunk.deckPath;
+      delete chunk.tags;
+    }
+    state.routingText = "";
+    saveChunkLibrary();
+    savePageState();
+    refreshPanel();
+    const backupResult = await backupChunkSessionToDownloads("manual-routing-clear");
+    const backupText = backupResult.ok
+      ? ` Backup written to ${backupResult.result.downloadFolder}.`
+      : ` Backup failed: ${backupResult.error || "unknown error"}`;
+    setStatus(`Cleared routing metadata.${backupText}`, 11000);
   }
 
   function chunkToPreferredLabelText(chunk) {
@@ -2222,27 +2517,633 @@
   }
 
   async function copyPrompt() {
-    const chunk = getActiveChunk();
-    const chunkStructures = chunk ? getChunkLabelTargets(chunk).map((target) => target.preferredLabel) : [];
-    const structures = state.selectedStructures.length ? state.selectedStructures : parseCustomList().length ? parseCustomList() : chunkStructures;
-    const learningFrame = chunk && Array.isArray(chunk.learningFrame) ? chunk.learningFrame : [];
-    const prompt = [
-      "Create a compact Anki set for identifying these structures on IMAIOS cine clips:",
-      "",
-      structures.map((name) => `- ${name}`).join("\n"),
-      "",
-      learningFrame.length ? "Use this learning framework to group the cards:" : "",
-      learningFrame.length ? learningFrame.map((line) => `- ${line}`).join("\n") : "",
-      learningFrame.length ? "" : "",
-      "Use the clips as the visual prompt. Make cards that test image identification first, then add the minimum anatomy needed to prevent confusion with neighboring muscles.",
-      "When the selected chunk supplies a learning framework, create one compact framework card first, then focused identification cards grouped by that framework.",
-      "For each structure, include plane-specific recognition cues for axial, coronal, and sagittal review when useful. Include relationships, attachments, and action/innervation only when they help localization or high-yield discrimination.",
-      "Avoid pathology framing. Keep the cards anatomy-first and concise.",
-      "",
-      "Return TSV columns: Front, Back, Extra, Tags."
-    ].join("\n");
+    await copyLiveDrillCardPrompt();
+  }
+
+  async function copyLiveDrillCardPrompt() {
+    const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: true });
+    if (!drill.ok) {
+      setStatus(drill.reason, 7000);
+      return;
+    }
+    saveLastLiveDrillCardSource(drill.payload);
+    const prompt = buildLiveDrillCardPrompt(drill.payload);
     await writeClipboard(prompt);
-    setStatus("Card prompt copied.");
+    setStatus(`GPT card prompt copied for ${drill.payload.labels.length} locked labels. Paste it into ChatGPT, then use Plan to TSV on the JSON result.`, 12000);
+  }
+
+  async function runLiveDrillCardAutomation() {
+    const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: true });
+    if (!drill.ok) {
+      setStatus(drill.reason, 7000);
+      return;
+    }
+    if (!chrome?.runtime?.sendMessage) {
+      setStatus("Extension messaging is unavailable, so automatic ChatGPT launch cannot run.", 9000);
+      return;
+    }
+
+    saveLastLiveDrillCardSource(drill.payload);
+    const promptText = buildLiveDrillCardPrompt(drill.payload);
+    setStatus(`Sending ${drill.payload.labels.length} locked labels to ChatGPT for card planning...`, 0);
+    chrome.runtime.sendMessage({
+      type: "RUN_IMAIOS_LIVE_DRILL_CARD_AUTOMATION",
+      promptText,
+      sourcePayload: drill.payload
+    }, (response) => {
+      const error = chrome.runtime.lastError;
+      if (error) {
+        setStatus(`Automatic ChatGPT run failed: ${error.message || error}`, 12000);
+        return;
+      }
+      if (!response?.ok) {
+        setStatus(`Automatic ChatGPT run failed: ${response?.error || "unknown error"}`, 12000);
+        return;
+      }
+      setStatus(response.message || "ChatGPT is building the live-drill card plan. IMAIOS will generate the TSV when it returns.", 14000);
+    });
+  }
+
+  function buildLiveDrillCardPrompt(payload) {
+    const context = buildLiveDrillCardContext(payload);
+    const source = {
+      kind: "imaios-live-drill-card-source",
+      version: 1,
+      sourceDrillId: payload.id,
+      generatedAt: new Date().toISOString(),
+      breadcrumb: context.breadcrumb,
+      suggestedDeckPath: context.suggestedDeckPath,
+      suggestedTags: context.suggestedTags,
+      routing: {
+        explicitBreadcrumb: context.explicitBreadcrumb,
+        explicitDeckPath: context.explicitDeckPath,
+        explicitTags: context.explicitTags
+      },
+      module: payload.module,
+      viewer: payload.viewer,
+      chunk: payload.chunk,
+      labels: payload.labels.map((entry) => ({
+        preferredLabel: entry.preferredLabel,
+        aliases: entry.aliases || [],
+        href: entry.href || "",
+        source: entry.source || ""
+      })),
+      learningFrame: context.learningFrame
+    };
+    return [
+      "You are planning Anki identification cards for live IMAIOS anatomy drills.",
+      "",
+      "Goal:",
+      "- The card front will contain a live IMAIOS drill link that restores the selected module, plane, slice, and locked labels.",
+      "- The learner opens the link and names the locked structures in IMAIOS before revealing the answer.",
+      "- This is vocabulary and image-recognition practice, not a lecture and not pathology cards.",
+      "",
+      "Hard rules:",
+      "- Use only the exact `preferredLabel` strings supplied in INPUT.labels.",
+      "- Do not invent labels, rename labels, or substitute synonyms in the `labels` arrays.",
+      "- Every supplied label must appear in at least one card.",
+      "- Do not output final TSV and do not output encoded IMAIOS URLs. The browser extension will generate those from your JSON plan.",
+      "- Keep each card a learnable visual retrieval task. Prefer 2-4 labels per card. Use 5-6 only when they are one tight object/subpart family. Split larger groups into pedagogic subgroups.",
+      "- If a parent label and subparts are present, you may include the parent with the subparts when it improves orientation, but do not make every card depend on remembering a huge list.",
+      "- Preserve the breadcrumb/deck/tag context exactly enough that downstream import can route the card.",
+      "- If INPUT.routing.explicitBreadcrumb, INPUT.routing.explicitDeckPath, or INPUT.routing.explicitTags are populated, treat them as authoritative source routing. Copy them unless a tiny formatting cleanup is needed.",
+      "",
+      "Return exactly one fenced JSON block with this schema:",
+      "```json",
+      "{",
+      "  \"kind\": \"imaios-live-drill-card-plan\",",
+      "  \"version\": 1,",
+      "  \"sourceDrillId\": \"copy INPUT.sourceDrillId\",",
+      "  \"title\": \"short card-set title\",",
+      "  \"breadcrumb\": [\"copy or lightly refine INPUT.breadcrumb\"],",
+      "  \"deckPath\": \"copy or lightly refine INPUT.suggestedDeckPath\",",
+      "  \"tags\": [\"copy or lightly refine INPUT.suggestedTags\"],",
+      "  \"cards\": [",
+      "    {",
+      "      \"id\": \"short-stable-slug\",",
+      "      \"title\": \"card title\",",
+      "      \"frontPrompt\": \"Open the live drill and name the locked structures.\",",
+      "      \"labels\": [\"exact preferredLabel\", \"exact preferredLabel\"],",
+      "      \"recognitionCues\": [\"brief visual/anatomic cue\", \"brief visual/anatomic cue\"],",
+      "      \"contrastCues\": [\"brief nearby-confusion cue if useful\"],",
+      "      \"rationale\": \"why these labels belong together pedagogically\",",
+      "      \"tags\": [\"optional_extra_tag\"]",
+      "    }",
+      "  ]",
+      "}",
+      "```",
+      "",
+      "INPUT:",
+      "```json",
+      JSON.stringify(source, null, 2),
+      "```"
+    ].join("\n");
+  }
+
+  function buildLiveDrillCardContext(payload) {
+    const chunk = getActiveChunk();
+    const sourceContext = payload?.sourceContext || {};
+    const libraryRoute = getLibraryRoutingMetadata(payload);
+    const chunkRoute = getChunkRoutingMetadata(chunk, payload?.chunk || {});
+    const articleTitle = cleanText(sourceContext.articleTitle || sourceContext.topic || state.chunkLibrary.articleTitle || state.chunkLibrary.topic || payload?.chunk?.title || payload?.module?.name || "IMAIOS anatomy");
+    const sourceName = cleanText(sourceContext.source || state.chunkLibrary.source || chunk?.source || "");
+    const moduleName = cleanText(payload?.module?.name || getCurrentModuleName());
+    const chunkTitle = cleanText(payload?.chunk?.title || chunk?.title || payload?.title || "");
+    const parentGroup = cleanText(chunk?.parentGroup || "");
+    const plane = cleanText(payload?.viewer?.plane || "");
+    const explicitBreadcrumb = unique([
+      ...libraryRoute.breadcrumb,
+      ...chunkRoute.breadcrumb
+    ]);
+    const fallbackBreadcrumb = unique([
+      articleTitle,
+      sourceName,
+      moduleName,
+      parentGroup,
+      chunkTitle
+    ].filter(Boolean));
+    const breadcrumb = explicitBreadcrumb.length ? explicitBreadcrumb : fallbackBreadcrumb;
+    const learningFrame = unique([
+      ...(Array.isArray(chunk?.learningFrame) ? chunk.learningFrame : []),
+      ...(Array.isArray(payload?.chunk?.learningFrame) ? payload.chunk.learningFrame : [])
+    ]);
+    const explicitDeckPath = applyDeckRootOverride(chunkRoute.deckPath || libraryRoute.deckPath);
+    const suggestedDeckPath = explicitDeckPath || buildDeckPathFromBreadcrumb(breadcrumb);
+    const explicitTags = unique([
+      ...libraryRoute.tags,
+      ...chunkRoute.tags
+    ]);
+    const suggestedTags = unique([
+      ...explicitTags,
+      "imaios",
+      "live_drill",
+      articleTitle && `article::${articleTitle}`,
+      moduleName && `module::${moduleName}`,
+      chunkTitle && `chunk::${chunkTitle}`,
+      plane && `plane::${plane}`
+    ].filter(Boolean).map(toAnkiTag));
+    return {
+      articleTitle,
+      sourceName,
+      moduleName,
+      chunkTitle,
+      parentGroup,
+      plane,
+      breadcrumb,
+      explicitBreadcrumb,
+      learningFrame,
+      suggestedDeckPath,
+      explicitDeckPath,
+      suggestedTags,
+      explicitTags
+    };
+  }
+
+  function getLibraryRoutingMetadata(payload = null) {
+    const library = {
+      ...(state.chunkLibrary || {}),
+      ...(payload?.sourceContext && typeof payload.sourceContext === "object" ? payload.sourceContext : {})
+    };
+    return {
+      breadcrumb: normalizeBreadcrumbList(
+        library.breadcrumb ||
+        library.breadcrumbs ||
+        library.breadcrumbTrail ||
+        library.deckBreadcrumb ||
+        library.ankiBreadcrumb ||
+        library.anki?.breadcrumb ||
+        library.anki?.breadcrumbTrail ||
+        library.metadata?.breadcrumbTrail
+      ),
+      deckPath: applyDeckRootOverride(
+        library.deckPath ||
+        library.suggestedDeckPath ||
+        library.ankiDeckPath ||
+        library.anki?.deckPath ||
+        library.anki?.deck ||
+        library.metadata?.deckPath ||
+        ""
+      ),
+      tags: normalizeStringList(
+        library.tags ||
+        library.suggestedTags ||
+        library.ankiTags ||
+        library.anki?.tags ||
+        library.metadata?.tags
+      )
+    };
+  }
+
+  function getChunkRoutingMetadata(chunk, payloadChunk = {}) {
+    const source = {
+      ...(payloadChunk && typeof payloadChunk === "object" ? payloadChunk : {}),
+      ...(chunk && typeof chunk === "object" ? chunk : {})
+    };
+    return {
+      breadcrumb: normalizeBreadcrumbList(
+        source.breadcrumb ||
+        source.breadcrumbs ||
+        source.breadcrumbTrail ||
+        source.deckBreadcrumb ||
+        source.ankiBreadcrumb ||
+        source.anki?.breadcrumb ||
+        source.anki?.breadcrumbTrail ||
+        source.routing?.breadcrumb ||
+        source.routing?.breadcrumbTrail
+      ),
+      deckPath: applyDeckRootOverride(
+        source.deckPath ||
+        source.suggestedDeckPath ||
+        source.ankiDeckPath ||
+        source.anki?.deckPath ||
+        source.anki?.deck ||
+        source.routing?.deckPath ||
+        ""
+      ),
+      tags: normalizeStringList(
+        source.tags ||
+        source.suggestedTags ||
+        source.ankiTags ||
+        source.anki?.tags ||
+        source.routing?.tags
+      )
+    };
+  }
+
+  function normalizeBreadcrumbList(value) {
+    if (Array.isArray(value)) return unique(value.map(cleanText).filter(Boolean));
+    if (typeof value === "string") {
+      const text = cleanText(value);
+      if (!text) return [];
+      return unique(text.split(/\s*(?:::|>|\/)\s*/).map(cleanText).filter(Boolean));
+    }
+    return [];
+  }
+
+  async function importLiveDrillCardPlanFromClipboard() {
+    let text = "";
+    try {
+      text = await readClipboard();
+    } catch (_error) {
+      setStatus("Could not read clipboard for the ChatGPT card plan.", 7000);
+      return;
+    }
+
+    let plan = null;
+    try {
+      plan = parseLiveDrillCardPlan(text);
+    } catch (error) {
+      setStatus(`Card plan import failed: ${error.message || error}`, 10000);
+      return;
+    }
+
+    const sourcePayload = await getSourcePayloadForCardPlan(plan);
+    const result = await finalizeLiveDrillCardPlan(plan, sourcePayload, { source: "clipboard" });
+    setStatus(result.message, result.ok ? 14000 : 12000);
+  }
+
+  async function finalizeLiveDrillCardPlan(plan, sourcePayload, options = {}) {
+    if (!sourcePayload) {
+      return {
+        ok: false,
+        message: "No saved live-drill source is available. Run Auto GPT to TSV or copy the GPT card prompt from the current locked labels first."
+      };
+    }
+
+    const validation = validateLiveDrillCardPlan(plan, sourcePayload);
+    if (validation.unknownLabels.length) {
+      return {
+        ok: false,
+        message: `Plan has labels not in the source drill: ${validation.unknownLabels.slice(0, 6).join(", ")}${validation.unknownLabels.length > 6 ? "..." : ""}. Fix the JSON in ChatGPT and try again.`
+      };
+    }
+    if (!validation.validCards.length) {
+      return { ok: false, message: "The card plan has no cards with source labels." };
+    }
+
+    const tsv = buildLiveDrillCardsTsv(plan, sourcePayload, validation.validCards);
+    const outputPaths = buildLiveDrillCardOutputPaths(sourcePayload, plan);
+    const normalizedPlan = {
+      ...plan,
+      generatedTsvAt: new Date().toISOString(),
+      generatedBy: options.source || "imaios",
+      outputColumns: ["Front", "Back", "Extra", "Tags"],
+      sourceDrillPayload: sourcePayload,
+      coverage: {
+        sourceLabels: validation.sourceLabels,
+        coveredLabels: validation.coveredLabels,
+        missingLabels: validation.missingLabels
+      }
+    };
+    await writeClipboard(tsv);
+    let downloadText = "";
+    let downloaded = false;
+    try {
+      await downloadTextAsFile(tsv, outputPaths.tsvPath, "text/tab-separated-values;charset=utf-8");
+      await downloadTextAsFile(JSON.stringify(normalizedPlan, null, 2), outputPaths.planPath, "application/json;charset=utf-8");
+      downloadText = ` Downloaded to Downloads\\${outputPaths.folder.replace(/\//g, "\\")}.`;
+      downloaded = true;
+    } catch (error) {
+      downloadText = ` Download failed: ${error?.message || error}`;
+    }
+    const missingText = validation.missingLabels.length
+      ? ` Missing from plan: ${validation.missingLabels.join(", ")}.`
+      : "";
+    return {
+      ok: downloaded,
+      copied: true,
+      rowCount: validation.validCards.length,
+      missingLabels: validation.missingLabels,
+      outputPaths,
+      message: `Copied ${validation.validCards.length} live-drill TSV row${validation.validCards.length === 1 ? "" : "s"}.${missingText}${downloadText}`
+    };
+  }
+
+  function parseLiveDrillCardPlan(text) {
+    const candidates = getJsonCandidatesFromText(text);
+    for (const candidate of candidates) {
+      try {
+        const parsed = JSON.parse(candidate);
+        const plan = normalizeLiveDrillCardPlan(parsed);
+        if (plan) return plan;
+      } catch (_error) {}
+    }
+    throw new Error("No valid imaios-live-drill-card-plan JSON block was found.");
+  }
+
+  function getJsonCandidatesFromText(text) {
+    const value = String(text || "").trim();
+    const candidates = [];
+    const fenced = Array.from(value.matchAll(/```(?:json)?\s*([\s\S]*?)```/gi)).map((match) => match[1].trim());
+    candidates.push(...fenced);
+    if (value.startsWith("{") && value.endsWith("}")) candidates.push(value);
+    const kindIndex = value.lastIndexOf('"kind"');
+    if (kindIndex >= 0) {
+      const start = value.lastIndexOf("{", kindIndex);
+      const end = value.lastIndexOf("}");
+      if (start >= 0 && end > start) candidates.push(value.slice(start, end + 1));
+    }
+    return unique(candidates.filter(Boolean));
+  }
+
+  function normalizeLiveDrillCardPlan(value) {
+    if (!value || typeof value !== "object") return null;
+    if (value.kind !== "imaios-live-drill-card-plan") return null;
+    const rawCards = Array.isArray(value.cards)
+      ? value.cards
+      : Array.isArray(value.cardPlan)
+        ? value.cardPlan
+        : [];
+    const cards = rawCards.map((card, index) => normalizeLiveDrillCardPlanCard(card, index)).filter(Boolean);
+    return {
+      kind: "imaios-live-drill-card-plan",
+      version: Number(value.version) || 1,
+      sourceDrillId: cleanText(value.sourceDrillId || value.drillId || ""),
+      title: cleanText(value.title || value.cardSetTitle || "IMAIOS live drill cards"),
+      breadcrumb: normalizeBreadcrumbList(value.breadcrumb || value.breadcrumbs || value.breadcrumbTrail || value.deckBreadcrumb || value.ankiBreadcrumb || value.anki?.breadcrumb || value.anki?.breadcrumbTrail),
+      deckPath: applyDeckRootOverride(value.deckPath || value.suggestedDeckPath || value.ankiDeckPath || value.anki?.deckPath || value.anki?.deck || ""),
+      tags: normalizeStringList(value.tags || value.suggestedTags || value.ankiTags || value.anki?.tags),
+      cards,
+      sourceDrillPayload: value.sourceDrillPayload && value.sourceDrillPayload.kind === "imaios-live-drill" ? value.sourceDrillPayload : null
+    };
+  }
+
+  function normalizeLiveDrillCardPlanCard(card, index) {
+    if (!card || typeof card !== "object") return null;
+    const labels = normalizeCardPlanLabels(card.labels || card.lockedLabels || card.drillLabels || card.answerLabels);
+    if (!labels.length) return null;
+    const title = cleanText(card.title || card.name || labels.slice(0, 3).join(", "));
+    return {
+      id: cleanText(card.id || createSlug(title) || `card-${index + 1}`),
+      title,
+      frontPrompt: cleanText(card.frontPrompt || card.front || "Open the live drill and name the locked structures."),
+      labels,
+      recognitionCues: normalizeCueList(card.recognitionCues || card.cues || card.answerCues),
+      contrastCues: normalizeCueList(card.contrastCues || card.differentiationCues || card.traps),
+      rationale: cleanText(card.rationale || card.groupingRationale || card.note || ""),
+      tags: normalizeStringList(card.tags)
+    };
+  }
+
+  function normalizeCardPlanLabels(value) {
+    if (Array.isArray(value)) {
+      return unique(value.map((item) => {
+        if (typeof item === "string") return cleanText(item);
+        if (item && typeof item === "object") return cleanText(item.preferredLabel || item.label || item.name || "");
+        return "";
+      }).filter(Boolean));
+    }
+    if (typeof value === "string") {
+      return unique(value.split(/\r?\n|[|;]/).map(cleanText).filter(Boolean));
+    }
+    return [];
+  }
+
+  function normalizeCueList(value) {
+    if (Array.isArray(value)) {
+      return value.map((item) => {
+        if (typeof item === "string") return cleanText(item);
+        if (item && typeof item === "object") {
+          const label = cleanText(item.label || item.structure || "");
+          const cue = cleanText(item.cue || item.text || item.note || item.description || "");
+          return label && cue ? `${label}: ${cue}` : cue || label;
+        }
+        return "";
+      }).filter(Boolean);
+    }
+    return normalizeStringList(value);
+  }
+
+  async function getSourcePayloadForCardPlan(plan) {
+    if (plan?.sourceDrillPayload?.kind === "imaios-live-drill") return plan.sourceDrillPayload;
+    const saved = normalizeSavedLiveDrillSource(state.lastLiveDrillCardSource || readLastLiveDrillCardSource());
+    if (saved?.payload && (!plan.sourceDrillId || !saved.payload.id || plan.sourceDrillId === saved.payload.id)) return saved.payload;
+    if (saved?.payload && labelsCoverPlan(saved.payload, plan)) return saved.payload;
+    const current = await buildLiveDrillPayloadFromCurrent({ requireLocked: false });
+    if (current.ok && current.payload?.labels?.length && labelsCoverPlan(current.payload, plan)) return current.payload;
+    return saved?.payload || null;
+  }
+
+  function validateLiveDrillCardPlan(plan, sourcePayload) {
+    const sourceLabels = unique((sourcePayload.labels || []).map((entry) => cleanText(entry.preferredLabel || entry.label || "")).filter(Boolean));
+    const sourceKeys = new Map(sourceLabels.map((label) => [normalizeText(label), label]));
+    const unknownLabels = [];
+    const validCards = [];
+    const coveredKeys = new Set();
+
+    for (const card of plan.cards || []) {
+      const labels = [];
+      for (const label of card.labels || []) {
+        const key = normalizeText(label);
+        if (!sourceKeys.has(key)) {
+          unknownLabels.push(label);
+          continue;
+        }
+        labels.push(sourceKeys.get(key));
+        coveredKeys.add(key);
+      }
+      if (labels.length) validCards.push({ ...card, labels: unique(labels) });
+    }
+
+    const coveredLabels = sourceLabels.filter((label) => coveredKeys.has(normalizeText(label)));
+    const missingLabels = sourceLabels.filter((label) => !coveredKeys.has(normalizeText(label)));
+    return {
+      sourceLabels,
+      coveredLabels,
+      missingLabels,
+      unknownLabels: unique(unknownLabels),
+      validCards
+    };
+  }
+
+  function labelsCoverPlan(sourcePayload, plan) {
+    const sourceKeys = new Set((sourcePayload?.labels || []).map((entry) => normalizeText(entry.preferredLabel || entry.label || "")));
+    const planLabels = (plan?.cards || []).flatMap((card) => card.labels || []);
+    return planLabels.length > 0 && planLabels.every((label) => sourceKeys.has(normalizeText(label)));
+  }
+
+  function buildLiveDrillCardsTsv(plan, sourcePayload, cards) {
+    const header = ["Front", "Back", "Extra", "Tags"];
+    const rows = cards.map((card, index) => {
+      const cardPayload = buildLiveDrillSubPayload(sourcePayload, card, index);
+      const link = buildLiveDrillUrl(cardPayload);
+      const front = buildLiveDrillCardFront(card, link);
+      const back = buildLiveDrillCardBack(card);
+      const extra = buildLiveDrillCardExtra(card, sourcePayload, plan);
+      const tags = buildLiveDrillCardTags(card, sourcePayload, plan);
+      return [front, back, extra, tags];
+    });
+    return [header, ...rows].map((row) => row.map(tsvCell).join("\t")).join("\n");
+  }
+
+  function buildLiveDrillSubPayload(sourcePayload, card, index) {
+    const sourceByKey = new Map((sourcePayload.labels || []).map((entry) => [normalizeText(entry.preferredLabel || entry.label || ""), entry]));
+    const labels = card.labels.map((label) => {
+      const entry = sourceByKey.get(normalizeText(label)) || {};
+      return {
+        preferredLabel: cleanText(entry.preferredLabel || label),
+        normalizedLabel: normalizeText(entry.preferredLabel || label),
+        moduleKey: entry.moduleKey || sourcePayload.module?.key || "",
+        aliases: Array.isArray(entry.aliases) ? entry.aliases : [],
+        repositoryStatus: entry.repositoryStatus || "",
+        href: entry.href || "",
+        source: entry.source || "card-plan"
+      };
+    });
+    const title = cleanText(card.title || labels.map((entry) => entry.preferredLabel).join(", "));
+    return {
+      ...sourcePayload,
+      id: createSlug(`${sourcePayload.id || "imaios-live-drill"}-${card.id || index + 1}`) || `${sourcePayload.id || "imaios-live-drill"}-${index + 1}`,
+      title,
+      createdAt: new Date().toISOString(),
+      labels,
+      lockedLabels: labels.map((entry) => entry.preferredLabel)
+    };
+  }
+
+  function buildLiveDrillCardFront(card, link) {
+    return [
+      `<a href="${escapeHtml(link)}">Open IMAIOS live drill</a>`,
+      `<br>`,
+      escapeHtml(card.frontPrompt || "Name the locked structures before revealing the answer."),
+      `<br><span class="imaios-card-count">${card.labels.length} structure${card.labels.length === 1 ? "" : "s"}</span>`
+    ].join("");
+  }
+
+  function buildLiveDrillCardBack(card) {
+    const labels = card.labels.map((label) => `<li><strong>${escapeHtml(label)}</strong></li>`).join("");
+    const cues = (card.recognitionCues || []).map((cue) => `<li>${escapeHtml(cue)}</li>`).join("");
+    const contrast = (card.contrastCues || []).map((cue) => `<li>${escapeHtml(cue)}</li>`).join("");
+    return [
+      `<div class="imaios-live-answer"><strong>Answer</strong><ol>${labels}</ol>`,
+      cues ? `<strong>Recognition cues</strong><ul>${cues}</ul>` : "",
+      contrast ? `<strong>Do not confuse with</strong><ul>${contrast}</ul>` : "",
+      `</div>`
+    ].join("");
+  }
+
+  function buildLiveDrillCardExtra(card, sourcePayload, plan) {
+    const viewer = sourcePayload.viewer || {};
+    const range = viewer.range || {};
+    const module = sourcePayload.module || {};
+    const chunk = sourcePayload.chunk || {};
+    return [
+      `Module: ${escapeHtml(module.name || module.key || "")}`,
+      `Chunk: ${escapeHtml(chunk.title || sourcePayload.title || "")}`,
+      `Plane: ${escapeHtml(viewer.plane || "")}`,
+      `Slice: ${escapeHtml(String(viewer.slice?.value ?? ""))}`,
+      `Range: ${escapeHtml(`${range.startSlice ?? ""}-${range.endSlice ?? ""}`)}`,
+      plan.deckPath ? `Deck path: ${escapeHtml(plan.deckPath)}` : "",
+      card.rationale ? `Grouping: ${escapeHtml(card.rationale)}` : ""
+    ].filter(Boolean).join("<br>");
+  }
+
+  function buildLiveDrillCardTags(card, sourcePayload, plan) {
+    const context = buildLiveDrillCardContext(sourcePayload);
+    return unique([
+      ...(Array.isArray(plan.tags) ? plan.tags : []),
+      ...context.suggestedTags,
+      ...(Array.isArray(card.tags) ? card.tags : []),
+      card.title && `card::${card.title}`
+    ].filter(Boolean).map(toAnkiTag)).join(" ");
+  }
+
+  function buildLiveDrillCardOutputPaths(sourcePayload, plan) {
+    const context = buildLiveDrillCardContext(sourcePayload);
+    const articleSlug = createSlug(context.articleTitle || sourcePayload.module?.name || "imaios-live-drills") || "imaios-live-drills";
+    const chunkSlug = createSlug(context.chunkTitle || sourcePayload.title || "drill") || "drill";
+    const base = createSlug(plan.title || sourcePayload.title || "live-drill-cards") || `live-drill-cards-${Date.now()}`;
+    const folder = `IMAIOS/LiveDrills/${articleSlug}/${chunkSlug}`;
+    return {
+      folder,
+      tsvPath: `${folder}/${base}_anki.tsv`,
+      planPath: `${folder}/${base}_card_plan.json`
+    };
+  }
+
+  function saveLastLiveDrillCardSource(payload) {
+    const source = normalizeSavedLiveDrillSource({
+      kind: "imaios-live-drill-card-source",
+      version: 1,
+      savedAt: new Date().toISOString(),
+      payload
+    });
+    state.lastLiveDrillCardSource = source;
+    try {
+      localStorage.setItem(LAST_LIVE_DRILL_CARD_SOURCE_KEY, JSON.stringify(source));
+    } catch (error) {
+      console.warn("IMAIOS Cine Tools: could not save live-drill card source", error);
+    }
+  }
+
+  function readLastLiveDrillCardSource() {
+    try {
+      return JSON.parse(localStorage.getItem(LAST_LIVE_DRILL_CARD_SOURCE_KEY) || "null");
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function normalizeSavedLiveDrillSource(value) {
+    if (!value || typeof value !== "object") return null;
+    const payload = value.payload?.kind === "imaios-live-drill" ? value.payload : value.kind === "imaios-live-drill" ? value : null;
+    if (!payload || !Array.isArray(payload.labels)) return null;
+    return {
+      kind: "imaios-live-drill-card-source",
+      version: Number(value.version) || 1,
+      savedAt: cleanText(value.savedAt || new Date().toISOString()),
+      payload
+    };
+  }
+
+  function toAnkiTag(value) {
+    const text = cleanText(value);
+    if (!text) return "";
+    return text
+      .split("::")
+      .map((part) => createSlug(part).replace(/-/g, "_"))
+      .filter(Boolean)
+      .join("::");
   }
 
   async function copyLiveDrillJson() {
@@ -2251,6 +3152,7 @@
       setStatus(drill.reason, 7000);
       return;
     }
+    saveLastLiveDrillCardSource(drill.payload);
     await writeClipboard(JSON.stringify(drill.payload, null, 2));
     setStatus(`Live drill JSON copied with ${drill.payload.labels.length} locked labels.`);
   }
@@ -2261,6 +3163,7 @@
       setStatus(drill.reason, 7000);
       return;
     }
+    saveLastLiveDrillCardSource(drill.payload);
     const link = buildLiveDrillUrl(drill.payload);
     await writeClipboard(link);
     setStatus(`Live drill link copied with ${drill.payload.labels.length} labels.`);
@@ -2318,12 +3221,26 @@
       chunk: chunk ? {
         id: chunk.id,
         title: chunk.title,
+        parentGroup: chunk.parentGroup || "",
+        source: chunk.source || "",
         modality: chunk.modality || "",
         moduleKey: getChunkModuleKey(chunk),
         moduleName: getChunkModuleDisplayName(chunk),
         modalityUrl: chunk.modalityUrl || chunk.moduleUrl || chunk.url || "",
+        breadcrumb: Array.isArray(chunk.breadcrumb) ? chunk.breadcrumb : [],
+        deckPath: applyDeckRootOverride(chunk.deckPath || ""),
+        tags: Array.isArray(chunk.tags) ? chunk.tags : [],
+        routing: chunk.routing || null,
         learningFrame: Array.isArray(chunk.learningFrame) ? chunk.learningFrame : []
       } : null,
+      sourceContext: {
+        articleTitle: state.chunkLibrary.articleTitle || "",
+        topic: state.chunkLibrary.topic || "",
+        source: state.chunkLibrary.source || "",
+        breadcrumb: Array.isArray(state.chunkLibrary.breadcrumb) ? state.chunkLibrary.breadcrumb : [],
+        deckPath: applyDeckRootOverride(state.chunkLibrary.deckPath || ""),
+        tags: Array.isArray(state.chunkLibrary.tags) ? state.chunkLibrary.tags : []
+      },
       labels,
       lockedLabels: labels.map((item) => item.preferredLabel),
       restorePlan: {
@@ -2629,6 +3546,34 @@
       return true;
     }
 
+    if (message?.type === "IMAIOS_LIVE_DRILL_CARD_PLAN_READY") {
+      (async () => {
+        try {
+          const sourcePayload = message.sourcePayload?.kind === "imaios-live-drill"
+            ? message.sourcePayload
+            : null;
+          if (sourcePayload) saveLastLiveDrillCardSource(sourcePayload);
+          setStatus("ChatGPT card plan received. Building live-drill TSV...", 0);
+          const plan = parseLiveDrillCardPlan(message.assistantText || message.text || "");
+          const payload = sourcePayload || await getSourcePayloadForCardPlan(plan);
+          const result = await finalizeLiveDrillCardPlan(plan, payload, { source: "chatgpt-automation" });
+          setStatus(result.message, result.ok ? 14000 : 12000);
+          sendResponse(result.ok ? { ok: true, ...result } : { ok: false, error: result.message, ...result });
+        } catch (error) {
+          const messageText = `Live-drill TSV automation failed: ${error?.message || error}`;
+          setStatus(messageText, 14000);
+          sendResponse({ ok: false, error: String(error?.message || error) });
+        }
+      })();
+      return true;
+    }
+
+    if (message?.type === "IMAIOS_LIVE_DRILL_CARD_PLAN_FAILED") {
+      setStatus(`Live-drill card automation failed: ${message.error || "unknown error"}`, 14000);
+      sendResponse({ ok: true });
+      return true;
+    }
+
     if (message?.type !== "IMAIOS_IMPORT_CHUNKS") return false;
     (async () => {
       try {
@@ -2795,6 +3740,32 @@
       articleTitle: cleanText(source && (source.articleTitle || source.sourceTitle || source.title || "")),
       topic: cleanText(source && (source.topic || source.articleTitle || source.sourceTitle || source.title || "")),
       source: cleanText(source && source.source || ""),
+      breadcrumb: normalizeBreadcrumbList(source && (
+        source.breadcrumb ||
+        source.breadcrumbs ||
+        source.breadcrumbTrail ||
+        source.deckBreadcrumb ||
+        source.ankiBreadcrumb ||
+        source.anki?.breadcrumb ||
+        source.anki?.breadcrumbTrail ||
+        source.metadata?.breadcrumbTrail
+      )),
+      deckPath: applyDeckRootOverride(source && (
+        source.deckPath ||
+        source.suggestedDeckPath ||
+        source.ankiDeckPath ||
+        source.anki?.deckPath ||
+        source.anki?.deck ||
+        source.metadata?.deckPath ||
+        ""
+      )),
+      tags: normalizeStringList(source && (
+        source.tags ||
+        source.suggestedTags ||
+        source.ankiTags ||
+        source.anki?.tags ||
+        source.metadata?.tags
+      )),
       unmatchedConcepts: normalizeGapReviewList(source && (source.unmatchedConcepts || source.gapReview || source.needsReview)),
       importedAt: new Date().toISOString(),
       chunks
@@ -2822,6 +3793,33 @@
       moduleName: cleanText(value.moduleName || value.targetModuleName || ""),
       modality: cleanText(value.modality || value.imaiosModality || value.module || ""),
       modalityUrl: cleanText(value.modalityUrl || value.url || ""),
+      breadcrumb: normalizeBreadcrumbList(
+        value.breadcrumb ||
+        value.breadcrumbs ||
+        value.breadcrumbTrail ||
+        value.deckBreadcrumb ||
+        value.ankiBreadcrumb ||
+        value.anki?.breadcrumb ||
+        value.anki?.breadcrumbTrail ||
+        value.routing?.breadcrumb ||
+        value.routing?.breadcrumbTrail
+      ),
+      deckPath: applyDeckRootOverride(
+        value.deckPath ||
+        value.suggestedDeckPath ||
+        value.ankiDeckPath ||
+        value.anki?.deckPath ||
+        value.anki?.deck ||
+        value.routing?.deckPath ||
+        ""
+      ),
+      tags: normalizeStringList(
+        value.tags ||
+        value.suggestedTags ||
+        value.ankiTags ||
+        value.anki?.tags ||
+        value.routing?.tags
+      ),
       learningOrder: Number(value.learningOrder || value.order || index + 1),
       labels,
       unmatchedConcepts: normalizeGapReviewList(value.unmatchedConcepts || value.gapReview || value.needsReview),
