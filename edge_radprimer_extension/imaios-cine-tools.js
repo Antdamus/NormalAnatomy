@@ -107,7 +107,8 @@
     reverseScrollWatchTimer: 0,
     lastReverseScrollPlane: "",
     lastRestoredDrillHash: "",
-    lastLiveDrillCardSource: null
+    lastLiveDrillCardSource: null,
+    studyShield: null
   };
 
   async function init() {
@@ -787,6 +788,7 @@
             <div class="row">
               <button type="button" data-action="probe-locked-details">Probe label info</button>
               <button type="button" data-action="probe-locked-details-search-pin">Probe via search pins</button>
+              <button type="button" data-action="probe-locked-details-search-pin-fast">Fast probe</button>
               <button type="button" data-action="copy-slice">Copy slice</button>
             </div>
             <div class="section-note">Uses the currently locked labels to create Anki live-drill links. ChatGPT plans the subgroups; this extension builds the links.</div>
@@ -1014,7 +1016,12 @@
     root.querySelectorAll("[data-action='probe-locked-details']").forEach((button) => {
       button.addEventListener("click", copyLockedLabelDetailProbe);
     });
-    root.querySelector("[data-action='probe-locked-details-search-pin']").addEventListener("click", copyLockedLabelSearchPinDetailProbe);
+    root.querySelector("[data-action='probe-locked-details-search-pin']").addEventListener("click", () => {
+      copyLockedLabelSearchPinDetailProbe({ fast: false });
+    });
+    root.querySelector("[data-action='probe-locked-details-search-pin-fast']").addEventListener("click", () => {
+      copyLockedLabelSearchPinDetailProbe({ fast: true });
+    });
     root.querySelector("[data-action='copy-range']").addEventListener("click", copyCineRangeText);
     root.querySelector("[data-action='copy-range-json']").addEventListener("click", copyCineRangeJson);
     root.querySelector("[data-action='go-range-start']").addEventListener("click", goToRangeStart);
@@ -2526,21 +2533,21 @@
   }
 
   async function copyLiveDrillCardPrompt() {
-    const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: true });
-    if (!drill.ok) {
-      setStatus(drill.reason, 7000);
+    const promptPackage = await buildLiveDrillCardPromptPackage({ requireLocked: true });
+    if (!promptPackage.ok) {
+      setStatus(promptPackage.reason, 7000);
       return;
     }
-    saveLastLiveDrillCardSource(drill.payload);
-    const prompt = buildLiveDrillCardPrompt(drill.payload);
-    await writeClipboard(prompt);
-    setStatus(`GPT card prompt copied for ${drill.payload.labels.length} locked labels. Paste it into ChatGPT, then use Plan to TSV on the JSON result.`, 12000);
+    saveLastLiveDrillCardSource(promptPackage.payload);
+    await writeClipboard(promptPackage.promptText);
+    const enrichmentText = describeLiveDrillPromptEnrichment(promptPackage.enrichment);
+    setStatus(`GPT card prompt copied for ${promptPackage.payload.labels.length} locked labels.${enrichmentText} Paste it into ChatGPT, then use Plan to TSV on the JSON result.`, 12000);
   }
 
   async function runLiveDrillCardAutomation() {
-    const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: true });
-    if (!drill.ok) {
-      setStatus(drill.reason, 7000);
+    const promptPackage = await buildLiveDrillCardPromptPackage({ requireLocked: true });
+    if (!promptPackage.ok) {
+      setStatus(promptPackage.reason, 7000);
       return;
     }
     if (!chrome?.runtime?.sendMessage) {
@@ -2548,13 +2555,13 @@
       return;
     }
 
-    saveLastLiveDrillCardSource(drill.payload);
-    const promptText = buildLiveDrillCardPrompt(drill.payload);
-    setStatus(`Sending ${drill.payload.labels.length} locked labels to ChatGPT for card planning...`, 0);
+    saveLastLiveDrillCardSource(promptPackage.payload);
+    const enrichmentText = describeLiveDrillPromptEnrichment(promptPackage.enrichment);
+    setStatus(`Sending ${promptPackage.payload.labels.length} locked labels to ChatGPT for card planning.${enrichmentText}`, 0);
     chrome.runtime.sendMessage({
       type: "RUN_IMAIOS_LIVE_DRILL_CARD_AUTOMATION",
-      promptText,
-      sourcePayload: drill.payload
+      promptText: promptPackage.promptText,
+      sourcePayload: promptPackage.payload
     }, (response) => {
       const error = chrome.runtime.lastError;
       if (error) {
@@ -2569,8 +2576,51 @@
     });
   }
 
-  function buildLiveDrillCardPrompt(payload) {
+  async function buildLiveDrillCardPromptPackage(options = {}) {
+    const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: options.requireLocked !== false });
+    if (!drill.ok) return drill;
+
+    const enrichment = options.enrichDetails === false
+      ? null
+      : await enrichLiveDrillCardPromptDetails(drill.payload);
+    return {
+      ok: true,
+      payload: drill.payload,
+      enrichment,
+      promptText: buildLiveDrillCardPrompt(drill.payload, enrichment)
+    };
+  }
+
+  async function enrichLiveDrillCardPromptDetails(payload) {
+    const labels = getLiveDrillRestoreLabels(payload);
+    if (!labels.length) return { ok: false, skipped: true, reason: "No labels were available for enrichment." };
+    if (state.searchRunning) return { ok: false, skipped: true, reason: "Another search workflow is already running." };
+
+    setStatus(`Fast enrichment: collecting IMAIOS definitions for ${labels.length} label${labels.length === 1 ? "" : "s"}...`, 0);
+    const workflow = await runLockedLabelSearchPinDetailWorkflow(labels, {
+      profile: getSearchPinProbeProfile({ fast: true }),
+      sourcePayload: payload,
+      statusVerb: "Fast enrichment"
+    });
+    return workflow.probe || {
+      ok: false,
+      reason: workflow.reason || "Could not run label detail enrichment.",
+      labels: []
+    };
+  }
+
+  function describeLiveDrillPromptEnrichment(enrichment) {
+    if (!enrichment) return "";
+    const counts = enrichment.counts || {};
+    if (enrichment.skipped || enrichment.reason) return ` Label-detail enrichment skipped: ${enrichment.reason || "unknown reason"}.`;
+    const captured = Number(counts.capturedDetails || 0);
+    const total = Number(counts.lockedLabels || 0);
+    return total ? ` Enriched ${captured}/${total} with IMAIOS definitions.` : "";
+  }
+
+  function buildLiveDrillCardPrompt(payload, enrichment = null) {
     const context = buildLiveDrillCardContext(payload);
+    const labelDetailByKey = getLiveDrillLabelDetailPromptMap(enrichment);
     const source = {
       kind: "imaios-live-drill-card-source",
       version: 1,
@@ -2591,8 +2641,10 @@
         preferredLabel: entry.preferredLabel,
         aliases: entry.aliases || [],
         href: entry.href || "",
-        source: entry.source || ""
+        source: entry.source || "",
+        imaiosDetail: labelDetailByKey.get(normalizeText(entry.preferredLabel)) || null
       })),
+      labelDetailEnrichment: getLiveDrillLabelDetailEnrichmentSummary(enrichment),
       learningFrame: context.learningFrame
     };
     return [
@@ -2611,6 +2663,9 @@
       "- Do not output final TSV and do not output encoded IMAIOS URLs. The browser extension will generate those from your JSON plan.",
       "- Keep each card a learnable visual retrieval task. Prefer 2-4 labels per card. Use 5-6 only when they are one tight object/subpart family. Split larger groups into pedagogic subgroups.",
       "- If a parent label and subparts are present, you may include the parent with the subparts when it improves orientation, but do not make every card depend on remembering a huge list.",
+      "- Use INPUT.labels[].imaiosDetail as supplemental anatomy context for relationships, hierarchy, boundaries, contents, and nearby confusions.",
+      "- IMAIOS details are for better grouping and concise recognition cues; do not turn the card into a definition memorization card.",
+      "- If a label has no captured IMAIOS detail, still include it using the exact preferredLabel and use the available neighboring context.",
       "- Preserve the breadcrumb/deck/tag context exactly enough that downstream import can route the card.",
       "- If INPUT.routing.explicitBreadcrumb, INPUT.routing.explicitDeckPath, or INPUT.routing.explicitTags are populated, treat them as authoritative source routing. Copy them unless a tiny formatting cleanup is needed.",
       "",
@@ -2644,6 +2699,70 @@
       JSON.stringify(source, null, 2),
       "```"
     ].join("\n");
+  }
+
+  function getLiveDrillLabelDetailPromptMap(enrichment) {
+    const labels = Array.isArray(enrichment?.labels) ? enrichment.labels : [];
+    const map = new Map();
+    for (const result of labels) {
+      const key = normalizeText(result?.label || result?.detail?.title || "");
+      if (!key || map.has(key)) continue;
+      map.set(key, buildLiveDrillLabelDetailPromptContext(result));
+    }
+    return map;
+  }
+
+  function getLiveDrillLabelDetailEnrichmentSummary(enrichment) {
+    if (!enrichment) return null;
+    const counts = enrichment.counts || {};
+    return {
+      profile: enrichment.workflow?.profile || "",
+      capturedDetails: Number(counts.capturedDetails || 0),
+      missedDetails: Number(counts.missedDetails || 0),
+      attemptedLabels: Number(counts.attemptedLabels || 0),
+      visiblePinsFound: Number(counts.visiblePinsFound || 0),
+      searchResultsFound: Number(counts.searchResultsFound || 0),
+      statusCounts: counts.statusCounts || {},
+      missedLabels: (Array.isArray(enrichment.labels) ? enrichment.labels : [])
+        .filter((item) => item.status !== "captured")
+        .map((item) => ({
+          label: item.label || "",
+          status: item.status || "",
+          reason: item.reason || ""
+        }))
+    };
+  }
+
+  function buildLiveDrillLabelDetailPromptContext(result) {
+    const detail = result?.detail || {};
+    return {
+      captureStatus: result?.status || "",
+      captureSource: result?.source || "",
+      selectedText: result?.selectedText || "",
+      reason: result?.reason || "",
+      title: detail.title || "",
+      alternateTitle: detail.alternateTitle || "",
+      definition: limitPromptText(detail.definition || "", 1600),
+      definitionSource: limitPromptText(detail.definitionSource || "", 360),
+      summary: limitPromptText(detail.summary || "", 700),
+      chips: Array.isArray(detail.chips)
+        ? detail.chips.map((chip) => chip.label || "").filter(Boolean).slice(0, 10)
+        : [],
+      hierarchy: Array.isArray(detail.hierarchy)
+        ? detail.hierarchy.map((card) => ({
+          name: card.name || "",
+          ancestors: Array.isArray(card.ancestors) ? card.ancestors.slice(0, 8) : [],
+          children: Array.isArray(card.children) ? card.children.slice(0, 12) : []
+        })).slice(0, 5)
+        : []
+    };
+  }
+
+  function limitPromptText(value, maxLength) {
+    const text = cleanText(value || "");
+    const limit = Number(maxLength) || 1000;
+    if (text.length <= limit) return text;
+    return `${text.slice(0, limit).replace(/\s+\S*$/, "")}...`;
   }
 
   function buildLiveDrillCardContext(payload) {
@@ -3077,7 +3196,12 @@
       title,
       createdAt: new Date().toISOString(),
       labels,
-      lockedLabels: labels.map((entry) => entry.preferredLabel)
+      lockedLabels: labels.map((entry) => entry.preferredLabel),
+      studyShield: {
+        enabled: true,
+        source: "anki-card",
+        mode: "cover-until-ready"
+      }
     };
   }
 
@@ -3343,6 +3467,147 @@
     return url.toString();
   }
 
+  function shouldShowLiveDrillStudyShield(payload, options = {}) {
+    if (options.source === "test") return false;
+    const shield = payload?.studyShield || payload?.restorePlan?.studyShield || null;
+    return Boolean(shield && shield.enabled !== false && shield.source === "anki-card");
+  }
+
+  function showLiveDrillStudyShield(payload, status = "loading") {
+    const labels = getLiveDrillRestoreLabels(payload);
+    let host = document.getElementById("imaios-live-drill-study-shield");
+    if (!host) {
+      host = document.createElement("div");
+      host.id = "imaios-live-drill-study-shield";
+      host.setAttribute("role", "dialog");
+      host.setAttribute("aria-live", "polite");
+      host.innerHTML = `
+        <div class="imaios-study-shield-card">
+          <div class="imaios-study-shield-kicker">IMAIOS live drill</div>
+          <div class="imaios-study-shield-title"></div>
+          <div class="imaios-study-shield-message"></div>
+          <button class="imaios-study-shield-reveal" type="button">Reveal drill</button>
+        </div>
+      `;
+      const style = document.createElement("style");
+      style.textContent = `
+        #imaios-live-drill-study-shield {
+          position: fixed;
+          inset: 0;
+          z-index: 2147483647;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 28px;
+          box-sizing: border-box;
+          background: rgba(13, 17, 22, 0.78);
+          backdrop-filter: blur(22px) saturate(0.82);
+          -webkit-backdrop-filter: blur(22px) saturate(0.82);
+          color: #f5f7fa;
+          font: 16px/1.35 Inter, "Segoe UI", Arial, sans-serif;
+        }
+        #imaios-live-drill-study-shield .imaios-study-shield-card {
+          width: min(560px, calc(100vw - 44px));
+          border: 1px solid rgba(255,255,255,0.18);
+          border-radius: 10px;
+          background: rgba(25, 31, 39, 0.92);
+          box-shadow: 0 28px 90px rgba(0,0,0,0.52);
+          padding: 24px 26px;
+          text-align: center;
+        }
+        #imaios-live-drill-study-shield .imaios-study-shield-kicker {
+          margin-bottom: 8px;
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #8dc7ff;
+        }
+        #imaios-live-drill-study-shield .imaios-study-shield-title {
+          font-size: 23px;
+          font-weight: 750;
+          letter-spacing: 0;
+          color: #ffffff;
+        }
+        #imaios-live-drill-study-shield .imaios-study-shield-message {
+          margin-top: 10px;
+          font-size: 15px;
+          color: rgba(245,247,250,0.78);
+        }
+        #imaios-live-drill-study-shield .imaios-study-shield-reveal {
+          display: none;
+          margin: 18px auto 0;
+          min-height: 38px;
+          padding: 0 18px;
+          border: 1px solid rgba(107, 178, 255, 0.76);
+          border-radius: 8px;
+          background: rgba(24, 132, 232, 0.94);
+          color: #fff;
+          font: 700 14px/1 Inter, "Segoe UI", Arial, sans-serif;
+          cursor: pointer;
+        }
+        #imaios-live-drill-study-shield.ready .imaios-study-shield-reveal,
+        #imaios-live-drill-study-shield.error .imaios-study-shield-reveal {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+      `;
+      host.appendChild(style);
+      const reveal = host.querySelector(".imaios-study-shield-reveal");
+      reveal.addEventListener("click", hideLiveDrillStudyShield);
+      host.addEventListener("click", (event) => {
+        if (event.target === host && (host.classList.contains("ready") || host.classList.contains("error"))) {
+          hideLiveDrillStudyShield();
+        }
+      });
+      document.documentElement.appendChild(host);
+    }
+    document.removeEventListener("keydown", onLiveDrillStudyShieldKeyDown, true);
+    document.addEventListener("keydown", onLiveDrillStudyShieldKeyDown, true);
+
+    state.studyShield = { payloadId: payload?.id || "", status };
+    host.classList.toggle("ready", status === "ready");
+    host.classList.toggle("error", status === "error");
+    host.querySelector(".imaios-study-shield-title").textContent = status === "ready" ? "Drill ready" : "No spoilers";
+    host.querySelector(".imaios-study-shield-message").textContent = status === "ready"
+      ? `Ready. ${labels.length} structure${labels.length === 1 ? "" : "s"} loaded. Click reveal when you are ready to identify.`
+      : status === "error"
+        ? "The drill could not finish restoring. You can reveal the page to inspect what happened."
+        : `Loading ${labels.length} structure${labels.length === 1 ? "" : "s"} without spoilers...`;
+    host.querySelector(".imaios-study-shield-reveal").textContent = status === "error" ? "Reveal page" : "Reveal drill";
+  }
+
+  function hideLiveDrillStudyShield() {
+    const host = document.getElementById("imaios-live-drill-study-shield");
+    if (host) host.remove();
+    document.removeEventListener("keydown", onLiveDrillStudyShieldKeyDown, true);
+    state.studyShield = null;
+  }
+
+  function onLiveDrillStudyShieldKeyDown(event) {
+    const host = document.getElementById("imaios-live-drill-study-shield");
+    if (!host) {
+      document.removeEventListener("keydown", onLiveDrillStudyShieldKeyDown, true);
+      return;
+    }
+    const ready = host.classList.contains("ready") || host.classList.contains("error");
+    const revealKey = event.key === "Enter" || event.key === "Escape" || event.key === " " || event.code === "Space";
+    event.preventDefault();
+    event.stopPropagation();
+    if (ready && revealKey) hideLiveDrillStudyShield();
+  }
+
+  function markLiveDrillStudyShieldReady(payload) {
+    if (!document.getElementById("imaios-live-drill-study-shield")) return;
+    showLiveDrillStudyShield(payload, "ready");
+  }
+
+  function markLiveDrillStudyShieldError(payload) {
+    if (!document.getElementById("imaios-live-drill-study-shield")) return;
+    showLiveDrillStudyShield(payload, "error");
+  }
+
   async function restoreLiveDrillFromUrl(options = {}) {
     const encoded = getLiveDrillHashPayload();
     if (!encoded) return { ok: false, reason: "No live drill hash." };
@@ -3363,34 +3628,43 @@
       throw new Error(`This drill belongs to ${payload?.module?.name || expectedModuleKey}, not the current module.`);
     }
 
-    const searchInput = await waitFor(() => findModuleSearchInput(), 7000, 200);
-    if (!searchInput) throw new Error("Could not find IMAIOS module search to restore the drill.");
-    setStatus(`Restoring live drill: ${payload.title || labels.length + " labels"}...`, 0);
-    const clearResult = await clearLockedStructuresForApply();
-    if (!clearResult.ok) throw new Error(clearResult.reason || "Could not clear existing locked structures.");
+    const useStudyShield = shouldShowLiveDrillStudyShield(payload, options);
+    if (useStudyShield) showLiveDrillStudyShield(payload, "loading");
 
-    const plane = normalizePlaneName(payload?.viewer?.plane || "");
-    if (plane) {
-      const switched = await switchPlane(plane, { quiet: true });
-      if (!switched.ok) setStatus(`Could not switch to ${plane}; restoring labels in current plane.`, 4500);
-      await delay(350);
+    try {
+      const searchInput = await waitFor(() => findModuleSearchInput(), 7000, 200);
+      if (!searchInput) throw new Error("Could not find IMAIOS module search to restore the drill.");
+      setStatus(`Restoring live drill: ${payload.title || labels.length + " labels"}...`, 0);
+      const clearResult = await clearLockedStructuresForApply();
+      if (!clearResult.ok) throw new Error(clearResult.reason || "Could not clear existing locked structures.");
+
+      const plane = normalizePlaneName(payload?.viewer?.plane || "");
+      if (plane) {
+        const switched = await switchPlane(plane, { quiet: true });
+        if (!switched.ok) setStatus(`Could not switch to ${plane}; restoring labels in current plane.`, 4500);
+        await delay(350);
+      }
+
+      state.selectedStructures = labels;
+      state.customListText = labels.join("\n");
+      savePageState();
+      refreshPanel();
+      const restoreResult = await applyLiveDrillLabels(labels, payload.title ? `Live drill ${payload.title}` : "Live drill");
+
+      const sliceValue = parseNumber(payload?.viewer?.slice?.value);
+      if (Number.isFinite(sliceValue)) {
+        await delay(300);
+        await setViewerSlice(sliceValue);
+      }
+      await resetQuietPinsByCyclingPins();
+      const missSuffix = restoreResult.missing.length ? ` Missing: ${restoreResult.missing.join(", ")}.` : "";
+      setStatus(`Live drill ready: ${restoreResult.locked.length}/${labels.length} labels restored.${missSuffix}`, options.source === "test" ? 11000 : 14000);
+      if (useStudyShield) markLiveDrillStudyShieldReady(payload);
+      return { ok: restoreResult.missing.length === 0, labelCount: labels.length, ...restoreResult };
+    } catch (error) {
+      if (useStudyShield) markLiveDrillStudyShieldError(payload);
+      throw error;
     }
-
-    state.selectedStructures = labels;
-    state.customListText = labels.join("\n");
-    savePageState();
-    refreshPanel();
-    const restoreResult = await applyLiveDrillLabels(labels, payload.title ? `Live drill ${payload.title}` : "Live drill");
-
-    const sliceValue = parseNumber(payload?.viewer?.slice?.value);
-    if (Number.isFinite(sliceValue)) {
-      await delay(300);
-      await setViewerSlice(sliceValue);
-    }
-    await resetQuietPinsByCyclingPins();
-    const missSuffix = restoreResult.missing.length ? ` Missing: ${restoreResult.missing.join(", ")}.` : "";
-    setStatus(`Live drill ready: ${restoreResult.locked.length}/${labels.length} labels restored.${missSuffix}`, options.source === "test" ? 11000 : 14000);
-    return { ok: restoreResult.missing.length === 0, labelCount: labels.length, ...restoreResult };
   }
 
   async function applyLiveDrillLabels(labels, sourceLabel) {
@@ -5408,7 +5682,8 @@
     setStatus(`Locked-label detail probe copied: ${visibleMatches}/${lockedLabels.length} visible DOM matches, ${searchFallbacks} search fallback${searchFallbacks === 1 ? "" : "s"}, ${captured} captured.`, 12000);
   }
 
-  async function copyLockedLabelSearchPinDetailProbe() {
+  async function copyLockedLabelSearchPinDetailProbe(options = {}) {
+    const profile = getSearchPinProbeProfile(options);
     const lockedLabels = await collectLockedStructureNames();
     if (!lockedLabels.length) {
       setStatus("Lock at least one structure first, then run the search-pin probe.", 7000);
@@ -5419,7 +5694,33 @@
       return;
     }
 
-    const sourceDrill = buildLiveDrillPayload({ lockedLabels, requireLocked: false });
+    const workflow = await runLockedLabelSearchPinDetailWorkflow(lockedLabels, {
+      profile,
+      statusVerb: profile.label
+    });
+    const probe = workflow.probe;
+
+    await writeClipboard(JSON.stringify(probe, null, 2));
+    const counts = probe.counts || {};
+    const workflowInfo = probe.workflow || {};
+    const captured = Number(counts.capturedDetails || 0);
+    const visiblePins = Number(counts.visiblePinsFound || 0);
+    const total = Number(counts.lockedLabels || lockedLabels.length || 0);
+    const restoreResult = workflowInfo.restoreOriginalLockedLabels || null;
+    const restoreText = restoreResult?.ok ? " Restored original locked labels." : (restoreResult ? " Original labels were not fully restored." : (profile.restoreOriginalLabels ? "" : " Did not restore labels."));
+    const errorText = workflowInfo.error ? ` Error: ${workflowInfo.error}` : "";
+    setStatus(`${profile.label} copied: ${captured}/${total} captured, ${visiblePins} visible pins.${restoreText}${errorText}`, 14000);
+  }
+
+  async function runLockedLabelSearchPinDetailWorkflow(lockedLabels, options = {}) {
+    const profile = options.profile || getSearchPinProbeProfile(options);
+    const labelList = unique((Array.isArray(lockedLabels) ? lockedLabels : [])
+      .map(cleanText)
+      .filter(Boolean));
+    const sourcePayload = options.sourcePayload?.kind === "imaios-live-drill" ? options.sourcePayload : null;
+    const sourceDrill = sourcePayload
+      ? { ok: true, payload: sourcePayload }
+      : buildLiveDrillPayload({ lockedLabels: labelList, requireLocked: false });
     const results = [];
     const cleanup = [];
     let initialClear = null;
@@ -5427,7 +5728,7 @@
 
     state.searchRunning = true;
     state.cancelSearch = false;
-    setStatus(`Search-pin probe: captured ${lockedLabels.length} locked label names. Clearing locked labels...`, 0);
+    setStatus(`${options.statusVerb || profile.label}: captured ${labelList.length} locked label names. Clearing locked labels...`, 0);
 
     try {
       await closeStructureDetailPanel();
@@ -5436,21 +5737,21 @@
         workflowError = initialClear.reason || "Could not clear locked labels before search-pin probing.";
       } else {
         await clearModuleSearchInputForProbe();
-        for (let index = 0; index < lockedLabels.length; index += 1) {
+        for (let index = 0; index < labelList.length; index += 1) {
           if (state.cancelSearch) {
             workflowError = "Stopped by user.";
             break;
           }
-          const label = lockedLabels[index];
-          setStatus(`Search-pin probe ${index + 1}/${lockedLabels.length}: ${label}`, 0);
-          const result = await captureLockedLabelDetailViaSearchPin(label);
+          const label = labelList[index];
+          setStatus(`${options.statusVerb || profile.label} ${index + 1}/${labelList.length}: ${label}`, 0);
+          const result = await captureLockedLabelDetailViaSearchPin(label, profile);
           results.push(result);
-          await delay(result.status === "captured" ? 650 : 260);
+          await delay(result.status === "captured" ? profile.afterCapturedMs : profile.afterMissMs);
           await closeStructureDetailPanel();
           const clearResult = await clearLockedStructuresForApply();
           cleanup.push({ label, clearResult });
           await clearModuleSearchInputForProbe();
-          await delay(260);
+          await delay(profile.betweenLabelsMs);
         }
       }
     } catch (error) {
@@ -5460,8 +5761,8 @@
     }
 
     let restoreResult = null;
-    if (initialClear?.ok && lockedLabels.length && !state.cancelSearch) {
-      restoreResult = await restoreLockedLabelsAfterSearchPinProbe(lockedLabels);
+    if (profile.restoreOriginalLabels && initialClear?.ok && labelList.length && !state.cancelSearch) {
+      restoreResult = await restoreLockedLabelsAfterSearchPinProbe(labelList);
     }
 
     const captured = results.filter((item) => item.status === "captured").length;
@@ -5481,38 +5782,81 @@
       series: getSeriesInfo(),
       slice: getSliceInfo(),
       counts: {
-        lockedLabels: lockedLabels.length,
+        lockedLabels: labelList.length,
         attemptedLabels: results.length,
         searchResultsFound,
         visiblePinsFound: visiblePins,
         capturedDetails: captured,
-        missedDetails: lockedLabels.length - captured,
+        missedDetails: labelList.length - captured,
         statusCounts
       },
       workflow: {
         mode: "clear-locked-then-search-one-label-at-a-time",
+        profile: profile.name,
+        restoreOriginalLabelsRequested: profile.restoreOriginalLabels,
         initialClear,
         cleanup,
         restoreOriginalLockedLabels: restoreResult,
         error: workflowError
       },
       sourceDrill: sourceDrill.ok ? sourceDrill.payload : null,
-      lockedLabels,
+      lockedLabels: labelList,
       labels: results
     };
 
-    await writeClipboard(JSON.stringify(probe, null, 2));
-    const restoreText = restoreResult?.ok ? " Restored original locked labels." : (restoreResult ? " Original labels were not fully restored." : "");
-    const errorText = workflowError ? ` Error: ${workflowError}` : "";
-    setStatus(`Search-pin detail probe copied: ${captured}/${lockedLabels.length} captured, ${visiblePins} visible pins.${restoreText}${errorText}`, 14000);
+    return {
+      ok: !workflowError,
+      reason: workflowError,
+      profile,
+      probe
+    };
   }
 
-  async function captureLockedLabelDetailViaSearchPin(label) {
+  function getSearchPinProbeProfile(options = {}) {
+    if (options.fast) {
+      return {
+        name: "fast",
+        label: "Fast search-pin probe",
+        restoreOriginalLabels: false,
+        searchTimeoutMs: 1800,
+        clearDelayMs: 45,
+        afterTypeDelayMs: 70,
+        afterSearchClickMs: 140,
+        autoPanelWaitMs: 500,
+        autoPanelIntervalMs: 50,
+        visiblePinWaitMs: 1500,
+        visiblePinIntervalMs: 50,
+        labelClickWaitMs: 1300,
+        afterCapturedMs: 110,
+        afterMissMs: 70,
+        betweenLabelsMs: 70
+      };
+    }
+    return {
+      name: "reliable",
+      label: "Search-pin probe",
+      restoreOriginalLabels: true,
+      searchTimeoutMs: 3200,
+      clearDelayMs: 90,
+      afterTypeDelayMs: 160,
+      afterSearchClickMs: 420,
+      autoPanelWaitMs: 900,
+      autoPanelIntervalMs: 80,
+      visiblePinWaitMs: 3600,
+      visiblePinIntervalMs: 80,
+      labelClickWaitMs: 3200,
+      afterCapturedMs: 650,
+      afterMissMs: 260,
+      betweenLabelsMs: 260
+    };
+  }
+
+  async function captureLockedLabelDetailViaSearchPin(label, profile = getSearchPinProbeProfile()) {
     const availability = await searchStructureAvailability(label, {
       exact: true,
-      timeoutMs: 3200,
-      clearDelayMs: 90,
-      afterTypeDelayMs: 160
+      timeoutMs: profile.searchTimeoutMs,
+      clearDelayMs: profile.clearDelayMs,
+      afterTypeDelayMs: profile.afterTypeDelayMs
     });
 
     if (!availability.ok) {
@@ -5527,12 +5871,12 @@
     const searchResult = elementProbe(availability.result);
     const click = await realMouseClick(availability.result, 0.5, 0.5);
     const selectedText = availability.selectedText || label;
-    await delay(420);
+    await delay(profile.afterSearchClickMs);
 
     const autoPanel = await waitFor(() => (
       findStructureDetailPanelForLabel(label)
       || findStructureDetailPanelForLabel(selectedText)
-    ), 900, 80);
+    ), profile.autoPanelWaitMs, profile.autoPanelIntervalMs);
     if (autoPanel) {
       return {
         label,
@@ -5546,7 +5890,7 @@
       };
     }
 
-    const visiblePin = await waitFor(() => findVisibleStructureLabelElement(label), 3600, 80);
+    const visiblePin = await waitFor(() => findVisibleStructureLabelElement(label), profile.visiblePinWaitMs, profile.visiblePinIntervalMs);
     if (!visiblePin) {
       return {
         label,
@@ -5560,7 +5904,9 @@
       };
     }
 
-    const detailClick = await clickVisibleStructureLabelForDetail(visiblePin, label);
+    const detailClick = await clickVisibleStructureLabelForDetail(visiblePin, label, {
+      labelClickWaitMs: profile.labelClickWaitMs
+    });
     if (!detailClick.panel) {
       return {
         label,
@@ -5718,8 +6064,8 @@
     };
   }
 
-  async function clickVisibleStructureLabelForDetail(target, label) {
-    const attempts = buildVisibleStructureLabelClickAttempts(target.element);
+  async function clickVisibleStructureLabelForDetail(target, label, options = {}) {
+    const attempts = buildVisibleStructureLabelClickAttempts(target.element, options);
     const attempt = attempts[0];
     if (!attempt) {
       return { ok: false, panel: null, click: null, attempts: [] };
@@ -5746,15 +6092,16 @@
     };
   }
 
-  function buildVisibleStructureLabelClickAttempts(element) {
+  function buildVisibleStructureLabelClickAttempts(element, options = {}) {
+    const waitMs = Number.isFinite(options.labelClickWaitMs) ? options.labelClickWaitMs : 3200;
     const textChild = Array.from(element.querySelectorAll("span,p,div"))
       .filter((child) => child !== element && isVisible(child))
       .filter((child) => cleanText(child.textContent || "").length > 1)
       .sort((a, b) => elementArea(b) - elementArea(a))[0] || null;
     const attempts = [];
-    if (textChild) attempts.push({ element: textChild, xRatio: 0.5, yRatio: 0.5, target: "text-child", waitMs: 3200 });
+    if (textChild) attempts.push({ element: textChild, xRatio: 0.5, yRatio: 0.5, target: "text-child", waitMs });
     attempts.push(
-      { element, xRatio: 0.5, yRatio: 0.5, target: "label-center", waitMs: 3200 }
+      { element, xRatio: 0.5, yRatio: 0.5, target: "label-center", waitMs }
     );
     const seen = new Set();
     return attempts.filter((attempt) => {
