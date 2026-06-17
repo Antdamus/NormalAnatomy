@@ -101,12 +101,20 @@
     style.textContent = `
       #docLB a.trigger,
       #docLB a.image-thumb-js,
-      #gallery a.image-thumb-js {
+      #gallery a.image-thumb-js,
+      #gallery button.noSelect.img,
+      #image-group-selector button.thumbnail-selector,
+      button.noSelect.img[rel],
+      button.thumbnail-selector[imageid] {
         position: relative !important;
         display: inline-block !important;
       }
 
-      #docLB .rp-image-number-badge {
+      #docLB .rp-image-number-badge,
+      #gallery .rp-image-number-badge,
+      #image-group-selector .rp-image-number-badge,
+      button.noSelect.img .rp-image-number-badge,
+      button.thumbnail-selector .rp-image-number-badge {
         position: absolute;
         top: 4px;
         left: 4px;
@@ -125,7 +133,9 @@
       }
 
       #docLB .large-image,
-      #docLB .right {
+      #docLB .right,
+      .large-image,
+      .right {
         position: relative !important;
       }
 
@@ -148,7 +158,12 @@
       #docLB .right .image,
       #docLB .large-image .image,
       #docLB .right [style*="background-image"],
-      #docLB .large-image [style*="background-image"] {
+      #docLB .large-image [style*="background-image"],
+      .large-image .image,
+      .large-image-js,
+      .right .image,
+      .right [style*="background-image"],
+      .image-zoom-button {
         cursor: zoom-in !important;
       }
 
@@ -163,6 +178,9 @@
   function imageNumberFromThumb(img, fallbackIndex) {
     const figNo = parseInt(img?.dataset?.figureno ?? "", 10);
     if (Number.isFinite(figNo)) return figNo + 1;
+    const carrier = getImageCarrier(img);
+    const categoryIndex = parseInt(carrier?.dataset?.imageIndexInCategory || "", 10);
+    if (Number.isFinite(categoryIndex)) return categoryIndex;
     return fallbackIndex + 1;
   }
 
@@ -174,13 +192,16 @@
         [
           "#docLB a.trigger img[data-figureno]",
           "#docLB a.image-thumb-js img[data-figureno]",
-          "#gallery a.image-thumb-js img[data-figureno]"
+          "#gallery a.image-thumb-js img[data-figureno]",
+          "#gallery button[rel] img[data-figureno]",
+          "button.noSelect.img[rel] img[data-figureno]",
+          "button.thumbnail-selector[imageid] img"
         ].join(",")
       )
     );
 
     thumbs.forEach((img, index) => {
-      const anchor = img.closest("a");
+      const anchor = getImageCarrier(img);
       if (!anchor) return;
       const imageNumber = imageNumberFromThumb(img, index);
       anchor.dataset.radprimerImageNumber = String(imageNumber);
@@ -204,6 +225,31 @@
   function cssEscape(value) {
     if (window.CSS?.escape) return CSS.escape(value);
     return String(value || "").replace(/["\\]/g, "\\$&");
+  }
+
+  function getImageCarrier(el) {
+    if (!(el instanceof Element)) return null;
+    return el.closest("a[rel], button[rel], button[imageid], .thumbnail-selector[imageid]");
+  }
+
+  function getImageIdFromElement(el) {
+    if (!(el instanceof Element)) return "";
+    const carrier = getImageCarrier(el);
+    const raw =
+      el.getAttribute("imageid") ||
+      el.getAttribute("rel") ||
+      carrier?.getAttribute("imageid") ||
+      carrier?.getAttribute("rel") ||
+      el.dataset?.imageId ||
+      carrier?.dataset?.imageId ||
+      "";
+    if (raw) return raw;
+
+    const id = el.id || "";
+    if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) return id;
+
+    const src = el.getAttribute("src") || "";
+    return src.match(/\/images\/([^/?#]+)/i)?.[1] || "";
   }
 
   function isVisible(el) {
@@ -496,7 +542,12 @@
           "#docLB .large-image .image[id]",
           "#docLB .right [style*='background-image']",
           "#docLB .large-image [style*='background-image']",
-          "#docLB [style*='background-image'][id]"
+          "#docLB [style*='background-image'][id]",
+          ".large-image .image[id]",
+          ".large-image-js[id]",
+          ".right .image[imageid]",
+          ".right [style*='background-image']",
+          "[style*='background-image'][imageid]"
         ].join(",")
       )
     );
@@ -519,10 +570,14 @@
     const containers = [
       active?.closest(".right"),
       active?.closest(".large-image"),
+      document.querySelector("#image-zoom-dialog-selector"),
+      document.querySelector(".large-image"),
       document.querySelector("#docLB")
     ].filter(Boolean);
 
     const selectors = [
+      ".inline-caption [class*='caption-text']",
+      ".inline-caption",
       ".imageCaption [class*='caption-text']",
       ".imageCaption .inner",
       ".imageCaption"
@@ -543,7 +598,11 @@
     if (!imageId) return null;
     return (
       document.querySelector(`#docLB a[rel="${cssEscape(imageId)}"] img[data-figureno]`) ||
-      document.querySelector(`#gallery a[rel="${cssEscape(imageId)}"] img[data-figureno]`)
+      document.querySelector(`#gallery a[rel="${cssEscape(imageId)}"] img[data-figureno]`) ||
+      document.querySelector(`#gallery button[rel="${cssEscape(imageId)}"] img[data-figureno]`) ||
+      document.querySelector(`button[rel="${cssEscape(imageId)}"] img[data-figureno]`) ||
+      document.querySelector(`button[imageid="${cssEscape(imageId)}"] img`) ||
+      document.querySelector(`.thumbnail-selector[imageid="${cssEscape(imageId)}"] img`)
     );
   }
 
@@ -553,15 +612,18 @@
         [
           "#docLB a.trigger img[data-figureno]",
           "#docLB a.image-thumb-js img[data-figureno]",
-          "#gallery a.image-thumb-js img[data-figureno]"
+          "#gallery a.image-thumb-js img[data-figureno]",
+          "#gallery button[rel] img[data-figureno]",
+          "button.noSelect.img[rel] img[data-figureno]",
+          "button.thumbnail-selector[imageid] img"
         ].join(",")
       )
     );
     const seen = new Map();
 
     thumbs.forEach((thumb, index) => {
-      const anchor = thumb.closest("a");
-      const imageId = anchor?.getAttribute("rel") || "";
+      const carrier = getImageCarrier(thumb);
+      const imageId = getImageIdFromElement(carrier || thumb);
       const key = imageId || `thumb-${index}`;
       if (!seen.has(key)) seen.set(key, thumb);
     });
@@ -570,10 +632,10 @@
   }
 
   function getInfoFromThumb(thumb, fallbackIndex = 0) {
-    const anchor = thumb?.closest("a");
-    const imageId = anchor?.getAttribute("rel") || "";
+    const carrier = getImageCarrier(thumb);
+    const imageId = getImageIdFromElement(carrier || thumb);
     const imageNumber = thumb ? imageNumberFromThumb(thumb, fallbackIndex) : null;
-    const total = parseInt(thumb?.dataset?.groupcount || "", 10);
+    const total = parseInt(thumb?.dataset?.groupcount || carrier?.dataset?.categoryTotal || "", 10);
 
     return {
       active: null,
@@ -581,24 +643,37 @@
       imageId,
       imageNumber,
       total: Number.isFinite(total) ? total : getImageThumbs().length || null,
-      captionHtml: buildCaptionHtml(thumb?.dataset?.caption || "")
+      captionHtml: buildCaptionHtml(thumb?.dataset?.caption || carrier?.dataset?.caption || "")
     };
   }
 
   function getActiveImageInfo(sourceElement = null) {
     const sourceImage = getBackgroundImageElementFrom(sourceElement);
-    const active = getActiveImageElement() || sourceImage;
-    const imageId = active?.id || "";
+    const sourceActive =
+      sourceImage ||
+      (sourceElement instanceof Element &&
+      sourceElement.matches(
+        ".large-image .image, .large-image-js, .right .image, .right [style*='background-image'], [imageid], img[src*='/images/']"
+      )
+        ? sourceElement
+        : null);
+    const active = sourceActive || getActiveImageElement();
+    const imageId = getImageIdFromElement(sourceElement) || getImageIdFromElement(active);
     const thumb = getThumbForImageId(imageId);
     const activeThumb =
       thumb ||
       document.querySelector("#docLB a.active img[data-figureno]") ||
-      document.querySelector("#docLB li.active a.image-thumb-js img[data-figureno]");
+      document.querySelector("#docLB li.active a.image-thumb-js img[data-figureno]") ||
+      document.querySelector("#gallery li.active button[rel] img[data-figureno]") ||
+      document.querySelector("#gallery li.currently-selected button[rel] img[data-figureno]") ||
+      document.querySelector("button.thumbnail-selector.active img") ||
+      document.querySelector("button.thumbnail-selector[aria-current='true'] img");
 
     const imageNumber = activeThumb ? imageNumberFromThumb(activeThumb, 0) : null;
-    const total = parseInt(activeThumb?.dataset?.groupcount || "", 10);
+    const activeCarrier = getImageCarrier(activeThumb);
+    const total = parseInt(activeThumb?.dataset?.groupcount || activeCarrier?.dataset?.categoryTotal || "", 10);
     const liveCaptionHtml = getVisibleCaptionHtml(active);
-    const thumbCaptionHtml = activeThumb?.dataset?.caption || "";
+    const thumbCaptionHtml = activeThumb?.dataset?.caption || activeCarrier?.dataset?.caption || "";
 
     return {
       active,
@@ -729,9 +804,11 @@
     const active = el || info.active;
     const bg = active?.style?.backgroundImage || (active ? getComputedStyle(active).backgroundImage : "") || "";
     const match = bg.match(/url\((["']?)(.*?)\1\)/i);
+    const imageId = getImageIdFromElement(active) || info.imageId;
     const rawUrl =
       match?.[2] ||
-      (info.imageId ? `/images/${info.imageId}?style=xlarge&annotated=true` : "") ||
+      active?.getAttribute?.("src") ||
+      (imageId ? `/images/${imageId}?style=xlarge&annotated=true` : "") ||
       "";
     if (!rawUrl) return "";
     try {
@@ -1610,23 +1687,51 @@
 
   function getZoomOpenTarget(target) {
     const el = target instanceof Element ? target : target?.parentElement;
-    if (!el || !el.closest("#docLB")) return null;
+    if (!el) return null;
 
     const directControl = el.closest(
-      "#docLB .rp-open-zoom-control, #radprimer-floating-zoom-control, #docLB .view-large-js, #docLB #image-zoom"
+      [
+        "#docLB .rp-open-zoom-control",
+        "#radprimer-floating-zoom-control",
+        "#docLB .view-large-js",
+        "#docLB #image-zoom",
+        ".image-zoom-button",
+        "#image-zoom-selector"
+      ].join(",")
     );
     if (directControl) return getActiveImageElement() || directControl;
 
     if (
       el.closest(
-        "#docLB .left, #docLB .imageGroupContainer, #docLB a.trigger, #docLB a.image-thumb-js, #docLB .imageCaption"
+        [
+          "#docLB .left",
+          "#docLB .imageGroupContainer",
+          "#docLB a.trigger",
+          "#docLB a.image-thumb-js",
+          "#docLB .imageCaption",
+          "#gallery button.noSelect.img",
+          "#image-group-selector",
+          ".thumbnail-selector-list",
+          ".imageCaption",
+          ".inline-caption"
+        ].join(",")
       )
     ) {
       return null;
     }
 
     return el.closest(
-      "#docLB .active-image-js, #docLB .right .image, #docLB .large-image .image, #docLB .right [style*='background-image'], #docLB .large-image [style*='background-image']"
+      [
+        "#docLB .active-image-js",
+        "#docLB .right .image",
+        "#docLB .large-image .image",
+        "#docLB .right [style*='background-image']",
+        "#docLB .large-image [style*='background-image']",
+        ".large-image .image",
+        ".large-image-js",
+        ".right .image",
+        ".right [style*='background-image']"
+      ].join(",")
     );
   }
 
@@ -1647,7 +1752,13 @@
         "#docLB .right [style*='background-image']",
         "#docLB .large-image [style*='background-image']",
         "#docLB .view-large-js",
-        "#docLB #image-zoom"
+        "#docLB #image-zoom",
+        ".large-image .image",
+        ".large-image-js",
+        ".right .image",
+        ".right [style*='background-image']",
+        ".image-zoom-button",
+        "#image-zoom-selector"
       ].join(",")
     );
 

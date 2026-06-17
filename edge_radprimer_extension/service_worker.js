@@ -4117,7 +4117,7 @@ async function runImaiosLiveDrillCardAutomation(message, senderTab) {
   const sourcePayload = message.sourcePayload && typeof message.sourcePayload === "object"
     ? message.sourcePayload
     : null;
-  if (!sourcePayload || sourcePayload.kind !== "imaios-live-drill") {
+  if (!sourcePayload || !["imaios-live-drill", "imaios-live-drill-batch-source"].includes(sourcePayload.kind)) {
     throw new Error("No valid live-drill source payload was provided.");
   }
 
@@ -4130,7 +4130,7 @@ async function runImaiosLiveDrillCardAutomation(message, senderTab) {
   const response = await openChatGptAndStart(
     settings,
     promptText,
-    sourcePayload.title || "IMAIOS live drill cards",
+    sourcePayload.title || sourcePayload.topic || "IMAIOS live drill cards",
     {
       waitForResult: true,
       timeoutMs: timeoutMsFromSeconds(settings.chatgptTimeoutSec, 900, 60),
@@ -4141,7 +4141,7 @@ async function runImaiosLiveDrillCardAutomation(message, senderTab) {
       completionMessageType: "IMAIOS_LIVE_DRILL_CARD_PLAN_DONE",
       completionPayload: {
         imaiosTabId,
-        sourceDrillId: sourcePayload.id || "",
+        sourceDrillId: sourcePayload.id || sourcePayload.sourceDrillId || "",
         sourcePayload
       }
     }
@@ -4150,8 +4150,8 @@ async function runImaiosLiveDrillCardAutomation(message, senderTab) {
   return {
     started: Boolean(response?.started || response?.submitted || response?.ok),
     chars: promptText.length,
-    sourceDrillId: sourcePayload.id || "",
-    title: sourcePayload.title || "",
+    sourceDrillId: sourcePayload.id || sourcePayload.sourceDrillId || "",
+    title: sourcePayload.title || sourcePayload.topic || "",
     message: "Sent live-drill card prompt to ChatGPT. The TSV will be generated back in IMAIOS when the plan is ready."
   };
 }

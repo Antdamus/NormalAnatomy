@@ -418,14 +418,29 @@
   };
 
   const getImages = (config, title) => {
-    const thumbs = Array.from(document.querySelectorAll("#gallery img[data-caption]"));
+    const thumbs = Array.from(
+      document.querySelectorAll(
+        [
+          "#gallery img[data-caption]",
+          "#gallery button[rel] img",
+          "button.noSelect.img[rel] img",
+          "button.thumbnail-selector[imageid] img"
+        ].join(",")
+      )
+    );
     const resolvedFilePrefix = slugifyFilePrefix(title);
+    const seen = new Set();
 
     return thumbs.map((img, idx0) => {
       const originalIndex = idx0 + 1;
-      const anchor = img.closest("a[rel]");
-      const imageId = anchor ? anchor.getAttribute("rel") : "";
-      const raw = img.getAttribute("data-caption") || "";
+      const carrier = img.closest("a[rel], button[rel], button[imageid]");
+      const imageId =
+        carrier?.getAttribute("rel") ||
+        carrier?.getAttribute("imageid") ||
+        img.getAttribute("imageid") ||
+        (img.getAttribute("src") || "").match(/\/images\/([^/?#]+)/i)?.[1] ||
+        "";
+      const raw = img.getAttribute("data-caption") || carrier?.getAttribute("data-caption") || "";
 
       let caption = decodeHtml(raw).trim();
       caption = rewriteRadPrimerArrowSrcToAnki(caption);
@@ -445,7 +460,18 @@
         plainUrl: new URL(`/images/${imageId}?style=xlarge&annotated=false`, location.origin).href,
         annotUrl: new URL(`/images/${imageId}?style=xlarge&annotated=true`, location.origin).href
       };
-    });
+    }).filter((image) => {
+      const key = image.imageId || `${image.originalIndex}:${image.caption}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).map((image, idx0) => ({
+      ...image,
+      originalIndex: idx0 + 1,
+      baseName: `${resolvedFilePrefix}${idx0 + 1}`,
+      plainFilename: `${resolvedFilePrefix}${idx0 + 1}.jpg`,
+      annotFilename: `${resolvedFilePrefix}${idx0 + 1}_annot.jpg`
+    }));
   };
 
   const buildOutput = (config) => {

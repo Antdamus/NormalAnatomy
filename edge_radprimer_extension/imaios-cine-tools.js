@@ -8,9 +8,11 @@
   const CHUNK_LIBRARY_STORAGE_KEY = `${APP_ID}:chunk-library`;
   const LABEL_REPOSITORY_STORAGE_KEY = `${APP_ID}:label-repository`;
   const LAST_LIVE_DRILL_CARD_SOURCE_KEY = `${APP_ID}:last-live-drill-card-source`;
+  const LIVE_DRILL_CARD_BATCH_STORAGE_KEY = `${APP_ID}:live-drill-card-batch`;
   const EXTENSION_LABEL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-repository";
   const EMPTY_CHUNK_LIBRARY = { version: 1, topic: "", chunks: [] };
   const EMPTY_LABEL_REPOSITORY = { version: 1, updatedAt: "", modalities: [], labels: [], moduleLabels: {} };
+  const EMPTY_LIVE_DRILL_CARD_BATCH = { kind: "imaios-live-drill-card-batch", version: 1, topic: "", source: "", createdAt: "", updatedAt: "", items: [] };
   const DEFAULT_DECK_ROOT = "IMAIOS";
   const LIVE_DRILL_ANKI_NOTE_TYPE = "Basic";
   const LIVE_DRILL_STUDY_SHIELD_ENABLED = true;
@@ -111,6 +113,7 @@
     lastReverseScrollPlane: "",
     lastRestoredDrillHash: "",
     lastLiveDrillCardSource: null,
+    liveDrillCardBatch: { ...EMPTY_LIVE_DRILL_CARD_BATCH },
     studyShield: null,
     liveDrillRestoreRunning: false,
     liveDrillPair: null,
@@ -184,6 +187,7 @@
       state.chunkLibrary = normalizeImportedChunkLibrary(JSON.parse(localStorage.getItem(CHUNK_LIBRARY_STORAGE_KEY) || "null"));
       state.labelRepository = normalizeImportedLabelRepository(JSON.parse(localStorage.getItem(LABEL_REPOSITORY_STORAGE_KEY) || "null"));
       state.lastLiveDrillCardSource = normalizeSavedLiveDrillSource(JSON.parse(localStorage.getItem(LAST_LIVE_DRILL_CARD_SOURCE_KEY) || "null"));
+      state.liveDrillCardBatch = normalizeLiveDrillCardBatch(JSON.parse(localStorage.getItem(LIVE_DRILL_CARD_BATCH_STORAGE_KEY) || "null"));
       if (page.activeChunkId && getChunkById(page.activeChunkId)) state.activeChunkId = page.activeChunkId;
     } catch (error) {
       console.warn("IMAIOS Cine Tools: could not load saved state", error);
@@ -272,6 +276,9 @@
           top: ${state.panelPosition.top}px;
           width: 292px;
           max-width: calc(100vw - 24px);
+          max-height: calc(100vh - 12px);
+          display: flex;
+          flex-direction: column;
           border: 1px solid rgba(255,255,255,0.18);
           border-radius: 8px;
           background: rgba(18, 20, 23, 0.94);
@@ -308,8 +315,10 @@
           display: grid;
           gap: 10px;
           padding: 10px;
-          max-height: min(720px, calc(100vh - 92px));
+          flex: 1 1 auto;
+          min-height: 0;
           overflow: auto;
+          overscroll-behavior: contain;
         }
 
         .panel.collapsed .controls {
@@ -340,12 +349,29 @@
         .quick-card-actions {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 6px;
+          gap: 5px;
         }
 
         .quick-card-actions button {
-          min-height: 30px;
-          font-size: 12px;
+          min-height: 28px;
+          padding: 4px 6px;
+          font-size: 11px;
+        }
+
+        .quick-card-actions .primary,
+        .quick-card-actions button[data-action="toggle-paired-answer"] {
+          grid-column: 1 / -1;
+        }
+
+        .quick-batch-cart {
+          display: grid;
+          gap: 4px;
+        }
+
+        .quick-batch-cart select {
+          height: 27px;
+          font-size: 10.5px;
+          color: rgba(245,247,250,0.82);
         }
 
         .row {
@@ -542,12 +568,15 @@
         }
 
         .status {
-          min-height: 44px;
           padding: 8px 9px;
           border: 1px solid rgba(77, 154, 220, 0.36);
           border-radius: 8px;
           background: rgba(20, 29, 38, 0.9);
           color: #8fd0ff;
+        }
+
+        .status:empty {
+          display: none;
         }
 
         .selected {
@@ -573,7 +602,7 @@
           display: grid;
           gap: 6px;
           min-height: 74px;
-          max-height: 180px;
+          max-height: 132px;
           overflow: auto;
           padding: 8px 9px;
           border-radius: 7px;
@@ -732,8 +761,13 @@
         <div class="quick-chunk-bar">
           <div class="quick-chunk-label">Current chunk</div>
           <select data-role="quick-chunk">${chunkOptions}</select>
+          <div class="quick-batch-cart">
+            <div class="quick-chunk-label">Anki batch cart</div>
+            <select data-role="quick-batch-cart"></select>
+          </div>
           <div class="quick-card-actions">
-            <button class="primary" type="button" data-action="run-live-drill-card-automation">Create Anki cards</button>
+            <button class="primary" type="button" data-action="run-live-drill-smart-card-automation">Create Anki cards based on batch</button>
+            <button type="button" data-action="add-live-drill-to-batch">Add to batch</button>
             <button type="button" data-action="toggle-paired-answer">Open clean tab</button>
           </div>
         </div>
@@ -796,6 +830,15 @@
               <button type="button" data-action="copy-live-drill-card-prompt">Copy prompt</button>
               <button type="button" data-action="import-live-drill-card-plan">Plan to TSV</button>
             </div>
+            <div class="row">
+              <button type="button" data-action="add-live-drill-to-batch">Add to batch</button>
+              <button class="danger" type="button" data-action="clear-live-drill-card-batch">Clear batch</button>
+            </div>
+            <div class="row">
+              <button type="button" data-action="copy-live-drill-card-batch">Copy batch</button>
+              <button type="button" data-action="backup-live-drill-card-batch">Save batch</button>
+            </div>
+            <div class="chunk-summary" data-role="live-drill-card-batch-summary"></div>
             <div class="row">
               <button type="button" data-action="probe-locked-details">Probe label info</button>
               <button type="button" data-action="probe-locked-details-search-pin">Probe via search pins</button>
@@ -1047,9 +1090,26 @@
     root.querySelector("[data-action='copy-live-drill-link']").addEventListener("click", copyLiveDrillLink);
     root.querySelector("[data-action='copy-live-drill-json']").addEventListener("click", copyLiveDrillJson);
     root.querySelector("[data-action='test-live-drill']").addEventListener("click", testLiveDrillRestore);
+    root.querySelectorAll("[data-action='run-live-drill-smart-card-automation']").forEach((button) => {
+      button.addEventListener("click", runLiveDrillSmartCardAutomation);
+    });
     root.querySelectorAll("[data-action='run-live-drill-card-automation']").forEach((button) => {
       button.addEventListener("click", runLiveDrillCardAutomation);
     });
+    root.querySelectorAll("[data-action='add-live-drill-to-batch']").forEach((button) => {
+      button.addEventListener("click", addCurrentLiveDrillToCardBatch);
+    });
+    root.querySelectorAll("[data-action='run-live-drill-batch-card-automation']").forEach((button) => {
+      button.addEventListener("click", runLiveDrillBatchCardAutomation);
+    });
+    root.querySelector("[data-role='quick-batch-cart']").addEventListener("change", showSelectedLiveDrillBatchCartItem);
+    root.querySelector("[data-action='copy-live-drill-card-batch']").addEventListener("click", copyLiveDrillCardBatch);
+    root.querySelector("[data-action='backup-live-drill-card-batch']").addEventListener("click", () => {
+      backupLiveDrillCardBatchToDownloads("manual").then((result) => {
+        setStatus(result.ok ? `Batch saved to ${result.path}.` : `Batch save failed: ${result.error || "unknown error"}`, result.ok ? 9000 : 12000);
+      });
+    });
+    root.querySelector("[data-action='clear-live-drill-card-batch']").addEventListener("click", clearLiveDrillCardBatch);
     root.querySelector("[data-action='toggle-paired-answer']").addEventListener("click", togglePairedAnswerSession);
     root.querySelector("[data-action='copy-live-drill-card-prompt']").addEventListener("click", copyLiveDrillCardPrompt);
     root.querySelector("[data-action='import-live-drill-card-plan']").addEventListener("click", importLiveDrillCardPlanFromClipboard);
@@ -1077,6 +1137,7 @@
     const panel = root.querySelector("[data-role='panel']");
     const chunkModuleSelect = root.querySelector("[data-role='chunk-module']");
     const quickChunkSelect = root.querySelector("[data-role='quick-chunk']");
+    const quickBatchCartSelect = root.querySelector("[data-role='quick-batch-cart']");
     const chunkSelect = root.querySelector("[data-role='chunk']");
     const chunkPreview = root.querySelector("[data-role='chunk-preview']");
     const chunkSummary = root.querySelector("[data-role='chunk-summary']");
@@ -1096,14 +1157,25 @@
     const cineSpeedValue = root.querySelector("[data-role='cine-speed-value']");
     const keyModal = root.querySelector("[data-role='key-modal']");
     const hotkeyHint = root.querySelector("[data-role='hotkey-hint']");
+    const batchSummary = root.querySelector("[data-role='live-drill-card-batch-summary']");
 
     panel.classList.toggle("collapsed", state.collapsed);
+    state.panelPosition.left = clamp(state.panelPosition.left, 4, Math.max(4, window.innerWidth - panel.offsetWidth - 4));
+    state.panelPosition.top = clamp(state.panelPosition.top, 4, Math.max(4, window.innerHeight - panel.offsetHeight - 4));
     panel.style.left = `${state.panelPosition.left}px`;
     panel.style.top = `${state.panelPosition.top}px`;
     chunkModuleSelect.innerHTML = buildChunkModuleOptions();
     chunkModuleSelect.value = normalizeModuleKey(getCurrentModuleKey());
     quickChunkSelect.innerHTML = buildChunkOptions();
     quickChunkSelect.value = state.activeChunkId;
+    if (quickBatchCartSelect) {
+      const currentValue = quickBatchCartSelect.value;
+      quickBatchCartSelect.innerHTML = buildLiveDrillCardBatchCartOptions();
+      quickBatchCartSelect.value = Array.from(quickBatchCartSelect.options).some((option) => option.value === currentValue)
+        ? currentValue
+        : "";
+      quickBatchCartSelect.disabled = !normalizeLiveDrillCardBatch(state.liveDrillCardBatch).items.length;
+    }
     chunkSelect.innerHTML = buildChunkOptions();
     chunkSelect.value = state.activeChunkId;
     recordPlaneScopes.forEach((select) => {
@@ -1132,6 +1204,7 @@
       pairedAnswerButton.classList.toggle("primary", activePair);
       pairedAnswerButton.disabled = false;
     }
+    if (batchSummary) batchSummary.textContent = getLiveDrillCardBatchSummaryText();
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
@@ -2544,8 +2617,8 @@
     };
     panel.setPointerCapture(event.pointerId);
     const onMove = (moveEvent) => {
-      state.panelPosition.left = clamp(start.left + moveEvent.clientX - start.x, 4, window.innerWidth - panel.offsetWidth - 4);
-      state.panelPosition.top = clamp(start.top + moveEvent.clientY - start.y, 4, window.innerHeight - panel.offsetHeight - 4);
+      state.panelPosition.left = clamp(start.left + moveEvent.clientX - start.x, 4, Math.max(4, window.innerWidth - panel.offsetWidth - 4));
+      state.panelPosition.top = clamp(start.top + moveEvent.clientY - start.y, 4, Math.max(4, window.innerHeight - panel.offsetHeight - 4));
       panel.style.left = `${state.panelPosition.left}px`;
       panel.style.top = `${state.panelPosition.top}px`;
     };
@@ -2628,6 +2701,16 @@
     setStatus(`GPT card prompt copied for ${promptPackage.payload.labels.length} locked labels.${enrichmentText} Paste it into ChatGPT, then use Plan to TSV on the JSON result.`, 12000);
   }
 
+  async function runLiveDrillSmartCardAutomation() {
+    const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
+    if (batch.items.length) {
+      await runLiveDrillBatchCardAutomation();
+      return;
+    }
+    setStatus("Batch cart is empty, so creating cards from the current locked labels.", 5000);
+    await runLiveDrillCardAutomation();
+  }
+
   async function runLiveDrillCardAutomation() {
     const promptPackage = await buildLiveDrillCardPromptPackage({ requireLocked: true });
     if (!promptPackage.ok) {
@@ -2658,6 +2741,190 @@
       }
       setStatus(response.message || "ChatGPT is building the live-drill card plan. IMAIOS will generate the TSV when it returns.", 14000);
     });
+  }
+
+  async function addCurrentLiveDrillToCardBatch() {
+    const promptPackage = await buildLiveDrillCardPromptPackage({ requireLocked: true });
+    if (!promptPackage.ok) {
+      setStatus(promptPackage.reason, 7000);
+      return;
+    }
+    const source = buildLiveDrillCardPromptSource(promptPackage.payload, promptPackage.enrichment);
+    const item = buildLiveDrillCardBatchItem(source, promptPackage.payload, promptPackage.enrichment);
+    upsertLiveDrillCardBatchItem(item);
+    saveLiveDrillCardBatch();
+    refreshPanel();
+    const backup = await backupLiveDrillCardBatchToDownloads("add");
+    const enrichmentText = describeLiveDrillPromptEnrichment(promptPackage.enrichment);
+    const backupText = backup.ok ? ` Saved batch backup.` : ` Backup failed: ${backup.error || "unknown error"}`;
+    setStatus(`Added to Anki batch: ${item.title} (${item.labelCount} labels). Batch has ${state.liveDrillCardBatch.items.length} drills.${enrichmentText}${backupText}`, 12000);
+  }
+
+  function buildLiveDrillCardBatchItem(source, payload, enrichment) {
+    const moduleName = cleanText(source?.module?.name || payload?.module?.name || "");
+    const chunkTitle = cleanText(source?.chunk?.title || payload?.chunk?.title || payload?.title || "");
+    const title = cleanText(chunkTitle || payload?.title || moduleName || "IMAIOS drill");
+    return {
+      id: source.sourceDrillId || payload.id || createSlug(`${moduleName}-${chunkTitle}`) || `drill-${Date.now()}`,
+      kind: "imaios-live-drill-card-batch-item",
+      version: 1,
+      title,
+      addedAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      sourceDrillId: source.sourceDrillId || payload.id || "",
+      moduleKey: source?.module?.key || payload?.module?.key || "",
+      moduleName,
+      chunkId: source?.chunk?.id || payload?.chunk?.id || "",
+      chunkTitle,
+      plane: source?.viewer?.plane || payload?.viewer?.plane || "",
+      labelCount: Array.isArray(source.labels) ? source.labels.length : 0,
+      capturedDetailCount: Number(source?.labelDetailEnrichment?.capturedDetails || 0),
+      labels: Array.isArray(source.labels) ? source.labels : [],
+      source,
+      payload,
+      enrichmentSummary: source.labelDetailEnrichment || getLiveDrillLabelDetailEnrichmentSummary(enrichment)
+    };
+  }
+
+  function upsertLiveDrillCardBatchItem(item) {
+    const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
+    const now = new Date().toISOString();
+    const topic = cleanText(batch.topic || state.chunkLibrary.topic || state.chunkLibrary.articleTitle || "IMAIOS live drills");
+    const source = cleanText(batch.source || state.chunkLibrary.source || "");
+    const items = batch.items.filter((existing) => existing.id !== item.id && existing.sourceDrillId !== item.sourceDrillId);
+    items.push({ ...item, updatedAt: now });
+    state.liveDrillCardBatch = {
+      ...batch,
+      topic,
+      source,
+      createdAt: batch.createdAt || now,
+      updatedAt: now,
+      items
+    };
+  }
+
+  async function runLiveDrillBatchCardAutomation() {
+    const batchSource = buildLiveDrillBatchCardSource();
+    if (!batchSource.ok) {
+      setStatus(batchSource.reason, 9000);
+      return;
+    }
+    if (!chrome?.runtime?.sendMessage) {
+      setStatus("Extension messaging is unavailable, so automatic ChatGPT launch cannot run.", 9000);
+      return;
+    }
+    saveLastLiveDrillCardSource(batchSource.payload);
+    const detailCount = batchSource.payload.batchItems.reduce((sum, item) => sum + Number(item.labelDetailEnrichment?.capturedDetails || 0), 0);
+    setStatus(`Sending Anki batch to ChatGPT: ${batchSource.payload.batchItems.length} drills, ${batchSource.payload.labels.length} labels, ${detailCount} definitions.`, 0);
+    chrome.runtime.sendMessage({
+      type: "RUN_IMAIOS_LIVE_DRILL_CARD_AUTOMATION",
+      promptText: buildLiveDrillBatchCardPrompt(batchSource.payload),
+      sourcePayload: batchSource.payload
+    }, (response) => {
+      const error = chrome.runtime.lastError;
+      if (error) {
+        setStatus(`Automatic ChatGPT batch run failed: ${error.message || error}`, 12000);
+        return;
+      }
+      if (!response?.ok) {
+        setStatus(`Automatic ChatGPT batch run failed: ${response?.error || "unknown error"}`, 12000);
+        return;
+      }
+      setStatus(response.message || "ChatGPT is building the batch live-drill card plan. IMAIOS will generate the TSV when it returns.", 14000);
+    });
+  }
+
+  async function copyLiveDrillCardBatch() {
+    const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
+    await writeClipboard(JSON.stringify(batch, null, 2));
+    setStatus(`Copied Anki batch: ${batch.items.length} drill${batch.items.length === 1 ? "" : "s"}.`);
+  }
+
+  async function clearLiveDrillCardBatch() {
+    const count = state.liveDrillCardBatch.items.length;
+    if (!count) {
+      setStatus("Anki batch is already empty.");
+      return;
+    }
+    const ok = window.confirm(`Clear the Anki batch?\n\nThis removes ${count} collected drill${count === 1 ? "" : "s"} from local browser storage. A previous downloaded backup will not be deleted.`);
+    if (!ok) return;
+    state.liveDrillCardBatch = normalizeLiveDrillCardBatch(null);
+    saveLiveDrillCardBatch();
+    refreshPanel();
+    setStatus("Anki batch cleared.", 6000);
+  }
+
+  function saveLiveDrillCardBatch() {
+    try {
+      localStorage.setItem(LIVE_DRILL_CARD_BATCH_STORAGE_KEY, JSON.stringify(normalizeLiveDrillCardBatch(state.liveDrillCardBatch)));
+    } catch (error) {
+      console.warn("IMAIOS Cine Tools: could not save live-drill card batch", error);
+    }
+  }
+
+  async function backupLiveDrillCardBatchToDownloads(source = "") {
+    const batch = normalizeLiveDrillCardBatch({
+      ...state.liveDrillCardBatch,
+      backupSource: source,
+      backupCreatedAt: new Date().toISOString()
+    });
+    if (!batch.items.length) return { ok: false, error: "Batch is empty." };
+    const topicSlug = createSlug(batch.topic || state.chunkLibrary.topic || "imaios-live-drill-batch") || "imaios-live-drill-batch";
+    const path = `IMAIOS/LiveDrills/${topicSlug}/batch/imaios_live_drill_card_batch.json`;
+    try {
+      await downloadTextAsFile(JSON.stringify(batch, null, 2), path, "application/json;charset=utf-8");
+      return { ok: true, path: `Downloads\\${path.replace(/\//g, "\\")}` };
+    } catch (error) {
+      return { ok: false, error: String(error?.message || error) };
+    }
+  }
+
+  function getLiveDrillCardBatchSummaryText() {
+    const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
+    if (!batch.items.length) return "Anki batch is empty. Add reviewed locked drills here, then create cards from the full batch.";
+    const labelCount = batch.items.reduce((sum, item) => sum + Number(item.labelCount || item.labels?.length || 0), 0);
+    const detailCount = batch.items.reduce((sum, item) => sum + Number(item.capturedDetailCount || item.source?.labelDetailEnrichment?.capturedDetails || 0), 0);
+    const modules = unique(batch.items.map((item) => item.moduleName).filter(Boolean));
+    const lastItems = batch.items.slice(-4).map((item) => item.title).join("; ");
+    return `${batch.items.length} drill${batch.items.length === 1 ? "" : "s"} queued; ${labelCount} labels; ${detailCount} definitions; ${modules.length} module${modules.length === 1 ? "" : "s"}. Latest: ${lastItems}`;
+  }
+
+  function buildLiveDrillCardBatchCartOptions() {
+    const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
+    if (!batch.items.length) return `<option value="">Batch cart empty</option>`;
+    const labelCount = batch.items.reduce((sum, item) => sum + Number(item.labelCount || item.labels?.length || 0), 0);
+    const options = [
+      `<option value="">${escapeHtml(`Batch cart: ${batch.items.length} chunks / ${labelCount} labels`)}</option>`
+    ];
+    batch.items.forEach((item, index) => {
+      const labels = Number(item.labelCount || item.labels?.length || 0);
+      const moduleName = cleanText(item.moduleName || item.moduleKey || "module");
+      const plane = cleanText(item.plane || "");
+      const suffix = [moduleName, plane, `${labels} labels`].filter(Boolean).join(" | ");
+      const title = `${index + 1}. ${item.title || "IMAIOS chunk"} (${suffix})`;
+      options.push(`<option value="${escapeHtml(item.sourceDrillId || item.id || String(index))}">${escapeHtml(title)}</option>`);
+    });
+    return options.join("");
+  }
+
+  function showSelectedLiveDrillBatchCartItem(event) {
+    const id = cleanText(event?.target?.value || "");
+    const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
+    if (!id) {
+      setStatus(getLiveDrillCardBatchSummaryText(), 9000);
+      return;
+    }
+    const item = batch.items.find((entry) => entry.sourceDrillId === id || entry.id === id);
+    if (!item) {
+      setStatus("That batch cart item is no longer available.", 7000);
+      refreshPanel();
+      return;
+    }
+    const labels = (item.labels || item.source?.labels || [])
+      .map((entry) => cleanText(entry.preferredLabel || entry.label || ""))
+      .filter(Boolean);
+    const detailCount = Number(item.capturedDetailCount || item.source?.labelDetailEnrichment?.capturedDetails || 0);
+    setStatus(`Batch cart item: ${item.title}. ${item.moduleName || "Module"}${item.plane ? `, ${item.plane}` : ""}. ${labels.length} labels, ${detailCount} definitions. Labels: ${labels.join(", ")}`, 14000);
   }
 
   async function togglePairedAnswerSession() {
@@ -2946,9 +3213,14 @@
   }
 
   function buildLiveDrillCardPrompt(payload, enrichment = null) {
+    const source = buildLiveDrillCardPromptSource(payload, enrichment);
+    return buildLiveDrillSingleCardPrompt(source);
+  }
+
+  function buildLiveDrillCardPromptSource(payload, enrichment = null) {
     const context = buildLiveDrillCardContext(payload);
     const labelDetailByKey = getLiveDrillLabelDetailPromptMap(enrichment);
-    const source = {
+    return {
       kind: "imaios-live-drill-card-source",
       version: 1,
       sourceDrillId: payload.id,
@@ -2974,6 +3246,9 @@
       labelDetailEnrichment: getLiveDrillLabelDetailEnrichmentSummary(enrichment),
       learningFrame: context.learningFrame
     };
+  }
+
+  function buildLiveDrillSingleCardPrompt(source) {
     return [
       "You are planning Anki identification cards for live IMAIOS anatomy drills.",
       "",
@@ -3013,6 +3288,131 @@
       "      \"frontPrompt\": \"Open the live drill and name the locked structures.\",",
       "      \"labels\": [\"exact preferredLabel\", \"exact preferredLabel\"],",
       "      \"recognitionCues\": [\"brief visual/anatomic cue\", \"brief visual/anatomic cue\"],",
+      "      \"contrastCues\": [\"brief nearby-confusion cue if useful\"],",
+      "      \"rationale\": \"why these labels belong together pedagogically\",",
+      "      \"tags\": [\"optional_extra_tag\"]",
+      "    }",
+      "  ]",
+      "}",
+      "```",
+      "",
+      "INPUT:",
+      "```json",
+      JSON.stringify(source, null, 2),
+      "```"
+    ].join("\n");
+  }
+
+  function buildLiveDrillBatchCardSource() {
+    const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
+    if (!batch.items.length) return { ok: false, reason: "Anki batch is empty. Add reviewed live drills first." };
+    const now = new Date().toISOString();
+    const topic = cleanText(batch.topic || state.chunkLibrary.topic || state.chunkLibrary.articleTitle || "IMAIOS live drills");
+    const route = getLibraryRoutingMetadata({
+      sourceContext: {
+        ...state.chunkLibrary,
+        topic
+      }
+    });
+    const breadcrumb = route.breadcrumb.length ? route.breadcrumb : normalizeBreadcrumbList([topic]);
+    const suggestedDeckPath = route.deckPath || buildDeckPathFromBreadcrumb(breadcrumb);
+    const suggestedTags = unique([
+      ...route.tags,
+      "imaios",
+      "live_drill",
+      "batch",
+      topic && `article::${topic}`
+    ].filter(Boolean).map(toAnkiTag));
+    const batchItems = batch.items.map((item) => normalizeLiveDrillCardBatchItem(item)).filter(Boolean);
+    const labels = batchItems.flatMap((item) => (item.source?.labels || []).map((label) => ({
+      ...label,
+      sourceDrillId: item.sourceDrillId,
+      sourceTitle: item.title,
+      moduleKey: label.moduleKey || item.moduleKey || "",
+      moduleName: item.moduleName || ""
+    })));
+    return {
+      ok: true,
+      payload: {
+        kind: "imaios-live-drill-batch-source",
+        version: 1,
+        sourceDrillId: `batch-${createSlug(topic) || Date.now()}`,
+        generatedAt: now,
+        title: topic,
+        topic,
+        source: cleanText(batch.source || state.chunkLibrary.source || ""),
+        sourceContext: {
+          articleTitle: topic,
+          topic,
+          source: cleanText(batch.source || state.chunkLibrary.source || ""),
+          breadcrumb,
+          deckPath: suggestedDeckPath,
+          tags: suggestedTags
+        },
+        breadcrumb,
+        suggestedDeckPath,
+        suggestedTags,
+        routing: {
+          explicitBreadcrumb: route.breadcrumb,
+          explicitDeckPath: route.deckPath,
+          explicitTags: route.tags
+        },
+        labels,
+        batchItems: batchItems.map((item) => ({
+          id: item.id,
+          sourceDrillId: item.sourceDrillId,
+          title: item.title,
+          module: item.source?.module || item.payload?.module || {},
+          viewer: item.source?.viewer || item.payload?.viewer || {},
+          chunk: item.source?.chunk || item.payload?.chunk || {},
+          labels: item.source?.labels || [],
+          labelDetailEnrichment: item.source?.labelDetailEnrichment || item.enrichmentSummary || null,
+          learningFrame: item.source?.learningFrame || [],
+          payload: item.payload
+        }))
+      }
+    };
+  }
+
+  function buildLiveDrillBatchCardPrompt(source) {
+    return [
+      "You are planning Anki identification cards for a batch of live IMAIOS anatomy drills collected across one study session.",
+      "",
+      "Goal:",
+      "- The card front will contain a live IMAIOS drill link that restores one selected module, plane, slice, and locked-label set.",
+      "- The learner opens the link and names the locked structures in IMAIOS before revealing the answer.",
+      "- This is vocabulary and image-recognition practice, not a lecture and not pathology cards.",
+      `- The extension will export a standard Anki \`${LIVE_DRILL_ANKI_NOTE_TYPE}\` note type TSV.`,
+      "",
+      "Hard rules:",
+      "- Create cards only from INPUT.batchItems[].labels[].preferredLabel.",
+      "- Each card must use labels from exactly one INPUT.batchItems[] item and must include that item's `sourceDrillId`.",
+      "- Do not mix labels from different modules/drills in one card, because each card opens one live IMAIOS drill link.",
+      "- Every supplied label from every batch item must appear in at least one card.",
+      "- Use only exact `preferredLabel` strings. Do not invent labels, rename labels, or substitute synonyms in the `labels` arrays.",
+      "- Prefer 2-4 labels per card. Use 5-6 only when they are one tight object/subpart family. Split larger groups into pedagogic subgroups.",
+      "- Use IMAIOS details as supplemental anatomy context for relationships, hierarchy, boundaries, contents, and nearby confusions.",
+      "- Details are for better grouping and concise recognition cues; do not turn cards into definition memorization cards.",
+      "- Preserve breadcrumb/deck/tag context for the overall batch.",
+      "",
+      "Return exactly one fenced JSON block with this schema:",
+      "```json",
+      "{",
+      "  \"kind\": \"imaios-live-drill-card-plan\",",
+      "  \"version\": 1,",
+      "  \"sourceDrillId\": \"copy INPUT.sourceDrillId\",",
+      "  \"title\": \"short batch card-set title\",",
+      "  \"breadcrumb\": [\"copy or lightly refine INPUT.breadcrumb\"],",
+      "  \"deckPath\": \"copy or lightly refine INPUT.suggestedDeckPath\",",
+      "  \"tags\": [\"copy or lightly refine INPUT.suggestedTags\"],",
+      "  \"cards\": [",
+      "    {",
+      "      \"id\": \"short-stable-slug\",",
+      "      \"sourceDrillId\": \"copy one INPUT.batchItems[].sourceDrillId\",",
+      "      \"title\": \"card title\",",
+      "      \"frontPrompt\": \"Open the live drill and name the locked structures.\",",
+      "      \"labels\": [\"exact preferredLabel\", \"exact preferredLabel\"],",
+      "      \"recognitionCues\": [\"brief visual/anatomic cue\"],",
       "      \"contrastCues\": [\"brief nearby-confusion cue if useful\"],",
       "      \"rationale\": \"why these labels belong together pedagogically\",",
       "      \"tags\": [\"optional_extra_tag\"]",
@@ -3093,15 +3493,16 @@
   }
 
   function buildLiveDrillCardContext(payload) {
-    const chunk = getActiveChunk();
+    const isBatch = isLiveDrillBatchSource(payload);
+    const chunk = isBatch ? null : getActiveChunk();
     const sourceContext = payload?.sourceContext || {};
     const libraryRoute = getLibraryRoutingMetadata(payload);
-    const chunkRoute = getChunkRoutingMetadata(chunk, payload?.chunk || {});
+    const chunkRoute = isBatch ? { breadcrumb: [], deckPath: "", tags: [] } : getChunkRoutingMetadata(chunk, payload?.chunk || {});
     const articleTitle = cleanText(sourceContext.articleTitle || sourceContext.topic || state.chunkLibrary.articleTitle || state.chunkLibrary.topic || payload?.chunk?.title || payload?.module?.name || "IMAIOS anatomy");
     const sourceName = cleanText(sourceContext.source || state.chunkLibrary.source || chunk?.source || "");
     const moduleName = cleanText(payload?.module?.name || getCurrentModuleName());
     const chunkTitle = cleanText(payload?.chunk?.title || chunk?.title || payload?.title || "");
-    const parentGroup = cleanText(chunk?.parentGroup || "");
+    const parentGroup = cleanText(payload?.chunk?.parentGroup || chunk?.parentGroup || "");
     const plane = cleanText(payload?.viewer?.plane || "");
     const explicitBreadcrumb = unique([
       ...libraryRoute.breadcrumb,
@@ -3375,7 +3776,7 @@
       deckPath: applyDeckRootOverride(value.deckPath || value.suggestedDeckPath || value.ankiDeckPath || value.anki?.deckPath || value.anki?.deck || ""),
       tags: normalizeStringList(value.tags || value.suggestedTags || value.ankiTags || value.anki?.tags),
       cards,
-      sourceDrillPayload: value.sourceDrillPayload && value.sourceDrillPayload.kind === "imaios-live-drill" ? value.sourceDrillPayload : null
+      sourceDrillPayload: isLiveDrillCardSourcePayload(value.sourceDrillPayload) ? value.sourceDrillPayload : null
     };
   }
 
@@ -3386,6 +3787,7 @@
     const title = cleanText(card.title || card.name || labels.slice(0, 3).join(", "));
     return {
       id: cleanText(card.id || createSlug(title) || `card-${index + 1}`),
+      sourceDrillId: cleanText(card.sourceDrillId || card.sourceItemId || card.drillId || ""),
       title,
       frontPrompt: cleanText(card.frontPrompt || card.front || "Open the live drill and name the locked structures."),
       labels,
@@ -3426,9 +3828,10 @@
   }
 
   async function getSourcePayloadForCardPlan(plan) {
-    if (plan?.sourceDrillPayload?.kind === "imaios-live-drill") return plan.sourceDrillPayload;
+    if (isLiveDrillCardSourcePayload(plan?.sourceDrillPayload)) return plan.sourceDrillPayload;
     const saved = normalizeSavedLiveDrillSource(state.lastLiveDrillCardSource || readLastLiveDrillCardSource());
-    if (saved?.payload && (!plan.sourceDrillId || !saved.payload.id || plan.sourceDrillId === saved.payload.id)) return saved.payload;
+    const savedSourceId = cleanText(saved?.payload?.id || saved?.payload?.sourceDrillId || "");
+    if (saved?.payload && (!plan.sourceDrillId || !savedSourceId || plan.sourceDrillId === savedSourceId)) return saved.payload;
     if (saved?.payload && labelsCoverPlan(saved.payload, plan)) return saved.payload;
     const current = await buildLiveDrillPayloadFromCurrent({ requireLocked: false });
     if (current.ok && current.payload?.labels?.length && labelsCoverPlan(current.payload, plan)) return current.payload;
@@ -3436,6 +3839,8 @@
   }
 
   function validateLiveDrillCardPlan(plan, sourcePayload) {
+    if (isLiveDrillBatchSource(sourcePayload)) return validateLiveDrillBatchCardPlan(plan, sourcePayload);
+
     const sourceLabels = unique((sourcePayload.labels || []).map((entry) => cleanText(entry.preferredLabel || entry.label || "")).filter(Boolean));
     const sourceKeys = new Map(sourceLabels.map((label) => [normalizeText(label), label]));
     const unknownLabels = [];
@@ -3467,10 +3872,130 @@
     };
   }
 
+  function validateLiveDrillBatchCardPlan(plan, sourcePayload) {
+    const items = getLiveDrillBatchSourceItems(sourcePayload);
+    const allSourceLabels = items.flatMap((item) => getLiveDrillSourceLabels(item.payload).map((label) => ({
+      item,
+      label,
+      key: normalizeText(label)
+    })));
+    const unknownLabels = [];
+    const validCards = [];
+    const covered = new Set();
+
+    for (const card of plan.cards || []) {
+      const item = resolveLiveDrillBatchItemForCard(sourcePayload, card);
+      if (!item) {
+        unknownLabels.push(...(card.labels || []));
+        continue;
+      }
+      const sourceKeys = new Map(getLiveDrillSourceLabels(item.payload).map((label) => [normalizeText(label), label]));
+      const labels = [];
+      for (const label of card.labels || []) {
+        const key = normalizeText(label);
+        if (!sourceKeys.has(key)) {
+          unknownLabels.push(`${item.title || item.sourceDrillId}: ${label}`);
+          continue;
+        }
+        labels.push(sourceKeys.get(key));
+        covered.add(`${item.sourceDrillId}|${key}`);
+      }
+      if (labels.length) validCards.push({ ...card, sourceDrillId: item.sourceDrillId, labels: unique(labels) });
+    }
+
+    const sourceLabels = allSourceLabels.map((entry) => `${entry.item.title || entry.item.sourceDrillId}: ${entry.label}`);
+    const coveredLabels = allSourceLabels
+      .filter((entry) => covered.has(`${entry.item.sourceDrillId}|${entry.key}`))
+      .map((entry) => `${entry.item.title || entry.item.sourceDrillId}: ${entry.label}`);
+    const missingLabels = allSourceLabels
+      .filter((entry) => !covered.has(`${entry.item.sourceDrillId}|${entry.key}`))
+      .map((entry) => `${entry.item.title || entry.item.sourceDrillId}: ${entry.label}`);
+    return {
+      sourceLabels,
+      coveredLabels,
+      missingLabels,
+      unknownLabels: unique(unknownLabels),
+      validCards
+    };
+  }
+
   function labelsCoverPlan(sourcePayload, plan) {
+    if (isLiveDrillBatchSource(sourcePayload)) {
+      return (plan?.cards || []).every((card) => Boolean(resolveLiveDrillBatchItemForCard(sourcePayload, card)));
+    }
     const sourceKeys = new Set((sourcePayload?.labels || []).map((entry) => normalizeText(entry.preferredLabel || entry.label || "")));
     const planLabels = (plan?.cards || []).flatMap((card) => card.labels || []);
     return planLabels.length > 0 && planLabels.every((label) => sourceKeys.has(normalizeText(label)));
+  }
+
+  function isLiveDrillCardSourcePayload(value) {
+    return Boolean(value && typeof value === "object" && (
+      value.kind === "imaios-live-drill" ||
+      value.kind === "imaios-live-drill-batch-source"
+    ));
+  }
+
+  function isLiveDrillBatchSource(value) {
+    return Boolean(value && typeof value === "object" && value.kind === "imaios-live-drill-batch-source" && Array.isArray(value.batchItems));
+  }
+
+  function getLiveDrillSourceLabels(payload) {
+    return unique((payload?.labels || []).map((entry) => cleanText(entry.preferredLabel || entry.label || "")).filter(Boolean));
+  }
+
+  function getLiveDrillBatchSourceItems(sourcePayload) {
+    return (Array.isArray(sourcePayload?.batchItems) ? sourcePayload.batchItems : [])
+      .map((item) => {
+        const payload = item?.payload?.kind === "imaios-live-drill"
+          ? item.payload
+          : {
+              kind: "imaios-live-drill",
+              version: 1,
+              id: item?.sourceDrillId || item?.id || "",
+              title: item?.title || "",
+              module: item?.module || {},
+              viewer: item?.viewer || {},
+              chunk: item?.chunk || {},
+              labels: Array.isArray(item?.labels) ? item.labels : [],
+              lockedLabels: (Array.isArray(item?.labels) ? item.labels : []).map((entry) => entry.preferredLabel || entry.label || "").filter(Boolean),
+              sourceContext: sourcePayload.sourceContext || {
+                topic: sourcePayload.topic || sourcePayload.title || "",
+                source: sourcePayload.source || "",
+                breadcrumb: sourcePayload.breadcrumb || [],
+                deckPath: sourcePayload.suggestedDeckPath || "",
+                tags: sourcePayload.suggestedTags || []
+              }
+            };
+        return {
+          ...item,
+          sourceDrillId: cleanText(item?.sourceDrillId || payload.id || item?.id || ""),
+          title: cleanText(item?.title || payload.title || payload.chunk?.title || payload.module?.name || ""),
+          payload
+        };
+      })
+      .filter((item) => item.sourceDrillId && item.payload?.labels?.length);
+  }
+
+  function resolveLiveDrillSourcePayloadForCard(sourcePayload, card) {
+    if (!isLiveDrillBatchSource(sourcePayload)) return sourcePayload;
+    const item = resolveLiveDrillBatchItemForCard(sourcePayload, card);
+    return item?.payload || null;
+  }
+
+  function resolveLiveDrillBatchItemForCard(sourcePayload, card) {
+    const items = getLiveDrillBatchSourceItems(sourcePayload);
+    const requestedId = cleanText(card?.sourceDrillId || "");
+    if (requestedId) {
+      const exact = items.find((item) => item.sourceDrillId === requestedId || item.id === requestedId);
+      if (exact) return exact;
+      return null;
+    }
+    const cardLabels = normalizeCardPlanLabels(card?.labels || []);
+    if (!cardLabels.length) return null;
+    return items.find((item) => {
+      const keys = new Set(getLiveDrillSourceLabels(item.payload).map(normalizeText));
+      return cardLabels.every((label) => keys.has(normalizeText(label)));
+    }) || null;
   }
 
   function getLiveDrillImportDeckPath(plan, sourcePayload) {
@@ -3492,24 +4017,26 @@
       "#tags column:3"
     ];
     const rows = cards.map((card, index) => {
+      const cardSourcePayload = resolveLiveDrillSourcePayloadForCard(sourcePayload, card) || sourcePayload;
       const cardPayload = buildLiveDrillSubPayload(sourcePayload, card, index);
       const link = buildLiveDrillUrl(cardPayload);
       const front = buildLiveDrillCardFront(card, link);
-      const back = buildLiveDrillBasicBack(card, sourcePayload, plan, deckPath);
-      const tags = buildLiveDrillCardTags(card, sourcePayload, plan);
+      const back = buildLiveDrillBasicBack(card, cardSourcePayload, plan, deckPath);
+      const tags = buildLiveDrillCardTags(card, cardSourcePayload, plan);
       return [front, back, tags];
     });
     return [...importHeaders, ...rows.map((row) => row.map(tsvCell).join("\t"))].join("\n");
   }
 
   function buildLiveDrillSubPayload(sourcePayload, card, index) {
-    const sourceByKey = new Map((sourcePayload.labels || []).map((entry) => [normalizeText(entry.preferredLabel || entry.label || ""), entry]));
+    const basePayload = resolveLiveDrillSourcePayloadForCard(sourcePayload, card) || sourcePayload;
+    const sourceByKey = new Map((basePayload.labels || []).map((entry) => [normalizeText(entry.preferredLabel || entry.label || ""), entry]));
     const labels = card.labels.map((label) => {
       const entry = sourceByKey.get(normalizeText(label)) || {};
       return {
         preferredLabel: cleanText(entry.preferredLabel || label),
         normalizedLabel: normalizeText(entry.preferredLabel || label),
-        moduleKey: entry.moduleKey || sourcePayload.module?.key || "",
+        moduleKey: entry.moduleKey || basePayload.module?.key || "",
         aliases: Array.isArray(entry.aliases) ? entry.aliases : [],
         repositoryStatus: entry.repositoryStatus || "",
         href: entry.href || "",
@@ -3518,8 +4045,8 @@
     });
     const title = cleanText(card.title || labels.map((entry) => entry.preferredLabel).join(", "));
     return {
-      ...sourcePayload,
-      id: createSlug(`${sourcePayload.id || "imaios-live-drill"}-${card.id || index + 1}`) || `${sourcePayload.id || "imaios-live-drill"}-${index + 1}`,
+      ...basePayload,
+      id: createSlug(`${basePayload.id || "imaios-live-drill"}-${card.id || index + 1}`) || `${basePayload.id || "imaios-live-drill"}-${index + 1}`,
       title,
       createdAt: new Date().toISOString(),
       labels,
@@ -3588,9 +4115,9 @@
 
   function buildLiveDrillCardOutputPaths(sourcePayload, plan) {
     const context = buildLiveDrillCardContext(sourcePayload);
-    const articleSlug = createSlug(context.articleTitle || sourcePayload.module?.name || "imaios-live-drills") || "imaios-live-drills";
-    const chunkSlug = createSlug(context.chunkTitle || sourcePayload.title || "drill") || "drill";
-    const base = createSlug(plan.title || sourcePayload.title || "live-drill-cards") || `live-drill-cards-${Date.now()}`;
+    const articleSlug = createSlug(context.articleTitle || sourcePayload.topic || sourcePayload.module?.name || "imaios-live-drills") || "imaios-live-drills";
+    const chunkSlug = createSlug(context.chunkTitle || sourcePayload.title || sourcePayload.topic || "drill") || "drill";
+    const base = createSlug(plan.title || sourcePayload.title || sourcePayload.topic || "live-drill-cards") || `live-drill-cards-${Date.now()}`;
     const folder = `IMAIOS/LiveDrills/${articleSlug}/${chunkSlug}`;
     return {
       folder,
@@ -3624,13 +4151,61 @@
 
   function normalizeSavedLiveDrillSource(value) {
     if (!value || typeof value !== "object") return null;
-    const payload = value.payload?.kind === "imaios-live-drill" ? value.payload : value.kind === "imaios-live-drill" ? value : null;
-    if (!payload || !Array.isArray(payload.labels)) return null;
+    const payload = isLiveDrillCardSourcePayload(value.payload) ? value.payload : isLiveDrillCardSourcePayload(value) ? value : null;
+    if (!payload || (!Array.isArray(payload.labels) && !Array.isArray(payload.batchItems))) return null;
     return {
       kind: "imaios-live-drill-card-source",
       version: Number(value.version) || 1,
       savedAt: cleanText(value.savedAt || new Date().toISOString()),
       payload
+    };
+  }
+
+  function normalizeLiveDrillCardBatch(value) {
+    if (!value || typeof value !== "object") return { ...EMPTY_LIVE_DRILL_CARD_BATCH, items: [] };
+    const items = (Array.isArray(value.items) ? value.items : [])
+      .map((item) => normalizeLiveDrillCardBatchItem(item))
+      .filter(Boolean);
+    return {
+      kind: "imaios-live-drill-card-batch",
+      version: Number(value.version) || 1,
+      topic: cleanText(value.topic || state.chunkLibrary?.topic || state.chunkLibrary?.articleTitle || ""),
+      source: cleanText(value.source || state.chunkLibrary?.source || ""),
+      createdAt: cleanText(value.createdAt || ""),
+      updatedAt: cleanText(value.updatedAt || ""),
+      backupSource: cleanText(value.backupSource || ""),
+      backupCreatedAt: cleanText(value.backupCreatedAt || ""),
+      items
+    };
+  }
+
+  function normalizeLiveDrillCardBatchItem(item) {
+    if (!item || typeof item !== "object") return null;
+    const payload = item.payload?.kind === "imaios-live-drill" ? item.payload : null;
+    const source = item.source && typeof item.source === "object" ? item.source : (payload ? buildLiveDrillCardPromptSource(payload, null) : null);
+    const sourceDrillId = cleanText(item.sourceDrillId || source?.sourceDrillId || payload?.id || item.id || "");
+    const labels = Array.isArray(item.labels) ? item.labels : Array.isArray(source?.labels) ? source.labels : [];
+    if (!sourceDrillId || !labels.length) return null;
+    const title = cleanText(item.title || source?.chunk?.title || payload?.chunk?.title || payload?.title || source?.module?.name || "IMAIOS drill");
+    return {
+      id: cleanText(item.id || sourceDrillId),
+      kind: "imaios-live-drill-card-batch-item",
+      version: Number(item.version) || 1,
+      title,
+      addedAt: cleanText(item.addedAt || item.createdAt || ""),
+      updatedAt: cleanText(item.updatedAt || ""),
+      sourceDrillId,
+      moduleKey: cleanText(item.moduleKey || source?.module?.key || payload?.module?.key || ""),
+      moduleName: cleanText(item.moduleName || source?.module?.name || payload?.module?.name || ""),
+      chunkId: cleanText(item.chunkId || source?.chunk?.id || payload?.chunk?.id || ""),
+      chunkTitle: cleanText(item.chunkTitle || source?.chunk?.title || payload?.chunk?.title || ""),
+      plane: cleanText(item.plane || source?.viewer?.plane || payload?.viewer?.plane || ""),
+      labelCount: Number(item.labelCount || labels.length || 0),
+      capturedDetailCount: Number(item.capturedDetailCount || source?.labelDetailEnrichment?.capturedDetails || 0),
+      labels,
+      source,
+      payload,
+      enrichmentSummary: item.enrichmentSummary || source?.labelDetailEnrichment || null
     };
   }
 
@@ -4332,7 +4907,7 @@
     if (message?.type === "IMAIOS_LIVE_DRILL_CARD_PLAN_READY") {
       (async () => {
         try {
-          const sourcePayload = message.sourcePayload?.kind === "imaios-live-drill"
+          const sourcePayload = isLiveDrillCardSourcePayload(message.sourcePayload)
             ? message.sourcePayload
             : null;
           if (sourcePayload) saveLastLiveDrillCardSource(sourcePayload);
