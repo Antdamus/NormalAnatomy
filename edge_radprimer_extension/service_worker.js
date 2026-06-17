@@ -38,6 +38,7 @@ const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
 const CORE_EVIDENCE_BEGIN = "CORE_EVIDENCE_FILE_BEGIN";
 const CORE_EVIDENCE_END = "CORE_EVIDENCE_FILE_END";
 const pendingTextDownloadFilenames = [];
+const imaiosLiveDrillPairs = new Map();
 const CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION = [
   "AUTOMATED CAPTURE REQUIREMENT:",
   "When you reach final card export, create a downloadable TSV file instead of printing the TSV rows in chat.",
@@ -568,6 +569,131 @@ async function sendLiveDrillCardPlanToImaios({ assistantText = "", sourcePayload
     tabId: tab.id
   };
 }
+
+function buildImaiosModuleUrl(payload) {
+  const url = new URL(payload?.module?.url || "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone");
+  url.hash = "";
+  return url.toString();
+}
+
+function makeImaiosPairId(quizTabId, answerTabId) {
+  return `imaios-pair-${Date.now()}-${quizTabId || "quiz"}-${answerTabId || "answer"}`;
+}
+
+async function startImaiosLiveDrillPairSession(message, senderTab) {
+  const answerTabId = senderTab?.id || Number(message.answerTabId || message.leaderTabId || 0);
+  if (!answerTabId) throw new Error("No IMAIOS answer tab was available.");
+  const payload = message.payload && typeof message.payload === "object" ? message.payload : null;
+  if (!payload || payload.kind !== "imaios-live-drill") {
+    throw new Error("No valid live-drill payload was provided for paired tab mode.");
+  }
+
+  const quizUrl = buildImaiosModuleUrl(payload);
+  const createOptions = {
+    url: quizUrl,
+    active: true,
+    openerTabId: answerTabId
+  };
+  if (Number.isFinite(senderTab?.windowId)) createOptions.windowId = senderTab.windowId;
+  const quizTab = await chrome.tabs.create(createOptions);
+  await waitForTabComplete(quizTab.id, 60000, "IMAIOS paired clean tab");
+
+  const pairId = makeImaiosPairId(quizTab.id, answerTabId);
+  const pair = {
+    pairId,
+    leaderTabId: quizTab.id,
+    followerTabId: answerTabId,
+    payload,
+    createdAt: Date.now()
+  };
+  imaiosLiveDrillPairs.set(pairId, pair);
+
+  await sendImaiosMessageWithInjection(quizTab.id, {
+    type: "IMAIOS_LIVE_DRILL_PAIR_ROLE",
+    pairId,
+    role: "quiz",
+    peerTabId: answerTabId,
+    payload
+  }).catch(() => {});
+  await sendImaiosMessageWithInjection(answerTabId, {
+    type: "IMAIOS_LIVE_DRILL_PAIR_ROLE",
+    pairId,
+    role: "answer",
+    peerTabId: quizTab.id,
+    payload
+  }).catch(() => {});
+
+  return {
+    ok: true,
+    pairId,
+    leaderTabId: quizTab.id,
+    cleanTabId: quizTab.id,
+    followerTabId: answerTabId,
+    answerTabId,
+    quizUrl
+  };
+}
+
+async function relayImaiosLiveDrillPairSync(message, senderTab) {
+  const pairId = String(message.pairId || "");
+  const pair = imaiosLiveDrillPairs.get(pairId);
+  if (!pair) throw new Error("The paired IMAIOS session is no longer registered.");
+  if (senderTab?.id !== pair.leaderTabId && senderTab?.id !== pair.followerTabId) {
+    throw new Error("This tab does not belong to the requested IMAIOS pair.");
+  }
+  const targetTabId = senderTab.id === pair.leaderTabId ? pair.followerTabId : pair.leaderTabId;
+  const response = await sendImaiosMessageWithInjection(targetTabId, {
+    type: "IMAIOS_LIVE_DRILL_PAIR_APPLY_SYNC",
+    pairId,
+    sync: message.sync || {}
+  }).catch((error) => ({ ok: false, error: String(error?.message || error) }));
+  return { ok: Boolean(response?.ok), targetTabId, peerResponse: response || null };
+}
+
+async function focusImaiosLiveDrillPairPeer(message, senderTab = null) {
+  const pairId = String(message.pairId || "");
+  const pair = imaiosLiveDrillPairs.get(pairId);
+  if (!pair) throw new Error("The paired IMAIOS session is no longer registered.");
+  if (senderTab?.id !== pair.leaderTabId && senderTab?.id !== pair.followerTabId) {
+    throw new Error("This tab does not belong to the requested IMAIOS pair.");
+  }
+  const targetTabId = senderTab.id === pair.leaderTabId ? pair.followerTabId : pair.leaderTabId;
+  const tab = await chrome.tabs.update(targetTabId, { active: true });
+  if (tab?.windowId) await chrome.windows.update(tab.windowId, { focused: true });
+  return { ok: true, targetTabId };
+}
+
+async function stopImaiosLiveDrillPairSession(message, senderTab = null) {
+  const pairId = String(message.pairId || "");
+  const pair = imaiosLiveDrillPairs.get(pairId);
+  if (!pair) return { ok: true, stopped: false };
+  if (senderTab?.id && senderTab.id !== pair.leaderTabId && senderTab.id !== pair.followerTabId) {
+    throw new Error("This tab does not belong to the requested IMAIOS pair.");
+  }
+  imaiosLiveDrillPairs.delete(pairId);
+  await Promise.all([
+    sendImaiosMessageWithInjection(pair.leaderTabId, { type: "IMAIOS_LIVE_DRILL_PAIR_STOPPED", pairId }).catch(() => {}),
+    sendImaiosMessageWithInjection(pair.followerTabId, { type: "IMAIOS_LIVE_DRILL_PAIR_STOPPED", pairId }).catch(() => {})
+  ]);
+  return { ok: true, stopped: true };
+}
+
+function removeImaiosLiveDrillPairsForTab(tabId) {
+  const affected = Array.from(imaiosLiveDrillPairs.values())
+    .filter((pair) => pair.leaderTabId === tabId || pair.followerTabId === tabId);
+  for (const pair of affected) {
+    imaiosLiveDrillPairs.delete(pair.pairId);
+    const peerTabId = pair.leaderTabId === tabId ? pair.followerTabId : pair.leaderTabId;
+    sendImaiosMessageWithInjection(peerTabId, {
+      type: "IMAIOS_LIVE_DRILL_PAIR_STOPPED",
+      pairId: pair.pairId
+    }).catch(() => {});
+  }
+}
+
+chrome.tabs.onRemoved.addListener((tabId) => {
+  removeImaiosLiveDrillPairsForTab(tabId);
+});
 
 async function getSpeechifyTab({ focus = false, createIfMissing = false } = {}) {
   const tabs = await chrome.tabs.query({ url: ["https://app.speechify.com/*"] });
@@ -4921,6 +5047,38 @@ async function dispatchTabMouseClick(tabId, x, y) {
   }
 }
 
+async function dispatchTabKeyPress(tabId, key, code) {
+  if (!tabId) throw new Error("No tab id available for key press.");
+  const normalizedKey = String(key || "");
+  const normalizedCode = String(code || normalizedKey || "");
+  if (!normalizedKey || !normalizedCode) throw new Error("Missing key/code for key press.");
+
+  const upper = normalizedKey.length === 1 ? normalizedKey.toUpperCase() : normalizedKey;
+  const virtualKeyCode = upper === "Escape" ? 27 : upper.charCodeAt(0);
+  const target = { tabId };
+  await chrome.debugger.attach(target, "1.3");
+  try {
+    const base = {
+      windowsVirtualKeyCode: virtualKeyCode,
+      nativeVirtualKeyCode: virtualKeyCode,
+      key: normalizedKey,
+      code: normalizedCode
+    };
+    await chrome.debugger.sendCommand(target, "Input.dispatchKeyEvent", {
+      type: "keyDown",
+      ...base,
+      text: normalizedKey.length === 1 ? normalizedKey : "",
+      unmodifiedText: normalizedKey.length === 1 ? normalizedKey : ""
+    });
+    await chrome.debugger.sendCommand(target, "Input.dispatchKeyEvent", {
+      type: "keyUp",
+      ...base
+    });
+  } finally {
+    await chrome.debugger.detach(target).catch(() => {});
+  }
+}
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "IMAIOS_DOWNLOAD_DATA_URL") {
     (async () => {
@@ -4962,6 +5120,18 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     (async () => {
       const tabId = _sender?.tab?.id;
       await dispatchTabMouseClick(tabId, Number(message.x), Number(message.y));
+      sendResponse({ ok: true });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "IMAIOS_DISPATCH_KEY_PRESS") {
+    (async () => {
+      const tabId = _sender?.tab?.id;
+      await dispatchTabKeyPress(tabId, message.key || "", message.code || "");
       sendResponse({ ok: true });
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
@@ -5117,6 +5287,50 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     (async () => {
       const result = await runImaiosLiveDrillCardAutomation(message, _sender?.tab || null);
       sendResponse({ ok: true, ...result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "START_IMAIOS_LIVE_DRILL_PAIR_SESSION") {
+    (async () => {
+      const result = await startImaiosLiveDrillPairSession(message, _sender?.tab || null);
+      sendResponse(result);
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "IMAIOS_LIVE_DRILL_PAIR_SYNC") {
+    (async () => {
+      const result = await relayImaiosLiveDrillPairSync(message, _sender?.tab || null);
+      sendResponse(result);
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "STOP_IMAIOS_LIVE_DRILL_PAIR_SESSION") {
+    (async () => {
+      const result = await stopImaiosLiveDrillPairSession(message, _sender?.tab || null);
+      sendResponse(result);
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "FOCUS_IMAIOS_LIVE_DRILL_PAIR_PEER") {
+    (async () => {
+      const result = await focusImaiosLiveDrillPairPeer(message, _sender?.tab || null);
+      sendResponse(result);
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
     });

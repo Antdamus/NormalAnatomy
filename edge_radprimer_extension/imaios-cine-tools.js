@@ -27,6 +27,7 @@
     { id: "speedDown", label: "Speed down" },
     { id: "speedUp", label: "Speed up" },
     { id: "applyChunk", label: "Apply chunk" },
+    { id: "switchPairTab", label: "Open/switch paired tab" },
     { id: "pinsOn", label: "Show pins" },
     { id: "labelsOn", label: "Show labels" },
     { id: "selectAll", label: "Select all labels" },
@@ -54,6 +55,7 @@
     speedDown: { code: "Minus", key: "-", alt: false, ctrl: false, meta: false, shift: false },
     speedUp: { code: "Equal", key: "=", alt: false, ctrl: false, meta: false, shift: false },
     applyChunk: { code: "Enter", key: "Enter", alt: true, ctrl: false, meta: false, shift: false },
+    switchPairTab: { code: "KeyT", key: "t", alt: false, ctrl: false, meta: false, shift: false },
     pinsOn: { code: "KeyP", key: "p", alt: false, ctrl: false, meta: false, shift: false },
     labelsOn: { code: "KeyL", key: "l", alt: false, ctrl: false, meta: false, shift: false },
     selectAll: { code: "KeyA", key: "a", alt: true, ctrl: false, meta: false, shift: false },
@@ -110,7 +112,12 @@
     lastRestoredDrillHash: "",
     lastLiveDrillCardSource: null,
     studyShield: null,
-    liveDrillRestoreRunning: false
+    liveDrillRestoreRunning: false,
+    liveDrillPair: null,
+    liveDrillPairSyncTimer: 0,
+    liveDrillPairLastSignature: "",
+    liveDrillPairSyncBusy: false,
+    liveDrillPairApplying: false
   };
 
   async function init() {
@@ -133,6 +140,7 @@
         setStatus(`Live drill restore failed: ${error?.message || error}`, 9000);
       });
     });
+    scheduleAllStructuresHiddenOnLoad();
     syncReverseScrollForCurrentPlane().catch(() => {});
     state.reverseScrollWatchTimer = window.setInterval(() => {
       syncReverseScrollForCurrentPlane().catch(() => {});
@@ -726,6 +734,7 @@
           <select data-role="quick-chunk">${chunkOptions}</select>
           <div class="quick-card-actions">
             <button class="primary" type="button" data-action="run-live-drill-card-automation">Create Anki cards</button>
+            <button type="button" data-action="toggle-paired-answer">Open clean tab</button>
           </div>
         </div>
         <div class="controls">
@@ -1041,6 +1050,7 @@
     root.querySelectorAll("[data-action='run-live-drill-card-automation']").forEach((button) => {
       button.addEventListener("click", runLiveDrillCardAutomation);
     });
+    root.querySelector("[data-action='toggle-paired-answer']").addEventListener("click", togglePairedAnswerSession);
     root.querySelector("[data-action='copy-live-drill-card-prompt']").addEventListener("click", copyLiveDrillCardPrompt);
     root.querySelector("[data-action='import-live-drill-card-plan']").addEventListener("click", importLiveDrillCardPlanFromClipboard);
     root.querySelector("[data-role='cine-speed']").addEventListener("input", (event) => {
@@ -1081,6 +1091,7 @@
     const toggleBoxes = root.querySelector("[data-action='toggle-boxes']");
     const playRange = root.querySelector("[data-action='play-range']");
     const recordCineButtons = Array.from(root.querySelectorAll("[data-action='record-cine']"));
+    const pairedAnswerButton = root.querySelector("[data-action='toggle-paired-answer']");
     const cineSpeed = root.querySelector("[data-role='cine-speed']");
     const cineSpeedValue = root.querySelector("[data-role='cine-speed-value']");
     const keyModal = root.querySelector("[data-role='key-modal']");
@@ -1115,10 +1126,16 @@
       button.textContent = state.recordingCine ? "Recording..." : "Record pair";
       button.disabled = Boolean(state.recordingCine);
     });
+    if (pairedAnswerButton) {
+      const activePair = Boolean(state.liveDrillPair?.pairId);
+      pairedAnswerButton.textContent = activePair ? "Switch pair tab" : "Open clean tab";
+      pairedAnswerButton.classList.toggle("primary", activePair);
+      pairedAnswerButton.disabled = false;
+    }
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
-    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.applyChunk)} apply chunk. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.selectAll)} select all. ${formatHotkey(state.hotkeys.reverseScroll)} reverse scroll. ${formatHotkey(state.hotkeys.clearLocked)} clear locked. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
+    hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.applyChunk)} apply chunk. ${formatHotkey(state.hotkeys.switchPairTab)} switch pair. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.selectAll)} select all. ${formatHotkey(state.hotkeys.reverseScroll)} reverse scroll. ${formatHotkey(state.hotkeys.clearLocked)} clear locked. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
     root.querySelectorAll("[data-hotkey-action]").forEach((button) => {
       const actionId = button.getAttribute("data-hotkey-action") || "";
       button.textContent = state.captureHotkeyAction === actionId ? "Press key..." : formatHotkey(state.hotkeys[actionId]);
@@ -2128,6 +2145,55 @@
     }
   }
 
+  function scheduleAllStructuresHiddenOnLoad() {
+    [900, 1800, 3200, 5200].forEach((delayMs) => {
+      window.setTimeout(() => {
+        if (state.searchRunning || state.liveDrillRestoreRunning) return;
+        enforceAllStructuresHidden({ source: "load" }).catch((error) => {
+          console.warn("IMAIOS Cine Tools: could not enforce hidden structures on load", error);
+        });
+      }, delayMs);
+    });
+  }
+
+  async function enforceAllStructuresHidden(options = {}) {
+    if (!options.allowWithLocked && getLockedStructureCount()) {
+      return { ok: true, skipped: true, reason: "Locked structures are present." };
+    }
+
+    return pressImaiosKeyboardShortcut("h", "KeyH");
+  }
+
+  async function pressImaiosKeyboardShortcut(key, code) {
+    if (chrome?.runtime?.sendMessage) {
+      try {
+        const response = await chrome.runtime.sendMessage({
+          type: "IMAIOS_DISPATCH_KEY_PRESS",
+          key,
+          code
+        });
+        if (response?.ok) return { ok: true, method: "debugger-key" };
+      } catch (error) {
+        console.warn("IMAIOS Cine Tools: debugger key press failed; falling back to synthetic key", error);
+      }
+    }
+
+    const target = document.activeElement instanceof Element && !isEditableTarget(document.activeElement)
+      ? document.activeElement
+      : document.body;
+    const eventInit = {
+      key,
+      code,
+      bubbles: true,
+      cancelable: true,
+      view: window
+    };
+    target.dispatchEvent(new KeyboardEvent("keydown", eventInit));
+    target.dispatchEvent(new KeyboardEvent("keypress", eventInit));
+    target.dispatchEvent(new KeyboardEvent("keyup", eventInit));
+    return { ok: true, uncertain: true, method: "synthetic-key" };
+  }
+
   async function toggleSelectAllLabels() {
     let row = findLabelingSettingRow("Select all");
     if (!row) {
@@ -2592,6 +2658,242 @@
       }
       setStatus(response.message || "ChatGPT is building the live-drill card plan. IMAIOS will generate the TSV when it returns.", 14000);
     });
+  }
+
+  async function togglePairedAnswerSession() {
+    if (state.liveDrillPair?.pairId) {
+      await focusPairedPeerTab();
+      return;
+    }
+    await startPairedAnswerSession();
+  }
+
+  async function startPairedAnswerSession() {
+    const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: true });
+    if (!drill.ok) {
+      setStatus(drill.reason, 9000);
+      return;
+    }
+    if (!chrome?.runtime?.sendMessage) {
+      setStatus("Extension messaging is unavailable, so the paired clean tab cannot open.", 9000);
+      return;
+    }
+
+    setStatus("Opening paired clean tab...", 0);
+    chrome.runtime.sendMessage({
+      type: "START_IMAIOS_LIVE_DRILL_PAIR_SESSION",
+      payload: drill.payload
+    }, async (response) => {
+      const error = chrome.runtime.lastError;
+      if (error) {
+        setStatus(`Could not open paired clean tab: ${error.message || error}`, 12000);
+        return;
+      }
+      if (!response?.ok) {
+        setStatus(`Could not open paired clean tab: ${response?.error || "unknown error"}`, 12000);
+        return;
+      }
+      await setLiveDrillPairRole({
+        pairId: response.pairId,
+        role: "answer",
+        peerTabId: response.leaderTabId || response.cleanTabId || 0,
+        payload: drill.payload
+      });
+      setStatus("Paired clean tab opened. Move either tab and the other will follow.", 10000);
+    });
+  }
+
+  async function focusPairedPeerTab() {
+    const pair = state.liveDrillPair;
+    if (!pair?.pairId) {
+      setStatus("No paired IMAIOS tab is active.", 5000);
+      return;
+    }
+    if (!chrome?.runtime?.sendMessage) {
+      setStatus("Extension messaging is unavailable, so the paired tab cannot be focused.", 8000);
+      return;
+    }
+    chrome.runtime.sendMessage({
+      type: "FOCUS_IMAIOS_LIVE_DRILL_PAIR_PEER",
+      pairId: pair.pairId
+    }, (response) => {
+      const error = chrome.runtime.lastError;
+      if (error) {
+        setStatus(`Could not switch paired tab: ${error.message || error}`, 9000);
+        return;
+      }
+      if (!response?.ok) {
+        setStatus(`Could not switch paired tab: ${response?.error || "unknown error"}`, 9000);
+      }
+    });
+  }
+
+  async function stopPairedAnswerSession(options = {}) {
+    const pair = state.liveDrillPair;
+    stopLiveDrillPairSync();
+    state.liveDrillPair = null;
+    state.liveDrillPairLastSignature = "";
+    refreshPanel();
+    if (options.notifyServiceWorker && pair?.pairId && chrome?.runtime?.sendMessage) {
+      chrome.runtime.sendMessage({
+        type: "STOP_IMAIOS_LIVE_DRILL_PAIR_SESSION",
+        pairId: pair.pairId
+      }, () => {});
+    }
+    if (!options.silent) setStatus("Paired tab sync stopped.", 5000);
+  }
+
+  async function setLiveDrillPairRole(pairInfo = {}) {
+    const pairId = String(pairInfo.pairId || "");
+    const roleText = String(pairInfo.role || "");
+    const role = roleText === "answer" || roleText === "follower"
+      ? "answer"
+      : (roleText === "quiz" || roleText === "leader" ? "quiz" : "peer");
+    if (!pairId) return;
+    state.liveDrillPair = {
+      pairId,
+      role,
+      peerTabId: Number(pairInfo.peerTabId || 0),
+      payload: pairInfo.payload || null
+    };
+    state.liveDrillPairLastSignature = "";
+    stopLiveDrillPairSync();
+    if (role === "quiz") {
+      await preparePairedQuizTab(pairInfo.payload);
+    } else if (role === "answer") {
+      if (pairInfo.payload?.kind === "imaios-live-drill" && !state.liveDrillRestoreRunning && !getLockedStructureCount()) {
+        const encoded = getLiveDrillHashPayload();
+        if (encoded) state.lastRestoredDrillHash = encoded;
+        restoreLiveDrillPayload(pairInfo.payload, { source: "pair-answer" }).catch((error) => {
+          setStatus(`Answer tab restore failed: ${error?.message || error}`, 12000);
+        });
+      }
+    }
+    startLiveDrillPairSync();
+    refreshPanel();
+  }
+
+  async function preparePairedQuizTab(payload) {
+    if (!payload || payload.kind !== "imaios-live-drill") return;
+    try {
+      const targetPlane = normalizePlaneName(payload.viewer?.plane || "");
+      const currentPlane = normalizePlaneName(getSeriesInfo().selectedPlane) || inferSelectedPlaneFromDom();
+      if (targetPlane && currentPlane && targetPlane !== currentPlane) {
+        await switchPlane(targetPlane, { quiet: true });
+        await delay(240);
+      }
+      const targetSlice = parseNumber(payload.viewer?.slice?.value);
+      if (Number.isFinite(targetSlice)) {
+        await setViewerSlice(targetSlice);
+      }
+      const clearResult = await clearLockedStructuresForPairSetup();
+      await enforceAllStructuresHidden({ source: "pair-clean" });
+      setStatus(clearResult.ok
+        ? "Clean quiz tab ready. Move either tab and the pair stays synced."
+        : `Clean quiz tab opened, but labels could not be cleared: ${clearResult.reason || "unknown error"}`,
+      clearResult.ok ? 9000 : 14000);
+    } catch (error) {
+      setStatus(`Clean quiz setup failed: ${error?.message || error}`, 12000);
+    }
+  }
+
+  async function clearLockedStructuresForPairSetup() {
+    let lastResult = { ok: true, clearedCount: 0 };
+    for (let attempt = 0; attempt < 5; attempt += 1) {
+      await delay(attempt === 0 ? 450 : 750);
+      const count = getLockedStructureCount();
+      if (!count) {
+        lastResult = { ok: true, clearedCount: 0 };
+        continue;
+      }
+      lastResult = await clearLockedStructuresForApply();
+      if (lastResult.ok) {
+        const stableClear = await waitFor(() => getLockedStructureCount() === 0 ? true : null, 900, 120);
+        if (stableClear) return lastResult;
+      }
+    }
+    const remaining = getLockedStructureCount();
+    if (!remaining) return lastResult.ok ? lastResult : { ok: true, clearedCount: 0 };
+    return {
+      ok: false,
+      reason: lastResult.reason || `${remaining} locked structures still appear after setup clear.`
+    };
+  }
+
+  function startLiveDrillPairSync() {
+    stopLiveDrillPairSync();
+    state.liveDrillPairSyncTimer = window.setInterval(sendLiveDrillPairSyncIfChanged, 240);
+    sendLiveDrillPairSyncIfChanged();
+  }
+
+  function stopLiveDrillPairSync() {
+    if (state.liveDrillPairSyncTimer) {
+      window.clearInterval(state.liveDrillPairSyncTimer);
+      state.liveDrillPairSyncTimer = 0;
+    }
+    state.liveDrillPairSyncBusy = false;
+  }
+
+  function sendLiveDrillPairSyncIfChanged() {
+    const pair = state.liveDrillPair;
+    if (!pair?.pairId || state.liveDrillPairSyncBusy || state.liveDrillPairApplying || state.liveDrillRestoreRunning) return;
+    const sync = getLiveDrillPairSyncSnapshot();
+    if (!Number.isFinite(sync.slice?.value)) return;
+    const signature = getLiveDrillPairSyncSignature(sync);
+    if (signature === state.liveDrillPairLastSignature) return;
+    state.liveDrillPairLastSignature = signature;
+    state.liveDrillPairSyncBusy = true;
+    chrome.runtime.sendMessage({
+      type: "IMAIOS_LIVE_DRILL_PAIR_SYNC",
+      pairId: pair.pairId,
+      sync
+    }, () => {
+      state.liveDrillPairSyncBusy = false;
+    });
+  }
+
+  function getLiveDrillPairSyncSignature(sync = {}) {
+    return `${sync.moduleKey || ""}|${normalizePlaneName(sync.plane || "")}|${sync.selectedSeries || ""}|${sync.slice?.value ?? ""}`;
+  }
+
+  function getLiveDrillPairSyncSnapshot() {
+    const series = getSeriesInfo();
+    const slice = getSliceInfo();
+    return {
+      moduleKey: getCurrentModuleKey(),
+      moduleName: getCurrentModuleInfo().name,
+      plane: normalizePlaneName(series.selectedPlane) || inferSelectedPlaneFromDom() || "",
+      selectedSeries: series.selectedSeries || "",
+      slice: {
+        value: slice.value,
+        min: slice.min,
+        max: slice.max,
+        counterText: slice.counterText || ""
+      },
+      at: Date.now()
+    };
+  }
+
+  async function applyLiveDrillPairSync(sync = {}) {
+    if (state.liveDrillPairApplying || state.liveDrillRestoreRunning) return { ok: false, reason: "Pair sync is busy." };
+    state.liveDrillPairApplying = true;
+    try {
+      const targetPlane = normalizePlaneName(sync.plane || "");
+      const currentPlane = normalizePlaneName(getSeriesInfo().selectedPlane) || inferSelectedPlaneFromDom();
+      if (targetPlane && currentPlane && targetPlane !== currentPlane) {
+        await switchPlane(targetPlane, { quiet: true });
+        await delay(180);
+      }
+      const targetSlice = parseNumber(sync.slice?.value);
+      const currentSlice = getSliceInfo().value;
+      if (Number.isFinite(targetSlice) && currentSlice !== targetSlice) {
+        await setViewerSlice(targetSlice);
+      }
+      state.liveDrillPairLastSignature = getLiveDrillPairSyncSignature(sync);
+      return { ok: true };
+    } finally {
+      state.liveDrillPairApplying = false;
+    }
   }
 
   async function buildLiveDrillCardPromptPackage(options = {}) {
@@ -4051,6 +4353,41 @@
 
     if (message?.type === "IMAIOS_LIVE_DRILL_CARD_PLAN_FAILED") {
       setStatus(`Live-drill card automation failed: ${message.error || "unknown error"}`, 14000);
+      sendResponse({ ok: true });
+      return true;
+    }
+
+    if (message?.type === "IMAIOS_LIVE_DRILL_PAIR_ROLE") {
+      (async () => {
+        await setLiveDrillPairRole({
+          pairId: message.pairId || "",
+          role: message.role || "",
+          peerTabId: message.peerTabId || 0,
+          payload: message.payload || null
+        });
+        sendResponse({ ok: true });
+      })().catch((error) => {
+        sendResponse({ ok: false, error: String(error?.message || error) });
+      });
+      return true;
+    }
+
+    if (message?.type === "IMAIOS_LIVE_DRILL_PAIR_APPLY_SYNC") {
+      (async () => {
+        if (!state.liveDrillPair?.pairId || state.liveDrillPair.pairId !== message.pairId) {
+          sendResponse({ ok: false, error: "This tab is not part of the requested IMAIOS pair." });
+          return;
+        }
+        const result = await applyLiveDrillPairSync(message.sync || {});
+        sendResponse(result);
+      })().catch((error) => {
+        sendResponse({ ok: false, error: String(error?.message || error) });
+      });
+      return true;
+    }
+
+    if (message?.type === "IMAIOS_LIVE_DRILL_PAIR_STOPPED") {
+      stopPairedAnswerSession({ silent: true, notifyServiceWorker: false });
       sendResponse({ ok: true });
       return true;
     }
@@ -7488,6 +7825,8 @@
       adjustCineSpeed(1);
     } else if (actionId === "applyChunk") {
       applyActiveChunk();
+    } else if (actionId === "switchPairTab") {
+      togglePairedAnswerSession();
     } else if (actionId === "pinsOn") {
       applyPinsHotkey(true);
     } else if (actionId === "labelsOn") {
