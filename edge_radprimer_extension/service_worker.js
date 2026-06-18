@@ -34,6 +34,8 @@ const SOURCE_COMPARE_CACHE_PREFIX = "radprimerSourceCompareCache:";
 const MASTER_SOURCE_CACHE_KEY = "radprimerLatestMasterSource";
 const MASTER_SOURCE_CACHE_PREFIX = "radprimerMasterSourceCache:";
 const IMAIOS_LABEL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-repository";
+const IMAIOS_LIVE_DRILL_PAIRS_STORAGE_KEY = "imaios-cine-tools:live-drill-pairs";
+const IMAIOS_LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED = false;
 const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
 const CORE_EVIDENCE_BEGIN = "CORE_EVIDENCE_FILE_BEGIN";
 const CORE_EVIDENCE_END = "CORE_EVIDENCE_FILE_END";
@@ -580,12 +582,143 @@ function makeImaiosPairId(quizTabId, answerTabId) {
   return `imaios-pair-${Date.now()}-${quizTabId || "quiz"}-${answerTabId || "answer"}`;
 }
 
+function getImaiosPairStorageArea() {
+  return chrome.storage?.session || chrome.storage?.local || null;
+}
+
+function normalizeImaiosPairRecord(pair) {
+  if (!pair || typeof pair !== "object") return null;
+  const pairId = String(pair.pairId || "");
+  const leaderTabId = Number(pair.leaderTabId || pair.cleanTabId || pair.quizTabId || 0);
+  const followerTabId = Number(pair.followerTabId || pair.answerTabId || 0);
+  if (!pairId || !leaderTabId || !followerTabId) return null;
+  return {
+    pairId,
+    leaderTabId,
+    followerTabId,
+    payload: pair.payload && typeof pair.payload === "object" ? pair.payload : null,
+    createdAt: Number(pair.createdAt || Date.now())
+  };
+}
+
+async function loadImaiosLiveDrillPairs() {
+  const area = getImaiosPairStorageArea();
+  if (!area) return;
+  try {
+    const stored = await area.get(IMAIOS_LIVE_DRILL_PAIRS_STORAGE_KEY);
+    const pairs = Array.isArray(stored?.[IMAIOS_LIVE_DRILL_PAIRS_STORAGE_KEY])
+      ? stored[IMAIOS_LIVE_DRILL_PAIRS_STORAGE_KEY]
+      : [];
+    imaiosLiveDrillPairs.clear();
+    for (const pair of pairs) {
+      const normalized = normalizeImaiosPairRecord(pair);
+      if (normalized) imaiosLiveDrillPairs.set(normalized.pairId, normalized);
+    }
+  } catch (error) {
+    console.warn("Could not load IMAIOS live-drill pairs", error);
+  }
+}
+
+async function saveImaiosLiveDrillPairs() {
+  const area = getImaiosPairStorageArea();
+  if (!area) return;
+  try {
+    const pairs = Array.from(imaiosLiveDrillPairs.values()).map((pair) => normalizeImaiosPairRecord(pair)).filter(Boolean);
+    await area.set({ [IMAIOS_LIVE_DRILL_PAIRS_STORAGE_KEY]: pairs });
+  } catch (error) {
+    console.warn("Could not save IMAIOS live-drill pairs", error);
+  }
+}
+
+async function tabExists(tabId) {
+  if (!Number(tabId)) return false;
+  try {
+    await chrome.tabs.get(tabId);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function getImaiosLiveDrillPairForTab(tabId) {
+  await loadImaiosLiveDrillPairs();
+  const id = Number(tabId || 0);
+  if (!id) return null;
+  for (const pair of imaiosLiveDrillPairs.values()) {
+    if (pair.leaderTabId === id || pair.followerTabId === id) {
+      const peerTabId = pair.leaderTabId === id ? pair.followerTabId : pair.leaderTabId;
+      if (await tabExists(peerTabId)) return pair;
+      imaiosLiveDrillPairs.delete(pair.pairId);
+      await saveImaiosLiveDrillPairs();
+      return null;
+    }
+  }
+  return null;
+}
+
+async function rememberImaiosLiveDrillPair(pair) {
+  const normalized = normalizeImaiosPairRecord(pair);
+  if (!normalized) return null;
+  imaiosLiveDrillPairs.set(normalized.pairId, normalized);
+  await saveImaiosLiveDrillPairs();
+  return normalized;
+}
+
+async function forgetImaiosLiveDrillPair(pairId) {
+  imaiosLiveDrillPairs.delete(String(pairId || ""));
+  await saveImaiosLiveDrillPairs();
+}
+
+async function sendImaiosPairRoles(pair) {
+  if (!pair?.pairId) return;
+  await Promise.all([
+    sendImaiosMessageWithInjection(pair.leaderTabId, {
+      type: "IMAIOS_LIVE_DRILL_PAIR_ROLE",
+      pairId: pair.pairId,
+      role: "quiz",
+      peerTabId: pair.followerTabId,
+      payload: pair.payload
+    }).catch(() => {}),
+    sendImaiosMessageWithInjection(pair.followerTabId, {
+      type: "IMAIOS_LIVE_DRILL_PAIR_ROLE",
+      pairId: pair.pairId,
+      role: "answer",
+      peerTabId: pair.leaderTabId,
+      payload: pair.payload
+    }).catch(() => {})
+  ]);
+}
+
 async function startImaiosLiveDrillPairSession(message, senderTab) {
   const answerTabId = senderTab?.id || Number(message.answerTabId || message.leaderTabId || 0);
   if (!answerTabId) throw new Error("No IMAIOS answer tab was available.");
   const payload = message.payload && typeof message.payload === "object" ? message.payload : null;
   if (!payload || payload.kind !== "imaios-live-drill") {
     throw new Error("No valid live-drill payload was provided for paired tab mode.");
+  }
+
+  const existingPair = await getImaiosLiveDrillPairForTab(answerTabId);
+  if (existingPair) {
+    const refreshedPair = await rememberImaiosLiveDrillPair({
+      ...existingPair,
+      payload
+    }) || existingPair;
+    await sendImaiosPairRoles(refreshedPair);
+    const peerTabId = refreshedPair.leaderTabId === answerTabId ? refreshedPair.followerTabId : refreshedPair.leaderTabId;
+    try {
+      const tab = await chrome.tabs.update(peerTabId, { active: true });
+      if (tab?.windowId) await chrome.windows.update(tab.windowId, { focused: true });
+    } catch {}
+    return {
+      ok: true,
+      reused: true,
+      pairId: refreshedPair.pairId,
+      leaderTabId: refreshedPair.leaderTabId,
+      cleanTabId: refreshedPair.leaderTabId,
+      followerTabId: refreshedPair.followerTabId,
+      answerTabId: refreshedPair.followerTabId,
+      quizUrl: buildImaiosModuleUrl(refreshedPair.payload || payload)
+    };
   }
 
   const quizUrl = buildImaiosModuleUrl(payload);
@@ -606,22 +739,8 @@ async function startImaiosLiveDrillPairSession(message, senderTab) {
     payload,
     createdAt: Date.now()
   };
-  imaiosLiveDrillPairs.set(pairId, pair);
-
-  await sendImaiosMessageWithInjection(quizTab.id, {
-    type: "IMAIOS_LIVE_DRILL_PAIR_ROLE",
-    pairId,
-    role: "quiz",
-    peerTabId: answerTabId,
-    payload
-  }).catch(() => {});
-  await sendImaiosMessageWithInjection(answerTabId, {
-    type: "IMAIOS_LIVE_DRILL_PAIR_ROLE",
-    pairId,
-    role: "answer",
-    peerTabId: quizTab.id,
-    payload
-  }).catch(() => {});
+  await rememberImaiosLiveDrillPair(pair);
+  await sendImaiosPairRoles(pair);
 
   return {
     ok: true,
@@ -636,6 +755,7 @@ async function startImaiosLiveDrillPairSession(message, senderTab) {
 
 async function relayImaiosLiveDrillPairSync(message, senderTab) {
   const pairId = String(message.pairId || "");
+  await loadImaiosLiveDrillPairs();
   const pair = imaiosLiveDrillPairs.get(pairId);
   if (!pair) throw new Error("The paired IMAIOS session is no longer registered.");
   if (senderTab?.id !== pair.leaderTabId && senderTab?.id !== pair.followerTabId) {
@@ -647,11 +767,38 @@ async function relayImaiosLiveDrillPairSync(message, senderTab) {
     pairId,
     sync: message.sync || {}
   }).catch((error) => ({ ok: false, error: String(error?.message || error) }));
+  if (!response?.ok && /No tab|Cannot access|Receiving end does not exist/i.test(String(response?.error || ""))) {
+    await forgetImaiosLiveDrillPair(pairId);
+  }
+  return { ok: Boolean(response?.ok), targetTabId, peerResponse: response || null };
+}
+
+async function relayImaiosLiveDrillPairInput(message, senderTab) {
+  if (!IMAIOS_LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED) {
+    return { ok: true, disabled: true };
+  }
+  const pairId = String(message.pairId || "");
+  await loadImaiosLiveDrillPairs();
+  const pair = imaiosLiveDrillPairs.get(pairId);
+  if (!pair) throw new Error("The paired IMAIOS session is no longer registered.");
+  if (senderTab?.id !== pair.leaderTabId && senderTab?.id !== pair.followerTabId) {
+    throw new Error("This tab does not belong to the requested IMAIOS pair.");
+  }
+  const targetTabId = senderTab.id === pair.leaderTabId ? pair.followerTabId : pair.leaderTabId;
+  const response = await sendImaiosMessageWithInjection(targetTabId, {
+    type: "IMAIOS_LIVE_DRILL_PAIR_APPLY_INPUT",
+    pairId,
+    input: message.input || {}
+  }).catch((error) => ({ ok: false, error: String(error?.message || error) }));
+  if (!response?.ok && /No tab|Cannot access|Receiving end does not exist/i.test(String(response?.error || ""))) {
+    await forgetImaiosLiveDrillPair(pairId);
+  }
   return { ok: Boolean(response?.ok), targetTabId, peerResponse: response || null };
 }
 
 async function focusImaiosLiveDrillPairPeer(message, senderTab = null) {
   const pairId = String(message.pairId || "");
+  await loadImaiosLiveDrillPairs();
   const pair = imaiosLiveDrillPairs.get(pairId);
   if (!pair) throw new Error("The paired IMAIOS session is no longer registered.");
   if (senderTab?.id !== pair.leaderTabId && senderTab?.id !== pair.followerTabId) {
@@ -665,12 +812,13 @@ async function focusImaiosLiveDrillPairPeer(message, senderTab = null) {
 
 async function stopImaiosLiveDrillPairSession(message, senderTab = null) {
   const pairId = String(message.pairId || "");
+  await loadImaiosLiveDrillPairs();
   const pair = imaiosLiveDrillPairs.get(pairId);
   if (!pair) return { ok: true, stopped: false };
   if (senderTab?.id && senderTab.id !== pair.leaderTabId && senderTab.id !== pair.followerTabId) {
     throw new Error("This tab does not belong to the requested IMAIOS pair.");
   }
-  imaiosLiveDrillPairs.delete(pairId);
+  await forgetImaiosLiveDrillPair(pairId);
   await Promise.all([
     sendImaiosMessageWithInjection(pair.leaderTabId, { type: "IMAIOS_LIVE_DRILL_PAIR_STOPPED", pairId }).catch(() => {}),
     sendImaiosMessageWithInjection(pair.followerTabId, { type: "IMAIOS_LIVE_DRILL_PAIR_STOPPED", pairId }).catch(() => {})
@@ -678,11 +826,12 @@ async function stopImaiosLiveDrillPairSession(message, senderTab = null) {
   return { ok: true, stopped: true };
 }
 
-function removeImaiosLiveDrillPairsForTab(tabId) {
+async function removeImaiosLiveDrillPairsForTab(tabId) {
+  await loadImaiosLiveDrillPairs();
   const affected = Array.from(imaiosLiveDrillPairs.values())
     .filter((pair) => pair.leaderTabId === tabId || pair.followerTabId === tabId);
   for (const pair of affected) {
-    imaiosLiveDrillPairs.delete(pair.pairId);
+    await forgetImaiosLiveDrillPair(pair.pairId);
     const peerTabId = pair.leaderTabId === tabId ? pair.followerTabId : pair.leaderTabId;
     sendImaiosMessageWithInjection(peerTabId, {
       type: "IMAIOS_LIVE_DRILL_PAIR_STOPPED",
@@ -692,7 +841,7 @@ function removeImaiosLiveDrillPairsForTab(tabId) {
 }
 
 chrome.tabs.onRemoved.addListener((tabId) => {
-  removeImaiosLiveDrillPairsForTab(tabId);
+  removeImaiosLiveDrillPairsForTab(tabId).catch(() => {});
 });
 
 async function getSpeechifyTab({ focus = false, createIfMissing = false } = {}) {
@@ -5308,6 +5457,17 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "IMAIOS_LIVE_DRILL_PAIR_SYNC") {
     (async () => {
       const result = await relayImaiosLiveDrillPairSync(message, _sender?.tab || null);
+      sendResponse(result);
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "IMAIOS_LIVE_DRILL_PAIR_INPUT") {
+    (async () => {
+      const result = await relayImaiosLiveDrillPairInput(message, _sender?.tab || null);
       sendResponse(result);
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });

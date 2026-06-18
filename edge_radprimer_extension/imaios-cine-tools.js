@@ -16,6 +16,7 @@
   const DEFAULT_DECK_ROOT = "IMAIOS";
   const LIVE_DRILL_ANKI_NOTE_TYPE = "Basic";
   const LIVE_DRILL_STUDY_SHIELD_ENABLED = true;
+  const LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED = false;
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
   const DEFAULT_CINE_SPEED = 5;
@@ -117,10 +118,15 @@
     studyShield: null,
     liveDrillRestoreRunning: false,
     liveDrillPair: null,
+    liveDrillPairStarting: false,
     liveDrillPairSyncTimer: 0,
     liveDrillPairLastSignature: "",
     liveDrillPairSyncBusy: false,
-    liveDrillPairApplying: false
+    liveDrillPairApplying: false,
+    liveDrillPairInputApplying: false,
+    liveDrillPairInputHandlers: null,
+    liveDrillPairInputLastSent: 0,
+    liveDrillPairPointerActive: false
   };
 
   async function init() {
@@ -2164,6 +2170,9 @@
     const target = findToggleClickTarget(row);
     const current = toggle ? isSwitchOn(toggle) : null;
     if (current === enabled) return { ok: true, changed: false };
+    if (current === null && options.requireKnownState) {
+      return { ok: true, changed: false, skipped: true, uncertain: true, reason: `Skipped ${labelText}; toggle state was unclear.` };
+    }
 
     await realMouseClick(target, 0.9, 0.5);
     await delay(350);
@@ -2182,6 +2191,7 @@
     const pinsResult = await setPinsMode(true, options);
     const targetedResult = await setLabelingToggleMode("Targeted labeling", false, {
       openPanel: options.openPanel,
+      requireKnownState: true,
       missingReason: "Could not find the Targeted labeling toggle."
     });
     return {
@@ -2928,6 +2938,10 @@
   }
 
   async function togglePairedAnswerSession() {
+    if (state.liveDrillPairStarting) {
+      setStatus("Paired tab is still opening. Give it a moment.", 5000);
+      return;
+    }
     if (state.liveDrillPair?.pairId) {
       await focusPairedPeerTab();
       return;
@@ -2936,6 +2950,7 @@
   }
 
   async function startPairedAnswerSession() {
+    if (state.liveDrillPairStarting) return;
     const drill = await buildLiveDrillPayloadFromCurrent({ requireLocked: true });
     if (!drill.ok) {
       setStatus(drill.reason, 9000);
@@ -2946,11 +2961,13 @@
       return;
     }
 
+    state.liveDrillPairStarting = true;
     setStatus("Opening paired clean tab...", 0);
     chrome.runtime.sendMessage({
       type: "START_IMAIOS_LIVE_DRILL_PAIR_SESSION",
       payload: drill.payload
     }, async (response) => {
+      state.liveDrillPairStarting = false;
       const error = chrome.runtime.lastError;
       if (error) {
         setStatus(`Could not open paired clean tab: ${error.message || error}`, 12000);
@@ -2966,7 +2983,10 @@
         peerTabId: response.leaderTabId || response.cleanTabId || 0,
         payload: drill.payload
       });
-      setStatus("Paired clean tab opened. Move either tab and the other will follow.", 10000);
+      setStatus(response.reused
+        ? "Existing paired tab found. Move either tab and the other will follow."
+        : "Paired clean tab opened. Move either tab and the other will follow.",
+      10000);
     });
   }
 
@@ -2983,14 +3003,26 @@
     chrome.runtime.sendMessage({
       type: "FOCUS_IMAIOS_LIVE_DRILL_PAIR_PEER",
       pairId: pair.pairId
-    }, (response) => {
+    }, async (response) => {
       const error = chrome.runtime.lastError;
       if (error) {
-        setStatus(`Could not switch paired tab: ${error.message || error}`, 9000);
+        const message = String(error.message || error);
+        if (/no longer registered/i.test(message)) {
+          await stopPairedAnswerSession({ silent: true, notifyServiceWorker: false });
+          await startPairedAnswerSession();
+          return;
+        }
+        setStatus(`Could not switch paired tab: ${message}`, 9000);
         return;
       }
       if (!response?.ok) {
-        setStatus(`Could not switch paired tab: ${response?.error || "unknown error"}`, 9000);
+        const message = String(response?.error || "unknown error");
+        if (/no longer registered/i.test(message)) {
+          await stopPairedAnswerSession({ silent: true, notifyServiceWorker: false });
+          await startPairedAnswerSession();
+          return;
+        }
+        setStatus(`Could not switch paired tab: ${message}`, 9000);
       }
     });
   }
@@ -3017,12 +3049,21 @@
       ? "answer"
       : (roleText === "quiz" || roleText === "leader" ? "quiz" : "peer");
     if (!pairId) return;
+    const existingPair = state.liveDrillPair;
+    const samePairRole = existingPair?.pairId === pairId && existingPair?.role === role;
     state.liveDrillPair = {
       pairId,
       role,
       peerTabId: Number(pairInfo.peerTabId || 0),
       payload: pairInfo.payload || null
     };
+
+    if (samePairRole) {
+      if (!state.liveDrillPairSyncTimer) startLiveDrillPairSync();
+      refreshPanel();
+      return;
+    }
+
     state.liveDrillPairLastSignature = "";
     stopLiveDrillPairSync();
     if (role === "quiz") {
@@ -3090,6 +3131,7 @@
   function startLiveDrillPairSync() {
     stopLiveDrillPairSync();
     state.liveDrillPairSyncTimer = window.setInterval(sendLiveDrillPairSyncIfChanged, 240);
+    startLiveDrillPairInputSync();
     sendLiveDrillPairSyncIfChanged();
   }
 
@@ -3099,6 +3141,7 @@
       state.liveDrillPairSyncTimer = 0;
     }
     state.liveDrillPairSyncBusy = false;
+    stopLiveDrillPairInputSync();
   }
 
   function sendLiveDrillPairSyncIfChanged() {
@@ -3114,8 +3157,13 @@
       type: "IMAIOS_LIVE_DRILL_PAIR_SYNC",
       pairId: pair.pairId,
       sync
-    }, () => {
+    }, (response) => {
       state.liveDrillPairSyncBusy = false;
+      const message = String(chrome.runtime.lastError?.message || response?.error || "");
+      if (!response?.ok && /no longer registered|does not belong/i.test(message)) {
+        stopPairedAnswerSession({ silent: true, notifyServiceWorker: false });
+        setStatus("Paired tab sync was reset. Press T to reopen the clean pair.", 9000);
+      }
     });
   }
 
@@ -3146,7 +3194,17 @@
     state.liveDrillPairApplying = true;
     try {
       const targetPlane = normalizePlaneName(sync.plane || "");
-      const currentPlane = normalizePlaneName(getSeriesInfo().selectedPlane) || inferSelectedPlaneFromDom();
+      const targetSeries = cleanText(sync.selectedSeries || "");
+      let currentSeriesInfo = getSeriesInfo();
+      const currentSeries = cleanText(currentSeriesInfo.selectedSeries || "");
+      if (targetSeries && normalizeText(targetSeries) !== normalizeText(currentSeries)) {
+        const seriesResult = await switchSeriesByName(targetSeries, { quiet: true });
+        if (seriesResult.ok) {
+          await delay(180);
+          currentSeriesInfo = getSeriesInfo();
+        }
+      }
+      const currentPlane = normalizePlaneName(currentSeriesInfo.selectedPlane) || inferSelectedPlaneFromDom();
       if (targetPlane && currentPlane && targetPlane !== currentPlane) {
         await switchPlane(targetPlane, { quiet: true });
         await delay(180);
@@ -3161,6 +3219,169 @@
     } finally {
       state.liveDrillPairApplying = false;
     }
+  }
+
+  function startLiveDrillPairInputSync() {
+    stopLiveDrillPairInputSync();
+    if (!LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED) return;
+    const onWheel = (event) => handleLiveDrillPairWheel(event);
+    const onPointerDown = (event) => handleLiveDrillPairPointer(event, "pointerdown");
+    const onPointerMove = (event) => handleLiveDrillPairPointer(event, "pointermove");
+    const onPointerUp = (event) => handleLiveDrillPairPointer(event, "pointerup");
+    state.liveDrillPairInputHandlers = { onWheel, onPointerDown, onPointerMove, onPointerUp };
+    document.addEventListener("wheel", onWheel, true);
+    document.addEventListener("pointerdown", onPointerDown, true);
+    document.addEventListener("pointermove", onPointerMove, true);
+    document.addEventListener("pointerup", onPointerUp, true);
+    document.addEventListener("pointercancel", onPointerUp, true);
+  }
+
+  function stopLiveDrillPairInputSync() {
+    const handlers = state.liveDrillPairInputHandlers;
+    if (!handlers) return;
+    document.removeEventListener("wheel", handlers.onWheel, true);
+    document.removeEventListener("pointerdown", handlers.onPointerDown, true);
+    document.removeEventListener("pointermove", handlers.onPointerMove, true);
+    document.removeEventListener("pointerup", handlers.onPointerUp, true);
+    document.removeEventListener("pointercancel", handlers.onPointerUp, true);
+    state.liveDrillPairInputHandlers = null;
+    state.liveDrillPairPointerActive = false;
+  }
+
+  function handleLiveDrillPairWheel(event) {
+    if (!shouldRelayLiveDrillPairInput(event)) return;
+    const point = getViewerRelativePoint(event.clientX, event.clientY);
+    if (!point) return;
+    sendLiveDrillPairInput({
+      kind: "wheel",
+      point,
+      deltaX: Number(event.deltaX || 0),
+      deltaY: Number(event.deltaY || 0),
+      deltaZ: Number(event.deltaZ || 0),
+      deltaMode: Number(event.deltaMode || 0),
+      ctrlKey: Boolean(event.ctrlKey),
+      shiftKey: Boolean(event.shiftKey),
+      altKey: Boolean(event.altKey),
+      metaKey: Boolean(event.metaKey)
+    });
+  }
+
+  function handleLiveDrillPairPointer(event, phase) {
+    if (phase === "pointermove" && !state.liveDrillPairPointerActive) return;
+    if (!shouldRelayLiveDrillPairInput(event)) return;
+    if (phase === "pointerdown") state.liveDrillPairPointerActive = true;
+    if (phase === "pointerup") state.liveDrillPairPointerActive = false;
+    if (phase === "pointermove") {
+      const now = Date.now();
+      if (now - state.liveDrillPairInputLastSent < 36) return;
+      state.liveDrillPairInputLastSent = now;
+    }
+    const point = getViewerRelativePoint(event.clientX, event.clientY);
+    if (!point) return;
+    sendLiveDrillPairInput({
+      kind: "pointer",
+      phase,
+      point,
+      button: Number(event.button || 0),
+      buttons: Number(event.buttons || 0),
+      pointerId: Number(event.pointerId || 1),
+      pointerType: event.pointerType || "mouse",
+      ctrlKey: Boolean(event.ctrlKey),
+      shiftKey: Boolean(event.shiftKey),
+      altKey: Boolean(event.altKey),
+      metaKey: Boolean(event.metaKey)
+    });
+  }
+
+  function shouldRelayLiveDrillPairInput(event) {
+    if (!LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED) return false;
+    if (!state.liveDrillPair?.pairId || state.liveDrillPairApplying || state.liveDrillPairInputApplying || state.liveDrillRestoreRunning) return false;
+    if (event.target && (state.host?.contains(event.target) || event.target.closest?.("input,textarea,select,button,[contenteditable='true']"))) return false;
+    if (!isSafeViewerInputTarget(event.target)) return false;
+    return Boolean(getViewerRelativePoint(event.clientX, event.clientY));
+  }
+
+  function sendLiveDrillPairInput(input) {
+    const pair = state.liveDrillPair;
+    if (!pair?.pairId || !chrome?.runtime?.sendMessage) return;
+    chrome.runtime.sendMessage({
+      type: "IMAIOS_LIVE_DRILL_PAIR_INPUT",
+      pairId: pair.pairId,
+      input
+    }, () => {});
+  }
+
+  async function applyLiveDrillPairInput(input = {}) {
+    if (!LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED) return { ok: true, disabled: true };
+    if (state.liveDrillPairInputApplying || state.liveDrillRestoreRunning) return { ok: false, reason: "Pair input is busy." };
+    const point = input.point || {};
+    const client = viewerPointToClient(point);
+    if (!client) return { ok: false, reason: "Could not map viewer input point." };
+    state.liveDrillPairInputApplying = true;
+    try {
+      const target = document.elementFromPoint(client.x, client.y) || getViewerInteractionElement();
+      if (!target) return { ok: false, reason: "Could not find viewer target." };
+      if (!isSafeViewerInputTarget(target)) {
+        return { ok: false, reason: "Mirrored input point landed outside the image viewer." };
+      }
+      if (input.kind === "wheel") {
+        dispatchMirroredWheel(target, client, input);
+      } else if (input.kind === "pointer") {
+        dispatchMirroredPointer(target, client, input);
+      }
+      return { ok: true };
+    } finally {
+      setTimeout(() => {
+        state.liveDrillPairInputApplying = false;
+      }, 80);
+    }
+  }
+
+  function dispatchMirroredWheel(target, client, input) {
+    target.dispatchEvent(new WheelEvent("wheel", {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      clientX: client.x,
+      clientY: client.y,
+      deltaX: Number(input.deltaX || 0),
+      deltaY: Number(input.deltaY || 0),
+      deltaZ: Number(input.deltaZ || 0),
+      deltaMode: Number(input.deltaMode || 0),
+      ctrlKey: Boolean(input.ctrlKey),
+      shiftKey: Boolean(input.shiftKey),
+      altKey: Boolean(input.altKey),
+      metaKey: Boolean(input.metaKey)
+    }));
+  }
+
+  function dispatchMirroredPointer(target, client, input) {
+    const phase = input.phase || "pointermove";
+    const eventBase = {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      clientX: client.x,
+      clientY: client.y,
+      button: Number(input.button || 0),
+      buttons: phase === "pointerup" ? 0 : Number(input.buttons || 1),
+      ctrlKey: Boolean(input.ctrlKey),
+      shiftKey: Boolean(input.shiftKey),
+      altKey: Boolean(input.altKey),
+      metaKey: Boolean(input.metaKey)
+    };
+    try {
+      target.dispatchEvent(new PointerEvent(phase, {
+        ...eventBase,
+        pointerId: Number(input.pointerId || 1),
+        pointerType: input.pointerType || "mouse",
+        isPrimary: true
+      }));
+    } catch {
+      target.dispatchEvent(new MouseEvent(phase.replace(/^pointer/, "mouse"), eventBase));
+      return;
+    }
+    target.dispatchEvent(new MouseEvent(phase.replace(/^pointer/, "mouse"), eventBase));
   }
 
   async function buildLiveDrillCardPromptPackage(options = {}) {
@@ -4954,6 +5175,20 @@
           return;
         }
         const result = await applyLiveDrillPairSync(message.sync || {});
+        sendResponse(result);
+      })().catch((error) => {
+        sendResponse({ ok: false, error: String(error?.message || error) });
+      });
+      return true;
+    }
+
+    if (message?.type === "IMAIOS_LIVE_DRILL_PAIR_APPLY_INPUT") {
+      (async () => {
+        if (!state.liveDrillPair?.pairId || state.liveDrillPair.pairId !== message.pairId) {
+          sendResponse({ ok: false, error: "This tab is not part of the requested IMAIOS pair." });
+          return;
+        }
+        const result = await applyLiveDrillPairInput(message.input || {});
         sendResponse(result);
       })().catch((error) => {
         sendResponse({ ok: false, error: String(error?.message || error) });
@@ -7782,6 +8017,39 @@
     }
   }
 
+  async function switchSeriesByName(seriesName, options = {}) {
+    const name = cleanText(seriesName || "");
+    if (!name) return { ok: false, reason: "No series name." };
+    const current = cleanText(getSeriesInfo().selectedSeries || "");
+    if (normalizeText(current) === normalizeText(name)) return { ok: true, series: name, alreadySelected: true };
+
+    stopRangeCine({ quiet: true });
+    const menuButton = findPlaneSelectorButton();
+    const menuRect = menuButton ? menuButton.getBoundingClientRect() : null;
+    await openSeriesMenuIfNeeded(menuButton, menuRect);
+
+    let option = await waitFor(() => findQuickSeriesOption(name, menuRect), 1200, 100);
+    if (!option && menuButton) {
+      await realMouseClick(menuButton, 0.5, 0.5);
+      await delay(180);
+      option = await waitFor(() => findQuickSeriesOption(name, menuRect), 900, 100);
+    }
+
+    if (!option) {
+      const reason = `Could not find series ${name}.`;
+      if (!options.quiet) setStatus(reason, 6000);
+      return { ok: false, reason };
+    }
+
+    const optionName = getQuickSeriesOptionName(option) || name;
+    await realMouseClick(option, 0.5, 0.5);
+    await delay(420);
+    const plane = normalizePlaneName(optionName);
+    if (plane) await syncReverseScrollForPlane(plane, { quiet: true });
+    if (!options.quiet) setStatus(`Switched to ${optionName}.`, 4200);
+    return { ok: true, series: optionName };
+  }
+
   async function openSeriesMenuIfNeeded(menuButton, menuRect) {
     if (getVisibleQuickSeriesOptionsNear(menuRect).length) return;
     if (!menuButton) return;
@@ -8100,6 +8368,82 @@
           opacity: getComputedStyle(canvas).opacity
         };
       });
+  }
+
+  function getViewerInteractionElement() {
+    const canvases = Array.from(document.querySelectorAll("canvas,#anatomy-canvas,[data-name='image-canvas']"))
+      .filter((element) => element !== state.host && !state.host?.contains(element) && isVisible(element))
+      .map((element) => ({ element, rect: element.getBoundingClientRect(), style: getComputedStyle(element) }))
+      .filter((item) => item.rect.width >= 120 && item.rect.height >= 120)
+      .filter((item) => item.rect.bottom > 40 && item.rect.top < window.innerHeight - 40);
+    canvases.sort((a, b) => (b.rect.width * b.rect.height) - (a.rect.width * a.rect.height));
+    if (canvases[0]) return canvases[0].element;
+
+    const containers = Array.from(document.querySelectorAll(".viewer,[class*='viewer-container'],[class*='image-viewer'],[class*='image-container']"))
+      .filter((element) => element !== state.host && !state.host?.contains(element) && isVisible(element))
+      .filter((element) => element.querySelector("canvas,#anatomy-canvas,[data-name='image-canvas']"))
+      .map((element) => ({ element, rect: element.getBoundingClientRect() }))
+      .filter((item) => item.rect.width >= 160 && item.rect.height >= 160)
+      .filter((item) => item.rect.bottom > 40 && item.rect.top < window.innerHeight - 40);
+    containers.sort((a, b) => (b.rect.width * b.rect.height) - (a.rect.width * a.rect.height));
+    return containers[0]?.element || null;
+  }
+
+  function isSafeViewerInputTarget(target) {
+    const element = target && target.nodeType === Node.ELEMENT_NODE ? target : target?.parentElement;
+    if (!element || element === state.host || state.host?.contains(element)) return false;
+    if (element.closest("input,textarea,select,button,[role='button'],[role='switch'],[role='checkbox'],[role='menu'],[role='menuitem'],[role='option'],[contenteditable='true']")) return false;
+    const text = cleanText(element.textContent || "");
+    if (/\b(Targeted labeling|Practice|Pins|Font size|Display mode|Anatomical Parts|Select all|Hide|Lock)\b/i.test(text)) return false;
+    const viewer = getViewerInteractionElement();
+    if (!viewer) return false;
+    return element === viewer || viewer.contains(element) || element.contains(viewer);
+  }
+
+  function getViewerInteractionRect() {
+    const element = getViewerInteractionElement();
+    if (!element) return null;
+    const rect = element.getBoundingClientRect();
+    if (rect.width < 2 || rect.height < 2) return null;
+    return rect;
+  }
+
+  function getViewerRelativePoint(clientX, clientY) {
+    const rect = getViewerInteractionRect();
+    if (!rect) return null;
+    if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) return null;
+    return {
+      xRatio: clamp((clientX - rect.left) / rect.width, 0, 1),
+      yRatio: clamp((clientY - rect.top) / rect.height, 0, 1)
+    };
+  }
+
+  function viewerPointToClient(point = {}) {
+    const rect = getViewerInteractionRect();
+    if (!rect) return null;
+    const xRatio = clamp(Number(point.xRatio), 0, 1);
+    const yRatio = clamp(Number(point.yRatio), 0, 1);
+    if (!Number.isFinite(xRatio) || !Number.isFinite(yRatio)) return null;
+    return {
+      x: rect.left + rect.width * xRatio,
+      y: rect.top + rect.height * yRatio
+    };
+  }
+
+  function getViewerViewportSnapshot() {
+    const element = getViewerInteractionElement();
+    if (!element) return null;
+    const rect = element.getBoundingClientRect();
+    const style = getComputedStyle(element);
+    const parent = element.parentElement && element.parentElement !== document.body ? element.parentElement : null;
+    const parentStyle = parent ? getComputedStyle(parent) : null;
+    return {
+      element: element.tagName.toLowerCase(),
+      className: String(element.className || "").slice(0, 160),
+      rect: rectProbe(rect),
+      transform: style.transform && style.transform !== "none" ? style.transform : "",
+      parentTransform: parentStyle?.transform && parentStyle.transform !== "none" ? parentStyle.transform : ""
+    };
   }
 
   function getToggleProbe(labelText) {
