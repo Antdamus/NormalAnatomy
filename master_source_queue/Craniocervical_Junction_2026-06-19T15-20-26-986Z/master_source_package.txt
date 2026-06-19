@@ -1,0 +1,97 @@
+MASTER RADIOLOGY SOURCE PACKAGE
+Article: Craniocervical Junction
+Sources: RadPrimer and STATdx
+
+Synthesis Rules Applied
+- RadPrimer is the canonical hierarchy and normal-anatomy backbone.
+- STATdx supplies supplemental depth for detailed ligament anatomy, measurement thresholds, subtle injury signs, and stronger image representatives.
+- Image duplicate decisions used the staged image_evidence files. Captions alone were not treated as enough evidence for exact duplicate status.
+- Narrative-facing image prose uses clean labels such as RadPrimer image 32 and STATdx image 10. Short IDs remain in registry and traceability fields.
+
+Source Attribution Key
+- [RadPrimer]: content retained from RadPrimer source package.
+- [STATdx]: content added or refined from STATdx source package.
+- [Both]: content present in both sources or confirmed across the paired source packages.
+
+Terminology
+- [Both] Craniocervical junction (CCJ): C1, C2, and their articulations with the skull base.
+
+Gross Anatomy
+- [Both] The CCJ comprises the occiput, atlas, axis, their joints, and the stabilizing ligament complex.
+- [Both] Occipital condyles are paired oval inferior prominences of the lateral exoccipital occipital bone; their articular facets project laterally.
+- [STATdx] Basion is the anterior margin of the foramen magnum/inferior clival tip; opisthion is the posterior foramen magnum margin.
+- [Both] C1/atlas has anterior and posterior arches, no body, paired lateral masses, superior and inferior articular facets, large transverse processes, and transverse foramina.
+- [Both] C2/axis has a large body, superiorly projecting odontoid process, convex superior facets directed laterally, and lower-cervical-type inferior facets. The superior facet is relatively anterior and the inferior facet is more posterior, separated by the elongated pars interarticularis.
+
+Joints and Motion
+- [Both] Atlantooccipital joints pair the convex occipital condyles with concave superior C1 facets and provide about half of cervical flexion-extension with limited lateral motion.
+- [Both] Median atlantoaxial joints form the pivot between dens and the ring made by the C1 anterior arch plus transverse ligament. Synovial cavities occur between transverse ligament/dens and atlas/dens articulations.
+- [Both] Lateral atlantoaxial joints pair concave inferior C1 facets with convex superior C2 facets and provide about half of cervical rotation.
+
+Ligaments and Stabilizers
+- [RadPrimer] The core anterior-to-posterior ligament sequence is anterior atlantooccipital membrane, odontoid ligaments, cruciate ligament, tectorial membrane, and posterior atlantooccipital membrane.
+- [STATdx] Anterior atlantooccipital membrane extends from upper C1 anterior arch to basion, lies posterior to longus capitis, and forms the anterior margin of the supradental space.
+- [STATdx] Superficial anterior atlantooccipital ligament is a midline cord-like ligament from the C1 anterior tubercle to basion, just anterior to the anterior atlantooccipital membrane.
+- [STATdx] The anterior longitudinal ligament extends from basiocciput to anterior C1 and then along C2 caudally; between C1 and basion it is laterally continuous with the anterior atlantooccipital membrane.
+- [Both] Apical ligament extends from dens tip to basion; STATdx notes it contains elastic fibers around a notochordal remnant core and may be absent in about 20 percent of adult cadavers.
+- [Both] Alar ligaments are thick horizontal stabilizers from the lateral dens tip to the anteromedial occipital condyles.
+- [Both] Cruciate ligament includes the transverse atlantal ligament and a craniocaudal component. The transverse atlantal ligament passes posterior to the dens between the C1 lateral masses.
+- [STATdx] The transverse atlantal ligament is the strongest and thickest CCJ ligament; disruption permits posterior dens movement and possible cord compression.
+- [Both] Tectorial membrane is the superior continuation of the posterior longitudinal ligament, posterior to dens/cruciate ligament, attached near the posterior clivus/anterior foramen magnum, and closely related to dura.
+- [Both] Posterior atlantooccipital membrane extends from posterior C1 arch to foramen magnum margin and has a lateral gap where the vertebral artery enters over C1.
+- [STATdx] Ligamentum nuchae and myodural bridges connect dorsal cervical soft tissues/suboccipital muscles to cervical dura and atlantooccipital/atlantoaxial ligaments; traction may transmit force to dura, cord, and brainstem, especially in children.
+- [STATdx] Additional thinner ligaments include transverse occipital, accessory atlantoaxial, lateral atlantooccipital, and Barkow ligament.
+
+Supradental Space and Injury Clues
+- [STATdx] The supradental space is extradural and contains fat, varicose venous structures, apical arterial arcade, apical ligament, crus superioris of cruciate ligament, and subtectorial membrane.
+- [STATdx] Its anterior and posterior borders are the anterior atlantooccipital membrane and tectorial membrane; its superior border is clivus/basion, inferior border is dens, inferolateral border is the alar ligaments, and lateral border is the occipital condyles.
+- [STATdx] Loss of normal supradental fat, loss of fat along the posterior atlantooccipital membrane, and retroclival hematoma elevating the tectorial membrane are subtle signs of CCJ ligamentous injury.
+
+Imaging Anatomy and Craniometry
+- [RadPrimer] Lateral CCJ assessment includes C1-C2 interspinous distance, ADI, pseudosubluxation, posterior cervical/Swischuk line, Wackenheim line, Welcher basal angle, Chamberlain line, McGregor line, clivus-canal angle, and McRae line.
+- [STATdx] Basion-dens interval on sagittal CT is normally less than 9.1 mm in adults and is reliable for CCJ distraction injury; pediatric thresholds depend on ossification of the dens tip.
+- [STATdx] Atlantooccipital interval on parasagittal CT is usually less than about 1.4 mm in adults and less than about 2.5 mm in children, measured perpendicular to articular surfaces at the joint center with sagittal/coronal correlation.
+- [STATdx] Anterior atlantodental interval is measured at the anterior atlantoaxial joint; adult CT values are smaller than plain-film thresholds, and pediatric plain-film values may normally reach about 4-5 mm.
+- [STATdx] Powers ratio compares basion-to-C1 spinolaminar distance with opisthion-to-C1 anterior arch distance; values under 1 on radiographs are expected.
+- [STATdx] Basion-axis interval can vary with how the posterior axial line is drawn and is less reliable than BDI/AOI for distraction injury.
+- [Both] Wackenheim/clivus-canal line follows the posterior clivus; the posterior odontoid tip should lie anteroinferior/immediately inferior to it and the relationship should not change with flexion-extension.
+- [Both] Welcher basal angle is normally less than 140 deg, average about 132 deg; STATdx specifies alternative standard, less common, and modified MR measurement methods.
+- [Both] Chamberlain line runs from hard palate to opisthion; odontoid tip at least 5 mm above it is abnormal.
+- [Both] McGregor line runs from hard palate to caudal occipital base; odontoid tip at least 7 mm above it is abnormal.
+- [Both] McRae line runs from basion to opisthion, has normal diameter about 35 mm, and the dens tip should remain below it.
+- [STATdx] Boogaard angle is between McRae and Wackenheim lines; about 126 +/- 6 deg is normal and greater than 136 deg supports platybasia.
+- [STATdx] Klaus height index is the dens-tip-to-Twining-line distance; about 40 mm is normal and under 36 mm supports basilar impression.
+- [STATdx] Harris ring is a C2 ring-like opacity on lateral radiographs; margin breaks or increased AP diameter can suggest odontoid base/body fracture or comminution.
+- [Both] Frontal CCJ assessment checks C1/C2 lateral mass alignment and the atlantooccipital joint angle, normally about 125-130 deg; less than 124 deg may reflect condyle hypoplasia.
+- [STATdx] Rule of Spence on open-mouth radiographs: combined C1 lateral mass displacement of about 6.9 mm in Jefferson burst fracture predicts transverse atlantal ligament disruption.
+
+Pediatric Variants
+- [Both] Pediatric pseudosubluxation may show physiologic anterior displacement at C2-C3 and C3-C4 up to about age 8, including up to 4 mm C2-on-C3 translation.
+- [Both] Physiologic subluxation is supported by lack of prevertebral swelling, reduction on extension, and Swischuk/posterior cervical line relationship.
+- [STATdx] Swischuk line joins the anterior margins of the posterior arches of C1 and C3; in pseudosubluxation the anterior margin of the C2 posterior arch remains within 1-2 mm of the line, while true subluxation may be more than 2 mm posterior.
+- [STATdx] Children may have normal upper cervical anterior wedging, especially at C3, up to about 3 mm.
+
+Normal Imaging Series and Image Teaching Context
+- [Both] Initial graphic set defines midline CCJ articulations/ligaments, posterior ligament anatomy, atlas superior/inferior views, and axis anterior/posterior views. Use STATdx images 1-6 as the primary downloaded representatives; retain RadPrimer images 7-8 when teaching alternate craniometry graphics.
+- [Both] Measurement graphics/radiographs cover skull-base craniometry, Chamberlain/McGregor/McRae/Redlund-Johnell/Welcher/Ranawat lines, pediatric pseudosubluxation, Swischuk/posterior cervical line, open-mouth odontoid view, and lateral CCJ radiograph. STATdx images 10-18 add the strongest measurement and injury-measurement depth; RadPrimer image 12 remains selected as an alternate measurement example.
+- [Both] Coronal CT and axial CT normal-anatomy series should be treated as atomic visual progressions. Use STATdx images 21-28 as the primary representatives for the matching RadPrimer CT sequence.
+- [Both] 3D-VRT CT anterior/lateral/superior views illustrate C1-C2 rotation and lateral facet/pars morphology. Use STATdx images 29-31 as primary representatives.
+- [Both] Parasagittal T1 MR atlantooccipital joint series is represented by STATdx images 32-34.
+- [RadPrimer] RadPrimer images 32-34 are a RadPrimer-only sagittal T2 progression from midline to lateral through anterior arch, dens, cruciate/alar ligaments, occipital condyle, atlantooccipital joint, C1 lateral mass, and vertebral artery course. Keep all three selected as one cluster.
+- [Both] Sagittal CT, T1, and T2 ligament-focused midline images are represented by STATdx images 35-37, with STATdx adding supradental-space/fat and ligament-injury interpretation.
+- [RadPrimer] RadPrimer images 38-40 are a RadPrimer-only MR progression through the skull base, lateral masses, atlantoaxial joint, odontoid, cruciate/transverse ligament, and alar ligaments. Keep all three selected as one cluster.
+- [Both] Axial T2 MR images through the foramen magnum/C1-C2 levels are represented by STATdx images 38-40, replacing matching RadPrimer images 41-43 as the primary downloaded representatives.
+
+Image Coverage Gate
+- STATdx fully covers most RadPrimer images as exact visual duplicates, often with larger crop or source presentation. Those RadPrimer copies are archive-optional duplicates, not default teaching downloads.
+- RadPrimer images 7, 8, and 12 are near duplicates rather than exact duplicates because the paired STATdx images change/expand measurement content. They remain selected for recognition reinforcement.
+- RadPrimer images 32-34 and 38-40 are not covered by STATdx and remain selected as RadPrimer-only atomic MR clusters.
+- STATdx images 10-12 are supplemental measurement/injury examples and should remain primary, but they do not replace a single RadPrimer image one-for-one.
+
+Selected Primary Images
+- RadPrimer retained images: RadPrimer image 7, RadPrimer image 8, RadPrimer image 12, RadPrimer images 32-34, and RadPrimer images 38-40.
+- STATdx selected images: STATdx images 1-40.
+- Archive optional duplicate set: RadPrimer images 1-6, 9-11, 13-31, 35-37, and 41-43.
+
+Cluster Guardrail
+- No source case cluster was intentionally split. The RadPrimer-only sagittal T2 cluster and RadPrimer-only MR progression cluster were retained intact; exact-duplicate substitutions were made only where STATdx visually matched the corresponding image/slice/screenshot.

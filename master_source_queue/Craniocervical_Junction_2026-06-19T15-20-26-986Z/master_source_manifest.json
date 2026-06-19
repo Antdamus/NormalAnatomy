@@ -1,0 +1,1408 @@
+{
+  "version": 1,
+  "articleTitle": "Craniocervical Junction",
+  "createdAt": "2026-06-19T15:28:44Z",
+  "canonicalHierarchy": [
+    "Terminology",
+    "Gross anatomy",
+    "Ligaments and stabilizers",
+    "Biomechanics",
+    "Imaging anatomy and craniometry",
+    "Pediatric variants",
+    "Normal imaging series",
+    "Ligamentous injury signs and measurement pitfalls",
+    "Curated image plan"
+  ],
+  "sourcePriority": [
+    "RadPrimer hierarchy/backbone",
+    "STATdx supplemental depth and stronger duplicate image representatives"
+  ],
+  "sourceCoverage": {
+    "radPrimerImageCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-01",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-01, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-02",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-02, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-03",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-03, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-04",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-04, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-05",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-05, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-06",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-06, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "classification": "nearDuplicate",
+        "statdxCoverageImageId": "SDX-07",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Same craniometry graphic family, but STATdx adds/changes Boogaard angle and measurement emphasis; retain both as recognition reinforcement."
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "classification": "nearDuplicate",
+        "statdxCoverageImageId": "SDX-08",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Same basal-angle graphic family, but STATdx expands basal-angle/clivus-canal measurement methods; retain both."
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-09",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-09, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-13",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-13, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-11",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-14",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-14, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-12",
+        "classification": "nearDuplicate",
+        "statdxCoverageImageId": "SDX-15",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Same lateral-radiograph measurement family, but STATdx uses a refined Ranawat description/measurement convention; retain both."
+      },
+      {
+        "radPrimerImageId": "RP-13",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-16",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-16, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-14",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-17",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-17, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-15",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-18",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-18, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-16",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-19",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-19, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-17",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-20",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-20, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-18",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-21",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-21, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-19",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-22",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-22, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-20",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-23",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-23, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-21",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-24",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-24, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-22",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-25",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-25, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-23",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-26",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-26, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-24",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-27",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-27, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-25",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-28",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-28, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-26",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-29",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-29, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-27",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-30",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-30, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-28",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-31",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-31, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-29",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-32",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-32, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-30",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-33",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-33, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-31",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-34",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-34, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-32",
+        "classification": "notCovered",
+        "statdxCoverageImageId": null,
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "RadPrimer-only sagittal T2 midline/lateral progression cluster, image 1 of 3; no equivalent STATdx cluster."
+      },
+      {
+        "radPrimerImageId": "RP-33",
+        "classification": "notCovered",
+        "statdxCoverageImageId": null,
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "RadPrimer-only sagittal T2 midline/lateral progression cluster, image 2 of 3; no equivalent STATdx cluster."
+      },
+      {
+        "radPrimerImageId": "RP-34",
+        "classification": "notCovered",
+        "statdxCoverageImageId": null,
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "RadPrimer-only sagittal T2 midline/lateral progression cluster, image 3 of 3; no equivalent STATdx cluster."
+      },
+      {
+        "radPrimerImageId": "RP-35",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-35",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-35, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-36",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-36",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-36, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-37",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-37",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-37, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-38",
+        "classification": "notCovered",
+        "statdxCoverageImageId": null,
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "RadPrimer-only MR cluster progressing through CCJ, image 1 of 3; no equivalent STATdx cluster."
+      },
+      {
+        "radPrimerImageId": "RP-39",
+        "classification": "notCovered",
+        "statdxCoverageImageId": null,
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "RadPrimer-only MR cluster progressing through CCJ, image 2 of 3; no equivalent STATdx cluster."
+      },
+      {
+        "radPrimerImageId": "RP-40",
+        "classification": "notCovered",
+        "statdxCoverageImageId": null,
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "RadPrimer-only MR cluster progressing through CCJ, image 3 of 3; no equivalent STATdx cluster."
+      },
+      {
+        "radPrimerImageId": "RP-41",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-38",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-38, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-42",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-39",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-39, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      },
+      {
+        "radPrimerImageId": "RP-43",
+        "classification": "exactDuplicate",
+        "statdxCoverageImageId": "SDX-40",
+        "evidenceBasis": "actual image_evidence file visual review plus source captions and registry order; captions alone were not used for exact duplicate status",
+        "rationale": "Visual evidence shows the same underlying image/slice/screenshot as SDX-40, with only crop/scale/source presentation differences; STATdx version selected for the primary teaching set."
+      }
+    ],
+    "statdxSupplementalImagesWithoutRadPrimerOneToOneReplacement": [
+      {
+        "masterImageId": "SDX-10",
+        "role": "BDI/Powers/ADI/BAI measurement depth"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "role": "Atlantooccipital interval measurement depth"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "role": "Severe CCJ distraction injury and alar ligament injury example"
+      }
+    ],
+    "radPrimerOnlyClustersRetained": [
+      {
+        "imageIds": [
+          "RP-32",
+          "RP-33",
+          "RP-34"
+        ],
+        "reason": "Sagittal T2 medial-to-lateral progression absent from STATdx."
+      },
+      {
+        "imageIds": [
+          "RP-38",
+          "RP-39",
+          "RP-40"
+        ],
+        "reason": "MR progression through skull base/C1-C2 ligaments absent from STATdx."
+      }
+    ]
+  },
+  "imageCountBySource": {
+    "RadPrimer": 43,
+    "STATdx": 40,
+    "totalRegistryImages": 83,
+    "selectedPrimary": 49,
+    "archiveOptionalDuplicate": 34
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer], [STATdx], and [Both] tags for source-supported prose.",
+    "Do not invent Core Radiology support; no Core source package was present in this bundle.",
+    "Use clean human-facing labels in narrative prose and keep RP/SDX IDs in traceability fields."
+  ],
+  "selectedPrimaryImageIds": [
+    "RP-07",
+    "RP-08",
+    "RP-12",
+    "RP-32",
+    "RP-33",
+    "RP-34",
+    "RP-38",
+    "RP-39",
+    "RP-40",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-27",
+    "SDX-28",
+    "SDX-29",
+    "SDX-30",
+    "SDX-31",
+    "SDX-32",
+    "SDX-33",
+    "SDX-34",
+    "SDX-35",
+    "SDX-36",
+    "SDX-37",
+    "SDX-38",
+    "SDX-39",
+    "SDX-40"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-13",
+    "RP-14",
+    "RP-15",
+    "RP-16",
+    "RP-17",
+    "RP-18",
+    "RP-19",
+    "RP-20",
+    "RP-21",
+    "RP-22",
+    "RP-23",
+    "RP-24",
+    "RP-25",
+    "RP-26",
+    "RP-27",
+    "RP-28",
+    "RP-29",
+    "RP-30",
+    "RP-31",
+    "RP-35",
+    "RP-36",
+    "RP-37",
+    "RP-41",
+    "RP-42",
+    "RP-43"
+  ],
+  "sourceSelectionPlan": {
+    "textToKeep": {
+      "RadPrimer": [
+        "Canonical article hierarchy and normal-anatomy backbone.",
+        "Bone/joint/ligament overview, biomechanics, lateral/frontal assessment scaffolding.",
+        "RadPrimer-only MR sequence clusters: RP-32 through RP-34 and RP-38 through RP-40."
+      ],
+      "STATdx": [
+        "Expanded ligament anatomy: superficial anterior atlantooccipital ligament, ALL continuity, ligamentum nuchae, myodural bridges, supradental space.",
+        "Expanded adult and pediatric measurement thresholds: BDI, AOI, ADI, Powers ratio, BAI, Boogaard angle, Klaus height index, Harris ring, Rule of Spence.",
+        "Subtle CCJ ligamentous injury signs and measurement pitfalls.",
+        "Larger-crop visual representatives for true duplicate image pairs and supplemental measurement/injury examples."
+      ]
+    },
+    "downweightOrSkip": [
+      "Do not use caption similarity alone to archive images.",
+      "Do not treat STATdx supplemental injury examples as replacements for RadPrimer normal-anatomy clusters.",
+      "Do not split same-source MR progression clusters unless a future manual review documents the split."
+    ],
+    "primaryImageDownloadUseSet": [
+      "RP-07",
+      "RP-08",
+      "RP-12",
+      "RP-32",
+      "RP-33",
+      "RP-34",
+      "RP-38",
+      "RP-39",
+      "RP-40",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26",
+      "SDX-27",
+      "SDX-28",
+      "SDX-29",
+      "SDX-30",
+      "SDX-31",
+      "SDX-32",
+      "SDX-33",
+      "SDX-34",
+      "SDX-35",
+      "SDX-36",
+      "SDX-37",
+      "SDX-38",
+      "SDX-39",
+      "SDX-40"
+    ],
+    "archiveOptionalDuplicates": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-09",
+      "RP-10",
+      "RP-11",
+      "RP-13",
+      "RP-14",
+      "RP-15",
+      "RP-16",
+      "RP-17",
+      "RP-18",
+      "RP-19",
+      "RP-20",
+      "RP-21",
+      "RP-22",
+      "RP-23",
+      "RP-24",
+      "RP-25",
+      "RP-26",
+      "RP-27",
+      "RP-28",
+      "RP-29",
+      "RP-30",
+      "RP-31",
+      "RP-35",
+      "RP-36",
+      "RP-37",
+      "RP-41",
+      "RP-42",
+      "RP-43"
+    ],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/f672788d-5f88-4cf4-8d05-da2899d57e2b?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f672788d-5f88-4cf4-8d05-da2899d57e2b?style=xlarge&annotated=true",
+        "plainFilename": "RP-01_RadPrimer_plain_Craniocervical_Junction1.jpg",
+        "annotatedFilename": "RP-01_RadPrimer_annotated_Craniocervical_Junction1_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_f672788d.jpg"
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/21e8904e-ee5c-45f1-8cd6-d685ee77c9a9?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/21e8904e-ee5c-45f1-8cd6-d685ee77c9a9?style=xlarge&annotated=true",
+        "plainFilename": "RP-02_RadPrimer_plain_Craniocervical_Junction2.jpg",
+        "annotatedFilename": "RP-02_RadPrimer_annotated_Craniocervical_Junction2_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_21e8904e.jpg"
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/ac280d45-4c42-48d8-90ba-f93b9ed911f7?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/ac280d45-4c42-48d8-90ba-f93b9ed911f7?style=xlarge&annotated=true",
+        "plainFilename": "RP-03_RadPrimer_plain_Craniocervical_Junction3.jpg",
+        "annotatedFilename": "RP-03_RadPrimer_annotated_Craniocervical_Junction3_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_ac280d45.jpg"
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/df3950c0-c9eb-441c-869c-c7e883c378cb?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/df3950c0-c9eb-441c-869c-c7e883c378cb?style=xlarge&annotated=true",
+        "plainFilename": "RP-04_RadPrimer_plain_Craniocervical_Junction4.jpg",
+        "annotatedFilename": "RP-04_RadPrimer_annotated_Craniocervical_Junction4_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_df3950c0.jpg"
+      },
+      {
+        "masterImageId": "RP-05",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/1e2c6ed0-446b-4080-9cea-7a1865356a4a?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/1e2c6ed0-446b-4080-9cea-7a1865356a4a?style=xlarge&annotated=true",
+        "plainFilename": "RP-05_RadPrimer_plain_Craniocervical_Junction5.jpg",
+        "annotatedFilename": "RP-05_RadPrimer_annotated_Craniocervical_Junction5_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_1e2c6ed0.jpg"
+      },
+      {
+        "masterImageId": "RP-06",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/e2e5d382-b883-4470-93ab-603236ee5875?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/e2e5d382-b883-4470-93ab-603236ee5875?style=xlarge&annotated=true",
+        "plainFilename": "RP-06_RadPrimer_plain_Craniocervical_Junction6.jpg",
+        "annotatedFilename": "RP-06_RadPrimer_annotated_Craniocervical_Junction6_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_e2e5d382.jpg"
+      },
+      {
+        "masterImageId": "RP-07",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/d4a69075-b174-4e98-b465-aeeced334b1e?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/d4a69075-b174-4e98-b465-aeeced334b1e?style=xlarge&annotated=true",
+        "plainFilename": "RP-07_RadPrimer_plain_Craniocervical_Junction7.jpg",
+        "annotatedFilename": "RP-07_RadPrimer_annotated_Craniocervical_Junction7_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_d4a69075.jpg"
+      },
+      {
+        "masterImageId": "RP-08",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/3b2167d2-6ab0-4cf9-84d1-b4643681f3e6?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/3b2167d2-6ab0-4cf9-84d1-b4643681f3e6?style=xlarge&annotated=true",
+        "plainFilename": "RP-08_RadPrimer_plain_Craniocervical_Junction8.jpg",
+        "annotatedFilename": "RP-08_RadPrimer_annotated_Craniocervical_Junction8_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_3b2167d2.jpg"
+      },
+      {
+        "masterImageId": "RP-09",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/d9f364e9-4143-4062-967b-524a2a64fb81?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/d9f364e9-4143-4062-967b-524a2a64fb81?style=xlarge&annotated=true",
+        "plainFilename": "RP-09_RadPrimer_plain_Craniocervical_Junction9.jpg",
+        "annotatedFilename": "RP-09_RadPrimer_annotated_Craniocervical_Junction9_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_d9f364e9.jpg"
+      },
+      {
+        "masterImageId": "RP-10",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/d59fc7bd-09d5-4d0b-a04a-44f23c311407?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/d59fc7bd-09d5-4d0b-a04a-44f23c311407?style=xlarge&annotated=true",
+        "plainFilename": "RP-10_RadPrimer_plain_Craniocervical_Junction10.jpg",
+        "annotatedFilename": "RP-10_RadPrimer_annotated_Craniocervical_Junction10_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_d59fc7bd.jpg"
+      },
+      {
+        "masterImageId": "RP-11",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/aa768e0b-89e8-4d3c-b8c7-79973397fdae?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/aa768e0b-89e8-4d3c-b8c7-79973397fdae?style=xlarge&annotated=true",
+        "plainFilename": "RP-11_RadPrimer_plain_Craniocervical_Junction11.jpg",
+        "annotatedFilename": "RP-11_RadPrimer_annotated_Craniocervical_Junction11_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_aa768e0b.jpg"
+      },
+      {
+        "masterImageId": "RP-12",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/c31da372-3315-4196-b1de-d23f10817068?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/c31da372-3315-4196-b1de-d23f10817068?style=xlarge&annotated=true",
+        "plainFilename": "RP-12_RadPrimer_plain_Craniocervical_Junction12.jpg",
+        "annotatedFilename": "RP-12_RadPrimer_annotated_Craniocervical_Junction12_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_c31da372.jpg"
+      },
+      {
+        "masterImageId": "RP-13",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/9e110f99-12e3-4139-b4f9-346d701671fa?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9e110f99-12e3-4139-b4f9-346d701671fa?style=xlarge&annotated=true",
+        "plainFilename": "RP-13_RadPrimer_plain_Craniocervical_Junction13.jpg",
+        "annotatedFilename": "RP-13_RadPrimer_annotated_Craniocervical_Junction13_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_9e110f99.jpg"
+      },
+      {
+        "masterImageId": "RP-14",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/644400fa-c42e-4df6-a0aa-58bbdd68a14c?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/644400fa-c42e-4df6-a0aa-58bbdd68a14c?style=xlarge&annotated=true",
+        "plainFilename": "RP-14_RadPrimer_plain_Craniocervical_Junction14.jpg",
+        "annotatedFilename": "RP-14_RadPrimer_annotated_Craniocervical_Junction14_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_644400fa.jpg"
+      },
+      {
+        "masterImageId": "RP-15",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/6e170abb-c9ae-47d0-960b-ea5225bbdaa5?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/6e170abb-c9ae-47d0-960b-ea5225bbdaa5?style=xlarge&annotated=true",
+        "plainFilename": "RP-15_RadPrimer_plain_Craniocervical_Junction15.jpg",
+        "annotatedFilename": "RP-15_RadPrimer_annotated_Craniocervical_Junction15_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-15_RadPrimer_image_15_plain_6e170abb.jpg"
+      },
+      {
+        "masterImageId": "RP-16",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/3288ff79-5cf9-4761-b0e5-fb5b4ae72602?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/3288ff79-5cf9-4761-b0e5-fb5b4ae72602?style=xlarge&annotated=true",
+        "plainFilename": "RP-16_RadPrimer_plain_Craniocervical_Junction16.jpg",
+        "annotatedFilename": "RP-16_RadPrimer_annotated_Craniocervical_Junction16_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-16_RadPrimer_image_16_plain_3288ff79.jpg"
+      },
+      {
+        "masterImageId": "RP-17",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/a519df53-1953-41c0-8d73-c02ff6165250?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/a519df53-1953-41c0-8d73-c02ff6165250?style=xlarge&annotated=true",
+        "plainFilename": "RP-17_RadPrimer_plain_Craniocervical_Junction17.jpg",
+        "annotatedFilename": "RP-17_RadPrimer_annotated_Craniocervical_Junction17_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-17_RadPrimer_image_17_plain_a519df53.jpg"
+      },
+      {
+        "masterImageId": "RP-18",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/1c5a5729-08aa-43a0-ac88-6d6fdfa3e5d3?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/1c5a5729-08aa-43a0-ac88-6d6fdfa3e5d3?style=xlarge&annotated=true",
+        "plainFilename": "RP-18_RadPrimer_plain_Craniocervical_Junction18.jpg",
+        "annotatedFilename": "RP-18_RadPrimer_annotated_Craniocervical_Junction18_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-18_RadPrimer_image_18_plain_1c5a5729.jpg"
+      },
+      {
+        "masterImageId": "RP-19",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/f3e7d36a-f0be-4c25-b6fa-f3ce964c2907?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f3e7d36a-f0be-4c25-b6fa-f3ce964c2907?style=xlarge&annotated=true",
+        "plainFilename": "RP-19_RadPrimer_plain_Craniocervical_Junction19.jpg",
+        "annotatedFilename": "RP-19_RadPrimer_annotated_Craniocervical_Junction19_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-19_RadPrimer_image_19_plain_f3e7d36a.jpg"
+      },
+      {
+        "masterImageId": "RP-20",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/1deec2ae-53a8-4749-acef-8318b94a111f?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/1deec2ae-53a8-4749-acef-8318b94a111f?style=xlarge&annotated=true",
+        "plainFilename": "RP-20_RadPrimer_plain_Craniocervical_Junction20.jpg",
+        "annotatedFilename": "RP-20_RadPrimer_annotated_Craniocervical_Junction20_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-20_RadPrimer_image_20_plain_1deec2ae.jpg"
+      },
+      {
+        "masterImageId": "RP-21",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/c20c1d8b-a681-415e-9e94-0189553a0483?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/c20c1d8b-a681-415e-9e94-0189553a0483?style=xlarge&annotated=true",
+        "plainFilename": "RP-21_RadPrimer_plain_Craniocervical_Junction21.jpg",
+        "annotatedFilename": "RP-21_RadPrimer_annotated_Craniocervical_Junction21_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-21_RadPrimer_image_21_plain_c20c1d8b.jpg"
+      },
+      {
+        "masterImageId": "RP-22",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/f59265c8-f5d6-4784-b489-096a93d1e389?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f59265c8-f5d6-4784-b489-096a93d1e389?style=xlarge&annotated=true",
+        "plainFilename": "RP-22_RadPrimer_plain_Craniocervical_Junction22.jpg",
+        "annotatedFilename": "RP-22_RadPrimer_annotated_Craniocervical_Junction22_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-22_RadPrimer_image_22_plain_f59265c8.jpg"
+      },
+      {
+        "masterImageId": "RP-23",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/4d6b8e80-1841-4199-a5be-1c5af9cec3d3?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/4d6b8e80-1841-4199-a5be-1c5af9cec3d3?style=xlarge&annotated=true",
+        "plainFilename": "RP-23_RadPrimer_plain_Craniocervical_Junction23.jpg",
+        "annotatedFilename": "RP-23_RadPrimer_annotated_Craniocervical_Junction23_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-23_RadPrimer_image_23_plain_4d6b8e80.jpg"
+      },
+      {
+        "masterImageId": "RP-24",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/c9ece2d9-2c7f-46b5-9490-2b9fcc8cff6a?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/c9ece2d9-2c7f-46b5-9490-2b9fcc8cff6a?style=xlarge&annotated=true",
+        "plainFilename": "RP-24_RadPrimer_plain_Craniocervical_Junction24.jpg",
+        "annotatedFilename": "RP-24_RadPrimer_annotated_Craniocervical_Junction24_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-24_RadPrimer_image_24_plain_c9ece2d9.jpg"
+      },
+      {
+        "masterImageId": "RP-25",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/9131862d-1050-47d9-9e5b-e759da03a840?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9131862d-1050-47d9-9e5b-e759da03a840?style=xlarge&annotated=true",
+        "plainFilename": "RP-25_RadPrimer_plain_Craniocervical_Junction25.jpg",
+        "annotatedFilename": "RP-25_RadPrimer_annotated_Craniocervical_Junction25_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-25_RadPrimer_image_25_plain_9131862d.jpg"
+      },
+      {
+        "masterImageId": "RP-26",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/a59302eb-f312-4dca-8940-2b79ccb0f453?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/a59302eb-f312-4dca-8940-2b79ccb0f453?style=xlarge&annotated=true",
+        "plainFilename": "RP-26_RadPrimer_plain_Craniocervical_Junction26.jpg",
+        "annotatedFilename": "RP-26_RadPrimer_annotated_Craniocervical_Junction26_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-26_RadPrimer_image_26_plain_a59302eb.jpg"
+      },
+      {
+        "masterImageId": "RP-27",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/1af9a72c-4516-4447-80b0-ae6696dd3ae3?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/1af9a72c-4516-4447-80b0-ae6696dd3ae3?style=xlarge&annotated=true",
+        "plainFilename": "RP-27_RadPrimer_plain_Craniocervical_Junction27.jpg",
+        "annotatedFilename": "RP-27_RadPrimer_annotated_Craniocervical_Junction27_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-27_RadPrimer_image_27_plain_1af9a72c.jpg"
+      },
+      {
+        "masterImageId": "RP-28",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/204e6f0c-7ec3-497c-b197-eb897ccaf95b?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/204e6f0c-7ec3-497c-b197-eb897ccaf95b?style=xlarge&annotated=true",
+        "plainFilename": "RP-28_RadPrimer_plain_Craniocervical_Junction28.jpg",
+        "annotatedFilename": "RP-28_RadPrimer_annotated_Craniocervical_Junction28_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-28_RadPrimer_image_28_plain_204e6f0c.jpg"
+      },
+      {
+        "masterImageId": "RP-29",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/f3280205-9610-4a43-aa05-2b0e4e16d85e?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f3280205-9610-4a43-aa05-2b0e4e16d85e?style=xlarge&annotated=true",
+        "plainFilename": "RP-29_RadPrimer_plain_Craniocervical_Junction29.jpg",
+        "annotatedFilename": "RP-29_RadPrimer_annotated_Craniocervical_Junction29_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-29_RadPrimer_image_29_plain_f3280205.jpg"
+      },
+      {
+        "masterImageId": "RP-30",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/5a9f15b2-6e61-4ea5-bcfa-1dace7637cbd?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/5a9f15b2-6e61-4ea5-bcfa-1dace7637cbd?style=xlarge&annotated=true",
+        "plainFilename": "RP-30_RadPrimer_plain_Craniocervical_Junction30.jpg",
+        "annotatedFilename": "RP-30_RadPrimer_annotated_Craniocervical_Junction30_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-30_RadPrimer_image_30_plain_5a9f15b2.jpg"
+      },
+      {
+        "masterImageId": "RP-31",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/968bbce6-5c88-47e7-afff-950f9eaed22f?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/968bbce6-5c88-47e7-afff-950f9eaed22f?style=xlarge&annotated=true",
+        "plainFilename": "RP-31_RadPrimer_plain_Craniocervical_Junction31.jpg",
+        "annotatedFilename": "RP-31_RadPrimer_annotated_Craniocervical_Junction31_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-31_RadPrimer_image_31_plain_968bbce6.jpg"
+      },
+      {
+        "masterImageId": "RP-32",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/aafb845b-00d5-45e9-847c-e3f08f90ab5b?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/aafb845b-00d5-45e9-847c-e3f08f90ab5b?style=xlarge&annotated=true",
+        "plainFilename": "RP-32_RadPrimer_plain_Craniocervical_Junction32.jpg",
+        "annotatedFilename": "RP-32_RadPrimer_annotated_Craniocervical_Junction32_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-32_RadPrimer_image_32_plain_aafb845b.jpg"
+      },
+      {
+        "masterImageId": "RP-33",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/efd83ac4-8d83-4f65-971a-8cb3c5968cd9?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/efd83ac4-8d83-4f65-971a-8cb3c5968cd9?style=xlarge&annotated=true",
+        "plainFilename": "RP-33_RadPrimer_plain_Craniocervical_Junction33.jpg",
+        "annotatedFilename": "RP-33_RadPrimer_annotated_Craniocervical_Junction33_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-33_RadPrimer_image_33_plain_efd83ac4.jpg"
+      },
+      {
+        "masterImageId": "RP-34",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/9f5e3f3f-6a70-40ae-890e-c1c0f71d8d2f?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9f5e3f3f-6a70-40ae-890e-c1c0f71d8d2f?style=xlarge&annotated=true",
+        "plainFilename": "RP-34_RadPrimer_plain_Craniocervical_Junction34.jpg",
+        "annotatedFilename": "RP-34_RadPrimer_annotated_Craniocervical_Junction34_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-34_RadPrimer_image_34_plain_9f5e3f3f.jpg"
+      },
+      {
+        "masterImageId": "RP-35",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/f03ebee6-7fdb-41ea-876b-7a22df91f518?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f03ebee6-7fdb-41ea-876b-7a22df91f518?style=xlarge&annotated=true",
+        "plainFilename": "RP-35_RadPrimer_plain_Craniocervical_Junction35.jpg",
+        "annotatedFilename": "RP-35_RadPrimer_annotated_Craniocervical_Junction35_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-35_RadPrimer_image_35_plain_f03ebee6.jpg"
+      },
+      {
+        "masterImageId": "RP-36",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/a5b06841-28e3-4d15-b011-a6d41eb50ae1?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/a5b06841-28e3-4d15-b011-a6d41eb50ae1?style=xlarge&annotated=true",
+        "plainFilename": "RP-36_RadPrimer_plain_Craniocervical_Junction36.jpg",
+        "annotatedFilename": "RP-36_RadPrimer_annotated_Craniocervical_Junction36_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-36_RadPrimer_image_36_plain_a5b06841.jpg"
+      },
+      {
+        "masterImageId": "RP-37",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/902ae821-20c3-425d-bb7d-cf5df3212423?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/902ae821-20c3-425d-bb7d-cf5df3212423?style=xlarge&annotated=true",
+        "plainFilename": "RP-37_RadPrimer_plain_Craniocervical_Junction37.jpg",
+        "annotatedFilename": "RP-37_RadPrimer_annotated_Craniocervical_Junction37_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-37_RadPrimer_image_37_plain_902ae821.jpg"
+      },
+      {
+        "masterImageId": "RP-38",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/fccdd6d5-5b8c-4430-a521-835e0d9c6cf5?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/fccdd6d5-5b8c-4430-a521-835e0d9c6cf5?style=xlarge&annotated=true",
+        "plainFilename": "RP-38_RadPrimer_plain_Craniocervical_Junction38.jpg",
+        "annotatedFilename": "RP-38_RadPrimer_annotated_Craniocervical_Junction38_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-38_RadPrimer_image_38_plain_fccdd6d5.jpg"
+      },
+      {
+        "masterImageId": "RP-39",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/e2cc3727-beff-46ae-825c-b8794ab299b0?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/e2cc3727-beff-46ae-825c-b8794ab299b0?style=xlarge&annotated=true",
+        "plainFilename": "RP-39_RadPrimer_plain_Craniocervical_Junction39.jpg",
+        "annotatedFilename": "RP-39_RadPrimer_annotated_Craniocervical_Junction39_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-39_RadPrimer_image_39_plain_e2cc3727.jpg"
+      },
+      {
+        "masterImageId": "RP-40",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/c8b40e7c-30dd-4110-85a1-358ade26a578?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/c8b40e7c-30dd-4110-85a1-358ade26a578?style=xlarge&annotated=true",
+        "plainFilename": "RP-40_RadPrimer_plain_Craniocervical_Junction40.jpg",
+        "annotatedFilename": "RP-40_RadPrimer_annotated_Craniocervical_Junction40_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-40_RadPrimer_image_40_plain_c8b40e7c.jpg"
+      },
+      {
+        "masterImageId": "RP-41",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/912d101e-8914-46a6-88e0-3012f0cc8341?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/912d101e-8914-46a6-88e0-3012f0cc8341?style=xlarge&annotated=true",
+        "plainFilename": "RP-41_RadPrimer_plain_Craniocervical_Junction41.jpg",
+        "annotatedFilename": "RP-41_RadPrimer_annotated_Craniocervical_Junction41_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-41_RadPrimer_image_41_plain_912d101e.jpg"
+      },
+      {
+        "masterImageId": "RP-42",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/ae17df94-970d-415c-8f64-d2fa848b3516?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/ae17df94-970d-415c-8f64-d2fa848b3516?style=xlarge&annotated=true",
+        "plainFilename": "RP-42_RadPrimer_plain_Craniocervical_Junction42.jpg",
+        "annotatedFilename": "RP-42_RadPrimer_annotated_Craniocervical_Junction42_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-42_RadPrimer_image_42_plain_ae17df94.jpg"
+      },
+      {
+        "masterImageId": "RP-43",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/e4f6717f-2f16-4718-b545-ce75dc4f4677?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/e4f6717f-2f16-4718-b545-ce75dc4f4677?style=xlarge&annotated=true",
+        "plainFilename": "RP-43_RadPrimer_plain_Craniocervical_Junction43.jpg",
+        "annotatedFilename": "RP-43_RadPrimer_annotated_Craniocervical_Junction43_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-43_RadPrimer_image_43_plain_e4f6717f.jpg"
+      },
+      {
+        "masterImageId": "SDX-01",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8f2a23c8-c2ff-4ff5-90bb-14e4fd34e1dd?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8f2a23c8-c2ff-4ff5-90bb-14e4fd34e1dd?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-01_STATdx_plain_Craniocervical_Junction1.jpg",
+        "annotatedFilename": "SDX-01_STATdx_annotated_Craniocervical_Junction1_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_8f2a23c8.jpg"
+      },
+      {
+        "masterImageId": "SDX-02",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/fd2ab583-c777-48fd-93fe-6e83ee3d862d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/fd2ab583-c777-48fd-93fe-6e83ee3d862d?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-02_STATdx_plain_Craniocervical_Junction2.jpg",
+        "annotatedFilename": "SDX-02_STATdx_annotated_Craniocervical_Junction2_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_fd2ab583.jpg"
+      },
+      {
+        "masterImageId": "SDX-03",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/40bb26a3-7da2-420a-800c-458fec85a373?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/40bb26a3-7da2-420a-800c-458fec85a373?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-03_STATdx_plain_Craniocervical_Junction3.jpg",
+        "annotatedFilename": "SDX-03_STATdx_annotated_Craniocervical_Junction3_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_40bb26a3.jpg"
+      },
+      {
+        "masterImageId": "SDX-04",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/2477b674-b187-488b-bd09-32fff2098f1a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/2477b674-b187-488b-bd09-32fff2098f1a?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-04_STATdx_plain_Craniocervical_Junction4.jpg",
+        "annotatedFilename": "SDX-04_STATdx_annotated_Craniocervical_Junction4_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_2477b674.jpg"
+      },
+      {
+        "masterImageId": "SDX-05",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/96a9ac98-ded3-448a-ba15-81e2147554d7?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/96a9ac98-ded3-448a-ba15-81e2147554d7?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-05_STATdx_plain_Craniocervical_Junction5.jpg",
+        "annotatedFilename": "SDX-05_STATdx_annotated_Craniocervical_Junction5_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_96a9ac98.jpg"
+      },
+      {
+        "masterImageId": "SDX-06",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/f8ccec99-db6c-4ada-a720-b5489e03f519?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/f8ccec99-db6c-4ada-a720-b5489e03f519?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-06_STATdx_plain_Craniocervical_Junction6.jpg",
+        "annotatedFilename": "SDX-06_STATdx_annotated_Craniocervical_Junction6_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_f8ccec99.jpg"
+      },
+      {
+        "masterImageId": "SDX-07",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/24c46757-8605-49fa-aa41-5473b83eb070?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/24c46757-8605-49fa-aa41-5473b83eb070?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-07_STATdx_plain_Craniocervical_Junction7.jpg",
+        "annotatedFilename": "SDX-07_STATdx_annotated_Craniocervical_Junction7_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_24c46757.jpg"
+      },
+      {
+        "masterImageId": "SDX-08",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/87fb5c30-2e0d-4ca5-8732-e743fa7c1c8f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/87fb5c30-2e0d-4ca5-8732-e743fa7c1c8f?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-08_STATdx_plain_Craniocervical_Junction8.jpg",
+        "annotatedFilename": "SDX-08_STATdx_annotated_Craniocervical_Junction8_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_87fb5c30.jpg"
+      },
+      {
+        "masterImageId": "SDX-09",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/33fd1d31-f13a-4fd4-9cac-382347801486?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/33fd1d31-f13a-4fd4-9cac-382347801486?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-09_STATdx_plain_Craniocervical_Junction9.jpg",
+        "annotatedFilename": "SDX-09_STATdx_annotated_Craniocervical_Junction9_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_33fd1d31.jpg"
+      },
+      {
+        "masterImageId": "SDX-10",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/574e96d6-a205-47de-b88d-aa2fb9ba2dcf?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/574e96d6-a205-47de-b88d-aa2fb9ba2dcf?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-10_STATdx_plain_Craniocervical_Junction10.jpg",
+        "annotatedFilename": "SDX-10_STATdx_annotated_Craniocervical_Junction10_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_574e96d6.jpg"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/4008903e-a586-43e7-b31d-1491d6cdb5c3?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/4008903e-a586-43e7-b31d-1491d6cdb5c3?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-11_STATdx_plain_Craniocervical_Junction11.jpg",
+        "annotatedFilename": "SDX-11_STATdx_annotated_Craniocervical_Junction11_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_4008903e.jpg"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ec43f0ba-39de-498e-b767-8f4a1a73a750?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ec43f0ba-39de-498e-b767-8f4a1a73a750?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-12_STATdx_plain_Craniocervical_Junction12.jpg",
+        "annotatedFilename": "SDX-12_STATdx_annotated_Craniocervical_Junction12_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_ec43f0ba.jpg"
+      },
+      {
+        "masterImageId": "SDX-13",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/547ea4fa-ef01-46a9-a12e-ed9b7157eb05?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/547ea4fa-ef01-46a9-a12e-ed9b7157eb05?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-13_STATdx_plain_Craniocervical_Junction13.jpg",
+        "annotatedFilename": "SDX-13_STATdx_annotated_Craniocervical_Junction13_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_547ea4fa.jpg"
+      },
+      {
+        "masterImageId": "SDX-14",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b3e61f92-5622-4136-83cd-a0e67d338cdb?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b3e61f92-5622-4136-83cd-a0e67d338cdb?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-14_STATdx_plain_Craniocervical_Junction14.jpg",
+        "annotatedFilename": "SDX-14_STATdx_annotated_Craniocervical_Junction14_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_b3e61f92.jpg"
+      },
+      {
+        "masterImageId": "SDX-15",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3514a27f-fdb4-4f0c-a6a8-920ba0cec594?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3514a27f-fdb4-4f0c-a6a8-920ba0cec594?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-15_STATdx_plain_Craniocervical_Junction15.jpg",
+        "annotatedFilename": "SDX-15_STATdx_annotated_Craniocervical_Junction15_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_3514a27f.jpg"
+      },
+      {
+        "masterImageId": "SDX-16",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b3de2b6a-9b4e-433b-a2bf-a095269f67c5?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b3de2b6a-9b4e-433b-a2bf-a095269f67c5?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-16_STATdx_plain_Craniocervical_Junction16.jpg",
+        "annotatedFilename": "SDX-16_STATdx_annotated_Craniocervical_Junction16_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_b3de2b6a.jpg"
+      },
+      {
+        "masterImageId": "SDX-17",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/df259e6e-2de3-46b0-aef9-ad2742f921ef?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/df259e6e-2de3-46b0-aef9-ad2742f921ef?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-17_STATdx_plain_Craniocervical_Junction17.jpg",
+        "annotatedFilename": "SDX-17_STATdx_annotated_Craniocervical_Junction17_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_df259e6e.jpg"
+      },
+      {
+        "masterImageId": "SDX-18",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9e86abf1-9128-448a-9541-2a48d8beb8a2?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9e86abf1-9128-448a-9541-2a48d8beb8a2?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-18_STATdx_plain_Craniocervical_Junction18.jpg",
+        "annotatedFilename": "SDX-18_STATdx_annotated_Craniocervical_Junction18_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_9e86abf1.jpg"
+      },
+      {
+        "masterImageId": "SDX-19",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8086f9c1-4649-4576-9ba5-9b259d41ed71?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8086f9c1-4649-4576-9ba5-9b259d41ed71?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-19_STATdx_plain_Craniocervical_Junction19.jpg",
+        "annotatedFilename": "SDX-19_STATdx_annotated_Craniocervical_Junction19_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_8086f9c1.jpg"
+      },
+      {
+        "masterImageId": "SDX-20",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/dd0e4c37-35b1-4b30-9964-1299913d3455?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/dd0e4c37-35b1-4b30-9964-1299913d3455?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-20_STATdx_plain_Craniocervical_Junction20.jpg",
+        "annotatedFilename": "SDX-20_STATdx_annotated_Craniocervical_Junction20_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_dd0e4c37.jpg"
+      },
+      {
+        "masterImageId": "SDX-21",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/bd8a0bab-b10b-4a51-a355-c47ed7aa3075?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/bd8a0bab-b10b-4a51-a355-c47ed7aa3075?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-21_STATdx_plain_Craniocervical_Junction21.jpg",
+        "annotatedFilename": "SDX-21_STATdx_annotated_Craniocervical_Junction21_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_bd8a0bab.jpg"
+      },
+      {
+        "masterImageId": "SDX-22",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/904fd7a1-25cd-4836-83f5-154661c2f073?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/904fd7a1-25cd-4836-83f5-154661c2f073?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-22_STATdx_plain_Craniocervical_Junction22.jpg",
+        "annotatedFilename": "SDX-22_STATdx_annotated_Craniocervical_Junction22_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_904fd7a1.jpg"
+      },
+      {
+        "masterImageId": "SDX-23",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b18fe262-5f67-4e54-a2b7-d84a209ec752?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b18fe262-5f67-4e54-a2b7-d84a209ec752?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-23_STATdx_plain_Craniocervical_Junction23.jpg",
+        "annotatedFilename": "SDX-23_STATdx_annotated_Craniocervical_Junction23_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_b18fe262.jpg"
+      },
+      {
+        "masterImageId": "SDX-24",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/09d9b980-1f07-4a0b-a67f-f930e70c00e3?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/09d9b980-1f07-4a0b-a67f-f930e70c00e3?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-24_STATdx_plain_Craniocervical_Junction24.jpg",
+        "annotatedFilename": "SDX-24_STATdx_annotated_Craniocervical_Junction24_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_09d9b980.jpg"
+      },
+      {
+        "masterImageId": "SDX-25",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3ebc698b-4957-4048-93a0-48c7122c8008?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3ebc698b-4957-4048-93a0-48c7122c8008?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-25_STATdx_plain_Craniocervical_Junction25.jpg",
+        "annotatedFilename": "SDX-25_STATdx_annotated_Craniocervical_Junction25_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_3ebc698b.jpg"
+      },
+      {
+        "masterImageId": "SDX-26",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/33554065-39a9-47f7-846a-fe8869c2e62c?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/33554065-39a9-47f7-846a-fe8869c2e62c?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-26_STATdx_plain_Craniocervical_Junction26.jpg",
+        "annotatedFilename": "SDX-26_STATdx_annotated_Craniocervical_Junction26_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_33554065.jpg"
+      },
+      {
+        "masterImageId": "SDX-27",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7e902914-79cf-4d18-a078-b5f9e5fa51bc?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7e902914-79cf-4d18-a078-b5f9e5fa51bc?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-27_STATdx_plain_Craniocervical_Junction27.jpg",
+        "annotatedFilename": "SDX-27_STATdx_annotated_Craniocervical_Junction27_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-27_STATdx_image_27_plain_7e902914.jpg"
+      },
+      {
+        "masterImageId": "SDX-28",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/2fcea0f5-e076-4769-8aa5-fb93521faebd?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/2fcea0f5-e076-4769-8aa5-fb93521faebd?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-28_STATdx_plain_Craniocervical_Junction28.jpg",
+        "annotatedFilename": "SDX-28_STATdx_annotated_Craniocervical_Junction28_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-28_STATdx_image_28_plain_2fcea0f5.jpg"
+      },
+      {
+        "masterImageId": "SDX-29",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7e865a0d-bafd-410a-8168-167844278363?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7e865a0d-bafd-410a-8168-167844278363?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-29_STATdx_plain_Craniocervical_Junction29.jpg",
+        "annotatedFilename": "SDX-29_STATdx_annotated_Craniocervical_Junction29_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-29_STATdx_image_29_plain_7e865a0d.jpg"
+      },
+      {
+        "masterImageId": "SDX-30",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a55455fd-99b4-47b2-845f-1dd4dcbe21a5?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a55455fd-99b4-47b2-845f-1dd4dcbe21a5?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-30_STATdx_plain_Craniocervical_Junction30.jpg",
+        "annotatedFilename": "SDX-30_STATdx_annotated_Craniocervical_Junction30_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-30_STATdx_image_30_plain_a55455fd.jpg"
+      },
+      {
+        "masterImageId": "SDX-31",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/cb809d44-643b-443f-8aaa-689088339d6a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/cb809d44-643b-443f-8aaa-689088339d6a?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-31_STATdx_plain_Craniocervical_Junction31.jpg",
+        "annotatedFilename": "SDX-31_STATdx_annotated_Craniocervical_Junction31_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-31_STATdx_image_31_plain_cb809d44.jpg"
+      },
+      {
+        "masterImageId": "SDX-32",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/765d43f0-1857-4855-9368-1c5d1c2541f6?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/765d43f0-1857-4855-9368-1c5d1c2541f6?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-32_STATdx_plain_Craniocervical_Junction32.jpg",
+        "annotatedFilename": "SDX-32_STATdx_annotated_Craniocervical_Junction32_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-32_STATdx_image_32_plain_765d43f0.jpg"
+      },
+      {
+        "masterImageId": "SDX-33",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/d6cdb94f-2046-4790-856d-16c3bbc18d20?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/d6cdb94f-2046-4790-856d-16c3bbc18d20?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-33_STATdx_plain_Craniocervical_Junction33.jpg",
+        "annotatedFilename": "SDX-33_STATdx_annotated_Craniocervical_Junction33_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-33_STATdx_image_33_plain_d6cdb94f.jpg"
+      },
+      {
+        "masterImageId": "SDX-34",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8a9c9284-d5a6-4244-9535-afdad84c34c9?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8a9c9284-d5a6-4244-9535-afdad84c34c9?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-34_STATdx_plain_Craniocervical_Junction34.jpg",
+        "annotatedFilename": "SDX-34_STATdx_annotated_Craniocervical_Junction34_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-34_STATdx_image_34_plain_8a9c9284.jpg"
+      },
+      {
+        "masterImageId": "SDX-35",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/dd747ead-9f17-4877-85e8-01d1bcfcc8aa?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/dd747ead-9f17-4877-85e8-01d1bcfcc8aa?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-35_STATdx_plain_Craniocervical_Junction35.jpg",
+        "annotatedFilename": "SDX-35_STATdx_annotated_Craniocervical_Junction35_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-35_STATdx_image_35_plain_dd747ead.jpg"
+      },
+      {
+        "masterImageId": "SDX-36",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/f162d3b6-c6b8-4293-a558-1b00e91ce5a6?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/f162d3b6-c6b8-4293-a558-1b00e91ce5a6?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-36_STATdx_plain_Craniocervical_Junction36.jpg",
+        "annotatedFilename": "SDX-36_STATdx_annotated_Craniocervical_Junction36_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-36_STATdx_image_36_plain_f162d3b6.jpg"
+      },
+      {
+        "masterImageId": "SDX-37",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ce3f93df-2eeb-42e4-bc7e-692fea58f5d0?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ce3f93df-2eeb-42e4-bc7e-692fea58f5d0?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-37_STATdx_plain_Craniocervical_Junction37.jpg",
+        "annotatedFilename": "SDX-37_STATdx_annotated_Craniocervical_Junction37_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-37_STATdx_image_37_plain_ce3f93df.jpg"
+      },
+      {
+        "masterImageId": "SDX-38",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/6ec81553-c10f-46e5-a3a2-af39310c9220?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ec81553-c10f-46e5-a3a2-af39310c9220?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-38_STATdx_plain_Craniocervical_Junction38.jpg",
+        "annotatedFilename": "SDX-38_STATdx_annotated_Craniocervical_Junction38_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-38_STATdx_image_38_plain_6ec81553.jpg"
+      },
+      {
+        "masterImageId": "SDX-39",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/6c44e3d2-d08b-447c-9a56-336a9c66bfe1?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/6c44e3d2-d08b-447c-9a56-336a9c66bfe1?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-39_STATdx_plain_Craniocervical_Junction39.jpg",
+        "annotatedFilename": "SDX-39_STATdx_annotated_Craniocervical_Junction39_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-39_STATdx_image_39_plain_6c44e3d2.jpg"
+      },
+      {
+        "masterImageId": "SDX-40",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/66938fc2-7caf-4a8c-ba33-cb8e8e9cf2a8?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/66938fc2-7caf-4a8c-ba33-cb8e8e9cf2a8?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-40_STATdx_plain_Craniocervical_Junction40.jpg",
+        "annotatedFilename": "SDX-40_STATdx_annotated_Craniocervical_Junction40_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-40_STATdx_image_40_plain_66938fc2.jpg"
+      }
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is uncertain/nearDuplicate and stays primary.",
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, adjacent-slice, follow-up, procedure, comparison-view, and time-lapse clusters are atomic teaching units.",
+      "intentionalSplits": [],
+      "splitStatement": "No source case cluster was intentionally split; RadPrimer-only clusters RP-32 through RP-34 and RP-38 through RP-40 were retained intact."
+    },
+    "generatorInstructions": [
+      "Use RadPrimer order as the organizing scaffold.",
+      "Use STATdx to enrich mechanisms, measurement thresholds, injury signs, and management-relevant interpretation, with explicit source attribution.",
+      "When narrative/cards mention images, use clean human-facing labels such as RadPrimer image 32 or STATdx image 10; keep RP/SDX IDs in traceability fields.",
+      "Download/use only selectedPrimaryImageIds by default; archiveOptionalImageIds are available only for complete-source audit or duplicate recovery."
+    ]
+  }
+}

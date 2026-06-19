@@ -844,10 +844,11 @@ Rules:
 
 ---
 
-## IMAIOS ANATOMY LABEL OUTPUT
+## IMAIOS ANATOMY LABEL OUTPUT - DEFERRED SECOND PASS
 
-After the Speechify narrative and image grouping audit, also produce organized IMaios anatomy label blocks.
-These blocks are for the user's IMaios engine, so each code block must be copy-paste ready.
+Do not produce IMaios anatomy label blocks or `imaios-chunk-library` JSON in this first-pass narrative output.
+The extension provides a separate **Build IMaios chunks** action after the narrative is complete.
+The rules below define that separate IMaios-only second pass, not the initial narrative response.
 
 Core rules:
 
@@ -1037,24 +1038,10 @@ CASE_MAP = []
 * inferred groupings must still obey the controlled grouping inference rule
 * do not pretend uncertain groups are certain inside the narrative; but the second code block should still reflect the final grouping decision used to organize the walkthrough
 
-### Code blocks 3+ — IMaios anatomy label chunks
+### No IMaios chunks in the first-pass narrative
 
-After the grouping audit, output separate IMaios anatomy blocks.
-
-For each block:
-
-* use a short section label outside the code block, for example `IMaios block 1 - Temporal bone fracture framework`
-* inside the code block, output only labels, one per line
-* each block should be small enough to paste into the IMaios engine as a focused learning task
-* order blocks by pathology-learning sequence, not alphabetically
-* for pathology topics, include the normal structures needed to understand where the disease lives, how it spreads, what it injures, and what mimics it
-* if modality-specific label availability is provided, include the modality in the outside block title, not inside the code block
-* if no useful IMaios anatomy targets exist, output one code block containing `IMAIOS_LABELS = []`
-
-### Final code block - IMaios extension chunk JSON
-
-Output one final `json` code block containing the `imaios-chunk-library` object described above.
-This block should collect the same chunks as the human IMaios paste blocks, with aliases and modality guidance preserved for the extension.
+Do not output IMaios anatomy label chunks, IMaios paste blocks, gap-review blocks, or `imaios-chunk-library` JSON in this narrative response.
+Those belong only to the separate Build IMaios chunks second pass.
 
 ## WHAT TO DO IF EXPLICIT CASE GROUPING IS MISSING
 

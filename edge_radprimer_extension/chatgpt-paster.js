@@ -1597,12 +1597,12 @@
             <button class="primary live-drill-plan" type="button" title="Send the latest imaios-live-drill-card-plan JSON back to the open IMAIOS tab and generate TSV">Send plan to IMAIOS</button>
           </div>
           <div class="group">
-            <div class="group-title">IMAIOS chunks</div>
+            <div class="group-title">IMAIOS second pass</div>
             <div class="button-row">
               <button class="secondary imaios" type="button" title="Copy the latest IMAIOS chunk JSON for the IMAIOS extension">Copy chunks</button>
               <button class="import import-imaios" type="button" title="Import the latest IMAIOS chunk JSON from this ChatGPT response into IMAIOS">Import chunks</button>
             </div>
-            <button class="redo redo-imaios" type="button" title="Ask ChatGPT to regenerate only the IMAIOS chunks using the latest saved label repository, then import them into IMAIOS">Redo chunks + import</button>
+            <button class="redo redo-imaios" type="button" title="Ask ChatGPT to build IMAIOS chunks from this conversation using the latest saved label repository, then import them into IMAIOS">Build chunks + import</button>
           </div>
           <div class="group">
             <div class="group-title">RadPrimer audit</div>
@@ -1809,15 +1809,15 @@
     shadow.querySelector(".redo-imaios").addEventListener("click", async () => {
       const button = shadow.querySelector(".redo-imaios");
       button.disabled = true;
-      button.textContent = "Redoing...";
+      button.textContent = "Building...";
       try {
         const response = await sendRuntimeRequest({
-          type: "BUILD_IMAIOS_REDO_PROMPT"
+          type: "BUILD_IMAIOS_CHUNK_PROMPT"
         });
         if (!response?.ok || !response.promptText) {
           createOrUpdateOverlay({
-            phase: "IMAIOS_REDO_ERROR",
-            error: response?.error || "Could not build the IMaios redo prompt."
+            phase: "IMAIOS_BUILD_ERROR",
+            error: response?.error || "Could not build the IMaios chunk prompt."
           });
           return;
         }
@@ -1833,7 +1833,7 @@
         });
         if (!result.imaiosChunkLibrary?.chunks?.length) {
           createOrUpdateOverlay({
-            phase: "IMAIOS_REDO_DONE_NO_JSON",
+            phase: "IMAIOS_BUILD_DONE_NO_JSON",
             message: "ChatGPT finished, but I could not find a valid imaios-chunk-library JSON block to import.",
             text: result.assistantText || ""
           });
@@ -1841,20 +1841,20 @@
         }
         if (!result.imaios?.ok) {
           createOrUpdateOverlay({
-            phase: "IMAIOS_REDO_IMPORT_ERROR",
-            error: result.imaios?.error || "ChatGPT regenerated chunks, but IMaios import failed.",
+            phase: "IMAIOS_BUILD_IMPORT_ERROR",
+            error: result.imaios?.error || "ChatGPT built chunks, but IMaios import failed.",
             text: result.assistantText || ""
           });
           return;
         }
         createOrUpdateOverlay({
-          phase: "IMAIOS_REDO_IMPORTED",
-          message: `Regenerated and imported ${result.imaios.result?.chunkCount || result.imaiosChunkLibrary.chunks.length} IMaios chunks using ${response.moduleCount || 0} saved modules and ${response.labelCount || 0} labels.`,
+          phase: "IMAIOS_BUILD_IMPORTED",
+          message: `Built and imported ${result.imaios.result?.chunkCount || result.imaiosChunkLibrary.chunks.length} IMaios chunks using ${response.moduleCount || 0} saved modules and ${response.labelCount || 0} labels.`,
           text: result.assistantText || JSON.stringify(result.imaiosChunkLibrary, null, 2)
         });
         createOrUpdateCompactStatus({
           phase: "IMAIOS",
-          message: "IMaios redo imported.",
+          message: "IMaios chunks imported.",
           done: true
         });
       } catch (error) {
@@ -1864,7 +1864,7 @@
         });
       } finally {
         button.disabled = false;
-        button.textContent = "Redo + Import";
+        button.textContent = "Build + Import";
       }
     });
   };

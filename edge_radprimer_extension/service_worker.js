@@ -226,6 +226,10 @@ function isNarrativeSpeechifyMode(settings) {
   return false;
 }
 
+function isFirstPassNarrativeMode(settings) {
+  return settings?.mode === "narrative" || settings?.mode === "narrative_with_images";
+}
+
 function shouldNarrativeDownloadImages(settings) {
   return settings?.engine === "normal" && settings.mode === "narrative_with_images";
 }
@@ -1311,7 +1315,7 @@ async function ensureRadPrimerExtractor(tabId) {
 
 async function extractRadPrimerArticle(tabId, settings, promptText) {
   const source = await ensureRadPrimerExtractor(tabId);
-  const imaiosLabelRepository = await loadImaiosLabelRepository();
+  const imaiosLabelRepository = isFirstPassNarrativeMode(settings) ? null : await loadImaiosLabelRepository();
   const response = await sendTabMessage(tabId, {
     type: "RADPRIMER_EXTRACT",
     config: {
@@ -1439,7 +1443,7 @@ function createImaiosBackupTimestamp(value = new Date()) {
   return value.toISOString().replace(/[:.]/g, "-");
 }
 
-function buildImaiosLabelRepositoryRedoPrompt(repository) {
+function buildImaiosLabelRepositoryChunkPrompt(repository) {
   const backup = normalizeImaiosRepositoryForBackup(repository);
   const modules = Object.values(backup.moduleLabels || {})
     .filter((module) => module && Array.isArray(module.labels) && module.labels.length)
@@ -1459,9 +1463,9 @@ function buildImaiosLabelRepositoryRedoPrompt(repository) {
   ].filter(Boolean).join("\n")).join("\n\n");
 
   const promptText = [
-    "Redo only the IMaios anatomy label output from this same conversation.",
+    "Build only the IMaios anatomy chunk output for this same conversation.",
     "",
-    "Use the article/source/images already present above. Do not rewrite the Speechify narrative. Do not regenerate cards. Do not redo the image grouping audit except where needed to preserve chunk context.",
+    "Use the article/source/images and the Speechify narrative already present above. Do not rewrite the Speechify narrative. Do not regenerate cards. Do not redo the image grouping audit except where needed to preserve chunk context.",
     "",
     "Your task now:",
     "1. Re-infer the anatomy concepts needed for the topic already discussed above.",
@@ -1489,7 +1493,7 @@ function buildImaiosLabelRepositoryRedoPrompt(repository) {
     "- concept",
     "- preferredLabel, copied exactly from AVAILABLE_LABELS",
     "- aliases",
-    "- matchStatus: exact | synonym-from-repository | component-match | candidate",
+    "- matchStatus: exact | synonym-from-repository | component-match",
     "- status: verified",
     "- moduleKey",
     "- breadcrumb when available",
@@ -1497,6 +1501,7 @@ function buildImaiosLabelRepositoryRedoPrompt(repository) {
     "- tags when available",
     "- parentGroup when this chunk is a subchunk of a larger anatomical region",
     "- note when useful",
+    "- do not use candidate labels; if the repository cannot support the concept, put it in unmatchedConcepts instead",
     "",
     "For unmatched concepts include `unmatchedConcepts` in the JSON and a human gap-review code block with:",
     "NEEDED = structure or concept",
@@ -3840,11 +3845,14 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
   const manifestText = JSON.stringify(masterSource?.manifest || {}, null, 2);
   const registryText = JSON.stringify(masterSource?.imageRegistry || [], null, 2);
   const sourcePackage = String(masterSource?.packageText || "").trim();
-  const imaiosLabelRepositoryBlock = buildImaiosLabelRepositoryBlock(
-    settings?.imaiosLabelRepository,
-    title,
-    `${sourcePackage}\n\n${manifestText}`
-  );
+  const includeImaiosRepository = !isFirstPassNarrativeMode(settings);
+  const imaiosLabelRepositoryBlock = includeImaiosRepository
+    ? buildImaiosLabelRepositoryBlock(
+        settings?.imaiosLabelRepository,
+        title,
+        `${sourcePackage}\n\n${manifestText}`
+      )
+    : "";
 
   return [
     "=== MASTER SOURCE MODE ===",
@@ -3879,7 +3887,7 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
     sourcePackage || "[master_source_package.txt was empty]",
     "",
     imaiosLabelRepositoryBlock,
-    imaiosLabelRepositoryBlock ? "" : "=== IMAIOS LABEL REPOSITORY STATUS ===\nNo saved IMaios label repository was available for this run. Do not invent IMaios labels; output repositoryMissing:true and chunks:[] in the IMaios JSON.",
+    includeImaiosRepository && !imaiosLabelRepositoryBlock ? "=== IMAIOS LABEL REPOSITORY STATUS ===\nNo saved IMaios label repository was available for this run. Do not invent IMaios labels; output repositoryMissing:true and chunks:[] in the IMaios JSON." : "",
     "",
     "=== MASTER IMAGE REGISTRY ===",
     registryText,
@@ -3896,7 +3904,7 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
 }
 
 async function buildMasterSourceExtraction(settings, promptText, masterSource) {
-  const imaiosLabelRepository = await loadImaiosLabelRepository();
+  const imaiosLabelRepository = isFirstPassNarrativeMode(settings) ? null : await loadImaiosLabelRepository();
   const finalSettings = {
     ...settings,
     imaiosLabelRepository
@@ -5451,10 +5459,10 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     return true;
   }
 
-  if (message?.type === "BUILD_IMAIOS_REDO_PROMPT") {
+  if (message?.type === "BUILD_IMAIOS_CHUNK_PROMPT" || message?.type === "BUILD_IMAIOS_REDO_PROMPT") {
     (async () => {
       const repository = await loadImaiosLabelRepository();
-      const result = buildImaiosLabelRepositoryRedoPrompt(repository);
+      const result = buildImaiosLabelRepositoryChunkPrompt(repository);
       sendResponse({ ok: true, ...result });
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
