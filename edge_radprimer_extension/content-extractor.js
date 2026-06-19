@@ -24,10 +24,7 @@
       return { module, score };
     }).sort((a, b) => b.score - a.score);
 
-    const selected = scored.filter((item) => item.score > 0).slice(0, 3);
-    const fallback = selected.length ? selected : scored.slice(0, Math.min(3, scored.length));
-
-    const moduleBlocks = fallback.map(({ module, score }) => [
+    const moduleBlocks = scored.map(({ module, score }) => [
       `MODULE = ${module.name || module.key || "IMaios module"}`,
       `MODULE_KEY = ${module.key || ""}`,
       module.url ? `URL = ${module.url}` : "",

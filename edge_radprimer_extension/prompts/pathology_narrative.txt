@@ -890,10 +890,17 @@ If an `IMAIOS LABEL REPOSITORY` section is provided in the user/source input:
 
 If no `IMAIOS LABEL REPOSITORY` section is provided:
 
-* output the best candidate IMaios-style labels from anatomy knowledge and source context
-* still keep the blocks copy-paste ready
-* do not claim repository verification
-* add a final gap-review code block only if there are obvious synonym or availability uncertainties
+* do not output candidate IMaios-style labels from anatomy knowledge
+* do not create any copy-paste IMaios label block
+* output one plain warning code block instead:
+
+```text
+IMAIOS_REPOSITORY_REQUIRED
+No verified IMaios label repository was provided, so no IMaios labels were selected.
+```
+
+* the final `imaios-chunk-library` JSON must still be valid, but it must use `chunks: []`, `repositoryMissing: true`, and `unmatchedConcepts` for the important anatomy concepts that need repository matching later
+* never mark any label as `verified` unless it was copied exactly from the provided repository
 
 The optional gap-review block, when needed, must use this plain format:
 

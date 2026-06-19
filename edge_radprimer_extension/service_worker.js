@@ -1395,6 +1395,46 @@ function countImaiosRepositoryLabels(repository) {
     .reduce((total, module) => total + (Array.isArray(module?.labels) ? module.labels.length : 0), 0);
 }
 
+function buildImaiosLabelRepositoryBlock(repository, title = "", sourceText = "") {
+  const modules = Object.values(repository?.moduleLabels || {})
+    .filter((module) => module && Array.isArray(module.labels) && module.labels.length);
+  if (!modules.length) return "";
+
+  const haystack = `${title || ""} ${String(sourceText || "").slice(0, 12000)}`.toLowerCase();
+  const tokens = Array.from(new Set((haystack.match(/[a-z][a-z0-9-]{3,}/g) || [])
+    .filter((token) => !/^(with|from|this|that|which|when|then|they|their|image|figure|radiograph|computed|tomography|magnetic|resonance|source|package|radprimer|statdx)$/i.test(token))));
+
+  const scored = modules.map((module) => {
+    const moduleText = `${module.name || ""} ${module.key || ""} ${module.url || ""}`.toLowerCase();
+    const labelText = module.labels.join(" ").toLowerCase();
+    let score = 0;
+    for (const token of tokens) {
+      if (moduleText.includes(token)) score += 4;
+      if (labelText.includes(token)) score += 1;
+    }
+    return { module, score };
+  }).sort((a, b) => b.score - a.score || String(a.module.name || a.module.key || "").localeCompare(String(b.module.name || b.module.key || "")));
+
+  const moduleBlocks = scored.map(({ module, score }) => [
+    `MODULE = ${module.name || module.key || "IMaios module"}`,
+    `MODULE_KEY = ${module.key || ""}`,
+    module.url ? `URL = ${module.url}` : "",
+    `MATCH_SCORE = ${score}`,
+    "AVAILABLE_LABELS:",
+    ...module.labels
+  ].filter(Boolean).join("\n"));
+
+  return [
+    "=== IMAIOS LABEL REPOSITORY ===",
+    "Use this as the available IMaios label universe for the IMaios anatomy output.",
+    "Choose exact labels from these lists. If a needed anatomy concept has no usable exact/synonym/component match, put it in the gap-review/unmatchedConcepts output instead of inventing a label.",
+    `Repository modules: ${modules.length}`,
+    `Repository labels: ${countImaiosRepositoryLabels(repository)}`,
+    "",
+    ...moduleBlocks
+  ].join("\n\n");
+}
+
 function createImaiosBackupTimestamp(value = new Date()) {
   return value.toISOString().replace(/[:.]/g, "-");
 }
@@ -3800,6 +3840,11 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
   const manifestText = JSON.stringify(masterSource?.manifest || {}, null, 2);
   const registryText = JSON.stringify(masterSource?.imageRegistry || [], null, 2);
   const sourcePackage = String(masterSource?.packageText || "").trim();
+  const imaiosLabelRepositoryBlock = buildImaiosLabelRepositoryBlock(
+    settings?.imaiosLabelRepository,
+    title,
+    `${sourcePackage}\n\n${manifestText}`
+  );
 
   return [
     "=== MASTER SOURCE MODE ===",
@@ -3833,6 +3878,9 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
     "=== FUSED MASTER SOURCE PACKAGE ===",
     sourcePackage || "[master_source_package.txt was empty]",
     "",
+    imaiosLabelRepositoryBlock,
+    imaiosLabelRepositoryBlock ? "" : "=== IMAIOS LABEL REPOSITORY STATUS ===\nNo saved IMaios label repository was available for this run. Do not invent IMaios labels; output repositoryMissing:true and chunks:[] in the IMaios JSON.",
+    "",
     "=== MASTER IMAGE REGISTRY ===",
     registryText,
     "",
@@ -3847,7 +3895,12 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
     .join("\n");
 }
 
-function buildMasterSourceExtraction(settings, promptText, masterSource) {
+async function buildMasterSourceExtraction(settings, promptText, masterSource) {
+  const imaiosLabelRepository = await loadImaiosLabelRepository();
+  const finalSettings = {
+    ...settings,
+    imaiosLabelRepository
+  };
   const title = masterSource?.articleTitle || "Radiology Master Source";
   const imageRegistry = Array.isArray(masterSource?.imageRegistry) ? masterSource.imageRegistry : [];
   const downloadableIds = new Set(
@@ -3882,7 +3935,7 @@ function buildMasterSourceExtraction(settings, promptText, masterSource) {
     .map((entry) => entry.groupNumbers);
 
   return {
-    output: buildMasterSourcePromptPackage(settings, promptText, masterSource),
+    output: buildMasterSourcePromptPackage(finalSettings, promptText, masterSource),
     downloadFiles: Array.isArray(masterSource?.downloadFiles)
       ? masterSource.downloadFiles
       : flattenRegistryToDownloadFiles(imageRegistry),
@@ -4631,7 +4684,7 @@ async function runFinalCardModeAfterGrouping(pending, groupingText) {
     if (!masterSource?.packageText) {
       throw new Error("Use master source is enabled, but no imported master source was found. Import master_source_import.json first.");
     }
-    extraction = buildMasterSourceExtraction(settings, promptText, masterSource);
+    extraction = await buildMasterSourceExtraction(settings, promptText, masterSource);
   } else {
     await sendPageStatus(radPrimerTabId, "Extracting", "Rebuilding final prompt package with grouped images...");
     extraction = await extractRadPrimerArticle(radPrimerTabId, settings, promptText);
@@ -4680,7 +4733,7 @@ async function runRadPrimerFromPage(tab) {
     if (!masterSource?.packageText) {
       throw new Error("Use master source is enabled, but no imported master source was found. Import master_source_import.json in the popup first.");
     }
-    extraction = buildMasterSourceExtraction(settings, promptText, masterSource);
+    extraction = await buildMasterSourceExtraction(settings, promptText, masterSource);
   } else {
     await sendPageStatus(tab.id, "Extracting", `Extracting ${articleSource.displayName} article and image captions...`);
     extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
@@ -4724,7 +4777,7 @@ async function runRadPrimerFromPage(tab) {
       autoSendToSpeechify: false
     };
     const groupingExtraction = settings.useMasterSource
-      ? buildMasterSourceExtraction(groupingSettings, groupingPromptText, await getLatestMasterSourceCache())
+      ? await buildMasterSourceExtraction(groupingSettings, groupingPromptText, await getLatestMasterSourceCache())
       : await extractRadPrimerArticle(tab.id, groupingSettings, groupingPromptText);
     const pendingId = crypto.randomUUID();
     await savePendingGroupingRun(pendingId, {
@@ -4816,7 +4869,7 @@ async function runRadPrimerImageDownloadOnly(tab) {
     if (!masterSource?.packageText) {
       throw new Error("Use master source is enabled, but no imported master source was found. Import master_source_import.json first.");
     }
-    extraction = buildMasterSourceExtraction(settings, promptText, masterSource);
+    extraction = await buildMasterSourceExtraction(settings, promptText, masterSource);
   } else {
     await sendPageStatus(tab.id, "Extracting", `Extracting selected ${articleSource.displayName} image list...`);
     extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
@@ -4869,7 +4922,7 @@ async function runRadPrimerIoQueue(tab) {
     if (!masterSource?.packageText) {
       throw new Error("Use master source is enabled, but no imported master source was found. Import master_source_import.json first.");
     }
-    extraction = buildMasterSourceExtraction(settings, promptText, masterSource);
+    extraction = await buildMasterSourceExtraction(settings, promptText, masterSource);
     const annotatedFiles = (extraction.downloadFiles || []).filter((file) =>
       file.variant === "annotated" || /_annot(?=\.)/i.test(String(file.filename || ""))
     );
