@@ -731,39 +731,84 @@
 
         .batch-group {
           display: grid;
-          gap: 6px;
-          padding: 9px;
+          gap: 7px;
+          padding: 8px 9px;
           border: 1px solid rgba(255,255,255,0.12);
           border-radius: 8px;
-          background: rgba(255,255,255,0.045);
+          border-left: 3px solid rgba(116,184,255,0.35);
+          background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.028));
         }
 
-        .batch-group-head,
-        .batch-plane-row {
-          display: grid;
-          grid-template-columns: 18px 1fr auto;
-          align-items: start;
-          gap: 7px;
-          font-size: 12px;
-          line-height: 1.3;
+        .batch-cart-dialog {
+          width: min(700px, calc(100vw - 28px));
         }
 
         .batch-group-head {
+          display: grid;
+          grid-template-columns: 18px minmax(0, 1fr);
+          align-items: start;
+          gap: 7px;
           color: rgba(245,247,250,0.96);
           font-weight: 750;
+          font-size: 12px;
+          line-height: 1.25;
+        }
+
+        .batch-group-copy {
+          display: grid;
+          min-width: 0;
+          gap: 3px;
+        }
+
+        .batch-title-row {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          align-items: baseline;
+          gap: 8px;
+        }
+
+        .batch-title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .batch-label-preview {
+          max-height: 42px;
+          overflow: auto;
+          padding: 5px 7px;
+          border-radius: 6px;
+          background: rgba(0,0,0,0.16);
+          color: rgba(245,247,250,0.72);
+          font-size: 10.5px;
+          font-weight: 520;
+          line-height: 1.35;
+          overscroll-behavior: contain;
+        }
+
+        .batch-plane-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
         }
 
         .batch-plane-row {
-          margin-left: 20px;
-          padding: 5px 6px;
-          border-radius: 6px;
-          background: rgba(0,0,0,0.18);
+          display: inline-grid;
+          grid-template-columns: 16px auto;
+          align-items: center;
+          gap: 5px;
+          max-width: 100%;
+          padding: 4px 7px;
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 999px;
+          background: rgba(0,0,0,0.2);
           color: rgba(245,247,250,0.82);
-          font-size: 11px;
+          font-size: 10.5px;
+          line-height: 1.15;
         }
 
         .batch-group input {
-          margin: 1px 0 0;
+          margin: 0;
           accent-color: #1f8ddc;
         }
 
@@ -771,6 +816,10 @@
           color: rgba(245,247,250,0.56);
           font-size: 10.5px;
           white-space: nowrap;
+        }
+
+        .batch-plane-row .batch-meta {
+          font-size: 9.8px;
         }
 
         .quick-card-actions {
@@ -1438,7 +1487,7 @@
         </div>
       </div>
       <div class="library-modal hidden" data-role="batch-cart-modal">
-        <div class="library-dialog" role="dialog" aria-label="Review IMAIOS Anki batch cart">
+        <div class="library-dialog batch-cart-dialog" role="dialog" aria-label="Review IMAIOS Anki batch cart">
           <div class="library-header">
             <strong>Anki batch cart</strong>
             <button class="icon-button" type="button" data-action="close-batch-cart-modal" title="Close batch cart">x</button>
@@ -4146,6 +4195,18 @@
     return `${counts[0]}-${counts[counts.length - 1]} labels`;
   }
 
+  function getBatchGroupLabelNames(group) {
+    const labels = [];
+    (group?.items || []).forEach((item) => {
+      const itemLabels = Array.isArray(item.labels) ? item.labels : Array.isArray(item.source?.labels) ? item.source.labels : [];
+      itemLabels.forEach((entry) => {
+        const label = cleanText(entry?.preferredLabel || entry?.label || entry?.name || entry);
+        if (label) labels.push(label);
+      });
+    });
+    return unique(labels);
+  }
+
   function getLiveDrillCardBatchSummaryText() {
     const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
     if (!batch.items.length) return "Anki batch is empty. Add reviewed locked drills here, then create cards from the full batch.";
@@ -4174,11 +4235,18 @@
     return groups.map((group, index) => {
       const seriesText = group.seriesNames.length ? group.seriesNames.join(", ") : "current plane";
       const labelText = getBatchGroupLabelCountText(group);
+      const labelNames = getBatchGroupLabelNames(group);
+      const labelPreview = labelNames.length ? labelNames.join(", ") : "No labels stored for this batch item.";
       const groupHeader = [
         `<label class="batch-group-head">`,
         `<input type="checkbox" data-role="batch-cart-group-check" data-group-key="${escapeHtml(group.key)}">`,
-        `<span>${escapeHtml(`${index + 1}. ${group.title || "IMAIOS chunk"}`)}</span>`,
+        `<span class="batch-group-copy">`,
+        `<span class="batch-title-row">`,
+        `<span class="batch-title">${escapeHtml(`${index + 1}. ${group.title || "IMAIOS chunk"}`)}</span>`,
         `<span class="batch-meta">${escapeHtml(`${seriesText} | ${labelText}`)}</span>`,
+        `</span>`,
+        `<span class="batch-label-preview"><strong>Labels:</strong> ${escapeHtml(labelPreview)}</span>`,
+        `</span>`,
         `</label>`
       ].join("");
       const rows = group.items.map((item) => {
@@ -4189,12 +4257,11 @@
         return [
           `<label class="batch-plane-row">`,
           `<input type="checkbox" data-role="batch-cart-item-check" data-group-key="${escapeHtml(group.key)}" data-item-key="${escapeHtml(itemKey)}" value="${escapeHtml(itemKey)}">`,
-          `<span>${escapeHtml(series)}</span>`,
-          `<span class="batch-meta">${escapeHtml(`${labels} label${labels === 1 ? "" : "s"}${details ? `, ${details} def` : ""}`)}</span>`,
+          `<span>${escapeHtml(`${series} | ${labels} label${labels === 1 ? "" : "s"}${details ? `, ${details} def` : ""}`)}</span>`,
           `</label>`
         ].join("");
       }).join("");
-      return `<div class="batch-group">${groupHeader}${rows}</div>`;
+      return `<div class="batch-group">${groupHeader}<div class="batch-plane-list">${rows}</div></div>`;
     }).join("");
   }
 
@@ -4942,6 +5009,9 @@
       "- Use INPUT.labels[].imaiosDetail as supplemental anatomy context for relationships, hierarchy, boundaries, contents, and nearby confusions.",
       "- IMAIOS details are for better grouping and concise recognition cues; do not turn the card into a definition memorization card.",
       "- If a label has no captured IMAIOS detail, still include it using the exact preferredLabel and use the available neighboring context.",
+      "- Use INPUT.learningFrame and INPUT.chunk as the source for scan order, review rationale, boundaries, and article-specific emphasis when writing recognitionCues, contrastCues, and rationale.",
+      "- Keep recognitionCues practical for image review: where to start looking, what boundary/relationship matters, and what nearby structure could be confused.",
+      "- Spell out uncommon acronyms the first time they appear in generated prose, followed by the acronym in parentheses. Common modality acronyms such as CT and MRI may remain abbreviated.",
       "- Preserve the breadcrumb/deck/tag context exactly enough that downstream import can route the card.",
       "- If INPUT.routing.explicitBreadcrumb, INPUT.routing.explicitDeckPath, or INPUT.routing.explicitTags are populated, treat them as authoritative source routing. Copy them unless a tiny formatting cleanup is needed.",
       "- Include INPUT.viewer.selectedSeries or INPUT.viewer.plane in the title when it clarifies the card set.",
@@ -5070,6 +5140,9 @@
       "- Prefer 2-4 labels per card. Use 5-6 only when they are one tight object/subpart family. Split larger groups into pedagogic subgroups.",
       "- Use IMAIOS details as supplemental anatomy context for relationships, hierarchy, boundaries, contents, and nearby confusions.",
       "- Details are for better grouping and concise recognition cues; do not turn cards into definition memorization cards.",
+      "- Use each INPUT.batchItems[].learningFrame and INPUT.batchItems[].chunk as the source for scan order, review rationale, boundaries, and article-specific emphasis when writing recognitionCues, contrastCues, and rationale.",
+      "- Keep recognitionCues practical for image review: where to start looking, what boundary/relationship matters, and what nearby structure could be confused.",
+      "- Spell out uncommon acronyms the first time they appear in generated prose, followed by the acronym in parentheses. Common modality acronyms such as CT and MRI may remain abbreviated.",
       "- Preserve breadcrumb/deck/tag context for the overall batch.",
       "- When multiple batch items share the same chunk/title across different series or planes, include the series or plane in the card title.",
       "",
