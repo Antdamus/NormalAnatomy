@@ -376,9 +376,29 @@
         }
 
         .quick-chunk-bar .chunk-learning-text {
-          min-height: 70px;
-          max-height: 128px;
-          font-size: 11px;
+          min-height: 94px;
+          max-height: 132px;
+          padding: 9px 10px;
+          border-color: rgba(116, 184, 255, 0.28);
+          background: rgba(9, 13, 18, 0.82);
+          color: rgba(255,255,255,0.96);
+          font: 12px/1.42 Inter, "Segoe UI", Arial, sans-serif;
+          resize: none;
+          cursor: default;
+          transition: max-height 140ms ease, min-height 140ms ease, background 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+        }
+
+        .quick-chunk-bar .chunk-learning-text:hover,
+        .quick-chunk-bar .chunk-learning-text:focus {
+          min-height: 148px;
+          max-height: 220px;
+          border-color: rgba(116, 184, 255, 0.7);
+          background: rgba(9, 13, 18, 0.96);
+          box-shadow: 0 10px 28px rgba(0,0,0,0.32), 0 0 0 2px rgba(58, 158, 255, 0.16);
+        }
+
+        .quick-chunk-bar .chunk-learning-text::placeholder {
+          color: rgba(245,247,250,0.54);
         }
 
         .quick-batch-cart {
@@ -786,7 +806,7 @@
           <div class="quick-chunk-label">Current chunk</div>
           <select data-role="quick-chunk">${chunkOptions}</select>
           <div class="quick-chunk-label">Chunk text</div>
-          <textarea class="chunk-learning-text" data-role="chunk-learning-text" spellcheck="false" placeholder="Select a chunk, then add scan order, boundaries, relationships, or teaching notes here."></textarea>
+          <textarea class="chunk-learning-text" data-role="chunk-learning-text" spellcheck="false" readonly placeholder="Select a chunk to read its scan guide."></textarea>
           <div class="quick-batch-cart">
             <div class="quick-chunk-label">Anki batch cart</div>
             <select data-role="quick-batch-cart"></select>
@@ -1138,9 +1158,6 @@
     root.querySelectorAll("[data-action='clear-live-drill-card-batch']").forEach((button) => {
       button.addEventListener("click", clearLiveDrillCardBatch);
     });
-    root.querySelector("[data-role='chunk-learning-text']").addEventListener("input", (event) => {
-      updateActiveChunkLearningText(event.target.value);
-    });
     root.querySelectorAll("[data-action='toggle-paired-answer']").forEach((button) => {
       button.addEventListener("click", togglePairedAnswerSession);
     });
@@ -1224,7 +1241,7 @@
       chunkLearningText.disabled = !chunk;
       chunkLearningText.placeholder = chunk
         ? "Scan order, boundaries, relationships, or teaching notes for this chunk."
-        : "Select a chunk to add learning text.";
+        : "Select a chunk to read its scan guide.";
     }
     chunkSummary.textContent = getChunkSummaryText();
     routingRoot.value = getRoutingDeckRoot();
