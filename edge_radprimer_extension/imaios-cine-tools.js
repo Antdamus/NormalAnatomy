@@ -5699,14 +5699,26 @@
 
   function normalizeChunk(value, index) {
     if (!value || typeof value !== "object") return null;
-    const title = cleanText(value.title || value.name || value.id || `Chunk ${index + 1}`);
-    const id = cleanText(value.id || createSlug(title) || `chunk-${index + 1}`);
     const labels = getRawChunkLabels(value).map(normalizeChunkLabel).filter(Boolean);
     const labelModuleKeys = unique(labels.map((label) => normalizeModuleKey(label.moduleKey)).filter(Boolean));
+    const parentGroup = cleanText(value.parentGroup || value.group || value.region || "");
+    const title = buildChunkTitle({
+      explicitTitle: value.title || value.name || "",
+      fallbackId: value.id || "",
+      parentGroup,
+      labels,
+      index
+    });
+    const rawId = cleanText(value.id || "");
+    const id = cleanText(
+      (rawId && !isGenericChunkTitle(rawId) ? rawId : "")
+      || createSlug(title)
+      || `chunk-${index + 1}`
+    );
     return {
       id,
       title,
-      parentGroup: cleanText(value.parentGroup || value.group || value.region || ""),
+      parentGroup,
       moduleKey: normalizeModuleKey(value.moduleKey || value.targetModuleKey || value.imaiosModuleKey || value.moduleUrl || value.modalityUrl || value.url || "") || (labelModuleKeys.length === 1 ? labelModuleKeys[0] : ""),
       moduleName: cleanText(value.moduleName || value.targetModuleName || ""),
       modality: cleanText(value.modality || value.imaiosModality || value.module || ""),
@@ -5744,6 +5756,57 @@
       learningFrame: normalizeStringList(value.learningFrame || value.learningNotes || value.notes),
       source: cleanText(value.source || "")
     };
+  }
+
+  function buildChunkTitle({ explicitTitle = "", fallbackId = "", parentGroup = "", labels = [], index = 0 } = {}) {
+    const explicit = cleanText(explicitTitle);
+    if (explicit && !isGenericChunkTitle(explicit)) return explicit;
+
+    const group = cleanText(parentGroup);
+    const labelNames = labels
+      .map((label) => cleanText(label.preferredLabel || label.concept || ""))
+      .filter(Boolean);
+    const focusLabels = labelNames.filter((label) => !group || normalizeText(label) !== normalizeText(group));
+    const focus = buildChunkTitleFocus(focusLabels.length ? focusLabels : labelNames);
+    if (group && focus) return compactChunkTitle(`${group}: ${focus}`);
+    if (group) return compactChunkTitle(group);
+    if (focus) return compactChunkTitle(focus);
+
+    const idTitle = slugToTitle(cleanText(fallbackId));
+    if (idTitle && !isGenericChunkTitle(idTitle)) return compactChunkTitle(idTitle);
+    return `Chunk ${index + 1}`;
+  }
+
+  function buildChunkTitleFocus(labels) {
+    const names = unique((Array.isArray(labels) ? labels : []).map(cleanText).filter(Boolean));
+    if (!names.length) return "";
+    if (names.length === 1) return names[0];
+    if (names.length === 2) return `${names[0]} and ${names[1]}`;
+    return `${names[0]} and related landmarks`;
+  }
+
+  function isGenericChunkTitle(value) {
+    const text = cleanText(value);
+    if (!text) return true;
+    return /^chunk(?:[\s_-]*\d+)?$/i.test(text)
+      || /^section(?:[\s_-]*\d+)?$/i.test(text)
+      || /^group(?:[\s_-]*\d+)?$/i.test(text);
+  }
+
+  function slugToTitle(value) {
+    const text = cleanText(value)
+      .replace(/[_-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!text || isGenericChunkTitle(text)) return "";
+    return text.replace(/\b[a-z]/g, (match) => match.toUpperCase());
+  }
+
+  function compactChunkTitle(value, maxLength = 78) {
+    const text = cleanText(value);
+    if (text.length <= maxLength) return text;
+    const truncated = text.slice(0, maxLength + 1).replace(/\s+\S*$/, "").trim();
+    return `${truncated || text.slice(0, maxLength).trim()}...`;
   }
 
   function getRawChunkLabels(value) {
