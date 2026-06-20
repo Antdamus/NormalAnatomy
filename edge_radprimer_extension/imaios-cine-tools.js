@@ -95,6 +95,8 @@
     collapsed: false,
     searchRunning: false,
     cancelSearch: false,
+    searchPrimeAt: 0,
+    searchPrimeModuleKey: "",
     statusTimer: 0,
     rangeCineTimer: 0,
     rangeCineRunning: false,
@@ -106,6 +108,13 @@
     rangeCineIntervalMs: cineSpeedToIntervalMs(DEFAULT_CINE_SPEED),
     recordingCine: false,
     recordPlaneScope: "current",
+    chunkModalOpen: false,
+    chunkInfoModalOpen: false,
+    chunkInfoFontSize: 15,
+    cardPlanePickerOpen: false,
+    batchCartModalOpen: false,
+    cardSeriesOptionsByModule: {},
+    cardSeriesSelectionsByModule: {},
     chunkLibrary: { ...EMPTY_CHUNK_LIBRARY },
     activeChunkId: "",
     labelRepository: { ...EMPTY_LABEL_REPOSITORY },
@@ -192,6 +201,15 @@
       if (["current", "axial-coronal", "all"].includes(prefs.recordPlaneScope)) {
         state.recordPlaneScope = prefs.recordPlaneScope;
       }
+      if (Number.isFinite(prefs.chunkInfoFontSize)) {
+        state.chunkInfoFontSize = clamp(Math.round(prefs.chunkInfoFontSize), 12, 24);
+      }
+      if (prefs.cardSeriesOptionsByModule && typeof prefs.cardSeriesOptionsByModule === "object") {
+        state.cardSeriesOptionsByModule = normalizeCardSeriesMap(prefs.cardSeriesOptionsByModule);
+      }
+      if (prefs.cardSeriesSelectionsByModule && typeof prefs.cardSeriesSelectionsByModule === "object") {
+        state.cardSeriesSelectionsByModule = normalizeCardSeriesMap(prefs.cardSeriesSelectionsByModule);
+      }
       if (typeof prefs.routingDeckRoot === "string") {
         state.routingDeckRoot = prefs.routingDeckRoot || DEFAULT_DECK_ROOT;
       }
@@ -222,6 +240,9 @@
         rangeCineSpeed: state.rangeCineSpeed,
         applyChunkClearFirst: state.applyChunkClearFirst,
         recordPlaneScope: state.recordPlaneScope,
+        chunkInfoFontSize: state.chunkInfoFontSize,
+        cardSeriesOptionsByModule: state.cardSeriesOptionsByModule,
+        cardSeriesSelectionsByModule: state.cardSeriesSelectionsByModule,
         routingDeckRoot: state.routingDeckRoot,
         hotkeys: state.hotkeys
       }));
@@ -268,6 +289,7 @@
   function buildMarkup() {
     const chunkOptions = buildChunkOptions();
     const chunkModuleOptions = buildChunkModuleOptions();
+    const currentChunkButtonHtml = buildCurrentChunkButtonHtml();
     const hotkeyRows = HOTKEY_ACTIONS.map((action) => `
       <div class="key-row">
         <span>${escapeHtml(action.label)}</span>
@@ -358,6 +380,399 @@
           font-size: 11px;
         }
 
+        .chunk-current-control {
+          display: block;
+        }
+
+        .chunk-select-button {
+          width: 100%;
+          min-height: 44px;
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr);
+          align-items: center;
+          gap: 8px;
+          padding: 7px 10px;
+          text-align: left;
+        }
+
+        .chunk-select-number,
+        .chunk-picker-number {
+          display: inline-grid;
+          place-items: center;
+          width: 24px;
+          height: 24px;
+          border: 1px solid rgba(116,184,255,0.38);
+          border-radius: 999px;
+          background: rgba(24,104,171,0.24);
+          color: rgba(236,247,255,0.96);
+          font-size: 11px;
+          font-weight: 800;
+          line-height: 1;
+          font-variant-numeric: tabular-nums;
+        }
+
+        .chunk-select-copy {
+          display: grid;
+          min-width: 0;
+          gap: 2px;
+        }
+
+        .chunk-select-title {
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 12px;
+          font-weight: 760;
+          line-height: 1.2;
+          color: rgba(255,255,255,0.96);
+        }
+
+        .chunk-select-hint {
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 10px;
+          font-weight: 550;
+          line-height: 1.2;
+          color: rgba(245,247,250,0.58);
+        }
+
+        .chunk-info-strip {
+          display: block;
+          min-height: 58px;
+          max-height: 58px;
+          overflow: auto;
+          padding: 7px 9px;
+          border: 1px solid rgba(116,184,255,0.18);
+          border-left: 3px solid rgba(116,184,255,0.45);
+          border-radius: 7px;
+          background: linear-gradient(135deg, rgba(14, 23, 32, 0.82), rgba(255,255,255,0.035));
+          color: rgba(245,247,250,0.78);
+          font: 10.8px/1.36 Inter, "Segoe UI", Arial, sans-serif;
+          resize: vertical;
+          cursor: zoom-in;
+          transition: max-height 140ms ease, border-color 140ms ease, background 140ms ease;
+          overscroll-behavior: contain;
+        }
+
+        .chunk-info-strip:hover,
+        .chunk-info-strip:focus {
+          max-height: 132px;
+          border-color: rgba(116,184,255,0.44);
+          background: linear-gradient(135deg, rgba(14, 23, 32, 0.96), rgba(255,255,255,0.05));
+        }
+
+        .chunk-info-strip.empty {
+          color: rgba(245,247,250,0.46);
+          font-style: italic;
+        }
+
+        .chunk-info-dialog {
+          width: min(680px, calc(100vw - 28px));
+        }
+
+        .chunk-info-reader {
+          max-height: min(440px, calc(100vh - 190px));
+          overflow: auto;
+          padding: 13px 14px;
+          border: 1px solid rgba(116,184,255,0.24);
+          border-left: 3px solid rgba(116,184,255,0.58);
+          border-radius: 8px;
+          background: rgba(9, 13, 18, 0.88);
+          color: rgba(247,250,255,0.94);
+          line-height: 1.45;
+          white-space: pre-wrap;
+          overscroll-behavior: contain;
+        }
+
+        .chunk-info-reader.empty {
+          color: rgba(245,247,250,0.52);
+          font-style: italic;
+        }
+
+        .chunk-info-controls {
+          display: grid;
+          grid-template-columns: auto minmax(120px, 1fr) auto;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 0 0;
+          color: rgba(245,247,250,0.68);
+          font-size: 11px;
+        }
+
+        .chunk-info-controls input {
+          width: 100%;
+        }
+
+        .card-plane-control {
+          display: grid;
+          grid-template-columns: minmax(104px, 0.44fr) 1fr;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .card-plane-control button {
+          min-height: 28px;
+          padding: 4px 7px;
+          font-size: 11px;
+        }
+
+        .card-plane-summary {
+          min-height: 28px;
+          padding: 5px 7px;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 6px;
+          background: rgba(255,255,255,0.05);
+          color: rgba(245,247,250,0.82);
+          font-size: 10.5px;
+          line-height: 1.35;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .card-plane-picker {
+          display: grid;
+          gap: 7px;
+          padding: 8px;
+          border: 1px solid rgba(116,184,255,0.25);
+          border-radius: 7px;
+          background: rgba(11, 15, 20, 0.92);
+        }
+
+        .card-plane-picker.support-hidden {
+          display: none;
+        }
+
+        .card-plane-picker-head,
+        .card-plane-picker-foot {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 6px;
+          color: rgba(245,247,250,0.72);
+          font-size: 10.5px;
+        }
+
+        .card-plane-picker-head button,
+        .card-plane-picker-foot button {
+          min-height: 24px;
+          padding: 3px 7px;
+          font-size: 10.5px;
+        }
+
+        .card-plane-options {
+          display: grid;
+          gap: 5px;
+          max-height: 132px;
+          overflow: auto;
+          padding-right: 2px;
+        }
+
+        .card-plane-option {
+          display: grid;
+          grid-template-columns: 18px 1fr;
+          align-items: start;
+          gap: 6px;
+          padding: 5px 6px;
+          border-radius: 6px;
+          background: rgba(255,255,255,0.05);
+          color: rgba(245,247,250,0.9);
+          font-size: 11px;
+          line-height: 1.25;
+        }
+
+        .card-plane-option input {
+          margin: 1px 0 0;
+        }
+
+        .library-modal {
+          position: fixed;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          padding: 14px;
+          background: rgba(0,0,0,0.48);
+          pointer-events: auto;
+          z-index: 2147483647;
+        }
+
+        .library-modal.hidden {
+          display: none;
+        }
+
+        .library-dialog {
+          width: min(520px, calc(100vw - 28px));
+          max-height: min(660px, calc(100vh - 32px));
+          display: grid;
+          grid-template-rows: auto minmax(0, 1fr) auto;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.18);
+          border-radius: 9px;
+          background: rgba(24, 27, 31, 0.98);
+          box-shadow: 0 18px 42px rgba(0,0,0,0.5);
+          color: #f5f7fa;
+        }
+
+        .library-header,
+        .library-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+          padding: 10px 11px;
+          background: rgba(255,255,255,0.06);
+        }
+
+        .library-header strong {
+          font-size: 13px;
+        }
+
+        .library-body {
+          display: grid;
+          gap: 8px;
+          min-height: 0;
+          overflow: auto;
+          padding: 10px;
+        }
+
+        .library-footer {
+          justify-content: flex-end;
+          flex-wrap: wrap;
+        }
+
+        .library-empty {
+          padding: 14px;
+          border: 1px dashed rgba(255,255,255,0.16);
+          border-radius: 8px;
+          color: rgba(245,247,250,0.62);
+          font-size: 12px;
+          line-height: 1.35;
+        }
+
+        .chunk-picker-grid {
+          display: grid;
+          gap: 8px;
+        }
+
+        .chunk-picker-card {
+          display: grid;
+          gap: 7px;
+          padding: 10px;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-left: 3px solid rgba(116,184,255,0.38);
+          border-radius: 8px;
+          background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.035));
+        }
+
+        .chunk-picker-card.active {
+          border-color: rgba(116,184,255,0.48);
+          border-left-color: rgba(58,158,255,0.95);
+          background: linear-gradient(135deg, rgba(38,123,202,0.18), rgba(255,255,255,0.04));
+          box-shadow: inset 0 0 0 1px rgba(58,158,255,0.12);
+        }
+
+        .chunk-picker-head {
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr) auto;
+          align-items: start;
+          gap: 8px;
+        }
+
+        .chunk-picker-title {
+          font-size: 13px;
+          font-weight: 760;
+          line-height: 1.25;
+          color: rgba(255,255,255,0.96);
+        }
+
+        .chunk-picker-meta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+          margin-top: 5px;
+        }
+
+        .chunk-pill {
+          display: inline-flex;
+          align-items: center;
+          min-height: 20px;
+          padding: 2px 7px;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 999px;
+          background: rgba(0,0,0,0.22);
+          color: rgba(245,247,250,0.74);
+          font-size: 10.5px;
+          line-height: 1.2;
+          white-space: nowrap;
+        }
+
+        .chunk-pill.strong {
+          border-color: rgba(116,184,255,0.38);
+          background: rgba(24,104,171,0.3);
+          color: rgba(236,247,255,0.96);
+          font-weight: 750;
+        }
+
+        .chunk-picker-labels {
+          color: rgba(245,247,250,0.62);
+          font-size: 10.8px;
+          line-height: 1.35;
+          max-height: 44px;
+          overflow: hidden;
+        }
+
+        .chunk-picker-action {
+          min-width: 104px;
+          align-self: start;
+        }
+
+        .batch-group {
+          display: grid;
+          gap: 6px;
+          padding: 9px;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 8px;
+          background: rgba(255,255,255,0.045);
+        }
+
+        .batch-group-head,
+        .batch-plane-row {
+          display: grid;
+          grid-template-columns: 18px 1fr auto;
+          align-items: start;
+          gap: 7px;
+          font-size: 12px;
+          line-height: 1.3;
+        }
+
+        .batch-group-head {
+          color: rgba(245,247,250,0.96);
+          font-weight: 750;
+        }
+
+        .batch-plane-row {
+          margin-left: 20px;
+          padding: 5px 6px;
+          border-radius: 6px;
+          background: rgba(0,0,0,0.18);
+          color: rgba(245,247,250,0.82);
+          font-size: 11px;
+        }
+
+        .batch-group input {
+          margin: 1px 0 0;
+          accent-color: #1f8ddc;
+        }
+
+        .batch-meta {
+          color: rgba(245,247,250,0.56);
+          font-size: 10.5px;
+          white-space: nowrap;
+        }
+
         .quick-card-actions {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -371,34 +786,9 @@
         }
 
         .quick-card-actions .primary,
-        .quick-card-actions button[data-action="toggle-paired-answer"] {
+        .quick-card-actions button[data-action="toggle-paired-answer"],
+        .quick-card-actions button[data-action="add-module-chunks-to-batch"] {
           grid-column: 1 / -1;
-        }
-
-        .quick-chunk-bar .chunk-learning-text {
-          min-height: 94px;
-          max-height: 132px;
-          padding: 9px 10px;
-          border-color: rgba(116, 184, 255, 0.28);
-          background: rgba(9, 13, 18, 0.82);
-          color: rgba(255,255,255,0.96);
-          font: 12px/1.42 Inter, "Segoe UI", Arial, sans-serif;
-          resize: none;
-          cursor: default;
-          transition: max-height 140ms ease, min-height 140ms ease, background 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
-        }
-
-        .quick-chunk-bar .chunk-learning-text:hover,
-        .quick-chunk-bar .chunk-learning-text:focus {
-          min-height: 148px;
-          max-height: 220px;
-          border-color: rgba(116, 184, 255, 0.7);
-          background: rgba(9, 13, 18, 0.96);
-          box-shadow: 0 10px 28px rgba(0,0,0,0.32), 0 0 0 2px rgba(58, 158, 255, 0.16);
-        }
-
-        .quick-chunk-bar .chunk-learning-text::placeholder {
-          color: rgba(245,247,250,0.54);
         }
 
         .quick-batch-cart {
@@ -406,10 +796,24 @@
           gap: 4px;
         }
 
-        .quick-batch-cart select {
-          height: 27px;
-          font-size: 10.5px;
+        .quick-batch-summary {
+          min-height: 28px;
+          padding: 5px 7px;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 6px;
+          background: rgba(255,255,255,0.05);
           color: rgba(245,247,250,0.82);
+          font-size: 10.5px;
+          line-height: 1.35;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .quick-batch-cart button {
+          min-height: 28px;
+          padding: 4px 7px;
+          font-size: 11px;
         }
 
         .row {
@@ -666,12 +1070,6 @@
           margin: 2px 0;
         }
 
-        .chunk-learning-text {
-          min-height: 82px;
-          max-height: 180px;
-          font-size: 11.5px;
-        }
-
         .support-hidden {
           display: none;
         }
@@ -804,17 +1202,25 @@
         </div>
         <div class="quick-chunk-bar">
           <div class="quick-chunk-label">Current chunk</div>
-          <select data-role="quick-chunk">${chunkOptions}</select>
-          <div class="quick-chunk-label">Chunk text</div>
-          <textarea class="chunk-learning-text" data-role="chunk-learning-text" spellcheck="false" readonly placeholder="Select a chunk to read its scan guide."></textarea>
+          <div class="chunk-current-control">
+            <button class="chunk-select-button" type="button" data-action="open-chunk-modal" data-role="quick-chunk-button">${currentChunkButtonHtml}</button>
+          </div>
+          <div class="chunk-info-strip empty" data-role="quick-chunk-info" tabindex="0" role="button" aria-label="Open chunk scan guide">Select a chunk to show its scan guide.</div>
+          <div class="quick-chunk-label">Card planes</div>
+          <div class="card-plane-control">
+            <button type="button" data-action="toggle-card-plane-picker">Select planes</button>
+            <div class="card-plane-summary" data-role="card-plane-summary"></div>
+          </div>
           <div class="quick-batch-cart">
             <div class="quick-chunk-label">Anki batch cart</div>
-            <select data-role="quick-batch-cart"></select>
+            <div class="quick-batch-summary" data-role="quick-batch-cart-summary">Batch cart empty</div>
+            <button type="button" data-action="open-batch-cart-modal">Manage batch</button>
           </div>
           <div class="quick-card-actions">
             <button class="primary" type="button" data-action="run-live-drill-smart-card-automation">Create Anki cards based on batch</button>
-            <button type="button" data-action="add-live-drill-to-batch">Add to batch</button>
-            <button class="danger" type="button" data-action="clear-live-drill-card-batch">Clear batch</button>
+            <button type="button" data-action="add-current-live-drill-to-batch">Add current plane</button>
+            <button type="button" data-action="add-live-drill-to-batch">Add selected planes</button>
+            <button type="button" data-action="add-module-chunks-to-batch" title="Add every chunk in this module across the selected card planes">Add all module chunks</button>
           </div>
         </div>
         <div class="controls">
@@ -857,7 +1263,7 @@
 
           <details class="tool-section">
             <summary>Cine capture</summary>
-            <select class="capture-scope" data-role="record-plane-scope">${buildRecordPlaneScopeOptions()}</select>
+            <select class="capture-scope" data-role="record-plane-scope">${buildPlaneScopeOptions()}</select>
             <div class="capture-actions">
               <button class="primary" type="button" data-action="record-cine">Record pair</button>
               <button type="button" data-action="copy-anki-video-html">Copy Anki HTML</button>
@@ -876,8 +1282,13 @@
               <button type="button" data-action="copy-live-drill-card-prompt">Copy prompt</button>
               <button type="button" data-action="import-live-drill-card-plan">Plan to TSV</button>
             </div>
+            <div class="row three">
+              <button type="button" data-action="add-current-live-drill-to-batch">Add current</button>
+              <button type="button" data-action="add-live-drill-to-batch">Add selected</button>
+              <button type="button" data-action="add-module-chunks-to-batch">Add module</button>
+            </div>
             <div class="row">
-              <button type="button" data-action="add-live-drill-to-batch">Add to batch</button>
+              <button type="button" data-action="open-batch-cart-modal">Manage batch</button>
               <button class="danger" type="button" data-action="clear-live-drill-card-batch">Clear batch</button>
             </div>
             <div class="row">
@@ -981,6 +1392,65 @@
           </div>
         </div>
       </div>
+      <div class="library-modal hidden" data-role="chunk-modal">
+        <div class="library-dialog" role="dialog" aria-label="Select IMAIOS chunk">
+          <div class="library-header">
+            <strong>Current chunk</strong>
+            <button class="icon-button" type="button" data-action="close-chunk-modal" title="Close chunk selector">x</button>
+          </div>
+          <div class="library-body" data-role="chunk-modal-body"></div>
+          <div class="library-footer">
+            <button type="button" data-action="reapply-current-chunk">Reapply current</button>
+            <button class="primary" type="button" data-action="close-chunk-modal">Done</button>
+          </div>
+        </div>
+      </div>
+      <div class="library-modal hidden" data-role="chunk-info-modal">
+        <div class="library-dialog chunk-info-dialog" role="dialog" aria-label="Read current chunk guide">
+          <div class="library-header">
+            <strong data-role="chunk-info-title">Chunk guide</strong>
+            <button class="icon-button" type="button" data-action="close-chunk-info-modal" title="Close chunk guide">x</button>
+          </div>
+          <div class="library-body">
+            <div data-role="chunk-info-modal-body"></div>
+            <label class="chunk-info-controls">
+              <span>Text</span>
+              <input type="range" min="12" max="24" step="1" data-role="chunk-info-font-size">
+              <span data-role="chunk-info-font-size-value"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="library-modal hidden" data-role="card-plane-modal">
+        <div class="library-dialog" role="dialog" aria-label="Select IMAIOS card planes">
+          <div class="library-header">
+            <strong>Select planes</strong>
+            <button class="icon-button" type="button" data-action="close-card-plane-picker" title="Close plane selector">x</button>
+          </div>
+          <div class="library-body">
+            <div class="section-note">Saved for this module. These are used by Add selected planes and Add module chunks.</div>
+            <div class="card-plane-options" data-role="card-plane-options"></div>
+          </div>
+          <div class="library-footer">
+            <button type="button" data-action="refresh-card-plane-options">Refresh</button>
+            <button class="primary" type="button" data-action="close-card-plane-picker">Done</button>
+          </div>
+        </div>
+      </div>
+      <div class="library-modal hidden" data-role="batch-cart-modal">
+        <div class="library-dialog" role="dialog" aria-label="Review IMAIOS Anki batch cart">
+          <div class="library-header">
+            <strong>Anki batch cart</strong>
+            <button class="icon-button" type="button" data-action="close-batch-cart-modal" title="Close batch cart">x</button>
+          </div>
+          <div class="library-body" data-role="batch-cart-body"></div>
+          <div class="library-footer">
+            <button type="button" data-action="remove-checked-batch-cart-items">Remove checked</button>
+            <button class="danger" type="button" data-action="clear-live-drill-card-batch">Clear batch</button>
+            <button class="primary" type="button" data-action="close-batch-cart-modal">Done</button>
+          </div>
+        </div>
+      </div>
     `;
   }
 
@@ -1008,8 +1478,33 @@
     root.querySelector("[data-role='chunk']").addEventListener("change", (event) => {
       setActiveChunkId(event.target.value);
     });
-    root.querySelector("[data-role='quick-chunk']").addEventListener("change", async (event) => {
-      await setActiveChunkIdAndApply(event.target.value);
+    root.querySelectorAll("[data-action='open-chunk-modal']").forEach((button) => {
+      button.addEventListener("click", openChunkModal);
+    });
+    root.querySelectorAll("[data-action='close-chunk-modal']").forEach((button) => {
+      button.addEventListener("click", closeChunkModal);
+    });
+    root.querySelector("[data-role='quick-chunk-info']").addEventListener("click", openChunkInfoModal);
+    root.querySelector("[data-role='quick-chunk-info']").addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openChunkInfoModal();
+    });
+    root.querySelectorAll("[data-action='close-chunk-info-modal']").forEach((button) => {
+      button.addEventListener("click", closeChunkInfoModal);
+    });
+    root.querySelector("[data-role='chunk-info-font-size']").addEventListener("input", (event) => {
+      state.chunkInfoFontSize = clamp(Number(event.target.value) || 15, 12, 24);
+      savePageState();
+      refreshPanel();
+    });
+    root.querySelector("[data-action='reapply-current-chunk']").addEventListener("click", reapplyActiveChunkFromQuickSelect);
+    root.addEventListener("click", async (event) => {
+      const button = event.target?.closest?.("[data-action='select-chunk-from-modal']");
+      if (!button) return;
+      const chunkId = cleanText(button.getAttribute("data-chunk-id") || "");
+      if (!chunkId) return;
+      await setActiveChunkIdAndApply(chunkId, { forceClearFirst: true, closeChunkModal: true, fastReview: true });
     });
     root.querySelector("[data-role='chunk-module']").addEventListener("change", (event) => {
       navigateToChunkModule(event.target.value);
@@ -1026,6 +1521,17 @@
         savePageState();
         refreshPanel();
       });
+    });
+    root.querySelector("[data-action='toggle-card-plane-picker']").addEventListener("click", toggleCardPlanePicker);
+    root.querySelector("[data-action='refresh-card-plane-options']").addEventListener("click", refreshCardPlaneOptionsFromImaios);
+    root.querySelectorAll("[data-action='close-card-plane-picker']").forEach((button) => button.addEventListener("click", () => {
+      state.cardPlanePickerOpen = false;
+      refreshPanel();
+    }));
+    root.addEventListener("change", (event) => {
+      const checkbox = event.target?.closest?.("[data-role='card-plane-option']");
+      if (!checkbox) return;
+      updateCardSeriesSelectionFromPicker();
     });
     root.querySelector("[data-action='apply-chunk']").addEventListener("click", applyActiveChunk);
     root.querySelector("[data-action='check-chunk']").addEventListener("click", checkActiveChunk);
@@ -1145,10 +1651,50 @@
     root.querySelectorAll("[data-action='add-live-drill-to-batch']").forEach((button) => {
       button.addEventListener("click", addCurrentLiveDrillToCardBatch);
     });
+    root.querySelectorAll("[data-action='add-current-live-drill-to-batch']").forEach((button) => {
+      button.addEventListener("click", addCurrentLiveDrillCurrentPlaneToCardBatch);
+    });
+    root.querySelectorAll("[data-action='add-module-chunks-to-batch']").forEach((button) => {
+      button.addEventListener("click", addCurrentModuleChunksToCardBatch);
+    });
+    root.querySelectorAll("[data-action='open-batch-cart-modal']").forEach((button) => {
+      button.addEventListener("click", openBatchCartModal);
+    });
+    root.querySelectorAll("[data-action='close-batch-cart-modal']").forEach((button) => {
+      button.addEventListener("click", closeBatchCartModal);
+    });
+    root.querySelector("[data-action='remove-checked-batch-cart-items']").addEventListener("click", removeCheckedLiveDrillCardBatchItems);
+    root.querySelector("[data-role='chunk-modal']").addEventListener("click", (event) => {
+      if (event.target !== event.currentTarget) return;
+      state.chunkModalOpen = false;
+      refreshPanel();
+    });
+    root.querySelector("[data-role='chunk-info-modal']").addEventListener("click", (event) => {
+      if (event.target !== event.currentTarget) return;
+      state.chunkInfoModalOpen = false;
+      refreshPanel();
+    });
+    root.querySelector("[data-role='card-plane-modal']").addEventListener("click", (event) => {
+      if (event.target !== event.currentTarget) return;
+      state.cardPlanePickerOpen = false;
+      refreshPanel();
+    });
+    root.querySelector("[data-role='batch-cart-modal']").addEventListener("click", (event) => {
+      if (event.target !== event.currentTarget) return;
+      state.batchCartModalOpen = false;
+      refreshPanel();
+    });
+    root.addEventListener("change", (event) => {
+      const groupInput = event.target?.closest?.("[data-role='batch-cart-group-check']");
+      if (!groupInput) return;
+      const groupKey = cleanText(groupInput.getAttribute("data-group-key") || "");
+      root.querySelectorAll("[data-role='batch-cart-item-check']").forEach((input) => {
+        if (cleanText(input.getAttribute("data-group-key") || "") === groupKey) input.checked = groupInput.checked;
+      });
+    });
     root.querySelectorAll("[data-action='run-live-drill-batch-card-automation']").forEach((button) => {
       button.addEventListener("click", runLiveDrillBatchCardAutomation);
     });
-    root.querySelector("[data-role='quick-batch-cart']").addEventListener("change", showSelectedLiveDrillBatchCartItem);
     root.querySelector("[data-action='copy-live-drill-card-batch']").addEventListener("click", copyLiveDrillCardBatch);
     root.querySelector("[data-action='backup-live-drill-card-batch']").addEventListener("click", () => {
       backupLiveDrillCardBatchToDownloads("manual").then((result) => {
@@ -1186,16 +1732,28 @@
     }
     const panel = root.querySelector("[data-role='panel']");
     const chunkModuleSelect = root.querySelector("[data-role='chunk-module']");
-    const quickChunkSelect = root.querySelector("[data-role='quick-chunk']");
-    const quickBatchCartSelect = root.querySelector("[data-role='quick-batch-cart']");
+    const quickChunkButton = root.querySelector("[data-role='quick-chunk-button']");
+    const quickChunkInfo = root.querySelector("[data-role='quick-chunk-info']");
+    const quickBatchCartSummary = root.querySelector("[data-role='quick-batch-cart-summary']");
     const chunkSelect = root.querySelector("[data-role='chunk']");
     const chunkPreview = root.querySelector("[data-role='chunk-preview']");
-    const chunkLearningText = root.querySelector("[data-role='chunk-learning-text']");
     const chunkSummary = root.querySelector("[data-role='chunk-summary']");
     const routingRoot = root.querySelector("[data-role='routing-root']");
     const routingJson = root.querySelector("[data-role='routing-json']");
     const routingSummary = root.querySelector("[data-role='routing-summary']");
     const recordPlaneScopes = Array.from(root.querySelectorAll("[data-role='record-plane-scope']"));
+    const chunkModal = root.querySelector("[data-role='chunk-modal']");
+    const chunkModalBody = root.querySelector("[data-role='chunk-modal-body']");
+    const chunkInfoModal = root.querySelector("[data-role='chunk-info-modal']");
+    const chunkInfoTitle = root.querySelector("[data-role='chunk-info-title']");
+    const chunkInfoBody = root.querySelector("[data-role='chunk-info-modal-body']");
+    const chunkInfoFontSize = root.querySelector("[data-role='chunk-info-font-size']");
+    const chunkInfoFontSizeValue = root.querySelector("[data-role='chunk-info-font-size-value']");
+    const cardPlaneSummary = root.querySelector("[data-role='card-plane-summary']");
+    const cardPlaneModal = root.querySelector("[data-role='card-plane-modal']");
+    const cardPlaneOptions = root.querySelector("[data-role='card-plane-options']");
+    const batchCartModal = root.querySelector("[data-role='batch-cart-modal']");
+    const batchCartBody = root.querySelector("[data-role='batch-cart-body']");
     const applyClearFirst = root.querySelector("[data-role='apply-clear-first']");
     const customList = root.querySelector("[data-role='custom-list']");
     const selected = root.querySelector("[data-role='selected']");
@@ -1217,32 +1775,35 @@
     panel.style.top = `${state.panelPosition.top}px`;
     chunkModuleSelect.innerHTML = buildChunkModuleOptions();
     chunkModuleSelect.value = normalizeModuleKey(getCurrentModuleKey());
-    quickChunkSelect.innerHTML = buildChunkOptions();
-    quickChunkSelect.value = state.activeChunkId;
-    if (quickBatchCartSelect) {
-      const currentValue = quickBatchCartSelect.value;
-      quickBatchCartSelect.innerHTML = buildLiveDrillCardBatchCartOptions();
-      quickBatchCartSelect.value = Array.from(quickBatchCartSelect.options).some((option) => option.value === currentValue)
-        ? currentValue
-        : "";
-      quickBatchCartSelect.disabled = !normalizeLiveDrillCardBatch(state.liveDrillCardBatch).items.length;
+    if (quickChunkButton) quickChunkButton.innerHTML = buildCurrentChunkButtonHtml();
+    if (quickChunkInfo) {
+      const info = getActiveChunkInfoText();
+      quickChunkInfo.textContent = info || "No scan guide saved for this chunk yet.";
+      quickChunkInfo.classList.toggle("empty", !info);
+      quickChunkInfo.removeAttribute("title");
     }
+    if (quickBatchCartSummary) quickBatchCartSummary.textContent = getLiveDrillCardBatchCompactSummaryText();
     chunkSelect.innerHTML = buildChunkOptions();
     chunkSelect.value = state.activeChunkId;
     recordPlaneScopes.forEach((select) => {
-      select.innerHTML = buildRecordPlaneScopeOptions();
+      select.innerHTML = buildPlaneScopeOptions();
       select.value = state.recordPlaneScope;
       select.disabled = Boolean(state.recordingCine);
     });
+    if (chunkModal) chunkModal.classList.toggle("hidden", !state.chunkModalOpen);
+    if (chunkModalBody) chunkModalBody.innerHTML = buildChunkPickerModalHtml();
+    if (chunkInfoModal) chunkInfoModal.classList.toggle("hidden", !state.chunkInfoModalOpen);
+    if (chunkInfoTitle) chunkInfoTitle.textContent = getChunkInfoModalTitle();
+    if (chunkInfoBody) chunkInfoBody.innerHTML = buildChunkInfoModalBodyHtml();
+    if (chunkInfoFontSize) chunkInfoFontSize.value = String(state.chunkInfoFontSize);
+    if (chunkInfoFontSizeValue) chunkInfoFontSizeValue.textContent = `${Math.round(state.chunkInfoFontSize)} px`;
+    if (cardPlaneSummary) cardPlaneSummary.textContent = getCardSeriesSelectionSummary();
+    if (cardPlaneModal) cardPlaneModal.classList.toggle("hidden", !state.cardPlanePickerOpen);
+    if (cardPlaneOptions) cardPlaneOptions.innerHTML = buildCardSeriesPickerHtml();
+    if (batchCartModal) batchCartModal.classList.toggle("hidden", !state.batchCartModalOpen);
+    if (batchCartBody) batchCartBody.innerHTML = buildLiveDrillCardBatchCartModalHtml();
     applyClearFirst.checked = state.applyChunkClearFirst;
     chunkPreview.innerHTML = buildChunkPreviewHtml();
-    if (chunkLearningText && root.activeElement !== chunkLearningText) {
-      chunkLearningText.value = getActiveChunkLearningText();
-      chunkLearningText.disabled = !chunk;
-      chunkLearningText.placeholder = chunk
-        ? "Scan order, boundaries, relationships, or teaching notes for this chunk."
-        : "Select a chunk to read its scan guide.";
-    }
     chunkSummary.textContent = getChunkSummaryText();
     routingRoot.value = getRoutingDeckRoot();
     routingJson.value = state.routingText;
@@ -1293,7 +1854,7 @@
     ].filter(Boolean).join("");
   }
 
-  function buildRecordPlaneScopeOptions() {
+  function buildPlaneScopeOptions() {
     const options = [
       ["current", "Current plane"],
       ["axial-coronal", "Axial + Coronal"],
@@ -1302,6 +1863,145 @@
     return options.map(([value, label]) => (
       `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`
     )).join("");
+  }
+
+  function getPlanesForScope(scope) {
+    if (scope === "axial-coronal") return ["Axial", "Coronal"];
+    if (scope === "all") return ["Axial", "Coronal", "Sagittal"];
+    return ["current"];
+  }
+
+  function normalizeCardSeriesMap(value) {
+    const output = {};
+    if (!value || typeof value !== "object") return output;
+    for (const [rawKey, rawItems] of Object.entries(value)) {
+      const key = normalizeModuleKey(rawKey || "");
+      if (!key || !Array.isArray(rawItems)) continue;
+      const items = unique(rawItems.map(cleanText).filter(Boolean)).filter((name) => !isAllSeriesName(name));
+      if (items.length) output[key] = items;
+    }
+    return output;
+  }
+
+  function getCardSeriesModuleKey() {
+    return normalizeModuleKey(getCurrentModuleKey()) || normalizeModuleKey(location.pathname) || "current-module";
+  }
+
+  function getStoredCardSeriesOptions(moduleKey = getCardSeriesModuleKey()) {
+    return unique((state.cardSeriesOptionsByModule[moduleKey] || []).map(cleanText).filter(Boolean)).filter((name) => !isAllSeriesName(name));
+  }
+
+  function getStoredCardSeriesSelection(moduleKey = getCardSeriesModuleKey()) {
+    return unique((state.cardSeriesSelectionsByModule[moduleKey] || []).map(cleanText).filter(Boolean)).filter((name) => !isAllSeriesName(name));
+  }
+
+  function getCurrentSeriesLabel() {
+    const series = getSeriesInfo();
+    return cleanText(series.selectedSeries || normalizePlaneName(series.selectedPlane) || inferSelectedPlaneFromDom() || "");
+  }
+
+  function getAvailableCardSeriesOptions(moduleKey = getCardSeriesModuleKey()) {
+    const seriesInfo = getSeriesInfo();
+    const visible = Array.isArray(seriesInfo.availableSeries) ? seriesInfo.availableSeries : [];
+    const current = getCurrentSeriesLabel();
+    return unique([
+      ...getStoredCardSeriesOptions(moduleKey),
+      current,
+      ...visible
+    ].map(cleanText).filter(Boolean)).filter((name) => !isAllSeriesName(name));
+  }
+
+  function getSelectedCardSeriesForCurrentModule() {
+    const moduleKey = getCardSeriesModuleKey();
+    const selected = getStoredCardSeriesSelection(moduleKey);
+    return selected.length ? selected : [];
+  }
+
+  function getCardSeriesSelectionSummary() {
+    const selected = getSelectedCardSeriesForCurrentModule();
+    if (!selected.length) {
+      const current = getCurrentSeriesLabel();
+      return current ? `Current only: ${current}` : "Current plane only";
+    }
+    if (selected.length <= 2) return selected.join(", ");
+    return `${selected.slice(0, 2).join(", ")} +${selected.length - 2}`;
+  }
+
+  function buildCardSeriesPickerHtml() {
+    const moduleKey = getCardSeriesModuleKey();
+    const options = getAvailableCardSeriesOptions(moduleKey);
+    const selected = new Set(getStoredCardSeriesSelection(moduleKey).map(normalizeText));
+    if (!options.length) {
+      return `<div class="section-note">Click Refresh after the IMAIOS series menu is available.</div>`;
+    }
+    return options.map((name) => {
+      const checked = selected.has(normalizeText(name));
+      return [
+        `<label class="card-plane-option">`,
+        `<input type="checkbox" data-role="card-plane-option" value="${escapeHtml(name)}"${checked ? " checked" : ""}>`,
+        `<span>${escapeHtml(name)}</span>`,
+        `</label>`
+      ].join("");
+    }).join("");
+  }
+
+  async function toggleCardPlanePicker() {
+    state.cardPlanePickerOpen = !state.cardPlanePickerOpen;
+    if (state.cardPlanePickerOpen && !getStoredCardSeriesOptions().length) {
+      await refreshCardPlaneOptionsFromImaios({ keepOpen: true });
+      return;
+    }
+    refreshPanel();
+  }
+
+  async function refreshCardPlaneOptionsFromImaios(options = {}) {
+    const moduleKey = getCardSeriesModuleKey();
+    const menuButton = findPlaneSelectorButton();
+    const menuRect = menuButton ? menuButton.getBoundingClientRect() : null;
+    await openSeriesMenuIfNeeded(menuButton, menuRect);
+    await delay(120);
+    const detected = unique(getVisibleQuickSeriesOptionsNear(menuRect)
+      .map((element) => getQuickSeriesOptionName(element))
+      .map(cleanText)
+      .filter(Boolean))
+      .filter((name) => !isAllSeriesName(name));
+    const current = getCurrentSeriesLabel();
+    const optionsForModule = unique([current, ...detected].map(cleanText).filter(Boolean)).filter((name) => !isAllSeriesName(name));
+    if (optionsForModule.length) {
+      state.cardSeriesOptionsByModule[moduleKey] = optionsForModule;
+      const currentSelection = getStoredCardSeriesSelection(moduleKey);
+      if (!currentSelection.length && current) {
+        state.cardSeriesSelectionsByModule[moduleKey] = [current];
+      } else if (currentSelection.length) {
+        const available = new Set(optionsForModule.map(normalizeText));
+        const kept = currentSelection.filter((name) => available.has(normalizeText(name)));
+        state.cardSeriesSelectionsByModule[moduleKey] = kept.length ? kept : [current || optionsForModule[0]].filter(Boolean);
+      }
+      savePageState();
+      setStatus(`Detected ${optionsForModule.length} series for this module. Saved selection: ${getCardSeriesSelectionSummary()}.`, 6000);
+    } else {
+      setStatus("Could not detect series options. Open the IMAIOS series menu once, then try Refresh.", 8000);
+    }
+    state.cardPlanePickerOpen = options.keepOpen !== false;
+    await closeSeriesMenuIfOpen(menuButton, menuRect);
+    refreshPanel();
+  }
+
+  function updateCardSeriesSelectionFromPicker() {
+    const root = state.shadow;
+    if (!root) return;
+    const moduleKey = getCardSeriesModuleKey();
+    const values = Array.from(root.querySelectorAll("[data-role='card-plane-option']:checked"))
+      .map((input) => cleanText(input.value || ""))
+      .filter(Boolean);
+    if (values.length) {
+      state.cardSeriesSelectionsByModule[moduleKey] = unique(values);
+    } else {
+      delete state.cardSeriesSelectionsByModule[moduleKey];
+    }
+    savePageState();
+    const summary = root.querySelector("[data-role='card-plane-summary']");
+    if (summary) summary.textContent = getCardSeriesSelectionSummary();
   }
 
   function getChunkModuleEntries() {
@@ -1367,13 +2067,135 @@
   function buildChunkOptions() {
     const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
     if (!chunks.length) return `<option value="">No imported chunks</option>`;
-    const currentModuleKey = getCurrentModuleKey();
-    const matching = chunks.filter((chunk) => chunkMatchesCurrentModule(chunk, currentModuleKey));
+    const matching = getCurrentModuleChunks();
     if (!matching.length) return `<option value="">No chunks for this module</option>`;
     return [
       `<option value="">Select chunk...</option>`,
-      ...matching.map((chunk) => `<option value="${escapeHtml(chunk.id)}">${escapeHtml(chunk.title)}</option>`)
+      ...matching.map((chunk) => {
+        const labelCount = getChunkLabelTargets(chunk).length;
+        const countText = labelCount ? ` (${labelCount})` : " (0)";
+        return `<option value="${escapeHtml(chunk.id)}">${escapeHtml(`${chunk.title || chunk.id || "Chunk"}${countText}`)}</option>`;
+      })
     ].join("");
+  }
+
+  function buildCurrentChunkButtonHtml() {
+    const chunk = getActiveChunk();
+    if (!chunk) {
+      return [
+        `<span class="chunk-select-number">-</span>`,
+        `<span class="chunk-select-copy">`,
+        `<span class="chunk-select-title">Choose chunk</span>`,
+        `<span class="chunk-select-hint">Click to change</span>`,
+        `</span>`
+      ].join("");
+    }
+    const labelCount = getChunkLabelTargets(chunk).length;
+    const number = getChunkIndexInCurrentModule(chunk);
+    const title = chunk.title || chunk.id || "Chunk";
+    const labelText = `${labelCount} label${labelCount === 1 ? "" : "s"}`;
+    return [
+      `<span class="chunk-select-number">${escapeHtml(number ? String(number) : "-")}</span>`,
+      `<span class="chunk-select-copy">`,
+      `<span class="chunk-select-title">${escapeHtml(title)}</span>`,
+      `<span class="chunk-select-hint">${escapeHtml(labelText)} - click to change</span>`,
+      `</span>`
+    ].join("");
+  }
+
+  function getChunkIndexInCurrentModule(chunk) {
+    if (!chunk) return 0;
+    const chunks = getCurrentModuleChunks();
+    const index = chunks.findIndex((entry) => entry?.id && entry.id === chunk.id);
+    return index >= 0 ? index + 1 : 0;
+  }
+
+  function getActiveChunkInfoText() {
+    const chunk = getActiveChunk();
+    if (!chunk) return "";
+    const lines = normalizeStringList(chunk.learningFrame || chunk.learningNotes || chunk.notes);
+    return lines.join(" ");
+  }
+
+  function openChunkModal() {
+    state.chunkModalOpen = true;
+    refreshPanel();
+  }
+
+  function closeChunkModal() {
+    state.chunkModalOpen = false;
+    refreshPanel();
+  }
+
+  function openChunkInfoModal() {
+    state.chunkInfoModalOpen = true;
+    refreshPanel();
+  }
+
+  function closeChunkInfoModal() {
+    state.chunkInfoModalOpen = false;
+    refreshPanel();
+  }
+
+  function getChunkInfoModalTitle() {
+    const chunk = getActiveChunk();
+    if (!chunk) return "Chunk guide";
+    const number = getChunkIndexInCurrentModule(chunk);
+    const title = chunk.title || chunk.id || "Chunk";
+    return `${number ? `${number}. ` : ""}${title}`;
+  }
+
+  function buildChunkInfoModalBodyHtml() {
+    const text = getActiveChunkInfoText();
+    const className = text ? "chunk-info-reader" : "chunk-info-reader empty";
+    const body = text || "No scan guide text is saved for this chunk yet.";
+    return `<div class="${className}" style="font-size:${escapeHtml(String(Math.round(state.chunkInfoFontSize)))}px">${escapeHtml(body)}</div>`;
+  }
+
+  function buildChunkPickerModalHtml() {
+    const chunks = getCurrentModuleChunks();
+    if (!chunks.length) {
+      return `<div class="library-empty">No chunks are available for this IMAIOS module. Import a chunk session or open the module that matches the imported chunks.</div>`;
+    }
+    return `<div class="chunk-picker-grid">${chunks.map((chunk, index) => buildChunkPickerCardHtml(chunk, index)).join("")}</div>`;
+  }
+
+  function buildChunkPickerCardHtml(chunk, index = 0) {
+    const active = chunk?.id && chunk.id === state.activeChunkId;
+    const targets = getChunkLabelTargets(chunk);
+    const labels = targets.map((target) => cleanText(target.preferredLabel || "")).filter(Boolean);
+    const parentGroup = cleanText(chunk?.parentGroup || chunk?.group || "");
+    const modality = cleanText(chunk?.modality || "");
+    const moduleName = getChunkModuleDisplayName(chunk);
+    const actionText = active ? "Reapply" : "Select + apply";
+    const meta = [
+      `<span class="chunk-pill strong">${targets.length} label${targets.length === 1 ? "" : "s"}</span>`,
+      parentGroup ? `<span class="chunk-pill">${escapeHtml(parentGroup)}</span>` : "",
+      modality ? `<span class="chunk-pill">${escapeHtml(modality)}</span>` : "",
+      moduleName ? `<span class="chunk-pill">${escapeHtml(moduleName)}</span>` : ""
+    ].filter(Boolean).join("");
+    const labelText = labels.length
+      ? labels.slice(0, 8).join(", ") + (labels.length > 8 ? `, +${labels.length - 8}` : "")
+      : "No labels in this chunk.";
+    return [
+      `<article class="chunk-picker-card${active ? " active" : ""}">`,
+      `<div class="chunk-picker-head">`,
+      `<span class="chunk-picker-number">${escapeHtml(String(index + 1))}</span>`,
+      `<div>`,
+      `<div class="chunk-picker-title">${escapeHtml(chunk?.title || chunk?.id || "Chunk")}</div>`,
+      `<div class="chunk-picker-meta">${meta}</div>`,
+      `</div>`,
+      `<button class="${active ? "primary " : ""}chunk-picker-action" type="button" data-action="select-chunk-from-modal" data-chunk-id="${escapeHtml(chunk?.id || "")}">${escapeHtml(actionText)}</button>`,
+      `</div>`,
+      `<div class="chunk-picker-labels">${escapeHtml(labelText)}</div>`,
+      `</article>`
+    ].join("");
+  }
+
+  function getCurrentModuleChunks() {
+    const chunks = Array.isArray(state.chunkLibrary.chunks) ? state.chunkLibrary.chunks : [];
+    const currentModuleKey = getCurrentModuleKey();
+    return chunks.filter((chunk) => chunkMatchesCurrentModule(chunk, currentModuleKey));
   }
 
   function getChunkById(id) {
@@ -1394,11 +2216,53 @@
     refreshPanel();
   }
 
-  async function setActiveChunkIdAndApply(chunkId) {
+  async function setActiveChunkIdAndApply(chunkId, options = {}) {
     setActiveChunkId(chunkId);
     if (!chunkId) return;
+    if (options.closeChunkModal) {
+      state.chunkModalOpen = false;
+      refreshPanel();
+    }
     await delay(50);
-    await applyActiveChunk();
+    if (options.forceClearFirst) {
+      await applyActiveChunkWithTemporaryClearFirst(options.applyOptions || (options.fastReview ? getFastChunkReviewApplyOptions() : {}));
+      return;
+    }
+    await applyActiveChunk(options.applyOptions || (options.fastReview ? getFastChunkReviewApplyOptions() : {}));
+  }
+
+  async function reapplyActiveChunkFromQuickSelect() {
+    const chunk = getActiveChunk();
+    if (!chunk || state.searchRunning) return;
+    setStatus(`Reapplying ${chunk.title || "current chunk"}...`, 0);
+    await applyActiveChunkWithTemporaryClearFirst(getFastChunkReviewApplyOptions());
+  }
+
+  function getFastChunkReviewApplyOptions() {
+    return {
+      fast: true,
+      reuseRecentPrimeMs: 20000,
+      afterClearDelayMs: 100,
+      variantMissDelayMs: 35,
+      perLabelDelayMs: 300,
+      searchTimeoutMs: 2800,
+      searchIntervalMs: 45,
+      searchClearDelayMs: 35,
+      searchAfterTypeDelayMs: 45,
+      finalCheckDelayMs: 220
+    };
+  }
+
+  async function applyActiveChunkWithTemporaryClearFirst(options = {}) {
+    const originalClearFirst = state.applyChunkClearFirst;
+    state.applyChunkClearFirst = true;
+    try {
+      await applyActiveChunk(options);
+    } finally {
+      state.applyChunkClearFirst = originalClearFirst;
+      savePageState();
+      refreshPanel();
+    }
   }
 
   function selectFirstCurrentModuleChunk() {
@@ -1450,28 +2314,6 @@
       .replace(/[^a-z0-9]+/gi, "-")
       .replace(/^-+|-+$/g, "")
       .toLowerCase();
-  }
-
-  function getActiveChunkLearningText() {
-    const chunk = getActiveChunk();
-    if (!chunk) return "";
-    return normalizeStringList(chunk.learningFrame || chunk.learningNotes || chunk.notes).join("\n");
-  }
-
-  function updateActiveChunkLearningText(value) {
-    const chunk = getActiveChunk();
-    if (!chunk) return;
-    chunk.learningFrame = normalizeChunkLearningText(value);
-    chunk.updatedAt = new Date().toISOString();
-    state.chunkLibrary.updatedAt = chunk.updatedAt;
-    saveChunkLibrary();
-  }
-
-  function normalizeChunkLearningText(value) {
-    return String(value || "")
-      .split(/\r?\n/)
-      .map((line) => cleanText(line))
-      .filter(Boolean);
   }
 
   function buildChunkPreviewHtml() {
@@ -1786,7 +2628,7 @@
       .filter(Boolean);
   }
 
-  async function applyActiveChunk() {
+  async function applyActiveChunk(options = {}) {
     const chunk = getActiveChunk();
     if (!chunk) {
       setStatus("Select or import a chunk first.");
@@ -1810,34 +2652,45 @@
       }
       if (clearResult.clearedCount) {
         setStatus(`Cleared ${clearResult.clearedCount} locked structures. Applying chunk...`, 3500);
-        await delay(250);
+        await delay(options.afterClearDelayMs ?? (options.fast ? 120 : 250));
       }
     }
     state.customListText = chunkToPreferredLabelText(chunk);
     state.selectedStructures = targets.map((target) => target.preferredLabel);
     savePageState();
     refreshPanel();
-    await applyChunkTargets(targets, chunk.title);
+    await applyChunkTargets(targets, chunk.title, options);
   }
 
-  async function applyChunkTargets(targets, sourceLabel) {
+  async function applyChunkTargets(targets, sourceLabel, options = {}) {
     if (state.searchRunning) {
       setStatus("Search is already running.");
       return;
     }
     state.searchRunning = true;
     state.cancelSearch = false;
+    const fast = Boolean(options.fast);
+    const variantMissDelayMs = options.variantMissDelayMs ?? (fast ? 40 : 120);
+    const perLabelDelayMs = options.perLabelDelayMs ?? (fast ? 260 : 650);
+    const searchOptions = {
+      timeoutMs: options.searchTimeoutMs ?? (fast ? 2600 : undefined),
+      intervalMs: options.searchIntervalMs ?? (fast ? 50 : undefined),
+      clearDelayMs: options.searchClearDelayMs ?? (fast ? 35 : undefined),
+      afterTypeDelayMs: options.searchAfterTypeDelayMs ?? (fast ? 45 : undefined)
+    };
     const availableMap = getCurrentAvailableLabelMap();
     const requestedStructures = targets.map((target) => chooseBestChunkLabel(target, availableMap));
     state.selectedStructures = unique(requestedStructures);
     savePageState();
     refreshPanel();
 
-    const primed = await primeModuleSearch();
-    if (!primed.ok) {
-      setStatus(primed.reason);
-      state.searchRunning = false;
-      return;
+    if (!options.skipPrime && !hasRecentModuleSearchPrime(options.reuseRecentPrimeMs)) {
+      const primed = await primeModuleSearch();
+      if (!primed.ok) {
+        setStatus(primed.reason);
+        state.searchRunning = false;
+        return;
+      }
     }
 
     const appliedNames = [];
@@ -1848,16 +2701,16 @@
       let applied = null;
       for (const variant of variants) {
         setStatus(`Searching ${variant}...`);
-        const result = await searchAndClickStructure(variant, { allowFallback: false });
+        const result = await searchAndClickStructure(variant, { ...searchOptions, allowFallback: false });
         if (result.ok) {
           applied = variant;
           break;
         }
-        await delay(120);
+        await delay(variantMissDelayMs);
       }
       if (!applied) {
         const fallback = variants[0] || target.preferredLabel;
-        const result = await searchAndClickStructure(fallback, { allowFallback: true });
+        const result = await searchAndClickStructure(fallback, { ...searchOptions, allowFallback: true });
         applied = result.ok ? fallback : null;
       }
       if (applied) {
@@ -1867,12 +2720,18 @@
         missedNames.push(target.preferredLabel);
         setStatus(`Could not select ${target.preferredLabel}.`);
       }
-      await delay(650);
+      await delay(perLabelDelayMs);
     }
 
     state.searchRunning = false;
+    if (options.skipFinalLockedCheck) {
+      const missSuffix = missedNames.length ? ` Missed ${missedNames.length}.` : "";
+      const stopSuffix = state.cancelSearch ? " Stopped." : "";
+      setStatus(`${sourceLabel}: selected ${appliedNames.length}/${targets.length}.${missSuffix}${stopSuffix}`, 5000);
+      return;
+    }
     setStatus("Checking locked structures...");
-    await delay(650);
+    await delay(options.finalCheckDelayMs ?? (fast ? 250 : 650));
     const locked = countLockedMatches(appliedNames);
     const pinsResult = await resetQuietPinsByCyclingPins();
     const pinsSuffix = pinsResult.ok ? " Quiet pins on." : " Could not restore quiet pins.";
@@ -1929,6 +2788,7 @@
       delayMs: options.delayMs,
       clearDelayMs: options.clearDelayMs,
       afterTypeDelayMs: options.afterTypeDelayMs,
+      intervalMs: options.intervalMs,
       exact: Boolean(options.exact)
     });
     const input = availability.input;
@@ -1993,7 +2853,17 @@
     await delay(260);
     await clearSearchInput(input);
     await delay(420);
+    state.searchPrimeAt = Date.now();
+    state.searchPrimeModuleKey = normalizeModuleKey(getCurrentModuleKey());
     return { ok: true };
+  }
+
+  function hasRecentModuleSearchPrime(maxAgeMs) {
+    const ageMs = Number(maxAgeMs);
+    if (!Number.isFinite(ageMs) || ageMs <= 0) return false;
+    if (!state.searchPrimeAt) return false;
+    if (Date.now() - state.searchPrimeAt > ageMs) return false;
+    return normalizeModuleKey(getCurrentModuleKey()) === state.searchPrimeModuleKey;
   }
 
   function findModuleSearchInput() {
@@ -2828,23 +3698,227 @@
   }
 
   async function addCurrentLiveDrillToCardBatch() {
+    const seriesNames = getSelectedCardSeriesForCurrentModule();
+    if (seriesNames.length) {
+      await addCurrentLiveDrillSeriesToCardBatch(seriesNames);
+      return;
+    }
+    await addCurrentLiveDrillCurrentPlaneToCardBatch();
+  }
+
+  async function addCurrentLiveDrillCurrentPlaneToCardBatch() {
+    const result = await buildCurrentLiveDrillCardBatchItem();
+    if (!result.ok) {
+      setStatus(result.reason, 7000);
+      return;
+    }
+    upsertLiveDrillCardBatchItem(result.item);
+    saveLiveDrillCardBatch();
+    refreshPanel();
+    const backup = await backupLiveDrillCardBatchToDownloads("add");
+    const enrichmentText = describeLiveDrillPromptEnrichment(result.enrichment);
+    const backupText = backup.ok ? ` Saved batch backup.` : ` Backup failed: ${backup.error || "unknown error"}`;
+    const seriesText = result.item.series || result.item.plane || "";
+    setStatus(`Added current plane to Anki batch: ${result.item.title} (${result.item.labelCount} labels${seriesText ? `, ${seriesText}` : ""}). Batch has ${state.liveDrillCardBatch.items.length} drills.${enrichmentText}${backupText}`, 12000);
+  }
+
+  async function addCurrentLiveDrillSeriesToCardBatch(seriesNames) {
+    const chunk = getActiveChunk();
+    if (!chunk) {
+      setStatus("Select or import a chunk first.");
+      return;
+    }
+    if (!chunkMatchesCurrentModule(chunk)) {
+      const moduleName = getChunkModuleDisplayName(chunk) || getChunkModuleKey(chunk);
+      setStatus(`This chunk belongs to ${moduleName || "another IMAIOS module"}. Open that module before adding plane cards.`, 9000);
+      return;
+    }
+    if (state.searchRunning) {
+      setStatus("Search is already running.");
+      return;
+    }
+
+    const originalSeriesInfo = getSeriesInfo();
+    const originalSeries = cleanText(originalSeriesInfo.selectedSeries || "");
+    const originalPlane = normalizePlaneName(originalSeriesInfo.selectedPlane) || inferSelectedPlaneFromDom();
+    const added = [];
+    const skipped = [];
+    let labelsAppliedForChunk = false;
+    for (const seriesName of unique(seriesNames.map(cleanText).filter(Boolean))) {
+      setStatus(`Preparing ${seriesName} card set...`, 0);
+      const switched = await switchSeriesByName(seriesName, { quiet: true });
+      if (!switched?.ok) {
+        skipped.push(`${seriesName}: ${switched?.reason || "not available"}`);
+        continue;
+      }
+      await delay(350);
+      if (!labelsAppliedForChunk) {
+        await applyActiveChunk();
+        await delay(300);
+      }
+      let result = await buildCurrentLiveDrillCardBatchItem();
+      if (!result.ok && labelsAppliedForChunk) {
+        await applyActiveChunk();
+        await delay(300);
+        result = await buildCurrentLiveDrillCardBatchItem();
+      }
+      if (!result.ok) {
+        skipped.push(`${seriesName}: ${result.reason || "could not build drill"}`);
+        continue;
+      }
+      labelsAppliedForChunk = true;
+      upsertLiveDrillCardBatchItem(result.item);
+      added.push(result.item);
+    }
+
+    if (originalSeries) {
+      await switchSeriesByName(originalSeries, { quiet: true });
+    } else if (originalPlane) {
+      await switchPlane(originalPlane, { quiet: true });
+    }
+
+    if (!added.length) {
+      setStatus(`No plane card sets added. ${skipped.join(" ")}`.trim(), 12000);
+      refreshPanel();
+      return;
+    }
+
+    saveLiveDrillCardBatch();
+    refreshPanel();
+    const backup = await backupLiveDrillCardBatchToDownloads("add");
+    const addedText = added.map((item) => item.series || item.plane || item.title).join(", ");
+    const skippedText = skipped.length ? ` Skipped ${skipped.join("; ")}.` : "";
+    const backupText = backup.ok ? " Saved batch backup." : ` Backup failed: ${backup.error || "unknown error"}`;
+    setStatus(`Added ${added.length} series card set${added.length === 1 ? "" : "s"} to Anki batch: ${addedText}.${skippedText} Batch has ${state.liveDrillCardBatch.items.length} drills.${backupText}`, 14000);
+  }
+
+  async function addCurrentModuleChunksToCardBatch() {
+    const chunks = getCurrentModuleChunks().filter((chunk) => getChunkLabelTargets(chunk).length);
+    if (!chunks.length) {
+      setStatus("No label-bearing chunks are available for this module.", 8000);
+      return;
+    }
+    if (state.searchRunning) {
+      setStatus("Search is already running.");
+      return;
+    }
+
+    const selectedSeries = getSelectedCardSeriesForCurrentModule();
+    const currentSeries = getCurrentSeriesLabel();
+    const seriesNames = selectedSeries.length ? selectedSeries : [currentSeries].filter(Boolean);
+    const seriesTargets = seriesNames.length ? seriesNames : [""];
+    const originalChunkId = state.activeChunkId;
+    const originalSeriesInfo = getSeriesInfo();
+    const originalSeries = cleanText(originalSeriesInfo.selectedSeries || "");
+    const originalPlane = normalizePlaneName(originalSeriesInfo.selectedPlane) || inferSelectedPlaneFromDom();
+    const originalClearFirst = state.applyChunkClearFirst;
+    const added = [];
+    const skipped = [];
+    state.cancelSearch = false;
+    state.applyChunkClearFirst = true;
+    savePageState();
+
+    try {
+      const primed = await primeModuleSearch();
+      if (!primed.ok) {
+        setStatus(primed.reason, 9000);
+        return;
+      }
+      for (let chunkIndex = 0; chunkIndex < chunks.length; chunkIndex += 1) {
+        if (state.cancelSearch) break;
+        const chunk = chunks[chunkIndex];
+        setActiveChunkId(chunk.id);
+        await delay(80);
+        let labelsAppliedForChunk = false;
+
+        for (const seriesName of seriesTargets) {
+          if (state.cancelSearch) break;
+          const targetText = seriesName || "current series";
+          setStatus(`Adding module chunk ${chunkIndex + 1}/${chunks.length}: ${chunk.title || chunk.id} (${targetText})...`, 0);
+          if (seriesName) {
+            const switched = await switchSeriesByName(seriesName, { quiet: true });
+            if (!switched?.ok) {
+              skipped.push(`${chunk.title || chunk.id} / ${seriesName}: ${switched?.reason || "series not available"}`);
+              continue;
+            }
+            await delay(350);
+          }
+
+          if (!labelsAppliedForChunk) {
+            await applyActiveChunk({
+              fast: true,
+              skipPrime: true,
+              skipFinalLockedCheck: true,
+              perLabelDelayMs: 240,
+              searchTimeoutMs: 2400,
+              searchIntervalMs: 45
+            });
+            if (state.cancelSearch) break;
+            await delay(140);
+          } else {
+            await delay(80);
+          }
+          let result = await buildCurrentLiveDrillCardBatchItem();
+          if (!result.ok && labelsAppliedForChunk) {
+            await applyActiveChunk({
+              fast: true,
+              skipPrime: true,
+              skipFinalLockedCheck: true,
+              perLabelDelayMs: 260,
+              searchTimeoutMs: 2800,
+              searchIntervalMs: 50
+            });
+            if (state.cancelSearch) break;
+            await delay(160);
+            result = await buildCurrentLiveDrillCardBatchItem();
+          }
+          if (!result.ok) {
+            skipped.push(`${chunk.title || chunk.id} / ${targetText}: ${result.reason || "could not build drill"}`);
+            continue;
+          }
+          labelsAppliedForChunk = true;
+          upsertLiveDrillCardBatchItem(result.item);
+          saveLiveDrillCardBatch();
+          added.push(result.item);
+        }
+      }
+    } finally {
+      state.applyChunkClearFirst = originalClearFirst;
+      if (originalSeries) {
+        await switchSeriesByName(originalSeries, { quiet: true });
+      } else if (originalPlane) {
+        await switchPlane(originalPlane, { quiet: true });
+      }
+      setActiveChunkId(originalChunkId);
+      savePageState();
+      refreshPanel();
+    }
+
+    if (!added.length) {
+      const stoppedText = state.cancelSearch ? " Stopped." : "";
+      setStatus(`No module chunks were added.${stoppedText} ${skipped.slice(0, 3).join("; ")}`.trim(), 12000);
+      return;
+    }
+
+    const backup = await backupLiveDrillCardBatchToDownloads("module");
+    const seriesText = selectedSeries.length ? ` across ${selectedSeries.length} saved series` : " in the current series";
+    const skippedText = skipped.length ? ` Skipped ${skipped.length}.` : "";
+    const stoppedText = state.cancelSearch ? " Stopped before finishing." : "";
+    const backupText = backup.ok ? " Saved batch backup." : ` Backup failed: ${backup.error || "unknown error"}`;
+    setStatus(`Added ${added.length} module drill${added.length === 1 ? "" : "s"} from ${chunks.length} chunks${seriesText}.${skippedText}${stoppedText} Batch has ${state.liveDrillCardBatch.items.length} drills.${backupText}`, 16000);
+  }
+
+  async function buildCurrentLiveDrillCardBatchItem() {
     const promptPackage = await buildLiveDrillCardPromptPackage({
       requireLocked: true,
       enrichDetails: "cache-only"
     });
     if (!promptPackage.ok) {
-      setStatus(promptPackage.reason, 7000);
-      return;
+      return promptPackage;
     }
     const source = buildLiveDrillCardPromptSource(promptPackage.payload, promptPackage.enrichment);
     const item = buildLiveDrillCardBatchItem(source, promptPackage.payload, promptPackage.enrichment);
-    upsertLiveDrillCardBatchItem(item);
-    saveLiveDrillCardBatch();
-    refreshPanel();
-    const backup = await backupLiveDrillCardBatchToDownloads("add");
-    const enrichmentText = describeLiveDrillPromptEnrichment(promptPackage.enrichment);
-    const backupText = backup.ok ? ` Saved batch backup.` : ` Backup failed: ${backup.error || "unknown error"}`;
-    setStatus(`Added to Anki batch: ${item.title} (${item.labelCount} labels). Batch has ${state.liveDrillCardBatch.items.length} drills.${enrichmentText}${backupText}`, 12000);
+    return { ok: true, item, payload: promptPackage.payload, enrichment: promptPackage.enrichment };
   }
 
   function buildLiveDrillCardBatchItem(source, payload, enrichment) {
@@ -2864,6 +3938,7 @@
       chunkId: source?.chunk?.id || payload?.chunk?.id || "",
       chunkTitle,
       plane: source?.viewer?.plane || payload?.viewer?.plane || "",
+      series: source?.viewer?.selectedSeries || payload?.viewer?.selectedSeries || "",
       labelCount: Array.isArray(source.labels) ? source.labels.length : 0,
       capturedDetailCount: Number(source?.labelDetailEnrichment?.capturedDetails || 0),
       labels: Array.isArray(source.labels) ? source.labels : [],
@@ -2941,6 +4016,49 @@
     setStatus("Anki batch cleared.", 6000);
   }
 
+  function openBatchCartModal() {
+    state.batchCartModalOpen = true;
+    refreshPanel();
+  }
+
+  function closeBatchCartModal() {
+    state.batchCartModalOpen = false;
+    refreshPanel();
+  }
+
+  function removeCheckedLiveDrillCardBatchItems() {
+    const root = state.shadow;
+    if (!root) return;
+    const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
+    const groups = groupLiveDrillCardBatchItems(batch.items);
+    const removeKeys = new Set();
+
+    root.querySelectorAll("[data-role='batch-cart-group-check']:checked").forEach((input) => {
+      const groupKey = cleanText(input.getAttribute("data-group-key") || "");
+      const group = groups.find((entry) => entry.key === groupKey);
+      if (group) group.items.forEach((item) => removeKeys.add(getBatchItemSelectionKey(item)));
+    });
+    root.querySelectorAll("[data-role='batch-cart-item-check']:checked").forEach((input) => {
+      const itemKey = cleanText(input.value || input.getAttribute("data-item-key") || "");
+      if (itemKey) removeKeys.add(itemKey);
+    });
+
+    if (!removeKeys.size) {
+      setStatus("Check one or more batch cart items to remove.", 7000);
+      return;
+    }
+
+    const items = batch.items.filter((entry) => !removeKeys.has(getBatchItemSelectionKey(entry)));
+    state.liveDrillCardBatch = {
+      ...batch,
+      updatedAt: new Date().toISOString(),
+      items
+    };
+    saveLiveDrillCardBatch();
+    refreshPanel();
+    setStatus(`Removed ${removeKeys.size} plane set${removeKeys.size === 1 ? "" : "s"} from the Anki batch. Batch has ${items.length} drill${items.length === 1 ? "" : "s"}.`, 9000);
+  }
+
   function saveLiveDrillCardBatch() {
     try {
       localStorage.setItem(LIVE_DRILL_CARD_BATCH_STORAGE_KEY, JSON.stringify(normalizeLiveDrillCardBatch(state.liveDrillCardBatch)));
@@ -2966,52 +4084,107 @@
     }
   }
 
+  function getBatchItemSelectionKey(item) {
+    return cleanText(item?.sourceDrillId || item?.id || "");
+  }
+
+  function getBatchItemSeriesLabel(item) {
+    return cleanText(item?.series || item?.source?.viewer?.selectedSeries || item?.payload?.viewer?.selectedSeries || item?.plane || item?.source?.viewer?.plane || item?.payload?.viewer?.plane || "");
+  }
+
+  function getLiveDrillBatchGroupKey(item) {
+    const moduleKey = cleanText(item?.moduleKey || item?.source?.module?.key || item?.payload?.module?.key || "");
+    const moduleName = cleanText(item?.moduleName || item?.source?.module?.name || item?.payload?.module?.name || "");
+    const chunkId = cleanText(item?.chunkId || item?.source?.chunk?.id || item?.payload?.chunk?.id || "");
+    const chunkTitle = cleanText(item?.chunkTitle || item?.title || item?.source?.chunk?.title || item?.payload?.chunk?.title || "");
+    return createSlug([moduleKey || moduleName, chunkId || chunkTitle].filter(Boolean).join("-")) || getBatchItemSelectionKey(item);
+  }
+
+  function groupLiveDrillCardBatchItems(items) {
+    const groups = [];
+    const byKey = new Map();
+    (Array.isArray(items) ? items : []).forEach((item) => {
+      const key = getLiveDrillBatchGroupKey(item);
+      if (!key) return;
+      let group = byKey.get(key);
+      if (!group) {
+        group = {
+          key,
+          title: cleanText(item.chunkTitle || item.title || item.source?.chunk?.title || item.payload?.chunk?.title || "IMAIOS chunk"),
+          moduleName: cleanText(item.moduleName || item.source?.module?.name || item.payload?.module?.name || ""),
+          moduleKey: cleanText(item.moduleKey || item.source?.module?.key || item.payload?.module?.key || ""),
+          items: [],
+          seriesNames: []
+        };
+        byKey.set(key, group);
+        groups.push(group);
+      }
+      group.items.push(item);
+      group.seriesNames = unique([...group.seriesNames, getBatchItemSeriesLabel(item)].filter(Boolean));
+    });
+    return groups;
+  }
+
+  function getBatchGroupLabelCountText(group) {
+    const counts = Array.from(new Set((group?.items || [])
+      .map((item) => Number(item.labelCount || item.labels?.length || 0))
+      .filter((count) => Number.isFinite(count) && count > 0)))
+      .sort((a, b) => a - b);
+    if (!counts.length) return "0 labels";
+    if (counts.length === 1) return `${counts[0]} label${counts[0] === 1 ? "" : "s"}`;
+    return `${counts[0]}-${counts[counts.length - 1]} labels`;
+  }
+
   function getLiveDrillCardBatchSummaryText() {
     const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
     if (!batch.items.length) return "Anki batch is empty. Add reviewed locked drills here, then create cards from the full batch.";
+    const groups = groupLiveDrillCardBatchItems(batch.items);
     const labelCount = batch.items.reduce((sum, item) => sum + Number(item.labelCount || item.labels?.length || 0), 0);
     const detailCount = batch.items.reduce((sum, item) => sum + Number(item.capturedDetailCount || item.source?.labelDetailEnrichment?.capturedDetails || 0), 0);
     const modules = unique(batch.items.map((item) => item.moduleName).filter(Boolean));
-    const lastItems = batch.items.slice(-4).map((item) => item.title).join("; ");
-    return `${batch.items.length} drill${batch.items.length === 1 ? "" : "s"} queued; ${labelCount} labels; ${detailCount} definitions; ${modules.length} module${modules.length === 1 ? "" : "s"}. Latest: ${lastItems}`;
+    const lastItems = groups.slice(-4).map((group) => `${group.title}${group.seriesNames.length ? ` (${group.seriesNames.join(", ")})` : ""}`).join("; ");
+    return `${groups.length} chunk${groups.length === 1 ? "" : "s"} queued across ${batch.items.length} plane set${batch.items.length === 1 ? "" : "s"}; ${labelCount} labels; ${detailCount} definitions; ${modules.length} module${modules.length === 1 ? "" : "s"}. Latest: ${lastItems}`;
   }
 
-  function buildLiveDrillCardBatchCartOptions() {
+  function getLiveDrillCardBatchCompactSummaryText() {
     const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
-    if (!batch.items.length) return `<option value="">Batch cart empty</option>`;
+    if (!batch.items.length) return "Batch cart empty";
+    const groups = groupLiveDrillCardBatchItems(batch.items);
     const labelCount = batch.items.reduce((sum, item) => sum + Number(item.labelCount || item.labels?.length || 0), 0);
-    const options = [
-      `<option value="">${escapeHtml(`Batch cart: ${batch.items.length} chunks / ${labelCount} labels`)}</option>`
-    ];
-    batch.items.forEach((item, index) => {
-      const labels = Number(item.labelCount || item.labels?.length || 0);
-      const moduleName = cleanText(item.moduleName || item.moduleKey || "module");
-      const plane = cleanText(item.plane || "");
-      const suffix = [moduleName, plane, `${labels} labels`].filter(Boolean).join(" | ");
-      const title = `${index + 1}. ${item.title || "IMAIOS chunk"} (${suffix})`;
-      options.push(`<option value="${escapeHtml(item.sourceDrillId || item.id || String(index))}">${escapeHtml(title)}</option>`);
-    });
-    return options.join("");
+    return `${groups.length} chunk${groups.length === 1 ? "" : "s"} / ${batch.items.length} plane${batch.items.length === 1 ? "" : "s"} / ${labelCount} labels`;
   }
 
-  function showSelectedLiveDrillBatchCartItem(event) {
-    const id = cleanText(event?.target?.value || "");
+  function buildLiveDrillCardBatchCartModalHtml() {
     const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
-    if (!id) {
-      setStatus(getLiveDrillCardBatchSummaryText(), 9000);
-      return;
+    if (!batch.items.length) {
+      return `<div class="library-empty">The Anki batch cart is empty. Add the current chunk, selected planes, or all module chunks first.</div>`;
     }
-    const item = batch.items.find((entry) => entry.sourceDrillId === id || entry.id === id);
-    if (!item) {
-      setStatus("That batch cart item is no longer available.", 7000);
-      refreshPanel();
-      return;
-    }
-    const labels = (item.labels || item.source?.labels || [])
-      .map((entry) => cleanText(entry.preferredLabel || entry.label || ""))
-      .filter(Boolean);
-    const detailCount = Number(item.capturedDetailCount || item.source?.labelDetailEnrichment?.capturedDetails || 0);
-    setStatus(`Batch cart item: ${item.title}. ${item.moduleName || "Module"}${item.plane ? `, ${item.plane}` : ""}. ${labels.length} labels, ${detailCount} definitions. Labels: ${labels.join(", ")}`, 14000);
+    const groups = groupLiveDrillCardBatchItems(batch.items);
+    return groups.map((group, index) => {
+      const seriesText = group.seriesNames.length ? group.seriesNames.join(", ") : "current plane";
+      const labelText = getBatchGroupLabelCountText(group);
+      const groupHeader = [
+        `<label class="batch-group-head">`,
+        `<input type="checkbox" data-role="batch-cart-group-check" data-group-key="${escapeHtml(group.key)}">`,
+        `<span>${escapeHtml(`${index + 1}. ${group.title || "IMAIOS chunk"}`)}</span>`,
+        `<span class="batch-meta">${escapeHtml(`${seriesText} | ${labelText}`)}</span>`,
+        `</label>`
+      ].join("");
+      const rows = group.items.map((item) => {
+        const itemKey = getBatchItemSelectionKey(item);
+        const series = getBatchItemSeriesLabel(item) || "current plane";
+        const labels = Number(item.labelCount || item.labels?.length || 0);
+        const details = Number(item.capturedDetailCount || item.source?.labelDetailEnrichment?.capturedDetails || 0);
+        return [
+          `<label class="batch-plane-row">`,
+          `<input type="checkbox" data-role="batch-cart-item-check" data-group-key="${escapeHtml(group.key)}" data-item-key="${escapeHtml(itemKey)}" value="${escapeHtml(itemKey)}">`,
+          `<span>${escapeHtml(series)}</span>`,
+          `<span class="batch-meta">${escapeHtml(`${labels} label${labels === 1 ? "" : "s"}${details ? `, ${details} def` : ""}`)}</span>`,
+          `</label>`
+        ].join("");
+      }).join("");
+      return `<div class="batch-group">${groupHeader}${rows}</div>`;
+    }).join("");
   }
 
   async function togglePairedAnswerSession() {
@@ -3743,7 +4916,7 @@
       "You are planning Anki identification cards for live IMAIOS anatomy drills.",
       "",
       "Goal:",
-      "- The card front will contain a live IMAIOS drill link that restores the selected module, plane, slice, and locked labels.",
+      "- The card front will contain a live IMAIOS drill link that restores the selected module, series/plane, slice, and locked labels.",
       "- The learner opens the link and names the locked structures in IMAIOS before revealing the answer.",
       "- This is vocabulary and image-recognition practice, not a lecture and not pathology cards.",
       `- The extension will export a standard Anki \`${LIVE_DRILL_ANKI_NOTE_TYPE}\` note type TSV, not Image Occlusion and not a custom radiology note type.`,
@@ -3760,6 +4933,7 @@
       "- If a label has no captured IMAIOS detail, still include it using the exact preferredLabel and use the available neighboring context.",
       "- Preserve the breadcrumb/deck/tag context exactly enough that downstream import can route the card.",
       "- If INPUT.routing.explicitBreadcrumb, INPUT.routing.explicitDeckPath, or INPUT.routing.explicitTags are populated, treat them as authoritative source routing. Copy them unless a tiny formatting cleanup is needed.",
+      "- Include INPUT.viewer.selectedSeries or INPUT.viewer.plane in the title when it clarifies the card set.",
       "",
       "Return exactly one fenced JSON block with this schema:",
       "```json",
@@ -3852,6 +5026,8 @@
           id: item.id,
           sourceDrillId: item.sourceDrillId,
           title: item.title,
+          plane: item.plane || "",
+          series: item.series || "",
           module: item.source?.module || item.payload?.module || {},
           viewer: item.source?.viewer || item.payload?.viewer || {},
           chunk: item.source?.chunk || item.payload?.chunk || {},
@@ -3869,7 +5045,7 @@
       "You are planning Anki identification cards for a batch of live IMAIOS anatomy drills collected across one study session.",
       "",
       "Goal:",
-      "- The card front will contain a live IMAIOS drill link that restores one selected module, plane, slice, and locked-label set.",
+      "- The card front will contain a live IMAIOS drill link that restores one selected module, series/plane, slice, and locked-label set.",
       "- The learner opens the link and names the locked structures in IMAIOS before revealing the answer.",
       "- This is vocabulary and image-recognition practice, not a lecture and not pathology cards.",
       `- The extension will export a standard Anki \`${LIVE_DRILL_ANKI_NOTE_TYPE}\` note type TSV.`,
@@ -3884,6 +5060,7 @@
       "- Use IMAIOS details as supplemental anatomy context for relationships, hierarchy, boundaries, contents, and nearby confusions.",
       "- Details are for better grouping and concise recognition cues; do not turn cards into definition memorization cards.",
       "- Preserve breadcrumb/deck/tag context for the overall batch.",
+      "- When multiple batch items share the same chunk/title across different series or planes, include the series or plane in the card title.",
       "",
       "Return exactly one fenced JSON block with this schema:",
       "```json",
@@ -4589,6 +5766,7 @@
       `Module: ${escapeHtml(module.name || module.key || "")}`,
       `Chunk: ${escapeHtml(chunk.title || sourcePayload.title || "")}`,
       `Plane: ${escapeHtml(viewer.plane || "")}`,
+      viewer.selectedSeries ? `Series: ${escapeHtml(viewer.selectedSeries)}` : "",
       `Slice: ${escapeHtml(String(viewer.slice?.value ?? ""))}`,
       `Range: ${escapeHtml(`${range.startSlice ?? ""}-${range.endSlice ?? ""}`)}`,
       effectiveDeckPath ? `Deck path: ${escapeHtml(effectiveDeckPath)}` : "",
@@ -4693,6 +5871,7 @@
       chunkId: cleanText(item.chunkId || source?.chunk?.id || payload?.chunk?.id || ""),
       chunkTitle: cleanText(item.chunkTitle || source?.chunk?.title || payload?.chunk?.title || ""),
       plane: cleanText(item.plane || source?.viewer?.plane || payload?.viewer?.plane || ""),
+      series: cleanText(item.series || source?.viewer?.selectedSeries || payload?.viewer?.selectedSeries || ""),
       labelCount: Number(item.labelCount || labels.length || 0),
       capturedDetailCount: Number(item.capturedDetailCount || source?.labelDetailEnrichment?.capturedDetails || 0),
       labels,
@@ -4761,16 +5940,19 @@
     const module = getCurrentModuleInfo();
     const labels = buildLiveDrillLabelEntries(lockedLabels);
     const title = chunk?.title || labels.slice(0, 4).map((item) => item.preferredLabel).join(", ") || "IMAIOS live drill";
+    const viewerPlane = normalizePlaneName(series.selectedPlane) || inferSelectedPlaneFromDom() || "";
+    const viewerSeries = series.selectedSeries || "";
+    const idScope = viewerSeries || viewerPlane || "current";
     const payload = {
       kind: "imaios-live-drill",
       version: 1,
-      id: createSlug(`${module.key}-${title}`) || `imaios-drill-${Date.now()}`,
+      id: createSlug(`${module.key}-${title}-${idScope}`) || `imaios-drill-${Date.now()}`,
       title,
       createdAt: new Date().toISOString(),
       module,
       viewer: {
-        plane: normalizePlaneName(series.selectedPlane) || inferSelectedPlaneFromDom() || "",
-        selectedSeries: series.selectedSeries || "",
+        plane: viewerPlane,
+        selectedSeries: viewerSeries,
         slice: {
           value: slice.value,
           min: slice.min,
@@ -4812,7 +5994,7 @@
       restorePlan: {
         clearLockedFirst: true,
         setPinsMode: true,
-        switchPlane: Boolean(normalizePlaneName(series.selectedPlane) || inferSelectedPlaneFromDom()),
+        switchPlane: Boolean(viewerPlane),
         setSlice: Number.isFinite(slice.value)
       }
     };
@@ -6939,9 +8121,7 @@
   }
 
   function getRecordingPlanesForScope(scope) {
-    if (scope === "axial-coronal") return ["Axial", "Coronal"];
-    if (scope === "all") return ["Axial", "Coronal", "Sagittal"];
-    return ["current"];
+    return getPlanesForScope(scope);
   }
 
   async function recordCineVariantForAnki(stream, meta, prepareViewer) {
@@ -8746,6 +9926,23 @@
     if (!menuButton) return;
     await realMouseClick(menuButton, 0.5, 0.5);
     await delay(260);
+  }
+
+  async function closeSeriesMenuIfOpen(menuButton, menuRect) {
+    if (!getVisibleQuickSeriesOptionsNear(menuRect).length) return;
+    if (menuButton) {
+      await realMouseClick(menuButton, 0.5, 0.5);
+      await delay(160);
+    }
+    if (getVisibleQuickSeriesOptionsNear(menuRect).length) {
+      document.dispatchEvent(new KeyboardEvent("keydown", {
+        key: "Escape",
+        code: "Escape",
+        bubbles: true,
+        cancelable: true
+      }));
+      await delay(120);
+    }
   }
 
   function getPlaneOptionLabel(option) {
