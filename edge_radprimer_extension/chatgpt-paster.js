@@ -514,6 +514,34 @@
     return null;
   };
 
+  const parseImaiosDefinitionHarvestPlan = (text) => {
+    const value = stripOuterCodeFence(text);
+    try {
+      const parsed = JSON.parse(value);
+      if (parsed && parsed.kind === "imaios-definition-harvest-plan" && Array.isArray(parsed.modules)) {
+        return parsed;
+      }
+    } catch {}
+    return null;
+  };
+
+  const extractImaiosDefinitionHarvestPlanFromText = (text) => {
+    const value = String(text || "");
+    const fencedBlocks = Array.from(value.matchAll(/```(?:json)?\s*([\s\S]*?)```/gi))
+      .map((match) => match[1].trim());
+    for (let index = fencedBlocks.length - 1; index >= 0; index -= 1) {
+      const parsed = parseImaiosDefinitionHarvestPlan(fencedBlocks[index]);
+      if (parsed) return parsed;
+    }
+
+    const kindIndex = value.lastIndexOf('"kind"');
+    if (kindIndex < 0) return null;
+    const start = value.lastIndexOf("{", kindIndex);
+    const end = value.lastIndexOf("}");
+    if (start < 0 || end <= start) return null;
+    return parseImaiosDefinitionHarvestPlan(value.slice(start, end + 1));
+  };
+
   const extractImaiosChunkLibraryFromText = (text) => {
     const value = String(text || "");
     const fencedBlocks = Array.from(value.matchAll(/```(?:json)?\s*([\s\S]*?)```/gi))
@@ -613,6 +641,10 @@
     return Boolean(extractImaiosLiveDrillCardPlanFromText(text));
   };
 
+  const looksLikeImaiosDefinitionHarvestPlan = (text) => {
+    return Boolean(extractImaiosDefinitionHarvestPlanFromText(text));
+  };
+
   const expectedOutputMessage = (expectedOutputKind) => {
     if (expectedOutputKind === "card_tsv_download") {
       return "Assistant responded, but it has not shown the TSV download sentinel yet. Waiting for the final card export...";
@@ -623,6 +655,12 @@
     if (expectedOutputKind === "imaios_live_drill_card_plan") {
       return "Assistant responded, but it has not shown a valid imaios-live-drill-card-plan JSON block yet. Waiting for the final card plan...";
     }
+    if (expectedOutputKind === "imaios_definition_harvest_plan") {
+      return "Assistant responded, but it has not shown a valid imaios-definition-harvest-plan JSON block yet. Waiting for the anatomy label plan...";
+    }
+    if (expectedOutputKind === "imaios_chunk_library") {
+      return "Assistant responded, but it has not shown a valid imaios-chunk-library JSON block yet. Waiting for the final IMaios chunks...";
+    }
     return "Assistant responded, but the expected output is not ready yet.";
   };
 
@@ -631,6 +669,8 @@
     if (expectedOutputKind === "card_tsv") return looksLikeInlineCardTsv(text);
     if (expectedOutputKind === "card_tsv_download") return looksLikeCardTsvDownloadReady(text);
     if (expectedOutputKind === "imaios_live_drill_card_plan") return looksLikeImaiosLiveDrillCardPlan(text);
+    if (expectedOutputKind === "imaios_definition_harvest_plan") return looksLikeImaiosDefinitionHarvestPlan(text);
+    if (expectedOutputKind === "imaios_chunk_library") return Boolean(extractImaiosChunkLibraryFromText(text));
     return true;
   };
 
@@ -953,6 +993,7 @@
         );
         const rawText = nativeCopiedText || finalResult.text || text;
         const imaiosChunkLibrary = extractImaiosChunkLibraryFromText(rawText);
+        const imaiosDefinitionHarvestPlan = extractImaiosDefinitionHarvestPlanFromText(rawText);
         const cleanedText = stripAuditBlock ? stripTrailingImageAuditBlock(rawText) : rawText.trim();
         const deliveryText = expectedOutputKind ? cleanedText : cleanNarrativeTextForDelivery(cleanedText);
         if (!outputMatchesExpectation(deliveryText, expectedOutputKind)) {
@@ -968,6 +1009,7 @@
           text: deliveryText,
           rawText,
           imaiosChunkLibrary,
+          imaiosDefinitionHarvestPlan,
           partial: false
         };
       }
@@ -985,6 +1027,7 @@
         text: deliveryLastText,
         rawText: lastText,
         imaiosChunkLibrary: extractImaiosChunkLibraryFromText(lastText),
+        imaiosDefinitionHarvestPlan: extractImaiosDefinitionHarvestPlanFromText(lastText),
         partial: true
       };
     }
@@ -1809,7 +1852,7 @@
     shadow.querySelector(".redo-imaios").addEventListener("click", async () => {
       const button = shadow.querySelector(".redo-imaios");
       button.disabled = true;
-      button.textContent = "Building...";
+      button.textContent = "Planning...";
       try {
         const response = await sendRuntimeRequest({
           type: "BUILD_IMAIOS_CHUNK_PROMPT"
@@ -1817,18 +1860,68 @@
         if (!response?.ok || !response.promptText) {
           createOrUpdateOverlay({
             phase: "IMAIOS_BUILD_ERROR",
-            error: response?.error || "Could not build the IMaios chunk prompt."
+            error: response?.error || "Could not build the IMaios definition-harvest prompt."
           });
           return;
         }
-        const result = await runPrompt({
+        createOrUpdateOverlay({
+          phase: "IMAIOS_PLAN",
+          message: "Asking ChatGPT for a strict per-module IMAIOS label plan..."
+        });
+        const planResult = await runPrompt({
           promptText: response.promptText,
           autoSubmit: true,
           waitForResult: true,
           timeoutMs: 900000,
           speechify: null,
           preserveAuditBlock: true,
-          expectedOutputKind: "",
+          expectedOutputKind: "imaios_definition_harvest_plan",
+          completionPayload: null
+        });
+        const plan = planResult.imaiosDefinitionHarvestPlan || extractImaiosDefinitionHarvestPlanFromText(planResult.assistantText || "");
+        if (!plan?.modules?.length) {
+          createOrUpdateOverlay({
+            phase: "IMAIOS_PLAN_DONE_NO_JSON",
+            message: "ChatGPT finished, but I could not find a valid imaios-definition-harvest-plan JSON block.",
+            text: planResult.assistantText || ""
+          });
+          return;
+        }
+
+        button.textContent = "Harvesting...";
+        createOrUpdateOverlay({
+          phase: "IMAIOS_HARVEST",
+          message: `Harvesting missing IMAIOS definitions for ${plan.modules.length} module${plan.modules.length === 1 ? "" : "s"}...`,
+          text: JSON.stringify(plan, null, 2)
+        });
+        const harvest = await sendRuntimeRequest({
+          type: "HARVEST_IMAIOS_DEFINITIONS_FOR_PLAN",
+          plan
+        });
+        if (!harvest?.ok || !harvest.promptText) {
+          createOrUpdateOverlay({
+            phase: "IMAIOS_HARVEST_ERROR",
+            error: harvest?.error || "IMAIOS definition harvest failed.",
+            text: harvest?.result ? JSON.stringify(harvest.result, null, 2) : JSON.stringify(plan, null, 2)
+          });
+          return;
+        }
+
+        button.textContent = "Chunking...";
+        await activateCurrentTab();
+        createOrUpdateOverlay({
+          phase: "IMAIOS_FINAL_CHUNKS",
+          message: `Definitions ready: ${harvest.result?.counts?.capturedDetails || 0}/${harvest.result?.counts?.requestedLabels || 0} captured. Asking ChatGPT to build final chunks...`,
+          text: JSON.stringify(harvest.result || {}, null, 2)
+        });
+        const result = await runPrompt({
+          promptText: harvest.promptText,
+          autoSubmit: true,
+          waitForResult: true,
+          timeoutMs: 900000,
+          speechify: null,
+          preserveAuditBlock: true,
+          expectedOutputKind: "imaios_chunk_library",
           completionPayload: null
         });
         if (!result.imaiosChunkLibrary?.chunks?.length) {
@@ -1849,7 +1942,7 @@
         }
         createOrUpdateOverlay({
           phase: "IMAIOS_BUILD_IMPORTED",
-          message: `Built and imported ${result.imaios.result?.chunkCount || result.imaiosChunkLibrary.chunks.length} IMaios chunks using ${response.moduleCount || 0} saved modules and ${response.labelCount || 0} labels.`,
+          message: `Built and imported ${result.imaios.result?.chunkCount || result.imaiosChunkLibrary.chunks.length} IMaios chunks. Harvest checked ${harvest.result?.counts?.requestedLabels || 0} labels and used ${harvest.result?.counts?.cachedDetails || 0} cached / ${harvest.result?.counts?.newlyCapturedDetails || 0} new definitions.`,
           text: result.assistantText || JSON.stringify(result.imaiosChunkLibrary, null, 2)
         });
         createOrUpdateCompactStatus({
@@ -1864,7 +1957,7 @@
         });
       } finally {
         button.disabled = false;
-        button.textContent = "Build + Import";
+        button.textContent = "Build chunks + import";
       }
     });
   };
@@ -1945,6 +2038,7 @@
         assistantText: result.text,
         assistantChars: result.text.length,
         imaiosChunkLibrary: result.imaiosChunkLibrary || null,
+        imaiosDefinitionHarvestPlan: result.imaiosDefinitionHarvestPlan || null,
         partial: Boolean(result.partial),
         auditDownload,
         suppressCompletionMessage: true
@@ -2015,6 +2109,7 @@
       assistantText: result.text,
       assistantChars: result.text.length,
       imaiosChunkLibrary: result.imaiosChunkLibrary || null,
+      imaiosDefinitionHarvestPlan: result.imaiosDefinitionHarvestPlan || null,
       partial: Boolean(result.partial),
       copied,
       imaios: imaiosResult,

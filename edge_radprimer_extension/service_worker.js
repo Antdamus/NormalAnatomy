@@ -28,12 +28,14 @@ const CARD_AUDIT_SUBFOLDER = "RadPrimerAudit";
 const SOURCE_COMPARE_SUBFOLDER = "RadPrimerSourceComparison";
 const MASTER_SOURCE_SUBFOLDER = "RadiologyMasterSource";
 const IMAIOS_LABEL_REPOSITORY_SUBFOLDER = "IMAIOSLabelRepository";
+const IMAIOS_LABEL_DETAIL_REPOSITORY_SUBFOLDER = "IMAIOSLabelDefinitions";
 const IMAIOS_CHUNK_SESSION_SUBFOLDER = "IMAIOS/ChunkSessions";
 const IMAGE_EVIDENCE_SUBFOLDER = "image_evidence";
 const SOURCE_COMPARE_CACHE_PREFIX = "radprimerSourceCompareCache:";
 const MASTER_SOURCE_CACHE_KEY = "radprimerLatestMasterSource";
 const MASTER_SOURCE_CACHE_PREFIX = "radprimerMasterSourceCache:";
 const IMAIOS_LABEL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-repository";
+const IMAIOS_LABEL_DETAIL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-detail-repository";
 const IMAIOS_LIVE_DRILL_PAIRS_STORAGE_KEY = "imaios-cine-tools:live-drill-pairs";
 const IMAIOS_LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED = false;
 const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
@@ -1399,6 +1401,61 @@ function countImaiosRepositoryLabels(repository) {
     .reduce((total, module) => total + (Array.isArray(module?.labels) ? module.labels.length : 0), 0);
 }
 
+function normalizeImaiosLabelDetailRepositoryForBackup(repository) {
+  const source = repository && typeof repository === "object" ? repository : {};
+  const moduleDetails = {};
+  for (const [key, rawModule] of Object.entries(source.moduleDetails || {})) {
+    const moduleKey = String(rawModule?.key || key || "").trim();
+    if (!moduleKey) continue;
+    const details = {};
+    const rawDetails = rawModule?.details && typeof rawModule.details === "object" ? rawModule.details : {};
+    for (const [detailKey, rawDetail] of Object.entries(rawDetails)) {
+      const preferredLabel = String(rawDetail?.preferredLabel || rawDetail?.label || rawDetail?.detail?.title || detailKey || "").trim();
+      const normalizedLabel = String(rawDetail?.normalizedLabel || preferredLabel || detailKey || "").trim().toLowerCase();
+      if (!preferredLabel || !normalizedLabel) continue;
+      details[normalizedLabel] = {
+        preferredLabel,
+        normalizedLabel,
+        moduleKey: String(rawDetail?.moduleKey || moduleKey || "").trim(),
+        moduleName: String(rawDetail?.moduleName || rawModule?.name || "").trim(),
+        moduleUrl: String(rawDetail?.moduleUrl || rawModule?.url || "").trim(),
+        href: String(rawDetail?.href || "").trim(),
+        capturedAt: String(rawDetail?.capturedAt || "").trim(),
+        updatedAt: String(rawDetail?.updatedAt || "").trim(),
+        captureStatus: String(rawDetail?.captureStatus || rawDetail?.status || "captured").trim(),
+        captureSource: String(rawDetail?.captureSource || rawDetail?.source || "").trim(),
+        selectedText: String(rawDetail?.selectedText || "").trim(),
+        detail: rawDetail?.detail && typeof rawDetail.detail === "object" ? rawDetail.detail : {}
+      };
+    }
+    moduleDetails[moduleKey] = {
+      key: moduleKey,
+      name: String(rawModule?.name || rawModule?.moduleName || moduleKey || "").trim(),
+      url: String(rawModule?.url || rawModule?.moduleUrl || "").trim(),
+      updatedAt: String(rawModule?.updatedAt || "").trim(),
+      details
+    };
+  }
+  return {
+    kind: "imaios-label-detail-repository",
+    version: Number(source.version) || 1,
+    updatedAt: source.updatedAt || new Date().toISOString(),
+    backupCreatedAt: new Date().toISOString(),
+    moduleDetails,
+    importInstructions: [
+      "Recovery: open an IMaios module with the extension panel loaded.",
+      "Copy this entire JSON file to the clipboard.",
+      "Click Import labels in the IMaios Cine panel.",
+      "The extension will restore this persistent label-definition repository for future Anki card enrichment."
+    ]
+  };
+}
+
+function countImaiosLabelDetails(repository) {
+  return Object.values(repository?.moduleDetails || {})
+    .reduce((total, module) => total + Object.keys(module?.details || {}).length, 0);
+}
+
 function buildImaiosLabelRepositoryBlock(repository, title = "", sourceText = "") {
   const modules = Object.values(repository?.moduleLabels || {})
     .filter((module) => module && Array.isArray(module.labels) && module.labels.length);
@@ -1523,6 +1580,327 @@ function buildImaiosLabelRepositoryChunkPrompt(repository) {
   };
 }
 
+function buildImaiosDefinitionHarvestPlanPrompt(repository) {
+  const backup = normalizeImaiosRepositoryForBackup(repository);
+  const modules = Object.values(backup.moduleLabels || {})
+    .filter((module) => module && Array.isArray(module.labels) && module.labels.length)
+    .sort((a, b) => String(a.name || a.key || "").localeCompare(String(b.name || b.key || "")));
+  const moduleCount = modules.length;
+  const labelCount = countImaiosRepositoryLabels(backup);
+  if (!moduleCount || !labelCount) {
+    throw new Error("No saved IMaios module labels are available in extension storage or open IMaios tabs. Open the IMaios module where labels were saved and refresh it, or copy Downloads\\IMAIOSLabelRepository\\imaios_label_repository_latest.json and click Import labels in the IMaios panel.");
+  }
+
+  const repositoryBlock = modules.map((module) => [
+    `MODULE = ${module.name || module.key || "IMaios module"}`,
+    `MODULE_KEY = ${module.key || ""}`,
+    module.url ? `URL = ${module.url}` : "",
+    "AVAILABLE_LABELS:",
+    ...module.labels
+  ].filter(Boolean).join("\n")).join("\n\n");
+
+  const promptText = [
+    "Build only the first-pass IMaios definition harvest plan for this same conversation.",
+    "",
+    "Use the article/source/images and Speechify narrative already present above. Do not rewrite the narrative. Do not generate final chunks yet. Do not generate cards.",
+    "",
+    "Your task now:",
+    "1. Infer the anatomy concepts that must be reviewed for this topic.",
+    "2. Match each concept to exact labels from the saved IMaios label repository below.",
+    "3. Group the matched labels by their IMaios module.",
+    "4. If a needed concept has no exact/synonym/component match in the repository, put it in unmatchedConcepts instead of inventing a label.",
+    "5. Return exactly one fenced JSON block with kind `imaios-definition-harvest-plan`.",
+    "",
+    "Hard rules:",
+    "- Use only exact `AVAILABLE_LABELS` strings in modules[].labels[].preferredLabel.",
+    "- Do not invent labels, rename labels, or substitute synonyms in preferredLabel.",
+    "- Do not create final learning chunks in this pass.",
+    "- Do not mix moduleKeys; every label must remain under the module where it was found.",
+    "- Preserve source routing metadata if visible in the conversation: topic, source, breadcrumb, deckPath, tags.",
+    "- Prefer clinically useful anatomy for recognition around the topic, not a maximal dump of every related structure.",
+    "- Include rationale and parentGroup only as planning metadata; the extension will fetch definitions before the final chunk pass.",
+    "",
+    "Schema:",
+    "```json",
+    "{",
+    "  \"kind\": \"imaios-definition-harvest-plan\",",
+    "  \"version\": 1,",
+    "  \"topic\": \"article/topic title\",",
+    "  \"source\": \"source description\",",
+    "  \"breadcrumb\": [\"optional\", \"routing\", \"segments\"],",
+    "  \"deckPath\": \"optional::deck::path\",",
+    "  \"tags\": [\"optional_tag\"],",
+    "  \"modules\": [",
+    "    {",
+    "      \"moduleKey\": \"copy MODULE_KEY\",",
+    "      \"moduleName\": \"copy MODULE\",",
+    "      \"modality\": \"CT/MRI/etc\",",
+    "      \"modalityUrl\": \"copy URL\",",
+    "      \"parentGroups\": [\"larger anatomy groups covered in this module\"],",
+    "      \"labels\": [",
+    "        {",
+    "          \"concept\": \"needed anatomy concept\",",
+    "          \"preferredLabel\": \"exact AVAILABLE_LABELS string\",",
+    "          \"matchStatus\": \"exact | synonym-from-repository | component-match\",",
+    "          \"parentGroup\": \"local region/group\",",
+    "          \"rationale\": \"why this label matters for this topic\"",
+    "        }",
+    "      ]",
+    "    }",
+    "  ],",
+    "  \"unmatchedConcepts\": [",
+    "    {",
+    "      \"concept\": \"needed concept\",",
+    "      \"tryLabels\": [\"closest exact repository labels if any\"],",
+    "      \"reason\": \"why no verified label was selected\"",
+    "    }",
+    "  ]",
+    "}",
+    "```",
+    "",
+    "=== IMAIOS LABEL REPOSITORY ===",
+    `Repository modules: ${moduleCount}`,
+    `Repository labels: ${labelCount}`,
+    "",
+    repositoryBlock
+  ].join("\n");
+
+  return {
+    promptText,
+    moduleCount,
+    labelCount
+  };
+}
+
+function normalizeImaiosDefinitionHarvestPlan(plan, repository) {
+  if (!plan || plan.kind !== "imaios-definition-harvest-plan" || !Array.isArray(plan.modules)) {
+    throw new Error("ChatGPT did not provide a valid imaios-definition-harvest-plan.");
+  }
+  const repo = normalizeImaiosRepositoryForBackup(repository);
+  const repoModules = repo.moduleLabels || {};
+  const normalizedModules = [];
+  const invalidLabels = [];
+
+  for (const rawModule of plan.modules) {
+    if (!rawModule || typeof rawModule !== "object") continue;
+    const moduleKey = String(rawModule.moduleKey || rawModule.key || "").trim();
+    const repoModule = repoModules[moduleKey] || findImaiosRepositoryModuleByName(repo, rawModule.moduleName || rawModule.name || "");
+    if (!repoModule) {
+      invalidLabels.push({
+        moduleKey,
+        moduleName: rawModule.moduleName || rawModule.name || "",
+        preferredLabel: "",
+        reason: "Module was not found in the saved IMaios label repository."
+      });
+      continue;
+    }
+    const labelsByNormalized = new Map((repoModule.labels || []).map((label) => [normalizeImaiosRouteText(label), label]));
+    const labels = [];
+    for (const rawLabel of Array.isArray(rawModule.labels) ? rawModule.labels : []) {
+      const preferred = typeof rawLabel === "string"
+        ? rawLabel
+        : rawLabel?.preferredLabel || rawLabel?.label || rawLabel?.name || "";
+      const exact = labelsByNormalized.get(normalizeImaiosRouteText(preferred));
+      if (!exact) {
+        invalidLabels.push({
+          moduleKey: repoModule.key,
+          moduleName: repoModule.name,
+          preferredLabel: preferred,
+          concept: typeof rawLabel === "object" ? rawLabel.concept || "" : "",
+          reason: "Label was not found as an exact saved repository label for this module."
+        });
+        continue;
+      }
+      if (!labels.some((item) => item.preferredLabel === exact)) {
+        labels.push({
+          concept: typeof rawLabel === "object" ? String(rawLabel.concept || preferred || exact).trim() : exact,
+          preferredLabel: exact,
+          matchStatus: typeof rawLabel === "object" ? String(rawLabel.matchStatus || "exact").trim() : "exact",
+          parentGroup: typeof rawLabel === "object" ? String(rawLabel.parentGroup || "").trim() : "",
+          rationale: typeof rawLabel === "object" ? String(rawLabel.rationale || rawLabel.note || "").trim() : ""
+        });
+      }
+    }
+    if (!labels.length) continue;
+    normalizedModules.push({
+      moduleKey: repoModule.key || moduleKey,
+      moduleName: rawModule.moduleName || rawModule.name || repoModule.name || repoModule.key || moduleKey,
+      modality: rawModule.modality || "",
+      modalityUrl: rawModule.modalityUrl || rawModule.url || repoModule.url || "",
+      parentGroups: Array.isArray(rawModule.parentGroups) ? rawModule.parentGroups : [],
+      labels
+    });
+  }
+
+  return {
+    kind: "imaios-definition-harvest-plan",
+    version: 1,
+    topic: String(plan.topic || "").trim(),
+    source: String(plan.source || "").trim(),
+    breadcrumb: Array.isArray(plan.breadcrumb) ? plan.breadcrumb : [],
+    deckPath: String(plan.deckPath || "").trim(),
+    tags: Array.isArray(plan.tags) ? plan.tags : [],
+    modules: normalizedModules,
+    unmatchedConcepts: Array.isArray(plan.unmatchedConcepts) ? plan.unmatchedConcepts : [],
+    invalidLabels
+  };
+}
+
+function findImaiosRepositoryModuleByName(repository, name) {
+  const target = normalizeImaiosRouteText(name);
+  if (!target) return null;
+  return Object.values(repository?.moduleLabels || {}).find((module) => {
+    const candidates = [module?.name, module?.key, module?.url].map(normalizeImaiosRouteText);
+    return candidates.some((candidate) => candidate && (candidate === target || candidate.includes(target) || target.includes(candidate)));
+  }) || null;
+}
+
+async function harvestImaiosDefinitionsForPlan(plan) {
+  const repository = await loadImaiosLabelRepository();
+  const normalizedPlan = normalizeImaiosDefinitionHarvestPlan(plan, repository);
+  if (!normalizedPlan.modules.length) {
+    throw new Error("The IMaios harvest plan had no module labels that matched the saved repository.");
+  }
+
+  const modules = [];
+  for (const planModule of normalizedPlan.modules) {
+    const url = planModule.modalityUrl || "https://www.imaios.com/en/e-anatomy";
+    const tab = await openOrFocusImaiosTab(url);
+    const labels = planModule.labels.map((item) => item.preferredLabel);
+    const response = await sendImaiosMessageWithInjection(tab.id, {
+      type: "IMAIOS_HARVEST_LABEL_DETAILS_FOR_PLAN",
+      labels,
+      planModule: {
+        ...planModule,
+        topic: normalizedPlan.topic,
+        source: normalizedPlan.source,
+        breadcrumb: normalizedPlan.breadcrumb,
+        deckPath: normalizedPlan.deckPath,
+        tags: normalizedPlan.tags
+      }
+    });
+    modules.push({
+      ...planModule,
+      tabId: tab.id,
+      harvestOk: Boolean(response?.ok),
+      error: response?.ok ? "" : response?.error || "IMAIOS module harvest failed.",
+      counts: response?.counts || {},
+      details: Array.isArray(response?.details) ? response.details : [],
+      module: response?.module || null
+    });
+    await sleep(400);
+  }
+
+  const counts = modules.reduce((total, module) => {
+    total.modules += 1;
+    total.requestedLabels += module.labels.length;
+    total.capturedDetails += Number(module.counts?.capturedDetails || 0);
+    total.cachedDetails += Number(module.counts?.cachedDetails || 0);
+    total.newlyCapturedDetails += Number(module.counts?.newlyCapturedDetails || 0);
+    total.missedDetails += Number(module.counts?.missedDetails || 0);
+    return total;
+  }, {
+    modules: 0,
+    requestedLabels: 0,
+    capturedDetails: 0,
+    cachedDetails: 0,
+    newlyCapturedDetails: 0,
+    missedDetails: 0
+  });
+
+  return {
+    kind: "imaios-definition-harvest-result",
+    version: 1,
+    createdAt: new Date().toISOString(),
+    plan: normalizedPlan,
+    counts,
+    modules,
+    invalidLabels: normalizedPlan.invalidLabels || [],
+    unmatchedConcepts: normalizedPlan.unmatchedConcepts || []
+  };
+}
+
+function buildImaiosFinalChunkPromptFromHarvest(harvestResult) {
+  const result = harvestResult && typeof harvestResult === "object" ? harvestResult : {};
+  const plan = result.plan || {};
+  const promptText = [
+    "Build the final IMaios anatomy chunk output for this same conversation.",
+    "",
+    "Use the article/source/images and Speechify narrative already present above, plus the strict IMaios label plan and harvested IMaios definitions below.",
+    "Do not rewrite the Speechify narrative. Do not generate Anki cards. Do not invent labels.",
+    "",
+    "Your task now:",
+    "1. Use the harvested definitions to organize the verified labels into teachable visual review chunks.",
+    "2. Output separate small IMaios copy-paste code blocks, one teachable chunk per block.",
+    "3. Finish with one valid JSON code block with kind `imaios-chunk-library`.",
+    "4. Preserve topic/source/breadcrumb/deckPath/tags from the harvest result.",
+    "",
+    "Hard rules:",
+    "- Use only exact `preferredLabel` strings from HARVEST_RESULT.modules[].labels.",
+    "- Do not add labels not present in the harvest result.",
+    "- Do not mix labels from different moduleKeys in one JSON chunk.",
+    "- Prefer 3-7 labels per chunk, but split based on anatomy and scan-review logic rather than count alone.",
+    "- Split larger groups into subchunks that make local anatomical sense.",
+    "- Put the actual labels only in the human copy-paste code blocks.",
+    "- In the JSON, include moduleKey, moduleName, modality, modalityUrl, breadcrumb, deckPath, tags, parentGroup, and learningFrame when available.",
+    "- Use harvested definitions only as supporting anatomy context for relationships, boundaries, contents, scan order, and nearby confusions.",
+    "- If a label has no harvested definition, it may still be included, but do not invent a definition for it.",
+    "",
+    "Chunk learningFrame guidance:",
+    "- Keep learningFrame concise and practical.",
+    "- Explain scan order, landmarks, boundaries, contents, and what to compare on the image.",
+    "- Avoid long textbook prose; this is for guiding image review.",
+    "",
+    "For unmatched concepts, include a final gap-review code block and put unmatchedConcepts in the JSON.",
+    "",
+    "HARVEST_RESULT:",
+    "```json",
+    JSON.stringify({
+      kind: result.kind || "imaios-definition-harvest-result",
+      version: result.version || 1,
+      topic: plan.topic || "",
+      source: plan.source || "",
+      breadcrumb: plan.breadcrumb || [],
+      deckPath: plan.deckPath || "",
+      tags: plan.tags || [],
+      counts: result.counts || {},
+      modules: (result.modules || []).map((module) => ({
+        moduleKey: module.moduleKey,
+        moduleName: module.moduleName,
+        modality: module.modality || "",
+        modalityUrl: module.modalityUrl || "",
+        parentGroups: module.parentGroups || [],
+        labels: module.labels || [],
+        counts: module.counts || {},
+        details: (module.details || []).map((item) => ({
+          label: item.label || "",
+          normalizedLabel: item.normalizedLabel || "",
+          status: item.status || "",
+          cached: Boolean(item.cached),
+          reason: item.reason || "",
+          detail: item.detail ? {
+            title: item.detail.title || "",
+            alternateTitle: item.detail.alternateTitle || "",
+            definition: item.detail.definition || "",
+            definitionSource: item.detail.definitionSource || "",
+            summary: item.detail.summary || "",
+            chips: item.detail.chips || [],
+            hierarchy: item.detail.hierarchy || []
+          } : null
+        }))
+      })),
+      invalidLabels: result.invalidLabels || [],
+      unmatchedConcepts: result.unmatchedConcepts || []
+    }, null, 2),
+    "```"
+  ].join("\n");
+
+  return {
+    promptText,
+    result
+  };
+}
+
 async function downloadImaiosLabelRepositoryBackup(repository, options = {}) {
   const backup = normalizeImaiosRepositoryForBackup(repository);
   const moduleCount = Object.keys(backup.moduleLabels || {}).length;
@@ -1554,6 +1932,44 @@ async function downloadImaiosLabelRepositoryBackup(repository, options = {}) {
     moduleCount,
     labelCount,
     downloadFolder: `Downloads\\${IMAIOS_LABEL_REPOSITORY_SUBFOLDER}`,
+    latestFilename,
+    snapshotFilename: options.snapshot === true ? snapshotFilename : "",
+    latestDownloadId,
+    snapshotDownloadId
+  };
+}
+
+async function downloadImaiosLabelDetailRepositoryBackup(repository, options = {}) {
+  const backup = normalizeImaiosLabelDetailRepositoryForBackup(repository);
+  const moduleCount = Object.keys(backup.moduleDetails || {}).length;
+  const detailCount = countImaiosLabelDetails(backup);
+  if (!moduleCount || !detailCount) {
+    throw new Error("No saved IMaios label definitions are available to back up.");
+  }
+
+  await chrome.storage.local.set({ [IMAIOS_LABEL_DETAIL_REPOSITORY_STORAGE_KEY]: backup });
+  const text = JSON.stringify(backup, null, 2);
+  const latestFilename = `${IMAIOS_LABEL_DETAIL_REPOSITORY_SUBFOLDER}/imaios_label_definitions_latest.json`;
+  const timestamp = createImaiosBackupTimestamp();
+  const snapshotFilename = `${IMAIOS_LABEL_DETAIL_REPOSITORY_SUBFOLDER}/snapshots/imaios_label_definitions_${timestamp}.json`;
+  const latestDownloadId = await downloadTextFileToPath(
+    latestFilename,
+    text,
+    "application/json;charset=utf-8"
+  );
+  let snapshotDownloadId = null;
+  if (options.snapshot === true) {
+    snapshotDownloadId = await downloadTextFileToPath(
+      snapshotFilename,
+      text,
+      "application/json;charset=utf-8"
+    );
+  }
+
+  return {
+    moduleCount,
+    detailCount,
+    downloadFolder: `Downloads\\${IMAIOS_LABEL_DETAIL_REPOSITORY_SUBFOLDER}`,
     latestFilename,
     snapshotFilename: options.snapshot === true ? snapshotFilename : "",
     latestDownloadId,
@@ -5442,6 +5858,20 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     return true;
   }
 
+  if (message?.type === "BACKUP_IMAIOS_LABEL_DETAIL_REPOSITORY") {
+    (async () => {
+      const repository = message.repository || message.payload?.repository || {};
+      const result = await downloadImaiosLabelDetailRepositoryBackup(repository, {
+        snapshot: message.snapshot === true
+      });
+      sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
   if (message?.type === "BACKUP_IMAIOS_CHUNK_SESSION") {
     (async () => {
       const library = message.library || message.payload?.library || message.payload || {};
@@ -5462,8 +5892,20 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "BUILD_IMAIOS_CHUNK_PROMPT" || message?.type === "BUILD_IMAIOS_REDO_PROMPT") {
     (async () => {
       const repository = await loadImaiosLabelRepository();
-      const result = buildImaiosLabelRepositoryChunkPrompt(repository);
+      const result = buildImaiosDefinitionHarvestPlanPrompt(repository);
       sendResponse({ ok: true, ...result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "HARVEST_IMAIOS_DEFINITIONS_FOR_PLAN") {
+    (async () => {
+      const harvestResult = await harvestImaiosDefinitionsForPlan(message.plan || message.payload?.plan || {});
+      const finalPrompt = buildImaiosFinalChunkPromptFromHarvest(harvestResult);
+      sendResponse({ ok: true, result: harvestResult, promptText: finalPrompt.promptText });
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
     });

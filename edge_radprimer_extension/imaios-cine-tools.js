@@ -7,11 +7,14 @@
   const PREFS_STORAGE_KEY = `${APP_ID}:prefs`;
   const CHUNK_LIBRARY_STORAGE_KEY = `${APP_ID}:chunk-library`;
   const LABEL_REPOSITORY_STORAGE_KEY = `${APP_ID}:label-repository`;
+  const LABEL_DETAIL_REPOSITORY_STORAGE_KEY = `${APP_ID}:label-detail-repository`;
   const LAST_LIVE_DRILL_CARD_SOURCE_KEY = `${APP_ID}:last-live-drill-card-source`;
   const LIVE_DRILL_CARD_BATCH_STORAGE_KEY = `${APP_ID}:live-drill-card-batch`;
   const EXTENSION_LABEL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-repository";
+  const EXTENSION_LABEL_DETAIL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-detail-repository";
   const EMPTY_CHUNK_LIBRARY = { version: 1, topic: "", chunks: [] };
   const EMPTY_LABEL_REPOSITORY = { version: 1, updatedAt: "", modalities: [], labels: [], moduleLabels: {} };
+  const EMPTY_LABEL_DETAIL_REPOSITORY = { kind: "imaios-label-detail-repository", version: 1, updatedAt: "", moduleDetails: {} };
   const EMPTY_LIVE_DRILL_CARD_BATCH = { kind: "imaios-live-drill-card-batch", version: 1, topic: "", source: "", createdAt: "", updatedAt: "", items: [] };
   const DEFAULT_DECK_ROOT = "IMAIOS";
   const LIVE_DRILL_ANKI_NOTE_TYPE = "Basic";
@@ -106,6 +109,7 @@
     chunkLibrary: { ...EMPTY_CHUNK_LIBRARY },
     activeChunkId: "",
     labelRepository: { ...EMPTY_LABEL_REPOSITORY },
+    labelDetailRepository: { ...EMPTY_LABEL_DETAIL_REPOSITORY },
     applyChunkClearFirst: true,
     hotkeys: createDefaultHotkeys(),
     keyEditorOpen: false,
@@ -136,6 +140,7 @@
     loadSavedState();
     writePinModePreference(true);
     syncLabelRepositoryToExtensionStorage();
+    syncLabelDetailRepositoryToExtensionStorage();
     mount();
     refreshPanel();
     window.addEventListener("fullscreenchange", remount);
@@ -192,6 +197,7 @@
       }
       state.chunkLibrary = normalizeImportedChunkLibrary(JSON.parse(localStorage.getItem(CHUNK_LIBRARY_STORAGE_KEY) || "null"));
       state.labelRepository = normalizeImportedLabelRepository(JSON.parse(localStorage.getItem(LABEL_REPOSITORY_STORAGE_KEY) || "null"));
+      state.labelDetailRepository = normalizeImportedLabelDetailRepository(JSON.parse(localStorage.getItem(LABEL_DETAIL_REPOSITORY_STORAGE_KEY) || "null"));
       state.lastLiveDrillCardSource = normalizeSavedLiveDrillSource(JSON.parse(localStorage.getItem(LAST_LIVE_DRILL_CARD_SOURCE_KEY) || "null"));
       state.liveDrillCardBatch = normalizeLiveDrillCardBatch(JSON.parse(localStorage.getItem(LIVE_DRILL_CARD_BATCH_STORAGE_KEY) || "null"));
       if (page.activeChunkId && getChunkById(page.activeChunkId)) state.activeChunkId = page.activeChunkId;
@@ -3399,28 +3405,199 @@
     };
   }
 
+  async function harvestLabelDetailsForPlan(rawLabels, planModule = {}) {
+    const labelList = unique((Array.isArray(rawLabels) ? rawLabels : [])
+      .map((item) => typeof item === "string" ? item : item?.preferredLabel || item?.label || item?.name || "")
+      .map(cleanText)
+      .filter(Boolean));
+    if (!labelList.length) {
+      return { ok: false, error: "No labels were provided for IMAIOS definition harvest." };
+    }
+    const module = getCurrentModuleInfo();
+    const series = getSeriesInfo();
+    const slice = getSliceInfo();
+    const payload = {
+      kind: "imaios-live-drill",
+      version: 1,
+      id: createSlug(`${module.key}-${planModule.title || planModule.name || "definition-harvest"}`) || `imaios-definition-harvest-${Date.now()}`,
+      title: cleanText(planModule.title || planModule.name || "IMAIOS definition harvest"),
+      createdAt: new Date().toISOString(),
+      module,
+      viewer: {
+        plane: normalizePlaneName(series.selectedPlane) || inferSelectedPlaneFromDom() || "",
+        selectedSeries: series.selectedSeries || "",
+        slice: {
+          value: slice.value,
+          min: slice.min,
+          max: slice.max,
+          counterText: slice.counterText || ""
+        }
+      },
+      chunk: null,
+      sourceContext: {
+        articleTitle: "",
+        topic: cleanText(planModule.topic || ""),
+        source: cleanText(planModule.source || ""),
+        breadcrumb: Array.isArray(planModule.breadcrumb) ? planModule.breadcrumb : [],
+        deckPath: applyDeckRootOverride(planModule.deckPath || ""),
+        tags: Array.isArray(planModule.tags) ? planModule.tags : []
+      },
+      labels: buildLiveDrillLabelEntries(labelList),
+      lockedLabels: labelList,
+      restorePlan: {
+        clearLockedFirst: true,
+        setPinsMode: true,
+        switchPlane: false,
+        setSlice: false
+      }
+    };
+
+    const enrichment = await enrichLiveDrillCardPromptDetails(payload);
+    const counts = enrichment?.counts || {};
+    return {
+      ok: enrichment?.ok !== false && !enrichment?.skipped,
+      error: enrichment?.ok === false ? (enrichment.reason || "IMAIOS definition enrichment failed.") : "",
+      module,
+      requestedLabels: labelList,
+      counts: {
+        requestedLabels: labelList.length,
+        capturedDetails: Number(counts.capturedDetails || 0),
+        cachedDetails: Number(counts.cachedDetails || 0),
+        newlyCapturedDetails: Number(counts.newlyCapturedDetails || 0),
+        missedDetails: Number(counts.missedDetails || 0)
+      },
+      enrichment,
+      details: (Array.isArray(enrichment?.labels) ? enrichment.labels : []).map((result) => ({
+        label: result.label || result.detail?.title || "",
+        normalizedLabel: result.normalizedLabel || normalizeText(result.label || result.detail?.title || ""),
+        status: result.status || "",
+        source: result.source || "",
+        cached: Boolean(result.cached),
+        reason: result.reason || "",
+        detail: result.detail || null
+      }))
+    };
+  }
+
   async function enrichLiveDrillCardPromptDetails(payload) {
     const labels = getLiveDrillRestoreLabels(payload);
     if (!labels.length) return { ok: false, skipped: true, reason: "No labels were available for enrichment." };
-    if (state.searchRunning) return { ok: false, skipped: true, reason: "Another search workflow is already running." };
-    if (state.liveDrillRestoreRunning) {
-      return {
+    const labelInfoMap = getLiveDrillPayloadLabelInfoMap(payload);
+    const cachedResults = [];
+    const missingLabels = [];
+    for (const label of labels) {
+      const labelInfo = labelInfoMap.get(normalizeText(label)) || {
+        preferredLabel: label,
+        moduleKey: payload?.module?.key || "",
+        moduleName: payload?.module?.name || "",
+        moduleUrl: payload?.module?.url || ""
+      };
+      const cached = getCachedLabelDetailRecord(labelInfo);
+      if (cached) cachedResults.push(buildCachedLabelDetailResult(cached, labelInfo));
+      else missingLabels.push(label);
+    }
+    if (!missingLabels.length) {
+      return buildCombinedLabelDetailEnrichmentProbe(payload, cachedResults, null, {
+        ok: true,
+        cacheOnly: true
+      });
+    }
+    if (state.searchRunning) {
+      return buildCombinedLabelDetailEnrichmentProbe(payload, cachedResults, null, {
         ok: false,
         skipped: true,
-        reason: "A live-drill restore is still running; label-detail enrichment is disabled until the drill is ready."
-      };
+        reason: "Another search workflow is already running.",
+        missingLabels
+      });
+    }
+    if (state.liveDrillRestoreRunning) {
+      return buildCombinedLabelDetailEnrichmentProbe(payload, cachedResults, null, {
+        ok: false,
+        skipped: true,
+        reason: "A live-drill restore is still running; label-detail enrichment is disabled until the drill is ready.",
+        missingLabels
+      });
     }
 
-    setStatus(`Fast enrichment: collecting IMAIOS definitions for ${labels.length} label${labels.length === 1 ? "" : "s"}...`, 0);
-    const workflow = await runLockedLabelSearchPinDetailWorkflow(labels, {
+    const cacheText = cachedResults.length ? ` (${cachedResults.length} cached)` : "";
+    setStatus(`Fast enrichment: collecting IMAIOS definitions for ${missingLabels.length} missing label${missingLabels.length === 1 ? "" : "s"}${cacheText}...`, 0);
+    const workflow = await runLockedLabelSearchPinDetailWorkflow(missingLabels, {
       profile: getSearchPinProbeProfile({ fast: true }),
       sourcePayload: payload,
       statusVerb: "Fast enrichment"
     });
-    return workflow.probe || {
+    const freshProbe = workflow.probe || {
       ok: false,
       reason: workflow.reason || "Could not run label detail enrichment.",
       labels: []
+    };
+    const mergeResult = mergeLabelDetailProbeIntoRepository(freshProbe, payload);
+    let saveResult = null;
+    let backupResult = null;
+    if (mergeResult.savedCount) {
+      saveResult = await saveLabelDetailRepository();
+      if (saveResult.ok) {
+        backupResult = await backupLabelDetailRepositoryToDownloads("live-drill-enrichment");
+      }
+    }
+    return buildCombinedLabelDetailEnrichmentProbe(payload, cachedResults, freshProbe, {
+      ok: workflow.ok,
+      reason: workflow.reason || freshProbe.reason || "",
+      missingLabels,
+      repository: {
+        mergeResult,
+        saveResult,
+        backupResult
+      }
+    });
+  }
+
+  function buildCombinedLabelDetailEnrichmentProbe(payload, cachedResults = [], freshProbe = null, options = {}) {
+    const lockedLabels = getLiveDrillRestoreLabels(payload);
+    const freshLabels = Array.isArray(freshProbe?.labels) ? freshProbe.labels : [];
+    const labels = [...cachedResults, ...freshLabels];
+    const captured = labels.filter((item) => item.status === "captured").length;
+    const freshCaptured = freshLabels.filter((item) => item.status === "captured").length;
+    const statusCounts = labels.reduce((counts, item) => {
+      const key = item.status || "unknown";
+      counts[key] = (counts[key] || 0) + 1;
+      return counts;
+    }, {});
+    const freshCounts = freshProbe?.counts || {};
+    return {
+      kind: "imaios-locked-label-search-pin-detail-probe",
+      version: 1,
+      createdAt: new Date().toISOString(),
+      pageTitle: freshProbe?.pageTitle || document.title,
+      url: freshProbe?.url || location.href,
+      module: freshProbe?.module || payload?.module || getCurrentModuleInfo(),
+      series: freshProbe?.series || getSeriesInfo(),
+      slice: freshProbe?.slice || getSliceInfo(),
+      ok: options.ok !== false,
+      skipped: Boolean(options.skipped),
+      cacheOnly: Boolean(options.cacheOnly),
+      reason: options.reason || freshProbe?.reason || "",
+      counts: {
+        lockedLabels: lockedLabels.length,
+        attemptedLabels: Number(freshCounts.attemptedLabels || 0),
+        searchResultsFound: Number(freshCounts.searchResultsFound || 0),
+        visiblePinsFound: Number(freshCounts.visiblePinsFound || 0),
+        capturedDetails: captured,
+        cachedDetails: cachedResults.length,
+        newlyCapturedDetails: freshCaptured,
+        missedDetails: Math.max(0, lockedLabels.length - captured),
+        statusCounts
+      },
+      workflow: {
+        ...(freshProbe?.workflow || {}),
+        profile: freshProbe?.workflow?.profile || "fast",
+        cacheHitLabels: cachedResults.map((item) => item.label).filter(Boolean),
+        missingLabelsRequested: Array.isArray(options.missingLabels) ? options.missingLabels : [],
+        repository: options.repository || null
+      },
+      sourceDrill: payload,
+      lockedLabels,
+      labels
     };
   }
 
@@ -3429,8 +3606,11 @@
     const counts = enrichment.counts || {};
     if (enrichment.skipped || enrichment.reason) return ` Label-detail enrichment skipped: ${enrichment.reason || "unknown reason"}.`;
     const captured = Number(counts.capturedDetails || 0);
+    const cached = Number(counts.cachedDetails || 0);
+    const fresh = Number(counts.newlyCapturedDetails || 0);
     const total = Number(counts.lockedLabels || 0);
-    return total ? ` Enriched ${captured}/${total} with IMAIOS definitions.` : "";
+    const sourceText = cached || fresh ? ` (${cached} cached, ${fresh} new)` : "";
+    return total ? ` Enriched ${captured}/${total} with IMAIOS definitions${sourceText}.` : "";
   }
 
   function buildLiveDrillCardPrompt(payload, enrichment = null) {
@@ -3666,11 +3846,14 @@
     return {
       profile: enrichment.workflow?.profile || "",
       capturedDetails: Number(counts.capturedDetails || 0),
+      cachedDetails: Number(counts.cachedDetails || 0),
+      newlyCapturedDetails: Number(counts.newlyCapturedDetails || 0),
       missedDetails: Number(counts.missedDetails || 0),
       attemptedLabels: Number(counts.attemptedLabels || 0),
       visiblePinsFound: Number(counts.visiblePinsFound || 0),
       searchResultsFound: Number(counts.searchResultsFound || 0),
       statusCounts: counts.statusCounts || {},
+      repository: enrichment.workflow?.repository || null,
       missedLabels: (Array.isArray(enrichment.labels) ? enrichment.labels : [])
         .filter((item) => item.status !== "captured")
         .map((item) => ({
@@ -5125,6 +5308,26 @@
       return true;
     }
 
+    if (message?.type === "GET_IMAIOS_LABEL_DETAIL_REPOSITORY") {
+      sendResponse({
+        ok: true,
+        repository: state.labelDetailRepository,
+        stats: getLabelDetailRepositoryStats(state.labelDetailRepository),
+        module: getCurrentModuleInfo()
+      });
+      return true;
+    }
+
+    if (message?.type === "IMAIOS_HARVEST_LABEL_DETAILS_FOR_PLAN") {
+      (async () => {
+        const result = await harvestLabelDetailsForPlan(message.labels || message.planModule?.labels || [], message.planModule || {});
+        sendResponse(result);
+      })().catch((error) => {
+        sendResponse({ ok: false, error: String(error?.message || error) });
+      });
+      return true;
+    }
+
     if (message?.type === "IMAIOS_LIVE_DRILL_CARD_PLAN_READY") {
       (async () => {
         try {
@@ -5247,6 +5450,21 @@
       const parsed = JSON.parse(text);
       if (parsed?.kind === "imaios-available-labels") {
         mergeAvailableLabelsIntoRepository(parsed);
+      } else if (parsed?.kind === "imaios-label-detail-repository") {
+        state.labelDetailRepository = mergeLabelDetailRepositories(state.labelDetailRepository, parsed);
+        const saveResult = await saveLabelDetailRepository();
+        refreshPanel();
+        if (!saveResult.ok) {
+          setStatus(`Definition import failed while saving: ${saveResult.error}`, 9000);
+          return;
+        }
+        const stats = getLabelDetailRepositoryStats(state.labelDetailRepository);
+        const backupResult = await backupLabelDetailRepositoryToDownloads("import");
+        const backupText = backupResult.ok
+          ? ` Backup written to ${backupResult.result.downloadFolder}.`
+          : ` Backup failed: ${backupResult.error}`;
+        setStatus(`Imported ${stats.detailCount} saved IMAIOS label definitions across ${stats.moduleCount} modules.${backupText}`, 12000);
+        return;
       } else {
         state.labelRepository = normalizeImportedLabelRepository(parsed);
       }
@@ -5558,6 +5776,267 @@
     return modules;
   }
 
+  function normalizeImportedLabelDetailRepository(value) {
+    const source = value && typeof value === "object" ? value : {};
+    const repository = {
+      kind: "imaios-label-detail-repository",
+      version: Number(source.version) || 1,
+      updatedAt: cleanText(source.updatedAt || source.createdAt || ""),
+      moduleDetails: {}
+    };
+
+    const rawModules = source.moduleDetails && typeof source.moduleDetails === "object"
+      ? source.moduleDetails
+      : {};
+    for (const [key, rawModule] of Object.entries(rawModules)) {
+      const moduleKey = cleanText(rawModule?.key || key);
+      if (!moduleKey) continue;
+      const details = normalizeLabelDetailRecordMap(rawModule?.details || rawModule?.labels || {});
+      repository.moduleDetails[moduleKey] = {
+        key: moduleKey,
+        name: cleanText(rawModule?.name || rawModule?.moduleName || moduleKey),
+        url: cleanText(rawModule?.url || rawModule?.moduleUrl || ""),
+        updatedAt: cleanText(rawModule?.updatedAt || ""),
+        details
+      };
+    }
+
+    if (source.details && typeof source.details === "object") {
+      const moduleInfo = source.module && typeof source.module === "object" ? source.module : {};
+      const moduleKey = cleanText(moduleInfo.key || source.moduleKey || "global");
+      const existing = repository.moduleDetails[moduleKey] || {
+        key: moduleKey,
+        name: cleanText(moduleInfo.name || source.moduleName || moduleKey),
+        url: cleanText(moduleInfo.url || source.moduleUrl || ""),
+        updatedAt: "",
+        details: {}
+      };
+      existing.details = {
+        ...existing.details,
+        ...normalizeLabelDetailRecordMap(source.details)
+      };
+      repository.moduleDetails[moduleKey] = existing;
+    }
+
+    if (!repository.updatedAt) repository.updatedAt = new Date().toISOString();
+    return repository;
+  }
+
+  function normalizeLabelDetailRecordMap(value) {
+    const records = {};
+    const rawItems = Array.isArray(value)
+      ? value
+      : Object.entries(value || {}).map(([key, item]) => ({ key, item }));
+    for (const raw of rawItems) {
+      const item = raw && raw.item !== undefined ? raw.item : raw;
+      const fallbackKey = raw && raw.key !== undefined ? raw.key : "";
+      const record = normalizeLabelDetailRecord(item, fallbackKey);
+      if (!record) continue;
+      records[record.normalizedLabel] = record;
+    }
+    return records;
+  }
+
+  function normalizeLabelDetailRecord(value, fallbackLabel = "") {
+    if (!value || typeof value !== "object") return null;
+    const detail = value.detail && typeof value.detail === "object"
+      ? value.detail
+      : {
+          title: value.title || "",
+          alternateTitle: value.alternateTitle || "",
+          definition: value.definition || "",
+          definitionSource: value.definitionSource || "",
+          summary: value.summary || "",
+          chips: value.chips || [],
+          hierarchy: value.hierarchy || []
+        };
+    const preferredLabel = cleanText(value.preferredLabel || value.label || detail.title || fallbackLabel || "");
+    const normalizedLabel = normalizeText(value.normalizedLabel || preferredLabel);
+    if (!preferredLabel || !normalizedLabel) return null;
+    return {
+      preferredLabel,
+      normalizedLabel,
+      moduleKey: cleanText(value.moduleKey || ""),
+      moduleName: cleanText(value.moduleName || ""),
+      moduleUrl: cleanText(value.moduleUrl || ""),
+      href: cleanText(value.href || ""),
+      capturedAt: cleanText(value.capturedAt || value.createdAt || ""),
+      updatedAt: cleanText(value.updatedAt || value.capturedAt || value.createdAt || ""),
+      captureStatus: cleanText(value.captureStatus || value.status || "captured"),
+      captureSource: cleanText(value.captureSource || value.source || ""),
+      selectedText: cleanText(value.selectedText || ""),
+      detail: normalizeLabelDetailPayload(detail)
+    };
+  }
+
+  function normalizeLabelDetailPayload(detail) {
+    const value = detail && typeof detail === "object" ? detail : {};
+    return {
+      title: cleanText(value.title || ""),
+      alternateTitle: cleanText(value.alternateTitle || ""),
+      definition: cleanText(value.definition || ""),
+      definitionSource: cleanText(value.definitionSource || ""),
+      summary: cleanText(value.summary || ""),
+      chips: Array.isArray(value.chips)
+        ? value.chips.map((chip) => ({
+            label: cleanText(chip?.label || chip || ""),
+            href: cleanText(chip?.href || ""),
+            className: cleanText(chip?.className || "")
+          })).filter((chip) => chip.label)
+        : [],
+      hierarchy: Array.isArray(value.hierarchy)
+        ? value.hierarchy.map((card) => ({
+            name: cleanText(card?.name || ""),
+            ancestors: normalizeStringList(card?.ancestors || []),
+            children: normalizeStringList(card?.children || [])
+          })).filter((card) => card.name || card.ancestors.length || card.children.length)
+        : [],
+      moduleImageCount: Number(value.moduleImageCount || 0),
+      rawText: cleanText(value.rawText || "")
+    };
+  }
+
+  function mergeLabelDetailRepositories(baseValue, incomingValue) {
+    const base = normalizeImportedLabelDetailRepository(baseValue);
+    const incoming = normalizeImportedLabelDetailRepository(incomingValue);
+    for (const [moduleKey, incomingModule] of Object.entries(incoming.moduleDetails || {})) {
+      const existing = base.moduleDetails[moduleKey] || {
+        key: moduleKey,
+        name: incomingModule.name || moduleKey,
+        url: incomingModule.url || "",
+        updatedAt: "",
+        details: {}
+      };
+      base.moduleDetails[moduleKey] = {
+        ...existing,
+        name: incomingModule.name || existing.name,
+        url: incomingModule.url || existing.url,
+        updatedAt: incomingModule.updatedAt || existing.updatedAt,
+        details: {
+          ...(existing.details || {}),
+          ...(incomingModule.details || {})
+        }
+      };
+    }
+    base.updatedAt = new Date().toISOString();
+    return base;
+  }
+
+  function getCachedLabelDetailRecord(labelInfo = {}) {
+    const repository = normalizeImportedLabelDetailRepository(state.labelDetailRepository || {});
+    const normalizedLabel = normalizeText(labelInfo.preferredLabel || labelInfo.label || "");
+    if (!normalizedLabel) return null;
+    const moduleKey = cleanText(labelInfo.moduleKey || "");
+    const direct = moduleKey
+      ? repository.moduleDetails?.[moduleKey]?.details?.[normalizedLabel]
+      : null;
+    if (hasUsableLabelDetailRecord(direct)) return direct;
+    for (const module of Object.values(repository.moduleDetails || {})) {
+      const record = module?.details?.[normalizedLabel] || null;
+      if (hasUsableLabelDetailRecord(record)) return record;
+    }
+    return null;
+  }
+
+  function hasUsableLabelDetailRecord(record) {
+    if (!record || !record.detail) return false;
+    return Boolean(
+      cleanText(record.detail.definition || "")
+      || cleanText(record.detail.summary || "")
+      || cleanText(record.detail.title || record.preferredLabel || "")
+    );
+  }
+
+  function buildCachedLabelDetailResult(record, labelInfo = {}) {
+    return {
+      label: record.preferredLabel || labelInfo.preferredLabel || "",
+      normalizedLabel: record.normalizedLabel || normalizeText(labelInfo.preferredLabel || ""),
+      status: "captured",
+      source: "definition-cache",
+      selectedText: record.selectedText || "",
+      href: record.href || labelInfo.href || "",
+      moduleKey: record.moduleKey || labelInfo.moduleKey || "",
+      cached: true,
+      detail: record.detail || {}
+    };
+  }
+
+  function mergeLabelDetailProbeIntoRepository(probe, sourcePayload = null) {
+    const repository = normalizeImportedLabelDetailRepository(state.labelDetailRepository || {});
+    const now = new Date().toISOString();
+    const module = sourcePayload?.module || probe?.module || getCurrentModuleInfo();
+    const moduleKey = cleanText(module?.key || getCurrentModuleKey());
+    const moduleEntry = repository.moduleDetails[moduleKey] || {
+      key: moduleKey,
+      name: cleanText(module?.name || getCurrentModuleName() || moduleKey),
+      url: cleanText(module?.url || getCurrentUrlWithoutHash()),
+      updatedAt: "",
+      details: {}
+    };
+    moduleEntry.details = moduleEntry.details && typeof moduleEntry.details === "object" ? moduleEntry.details : {};
+    const payloadLabelMap = getLiveDrillPayloadLabelInfoMap(sourcePayload);
+    let addedCount = 0;
+    let updatedCount = 0;
+
+    for (const result of Array.isArray(probe?.labels) ? probe.labels : []) {
+      if (result?.status !== "captured" || result?.cached) continue;
+      const label = cleanText(result.label || result.detail?.title || "");
+      const normalizedLabel = normalizeText(label);
+      if (!normalizedLabel || !result.detail) continue;
+      const labelInfo = payloadLabelMap.get(normalizedLabel) || {};
+      const previous = moduleEntry.details?.[normalizedLabel] || null;
+      const record = normalizeLabelDetailRecord({
+        preferredLabel: labelInfo.preferredLabel || label,
+        normalizedLabel,
+        moduleKey,
+        moduleName: moduleEntry.name,
+        moduleUrl: moduleEntry.url,
+        href: labelInfo.href || result.href || "",
+        capturedAt: previous?.capturedAt || now,
+        updatedAt: now,
+        captureStatus: result.status,
+        captureSource: result.source || "",
+        selectedText: result.selectedText || "",
+        detail: result.detail
+      });
+      if (!record || !hasUsableLabelDetailRecord(record)) continue;
+      if (previous) updatedCount += 1;
+      else addedCount += 1;
+      moduleEntry.details[normalizedLabel] = record;
+    }
+
+    moduleEntry.updatedAt = now;
+    repository.moduleDetails[moduleKey] = moduleEntry;
+    repository.updatedAt = now;
+    state.labelDetailRepository = repository;
+    return {
+      ok: true,
+      addedCount,
+      updatedCount,
+      savedCount: addedCount + updatedCount,
+      moduleKey,
+      moduleName: moduleEntry.name
+    };
+  }
+
+  function getLiveDrillPayloadLabelInfoMap(payload) {
+    const map = new Map();
+    const module = payload?.module || {};
+    for (const entry of Array.isArray(payload?.labels) ? payload.labels : []) {
+      const preferredLabel = cleanText(entry?.preferredLabel || entry?.label || "");
+      const key = normalizeText(preferredLabel);
+      if (!key) continue;
+      map.set(key, {
+        preferredLabel,
+        moduleKey: cleanText(entry?.moduleKey || module.key || ""),
+        moduleName: cleanText(entry?.moduleName || module.name || ""),
+        moduleUrl: cleanText(entry?.moduleUrl || module.url || ""),
+        href: cleanText(entry?.href || "")
+      });
+    }
+    return map;
+  }
+
   function getChunkLabelTargets(chunk) {
     return Array.isArray(chunk.labels) ? chunk.labels.map(normalizeChunkLabel).filter(Boolean) : [];
   }
@@ -5666,10 +6145,32 @@
     }
   }
 
+  async function saveLabelDetailRepository() {
+    try {
+      state.labelDetailRepository = normalizeImportedLabelDetailRepository({
+        ...state.labelDetailRepository,
+        updatedAt: new Date().toISOString()
+      });
+      localStorage.setItem(LABEL_DETAIL_REPOSITORY_STORAGE_KEY, JSON.stringify(state.labelDetailRepository));
+      await syncLabelDetailRepositoryToExtensionStorage();
+      return { ok: true };
+    } catch (error) {
+      console.warn("IMAIOS Cine Tools: could not save label detail repository", error);
+      return { ok: false, error: String(error?.message || error) };
+    }
+  }
+
   async function syncLabelRepositoryToExtensionStorage() {
     if (!chrome?.storage?.local) return { ok: false, error: "Extension storage is unavailable." };
     const stats = getLabelRepositoryStats(state.labelRepository);
     await chrome.storage.local.set({ [EXTENSION_LABEL_REPOSITORY_STORAGE_KEY]: state.labelRepository });
+    return { ok: true, stats };
+  }
+
+  async function syncLabelDetailRepositoryToExtensionStorage() {
+    if (!chrome?.storage?.local) return { ok: false, error: "Extension storage is unavailable." };
+    const stats = getLabelDetailRepositoryStats(state.labelDetailRepository);
+    await chrome.storage.local.set({ [EXTENSION_LABEL_DETAIL_REPOSITORY_STORAGE_KEY]: state.labelDetailRepository });
     return { ok: true, stats };
   }
 
@@ -5684,6 +6185,19 @@
       moduleCount,
       labelCount,
       globalLabelCount: Array.isArray(repository?.labels) ? repository.labels.length : 0
+    };
+  }
+
+  function getLabelDetailRepositoryStats(repository) {
+    const moduleDetails = repository?.moduleDetails && typeof repository.moduleDetails === "object"
+      ? repository.moduleDetails
+      : {};
+    const modules = Object.values(moduleDetails)
+      .filter((module) => module && module.details && Object.keys(module.details).length);
+    const detailCount = modules.reduce((total, module) => total + Object.keys(module.details || {}).length, 0);
+    return {
+      moduleCount: modules.length,
+      detailCount
     };
   }
 
@@ -5936,6 +6450,31 @@
         }
         if (!response?.ok) {
           resolve({ ok: false, error: response?.error || "unknown backup error" });
+          return;
+        }
+        resolve({ ok: true, result: response.result || {} });
+      });
+    });
+  }
+
+  async function backupLabelDetailRepositoryToDownloads(source = "") {
+    if (!chrome?.runtime?.sendMessage) {
+      return { ok: false, error: "Extension messaging is unavailable." };
+    }
+    return new Promise((resolve) => {
+      chrome.runtime.sendMessage({
+        type: "BACKUP_IMAIOS_LABEL_DETAIL_REPOSITORY",
+        repository: state.labelDetailRepository,
+        source,
+        snapshot: false
+      }, (response) => {
+        const error = chrome.runtime.lastError;
+        if (error) {
+          resolve({ ok: false, error: error.message || String(error) });
+          return;
+        }
+        if (!response?.ok) {
+          resolve({ ok: false, error: response?.error || "unknown definition backup error" });
           return;
         }
         resolve({ ok: true, result: response.result || {} });
