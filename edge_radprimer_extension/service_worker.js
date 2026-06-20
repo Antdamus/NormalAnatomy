@@ -1545,6 +1545,8 @@ function buildImaiosLabelRepositoryChunkPrompt(repository) {
     "- every JSON chunk must include moduleKey, moduleName, modality, and modalityUrl for the IMaios module its labels come from",
     "- every JSON chunk should include breadcrumb, deckPath, and tags when the parent source or article breadcrumb is known; do not invent unsupported hierarchy when it is not known",
     "- never mix labels from different moduleKeys inside one JSON chunk; split them into separate chunks",
+    "- include a concise learningFrame on each JSON chunk; use it for scan order, boundaries, relationships, and 1-3 article/source-informed teaching points when the source clearly emphasizes why that anatomy matters",
+    "- keep article/source-informed teaching points short and practical; do not turn normal anatomy chunks into pathology lectures",
     "",
     "For every JSON label object include:",
     "- concept",
@@ -1557,6 +1559,7 @@ function buildImaiosLabelRepositoryChunkPrompt(repository) {
     "- deckPath when available",
     "- tags when available",
     "- parentGroup when this chunk is a subchunk of a larger anatomical region",
+    "- sourceTeachingPoint when the article/source clearly emphasizes why this label matters; otherwise use an empty string",
     "- note when useful",
     "- do not use candidate labels; if the repository cannot support the concept, put it in unmatchedConcepts instead",
     "",
@@ -1618,7 +1621,9 @@ function buildImaiosDefinitionHarvestPlanPrompt(repository) {
     "- Do not mix moduleKeys; every label must remain under the module where it was found.",
     "- Preserve source routing metadata if visible in the conversation: topic, source, breadcrumb, deckPath, tags.",
     "- Prefer clinically useful anatomy for recognition around the topic, not a maximal dump of every related structure.",
-    "- Include rationale and parentGroup only as planning metadata; the extension will fetch definitions before the final chunk pass.",
+    "- Include rationale, parentGroup, and sourceTeachingPoint only as planning metadata; the extension will fetch definitions before the final chunk pass.",
+    "- If the article/source clearly emphasizes a structure, route, mimic, danger landmark, or reporting-relevant boundary, capture that as a short sourceTeachingPoint.",
+    "- Keep sourceTeachingPoint practical and image-review oriented. Do not copy long article prose and do not create pathology lecture notes.",
     "",
     "Schema:",
     "```json",
@@ -1643,7 +1648,8 @@ function buildImaiosDefinitionHarvestPlanPrompt(repository) {
     "          \"preferredLabel\": \"exact AVAILABLE_LABELS string\",",
     "          \"matchStatus\": \"exact | synonym-from-repository | component-match\",",
     "          \"parentGroup\": \"local region/group\",",
-    "          \"rationale\": \"why this label matters for this topic\"",
+    "          \"rationale\": \"why this label matters for this topic\",",
+    "          \"sourceTeachingPoint\": \"brief article/source emphasis for this anatomy, or empty string\"",
     "        }",
     "      ]",
     "    }",
@@ -1717,7 +1723,10 @@ function normalizeImaiosDefinitionHarvestPlan(plan, repository) {
           preferredLabel: exact,
           matchStatus: typeof rawLabel === "object" ? String(rawLabel.matchStatus || "exact").trim() : "exact",
           parentGroup: typeof rawLabel === "object" ? String(rawLabel.parentGroup || "").trim() : "",
-          rationale: typeof rawLabel === "object" ? String(rawLabel.rationale || rawLabel.note || "").trim() : ""
+          rationale: typeof rawLabel === "object" ? String(rawLabel.rationale || rawLabel.note || "").trim() : "",
+          sourceTeachingPoint: typeof rawLabel === "object"
+            ? String(rawLabel.sourceTeachingPoint || rawLabel.articleEmphasis || rawLabel.sourceEmphasis || rawLabel.sourceRelevance || "").trim()
+            : ""
         });
       }
     }
@@ -1844,11 +1853,15 @@ function buildImaiosFinalChunkPromptFromHarvest(harvestResult) {
     "- Put the actual labels only in the human copy-paste code blocks.",
     "- In the JSON, include moduleKey, moduleName, modality, modalityUrl, breadcrumb, deckPath, tags, parentGroup, and learningFrame when available.",
     "- Use harvested definitions only as supporting anatomy context for relationships, boundaries, contents, scan order, and nearby confusions.",
+    "- Use HARVEST_RESULT.modules[].labels[].rationale and sourceTeachingPoint as article/source context for why a label belongs in this topic.",
+    "- Preserve source-informed emphasis inside chunk learningFrame when it helps image review, but keep it concise.",
     "- If a label has no harvested definition, it may still be included, but do not invent a definition for it.",
     "",
     "Chunk learningFrame guidance:",
     "- Keep learningFrame concise and practical.",
     "- Explain scan order, landmarks, boundaries, contents, and what to compare on the image.",
+    "- Include 1-3 article/source-informed teaching points when the source clearly emphasizes a structure, route, mimic, danger landmark, reporting boundary, or mechanism-relevant landmark.",
+    "- Phrase article/source-informed points as image-review guidance, for example: `Check this boundary because...`, `Trace this pathway because...`, or `Do not confuse this normal lucency with...`.",
     "- Avoid long textbook prose; this is for guiding image review.",
     "",
     "For unmatched concepts, include a final gap-review code block and put unmatchedConcepts in the JSON.",

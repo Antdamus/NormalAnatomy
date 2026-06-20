@@ -375,6 +375,12 @@
           grid-column: 1 / -1;
         }
 
+        .quick-chunk-bar .chunk-learning-text {
+          min-height: 70px;
+          max-height: 128px;
+          font-size: 11px;
+        }
+
         .quick-batch-cart {
           display: grid;
           gap: 4px;
@@ -779,6 +785,8 @@
         <div class="quick-chunk-bar">
           <div class="quick-chunk-label">Current chunk</div>
           <select data-role="quick-chunk">${chunkOptions}</select>
+          <div class="quick-chunk-label">Chunk text</div>
+          <textarea class="chunk-learning-text" data-role="chunk-learning-text" spellcheck="false" placeholder="Select a chunk, then add scan order, boundaries, relationships, or teaching notes here."></textarea>
           <div class="quick-batch-cart">
             <div class="quick-chunk-label">Anki batch cart</div>
             <select data-role="quick-batch-cart"></select>
@@ -787,7 +795,6 @@
             <button class="primary" type="button" data-action="run-live-drill-smart-card-automation">Create Anki cards based on batch</button>
             <button type="button" data-action="add-live-drill-to-batch">Add to batch</button>
             <button class="danger" type="button" data-action="clear-live-drill-card-batch">Clear batch</button>
-            <button type="button" data-action="toggle-paired-answer">Open clean tab</button>
           </div>
         </div>
         <div class="controls">
@@ -798,8 +805,6 @@
             <select data-role="chunk-module">${chunkModuleOptions}</select>
             <select data-role="chunk">${chunkOptions}</select>
             <div class="chunk-preview" data-role="chunk-preview"></div>
-            <div class="section-note">Chunk text / learning frame</div>
-            <textarea class="chunk-learning-text" data-role="chunk-learning-text" spellcheck="false" placeholder="Select a chunk, then add scan order, boundaries, relationships, or teaching notes here."></textarea>
             <label class="check-row">
               <input type="checkbox" data-role="apply-clear-first">
               <span>Clear locked before apply</span>
@@ -1136,7 +1141,9 @@
     root.querySelector("[data-role='chunk-learning-text']").addEventListener("input", (event) => {
       updateActiveChunkLearningText(event.target.value);
     });
-    root.querySelector("[data-action='toggle-paired-answer']").addEventListener("click", togglePairedAnswerSession);
+    root.querySelectorAll("[data-action='toggle-paired-answer']").forEach((button) => {
+      button.addEventListener("click", togglePairedAnswerSession);
+    });
     root.querySelector("[data-action='copy-live-drill-card-prompt']").addEventListener("click", copyLiveDrillCardPrompt);
     root.querySelector("[data-action='import-live-drill-card-plan']").addEventListener("click", importLiveDrillCardPlanFromClipboard);
     root.querySelector("[data-role='cine-speed']").addEventListener("input", (event) => {
@@ -2804,7 +2811,10 @@
   }
 
   async function addCurrentLiveDrillToCardBatch() {
-    const promptPackage = await buildLiveDrillCardPromptPackage({ requireLocked: true });
+    const promptPackage = await buildLiveDrillCardPromptPackage({
+      requireLocked: true,
+      enrichDetails: "cache-only"
+    });
     if (!promptPackage.ok) {
       setStatus(promptPackage.reason, 7000);
       return;
@@ -3440,7 +3450,9 @@
 
     const enrichment = options.enrichDetails === false
       ? null
-      : await enrichLiveDrillCardPromptDetails(drill.payload);
+      : await enrichLiveDrillCardPromptDetails(drill.payload, {
+        cacheOnly: options.enrichDetails === "cache-only" || Boolean(options.cacheOnlyDetails)
+      });
     return {
       ok: true,
       payload: drill.payload,
@@ -3523,7 +3535,7 @@
     };
   }
 
-  async function enrichLiveDrillCardPromptDetails(payload) {
+  async function enrichLiveDrillCardPromptDetails(payload, options = {}) {
     const labels = getLiveDrillRestoreLabels(payload);
     if (!labels.length) return { ok: false, skipped: true, reason: "No labels were available for enrichment." };
     const labelInfoMap = getLiveDrillPayloadLabelInfoMap(payload);
@@ -3544,6 +3556,13 @@
       return buildCombinedLabelDetailEnrichmentProbe(payload, cachedResults, null, {
         ok: true,
         cacheOnly: true
+      });
+    }
+    if (options.cacheOnly) {
+      return buildCombinedLabelDetailEnrichmentProbe(payload, cachedResults, null, {
+        ok: true,
+        cacheOnly: true,
+        missingLabels
       });
     }
     if (state.searchRunning) {
@@ -3648,6 +3667,15 @@
   function describeLiveDrillPromptEnrichment(enrichment) {
     if (!enrichment) return "";
     const counts = enrichment.counts || {};
+    if (enrichment.cacheOnly) {
+      const captured = Number(counts.capturedDetails || 0);
+      const total = Number(counts.lockedLabels || 0);
+      const missed = Number(counts.missedDetails || Math.max(0, total - captured));
+      if (!total) return "";
+      return missed
+        ? ` Cached definitions ${captured}/${total}; ${missed} missing, no harvest run.`
+        : ` Cached definitions ${captured}/${total}; no harvest run.`;
+    }
     if (enrichment.skipped || enrichment.reason) return ` Label-detail enrichment skipped: ${enrichment.reason || "unknown reason"}.`;
     const captured = Number(counts.capturedDetails || 0);
     const cached = Number(counts.cachedDetails || 0);
