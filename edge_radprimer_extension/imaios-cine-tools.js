@@ -2241,7 +2241,9 @@
   function getFastChunkReviewApplyOptions() {
     return {
       fast: true,
-      reuseRecentPrimeMs: 20000,
+      skipInitialPrime: true,
+      fallbackPrimeOnMiss: true,
+      reuseRecentPrimeMs: 0,
       afterClearDelayMs: 100,
       variantMissDelayMs: 35,
       perLabelDelayMs: 300,
@@ -2684,34 +2686,43 @@
     savePageState();
     refreshPanel();
 
-    if (!options.skipPrime && !hasRecentModuleSearchPrime(options.reuseRecentPrimeMs)) {
+    let primedThisApply = false;
+    if (!options.skipPrime && !options.skipInitialPrime && !hasRecentModuleSearchPrime(options.reuseRecentPrimeMs)) {
       const primed = await primeModuleSearch();
       if (!primed.ok) {
         setStatus(primed.reason);
         state.searchRunning = false;
         return;
       }
+      primedThisApply = true;
     }
 
     const appliedNames = [];
     const missedNames = [];
-    for (const target of targets) {
-      if (state.cancelSearch) break;
-      const variants = getChunkLabelVariants(target, availableMap);
-      let applied = null;
+    const tryApplyTarget = async (target, variants) => {
       for (const variant of variants) {
         setStatus(`Searching ${variant}...`);
         const result = await searchAndClickStructure(variant, { ...searchOptions, allowFallback: false });
-        if (result.ok) {
-          applied = variant;
-          break;
-        }
+        if (result.ok) return variant;
         await delay(variantMissDelayMs);
       }
-      if (!applied) {
-        const fallback = variants[0] || target.preferredLabel;
-        const result = await searchAndClickStructure(fallback, { ...searchOptions, allowFallback: true });
-        applied = result.ok ? fallback : null;
+      const fallback = variants[0] || target.preferredLabel;
+      const result = await searchAndClickStructure(fallback, { ...searchOptions, allowFallback: true });
+      return result.ok ? fallback : null;
+    };
+    for (const target of targets) {
+      if (state.cancelSearch) break;
+      const variants = getChunkLabelVariants(target, availableMap);
+      let applied = await tryApplyTarget(target, variants);
+      if (!applied && options.fallbackPrimeOnMiss && !primedThisApply) {
+        setStatus("Search missed. Warming up IMAIOS search once, then retrying...", 0);
+        const primed = await primeModuleSearch();
+        primedThisApply = true;
+        if (primed.ok) {
+          applied = await tryApplyTarget(target, variants);
+        } else {
+          setStatus(primed.reason, 5000);
+        }
       }
       if (applied) {
         appliedNames.push(applied);
