@@ -360,7 +360,7 @@
 
         .quick-card-actions {
           display: grid;
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr 1fr;
           gap: 5px;
         }
 
@@ -640,6 +640,12 @@
           margin: 2px 0;
         }
 
+        .chunk-learning-text {
+          min-height: 82px;
+          max-height: 180px;
+          font-size: 11.5px;
+        }
+
         .support-hidden {
           display: none;
         }
@@ -780,6 +786,7 @@
           <div class="quick-card-actions">
             <button class="primary" type="button" data-action="run-live-drill-smart-card-automation">Create Anki cards based on batch</button>
             <button type="button" data-action="add-live-drill-to-batch">Add to batch</button>
+            <button class="danger" type="button" data-action="clear-live-drill-card-batch">Clear batch</button>
             <button type="button" data-action="toggle-paired-answer">Open clean tab</button>
           </div>
         </div>
@@ -791,6 +798,8 @@
             <select data-role="chunk-module">${chunkModuleOptions}</select>
             <select data-role="chunk">${chunkOptions}</select>
             <div class="chunk-preview" data-role="chunk-preview"></div>
+            <div class="section-note">Chunk text / learning frame</div>
+            <textarea class="chunk-learning-text" data-role="chunk-learning-text" spellcheck="false" placeholder="Select a chunk, then add scan order, boundaries, relationships, or teaching notes here."></textarea>
             <label class="check-row">
               <input type="checkbox" data-role="apply-clear-first">
               <span>Clear locked before apply</span>
@@ -1121,7 +1130,12 @@
         setStatus(result.ok ? `Batch saved to ${result.path}.` : `Batch save failed: ${result.error || "unknown error"}`, result.ok ? 9000 : 12000);
       });
     });
-    root.querySelector("[data-action='clear-live-drill-card-batch']").addEventListener("click", clearLiveDrillCardBatch);
+    root.querySelectorAll("[data-action='clear-live-drill-card-batch']").forEach((button) => {
+      button.addEventListener("click", clearLiveDrillCardBatch);
+    });
+    root.querySelector("[data-role='chunk-learning-text']").addEventListener("input", (event) => {
+      updateActiveChunkLearningText(event.target.value);
+    });
     root.querySelector("[data-action='toggle-paired-answer']").addEventListener("click", togglePairedAnswerSession);
     root.querySelector("[data-action='copy-live-drill-card-prompt']").addEventListener("click", copyLiveDrillCardPrompt);
     root.querySelector("[data-action='import-live-drill-card-plan']").addEventListener("click", importLiveDrillCardPlanFromClipboard);
@@ -1152,6 +1166,7 @@
     const quickBatchCartSelect = root.querySelector("[data-role='quick-batch-cart']");
     const chunkSelect = root.querySelector("[data-role='chunk']");
     const chunkPreview = root.querySelector("[data-role='chunk-preview']");
+    const chunkLearningText = root.querySelector("[data-role='chunk-learning-text']");
     const chunkSummary = root.querySelector("[data-role='chunk-summary']");
     const routingRoot = root.querySelector("[data-role='routing-root']");
     const routingJson = root.querySelector("[data-role='routing-json']");
@@ -1197,6 +1212,13 @@
     });
     applyClearFirst.checked = state.applyChunkClearFirst;
     chunkPreview.innerHTML = buildChunkPreviewHtml();
+    if (chunkLearningText && root.activeElement !== chunkLearningText) {
+      chunkLearningText.value = getActiveChunkLearningText();
+      chunkLearningText.disabled = !chunk;
+      chunkLearningText.placeholder = chunk
+        ? "Scan order, boundaries, relationships, or teaching notes for this chunk."
+        : "Select a chunk to add learning text.";
+    }
     chunkSummary.textContent = getChunkSummaryText();
     routingRoot.value = getRoutingDeckRoot();
     routingJson.value = state.routingText;
@@ -1404,6 +1426,28 @@
       .replace(/[^a-z0-9]+/gi, "-")
       .replace(/^-+|-+$/g, "")
       .toLowerCase();
+  }
+
+  function getActiveChunkLearningText() {
+    const chunk = getActiveChunk();
+    if (!chunk) return "";
+    return normalizeStringList(chunk.learningFrame || chunk.learningNotes || chunk.notes).join("\n");
+  }
+
+  function updateActiveChunkLearningText(value) {
+    const chunk = getActiveChunk();
+    if (!chunk) return;
+    chunk.learningFrame = normalizeChunkLearningText(value);
+    chunk.updatedAt = new Date().toISOString();
+    state.chunkLibrary.updatedAt = chunk.updatedAt;
+    saveChunkLibrary();
+  }
+
+  function normalizeChunkLearningText(value) {
+    return String(value || "")
+      .split(/\r?\n/)
+      .map((line) => cleanText(line))
+      .filter(Boolean);
   }
 
   function buildChunkPreviewHtml() {
