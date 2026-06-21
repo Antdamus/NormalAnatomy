@@ -95,6 +95,7 @@
     shadow: null,
     panelPosition: { left: 18, top: 112 },
     collapsed: false,
+    quickPanelMode: "normal",
     searchRunning: false,
     cancelSearch: false,
     searchPrimeAt: 0,
@@ -211,6 +212,9 @@
       if (typeof page.routingText === "string") state.routingText = page.routingText;
       if (typeof page.boxesVisible === "boolean") state.boxesVisible = page.boxesVisible;
       if (typeof page.collapsed === "boolean") state.collapsed = page.collapsed;
+      if (["normal", "batch", "review"].includes(page.quickPanelMode)) {
+        state.quickPanelMode = page.quickPanelMode;
+      }
       if (prefs.panelPosition && Number.isFinite(prefs.panelPosition.left) && Number.isFinite(prefs.panelPosition.top)) {
         state.panelPosition = prefs.panelPosition;
       }
@@ -261,7 +265,8 @@
         routingText: state.routingText,
         boxes: state.boxes,
         boxesVisible: state.boxesVisible,
-        collapsed: state.collapsed
+        collapsed: state.collapsed,
+        quickPanelMode: state.quickPanelMode
       }));
       localStorage.setItem(PREFS_STORAGE_KEY, JSON.stringify({
         panelPosition: state.panelPosition,
@@ -354,7 +359,7 @@
         }
 
         .panel.collapsed {
-          width: 178px;
+          width: 292px;
         }
 
         .header {
@@ -388,12 +393,72 @@
           display: none;
         }
 
+        .panel:not(.collapsed) .quick-chunk-bar {
+          display: none;
+        }
+
         .quick-chunk-bar {
           display: grid;
           gap: 5px;
           padding: 8px 10px;
           border-bottom: 1px solid rgba(255,255,255,0.09);
           background: rgba(0,0,0,0.18);
+        }
+
+        .quick-mode-tabs {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 4px;
+          padding: 2px;
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 7px;
+          background: rgba(0,0,0,0.22);
+        }
+
+        .quick-mode-tab {
+          min-height: 25px;
+          padding: 3px 5px;
+          border-radius: 5px;
+          background: transparent;
+          color: rgba(245,247,250,0.64);
+          font-size: 10.2px;
+          font-weight: 760;
+          line-height: 1.1;
+        }
+
+        .quick-mode-tab.active {
+          border-color: rgba(58,158,255,0.42);
+          background: rgba(31,141,220,0.28);
+          color: rgba(245,249,255,0.96);
+        }
+
+        .quick-mode-panel {
+          display: grid;
+          gap: 6px;
+        }
+
+        .quick-mode-panel.hidden {
+          display: none;
+        }
+
+        .quick-panel-note {
+          min-height: 28px;
+          max-height: 72px;
+          overflow: auto;
+          padding: 6px 8px;
+          border: 1px solid rgba(116,184,255,0.18);
+          border-radius: 7px;
+          background: rgba(11, 17, 24, 0.74);
+          color: rgba(221, 235, 250, 0.82);
+          font-size: 10.5px;
+          line-height: 1.35;
+          white-space: pre-wrap;
+          overscroll-behavior: contain;
+        }
+
+        .quick-panel-note:empty::before {
+          content: "Ready.";
+          color: rgba(221,235,250,0.52);
         }
 
         .quick-chunk-label {
@@ -1367,44 +1432,56 @@
           <button class="icon-button" type="button" data-action="toggle-panel" title="Minimize panel">-</button>
         </div>
         <div class="quick-chunk-bar">
-          <div class="quick-chunk-label">Current chunk</div>
-          <div class="chunk-current-control">
-            <button class="chunk-select-button" type="button" data-action="open-chunk-modal" data-role="quick-chunk-button">${currentChunkButtonHtml}</button>
+          <div class="quick-mode-tabs" role="tablist" aria-label="IMAIOS shortcut modes">
+            <button class="quick-mode-tab" type="button" role="tab" data-action="set-quick-mode" data-quick-mode="normal">Normal</button>
+            <button class="quick-mode-tab" type="button" role="tab" data-action="set-quick-mode" data-quick-mode="batch">Planes<br>Batch</button>
+            <button class="quick-mode-tab" type="button" role="tab" data-action="set-quick-mode" data-quick-mode="review">Anki<br>Review</button>
           </div>
-          <div class="chunk-info-strip empty" data-role="quick-chunk-info" tabindex="0" role="button" aria-label="Open chunk scan guide">Select a chunk to show its scan guide.</div>
-          <div class="quick-anki-review" data-role="anki-review-panel">
-            <div class="anki-review-head">
-              <div>
-                <div class="quick-chunk-label">Anki review</div>
-                <div class="anki-review-status" data-role="anki-review-status">Anki review off.</div>
+          <div class="quick-mode-panel" data-role="quick-mode-panel" data-quick-mode-panel="normal">
+            <div class="quick-chunk-label">Current chunk</div>
+            <div class="chunk-current-control">
+              <button class="chunk-select-button" type="button" data-action="open-chunk-modal" data-role="quick-chunk-button">${currentChunkButtonHtml}</button>
+            </div>
+            <div class="chunk-info-strip empty" data-role="quick-chunk-info" tabindex="0" role="button" aria-label="Open chunk scan guide">Select a chunk to show its scan guide.</div>
+          </div>
+          <div class="quick-mode-panel hidden" data-role="quick-mode-panel" data-quick-mode-panel="batch">
+            <div class="quick-chunk-label">Card planes</div>
+            <div class="card-plane-control">
+              <button type="button" data-action="toggle-card-plane-picker">Select planes</button>
+              <div class="card-plane-summary" data-role="card-plane-summary"></div>
+            </div>
+            <div class="quick-batch-cart">
+              <div class="quick-chunk-label">Anki batch cart</div>
+              <div class="quick-batch-summary" data-role="quick-batch-cart-summary">Batch cart empty</div>
+              <button type="button" data-action="open-batch-cart-modal">Manage batch</button>
+            </div>
+            <div class="quick-card-actions">
+              <button class="primary" type="button" data-action="run-live-drill-smart-card-automation">Create Anki cards based on batch</button>
+              <button type="button" data-action="add-current-live-drill-to-batch">Add current plane</button>
+              <button type="button" data-action="add-live-drill-to-batch">Add selected planes</button>
+              <button type="button" data-action="add-module-chunks-to-batch" title="Add every chunk in this module across the selected card planes">Add all module chunks</button>
+            </div>
+            <div class="quick-panel-note" data-role="status"></div>
+          </div>
+          <div class="quick-mode-panel hidden" data-role="quick-mode-panel" data-quick-mode-panel="review">
+            <div class="quick-anki-review" data-role="anki-review-panel">
+              <div class="anki-review-head">
+                <div>
+                  <div class="quick-chunk-label">Anki review</div>
+                  <div class="anki-review-status" data-role="anki-review-status">Anki review off.</div>
+                </div>
+                <button class="anki-review-toggle" type="button" data-action="toggle-anki-review-bridge">Start</button>
               </div>
-              <button class="anki-review-toggle" type="button" data-action="toggle-anki-review-bridge">Start</button>
+              <div class="anki-review-card" data-role="anki-review-card">Start Anki mode to load review cards here.</div>
+              <div class="anki-review-answer hidden" data-role="anki-review-answer"></div>
+              <div class="anki-review-actions">
+                <button class="primary" type="button" data-action="anki-review-show-answer">Show answer</button>
+                <button type="button" data-action="anki-review-grade" data-ease="1">1<br>Again</button>
+                <button type="button" data-action="anki-review-grade" data-ease="2">2<br>Hard</button>
+                <button type="button" data-action="anki-review-grade" data-ease="3">3<br>Good</button>
+                <button type="button" data-action="anki-review-grade" data-ease="4">4<br>Easy</button>
+              </div>
             </div>
-            <div class="anki-review-card" data-role="anki-review-card">Start Anki mode to load review cards here.</div>
-            <div class="anki-review-answer hidden" data-role="anki-review-answer"></div>
-            <div class="anki-review-actions">
-              <button class="primary" type="button" data-action="anki-review-show-answer">Show answer</button>
-              <button type="button" data-action="anki-review-grade" data-ease="1">1<br>Again</button>
-              <button type="button" data-action="anki-review-grade" data-ease="2">2<br>Hard</button>
-              <button type="button" data-action="anki-review-grade" data-ease="3">3<br>Good</button>
-              <button type="button" data-action="anki-review-grade" data-ease="4">4<br>Easy</button>
-            </div>
-          </div>
-          <div class="quick-chunk-label">Card planes</div>
-          <div class="card-plane-control">
-            <button type="button" data-action="toggle-card-plane-picker">Select planes</button>
-            <div class="card-plane-summary" data-role="card-plane-summary"></div>
-          </div>
-          <div class="quick-batch-cart">
-            <div class="quick-chunk-label">Anki batch cart</div>
-            <div class="quick-batch-summary" data-role="quick-batch-cart-summary">Batch cart empty</div>
-            <button type="button" data-action="open-batch-cart-modal">Manage batch</button>
-          </div>
-          <div class="quick-card-actions">
-            <button class="primary" type="button" data-action="run-live-drill-smart-card-automation">Create Anki cards based on batch</button>
-            <button type="button" data-action="add-current-live-drill-to-batch">Add current plane</button>
-            <button type="button" data-action="add-live-drill-to-batch">Add selected planes</button>
-            <button type="button" data-action="add-module-chunks-to-batch" title="Add every chunk in this module across the selected card planes">Add all module chunks</button>
           </div>
         </div>
         <div class="controls">
@@ -1654,6 +1731,14 @@
       state.collapsed = !state.collapsed;
       savePageState();
       refreshPanel();
+    });
+    root.querySelectorAll("[data-action='set-quick-mode']").forEach((button) => {
+      button.addEventListener("click", () => {
+        const mode = button.getAttribute("data-quick-mode") || "normal";
+        state.quickPanelMode = ["normal", "batch", "review"].includes(mode) ? mode : "normal";
+        savePageState();
+        refreshPanel();
+      });
     });
     root.querySelector("[data-role='custom-list']").addEventListener("input", (event) => {
       state.customListText = event.target.value;
@@ -1981,6 +2066,16 @@
     const batchSummary = root.querySelector("[data-role='live-drill-card-batch-summary']");
 
     panel.classList.toggle("collapsed", state.collapsed);
+    const quickMode = ["normal", "batch", "review"].includes(state.quickPanelMode) ? state.quickPanelMode : "normal";
+    state.quickPanelMode = quickMode;
+    root.querySelectorAll("[data-action='set-quick-mode']").forEach((button) => {
+      const active = button.getAttribute("data-quick-mode") === quickMode;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    root.querySelectorAll("[data-role='quick-mode-panel']").forEach((section) => {
+      section.classList.toggle("hidden", section.getAttribute("data-quick-mode-panel") !== quickMode);
+    });
     state.panelPosition.left = clamp(state.panelPosition.left, 4, Math.max(4, window.innerWidth - panel.offsetWidth - 4));
     state.panelPosition.top = clamp(state.panelPosition.top, 4, Math.max(4, window.innerHeight - panel.offsetHeight - 4));
     panel.style.left = `${state.panelPosition.left}px`;
@@ -13321,13 +13416,17 @@
   }
 
   function setStatus(message, clearAfter = 4500) {
-    const status = state.shadow && state.shadow.querySelector("[data-role='status']");
-    if (!status) return;
-    status.textContent = message;
+    const statuses = state.shadow ? Array.from(state.shadow.querySelectorAll("[data-role='status']")) : [];
+    if (!statuses.length) return;
+    statuses.forEach((status) => {
+      status.textContent = message;
+    });
     clearTimeout(state.statusTimer);
     if (clearAfter) {
       state.statusTimer = setTimeout(() => {
-        status.textContent = "";
+        statuses.forEach((status) => {
+          status.textContent = "";
+        });
       }, clearAfter);
     }
   }
