@@ -20,7 +20,7 @@
   const EMPTY_LIVE_DRILL_CARD_BATCH = { kind: "imaios-live-drill-card-batch", version: 1, topic: "", source: "", createdAt: "", updatedAt: "", items: [] };
   const DEFAULT_DECK_ROOT = "IMAIOS";
   const LIVE_DRILL_ANKI_NOTE_TYPE = "Basic";
-  const LIVE_DRILL_STUDY_SHIELD_ENABLED = false;
+  const LIVE_DRILL_STUDY_SHIELD_ENABLED = true;
   const LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED = false;
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
@@ -1371,6 +1371,7 @@
             <div class="section-note">Harvest search-verifies this module and saves only labels IMAIOS can actually find.</div>
             <div class="main-actions">
               <button class="primary" type="button" data-action="harvest-labels">Harvest labels</button>
+              <button type="button" data-action="map-module-native-ids">Collect IDs</button>
               <button class="danger" type="button" data-action="clear-module-labels">Clear cache</button>
             </div>
           </details>
@@ -1608,6 +1609,7 @@
     root.querySelector("[data-action='import-labels']").addEventListener("click", importLabelsFromClipboard);
     root.querySelector("[data-action='copy-chunk-template']").addEventListener("click", copyChunkTemplate);
     root.querySelector("[data-action='harvest-labels']").addEventListener("click", harvestCurrentModuleLabels);
+    root.querySelector("[data-action='map-module-native-ids']").addEventListener("click", mapCurrentModuleNativeIds);
     root.querySelector("[data-action='clear-module-labels']").addEventListener("click", clearCurrentModuleSavedLabels);
     root.querySelector("[data-action='apply-list']").addEventListener("click", () => {
       const names = parseCustomList();
@@ -8940,6 +8942,15 @@
     if (saveResult.ok) {
       const removedText = saveResult.removedCount ? ` ${saveResult.removedCount} stale removed;` : "";
       setStatus(`Harvest saved ${saveResult.afterCount} verified labels for ${saveResult.moduleName}. ${saveResult.addedCount} new;${removedText} ${missed.length} missed.${saveResult.backupText}`, 12000);
+      if (options.mapNativeIds !== false) {
+        await mapNativeIdsForLabels(exportData.labels, {
+          sourceLabel: "Harvest native IDs",
+          skipExisting: true,
+          copyProbe: false,
+          clearAtEnd: true,
+          completionPrefix: `Harvest saved ${saveResult.afterCount} verified labels.`
+        });
+      }
     } else {
       setStatus(saveResult.message, 10000);
     }
@@ -10382,6 +10393,69 @@
       setStatus("Select a chunk or add labels before running the native ID map probe.", 8000);
       return;
     }
+    await mapNativeIdsForLabels(labelCandidates, {
+      sourceLabel: "Native ID map",
+      skipExisting: false,
+      copyProbe: true,
+      clearAtEnd: false
+    });
+  }
+
+  async function mapCurrentModuleNativeIds() {
+    if (state.searchRunning) {
+      setStatus("Search is already running. Stop it before collecting module IDs.", 7000);
+      return;
+    }
+    const saved = getSavedLabelsForCurrentModule();
+    const savedLabels = Array.isArray(saved.labels) ? saved.labels : [];
+    const visibleLabels = buildAvailableLabelsExport().labels || [];
+    const labelCandidates = unique((savedLabels.length ? savedLabels : visibleLabels).map(cleanText).filter(Boolean)).sort(compareLabels);
+    if (!labelCandidates.length) {
+      setStatus("No saved labels for this module yet. Harvest labels first, then collect IDs.", 9000);
+      return;
+    }
+    await mapNativeIdsForLabels(labelCandidates, {
+      sourceLabel: "Module native IDs",
+      skipExisting: true,
+      copyProbe: true,
+      clearAtEnd: true,
+      completionPrefix: `Module label set: ${labelCandidates.length} label${labelCandidates.length === 1 ? "" : "s"}.`
+    });
+  }
+
+  function getLabelsMissingNativeIds(labels, moduleKey = getCurrentModuleKey()) {
+    return unique((labels || []).map(cleanText).filter(Boolean))
+      .filter((label) => !getNativeIdsForLabel(label, moduleKey).ids.length);
+  }
+
+  async function mapNativeIdsForLabels(rawLabels, options = {}) {
+    if (state.searchRunning) {
+      setStatus("Search is already running. Stop it before collecting native IDs.", 7000);
+      return { ok: false, reason: "Search is already running." };
+    }
+
+    const allCandidates = unique((rawLabels || []).map(cleanText).filter(Boolean)).sort(compareLabels);
+    if (!allCandidates.length) {
+      const message = "No labels were provided for native ID mapping.";
+      setStatus(message, 8000);
+      return { ok: false, reason: message };
+    }
+    const moduleKey = getCurrentModuleKey();
+    const labelCandidates = options.skipExisting === false
+      ? allCandidates
+      : getLabelsMissingNativeIds(allCandidates, moduleKey).sort(compareLabels);
+    const skippedExisting = allCandidates.length - labelCandidates.length;
+    if (!labelCandidates.length) {
+      const message = `${options.completionPrefix ? `${options.completionPrefix} ` : ""}All ${allCandidates.length} module label${allCandidates.length === 1 ? "" : "s"} already have native IDs.`;
+      setStatus(message, 12000);
+      return {
+        ok: true,
+        skippedExisting,
+        mapped: 0,
+        total: allCandidates.length,
+        probe: null
+      };
+    }
 
     const initialNative = getCurrentNativeLockedStructureState();
     const results = [];
@@ -10389,7 +10463,7 @@
     state.searchRunning = true;
     state.cancelSearch = false;
     try {
-      setStatus(`Native ID map: clearing current locks before ${labelCandidates.length} label probe...`, 0);
+      setStatus(`${options.sourceLabel || "Native ID map"}: clearing current locks before ${labelCandidates.length} label probe...`, 0);
       await closeStructureDetailPanel();
       const clearResult = await clearLockedStructuresForApply();
       cleanup.push({ step: "initial-clear", clearResult });
@@ -10403,7 +10477,8 @@
         if (state.cancelSearch) break;
         const label = labelCandidates[index];
         const beforeNative = getCurrentNativeLockedStructureState();
-        setStatus(`Native ID map ${index + 1}/${labelCandidates.length}: ${label}`, 0);
+        const skippedText = skippedExisting ? ` (${skippedExisting} already mapped)` : "";
+        setStatus(`${options.sourceLabel || "Native ID map"} ${index + 1}/${labelCandidates.length}${skippedText}: ${label}`, 0);
         const searchResult = await searchAndClickStructure(label, {
           exact: true,
           allowFallback: false,
@@ -10435,6 +10510,10 @@
       }
       await closeStructureDetailPanel();
       await resetQuietPinsByCyclingPins();
+      if (options.clearAtEnd) {
+        const finalClearResult = await clearLockedStructuresForApply();
+        cleanup.push({ step: "final-clear", clearResult: finalClearResult });
+      }
     } catch (error) {
       results.push({
         label: "__probe_error__",
@@ -10459,9 +10538,13 @@
       initialNative,
       finalNative,
       labelCandidates,
+      allCandidateCount: allCandidates.length,
+      skippedExisting,
       cleanup,
       counts: {
-        labelCandidates: labelCandidates.length,
+        labelCandidates: allCandidates.length,
+        testedLabelCandidates: labelCandidates.length,
+        skippedExisting,
         mapped,
         missed: labelCandidates.length - mapped,
         stopped: Boolean(state.cancelSearch)
@@ -10471,12 +10554,27 @@
     const mergeResult = mergeNativeIdMapProbeIntoRepository(probe);
     const saveResult = await saveLabelRepository();
     const backupResult = saveResult.ok ? await backupLabelRepositoryToDownloads() : { ok: false, error: saveResult.error || "save failed" };
-    await writeClipboard(JSON.stringify(probe, null, 2));
+    if (options.copyProbe !== false) await writeClipboard(JSON.stringify(probe, null, 2));
     const saveText = saveResult.ok
       ? ` Saved ${mergeResult.savedMappingCount} native ID map${mergeResult.savedMappingCount === 1 ? "" : "s"} for ${mergeResult.moduleName}.`
       : ` Save failed: ${saveResult.error}`;
     const backupText = backupResult.ok ? " Backup updated." : ` Backup failed: ${backupResult.error}`;
-    setStatus(`Native ID map copied: ${mapped}/${labelCandidates.length} labels mapped.${saveText}${backupText}`, mapped === labelCandidates.length ? 12000 : 15000);
+    const copiedText = options.copyProbe === false ? "" : " copied";
+    const prefix = options.completionPrefix ? `${options.completionPrefix} ` : "";
+    const skippedText = skippedExisting ? ` ${skippedExisting} already had IDs.` : "";
+    setStatus(`${prefix}Native ID map${copiedText}: ${mapped}/${labelCandidates.length} missing labels mapped.${skippedText}${saveText}${backupText}`, mapped === labelCandidates.length ? 12000 : 15000);
+    refreshPanel();
+    return {
+      ok: saveResult.ok,
+      mapped,
+      tested: labelCandidates.length,
+      skippedExisting,
+      total: allCandidates.length,
+      probe,
+      mergeResult,
+      saveResult,
+      backupResult
+    };
   }
 
   function mergeNativeIdMapProbeIntoRepository(probe) {
