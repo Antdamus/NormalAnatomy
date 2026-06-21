@@ -38,6 +38,7 @@ const IMAIOS_LABEL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-repository"
 const IMAIOS_LABEL_DETAIL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-detail-repository";
 const IMAIOS_LIVE_DRILL_PAIRS_STORAGE_KEY = "imaios-cine-tools:live-drill-pairs";
 const IMAIOS_LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED = false;
+const ANKI_LIVE_DRILL_BRIDGE_BASE_URL = "http://127.0.0.1:8765";
 const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
 const CORE_EVIDENCE_BEGIN = "CORE_EVIDENCE_FILE_BEGIN";
 const CORE_EVIDENCE_END = "CORE_EVIDENCE_FILE_END";
@@ -136,6 +137,44 @@ function buildSpeechifyFolderUrl(folderId) {
   const url = new URL("https://app.speechify.com/");
   if (folderId) url.searchParams.set("folder", folderId);
   return url.toString();
+}
+
+async function requestAnkiLiveDrillBridge(path, options = {}) {
+  const endpoint = `${ANKI_LIVE_DRILL_BRIDGE_BASE_URL}${path}`;
+  const timeoutMs = Number(options.timeoutMs || 5000);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(endpoint, {
+      method: options.method || "GET",
+      headers: {
+        "Content-Type": "application/json",
+        ...(options.headers || {})
+      },
+      body: options.body === undefined ? undefined : JSON.stringify(options.body),
+      signal: controller.signal
+    });
+    const text = await response.text();
+    let payload = null;
+    if (text) {
+      try {
+        payload = JSON.parse(text);
+      } catch (_error) {
+        payload = { raw: text };
+      }
+    }
+    if (!response.ok) {
+      throw new Error(payload?.error || payload?.message || `Anki bridge returned HTTP ${response.status}.`);
+    }
+    return payload || { ok: true };
+  } catch (error) {
+    if (error?.name === "AbortError") {
+      throw new Error("Anki bridge timed out. Make sure Anki is open and the IMAIOS Live Drill Bridge add-on is installed.");
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }
 
 function parseSpeechifyFolderUrl(rawValue) {
@@ -5784,6 +5823,47 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       const tabId = _sender?.tab?.id;
       await dispatchTabKeyPress(tabId, message.key || "", message.code || "");
       sendResponse({ ok: true });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "ANKI_LIVE_DRILL_BRIDGE_GET_STATE") {
+    (async () => {
+      const state = await requestAnkiLiveDrillBridge("/state", { timeoutMs: 4500 });
+      sendResponse({ ok: true, state });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "ANKI_LIVE_DRILL_BRIDGE_SHOW_ANSWER") {
+    (async () => {
+      const result = await requestAnkiLiveDrillBridge("/show-answer", {
+        method: "POST",
+        body: {},
+        timeoutMs: 6000
+      });
+      sendResponse({ ok: true, result, state: result?.state || null });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "ANKI_LIVE_DRILL_BRIDGE_ANSWER") {
+    (async () => {
+      const result = await requestAnkiLiveDrillBridge("/answer", {
+        method: "POST",
+        body: { ease: Number(message.ease || 0) },
+        timeoutMs: 7000
+      });
+      sendResponse({ ok: true, result, state: result?.state || null });
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
     });

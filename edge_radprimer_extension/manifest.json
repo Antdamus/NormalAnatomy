@@ -24,7 +24,9 @@
     "https://chat.openai.com/*",
     "https://app.speechify.com/*",
     "https://imaios.com/*",
-    "https://www.imaios.com/*"
+    "https://www.imaios.com/*",
+    "http://127.0.0.1:8765/*",
+    "http://localhost:8765/*"
   ],
   "action": {
     "default_title": "RadPrimer Prompt Runner",

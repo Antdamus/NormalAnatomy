@@ -142,7 +142,24 @@
     liveDrillPairInputApplying: false,
     liveDrillPairInputHandlers: null,
     liveDrillPairInputLastSent: 0,
-    liveDrillPairPointerActive: false
+    liveDrillPairPointerActive: false,
+    ankiReviewBridge: {
+      enabled: false,
+      polling: false,
+      timer: 0,
+      loading: false,
+      applying: false,
+      connected: false,
+      status: "off",
+      statusText: "Anki review off.",
+      lastError: "",
+      lastSequence: 0,
+      lastCardId: 0,
+      lastDrillSignature: "",
+      side: "",
+      card: null,
+      lastState: null
+    }
   };
 
   async function init() {
@@ -177,6 +194,11 @@
         setStatus(`Live drill restore failed: ${error?.message || error}`, 9000);
       });
     }, 900);
+    if (state.ankiReviewBridge.enabled) {
+      setTimeout(() => {
+        startAnkiReviewBridge({ silent: true });
+      }, 1500);
+    }
   }
 
   function loadSavedState() {
@@ -216,6 +238,9 @@
       if (typeof prefs.routingDeckRoot === "string") {
         state.routingDeckRoot = prefs.routingDeckRoot || DEFAULT_DECK_ROOT;
       }
+      if (typeof prefs.ankiReviewBridgeEnabled === "boolean") {
+        state.ankiReviewBridge.enabled = prefs.ankiReviewBridgeEnabled;
+      }
       state.chunkLibrary = normalizeImportedChunkLibrary(JSON.parse(localStorage.getItem(CHUNK_LIBRARY_STORAGE_KEY) || "null"));
       state.labelRepository = normalizeImportedLabelRepository(JSON.parse(localStorage.getItem(LABEL_REPOSITORY_STORAGE_KEY) || "null"));
       state.labelDetailRepository = normalizeImportedLabelDetailRepository(JSON.parse(localStorage.getItem(LABEL_DETAIL_REPOSITORY_STORAGE_KEY) || "null"));
@@ -247,6 +272,7 @@
         cardSeriesOptionsByModule: state.cardSeriesOptionsByModule,
         cardSeriesSelectionsByModule: state.cardSeriesSelectionsByModule,
         routingDeckRoot: state.routingDeckRoot,
+        ankiReviewBridgeEnabled: Boolean(state.ankiReviewBridge.enabled),
         hotkeys: state.hotkeys
       }));
     } catch (error) {
@@ -868,6 +894,94 @@
           font-size: 11px;
         }
 
+        .quick-anki-review {
+          display: grid;
+          gap: 7px;
+          padding: 8px;
+          border: 1px solid rgba(116,184,255,0.18);
+          border-radius: 8px;
+          background: linear-gradient(135deg, rgba(16, 24, 34, 0.82), rgba(255,255,255,0.035));
+        }
+
+        .quick-anki-review.active {
+          border-color: rgba(58,158,255,0.42);
+          box-shadow: inset 0 0 0 1px rgba(58,158,255,0.1);
+        }
+
+        .quick-anki-review.error {
+          border-color: rgba(255,120,92,0.44);
+          background: linear-gradient(135deg, rgba(50, 20, 22, 0.72), rgba(255,255,255,0.035));
+        }
+
+        .anki-review-head {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          align-items: center;
+          gap: 7px;
+        }
+
+        .anki-review-status {
+          margin-top: 2px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: rgba(245,247,250,0.74);
+          font-size: 10.5px;
+          line-height: 1.25;
+        }
+
+        .anki-review-toggle {
+          min-height: 26px;
+          padding: 3px 8px;
+          white-space: nowrap;
+          font-size: 10.8px;
+        }
+
+        .anki-review-card,
+        .anki-review-answer {
+          min-height: 30px;
+          max-height: 74px;
+          overflow: auto;
+          padding: 6px 7px;
+          border-radius: 6px;
+          background: rgba(0,0,0,0.22);
+          color: rgba(245,247,250,0.82);
+          font-size: 10.6px;
+          line-height: 1.35;
+          user-select: text;
+        }
+
+        .anki-review-answer {
+          border-left: 3px solid rgba(122, 210, 150, 0.5);
+          color: rgba(238, 255, 243, 0.9);
+        }
+
+        .anki-review-answer.hidden {
+          display: none;
+        }
+
+        .anki-review-actions {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          gap: 5px;
+        }
+
+        .anki-review-actions button {
+          min-height: 27px;
+          padding: 3px 5px;
+          font-size: 10.5px;
+          line-height: 1.15;
+        }
+
+        .anki-review-actions button[data-action="anki-review-show-answer"] {
+          grid-column: 1 / -1;
+        }
+
+        .anki-review-actions button:disabled {
+          opacity: 0.48;
+          cursor: default;
+        }
+
         .row {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -1258,6 +1372,24 @@
             <button class="chunk-select-button" type="button" data-action="open-chunk-modal" data-role="quick-chunk-button">${currentChunkButtonHtml}</button>
           </div>
           <div class="chunk-info-strip empty" data-role="quick-chunk-info" tabindex="0" role="button" aria-label="Open chunk scan guide">Select a chunk to show its scan guide.</div>
+          <div class="quick-anki-review" data-role="anki-review-panel">
+            <div class="anki-review-head">
+              <div>
+                <div class="quick-chunk-label">Anki review</div>
+                <div class="anki-review-status" data-role="anki-review-status">Anki review off.</div>
+              </div>
+              <button class="anki-review-toggle" type="button" data-action="toggle-anki-review-bridge">Start</button>
+            </div>
+            <div class="anki-review-card" data-role="anki-review-card">Start Anki mode to load review cards here.</div>
+            <div class="anki-review-answer hidden" data-role="anki-review-answer"></div>
+            <div class="anki-review-actions">
+              <button class="primary" type="button" data-action="anki-review-show-answer">Show answer</button>
+              <button type="button" data-action="anki-review-grade" data-ease="1">1<br>Again</button>
+              <button type="button" data-action="anki-review-grade" data-ease="2">2<br>Hard</button>
+              <button type="button" data-action="anki-review-grade" data-ease="3">3<br>Good</button>
+              <button type="button" data-action="anki-review-grade" data-ease="4">4<br>Easy</button>
+            </div>
+          </div>
           <div class="quick-chunk-label">Card planes</div>
           <div class="card-plane-control">
             <button type="button" data-action="toggle-card-plane-picker">Select planes</button>
@@ -1552,6 +1684,13 @@
       event.preventDefault();
       openChunkInfoModal();
     });
+    root.querySelector("[data-action='toggle-anki-review-bridge']").addEventListener("click", toggleAnkiReviewBridge);
+    root.querySelector("[data-action='anki-review-show-answer']").addEventListener("click", ankiReviewShowAnswer);
+    root.querySelectorAll("[data-action='anki-review-grade']").forEach((button) => {
+      button.addEventListener("click", () => {
+        ankiReviewGrade(Number(button.getAttribute("data-ease") || 0));
+      });
+    });
     root.querySelectorAll("[data-action='close-chunk-info-modal']").forEach((button) => {
       button.addEventListener("click", closeChunkInfoModal);
     });
@@ -1807,6 +1946,7 @@
     const quickChunkButton = root.querySelector("[data-role='quick-chunk-button']");
     const quickChunkInfo = root.querySelector("[data-role='quick-chunk-info']");
     const quickBatchCartSummary = root.querySelector("[data-role='quick-batch-cart-summary']");
+    const ankiReviewPanel = root.querySelector("[data-role='anki-review-panel']");
     const chunkSelect = root.querySelector("[data-role='chunk']");
     const chunkPreview = root.querySelector("[data-role='chunk-preview']");
     const chunkSummary = root.querySelector("[data-role='chunk-summary']");
@@ -1855,6 +1995,7 @@
       quickChunkInfo.removeAttribute("title");
     }
     if (quickBatchCartSummary) quickBatchCartSummary.textContent = getLiveDrillCardBatchCompactSummaryText();
+    if (ankiReviewPanel) updateAnkiReviewPanel(root);
     chunkSelect.innerHTML = buildChunkOptions();
     chunkSelect.value = state.activeChunkId;
     recordPlaneScopes.forEach((select) => {
@@ -3793,6 +3934,360 @@
       }
       setStatus(response.message || "ChatGPT is building the live-drill card plan. IMAIOS will generate the TSV when it returns.", 14000);
     });
+  }
+
+  function updateAnkiReviewPanel(root = state.shadow) {
+    if (!root) return;
+    const bridge = state.ankiReviewBridge;
+    const panel = root.querySelector("[data-role='anki-review-panel']");
+    const status = root.querySelector("[data-role='anki-review-status']");
+    const card = root.querySelector("[data-role='anki-review-card']");
+    const answer = root.querySelector("[data-role='anki-review-answer']");
+    const toggle = root.querySelector("[data-action='toggle-anki-review-bridge']");
+    const showAnswer = root.querySelector("[data-action='anki-review-show-answer']");
+    const grades = Array.from(root.querySelectorAll("[data-action='anki-review-grade']"));
+    if (!panel || !status || !card || !toggle || !showAnswer) return;
+
+    panel.classList.toggle("active", Boolean(bridge.enabled && bridge.connected));
+    panel.classList.toggle("error", Boolean(bridge.lastError));
+    toggle.textContent = bridge.enabled ? "Stop" : "Start";
+    status.textContent = bridge.statusText || (bridge.enabled ? "Waiting for Anki..." : "Anki review off.");
+
+    const remote = bridge.card || {};
+    const side = cleanText(remote.side || bridge.side || "");
+    const title = getAnkiReviewCardTitle(remote);
+    const deck = cleanText(remote.deckName || "");
+    const hasDrill = Boolean(remote.drillPayload || remote.drillPayloadEncoded || remote.drillUrl);
+    const cardLine = title
+      ? `${title}${deck ? `\n${deck}` : ""}${hasDrill ? "" : "\nNo IMAIOS drill link found on this card."}`
+      : bridge.enabled
+        ? "Open Anki review and select a card with an IMAIOS live-drill link."
+        : "Start Anki mode to load review cards here.";
+    card.textContent = cardLine;
+
+    const answerText = sanitizeAnkiReviewText(remote.answerText || "");
+    if (answer) {
+      answer.textContent = side === "answer" && answerText ? answerText : "";
+      answer.classList.toggle("hidden", !(side === "answer" && answerText));
+    }
+
+    const canShow = Boolean(bridge.enabled && bridge.connected && remote.reviewerActive && side !== "answer");
+    const canGrade = Boolean(bridge.enabled && bridge.connected && remote.reviewerActive && side === "answer");
+    showAnswer.disabled = !canShow;
+    grades.forEach((button) => {
+      button.disabled = !canGrade;
+    });
+  }
+
+  function getAnkiReviewCardTitle(remote = {}) {
+    const payload = remote.drillPayload && typeof remote.drillPayload === "object" ? remote.drillPayload : null;
+    const fromPayload = cleanText(payload?.title || payload?.chunk?.title || "");
+    if (fromPayload) return fromPayload;
+    const question = sanitizeAnkiReviewText(remote.questionText || "");
+    if (question) return question.slice(0, 180);
+    const fields = remote.fields && typeof remote.fields === "object" ? remote.fields : {};
+    for (const key of ["Title", "Front", "Question", "Text"]) {
+      const value = sanitizeAnkiReviewText(fields[key] || "");
+      if (value) return value.slice(0, 180);
+    }
+    return "";
+  }
+
+  function sanitizeAnkiReviewText(value) {
+    const text = cleanText(value || "");
+    return text.length > 1100 ? `${text.slice(0, 1100)}...` : text;
+  }
+
+  function toggleAnkiReviewBridge() {
+    if (state.ankiReviewBridge.enabled) {
+      stopAnkiReviewBridge();
+    } else {
+      startAnkiReviewBridge();
+    }
+  }
+
+  function startAnkiReviewBridge(options = {}) {
+    const bridge = state.ankiReviewBridge;
+    bridge.enabled = true;
+    bridge.status = "connecting";
+    bridge.statusText = "Connecting to Anki...";
+    bridge.lastError = "";
+    savePageState();
+    refreshPanel();
+    if (!bridge.timer) {
+      bridge.timer = window.setInterval(() => {
+        pollAnkiReviewBridge().catch(() => {});
+      }, 1100);
+    }
+    pollAnkiReviewBridge({ silent: Boolean(options.silent) }).catch((error) => {
+      bridge.lastError = String(error?.message || error);
+      bridge.status = "error";
+      bridge.statusText = bridge.lastError;
+      refreshPanel();
+    });
+  }
+
+  function stopAnkiReviewBridge() {
+    const bridge = state.ankiReviewBridge;
+    bridge.enabled = false;
+    bridge.polling = false;
+    bridge.connected = false;
+    bridge.status = "off";
+    bridge.statusText = "Anki review off.";
+    bridge.lastError = "";
+    if (bridge.timer) {
+      window.clearInterval(bridge.timer);
+      bridge.timer = 0;
+    }
+    savePageState();
+    refreshPanel();
+    setStatus("Anki review mode stopped.", 3500);
+  }
+
+  async function pollAnkiReviewBridge(options = {}) {
+    const bridge = state.ankiReviewBridge;
+    if (!bridge.enabled || bridge.polling) return;
+    bridge.polling = true;
+    try {
+      const response = await sendAnkiReviewBridgeMessage("ANKI_LIVE_DRILL_BRIDGE_GET_STATE");
+      if (!response.ok) throw new Error(response.error || "Anki bridge did not respond.");
+      const remote = normalizeAnkiReviewState(response.state || {});
+      bridge.connected = true;
+      bridge.lastError = "";
+      bridge.card = remote;
+      bridge.lastState = remote;
+      bridge.side = remote.side || "";
+      bridge.status = remote.reviewerActive ? (remote.side || "review") : "idle";
+      bridge.statusText = getAnkiReviewStatusText(remote);
+      if (remote.sequence !== bridge.lastSequence || remote.cardId !== bridge.lastCardId) {
+        bridge.lastSequence = remote.sequence;
+        bridge.lastCardId = remote.cardId;
+      }
+      refreshPanel();
+      if (remote.reviewerActive && (remote.drillPayload || remote.drillPayloadEncoded || remote.drillUrl)) {
+        await applyAnkiReviewCardDrill(remote, options);
+      }
+    } catch (error) {
+      bridge.connected = false;
+      bridge.lastError = String(error?.message || error);
+      bridge.status = "error";
+      bridge.statusText = bridge.lastError;
+      if (!options.silent) setStatus(`Anki review bridge: ${bridge.lastError}`, 9000);
+      refreshPanel();
+    } finally {
+      bridge.polling = false;
+    }
+  }
+
+  function normalizeAnkiReviewState(remote = {}) {
+    const fields = remote.fields && typeof remote.fields === "object" ? remote.fields : {};
+    return {
+      ok: remote.ok !== false,
+      connected: remote.connected !== false,
+      reviewerActive: Boolean(remote.reviewerActive),
+      side: cleanText(remote.side || ""),
+      sequence: Number(remote.sequence || 0),
+      cardId: Number(remote.cardId || 0),
+      noteId: Number(remote.noteId || 0),
+      deckName: cleanText(remote.deckName || ""),
+      modelName: cleanText(remote.modelName || ""),
+      questionText: cleanText(remote.questionText || ""),
+      answerText: cleanText(remote.answerText || ""),
+      drillUrl: cleanText(remote.drillUrl || ""),
+      drillPayloadEncoded: cleanText(remote.drillPayloadEncoded || ""),
+      drillPayload: remote.drillPayload && typeof remote.drillPayload === "object" ? remote.drillPayload : null,
+      fields,
+      error: cleanText(remote.error || "")
+    };
+  }
+
+  function getAnkiReviewStatusText(remote = {}) {
+    if (!remote.reviewerActive) return "Anki connected. Open a review card.";
+    const side = remote.side === "answer" ? "Answer shown" : "Question";
+    const hasDrill = Boolean(remote.drillPayload || remote.drillPayloadEncoded || remote.drillUrl);
+    const cardId = remote.cardId ? `card ${remote.cardId}` : "current card";
+    return `${side} - ${cardId}${hasDrill ? "" : " - no live drill"}`;
+  }
+
+  async function sendAnkiReviewBridgeMessage(type, payload = {}) {
+    if (!chrome?.runtime?.sendMessage) throw new Error("Extension messaging is unavailable.");
+    return new Promise((resolve) => {
+      chrome.runtime.sendMessage({ type, ...payload }, (response) => {
+        const error = chrome.runtime.lastError;
+        if (error) {
+          resolve({ ok: false, error: error.message || String(error) });
+          return;
+        }
+        resolve(response || { ok: false, error: "No response from extension background." });
+      });
+    });
+  }
+
+  async function applyAnkiReviewCardDrill(remote, options = {}) {
+    const bridge = state.ankiReviewBridge;
+    if (bridge.applying) return;
+    const extraction = getAnkiReviewDrillPayload(remote);
+    if (!extraction.ok) {
+      bridge.statusText = extraction.reason;
+      refreshPanel();
+      return;
+    }
+    const payload = withAnkiStudyShield(extraction.payload);
+    const signature = [
+      remote.cardId || 0,
+      remote.sequence || 0,
+      payload.id || payload.title || "",
+      payload.viewer?.selectedSeries || payload.viewer?.plane || "",
+      getLiveDrillRestoreLabels(payload).join("|")
+    ].join("::");
+    if (signature === bridge.lastDrillSignature) return;
+
+    const expectedModuleKey = normalizeModuleKey(payload?.module?.key || payload?.module?.pathname || payload?.module?.url || "");
+    const currentModuleKey = getCurrentModuleKey();
+    if (expectedModuleKey && currentModuleKey && expectedModuleKey !== currentModuleKey) {
+      bridge.lastDrillSignature = signature;
+      bridge.statusText = `Opening ${payload?.module?.name || "card module"}...`;
+      refreshPanel();
+      const targetUrl = buildLiveDrillUrl(payload);
+      location.href = targetUrl;
+      return;
+    }
+
+    bridge.applying = true;
+    bridge.statusText = `Loading ${payload.title || "live drill"}...`;
+    refreshPanel();
+    try {
+      await restoreLiveDrillPayload(payload, { source: "anki-card" });
+      bridge.lastDrillSignature = signature;
+      bridge.statusText = `Ready - ${getLiveDrillRestoreLabels(payload).length} structures.`;
+      if (!options.silent) setStatus(`Anki drill loaded: ${payload.title || "current card"}.`, 4500);
+    } catch (error) {
+      bridge.lastError = String(error?.message || error);
+      bridge.statusText = `Anki drill load failed: ${bridge.lastError}`;
+      setStatus(bridge.statusText, 10000);
+    } finally {
+      bridge.applying = false;
+      refreshPanel();
+    }
+  }
+
+  function getAnkiReviewDrillPayload(remote = {}) {
+    if (remote.drillPayload && typeof remote.drillPayload === "object" && remote.drillPayload.kind === "imaios-live-drill") {
+      return { ok: true, payload: remote.drillPayload };
+    }
+    if (remote.drillPayloadEncoded) {
+      try {
+        return { ok: true, payload: parseLiveDrillPayload(remote.drillPayloadEncoded) };
+      } catch (error) {
+        return { ok: false, reason: String(error?.message || error) };
+      }
+    }
+    if (remote.drillUrl) {
+      try {
+        const parsed = new URL(remote.drillUrl, location.href);
+        const encoded = getLiveDrillHashPayload(parsed.hash);
+        if (!encoded) return { ok: false, reason: "The Anki card link has no imaiosDrill hash." };
+        return { ok: true, payload: parseLiveDrillPayload(encoded) };
+      } catch (error) {
+        return { ok: false, reason: `Could not parse Anki live-drill URL: ${error?.message || error}` };
+      }
+    }
+    return { ok: false, reason: "The current Anki card has no IMAIOS live-drill link." };
+  }
+
+  function withAnkiStudyShield(payload) {
+    return {
+      ...payload,
+      studyShield: {
+        ...(payload?.studyShield || {}),
+        enabled: true,
+        source: "anki-card",
+        mode: payload?.studyShield?.mode || "cover-until-ready"
+      }
+    };
+  }
+
+  async function ankiReviewShowAnswer() {
+    const bridge = state.ankiReviewBridge;
+    if (!bridge.enabled) {
+      startAnkiReviewBridge();
+      return;
+    }
+    bridge.statusText = "Showing Anki answer...";
+    refreshPanel();
+    const response = await sendAnkiReviewBridgeMessage("ANKI_LIVE_DRILL_BRIDGE_SHOW_ANSWER");
+    if (!response.ok) {
+      bridge.lastError = response.error || "Could not show answer.";
+      bridge.statusText = bridge.lastError;
+      setStatus(`Anki review: ${bridge.lastError}`, 9000);
+      refreshPanel();
+      return;
+    }
+    const remote = normalizeAnkiReviewState(response.state || response.result?.state || {});
+    bridge.card = remote;
+    bridge.lastState = remote;
+    bridge.side = remote.side || "answer";
+    bridge.connected = true;
+    bridge.lastError = "";
+    bridge.statusText = getAnkiReviewStatusText(remote);
+    refreshPanel();
+  }
+
+  async function ankiReviewGrade(ease) {
+    const bridge = state.ankiReviewBridge;
+    if (!bridge.enabled) {
+      startAnkiReviewBridge();
+      return;
+    }
+    const numericEase = Number(ease || 0);
+    if (![1, 2, 3, 4].includes(numericEase)) return;
+    if (bridge.side !== "answer") {
+      setStatus("Show the answer first, then grade with 1-4.", 5000);
+      return;
+    }
+    bridge.statusText = `Sending grade ${numericEase} to Anki...`;
+    refreshPanel();
+    const response = await sendAnkiReviewBridgeMessage("ANKI_LIVE_DRILL_BRIDGE_ANSWER", { ease: numericEase });
+    if (!response.ok) {
+      bridge.lastError = response.error || "Could not answer card.";
+      bridge.statusText = bridge.lastError;
+      setStatus(`Anki review: ${bridge.lastError}`, 9000);
+      refreshPanel();
+      return;
+    }
+    bridge.lastDrillSignature = "";
+    const remote = normalizeAnkiReviewState(response.state || response.result?.state || {});
+    bridge.card = remote;
+    bridge.lastState = remote;
+    bridge.side = remote.side || "";
+    bridge.connected = true;
+    bridge.lastError = "";
+    bridge.statusText = "Grade sent. Loading next Anki card...";
+    refreshPanel();
+    window.setTimeout(() => {
+      pollAnkiReviewBridge().catch(() => {});
+    }, 450);
+  }
+
+  function handleAnkiReviewHotkey(event, isEditing) {
+    const bridge = state.ankiReviewBridge;
+    if (!bridge.enabled || isEditing || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return false;
+    if (event.code === "Space" || event.key === "Enter") {
+      markKeyboardEventHandled(event);
+      ankiReviewShowAnswer().catch((error) => {
+        setStatus(`Anki review: ${error?.message || error}`, 9000);
+      });
+      return true;
+    }
+    const gradeMatch = /^Digit([1-4])$/.exec(event.code || "");
+    if (gradeMatch) {
+      markKeyboardEventHandled(event);
+      ankiReviewGrade(Number(gradeMatch[1])).catch((error) => {
+        setStatus(`Anki review: ${error?.message || error}`, 9000);
+      });
+      return true;
+    }
+    return false;
   }
 
   async function addCurrentLiveDrillToCardBatch() {
@@ -12534,6 +13029,7 @@
     }
 
     const isEditing = isEditableEventTarget(event);
+    if (handleAnkiReviewHotkey(event, isEditing)) return;
     const actionId = getHotkeyActionForEvent(event);
     if (actionId && !isEditing) {
       markKeyboardEventHandled(event);
