@@ -35,6 +35,9 @@ _snapshot: dict[str, Any] = {
     "modelName": "",
     "questionText": "",
     "answerText": "",
+    "questionHtml": "",
+    "answerHtml": "",
+    "modelCss": "",
     "drillUrl": "",
     "drillPayloadEncoded": "",
     "drillPayload": None,
@@ -173,6 +176,15 @@ def _model_name(card: Any) -> str:
         return ""
 
 
+def _model_css(card: Any) -> str:
+    try:
+        note = card.note()
+        model = note.model()
+        return str(model.get("css") or "")
+    except Exception:
+        return ""
+
+
 def _deck_name(card: Any) -> str:
     try:
         return str(mw.col.decks.name(card.did) or "")
@@ -212,6 +224,9 @@ def _refresh_snapshot(side: str | None = None) -> dict[str, Any]:
                 "modelName": "",
                 "questionText": "",
                 "answerText": "",
+                "questionHtml": "",
+                "answerHtml": "",
+                "modelCss": "",
                 "drillUrl": "",
                 "drillPayloadEncoded": "",
                 "drillPayload": None,
@@ -255,6 +270,9 @@ def _refresh_snapshot(side: str | None = None) -> dict[str, Any]:
             "modelName": _model_name(card),
             "questionText": _strip_html(question_html, 1200),
             "answerText": _strip_html(answer_html, 3000),
+            "questionHtml": question_html,
+            "answerHtml": answer_html,
+            "modelCss": _model_css(card),
             "drillUrl": drill_url,
             "drillPayloadEncoded": encoded,
             "drillPayload": payload,

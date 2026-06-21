@@ -403,6 +403,9 @@
           padding: 8px 10px;
           border-bottom: 1px solid rgba(255,255,255,0.09);
           background: rgba(0,0,0,0.18);
+          max-height: calc(100vh - 12px);
+          overflow: auto;
+          overscroll-behavior: contain;
         }
 
         .quick-mode-tabs {
@@ -536,7 +539,7 @@
         .chunk-info-strip {
           display: block;
           min-height: 58px;
-          max-height: 58px;
+          max-height: min(360px, calc(100vh - 252px));
           overflow: auto;
           padding: 7px 9px;
           border: 1px solid rgba(116,184,255,0.18);
@@ -547,13 +550,12 @@
           font: 10.8px/1.36 Inter, "Segoe UI", Arial, sans-serif;
           resize: vertical;
           cursor: zoom-in;
-          transition: max-height 140ms ease, border-color 140ms ease, background 140ms ease;
+          transition: border-color 140ms ease, background 140ms ease;
           overscroll-behavior: contain;
         }
 
         .chunk-info-strip:hover,
         .chunk-info-strip:focus {
-          max-height: 132px;
           border-color: rgba(116,184,255,0.44);
           background: linear-gradient(135deg, rgba(14, 23, 32, 0.96), rgba(255,255,255,0.05));
         }
@@ -1004,25 +1006,50 @@
 
         .anki-review-card,
         .anki-review-answer {
-          min-height: 30px;
-          max-height: 74px;
+          min-height: 44px;
+          max-height: 146px;
           overflow: auto;
-          padding: 6px 7px;
+          padding: 0;
           border-radius: 6px;
-          background: rgba(0,0,0,0.22);
-          color: rgba(245,247,250,0.82);
-          font-size: 10.6px;
+          background: #fff;
+          color: #111;
+          font-size: 12px;
           line-height: 1.35;
           user-select: text;
         }
 
         .anki-review-answer {
           border-left: 3px solid rgba(122, 210, 150, 0.5);
-          color: rgba(238, 255, 243, 0.9);
         }
 
         .anki-review-answer.hidden {
           display: none;
+        }
+
+        .anki-card-render {
+          min-height: 44px;
+          padding: 10px 9px;
+          background: #fff;
+          color: #111;
+          font-family: Arial, sans-serif;
+          font-size: 20px;
+          line-height: 1.35;
+          text-align: center;
+          overflow-wrap: anywhere;
+        }
+
+        .anki-card-render .card {
+          margin: 0;
+        }
+
+        .anki-card-render a {
+          color: #236ebf;
+        }
+
+        .anki-card-render.empty {
+          color: #6b7280;
+          font-size: 12px;
+          text-align: left;
         }
 
         .anki-review-actions {
@@ -4058,12 +4085,14 @@
       : bridge.enabled
         ? "Open Anki review and select a card with an IMAIOS live-drill link."
         : "Start Anki mode to load review cards here.";
-    card.textContent = cardLine;
+    card.innerHTML = buildAnkiReviewCardHtml(getAnkiReviewQuestionHtml(remote), remote.modelCss || "", cardLine);
 
     const answerText = sanitizeAnkiReviewText(remote.answerText || "");
     if (answer) {
-      answer.textContent = side === "answer" && answerText ? answerText : "";
-      answer.classList.toggle("hidden", !(side === "answer" && answerText));
+      const remoteAnswerHtml = getAnkiReviewAnswerHtml(remote);
+      const answerHtml = buildAnkiReviewCardHtml(remoteAnswerHtml, remote.modelCss || "", answerText);
+      answer.innerHTML = side === "answer" && (remoteAnswerHtml || answerText) ? answerHtml : "";
+      answer.classList.toggle("hidden", !(side === "answer" && (remoteAnswerHtml || answerText)));
     }
 
     const canShow = Boolean(bridge.enabled && bridge.connected && remote.reviewerActive && side !== "answer");
@@ -4086,6 +4115,35 @@
       if (value) return value.slice(0, 180);
     }
     return "";
+  }
+
+  function getAnkiReviewQuestionHtml(remote = {}) {
+    if (remote.questionHtml) return remote.questionHtml;
+    const card = buildAnkiReviewFallbackCard(remote);
+    if (!card) return "";
+    return buildLiveDrillCardFront(card, card.link || "#");
+  }
+
+  function getAnkiReviewAnswerHtml(remote = {}) {
+    if (remote.answerHtml) return remote.answerHtml;
+    const card = buildAnkiReviewFallbackCard(remote);
+    if (!card) return "";
+    return buildLiveDrillCardBack(card);
+  }
+
+  function buildAnkiReviewFallbackCard(remote = {}) {
+    const extraction = getAnkiReviewDrillPayload(remote);
+    const payload = extraction.ok ? extraction.payload : null;
+    if (!payload) return null;
+    const labelNames = getLiveDrillRestoreLabels(payload);
+    return {
+      title: cleanText(payload.title || payload.chunk?.title || ""),
+      labels: labelNames,
+      frontPrompt: cleanText(payload.frontPrompt || payload.card?.frontPrompt || "Open the live drill and name the locked structures."),
+      recognitionCues: Array.isArray(payload.recognitionCues) ? payload.recognitionCues.map(cleanText).filter(Boolean) : [],
+      contrastCues: Array.isArray(payload.contrastCues) ? payload.contrastCues.map(cleanText).filter(Boolean) : [],
+      link: buildLiveDrillUrl(payload)
+    };
   }
 
   function sanitizeAnkiReviewText(value) {
@@ -4188,6 +4246,9 @@
       modelName: cleanText(remote.modelName || ""),
       questionText: cleanText(remote.questionText || ""),
       answerText: cleanText(remote.answerText || ""),
+      questionHtml: String(remote.questionHtml || ""),
+      answerHtml: String(remote.answerHtml || ""),
+      modelCss: String(remote.modelCss || ""),
       drillUrl: cleanText(remote.drillUrl || ""),
       drillPayloadEncoded: cleanText(remote.drillPayloadEncoded || ""),
       drillPayload: remote.drillPayload && typeof remote.drillPayload === "object" ? remote.drillPayload : null,
@@ -4230,7 +4291,6 @@
     const payload = withAnkiStudyShield(extraction.payload);
     const signature = [
       remote.cardId || 0,
-      remote.sequence || 0,
       payload.id || payload.title || "",
       payload.viewer?.selectedSeries || payload.viewer?.plane || "",
       getLiveDrillRestoreLabels(payload).join("|")
@@ -4326,6 +4386,32 @@
     bridge.lastError = "";
     bridge.statusText = getAnkiReviewStatusText(remote);
     refreshPanel();
+    pressGlobalKey("l", "KeyL");
+  }
+
+  function buildAnkiReviewCardHtml(html, css = "", fallbackText = "") {
+    const cleanHtml = sanitizeAnkiReviewHtml(html);
+    const cleanCss = sanitizeAnkiReviewCss(css);
+    const strippedHtml = stripLeadingAnkiCssText(cleanHtml);
+    const body = strippedHtml || escapeHtml(fallbackText || "").replace(/\n/g, "<br>");
+    const emptyClass = strippedHtml ? "" : " empty";
+    return `<div class="anki-card-render card${emptyClass}">${cleanCss ? `<style>${cleanCss}</style>` : ""}${body}</div>`;
+  }
+
+  function sanitizeAnkiReviewHtml(value) {
+    return String(value || "")
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+      .replace(/\s+on[a-z]+\s*=\s*("(?:[^"]*)"|'(?:[^']*)'|[^\s>]+)/gi, "");
+  }
+
+  function sanitizeAnkiReviewCss(value) {
+    return String(value || "")
+      .replace(/<\/style/gi, "<\\/style")
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+  }
+
+  function stripLeadingAnkiCssText(value) {
+    return String(value || "").replace(/^\s*(?:\.card\s*\{[^}]*\}\s*)+/i, "");
   }
 
   async function ankiReviewGrade(ease) {
