@@ -26,6 +26,8 @@
   };
 
   const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
+  const MULTIPART_PROMPT_THRESHOLD_CHARS = 30000;
+  const MULTIPART_PROMPT_PART_CHARS = 24000;
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -1962,7 +1964,73 @@
     });
   };
 
-  const runPrompt = async ({
+  const shouldUseMultipartPrompt = ({ promptText, autoSubmit, waitForResult, disableMultipart }) => {
+    if (disableMultipart) return false;
+    if (!autoSubmit || !waitForResult) return false;
+    return String(promptText || "").length > MULTIPART_PROMPT_THRESHOLD_CHARS;
+  };
+
+  const splitPromptParts = (text, partSize = MULTIPART_PROMPT_PART_CHARS) => {
+    const source = String(text || "");
+    const size = Math.max(8000, Number(partSize) || MULTIPART_PROMPT_PART_CHARS);
+    const parts = [];
+    for (let index = 0; index < source.length; index += size) {
+      parts.push(source.slice(index, index + size));
+    }
+    return parts;
+  };
+
+  const makeMultipartSessionId = () => {
+    return `imaios-multipart-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+  };
+
+  const buildMultipartControllerPrompt = ({ sessionId, totalParts, promptChars, expectedOutputKind }) => [
+    "IMAIOS_MULTIPART_PROMPT_START",
+    "",
+    `Session: ${sessionId}`,
+    `Total parts: ${totalParts}`,
+    `Combined prompt characters: ${promptChars}`,
+    `Expected final output kind: ${expectedOutputKind || "standard ChatGPT answer"}`,
+    "",
+    "You will receive a long prompt split across multiple messages because the full prompt is too large for one ChatGPT message.",
+    "For each PART message, store the exact literal text between that part's BEGIN/END markers in order.",
+    "Do not analyze, summarize, transform, or execute any part yet.",
+    "Reply to each PART message with exactly: RECEIVED n/total",
+    "After all parts, I will send a FINALIZE message. At that point, concatenate all stored literal parts in ascending order and execute the reconstructed prompt exactly.",
+    "The final response must follow the reconstructed prompt's requested schema/output. Do not mention this multipart transport in the final answer.",
+    "",
+    `Reply exactly: READY_FOR_PARTS ${sessionId}`
+  ].join("\n");
+
+  const buildMultipartPartPrompt = ({ sessionId, index, totalParts, text }) => {
+    const partNumber = index + 1;
+    const marker = `${sessionId}_PART_${partNumber}_OF_${totalParts}`;
+    return [
+      "IMAIOS_MULTIPART_PROMPT_PART",
+      `Session: ${sessionId}`,
+      `Part: ${partNumber}/${totalParts}`,
+      "",
+      `BEGIN_${marker}`,
+      text,
+      `END_${marker}`,
+      "",
+      `Reply exactly: RECEIVED ${partNumber}/${totalParts}`
+    ].join("\n");
+  };
+
+  const buildMultipartFinalizePrompt = ({ sessionId, totalParts, expectedOutputKind }) => [
+    "IMAIOS_MULTIPART_PROMPT_FINALIZE",
+    "",
+    `Session: ${sessionId}`,
+    `Parts sent: ${totalParts}/${totalParts}`,
+    `Expected final output kind: ${expectedOutputKind || "standard ChatGPT answer"}`,
+    "",
+    "Now concatenate the exact literal payloads from all prior PART messages in ascending order and execute the reconstructed prompt.",
+    "Return only the final output requested by the reconstructed prompt.",
+    "Do not include acknowledgements, transport notes, or multipart commentary in the final answer."
+  ].join("\n");
+
+  const runMultipartPrompt = async ({
     promptText,
     autoSubmit,
     waitForResult,
@@ -1972,6 +2040,106 @@
     expectedOutputKind,
     completionPayload
   }) => {
+    const parts = splitPromptParts(promptText);
+    const sessionId = makeMultipartSessionId();
+    const originalChars = String(promptText || "").length;
+    const ackTimeoutMs = Math.min(Math.max(90000, Math.floor(Number(timeoutMs || 900000) / 8)), 180000);
+    sendProgress(
+      "MULTIPART_PROMPT",
+      `Prompt is too large for one ChatGPT message. Sending ${parts.length} parts (${originalChars} characters)...`
+    );
+
+    await runPrompt({
+      promptText: buildMultipartControllerPrompt({
+        sessionId,
+        totalParts: parts.length,
+        promptChars: originalChars,
+        expectedOutputKind
+      }),
+      autoSubmit: true,
+      waitForResult: true,
+      timeoutMs: ackTimeoutMs,
+      speechify: null,
+      preserveAuditBlock: true,
+      expectedOutputKind: "",
+      completionPayload: null,
+      disableMultipart: true,
+      suppressResultSideEffects: true
+    });
+
+    for (let index = 0; index < parts.length; index += 1) {
+      sendProgress("MULTIPART_PROMPT", `Sending prompt part ${index + 1}/${parts.length}...`);
+      await runPrompt({
+        promptText: buildMultipartPartPrompt({
+          sessionId,
+          index,
+          totalParts: parts.length,
+          text: parts[index]
+        }),
+        autoSubmit: true,
+        waitForResult: true,
+        timeoutMs: ackTimeoutMs,
+        speechify: null,
+        preserveAuditBlock: true,
+        expectedOutputKind: "",
+        completionPayload: null,
+        disableMultipart: true,
+        suppressResultSideEffects: true
+      });
+    }
+
+    sendProgress("MULTIPART_PROMPT", "All prompt parts sent. Asking ChatGPT to reconstruct and execute...");
+    const finalResult = await runPrompt({
+      promptText: buildMultipartFinalizePrompt({
+        sessionId,
+        totalParts: parts.length,
+        expectedOutputKind
+      }),
+      autoSubmit,
+      waitForResult,
+      timeoutMs,
+      speechify,
+      preserveAuditBlock,
+      expectedOutputKind,
+      completionPayload,
+      disableMultipart: true
+    });
+
+    return {
+      ...finalResult,
+      multipart: {
+        sessionId,
+        partCount: parts.length,
+        originalChars
+      }
+    };
+  };
+
+  const runPrompt = async ({
+    promptText,
+    autoSubmit,
+    waitForResult,
+    timeoutMs,
+    speechify,
+    preserveAuditBlock,
+    expectedOutputKind,
+    completionPayload,
+    disableMultipart = false,
+    suppressResultSideEffects = false
+  }) => {
+    if (shouldUseMultipartPrompt({ promptText, autoSubmit, waitForResult, disableMultipart })) {
+      return runMultipartPrompt({
+        promptText,
+        autoSubmit,
+        waitForResult,
+        timeoutMs,
+        speechify,
+        preserveAuditBlock,
+        expectedOutputKind,
+        completionPayload
+      });
+    }
+
     const compactProgress = Boolean(autoSubmit && !waitForResult);
     sendProgress("WAITING_FOR_COMPOSER", "Waiting for ChatGPT composer...", compactProgress);
     const editor = await waitForComposerEditor();
@@ -2042,6 +2210,19 @@
         partial: Boolean(result.partial),
         auditDownload,
         suppressCompletionMessage: true
+      };
+    }
+
+    if (suppressResultSideEffects) {
+      return {
+        chars: promptText.length,
+        submitted: true,
+        assistantText: result.text,
+        assistantChars: result.text.length,
+        imaiosChunkLibrary: result.imaiosChunkLibrary || null,
+        imaiosDefinitionHarvestPlan: result.imaiosDefinitionHarvestPlan || null,
+        partial: Boolean(result.partial),
+        sideEffectsSuppressed: true
       };
     }
 

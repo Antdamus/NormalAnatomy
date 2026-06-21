@@ -3,6 +3,7 @@
   window.__IMAIOS_CINE_TOOLS_LOADED__ = true;
 
   const APP_ID = "imaios-cine-tools";
+  const DEBUG_BUILD_TAG = "2026-06-21-native-direct-isolate-v1";
   const PAGE_STORAGE_KEY = `${APP_ID}:page:${location.origin}${location.pathname}`;
   const PREFS_STORAGE_KEY = `${APP_ID}:prefs`;
   const CHUNK_LIBRARY_STORAGE_KEY = `${APP_ID}:chunk-library`;
@@ -10,6 +11,7 @@
   const LABEL_DETAIL_REPOSITORY_STORAGE_KEY = `${APP_ID}:label-detail-repository`;
   const LAST_LIVE_DRILL_CARD_SOURCE_KEY = `${APP_ID}:last-live-drill-card-source`;
   const LIVE_DRILL_CARD_BATCH_STORAGE_KEY = `${APP_ID}:live-drill-card-batch`;
+  const NATIVE_RESTORE_STATE_BASELINE_KEY = `${APP_ID}:native-restore-state-baseline`;
   const EXTENSION_LABEL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-repository";
   const EXTENSION_LABEL_DETAIL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-detail-repository";
   const EMPTY_CHUNK_LIBRARY = { version: 1, topic: "", chunks: [] };
@@ -18,7 +20,7 @@
   const EMPTY_LIVE_DRILL_CARD_BATCH = { kind: "imaios-live-drill-card-batch", version: 1, topic: "", source: "", createdAt: "", updatedAt: "", items: [] };
   const DEFAULT_DECK_ROOT = "IMAIOS";
   const LIVE_DRILL_ANKI_NOTE_TYPE = "Basic";
-  const LIVE_DRILL_STUDY_SHIELD_ENABLED = true;
+  const LIVE_DRILL_STUDY_SHIELD_ENABLED = false;
   const LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED = false;
   const CINE_SPEED_MIN = 1;
   const CINE_SPEED_MAX = 20;
@@ -128,6 +130,7 @@
     lastRestoredDrillHash: "",
     lastLiveDrillCardSource: null,
     liveDrillCardBatch: { ...EMPTY_LIVE_DRILL_CARD_BATCH },
+    lastLiveDrillRestoreDebug: null,
     studyShield: null,
     liveDrillRestoreRunning: false,
     liveDrillPair: null,
@@ -1349,6 +1352,15 @@
               <button type="button" data-action="probe-locked-details">Probe label info</button>
               <button type="button" data-action="probe-locked-details-search-pin">Probe via search pins</button>
               <button type="button" data-action="probe-locked-details-search-pin-fast">Fast probe</button>
+              <button type="button" data-action="probe-native-restore">Native restore probe</button>
+              <button type="button" data-action="probe-native-id-map">Native ID map</button>
+              <button type="button" data-action="probe-native-action-discovery">Action discovery</button>
+              <button type="button" data-action="probe-native-bundle-search">Bundle search</button>
+              <button type="button" data-action="start-native-action-trace">Start trace</button>
+              <button type="button" data-action="copy-native-action-trace">Copy trace</button>
+              <button type="button" data-action="copy-live-drill-restore-debug">Restore debug</button>
+              <button type="button" data-action="mark-native-state-baseline">Mark state</button>
+              <button type="button" data-action="copy-native-state-diff">State diff</button>
               <button type="button" data-action="copy-slice">Copy slice</button>
             </div>
             <div class="section-note">Uses the currently locked labels to create Anki live-drill links. ChatGPT plans the subgroups; this extension builds the links.</div>
@@ -1677,6 +1689,15 @@
     root.querySelector("[data-action='probe-locked-details-search-pin-fast']").addEventListener("click", () => {
       copyLockedLabelSearchPinDetailProbe({ fast: true });
     });
+    root.querySelector("[data-action='probe-native-restore']").addEventListener("click", copyNativeRestoreProbe);
+    root.querySelector("[data-action='probe-native-id-map']").addEventListener("click", copyNativeIdMapProbe);
+    root.querySelector("[data-action='probe-native-action-discovery']").addEventListener("click", copyNativeActionDiscoveryProbe);
+    root.querySelector("[data-action='probe-native-bundle-search']").addEventListener("click", copyNativeBundleSearchProbe);
+    root.querySelector("[data-action='start-native-action-trace']").addEventListener("click", startNativeActionTraceProbe);
+    root.querySelector("[data-action='copy-native-action-trace']").addEventListener("click", copyNativeActionTraceProbe);
+    root.querySelector("[data-action='copy-live-drill-restore-debug']").addEventListener("click", copyLiveDrillRestoreDebug);
+    root.querySelector("[data-action='mark-native-state-baseline']").addEventListener("click", markNativeRestoreStateBaseline);
+    root.querySelector("[data-action='copy-native-state-diff']").addEventListener("click", copyNativeRestoreStateDiff);
     root.querySelector("[data-action='copy-range']").addEventListener("click", copyCineRangeText);
     root.querySelector("[data-action='copy-range-json']").addEventListener("click", copyCineRangeJson);
     root.querySelector("[data-action='go-range-start']").addEventListener("click", goToRangeStart);
@@ -2734,6 +2755,21 @@
     state.selectedStructures = unique(requestedStructures);
     savePageState();
     refreshPanel();
+
+    const nativePlan = buildNativeRestorePlanForLabelNames(requestedStructures, getCurrentModuleInfo());
+    if (options.useNativeRestore !== false && nativePlan.complete && getLockedStructureCount() === 0) {
+      setStatus(`${sourceLabel}: trying native ID restore for ${requestedStructures.length} labels...`, 0);
+      const nativeResult = await applyLiveDrillNativeRestore(nativePlan, requestedStructures);
+      if (nativeResult.ok) {
+        state.searchRunning = false;
+        const pinsResult = await resetQuietPinsByCyclingPins();
+        const pinsSuffix = pinsResult.ok ? " Quiet pins on." : " Could not restore quiet pins.";
+        setStatus(`${sourceLabel}: native restore locked ${requestedStructures.length}/${targets.length}.${pinsSuffix}`, 8000);
+        return;
+      }
+      setStatus(`${sourceLabel}: native IDs did not live-restore; falling back to search.`, 3500);
+      await delay(140);
+    }
 
     let primedThisApply = false;
     if (!options.skipPrime && !options.skipInitialPrime && !hasRecentModuleSearchPrime(options.reuseRecentPrimeMs)) {
@@ -4036,8 +4072,12 @@
       return;
     }
     saveLastLiveDrillCardSource(batchSource.payload);
-    const detailCount = batchSource.payload.batchItems.reduce((sum, item) => sum + Number(item.labelDetailEnrichment?.capturedDetails || 0), 0);
-    setStatus(`Sending Anki batch to ChatGPT: ${batchSource.payload.batchItems.length} drills, ${batchSource.payload.labels.length} labels, ${detailCount} definitions.`, 0);
+    const detailCount = Object.keys(batchSource.payload.labelDetails || {}).length;
+    const compressionText = batchSource.payload.promptCompression
+      ? ` Compact prompt: ${batchSource.payload.promptCompression.uniqueLabelDetails || detailCount} shared definitions.`
+      : "";
+    const labelCount = Number(batchSource.payload.promptCompression?.totalLabelOccurrences || 0);
+    setStatus(`Sending Anki batch to ChatGPT: ${batchSource.payload.batchItems.length} drills, ${labelCount} labels, ${detailCount} definitions.${compressionText}`, 0);
     chrome.runtime.sendMessage({
       type: "RUN_IMAIOS_LIVE_DRILL_CARD_AUTOMATION",
       promptText: buildLiveDrillBatchCardPrompt(batchSource.payload),
@@ -5048,6 +5088,102 @@
     ].join("\n");
   }
 
+  function buildBatchPromptLabelDetailKey(label, item = {}) {
+    const preferredLabel = cleanText(label?.preferredLabel || label?.label || label?.name || label || "");
+    const moduleKey = cleanText(label?.moduleKey || item.moduleKey || item.source?.module?.key || item.payload?.module?.key || "");
+    const basis = [moduleKey || "module", preferredLabel].filter(Boolean).join("::");
+    return createSlug(basis) || normalizeText(basis).replace(/\s+/g, "-");
+  }
+
+  function compactBatchPromptLabelDetail(detail) {
+    const source = detail?.detail && typeof detail.detail === "object" ? detail.detail : detail;
+    if (!source || typeof source !== "object") return null;
+    const definition = limitPromptText(source.definition || "", 900);
+    const summary = limitPromptText(source.summary || "", 360);
+    const hierarchy = Array.isArray(source.hierarchy)
+      ? source.hierarchy.map((card) => ({
+        name: cleanText(card.name || ""),
+        ancestors: Array.isArray(card.ancestors) ? card.ancestors.map(cleanText).filter(Boolean).slice(0, 5) : [],
+        children: Array.isArray(card.children) ? card.children.map(cleanText).filter(Boolean).slice(0, 8) : []
+      })).filter((card) => card.name || card.ancestors.length || card.children.length).slice(0, 3)
+      : [];
+    const chips = Array.isArray(source.chips)
+      ? source.chips.map((chip) => typeof chip === "string" ? chip : chip?.label || "").map(cleanText).filter(Boolean).slice(0, 8)
+      : [];
+    if (!definition && !summary && !hierarchy.length && !chips.length) return null;
+    return {
+      title: cleanText(source.title || ""),
+      alternateTitle: cleanText(source.alternateTitle || ""),
+      definition,
+      summary,
+      chips,
+      hierarchy
+    };
+  }
+
+  function compactBatchPromptLabel(label, item, detailMap) {
+    const preferredLabel = cleanText(label?.preferredLabel || label?.label || label?.name || label || "");
+    if (!preferredLabel) return null;
+    const detailKey = buildBatchPromptLabelDetailKey(label, item);
+    const detail = compactBatchPromptLabelDetail(label?.imaiosDetail || null);
+    if (detail && detailKey && !detailMap[detailKey]) {
+      detailMap[detailKey] = {
+        preferredLabel,
+        moduleKey: cleanText(label?.moduleKey || item.moduleKey || item.source?.module?.key || item.payload?.module?.key || ""),
+        moduleName: cleanText(item.moduleName || item.source?.module?.name || item.payload?.module?.name || ""),
+        href: cleanText(label?.href || ""),
+        ...detail
+      };
+    }
+    return {
+      preferredLabel,
+      detailKey
+    };
+  }
+
+  function compactBatchPromptModule(module = {}) {
+    return {
+      key: cleanText(module.key || ""),
+      name: cleanText(module.name || ""),
+      url: cleanText(module.url || ""),
+      pathname: cleanText(module.pathname || "")
+    };
+  }
+
+  function compactBatchPromptViewer(viewer = {}) {
+    return {
+      plane: cleanText(viewer.plane || ""),
+      selectedSeries: cleanText(viewer.selectedSeries || ""),
+      slice: viewer.slice && typeof viewer.slice === "object" ? {
+        value: Number(viewer.slice.value ?? 0),
+        min: Number(viewer.slice.min ?? 0),
+        max: Number(viewer.slice.max ?? 0),
+        counterText: cleanText(viewer.slice.counterText || "")
+      } : null,
+      range: viewer.range && typeof viewer.range === "object" ? {
+        startSlice: Number(viewer.range.startSlice ?? viewer.range.start ?? 0),
+        endSlice: Number(viewer.range.endSlice ?? viewer.range.end ?? 0),
+        frameCount: Number(viewer.range.frameCount || 0)
+      } : null
+    };
+  }
+
+  function compactBatchPromptChunk(chunk = {}) {
+    return {
+      id: cleanText(chunk.id || ""),
+      title: cleanText(chunk.title || ""),
+      parentGroup: cleanText(chunk.parentGroup || ""),
+      source: cleanText(chunk.source || ""),
+      modality: cleanText(chunk.modality || ""),
+      moduleKey: cleanText(chunk.moduleKey || ""),
+      moduleName: cleanText(chunk.moduleName || ""),
+      modalityUrl: cleanText(chunk.modalityUrl || ""),
+      breadcrumb: normalizeBreadcrumbList(chunk.breadcrumb || []),
+      deckPath: applyDeckRootOverride(chunk.deckPath || ""),
+      tags: normalizeStringList(chunk.tags || [])
+    };
+  }
+
   function buildLiveDrillBatchCardSource() {
     const batch = normalizeLiveDrillCardBatch(state.liveDrillCardBatch);
     if (!batch.items.length) return { ok: false, reason: "Anki batch is empty. Add reviewed live drills first." };
@@ -5069,12 +5205,33 @@
       topic && `article::${topic}`
     ].filter(Boolean).map(toAnkiTag));
     const batchItems = batch.items.map((item) => normalizeLiveDrillCardBatchItem(item)).filter(Boolean);
-    const labels = batchItems.flatMap((item) => (item.source?.labels || []).map((label) => ({
-      ...label,
+    const labelDetails = {};
+    const compactItems = batchItems.map((item) => {
+      const rawLabels = Array.isArray(item.source?.labels) ? item.source.labels : Array.isArray(item.labels) ? item.labels : [];
+      const labels = rawLabels.map((label) => compactBatchPromptLabel(label, item, labelDetails)).filter(Boolean);
+      const module = compactBatchPromptModule(item.source?.module || item.payload?.module || {});
+      const viewer = compactBatchPromptViewer(item.source?.viewer || item.payload?.viewer || {});
+      const chunk = compactBatchPromptChunk(item.source?.chunk || item.payload?.chunk || {});
+      return {
+        id: item.id,
+        sourceDrillId: item.sourceDrillId,
+        title: item.title,
+        plane: item.plane || viewer.plane || "",
+        series: item.series || viewer.selectedSeries || "",
+        module,
+        viewer,
+        chunk,
+        labels,
+        learningFrame: normalizeStringList(item.source?.learningFrame || item.payload?.chunk?.learningFrame || [])
+      };
+    }).filter((item) => item.sourceDrillId && item.labels.length);
+    const labels = compactItems.flatMap((item) => item.labels.map((label) => ({
+      preferredLabel: label.preferredLabel,
+      detailKey: label.detailKey,
       sourceDrillId: item.sourceDrillId,
       sourceTitle: item.title,
-      moduleKey: label.moduleKey || item.moduleKey || "",
-      moduleName: item.moduleName || ""
+      moduleKey: item.module?.key || "",
+      moduleName: item.module?.name || ""
     })));
     return {
       ok: true,
@@ -5102,21 +5259,15 @@
           explicitDeckPath: route.deckPath,
           explicitTags: route.tags
         },
-        labels,
-        batchItems: batchItems.map((item) => ({
-          id: item.id,
-          sourceDrillId: item.sourceDrillId,
-          title: item.title,
-          plane: item.plane || "",
-          series: item.series || "",
-          module: item.source?.module || item.payload?.module || {},
-          viewer: item.source?.viewer || item.payload?.viewer || {},
-          chunk: item.source?.chunk || item.payload?.chunk || {},
-          labels: item.source?.labels || [],
-          labelDetailEnrichment: item.source?.labelDetailEnrichment || item.enrichmentSummary || null,
-          learningFrame: item.source?.learningFrame || [],
-          payload: item.payload
-        }))
+        promptCompression: {
+          mode: "shared-label-details",
+          originalBatchItems: batchItems.length,
+          sentBatchItems: compactItems.length,
+          totalLabelOccurrences: labels.length,
+          uniqueLabelDetails: Object.keys(labelDetails).length
+        },
+        labelDetails,
+        batchItems: compactItems
       }
     };
   }
@@ -5138,7 +5289,8 @@
       "- Every supplied label from every batch item must appear in at least one card.",
       "- Use only exact `preferredLabel` strings. Do not invent labels, rename labels, or substitute synonyms in the `labels` arrays.",
       "- Prefer 2-4 labels per card. Use 5-6 only when they are one tight object/subpart family. Split larger groups into pedagogic subgroups.",
-      "- Use IMAIOS details as supplemental anatomy context for relationships, hierarchy, boundaries, contents, and nearby confusions.",
+      "- Each label may include a `detailKey`; look up INPUT.labelDetails[detailKey] for the shared IMAIOS definition/context instead of expecting the full detail inline.",
+      "- Use INPUT.labelDetails as supplemental anatomy context for relationships, hierarchy, boundaries, contents, and nearby confusions.",
       "- Details are for better grouping and concise recognition cues; do not turn cards into definition memorization cards.",
       "- Use each INPUT.batchItems[].learningFrame and INPUT.batchItems[].chunk as the source for scan order, review rationale, boundaries, and article-specific emphasis when writing recognitionCues, contrastCues, and rationale.",
       "- Keep recognitionCues practical for image review: where to start looking, what boundary/relationship matters, and what nearby structure could be confused.",
@@ -5417,6 +5569,8 @@
       };
     }
 
+    await refreshLabelRepositoriesFromStorage();
+
     const validation = validateLiveDrillCardPlan(plan, sourcePayload);
     if (validation.unknownLabels.length) {
       return {
@@ -5429,6 +5583,7 @@
     }
 
     const deckPath = getLiveDrillImportDeckPath(plan, sourcePayload);
+    const nativeCoverage = getLiveDrillPlanNativeCoverage(sourcePayload, validation.validCards);
     const tsv = buildLiveDrillCardsTsv(plan, sourcePayload, validation.validCards, { deckPath });
     const outputPaths = buildLiveDrillCardOutputPaths(sourcePayload, plan);
     const normalizedPlan = {
@@ -5450,7 +5605,8 @@
       coverage: {
         sourceLabels: validation.sourceLabels,
         coveredLabels: validation.coveredLabels,
-        missingLabels: validation.missingLabels
+        missingLabels: validation.missingLabels,
+        nativeFastRestore: nativeCoverage
       }
     };
     let copied = false;
@@ -5474,6 +5630,9 @@
     const missingText = validation.missingLabels.length
       ? ` Missing from plan: ${validation.missingLabels.join(", ")}.`
       : "";
+    const nativeText = nativeCoverage.cardsWithCompleteNativeRestore === nativeCoverage.cardCount
+      ? ` Native fast restore: ${nativeCoverage.cardsWithCompleteNativeRestore}/${nativeCoverage.cardCount} cards.`
+      : ` Native fast restore incomplete: ${nativeCoverage.cardsWithCompleteNativeRestore}/${nativeCoverage.cardCount} cards, ${nativeCoverage.labelsWithNativeIds}/${nativeCoverage.labelCount} labels mapped.`;
     return {
       ok: downloaded,
       copied,
@@ -5481,8 +5640,34 @@
       rowCount: validation.validCards.length,
       missingLabels: validation.missingLabels,
       outputPaths,
-      message: `${copied ? "Copied" : "Generated"} ${validation.validCards.length} live-drill TSV row${validation.validCards.length === 1 ? "" : "s"}.${missingText}${downloadText}${clipboardText}`
+      message: `${copied ? "Copied" : "Generated"} ${validation.validCards.length} live-drill TSV row${validation.validCards.length === 1 ? "" : "s"}.${missingText}${nativeText}${downloadText}${clipboardText}`
     };
+  }
+
+  function getLiveDrillPlanNativeCoverage(sourcePayload, cards = []) {
+    const coverage = {
+      cardCount: 0,
+      cardsWithCompleteNativeRestore: 0,
+      labelCount: 0,
+      labelsWithNativeIds: 0,
+      missingLabels: []
+    };
+    (Array.isArray(cards) ? cards : []).forEach((card, index) => {
+      const payload = buildLiveDrillSubPayload(sourcePayload, card, index);
+      const labels = Array.isArray(payload.labels) ? payload.labels : [];
+      coverage.cardCount += 1;
+      coverage.labelCount += labels.length;
+      coverage.labelsWithNativeIds += labels.filter((label) => uniqueNativeIds(label.nativeIds || label.nativeId || []).length).length;
+      if (payload.nativeRestore?.complete) coverage.cardsWithCompleteNativeRestore += 1;
+      labels
+        .filter((label) => !uniqueNativeIds(label.nativeIds || label.nativeId || []).length)
+        .forEach((label) => coverage.missingLabels.push({
+          cardId: cleanText(card?.id || ""),
+          sourceDrillId: cleanText(card?.sourceDrillId || ""),
+          label: cleanText(label.preferredLabel || "")
+        }));
+    });
+    return coverage;
   }
 
   function parseLiveDrillCardPlan(text) {
@@ -5787,17 +5972,28 @@
     const sourceByKey = new Map((basePayload.labels || []).map((entry) => [normalizeText(entry.preferredLabel || entry.label || ""), entry]));
     const labels = card.labels.map((label) => {
       const entry = sourceByKey.get(normalizeText(label)) || {};
+      const moduleKey = entry.moduleKey || basePayload.module?.key || "";
+      const nativeMatch = getNativeIdsForLabel(label, moduleKey);
+      const nativeIds = uniqueNativeIds([
+        ...(Array.isArray(entry.nativeIds) ? entry.nativeIds : []),
+        entry.nativeId,
+        ...(nativeMatch.ids || [])
+      ]);
       return {
         preferredLabel: cleanText(entry.preferredLabel || label),
         normalizedLabel: normalizeText(entry.preferredLabel || label),
-        moduleKey: entry.moduleKey || basePayload.module?.key || "",
+        moduleKey,
         aliases: Array.isArray(entry.aliases) ? entry.aliases : [],
         repositoryStatus: entry.repositoryStatus || "",
         href: entry.href || "",
-        source: entry.source || "card-plan"
+        source: entry.source || "card-plan",
+        nativeId: nativeIds[0] || null,
+        nativeIds,
+        nativeModuleSlug: cleanText(entry.nativeModuleSlug || nativeMatch.moduleSlug || "")
       };
     });
     const title = cleanText(card.title || labels.map((entry) => entry.preferredLabel).join(", "));
+    const nativeRestore = buildLiveDrillNativeRestorePlan(labels, basePayload.module || {});
     return {
       ...basePayload,
       id: createSlug(`${basePayload.id || "imaios-live-drill"}-${card.id || index + 1}`) || `${basePayload.id || "imaios-live-drill"}-${index + 1}`,
@@ -5805,6 +6001,7 @@
       createdAt: new Date().toISOString(),
       labels,
       lockedLabels: labels.map((entry) => entry.preferredLabel),
+      nativeRestore,
       studyShield: {
         enabled: true,
         source: "anki-card",
@@ -6023,6 +6220,7 @@
     const range = getSuggestedCineRange();
     const module = getCurrentModuleInfo();
     const labels = buildLiveDrillLabelEntries(lockedLabels);
+    const nativeRestore = buildLiveDrillNativeRestorePlan(labels, module);
     const title = chunk?.title || labels.slice(0, 4).map((item) => item.preferredLabel).join(", ") || "IMAIOS live drill";
     const viewerPlane = normalizePlaneName(series.selectedPlane) || inferSelectedPlaneFromDom() || "";
     const viewerSeries = series.selectedSeries || "";
@@ -6075,6 +6273,7 @@
       },
       labels,
       lockedLabels: labels.map((item) => item.preferredLabel),
+      nativeRestore,
       restorePlan: {
         clearLockedFirst: true,
         setPinsMode: true,
@@ -6110,6 +6309,8 @@
     return unique(lockedLabels).map((label) => {
       const repositoryEntry = findRepositoryLabelForTarget({ preferredLabel: label, aliases: [] });
       const availableEntry = entriesByLabel.get(normalizeText(label)) || null;
+      const nativeMatch = getNativeIdsForLabel(label, getCurrentModuleKey());
+      const nativeIds = uniqueNativeIds(nativeMatch.ids || []);
       return {
         preferredLabel: label,
         normalizedLabel: normalizeText(label),
@@ -6117,7 +6318,10 @@
         aliases: Array.isArray(repositoryEntry?.aliases) ? repositoryEntry.aliases : [],
         repositoryStatus: repositoryEntry?.status || "",
         href: availableEntry?.href || repositoryEntry?.href || "",
-        source: availableEntry?.source || "locked-structure"
+        source: availableEntry?.source || "locked-structure",
+        nativeId: nativeIds[0] || null,
+        nativeIds,
+        nativeModuleSlug: nativeMatch.moduleSlug || ""
       };
     });
   }
@@ -6361,6 +6565,567 @@
     return restoreLiveDrillPayload(payload, { source: options.reason || "url" });
   }
 
+  function getLiveDrillNativeRestorePlan(payload) {
+    const moduleKey = cleanText(payload?.module?.key || getCurrentModuleKey());
+    const payloadPlan = payload?.nativeRestore && typeof payload.nativeRestore === "object" ? payload.nativeRestore : null;
+    const labels = Array.isArray(payload?.labels) ? payload.labels : [];
+    const moduleSlug = cleanText(
+      payloadPlan?.moduleSlug
+      || labels.find((entry) => cleanText(entry?.nativeModuleSlug))?.nativeModuleSlug
+      || getSavedModuleNativeSlug(moduleKey)
+      || ""
+    );
+    const idsFromPayload = uniqueNativeIds(payloadPlan?.ids || []);
+    const labelPlans = labels.map((entry) => {
+      const label = cleanText(entry?.preferredLabel || entry?.label || "");
+      const nativeMatch = getNativeIdsForLabel(label, moduleKey);
+      const ids = uniqueNativeIds([
+        ...(Array.isArray(entry?.nativeIds) ? entry.nativeIds : []),
+        entry?.nativeId,
+        ...(nativeMatch.ids || [])
+      ]);
+      return { label, ids };
+    });
+    const ids = idsFromPayload.length ? idsFromPayload : uniqueNativeIds(labelPlans.flatMap((item) => item.ids));
+    const mappedLabelCount = idsFromPayload.length && payloadPlan?.complete
+      ? labels.length
+      : labelPlans.filter((item) => item.ids.length).length;
+    return {
+      storageKey: "im_viewer_locked_structures",
+      moduleSlug,
+      ids,
+      labelCount: labels.length,
+      mappedLabelCount,
+      complete: Boolean(moduleSlug && labels.length && mappedLabelCount === labels.length && ids.length),
+      source: idsFromPayload.length ? "payload" : "module-label-repository"
+    };
+  }
+
+  function readNativeLockedStructureStore() {
+    const value = parseStorageValue(localStorage.getItem("im_viewer_locked_structures"));
+    return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  }
+
+  function writeNativeLockedStructureIds(moduleSlug, ids) {
+    const slug = cleanText(moduleSlug);
+    const nativeIds = uniqueNativeIds(ids);
+    if (!slug || !nativeIds.length) return { ok: false, reason: "Missing native module slug or IDs." };
+    const store = readNativeLockedStructureStore();
+    store[slug] = nativeIds;
+    localStorage.setItem("im_viewer_locked_structures", JSON.stringify(store));
+    return { ok: true, moduleSlug: slug, ids: nativeIds };
+  }
+
+  function nativeStorageMatchesPlan(plan) {
+    if (!plan?.complete) return false;
+    const store = readNativeLockedStructureStore();
+    const currentIds = uniqueNativeIds(store[plan.moduleSlug] || []);
+    if (currentIds.length !== plan.ids.length) return false;
+    const currentSet = new Set(currentIds.map(String));
+    return plan.ids.every((id) => currentSet.has(String(id)));
+  }
+
+  async function applyLiveDrillNativeRestore(plan, labels) {
+    if (!plan?.complete) {
+      return { ok: false, reason: "Native restore plan is incomplete." };
+    }
+    const directResult = await runImaiosPageContextProbe("native-direct-isolate", {
+      ids: plan.ids,
+      moduleSlug: plan.moduleSlug,
+      labels: Array.isArray(labels) ? labels : [],
+      source: "codex-live-drill",
+      waitMs: 220
+    }, 4500);
+    if (directResult?.ok) {
+      const directAcknowledged = await waitFor(() => {
+        const count = getLockedStructureCount();
+        if (count >= labels.length) return true;
+        return null;
+      }, 1200, 80);
+      if (directAcknowledged) {
+        return createNativeRestoreSuccessResult(plan, labels, {
+          nativePreloaded: false,
+          nativeDirect: true,
+          directResult
+        });
+      }
+    }
+    const writeResult = writeNativeLockedStructureIds(plan.moduleSlug, plan.ids);
+    if (!writeResult.ok) return { ok: false, reason: writeResult.reason || "Native write failed." };
+    const acknowledged = await waitFor(() => {
+      const count = getLockedStructureCount();
+      if (count >= labels.length) return true;
+      return null;
+    }, 900, 90);
+    if (!acknowledged) {
+      return {
+        ok: false,
+        reason: directResult?.reason
+          ? `Direct native isolate failed (${directResult.reason}); IMAIOS also did not acknowledge the native IDs after startup.`
+          : "IMAIOS did not acknowledge the native IDs after startup.",
+        directResult
+      };
+    }
+    return createNativeRestoreSuccessResult(plan, labels, { nativePreloaded: false });
+  }
+
+  function createNativeRestoreSuccessResult(plan, labels, options = {}) {
+    return {
+      ok: true,
+      locked: labels,
+      missing: [],
+      attempted: [],
+      nativeRestoreUsed: true,
+      nativePreloaded: Boolean(options.nativePreloaded),
+      nativeDirect: Boolean(options.nativeDirect),
+      directNativeCalled: Number(options.directResult?.called?.length || 0),
+      nativeModuleSlug: plan.moduleSlug,
+      nativeIdCount: plan.ids.length
+    };
+  }
+
+  function createLiveDrillRestoreDebug(payload, labels, options = {}) {
+    const nativePlan = getLiveDrillNativeRestorePlan(payload);
+    return {
+      kind: "imaios-live-drill-restore-debug",
+      version: 1,
+      buildTag: DEBUG_BUILD_TAG,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      source: cleanText(options.source || ""),
+      payload: summarizeLiveDrillPayloadForDebug(payload),
+      labels,
+      nativePlan: summarizeNativeRestorePlan(nativePlan),
+      preload: getLiveDrillPreloadDebug(),
+      initialRuntime: getLiveDrillRuntimeDebugSnapshot(nativePlan),
+      steps: [],
+      finalRuntime: null,
+      result: null,
+      _startedAt: Date.now()
+    };
+  }
+
+  function summarizeLiveDrillPayloadForDebug(payload = {}) {
+    const labels = Array.isArray(payload.labels) ? payload.labels : [];
+    return {
+      id: cleanText(payload.id || ""),
+      title: cleanText(payload.title || ""),
+      module: {
+        key: cleanText(payload.module?.key || ""),
+        name: cleanText(payload.module?.name || ""),
+        url: cleanText(payload.module?.url || ""),
+        pathname: cleanText(payload.module?.pathname || "")
+      },
+      viewer: {
+        plane: cleanText(payload.viewer?.plane || ""),
+        selectedSeries: cleanText(payload.viewer?.selectedSeries || ""),
+        slice: payload.viewer?.slice || null
+      },
+      labelCount: labels.length,
+      labelsWithPayloadNativeIds: labels.filter((entry) => uniqueNativeIds(entry?.nativeIds || entry?.nativeId || []).length).length,
+      hasNativeRestore: Boolean(payload.nativeRestore && typeof payload.nativeRestore === "object"),
+      nativeRestore: payload.nativeRestore ? summarizeNativeRestorePlan(payload.nativeRestore) : null,
+      studyShield: payload.studyShield || null
+    };
+  }
+
+  function summarizeNativeRestorePlan(plan = {}) {
+    const ids = uniqueNativeIds(plan.ids || []);
+    return {
+      complete: Boolean(plan.complete),
+      source: cleanText(plan.source || ""),
+      storageKey: cleanText(plan.storageKey || "im_viewer_locked_structures"),
+      moduleSlug: cleanText(plan.moduleSlug || ""),
+      idCount: ids.length,
+      ids,
+      labelCount: Number(plan.labelCount || 0),
+      mappedLabelCount: Number(plan.mappedLabelCount || 0)
+    };
+  }
+
+  function getLiveDrillPreloadDebug() {
+    const marker = parseStorageValue(sessionStorage.getItem("imaios-cine-tools:native-preloaded"));
+    const error = sessionStorage.getItem("imaios-cine-tools:native-preload-error") || "";
+    return {
+      marker,
+      error: cleanText(error)
+    };
+  }
+
+  function getLiveDrillRuntimeDebugSnapshot(nativePlan = null) {
+    const plan = nativePlan && typeof nativePlan === "object" ? nativePlan : null;
+    const store = readNativeLockedStructureStore();
+    const moduleSlug = cleanText(plan?.moduleSlug || getCurrentNativeLockedStructureState().currentSlug || "");
+    const storedIds = uniqueNativeIds(moduleSlug ? store[moduleSlug] || [] : []);
+    const series = getSeriesInfo();
+    return {
+      at: new Date().toISOString(),
+      currentModule: getCurrentModuleInfo(),
+      series: {
+        selectedPlane: cleanText(series.selectedPlane || series.plane || ""),
+        selectedSeries: cleanText(series.selectedSeries || series.series || ""),
+        selectedSeriesText: cleanText(series.selectedSeriesText || series.text || ""),
+        candidateCount: Array.isArray(series.visibleTextCandidates) ? series.visibleTextCandidates.length : 0
+      },
+      slice: getSliceInfo(),
+      lockedCount: getLockedStructureCount(),
+      lockedLabels: getLockedStructureNames(),
+      nativeStorage: {
+        moduleSlug,
+        storedIds,
+        storedIdCount: storedIds.length,
+        matchesPlan: plan?.complete ? nativeStorageMatchesPlan(plan) : false,
+        allModuleSlugs: Object.keys(store || {})
+      },
+      searchInputPresent: Boolean(findModuleSearchInput()),
+      visibleLabelCount: getVisibleLabelElements().length
+    };
+  }
+
+  function addLiveDrillRestoreDebugStep(debug, step, details = {}) {
+    if (!debug) return;
+    debug.steps.push({
+      step,
+      at: new Date().toISOString(),
+      elapsedMs: Date.now() - (debug._startedAt || Date.now()),
+      ...details
+    });
+  }
+
+  async function copyLiveDrillRestoreDebug() {
+    let payload = null;
+    const encoded = getLiveDrillHashPayload();
+    if (encoded) {
+      try {
+        payload = parseLiveDrillPayload(encoded);
+      } catch (error) {
+        payload = { parseError: String(error?.message || error) };
+      }
+    }
+    const currentReport = payload?.kind === "imaios-live-drill"
+      ? createLiveDrillRestoreDebug(payload, getLiveDrillRestoreLabels(payload), { source: "manual-debug" })
+      : null;
+    if (currentReport) {
+      currentReport.finalRuntime = getLiveDrillRuntimeDebugSnapshot(getLiveDrillNativeRestorePlan(payload));
+      delete currentReport._startedAt;
+    }
+    const report = {
+      kind: "imaios-live-drill-debug-report",
+      version: 1,
+      buildTag: DEBUG_BUILD_TAG,
+      createdAt: new Date().toISOString(),
+      currentHashPayload: currentReport,
+      lastRestore: state.lastLiveDrillRestoreDebug || null
+    };
+    await writeClipboard(JSON.stringify(report, null, 2));
+    const last = state.lastLiveDrillRestoreDebug;
+    const summary = last?.result?.mode
+      ? ` Last restore mode: ${last.result.mode}.`
+      : "";
+    setStatus(`Live-drill restore debug copied.${summary}`, 12000);
+  }
+
+  async function markNativeRestoreStateBaseline() {
+    const snapshot = buildNativeRestoreStateSnapshot("baseline");
+    localStorage.setItem(NATIVE_RESTORE_STATE_BASELINE_KEY, JSON.stringify(snapshot));
+    await writeClipboard(JSON.stringify({
+      kind: "imaios-native-restore-state-baseline",
+      version: 1,
+      createdAt: new Date().toISOString(),
+      instructions: "Baseline saved. Reproduce the alternate state, then click State diff.",
+      snapshot
+    }, null, 2));
+    setStatus("Native restore baseline saved and copied. Now reproduce the alternate state, then click State diff.", 14000);
+  }
+
+  async function copyNativeRestoreStateDiff() {
+    const current = buildNativeRestoreStateSnapshot("current");
+    const baseline = parseStorageValue(localStorage.getItem(NATIVE_RESTORE_STATE_BASELINE_KEY));
+    if (!baseline || baseline.kind !== "imaios-native-restore-state-snapshot") {
+      localStorage.setItem(NATIVE_RESTORE_STATE_BASELINE_KEY, JSON.stringify(current));
+      await writeClipboard(JSON.stringify({
+        kind: "imaios-native-restore-state-baseline",
+        version: 1,
+        createdAt: new Date().toISOString(),
+        instructions: "No prior baseline existed, so the current state was saved as baseline. Reproduce the alternate state, then click State diff again.",
+        snapshot: current
+      }, null, 2));
+      setStatus("No native restore baseline existed, so I saved the current state. Reproduce the alternate state, then click State diff again.", 14000);
+      return;
+    }
+
+    const diff = diffNativeRestoreStateSnapshots(baseline, current);
+    const report = {
+      kind: "imaios-native-restore-state-diff",
+      version: 1,
+      createdAt: new Date().toISOString(),
+      baseline: summarizeNativeRestoreStateSnapshot(baseline),
+      current: summarizeNativeRestoreStateSnapshot(current),
+      diff,
+      baselineSnapshot: baseline,
+      currentSnapshot: current
+    };
+    await writeClipboard(JSON.stringify(report, null, 2));
+    const changedCount = diff.storage.localStorage.changed.length + diff.storage.sessionStorage.changed.length;
+    setStatus(`Native restore state diff copied: ${changedCount} focused storage key${changedCount === 1 ? "" : "s"} changed, locked ${diff.lockedCount.before} -> ${diff.lockedCount.after}.`, 14000);
+  }
+
+  function captureNativeRestorePreFallbackState(restoreDebug, reason = "") {
+    if (!restoreDebug) return null;
+    const current = buildNativeRestoreStateSnapshot(`pre-fallback:${cleanText(reason || "unknown")}`);
+    const baseline = parseStorageValue(localStorage.getItem(NATIVE_RESTORE_STATE_BASELINE_KEY));
+    const hasBaseline = baseline?.kind === "imaios-native-restore-state-snapshot";
+    const diff = hasBaseline ? diffNativeRestoreStateSnapshots(baseline, current) : null;
+    const record = {
+      reason: cleanText(reason || ""),
+      capturedAt: new Date().toISOString(),
+      baselineAvailable: hasBaseline,
+      baseline: hasBaseline ? summarizeNativeRestoreStateSnapshot(baseline) : null,
+      current: summarizeNativeRestoreStateSnapshot(current),
+      diffSummary: summarizeNativeRestoreDiffForDebug(diff),
+      diff,
+      currentSnapshot: current
+    };
+    if (!Array.isArray(restoreDebug.preFallbackSnapshots)) restoreDebug.preFallbackSnapshots = [];
+    restoreDebug.preFallbackSnapshots.push(record);
+    addLiveDrillRestoreDebugStep(restoreDebug, "pre-fallback-state-captured", {
+      reason: record.reason,
+      baselineAvailable: hasBaseline,
+      current: record.current,
+      diffSummary: record.diffSummary
+    });
+    return record;
+  }
+
+  function summarizeNativeRestoreDiffForDebug(diff) {
+    if (!diff) return null;
+    return {
+      moduleChanged: Boolean(diff.moduleChanged),
+      urlChanged: Boolean(diff.urlChanged),
+      payloadIdChanged: Boolean(diff.payloadIdChanged),
+      nativePlanChanged: Boolean(diff.nativePlanChanged),
+      lockedCount: diff.lockedCount || null,
+      nativeStorageChanged: Boolean(diff.nativeStorage?.changed),
+      viewerStorageChangedKeys: Object.keys(diff.viewerStorageChanged || {}),
+      localStorageChangedKeys: (diff.storage?.localStorage?.changed || []).map((entry) => entry.key),
+      localStorageAddedKeys: (diff.storage?.localStorage?.added || []).map((entry) => entry.key),
+      localStorageRemovedKeys: (diff.storage?.localStorage?.removed || []).map((entry) => entry.key),
+      sessionStorageChangedKeys: (diff.storage?.sessionStorage?.changed || []).map((entry) => entry.key),
+      sessionStorageAddedKeys: (diff.storage?.sessionStorage?.added || []).map((entry) => entry.key),
+      sessionStorageRemovedKeys: (diff.storage?.sessionStorage?.removed || []).map((entry) => entry.key),
+      domChangedKeys: Object.keys(diff.domChanged || {}),
+      appHintsChangedKeys: Object.keys(diff.appHintsChanged || {})
+    };
+  }
+
+  function buildNativeRestoreStateSnapshot(stage = "snapshot") {
+    const payload = getCurrentLiveDrillPayloadForDebug();
+    const nativePlan = payload ? getLiveDrillNativeRestorePlan(payload) : null;
+    return {
+      kind: "imaios-native-restore-state-snapshot",
+      version: 1,
+      buildTag: DEBUG_BUILD_TAG,
+      stage,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      hashPayload: payload ? summarizeLiveDrillPayloadForDebug(payload) : null,
+      nativePlan: nativePlan ? summarizeNativeRestorePlan(nativePlan) : null,
+      preload: getLiveDrillPreloadDebug(),
+      runtime: getLiveDrillRuntimeDebugSnapshot(nativePlan),
+      viewerStorage: getViewerLocalStorageState(),
+      focusedStorage: getFocusedNativeRestoreStorageSnapshot(),
+      dom: getNativeRestoreDomSnapshot(),
+      appHints: getCompactAppStateHints()
+    };
+  }
+
+  function getCurrentLiveDrillPayloadForDebug() {
+    const encoded = getLiveDrillHashPayload();
+    if (!encoded) return null;
+    try {
+      const payload = parseLiveDrillPayload(encoded);
+      return payload?.kind === "imaios-live-drill" ? payload : null;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function summarizeNativeRestoreStateSnapshot(snapshot = {}) {
+    return {
+      stage: cleanText(snapshot.stage || ""),
+      createdAt: cleanText(snapshot.createdAt || ""),
+      url: cleanText(snapshot.url || ""),
+      module: snapshot.module || null,
+      payload: snapshot.hashPayload ? {
+        id: snapshot.hashPayload.id,
+        title: snapshot.hashPayload.title,
+        labelCount: snapshot.hashPayload.labelCount,
+        labelsWithPayloadNativeIds: snapshot.hashPayload.labelsWithPayloadNativeIds,
+        hasNativeRestore: snapshot.hashPayload.hasNativeRestore
+      } : null,
+      nativePlan: snapshot.nativePlan || null,
+      lockedCount: Number(snapshot.runtime?.lockedCount || 0),
+      lockedLabels: snapshot.runtime?.lockedLabels || [],
+      nativeStorage: snapshot.runtime?.nativeStorage || null,
+      preload: snapshot.preload || null
+    };
+  }
+
+  function diffNativeRestoreStateSnapshots(before = {}, after = {}) {
+    const beforeRuntime = before.runtime || {};
+    const afterRuntime = after.runtime || {};
+    return {
+      moduleChanged: normalizeModuleKey(before.module?.key || "") !== normalizeModuleKey(after.module?.key || ""),
+      urlChanged: cleanText(before.url || "") !== cleanText(after.url || ""),
+      payloadIdChanged: cleanText(before.hashPayload?.id || "") !== cleanText(after.hashPayload?.id || ""),
+      nativePlanChanged: JSON.stringify(before.nativePlan || null) !== JSON.stringify(after.nativePlan || null),
+      lockedCount: {
+        before: Number(beforeRuntime.lockedCount || 0),
+        after: Number(afterRuntime.lockedCount || 0)
+      },
+      lockedLabels: {
+        before: beforeRuntime.lockedLabels || [],
+        after: afterRuntime.lockedLabels || []
+      },
+      nativeStorage: {
+        before: beforeRuntime.nativeStorage || null,
+        after: afterRuntime.nativeStorage || null,
+        changed: JSON.stringify(beforeRuntime.nativeStorage || null) !== JSON.stringify(afterRuntime.nativeStorage || null)
+      },
+      viewerStorageChanged: diffObjectShallow(before.viewerStorage || {}, after.viewerStorage || {}),
+      storage: {
+        localStorage: diffFocusedStorageEntries(before.focusedStorage?.localStorage || [], after.focusedStorage?.localStorage || []),
+        sessionStorage: diffFocusedStorageEntries(before.focusedStorage?.sessionStorage || [], after.focusedStorage?.sessionStorage || [])
+      },
+      domChanged: diffObjectShallow(before.dom || {}, after.dom || {}),
+      appHintsChanged: diffObjectShallow(before.appHints || {}, after.appHints || {})
+    };
+  }
+
+  function getFocusedNativeRestoreStorageSnapshot() {
+    const pattern = /^(im_|viewer-|vuex|pinia|persist|eanatomy|anatomy)|viewer|locked|lock|isolate|isolated|structure|slice|series|module|label|pin|overlay|cross|menu/i;
+    return {
+      localStorage: collectFocusedNativeStorageEntries(localStorage, pattern),
+      sessionStorage: collectFocusedNativeStorageEntries(sessionStorage, pattern)
+    };
+  }
+
+  function collectFocusedNativeStorageEntries(storage, pattern) {
+    const entries = [];
+    try {
+      for (let index = 0; index < storage.length; index += 1) {
+        const key = storage.key(index);
+        if (!key || key === NATIVE_RESTORE_STATE_BASELINE_KEY) continue;
+        if (key.startsWith(`${APP_ID}:`) && key !== `${APP_ID}:native-preloaded` && key !== `${APP_ID}:native-preload-error`) continue;
+        if (!pattern.test(key)) continue;
+        const raw = storage.getItem(key) || "";
+        entries.push({
+          key,
+          rawLength: raw.length,
+          hash: simpleStringHash(raw),
+          value: compactNativeStateValue(parseStorageValue(raw))
+        });
+      }
+    } catch (error) {
+      entries.push({ key: "__storage_error__", error: String(error?.message || error) });
+    }
+    return entries.sort((a, b) => a.key.localeCompare(b.key)).slice(0, 160);
+  }
+
+  function compactNativeStateValue(value, depth = 0) {
+    if (value === null || value === undefined) return value ?? null;
+    if (typeof value === "string") return value.length > 260 ? `${value.slice(0, 260)}...` : value;
+    if (typeof value === "number" || typeof value === "boolean") return value;
+    if (depth >= 3) return Array.isArray(value) ? `[array:${value.length}]` : "[object]";
+    if (Array.isArray(value)) return value.slice(0, 24).map((item) => compactNativeStateValue(item, depth + 1));
+    if (typeof value === "object") {
+      return Object.fromEntries(Object.entries(value).slice(0, 48).map(([key, item]) => [
+        key,
+        compactNativeStateValue(item, depth + 1)
+      ]));
+    }
+    return String(value);
+  }
+
+  function getNativeRestoreDomSnapshot() {
+    const lockedButton = findLockedStructuresButton();
+    const lockedPanel = findLockedStructuresPanel();
+    const labelElements = getVisibleLabelElements();
+    const pinElements = getPinLikeElements();
+    return {
+      lockedButton: lockedButton ? elementProbe(lockedButton) : null,
+      lockedPanel: lockedPanel ? elementProbe(lockedPanel) : null,
+      lockedCount: getLockedStructureCount(),
+      lockedNames: getLockedStructureNames(),
+      visibleLabelCount: labelElements.length,
+      visibleLabelSample: labelElements.slice(0, 12),
+      pinLikeCount: pinElements.length,
+      pinLikeSample: pinElements.slice(0, 12),
+      searchInputPresent: Boolean(findModuleSearchInput()),
+      detailPanelPresent: Boolean(findStructureDetailPanel(""))
+    };
+  }
+
+  function getCompactAppStateHints() {
+    const hints = getAppStateHints();
+    return {
+      hasVueDevtoolsHook: Boolean(hints.hasVueDevtoolsHook),
+      windowKeys: (hints.windowKeys || []).slice(0, 40),
+      localStorageKeys: (hints.localStorageKeys || []).filter((key) => !String(key).startsWith(`${APP_ID}:`)).slice(0, 60),
+      sessionStorageKeys: (hints.sessionStorageKeys || []).filter((key) => !String(key).startsWith(`${APP_ID}:`)).slice(0, 60)
+    };
+  }
+
+  function diffFocusedStorageEntries(beforeEntries = [], afterEntries = []) {
+    const beforeMap = new Map(beforeEntries.map((entry) => [entry.key, entry]));
+    const afterMap = new Map(afterEntries.map((entry) => [entry.key, entry]));
+    const keys = unique([...beforeMap.keys(), ...afterMap.keys()]);
+    const added = [];
+    const removed = [];
+    const changed = [];
+    for (const key of keys) {
+      const before = beforeMap.get(key);
+      const after = afterMap.get(key);
+      if (!before && after) {
+        added.push(after);
+      } else if (before && !after) {
+        removed.push(before);
+      } else if (before && after && (before.hash !== after.hash || before.rawLength !== after.rawLength)) {
+        changed.push({
+          key,
+          before: { rawLength: before.rawLength, hash: before.hash, value: before.value },
+          after: { rawLength: after.rawLength, hash: after.hash, value: after.value }
+        });
+      }
+    }
+    return { added, removed, changed };
+  }
+
+  function diffObjectShallow(before = {}, after = {}) {
+    const keys = unique([...Object.keys(before || {}), ...Object.keys(after || {})]);
+    const changed = {};
+    for (const key of keys) {
+      const beforeValue = before?.[key];
+      const afterValue = after?.[key];
+      if (JSON.stringify(beforeValue) === JSON.stringify(afterValue)) continue;
+      changed[key] = { before: beforeValue ?? null, after: afterValue ?? null };
+    }
+    return changed;
+  }
+
+  function simpleStringHash(value) {
+    const text = String(value || "");
+    let hash = 2166136261;
+    for (let index = 0; index < text.length; index += 1) {
+      hash ^= text.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return (hash >>> 0).toString(16).padStart(8, "0");
+  }
+
   async function restoreLiveDrillPayload(payload, options = {}) {
     const labels = getLiveDrillRestoreLabels(payload);
     if (!labels.length) throw new Error("The live drill has no labels to restore.");
@@ -6370,39 +7135,137 @@
       throw new Error(`This drill belongs to ${payload?.module?.name || expectedModuleKey}, not the current module.`);
     }
 
+    const restoreDebug = createLiveDrillRestoreDebug(payload, labels, options);
+    state.lastLiveDrillRestoreDebug = restoreDebug;
+    addLiveDrillRestoreDebugStep(restoreDebug, "start", {
+      expectedModuleKey,
+      currentModuleKey,
+      labelCount: labels.length
+    });
+
     const useStudyShield = shouldShowLiveDrillStudyShield(payload, options);
     if (useStudyShield) showLiveDrillStudyShield(payload, "loading");
 
     state.liveDrillRestoreRunning = true;
     try {
-      const searchInput = await waitFor(() => findModuleSearchInput(), 7000, 200);
-      if (!searchInput) throw new Error("Could not find IMAIOS module search to restore the drill.");
       setStatus(`Restoring live drill: ${payload.title || labels.length + " labels"}...`, 0);
-      const clearResult = await clearLockedStructuresForApply();
-      if (!clearResult.ok) throw new Error(clearResult.reason || "Could not clear existing locked structures.");
+      const nativePlan = getLiveDrillNativeRestorePlan(payload);
+      restoreDebug.nativePlan = summarizeNativeRestorePlan(nativePlan);
+      let restoreResult = null;
 
-      const plane = normalizePlaneName(payload?.viewer?.plane || "");
-      if (plane) {
-        const switched = await switchPlane(plane, { quiet: true });
-        if (!switched.ok) setStatus(`Could not switch to ${plane}; restoring labels in current plane.`, 4500);
-        await delay(350);
+      if (nativePlan.complete) {
+        const initialLockedCount = getLockedStructureCount();
+        const storageMatchedAtStart = nativeStorageMatchesPlan(nativePlan);
+        addLiveDrillRestoreDebugStep(restoreDebug, storageMatchedAtStart ? "native-storage-matched-plan-before-search" : "native-storage-missing-before-search", {
+          nativePlan: summarizeNativeRestorePlan(nativePlan),
+          initialLockedCount,
+          runtime: getLiveDrillRuntimeDebugSnapshot(nativePlan)
+        });
+        if (!storageMatchedAtStart && initialLockedCount === 0) {
+          const seedResult = writeNativeLockedStructureIds(nativePlan.moduleSlug, nativePlan.ids);
+          addLiveDrillRestoreDebugStep(restoreDebug, "native-storage-seeded-before-search", {
+            seedResult,
+            runtime: getLiveDrillRuntimeDebugSnapshot(nativePlan)
+          });
+        }
+
+        const allowNativeAcceptance = storageMatchedAtStart || initialLockedCount === 0;
+        const nativeVisible = allowNativeAcceptance && storageMatchedAtStart && initialLockedCount >= labels.length
+          ? { storageMatches: true, lockedCount: initialLockedCount, alreadyVisible: true }
+          : null;
+        addLiveDrillRestoreDebugStep(restoreDebug, "native-pre-search-visible-check", {
+          nativeVisible: Boolean(nativeVisible),
+          allowNativeAcceptance,
+          storageMatchedAtStart,
+          lockedCount: getLockedStructureCount(),
+          skippedWait: true
+        });
+        if (nativeVisible) {
+          restoreResult = createNativeRestoreSuccessResult(nativePlan, labels, { nativePreloaded: storageMatchedAtStart });
+        } else {
+          addLiveDrillRestoreDebugStep(restoreDebug, "native-preload-not-hydrated", {
+            reason: allowNativeAcceptance
+              ? "Native IDs were present/seeded, but IMAIOS did not render the expected locked count before search fallback."
+              : "Native storage did not match and old locked structures were already visible, so native acceptance was not trusted."
+          });
+        }
+      } else {
+        addLiveDrillRestoreDebugStep(restoreDebug, "native-plan-incomplete-before-search", {
+          nativePlan: summarizeNativeRestorePlan(nativePlan)
+        });
       }
 
-      state.selectedStructures = labels;
-      state.customListText = labels.join("\n");
-      savePageState();
-      refreshPanel();
-      const restoreResult = await applyLiveDrillLabels(labels, payload.title ? `Live drill ${payload.title}` : "Live drill", {
-        noRetry: true,
-        closeDetailPanelAfterClick: true,
-        skipVerification: true,
-        skipPrime: true,
-        exactTimeoutMs: 1800,
-        afterClickDelayMs: 300,
-        searchClearDelayMs: 45,
-        searchAfterTypeDelayMs: 70
-      });
+      if (!restoreResult) {
+        const searchInput = await waitFor(() => findModuleSearchInput(), 7000, 200);
+        if (!searchInput) throw new Error("Could not find IMAIOS module search to restore the drill.");
+        addLiveDrillRestoreDebugStep(restoreDebug, "search-input-ready", {
+          lockedCount: getLockedStructureCount()
+        });
+        addLiveDrillRestoreDebugStep(restoreDebug, "viewer-context-deferred-until-final", {
+          reason: "Native IDs did not hydrate; locking labels by search first is faster than switching plane/series before fallback."
+        });
+      }
 
+      if (!restoreResult) {
+        captureNativeRestorePreFallbackState(restoreDebug, "before-clear-or-search");
+        const lockedCountBeforeClear = getLockedStructureCount();
+        const clearResult = lockedCountBeforeClear > 0
+          ? await clearLockedStructuresForApply()
+          : { ok: true, skipped: true, lockedCount: 0, reason: "No visible locked structures to clear." };
+        addLiveDrillRestoreDebugStep(restoreDebug, "clear-before-restore", {
+          clearResult,
+          runtime: getLiveDrillRuntimeDebugSnapshot(nativePlan)
+        });
+        if (!clearResult.ok) throw new Error(clearResult.reason || "Could not clear existing locked structures.");
+        const shouldAttemptDirectNative = nativePlan.complete;
+        if (shouldAttemptDirectNative) {
+          const nativeResult = await applyLiveDrillNativeRestore(nativePlan, labels);
+          addLiveDrillRestoreDebugStep(restoreDebug, "direct-native-restore-attempt", {
+            result: nativeResult,
+            runtime: getLiveDrillRuntimeDebugSnapshot(nativePlan)
+          });
+          if (nativeResult.ok) restoreResult = nativeResult;
+        } else if (nativePlan.complete) {
+          addLiveDrillRestoreDebugStep(restoreDebug, "direct-native-restore-skipped", {
+            reason: "Native plan was complete, but direct native restore was not attempted."
+          });
+        } else {
+          addLiveDrillRestoreDebugStep(restoreDebug, "native-plan-incomplete", {
+            nativePlan: summarizeNativeRestorePlan(nativePlan)
+          });
+        }
+      }
+
+      if (!restoreResult) {
+        captureNativeRestorePreFallbackState(restoreDebug, "before-fallback-search");
+        addLiveDrillRestoreDebugStep(restoreDebug, "fallback-search-start", {
+          labels
+        });
+        state.selectedStructures = labels;
+        state.customListText = labels.join("\n");
+        savePageState();
+        refreshPanel();
+        const restoreSearchOptions = getLiveDrillRestoreSearchOptions(payload, options);
+        restoreResult = await applyLiveDrillLabels(labels, payload.title ? `Live drill ${payload.title}` : "Live drill", restoreSearchOptions.primary);
+        addLiveDrillRestoreDebugStep(restoreDebug, "fallback-search-primary-result", {
+          result: restoreResult
+        });
+        if (restoreResult.missing.length && restoreSearchOptions.fallback) {
+          setStatus(`Fast restore missed ${restoreResult.missing.length}; retrying with steadier timing...`, 0);
+          const retryResult = await applyLiveDrillLabels(
+            restoreResult.missing,
+            payload.title ? `Live drill ${payload.title} retry` : "Live drill retry",
+            restoreSearchOptions.fallback
+          );
+          restoreResult = mergeLiveDrillRestoreResults(labels, restoreResult, retryResult);
+          addLiveDrillRestoreDebugStep(restoreDebug, "fallback-search-retry-result", {
+            retryResult,
+            mergedResult: restoreResult
+          });
+        }
+      }
+
+      await restoreLiveDrillViewerContext(payload, { quiet: true, phase: "final" });
       const sliceValue = parseNumber(payload?.viewer?.slice?.value);
       if (Number.isFinite(sliceValue)) {
         await delay(300);
@@ -6416,13 +7279,117 @@
       const missSuffix = restoreResult.missing.length ? ` Missing: ${restoreResult.missing.join(", ")}.` : "";
       setStatus(`Live drill ready: ${restoreResult.locked.length}/${labels.length} labels restored.${missSuffix}`, options.source === "test" ? 11000 : 14000);
       if (useStudyShield) hideLiveDrillStudyShield();
+      restoreDebug.finalRuntime = getLiveDrillRuntimeDebugSnapshot(getLiveDrillNativeRestorePlan(payload));
+      restoreDebug.result = {
+        ok: restoreResult.missing.length === 0,
+        mode: restoreResult.nativeRestoreUsed ? (restoreResult.nativePreloaded ? "native-preload" : "native-direct") : "fallback-search",
+        labelCount: labels.length,
+        restoredCount: restoreResult.locked.length,
+        missing: restoreResult.missing,
+        nativeRestoreUsed: Boolean(restoreResult.nativeRestoreUsed),
+        nativePreloaded: Boolean(restoreResult.nativePreloaded)
+      };
+      delete restoreDebug._startedAt;
       return { ok: restoreResult.missing.length === 0, labelCount: labels.length, ...restoreResult };
     } catch (error) {
+      restoreDebug.finalRuntime = getLiveDrillRuntimeDebugSnapshot(getLiveDrillNativeRestorePlan(payload));
+      restoreDebug.result = {
+        ok: false,
+        mode: "error",
+        error: String(error?.message || error)
+      };
+      delete restoreDebug._startedAt;
       if (useStudyShield) markLiveDrillStudyShieldError(payload);
       throw error;
     } finally {
       state.liveDrillRestoreRunning = false;
     }
+  }
+
+  function getLiveDrillRestoreSearchOptions(payload, options = {}) {
+    const base = {
+      noRetry: true,
+      closeDetailPanelAfterClick: true,
+      skipVerification: true,
+      skipPrime: true,
+      exactTimeoutMs: 1800,
+      afterClickDelayMs: 300,
+      searchClearDelayMs: 45,
+      searchAfterTypeDelayMs: 70
+    };
+    const shield = payload?.studyShield || payload?.restorePlan?.studyShield || null;
+    const isAnkiCardRestore = shield?.source === "anki-card" || options.source === "anki-card";
+    if (!isAnkiCardRestore) return { primary: base, fallback: null };
+    return {
+      primary: {
+        ...base,
+        exactTimeoutMs: 1150,
+        afterClickDelayMs: 140,
+        searchClearDelayMs: 28,
+        searchAfterTypeDelayMs: 38
+      },
+      fallback: base
+    };
+  }
+
+  function mergeLiveDrillRestoreResults(requestedLabels, firstResult = {}, retryResult = {}) {
+    const attempted = [
+      ...(Array.isArray(firstResult.attempted) ? firstResult.attempted : []),
+      ...(Array.isArray(retryResult.attempted) ? retryResult.attempted : [])
+    ];
+    const locked = unique([
+      ...(Array.isArray(firstResult.locked) ? firstResult.locked : []),
+      ...(Array.isArray(retryResult.locked) ? retryResult.locked : [])
+    ]);
+    return {
+      locked,
+      missing: getMissingLabels(requestedLabels, locked),
+      attempted,
+      verificationSkipped: Boolean(firstResult.verificationSkipped || retryResult.verificationSkipped),
+      fastRetryUsed: true
+    };
+  }
+
+  async function restoreLiveDrillViewerContext(payload, options = {}) {
+    const targetSeries = cleanText(payload?.viewer?.selectedSeries || "");
+    const targetPlane = normalizePlaneName(payload?.viewer?.plane || "");
+    if (!targetSeries && !targetPlane) return { ok: true, skipped: true };
+
+    const attempts = options.phase === "final" ? 2 : 1;
+    let lastResult = { ok: false, reason: "No viewer restore attempted." };
+    for (let attempt = 0; attempt < attempts; attempt += 1) {
+      const current = getSeriesInfo();
+      const currentSeries = cleanText(current.selectedSeries || "");
+      const currentPlane = normalizePlaneName(current.selectedPlane || "") || inferSelectedPlaneFromDom() || "";
+      const seriesMatches = targetSeries && normalizeText(currentSeries) === normalizeText(targetSeries);
+      const planeMatches = targetPlane && normalizePlaneName(currentPlane) === targetPlane;
+      if ((targetSeries && seriesMatches) || (!targetSeries && targetPlane && planeMatches)) {
+        return { ok: true, alreadySelected: true, series: currentSeries, plane: currentPlane };
+      }
+
+      if (targetSeries) {
+        lastResult = await switchSeriesByName(targetSeries, { quiet: true });
+        if (lastResult.ok) {
+          await delay(options.phase === "final" ? 420 : 350);
+          continue;
+        }
+      }
+
+      if (targetPlane) {
+        lastResult = await switchPlane(targetPlane, { quiet: true });
+        if (lastResult.ok) {
+          await delay(options.phase === "final" ? 420 : 350);
+          continue;
+        }
+      }
+
+      if (attempt + 1 < attempts) await delay(650);
+    }
+
+    if (!options.quiet && !lastResult.ok) {
+      setStatus(`Could not restore ${targetSeries || targetPlane}; using current series.`, 6000);
+    }
+    return lastResult;
   }
 
   async function applyLiveDrillLabels(labels, sourceLabel, options = {}) {
@@ -7188,7 +8155,9 @@
         updatedAt: cleanText(rawModule?.updatedAt || rawModule?.createdAt || ""),
         labels: unique(rawLabels.map((item) => typeof item === "string" ? item : item?.preferredLabel || item?.label || item?.name || ""))
           .sort(compareLabels),
-        sourceCounts: rawModule?.sourceCounts && typeof rawModule.sourceCounts === "object" ? rawModule.sourceCounts : {}
+        sourceCounts: rawModule?.sourceCounts && typeof rawModule.sourceCounts === "object" ? rawModule.sourceCounts : {},
+        nativeModuleSlug: cleanText(rawModule?.nativeModuleSlug || rawModule?.nativeSlug || rawModule?.imaiosNativeSlug || ""),
+        nativeIds: normalizeNativeIdMap(rawModule?.nativeIds || rawModule?.nativeLabelIds || rawModule?.labelNativeIds || {})
       };
     }
     return modules;
@@ -7544,6 +8513,95 @@
     return moduleLabels[moduleKey] || { key: moduleKey, labels: [] };
   }
 
+  function getSavedModuleLabelEntry(moduleKey = getCurrentModuleKey()) {
+    const key = cleanText(moduleKey || getCurrentModuleKey());
+    const moduleLabels = state.labelRepository?.moduleLabels || {};
+    if (moduleLabels[key]) return moduleLabels[key];
+    const normalizedKey = normalizeModuleKey(key);
+    if (!normalizedKey) return null;
+    for (const [savedKey, entry] of Object.entries(moduleLabels)) {
+      if (normalizeModuleKey(savedKey) === normalizedKey) return entry;
+      if (normalizeModuleKey(entry?.key || "") === normalizedKey) return entry;
+    }
+    return null;
+  }
+
+  function getSavedModuleNativeSlug(moduleKey = getCurrentModuleKey()) {
+    const moduleEntry = getSavedModuleLabelEntry(moduleKey);
+    return cleanText(moduleEntry?.nativeModuleSlug || moduleEntry?.nativeSlug || moduleEntry?.imaiosNativeSlug || "");
+  }
+
+  function getNativeIdsForLabel(label, moduleKey = getCurrentModuleKey()) {
+    const moduleEntry = getSavedModuleLabelEntry(moduleKey);
+    const nativeIds = normalizeNativeIdMap(moduleEntry?.nativeIds || moduleEntry?.nativeLabelIds || moduleEntry?.labelNativeIds || {});
+    const keys = new Set([normalizeText(label)]);
+    const repositoryEntry = findRepositoryLabelForTarget({ preferredLabel: label, aliases: [] });
+    if (repositoryEntry) {
+      keys.add(normalizeText(repositoryEntry.preferredLabel || ""));
+      for (const alias of Array.isArray(repositoryEntry.aliases) ? repositoryEntry.aliases : []) {
+        keys.add(normalizeText(alias));
+      }
+    }
+    for (const key of keys) {
+      if (key && Array.isArray(nativeIds[key]) && nativeIds[key].length) {
+        return {
+          ids: uniqueNativeIds(nativeIds[key]),
+          moduleSlug: getSavedModuleNativeSlug(moduleKey),
+          source: "module-label-repository"
+        };
+      }
+    }
+    return {
+      ids: [],
+      moduleSlug: getSavedModuleNativeSlug(moduleKey),
+      source: ""
+    };
+  }
+
+  function buildLiveDrillNativeRestorePlan(labels, module = null) {
+    const entries = Array.isArray(labels) ? labels : [];
+    const moduleKey = cleanText(module?.key || entries.find((entry) => entry?.moduleKey)?.moduleKey || getCurrentModuleKey());
+    const moduleSlug = cleanText(
+      entries.find((entry) => cleanText(entry?.nativeModuleSlug))?.nativeModuleSlug
+      || module?.nativeModuleSlug
+      || getSavedModuleNativeSlug(moduleKey)
+      || ""
+    );
+    const labelPlans = entries.map((entry) => {
+      const label = cleanText(entry?.preferredLabel || entry?.label || "");
+      const ids = uniqueNativeIds(entry?.nativeIds || entry?.nativeId || []);
+      return { label, ids };
+    });
+    const ids = uniqueNativeIds(labelPlans.flatMap((item) => item.ids));
+    const mappedLabelCount = labelPlans.filter((item) => item.ids.length).length;
+    return {
+      storageKey: "im_viewer_locked_structures",
+      moduleSlug,
+      ids,
+      labelCount: labelPlans.length,
+      mappedLabelCount,
+      complete: Boolean(moduleSlug && labelPlans.length && mappedLabelCount === labelPlans.length && ids.length),
+      source: "native-lock-id-map"
+    };
+  }
+
+  function buildNativeRestorePlanForLabelNames(labelNames, module = getCurrentModuleInfo()) {
+    const moduleKey = cleanText(module?.key || getCurrentModuleKey());
+    const entries = unique((Array.isArray(labelNames) ? labelNames : []).map(cleanText)).map((label) => {
+      const nativeMatch = getNativeIdsForLabel(label, moduleKey);
+      const nativeIds = uniqueNativeIds(nativeMatch.ids || []);
+      return {
+        preferredLabel: label,
+        normalizedLabel: normalizeText(label),
+        moduleKey,
+        nativeId: nativeIds[0] || null,
+        nativeIds,
+        nativeModuleSlug: nativeMatch.moduleSlug || ""
+      };
+    });
+    return buildLiveDrillNativeRestorePlan(entries, module);
+  }
+
   function saveChunkLibrary() {
     try {
       localStorage.setItem(CHUNK_LIBRARY_STORAGE_KEY, JSON.stringify(state.chunkLibrary));
@@ -7592,6 +8650,117 @@
     return { ok: true, stats };
   }
 
+  async function refreshLabelRepositoriesFromStorage() {
+    const localLabelRepository = normalizeImportedLabelRepository(JSON.parse(localStorage.getItem(LABEL_REPOSITORY_STORAGE_KEY) || "null"));
+    const localDetailRepository = normalizeImportedLabelDetailRepository(JSON.parse(localStorage.getItem(LABEL_DETAIL_REPOSITORY_STORAGE_KEY) || "null"));
+    state.labelRepository = mergeLabelRepositories(state.labelRepository, localLabelRepository);
+    state.labelDetailRepository = mergeLabelDetailRepositories(state.labelDetailRepository, localDetailRepository);
+
+    if (!chrome?.storage?.local) return { ok: true, source: "localStorage" };
+
+    try {
+      const values = await chrome.storage.local.get([
+        EXTENSION_LABEL_REPOSITORY_STORAGE_KEY,
+        EXTENSION_LABEL_DETAIL_REPOSITORY_STORAGE_KEY
+      ]);
+      const extensionLabelRepository = normalizeImportedLabelRepository(values?.[EXTENSION_LABEL_REPOSITORY_STORAGE_KEY] || null);
+      const extensionDetailRepository = normalizeImportedLabelDetailRepository(values?.[EXTENSION_LABEL_DETAIL_REPOSITORY_STORAGE_KEY] || null);
+      state.labelRepository = mergeLabelRepositories(state.labelRepository, extensionLabelRepository);
+      state.labelDetailRepository = mergeLabelDetailRepositories(state.labelDetailRepository, extensionDetailRepository);
+      localStorage.setItem(LABEL_REPOSITORY_STORAGE_KEY, JSON.stringify(state.labelRepository));
+      localStorage.setItem(LABEL_DETAIL_REPOSITORY_STORAGE_KEY, JSON.stringify(state.labelDetailRepository));
+      return { ok: true, source: "extension-storage" };
+    } catch (error) {
+      console.warn("IMAIOS Cine Tools: could not refresh repositories from extension storage", error);
+      return { ok: false, error: String(error?.message || error) };
+    }
+  }
+
+  function mergeLabelRepositories(baseRepository, incomingRepository) {
+    const base = normalizeImportedLabelRepository(baseRepository);
+    const incoming = normalizeImportedLabelRepository(incomingRepository);
+    const moduleLabels = { ...base.moduleLabels };
+    for (const [moduleKey, incomingModule] of Object.entries(incoming.moduleLabels || {})) {
+      const previous = moduleLabels[moduleKey] || {};
+      moduleLabels[moduleKey] = {
+        ...previous,
+        ...incomingModule,
+        labels: unique([
+          ...(Array.isArray(previous.labels) ? previous.labels : []),
+          ...(Array.isArray(incomingModule.labels) ? incomingModule.labels : [])
+        ]).sort(compareLabels),
+        sourceCounts: {
+          ...(previous.sourceCounts && typeof previous.sourceCounts === "object" ? previous.sourceCounts : {}),
+          ...(incomingModule.sourceCounts && typeof incomingModule.sourceCounts === "object" ? incomingModule.sourceCounts : {})
+        },
+        nativeModuleSlug: cleanText(incomingModule.nativeModuleSlug || previous.nativeModuleSlug || ""),
+        nativeIds: mergeNativeIdMaps(previous.nativeIds, incomingModule.nativeIds)
+      };
+    }
+    return normalizeImportedLabelRepository({
+      ...base,
+      updatedAt: cleanText(incoming.updatedAt || base.updatedAt || new Date().toISOString()),
+      modalities: unique([
+        ...normalizeStringList(base.modalities || []),
+        ...normalizeStringList(incoming.modalities || [])
+      ]),
+      labels: mergeGlobalLabelEntries(base.labels, incoming.labels),
+      moduleLabels
+    });
+  }
+
+  function mergeGlobalLabelEntries(baseLabels = [], incomingLabels = []) {
+    const byKey = new Map();
+    for (const entry of [...baseLabels, ...incomingLabels]) {
+      const preferredLabel = cleanText(entry?.preferredLabel || entry?.label || entry?.name || entry || "");
+      const key = normalizeText(preferredLabel);
+      if (!key) continue;
+      const previous = byKey.get(key) || {};
+      byKey.set(key, {
+        ...previous,
+        ...entry,
+        preferredLabel,
+        aliases: unique([...(previous.aliases || []), ...normalizeStringList(entry?.aliases || entry?.synonyms)]),
+        modalities: unique([...(previous.modalities || []), ...normalizeStringList(entry?.modalities || entry?.modality)]),
+        regions: unique([...(previous.regions || []), ...normalizeStringList(entry?.regions || entry?.region)]),
+        status: cleanText(entry?.status || previous.status || "verified"),
+        notes: cleanText(entry?.notes || entry?.note || previous.notes || "")
+      });
+    }
+    return Array.from(byKey.values()).sort((a, b) => compareLabels(a.preferredLabel, b.preferredLabel));
+  }
+
+  function mergeLabelDetailRepositories(baseRepository, incomingRepository) {
+    const base = normalizeImportedLabelDetailRepository(baseRepository);
+    const incoming = normalizeImportedLabelDetailRepository(incomingRepository);
+    const moduleDetails = { ...(base.moduleDetails || {}) };
+    for (const [moduleKey, incomingModule] of Object.entries(incoming.moduleDetails || {})) {
+      const previous = moduleDetails[moduleKey] || {};
+      moduleDetails[moduleKey] = {
+        ...previous,
+        ...incomingModule,
+        detailsByLabel: {
+          ...(previous.detailsByLabel && typeof previous.detailsByLabel === "object" ? previous.detailsByLabel : {}),
+          ...(incomingModule.detailsByLabel && typeof incomingModule.detailsByLabel === "object" ? incomingModule.detailsByLabel : {})
+        }
+      };
+    }
+    return normalizeImportedLabelDetailRepository({
+      ...base,
+      updatedAt: cleanText(incoming.updatedAt || base.updatedAt || new Date().toISOString()),
+      moduleDetails
+    });
+  }
+
+  function mergeNativeIdMaps(baseMap, incomingMap) {
+    const merged = normalizeNativeIdMap(baseMap || {});
+    const incoming = normalizeNativeIdMap(incomingMap || {});
+    for (const [key, ids] of Object.entries(incoming)) {
+      merged[key] = uniqueNativeIds([...(merged[key] || []), ...ids]);
+    }
+    return merged;
+  }
+
   function getLabelRepositoryStats(repository) {
     const moduleLabels = repository?.moduleLabels && typeof repository.moduleLabels === "object"
       ? repository.moduleLabels
@@ -7623,6 +8792,34 @@
     if (Array.isArray(value)) return value.map((item) => cleanText(item)).filter(Boolean);
     if (typeof value === "string") return value.split(/\r?\n|[|;]/).map((item) => cleanText(item)).filter(Boolean);
     return value ? [cleanText(value)].filter(Boolean) : [];
+  }
+
+  function uniqueNativeIds(values) {
+    const rawItems = Array.isArray(values) ? values : [values];
+    const ids = [];
+    const seen = new Set();
+    for (const item of rawItems) {
+      const value = item && typeof item === "object"
+        ? item.id ?? item.nativeId ?? item.structureId ?? item.value
+        : item;
+      const id = Number.parseInt(String(value ?? "").trim(), 10);
+      if (!Number.isFinite(id) || id <= 0 || seen.has(id)) continue;
+      seen.add(id);
+      ids.push(id);
+    }
+    return ids;
+  }
+
+  function normalizeNativeIdMap(value) {
+    const map = {};
+    if (!value || typeof value !== "object") return map;
+    for (const [key, idsValue] of Object.entries(value)) {
+      const normalizedKey = normalizeText(key);
+      if (!normalizedKey) continue;
+      const ids = uniqueNativeIds(idsValue);
+      if (ids.length) map[normalizedKey] = ids;
+    }
+    return map;
   }
 
   function createSlug(value) {
@@ -7921,6 +9118,8 @@
       updatedAt: new Date().toISOString(),
       labels,
       sourceCounts: exportData.sourceCounts || previous.sourceCounts || {},
+      nativeModuleSlug: cleanText(previous.nativeModuleSlug || previous.nativeSlug || previous.imaiosNativeSlug || ""),
+      nativeIds: normalizeNativeIdMap(previous.nativeIds || previous.nativeLabelIds || previous.labelNativeIds || {}),
       updateMode: options.replaceModuleLabels === false ? "merged" : "replaced",
       previousLabelCount: previousLabels.length,
       removedCount
@@ -8880,6 +10079,453 @@
     const probe = buildViewerProbe({ includeSliceElements: false });
     await writeClipboard(JSON.stringify(probe, null, 2));
     setStatus("Current slice probe copied.");
+  }
+
+  function runImaiosPageContextProbe(mode = "generic", options = {}, timeoutMs = 9000) {
+    return new Promise((resolve) => {
+      const nonce = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      const source = `${APP_ID}:page-context-probe`;
+      let settled = false;
+      const cleanup = () => {
+        window.removeEventListener("message", onMessage, true);
+        clearTimeout(timer);
+        if (script && script.parentNode) script.remove();
+      };
+      const finish = (payload) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        resolve(payload);
+      };
+      const onMessage = (event) => {
+        if (event.source !== window) return;
+        const data = event.data || {};
+        if (data.source !== source || data.nonce !== nonce) return;
+        finish(data.payload || { ok: false, error: "Empty page-context payload." });
+      };
+      const script = document.createElement("script");
+      const timer = setTimeout(() => {
+        finish({ ok: false, error: `Timed out waiting for page-context probe: ${mode}` });
+      }, timeoutMs);
+      window.addEventListener("message", onMessage, true);
+      script.src = chrome.runtime.getURL("imaios-page-context-probe.js");
+      script.dataset.source = source;
+      script.dataset.nonce = nonce;
+      script.dataset.mode = mode;
+      script.dataset.stage = mode;
+      script.dataset.options = JSON.stringify(options || {});
+      script.onload = () => setTimeout(() => script.remove(), 0);
+      script.onerror = () => finish({ ok: false, error: `Could not load page-context probe: ${mode}` });
+      (document.documentElement || document.head || document.body).appendChild(script);
+    });
+  }
+
+  async function copyNativeActionDiscoveryProbe() {
+    if (state.searchRunning) {
+      setStatus("Search is already running. Stop it before probing native action discovery.", 7000);
+      return;
+    }
+    setStatus("Discovering reachable IMAIOS native action candidates...", 0);
+    const lockedLabels = await collectLockedStructureNames();
+    const labelCandidates = collectNativeRestoreProbeLabels(lockedLabels);
+    const pageContext = await runImaiosPageContextProbe("native-action-discovery", {
+      labels: labelCandidates.slice(0, 30),
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo()
+    }, 14000);
+    const probe = {
+      kind: "imaios-native-action-discovery-probe",
+      version: 1,
+      buildTag: DEBUG_BUILD_TAG,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      lockedLabels,
+      labelCandidates,
+      lockedCount: getLockedStructureCount(),
+      nativeLocked: getCurrentNativeLockedStructureState(),
+      contentWorld: {
+        lockedButton: findLockedStructuresButton() ? elementDeepProbe(findLockedStructuresButton()) : null,
+        lockedPanel: findLockedStructuresPanel() ? elementDeepProbe(findLockedStructuresPanel()) : null,
+        searchInput: findModuleSearchInput() ? elementDeepProbe(findModuleSearchInput()) : null,
+        visibleLabels: getVisibleLabelElements().slice(0, 40),
+        pinLikeElements: getPinLikeElements().slice(0, 60),
+        appStateHints: getAppStateHints()
+      },
+      pageContext
+    };
+    await writeClipboard(JSON.stringify(probe, null, 2));
+    const componentCount = Array.isArray(pageContext?.vueComponents) ? pageContext.vueComponents.length : 0;
+    const functionCount = Array.isArray(pageContext?.globalFunctionCandidates) ? pageContext.globalFunctionCandidates.length : 0;
+    setStatus(`Native action discovery copied: ${componentCount} Vue component candidates, ${functionCount} global function candidates.`, 14000);
+  }
+
+  async function copyNativeBundleSearchProbe() {
+    if (state.searchRunning) {
+      setStatus("Search is already running. Stop it before probing IMAIOS bundles.", 7000);
+      return;
+    }
+    setStatus("Searching loaded IMAIOS bundles for lock/isolate internals...", 0);
+    const lockedLabels = await collectLockedStructureNames();
+    const labelCandidates = collectNativeRestoreProbeLabels(lockedLabels);
+    const pageContext = await runImaiosPageContextProbe("native-bundle-search", {
+      labels: labelCandidates.slice(0, 30),
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      maxScripts: 28
+    }, 24000);
+    const probe = {
+      kind: "imaios-native-bundle-search-probe",
+      version: 1,
+      buildTag: DEBUG_BUILD_TAG,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      lockedLabels,
+      labelCandidates,
+      lockedCount: getLockedStructureCount(),
+      nativeLocked: getCurrentNativeLockedStructureState(),
+      pageContext
+    };
+    await writeClipboard(JSON.stringify(probe, null, 2));
+    const results = Array.isArray(pageContext?.results) ? pageContext.results : [];
+    const hitScripts = results.filter((item) => Array.isArray(item.hits) && item.hits.length).length;
+    const hitTerms = results.reduce((sum, item) => sum + (Array.isArray(item.hits) ? item.hits.length : 0), 0);
+    setStatus(`Bundle search copied: ${hitScripts} script${hitScripts === 1 ? "" : "s"} with ${hitTerms} matching term group${hitTerms === 1 ? "" : "s"}.`, 16000);
+  }
+
+  async function startNativeActionTraceProbe() {
+    setStatus("Starting native action trace. Now manually lock one structure, then click Copy trace.", 0);
+    const lockedLabels = await collectLockedStructureNames();
+    const labelCandidates = collectNativeRestoreProbeLabels(lockedLabels);
+    const pageContext = await runImaiosPageContextProbe("native-action-trace-start", {
+      labels: labelCandidates.slice(0, 30),
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo()
+    }, 9000);
+    if (!pageContext?.ok) {
+      setStatus(`Native action trace did not start: ${pageContext?.error || pageContext?.reason || "unknown error"}`, 12000);
+      return;
+    }
+    setStatus("Trace is running. Manually lock one label now, then click Copy trace.", 20000);
+  }
+
+  async function copyNativeActionTraceProbe() {
+    setStatus("Copying native action trace...", 0);
+    const pageContext = await runImaiosPageContextProbe("native-action-trace-stop", {
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo()
+    }, 22000);
+    const probe = {
+      kind: "imaios-native-action-trace-probe",
+      version: 1,
+      buildTag: DEBUG_BUILD_TAG,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      lockedLabels: await collectLockedStructureNames(),
+      lockedCount: getLockedStructureCount(),
+      nativeLocked: getCurrentNativeLockedStructureState(),
+      pageContext
+    };
+    await writeClipboard(JSON.stringify(probe, null, 2));
+    const recordCount = Number(pageContext?.recordCount || pageContext?.records?.length || 0);
+    setStatus(pageContext?.ok === false
+      ? `Native action trace copied with warning: ${pageContext.reason || pageContext.error || "no trace found"}`
+      : `Native action trace copied: ${recordCount} records.`, 14000);
+  }
+
+  async function copyNativeRestoreProbe() {
+    if (state.searchRunning) {
+      setStatus("Search is already running. Stop it before probing native restore state.", 7000);
+      return;
+    }
+    const lockedLabels = await collectLockedStructureNames();
+    const labelCandidates = collectNativeRestoreProbeLabels(lockedLabels);
+    const nativeLocked = getCurrentNativeLockedStructureState();
+    setStatus(`Probing native IMAIOS restore state${labelCandidates.length ? ` for ${labelCandidates.length} label candidates` : ""}...`, 0);
+    state.searchRunning = true;
+    const searchProbes = [];
+    try {
+      const labelsToSearch = labelCandidates.slice(0, 8);
+      for (const label of labelsToSearch) {
+        searchProbes.push(await probeSearchResultElement(label));
+        await delay(120);
+      }
+      const input = findModuleSearchInput();
+      if (input) {
+        await clearSearchInput(input);
+      }
+    } finally {
+      state.searchRunning = false;
+    }
+
+    const probe = {
+      kind: "imaios-native-lock-restore-probe",
+      version: 1,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      lockedLabels,
+      labelCandidates,
+      lockedCount: getLockedStructureCount(),
+      nativeLocked,
+      lockedPanel: findLockedStructuresPanel() ? elementDeepProbe(findLockedStructuresPanel()) : null,
+      lockedButton: findLockedStructuresButton() ? elementDeepProbe(findLockedStructuresButton()) : null,
+      searchInput: findModuleSearchInput() ? elementDeepProbe(findModuleSearchInput()) : null,
+      searchProbes,
+      visibleLabels: getVisibleLabelElements().slice(0, 40),
+      pinLikeElements: getPinLikeElements().slice(0, 60),
+      storage: getNativeRestoreStorageSnapshot(lockedLabels),
+      indexedDb: await getIndexedDbProbe(),
+      historyState: compactProbeValue(history.state),
+      appStateHints: getAppStateHints()
+    };
+    await writeClipboard(JSON.stringify(probe, null, 2));
+    const hitCount = countNativeRestoreStorageHits(probe.storage);
+    setStatus(`Native restore probe copied: ${hitCount} storage hit${hitCount === 1 ? "" : "s"}, ${searchProbes.filter((item) => item.ok).length}/${searchProbes.length} search result probes.`, 14000);
+  }
+
+  function collectNativeRestoreProbeLabels(lockedLabels = []) {
+    const chunk = getActiveChunk();
+    const chunkLabels = chunk ? getChunkLabelTargets(chunk).map((target) => target.preferredLabel) : [];
+    return unique([
+      ...(lockedLabels || []),
+      ...(state.selectedStructures || []),
+      ...parseCustomListSafe(),
+      ...chunkLabels
+    ].map(cleanText).filter(Boolean));
+  }
+
+  function getCurrentNativeLockedStructureState() {
+    const store = parseStorageValue(localStorage.getItem("im_viewer_locked_structures"));
+    const currentSlug = getCurrentNativeViewerModuleSlug(store);
+    const ids = currentSlug && store && typeof store === "object" && Array.isArray(store[currentSlug])
+      ? store[currentSlug]
+      : [];
+    return {
+      storageKey: "im_viewer_locked_structures",
+      currentSlug,
+      ids,
+      idCount: ids.length,
+      allModuleSlugs: store && typeof store === "object" ? Object.keys(store) : []
+    };
+  }
+
+  function getCurrentNativeViewerModuleSlug(store = null) {
+    const lastModule = cleanText(parseStorageValue(localStorage.getItem("viewer-last-module")) || "");
+    if (lastModule) return lastModule;
+    const seriesSeen = parseStorageValue(localStorage.getItem("im_viewer_last_series_seen"));
+    const lockedStore = store || parseStorageValue(localStorage.getItem("im_viewer_locked_structures"));
+    const moduleKey = normalizeModuleKey(getCurrentModuleKey());
+    const candidates = unique([
+      ...Object.keys(seriesSeen && typeof seriesSeen === "object" ? seriesSeen : {}),
+      ...Object.keys(lockedStore && typeof lockedStore === "object" ? lockedStore : {})
+    ]);
+    return candidates.find((candidate) => normalizeModuleKey(candidate) === moduleKey)
+      || candidates.find((candidate) => moduleKey && normalizeModuleKey(candidate).includes(moduleKey.split("-").slice(-2).join("-")))
+      || "";
+  }
+
+  async function probeSearchResultElement(label) {
+    const result = {
+      label,
+      ok: false,
+      selectedText: "",
+      reason: "",
+      input: null,
+      resultElement: null,
+      ancestors: []
+    };
+    const availability = await searchStructureAvailability(label, {
+      exact: true,
+      timeoutMs: 1400,
+      intervalMs: 45,
+      clearDelayMs: 25,
+      afterTypeDelayMs: 40
+    });
+    result.input = availability.input ? elementDeepProbe(availability.input) : null;
+    result.ok = Boolean(availability.ok);
+    result.selectedText = cleanText(availability.selectedText || "");
+    result.reason = availability.reason || "";
+    if (availability.result) {
+      result.resultElement = elementDeepProbe(availability.result);
+      result.ancestors = getElementAncestorProbe(availability.result, 5);
+    }
+    return result;
+  }
+
+  async function copyNativeIdMapProbe() {
+    if (state.searchRunning) {
+      setStatus("Search is already running. Stop it before probing native IDs.", 7000);
+      return;
+    }
+    const lockedLabels = await collectLockedStructureNames();
+    const labelCandidates = collectNativeRestoreProbeLabels(lockedLabels);
+    if (!labelCandidates.length) {
+      setStatus("Select a chunk or add labels before running the native ID map probe.", 8000);
+      return;
+    }
+
+    const initialNative = getCurrentNativeLockedStructureState();
+    const results = [];
+    const cleanup = [];
+    state.searchRunning = true;
+    state.cancelSearch = false;
+    try {
+      setStatus(`Native ID map: clearing current locks before ${labelCandidates.length} label probe...`, 0);
+      await closeStructureDetailPanel();
+      const clearResult = await clearLockedStructuresForApply();
+      cleanup.push({ step: "initial-clear", clearResult });
+      if (!clearResult.ok) {
+        throw new Error(clearResult.reason || "Could not clear locked structures before native ID mapping.");
+      }
+      await waitFor(() => getCurrentNativeLockedStructureState().idCount === 0 ? true : null, 1600, 80);
+      await clearModuleSearchInputForProbe();
+
+      for (let index = 0; index < labelCandidates.length; index += 1) {
+        if (state.cancelSearch) break;
+        const label = labelCandidates[index];
+        const beforeNative = getCurrentNativeLockedStructureState();
+        setStatus(`Native ID map ${index + 1}/${labelCandidates.length}: ${label}`, 0);
+        const searchResult = await searchAndClickStructure(label, {
+          exact: true,
+          allowFallback: false,
+          closeDetailPanelAfterClick: true,
+          timeoutMs: 1800,
+          intervalMs: 45,
+          clearDelayMs: 28,
+          afterTypeDelayMs: 40
+        });
+        const afterNative = await waitFor(() => {
+          const current = getCurrentNativeLockedStructureState();
+          if (!searchResult.ok || current.ids.length > beforeNative.ids.length) return current;
+          return null;
+        }, 1800, 80) || getCurrentNativeLockedStructureState();
+        const beforeSet = new Set(beforeNative.ids.map(String));
+        const addedIds = afterNative.ids.filter((id) => !beforeSet.has(String(id)));
+        results.push({
+          label,
+          ok: Boolean(searchResult.ok && addedIds.length),
+          searchOk: Boolean(searchResult.ok),
+          selectedText: cleanText(searchResult.selectedText || ""),
+          reason: searchResult.reason || (addedIds.length ? "" : "No new native locked-structure ID appeared."),
+          beforeIds: beforeNative.ids,
+          afterIds: afterNative.ids,
+          addedIds
+        });
+        await clearModuleSearchInputForProbe();
+        await delay(120);
+      }
+      await closeStructureDetailPanel();
+      await resetQuietPinsByCyclingPins();
+    } catch (error) {
+      results.push({
+        label: "__probe_error__",
+        ok: false,
+        reason: error?.message || String(error)
+      });
+    } finally {
+      state.searchRunning = false;
+    }
+
+    const finalNative = getCurrentNativeLockedStructureState();
+    const mapped = results.filter((item) => item.ok && item.addedIds?.length).length;
+    const probe = {
+      kind: "imaios-native-lock-id-map-probe",
+      version: 1,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      initialNative,
+      finalNative,
+      labelCandidates,
+      cleanup,
+      counts: {
+        labelCandidates: labelCandidates.length,
+        mapped,
+        missed: labelCandidates.length - mapped,
+        stopped: Boolean(state.cancelSearch)
+      },
+      mappings: results
+    };
+    const mergeResult = mergeNativeIdMapProbeIntoRepository(probe);
+    const saveResult = await saveLabelRepository();
+    const backupResult = saveResult.ok ? await backupLabelRepositoryToDownloads() : { ok: false, error: saveResult.error || "save failed" };
+    await writeClipboard(JSON.stringify(probe, null, 2));
+    const saveText = saveResult.ok
+      ? ` Saved ${mergeResult.savedMappingCount} native ID map${mergeResult.savedMappingCount === 1 ? "" : "s"} for ${mergeResult.moduleName}.`
+      : ` Save failed: ${saveResult.error}`;
+    const backupText = backupResult.ok ? " Backup updated." : ` Backup failed: ${backupResult.error}`;
+    setStatus(`Native ID map copied: ${mapped}/${labelCandidates.length} labels mapped.${saveText}${backupText}`, mapped === labelCandidates.length ? 12000 : 15000);
+  }
+
+  function mergeNativeIdMapProbeIntoRepository(probe) {
+    const repository = normalizeImportedLabelRepository(state.labelRepository || {});
+    const moduleInfo = probe?.module || getCurrentModuleInfo();
+    const moduleKey = cleanText(moduleInfo?.key || getCurrentModuleKey());
+    const previous = repository.moduleLabels[moduleKey] || {};
+    const previousLabels = Array.isArray(previous.labels) ? previous.labels : [];
+    const nativeIds = normalizeNativeIdMap(previous.nativeIds || previous.nativeLabelIds || previous.labelNativeIds || {});
+    const mappedLabels = [];
+    let savedMappingCount = 0;
+
+    for (const mapping of Array.isArray(probe?.mappings) ? probe.mappings : []) {
+      if (!mapping?.ok) continue;
+      const label = cleanText(mapping.label || mapping.selectedText || "");
+      const key = normalizeText(label);
+      const ids = uniqueNativeIds(mapping.addedIds || mapping.afterIds || []);
+      if (!key || !ids.length) continue;
+      nativeIds[key] = uniqueNativeIds([...(nativeIds[key] || []), ...ids]);
+      mappedLabels.push(label);
+      savedMappingCount += 1;
+    }
+
+    const nativeModuleSlug = cleanText(
+      probe?.finalNative?.currentSlug
+      || probe?.initialNative?.currentSlug
+      || previous.nativeModuleSlug
+      || ""
+    );
+    repository.moduleLabels[moduleKey] = {
+      ...previous,
+      key: moduleKey,
+      name: cleanText(moduleInfo?.name || previous.name || moduleKey),
+      url: cleanText(moduleInfo?.url || previous.url || getCurrentUrlWithoutHash()),
+      updatedAt: new Date().toISOString(),
+      labels: unique([...previousLabels, ...mappedLabels]).sort(compareLabels),
+      sourceCounts: previous.sourceCounts && typeof previous.sourceCounts === "object" ? previous.sourceCounts : {},
+      nativeModuleSlug,
+      nativeIds
+    };
+    repository.updatedAt = new Date().toISOString();
+    state.labelRepository = repository;
+    return {
+      ok: true,
+      savedMappingCount,
+      moduleKey,
+      moduleName: repository.moduleLabels[moduleKey].name,
+      nativeModuleSlug
+    };
   }
 
   async function copyLockedLabelDetailProbe() {
@@ -10460,6 +12106,82 @@
     return Object.fromEntries(keys.map((key) => [key, parseStorageValue(localStorage.getItem(key))]));
   }
 
+  function getNativeRestoreStorageSnapshot(lockedLabels = []) {
+    const pattern = /imaios|eanatomy|anatomy|viewer|slice|series|pin|label|lock|locked|isolate|structure|selected|overlay|store|vue|nuxt/i;
+    return {
+      localStorage: collectNativeStorageEntries(localStorage, pattern, lockedLabels),
+      sessionStorage: collectNativeStorageEntries(sessionStorage, pattern, lockedLabels)
+    };
+  }
+
+  function collectNativeStorageEntries(storage, pattern, lockedLabels = []) {
+    const entries = [];
+    try {
+      for (let index = 0; index < storage.length; index += 1) {
+        const key = storage.key(index);
+        if (!key) continue;
+        const raw = storage.getItem(key);
+        const labelHits = getStorageLabelHits(raw, lockedLabels);
+        if (!pattern.test(key) && !labelHits.length) continue;
+        entries.push({
+          key,
+          rawLength: raw ? raw.length : 0,
+          labelHits,
+          preview: compactProbeValue(parseStorageValue(raw))
+        });
+      }
+    } catch (error) {
+      entries.push({ key: "__storage_error__", error: error?.message || String(error) });
+    }
+    entries.sort((a, b) => (b.labelHits?.length || 0) - (a.labelHits?.length || 0) || String(a.key).localeCompare(String(b.key)));
+    return entries.slice(0, 120);
+  }
+
+  function getStorageLabelHits(raw, lockedLabels = []) {
+    const normalizedRaw = normalizeText(raw || "");
+    if (!normalizedRaw) return [];
+    return unique((lockedLabels || []).filter((label) => normalizedRaw.includes(normalizeText(label))));
+  }
+
+  function countNativeRestoreStorageHits(storage = {}) {
+    return [...(storage.localStorage || []), ...(storage.sessionStorage || [])]
+      .filter((entry) => Array.isArray(entry.labelHits) && entry.labelHits.length)
+      .length;
+  }
+
+  async function getIndexedDbProbe() {
+    try {
+      if (!window.indexedDB || typeof indexedDB.databases !== "function") {
+        return { supported: false, databases: [] };
+      }
+      const databases = await indexedDB.databases();
+      return {
+        supported: true,
+        databases: (databases || []).map((database) => ({
+          name: cleanText(database?.name || ""),
+          version: database?.version || null
+        })).filter((database) => database.name).slice(0, 80)
+      };
+    } catch (error) {
+      return { supported: true, error: error?.message || String(error), databases: [] };
+    }
+  }
+
+  function compactProbeValue(value, depth = 0) {
+    if (value === null || value === undefined) return value ?? null;
+    if (typeof value === "string") return value.length > 1200 ? `${value.slice(0, 1200)}...` : value;
+    if (typeof value === "number" || typeof value === "boolean") return value;
+    if (depth >= 3) return Array.isArray(value) ? `[array:${value.length}]` : "[object]";
+    if (Array.isArray(value)) return value.slice(0, 12).map((item) => compactProbeValue(item, depth + 1));
+    if (typeof value === "object") {
+      return Object.fromEntries(Object.entries(value).slice(0, 32).map(([key, item]) => [
+        key,
+        compactProbeValue(item, depth + 1)
+      ]));
+    }
+    return String(value);
+  }
+
   function parseStorageValue(value) {
     if (value === null || value === undefined) return null;
     try {
@@ -10491,6 +12213,32 @@
       ariaDisabled: element.getAttribute("aria-disabled") || "",
       rect: rectProbe(rect)
     };
+  }
+
+  function elementDeepProbe(element) {
+    if (!element) return null;
+    const probe = elementProbe(element);
+    const attrs = {};
+    for (const attr of Array.from(element.attributes || [])) {
+      if (!/^(id|class|role|title|aria-|data-|href|name|type|value|placeholder|sort|slice)/i.test(attr.name)) continue;
+      attrs[attr.name] = String(attr.value || "").slice(0, 500);
+    }
+    return {
+      ...probe,
+      attributes: attrs,
+      dataset: Object.fromEntries(Object.entries(element.dataset || {}).slice(0, 40).map(([key, value]) => [key, String(value || "").slice(0, 500)])),
+      html: String(element.outerHTML || "").replace(/\s+/g, " ").slice(0, 1200)
+    };
+  }
+
+  function getElementAncestorProbe(element, limit = 5) {
+    const ancestors = [];
+    let cursor = element?.parentElement || null;
+    while (cursor && cursor !== document.body && ancestors.length < limit) {
+      ancestors.push(elementDeepProbe(cursor));
+      cursor = cursor.parentElement;
+    }
+    return ancestors;
   }
 
   function rectProbe(rect) {
@@ -11172,7 +12920,7 @@
   }
 
   function unique(items) {
-    return Array.from(new Set(items.map((item) => item.trim()).filter(Boolean)));
+    return Array.from(new Set((Array.isArray(items) ? items : []).map(cleanText).filter(Boolean)));
   }
 
   function delay(ms) {
