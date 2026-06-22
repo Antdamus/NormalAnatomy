@@ -1,0 +1,9 @@
+CORE_EVIDENCE_STATUS: NOT_USED
+CORE_SOURCE_BASIS: No Core Radiology content was retrieved or used; primary source basis was the RadPrimer article text provided in the prompt.
+CORE_FACTS_USED:
+
+* No Core facts were used.
+CORE_DERIVED_CARDS:
+* No cards used Core facts.
+CORE_LIMITATIONS:
+* Core Radiology content was not used for card content, summaries, mechanisms, differentials, or management.

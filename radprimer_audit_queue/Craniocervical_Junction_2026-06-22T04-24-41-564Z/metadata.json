@@ -1,0 +1,92 @@
+{
+  "createdAt": "2026-06-22T04:24:41.564Z",
+  "articleTitle": "Craniocervical Junction",
+  "sourceUrl": "https://app.radprimer.com/document/ac14c257-4b52-4728-90da-309a7e61d64d/lesson/ce4a1a1a-2c4a-486e-a2ca-718e2ed1cdbe",
+  "engine": "normal",
+  "mode": "no_pictures",
+  "selectedImages": [],
+  "masterImageIds": [],
+  "sourceQualifiedImages": [],
+  "cases": [],
+  "totalImagesOnPage": 43,
+  "breadcrumbTrail": [
+    "All Categories",
+    "Intermediate",
+    "Neuroradiology",
+    "Spine",
+    "Anatomy: Spinal Osseous Structures, Ligaments, and Muscles",
+    "Craniocervical Junction"
+  ],
+  "outputChars": 235014,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "[Download radprimer_cards.tsv](sandbox:/mnt/data/radprimer_cards.tsv)\n\nCORE_EVIDENCE_FILE_BEGIN\nCORE_EVIDENCE_STATUS: NOT_USED\nCORE_SOURCE_BASIS: No Core Radiology content was retrieved or used; primary source basis was the RadPrimer article text provided in the prompt.\nCORE_FACTS_USED:\n\n* No Core facts were used.\nCORE_DERIVED_CARDS:\n* No cards used Core facts.\nCORE_LIMITATIONS:\n* Core Radiology content was not used for card content, summaries, mechanisms, differentials, or management.\nCORE_EVIDENCE_FILE_END\n\nRADPRIMER_CARD_TSV_DOWNLOAD_READY\nFILENAME: radprimer_cards.tsv\nEXPECTED_ROWS: 34",
+  "coreEvidence": {
+    "status": "NOT_USED",
+    "provided": true,
+    "chars": 394,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "Corebook",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Intermediate",
+      "Neuroradiology",
+      "Spine",
+      "Anatomy: Spinal Osseous Structures, Ligaments, and Muscles",
+      "Craniocervical Junction"
+    ],
+    "deckParts": [
+      "Corebook",
+      "All Categories",
+      "Intermediate",
+      "Neuro",
+      "Spine",
+      "Anatomy",
+      "Spinal Osseous Structures, Ligaments, and Muscles",
+      "Craniocervical Junction"
+    ],
+    "deckName": "Corebook::All Categories::Intermediate::Neuro::Spine::Anatomy::Spinal Osseous Structures, Ligaments, and Muscles::Craniocervical Junction",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [],
+  "imageRegistry": [],
+  "masterSource": null,
+  "settings": {
+    "include": "none",
+    "caseMap": "",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "effectiveAnkiNormalRoot": "Corebook",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "radprimer_cards.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_000000003318720ca6c7aa8a6cb08591&ts=495028&p=fs&cid=1&sig=cec77b72910272d2637bed178c370adbe5d5de4b1bb30156f4b05adaa63efc77&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_000000003318720ca6c7aa8a6cb08591&ts=495028&p=fs&cid=1&sig=cec77b72910272d2637bed178c370adbe5d5de4b1bb30156f4b05adaa63efc77&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 5737,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Craniocervical_Junction_2026-06-22T04-24-41-564Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}
