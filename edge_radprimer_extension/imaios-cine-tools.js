@@ -26,8 +26,19 @@
   const CINE_SPEED_MAX = 20;
   const DEFAULT_CINE_SPEED = 5;
   const ANKI_CINE_SLICE_HOLD_MS = 1000;
+  const HARVEST_LOCK_CLEAR_CAPTURE_INTERVAL = 25;
+  const HARVEST_CACHE_CHECKPOINT_CAPTURE_INTERVAL = 10;
+  const HARVEST_CACHE_CHECKPOINT_VERIFY_INTERVAL = 25;
+  const HARVEST_BACKUP_CHECKPOINT_CAPTURE_INTERVAL = 50;
   const PIN_MODE_STORAGE_KEY = "im_viewer-pin-mode";
   const REVERSE_SCROLL_STORAGE_KEY = "im_viewer-reverse-scroll";
+  const ANKI_REVIEW_HOTKEY_ACTIONS = [
+    { id: "ankiReviewShowAnswer", label: "Show answer" },
+    { id: "ankiReviewAgain", label: "Again" },
+    { id: "ankiReviewHard", label: "Hard" },
+    { id: "ankiReviewGood", label: "Good" },
+    { id: "ankiReviewEasy", label: "Easy" }
+  ];
   const HOTKEY_ACTIONS = [
     { id: "pingpong", label: "Cine ping-pong" },
     { id: "cineBackward", label: "Cine backward" },
@@ -54,7 +65,11 @@
     { id: "series8", label: "Series slot 8" },
     { id: "series9", label: "Series slot 9" },
     { id: "togglePanel", label: "Panel" },
-    { id: "toggleBoxes", label: "Boxes" }
+    { id: "toggleBoxes", label: "Boxes" },
+    ...ANKI_REVIEW_HOTKEY_ACTIONS.map((action) => ({
+      ...action,
+      label: `Anki ${action.label}`
+    }))
   ];
   const DEFAULT_HOTKEYS = {
     pingpong: { code: "Space", key: " ", alt: false, ctrl: false, meta: false, shift: false },
@@ -82,7 +97,12 @@
     series8: { code: "Digit8", key: "8", alt: true, ctrl: false, meta: false, shift: false },
     series9: { code: "Digit9", key: "9", alt: true, ctrl: false, meta: false, shift: false },
     togglePanel: { code: "KeyI", key: "i", alt: true, ctrl: false, meta: false, shift: false },
-    toggleBoxes: { code: "KeyB", key: "b", alt: true, ctrl: false, meta: false, shift: false }
+    toggleBoxes: { code: "KeyB", key: "b", alt: true, ctrl: false, meta: false, shift: false },
+    ankiReviewShowAnswer: { code: "Space", key: " ", alt: false, ctrl: false, meta: false, shift: false },
+    ankiReviewAgain: { code: "Digit1", key: "1", alt: false, ctrl: false, meta: false, shift: false },
+    ankiReviewHard: { code: "Digit2", key: "2", alt: false, ctrl: false, meta: false, shift: false },
+    ankiReviewGood: { code: "Digit3", key: "3", alt: false, ctrl: false, meta: false, shift: false },
+    ankiReviewEasy: { code: "Digit4", key: "4", alt: false, ctrl: false, meta: false, shift: false }
   };
   const state = {
     selectedStructures: [],
@@ -125,6 +145,7 @@
     applyChunkClearFirst: true,
     hotkeys: createDefaultHotkeys(),
     keyEditorOpen: false,
+    ankiHotkeyEditorOpen: false,
     captureHotkeyAction: "",
     reverseScrollWatchTimer: 0,
     lastReverseScrollPlane: "",
@@ -326,6 +347,12 @@
     const currentChunkButtonHtml = buildCurrentChunkButtonHtml();
     const hotkeyRows = HOTKEY_ACTIONS.map((action) => `
       <div class="key-row">
+        <span>${escapeHtml(action.label)}</span>
+        <button type="button" data-hotkey-action="${escapeHtml(action.id)}"></button>
+      </div>
+    `).join("");
+    const ankiHotkeyRows = ANKI_REVIEW_HOTKEY_ACTIONS.map((action) => `
+      <div class="anki-hotkey-row">
         <span>${escapeHtml(action.label)}</span>
         <button type="button" data-hotkey-action="${escapeHtml(action.id)}"></button>
       </div>
@@ -980,6 +1007,10 @@
           background: linear-gradient(135deg, rgba(50, 20, 22, 0.72), rgba(255,255,255,0.035));
         }
 
+        .quick-anki-review.answer-mode .anki-review-card {
+          display: none;
+        }
+
         .anki-review-head {
           display: grid;
           grid-template-columns: minmax(0, 1fr) auto;
@@ -1024,6 +1055,14 @@
 
         .anki-review-answer.hidden {
           display: none;
+        }
+
+        .quick-anki-review.answer-mode button[data-action="anki-review-show-answer"] {
+          display: none;
+        }
+
+        .quick-anki-review.answer-mode .anki-review-answer {
+          max-height: min(420px, calc(100vh - 252px));
         }
 
         .anki-card-render {
@@ -1072,6 +1111,73 @@
         .anki-review-actions button:disabled {
           opacity: 0.48;
           cursor: default;
+        }
+
+        .anki-hotkey-footer {
+          display: grid;
+          gap: 5px;
+        }
+
+        .anki-hotkey-compact {
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr);
+          align-items: center;
+          gap: 6px;
+        }
+
+        .anki-hotkey-compact button {
+          min-height: 22px;
+          padding: 2px 7px;
+          border-radius: 999px;
+          font-size: 9.8px;
+          line-height: 1;
+        }
+
+        .anki-hotkey-summary {
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: rgba(245,247,250,0.56);
+          font-size: 9.6px;
+          line-height: 1.15;
+        }
+
+        .anki-hotkey-panel {
+          display: grid;
+          gap: 4px;
+          max-height: 132px;
+          overflow: auto;
+          padding: 5px;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 7px;
+          background: rgba(0,0,0,0.22);
+          overscroll-behavior: contain;
+        }
+
+        .anki-hotkey-panel.hidden {
+          display: none;
+        }
+
+        .anki-hotkey-row {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 74px;
+          align-items: center;
+          gap: 5px;
+          color: rgba(245,247,250,0.78);
+          font-size: 10.3px;
+          line-height: 1.15;
+        }
+
+        .anki-hotkey-row button {
+          min-height: 22px;
+          padding: 2px 4px;
+          font-size: 9.6px;
+        }
+
+        .anki-hotkey-row button.capturing {
+          border-color: rgba(58, 158, 255, 0.82);
+          background: rgba(22, 128, 224, 0.88);
         }
 
         .row {
@@ -1273,6 +1379,7 @@
           border-radius: 8px;
           background: rgba(20, 29, 38, 0.9);
           color: #8fd0ff;
+          white-space: pre-line;
         }
 
         .status:empty {
@@ -1507,6 +1614,13 @@
                 <button type="button" data-action="anki-review-grade" data-ease="2">2<br>Hard</button>
                 <button type="button" data-action="anki-review-grade" data-ease="3">3<br>Good</button>
                 <button type="button" data-action="anki-review-grade" data-ease="4">4<br>Easy</button>
+              </div>
+              <div class="anki-hotkey-footer">
+                <div class="anki-hotkey-compact">
+                  <button type="button" data-action="toggle-anki-hotkeys">Hotkeys</button>
+                  <span class="anki-hotkey-summary" data-role="anki-hotkey-summary"></span>
+                </div>
+                <div class="anki-hotkey-panel hidden" data-role="anki-hotkey-panel">${ankiHotkeyRows}</div>
               </div>
             </div>
           </div>
@@ -1798,6 +1912,13 @@
     });
     root.querySelector("[data-action='toggle-anki-review-bridge']").addEventListener("click", toggleAnkiReviewBridge);
     root.querySelector("[data-action='anki-review-show-answer']").addEventListener("click", ankiReviewShowAnswer);
+    root.querySelector("[data-action='toggle-anki-hotkeys']").addEventListener("click", () => {
+      state.ankiHotkeyEditorOpen = !state.ankiHotkeyEditorOpen;
+      if (!state.ankiHotkeyEditorOpen && state.captureHotkeyAction && isAnkiReviewHotkeyAction(state.captureHotkeyAction)) {
+        state.captureHotkeyAction = "";
+      }
+      refreshPanel();
+    });
     root.querySelectorAll("[data-action='anki-review-grade']").forEach((button) => {
       button.addEventListener("click", () => {
         ankiReviewGrade(Number(button.getAttribute("data-ease") || 0));
@@ -2090,6 +2211,8 @@
     const cineSpeedValue = root.querySelector("[data-role='cine-speed-value']");
     const keyModal = root.querySelector("[data-role='key-modal']");
     const hotkeyHint = root.querySelector("[data-role='hotkey-hint']");
+    const ankiHotkeyPanel = root.querySelector("[data-role='anki-hotkey-panel']");
+    const ankiHotkeySummary = root.querySelector("[data-role='anki-hotkey-summary']");
     const batchSummary = root.querySelector("[data-role='live-drill-card-batch-summary']");
 
     panel.classList.toggle("collapsed", state.collapsed);
@@ -2163,6 +2286,11 @@
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
     hotkeyHint.textContent = `${formatHotkey(state.hotkeys.pingpong)} ping-pong. ${formatHotkey(state.hotkeys.cineBackward)} backward, ${formatHotkey(state.hotkeys.cineForward)} forward. ${formatHotkey(state.hotkeys.speedDown)}/${formatHotkey(state.hotkeys.speedUp)} speed. ${formatHotkey(state.hotkeys.applyChunk)} apply chunk. ${formatHotkey(state.hotkeys.switchPairTab)} switch pair. ${formatHotkey(state.hotkeys.pinsOn)} pins, ${formatHotkey(state.hotkeys.labelsOn)} labels. ${formatHotkey(state.hotkeys.selectAll)} select all. ${formatHotkey(state.hotkeys.reverseScroll)} reverse scroll. ${formatHotkey(state.hotkeys.clearLocked)} clear locked. ${formatHotkey(state.hotkeys.axial)}/${formatHotkey(state.hotkeys.coronal)}/${formatHotkey(state.hotkeys.sagittal)} planes. ${formatHotkey(state.hotkeys.series1)}-${formatHotkey(state.hotkeys.series9)} series slots.`;
+    if (ankiHotkeySummary) ankiHotkeySummary.textContent = getAnkiReviewHotkeySummary();
+    if (ankiHotkeyPanel) {
+      const keepOpen = state.ankiHotkeyEditorOpen || isAnkiReviewHotkeyAction(state.captureHotkeyAction);
+      ankiHotkeyPanel.classList.toggle("hidden", !keepOpen);
+    }
     root.querySelectorAll("[data-hotkey-action]").forEach((button) => {
       const actionId = button.getAttribute("data-hotkey-action") || "";
       button.textContent = state.captureHotkeyAction === actionId ? "Press key..." : formatHotkey(state.hotkeys[actionId]);
@@ -2679,6 +2807,10 @@
 
     const targets = getChunkLabelTargets(chunk);
     const unavailable = targets.filter((target) => target.status && !/^(available|matched|verified|selected)$/i.test(target.status));
+    const nativeSummary = getChunkNativeIdSummary(chunk, targets);
+    const nativeText = nativeSummary.labelCount
+      ? ` Native IDs: ${nativeSummary.fastReadyCount}/${nativeSummary.labelCount} ready; ${nativeSummary.missingNativeIdCount} missing.`
+      : "";
     const labels = targets.map((target) => `<li>${escapeHtml(target.preferredLabel)}</li>`).join("");
     const modality = chunk.modality ? `Modality: ${escapeHtml(chunk.modality)}. ` : "";
     const moduleMatch = chunkMatchesCurrentModule(chunk);
@@ -2689,7 +2821,7 @@
     const unavailableText = unavailable.length ? ` ${unavailable.length} flagged for review.` : "";
     return [
       `<div class="chunk-preview-title">${escapeHtml(chunk.title || chunk.id)}</div>`,
-      `<div class="chunk-preview-meta">${moduleText}${modality}${targets.length} labels selected.${unavailableText}</div>`,
+      `<div class="chunk-preview-meta">${moduleText}${modality}${targets.length} labels selected.${nativeText}${unavailableText}</div>`,
       labels ? `<ol class="chunk-preview-list">${labels}</ol>` : `<div class="chunk-preview-meta">This chunk has no labels yet.</div>`
     ].join("");
   }
@@ -2699,21 +2831,57 @@
     const moduleInfo = getCurrentModuleInfo();
     const saved = getSavedLabelsForCurrentModule();
     const savedCount = Array.isArray(saved.labels) ? saved.labels.length : 0;
+    const moduleNativeSummary = getModuleNativeIdSummary(saved);
+    const moduleNativeText = moduleNativeSummary.knownCount
+      ? ` Native IDs: ${moduleNativeSummary.fastReadyCount}/${moduleNativeSummary.knownCount} ready; ${moduleNativeSummary.missingNativeIdCount} missing.`
+      : "";
     const currentCount = getAvailableStructureEntries().length;
     const labelStatus = savedCount
-      ? `Labels saved for this module: ${savedCount}. Current visible labels: ${currentCount}.`
-      : `No saved labels for this module yet. Current visible labels: ${currentCount}.`;
+      ? `Labels saved for this module: ${savedCount}. Current visible labels: ${currentCount}.${moduleNativeText}`
+      : `No saved labels for this module yet. Current visible labels: ${currentCount}.${moduleNativeText}`;
     if (!chunks.length) return `${moduleInfo.name}: ${labelStatus} Import a chunk manifest from clipboard, then select a learning chunk here.`;
     const chunk = getActiveChunk();
     const currentModuleKey = getCurrentModuleKey();
     const currentChunkCount = chunks.filter((item) => chunkMatchesCurrentModule(item, currentModuleKey)).length;
     const otherChunkCount = chunks.length - currentChunkCount;
     if (!chunk) return `${labelStatus} ${currentChunkCount} chunks for this module, ${otherChunkCount} for other modules. Select one to preview.`;
-    const labelCount = getChunkLabelTargets(chunk).length;
+    const chunkTargets = getChunkLabelTargets(chunk);
+    const labelCount = chunkTargets.length;
+    const chunkNativeSummary = getChunkNativeIdSummary(chunk, chunkTargets);
+    const chunkNativeText = chunkNativeSummary.labelCount
+      ? ` Chunk native IDs: ${chunkNativeSummary.fastReadyCount}/${chunkNativeSummary.labelCount} ready; ${chunkNativeSummary.missingNativeIdCount} missing.`
+      : "";
     const modality = chunk.modality ? `Modality: ${chunk.modality}. ` : "";
     const repoCount = Array.isArray(state.labelRepository.labels) ? state.labelRepository.labels.length : 0;
     const matchText = chunkMatchesCurrentModule(chunk) ? "Chunk matches this module." : "Chunk belongs to another module.";
-    return `${labelStatus} ${matchText} ${modality}${labelCount} chunk labels. ${repoCount} global repository labels loaded.`;
+    return `${labelStatus} ${matchText} ${modality}${labelCount} chunk labels.${chunkNativeText} ${repoCount} global repository labels loaded.`;
+  }
+
+  function getModuleNativeIdSummary(moduleEntry = getSavedLabelsForCurrentModule(), moduleKey = getCurrentModuleKey()) {
+    const knownLabels = getKnownModuleLabels(moduleEntry);
+    const missingNativeIds = getLabelsMissingNativeIds(knownLabels, moduleKey);
+    return {
+      knownCount: knownLabels.length,
+      fastReadyCount: Math.max(0, knownLabels.length - missingNativeIds.length),
+      missingNativeIdCount: missingNativeIds.length
+    };
+  }
+
+  function getChunkNativeIdSummary(chunk, targets = getChunkLabelTargets(chunk)) {
+    const moduleKey = cleanText(
+      chunk?.moduleKey
+      || chunk?.module?.key
+      || chunk?.module?.pathname
+      || chunk?.modalityUrl
+      || getCurrentModuleKey()
+    );
+    const labels = unique((targets || []).map((target) => cleanText(target?.preferredLabel || target?.label || target)).filter(Boolean));
+    const missingNativeIds = getLabelsMissingNativeIds(labels, moduleKey || getCurrentModuleKey());
+    return {
+      labelCount: labels.length,
+      fastReadyCount: Math.max(0, labels.length - missingNativeIds.length),
+      missingNativeIdCount: missingNativeIds.length
+    };
   }
 
   function getRoutingSummaryText() {
@@ -4070,13 +4238,15 @@
     const grades = Array.from(root.querySelectorAll("[data-action='anki-review-grade']"));
     if (!panel || !status || !card || !toggle || !showAnswer) return;
 
+    const remote = bridge.card || {};
+    const side = cleanText(remote.side || bridge.side || "");
+    const showingAnswer = side === "answer";
     panel.classList.toggle("active", Boolean(bridge.enabled && bridge.connected));
     panel.classList.toggle("error", Boolean(bridge.lastError));
+    panel.classList.toggle("answer-mode", showingAnswer);
     toggle.textContent = bridge.enabled ? "Stop" : "Start";
     status.textContent = bridge.statusText || (bridge.enabled ? "Waiting for Anki..." : "Anki review off.");
 
-    const remote = bridge.card || {};
-    const side = cleanText(remote.side || bridge.side || "");
     const title = getAnkiReviewCardTitle(remote);
     const deck = cleanText(remote.deckName || "");
     const hasDrill = Boolean(remote.drillPayload || remote.drillPayloadEncoded || remote.drillUrl);
@@ -4087,16 +4257,16 @@
         : "Start Anki mode to load review cards here.";
     card.innerHTML = buildAnkiReviewCardHtml(getAnkiReviewQuestionHtml(remote), remote.modelCss || "", cardLine);
 
-    const answerText = sanitizeAnkiReviewText(remote.answerText || "");
+    const answerText = getAnkiReviewAnswerFallbackText(remote);
     if (answer) {
       const remoteAnswerHtml = getAnkiReviewAnswerHtml(remote);
       const answerHtml = buildAnkiReviewCardHtml(remoteAnswerHtml, remote.modelCss || "", answerText);
-      answer.innerHTML = side === "answer" && (remoteAnswerHtml || answerText) ? answerHtml : "";
-      answer.classList.toggle("hidden", !(side === "answer" && (remoteAnswerHtml || answerText)));
+      answer.innerHTML = showingAnswer && (remoteAnswerHtml || answerText) ? answerHtml : "";
+      answer.classList.toggle("hidden", !(showingAnswer && (remoteAnswerHtml || answerText)));
     }
 
     const canShow = Boolean(bridge.enabled && bridge.connected && remote.reviewerActive && side !== "answer");
-    const canGrade = Boolean(bridge.enabled && bridge.connected && remote.reviewerActive && side === "answer");
+    const canGrade = Boolean(bridge.enabled && bridge.connected && remote.reviewerActive && showingAnswer);
     showAnswer.disabled = !canShow;
     grades.forEach((button) => {
       button.disabled = !canGrade;
@@ -4125,10 +4295,11 @@
   }
 
   function getAnkiReviewAnswerHtml(remote = {}) {
-    if (remote.answerHtml) return remote.answerHtml;
+    if (remote.answerHtml) return extractBackOnlyAnkiAnswerHtml(remote.answerHtml);
+    if (remote.answerText) return "";
     const card = buildAnkiReviewFallbackCard(remote);
     if (!card) return "";
-    return buildLiveDrillCardBack(card);
+    return buildLiveDrillBasicBack(card, card.sourcePayload || {}, card.plan || {}, card.deckPath || "");
   }
 
   function buildAnkiReviewFallbackCard(remote = {}) {
@@ -4136,19 +4307,65 @@
     const payload = extraction.ok ? extraction.payload : null;
     if (!payload) return null;
     const labelNames = getLiveDrillRestoreLabels(payload);
+    const sourceContext = payload.sourceContext && typeof payload.sourceContext === "object" ? payload.sourceContext : {};
+    const chunk = payload.chunk && typeof payload.chunk === "object" ? payload.chunk : {};
+    const deckPath = cleanText(sourceContext.deckPath || chunk.deckPath || "");
     return {
       title: cleanText(payload.title || payload.chunk?.title || ""),
       labels: labelNames,
       frontPrompt: cleanText(payload.frontPrompt || payload.card?.frontPrompt || "Open the live drill and name the locked structures."),
-      recognitionCues: Array.isArray(payload.recognitionCues) ? payload.recognitionCues.map(cleanText).filter(Boolean) : [],
-      contrastCues: Array.isArray(payload.contrastCues) ? payload.contrastCues.map(cleanText).filter(Boolean) : [],
-      link: buildLiveDrillUrl(payload)
+      recognitionCues: normalizeCueList(payload.recognitionCues || payload.card?.recognitionCues || payload.card?.cues),
+      contrastCues: normalizeCueList(payload.contrastCues || payload.card?.contrastCues || payload.card?.differentiationCues),
+      rationale: cleanText(payload.rationale || payload.card?.rationale || payload.card?.groupingRationale || ""),
+      link: buildLiveDrillUrl(payload),
+      sourcePayload: payload,
+      deckPath,
+      plan: {
+        deckPath,
+        tags: Array.isArray(sourceContext.tags) ? sourceContext.tags : []
+      }
     };
+  }
+
+  function extractBackOnlyAnkiAnswerHtml(answerHtml) {
+    const html = String(answerHtml || "");
+    const split = html.split(/<hr\b[^>]*\bid\s*=\s*["']?answer["']?[^>]*>/i);
+    const back = split.length > 1 ? split.slice(1).join("") : html;
+    if (looksLikePlainFlattenedAnkiText(back)) return "";
+    return stripLeadingAnkiCssText(back);
+  }
+
+  function getAnkiReviewAnswerFallbackText(remote = {}) {
+    return sanitizeAnkiReviewAnswerText(remote.answerText || "");
   }
 
   function sanitizeAnkiReviewText(value) {
     const text = cleanText(value || "");
     return text.length > 1100 ? `${text.slice(0, 1100)}...` : text;
+  }
+
+  function sanitizeAnkiReviewAnswerText(value) {
+    let text = stripLeadingAnkiCssText(cleanText(value || ""));
+    const answerMatch = /\bAnswer\b/i.exec(text);
+    if (answerMatch) {
+      text = text.slice(answerMatch.index).trim();
+    }
+    text = text
+      .replace(/\bOpen IMAIOS live drill\b/gi, "")
+      .replace(/\bOpen the live drill and name the locked structures\.\s*\d+\s+structures?\b/gi, "")
+      .replace(/\b(\d+\s+structures?)\s+Answer\b/i, "Answer")
+      .replace(/\s+/g, " ")
+      .trim();
+    return text.length > 3000 ? `${text.slice(0, 3000)}...` : text;
+  }
+
+  function looksLikePlainFlattenedAnkiText(value) {
+    const text = cleanText(value || "");
+    return /^\.card\s*\{/.test(text) || (
+      !/[<][a-z!/]/i.test(text) &&
+      /\bOpen IMAIOS live drill\b/i.test(text) &&
+      /\bAnswer\b/i.test(text)
+    );
   }
 
   function toggleAnkiReviewBridge() {
@@ -4452,23 +4669,53 @@
 
   function handleAnkiReviewHotkey(event, isEditing) {
     const bridge = state.ankiReviewBridge;
-    if (!bridge.enabled || isEditing || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return false;
-    if (event.code === "Space" || event.key === "Enter") {
-      markKeyboardEventHandled(event);
-      ankiReviewShowAnswer().catch((error) => {
-        setStatus(`Anki review: ${error?.message || error}`, 9000);
-      });
-      return true;
+    if (!bridge.enabled || isEditing) return false;
+    const actionId = getAnkiReviewHotkeyActionForEvent(event);
+    if (!actionId) return false;
+    markKeyboardEventHandled(event);
+    executeAnkiReviewHotkeyAction(actionId).catch((error) => {
+      setStatus(`Anki review: ${error?.message || error}`, 9000);
+    });
+    return true;
+  }
+
+  async function executeAnkiReviewHotkeyAction(actionId) {
+    if (actionId === "ankiReviewShowAnswer") {
+      await ankiReviewShowAnswer();
+      return;
     }
-    const gradeMatch = /^Digit([1-4])$/.exec(event.code || "");
-    if (gradeMatch) {
-      markKeyboardEventHandled(event);
-      ankiReviewGrade(Number(gradeMatch[1])).catch((error) => {
-        setStatus(`Anki review: ${error?.message || error}`, 9000);
-      });
-      return true;
+    const ease = getAnkiReviewEaseForAction(actionId);
+    if (ease) {
+      await ankiReviewGrade(ease);
     }
-    return false;
+  }
+
+  function getAnkiReviewHotkeyActionForEvent(event) {
+    const action = ANKI_REVIEW_HOTKEY_ACTIONS.find((item) => hotkeyMatchesEvent(state.hotkeys[item.id], event));
+    return action ? action.id : "";
+  }
+
+  function getAnkiReviewEaseForAction(actionId) {
+    if (actionId === "ankiReviewAgain") return 1;
+    if (actionId === "ankiReviewHard") return 2;
+    if (actionId === "ankiReviewGood") return 3;
+    if (actionId === "ankiReviewEasy") return 4;
+    return 0;
+  }
+
+  function isAnkiReviewHotkeyAction(actionId) {
+    return ANKI_REVIEW_HOTKEY_ACTIONS.some((action) => action.id === actionId);
+  }
+
+  function getAnkiReviewHotkeySummary() {
+    const answer = formatHotkey(state.hotkeys.ankiReviewShowAnswer);
+    const grades = [
+      state.hotkeys.ankiReviewAgain,
+      state.hotkeys.ankiReviewHard,
+      state.hotkeys.ankiReviewGood,
+      state.hotkeys.ankiReviewEasy
+    ].map(formatHotkey).join("/");
+    return `${answer} answer - ${grades} grade`;
   }
 
   async function addCurrentLiveDrillToCardBatch() {
@@ -6679,6 +6926,18 @@
       createdAt: new Date().toISOString(),
       labels,
       lockedLabels: labels.map((entry) => entry.preferredLabel),
+      frontPrompt: cleanText(card.frontPrompt || card.front || "Open the live drill and name the locked structures."),
+      recognitionCues: normalizeCueList(card.recognitionCues || card.cues || card.answerCues),
+      contrastCues: normalizeCueList(card.contrastCues || card.differentiationCues || card.traps),
+      rationale: cleanText(card.rationale || card.groupingRationale || card.note || ""),
+      card: {
+        id: cleanText(card.id || ""),
+        title,
+        frontPrompt: cleanText(card.frontPrompt || card.front || "Open the live drill and name the locked structures."),
+        recognitionCues: normalizeCueList(card.recognitionCues || card.cues || card.answerCues),
+        contrastCues: normalizeCueList(card.contrastCues || card.differentiationCues || card.traps),
+        rationale: cleanText(card.rationale || card.groupingRationale || card.note || "")
+      },
       nativeRestore,
       studyShield: {
         enabled: true,
@@ -9531,17 +9790,70 @@
       return null;
     }
 
+    const resumeNativeIds = !options.dryRun && options.mapNativeIds !== false;
+    const alreadyNativeReadyLabels = resumeNativeIds
+      ? candidateLabels.filter((label) => getNativeIdsForLabel(label).ids.length)
+      : [];
+    const harvestQueueLabels = resumeNativeIds
+      ? candidateLabels.filter((label) => !getNativeIdsForLabel(label).ids.length)
+      : candidateLabels;
     const limit = Number.isFinite(options.limit) && options.limit > 0
-      ? Math.min(candidateLabels.length, Math.round(options.limit))
-      : candidateLabels.length;
-    const testedLabels = candidateLabels.slice(0, limit);
+      ? Math.min(harvestQueueLabels.length, Math.round(options.limit))
+      : harvestQueueLabels.length;
+    const testedLabels = harvestQueueLabels.slice(0, limit);
+    const skippedNativeReady = alreadyNativeReadyLabels.length;
     const verified = [];
     const missed = [];
+    const nativeMappings = [];
+    let nativeExisting = skippedNativeReady;
+    let nativeCaptured = 0;
+    let nativeMissing = 0;
+    let lastCheckpointCaptured = 0;
+    let lastCheckpointVerified = 0;
+    let lastBackupCaptured = 0;
+    let lastClearCaptured = 0;
     state.searchRunning = true;
     state.cancelSearch = false;
     state.selectedStructures = testedLabels;
     savePageState();
     refreshPanel();
+
+    if (!testedLabels.length && skippedNativeReady) {
+      const readyEntries = alreadyNativeReadyLabels.map((label) => ({
+        label,
+        candidateLabel: label,
+        source: "existing-native-id-checkpoint",
+        href: "",
+        searchMatched: true,
+        lockConfirmed: false,
+        matchReason: "native ID already saved"
+      }));
+      const exportData = buildAvailableLabelsExport(readyEntries, {
+        harvest: {
+          mode: "verified-fast-search-resume",
+          dryRun: false,
+          candidateLabels: candidateLabels.length,
+          testedLabels: 0,
+          verifiedLabels: readyEntries.length,
+          missedLabels: 0,
+          nativeIdsAlreadySaved: skippedNativeReady,
+          nativeIdsCaptured: 0,
+          nativeIdsMissing: 0,
+          stopped: false,
+          missed: []
+        }
+      });
+      const strictResult = await enforceHarvestedModuleLabelsHaveNativeIds(exportData, { backup: true });
+      state.searchRunning = false;
+      state.cancelSearch = false;
+      refreshPanel();
+      setStatus(`Harvest resume complete: all ${skippedNativeReady}/${candidateLabels.length} saved module labels already have native IDs.${strictResult.backupText}`, 12000);
+      return exportData;
+    }
+
+    if (skippedNativeReady) {
+      setStatus(`Harvest resume: ${skippedNativeReady}/${candidateLabels.length} labels already have native IDs. Continuing with ${testedLabels.length} missing-ID labels.`, 0);
+    }
 
     const primed = await primeModuleSearch();
     if (!primed.ok) {
@@ -9549,11 +9861,23 @@
       setStatus(primed.reason, 9000);
       return null;
     }
+    const initialNative = getCurrentNativeLockedStructureState();
+    if (!options.dryRun && options.mapNativeIds !== false) {
+      await closeStructureDetailPanel();
+      const clearResult = await clearLockedStructuresForApply();
+      if (!clearResult.ok) {
+        state.searchRunning = false;
+        setStatus(`Harvest native ID setup failed: ${clearResult.reason}`, 10000);
+        return null;
+      }
+      await waitFor(() => getCurrentNativeLockedStructureState().idCount === 0 ? true : null, 1600, 80);
+      await clearModuleSearchInputForProbe();
+    }
 
     for (let index = 0; index < testedLabels.length; index += 1) {
       if (state.cancelSearch) break;
       const label = testedLabels[index];
-      setStatus(`Harvesting ${index + 1}/${testedLabels.length}: ${label}`, 0);
+      setStatus(`Harvest ${index + 1}/${testedLabels.length}: ${label}\nVerified ${verified.length}; native IDs ready ${nativeExisting + nativeCaptured}; captured ${nativeCaptured}; missing IDs ${nativeMissing}; search misses ${missed.length}.`, 0);
       const result = await searchStructureAvailability(label, {
         timeoutMs: options.timeoutMs || 1300,
         intervalMs: 70,
@@ -9571,9 +9895,60 @@
           lockConfirmed: false,
           matchReason: "exact search result found"
         });
+        if (!options.dryRun && options.mapNativeIds !== false) {
+          const selectedLabel = cleanText(result.selectedText || label);
+          const existingNative = getNativeIdsForLabel(selectedLabel).ids;
+          if (existingNative.length) {
+            nativeExisting += 1;
+            setStatus(`Harvest ${index + 1}/${testedLabels.length}: ${selectedLabel} - already has native ID ${existingNative.join(", ")}\nVerified ${verified.length}; native IDs ready ${nativeExisting + nativeCaptured}; captured ${nativeCaptured}; missing IDs ${nativeMissing}; search misses ${missed.length}.`, 0);
+          } else {
+            const nativeResult = await captureNativeIdFromSearchResult(selectedLabel, result);
+            nativeMappings.push(nativeResult);
+            if (nativeResult.ok) {
+              nativeCaptured += 1;
+            } else {
+              nativeMissing += 1;
+            }
+            setStatus(`Harvest ${index + 1}/${testedLabels.length}: ${selectedLabel} - ${nativeResult.ok ? `captured ID ${nativeResult.addedIds.join(", ")}` : `missing ID: ${nativeResult.reason}`}\nVerified ${verified.length}; native IDs ready ${nativeExisting + nativeCaptured}; captured ${nativeCaptured}; missing IDs ${nativeMissing}; search misses ${missed.length}.`, 0);
+          }
+          const shouldCheckpoint = nativeCaptured - lastCheckpointCaptured >= HARVEST_CACHE_CHECKPOINT_CAPTURE_INTERVAL
+            || verified.length - lastCheckpointVerified >= HARVEST_CACHE_CHECKPOINT_VERIFY_INTERVAL
+            || index === testedLabels.length - 1;
+          if (shouldCheckpoint) {
+            const shouldBackup = nativeCaptured - lastBackupCaptured >= HARVEST_BACKUP_CHECKPOINT_CAPTURE_INTERVAL
+              && index !== testedLabels.length - 1;
+            const checkpoint = await checkpointHarvestNativeIdProgress({
+              verified,
+              nativeMappings,
+              initialNative,
+              backup: shouldBackup
+            });
+            if (checkpoint.ok) {
+              lastCheckpointCaptured = nativeCaptured;
+              lastCheckpointVerified = verified.length;
+              if (shouldBackup) lastBackupCaptured = nativeCaptured;
+              const backupText = shouldBackup ? " Backup updated." : "";
+              setStatus(`Harvest checkpoint saved: ${checkpoint.savedWithIdsCount} fast-ready labels in cache; ${checkpoint.missingIdLabels.length} pending native IDs.${backupText}\nVerified this run ${verified.length}; skipped already-ready ${skippedNativeReady}; captured ${nativeCaptured}; search misses ${missed.length}.`, 0);
+            }
+          }
+          const shouldClearLocks = nativeCaptured - lastClearCaptured >= HARVEST_LOCK_CLEAR_CAPTURE_INTERVAL
+            || getLockedStructureCount() >= HARVEST_LOCK_CLEAR_CAPTURE_INTERVAL + 5;
+          if (shouldClearLocks) {
+            setStatus(`Harvest clearing locked labels after ${nativeCaptured - lastClearCaptured} newly captured IDs so the module stays responsive.\nVerified this run ${verified.length}; native IDs ready ${nativeExisting + nativeCaptured}; captured ${nativeCaptured}; missing IDs ${nativeMissing}; search misses ${missed.length}.`, 0);
+            await closeStructureDetailPanel();
+            const rollingClearResult = await clearLockedStructuresForApply();
+            if (!rollingClearResult.ok) {
+              setStatus(`Harvest tried to clear locked labels, but IMAIOS did not clear them: ${rollingClearResult.reason || "unknown clear failure"}\nContinuing, but the page may get slower until the next clear attempt.`, 9000);
+            }
+            await waitFor(() => getCurrentNativeLockedStructureState().idCount === 0 ? true : null, 1600, 80);
+            await clearModuleSearchInputForProbe();
+            lastClearCaptured = nativeCaptured;
+          }
+        }
       } else {
         missed.push({ label, reason: result.reason || "no search result" });
       }
+      setStatus(`Harvest ${index + 1}/${testedLabels.length}: ${label}\nVerified ${verified.length}; native IDs ready ${nativeExisting + nativeCaptured}; captured ${nativeCaptured}; missing IDs ${nativeMissing}; search misses ${missed.length}.`, 0);
       await delay(70);
     }
 
@@ -9588,6 +9963,9 @@
         testedLabels: testedLabels.length,
         verifiedLabels: verified.length,
         missedLabels: missed.length,
+        nativeIdsAlreadySaved: nativeExisting,
+        nativeIdsCaptured: nativeCaptured,
+        nativeIdsMissing: nativeMissing,
         stopped,
         missed
       }
@@ -9614,21 +9992,27 @@
       return exportData;
     }
 
-    const saveResult = await saveModuleLabelExport(exportData, { mode: "harvest" });
-    if (saveResult.ok) {
-      const removedText = saveResult.removedCount ? ` ${saveResult.removedCount} stale removed;` : "";
-      setStatus(`Harvest saved ${saveResult.afterCount} verified labels for ${saveResult.moduleName}. ${saveResult.addedCount} new;${removedText} ${missed.length} missed.${saveResult.backupText}`, 12000);
-      if (options.mapNativeIds !== false) {
-        await mapNativeIdsForLabels(exportData.labels, {
-          sourceLabel: "Harvest native IDs",
-          skipExisting: true,
-          copyProbe: false,
-          clearAtEnd: true,
-          completionPrefix: `Harvest saved ${saveResult.afterCount} verified labels.`
-        });
-      }
-    } else {
-      setStatus(saveResult.message, 10000);
+    mergeNativeIdMapProbeIntoRepository(buildNativeIdMapProbe({
+      labelCandidates: exportData.labels,
+      mappings: nativeMappings,
+      initialNative,
+      finalNative: getCurrentNativeLockedStructureState()
+    }));
+    const strictResult = await enforceHarvestedModuleLabelsHaveNativeIds(exportData);
+    if (strictResult.ok && options.mapNativeIds !== false) {
+      await closeStructureDetailPanel();
+      await clearLockedStructuresForApply();
+      await clearModuleSearchInputForProbe();
+    }
+    const missingText = strictResult.missingIdLabels.length
+      ? ` ${strictResult.missingIdLabels.length} verified label${strictResult.missingIdLabels.length === 1 ? "" : "s"} kept pending because native IDs were not captured yet: ${strictResult.missingIdLabels.slice(0, 6).join(", ")}${strictResult.missingIdLabels.length > 6 ? ", ..." : ""}. Use Collect IDs to resume only those.`
+      : " All saved labels have native IDs.";
+    const currentRunSavedWithIds = Number.isFinite(strictResult.currentRunSavedWithIdsCount)
+      ? strictResult.currentRunSavedWithIdsCount
+      : strictResult.savedWithIdsCount;
+    setStatus(`Harvest saved ${currentRunSavedWithIds}/${exportData.labels.length} newly verified fast-ready labels for ${strictResult.moduleName}; module now has ${strictResult.savedWithIdsCount} total fast-ready labels. Captured ${nativeCaptured}; already had IDs ${nativeExisting}; missing IDs ${nativeMissing}; search misses ${missed.length}.${missingText}${strictResult.backupText}`, strictResult.missingIdLabels.length ? 18000 : 12000);
+    if (!strictResult.ok) {
+      setStatus(`Harvest save failed for ${strictResult.moduleName}: ${strictResult.saveResult?.error || "unknown error"}`, 12000);
     }
     refreshPanel();
     return exportData;
@@ -11083,7 +11467,7 @@
       return;
     }
     const saved = getSavedLabelsForCurrentModule();
-    const savedLabels = Array.isArray(saved.labels) ? saved.labels : [];
+    const savedLabels = getKnownModuleLabels(saved);
     const visibleLabels = buildAvailableLabelsExport().labels || [];
     const labelCandidates = unique((savedLabels.length ? savedLabels : visibleLabels).map(cleanText).filter(Boolean)).sort(compareLabels);
     if (!labelCandidates.length) {
@@ -11104,6 +11488,253 @@
       .filter((label) => !getNativeIdsForLabel(label, moduleKey).ids.length);
   }
 
+  function getKnownModuleLabels(moduleEntry = getSavedLabelsForCurrentModule()) {
+    return unique([
+      ...(Array.isArray(moduleEntry.labels) ? moduleEntry.labels : []),
+      ...(Array.isArray(moduleEntry.verifiedLabels) ? moduleEntry.verifiedLabels : []),
+      ...(Array.isArray(moduleEntry.harvestedLabels) ? moduleEntry.harvestedLabels : []),
+      ...(Array.isArray(moduleEntry.labelsMissingNativeIds) ? moduleEntry.labelsMissingNativeIds : []),
+      ...(Array.isArray(moduleEntry.pendingNativeIdLabels) ? moduleEntry.pendingNativeIdLabels : [])
+    ].map(cleanText).filter(Boolean)).sort(compareLabels);
+  }
+
+  function splitLabelsByNativeIds(labels, moduleKey = getCurrentModuleKey()) {
+    const withNativeIds = [];
+    const missingNativeIds = [];
+    for (const label of unique((labels || []).map(cleanText).filter(Boolean)).sort(compareLabels)) {
+      if (getNativeIdsForLabel(label, moduleKey).ids.length) {
+        withNativeIds.push(label);
+      } else {
+        missingNativeIds.push(label);
+      }
+    }
+    return { withNativeIds, missingNativeIds };
+  }
+
+  async function checkpointHarvestNativeIdProgress({ verified = [], nativeMappings = [], initialNative = null, backup = false } = {}) {
+    const verifiedEntries = Array.isArray(verified) ? verified : [];
+    if (!verifiedEntries.length && !nativeMappings.length) {
+      return {
+        ok: false,
+        reason: "no checkpoint content",
+        savedWithIdsCount: 0,
+        missingIdLabels: []
+      };
+    }
+    const checkpointExport = buildAvailableLabelsExport(verifiedEntries, {
+      harvest: {
+        mode: "verified-fast-search-native-id-checkpoint",
+        dryRun: false,
+        candidateLabels: verifiedEntries.length,
+        testedLabels: verifiedEntries.length,
+        verifiedLabels: verifiedEntries.length,
+        missedLabels: 0,
+        nativeIdCheckpoint: true
+      }
+    });
+    mergeNativeIdMapProbeIntoRepository(buildNativeIdMapProbe({
+      labelCandidates: checkpointExport.labels,
+      mappings: nativeMappings,
+      initialNative,
+      finalNative: getCurrentNativeLockedStructureState()
+    }));
+    return enforceHarvestedModuleLabelsHaveNativeIds(checkpointExport, { backup });
+  }
+
+  async function enforceHarvestedModuleLabelsHaveNativeIds(exportData, options = {}) {
+    const repository = normalizeImportedLabelRepository(state.labelRepository || {});
+    const moduleKey = cleanText(exportData?.module?.key || getCurrentModuleKey());
+    const moduleEntry = repository.moduleLabels[moduleKey] || {
+      key: moduleKey,
+      name: cleanText(exportData?.module?.name || moduleKey),
+      url: cleanText(exportData?.module?.url || getCurrentUrlWithoutHash()),
+      labels: []
+    };
+    const harvestedLabels = unique((exportData?.labels || []).map(cleanText).filter(Boolean)).sort(compareLabels);
+    const knownLabels = unique([
+      ...getKnownModuleLabels(moduleEntry),
+      ...harvestedLabels
+    ]).sort(compareLabels);
+    const splitKnown = splitLabelsByNativeIds(knownLabels, moduleKey);
+    const splitHarvested = splitLabelsByNativeIds(harvestedLabels, moduleKey);
+    repository.moduleLabels[moduleKey] = {
+      ...moduleEntry,
+      key: moduleKey,
+      name: cleanText(exportData?.module?.name || moduleEntry.name || moduleKey),
+      url: cleanText(exportData?.module?.url || moduleEntry.url || getCurrentUrlWithoutHash()),
+      updatedAt: new Date().toISOString(),
+      labels: splitKnown.withNativeIds,
+      verifiedLabels: knownLabels,
+      harvestedLabels: knownLabels,
+      sourceCounts: exportData?.sourceCounts || moduleEntry.sourceCounts || {},
+      nativeModuleSlug: cleanText(moduleEntry.nativeModuleSlug || moduleEntry.nativeSlug || moduleEntry.imaiosNativeSlug || ""),
+      nativeIds: normalizeNativeIdMap(moduleEntry.nativeIds || moduleEntry.nativeLabelIds || moduleEntry.labelNativeIds || {}),
+      updateMode: "harvest-native-id-strict",
+      labelsMissingNativeIds: splitKnown.missingNativeIds,
+      pendingNativeIdLabels: splitKnown.missingNativeIds
+    };
+    repository.updatedAt = new Date().toISOString();
+    state.labelRepository = repository;
+    const saveResult = await saveLabelRepository();
+    const backupRequested = options.backup !== false;
+    const backupResult = saveResult.ok && backupRequested
+      ? await backupLabelRepositoryToDownloads()
+      : { ok: saveResult.ok, skipped: true, error: saveResult.ok ? "" : saveResult.error || "save failed" };
+    return {
+      ok: saveResult.ok,
+      moduleKey,
+      moduleName: repository.moduleLabels[moduleKey].name,
+      savedWithIdsCount: splitKnown.withNativeIds.length,
+      currentRunSavedWithIdsCount: splitHarvested.withNativeIds.length,
+      missingIdLabels: splitHarvested.missingNativeIds,
+      moduleMissingIdLabels: splitKnown.missingNativeIds,
+      saveResult,
+      backupResult,
+      backupText: backupResult.skipped
+        ? ""
+        : backupResult.ok
+        ? ` Backup written to ${backupResult.result.downloadFolder}.`
+        : ` Backup failed: ${backupResult.error}`
+    };
+  }
+
+  async function refreshModuleNativeIdCoverage(labels, moduleKey = getCurrentModuleKey(), options = {}) {
+    const repository = normalizeImportedLabelRepository(state.labelRepository || {});
+    const moduleEntry = repository.moduleLabels[moduleKey] || {
+      key: moduleKey,
+      name: getCurrentModuleName() || moduleKey,
+      url: getCurrentUrlWithoutHash(),
+      labels: []
+    };
+    const knownLabels = unique([
+      ...getKnownModuleLabels(moduleEntry),
+      ...(Array.isArray(labels) ? labels.map(cleanText).filter(Boolean) : [])
+    ]).sort(compareLabels);
+    const split = splitLabelsByNativeIds(knownLabels, moduleKey);
+    repository.moduleLabels[moduleKey] = {
+      ...moduleEntry,
+      key: moduleKey,
+      name: cleanText(moduleEntry.name || getCurrentModuleName() || moduleKey),
+      url: cleanText(moduleEntry.url || getCurrentUrlWithoutHash()),
+      updatedAt: new Date().toISOString(),
+      labels: split.withNativeIds,
+      verifiedLabels: knownLabels,
+      harvestedLabels: knownLabels,
+      nativeModuleSlug: cleanText(moduleEntry.nativeModuleSlug || moduleEntry.nativeSlug || moduleEntry.imaiosNativeSlug || ""),
+      nativeIds: normalizeNativeIdMap(moduleEntry.nativeIds || moduleEntry.nativeLabelIds || moduleEntry.labelNativeIds || {}),
+      labelsMissingNativeIds: split.missingNativeIds,
+      pendingNativeIdLabels: split.missingNativeIds
+    };
+    repository.updatedAt = new Date().toISOString();
+    state.labelRepository = repository;
+    const saveResult = await saveLabelRepository();
+    const backupRequested = options.backup !== false;
+    const backupResult = saveResult.ok && backupRequested
+      ? await backupLabelRepositoryToDownloads()
+      : { ok: saveResult.ok, skipped: true, error: saveResult.ok ? "" : saveResult.error || "save failed" };
+    return {
+      ok: saveResult.ok,
+      withNativeIds: split.withNativeIds.length,
+      missingNativeIds: split.missingNativeIds.length,
+      saveResult,
+      backupResult
+    };
+  }
+
+  function countNativeIdMapResults(results = []) {
+    const mapped = results.filter((item) => item?.ok && item.addedIds?.length).length;
+    const missed = results.filter((item) => item && item.label !== "__probe_error__" && !item.ok).length;
+    return { mapped, missed };
+  }
+
+  function formatNativeIdMapProgress({
+    sourceLabel,
+    index,
+    totalToMap,
+    totalLabels,
+    skippedExisting,
+    label,
+    mapped,
+    missed,
+    pending,
+    resultText
+  }) {
+    const ready = skippedExisting + mapped;
+    const statusSuffix = resultText ? ` - ${resultText}` : "";
+    return `${sourceLabel} ${index + 1}/${totalToMap}: ${label}${statusSuffix}\nVerified ${totalLabels}; native IDs ready ${ready}/${totalLabels}; already had IDs ${skippedExisting}; missing IDs ${missed}; pending ${pending}.`;
+  }
+
+  async function captureNativeIdFromSearchResult(label, availability, options = {}) {
+    const beforeNative = getCurrentNativeLockedStructureState();
+    if (!availability?.ok || !availability.result) {
+      return {
+        label,
+        ok: false,
+        searchOk: Boolean(availability?.ok),
+        selectedText: cleanText(availability?.selectedText || label),
+        reason: availability?.reason || "No clickable search result was available.",
+        beforeIds: beforeNative.ids,
+        afterIds: beforeNative.ids,
+        addedIds: []
+      };
+    }
+    const input = availability.input || findModuleSearchInput();
+    if (input) input.focus();
+    await delay(options.beforeClickDelayMs ?? 60);
+    clickElement(availability.result);
+    if (options.closeDetailPanelAfterClick !== false) {
+      await delay(options.closeDelayMs ?? 180);
+      await closeStructureDetailPanel();
+    }
+    const afterNative = await waitFor(() => {
+      const current = getCurrentNativeLockedStructureState();
+      if (current.ids.length > beforeNative.ids.length) return current;
+      return null;
+    }, options.timeoutMs || 1800, options.intervalMs || 80) || getCurrentNativeLockedStructureState();
+    const beforeSet = new Set(beforeNative.ids.map(String));
+    const addedIds = afterNative.ids.filter((id) => !beforeSet.has(String(id)));
+    const reason = addedIds.length ? "" : "no new native ID appeared";
+    return {
+      label,
+      ok: Boolean(addedIds.length),
+      searchOk: true,
+      selectedText: cleanText(availability.selectedText || label),
+      reason,
+      beforeIds: beforeNative.ids,
+      afterIds: afterNative.ids,
+      addedIds
+    };
+  }
+
+  function buildNativeIdMapProbe({ labelCandidates = [], mappings = [], initialNative = null, finalNative = null } = {}) {
+    const labels = unique((labelCandidates || []).map(cleanText).filter(Boolean)).sort(compareLabels);
+    return {
+      kind: "imaios-native-lock-id-map-probe",
+      version: 1,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      initialNative: initialNative || getCurrentNativeLockedStructureState(),
+      finalNative: finalNative || getCurrentNativeLockedStructureState(),
+      labelCandidates: labels,
+      allCandidateCount: labels.length,
+      skippedExisting: 0,
+      cleanup: [],
+      counts: {
+        labelCandidates: labels.length,
+        testedLabelCandidates: mappings.length,
+        skippedExisting: 0,
+        mapped: mappings.filter((item) => item?.ok && item.addedIds?.length).length,
+        missed: mappings.filter((item) => item && item.label !== "__probe_error__" && !item.ok).length,
+        stopped: Boolean(state.cancelSearch)
+      },
+      mappings
+    };
+  }
+
   async function mapNativeIdsForLabels(rawLabels, options = {}) {
     if (state.searchRunning) {
       setStatus("Search is already running. Stop it before collecting native IDs.", 7000);
@@ -11122,6 +11753,7 @@
       : getLabelsMissingNativeIds(allCandidates, moduleKey).sort(compareLabels);
     const skippedExisting = allCandidates.length - labelCandidates.length;
     if (!labelCandidates.length) {
+      await refreshModuleNativeIdCoverage(allCandidates, moduleKey);
       const message = `${options.completionPrefix ? `${options.completionPrefix} ` : ""}All ${allCandidates.length} module label${allCandidates.length === 1 ? "" : "s"} already have native IDs.`;
       setStatus(message, 12000);
       return {
@@ -11136,6 +11768,9 @@
     const initialNative = getCurrentNativeLockedStructureState();
     const results = [];
     const cleanup = [];
+    let lastCheckpointMapped = 0;
+    let lastBackupMapped = 0;
+    let lastClearMapped = 0;
     state.searchRunning = true;
     state.cancelSearch = false;
     try {
@@ -11154,7 +11789,19 @@
         const label = labelCandidates[index];
         const beforeNative = getCurrentNativeLockedStructureState();
         const skippedText = skippedExisting ? ` (${skippedExisting} already mapped)` : "";
-        setStatus(`${options.sourceLabel || "Native ID map"} ${index + 1}/${labelCandidates.length}${skippedText}: ${label}`, 0);
+        const beforeCounts = countNativeIdMapResults(results);
+        setStatus(formatNativeIdMapProgress({
+          sourceLabel: options.sourceLabel || "Native ID map",
+          index,
+          totalToMap: labelCandidates.length,
+          totalLabels: allCandidates.length,
+          skippedExisting,
+          label,
+          mapped: beforeCounts.mapped,
+          missed: beforeCounts.missed,
+          pending: labelCandidates.length - index,
+          resultText: skippedText ? skippedText.trim() : ""
+        }), 0);
         const searchResult = await searchAndClickStructure(label, {
           exact: true,
           allowFallback: false,
@@ -11171,16 +11818,65 @@
         }, 1800, 80) || getCurrentNativeLockedStructureState();
         const beforeSet = new Set(beforeNative.ids.map(String));
         const addedIds = afterNative.ids.filter((id) => !beforeSet.has(String(id)));
+        const nativeMissReason = searchResult.reason || (addedIds.length ? "" : "no new native ID appeared");
         results.push({
           label,
           ok: Boolean(searchResult.ok && addedIds.length),
           searchOk: Boolean(searchResult.ok),
           selectedText: cleanText(searchResult.selectedText || ""),
-          reason: searchResult.reason || (addedIds.length ? "" : "No new native locked-structure ID appeared."),
+          reason: nativeMissReason,
           beforeIds: beforeNative.ids,
           afterIds: afterNative.ids,
           addedIds
         });
+        const afterCounts = countNativeIdMapResults(results);
+        setStatus(formatNativeIdMapProgress({
+          sourceLabel: options.sourceLabel || "Native ID map",
+          index,
+          totalToMap: labelCandidates.length,
+          totalLabels: allCandidates.length,
+          skippedExisting,
+          label,
+          mapped: afterCounts.mapped,
+          missed: afterCounts.missed,
+          pending: Math.max(0, labelCandidates.length - index - 1),
+          resultText: searchResult.ok && addedIds.length
+            ? `captured ID ${addedIds.join(", ")}`
+            : `missing ID${nativeMissReason ? `: ${nativeMissReason}` : ""}`
+        }), 0);
+        const shouldCheckpoint = afterCounts.mapped - lastCheckpointMapped >= HARVEST_CACHE_CHECKPOINT_CAPTURE_INTERVAL
+          || index === labelCandidates.length - 1;
+        if (shouldCheckpoint) {
+          const shouldBackup = afterCounts.mapped - lastBackupMapped >= HARVEST_BACKUP_CHECKPOINT_CAPTURE_INTERVAL
+            && index !== labelCandidates.length - 1;
+          mergeNativeIdMapProbeIntoRepository(buildNativeIdMapProbe({
+            labelCandidates: allCandidates,
+            mappings: results,
+            initialNative,
+            finalNative: getCurrentNativeLockedStructureState()
+          }));
+          const coverage = await refreshModuleNativeIdCoverage(allCandidates, moduleKey, { backup: shouldBackup });
+          if (coverage.ok) {
+            lastCheckpointMapped = afterCounts.mapped;
+            if (shouldBackup) lastBackupMapped = afterCounts.mapped;
+            const backupText = shouldBackup ? " Backup updated." : "";
+            setStatus(`${options.sourceLabel || "Native ID map"} checkpoint saved: ${coverage.withNativeIds}/${allCandidates.length} labels fast-ready; ${coverage.missingNativeIds} pending.${backupText}`, 0);
+          }
+        }
+        const shouldClearLocks = afterCounts.mapped - lastClearMapped >= HARVEST_LOCK_CLEAR_CAPTURE_INTERVAL
+          || getLockedStructureCount() >= HARVEST_LOCK_CLEAR_CAPTURE_INTERVAL + 5;
+        if (shouldClearLocks) {
+          setStatus(`${options.sourceLabel || "Native ID map"} clearing locked labels after ${afterCounts.mapped - lastClearMapped} newly captured IDs so the module stays responsive.`, 0);
+          await closeStructureDetailPanel();
+          const rollingClearResult = await clearLockedStructuresForApply();
+          cleanup.push({ step: `rolling-clear-${index + 1}`, clearResult: rollingClearResult });
+          if (!rollingClearResult.ok) {
+            setStatus(`${options.sourceLabel || "Native ID map"} tried to clear locked labels, but IMAIOS did not clear them: ${rollingClearResult.reason || "unknown clear failure"}`, 9000);
+          }
+          await waitFor(() => getCurrentNativeLockedStructureState().idCount === 0 ? true : null, 1600, 80);
+          await clearModuleSearchInputForProbe();
+          lastClearMapped = afterCounts.mapped;
+        }
         await clearModuleSearchInputForProbe();
         await delay(120);
       }
@@ -11258,7 +11954,6 @@
     const moduleInfo = probe?.module || getCurrentModuleInfo();
     const moduleKey = cleanText(moduleInfo?.key || getCurrentModuleKey());
     const previous = repository.moduleLabels[moduleKey] || {};
-    const previousLabels = Array.isArray(previous.labels) ? previous.labels : [];
     const nativeIds = normalizeNativeIdMap(previous.nativeIds || previous.nativeLabelIds || previous.labelNativeIds || {});
     const mappedLabels = [];
     let savedMappingCount = 0;
@@ -11280,16 +11975,32 @@
       || previous.nativeModuleSlug
       || ""
     );
+    const knownLabels = unique([
+      ...getKnownModuleLabels(previous),
+      ...(Array.isArray(probe?.labelCandidates) ? probe.labelCandidates.map(cleanText).filter(Boolean) : []),
+      ...mappedLabels
+    ]).sort(compareLabels);
+    const labelsWithIds = knownLabels
+      .filter((label) => uniqueNativeIds(nativeIds[normalizeText(label)] || []).length)
+      .sort(compareLabels);
+    const labelsMissingNativeIds = knownLabels
+      .filter((label) => !uniqueNativeIds(nativeIds[normalizeText(label)] || []).length)
+      .sort(compareLabels);
+
     repository.moduleLabels[moduleKey] = {
       ...previous,
       key: moduleKey,
       name: cleanText(moduleInfo?.name || previous.name || moduleKey),
       url: cleanText(moduleInfo?.url || previous.url || getCurrentUrlWithoutHash()),
       updatedAt: new Date().toISOString(),
-      labels: unique([...previousLabels, ...mappedLabels]).sort(compareLabels),
+      labels: labelsWithIds,
+      verifiedLabels: knownLabels,
+      harvestedLabels: knownLabels,
       sourceCounts: previous.sourceCounts && typeof previous.sourceCounts === "object" ? previous.sourceCounts : {},
       nativeModuleSlug,
-      nativeIds
+      nativeIds,
+      labelsMissingNativeIds,
+      pendingNativeIdLabels: labelsMissingNativeIds
     };
     repository.updatedAt = new Date().toISOString();
     state.labelRepository = repository;
@@ -13208,6 +13919,15 @@
       }
       return;
     }
+    if (state.ankiHotkeyEditorOpen) {
+      if (event.key === "Escape") {
+        state.ankiHotkeyEditorOpen = false;
+        state.captureHotkeyAction = "";
+        refreshPanel();
+        markKeyboardEventHandled(event);
+      }
+      return;
+    }
 
     const isEditing = isEditableEventTarget(event);
     if (handleAnkiReviewHotkey(event, isEditing)) return;
@@ -13221,7 +13941,7 @@
 
   function onKeyUp(event) {
     if (event.__imaiosCineToolsHandled) return;
-    if ((state.captureHotkeyAction || state.keyEditorOpen || getHotkeyActionForEvent(event)) && !isEditableEventTarget(event)) {
+    if ((state.captureHotkeyAction || state.keyEditorOpen || state.ankiHotkeyEditorOpen || getHotkeyActionForEvent(event)) && !isEditableEventTarget(event)) {
       markKeyboardEventHandled(event);
     }
   }
@@ -13241,6 +13961,10 @@
       applyActiveChunk();
     } else if (actionId === "switchPairTab") {
       togglePairedAnswerSession();
+    } else if (isAnkiReviewHotkeyAction(actionId)) {
+      executeAnkiReviewHotkeyAction(actionId).catch((error) => {
+        setStatus(`Anki review: ${error?.message || error}`, 9000);
+      });
     } else if (actionId === "pinsOn") {
       applyPinsHotkey(true);
     } else if (actionId === "labelsOn") {
@@ -13313,6 +14037,11 @@
       return { ok: true, clearedCount: 0 };
     }
 
+    const nativeClear = await clearNativeLockedStructuresDirectly();
+    if (nativeClear.ok) {
+      return { ok: true, clearedCount: beforeCount, method: nativeClear.method || "native-clean-isolate" };
+    }
+
     const clearButton = await findOrOpenClearLockedButton();
     if (!clearButton) {
       const fallback = await clearLockedStructureChipsIndividually();
@@ -13322,12 +14051,40 @@
       return { ok: false, reason: fallback.reason || "Could not find the locked-structures Clear all button." };
     }
 
-    await realMouseClick(clearButton, 0.5, 0.5);
-    const cleared = await waitFor(() => getLockedStructureCount() === 0 ? true : null, 2400, 120);
-    if (!cleared) {
-      return { ok: false, reason: `Clicked Clear all, but ${getLockedStructureCount()} locked structures still appear.` };
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      await realMouseClick(clearButton, 0.5, 0.5);
+      const cleared = await waitFor(() => getLockedStructureCount() === 0 ? true : null, 1600, 100);
+      if (cleared) return { ok: true, clearedCount: beforeCount };
+      await delay(120);
     }
-    return { ok: true, clearedCount: beforeCount };
+
+    const fallback = await clearLockedStructureChipsIndividually();
+    if (fallback.ok) {
+      return { ok: true, clearedCount: fallback.clearedCount || beforeCount, fallback: true };
+    }
+    return { ok: false, reason: fallback.reason || `Clicked Clear all, but ${getLockedStructureCount()} locked structures still appear.` };
+  }
+
+  async function clearNativeLockedStructuresDirectly() {
+    const directResult = await runImaiosPageContextProbe("native-clear-isolate", {
+      source: "codex-clear-locked",
+      waitMs: 180
+    }, 3000);
+    if (!directResult?.ok) {
+      return {
+        ok: false,
+        method: "native-clean-isolate",
+        reason: directResult?.reason || directResult?.error || "Native cleanIsolate was unavailable."
+      };
+    }
+    const cleared = await waitFor(() => getLockedStructureCount() === 0 ? true : null, 1200, 80);
+    if (cleared) return { ok: true, method: "native-clean-isolate", directResult };
+    return {
+      ok: false,
+      method: "native-clean-isolate",
+      reason: `Native cleanIsolate ran, but ${getLockedStructureCount()} locked structures still appear.`,
+      directResult
+    };
   }
 
   async function findOrOpenClearLockedButton() {
@@ -13413,7 +14170,9 @@
     for (let attempt = 0; attempt < 40; attempt += 1) {
       const removeButton = findLockedChipRemoveButton();
       if (!removeButton) break;
-      await realMouseClick(removeButton, 0.5, 0.5);
+      const removeText = cleanText(removeButton.textContent || "");
+      const xRatio = removeText.length > 1 ? 0.92 : 0.5;
+      await realMouseClick(removeButton, xRatio, 0.5);
       clearedCount += 1;
       await delay(90);
       if (getLockedStructureCount() === 0) break;
@@ -13426,9 +14185,10 @@
   function findLockedChipRemoveButton() {
     const panel = findLockedStructuresPanel();
     const scope = panel || document.body;
+    const closeMarkPattern = /(?:\u00d7|\u2715|\u2716|x)$/i;
     const candidates = Array.from(scope.querySelectorAll("button,[role='button'],span,div"))
       .filter((element) => element !== state.host && isVisible(element))
-      .filter((element) => /[×✕✖x]$/i.test(cleanText(element.textContent || "")))
+      .filter((element) => closeMarkPattern.test(cleanText(element.textContent || "")))
       .filter((element) => !/clear all/i.test(cleanText(element.textContent || "")));
     candidates.sort((a, b) => scoreLockedChipRemoveButton(b) - scoreLockedChipRemoveButton(a));
     return candidates[0] || null;
@@ -13437,8 +14197,8 @@
   function scoreLockedChipRemoveButton(element) {
     const text = cleanText(element.textContent || "");
     let score = 0;
-    if (/^[×✕✖x]$/i.test(text)) score += 40;
-    if (/[×✕✖]$/.test(text)) score += 20;
+    if (/^(?:\u00d7|\u2715|\u2716|x)$/i.test(text)) score += 40;
+    if (/(?:\u00d7|\u2715|\u2716|x)$/i.test(text)) score += 20;
     if (/tag|chip|structure|container/i.test(element.className || "")) score += 10;
     const rect = element.getBoundingClientRect();
     if (rect.width >= 16 && rect.width <= 420 && rect.height >= 16 && rect.height <= 80) score += 8;
@@ -13463,7 +14223,7 @@
     let score = 0;
     if (/locked structures/i.test(text)) score += 30;
     if (/clear all/i.test(text)) score += 40;
-    if (/[×✕✖]/.test(text)) score += 20;
+    if (/(?:\u00d7|\u2715|\u2716)/.test(text)) score += 20;
     if (element.querySelector("button.clear-isolate")) score += 40;
     if (element.querySelector("button,[role='button']")) score += 8;
     if (rect.width >= 220 && rect.height >= 160) score += 12;

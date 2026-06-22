@@ -209,6 +209,10 @@ function isNoPictureCardMode(settings) {
   return settings?.mode === "no_pictures";
 }
 
+function isNormalNoPictureCardMode(settings) {
+  return settings?.engine === "normal" && isNoPictureCardMode(settings);
+}
+
 function isNonNarrativeMode(settings) {
   return Boolean(settings) && !isNarrativeSpeechifyMode(settings) && !isIoQueueMode(settings);
 }
@@ -218,6 +222,7 @@ function isCardCreationMode(settings) {
 }
 
 function shouldCaptureCardAuditBundle(settings) {
+  if (isNormalNoPictureCardMode(settings)) return true;
   return Boolean(settings?.captureCardAuditBundle) && isNonNarrativeMode(settings);
 }
 
@@ -240,14 +245,21 @@ async function syncSourceCompareButtons() {
 }
 
 function syncSpeechifyAvailability() {
-  const eligible = isNarrativeSpeechifyMode(currentEngineMode());
-  const auditEligible = isNonNarrativeMode(currentEngineMode());
+  const engineMode = currentEngineMode();
+  const eligible = isNarrativeSpeechifyMode(engineMode);
+  const forcedAudit = isNormalNoPictureCardMode(engineMode);
+  const auditEligible = isNonNarrativeMode(engineMode);
   $("autoSendToSpeechify").disabled = !eligible;
   $("speechifyAutoSave").disabled = true;
   $("speechifyAutoSave").checked = false;
-  $("captureCardAuditBundle").disabled = !auditEligible;
+  $("captureCardAuditBundle").disabled = !auditEligible || forcedAudit;
   if (!eligible) {
     $("autoSendToSpeechify").checked = false;
+  }
+  if (forcedAudit) {
+    $("captureCardAuditBundle").checked = true;
+    $("openChatGPT").checked = true;
+    $("autoSubmitChatGPT").checked = true;
   }
   if (!auditEligible) $("captureCardAuditBundle").checked = false;
 }
@@ -337,10 +349,11 @@ function readForm() {
   const mode = normalizeVisibleMode(engine, $("mode").value);
   const ioQueueMode = isIoQueueMode({ engine, mode });
   const noPictureMode = isNoPictureCardMode({ engine, mode });
+  const normalNoPictureMode = isNormalNoPictureCardMode({ engine, mode });
   const speechifyEligible = isNarrativeSpeechifyMode({ engine, mode });
   const narrativeDownloadImages = shouldNarrativeDownloadImages({ engine, mode });
   const captureCardAuditBundle =
-    !speechifyEligible && !ioQueueMode && Boolean($("captureCardAuditBundle").checked);
+    normalNoPictureMode || (!speechifyEligible && !ioQueueMode && Boolean($("captureCardAuditBundle").checked));
   const cardModeDownloadImagesDisabled =
     !speechifyEligible && !ioQueueMode && ($("downloadImages").checked === false || noPictureMode);
   const autoSendToSpeechify = speechifyEligible && !ioQueueMode && $("autoSendToSpeechify").checked;

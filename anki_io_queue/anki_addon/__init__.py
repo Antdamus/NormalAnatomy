@@ -17,9 +17,12 @@ from aqt.qt import (
     QHBoxLayout,
     QLabel,
     QMessageBox,
+    QPixmap,
     QPushButton,
+    QScrollArea,
     QTimer,
     QTextEdit,
+    Qt,
     QVBoxLayout,
     sip,
 )
@@ -70,6 +73,114 @@ class QueueEntry:
     notes: str = ""
 
 
+class ImagePreviewDialog(QDialog):
+    def __init__(self, pixmap: QPixmap, image_path: Path | None, parent=None) -> None:
+        super().__init__(parent)
+        self.setWindowTitle("Image Preview")
+        self._source_pixmap = pixmap
+        self._zoom_factor = 1.0
+
+        self.image_label = QLabel()
+        self.image_label.setAlignment(self._qt_align_center())
+        self.image_label.setStyleSheet("QLabel { background: #111; }")
+
+        self.scroll_area = QScrollArea()
+        self.scroll_area.setWidget(self.image_label)
+        self.scroll_area.setWidgetResizable(False)
+        self.scroll_area.setStyleSheet("QScrollArea { background: #111; border: 1px solid #555; }")
+
+        fit_button = QPushButton("Fit")
+        actual_button = QPushButton("100%")
+        zoom_out_button = QPushButton("-")
+        zoom_in_button = QPushButton("+")
+        close_button = QPushButton("Close")
+
+        fit_button.clicked.connect(self.fit_to_window)
+        actual_button.clicked.connect(self.actual_size)
+        zoom_out_button.clicked.connect(self.zoom_out)
+        zoom_in_button.clicked.connect(self.zoom_in)
+        close_button.clicked.connect(self.accept)
+
+        path_label = QLabel(str(image_path) if image_path else "")
+        path_label.setWordWrap(True)
+        path_label.setStyleSheet("QLabel { color: #bbb; }")
+
+        controls = QHBoxLayout()
+        controls.addWidget(fit_button)
+        controls.addWidget(actual_button)
+        controls.addWidget(zoom_out_button)
+        controls.addWidget(zoom_in_button)
+        controls.addStretch(1)
+        controls.addWidget(close_button)
+
+        layout = QVBoxLayout()
+        layout.addWidget(path_label)
+        layout.addWidget(self.scroll_area, 1)
+        layout.addLayout(controls)
+        self.setLayout(layout)
+
+        screen = QApplication.primaryScreen()
+        if screen is not None:
+            available = screen.availableGeometry()
+            self.resize(int(available.width() * 0.72), int(available.height() * 0.78))
+        else:
+            self.resize(980, 720)
+        QTimer.singleShot(0, self.fit_to_window)
+
+    def _qt_align_center(self):
+        try:
+            return Qt.AlignmentFlag.AlignCenter
+        except AttributeError:
+            return Qt.AlignCenter
+
+    def _qt_keep_aspect_ratio(self):
+        try:
+            return Qt.AspectRatioMode.KeepAspectRatio
+        except AttributeError:
+            return Qt.KeepAspectRatio
+
+    def _qt_smooth_transformation(self):
+        try:
+            return Qt.TransformationMode.SmoothTransformation
+        except AttributeError:
+            return Qt.SmoothTransformation
+
+    def _render_zoomed_image(self) -> None:
+        if self._source_pixmap.isNull():
+            return
+        width = max(1, int(self._source_pixmap.width() * self._zoom_factor))
+        height = max(1, int(self._source_pixmap.height() * self._zoom_factor))
+        scaled = self._source_pixmap.scaled(
+            width,
+            height,
+            self._qt_keep_aspect_ratio(),
+            self._qt_smooth_transformation(),
+        )
+        self.image_label.setPixmap(scaled)
+        self.image_label.resize(scaled.size())
+
+    def fit_to_window(self) -> None:
+        if self._source_pixmap.isNull():
+            return
+        viewport = self.scroll_area.viewport().size()
+        width_factor = max(0.05, viewport.width() / max(1, self._source_pixmap.width()))
+        height_factor = max(0.05, viewport.height() / max(1, self._source_pixmap.height()))
+        self._zoom_factor = max(0.05, min(width_factor, height_factor))
+        self._render_zoomed_image()
+
+    def actual_size(self) -> None:
+        self._zoom_factor = 1.0
+        self._render_zoomed_image()
+
+    def zoom_in(self) -> None:
+        self._zoom_factor = min(8.0, self._zoom_factor * 1.25)
+        self._render_zoomed_image()
+
+    def zoom_out(self) -> None:
+        self._zoom_factor = max(0.05, self._zoom_factor / 1.25)
+        self._render_zoomed_image()
+
+
 class IOQueueDialog(QDialog):
     def __init__(self) -> None:
         super().__init__(mw)
@@ -79,6 +190,8 @@ class IOQueueDialog(QDialog):
         self.queue_path: Path | None = None
         self.entries: list[QueueEntry] = []
         self.current_index: int = -1
+        self._preview_pixmap: QPixmap | None = None
+        self._preview_path: Path | None = None
 
         self.article_label = QLabel("Article: -")
         self.block_label = QLabel("Block: -")
@@ -87,6 +200,16 @@ class IOQueueDialog(QDialog):
 
         self.caption_box = QTextEdit()
         self.caption_box.setReadOnly(True)
+        self.image_preview_label = QLabel("Image preview")
+        self.image_preview_label.setMinimumSize(300, 190)
+        self.image_preview_label.setStyleSheet(
+            "QLabel { border: 1px solid #555; border-radius: 8px; padding: 8px; "
+            "background: #222; color: #ddd; }"
+        )
+        self.image_preview_label.setAlignment(self._qt_align_center())
+        self.image_preview_label.setToolTip("Click to inspect the image")
+        self.image_preview_label.setCursor(self._qt_pointing_hand_cursor())
+        self.image_preview_label.mousePressEvent = self._open_preview_from_click
 
         self.auto_advance_checkbox = QCheckBox("Auto-advance after note add")
         self.auto_advance_checkbox.setChecked(True)
@@ -96,6 +219,8 @@ class IOQueueDialog(QDialog):
         self.auto_fill_caption_checkbox.setChecked(True)
         self.auto_open_io_checkbox = QCheckBox("Auto-open current item in Image Occlusion")
         self.auto_open_io_checkbox.setChecked(True)
+        self.auto_paste_io_checkbox = QCheckBox("Auto-paste image into Image Occlusion")
+        self.auto_paste_io_checkbox.setChecked(True)
 
         load_button = QPushButton("Load Queue")
         load_default_button = QPushButton("Load Default Queue")
@@ -125,6 +250,18 @@ class IOQueueDialog(QDialog):
         meta_layout.addWidget(self.file_label, 2, 0)
         meta_layout.addWidget(self.status_label, 3, 0)
 
+        control_layout = QVBoxLayout()
+        control_layout.addLayout(meta_layout)
+        control_layout.addWidget(self.auto_advance_checkbox)
+        control_layout.addWidget(self.auto_copy_image_checkbox)
+        control_layout.addWidget(self.auto_fill_caption_checkbox)
+        control_layout.addWidget(self.auto_open_io_checkbox)
+        control_layout.addWidget(self.auto_paste_io_checkbox)
+
+        top_layout = QHBoxLayout()
+        top_layout.addLayout(control_layout, 2)
+        top_layout.addWidget(self.image_preview_label, 1)
+
         button_row = QHBoxLayout()
         button_row.addWidget(load_button)
         button_row.addWidget(load_default_button)
@@ -138,16 +275,41 @@ class IOQueueDialog(QDialog):
         button_row.addWidget(skip_button)
 
         layout = QVBoxLayout()
-        layout.addLayout(meta_layout)
-        layout.addWidget(self.auto_advance_checkbox)
-        layout.addWidget(self.auto_copy_image_checkbox)
-        layout.addWidget(self.auto_fill_caption_checkbox)
-        layout.addWidget(self.auto_open_io_checkbox)
+        layout.addLayout(top_layout)
         layout.addWidget(QLabel("Caption"))
         layout.addWidget(self.caption_box)
         layout.addLayout(button_row)
         self.setLayout(layout)
         QTimer.singleShot(0, self.load_default_queue_if_available)
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        if hasattr(self, "image_preview_label"):
+            self._fit_preview_pixmap()
+
+    def _qt_align_center(self):
+        try:
+            return Qt.AlignmentFlag.AlignCenter
+        except AttributeError:
+            return Qt.AlignCenter
+
+    def _qt_keep_aspect_ratio(self):
+        try:
+            return Qt.AspectRatioMode.KeepAspectRatio
+        except AttributeError:
+            return Qt.KeepAspectRatio
+
+    def _qt_smooth_transformation(self):
+        try:
+            return Qt.TransformationMode.SmoothTransformation
+        except AttributeError:
+            return Qt.SmoothTransformation
+
+    def _qt_pointing_hand_cursor(self):
+        try:
+            return Qt.CursorShape.PointingHandCursor
+        except AttributeError:
+            return Qt.PointingHandCursor
 
     def load_queue(self) -> None:
         initial_dir = DEFAULT_QUEUE_PATH.parent if DEFAULT_QUEUE_PATH.parent.exists() else Path.home()
@@ -196,6 +358,7 @@ class IOQueueDialog(QDialog):
             self.file_label.setText("Image: -")
             self.status_label.setText("Status: Queue empty or complete")
             self.caption_box.setPlainText("")
+            self._set_preview_message("No queue item loaded")
             return
 
         entry = self.entries[self.current_index]
@@ -208,10 +371,55 @@ class IOQueueDialog(QDialog):
             f"Status: item {self.current_index + 1} of {len(self.entries)}"
         )
         self.caption_box.setPlainText(entry.caption or "")
+        self._render_image_preview(entry)
         if self.auto_copy_image_checkbox.isChecked():
             self.copy_image()
         if self.auto_open_io_checkbox.isChecked():
             QTimer.singleShot(0, self.launch_current_into_image_occlusion)
+
+    def _set_preview_message(self, message: str) -> None:
+        self._preview_pixmap = None
+        self._preview_path = None
+        self.image_preview_label.clear()
+        self.image_preview_label.setText(message)
+
+    def _render_image_preview(self, entry: QueueEntry | None) -> None:
+        resolved_path = self._resolve_image_path(entry)
+        if resolved_path is None:
+            self._set_preview_message("Image preview unavailable")
+            return
+        pixmap = QPixmap(str(resolved_path))
+        if pixmap.isNull():
+            self._set_preview_message("Image preview unreadable")
+            return
+        self._preview_pixmap = pixmap
+        self._preview_path = resolved_path
+        self._fit_preview_pixmap()
+
+    def _fit_preview_pixmap(self) -> None:
+        pixmap = getattr(self, "_preview_pixmap", None)
+        if pixmap is None or pixmap.isNull():
+            return
+        width = max(40, self.image_preview_label.width() - 18)
+        height = max(40, self.image_preview_label.height() - 18)
+        scaled = pixmap.scaled(
+            width,
+            height,
+            self._qt_keep_aspect_ratio(),
+            self._qt_smooth_transformation(),
+        )
+        self.image_preview_label.setText("")
+        self.image_preview_label.setPixmap(scaled)
+
+    def _open_preview_from_click(self, _event) -> None:
+        pixmap = getattr(self, "_preview_pixmap", None)
+        if pixmap is None or pixmap.isNull():
+            tooltip("No image preview is available for this queue item.")
+            return
+        dialog = ImagePreviewDialog(pixmap, getattr(self, "_preview_path", None), self)
+        exec_method = getattr(dialog, "exec", None) or getattr(dialog, "exec_", None)
+        if callable(exec_method):
+            exec_method()
 
     def _save_queue(self) -> None:
         if self.queue_path is None:
@@ -259,24 +467,25 @@ class IOQueueDialog(QDialog):
             return
         QApplication.clipboard().setText(entry.preferred_path or entry.image_path or "")
 
-    def copy_image(self) -> None:
+    def copy_image(self) -> bool:
         entry = self.current_entry()
         if not entry:
-            return
+            return False
         from aqt.qt import QImage
 
         resolved_path = self._resolve_image_path(entry)
         if not resolved_path:
             image_path = entry.preferred_path or entry.image_path
             QMessageBox.warning(self, "Image missing", f"Could not find image file:\n{image_path}")
-            return
+            return False
 
         image = QImage(str(resolved_path))
         if image.isNull():
             QMessageBox.warning(self, "Image unreadable", f"Could not load image file:\n{resolved_path}")
-            return
+            return False
 
         QApplication.clipboard().setImage(image)
+        return True
 
     def _get_open_add_cards(self) -> AddCards | None:
         try:
@@ -422,10 +631,77 @@ class IOQueueDialog(QDialog):
                 return True
         return False
 
+    def _click_paste_image_button_in_editor_web(self, add_cards: AddCards, retries_left: int) -> bool:
+        editor = getattr(add_cards, "editor", None)
+        web = getattr(editor, "web", None) if editor else None
+        if web is None:
+            return False
+
+        js = r"""
+(() => {
+  const textOf = (el) => [
+    el.innerText,
+    el.textContent,
+    el.value,
+    el.getAttribute && el.getAttribute("aria-label"),
+    el.getAttribute && el.getAttribute("title")
+  ].filter(Boolean).join(" ").replace(/\s+/g, " ").trim().toLowerCase();
+  const visible = (el) => !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+  const controls = Array.from(document.querySelectorAll(
+    "button, [role='button'], input[type='button'], input[type='submit'], a"
+  ));
+  const target = controls.find((el) => {
+    if (el.disabled || !visible(el)) {
+      return false;
+    }
+    return /paste\s+image\s+(from\s+)?clipboard/.test(textOf(el));
+  });
+  if (!target) {
+    return false;
+  }
+  target.scrollIntoView({ block: "center", inline: "center" });
+  target.focus && target.focus();
+  for (const type of ["pointerdown", "mousedown", "mouseup", "pointerup"]) {
+    target.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+  }
+  target.click();
+  return true;
+})();
+"""
+
+        def on_done(result) -> None:
+            if result:
+                tooltip("Image pasted into Image Occlusion.")
+                return
+            if retries_left <= 0:
+                tooltip("Image is on the clipboard. Click 'Paste Image from Clipboard' if it did not paste automatically.")
+                return
+            QTimer.singleShot(150, lambda: self._click_paste_image_button(add_cards, retries_left - 1))
+
+        try:
+            eval_with_callback = getattr(web, "evalWithCallback")
+        except Exception:
+            eval_with_callback = None
+        if callable(eval_with_callback):
+            try:
+                eval_with_callback(js, on_done)
+                return True
+            except Exception:
+                return False
+        try:
+            web.eval(js)
+            return True
+        except Exception:
+            return False
+
     def _click_paste_image_button(self, add_cards: AddCards, retries_left: int = 8) -> None:
         if add_cards is None or sip.isdeleted(add_cards):
             return
+        QApplication.processEvents()
         if self._click_button_by_text(add_cards, PASTE_BUTTON_TEXT_CANDIDATES):
+            tooltip("Image pasted into Image Occlusion.")
+            return
+        if self._click_paste_image_button_in_editor_web(add_cards, retries_left):
             return
         if retries_left <= 0:
             tooltip("Image is on the clipboard. Click 'Paste Image from Clipboard' if it did not paste automatically.")
@@ -446,13 +722,17 @@ class IOQueueDialog(QDialog):
         if add_cards is None:
             return
 
-        self.copy_image()
+        if not self.copy_image():
+            return
         self._ensure_io_note_type(add_cards)
         self._prefill_fields(add_cards, entry.caption or "")
 
-        QTimer.singleShot(150, lambda: self._click_paste_image_button(add_cards))
         add_cards.raise_()
         add_cards.activateWindow()
+        if self.auto_paste_io_checkbox.isChecked():
+            QTimer.singleShot(250, lambda: self._click_paste_image_button(add_cards))
+        else:
+            tooltip("Image copied to clipboard.")
 
     def mark_added(self) -> None:
         entry = self.current_entry()

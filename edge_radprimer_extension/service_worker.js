@@ -231,6 +231,9 @@ function normalizeSettings(rawSettings = {}) {
     settings.downloadPlain = false;
     settings.downloadAnnotated = false;
     settings.cardModeDownloadImagesDisabled = true;
+    if (isNormalNoPictureCardMode(settings)) {
+      settings.captureCardAuditBundle = true;
+    }
   } else {
     settings.autoSendToSpeechify = false;
     settings.speechifyAutoSave = false;
@@ -283,7 +286,12 @@ function isNoPictureCardMode(settings) {
   return settings?.mode === "no_pictures";
 }
 
+function isNormalNoPictureCardMode(settings) {
+  return settings?.engine === "normal" && isNoPictureCardMode(settings);
+}
+
 function shouldCaptureCardAuditBundle(settings) {
+  if (isNormalNoPictureCardMode(settings)) return true;
   return Boolean(settings?.captureCardAuditBundle) && isNonNarrativeMode(settings);
 }
 
@@ -3077,6 +3085,67 @@ function getMasterSourcePairFromCache(cache) {
   return [];
 }
 
+function cleanBreadcrumbTrailSegments(values = []) {
+  const seen = new Set();
+  const trail = [];
+  for (const value of Array.isArray(values) ? values : []) {
+    const text = cleanArticleTitleText(value);
+    const key = normalizeArticleTitleKey(text);
+    if (!text || !key || seen.has(key)) continue;
+    seen.add(key);
+    trail.push(text);
+  }
+  return trail;
+}
+
+function getSourceCompareBreadcrumbTrail(source = {}) {
+  return cleanBreadcrumbTrailSegments(source.metadata?.breadcrumbTrail || source.breadcrumbTrail || []);
+}
+
+function getSourceCompareAnkiDeckName(source = {}) {
+  return sanitizeAnkiDeckPath(source.metadata?.anki?.deckName || source.anki?.deckName || "");
+}
+
+function buildMasterSourceCanonicalHierarchy(sources = [], articleTitle = "") {
+  const sourceList = Array.isArray(sources) ? sources : [];
+  const radPrimerSource = sourceList.find((source) =>
+    normalizeSourceCompareKind(
+      source?.sourceKind,
+      source?.sourceLabel || source?.primarySourceLabel || sourceCompareDisplayLabel(source)
+    ) === "radprimer"
+  );
+  const fallbackSource = radPrimerSource || sourceList.find((source) => getSourceCompareBreadcrumbTrail(source).length) || null;
+  const breadcrumbTrail = getSourceCompareBreadcrumbTrail(fallbackSource);
+  const canonicalHierarchy = breadcrumbTrail.length ? breadcrumbTrail : cleanBreadcrumbTrailSegments([articleTitle]);
+  return {
+    canonicalHierarchy,
+    canonicalHierarchySource: fallbackSource
+      ? {
+          sourceKind: fallbackSource.sourceKind || "",
+          sourceLabel: sourceCompareDisplayLabel(fallbackSource),
+          sourceFile: fallbackSource === radPrimerSource ? "RadPrimer_metadata.json" : `${sourceCompareDisplayLabel(fallbackSource)}_metadata.json`,
+          field: "breadcrumbTrail",
+          policy: radPrimerSource
+            ? "RadPrimer breadcrumbTrail is the canonical hierarchy/backbone."
+            : "No RadPrimer source was available; using the best available source breadcrumbTrail."
+        }
+      : {
+          sourceKind: "",
+          sourceLabel: "",
+          sourceFile: "",
+          field: "",
+          policy: "No source breadcrumbTrail was available; articleTitle fallback only."
+        },
+    canonicalDeckPath: fallbackSource ? getSourceCompareAnkiDeckName(fallbackSource) : "",
+    sourceBreadcrumbs: Object.fromEntries(
+      sourceList.map((source) => [
+        sourceCompareDisplayLabel(source),
+        getSourceCompareBreadcrumbTrail(source)
+      ])
+    )
+  };
+}
+
 function buildMasterSourceDownloadPlan(title) {
   const articlePart = sanitizeDownloadPathPart(title, "radiology_master_source");
   return {
@@ -3323,9 +3392,43 @@ function buildAnkiBreadcrumbDeckParts(breadcrumbTrail, title) {
 
 function getAutoAnkiRoot(settings) {
   if (settings?.engine === "normal") {
-    return sanitizeAnkiDeckPath(settings.ankiNormalRoot || DEFAULTS.ankiNormalRoot);
+    return sanitizeAnkiDeckPath(
+      isNormalNoPictureCardMode(settings)
+        ? "Corebook"
+        : settings.ankiNormalRoot || DEFAULTS.ankiNormalRoot
+    );
   }
   return sanitizeAnkiDeckPath(settings?.ankiPathologyRoot || DEFAULTS.ankiPathologyRoot);
+}
+
+function stripDeckRootPrefix(parts = [], deckRoot = "") {
+  const cleanParts = (Array.isArray(parts) ? parts : [])
+    .map((part) => sanitizeAnkiDeckPart(part, ""))
+    .filter(Boolean);
+  const rootParts = sanitizeAnkiDeckPath(deckRoot).split("::").filter(Boolean);
+  if (!rootParts.length || cleanParts.length < rootParts.length) return cleanParts;
+  const matchesRoot = rootParts.every((part, index) => {
+    return normalizeAnkiDeckPartForCompare(part) === normalizeAnkiDeckPartForCompare(cleanParts[index]);
+  });
+  return matchesRoot ? cleanParts.slice(rootParts.length) : cleanParts;
+}
+
+function normalizeHierarchyOverrideDeckParts(hierarchyOverride, settings, title) {
+  const deckRoot = getAutoAnkiRoot(settings);
+  const rawParts = Array.isArray(hierarchyOverride?.deckParts)
+    ? hierarchyOverride.deckParts
+    : String(hierarchyOverride?.deckName || "").split("::").filter(Boolean);
+  if (!isNormalNoPictureCardMode(settings)) {
+    return rawParts.map((part) => sanitizeAnkiDeckPart(part, "")).filter(Boolean);
+  }
+
+  let deckParts = rawParts;
+  deckParts = stripDeckRootPrefix(deckParts, hierarchyOverride?.deckRoot || "");
+  deckParts = stripDeckRootPrefix(deckParts, DEFAULTS.ankiNormalRoot);
+  deckParts = stripDeckRootPrefix(deckParts, deckRoot);
+  const rootParts = deckRoot.split("::").filter(Boolean);
+  const finalParts = [...rootParts, ...(deckParts.length ? deckParts : [title])];
+  return finalParts;
 }
 
 function normalizeAnkiDeckMode(value) {
@@ -3344,16 +3447,18 @@ function buildAnkiDeckTarget(pending) {
   const hierarchyOverride = pending?.extractionMeta?.ankiHierarchyOverride;
 
   if (deckMode === "auto" && hierarchyOverride?.deckName) {
+    const deckRoot = getAutoAnkiRoot(settings);
+    const deckParts = normalizeHierarchyOverrideDeckParts(hierarchyOverride, settings, title);
     return {
       deckMode,
-      deckRoot: hierarchyOverride.deckRoot || getAutoAnkiRoot(settings),
-      deckParts: Array.isArray(hierarchyOverride.deckParts)
-        ? hierarchyOverride.deckParts
-        : String(hierarchyOverride.deckName).split("::").filter(Boolean),
+      deckRoot: isNormalNoPictureCardMode(settings) ? deckRoot : hierarchyOverride.deckRoot || deckRoot,
+      deckParts,
       breadcrumbTrail: Array.isArray(hierarchyOverride.breadcrumbTrail)
         ? hierarchyOverride.breadcrumbTrail
         : breadcrumbTrail,
-      deckName: sanitizeAnkiDeckPath(hierarchyOverride.deckName) || title,
+      deckName: isNormalNoPictureCardMode(settings)
+        ? deckParts.join("::") || title
+        : sanitizeAnkiDeckPath(hierarchyOverride.deckName) || title,
       hierarchySource: hierarchyOverride.sourceLabel || "RadPrimer"
     };
   }
@@ -3669,6 +3774,14 @@ function buildMasterSourceRequestInstructions(metadata) {
     "",
     "Purpose: this bundle contains paired source packages that Codex should fuse into one master source artifact.",
     "",
+    "Canonical hierarchy for this synthesis:",
+    `- canonicalHierarchySource: ${metadata.canonicalHierarchySource?.sourceFile || "[none]"} ${metadata.canonicalHierarchySource?.field || ""} (${metadata.canonicalHierarchySource?.policy || ""})`.trim(),
+    `- canonicalHierarchy JSON: ${JSON.stringify(Array.isArray(metadata.canonicalHierarchy) ? metadata.canonicalHierarchy : [])}`,
+    `- canonicalDeckPath: ${metadata.canonicalDeckPath || "[none]"}`,
+    "- If RadPrimer is present, master_source_manifest.json canonicalHierarchy MUST exactly equal the canonicalHierarchy JSON above, preserving RadPrimer segment wording and order.",
+    "- Do not replace the RadPrimer hierarchy with STATdx breadcrumbs, source-pairing titles, ChatGPT project folders, IMAIOS module names, or a model-generated deck path.",
+    "- If packageText or an IMAIOS chunk library contains breadcrumb/deckPath/tags, derive them from this canonicalHierarchy plus the chunk's local parent group only; do not invent a different root hierarchy.",
+    "",
     "Expected Codex outputs in the imported queue bundle:",
     "- master_source_package.txt",
     "- master_source_manifest.json",
@@ -3678,7 +3791,7 @@ function buildMasterSourceRequestInstructions(metadata) {
     "- _codex_master_source_done.txt",
     "",
     "Rules:",
-    "- Use RadPrimer as the canonical hierarchy/backbone when a RadPrimer source is present.",
+    "- Use RadPrimer as the canonical hierarchy/backbone when a RadPrimer source is present; in this bundle, that means using metadata.json canonicalHierarchy exactly.",
     "- Use STATdx as supplemental depth when it is stronger for image examples, modality-specific detail, mechanisms, management, or differential nuance.",
     "- Preserve source attribution with labels such as [RadPrimer], [STATdx], or [Both].",
     "- Do not invent Core Radiology support. Treat Core-specific claims as verified only if the provided source packages contain auditable Core evidence.",
@@ -3709,7 +3822,9 @@ function buildMasterSourceRequestInstructions(metadata) {
     "- If a source image should be excluded from future teaching, keep it in the registry with downloadRecommendation: archiveOptionalDuplicate or usedFor: [] and explain why in master_source_report.md. The reason must explicitly say exact duplicate, same image/slice/screenshot, unusable, or another concrete non-teaching reason.",
     "",
     "Required manifest/import contract:",
-    "- master_source_manifest.json must include articleTitle, canonicalHierarchy, sourcePriority, sourceCoverage, imageCountBySource, sourceAttributionRules, selectedPrimaryImageIds, archiveOptionalImageIds, and sourceSelectionPlan.",
+    "- master_source_manifest.json must include articleTitle, canonicalHierarchy, canonicalDeckPath when provided, sourcePriority, sourceCoverage, imageCountBySource, sourceAttributionRules, selectedPrimaryImageIds, archiveOptionalImageIds, and sourceSelectionPlan.",
+    "- master_source_manifest.json canonicalHierarchy must be copied exactly from metadata.json canonicalHierarchy. Do not use STATdx_metadata.json breadcrumbTrail when RadPrimer_metadata.json is present.",
+    "- master_source_import.json manifest.canonicalHierarchy must match master_source_manifest.json canonicalHierarchy exactly.",
     "- sourceSelectionPlan must state what text to keep from each source, what to downweight/skip, the primary image download/use set, archive duplicates, and generator instructions for narrative/cards.",
     "- sourceSelectionPlan must include imageCurationPolicy: exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
     "- sourceSelectionPlan must include duplicateEvidencePolicy: exactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
@@ -3742,7 +3857,7 @@ function buildMasterSourceWakeMessage(bundle) {
     "4. If image_evidence_manifest.json and image_evidence/ are present, inspect those actual image files before classifying anything as an exact duplicate.",
     "5. Write master_source_package.txt, master_source_manifest.json, image_registry.json, master_source_import.json, master_source_report.md, and _codex_master_source_done.txt in the same imported bundle folder.",
     "",
-    "Use RadPrimer as the canonical hierarchy/backbone when present. Before merging, check whether STATdx fully covers the RadPrimer image set and mark each RadPrimer image as exact duplicate, near duplicate, conceptual replacement, or not covered. Use actual image_evidence files, same stable source image IDs, image hashes, or explicit manual/source notes before calling anything an exact duplicate; captions alone are not enough. Use STATdx as supplemental depth for stronger images, captions, mechanisms, differentials, modality-specific detail, or management. Preserve source attribution and image grouping/time-lapse/procedure context. Treat same-patient/follow-up/procedure/adjacent-slice/time-lapse clusters as atomic unless an explicit documented split is safe. For image-recognition learning, archive only true duplicates or unusable images by default. Near duplicates, alternate same-disease examples, and conceptual replacements should remain selected as recognition reinforcement unless they are literally the same image/slice/screenshot. Do not generate cards or a lecture yet.",
+    "Use RadPrimer as the canonical hierarchy/backbone when present. Use metadata.json canonicalHierarchy exactly for master_source_manifest.json canonicalHierarchy and for any packageText/IMAIOS breadcrumb/deckPath routing; do not substitute STATdx breadcrumbs or model-generated hierarchy. Before merging, check whether STATdx fully covers the RadPrimer image set and mark each RadPrimer image as exact duplicate, near duplicate, conceptual replacement, or not covered. Use actual image_evidence files, same stable source image IDs, image hashes, or explicit manual/source notes before calling anything an exact duplicate; captions alone are not enough. Use STATdx as supplemental depth for stronger images, captions, mechanisms, differentials, modality-specific detail, or management. Preserve source attribution and image grouping/time-lapse/procedure context. Treat same-patient/follow-up/procedure/adjacent-slice/time-lapse clusters as atomic unless an explicit documented split is safe. For image-recognition learning, archive only true duplicates or unusable images by default. Near duplicates, alternate same-disease examples, and conceptual replacements should remain selected as recognition reinforcement unless they are literally the same image/slice/screenshot. Do not generate cards or a lecture yet.",
     "",
     "Important: the extension will later import master_source_import.json. Make its packageText source-qualified with clean human-facing labels like RadPrimer image 5 and STATdx image 4 whenever both sources contribute images. Keep RP-05 and SDX-04 in the image registry, manifest, filenames, and traceability fields, but do not force both the long label and short code into the same narrative-facing prose. Also include selectedPrimaryImageIds/archiveOptionalImageIds and sourceSelectionPlan.imageDownloadPlan so the extension can download only curated primary images with source-qualified filenames."
   ].join("\n");
@@ -3829,7 +3944,10 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
       deckRoot: ankiTarget.deckRoot,
       manualDeckRoot: pending.settings?.ankiDeckRoot || DEFAULTS.ankiDeckRoot,
       pathologyRoot: pending.settings?.ankiPathologyRoot || DEFAULTS.ankiPathologyRoot,
-      normalRoot: pending.settings?.ankiNormalRoot || DEFAULTS.ankiNormalRoot,
+      normalRoot: pending.settings?.engine === "normal"
+        ? getAutoAnkiRoot(pending.settings || {})
+        : pending.settings?.ankiNormalRoot || DEFAULTS.ankiNormalRoot,
+      configuredNormalRoot: pending.settings?.ankiNormalRoot || DEFAULTS.ankiNormalRoot,
       breadcrumbTrail: ankiTarget.breadcrumbTrail,
       deckParts: ankiTarget.deckParts,
       deckName: ankiTarget.deckName,
@@ -3863,6 +3981,7 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
       ankiDeckMode: pending.settings?.ankiDeckMode || DEFAULTS.ankiDeckMode,
       ankiPathologyRoot: pending.settings?.ankiPathologyRoot || DEFAULTS.ankiPathologyRoot,
       ankiNormalRoot: pending.settings?.ankiNormalRoot || DEFAULTS.ankiNormalRoot,
+      effectiveAnkiNormalRoot: pending.settings?.engine === "normal" ? getAutoAnkiRoot(pending.settings || {}) : "",
       ankiDeckRoot: pending.settings?.ankiDeckRoot || DEFAULTS.ankiDeckRoot,
       preferRadPrimerHierarchyForStatdx:
         pending.settings?.preferRadPrimerHierarchyForStatdx ?? DEFAULTS.preferRadPrimerHierarchyForStatdx,
@@ -4042,10 +4161,15 @@ async function stageMasterSourceRequestBundle({
   const downloadPlan = buildMasterSourceDownloadPlan(title);
   const folderName = `${downloadPlan.articleFolderName}_${createdAt.replace(/[:.]/g, "-")}`;
   const sourceList = Array.isArray(sources) ? sources : [];
+  const canonicalRouting = buildMasterSourceCanonicalHierarchy(sourceList, title);
   const metadata = {
     createdAt,
     articleTitle: title,
     masterSourceRequestBundle: true,
+    canonicalHierarchy: canonicalRouting.canonicalHierarchy,
+    canonicalHierarchySource: canonicalRouting.canonicalHierarchySource,
+    canonicalDeckPath: canonicalRouting.canonicalDeckPath,
+    sourceBreadcrumbs: canonicalRouting.sourceBreadcrumbs,
     sourceCompareCacheKey: sourceCompareCacheKey || "",
     sourcePairingKey: sourcePairingKey || "",
     sourcePairingMatch: sourcePairingMatch || null,
@@ -4325,6 +4449,10 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
   const manifestText = JSON.stringify(masterSource?.manifest || {}, null, 2);
   const registryText = JSON.stringify(masterSource?.imageRegistry || [], null, 2);
   const sourcePackage = String(masterSource?.packageText || "").trim();
+  const canonicalHierarchy = Array.isArray(masterSource?.manifest?.canonicalHierarchy)
+    ? masterSource.manifest.canonicalHierarchy
+    : [];
+  const canonicalDeckPath = String(masterSource?.manifest?.canonicalDeckPath || masterSource?.manifest?.deckPath || "").trim();
   const includeImaiosRepository = !isFirstPassNarrativeMode(settings);
   const imaiosLabelRepositoryBlock = includeImaiosRepository
     ? buildImaiosLabelRepositoryBlock(
@@ -4340,6 +4468,11 @@ function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
     "Image references are source-qualified. Preserve labels such as RP-05, SDX-04, RadPrimer image 5, and STATdx image 4 in metadata, card image fields, audit blocks, and download/file references.",
     "If images from both sources are used, never collapse them into bare image numbers without source labels.",
     "For narrative prose meant to be spoken aloud, say only one clean source-qualified reference per image, such as RadPrimer image 5 or STATdx image 4. Do not say both the long label and the short code, such as STATdx image 4, SDX-04.",
+    "",
+    "=== CANONICAL ROUTING ===",
+    "Use this routing metadata for any generated breadcrumb, deckPath, tags, or IMaios chunk library. Do not replace it with STATdx breadcrumbs, ChatGPT project folders, IMAIOS module names, or a model-generated hierarchy.",
+    `canonicalHierarchy: ${JSON.stringify(canonicalHierarchy)}`,
+    canonicalDeckPath ? `canonicalDeckPath: ${canonicalDeckPath}` : "",
     "",
     "=== TOPIC ===",
     `PRIMARY TOPIC: ${title}`,

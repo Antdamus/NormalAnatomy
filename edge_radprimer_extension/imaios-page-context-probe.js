@@ -237,6 +237,38 @@
     }
     return result;
   };
+  const runNativeClearIsolate = async () => {
+    const capture = window.__IMAIOS_CINE_TOOLS_NATIVE_VIEWER__;
+    const viewer = capture?.viewer || null;
+    const result = {
+      kind: "imaios-native-clear-isolate-page-context",
+      version: 1,
+      href: location.href,
+      title: document.title,
+      called: false,
+      errors: [],
+      viewer: summarizeCapturedNativeViewer()
+    };
+    if (!viewer || typeof viewer.cleanIsolate !== "function") {
+      return {
+        ...result,
+        ok: false,
+        reason: "Captured IMAIOS viewer with cleanIsolate was not available."
+      };
+    }
+    try {
+      viewer.cleanIsolate();
+      result.called = true;
+    } catch (error) {
+      result.errors.push({ step: "cleanIsolate", message: cap(error?.message || error, 600) });
+    }
+    await new Promise((resolve) => setTimeout(resolve, Number(options.waitMs || 180)));
+    result.viewerAfter = summarizeCapturedNativeViewer();
+    result.lockedButtonText = cap(document.querySelector(".number-isolated")?.textContent || "", 80);
+    result.ok = result.called && result.errors.length === 0;
+    if (!result.ok && !result.reason) result.reason = "cleanIsolate call failed.";
+    return result;
+  };
   const collectFunctionCandidates = (root, rootPath, maxDepth = 4, maxHits = 180) => {
     const hits = [];
     const seen = new WeakSet();
@@ -868,6 +900,18 @@
     }
     if (mode === "native-direct-isolate") {
       runNativeDirectIsolate().then((payload) => {
+        window.postMessage({ source, nonce, payload }, "*");
+      }).catch((error) => {
+        window.postMessage({
+          source,
+          nonce,
+          payload: { ok: false, mode, error: cap(error?.stack || error, 1800) }
+        }, "*");
+      });
+      return;
+    }
+    if (mode === "native-clear-isolate") {
+      runNativeClearIsolate().then((payload) => {
         window.postMessage({ source, nonce, payload }, "*");
       }).catch((error) => {
         window.postMessage({

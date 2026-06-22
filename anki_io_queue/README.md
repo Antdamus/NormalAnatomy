@@ -18,12 +18,15 @@ It gives you:
 * one queue item per extracted image
 * stable numbering and caption carry-through
 * an Anki queue runner window with:
+  * current-image preview before you paste into Image Occlusion
+  * click-to-zoom image inspection with fit and 100% controls
   * load queue
   * previous
   * next pending
   * copy caption
   * copy image path
   * copy image to clipboard
+  * optional automatic paste into the Image Occlusion Add window
   * mark added
   * skip
 * optional auto-advance when Anki fires a note-added hook
@@ -41,7 +44,8 @@ So the current intended workflow is:
 3. The runner auto-loads `Downloads\RadPrimerIOQueue\queue.json` when it exists, or you can click `Load Default Queue`.
 3. For the current item:
    * the runner can auto-copy the current image to the clipboard
-   * paste/use it inside Image Occlusion
+   * show the image preview so you can confirm it is the one you want
+   * paste/use it inside Image Occlusion, or auto-click `Paste Image from Clipboard`
    * use the magic wand
    * adjust masks if needed
    * click `Add`

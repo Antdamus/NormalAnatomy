@@ -1054,6 +1054,10 @@
 
   const isNoPictureCardMode = (values) => values?.mode === "no_pictures";
 
+  const isNormalNoPictureCardMode = (values) => {
+    return values?.engine === "normal" && isNoPictureCardMode(values);
+  };
+
   const isCardCreationMode = (values) => {
     if (!values) return false;
     return !isNarrativeSpeechifyMode(values) && !isIoQueueMode(values);
@@ -1065,6 +1069,7 @@
       mode: field(host, "mode")?.value || DEFAULTS.mode
     };
     const eligible = isNarrativeSpeechifyMode(values);
+    const forcedAudit = isNormalNoPictureCardMode(values);
     const auditEligible = !eligible && !isIoQueueMode(values);
     const autoSend = field(host, "autoSendToSpeechify");
     const autoSave = field(host, "speechifyAutoSave");
@@ -1074,9 +1079,14 @@
     autoSend.disabled = !eligible;
     autoSave.disabled = true;
     autoSave.checked = false;
-    if (audit) audit.disabled = !auditEligible;
+    if (audit) audit.disabled = !auditEligible || forcedAudit;
     if (!eligible) {
       autoSend.checked = false;
+    }
+    if (forcedAudit && audit) {
+      audit.checked = true;
+      field(host, "openChatGPT").checked = true;
+      field(host, "autoSubmitChatGPT").checked = true;
     }
     if (!auditEligible && audit) audit.checked = false;
   };
@@ -1252,6 +1262,11 @@
       values.downloadPlain = false;
       values.downloadAnnotated = false;
       values.cardModeDownloadImagesDisabled = true;
+      if (isNormalNoPictureCardMode(values)) {
+        values.captureCardAuditBundle = true;
+        values.openChatGPT = true;
+        values.autoSubmitChatGPT = true;
+      }
     }
     if (!isNarrativeSpeechifyMode(values)) {
       values.autoSendToSpeechify = false;

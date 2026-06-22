@@ -33,6 +33,7 @@ Therefore:
 - do not fabricate image-based cases
 - do not create NORMAL UNKNOWN cards
 - proceed using only the article text and the standard NORMAL-engine rules for non-image card families
+- route all generated Anki deck paths under the Corebook root, not RadprimerNormal
 
 Zero NORMAL UNKNOWN cards is expected in this mode.
 
