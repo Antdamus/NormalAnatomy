@@ -324,6 +324,61 @@
     }
   };
 
+  const clickDownloadLikeUser = (el) => {
+    if (!el) return false;
+    const target = findDownloadAnchorForElement(el) || el;
+    target.scrollIntoView({ block: "center", inline: "center" });
+    try {
+      target.focus?.({ preventScroll: true });
+    } catch {
+      try {
+        target.focus?.();
+      } catch {}
+    }
+
+    const rect = target.getBoundingClientRect?.();
+    const clientX = rect ? rect.left + rect.width / 2 : 0;
+    const clientY = rect ? rect.top + rect.height / 2 : 0;
+    const eventOptions = {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      view: window,
+      button: 0,
+      buttons: 1,
+      clientX,
+      clientY
+    };
+
+    for (const type of ["pointerover", "pointerenter", "mouseover", "mouseenter", "pointermove", "mousemove"]) {
+      try {
+        target.dispatchEvent(new MouseEvent(type, eventOptions));
+      } catch {}
+    }
+
+    for (const type of ["pointerdown", "mousedown", "pointerup", "mouseup", "click"]) {
+      try {
+        const EventCtor = type.startsWith("pointer") && window.PointerEvent ? window.PointerEvent : MouseEvent;
+        target.dispatchEvent(
+          new EventCtor(type, {
+            ...eventOptions,
+            pointerId: 1,
+            pointerType: "mouse",
+            isPrimary: true,
+            buttons: type.includes("down") ? 1 : 0
+          })
+        );
+      } catch {}
+    }
+
+    try {
+      target.click?.();
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   const submitComposerForm = (editor, sendButton) => {
     const form = getComposerForm(editor);
     if (!form) return false;
@@ -1338,7 +1393,9 @@
     }
 
     sendProgress("DOWNLOADING_CARD_TSV", "Clicking ChatGPT TSV download...");
-    clickLikeUser(button);
+    if (!clickDownloadLikeUser(button)) {
+      clickLikeUser(button);
+    }
 
     const completed = await sendRuntimeRequestWithTimeout(
       {
@@ -1981,11 +2038,11 @@
   };
 
   const makeMultipartSessionId = () => {
-    return `imaios-multipart-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+    return `radprimer-multipart-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
   };
 
   const buildMultipartControllerPrompt = ({ sessionId, totalParts, promptChars, expectedOutputKind }) => [
-    "IMAIOS_MULTIPART_PROMPT_START",
+    "RADPRIMER_MULTIPART_PROMPT_START",
     "",
     `Session: ${sessionId}`,
     `Total parts: ${totalParts}`,
@@ -2006,7 +2063,7 @@
     const partNumber = index + 1;
     const marker = `${sessionId}_PART_${partNumber}_OF_${totalParts}`;
     return [
-      "IMAIOS_MULTIPART_PROMPT_PART",
+      "RADPRIMER_MULTIPART_PROMPT_PART",
       `Session: ${sessionId}`,
       `Part: ${partNumber}/${totalParts}`,
       "",
@@ -2019,7 +2076,7 @@
   };
 
   const buildMultipartFinalizePrompt = ({ sessionId, totalParts, expectedOutputKind }) => [
-    "IMAIOS_MULTIPART_PROMPT_FINALIZE",
+    "RADPRIMER_MULTIPART_PROMPT_FINALIZE",
     "",
     `Session: ${sessionId}`,
     `Parts sent: ${totalParts}/${totalParts}`,

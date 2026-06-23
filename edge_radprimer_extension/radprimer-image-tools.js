@@ -17,7 +17,7 @@
     ankiNormalRoot: "RadprimerNormal",
     ankiDeckRoot: "Corebook::MSK::Trauma::Introduction to Osseous Trauma"
   };
-  const ANKI_BREADCRUMB_SKIP = new Set(["basic"]);
+  const ANKI_BREADCRUMB_SKIP = new Set(["all categories", "basic"]);
   const ANKI_BREADCRUMB_ALIASES = new Map(
     [
       ["Musculoskeletal", "MSK"],

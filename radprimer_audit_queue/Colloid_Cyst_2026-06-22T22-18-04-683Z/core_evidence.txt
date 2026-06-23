@@ -1,0 +1,16 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Core Radiology, Second Edition, uploaded file junzi-shi-core-radiology-a-visual-approach-to.pdf; Neuroimaging: Brain, intraventricular mass discussion / colloid cyst, Neuro Brain pp. 723-724.
+CORE_FACTS_USED:
+
+* Colloid cysts are benign developmental lesions and the most common mass of the foramina of Monro.
+* Colloid cyst is a circumscribed, nonenhancing lesion characteristically arising from the anterior roof of the third ventricle.
+* Machine oil-like contents appear hyperattenuating on CT and low signal intensity on T2-weighted images.
+* In adults, the most common mass of the foramen of Monro is colloid cyst; in children, SEGA is the key competing diagnosis.
+CORE_DERIVED_CARDS:
+* UNKNOWN cards using classic foramen of Monro / anterior third ventricle CT-MR recognition.
+* Differential Drill: CT head for foramen of Monro mass discrimination.
+* Definition card: Define colloid cyst.
+* Mechanism card: variable CT/MR appearance of colloid cyst contents.
+* High-Yield cards: classic CT appearance; MRI signal pattern; differential framework.
+CORE_LIMITATIONS:
+* Core provided concise board-level coverage only; expanded risk score, detailed percentages, apoplexy/rim-enhancement cases, DWI/ADC behavior, treatment/aspiration difficulty, and selected image captions were derived from the RadPrimer + STATdx master source package.

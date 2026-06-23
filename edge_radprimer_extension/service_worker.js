@@ -3106,6 +3106,19 @@ function getSourceCompareAnkiDeckName(source = {}) {
   return sanitizeAnkiDeckPath(source.metadata?.anki?.deckName || source.anki?.deckName || "");
 }
 
+function buildSourceCompareCanonicalDeckPath(source = {}, breadcrumbTrail = [], articleTitle = "") {
+  const sourceDeckParts = getSourceCompareAnkiDeckName(source).split("::").filter(Boolean);
+  const root = sourceDeckParts[0] || DEFAULTS.ankiNormalRoot;
+  const deckParts = buildAnkiBreadcrumbDeckParts(breadcrumbTrail, articleTitle);
+  while (
+    deckParts.length &&
+    normalizeAnkiDeckPartForCompare(root) === normalizeAnkiDeckPartForCompare(deckParts[0])
+  ) {
+    deckParts.shift();
+  }
+  return [root, ...(deckParts.length ? deckParts : [articleTitle])].filter(Boolean).join("::");
+}
+
 function buildMasterSourceCanonicalHierarchy(sources = [], articleTitle = "") {
   const sourceList = Array.isArray(sources) ? sources : [];
   const radPrimerSource = sourceList.find((source) =>
@@ -3136,7 +3149,9 @@ function buildMasterSourceCanonicalHierarchy(sources = [], articleTitle = "") {
           field: "",
           policy: "No source breadcrumbTrail was available; articleTitle fallback only."
         },
-    canonicalDeckPath: fallbackSource ? getSourceCompareAnkiDeckName(fallbackSource) : "",
+    canonicalDeckPath: fallbackSource
+      ? buildSourceCompareCanonicalDeckPath(fallbackSource, canonicalHierarchy, articleTitle)
+      : "",
     sourceBreadcrumbs: Object.fromEntries(
       sourceList.map((source) => [
         sourceCompareDisplayLabel(source),
@@ -3335,7 +3350,7 @@ function getRadPrimerHierarchyStorageKey(title) {
   return key ? `${RADPRIMER_HIERARCHY_PREFIX}${key}` : "";
 }
 
-const ANKI_BREADCRUMB_SKIP = new Set(["basic"]);
+const ANKI_BREADCRUMB_SKIP = new Set(["all categories", "basic"]);
 const ANKI_BREADCRUMB_ALIASES = new Map(
   [
     ["Musculoskeletal", "MSK"],
@@ -3449,6 +3464,7 @@ function buildAnkiDeckTarget(pending) {
   if (deckMode === "auto" && hierarchyOverride?.deckName) {
     const deckRoot = getAutoAnkiRoot(settings);
     const deckParts = normalizeHierarchyOverrideDeckParts(hierarchyOverride, settings, title);
+    const normalizedOverrideDeckName = deckParts.join("::") || sanitizeAnkiDeckPath(hierarchyOverride.deckName) || title;
     return {
       deckMode,
       deckRoot: isNormalNoPictureCardMode(settings) ? deckRoot : hierarchyOverride.deckRoot || deckRoot,
@@ -3456,9 +3472,7 @@ function buildAnkiDeckTarget(pending) {
       breadcrumbTrail: Array.isArray(hierarchyOverride.breadcrumbTrail)
         ? hierarchyOverride.breadcrumbTrail
         : breadcrumbTrail,
-      deckName: isNormalNoPictureCardMode(settings)
-        ? deckParts.join("::") || title
-        : sanitizeAnkiDeckPath(hierarchyOverride.deckName) || title,
+      deckName: normalizedOverrideDeckName,
       hierarchySource: hierarchyOverride.sourceLabel || "RadPrimer"
     };
   }
@@ -5195,6 +5209,8 @@ async function choosePendingCardAuditRunForChatContext(context = {}) {
     throw new Error("No pending card-audit run was found. If needed, export an audit source bundle from the article page.");
   }
 
+  const newestPendingRun = pendingRuns[0];
+  const hasDownloadSentinel = Boolean(context?.hasDownloadSentinel);
   const titleHints = uniqueAuditLabels([
     ...(Array.isArray(context?.titleHints) ? context.titleHints : []),
     ...extractTopicLabelsFromText(context?.snippet || ""),
@@ -5206,7 +5222,7 @@ async function choosePendingCardAuditRunForChatContext(context = {}) {
     .filter((hint) => hint.length >= 4);
 
   if (!normalizedHints.length) {
-    if (pendingRuns.length === 1) return pendingRuns[0];
+    if (pendingRuns.length === 1 || hasDownloadSentinel) return newestPendingRun;
     throw new Error(
       `Could not identify the current ChatGPT topic. Pending audit runs: ${pendingRuns.map(describePendingCardAuditRun).join(" | ")}.`
     );
@@ -5221,6 +5237,8 @@ async function choosePendingCardAuditRunForChatContext(context = {}) {
     .sort((a, b) => b.score - a.score || (b.entry.pending?.createdAt || 0) - (a.entry.pending?.createdAt || 0));
 
   if (matches.length) return matches[0].entry;
+
+  if (hasDownloadSentinel) return newestPendingRun;
 
   throw new Error(
     `No pending card-audit run matched this ChatGPT page (${titleHints.join(" / ")}). Pending audit runs: ${pendingRuns

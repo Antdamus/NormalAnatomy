@@ -1,0 +1,87 @@
+MASTER RADIOLOGY SOURCE PACKAGE
+Article: Colloid Cyst
+Sources: RadPrimer and STATdx
+
+Synthesis Rules Applied
+- RadPrimer is the canonical hierarchy/backbone and metadata.json canonicalHierarchy is preserved exactly for routing.
+- STATdx supplies supplemental depth, broader case examples, and selected primary image representatives where it duplicates or extends RadPrimer.
+- Image duplicate decisions used the staged image_evidence files. Captions alone were not treated as enough evidence for exact duplicate status.
+- Narrative-facing image prose uses clean labels such as RadPrimer image 7 and STATdx image 27. Short IDs remain in registry and traceability fields.
+
+Canonical Hierarchy
+- All Categories > Basic > Neuroradiology > Brain > Introduction to Brain Neoplasms and Cysts > Colloid Cyst
+
+Source Attribution Key
+- [RadPrimer]: retained from RadPrimer source package or RadPrimer hierarchy.
+- [STATdx]: added or refined from STATdx source package.
+- [Both]: present in both source packages or confirmed across paired sources.
+
+Terminology
+- [Both] Colloid cyst is a unilocular mucin-containing cyst of the 3rd ventricle, also called a paraphyseal or endodermal cyst.
+- [Both] The classic location is the foramen of Monro/anterior-superior roof of the 3rd ventricle, where the pillars of the fornix straddle or drape around the cyst.
+
+Imaging Backbone
+- [Both] Best diagnostic clue: a well-demarcated round hyperdense foramen of Monro mass on noncontrast CT.
+- [Both] More than 99% are wedged into the foramen of Monro. Rare sites include lateral or 4th ventricles and very rare extraventricular locations such as cerebellar parenchyma, prepontine cistern/meninges, or olfactory groove.
+- [Both] Size varies from a few millimeters to several centimeters, with mean around 15 mm. STATdx gives an upper range up to about 4 cm, while RadPrimer lists up to about 3 cm.
+- [Both] CT density correlates inversely with hydration state: roughly two-thirds are hyperdense and one-third iso- or hypodense. Hydrocephalus may be present.
+- [Both] Contrast enhancement is usually absent. Peripheral/rim enhancement is rare and can be seen in complicated or inflammatory/apoplexy cases.
+
+MR Signal and Modality-Specific Detail
+- [Both] T1 signal correlates with cholesterol concentration: about two-thirds are T1 hyperintense and one-third isointense; small isointense cysts may be difficult to see.
+- [Both] T2 signal is variable and generally reflects water content; many are isointense to brain, and about 25% show mixed hypo/hyperintensity or a black-hole effect from viscous/inspissated contents.
+- [STATdx] Intracystic nodule dot sign may be seen on T2, similar to Rathke cleft cyst; the T2-hypointense nodule likely reflects free radical-containing compounds, supporting an endodermal relationship.
+- [Both] FLAIR signal does not suppress. DWI should not show true restricted diffusion; ADC tends to be higher than normal brain and lower than CSF.
+- [Both] Fluid-fluid or blood-fluid levels are rare and indicate cyst apoplexy/hemorrhage. Calcification is rare.
+- [Both] Recommended imaging includes noncontrast CT and contrast-enhanced MR; serial imaging may be appropriate for asymptomatic cysts under 1 cm without hydrocephalus.
+
+Differential Diagnosis
+- [Both] Neurocysticercosis: usually multiple parenchymal/cisternal lesions, often with ependymitis or basilar meningitis, common calcification, and possible scolex.
+- [Both] CSF flow artifact / MR pseudocyst: confirm with multiplanar technique and look for phase artifact.
+- [Both] Vertebrobasilar dolichoectasia or aneurysm can simulate a hyperdense foramen of Monro mass; look for flow void and phase artifact on MR.
+- [Both] Subependymoma favors frontal horn/septum pellucidum attachment and patchy/solid enhancement.
+- [Both] Craniopharyngioma rarely involves the 3rd ventricle, is usually not wedged into the foramen of Monro, and more often calcifies or shows rim/nodular enhancement.
+- [STATdx] Pituitary adenoma/pituitary neuroendocrine tumor is rare in the 3rd ventricle and usually enhances strongly and uniformly.
+- [Both] Choroid plexus papilloma, xanthogranuloma, and choroid plexus cyst are additional intraventricular mimics; xanthogranuloma may be indistinguishable on imaging.
+
+Pathology
+- [Both] Colloid cysts arise from embryonic endoderm rather than neuroectoderm, similar to neurenteric and Rathke cleft cysts.
+- [Both] Ectopic endodermal elements migrate into the embryonic diencephalic roof; cyst contents accumulate from mucinous secretions and desquamated epithelial cells.
+- [Both] Grossly, the lesion is smooth, spherical/ovoid, well delineated, and filled with thick gelatinous contents of variable viscosity; hemorrhage is rare.
+- [Both] Histology shows a thin fibrous capsule and simple or pseudostratified epithelial lining with goblet cells and scattered ciliated cells; contents are PAS-positive gelatinous material with variable necrotic debris/cholesterol.
+- [STATdx] Cyst contents may include mucin, old blood, and cholesterol.
+
+Clinical Issues and Risk
+- [Both] Forty to fifty percent are asymptomatic and discovered incidentally. Headache occurs in about 50-60%; nausea, vomiting, memory loss, altered personality, gait disturbance, and visual symptoms are less common.
+- [Both] Acute foramen of Monro obstruction can cause rapid hydrocephalus, herniation, coma, or death, including with small lesions.
+- [Both] Peak age is around 40 years. RadPrimer emphasizes the 3rd-4th decades; STATdx broadens the adult range to the 3rd-7th decades. Pediatric cases are rare but may deteriorate precipitously.
+- [Both] Colloid cysts account for about 0.5-1.0% of primary brain tumors and 15-20% of intraventricular masses. Familial cases are uncommon but reported; familial cases may be younger and more symptomatic.
+- [Both] Most cysts remain stable or stop enlarging; approximately 10% enlarge. Older age, small cyst size, no hydrocephalus, hyperdensity on CT, and T2 hypointensity favor stability; younger age, larger cyst, hydrocephalus, iso-/hypodensity on CT, and T2 hyperintensity favor enlargement.
+- [STATdx] Colloid Cyst Risk Score uses age under 65 years, headache, cyst at least 7 mm, FLAIR hyperintensity, and an anterior anatomic risk zone to stratify symptomatic and hydrocephalus risk.
+
+Treatment and Management
+- [Both] Complete surgical resection is the usual treatment, commonly neuronavigation-guided endoscopic removal with capsule coagulation.
+- [Both] Short-term memory disturbance may occur after surgery and usually resolves. Recurrence is rare after complete resection.
+- [Both] Stereotactic aspiration can be difficult when the cyst is extremely viscous or solid. Hyperdensity on CT and T2 hypointensity suggest high viscosity and potential difficulty with percutaneous therapy.
+- [Both] Ventricular shunting is an option in selected settings. Observation is uncommon and generally not recommended because sudden obstruction can occur even with small cysts.
+- [Both] Referring clinicians should be notified immediately when a colloid cyst is identified, especially if hydrocephalus is present.
+
+Image Teaching Context
+- [Both] Graphic and gross pathology foundations are represented by STATdx images 1-2, which visually duplicate RadPrimer images 1-2.
+- [Both] Classic CT/MR same-patient pair for a 65-year-old with thunderclap headache is represented by STATdx images 30-31, matching RadPrimer images 3-4.
+- [Both] Apoplexy/intracystic hemorrhage cluster should be treated atomically: use STATdx image 5, STATdx image 27, RadPrimer image 7, STATdx image 6, STATdx image 28, and STATdx image 29 together as the primary cross-source cluster.
+- [STATdx] Additional recognition reinforcement includes nonhydrocephalic hyperdense CT, classic T1-hyperintense cyst, severe hydrocephalus cases, DWI nonrestriction, intracystic nodule dot sign, isodense CT, compensated hydrocephalus, interval enlargement, tiny incidental cyst, and surgical planning enhancement examples.
+- [RadPrimer] RadPrimer image 7 is retained because STATdx does not provide the same thin-section T2-space fornix-draping slice.
+
+Image Coverage Gate
+- STATdx covers 9 of 10 RadPrimer images as exact visual duplicates based on actual evidence-file review, but without shared byte hashes or stable source image IDs.
+- RadPrimer image 7 is not covered and remains selected as recognition reinforcement.
+- Archive optional duplicate set is limited to RadPrimer images 1-6 and 8-10. No near-duplicate or conceptual replacement was archived.
+
+Selected Primary Images
+- RadPrimer retained images: RadPrimer image 7.
+- STATdx selected images: STATdx images 1-31.
+- Archive optional duplicate images: RadPrimer images 1-6 and 8-10.
+
+Cluster Guardrail
+- Same-patient and procedure/follow-up style clusters were preserved. Exact duplicate substitutions were made only where the STATdx evidence image visually matched the RadPrimer image/slice/screenshot; RadPrimer image 7 remains with its apoplexy cluster because no STATdx counterpart was found.
