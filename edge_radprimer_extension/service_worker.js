@@ -1216,7 +1216,13 @@ async function createSpeechifyLectureFromChatGPT({ title, text, folder, autoSave
 
 function getArticleSourceFromUrl(url) {
   const raw = String(url || "");
-  if (/^https:\/\/app\.radprimer\.com\//.test(raw)) {
+  let hostname = "";
+  try {
+    hostname = new URL(raw).hostname.toLowerCase();
+  } catch {
+    hostname = "";
+  }
+  if (hostname === "app.radprimer.com") {
     return {
       kind: "radprimer",
       label: "RadPrimer",
@@ -1224,7 +1230,7 @@ function getArticleSourceFromUrl(url) {
       extractorFile: "content-extractor.js"
     };
   }
-  if (/^https:\/\/app\.statdx\.com\//.test(raw)) {
+  if (hostname === "statdx.com" || hostname.endsWith(".statdx.com")) {
     return {
       kind: "statdx",
       label: "STATdx",
@@ -1253,7 +1259,7 @@ class MasterSourceTitleMismatchError extends Error {
     super(
       [
         "RadPrimer and STATdx article titles differ.",
-        "Choose which open tab title should be used as the shared master-source topic, or cancel the build.",
+        "Choose an open tab title or type a shared master-source topic, or cancel the build.",
         ...choices.map((choice, index) => `${index + 1}. ${choice.sourceLabel}: ${choice.title || "[title not found]"}`)
       ].join("\n")
     );
@@ -1278,7 +1284,8 @@ function getArticleSourceForKind(sourceKind) {
       displayName: "RadPrimer",
       extractorFile: "content-extractor.js",
       imageToolsFile: "radprimer-image-tools.js",
-      tabUrlPattern: "https://app.radprimer.com/*"
+      tabUrlPattern: "https://app.radprimer.com/*",
+      tabUrlPatterns: ["https://app.radprimer.com/*"]
     };
   }
   if (kind === "statdx") {
@@ -1288,7 +1295,8 @@ function getArticleSourceForKind(sourceKind) {
       displayName: "STATdx",
       extractorFile: "statdx-content-extractor.js",
       imageToolsFile: "statdx-image-tools.js",
-      tabUrlPattern: "https://app.statdx.com/*"
+      tabUrlPattern: "https://app.statdx.com/*",
+      tabUrlPatterns: ["https://app.statdx.com/*", "https://statdx.com/*", "https://*.statdx.com/*"]
     };
   }
   return null;
@@ -1310,7 +1318,12 @@ async function navigateSourceImage({ imageNumber, sourceKind, sourceLabel }, sen
       : null;
 
   if (!tab?.id) {
-    const tabs = await chrome.tabs.query({ url: [source.tabUrlPattern] });
+    const patterns = Array.isArray(source.tabUrlPatterns) && source.tabUrlPatterns.length
+      ? source.tabUrlPatterns
+      : [source.tabUrlPattern].filter(Boolean);
+    const tabs = patterns.length
+      ? await chrome.tabs.query({ url: patterns })
+      : [];
     tab =
       tabs.find((candidate) => candidate.active && candidate.windowId === senderTab?.windowId) ||
       tabs.find((candidate) => candidate.active) ||
@@ -2197,7 +2210,18 @@ async function findOpenCompanionArticleTabs(tab) {
   const currentSource = assertSupportedArticleTab(tab);
   const companionKind = currentSource.kind === "radprimer" ? "statdx" : "radprimer";
   const companionSource = getArticleSourceForKind(companionKind);
-  const tabs = await chrome.tabs.query({ url: [companionSource.tabUrlPattern] });
+  const patterns = Array.isArray(companionSource.tabUrlPatterns) && companionSource.tabUrlPatterns.length
+    ? companionSource.tabUrlPatterns
+    : [companionSource.tabUrlPattern].filter(Boolean);
+  let tabs = [];
+  if (patterns.length) {
+    tabs = await chrome.tabs.query({ url: patterns });
+  }
+  if (!tabs.length) {
+    tabs = (await chrome.tabs.query({})).filter((candidate) => (
+      getArticleSourceFromTab(candidate)?.kind === companionKind
+    ));
+  }
   return tabs
     .filter((candidate) => candidate.id && candidate.id !== tab.id)
     .sort((a, b) => {
@@ -5743,18 +5767,8 @@ async function runMasterSourceFromPage(tab, options = {}) {
   );
 
   const selectedPairingTitle = cleanArticleTitleText(options.selectedPairingTitle || "");
-  let canonicalTitle = titlesMatch ? currentTitle : selectedPairingTitle;
+  let canonicalTitle = selectedPairingTitle || (titlesMatch ? currentTitle : "");
   if (!titlesMatch && !canonicalTitle) {
-    throw new MasterSourceTitleMismatchError({
-      current: currentChoice,
-      companionTabs: companionTitleEntries.map(({ tab, ...entry }) => entry)
-    });
-  }
-
-  const allowedTitleKeys = new Set(
-    [currentChoice, ...companionTitleEntries].map((entry) => normalizeArticleTitleKey(entry.title)).filter(Boolean)
-  );
-  if (!titlesMatch && !allowedTitleKeys.has(normalizeArticleTitleKey(canonicalTitle))) {
     throw new MasterSourceTitleMismatchError({
       current: currentChoice,
       companionTabs: companionTitleEntries.map(({ tab, ...entry }) => entry)

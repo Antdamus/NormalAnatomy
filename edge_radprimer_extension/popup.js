@@ -667,7 +667,7 @@ function promptForMasterSourceTitleChoice(response) {
   const answer = window.prompt(
     [
       "RadPrimer and STATdx article titles differ.",
-      "Cancel to stop the build, or enter the number/title to use as the shared master-source topic.",
+      "Cancel to stop the build, enter a number/title, or type a shared master-source topic.",
       "",
       ...lines
     ].join("\n"),
@@ -682,7 +682,7 @@ function promptForMasterSourceTitleChoice(response) {
   }
 
   const exact = choices.find((choice) => normalizeTitleForChoice(choice.title) === normalizeTitleForChoice(trimmed));
-  return exact?.title || "";
+  return exact?.title || trimmed;
 }
 
 function normalizeTitleForChoice(value) {
@@ -1169,8 +1169,11 @@ async function buildMasterSource() {
   try {
     await saveForm();
     const tab = await getActiveTab();
+    const sharedPairingTitle = $("sourcePairingKey").value.trim();
     setStatus("Exporting open RadPrimer + STATdx sources and building master source package...");
-    let response = await sendBuildMasterSourceMessage(tab.id);
+    let response = await sendBuildMasterSourceMessage(tab.id, {
+      selectedPairingTitle: sharedPairingTitle
+    });
     if (!response?.ok && response?.errorCode === "MASTER_SOURCE_TITLE_MISMATCH") {
       const selectedPairingTitle = promptForMasterSourceTitleChoice(response);
       if (!selectedPairingTitle) {

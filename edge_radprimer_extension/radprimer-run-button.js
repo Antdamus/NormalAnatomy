@@ -1339,7 +1339,7 @@
     const answer = window.prompt(
       [
         "RadPrimer and STATdx article titles differ.",
-        "Cancel to stop the build, or enter the number/title to use as the shared master-source topic.",
+        "Cancel to stop the build, enter a number/title, or type a shared master-source topic.",
         "",
         ...lines
       ].join("\n"),
@@ -1352,7 +1352,7 @@
       return choices[index - 1].title || "";
     }
     const exact = choices.find((choice) => normalizeTitleForChoice(choice.title) === normalizeTitleForChoice(trimmed));
-    return exact?.title || "";
+    return exact?.title || trimmed;
   };
 
   const runFromPage = (host) => {
@@ -1463,8 +1463,15 @@
 
   const buildMasterSource = (host) => {
     setRunning(host, true);
-    setStatus(host, "Master Source", "Exporting open RadPrimer + STATdx sources and building master source package...");
-    const sendBuildMessage = (selectedPairingTitle = "") => {
+    const sharedPairingTitle = String(field(host, "sourcePairingKey")?.value || "").trim();
+    setStatus(
+      host,
+      "Master Source",
+      sharedPairingTitle
+        ? `Using shared master-source title: ${sharedPairingTitle}. Exporting open RadPrimer + STATdx sources...`
+        : "Exporting open RadPrimer + STATdx sources and building master source package..."
+    );
+    const sendBuildMessage = (selectedPairingTitle = sharedPairingTitle) => {
       chrome.runtime.sendMessage({ type: "BUILD_MASTER_SOURCE_FROM_ARTICLE", selectedPairingTitle }, async (response) => {
       const err = chrome.runtime.lastError;
       if (err) {

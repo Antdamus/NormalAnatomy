@@ -5,6 +5,7 @@
   const HOST_ID = "radiopaedia-pacs-viewer-host";
   const LAUNCHER_ID = "radiopaedia-pacs-viewer-launcher";
   const SHORTCUT_STORAGE_KEY = "radiopaediaPacsShortcutSettings";
+  const CROSS_TAB_STORAGE_KEY = "radiopaediaPacsCrossTabStudies";
   const REFRESH_DELAY_MS = 120;
   const SYNC_DELAYS = [70, 180, 360, 700];
   const BRIDGE_REQUEST_EVENT = "radiopaedia-pacs-bridge-request";
@@ -88,6 +89,21 @@
     shortcutCaptureAction: "",
     pressedKeys: new Set(),
     defaultDragMode: "slice",
+    imageFullscreen: false,
+    compareMode: false,
+    compareLayout: "side",
+    compareLinked: false,
+    activePane: "a",
+    comparePanes: {
+      a: { key: "", imageUrl: "", sliceNumber: null, anchorSlice: null },
+      b: { key: "", imageUrl: "", sliceNumber: null, anchorSlice: null }
+    },
+    compareTransforms: {
+      a: { scale: 1, x: 0, y: 0, rotation: 0 },
+      b: { scale: 1, x: 0, y: 0, rotation: 0 }
+    },
+    externalSeries: [],
+    crossTabStudies: { a: null, b: null },
     suppressOwnKeyCapture: false,
     lastScrollAt: 0,
     refreshTimer: 0
@@ -556,11 +572,12 @@
           visible: domInfo.visible
         });
       });
-      state.series = series;
-      return series;
+      const combined = [...series, ...state.externalSeries];
+      state.series = combined;
+      return combined;
     }
 
-    const series = domSeries;
+    const series = [...domSeries, ...state.externalSeries];
     state.series = series;
     return series;
   }
@@ -595,6 +612,216 @@
     if (info.viewport) pieces.push(info.viewport);
     if (!info.visible) pieces.push("snapshot");
     return pieces.filter(Boolean).join(" | ");
+  }
+
+  function compactFrame(frame) {
+    return {
+      key: frame.key,
+      seriesId: frame.seriesId,
+      order: frame.order,
+      viewport: frame.viewport,
+      visible: frame.visible,
+      imageUrl: frame.imageUrl,
+      imageId: frame.imageId,
+      filename: frame.filename,
+      sequenceNumber: frame.sequenceNumber,
+      sliceNumber: frame.sliceNumber,
+      totalSlices: frame.totalSlices,
+      label: frame.label,
+      seriesNumberLabel: frame.seriesNumberLabel,
+      modality: frame.modality
+    };
+  }
+
+  function serializeSeriesForCrossTab(info) {
+    const stack = getFrameStack(info.key);
+    const frames = Array.from(stack?.frames?.values?.() || [])
+      .filter((frame) => frame?.imageUrl)
+      .sort((a, b) => (a.sliceNumber || 0) - (b.sliceNumber || 0))
+      .map(compactFrame);
+    if (!frames.length && info.imageUrl) frames.push(compactFrame(info));
+
+    return {
+      key: String(info.key || info.seriesId || info.imageUrl),
+      seriesId: info.seriesId,
+      order: info.order,
+      label: info.label,
+      seriesNumberLabel: info.seriesNumberLabel,
+      modality: info.modality,
+      sequenceNumber: info.sequenceNumber,
+      sliceNumber: info.sliceNumber,
+      totalSlices: info.totalSlices || stack?.totalSlices || frames.length,
+      imageUrl: info.imageUrl,
+      frames
+    };
+  }
+
+  function buildCrossTabStudy() {
+    const series = collectSeries()
+      .filter((info) => !info.external && info.imageUrl)
+      .map(serializeSeriesForCrossTab)
+      .filter((info) => info.frames.length);
+    if (!series.length) return null;
+
+    return {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      title: String(document.title || "Radiopaedia study").replace(/\s+/g, " ").trim(),
+      url: location.href,
+      savedAt: Date.now(),
+      modality: series.find((info) => info.modality)?.modality || getModalityLabel(),
+      series
+    };
+  }
+
+  function shortStudyTitle(study) {
+    const title = String(study?.title || "").replace(/\s+/g, " ").trim();
+    return title ? title.slice(0, 70) : "Saved study";
+  }
+
+  function updateCrossTabButtons() {
+    const host = document.getElementById(HOST_ID);
+    const shadow = host?.shadowRoot;
+    if (!shadow) return;
+    ["a", "b"].forEach((slot) => {
+      const study = state.crossTabStudies[slot];
+      const button = shadow.querySelector(`.load-${slot}`);
+      if (button) {
+        button.disabled = !study;
+        button.title = study
+          ? `Load ${shortStudyTitle(study)} into pane ${slot.toUpperCase()}`
+          : `No saved study in slot ${slot.toUpperCase()}`;
+      }
+    });
+  }
+
+  async function loadCrossTabStudies() {
+    try {
+      const stored = await chrome.storage.local.get(CROSS_TAB_STORAGE_KEY);
+      state.crossTabStudies = {
+        a: stored?.[CROSS_TAB_STORAGE_KEY]?.a || null,
+        b: stored?.[CROSS_TAB_STORAGE_KEY]?.b || null
+      };
+    } catch {
+      state.crossTabStudies = { a: null, b: null };
+    }
+    updateCrossTabButtons();
+  }
+
+  async function saveCurrentStudyToSlot(slot) {
+    try {
+      await refreshFromBridge({ preferVisible: true, resetView: false });
+    } catch {}
+    const study = buildCrossTabStudy();
+    if (!study) {
+      const host = ensureHost();
+      const subtitle = host.shadowRoot?.querySelector(".subtitle");
+      if (subtitle) subtitle.textContent = "No loaded Radiopaedia frames available to save.";
+      return false;
+    }
+
+    state.crossTabStudies = {
+      ...state.crossTabStudies,
+      [slot]: study
+    };
+    try {
+      await chrome.storage.local.set({ [CROSS_TAB_STORAGE_KEY]: state.crossTabStudies });
+    } catch {
+      const host = ensureHost();
+      const subtitle = host.shadowRoot?.querySelector(".subtitle");
+      if (subtitle) subtitle.textContent = "Could not save this study; the stored stack may be too large.";
+      return false;
+    }
+
+    updateCrossTabButtons();
+    const host = ensureHost();
+    const subtitle = host.shadowRoot?.querySelector(".subtitle");
+    if (subtitle) subtitle.textContent = `Saved ${study.series.length} series to slot ${slot.toUpperCase()}.`;
+    return true;
+  }
+
+  function removeExternalSlot(slot) {
+    const prefix = `external:${slot}:`;
+    state.externalSeries = state.externalSeries.filter((info) => !String(info.key).startsWith(prefix));
+    state.series = state.series.filter((info) => !String(info.key).startsWith(prefix));
+    Array.from(state.frameStacks.keys()).forEach((key) => {
+      if (String(key).startsWith(prefix)) state.frameStacks.delete(key);
+    });
+  }
+
+  function importCrossTabStudy(slot, study) {
+    if (!study?.series?.length) return [];
+    removeExternalSlot(slot);
+    const imported = [];
+    study.series.forEach((seriesInfo, index) => {
+      const externalKey = `external:${slot}:${study.id}:${seriesInfo.key || index}`;
+      const frames = (seriesInfo.frames || [])
+        .filter((frame) => frame?.imageUrl)
+        .map((frame, frameIndex) => ({
+          ...frame,
+          key: externalKey,
+          seriesId: externalKey,
+          order: index,
+          label: `${slot.toUpperCase()} ${seriesInfo.label || frame.label || `Series ${index + 1}`}`,
+          seriesNumberLabel: seriesInfo.seriesNumberLabel || frame.seriesNumberLabel || `Series ${index + 1}`,
+          modality: seriesInfo.modality || frame.modality || study.modality || "Radiopaedia",
+          sliceNumber: Number.isFinite(frame.sliceNumber) ? frame.sliceNumber : frameIndex + 1,
+          totalSlices: seriesInfo.totalSlices || seriesInfo.frames.length
+        }));
+      if (!frames.length) return;
+
+      const firstFrame = frames.find((frame) => frame.sliceNumber === seriesInfo.sliceNumber) || frames[0];
+      const stack = getFrameStack(externalKey);
+      stack.frames = new Map();
+      stack.currentSlice = firstFrame.sliceNumber || 1;
+      stack.totalSlices = seriesInfo.totalSlices || frames.length;
+      stack.label = firstFrame.label;
+      stack.modality = firstFrame.modality;
+      stack.sequenceNumber = seriesInfo.sequenceNumber || firstFrame.sequenceNumber || index + 1;
+      stack.seriesNumberLabel = firstFrame.seriesNumberLabel;
+      stack.seriesId = externalKey;
+      frames.forEach((frame) => stack.frames.set(frame.sliceNumber, compactFrame(frame)));
+
+      imported.push({
+        ...firstFrame,
+        key: externalKey,
+        seriesId: externalKey,
+        external: true,
+        sourceSlot: slot,
+        sourceTitle: study.title,
+        sourceUrl: study.url,
+        totalSlices: stack.totalSlices,
+        imageUrl: firstFrame.imageUrl
+      });
+    });
+
+    state.externalSeries.push(...imported);
+    state.series = [
+      ...state.series.filter((info) => !String(info.key).startsWith(`external:${slot}:`)),
+      ...imported
+    ];
+    return imported;
+  }
+
+  async function loadCrossTabStudyToPane(slot) {
+    await loadCrossTabStudies();
+    const study = state.crossTabStudies[slot];
+    const imported = importCrossTabStudy(slot, study);
+    if (!imported.length) {
+      const host = ensureHost();
+      const subtitle = host.shadowRoot?.querySelector(".subtitle");
+      if (subtitle) subtitle.textContent = `No saved study found in slot ${slot.toUpperCase()}.`;
+      updateCrossTabButtons();
+      return false;
+    }
+
+    state.compareMode = true;
+    state.activePane = slot;
+    setComparePaneImage(slot, imported[0], { activate: true, resetAnchor: true });
+    anchorCompareLink();
+    renderComparePanes();
+    renderSequenceList();
+    updateCrossTabButtons();
+    return true;
   }
 
   function ensureLauncher() {
@@ -676,6 +903,10 @@
 
   function renderSyncedInfo(info, options = {}) {
     renderSequenceList();
+    if (state.compareMode) {
+      renderComparePanes();
+      return;
+    }
     if (state.open && info) {
       setImage(info, {
         resetView: Boolean(options.resetView),
@@ -759,6 +990,32 @@
           grid-template-columns: 248px minmax(0, 1fr);
           overflow: hidden;
         }
+        .shell.image-fullscreen {
+          grid-template-columns: minmax(0, 1fr);
+          background: #000;
+        }
+        .shell.image-fullscreen .sidebar,
+        .shell.image-fullscreen .topbar,
+        .shell.image-fullscreen .footer,
+        .shell.image-fullscreen .shortcut-panel {
+          display: none !important;
+        }
+        .shell.image-fullscreen .main {
+          grid-template-rows: minmax(0, 1fr);
+          background: #000;
+        }
+        .shell.image-fullscreen .stage {
+          background: #000;
+        }
+        .shell.compare-mode .stage > .single-image {
+          display: none !important;
+        }
+        .shell.compare-mode .stage > .empty {
+          display: none !important;
+        }
+        .shell.compare-mode .compare-grid {
+          display: grid;
+        }
         .sidebar {
           border-right: 1px solid rgba(148, 163, 184, .22);
           background: #0b0f16;
@@ -807,6 +1064,12 @@
           border-color: rgba(96, 165, 250, .86);
           background: #162033;
           box-shadow: 0 0 0 1px rgba(96, 165, 250, .26) inset;
+        }
+        .sequence.pane-a {
+          border-color: rgba(34, 197, 94, .82);
+        }
+        .sequence.pane-b {
+          border-color: rgba(96, 165, 250, .86);
         }
         .sequence img {
           width: 58px;
@@ -902,12 +1165,24 @@
         .tools button:hover {
           background: #1f2937;
         }
+        .tools button:disabled {
+          opacity: .42;
+          cursor: not-allowed;
+        }
+        .tools button:disabled:hover {
+          background: #141c29;
+        }
         .tools .wide {
           width: auto;
           padding: 0 10px;
         }
         .tools .slice-step {
           min-width: 58px;
+        }
+        .tools .active-toggle {
+          background: #bfdbfe;
+          color: #0f172a;
+          border-color: rgba(191, 219, 254, .9);
         }
         .shortcut-panel {
           position: absolute;
@@ -997,6 +1272,81 @@
           user-select: none;
           -webkit-user-drag: none;
         }
+        .compare-grid {
+          position: absolute;
+          inset: 0;
+          display: none;
+          gap: 10px;
+          padding: 10px;
+        }
+        .compare-grid.layout-side {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          grid-template-rows: minmax(0, 1fr);
+        }
+        .compare-grid.layout-stack {
+          grid-template-columns: minmax(0, 1fr);
+          grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+        }
+        .compare-pane {
+          position: relative;
+          min-width: 0;
+          min-height: 0;
+          overflow: hidden;
+          border: 1px solid rgba(148, 163, 184, .28);
+          background: #000;
+          border-radius: 8px;
+        }
+        .compare-pane.active {
+          border-color: rgba(34, 197, 94, .95);
+          box-shadow: 0 0 0 1px rgba(34, 197, 94, .42) inset;
+        }
+        .compare-pane[data-pane="b"].active {
+          border-color: rgba(96, 165, 250, .95);
+          box-shadow: 0 0 0 1px rgba(96, 165, 250, .42) inset;
+        }
+        .shell.image-fullscreen .compare-pane,
+        .shell.image-fullscreen .compare-pane.active,
+        .shell.image-fullscreen .compare-pane[data-pane="b"].active {
+          border-color: transparent;
+          box-shadow: none;
+        }
+        .compare-pane img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          transform-origin: center center;
+          user-select: none;
+          -webkit-user-drag: none;
+        }
+        .compare-label {
+          position: absolute;
+          left: 10px;
+          bottom: 10px;
+          max-width: calc(100% - 20px);
+          padding: 5px 8px;
+          border-radius: 7px;
+          background: rgba(2, 6, 23, .78);
+          color: #e5e7eb;
+          font-size: 11px;
+          line-height: 1.25;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          pointer-events: none;
+        }
+        .compare-empty {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          color: #94a3b8;
+          font-size: 13px;
+          text-align: center;
+          padding: 20px;
+          pointer-events: none;
+        }
         .empty {
           position: absolute;
           inset: 0;
@@ -1055,6 +1405,10 @@
             overflow-x: auto;
             overflow-y: hidden;
           }
+          .shell.image-fullscreen {
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-rows: minmax(0, 1fr);
+          }
         }
       </style>
       <div class="shell" role="dialog" aria-modal="true" aria-label="Radiopaedia PACS viewer">
@@ -1080,6 +1434,8 @@
               <button class="zoom-out" type="button" title="Zoom out">-</button>
               <button class="zoom-in" type="button" title="Zoom in">+</button>
               <button class="reset" type="button" title="Reset view">1:1</button>
+              <button class="rotate-left wide" type="button" title="Rotate active compare pane left">R-</button>
+              <button class="rotate-right wide" type="button" title="Rotate active compare pane right">R+</button>
               <button class="window-down" type="button" title="Lower display window">W-</button>
               <button class="window-up" type="button" title="Raise display window">W+</button>
               <button class="level-down" type="button" title="Darker display level">L-</button>
@@ -1088,6 +1444,16 @@
               <button class="reset-window wide" type="button" title="Reset display window">WL 0</button>
               <button class="sync wide" type="button" title="Sync with the live Radiopaedia viewport">Sync</button>
               <button class="keys wide" type="button" title="Keyboard shortcuts">Keys</button>
+              <button class="compare wide" type="button" title="Show two linked image panes">Compare</button>
+              <button class="pane-a wide" type="button" title="Send selected sequence to pane A">A</button>
+              <button class="pane-b wide" type="button" title="Send selected sequence to pane B">B</button>
+              <button class="compare-layout wide" type="button" title="Switch compare layout">Side</button>
+              <button class="compare-link wide" type="button" title="Link current compare slices">Link</button>
+              <button class="save-a wide" type="button" title="Save this tab's study to cross-tab slot A">Save A</button>
+              <button class="save-b wide" type="button" title="Save this tab's study to cross-tab slot B">Save B</button>
+              <button class="load-a wide" type="button" title="Load saved slot A into pane A">Load A</button>
+              <button class="load-b wide" type="button" title="Load saved slot B into pane B">Load B</button>
+              <button class="image-full wide" type="button" title="Image-only fullscreen">Full</button>
               <button class="close" type="button" title="Close">x</button>
             </div>
           </div>
@@ -1099,7 +1465,19 @@
             <div class="shortcut-list"></div>
           </div>
           <div class="stage">
-            <img alt="Radiopaedia image">
+            <img class="single-image" alt="Radiopaedia image">
+            <div class="compare-grid layout-side" hidden>
+              <div class="compare-pane active" data-pane="a" role="button" tabindex="0" aria-label="Compare pane A">
+                <img alt="Radiopaedia compare image A" hidden>
+                <span class="compare-label">Pane A</span>
+                <span class="compare-empty">Select pane A, then choose a sequence.</span>
+              </div>
+              <div class="compare-pane" data-pane="b" role="button" tabindex="0" aria-label="Compare pane B">
+                <img alt="Radiopaedia compare image B" hidden>
+                <span class="compare-label">Pane B</span>
+                <span class="compare-empty">Select pane B, then choose a sequence.</span>
+              </div>
+            </div>
             <div class="empty" hidden>No rendered Radiopaedia image detected yet.</div>
           </div>
           <div class="footer">
@@ -1119,6 +1497,8 @@
     shadow.querySelector(".zoom-in").addEventListener("click", () => zoomBy(1.2));
     shadow.querySelector(".zoom-out").addEventListener("click", () => zoomBy(1 / 1.2));
     shadow.querySelector(".reset").addEventListener("click", resetView);
+    shadow.querySelector(".rotate-left").addEventListener("click", () => rotateActivePaneBy(-5));
+    shadow.querySelector(".rotate-right").addEventListener("click", () => rotateActivePaneBy(5));
     shadow.querySelector(".window-up").addEventListener("click", () => adjustWindow({ contrastMultiplier: 1.15 }));
     shadow.querySelector(".window-down").addEventListener("click", () => adjustWindow({ contrastMultiplier: 1 / 1.15 }));
     shadow.querySelector(".level-up").addEventListener("click", () => adjustWindow({ brightnessDelta: 0.08 }));
@@ -1127,6 +1507,16 @@
     shadow.querySelector(".reset-window").addEventListener("click", resetWindowing);
     shadow.querySelector(".sync").addEventListener("click", () => syncFromPage({ preferVisible: true }));
     shadow.querySelector(".keys").addEventListener("click", toggleShortcutPanel);
+    shadow.querySelector(".compare").addEventListener("click", toggleCompareMode);
+    shadow.querySelector(".pane-a").addEventListener("click", () => setActivePane("a"));
+    shadow.querySelector(".pane-b").addEventListener("click", () => setActivePane("b"));
+    shadow.querySelector(".compare-layout").addEventListener("click", toggleCompareLayout);
+    shadow.querySelector(".compare-link").addEventListener("click", toggleCompareLink);
+    shadow.querySelector(".save-a").addEventListener("click", () => saveCurrentStudyToSlot("a"));
+    shadow.querySelector(".save-b").addEventListener("click", () => saveCurrentStudyToSlot("b"));
+    shadow.querySelector(".load-a").addEventListener("click", () => loadCrossTabStudyToPane("a"));
+    shadow.querySelector(".load-b").addEventListener("click", () => loadCrossTabStudyToPane("b"));
+    shadow.querySelector(".image-full").addEventListener("click", enterImageFullscreen);
     shadow.querySelector(".shortcut-reset").addEventListener("click", resetShortcutSettings);
     shadow.querySelector(".shortcut-list").addEventListener("click", (event) => {
       const button = event.target?.closest?.("[data-shortcut-action]");
@@ -1135,13 +1525,25 @@
     });
 
     const stage = shadow.querySelector(".stage");
+    shadow.querySelector(".compare-grid").addEventListener("click", (event) => {
+      const pane = event.target?.closest?.(".compare-pane")?.dataset?.pane;
+      if (pane) setActivePane(pane);
+    });
     stage.addEventListener("wheel", onStageWheel, { passive: false });
     stage.addEventListener("pointerdown", onPointerDown);
     stage.addEventListener("pointermove", onPointerMove);
     stage.addEventListener("pointerup", onPointerUp);
     stage.addEventListener("pointercancel", onPointerUp);
     stage.addEventListener("dblclick", () => {
-      if (state.scale < 1.8) {
+      if (state.compareMode) {
+        const transform = paneTransform(state.activePane);
+        if (transform.scale < 1.8) {
+          transform.scale = 2.5;
+          applyTransform();
+        } else {
+          resetPaneTransform(state.activePane);
+        }
+      } else if (state.scale < 1.8) {
         state.scale = 2.5;
         applyTransform();
       } else {
@@ -1152,6 +1554,296 @@
     document.documentElement.appendChild(host);
     renderShortcutPanel();
     return host;
+  }
+
+  function syncImageFullscreenClass() {
+    const host = ensureHost();
+    const shell = host.shadowRoot?.querySelector(".shell");
+    shell?.classList.toggle("image-fullscreen", Boolean(state.imageFullscreen));
+  }
+
+  function enterImageFullscreen() {
+    const host = ensureHost();
+    state.imageFullscreen = true;
+    state.shortcutCaptureAction = "";
+    renderShortcutPanel();
+    syncImageFullscreenClass();
+
+    if (typeof host.requestFullscreen === "function" && document.fullscreenElement !== host) {
+      host.requestFullscreen({ navigationUI: "hide" }).catch(() => {});
+    }
+  }
+
+  function exitImageFullscreen(options = {}) {
+    if (!state.imageFullscreen && document.fullscreenElement !== document.getElementById(HOST_ID)) return;
+    const host = document.getElementById(HOST_ID);
+    state.imageFullscreen = false;
+    syncImageFullscreenClass();
+
+    if (
+      !options.skipDocumentExit &&
+      host &&
+      document.fullscreenElement === host &&
+      typeof document.exitFullscreen === "function"
+    ) {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+
+  function paneState(paneId = state.activePane) {
+    return state.comparePanes[paneId] || state.comparePanes.a;
+  }
+
+  function defaultCompareTransform() {
+    return { scale: 1, x: 0, y: 0, rotation: 0 };
+  }
+
+  function paneTransform(paneId = state.activePane) {
+    if (!state.compareTransforms[paneId]) {
+      state.compareTransforms[paneId] = defaultCompareTransform();
+    }
+    return state.compareTransforms[paneId];
+  }
+
+  function resetPaneTransform(paneId = state.activePane, options = {}) {
+    state.compareTransforms[paneId] = defaultCompareTransform();
+    if (!options.silent) applyTransform();
+  }
+
+  function compareTransformStyle(paneId = state.activePane) {
+    const transform = paneTransform(paneId);
+    return `translate(${transform.x}px, ${transform.y}px) rotate(${transform.rotation}deg) scale(${transform.scale})`;
+  }
+
+  function infoForPane(paneId = state.activePane) {
+    const pane = paneState(paneId);
+    if (!pane.key) return null;
+    const info = state.series.find((item) => item.key === pane.key) || null;
+    if (!info) return null;
+    return {
+      ...info,
+      imageUrl: pane.imageUrl || info.imageUrl,
+      sliceNumber: Number.isFinite(pane.sliceNumber) ? pane.sliceNumber : info.sliceNumber
+    };
+  }
+
+  function syncCompareClass() {
+    const host = ensureHost();
+    const shadow = host.shadowRoot;
+    const shell = shadow?.querySelector(".shell");
+    const grid = shadow?.querySelector(".compare-grid");
+    shell?.classList.toggle("compare-mode", Boolean(state.compareMode));
+    if (grid) {
+      grid.hidden = !state.compareMode;
+      grid.classList.toggle("layout-side", state.compareLayout === "side");
+      grid.classList.toggle("layout-stack", state.compareLayout === "stack");
+    }
+  }
+
+  function compareTitle() {
+    const a = infoForPane("a");
+    const b = infoForPane("b");
+    if (!state.compareMode) return "";
+    if (a && b) return `Compare ${a.label} / ${b.label}`;
+    if (a) return `Compare ${a.label} / Pane B empty`;
+    if (b) return `Compare Pane A empty / ${b.label}`;
+    return "Compare mode";
+  }
+
+  function compareSubtitle() {
+    const a = infoForPane("a");
+    const b = infoForPane("b");
+    const pieces = [];
+    if (a) pieces.push(`A ${sliceText(a)}`);
+    if (b) pieces.push(`B ${sliceText(b)}`);
+    pieces.push(state.compareLinked ? "linked" : "unlinked");
+    pieces.push(state.compareLayout === "side" ? "side-by-side" : "stacked");
+    return pieces.join(" | ");
+  }
+
+  function updateCompareButtons() {
+    const host = ensureHost();
+    const shadow = host.shadowRoot;
+    shadow.querySelector(".compare")?.classList.toggle("active-toggle", state.compareMode);
+    shadow.querySelector(".pane-a")?.classList.toggle("active-toggle", state.compareMode && state.activePane === "a");
+    shadow.querySelector(".pane-b")?.classList.toggle("active-toggle", state.compareMode && state.activePane === "b");
+    const layout = shadow.querySelector(".compare-layout");
+    if (layout) layout.textContent = state.compareLayout === "side" ? "Side" : "Stack";
+    shadow.querySelector(".compare-layout")?.classList.toggle("active-toggle", state.compareMode);
+    shadow.querySelector(".compare-link")?.classList.toggle("active-toggle", state.compareMode && state.compareLinked);
+  }
+
+  function updateComparePaneClasses() {
+    const host = ensureHost();
+    host.shadowRoot?.querySelectorAll(".compare-pane").forEach((pane) => {
+      pane.classList.toggle("active", pane.dataset.pane === state.activePane);
+    });
+    updateCompareButtons();
+  }
+
+  function updateCompareStatus() {
+    if (!state.compareMode) return;
+    const host = ensureHost();
+    const shadow = host.shadowRoot;
+    const title = shadow.querySelector(".title");
+    const subtitle = shadow.querySelector(".subtitle");
+    const scale = shadow.querySelector(".scale");
+    if (title) title.textContent = compareTitle();
+    if (subtitle) subtitle.textContent = compareSubtitle();
+    if (scale) scale.textContent = displayStatusText();
+  }
+
+  function setActivePane(paneId) {
+    if (!state.comparePanes[paneId]) return;
+    state.activePane = paneId;
+    const info = infoForPane(paneId);
+    if (info) {
+      state.activeKey = info.key;
+      state.imageUrl = info.imageUrl;
+    }
+    updateComparePaneClasses();
+    updateCompareStatus();
+  }
+
+  function renderComparePane(paneId) {
+    const host = ensureHost();
+    const shadow = host.shadowRoot;
+    const pane = paneState(paneId);
+    const paneEl = shadow.querySelector(`.compare-pane[data-pane="${paneId}"]`);
+    if (!paneEl) return;
+    const img = paneEl.querySelector("img");
+    const label = paneEl.querySelector(".compare-label");
+    const empty = paneEl.querySelector(".compare-empty");
+    const info = infoForPane(paneId);
+
+    if (!info?.imageUrl) {
+      if (img) {
+        img.hidden = true;
+        img.style.display = "none";
+        img.removeAttribute("src");
+      }
+      if (empty) {
+        empty.hidden = false;
+        empty.style.display = "";
+      }
+      if (label) label.textContent = `Pane ${paneId.toUpperCase()}`;
+      return;
+    }
+
+    if (img) {
+      if (img.src !== info.imageUrl) img.src = info.imageUrl;
+      img.hidden = false;
+      img.style.display = "";
+      img.style.transform = compareTransformStyle(paneId);
+      img.style.filter = displayFilter();
+    }
+    if (empty) {
+      empty.hidden = true;
+      empty.style.display = "none";
+    }
+    if (label) label.textContent = `${paneId.toUpperCase()}: ${info.label} - ${sliceText(info)}`;
+    pane.imageUrl = info.imageUrl;
+    pane.sliceNumber = info.sliceNumber;
+    queueImagePreload(info, { priority: paneId === state.activePane });
+    preloadStackAround(info, 0);
+  }
+
+  function renderComparePanes() {
+    syncCompareClass();
+    renderComparePane("a");
+    renderComparePane("b");
+    updateComparePaneClasses();
+    updateCompareStatus();
+  }
+
+  function chooseAdjacentSeries(info) {
+    if (!state.series.length) return null;
+    if (!info) return state.series[0] || null;
+    const index = state.series.findIndex((item) => item.key === info.key);
+    if (index < 0) return state.series.find((item) => item.key !== info.key) || info;
+    return state.series[(index + 1) % state.series.length] || info;
+  }
+
+  function setComparePaneImage(paneId, info, options = {}) {
+    if (!state.comparePanes[paneId] || !info?.imageUrl) return false;
+    rememberFrame(info);
+    const pane = paneState(paneId);
+    pane.key = info.key;
+    pane.imageUrl = info.imageUrl;
+    pane.sliceNumber = Number.isFinite(info.sliceNumber) ? info.sliceNumber : pane.sliceNumber;
+    if (options.resetAnchor) {
+      pane.anchorSlice = pane.sliceNumber;
+      resetPaneTransform(paneId, { silent: true });
+    } else if (!state.compareLinked) {
+      pane.anchorSlice = pane.sliceNumber;
+    }
+    if (paneId === state.activePane || options.activate) {
+      state.activePane = paneId;
+      state.activeKey = info.key;
+      state.imageUrl = info.imageUrl;
+    }
+    renderComparePanes();
+    renderSequenceList();
+    return true;
+  }
+
+  function setComparePaneSlice(paneId, sliceNumber, options = {}) {
+    const info = infoForPane(paneId);
+    if (!info || !Number.isFinite(sliceNumber)) return false;
+    const stack = getFrameStack(info.key);
+    const total = info.totalSlices || stack?.totalSlices;
+    const targetSlice = Number.isFinite(total)
+      ? Math.max(1, Math.min(total, sliceNumber))
+      : Math.max(1, sliceNumber);
+    const frame = getCachedFrame(info, targetSlice) || {
+      ...info,
+      sliceNumber: targetSlice
+    };
+    if (!frame.imageUrl) return false;
+    return setComparePaneImage(paneId, frame, {
+      resetAnchor: false,
+      activate: options.activate
+    });
+  }
+
+  function anchorCompareLink() {
+    ["a", "b"].forEach((paneId) => {
+      const info = infoForPane(paneId);
+      if (info?.sliceNumber) state.comparePanes[paneId].anchorSlice = info.sliceNumber;
+    });
+  }
+
+  function toggleCompareMode() {
+    state.compareMode = !state.compareMode;
+    if (state.compareMode) {
+      const primary = getActiveSeries() || chooseInitialSeries();
+      const secondary = chooseAdjacentSeries(primary);
+      if (primary && !state.comparePanes.a.key) {
+        setComparePaneImage("a", primary, { activate: true, resetAnchor: true });
+      }
+      if (secondary && !state.comparePanes.b.key) {
+        setComparePaneImage("b", secondary, { resetAnchor: true });
+      }
+      anchorCompareLink();
+    } else {
+      state.compareLinked = false;
+      syncCompareClass();
+      updateCompareButtons();
+      updateStatus(getActiveSeries());
+    }
+    renderComparePanes();
+    renderSequenceList();
+  }
+
+  function toggleCompareLayout() {
+    state.compareLayout = state.compareLayout === "side" ? "stack" : "side";
+    renderComparePanes();
+  }
+
+  function toggleCompareLink() {
+    state.compareLinked = !state.compareLinked;
+    if (state.compareLinked) anchorCompareLink();
+    renderComparePanes();
   }
 
   function renderSequenceList() {
@@ -1172,7 +1864,9 @@
       const button = document.createElement("button");
       button.type = "button";
       button.className = "sequence";
-      button.classList.toggle("active", info.key === state.activeKey);
+      button.classList.toggle("active", !state.compareMode && info.key === state.activeKey);
+      button.classList.toggle("pane-a", state.compareMode && info.key === state.comparePanes.a.key);
+      button.classList.toggle("pane-b", state.compareMode && info.key === state.comparePanes.b.key);
       button.dataset.seriesKey = info.key;
       button.title = `${info.label} ${sliceText(info)}`;
       button.addEventListener("click", () => activateSeries(info.key, { resetView: true }));
@@ -1206,6 +1900,10 @@
   function updateStatus(info) {
     const host = ensureHost();
     const shadow = host.shadowRoot;
+    if (state.compareMode) {
+      updateCompareStatus();
+      return;
+    }
     const title = shadow.querySelector(".title");
     const subtitle = shadow.querySelector(".subtitle");
     const scale = shadow.querySelector(".scale");
@@ -1223,11 +1921,18 @@
 
   function setImage(info, options = {}) {
     if (!info?.imageUrl) return false;
+    if (state.compareMode) {
+      return setComparePaneImage(options.pane || state.activePane, info, {
+        activate: true,
+        resetAnchor: Boolean(options.resetView)
+      });
+    }
     rememberFrame(info);
     const host = ensureHost();
     const shadow = host.shadowRoot;
-    const img = shadow.querySelector(".stage img");
+    const img = shadow.querySelector(".stage > .single-image");
     const empty = shadow.querySelector(".empty");
+    syncCompareClass();
     state.activeKey = info.key;
     state.imageUrl = info.imageUrl;
     const existingIndex = state.series.findIndex((item) => item.key === info.key);
@@ -1263,7 +1968,7 @@
   function showEmpty() {
     const host = ensureHost();
     const shadow = host.shadowRoot;
-    const img = shadow.querySelector(".stage img");
+    const img = shadow.querySelector(".stage > .single-image");
     const empty = shadow.querySelector(".empty");
     img.hidden = true;
     img.style.display = "none";
@@ -1276,6 +1981,23 @@
     const host = ensureHost();
     host.style.display = "block";
     state.open = true;
+    state.imageFullscreen = false;
+    state.compareMode = false;
+    state.compareLinked = false;
+    state.activePane = "a";
+    state.comparePanes = {
+      a: { key: "", imageUrl: "", sliceNumber: null, anchorSlice: null },
+      b: { key: "", imageUrl: "", sliceNumber: null, anchorSlice: null }
+    };
+    state.compareTransforms = {
+      a: defaultCompareTransform(),
+      b: defaultCompareTransform()
+    };
+    state.externalSeries = [];
+    syncImageFullscreenClass();
+    syncCompareClass();
+    updateCompareButtons();
+    loadCrossTabStudies();
     const info = chooseInitialSeries();
     renderSequenceList();
     if (info) setImage(info, { resetView: true });
@@ -1285,6 +2007,7 @@
 
   function closeViewer() {
     const host = document.getElementById(HOST_ID);
+    exitImageFullscreen();
     if (host) host.style.display = "none";
     state.open = false;
     state.dragging = false;
@@ -1293,6 +2016,13 @@
     state.scrubOriginSlice = null;
     state.scrubLastSlice = null;
     state.shortcutCaptureAction = "";
+    state.compareMode = false;
+    state.compareLinked = false;
+    state.compareTransforms = {
+      a: defaultCompareTransform(),
+      b: defaultCompareTransform()
+    };
+    state.externalSeries = [];
     state.pressedKeys.clear();
     clearImageCache();
     renderShortcutPanel();
@@ -1302,6 +2032,12 @@
     collectSeries();
     const info = state.series.find((item) => item.key === key);
     if (!info) return false;
+    if (state.compareMode) {
+      return setComparePaneImage(state.activePane, info, {
+        activate: true,
+        resetAnchor: Boolean(options.resetView)
+      });
+    }
     const didSet = setImage(info, options);
     if (didSet && info.bridgeAvailable) {
       setBridgeFrame(info, info.sliceNumber || 1);
@@ -1312,6 +2048,13 @@
   function activateRelativeSeries(delta) {
     collectSeries();
     if (!state.series.length) return;
+    if (state.compareMode) {
+      const paneInfo = infoForPane(state.activePane);
+      const currentIndex = Math.max(0, state.series.findIndex((item) => item.key === paneInfo?.key));
+      const info = state.series[(currentIndex + delta + state.series.length) % state.series.length];
+      setComparePaneImage(state.activePane, info, { activate: true, resetAnchor: true });
+      return;
+    }
     const currentIndex = Math.max(0, state.series.findIndex((item) => item.key === state.activeKey));
     const nextIndex = (currentIndex + delta + state.series.length) % state.series.length;
     const info = state.series[nextIndex];
@@ -1332,6 +2075,11 @@
     const series = collectSeries();
     state.series = series;
     const info = selectInfoAfterSync({ ...options, previousKey, previousUrl });
+    if (state.compareMode) {
+      renderComparePanes();
+      renderSequenceList();
+      return;
+    }
     renderSyncedInfo(info, { resetView: false });
   }
 
@@ -1499,7 +2247,7 @@
 
   function getNextSliceNumber(info, direction) {
     const stack = getFrameStack(info?.key);
-    const current = stack?.currentSlice || info?.sliceNumber;
+    const current = info?.sliceNumber || stack?.currentSlice;
     if (!Number.isFinite(current)) return null;
     const total = info?.totalSlices || stack?.totalSlices;
     const next = current + (direction > 0 ? 1 : -1);
@@ -1632,6 +2380,9 @@
 
   function setSliceNumber(sliceNumber, options = {}) {
     collectSeries();
+    if (state.compareMode) {
+      return setComparePaneSlice(state.activePane, sliceNumber, { activate: true });
+    }
     const info = getActiveSeries();
     if (!info) return false;
 
@@ -1657,8 +2408,43 @@
     return droveNativeStack || Boolean(cached);
   }
 
+  function paneFromEvent(event) {
+    const paneId = event.target?.closest?.(".compare-pane")?.dataset?.pane;
+    return state.comparePanes[paneId] ? paneId : state.activePane;
+  }
+
+  function scrollCompareStack(direction, paneId = state.activePane) {
+    collectSeries();
+    const info = infoForPane(paneId);
+    if (!info) return false;
+
+    const nextSlice = getNextSliceNumber(info, direction);
+    if (!Number.isFinite(nextSlice)) return false;
+    const moved = setComparePaneSlice(paneId, nextSlice, { activate: true });
+    if (!moved) return false;
+
+    if (state.compareLinked) {
+      const otherPaneId = paneId === "a" ? "b" : "a";
+      const pane = paneState(paneId);
+      const other = paneState(otherPaneId);
+      const otherInfo = infoForPane(otherPaneId);
+      if (
+        otherInfo &&
+        Number.isFinite(pane.anchorSlice) &&
+        Number.isFinite(other.anchorSlice)
+      ) {
+        const offset = nextSlice - pane.anchorSlice;
+        setComparePaneSlice(otherPaneId, other.anchorSlice + offset, { activate: false });
+      }
+    }
+
+    renderComparePanes();
+    return true;
+  }
+
   function scrollStack(direction) {
     collectSeries();
+    if (state.compareMode) return scrollCompareStack(direction, state.activePane);
     const info = getActiveSeries();
     if (!info) return false;
 
@@ -1669,6 +2455,7 @@
 
   function onStageWheel(event) {
     event.preventDefault();
+    if (state.compareMode) setActivePane(paneFromEvent(event));
     if (shortcutHeld(event, "windowDrag")) {
       adjustWindow({ contrastMultiplier: event.deltaY < 0 ? 1.08 : 1 / 1.08 });
       return;
@@ -1681,7 +2468,20 @@
   }
 
   function zoomBy(multiplier) {
+    if (state.compareMode) {
+      const transform = paneTransform(state.activePane);
+      transform.scale = Math.max(0.25, Math.min(12, transform.scale * multiplier));
+      applyTransform();
+      return;
+    }
     state.scale = Math.max(0.25, Math.min(12, state.scale * multiplier));
+    applyTransform();
+  }
+
+  function rotateActivePaneBy(degrees) {
+    if (!state.compareMode) return;
+    const transform = paneTransform(state.activePane);
+    transform.rotation = ((transform.rotation + degrees + 180) % 360) - 180;
     applyTransform();
   }
 
@@ -1721,7 +2521,15 @@
   }
 
   function displayStatusText() {
-    const pieces = [`${Math.round(state.scale * 100)}%`, `Drag ${state.defaultDragMode}`];
+    const transform = state.compareMode ? paneTransform(state.activePane) : null;
+    const pieces = state.compareMode
+      ? [
+          `Pane ${state.activePane.toUpperCase()}`,
+          `${Math.round(transform.scale * 100)}%`,
+          `Rot ${Math.round(transform.rotation)}deg`,
+          "Drag pan"
+        ]
+      : [`${Math.round(state.scale * 100)}%`, `Drag ${state.defaultDragMode}`];
     if (state.windowContrast !== 1 || state.windowBrightness !== 1 || state.inverted) {
       pieces.push(`W${Math.round(state.windowContrast * 100)}`);
       pieces.push(`L${Math.round(state.windowBrightness * 100)}`);
@@ -1731,6 +2539,10 @@
   }
 
   function resetView() {
+    if (state.compareMode) {
+      resetPaneTransform(state.activePane);
+      return;
+    }
     state.scale = 1;
     state.x = 0;
     state.y = 0;
@@ -1743,7 +2555,19 @@
   }
 
   function applyTransform() {
-    const img = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".stage img");
+    const shadow = document.getElementById(HOST_ID)?.shadowRoot;
+    if (!shadow) return;
+    if (state.compareMode) {
+      shadow.querySelectorAll(".compare-pane").forEach((pane) => {
+        const img = pane.querySelector("img");
+        if (!img) return;
+        img.style.transform = compareTransformStyle(pane.dataset.pane);
+        img.style.filter = displayFilter();
+      });
+      updateCompareStatus();
+      return;
+    }
+    const img = shadow.querySelector(".stage > .single-image");
     if (!img) return;
     img.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
     img.style.filter = displayFilter();
@@ -1751,7 +2575,15 @@
   }
 
   function pointerInsideImage(event) {
-    const img = document.getElementById(HOST_ID)?.shadowRoot?.querySelector(".stage img");
+    const shadow = document.getElementById(HOST_ID)?.shadowRoot;
+    if (state.compareMode) {
+      const pane = event.target?.closest?.(".compare-pane");
+      if (pane?.dataset?.pane) {
+        setActivePane(pane.dataset.pane);
+        return true;
+      }
+    }
+    const img = shadow?.querySelector(".stage > .single-image");
     if (!img || img.hidden) return false;
     const rect = img.getBoundingClientRect();
     return (
@@ -1778,12 +2610,18 @@
       return;
     }
 
-    if (shortcutHeld(event, "panDrag") || state.defaultDragMode === "pan") {
+    if (state.compareMode || shortcutHeld(event, "panDrag") || state.defaultDragMode === "pan") {
       state.dragging = true;
       state.startX = event.clientX;
       state.startY = event.clientY;
-      state.originX = state.x;
-      state.originY = state.y;
+      if (state.compareMode) {
+        const transform = paneTransform(state.activePane);
+        state.originX = transform.x;
+        state.originY = transform.y;
+      } else {
+        state.originX = state.x;
+        state.originY = state.y;
+      }
       stage.classList.add("dragging");
       stage.setPointerCapture?.(event.pointerId);
       return;
@@ -1824,8 +2662,14 @@
     }
 
     if (!state.dragging) return;
-    state.x = state.originX + event.clientX - state.startX;
-    state.y = state.originY + event.clientY - state.startY;
+    if (state.compareMode) {
+      const transform = paneTransform(state.activePane);
+      transform.x = state.originX + event.clientX - state.startX;
+      transform.y = state.originY + event.clientY - state.startY;
+    } else {
+      state.x = state.originX + event.clientX - state.startX;
+      state.y = state.originY + event.clientY - state.startY;
+    }
     applyTransform();
   }
 
@@ -1865,6 +2709,12 @@
     if (state.suppressOwnKeyCapture) return;
     if (!state.open) return;
     if (isEditableTarget(event.target)) return;
+    if (key === "Escape" && state.imageFullscreen) {
+      event.preventDefault();
+      event.stopPropagation();
+      exitImageFullscreen();
+      return;
+    }
 
     for (const [actionId] of SHORTCUT_ACTIONS) {
       if (!shortcutMatches(event, actionId)) continue;
@@ -1886,7 +2736,7 @@
     state.refreshTimer = window.setTimeout(() => {
       const previousUrl = state.imageUrl;
       syncFromPage();
-      if (state.open && state.imageUrl !== previousUrl) resetView();
+      if (state.open && !state.compareMode && state.imageUrl !== previousUrl) resetView();
     }, REFRESH_DELAY_MS);
   }
 
@@ -1917,6 +2767,12 @@
     document.addEventListener(BRIDGE_RESPONSE_EVENT, onBridgeResponse);
     document.addEventListener("keydown", handleKeydown, true);
     document.addEventListener("keyup", handleKeyup, true);
+    document.addEventListener("fullscreenchange", () => {
+      const host = document.getElementById(HOST_ID);
+      if (state.imageFullscreen && document.fullscreenElement !== host) {
+        exitImageFullscreen({ skipDocumentExit: true });
+      }
+    });
     window.addEventListener("blur", () => state.pressedKeys.clear());
     refreshFromBridge({ preferVisible: true });
     window.setTimeout(() => {
