@@ -1,0 +1,80 @@
+MASTER SOURCE PACKAGE
+Article title: Scalp and Skull Injuries
+Canonical hierarchy: All Categories > Basic > Neuroradiology > Brain > Primary Effects of CNS Trauma > Scalp and Skull Injuries
+Canonical deck path: Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Scalp and Skull Injuries
+
+SOURCE-QUALIFIED SYNTHESIS
+This fused master source uses RadPrimer as the canonical hierarchy/backbone and STATdx as supplemental depth for image examples, modality-specific details, complications, and recognition reinforcement.
+
+Core teaching frame [Both]
+- Scalp and skull trauma should first be sorted into scalp hematoma/laceration, calvarial fracture, skull base fracture, or fracture complication.
+- The high-yield distinction is cephalohematoma versus subgaleal hematoma: cephalohematoma is subperiosteal and does not cross sutures, while subgaleal hematoma lies under the galea/aponeurosis, is not suture-limited, may become circumferential, and can be life-threatening in infants.
+- Skull fractures are rarely present without overlying scalp swelling; absence of soft-tissue swelling strongly favors normal mimics such as sutures, vascular grooves, venous lakes, arachnoid granulations, or wormian bones.
+
+Terminology [Both]
+- Scalp injuries include lacerations and hematomas; lacerations may contain discontinuity, air, or foreign material.
+- Skull injuries are fractures. Linear fractures are sharply marginated; depressed fractures implode fragments inward; elevated fractures rotate/lift a segment; diastatic fractures widen a suture or synchondrosis; growing skull fractures reflect posttraumatic leptomeningeal cyst formation.
+
+Imaging approach [RadPrimer backbone, STATdx supplemental examples]
+- CT is the practical modality for acute head trauma and skull fracture detection. Radiographs have no modern role in routine head trauma evaluation.
+- Cephalohematoma appears as a unilateral scalp mass limited by sutures; chronic lesions can calcify.
+- Subgaleal hematoma appears as extensive soft-tissue swelling that can cross sutures, cross midline, and extend around the calvarium.
+- For skull base fractures involving the temporal bone, sphenoid/clivus, carotid canal, jugular foramen, or dural venous sinus, consider CTA/MRA because vascular or venous sinus injury risk is higher.
+- MR is mainly for complications rather than initial acute fracture detection, but it can show complications such as growing skull fracture/leptomeningeal cyst.
+
+Clinical and prognosis points [Both]
+- Cephalohematoma occurs in about 1% of newborns, is often related to instrumented or vacuum-assisted delivery, is usually diagnosed clinically, and generally resolves without treatment.
+- Subgaleal hematoma can occur at any age after trauma and can be life-threatening in infants if large or expanding.
+- Linear fractures tend to follow lower-impact force over a broad surface; depressed fractures reflect higher-energy direct impact over a smaller surface.
+- Complications to actively look for include vascular injury, dural/arachnoid laceration with possible CSF leak, cranial nerve injury, and rare growing skull fracture.
+
+Image coverage gate
+- STATdx fully covers the RadPrimer image set with exact visual duplicate representatives in the staged evidence files. RadPrimer images are archived only as optional duplicate/recovery copies; STATdx images are selected as the primary teaching/download set.
+- RP-01 is an exact duplicate of SDX-01 based on actual image_evidence visual review: STATdx SDX-01 is the same visual image/screenshot/content as RP-01: same newborn skull/scalp-layer graphic. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+- RP-02 is an exact duplicate of SDX-02 based on actual image_evidence visual review: STATdx SDX-02 is the same visual image/screenshot/content as RP-02: same newborn bone CT cephalohematoma and linear fracture image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+- RP-03 is an exact duplicate of SDX-03 based on actual image_evidence visual review: STATdx SDX-03 is the same visual image/screenshot/content as RP-03: same same-patient NECT cephalohematoma/epidural hematoma image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+- RP-04 is an exact duplicate of SDX-04 based on actual image_evidence visual review: STATdx SDX-04 is the same visual image/screenshot/content as RP-04: same infant axial NECT large subgaleal hematoma image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+- RP-05 is an exact duplicate of SDX-05 based on actual image_evidence visual review: STATdx SDX-05 is the same visual image/screenshot/content as RP-05: same autopsy exocranial/endocranial skull fracture photograph pair. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+- RP-06 is an exact duplicate of SDX-22 based on actual image_evidence visual review: STATdx SDX-22 is the same visual image/screenshot/content as RP-06: same top-of-calvarium bone CT diastatic sagittal suture fracture image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+- RP-07 is an exact duplicate of SDX-25 based on actual image_evidence visual review: STATdx SDX-25 is the same visual image/screenshot/content as RP-07: same 3D shaded surface display of complex linear/diastatic fractures. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+- RP-08 is an exact duplicate of SDX-23 based on actual image_evidence visual review: STATdx SDX-23 is the same visual image/screenshot/content as RP-08: same axial NECT brain/bone window depressed hammer fracture image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+- RP-09 is an exact duplicate of SDX-09 based on actual image_evidence visual review: STATdx SDX-09 is the same visual image/screenshot/content as RP-09: same axial NECT growing skull fracture with scalloped margins. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+- RP-10 is an exact duplicate of SDX-10 based on actual image_evidence visual review: STATdx SDX-10 is the same visual image/screenshot/content as RP-10: same same-patient axial T2 MR lobulated CSF collection filling growing fracture. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.
+
+Selected primary image set
+- Download/use by default: SDX-01, SDX-02, SDX-03, SDX-04, SDX-05, SDX-06, SDX-07, SDX-08, SDX-09, SDX-10, SDX-11, SDX-12, SDX-13, SDX-14, SDX-15, SDX-16, SDX-17, SDX-18, SDX-19, SDX-20, SDX-21, SDX-22, SDX-23, SDX-24, SDX-25, SDX-26.
+- Archive optional duplicate/recovery images: RP-01, RP-02, RP-03, RP-04, RP-05, RP-06, RP-07, RP-08, RP-09, RP-10.
+- No source case cluster was intentionally split. STATdx same-patient and companion-image clusters are selected intact.
+
+Source-qualified image notes
+- STATdx image 1: Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma is subperiosteal, focal, and limited by sutures. Subgaleal hematoma is under the scalp aponeurosis, much more extensive, and not bounded by sutures. [STATdx]
+- STATdx image 2: Bone CT in a newborn with a traumatic delivery shows a linear skull fracture and a cephalohematoma overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture . [STATdx]
+- STATdx image 3: NECT in the same patient shows the cephalohematoma . Note the presence of a small intracranial epidural hematoma . [STATdx]
+- STATdx image 4: Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss. [STATdx]
+- STATdx image 5: Autopsied skull shows fatal trauma with exo- (L) & endocranial views (R). A linear fracture extends into the superior sagittal suture , causing diastasis & a subgaleal hematoma that the crosses midline. [STATdx]
+- STATdx image 6: Coronal NECT shows a subgaleal hematoma crossing the midline sagittal suture. Skull base & facial fractures & a left frontal skull fracture are better seen on bone windows. Note the pneumocephalus , indicating a fracture through a paranasal sinus through a paranasal sinus or the calvarium. [STATdx]
+- STATdx image 7: Axial bone CT in a 48-year-old trauma patient shows a left temporal bone skull fracture that also involves the greater wing of the sphenoid . [STATdx]
+- STATdx image 8: Axial NECT in the same patient shows an associated epidural hematoma in the anterior middle cranial fossa. Skull fractures are commonly associated with epidural hematomas. Note the contrecoup subarachnoid hemorrhage in the right temporal region. [STATdx]
+- STATdx image 9: Axial NECT in a patient with a "growing" skull fracture shows a widened fracture with scalloped margins . [STATdx]
+- STATdx image 10: Axial T2 MR in the same patient shows a lobulated CSF collection filling the "growing" fracture. CSF pulsations have widened and scalloped the calvarium. "Growing" skull fractures are difficult to detect in the acute stage and are often identified on follow-up imaging as a progressively widening, unhealing fracture. On CT, they are lucent lesions with rounded, scalloped margins. [STATdx]
+- STATdx image 11: Axial NECT in a newborn with difficult vacuum-assisted delivery shows a small right and a large left cephalohematoma. Neither crosses the midline. [STATdx]
+- STATdx image 12: Coronal NECT in the same patient shows the small right and large left cephalohematomas. The elevated periosteum clearly separates the two blood collections. [STATdx]
+- STATdx image 13: Sagittal NECT shows the left parietal cephalohematoma does not cross the coronal suture . [STATdx]
+- STATdx image 14: Axial T2 MR in an abused infant shows a very large mixed acute/subacute subgaleal hematoma crossing the sutures and extending over the face/orbits. [STATdx]
+- STATdx image 15: More cephalad axial T2 MR shows the mixed-age subgaleal hematoma crossing the midline. [STATdx]
+- STATdx image 16: Axial NECT (left) shows severe scalp laceration with a combination of elevated and depressed skull fractures. Axial bone CT (right) shows that the elevated fracture is literally "hinged" away from the calvarium. [STATdx]
+- STATdx image 17: Axial NECT shows a large subgaleal hematoma crossing the sagittal suture. Hyperdense vertex hematoma also crosses the midline, suggesting that the blood is in the epidural space. [STATdx]
+- STATdx image 18: Axial bone CT shows a diastatic fracture of the sagittal suture . A very large subgaleal hematoma extends around the entire circumference of the skull. The superior sagittal sinus is torn, and the intracranial blood seen on soft tissue windows was a vertex venous epidural hematoma. [STATdx]
+- STATdx image 19: Axial NECT in a patient with a blow to the right side of the head shows a mildly depressed fracture . Note that the brain under the fracture appears quite normal. [STATdx]
+- STATdx image 20: Axial NECT with bone algorithm reconstruction and wide window display in the same patient shows a depressed, comminuted skull fracture involving the right squamous temporal bone. Note the subcutaneous air and soft tissue hematoma overlying the fracture. [STATdx]
+- STATdx image 21: Axial NECT in a patient who was hit in the head shows an extensively comminuted, depressed skull fracture . Note the large subgaleal hematoma completely surrounding the entire skull. [STATdx]
+- STATdx image 22: Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures extending into and widening the sagittal suture, causing a diastatic fracture . [STATdx]
+- STATdx image 23: Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture . The brain under the fracture shows only a small cortical contusion . The patient's GCS was 15. [STATdx]
+- STATdx image 24: Axial graphic depicts different basilar skull fractures crossing the petrous apex and clivus as well as extending into the jugular foramen and carotid canal . The potential for vascular injury in such fractures is high. [STATdx]
+- STATdx image 25: 3D shaded surface display in a patient with multiple linear and diastatic skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression of the fractured parietooccipital calvarium that was appreciated only on this SSD. [STATdx]
+- STATdx image 26: Axial bone CT shows a subgaleal hematoma crossing the midline sagittal suture. A left frontal skull fracture is present. Note the pneumocephalus . Subgaleal hematomas are under the scalp aponeurosis, much more extensive, and not bounded by sutures. They are often associated with skull fractures in trauma patients. [STATdx]
+
+Routing and attribution constraints
+- Use metadata.json canonicalHierarchy exactly for routing: All Categories > Basic > Neuroradiology > Brain > Primary Effects of CNS Trauma > Scalp and Skull Injuries.
+- Do not substitute the STATdx breadcrumb for the RadPrimer/metadata hierarchy.
+- Keep RP-05 and SDX-04 style short IDs in machine traceability, not crowded into human-facing prose unless specifically needed for audit.

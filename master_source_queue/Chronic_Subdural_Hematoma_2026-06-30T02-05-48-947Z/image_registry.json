@@ -1,0 +1,2426 @@
+[
+  {
+    "masterImageId": "RP-01",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 1,
+    "humanLabel": "RadPrimer image 1",
+    "caption": "Axial graphic depicts pathology of classic chronic subdural hematoma (SDH) with the formation of thin internal <img src=\"arrow_BS.png\">, thicker external <img src=\"arrow_WO.png\"> membranes. Note the stretched bridging veins <img src=\"arrow_WS.png\"> crossing the SDH, top-to-bottom gradation of fluid from serosanguinous to more proteinaceous contents.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "pathophysiologyGraphic",
+      "membraneAnatomy"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma1.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma1_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/b7f5d7e2-2da5-4f87-9117-c3bdcf98cb0f?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/b7f5d7e2-2da5-4f87-9117-c3bdcf98cb0f?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma1",
+    "sourceImageId": "b7f5d7e2-2da5-4f87-9117-c3bdcf98cb0f",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_b7f5d7e2.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/b7f5d7e2-2da5-4f87-9117-c3bdcf98cb0f?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "5e5dea0f0925d87e9aff67d0e461e3984611de884136ecb352b5d3f252616c59",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-01"
+    ],
+    "traceability": {
+      "shortCode": "RP-01",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_b7f5d7e2.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-02",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 2,
+    "humanLabel": "RadPrimer image 2",
+    "caption": "Axial NECT depicts chronic SDH as a crescentic, hypodense extraaxial fluid collection <img src=\"arrow_WS.png\"> over the left hemisphere. Stretched cortical veins <img src=\"arrow_WO.png\"> are faintly visible as they cross the SDH.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "canonicalBackbone"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma2.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma2_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/5741e61a-1281-4612-af07-34c55aef7426?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/5741e61a-1281-4612-af07-34c55aef7426?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma2",
+    "sourceImageId": "5741e61a-1281-4612-af07-34c55aef7426",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_5741e61a.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/5741e61a-1281-4612-af07-34c55aef7426?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "3f89da740e9e0382a42af1342382a6fca17aaf666e10a43efad79abc4f4fdca8",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-02"
+    ],
+    "traceability": {
+      "shortCode": "RP-02",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_5741e61a.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-03",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 3,
+    "humanLabel": "RadPrimer image 3",
+    "caption": "Axial graphic depicts \"mixed\" SDH. Numerous loculations <img src=\"arrow_BC.png\"> that contain hemorrhages of multiple ages are present. Note the fluid-fluid levels with mixed acute, subacute blood <img src=\"arrow_WS.png\">. Rehemorrhage into preexisting subacute &/or chronic SDH is common.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "pathophysiologyGraphic",
+      "mixedAgeHemorrhage"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma3.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma3_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/187d86f1-7a1c-4ce2-9151-468e2c53a309?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/187d86f1-7a1c-4ce2-9151-468e2c53a309?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma3",
+    "sourceImageId": "187d86f1-7a1c-4ce2-9151-468e2c53a309",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_187d86f1.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/187d86f1-7a1c-4ce2-9151-468e2c53a309?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "8dfba531dae72919420b24a45331f018414c1bb681ad97d8add5aee1c18b474d",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-03"
+    ],
+    "traceability": {
+      "shortCode": "RP-03",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_187d86f1.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-04",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 4,
+    "humanLabel": "RadPrimer image 4",
+    "caption": "Axial NECT shows classic left-sided \"mixed\" SDH <img src=\"arrow_WO.png\">. Note the multiple loculations and fluid-fluid levels <img src=\"arrow_WS.png\"> formed by acute rehemorrhage into preexisting loculated chronic SDH.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "canonicalBackbone"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma4.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma4_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/f3551664-3737-4d2d-8d87-1024b943732e?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/f3551664-3737-4d2d-8d87-1024b943732e?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma4",
+    "sourceImageId": "f3551664-3737-4d2d-8d87-1024b943732e",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_f3551664.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/f3551664-3737-4d2d-8d87-1024b943732e?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "9912c2934906fc9dcdb898398b2aed72489e2aa838863afbe63909e897377d9c",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-04"
+    ],
+    "traceability": {
+      "shortCode": "RP-04",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_f3551664.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-05",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 5,
+    "humanLabel": "RadPrimer image 5",
+    "caption": "Axial NECT in an elderly patient with multiple falls shows a \"bubbly\" fluid collection with loculations and multiple blood-fluid levels <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "modalityVariant",
+      "loculatedMixedSDH"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma5.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma5_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/3cfc8375-986c-4bea-90e6-b37d26a4637b?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/3cfc8375-986c-4bea-90e6-b37d26a4637b?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma5",
+    "sourceImageId": "3cfc8375-986c-4bea-90e6-b37d26a4637b",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_3cfc8375.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/3cfc8375-986c-4bea-90e6-b37d26a4637b?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "006cb494cbdb7eac79024e55de39340da293f79029439b01a99136b53704c2d1",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-19"
+    ],
+    "traceability": {
+      "shortCode": "RP-05",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_3cfc8375.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-06",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 6,
+    "humanLabel": "RadPrimer image 6",
+    "caption": "Axial CTA in the same patient shows the \"bubbly\" crescentic fluid collection. Note the inward displacement of brain with compressed sulci and displaced cortical veins <img src=\"arrow_WO.png\">.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "modalityVariant",
+      "loculatedMixedSDH"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma6.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma6_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/0d7e3dbe-4e49-4035-8757-5c64adf62db4?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/0d7e3dbe-4e49-4035-8757-5c64adf62db4?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma6",
+    "sourceImageId": "0d7e3dbe-4e49-4035-8757-5c64adf62db4",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_0d7e3dbe.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/0d7e3dbe-4e49-4035-8757-5c64adf62db4?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "5fe301c71d44e85e0398a4bd529001a01fec09f6eb901451c4458a0bfd0d97fd",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-20"
+    ],
+    "traceability": {
+      "shortCode": "RP-06",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_0d7e3dbe.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-07",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 7,
+    "humanLabel": "RadPrimer image 7",
+    "caption": "Axial T2* GRE MR in the same patient shows multiple hypointense blooming foci, consistent with hemorrhage into a chronic loculated SDH. Note multiple locules with blood-fluid levels <img src=\"arrow_BS.png\">.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "modalityVariant",
+      "loculatedMixedSDH"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma7.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma7_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/01e76b9c-fe6b-4264-9de7-d0dc04a6ef00?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/01e76b9c-fe6b-4264-9de7-d0dc04a6ef00?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma7",
+    "sourceImageId": "01e76b9c-fe6b-4264-9de7-d0dc04a6ef00",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_01e76b9c.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/01e76b9c-fe6b-4264-9de7-d0dc04a6ef00?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "a5ee04c18cf1275ea5ee9377b8331b61a8de83bc6cd40ce86327f3231dc75097",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-21"
+    ],
+    "traceability": {
+      "shortCode": "RP-07",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_01e76b9c.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-08",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 8,
+    "humanLabel": "RadPrimer image 8",
+    "caption": "Axial T1 C+ FS MR shows some enhancement around the margins of the chronic SDH <img src=\"arrow_WS.png\">, consistent with a membrane of organizing granulation tissue.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "modalityVariant",
+      "loculatedMixedSDH"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma8.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma8_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/cb77e91f-7a15-4f56-a248-099cfec7ed63?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/cb77e91f-7a15-4f56-a248-099cfec7ed63?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma8",
+    "sourceImageId": "cb77e91f-7a15-4f56-a248-099cfec7ed63",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_cb77e91f.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/cb77e91f-7a15-4f56-a248-099cfec7ed63?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "8b9cc1173262a6bfa9a24f877ff1ad97f0c706bfa50165671f7aaffd51dfe975",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-22"
+    ],
+    "traceability": {
+      "shortCode": "RP-08",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_cb77e91f.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-09",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 9,
+    "humanLabel": "RadPrimer image 9",
+    "caption": "Axial NECT in a patient with Dandy-Walker malformation shows a bilateral chronic SDH <img src=\"arrow_WO.png\"> with calcified margins <img src=\"arrow_WS.png\">. The brain is squeezed toward the midline by the SDH.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "calcifiedChronicSDH",
+      "alternateExample"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma9.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma9_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/2cece9f7-2934-43d3-aad6-69e5642846d0?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/2cece9f7-2934-43d3-aad6-69e5642846d0?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma9",
+    "sourceImageId": "2cece9f7-2934-43d3-aad6-69e5642846d0",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_2cece9f7.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/2cece9f7-2934-43d3-aad6-69e5642846d0?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "5f36540896332db99eb0c0e5514b94e75f40af898a305131bfa98f891cdc61e4",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-17"
+    ],
+    "traceability": {
+      "shortCode": "RP-09",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_2cece9f7.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-10",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 10,
+    "humanLabel": "RadPrimer image 10",
+    "caption": "More cephalad NECT in the same case shows margins of the loculated chronic SDHs are heavily calcified <img src=\"arrow_WS.png\">. This unusual appearance is sometimes termed \"armored brain.\"",
+    "usedFor": [
+      "primaryTeachingSet",
+      "calcifiedChronicSDH",
+      "alternateExample"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma10.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma10_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/c1bddca1-4fc5-497e-9305-239ac070c509?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/c1bddca1-4fc5-497e-9305-239ac070c509?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma10",
+    "sourceImageId": "c1bddca1-4fc5-497e-9305-239ac070c509",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_c1bddca1.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/c1bddca1-4fc5-497e-9305-239ac070c509?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "918aff46af2bb02735f8f86f3af7e78ae942f042937d864a18731bd3a6788e67",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "conceptualReplacement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "RP-10",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_c1bddca1.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-11",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 11,
+    "humanLabel": "RadPrimer image 11",
+    "caption": "This case illustrates the concept of devascularizing membranes of chronic SDHs by embolizing the middle meningeal arteries. This 78-year-old man had recurrent chronic SDHs, shown on this NECT as mixed-density SDHs <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "procedureFollowUp",
+      "MMAEmbolization"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma11.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma11_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/b6c6dc4e-162e-4ac3-9061-610c5169ecd0?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/b6c6dc4e-162e-4ac3-9061-610c5169ecd0?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma11",
+    "sourceImageId": "b6c6dc4e-162e-4ac3-9061-610c5169ecd0",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_b6c6dc4e.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/b6c6dc4e-162e-4ac3-9061-610c5169ecd0?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "48bf607bf178cbe9eb79fdb93f6e9822d2b9f63666fa920ee0136625768012da",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-13"
+    ],
+    "traceability": {
+      "shortCode": "RP-11",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_b6c6dc4e.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-12",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 12,
+    "humanLabel": "RadPrimer image 12",
+    "caption": "Lateral DSA of the selective left external carotid artery in the same patient shows the normal middle meningeal artery <img src=\"arrow_BO.png\">. The superficial temporal <img src=\"arrow_BC.png\"> and maxillary <img src=\"arrow_BS.png\"> arteries are also opacified.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "procedureFollowUp",
+      "MMAEmbolization"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma12.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma12_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/3a46d541-2e77-4f75-afa1-fa64d7d359a1?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/3a46d541-2e77-4f75-afa1-fa64d7d359a1?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma12",
+    "sourceImageId": "3a46d541-2e77-4f75-afa1-fa64d7d359a1",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_3a46d541.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/3a46d541-2e77-4f75-afa1-fa64d7d359a1?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "c4c80dc0a3bb4f2c35167ea93bd1b8fe742f3fa3d93d42811ea126710ccc5765",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-11"
+    ],
+    "traceability": {
+      "shortCode": "RP-12",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_3a46d541.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-13",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 13,
+    "humanLabel": "RadPrimer image 13",
+    "caption": "DSA of the left external carotid artery in the same patient after embolization of the middle meningeal artery (MMA) shows the superficial temporal <img src=\"arrow_BC.png\"> and maxillary <img src=\"arrow_BS.png\"> arteries. The MMA has been occluded and is not opacified.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "procedureFollowUp",
+      "MMAEmbolization"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma13.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma13_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/1bfabcb5-86e1-4734-843c-bccb4525b270?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/1bfabcb5-86e1-4734-843c-bccb4525b270?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma13",
+    "sourceImageId": "1bfabcb5-86e1-4734-843c-bccb4525b270",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_1bfabcb5.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/1bfabcb5-86e1-4734-843c-bccb4525b270?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "994208b09f369a84224f4ff353694d0f997c4fa6a2948e016b1b05f7fb13af70",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-12"
+    ],
+    "traceability": {
+      "shortCode": "RP-13",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_1bfabcb5.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-14",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 14,
+    "humanLabel": "RadPrimer image 14",
+    "caption": "Axial NECT in the same patient 2 weeks after the left MMA embolization shows the left mixed a/cSDH <img src=\"arrow_WS.png\"> has become progressively more hypodense. The right cSDH <img src=\"arrow_WC.png\"> is also slightly more hypodense compared to the initial NECT.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "procedureFollowUp",
+      "MMAEmbolization"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma14.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma14_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/43fc1dfa-8016-4754-b083-66683cd06e83?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/43fc1dfa-8016-4754-b083-66683cd06e83?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma14",
+    "sourceImageId": "43fc1dfa-8016-4754-b083-66683cd06e83",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_43fc1dfa.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/43fc1dfa-8016-4754-b083-66683cd06e83?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "9b51679bb4cc582341ccb1c0a6d4bc2e8fca5223990bfd5bce1d4877f6185c3f",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-14"
+    ],
+    "traceability": {
+      "shortCode": "RP-14",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_43fc1dfa.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-15",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 15,
+    "humanLabel": "RadPrimer image 15",
+    "caption": "Axial NECT 6 weeks after the left MMA embolization shows the left cSDH <img src=\"arrow_WS.png\"> continues to decrease in density and is slightly smaller. The right chronic SDH <img src=\"arrow_WC.png\">  has almost completely resolved.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "procedureFollowUp",
+      "MMAEmbolization"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma15.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma15_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/87cb88d3-deb4-4b47-ab2f-b9f1b999988d?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/87cb88d3-deb4-4b47-ab2f-b9f1b999988d?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma15",
+    "sourceImageId": "87cb88d3-deb4-4b47-ab2f-b9f1b999988d",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-15_RadPrimer_image_15_plain_87cb88d3.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/87cb88d3-deb4-4b47-ab2f-b9f1b999988d?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "464f61e22f6c4ed4fabab1cfd152c7a80cc11bd6de6e6fe02bf1cd168212d871",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "notCovered",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "RP-15",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-15_RadPrimer_image_15_plain_87cb88d3.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-16",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 16,
+    "humanLabel": "RadPrimer image 16",
+    "caption": "Axial NECT 5 months later shows both chronic SDHs <img src=\"arrow_WS.png\"> have almost completely resorbed, and there is no evidence for recurrent hemorrhage. One year after MMA embolization, the patient is normal and has had no recurrence of SDHs.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "procedureFollowUp",
+      "MMAEmbolization"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma16.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma16_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/88874893-af47-4a62-b801-3d8f12d2804e?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/88874893-af47-4a62-b801-3d8f12d2804e?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma16",
+    "sourceImageId": "88874893-af47-4a62-b801-3d8f12d2804e",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-16_RadPrimer_image_16_plain_88874893.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/88874893-af47-4a62-b801-3d8f12d2804e?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "3b59c9bdb8fd8f8e5d2393ab463a2da64eae85079dd9664ca0c538fca4521137",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-15"
+    ],
+    "traceability": {
+      "shortCode": "RP-16",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-16_RadPrimer_image_16_plain_88874893.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-17",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 17,
+    "humanLabel": "RadPrimer image 17",
+    "caption": "Axial T1 FS MR in a 79-year-old woman with recurrent right SDH is windowed to show the multiple variable-sized locules <img src=\"arrow_WS.png\"> of mixed-age blood with fluid-fluid levels <img src=\"arrow_WO.png\">.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "MRISequenceSet",
+      "membraneRestrictedDiffusion"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma17.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma17_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/7e586a5e-690b-4197-abbc-31445b2e43b1?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/7e586a5e-690b-4197-abbc-31445b2e43b1?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma17",
+    "sourceImageId": "7e586a5e-690b-4197-abbc-31445b2e43b1",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-17_RadPrimer_image_17_plain_7e586a5e.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/7e586a5e-690b-4197-abbc-31445b2e43b1?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "4aab8c2ec8c83637b6c516042935d1bae6cdc7b744543bca28a92f69e5ca06aa",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-30"
+    ],
+    "traceability": {
+      "shortCode": "RP-17",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-17_RadPrimer_image_17_plain_7e586a5e.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-18",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 18,
+    "humanLabel": "RadPrimer image 18",
+    "caption": "Axial T2 MR shows multiple loculated pockets within the chronic SDH. There is significant compression of the underlying sulci and gyri. Note the presence of a thick membrane seen here as a linear, slightly irregular hypointensity <img src=\"arrow_BO.png\"> outside of the loculated collection.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "MRISequenceSet",
+      "membraneRestrictedDiffusion"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma18.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma18_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/211590ae-8c1d-4597-b912-db8c370be485?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/211590ae-8c1d-4597-b912-db8c370be485?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma18",
+    "sourceImageId": "211590ae-8c1d-4597-b912-db8c370be485",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-18_RadPrimer_image_18_plain_211590ae.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/211590ae-8c1d-4597-b912-db8c370be485?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "9972be1b648ec9f1e075e281b99189ede617e4990f70b3b16d7e9c8894c6629d",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-31"
+    ],
+    "traceability": {
+      "shortCode": "RP-18",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-18_RadPrimer_image_18_plain_211590ae.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-19",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 19,
+    "humanLabel": "RadPrimer image 19",
+    "caption": "Axial T2* GRE MR shows multiple blooming dependent blood-fluid levels within the chronic SDH <img src=\"arrow_BS.png\">. Note the thickened, irregular vascularized membrane <img src=\"arrow_BO.png\"> also shows gradient susceptibility.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "MRISequenceSet",
+      "membraneRestrictedDiffusion"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma19.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma19_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/c1caf5dd-a36b-48d8-aa6f-a3d7927fbd16?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/c1caf5dd-a36b-48d8-aa6f-a3d7927fbd16?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma19",
+    "sourceImageId": "c1caf5dd-a36b-48d8-aa6f-a3d7927fbd16",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-19_RadPrimer_image_19_plain_c1caf5dd.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/c1caf5dd-a36b-48d8-aa6f-a3d7927fbd16?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "9481e8f4b5b05fdf130f02e85c9bc85d5183106b9dfdb0434eb179b8077887b4",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-32"
+    ],
+    "traceability": {
+      "shortCode": "RP-19",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-19_RadPrimer_image_19_plain_c1caf5dd.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-20",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 20,
+    "humanLabel": "RadPrimer image 20",
+    "caption": "Axial T1 C+ FS MR shows some enhancement <img src=\"arrow_WC.png\"> in the sulci underlying the chronic SDH, most likely representing compressed vasculature. Because the mixed chronic SDH contains large amounts of subacute hemorrhage and dilute free methemoglobin, it is difficult to determine if any enhancement is present.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "MRISequenceSet",
+      "membraneRestrictedDiffusion"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma20.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma20_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/67ecd84b-d0f9-45d9-af75-4f263090f256?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/67ecd84b-d0f9-45d9-af75-4f263090f256?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma20",
+    "sourceImageId": "67ecd84b-d0f9-45d9-af75-4f263090f256",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-20_RadPrimer_image_20_plain_67ecd84b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/67ecd84b-d0f9-45d9-af75-4f263090f256?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "152336fa80baf9086b0d6244fc51465b2e69c543a727d0ca8dade37f8fc893e3",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-33"
+    ],
+    "traceability": {
+      "shortCode": "RP-20",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-20_RadPrimer_image_20_plain_67ecd84b.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-21",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 21,
+    "humanLabel": "RadPrimer image 21",
+    "caption": "Axial DWI MR through the cephalad part of the chronic SDH shows restricted diffusion  <img src=\"arrow_WC.png\"> in the vascularized membrane.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "MRISequenceSet",
+      "membraneRestrictedDiffusion"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma21.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma21_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/9c5e7201-e17d-4952-bab2-cb1d9ddb412a?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/9c5e7201-e17d-4952-bab2-cb1d9ddb412a?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma21",
+    "sourceImageId": "9c5e7201-e17d-4952-bab2-cb1d9ddb412a",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-21_RadPrimer_image_21_plain_9c5e7201.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/9c5e7201-e17d-4952-bab2-cb1d9ddb412a?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "50d23e45cbd0a8d2cfe47be2f930ddcb06d1484be02e6896a7cf31a9e3cd27ee",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-28"
+    ],
+    "traceability": {
+      "shortCode": "RP-21",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-21_RadPrimer_image_21_plain_9c5e7201.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "RP-22",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 22,
+    "humanLabel": "RadPrimer image 22",
+    "caption": "ADC confirms restriction <img src=\"arrow_BC.png\"> in the membrane of the chronic SDH.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "atomicCaseCluster",
+      "MRISequenceSet",
+      "membraneRestrictedDiffusion"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma22.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma22_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/97585d8d-b024-453e-b3d5-54e209fca401?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/97585d8d-b024-453e-b3d5-54e209fca401?style=xlarge&annotated=true",
+    "baseName": "Chronic_Subdural_Hematoma22",
+    "sourceImageId": "97585d8d-b024-453e-b3d5-54e209fca401",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-22_RadPrimer_image_22_plain_97585d8d.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/97585d8d-b024-453e-b3d5-54e209fca401?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "e20d3855ff75db99bf5fdfef903e80fe0f165331d301d0a98dc2a5798cb6de62",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "SDX-29"
+    ],
+    "traceability": {
+      "shortCode": "RP-22",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-22_RadPrimer_image_22_plain_97585d8d.jpg",
+      "sourcePackage": "RadPrimer_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-01",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 1,
+    "humanLabel": "STATdx image 1",
+    "caption": "Axial graphic depicts pathology of classic chronic subdural hematoma (cSDH) with the formation of thin internal <img src=\"arrow_BS.png\">, thicker external <img src=\"arrow_WO.png\"> membranes. Note the stretched bridging veins <img src=\"arrow_WS.png\"> crossing the SDH, top-to-bottom gradation of fluid from serosanguinous to more proteinaceous contents.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma1.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma1_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/1b148bf4-04c7-4954-a41b-2861529fc7c0?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/1b148bf4-04c7-4954-a41b-2861529fc7c0?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma1",
+    "sourceImageId": "1b148bf4-04c7-4954-a41b-2861529fc7c0",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_1b148bf4.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/1b148bf4-04c7-4954-a41b-2861529fc7c0?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "ecd3c155b6367f479647680f4d64ca0b22cebba524c418971ae12456c8cbde4a",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-01"
+    ],
+    "traceability": {
+      "shortCode": "SDX-01",
+      "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_1b148bf4.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-02",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 2,
+    "humanLabel": "STATdx image 2",
+    "caption": "Axial NECT depicts a cSDH as a crescentic, hypodense extraaxial fluid collection <img src=\"arrow_WS.png\"> over the left hemisphere. Stretched cortical veins <img src=\"arrow_WO.png\"> are faintly visible as they cross the SDH.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma2.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma2_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/b2f6b55b-40ea-489e-bb77-fc7403ce9b20?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/b2f6b55b-40ea-489e-bb77-fc7403ce9b20?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma2",
+    "sourceImageId": "b2f6b55b-40ea-489e-bb77-fc7403ce9b20",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_b2f6b55b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/b2f6b55b-40ea-489e-bb77-fc7403ce9b20?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "6b7f182736bbf3e629a45a419ed3d8bb3bebefce42dc0ecde116f74a36d4d0b4",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-02"
+    ],
+    "traceability": {
+      "shortCode": "SDX-02",
+      "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_b2f6b55b.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-03",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 3,
+    "humanLabel": "STATdx image 3",
+    "caption": "Axial graphic depicts \"mixed\" SDH. Numerous loculations <img src=\"arrow_BC.png\"> that contain hemorrhages of multiple ages are present. Note the fluid-fluid levels with mixed acute, subacute blood <img src=\"arrow_WS.png\">. Rehemorrhage into preexisting subacute &/or cSDH is common.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma3.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma3_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/5b08bff4-a119-4bf6-8ab9-6ebd7e7e32a2?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/5b08bff4-a119-4bf6-8ab9-6ebd7e7e32a2?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma3",
+    "sourceImageId": "5b08bff4-a119-4bf6-8ab9-6ebd7e7e32a2",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_5b08bff4.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/5b08bff4-a119-4bf6-8ab9-6ebd7e7e32a2?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "51d4d08e7c30b96b1f8e96f2fa8a44437e0015d68904db5c1da01cfa6f2913ff",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-03"
+    ],
+    "traceability": {
+      "shortCode": "SDX-03",
+      "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_5b08bff4.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-04",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 4,
+    "humanLabel": "STATdx image 4",
+    "caption": "Axial NECT shows classic left-sided \"mixed\" SDH <img src=\"arrow_WO.png\">. Note the multiple loculations and fluid-fluid levels <img src=\"arrow_WS.png\"> formed by acute rehemorrhage into a preexisting loculated cSDH.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma4.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma4_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/be6ff970-8b7c-48f3-95ae-e605fe7696cc?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/be6ff970-8b7c-48f3-95ae-e605fe7696cc?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma4",
+    "sourceImageId": "be6ff970-8b7c-48f3-95ae-e605fe7696cc",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_be6ff970.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/be6ff970-8b7c-48f3-95ae-e605fe7696cc?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "878834e1715a8e5793f30175a977881a7b1c194bb0efbcd2fa197fe11dc51c4f",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-04"
+    ],
+    "traceability": {
+      "shortCode": "SDX-04",
+      "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_be6ff970.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-11",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 11,
+    "humanLabel": "STATdx image 11",
+    "caption": "Lateral pretreatment DSA of the selective left external carotid artery in this patient with recurrent SDHs shows the normal middle meningeal <img src=\"arrow_BO.png\">, superficial temporal <img src=\"arrow_BC.png\">, and maxillary <img src=\"arrow_BS.png\"> arteries.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma11.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma11_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/311acdbc-2ba4-4ffb-bf2f-9d9714242a51?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/311acdbc-2ba4-4ffb-bf2f-9d9714242a51?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma11",
+    "sourceImageId": "311acdbc-2ba4-4ffb-bf2f-9d9714242a51",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_311acdbc.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/311acdbc-2ba4-4ffb-bf2f-9d9714242a51?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "d7243dc6d1b133eaa2d04581e4c08e46ff6fc3fef0a7877f2214b67b264cae17",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-12"
+    ],
+    "traceability": {
+      "shortCode": "SDX-11",
+      "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_311acdbc.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-12",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 12,
+    "humanLabel": "STATdx image 12",
+    "caption": "Selective left ECA DSA in the same patient after embolization of the middle meningeal artery (MMA) shows the superficial temporal <img src=\"arrow_BC.png\"> and maxillary <img src=\"arrow_BS.png\"> arteries. The MMA has been occluded and is not opacified.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma12.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma12_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/57c51367-c9ca-4cb2-a0c6-ec210831ba60?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/57c51367-c9ca-4cb2-a0c6-ec210831ba60?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma12",
+    "sourceImageId": "57c51367-c9ca-4cb2-a0c6-ec210831ba60",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_57c51367.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/57c51367-c9ca-4cb2-a0c6-ec210831ba60?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "f03a4ccc5845ecc0a793b1692f1629a0cb0b46afde79168b1764d6bfcd3ea7a1",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-13"
+    ],
+    "traceability": {
+      "shortCode": "SDX-12",
+      "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_57c51367.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-13",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 13,
+    "humanLabel": "STATdx image 13",
+    "caption": "The concept of devascularizing membranes of chronic SDHs by embolizing the MMAs is shown in the same patient. Pretreatment NECT shows mixed density SDHs <img src=\"arrow_WS.png\"> predominantly hyperdense on the left.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma13.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma13_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/f5860cef-1461-4e19-84c7-ec2c8c4ca476?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/f5860cef-1461-4e19-84c7-ec2c8c4ca476?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma13",
+    "sourceImageId": "f5860cef-1461-4e19-84c7-ec2c8c4ca476",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_f5860cef.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/f5860cef-1461-4e19-84c7-ec2c8c4ca476?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "f0a9e98495986b3515060ccbebbcac1e048d205ea3d2c24af83f879065128f95",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-11"
+    ],
+    "traceability": {
+      "shortCode": "SDX-13",
+      "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_f5860cef.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-14",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 14,
+    "humanLabel": "STATdx image 14",
+    "caption": "Axial NECT in the same patient 2 weeks after the left MMA embolization shows the left SDH <img src=\"arrow_WS.png\"> has become progressively more hypodense. The right cSDH <img src=\"arrow_WC.png\"> is also slightly more hypodense compared to the initial NECT.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma14.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma14_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/71e2cf8b-9971-4f0c-9b75-7d3cae4404e5?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/71e2cf8b-9971-4f0c-9b75-7d3cae4404e5?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma14",
+    "sourceImageId": "71e2cf8b-9971-4f0c-9b75-7d3cae4404e5",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_71e2cf8b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/71e2cf8b-9971-4f0c-9b75-7d3cae4404e5?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "2d8ed519d052d57497f22f3a708570b4d3eaa6a560444ab09b272dcc7146c10b",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-14"
+    ],
+    "traceability": {
+      "shortCode": "SDX-14",
+      "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_71e2cf8b.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-15",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 15,
+    "humanLabel": "STATdx image 15",
+    "caption": "Axial NECT 5 months later shows both cSDHs <img src=\"arrow_WS.png\"> have almost completely resorbed, and there is no evidence for recurrent hemorrhage. One year after MMA embolization, the patient is normal and has had no recurrence of SDHs.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma15.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma15_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/f6c33417-851a-4d2e-acea-04cd06742301?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/f6c33417-851a-4d2e-acea-04cd06742301?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma15",
+    "sourceImageId": "f6c33417-851a-4d2e-acea-04cd06742301",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_f6c33417.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/f6c33417-851a-4d2e-acea-04cd06742301?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "25666a5b465be8f0223ab772fa36d7986ca24d5f219a1336bb789a6188d7db27",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-16"
+    ],
+    "traceability": {
+      "shortCode": "SDX-15",
+      "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_f6c33417.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-17",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 17,
+    "humanLabel": "STATdx image 17",
+    "caption": "Axial NECT in a patient with Dandy-Walker malformation shows a bilateral cSDH <img src=\"arrow_WO.png\"> with calcified margins <img src=\"arrow_WS.png\">. The brain is squeezed toward the midline by the SDH.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma17.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma17_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/109d7e1b-f365-46c0-b21c-16364585e6d0?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/109d7e1b-f365-46c0-b21c-16364585e6d0?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma17",
+    "sourceImageId": "109d7e1b-f365-46c0-b21c-16364585e6d0",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_109d7e1b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/109d7e1b-f365-46c0-b21c-16364585e6d0?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "271d7125e722dd7703f59e5fe91fb8f2811a8af11b468853bc3e1bb41c95cf24",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-09"
+    ],
+    "traceability": {
+      "shortCode": "SDX-17",
+      "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_109d7e1b.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-19",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 19,
+    "humanLabel": "STATdx image 19",
+    "caption": "Axial NECT in an older adult with multiple falls shows a \"bubbly\" fluid collection with loculations and multiple blood-fluid levels <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma19.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma19_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/eafe6278-3cef-4168-9472-dd3eddfd462c?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/eafe6278-3cef-4168-9472-dd3eddfd462c?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma19",
+    "sourceImageId": "eafe6278-3cef-4168-9472-dd3eddfd462c",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_eafe6278.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/eafe6278-3cef-4168-9472-dd3eddfd462c?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "f069b6cbbe0f253713dcb287ef38766809230a8dcf8bf7f1b9b84633af95f16b",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-05"
+    ],
+    "traceability": {
+      "shortCode": "SDX-19",
+      "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_eafe6278.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-20",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 20,
+    "humanLabel": "STATdx image 20",
+    "caption": "Axial CTA in the same patient shows the \"bubbly\" crescentic fluid collection. Note the inward displacement of brain with compressed sulci and displaced cortical veins <img src=\"arrow_WO.png\">.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma20.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma20_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/12fa0185-2cf0-4f68-b6d3-c466db72667a?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/12fa0185-2cf0-4f68-b6d3-c466db72667a?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma20",
+    "sourceImageId": "12fa0185-2cf0-4f68-b6d3-c466db72667a",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_12fa0185.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/12fa0185-2cf0-4f68-b6d3-c466db72667a?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "744d6e15f6b08a5689939c08835014d3679837964860aa4786ea6153f1c65124",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-06"
+    ],
+    "traceability": {
+      "shortCode": "SDX-20",
+      "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_12fa0185.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-21",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 21,
+    "humanLabel": "STATdx image 21",
+    "caption": "Axial T2* GRE MR in the same patient shows multiple hypointense blooming foci, consistent with hemorrhage into a chronic loculated SDH. Note multiple locules with blood-fluid levels <img src=\"arrow_BS.png\">.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma21.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma21_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/cfcbd5df-4f1f-437c-8709-383116421391?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/cfcbd5df-4f1f-437c-8709-383116421391?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma21",
+    "sourceImageId": "cfcbd5df-4f1f-437c-8709-383116421391",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_cfcbd5df.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/cfcbd5df-4f1f-437c-8709-383116421391?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "bd945bea4131ab578c12710b74fb758e54d83910df3a42bcb1ea0b05a90281ba",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-07"
+    ],
+    "traceability": {
+      "shortCode": "SDX-21",
+      "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_cfcbd5df.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-22",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 22,
+    "humanLabel": "STATdx image 22",
+    "caption": "Axial T1 C+ FS MR shows some enhancement around the margins of the cSDH <img src=\"arrow_WS.png\">, consistent with a membrane of organizing granulation tissue.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma22.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma22_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/3af0ac31-90f8-4ce9-9531-b6dbb79bde83?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/3af0ac31-90f8-4ce9-9531-b6dbb79bde83?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma22",
+    "sourceImageId": "3af0ac31-90f8-4ce9-9531-b6dbb79bde83",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_3af0ac31.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/3af0ac31-90f8-4ce9-9531-b6dbb79bde83?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "79eb6fd9eeecaa70b44ab7ee3733434000fb6c4f968ff56cb6c7ab500a37fd3f",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-08"
+    ],
+    "traceability": {
+      "shortCode": "SDX-22",
+      "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_3af0ac31.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-28",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 28,
+    "humanLabel": "STATdx image 28",
+    "caption": "Axial DWI MR through the cephalad part of the cSDH shows restricted diffusion <img src=\"arrow_WC.png\"> in the vascularized membrane.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma28.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma28_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/0112beb9-d55d-42e8-8a12-c9d3fc2ae3f3?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/0112beb9-d55d-42e8-8a12-c9d3fc2ae3f3?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma28",
+    "sourceImageId": "0112beb9-d55d-42e8-8a12-c9d3fc2ae3f3",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-28_STATdx_image_28_plain_0112beb9.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/0112beb9-d55d-42e8-8a12-c9d3fc2ae3f3?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "7e63f634b6fbbce439eec41cdefd6c079ddd13674b5d4fa3490086338edfd72a",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-21"
+    ],
+    "traceability": {
+      "shortCode": "SDX-28",
+      "evidenceFilename": "image_evidence/STATdx/SDX-28_STATdx_image_28_plain_0112beb9.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-29",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 29,
+    "humanLabel": "STATdx image 29",
+    "caption": "ADC confirms restriction <img src=\"arrow_BC.png\"> in the membrane of the cSDH.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma29.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma29_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/5cf4d927-892f-4c15-b432-2285b1c95550?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/5cf4d927-892f-4c15-b432-2285b1c95550?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma29",
+    "sourceImageId": "5cf4d927-892f-4c15-b432-2285b1c95550",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-29_STATdx_image_29_plain_5cf4d927.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/5cf4d927-892f-4c15-b432-2285b1c95550?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "6e7a9db0faecaea2cec348b53b0260b2ac2431e3560c6723ccaabc0f08e8cfe3",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-22"
+    ],
+    "traceability": {
+      "shortCode": "SDX-29",
+      "evidenceFilename": "image_evidence/STATdx/SDX-29_STATdx_image_29_plain_5cf4d927.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-30",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 30,
+    "humanLabel": "STATdx image 30",
+    "caption": "Axial T1 FS MR in a 79-year-old woman with recurrent right SDH is windowed to show the multiple variable-sized locules <img src=\"arrow_WS.png\"> of mixed age blood with fluid-fluid levels <img src=\"arrow_WO.png\">.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma30.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma30_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/c658e27c-2e20-4d92-be37-7e6edb891165?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/c658e27c-2e20-4d92-be37-7e6edb891165?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma30",
+    "sourceImageId": "c658e27c-2e20-4d92-be37-7e6edb891165",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-30_STATdx_image_30_plain_c658e27c.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/c658e27c-2e20-4d92-be37-7e6edb891165?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "fa19feb3f4f8d30117a1b98450dce1181f38b12112e9f82a119dd163d8445916",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-17"
+    ],
+    "traceability": {
+      "shortCode": "SDX-30",
+      "evidenceFilename": "image_evidence/STATdx/SDX-30_STATdx_image_30_plain_c658e27c.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-31",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 31,
+    "humanLabel": "STATdx image 31",
+    "caption": "Axial T2 MR shows multiple loculated pockets within the cSDH. There is significant compression of the underlying sulci and gyri. Note the presence of a thick membrane seen here as a linear, slightly irregular hypointensity <img src=\"arrow_BO.png\"> outside of the loculated collection.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma31.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma31_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/1c24d43c-2cc7-499c-9f47-c255f069cea2?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/1c24d43c-2cc7-499c-9f47-c255f069cea2?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma31",
+    "sourceImageId": "1c24d43c-2cc7-499c-9f47-c255f069cea2",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-31_STATdx_image_31_plain_1c24d43c.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/1c24d43c-2cc7-499c-9f47-c255f069cea2?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "58c5c0b4e82e6512997569e9c0f96bb3ca357e9467675242fd960788de1fb287",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-18"
+    ],
+    "traceability": {
+      "shortCode": "SDX-31",
+      "evidenceFilename": "image_evidence/STATdx/SDX-31_STATdx_image_31_plain_1c24d43c.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-32",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 32,
+    "humanLabel": "STATdx image 32",
+    "caption": "Axial T2* GRE MR shows multiple blooming dependent blood-fluid levels within the cSDH <img src=\"arrow_BS.png\">. Note the thickened, irregular vascularized membrane <img src=\"arrow_BO.png\"> also shows gradient susceptibility.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma32.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma32_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/bd9af56d-13e4-4f4e-a4a5-ad895dda0362?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/bd9af56d-13e4-4f4e-a4a5-ad895dda0362?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma32",
+    "sourceImageId": "bd9af56d-13e4-4f4e-a4a5-ad895dda0362",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-32_STATdx_image_32_plain_bd9af56d.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/bd9af56d-13e4-4f4e-a4a5-ad895dda0362?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "4fef3ffa2dd9e8acf685f9179048949974f3bdd53a3910bcc933fa5bbe058921",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-19"
+    ],
+    "traceability": {
+      "shortCode": "SDX-32",
+      "evidenceFilename": "image_evidence/STATdx/SDX-32_STATdx_image_32_plain_bd9af56d.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-33",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 33,
+    "humanLabel": "STATdx image 33",
+    "caption": "Axial T1 C+ FS MR shows some enhancement <img src=\"arrow_WC.png\"> in the sulci underlying the cSDH, most likely representing compressed vasculature. Because the mixed cSDH contains large amounts of subacute hemorrhage and dilute free methemoglobin, it is difficult to determine if any enhancement is present.",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicate",
+      "sameImageSliceOrGraphic"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Chronic_Subdural_Hematoma33.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma33_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/8c789398-4669-446e-9db1-e842a0c64272?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/8c789398-4669-446e-9db1-e842a0c64272?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma33",
+    "sourceImageId": "8c789398-4669-446e-9db1-e842a0c64272",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-33_STATdx_image_33_plain_8c789398.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/8c789398-4669-446e-9db1-e842a0c64272?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "610851d4685aa606fb9cd2415d096b82409dcf3f759234859f9f7581b7f264b4",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": [
+      "RP-20"
+    ],
+    "traceability": {
+      "shortCode": "SDX-33",
+      "evidenceFilename": "image_evidence/STATdx/SDX-33_STATdx_image_33_plain_8c789398.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-05",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 5,
+    "humanLabel": "STATdx image 5",
+    "caption": "Coronal CT of a patient who had IV contrast earlier the same day for CT neck. There is delayed contrast diffusion into the chronic right SDH <img src=\"arrow_CS.png\">, which appears predominantly isodense to parenchyma.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "atomicCaseCluster",
+      "delayedContrastAndMRSequenceSet"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma5.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma5_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/e4640aa2-6733-4311-a341-947593e34e28?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/e4640aa2-6733-4311-a341-947593e34e28?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma5",
+    "sourceImageId": "e4640aa2-6733-4311-a341-947593e34e28",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_e4640aa2.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/e4640aa2-6733-4311-a341-947593e34e28?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "ed2ccd45c15e3b29abfaa60e53f99c3835c247a7814c3a6a89db3f5f522987ae",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-05",
+      "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_e4640aa2.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-06",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 6,
+    "humanLabel": "STATdx image 6",
+    "caption": "Follow-up coronal CT in the same patient with clearing of the previously noted contrast within the cSDH is shown. The internal septation <img src=\"arrow_WC.png\"> is now better delineated.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "atomicCaseCluster",
+      "delayedContrastAndMRSequenceSet"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma6.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma6_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/05845b81-95e4-48ce-9168-7399bd9c1a02?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/05845b81-95e4-48ce-9168-7399bd9c1a02?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma6",
+    "sourceImageId": "05845b81-95e4-48ce-9168-7399bd9c1a02",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_05845b81.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/05845b81-95e4-48ce-9168-7399bd9c1a02?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "feb0a77a8abf0b9eef5054ffac9863fd454ce9ab4391df800921e5e9b075a4e1",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-06",
+      "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_05845b81.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-07",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 7,
+    "humanLabel": "STATdx image 7",
+    "caption": "Axial T2 MR in the same patient with chronic right cerebral SDH with multiple loculated pockets within the cSDH is shown. There is underlying cerebral compression and sulcal effacement.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "atomicCaseCluster",
+      "delayedContrastAndMRSequenceSet"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma7.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma7_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/4b5ce7f8-36a3-4af6-9f43-8f63020a7c5e?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/4b5ce7f8-36a3-4af6-9f43-8f63020a7c5e?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma7",
+    "sourceImageId": "4b5ce7f8-36a3-4af6-9f43-8f63020a7c5e",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_4b5ce7f8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/4b5ce7f8-36a3-4af6-9f43-8f63020a7c5e?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "7bc6a11d7a2d7c8271655601800d64e6d5aa04f313269f272a462bb74d1549c2",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-07",
+      "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_4b5ce7f8.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-08",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 8,
+    "humanLabel": "STATdx image 8",
+    "caption": "Axial FLAIR MR with predominantly hyperintensity of the loculated chronic right SDH is shown.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "atomicCaseCluster",
+      "delayedContrastAndMRSequenceSet"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma8.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma8_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/5e9a437b-c8ba-4453-aa6f-104ba24339e3?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/5e9a437b-c8ba-4453-aa6f-104ba24339e3?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma8",
+    "sourceImageId": "5e9a437b-c8ba-4453-aa6f-104ba24339e3",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_5e9a437b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/5e9a437b-c8ba-4453-aa6f-104ba24339e3?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "abf39882518165a77f4fad3fec8989ec7861a8733aa3f1cb938c70341a55f59f",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-08",
+      "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_5e9a437b.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-09",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 9,
+    "humanLabel": "STATdx image 9",
+    "caption": "Axial SWI MR in the same patient with a web/net appearance of the chronic right SDH with multiple hypointense blooming foci, consistent with hemorrhage into a chronic loculated SDH, is shown.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "atomicCaseCluster",
+      "delayedContrastAndMRSequenceSet"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma9.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma9_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/fb869880-6300-4410-b8c1-a4f75a5e13cb?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/fb869880-6300-4410-b8c1-a4f75a5e13cb?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma9",
+    "sourceImageId": "fb869880-6300-4410-b8c1-a4f75a5e13cb",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_fb869880.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/fb869880-6300-4410-b8c1-a4f75a5e13cb?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "afa3797aa4b6cf7653105a29e669856e58071f4656b3258e3dbc68b17a42cf93",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-09",
+      "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_fb869880.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-10",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 10,
+    "humanLabel": "STATdx image 10",
+    "caption": "Axial T1 postcontrast MR in the same patient shows thickened peripheral enhancement <img src=\"arrow_CC.png\"> of the SDH with inward displacement of the cortical veins <img src=\"arrow_WO.png\">.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "atomicCaseCluster",
+      "delayedContrastAndMRSequenceSet"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma10.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma10_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/6280fbe9-0289-47b4-85a2-953a0981fb89?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/6280fbe9-0289-47b4-85a2-953a0981fb89?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma10",
+    "sourceImageId": "6280fbe9-0289-47b4-85a2-953a0981fb89",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_6280fbe9.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/6280fbe9-0289-47b4-85a2-953a0981fb89?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "742ef775d401265ab199ebb50370c279996cf48207ec760cb4cbc4fc3bd0a998",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-10",
+      "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_6280fbe9.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-16",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 16,
+    "humanLabel": "STATdx image 16",
+    "caption": "A different patient with prior bilateral MMA coil embolization with radiopaque coils <img src=\"arrow_BC.png\"> along the sphenoid wings is shown. The MMA enters the middle cranial fossa through the foramen spinosum and is the dominant supply to the dura mater.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "postMMAEmbolizationCoils"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma16.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma16_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/699776bd-25fc-40f8-a98c-f7a565e6835e?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/699776bd-25fc-40f8-a98c-f7a565e6835e?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma16",
+    "sourceImageId": "699776bd-25fc-40f8-a98c-f7a565e6835e",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_699776bd.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/699776bd-25fc-40f8-a98c-f7a565e6835e?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "697edfd4d42283cbb3a6ba70e5dc80eeaf75c05fb6d68070a184e23606836834",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-16",
+      "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_699776bd.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-18",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 18,
+    "humanLabel": "STATdx image 18",
+    "caption": "Axial bone CT shows bilateral chronic subdural collections with dense calcifications along the inner membranes <img src=\"arrow_WS.png\">. These calcified SDHs are often seen in patients with chronically shunted hydrocephalus, as in this case.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "calcifiedOrOssifiedChronicSDH"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma18.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma18_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/4b4671aa-2c50-4923-b386-4cf025daf3cd?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/4b4671aa-2c50-4923-b386-4cf025daf3cd?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma18",
+    "sourceImageId": "4b4671aa-2c50-4923-b386-4cf025daf3cd",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_4b4671aa.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/4b4671aa-2c50-4923-b386-4cf025daf3cd?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "149e9ca9cc57f3f45f871feaa259a8bf8f3e0ca92a33edbf27a11ebfcb1c2f10",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "conceptualReplacement",
+    "duplicateOf": [
+      "RP-10"
+    ],
+    "traceability": {
+      "shortCode": "SDX-18",
+      "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_4b4671aa.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-23",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 23,
+    "humanLabel": "STATdx image 23",
+    "caption": "Axial NECT shows a cSDH with surrounding neomembranes <img src=\"arrow_WS.png\"> and internal septations <img src=\"arrow_BO.png\">.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "alternateCTPattern"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma23.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma23_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/ee831f21-e6de-486f-bccf-d1725c0fd2c9?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/ee831f21-e6de-486f-bccf-d1725c0fd2c9?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma23",
+    "sourceImageId": "ee831f21-e6de-486f-bccf-d1725c0fd2c9",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_ee831f21.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/ee831f21-e6de-486f-bccf-d1725c0fd2c9?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "6db154ddb30b2362f53b13bdba44a28c7441e8d2bfa2c1bb4de24bdc9a432eef",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-23",
+      "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_ee831f21.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-24",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 24,
+    "humanLabel": "STATdx image 24",
+    "caption": "Axial NECT shows a hemispheric cSDH, largely of CSF density with an interval rebleed <img src=\"arrow_WS.png\"> producing a separated appearance or hematocrit level.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "alternateCTPattern"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma24.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma24_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/3838f364-7218-43b5-8e24-cef4b73ec971?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/3838f364-7218-43b5-8e24-cef4b73ec971?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma24",
+    "sourceImageId": "3838f364-7218-43b5-8e24-cef4b73ec971",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_3838f364.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/3838f364-7218-43b5-8e24-cef4b73ec971?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "4cf57397efd5334264983f767f64e10c341555ab0a55a6a9ca9398da9fbb2712",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-24",
+      "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_3838f364.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-25",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 25,
+    "humanLabel": "STATdx image 25",
+    "caption": "Axial NECT shows bilateral chronic SDHs <img src=\"arrow_WS.png\">. Note the foci of acute hemorrhage into the periphery of a loculated right-sided collection, which itself is more recent than the underlying, very hypodense cSDH.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "alternateCTPattern"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma25.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma25_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/edbba02c-a16d-4ca3-8002-05a71baaba75?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/edbba02c-a16d-4ca3-8002-05a71baaba75?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma25",
+    "sourceImageId": "edbba02c-a16d-4ca3-8002-05a71baaba75",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_edbba02c.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/edbba02c-a16d-4ca3-8002-05a71baaba75?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "ad91e0613879a65892039a23739d705381c5ab1b93d7caeff1c7633fb272014b",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-25",
+      "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_edbba02c.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-26",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 26,
+    "humanLabel": "STATdx image 26",
+    "caption": "Axial NECT shows multiple chronic ossified SDHs  <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "calcifiedOrOssifiedChronicSDH"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma26.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma26_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/44ccb024-bee6-4b47-8373-b7648940d89a?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/44ccb024-bee6-4b47-8373-b7648940d89a?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma26",
+    "sourceImageId": "44ccb024-bee6-4b47-8373-b7648940d89a",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_44ccb024.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/44ccb024-bee6-4b47-8373-b7648940d89a?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "d000267e62a1fc576cbde95c7fcadcb2b86c9961748321e2b6612a2de06080a8",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-26",
+      "evidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_44ccb024.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-27",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 27,
+    "humanLabel": "STATdx image 27",
+    "caption": "Coronal T1 C+ MR shows a cSDH <img src=\"arrow_WS.png\"> and extensive dural thickening and enhancement <img src=\"arrow_BS.png\">. (Courtesy M. Fruin, MD.)",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "duralThickeningEnhancement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma27.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma27_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/9e0f1aa4-e531-41e2-8a9b-4f767befce25?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/9e0f1aa4-e531-41e2-8a9b-4f767befce25?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma27",
+    "sourceImageId": "9e0f1aa4-e531-41e2-8a9b-4f767befce25",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-27_STATdx_image_27_plain_9e0f1aa4.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/9e0f1aa4-e531-41e2-8a9b-4f767befce25?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "604224d7b138a42814c781e2690d65171ae7de5f4b2d9926c2c10a017cecdd85",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-27",
+      "evidenceFilename": "image_evidence/STATdx/SDX-27_STATdx_image_27_plain_9e0f1aa4.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-34",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 34,
+    "humanLabel": "STATdx image 34",
+    "caption": "Axial FLAIR is dramatic, showing that the hyperintense loculations contain numerous hypointensities <img src=\"arrow_WS.png\"> layering in the dependent portions of the pockets. The appearance suggests acute on chronic (\"mixed\") SDH.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "mixedSDHMRVariant"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma34.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma34_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/497862f3-78b8-4def-9be6-7491a7cb8e84?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/497862f3-78b8-4def-9be6-7491a7cb8e84?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma34",
+    "sourceImageId": "497862f3-78b8-4def-9be6-7491a7cb8e84",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-34_STATdx_image_34_plain_497862f3.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/497862f3-78b8-4def-9be6-7491a7cb8e84?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "65ba3b67eabdd5ae17745547442fb8123b82b1867fc1652f6f3eb6bd4b6cd3c1",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-34",
+      "evidenceFilename": "image_evidence/STATdx/SDX-34_STATdx_image_34_plain_497862f3.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-35",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 35,
+    "humanLabel": "STATdx image 35",
+    "caption": "Coronal T1 MR in the same patient shows that the loculated pouches of fluid <img src=\"arrow_WS.png\"> are mostly hyperintense. A few hypointense pockets of more acute hemorrhage <img src=\"arrow_BO.png\"> are present within the loculations.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "mixedSDHMRVariant"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma35.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma35_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/8ba7a9e8-6d5e-43f8-8178-63631726b3c9?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/8ba7a9e8-6d5e-43f8-8178-63631726b3c9?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma35",
+    "sourceImageId": "8ba7a9e8-6d5e-43f8-8178-63631726b3c9",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-35_STATdx_image_35_plain_8ba7a9e8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/8ba7a9e8-6d5e-43f8-8178-63631726b3c9?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "5d4aa9e80a5795dab66edea3ec94bf45310f97e388d0fef3dd05ef06a3001fa2",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "uniqueOrSelectedReinforcement",
+    "duplicateOf": [],
+    "traceability": {
+      "shortCode": "SDX-35",
+      "evidenceFilename": "image_evidence/STATdx/SDX-35_STATdx_image_35_plain_8ba7a9e8.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  },
+  {
+    "masterImageId": "SDX-36",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 36,
+    "humanLabel": "STATdx image 36",
+    "caption": "Axial bone CT shows peripheral calcifications of these chronic bilateral SDH <img src=\"arrow_WS.png\">. Patient had been shunted for many years.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "calcifiedOrOssifiedChronicSDH"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Chronic_Subdural_Hematoma36.jpg",
+    "annotatedFilename": "Chronic_Subdural_Hematoma36_annot.jpg",
+    "plainUrl": "https://my.statdx.com/image/thumbnail/456185da-14c5-47ef-9ab2-0a8198520843?size=1000&quality=90",
+    "annotatedUrl": "https://my.statdx.com/image/thumbnail/456185da-14c5-47ef-9ab2-0a8198520843?annotated=true&size=1000&quality=90",
+    "baseName": "Chronic_Subdural_Hematoma36",
+    "sourceImageId": "456185da-14c5-47ef-9ab2-0a8198520843",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-36_STATdx_image_36_plain_456185da.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://my.statdx.com/image/thumbnail/456185da-14c5-47ef-9ab2-0a8198520843?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "9d83fc77d005bec20c9b96210d7e39fd9b4b2e3c7dbb5a04ac57dac4b3447558",
+      "dimensions": {
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    "duplicateClassification": "conceptualReplacement",
+    "duplicateOf": [
+      "RP-10"
+    ],
+    "traceability": {
+      "shortCode": "SDX-36",
+      "evidenceFilename": "image_evidence/STATdx/SDX-36_STATdx_image_36_plain_456185da.jpg",
+      "sourcePackage": "STATdx_source_package.txt"
+    }
+  }
+]

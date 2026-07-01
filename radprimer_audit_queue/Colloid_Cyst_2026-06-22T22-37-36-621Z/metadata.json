@@ -370,12 +370,13 @@
     ],
     "deckParts": [
       "Corebook",
+      "All Categories",
       "Neuro",
       "Brain",
       "Introduction to Brain Neoplasms and Cysts",
       "Colloid Cyst"
     ],
-    "deckName": "Corebook::Neuro::Brain::Introduction to Brain Neoplasms and Cysts::Colloid Cyst",
+    "deckName": "Corebook::All Categories::Neuro::Brain::Introduction to Brain Neoplasms and Cysts::Colloid Cyst",
     "hierarchySource": "RadPrimer + STATdx master source",
     "noteType": "core_rad_notetype_v2",
     "importFilename": "corrected_cards_anki_import.tsv"

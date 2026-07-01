@@ -1,0 +1,809 @@
+{
+  "version": "master-source-manifest-v1",
+  "articleTitle": "Diffuse Axonal Injury",
+  "createdAt": "2026-06-30T02:18:20Z",
+  "sourceBundleName": "Diffuse_Axonal_Injury_2026-06-30T02-11-45-667Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Neuroradiology",
+    "Brain",
+    "Primary Effects of CNS Trauma",
+    "Diffuse Axonal Injury"
+  ],
+  "canonicalHierarchySource": {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceFile": "RadPrimer_metadata.json",
+    "field": "breadcrumbTrail",
+    "policy": "RadPrimer breadcrumbTrail is the canonical hierarchy/backbone."
+  },
+  "canonicalDeckPath": "Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Diffuse Axonal Injury",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "radprimerPresent": true,
+    "statdxPresent": true,
+    "radprimerImageCount": 10,
+    "statdxImageCount": 41,
+    "statdxRadPrimerImageCoverageSummary": "STATdx fully covers all 10 RadPrimer images with exact visual counterparts confirmed from actual image_evidence files.",
+    "radprimerCoverageCounts": {
+      "exactDuplicate": 10,
+      "nearDuplicate": 0,
+      "conceptualReplacement": 0,
+      "notCovered": 0
+    },
+    "coreEvidence": "No auditable Core Radiology source supplied in this bundle."
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 41
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer], [STATdx], or [Both] in derived content when attribution matters.",
+    "Use clean human-facing labels such as RadPrimer image 5 and STATdx image 4 in prose.",
+    "Keep RP-05 and SDX-04 style IDs in registry, filenames, manifest, and traceability fields."
+  ],
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-27",
+    "SDX-28",
+    "SDX-29",
+    "SDX-30",
+    "SDX-31",
+    "SDX-32",
+    "SDX-33",
+    "SDX-34",
+    "SDX-35",
+    "SDX-36",
+    "SDX-37",
+    "SDX-38",
+    "SDX-39",
+    "SDX-40",
+    "SDX-41"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10"
+  ],
+  "sourceSelectionPlan": {
+    "sourcePriority": [
+      "RadPrimer canonical hierarchy/backbone",
+      "STATdx supplemental depth and selected primary images where visually superior or duplicate-replacing"
+    ],
+    "textPlan": {
+      "keepFromRadPrimer": [
+        "canonicalHierarchy exactly from metadata.json",
+        "canonicalDeckPath exactly from metadata.json",
+        "core article structure: terminology, imaging, differential, pathology, clinical issues, and diagnostic checklist",
+        "RadPrimer image numbering traceability even when archived"
+      ],
+      "keepFromSTATdx": [
+        "higher-resolution counterparts for the full RadPrimer image set",
+        "additional CT, FLAIR, GRE/SWI, DWI, pathology, normal-conventional-MR, and brainstem examples",
+        "updated wording on midline tSAH with IVH, SWI greater than GRE, MRS outcome markers, and extended midbrain prognostic grading",
+        "modality-specific image atlas captions and same-patient clusters"
+      ],
+      "downweightOrSkip": [
+        "STATdx breadcrumb routing for manifest or deck path",
+        "Core Radiology claims without supplied auditable Core source",
+        "caption-only duplicate claims without image_evidence support",
+        "IMAIOS label repository noise except for preserving the canonical deck breadcrumb from metadata.json"
+      ]
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable. Download only selectedPrimaryImageIds by default.",
+    "duplicateEvidencePolicy": "Exact duplicate decisions in this package are based on actual image_evidence file inspection showing the same slice/screenshot/graphic. Caption-only or topic-only similarity was not used for exact duplicate status.",
+    "radprimerCoverageGate": [
+      {
+        "radprimerImageId": "RP-01",
+        "radprimerHumanLabel": "RadPrimer image 1",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-01"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 1"
+        ],
+        "recommendedAction": "Archive RadPrimer image 1; use STATdx image 1 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "4839a0aaaaeb794e53c90ea0ab4f695891bd8339577130e8eb0d09dbdfbf25af",
+        "statdxEvidenceSha256": "323519aeb017a0df96b046c9b238321f731cae667ee4c57319466f2d0afd9755"
+      },
+      {
+        "radprimerImageId": "RP-02",
+        "radprimerHumanLabel": "RadPrimer image 2",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-02"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 2"
+        ],
+        "recommendedAction": "Archive RadPrimer image 2; use STATdx image 2 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "8be79ab43813598fa12ee6105c960be834d0fba4859cd81dade44160578b6e65",
+        "statdxEvidenceSha256": "3f4159f2d9702eb0dd09ba6c7ad67b7ffbf7d724fbf0654ce4640b82620ee65f"
+      },
+      {
+        "radprimerImageId": "RP-03",
+        "radprimerHumanLabel": "RadPrimer image 3",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-38"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 38"
+        ],
+        "recommendedAction": "Archive RadPrimer image 3; use STATdx image 38 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "e21964b664aa9635a9a2dd7359d662681c148f275fe7e65bfc74355b5dcffd3b",
+        "statdxEvidenceSha256": "0c4418dc81e6f1ce15dd4533a045537331bc0e07f4813f7b842aefaa3d581902"
+      },
+      {
+        "radprimerImageId": "RP-04",
+        "radprimerHumanLabel": "RadPrimer image 4",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-39"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 39"
+        ],
+        "recommendedAction": "Archive RadPrimer image 4; use STATdx image 39 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "74f88b6610ec0dbd19d36c00da4b05457f632f7a13ba95e5b6b9aa2577fa1d03",
+        "statdxEvidenceSha256": "67b386f3298f0b5712a039625fa8ade58cdba53aebbe75c9e6241bd25eed7c84"
+      },
+      {
+        "radprimerImageId": "RP-05",
+        "radprimerHumanLabel": "RadPrimer image 5",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-05"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 5"
+        ],
+        "recommendedAction": "Archive RadPrimer image 5; use STATdx image 5 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "cb1a6000c7815e4b066526f3cfdaa9490ee40ece9897f99551bf74d19b318404",
+        "statdxEvidenceSha256": "cf7d8d95059306e84f7f791d8fded14e1800660ed9794471b4de3d9d1c177a1f"
+      },
+      {
+        "radprimerImageId": "RP-06",
+        "radprimerHumanLabel": "RadPrimer image 6",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-06"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 6"
+        ],
+        "recommendedAction": "Archive RadPrimer image 6; use STATdx image 6 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "671f337f806a2b00fc9bd7ed908cd3eb75950a6c1faee5b4eb11c3382c130015",
+        "statdxEvidenceSha256": "4be045503aebf1fafc7634220ac15b0058fcf45f3ee77c7d358b7ef71c993bae"
+      },
+      {
+        "radprimerImageId": "RP-07",
+        "radprimerHumanLabel": "RadPrimer image 7",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-07"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 7"
+        ],
+        "recommendedAction": "Archive RadPrimer image 7; use STATdx image 7 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "e46340c1aea11829e8474c056c9800c149e090af8b1f3b6d8a698883d7c82d01",
+        "statdxEvidenceSha256": "0214a69fe40c6bb79ec7c6345363f7d4064062ace0888577b52b2cefd85eb158"
+      },
+      {
+        "radprimerImageId": "RP-08",
+        "radprimerHumanLabel": "RadPrimer image 8",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-08"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 8"
+        ],
+        "recommendedAction": "Archive RadPrimer image 8; use STATdx image 8 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "aaa8e39da4a37e15ee1bc5bb8ef6d86406a1281595147c2384d2847ab903f91a",
+        "statdxEvidenceSha256": "b3590b6e361ce5b51a95704c3b50d764ffd4ea836e5c78257e1ba5aa4192415e"
+      },
+      {
+        "radprimerImageId": "RP-09",
+        "radprimerHumanLabel": "RadPrimer image 9",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-09"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 9"
+        ],
+        "recommendedAction": "Archive RadPrimer image 9; use STATdx image 9 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "670ada73144097d8f2e5b738832f28bd0e960f1117c22ce464f98ef46d2ff034",
+        "statdxEvidenceSha256": "114d6346edf0cbd34d3ffcf7a7fbfb94dd6b94d801c02a90112476a43cf2fd37"
+      },
+      {
+        "radprimerImageId": "RP-10",
+        "radprimerHumanLabel": "RadPrimer image 10",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-10"
+        ],
+        "statdxHumanLabels": [
+          "STATdx image 10"
+        ],
+        "recommendedAction": "Archive RadPrimer image 10; use STATdx image 10 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic. Binary hashes differ because the evidence exports are different dimensions/compression; classification is not caption-only.",
+        "radprimerEvidenceSha256": "ba862c443a03733ad5f43e0e3318f54197e00767ccd194a877fcda0ec8b050f4",
+        "statdxEvidenceSha256": "62c1ce2158702e05c710d8fa848167624ae41504b2a1a6d8fd3b3a6ae91a1c90"
+      }
+    ],
+    "selectedPrimaryImageIds": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26",
+      "SDX-27",
+      "SDX-28",
+      "SDX-29",
+      "SDX-30",
+      "SDX-31",
+      "SDX-32",
+      "SDX-33",
+      "SDX-34",
+      "SDX-35",
+      "SDX-36",
+      "SDX-37",
+      "SDX-38",
+      "SDX-39",
+      "SDX-40",
+      "SDX-41"
+    ],
+    "archiveOptionalImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10"
+    ],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "SDX-01",
+        "humanLabel": "STATdx image 1",
+        "sourceQualifiedFilename": "STATdx_image_01_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_41015264.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Mechanism/topography graphic: common DAI sites and severity gradient with deeper involvement.",
+        "caseClusterId": "topography_graphic"
+      },
+      {
+        "masterImageId": "SDX-02",
+        "humanLabel": "STATdx image 2",
+        "sourceQualifiedFilename": "STATdx_image_02_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_24b6a175.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Autopsy hemorrhagic DAI pattern in frontal white matter, basal ganglia, external capsule, and gray-white junction.",
+        "caseClusterId": "autopsy_pathology"
+      },
+      {
+        "masterImageId": "SDX-03",
+        "humanLabel": "STATdx image 3",
+        "sourceQualifiedFilename": "STATdx_image_03_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_a04a76a0.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Trauma CT with sylvian SAH and inferior frontal hemorrhage, an early CT clue cluster.",
+        "caseClusterId": "ct_swi_early_trauma_pair"
+      },
+      {
+        "masterImageId": "SDX-04",
+        "humanLabel": "STATdx image 4",
+        "sourceQualifiedFilename": "STATdx_image_04_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_b7b30ac6.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient SWI/MIP microhemorrhage at gray-white interfaces after decreased GCS.",
+        "caseClusterId": "ct_swi_early_trauma_pair"
+      },
+      {
+        "masterImageId": "SDX-05",
+        "humanLabel": "STATdx image 5",
+        "sourceQualifiedFilename": "STATdx_image_05_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_13c4ad4a.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Sagittal graphic of corpus callosum and brainstem hemorrhagic foci.",
+        "caseClusterId": "sagittal_graphic"
+      },
+      {
+        "masterImageId": "SDX-06",
+        "humanLabel": "STATdx image 6",
+        "sourceQualifiedFilename": "STATdx_image_06_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_1f8da89a.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Severe clinical DAI with near-normal CT/diffuse swelling and minimal tSAH.",
+        "caseClusterId": "near_normal_ct_to_mr_cluster"
+      },
+      {
+        "masterImageId": "SDX-07",
+        "humanLabel": "STATdx image 7",
+        "sourceQualifiedFilename": "STATdx_image_07_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_446d97ac.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient FLAIR corpus callosum and subcortical white-matter edema after discrepant CT/GCS.",
+        "caseClusterId": "near_normal_ct_to_mr_cluster"
+      },
+      {
+        "masterImageId": "SDX-08",
+        "humanLabel": "STATdx image 8",
+        "sourceQualifiedFilename": "STATdx_image_08_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_f4119dde.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient SWI MIP showing innumerable axonal-course microhemorrhages in corona radiata.",
+        "caseClusterId": "near_normal_ct_to_mr_cluster"
+      },
+      {
+        "masterImageId": "SDX-09",
+        "humanLabel": "STATdx image 9",
+        "sourceQualifiedFilename": "STATdx_image_09_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_fe89760a.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient DWI restricted diffusion in frontal white matter, corpus callosum, fornices, and subcortical white matter.",
+        "caseClusterId": "near_normal_ct_to_mr_cluster"
+      },
+      {
+        "masterImageId": "SDX-10",
+        "humanLabel": "STATdx image 10",
+        "sourceQualifiedFilename": "STATdx_image_10_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_bbcb1d54.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient sagittal DWI showing callosal and midbrain restricted diffusion.",
+        "caseClusterId": "near_normal_ct_to_mr_cluster"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "humanLabel": "STATdx image 11",
+        "sourceQualifiedFilename": "STATdx_image_11_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_bb48ba5c.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "T2 MR thalamic and bifrontal white-matter hyperintensities with torn-arachnoid/intraventricular blood context.",
+        "caseClusterId": "torn_arachnoid_ivh_hygroma_cluster"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "humanLabel": "STATdx image 12",
+        "sourceQualifiedFilename": "STATdx_image_12_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_9ceb9a49.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient SWI severe diffuse vascular injury with innumerable deep/subcortical blooming lesions.",
+        "caseClusterId": "torn_arachnoid_ivh_hygroma_cluster"
+      },
+      {
+        "masterImageId": "SDX-13",
+        "humanLabel": "STATdx image 13",
+        "sourceQualifiedFilename": "STATdx_image_13_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_661659ca.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "High-impact CT with IVH, subdural hygromas, torn arachnoid, and minimal tSAH.",
+        "caseClusterId": "torn_arachnoid_ivh_hygroma_cluster"
+      },
+      {
+        "masterImageId": "SDX-14",
+        "humanLabel": "STATdx image 14",
+        "sourceQualifiedFilename": "STATdx_image_14_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_dc179943.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient cephalad CT with tSAH and falcine trace subdural hemorrhage.",
+        "caseClusterId": "torn_arachnoid_ivh_hygroma_cluster"
+      },
+      {
+        "masterImageId": "SDX-15",
+        "humanLabel": "STATdx image 15",
+        "sourceQualifiedFilename": "STATdx_image_15_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_b5f89266.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient T2 MR subdural hygromas, preserving the torn-arachnoid cluster.",
+        "caseClusterId": "torn_arachnoid_ivh_hygroma_cluster"
+      },
+      {
+        "masterImageId": "SDX-16",
+        "humanLabel": "STATdx image 16",
+        "sourceQualifiedFilename": "STATdx_image_16_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_0c57db8d.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "FLAIR subcortical/deep white-matter hyperintensities with tSAH.",
+        "caseClusterId": "multisequence_microbleed_cluster"
+      },
+      {
+        "masterImageId": "SDX-17",
+        "humanLabel": "STATdx image 17",
+        "sourceQualifiedFilename": "STATdx_image_17_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_629a56cd.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "GRE linear hemorrhages in subcortical white matter and corpus callosum.",
+        "caseClusterId": "multisequence_microbleed_cluster"
+      },
+      {
+        "masterImageId": "SDX-18",
+        "humanLabel": "STATdx image 18",
+        "sourceQualifiedFilename": "STATdx_image_18_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_48a1a6be.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "SWI MIP showing many more lesions than GRE across WM, basal ganglia, corpus callosum, and fornices.",
+        "caseClusterId": "multisequence_microbleed_cluster"
+      },
+      {
+        "masterImageId": "SDX-19",
+        "humanLabel": "STATdx image 19",
+        "sourceQualifiedFilename": "STATdx_image_19_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_4fc48ac2.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Cephalad SWI showing end-on dot-like susceptibility foci.",
+        "caseClusterId": "multisequence_microbleed_cluster"
+      },
+      {
+        "masterImageId": "SDX-20",
+        "humanLabel": "STATdx image 20",
+        "sourceQualifiedFilename": "STATdx_image_20_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_225f2958.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "DWI restricted diffusion in fornices and scattered subcortical/deep white matter.",
+        "caseClusterId": "multisequence_microbleed_cluster"
+      },
+      {
+        "masterImageId": "SDX-21",
+        "humanLabel": "STATdx image 21",
+        "sourceQualifiedFilename": "STATdx_image_21_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_34e1924d.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Microscopic postmortem axonal retraction balls and parenchymal holes.",
+        "caseClusterId": "autopsy_pathology"
+      },
+      {
+        "masterImageId": "SDX-22",
+        "humanLabel": "STATdx image 22",
+        "sourceQualifiedFilename": "STATdx_image_22_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_4b885c6b.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Bifrontal GRE susceptibility foci as hemorrhagic DAI.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-23",
+        "humanLabel": "STATdx image 23",
+        "sourceQualifiedFilename": "STATdx_image_23_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_54eda9ab.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "FLAIR callosal edema with central hemorrhage plus parietal subcortical edema.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-24",
+        "humanLabel": "STATdx image 24",
+        "sourceQualifiedFilename": "STATdx_image_24_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_03f05050.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "NECT splenial callosal hemorrhage with intraventricular spread.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-25",
+        "humanLabel": "STATdx image 25",
+        "sourceQualifiedFilename": "STATdx_image_25_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_97c85650.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient NECT additional frontal subcortical white-matter hemorrhage.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-26",
+        "humanLabel": "STATdx image 26",
+        "sourceQualifiedFilename": "STATdx_image_26_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_5c1e1502.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "GRE posterolateral mesencephalic hemorrhage plus temporal/frontal microbleeds.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-27",
+        "humanLabel": "STATdx image 27",
+        "sourceQualifiedFilename": "STATdx_image_27_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-27_STATdx_image_27_plain_ba5e6911.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Normal T2 MR despite severe posttraumatic symptoms, reinforcing occult DAI limits.",
+        "caseClusterId": "normal_conventional_mr_then_gre_cluster"
+      },
+      {
+        "masterImageId": "SDX-28",
+        "humanLabel": "STATdx image 28",
+        "sourceQualifiedFilename": "STATdx_image_28_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-28_STATdx_image_28_plain_503c1fb8.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient GRE frontal white-matter microbleeds despite normal CT/T2.",
+        "caseClusterId": "normal_conventional_mr_then_gre_cluster"
+      },
+      {
+        "masterImageId": "SDX-29",
+        "humanLabel": "STATdx image 29",
+        "sourceQualifiedFilename": "STATdx_image_29_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-29_STATdx_image_29_plain_5ce0ecd7.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient GRE left superior cerebellar peduncle hemorrhage.",
+        "caseClusterId": "normal_conventional_mr_then_gre_cluster"
+      },
+      {
+        "masterImageId": "SDX-30",
+        "humanLabel": "STATdx image 30",
+        "sourceQualifiedFilename": "STATdx_image_30_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-30_STATdx_image_30_plain_b4a15f8b.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "GRE multifocal gray-white and periventricular susceptibility foci.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-31",
+        "humanLabel": "STATdx image 31",
+        "sourceQualifiedFilename": "STATdx_image_31_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-31_STATdx_image_31_plain_1b77b006.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "GRE multifocal deep white-matter/pericallosal susceptibility foci.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-32",
+        "humanLabel": "STATdx image 32",
+        "sourceQualifiedFilename": "STATdx_image_32_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-32_STATdx_image_32_plain_b1f27c34.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "NECT bifrontal gray-white petechial hemorrhages with SAH.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-33",
+        "humanLabel": "STATdx image 33",
+        "sourceQualifiedFilename": "STATdx_image_33_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-33_STATdx_image_33_plain_877bd694.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "NECT fornix hemorrhage and nonhemorrhagic splenial involvement.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-34",
+        "humanLabel": "STATdx image 34",
+        "sourceQualifiedFilename": "STATdx_image_34_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-34_STATdx_image_34_plain_db45e53e.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "DWI restricted diffusion/susceptibility in fornices and splenium.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-35",
+        "humanLabel": "STATdx image 35",
+        "sourceQualifiedFilename": "STATdx_image_35_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-35_STATdx_image_35_plain_5e01d70a.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Motorcycle GCS 3 FLAIR posterior midbrain edema/hemorrhage.",
+        "caseClusterId": "motorcycle_midbrain_cluster"
+      },
+      {
+        "masterImageId": "SDX-36",
+        "humanLabel": "STATdx image 36",
+        "sourceQualifiedFilename": "STATdx_image_36_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-36_STATdx_image_36_plain_64b177f8.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient DWI posterior midbrain cytotoxic edema.",
+        "caseClusterId": "motorcycle_midbrain_cluster"
+      },
+      {
+        "masterImageId": "SDX-37",
+        "humanLabel": "STATdx image 37",
+        "sourceQualifiedFilename": "STATdx_image_37_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-37_STATdx_image_37_plain_b45a609c.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Same-patient SWI midbrain hemorrhage with scattered SAH.",
+        "caseClusterId": "motorcycle_midbrain_cluster"
+      },
+      {
+        "masterImageId": "SDX-38",
+        "humanLabel": "STATdx image 38",
+        "sourceQualifiedFilename": "STATdx_image_38_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-38_STATdx_image_38_plain_ba79578d.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Higher-resolution counterpart for RadPrimer image 3: CT hemorrhagic DAI with IVH.",
+        "caseClusterId": "radprimer_exact_counterpart_ct_cluster"
+      },
+      {
+        "masterImageId": "SDX-39",
+        "humanLabel": "STATdx image 39",
+        "sourceQualifiedFilename": "STATdx_image_39_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-39_STATdx_image_39_plain_f84e3ca3.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "Higher-resolution counterpart for RadPrimer image 4: cephalad CT punctate peripheral hemorrhages/tSAH.",
+        "caseClusterId": "radprimer_exact_counterpart_ct_cluster"
+      },
+      {
+        "masterImageId": "SDX-40",
+        "humanLabel": "STATdx image 40",
+        "sourceQualifiedFilename": "STATdx_image_40_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-40_STATdx_image_40_plain_3f747b55.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "NECT dorsolateral midbrain hemorrhage with interpeduncular cisternal SAH.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      },
+      {
+        "masterImageId": "SDX-41",
+        "humanLabel": "STATdx image 41",
+        "sourceQualifiedFilename": "STATdx_image_41_Diffuse_Axonal_Injury.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-41_STATdx_image_41_plain_51c0544d.jpg",
+        "use": "downloadPrimary",
+        "teachingRole": "T2 evolving dorsolateral brainstem DAI with chronic bitemporal subdural hematomas.",
+        "caseClusterId": "focal_callosal_and_brainstem_examples"
+      }
+    ],
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, procedure, adjacent-slice, time-lapse, and multimodality clusters are atomic unless an explicit source-supported split is safe.",
+      "atomicClusters": [
+        {
+          "clusterId": "ct_swi_early_trauma_pair",
+          "imageIds": [
+            "SDX-03",
+            "SDX-04"
+          ],
+          "reason": "same-patient CT/SWI pair after high-speed MVA and decreased GCS"
+        },
+        {
+          "clusterId": "near_normal_ct_to_mr_cluster",
+          "imageIds": [
+            "SDX-06",
+            "SDX-07",
+            "SDX-08",
+            "SDX-09",
+            "SDX-10"
+          ],
+          "reason": "same patient with low GCS, subtle CT, then FLAIR/SWI/DWI evidence"
+        },
+        {
+          "clusterId": "torn_arachnoid_ivh_hygroma_cluster",
+          "imageIds": [
+            "SDX-11",
+            "SDX-12",
+            "SDX-13",
+            "SDX-14",
+            "SDX-15"
+          ],
+          "reason": "same-patient CT/MR cluster with IVH, tSAH, subdural hygromas, and severe diffuse vascular injury"
+        },
+        {
+          "clusterId": "multisequence_microbleed_cluster",
+          "imageIds": [
+            "SDX-16",
+            "SDX-17",
+            "SDX-18",
+            "SDX-19",
+            "SDX-20"
+          ],
+          "reason": "multisequence FLAIR/GRE/SWI/DWI depiction of WM hemorrhage and restricted diffusion"
+        },
+        {
+          "clusterId": "normal_conventional_mr_then_gre_cluster",
+          "imageIds": [
+            "SDX-27",
+            "SDX-28",
+            "SDX-29"
+          ],
+          "reason": "same-patient normal CT/T2 followed by GRE-detected microbleeds and cerebellar peduncle hemorrhage"
+        },
+        {
+          "clusterId": "motorcycle_midbrain_cluster",
+          "imageIds": [
+            "SDX-35",
+            "SDX-36",
+            "SDX-37"
+          ],
+          "reason": "same-patient FLAIR, DWI, and SWI midbrain injury after motorcycle accident"
+        },
+        {
+          "clusterId": "radprimer_exact_counterpart_ct_cluster",
+          "imageIds": [
+            "SDX-38",
+            "SDX-39"
+          ],
+          "reason": "STATdx higher-resolution same-slice counterparts for the RadPrimer CT pair"
+        }
+      ],
+      "intentionalSplits": []
+    },
+    "generatorInstructions": [
+      "Do not generate cards or lecture from this handoff alone; use it only as the fused source package for later runs.",
+      "Use source-qualified prose labels such as RadPrimer image 5 or STATdx image 4; keep RP-05 and SDX-04 in traceability fields only.",
+      "Use selectedPrimaryImageIds for default image download and teaching; archiveOptionalImageIds are retained for audit/completeness only.",
+      "Preserve source attribution with [RadPrimer], [STATdx], and [Both] where useful."
+    ]
+  },
+  "auditInputs": {
+    "requiredFilesRead": [
+      "RadPrimer_source_package.txt",
+      "STATdx_source_package.txt",
+      "RadPrimer_metadata.json",
+      "STATdx_metadata.json",
+      "metadata.json",
+      "master_source_request.md"
+    ],
+    "imageEvidenceManifestPresent": true,
+    "imageEvidenceDirectoryPresent": true,
+    "imageEvidenceFilesInspected": 51,
+    "requestMentionsImageEvidenceFiles": true
+  },
+  "notes": [
+    "canonicalHierarchy is copied exactly from metadata.json.",
+    "canonicalDeckPath is copied exactly from metadata.json.",
+    "STATdx breadcrumbs were not used for routing.",
+    "Exact duplicate calls are based on actual image_evidence visual inspection, not captions alone."
+  ]
+}

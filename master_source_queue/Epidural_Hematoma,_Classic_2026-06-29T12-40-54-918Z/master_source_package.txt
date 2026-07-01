@@ -1,0 +1,89 @@
+# Epidural Hematoma, Classic
+
+Canonical hierarchy: All Categories > Basic > Neuroradiology > Brain > Primary Effects of CNS Trauma > Epidural Hematoma, Classic
+Canonical deck path: Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Epidural Hematoma, Classic
+Primary source posture: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth and the default higher-resolution selected image set.
+Core evidence: no auditable Core Radiology source was supplied in this bundle, so Core-specific support is not asserted.
+
+## Source Coverage And Image Gate
+
+STATdx fully covers the 10-image RadPrimer set with visually exact same-screenshot counterparts in the staged `image_evidence/` files. The RadPrimer and STATdx binary hashes differ because the evidence exports are different source sizes/compression levels, but visual inspection plus perceptual fingerprinting showed the same screenshot/slice for each mapped pair. Therefore, the default teaching/download set uses STATdx images 1-27, while RadPrimer images 1-10 remain in the registry as archive-optional exact duplicates for audit traceability.
+
+RadPrimer image 1 -> STATdx image 1: exact duplicate; mechanism graphic for middle meningeal artery laceration, swirl sign, and inward dural displacement.
+RadPrimer images 2-4 -> STATdx images 2-4: exact duplicate atomic left temporal fracture/acute EDH cluster.
+RadPrimer images 5-6 -> STATdx images 22 and 21: exact duplicate atomic right pterion fracture/small EDH cluster.
+RadPrimer images 7-8 -> STATdx images 5-6: exact duplicate atomic baseline/follow-up interdural EDH cluster.
+RadPrimer images 9-10 -> STATdx images 25-26: exact duplicate atomic nonoperative/follow-up cluster.
+No RadPrimer image is classified as near duplicate, conceptual replacement, or not covered.
+
+## Fused Teaching Backbone
+
+### Definition And Mechanism
+
+- [Both] Epidural hematoma is blood between the inner table of the skull and the outer periosteal dural layer.
+- [Both] The classic acute traumatic EDH is a hyperdense biconvex/lentiform extraaxial collection on noncontrast CT, usually at the coup site and usually adjacent to a skull fracture.
+- [Both] Most EDHs are arterial, usually from fracture-related laceration near the middle meningeal artery groove; venous EDHs are less common and occur near dural venous sinuses.
+- [STATdx] The swirl sign is hypodense active or rapid bleeding with unretracted clot; CTA may show a spot/dot sign or active extravasation, and contrast leakage predicts expansion.
+- [Both] EDH can coexist with subdural hemorrhage, subarachnoid hemorrhage, or contusion, so the search pattern should continue after the epidural collection is identified.
+
+### Imaging Pattern
+
+- [Both] Best first-line study in trauma is noncontrast head CT with bone windows. Use bone CT to identify the fracture and coronal/sagittal reformats when vertex or skull-base EDH is possible.
+- [Both] Classic arterial EDH is unilateral, supratentorial, temporoparietal more often than frontal/parietooccipital, biconvex, and limited by sutures.
+- [Both] EDH compresses the underlying brain and subarachnoid space; displaced dura can form a hyperdense medial margin on CT or a black line between EDH and brain on MR.
+- [Both] Acute EDH is commonly hyperdense; mixed density or a central low-density swirl sign should raise concern for active bleeding and rapid expansion.
+- [STATdx] Air within an EDH suggests communication with a paranasal sinus, mastoid air cells, or skull-base fracture, and the adjacent bone-window image should be reviewed.
+- [STATdx] CTA/CTV is useful when venous sinus injury, active extravasation, sinus compression, thrombus, or a venous EDH near a dural sinus is suspected.
+- [Both] MR may show the displaced dura on T1/T2 and is helpful when the collection straddles dural compartments or when venous sinus displacement is the teaching question.
+
+### Boundary Rules And Exceptions
+
+- [Both] Arterial EDHs usually do not cross sutures.
+- [Both] Exceptions include venous EDH, sutural diastasis/fracture, large hematoma with diastatic fracture, and pediatric cases.
+- [STATdx] Venous EDH may straddle sutures or dural attachments and can cross the falx or tentorium; the dural sinus is displaced or compressed rather than necessarily occluded.
+- [Both] Vertex EDH can be subtle and easily missed; coronal reconstructions and venous sinus attention are important.
+- [Both] The CT comma sign indicates coexisting EDH and SDH and matters because the two surgical compartments may require separate treatment planning.
+
+### Differential Diagnosis
+
+- [Both] Acute subdural hematoma is usually crescentic, crosses sutures, and is limited by dural reflections, but EDH and SDH may coexist and either can occasionally mimic the other's shape.
+- [Both] Extraaxial neoplasm such as meningioma, lymphoma, or metastasis can mimic a biconvex epidural process when hemorrhagic or hyperdense.
+- [Both] Infection/inflammation, including epidural empyema, tuberculosis, and neurosarcoidosis, enters the differential when the clinical context is nontraumatic or chronic.
+- [Both] Extramedullary hematopoiesis is rare and should require the appropriate blood dyscrasia context.
+- [STATdx] MR demonstration of a hypointense dural line between the EDH and brain is a useful recognition feature separating EDH from subdural hematoma.
+
+### Clinical Course And Management
+
+- [Both] The classic lucid interval occurs in about half of cases but is not required.
+- [Both] Delayed development or enlargement is common within the first 36 hours; repeat CT is important when conservative management is chosen.
+- [Both] Prompt recognition and treatment generally produce good outcomes, while delayed diagnosis, referral, or operation worsens prognosis.
+- [Both] Most arterial EDHs are surgically evacuated, especially large, mixed-density, expanding, or mass-effect lesions.
+- [Both] Conservative management can be considered for selected patients with GCS 13-15, EDH thickness below 40 mm, less than 6 mm midline shift, no other surgical lesion, and close repeat imaging.
+- [Both] Some EDHs under 1 cm without edema may be managed nonoperatively; anterior middle cranial fossa venous EDHs are often observed.
+- [Both] Endovascular middle meningeal artery occlusion is a minimally invasive option in selected nonsurgical acute EDH cases.
+- [STATdx] Posterior fossa EDH carries higher mortality and may present later because venous expansion can be slower; mass effect on posterior fossa structures raises urgency.
+
+## Selected Image Atlas For Future Generation
+
+Use the following primary images by default. RadPrimer counterparts are retained only as archive-optional duplicate evidence.
+
+- STATdx image 1: mechanism graphic; MMA laceration, skull fracture, acute EDH expansion, and swirl sign.
+- STATdx images 2-4: atomic left temporal fracture and acute EDH cluster; bone-window fracture, axial biconvex EDH, and coronal mass-effect confirmation.
+- STATdx images 5-6: atomic observation-to-deterioration cluster; baseline EDH/interdural variant followed by 3-hour expansion with swirl sign.
+- STATdx images 7-8: venous/vertex-risk examples; CTA superior sagittal sinus displacement and bone-window frontal fracture with sagittal suture diastasis.
+- STATdx images 9-10: atomic frontal sinus/ethmoidal artery surgical cluster; air and swirl sign in EDH plus bone-window frontal sinus fracture.
+- STATdx images 11-14: alternate classic middle cranial fossa EDH and delayed density evolution across axial, coronal, sagittal, and follow-up views.
+- STATdx images 15-17: severity reinforcement; early transtentorial herniation, falx attachment crossing with contusion, and large mixed-density active bleeding.
+- STATdx image 18: MR T2 example showing the hypointense displaced dura between EDH and brain.
+- STATdx images 19-20: atomic posterior fossa venous/sigmoid sinus surgical cluster with mastoid air-cell fracture source.
+- STATdx images 21-22: atomic right pterion fracture and small mixed-density EDH cluster, replacing RadPrimer images 6 and 5.
+- STATdx images 23-24: MR/MRV venous EDH cluster showing superior sagittal sinus displacement.
+- STATdx images 25-26: atomic nonoperative follow-up cluster; small right parietal EDH then lower-density 10-day follow-up with hygromas.
+- STATdx image 27: alternate active bleeding/swirl-sign example for recognition reinforcement.
+
+## Downstream Use Notes
+
+- Use `selectedPrimaryImageIds` for default image download and teaching.
+- Treat archive-optional RadPrimer images as audit/completeness records, not as default card or lecture images.
+- Preserve atomic case clusters listed in the manifest when generating future narrative or cards.
+- Keep human-facing prose labels clean, such as STATdx image 4 or RadPrimer image 5. Use short IDs such as SDX-04 and RP-05 only in registry, filenames, and traceability fields.

@@ -1,0 +1,462 @@
+{
+  "version": 1,
+  "articleTitle": "Chronic Subdural Hematoma",
+  "createdAt": "2026-06-30T02:13:06Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Neuroradiology",
+    "Brain",
+    "Primary Effects of CNS Trauma",
+    "Chronic Subdural Hematoma"
+  ],
+  "canonicalHierarchySource": {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceFile": "RadPrimer_metadata.json",
+    "field": "breadcrumbTrail",
+    "policy": "RadPrimer breadcrumbTrail is the canonical hierarchy/backbone."
+  },
+  "canonicalDeckPath": "Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Chronic Subdural Hematoma",
+  "sourcePriority": [
+    "RadPrimer canonical hierarchy/backbone",
+    "STATdx supplemental depth and unique image reinforcement"
+  ],
+  "sourceCoverage": {
+    "radprimerImagesTotal": 22,
+    "statdxImagesTotal": 36,
+    "statdxCoverageOfRadPrimer": {
+      "exactDuplicate": 20,
+      "nearDuplicate": 0,
+      "conceptualReplacement": 1,
+      "notCovered": 1,
+      "fullyCoversRadPrimerImageSet": false,
+      "summary": "STATdx covers most RadPrimer images as same visual exports, but does not fully cover RP-10 or RP-15."
+    },
+    "radPrimerCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerLabel": "RadPrimer image 1",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-01"
+        ],
+        "evidence": "Actual image_evidence visual inspection: same pathology graphic; perceptual hash distance 0; trivial export size/compression variant.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerLabel": "RadPrimer image 2",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-02"
+        ],
+        "evidence": "Same NECT slice/appearance; perceptual hash distance 0; caption/source teaching point matches.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerLabel": "RadPrimer image 3",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-03"
+        ],
+        "evidence": "Same mixed-SDH pathology graphic; perceptual hash distance 0; trivial size variant.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerLabel": "RadPrimer image 4",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-04"
+        ],
+        "evidence": "Same left mixed SDH NECT slice; perceptual hash distance 1; visually same staged evidence image.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "radPrimerLabel": "RadPrimer image 5",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-19"
+        ],
+        "evidence": "Same bubbly loculated SDH NECT slice; perceptual hash distance 2; same captioned case.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "radPrimerLabel": "RadPrimer image 6",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-20"
+        ],
+        "evidence": "Same CTA companion image in bubbly loculated SDH case; perceptual hash distance 2.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "radPrimerLabel": "RadPrimer image 7",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-21"
+        ],
+        "evidence": "Same T2*/SWI blooming companion image; perceptual hash distance 0.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "radPrimerLabel": "RadPrimer image 8",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-22"
+        ],
+        "evidence": "Same postcontrast MR membrane-enhancement image; perceptual hash distance 2.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "radPrimerLabel": "RadPrimer image 9",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-17"
+        ],
+        "evidence": "Same Dandy-Walker/calcified bilateral cSDH NECT image; perceptual hash distance 2.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "radPrimerLabel": "RadPrimer image 10",
+        "coverageStatus": "conceptualReplacement",
+        "statdxMatches": [
+          "SDX-18",
+          "SDX-36"
+        ],
+        "evidence": "STATdx has calcified/ossified chronic SDH examples, but not the same cephalad armored-brain slice; keep RadPrimer image primary.",
+        "defaultAction": "keep RadPrimer primary"
+      },
+      {
+        "radPrimerImageId": "RP-11",
+        "radPrimerLabel": "RadPrimer image 11",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-13"
+        ],
+        "evidence": "Same pretreatment NECT in MMA embolization sequence; perceptual hash distance 1.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-12",
+        "radPrimerLabel": "RadPrimer image 12",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-11"
+        ],
+        "evidence": "Same pretreatment left ECA DSA image; perceptual hash distance 1.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-13",
+        "radPrimerLabel": "RadPrimer image 13",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-12"
+        ],
+        "evidence": "Same post-MMA embolization DSA image; perceptual hash distance 1.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-14",
+        "radPrimerLabel": "RadPrimer image 14",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-14"
+        ],
+        "evidence": "Same 2-week post-embolization NECT follow-up slice; perceptual hash distance 1.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-15",
+        "radPrimerLabel": "RadPrimer image 15",
+        "coverageStatus": "notCovered",
+        "statdxMatches": [],
+        "evidence": "No STATdx image shows the 6-week follow-up slice/timepoint; preserve as part of the follow-up cluster.",
+        "defaultAction": "keep RadPrimer primary"
+      },
+      {
+        "radPrimerImageId": "RP-16",
+        "radPrimerLabel": "RadPrimer image 16",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-15"
+        ],
+        "evidence": "Same 5-month post-embolization follow-up NECT; perceptual hash distance 2.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-17",
+        "radPrimerLabel": "RadPrimer image 17",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-30"
+        ],
+        "evidence": "Same T1 FS loculated recurrent right SDH MR image; perceptual hash distance 1.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-18",
+        "radPrimerLabel": "RadPrimer image 18",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-31"
+        ],
+        "evidence": "Same axial T2 loculated SDH/membrane image; perceptual hash distance 0.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-19",
+        "radPrimerLabel": "RadPrimer image 19",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-32"
+        ],
+        "evidence": "Same T2*/GRE dependent blood-fluid level image; perceptual hash distance 0.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-20",
+        "radPrimerLabel": "RadPrimer image 20",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-33"
+        ],
+        "evidence": "Same postcontrast MR compressed vascularity/enhancement image; perceptual hash distance 2.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-21",
+        "radPrimerLabel": "RadPrimer image 21",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-28"
+        ],
+        "evidence": "Same DWI restricted-diffusion membrane image; perceptual hash distance 0.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      },
+      {
+        "radPrimerImageId": "RP-22",
+        "radPrimerLabel": "RadPrimer image 22",
+        "coverageStatus": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-29"
+        ],
+        "evidence": "Same ADC restricted-diffusion confirmation image; perceptual hash distance 0.",
+        "defaultAction": "keep RadPrimer primary; archive matching STATdx duplicate"
+      }
+    ],
+    "statdxSupplementalPrimaryImages": [
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-16",
+      "SDX-18",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26",
+      "SDX-27",
+      "SDX-34",
+      "SDX-35",
+      "SDX-36"
+    ],
+    "archivedDuplicateImages": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-17",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-28",
+      "SDX-29",
+      "SDX-30",
+      "SDX-31",
+      "SDX-32",
+      "SDX-33"
+    ]
+  },
+  "imageCountBySource": {
+    "RadPrimer": 22,
+    "STATdx": 36,
+    "selectedPrimary": 38,
+    "archiveOptionalDuplicate": 20
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer] for content supported only by RadPrimer.",
+    "Use [STATdx] for supplemental detail or unique examples from STATdx.",
+    "Use [Both] for concordant points present in both packages.",
+    "Use human-facing image labels such as RadPrimer image 5 and STATdx image 24 in prose; keep RP-05/SDX-24 in traceability fields."
+  ],
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-13",
+    "RP-14",
+    "RP-15",
+    "RP-16",
+    "RP-17",
+    "RP-18",
+    "RP-19",
+    "RP-20",
+    "RP-21",
+    "RP-22",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-16",
+    "SDX-18",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-27",
+    "SDX-34",
+    "SDX-35",
+    "SDX-36"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-17",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-28",
+    "SDX-29",
+    "SDX-30",
+    "SDX-31",
+    "SDX-32",
+    "SDX-33"
+  ],
+  "sourceSelectionPlan": {
+    "textPlan": {
+      "canonicalBackbone": "Use RadPrimer source package as the article scaffold and metadata.json canonicalHierarchy/canonicalDeckPath for all routing.",
+      "statdxSupplement": "Use STATdx for recurrence risk factors, management wording that MMA embolization is becoming primary therapy, delayed contrast diffusion, expanded CT/MR variants, calcified/ossified examples, and dural enhancement examples.",
+      "downweightOrSkip": "Do not duplicate identical overlapping article sections; do not invent Core Radiology validation because no separate Core evidence is provided."
+    },
+    "imageCurationPolicy": "Exact duplicate STATdx exports are archived as optional duplicates; RadPrimer backbone images stay selected. Near duplicates, conceptual replacements, and alternate same-disease examples remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions used the actual image_evidence files plus visual inspection and perceptual-hash distances. Caption-only or topic-only matches were not treated as exact duplicates.",
+    "caseClusterGuardrails": {
+      "rule": "Same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse clusters are atomic teaching clusters.",
+      "intentionalSplits": [],
+      "note": "No source case cluster was intentionally split. RP-15 remains selected because STATdx lacks that 6-week follow-up timepoint."
+    },
+    "imageDownloadPlan": {
+      "primaryTeachingSet": {
+        "radprimerBackbone": [
+          "RP-01",
+          "RP-02",
+          "RP-03",
+          "RP-04",
+          "RP-05",
+          "RP-06",
+          "RP-07",
+          "RP-08",
+          "RP-09",
+          "RP-10",
+          "RP-11",
+          "RP-12",
+          "RP-13",
+          "RP-14",
+          "RP-15",
+          "RP-16",
+          "RP-17",
+          "RP-18",
+          "RP-19",
+          "RP-20",
+          "RP-21",
+          "RP-22"
+        ],
+        "statdxSupplementalRecognitionReinforcement": [
+          "SDX-05",
+          "SDX-06",
+          "SDX-07",
+          "SDX-08",
+          "SDX-09",
+          "SDX-10",
+          "SDX-16",
+          "SDX-18",
+          "SDX-23",
+          "SDX-24",
+          "SDX-25",
+          "SDX-26",
+          "SDX-27",
+          "SDX-34",
+          "SDX-35",
+          "SDX-36"
+        ]
+      },
+      "archiveOptionalDuplicates": {
+        "statdxExactDuplicateExports": [
+          "SDX-01",
+          "SDX-02",
+          "SDX-03",
+          "SDX-04",
+          "SDX-11",
+          "SDX-12",
+          "SDX-13",
+          "SDX-14",
+          "SDX-15",
+          "SDX-17",
+          "SDX-19",
+          "SDX-20",
+          "SDX-21",
+          "SDX-22",
+          "SDX-28",
+          "SDX-29",
+          "SDX-30",
+          "SDX-31",
+          "SDX-32",
+          "SDX-33"
+        ]
+      }
+    },
+    "generatorInstructions": [
+      "Use clean source-qualified image labels in narrative prose, such as RadPrimer image 5 or STATdx image 24.",
+      "Keep RP-05 and SDX-24 in traceability fields, filenames, registries, and manifest metadata rather than crowding narrative prose with both labels.",
+      "Preserve procedure/follow-up context for the MMA embolization sequence and MRI sequence clusters.",
+      "Do not generate cards or lecture content from this package until a later explicit request."
+    ]
+  }
+}

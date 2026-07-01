@@ -6,7 +6,7 @@ For narrative prose meant to be spoken aloud, say only one clean source-qualifie
 === CANONICAL ROUTING ===
 Use this routing metadata for any generated breadcrumb, deckPath, tags, or IMaios chunk library. Do not replace it with STATdx breadcrumbs, ChatGPT project folders, IMAIOS module names, or a model-generated hierarchy.
 canonicalHierarchy: ["All Categories","Basic","Neuroradiology","Brain","Introduction to Brain Neoplasms and Cysts","Colloid Cyst"]
-canonicalDeckPath: RadprimerNormal::Neuro::Brain::Introduction to Brain Neoplasms and Cysts::Colloid Cyst
+canonicalDeckPath: RadprimerNormal::All Categories::Neuro::Brain::Introduction to Brain Neoplasms and Cysts::Colloid Cyst
 === TOPIC ===
 PRIMARY TOPIC: Colloid Cyst
 CENTERING TOPIC FOR THIS CHAT: Colloid Cyst
@@ -9324,7 +9324,7 @@ Zygapophyseal joints
     "RP-10"
   ],
   "articleTitle": "Colloid Cyst",
-  "canonicalDeckPath": "RadprimerNormal::Neuro::Brain::Introduction to Brain Neoplasms and Cysts::Colloid Cyst",
+  "canonicalDeckPath": "RadprimerNormal::All Categories::Neuro::Brain::Introduction to Brain Neoplasms and Cysts::Colloid Cyst",
   "canonicalHierarchy": [
     "All Categories",
     "Basic",

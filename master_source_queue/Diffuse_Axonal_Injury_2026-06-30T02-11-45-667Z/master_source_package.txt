@@ -1,0 +1,97 @@
+# Diffuse Axonal Injury
+
+Canonical hierarchy: All Categories > Basic > Neuroradiology > Brain > Primary Effects of CNS Trauma > Diffuse Axonal Injury
+Canonical deck path: Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Diffuse Axonal Injury
+Primary source posture: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth and the default selected image set where it visually replaces RadPrimer duplicates.
+Core evidence: no auditable Core Radiology source was supplied in this bundle, so Core-specific support is not asserted.
+
+## Source Coverage And Image Gate
+
+STATdx fully covers the 10-image RadPrimer teaching set with visually exact same-slice or same-graphic counterparts in the staged image_evidence files. The RadPrimer and STATdx binary hashes differ because the evidence exports have different dimensions/compression, but paired visual inspection of the actual files showed the same image for every mapped pair. Therefore the default teaching/download set uses STATdx images 1-41, while RadPrimer images 1-10 remain in the registry as archive-optional exact duplicates for audit traceability.
+
+RadPrimer image 1 -> STATdx image 1: exact duplicate; use STATdx image 1 as the selected primary counterpart.
+RadPrimer image 2 -> STATdx image 2: exact duplicate; use STATdx image 2 as the selected primary counterpart.
+RadPrimer image 3 -> STATdx image 38: exact duplicate; use STATdx image 38 as the selected primary counterpart.
+RadPrimer image 4 -> STATdx image 39: exact duplicate; use STATdx image 39 as the selected primary counterpart.
+RadPrimer image 5 -> STATdx image 5: exact duplicate; use STATdx image 5 as the selected primary counterpart.
+RadPrimer image 6 -> STATdx image 6: exact duplicate; use STATdx image 6 as the selected primary counterpart.
+RadPrimer image 7 -> STATdx image 7: exact duplicate; use STATdx image 7 as the selected primary counterpart.
+RadPrimer image 8 -> STATdx image 8: exact duplicate; use STATdx image 8 as the selected primary counterpart.
+RadPrimer image 9 -> STATdx image 9: exact duplicate; use STATdx image 9 as the selected primary counterpart.
+RadPrimer image 10 -> STATdx image 10: exact duplicate; use STATdx image 10 as the selected primary counterpart.
+No RadPrimer image is classified as near duplicate, conceptual replacement, or not covered.
+
+## Fused Teaching Backbone
+
+### Definition And Mechanism
+
+- [Both] Diffuse axonal injury is traumatic diffuse injury to axons in the cerebral hemispheres, corpus callosum, brainstem, and sometimes cerebellum, with concurrent capillary-level vascular injury.
+- [Both] The mechanism is sudden acceleration, deceleration, or rotation with abrupt angular momentum change; direct head impact is not required.
+- [Both] Axons are stretched more often than literally disconnected at the moment of trauma; later axonal swelling, impaired axoplasmic transport, cytotoxic edema, apoptosis, and Wallerian degeneration account for much of the injury.
+- [Both] Injury concentrates where tissues of different density move differently, especially the gray-white junction, corpus callosum, deep gray nuclei/capsules, fornices, corona radiata, brainstem, and cerebellar peduncles.
+- [Both] Traumatic microbleeds are an indirect imaging marker of axonal injury because they reflect associated small-vessel damage.
+
+### Imaging Pattern
+
+- [Both] Noncontrast CT is often normal in DAI, with normal initial CT reported in 50-80% of cases; about 75% of clinically suspected DAI with normal CT may have positive MR.
+- [Both] CT-visible DAI appears as small hypodense nonhemorrhagic foci or small hyperdense hemorrhagic foci, often punctate to 15 mm and often multiple/bilateral.
+- [Both] Typical locations are the frontotemporal gray-white interface, subcortical/deep white matter, corpus callosum, deep gray nuclei, internal/external capsules, fornices, corona radiata, dorsolateral midbrain, and upper pons.
+- [Both] Deeper involvement means more severe injury and poorer prognosis; dorsolateral midbrain/upper pontine involvement is especially ominous.
+- [Both] FLAIR is key for nonhemorrhagic hyperintense lesions; T2* GRE shows hemorrhagic blooming; SWI depicts substantially more susceptibility foci than GRE; DWI can show restricted diffusion.
+- [Both] DTI/tractography can show white-matter tract disruption even when routine MR and GRE are normal; MRS may show reduced NAA/Cr and increased Cho/Cr in normal-appearing or visibly injured brain.
+- [RadPrimer] RadPrimer stresses that absent tSAH makes severe DAI unlikely and absent intraventricular hemorrhage makes any DAI less likely.
+- [STATdx] STATdx phrases this more cautiously: midline tSAH may suggest DAI, particularly when intraventricular hemorrhage is present.
+
+### Staging And Prognosis
+
+- [Both] Adams/Gennarelli stage 1 involves frontal and temporal gray-white interface lesions; stage 2 adds lobar white matter and corpus callosum; stage 3 includes dorsolateral midbrain and upper pons.
+- [STATdx] Extended grading language adds that substantia nigra or mesencephalic tegmentum involvement may further worsen prognosis.
+- [Both] Eighty percent of lesions are microscopic and nonhemorrhagic, so visible lesions are the tip of the iceberg.
+- [Both] Prognosis worsens with more lesions and deeper lesions; brainstem injury is associated with immediate or early death.
+
+### Differential Diagnosis
+
+- [Both] Multifocal nonhemorrhagic mimics include aging-related leukoaraiosis/lacunes and demyelinating disease.
+- [Both] Multifocal hemorrhagic mimics include cerebral amyloid angiopathy, chronic hypertension, cavernous malformations, hemorrhagic tumors, and acute hemorrhagic leukoencephalopathy.
+- [Both] Clinical trauma context, lesion distribution at shear interfaces, corpus callosum/brainstem involvement, and the mismatch between poor neurologic status and subtle CT help favor DAI.
+
+### Clinical Context And Management
+
+- [Both] DAI is usually associated with high-velocity motor vehicle trauma but can occur after low-energy trauma such as stair falls or ground-level falls.
+- [Both] Suspect DAI when GCS or neurologic impairment is disproportionate to CT findings.
+- [Both] Clinical DAI is prolonged posttraumatic coma of at least 6 hours without a mass lesion explaining the coma; severity is graded by coma duration and brainstem deficit.
+- [Both] DAI is the most common primary traumatic neuronal injury in the supplied source text and is a major cause of death/disability in children and young adults.
+- [Both] There is no lesion-specific curative treatment; management is supportive and treats comorbid herniation, hemorrhage, hydrocephalus, and seizures.
+
+### Diagnostic Checklist
+
+- [Both] In trauma with low GCS and minimal CT findings, obtain MR with FLAIR, DWI, and hemorrhage-sensitive imaging.
+- [Both] Use SWI when available for hemorrhagic DAI; use T2* GRE if SWI is unavailable.
+- [Both] Search the gray-white junction, corpus callosum (especially splenium/posterior body), deep gray nuclei/capsules, fornices, corona radiata, dorsolateral midbrain, upper pons, and cerebellar peduncles.
+- [Both] Report lesion burden, hemorrhagic versus nonhemorrhagic pattern, callosal/brainstem involvement, intraventricular hemorrhage, tSAH, mass lesions, hydrocephalus, and associated traumatic injuries.
+
+## Selected Image Atlas For Future Generation
+
+Use the following primary images by default for download and teaching. RadPrimer images 1-10 are retained only as archive-optional duplicate evidence because STATdx provides visually exact higher-resolution counterparts.
+
+- STATdx image 1: common-site/severity graphic; replaces RadPrimer image 1.
+- STATdx image 2: autopsy hemorrhagic DAI; replaces RadPrimer image 2.
+- STATdx images 3 and 4: atomic CT/SWI high-speed MVA cluster with SAH and gray-white interface microhemorrhages.
+- STATdx image 5: sagittal corpus callosum/brainstem graphic; replaces RadPrimer image 5.
+- STATdx images 6-10: atomic low-GCS/near-normal CT to MR cluster; STATdx images 6-10 replace RadPrimer images 6-10 respectively.
+- STATdx images 11-15: atomic torn-arachnoid/IVH/subdural-hygroma/severe diffuse vascular injury cluster.
+- STATdx images 16-20: FLAIR, GRE, SWI MIP, cephalad SWI, and DWI cluster showing why SWI/DWI expand detection.
+- STATdx image 21: microscopic postmortem retraction-ball pathology.
+- STATdx images 22-26: focal bifrontal, callosal/splenial, fornix, frontal subcortical, and mesencephalic examples.
+- STATdx images 27-29: atomic normal conventional CT/T2 then GRE-detected frontal WM and cerebellar peduncle microbleed cluster.
+- STATdx images 30-34: additional GRE/CT/DWI examples for gray-white, pericallosal, fornix, and splenial involvement.
+- STATdx images 35-37: atomic motorcycle GCS 3 midbrain FLAIR/DWI/SWI cluster.
+- STATdx images 38 and 39: higher-resolution exact CT counterparts for RadPrimer images 3 and 4.
+- STATdx images 40 and 41: dorsolateral midbrain hemorrhage and evolving brainstem DAI examples.
+
+## Downstream Use Notes
+
+- Use `selectedPrimaryImageIds` for default image download and teaching.
+- Use `archiveOptionalImageIds` only for exact duplicate audit recovery; do not download them by default.
+- Preserve same-patient, follow-up, multimodality, pathology, and adjacent-slice clusters as atomic unless a later source explicitly documents a safe split.
+- Keep human-facing prose labels clean, such as RadPrimer image 5 or STATdx image 4. Use short IDs such as RP-05 and SDX-04 only in registry, filenames, and traceability fields.

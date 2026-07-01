@@ -3626,6 +3626,66 @@ function looksLikeInlineCardTsv(text) {
   return strongTabbedLines.length >= 2 || tabbedLines.length >= 4;
 }
 
+function stripAuditHtml(value) {
+  return String(value || "")
+    .replace(/&#x[0-9a-f]+;?/gi, " ")
+    .replace(/&(?:amp|lt|gt|nbsp|quot);/gi, " ")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extractGeneratedCardTopicLabels(text) {
+  const value = String(text || "").slice(0, 250000);
+  const labels = [];
+
+  const boldPattern = /<b[^>]*>([\s\S]{4,180}?)<\/b>/gi;
+  let match;
+  while ((match = boldPattern.exec(value))) {
+    const label = stripAuditHtml(match[1])
+      .replace(/^(source basis|summary|super summary|core cross check|pitfalls and complications)\b[:\s-]*/i, "")
+      .trim();
+    if (label && label.length >= 4 && label.length <= 120) labels.push(label);
+  }
+
+  const imageTopicPattern = /(?:plain|annotated)_([A-Za-z0-9][A-Za-z0-9_() -]{4,120}?)(?:\d+)?(?:_annot)?\.jpe?g/gi;
+  while ((match = imageTopicPattern.exec(value))) {
+    const label = String(match[1] || "")
+      .replace(/[_-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (label && label.length >= 4 && label.length <= 120) labels.push(label);
+  }
+
+  return uniqueAuditLabels(labels);
+}
+
+function validateGeneratedCardsMatchPending(pending, generatedCards) {
+  const text = String(generatedCards || "");
+  if (!text.trim()) return;
+
+  const expectedLabels = getPendingCardAuditTitleLabels(pending)
+    .filter((label) => normalizeAuditMatchText(label).length >= 5);
+  const expectedNormalized = expectedLabels.map(normalizeAuditMatchText).filter(Boolean);
+  if (!expectedNormalized.length) return;
+
+  const normalizedText = normalizeAuditMatchText(text.slice(0, 250000));
+  if (expectedNormalized.some((label) => label.length >= 8 && normalizedText.includes(label))) return;
+
+  const generatedLabels = extractGeneratedCardTopicLabels(text);
+  const generatedNormalized = generatedLabels.map(normalizeAuditMatchText).filter((label) => label.length >= 5);
+  if (!generatedNormalized.length) return;
+
+  const score = scorePendingCardAuditMatch(pending, generatedNormalized);
+  if (score > 0) return;
+
+  const expected = expectedLabels.slice(0, 4).join(" / ") || "the pending article";
+  const found = generatedLabels.slice(0, 4).join(" / ") || "a different topic";
+  throw new Error(
+    `Captured TSV topic does not match the pending audit bundle. Expected ${expected}; captured TSV appears to be ${found}. Open the correct ChatGPT conversation/download, or regenerate the cards for the current article before using Capture TSV.`
+  );
+}
+
 function extractCoreEvidenceBlock(text) {
   const value = String(text || "");
   const begin = value.indexOf(CORE_EVIDENCE_BEGIN);
@@ -3742,14 +3802,14 @@ function buildAuditWakeMessage(bundle) {
 function buildSourceOnlyWakeMessage(bundle) {
   const downloadFolder = bundle?.downloadFolder || `Downloads\\${CARD_AUDIT_SUBFOLDER}`;
   return [
-    "I exported a RadPrimer audit source-only bundle.",
+    "Audit an existing generated TSV against this RadPrimer/STATdx source bundle.",
     "",
     `The source bundle is here: ${downloadFolder}`,
     "",
-    "Use this together with the generated ChatGPT TSV if I provide it separately.",
-    "The bundle contains source_package.txt, metadata.json, audit_instructions.md, and _source_only_bundle.txt.",
+    "Use this together with the generated ChatGPT TSV that I provide separately in this message/thread.",
+    "The bundle contains source_package.txt, metadata.json, audit_instructions.md, _source_only_bundle.txt, and _bundle_complete.txt.",
     "",
-    "Please compare the generated TSV against the source package, preserve the TSV schema and column order, remove weak/meta cards, split overloaded cards, add missing source-supported high-yield cards, and produce corrected_cards.tsv plus audit_report.md."
+    "Please import the newest complete RadPrimer audit bundle, read the queue pointer, then compare the provided TSV against the source package. Preserve the TSV schema and column order, remove weak/meta cards, split overloaded cards, add missing source-supported high-yield cards, and produce corrected_cards.tsv plus audit_report.md. If metadata.json contains an Anki deck target, also produce corrected_cards_anki_import.tsv."
   ].join("\n");
 }
 
@@ -4034,6 +4094,7 @@ async function stageCardAuditBundle({ pending, assistantText }) {
   const folderName = `${sanitizeDownloadPathPart(title)}_${createdAt.replace(/[:.]/g, "-")}`;
   const coreEvidence = extractCoreEvidenceBlock(assistantText);
   const generatedCards = stripOuterCodeFence(stripCoreEvidenceBlock(assistantText));
+  validateGeneratedCardsMatchPending(pending, generatedCards);
   const metadata = createCardAuditMetadata(pending, createdAt, {
     generatedChars: generatedCards.length,
     generatedRawChars: String(assistantText || "").length,
@@ -4088,6 +4149,11 @@ async function stageCardAuditSourceOnlyBundle({ pending, sourceLabel = "source_o
     folderName,
     "_source_only_bundle.txt",
     `sourceOnly=true\ncreatedAt=${createdAt}\narticleTitle=${title}\n`
+  );
+  await downloadAuditTextFile(
+    folderName,
+    "_bundle_complete.txt",
+    `complete=true\nsourceOnly=true\ncreatedAt=${createdAt}\narticleTitle=${title}\n`
   );
 
   return {
@@ -4725,6 +4791,7 @@ async function completePreparedCardAuditBundleFromGeneratedCards({
 
   const text = String(generatedCards || "");
   if (text.trim()) {
+    validateGeneratedCardsMatchPending(active.pending, text);
     await downloadAuditTextFile(
       active.folderName,
       "generated_cards.tsv",
@@ -5230,7 +5297,9 @@ function describePendingCardAuditRun(entry) {
 async function choosePendingCardAuditRunForChatContext(context = {}) {
   const pendingRuns = await getAllPendingCardAuditRuns();
   if (!pendingRuns.length) {
-    throw new Error("No pending card-audit run was found. If needed, export an audit source bundle from the article page.");
+    throw new Error(
+      "No pending card-audit run was found. The previous capture may have already used the pending run. Re-export the audit source bundle from the RadPrimer article page, then run Capture TSV again on the matching ChatGPT response."
+    );
   }
 
   const newestPendingRun = pendingRuns[0];
@@ -5262,7 +5331,10 @@ async function choosePendingCardAuditRunForChatContext(context = {}) {
 
   if (matches.length) return matches[0].entry;
 
-  if (hasDownloadSentinel) return newestPendingRun;
+  if (hasDownloadSentinel) {
+    const manualRuns = pendingRuns.filter((entry) => entry.pending?.manualTsvCapture);
+    if (manualRuns.length === 1) return manualRuns[0];
+  }
 
   throw new Error(
     `No pending card-audit run matched this ChatGPT page (${titleHints.join(" / ")}). Pending audit runs: ${pendingRuns
@@ -5629,21 +5701,35 @@ async function runRadPrimerIoQueue(tab) {
 }
 
 async function exportRadPrimerAuditSourceOnly(tab) {
-  assertSupportedArticleTab(tab);
+  const articleSource = assertSupportedArticleTab(tab);
 
-  await sendPageStatus(tab.id, "Audit Source", "Extracting source-only audit bundle...");
+  await sendPageStatus(tab.id, "Audit TSV", "Preparing source materials for ChatGPT TSV capture...");
   const settings = {
     ...(await loadRunnerSettings()),
-    // Keep image URL metadata in source-only bundles. This does not download files here;
-    // it only asks the extractor to include URL-bearing downloadFiles/imageRegistry.
+    // Keep image URL metadata available for the later audit bundle. This does not
+    // download files here; it only keeps URL-bearing downloadFiles/imageRegistry.
     downloadImages: true,
     openChatGPT: false,
     autoSubmitChatGPT: false,
     autoSendToSpeechify: false,
     speechifyAutoSave: false
   };
-  const promptText = SOURCE_COMPARE_EXTRACTION_PROMPT;
-  const extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  const promptText = await loadPrompt(settings.engine, settings.mode);
+
+  let extraction;
+  if (settings.useMasterSource) {
+    await sendPageStatus(tab.id, "Master Source", "Preparing imported master source for TSV capture...");
+    const masterSource = await getLatestMasterSourceCache();
+    if (!masterSource?.packageText) {
+      throw new Error("Use master source is enabled, but no imported master source was found. Import master_source_import.json first.");
+    }
+    extraction = await buildMasterSourceExtraction(settings, promptText, masterSource);
+  } else {
+    await sendPageStatus(tab.id, "Extracting", `Extracting ${articleSource.displayName} source for TSV capture...`);
+    extraction = await extractRadPrimerArticle(tab.id, settings, promptText);
+  }
+
+  const pendingId = crypto.randomUUID();
   const pending = {
     radPrimerTabId: tab.id,
     radPrimerUrl: tab.url || "",
@@ -5652,22 +5738,22 @@ async function exportRadPrimerAuditSourceOnly(tab) {
     sourcePackage: extraction.output,
     extractionMeta: extraction.meta || {},
     downloadFiles: extraction.downloadFiles || [],
-    createdAt: Date.now()
+    createdAt: Date.now(),
+    manualTsvCapture: true
   };
-  const bundle = await stageCardAuditSourceOnlyBundle({ pending });
-  const clipboardText = buildSourceOnlyWakeMessage(bundle);
+  await savePendingCardAuditRun(pendingId, pending);
 
   await sendPageStatus(
     tab.id,
-    "Audit Source Ready",
-    `Saved source-only audit bundle: ${bundle.downloadFolder}.`,
+    "Audit TSV Ready",
+    `Prepared ${pending.articleTitle || "this topic"} for TSV capture. Open the finished ChatGPT cards response and click Capture TSV.`,
     { done: true }
   );
 
   return {
-    bundle,
-    clipboardText,
-    message: `Saved source-only audit bundle: ${bundle.downloadFolder}.`
+    pendingId,
+    articleTitle: pending.articleTitle || "",
+    message: `Prepared ${pending.articleTitle || "this topic"} for TSV capture. Open the finished ChatGPT cards response and click Capture TSV.`
   };
 }
 

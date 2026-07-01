@@ -240,6 +240,7 @@ async function syncSourceCompareButtons() {
     isArticleSource = Boolean(getArticleSourceFromUrl(tab.url || ""));
   } catch {}
 
+  $("exportAuditSource").hidden = !isArticleSource;
   $("exportSourceCompare").hidden = !isArticleSource;
   $("buildMasterSource").hidden = !isArticleSource;
 }
@@ -1119,16 +1120,16 @@ async function exportAuditSource() {
   try {
     await saveForm();
     const tab = await getActiveTab();
-    setStatus("Exporting source-only audit bundle...");
+    setStatus("Preparing source materials for an existing generated TSV...");
     const response = await sendExportAuditSourceMessage(tab.id);
     if (!response?.ok) throw new Error(response?.error || "Source-only export failed.");
 
     if (response.clipboardText) await copyText(response.clipboardText);
     setStatus(
       [
-        response.message || "Source-only audit bundle exported.",
-        `Bundle: ${response.bundle?.downloadFolder || "[created]"}`,
-        response.clipboardText ? "Source-only wake-up message copied to clipboard." : "No wake-up message was returned."
+        response.message || "Audit source materials prepared for your existing TSV.",
+        response.articleTitle ? `Topic: ${response.articleTitle}` : "",
+        response.pendingId ? "Now open the finished ChatGPT cards response and click Capture TSV." : ""
       ].join("\n")
     );
   } catch (error) {

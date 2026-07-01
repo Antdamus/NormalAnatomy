@@ -1,0 +1,94 @@
+# Acute Subdural Hematoma
+
+Canonical hierarchy: All Categories > Basic > Neuroradiology > Brain > Primary Effects of CNS Trauma > Acute Subdural Hematoma
+Canonical deck path: Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Acute Subdural Hematoma
+Primary source posture: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth and the default higher-resolution selected image set.
+Core evidence: no auditable Core Radiology source was supplied in this bundle, so Core-specific support is not asserted.
+
+## Source Coverage And Image Gate
+
+STATdx fully covers the 10-image RadPrimer set with visually exact same-screenshot or same-graphic counterparts in the staged image_evidence files. The RadPrimer and STATdx binary hashes differ because the evidence exports use different source render sizes/compression levels, but direct visual inspection of the staged files shows the same screenshot/slice/graphic for every mapped pair. Therefore, the default teaching/download set uses STATdx images 1-25, while RadPrimer images 1-10 remain in the registry as archive-optional exact duplicates for audit traceability.
+
+RadPrimer image 1 -> STATdx image 1: exact duplicate; mechanism graphic of acute SDH compressing the left hemisphere with associated contusions/axonal injuries.
+RadPrimer image 2 -> STATdx image 2: exact duplicate; classic left convexity acute SDH with internal hypodense unclotted blood.
+RadPrimer image 3 -> STATdx image 3: exact duplicate; paired standard/wide-window NECT comparison for subtle SDH and disproportionate swelling.
+RadPrimer image 4 -> STATdx image 10: exact duplicate; isodense acute SDH in an anemic patient with inward gray-white displacement and midline shift.
+RadPrimer image 5 -> STATdx image 5: exact duplicate; coronal graphic of thin falcine/tentorial acute SDH.
+RadPrimer images 6-8 -> STATdx images 21-23: exact duplicate atomic same-patient peritentorial SDH multiplanar cluster.
+RadPrimer images 9-10 -> STATdx images 24-25: exact duplicate atomic rapid-expansion time-lapse cluster.
+No RadPrimer image is classified as near duplicate, conceptual replacement, or not covered.
+
+## Fused Teaching Backbone
+
+### Definition And Mechanism
+
+- [Both] Acute subdural hematoma is acute blood in or between the inner border cell layer of the dura and the arachnoid.
+- [Both] Trauma is the most common cause; the classic mechanism is tearing of bridging cortical veins as they cross the subdural space to drain into the dural sinuses.
+- [Both] Older adults are especially vulnerable after minor trauma because cerebral atrophy permits greater cortical motion and bridging-vein strain.
+- [STATdx] Nontraumatic/spontaneous causes include dissection of intraparenchymal hemorrhage into the subarachnoid/subdural space, aneurysm rupture, dural AVF/AVM/cavernoma, moyamoya, dural tumor invasion, severe coagulopathy, and cerebral amyloid angiopathy.
+- [Both] More than 70% of acute SDH cases have other significant traumatic lesions; if mass effect or shift is greater than expected for hematoma thickness, suspect underlying edema/excitotoxic injury.
+
+### Imaging Pattern
+
+- [Both] Noncontrast CT is the initial screening study. Use bone and soft-tissue algorithms, standard brain windows, and wider windows around 150 HU when SDH is subtle or isodense.
+- [Both] The typical CT finding is a crescentic hyperdense extraaxial collection that spreads diffusely over the affected convexity and may extend along the falx, tentorium, and anterior/middle cranial fossa floors.
+- [Both] Acute SDH may cross sutures but does not cross dural attachments. It causes inward displacement of cortical veins, sulci, and the gray-white interface.
+- [Both] Hyperacute SDH can be heterogeneous or hypodense. In the 6-hour to 3-day acute window, about 60% are homogeneously hyperdense and about 40% are mixed density due to active bleeding/swirl, CSF admixture from arachnoid tear, or clot retraction.
+- [STATdx] STATdx explicitly frames CSF admixture as hematohygroma/arachnoid tear physiology; this is useful when an acute SDH has unexpectedly low-density components.
+- [Both] Rare isodense acute SDH occurs with coagulopathy or severe anemia and is best detected by gray-white/cortical vein displacement and widened window settings.
+- [Both] Coronal and sagittal reformats are best for small falcine, tentorial, or convexity components that are difficult on axial images alone.
+- [Both] MR is more sensitive than CT but is rarely the initial trauma study; it better depicts extent, age variability, traumatic brain injury, and nontraumatic causes.
+
+### MR And CTA Details
+
+- [Both] Acute SDH signal is variable and can evolve like intraparenchymal hemorrhage, but recurrent bleeding and CSF dilution make exact age assignment difficult.
+- [Both] On T1WI, hyperacute SDH is iso- to mildly hyperintense and acute SDH may be mildly hypointense; on T2WI, hyperacute SDH may be mildly hyperintense and acute SDH is often hypointense.
+- [Both] FLAIR is often conspicuous because SDH is usually hyperintense to CSF, though acute collections can be isointense to CSF from T2-shortening effects.
+- [Both] T2* GRE is usually hypointense unless the collection is hyperacute; DWI is nonspecific but helps distinguish empyema when central diffusion restriction is marked.
+- [Both] CTA mainly demonstrates mass effect and displaced veins; DSA is reserved when CTA suggests aneurysm or dural vascular malformation.
+- [STATdx] STATdx images add a CTA spot-sign/active extravasation teaching cluster: STATdx image 8 follows the heterogeneous SDH in STATdx image 7, and STATdx image 9 shows the 24-hour enlargement before decompression.
+
+### Differential Diagnosis
+
+- [Both] Other subdural collections include mixed acute-on-chronic/subacute SDH, hygroma, effusion, and empyema.
+- [Both] Hygroma is clear CSF from torn arachnoid, often after surgery or trauma; effusion is near-CSF-density xanthochromic fluid from membrane/plasma extravasation or meningitis.
+- [Both] Subdural empyema shows peripheral enhancement, FLAIR hyperintensity, and restricted diffusion on DWI.
+- [Both] Acute epidural hematoma is typically biconvex, strongly fracture-associated, limited by sutures, and may cross dural attachments; acute SDH is usually crescentic and can cross sutures.
+- [Both] Pachymeningopathies, dural tumors, and chemical shift artifact can mimic subdural pathology in the right setting.
+- [STATdx] Skull metastases may result in acute SDH, so bone windows should be reviewed when the context is atypical or nontraumatic.
+
+### Clinical Course And Management
+
+- [Both] Presentation ranges from asymptomatic to loss of consciousness. A lucid interval can occur when an initially alert patient deteriorates hours after trauma.
+- [Both] Advanced age, early symptoms within 4 hours, anticoagulation, and coagulopathy increase risk and worsen prognosis.
+- [Both] Acute SDH can grow with increasing mass effect if untreated. Recurrent hemorrhage is common; in children, recurrent or mixed-age hemorrhage should raise concern for nonaccidental trauma.
+- [Both] Thin isolated falcotentorial acute SDH, around 3 mm or less, in a young patient with GCS 13-15 typically does not enlarge and may not need repeat head CT.
+- [Both] Surgically relevant features include maximum hematoma thickness of 10 mm or greater, midline shift, and clinical deterioration.
+- [Both] Mortality is high, and hematoma volume greater than 8-10% of intracranial volume is lethal. Emergency preoperative high-dose mannitol may improve outcome in selected surgical cases.
+- [STATdx] STATdx supplemental captions emphasize that severe mass effect, edema, subfalcine/transtentorial herniation, obstructed foramen of Monro, and temporal horn displacement are poor-prognosis findings.
+
+## Selected Image Atlas For Future Generation
+
+Use the following primary images by default. RadPrimer counterparts are retained only as archive-optional duplicate evidence.
+
+- STATdx image 1: mechanism graphic for acute SDH compressing the hemisphere with associated contusions and axonal injuries.
+- STATdx image 2: classic axial NECT left convexity acute SDH with unclotted low-density foci and mass effect.
+- STATdx image 3: standard versus wide-window comparison showing a subtle SDH and disproportionate cortical swelling.
+- STATdx image 4: axial T1 MR showing a left convexity acute SDH at 24 hours and subfalcine herniation.
+- STATdx image 5: coronal graphic of thin falcine and tentorial acute SDH.
+- STATdx image 6: coronal NECT falcine/tentorial SDH variant with scalp hematoma, useful for management nuance that these often do not need surgery.
+- STATdx images 7-9: atomic active-bleeding cluster: heterogeneous acute SDH after fall, follow-up CTA spot sign, and 24-hour enlargement before decompression.
+- STATdx image 10: isodense acute SDH in an anemic patient with gray-white interface displacement and midline shift.
+- STATdx image 11: classic crescentic hyperdense extraaxial collection with compression and displacement of the brain.
+- STATdx images 12-15: atomic subtle tentorial cluster with axial, coronal, sagittal left tentorial, and right-sided normal-dura comparison views.
+- STATdx images 16-18: atomic severe herniation cluster in an anticoagulated obtunded patient, including obstructed foramen of Monro and fatal coronal herniation pattern.
+- STATdx images 19-20: atomic MR signal cluster showing acute right SDH on T1 and T2 with a chronic contralateral SDH for contrast.
+- STATdx images 21-23: atomic peritentorial same-patient multiplanar cluster, replacing RadPrimer images 6-8.
+- STATdx images 24-25: atomic rapid-expansion time-lapse cluster, replacing RadPrimer images 9-10.
+
+## Downstream Use Notes
+
+- Use selectedPrimaryImageIds for default image download and teaching.
+- Treat archive-optional RadPrimer images as audit/completeness records, not as default card or lecture images.
+- Preserve atomic case clusters listed in the manifest when generating future narrative or cards.
+- Keep human-facing prose labels clean, such as STATdx image 4 or RadPrimer image 5. Use short IDs such as SDX-04 and RP-05 only in registry, filenames, and traceability fields.

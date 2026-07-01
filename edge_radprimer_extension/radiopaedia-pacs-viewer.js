@@ -90,6 +90,7 @@
     pressedKeys: new Set(),
     defaultDragMode: "slice",
     imageFullscreen: false,
+    imageWindow: false,
     compareMode: false,
     compareLayout: "side",
     compareLinked: false,
@@ -990,21 +991,28 @@
           grid-template-columns: 248px minmax(0, 1fr);
           overflow: hidden;
         }
-        .shell.image-fullscreen {
+        .shell.image-fullscreen,
+        .shell.image-window {
           grid-template-columns: minmax(0, 1fr);
           background: #000;
         }
         .shell.image-fullscreen .sidebar,
         .shell.image-fullscreen .topbar,
         .shell.image-fullscreen .footer,
-        .shell.image-fullscreen .shortcut-panel {
+        .shell.image-fullscreen .shortcut-panel,
+        .shell.image-window .sidebar,
+        .shell.image-window .topbar,
+        .shell.image-window .footer,
+        .shell.image-window .shortcut-panel {
           display: none !important;
         }
-        .shell.image-fullscreen .main {
+        .shell.image-fullscreen .main,
+        .shell.image-window .main {
           grid-template-rows: minmax(0, 1fr);
           background: #000;
         }
-        .shell.image-fullscreen .stage {
+        .shell.image-fullscreen .stage,
+        .shell.image-window .stage {
           background: #000;
         }
         .shell.compare-mode .stage > .single-image {
@@ -1306,7 +1314,10 @@
         }
         .shell.image-fullscreen .compare-pane,
         .shell.image-fullscreen .compare-pane.active,
-        .shell.image-fullscreen .compare-pane[data-pane="b"].active {
+        .shell.image-fullscreen .compare-pane[data-pane="b"].active,
+        .shell.image-window .compare-pane,
+        .shell.image-window .compare-pane.active,
+        .shell.image-window .compare-pane[data-pane="b"].active {
           border-color: transparent;
           box-shadow: none;
         }
@@ -1405,7 +1416,8 @@
             overflow-x: auto;
             overflow-y: hidden;
           }
-          .shell.image-fullscreen {
+          .shell.image-fullscreen,
+          .shell.image-window {
             grid-template-columns: minmax(0, 1fr);
             grid-template-rows: minmax(0, 1fr);
           }
@@ -1453,6 +1465,8 @@
               <button class="save-b wide" type="button" title="Save this tab's study to cross-tab slot B">Save B</button>
               <button class="load-a wide" type="button" title="Load saved slot A into pane A">Load A</button>
               <button class="load-b wide" type="button" title="Load saved slot B into pane B">Load B</button>
+              <button class="image-popup wide" type="button" title="Open image-only viewer in a separate app-style window">Pop</button>
+              <button class="image-window wide" type="button" title="Image-only window mode">Win</button>
               <button class="image-full wide" type="button" title="Image-only fullscreen">Full</button>
               <button class="close" type="button" title="Close">x</button>
             </div>
@@ -1516,6 +1530,8 @@
     shadow.querySelector(".save-b").addEventListener("click", () => saveCurrentStudyToSlot("b"));
     shadow.querySelector(".load-a").addEventListener("click", () => loadCrossTabStudyToPane("a"));
     shadow.querySelector(".load-b").addEventListener("click", () => loadCrossTabStudyToPane("b"));
+    shadow.querySelector(".image-popup").addEventListener("click", openImagePopupWindow);
+    shadow.querySelector(".image-window").addEventListener("click", enterImageWindow);
     shadow.querySelector(".image-full").addEventListener("click", enterImageFullscreen);
     shadow.querySelector(".shortcut-reset").addEventListener("click", resetShortcutSettings);
     shadow.querySelector(".shortcut-list").addEventListener("click", (event) => {
@@ -1560,11 +1576,65 @@
     const host = ensureHost();
     const shell = host.shadowRoot?.querySelector(".shell");
     shell?.classList.toggle("image-fullscreen", Boolean(state.imageFullscreen));
+    shell?.classList.toggle("image-window", Boolean(state.imageWindow));
+  }
+
+  function imagePopupUrl() {
+    try {
+      const url = new URL(location.href);
+      url.searchParams.set("rpPacs", "window");
+      return url.toString();
+    } catch {
+      return location.href;
+    }
+  }
+
+  function openImagePopupWindow() {
+    const screenLeft = Number.isFinite(window.screenX) ? window.screenX : 0;
+    const screenTop = Number.isFinite(window.screenY) ? window.screenY : 0;
+    const availWidth = window.screen?.availWidth || 1400;
+    const availHeight = window.screen?.availHeight || 900;
+    const width = Math.max(920, Math.min(availWidth - 80, 1600));
+    const height = Math.max(640, Math.min(availHeight - 80, 1100));
+    const left = Math.max(0, screenLeft + 40);
+    const top = Math.max(0, screenTop + 40);
+    const url = imagePopupUrl();
+
+    chrome.runtime.sendMessage({
+      type: "OPEN_RADIOPAEDIA_PACS_POPUP",
+      url,
+      width,
+      height,
+      left,
+      top
+    }, (response) => {
+      if (chrome.runtime.lastError || !response?.ok) {
+        window.open(
+          url,
+          "radiopaedia-pacs-popup",
+          `popup=yes,width=${Math.round(width)},height=${Math.round(height)},left=${Math.round(left)},top=${Math.round(top)},resizable=yes,scrollbars=no`
+        );
+      }
+    });
+  }
+
+  function enterImageWindow() {
+    state.imageWindow = true;
+    state.shortcutCaptureAction = "";
+    renderShortcutPanel();
+    syncImageFullscreenClass();
+  }
+
+  function exitImageWindow() {
+    if (!state.imageWindow) return;
+    state.imageWindow = false;
+    syncImageFullscreenClass();
   }
 
   function enterImageFullscreen() {
     const host = ensureHost();
     state.imageFullscreen = true;
+    state.imageWindow = false;
     state.shortcutCaptureAction = "";
     renderShortcutPanel();
     syncImageFullscreenClass();
@@ -1578,6 +1648,7 @@
     if (!state.imageFullscreen && document.fullscreenElement !== document.getElementById(HOST_ID)) return;
     const host = document.getElementById(HOST_ID);
     state.imageFullscreen = false;
+    state.imageWindow = false;
     syncImageFullscreenClass();
 
     if (
@@ -1982,6 +2053,7 @@
     host.style.display = "block";
     state.open = true;
     state.imageFullscreen = false;
+    state.imageWindow = false;
     state.compareMode = false;
     state.compareLinked = false;
     state.activePane = "a";
@@ -2008,6 +2080,7 @@
   function closeViewer() {
     const host = document.getElementById(HOST_ID);
     exitImageFullscreen();
+    exitImageWindow();
     if (host) host.style.display = "none";
     state.open = false;
     state.dragging = false;
@@ -2709,10 +2782,11 @@
     if (state.suppressOwnKeyCapture) return;
     if (!state.open) return;
     if (isEditableTarget(event.target)) return;
-    if (key === "Escape" && state.imageFullscreen) {
+    if (key === "Escape" && (state.imageFullscreen || state.imageWindow)) {
       event.preventDefault();
       event.stopPropagation();
-      exitImageFullscreen();
+      if (state.imageFullscreen) exitImageFullscreen();
+      else exitImageWindow();
       return;
     }
 
@@ -2775,6 +2849,12 @@
     });
     window.addEventListener("blur", () => state.pressedKeys.clear());
     refreshFromBridge({ preferVisible: true });
+    if (new URLSearchParams(location.search).get("rpPacs") === "window") {
+      window.setTimeout(() => {
+        openViewer();
+        enterImageWindow();
+      }, 350);
+    }
     window.setTimeout(() => {
       ensureLauncher();
       collectSeries();

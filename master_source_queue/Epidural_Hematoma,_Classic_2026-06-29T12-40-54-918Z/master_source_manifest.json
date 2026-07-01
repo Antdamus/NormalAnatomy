@@ -1,0 +1,662 @@
+{
+  "version": 1,
+  "articleTitle": "Epidural Hematoma, Classic",
+  "createdAt": "2026-06-29T12:49:44.571932Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Neuroradiology",
+    "Brain",
+    "Primary Effects of CNS Trauma",
+    "Epidural Hematoma, Classic"
+  ],
+  "canonicalDeckPath": "Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Epidural Hematoma, Classic",
+  "sourcePriority": [
+    "RadPrimer canonical hierarchy/backbone",
+    "STATdx supplemental depth and higher-resolution image representatives"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "textRole": "canonical hierarchy/backbone and core article structure",
+      "imageCount": 10,
+      "statdxCoverage": "fullyCoveredByExactDuplicates",
+      "defaultImageUse": "archived as exact duplicate after actual image_evidence inspection"
+    },
+    "STATdx": {
+      "textRole": "supplemental detail, richer captions, additional modality/stage/severity examples",
+      "imageCount": 27,
+      "defaultImageUse": "primaryTeachingSet"
+    },
+    "CoreRadiology": {
+      "textRole": "not used; no auditable Core evidence supplied in this request bundle"
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 27
+  },
+  "sourceAttributionRules": [
+    "Use [Both] for shared claims present in RadPrimer and STATdx.",
+    "Use [RadPrimer] for canonical hierarchy/backbone and RadPrimer-only wording.",
+    "Use [STATdx] for supplemental CTA/CTV, spot/leakage sign, MR/MRV, venous/posterior fossa/frontal sinus examples, richer image captions, and management nuance.",
+    "Do not imply Core Radiology support because no Core evidence was provided in the bundle."
+  ],
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-27"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": {
+      "canonicalBackbone": "RadPrimer",
+      "rule": "Use metadata.json canonicalHierarchy exactly for hierarchy, breadcrumb, deckPath, and package routing.",
+      "statdxUse": "Use STATdx as supplemental depth for CTA/CTV, spot/leakage sign, venous sinus displacement/compression, countercoup/frontal/posterior fossa examples, MR/MRV variants, active bleeding, herniation, differential nuance, management thresholds, and richer image captions."
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "radPrimerCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "statdxCoverageImageId": "SDX-01",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-01; keep SDX-01 as primary higher-resolution representative",
+        "note": "same mechanism graphic showing middle meningeal artery laceration, swirl sign, and inward dural displacement"
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "statdxCoverageImageId": "SDX-02",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-02; keep SDX-02 as primary higher-resolution representative",
+        "note": "same axial bone-window left squamous temporal fracture screenshot"
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "statdxCoverageImageId": "SDX-03",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-03; keep SDX-03 as primary higher-resolution representative",
+        "note": "same axial NECT left temporal acute EDH screenshot from the same fracture case"
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "statdxCoverageImageId": "SDX-04",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-04; keep SDX-04 as primary higher-resolution representative",
+        "note": "same coronal NECT left temporal EDH screenshot from the same case"
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "statdxCoverageImageId": "SDX-22",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-05; keep SDX-22 as primary higher-resolution representative",
+        "note": "same axial bone-window right squamous temporal fracture screenshot"
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "statdxCoverageImageId": "SDX-21",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-06; keep SDX-21 as primary higher-resolution representative",
+        "note": "same axial NECT right pterion small mixed-density EDH screenshot"
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "statdxCoverageImageId": "SDX-05",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-07; keep SDX-05 as primary higher-resolution representative",
+        "note": "same axial NECT baseline interdural/EDH observation screenshot"
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "statdxCoverageImageId": "SDX-06",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-08; keep SDX-06 as primary higher-resolution representative",
+        "note": "same 3-hour follow-up axial NECT screenshot showing interval growth and swirl sign"
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "statdxCoverageImageId": "SDX-25",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-09; keep SDX-25 as primary higher-resolution representative",
+        "note": "same axial NECT small right parietal EDH screenshot in conservatively managed patient"
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "statdxCoverageImageId": "SDX-26",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "visual image_evidence inspection; same screenshot/slice, different source export size/compression",
+        "teachingAction": "archive RP-10; keep SDX-26 as primary higher-resolution representative",
+        "note": "same 10-day follow-up axial NECT screenshot showing lower density EDH and hygromas"
+      }
+    ],
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse clusters are atomic unless an explicit documented split is safe.",
+      "intentionalSplits": [],
+      "clusterHandling": [
+        {
+          "cluster": "left temporal fracture/EDH",
+          "radPrimerImages": [
+            "RP-02",
+            "RP-03",
+            "RP-04"
+          ],
+          "keptPrimaryImages": [
+            "SDX-02",
+            "SDX-03",
+            "SDX-04"
+          ],
+          "reason": "whole RadPrimer cluster replaced by exact same STATdx screenshots"
+        },
+        {
+          "cluster": "right pterion fracture/small EDH",
+          "radPrimerImages": [
+            "RP-05",
+            "RP-06"
+          ],
+          "keptPrimaryImages": [
+            "SDX-22",
+            "SDX-21"
+          ],
+          "reason": "whole RadPrimer cluster replaced by exact same STATdx screenshots"
+        },
+        {
+          "cluster": "baseline observation then 3-hour deterioration",
+          "radPrimerImages": [
+            "RP-07",
+            "RP-08"
+          ],
+          "keptPrimaryImages": [
+            "SDX-05",
+            "SDX-06"
+          ],
+          "reason": "whole RadPrimer time-lapse cluster replaced by exact same STATdx screenshots"
+        },
+        {
+          "cluster": "conservative management and 10-day follow-up",
+          "radPrimerImages": [
+            "RP-09",
+            "RP-10"
+          ],
+          "keptPrimaryImages": [
+            "SDX-25",
+            "SDX-26"
+          ],
+          "reason": "whole RadPrimer follow-up cluster replaced by exact same STATdx screenshots"
+        }
+      ]
+    },
+    "selectedPrimaryImageIds": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26",
+      "SDX-27"
+    ],
+    "archiveOptionalImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10"
+    ],
+    "imageDownloadPlan": {
+      "downloadOnly": [
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22",
+        "SDX-23",
+        "SDX-24",
+        "SDX-25",
+        "SDX-26",
+        "SDX-27"
+      ],
+      "skipByDefaultArchiveOnly": [
+        "RP-01",
+        "RP-02",
+        "RP-03",
+        "RP-04",
+        "RP-05",
+        "RP-06",
+        "RP-07",
+        "RP-08",
+        "RP-09",
+        "RP-10"
+      ],
+      "selectedPrimaryImageIds": [
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22",
+        "SDX-23",
+        "SDX-24",
+        "SDX-25",
+        "SDX-26",
+        "SDX-27"
+      ],
+      "archiveOptionalImageIds": [
+        "RP-01",
+        "RP-02",
+        "RP-03",
+        "RP-04",
+        "RP-05",
+        "RP-06",
+        "RP-07",
+        "RP-08",
+        "RP-09",
+        "RP-10"
+      ],
+      "files": [
+        {
+          "masterImageId": "SDX-01",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/57c5c2c8-94c1-47e4-a7c7-903fa70f170d?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/57c5c2c8-94c1-47e4-a7c7-903fa70f170d?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-01_STATdx_plain_Epidural_Hematoma__Classic1.jpg",
+          "annotatedFilename": "SDX-01_STATdx_annotated_Epidural_Hematoma__Classic1_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_57c5c2c8.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-02",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/2bf3f9e3-9a99-4ac3-ade7-62886c56993e?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/2bf3f9e3-9a99-4ac3-ade7-62886c56993e?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-02_STATdx_plain_Epidural_Hematoma__Classic2.jpg",
+          "annotatedFilename": "SDX-02_STATdx_annotated_Epidural_Hematoma__Classic2_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_2bf3f9e3.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-03",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/7a96809f-64f8-4667-9522-d58fb1ca7a94?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/7a96809f-64f8-4667-9522-d58fb1ca7a94?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-03_STATdx_plain_Epidural_Hematoma__Classic3.jpg",
+          "annotatedFilename": "SDX-03_STATdx_annotated_Epidural_Hematoma__Classic3_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_7a96809f.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-04",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/215406f3-5798-4d50-8e93-9a27b88df59c?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/215406f3-5798-4d50-8e93-9a27b88df59c?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-04_STATdx_plain_Epidural_Hematoma__Classic4.jpg",
+          "annotatedFilename": "SDX-04_STATdx_annotated_Epidural_Hematoma__Classic4_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_215406f3.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-05",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/ee059c78-50dc-4bf2-90db-e649b1e2bbfd?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/ee059c78-50dc-4bf2-90db-e649b1e2bbfd?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-05_STATdx_plain_Epidural_Hematoma__Classic5.jpg",
+          "annotatedFilename": "SDX-05_STATdx_annotated_Epidural_Hematoma__Classic5_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_ee059c78.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-06",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/1e1bfe32-6630-4d4f-b392-aa4a8afee60a?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/1e1bfe32-6630-4d4f-b392-aa4a8afee60a?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-06_STATdx_plain_Epidural_Hematoma__Classic6.jpg",
+          "annotatedFilename": "SDX-06_STATdx_annotated_Epidural_Hematoma__Classic6_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_1e1bfe32.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-07",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/9c978a7f-f141-409d-b74b-567d1e4c6e31?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/9c978a7f-f141-409d-b74b-567d1e4c6e31?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-07_STATdx_plain_Epidural_Hematoma__Classic7.jpg",
+          "annotatedFilename": "SDX-07_STATdx_annotated_Epidural_Hematoma__Classic7_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_9c978a7f.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-08",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/8f15ffde-d255-4989-a3ee-b98ec7afd12e?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/8f15ffde-d255-4989-a3ee-b98ec7afd12e?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-08_STATdx_plain_Epidural_Hematoma__Classic8.jpg",
+          "annotatedFilename": "SDX-08_STATdx_annotated_Epidural_Hematoma__Classic8_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_8f15ffde.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-09",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/d02cf594-9711-4e32-abff-acd02af2ece4?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/d02cf594-9711-4e32-abff-acd02af2ece4?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-09_STATdx_plain_Epidural_Hematoma__Classic9.jpg",
+          "annotatedFilename": "SDX-09_STATdx_annotated_Epidural_Hematoma__Classic9_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_d02cf594.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/4f4bf658-1bf5-4086-8f6f-e31d7149d1ed?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/4f4bf658-1bf5-4086-8f6f-e31d7149d1ed?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-10_STATdx_plain_Epidural_Hematoma__Classic10.jpg",
+          "annotatedFilename": "SDX-10_STATdx_annotated_Epidural_Hematoma__Classic10_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_4f4bf658.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/76041603-5729-41f9-ae1b-eef361c75755?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/76041603-5729-41f9-ae1b-eef361c75755?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-11_STATdx_plain_Epidural_Hematoma__Classic11.jpg",
+          "annotatedFilename": "SDX-11_STATdx_annotated_Epidural_Hematoma__Classic11_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_76041603.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-12",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/53cb2825-3476-42fd-be64-aa5204d81e55?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/53cb2825-3476-42fd-be64-aa5204d81e55?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-12_STATdx_plain_Epidural_Hematoma__Classic12.jpg",
+          "annotatedFilename": "SDX-12_STATdx_annotated_Epidural_Hematoma__Classic12_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_53cb2825.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-13",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/30cca4b1-a50f-4842-9742-20f09c36dda5?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/30cca4b1-a50f-4842-9742-20f09c36dda5?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-13_STATdx_plain_Epidural_Hematoma__Classic13.jpg",
+          "annotatedFilename": "SDX-13_STATdx_annotated_Epidural_Hematoma__Classic13_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_30cca4b1.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-14",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/ebe84bd3-5782-45a1-8972-8547ee783c73?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/ebe84bd3-5782-45a1-8972-8547ee783c73?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-14_STATdx_plain_Epidural_Hematoma__Classic14.jpg",
+          "annotatedFilename": "SDX-14_STATdx_annotated_Epidural_Hematoma__Classic14_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_ebe84bd3.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-15",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/9151602c-371a-4708-b079-93371008b17b?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/9151602c-371a-4708-b079-93371008b17b?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-15_STATdx_plain_Epidural_Hematoma__Classic15.jpg",
+          "annotatedFilename": "SDX-15_STATdx_annotated_Epidural_Hematoma__Classic15_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_9151602c.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-16",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/c1dacadc-daaa-4c49-bb35-ead1f7d0caf5?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/c1dacadc-daaa-4c49-bb35-ead1f7d0caf5?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-16_STATdx_plain_Epidural_Hematoma__Classic16.jpg",
+          "annotatedFilename": "SDX-16_STATdx_annotated_Epidural_Hematoma__Classic16_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_c1dacadc.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-17",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/e0528046-0791-46aa-8a72-d65a0975ced0?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/e0528046-0791-46aa-8a72-d65a0975ced0?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-17_STATdx_plain_Epidural_Hematoma__Classic17.jpg",
+          "annotatedFilename": "SDX-17_STATdx_annotated_Epidural_Hematoma__Classic17_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_e0528046.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-18",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/d3fd9c4e-99b1-412f-b7fb-259cc3acd21e?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/d3fd9c4e-99b1-412f-b7fb-259cc3acd21e?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-18_STATdx_plain_Epidural_Hematoma__Classic18.jpg",
+          "annotatedFilename": "SDX-18_STATdx_annotated_Epidural_Hematoma__Classic18_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_d3fd9c4e.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-19",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/3352717c-afba-43a6-9246-62b20ec50500?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/3352717c-afba-43a6-9246-62b20ec50500?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-19_STATdx_plain_Epidural_Hematoma__Classic19.jpg",
+          "annotatedFilename": "SDX-19_STATdx_annotated_Epidural_Hematoma__Classic19_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_3352717c.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-20",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/2b052347-5745-486c-a89a-7e18a866c049?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/2b052347-5745-486c-a89a-7e18a866c049?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-20_STATdx_plain_Epidural_Hematoma__Classic20.jpg",
+          "annotatedFilename": "SDX-20_STATdx_annotated_Epidural_Hematoma__Classic20_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_2b052347.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-21",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/c118eaa2-29ac-4768-bcf3-44a2c7777715?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/c118eaa2-29ac-4768-bcf3-44a2c7777715?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-21_STATdx_plain_Epidural_Hematoma__Classic21.jpg",
+          "annotatedFilename": "SDX-21_STATdx_annotated_Epidural_Hematoma__Classic21_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_c118eaa2.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-22",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/0368ffb2-2237-4b95-8ed9-190a88c23666?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/0368ffb2-2237-4b95-8ed9-190a88c23666?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-22_STATdx_plain_Epidural_Hematoma__Classic22.jpg",
+          "annotatedFilename": "SDX-22_STATdx_annotated_Epidural_Hematoma__Classic22_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_0368ffb2.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-23",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/a9e64a39-4fbe-4828-a425-ae2a571a55a0?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/a9e64a39-4fbe-4828-a425-ae2a571a55a0?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-23_STATdx_plain_Epidural_Hematoma__Classic23.jpg",
+          "annotatedFilename": "SDX-23_STATdx_annotated_Epidural_Hematoma__Classic23_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_a9e64a39.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-24",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/ddf0b720-8d4a-46c3-bcfd-d920bdff93c2?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/ddf0b720-8d4a-46c3-bcfd-d920bdff93c2?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-24_STATdx_plain_Epidural_Hematoma__Classic24.jpg",
+          "annotatedFilename": "SDX-24_STATdx_annotated_Epidural_Hematoma__Classic24_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_ddf0b720.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-25",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/33e96222-2b3a-40f3-9ea4-30f553fdead6?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/33e96222-2b3a-40f3-9ea4-30f553fdead6?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-25_STATdx_plain_Epidural_Hematoma__Classic25.jpg",
+          "annotatedFilename": "SDX-25_STATdx_annotated_Epidural_Hematoma__Classic25_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_33e96222.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-26",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/1307c3fb-7df0-43d8-8602-9aa66cbefce9?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/1307c3fb-7df0-43d8-8602-9aa66cbefce9?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-26_STATdx_plain_Epidural_Hematoma__Classic26.jpg",
+          "annotatedFilename": "SDX-26_STATdx_annotated_Epidural_Hematoma__Classic26_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_1307c3fb.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-27",
+          "sourceLabel": "STATdx",
+          "sourceKind": "statdx",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/452f84a5-4957-4fb0-b882-1bdeedf7e04d?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/452f84a5-4957-4fb0-b882-1bdeedf7e04d?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-27_STATdx_plain_Epidural_Hematoma__Classic27.jpg",
+          "annotatedFilename": "SDX-27_STATdx_annotated_Epidural_Hematoma__Classic27_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-27_STATdx_image_27_plain_452f84a5.jpg",
+          "downloadRecommendation": "primaryTeachingSet"
+        }
+      ]
+    },
+    "generatorInstructions": [
+      "Do not generate cards or a lecture from this package until explicitly requested.",
+      "Use RadPrimer-derived canonicalHierarchy and canonicalDeckPath exactly for downstream routing.",
+      "Use clean human-facing image labels such as STATdx image 4 or RadPrimer image 5 in narrative prose; keep RP-05 and SDX-04 in traceability fields.",
+      "Use selectedPrimaryImageIds for default image download and teaching. ArchiveOptionalImageIds are retained for audit/completeness only."
+    ]
+  }
+}

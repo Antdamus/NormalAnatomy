@@ -1,0 +1,9 @@
+status=done
+createdAt=2026-06-29T11:24:24Z
+bundle=Scalp_and_Skull_Injuries_2026-06-29T11-11-31-006Z
+articleTitle=Scalp and Skull Injuries
+sourceIntegrityStatus=ok
+readyForGeneration=true
+selectedPrimaryImageIds=26
+archiveOptionalImageIds=10
+outputs=master_source_package.txt,master_source_manifest.json,image_registry.json,master_source_import.json,master_source_report.md

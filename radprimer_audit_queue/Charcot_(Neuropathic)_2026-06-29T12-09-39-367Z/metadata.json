@@ -1,0 +1,121 @@
+{
+  "createdAt": "2026-06-29T12:09:39.367Z",
+  "articleTitle": "Charcot (Neuropathic)",
+  "sourceUrl": "https://app.radprimer.com/document/4cf14531-c1aa-47a4-b72d-478e24859752/lesson/657e0ece-922a-4a72-8c0f-6eb2ac59ac7d",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "masterImageIds": [],
+  "sourceQualifiedImages": [],
+  "cases": [
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      7
+    ],
+    [
+      8
+    ]
+  ],
+  "totalImagesOnPage": 22,
+  "breadcrumbTrail": [
+    "Basic",
+    "Musculoskeletal",
+    "Musculoskeletal: Trauma",
+    "Introduction to Osseous Trauma",
+    "Charcot (Neuropathic)"
+  ],
+  "outputChars": 187762,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "CORE_EVIDENCE_FILE_BEGIN\nCORE_EVIDENCE_STATUS: USED\nCORE_SOURCE_BASIS: Core Radiology, Second Edition; uploaded file junzi-shi-core-radiology-a-visual-approach-to.pdf; Pediatric Imaging / Child abuse - non-accidental trauma, Peds pp. 1165-1166; Spine Imaging / Imaging in cervical spine trauma and occipital condyle fractures, Spine pp. 899-900.\nCORE_FACTS_USED:\n\n- Complex skull fractures that are depressed, multiple, bilateral, or crossing sutures are suspicious for child abuse.\n- Isolated linear skull fracture is nonspecific and can be seen in both abuse and accidental trauma.\n- Bone scintigraphy is insensitive for skull fractures.\n- CT is preferred for trauma fracture assessment when imaging is indicated; MRI is not the initial modality for fracture detection but can help with selected complications/soft-tissue or ligament questions.\nCORE_DERIVED_CARDS:\n- Epidemiology/etiology card: isolated linear skull fracture is nonspecific for child abuse.\n- High-yield card: complex skull fracture patterns suspicious for child abuse.\n- High-yield card: bone scintigraphy limitation for skull fractures.\n- Summary field Core Cross-Check section.\nCORE_LIMITATIONS:\n- Core did not provide a dedicated Scalp and Skull Injuries article matching the RadPrimer/STATdx source package; Core content was used only as cross-checking support for pediatric skull fracture abuse specificity and general trauma imaging modality context.\nCORE_EVIDENCE_FILE_END\n\nRADPRIMER_CARD_TSV_DOWNLOAD_READY\nFILENAME: radprimer_cards.tsv\nEXPECTED_ROWS: 36",
+  "coreEvidence": {
+    "status": "USED",
+    "provided": true,
+    "chars": 1401,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "Basic",
+      "Musculoskeletal",
+      "Musculoskeletal: Trauma",
+      "Introduction to Osseous Trauma",
+      "Charcot (Neuropathic)"
+    ],
+    "deckParts": [
+      "Corebook",
+      "MSK",
+      "Trauma",
+      "Introduction to Osseous Trauma",
+      "Charcot (Neuropathic)"
+    ],
+    "deckName": "Corebook::MSK::Trauma::Introduction to Osseous Trauma::Charcot (Neuropathic)",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [],
+  "imageRegistry": [],
+  "masterSource": null,
+  "settings": {
+    "include": "1,2,3,4,5,6,7,8,9,10",
+    "caseMap": "1,2; 3,4; 5,6; 9,10",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "effectiveAnkiNormalRoot": "",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "radprimer_cards.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000ea48722f9142743734457753&ts=495203&p=fs&cid=1&sig=02de9fdef73feb15556e6f7053099724cfd91fd9397753a1364e6a844937e94a&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000ea48722f9142743734457753&ts=495203&p=fs&cid=1&sig=02de9fdef73feb15556e6f7053099724cfd91fd9397753a1364e6a844937e94a&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 6028,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Charcot_(Neuropathic)_2026-06-29T12-09-39-367Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}

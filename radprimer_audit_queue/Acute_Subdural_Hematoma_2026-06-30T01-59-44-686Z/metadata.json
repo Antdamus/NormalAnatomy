@@ -1,0 +1,2233 @@
+{
+  "createdAt": "2026-06-30T01:59:44.686Z",
+  "articleTitle": "Acute Subdural Hematoma",
+  "sourceUrl": "https://app.radprimer.com/document/f3b62651-38ad-4d4e-a6eb-2988e74bdfe8/lesson/86c227e1-9b32-496b-9271-4b5599068d00",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "masterImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25"
+  ],
+  "sourceQualifiedImages": [
+    {
+      "caption": "Graphic shows an acute subdural hematoma (aSDH) <img src=\"arrow_WC.png\"> compressing the left hemisphere & lateral ventricle, resulting in midline shift. Coexisting cortical contusions <img src=\"arrow_BS.png\"> & axonal injuries <img src=\"arrow_BC.png\"> are common in aSDHs. Contrecoup contusions <img src=\"arrow_WO.png\"> are present.",
+      "label": "SDX-01",
+      "masterImageId": "SDX-01",
+      "sourceImageNumber": 1,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "NECT in a 58-year-old woman with head trauma shows a classic aSDH <img src=\"arrow_WC.png\"> extending over left convexity & compressing the underlying subarachnoid space <img src=\"arrow_WO.png\">. Subtle hypodense foci <img src=\"arrow_BS.png\"> within hyperdense aSDH represent unclotted blood & risk for rapid hematoma expansion.",
+      "label": "SDX-02",
+      "masterImageId": "SDX-02",
+      "sourceImageNumber": 2,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "NECT shows the small SDH <img src=\"arrow_WS.png\"> is easier to see with wider windows (R) compared to standard brain window (L). Note cortical swelling under the SDH <img src=\"arrow_WO.png\"> with disproportionate mass effect on lateral ventricle and midline shift of the septum pellucidum <img src=\"arrow_WC.png\">, concerning for potentially catastrophic brain swelling.",
+      "label": "SDX-03",
+      "masterImageId": "SDX-03",
+      "sourceImageNumber": 3,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T1 MR shows a crescentic left convexity aSDH (24 hours) <img src=\"arrow_CS.png\">. Blood is isointense to white matter but well seen due to ease of visualization of the brain surface. Note the subfalcine herniation <img src=\"arrow_WS.png\">.",
+      "label": "SDX-04",
+      "masterImageId": "SDX-04",
+      "sourceImageNumber": 4,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Coronal graphic depicts a thin aSDH layering along the falx <img src=\"arrow_BO.png\"> and tentorium <img src=\"arrow_BC.png\">. Such aSDHs may be difficult to identify on axial images alone. Multiplanar reconstructions are very helpful in identifying small, thin aSDHs.",
+      "label": "SDX-05",
+      "masterImageId": "SDX-05",
+      "sourceImageNumber": 5,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Coronal NECT in a 41-year-old trauma patient shows an acute left falcine and tentorial SDH <img src=\"arrow_BC.png\">. Falcine and tentorial SDHs do not usually require surgery. There is also a right subgaleal scalp hematoma <img src=\"arrow_WO.png\">. Fractures may be present but are more commonly associated with acute epidural hematomas.",
+      "label": "SDX-06",
+      "masterImageId": "SDX-06",
+      "sourceImageNumber": 6,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial NECT shows a 78-year-old patient with aSDH <img src=\"arrow_CO.png\"> after a fall, which appears heterogeneous and contains several isodense foci <img src=\"arrow_BS.png\">, suggesting rapid hemorrhage with accumulation of unclotted blood. Note significant mass effect and midline shift related to brain edema, suggesting a potentially poor prognosis without aggressive treatment.",
+      "label": "SDX-07",
+      "masterImageId": "SDX-07",
+      "sourceImageNumber": 7,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Follow-up CTA in the same patient shows globular enhancement <img src=\"arrow_BC.png\"> within the aSDH, related to a spot sign representing active extravasation of hemorrhage.",
+      "label": "SDX-08",
+      "masterImageId": "SDX-08",
+      "sourceImageNumber": 8,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "NECT 24 hours later in same patient shows an increase in size of the aSDH <img src=\"arrow_CC.png\">, which is now more homogeneously hyperdense. Notice the increased cerebral mass effect, sulcal effacement, and rightward midline shift <img src=\"arrow_BO.png\"> of the septum pellucidum and subfalcine herniation <img src=\"arrow_WS.png\">. Cranial decompression was subsequently performed.",
+      "label": "SDX-09",
+      "masterImageId": "SDX-09",
+      "sourceImageNumber": 9,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "aSDHs can be isodense to underlying brain, as in this anemic patient with aSDH <img src=\"arrow_WS.png\">  with inward displacement of gray-white interface <img src=\"arrow_WO.png\">  and rightward midline shift <img src=\"arrow_WC.png\">.",
+      "label": "SDX-10",
+      "masterImageId": "SDX-10",
+      "sourceImageNumber": 10,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial NECT shows a crescentic, homogeneously hyperdense extraaxial collection <img src=\"arrow_WS.png\"> with compression and displacement of the underlying brain, findings typical of an aSDH. SDHs may cross suture lines but do not cross dural attachments. They are often more extensive than epidural hematomas.",
+      "label": "SDX-11",
+      "masterImageId": "SDX-11",
+      "sourceImageNumber": 11,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial NECT in a patient with minor head trauma could easily be called normal.  There is a thin hyperdensity along the left tentorium  <img src=\"arrow_WS.png\">  compared to the right  <img src=\"arrow_WC.png\">.",
+      "label": "SDX-12",
+      "masterImageId": "SDX-12",
+      "sourceImageNumber": 12,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Reformatted coronal NECT in the same patient shows scalp contusion with a high-density foreign body <img src=\"arrow_WC.png\">. Note the slight increase in thickness and density of the left tentorium <img src=\"arrow_WO.png\"> compared to the right <img src=\"arrow_WS.png\">.",
+      "label": "SDX-13",
+      "masterImageId": "SDX-13",
+      "sourceImageNumber": 13,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Sagittal reformatted NECT through the left tentorial leaf shows a 2-mm thin aSDH <img src=\"arrow_WO.png\">.",
+      "label": "SDX-14",
+      "masterImageId": "SDX-14",
+      "sourceImageNumber": 14,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Sagittal reformatted NECT through the right side of the tentorium shows the normal thin, slightly hyperdense dura <img src=\"arrow_WS.png\">. Thin, isolated peritentorial aSDHs do not expand and typically do not require follow-up.",
+      "label": "SDX-15",
+      "masterImageId": "SDX-15",
+      "sourceImageNumber": 15,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial NECT in an anticoagulated obtunded 74-year-old woman with head trauma shows a large left-sided aSDH <img src=\"arrow_WO.png\"> with such severe subfalcine and transtentorial herniation that the temporal horn of the left lateral ventricle <img src=\"arrow_WC.png\"> is displaced completely into the tentorial incisura. The temporal horn of the right lateral ventricle is enlarged <img src=\"arrow_WS.png\"> because the foramen of Monro is obstructed by the herniating brain.",
+      "label": "SDX-16",
+      "masterImageId": "SDX-16",
+      "sourceImageNumber": 16,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial NECT in the same patient through the lateral ventricles shows the lateral ventricles are completely herniated under the falx, and the foramen of Monro is secondarily obstructed <img src=\"arrow_WC.png\">. The massive aSDH <img src=\"arrow_WO.png\"> is heterogeneous and contains several isodense foci <img src=\"arrow_BS.png\">, suggesting rapid hemorrhage with accumulation of unclotted blood.",
+      "label": "SDX-17",
+      "masterImageId": "SDX-17",
+      "sourceImageNumber": 17,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Coronal NECT shows the total herniation of the lateral ventricles <img src=\"arrow_WC.png\"> under the falx. The temporal horn of the left lateral ventricle is nearly in the midline <img src=\"arrow_WS.png\">. The patient died shortly after the scan was obtained.",
+      "label": "SDX-18",
+      "masterImageId": "SDX-18",
+      "sourceImageNumber": 18,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T1 MR shows an acute right SDH. The collection <img src=\"arrow_WS.png\"> is isointense with cortex. Contrast with left-sided hypointense chronic SDH <img src=\"arrow_WO.png\"> is seen.",
+      "label": "SDX-19",
+      "masterImageId": "SDX-19",
+      "sourceImageNumber": 19,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T2 MR in the same patient shows the aSDH is profoundly hypointense while the chronic left SDH is hyperintense relative to brain.",
+      "label": "SDX-20",
+      "masterImageId": "SDX-20",
+      "sourceImageNumber": 20,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial NECT scan in a 31-year-old man with minor trauma shows subtle hyperdensity along the tentorium <img src=\"arrow_WO.png\"> and inferior falx <img src=\"arrow_WC.png\"> near the confluence of the venous sinuses.",
+      "label": "SDX-21",
+      "masterImageId": "SDX-21",
+      "sourceImageNumber": 21,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Coronal reformatted NECT from the axial data in the same patient shows the small acute peritentorial SDH <img src=\"arrow_WO.png\">. A small subtle convexity aSDH <img src=\"arrow_WS.png\"> is seen here and was not visible on the axial scan.",
+      "label": "SDX-22",
+      "masterImageId": "SDX-22",
+      "sourceImageNumber": 22,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Sagittal NECT scans in the same patient show the right peritentorial aSDH (top) <img src=\"arrow_WS.png\"> with normal thin, hyperdense left sagittal dura (bottom)  <img src=\"arrow_WO.png\">  for comparison.",
+      "label": "SDX-23",
+      "masterImageId": "SDX-23",
+      "sourceImageNumber": 23,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial NECT scan in a 30-year-old man with head trauma shows a small, mixed-density aSDH <img src=\"arrow_WS.png\"> over the left frontal and parietal lobes. Subtle hypodensity within the aSDH <img src=\"arrow_WO.png\"> was concerning for rapid accumulation of unclotted blood.",
+      "label": "SDX-24",
+      "masterImageId": "SDX-24",
+      "sourceImageNumber": 24,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "The same patient deteriorated 5 hours later. The aSDH has expanded significantly, and there are multiple foci of hypodensity <img src=\"arrow_CO.png\"> within the hematoma indicating rapid bleeding. Note the subfalcine herniation of the lateral ventricles <img src=\"arrow_CC.png\">.",
+      "label": "SDX-25",
+      "masterImageId": "SDX-25",
+      "sourceImageNumber": 25,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    }
+  ],
+  "cases": [],
+  "totalImagesOnPage": 35,
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Neuroradiology",
+    "Brain",
+    "Primary Effects of CNS Trauma",
+    "Acute Subdural Hematoma"
+  ],
+  "outputChars": 367344,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Core Validation Report: Pathway A satisfied. Core Radiology was retrieved from the uploaded PDF, with relevant coverage in Chapter 10, Neuroimaging: Brain → Cerebral trauma / extra-axial hemorrhage, visible page labels Neuro Brain 701–702. Core facts used include CT attenuation/clotting behavior, hyperacute/anemic low-density exceptions, SDH beneath the dura, suture crossing, falx/tentorium extension, venous-tear mechanism, atrophy risk, and isodense-SDH clues.\n\nWhole-source coverage audit completed from full Core coverage plus the provided RadPrimer/STATdx master source. Card generation used full-source review, not digest summary.\n\nTotal cards to export: 38\nExpected TSV lines: 38\nValidation: 22 columns per row, no header row, blank Tags column, no inline TSV printed.",
+  "coreEvidence": {
+    "status": "NOT_PROVIDED",
+    "provided": false,
+    "chars": 435,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Neuroradiology",
+      "Brain",
+      "Primary Effects of CNS Trauma",
+      "Acute Subdural Hematoma"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Neuro",
+      "Brain",
+      "Primary Effects of CNS Trauma",
+      "Acute Subdural Hematoma"
+    ],
+    "deckName": "Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Acute Subdural Hematoma",
+    "hierarchySource": "RadPrimer + STATdx master source",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [
+    {
+      "filename": "SDX-01_STATdx_plain_Acute_Subdural_Hematoma1.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/b1318df9-52aa-4e35-8c87-5cc3c66e3e48?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-01_STATdx_annotated_Acute_Subdural_Hematoma1_annot.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/b1318df9-52aa-4e35-8c87-5cc3c66e3e48?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-02_STATdx_plain_Acute_Subdural_Hematoma2.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/4fce1827-9ffd-4261-a957-dcf6ab36e282?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-02_STATdx_annotated_Acute_Subdural_Hematoma2_annot.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/4fce1827-9ffd-4261-a957-dcf6ab36e282?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-03_STATdx_plain_Acute_Subdural_Hematoma3.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/44df1b28-5178-422a-9fcf-2645648b0438?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-03_STATdx_annotated_Acute_Subdural_Hematoma3_annot.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/44df1b28-5178-422a-9fcf-2645648b0438?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-04_STATdx_plain_Acute_Subdural_Hematoma4.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/f31555a5-af33-4332-b90f-66fded61da6a?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-04_STATdx_annotated_Acute_Subdural_Hematoma4_annot.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/f31555a5-af33-4332-b90f-66fded61da6a?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-05_STATdx_plain_Acute_Subdural_Hematoma5.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/48bd7fa8-ae26-4841-b2a5-45c5485cab22?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-05_STATdx_annotated_Acute_Subdural_Hematoma5_annot.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/48bd7fa8-ae26-4841-b2a5-45c5485cab22?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-06_STATdx_plain_Acute_Subdural_Hematoma6.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/a628c348-bb31-40a8-bb5a-46f73d80b34c?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-06_STATdx_annotated_Acute_Subdural_Hematoma6_annot.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/a628c348-bb31-40a8-bb5a-46f73d80b34c?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-07_STATdx_plain_Acute_Subdural_Hematoma7.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/e93058d5-98a2-46ae-adbd-4e8a56fb1f1a?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-07_STATdx_annotated_Acute_Subdural_Hematoma7_annot.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/e93058d5-98a2-46ae-adbd-4e8a56fb1f1a?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-08_STATdx_plain_Acute_Subdural_Hematoma8.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/cb198ef2-04ab-4f94-b3eb-d25b3588e089?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-08_STATdx_annotated_Acute_Subdural_Hematoma8_annot.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/cb198ef2-04ab-4f94-b3eb-d25b3588e089?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-09_STATdx_plain_Acute_Subdural_Hematoma9.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/9d9bcaf2-52e8-4acd-82a1-af1933663894?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-09_STATdx_annotated_Acute_Subdural_Hematoma9_annot.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/9d9bcaf2-52e8-4acd-82a1-af1933663894?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-10_STATdx_plain_Acute_Subdural_Hematoma10.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/4c30503f-5a4d-4b59-aa72-04e63d087d10?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-10_STATdx_annotated_Acute_Subdural_Hematoma10_annot.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/4c30503f-5a4d-4b59-aa72-04e63d087d10?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-11_STATdx_plain_Acute_Subdural_Hematoma11.jpg",
+      "label": "",
+      "imageNumber": 11,
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/cd33e845-9869-4778-8e05-90c4195999f5?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-11_STATdx_annotated_Acute_Subdural_Hematoma11_annot.jpg",
+      "label": "",
+      "imageNumber": 11,
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/cd33e845-9869-4778-8e05-90c4195999f5?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-12_STATdx_plain_Acute_Subdural_Hematoma12.jpg",
+      "label": "",
+      "imageNumber": 12,
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/81ec0fdb-6cbd-4db2-9d85-886f09b00f73?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-12_STATdx_annotated_Acute_Subdural_Hematoma12_annot.jpg",
+      "label": "",
+      "imageNumber": 12,
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/81ec0fdb-6cbd-4db2-9d85-886f09b00f73?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-13_STATdx_plain_Acute_Subdural_Hematoma13.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/f5d901d8-2e24-4e07-842c-17b082e47476?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-13_STATdx_annotated_Acute_Subdural_Hematoma13_annot.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/f5d901d8-2e24-4e07-842c-17b082e47476?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-14_STATdx_plain_Acute_Subdural_Hematoma14.jpg",
+      "label": "",
+      "imageNumber": 14,
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/90bbf24b-bfb1-4e5a-bb0e-a6ba862c8f6a?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-14_STATdx_annotated_Acute_Subdural_Hematoma14_annot.jpg",
+      "label": "",
+      "imageNumber": 14,
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/90bbf24b-bfb1-4e5a-bb0e-a6ba862c8f6a?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-15_STATdx_plain_Acute_Subdural_Hematoma15.jpg",
+      "label": "",
+      "imageNumber": 15,
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/e71f8c2f-5693-4253-9ec1-33991b6a6cea?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-15_STATdx_annotated_Acute_Subdural_Hematoma15_annot.jpg",
+      "label": "",
+      "imageNumber": 15,
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/e71f8c2f-5693-4253-9ec1-33991b6a6cea?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-16_STATdx_plain_Acute_Subdural_Hematoma16.jpg",
+      "label": "",
+      "imageNumber": 16,
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/f9e29c72-78e5-4edd-85ee-bcc4eac72925?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-16_STATdx_annotated_Acute_Subdural_Hematoma16_annot.jpg",
+      "label": "",
+      "imageNumber": 16,
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/f9e29c72-78e5-4edd-85ee-bcc4eac72925?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-17_STATdx_plain_Acute_Subdural_Hematoma17.jpg",
+      "label": "",
+      "imageNumber": 17,
+      "masterImageId": "SDX-17",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/b7b40995-2df0-4677-b295-714dc779374b?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-17_STATdx_annotated_Acute_Subdural_Hematoma17_annot.jpg",
+      "label": "",
+      "imageNumber": 17,
+      "masterImageId": "SDX-17",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/b7b40995-2df0-4677-b295-714dc779374b?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-18_STATdx_plain_Acute_Subdural_Hematoma18.jpg",
+      "label": "",
+      "imageNumber": 18,
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/3601f3d1-468f-4dce-97ba-89d603dfa269?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-18_STATdx_annotated_Acute_Subdural_Hematoma18_annot.jpg",
+      "label": "",
+      "imageNumber": 18,
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/3601f3d1-468f-4dce-97ba-89d603dfa269?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-19_STATdx_plain_Acute_Subdural_Hematoma19.jpg",
+      "label": "",
+      "imageNumber": 19,
+      "masterImageId": "SDX-19",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/fdf3b276-9df0-43cd-9e7f-9ef776c3ab41?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-19_STATdx_annotated_Acute_Subdural_Hematoma19_annot.jpg",
+      "label": "",
+      "imageNumber": 19,
+      "masterImageId": "SDX-19",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/fdf3b276-9df0-43cd-9e7f-9ef776c3ab41?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-20_STATdx_plain_Acute_Subdural_Hematoma20.jpg",
+      "label": "",
+      "imageNumber": 20,
+      "masterImageId": "SDX-20",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/a36e677f-9604-481a-9ad3-330bf6f22e7f?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-20_STATdx_annotated_Acute_Subdural_Hematoma20_annot.jpg",
+      "label": "",
+      "imageNumber": 20,
+      "masterImageId": "SDX-20",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/a36e677f-9604-481a-9ad3-330bf6f22e7f?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-21_STATdx_plain_Acute_Subdural_Hematoma21.jpg",
+      "label": "",
+      "imageNumber": 21,
+      "masterImageId": "SDX-21",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/05cb4e38-dcfc-4b69-a8a3-210f5946a521?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-21_STATdx_annotated_Acute_Subdural_Hematoma21_annot.jpg",
+      "label": "",
+      "imageNumber": 21,
+      "masterImageId": "SDX-21",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/05cb4e38-dcfc-4b69-a8a3-210f5946a521?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-22_STATdx_plain_Acute_Subdural_Hematoma22.jpg",
+      "label": "",
+      "imageNumber": 22,
+      "masterImageId": "SDX-22",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/6c764a6b-25ba-460e-a2e3-e24db60f5745?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-22_STATdx_annotated_Acute_Subdural_Hematoma22_annot.jpg",
+      "label": "",
+      "imageNumber": 22,
+      "masterImageId": "SDX-22",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/6c764a6b-25ba-460e-a2e3-e24db60f5745?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-23_STATdx_plain_Acute_Subdural_Hematoma23.jpg",
+      "label": "",
+      "imageNumber": 23,
+      "masterImageId": "SDX-23",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/e49ac373-38e4-41b0-bbc0-098394645f32?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-23_STATdx_annotated_Acute_Subdural_Hematoma23_annot.jpg",
+      "label": "",
+      "imageNumber": 23,
+      "masterImageId": "SDX-23",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/e49ac373-38e4-41b0-bbc0-098394645f32?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-24_STATdx_plain_Acute_Subdural_Hematoma24.jpg",
+      "label": "",
+      "imageNumber": 24,
+      "masterImageId": "SDX-24",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/b26ecef4-f6b5-4cbb-a92a-795f008b9ee3?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-24_STATdx_annotated_Acute_Subdural_Hematoma24_annot.jpg",
+      "label": "",
+      "imageNumber": 24,
+      "masterImageId": "SDX-24",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/b26ecef4-f6b5-4cbb-a92a-795f008b9ee3?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-25_STATdx_plain_Acute_Subdural_Hematoma25.jpg",
+      "label": "",
+      "imageNumber": 25,
+      "masterImageId": "SDX-25",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://my.statdx.com/image/thumbnail/e88fbe18-5a97-4615-82e4-470e2956b482?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-25_STATdx_annotated_Acute_Subdural_Hematoma25_annot.jpg",
+      "label": "",
+      "imageNumber": 25,
+      "masterImageId": "SDX-25",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://my.statdx.com/image/thumbnail/e88fbe18-5a97-4615-82e4-470e2956b482?annotated=true&size=1000&quality=90"
+    }
+  ],
+  "imageRegistry": [
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma1_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/1163d0d8-e5a8-492c-bef7-81d98880ca5c?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma1",
+      "caption": "Graphic shows an acute subdural hematoma (aSDH) <img src=\"arrow_WC.png\"> compressing the left hemisphere & lateral ventricle, resulting in midline shift. Coexisting cortical contusions <img src=\"arrow_BS.png\"> & axonal injuries <img src=\"arrow_BC.png\"> are common in aSDHs. Contrecoup contusions <img src=\"arrow_WO.png\"> are present.",
+      "displayLabel": "RadPrimer image 1",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-01",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-01; keep SDX-01 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma1.jpg",
+      "group": "",
+      "imageId": "1163d0d8-e5a8-492c-bef7-81d98880ca5c",
+      "masterImageId": "RP-01",
+      "plainFilename": "Acute_Subdural_Hematoma1.jpg",
+      "plainUrl": "https://app.radprimer.com/images/1163d0d8-e5a8-492c-bef7-81d98880ca5c?style=xlarge&annotated=false",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-01",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-01_RadPrimer_image_01_plain_1163d0d8.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 175369,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_1163d0d8.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/1163d0d8-e5a8-492c-bef7-81d98880ca5c?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "032f753771f7f24434dbb3c52c7c6ac85718c9a94acc9f4181fb1c16c4e1cf0d",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma2_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/6d20338c-de7b-4514-b5eb-8fc41ccf2629?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma2",
+      "caption": "NECT in a 58-year-old woman with head trauma shows a classic aSDH <img src=\"arrow_WC.png\"> extending over left convexity & compressing underlying subarachnoid space <img src=\"arrow_WO.png\">. Subtle hypodense foci <img src=\"arrow_BS.png\"> within hyperdense aSDH represent unclotted blood & risk for rapid hematoma expansion.",
+      "displayLabel": "RadPrimer image 2",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-02",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-02; keep SDX-02 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma2.jpg",
+      "group": "",
+      "imageId": "6d20338c-de7b-4514-b5eb-8fc41ccf2629",
+      "masterImageId": "RP-02",
+      "plainFilename": "Acute_Subdural_Hematoma2.jpg",
+      "plainUrl": "https://app.radprimer.com/images/6d20338c-de7b-4514-b5eb-8fc41ccf2629?style=xlarge&annotated=false",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-02",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-02_RadPrimer_image_02_plain_6d20338c.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 117312,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_6d20338c.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/6d20338c-de7b-4514-b5eb-8fc41ccf2629?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "f400832e835846e36b8227c77c77cc51406fd80754a306efbffb85245ccd10bc",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma3_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/4e212edd-df6d-47cb-a019-8226028108aa?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma3",
+      "caption": "NECT shows a small SDH <img src=\"arrow_WS.png\"> is easier to see with wider windows (R) compared with standard (L). Note cortical swelling under the SDH  <img src=\"arrow_WO.png\">  with disproportionate mass effect on lateral ventricle and midline shift of the septum pellucidum <img src=\"arrow_WC.png\">, concerning for potentially catastrophic brain swelling.",
+      "displayLabel": "RadPrimer image 3",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-03",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-03; keep SDX-03 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma3.jpg",
+      "group": "",
+      "imageId": "4e212edd-df6d-47cb-a019-8226028108aa",
+      "masterImageId": "RP-03",
+      "plainFilename": "Acute_Subdural_Hematoma3.jpg",
+      "plainUrl": "https://app.radprimer.com/images/4e212edd-df6d-47cb-a019-8226028108aa?style=xlarge&annotated=false",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-03",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-03_RadPrimer_image_03_plain_4e212edd.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 124319,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_4e212edd.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/4e212edd-df6d-47cb-a019-8226028108aa?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "bed466adea6008a656cad80ac426a37dab83dba701c263294daa589c62a6c5d4",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma4_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/62fb0c80-8a3f-4caa-9b9e-01fe53b2d415?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma4",
+      "caption": "aSDHs can be isodense to the underlying brain, as happened in this very anemic patient. Note the aSDH <img src=\"arrow_WS.png\"> with inward displacement of the gray-white interface <img src=\"arrow_WO.png\">, and left-to-right subfalcine herniation of the lateral ventricles <img src=\"arrow_WC.png\">.",
+      "displayLabel": "RadPrimer image 4",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-10",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-04; keep SDX-10 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma4.jpg",
+      "group": "",
+      "imageId": "62fb0c80-8a3f-4caa-9b9e-01fe53b2d415",
+      "masterImageId": "RP-04",
+      "plainFilename": "Acute_Subdural_Hematoma4.jpg",
+      "plainUrl": "https://app.radprimer.com/images/62fb0c80-8a3f-4caa-9b9e-01fe53b2d415?style=xlarge&annotated=false",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-04",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-04_RadPrimer_image_04_plain_62fb0c80.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 141748,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_62fb0c80.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/62fb0c80-8a3f-4caa-9b9e-01fe53b2d415?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "3972c5f49cecacca98ce02d92706a8a96ec0f0b8c708c0a5543aa5d09fb3fcae",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma5_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/0329f2b8-4920-4eff-8b9f-c3b153d70335?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma5",
+      "caption": "Coronal graphic depicts a thin aSDH layering along the falx <img src=\"arrow_BO.png\"> and tentorium <img src=\"arrow_BC.png\">. Such aSDHs may be difficult to identify on axial images alone. Multiplanar reconstructions are very helpful in identifying small, thin aSDHs.",
+      "displayLabel": "RadPrimer image 5",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-05",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-05; keep SDX-05 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma5.jpg",
+      "group": "",
+      "imageId": "0329f2b8-4920-4eff-8b9f-c3b153d70335",
+      "masterImageId": "RP-05",
+      "plainFilename": "Acute_Subdural_Hematoma5.jpg",
+      "plainUrl": "https://app.radprimer.com/images/0329f2b8-4920-4eff-8b9f-c3b153d70335?style=xlarge&annotated=false",
+      "sourceImageNumber": 5,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-05",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-05_RadPrimer_image_05_plain_0329f2b8.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 189567,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_0329f2b8.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/0329f2b8-4920-4eff-8b9f-c3b153d70335?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "372fa10a2df44ccc207b94a1292f813d812b45ae23b6a63e348bd816d260f36e",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma6_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/7349379f-4876-447d-a807-fb27e94cdffa?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma6",
+      "caption": "Axial NECT scan in a 31-year-old man with minor trauma shows subtle hyperdensity along the tentorium <img src=\"arrow_WO.png\"> and inferior falx <img src=\"arrow_WC.png\"> near the confluence of the venous sinuses.",
+      "displayLabel": "RadPrimer image 6",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-21",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-06; keep SDX-21 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma6.jpg",
+      "group": "",
+      "imageId": "7349379f-4876-447d-a807-fb27e94cdffa",
+      "masterImageId": "RP-06",
+      "plainFilename": "Acute_Subdural_Hematoma6.jpg",
+      "plainUrl": "https://app.radprimer.com/images/7349379f-4876-447d-a807-fb27e94cdffa?style=xlarge&annotated=false",
+      "sourceImageNumber": 6,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-06",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-06_RadPrimer_image_06_plain_7349379f.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 112856,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_7349379f.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/7349379f-4876-447d-a807-fb27e94cdffa?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "fc7188d30639787ac8ffdd8c14d4a044da1d6f134d31190d09c886b7132b012b",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma7_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/eb20f581-5667-4b75-b783-1a7a135e3fc4?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma7",
+      "caption": "Coronal reformatted NECT from the axial data in the same patient shows the small acute peritentorial SDH <img src=\"arrow_WO.png\">. A small subtle convexity aSDH <img src=\"arrow_WS.png\"> is seen here and was not visible on the axial scan.",
+      "displayLabel": "RadPrimer image 7",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-22",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-07; keep SDX-22 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma7.jpg",
+      "group": "",
+      "imageId": "eb20f581-5667-4b75-b783-1a7a135e3fc4",
+      "masterImageId": "RP-07",
+      "plainFilename": "Acute_Subdural_Hematoma7.jpg",
+      "plainUrl": "https://app.radprimer.com/images/eb20f581-5667-4b75-b783-1a7a135e3fc4?style=xlarge&annotated=false",
+      "sourceImageNumber": 7,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-07",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-07_RadPrimer_image_07_plain_eb20f581.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 117757,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_eb20f581.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/eb20f581-5667-4b75-b783-1a7a135e3fc4?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "9621e5c1ebc212438771485fce6b6543608c5e37ea7d0800237985d8682c27f7",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma8_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/da8e7f4f-72d6-4786-91c1-021c2cae7358?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma8",
+      "caption": "Sagittal NECT scans in the same patient show the right peritentorial aSDH (top) <img src=\"arrow_WS.png\"> with normal thin, hyperdense left sagittal dura (bottom)  <img src=\"arrow_WO.png\">  for comparison.",
+      "displayLabel": "RadPrimer image 8",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-23",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-08; keep SDX-23 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma8.jpg",
+      "group": "",
+      "imageId": "da8e7f4f-72d6-4786-91c1-021c2cae7358",
+      "masterImageId": "RP-08",
+      "plainFilename": "Acute_Subdural_Hematoma8.jpg",
+      "plainUrl": "https://app.radprimer.com/images/da8e7f4f-72d6-4786-91c1-021c2cae7358?style=xlarge&annotated=false",
+      "sourceImageNumber": 8,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-08",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-08_RadPrimer_image_08_plain_da8e7f4f.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 120561,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_da8e7f4f.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/da8e7f4f-72d6-4786-91c1-021c2cae7358?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "0473a13e9b809eb2d7860ee49439ac7a0566d34b5e91c63c4d06c74f3c11d393",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma9_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/96b4f788-50dc-43e1-94b0-ba873d79517e?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma9",
+      "caption": "Axial NECT scan in a 30-year-old man with head trauma shows a small, mixed-density aSDH <img src=\"arrow_WS.png\"> over the left frontal and parietal lobes. Subtle hypodensity within the aSDH <img src=\"arrow_WO.png\"> was concerning for rapid accumulation of unclotted blood.",
+      "displayLabel": "RadPrimer image 9",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-24",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-09; keep SDX-24 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma9.jpg",
+      "group": "",
+      "imageId": "96b4f788-50dc-43e1-94b0-ba873d79517e",
+      "masterImageId": "RP-09",
+      "plainFilename": "Acute_Subdural_Hematoma9.jpg",
+      "plainUrl": "https://app.radprimer.com/images/96b4f788-50dc-43e1-94b0-ba873d79517e?style=xlarge&annotated=false",
+      "sourceImageNumber": 9,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-09",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-09_RadPrimer_image_09_plain_96b4f788.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 122651,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_96b4f788.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/96b4f788-50dc-43e1-94b0-ba873d79517e?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "e4f388eb623b841042befa4d29d0a0686377d2b8166809998aaf6c9165c7831a",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma10_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/ff32016a-989f-408e-95e7-167de9a98f01?style=xlarge&annotated=true",
+      "baseName": "Acute_Subdural_Hematoma10",
+      "caption": "The same patient deteriorated 5 hours later. The aSDH has expanded significantly, and there are multiple foci of hypodensity <img src=\"arrow_CO.png\"> within the hematoma indicating rapid bleeding. Note the subfalcine herniation of the lateral ventricles <img src=\"arrow_CC.png\">.",
+      "displayLabel": "RadPrimer image 10",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "coveredByImageId": "SDX-25",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "teachingAction": "archive RP-10; keep SDX-25 as the primary higher-resolution representative"
+      },
+      "filename": "Acute_Subdural_Hematoma10.jpg",
+      "group": "",
+      "imageId": "ff32016a-989f-408e-95e7-167de9a98f01",
+      "masterImageId": "RP-10",
+      "plainFilename": "Acute_Subdural_Hematoma10.jpg",
+      "plainUrl": "https://app.radprimer.com/images/ff32016a-989f-408e-95e7-167de9a98f01?style=xlarge&annotated=false",
+      "sourceImageNumber": 10,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "traceability": {
+        "metadataFile": "RadPrimer_metadata.json",
+        "shortCode": "RP-10",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "sourceQualifiedFilename": "RP-10_RadPrimer_image_10_plain_ff32016a.jpg"
+      },
+      "usedFor": [],
+      "visualEvidence": {
+        "bytes": 99536,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_ff32016a.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/ff32016a-989f-408e-95e7-167de9a98f01?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "height": 900,
+        "sha256": "432b10a172d661e13d977e7baa3b56827b71ba9c567d55883556676b54a8e63c",
+        "width": 900
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma1_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/b1318df9-52aa-4e35-8c87-5cc3c66e3e48?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma1",
+      "caption": "Graphic shows an acute subdural hematoma (aSDH) <img src=\"arrow_WC.png\"> compressing the left hemisphere & lateral ventricle, resulting in midline shift. Coexisting cortical contusions <img src=\"arrow_BS.png\"> & axonal injuries <img src=\"arrow_BC.png\"> are common in aSDHs. Contrecoup contusions <img src=\"arrow_WO.png\"> are present.",
+      "displayLabel": "STATdx image 1",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma1.jpg",
+      "group": "",
+      "imageId": "b1318df9-52aa-4e35-8c87-5cc3c66e3e48",
+      "masterImageId": "SDX-01",
+      "plainFilename": "Acute_Subdural_Hematoma1.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/b1318df9-52aa-4e35-8c87-5cc3c66e3e48?size=1000&quality=90",
+      "sourceImageNumber": 1,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-01",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-01_STATdx_image_01_plain_b1318df9.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "mechanismGraphic",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 209616,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_b1318df9.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/b1318df9-52aa-4e35-8c87-5cc3c66e3e48?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "e792f2f71f0d38593e0eb3b73ff6b70a7e0d8ca7cc08d2f7dc9aceec63607c23",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma2_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/4fce1827-9ffd-4261-a957-dcf6ab36e282?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma2",
+      "caption": "NECT in a 58-year-old woman with head trauma shows a classic aSDH <img src=\"arrow_WC.png\"> extending over left convexity & compressing the underlying subarachnoid space <img src=\"arrow_WO.png\">. Subtle hypodense foci <img src=\"arrow_BS.png\"> within hyperdense aSDH represent unclotted blood & risk for rapid hematoma expansion.",
+      "displayLabel": "STATdx image 2",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma2.jpg",
+      "group": "",
+      "imageId": "4fce1827-9ffd-4261-a957-dcf6ab36e282",
+      "masterImageId": "SDX-02",
+      "plainFilename": "Acute_Subdural_Hematoma2.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/4fce1827-9ffd-4261-a957-dcf6ab36e282?size=1000&quality=90",
+      "sourceImageNumber": 2,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-02",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-02_STATdx_image_02_plain_4fce1827.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "classicConvexityExample",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 134590,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_4fce1827.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/4fce1827-9ffd-4261-a957-dcf6ab36e282?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "b2d9a0cc149a20bd28afa86c78dcc447ada38283060e4ceebe6d8614261bdfe6",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma3_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/44df1b28-5178-422a-9fcf-2645648b0438?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma3",
+      "caption": "NECT shows the small SDH <img src=\"arrow_WS.png\"> is easier to see with wider windows (R) compared to standard brain window (L). Note cortical swelling under the SDH <img src=\"arrow_WO.png\"> with disproportionate mass effect on lateral ventricle and midline shift of the septum pellucidum <img src=\"arrow_WC.png\">, concerning for potentially catastrophic brain swelling.",
+      "displayLabel": "STATdx image 3",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma3.jpg",
+      "group": "",
+      "imageId": "44df1b28-5178-422a-9fcf-2645648b0438",
+      "masterImageId": "SDX-03",
+      "plainFilename": "Acute_Subdural_Hematoma3.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/44df1b28-5178-422a-9fcf-2645648b0438?size=1000&quality=90",
+      "sourceImageNumber": 3,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-03",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-03_STATdx_image_03_plain_44df1b28.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "windowingComparison",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 142875,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_44df1b28.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/44df1b28-5178-422a-9fcf-2645648b0438?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "d136435a873c24790b5da99884a486b08543723d324ebdb9f7962d553f13ce85",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma4_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/f31555a5-af33-4332-b90f-66fded61da6a?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma4",
+      "caption": "Axial T1 MR shows a crescentic left convexity aSDH (24 hours) <img src=\"arrow_CS.png\">. Blood is isointense to white matter but well seen due to ease of visualization of the brain surface. Note the subfalcine herniation <img src=\"arrow_WS.png\">.",
+      "displayLabel": "STATdx image 4",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma4.jpg",
+      "group": "",
+      "imageId": "f31555a5-af33-4332-b90f-66fded61da6a",
+      "masterImageId": "SDX-04",
+      "plainFilename": "Acute_Subdural_Hematoma4.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/f31555a5-af33-4332-b90f-66fded61da6a?size=1000&quality=90",
+      "sourceImageNumber": 4,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-04",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-04_STATdx_image_04_plain_f31555a5.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "modalityVariant",
+        "mrT1Variant"
+      ],
+      "visualEvidence": {
+        "bytes": 151615,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_f31555a5.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/f31555a5-af33-4332-b90f-66fded61da6a?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "1664274951c8dc41bef675c17ec8e80685a22e0cae67e9cf040fecc0bf31e75e",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma5_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/48bd7fa8-ae26-4841-b2a5-45c5485cab22?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma5",
+      "caption": "Coronal graphic depicts a thin aSDH layering along the falx <img src=\"arrow_BO.png\"> and tentorium <img src=\"arrow_BC.png\">. Such aSDHs may be difficult to identify on axial images alone. Multiplanar reconstructions are very helpful in identifying small, thin aSDHs.",
+      "displayLabel": "STATdx image 5",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma5.jpg",
+      "group": "",
+      "imageId": "48bd7fa8-ae26-4841-b2a5-45c5485cab22",
+      "masterImageId": "SDX-05",
+      "plainFilename": "Acute_Subdural_Hematoma5.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/48bd7fa8-ae26-4841-b2a5-45c5485cab22?size=1000&quality=90",
+      "sourceImageNumber": 5,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-05",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-05_STATdx_image_05_plain_48bd7fa8.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "falcotentorialGraphic",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 224469,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_48bd7fa8.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/48bd7fa8-ae26-4841-b2a5-45c5485cab22?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "f0cecad62a615a820ef825503f38e71c94c829443bcaa059eee056c5c613c3c5",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma6_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/a628c348-bb31-40a8-bb5a-46f73d80b34c?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma6",
+      "caption": "Coronal NECT in a 41-year-old trauma patient shows an acute left falcine and tentorial SDH <img src=\"arrow_BC.png\">. Falcine and tentorial SDHs do not usually require surgery. There is also a right subgaleal scalp hematoma <img src=\"arrow_WO.png\">. Fractures may be present but are more commonly associated with acute epidural hematomas.",
+      "displayLabel": "STATdx image 6",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma6.jpg",
+      "group": "",
+      "imageId": "a628c348-bb31-40a8-bb5a-46f73d80b34c",
+      "masterImageId": "SDX-06",
+      "plainFilename": "Acute_Subdural_Hematoma6.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/a628c348-bb31-40a8-bb5a-46f73d80b34c?size=1000&quality=90",
+      "sourceImageNumber": 6,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-06",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-06_STATdx_image_06_plain_a628c348.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "falcotentorialVariant"
+      ],
+      "visualEvidence": {
+        "bytes": 111752,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_a628c348.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/a628c348-bb31-40a8-bb5a-46f73d80b34c?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "3561346c924e8fb4a4aa492967bbf04340f3f24c3381e93b60cd54eafee248e9",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma7_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/e93058d5-98a2-46ae-adbd-4e8a56fb1f1a?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma7",
+      "caption": "Axial NECT shows a 78-year-old patient with aSDH <img src=\"arrow_CO.png\"> after a fall, which appears heterogeneous and contains several isodense foci <img src=\"arrow_BS.png\">, suggesting rapid hemorrhage with accumulation of unclotted blood. Note significant mass effect and midline shift related to brain edema, suggesting a potentially poor prognosis without aggressive treatment.",
+      "displayLabel": "STATdx image 7",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma7.jpg",
+      "group": "",
+      "imageId": "e93058d5-98a2-46ae-adbd-4e8a56fb1f1a",
+      "masterImageId": "SDX-07",
+      "plainFilename": "Acute_Subdural_Hematoma7.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/e93058d5-98a2-46ae-adbd-4e8a56fb1f1a?size=1000&quality=90",
+      "sourceImageNumber": 7,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-07",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-07_STATdx_image_07_plain_e93058d5.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "activeBleedingCluster",
+        "severityVariant"
+      ],
+      "visualEvidence": {
+        "bytes": 132770,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_e93058d5.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/e93058d5-98a2-46ae-adbd-4e8a56fb1f1a?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "41df3bcb6f1398377041c0297c2fd2adb8f79aa5fbe1a281a2d29f898811729f",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma8_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/cb198ef2-04ab-4f94-b3eb-d25b3588e089?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma8",
+      "caption": "Follow-up CTA in the same patient shows globular enhancement <img src=\"arrow_BC.png\"> within the aSDH, related to a spot sign representing active extravasation of hemorrhage.",
+      "displayLabel": "STATdx image 8",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma8.jpg",
+      "group": "",
+      "imageId": "cb198ef2-04ab-4f94-b3eb-d25b3588e089",
+      "masterImageId": "SDX-08",
+      "plainFilename": "Acute_Subdural_Hematoma8.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/cb198ef2-04ab-4f94-b3eb-d25b3588e089?size=1000&quality=90",
+      "sourceImageNumber": 8,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-08",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-08_STATdx_image_08_plain_cb198ef2.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "activeBleedingCluster",
+        "ctaSpotSign"
+      ],
+      "visualEvidence": {
+        "bytes": 121917,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_cb198ef2.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/cb198ef2-04ab-4f94-b3eb-d25b3588e089?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "5b93967f48febf86ab01bea65d6d798941b5a1d81f1b18dcee01eeb76c35cb0e",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma9_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/9d9bcaf2-52e8-4acd-82a1-af1933663894?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma9",
+      "caption": "NECT 24 hours later in same patient shows an increase in size of the aSDH <img src=\"arrow_CC.png\">, which is now more homogeneously hyperdense. Notice the increased cerebral mass effect, sulcal effacement, and rightward midline shift <img src=\"arrow_BO.png\"> of the septum pellucidum and subfalcine herniation <img src=\"arrow_WS.png\">. Cranial decompression was subsequently performed.",
+      "displayLabel": "STATdx image 9",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma9.jpg",
+      "group": "",
+      "imageId": "9d9bcaf2-52e8-4acd-82a1-af1933663894",
+      "masterImageId": "SDX-09",
+      "plainFilename": "Acute_Subdural_Hematoma9.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/9d9bcaf2-52e8-4acd-82a1-af1933663894?size=1000&quality=90",
+      "sourceImageNumber": 9,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-09",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-09_STATdx_image_09_plain_9d9bcaf2.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "activeBleedingCluster",
+        "stageVariant"
+      ],
+      "visualEvidence": {
+        "bytes": 118332,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_9d9bcaf2.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/9d9bcaf2-52e8-4acd-82a1-af1933663894?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "90395db60b34c1d0235eee938f0992301bf6caaceb0bd90853116b75bc897b24",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma10_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/4c30503f-5a4d-4b59-aa72-04e63d087d10?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma10",
+      "caption": "aSDHs can be isodense to underlying brain, as in this anemic patient with aSDH <img src=\"arrow_WS.png\">  with inward displacement of gray-white interface <img src=\"arrow_WO.png\">  and rightward midline shift <img src=\"arrow_WC.png\">.",
+      "displayLabel": "STATdx image 10",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma10.jpg",
+      "group": "",
+      "imageId": "4c30503f-5a4d-4b59-aa72-04e63d087d10",
+      "masterImageId": "SDX-10",
+      "plainFilename": "Acute_Subdural_Hematoma10.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/4c30503f-5a4d-4b59-aa72-04e63d087d10?size=1000&quality=90",
+      "sourceImageNumber": 10,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-10",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-10_STATdx_image_10_plain_4c30503f.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "isodenseAnemiaVariant",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 170197,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_4c30503f.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/4c30503f-5a4d-4b59-aa72-04e63d087d10?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "ff0498fceb1ff5f7c376d38d470fc91e72e3468b94e91446c1c9b83628f552cf",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma11_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/cd33e845-9869-4778-8e05-90c4195999f5?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma11",
+      "caption": "Axial NECT shows a crescentic, homogeneously hyperdense extraaxial collection <img src=\"arrow_WS.png\"> with compression and displacement of the underlying brain, findings typical of an aSDH. SDHs may cross suture lines but do not cross dural attachments. They are often more extensive than epidural hematomas.",
+      "displayLabel": "STATdx image 11",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma11.jpg",
+      "group": "",
+      "imageId": "cd33e845-9869-4778-8e05-90c4195999f5",
+      "masterImageId": "SDX-11",
+      "plainFilename": "Acute_Subdural_Hematoma11.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/cd33e845-9869-4778-8e05-90c4195999f5?size=1000&quality=90",
+      "sourceImageNumber": 11,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-11",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-11_STATdx_image_11_plain_cd33e845.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "classicCrescenticExample",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "bytes": 128334,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_cd33e845.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/cd33e845-9869-4778-8e05-90c4195999f5?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "760c3494694f1fdb70242ebcc5fe3c7366458dd913da5c0a8664b079d47bfdf5",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma12_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/81ec0fdb-6cbd-4db2-9d85-886f09b00f73?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma12",
+      "caption": "Axial NECT in a patient with minor head trauma could easily be called normal.  There is a thin hyperdensity along the left tentorium  <img src=\"arrow_WS.png\">  compared to the right  <img src=\"arrow_WC.png\">.",
+      "displayLabel": "STATdx image 12",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma12.jpg",
+      "group": "",
+      "imageId": "81ec0fdb-6cbd-4db2-9d85-886f09b00f73",
+      "masterImageId": "SDX-12",
+      "plainFilename": "Acute_Subdural_Hematoma12.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/81ec0fdb-6cbd-4db2-9d85-886f09b00f73?size=1000&quality=90",
+      "sourceImageNumber": 12,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-12",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-12_STATdx_image_12_plain_81ec0fdb.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "subtleTentorialCluster",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "bytes": 126194,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_81ec0fdb.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/81ec0fdb-6cbd-4db2-9d85-886f09b00f73?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "ea54ebec54eb0161a8b20d73e1dfe3cf0b1bce693e4a857ea51d6f7919599c14",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma13_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/f5d901d8-2e24-4e07-842c-17b082e47476?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma13",
+      "caption": "Reformatted coronal NECT in the same patient shows scalp contusion with a high-density foreign body <img src=\"arrow_WC.png\">. Note the slight increase in thickness and density of the left tentorium <img src=\"arrow_WO.png\"> compared to the right <img src=\"arrow_WS.png\">.",
+      "displayLabel": "STATdx image 13",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma13.jpg",
+      "group": "",
+      "imageId": "f5d901d8-2e24-4e07-842c-17b082e47476",
+      "masterImageId": "SDX-13",
+      "plainFilename": "Acute_Subdural_Hematoma13.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/f5d901d8-2e24-4e07-842c-17b082e47476?size=1000&quality=90",
+      "sourceImageNumber": 13,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-13",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-13_STATdx_image_13_plain_f5d901d8.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "subtleTentorialCluster",
+        "multiplanarCompanion"
+      ],
+      "visualEvidence": {
+        "bytes": 127810,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_f5d901d8.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/f5d901d8-2e24-4e07-842c-17b082e47476?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "a7080fe4f70cd68fe9cd9aeb83ee8fa859e2d196001921f2947e72dd879ecca4",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma14_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/90bbf24b-bfb1-4e5a-bb0e-a6ba862c8f6a?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma14",
+      "caption": "Sagittal reformatted NECT through the left tentorial leaf shows a 2-mm thin aSDH <img src=\"arrow_WO.png\">.",
+      "displayLabel": "STATdx image 14",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma14.jpg",
+      "group": "",
+      "imageId": "90bbf24b-bfb1-4e5a-bb0e-a6ba862c8f6a",
+      "masterImageId": "SDX-14",
+      "plainFilename": "Acute_Subdural_Hematoma14.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/90bbf24b-bfb1-4e5a-bb0e-a6ba862c8f6a?size=1000&quality=90",
+      "sourceImageNumber": 14,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-14",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-14_STATdx_image_14_plain_90bbf24b.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "subtleTentorialCluster",
+        "sagittalCompanion"
+      ],
+      "visualEvidence": {
+        "bytes": 114052,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_90bbf24b.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/90bbf24b-bfb1-4e5a-bb0e-a6ba862c8f6a?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "c58187996050f164bf425881cc1cf3fedc3bf15eff78f5eb58146a0dc5703227",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma15_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/e71f8c2f-5693-4253-9ec1-33991b6a6cea?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma15",
+      "caption": "Sagittal reformatted NECT through the right side of the tentorium shows the normal thin, slightly hyperdense dura <img src=\"arrow_WS.png\">. Thin, isolated peritentorial aSDHs do not expand and typically do not require follow-up.",
+      "displayLabel": "STATdx image 15",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma15.jpg",
+      "group": "",
+      "imageId": "e71f8c2f-5693-4253-9ec1-33991b6a6cea",
+      "masterImageId": "SDX-15",
+      "plainFilename": "Acute_Subdural_Hematoma15.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/e71f8c2f-5693-4253-9ec1-33991b6a6cea?size=1000&quality=90",
+      "sourceImageNumber": 15,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-15",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-15_STATdx_image_15_plain_e71f8c2f.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "subtleTentorialCluster",
+        "normalComparison"
+      ],
+      "visualEvidence": {
+        "bytes": 126536,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_e71f8c2f.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/e71f8c2f-5693-4253-9ec1-33991b6a6cea?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "81d03e5f09116f0bbd68284cd6c6362fdaa24e5b7eafb497c8133d18161f66c0",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma16_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/f9e29c72-78e5-4edd-85ee-bcc4eac72925?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma16",
+      "caption": "Axial NECT in an anticoagulated obtunded 74-year-old woman with head trauma shows a large left-sided aSDH <img src=\"arrow_WO.png\"> with such severe subfalcine and transtentorial herniation that the temporal horn of the left lateral ventricle <img src=\"arrow_WC.png\"> is displaced completely into the tentorial incisura. The temporal horn of the right lateral ventricle is enlarged <img src=\"arrow_WS.png\"> because the foramen of Monro is obstructed by the herniating brain.",
+      "displayLabel": "STATdx image 16",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma16.jpg",
+      "group": "",
+      "imageId": "f9e29c72-78e5-4edd-85ee-bcc4eac72925",
+      "masterImageId": "SDX-16",
+      "plainFilename": "Acute_Subdural_Hematoma16.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/f9e29c72-78e5-4edd-85ee-bcc4eac72925?size=1000&quality=90",
+      "sourceImageNumber": 16,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-16",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-16_STATdx_image_16_plain_f9e29c72.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "severeHerniationCluster",
+        "severityVariant"
+      ],
+      "visualEvidence": {
+        "bytes": 116199,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_f9e29c72.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/f9e29c72-78e5-4edd-85ee-bcc4eac72925?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "fbdaab8c8534cb7c469927ac442651e0701e171cd4ee65580641e87c0390600f",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma17_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/b7b40995-2df0-4677-b295-714dc779374b?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma17",
+      "caption": "Axial NECT in the same patient through the lateral ventricles shows the lateral ventricles are completely herniated under the falx, and the foramen of Monro is secondarily obstructed <img src=\"arrow_WC.png\">. The massive aSDH <img src=\"arrow_WO.png\"> is heterogeneous and contains several isodense foci <img src=\"arrow_BS.png\">, suggesting rapid hemorrhage with accumulation of unclotted blood.",
+      "displayLabel": "STATdx image 17",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma17.jpg",
+      "group": "",
+      "imageId": "b7b40995-2df0-4677-b295-714dc779374b",
+      "masterImageId": "SDX-17",
+      "plainFilename": "Acute_Subdural_Hematoma17.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/b7b40995-2df0-4677-b295-714dc779374b?size=1000&quality=90",
+      "sourceImageNumber": 17,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-17",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-17_STATdx_image_17_plain_b7b40995.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "severeHerniationCluster",
+        "adjacentSliceCompanion"
+      ],
+      "visualEvidence": {
+        "bytes": 113167,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_b7b40995.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/b7b40995-2df0-4677-b295-714dc779374b?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "bc430a57c7d3a218e3701fdf23f9aea4b5c6cd4d852d768ee52ca2e9e8b0ebda",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma18_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/3601f3d1-468f-4dce-97ba-89d603dfa269?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma18",
+      "caption": "Coronal NECT shows the total herniation of the lateral ventricles <img src=\"arrow_WC.png\"> under the falx. The temporal horn of the left lateral ventricle is nearly in the midline <img src=\"arrow_WS.png\">. The patient died shortly after the scan was obtained.",
+      "displayLabel": "STATdx image 18",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma18.jpg",
+      "group": "",
+      "imageId": "3601f3d1-468f-4dce-97ba-89d603dfa269",
+      "masterImageId": "SDX-18",
+      "plainFilename": "Acute_Subdural_Hematoma18.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/3601f3d1-468f-4dce-97ba-89d603dfa269?size=1000&quality=90",
+      "sourceImageNumber": 18,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-18",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-18_STATdx_image_18_plain_3601f3d1.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "severeHerniationCluster",
+        "coronalCompanion"
+      ],
+      "visualEvidence": {
+        "bytes": 122452,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_3601f3d1.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/3601f3d1-468f-4dce-97ba-89d603dfa269?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "e63c10135c3fc44c61cceccc2a03ebd1c8241196150c461e64414ef1b1271a69",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma19_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/fdf3b276-9df0-43cd-9e7f-9ef776c3ab41?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma19",
+      "caption": "Axial T1 MR shows an acute right SDH. The collection <img src=\"arrow_WS.png\"> is isointense with cortex. Contrast with left-sided hypointense chronic SDH <img src=\"arrow_WO.png\"> is seen.",
+      "displayLabel": "STATdx image 19",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma19.jpg",
+      "group": "",
+      "imageId": "fdf3b276-9df0-43cd-9e7f-9ef776c3ab41",
+      "masterImageId": "SDX-19",
+      "plainFilename": "Acute_Subdural_Hematoma19.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/fdf3b276-9df0-43cd-9e7f-9ef776c3ab41?size=1000&quality=90",
+      "sourceImageNumber": 19,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-19",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-19_STATdx_image_19_plain_fdf3b276.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "modalityVariant",
+        "mrT1Variant"
+      ],
+      "visualEvidence": {
+        "bytes": 145126,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_fdf3b276.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/fdf3b276-9df0-43cd-9e7f-9ef776c3ab41?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "635df0e8ce8b6091434bee458b48bf7d1fbb88d9949e33257e37c804a37144bd",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma20_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/a36e677f-9604-481a-9ad3-330bf6f22e7f?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma20",
+      "caption": "Axial T2 MR in the same patient shows the aSDH is profoundly hypointense while the chronic left SDH is hyperintense relative to brain.",
+      "displayLabel": "STATdx image 20",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma20.jpg",
+      "group": "",
+      "imageId": "a36e677f-9604-481a-9ad3-330bf6f22e7f",
+      "masterImageId": "SDX-20",
+      "plainFilename": "Acute_Subdural_Hematoma20.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/a36e677f-9604-481a-9ad3-330bf6f22e7f?size=1000&quality=90",
+      "sourceImageNumber": 20,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-20",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-20_STATdx_image_20_plain_a36e677f.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "modalityVariant",
+        "mrT2Companion"
+      ],
+      "visualEvidence": {
+        "bytes": 141978,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_a36e677f.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/a36e677f-9604-481a-9ad3-330bf6f22e7f?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "2609fbbad0f6ae07ef2d98f997604ded6e69d10e84ba444fb9b89192caf86ea9",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma21_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/05cb4e38-dcfc-4b69-a8a3-210f5946a521?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma21",
+      "caption": "Axial NECT scan in a 31-year-old man with minor trauma shows subtle hyperdensity along the tentorium <img src=\"arrow_WO.png\"> and inferior falx <img src=\"arrow_WC.png\"> near the confluence of the venous sinuses.",
+      "displayLabel": "STATdx image 21",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma21.jpg",
+      "group": "",
+      "imageId": "05cb4e38-dcfc-4b69-a8a3-210f5946a521",
+      "masterImageId": "SDX-21",
+      "plainFilename": "Acute_Subdural_Hematoma21.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/05cb4e38-dcfc-4b69-a8a3-210f5946a521?size=1000&quality=90",
+      "sourceImageNumber": 21,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-21",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-21_STATdx_image_21_plain_05cb4e38.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "peritentorialMultiplanarCluster",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 129248,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_05cb4e38.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/05cb4e38-dcfc-4b69-a8a3-210f5946a521?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "95dcfc73d22cd21098e10e0e6cbd219d4b2f72f91fba36762c816083072a29d7",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma22_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/6c764a6b-25ba-460e-a2e3-e24db60f5745?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma22",
+      "caption": "Coronal reformatted NECT from the axial data in the same patient shows the small acute peritentorial SDH <img src=\"arrow_WO.png\">. A small subtle convexity aSDH <img src=\"arrow_WS.png\"> is seen here and was not visible on the axial scan.",
+      "displayLabel": "STATdx image 22",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma22.jpg",
+      "group": "",
+      "imageId": "6c764a6b-25ba-460e-a2e3-e24db60f5745",
+      "masterImageId": "SDX-22",
+      "plainFilename": "Acute_Subdural_Hematoma22.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/6c764a6b-25ba-460e-a2e3-e24db60f5745?size=1000&quality=90",
+      "sourceImageNumber": 22,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-22",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-22_STATdx_image_22_plain_6c764a6b.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "peritentorialMultiplanarCluster",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 137558,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_6c764a6b.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/6c764a6b-25ba-460e-a2e3-e24db60f5745?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "b3597c358dcbb396a327e44a036ef77d7dab7a1339fcbf89ef204ded3c841145",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma23_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/e49ac373-38e4-41b0-bbc0-098394645f32?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma23",
+      "caption": "Sagittal NECT scans in the same patient show the right peritentorial aSDH (top) <img src=\"arrow_WS.png\"> with normal thin, hyperdense left sagittal dura (bottom)  <img src=\"arrow_WO.png\">  for comparison.",
+      "displayLabel": "STATdx image 23",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma23.jpg",
+      "group": "",
+      "imageId": "e49ac373-38e4-41b0-bbc0-098394645f32",
+      "masterImageId": "SDX-23",
+      "plainFilename": "Acute_Subdural_Hematoma23.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/e49ac373-38e4-41b0-bbc0-098394645f32?size=1000&quality=90",
+      "sourceImageNumber": 23,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-23",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-23_STATdx_image_23_plain_e49ac373.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "peritentorialMultiplanarCluster",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 145983,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_e49ac373.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/e49ac373-38e4-41b0-bbc0-098394645f32?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "bbd03ed71325a87a8ebd4612a51cd047eb991ab43d43ab662d989cd7101b3e68",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma24_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/b26ecef4-f6b5-4cbb-a92a-795f008b9ee3?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma24",
+      "caption": "Axial NECT scan in a 30-year-old man with head trauma shows a small, mixed-density aSDH <img src=\"arrow_WS.png\"> over the left frontal and parietal lobes. Subtle hypodensity within the aSDH <img src=\"arrow_WO.png\"> was concerning for rapid accumulation of unclotted blood.",
+      "displayLabel": "STATdx image 24",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma24.jpg",
+      "group": "",
+      "imageId": "b26ecef4-f6b5-4cbb-a92a-795f008b9ee3",
+      "masterImageId": "SDX-24",
+      "plainFilename": "Acute_Subdural_Hematoma24.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/b26ecef4-f6b5-4cbb-a92a-795f008b9ee3?size=1000&quality=90",
+      "sourceImageNumber": 24,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-24",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-24_STATdx_image_24_plain_b26ecef4.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "rapidExpansionTimeLapse",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 144613,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_b26ecef4.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/b26ecef4-f6b5-4cbb-a92a-795f008b9ee3?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "d820b24b6e979c70fe93c06f32dcb4df0ecb3ce6cb2c6901758c85f96dafc83a",
+        "width": 1000
+      }
+    },
+    {
+      "annotatedFilename": "Acute_Subdural_Hematoma25_annot.jpg",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/e88fbe18-5a97-4615-82e4-470e2956b482?annotated=true&size=1000&quality=90",
+      "baseName": "Acute_Subdural_Hematoma25",
+      "caption": "The same patient deteriorated 5 hours later. The aSDH has expanded significantly, and there are multiple foci of hypodensity <img src=\"arrow_CO.png\"> within the hematoma indicating rapid bleeding. Note the subfalcine herniation of the lateral ventricles <img src=\"arrow_CC.png\">.",
+      "displayLabel": "STATdx image 25",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Acute_Subdural_Hematoma25.jpg",
+      "group": "",
+      "imageId": "e88fbe18-5a97-4615-82e4-470e2956b482",
+      "masterImageId": "SDX-25",
+      "plainFilename": "Acute_Subdural_Hematoma25.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/e88fbe18-5a97-4615-82e4-470e2956b482?size=1000&quality=90",
+      "sourceImageNumber": 25,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "traceability": {
+        "metadataFile": "STATdx_metadata.json",
+        "shortCode": "SDX-25",
+        "sourcePackage": "STATdx_source_package.txt",
+        "sourceQualifiedFilename": "SDX-25_STATdx_image_25_plain_e88fbe18.jpg"
+      },
+      "usedFor": [
+        "primaryTeachingSet",
+        "rapidExpansionTimeLapse",
+        "higherResolutionExactRepresentative"
+      ],
+      "visualEvidence": {
+        "bytes": 115794,
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_e88fbe18.jpg",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/e88fbe18-5a97-4615-82e4-470e2956b482?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "height": 1000,
+        "sha256": "b15d9a7767db43f374f42087fc0d3823afa1105a897de8bb0f15649a3a38d7e3",
+        "width": 1000
+      }
+    }
+  ],
+  "masterSource": {
+    "createdAt": "2026-06-29T22:32:43.003073Z",
+    "importedAt": "2026-06-30T00:48:03.796Z",
+    "sourceLabel": "RadPrimer + STATdx master source"
+  },
+  "settings": {
+    "include": "all",
+    "caseMap": "",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "effectiveAnkiNormalRoot": "",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "acute_subdural_hematoma_anki.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_000000005714720cbbd6e04fa6b7cd06&ts=495217&p=fs&cid=1&sig=b682844888596a2e18cae2a0f83445dd6c2db0f0ab9cb2229cb8966c4509659e&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_000000005714720cbbd6e04fa6b7cd06&ts=495217&p=fs&cid=1&sig=b682844888596a2e18cae2a0f83445dd6c2db0f0ab9cb2229cb8966c4509659e&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 6477,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Acute_Subdural_Hematoma_2026-06-30T01-59-44-686Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}

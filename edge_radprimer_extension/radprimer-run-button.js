@@ -799,7 +799,7 @@
                 <button class="ghost save-only" type="button">Save settings</button>
                 <button class="ghost download-config" type="button" hidden>Save and download images</button>
                 <button class="ghost io-queue-config" type="button" hidden>Build IO queue</button>
-                <button class="ghost audit-source-config" type="button" hidden>Export audit source</button>
+                <button class="ghost audit-source-config" type="button" hidden title="Stage the current article source files so Codex can audit an existing generated TSV">Prepare audit for TSV</button>
                 <button class="ghost compare-source-config" type="button" hidden>Export comparison source</button>
                 <button class="run-config" type="button">Save and run selected workflow</button>
               </div>
@@ -1322,7 +1322,7 @@
   };
 
   const syncSourceCompareControls = (host) => {
-    for (const selector of [".compare-source-config", ".master-source-config"]) {
+    for (const selector of [".audit-source-config", ".compare-source-config", ".master-source-config"]) {
       const button = host.shadowRoot.querySelector(selector);
       if (button) button.hidden = false;
     }
@@ -1417,7 +1417,7 @@
 
   const exportAuditSourceOnly = (host) => {
     setRunning(host, true);
-    setStatus(host, "Audit Source", "Exporting source-only audit bundle...");
+    setStatus(host, "Audit TSV", "Preparing source materials for an existing generated TSV...");
     chrome.runtime.sendMessage({ type: "EXPORT_RADPRIMER_AUDIT_SOURCE_ONLY" }, async (response) => {
       const err = chrome.runtime.lastError;
       if (err) {
@@ -1433,7 +1433,7 @@
       try {
         if (response.clipboardText) await navigator.clipboard.writeText(response.clipboardText);
       } catch {}
-      setStatus(host, "Audit Source Ready", response.message || "Source-only audit bundle exported.");
+      setStatus(host, "Audit TSV Ready", response.message || "Audit source materials prepared for your existing TSV.");
       setRunning(host, false);
     });
   };

@@ -1,0 +1,96 @@
+# Subacute Subdural Hematoma
+
+Canonical hierarchy: All Categories > Basic > Neuroradiology > Brain > Primary Effects of CNS Trauma > Subacute Subdural Hematoma
+Canonical deck path: Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Subacute Subdural Hematoma
+Primary source posture: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth and the default selected image set where it visually replaces RadPrimer duplicates.
+Core evidence: no auditable Core Radiology source was supplied in this bundle, so Core-specific support is not asserted.
+
+## Source Coverage And Image Gate
+
+STATdx covers the RadPrimer image teaching set, but the coverage is not uniformly exact. Actual `image_evidence/` files were inspected before classification. RadPrimer images 1, 2, 3, 4, 5, 6, 7, 8, and 10 have visually exact same-screenshot or same-graphic STATdx counterparts and are archive-optional. RadPrimer image 9 has related STATdx membrane-enhancement coverage but is a different axial MR image, so it remains selected as recognition reinforcement.
+
+RadPrimer image 1 -> STATdx image 1: exact duplicate mechanism graphic; use STATdx image 1 as the selected primary.
+RadPrimer image 2 -> STATdx image 2: exact duplicate density-evolution graph; use STATdx image 2.
+RadPrimer image 3 -> STATdx image 24: exact duplicate axial NECT right isodense sSDH; use STATdx image 24. STATdx images 3 and 4 remain selected as alternate axial/coronal examples, not duplicates.
+RadPrimer image 4 -> STATdx image 25: exact duplicate bilateral balanced isodense sSDH; use STATdx image 25. STATdx images 9 and 10 remain selected as the intracranial-hypotension bilateral cluster.
+RadPrimer image 5 -> STATdx image 5: exact duplicate late sSDH with cortical atrophy; use STATdx image 5.
+RadPrimer image 6 -> STATdx image 26: exact duplicate different-age bilateral SDHs; use STATdx image 26.
+RadPrimer image 7 -> STATdx image 6: exact duplicate axial T1 MR late sSDH; use STATdx image 6.
+RadPrimer image 8 -> STATdx image 7: exact duplicate axial FLAIR MR late sSDH; use STATdx image 7.
+RadPrimer image 9 -> STATdx image 15: near duplicate/conceptual reinforcement for enhancing outer membrane; keep both RadPrimer image 9 and STATdx image 15 selected because the visual evidence shows different axial MR images.
+RadPrimer image 10 -> STATdx image 8: exact duplicate coronal T1 C+ MR membrane image; use STATdx image 8.
+
+## Fused Teaching Backbone
+
+### Definition And Time Window
+
+- [Both] Subacute subdural hematoma is a subdural collection about 3 days to 3 weeks old, located between arachnoid and dura or within the inner dural border cell layer.
+- [Both] The collection contains partially liquefied clot and resorbing blood products surrounded by granulation tissue membrane.
+- [Both] Trauma may be minor, especially in older adults, because bridging cortical veins are stretched or torn as they cross the subdural space.
+- [Both] The hematoma can enlarge through repetitive hemorrhage from the outer membrane; membrane enhancement marks an unstable collection prone to rehemorrhage.
+
+### CT Recognition Pattern
+
+- [Both] On NECT, subacute SDH is crescentic, iso- to hypodense, extraaxial, and can spread diffusely over a hemisphere.
+- [Both] It may be the same density as cortex. The search pattern is displaced gray-white interface, compressed sulci, and inwardly displaced dots of CSF rather than relying only on obvious hyperdensity.
+- [Both] SDH may cross sutures but not dural attachments.
+- [Both] Density evolves from acute hyperdensity toward isodensity at about 7-10 days and hypodensity around 10-14 days; recurrent hemorrhage can create mixed density.
+- [STATdx] STATdx images 3 and 4 add alternate axial and coronal right-sided examples of difficult isodense sSDH detection.
+- [STATdx] STATdx images 9 and 10 form an atomic intracranial-hypotension cluster: bilateral nearly isodense SDHs plus sagittal CT signs of brain sagging and a plump pituitary.
+
+### MR Recognition Pattern
+
+- [Both] T1 signal is iso- to hyperintense; T2 is often hyperintense; FLAIR does not suppress like CSF.
+- [Both] DWI signal varies with hematoma age and may show a double-layer appearance; a hyperintense band can indicate relatively fresh bleeding from the outer membrane.
+- [STATdx] Add SWI/GRE to trauma/hemorrhage MR protocols; the source package specifically broadens the protocol advice from GRE to SWI/GRE.
+- [Both] T1 C+ may show enhancing membranes. Outer membrane enhancement supports late/unstable sSDH and helps distinguish sSDH or chronic SDH from pachymeningeal mimics.
+- [Both] MR is more sensitive than CT for SDH and for additional traumatic brain injuries.
+- [STATdx] STATdx images 11-15 provide an atomic multimodality cluster demonstrating CT, T1, FLAIR, T2, and T1 C+ behavior of subacute collections.
+- [STATdx] STATdx images 16 and 17 add early/fluid-level and DWI examples, including the caution that blood signal on DWI is not always predictable.
+
+### Differential Diagnosis
+
+- [Both] Other subdural collections include effusion, hygroma, and empyema.
+- [Both] Pachymeningopathies can mimic thickened dura; actively search for intracranial hypotension signs when trauma history is absent.
+- [Both] Chronic dural sinus thrombosis remains in the differential for subdural-type collections and dural/pachymeningeal findings.
+- [Both] Signal on MR often parallels intracerebral hematoma evolution, but exceptions occur, especially in early subacute hematomas.
+
+### Pathology And Clinical Context
+
+- [Both] Etiology centers on bridging vein injury; the source packages also describe a delayed hypersensitivity component with antigen release during clot liquefaction and antigen-presenting cells in the neomembrane.
+- [Both] Gross pathology is granulation tissue with resorbing blood products. The outer membrane is tied to enlargement and repetitive hemorrhage; the inner membrane is tied to liquefaction of SDH.
+- [Both] Presentation can be subtle and delayed, including headache, seizure, or focal neurologic deficit.
+- [Both] Demographics include young patients and older adults, with male predominance in the source article.
+- [STATdx] STATdx image 18 adds an infant nonaccidental-trauma scenario, preserving the pediatric/abuse context as a distinct recognition example.
+
+### Diagnostic Checklist
+
+- [Both] Initial screen is NECT; consider contrast-enhanced CT for membranes or loculations.
+- [Both] On MR, include FLAIR, DWI, and SWI/GRE for hemorrhage or trauma indications.
+- [Both] If sSDH appears without a trauma history, evaluate coagulation status and search for intracranial hypotension: brain sagging, dura-arachnoid thickening, engorged dural venous sinuses, and plump pituitary.
+- [Both] Report mass effect, sulcal compression, midline shift/herniation if present, bilateral balance, mixed density suggesting rebleeding, and membrane enhancement.
+
+## Selected Image Atlas For Future Generation
+
+Use the following images by default for download and teaching. Exact RadPrimer duplicates are retained in the registry for audit traceability, while RadPrimer image 9 remains selected.
+
+- STATdx image 1: mechanism graphic with bridging vein, membranes, mass effect, and the 3-day to 3-week age window.
+- STATdx image 2: density evolution curve; pair with CT images when teaching why sSDH becomes hard to see.
+- STATdx images 3, 4, and 24: right isodense sSDH recognition across axial and coronal CT; STATdx image 24 is the exact counterpart for RadPrimer image 3, while STATdx images 3 and 4 are reinforcement.
+- STATdx images 5 and 26: late/atrophy and different-age bilateral SDH examples, replacing RadPrimer images 5 and 6.
+- STATdx images 6, 7, 8 plus RadPrimer image 9: atomic late-sSDH MR cluster across T1, FLAIR, axial T1 C+ FS membrane enhancement, and coronal T1 C+ membrane anatomy.
+- STATdx images 9 and 10: atomic bilateral isodense SDH/intracranial hypotension cluster.
+- STATdx images 11-15: atomic multimodality subdural collection cluster; CT, T1, FLAIR, T2, and contrast-enhanced membrane behavior.
+- STATdx images 16 and 17: early/fluid-level and DWI appearances, including unstable membrane-risk language.
+- STATdx image 18: infant suspected nonaccidental trauma with bilateral SDH after burr hole; keep pediatric/procedure context intact.
+- STATdx image 19: mixed-density sSDH with internal membranes and recent hemorrhage into a preexisting collection.
+- STATdx image 20: septated nonacute bilateral subdurals and the FLAIR chronicity caveat.
+- STATdx images 21-23: atomic differing-age/methemoglobin MR cluster.
+- STATdx image 25: bilateral balanced isodense sSDHs, replacing RadPrimer image 4.
+
+## Downstream Use Notes
+
+- Use `selectedPrimaryImageIds` for default image download and teaching.
+- Use `archiveOptionalImageIds` only for exact duplicate audit recovery; do not download them by default.
+- Preserve same-patient, follow-up, procedure, and multimodality clusters as atomic unless a later source explicitly documents a safe split.
+- Keep human-facing prose labels clean, such as RadPrimer image 9 or STATdx image 4. Use short IDs such as RP-09 and SDX-04 only in registry, filenames, and traceability fields.

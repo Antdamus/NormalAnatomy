@@ -1,0 +1,600 @@
+{
+  "version": "master-source-manifest-v1",
+  "articleTitle": "Subacute Subdural Hematoma",
+  "createdAt": "2026-06-30T02:10:02Z",
+  "sourceBundleName": "Subacute_Subdural_Hematoma_2026-06-30T02-02-13-198Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Neuroradiology",
+    "Brain",
+    "Primary Effects of CNS Trauma",
+    "Subacute Subdural Hematoma"
+  ],
+  "canonicalHierarchySource": {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceFile": "RadPrimer_metadata.json",
+    "field": "breadcrumbTrail",
+    "policy": "RadPrimer breadcrumbTrail is the canonical hierarchy/backbone."
+  },
+  "canonicalDeckPath": "Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Subacute Subdural Hematoma",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "radprimerPresent": true,
+    "statdxPresent": true,
+    "radprimerImageCount": 10,
+    "statdxImageCount": 26,
+    "statdxRadPrimerImageCoverageSummary": "STATdx covers all RadPrimer image teaching needs: 9 exact visual counterparts, 1 near-duplicate/conceptual counterpart retained with the RadPrimer original.",
+    "coreEvidence": "No auditable Core Radiology source supplied in this bundle."
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 26
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer], [STATdx], or [Both] in derived content when attribution matters.",
+    "Use clean human-facing labels such as RadPrimer image 9 and STATdx image 4 in prose.",
+    "Keep RP-09 and SDX-04 style IDs in registry, filenames, manifest, and traceability fields."
+  ],
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "RP-09"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-10"
+  ],
+  "sourceSelectionPlan": {
+    "sourcePriority": [
+      "RadPrimer canonical hierarchy/backbone",
+      "STATdx supplemental depth and selected primary images where visually superior or duplicate-replacing"
+    ],
+    "textPlan": {
+      "keepFromRadPrimer": [
+        "canonicalHierarchy exactly from metadata.json",
+        "canonicalDeckPath exactly from metadata.json",
+        "core article structure and image numbering traceability"
+      ],
+      "keepFromSTATdx": [
+        "older-adult wording updates",
+        "double-layer/DWI wording",
+        "SWI/GRE protocol detail",
+        "intracranial hypotension cluster",
+        "additional multimodality and pediatric/procedure examples"
+      ],
+      "downweightOrSkip": [
+        "Core Radiology claims without supplied auditable Core source",
+        "caption-only duplicate claims",
+        "STATdx breadcrumb routing for manifest or deck path"
+      ]
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable. Download only selectedPrimaryImageIds by default.",
+    "duplicateEvidencePolicy": "Exact duplicate decisions in this package are based on actual image_evidence file inspection showing the same slice/screenshot/graphic. Caption-only or topic-only similarity was not used for exact duplicate status.",
+    "radprimerCoverageGate": [
+      {
+        "radprimerImageId": "RP-01",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-01"
+        ],
+        "recommendedAction": "Archive RP-01; use SDX-01 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic; classification is not caption-only."
+      },
+      {
+        "radprimerImageId": "RP-02",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-02"
+        ],
+        "recommendedAction": "Archive RP-02; use SDX-02 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic; classification is not caption-only."
+      },
+      {
+        "radprimerImageId": "RP-03",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-24"
+        ],
+        "recommendedAction": "Archive RP-03; use SDX-24 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic; classification is not caption-only."
+      },
+      {
+        "radprimerImageId": "RP-04",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-25"
+        ],
+        "recommendedAction": "Archive RP-04; use SDX-25 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic; classification is not caption-only."
+      },
+      {
+        "radprimerImageId": "RP-05",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-05"
+        ],
+        "recommendedAction": "Archive RP-05; use SDX-05 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic; classification is not caption-only."
+      },
+      {
+        "radprimerImageId": "RP-06",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-26"
+        ],
+        "recommendedAction": "Archive RP-06; use SDX-26 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic; classification is not caption-only."
+      },
+      {
+        "radprimerImageId": "RP-07",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-06"
+        ],
+        "recommendedAction": "Archive RP-07; use SDX-06 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic; classification is not caption-only."
+      },
+      {
+        "radprimerImageId": "RP-08",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-07"
+        ],
+        "recommendedAction": "Archive RP-08; use SDX-07 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic; classification is not caption-only."
+      },
+      {
+        "radprimerImageId": "RP-09",
+        "coverageStatus": "nearDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-15"
+        ],
+        "recommendedAction": "Keep RP-09 selected and also keep SDX-15 selected as recognition reinforcement.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed related membrane-enhancement content but different axial MR images."
+      },
+      {
+        "radprimerImageId": "RP-10",
+        "coverageStatus": "exactDuplicate",
+        "statdxRelatedImageIds": [
+          "SDX-08"
+        ],
+        "recommendedAction": "Archive RP-10; use SDX-08 as the selected primary counterpart.",
+        "evidenceBasis": "Actual image_evidence visual inspection showed the same slice/screenshot/graphic; classification is not caption-only."
+      }
+    ],
+    "caseClusterGuardrails": [
+      {
+        "clusterId": "late-sSDH-MR-core",
+        "selectedImageIds": [
+          "SDX-06",
+          "SDX-07",
+          "RP-09",
+          "SDX-08"
+        ],
+        "archiveDuplicateImageIds": [
+          "RP-07",
+          "RP-08",
+          "RP-10"
+        ],
+        "rule": "Preserve the MR sequence cluster; only exact duplicate source copies are archived."
+      },
+      {
+        "clusterId": "intracranial-hypotension-bilateral-ct",
+        "selectedImageIds": [
+          "SDX-09",
+          "SDX-10"
+        ],
+        "archiveDuplicateImageIds": [],
+        "rule": "Keep coronal bilateral SDH and sagittal hypotension signs together."
+      },
+      {
+        "clusterId": "multimodality-collection",
+        "selectedImageIds": [
+          "SDX-11",
+          "SDX-12",
+          "SDX-13",
+          "SDX-14",
+          "SDX-15"
+        ],
+        "archiveDuplicateImageIds": [],
+        "rule": "Keep the same-patient CT/MR sequence together; SDX-15 is not an exact duplicate of RP-09."
+      },
+      {
+        "clusterId": "differing-age-methemoglobin-mr",
+        "selectedImageIds": [
+          "SDX-21",
+          "SDX-22",
+          "SDX-23"
+        ],
+        "archiveDuplicateImageIds": [],
+        "rule": "Keep the coronal, sagittal, and axial MR views together."
+      }
+    ],
+    "selectedPrimaryImageIds": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26",
+      "RP-09"
+    ],
+    "archiveOptionalImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-10"
+    ],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "SDX-01",
+        "humanLabel": "STATdx image 1",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 1,
+        "sourceQualifiedFilename": "STATdx_image_01_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_a1d4648e.jpg",
+        "teachingRole": "mechanism graphic with membranes, bridging vein, local mass effect, and age window",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-02",
+        "humanLabel": "STATdx image 2",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 2,
+        "sourceQualifiedFilename": "STATdx_image_02_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_4c4360cb.jpg",
+        "teachingRole": "density evolution curve from acute hyperdense to isodense and chronic hypodense SDH",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-03",
+        "humanLabel": "STATdx image 3",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 3,
+        "sourceQualifiedFilename": "STATdx_image_03_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_5fd4d1b5.jpg",
+        "teachingRole": "axial NECT isodense right sSDH recognition by displaced gray-white interface",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-04",
+        "humanLabel": "STATdx image 4",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 4,
+        "sourceQualifiedFilename": "STATdx_image_04_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_0b107949.jpg",
+        "teachingRole": "coronal NECT alternate right sSDH view with compressed sulci and displaced CSF",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-05",
+        "humanLabel": "STATdx image 5",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 5,
+        "sourceQualifiedFilename": "STATdx_image_05_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_9bc1a1b6.jpg",
+        "teachingRole": "late sSDH in atrophy showing isodense hematoma versus hypodense compressed CSF",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-06",
+        "humanLabel": "STATdx image 6",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 6,
+        "sourceQualifiedFilename": "STATdx_image_06_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_297705cc.jpg",
+        "teachingRole": "axial T1 MR late sSDH nearly isointense with cortex and thin membrane",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-07",
+        "humanLabel": "STATdx image 7",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 7,
+        "sourceQualifiedFilename": "STATdx_image_07_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_e19e7a1f.jpg",
+        "teachingRole": "axial FLAIR MR same-patient hyperintense sSDH and sulcal effacement",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-08",
+        "humanLabel": "STATdx image 8",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 8,
+        "sourceQualifiedFilename": "STATdx_image_08_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_54e4414d.jpg",
+        "teachingRole": "coronal T1 C+ MR same-patient outer and inner membrane anatomy",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-09",
+        "humanLabel": "STATdx image 9",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 9,
+        "sourceQualifiedFilename": "STATdx_image_09_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_88d688f3.jpg",
+        "teachingRole": "coronal NECT bilateral isodense SDH with displaced cortical veins",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-10",
+        "humanLabel": "STATdx image 10",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 10,
+        "sourceQualifiedFilename": "STATdx_image_10_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_fbbd6145.jpg",
+        "teachingRole": "sagittal NECT same-patient intracranial hypotension signs",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-11",
+        "humanLabel": "STATdx image 11",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 11,
+        "sourceQualifiedFilename": "STATdx_image_11_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_b26f935a.jpg",
+        "teachingRole": "axial NECT extraaxial fluid collection slightly denser than CSF",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-12",
+        "humanLabel": "STATdx image 12",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 12,
+        "sourceQualifiedFilename": "STATdx_image_12_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_8b0bf1bc.jpg",
+        "teachingRole": "T1 MR same-patient bilateral subdural collections slightly hyperintense to CSF",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-13",
+        "humanLabel": "STATdx image 13",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 13,
+        "sourceQualifiedFilename": "STATdx_image_13_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_c26dadba.jpg",
+        "teachingRole": "FLAIR same-patient non-suppression of subacute collections",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-14",
+        "humanLabel": "STATdx image 14",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 14,
+        "sourceQualifiedFilename": "STATdx_image_14_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_b1b767ae.jpg",
+        "teachingRole": "T2 same-patient collections isointense with CSF",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-15",
+        "humanLabel": "STATdx image 15",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 15,
+        "sourceQualifiedFilename": "STATdx_image_15_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_f1ef0cd6.jpg",
+        "teachingRole": "T1 C+ same-patient outer membrane enhancement, a near duplicate of the RP membrane teaching point",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-16",
+        "humanLabel": "STATdx image 16",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 16,
+        "sourceQualifiedFilename": "STATdx_image_16_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_b0048bea.jpg",
+        "teachingRole": "T2 early sSDH fluid level and small-SDH FLAIR sensitivity teaching",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-17",
+        "humanLabel": "STATdx image 17",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 17,
+        "sourceQualifiedFilename": "STATdx_image_17_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_cdf5c5e7.jpg",
+        "teachingRole": "DWI mixed-signal sSDH, hypointense rim, and unstable outer membrane risk concept",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-18",
+        "humanLabel": "STATdx image 18",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 18,
+        "sourceQualifiedFilename": "STATdx_image_18_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_d3f9052b.jpg",
+        "teachingRole": "infant suspected nonaccidental trauma with bilateral SDH after burr hole and inwardly displaced vessels",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-19",
+        "humanLabel": "STATdx image 19",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 19,
+        "sourceQualifiedFilename": "STATdx_image_19_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_ee132122.jpg",
+        "teachingRole": "mixed-density sSDH with internal membranes and recent hemorrhage into a collection",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-20",
+        "humanLabel": "STATdx image 20",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 20,
+        "sourceQualifiedFilename": "STATdx_image_20_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_d74821e7.jpg",
+        "teachingRole": "coronal FLAIR septated nonacute bilateral subdurals and FLAIR chronicity caveat",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-21",
+        "humanLabel": "STATdx image 21",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 21,
+        "sourceQualifiedFilename": "STATdx_image_21_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_ce7b1878.jpg",
+        "teachingRole": "coronal T1 MR bilateral SDHs of differing ages with methemoglobin",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-22",
+        "humanLabel": "STATdx image 22",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 22,
+        "sourceQualifiedFilename": "STATdx_image_22_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_a78f515e.jpg",
+        "teachingRole": "sagittal T1 MR hyperintense extraaxial subacute blood compressing brain",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-23",
+        "humanLabel": "STATdx image 23",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 23,
+        "sourceQualifiedFilename": "STATdx_image_23_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_96e1f72f.jpg",
+        "teachingRole": "axial T1 MR same-patient left sSDH with smaller right isointense SDHs",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-24",
+        "humanLabel": "STATdx image 24",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 24,
+        "sourceQualifiedFilename": "STATdx_image_24_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_e3362426.jpg",
+        "teachingRole": "axial NECT right isodense sSDH exact visual replacement for RadPrimer image 3",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-25",
+        "humanLabel": "STATdx image 25",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 25,
+        "sourceQualifiedFilename": "STATdx_image_25_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_be2cc6b4.jpg",
+        "teachingRole": "bilateral balanced isodense sSDH exact visual replacement for RadPrimer image 4",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "SDX-26",
+        "humanLabel": "STATdx image 26",
+        "sourceKind": "statdx",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 26,
+        "sourceQualifiedFilename": "STATdx_image_26_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_1fdfc854.jpg",
+        "teachingRole": "different-age bilateral SDHs exact visual replacement for RadPrimer image 6",
+        "downloadByDefault": true
+      },
+      {
+        "masterImageId": "RP-09",
+        "humanLabel": "RadPrimer image 9",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 9,
+        "sourceQualifiedFilename": "RadPrimer_image_09_Subacute_Subdural_Hematoma.jpg",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_4c0440ba.jpg",
+        "teachingRole": "unique RadPrimer axial T1 C+ FS membrane-enhancement view without a visually exact STATdx counterpart",
+        "downloadByDefault": true
+      }
+    ],
+    "generatorInstructions": [
+      "Do not generate cards or a lecture from this handoff alone.",
+      "Use packageText as the source-qualified master package.",
+      "Use selectedPrimaryImageIds for default image download and teaching. ArchiveOptionalImageIds are retained for audit/completeness only."
+    ]
+  },
+  "outputs": {
+    "packageTextFile": "master_source_package.txt",
+    "imageRegistryFile": "image_registry.json",
+    "importFile": "master_source_import.json",
+    "reportFile": "master_source_report.md"
+  }
+}

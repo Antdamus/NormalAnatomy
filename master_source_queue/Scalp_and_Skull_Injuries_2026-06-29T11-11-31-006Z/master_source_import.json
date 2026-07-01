@@ -1,0 +1,2879 @@
+{
+  "version": 1,
+  "articleTitle": "Scalp and Skull Injuries",
+  "createdAt": "2026-06-29T11:24:24Z",
+  "packageText": "MASTER SOURCE PACKAGE\nArticle title: Scalp and Skull Injuries\nCanonical hierarchy: All Categories > Basic > Neuroradiology > Brain > Primary Effects of CNS Trauma > Scalp and Skull Injuries\nCanonical deck path: Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Scalp and Skull Injuries\n\nSOURCE-QUALIFIED SYNTHESIS\nThis fused master source uses RadPrimer as the canonical hierarchy/backbone and STATdx as supplemental depth for image examples, modality-specific details, complications, and recognition reinforcement.\n\nCore teaching frame [Both]\n- Scalp and skull trauma should first be sorted into scalp hematoma/laceration, calvarial fracture, skull base fracture, or fracture complication.\n- The high-yield distinction is cephalohematoma versus subgaleal hematoma: cephalohematoma is subperiosteal and does not cross sutures, while subgaleal hematoma lies under the galea/aponeurosis, is not suture-limited, may become circumferential, and can be life-threatening in infants.\n- Skull fractures are rarely present without overlying scalp swelling; absence of soft-tissue swelling strongly favors normal mimics such as sutures, vascular grooves, venous lakes, arachnoid granulations, or wormian bones.\n\nTerminology [Both]\n- Scalp injuries include lacerations and hematomas; lacerations may contain discontinuity, air, or foreign material.\n- Skull injuries are fractures. Linear fractures are sharply marginated; depressed fractures implode fragments inward; elevated fractures rotate/lift a segment; diastatic fractures widen a suture or synchondrosis; growing skull fractures reflect posttraumatic leptomeningeal cyst formation.\n\nImaging approach [RadPrimer backbone, STATdx supplemental examples]\n- CT is the practical modality for acute head trauma and skull fracture detection. Radiographs have no modern role in routine head trauma evaluation.\n- Cephalohematoma appears as a unilateral scalp mass limited by sutures; chronic lesions can calcify.\n- Subgaleal hematoma appears as extensive soft-tissue swelling that can cross sutures, cross midline, and extend around the calvarium.\n- For skull base fractures involving the temporal bone, sphenoid/clivus, carotid canal, jugular foramen, or dural venous sinus, consider CTA/MRA because vascular or venous sinus injury risk is higher.\n- MR is mainly for complications rather than initial acute fracture detection, but it can show complications such as growing skull fracture/leptomeningeal cyst.\n\nClinical and prognosis points [Both]\n- Cephalohematoma occurs in about 1% of newborns, is often related to instrumented or vacuum-assisted delivery, is usually diagnosed clinically, and generally resolves without treatment.\n- Subgaleal hematoma can occur at any age after trauma and can be life-threatening in infants if large or expanding.\n- Linear fractures tend to follow lower-impact force over a broad surface; depressed fractures reflect higher-energy direct impact over a smaller surface.\n- Complications to actively look for include vascular injury, dural/arachnoid laceration with possible CSF leak, cranial nerve injury, and rare growing skull fracture.\n\nImage coverage gate\n- STATdx fully covers the RadPrimer image set with exact visual duplicate representatives in the staged evidence files. RadPrimer images are archived only as optional duplicate/recovery copies; STATdx images are selected as the primary teaching/download set.\n- RP-01 is an exact duplicate of SDX-01 based on actual image_evidence visual review: STATdx SDX-01 is the same visual image/screenshot/content as RP-01: same newborn skull/scalp-layer graphic. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n- RP-02 is an exact duplicate of SDX-02 based on actual image_evidence visual review: STATdx SDX-02 is the same visual image/screenshot/content as RP-02: same newborn bone CT cephalohematoma and linear fracture image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n- RP-03 is an exact duplicate of SDX-03 based on actual image_evidence visual review: STATdx SDX-03 is the same visual image/screenshot/content as RP-03: same same-patient NECT cephalohematoma/epidural hematoma image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n- RP-04 is an exact duplicate of SDX-04 based on actual image_evidence visual review: STATdx SDX-04 is the same visual image/screenshot/content as RP-04: same infant axial NECT large subgaleal hematoma image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n- RP-05 is an exact duplicate of SDX-05 based on actual image_evidence visual review: STATdx SDX-05 is the same visual image/screenshot/content as RP-05: same autopsy exocranial/endocranial skull fracture photograph pair. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n- RP-06 is an exact duplicate of SDX-22 based on actual image_evidence visual review: STATdx SDX-22 is the same visual image/screenshot/content as RP-06: same top-of-calvarium bone CT diastatic sagittal suture fracture image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n- RP-07 is an exact duplicate of SDX-25 based on actual image_evidence visual review: STATdx SDX-25 is the same visual image/screenshot/content as RP-07: same 3D shaded surface display of complex linear/diastatic fractures. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n- RP-08 is an exact duplicate of SDX-23 based on actual image_evidence visual review: STATdx SDX-23 is the same visual image/screenshot/content as RP-08: same axial NECT brain/bone window depressed hammer fracture image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n- RP-09 is an exact duplicate of SDX-09 based on actual image_evidence visual review: STATdx SDX-09 is the same visual image/screenshot/content as RP-09: same axial NECT growing skull fracture with scalloped margins. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n- RP-10 is an exact duplicate of SDX-10 based on actual image_evidence visual review: STATdx SDX-10 is the same visual image/screenshot/content as RP-10: same same-patient axial T2 MR lobulated CSF collection filling growing fracture. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery.\n\nSelected primary image set\n- Download/use by default: SDX-01, SDX-02, SDX-03, SDX-04, SDX-05, SDX-06, SDX-07, SDX-08, SDX-09, SDX-10, SDX-11, SDX-12, SDX-13, SDX-14, SDX-15, SDX-16, SDX-17, SDX-18, SDX-19, SDX-20, SDX-21, SDX-22, SDX-23, SDX-24, SDX-25, SDX-26.\n- Archive optional duplicate/recovery images: RP-01, RP-02, RP-03, RP-04, RP-05, RP-06, RP-07, RP-08, RP-09, RP-10.\n- No source case cluster was intentionally split. STATdx same-patient and companion-image clusters are selected intact.\n\nSource-qualified image notes\n- STATdx image 1: Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma is subperiosteal, focal, and limited by sutures. Subgaleal hematoma is under the scalp aponeurosis, much more extensive, and not bounded by sutures. [STATdx]\n- STATdx image 2: Bone CT in a newborn with a traumatic delivery shows a linear skull fracture and a cephalohematoma overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture . [STATdx]\n- STATdx image 3: NECT in the same patient shows the cephalohematoma . Note the presence of a small intracranial epidural hematoma . [STATdx]\n- STATdx image 4: Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss. [STATdx]\n- STATdx image 5: Autopsied skull shows fatal trauma with exo- (L) & endocranial views (R). A linear fracture extends into the superior sagittal suture , causing diastasis & a subgaleal hematoma that the crosses midline. [STATdx]\n- STATdx image 6: Coronal NECT shows a subgaleal hematoma crossing the midline sagittal suture. Skull base & facial fractures & a left frontal skull fracture are better seen on bone windows. Note the pneumocephalus , indicating a fracture through a paranasal sinus through a paranasal sinus or the calvarium. [STATdx]\n- STATdx image 7: Axial bone CT in a 48-year-old trauma patient shows a left temporal bone skull fracture that also involves the greater wing of the sphenoid . [STATdx]\n- STATdx image 8: Axial NECT in the same patient shows an associated epidural hematoma in the anterior middle cranial fossa. Skull fractures are commonly associated with epidural hematomas. Note the contrecoup subarachnoid hemorrhage in the right temporal region. [STATdx]\n- STATdx image 9: Axial NECT in a patient with a \"growing\" skull fracture shows a widened fracture with scalloped margins . [STATdx]\n- STATdx image 10: Axial T2 MR in the same patient shows a lobulated CSF collection filling the \"growing\" fracture. CSF pulsations have widened and scalloped the calvarium. \"Growing\" skull fractures are difficult to detect in the acute stage and are often identified on follow-up imaging as a progressively widening, unhealing fracture. On CT, they are lucent lesions with rounded, scalloped margins. [STATdx]\n- STATdx image 11: Axial NECT in a newborn with difficult vacuum-assisted delivery shows a small right and a large left cephalohematoma. Neither crosses the midline. [STATdx]\n- STATdx image 12: Coronal NECT in the same patient shows the small right and large left cephalohematomas. The elevated periosteum clearly separates the two blood collections. [STATdx]\n- STATdx image 13: Sagittal NECT shows the left parietal cephalohematoma does not cross the coronal suture . [STATdx]\n- STATdx image 14: Axial T2 MR in an abused infant shows a very large mixed acute/subacute subgaleal hematoma crossing the sutures and extending over the face/orbits. [STATdx]\n- STATdx image 15: More cephalad axial T2 MR shows the mixed-age subgaleal hematoma crossing the midline. [STATdx]\n- STATdx image 16: Axial NECT (left) shows severe scalp laceration with a combination of elevated and depressed skull fractures. Axial bone CT (right) shows that the elevated fracture is literally \"hinged\" away from the calvarium. [STATdx]\n- STATdx image 17: Axial NECT shows a large subgaleal hematoma crossing the sagittal suture. Hyperdense vertex hematoma also crosses the midline, suggesting that the blood is in the epidural space. [STATdx]\n- STATdx image 18: Axial bone CT shows a diastatic fracture of the sagittal suture . A very large subgaleal hematoma extends around the entire circumference of the skull. The superior sagittal sinus is torn, and the intracranial blood seen on soft tissue windows was a vertex venous epidural hematoma. [STATdx]\n- STATdx image 19: Axial NECT in a patient with a blow to the right side of the head shows a mildly depressed fracture . Note that the brain under the fracture appears quite normal. [STATdx]\n- STATdx image 20: Axial NECT with bone algorithm reconstruction and wide window display in the same patient shows a depressed, comminuted skull fracture involving the right squamous temporal bone. Note the subcutaneous air and soft tissue hematoma overlying the fracture. [STATdx]\n- STATdx image 21: Axial NECT in a patient who was hit in the head shows an extensively comminuted, depressed skull fracture . Note the large subgaleal hematoma completely surrounding the entire skull. [STATdx]\n- STATdx image 22: Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures extending into and widening the sagittal suture, causing a diastatic fracture . [STATdx]\n- STATdx image 23: Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture . The brain under the fracture shows only a small cortical contusion . The patient's GCS was 15. [STATdx]\n- STATdx image 24: Axial graphic depicts different basilar skull fractures crossing the petrous apex and clivus as well as extending into the jugular foramen and carotid canal . The potential for vascular injury in such fractures is high. [STATdx]\n- STATdx image 25: 3D shaded surface display in a patient with multiple linear and diastatic skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression of the fractured parietooccipital calvarium that was appreciated only on this SSD. [STATdx]\n- STATdx image 26: Axial bone CT shows a subgaleal hematoma crossing the midline sagittal suture. A left frontal skull fracture is present. Note the pneumocephalus . Subgaleal hematomas are under the scalp aponeurosis, much more extensive, and not bounded by sutures. They are often associated with skull fractures in trauma patients. [STATdx]\n\nRouting and attribution constraints\n- Use metadata.json canonicalHierarchy exactly for routing: All Categories > Basic > Neuroradiology > Brain > Primary Effects of CNS Trauma > Scalp and Skull Injuries.\n- Do not substitute the STATdx breadcrumb for the RadPrimer/metadata hierarchy.\n- Keep RP-05 and SDX-04 style short IDs in machine traceability, not crowded into human-facing prose unless specifically needed for audit.\n",
+  "manifest": {
+    "version": 1,
+    "articleTitle": "Scalp and Skull Injuries",
+    "createdAt": "2026-06-29T11:24:24Z",
+    "sourceIntegrityStatus": "ok",
+    "readyForGeneration": true,
+    "canonicalHierarchy": [
+      "All Categories",
+      "Basic",
+      "Neuroradiology",
+      "Brain",
+      "Primary Effects of CNS Trauma",
+      "Scalp and Skull Injuries"
+    ],
+    "canonicalHierarchySource": {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceFile": "metadata.json",
+      "field": "canonicalHierarchy",
+      "policy": "Copied exactly from metadata.json canonicalHierarchy per request."
+    },
+    "canonicalDeckPath": "Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Scalp and Skull Injuries",
+    "sourcePriority": [
+      "RadPrimer hierarchy/backbone",
+      "STATdx supplemental depth and selected primary image representatives"
+    ],
+    "sourceCoverage": {
+      "radPrimerImageCoverageBySTATdx": [
+        {
+          "radPrimerImageId": "RP-01",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-01",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-01 is the same visual image/screenshot/content as RP-01: same newborn skull/scalp-layer graphic. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-02",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-02",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-02 is the same visual image/screenshot/content as RP-02: same newborn bone CT cephalohematoma and linear fracture image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-03",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-03",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-03 is the same visual image/screenshot/content as RP-03: same same-patient NECT cephalohematoma/epidural hematoma image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-04",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-04",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-04 is the same visual image/screenshot/content as RP-04: same infant axial NECT large subgaleal hematoma image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-05",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-05",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-05 is the same visual image/screenshot/content as RP-05: same autopsy exocranial/endocranial skull fracture photograph pair. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-06",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-22",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-22 is the same visual image/screenshot/content as RP-06: same top-of-calvarium bone CT diastatic sagittal suture fracture image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-07",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-25",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-25 is the same visual image/screenshot/content as RP-07: same 3D shaded surface display of complex linear/diastatic fractures. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-08",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-23",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-23 is the same visual image/screenshot/content as RP-08: same axial NECT brain/bone window depressed hammer fracture image. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-09",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-09",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-09 is the same visual image/screenshot/content as RP-09: same axial NECT growing skull fracture with scalloped margins. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-10",
+          "classification": "exactDuplicate",
+          "statdxCoverageImageId": "SDX-10",
+          "evidenceBasis": "actual image_evidence file visual review; source IDs and SHA-256 hashes were checked and are not shared, so captions alone were not used",
+          "rationale": "STATdx SDX-10 is the same visual image/screenshot/content as RP-10: same same-patient axial T2 MR lobulated CSF collection filling growing fracture. Use the STATdx copy as the selected primary representative and keep the RadPrimer copy only for audit/recovery."
+        }
+      ],
+      "statdxSupplementalImageIds": [
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-24",
+        "SDX-26"
+      ],
+      "sourcePackageComparison": {
+        "RadPrimer_source_package.txt": "Scalp and Skull Injuries",
+        "STATdx_source_package.txt": "Scalp and Skull Injuries",
+        "metadata.json.articleTitle": "Scalp and Skull Injuries",
+        "status": "matched_after_user_title_correction"
+      }
+    },
+    "imageCountBySource": {
+      "RadPrimer": 10,
+      "STATdx": 26
+    },
+    "sourceAttributionRules": [
+      "Use [RadPrimer], [STATdx], and [Both] when source distinction matters.",
+      "Use clean human-facing image labels in packageText, for example RadPrimer image 5 or STATdx image 4.",
+      "Keep RP-05 and SDX-04 in registry, manifest, filenames, and traceability fields rather than duplicating them in narrative prose."
+    ],
+    "selectedPrimaryImageIds": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26"
+    ],
+    "archiveOptionalImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10"
+    ],
+    "sourceSelectionPlan": {
+      "sourceIntegrityStatus": "ok",
+      "readyForGeneration": true,
+      "textToKeep": [
+        "Use metadata.json canonicalHierarchy exactly for package routing.",
+        "Use RadPrimer as the canonical hierarchy/backbone for Scalp and Skull Injuries.",
+        "Use STATdx supplemental depth and image examples for cephalohematoma, subgaleal hematoma, skull fracture patterns, vascular-channel risk, and complications."
+      ],
+      "downweightOrSkip": [
+        "Do not use STATdx breadcrumb for deck routing; metadata.json canonicalHierarchy remains authoritative.",
+        "Do not generate cards or a lecture from this package until the user explicitly asks.",
+        "Do not archive images from caption similarity alone; exact duplicate calls here are based on actual staged image evidence visual review."
+      ],
+      "primaryImageDownloadUseSet": [
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22",
+        "SDX-23",
+        "SDX-24",
+        "SDX-25",
+        "SDX-26"
+      ],
+      "archiveOptionalDuplicates": [
+        "RP-01",
+        "RP-02",
+        "RP-03",
+        "RP-04",
+        "RP-05",
+        "RP-06",
+        "RP-07",
+        "RP-08",
+        "RP-09",
+        "RP-10"
+      ],
+      "imageDownloadPlan": [
+        {
+          "masterImageId": "RP-01",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 1",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/45d77c8f-3b0a-4e23-914b-7d35a048e8d0?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/45d77c8f-3b0a-4e23-914b-7d35a048e8d0?style=xlarge&annotated=true",
+          "plainFilename": "RP-01_RadPrimer_plain_Scalp_and_Skull_Injuries1.jpg",
+          "annotatedFilename": "RP-01_RadPrimer_annotated_Scalp_and_Skull_Injuries1_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_45d77c8f.jpg",
+          "caption": "Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma is subperiosteal, focal, and limited by sutures. Subgaleal hematoma is under the scalp aponeurosis, much more extensive, and not bounded by sutures."
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 2",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/28bb3416-7a28-4a09-a65b-c1e45871124d?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/28bb3416-7a28-4a09-a65b-c1e45871124d?style=xlarge&annotated=true",
+          "plainFilename": "RP-02_RadPrimer_plain_Scalp_and_Skull_Injuries2.jpg",
+          "annotatedFilename": "RP-02_RadPrimer_annotated_Scalp_and_Skull_Injuries2_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_28bb3416.jpg",
+          "caption": "Bone CT in a newborn with a traumatic delivery shows a linear skull fracture and cephalohematoma overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture ."
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 3",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/788a41aa-7585-45e3-a71e-99a85c936365?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/788a41aa-7585-45e3-a71e-99a85c936365?style=xlarge&annotated=true",
+          "plainFilename": "RP-03_RadPrimer_plain_Scalp_and_Skull_Injuries3.jpg",
+          "annotatedFilename": "RP-03_RadPrimer_annotated_Scalp_and_Skull_Injuries3_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_788a41aa.jpg",
+          "caption": "NECT in the same patient shows the cephalohematoma . Note the presence of a small epidural hematoma ."
+        },
+        {
+          "masterImageId": "RP-04",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 4",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/9d5d6d77-14d1-4d6c-a77a-8799903c5b72?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/9d5d6d77-14d1-4d6c-a77a-8799903c5b72?style=xlarge&annotated=true",
+          "plainFilename": "RP-04_RadPrimer_plain_Scalp_and_Skull_Injuries4.jpg",
+          "annotatedFilename": "RP-04_RadPrimer_annotated_Scalp_and_Skull_Injuries4_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_9d5d6d77.jpg",
+          "caption": "Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss."
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 5",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/b570d6cc-63c1-4614-9340-700cd78da3ba?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/b570d6cc-63c1-4614-9340-700cd78da3ba?style=xlarge&annotated=true",
+          "plainFilename": "RP-05_RadPrimer_plain_Scalp_and_Skull_Injuries5.jpg",
+          "annotatedFilename": "RP-05_RadPrimer_annotated_Scalp_and_Skull_Injuries5_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_b570d6cc.jpg",
+          "caption": "Autopsied skull shows fatal trauma with exo- (L) and endocranial views (R). A linear fracture extends into the superior sagittal suture , causing diastasis and a subgaleal hematoma that crosses the midline."
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 6",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/7db35bcf-b68e-416e-ad22-cd77cd2632b1?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/7db35bcf-b68e-416e-ad22-cd77cd2632b1?style=xlarge&annotated=true",
+          "plainFilename": "RP-06_RadPrimer_plain_Scalp_and_Skull_Injuries6.jpg",
+          "annotatedFilename": "RP-06_RadPrimer_annotated_Scalp_and_Skull_Injuries6_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_7db35bcf.jpg",
+          "caption": "Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures extending into and widening the sagittal suture, causing a diastatic fracture ."
+        },
+        {
+          "masterImageId": "RP-07",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 7",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/e07f13e5-e3ee-4e33-8f40-67e9bd14ae4b?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/e07f13e5-e3ee-4e33-8f40-67e9bd14ae4b?style=xlarge&annotated=true",
+          "plainFilename": "RP-07_RadPrimer_plain_Scalp_and_Skull_Injuries7.jpg",
+          "annotatedFilename": "RP-07_RadPrimer_annotated_Scalp_and_Skull_Injuries7_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_e07f13e5.jpg",
+          "caption": "3D-shaded surface display (SSD) in a patient with multiple linear and diastatic skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression of the fractured parietooccipital calvarium that was appreciated only on this SSD."
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 8",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/e25837ff-f875-478b-aeb8-6856b983d913?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/e25837ff-f875-478b-aeb8-6856b983d913?style=xlarge&annotated=true",
+          "plainFilename": "RP-08_RadPrimer_plain_Scalp_and_Skull_Injuries8.jpg",
+          "annotatedFilename": "RP-08_RadPrimer_annotated_Scalp_and_Skull_Injuries8_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_e25837ff.jpg",
+          "caption": "Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture . The brain under the fracture shows only a small cortical contusion . The patient's GCS was 15."
+        },
+        {
+          "masterImageId": "RP-09",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 9",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/e6795362-607e-4be5-988d-7b41781b2a3e?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/e6795362-607e-4be5-988d-7b41781b2a3e?style=xlarge&annotated=true",
+          "plainFilename": "RP-09_RadPrimer_plain_Scalp_and_Skull_Injuries9.jpg",
+          "annotatedFilename": "RP-09_RadPrimer_annotated_Scalp_and_Skull_Injuries9_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_e6795362.jpg",
+          "caption": "Axial NECT in a patient with a \"growing\" skull fracture shows widened fracture with scalloped margins ."
+        },
+        {
+          "masterImageId": "RP-10",
+          "sourceLabel": "RadPrimer",
+          "humanLabel": "RadPrimer image 10",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "plainUrl": "https://app.radprimer.com/images/9ab02dba-7e2d-47ca-8cdc-944d6edcc1ec?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/9ab02dba-7e2d-47ca-8cdc-944d6edcc1ec?style=xlarge&annotated=true",
+          "plainFilename": "RP-10_RadPrimer_plain_Scalp_and_Skull_Injuries10.jpg",
+          "annotatedFilename": "RP-10_RadPrimer_annotated_Scalp_and_Skull_Injuries10_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_9ab02dba.jpg",
+          "caption": "Axial T2 MR in the same patient shows a lobulated CSF collection filling the \"growing\" fracture. CSF pulsations have widened and scalloped the calvarium."
+        },
+        {
+          "masterImageId": "SDX-01",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 1",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/fe5bc17c-3d49-4805-ac89-01799e9ced36?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/fe5bc17c-3d49-4805-ac89-01799e9ced36?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-01_STATdx_plain_Scalp_and_Skull_Injuries1.jpg",
+          "annotatedFilename": "SDX-01_STATdx_annotated_Scalp_and_Skull_Injuries1_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_fe5bc17c.jpg",
+          "caption": "Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma is subperiosteal, focal, and limited by sutures. Subgaleal hematoma is under the scalp aponeurosis, much more extensive, and not bounded by sutures."
+        },
+        {
+          "masterImageId": "SDX-02",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 2",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/ca613e4c-5d6d-48bf-9364-f2b99de38495?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/ca613e4c-5d6d-48bf-9364-f2b99de38495?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-02_STATdx_plain_Scalp_and_Skull_Injuries2.jpg",
+          "annotatedFilename": "SDX-02_STATdx_annotated_Scalp_and_Skull_Injuries2_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_ca613e4c.jpg",
+          "caption": "Bone CT in a newborn with a traumatic delivery shows a linear skull fracture and a cephalohematoma overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture ."
+        },
+        {
+          "masterImageId": "SDX-03",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 3",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/88744fa6-57b3-4a11-9b67-2989df7569cf?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/88744fa6-57b3-4a11-9b67-2989df7569cf?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-03_STATdx_plain_Scalp_and_Skull_Injuries3.jpg",
+          "annotatedFilename": "SDX-03_STATdx_annotated_Scalp_and_Skull_Injuries3_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_88744fa6.jpg",
+          "caption": "NECT in the same patient shows the cephalohematoma . Note the presence of a small intracranial epidural hematoma ."
+        },
+        {
+          "masterImageId": "SDX-04",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 4",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/1b2c7652-b501-46ba-bbc3-ad97a7c59eee?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/1b2c7652-b501-46ba-bbc3-ad97a7c59eee?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-04_STATdx_plain_Scalp_and_Skull_Injuries4.jpg",
+          "annotatedFilename": "SDX-04_STATdx_annotated_Scalp_and_Skull_Injuries4_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_1b2c7652.jpg",
+          "caption": "Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss."
+        },
+        {
+          "masterImageId": "SDX-05",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 5",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/b59b348c-0a97-4faa-8274-4cab32691ef5?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/b59b348c-0a97-4faa-8274-4cab32691ef5?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-05_STATdx_plain_Scalp_and_Skull_Injuries5.jpg",
+          "annotatedFilename": "SDX-05_STATdx_annotated_Scalp_and_Skull_Injuries5_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_b59b348c.jpg",
+          "caption": "Autopsied skull shows fatal trauma with exo- (L) & endocranial views (R). A linear fracture extends into the superior sagittal suture , causing diastasis & a subgaleal hematoma that the crosses midline."
+        },
+        {
+          "masterImageId": "SDX-06",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 6",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/ccc59b76-4536-4c3f-b19b-e01ae5cc1764?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/ccc59b76-4536-4c3f-b19b-e01ae5cc1764?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-06_STATdx_plain_Scalp_and_Skull_Injuries6.jpg",
+          "annotatedFilename": "SDX-06_STATdx_annotated_Scalp_and_Skull_Injuries6_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_ccc59b76.jpg",
+          "caption": "Coronal NECT shows a subgaleal hematoma crossing the midline sagittal suture. Skull base & facial fractures & a left frontal skull fracture are better seen on bone windows. Note the pneumocephalus , indicating a fracture through a paranasal sinus through a paranasal sinus or the calvarium."
+        },
+        {
+          "masterImageId": "SDX-07",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 7",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/466d88e3-f60a-4806-9ad5-4123ba8d3764?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/466d88e3-f60a-4806-9ad5-4123ba8d3764?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-07_STATdx_plain_Scalp_and_Skull_Injuries7.jpg",
+          "annotatedFilename": "SDX-07_STATdx_annotated_Scalp_and_Skull_Injuries7_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_466d88e3.jpg",
+          "caption": "Axial bone CT in a 48-year-old trauma patient shows a left temporal bone skull fracture that also involves the greater wing of the sphenoid ."
+        },
+        {
+          "masterImageId": "SDX-08",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 8",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/06e817ff-8054-4aef-9386-1e62e858dbea?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/06e817ff-8054-4aef-9386-1e62e858dbea?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-08_STATdx_plain_Scalp_and_Skull_Injuries8.jpg",
+          "annotatedFilename": "SDX-08_STATdx_annotated_Scalp_and_Skull_Injuries8_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_06e817ff.jpg",
+          "caption": "Axial NECT in the same patient shows an associated epidural hematoma in the anterior middle cranial fossa. Skull fractures are commonly associated with epidural hematomas. Note the contrecoup subarachnoid hemorrhage in the right temporal region."
+        },
+        {
+          "masterImageId": "SDX-09",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 9",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/8b3f96b7-7ebc-41c8-8a65-6216d2984987?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/8b3f96b7-7ebc-41c8-8a65-6216d2984987?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-09_STATdx_plain_Scalp_and_Skull_Injuries9.jpg",
+          "annotatedFilename": "SDX-09_STATdx_annotated_Scalp_and_Skull_Injuries9_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_8b3f96b7.jpg",
+          "caption": "Axial NECT in a patient with a \"growing\" skull fracture shows a widened fracture with scalloped margins ."
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 10",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/9124a13e-7caa-4d4f-afe9-055a3004cc06?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/9124a13e-7caa-4d4f-afe9-055a3004cc06?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-10_STATdx_plain_Scalp_and_Skull_Injuries10.jpg",
+          "annotatedFilename": "SDX-10_STATdx_annotated_Scalp_and_Skull_Injuries10_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_9124a13e.jpg",
+          "caption": "Axial T2 MR in the same patient shows a lobulated CSF collection filling the \"growing\" fracture. CSF pulsations have widened and scalloped the calvarium. \"Growing\" skull fractures are difficult to detect in the acute stage and are often identified on follow-up imaging as a progressively widening, unhealing fracture. On CT, they are lucent lesions with rounded, scalloped margins."
+        },
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 11",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/b0c3a01e-2b44-4a58-b56c-f6ec4f9359cc?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/b0c3a01e-2b44-4a58-b56c-f6ec4f9359cc?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-11_STATdx_plain_Scalp_and_Skull_Injuries11.jpg",
+          "annotatedFilename": "SDX-11_STATdx_annotated_Scalp_and_Skull_Injuries11_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_b0c3a01e.jpg",
+          "caption": "Axial NECT in a newborn with difficult vacuum-assisted delivery shows a small right and a large left cephalohematoma. Neither crosses the midline."
+        },
+        {
+          "masterImageId": "SDX-12",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 12",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/f07f6430-36b7-4731-8b46-b4bc76a66068?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/f07f6430-36b7-4731-8b46-b4bc76a66068?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-12_STATdx_plain_Scalp_and_Skull_Injuries12.jpg",
+          "annotatedFilename": "SDX-12_STATdx_annotated_Scalp_and_Skull_Injuries12_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_f07f6430.jpg",
+          "caption": "Coronal NECT in the same patient shows the small right and large left cephalohematomas. The elevated periosteum clearly separates the two blood collections."
+        },
+        {
+          "masterImageId": "SDX-13",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 13",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/47a57fc3-625a-48e7-bf63-3fccd42778e2?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/47a57fc3-625a-48e7-bf63-3fccd42778e2?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-13_STATdx_plain_Scalp_and_Skull_Injuries13.jpg",
+          "annotatedFilename": "SDX-13_STATdx_annotated_Scalp_and_Skull_Injuries13_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_47a57fc3.jpg",
+          "caption": "Sagittal NECT shows the left parietal cephalohematoma does not cross the coronal suture ."
+        },
+        {
+          "masterImageId": "SDX-14",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 14",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/76acf6fe-bda4-40c8-aae4-e39880a124c9?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/76acf6fe-bda4-40c8-aae4-e39880a124c9?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-14_STATdx_plain_Scalp_and_Skull_Injuries14.jpg",
+          "annotatedFilename": "SDX-14_STATdx_annotated_Scalp_and_Skull_Injuries14_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_76acf6fe.jpg",
+          "caption": "Axial T2 MR in an abused infant shows a very large mixed acute/subacute subgaleal hematoma crossing the sutures and extending over the face/orbits."
+        },
+        {
+          "masterImageId": "SDX-15",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 15",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/941488b4-3523-4526-bf95-be7d9ea2158d?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/941488b4-3523-4526-bf95-be7d9ea2158d?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-15_STATdx_plain_Scalp_and_Skull_Injuries15.jpg",
+          "annotatedFilename": "SDX-15_STATdx_annotated_Scalp_and_Skull_Injuries15_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_941488b4.jpg",
+          "caption": "More cephalad axial T2 MR shows the mixed-age subgaleal hematoma crossing the midline."
+        },
+        {
+          "masterImageId": "SDX-16",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 16",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/93161f94-58f2-465d-bdf9-1582d7cfab9e?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/93161f94-58f2-465d-bdf9-1582d7cfab9e?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-16_STATdx_plain_Scalp_and_Skull_Injuries16.jpg",
+          "annotatedFilename": "SDX-16_STATdx_annotated_Scalp_and_Skull_Injuries16_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_93161f94.jpg",
+          "caption": "Axial NECT (left) shows severe scalp laceration with a combination of elevated and depressed skull fractures. Axial bone CT (right) shows that the elevated fracture is literally \"hinged\" away from the calvarium."
+        },
+        {
+          "masterImageId": "SDX-17",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 17",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/ca211dc3-7421-4fdd-94d0-2a6f4814a47c?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/ca211dc3-7421-4fdd-94d0-2a6f4814a47c?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-17_STATdx_plain_Scalp_and_Skull_Injuries17.jpg",
+          "annotatedFilename": "SDX-17_STATdx_annotated_Scalp_and_Skull_Injuries17_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_ca211dc3.jpg",
+          "caption": "Axial NECT shows a large subgaleal hematoma crossing the sagittal suture. Hyperdense vertex hematoma also crosses the midline, suggesting that the blood is in the epidural space."
+        },
+        {
+          "masterImageId": "SDX-18",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 18",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/7f6dd2a0-2f1a-40ad-b305-1de593de0a5d?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/7f6dd2a0-2f1a-40ad-b305-1de593de0a5d?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-18_STATdx_plain_Scalp_and_Skull_Injuries18.jpg",
+          "annotatedFilename": "SDX-18_STATdx_annotated_Scalp_and_Skull_Injuries18_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_7f6dd2a0.jpg",
+          "caption": "Axial bone CT shows a diastatic fracture of the sagittal suture . A very large subgaleal hematoma extends around the entire circumference of the skull. The superior sagittal sinus is torn, and the intracranial blood seen on soft tissue windows was a vertex venous epidural hematoma."
+        },
+        {
+          "masterImageId": "SDX-19",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 19",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/2b32a665-b842-4f76-9626-3a3aaccbe527?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/2b32a665-b842-4f76-9626-3a3aaccbe527?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-19_STATdx_plain_Scalp_and_Skull_Injuries19.jpg",
+          "annotatedFilename": "SDX-19_STATdx_annotated_Scalp_and_Skull_Injuries19_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_2b32a665.jpg",
+          "caption": "Axial NECT in a patient with a blow to the right side of the head shows a mildly depressed fracture . Note that the brain under the fracture appears quite normal."
+        },
+        {
+          "masterImageId": "SDX-20",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 20",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/6d7b20a3-931e-4141-9237-3936d00faf64?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/6d7b20a3-931e-4141-9237-3936d00faf64?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-20_STATdx_plain_Scalp_and_Skull_Injuries20.jpg",
+          "annotatedFilename": "SDX-20_STATdx_annotated_Scalp_and_Skull_Injuries20_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_6d7b20a3.jpg",
+          "caption": "Axial NECT with bone algorithm reconstruction and wide window display in the same patient shows a depressed, comminuted skull fracture involving the right squamous temporal bone. Note the subcutaneous air and soft tissue hematoma overlying the fracture."
+        },
+        {
+          "masterImageId": "SDX-21",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 21",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/4e92d662-18a4-4687-9251-15624274f205?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/4e92d662-18a4-4687-9251-15624274f205?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-21_STATdx_plain_Scalp_and_Skull_Injuries21.jpg",
+          "annotatedFilename": "SDX-21_STATdx_annotated_Scalp_and_Skull_Injuries21_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_4e92d662.jpg",
+          "caption": "Axial NECT in a patient who was hit in the head shows an extensively comminuted, depressed skull fracture . Note the large subgaleal hematoma completely surrounding the entire skull."
+        },
+        {
+          "masterImageId": "SDX-22",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 22",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/93423934-5dc7-4b4d-b5cd-0e30a8d862f0?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/93423934-5dc7-4b4d-b5cd-0e30a8d862f0?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-22_STATdx_plain_Scalp_and_Skull_Injuries22.jpg",
+          "annotatedFilename": "SDX-22_STATdx_annotated_Scalp_and_Skull_Injuries22_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_93423934.jpg",
+          "caption": "Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures extending into and widening the sagittal suture, causing a diastatic fracture ."
+        },
+        {
+          "masterImageId": "SDX-23",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 23",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/589dd947-8f86-45fa-a9bf-a72f416843ac?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/589dd947-8f86-45fa-a9bf-a72f416843ac?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-23_STATdx_plain_Scalp_and_Skull_Injuries23.jpg",
+          "annotatedFilename": "SDX-23_STATdx_annotated_Scalp_and_Skull_Injuries23_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_589dd947.jpg",
+          "caption": "Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture . The brain under the fracture shows only a small cortical contusion . The patient's GCS was 15."
+        },
+        {
+          "masterImageId": "SDX-24",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 24",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/d2e2d24b-32f9-440d-8de5-080dfe9c8b09?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/d2e2d24b-32f9-440d-8de5-080dfe9c8b09?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-24_STATdx_plain_Scalp_and_Skull_Injuries24.jpg",
+          "annotatedFilename": "SDX-24_STATdx_annotated_Scalp_and_Skull_Injuries24_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_d2e2d24b.jpg",
+          "caption": "Axial graphic depicts different basilar skull fractures crossing the petrous apex and clivus as well as extending into the jugular foramen and carotid canal . The potential for vascular injury in such fractures is high."
+        },
+        {
+          "masterImageId": "SDX-25",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 25",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/28b67ba4-898a-4d6b-8bae-ff60d96672ea?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/28b67ba4-898a-4d6b-8bae-ff60d96672ea?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-25_STATdx_plain_Scalp_and_Skull_Injuries25.jpg",
+          "annotatedFilename": "SDX-25_STATdx_annotated_Scalp_and_Skull_Injuries25_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_28b67ba4.jpg",
+          "caption": "3D shaded surface display in a patient with multiple linear and diastatic skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression of the fractured parietooccipital calvarium that was appreciated only on this SSD."
+        },
+        {
+          "masterImageId": "SDX-26",
+          "sourceLabel": "STATdx",
+          "humanLabel": "STATdx image 26",
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/e844bd58-42a6-40ed-a17e-d976f0be313b?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/e844bd58-42a6-40ed-a17e-d976f0be313b?annotated=true&size=1000&quality=90",
+          "plainFilename": "SDX-26_STATdx_plain_Scalp_and_Skull_Injuries26.jpg",
+          "annotatedFilename": "SDX-26_STATdx_annotated_Scalp_and_Skull_Injuries26_annot.jpg",
+          "visualEvidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_e844bd58.jpg",
+          "caption": "Axial bone CT shows a subgaleal hematoma crossing the midline sagittal suture. A left frontal skull fracture is present. Note the pneumocephalus . Subgaleal hematomas are under the scalp aponeurosis, much more extensive, and not bounded by sutures. They are often associated with skull fractures in trauma patients."
+        }
+      ],
+      "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable. In this bundle every RadPrimer image is visually covered by an exact STATdx duplicate, so RadPrimer copies are archiveOptionalDuplicate and STATdx copies are the selected primary set.",
+      "duplicateEvidencePolicy": "ExactDuplicate decisions require actual image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. For this bundle, source IDs and SHA-256 hashes are different across sources, but direct visual review of the staged evidence files supports exact duplicate status for the listed pairs. Caption-only similarity was not used.",
+      "caseClusterGuardrails": {
+        "policy": "Treat same-patient, follow-up, adjacent-slice, comparison-view, procedure, and time-lapse groups as atomic teaching clusters unless an explicit split is documented.",
+        "intentionalSplits": [],
+        "clusterSelections": [
+          {
+            "clusterId": "birthTraumaCephalohematoma",
+            "imageIds": [
+              "SDX-02",
+              "SDX-03"
+            ],
+            "status": "selected intact",
+            "reason": "same newborn/same-patient cephalohematoma and intracranial epidural hematoma teaching pair"
+          },
+          {
+            "clusterId": "growingSkullFracture",
+            "imageIds": [
+              "SDX-09",
+              "SDX-10"
+            ],
+            "status": "selected intact",
+            "reason": "same-patient CT/MR growing skull fracture pair"
+          },
+          {
+            "clusterId": "vacuumDeliveryCephalohematomas",
+            "imageIds": [
+              "SDX-11",
+              "SDX-12",
+              "SDX-13"
+            ],
+            "status": "selected intact",
+            "reason": "same newborn axial/coronal/sagittal cephalohematoma cluster"
+          },
+          {
+            "clusterId": "abusiveHeadTraumaSubgaleal",
+            "imageIds": [
+              "SDX-14",
+              "SDX-15"
+            ],
+            "status": "selected intact",
+            "reason": "same infant mixed-age subgaleal hematoma T2 cluster"
+          },
+          {
+            "clusterId": "sagittalSutureDiastasis",
+            "imageIds": [
+              "SDX-17",
+              "SDX-18"
+            ],
+            "status": "selected intact",
+            "reason": "subgaleal hematoma, sagittal suture diastasis, and superior sagittal sinus injury cluster"
+          },
+          {
+            "clusterId": "temporalDepressedFracture",
+            "imageIds": [
+              "SDX-19",
+              "SDX-20"
+            ],
+            "status": "selected intact",
+            "reason": "same-patient depressed temporal fracture brain/bone window companion pair"
+          },
+          {
+            "clusterId": "temporalBoneEpidural",
+            "imageIds": [
+              "SDX-07",
+              "SDX-08"
+            ],
+            "status": "selected intact",
+            "reason": "same-patient temporal bone fracture with epidural hematoma/contrecoup SAH companion pair"
+          }
+        ],
+        "note": "No source case cluster was intentionally split; exact duplicate RadPrimer clusters were replaced by equivalent STATdx cluster members where available."
+      },
+      "generatorInstructions": [
+        "Use this as the fused RadPrimer + STATdx master source for Scalp and Skull Injuries.",
+        "Cite source contributions as [RadPrimer], [STATdx], or [Both] and use clean labels such as STATdx image 11 in prose.",
+        "Download/use only selectedPrimaryImageIds by default; archiveOptionalImageIds are for duplicate recovery or complete-source audit only."
+      ]
+    }
+  },
+  "imageRegistry": [
+    {
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 1",
+      "sourceImageNumber": 1,
+      "caption": "Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma <img src=\"arrow_BS.png\"> is subperiosteal, focal, and limited by sutures. Subgaleal hematoma <img src=\"arrow_WO.png\"> is under the scalp aponeurosis, much more extensive, and not bounded by sutures.",
+      "cleanCaption": "Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma is subperiosteal, focal, and limited by sutures. Subgaleal hematoma is under the scalp aponeurosis, much more extensive, and not bounded by sutures.",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-01_RadPrimer_plain_Scalp_and_Skull_Injuries1.jpg",
+      "annotatedFilename": "RP-01_RadPrimer_annotated_Scalp_and_Skull_Injuries1_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries1.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/45d77c8f-3b0a-4e23-914b-7d35a048e8d0?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/45d77c8f-3b0a-4e23-914b-7d35a048e8d0?style=xlarge&annotated=true",
+      "sourceImageId": "45d77c8f-3b0a-4e23-914b-7d35a048e8d0",
+      "baseName": "Scalp_and_Skull_Injuries1",
+      "traceability": {
+        "shortCode": "RP-01",
+        "sourceImageNumber": 1,
+        "sourceImageId": "45d77c8f-3b0a-4e23-914b-7d35a048e8d0",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_45d77c8f.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/45d77c8f-3b0a-4e23-914b-7d35a048e8d0?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 86514,
+        "sha256": "32f3c32c4e3ee8c4630ac022c82fa9d44dd5bee84c8cdf086fa7c4a16ec0d414",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-01",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-01: same newborn skull/scalp-layer graphic. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 2",
+      "sourceImageNumber": 2,
+      "caption": "Bone CT in a newborn with a traumatic delivery shows a linear skull fracture <img src=\"arrow_BS.png\"> and cephalohematoma <img src=\"arrow_WO.png\"> overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture <img src=\"arrow_WS.png\">.",
+      "cleanCaption": "Bone CT in a newborn with a traumatic delivery shows a linear skull fracture and cephalohematoma overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture .",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-02_RadPrimer_plain_Scalp_and_Skull_Injuries2.jpg",
+      "annotatedFilename": "RP-02_RadPrimer_annotated_Scalp_and_Skull_Injuries2_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries2.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/28bb3416-7a28-4a09-a65b-c1e45871124d?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/28bb3416-7a28-4a09-a65b-c1e45871124d?style=xlarge&annotated=true",
+      "sourceImageId": "28bb3416-7a28-4a09-a65b-c1e45871124d",
+      "baseName": "Scalp_and_Skull_Injuries2",
+      "traceability": {
+        "shortCode": "RP-02",
+        "sourceImageNumber": 2,
+        "sourceImageId": "28bb3416-7a28-4a09-a65b-c1e45871124d",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_28bb3416.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/28bb3416-7a28-4a09-a65b-c1e45871124d?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 72127,
+        "sha256": "bfb424dc55c5c2dd78f0cf4c55e8ffe65c7d191e66f08c6234274f425d39f490",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-02",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-02: same newborn bone CT cephalohematoma and linear fracture image. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 3",
+      "sourceImageNumber": 3,
+      "caption": "NECT in the same patient shows the cephalohematoma <img src=\"arrow_WS.png\">. Note the presence of a small epidural hematoma <img src=\"arrow_WO.png\">.",
+      "cleanCaption": "NECT in the same patient shows the cephalohematoma . Note the presence of a small epidural hematoma .",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-03_RadPrimer_plain_Scalp_and_Skull_Injuries3.jpg",
+      "annotatedFilename": "RP-03_RadPrimer_annotated_Scalp_and_Skull_Injuries3_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries3.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/788a41aa-7585-45e3-a71e-99a85c936365?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/788a41aa-7585-45e3-a71e-99a85c936365?style=xlarge&annotated=true",
+      "sourceImageId": "788a41aa-7585-45e3-a71e-99a85c936365",
+      "baseName": "Scalp_and_Skull_Injuries3",
+      "traceability": {
+        "shortCode": "RP-03",
+        "sourceImageNumber": 3,
+        "sourceImageId": "788a41aa-7585-45e3-a71e-99a85c936365",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_788a41aa.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/788a41aa-7585-45e3-a71e-99a85c936365?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 100154,
+        "sha256": "d63a04ce28940c4e957d3cb96bc1422157918502cb3c69e0711195a783070bd1",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-03",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-03: same same-patient NECT cephalohematoma/epidural hematoma image. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 4",
+      "sourceImageNumber": 4,
+      "caption": "Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma  <img src=\"arrow_WS.png\"> crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss.",
+      "cleanCaption": "Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss.",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-04_RadPrimer_plain_Scalp_and_Skull_Injuries4.jpg",
+      "annotatedFilename": "RP-04_RadPrimer_annotated_Scalp_and_Skull_Injuries4_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries4.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/9d5d6d77-14d1-4d6c-a77a-8799903c5b72?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/9d5d6d77-14d1-4d6c-a77a-8799903c5b72?style=xlarge&annotated=true",
+      "sourceImageId": "9d5d6d77-14d1-4d6c-a77a-8799903c5b72",
+      "baseName": "Scalp_and_Skull_Injuries4",
+      "traceability": {
+        "shortCode": "RP-04",
+        "sourceImageNumber": 4,
+        "sourceImageId": "9d5d6d77-14d1-4d6c-a77a-8799903c5b72",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_9d5d6d77.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/9d5d6d77-14d1-4d6c-a77a-8799903c5b72?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 63992,
+        "sha256": "28715253099c791b616da011bb82e4963c2634b85804405a25c5d3b376c9f723",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-04",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-04: same infant axial NECT large subgaleal hematoma image. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "RP-05",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 5",
+      "sourceImageNumber": 5,
+      "caption": "Autopsied skull shows fatal trauma with exo- (L) and endocranial views (R). A linear fracture  <img src=\"arrow_BS.png\">  extends into the superior sagittal suture  <img src=\"arrow_BO.png\">, causing diastasis and a subgaleal hematoma  <img src=\"arrow_WC.png\">  that crosses the midline.",
+      "cleanCaption": "Autopsied skull shows fatal trauma with exo- (L) and endocranial views (R). A linear fracture extends into the superior sagittal suture , causing diastasis and a subgaleal hematoma that crosses the midline.",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-05_RadPrimer_plain_Scalp_and_Skull_Injuries5.jpg",
+      "annotatedFilename": "RP-05_RadPrimer_annotated_Scalp_and_Skull_Injuries5_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries5.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b570d6cc-63c1-4614-9340-700cd78da3ba?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/b570d6cc-63c1-4614-9340-700cd78da3ba?style=xlarge&annotated=true",
+      "sourceImageId": "b570d6cc-63c1-4614-9340-700cd78da3ba",
+      "baseName": "Scalp_and_Skull_Injuries5",
+      "traceability": {
+        "shortCode": "RP-05",
+        "sourceImageNumber": 5,
+        "sourceImageId": "b570d6cc-63c1-4614-9340-700cd78da3ba",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_b570d6cc.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/b570d6cc-63c1-4614-9340-700cd78da3ba?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 241081,
+        "sha256": "936166973fd48684b7fe246785256d0106ca2797e49cff0f09c3d5e16bf7feac",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-05",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-05: same autopsy exocranial/endocranial skull fracture photograph pair. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "RP-06",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 6",
+      "sourceImageNumber": 6,
+      "caption": "Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures  <img src=\"arrow_WS.png\">  extending into and widening the sagittal suture, causing a diastatic fracture  <img src=\"arrow_WO.png\">.",
+      "cleanCaption": "Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures extending into and widening the sagittal suture, causing a diastatic fracture .",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-06_RadPrimer_plain_Scalp_and_Skull_Injuries6.jpg",
+      "annotatedFilename": "RP-06_RadPrimer_annotated_Scalp_and_Skull_Injuries6_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries6.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/7db35bcf-b68e-416e-ad22-cd77cd2632b1?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/7db35bcf-b68e-416e-ad22-cd77cd2632b1?style=xlarge&annotated=true",
+      "sourceImageId": "7db35bcf-b68e-416e-ad22-cd77cd2632b1",
+      "baseName": "Scalp_and_Skull_Injuries6",
+      "traceability": {
+        "shortCode": "RP-06",
+        "sourceImageNumber": 6,
+        "sourceImageId": "7db35bcf-b68e-416e-ad22-cd77cd2632b1",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_7db35bcf.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/7db35bcf-b68e-416e-ad22-cd77cd2632b1?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 106526,
+        "sha256": "477c56605307d88615a15108d854e9741974a3e0343bdaba98ee877554abbf33",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-22",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-22: same top-of-calvarium bone CT diastatic sagittal suture fracture image. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "RP-07",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 7",
+      "sourceImageNumber": 7,
+      "caption": "3D-shaded surface display (SSD) in a patient with multiple linear <img src=\"arrow_BS.png\"> and diastatic <img src=\"arrow_BO.png\"> skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression <img src=\"arrow_WO.png\"> of the fractured parietooccipital calvarium that was appreciated only on this SSD.",
+      "cleanCaption": "3D-shaded surface display (SSD) in a patient with multiple linear and diastatic skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression of the fractured parietooccipital calvarium that was appreciated only on this SSD.",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-07_RadPrimer_plain_Scalp_and_Skull_Injuries7.jpg",
+      "annotatedFilename": "RP-07_RadPrimer_annotated_Scalp_and_Skull_Injuries7_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries7.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e07f13e5-e3ee-4e33-8f40-67e9bd14ae4b?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/e07f13e5-e3ee-4e33-8f40-67e9bd14ae4b?style=xlarge&annotated=true",
+      "sourceImageId": "e07f13e5-e3ee-4e33-8f40-67e9bd14ae4b",
+      "baseName": "Scalp_and_Skull_Injuries7",
+      "traceability": {
+        "shortCode": "RP-07",
+        "sourceImageNumber": 7,
+        "sourceImageId": "e07f13e5-e3ee-4e33-8f40-67e9bd14ae4b",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_e07f13e5.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/e07f13e5-e3ee-4e33-8f40-67e9bd14ae4b?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 128765,
+        "sha256": "4682a114e063819486dfb515ce9891189be2e3f92ba567c265787d0ec1bff1fb",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-25",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-25: same 3D shaded surface display of complex linear/diastatic fractures. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "RP-08",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 8",
+      "sourceImageNumber": 8,
+      "caption": "Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture <img src=\"arrow_WO.png\">. The brain under the fracture shows only a small cortical contusion <img src=\"arrow_WS.png\">. The patient's GCS was 15.",
+      "cleanCaption": "Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture . The brain under the fracture shows only a small cortical contusion . The patient's GCS was 15.",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-08_RadPrimer_plain_Scalp_and_Skull_Injuries8.jpg",
+      "annotatedFilename": "RP-08_RadPrimer_annotated_Scalp_and_Skull_Injuries8_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries8.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e25837ff-f875-478b-aeb8-6856b983d913?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/e25837ff-f875-478b-aeb8-6856b983d913?style=xlarge&annotated=true",
+      "sourceImageId": "e25837ff-f875-478b-aeb8-6856b983d913",
+      "baseName": "Scalp_and_Skull_Injuries8",
+      "traceability": {
+        "shortCode": "RP-08",
+        "sourceImageNumber": 8,
+        "sourceImageId": "e25837ff-f875-478b-aeb8-6856b983d913",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_e25837ff.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/e25837ff-f875-478b-aeb8-6856b983d913?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 103164,
+        "sha256": "c0771127eb3e94da319bb0e7f00fb4f6a0d3718c7ff714711f683caab62c1d8a",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-23",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-23: same axial NECT brain/bone window depressed hammer fracture image. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "RP-09",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 9",
+      "sourceImageNumber": 9,
+      "caption": "Axial NECT in a patient with a \"growing\" skull fracture shows widened fracture with scalloped margins <img src=\"arrow_BS.png\">.",
+      "cleanCaption": "Axial NECT in a patient with a \"growing\" skull fracture shows widened fracture with scalloped margins .",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-09_RadPrimer_plain_Scalp_and_Skull_Injuries9.jpg",
+      "annotatedFilename": "RP-09_RadPrimer_annotated_Scalp_and_Skull_Injuries9_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries9.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries9_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e6795362-607e-4be5-988d-7b41781b2a3e?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/e6795362-607e-4be5-988d-7b41781b2a3e?style=xlarge&annotated=true",
+      "sourceImageId": "e6795362-607e-4be5-988d-7b41781b2a3e",
+      "baseName": "Scalp_and_Skull_Injuries9",
+      "traceability": {
+        "shortCode": "RP-09",
+        "sourceImageNumber": 9,
+        "sourceImageId": "e6795362-607e-4be5-988d-7b41781b2a3e",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_e6795362.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/e6795362-607e-4be5-988d-7b41781b2a3e?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 68971,
+        "sha256": "e13c37195c78b101fac54ad954a17ac005e4665d63a2e6ae271eced1d96b84d3",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-09",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-09: same axial NECT growing skull fracture with scalloped margins. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "RP-10",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "humanLabel": "RadPrimer image 10",
+      "sourceImageNumber": 10,
+      "caption": "Axial T2 MR in the same patient shows a lobulated CSF collection <img src=\"arrow_WS.png\"> filling the \"growing\" fracture. CSF pulsations have widened and scalloped the calvarium.",
+      "cleanCaption": "Axial T2 MR in the same patient shows a lobulated CSF collection filling the \"growing\" fracture. CSF pulsations have widened and scalloped the calvarium.",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "RP-10_RadPrimer_plain_Scalp_and_Skull_Injuries10.jpg",
+      "annotatedFilename": "RP-10_RadPrimer_annotated_Scalp_and_Skull_Injuries10_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries10.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries10_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/9ab02dba-7e2d-47ca-8cdc-944d6edcc1ec?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/9ab02dba-7e2d-47ca-8cdc-944d6edcc1ec?style=xlarge&annotated=true",
+      "sourceImageId": "9ab02dba-7e2d-47ca-8cdc-944d6edcc1ec",
+      "baseName": "Scalp_and_Skull_Injuries10",
+      "traceability": {
+        "shortCode": "RP-10",
+        "sourceImageNumber": 10,
+        "sourceImageId": "9ab02dba-7e2d-47ca-8cdc-944d6edcc1ec",
+        "sourcePackage": "RadPrimer_source_package.txt",
+        "metadataFile": "RadPrimer_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_9ab02dba.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/9ab02dba-7e2d-47ca-8cdc-944d6edcc1ec?style=xlarge&annotated=false",
+        "downloaded": true,
+        "fileSizeBytes": 82056,
+        "sha256": "c6b1d133bed631b23e598796f23b73a140cac9fc5b2660cc7c6d5e339bf5c87d",
+        "width": 900,
+        "height": 900
+      },
+      "coverageClassification": "exactDuplicate",
+      "duplicateOfImageId": "SDX-10",
+      "duplicateEvidenceBasis": "Actual image_evidence visual review shows the same visual content as SDX-10: same same-patient axial T2 MR lobulated CSF collection filling growing fracture. SHA-256 hashes and stable source image IDs differ, so byte identity/source-ID matching was not used; classification rests on direct visual sameness of the staged evidence files."
+    },
+    {
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 1",
+      "sourceImageNumber": 1,
+      "caption": "Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma <img src=\"arrow_BS.png\"> is subperiosteal, focal, and limited by sutures. Subgaleal hematoma <img src=\"arrow_WO.png\"> is under the scalp aponeurosis, much more extensive, and not bounded by sutures.",
+      "cleanCaption": "Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma is subperiosteal, focal, and limited by sutures. Subgaleal hematoma is under the scalp aponeurosis, much more extensive, and not bounded by sutures.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "anatomyMechanismGraphic"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-01_STATdx_plain_Scalp_and_Skull_Injuries1.jpg",
+      "annotatedFilename": "SDX-01_STATdx_annotated_Scalp_and_Skull_Injuries1_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries1.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries1_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/fe5bc17c-3d49-4805-ac89-01799e9ced36?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/fe5bc17c-3d49-4805-ac89-01799e9ced36?annotated=true&size=1000&quality=90",
+      "sourceImageId": "fe5bc17c-3d49-4805-ac89-01799e9ced36",
+      "baseName": "Scalp_and_Skull_Injuries1",
+      "traceability": {
+        "shortCode": "SDX-01",
+        "sourceImageNumber": 1,
+        "sourceImageId": "fe5bc17c-3d49-4805-ac89-01799e9ced36",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_fe5bc17c.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/fe5bc17c-3d49-4805-ac89-01799e9ced36?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 101143,
+        "sha256": "948398ed48002fa2c6debf3a02cfdfdcc66821de1c24a8b9553ee2cf9b32640c",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-01."
+    },
+    {
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 2",
+      "sourceImageNumber": 2,
+      "caption": "Bone CT in a newborn with a traumatic delivery shows a linear skull fracture <img src=\"arrow_BS.png\"> and a cephalohematoma <img src=\"arrow_WO.png\"> overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture <img src=\"arrow_WS.png\">.",
+      "cleanCaption": "Bone CT in a newborn with a traumatic delivery shows a linear skull fracture and a cephalohematoma overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "cephalohematoma",
+        "fractureAssociation",
+        "caseCluster:birthTraumaCephalohematoma"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-02_STATdx_plain_Scalp_and_Skull_Injuries2.jpg",
+      "annotatedFilename": "SDX-02_STATdx_annotated_Scalp_and_Skull_Injuries2_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries2.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries2_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/ca613e4c-5d6d-48bf-9364-f2b99de38495?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/ca613e4c-5d6d-48bf-9364-f2b99de38495?annotated=true&size=1000&quality=90",
+      "sourceImageId": "ca613e4c-5d6d-48bf-9364-f2b99de38495",
+      "baseName": "Scalp_and_Skull_Injuries2",
+      "traceability": {
+        "shortCode": "SDX-02",
+        "sourceImageNumber": 2,
+        "sourceImageId": "ca613e4c-5d6d-48bf-9364-f2b99de38495",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_ca613e4c.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/ca613e4c-5d6d-48bf-9364-f2b99de38495?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 91747,
+        "sha256": "9c33e348af8e66d40bd02d571875d86f040ddf768609539bbcf23d6912943564",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-02."
+    },
+    {
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 3",
+      "sourceImageNumber": 3,
+      "caption": "NECT in the same patient shows the cephalohematoma <img src=\"arrow_WS.png\">. Note the presence of a small intracranial epidural hematoma <img src=\"arrow_WO.png\">.",
+      "cleanCaption": "NECT in the same patient shows the cephalohematoma . Note the presence of a small intracranial epidural hematoma .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "epiduralAssociation",
+        "caseCluster:birthTraumaCephalohematoma"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-03_STATdx_plain_Scalp_and_Skull_Injuries3.jpg",
+      "annotatedFilename": "SDX-03_STATdx_annotated_Scalp_and_Skull_Injuries3_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries3.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries3_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/88744fa6-57b3-4a11-9b67-2989df7569cf?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/88744fa6-57b3-4a11-9b67-2989df7569cf?annotated=true&size=1000&quality=90",
+      "sourceImageId": "88744fa6-57b3-4a11-9b67-2989df7569cf",
+      "baseName": "Scalp_and_Skull_Injuries3",
+      "traceability": {
+        "shortCode": "SDX-03",
+        "sourceImageNumber": 3,
+        "sourceImageId": "88744fa6-57b3-4a11-9b67-2989df7569cf",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_88744fa6.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/88744fa6-57b3-4a11-9b67-2989df7569cf?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 112271,
+        "sha256": "8d5b37ac78caa3a973b04ca3620c065b7aaf020101ea10abe3a0d2e98fe71e50",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-03."
+    },
+    {
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 4",
+      "sourceImageNumber": 4,
+      "caption": "Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma  <img src=\"arrow_WS.png\"> crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss.",
+      "cleanCaption": "Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "subgalealHematoma",
+        "lifeThreateningInfantExample"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-04_STATdx_plain_Scalp_and_Skull_Injuries4.jpg",
+      "annotatedFilename": "SDX-04_STATdx_annotated_Scalp_and_Skull_Injuries4_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries4.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries4_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/1b2c7652-b501-46ba-bbc3-ad97a7c59eee?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/1b2c7652-b501-46ba-bbc3-ad97a7c59eee?annotated=true&size=1000&quality=90",
+      "sourceImageId": "1b2c7652-b501-46ba-bbc3-ad97a7c59eee",
+      "baseName": "Scalp_and_Skull_Injuries4",
+      "traceability": {
+        "shortCode": "SDX-04",
+        "sourceImageNumber": 4,
+        "sourceImageId": "1b2c7652-b501-46ba-bbc3-ad97a7c59eee",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_1b2c7652.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/1b2c7652-b501-46ba-bbc3-ad97a7c59eee?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 72840,
+        "sha256": "a72765383ec08d00e8d086eef793f85ffbb5626c699f0c91fbff8d0ba4f63290",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-04."
+    },
+    {
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 5",
+      "sourceImageNumber": 5,
+      "caption": "Autopsied skull shows fatal trauma with exo- (L) & endocranial views (R). A linear fracture <img src=\"arrow_BS.png\"> extends into the superior sagittal suture <img src=\"arrow_BO.png\">, causing diastasis & a subgaleal hematoma <img src=\"arrow_WC.png\"> that the crosses midline.",
+      "cleanCaption": "Autopsied skull shows fatal trauma with exo- (L) & endocranial views (R). A linear fracture extends into the superior sagittal suture , causing diastasis & a subgaleal hematoma that the crosses midline.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "autopsyCorrelation",
+        "diastaticFracture"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-05_STATdx_plain_Scalp_and_Skull_Injuries5.jpg",
+      "annotatedFilename": "SDX-05_STATdx_annotated_Scalp_and_Skull_Injuries5_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries5.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries5_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/b59b348c-0a97-4faa-8274-4cab32691ef5?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/b59b348c-0a97-4faa-8274-4cab32691ef5?annotated=true&size=1000&quality=90",
+      "sourceImageId": "b59b348c-0a97-4faa-8274-4cab32691ef5",
+      "baseName": "Scalp_and_Skull_Injuries5",
+      "traceability": {
+        "shortCode": "SDX-05",
+        "sourceImageNumber": 5,
+        "sourceImageId": "b59b348c-0a97-4faa-8274-4cab32691ef5",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_b59b348c.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/b59b348c-0a97-4faa-8274-4cab32691ef5?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 323606,
+        "sha256": "f6e1ca59ff1eb6d8e5e9e1065288a02642dd5d4d3599838cb14a98924bceedad",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-05."
+    },
+    {
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 6",
+      "sourceImageNumber": 6,
+      "caption": "Coronal NECT shows a subgaleal hematoma <img src=\"arrow_CS.png\"> crossing the midline sagittal suture. Skull base <img src=\"arrow_CO.png\"> & facial fractures & a left frontal skull fracture are better seen on bone windows. Note the pneumocephalus <img src=\"arrow_WS.png\">, indicating a fracture through a paranasal sinus through a paranasal sinus or the calvarium.",
+      "cleanCaption": "Coronal NECT shows a subgaleal hematoma crossing the midline sagittal suture. Skull base & facial fractures & a left frontal skull fracture are better seen on bone windows. Note the pneumocephalus , indicating a fracture through a paranasal sinus through a paranasal sinus or the calvarium.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "subgalealHematoma",
+        "skullBaseFacialFractures",
+        "pneumocephalus"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-06_STATdx_plain_Scalp_and_Skull_Injuries6.jpg",
+      "annotatedFilename": "SDX-06_STATdx_annotated_Scalp_and_Skull_Injuries6_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries6.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries6_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/ccc59b76-4536-4c3f-b19b-e01ae5cc1764?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/ccc59b76-4536-4c3f-b19b-e01ae5cc1764?annotated=true&size=1000&quality=90",
+      "sourceImageId": "ccc59b76-4536-4c3f-b19b-e01ae5cc1764",
+      "baseName": "Scalp_and_Skull_Injuries6",
+      "traceability": {
+        "shortCode": "SDX-06",
+        "sourceImageNumber": 6,
+        "sourceImageId": "ccc59b76-4536-4c3f-b19b-e01ae5cc1764",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_ccc59b76.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/ccc59b76-4536-4c3f-b19b-e01ae5cc1764?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 93764,
+        "sha256": "ace5c866c1136e0b01463e735df7b68115bd49f140e0aa9abd082afcc2d36a75",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 7",
+      "sourceImageNumber": 7,
+      "caption": "Axial bone CT in a 48-year-old trauma patient shows a left temporal bone skull fracture <img src=\"arrow_CS.png\"> that also involves the greater wing of the sphenoid <img src=\"arrow_WS.png\">.",
+      "cleanCaption": "Axial bone CT in a 48-year-old trauma patient shows a left temporal bone skull fracture that also involves the greater wing of the sphenoid .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "temporalBoneFracture",
+        "caseCluster:temporalBoneEpidural"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-07_STATdx_plain_Scalp_and_Skull_Injuries7.jpg",
+      "annotatedFilename": "SDX-07_STATdx_annotated_Scalp_and_Skull_Injuries7_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries7.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries7_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/466d88e3-f60a-4806-9ad5-4123ba8d3764?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/466d88e3-f60a-4806-9ad5-4123ba8d3764?annotated=true&size=1000&quality=90",
+      "sourceImageId": "466d88e3-f60a-4806-9ad5-4123ba8d3764",
+      "baseName": "Scalp_and_Skull_Injuries7",
+      "traceability": {
+        "shortCode": "SDX-07",
+        "sourceImageNumber": 7,
+        "sourceImageId": "466d88e3-f60a-4806-9ad5-4123ba8d3764",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_466d88e3.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/466d88e3-f60a-4806-9ad5-4123ba8d3764?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 130773,
+        "sha256": "776afa2aa3e74c302e6aa73d88dc1d281abd7e2795b2b75971ff7d1d16b5fb6c",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 8",
+      "sourceImageNumber": 8,
+      "caption": "Axial NECT in the same patient shows an associated epidural hematoma <img src=\"arrow_CS.png\"> in the anterior middle cranial fossa. Skull fractures are commonly associated with epidural hematomas. Note the contrecoup subarachnoid hemorrhage <img src=\"arrow_WS.png\"> in the right temporal region.",
+      "cleanCaption": "Axial NECT in the same patient shows an associated epidural hematoma in the anterior middle cranial fossa. Skull fractures are commonly associated with epidural hematomas. Note the contrecoup subarachnoid hemorrhage in the right temporal region.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "epiduralHematoma",
+        "contreCoupSAH",
+        "caseCluster:temporalBoneEpidural"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-08_STATdx_plain_Scalp_and_Skull_Injuries8.jpg",
+      "annotatedFilename": "SDX-08_STATdx_annotated_Scalp_and_Skull_Injuries8_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries8.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries8_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/06e817ff-8054-4aef-9386-1e62e858dbea?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/06e817ff-8054-4aef-9386-1e62e858dbea?annotated=true&size=1000&quality=90",
+      "sourceImageId": "06e817ff-8054-4aef-9386-1e62e858dbea",
+      "baseName": "Scalp_and_Skull_Injuries8",
+      "traceability": {
+        "shortCode": "SDX-08",
+        "sourceImageNumber": 8,
+        "sourceImageId": "06e817ff-8054-4aef-9386-1e62e858dbea",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_06e817ff.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/06e817ff-8054-4aef-9386-1e62e858dbea?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 105865,
+        "sha256": "226e5e57c02b2a96dce1a25285a0a00966a85972afed302e9f5513caeae154fd",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 9",
+      "sourceImageNumber": 9,
+      "caption": "Axial NECT in a patient with a \"growing\" skull fracture shows a widened fracture with scalloped margins <img src=\"arrow_BS.png\">.",
+      "cleanCaption": "Axial NECT in a patient with a \"growing\" skull fracture shows a widened fracture with scalloped margins .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "growingSkullFracture",
+        "caseCluster:growingSkullFracture"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-09_STATdx_plain_Scalp_and_Skull_Injuries9.jpg",
+      "annotatedFilename": "SDX-09_STATdx_annotated_Scalp_and_Skull_Injuries9_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries9.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries9_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/8b3f96b7-7ebc-41c8-8a65-6216d2984987?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/8b3f96b7-7ebc-41c8-8a65-6216d2984987?annotated=true&size=1000&quality=90",
+      "sourceImageId": "8b3f96b7-7ebc-41c8-8a65-6216d2984987",
+      "baseName": "Scalp_and_Skull_Injuries9",
+      "traceability": {
+        "shortCode": "SDX-09",
+        "sourceImageNumber": 9,
+        "sourceImageId": "8b3f96b7-7ebc-41c8-8a65-6216d2984987",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_8b3f96b7.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/8b3f96b7-7ebc-41c8-8a65-6216d2984987?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 86770,
+        "sha256": "ff24774162b0e39d7bb0cff4f824cd0d14ca8135987767c17f38f0e6e7a98690",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-09."
+    },
+    {
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 10",
+      "sourceImageNumber": 10,
+      "caption": "Axial T2 MR in the same patient shows a lobulated CSF collection <img src=\"arrow_WS.png\"> filling the \"growing\" fracture. CSF pulsations have widened and scalloped the calvarium. \"Growing\" skull fractures are difficult to detect in the acute stage and are often identified on follow-up imaging as a progressively widening, unhealing fracture. On CT, they are lucent lesions with rounded, scalloped margins.",
+      "cleanCaption": "Axial T2 MR in the same patient shows a lobulated CSF collection filling the \"growing\" fracture. CSF pulsations have widened and scalloped the calvarium. \"Growing\" skull fractures are difficult to detect in the acute stage and are often identified on follow-up imaging as a progressively widening, unhealing fracture. On CT, they are lucent lesions with rounded, scalloped margins.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "growingSkullFracture",
+        "t2Companion",
+        "caseCluster:growingSkullFracture"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-10_STATdx_plain_Scalp_and_Skull_Injuries10.jpg",
+      "annotatedFilename": "SDX-10_STATdx_annotated_Scalp_and_Skull_Injuries10_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries10.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries10_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/9124a13e-7caa-4d4f-afe9-055a3004cc06?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/9124a13e-7caa-4d4f-afe9-055a3004cc06?annotated=true&size=1000&quality=90",
+      "sourceImageId": "9124a13e-7caa-4d4f-afe9-055a3004cc06",
+      "baseName": "Scalp_and_Skull_Injuries10",
+      "traceability": {
+        "shortCode": "SDX-10",
+        "sourceImageNumber": 10,
+        "sourceImageId": "9124a13e-7caa-4d4f-afe9-055a3004cc06",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_9124a13e.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/9124a13e-7caa-4d4f-afe9-055a3004cc06?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 96461,
+        "sha256": "9c885c41905a5e9e16b9c8a4161ccd026eb983b64e4a7bad9b556cfb27edc6fc",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-10."
+    },
+    {
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 11",
+      "sourceImageNumber": 11,
+      "caption": "Axial NECT in a newborn with difficult vacuum-assisted delivery shows a small right <img src=\"arrow_WS.png\"> and a large left <img src=\"arrow_WC.png\"> cephalohematoma. Neither crosses the midline.",
+      "cleanCaption": "Axial NECT in a newborn with difficult vacuum-assisted delivery shows a small right and a large left cephalohematoma. Neither crosses the midline.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "cephalohematoma",
+        "caseCluster:vacuumDeliveryCephalohematomas"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-11_STATdx_plain_Scalp_and_Skull_Injuries11.jpg",
+      "annotatedFilename": "SDX-11_STATdx_annotated_Scalp_and_Skull_Injuries11_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries11.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries11_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/b0c3a01e-2b44-4a58-b56c-f6ec4f9359cc?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/b0c3a01e-2b44-4a58-b56c-f6ec4f9359cc?annotated=true&size=1000&quality=90",
+      "sourceImageId": "b0c3a01e-2b44-4a58-b56c-f6ec4f9359cc",
+      "baseName": "Scalp_and_Skull_Injuries11",
+      "traceability": {
+        "shortCode": "SDX-11",
+        "sourceImageNumber": 11,
+        "sourceImageId": "b0c3a01e-2b44-4a58-b56c-f6ec4f9359cc",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_b0c3a01e.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/b0c3a01e-2b44-4a58-b56c-f6ec4f9359cc?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 74271,
+        "sha256": "1a46523c4be564dd37490a6fd0eb3e793bd5f5c4aab3ab7fe9097a00180b9f98",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 12",
+      "sourceImageNumber": 12,
+      "caption": "Coronal NECT in the same patient shows the small right <img src=\"arrow_WS.png\">  and large left  <img src=\"arrow_WC.png\"> cephalohematomas. The elevated periosteum <img src=\"arrow_WO.png\"> clearly separates the two blood collections.",
+      "cleanCaption": "Coronal NECT in the same patient shows the small right and large left cephalohematomas. The elevated periosteum clearly separates the two blood collections.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "cephalohematoma",
+        "caseCluster:vacuumDeliveryCephalohematomas"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-12_STATdx_plain_Scalp_and_Skull_Injuries12.jpg",
+      "annotatedFilename": "SDX-12_STATdx_annotated_Scalp_and_Skull_Injuries12_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries12.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries12_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/f07f6430-36b7-4731-8b46-b4bc76a66068?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/f07f6430-36b7-4731-8b46-b4bc76a66068?annotated=true&size=1000&quality=90",
+      "sourceImageId": "f07f6430-36b7-4731-8b46-b4bc76a66068",
+      "baseName": "Scalp_and_Skull_Injuries12",
+      "traceability": {
+        "shortCode": "SDX-12",
+        "sourceImageNumber": 12,
+        "sourceImageId": "f07f6430-36b7-4731-8b46-b4bc76a66068",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_f07f6430.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/f07f6430-36b7-4731-8b46-b4bc76a66068?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 111511,
+        "sha256": "530a1666cd2c91618f8612956f458777d732afa75ba247720192f0a51dfd3db5",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 13",
+      "sourceImageNumber": 13,
+      "caption": "Sagittal NECT shows the left parietal cephalohematoma  <img src=\"arrow_WC.png\">  does not cross the coronal suture  <img src=\"arrow_WO.png\">.",
+      "cleanCaption": "Sagittal NECT shows the left parietal cephalohematoma does not cross the coronal suture .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "cephalohematoma",
+        "sutureBoundary",
+        "caseCluster:vacuumDeliveryCephalohematomas"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-13_STATdx_plain_Scalp_and_Skull_Injuries13.jpg",
+      "annotatedFilename": "SDX-13_STATdx_annotated_Scalp_and_Skull_Injuries13_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries13.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries13_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/47a57fc3-625a-48e7-bf63-3fccd42778e2?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/47a57fc3-625a-48e7-bf63-3fccd42778e2?annotated=true&size=1000&quality=90",
+      "sourceImageId": "47a57fc3-625a-48e7-bf63-3fccd42778e2",
+      "baseName": "Scalp_and_Skull_Injuries13",
+      "traceability": {
+        "shortCode": "SDX-13",
+        "sourceImageNumber": 13,
+        "sourceImageId": "47a57fc3-625a-48e7-bf63-3fccd42778e2",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_47a57fc3.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/47a57fc3-625a-48e7-bf63-3fccd42778e2?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 110313,
+        "sha256": "6ef06f1c34cc30ebd0e16732dd4b27a121948c3882087105b55ad5f3dabe8b8f",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 14",
+      "sourceImageNumber": 14,
+      "caption": "Axial T2 MR in an abused infant shows a very large mixed acute/subacute subgaleal hematoma <img src=\"arrow_WO.png\"> crossing the sutures and extending over the face/orbits.",
+      "cleanCaption": "Axial T2 MR in an abused infant shows a very large mixed acute/subacute subgaleal hematoma crossing the sutures and extending over the face/orbits.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "subgalealHematoma",
+        "mixedAgeBlood",
+        "caseCluster:abusiveHeadTraumaSubgaleal"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-14_STATdx_plain_Scalp_and_Skull_Injuries14.jpg",
+      "annotatedFilename": "SDX-14_STATdx_annotated_Scalp_and_Skull_Injuries14_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries14.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries14_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/76acf6fe-bda4-40c8-aae4-e39880a124c9?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/76acf6fe-bda4-40c8-aae4-e39880a124c9?annotated=true&size=1000&quality=90",
+      "sourceImageId": "76acf6fe-bda4-40c8-aae4-e39880a124c9",
+      "baseName": "Scalp_and_Skull_Injuries14",
+      "traceability": {
+        "shortCode": "SDX-14",
+        "sourceImageNumber": 14,
+        "sourceImageId": "76acf6fe-bda4-40c8-aae4-e39880a124c9",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_76acf6fe.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/76acf6fe-bda4-40c8-aae4-e39880a124c9?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 111044,
+        "sha256": "57f295785086e82a3dd53b9cbcdb6eb3fc95b2e7c76dcc71a6d4549f3af238fc",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 15",
+      "sourceImageNumber": 15,
+      "caption": "More cephalad axial T2 MR shows the mixed-age subgaleal hematoma crossing the midline.",
+      "cleanCaption": "More cephalad axial T2 MR shows the mixed-age subgaleal hematoma crossing the midline.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "subgalealHematoma",
+        "midlineCrossing",
+        "caseCluster:abusiveHeadTraumaSubgaleal"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-15_STATdx_plain_Scalp_and_Skull_Injuries15.jpg",
+      "annotatedFilename": "SDX-15_STATdx_annotated_Scalp_and_Skull_Injuries15_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries15.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries15_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/941488b4-3523-4526-bf95-be7d9ea2158d?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/941488b4-3523-4526-bf95-be7d9ea2158d?annotated=true&size=1000&quality=90",
+      "sourceImageId": "941488b4-3523-4526-bf95-be7d9ea2158d",
+      "baseName": "Scalp_and_Skull_Injuries15",
+      "traceability": {
+        "shortCode": "SDX-15",
+        "sourceImageNumber": 15,
+        "sourceImageId": "941488b4-3523-4526-bf95-be7d9ea2158d",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_941488b4.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/941488b4-3523-4526-bf95-be7d9ea2158d?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 114039,
+        "sha256": "bf822ffeda6bb24b3d80f9715141acbbc0f6ba1b9e8027c015c596d55724d335",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 16",
+      "sourceImageNumber": 16,
+      "caption": "Axial NECT (left) shows severe scalp laceration <img src=\"arrow_WO.png\"> with a combination of elevated <img src=\"arrow_WC.png\"> and depressed <img src=\"arrow_BC.png\"> skull fractures. Axial bone CT (right) shows that the elevated fracture <img src=\"arrow_WS.png\"> is literally \"hinged\" away from the calvarium.",
+      "cleanCaption": "Axial NECT (left) shows severe scalp laceration with a combination of elevated and depressed skull fractures. Axial bone CT (right) shows that the elevated fracture is literally \"hinged\" away from the calvarium.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "alternateExample",
+        "scalpLaceration",
+        "elevatedFracture",
+        "depressedFracture"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-16_STATdx_plain_Scalp_and_Skull_Injuries16.jpg",
+      "annotatedFilename": "SDX-16_STATdx_annotated_Scalp_and_Skull_Injuries16_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries16.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries16_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/93161f94-58f2-465d-bdf9-1582d7cfab9e?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/93161f94-58f2-465d-bdf9-1582d7cfab9e?annotated=true&size=1000&quality=90",
+      "sourceImageId": "93161f94-58f2-465d-bdf9-1582d7cfab9e",
+      "baseName": "Scalp_and_Skull_Injuries16",
+      "traceability": {
+        "shortCode": "SDX-16",
+        "sourceImageNumber": 16,
+        "sourceImageId": "93161f94-58f2-465d-bdf9-1582d7cfab9e",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_93161f94.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/93161f94-58f2-465d-bdf9-1582d7cfab9e?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 140216,
+        "sha256": "9a0673dd16fbffe7abb8a941e1ca01a61dd715d1aaca9dbf0a325745616b384e",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-17",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 17",
+      "sourceImageNumber": 17,
+      "caption": "Axial NECT shows a large subgaleal hematoma <img src=\"arrow_WO.png\"> crossing the sagittal suture. Hyperdense vertex hematoma <img src=\"arrow_BS.png\"> also crosses the midline, suggesting that the blood is in the epidural space.",
+      "cleanCaption": "Axial NECT shows a large subgaleal hematoma crossing the sagittal suture. Hyperdense vertex hematoma also crosses the midline, suggesting that the blood is in the epidural space.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "subgalealHematoma",
+        "epiduralVertexHematoma",
+        "caseCluster:sagittalSutureDiastasis"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-17_STATdx_plain_Scalp_and_Skull_Injuries17.jpg",
+      "annotatedFilename": "SDX-17_STATdx_annotated_Scalp_and_Skull_Injuries17_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries17.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries17_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/ca211dc3-7421-4fdd-94d0-2a6f4814a47c?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/ca211dc3-7421-4fdd-94d0-2a6f4814a47c?annotated=true&size=1000&quality=90",
+      "sourceImageId": "ca211dc3-7421-4fdd-94d0-2a6f4814a47c",
+      "baseName": "Scalp_and_Skull_Injuries17",
+      "traceability": {
+        "shortCode": "SDX-17",
+        "sourceImageNumber": 17,
+        "sourceImageId": "ca211dc3-7421-4fdd-94d0-2a6f4814a47c",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_ca211dc3.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/ca211dc3-7421-4fdd-94d0-2a6f4814a47c?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 63856,
+        "sha256": "982d305bc9a63fbaaad3e676db52ef067eb86acb6f860ac9bdad86605f5143fd",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 18",
+      "sourceImageNumber": 18,
+      "caption": "Axial bone CT shows a diastatic fracture of the sagittal suture <img src=\"arrow_BS.png\">. A very large subgaleal hematoma <img src=\"arrow_WO.png\"> extends around the entire circumference of the skull. The superior sagittal sinus is torn, and the intracranial blood seen on soft tissue windows was a vertex venous epidural hematoma.",
+      "cleanCaption": "Axial bone CT shows a diastatic fracture of the sagittal suture . A very large subgaleal hematoma extends around the entire circumference of the skull. The superior sagittal sinus is torn, and the intracranial blood seen on soft tissue windows was a vertex venous epidural hematoma.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "diastaticSagittalFracture",
+        "superiorSagittalSinusTear",
+        "caseCluster:sagittalSutureDiastasis"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-18_STATdx_plain_Scalp_and_Skull_Injuries18.jpg",
+      "annotatedFilename": "SDX-18_STATdx_annotated_Scalp_and_Skull_Injuries18_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries18.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries18_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/7f6dd2a0-2f1a-40ad-b305-1de593de0a5d?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/7f6dd2a0-2f1a-40ad-b305-1de593de0a5d?annotated=true&size=1000&quality=90",
+      "sourceImageId": "7f6dd2a0-2f1a-40ad-b305-1de593de0a5d",
+      "baseName": "Scalp_and_Skull_Injuries18",
+      "traceability": {
+        "shortCode": "SDX-18",
+        "sourceImageNumber": 18,
+        "sourceImageId": "7f6dd2a0-2f1a-40ad-b305-1de593de0a5d",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_7f6dd2a0.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/7f6dd2a0-2f1a-40ad-b305-1de593de0a5d?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 66587,
+        "sha256": "0f226ffea1ca67d8d57b95ea85113fa5c49094f0b70dfaadd6c94814c7f1b921",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-19",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 19",
+      "sourceImageNumber": 19,
+      "caption": "Axial NECT in a patient with a blow to the right side of the head shows a mildly depressed fracture <img src=\"arrow_WS.png\">. Note that the brain under the fracture appears quite normal.",
+      "cleanCaption": "Axial NECT in a patient with a blow to the right side of the head shows a mildly depressed fracture . Note that the brain under the fracture appears quite normal.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "alternateExample",
+        "depressedFracture",
+        "caseCluster:temporalDepressedFracture"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-19_STATdx_plain_Scalp_and_Skull_Injuries19.jpg",
+      "annotatedFilename": "SDX-19_STATdx_annotated_Scalp_and_Skull_Injuries19_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries19.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries19_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/2b32a665-b842-4f76-9626-3a3aaccbe527?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/2b32a665-b842-4f76-9626-3a3aaccbe527?annotated=true&size=1000&quality=90",
+      "sourceImageId": "2b32a665-b842-4f76-9626-3a3aaccbe527",
+      "baseName": "Scalp_and_Skull_Injuries19",
+      "traceability": {
+        "shortCode": "SDX-19",
+        "sourceImageNumber": 19,
+        "sourceImageId": "2b32a665-b842-4f76-9626-3a3aaccbe527",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_2b32a665.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/2b32a665-b842-4f76-9626-3a3aaccbe527?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 116037,
+        "sha256": "cd265eb804ac55f5a6e34f3e8e0af30b17859abd567a44ad3ca9752903f96def",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-20",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 20",
+      "sourceImageNumber": 20,
+      "caption": "Axial NECT with bone algorithm reconstruction and wide window display in the same patient shows a depressed, comminuted skull fracture <img src=\"arrow_WS.png\"> involving the right squamous temporal bone. Note the subcutaneous air <img src=\"arrow_WO.png\"> and soft tissue hematoma overlying the fracture.",
+      "cleanCaption": "Axial NECT with bone algorithm reconstruction and wide window display in the same patient shows a depressed, comminuted skull fracture involving the right squamous temporal bone. Note the subcutaneous air and soft tissue hematoma overlying the fracture.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "alternateExample",
+        "boneWindowCompanion",
+        "depressedComminutedTemporalFracture",
+        "caseCluster:temporalDepressedFracture"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-20_STATdx_plain_Scalp_and_Skull_Injuries20.jpg",
+      "annotatedFilename": "SDX-20_STATdx_annotated_Scalp_and_Skull_Injuries20_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries20.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries20_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/6d7b20a3-931e-4141-9237-3936d00faf64?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/6d7b20a3-931e-4141-9237-3936d00faf64?annotated=true&size=1000&quality=90",
+      "sourceImageId": "6d7b20a3-931e-4141-9237-3936d00faf64",
+      "baseName": "Scalp_and_Skull_Injuries20",
+      "traceability": {
+        "shortCode": "SDX-20",
+        "sourceImageNumber": 20,
+        "sourceImageId": "6d7b20a3-931e-4141-9237-3936d00faf64",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_6d7b20a3.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/6d7b20a3-931e-4141-9237-3936d00faf64?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 127735,
+        "sha256": "e0854ae09ec444b6f1aa7008a8527eef8f9a7ceb4309b47bc0816cd0c9a032e4",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-21",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 21",
+      "sourceImageNumber": 21,
+      "caption": "Axial NECT in a patient who was hit in the head shows an extensively comminuted, depressed skull fracture <img src=\"arrow_WO.png\">. Note the large subgaleal hematoma <img src=\"arrow_WS.png\"> completely surrounding the entire skull.",
+      "cleanCaption": "Axial NECT in a patient who was hit in the head shows an extensively comminuted, depressed skull fracture . Note the large subgaleal hematoma completely surrounding the entire skull.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "severityVariant",
+        "comminutedDepressedFracture",
+        "circumferentialSubgalealHematoma"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-21_STATdx_plain_Scalp_and_Skull_Injuries21.jpg",
+      "annotatedFilename": "SDX-21_STATdx_annotated_Scalp_and_Skull_Injuries21_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries21.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries21_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/4e92d662-18a4-4687-9251-15624274f205?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/4e92d662-18a4-4687-9251-15624274f205?annotated=true&size=1000&quality=90",
+      "sourceImageId": "4e92d662-18a4-4687-9251-15624274f205",
+      "baseName": "Scalp_and_Skull_Injuries21",
+      "traceability": {
+        "shortCode": "SDX-21",
+        "sourceImageNumber": 21,
+        "sourceImageId": "4e92d662-18a4-4687-9251-15624274f205",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_4e92d662.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/4e92d662-18a4-4687-9251-15624274f205?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 101465,
+        "sha256": "42365ef0863ab7d1df2639d1289adc30a16e2dec952852046ca0e8ed6246cb15",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-22",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 22",
+      "sourceImageNumber": 22,
+      "caption": "Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures  <img src=\"arrow_WS.png\">  extending into and widening the sagittal suture, causing a diastatic fracture  <img src=\"arrow_WO.png\">.",
+      "cleanCaption": "Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures extending into and widening the sagittal suture, causing a diastatic fracture .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "diastaticFracture"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-22_STATdx_plain_Scalp_and_Skull_Injuries22.jpg",
+      "annotatedFilename": "SDX-22_STATdx_annotated_Scalp_and_Skull_Injuries22_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries22.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries22_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/93423934-5dc7-4b4d-b5cd-0e30a8d862f0?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/93423934-5dc7-4b4d-b5cd-0e30a8d862f0?annotated=true&size=1000&quality=90",
+      "sourceImageId": "93423934-5dc7-4b4d-b5cd-0e30a8d862f0",
+      "baseName": "Scalp_and_Skull_Injuries22",
+      "traceability": {
+        "shortCode": "SDX-22",
+        "sourceImageNumber": 22,
+        "sourceImageId": "93423934-5dc7-4b4d-b5cd-0e30a8d862f0",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_93423934.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/93423934-5dc7-4b4d-b5cd-0e30a8d862f0?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 130894,
+        "sha256": "67d732bb3a59a91f456f124ac52bf764450e38d806d075cae79b778cc2de261c",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-06."
+    },
+    {
+      "masterImageId": "SDX-23",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 23",
+      "sourceImageNumber": 23,
+      "caption": "Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture <img src=\"arrow_WO.png\">. The brain under the fracture shows only a small cortical contusion <img src=\"arrow_WS.png\">. The patient's GCS was 15.",
+      "cleanCaption": "Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture . The brain under the fracture shows only a small cortical contusion . The patient's GCS was 15.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "depressedFracture",
+        "brainBoneWindowComposite"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-23_STATdx_plain_Scalp_and_Skull_Injuries23.jpg",
+      "annotatedFilename": "SDX-23_STATdx_annotated_Scalp_and_Skull_Injuries23_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries23.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries23_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/589dd947-8f86-45fa-a9bf-a72f416843ac?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/589dd947-8f86-45fa-a9bf-a72f416843ac?annotated=true&size=1000&quality=90",
+      "sourceImageId": "589dd947-8f86-45fa-a9bf-a72f416843ac",
+      "baseName": "Scalp_and_Skull_Injuries23",
+      "traceability": {
+        "shortCode": "SDX-23",
+        "sourceImageNumber": 23,
+        "sourceImageId": "589dd947-8f86-45fa-a9bf-a72f416843ac",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_589dd947.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/589dd947-8f86-45fa-a9bf-a72f416843ac?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 126708,
+        "sha256": "a52d43c7b4ae6bd3931139659cec28d9337461d5f741ce297f4c4f6f8f47b2f3",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-08."
+    },
+    {
+      "masterImageId": "SDX-24",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 24",
+      "sourceImageNumber": 24,
+      "caption": "Axial graphic depicts different basilar skull fractures crossing the petrous apex and clivus <img src=\"arrow_WS.png\">  as well as extending into the jugular foramen <img src=\"arrow_WC.png\"> and carotid canal <img src=\"arrow_WO.png\">. The potential for vascular injury in such fractures is high.",
+      "cleanCaption": "Axial graphic depicts different basilar skull fractures crossing the petrous apex and clivus as well as extending into the jugular foramen and carotid canal . The potential for vascular injury in such fractures is high.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "supplementalGraphic",
+        "basilarSkullFracture",
+        "vascularInjuryRisk"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-24_STATdx_plain_Scalp_and_Skull_Injuries24.jpg",
+      "annotatedFilename": "SDX-24_STATdx_annotated_Scalp_and_Skull_Injuries24_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries24.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries24_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/d2e2d24b-32f9-440d-8de5-080dfe9c8b09?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/d2e2d24b-32f9-440d-8de5-080dfe9c8b09?annotated=true&size=1000&quality=90",
+      "sourceImageId": "d2e2d24b-32f9-440d-8de5-080dfe9c8b09",
+      "baseName": "Scalp_and_Skull_Injuries24",
+      "traceability": {
+        "shortCode": "SDX-24",
+        "sourceImageNumber": 24,
+        "sourceImageId": "d2e2d24b-32f9-440d-8de5-080dfe9c8b09",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_d2e2d24b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/d2e2d24b-32f9-440d-8de5-080dfe9c8b09?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 160148,
+        "sha256": "04bd24b827f1255a6717b791f2da045bf3b62db90177c4b39ccb51c4c62e5a6d",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-25",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 25",
+      "sourceImageNumber": 25,
+      "caption": "3D shaded surface display in a patient with multiple linear <img src=\"arrow_BS.png\"> and diastatic <img src=\"arrow_BO.png\"> skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression <img src=\"arrow_WO.png\"> of the fractured parietooccipital calvarium that was appreciated only on this SSD.",
+      "cleanCaption": "3D shaded surface display in a patient with multiple linear and diastatic skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression of the fractured parietooccipital calvarium that was appreciated only on this SSD.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "exactDuplicateReplacement",
+        "ssd3DFractureAnatomy"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-25_STATdx_plain_Scalp_and_Skull_Injuries25.jpg",
+      "annotatedFilename": "SDX-25_STATdx_annotated_Scalp_and_Skull_Injuries25_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries25.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries25_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/28b67ba4-898a-4d6b-8bae-ff60d96672ea?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/28b67ba4-898a-4d6b-8bae-ff60d96672ea?annotated=true&size=1000&quality=90",
+      "sourceImageId": "28b67ba4-898a-4d6b-8bae-ff60d96672ea",
+      "baseName": "Scalp_and_Skull_Injuries25",
+      "traceability": {
+        "shortCode": "SDX-25",
+        "sourceImageNumber": 25,
+        "sourceImageId": "28b67ba4-898a-4d6b-8bae-ff60d96672ea",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_28b67ba4.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/28b67ba4-898a-4d6b-8bae-ff60d96672ea?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 158867,
+        "sha256": "eee40080f70af9afeeeab9585ecbdbc5748bba64cb3420fd58a3634bb9f67cbc",
+        "width": 1000,
+        "height": 1000
+      },
+      "coverageClassification": "primaryExactDuplicateRepresentative",
+      "duplicateEvidenceBasis": "Selected as the STATdx primary representative for visually exact RadPrimer duplicate(s): RP-07."
+    },
+    {
+      "masterImageId": "SDX-26",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "humanLabel": "STATdx image 26",
+      "sourceImageNumber": 26,
+      "caption": "Axial bone CT shows a subgaleal hematoma <img src=\"arrow_CS.png\">  crossing the midline sagittal suture. A left frontal skull fracture <img src=\"arrow_WC.png\"> is present. Note the pneumocephalus <img src=\"arrow_WS.png\">. Subgaleal hematomas are under the scalp aponeurosis, much more extensive, and not bounded by sutures. They are often associated with skull fractures in trauma patients.",
+      "cleanCaption": "Axial bone CT shows a subgaleal hematoma crossing the midline sagittal suture. A left frontal skull fracture is present. Note the pneumocephalus . Subgaleal hematomas are under the scalp aponeurosis, much more extensive, and not bounded by sutures. They are often associated with skull fractures in trauma patients.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "subgalealHematoma",
+        "frontalFracture",
+        "pneumocephalus"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-26_STATdx_plain_Scalp_and_Skull_Injuries26.jpg",
+      "annotatedFilename": "SDX-26_STATdx_annotated_Scalp_and_Skull_Injuries26_annot.jpg",
+      "originalPlainFilename": "Scalp_and_Skull_Injuries26.jpg",
+      "originalAnnotatedFilename": "Scalp_and_Skull_Injuries26_annot.jpg",
+      "plainUrl": "https://my.statdx.com/image/thumbnail/e844bd58-42a6-40ed-a17e-d976f0be313b?size=1000&quality=90",
+      "annotatedUrl": "https://my.statdx.com/image/thumbnail/e844bd58-42a6-40ed-a17e-d976f0be313b?annotated=true&size=1000&quality=90",
+      "sourceImageId": "e844bd58-42a6-40ed-a17e-d976f0be313b",
+      "baseName": "Scalp_and_Skull_Injuries26",
+      "traceability": {
+        "shortCode": "SDX-26",
+        "sourceImageNumber": 26,
+        "sourceImageId": "e844bd58-42a6-40ed-a17e-d976f0be313b",
+        "sourcePackage": "STATdx_source_package.txt",
+        "metadataFile": "STATdx_metadata.json"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_e844bd58.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://my.statdx.com/image/thumbnail/e844bd58-42a6-40ed-a17e-d976f0be313b?size=1000&quality=90",
+        "downloaded": true,
+        "fileSizeBytes": 164104,
+        "sha256": "5948bc26aa4bb57c91ca6c668189c14cb59d0177033b1cf727848cddc7c552e5",
+        "width": 1000,
+        "height": 1000
+      }
+    }
+  ],
+  "sourceSelectionPlan": {
+    "sourceIntegrityStatus": "ok",
+    "readyForGeneration": true,
+    "textToKeep": [
+      "Use metadata.json canonicalHierarchy exactly for package routing.",
+      "Use RadPrimer as the canonical hierarchy/backbone for Scalp and Skull Injuries.",
+      "Use STATdx supplemental depth and image examples for cephalohematoma, subgaleal hematoma, skull fracture patterns, vascular-channel risk, and complications."
+    ],
+    "downweightOrSkip": [
+      "Do not use STATdx breadcrumb for deck routing; metadata.json canonicalHierarchy remains authoritative.",
+      "Do not generate cards or a lecture from this package until the user explicitly asks.",
+      "Do not archive images from caption similarity alone; exact duplicate calls here are based on actual staged image evidence visual review."
+    ],
+    "primaryImageDownloadUseSet": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26"
+    ],
+    "archiveOptionalDuplicates": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10"
+    ],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 1",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/45d77c8f-3b0a-4e23-914b-7d35a048e8d0?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/45d77c8f-3b0a-4e23-914b-7d35a048e8d0?style=xlarge&annotated=true",
+        "plainFilename": "RP-01_RadPrimer_plain_Scalp_and_Skull_Injuries1.jpg",
+        "annotatedFilename": "RP-01_RadPrimer_annotated_Scalp_and_Skull_Injuries1_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_45d77c8f.jpg",
+        "caption": "Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma is subperiosteal, focal, and limited by sutures. Subgaleal hematoma is under the scalp aponeurosis, much more extensive, and not bounded by sutures."
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 2",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/28bb3416-7a28-4a09-a65b-c1e45871124d?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/28bb3416-7a28-4a09-a65b-c1e45871124d?style=xlarge&annotated=true",
+        "plainFilename": "RP-02_RadPrimer_plain_Scalp_and_Skull_Injuries2.jpg",
+        "annotatedFilename": "RP-02_RadPrimer_annotated_Scalp_and_Skull_Injuries2_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_28bb3416.jpg",
+        "caption": "Bone CT in a newborn with a traumatic delivery shows a linear skull fracture and cephalohematoma overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture ."
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 3",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/788a41aa-7585-45e3-a71e-99a85c936365?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/788a41aa-7585-45e3-a71e-99a85c936365?style=xlarge&annotated=true",
+        "plainFilename": "RP-03_RadPrimer_plain_Scalp_and_Skull_Injuries3.jpg",
+        "annotatedFilename": "RP-03_RadPrimer_annotated_Scalp_and_Skull_Injuries3_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_788a41aa.jpg",
+        "caption": "NECT in the same patient shows the cephalohematoma . Note the presence of a small epidural hematoma ."
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 4",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/9d5d6d77-14d1-4d6c-a77a-8799903c5b72?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9d5d6d77-14d1-4d6c-a77a-8799903c5b72?style=xlarge&annotated=true",
+        "plainFilename": "RP-04_RadPrimer_plain_Scalp_and_Skull_Injuries4.jpg",
+        "annotatedFilename": "RP-04_RadPrimer_annotated_Scalp_and_Skull_Injuries4_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_9d5d6d77.jpg",
+        "caption": "Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss."
+      },
+      {
+        "masterImageId": "RP-05",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 5",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/b570d6cc-63c1-4614-9340-700cd78da3ba?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/b570d6cc-63c1-4614-9340-700cd78da3ba?style=xlarge&annotated=true",
+        "plainFilename": "RP-05_RadPrimer_plain_Scalp_and_Skull_Injuries5.jpg",
+        "annotatedFilename": "RP-05_RadPrimer_annotated_Scalp_and_Skull_Injuries5_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_b570d6cc.jpg",
+        "caption": "Autopsied skull shows fatal trauma with exo- (L) and endocranial views (R). A linear fracture extends into the superior sagittal suture , causing diastasis and a subgaleal hematoma that crosses the midline."
+      },
+      {
+        "masterImageId": "RP-06",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 6",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/7db35bcf-b68e-416e-ad22-cd77cd2632b1?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/7db35bcf-b68e-416e-ad22-cd77cd2632b1?style=xlarge&annotated=true",
+        "plainFilename": "RP-06_RadPrimer_plain_Scalp_and_Skull_Injuries6.jpg",
+        "annotatedFilename": "RP-06_RadPrimer_annotated_Scalp_and_Skull_Injuries6_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_7db35bcf.jpg",
+        "caption": "Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures extending into and widening the sagittal suture, causing a diastatic fracture ."
+      },
+      {
+        "masterImageId": "RP-07",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 7",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/e07f13e5-e3ee-4e33-8f40-67e9bd14ae4b?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/e07f13e5-e3ee-4e33-8f40-67e9bd14ae4b?style=xlarge&annotated=true",
+        "plainFilename": "RP-07_RadPrimer_plain_Scalp_and_Skull_Injuries7.jpg",
+        "annotatedFilename": "RP-07_RadPrimer_annotated_Scalp_and_Skull_Injuries7_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_e07f13e5.jpg",
+        "caption": "3D-shaded surface display (SSD) in a patient with multiple linear and diastatic skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression of the fractured parietooccipital calvarium that was appreciated only on this SSD."
+      },
+      {
+        "masterImageId": "RP-08",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 8",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/e25837ff-f875-478b-aeb8-6856b983d913?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/e25837ff-f875-478b-aeb8-6856b983d913?style=xlarge&annotated=true",
+        "plainFilename": "RP-08_RadPrimer_plain_Scalp_and_Skull_Injuries8.jpg",
+        "annotatedFilename": "RP-08_RadPrimer_annotated_Scalp_and_Skull_Injuries8_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_e25837ff.jpg",
+        "caption": "Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture . The brain under the fracture shows only a small cortical contusion . The patient's GCS was 15."
+      },
+      {
+        "masterImageId": "RP-09",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 9",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/e6795362-607e-4be5-988d-7b41781b2a3e?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/e6795362-607e-4be5-988d-7b41781b2a3e?style=xlarge&annotated=true",
+        "plainFilename": "RP-09_RadPrimer_plain_Scalp_and_Skull_Injuries9.jpg",
+        "annotatedFilename": "RP-09_RadPrimer_annotated_Scalp_and_Skull_Injuries9_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_e6795362.jpg",
+        "caption": "Axial NECT in a patient with a \"growing\" skull fracture shows widened fracture with scalloped margins ."
+      },
+      {
+        "masterImageId": "RP-10",
+        "sourceLabel": "RadPrimer",
+        "humanLabel": "RadPrimer image 10",
+        "downloadRecommendation": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.radprimer.com/images/9ab02dba-7e2d-47ca-8cdc-944d6edcc1ec?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9ab02dba-7e2d-47ca-8cdc-944d6edcc1ec?style=xlarge&annotated=true",
+        "plainFilename": "RP-10_RadPrimer_plain_Scalp_and_Skull_Injuries10.jpg",
+        "annotatedFilename": "RP-10_RadPrimer_annotated_Scalp_and_Skull_Injuries10_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_9ab02dba.jpg",
+        "caption": "Axial T2 MR in the same patient shows a lobulated CSF collection filling the \"growing\" fracture. CSF pulsations have widened and scalloped the calvarium."
+      },
+      {
+        "masterImageId": "SDX-01",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 1",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/fe5bc17c-3d49-4805-ac89-01799e9ced36?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/fe5bc17c-3d49-4805-ac89-01799e9ced36?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-01_STATdx_plain_Scalp_and_Skull_Injuries1.jpg",
+        "annotatedFilename": "SDX-01_STATdx_annotated_Scalp_and_Skull_Injuries1_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_fe5bc17c.jpg",
+        "caption": "Graphic shows the skull of a newborn, including the anterior fontanelle, coronal, metopic, and sagittal sutures. Cephalohematoma is subperiosteal, focal, and limited by sutures. Subgaleal hematoma is under the scalp aponeurosis, much more extensive, and not bounded by sutures."
+      },
+      {
+        "masterImageId": "SDX-02",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 2",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/ca613e4c-5d6d-48bf-9364-f2b99de38495?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/ca613e4c-5d6d-48bf-9364-f2b99de38495?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-02_STATdx_plain_Scalp_and_Skull_Injuries2.jpg",
+        "annotatedFilename": "SDX-02_STATdx_annotated_Scalp_and_Skull_Injuries2_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_ca613e4c.jpg",
+        "caption": "Bone CT in a newborn with a traumatic delivery shows a linear skull fracture and a cephalohematoma overlying the parietal bone. Note that the cephalohematoma does not cross the sagittal suture ."
+      },
+      {
+        "masterImageId": "SDX-03",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 3",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/88744fa6-57b3-4a11-9b67-2989df7569cf?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/88744fa6-57b3-4a11-9b67-2989df7569cf?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-03_STATdx_plain_Scalp_and_Skull_Injuries3.jpg",
+        "annotatedFilename": "SDX-03_STATdx_annotated_Scalp_and_Skull_Injuries3_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_88744fa6.jpg",
+        "caption": "NECT in the same patient shows the cephalohematoma . Note the presence of a small intracranial epidural hematoma ."
+      },
+      {
+        "masterImageId": "SDX-04",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 4",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/1b2c7652-b501-46ba-bbc3-ad97a7c59eee?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/1b2c7652-b501-46ba-bbc3-ad97a7c59eee?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-04_STATdx_plain_Scalp_and_Skull_Injuries4.jpg",
+        "annotatedFilename": "SDX-04_STATdx_annotated_Scalp_and_Skull_Injuries4_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_1b2c7652.jpg",
+        "caption": "Axial NECT shows an infant with a large subgaleal hematoma. In contrast to cephalohematoma, this subgaleal hematoma crosses the midline and extends nearly all the way around the entire head. Large subgaleal hematomas in infants can cause life-threatening blood loss."
+      },
+      {
+        "masterImageId": "SDX-05",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 5",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/b59b348c-0a97-4faa-8274-4cab32691ef5?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/b59b348c-0a97-4faa-8274-4cab32691ef5?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-05_STATdx_plain_Scalp_and_Skull_Injuries5.jpg",
+        "annotatedFilename": "SDX-05_STATdx_annotated_Scalp_and_Skull_Injuries5_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_b59b348c.jpg",
+        "caption": "Autopsied skull shows fatal trauma with exo- (L) & endocranial views (R). A linear fracture extends into the superior sagittal suture , causing diastasis & a subgaleal hematoma that the crosses midline."
+      },
+      {
+        "masterImageId": "SDX-06",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 6",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/ccc59b76-4536-4c3f-b19b-e01ae5cc1764?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/ccc59b76-4536-4c3f-b19b-e01ae5cc1764?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-06_STATdx_plain_Scalp_and_Skull_Injuries6.jpg",
+        "annotatedFilename": "SDX-06_STATdx_annotated_Scalp_and_Skull_Injuries6_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_ccc59b76.jpg",
+        "caption": "Coronal NECT shows a subgaleal hematoma crossing the midline sagittal suture. Skull base & facial fractures & a left frontal skull fracture are better seen on bone windows. Note the pneumocephalus , indicating a fracture through a paranasal sinus through a paranasal sinus or the calvarium."
+      },
+      {
+        "masterImageId": "SDX-07",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 7",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/466d88e3-f60a-4806-9ad5-4123ba8d3764?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/466d88e3-f60a-4806-9ad5-4123ba8d3764?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-07_STATdx_plain_Scalp_and_Skull_Injuries7.jpg",
+        "annotatedFilename": "SDX-07_STATdx_annotated_Scalp_and_Skull_Injuries7_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_466d88e3.jpg",
+        "caption": "Axial bone CT in a 48-year-old trauma patient shows a left temporal bone skull fracture that also involves the greater wing of the sphenoid ."
+      },
+      {
+        "masterImageId": "SDX-08",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 8",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/06e817ff-8054-4aef-9386-1e62e858dbea?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/06e817ff-8054-4aef-9386-1e62e858dbea?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-08_STATdx_plain_Scalp_and_Skull_Injuries8.jpg",
+        "annotatedFilename": "SDX-08_STATdx_annotated_Scalp_and_Skull_Injuries8_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_06e817ff.jpg",
+        "caption": "Axial NECT in the same patient shows an associated epidural hematoma in the anterior middle cranial fossa. Skull fractures are commonly associated with epidural hematomas. Note the contrecoup subarachnoid hemorrhage in the right temporal region."
+      },
+      {
+        "masterImageId": "SDX-09",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 9",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/8b3f96b7-7ebc-41c8-8a65-6216d2984987?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/8b3f96b7-7ebc-41c8-8a65-6216d2984987?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-09_STATdx_plain_Scalp_and_Skull_Injuries9.jpg",
+        "annotatedFilename": "SDX-09_STATdx_annotated_Scalp_and_Skull_Injuries9_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_8b3f96b7.jpg",
+        "caption": "Axial NECT in a patient with a \"growing\" skull fracture shows a widened fracture with scalloped margins ."
+      },
+      {
+        "masterImageId": "SDX-10",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 10",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/9124a13e-7caa-4d4f-afe9-055a3004cc06?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/9124a13e-7caa-4d4f-afe9-055a3004cc06?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-10_STATdx_plain_Scalp_and_Skull_Injuries10.jpg",
+        "annotatedFilename": "SDX-10_STATdx_annotated_Scalp_and_Skull_Injuries10_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_9124a13e.jpg",
+        "caption": "Axial T2 MR in the same patient shows a lobulated CSF collection filling the \"growing\" fracture. CSF pulsations have widened and scalloped the calvarium. \"Growing\" skull fractures are difficult to detect in the acute stage and are often identified on follow-up imaging as a progressively widening, unhealing fracture. On CT, they are lucent lesions with rounded, scalloped margins."
+      },
+      {
+        "masterImageId": "SDX-11",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 11",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/b0c3a01e-2b44-4a58-b56c-f6ec4f9359cc?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/b0c3a01e-2b44-4a58-b56c-f6ec4f9359cc?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-11_STATdx_plain_Scalp_and_Skull_Injuries11.jpg",
+        "annotatedFilename": "SDX-11_STATdx_annotated_Scalp_and_Skull_Injuries11_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_b0c3a01e.jpg",
+        "caption": "Axial NECT in a newborn with difficult vacuum-assisted delivery shows a small right and a large left cephalohematoma. Neither crosses the midline."
+      },
+      {
+        "masterImageId": "SDX-12",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 12",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/f07f6430-36b7-4731-8b46-b4bc76a66068?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/f07f6430-36b7-4731-8b46-b4bc76a66068?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-12_STATdx_plain_Scalp_and_Skull_Injuries12.jpg",
+        "annotatedFilename": "SDX-12_STATdx_annotated_Scalp_and_Skull_Injuries12_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_f07f6430.jpg",
+        "caption": "Coronal NECT in the same patient shows the small right and large left cephalohematomas. The elevated periosteum clearly separates the two blood collections."
+      },
+      {
+        "masterImageId": "SDX-13",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 13",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/47a57fc3-625a-48e7-bf63-3fccd42778e2?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/47a57fc3-625a-48e7-bf63-3fccd42778e2?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-13_STATdx_plain_Scalp_and_Skull_Injuries13.jpg",
+        "annotatedFilename": "SDX-13_STATdx_annotated_Scalp_and_Skull_Injuries13_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_47a57fc3.jpg",
+        "caption": "Sagittal NECT shows the left parietal cephalohematoma does not cross the coronal suture ."
+      },
+      {
+        "masterImageId": "SDX-14",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 14",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/76acf6fe-bda4-40c8-aae4-e39880a124c9?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/76acf6fe-bda4-40c8-aae4-e39880a124c9?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-14_STATdx_plain_Scalp_and_Skull_Injuries14.jpg",
+        "annotatedFilename": "SDX-14_STATdx_annotated_Scalp_and_Skull_Injuries14_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_76acf6fe.jpg",
+        "caption": "Axial T2 MR in an abused infant shows a very large mixed acute/subacute subgaleal hematoma crossing the sutures and extending over the face/orbits."
+      },
+      {
+        "masterImageId": "SDX-15",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 15",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/941488b4-3523-4526-bf95-be7d9ea2158d?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/941488b4-3523-4526-bf95-be7d9ea2158d?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-15_STATdx_plain_Scalp_and_Skull_Injuries15.jpg",
+        "annotatedFilename": "SDX-15_STATdx_annotated_Scalp_and_Skull_Injuries15_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_941488b4.jpg",
+        "caption": "More cephalad axial T2 MR shows the mixed-age subgaleal hematoma crossing the midline."
+      },
+      {
+        "masterImageId": "SDX-16",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 16",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/93161f94-58f2-465d-bdf9-1582d7cfab9e?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/93161f94-58f2-465d-bdf9-1582d7cfab9e?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-16_STATdx_plain_Scalp_and_Skull_Injuries16.jpg",
+        "annotatedFilename": "SDX-16_STATdx_annotated_Scalp_and_Skull_Injuries16_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_93161f94.jpg",
+        "caption": "Axial NECT (left) shows severe scalp laceration with a combination of elevated and depressed skull fractures. Axial bone CT (right) shows that the elevated fracture is literally \"hinged\" away from the calvarium."
+      },
+      {
+        "masterImageId": "SDX-17",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 17",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/ca211dc3-7421-4fdd-94d0-2a6f4814a47c?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/ca211dc3-7421-4fdd-94d0-2a6f4814a47c?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-17_STATdx_plain_Scalp_and_Skull_Injuries17.jpg",
+        "annotatedFilename": "SDX-17_STATdx_annotated_Scalp_and_Skull_Injuries17_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_ca211dc3.jpg",
+        "caption": "Axial NECT shows a large subgaleal hematoma crossing the sagittal suture. Hyperdense vertex hematoma also crosses the midline, suggesting that the blood is in the epidural space."
+      },
+      {
+        "masterImageId": "SDX-18",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 18",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/7f6dd2a0-2f1a-40ad-b305-1de593de0a5d?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/7f6dd2a0-2f1a-40ad-b305-1de593de0a5d?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-18_STATdx_plain_Scalp_and_Skull_Injuries18.jpg",
+        "annotatedFilename": "SDX-18_STATdx_annotated_Scalp_and_Skull_Injuries18_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_7f6dd2a0.jpg",
+        "caption": "Axial bone CT shows a diastatic fracture of the sagittal suture . A very large subgaleal hematoma extends around the entire circumference of the skull. The superior sagittal sinus is torn, and the intracranial blood seen on soft tissue windows was a vertex venous epidural hematoma."
+      },
+      {
+        "masterImageId": "SDX-19",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 19",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/2b32a665-b842-4f76-9626-3a3aaccbe527?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/2b32a665-b842-4f76-9626-3a3aaccbe527?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-19_STATdx_plain_Scalp_and_Skull_Injuries19.jpg",
+        "annotatedFilename": "SDX-19_STATdx_annotated_Scalp_and_Skull_Injuries19_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_2b32a665.jpg",
+        "caption": "Axial NECT in a patient with a blow to the right side of the head shows a mildly depressed fracture . Note that the brain under the fracture appears quite normal."
+      },
+      {
+        "masterImageId": "SDX-20",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 20",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/6d7b20a3-931e-4141-9237-3936d00faf64?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/6d7b20a3-931e-4141-9237-3936d00faf64?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-20_STATdx_plain_Scalp_and_Skull_Injuries20.jpg",
+        "annotatedFilename": "SDX-20_STATdx_annotated_Scalp_and_Skull_Injuries20_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_6d7b20a3.jpg",
+        "caption": "Axial NECT with bone algorithm reconstruction and wide window display in the same patient shows a depressed, comminuted skull fracture involving the right squamous temporal bone. Note the subcutaneous air and soft tissue hematoma overlying the fracture."
+      },
+      {
+        "masterImageId": "SDX-21",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 21",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/4e92d662-18a4-4687-9251-15624274f205?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/4e92d662-18a4-4687-9251-15624274f205?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-21_STATdx_plain_Scalp_and_Skull_Injuries21.jpg",
+        "annotatedFilename": "SDX-21_STATdx_annotated_Scalp_and_Skull_Injuries21_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_4e92d662.jpg",
+        "caption": "Axial NECT in a patient who was hit in the head shows an extensively comminuted, depressed skull fracture . Note the large subgaleal hematoma completely surrounding the entire skull."
+      },
+      {
+        "masterImageId": "SDX-22",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 22",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/93423934-5dc7-4b4d-b5cd-0e30a8d862f0?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/93423934-5dc7-4b4d-b5cd-0e30a8d862f0?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-22_STATdx_plain_Scalp_and_Skull_Injuries22.jpg",
+        "annotatedFilename": "SDX-22_STATdx_annotated_Scalp_and_Skull_Injuries22_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_93423934.jpg",
+        "caption": "Bone CT through the top of the calvarium in a patient with severe head injury shows linear skull fractures extending into and widening the sagittal suture, causing a diastatic fracture ."
+      },
+      {
+        "masterImageId": "SDX-23",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 23",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/589dd947-8f86-45fa-a9bf-a72f416843ac?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/589dd947-8f86-45fa-a9bf-a72f416843ac?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-23_STATdx_plain_Scalp_and_Skull_Injuries23.jpg",
+        "annotatedFilename": "SDX-23_STATdx_annotated_Scalp_and_Skull_Injuries23_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_589dd947.jpg",
+        "caption": "Axial NECT [brain (L) and bone (R) windows] in a young male who was hit with a hammer shows a comminuted, depressed skull fracture . The brain under the fracture shows only a small cortical contusion . The patient's GCS was 15."
+      },
+      {
+        "masterImageId": "SDX-24",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 24",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/d2e2d24b-32f9-440d-8de5-080dfe9c8b09?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/d2e2d24b-32f9-440d-8de5-080dfe9c8b09?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-24_STATdx_plain_Scalp_and_Skull_Injuries24.jpg",
+        "annotatedFilename": "SDX-24_STATdx_annotated_Scalp_and_Skull_Injuries24_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_d2e2d24b.jpg",
+        "caption": "Axial graphic depicts different basilar skull fractures crossing the petrous apex and clivus as well as extending into the jugular foramen and carotid canal . The potential for vascular injury in such fractures is high."
+      },
+      {
+        "masterImageId": "SDX-25",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 25",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/28b67ba4-898a-4d6b-8bae-ff60d96672ea?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/28b67ba4-898a-4d6b-8bae-ff60d96672ea?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-25_STATdx_plain_Scalp_and_Skull_Injuries25.jpg",
+        "annotatedFilename": "SDX-25_STATdx_annotated_Scalp_and_Skull_Injuries25_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_28b67ba4.jpg",
+        "caption": "3D shaded surface display in a patient with multiple linear and diastatic skull fractures shows utility of SSDs in depicting complex fracture anatomy. Note slight depression of the fractured parietooccipital calvarium that was appreciated only on this SSD."
+      },
+      {
+        "masterImageId": "SDX-26",
+        "sourceLabel": "STATdx",
+        "humanLabel": "STATdx image 26",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/e844bd58-42a6-40ed-a17e-d976f0be313b?size=1000&quality=90",
+        "annotatedUrl": "https://my.statdx.com/image/thumbnail/e844bd58-42a6-40ed-a17e-d976f0be313b?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-26_STATdx_plain_Scalp_and_Skull_Injuries26.jpg",
+        "annotatedFilename": "SDX-26_STATdx_annotated_Scalp_and_Skull_Injuries26_annot.jpg",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_e844bd58.jpg",
+        "caption": "Axial bone CT shows a subgaleal hematoma crossing the midline sagittal suture. A left frontal skull fracture is present. Note the pneumocephalus . Subgaleal hematomas are under the scalp aponeurosis, much more extensive, and not bounded by sutures. They are often associated with skull fractures in trauma patients."
+      }
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable. In this bundle every RadPrimer image is visually covered by an exact STATdx duplicate, so RadPrimer copies are archiveOptionalDuplicate and STATdx copies are the selected primary set.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require actual image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. For this bundle, source IDs and SHA-256 hashes are different across sources, but direct visual review of the staged evidence files supports exact duplicate status for the listed pairs. Caption-only similarity was not used.",
+    "caseClusterGuardrails": {
+      "policy": "Treat same-patient, follow-up, adjacent-slice, comparison-view, procedure, and time-lapse groups as atomic teaching clusters unless an explicit split is documented.",
+      "intentionalSplits": [],
+      "clusterSelections": [
+        {
+          "clusterId": "birthTraumaCephalohematoma",
+          "imageIds": [
+            "SDX-02",
+            "SDX-03"
+          ],
+          "status": "selected intact",
+          "reason": "same newborn/same-patient cephalohematoma and intracranial epidural hematoma teaching pair"
+        },
+        {
+          "clusterId": "growingSkullFracture",
+          "imageIds": [
+            "SDX-09",
+            "SDX-10"
+          ],
+          "status": "selected intact",
+          "reason": "same-patient CT/MR growing skull fracture pair"
+        },
+        {
+          "clusterId": "vacuumDeliveryCephalohematomas",
+          "imageIds": [
+            "SDX-11",
+            "SDX-12",
+            "SDX-13"
+          ],
+          "status": "selected intact",
+          "reason": "same newborn axial/coronal/sagittal cephalohematoma cluster"
+        },
+        {
+          "clusterId": "abusiveHeadTraumaSubgaleal",
+          "imageIds": [
+            "SDX-14",
+            "SDX-15"
+          ],
+          "status": "selected intact",
+          "reason": "same infant mixed-age subgaleal hematoma T2 cluster"
+        },
+        {
+          "clusterId": "sagittalSutureDiastasis",
+          "imageIds": [
+            "SDX-17",
+            "SDX-18"
+          ],
+          "status": "selected intact",
+          "reason": "subgaleal hematoma, sagittal suture diastasis, and superior sagittal sinus injury cluster"
+        },
+        {
+          "clusterId": "temporalDepressedFracture",
+          "imageIds": [
+            "SDX-19",
+            "SDX-20"
+          ],
+          "status": "selected intact",
+          "reason": "same-patient depressed temporal fracture brain/bone window companion pair"
+        },
+        {
+          "clusterId": "temporalBoneEpidural",
+          "imageIds": [
+            "SDX-07",
+            "SDX-08"
+          ],
+          "status": "selected intact",
+          "reason": "same-patient temporal bone fracture with epidural hematoma/contrecoup SAH companion pair"
+        }
+      ],
+      "note": "No source case cluster was intentionally split; exact duplicate RadPrimer clusters were replaced by equivalent STATdx cluster members where available."
+    },
+    "generatorInstructions": [
+      "Use this as the fused RadPrimer + STATdx master source for Scalp and Skull Injuries.",
+      "Cite source contributions as [RadPrimer], [STATdx], or [Both] and use clean labels such as STATdx image 11 in prose.",
+      "Download/use only selectedPrimaryImageIds by default; archiveOptionalImageIds are for duplicate recovery or complete-source audit only."
+    ]
+  },
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10"
+  ]
+}

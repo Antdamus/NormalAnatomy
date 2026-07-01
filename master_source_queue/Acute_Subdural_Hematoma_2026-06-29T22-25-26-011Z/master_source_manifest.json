@@ -1,0 +1,855 @@
+{
+  "version": 1,
+  "articleTitle": "Acute Subdural Hematoma",
+  "createdAt": "2026-06-29T22:32:43.003073Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Neuroradiology",
+    "Brain",
+    "Primary Effects of CNS Trauma",
+    "Acute Subdural Hematoma"
+  ],
+  "canonicalDeckPath": "Corebook::Neuro::Brain::Primary Effects of CNS Trauma::Acute Subdural Hematoma",
+  "sourcePriority": [
+    "RadPrimer canonical hierarchy/backbone",
+    "STATdx supplemental depth and higher-resolution selected image representatives"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "textRole": "canonical hierarchy/backbone and core article structure",
+      "imageCount": 10,
+      "statdxCoverage": "fullyCoveredByExactDuplicates",
+      "defaultImageUse": "archiveOptionalDuplicate after actual image_evidence inspection"
+    },
+    "STATdx": {
+      "textRole": "supplemental detail, richer captions, modality/stage/severity examples, and default image representatives",
+      "imageCount": 25,
+      "defaultImageUse": "primaryTeachingSet"
+    },
+    "CoreRadiology": {
+      "textRole": "not used; no auditable Core evidence supplied in this request bundle"
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 25
+  },
+  "sourceAttributionRules": [
+    "Use [Both] for shared claims present in RadPrimer and STATdx.",
+    "Use [RadPrimer] for canonical hierarchy/backbone and RadPrimer-only structure.",
+    "Use [STATdx] for supplemental terminology, hematohygroma/arachnoid tear nuance, MR/CTA examples, active bleeding, subtle tentorial imaging, herniation severity, differential additions, and richer captions.",
+    "Do not imply Core Radiology support because no Core evidence was provided in the bundle."
+  ],
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": {
+      "canonicalBackbone": "RadPrimer",
+      "rule": "Use metadata.json canonicalHierarchy exactly for hierarchy, breadcrumb, deckPath, packageText routing, and future IMAIOS/package routing.",
+      "statdxUse": "Use STATdx as supplemental depth for terminology, hematohygroma/arachnoid tear nuance, skull metastasis differential, cerebral amyloid angiopathy, CTA spot sign/active extravasation, MR examples, subtle tentorial clusters, massive herniation examples, and stronger image captions.",
+      "downweightOrSkip": [
+        "STATdx breadcrumb for deck routing",
+        "Core Radiology claims, because no auditable Core evidence is supplied in this bundle",
+        "duplicate RadPrimer image copies in default download set"
+      ]
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "radPrimerCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "statdxCoverageImageId": "SDX-01",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_1163d0d8.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_b1318df9.jpg",
+        "radPrimerSha256": "032f753771f7f24434dbb3c52c7c6ac85718c9a94acc9f4181fb1c16c4e1cf0d",
+        "statdxSha256": "e792f2f71f0d38593e0eb3b73ff6b70a7e0d8ca7cc08d2f7dc9aceec63607c23",
+        "teachingAction": "archive RP-01; keep SDX-01 as the primary higher-resolution representative",
+        "note": "same mechanism graphic of acute SDH compressing the hemisphere with contusions/axonal injuries"
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "statdxCoverageImageId": "SDX-02",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_6d20338c.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_4fce1827.jpg",
+        "radPrimerSha256": "f400832e835846e36b8227c77c77cc51406fd80754a306efbffb85245ccd10bc",
+        "statdxSha256": "b2d9a0cc149a20bd28afa86c78dcc447ada38283060e4ceebe6d8614261bdfe6",
+        "teachingAction": "archive RP-02; keep SDX-02 as the primary higher-resolution representative",
+        "note": "same axial NECT classic left convexity acute SDH with internal hypodense unclotted blood"
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "statdxCoverageImageId": "SDX-03",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_4e212edd.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_44df1b28.jpg",
+        "radPrimerSha256": "bed466adea6008a656cad80ac426a37dab83dba701c263294daa589c62a6c5d4",
+        "statdxSha256": "d136435a873c24790b5da99884a486b08543723d324ebdb9f7962d553f13ce85",
+        "teachingAction": "archive RP-03; keep SDX-03 as the primary higher-resolution representative",
+        "note": "same paired standard/wide-window NECT comparison for subtle SDH and disproportionate swelling"
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "statdxCoverageImageId": "SDX-10",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_62fb0c80.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_4c30503f.jpg",
+        "radPrimerSha256": "3972c5f49cecacca98ce02d92706a8a96ec0f0b8c708c0a5543aa5d09fb3fcae",
+        "statdxSha256": "ff0498fceb1ff5f7c376d38d470fc91e72e3468b94e91446c1c9b83628f552cf",
+        "teachingAction": "archive RP-04; keep SDX-10 as the primary higher-resolution representative",
+        "note": "same axial NECT isodense acute SDH in an anemic patient with gray-white displacement and midline shift"
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "statdxCoverageImageId": "SDX-05",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_0329f2b8.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_48bd7fa8.jpg",
+        "radPrimerSha256": "372fa10a2df44ccc207b94a1292f813d812b45ae23b6a63e348bd816d260f36e",
+        "statdxSha256": "f0cecad62a615a820ef825503f38e71c94c829443bcaa059eee056c5c613c3c5",
+        "teachingAction": "archive RP-05; keep SDX-05 as the primary higher-resolution representative",
+        "note": "same coronal graphic of thin falcine and tentorial acute SDH"
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "statdxCoverageImageId": "SDX-21",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_7349379f.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_05cb4e38.jpg",
+        "radPrimerSha256": "fc7188d30639787ac8ffdd8c14d4a044da1d6f134d31190d09c886b7132b012b",
+        "statdxSha256": "95dcfc73d22cd21098e10e0e6cbd219d4b2f72f91fba36762c816083072a29d7",
+        "teachingAction": "archive RP-06; keep SDX-21 as the primary higher-resolution representative",
+        "note": "same axial NECT subtle tentorial and inferior falx SDH near venous sinus confluence"
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "statdxCoverageImageId": "SDX-22",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_eb20f581.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_6c764a6b.jpg",
+        "radPrimerSha256": "9621e5c1ebc212438771485fce6b6543608c5e37ea7d0800237985d8682c27f7",
+        "statdxSha256": "b3597c358dcbb396a327e44a036ef77d7dab7a1339fcbf89ef204ded3c841145",
+        "teachingAction": "archive RP-07; keep SDX-22 as the primary higher-resolution representative",
+        "note": "same coronal reformat from the same peritentorial case showing subtle convexity component"
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "statdxCoverageImageId": "SDX-23",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_da8e7f4f.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_e49ac373.jpg",
+        "radPrimerSha256": "0473a13e9b809eb2d7860ee49439ac7a0566d34b5e91c63c4d06c74f3c11d393",
+        "statdxSha256": "bbd03ed71325a87a8ebd4612a51cd047eb991ab43d43ab662d989cd7101b3e68",
+        "teachingAction": "archive RP-08; keep SDX-23 as the primary higher-resolution representative",
+        "note": "same sagittal paired peritentorial SDH/normal dura comparison from the same case"
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "statdxCoverageImageId": "SDX-24",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_96b4f788.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_b26ecef4.jpg",
+        "radPrimerSha256": "e4f388eb623b841042befa4d29d0a0686377d2b8166809998aaf6c9165c7831a",
+        "statdxSha256": "d820b24b6e979c70fe93c06f32dcb4df0ecb3ce6cb2c6901758c85f96dafc83a",
+        "teachingAction": "archive RP-09; keep SDX-24 as the primary higher-resolution representative",
+        "note": "same axial NECT small mixed-density acute SDH in a 30-year-old trauma patient"
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "statdxCoverageImageId": "SDX-25",
+        "classification": "exactDuplicate",
+        "evidenceBasis": "actual image_evidence visual inspection; same screenshot/slice/graphic with different source export size/compression; SHA-256 differs because RadPrimer is 900 px and STATdx is 1000 px",
+        "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_ff32016a.jpg",
+        "statdxEvidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_e88fbe18.jpg",
+        "radPrimerSha256": "432b10a172d661e13d977e7baa3b56827b71ba9c567d55883556676b54a8e63c",
+        "statdxSha256": "b15d9a7767db43f374f42087fc0d3823afa1105a897de8bb0f15649a3a38d7e3",
+        "teachingAction": "archive RP-10; keep SDX-25 as the primary higher-resolution representative",
+        "note": "same 5-hour follow-up axial NECT showing interval expansion, hypodense active bleeding, and subfalcine herniation"
+      }
+    ],
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse clusters are atomic unless an explicit documented split is safe.",
+      "intentionalSplits": [],
+      "clusterHandling": [
+        {
+          "cluster": "subtle peritentorial SDH multiplanar same-patient cluster",
+          "radPrimerImages": [
+            "RP-06",
+            "RP-07",
+            "RP-08"
+          ],
+          "keptPrimaryImages": [
+            "SDX-21",
+            "SDX-22",
+            "SDX-23"
+          ],
+          "reason": "whole RadPrimer multiplanar cluster replaced by exact same STATdx screenshots; no single-image split"
+        },
+        {
+          "cluster": "small mixed-density SDH with 5-hour rapid expansion follow-up",
+          "radPrimerImages": [
+            "RP-09",
+            "RP-10"
+          ],
+          "keptPrimaryImages": [
+            "SDX-24",
+            "SDX-25"
+          ],
+          "reason": "whole RadPrimer time-lapse cluster replaced by exact same STATdx screenshots; no single-image split"
+        },
+        {
+          "cluster": "STATdx active bleeding/spot-sign evolution cluster",
+          "radPrimerImages": [],
+          "keptPrimaryImages": [
+            "SDX-07",
+            "SDX-08",
+            "SDX-09"
+          ],
+          "reason": "STATdx-only same-patient sequence retained atomically for NECT, CTA spot sign, and 24-hour evolution"
+        },
+        {
+          "cluster": "STATdx subtle tentorial SDH multiplanar/normal-comparison cluster",
+          "radPrimerImages": [],
+          "keptPrimaryImages": [
+            "SDX-12",
+            "SDX-13",
+            "SDX-14",
+            "SDX-15"
+          ],
+          "reason": "STATdx-only same-patient/comparison sequence retained atomically for subtle tentorial recognition"
+        },
+        {
+          "cluster": "STATdx massive herniation fatal case cluster",
+          "radPrimerImages": [],
+          "keptPrimaryImages": [
+            "SDX-16",
+            "SDX-17",
+            "SDX-18"
+          ],
+          "reason": "STATdx-only adjacent-slice/coronal sequence retained atomically for severity and obstructive herniation teaching"
+        },
+        {
+          "cluster": "STATdx MR acute/chronic SDH comparison cluster",
+          "radPrimerImages": [],
+          "keptPrimaryImages": [
+            "SDX-19",
+            "SDX-20"
+          ],
+          "reason": "STATdx-only T1/T2 paired MR sequence retained atomically for MR signal teaching"
+        }
+      ]
+    },
+    "selectedPrimaryImageIds": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25"
+    ],
+    "archiveOptionalImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10"
+    ],
+    "imageDownloadPlan": {
+      "primaryDownloads": [
+        {
+          "masterImageId": "SDX-01",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 1",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-01_STATdx_image_01_plain_b1318df9.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/b1318df9-52aa-4e35-8c87-5cc3c66e3e48?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/b1318df9-52aa-4e35-8c87-5cc3c66e3e48?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_b1318df9.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "mechanismGraphic",
+            "higherResolutionExactRepresentative"
+          ]
+        },
+        {
+          "masterImageId": "SDX-02",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 2",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-02_STATdx_image_02_plain_4fce1827.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/4fce1827-9ffd-4261-a957-dcf6ab36e282?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/4fce1827-9ffd-4261-a957-dcf6ab36e282?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_4fce1827.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "classicConvexityExample",
+            "higherResolutionExactRepresentative"
+          ]
+        },
+        {
+          "masterImageId": "SDX-03",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 3",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-03_STATdx_image_03_plain_44df1b28.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/44df1b28-5178-422a-9fcf-2645648b0438?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/44df1b28-5178-422a-9fcf-2645648b0438?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_44df1b28.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "windowingComparison",
+            "higherResolutionExactRepresentative"
+          ]
+        },
+        {
+          "masterImageId": "SDX-04",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 4",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-04_STATdx_image_04_plain_f31555a5.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/f31555a5-af33-4332-b90f-66fded61da6a?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/f31555a5-af33-4332-b90f-66fded61da6a?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_f31555a5.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "modalityVariant",
+            "mrT1Variant"
+          ]
+        },
+        {
+          "masterImageId": "SDX-05",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 5",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-05_STATdx_image_05_plain_48bd7fa8.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/48bd7fa8-ae26-4841-b2a5-45c5485cab22?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/48bd7fa8-ae26-4841-b2a5-45c5485cab22?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_48bd7fa8.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "falcotentorialGraphic",
+            "higherResolutionExactRepresentative"
+          ]
+        },
+        {
+          "masterImageId": "SDX-06",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 6",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-06_STATdx_image_06_plain_a628c348.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/a628c348-bb31-40a8-bb5a-46f73d80b34c?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/a628c348-bb31-40a8-bb5a-46f73d80b34c?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_a628c348.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "recognitionReinforcement",
+            "falcotentorialVariant"
+          ]
+        },
+        {
+          "masterImageId": "SDX-07",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 7",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-07_STATdx_image_07_plain_e93058d5.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/e93058d5-98a2-46ae-adbd-4e8a56fb1f1a?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/e93058d5-98a2-46ae-adbd-4e8a56fb1f1a?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_e93058d5.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "activeBleedingCluster",
+            "severityVariant"
+          ]
+        },
+        {
+          "masterImageId": "SDX-08",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 8",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-08_STATdx_image_08_plain_cb198ef2.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/cb198ef2-04ab-4f94-b3eb-d25b3588e089?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/cb198ef2-04ab-4f94-b3eb-d25b3588e089?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_cb198ef2.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "activeBleedingCluster",
+            "ctaSpotSign"
+          ]
+        },
+        {
+          "masterImageId": "SDX-09",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 9",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-09_STATdx_image_09_plain_9d9bcaf2.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/9d9bcaf2-52e8-4acd-82a1-af1933663894?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/9d9bcaf2-52e8-4acd-82a1-af1933663894?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_9d9bcaf2.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "activeBleedingCluster",
+            "stageVariant"
+          ]
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 10",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-10_STATdx_image_10_plain_4c30503f.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/4c30503f-5a4d-4b59-aa72-04e63d087d10?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/4c30503f-5a4d-4b59-aa72-04e63d087d10?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_4c30503f.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "isodenseAnemiaVariant",
+            "higherResolutionExactRepresentative"
+          ]
+        },
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 11",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-11_STATdx_image_11_plain_cd33e845.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/cd33e845-9869-4778-8e05-90c4195999f5?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/cd33e845-9869-4778-8e05-90c4195999f5?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_cd33e845.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "classicCrescenticExample",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-12",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 12",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-12_STATdx_image_12_plain_81ec0fdb.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/81ec0fdb-6cbd-4db2-9d85-886f09b00f73?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/81ec0fdb-6cbd-4db2-9d85-886f09b00f73?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_81ec0fdb.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "subtleTentorialCluster",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-13",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 13",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-13_STATdx_image_13_plain_f5d901d8.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/f5d901d8-2e24-4e07-842c-17b082e47476?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/f5d901d8-2e24-4e07-842c-17b082e47476?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_f5d901d8.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "subtleTentorialCluster",
+            "multiplanarCompanion"
+          ]
+        },
+        {
+          "masterImageId": "SDX-14",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 14",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-14_STATdx_image_14_plain_90bbf24b.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/90bbf24b-bfb1-4e5a-bb0e-a6ba862c8f6a?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/90bbf24b-bfb1-4e5a-bb0e-a6ba862c8f6a?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_90bbf24b.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "subtleTentorialCluster",
+            "sagittalCompanion"
+          ]
+        },
+        {
+          "masterImageId": "SDX-15",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 15",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-15_STATdx_image_15_plain_e71f8c2f.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/e71f8c2f-5693-4253-9ec1-33991b6a6cea?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/e71f8c2f-5693-4253-9ec1-33991b6a6cea?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_e71f8c2f.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "subtleTentorialCluster",
+            "normalComparison"
+          ]
+        },
+        {
+          "masterImageId": "SDX-16",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 16",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-16_STATdx_image_16_plain_f9e29c72.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/f9e29c72-78e5-4edd-85ee-bcc4eac72925?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/f9e29c72-78e5-4edd-85ee-bcc4eac72925?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_f9e29c72.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "severeHerniationCluster",
+            "severityVariant"
+          ]
+        },
+        {
+          "masterImageId": "SDX-17",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 17",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-17_STATdx_image_17_plain_b7b40995.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/b7b40995-2df0-4677-b295-714dc779374b?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/b7b40995-2df0-4677-b295-714dc779374b?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_b7b40995.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "severeHerniationCluster",
+            "adjacentSliceCompanion"
+          ]
+        },
+        {
+          "masterImageId": "SDX-18",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 18",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-18_STATdx_image_18_plain_3601f3d1.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/3601f3d1-468f-4dce-97ba-89d603dfa269?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/3601f3d1-468f-4dce-97ba-89d603dfa269?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_3601f3d1.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "severeHerniationCluster",
+            "coronalCompanion"
+          ]
+        },
+        {
+          "masterImageId": "SDX-19",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 19",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-19_STATdx_image_19_plain_fdf3b276.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/fdf3b276-9df0-43cd-9e7f-9ef776c3ab41?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/fdf3b276-9df0-43cd-9e7f-9ef776c3ab41?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_fdf3b276.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "modalityVariant",
+            "mrT1Variant"
+          ]
+        },
+        {
+          "masterImageId": "SDX-20",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 20",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-20_STATdx_image_20_plain_a36e677f.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/a36e677f-9604-481a-9ad3-330bf6f22e7f?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/a36e677f-9604-481a-9ad3-330bf6f22e7f?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_a36e677f.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "modalityVariant",
+            "mrT2Companion"
+          ]
+        },
+        {
+          "masterImageId": "SDX-21",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 21",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-21_STATdx_image_21_plain_05cb4e38.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/05cb4e38-dcfc-4b69-a8a3-210f5946a521?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/05cb4e38-dcfc-4b69-a8a3-210f5946a521?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_05cb4e38.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "peritentorialMultiplanarCluster",
+            "higherResolutionExactRepresentative"
+          ]
+        },
+        {
+          "masterImageId": "SDX-22",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 22",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-22_STATdx_image_22_plain_6c764a6b.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/6c764a6b-25ba-460e-a2e3-e24db60f5745?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/6c764a6b-25ba-460e-a2e3-e24db60f5745?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_6c764a6b.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "peritentorialMultiplanarCluster",
+            "higherResolutionExactRepresentative"
+          ]
+        },
+        {
+          "masterImageId": "SDX-23",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 23",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-23_STATdx_image_23_plain_e49ac373.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/e49ac373-38e4-41b0-bbc0-098394645f32?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/e49ac373-38e4-41b0-bbc0-098394645f32?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_e49ac373.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "peritentorialMultiplanarCluster",
+            "higherResolutionExactRepresentative"
+          ]
+        },
+        {
+          "masterImageId": "SDX-24",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 24",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-24_STATdx_image_24_plain_b26ecef4.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/b26ecef4-f6b5-4cbb-a92a-795f008b9ee3?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/b26ecef4-f6b5-4cbb-a92a-795f008b9ee3?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_b26ecef4.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "rapidExpansionTimeLapse",
+            "higherResolutionExactRepresentative"
+          ]
+        },
+        {
+          "masterImageId": "SDX-25",
+          "sourceLabel": "STATdx",
+          "displayLabel": "STATdx image 25",
+          "downloadRecommendation": "primaryTeachingSet",
+          "sourceQualifiedFilename": "SDX-25_STATdx_image_25_plain_e88fbe18.jpg",
+          "plainUrl": "https://my.statdx.com/image/thumbnail/e88fbe18-5a97-4615-82e4-470e2956b482?size=1000&quality=90",
+          "annotatedUrl": "https://my.statdx.com/image/thumbnail/e88fbe18-5a97-4615-82e4-470e2956b482?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_e88fbe18.jpg",
+          "usedFor": [
+            "primaryTeachingSet",
+            "rapidExpansionTimeLapse",
+            "higherResolutionExactRepresentative"
+          ]
+        }
+      ],
+      "archiveOptionalDuplicates": [
+        {
+          "masterImageId": "RP-01",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 1",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-01_RadPrimer_image_01_plain_1163d0d8.jpg",
+          "plainUrl": "https://app.radprimer.com/images/1163d0d8-e5a8-492c-bef7-81d98880ca5c?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/1163d0d8-e5a8-492c-bef7-81d98880ca5c?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_1163d0d8.jpg",
+          "usedFor": []
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 2",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-02_RadPrimer_image_02_plain_6d20338c.jpg",
+          "plainUrl": "https://app.radprimer.com/images/6d20338c-de7b-4514-b5eb-8fc41ccf2629?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/6d20338c-de7b-4514-b5eb-8fc41ccf2629?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_6d20338c.jpg",
+          "usedFor": []
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 3",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-03_RadPrimer_image_03_plain_4e212edd.jpg",
+          "plainUrl": "https://app.radprimer.com/images/4e212edd-df6d-47cb-a019-8226028108aa?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/4e212edd-df6d-47cb-a019-8226028108aa?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_4e212edd.jpg",
+          "usedFor": []
+        },
+        {
+          "masterImageId": "RP-04",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 4",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-04_RadPrimer_image_04_plain_62fb0c80.jpg",
+          "plainUrl": "https://app.radprimer.com/images/62fb0c80-8a3f-4caa-9b9e-01fe53b2d415?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/62fb0c80-8a3f-4caa-9b9e-01fe53b2d415?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_62fb0c80.jpg",
+          "usedFor": []
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 5",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-05_RadPrimer_image_05_plain_0329f2b8.jpg",
+          "plainUrl": "https://app.radprimer.com/images/0329f2b8-4920-4eff-8b9f-c3b153d70335?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/0329f2b8-4920-4eff-8b9f-c3b153d70335?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_0329f2b8.jpg",
+          "usedFor": []
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 6",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-06_RadPrimer_image_06_plain_7349379f.jpg",
+          "plainUrl": "https://app.radprimer.com/images/7349379f-4876-447d-a807-fb27e94cdffa?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/7349379f-4876-447d-a807-fb27e94cdffa?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_7349379f.jpg",
+          "usedFor": []
+        },
+        {
+          "masterImageId": "RP-07",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 7",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-07_RadPrimer_image_07_plain_eb20f581.jpg",
+          "plainUrl": "https://app.radprimer.com/images/eb20f581-5667-4b75-b783-1a7a135e3fc4?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/eb20f581-5667-4b75-b783-1a7a135e3fc4?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_eb20f581.jpg",
+          "usedFor": []
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 8",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-08_RadPrimer_image_08_plain_da8e7f4f.jpg",
+          "plainUrl": "https://app.radprimer.com/images/da8e7f4f-72d6-4786-91c1-021c2cae7358?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/da8e7f4f-72d6-4786-91c1-021c2cae7358?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_da8e7f4f.jpg",
+          "usedFor": []
+        },
+        {
+          "masterImageId": "RP-09",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 9",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-09_RadPrimer_image_09_plain_96b4f788.jpg",
+          "plainUrl": "https://app.radprimer.com/images/96b4f788-50dc-43e1-94b0-ba873d79517e?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/96b4f788-50dc-43e1-94b0-ba873d79517e?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_96b4f788.jpg",
+          "usedFor": []
+        },
+        {
+          "masterImageId": "RP-10",
+          "sourceLabel": "RadPrimer",
+          "displayLabel": "RadPrimer image 10",
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "sourceQualifiedFilename": "RP-10_RadPrimer_image_10_plain_ff32016a.jpg",
+          "plainUrl": "https://app.radprimer.com/images/ff32016a-989f-408e-95e7-167de9a98f01?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/ff32016a-989f-408e-95e7-167de9a98f01?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_ff32016a.jpg",
+          "usedFor": []
+        }
+      ],
+      "filenamePolicy": "Use source-qualified filenames from visualEvidence/sourceQualifiedFilename; keep short IDs in filenames and traceability, while human prose uses labels such as STATdx image 4.",
+      "downloadOnlyByDefault": [
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22",
+        "SDX-23",
+        "SDX-24",
+        "SDX-25"
+      ]
+    },
+    "generatorInstructions": [
+      "Use RadPrimer hierarchy as the route/backbone, but prefer the selected STATdx image representatives by default.",
+      "Use clean human-facing labels in narrative prose, such as STATdx image 7; reserve SDX-07/RP-07 for registry, filenames, and traceability.",
+      "Preserve listed case clusters when generating future narrative, cards, or image-recognition prompts.",
+      "Do not generate cards or lecture from this package until separately requested."
+    ]
+  }
+}
