@@ -41,6 +41,10 @@
     {
       "resources": ["imaios-page-context-probe.js"],
       "matches": ["https://imaios.com/*", "https://www.imaios.com/*"]
+    },
+    {
+      "resources": ["assets/skull-locator.png"],
+      "matches": ["https://radiopaedia.org/*", "https://www.radiopaedia.org/*"]
     }
   ],
   "content_scripts": [

@@ -18,6 +18,9 @@
   const PRELOAD_CONCURRENCY = 4;
   const MAX_PRELOADED_IMAGES = 160;
   const SLICE_SCRUB_PX = 26;
+  const CINE_DEFAULT_INTERVAL_MS = 180;
+  const CINE_MIN_INTERVAL_MS = 45;
+  const CINE_MAX_INTERVAL_MS = 1200;
   const DEFAULT_SHORTCUTS = {
     close: "Escape",
     previousSeries: "ArrowLeft",
@@ -31,7 +34,11 @@
     invert: "i",
     sync: "r",
     toggleDefaultDrag: "d",
-    panDrag: "Space",
+    toggleCine: "Space",
+    cineSlower: "[",
+    cineFaster: "]",
+    toggleLocator: "h",
+    panDrag: "p",
     windowDrag: "Shift"
   };
   const SHORTCUT_ACTIONS = [
@@ -47,6 +54,10 @@
     ["invert", "Invert display"],
     ["sync", "Sync viewport"],
     ["toggleDefaultDrag", "Toggle default drag"],
+    ["toggleCine", "Toggle cine"],
+    ["cineSlower", "Cine slower"],
+    ["cineFaster", "Cine faster"],
+    ["toggleLocator", "Toggle skull locator"],
     ["panDrag", "Pan drag key"],
     ["windowDrag", "Window/level drag key"]
   ];
@@ -107,6 +118,18 @@
     crossTabStudies: { a: null, b: null },
     suppressOwnKeyCapture: false,
     lastScrollAt: 0,
+    cinePlaying: false,
+    cineTimer: 0,
+    cineDirection: 1,
+    cineIntervalMs: CINE_DEFAULT_INTERVAL_MS,
+    locatorVisible: false,
+    locatorX: 24,
+    locatorY: 24,
+    locatorDragging: false,
+    locatorStartX: 0,
+    locatorStartY: 0,
+    locatorOriginX: 24,
+    locatorOriginY: 24,
     refreshTimer: 0
   };
 
@@ -213,9 +236,14 @@
   async function loadShortcutSettings() {
     try {
       const stored = await chrome.storage.local.get(SHORTCUT_STORAGE_KEY);
+      const saved = stored?.[SHORTCUT_STORAGE_KEY] || {};
+      const migrated = { ...saved };
+      if (!Object.prototype.hasOwnProperty.call(saved, "toggleCine") && normalizeShortcutKey(saved.panDrag) === "Space") {
+        migrated.panDrag = DEFAULT_SHORTCUTS.panDrag;
+      }
       state.shortcutSettings = {
         ...DEFAULT_SHORTCUTS,
-        ...(stored?.[SHORTCUT_STORAGE_KEY] || {})
+        ...migrated
       };
     } catch {
       state.shortcutSettings = { ...DEFAULT_SHORTCUTS };
@@ -827,6 +855,7 @@
   }
 
   async function clearCompareStudies() {
+    stopCine();
     try {
       await chrome.storage.local.remove(CROSS_TAB_STORAGE_KEY);
     } catch {}
@@ -1380,6 +1409,179 @@
           text-overflow: ellipsis;
           pointer-events: none;
         }
+        .slice-locator {
+          position: absolute;
+          z-index: 4;
+          left: 24px;
+          top: 24px;
+          width: 178px;
+          height: 178px;
+          opacity: .98;
+          cursor: grab;
+          pointer-events: auto;
+          touch-action: none;
+          transform-origin: center center;
+          filter: drop-shadow(0 22px 34px rgba(0, 0, 0, .72));
+        }
+        .slice-locator.dragging {
+          cursor: grabbing;
+        }
+        .slice-locator .locator-shell {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform: perspective(640px) rotateX(5deg) rotateY(-7deg);
+          transform-origin: center center;
+        }
+        .slice-locator .locator-skull {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+          pointer-events: none;
+          user-select: none;
+          -webkit-user-drag: none;
+          filter:
+            drop-shadow(0 0 10px rgba(255, 255, 255, .08))
+            drop-shadow(0 14px 20px rgba(0, 0, 0, .56));
+        }
+        .slice-locator .locator-floor {
+          position: absolute;
+          left: 16%;
+          right: 7%;
+          bottom: 6%;
+          height: 12%;
+          border-radius: 999px;
+          background: radial-gradient(ellipse at center, rgba(0, 0, 0, .48), rgba(0, 0, 0, 0) 72%);
+          transform: perspective(300px) rotateX(68deg);
+          pointer-events: none;
+        }
+        .slice-locator .locator-plane {
+          position: absolute;
+          z-index: 2;
+          left: var(--locator-plane-left, 50%);
+          top: var(--locator-plane-top, 50%);
+          width: var(--locator-plane-width, 64%);
+          height: var(--locator-plane-height, 10px);
+          border: 1px solid rgba(186, 230, 253, .72);
+          border-radius: 9px;
+          background:
+            linear-gradient(90deg, rgba(14, 165, 233, .08), rgba(125, 211, 252, .46), rgba(14, 165, 233, .12)),
+            rgba(56, 189, 248, .2);
+          box-shadow:
+            0 0 16px rgba(56, 189, 248, .34),
+            inset 0 0 14px rgba(224, 242, 254, .18);
+          opacity: var(--locator-plane-opacity, .9);
+          transform:
+            translate(-50%, -50%)
+            perspective(420px)
+            rotateY(var(--locator-plane-yaw, 0deg))
+            rotateX(var(--locator-plane-pitch, 0deg))
+            rotate(var(--locator-plane-rotate, 0deg))
+            skewY(var(--locator-plane-skew, 0deg))
+            skewX(var(--locator-plane-skew-x, 0deg))
+            scale(var(--locator-plane-scale, 1));
+          transform-origin: center center;
+          mix-blend-mode: screen;
+          pointer-events: none;
+        }
+        .slice-locator .locator-plane::after {
+          content: "";
+          position: absolute;
+          left: 8%;
+          right: 8%;
+          top: 50%;
+          height: 3px;
+          border-radius: 999px;
+          background: rgba(224, 242, 254, .96);
+          box-shadow: 0 0 10px rgba(125, 211, 252, .8);
+          transform: translateY(-50%);
+        }
+        .slice-locator[data-plane="axial"] .locator-plane {
+          border-color: rgba(186, 230, 253, .82);
+          background:
+            linear-gradient(104deg, rgba(14, 165, 233, .07) 0%, rgba(125, 211, 252, .45) 48%, rgba(224, 242, 254, .2) 54%, rgba(14, 165, 233, .1) 100%),
+            rgba(56, 189, 248, .2);
+          box-shadow:
+            0 0 9px rgba(56, 189, 248, .22),
+            inset 0 0 13px rgba(224, 242, 254, .17);
+          clip-path: polygon(0 48%, 100% 20%, 100% 55%, 0 82%);
+        }
+        .slice-locator[data-plane="axial"] .locator-plane::after {
+          left: -3%;
+          right: -3%;
+          top: 50%;
+          transform: translateY(-50%) rotate(-12deg);
+        }
+        .slice-locator[data-plane="axial"] .locator-plane::before {
+          content: "";
+          position: absolute;
+          inset: 8% 5%;
+          border-top: 1px solid rgba(224, 242, 254, .48);
+          border-bottom: 1px solid rgba(125, 211, 252, .28);
+          background: linear-gradient(180deg, rgba(224, 242, 254, .14), rgba(14, 165, 233, 0) 56%);
+          clip-path: polygon(0 48%, 100% 20%, 100% 55%, 0 82%);
+        }
+        .slice-locator[data-plane="coronal"] .locator-plane::after,
+        .slice-locator[data-plane="sagittal"] .locator-plane::after {
+          left: 50%;
+          right: auto;
+          top: 8%;
+          bottom: 8%;
+          width: 3px;
+          height: auto;
+          transform: translateX(-50%);
+        }
+        .slice-locator[data-plane="coronal"] .locator-plane::after {
+          display: none;
+        }
+        .slice-locator[data-plane="coronal"] .locator-plane {
+          border-color: rgba(186, 230, 253, .82);
+          border-radius: 8px;
+          background:
+            linear-gradient(115deg, rgba(14, 165, 233, .08) 0%, rgba(125, 211, 252, .5) 46%, rgba(224, 242, 254, .2) 52%, rgba(14, 165, 233, .1) 100%),
+            rgba(56, 189, 248, .22);
+          clip-path: polygon(7% 0, 100% 3%, 93% 100%, 0 97%);
+        }
+        .slice-locator[data-plane="coronal"] .locator-plane::before {
+          content: "";
+          position: absolute;
+          inset: 7% 11%;
+          border-left: 2px solid rgba(224, 242, 254, .64);
+          border-right: 1px solid rgba(125, 211, 252, .34);
+          background: linear-gradient(90deg, rgba(224, 242, 254, .22), rgba(14, 165, 233, 0) 48%);
+          clip-path: polygon(7% 0, 100% 3%, 93% 100%, 0 97%);
+        }
+        .slice-locator[data-plane="sagittal"] .locator-plane {
+          border-color: rgba(186, 230, 253, .78);
+          background:
+            linear-gradient(118deg, rgba(14, 165, 233, .04) 0%, rgba(125, 211, 252, .42) 44%, rgba(224, 242, 254, .18) 51%, rgba(14, 165, 233, .09) 100%),
+            rgba(56, 189, 248, .17);
+          box-shadow:
+            0 0 7px rgba(56, 189, 248, .18),
+            inset 0 0 13px rgba(224, 242, 254, .16);
+          clip-path: polygon(0 44%, 100% 10%, 100% 56%, 0 90%);
+        }
+        .slice-locator[data-plane="sagittal"] .locator-plane::after {
+          left: -2%;
+          right: -2%;
+          top: 48%;
+          bottom: auto;
+          width: auto;
+          height: 3px;
+          transform: translateY(-50%) rotate(-30deg);
+        }
+        .slice-locator[data-plane="sagittal"] .locator-plane::before {
+          content: "";
+          position: absolute;
+          inset: 5% 6%;
+          border-left: 2px solid rgba(224, 242, 254, .56);
+          border-right: 1px solid rgba(125, 211, 252, .3);
+          background: linear-gradient(90deg, rgba(224, 242, 254, .16), rgba(14, 165, 233, 0) 52%);
+          clip-path: polygon(0 44%, 100% 10%, 100% 56%, 0 90%);
+        }
         .compare-empty {
           position: absolute;
           inset: 0;
@@ -1487,6 +1689,10 @@
               <button class="level-up" type="button" title="Brighter display level">L+</button>
               <button class="invert wide" type="button" title="Invert display">Inv</button>
               <button class="reset-window wide" type="button" title="Reset display window">WL 0</button>
+              <button class="cine-toggle wide" type="button" title="Toggle ping-pong cine">Cine</button>
+              <button class="cine-slower wide" type="button" title="Slower cine">C-</button>
+              <button class="cine-faster wide" type="button" title="Faster cine">C+</button>
+              <button class="locator-toggle wide" type="button" title="Toggle floating skull slice locator">Skull</button>
               <button class="sync wide" type="button" title="Sync with the live Radiopaedia viewport">Sync</button>
               <button class="keys wide" type="button" title="Keyboard shortcuts">Keys</button>
               <button class="compare wide" type="button" title="Show two linked image panes">Compare</button>
@@ -1525,6 +1731,13 @@
                 <span class="compare-empty">Select pane B, then choose a sequence.</span>
               </div>
             </div>
+            <div class="slice-locator" hidden aria-hidden="true">
+              <div class="locator-shell">
+                <div class="locator-floor"></div>
+                <img class="locator-skull" alt="">
+                <div class="locator-plane"></div>
+              </div>
+            </div>
             <div class="empty" hidden>No rendered Radiopaedia image detected yet.</div>
           </div>
           <div class="footer">
@@ -1552,6 +1765,10 @@
     shadow.querySelector(".level-down").addEventListener("click", () => adjustWindow({ brightnessDelta: -0.08 }));
     shadow.querySelector(".invert").addEventListener("click", toggleInvert);
     shadow.querySelector(".reset-window").addEventListener("click", resetWindowing);
+    shadow.querySelector(".cine-toggle").addEventListener("click", toggleCine);
+    shadow.querySelector(".cine-slower").addEventListener("click", () => adjustCineSpeed(1));
+    shadow.querySelector(".cine-faster").addEventListener("click", () => adjustCineSpeed(-1));
+    shadow.querySelector(".locator-toggle").addEventListener("click", toggleSliceLocator);
     shadow.querySelector(".sync").addEventListener("click", () => syncFromPage({ preferVisible: true }));
     shadow.querySelector(".keys").addEventListener("click", toggleShortcutPanel);
     shadow.querySelector(".compare").addEventListener("click", toggleCompareMode);
@@ -1583,6 +1800,11 @@
     stage.addEventListener("pointermove", onPointerMove);
     stage.addEventListener("pointerup", onPointerUp);
     stage.addEventListener("pointercancel", onPointerUp);
+    const locator = shadow.querySelector(".slice-locator");
+    locator.addEventListener("pointerdown", onLocatorPointerDown);
+    locator.addEventListener("pointermove", onLocatorPointerMove);
+    locator.addEventListener("pointerup", onLocatorPointerUp);
+    locator.addEventListener("pointercancel", onLocatorPointerUp);
     stage.addEventListener("dblclick", () => {
       if (state.compareMode) {
         const transform = paneTransform(state.activePane);
@@ -1601,6 +1823,8 @@
     });
 
     document.documentElement.appendChild(host);
+    const locatorSkull = shadow.querySelector(".locator-skull");
+    if (locatorSkull) locatorSkull.src = chrome.runtime.getURL("assets/skull-locator.png");
     renderShortcutPanel();
     return host;
   }
@@ -1610,6 +1834,7 @@
     const shell = host.shadowRoot?.querySelector(".shell");
     shell?.classList.toggle("image-fullscreen", Boolean(state.imageFullscreen));
     shell?.classList.toggle("image-window", Boolean(state.imageWindow));
+    window.setTimeout(updateSliceLocator, 0);
   }
 
   function enterImageWindow() {
@@ -1621,6 +1846,7 @@
 
   function exitImageWindow() {
     if (!state.imageWindow) return;
+    stopCine();
     state.imageWindow = false;
     syncImageFullscreenClass();
   }
@@ -1641,6 +1867,7 @@
   function exitImageFullscreen(options = {}) {
     if (!state.imageFullscreen && document.fullscreenElement !== document.getElementById(HOST_ID)) return;
     const host = document.getElementById(HOST_ID);
+    stopCine();
     state.imageFullscreen = false;
     state.imageWindow = false;
     syncImageFullscreenClass();
@@ -1726,6 +1953,173 @@
     return pieces.join(" | ");
   }
 
+  function locatorSourceInfo() {
+    return state.compareMode ? infoForPane(state.activePane) : getActiveSeries();
+  }
+
+  function inferLocatorPlane(info) {
+    const text = [
+      info?.label,
+      info?.seriesNumberLabel,
+      info?.modality,
+      getFrameStack(info?.key)?.label
+    ].filter(Boolean).join(" ").toLowerCase();
+    if (text.includes("sagittal")) return "sagittal";
+    if (text.includes("coronal")) return "coronal";
+    return "axial";
+  }
+
+  function getLocatorSliceFraction(info) {
+    const stack = getFrameStack(info?.key);
+    const current = Number.isFinite(info?.sliceNumber) ? info.sliceNumber : stack?.currentSlice;
+    const total = Number.isFinite(info?.totalSlices) ? info.totalSlices : stack?.totalSlices;
+    if (!Number.isFinite(current) || !Number.isFinite(total) || total <= 1) return 0.5;
+    return Math.max(0, Math.min(1, (current - 1) / (total - 1)));
+  }
+
+  function updateLocatorButton() {
+    const host = document.getElementById(HOST_ID);
+    const shadow = host?.shadowRoot;
+    if (!shadow) return;
+    shadow.querySelector(".locator-toggle")?.classList.toggle("active-toggle", state.locatorVisible);
+  }
+
+  function placeLocatorPlane(locator, plane, fraction) {
+    const planeEl = locator.querySelector(".locator-plane");
+    if (!planeEl) return;
+    const f = Math.max(0, Math.min(1, Number.isFinite(fraction) ? fraction : 0.5));
+    let left = 50;
+    let top = 50;
+    let width = 64;
+    let height = 9;
+    let rotate = -3;
+    let skew = 0;
+    let skewX = 0;
+    let yaw = 0;
+    let pitch = 0;
+    let scale = 1;
+    let opacity = 0.9;
+
+    if (plane === "sagittal") {
+      left = 24 + f * 43;
+      top = 51;
+      width = 66;
+      height = 118;
+      rotate = 0;
+      skew = 0;
+      skewX = 0;
+      yaw = 0;
+      pitch = 0;
+      scale = 0.98;
+      opacity = 0.5 + f * 0.1;
+    } else if (plane === "coronal") {
+      left = 32 + f * 34;
+      top = 52 - f * 5;
+      width = 58;
+      height = 112;
+      rotate = 1;
+      skew = 0;
+      skewX = -1;
+      yaw = 0;
+      pitch = 0;
+      scale = 0.98;
+      opacity = 0.52 + f * 0.14;
+    } else {
+      left = 50;
+      top = 28 + f * 48;
+      width = 90;
+      height = 30;
+      rotate = 0;
+      skew = 0;
+      opacity = 0.5 + f * 0.12;
+    }
+
+    locator.style.setProperty("--locator-plane-left", `${left}%`);
+    locator.style.setProperty("--locator-plane-top", `${top}%`);
+    locator.style.setProperty("--locator-plane-width", `${width}%`);
+    locator.style.setProperty("--locator-plane-height", `${height}%`);
+    locator.style.setProperty("--locator-plane-rotate", `${rotate}deg`);
+    locator.style.setProperty("--locator-plane-skew", `${skew}deg`);
+    locator.style.setProperty("--locator-plane-skew-x", `${skewX}deg`);
+    locator.style.setProperty("--locator-plane-yaw", `${yaw}deg`);
+    locator.style.setProperty("--locator-plane-pitch", `${pitch}deg`);
+    locator.style.setProperty("--locator-plane-scale", String(scale));
+    locator.style.setProperty("--locator-plane-opacity", String(opacity));
+  }
+
+  function updateSliceLocator() {
+    const host = document.getElementById(HOST_ID);
+    const shadow = host?.shadowRoot;
+    const locator = shadow?.querySelector(".slice-locator");
+    if (!locator) return;
+
+    locator.hidden = !state.locatorVisible;
+    updateLocatorButton();
+    if (!state.locatorVisible) return;
+
+    const info = locatorSourceInfo();
+    const plane = inferLocatorPlane(info);
+    locator.dataset.plane = plane;
+    locator.style.left = `${state.locatorX}px`;
+    locator.style.top = `${state.locatorY}px`;
+    placeLocatorPlane(locator, plane, getLocatorSliceFraction(info));
+  }
+
+  function toggleSliceLocator() {
+    state.locatorVisible = !state.locatorVisible;
+    updateSliceLocator();
+  }
+
+  function clampLocatorPosition(x, y) {
+    const shadow = document.getElementById(HOST_ID)?.shadowRoot;
+    const stage = shadow?.querySelector(".stage");
+    const locator = shadow?.querySelector(".slice-locator");
+    const stageRect = stage?.getBoundingClientRect();
+    const locatorRect = locator?.getBoundingClientRect();
+    if (!stageRect || !locatorRect) return { x, y };
+    const maxX = Math.max(8, stageRect.width - locatorRect.width - 8);
+    const maxY = Math.max(8, stageRect.height - locatorRect.height - 8);
+    return {
+      x: Math.max(8, Math.min(maxX, x)),
+      y: Math.max(8, Math.min(maxY, y))
+    };
+  }
+
+  function onLocatorPointerDown(event) {
+    if (event.button !== 0) return;
+    event.preventDefault();
+    event.stopPropagation();
+    state.locatorDragging = true;
+    state.locatorStartX = event.clientX;
+    state.locatorStartY = event.clientY;
+    state.locatorOriginX = state.locatorX;
+    state.locatorOriginY = state.locatorY;
+    event.currentTarget.classList.add("dragging");
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  }
+
+  function onLocatorPointerMove(event) {
+    if (!state.locatorDragging) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const next = clampLocatorPosition(
+      state.locatorOriginX + event.clientX - state.locatorStartX,
+      state.locatorOriginY + event.clientY - state.locatorStartY
+    );
+    state.locatorX = next.x;
+    state.locatorY = next.y;
+    updateSliceLocator();
+  }
+
+  function onLocatorPointerUp(event) {
+    if (!state.locatorDragging) return;
+    event.preventDefault();
+    event.stopPropagation();
+    state.locatorDragging = false;
+    event.currentTarget.classList.remove("dragging");
+    event.currentTarget.releasePointerCapture?.(event.pointerId);
+  }
+
   function updateCompareButtons() {
     const host = ensureHost();
     const shadow = host.shadowRoot;
@@ -1736,6 +2130,8 @@
     if (layout) layout.textContent = state.compareLayout === "side" ? "Side" : "Stack";
     shadow.querySelector(".compare-layout")?.classList.toggle("active-toggle", state.compareMode);
     shadow.querySelector(".compare-link")?.classList.toggle("active-toggle", state.compareMode && state.compareLinked);
+    shadow.querySelector(".cine-toggle")?.classList.toggle("active-toggle", state.cinePlaying);
+    shadow.querySelector(".locator-toggle")?.classList.toggle("active-toggle", state.locatorVisible);
   }
 
   function updateComparePaneClasses() {
@@ -1768,6 +2164,7 @@
     }
     updateComparePaneClasses();
     updateCompareStatus();
+    updateSliceLocator();
   }
 
   function renderComparePane(paneId) {
@@ -1819,6 +2216,7 @@
     renderComparePane("b");
     updateComparePaneClasses();
     updateCompareStatus();
+    updateSliceLocator();
   }
 
   function chooseAdjacentSeries(info) {
@@ -1978,6 +2376,7 @@
     const shadow = host.shadowRoot;
     if (state.compareMode) {
       updateCompareStatus();
+      updateSliceLocator();
       return;
     }
     const title = shadow.querySelector(".title");
@@ -1993,6 +2392,7 @@
         ? state.bridgeApiUrl || "Radiopaedia viewport bridge connected"
         : state.bridgeError || "Radiopaedia viewport bridge pending";
     }
+    updateSliceLocator();
   }
 
   function setImage(info, options = {}) {
@@ -2054,6 +2454,7 @@
   }
 
   function openViewer() {
+    stopCine();
     const host = ensureHost();
     host.style.display = "block";
     state.open = true;
@@ -2084,6 +2485,7 @@
 
   function closeViewer() {
     const host = document.getElementById(HOST_ID);
+    stopCine();
     exitImageFullscreen();
     exitImageWindow();
     if (host) host.style.display = "none";
@@ -2533,6 +2935,98 @@
     return setSliceNumber(nextSlice, { direction });
   }
 
+  function getCineDriverInfo() {
+    collectSeries();
+    return state.compareMode ? infoForPane(state.activePane) : getActiveSeries();
+  }
+
+  function shouldReverseCine(info, direction) {
+    const stack = getFrameStack(info?.key);
+    const current = info?.sliceNumber || stack?.currentSlice;
+    const total = info?.totalSlices || stack?.totalSlices;
+    if (!Number.isFinite(current) || !Number.isFinite(total)) return false;
+    return (direction > 0 && current >= total) || (direction < 0 && current <= 1);
+  }
+
+  function clearCineTimer() {
+    if (state.cineTimer) window.clearTimeout(state.cineTimer);
+    state.cineTimer = 0;
+  }
+
+  function scheduleCineTick() {
+    clearCineTimer();
+    if (!state.cinePlaying) return;
+    state.cineTimer = window.setTimeout(runCineTick, state.cineIntervalMs);
+  }
+
+  function runCineTick() {
+    if (!state.cinePlaying || !state.open) return;
+    const info = getCineDriverInfo();
+    if (!info) {
+      stopCine();
+      return;
+    }
+
+    if (shouldReverseCine(info, state.cineDirection)) {
+      state.cineDirection *= -1;
+    }
+    let moved = scrollStack(state.cineDirection);
+    if (!moved) {
+      state.cineDirection *= -1;
+      moved = scrollStack(state.cineDirection);
+    }
+    if (!moved) {
+      stopCine();
+      return;
+    }
+    scheduleCineTick();
+  }
+
+  function updateCineButtons() {
+    const host = document.getElementById(HOST_ID);
+    const shadow = host?.shadowRoot;
+    if (!shadow) return;
+    const toggle = shadow.querySelector(".cine-toggle");
+    if (toggle) {
+      toggle.classList.toggle("active-toggle", state.cinePlaying);
+      toggle.title = state.cinePlaying
+        ? `Stop ping-pong cine (${Math.round(1000 / state.cineIntervalMs)} fps)`
+        : `Start ping-pong cine (${Math.round(1000 / state.cineIntervalMs)} fps)`;
+    }
+  }
+
+  function startCine() {
+    const info = getCineDriverInfo();
+    if (!info) return false;
+    if (state.compareMode && state.compareLinked) anchorCompareLink();
+    state.cinePlaying = true;
+    state.cineDirection = shouldReverseCine(info, state.cineDirection) ? -state.cineDirection : state.cineDirection || 1;
+    updateCineButtons();
+    scheduleCineTick();
+    return true;
+  }
+
+  function stopCine() {
+    state.cinePlaying = false;
+    clearCineTimer();
+    updateCineButtons();
+  }
+
+  function toggleCine() {
+    if (state.cinePlaying) stopCine();
+    else startCine();
+  }
+
+  function adjustCineSpeed(direction) {
+    const multiplier = direction < 0 ? 1 / 1.25 : 1.25;
+    state.cineIntervalMs = Math.max(
+      CINE_MIN_INTERVAL_MS,
+      Math.min(CINE_MAX_INTERVAL_MS, Math.round(state.cineIntervalMs * multiplier))
+    );
+    updateCineButtons();
+    if (state.cinePlaying) scheduleCineTick();
+  }
+
   function onStageWheel(event) {
     event.preventDefault();
     if (state.compareMode) setActivePane(paneFromEvent(event));
@@ -2779,6 +3273,10 @@
     else if (actionId === "invert") toggleInvert();
     else if (actionId === "sync") syncFromPage({ preferVisible: true });
     else if (actionId === "toggleDefaultDrag") toggleDefaultDragMode();
+    else if (actionId === "toggleCine") toggleCine();
+    else if (actionId === "cineSlower") adjustCineSpeed(1);
+    else if (actionId === "cineFaster") adjustCineSpeed(-1);
+    else if (actionId === "toggleLocator") toggleSliceLocator();
   }
 
   async function handleKeydown(event) {
