@@ -491,8 +491,9 @@
 
     if (!series.length) return false;
     state.bridgeSeries = series;
-    state.series = series;
-    if (!state.activeKey || !series.some((item) => item.key === state.activeKey)) {
+    const combined = [...series, ...state.externalSeries];
+    state.series = combined;
+    if (!state.activeKey || !combined.some((item) => item.key === state.activeKey)) {
       const visible = series.find((item) => item.visible);
       state.activeKey = (visible || series[0]).key;
     }
@@ -823,6 +824,33 @@
     renderSequenceList();
     updateCrossTabButtons();
     return true;
+  }
+
+  async function clearCompareStudies() {
+    try {
+      await chrome.storage.local.remove(CROSS_TAB_STORAGE_KEY);
+    } catch {}
+    state.crossTabStudies = { a: null, b: null };
+    removeExternalSlot("a");
+    removeExternalSlot("b");
+    state.compareMode = false;
+    state.compareLinked = false;
+    state.activePane = "a";
+    state.comparePanes = {
+      a: { key: "", imageUrl: "", sliceNumber: null, anchorSlice: null },
+      b: { key: "", imageUrl: "", sliceNumber: null, anchorSlice: null }
+    };
+    state.compareTransforms = {
+      a: defaultCompareTransform(),
+      b: defaultCompareTransform()
+    };
+    const info = chooseInitialSeries();
+    syncCompareClass();
+    updateCompareButtons();
+    updateCrossTabButtons();
+    renderSequenceList();
+    if (info) setImage(info, { resetView: true });
+    else showEmpty();
   }
 
   function ensureLauncher() {
@@ -1321,6 +1349,11 @@
           border-color: transparent;
           box-shadow: none;
         }
+        .shell.image-fullscreen .compare-label,
+        .shell.image-fullscreen .compare-empty,
+        .shell.image-fullscreen .empty {
+          display: none !important;
+        }
         .compare-pane img {
           position: absolute;
           inset: 0;
@@ -1465,7 +1498,7 @@
               <button class="save-b wide" type="button" title="Save this tab's study to cross-tab slot B">Save B</button>
               <button class="load-a wide" type="button" title="Load saved slot A into pane A">Load A</button>
               <button class="load-b wide" type="button" title="Load saved slot B into pane B">Load B</button>
-              <button class="image-popup wide" type="button" title="Open image-only viewer in a separate app-style window">Pop</button>
+              <button class="clear-compare wide" type="button" title="Clear saved/loaded compare panes">Clear</button>
               <button class="image-window wide" type="button" title="Image-only window mode">Win</button>
               <button class="image-full wide" type="button" title="Image-only fullscreen">Full</button>
               <button class="close" type="button" title="Close">x</button>
@@ -1530,7 +1563,7 @@
     shadow.querySelector(".save-b").addEventListener("click", () => saveCurrentStudyToSlot("b"));
     shadow.querySelector(".load-a").addEventListener("click", () => loadCrossTabStudyToPane("a"));
     shadow.querySelector(".load-b").addEventListener("click", () => loadCrossTabStudyToPane("b"));
-    shadow.querySelector(".image-popup").addEventListener("click", openImagePopupWindow);
+    shadow.querySelector(".clear-compare").addEventListener("click", clearCompareStudies);
     shadow.querySelector(".image-window").addEventListener("click", enterImageWindow);
     shadow.querySelector(".image-full").addEventListener("click", enterImageFullscreen);
     shadow.querySelector(".shortcut-reset").addEventListener("click", resetShortcutSettings);
@@ -1577,45 +1610,6 @@
     const shell = host.shadowRoot?.querySelector(".shell");
     shell?.classList.toggle("image-fullscreen", Boolean(state.imageFullscreen));
     shell?.classList.toggle("image-window", Boolean(state.imageWindow));
-  }
-
-  function imagePopupUrl() {
-    try {
-      const url = new URL(location.href);
-      url.searchParams.set("rpPacs", "window");
-      return url.toString();
-    } catch {
-      return location.href;
-    }
-  }
-
-  function openImagePopupWindow() {
-    const screenLeft = Number.isFinite(window.screenX) ? window.screenX : 0;
-    const screenTop = Number.isFinite(window.screenY) ? window.screenY : 0;
-    const availWidth = window.screen?.availWidth || 1400;
-    const availHeight = window.screen?.availHeight || 900;
-    const width = Math.max(920, Math.min(availWidth - 80, 1600));
-    const height = Math.max(640, Math.min(availHeight - 80, 1100));
-    const left = Math.max(0, screenLeft + 40);
-    const top = Math.max(0, screenTop + 40);
-    const url = imagePopupUrl();
-
-    chrome.runtime.sendMessage({
-      type: "OPEN_RADIOPAEDIA_PACS_POPUP",
-      url,
-      width,
-      height,
-      left,
-      top
-    }, (response) => {
-      if (chrome.runtime.lastError || !response?.ok) {
-        window.open(
-          url,
-          "radiopaedia-pacs-popup",
-          `popup=yes,width=${Math.round(width)},height=${Math.round(height)},left=${Math.round(left)},top=${Math.round(top)},resizable=yes,scrollbars=no`
-        );
-      }
-    });
   }
 
   function enterImageWindow() {
@@ -1917,6 +1911,17 @@
     renderComparePanes();
   }
 
+  function syncCompareLinkFromCurrentPanes() {
+    if (!state.compareMode) return false;
+    const a = infoForPane("a");
+    const b = infoForPane("b");
+    if (!a || !b) return false;
+    state.compareLinked = true;
+    anchorCompareLink();
+    renderComparePanes();
+    return true;
+  }
+
   function renderSequenceList() {
     const host = ensureHost();
     const list = host.shadowRoot.querySelector(".sequence-list");
@@ -2138,6 +2143,7 @@
   function syncFromPage(options = {}) {
     if (options.bridge !== false) {
       refreshFromBridge(options).then((ok) => {
+        if (ok && state.compareMode) syncCompareLinkFromCurrentPanes();
         if (!ok) syncFromPage({ ...options, bridge: false });
       });
       return;
@@ -2149,6 +2155,7 @@
     state.series = series;
     const info = selectInfoAfterSync({ ...options, previousKey, previousUrl });
     if (state.compareMode) {
+      syncCompareLinkFromCurrentPanes();
       renderComparePanes();
       renderSequenceList();
       return;
@@ -2836,6 +2843,7 @@
     if (!isRadiopaediaCasePage()) return;
     ensureLauncher();
     loadShortcutSettings();
+    chrome.storage.local.remove("radiopaediaPacsPopupState").catch(() => {});
     collectSeries();
     startObserver();
     document.addEventListener(BRIDGE_RESPONSE_EVENT, onBridgeResponse);
@@ -2849,12 +2857,6 @@
     });
     window.addEventListener("blur", () => state.pressedKeys.clear());
     refreshFromBridge({ preferVisible: true });
-    if (new URLSearchParams(location.search).get("rpPacs") === "window") {
-      window.setTimeout(() => {
-        openViewer();
-        enterImageWindow();
-      }, 350);
-    }
     window.setTimeout(() => {
       ensureLauncher();
       collectSeries();
