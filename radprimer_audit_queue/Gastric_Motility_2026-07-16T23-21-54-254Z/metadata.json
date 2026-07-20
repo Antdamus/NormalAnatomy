@@ -1,0 +1,867 @@
+{
+  "createdAt": "2026-07-16T23:21:54.254Z",
+  "articleTitle": "Gastric Motility",
+  "sourceUrl": "https://app.radprimer.com/document/0631a547-dd17-4857-9dc6-f19eac055499/lesson/728edb26-534d-44d7-81e3-05ecc2a084b3",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "masterImageIds": [],
+  "sourceQualifiedImages": [],
+  "cases": [
+    [
+      18,
+      19
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7
+    ],
+    [
+      8
+    ],
+    [
+      9
+    ],
+    [
+      10
+    ],
+    [
+      11
+    ],
+    [
+      12
+    ],
+    [
+      13
+    ],
+    [
+      14
+    ],
+    [
+      15
+    ],
+    [
+      16
+    ],
+    [
+      17
+    ]
+  ],
+  "totalImagesOnPage": 19,
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Nuclear Medicine",
+    "Gastrointestinal Basic",
+    "Gastric Motility"
+  ],
+  "outputChars": 259199,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Gastric Motility — Build Complete\n\nCore validation: Pathway A satisfied using Core Radiology: A Visual Approach to Diagnostic Imaging, 2nd edition, Nuclear and Molecular Imaging, “Esophageal and gastric motility,” pages 463–464. Core facts incorporated:\n\n- Tc-99m sulfur colloid or Tc-99m DTPA may be mixed with the ingested meal.\n- Standardized solid-meal gastric emptying imaging extends through 4 hours.\n- Normal residual gastric activity at 4 hours is <10% under the Core adult protocol.\n- Liquid gastric emptying may be studied with Tc-99m DTPA and normally occurs more rapidly.\n\nThe full Core section and complete RadPrimer article were reconciled. Pediatric thresholds, milk-study norms, dual-phase interpretation, acquisition details, technical pitfalls, and the 18 selected cases were derived from RadPrimer.\n\nFinal audit\n\n- Total user-provided cases: 18\n- Eligible for PRIMARY UNKNOWN: 18\n- Excluded: 0\n- PRIMARY UNKNOWN cards generated: 18\n- Differential Drills: 4\n- Definition cards: 2\n- Mechanism cards: 3\n- Boards Trap cards: 3\n- Epidemiology cards: 3\n- Other High-Yield cards: 16\n\nSECTION A cardinality check passed: 18 eligible cases correspond to exactly 18 PRIMARY UNKNOWN notes.\n\nTotal cards to export: 49\nExpected TSV lines: 49\n\nThe file contains exactly 22 tab-separated columns per line, no header row, no embedded physical newlines, blank Tags fields, source-basis summaries, verbatim supplied captions, and all required trigger-isolation checks.",
+  "coreEvidence": {
+    "status": "NOT_PROVIDED",
+    "provided": false,
+    "chars": 435,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Nuclear Medicine",
+      "Gastrointestinal Basic",
+      "Gastric Motility"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Nuclear Medicine",
+      "Gastrointestinal Basic",
+      "Gastric Motility"
+    ],
+    "deckName": "Corebook::Nuclear Medicine::Gastrointestinal Basic::Gastric Motility",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [
+    {
+      "filename": "Gastric_Motility18.jpg",
+      "label": "",
+      "imageNumber": 18,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/a5a60175-e5f5-4dc8-b3df-a8bf0ab5abb3?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility18_annot.jpg",
+      "label": "",
+      "imageNumber": 18,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/a5a60175-e5f5-4dc8-b3df-a8bf0ab5abb3?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility19.jpg",
+      "label": "",
+      "imageNumber": 19,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/c586b35d-1e62-418e-be45-d6b92c2077db?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility19_annot.jpg",
+      "label": "",
+      "imageNumber": 19,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/c586b35d-1e62-418e-be45-d6b92c2077db?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility1.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/5546237e-9f82-47ba-bcf0-233bdfb42814?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility1_annot.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/5546237e-9f82-47ba-bcf0-233bdfb42814?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility2.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/6bc507a6-1440-4813-9007-5e9c57e5ea13?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility2_annot.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/6bc507a6-1440-4813-9007-5e9c57e5ea13?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility3.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/3f07055e-e575-4998-be0a-c5b8ff841fc0?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility3_annot.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/3f07055e-e575-4998-be0a-c5b8ff841fc0?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility4.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/304f9782-d521-40dd-a7af-ede3daa71626?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility4_annot.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/304f9782-d521-40dd-a7af-ede3daa71626?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility5.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/f235a9e2-ccab-43e2-ac0d-631df3552f64?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility5_annot.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/f235a9e2-ccab-43e2-ac0d-631df3552f64?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility6.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/b05a68ed-3d8f-4899-b670-d62025794e81?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility6_annot.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/b05a68ed-3d8f-4899-b670-d62025794e81?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility7.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/40bd752d-5c06-4ac6-8890-7cae03a9686b?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility7_annot.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/40bd752d-5c06-4ac6-8890-7cae03a9686b?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility8.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/74454960-916c-41a8-b7ca-5696d6dc234d?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility8_annot.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/74454960-916c-41a8-b7ca-5696d6dc234d?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility9.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/c7b6231f-6b17-4fc5-ae35-7a38d0ea656d?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility9_annot.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/c7b6231f-6b17-4fc5-ae35-7a38d0ea656d?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility10.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/6f38b4eb-a4fd-4934-91dd-b8a235262c12?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility10_annot.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/6f38b4eb-a4fd-4934-91dd-b8a235262c12?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility11.jpg",
+      "label": "",
+      "imageNumber": 11,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/72955fbe-389c-4718-95fd-ed1eb2a5f2e3?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility11_annot.jpg",
+      "label": "",
+      "imageNumber": 11,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/72955fbe-389c-4718-95fd-ed1eb2a5f2e3?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility12.jpg",
+      "label": "",
+      "imageNumber": 12,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/acc6a008-8991-42c3-a9a8-270c5764701f?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility12_annot.jpg",
+      "label": "",
+      "imageNumber": 12,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/acc6a008-8991-42c3-a9a8-270c5764701f?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility13.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/d4cc594f-21ed-46e0-a1ec-616f1f274a85?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility13_annot.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/d4cc594f-21ed-46e0-a1ec-616f1f274a85?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility14.jpg",
+      "label": "",
+      "imageNumber": 14,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/9d7cbed4-eeaf-4531-b39b-653bad3c1ec3?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility14_annot.jpg",
+      "label": "",
+      "imageNumber": 14,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/9d7cbed4-eeaf-4531-b39b-653bad3c1ec3?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility15.jpg",
+      "label": "",
+      "imageNumber": 15,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/5e426ccd-8f7b-4e0f-9174-f1021a3294b0?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility15_annot.jpg",
+      "label": "",
+      "imageNumber": 15,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/5e426ccd-8f7b-4e0f-9174-f1021a3294b0?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility16.jpg",
+      "label": "",
+      "imageNumber": 16,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/682e48f6-8fd1-4a65-9291-2c8ab660f6d4?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility16_annot.jpg",
+      "label": "",
+      "imageNumber": 16,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/682e48f6-8fd1-4a65-9291-2c8ab660f6d4?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Gastric_Motility17.jpg",
+      "label": "",
+      "imageNumber": 17,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/068523a2-2a93-447d-8e46-3bdb05a67bcf?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Gastric_Motility17_annot.jpg",
+      "label": "",
+      "imageNumber": 17,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/068523a2-2a93-447d-8e46-3bdb05a67bcf?style=xlarge&annotated=true"
+    }
+  ],
+  "imageRegistry": [
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "imageId": "5546237e-9f82-47ba-bcf0-233bdfb42814",
+      "baseName": "Gastric_Motility1",
+      "caption": "Anterior-posterior planar images show a normal dual-phase gastric emptying scan in a 14 year old with abdominal pain. Liquid gastric emptying <img src=\"arrow_CS.png\"> is 42% at 1 hour and 82% at 2 hours. Solid gastric emptying <img src=\"arrow_BS.png\"> is 66% at 2 hours and 99% at 4 hours.",
+      "plainFilename": "Gastric_Motility1.jpg",
+      "annotatedFilename": "Gastric_Motility1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/5546237e-9f82-47ba-bcf0-233bdfb42814?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/5546237e-9f82-47ba-bcf0-233bdfb42814?style=xlarge&annotated=true",
+      "masterImageId": "RP-01",
+      "filename": "Gastric_Motility1.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "imageId": "6bc507a6-1440-4813-9007-5e9c57e5ea13",
+      "baseName": "Gastric_Motility2",
+      "caption": "Anterior-posterior planar images show a normal dual-phase gastric emptying scan (liquid <img src=\"arrow_CS.png\">: 62% at 1 hour, 83% at 2 hours; solid <img src=\"arrow_BS.png\">: 73% at 2 hours, 94% at 3 hours). Because solid emptying was > 90% at 3 hours, imaging was not performed at 4 hours.",
+      "plainFilename": "Gastric_Motility2.jpg",
+      "annotatedFilename": "Gastric_Motility2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/6bc507a6-1440-4813-9007-5e9c57e5ea13?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/6bc507a6-1440-4813-9007-5e9c57e5ea13?style=xlarge&annotated=true",
+      "masterImageId": "RP-02",
+      "filename": "Gastric_Motility2.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "imageId": "3f07055e-e575-4998-be0a-c5b8ff841fc0",
+      "baseName": "Gastric_Motility3",
+      "caption": "Anterior-posterior planar images show a normal dual-phase gastric emptying scan (liquid <img src=\"arrow_CS.png\">: 57% at 1 hour, 92% at 2 hours; solid <img src=\"arrow_BS.png\">: 37% at 1 hour, 91% at 2 hours). Because solid emptying was > 90% at 2 hours, imaging was not performed through 4 hours.",
+      "plainFilename": "Gastric_Motility3.jpg",
+      "annotatedFilename": "Gastric_Motility3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3f07055e-e575-4998-be0a-c5b8ff841fc0?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/3f07055e-e575-4998-be0a-c5b8ff841fc0?style=xlarge&annotated=true",
+      "masterImageId": "RP-03",
+      "filename": "Gastric_Motility3.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "imageId": "304f9782-d521-40dd-a7af-ede3daa71626",
+      "baseName": "Gastric_Motility4",
+      "caption": "Anterior-posterior planar images show an abnormal dual-phase gastric emptying scan. Emptying of both phases is abnormal: Liquid emptying <img src=\"arrow_CS.png\"> is 35% at 1 hour and 2 hours and solid emptying <img src=\"arrow_BS.png\"> is 11% at 2 hours and 4 hours.",
+      "plainFilename": "Gastric_Motility4.jpg",
+      "annotatedFilename": "Gastric_Motility4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/304f9782-d521-40dd-a7af-ede3daa71626?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/304f9782-d521-40dd-a7af-ede3daa71626?style=xlarge&annotated=true",
+      "masterImageId": "RP-04",
+      "filename": "Gastric_Motility4.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 5,
+      "imageId": "f235a9e2-ccab-43e2-ac0d-631df3552f64",
+      "baseName": "Gastric_Motility5",
+      "caption": "Anterior-posterior planar images show a dual-phase gastric emptying scan in which emptying of the liquid phase <img src=\"arrow_CS.png\"> is abnormal (59% at 1 hours, 67% at 2 hours) but emptying of the solid phase <img src=\"arrow_BS.png\"> is normal (49% at 2 hours, 96% at 4 hours).",
+      "plainFilename": "Gastric_Motility5.jpg",
+      "annotatedFilename": "Gastric_Motility5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/f235a9e2-ccab-43e2-ac0d-631df3552f64?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/f235a9e2-ccab-43e2-ac0d-631df3552f64?style=xlarge&annotated=true",
+      "masterImageId": "RP-05",
+      "filename": "Gastric_Motility5.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 6,
+      "imageId": "b05a68ed-3d8f-4899-b670-d62025794e81",
+      "baseName": "Gastric_Motility6",
+      "caption": "Anterior-posterior planar images show an abnormal dual-phase gastric emptying scan. Emptying of both phases is abnormally rapid, reflective of dumping: Liquid (76% at 1 hour, 94% at 2 hours), solid (77% at 1 hour, 98% at 2 hours). Note no activity in stomach at 2 hours <img src=\"arrow_BS.png\">.",
+      "plainFilename": "Gastric_Motility6.jpg",
+      "annotatedFilename": "Gastric_Motility6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b05a68ed-3d8f-4899-b670-d62025794e81?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/b05a68ed-3d8f-4899-b670-d62025794e81?style=xlarge&annotated=true",
+      "masterImageId": "RP-06",
+      "filename": "Gastric_Motility6.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 7,
+      "imageId": "40bd752d-5c06-4ac6-8890-7cae03a9686b",
+      "baseName": "Gastric_Motility7",
+      "caption": "Anterior dual-phase gastric emptying scan shows retention of radiotracer in the stomach <img src=\"arrow_BS.png\">, reflective of delayed emptying (59% liquid, 27% solid emptying at 2 hours). Radiotracer is also seen in the esophagus due to gastroesophageal reflux <img src=\"arrow_CS.png\">.",
+      "plainFilename": "Gastric_Motility7.jpg",
+      "annotatedFilename": "Gastric_Motility7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/40bd752d-5c06-4ac6-8890-7cae03a9686b?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/40bd752d-5c06-4ac6-8890-7cae03a9686b?style=xlarge&annotated=true",
+      "masterImageId": "RP-07",
+      "filename": "Gastric_Motility7.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 8,
+      "imageId": "74454960-916c-41a8-b7ca-5696d6dc234d",
+      "baseName": "Gastric_Motility8",
+      "caption": "Anterior-posterior planar images show a normal solid-phase gastric emptying scan (41% at 2 hours and 99% at 4 hours).",
+      "plainFilename": "Gastric_Motility8.jpg",
+      "annotatedFilename": "Gastric_Motility8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/74454960-916c-41a8-b7ca-5696d6dc234d?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/74454960-916c-41a8-b7ca-5696d6dc234d?style=xlarge&annotated=true",
+      "masterImageId": "RP-08",
+      "filename": "Gastric_Motility8.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 9,
+      "imageId": "c7b6231f-6b17-4fc5-ae35-7a38d0ea656d",
+      "baseName": "Gastric_Motility9",
+      "caption": "Anterior-posterior planar images show a normal solid-phase gastric emptying scan performed with Ensure Plus. There is 56% emptying at 2 hours and 94% at 4 hours. Gastroesophageal reflux <img src=\"arrow_CS.png\"> is present at 2 hours.",
+      "plainFilename": "Gastric_Motility9.jpg",
+      "annotatedFilename": "Gastric_Motility9_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/c7b6231f-6b17-4fc5-ae35-7a38d0ea656d?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/c7b6231f-6b17-4fc5-ae35-7a38d0ea656d?style=xlarge&annotated=true",
+      "masterImageId": "RP-09",
+      "filename": "Gastric_Motility9.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 10,
+      "imageId": "6f38b4eb-a4fd-4934-91dd-b8a235262c12",
+      "baseName": "Gastric_Motility10",
+      "caption": "Anterior-posterior planar images show an abnormal solid-phase gastric emptying scan (41% at 2 hours and 84% at 4 hours).",
+      "plainFilename": "Gastric_Motility10.jpg",
+      "annotatedFilename": "Gastric_Motility10_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/6f38b4eb-a4fd-4934-91dd-b8a235262c12?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/6f38b4eb-a4fd-4934-91dd-b8a235262c12?style=xlarge&annotated=true",
+      "masterImageId": "RP-10",
+      "filename": "Gastric_Motility10.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 11,
+      "imageId": "72955fbe-389c-4718-95fd-ed1eb2a5f2e3",
+      "baseName": "Gastric_Motility11",
+      "caption": "Anterior-posterior planar images show an abnormal solid-phase gastric emptying scan performed with Ensure Plus (46% at 2 hours and 57% at 4 hours).",
+      "plainFilename": "Gastric_Motility11.jpg",
+      "annotatedFilename": "Gastric_Motility11_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/72955fbe-389c-4718-95fd-ed1eb2a5f2e3?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/72955fbe-389c-4718-95fd-ed1eb2a5f2e3?style=xlarge&annotated=true",
+      "masterImageId": "RP-11",
+      "filename": "Gastric_Motility11.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 12,
+      "imageId": "acc6a008-8991-42c3-a9a8-270c5764701f",
+      "baseName": "Gastric_Motility12",
+      "caption": "Anterior-posterior planar images show a solid-phase gastric emptying scan in which emptying is abnormal at 2 hours (69%) and normal at 4 hours (96%).",
+      "plainFilename": "Gastric_Motility12.jpg",
+      "annotatedFilename": "Gastric_Motility12_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/acc6a008-8991-42c3-a9a8-270c5764701f?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/acc6a008-8991-42c3-a9a8-270c5764701f?style=xlarge&annotated=true",
+      "masterImageId": "RP-12",
+      "filename": "Gastric_Motility12.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 13,
+      "imageId": "d4cc594f-21ed-46e0-a1ec-616f1f274a85",
+      "baseName": "Gastric_Motility13",
+      "caption": "Posterior images from liquid gastric emptying scan performed with patient's own formula show progressive emptying of the stomach <img src=\"arrow_BS.png\"> over 2 hours (53% emptying at 2 hours <img src=\"arrow_CS.png\">). Normal values exist for only certain liquids.",
+      "plainFilename": "Gastric_Motility13.jpg",
+      "annotatedFilename": "Gastric_Motility13_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/d4cc594f-21ed-46e0-a1ec-616f1f274a85?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/d4cc594f-21ed-46e0-a1ec-616f1f274a85?style=xlarge&annotated=true",
+      "masterImageId": "RP-13",
+      "filename": "Gastric_Motility13.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 14,
+      "imageId": "9d7cbed4-eeaf-4531-b39b-653bad3c1ec3",
+      "baseName": "Gastric_Motility14",
+      "caption": "Posterior projection images from a normal milk study show progressive emptying of the stomach <img src=\"arrow_BS.png\"> over 2 hours (57% emptying at 2 hours <img src=\"arrow_CS.png\">).",
+      "plainFilename": "Gastric_Motility14.jpg",
+      "annotatedFilename": "Gastric_Motility14_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/9d7cbed4-eeaf-4531-b39b-653bad3c1ec3?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/9d7cbed4-eeaf-4531-b39b-653bad3c1ec3?style=xlarge&annotated=true",
+      "masterImageId": "RP-14",
+      "filename": "Gastric_Motility14.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 15,
+      "imageId": "5e426ccd-8f7b-4e0f-9174-f1021a3294b0",
+      "baseName": "Gastric_Motility15",
+      "caption": "Posterior projection images from an abnormal milk study show retention of activity in the stomach <img src=\"arrow_BS.png\"> over 90 minutes with only 14% emptying <img src=\"arrow_CS.png\">. Activity is present in the esophagus <img src=\"arrow_CC.png\"> at 60 and 90 minutes due to reflux.",
+      "plainFilename": "Gastric_Motility15.jpg",
+      "annotatedFilename": "Gastric_Motility15_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/5e426ccd-8f7b-4e0f-9174-f1021a3294b0?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/5e426ccd-8f7b-4e0f-9174-f1021a3294b0?style=xlarge&annotated=true",
+      "masterImageId": "RP-15",
+      "filename": "Gastric_Motility15.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 16,
+      "imageId": "682e48f6-8fd1-4a65-9291-2c8ab660f6d4",
+      "baseName": "Gastric_Motility16",
+      "caption": "Serial 30 second posterior images from dynamic portion of a normal milk scan are shown with a single image magnified for detail. Activity is visible in the stomach <img src=\"arrow_BS.png\"> and intestine <img src=\"arrow_CS.png\"> without any observed episodes of gastroesophageal reflux.",
+      "plainFilename": "Gastric_Motility16.jpg",
+      "annotatedFilename": "Gastric_Motility16_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/682e48f6-8fd1-4a65-9291-2c8ab660f6d4?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/682e48f6-8fd1-4a65-9291-2c8ab660f6d4?style=xlarge&annotated=true",
+      "masterImageId": "RP-16",
+      "filename": "Gastric_Motility16.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 17,
+      "imageId": "068523a2-2a93-447d-8e46-3bdb05a67bcf",
+      "baseName": "Gastric_Motility17",
+      "caption": "Posterior images from dynamic portion of milk scan show activity extending from the stomach <img src=\"arrow_BS.png\"> into the lower esophagus <img src=\"arrow_CS.png\"> and persisting for > 4 minutes, reflective of gastroesophageal reflux.",
+      "plainFilename": "Gastric_Motility17.jpg",
+      "annotatedFilename": "Gastric_Motility17_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/068523a2-2a93-447d-8e46-3bdb05a67bcf?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/068523a2-2a93-447d-8e46-3bdb05a67bcf?style=xlarge&annotated=true",
+      "masterImageId": "RP-17",
+      "filename": "Gastric_Motility17.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 18,
+      "imageId": "a5a60175-e5f5-4dc8-b3df-a8bf0ab5abb3",
+      "baseName": "Gastric_Motility18",
+      "caption": "Anterior Tc-99m sulfur colloid liquid gastric emptying scan in a 2 month old who was not tolerating feeding shows region of interest around the stomach <img src=\"arrow_CS.png\">. A bolus of the infant's formula was utilized for the scan.",
+      "plainFilename": "Gastric_Motility18.jpg",
+      "annotatedFilename": "Gastric_Motility18_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/a5a60175-e5f5-4dc8-b3df-a8bf0ab5abb3?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/a5a60175-e5f5-4dc8-b3df-a8bf0ab5abb3?style=xlarge&annotated=true",
+      "masterImageId": "RP-18",
+      "filename": "Gastric_Motility18.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 19,
+      "imageId": "c586b35d-1e62-418e-be45-d6b92c2077db",
+      "baseName": "Gastric_Motility19",
+      "caption": "Graph from the gastric emptying scan in the same patient shows that the stomach is emptied by 90 minutes <img src=\"arrow_CO.png\">. This is useful for size and timing of feeds, which can be tailored based on results of the scan.",
+      "plainFilename": "Gastric_Motility19.jpg",
+      "annotatedFilename": "Gastric_Motility19_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/c586b35d-1e62-418e-be45-d6b92c2077db?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/c586b35d-1e62-418e-be45-d6b92c2077db?style=xlarge&annotated=true",
+      "masterImageId": "RP-19",
+      "filename": "Gastric_Motility19.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    }
+  ],
+  "masterSource": null,
+  "settings": {
+    "include": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+    "caseMap": "18,19",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "effectiveAnkiNormalRoot": "",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "Gastric_Motility_Core_RadPrimer_Anki.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000866c722fb321e7bb106c05c3&fn=Gastric_Motility_Core_RadPrimer_Anki.tsv&cd=attachment&ts=495623&p=fs&cid=1&sig=60f32372a4a8d74281d3e1b53c5467aa80c1e9c7e19ba031936ecce2c9d47a94&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000866c722fb321e7bb106c05c3&fn=Gastric_Motility_Core_RadPrimer_Anki.tsv&cd=attachment&ts=495623&p=fs&cid=1&sig=60f32372a4a8d74281d3e1b53c5467aa80c1e9c7e19ba031936ecce2c9d47a94&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 7002,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Gastric_Motility_2026-07-16T23-21-54-254Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}

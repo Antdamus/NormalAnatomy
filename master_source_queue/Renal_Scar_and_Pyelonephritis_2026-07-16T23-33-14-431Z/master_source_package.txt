@@ -1,0 +1,129 @@
+# Renal Scar and Pyelonephritis
+
+Canonical hierarchy: All Categories > Basic > Nuclear Medicine > Genitourinary Basic > Renal Scar and Pyelonephritis
+Canonical deck path: Corebook::Nuclear Medicine::Genitourinary Basic::Renal Scar and Pyelonephritis
+Primary source posture: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth, stronger or cleaner captions, additional normal-variant/differential examples, and preferred counterparts for exact duplicate images.
+Core evidence: no auditable Core Radiology source was supplied in this bundle, so Core-specific support is not asserted.
+
+## Source Coverage And Image Gate
+
+The staged bundle included 22 RadPrimer and 26 STATdx image_evidence files. Actual downloaded evidence images were inspected before duplicate classification. Cross-source source image IDs and file hashes are distinct, so exact-duplicate calls below are based on direct visual evidence of the same slice/screenshot/content in the staged files, not on captions alone.
+
+STATdx exactly duplicates 17 RadPrimer images, conceptually overlaps/replaces 4 RadPrimer images while keeping both examples primary, and does not cover 1 RadPrimer companion CT image. The default image download set therefore keeps all 26 STATdx images plus RadPrimer images 4, 13, 15, 16, and 19. Exact duplicate RadPrimer images are archive-optional for audit recovery.
+
+RP-01 -> SDX-01: exactDuplicate; Same normal adult posterior DMSA renal cortical image.
+RP-02 -> SDX-04: exactDuplicate; Same ROI/background DMSA analysis screenshot; numbering differs by source.
+RP-03 -> SDX-03: exactDuplicate; Same 12-segment Mattoo/RIVUR reporting diagram.
+RP-04 -> SDX-16; SDX-23: conceptualReplacement; Different cortical scar/pyelonephritis examples; RadPrimer image remains selected.
+RP-05 -> SDX-05: exactDuplicate; Same bilateral cortical defects/high-grade reflux DMSA SPECT image.
+RP-06 -> SDX-06: exactDuplicate; Same DMSA scan with pyelonephritis/scar defects.
+RP-07 -> SDX-07: exactDuplicate; Same rounded cyst-related DMSA photopenia image.
+RP-08 -> SDX-08: exactDuplicate; Same acute pyelonephritis DMSA SPECT cortical-defect image.
+RP-09 -> SDX-09: exactDuplicate; Same hypertrophied column of Bertin 3D DMSA image.
+RP-10 -> SDX-10: exactDuplicate; Same reflux hydronephrosis plus cortical scar DMSA SPECT image.
+RP-11 -> SDX-11: exactDuplicate; Same transplant glucoheptonate cortical-defect scan.
+RP-12 -> SDX-12: exactDuplicate; Same transplant DMSA cortical-thinning scan.
+RP-13 -> none: notCovered; Coronal CECT companion explaining the DMSA defect is not present in STATdx.
+RP-14 -> SDX-13: exactDuplicate; Same nonfunctioning left kidney/hydronephrosis DMSA image.
+RP-15 -> SDX-15: conceptualReplacement; Both teach absent/abnormal FDG renal excretion but are different images and both remain selected.
+RP-16 -> SDX-16: conceptualReplacement; Both reinforce DMSA cortical-defect recognition but are different displays/cases.
+RP-17 -> SDX-17: exactDuplicate; Same CT/MAG3 renal cyst photopenia composite.
+RP-18 -> SDX-18: exactDuplicate; Same CECT/MAG3 acute renal infarct composite.
+RP-19 -> SDX-15; SDX-20: conceptualReplacement; Conceptual overlap in FDG excretion/renal dysfunction but different dialysis/native-kidney example.
+RP-20 -> SDX-20: exactDuplicate; Same FDG PET/CT transplant uptake/PTLD image.
+RP-21 -> SDX-21: exactDuplicate; Same posterior MAG3 large right cortical defect image.
+RP-22 -> SDX-22: exactDuplicate; Same MR complex right renal mass/presumed RCC composite.
+
+No near-duplicate-only RadPrimer images were identified. Conceptual replacements and visually distinct alternate examples remain selected as recognition reinforcement. The RadPrimer image 13 and RadPrimer image 14 cluster is preserved by retaining RadPrimer image 13 with STATdx image 13, the exact duplicate counterpart to RadPrimer image 14.
+
+## Fused Teaching Backbone
+
+### Core Pattern
+
+- [Both] The key nuclear medicine finding is a cortical defect on Tc-99m DMSA renal cortical imaging caused by acute pyelonephritis, renal cortical scar, infarct, mass, cyst, or a normal anatomic variant.
+- [Both] Pyelonephritis-related photopenic defects tend to extend toward the renal hilum and usually lack cortical concavity; chronic cortical scars are typically more superficial and may show cortical contour loss.
+- [Both] Upper-pole involvement is common for pyelonephritis and reflux-related scarring, followed by lower pole and then mid pole.
+- [Both] DMSA cortical scintigraphy detects more cortical defects than ultrasound or IV urography and remains the nuclear medicine reference test for cortical scar/infarct assessment.
+- [STATdx] STATdx adds that acute pyelonephritis on DMSA must be interpreted with the clinical fever/infection context, and that contrast-enhanced CT is commonly the practical standard for acute pyelonephritis because it is fast and widely available.
+
+### DMSA Technique And Interpretation
+
+- [Both] Tc-99m DMSA binds to cortical proximal convoluted tubules; delayed imaging around 2 hours highlights functioning renal cortex.
+- [Both] Pediatric DMSA activity is 40-50 microCi/kg with a minimum of about 350 microCi; adult activity is about 5 mCi IV.
+- [Both] Posterior and anterior planar images are acquired with low-energy parallel-hole collimation. Differential renal function is calculated from geometric mean counts, using kidney and background regions of interest.
+- [Both] SPECT provides the best three-dimensional cortical evaluation; if SPECT is unavailable, anterior, posterior, and bilateral posterior oblique views help characterize defects.
+- [STATdx] STATdx specifically notes that DMSA SPECT/CT can reduce false-positive SPECT and false-negative planar interpretations, and that pinhole collimation may be considered when SPECT is unavailable.
+- [Both] Poor renal function can require delayed imaging to permit longer uptake time. Renal tubular acidosis can increase urinary excretion, and renal failure can increase hepatic clearance.
+
+### Acute Pyelonephritis And Scar Evolution
+
+- [Both] Acute pyelonephritis may show a striated DMSA uptake pattern that extends toward the hilum.
+- [Both] In first-time acute pyelonephritis within the first week, DMSA abnormalities occur in roughly 50-79% of cases; ultrasound can miss many of these defects.
+- [Both] Acute pyelonephritis-related cortical defects can resolve by about 6 weeks. Late follow-up at 12-24 months may show resolution of about half of defects seen by 6 months or earlier.
+- [Both] Persistent defects after acute infection should prompt evaluation for correctable structural causes, including VUR or abnormal bladder dynamics.
+- [Both] Pyelonephritis and reflux-induced scarring are clinically important because they predispose to proteinuria, hypertension, and eventual renal failure.
+
+### Vesicoureteral Reflux And Management-Relevant Imaging
+
+- [Both] VUR is common in children with first-time pyelonephritis and renal scars, and scar burden correlates with higher reflux grade.
+- [Both] DMSA cortical scanning is indicated in high-grade reflux, commonly grade 3 or higher, and reflux with recurrent UTI.
+- [Both] New renal cortical scars despite antibiotic prophylaxis support surgical or endoscopic correction rather than watchful waiting.
+- [Both] Low-grade reflux can be managed conservatively because many cases resolve spontaneously; high-grade reflux or reflux with scars is more likely to require intervention.
+- [Both] After VUR correction, DMSA can evaluate differential renal uptake and residual scars.
+
+### Labeled Leukocyte And Gallium Scans
+
+- [Both] In-111 WBC scanning can identify acute pyelonephritis in complicated cases because native kidneys normally do not show In-111 WBC uptake.
+- [STATdx] STATdx adds that In-111 WBC is not indicated in children because of poor spleen dosimetry.
+- [Both] Tc-99m HMPAO WBC can normally show renal and bladder activity, reducing sensitivity and specificity for pyelonephritis; STATdx notes it can be used in children.
+- [Both] Ga-67 citrate is sensitive but nonspecific for acute pyelonephritis. Normal symmetric renal uptake can persist up to 48 hours after injection.
+- [Both] Bilateral renal Ga-67 uptake beyond 48 hours can reflect renal insufficiency or interstitial nephritis and mimic diffuse acute pyelonephritis. Focal Ga-67 uptake can reflect acute pyelonephritis, lymphoma, leukemia, or metastases.
+- [STATdx] Ga-68 PSMA PET has renal cortical uptake and is under investigation for renal cortical evaluation, with early studies correlating renal uptake volume and renal function tests.
+
+### Correlative Imaging And Differential Diagnosis
+
+- [Both] Contrast-enhanced CT can show acute or chronic changes; chronic scarring appears as focal cortical thinning. CT has similar sensitivity and specificity to DMSA but carries radiation and IV contrast risks.
+- [Both] Ultrasound has limited sensitivity for renal scars but can show focal cortical thinning, echogenic cortex, or absent power Doppler signal.
+- [Both] MR has moderate sensitivity and specificity for scars; coronal fat-suppressed T1 imaging is emphasized for scar detection.
+- [Both] Renal masses and cysts can create focal absent DMSA uptake. Cysts tend to be discrete, sharp, and rounded.
+- [Both] Polyarteritis nodosa can mimic acute pyelonephritis with a striated appearance. Renal infarcts may produce peripheral wedge-shaped defects acutely and contour abnormality chronically.
+- [STATdx] STATdx adds several normal-variant pitfalls: interrenicular septum, junctional parenchymal defect, and intense column of Bertin, in addition to fetal lobulation and splenic impression.
+
+### Protocol Pitfalls And Quality Control
+
+- [Both] A distended or neurogenic bladder may require catheterization to prevent back-pressure effects and interference from retained collecting-system activity.
+- [Both] Patulous or obstructed collecting systems may need furosemide or delayed imaging up to 24 hours after tracer injection.
+- [Both] Too much air in the tracer reaction vial can degrade the Tc-99m DMSA complex, causing increased renal uptake and increased hepatic background activity.
+- [Both] For known or suspected horseshoe kidney, anterior imaging can be helpful.
+- [STATdx] Any DMSA photopenic region should be described by intensity, number, size, location, shape, margin distinctness, and associated contour abnormality. Normal split function is about 50:50 to 45:55; values outside that range suggest renal pathology and can be associated with high VUR risk.
+
+## Selected Image Atlas For Future Generation
+
+Use selectedPrimaryImageIds for default download and teaching. Human-facing prose should say RadPrimer image 4 or STATdx image 13; short IDs remain in the registry and traceability fields.
+
+- STATdx image 1: normal adult posterior DMSA renal cortical uptake, replacing RadPrimer image 1.
+- STATdx image 2: supplemental normal pediatric DMSA example with lower internal resolution and subtle upper-pole decrease.
+- STATdx image 3: 12-segment DMSA interpretation model, replacing RadPrimer image 3.
+- STATdx image 4: ROI/background DMSA analysis for differential renal function, replacing RadPrimer image 2.
+- RadPrimer image 4: distinct cortical scar example in VUR; retained because no same-image STATdx counterpart exists.
+- STATdx images 5 and 6: bilateral reflux scars and acute pyelonephritis/scar combination, replacing RadPrimer images 5 and 6.
+- STATdx images 7 and 8: cyst-related DMSA photopenia and acute pyelonephritis cortical defects, replacing RadPrimer images 7 and 8.
+- STATdx images 9 and 10: hypertrophied column of Bertin and reflux hydronephrosis/scar, replacing RadPrimer images 9 and 10.
+- STATdx images 11 and 12: transplant cortical defects and transplant cortical thinning, replacing RadPrimer images 11 and 12.
+- RadPrimer image 13 plus STATdx image 13: same-patient hydronephrosis/nonfunctioning kidney cluster; keep RadPrimer CT companion with the STATdx DMSA counterpart.
+- STATdx image 14: supplemental longstanding pediatric hydronephrosis with minimal residual functioning cortex.
+- RadPrimer image 15 and STATdx image 15: two different FDG PET/CT absent-excretion patterns; both retained.
+- RadPrimer image 16 and STATdx image 16: different DMSA cortical-defect/color-map teaching examples; both retained.
+- STATdx images 17 and 18: cyst and renal infarct multimodality composites, replacing RadPrimer images 17 and 18.
+- RadPrimer image 19: dialysis/native polycystic-kidney FDG nonexcretion example retained as a distinct alternate.
+- STATdx image 19: supplemental negative In-111 WBC/CT example essentially excluding pyelonephritis.
+- STATdx images 20, 21, and 22: transplant FDG uptake/PTLD, MAG3 large cortical defect, and MR complex renal mass/RCC composite, replacing RadPrimer images 20-22.
+- STATdx images 23-26: supplemental bilateral acute pyelonephritis striated nephrogram, renal abscess/inflammation, AAA-related bilateral renal infarction, and embolic renal infarct with angiographic correlation.
+
+## Downstream Use Notes
+
+- Use selectedPrimaryImageIds for default image download and teaching: SDX-01, SDX-02, SDX-03, SDX-04, SDX-05, SDX-06, SDX-07, SDX-08, SDX-09, SDX-10, SDX-11, SDX-12, SDX-13, SDX-14, SDX-15, SDX-16, SDX-17, SDX-18, SDX-19, SDX-20, SDX-21, SDX-22, SDX-23, SDX-24, SDX-25, SDX-26, RP-04, RP-13, RP-15, RP-16, RP-19.
+- Use archiveOptionalImageIds only for exact duplicate audit recovery: RP-01, RP-02, RP-03, RP-05, RP-06, RP-07, RP-08, RP-09, RP-10, RP-11, RP-12, RP-14, RP-17, RP-18, RP-20, RP-21, RP-22.
+- Preserve same-patient, follow-up, multimodality, comparison-view, and composite clusters as atomic teaching units.
+- Near duplicates and conceptual replacements are recognition reinforcement, not waste; keep them primary unless visually identical or unusable.
+- Keep package/deck routing tied to the canonical hierarchy above, not the STATdx breadcrumb.

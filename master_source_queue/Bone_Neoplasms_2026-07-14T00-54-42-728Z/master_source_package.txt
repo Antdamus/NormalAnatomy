@@ -1,0 +1,126 @@
+# Bone Neoplasms
+
+Canonical hierarchy: All Categories > Intermediate > Nuclear Medicine > Oncologic Intermediate > Bone Neoplasms
+Canonical deck path: Corebook::Intermediate::Nuclear Medicine::Oncologic Intermediate::Bone Neoplasms
+Primary source posture: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth, duplicate-replacing counterparts, and two additional primary examples.
+Core evidence: no auditable Core Radiology source was supplied in this bundle, so Core-specific support is not asserted.
+
+## Source Coverage And Image Gate
+
+The staged bundle included 22 RadPrimer and 22 STATdx image_evidence files. Actual downloaded evidence images were inspected before duplicate classification. Binary SHA-256 hashes differ across all cross-source pairs, so exact-duplicate calls below are based on direct visual evidence of the same image/slice/screenshot in the staged files, not on captions alone.
+
+STATdx covers 19 RadPrimer images as visually exact same-content counterparts, covers RadPrimer images 3 and 4 only as a composite/conceptual replacement in STATdx image 22, and does not cover RadPrimer image 21. The default image download set therefore keeps all 22 STATdx images plus RadPrimer images 3, 4, and 21. RadPrimer exact duplicates are archive-optional for audit recovery.
+
+RadPrimer image 1 -> STATdx image 9: exactDuplicate; Same posterior bone-scan lung-metastasis image is present in STATdx image 9; hashes differ from source/compression but actual staged files show the same visual content.
+RadPrimer image 2 -> STATdx image 10: exactDuplicate; Same axial CT pulmonary-metastases image is present in STATdx image 10.
+RadPrimer image 3 -> STATdx image 22: conceptualReplacement; STATdx image 22 is a composite that contains the anterior chest-wall uptake view and the oblique localization view; because it is a composite rather than the same standalone screenshot, keep RadPrimer image 3 primary.
+RadPrimer image 4 -> STATdx image 22: conceptualReplacement; STATdx image 22 is a composite that contains the LAO scapular localization view; because it is not the same standalone image, keep RadPrimer image 4 primary.
+RadPrimer image 5 -> STATdx image 1: exactDuplicate; Same anterior bone scan of skeletally immature patient with left humeral lesion is present in STATdx image 1.
+RadPrimer image 6 -> STATdx image 2: exactDuplicate; Same coronal STIR MR humeral Ewing sarcoma image is present in STATdx image 2.
+RadPrimer image 7 -> STATdx image 5: exactDuplicate; Same anterior/posterior tibial osteoid osteoma double-density bone scan is present in STATdx image 5.
+RadPrimer image 8 -> STATdx image 6: exactDuplicate; Same axial CT tibial osteoid osteoma nidus image is present in STATdx image 6.
+RadPrimer image 9 -> STATdx image 7: exactDuplicate; Same axial CT destructive sacral myeloma mass is present in STATdx image 7.
+RadPrimer image 10 -> STATdx image 8: exactDuplicate; Same fused FDG PET/CT active myeloma lesion image is present in STATdx image 8.
+RadPrimer image 11 -> STATdx image 11: exactDuplicate; Same anterior bone scan mandibular GCT image is present in STATdx image 11.
+RadPrimer image 12 -> STATdx image 12: exactDuplicate; Same axial NECT mandibular GCT image is present in STATdx image 12.
+RadPrimer image 13 -> STATdx image 13: exactDuplicate; Same anterior/posterior bone scan enchondroma image is present in STATdx image 13.
+RadPrimer image 14 -> STATdx image 14: exactDuplicate; Same AP radiograph distal femur enchondroma image is present in STATdx image 14.
+RadPrimer image 15 -> STATdx image 15: exactDuplicate; Same bone scan left lateral femoral condyle GCT image is present in STATdx image 15.
+RadPrimer image 16 -> STATdx image 16: exactDuplicate; Same AP radiograph left knee GCT image is present in STATdx image 16.
+RadPrimer image 17 -> STATdx image 17: exactDuplicate; Same whole-body bone scan right proximal femur osteochondroma image is present in STATdx image 17.
+RadPrimer image 18 -> STATdx image 18: exactDuplicate; Same coronal CT solitary osteochondroma image is present in STATdx image 18.
+RadPrimer image 19 -> STATdx image 19: exactDuplicate; Same posterior bone scan hereditary multiple exostoses image is present in STATdx image 19.
+RadPrimer image 20 -> STATdx image 20: exactDuplicate; Same anterior/posterior bone scan polyostotic fibrous dysplasia image is present in STATdx image 20.
+RadPrimer image 21: notCovered; No STATdx image reproduces the same treated-myeloma sacrum/ilium FDG PET/CT case; STATdx image 4 is an alternate myeloma-treatment-response example, not a replacement.
+RadPrimer image 22 -> STATdx image 3: exactDuplicate; Same mandibular osteosarcoma PET/CT composite image is present in STATdx image 3.
+
+No near-duplicate-only RadPrimer images were identified. RadPrimer images 3 and 4 remain primary because STATdx image 22 is a composite rather than the same standalone image. RadPrimer image 21 remains primary because it teaches treated multiple myeloma without significant FDG uptake in the sacrum/ilium, which is not reproduced by STATdx.
+
+## Fused Teaching Backbone
+
+### Terminology And Scope
+
+- [Both] Bone neoplasms include malignant primary bone lesions such as osteosarcoma, Ewing sarcoma, chondrosarcoma, and multiple myeloma, plus benign tumors and tumor-like lesions whose scintigraphic activity varies widely.
+- [Both] Osteosarcoma is a malignant mesenchymal tumor that produces osteoid; Ewing sarcoma is a primitive small round blue cell tumor; chondrosarcoma is defined by chondroid matrix production; multiple myeloma is plasma-cell neoplasia in marrow.
+- [Both] Polyostotic disease affects multiple bones and is a major reason to use skeletal scintigraphy; monostotic disease affects one bone and usually has a narrower differential.
+- [Both] Not every lesion fits neatly into hot/cold or benign/malignant categories, so nuclear medicine findings must be reconciled with radiographs, CT, and MR.
+
+### Bone Scan And PET Pattern Language
+
+- [Both] Osteosarcoma, chondrosarcoma, Ewing sarcoma, blastic metastases, and adamantinoma are typically hot on Tc-99m MDP bone scan.
+- [Both] Multiple myeloma and purely lytic metastases may be cold or poorly seen on bone scan; radiographic skeletal survey and cross-sectional imaging are more useful for myeloma because of its lytic, often indolent behavior.
+- [Both] Benign hot lesions include Paget disease, osteoblastoma, chondroblastoma, aneurysmal bone cyst, osteoid osteoma, giant cell tumor, and fibrous dysplasia.
+- [Both] Enchondroma and nonossifying fibroma may be isointense or mildly avid; enostosis, osteopathia striata, and simple bone cyst may be cold or normal; osteochondroma, hereditary multiple exostoses, Langerhans cell histiocytosis, and hemangioma are variable.
+- [STATdx] STATdx explicitly frames osteochondroma as an exostosis with a cartilaginous component and notes FDG PET/CT is more useful than bone scan for active Langerhans cell histiocytosis assessment and therapy response.
+
+### Imaging Strategy
+
+- [Both] Whole-body Tc-99m MDP bone scan surveys primary malignant bone tumors and metastases in osteosarcoma, chondrosarcoma, and Ewing sarcoma, and it is useful for detecting multifocal or polyostotic disease.
+- [Both] Bone scan is not useful for defining tumor margins or soft-tissue components; plain radiographs, CT, and MR remain essential for primary diagnosis and local anatomic characterization.
+- [Both] Benign lesions should be correlated with radiograph/CT/MR because benign uptake ranges from absent to intense, and new uptake may reflect fracture, healing, or malignant transformation.
+- [Both] F-18 FDG PET/CT is useful for staging malignant bone tumors and therapy-response assessment; uptake can correlate with grade in chondrosarcoma and can predict response in osteosarcoma and Ewing sarcoma.
+- [Both] Full-inspiration chest CT is more sensitive than FDG PET/CT for small lung nodules, so suspected pulmonary metastatic disease still needs diagnostic CT technique.
+
+### Tumor-Specific Patterns
+
+- [Both] Osteosarcoma most often involves long-bone metaphyses, especially distal femur, proximal tibia, and proximal humerus; adults have more axial involvement than children; bone scan uptake is often intense and heterogeneous.
+- [Both] Ewing sarcoma most often involves long bones, especially femur, and pelvic bones; uptake is usually intense and more homogeneous.
+- [Both] Chondrosarcoma has similar axial and appendicular distribution and usually intense uptake. Central tumors arise in medullary cavity, often proximal femur, pelvis, or proximal humerus, and may arise from enchondroma. Peripheral tumors arise from an osteochondroma cartilage cap, often pelvis or shoulder girdle.
+- [Both] Multiple myeloma produces lytic skeletal lesions and is usually better assessed with skeletal survey/cross-sectional imaging than bone scan; FDG PET/CT can show active lytic or extramedullary disease and treatment response.
+- [Both] Osteoid osteoma is cortically based, often in long bones, and can show a three-phase positive double-density sign with intense nidus uptake and moderate surrounding activity.
+- [Both] Fibrous dysplasia may be monostotic or polyostotic; bone scan is useful for lesion extent. Giant cell tumor can show diffuse or peripheral uptake with central photopenia. Aneurysmal bone cyst can also show peripheral uptake with central photopenia.
+- [Both] Osteochondroma uptake correlates with endochondral ossification activity; cortical and medullary continuity with parent bone is the key anatomic feature.
+- [Both] Enchondroma may show normal or mild uptake and bone scan cannot reliably separate enchondroma from low-grade chondrosarcoma.
+
+### Differential And Demographics
+
+- [Both] Multiple myeloma is more common than the other primary bone malignancies, has slightly higher incidence in men, and has median age around 70 years.
+- [Both] Osteosarcoma is the most common primary bone malignancy when multiple myeloma is excluded, about 30-35% of primary bone malignancies; most patients are younger than 20 years, with a smaller older-adult peak.
+- [STATdx] STATdx uses current race wording, noting higher incidence in Black patients than White patients.
+- [Both] Chondrosarcoma accounts for about 26% of primary bone malignancies and may arise from sarcomatous transformation of enchondroma or osteochondroma; central tumors peak in older adults, while peripheral tumors skew younger than central tumors.
+- [Both] Ewing sarcoma accounts for about 16% of primary bone malignancies, usually affects patients 5-20 years old, and is the most common primary bone malignancy in children in the supplied text.
+
+### Staging, Classification, And Management-Relevant Details
+
+- [Both] AJCC 8th edition staging for appendicular skeleton, trunk, skull, and facial bone cancers uses size threshold 8 cm, discontinuous tumors in the primary bone site, nodal disease, lung metastasis, other distant metastasis, and grade.
+- [Both] Musculoskeletal Tumor Society/Enneking staging separates low-grade localized, high-grade localized, and metastatic tumors, with A/B describing intracompartmental versus extracompartmental extension.
+- [Both] Multiple myeloma International Staging System uses serum beta-2-microglobulin, albumin, cytogenetics, and LDH.
+- [Both] Symptoms include bone pain, often worse at night, soft-tissue swelling or mass, tenderness/warmth, and pathologic fracture; benign lesions may be painful or asymptomatic.
+- [Both] Growth through cortex with soft-tissue mass in a benign lesion is highly concerning for sarcomatous transformation.
+
+### Diagnostic Checklist
+
+- [Both] Use Tc-99m MDP bone scan to identify metastatic or polyostotic lesions in osteosarcoma, chondrosarcoma, and Ewing sarcoma.
+- [Both] Do not rely on bone scan for tumor margins, soft-tissue components, or multiple myeloma burden.
+- [Both] Use SPECT/CT when planar bone scan is normal but focal bone pain persists and higher sensitivity/localization is needed.
+- [Both] Consider FDG PET/CT for staging malignant primary bone tumors, response assessment, active myeloma lesions, and suspected sarcomatous degeneration after excluding fracture.
+- [Both] Foci of intrathoracic uptake, especially between ribs or outside the expected rib contour, are concerning for osteosarcoma pulmonary metastases; oblique/lateral views help localize bone versus soft tissue.
+- [Both] Postsurgical uptake and heterotopic ossification can mimic recurrence; CT or radiographs help distinguish postoperative change, fracture, benign lesion activity, and malignant transformation.
+
+## Selected Image Atlas For Future Generation
+
+Use the selected primary image IDs for default download and teaching. Human-facing prose should say RadPrimer image 5 or STATdx image 4; short IDs remain in the registry and traceability fields.
+
+- STATdx images 9 and 10: same-patient osteosarcoma pulmonary metastasis cluster, replacing RadPrimer images 1 and 2.
+- RadPrimer images 3 and 4 plus STATdx image 22: atomic scapular osteosarcoma localization cluster; keep all primary because the STATdx image is a composite rather than a same standalone duplicate.
+- STATdx images 1 and 2: left humeral Ewing sarcoma bone scan/MR cluster, replacing RadPrimer images 5 and 6.
+- STATdx images 5 and 6: osteoid osteoma double-density bone scan and axial CT nidus cluster, replacing RadPrimer images 7 and 8.
+- STATdx images 7 and 8: active multiple myeloma CT and fused FDG PET/CT cluster, replacing RadPrimer images 9 and 10.
+- STATdx images 11 and 12: mandibular giant cell tumor bone scan and NECT cluster, replacing RadPrimer images 11 and 12.
+- STATdx images 13 and 14: right femoral enchondroma bone scan/radiograph cluster, replacing RadPrimer images 13 and 14.
+- STATdx images 15 and 16: left lateral femoral condyle giant cell tumor bone scan/radiograph cluster, replacing RadPrimer images 15 and 16.
+- STATdx images 17 and 18: solitary osteochondroma bone scan/coronal CT cluster, replacing RadPrimer images 17 and 18.
+- STATdx image 19: hereditary multiple exostoses posterior bone scan, replacing RadPrimer image 19.
+- STATdx image 20: polyostotic fibrous dysplasia anterior/posterior bone scan, replacing RadPrimer image 20.
+- RadPrimer image 21: treated multiple myeloma FDG PET/CT without significant uptake; retained as an uncovered unique RadPrimer teaching example.
+- STATdx image 3: mandibular osteosarcoma PET/CT composite, replacing RadPrimer image 22.
+- STATdx image 4: supplemental multiple myeloma treatment-response PET/CT example with metabolically variable lower-extremity lesions.
+- STATdx image 21: supplemental post-resection chondrosarcoma bone scan where hardware-related uptake and skip metastasis are the key distinction.
+
+## Downstream Use Notes
+
+- Use selectedPrimaryImageIds for default image download and teaching.
+- Use archiveOptionalImageIds only for exact duplicate audit recovery; do not download them by default.
+- Preserve same-patient, follow-up, multimodality, comparison-view, and composite clusters as atomic unless a later source explicitly documents a safe split.
+- Near duplicates and conceptual replacements are recognition reinforcement, not waste; keep them primary unless visually identical or unusable.
+- Keep package/deck routing tied to the canonical hierarchy above, not the STATdx breadcrumb.

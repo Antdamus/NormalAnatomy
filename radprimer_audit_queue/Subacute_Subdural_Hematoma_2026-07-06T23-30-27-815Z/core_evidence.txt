@@ -1,0 +1,12 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Core Radiology PDF uploaded in current environment; Neuro Brain, Cerebral trauma / Extra-axial hemorrhage / Subdural hematoma; page label Neuro Brain: 701.
+CORE_FACTS_USED:
+
+* SDH is crescentic extraaxial blood beneath dura.
+* SDH can cross cranial sutures.
+* Subacute isodense SDH occurs approximately 1–3 weeks after injury.
+* Key clues: mass effect, white matter buckling, apparently thickened cortex.
+CORE_DERIVED_CARDS:
+* Definition, UNKNOWN reasoning, mechanisms, boards traps, and high-yield CT recognition cards.
+CORE_LIMITATIONS:
+* Core page number from PDF text label; exact PDF page index not exported into TSV.

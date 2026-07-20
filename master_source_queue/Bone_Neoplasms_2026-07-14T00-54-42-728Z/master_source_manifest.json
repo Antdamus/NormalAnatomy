@@ -1,0 +1,413 @@
+{
+  "version": "master-source-manifest-v1",
+  "articleTitle": "Bone Neoplasms",
+  "createdAt": "2026-07-14T01:01:41Z",
+  "sourceBundleName": "Bone_Neoplasms_2026-07-14T00-54-42-728Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Intermediate",
+    "Nuclear Medicine",
+    "Oncologic Intermediate",
+    "Bone Neoplasms"
+  ],
+  "canonicalHierarchySource": {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceFile": "RadPrimer_metadata.json",
+    "field": "breadcrumbTrail",
+    "policy": "RadPrimer breadcrumbTrail is the canonical hierarchy/backbone."
+  },
+  "canonicalDeckPath": "Corebook::Intermediate::Nuclear Medicine::Oncologic Intermediate::Bone Neoplasms",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "radprimerPresent": true,
+    "statdxPresent": true,
+    "radprimerImageCount": 22,
+    "statdxImageCount": 22,
+    "statdxRadPrimerImageCoverageSummary": "STATdx exactly duplicates 19 RadPrimer images by visual inspection of actual image_evidence files, conceptually replaces RadPrimer images 3-4 via one composite, and does not cover RadPrimer image 21.",
+    "radprimerCoverageCounts": {
+      "exactDuplicate": 19,
+      "nearDuplicate": 0,
+      "conceptualReplacement": 2,
+      "notCovered": 1
+    },
+    "coreEvidence": "No auditable Core Radiology source supplied in this bundle."
+  },
+  "imageCountBySource": {
+    "RadPrimer": 22,
+    "STATdx": 22
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer], [STATdx], or [Both] when attribution matters.",
+    "Use clean human-facing labels such as RadPrimer image 5 and STATdx image 4 in prose.",
+    "Keep RP-05 and SDX-04 style IDs in registry, filenames, manifest, and traceability fields."
+  ],
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "RP-03",
+    "RP-04",
+    "RP-21"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-13",
+    "RP-14",
+    "RP-15",
+    "RP-16",
+    "RP-17",
+    "RP-18",
+    "RP-19",
+    "RP-20",
+    "RP-22"
+  ],
+  "sourceSelectionPlan": {
+    "sourcePriority": [
+      "RadPrimer canonical hierarchy/backbone",
+      "STATdx supplemental depth and duplicate-replacing primary image counterparts"
+    ],
+    "textPlan": {
+      "keepFromRadPrimer": [
+        "metadata.json canonicalHierarchy exactly",
+        "metadata.json canonicalDeckPath exactly",
+        "RadPrimer nuclear medicine/backbone structure",
+        "RadPrimer image numbering for traceability",
+        "RadPrimer images 3, 4, and 21 as primary because they are not exact duplicates"
+      ],
+      "keepFromSTATdx": [
+        "cleaner wording for current demographic language",
+        "FDG PET/CT nuance for Langerhans cell histiocytosis and response assessment",
+        "AJCC 8th edition/Enneking wording",
+        "selected duplicate-replacing image counterparts",
+        "supplemental STATdx images 4, 21, and 22"
+      ],
+      "downweightOrSkip": [
+        "STATdx breadcrumb for hierarchy routing",
+        "caption-only duplicate claims",
+        "Core-specific assertions without auditable Core evidence"
+      ]
+    },
+    "primaryImageDownloadSet": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "RP-03",
+      "RP-04",
+      "RP-21"
+    ],
+    "archiveDuplicateSet": [
+      "RP-01",
+      "RP-02",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "RP-11",
+      "RP-12",
+      "RP-13",
+      "RP-14",
+      "RP-15",
+      "RP-16",
+      "RP-17",
+      "RP-18",
+      "RP-19",
+      "RP-20",
+      "RP-22"
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "exactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate or conceptualReplacement and kept primary.",
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and composite clusters are atomic teaching units.",
+      "intentionalSplits": [],
+      "notes": [
+        "No source case cluster was intentionally split. RadPrimer images 3 and 4 are kept with STATdx image 22 because the STATdx version is a composite of the cluster, not a standalone exact duplicate."
+      ]
+    },
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "SDX-01",
+        "humanLabel": "STATdx image 1",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/0bb1eed9-ea28-4b74-a10c-776e854aac9a?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_0bb1eed9.jpg",
+        "downloadFilenameStem": "SDX-01_STATdx_plain_0bb1eed9"
+      },
+      {
+        "masterImageId": "SDX-02",
+        "humanLabel": "STATdx image 2",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/9550c146-8515-4e1f-853e-af6b9d71c2f3?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_9550c146.jpg",
+        "downloadFilenameStem": "SDX-02_STATdx_plain_9550c146"
+      },
+      {
+        "masterImageId": "SDX-03",
+        "humanLabel": "STATdx image 3",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/6cd2773f-ed0b-4471-8159-e2e596c29c7d?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_6cd2773f.jpg",
+        "downloadFilenameStem": "SDX-03_STATdx_plain_6cd2773f"
+      },
+      {
+        "masterImageId": "SDX-04",
+        "humanLabel": "STATdx image 4",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/655126ff-bac0-4cc0-8ccb-c15b41c81d3a?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_655126ff.jpg",
+        "downloadFilenameStem": "SDX-04_STATdx_plain_655126ff"
+      },
+      {
+        "masterImageId": "SDX-05",
+        "humanLabel": "STATdx image 5",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/ded57ec2-fb7b-459a-9581-20cd796ce0a7?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_ded57ec2.jpg",
+        "downloadFilenameStem": "SDX-05_STATdx_plain_ded57ec2"
+      },
+      {
+        "masterImageId": "SDX-06",
+        "humanLabel": "STATdx image 6",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/fc670a14-ba51-40b2-a0b6-4b955b80fddc?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_fc670a14.jpg",
+        "downloadFilenameStem": "SDX-06_STATdx_plain_fc670a14"
+      },
+      {
+        "masterImageId": "SDX-07",
+        "humanLabel": "STATdx image 7",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/8826a7d7-30ba-49d2-bea5-9b2065cbfbb9?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_8826a7d7.jpg",
+        "downloadFilenameStem": "SDX-07_STATdx_plain_8826a7d7"
+      },
+      {
+        "masterImageId": "SDX-08",
+        "humanLabel": "STATdx image 8",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/58614d5d-5920-4672-9b03-338516b51399?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_58614d5d.jpg",
+        "downloadFilenameStem": "SDX-08_STATdx_plain_58614d5d"
+      },
+      {
+        "masterImageId": "SDX-09",
+        "humanLabel": "STATdx image 9",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/5c796dfc-08cd-49a6-a079-6a8a33526166?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_5c796dfc.jpg",
+        "downloadFilenameStem": "SDX-09_STATdx_plain_5c796dfc"
+      },
+      {
+        "masterImageId": "SDX-10",
+        "humanLabel": "STATdx image 10",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/145724f6-48f4-40c7-af9e-3d44e2a01feb?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_145724f6.jpg",
+        "downloadFilenameStem": "SDX-10_STATdx_plain_145724f6"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "humanLabel": "STATdx image 11",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/75b8b63c-ea1a-4710-ba2d-62dc2bd95318?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_75b8b63c.jpg",
+        "downloadFilenameStem": "SDX-11_STATdx_plain_75b8b63c"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "humanLabel": "STATdx image 12",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/3fa9601a-3d39-42fe-ae03-f8302c049df7?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_3fa9601a.jpg",
+        "downloadFilenameStem": "SDX-12_STATdx_plain_3fa9601a"
+      },
+      {
+        "masterImageId": "SDX-13",
+        "humanLabel": "STATdx image 13",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/50999a2d-6db1-4b29-a326-ff7104085689?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_50999a2d.jpg",
+        "downloadFilenameStem": "SDX-13_STATdx_plain_50999a2d"
+      },
+      {
+        "masterImageId": "SDX-14",
+        "humanLabel": "STATdx image 14",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/107af512-ab5a-43c0-b10d-0aa6c2ee9d92?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_107af512.jpg",
+        "downloadFilenameStem": "SDX-14_STATdx_plain_107af512"
+      },
+      {
+        "masterImageId": "SDX-15",
+        "humanLabel": "STATdx image 15",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/15d6543e-4217-4b6f-b94d-aca5e45fbdd8?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_15d6543e.jpg",
+        "downloadFilenameStem": "SDX-15_STATdx_plain_15d6543e"
+      },
+      {
+        "masterImageId": "SDX-16",
+        "humanLabel": "STATdx image 16",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/4ae1ba61-6954-4a40-8601-f5dd9767f3e7?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_4ae1ba61.jpg",
+        "downloadFilenameStem": "SDX-16_STATdx_plain_4ae1ba61"
+      },
+      {
+        "masterImageId": "SDX-17",
+        "humanLabel": "STATdx image 17",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/f08a014a-a7eb-46f9-8afd-a189d38a0ddd?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_f08a014a.jpg",
+        "downloadFilenameStem": "SDX-17_STATdx_plain_f08a014a"
+      },
+      {
+        "masterImageId": "SDX-18",
+        "humanLabel": "STATdx image 18",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/958a1f0b-2fa2-4a65-b6fa-cba82c331a3a?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_958a1f0b.jpg",
+        "downloadFilenameStem": "SDX-18_STATdx_plain_958a1f0b"
+      },
+      {
+        "masterImageId": "SDX-19",
+        "humanLabel": "STATdx image 19",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/eee7fb03-b7c2-4f3f-8210-f431ce309034?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_eee7fb03.jpg",
+        "downloadFilenameStem": "SDX-19_STATdx_plain_eee7fb03"
+      },
+      {
+        "masterImageId": "SDX-20",
+        "humanLabel": "STATdx image 20",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/175a8ddc-9625-4ee5-a04f-76d02bd393d2?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_175a8ddc.jpg",
+        "downloadFilenameStem": "SDX-20_STATdx_plain_175a8ddc"
+      },
+      {
+        "masterImageId": "SDX-21",
+        "humanLabel": "STATdx image 21",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/5f3d4ab0-bc97-4be3-a633-95e357cea0f6?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_5f3d4ab0.jpg",
+        "downloadFilenameStem": "SDX-21_STATdx_plain_5f3d4ab0"
+      },
+      {
+        "masterImageId": "SDX-22",
+        "humanLabel": "STATdx image 22",
+        "sourceLabel": "STATdx",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://my.statdx.com/image/thumbnail/95576cba-12ad-4991-863c-7eba7e2bcaf2?size=1000&quality=90",
+        "plainFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_95576cba.jpg",
+        "downloadFilenameStem": "SDX-22_STATdx_plain_95576cba"
+      },
+      {
+        "masterImageId": "RP-03",
+        "humanLabel": "RadPrimer image 3",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/cb3f40e2-c8a8-4714-ba88-ad36ff428c06?style=xlarge&annotated=false",
+        "plainFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_cb3f40e2.jpg",
+        "downloadFilenameStem": "RP-03_RadPrimer_plain_cb3f40e2"
+      },
+      {
+        "masterImageId": "RP-04",
+        "humanLabel": "RadPrimer image 4",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/a414c067-d8fa-45e4-93ca-988e847691b1?style=xlarge&annotated=false",
+        "plainFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_a414c067.jpg",
+        "downloadFilenameStem": "RP-04_RadPrimer_plain_a414c067"
+      },
+      {
+        "masterImageId": "RP-21",
+        "humanLabel": "RadPrimer image 21",
+        "sourceLabel": "RadPrimer",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/0440896f-4bf3-4679-9d9f-ae198d87a994?style=xlarge&annotated=false",
+        "plainFilename": "image_evidence/RadPrimer/RP-21_RadPrimer_image_21_plain_0440896f.jpg",
+        "downloadFilenameStem": "RP-21_RadPrimer_plain_0440896f"
+      }
+    ],
+    "generatorInstructions": [
+      "Use source-qualified human labels in narrative prose.",
+      "Use short IDs only for registry and traceability fields.",
+      "Do not generate cards or lecture material from this synthesis step alone.",
+      "Download only selectedPrimaryImageIds by default."
+    ]
+  }
+}

@@ -6021,6 +6021,37 @@ async function dispatchTabKeyPress(tabId, key, code) {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === "RADIOPAEDIA_SKULL_LOCATOR_STATE") {
+    requestAnkiLiveDrillBridge("/radiopaedia-skull/state", {
+      method: "POST",
+      body: message.payload || {},
+      timeoutMs: 1000
+    }).then((payload) => {
+      sendResponse({ ok: true, payload });
+    }).catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "OPEN_RADIOPAEDIA_SKULL_LOCATOR_WINDOW") {
+    (async () => {
+      const popup = await chrome.windows.create({
+        url: chrome.runtime.getURL("skull-locator-window.html"),
+        type: "popup",
+        width: 420,
+        height: 420,
+        focused: true
+      });
+      sendResponse({ ok: true, windowId: popup?.id || null });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
   if (message?.type === "IMAIOS_DOWNLOAD_DATA_URL") {
     (async () => {
       const url = String(message.url || "");

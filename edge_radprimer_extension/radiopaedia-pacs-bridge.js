@@ -14,6 +14,12 @@
     return Array.from(new Set(values.filter(Boolean)));
   }
 
+  function finiteNumber(value, fallback = null) {
+    if (Number.isFinite(value)) return value;
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : fallback;
+  }
+
   function resourceUrls() {
     const fromDom = Array.from(document.querySelectorAll("script[src], link[href]"))
       .map((el) => el.src || el.href || "");
@@ -65,12 +71,14 @@
   }
 
   function fullscreenViewerUrlsFromResources() {
-    return resourceUrls().filter((url) => /\/packs\/FullscreenViewer-[A-Z0-9]+\.js(?:[?#].*)?$/i.test(url));
+    return resourceUrls().filter((url) =>
+      /\/packs\/(?:javascript\/)?(?:chunks\/)?FullscreenViewer-[^/?#]+\.js(?:[?#].*)?$/i.test(url)
+    );
   }
 
   async function fullscreenViewerUrlsFromAppBundles() {
     const appUrls = resourceUrls()
-      .filter((url) => /\/packs\/(?:javascript\/packs\/)?app-[A-Z0-9]+\.js(?:[?#].*)?$/i.test(url));
+      .filter((url) => /\/packs\/(?:javascript\/packs\/)?app-[^/?#]+\.js(?:[?#].*)?$/i.test(url));
     const found = [];
 
     for (const appUrl of appUrls) {
@@ -92,13 +100,66 @@
   async function viewportApiUrlsFromFullscreenModule(fullscreenUrl) {
     const text = await fetchText(fullscreenUrl);
     const urls = [];
-    const importMatches = text.matchAll(/import\{([^}]+)\}from["']([^"']+)["']/g);
+    const importMatches = text.matchAll(/import\s*\{([^}]+)\}\s*from\s*["']([^"']+)["']/g);
     for (const match of importMatches) {
-      if (!/(^|,)\s*R\s+as\s+\w+/.test(match[1])) continue;
       const resolved = resolveFromModule(match[2], fullscreenUrl);
+      if (!resolved) continue;
+      if (/(^|,)\s*R\s+as\s+\w+/.test(match[1])) urls.unshift(resolved);
+      else urls.push(resolved);
+    }
+    const bareImportMatches = text.matchAll(/import\(["']([^"']+)["']\)/g);
+    for (const match of bareImportMatches) {
+      const resolved = resolveFromModule(match[1], fullscreenUrl);
+      if (resolved) urls.push(resolved);
+    }
+    const sideEffectImportMatches = text.matchAll(/import\s*["']([^"']+)["']/g);
+    for (const match of sideEffectImportMatches) {
+      const resolved = resolveFromModule(match[1], fullscreenUrl);
       if (resolved) urls.push(resolved);
     }
     return urls;
+  }
+
+  function chunkUrlsFromResources() {
+    return resourceUrls().filter((url) =>
+      /\/packs\/(?:javascript\/)?(?:chunks\/)?chunk-[^/?#]+\.js(?:[?#].*)?$/i.test(url)
+    );
+  }
+
+  function viewportAllSeries(viewport) {
+    return Array.isArray(viewport?.props?.allSeries) ? viewport.props.allSeries : [];
+  }
+
+  function signalValue(signal) {
+    if (!signal) return undefined;
+    try {
+      if ("value" in signal) return signal.value;
+    } catch {}
+    try {
+      if (typeof signal.peek === "function") return signal.peek();
+    } catch {}
+    return signal._currentValue;
+  }
+
+  function currentComponent(api) {
+    return signalValue(api?.D) || signalValue(api?.currentComponent) || null;
+  }
+
+  function currentStudy(api) {
+    const component = currentComponent(api);
+    if (component?.type === "Study" && component.study) return component.study;
+    if (component?.study?.series) return component.study;
+    if (api?.study?.series) return api.study;
+    return null;
+  }
+
+  function studySeries(api) {
+    const series = currentStudy(api)?.series;
+    return Array.isArray(series) ? series : [];
+  }
+
+  function hasFrames(series) {
+    return Array.isArray(series?.frames) && series.frames.length > 0;
   }
 
   async function apiUrlCandidates() {
@@ -119,24 +180,17 @@
     for (const origin of packOrigins()) {
       candidates.push(resolveFromOrigin("/packs/chunk-7F4OAYFM.js", origin));
     }
+    candidates.push(...chunkUrlsFromResources());
 
     return unique(candidates);
   }
 
   function isViewportApi(api) {
-    if (typeof api?.R !== "function") return false;
-    let viewports = [];
-    try {
-      viewports = api.R();
-    } catch {
-      return false;
-    }
+    const series = studySeries(api);
+    if (series.some(hasFrames)) return true;
 
-    return Array.isArray(viewports) && viewports.some((viewport) =>
-      typeof viewport?.selectSeriesIdx === "function" &&
-      typeof viewport?.setFrameIdx === "function" &&
-      Array.isArray(viewport?.props?.allSeries)
-    );
+    const viewports = getViewports(api);
+    return viewports.some((viewport) => viewportAllSeries(viewport).some(hasFrames));
   }
 
   async function loadApi() {
@@ -152,7 +206,7 @@
               lastApiError = "";
               return api;
             }
-            errors.push(`${candidate}: missing mounted viewport API`);
+            errors.push(`${candidate}: missing readable Radiopaedia study state`);
           } catch (error) {
             errors.push(`${candidate}: ${error?.message || String(error)}`);
           }
@@ -177,6 +231,7 @@
 
   function firstFile(record) {
     if (!record) return "";
+    if (typeof record === "string") return record;
     return record.big_gallery || record.jumbo || record.large || record.medium || record.original ||
       Object.values(record).find((value) => typeof value === "string") ||
       "";
@@ -184,8 +239,16 @@
 
   function frameUrl(series, frameIndex) {
     const frame = series?.frames?.[frameIndex];
-    const encoded = series?.encodings?.thumbnailed_files?.[frameIndex];
+    const encoded =
+      series?.encodings?.thumbnailed_files?.[frameIndex] ||
+      frame?.encodings?.thumbnailed_files ||
+      frame?.thumbnailed_files ||
+      frame?.files ||
+      frame?.file ||
+      frame?.image_url ||
+      frame?.url;
     const file = firstFile(encoded);
+    if (/^https?:\/\//i.test(file)) return file;
     if (!frame?.id || !file) return "";
     return `${imageHost()}/images/${frame.id}/${file}`;
   }
@@ -212,11 +275,13 @@
   }
 
   function getViewports(api) {
-    try {
-      return typeof api.R === "function" ? api.R() : [];
-    } catch {
-      return [];
-    }
+    const candidates = [
+      api?.viewports,
+      signalValue(api?.viewports),
+      signalValue(api?.visibleViewports),
+      window.viewerViewportStore?.visibleViewports
+    ];
+    return candidates.find((candidate) => Array.isArray(candidate)) || [];
   }
 
   function activeViewportForSeries(api, seriesId) {
@@ -229,20 +294,54 @@
   }
 
   function allSeries(api) {
-    const viewport = getViewports(api).find((item) => Array.isArray(item.props?.allSeries));
-    return viewport?.props?.allSeries || [];
+    const fromStudy = studySeries(api);
+    if (fromStudy.length) return fromStudy;
+
+    const viewport = getViewports(api).find((item) => viewportAllSeries(item).length);
+    return viewportAllSeries(viewport);
+  }
+
+  function imageIdFromUrl(url) {
+    const match = String(url || "").match(/\/images\/(\d+)\//i);
+    return match ? match[1] : "";
+  }
+
+  function domFrameIdForSeries(seriesId) {
+    const wanted = String(seriesId || "");
+    const containers = Array.from(document.querySelectorAll("[data-series-id]"))
+      .filter((container) => String(container.getAttribute("data-series-id") || "") === wanted);
+    for (const container of containers) {
+      const images = Array.from(container.querySelectorAll("img[src]"));
+      const visibleImage = images.find((img) => img.offsetParent !== null) || images[0];
+      const imageId = imageIdFromUrl(visibleImage?.currentSrc || visibleImage?.src || "");
+      if (imageId) return imageId;
+    }
+    return "";
   }
 
   function seriesFrameIndex(viewport, series) {
     const sameSeries = viewport && String(viewport.seriesId?.() || "") === String(series.series_id);
-    if (sameSeries && Number.isFinite(viewport.frameIdx?.value) && viewport.frameIdx.value >= 0) {
-      return viewport.frameIdx.value;
+    const viewportFrameIdx = finiteNumber(viewport?.frameIdx?.value);
+    if (sameSeries && viewportFrameIdx !== null && viewportFrameIdx >= 0) {
+      return viewportFrameIdx;
     }
     if (sameSeries) {
       const frameId = viewport.frameId?.value;
       const fromId = series.frames?.findIndex((frame) => frame.id === frameId);
       if (fromId >= 0) return fromId;
     }
+
+    const frameIds = [
+      domFrameIdForSeries(series.series_id),
+      series.current_image_id,
+      series.image_id,
+      series.stack_root_id
+    ].filter(Boolean).map(String);
+    for (const frameId of frameIds) {
+      const fromId = series.frames?.findIndex((frame) => String(frame.id || "") === frameId);
+      if (fromId >= 0) return fromId;
+    }
+
     const current = series.frames?.findIndex((frame) => frame.current);
     return current >= 0 ? current : 0;
   }
@@ -294,31 +393,8 @@
     };
   }
 
-  function clampFrameIndex(series, frameIdx) {
-    const max = Math.max(0, (series?.frames?.length || 1) - 1);
-    const parsed = parseInt(frameIdx, 10);
-    if (!Number.isFinite(parsed)) return 0;
-    return Math.max(0, Math.min(max, parsed));
-  }
-
-  function setFrame(api, payload = {}) {
-    const seriesList = allSeries(api);
-    const seriesIdx = seriesList.findIndex((series) => String(series.series_id) === String(payload.seriesId));
-    if (seriesIdx < 0) return false;
-
-    const series = seriesList[seriesIdx];
-    const frameIdx = clampFrameIndex(series, payload.frameIdx);
-    const viewport = activeViewportForSeries(api, payload.seriesId);
-    if (!viewport) return false;
-
-    if (String(viewport.seriesId?.() || "") !== String(payload.seriesId)) {
-      viewport.selectSeriesIdx?.(seriesIdx);
-    }
-
-    const frameId = series.frames?.[frameIdx]?.id;
-    if (frameId && viewport.frameId) viewport.frameId.value = frameId;
-    else viewport.setFrameIdx?.(frameIdx);
-    return true;
+  function setFrame() {
+    return false;
   }
 
   function nextPaint() {
@@ -335,6 +411,7 @@
       let ok = true;
       if (detail.action === "set-frame") {
         ok = setFrame(api, detail.payload || {});
+        await nextPaint();
         await nextPaint();
       }
 

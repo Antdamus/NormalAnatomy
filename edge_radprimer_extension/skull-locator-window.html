@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Radiopaedia Skull Locator</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: var(--obs-locator-bg, #00ff00);
+    }
+    html[data-bg="black"],
+    body[data-bg="black"] {
+      --obs-locator-bg: #000;
+    }
+    html[data-bg="magenta"],
+    body[data-bg="magenta"] {
+      --obs-locator-bg: #ff00ff;
+    }
+    html[data-bg="transparent"],
+    body[data-bg="transparent"] {
+      --obs-locator-bg: transparent;
+    }
+    .obs-root {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: var(--obs-locator-bg, #00ff00);
+    }
+    .slice-locator {
+      position: relative;
+      width: min(86vw, 86vh);
+      height: min(86vw, 86vh);
+      opacity: .98;
+      transform-origin: center center;
+      filter: drop-shadow(0 22px 34px rgba(0, 0, 0, .72));
+    }
+    .locator-shell {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: perspective(640px) rotateX(5deg) rotateY(-7deg);
+      transform-origin: center center;
+    }
+    .locator-skull {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      filter:
+        drop-shadow(0 0 10px rgba(255, 255, 255, .08))
+        drop-shadow(0 14px 20px rgba(0, 0, 0, .56));
+    }
+    .locator-floor {
+      position: absolute;
+      left: 16%;
+      right: 7%;
+      bottom: 6%;
+      height: 12%;
+      border-radius: 999px;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, .48), rgba(0, 0, 0, 0) 72%);
+      transform: perspective(300px) rotateX(68deg);
+      pointer-events: none;
+    }
+    .locator-plane {
+      position: absolute;
+      z-index: 2;
+      left: var(--locator-plane-left, 50%);
+      top: var(--locator-plane-top, 50%);
+      width: var(--locator-plane-width, 64%);
+      height: var(--locator-plane-height, 10px);
+      border: 1px solid rgba(186, 230, 253, .72);
+      border-radius: 9px;
+      background:
+        linear-gradient(90deg, rgba(14, 165, 233, .08), rgba(125, 211, 252, .46), rgba(14, 165, 233, .12)),
+        rgba(56, 189, 248, .2);
+      box-shadow:
+        0 0 16px rgba(56, 189, 248, .34),
+        inset 0 0 14px rgba(224, 242, 254, .18);
+      opacity: var(--locator-plane-opacity, .9);
+      transform:
+        translate(-50%, -50%)
+        perspective(420px)
+        rotateY(var(--locator-plane-yaw, 0deg))
+        rotateX(var(--locator-plane-pitch, 0deg))
+        rotate(var(--locator-plane-rotate, 0deg))
+        skewY(var(--locator-plane-skew, 0deg))
+        skewX(var(--locator-plane-skew-x, 0deg))
+        scale(var(--locator-plane-scale, 1));
+      transform-origin: center center;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+    .locator-plane::after {
+      content: "";
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 50%;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(224, 242, 254, .96);
+      box-shadow: 0 0 10px rgba(125, 211, 252, .8);
+      transform: translateY(-50%);
+    }
+    .slice-locator[data-plane="axial"] .locator-plane {
+      border-color: rgba(186, 230, 253, .82);
+      background:
+        linear-gradient(104deg, rgba(14, 165, 233, .07) 0%, rgba(125, 211, 252, .45) 48%, rgba(224, 242, 254, .2) 54%, rgba(14, 165, 233, .1) 100%),
+        rgba(56, 189, 248, .2);
+      box-shadow:
+        0 0 9px rgba(56, 189, 248, .22),
+        inset 0 0 13px rgba(224, 242, 254, .17);
+      clip-path: polygon(0 48%, 100% 20%, 100% 55%, 0 82%);
+    }
+    .slice-locator[data-plane="axial"] .locator-plane::after {
+      left: -3%;
+      right: -3%;
+      top: 50%;
+      transform: translateY(-50%) rotate(-12deg);
+    }
+    .slice-locator[data-plane="axial"] .locator-plane::before {
+      content: "";
+      position: absolute;
+      inset: 8% 5%;
+      border-top: 1px solid rgba(224, 242, 254, .48);
+      border-bottom: 1px solid rgba(125, 211, 252, .28);
+      background: linear-gradient(180deg, rgba(224, 242, 254, .14), rgba(14, 165, 233, 0) 56%);
+      clip-path: polygon(0 48%, 100% 20%, 100% 55%, 0 82%);
+    }
+    .slice-locator[data-plane="coronal"] .locator-plane::after,
+    .slice-locator[data-plane="sagittal"] .locator-plane::after {
+      left: 50%;
+      right: auto;
+      top: 8%;
+      bottom: 8%;
+      width: 3px;
+      height: auto;
+      transform: translateX(-50%);
+    }
+    .slice-locator[data-plane="coronal"] .locator-plane::after {
+      display: none;
+    }
+    .slice-locator[data-plane="coronal"] .locator-plane {
+      border-color: rgba(186, 230, 253, .82);
+      border-radius: 8px;
+      background:
+        linear-gradient(115deg, rgba(14, 165, 233, .08) 0%, rgba(125, 211, 252, .5) 46%, rgba(224, 242, 254, .2) 52%, rgba(14, 165, 233, .1) 100%),
+        rgba(56, 189, 248, .22);
+      clip-path: polygon(7% 0, 100% 3%, 93% 100%, 0 97%);
+    }
+    .slice-locator[data-plane="coronal"] .locator-plane::before {
+      content: "";
+      position: absolute;
+      inset: 7% 11%;
+      border-left: 2px solid rgba(224, 242, 254, .64);
+      border-right: 1px solid rgba(125, 211, 252, .34);
+      background: linear-gradient(90deg, rgba(224, 242, 254, .22), rgba(14, 165, 233, 0) 48%);
+      clip-path: polygon(7% 0, 100% 3%, 93% 100%, 0 97%);
+    }
+    .slice-locator[data-plane="sagittal"] .locator-plane {
+      border-color: rgba(186, 230, 253, .78);
+      background:
+        linear-gradient(118deg, rgba(14, 165, 233, .04) 0%, rgba(125, 211, 252, .42) 44%, rgba(224, 242, 254, .18) 51%, rgba(14, 165, 233, .09) 100%),
+        rgba(56, 189, 248, .17);
+      box-shadow:
+        0 0 7px rgba(56, 189, 248, .18),
+        inset 0 0 13px rgba(224, 242, 254, .16);
+      clip-path: polygon(0 44%, 100% 10%, 100% 56%, 0 90%);
+    }
+    .slice-locator[data-plane="sagittal"] .locator-plane::after {
+      left: -2%;
+      right: -2%;
+      top: 48%;
+      bottom: auto;
+      width: auto;
+      height: 3px;
+      transform: translateY(-50%) rotate(-30deg);
+    }
+    .slice-locator[data-plane="sagittal"] .locator-plane::before {
+      content: "";
+      position: absolute;
+      inset: 5% 6%;
+      border-left: 2px solid rgba(224, 242, 254, .56);
+      border-right: 1px solid rgba(125, 211, 252, .3);
+      background: linear-gradient(90deg, rgba(224, 242, 254, .16), rgba(14, 165, 233, 0) 52%);
+      clip-path: polygon(0 44%, 100% 10%, 100% 56%, 0 90%);
+    }
+  </style>
+</head>
+<body>
+  <main class="obs-root">
+    <div class="slice-locator" data-plane="axial">
+      <div class="locator-shell">
+        <div class="locator-floor"></div>
+        <img class="locator-skull" src="assets/skull-locator.png" alt="">
+        <div class="locator-plane"></div>
+      </div>
+    </div>
+  </main>
+  <script src="skull-locator-window.js"></script>
+</body>
+</html>

@@ -6,11 +6,11 @@
   const LAUNCHER_ID = "radiopaedia-pacs-viewer-launcher";
   const SHORTCUT_STORAGE_KEY = "radiopaediaPacsShortcutSettings";
   const CROSS_TAB_STORAGE_KEY = "radiopaediaPacsCrossTabStudies";
+  const SKULL_LOCATOR_STORAGE_KEY = "radiopaediaPacsSkullLocatorState";
   const REFRESH_DELAY_MS = 120;
-  const SYNC_DELAYS = [70, 180, 360, 700];
   const BRIDGE_REQUEST_EVENT = "radiopaedia-pacs-bridge-request";
   const BRIDGE_RESPONSE_EVENT = "radiopaedia-pacs-bridge-response";
-  const BRIDGE_TIMEOUT_MS = 900;
+  const BRIDGE_TIMEOUT_MS = 2500;
   const MIN_DISPLAY_VALUE = 0.2;
   const MAX_DISPLAY_VALUE = 4;
   const PRELOAD_AHEAD = 18;
@@ -87,7 +87,6 @@
     frameStacks: new Map(),
     bridgeSeries: [],
     bridgeSeq: 0,
-    bridgeSetSeq: 0,
     bridgeRequests: new Map(),
     bridgeStatus: "pending",
     bridgeError: "",
@@ -117,11 +116,12 @@
     externalSeries: [],
     crossTabStudies: { a: null, b: null },
     suppressOwnKeyCapture: false,
-    lastScrollAt: 0,
     cinePlaying: false,
     cineTimer: 0,
     cineDirection: 1,
     cineIntervalMs: CINE_DEFAULT_INTERVAL_MS,
+    locatorPublishTimer: 0,
+    lastLocatorPublishKey: "",
     locatorVisible: false,
     locatorX: 24,
     locatorY: 24,
@@ -164,6 +164,12 @@
     const url = absoluteUrl(raw);
     if (!url) return "";
     return url.replace(/\?.*$/, "");
+  }
+
+  function finiteNumber(value, fallback = null) {
+    if (Number.isFinite(value)) return value;
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : fallback;
   }
 
   function getImageUrl(img) {
@@ -426,6 +432,28 @@
     return info;
   }
 
+  function updateBridgeSeriesFrame(info) {
+    if (!info?.key || !info.imageUrl || !state.bridgeSeries.length) return;
+    const snapshot = makeFrameSnapshot(info);
+    state.bridgeSeries = state.bridgeSeries.map((seriesInfo) => {
+      if (
+        seriesInfo.key !== info.key &&
+        String(seriesInfo.seriesId || "") !== String(info.seriesId || "")
+      ) {
+        return seriesInfo;
+      }
+      return {
+        ...seriesInfo,
+        ...snapshot,
+        container: seriesInfo.container || info.container,
+        image: seriesInfo.image || info.image,
+        viewport: info.viewport || seriesInfo.viewport,
+        visible: info.visible ?? seriesInfo.visible,
+        bridgeAvailable: seriesInfo.bridgeAvailable ?? info.bridgeAvailable
+      };
+    });
+  }
+
   function getStackProgress(info) {
     const stack = getFrameStack(info?.key);
     if (!stack) return "";
@@ -457,7 +485,7 @@
       imageId: frame?.imageId || parsed.imageId || String(frame?.id || ""),
       filename: parsed.filename,
       sequenceNumber: seriesInfo.sequenceNumber,
-      sliceNumber: frame?.sliceNumber || (Number.isFinite(frame?.frameIdx) ? frame.frameIdx + 1 : null),
+      sliceNumber: finiteNumber(frame?.sliceNumber) || (finiteNumber(frame?.frameIdx) !== null ? finiteNumber(frame.frameIdx) + 1 : null),
       totalSlices: seriesInfo.totalSlices,
       label: seriesInfo.label,
       seriesNumberLabel: seriesInfo.seriesNumberLabel,
@@ -472,23 +500,26 @@
 
     const series = bridgeState.series.map((raw, index) => {
       const key = String(raw.key || raw.seriesId || index);
-      const frameIdx = Number.isFinite(raw.frameIdx) ? raw.frameIdx : 0;
+      const frameIdx = finiteNumber(raw.frameIdx, 0);
       const frames = Array.isArray(raw.frames) ? raw.frames : [];
       const frame = frames[frameIdx] || frames[0];
+      const order = finiteNumber(raw.order, index);
+      const sequenceNumber = finiteNumber(raw.sequenceNumber, index + 1);
+      const totalSlices = finiteNumber(raw.totalSlices, frames.length);
       const seriesInfo = {
         key,
         seriesId: String(raw.seriesId || key),
-        order: Number.isFinite(raw.order) ? raw.order : index,
+        order,
         viewport: raw.viewport || "",
         visible: Boolean(raw.visible),
         imageUrl: frame?.imageUrl || "",
         imageId: String(frame?.id || frame?.imageId || ""),
         filename: parseImagePath(frame?.imageUrl || "").filename,
-        sequenceNumber: Number.isFinite(raw.sequenceNumber) ? raw.sequenceNumber : index + 1,
+        sequenceNumber,
         sliceNumber: frameIdx + 1,
-        totalSlices: Number.isFinite(raw.totalSlices) ? raw.totalSlices : frames.length,
-        label: raw.label || `Series ${Number.isFinite(raw.sequenceNumber) ? raw.sequenceNumber : index + 1}`,
-        seriesNumberLabel: raw.seriesNumberLabel || `Series ${Number.isFinite(raw.sequenceNumber) ? raw.sequenceNumber : index + 1}`,
+        totalSlices,
+        label: raw.label || `Series ${sequenceNumber}`,
+        seriesNumberLabel: raw.seriesNumberLabel || `Series ${sequenceNumber}`,
         modality: raw.modality || bridgeState.modality || getModalityLabel(),
         bridgeFrameIndex: frameIdx,
         bridgeAvailable: true
@@ -507,8 +538,8 @@
         frames.forEach((item, frameIndex) => {
           const snapshot = makeBridgeFrameInfo(seriesInfo, {
             ...item,
-            frameIdx: Number.isFinite(item.frameIdx) ? item.frameIdx : frameIndex,
-            sliceNumber: Number.isFinite(item.sliceNumber) ? item.sliceNumber : frameIndex + 1
+            frameIdx: finiteNumber(item.frameIdx, frameIndex),
+            sliceNumber: finiteNumber(item.sliceNumber, frameIndex + 1)
           });
           if (snapshot.imageUrl) stack.frames.set(snapshot.sliceNumber, snapshot);
         });
@@ -1693,6 +1724,7 @@
               <button class="cine-slower wide" type="button" title="Slower cine">C-</button>
               <button class="cine-faster wide" type="button" title="Faster cine">C+</button>
               <button class="locator-toggle wide" type="button" title="Toggle floating skull slice locator">Skull</button>
+              <button class="locator-obs wide" type="button" title="Open separate OBS skull locator window">OBS</button>
               <button class="sync wide" type="button" title="Sync with the live Radiopaedia viewport">Sync</button>
               <button class="keys wide" type="button" title="Keyboard shortcuts">Keys</button>
               <button class="compare wide" type="button" title="Show two linked image panes">Compare</button>
@@ -1769,6 +1801,7 @@
     shadow.querySelector(".cine-slower").addEventListener("click", () => adjustCineSpeed(1));
     shadow.querySelector(".cine-faster").addEventListener("click", () => adjustCineSpeed(-1));
     shadow.querySelector(".locator-toggle").addEventListener("click", toggleSliceLocator);
+    shadow.querySelector(".locator-obs").addEventListener("click", openObsSkullLocator);
     shadow.querySelector(".sync").addEventListener("click", () => syncFromPage({ preferVisible: true }));
     shadow.querySelector(".keys").addEventListener("click", toggleShortcutPanel);
     shadow.querySelector(".compare").addEventListener("click", toggleCompareMode);
@@ -1984,6 +2017,43 @@
     shadow.querySelector(".locator-toggle")?.classList.toggle("active-toggle", state.locatorVisible);
   }
 
+  function publishSkullLocatorState(plane, fraction, info) {
+    const payload = {
+      plane,
+      fraction,
+      label: info?.label || "",
+      sliceNumber: Number.isFinite(info?.sliceNumber) ? info.sliceNumber : null,
+      totalSlices: Number.isFinite(info?.totalSlices) ? info.totalSlices : null,
+      updatedAt: Date.now()
+    };
+    const key = [
+      payload.plane,
+      Math.round(payload.fraction * 1000),
+      payload.label,
+      payload.sliceNumber,
+      payload.totalSlices
+    ].join("|");
+    if (key === state.lastLocatorPublishKey) return;
+    state.lastLocatorPublishKey = key;
+    if (state.locatorPublishTimer) window.clearTimeout(state.locatorPublishTimer);
+    state.locatorPublishTimer = window.setTimeout(() => {
+      state.locatorPublishTimer = 0;
+      try {
+        const stored = chrome.storage?.local?.set?.({ [SKULL_LOCATOR_STORAGE_KEY]: payload });
+        if (stored && typeof stored.catch === "function") stored.catch(() => {});
+      } catch {}
+      try {
+        chrome.runtime?.sendMessage?.({ type: "RADIOPAEDIA_SKULL_LOCATOR_STATE", payload }, () => {});
+      } catch {}
+    }, 20);
+  }
+
+  function openObsSkullLocator() {
+    const info = locatorSourceInfo();
+    publishSkullLocatorState(inferLocatorPlane(info), getLocatorSliceFraction(info), info);
+    chrome.runtime?.sendMessage?.({ type: "OPEN_RADIOPAEDIA_SKULL_LOCATOR_WINDOW" }, () => {});
+  }
+
   function placeLocatorPlane(locator, plane, fraction) {
     const planeEl = locator.querySelector(".locator-plane");
     if (!planeEl) return;
@@ -2055,14 +2125,17 @@
 
     locator.hidden = !state.locatorVisible;
     updateLocatorButton();
-    if (!state.locatorVisible) return;
 
     const info = locatorSourceInfo();
     const plane = inferLocatorPlane(info);
+    const fraction = getLocatorSliceFraction(info);
+    publishSkullLocatorState(plane, fraction, info);
+    if (!state.locatorVisible) return;
+
     locator.dataset.plane = plane;
     locator.style.left = `${state.locatorX}px`;
     locator.style.top = `${state.locatorY}px`;
-    placeLocatorPlane(locator, plane, getLocatorSliceFraction(info));
+    placeLocatorPlane(locator, plane, fraction);
   }
 
   function toggleSliceLocator() {
@@ -2404,6 +2477,7 @@
       });
     }
     rememberFrame(info);
+    updateBridgeSeriesFrame(info);
     const host = ensureHost();
     const shadow = host.shadowRoot;
     const img = shadow.querySelector(".stage > .single-image");
@@ -2518,11 +2592,7 @@
         resetAnchor: Boolean(options.resetView)
       });
     }
-    const didSet = setImage(info, options);
-    if (didSet && info.bridgeAvailable) {
-      setBridgeFrame(info, info.sliceNumber || 1);
-    }
-    return didSet;
+    return setImage(info, options);
   }
 
   function activateRelativeSeries(delta) {
@@ -2539,7 +2609,6 @@
     const nextIndex = (currentIndex + delta + state.series.length) % state.series.length;
     const info = state.series[nextIndex];
     setImage(info, { resetView: true });
-    if (info.bridgeAvailable) setBridgeFrame(info, info.sliceNumber || 1);
   }
 
   function syncFromPage(options = {}) {
@@ -2737,129 +2806,6 @@
     return Math.max(1, next);
   }
 
-  function scheduleStackSync() {
-    state.lastScrollAt = Date.now();
-    SYNC_DELAYS.forEach((delay) => window.setTimeout(() => syncFromPage(), delay));
-  }
-
-  function focusRadiopaediaTarget(info) {
-    const candidates = [
-      info?.container?.querySelector("[data-scale-provider]"),
-      info?.container,
-      info?.container?.closest("[data-slot]"),
-      info?.seriesId ? document.querySelector(`[data-series-id="${info.seriesId}"]`) : null,
-      document.querySelector(".FullscreenViewer")
-    ].filter(Boolean);
-    const target = candidates.find((candidate) => candidate instanceof HTMLElement) || null;
-    if (!target) return null;
-
-    if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
-    try {
-      target.focus({ preventScroll: true });
-    } catch {
-      target.focus();
-    }
-    return target;
-  }
-
-  function createStackKeyEvent(key) {
-    return new KeyboardEvent("keydown", {
-      key,
-      code: key,
-      bubbles: true,
-      cancelable: true,
-      composed: true
-    });
-  }
-
-  function dispatchRadiopaediaKey(direction) {
-    const info = getActiveSeries() || chooseInitialSeries();
-    const key = direction > 0 ? "ArrowDown" : "ArrowUp";
-    const target = focusRadiopaediaTarget(info);
-
-    state.suppressOwnKeyCapture = true;
-    try {
-      window.dispatchEvent(createStackKeyEvent(key));
-      const focused = document.activeElement;
-      if (target) target.dispatchEvent(createStackKeyEvent(key));
-      if (focused && focused !== target && focused instanceof HTMLElement) {
-        focused.dispatchEvent(createStackKeyEvent(key));
-      }
-    } finally {
-      window.setTimeout(() => {
-        state.suppressOwnKeyCapture = false;
-      }, 0);
-    }
-
-    scheduleStackSync();
-    return Boolean(target);
-  }
-
-  function dispatchWheelToSource(deltaY) {
-    const info = getActiveSeries();
-    const container =
-      info?.container ||
-      (info?.seriesId ? document.querySelector(`[data-series-id="${info.seriesId}"]`) : null);
-    const targets = Array.from(new Set([
-      container?.querySelector('[data-test-hook="scrollbar"]'),
-      container?.querySelector("[data-scale-provider]"),
-      container?.querySelector("img"),
-      container,
-      container?.closest("[data-slot]"),
-      document.querySelector(".FullscreenViewer")
-    ].filter((target) => target instanceof EventTarget)));
-    if (!targets.length) return false;
-
-    targets.forEach((target) => {
-      const rect = target instanceof Element ? target.getBoundingClientRect() : null;
-      const wheel = new WheelEvent("wheel", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        deltaY,
-        deltaX: 0,
-        deltaMode: 0,
-        clientX: rect ? rect.left + rect.width / 2 : window.innerWidth / 2,
-        clientY: rect ? rect.top + rect.height / 2 : window.innerHeight / 2
-      });
-      target.dispatchEvent(wheel);
-    });
-    scheduleStackSync();
-    return true;
-  }
-
-  function driveNativeStack(direction) {
-    const didWheel = dispatchWheelToSource(direction * 130);
-    const didKey = dispatchRadiopaediaKey(direction);
-    return didWheel || didKey;
-  }
-
-  function setBridgeFrame(info, sliceNumber, options = {}) {
-    if (!info?.bridgeAvailable || !Number.isFinite(sliceNumber)) return Promise.resolve(false);
-    const sequence = Number.isFinite(options.sequence) ? options.sequence : state.bridgeSetSeq + 1;
-    state.bridgeSetSeq = Math.max(state.bridgeSetSeq, sequence);
-    const frameIdx = Math.max(0, sliceNumber - 1);
-    return requestBridge("set-frame", {
-      seriesId: info.seriesId || info.key,
-      frameIdx
-    }).then((response) => {
-      if (sequence !== state.bridgeSetSeq) return true;
-      setBridgeStatus(response, "Could not set Radiopaedia frame");
-      if (!response?.ok || !applyBridgeState(response.state)) {
-        updateStatus(getActiveSeries());
-        return false;
-      }
-      const synced = state.series.find((item) => item.key === info.key) ||
-        state.series.find((item) => String(item.seriesId) === String(info.seriesId)) ||
-        selectInfoAfterSync();
-      renderSyncedInfo(synced, {
-        resetView: false,
-        preloadDirection: options.preloadDirection || 0
-      });
-      return true;
-    });
-  }
-
   function setSliceNumber(sliceNumber, options = {}) {
     collectSeries();
     if (state.compareMode) {
@@ -2875,19 +2821,39 @@
       ? Math.max(1, Math.min(total, sliceNumber))
       : Math.max(1, sliceNumber);
     const cached = getCachedFrame(info, targetSlice);
+    let usedCached = false;
     if (cached && cached.imageUrl !== state.imageUrl) {
       setImage(cached, { resetView: false, preloadDirection: direction });
+      usedCached = true;
+    } else if (cached) {
+      rememberFrame(cached);
+      updateBridgeSeriesFrame(cached);
+      usedCached = true;
     }
 
-    if (info.bridgeAvailable) {
-      setBridgeFrame(info, targetSlice, { preloadDirection: direction }).then((ok) => {
-        if (!ok && !cached) driveNativeStack(direction);
+    if (usedCached) return true;
+
+    if (options.retryAfterBridge !== false) {
+      refreshFromBridge({ preferVisible: false, resetView: false }).then((ok) => {
+        if (!ok) {
+          setBridgeStatus({ ok: false, error: "Could not refresh the Radiopaedia frame list." });
+          return;
+        }
+        const refreshedInfo =
+          state.series.find((item) => item.key === info.key) ||
+          state.series.find((item) => String(item.seriesId) === String(info.seriesId)) ||
+          getActiveSeries();
+        const refreshedFrame = getCachedFrame(refreshedInfo, targetSlice);
+        if (refreshedFrame?.imageUrl) {
+          setImage(refreshedFrame, { resetView: false, preloadDirection: direction });
+        } else {
+          setBridgeStatus({ ok: false, error: "Frame was not available in the local Radiopaedia stack cache." });
+        }
       });
       return true;
     }
 
-    const droveNativeStack = driveNativeStack(direction);
-    return droveNativeStack || Boolean(cached);
+    return false;
   }
 
   function paneFromEvent(event) {
