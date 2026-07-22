@@ -1277,6 +1277,7 @@
 
   async function handleKeydown(event) {
     if (await assignShortcutFromEvent(event)) return;
+    if (event.defaultPrevented) return;
     if (!zoomState.open) return;
     if (event.key === "Escape") {
       closeViewer();

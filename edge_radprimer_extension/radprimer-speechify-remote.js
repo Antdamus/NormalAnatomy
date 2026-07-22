@@ -320,7 +320,11 @@
     `;
 
     shadow.querySelectorAll("[data-action]").forEach((button) => {
-      button.addEventListener("click", () => handleAction(host, button.dataset.action));
+      button.addEventListener("click", () => {
+        button.blur();
+        if (button.dataset.action !== "focus") restorePageKeyboardFocus();
+        handleAction(host, button.dataset.action);
+      });
     });
 
     shadow.querySelector(".bubble-section").addEventListener("click", (event) => {
@@ -330,7 +334,11 @@
     });
 
     shadow.querySelectorAll("[data-speed]").forEach((button) => {
-      button.addEventListener("click", () => handleAction(host, "setSpeed", button.dataset.speed));
+      button.addEventListener("click", () => {
+        button.blur();
+        restorePageKeyboardFocus();
+        handleAction(host, "setSpeed", button.dataset.speed);
+      });
     });
 
     const root = shadow.querySelector(".root");
@@ -395,6 +403,18 @@
     if (/app\.statdx\.com$/i.test(location.hostname)) return "statdx";
     if (/app\.radprimer\.com$/i.test(location.hostname)) return "radprimer";
     return "";
+  }
+
+  function registerCurrentSourceTab(reason = "active") {
+    const sourceKind = getCurrentPageSourceKind();
+    if (!sourceKind) return;
+    try {
+      chrome.runtime.sendMessage({
+        type: "RADPRIMER_SOURCE_TAB_ACTIVE",
+        sourceKind,
+        reason
+      });
+    } catch {}
   }
 
   function getCompactSectionDisplay(section, fallbackDisplay = "") {
@@ -561,6 +581,61 @@
     scheduleNextRefresh();
   }
 
+  function blurActiveElementDeep(root = document) {
+    const active = root?.activeElement;
+    if (!active) return false;
+    if (active.shadowRoot) blurActiveElementDeep(active.shadowRoot);
+    if (typeof active.blur === "function") {
+      active.blur();
+      return true;
+    }
+    return false;
+  }
+
+  function restorePageKeyboardFocus() {
+    try {
+      blurActiveElementDeep(document);
+      const target = document.body || document.documentElement;
+      if (!target || typeof target.focus !== "function") return;
+
+      const hadTabIndex = target.hasAttribute("tabindex");
+      const previousTabIndex = target.getAttribute("tabindex");
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
+      if (hadTabIndex) target.setAttribute("tabindex", previousTabIndex);
+      else target.removeAttribute("tabindex");
+    } catch {}
+  }
+
+  function shouldRestoreKeyboardFocusAfterAction(action) {
+    return action === "playPause" || action === "back10" || action === "forward10" || action === "setSpeed";
+  }
+
+  function replaySourceHotkey(eventInit = {}) {
+    try {
+      restorePageKeyboardFocus();
+      registerCurrentSourceTab("hotkey-replay");
+      const key = String(eventInit.key || "");
+      if (!key) return false;
+      document.dispatchEvent(new KeyboardEvent("keydown", {
+        key,
+        code: String(eventInit.code || ""),
+        location: Number(eventInit.location || 0),
+        repeat: Boolean(eventInit.repeat),
+        ctrlKey: Boolean(eventInit.ctrlKey),
+        shiftKey: Boolean(eventInit.shiftKey),
+        altKey: Boolean(eventInit.altKey),
+        metaKey: Boolean(eventInit.metaKey),
+        bubbles: true,
+        cancelable: true,
+        composed: true
+      }));
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   async function handleAction(host, action, speed = "") {
     activateRemotePolling(COMMAND_WAKE_MS, { immediate: false });
     const previousState = lastState;
@@ -584,6 +659,7 @@
     } finally {
       busy = false;
       renderState(host, lastState);
+      if (shouldRestoreKeyboardFocusAfterAction(action)) restorePageKeyboardFocus();
     }
   }
 
@@ -596,6 +672,7 @@
   }
 
   function handleKeyboardShortcuts(event) {
+    if (event.defaultPrevented) return;
     if (document.documentElement.dataset.radprimerShortcutCapture === "true") return;
     if (event.ctrlKey || event.metaKey || event.altKey) return;
     if (isEditableTarget(event.target)) return;
@@ -618,12 +695,31 @@
   }
 
   ensureHost();
+  registerCurrentSourceTab("load");
   loadPlayerShortcutSettings();
   activateRemotePolling(COMMAND_WAKE_MS);
   chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName !== "local" || !changes[SHORTCUT_STORAGE_KEY]) return;
     loadPlayerShortcutSettings();
   });
+  chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+    if (message?.type === "RADPRIMER_RESTORE_PAGE_KEYBOARD_FOCUS") {
+      restorePageKeyboardFocus();
+      sendResponse({ ok: true });
+      return false;
+    }
+    if (message?.type === "RADPRIMER_REPLAY_SOURCE_HOTKEY") {
+      sendResponse({ ok: replaySourceHotkey(message.event || {}) });
+      return false;
+    }
+    return false;
+  });
+  window.addEventListener("focus", () => registerCurrentSourceTab("window-focus"));
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") registerCurrentSourceTab("visible");
+  });
+  document.addEventListener("pointerdown", () => registerCurrentSourceTab("pointer"), true);
+  document.addEventListener("keydown", () => registerCurrentSourceTab("keydown"), true);
   document.addEventListener("keydown", handleKeyboardShortcuts, true);
   document.addEventListener("radprimer-speechify-jump-current-image", () => {
     jumpToCurrentImage();

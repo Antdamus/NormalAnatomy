@@ -88,8 +88,113 @@
     updatedAt: 0
   };
   let currentLectureIdentity = "";
+  const SOURCE_HOTKEY_STORAGE_KEYS = ["radprimerZoomShortcutSettings", "statdxZoomShortcutSettings"];
+  const DEFAULT_SOURCE_HOTKEYS = [
+    "s",
+    "k",
+    "l",
+    "t",
+    "a",
+    "+",
+    "-",
+    "0",
+    "w",
+    "i",
+    "p",
+    "ArrowLeft",
+    "ArrowRight",
+    "x",
+    "MediaPlayPause"
+  ];
+  let sourceHotkeyKeys = new Set(DEFAULT_SOURCE_HOTKEYS);
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const normalizeSourceHotkeyKey = (value) => {
+    const raw = String(value || "");
+    if (raw === " " || raw.toLowerCase() === "spacebar") return "Space";
+    if (raw.length === 1) return raw.toLowerCase();
+    return raw;
+  };
+
+  const isEditableTarget = (target) => {
+    const el = target instanceof Element ? target : target?.parentElement;
+    if (!el) return false;
+    return Boolean(
+      el.closest('input, textarea, select, [contenteditable="true"], [role="textbox"]')
+    );
+  };
+
+  const loadSourceHotkeyKeys = async () => {
+    try {
+      const stored = await chrome.storage.local.get(SOURCE_HOTKEY_STORAGE_KEYS);
+      const keys = [...DEFAULT_SOURCE_HOTKEYS];
+      SOURCE_HOTKEY_STORAGE_KEYS.forEach((storageKey) => {
+        const settings = stored?.[storageKey] || {};
+        Object.values(settings).forEach((key) => {
+          if (key) keys.push(key);
+        });
+      });
+      sourceHotkeyKeys = new Set(keys.map(normalizeSourceHotkeyKey).filter(Boolean));
+    } catch {
+      sourceHotkeyKeys = new Set(DEFAULT_SOURCE_HOTKEYS.map(normalizeSourceHotkeyKey));
+    }
+  };
+
+  const isSourceHotkeyEvent = (event) => {
+    if (event.ctrlKey || event.metaKey || event.altKey) return false;
+    if (isEditableTarget(event.target)) return false;
+    const key = normalizeSourceHotkeyKey(event.key);
+    return sourceHotkeyKeys.has(key) || (key === "=" && sourceHotkeyKeys.has("+"));
+  };
+
+  const relaySourceHotkeyFromSpeechify = (event) => {
+    if (!isSourceHotkeyEvent(event)) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation?.();
+    chrome.runtime.sendMessage({
+      type: "RADPRIMER_RELAY_SOURCE_HOTKEY",
+      event: {
+        key: event.key,
+        code: event.code,
+        location: event.location,
+        repeat: event.repeat,
+        ctrlKey: event.ctrlKey,
+        shiftKey: event.shiftKey,
+        altKey: event.altKey,
+        metaKey: event.metaKey
+      }
+    }, (response) => {
+      const error = chrome.runtime.lastError;
+      if (error || !response?.ok) {
+        console.warn("[Speechify source hotkey relay failed]", error?.message || response?.error || "Unknown error");
+      }
+    });
+  };
+
+  const refocusSourceAfterSpeechifyPlayerClick = (event) => {
+    const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+    if (
+      !target?.closest?.(
+        [
+          SPEECHIFY_SELECTORS.playerPlayButton,
+          SPEECHIFY_SELECTORS.playerBackwardButton,
+          SPEECHIFY_SELECTORS.playerForwardButton
+        ].join(",")
+      )
+    ) {
+      return;
+    }
+
+    window.setTimeout(() => {
+      chrome.runtime.sendMessage({
+        type: "RADPRIMER_REFOCUS_SOURCE_TAB",
+        reason: "speechify-player-click"
+      });
+    }, 180);
+  };
 
   const normalize = (value) => {
     return String(value || "")
@@ -1989,6 +2094,15 @@
 
     return { title: finalTitle, folder, autoSaved: autoSave === true };
   };
+
+  loadSourceHotkeyKeys();
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName !== "local") return;
+    if (!SOURCE_HOTKEY_STORAGE_KEYS.some((key) => changes[key])) return;
+    loadSourceHotkeyKeys();
+  });
+  document.addEventListener("keydown", relaySourceHotkeyFromSpeechify, true);
+  document.addEventListener("click", refocusSourceAfterSpeechifyPlayerClick, true);
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message?.type === "SPEECHIFY_PLAYER_REMOTE") {

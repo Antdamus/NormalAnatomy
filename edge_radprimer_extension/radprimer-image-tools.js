@@ -1821,6 +1821,7 @@
       return;
     }
 
+    if (event.defaultPrevented) return;
     if (event.ctrlKey || event.metaKey || event.altKey) return;
 
     const key = String(event.key || "").toLowerCase();

@@ -59,6 +59,11 @@
       "run_at": "document_idle"
     },
     {
+      "matches": ["https://app.speechify.com/*"],
+      "js": ["speechify-paster.js"],
+      "run_at": "document_idle"
+    },
+    {
       "matches": ["https://radiopaedia.org/*", "https://www.radiopaedia.org/*"],
       "js": ["radiopaedia-pacs-bridge.js"],
       "run_at": "document_idle",

@@ -131,6 +131,7 @@ let lastSpeechifyPlayerTabId = null;
 let speechifyAwakeWindowId = null;
 let speechifyAwakeTabId = null;
 let speechifyAwakeLastMoveAt = 0;
+let lastArticleSourceTab = null;
 const pendingImageDownloadFilenames = new Map();
 
 function buildSpeechifyFolderUrl(folderId) {
@@ -980,6 +981,11 @@ async function refocusSenderTab(senderTab) {
   try {
     if (senderTab?.id) await chrome.tabs.update(senderTab.id, { active: true });
     if (senderTab?.windowId) await chrome.windows.update(senderTab.windowId, { focused: true });
+    if (senderTab?.id) {
+      try {
+        await chrome.tabs.sendMessage(senderTab.id, { type: "RADPRIMER_RESTORE_PAGE_KEYBOARD_FOCUS" });
+      } catch {}
+    }
   } catch {}
 }
 
@@ -1053,6 +1059,7 @@ async function ensureSpeechifyAwakeWindow(tab, senderTab = null) {
 }
 
 async function sendSpeechifyPlayerRemote(payload = {}, senderTab = null) {
+  rememberArticleSourceTab(senderTab, "", "speechify-player-remote");
   const action = String(payload.action || "state");
   const tabs = await chrome.tabs.query({ url: ["https://app.speechify.com/*"] });
 
@@ -1140,6 +1147,7 @@ async function sendSpeechifyPlayerRemote(payload = {}, senderTab = null) {
               speechifyAwakeWindow: Boolean(updatedTab?.windowId && updatedTab.windowId !== senderTab?.windowId)
             };
           }
+          await refocusSenderTab(senderTab);
           return result;
         }
       } catch {}
@@ -1181,11 +1189,13 @@ async function sendSpeechifyPlayerRemote(payload = {}, senderTab = null) {
         try {
           updatedTab = await chrome.tabs.get(tab.id);
         } catch {}
-        return {
+        const result = {
           ...response.result,
           isPlaying: Boolean(response.result?.isPlaying),
           tabAudible: Boolean(updatedTab?.audible || tab.audible)
         };
+        await refocusSenderTab(senderTab);
+        return result;
       }
       lastError = new Error(response?.error || "Speechify player command failed.");
     } catch (error) {
@@ -1302,6 +1312,148 @@ function getArticleSourceForKind(sourceKind) {
   return null;
 }
 
+function rememberArticleSourceTab(tab, sourceKind = "", reason = "") {
+  const source = getArticleSourceFromTab(tab) || getArticleSourceForKind(sourceKind);
+  if (!tab?.id || !source) return;
+  lastArticleSourceTab = {
+    tabId: tab.id,
+    windowId: tab.windowId || null,
+    sourceKind: source.kind,
+    updatedAt: Date.now(),
+    reason
+  };
+}
+
+function getArticleSourceUrlPatterns(sourceKind = "") {
+  const source = getArticleSourceForKind(sourceKind);
+  if (source) return source.tabUrlPatterns || [source.tabUrlPattern].filter(Boolean);
+  return [
+    "https://app.radprimer.com/*",
+    "https://app.statdx.com/*",
+    "https://statdx.com/*",
+    "https://*.statdx.com/*"
+  ];
+}
+
+async function findArticleSourceHotkeyTargetTab(senderTab = null, sourceKind = "") {
+  const wantedKind = normalizeArticleSourceKind(sourceKind);
+  if (
+    lastArticleSourceTab?.tabId &&
+    Date.now() - lastArticleSourceTab.updatedAt < 12 * 60 * 60 * 1000 &&
+    (!wantedKind || lastArticleSourceTab.sourceKind === wantedKind)
+  ) {
+    try {
+      const tab = await chrome.tabs.get(lastArticleSourceTab.tabId);
+      const source = getArticleSourceFromTab(tab);
+      if (source && (!wantedKind || source.kind === wantedKind)) return tab;
+    } catch {}
+  }
+
+  const tabs = await chrome.tabs.query({ url: getArticleSourceUrlPatterns(wantedKind) });
+  const candidates = tabs
+    .filter((tab) => tab?.id && tab.id !== senderTab?.id)
+    .map((tab) => ({ tab, source: getArticleSourceFromTab(tab) }))
+    .filter((item) => item.source && (!wantedKind || item.source.kind === wantedKind));
+
+  if (!candidates.length) {
+    throw new Error("Open a RadPrimer or STATdx article tab first.");
+  }
+
+  candidates.sort((a, b) => {
+    const aSameWindow = a.tab.windowId === senderTab?.windowId ? 1 : 0;
+    const bSameWindow = b.tab.windowId === senderTab?.windowId ? 1 : 0;
+    if (aSameWindow !== bSameWindow) return bSameWindow - aSameWindow;
+    if (a.tab.active !== b.tab.active) return a.tab.active ? -1 : 1;
+    return Number(b.tab.lastAccessed || 0) - Number(a.tab.lastAccessed || 0);
+  });
+
+  return candidates[0].tab;
+}
+
+async function ensureArticleHotkeyScripts(tab, source) {
+  const fullSource = getArticleSourceForKind(source?.kind || source);
+  if (!tab?.id || !fullSource?.imageToolsFile) return;
+  await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: [fullSource.imageToolsFile, "radprimer-speechify-remote.js"]
+  });
+}
+
+function sanitizeHotkeyEventInit(event = {}) {
+  return {
+    key: String(event.key || ""),
+    code: String(event.code || ""),
+    location: Number(event.location || 0),
+    repeat: Boolean(event.repeat),
+    ctrlKey: Boolean(event.ctrlKey),
+    shiftKey: Boolean(event.shiftKey),
+    altKey: Boolean(event.altKey),
+    metaKey: Boolean(event.metaKey)
+  };
+}
+
+async function dispatchSourceHotkeyFallback(tabId, eventInit) {
+  await chrome.scripting.executeScript({
+    target: { tabId },
+    func: (init) => {
+      document.dispatchEvent(new KeyboardEvent("keydown", {
+        ...init,
+        bubbles: true,
+        cancelable: true,
+        composed: true
+      }));
+    },
+    args: [eventInit]
+  });
+}
+
+async function relaySourceHotkeyFromSpeechify(message = {}, senderTab = null) {
+  const eventInit = sanitizeHotkeyEventInit(message.event || {});
+  if (!eventInit.key) throw new Error("No hotkey was provided.");
+
+  const tab = await findArticleSourceHotkeyTargetTab(senderTab, message.sourceKind || "");
+  const source = assertSupportedArticleTab(tab);
+  const focusedTab = await chrome.tabs.update(tab.id, { active: true });
+  if (focusedTab.windowId) await chrome.windows.update(focusedTab.windowId, { focused: true });
+
+  await ensureArticleHotkeyScripts(focusedTab || tab, source);
+  rememberArticleSourceTab(focusedTab || tab, source.kind, "speechify-hotkey-relay");
+
+  let replayed = false;
+  try {
+    const response = await chrome.tabs.sendMessage(tab.id, {
+      type: "RADPRIMER_REPLAY_SOURCE_HOTKEY",
+      event: eventInit
+    });
+    replayed = Boolean(response?.ok);
+  } catch {}
+
+  if (!replayed) {
+    await dispatchSourceHotkeyFallback(tab.id, eventInit);
+  }
+
+  return {
+    tabId: tab.id,
+    sourceKind: source.kind,
+    key: eventInit.key
+  };
+}
+
+async function refocusLastArticleSourceTab(senderTab = null, reason = "speechify-refocus") {
+  const tab = await findArticleSourceHotkeyTargetTab(senderTab);
+  const source = assertSupportedArticleTab(tab);
+  const focusedTab = await chrome.tabs.update(tab.id, { active: true });
+  if (focusedTab.windowId) await chrome.windows.update(focusedTab.windowId, { focused: true });
+  rememberArticleSourceTab(focusedTab || tab, source.kind, reason);
+  try {
+    await chrome.tabs.sendMessage(tab.id, { type: "RADPRIMER_RESTORE_PAGE_KEYBOARD_FOCUS" });
+  } catch {}
+  return {
+    tabId: tab.id,
+    sourceKind: source.kind
+  };
+}
+
 async function navigateSourceImage({ imageNumber, sourceKind, sourceLabel }, senderTab = null) {
   const numericImage = Number(imageNumber);
   if (!Number.isFinite(numericImage) || numericImage <= 0) {
@@ -1337,6 +1489,7 @@ async function navigateSourceImage({ imageNumber, sourceKind, sourceLabel }, sen
 
   const focusedTab = await chrome.tabs.update(tab.id, { active: true });
   if (focusedTab.windowId) await chrome.windows.update(focusedTab.windowId, { focused: true });
+  rememberArticleSourceTab(focusedTab || tab, source.kind, "navigate-source-image");
 
   await chrome.scripting.executeScript({
     target: { tabId: tab.id },
@@ -6303,6 +6456,34 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "SPEECHIFY_PLAYER_REMOTE") {
     (async () => {
       const result = await sendSpeechifyPlayerRemote(message.payload || {}, _sender?.tab || null);
+      sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RADPRIMER_SOURCE_TAB_ACTIVE") {
+    rememberArticleSourceTab(_sender?.tab || null, message.sourceKind || "", message.reason || "active");
+    sendResponse({ ok: true });
+    return false;
+  }
+
+  if (message?.type === "RADPRIMER_RELAY_SOURCE_HOTKEY") {
+    (async () => {
+      const result = await relaySourceHotkeyFromSpeechify(message || {}, _sender?.tab || null);
+      sendResponse({ ok: true, result });
+    })().catch((error) => {
+      sendResponse({ ok: false, error: String(error?.message || error) });
+    });
+
+    return true;
+  }
+
+  if (message?.type === "RADPRIMER_REFOCUS_SOURCE_TAB") {
+    (async () => {
+      const result = await refocusLastArticleSourceTab(_sender?.tab || null, message.reason || "speechify-refocus");
       sendResponse({ ok: true, result });
     })().catch((error) => {
       sendResponse({ ok: false, error: String(error?.message || error) });
