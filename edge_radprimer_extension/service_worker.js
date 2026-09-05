@@ -53,6 +53,10 @@ const CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION = [
   "If any Core Radiology content was used, you must also print a compact Core evidence block outside the TSV download. This block is for the audit bundle only and must not be included inside the TSV file.",
   "If no Core content was actually retrieved/used, still print the block with CORE_EVIDENCE_STATUS: NOT_USED.",
   "The TSV is not audit-complete until this Core evidence block is printed. If any TSV field or summary says Core-only, Core + RadPrimer, Core + STATdx, or otherwise relies on Core, CORE_EVIDENCE_STATUS must be USED and the block must list the concrete Core facts used.",
+  "A prose sentence such as 'Core Validation Gate passed' is not a substitute for the Core evidence block and will be treated as unauditable.",
+  "Print the Core evidence block and the RADPRIMER_CARD_TSV_DOWNLOAD_READY sentinel in the same final assistant message after the downloadable TSV link/button is created.",
+  "If Core Radiology was retrieved from uploaded ChatGPT project/source files, list the specific retrieved chapter/section/page range plus the concrete facts that changed or supported the cards.",
+  "If the source package says no auditable Core pages were supplied or retrieved, do not claim Core validation unless you independently retrieved Core project/source-file content in this run and can document it in the block.",
   "If you cannot provide auditable Core evidence, do not use Core claims in the TSV; proceed as article-only and label the summary/source basis accordingly.",
   "Use this exact plain-text wrapper:",
   CORE_EVIDENCE_BEGIN,
@@ -3951,6 +3955,26 @@ function extractCoreEvidenceBlock(text) {
   const value = String(text || "");
   const begin = value.indexOf(CORE_EVIDENCE_BEGIN);
   if (begin < 0) {
+    const unstructuredCoreClaim = extractUnstructuredCoreClaim(value);
+    if (unstructuredCoreClaim) {
+      return {
+        text: [
+          "CORE_EVIDENCE_STATUS: CLAIMED_BUT_UNSTRUCTURED",
+          "CORE_SOURCE_BASIS: ChatGPT mentioned Core Radiology but did not emit the required CORE_EVIDENCE_FILE_BEGIN / CORE_EVIDENCE_FILE_END block.",
+          "CORE_FACTS_USED:",
+          "- None auditable from the structured ChatGPT output.",
+          "CORE_UNSTRUCTURED_CLAIM:",
+          ...unstructuredCoreClaim.map((line) => `- ${line}`),
+          "CORE_DERIVED_CARDS:",
+          "- Unknown; audit should treat Core-specific claims as unverified unless source_package.txt contains direct Core text.",
+          "CORE_LIMITATIONS:",
+          "- A prose Core validation statement is not sufficient evidence for Codex audit.",
+          "- Downgrade Core + article synthesis to article-only unless direct Core text is present elsewhere in the bundle."
+        ].join("\n"),
+        status: "CLAIMED_BUT_UNSTRUCTURED",
+        provided: false
+      };
+    }
     return {
       text: [
         "CORE_EVIDENCE_STATUS: NOT_PROVIDED",
@@ -3984,6 +4008,32 @@ function extractCoreEvidenceBlock(text) {
   };
 }
 
+function extractUnstructuredCoreClaim(text) {
+  const value = String(text || "");
+  const hasCoreClaim = [
+    /\bCore Validation Gate passed\b/i,
+    /\bCore Radiology\b/i,
+    /\bCore cross-check\b/i,
+    /\bCore Summary\b/i,
+    /\bCore-only\b/i,
+    /\bCore\s*\+\s*(?:RadPrimer|STATdx)\b/i,
+    /\bCore (?:also notes|emphasizes|MRI|CT|US|nuclear medicine)\b/i
+  ].some((pattern) => pattern.test(value));
+  if (!hasCoreClaim) return null;
+
+  const lines = value
+    .split(/\r?\n/)
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter(Boolean)
+    .filter((line) => /Core|GI Liver|uploaded|page|pp\.|p\./i.test(line))
+    .slice(0, 12);
+
+  if (lines.length) return lines;
+
+  const snippet = value.replace(/\s+/g, " ").trim().slice(0, 1200);
+  return snippet ? [snippet] : ["Core was mentioned, but no structured evidence block was captured."];
+}
+
 function stripCoreEvidenceBlock(text) {
   const value = String(text || "");
   const begin = value.indexOf(CORE_EVIDENCE_BEGIN);
@@ -4009,6 +4059,7 @@ function buildAuditInstructions(metadata) {
     "- Add missing high-yield cards only when the source package or captured Core evidence supports them.",
     "- Improve mechanism and histology explanations when they are unclear; explicitly label any outside clarification added during review.",
     "- Keep one main concept per card unless the card is intentionally testing a pathway or structured comparison.",
+    "- If `core_evidence.txt` is `NOT_PROVIDED` or `CLAIMED_BUT_UNSTRUCTURED`, treat Core-specific claims as unverified even when `metadata.json` or the TSV says Core validation passed.",
     "- Check image-based cards against the selected image list and grouped cases in `metadata.json`.",
     "- Keep source attribution on the back of cards when the note type supports it.",
     "- Treat Core-specific claims as auditable only if supported by `core_evidence.txt` or direct Core text inside `source_package.txt`.",
