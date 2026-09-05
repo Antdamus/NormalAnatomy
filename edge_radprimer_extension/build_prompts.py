@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import shutil
 import sys
 from pathlib import Path
 
@@ -32,7 +33,18 @@ def write(name: str, text: str) -> None:
     print(f"Built {target.relative_to(ROOT)} ({len(text)} chars)")
 
 
+def remove_extension_pycache() -> None:
+    for cache_dir in EXTENSION_DIR.rglob("__pycache__"):
+        try:
+            cache_dir.relative_to(EXTENSION_DIR)
+        except ValueError:
+            continue
+        shutil.rmtree(cache_dir, ignore_errors=True)
+
+
 def main() -> int:
+    remove_extension_pycache()
+
     pathology_dir = ROOT / "pathology"
     normal_dir = ROOT / "Normal"
 
@@ -100,4 +112,7 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    finally:
+        remove_extension_pycache()
