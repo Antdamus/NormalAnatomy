@@ -148,7 +148,9 @@ The modality matrix must consider:
 
 Question quality:
 • Ask for the specific modality pattern, phase, contrast agent, sequence, or tracer behavior.
-• Do not use the phrase "as stated in source" in the learner-facing question.
+• Do not use provenance/audit wording in the learner-facing question or answer.
+• Do not write "source-supported", "as stated in source", "fused source", "Core description", "Core-listed", or "Core Radiology says" in High_Yield_Q or High_Yield_A.
+• Rewrite those phrases into direct radiology wording.
 • Do not ask "What is the imaging appearance?" if a tighter modality/phase/sequence/tracer question is possible.
 • Do not create a card for an unsupported modality.
 
@@ -199,12 +201,15 @@ Good:
 - "What percentage of adenomas are iso- to hyperintense on hepatobiliary phase?"
 - "What is the expected MRI appearance of HNF1A-mutated hepatic adenoma?"
 - "What CT enhancement pattern is described for inflammatory hepatic adenoma?"
-- "What sonographic appearance is source-supported for hepatic adenoma?"
+- "What sonographic appearance should be recognized for hepatic adenoma?"
 
 Avoid meta stems such as:
 - "What did the source review support encoding?"
 - "What did the literature search show?"
 - "What was or was not explicitly stated by the source?" unless the absence itself is the board-tested fact
+- "What source-supported feature..."
+- "What does Core Radiology say..."
+- "What does the fused source show..."
 
 High-Yield cards should test the medicine/radiology itself, not the bookkeeping around the source review.
 

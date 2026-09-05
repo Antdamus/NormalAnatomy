@@ -13,6 +13,37 @@ Cards must not train prompt workflow, source bookkeeping, extraction audit, or g
 
 -----------------------------------------------------
 
+LEARNER-FACING PROVENANCE WORDING BAN
+
+Source support is mandatory internally, but learner-facing card text should read like radiology, not like an audit report.
+
+Do not use these phrases in visible card questions or answers:
+- source-supported
+- as stated in the source
+- fused source
+- source review
+- Core description
+- Core-listed
+- Core Radiology says
+- RadPrimer/STATdx says
+- validation report
+
+Allowed locations for source/provenance wording:
+- summary/source-basis field
+- core_evidence.txt
+- audit report
+- separate reference/link fields
+
+Rewrite provenance-shaped wording into direct radiology wording.
+
+Examples:
+- Bad: "What ultrasound pattern is source-supported for hemangioma?"
+- Better: "For cavernous hemangioma, what ultrasound pattern should be recognized?"
+- Bad: "Which findings are Core-listed risks for HCC?"
+- Better: "Which clinical substrate raises HCC when a hypervascular liver mass shows washout?"
+
+-----------------------------------------------------
+
 ONE LEARNING TARGET = ONE TSV ROW
 
 Each independent learning target must be exported as its own TSV row.
@@ -149,9 +180,9 @@ Do not overstate certainty.
 
 -----------------------------------------------------
 
-MULTI-IMAGE STACK LABELS
+IMAGE STACK LABELS
 
-All multi-image UNKNOWN cards must visibly label image position on the front:
+All UNKNOWN image cards must visibly label image position on the front:
 - Image 1/N
 - Image 2/N
 - Image 3/N
@@ -161,7 +192,7 @@ Captions remain off the front.
 
 Use image-position labels so the learner knows to keep scrolling through the image stack.
 
-Single-image cards may omit "Image 1/1" unless the local template benefits from consistent labels.
+Single-image UNKNOWN cards must use "Image 1/1" for consistency.
 
 -----------------------------------------------------
 

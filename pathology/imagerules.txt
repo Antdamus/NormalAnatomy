@@ -6,16 +6,16 @@ Image field (Front):
 • No diagnostic labels
 • No source figure legends on the front
 
-Multi-image UNKNOWN cards MUST visibly label image position on the front:
+All UNKNOWN cards MUST visibly label image position on the front:
 <b>Image 1/N</b><br><img src="FILE1.ext"><br>
 <b>Image 2/N</b><br><img src="FILE2.ext"><br>
 
 Rules:
-• Use this numbering for every multi-image UNKNOWN stack.
+• Use this numbering for every UNKNOWN image card.
 • The number labels must be non-diagnostic.
 • The labels exist only so the learner knows to scroll through all images.
 • Do not replace source captions with these labels.
-• Single-image UNKNOWN cards may omit "Image 1/1" unless consistent local formatting is desired.
+• Single-image UNKNOWN cards must use "Image 1/1".
 
 Image_Annotated field (Back) — CONDITIONAL
 

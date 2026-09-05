@@ -293,7 +293,7 @@ Allowed:
 Order must match Image_Annotated.
 No captions on front.
 
-Multi-image UNKNOWN cards MUST include non-diagnostic front labels:
+All UNKNOWN cards MUST include non-diagnostic front labels:
 <b>Image 1/N</b><br><img src="FILE1.ext"><br>
 <b>Image 2/N</b><br><img src="FILE2.ext"><br>
 
@@ -301,7 +301,7 @@ These labels:
 â€¢ Tell the learner to scroll through the full stack
 â€¢ Must not reveal diagnosis, sign, anatomy, or finding
 â€¢ Must not replace source captions
-â€¢ Are required when N is greater than 1
+â€¢ Are required for every UNKNOWN image card, including single-image cards as <b>Image 1/1</b>
 
 â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 BACK-SIDE CONTENT RULES
