@@ -316,35 +316,36 @@ The rendered UNKNOWN back must put the clinically useful interpretation first:
 
 1) Diagnosis
 2) Differential
-3) Key differentiators
-4) Source caption/readout, verbatim if available
-5) How to read the image(s)
-6) Typical source-supported imaging appearance by modality
-7) Report-critical findings, when relevant
-8) Complete image reference name(s)
-9) Reference/link, when available
+3) Key imaging findings
+4) Annotated image(s) and verbatim caption(s), if available
+5) Collapsible explanation: key differentiators / how to read the image(s)
+6) Collapsible explanation: typical source-supported imaging appearance by modality
+7) Collapsible explanation: report-critical findings, when relevant
+8) Collapsible reference/link or article summary, when available
 
 Map this into existing fields without creating new fields:
-â€¢ Most_Likely_Diagnosis starts with the diagnosis and concise case reasoning.
+â€¢ Most_Likely_Diagnosis starts with the diagnosis. Keep detailed case reasoning out of this field when possible.
 â€¢ Differentials contains the realistic mimics.
-â€¢ Imaging_Differentiation begins with "Key differentiators:" and includes the case-specific separator logic, modality-specific appearance checklist when useful, and report-critical findings when relevant.
+â€¢ Imaging_Differentiation begins with "Key imaging findings:" when those findings are not already isolated by the template, then "Key differentiators:" and includes the case-specific separator logic, modality-specific appearance checklist when useful, and report-critical findings when relevant.
 â€¢ Original_Caption or Image_Annotated stackCap contains verbatim caption text only.
-â€¢ Complete image reference names must appear in a separate back-side line/block, never by modifying verbatim caption text.
+â€¢ Image reference names, local media filenames, source thumbnail links, and source image URLs must not appear as visible learner-facing text.
 
 If imaging cannot confidently separate two entities:
 â€¢ State that directly.
 â€¢ State what is needed instead, such as pathology, biopsy, cultures, labs, clinical context, operative correlation, or follow-up, only when source-supported or clinically necessary.
 â€¢ Do not pretend imaging specificity is higher than the source supports.
 
-Most_Likely_Diagnosis (REQUIRED â€” STRICT ORDER)
+Most_Likely_Diagnosis (REQUIRED)
 
-This field must contain the following, in EXACT order:
+This field must prioritize a clean, fast answer on mobile.
 
-1) Single Best Diagnosis (one line)
+Required:
+1) Single Best Diagnosis
 â€¢ One diagnosis only
 â€¢ No hedging
 â€¢ No differential names here
 
+Allowed only when the Anki template cannot isolate findings elsewhere:
 2) Caption-Derived KEYWORD FINDINGS (3â€“8 short phrases)
 â€¢ Must be explicitly present in the verbatim caption text
 â€¢ Must be observational (anatomic/finding-based)
@@ -363,6 +364,11 @@ Safety filter:
 â€¢ No invented imaging claims
 â€¢ No management thresholds unless explicitly supported
 â€¢ Must reflect full-source review, not digest-only reasoning
+
+Preferred structure:
+â€¢ Put only the single best diagnosis in Most_Likely_Diagnosis.
+â€¢ Put realistic mimics in Differentials.
+â€¢ Put key imaging findings and reasoning in Imaging_Differentiation so the template can render differential above findings.
 
 4) Differential Field â€” RECOMMENDED WHEN USEFUL
 Populate the Differentials field with:
@@ -406,6 +412,9 @@ Populate only if:
 For pathology UNKNOWN cards, Imaging_Differentiation is strongly preferred whenever realistic mimics exist.
 
 Start with:
+Key imaging findings:
+
+Then:
 Key differentiators:
 
 Then include, when supported:
@@ -414,21 +423,18 @@ Then include, when supported:
 â€¢ If imaging cannot reliably distinguish entities, state that directly and name what is needed instead only when source-supported or clinically necessary
 â€¢ Typical modality appearance checklist for the disease entity when it helps connect the case image to the memorized entity pattern
 â€¢ Report-critical findings when a finding changes urgency, management, staging, prognosis, follow-up, or outcome
-â€¢ Image references: complete source image reference name(s), one per image, in display order, unless already included as a separate image-reference block in Image_Annotated
+â€¢ Do not include visible image-reference blocks, source URLs, thumbnail URLs, or local media filename lists
 
 Image_Annotated (BACK DISPLAY)
 Preferred format:
 <div class="stackItem"><img src="FILE_annot.ext"><div class="stackCap">VERBATIM CAPTION</div></div>
-
-Allowed expanded format when image reference names are available:
-<div class="stackItem"><img src="FILE_annot.ext"><div class="imgRef">Image reference: FULL_SOURCE_IMAGE_REFERENCE_NAME</div><div class="stackCap">VERBATIM CAPTION</div></div>
 
 Rules:
 â€¢ Caption must be verbatim
 â€¢ One caption per image
 â€¢ Order matches Image field
 â€¢ No interpretation inside stackCap
-â€¢ Image reference text must be outside stackCap and must not alter the caption
+â€¢ No visible image-reference/source-link/local-filename text inside the stackItem
 
 If no annotated images:
 â€¢ Back will display Image automatically (template fallback)
@@ -465,11 +471,9 @@ Confirm:
 â€¢ The 12-character code is unique across all UNKNOWN cards in the build
 â€¢ Question is generic and non-narrowing
 â€¢ All forbidden fields blank
-â€¢ Most_Likely_Diagnosis contains:
-  - Diagnosis
-  - Keyword findings
-  - Reasoning
-  - REQUIRED mini-differential
+â€¢ Most_Likely_Diagnosis contains the single best diagnosis, with legacy keyword findings/reasoning allowed only when the template can parse them below the differential.
+â€¢ Differentials contains the mini-differential when useful.
+â€¢ Imaging_Differentiation contains key imaging findings and discriminator reasoning when useful.
 â€¢ Any mini-differential inference is explicitly labeled when required
 â€¢ Summary, if required, satisfies the global summary rule
 â€¢ No literal newline characters

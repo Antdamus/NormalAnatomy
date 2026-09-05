@@ -147,20 +147,21 @@ Use this order across the rendered back fields:
 
 1) Diagnosis
 2) Differential
-3) Key differentiators
-4) Source caption/readout, verbatim if available
-5) How to read the image(s)
-6) Typical imaging appearance by modality, using only source-supported facts
-7) Report-critical findings, when relevant
-8) Complete image reference name(s)
-9) Reference/link, when available
+3) Key imaging findings
+4) Annotated image(s) and verbatim caption(s), if available
+5) Collapsible explanation: key differentiators / how to read the image(s)
+6) Collapsible explanation: typical imaging appearance by modality, using only source-supported facts
+7) Collapsible explanation: report-critical findings, when relevant
+8) Collapsible reference/link or article summary, when available
 
 If the template renders these as separate fields, preserve the same order by field use:
-- Most_Likely_Diagnosis starts with the diagnosis and concise case reasoning
+- Most_Likely_Diagnosis starts with the diagnosis. Keep case reasoning out of this field when possible so the differential can render immediately below the diagnosis.
 - Differentials contains the realistic mimics
-- Imaging_Differentiation starts with "Key differentiators:" and explains how to separate the diagnosis from mimics
+- Imaging_Differentiation starts with "Key imaging findings:" when those findings are not already cleanly isolated by the template, then "Key differentiators:" and explains how to separate the diagnosis from mimics
 - Original_Caption or stackCap contains exact verbatim captions only
-- Complete image reference names should appear in a separate back-side line or block, never by modifying the verbatim caption text
+
+Image reference names, local media filenames, source thumbnail links, and source image URLs are for audit/media integrity only.
+Do not put visible "Image reference:", "Image references:", "Source image link(s):", source URL, or local media-filename bookkeeping blocks in learner-facing card fields.
 
 If imaging cannot confidently separate two entities:
 - state that directly
@@ -200,9 +201,9 @@ Single-image UNKNOWN cards must use "Image 1/1" for consistency.
 
 -----------------------------------------------------
 
-COMPLETE IMAGE REFERENCE NAME RULE
+IMAGE REFERENCE / MEDIA TRACEABILITY RULE
 
-Every image-containing pathology card must include the complete image reference name on the back.
+Every image-containing pathology card must preserve enough non-visible traceability for audit and media matching.
 
 Use the best available exact source identifier:
 - source figure number
@@ -217,7 +218,10 @@ Rules:
 - do not truncate the image reference name
 - do not paraphrase or normalize the image reference name
 - for multi-image stacks, include one complete image reference name per image in source/display order
-- keep reference names separate from verbatim captions
+- keep reference names in metadata, audit reports, source package, corrected bundle reports, or other non-learner-facing traceability outputs
+- do not put image reference names, local media filenames, source thumbnail links, or source image URLs in visible Anki card fields
+
+The learner-facing card only needs the actual rendered images and useful captions/explanations.
 - do not insert reference names into stackCap text if stackCap is reserved for the exact caption
 - if no source-provided identifier exists, use the exact local media filename
 

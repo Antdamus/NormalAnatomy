@@ -313,25 +313,42 @@ If an UNKNOWN card lacks correct image-position labels:
 â€¢ Output: "TSV export blocked - image stack label missing or incorrect."
 â€¢ Repair the Image field and re-run validation.
 
-A3B) COMPLETE IMAGE REFERENCE NAME INTEGRITY
-â€¢ Every image-containing note must include the complete image reference name on the back.
-â€¢ Use the full source-provided identifier when available: figure number, image title, RadPrimer / STATdx / Radiopaedia image label, source filename, downloaded media filename, or exact local media filename.
-â€¢ If the validation package, source package, extracted image block, case ledger, or media table lists image filenames, those exact filenames are authoritative and must be used.
-â€¢ Do not truncate, paraphrase, normalize, or replace the reference name with generic wording.
-â€¢ Multi-image notes must include one complete image reference name per image, in the same order as Image.
-â€¢ Image reference names must remain separate from verbatim captions.
-â€¢ If no source-provided reference exists, the exact local media filename satisfies this requirement.
+A3B) IMAGE MEDIA INTEGRITY WITHOUT VISIBLE BOOKKEEPING
+â€¢ Every image-containing note must use exact local media filenames in the Image and Image_Annotated <img src="..."> tags.
+â€¢ The validation package, source package, extracted image block, case ledger, media table, metadata, or audit report must preserve the complete image reference name/source identifier for each image.
+â€¢ Multi-image notes must preserve one exact image filename/reference per image in source/display order in non-learner-facing audit/media metadata.
+â€¢ Do not truncate, paraphrase, normalize, or replace source identifiers in audit/media metadata.
+â€¢ Do not put visible image-reference bookkeeping in learner-facing fields.
 
-Allowed locations:
-â€¢ Separate imgRef block inside Image_Annotated stackItem.
-â€¢ Imaging_Differentiation line beginning with "Image references:".
-â€¢ Another back-side reference line that is visible in the card and does not modify caption text.
+Forbidden visible learner-facing text includes:
+â€¢ "Image reference:"
+â€¢ "Image references:"
+â€¢ "Source image link(s):"
+â€¢ source thumbnail URLs
+â€¢ source image URLs
+â€¢ local media filename lists used only for bookkeeping
 
-If any image-containing note lacks complete image reference names:
+These forbidden blocks must not appear in:
+â€¢ Image_Annotated
+â€¢ Original_Caption
+â€¢ Most_Likely_Diagnosis
+â€¢ Differentials
+â€¢ Imaging_Differentiation
+â€¢ High_Yield_A
+â€¢ Mechanism
+â€¢ Boards_Trap
+
+If any image-containing note has broken <img src> filenames or lacks audit/media traceability:
 â€¢ STOP.
-â€¢ Output: "TSV export blocked - complete image reference name missing."
+â€¢ Output: "TSV export blocked - image media reference missing or broken."
 â€¢ List the failing note(s) and image filename(s).
-â€¢ Repair the back-side reference and re-run validation.
+â€¢ Repair the image src or non-visible audit/media metadata and re-run validation.
+
+If visible image-reference bookkeeping appears in card fields:
+â€¢ STOP.
+â€¢ Output: "TSV export blocked - visible image bookkeeping leaked into card text."
+â€¢ Remove the visible bookkeeping while preserving images and captions.
+â€¢ Re-run validation.
 
 A4) ENTITY MODALITY MATRIX COVERAGE
 For each disease entity, before TSV export, internally confirm that an entity modality matrix was reviewed:
@@ -401,7 +418,8 @@ B) Source Coverage + Non-Fabrication
 
 C) Image/Captions â†’ Keyword Findings Integrity (UNKNOWN ONLY)
 â€¢ For UNKNOWN cards:
-  Most_Likely_Diagnosis must include caption-derived KEYWORD FINDINGS (3â€“8 phrases typical)
+  Caption-derived KEYWORD FINDINGS should be present in the visible UNKNOWN back, preferably in Imaging_Differentiation under "Key imaging findings:" so the template can render diagnosis and differential first.
+  Most_Likely_Diagnosis may contain keyword findings only when the template must parse legacy card content.
   Those phrases must be explicitly present in the verbatim captions
   No inference beyond caption text
 â€¢ Image_Annotated order must match Image order (when present).
