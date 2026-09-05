@@ -227,24 +227,18 @@ No added imaging findings beyond caption text.
 
 ---
 
-## DIFFERENTIAL CARD DE-DUPLICATION RULE (CRITICAL — ALIGNED TO YOUR TEMPLATE)
+## DIFFERENTIAL CARD TRIGGER RULE (CRITICAL)
 
-Your Anki card template generates a Differential Drill card whenever **Differentials** is populated.
+Differential Drill cards are generated ONLY when **Differential_Q** is populated.
 
 Therefore:
 
-If multiple cases share the exact same differential set:
+• Do not populate Differential_Q unless the user explicitly requests a standalone differential drill.
+• Differentials may be populated on an UNKNOWN card as back-side support.
+• Differentials must not be treated as a card trigger.
+• If the installed Anki template still creates Differential Drill cards from Differentials alone, patch the note type before import or leave Differentials blank and put the mini-differential at the top of Imaging_Differentiation.
 
-• ONLY ONE case may have Differentials populated
-• Other cases MUST:
-
-* Leave Differentials blank
-* Still include differential reasoning in Imaging_Differentiation (explanation only)
-* NOT generate additional drill cards
-
-Every case must still explain reasoning, but only one becomes a drill.
-
-No redundancy.
+Every image-based UNKNOWN card should still contain the practical differential and discriminator logic on the back.
 
 ---
 
@@ -380,7 +374,10 @@ High_Yield_A
 Clinical_Context MUST contain:
 
 • A unique 12-character alphanumeric/symbolic ID
+• A random-looking, nonsemantic code such as A7K2M9Q4T1XZ
 • NOTHING else
+
+Do not use sequential, monotonic, row-number, or counter-derived IDs such as Q00000000001, Q00000000002, CASE000000001, ROW000000001, or UNKNOWN000001.
 
 No diagnosis labels.
 No explanation.
@@ -501,15 +498,16 @@ Most_Likely_Diagnosis:
 Differentials:
 
 • Only if source-supported
-• Leave blank if redundant per de-duplication rule
-• If populated, it MUST be the “one chosen drill case” for that differential set
+• Use as UNKNOWN back-side support when it helps the learner compare realistic mimics
+• Do not use as a Differential Drill trigger
+• Leave blank if unsupported or if the installed Anki template has not yet been patched away from Differentials-triggered drills
 
 Imaging_Differentiation:
 
 • Workstation-grade discriminator logic
 • Must clearly explain A vs B
 • Must tie directly to caption findings
-• Must still contain differential reasoning even if Differentials is blank (non-drill duplicates)
+• Must still contain differential reasoning if Differentials is blank because of template compatibility
 
 Mechanism / Boards_Trap:
 
@@ -538,7 +536,8 @@ Before TSV output verify:
 • All Core board-relevant content covered
 • All RadPrimer/STATdx board-relevant content covered
 • No redundancy
-• No duplicate differential drills (Differentials populated only once per identical set)
+• No standalone differential drills unless Differential_Q is intentionally populated
+• Differentials does not create a standalone card in the installed note type
 • All high-yield epidemiology included only if source-supported and interpretation-changing
 • All MRI sequence characteristics included if present (and source-supported)
 • All caption findings embedded as **keywords**

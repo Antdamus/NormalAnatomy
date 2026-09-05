@@ -44,6 +44,9 @@ Clinical_Context is required only because it is part of the note type structure 
 
 For every Mechanism card:
 
+- Clinical_Context ID must be random-looking/nonsemantic.
+- Do not use sequential, monotonic, row-number, or counter IDs such as Q00000000001, Q00000000002, CASE000000001, ROW000000001, or UNKNOWN000001.
+
 â€¢ Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic ID
 â€¢ Clinical_Context must contain NOTHING else
 â€¢ Entity_Label MUST be populated

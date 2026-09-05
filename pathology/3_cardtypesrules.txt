@@ -35,6 +35,11 @@ Card-Type Trigger Rules (Field -> Card Type Mapping):
 - DIFFERENTIAL DRILL is generated when the Differential_Q field is populated.
   Differentials may be populated on a PRIMARY UNKNOWN note as back-side support without creating/requesting a standalone drill.
 
+Installed note-type compatibility requirement:
+- The Anki template for DIFFERENTIAL DRILL must be conditionally gated by Differential_Q, not by Differentials.
+- The UNKNOWN back template must render Differentials as back-side support, preferably immediately after Most_Likely_Diagnosis and before Imaging_Differentiation.
+- If the installed template still gates DIFFERENTIAL DRILL on Differentials, then a TSV with Differentials populated on UNKNOWN notes will create unwanted sibling cards. In that environment, do not export until the note type is patched, or move the differential list into Imaging_Differentiation and leave Differentials blank.
+
 - MECHANISM is generated when the Mechanism field is populated.
 
 - BOARDS TRAP is generated when the Boards_Trap field is populated.

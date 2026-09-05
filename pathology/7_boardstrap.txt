@@ -48,6 +48,8 @@ Boards Trap Generation Modes:
 
 2) Standalone Boards Trap (Concept-Only or Visual-Trap Standalone)
    • Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic code and NOTHING else.
+   • The code must be random-looking/nonsemantic.
+   • Do not use sequential, monotonic, row-number, or counter IDs such as Q00000000001, Q00000000002, CASE000000001, ROW000000001, or UNKNOWN000001.
    • Entity_Label MUST be populated.
    • Image may be included ONLY if it is a visual trap and still obeys strict front-side blinding.
    • If the 12-character code is missing, the card must NOT be generated.

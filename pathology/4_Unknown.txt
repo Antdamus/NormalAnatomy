@@ -181,6 +181,10 @@ Examples:
 â€¢ â€œ52-year-old man with abdominal distention and vomiting H3P8L2N6R5YWâ€
 
 Code rules:
+• The code MUST be exactly 12 uppercase alphanumeric characters.
+• The code MUST look random/nonsemantic, for example A7K2M9Q4T1XZ.
+• The code MUST NOT be sequential, monotonic, row-number, or counter-derived.
+• Forbidden examples: Q00000000001, Q00000000002, CASE000000001, ROW000000001, UNKNOWN000001.
 â€¢ Exactly 12 characters
 â€¢ Alphanumeric only
 â€¢ No spaces inside the code
@@ -451,6 +455,7 @@ If the card does NOT originate from RadPrimer/STATdx:
 QUALITY CHECK BEFORE TSV
 
 Confirm:
+• Clinical_Context trailing code must be random-looking/nonsemantic, not sequential or counter-derived.
 â€¢ UNKNOWN trigger valid (Image + Question both present)
 â€¢ SECTION A case mapping exists for every eligible PRIMARY UNKNOWN case
 â€¢ Clinical_Context is clinically realistic but non-diagnostic
@@ -477,3 +482,10 @@ If any UNKNOWN card lacks the required trailing 12-character alphanumeric code i
 â€¢ Then list the failing card(s).
 â€¢ Do NOT output TSV.
 
+
+ADDITIONAL UNKNOWN ID EXPORT BLOCKER
+
+If any UNKNOWN card uses a sequential/counter code such as Q00000000001:
+• STOP
+• Output: “TSV export blocked — UNKNOWN Clinical_Context code is sequential, not random-looking.”
+• Replace the code with a random-looking 12-character uppercase alphanumeric ID and re-run validation.

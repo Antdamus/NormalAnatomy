@@ -259,6 +259,11 @@ If the count cannot be guaranteed:
 Pre-TSV Validation Gate (MUST PASS BEFORE TSV):
 
 A) Trigger Integrity (Architecture Safety)
+Template compatibility guard:
+- DIFFERENTIAL DRILL creation must be gated by Differential_Q, not by Differentials.
+- Differentials is allowed as UNKNOWN back-side support only after the installed Anki template has been patched to stop generating Differential Drill cards from Differentials alone.
+- If the template still gates on Differentials, leave Differentials blank and place the mini-differential in Imaging_Differentiation until the note type is fixed.
+
 â€¢ UNKNOWN cards: Image MUST be populated AND Question MUST be populated.
 â€¢ If Image is populated but Question is empty â†’ it must NOT be treated as UNKNOWN.
 â€¢ Any non-UNKNOWN card that includes Image MUST keep Question empty.
@@ -367,6 +372,15 @@ Every exported card must pass at least one of these tests:
 If a card does not pass at least one test:
 â€¢ Omit it.
 â€¢ Do not replace it with filler.
+
+A7) CLINICAL_CONTEXT ID QUALITY
+Every exported row that uses a 12-character Clinical_Context ID must use a random-looking/nonsemantic uppercase alphanumeric ID.
+Sequential, monotonic, row-number, or counter-derived IDs are invalid.
+Forbidden examples: Q00000000001, Q00000000002, CASE000000001, ROW000000001, UNKNOWN000001.
+If any row uses a counter-style ID:
+- STOP.
+- Output: "TSV export blocked - Clinical_Context ID is sequential, not random-looking."
+- Replace the ID with a random-looking 12-character uppercase alphanumeric ID and re-run validation.
 
 B) Source Coverage + Non-Fabrication
 â€¢ All board-relevant Core content for the topic is represented (without trivial duplication), unless Core GAP pathway is invoked.

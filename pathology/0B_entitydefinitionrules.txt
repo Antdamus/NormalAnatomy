@@ -38,6 +38,8 @@ Because definition cards are standalone High-Yield notes, they MUST follow stand
 - Clinical_Context MUST contain a unique 12-character alphanumeric/symbolic code
 - Clinical_Context must contain NOTHING else
 - If this 12-character code is missing, the definition card must NOT be generated
+- The code must be random-looking/nonsemantic
+- Do not use sequential, monotonic, row-number, or counter IDs such as Q00000000001, Q00000000002, CASE000000001, ROW000000001, or UNKNOWN000001
 
 Definition status is encoded by the card's role and field structure.
 Do NOT populate the final TSV Tags column for definition cards.

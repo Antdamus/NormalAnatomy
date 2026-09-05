@@ -81,6 +81,10 @@ Rules:
 - IDs must not reveal the diagnosis, anatomy target, differential, or answer.
 - Do not remove IDs during audit solely because they are visible.
 - If an ID is used, keep it short and mechanically recognizable as an identifier rather than teaching content.
+- The preferred ID format is exactly 12 uppercase alphanumeric characters.
+- IDs must look random/nonsemantic, for example A7K2M9Q4T1XZ.
+- Do not use sequential, monotonic, row-number, or counter IDs such as Q00000000001, Q00000000002, CASE000000001, ROW000000001, UNKNOWN000001, or similar.
+- During audit, preserve existing random-looking IDs. Replace missing IDs or counter-style IDs with new random-looking 12-character uppercase alphanumeric IDs.
 
 -----------------------------------------------------
 
