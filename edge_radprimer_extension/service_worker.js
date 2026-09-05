@@ -52,6 +52,8 @@ const CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION = [
   "CORE EVIDENCE REQUIREMENT FOR CODEX AUDIT:",
   "If any Core Radiology content was used, you must also print a compact Core evidence block outside the TSV download. This block is for the audit bundle only and must not be included inside the TSV file.",
   "If no Core content was actually retrieved/used, still print the block with CORE_EVIDENCE_STATUS: NOT_USED.",
+  "The TSV is not audit-complete until this Core evidence block is printed. If any TSV field or summary says Core-only, Core + RadPrimer, Core + STATdx, or otherwise relies on Core, CORE_EVIDENCE_STATUS must be USED and the block must list the concrete Core facts used.",
+  "If you cannot provide auditable Core evidence, do not use Core claims in the TSV; proceed as article-only and label the summary/source basis accordingly.",
   "Use this exact plain-text wrapper:",
   CORE_EVIDENCE_BEGIN,
   "CORE_EVIDENCE_STATUS: USED | NOT_USED | CORE_GAP | CLARIFICATION_NEEDED",
@@ -4011,6 +4013,8 @@ function buildAuditInstructions(metadata) {
     "- Keep source attribution on the back of cards when the note type supports it.",
     "- Treat Core-specific claims as auditable only if supported by `core_evidence.txt` or direct Core text inside `source_package.txt`.",
     "- If `core_evidence.txt` says NOT_PROVIDED, EMPTY, or CLARIFICATION_NEEDED, remove or relabel Core-only claims unless independently supported by the visible bundle files.",
+    "- Do not remove or penalize the article-level summary field merely because it is repeated across rows; the user's Anki template may hide it by default. Correct the summary only when it is inaccurate, source-contaminated, overcompressed, missing important article structure, or inconsistent with the auditable source basis.",
+    "- If the summary or any card says Core + article synthesis but `core_evidence.txt` is missing/not provided, downgrade the source basis to article-only and remove unsupported Core-only details unless direct Core text is visible in `source_package.txt`.",
     "",
     "Suggested final outputs:",
     "- `corrected_cards.tsv`",
@@ -4054,7 +4058,7 @@ function buildAuditWakeMessage(bundle) {
     "4. Write corrected_cards.tsv, audit_report.md, and _codex_audit_done.txt in the same bundle folder.",
     "5. If metadata.json contains an Anki deck target, also write corrected_cards_anki_import.tsv with Anki import headers so Anki can create/select the target subdeck automatically.",
     "",
-    "Preserve the TSV schema and column order. Remove metadata/bookkeeping cards, split overloaded cards, add missing source-supported high-yield cards, and improve unclear mechanism or histology explanations while labeling any outside clarification. Treat Core-specific claims as verified only when core_evidence.txt or source_package.txt contains auditable Core support."
+    "Preserve the TSV schema and column order. Remove metadata/bookkeeping cards, split overloaded cards, add missing source-supported high-yield cards, and improve unclear mechanism or histology explanations while labeling any outside clarification. Treat Core-specific claims as verified only when core_evidence.txt or source_package.txt contains auditable Core support. Do not remove the article-level summary field just because it is repeated; the user's Anki template can hide it. Only correct the summary when it is inaccurate, source-contaminated, overcompressed, or inconsistent with the auditable source basis."
   ].join("\n");
 }
 

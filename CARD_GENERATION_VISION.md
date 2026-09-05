@@ -406,6 +406,14 @@ If a modality appearance is absent from all allowed sources:
 
 The summary field is not the source of truth. Cards must be generated from the full source material, captions, and images.
 
+Audit behavior:
+
+- the article-level summary field is allowed to repeat across TSV rows because the Anki template may hide it by default
+- do not delete or penalize a card solely because its summary field is long or repeated
+- correct the summary only when it is inaccurate, source-contaminated, overcompressed, missing important article structure, or inconsistent with the auditable source basis
+- if a card or summary claims Core-only or Core + article synthesis, Core support must be auditable from `core_evidence.txt` or direct Core text in the source package
+- if Core evidence is missing, downgrade the card set to article-only and remove unsupported Core-only details rather than leaving unverified Core provenance in the TSV
+
 ## Practical Default
 
 The generator should produce fewer, stronger cards.
