@@ -18,6 +18,8 @@ Default Card Economy (User Preference):
 - Every source-supported disease entity should also receive separate entity-level imaging-pattern recall cards for modality appearances that matter, even when the UNKNOWN images demonstrate the pattern.
 - Entity-level imaging-pattern recall cards must be independent TSV rows using the High-Yield card family, not sibling cards on an UNKNOWN note.
 - Report-critical / management-pivot cards must be independent TSV rows using the High-Yield card family when a source-supported finding changes reporting, urgency, intervention, staging, prognosis, follow-up, or outcome.
+- High-Yield rows must pass the radiologist usefulness test: they must teach a source-supported imaging pattern, contrast/tracer behavior, discriminator, pitfall, report-critical pivot, or pretest clue that changes interpretation.
+- Do NOT generate generic trivia High-Yield rows, including "most common" facts, unless the answer explicitly states how the fact changes differential ranking, image interpretation, reporting, or management.
 - Do NOT auto-generate standalone DIFFERENTIAL DRILL notes. Generate them only when the user explicitly asks for separate differential drill cards.
 - Do NOT auto-generate definition-only cards. Generate definition cards only when the user explicitly asks for definition cards.
 
@@ -59,6 +61,8 @@ Trigger Safety Enforcement:
   Do not create sibling cards for separate learning targets on the same note.
 
 - If an imaging-pattern recall card or report-critical card is needed, create a separate High-Yield row with its own Clinical_Context code and keep Question, Differential_Q, Mechanism_Q, and Boards_Trap_Q blank.
+
+- A short non-diagnostic unique ID may remain in Clinical_Context for any card type. Do not remove it solely because it is visible; it exists for row identity, duplicate prevention, and audit traceability. It must not reveal the diagnosis, differential, or answer.
 
 -----------------------------------------------------
 

@@ -305,17 +305,19 @@ High_Yield_Q / High_Yield_A must contain ONLY high-yield, testable pivots such a
 • Management triggers
 • Size cutoffs
 • Staging rules
-• “Most common…” statements
-• Epidemiology pivots that change interpretation
+• Modality-specific appearance patterns
+• Contrast or radiotracer behavior
+• Differential discriminators
+• Report-critical pitfalls
+• Epidemiology or "most common" pivots only when they change interpretation or differential ranking
 
-No trivia.
+No trivia. A fact being true is not enough; it must make the learner better at reading studies.
 
 ### EPIDEMIOLOGY INCLUSION RULE (HIGH-YIELD ONLY)
 
 Include epidemiology ONLY if it meets one of the following:
 
-• “Most common tumor of…”
-• “Second most common…”
+• “Most common…” or ranking fact that changes differential ranking
 • Classic demographic association that alters pretest probability
 • Age-driven discriminator
 • Sex predilection affecting interpretation
@@ -325,6 +327,7 @@ Epidemiology must:
 
 • Come from Core, RadPrimer, STATdx, or Radiopaedia
 • Be explicitly stated in High_Yield_Q / High_Yield_A
+• Include an exam/radiology pivot explaining why the fact changes the read
 • NOT inflate deck with trivial statistics
 
 No fabricated numbers.
@@ -515,10 +518,14 @@ Only if exam-relevant and source-supported.
 High_Yield:
 
 • Numeric thresholds
-• Epidemiology pivots
+• Interpretation-changing epidemiology pivots
+• Modality-specific appearance patterns
+• Contrast or radiotracer behavior
+• Differential discriminators
+• Report-critical pitfalls
 • Staging rules
 • Management triggers
-• “Most common…” statements
+• "Most common" facts only when they change differential ranking or interpretation
 
 No trivia.
 
@@ -532,7 +539,7 @@ Before TSV output verify:
 • All RadPrimer/STATdx board-relevant content covered
 • No redundancy
 • No duplicate differential drills (Differentials populated only once per identical set)
-• All high-yield epidemiology included (only if source-supported and high-yield)
+• All high-yield epidemiology included only if source-supported and interpretation-changing
 • All MRI sequence characteristics included if present (and source-supported)
 • All caption findings embedded as **keywords**
 • No fabricated content

@@ -219,6 +219,10 @@ You must review and classify the available source material across domains such a
 * prognosis / outcomes
 * management / follow-up when source-supported
 
+Epidemiology and "most common" facts count as card-worthy only when they change
+image interpretation, differential ranking, reporting, or management. Do not
+generate generic trivia cards just because a fact is true.
+
 You must identify for each major domain whether it is:
 
 * present in both sources
@@ -349,9 +353,10 @@ You must enforce:
 
 You must enforce:
 
-* only epidemiology / etiology-frequency pivots here
+* only epidemiology / etiology-frequency pivots that change image interpretation, differential ranking, reporting, or management
 * exact, source-supported facts
 * explicit exam pivot line
+* no generic "most common" trivia
 * no drift into performance cards or outcomes
 
 ### SECTION G - High-Yield
@@ -359,13 +364,14 @@ You must enforce:
 You must enforce:
 
 * non-epidemiology, non-definition High-Yield cards only
+* radiologist-usefulness gate: every High-Yield card must teach a modality pattern, contrast/tracer behavior, discriminator, pitfall, report-critical pivot, or interpretation-changing pretest clue
 * diagnostic performance cards when required
 * MRI appearance cards when required
 * ultrasound appearance cards when required
 * nuclear medicine appearance cards when required
 * structural framework High-Yield cards when source-supported and required
 * outcome / prognosis / follow-up pivots when source-supported and required
-* no trivial card inflation
+* no trivial card inflation and no generic fact recall that does not improve image interpretation
 
 ---
 

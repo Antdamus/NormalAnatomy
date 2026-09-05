@@ -49,7 +49,7 @@ The Core Summary must be derived from the full Core coverage for the topic and m
 - Ultrasound appearance
 - Nuclear medicine appearance
 - Diagnostic performance / thresholds / outcomes
-- Epidemiology / "most common" pivots
+- Epidemiology / "most common" pivots only when they change interpretation or differential ranking
 
 If a domain is not present in Core, the assistant should omit it rather than fabricate it.
 

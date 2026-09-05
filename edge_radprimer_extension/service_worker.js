@@ -4056,10 +4056,13 @@ function buildAuditInstructions(metadata) {
     "- Preserve the existing TSV schema and column order.",
     "- Remove cards that test prompt metadata, source-review bookkeeping, generator decisions, or vague audit statements.",
     "- Split overloaded cards when one front is asking for too many independent facts.",
-    "- Add missing high-yield cards only when the source package or captured Core evidence supports them.",
+    "- Add missing high-yield cards only when the source package or captured Core evidence supports them and they improve real radiology interpretation.",
+    "- Audit every High-Yield row against the radiologist-usefulness gate: keep or add it only if it teaches a modality-specific appearance, contrast/tracer behavior, differential discriminator, pitfall, report-critical/management pivot, or pretest clue that changes interpretation.",
+    "- Delete or rewrite generic High-Yield trivia, including broad 'most common' cards, unless the answer explicitly states how the fact changes image interpretation, differential ranking, reporting, or management.",
     "- Improve mechanism and histology explanations when they are unclear; explicitly label any outside clarification added during review.",
     "- Keep one main concept per card unless the card is intentionally testing a pathway or structured comparison.",
     "- If `core_evidence.txt` is `NOT_PROVIDED` or `CLAIMED_BUT_UNSTRUCTURED`, treat Core-specific claims as unverified even when `metadata.json` or the TSV says Core validation passed.",
+    "- Preserve short non-diagnostic unique IDs in `Clinical_Context`; do not remove them solely because they are visible.",
     "- Check image-based cards against the selected image list and grouped cases in `metadata.json`.",
     "- Keep source attribution on the back of cards when the note type supports it.",
     "- Treat Core-specific claims as auditable only if supported by `core_evidence.txt` or direct Core text inside `source_package.txt`.",
@@ -4109,7 +4112,7 @@ function buildAuditWakeMessage(bundle) {
     "4. Write corrected_cards.tsv, audit_report.md, and _codex_audit_done.txt in the same bundle folder.",
     "5. If metadata.json contains an Anki deck target, also write corrected_cards_anki_import.tsv with Anki import headers so Anki can create/select the target subdeck automatically.",
     "",
-    "Preserve the TSV schema and column order. Remove metadata/bookkeeping cards, split overloaded cards, add missing source-supported high-yield cards, and improve unclear mechanism or histology explanations while labeling any outside clarification. Treat Core-specific claims as verified only when core_evidence.txt or source_package.txt contains auditable Core support. Do not remove the article-level summary field just because it is repeated; the user's Anki template can hide it. Only correct the summary when it is inaccurate, source-contaminated, overcompressed, or inconsistent with the auditable source basis."
+    "Preserve the TSV schema and column order. Remove metadata/bookkeeping cards, split overloaded cards, and audit High-Yield rows using the radiologist-usefulness gate: each High-Yield card must teach a source-supported modality appearance, contrast/tracer behavior, differential discriminator, pitfall, report-critical/management pivot, or pretest clue that changes interpretation. Delete or rewrite generic trivia, including broad 'most common' facts, unless the answer states the radiology pivot. Preserve short non-diagnostic unique IDs in Clinical_Context. Add missing source-supported high-yield cards only when they pass this usefulness gate, and improve unclear mechanism or histology explanations while labeling any outside clarification. Treat Core-specific claims as verified only when core_evidence.txt or source_package.txt contains auditable Core support. Do not remove the article-level summary field just because it is repeated; the user's Anki template can hide it. Only correct the summary when it is inaccurate, source-contaminated, overcompressed, or inconsistent with the auditable source basis."
   ].join("\n");
 }
 
@@ -4123,7 +4126,7 @@ function buildSourceOnlyWakeMessage(bundle) {
     "Use this together with the generated ChatGPT TSV that I provide separately in this message/thread.",
     "The bundle contains source_package.txt, metadata.json, audit_instructions.md, _source_only_bundle.txt, and _bundle_complete.txt.",
     "",
-    "Please import the newest complete RadPrimer audit bundle, read the queue pointer, then compare the provided TSV against the source package. Preserve the TSV schema and column order, remove weak/meta cards, split overloaded cards, add missing source-supported high-yield cards, and produce corrected_cards.tsv plus audit_report.md. If metadata.json contains an Anki deck target, also produce corrected_cards_anki_import.tsv."
+    "Please import the newest complete RadPrimer audit bundle, read the queue pointer, then compare the provided TSV against the source package. Preserve the TSV schema and column order, remove weak/meta cards, split overloaded cards, preserve short non-diagnostic Clinical_Context IDs, apply the radiologist-usefulness gate to High-Yield cards, add only source-supported high-yield cards that improve image interpretation, and produce corrected_cards.tsv plus audit_report.md. If metadata.json contains an Anki deck target, also produce corrected_cards_anki_import.tsv."
   ].join("\n");
 }
 

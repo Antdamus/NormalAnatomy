@@ -4,6 +4,8 @@ from datetime import datetime
 import time
 import sys
 
+sys.dont_write_bytecode = True
+
 PROMPT_DIR = Path(".")
 OUTPUT_FILE = PROMPT_DIR / "FULL_PROMPT.txt"
 

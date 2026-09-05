@@ -23,8 +23,11 @@ High-Yield cards exist to encode:
 • Staging rules
 • Classification pivots
 • Structural subtype / algorithm pivots that change interpretation
-• “Most common…” statements
-• Epidemiologic pivots that change interpretation
+• Modality-specific appearance patterns that matter at the workstation
+• Contrast agent, contrast phase, sequence, Doppler, CEUS, or radiotracer behavior that changes recognition
+• Differential discriminators that separate realistic mimics
+• Pitfalls that would cause overcall, undercall, or wrong differential ranking
+• Epidemiologic or "most common" pivots only when they change interpretation or differential ranking
 • Board-relevant discriminators
 • Exam-critical decision rules
 
@@ -44,8 +47,47 @@ Do NOT create:
 • Any multi-card “ontology spine”
 
 High-Yield fields remain reserved for true board pivots
-(thresholds, staging, management triggers, classification pivots, structural subtype/framework pivots, “most common” pivots),
+(thresholds, staging, management triggers, classification pivots, structural subtype/framework pivots, modality/contrast/tracer patterns, differential discriminators, report-critical pitfalls, and interpretation-changing epidemiology pivots),
 EXCEPT definition cards explicitly requested by the user.
+-----------------------------------------------------
+
+RADIOLOGIST USEFULNESS GATE (MANDATORY)
+
+Every High-Yield card must make the learner better at reading an imaging study.
+
+A High-Yield card is allowed only if it teaches at least one of:
+• source-supported modality appearance: CT, MRI, ultrasound, Doppler, CEUS, nuclear medicine, PET, SPECT, angiography, fluoroscopy, or radiography
+• source-supported contrast or tracer behavior: contrast agent, phase, uptake, retention, washout, excretion, photopenia, avidity, enhancement, or blood-pool behavior
+• differential discriminator: the deciding feature that separates realistic mimics
+• pitfall: a source-supported mistake that would cause overcall, undercall, or wrong differential ranking
+• report-critical / management pivot: a finding that changes urgency, staging, intervention, prognosis, follow-up, or what must be stated in the report
+• clinically useful pretest clue: age, sex, risk factor, syndrome, or "most common" fact only when it changes differential ranking or image interpretation
+
+The card is not allowed if its main value is:
+• generic epidemiology
+• generic "most common" trivia
+• a standalone definition not explicitly requested by the user
+• a broad reminder to "know" or "consider" something
+• a fact that is true but does not change image recognition, differential ranking, reporting, or management
+
+Question quality:
+• Name the entity, modality, contrast phase, sequence, tracer, mimic pair, pitfall, or report-critical feature being tested.
+• Avoid generic stems when a specific imaging question is possible.
+• Do not ask "Which entity is most common?" unless the answer explains how that ranking changes the read.
+
+Answer quality:
+• Include a "Recognition pivot:", "Key differentiator:", "Report pivot:", or "Exam pivot:" line when it makes the card more actionable.
+• High_Yield_A should usually fit within 2-5 short lines unless a compact algorithm is truly source-supported.
+• If the answer cannot state why the fact matters to radiology interpretation, omit the card.
+
+Bad:
+• "Which benign hepatic neoplasm is the most common?"
+
+Better:
+• "On multiphasic CT/MRI, what enhancement pattern makes cavernous hemangioma the leading diagnosis, and what separates it from fibrolamellar HCC when a central scar or calcification is present?"
+• "For FNH, what hepatobiliary contrast pattern separates it from hepatic adenoma?"
+• "In chronic Budd-Chiari syndrome, why can large regenerative nodules mimic HCC, and what context or contrast behavior helps avoid the overcall?"
+
 -----------------------------------------------------
 
 SYNDROME ENCODING RULE (MANDATORY — HIGH-YIELD):
@@ -236,6 +278,7 @@ Allowed Epidemiology pivots include ONLY:
 
 Forbidden:
 • Minor prevalence trivia
+• Generic "most common" trivia that does not alter the read
 • Geographic trivia
 • Risk factors that do not change imaging interpretation
 • Any epidemiology that is not explicitly stated in Core/RadPrimer/STATdx

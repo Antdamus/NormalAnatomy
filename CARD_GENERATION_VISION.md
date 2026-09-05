@@ -1,6 +1,6 @@
 # Radiology Anki Card Generation Vision
 
-Last revised: 2026-09-04
+Last revised: 2026-09-05
 
 ## Core Goal
 
@@ -35,6 +35,22 @@ Important architecture rule:
 - do not rely on sibling cards from the same note for separate learning targets
 
 Reason: if one card is deleted in Anki, sibling cards from the same note may be affected. Separate learning targets must therefore live in separate TSV rows.
+
+## Visible Unique IDs
+
+Short non-diagnostic unique IDs may remain in `Clinical_Context`.
+
+Purpose:
+
+- keep notes uniquely identifiable during export, audit, and Anki import
+- prevent accidental duplicate merging
+- allow a broken or suspicious row to be referenced precisely
+
+Rules:
+
+- IDs must not reveal the diagnosis, anatomy target, differential, or answer
+- do not remove IDs during audit solely because they are visible
+- if an ID is used, keep it short and mechanically recognizable as an identifier rather than teaching content
 
 ## UNKNOWN Image Cards
 
@@ -295,6 +311,40 @@ Do not generate a report-pivot card for generic statements such as:
 
 Those are too generic unless the source names a specific finding whose presence changes management or outcome.
 
+## High-Yield Radiologist Usefulness Test
+
+High-Yield cards must make the learner better at reading studies.
+
+Allowed High-Yield retrieval targets:
+
+- source-supported modality appearance: CT, MRI, ultrasound, Doppler, CEUS, nuclear medicine, PET, SPECT, angiography, fluoroscopy, or radiography
+- source-supported contrast or tracer behavior: contrast agent, phase, uptake, retention, washout, excretion, photopenia, avidity, enhancement, or blood-pool behavior
+- differential discriminator: the deciding feature that separates realistic mimics
+- pitfall: a source-supported mistake that would cause overcall, undercall, or wrong differential ranking
+- report-critical / management pivot: a finding that changes urgency, staging, intervention, prognosis, follow-up, or what must be stated in the report
+- clinically useful pretest clue: age, sex, risk factor, syndrome, or "most common" fact only when it changes differential ranking or image interpretation
+
+Not enough by itself:
+
+- generic epidemiology
+- generic "most common" trivia
+- standalone definitions unless explicitly requested
+- broad questions such as "What is important about this disease?"
+- facts that are true but do not change image recognition, differential ranking, reporting, or management
+
+Question design:
+
+- name the entity, modality, contrast phase, sequence, tracer, mimic pair, pitfall, or report-critical feature being tested
+- avoid generic stems when a specific imaging question is possible
+- the answer should include a "Recognition pivot:", "Key differentiator:", "Report pivot:", or "Exam pivot:" line when that makes the card more actionable
+
+Examples:
+
+- Bad: "Which benign hepatic neoplasm is the most common?"
+- Better: "On multiphasic CT/MRI, what enhancement pattern makes cavernous hemangioma the leading diagnosis, and what separates it from fibrolamellar HCC when a central scar or calcification is present?"
+- Better: "For FNH, what hepatobiliary contrast pattern separates it from hepatic adenoma?"
+- Better: "In chronic Budd-Chiari syndrome, why can large regenerative nodules mimic HCC, and what context or contrast behavior helps avoid the overcall?"
+
 ## Caption and Image Handling
 
 Captions are source material and must be preserved carefully.
@@ -359,6 +409,7 @@ Every exported card must pass at least one of these tests:
 - Does this help me distinguish the diagnosis from realistic mimics?
 - Does this teach source-supported modality-specific appearance?
 - Does this teach what must be inspected or reported because it changes management, staging, urgency, prognosis, follow-up, or outcome?
+- Does this teach a source-supported pitfall, contrast/tracer behavior, or pretest clue that changes real interpretation?
 
 If a card does not pass at least one test, omit it.
 
