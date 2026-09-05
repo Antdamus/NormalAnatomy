@@ -1,0 +1,171 @@
+RADIOLOGIST NORMAL-ANATOMY CARD GENERATION SCHEMA
+
+This module is mandatory for NORMAL-engine card generation.
+
+The deck is built for radiology recognition, localization, normal-variant recognition, and overcall prevention.
+
+Cards must train the learner to:
+- recognize structures, spaces, landmarks, and normal relationships on actual images
+- localize less-visible structures using reliable visible anchors
+- know source-supported modality-specific normal appearance
+- distinguish normal variants and pseudolesions from pathology when the source supports the discriminator
+- know clinically useful reporting or localization consequences when they are source-supported
+
+Cards must not train prompt workflow, source bookkeeping, extraction audit, or generator decisions.
+
+-----------------------------------------------------
+
+ONE LEARNING TARGET = ONE TSV ROW
+
+Each independent learning target must be exported as its own TSV row.
+
+Do not rely on sibling cards from the same note for separate learning targets.
+Do not populate more than one front-driving prompt family on the same note.
+
+Allowed examples:
+- one NORMAL UNKNOWN row for an image-localization task
+- one NORMAL HIGH-YIELD row for an ordered review path
+- one NORMAL HIGH-YIELD row for a source-supported modality appearance anchor
+- one NORMAL BOARDS TRAP row for a normal variant that can be overcalled
+
+Forbidden:
+- one note that creates both a NORMAL UNKNOWN and a NORMAL HIGH-YIELD card
+- one note that creates both a NORMAL UNKNOWN and a NORMAL DIFFERENTIAL DRILL
+- one note that hides a separate trap, mechanism, or review-path card inside another trigger family
+
+Reason:
+If Anki creates sibling cards from one note, deleting one card can affect the rest of that note family.
+Separate learning targets must therefore live in separate TSV rows.
+
+-----------------------------------------------------
+
+DEFAULT NORMAL OUTPUT
+
+Default NORMAL-engine output should prioritize:
+- image-recognition and localization cards when usable images exist
+- modality-specific normal appearance cards when the source gives a durable imaging anchor
+- normal-variant and pseudolesion cards only when they prevent realistic overcall
+- ordered review-path or landmark-framework cards when the source teaches a usable map
+
+Do not generate definition cards unless the user explicitly asks for definition cards.
+Do not generate standalone NORMAL Differential Drill cards unless the user explicitly asks for separate differential drill cards.
+
+-----------------------------------------------------
+
+NORMAL MODALITY MATRIX
+
+Before generating normal-anatomy cards for a structure, space, relationship, variant, or pseudolesion, internally audit which modality-specific facts are source-supported.
+
+Audit these buckets when relevant:
+- CT noncontrast
+- CT contrast phase or angiographic behavior
+- MRI sequence or plane, including T1, T2, FLAIR, DWI/ADC, GRE/SWI, MRCP, and other source-stated sequences
+- MRI contrast behavior when the source describes enhancement or hepatobiliary/extracellular contrast behavior
+- Ultrasound grayscale
+- Ultrasound Doppler
+- Contrast-enhanced ultrasound
+- Nuclear medicine / PET / SPECT, including exact radiotracer, physiologic uptake, excretion, photopenia, timing, biodistribution, or pseudolesion behavior
+
+Generation rules:
+- generate modality cards only from source-supported matrix cells
+- if multiple cells form one inseparable localization or normal-recognition move, combine them into one focused card
+- if cells test different recognition moves, split them into separate independent TSV rows
+- do not generate cards for empty matrix cells
+- do not generalize one contrast agent, phase, sequence, or tracer to another unless the source explicitly supports that generalization
+
+The modality matrix is an internal planning tool.
+It must not become a card by itself.
+
+-----------------------------------------------------
+
+NORMAL UNKNOWN BACK STRUCTURE
+
+Every NORMAL UNKNOWN back should prioritize practical image interpretation.
+
+Use this order across the rendered back fields:
+
+1) Target structure, relationship, normal variant, or localization answer
+2) Key normal imaging features
+3) Mimics / overcalls / nearby confusions, when source-supported or practically necessary
+4) Key differentiators
+5) Source caption/readout, verbatim if available
+6) How to read the image(s)
+7) Typical normal appearance by modality, using only source-supported facts
+8) Clinically useful reporting/localization consequence, when relevant
+9) Complete image reference name(s)
+10) Reference/link, when available
+
+If the template renders these as separate fields:
+- Entity_Label holds the target answer
+- Differentials holds realistic mimics, variants, pseudolesions, or nearby confusions
+- Imaging_Differentiation starts with "Key differentiators:" or "How to localize:" when that is the main teaching move
+- Original_Caption or stackCap contains exact verbatim captions only
+- Complete image reference names should appear in a separate back-side line or block, never by modifying the verbatim caption text
+
+Do not imply that a topographically inferred structure is crisply visible on routine imaging.
+If localization is inferred from visible anchors, say that directly.
+
+-----------------------------------------------------
+
+MULTI-IMAGE STACK LABELS
+
+All multi-image NORMAL UNKNOWN cards must visibly label image position on the front:
+- Image 1/N
+- Image 2/N
+- Image 3/N
+
+The label must be non-diagnostic and must not replace the caption.
+Captions remain off the front.
+
+Use image-position labels so the learner knows to keep scrolling through the image stack.
+
+Single-image cards may omit "Image 1/1" unless the local template benefits from consistent labels.
+
+-----------------------------------------------------
+
+COMPLETE IMAGE REFERENCE NAME RULE
+
+Every image-containing NORMAL card must include the complete image reference name on the back.
+
+Use the best available exact source identifier:
+- source figure number
+- source image title
+- RadPrimer / STATdx / Radiopaedia case image label
+- source filename
+- downloaded media filename
+- local media filename, if no better source identifier exists
+
+Rules:
+- When a validation package, source package, extracted image block, case ledger, or media table lists image filenames, those filenames are authoritative image reference names and must be copied exactly.
+- do not truncate the image reference name
+- do not paraphrase or normalize the image reference name
+- for multi-image stacks, include one complete image reference name per image in source/display order
+- keep reference names separate from verbatim captions
+- do not insert reference names into stackCap text if stackCap is reserved for the exact caption
+- if no source-provided identifier exists, use the exact local media filename
+
+-----------------------------------------------------
+
+QUESTION QUALITY FILTER
+
+Every exported NORMAL card must pass at least one test:
+- Does this help me recognize or localize a structure, space, landmark, relationship, or normal variant?
+- Does this help me avoid overcalling a normal finding, variant, or pseudolesion?
+- Does this teach source-supported modality-specific normal appearance?
+- Does this teach a practical review path or visible-anchor system?
+- Does this teach a clinically useful localization or reporting consequence?
+
+If a card does not pass at least one test, omit it.
+
+Banned front wording includes:
+- "this batch"
+- "source review"
+- "extraction"
+- "prompt"
+- "what was included"
+- "what did the source support encoding"
+- "what did the generator decide"
+
+If a draft question has workflow or metadata shape, convert it into a direct radiology question or omit it.
+
+Blank fields are better than filler.

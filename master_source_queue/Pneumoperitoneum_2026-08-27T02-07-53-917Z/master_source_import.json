@@ -1,0 +1,2236 @@
+{
+  "version": 1,
+  "articleTitle": "Pneumoperitoneum",
+  "createdAt": "2026-08-27T02:14:17.254Z",
+  "packageText": "=== MASTER SOURCE PACKAGE ===\nTITLE: Pneumoperitoneum\nCANONICAL HIERARCHY: All Categories > Basic > Gastrointestinal > Peritoneum, Mesentery, and Abdominal Wall > Pneumoperitoneum\nCANONICAL DECK PATH: Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Pneumoperitoneum\nSOURCE BASIS: [RadPrimer] canonical backbone and hierarchy; [STATdx] supplemental depth and distinct image examples.\nCORE STATUS: No auditable Core Radiology source pages were provided in this bundle. Do not generate Core-specific claims from this package alone.\n\n=== SOURCE SYNTHESIS NOTES ===\n[Both] RadPrimer and STATdx share the core pneumoperitoneum differential text and key teaching points. RadPrimer is retained as the canonical hierarchy/backbone because metadata.json canonicalHierarchy is RadPrimer-derived and must be used exactly for routing.\n[STATdx] contributes four distinct primary supplemental images: STATdx image 3 for thoracic barotrauma route, STATdx image 7 for radiographic feeding-tube/free-air appearance, and STATdx images 10 and 11 as alternate perforated duodenal-ulcer examples.\n[RadPrimer] RadPrimer images 1-14 remain the primary canonical image set. STATdx exact duplicate copies with the same stable source image IDs are archived for audit/recovery rather than downloaded by default.\n\n=== DIFFERENTIAL DIAGNOSIS BACKBONE ===\n[RadPrimer]\nCommon:\n- Normal postoperative pneumoperitoneum.\n- Barotrauma.\n- Iatrogenic injuries or complications, including feeding-tube injury and bowel anastomotic leak.\n- Perforated ulcer, including duodenal and gastric ulcer.\n- Diverticulitis.\n- Intestinal trauma.\n- Appendicitis.\n- Thoracic mimics, including pneumothorax, subsegmental atelectasis, and cystic lung disease.\n- Colonic interposition mimic.\n- Subphrenic fat mimic.\n\nLess common:\n- Other causes of bowel perforation, including ileus/volvulus/obstruction, ischemia, vasculitis, infection/inflammatory bowel disease, malignancy, ingested foreign body, radiation therapy, fecal impaction, chemotherapy/steroids, and penetrating trauma.\n- Peritonitis.\n- Abdominal abscess.\n- Pneumatosis cystoides intestinalis.\n- Retrograde gas passage from the female genital tract.\n- Small bowel diverticula.\n- Foreign body perforation.\n\nAlternative approach:\n- Free intraperitoneal air in a neonate: necrotizing enterocolitis, cystic fibrosis-related GI disease, duodenal atresia/stenosis, and Hirschsprung disease.\n\n=== ESSENTIAL TEACHING POINTS ===\n[Both] CT is substantially more sensitive than plain radiographs for pneumoperitoneum and should be the test of choice when hollow viscus perforation is suspected.\n[Both] Upright or decubitus radiographs are more sensitive than supine radiographs. Supine portable films often make free intraperitoneal gas subtle or difficult to see.\n[Both] In unexplained free air, use the amount and location of gas to narrow the cause. Gas often localizes near the perforation site.\n[Both] Gastric and duodenal perforations tend to produce upper abdominal free air above the transverse mesocolon. Jejunal, ileal, and colonic perforations tend to produce gas below the transverse mesocolon.\n[Both] Small bowel perforation often produces only a small pneumoperitoneum, while gastric perforation, colonic perforation, and misplaced feeding tubes may produce large or massive free air.\n[Both] Incidental free intraperitoneal air in an asymptomatic patient should prompt consideration of benign causes, especially postoperative air and benign pneumatosis-related rupture.\n\n=== CAUSE-SPECIFIC CLUES ===\n[Both] Normal postoperative pneumoperitoneum: a small amount of free air is expected after laparotomy or invasive peritoneal procedures such as peritoneal dialysis or gastrostomy-tube placement. It is seen on CT in nearly 90% of patients at 3 days and about 50% at 6 days. It usually resolves in 7-10 days but can persist longer after prior surgery or peritonitis. Large or massive postoperative free air is abnormal and should raise concern for anastomotic leak or perforation.\n[Both] Barotrauma: positive-pressure ventilation can cause alveolar rupture, pneumothorax, pneumomediastinum, subcutaneous emphysema, pneumatosis, and pneumoperitoneum. Pleural or mediastinal gas may dissect into the retroperitoneum or peritoneum. Suspect this when pneumothorax and pneumoperitoneum coexist in a ventilated patient.\n[Both] Iatrogenic injury: endoscopy, feeding-tube placement, and postoperative bowel anastomoses are key contexts. Endoscopy may produce free air even without frank perforation if the bowel becomes markedly distended. Anastomotic leak appears as greater-than-expected postoperative free air, often with peritonitis or abscess.\n[Both] Perforated ulcer: gastroduodenal ulcers are the most common cause of GI tract perforation. Duodenal perforation usually causes gas, fluid, and fat stranding near the duodenal bulb and may involve both intraperitoneal and anterior pararenal spaces. Gastric ulcer perforation often involves the lesser sac, with gas/fluid/contrast posterior to the stomach and spread through the foramen of Winslow.\n[Both] Diverticulitis: a common pelvic cause. Because the omentum often walls off the perforation, the amount of free air is usually small and adjacent to the inflamed sigmoid colon. Large pneumoperitoneum and generalized peritonitis can occur, especially in older adults or steroid users.\n[Both] Intestinal trauma: pneumoperitoneum after blunt trauma indicates intestinal perforation until proven otherwise, with the duodenum and proximal jejunum important sites. Look for mesenteric hematoma and bowel wall thickening. Diagnostic peritoneal lavage can itself introduce intraperitoneal air and fluid.\n[Both] Appendicitis: rupture usually produces only a small amount of free air, often with free fluid or abscess.\n[Both] Thoracic mimics on radiographs: basal pneumothorax, plate-like subsegmental atelectasis, and cystic/bullous lung disease near the diaphragm may simulate pneumoperitoneum.\n[Both] Colonic interposition: Chilaiditi configuration places colon between liver and right hemidiaphragm and may be mistaken for free air.\n[Both] Subphrenic fat: radiolucent subxiphoid or perihepatic fat can mimic free air on radiographs.\n[Both] Peritonitis and abscess: gas-forming pyogenic infection can produce intraperitoneal gas/fluid; look for peritoneal thickening/enhancement or abscess. A gas-containing subphrenic abscess can simulate free abdominal gas on upright radiograph.\n[Both] Pneumatosis cystoides intestinalis: benign cystic intramural gas, often associated with scleroderma/collagen vascular disease or steroid/immunosuppressive therapy, can rupture and produce pneumoperitoneum despite a clinically well patient.\n[Both] Female genital tract: gas may pass retrograde into the peritoneum after sexual intercourse, pelvic examination, or water sports.\n[Both] Small bowel diverticula: duodenal or small-intestinal diverticula can perforate spontaneously or after feeding-tube placement. They usually produce very little free air and may not require surgery if contained and clinically mild.\n[Both] Foreign body perforation: ingested bone, toothpick, pin, or similar objects tend to perforate at the ileum, ileocecal region, or rectosigmoid.\n\n=== PRIMARY IMAGE SET FOR FUTURE GENERATION ===\n[RadPrimer] RadPrimer image 1: axial CECT after abdominal surgery with a thin crescent of nondependent pneumoperitoneum, a normal postoperative finding.\n[RadPrimer] RadPrimer image 2: axial NECT in a ventilated patient with barotrauma, showing gas dissecting into the retroperitoneal and intraperitoneal spaces.\n[RadPrimer] RadPrimer images 3 and 4: atomic postoperative rectal-anastomotic leak cluster. RadPrimer image 3 shows greater-than-expected postoperative pneumoperitoneum; RadPrimer image 4 shows focal ectopic gas near the rectal anastomosis and documents surgical revision.\n[RadPrimer] RadPrimer image 5: axial CECT after ERCP with gas tracking from the duodenum into peritoneal, retroperitoneal, and subcutaneous spaces, consistent with duodenal perforation.\n[RadPrimer] RadPrimer image 6: axial CECT with enteric contrast extravasation from the duodenum, free intraperitoneal air, and ascites containing oral contrast, consistent with perforated duodenal ulcer.\n[RadPrimer] RadPrimer image 7: axial CECT with lesser-curvature gastric wall edema/thickening and free intraperitoneal air, consistent with perforated gastric ulcer.\n[RadPrimer] RadPrimer image 8: coronal CECT with gas and enteric contrast tracking upward from inflamed sigmoid colon, consistent with perforated sigmoid diverticulitis.\n[RadPrimer] RadPrimer image 9: axial NECT with massively dilated cecum, pneumatosis, and free air, consistent with colonic ischemia and perforation.\n[RadPrimer] RadPrimer image 10: axial CECT after stab wounds with free air plus ectopic gas and enteric contrast along the colon, with colonic injury found at surgery.\n[RadPrimer] RadPrimer image 11: axial NECT in a clinically well patient with bubbly right-colon pneumatosis and adjacent free air, supporting benign pneumatosis.\n[RadPrimer] RadPrimer image 12: coronal CECT in an asymptomatic steroid-treated patient with extensive benign right-colon pneumatosis and small adjacent free air.\n[RadPrimer] RadPrimer image 13: axial CECT with inflamed contrast-filled small-bowel diverticulum and tiny adjacent ectopic gas, compatible with small-bowel diverticulitis.\n[RadPrimer] RadPrimer image 14: axial CECT showing an intentionally ingested pin perforating small bowel into the abdominal wall, requiring surgery.\n[STATdx] STATdx image 3: axial CECT showing pleural and mediastinal gas in a ventilated patient, retained as supplemental barotrauma-route context for pneumoperitoneum.\n[STATdx] STATdx image 7: frontal radiograph with gastrostomy tube and massive free intraperitoneal gas outlining bowel, retained as radiographic modality reinforcement for iatrogenic/feeding-tube context.\n[STATdx] STATdx image 10: axial CECT with free intraperitoneal gas and fluid from perforated duodenal ulcer, retained as an alternate ulcer-perforation example.\n[STATdx] STATdx image 11: axial CECT with free intraperitoneal gas and a gas bubble adjacent to the duodenal bulb, retained as an alternate duodenal-ulcer perforation example.\n\n=== IMAGE COVERAGE GATE ===\n[Both] STATdx fully covers the RadPrimer image set: RadPrimer images 1-14 each have an exact STATdx duplicate copy with the same stable source image ID and matching staged visual evidence. Because RadPrimer is the canonical backbone, RadPrimer copies remain primary and the duplicate STATdx copies are archive-optional.\n[Both] Exact duplicate pairs: RadPrimer image 1 = STATdx image 1; RadPrimer image 2 = STATdx image 2; RadPrimer image 3 = STATdx image 4; RadPrimer image 4 = STATdx image 5; RadPrimer image 5 = STATdx image 6; RadPrimer image 6 = STATdx image 8; RadPrimer image 7 = STATdx image 9; RadPrimer image 8 = STATdx image 12; RadPrimer image 9 = STATdx image 13; RadPrimer image 10 = STATdx image 14; RadPrimer image 11 = STATdx image 15; RadPrimer image 12 = STATdx image 16; RadPrimer image 13 = STATdx image 17; RadPrimer image 14 = STATdx image 18.\n[STATdx] Supplemental distinct images retained primary: STATdx images 3, 7, 10, and 11.\n\n=== GENERATOR ROUTING INSTRUCTIONS ===\nUse the canonicalHierarchy exactly as: [\"All Categories\",\"Basic\",\"Gastrointestinal\",\"Peritoneum, Mesentery, and Abdominal Wall\",\"Pneumoperitoneum\"].\nUse the deck path exactly as: Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Pneumoperitoneum.\nUse human-facing labels such as RadPrimer image 5 and STATdx image 10 in narrative prose. Keep RP-05 and SDX-10 for registry, filenames, manifest, and traceability fields.\nDownload only selectedPrimaryImageIds by default. ArchiveOptionalImageIds are exact duplicate/recovery copies and should not drive routine cards or lecture.\nDo not create cards or lecture content from this package yet.\r\n",
+  "manifest": {
+    "articleTitle": "Pneumoperitoneum",
+    "createdAt": "2026-08-27T02:14:17.254Z",
+    "canonicalHierarchy": [
+      "All Categories",
+      "Basic",
+      "Gastrointestinal",
+      "Peritoneum, Mesentery, and Abdominal Wall",
+      "Pneumoperitoneum"
+    ],
+    "canonicalDeckPath": "Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Pneumoperitoneum",
+    "sourcePriority": [
+      "RadPrimer",
+      "STATdx"
+    ],
+    "sourceCoverage": {
+      "RadPrimer": {
+        "role": "canonicalBackbone",
+        "textCoverage": "primary article/differential backbone",
+        "imageCoverage": "14 primary images retained",
+        "breadcrumbUsed": true
+      },
+      "STATdx": {
+        "role": "supplementalDepth",
+        "textCoverage": "overlapping article text with supplemental image examples",
+        "imageCoverage": "18 total images: 4 selected supplemental, 14 archive-optional exact duplicates",
+        "breadcrumbUsed": false
+      },
+      "imageEvidenceReviewed": true,
+      "statdxFullyCoversRadPrimerImageSet": true
+    },
+    "imageCountBySource": {
+      "RadPrimer": {
+        "total": 14,
+        "primaryTeachingSet": 14,
+        "archiveOptionalDuplicate": 0
+      },
+      "STATdx": {
+        "total": 18,
+        "primaryTeachingSet": 4,
+        "archiveOptionalDuplicate": 14
+      }
+    },
+    "sourceAttributionRules": [
+      "Use [RadPrimer] for canonical differential structure, deck routing, and retained RadPrimer images.",
+      "Use [STATdx] for supplemental images and any added image-specific detail.",
+      "Use [Both] for shared article claims present in both source packages.",
+      "Do not cite Core Radiology support unless auditable Core evidence is supplied later."
+    ],
+    "selectedPrimaryImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "RP-11",
+      "RP-12",
+      "RP-13",
+      "RP-14",
+      "SDX-03",
+      "SDX-07",
+      "SDX-10",
+      "SDX-11"
+    ],
+    "archiveOptionalImageIds": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-08",
+      "SDX-09",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18"
+    ],
+    "sourceSelectionPlan": {
+      "textBackbone": "Use RadPrimer as the canonical hierarchy and differential backbone. The article text in STATdx substantially overlaps the RadPrimer source; keep RadPrimer ordering and add STATdx only where it adds image depth or supplemental examples.",
+      "keepFromRadPrimer": [
+        "Canonical hierarchy and deck routing from metadata.json canonicalHierarchy/canonicalDeckPath.",
+        "Differential structure: common causes, less common causes, mimics, and neonatal alternative approach.",
+        "Core teaching facts for CT/radiograph sensitivity, amount/location of air, postoperative time course, and cause-specific clues.",
+        "RadPrimer images 1-14 as the primary canonical teaching set."
+      ],
+      "keepFromSTATdx": [
+        "Four distinct supplemental images: STATdx image 3 for thoracic barotrauma route, STATdx image 7 for radiographic feeding-tube/free-air example, STATdx images 10 and 11 as alternate perforated duodenal-ulcer examples.",
+        "Source-qualified captions and URLs for the supplemental images.",
+        "No replacement of RadPrimer hierarchy or deck path."
+      ],
+      "downweightOrSkip": [
+        "Do not use STATdx breadcrumb for routing.",
+        "Do not duplicate STATdx copies that share the same stable source image IDs as RadPrimer primary images in default downloads.",
+        "Do not generate Core Radiology claims unless a later run supplies auditable Core evidence."
+      ],
+      "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+      "duplicateEvidencePolicy": "Exact duplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+      "radPrimerCoverageBySTATdx": {
+        "fullyCoversRadPrimerImageSet": true,
+        "method": "All 14 RadPrimer images have matching STATdx images with the same stable source image IDs and matching staged visual evidence.",
+        "gate": [
+          {
+            "radPrimerImageId": "RP-01",
+            "radPrimerLabel": "RadPrimer image 1",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-01",
+            "statdxLabel": "STATdx image 1",
+            "stableImageId": "3bdc6efb-08bd-4ee8-b0e7-c8fceae11151",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-02",
+            "radPrimerLabel": "RadPrimer image 2",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-02",
+            "statdxLabel": "STATdx image 2",
+            "stableImageId": "3c2fc85d-36fc-4621-9129-51517f3e3da8",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-03",
+            "radPrimerLabel": "RadPrimer image 3",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-04",
+            "statdxLabel": "STATdx image 4",
+            "stableImageId": "2eb653ec-dd8b-4b46-9a54-d9d68e49f834",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-04",
+            "radPrimerLabel": "RadPrimer image 4",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-05",
+            "statdxLabel": "STATdx image 5",
+            "stableImageId": "d806197e-e738-411a-abf6-d003275a8230",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-05",
+            "radPrimerLabel": "RadPrimer image 5",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-06",
+            "statdxLabel": "STATdx image 6",
+            "stableImageId": "81c0321d-8a31-42e6-9e7d-0f23b9361ce1",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-06",
+            "radPrimerLabel": "RadPrimer image 6",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-08",
+            "statdxLabel": "STATdx image 8",
+            "stableImageId": "6cc1bbb6-6d07-493d-8612-db4536549489",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-07",
+            "radPrimerLabel": "RadPrimer image 7",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-09",
+            "statdxLabel": "STATdx image 9",
+            "stableImageId": "692aaad2-3b27-47e0-a45d-636af4eba94a",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-08",
+            "radPrimerLabel": "RadPrimer image 8",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-12",
+            "statdxLabel": "STATdx image 12",
+            "stableImageId": "10da93a6-8a29-4534-9e3c-1940a670b0d9",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-09",
+            "radPrimerLabel": "RadPrimer image 9",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-13",
+            "statdxLabel": "STATdx image 13",
+            "stableImageId": "a2b81fb5-19fb-43d5-a608-d146c6779038",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-10",
+            "radPrimerLabel": "RadPrimer image 10",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-14",
+            "statdxLabel": "STATdx image 14",
+            "stableImageId": "37365f1a-18a1-4a8d-971c-a1d2adab4117",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-11",
+            "radPrimerLabel": "RadPrimer image 11",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-15",
+            "statdxLabel": "STATdx image 15",
+            "stableImageId": "01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-12",
+            "radPrimerLabel": "RadPrimer image 12",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-16",
+            "statdxLabel": "STATdx image 16",
+            "stableImageId": "e5b4c65e-d5b3-4d72-9f89-4f9684cf1486",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-13",
+            "radPrimerLabel": "RadPrimer image 13",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-17",
+            "statdxLabel": "STATdx image 17",
+            "stableImageId": "062587c0-791f-4f37-a124-d7b9f8269da3",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          },
+          {
+            "radPrimerImageId": "RP-14",
+            "radPrimerLabel": "RadPrimer image 14",
+            "statdxCoverage": "exactDuplicate",
+            "statdxImageId": "SDX-18",
+            "statdxLabel": "STATdx image 18",
+            "stableImageId": "d00cf77d-30e3-4630-bea7-27f5e8bc7a91",
+            "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+            "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+          }
+        ]
+      },
+      "caseClusterGuardrails": {
+        "policy": "Treat same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse image groups as atomic. Do not split a cluster unless the report documents why the split is safe.",
+        "observedClusters": [
+          {
+            "clusterId": "postoperative_rectal_anastomotic_leak_cluster",
+            "primaryKept": [
+              "RP-03",
+              "RP-04"
+            ],
+            "duplicateArchived": [
+              "SDX-04",
+              "SDX-05"
+            ],
+            "split": "no",
+            "reason": "The RadPrimer cluster was retained intact and the equivalent STATdx duplicate cluster was archived intact."
+          }
+        ],
+        "intentionalSplits": []
+      },
+      "imageDownloadPlan": {
+        "primaryTeachingSet": [
+          {
+            "masterImageId": "RP-01",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 1,
+            "plainFilename": "RP-01_RadPrimer_plain_Pneumoperitoneum1.jpg",
+            "annotatedFilename": "RP-01_RadPrimer_annotated_Pneumoperitoneum1_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?style=xlarge&annotated=true",
+            "usedFor": [
+              "postoperativeNormal",
+              "coreRecognition"
+            ]
+          },
+          {
+            "masterImageId": "RP-02",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 2,
+            "plainFilename": "RP-02_RadPrimer_plain_Pneumoperitoneum2.jpg",
+            "annotatedFilename": "RP-02_RadPrimer_annotated_Pneumoperitoneum2_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/3c2fc85d-36fc-4621-9129-51517f3e3da8?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/3c2fc85d-36fc-4621-9129-51517f3e3da8?style=xlarge&annotated=true",
+            "usedFor": [
+              "barotrauma",
+              "retroperitonealAndIntraperitonealGas",
+              "coreRecognition"
+            ]
+          },
+          {
+            "masterImageId": "RP-03",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 3,
+            "plainFilename": "RP-03_RadPrimer_plain_Pneumoperitoneum3.jpg",
+            "annotatedFilename": "RP-03_RadPrimer_annotated_Pneumoperitoneum3_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?style=xlarge&annotated=true",
+            "usedFor": [
+              "anastomoticLeakCluster",
+              "greaterThanExpectedPostoperativeFreeAir",
+              "coreRecognition"
+            ]
+          },
+          {
+            "masterImageId": "RP-04",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 4,
+            "plainFilename": "RP-04_RadPrimer_plain_Pneumoperitoneum4.jpg",
+            "annotatedFilename": "RP-04_RadPrimer_annotated_Pneumoperitoneum4_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/d806197e-e738-411a-abf6-d003275a8230?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/d806197e-e738-411a-abf6-d003275a8230?style=xlarge&annotated=true",
+            "usedFor": [
+              "anastomoticLeakCluster",
+              "focalPerianastomoticGas",
+              "procedureContext"
+            ]
+          },
+          {
+            "masterImageId": "RP-05",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 5,
+            "plainFilename": "RP-05_RadPrimer_plain_Pneumoperitoneum5.jpg",
+            "annotatedFilename": "RP-05_RadPrimer_annotated_Pneumoperitoneum5_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?style=xlarge&annotated=true",
+            "usedFor": [
+              "duodenalPerforationAfterERCP",
+              "peritonealRetroperitonealSubcutaneousGas",
+              "coreRecognition"
+            ]
+          },
+          {
+            "masterImageId": "RP-06",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 6,
+            "plainFilename": "RP-06_RadPrimer_plain_Pneumoperitoneum6.jpg",
+            "annotatedFilename": "RP-06_RadPrimer_annotated_Pneumoperitoneum6_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/6cc1bbb6-6d07-493d-8612-db4536549489?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/6cc1bbb6-6d07-493d-8612-db4536549489?style=xlarge&annotated=true",
+            "usedFor": [
+              "perforatedDuodenalUlcer",
+              "entericContrastLeak",
+              "freeAirAndAscites",
+              "coreRecognition"
+            ]
+          },
+          {
+            "masterImageId": "RP-07",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 7,
+            "plainFilename": "RP-07_RadPrimer_plain_Pneumoperitoneum7.jpg",
+            "annotatedFilename": "RP-07_RadPrimer_annotated_Pneumoperitoneum7_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/692aaad2-3b27-47e0-a45d-636af4eba94a?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/692aaad2-3b27-47e0-a45d-636af4eba94a?style=xlarge&annotated=true",
+            "usedFor": [
+              "perforatedGastricUlcer",
+              "lesserCurvatureInflammation",
+              "coreRecognition"
+            ]
+          },
+          {
+            "masterImageId": "RP-08",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 8,
+            "plainFilename": "RP-08_RadPrimer_plain_Pneumoperitoneum8.jpg",
+            "annotatedFilename": "RP-08_RadPrimer_annotated_Pneumoperitoneum8_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/10da93a6-8a29-4534-9e3c-1940a670b0d9?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/10da93a6-8a29-4534-9e3c-1940a670b0d9?style=xlarge&annotated=true",
+            "usedFor": [
+              "perforatedSigmoidDiverticulitis",
+              "coronalPattern",
+              "coreRecognition"
+            ]
+          },
+          {
+            "masterImageId": "RP-09",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 9,
+            "plainFilename": "RP-09_RadPrimer_plain_Pneumoperitoneum9.jpg",
+            "annotatedFilename": "RP-09_RadPrimer_annotated_Pneumoperitoneum9_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/a2b81fb5-19fb-43d5-a608-d146c6779038?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/a2b81fb5-19fb-43d5-a608-d146c6779038?style=xlarge&annotated=true",
+            "usedFor": [
+              "colonicIschemiaWithPerforation",
+              "pneumatosis",
+              "coreRecognition"
+            ]
+          },
+          {
+            "masterImageId": "RP-10",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 10,
+            "plainFilename": "RP-10_RadPrimer_plain_Pneumoperitoneum10.jpg",
+            "annotatedFilename": "RP-10_RadPrimer_annotated_Pneumoperitoneum10_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/37365f1a-18a1-4a8d-971c-a1d2adab4117?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/37365f1a-18a1-4a8d-971c-a1d2adab4117?style=xlarge&annotated=true",
+            "usedFor": [
+              "penetratingTraumaColonInjury",
+              "ectopicEntericContrast",
+              "coreRecognition"
+            ]
+          },
+          {
+            "masterImageId": "RP-11",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 11,
+            "plainFilename": "RP-11_RadPrimer_plain_Pneumoperitoneum11.jpg",
+            "annotatedFilename": "RP-11_RadPrimer_annotated_Pneumoperitoneum11_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?style=xlarge&annotated=true",
+            "usedFor": [
+              "benignPneumatosis",
+              "incidentalFreeAir",
+              "recognitionReinforcement"
+            ]
+          },
+          {
+            "masterImageId": "RP-12",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 12,
+            "plainFilename": "RP-12_RadPrimer_plain_Pneumoperitoneum12.jpg",
+            "annotatedFilename": "RP-12_RadPrimer_annotated_Pneumoperitoneum12_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?style=xlarge&annotated=true",
+            "usedFor": [
+              "benignPneumatosisSteroidUse",
+              "coronalPattern",
+              "recognitionReinforcement"
+            ]
+          },
+          {
+            "masterImageId": "RP-13",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 13,
+            "plainFilename": "RP-13_RadPrimer_plain_Pneumoperitoneum13.jpg",
+            "annotatedFilename": "RP-13_RadPrimer_annotated_Pneumoperitoneum13_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/062587c0-791f-4f37-a124-d7b9f8269da3?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/062587c0-791f-4f37-a124-d7b9f8269da3?style=xlarge&annotated=true",
+            "usedFor": [
+              "smallBowelDiverticulitis",
+              "tinyAdjacentEctopicGas",
+              "recognitionReinforcement"
+            ]
+          },
+          {
+            "masterImageId": "RP-14",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 14,
+            "plainFilename": "RP-14_RadPrimer_plain_Pneumoperitoneum14.jpg",
+            "annotatedFilename": "RP-14_RadPrimer_annotated_Pneumoperitoneum14_annot.jpg",
+            "plainUrl": "https://app.radprimer.com/images/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?style=xlarge&annotated=false",
+            "annotatedUrl": "https://app.radprimer.com/images/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?style=xlarge&annotated=true",
+            "usedFor": [
+              "foreignBodyPerforation",
+              "surgicalFinding",
+              "recognitionReinforcement"
+            ]
+          },
+          {
+            "masterImageId": "SDX-03",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 3,
+            "plainFilename": "SDX-03_STATdx_plain_Pneumoperitoneum3.jpg",
+            "annotatedFilename": "SDX-03_STATdx_annotated_Pneumoperitoneum3_annot.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/5546fa86-dd9e-4177-9767-dace234f980e?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/5546fa86-dd9e-4177-9767-dace234f980e?annotated=true&size=1000&quality=90",
+            "usedFor": [
+              "barotraumaThoracicRoute",
+              "pneumothoraxPneumomediastinumContext",
+              "supplementalDepth",
+              "recognitionReinforcement"
+            ]
+          },
+          {
+            "masterImageId": "SDX-07",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 7,
+            "plainFilename": "SDX-07_STATdx_plain_Pneumoperitoneum7.jpg",
+            "annotatedFilename": "SDX-07_STATdx_annotated_Pneumoperitoneum7_annot.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/569a51bb-bc2f-45fb-9dc4-8d2d23f37713?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/569a51bb-bc2f-45fb-9dc4-8d2d23f37713?annotated=true&size=1000&quality=90",
+            "usedFor": [
+              "feedingTubeComplication",
+              "radiographMassiveFreeAir",
+              "modalityVariant",
+              "supplementalDepth"
+            ]
+          },
+          {
+            "masterImageId": "SDX-10",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 10,
+            "plainFilename": "SDX-10_STATdx_plain_Pneumoperitoneum10.jpg",
+            "annotatedFilename": "SDX-10_STATdx_annotated_Pneumoperitoneum10_annot.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/6ae4d72b-13b3-4471-8942-e6cd181ab84c?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ae4d72b-13b3-4471-8942-e6cd181ab84c?annotated=true&size=1000&quality=90",
+            "usedFor": [
+              "perforatedDuodenalUlcer",
+              "alternateExample",
+              "severityVariant",
+              "recognitionReinforcement"
+            ]
+          },
+          {
+            "masterImageId": "SDX-11",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 11,
+            "plainFilename": "SDX-11_STATdx_plain_Pneumoperitoneum11.jpg",
+            "annotatedFilename": "SDX-11_STATdx_annotated_Pneumoperitoneum11_annot.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/92c3735f-76cf-49ba-8ac1-2a63c6c12d79?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/92c3735f-76cf-49ba-8ac1-2a63c6c12d79?annotated=true&size=1000&quality=90",
+            "usedFor": [
+              "perforatedDuodenalUlcer",
+              "alternateExample",
+              "adjacentDuodenalBulbGas",
+              "recognitionReinforcement"
+            ]
+          }
+        ],
+        "archiveOptionalDuplicates": [
+          {
+            "masterImageId": "SDX-01",
+            "duplicateOf": "RP-01",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-01_STATdx_plain_Pneumoperitoneum1.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-02",
+            "duplicateOf": "RP-02",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-02_STATdx_plain_Pneumoperitoneum2.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/3c2fc85d-36fc-4621-9129-51517f3e3da8?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-04",
+            "duplicateOf": "RP-03",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-04_STATdx_plain_Pneumoperitoneum4.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-05",
+            "duplicateOf": "RP-04",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-05_STATdx_plain_Pneumoperitoneum5.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/d806197e-e738-411a-abf6-d003275a8230?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-06",
+            "duplicateOf": "RP-05",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-06_STATdx_plain_Pneumoperitoneum6.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-08",
+            "duplicateOf": "RP-06",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-08_STATdx_plain_Pneumoperitoneum8.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/6cc1bbb6-6d07-493d-8612-db4536549489?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-09",
+            "duplicateOf": "RP-07",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-09_STATdx_plain_Pneumoperitoneum9.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/692aaad2-3b27-47e0-a45d-636af4eba94a?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-12",
+            "duplicateOf": "RP-08",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-12_STATdx_plain_Pneumoperitoneum12.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/10da93a6-8a29-4534-9e3c-1940a670b0d9?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-13",
+            "duplicateOf": "RP-09",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-13_STATdx_plain_Pneumoperitoneum13.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/a2b81fb5-19fb-43d5-a608-d146c6779038?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-14",
+            "duplicateOf": "RP-10",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-14_STATdx_plain_Pneumoperitoneum14.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/37365f1a-18a1-4a8d-971c-a1d2adab4117?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-15",
+            "duplicateOf": "RP-11",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-15_STATdx_plain_Pneumoperitoneum15.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-16",
+            "duplicateOf": "RP-12",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-16_STATdx_plain_Pneumoperitoneum16.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-17",
+            "duplicateOf": "RP-13",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-17_STATdx_plain_Pneumoperitoneum17.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/062587c0-791f-4f37-a124-d7b9f8269da3?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          },
+          {
+            "masterImageId": "SDX-18",
+            "duplicateOf": "RP-14",
+            "sourceLabel": "STATdx",
+            "plainFilename": "SDX-18_STATdx_plain_Pneumoperitoneum18.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?size=1000&quality=90",
+            "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+          }
+        ],
+        "generatorInstruction": "Download only selectedPrimaryImageIds by default using source-qualified filenames. Keep archiveOptionalImageIds available only for audit/recovery, not routine cards or lecture."
+      },
+      "generatorInstructions": [
+        "Use source-qualified human labels in narrative prose, such as RadPrimer image 5 or STATdx image 10.",
+        "Keep short IDs such as RP-05 and SDX-10 in registry, manifest, filenames, and traceability fields.",
+        "Preserve procedure and cluster context, especially the postoperative anastomotic leak pair and the duodenal-ulcer alternate examples.",
+        "Use images for recognition reinforcement; do not archive distinct examples merely because they teach the same diagnosis."
+      ]
+    }
+  },
+  "imageRegistry": [
+    {
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "imageId": "3bdc6efb-08bd-4ee8-b0e7-c8fceae11151",
+      "caption": "Axial CECT acquired after abdominal surgery demonstrates a thin crescent of pneumoperitoneum <img src=\"arrow_WS.png\">  in the nondependent upper abdomen, a normal finding in the postoperative period.",
+      "usedFor": [
+        "postoperativeNormal",
+        "coreRecognition"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-01_RadPrimer_plain_Pneumoperitoneum1.jpg",
+      "annotatedFilename": "RP-01_RadPrimer_annotated_Pneumoperitoneum1_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum1.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-01",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_3bdc6efb.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "imageId": "3c2fc85d-36fc-4621-9129-51517f3e3da8",
+      "caption": "Axial NECT in a patient on positive-pressure ventilation and with known large bilateral pneumothoraces (not shown) demonstrates gas dissecting downward into the abdomen to involve the retroperitoneum <img src=\"arrow_BS.png\"> and intraperitoneal space <img src=\"arrow_WC.png\">, classic findings for barotrauma.",
+      "usedFor": [
+        "barotrauma",
+        "retroperitonealAndIntraperitonealGas",
+        "coreRecognition"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-02_RadPrimer_plain_Pneumoperitoneum2.jpg",
+      "annotatedFilename": "RP-02_RadPrimer_annotated_Pneumoperitoneum2_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum2.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3c2fc85d-36fc-4621-9129-51517f3e3da8?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/3c2fc85d-36fc-4621-9129-51517f3e3da8?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-02",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_3c2fc85d.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/3c2fc85d-36fc-4621-9129-51517f3e3da8?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "imageId": "2eb653ec-dd8b-4b46-9a54-d9d68e49f834",
+      "caption": "Axial NECT after a low anterior rectal resection demonstrates greater than expected pneumoperitoneum <img src=\"arrow_WS.png\"> immediately after surgery.",
+      "usedFor": [
+        "anastomoticLeakCluster",
+        "greaterThanExpectedPostoperativeFreeAir",
+        "coreRecognition"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-03_RadPrimer_plain_Pneumoperitoneum3.jpg",
+      "annotatedFilename": "RP-03_RadPrimer_annotated_Pneumoperitoneum3_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum3.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-04",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": "postoperative_rectal_anastomotic_leak_cluster",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_2eb653ec.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "imageId": "d806197e-e738-411a-abf6-d003275a8230",
+      "caption": "Axial NECT in the same patient demonstrates a focal collection of ectopic gas near the rectal anastomosis <img src=\"arrow_WC.png\">. While small free air is normal after surgery, large free air, as in this case, should suggest the presence of anastomotic leak. This patient required surgical revision of the rectal anastomosis.",
+      "usedFor": [
+        "anastomoticLeakCluster",
+        "focalPerianastomoticGas",
+        "procedureContext"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-04_RadPrimer_plain_Pneumoperitoneum4.jpg",
+      "annotatedFilename": "RP-04_RadPrimer_annotated_Pneumoperitoneum4_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum4.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/d806197e-e738-411a-abf6-d003275a8230?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/d806197e-e738-411a-abf6-d003275a8230?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-05",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": "postoperative_rectal_anastomotic_leak_cluster",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_d806197e.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/d806197e-e738-411a-abf6-d003275a8230?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-05",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 5,
+      "imageId": "81c0321d-8a31-42e6-9e7d-0f23b9361ce1",
+      "caption": "Axial CECT after ERCP demonstrates gas tracking from the duodenum <img src=\"arrow_WS.png\"> tracking into both the peritoneal <img src=\"arrow_WO.png\"> and retroperitoneal <img src=\"arrow_WC.png\"> spaces as well as into the subcutaneous soft tissues, representing the sequelae of duodenal perforation.",
+      "usedFor": [
+        "duodenalPerforationAfterERCP",
+        "peritonealRetroperitonealSubcutaneousGas",
+        "coreRecognition"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-05_RadPrimer_plain_Pneumoperitoneum5.jpg",
+      "annotatedFilename": "RP-05_RadPrimer_annotated_Pneumoperitoneum5_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum5.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-06",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_81c0321d.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-06",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 6,
+      "imageId": "6cc1bbb6-6d07-493d-8612-db4536549489",
+      "caption": "Axial CECT demonstrates extravasation of enteric contrast  <img src=\"arrow_WC.png\">  from the duodenum along with free intraperitoneal air  <img src=\"arrow_WS.png\">  and large ascites (portions of which contain oral contrast material), representing a perforated duodenal ulcer.",
+      "usedFor": [
+        "perforatedDuodenalUlcer",
+        "entericContrastLeak",
+        "freeAirAndAscites",
+        "coreRecognition"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-06_RadPrimer_plain_Pneumoperitoneum6.jpg",
+      "annotatedFilename": "RP-06_RadPrimer_annotated_Pneumoperitoneum6_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum6.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/6cc1bbb6-6d07-493d-8612-db4536549489?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/6cc1bbb6-6d07-493d-8612-db4536549489?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-08",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_6cc1bbb6.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/6cc1bbb6-6d07-493d-8612-db4536549489?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-07",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 7,
+      "imageId": "692aaad2-3b27-47e0-a45d-636af4eba94a",
+      "caption": "Axial CECT demonstrates marked wall edema and thickening  <img src=\"arrow_WC.png\">  along the lesser curvature of the stomach  as well as free intraperitoneal air  <img src=\"arrow_WS.png\">, representing a perforated gastric ulcer.",
+      "usedFor": [
+        "perforatedGastricUlcer",
+        "lesserCurvatureInflammation",
+        "coreRecognition"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-07_RadPrimer_plain_Pneumoperitoneum7.jpg",
+      "annotatedFilename": "RP-07_RadPrimer_annotated_Pneumoperitoneum7_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum7.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/692aaad2-3b27-47e0-a45d-636af4eba94a?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/692aaad2-3b27-47e0-a45d-636af4eba94a?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-09",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_692aaad2.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/692aaad2-3b27-47e0-a45d-636af4eba94a?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-08",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 8,
+      "imageId": "10da93a6-8a29-4534-9e3c-1940a670b0d9",
+      "caption": "Coronal CECT demonstrates gas and enteric contrast <img src=\"arrow_WS.png\"> tracking upward from the inflamed sigmoid colon, representing perforated sigmoid diverticulitis.",
+      "usedFor": [
+        "perforatedSigmoidDiverticulitis",
+        "coronalPattern",
+        "coreRecognition"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-08_RadPrimer_plain_Pneumoperitoneum8.jpg",
+      "annotatedFilename": "RP-08_RadPrimer_annotated_Pneumoperitoneum8_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum8.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/10da93a6-8a29-4534-9e3c-1940a670b0d9?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/10da93a6-8a29-4534-9e3c-1940a670b0d9?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-12",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_10da93a6.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/10da93a6-8a29-4534-9e3c-1940a670b0d9?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-09",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 9,
+      "imageId": "a2b81fb5-19fb-43d5-a608-d146c6779038",
+      "caption": "Axial NECT demonstrates a massively dilated cecum with pneumatosis  <img src=\"arrow_WS.png\">  and multiple foci of free intraperitoneal air  <img src=\"arrow_WC.png\">, representing colonic ischemia with perforation.",
+      "usedFor": [
+        "colonicIschemiaWithPerforation",
+        "pneumatosis",
+        "coreRecognition"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-09_RadPrimer_plain_Pneumoperitoneum9.jpg",
+      "annotatedFilename": "RP-09_RadPrimer_annotated_Pneumoperitoneum9_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum9.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum9_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/a2b81fb5-19fb-43d5-a608-d146c6779038?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/a2b81fb5-19fb-43d5-a608-d146c6779038?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-13",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_a2b81fb5.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/a2b81fb5-19fb-43d5-a608-d146c6779038?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-10",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 10,
+      "imageId": "37365f1a-18a1-4a8d-971c-a1d2adab4117",
+      "caption": "Axial CECT in a patient with multiple stab wounds demonstrates multiple foci of free air  <img src=\"arrow_WS.png\">  along with gas and ectopic enteric contrast  <img src=\"arrow_WC.png\">  immediately along the outer margin of the colon.  Colonic injury was discovered at surgery.",
+      "usedFor": [
+        "penetratingTraumaColonInjury",
+        "ectopicEntericContrast",
+        "coreRecognition"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-10_RadPrimer_plain_Pneumoperitoneum10.jpg",
+      "annotatedFilename": "RP-10_RadPrimer_annotated_Pneumoperitoneum10_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum10.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum10_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/37365f1a-18a1-4a8d-971c-a1d2adab4117?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/37365f1a-18a1-4a8d-971c-a1d2adab4117?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-14",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_37365f1a.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/37365f1a-18a1-4a8d-971c-a1d2adab4117?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-11",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 11,
+      "imageId": "01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7",
+      "caption": "Axial NECT in an asymptomatic patient demonstrates bubbly pneumatosis <img src=\"arrow_WS.png\"> in the right colon with several foci of adjacent free air <img src=\"arrow_WC.png\">. The patient was clinically doing well, and this was thought to represent benign pneumatosis.",
+      "usedFor": [
+        "benignPneumatosis",
+        "incidentalFreeAir",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-11_RadPrimer_plain_Pneumoperitoneum11.jpg",
+      "annotatedFilename": "RP-11_RadPrimer_annotated_Pneumoperitoneum11_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum11.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum11_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-15",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_01b4ac15.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-12",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 12,
+      "imageId": "e5b4c65e-d5b3-4d72-9f89-4f9684cf1486",
+      "caption": "Coronal CECT in an asymptomatic patient on chronic steroid treatment for autoimmune disease demonstrates extensive benign pneumatosis <img src=\"arrow_WC.png\"> throughout the right colon with resultant perforation and small adjacent free air <img src=\"arrow_WS.png\">.",
+      "usedFor": [
+        "benignPneumatosisSteroidUse",
+        "coronalPattern",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-12_RadPrimer_plain_Pneumoperitoneum12.jpg",
+      "annotatedFilename": "RP-12_RadPrimer_annotated_Pneumoperitoneum12_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum12.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum12_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-16",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_e5b4c65e.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-13",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 13,
+      "imageId": "062587c0-791f-4f37-a124-d7b9f8269da3",
+      "caption": "Axial CECT in a patient with abdominal pain demonstrates an inflamed contrast-filled diverticulum <img src=\"arrow_WS.png\"> arising from a small bowel loop as well as a tiny focus of adjacent ectopic gas <img src=\"arrow_WC.png\">, compatible with small bowel diverticulitis.",
+      "usedFor": [
+        "smallBowelDiverticulitis",
+        "tinyAdjacentEctopicGas",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-13_RadPrimer_plain_Pneumoperitoneum13.jpg",
+      "annotatedFilename": "RP-13_RadPrimer_annotated_Pneumoperitoneum13_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum13.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum13_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/062587c0-791f-4f37-a124-d7b9f8269da3?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/062587c0-791f-4f37-a124-d7b9f8269da3?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-17",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_062587c0.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/062587c0-791f-4f37-a124-d7b9f8269da3?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "RP-14",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 14,
+      "imageId": "d00cf77d-30e3-4630-bea7-27f5e8bc7a91",
+      "caption": "Axial CECT in a psychiatric patient demonstrates an intentionally ingested pin  <img src=\"arrow_WS.png\"> perforating through the small bowel into the adjacent abdominal wall. These findings required surgical intervention.",
+      "usedFor": [
+        "foreignBodyPerforation",
+        "surgicalFinding",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-14_RadPrimer_plain_Pneumoperitoneum14.jpg",
+      "annotatedFilename": "RP-14_RadPrimer_annotated_Pneumoperitoneum14_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum14.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum14_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?style=xlarge&annotated=true",
+      "duplicateClassification": "exactDuplicateCoveredBySTATdx",
+      "duplicateOf": "SDX-18",
+      "duplicateEvidence": "Same stable source image ID appears in STATdx and the staged evidence contact sheet showed matching visual content. RadPrimer copy retained as canonical primary image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_d00cf77d.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 1,
+      "imageId": "3bdc6efb-08bd-4ee8-b0e7-c8fceae11151",
+      "caption": "Axial CECT acquired after abdominal surgery demonstrates a thin crescent of pneumoperitoneum <img src=\"arrow_WS.png\">  in the nondependent upper abdomen, a normal finding in the postoperative period.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-01_STATdx_plain_Pneumoperitoneum1.jpg",
+      "annotatedFilename": "SDX-01_STATdx_annotated_Pneumoperitoneum1_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum1.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum1_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-01",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_3bdc6efb.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 2,
+      "imageId": "3c2fc85d-36fc-4621-9129-51517f3e3da8",
+      "caption": "Axial NECT in a patient on positive-pressure ventilation and with known large bilateral pneumothoraces (not shown) demonstrates gas dissecting downward into the abdomen to involve the retroperitoneum <img src=\"arrow_BS.png\"> and intraperitoneal space <img src=\"arrow_WC.png\">, classic findings for barotrauma.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-02_STATdx_plain_Pneumoperitoneum2.jpg",
+      "annotatedFilename": "SDX-02_STATdx_annotated_Pneumoperitoneum2_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum2.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum2_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/3c2fc85d-36fc-4621-9129-51517f3e3da8?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/3c2fc85d-36fc-4621-9129-51517f3e3da8?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-02",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_3c2fc85d.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/3c2fc85d-36fc-4621-9129-51517f3e3da8?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 3,
+      "imageId": "5546fa86-dd9e-4177-9767-dace234f980e",
+      "caption": "Axial CECT shows large collections of gas in the pleural space and mediastinum in a patient on positive pressure ventilation.",
+      "usedFor": [
+        "barotraumaThoracicRoute",
+        "pneumothoraxPneumomediastinumContext",
+        "supplementalDepth",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-03_STATdx_plain_Pneumoperitoneum3.jpg",
+      "annotatedFilename": "SDX-03_STATdx_annotated_Pneumoperitoneum3_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum3.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum3_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/5546fa86-dd9e-4177-9767-dace234f980e?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/5546fa86-dd9e-4177-9767-dace234f980e?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "supplementalDistinctSTATdxImage",
+      "duplicateOf": null,
+      "duplicateEvidence": "Distinct stable source image ID and visually distinct staged evidence file; retained as supplemental recognition image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_5546fa86.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/5546fa86-dd9e-4177-9767-dace234f980e?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 4,
+      "imageId": "2eb653ec-dd8b-4b46-9a54-d9d68e49f834",
+      "caption": "Axial NECT after a low anterior rectal resection demonstrates greater than expected pneumoperitoneum <img src=\"arrow_WS.png\"> immediately after surgery.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-04_STATdx_plain_Pneumoperitoneum4.jpg",
+      "annotatedFilename": "SDX-04_STATdx_annotated_Pneumoperitoneum4_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum4.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum4_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-03",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": "postoperative_rectal_anastomotic_leak_cluster",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_2eb653ec.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 5,
+      "imageId": "d806197e-e738-411a-abf6-d003275a8230",
+      "caption": "Axial NECT in the same patient demonstrates a focal collection of ectopic gas near the rectal anastomosis <img src=\"arrow_WC.png\">. While small free air is normal after surgery, large free air, as in this case, should suggest the presence of anastomotic leak. This patient required surgical revision of the rectal anastomosis.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-05_STATdx_plain_Pneumoperitoneum5.jpg",
+      "annotatedFilename": "SDX-05_STATdx_annotated_Pneumoperitoneum5_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum5.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum5_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d806197e-e738-411a-abf6-d003275a8230?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d806197e-e738-411a-abf6-d003275a8230?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-04",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": "postoperative_rectal_anastomotic_leak_cluster",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_d806197e.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d806197e-e738-411a-abf6-d003275a8230?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 6,
+      "imageId": "81c0321d-8a31-42e6-9e7d-0f23b9361ce1",
+      "caption": "Axial CECT after ERCP demonstrates gas tracking from the duodenum <img src=\"arrow_WS.png\"> tracking into both the peritoneal <img src=\"arrow_WO.png\"> and retroperitoneal <img src=\"arrow_WC.png\"> spaces as well as into the subcutaneous soft tissues, representing the sequelae of duodenal perforation.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-06_STATdx_plain_Pneumoperitoneum6.jpg",
+      "annotatedFilename": "SDX-06_STATdx_annotated_Pneumoperitoneum6_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum6.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum6_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-05",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_81c0321d.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 7,
+      "imageId": "569a51bb-bc2f-45fb-9dc4-8d2d23f37713",
+      "caption": "Frontal radiograph shows the external portion of a gastrostomy tube <img src=\"arrow_WC.png\"> and a large amount of free intraperitoneal gas <img src=\"arrow_WS.png\"> that outlines bowel segments.",
+      "usedFor": [
+        "feedingTubeComplication",
+        "radiographMassiveFreeAir",
+        "modalityVariant",
+        "supplementalDepth"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-07_STATdx_plain_Pneumoperitoneum7.jpg",
+      "annotatedFilename": "SDX-07_STATdx_annotated_Pneumoperitoneum7_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum7.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum7_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/569a51bb-bc2f-45fb-9dc4-8d2d23f37713?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/569a51bb-bc2f-45fb-9dc4-8d2d23f37713?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "supplementalDistinctSTATdxImage",
+      "duplicateOf": null,
+      "duplicateEvidence": "Distinct stable source image ID and visually distinct staged evidence file; retained as supplemental recognition image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_569a51bb.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/569a51bb-bc2f-45fb-9dc4-8d2d23f37713?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 8,
+      "imageId": "6cc1bbb6-6d07-493d-8612-db4536549489",
+      "caption": "Axial CECT demonstrates extravasation of enteric contrast  <img src=\"arrow_WC.png\">  from the duodenum along with free intraperitoneal air  <img src=\"arrow_WS.png\">  and large ascites (portions of which contain oral contrast material), representing a perforated duodenal ulcer.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-08_STATdx_plain_Pneumoperitoneum8.jpg",
+      "annotatedFilename": "SDX-08_STATdx_annotated_Pneumoperitoneum8_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum8.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum8_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/6cc1bbb6-6d07-493d-8612-db4536549489?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/6cc1bbb6-6d07-493d-8612-db4536549489?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-06",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_6cc1bbb6.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/6cc1bbb6-6d07-493d-8612-db4536549489?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 9,
+      "imageId": "692aaad2-3b27-47e0-a45d-636af4eba94a",
+      "caption": "Axial CECT demonstrates marked wall edema and thickening  <img src=\"arrow_WC.png\">  along the lesser curvature of the stomach  as well as free intraperitoneal air  <img src=\"arrow_WS.png\">, representing a perforated gastric ulcer.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-09_STATdx_plain_Pneumoperitoneum9.jpg",
+      "annotatedFilename": "SDX-09_STATdx_annotated_Pneumoperitoneum9_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum9.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum9_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/692aaad2-3b27-47e0-a45d-636af4eba94a?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/692aaad2-3b27-47e0-a45d-636af4eba94a?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-07",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_692aaad2.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/692aaad2-3b27-47e0-a45d-636af4eba94a?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 10,
+      "imageId": "6ae4d72b-13b3-4471-8942-e6cd181ab84c",
+      "caption": "Axial CECT shows free intraperitoneal gas <img src=\"arrow_WC.png\"> and fluid from a perforated duodenal ulcer.",
+      "usedFor": [
+        "perforatedDuodenalUlcer",
+        "alternateExample",
+        "severityVariant",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-10_STATdx_plain_Pneumoperitoneum10.jpg",
+      "annotatedFilename": "SDX-10_STATdx_annotated_Pneumoperitoneum10_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum10.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum10_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/6ae4d72b-13b3-4471-8942-e6cd181ab84c?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ae4d72b-13b3-4471-8942-e6cd181ab84c?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "supplementalDistinctSTATdxImage",
+      "duplicateOf": null,
+      "duplicateEvidence": "Distinct stable source image ID and visually distinct staged evidence file; retained as supplemental recognition image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_6ae4d72b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/6ae4d72b-13b3-4471-8942-e6cd181ab84c?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 11,
+      "imageId": "92c3735f-76cf-49ba-8ac1-2a63c6c12d79",
+      "caption": "Axial CECT shows free intraperitoneal gas <img src=\"arrow_WC.png\"> and a gas bubble adjacent to the duodenal bulb <img src=\"arrow_WS.png\">;this was a perforated duodenal ulcer.",
+      "usedFor": [
+        "perforatedDuodenalUlcer",
+        "alternateExample",
+        "adjacentDuodenalBulbGas",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-11_STATdx_plain_Pneumoperitoneum11.jpg",
+      "annotatedFilename": "SDX-11_STATdx_annotated_Pneumoperitoneum11_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum11.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum11_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/92c3735f-76cf-49ba-8ac1-2a63c6c12d79?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/92c3735f-76cf-49ba-8ac1-2a63c6c12d79?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "supplementalDistinctSTATdxImage",
+      "duplicateOf": null,
+      "duplicateEvidence": "Distinct stable source image ID and visually distinct staged evidence file; retained as supplemental recognition image.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_92c3735f.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/92c3735f-76cf-49ba-8ac1-2a63c6c12d79?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 12,
+      "imageId": "10da93a6-8a29-4534-9e3c-1940a670b0d9",
+      "caption": "Coronal CECT demonstrates gas and enteric contrast <img src=\"arrow_WS.png\"> tracking upward from the inflamed sigmoid colon, representing perforated sigmoid diverticulitis.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-12_STATdx_plain_Pneumoperitoneum12.jpg",
+      "annotatedFilename": "SDX-12_STATdx_annotated_Pneumoperitoneum12_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum12.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum12_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/10da93a6-8a29-4534-9e3c-1940a670b0d9?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/10da93a6-8a29-4534-9e3c-1940a670b0d9?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-08",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_10da93a6.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/10da93a6-8a29-4534-9e3c-1940a670b0d9?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 13,
+      "imageId": "a2b81fb5-19fb-43d5-a608-d146c6779038",
+      "caption": "Axial NECT demonstrates a massively dilated cecum with pneumatosis  <img src=\"arrow_WS.png\">  and multiple foci of free intraperitoneal air  <img src=\"arrow_WC.png\">, representing colonic ischemia with perforation.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-13_STATdx_plain_Pneumoperitoneum13.jpg",
+      "annotatedFilename": "SDX-13_STATdx_annotated_Pneumoperitoneum13_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum13.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum13_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/a2b81fb5-19fb-43d5-a608-d146c6779038?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/a2b81fb5-19fb-43d5-a608-d146c6779038?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-09",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_a2b81fb5.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/a2b81fb5-19fb-43d5-a608-d146c6779038?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 14,
+      "imageId": "37365f1a-18a1-4a8d-971c-a1d2adab4117",
+      "caption": "Axial CECT in a patient with multiple stab wounds demonstrates multiple foci of free air  <img src=\"arrow_WS.png\">  along with gas and ectopic enteric contrast  <img src=\"arrow_WC.png\">  immediately along the outer margin of the colon.  Colonic injury was discovered at surgery.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-14_STATdx_plain_Pneumoperitoneum14.jpg",
+      "annotatedFilename": "SDX-14_STATdx_annotated_Pneumoperitoneum14_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum14.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum14_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/37365f1a-18a1-4a8d-971c-a1d2adab4117?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/37365f1a-18a1-4a8d-971c-a1d2adab4117?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-10",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_37365f1a.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/37365f1a-18a1-4a8d-971c-a1d2adab4117?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 15,
+      "imageId": "01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7",
+      "caption": "Axial NECT in an asymptomatic patient demonstrates bubbly pneumatosis <img src=\"arrow_WS.png\"> in the right colon with several foci of adjacent free air <img src=\"arrow_WC.png\">. The patient was clinically doing well, and this was thought to represent benign pneumatosis.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-15_STATdx_plain_Pneumoperitoneum15.jpg",
+      "annotatedFilename": "SDX-15_STATdx_annotated_Pneumoperitoneum15_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum15.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum15_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-11",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_01b4ac15.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 16,
+      "imageId": "e5b4c65e-d5b3-4d72-9f89-4f9684cf1486",
+      "caption": "Coronal CECT in an asymptomatic patient on chronic steroid treatment for autoimmune disease demonstrates extensive benign pneumatosis <img src=\"arrow_WC.png\"> throughout the right colon with resultant perforation and small adjacent free air <img src=\"arrow_WS.png\">.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-16_STATdx_plain_Pneumoperitoneum16.jpg",
+      "annotatedFilename": "SDX-16_STATdx_annotated_Pneumoperitoneum16_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum16.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum16_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-12",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_e5b4c65e.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-17",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 17,
+      "imageId": "062587c0-791f-4f37-a124-d7b9f8269da3",
+      "caption": "Axial CECT in a patient with abdominal pain demonstrates an inflamed contrast-filled diverticulum <img src=\"arrow_WS.png\"> arising from a small bowel loop as well as a tiny focus of adjacent ectopic gas <img src=\"arrow_WC.png\">, compatible with small bowel diverticulitis.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-17_STATdx_plain_Pneumoperitoneum17.jpg",
+      "annotatedFilename": "SDX-17_STATdx_annotated_Pneumoperitoneum17_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum17.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum17_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/062587c0-791f-4f37-a124-d7b9f8269da3?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/062587c0-791f-4f37-a124-d7b9f8269da3?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-13",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_062587c0.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/062587c0-791f-4f37-a124-d7b9f8269da3?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 18,
+      "imageId": "d00cf77d-30e3-4630-bea7-27f5e8bc7a91",
+      "caption": "Axial CECT in a psychiatric patient demonstrates an intentionally ingested pin  <img src=\"arrow_WS.png\"> perforating through the small bowel into the adjacent abdominal wall. These findings required surgical intervention.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "plainFilename": "SDX-18_STATdx_plain_Pneumoperitoneum18.jpg",
+      "annotatedFilename": "SDX-18_STATdx_annotated_Pneumoperitoneum18_annot.jpg",
+      "sourceOriginalPlainFilename": "Pneumoperitoneum18.jpg",
+      "sourceOriginalAnnotatedFilename": "Pneumoperitoneum18_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?annotated=true&size=1000&quality=90",
+      "duplicateClassification": "exactDuplicateOfRadPrimer",
+      "duplicateOf": "RP-14",
+      "duplicateEvidence": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads.",
+      "caseClusterId": null,
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_d00cf77d.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    }
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and differential backbone. The article text in STATdx substantially overlaps the RadPrimer source; keep RadPrimer ordering and add STATdx only where it adds image depth or supplemental examples.",
+    "keepFromRadPrimer": [
+      "Canonical hierarchy and deck routing from metadata.json canonicalHierarchy/canonicalDeckPath.",
+      "Differential structure: common causes, less common causes, mimics, and neonatal alternative approach.",
+      "Core teaching facts for CT/radiograph sensitivity, amount/location of air, postoperative time course, and cause-specific clues.",
+      "RadPrimer images 1-14 as the primary canonical teaching set."
+    ],
+    "keepFromSTATdx": [
+      "Four distinct supplemental images: STATdx image 3 for thoracic barotrauma route, STATdx image 7 for radiographic feeding-tube/free-air example, STATdx images 10 and 11 as alternate perforated duodenal-ulcer examples.",
+      "Source-qualified captions and URLs for the supplemental images.",
+      "No replacement of RadPrimer hierarchy or deck path."
+    ],
+    "downweightOrSkip": [
+      "Do not use STATdx breadcrumb for routing.",
+      "Do not duplicate STATdx copies that share the same stable source image IDs as RadPrimer primary images in default downloads.",
+      "Do not generate Core Radiology claims unless a later run supplies auditable Core evidence."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "Exact duplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "radPrimerCoverageBySTATdx": {
+      "fullyCoversRadPrimerImageSet": true,
+      "method": "All 14 RadPrimer images have matching STATdx images with the same stable source image IDs and matching staged visual evidence.",
+      "gate": [
+        {
+          "radPrimerImageId": "RP-01",
+          "radPrimerLabel": "RadPrimer image 1",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-01",
+          "statdxLabel": "STATdx image 1",
+          "stableImageId": "3bdc6efb-08bd-4ee8-b0e7-c8fceae11151",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-02",
+          "radPrimerLabel": "RadPrimer image 2",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-02",
+          "statdxLabel": "STATdx image 2",
+          "stableImageId": "3c2fc85d-36fc-4621-9129-51517f3e3da8",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-03",
+          "radPrimerLabel": "RadPrimer image 3",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-04",
+          "statdxLabel": "STATdx image 4",
+          "stableImageId": "2eb653ec-dd8b-4b46-9a54-d9d68e49f834",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-04",
+          "radPrimerLabel": "RadPrimer image 4",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-05",
+          "statdxLabel": "STATdx image 5",
+          "stableImageId": "d806197e-e738-411a-abf6-d003275a8230",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-05",
+          "radPrimerLabel": "RadPrimer image 5",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-06",
+          "statdxLabel": "STATdx image 6",
+          "stableImageId": "81c0321d-8a31-42e6-9e7d-0f23b9361ce1",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-06",
+          "radPrimerLabel": "RadPrimer image 6",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-08",
+          "statdxLabel": "STATdx image 8",
+          "stableImageId": "6cc1bbb6-6d07-493d-8612-db4536549489",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-07",
+          "radPrimerLabel": "RadPrimer image 7",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-09",
+          "statdxLabel": "STATdx image 9",
+          "stableImageId": "692aaad2-3b27-47e0-a45d-636af4eba94a",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-08",
+          "radPrimerLabel": "RadPrimer image 8",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-12",
+          "statdxLabel": "STATdx image 12",
+          "stableImageId": "10da93a6-8a29-4534-9e3c-1940a670b0d9",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-09",
+          "radPrimerLabel": "RadPrimer image 9",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-13",
+          "statdxLabel": "STATdx image 13",
+          "stableImageId": "a2b81fb5-19fb-43d5-a608-d146c6779038",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-10",
+          "radPrimerLabel": "RadPrimer image 10",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-14",
+          "statdxLabel": "STATdx image 14",
+          "stableImageId": "37365f1a-18a1-4a8d-971c-a1d2adab4117",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-11",
+          "radPrimerLabel": "RadPrimer image 11",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-15",
+          "statdxLabel": "STATdx image 15",
+          "stableImageId": "01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-12",
+          "radPrimerLabel": "RadPrimer image 12",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-16",
+          "statdxLabel": "STATdx image 16",
+          "stableImageId": "e5b4c65e-d5b3-4d72-9f89-4f9684cf1486",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-13",
+          "radPrimerLabel": "RadPrimer image 13",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-17",
+          "statdxLabel": "STATdx image 17",
+          "stableImageId": "062587c0-791f-4f37-a124-d7b9f8269da3",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-14",
+          "radPrimerLabel": "RadPrimer image 14",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-18",
+          "statdxLabel": "STATdx image 18",
+          "stableImageId": "d00cf77d-30e3-4630-bea7-27f5e8bc7a91",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        }
+      ]
+    },
+    "caseClusterGuardrails": {
+      "policy": "Treat same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse image groups as atomic. Do not split a cluster unless the report documents why the split is safe.",
+      "observedClusters": [
+        {
+          "clusterId": "postoperative_rectal_anastomotic_leak_cluster",
+          "primaryKept": [
+            "RP-03",
+            "RP-04"
+          ],
+          "duplicateArchived": [
+            "SDX-04",
+            "SDX-05"
+          ],
+          "split": "no",
+          "reason": "The RadPrimer cluster was retained intact and the equivalent STATdx duplicate cluster was archived intact."
+        }
+      ],
+      "intentionalSplits": []
+    },
+    "imageDownloadPlan": {
+      "primaryTeachingSet": [
+        {
+          "masterImageId": "RP-01",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 1,
+          "plainFilename": "RP-01_RadPrimer_plain_Pneumoperitoneum1.jpg",
+          "annotatedFilename": "RP-01_RadPrimer_annotated_Pneumoperitoneum1_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?style=xlarge&annotated=true",
+          "usedFor": [
+            "postoperativeNormal",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "plainFilename": "RP-02_RadPrimer_plain_Pneumoperitoneum2.jpg",
+          "annotatedFilename": "RP-02_RadPrimer_annotated_Pneumoperitoneum2_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/3c2fc85d-36fc-4621-9129-51517f3e3da8?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/3c2fc85d-36fc-4621-9129-51517f3e3da8?style=xlarge&annotated=true",
+          "usedFor": [
+            "barotrauma",
+            "retroperitonealAndIntraperitonealGas",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "plainFilename": "RP-03_RadPrimer_plain_Pneumoperitoneum3.jpg",
+          "annotatedFilename": "RP-03_RadPrimer_annotated_Pneumoperitoneum3_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?style=xlarge&annotated=true",
+          "usedFor": [
+            "anastomoticLeakCluster",
+            "greaterThanExpectedPostoperativeFreeAir",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-04",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 4,
+          "plainFilename": "RP-04_RadPrimer_plain_Pneumoperitoneum4.jpg",
+          "annotatedFilename": "RP-04_RadPrimer_annotated_Pneumoperitoneum4_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/d806197e-e738-411a-abf6-d003275a8230?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/d806197e-e738-411a-abf6-d003275a8230?style=xlarge&annotated=true",
+          "usedFor": [
+            "anastomoticLeakCluster",
+            "focalPerianastomoticGas",
+            "procedureContext"
+          ]
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 5,
+          "plainFilename": "RP-05_RadPrimer_plain_Pneumoperitoneum5.jpg",
+          "annotatedFilename": "RP-05_RadPrimer_annotated_Pneumoperitoneum5_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?style=xlarge&annotated=true",
+          "usedFor": [
+            "duodenalPerforationAfterERCP",
+            "peritonealRetroperitonealSubcutaneousGas",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 6,
+          "plainFilename": "RP-06_RadPrimer_plain_Pneumoperitoneum6.jpg",
+          "annotatedFilename": "RP-06_RadPrimer_annotated_Pneumoperitoneum6_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/6cc1bbb6-6d07-493d-8612-db4536549489?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/6cc1bbb6-6d07-493d-8612-db4536549489?style=xlarge&annotated=true",
+          "usedFor": [
+            "perforatedDuodenalUlcer",
+            "entericContrastLeak",
+            "freeAirAndAscites",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-07",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 7,
+          "plainFilename": "RP-07_RadPrimer_plain_Pneumoperitoneum7.jpg",
+          "annotatedFilename": "RP-07_RadPrimer_annotated_Pneumoperitoneum7_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/692aaad2-3b27-47e0-a45d-636af4eba94a?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/692aaad2-3b27-47e0-a45d-636af4eba94a?style=xlarge&annotated=true",
+          "usedFor": [
+            "perforatedGastricUlcer",
+            "lesserCurvatureInflammation",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 8,
+          "plainFilename": "RP-08_RadPrimer_plain_Pneumoperitoneum8.jpg",
+          "annotatedFilename": "RP-08_RadPrimer_annotated_Pneumoperitoneum8_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/10da93a6-8a29-4534-9e3c-1940a670b0d9?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/10da93a6-8a29-4534-9e3c-1940a670b0d9?style=xlarge&annotated=true",
+          "usedFor": [
+            "perforatedSigmoidDiverticulitis",
+            "coronalPattern",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-09",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 9,
+          "plainFilename": "RP-09_RadPrimer_plain_Pneumoperitoneum9.jpg",
+          "annotatedFilename": "RP-09_RadPrimer_annotated_Pneumoperitoneum9_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/a2b81fb5-19fb-43d5-a608-d146c6779038?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/a2b81fb5-19fb-43d5-a608-d146c6779038?style=xlarge&annotated=true",
+          "usedFor": [
+            "colonicIschemiaWithPerforation",
+            "pneumatosis",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-10",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 10,
+          "plainFilename": "RP-10_RadPrimer_plain_Pneumoperitoneum10.jpg",
+          "annotatedFilename": "RP-10_RadPrimer_annotated_Pneumoperitoneum10_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/37365f1a-18a1-4a8d-971c-a1d2adab4117?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/37365f1a-18a1-4a8d-971c-a1d2adab4117?style=xlarge&annotated=true",
+          "usedFor": [
+            "penetratingTraumaColonInjury",
+            "ectopicEntericContrast",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-11",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 11,
+          "plainFilename": "RP-11_RadPrimer_plain_Pneumoperitoneum11.jpg",
+          "annotatedFilename": "RP-11_RadPrimer_annotated_Pneumoperitoneum11_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?style=xlarge&annotated=true",
+          "usedFor": [
+            "benignPneumatosis",
+            "incidentalFreeAir",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "RP-12",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 12,
+          "plainFilename": "RP-12_RadPrimer_plain_Pneumoperitoneum12.jpg",
+          "annotatedFilename": "RP-12_RadPrimer_annotated_Pneumoperitoneum12_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?style=xlarge&annotated=true",
+          "usedFor": [
+            "benignPneumatosisSteroidUse",
+            "coronalPattern",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "RP-13",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 13,
+          "plainFilename": "RP-13_RadPrimer_plain_Pneumoperitoneum13.jpg",
+          "annotatedFilename": "RP-13_RadPrimer_annotated_Pneumoperitoneum13_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/062587c0-791f-4f37-a124-d7b9f8269da3?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/062587c0-791f-4f37-a124-d7b9f8269da3?style=xlarge&annotated=true",
+          "usedFor": [
+            "smallBowelDiverticulitis",
+            "tinyAdjacentEctopicGas",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "RP-14",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 14,
+          "plainFilename": "RP-14_RadPrimer_plain_Pneumoperitoneum14.jpg",
+          "annotatedFilename": "RP-14_RadPrimer_annotated_Pneumoperitoneum14_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?style=xlarge&annotated=true",
+          "usedFor": [
+            "foreignBodyPerforation",
+            "surgicalFinding",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-03",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 3,
+          "plainFilename": "SDX-03_STATdx_plain_Pneumoperitoneum3.jpg",
+          "annotatedFilename": "SDX-03_STATdx_annotated_Pneumoperitoneum3_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/5546fa86-dd9e-4177-9767-dace234f980e?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/5546fa86-dd9e-4177-9767-dace234f980e?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "barotraumaThoracicRoute",
+            "pneumothoraxPneumomediastinumContext",
+            "supplementalDepth",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-07",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 7,
+          "plainFilename": "SDX-07_STATdx_plain_Pneumoperitoneum7.jpg",
+          "annotatedFilename": "SDX-07_STATdx_annotated_Pneumoperitoneum7_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/569a51bb-bc2f-45fb-9dc4-8d2d23f37713?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/569a51bb-bc2f-45fb-9dc4-8d2d23f37713?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "feedingTubeComplication",
+            "radiographMassiveFreeAir",
+            "modalityVariant",
+            "supplementalDepth"
+          ]
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "plainFilename": "SDX-10_STATdx_plain_Pneumoperitoneum10.jpg",
+          "annotatedFilename": "SDX-10_STATdx_annotated_Pneumoperitoneum10_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/6ae4d72b-13b3-4471-8942-e6cd181ab84c?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ae4d72b-13b3-4471-8942-e6cd181ab84c?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "perforatedDuodenalUlcer",
+            "alternateExample",
+            "severityVariant",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "plainFilename": "SDX-11_STATdx_plain_Pneumoperitoneum11.jpg",
+          "annotatedFilename": "SDX-11_STATdx_annotated_Pneumoperitoneum11_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/92c3735f-76cf-49ba-8ac1-2a63c6c12d79?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/92c3735f-76cf-49ba-8ac1-2a63c6c12d79?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "perforatedDuodenalUlcer",
+            "alternateExample",
+            "adjacentDuodenalBulbGas",
+            "recognitionReinforcement"
+          ]
+        }
+      ],
+      "archiveOptionalDuplicates": [
+        {
+          "masterImageId": "SDX-01",
+          "duplicateOf": "RP-01",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-01_STATdx_plain_Pneumoperitoneum1.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-02",
+          "duplicateOf": "RP-02",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-02_STATdx_plain_Pneumoperitoneum2.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3c2fc85d-36fc-4621-9129-51517f3e3da8?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-04",
+          "duplicateOf": "RP-03",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-04_STATdx_plain_Pneumoperitoneum4.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-05",
+          "duplicateOf": "RP-04",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-05_STATdx_plain_Pneumoperitoneum5.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d806197e-e738-411a-abf6-d003275a8230?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-06",
+          "duplicateOf": "RP-05",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-06_STATdx_plain_Pneumoperitoneum6.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-08",
+          "duplicateOf": "RP-06",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-08_STATdx_plain_Pneumoperitoneum8.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/6cc1bbb6-6d07-493d-8612-db4536549489?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-09",
+          "duplicateOf": "RP-07",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-09_STATdx_plain_Pneumoperitoneum9.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/692aaad2-3b27-47e0-a45d-636af4eba94a?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-12",
+          "duplicateOf": "RP-08",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-12_STATdx_plain_Pneumoperitoneum12.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/10da93a6-8a29-4534-9e3c-1940a670b0d9?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-13",
+          "duplicateOf": "RP-09",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-13_STATdx_plain_Pneumoperitoneum13.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/a2b81fb5-19fb-43d5-a608-d146c6779038?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-14",
+          "duplicateOf": "RP-10",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-14_STATdx_plain_Pneumoperitoneum14.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/37365f1a-18a1-4a8d-971c-a1d2adab4117?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-15",
+          "duplicateOf": "RP-11",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-15_STATdx_plain_Pneumoperitoneum15.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-16",
+          "duplicateOf": "RP-12",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-16_STATdx_plain_Pneumoperitoneum16.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-17",
+          "duplicateOf": "RP-13",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-17_STATdx_plain_Pneumoperitoneum17.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/062587c0-791f-4f37-a124-d7b9f8269da3?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-18",
+          "duplicateOf": "RP-14",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-18_STATdx_plain_Pneumoperitoneum18.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        }
+      ],
+      "generatorInstruction": "Download only selectedPrimaryImageIds by default using source-qualified filenames. Keep archiveOptionalImageIds available only for audit/recovery, not routine cards or lecture."
+    },
+    "generatorInstructions": [
+      "Use source-qualified human labels in narrative prose, such as RadPrimer image 5 or STATdx image 10.",
+      "Keep short IDs such as RP-05 and SDX-10 in registry, manifest, filenames, and traceability fields.",
+      "Preserve procedure and cluster context, especially the postoperative anastomotic leak pair and the duodenal-ulcer alternate examples.",
+      "Use images for recognition reinforcement; do not archive distinct examples merely because they teach the same diagnosis."
+    ]
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-13",
+    "RP-14",
+    "SDX-03",
+    "SDX-07",
+    "SDX-10",
+    "SDX-11"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-08",
+    "SDX-09",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18"
+  ]
+}

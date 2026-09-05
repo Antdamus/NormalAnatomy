@@ -1,0 +1,206 @@
+{
+  "articleTitle": "Nabothian Cyst",
+  "sourceComparisonFolder": "RadPrimerSourceComparison/Nabothian_Cyst",
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Female Pelvis Basic",
+      "Nabothian Cyst"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Ultrasound",
+      "Female Pelvis Basic",
+      "Nabothian Cyst"
+    ],
+    "deckName": "Corebook::Ultrasound::Female Pelvis Basic::Nabothian Cyst",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Female Pelvis Basic",
+    "Nabothian Cyst"
+  ],
+  "imageRegistry": [
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "imageId": "84b1fba1-ba5f-4ab9-803d-3a8dd89a98b0",
+      "baseName": "Nabothian_Cyst1",
+      "caption": "Sagittal imaging through the cervix shows multiple superficial nabothian cysts in close association with the endocervical canal. A separate echogenic line <img src=\"arrow_WS.png\"> depicts the canal. Cine views (not shown) better delineate this separation. C-section scar is present <img src=\"arrow_CC.png\">.",
+      "plainFilename": "Nabothian_Cyst1.jpg",
+      "annotatedFilename": "Nabothian_Cyst1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/84b1fba1-ba5f-4ab9-803d-3a8dd89a98b0?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/84b1fba1-ba5f-4ab9-803d-3a8dd89a98b0?style=xlarge&annotated=true",
+      "masterImageId": "RP-01",
+      "filename": "Nabothian_Cyst1.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_84b1fba1.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/84b1fba1-ba5f-4ab9-803d-3a8dd89a98b0?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "imageId": "fc2d1f01-28b2-4357-9cc8-911734d01fbd",
+      "baseName": "Nabothian_Cyst2",
+      "caption": "Sagittal endovaginal image through the cervix shows multiple Nabothian cysts <img src=\"arrow_WS.png\">. Internal echoes are present within the larger cysts <img src=\"arrow_CC.png\">, consistent with hemorrhage or debris. Posterior acoustic enhancement is also present <img src=\"arrow_WO.png\">.",
+      "plainFilename": "Nabothian_Cyst2.jpg",
+      "annotatedFilename": "Nabothian_Cyst2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/fc2d1f01-28b2-4357-9cc8-911734d01fbd?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/fc2d1f01-28b2-4357-9cc8-911734d01fbd?style=xlarge&annotated=true",
+      "masterImageId": "RP-02",
+      "filename": "Nabothian_Cyst2.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_fc2d1f01.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/fc2d1f01-28b2-4357-9cc8-911734d01fbd?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "imageId": "94f469a5-19d7-4482-9071-ee58f9ddf2d8",
+      "baseName": "Nabothian_Cyst3",
+      "caption": "Longitudinal US of a retroverted uterus shows multiple simple nabothian cysts <img src=\"arrow_WS.png\">. As in this case, multiple cysts can make visualization of the cervical canal <img src=\"arrow_CS.png\"> difficult.",
+      "plainFilename": "Nabothian_Cyst3.jpg",
+      "annotatedFilename": "Nabothian_Cyst3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/94f469a5-19d7-4482-9071-ee58f9ddf2d8?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/94f469a5-19d7-4482-9071-ee58f9ddf2d8?style=xlarge&annotated=true",
+      "masterImageId": "RP-03",
+      "filename": "Nabothian_Cyst3.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_94f469a5.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/94f469a5-19d7-4482-9071-ee58f9ddf2d8?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "imageId": "6da02576-8185-41e1-9ce1-a1a6a8a11afb",
+      "baseName": "Nabothian_Cyst4",
+      "caption": "Transverse transvaginal US shows a simple nabothian cyst <img src=\"arrow_WS.png\"> at the lateral margin of the cervix. Real-time imaging helped confirm the location within the cervical stroma; however, this image demonstrates the potential for misdiagnosis as an ovarian follicle. Visualization of a separate ovary is essential.",
+      "plainFilename": "Nabothian_Cyst4.jpg",
+      "annotatedFilename": "Nabothian_Cyst4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/6da02576-8185-41e1-9ce1-a1a6a8a11afb?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/6da02576-8185-41e1-9ce1-a1a6a8a11afb?style=xlarge&annotated=true",
+      "masterImageId": "RP-04",
+      "filename": "Nabothian_Cyst4.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_6da02576.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/6da02576-8185-41e1-9ce1-a1a6a8a11afb?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    }
+  ],
+  "imageEvidence": {
+    "folder": "image_evidence/RadPrimer",
+    "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+    "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+    "entries": [
+      {
+        "masterImageId": "RP-01",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "imageId": "84b1fba1-ba5f-4ab9-803d-3a8dd89a98b0",
+        "baseName": "Nabothian_Cyst1",
+        "caption": "Sagittal imaging through the cervix shows multiple superficial nabothian cysts in close association with the endocervical canal. A separate echogenic line <img src=\"arrow_WS.png\"> depicts the canal. Cine views (not shown) better delineate this separation. C-section scar is present <img src=\"arrow_CC.png\">.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/84b1fba1-ba5f-4ab9-803d-3a8dd89a98b0?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_84b1fba1.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "imageId": "fc2d1f01-28b2-4357-9cc8-911734d01fbd",
+        "baseName": "Nabothian_Cyst2",
+        "caption": "Sagittal endovaginal image through the cervix shows multiple Nabothian cysts <img src=\"arrow_WS.png\">. Internal echoes are present within the larger cysts <img src=\"arrow_CC.png\">, consistent with hemorrhage or debris. Posterior acoustic enhancement is also present <img src=\"arrow_WO.png\">.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/fc2d1f01-28b2-4357-9cc8-911734d01fbd?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_fc2d1f01.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "imageId": "94f469a5-19d7-4482-9071-ee58f9ddf2d8",
+        "baseName": "Nabothian_Cyst3",
+        "caption": "Longitudinal US of a retroverted uterus shows multiple simple nabothian cysts <img src=\"arrow_WS.png\">. As in this case, multiple cysts can make visualization of the cervical canal <img src=\"arrow_CS.png\"> difficult.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/94f469a5-19d7-4482-9071-ee58f9ddf2d8?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_94f469a5.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "imageId": "6da02576-8185-41e1-9ce1-a1a6a8a11afb",
+        "baseName": "Nabothian_Cyst4",
+        "caption": "Transverse transvaginal US shows a simple nabothian cyst <img src=\"arrow_WS.png\"> at the lateral margin of the cervix. Real-time imaging helped confirm the location within the cervical stroma; however, this image demonstrates the potential for misdiagnosis as an ovarian follicle. Visualization of a separate ovary is essential.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/6da02576-8185-41e1-9ce1-a1a6a8a11afb?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_6da02576.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      }
+    ]
+  }
+}

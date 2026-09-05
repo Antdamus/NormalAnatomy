@@ -1,12 +1,14 @@
 ENTITY DEFINITION CARD RULES
 
-Definition cards are selective.
+Definition cards are opt-in by default.
 
 They are NOT mandatory for every new disease/entity name.
 
-Generate a definition card ONLY when the definition itself is high-yield.
+Do NOT auto-generate standalone definition cards during routine pathology card generation.
 
-Definition cards SHOULD be generated when the source definition establishes:
+Generate a definition card ONLY when the user explicitly requests definition cards and the definition itself is high-yield.
+
+When the user explicitly requests definition cards, they MAY be generated when the source definition establishes:
 - a formal diagnostic criterion or threshold
 - a named syndrome, eponym, or operational diagnosis whose definition is tested
 - a classification boundary that changes diagnosis, risk, reporting, or management
@@ -48,12 +50,12 @@ Before generating any definition card, ask:
 
 "Would recalling this definition change diagnosis, differential ranking, reporting, risk stratification, or management?"
 
-If YES:
+If YES and the user explicitly requested definition cards:
 - generate the definition card
 
-If NO:
+If NO, or if definition cards were not explicitly requested:
 - do NOT generate the definition card
-- preserve the fact in the summary only, unless it belongs better in a mechanism or high-yield card
+- preserve the fact in the UNKNOWN back-side explanation or summary only, unless it belongs better in a mechanism or non-definition high-yield card
 
 -----------------------------------------------------
 
@@ -121,7 +123,7 @@ No narrative paragraphs.
 FAILURE CONDITION
 
 If a source-emphasized definition, diagnostic criterion, named syndrome definition, or important boundary definition is present and no definition card is generated:
-This is a structural failure.
+This is NOT a structural failure unless the user explicitly requested definition cards.
 
 If an ordinary disease/entity name is introduced but no high-yield definition boundary exists:
 Omitting the definition card is correct and is NOT a structural failure.

@@ -206,6 +206,25 @@ Do not let one catchy figure dominate the narrative if the article teaches much 
 
 ---
 
+## ARTICLE-ONLY QUALITY PARITY RULE
+
+If the source package is built from the current article rather than from a fused master source, the narrative must still meet the same craft standard expected from a master-source narration.
+
+Article-only means fewer source inputs, not lower quality.
+
+In article-only mode:
+
+* perform a full pass over the provided article outline before choosing the normal-anatomy teaching structure
+* use the article's own hierarchy, emphasis, captions, and image set as the source-selection plan
+* preserve small source-emphasized details when they improve localization, modality recognition, normal-variant discrimination, overcall prevention, or scan review
+* do not let the output become a generic anatomy overview or a caption-only tour
+* do not add outside reference material, project-file memory, or book-derived background just to make the lecture feel fuller
+* if the article is thin, acknowledge the limitation through concise source-faithful teaching rather than padding
+
+The finished lecture should be judged by the same standard as a fused-source lecture for organization, image completeness, source fidelity, spoken flow, and teaching value. The difference is only the evidence base.
+
+---
+
 ## ORGANIZING SPINE RULE
 
 Before writing the narrative, infer the article's best teaching structure.
@@ -282,6 +301,31 @@ This is mandatory.
 * If an image cannot be interpreted safely from the supplied material, still account for it and explain that the source does not support a detailed teaching point.
 
 Only omit an image if the user explicitly says to exclude it.
+
+---
+
+## REPETITIVE / DUPLICATE IMAGE NARRATION RULE
+
+Some fused-source packages intentionally keep near-duplicate, recognition-reinforcement, alternate-plane, alternate-sequence, alternate-patient, or alternate-modality images in the primary image set.
+
+These images must still be accounted for, but the spoken lecture must not make the learner hear the same mini-lecture repeatedly.
+
+When the image registry, manifest, source-selection plan, captions, or visual similarity suggests that several images teach the same normal landmark, relationship, variant, pitfall, or review step:
+
+* first name the shared anatomy bucket or review maneuver once
+* then walk the learner through the repeated images as a comparison set or run
+* explicitly state what is new, different, confirmatory, or plane/sequence-specific about each image
+* if there is no meaningful new finding, say briefly that the image is included as recognition reinforcement and move on
+* do not repeat the same anatomy definition, modality rule, or localization explanation for each repeated image
+* do not omit any retained primary image solely because it is repetitive
+
+If the source-selection plan says an image is an exact duplicate or `archiveOptionalDuplicate`, do not give it a full spoken walkthrough unless the user specifically asks for archived/recovery images.
+Instead, mention once that exact duplicate/archive images were not used for the main lecture and keep them out of the main image arc.
+
+If the image is retained as `primaryTeachingSet`, `nearDuplicate`, `recognitionReinforcement`, `alternateExample`, `modalityVariant`, `planeVariant`, or `sequenceVariant`, it belongs in the lecture, but its narration should be compact and contrastive rather than repetitive.
+
+Before finalizing, scan the narrative for back-to-back image paragraphs that say essentially the same thing.
+Repair them by merging into one comparison paragraph that names every image and preserves the unique arrow/callout details for each image.
 
 ---
 
@@ -394,6 +438,8 @@ Rules:
 * If multiple arrows are present, describe them in the order that best supports image inspection: usually orientation landmark first, then the target structure, then related boundaries or pitfalls.
 * If the caption has arrow tags but the surrounding caption text does not clearly state what an arrow marks, do not invent a structure. Use cautious language such as "the marked callout corresponds to the caption-described landmark."
 * If an image has arrows, the local image explanation should usually name what each arrow/callout is showing before moving on to broader anatomy facts.
+* If repetitive images are grouped together, still verbalize each image's caption-supported arrows/callouts before compressing the shared teaching point.
+* If the caption contains one or more `<img src="arrow_...">` tags and the draft narrative does not include a speech-friendly arrow/callout phrase for that image or grouped run, the output is incomplete and must be repaired before finalizing.
 
 The goal is that during audio playback the learner hears exactly how the arrows connect to the visible landmarks.
 
@@ -1329,6 +1375,7 @@ Create a **guided normal anatomy mastery narrative** that:
 * clearly distinguishes normal, variant, mimic, and abnormal
 * walks through every provided image without skipping any image
 * verbalizes caption-supported arrows and callouts in speech-friendly language
+* compresses repetitive or near-duplicate primary images into contrastive comparison sets instead of repeating the same mini-lecture
 * organizes images intelligently and may reorder them when that improves the teaching spine
 * uses only one spoken source-qualified reference per fused-source image, such as `STATdx image thirty five`, without also reading `SDX thirty five`
 * uses controlled grouping inference when appropriate
@@ -1336,7 +1383,7 @@ Create a **guided normal anatomy mastery narrative** that:
 * integrates important non-image article facts seamlessly at the point where they matter
 * prepares the learner for later Anki reinforcement
 
-Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that arrows/callouts have been verbalized when captions support them, that source-qualified images are named cleanly in the audio, that the article has been rebuilt around a clear organizing framework, and that inferred image links are not overstated.
+Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that every caption-supported arrow/callout has been verbalized when arrow tags are present, that repetitive retained images have been grouped into compact contrastive comparison sets rather than repeated as separate mini-lectures, that exact duplicate/archive images are not over-narrated unless explicitly requested, that source-qualified images are named cleanly in the audio, that the article has been rebuilt around a clear organizing framework, and that inferred image links are not overstated.
 
 Do not ask for clarification unless the input is structurally unusable.
 When uncertain, be transparent rather than overconfident.

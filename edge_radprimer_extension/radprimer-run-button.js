@@ -611,6 +611,31 @@
         .master-card .checks {
           grid-template-columns: minmax(0, 480px);
         }
+        .wake-fallback {
+          margin-top: 14px;
+          padding: 12px;
+          border-radius: 14px;
+          background: #ffffff;
+          border: 1px solid rgba(147, 197, 253, .7);
+        }
+        .wake-fallback[hidden] {
+          display: none;
+        }
+        .wake-fallback textarea {
+          min-height: 170px;
+          font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+          font-size: 12px;
+          line-height: 1.35;
+        }
+        .wake-actions {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-top: 10px;
+        }
+        .wake-actions .ghost {
+          flex: 1 1 180px;
+        }
         @media (max-width: 860px) {
           .modal-body { grid-template-columns: 1fr; }
           .master-actions { grid-template-columns: 1fr; }
@@ -726,6 +751,14 @@
                   <div class="wide master-actions">
                     <button class="ghost import-master-source" type="button">Import master source</button>
                     <button class="ghost show-master-source" type="button">Show imported source</button>
+                  </div>
+                  <div class="wide wake-fallback" data-role="masterWakeFallback" hidden>
+                    <label>Codex wake-up message<textarea data-role="masterWakeText" readonly spellcheck="false"></textarea></label>
+                    <div class="wake-actions">
+                      <button class="ghost copy-master-wake" type="button">Copy wake-up message</button>
+                      <button class="ghost select-master-wake" type="button">Select message</button>
+                    </div>
+                    <span class="hint" data-role="masterWakeHint">This is also saved in the master-source bundle as codex_wake_message.txt.</span>
                   </div>
                   <span class="hint wide">Best import is master_source_import.json. Once imported, narrative and card runs use the fused source instead of the live page extraction.</span>
                 </div>
@@ -896,6 +929,22 @@
     });
     shadow.querySelector(".import-master-source").addEventListener("click", () => importMasterSource(host));
     shadow.querySelector(".show-master-source").addEventListener("click", () => showMasterSource(host));
+    shadow.querySelector(".copy-master-wake").addEventListener("click", async () => {
+      const text = shadow.querySelector('[data-role="masterWakeText"]')?.value || "";
+      const copied = await tryCopyText(text);
+      setStatus(
+        host,
+        copied ? "Wake Message" : "Clipboard Blocked",
+        copied ? "Wake-up message copied again." : "Clipboard copy failed. Use Select message, then copy manually.",
+        !copied
+      );
+    });
+    shadow.querySelector(".select-master-wake").addEventListener("click", () => {
+      const textarea = shadow.querySelector('[data-role="masterWakeText"]');
+      textarea?.focus();
+      textarea?.select();
+      setStatus(host, "Wake Message", "Wake-up message selected. Copy it manually if Remote Desktop blocks automatic clipboard transfer.");
+    });
 
     return host;
   };
@@ -1415,6 +1464,54 @@
     });
   };
 
+  const tryCopyText = async (text) => {
+    if (!text) return false;
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (error) {
+      console.warn("[RadPrimer Runner] Clipboard copy failed.", error);
+      return false;
+    }
+  };
+
+  const getCodexWakeMessage = (response) =>
+    String(response?.codexWakeMessage || response?.clipboardText || "").trim();
+
+  const logCodexWakeMessage = (text) => {
+    if (!text) return;
+    console.log(
+      [
+        "----- BEGIN CODEX WAKE-UP MESSAGE -----",
+        text,
+        "----- END CODEX WAKE-UP MESSAGE -----"
+      ].join("\n")
+    );
+  };
+
+  const showMasterWakeFallback = (host, response, wakeMessage, copied) => {
+    if (!wakeMessage) return;
+    const fallback = host.shadowRoot.querySelector('[data-role="masterWakeFallback"]');
+    const textarea = host.shadowRoot.querySelector('[data-role="masterWakeText"]');
+    const hint = host.shadowRoot.querySelector('[data-role="masterWakeHint"]');
+    if (!fallback || !textarea) return;
+    textarea.value = wakeMessage;
+    const downloadFolder = response?.bundle?.downloadFolder || "the master-source bundle";
+    const filename = response?.bundle?.files?.codexWakeMessage || "codex_wake_message.txt";
+    if (hint) {
+      hint.textContent = [
+        copied
+          ? "Clipboard copy was attempted successfully, but Remote Desktop may still block transfer to your local clipboard."
+          : "Clipboard copy failed or was blocked.",
+        `Manual fallback: copy from this box, this page console, or ${downloadFolder}\\${filename}.`
+      ].join(" ");
+    }
+    fallback.hidden = false;
+    const details = fallback.closest("details");
+    if (details) details.open = true;
+    openModal(host);
+  };
+
   const exportAuditSourceOnly = (host) => {
     setRunning(host, true);
     setStatus(host, "Audit TSV", "Preparing source materials for an existing generated TSV...");
@@ -1495,10 +1592,23 @@
         setRunning(host, false);
         return;
       }
-      try {
-        if (response.clipboardText) await navigator.clipboard.writeText(response.clipboardText);
-      } catch {}
-      setStatus(host, "Master Source Ready", response.message || "Master source request bundle prepared.");
+      const wakeMessage = getCodexWakeMessage(response);
+      const copied = await tryCopyText(wakeMessage);
+      logCodexWakeMessage(wakeMessage);
+      showMasterWakeFallback(host, response, wakeMessage, copied);
+      setStatus(
+        host,
+        "Master Source Ready",
+        [
+          response.message || "Master source request bundle prepared.",
+          response.bundle?.downloadFolder ? `Bundle: ${response.bundle.downloadFolder}` : "",
+          wakeMessage
+            ? copied
+              ? "Wake-up message copied, shown in the modal, and printed to the console."
+              : "Wake-up message shown in the modal and printed to the console because clipboard copy failed."
+            : "No wake-up message was returned."
+        ].filter(Boolean).join("\n")
+      );
       setRunning(host, false);
       });
     };
@@ -1531,6 +1641,7 @@
           `Images: ${source.imageCount ?? 0}`,
           `Downloadable image files: ${source.downloadFileCount ?? 0}`,
           `Characters: ${source.outputChars ?? 0}`,
+          source.storageArea === "session" ? "Storage: browser session fallback." : "Storage: browser local cache.",
           "Use imported master source is now enabled."
         ].join("\n")
       );

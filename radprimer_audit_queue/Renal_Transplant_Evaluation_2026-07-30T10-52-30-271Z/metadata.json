@@ -1,0 +1,500 @@
+{
+  "createdAt": "2026-07-30T10:52:30.271Z",
+  "articleTitle": "Renal Transplant Evaluation",
+  "sourceUrl": "https://app.radprimer.com/document/dd6ca3d1-c9a5-423b-8f0b-621dc04dd0d5/lesson/76b203be-e024-4b94-b1a4-92cdedceb852",
+  "engine": "pathology",
+  "mode": "narrative",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "masterImageIds": [],
+  "sourceQualifiedImages": [],
+  "cases": [
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7
+    ],
+    [
+      8
+    ],
+    [
+      9
+    ],
+    [
+      10
+    ]
+  ],
+  "totalImagesOnPage": 10,
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Nuclear Medicine",
+    "Genitourinary Basic",
+    "Renal Transplant Evaluation"
+  ],
+  "outputChars": 62192,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Testicular Torsion — Final Export\n\nCore validation passed using Core Radiology, Second Edition, with relevant coverage on GU pages 285–288 and Nuclear Medicine page 485. Core-supported material included the time-dependent ultrasound pattern, bell-clapper mechanism, segmental-infarction and epididymitis discriminators, salvage timing, and radionuclide appearance.\n\nThe final deck contains 59 cards and exactly 59 TSV lines, each with 22 columns, no header row, no embedded line breaks, and a blank Tags column:\n\n- 25 Primary UNKNOWN cards covering all 25 atomic cases and all 31 selected images\n- 6 pattern-distinct Differential Drills\n- 1 Definition card\n- 6 Mechanism cards\n- 5 Boards Trap cards\n- 2 Epidemiology cards\n- 14 additional High-Yield cards\n\nCaption-integrity, source-provenance, trigger-isolation, image-cluster, ultrasound, MRI, nuclear-medicine, diagnostic-performance, structural-framework, and salvage-outcome gates passed. No external literature was used.\n\nThe ZIP contains the TSV, source-qualified case metadata, validation reports, image URL manifest, IMaios gap audit, and a Windows PowerShell image downloader. The actual image binaries are not embedded in the ZIP; running download_images.ps1 retrieves the 31 plain and 31 annotated files using the prescribed RP-/SDX-qualified filenames.",
+  "coreEvidence": {
+    "status": "NOT_PROVIDED",
+    "provided": false,
+    "chars": 435,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Nuclear Medicine",
+      "Genitourinary Basic",
+      "Renal Transplant Evaluation"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Nuclear Medicine",
+      "Genitourinary Basic",
+      "Renal Transplant Evaluation"
+    ],
+    "deckName": "Corebook::Nuclear Medicine::Genitourinary Basic::Renal Transplant Evaluation",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [
+    {
+      "filename": "Renal_Transplant_Evaluation1.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/38429612-7dcd-4c5b-89c0-1e580b14f62d?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation1_annot.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/38429612-7dcd-4c5b-89c0-1e580b14f62d?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation2.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/1b116f0b-4f12-46c3-9a9c-72dbee81750f?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation2_annot.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/1b116f0b-4f12-46c3-9a9c-72dbee81750f?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation3.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/b2fef1a0-f736-4df6-938c-d49730da4e07?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation3_annot.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/b2fef1a0-f736-4df6-938c-d49730da4e07?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation4.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/3d543843-5fe1-45c2-94e4-6497624f38bb?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation4_annot.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/3d543843-5fe1-45c2-94e4-6497624f38bb?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation5.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/606a362d-7d43-4430-9223-f0df1919a159?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation5_annot.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/606a362d-7d43-4430-9223-f0df1919a159?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation6.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/d6d6702f-82a1-4727-9a7e-e8fd766a8c61?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation6_annot.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/d6d6702f-82a1-4727-9a7e-e8fd766a8c61?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation7.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/c034b020-36f1-4046-a119-abd61312c48c?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation7_annot.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/c034b020-36f1-4046-a119-abd61312c48c?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation8.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/ab2c1593-fad0-4391-b18e-74146a7c31df?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation8_annot.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/ab2c1593-fad0-4391-b18e-74146a7c31df?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation9.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/f7145feb-bc19-4745-bb60-818a4e07c358?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation9_annot.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/f7145feb-bc19-4745-bb60-818a4e07c358?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation10.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/4b3a6435-c5a6-4e3c-a680-3fa43d2c141c?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Renal_Transplant_Evaluation10_annot.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/4b3a6435-c5a6-4e3c-a680-3fa43d2c141c?style=xlarge&annotated=true"
+    }
+  ],
+  "imageRegistry": [
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "imageId": "38429612-7dcd-4c5b-89c0-1e580b14f62d",
+      "baseName": "Renal_Transplant_Evaluation1",
+      "caption": "Whole-body scan from a Tc-99m MDP bone scan in a patient with chronic back pain demonstrates normal uptake of radiotracer in a transplant kidney <img src=\"arrow_BC.png\"> in the right lower quadrant.",
+      "plainFilename": "Renal_Transplant_Evaluation1.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/38429612-7dcd-4c5b-89c0-1e580b14f62d?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/38429612-7dcd-4c5b-89c0-1e580b14f62d?style=xlarge&annotated=true",
+      "masterImageId": "RP-01",
+      "filename": "Renal_Transplant_Evaluation1.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "imageId": "1b116f0b-4f12-46c3-9a9c-72dbee81750f",
+      "baseName": "Renal_Transplant_Evaluation2",
+      "caption": "Transplant renogram in the left lower <img src=\"arrow_CS.png\"> quadrant demonstrates normal flow during the angiographic phase of imaging.",
+      "plainFilename": "Renal_Transplant_Evaluation2.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/1b116f0b-4f12-46c3-9a9c-72dbee81750f?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/1b116f0b-4f12-46c3-9a9c-72dbee81750f?style=xlarge&annotated=true",
+      "masterImageId": "RP-02",
+      "filename": "Renal_Transplant_Evaluation2.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "imageId": "b2fef1a0-f736-4df6-938c-d49730da4e07",
+      "baseName": "Renal_Transplant_Evaluation3",
+      "caption": "Excretion images from a Tc-99m MAG3 transplant renogram demonstrate normal excretion from the transplant kidney <img src=\"arrow_BS.png\"> with expected accumulation of radiotracer in the bladder <img src=\"arrow_BC.png\">.",
+      "plainFilename": "Renal_Transplant_Evaluation3.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b2fef1a0-f736-4df6-938c-d49730da4e07?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/b2fef1a0-f736-4df6-938c-d49730da4e07?style=xlarge&annotated=true",
+      "masterImageId": "RP-03",
+      "filename": "Renal_Transplant_Evaluation3.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "imageId": "3d543843-5fe1-45c2-94e4-6497624f38bb",
+      "baseName": "Renal_Transplant_Evaluation4",
+      "caption": "Normal time-activity curve in the same patient shows rapid peak uptake <img src=\"arrow_WS.png\"> and washout <img src=\"arrow_WO.png\"> of radiotracer in a baseline exam of a living related donor allograft.",
+      "plainFilename": "Renal_Transplant_Evaluation4.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3d543843-5fe1-45c2-94e4-6497624f38bb?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/3d543843-5fe1-45c2-94e4-6497624f38bb?style=xlarge&annotated=true",
+      "masterImageId": "RP-04",
+      "filename": "Renal_Transplant_Evaluation4.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 5,
+      "imageId": "606a362d-7d43-4430-9223-f0df1919a159",
+      "baseName": "Renal_Transplant_Evaluation5",
+      "caption": "Anterior Tc-99m MAG3 renogram shows left pelvic transplant kidney <img src=\"arrow_CS.png\"> with normal perfusion. Radiopharmaceutical should be evident in transplant within 4 seconds of iliac vessel visualization.",
+      "plainFilename": "Renal_Transplant_Evaluation5.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/606a362d-7d43-4430-9223-f0df1919a159?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/606a362d-7d43-4430-9223-f0df1919a159?style=xlarge&annotated=true",
+      "masterImageId": "RP-05",
+      "filename": "Renal_Transplant_Evaluation5.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 6,
+      "imageId": "d6d6702f-82a1-4727-9a7e-e8fd766a8c61",
+      "baseName": "Renal_Transplant_Evaluation6",
+      "caption": "Excretion images from a transplant Tc-99m MAG3 renogram demonstrate progressive cortical accumulation of the radiotracer and no significant excretion <img src=\"arrow_BS.png\">. Also note the accumulation of background activity, including the gallbladder <img src=\"arrow_BC.png\">, a pattern typical of acute tubular necrosis.",
+      "plainFilename": "Renal_Transplant_Evaluation6.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/d6d6702f-82a1-4727-9a7e-e8fd766a8c61?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/d6d6702f-82a1-4727-9a7e-e8fd766a8c61?style=xlarge&annotated=true",
+      "masterImageId": "RP-06",
+      "filename": "Renal_Transplant_Evaluation6.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 7,
+      "imageId": "c034b020-36f1-4046-a119-abd61312c48c",
+      "baseName": "Renal_Transplant_Evaluation7",
+      "caption": "Perfusion images from a Tc-99m MAG3 renogram demonstrate decreased perfusion to a right lower quadrant renal transplant <img src=\"arrow_BS.png\">.",
+      "plainFilename": "Renal_Transplant_Evaluation7.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/c034b020-36f1-4046-a119-abd61312c48c?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/c034b020-36f1-4046-a119-abd61312c48c?style=xlarge&annotated=true",
+      "masterImageId": "RP-07",
+      "filename": "Renal_Transplant_Evaluation7.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 8,
+      "imageId": "ab2c1593-fad0-4391-b18e-74146a7c31df",
+      "baseName": "Renal_Transplant_Evaluation8",
+      "caption": "Excretion images from a Tc-99m MAG3 renogram demonstrate decreased excretion and mild cortical retention from a right lower quadrant renal transplant <img src=\"arrow_BC.png\">. This patient had chronic rejection.",
+      "plainFilename": "Renal_Transplant_Evaluation8.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/ab2c1593-fad0-4391-b18e-74146a7c31df?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/ab2c1593-fad0-4391-b18e-74146a7c31df?style=xlarge&annotated=true",
+      "masterImageId": "RP-08",
+      "filename": "Renal_Transplant_Evaluation8.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 9,
+      "imageId": "f7145feb-bc19-4745-bb60-818a4e07c358",
+      "baseName": "Renal_Transplant_Evaluation9",
+      "caption": "Excretion images from a Tc-99m MAG3 renogram demonstrate accumulation of tracer inferior to the right lower quadrant renal transplant <img src=\"arrow_BS.png\">.",
+      "plainFilename": "Renal_Transplant_Evaluation9.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation9_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/f7145feb-bc19-4745-bb60-818a4e07c358?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/f7145feb-bc19-4745-bb60-818a4e07c358?style=xlarge&annotated=true",
+      "masterImageId": "RP-09",
+      "filename": "Renal_Transplant_Evaluation9.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 10,
+      "imageId": "4b3a6435-c5a6-4e3c-a680-3fa43d2c141c",
+      "baseName": "Renal_Transplant_Evaluation10",
+      "caption": "Delayed postvoid images demonstrate accumulation of radiotracer in the right flank <img src=\"arrow_BO.png\">, confirming the suspected diagnosis of urinoma. Utilizing different projections is often useful and necessary to distinguish urinomas from anatomy.",
+      "plainFilename": "Renal_Transplant_Evaluation10.jpg",
+      "annotatedFilename": "Renal_Transplant_Evaluation10_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/4b3a6435-c5a6-4e3c-a680-3fa43d2c141c?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/4b3a6435-c5a6-4e3c-a680-3fa43d2c141c?style=xlarge&annotated=true",
+      "masterImageId": "RP-10",
+      "filename": "Renal_Transplant_Evaluation10.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    }
+  ],
+  "masterSource": null,
+  "settings": {
+    "include": "all",
+    "caseMap": "",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "effectiveAnkiNormalRoot": "",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "Testicular_Torsion_Anki_Deck.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_000000007f8c822f9bc70bb2b16716e4&fn=Testicular_Torsion_Anki_Deck.tsv&cd=attachment&ts=495946&p=fs&cid=1&sig=a66a4944dc4ec02ffd6565517dcf9494c98bc92b0106aec590645e3e54769b5f&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_000000007f8c822f9bc70bb2b16716e4&fn=Testicular_Torsion_Anki_Deck.tsv&cd=attachment&ts=495946&p=fs&cid=1&sig=a66a4944dc4ec02ffd6565517dcf9494c98bc92b0106aec590645e3e54769b5f&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 7679,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Renal_Transplant_Evaluation_2026-07-30T10-52-30-271Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}

@@ -1,0 +1,506 @@
+{
+  "articleTitle": "Varicocele",
+  "createdAt": "2026-07-28T03:25:06Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Varicocele"
+  ],
+  "canonicalDeckPath": "Corebook::Ultrasound::Scrotum Basic::Varicocele",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "radPrimerRole": "Canonical hierarchy/backbone and compact core diagnosis article.",
+    "statdxRole": "Supplemental depth, additional examples, pitfalls, differential, CT secondary causes, and management nuance.",
+    "statdxRadPrimerImageCoverageSummary": "STATdx conceptually covers the RadPrimer image set but does not contain proven exact duplicates of any RadPrimer image.",
+    "radPrimerImageCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerDisplayLabel": "RadPrimer image 1",
+        "statdxCoverageStatus": "conceptualReplacement",
+        "bestStatdxMatches": [
+          "SDX-04"
+        ],
+        "exactDuplicate": false,
+        "decision": "Keep RadPrimer image 1 and STATdx image 4. The actual files show different graphics/source images; STATdx adds normal-versus-dilated comparison but does not duplicate the RadPrimer illustration."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerDisplayLabel": "RadPrimer image 2",
+        "statdxCoverageStatus": "nearDuplicate",
+        "bestStatdxMatches": [
+          "SDX-01",
+          "SDX-14",
+          "SDX-15",
+          "SDX-17"
+        ],
+        "exactDuplicate": false,
+        "decision": "Keep all. STATdx supplies similar grayscale varicocele patterns in different views/patients, including bilateral and right-sided examples, but none is the same screenshot or slice."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerDisplayLabel": "RadPrimer image 3",
+        "statdxCoverageStatus": "nearDuplicate",
+        "bestStatdxMatches": [
+          "SDX-02",
+          "SDX-03",
+          "SDX-10",
+          "SDX-11",
+          "SDX-16",
+          "SDX-18"
+        ],
+        "exactDuplicate": false,
+        "decision": "Keep all. STATdx overlaps the Doppler/Valsalva teaching target but uses visually distinct screenshots, composites, severities, and cases."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerDisplayLabel": "RadPrimer image 4",
+        "statdxCoverageStatus": "conceptualReplacement",
+        "bestStatdxMatches": [
+          "SDX-12"
+        ],
+        "exactDuplicate": false,
+        "decision": "Keep both. RadPrimer image 4 shows a prominent gonadal vein before/around treatment context, while STATdx image 12 shows post-coil lack of reflux; together they preserve procedure context."
+      }
+    ],
+    "coreRadiologyEvidence": "No auditable Core Radiology source passage was supplied in this bundle; Core claims were not added."
+  },
+  "imageCountBySource": {
+    "RadPrimer": 4,
+    "STATdx": 18
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer] for facts or images sourced only from RadPrimer.",
+    "Use [STATdx] for facts or images sourced only from STATdx.",
+    "Use [Both] when both sources support the same teaching point.",
+    "Use clean image labels in prose, e.g., RadPrimer image 3 or STATdx image 12; reserve RP-03/SDX-12 codes for traceability tables and JSON fields."
+  ],
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18"
+  ],
+  "archiveOptionalImageIds": [],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as canonical hierarchy and article backbone. Retain its definition, image threshold, ultrasound protocol, etiologic framework, grading, diagnostic checklist, and venography/treatment context.",
+    "supplementalText": "Use STATdx for added protocol specificity, reflux duration, slow-flow/thrombus pitfalls, complications, right-sided varicocele nuance, intratesticular varicocele, CT-visible secondary causes, and modern treatment caution.",
+    "downweightOrSkip": [
+      "Do not reproduce source-comparison prompt scaffolding.",
+      "Do not import the broad IMAIOS label dump as content; use only relevant anatomy concepts and the canonical hierarchy for routing.",
+      "Do not invent Core Radiology support because no auditable Core passage was supplied in this bundle."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate same-disease examples, conceptual replacements, modality variants, stage variants, and severity variants remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is uncertain/nearDuplicate and remains primary.",
+    "radPrimerImageCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerDisplayLabel": "RadPrimer image 1",
+        "statdxCoverageStatus": "conceptualReplacement",
+        "bestStatdxMatches": [
+          "SDX-04"
+        ],
+        "exactDuplicate": false,
+        "decision": "Keep RadPrimer image 1 and STATdx image 4. The actual files show different graphics/source images; STATdx adds normal-versus-dilated comparison but does not duplicate the RadPrimer illustration."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerDisplayLabel": "RadPrimer image 2",
+        "statdxCoverageStatus": "nearDuplicate",
+        "bestStatdxMatches": [
+          "SDX-01",
+          "SDX-14",
+          "SDX-15",
+          "SDX-17"
+        ],
+        "exactDuplicate": false,
+        "decision": "Keep all. STATdx supplies similar grayscale varicocele patterns in different views/patients, including bilateral and right-sided examples, but none is the same screenshot or slice."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerDisplayLabel": "RadPrimer image 3",
+        "statdxCoverageStatus": "nearDuplicate",
+        "bestStatdxMatches": [
+          "SDX-02",
+          "SDX-03",
+          "SDX-10",
+          "SDX-11",
+          "SDX-16",
+          "SDX-18"
+        ],
+        "exactDuplicate": false,
+        "decision": "Keep all. STATdx overlaps the Doppler/Valsalva teaching target but uses visually distinct screenshots, composites, severities, and cases."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerDisplayLabel": "RadPrimer image 4",
+        "statdxCoverageStatus": "conceptualReplacement",
+        "bestStatdxMatches": [
+          "SDX-12"
+        ],
+        "exactDuplicate": false,
+        "decision": "Keep both. RadPrimer image 4 shows a prominent gonadal vein before/around treatment context, while STATdx image 12 shows post-coil lack of reflux; together they preserve procedure context."
+      }
+    ],
+    "primaryImageDownloadUseSet": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18"
+    ],
+    "archiveOptionalDuplicates": [],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "displayLabel": "RadPrimer image 1",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=true",
+        "plainFilename": "RP-01_RadPrimer_plain_85dbcd36.jpg",
+        "annotatedFilename": "RP-01_RadPrimer_annotated_85dbcd36.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "RP-02",
+        "displayLabel": "RadPrimer image 2",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=true",
+        "plainFilename": "RP-02_RadPrimer_plain_79b86b56.jpg",
+        "annotatedFilename": "RP-02_RadPrimer_annotated_79b86b56.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "RP-03",
+        "displayLabel": "RadPrimer image 3",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=true",
+        "plainFilename": "RP-03_RadPrimer_plain_e6dd629b.jpg",
+        "annotatedFilename": "RP-03_RadPrimer_annotated_e6dd629b.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "RP-04",
+        "displayLabel": "RadPrimer image 4",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=true",
+        "plainFilename": "RP-04_RadPrimer_plain_61bd7426.jpg",
+        "annotatedFilename": "RP-04_RadPrimer_annotated_61bd7426.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "SDX-01",
+        "displayLabel": "STATdx image 1",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 1,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ce1b8a96-c36a-44ee-b0b1-de3dc26a18d4?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ce1b8a96-c36a-44ee-b0b1-de3dc26a18d4?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-01_STATdx_plain_ce1b8a96.jpg",
+        "annotatedFilename": "SDX-01_STATdx_annotated_ce1b8a96.jpg",
+        "caseClusterId": "SDX-01-02"
+      },
+      {
+        "masterImageId": "SDX-02",
+        "displayLabel": "STATdx image 2",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 2,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/4d839186-3110-4a20-82e3-8c8b4d3076ab?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/4d839186-3110-4a20-82e3-8c8b4d3076ab?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-02_STATdx_plain_4d839186.jpg",
+        "annotatedFilename": "SDX-02_STATdx_annotated_4d839186.jpg",
+        "caseClusterId": "SDX-01-02"
+      },
+      {
+        "masterImageId": "SDX-03",
+        "displayLabel": "STATdx image 3",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 3,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e0f90cd7-472e-4d2d-ad74-1f492817aa3d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e0f90cd7-472e-4d2d-ad74-1f492817aa3d?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-03_STATdx_plain_e0f90cd7.jpg",
+        "annotatedFilename": "SDX-03_STATdx_annotated_e0f90cd7.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "SDX-04",
+        "displayLabel": "STATdx image 4",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 4,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7fec7e0a-6731-4f40-a5f0-73f07635a396?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7fec7e0a-6731-4f40-a5f0-73f07635a396?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-04_STATdx_plain_7fec7e0a.jpg",
+        "annotatedFilename": "SDX-04_STATdx_annotated_7fec7e0a.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "SDX-05",
+        "displayLabel": "STATdx image 5",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 5,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9e4049fe-19f4-4a81-bfa0-3388450be325?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9e4049fe-19f4-4a81-bfa0-3388450be325?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-05_STATdx_plain_9e4049fe.jpg",
+        "annotatedFilename": "SDX-05_STATdx_annotated_9e4049fe.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "SDX-06",
+        "displayLabel": "STATdx image 6",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 6,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/eb9e94db-ae30-4d1e-99d7-2d37315bee84?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/eb9e94db-ae30-4d1e-99d7-2d37315bee84?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-06_STATdx_plain_eb9e94db.jpg",
+        "annotatedFilename": "SDX-06_STATdx_annotated_eb9e94db.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "SDX-07",
+        "displayLabel": "STATdx image 7",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 7,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/bd79a82c-990e-494c-a920-47e534d0415e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/bd79a82c-990e-494c-a920-47e534d0415e?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-07_STATdx_plain_bd79a82c.jpg",
+        "annotatedFilename": "SDX-07_STATdx_annotated_bd79a82c.jpg",
+        "caseClusterId": "SDX-07-09"
+      },
+      {
+        "masterImageId": "SDX-08",
+        "displayLabel": "STATdx image 8",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 8,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ff91f591-233c-4de2-9c62-2b6084c74f0e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ff91f591-233c-4de2-9c62-2b6084c74f0e?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-08_STATdx_plain_ff91f591.jpg",
+        "annotatedFilename": "SDX-08_STATdx_annotated_ff91f591.jpg",
+        "caseClusterId": "SDX-07-09"
+      },
+      {
+        "masterImageId": "SDX-09",
+        "displayLabel": "STATdx image 9",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 9,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e4b932ff-3e23-4ce0-863f-dea615269d92?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e4b932ff-3e23-4ce0-863f-dea615269d92?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-09_STATdx_plain_e4b932ff.jpg",
+        "annotatedFilename": "SDX-09_STATdx_annotated_e4b932ff.jpg",
+        "caseClusterId": "SDX-07-09"
+      },
+      {
+        "masterImageId": "SDX-10",
+        "displayLabel": "STATdx image 10",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 10,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/2cc0e05a-1550-4b67-987d-2c2997792943?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/2cc0e05a-1550-4b67-987d-2c2997792943?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-10_STATdx_plain_2cc0e05a.jpg",
+        "annotatedFilename": "SDX-10_STATdx_annotated_2cc0e05a.jpg",
+        "caseClusterId": "SDX-10-12"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "displayLabel": "STATdx image 11",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 11,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/dbf22f26-2886-4fa3-bef1-61ecfcf9cc18?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/dbf22f26-2886-4fa3-bef1-61ecfcf9cc18?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-11_STATdx_plain_dbf22f26.jpg",
+        "annotatedFilename": "SDX-11_STATdx_annotated_dbf22f26.jpg",
+        "caseClusterId": "SDX-10-12"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "displayLabel": "STATdx image 12",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 12,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7bf96703-ab80-4292-8333-6bd33a35f7e5?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7bf96703-ab80-4292-8333-6bd33a35f7e5?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-12_STATdx_plain_7bf96703.jpg",
+        "annotatedFilename": "SDX-12_STATdx_annotated_7bf96703.jpg",
+        "caseClusterId": "SDX-10-12"
+      },
+      {
+        "masterImageId": "SDX-13",
+        "displayLabel": "STATdx image 13",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 13,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a6f64236-303d-4774-beac-dcb29b23128c?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a6f64236-303d-4774-beac-dcb29b23128c?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-13_STATdx_plain_a6f64236.jpg",
+        "annotatedFilename": "SDX-13_STATdx_annotated_a6f64236.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "SDX-14",
+        "displayLabel": "STATdx image 14",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 14,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e089ca5f-da6d-4ec0-8ab5-38c91e79b505?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e089ca5f-da6d-4ec0-8ab5-38c91e79b505?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-14_STATdx_plain_e089ca5f.jpg",
+        "annotatedFilename": "SDX-14_STATdx_annotated_e089ca5f.jpg",
+        "caseClusterId": "SDX-14-16"
+      },
+      {
+        "masterImageId": "SDX-15",
+        "displayLabel": "STATdx image 15",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 15,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/28d82145-ef7c-4ad4-872b-161d10f155b3?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/28d82145-ef7c-4ad4-872b-161d10f155b3?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-15_STATdx_plain_28d82145.jpg",
+        "annotatedFilename": "SDX-15_STATdx_annotated_28d82145.jpg",
+        "caseClusterId": "SDX-14-16"
+      },
+      {
+        "masterImageId": "SDX-16",
+        "displayLabel": "STATdx image 16",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 16,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/c641b5a3-a308-458d-8e33-a4223f98856d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/c641b5a3-a308-458d-8e33-a4223f98856d?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-16_STATdx_plain_c641b5a3.jpg",
+        "annotatedFilename": "SDX-16_STATdx_annotated_c641b5a3.jpg",
+        "caseClusterId": "SDX-14-16"
+      },
+      {
+        "masterImageId": "SDX-17",
+        "displayLabel": "STATdx image 17",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 17,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/26e07fdd-21f4-4e41-8669-8448be5a7451?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/26e07fdd-21f4-4e41-8669-8448be5a7451?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-17_STATdx_plain_26e07fdd.jpg",
+        "annotatedFilename": "SDX-17_STATdx_annotated_26e07fdd.jpg",
+        "caseClusterId": ""
+      },
+      {
+        "masterImageId": "SDX-18",
+        "displayLabel": "STATdx image 18",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 18,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/d4634fab-b60f-44b3-92a9-da15dcedc98a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/d4634fab-b60f-44b3-92a9-da15dcedc98a?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-18_STATdx_plain_d4634fab.jpg",
+        "annotatedFilename": "SDX-18_STATdx_annotated_d4634fab.jpg",
+        "caseClusterId": ""
+      }
+    ],
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, comparison-view, procedure, adjacent-slice, and time-lapse image clusters are atomic teaching units unless a documented split is safe.",
+      "preservedClusters": [
+        {
+          "caseClusterId": "SDX-01-02",
+          "members": [
+            "SDX-01",
+            "SDX-02"
+          ],
+          "reason": "Same patient rest grayscale and Valsalva Doppler views."
+        },
+        {
+          "caseClusterId": "SDX-07-09",
+          "members": [
+            "SDX-07",
+            "SDX-08",
+            "SDX-09"
+          ],
+          "reason": "Same CT patient showing scrotal varicocele, gonadal vein drainage, and renal vein thrombosis cause."
+        },
+        {
+          "caseClusterId": "SDX-10-12",
+          "members": [
+            "SDX-10",
+            "SDX-11",
+            "SDX-12"
+          ],
+          "reason": "Same symptomatic patient before Valsalva, with Valsalva, and after coil embolization."
+        },
+        {
+          "caseClusterId": "SDX-14-16",
+          "members": [
+            "SDX-14",
+            "SDX-15",
+            "SDX-16"
+          ],
+          "reason": "Same patient grayscale comparison, longitudinal serpiginous morphology, and Valsalva color Doppler confirmation."
+        }
+      ],
+      "intentionalSplits": []
+    },
+    "generatorInstructions": [
+      "For narrative and cards, preserve source attribution with [RadPrimer], [STATdx], or [Both].",
+      "Use human-facing labels such as RadPrimer image 2 or STATdx image 11 in prose.",
+      "Keep RP-02 and SDX-11 style IDs in traceability fields, filenames, registry entries, and manifests.",
+      "Do not archive a near duplicate or conceptual replacement simply because it teaches the same diagnosis."
+    ]
+  }
+}

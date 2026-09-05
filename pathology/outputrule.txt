@@ -73,8 +73,8 @@ Do NOT generate â€œeverything in one shot.â€
 Section order is STRICT:
 
 SECTION A) PRIMARY UNKNOWN cases
-SECTION B) Differential Drills
-SECTION C) Definition cards only
+SECTION B) Differential Drills (explicit request only)
+SECTION C) Definition cards only (explicit request only)
 SECTION D) Mechanism cards
 SECTION E) Boards Trap cards
 SECTION F) Epidemiology cards (High-Yield pivots only; if present in source)
@@ -118,8 +118,8 @@ If the counts do NOT match:
 For each section:
 â€¢ Output ONLY that sectionâ€™s Structured Card Preview.
 â€¢ Do NOT output other sections.
-â€¢ Wait for user approval (explicit â€œapprovedâ€ or â€œnext sectionâ€) before proceeding, UNLESS an autonomous batch mode override is present.
-â€¢ If an autonomous batch mode override is present:
+â€¢ Wait for user approval (explicit â€œapprovedâ€ or â€œnext sectionâ€) before proceeding, UNLESS an autonomous generation override is present.
+â€¢ If an autonomous generation override is present:
   â†’ section previews are internal validation checkpoints
   â†’ do NOT pause for user approval between sections
   â†’ do NOT output user-facing section-by-section previews unless a hard stop or major repair explanation must be shown
@@ -209,7 +209,7 @@ ACTIVE PREVIEW SET DEFINITION (SECTIONED)
   â†’ If a section is modified after approval:
     â†’ that section must be re-previewed and re-approved before TSV export.
 
-â€¢ If an autonomous batch mode override is present:
+â€¢ If an autonomous generation override is present:
   â†’ The â€œactive preview setâ€ is the most recent internally validated section or full-deck snapshot that passed all automatic checks.
   â†’ TSV export is allowed ONLY for sections that have passed automatic validation.
   â†’ If a section is modified after repair:
@@ -218,9 +218,9 @@ ACTIVE PREVIEW SET DEFINITION (SECTIONED)
 COMPLETE PREVIEW REQUIREMENT (MANDATORY)
 
 TSV export is allowed ONLY if the Structured Card Preview explicitly contains:
-â€¢ Definition cards ONLY for high-yield source-emphasized definitions, diagnostic criteria, named syndrome definitions, or important boundary definitions
+â€¢ Definition cards ONLY when the user explicitly requests definition cards
 â€¢ All intended PRIMARY UNKNOWN cases for the build
-â€¢ All intended Differential Drills for the build (pattern-distinct, discriminator-distinct, and non-redundant)
+â€¢ Any explicitly requested Differential Drills for the build (pattern-distinct, discriminator-distinct, and non-redundant)
 â€¢ Any intended Mechanism / Boards Trap / High-Yield (non-ontology)
 
 For SECTION A, "all intended PRIMARY UNKNOWN cases" means:
@@ -261,7 +261,8 @@ A) Trigger Integrity (Architecture Safety)
 â€¢ UNKNOWN cards: Image MUST be populated AND Question MUST be populated.
 â€¢ If Image is populated but Question is empty â†’ it must NOT be treated as UNKNOWN.
 â€¢ Any non-UNKNOWN card that includes Image MUST keep Question empty.
-â€¢ Differential Drill exists ONLY when Differentials is populated.
+â€¢ Differential Drill exists ONLY when Differential_Q is populated.
+â€¢ Differentials alone may be populated on a PRIMARY UNKNOWN note as back-side differential support.
 â€¢ Mechanism exists ONLY when Mechanism is populated.
 â€¢ Boards Trap exists ONLY when Boards_Trap is populated.
 â€¢ High-Yield exists ONLY when High_Yield_Q is populated.
@@ -281,6 +282,89 @@ If any of the above fails:
 â€¢ Output: "TSV export blocked - SECTION A case ledger / PRIMARY UNKNOWN cardinality rule violated."
 â€¢ Then list the missing, extra, or improperly excluded case(s) by case index.
 â€¢ Do NOT output TSV.
+
+A2) ONE LEARNING TARGET / ONE TSV ROW INTEGRITY
+â€¢ Each note may trigger only one front-driving card family.
+â€¢ Separate learning targets MUST be separate TSV rows.
+â€¢ UNKNOWN image recognition, entity imaging-pattern recall, report-critical pivots, mechanisms, traps, and explicit differential drills must not be siblings on the same note.
+â€¢ If a disease entity needs CT, MRI, ultrasound, nuclear medicine, or report-critical recall, those must be separate High-Yield rows with Question, Differential_Q, Mechanism_Q, Boards_Trap_Q, and non-HY trigger fields blank.
+
+If any row contains multiple independent learning targets or multiple front-driving prompt families:
+â€¢ STOP.
+â€¢ Output: "TSV export blocked - independent learning targets must be separate TSV rows."
+â€¢ Split the note into independent rows and re-run validation.
+
+A3) MULTI-IMAGE STACK LABEL INTEGRITY
+â€¢ Every multi-image UNKNOWN Image field MUST include visible non-diagnostic labels in the form "Image 1/N", "Image 2/N", etc.
+â€¢ N MUST equal the number of images in the stack.
+â€¢ Labels must not reveal diagnosis, named sign, finding, or anatomy.
+â€¢ Labels must not replace captions.
+â€¢ Captions must remain off the front.
+
+If a multi-image UNKNOWN card lacks correct image-position labels:
+â€¢ STOP.
+â€¢ Output: "TSV export blocked - multi-image stack label missing or incorrect."
+â€¢ Repair the Image field and re-run validation.
+
+A3B) COMPLETE IMAGE REFERENCE NAME INTEGRITY
+â€¢ Every image-containing note must include the complete image reference name on the back.
+â€¢ Use the full source-provided identifier when available: figure number, image title, RadPrimer / STATdx / Radiopaedia image label, source filename, downloaded media filename, or exact local media filename.
+â€¢ If the validation package, source package, extracted image block, case ledger, or media table lists image filenames, those exact filenames are authoritative and must be used.
+â€¢ Do not truncate, paraphrase, normalize, or replace the reference name with generic wording.
+â€¢ Multi-image notes must include one complete image reference name per image, in the same order as Image.
+â€¢ Image reference names must remain separate from verbatim captions.
+â€¢ If no source-provided reference exists, the exact local media filename satisfies this requirement.
+
+Allowed locations:
+â€¢ Separate imgRef block inside Image_Annotated stackItem.
+â€¢ Imaging_Differentiation line beginning with "Image references:".
+â€¢ Another back-side reference line that is visible in the card and does not modify caption text.
+
+If any image-containing note lacks complete image reference names:
+â€¢ STOP.
+â€¢ Output: "TSV export blocked - complete image reference name missing."
+â€¢ List the failing note(s) and image filename(s).
+â€¢ Repair the back-side reference and re-run validation.
+
+A4) ENTITY MODALITY MATRIX COVERAGE
+For each disease entity, before TSV export, internally confirm that an entity modality matrix was reviewed:
+â€¢ CT noncontrast and CT contrast phases
+â€¢ MRI sequences and MRI contrast behavior
+â€¢ Ultrasound grayscale, Doppler, dynamic behavior, and CEUS
+â€¢ Nuclear medicine / PET / SPECT tracer-specific behavior
+
+If the source explicitly supports a modality appearance pattern:
+â€¢ At least one independent entity-level High-Yield appearance row must encode it, unless the pattern is inseparable from another modality/phase card already encoded.
+â€¢ Appearance rows are generated per disease entity, not per image.
+â€¢ Do not create rows for unsupported modality cells.
+â€¢ Do not generalize one contrast agent, phase, sequence, Doppler behavior, CEUS pattern, or radiotracer to another unless source-supported.
+
+If a source-supported entity-level appearance pattern is missing:
+â€¢ STOP.
+â€¢ Output: "TSV export blocked - source-supported entity imaging pattern not encoded."
+â€¢ Generate the missing independent High-Yield row(s) and re-run validation.
+
+A5) REPORT-CRITICAL / MANAGEMENT-PIVOT COVERAGE
+If the source names a finding that changes reporting, urgency, immediate communication, intervention, operative planning, staging, resectability, prognosis, risk category, follow-up, complication status, or outcome:
+â€¢ At least one independent High-Yield report-critical / management-pivot row must exist, unless the fact is trivial or already fully encoded in a more specific High-Yield row.
+â€¢ The question must ask for the specific actionable finding or consequence.
+â€¢ Do not export generic "what should you report" cards.
+
+If a source-supported management-changing or report-critical pivot is missing:
+â€¢ STOP.
+â€¢ Output: "TSV export blocked - report-critical / management-pivot finding not encoded."
+â€¢ Generate the missing independent High-Yield row(s) and re-run validation.
+
+A6) HARD QUALITY FILTER
+Every exported card must pass at least one of these tests:
+â€¢ Helps recognize the image.
+â€¢ Helps distinguish the diagnosis from realistic mimics.
+â€¢ Teaches source-supported modality-specific appearance.
+â€¢ Teaches what must be inspected or reported because it changes management, staging, urgency, prognosis, follow-up, or outcome.
+
+If a card does not pass at least one test:
+â€¢ Omit it.
+â€¢ Do not replace it with filler.
 
 B) Source Coverage + Non-Fabrication
 â€¢ All board-relevant Core content for the topic is represented (without trivial duplication), unless Core GAP pathway is invoked.
@@ -305,10 +389,11 @@ C) Image/Captions â†’ Keyword Findings Integrity (UNKNOWN ONLY)
   No inference beyond caption text
 â€¢ Image_Annotated order must match Image order (when present).
 
-D) Differential Drill De-duplication (Pattern-Based; Discriminator-Driven)
+D) Differential Drill De-duplication (Pattern-Based; Discriminator-Driven; Explicit Request Only)
 
 Core Principle:
-Drill generation is determined by Dominant Imaging Pattern and Primary Discriminator Logic â€” NOT by exact differential list equality.
+Standalone drill generation is disabled unless the user explicitly requests separate differential drill cards.
+When explicitly requested, drill generation is determined by Dominant Imaging Pattern and Primary Discriminator Logic â€” NOT by exact differential list equality.
 
 STEP 1 â€” Identify Dominant Pattern
 â€¢ For each potential Differential Drill, explicitly classify the dominant imaging pattern.
@@ -324,8 +409,8 @@ STEP 1 â€” Identify Dominant Pattern
 STEP 2 â€” Deduplication Rule
 â€¢ If two cases share the SAME dominant pattern AND the SAME primary discriminator logic:
   â†’ Generate ONLY ONE Differential Drill.
-  â†’ All other cases must leave Differentials blank.
-  â†’ Discriminator reasoning may still appear in the associated UNKNOWN reasoning or in source-supported differentiation fields where permitted by architecture.
+  â†’ All other cases must leave Differential_Q blank.
+  â†’ Differential lists and discriminator reasoning may still appear on the associated UNKNOWN back in Differentials and Imaging_Differentiation.
 
 â€¢ If two cases differ in dominant pattern OR require a different primary discriminator strategy:
   â†’ A new Differential Drill is ALLOWED.
@@ -349,7 +434,7 @@ Pattern distinctiveness overrides list variation.
 Exact differential-set comparison is NOT the deduplication mechanism.
 
 E) Differential Drill Structural Enforcement (CRITICAL)
-Applies to every note where Differentials is populated:
+Applies to every note where Differential_Q is populated:
 
 Required Field Presence + Isolation
 â€¢ Differential_Q MUST be populated.
@@ -521,7 +606,7 @@ N) High-Yield Hygiene
 O) FINAL DECK-BALANCE AUDIT (MANDATORY)
 Before TSV export, explicitly check the final approved deck for balance:
 â€¢ Are there too many definition cards relative to true recognition/discriminator cards?
-â€¢ Are definition cards limited to definitions that change diagnosis, differential ranking, reporting, risk, or management?
+â€¢ If definition cards were explicitly requested, are they limited to definitions that change diagnosis, differential ranking, reporting, risk, or management?
 â€¢ Are there enough image-recognition cards for the provided cases?
 â€¢ Is there at least one compact framework card when the source supports a subtype/risk algorithm?
 â€¢ Are modality pivots represented when source-supported (MRI / ultrasound / nuclear medicine / CT as applicable)?
@@ -600,9 +685,9 @@ If ANY gate fails:
 â€¢ Generate the missing/fixed cards and re-run the validation gate.
 â€¢ Any resulting changes REQUIRE a full re-render of Structured Card Preview (canonical order) before TSV export.
 
-R) DEFINITION CARD STANDALONE CODE RULE (MANDATORY)
+R) DEFINITION CARD STANDALONE CODE RULE (MANDATORY ONLY WHEN DEFINITION CARDS ARE EXPLICITLY REQUESTED)
 
-Because definition cards are implemented as standalone High-Yield notes:
+If the user explicitly requested definition cards, they are implemented as standalone High-Yield notes:
 
 â€¢ Every definition card MUST contain a unique 12-character alphanumeric/symbolic Clinical_Context code
 â€¢ Clinical_Context must contain NOTHING else

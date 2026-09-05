@@ -1,0 +1,820 @@
+{
+  "articleTitle": "Cystic Hepatic Mass",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Gastrointestinal",
+    "Liver",
+    "Cystic Hepatic Mass"
+  ],
+  "canonicalHierarchySource": "metadata.json canonicalHierarchy",
+  "canonicalDeckPath": "Corebook::GI::Liver::Cystic Hepatic Mass",
+  "sourcePriority": [
+    "RadPrimer canonical",
+    "STATdx supplemental"
+  ],
+  "sourceCoverage": {
+    "textCoverage": "RadPrimer and STATdx substantially overlap in essential article text. RadPrimer supplies the canonical hierarchy, deck routing, and explicit differential category list; STATdx supplies supplemental image depth, treatment/follow-up context, and six non-RadPrimer teaching images.",
+    "imageCoverageSummary": "STATdx fully covers the RadPrimer image set: all 16 RadPrimer images have matching STATdx images with the same stable source image IDs, and visual inspection of staged image_evidence files/contact sheet shows the same source images/slices/screenshots with only source rendering/resolution differences. The curated default download set is therefore STATdx images 1-22, preserving the full STATdx sequence and 6 additional STATdx-only teaching images; RadPrimer images 1-16 are retained as archive-optional exact duplicates for traceability.",
+    "radPrimerImageCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerImageLabel": "RadPrimer image 1",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-01"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 1"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerImageLabel": "RadPrimer image 2",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-04"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 4"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerImageLabel": "RadPrimer image 3",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-05"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 5"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerImageLabel": "RadPrimer image 4",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-06"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 6"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "radPrimerImageLabel": "RadPrimer image 5",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-07"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 7"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "radPrimerImageLabel": "RadPrimer image 6",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-08"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 8"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "radPrimerImageLabel": "RadPrimer image 7",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-09"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 9"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "radPrimerImageLabel": "RadPrimer image 8",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-12"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 12"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "radPrimerImageLabel": "RadPrimer image 9",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-13"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 13"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "radPrimerImageLabel": "RadPrimer image 10",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-16"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 16"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-11",
+        "radPrimerImageLabel": "RadPrimer image 11",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-17"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 17"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-12",
+        "radPrimerImageLabel": "RadPrimer image 12",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-18"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 18"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-13",
+        "radPrimerImageLabel": "RadPrimer image 13",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-19"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 19"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-14",
+        "radPrimerImageLabel": "RadPrimer image 14",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-20"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 20"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-15",
+        "radPrimerImageLabel": "RadPrimer image 15",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-21"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 21"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      },
+      {
+        "radPrimerImageId": "RP-16",
+        "radPrimerImageLabel": "RadPrimer image 16",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-22"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 22"
+        ],
+        "decision": "archiveOptionalDuplicate",
+        "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+      }
+    ],
+    "statDxOnlyPrimaryImageIds": [
+      "SDX-02",
+      "SDX-03",
+      "SDX-10",
+      "SDX-11",
+      "SDX-14",
+      "SDX-15"
+    ]
+  },
+  "imageCountBySource": {
+    "RadPrimer": 16,
+    "STATdx": 22,
+    "selectedPrimary": 22,
+    "archiveOptional": 16
+  },
+  "sourceAttributionRules": {
+    "Both": "supported by both RadPrimer and STATdx source packages",
+    "RadPrimer": "RadPrimer-only or RadPrimer-preferred canonical hierarchy/detail",
+    "STATdx": "supplemental STATdx image example, caption detail, modality variant, follow-up/procedure context, or curated primary image rendering"
+  },
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-13",
+    "RP-14",
+    "RP-15",
+    "RP-16"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical article hierarchy/backbone and preserve metadata.json canonicalHierarchy exactly for routing. Use STATdx as supplemental depth where it adds image examples, caption nuance, modality reinforcement, treatment/follow-up context, or management implications.",
+    "radPrimerKeep": [
+      "canonical hierarchy from metadata.json canonicalHierarchy",
+      "canonical deck path from metadata.json canonicalDeckPath",
+      "explicit differential category hierarchy: common and less common diagnoses",
+      "core article ordering and discriminating imaging clues",
+      "RadPrimer captions as source-traceable duplicate references in image_registry.json"
+    ],
+    "statDxKeep": [
+      "all 22 STATdx images as the curated primary download/rendering set",
+      "STATdx-only examples of giant obstructing simple cyst, hemorrhagic cysts, gastric GIST before/after treatment necrosis, and transplant biloma due to hepatic artery thrombosis",
+      "source captions that reinforce modality-specific cyst behavior, mural nodularity, bile-duct communication, procedure/history context, transplant risk, and resection/drainage management implications"
+    ],
+    "downweightOrSkip": [
+      "STATdx breadcrumb/deck routing because RadPrimer metadata is canonical for this bundle",
+      "RadPrimer duplicate image renderings for default download because each RadPrimer image is exactly covered by a STATdx image with the same stable source image ID and visually matched evidence file",
+      "unsupported Core Radiology claims; no auditable Core source text/pages were supplied or retrieved in this bundle",
+      "the unrelated IMAIOS label repository export block from both source packages; later IMAIOS routing should use metadata.json canonicalHierarchy plus local chunk context"
+    ],
+    "primaryImageDownloadUseSet": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22"
+    ],
+    "archiveDuplicateImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "RP-11",
+      "RP-12",
+      "RP-13",
+      "RP-14",
+      "RP-15",
+      "RP-16"
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate same-disease examples, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, pathology-correlation, and time-lapse clusters are atomic unless an explicit documented split is safe.",
+      "intentionalClusterSplits": [],
+      "clusterNotes": [
+        {
+          "clusterId": "simple-cyst-spectrum",
+          "imageIds": [
+            "SDX-01",
+            "SDX-02",
+            "SDX-03"
+          ],
+          "reason": "Simple hepatic cyst spectrum: uncomplicated water-density cyst, unusually large obstructing cyst, and hemorrhagic/complex T2 cyst appearance."
+        },
+        {
+          "clusterId": "polycystic-liver-disease",
+          "imageIds": [
+            "SDX-04"
+          ],
+          "reason": "Innumerable water-attenuation cysts with hepatomegaly; few renal cysts and normal renal function in caption keep diagnosis nuanced."
+        },
+        {
+          "clusterId": "biliary-hamartomas-multimodality",
+          "imageIds": [
+            "SDX-06",
+            "SDX-07",
+            "SDX-08"
+          ],
+          "reason": "CT, US, and MRCP examples of biliary hamartomas should remain together as multimodality recognition reinforcement."
+        },
+        {
+          "clusterId": "gist-treatment-follow-up",
+          "imageIds": [
+            "SDX-10",
+            "SDX-11"
+          ],
+          "reason": "STATdx-only gastric GIST metastasis pair shows pretreatment solid metastasis and post-Gleevec cystic necrosis; preserve as an atomic follow-up/treatment-response cluster."
+        },
+        {
+          "clusterId": "posttraumatic-biloma-seroma",
+          "imageIds": [
+            "SDX-13"
+          ],
+          "reason": "Trauma-history biloma/seroma example depends on interval context and comparison with prior CT scans."
+        },
+        {
+          "clusterId": "transplant-biloma-hat",
+          "imageIds": [
+            "SDX-14",
+            "SDX-15"
+          ],
+          "reason": "STATdx-only transplant biloma examples both teach hepatic artery thrombosis with biliary necrosis/peribiliary fluid and should remain together."
+        },
+        {
+          "clusterId": "hydatid-cyst",
+          "imageIds": [
+            "SDX-17"
+          ],
+          "reason": "Large multiseptate cysts with daughter cysts/scolices and endemic/immigrant context."
+        },
+        {
+          "clusterId": "biliary-neoplasm-spectrum",
+          "imageIds": [
+            "SDX-18",
+            "SDX-19"
+          ],
+          "reason": "Biliary cystadenoma/carcinoma and biliary IPMN/cholangiocarcinoma concern both hinge on enhancing wall/septa, duct communication, or nodularity."
+        },
+        {
+          "clusterId": "rare-primary-and-congenital",
+          "imageIds": [
+            "SDX-20",
+            "SDX-21",
+            "SDX-22"
+          ],
+          "reason": "Caroli disease central-dot sign, undifferentiated hepatic sarcoma, and ciliated hepatic foregut cyst cover key less-common mimics that should remain selected."
+        }
+      ],
+      "reportStatement": "No source case cluster was intentionally split. RadPrimer duplicate renderings were archived only because the complete equivalent STATdx source-image set was selected."
+    },
+    "imageDownloadPlan": {
+      "downloadOnly": "selectedPrimaryImageIds",
+      "primaryDownloads": [
+        {
+          "masterImageId": "SDX-01",
+          "displayLabel": "STATdx image 1",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 1,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-01_STATdx_plain_dd33f12a.jpg",
+          "targetAnnotatedFilename": "SDX-01_STATdx_annotated_dd33f12a.jpg"
+        },
+        {
+          "masterImageId": "SDX-02",
+          "displayLabel": "STATdx image 2",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 2,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-02_STATdx_plain_82d6f7d6.jpg",
+          "targetAnnotatedFilename": "SDX-02_STATdx_annotated_82d6f7d6.jpg"
+        },
+        {
+          "masterImageId": "SDX-03",
+          "displayLabel": "STATdx image 3",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 3,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-03_STATdx_plain_5702a8fd.jpg",
+          "targetAnnotatedFilename": "SDX-03_STATdx_annotated_5702a8fd.jpg"
+        },
+        {
+          "masterImageId": "SDX-04",
+          "displayLabel": "STATdx image 4",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 4,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-04_STATdx_plain_b943a537.jpg",
+          "targetAnnotatedFilename": "SDX-04_STATdx_annotated_b943a537.jpg"
+        },
+        {
+          "masterImageId": "SDX-05",
+          "displayLabel": "STATdx image 5",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 5,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-05_STATdx_plain_609b0fc7.jpg",
+          "targetAnnotatedFilename": "SDX-05_STATdx_annotated_609b0fc7.jpg"
+        },
+        {
+          "masterImageId": "SDX-06",
+          "displayLabel": "STATdx image 6",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 6,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-06_STATdx_plain_d56b5c7e.jpg",
+          "targetAnnotatedFilename": "SDX-06_STATdx_annotated_d56b5c7e.jpg"
+        },
+        {
+          "masterImageId": "SDX-07",
+          "displayLabel": "STATdx image 7",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 7,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-07_STATdx_plain_4c827181.jpg",
+          "targetAnnotatedFilename": "SDX-07_STATdx_annotated_4c827181.jpg"
+        },
+        {
+          "masterImageId": "SDX-08",
+          "displayLabel": "STATdx image 8",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 8,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-08_STATdx_plain_63693af8.jpg",
+          "targetAnnotatedFilename": "SDX-08_STATdx_annotated_63693af8.jpg"
+        },
+        {
+          "masterImageId": "SDX-09",
+          "displayLabel": "STATdx image 9",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 9,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-09_STATdx_plain_d0679796.jpg",
+          "targetAnnotatedFilename": "SDX-09_STATdx_annotated_d0679796.jpg"
+        },
+        {
+          "masterImageId": "SDX-10",
+          "displayLabel": "STATdx image 10",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-10_STATdx_plain_6ff00975.jpg",
+          "targetAnnotatedFilename": "SDX-10_STATdx_annotated_6ff00975.jpg"
+        },
+        {
+          "masterImageId": "SDX-11",
+          "displayLabel": "STATdx image 11",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-11_STATdx_plain_646611f8.jpg",
+          "targetAnnotatedFilename": "SDX-11_STATdx_annotated_646611f8.jpg"
+        },
+        {
+          "masterImageId": "SDX-12",
+          "displayLabel": "STATdx image 12",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 12,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-12_STATdx_plain_748ace18.jpg",
+          "targetAnnotatedFilename": "SDX-12_STATdx_annotated_748ace18.jpg"
+        },
+        {
+          "masterImageId": "SDX-13",
+          "displayLabel": "STATdx image 13",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 13,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-13_STATdx_plain_e2c598d8.jpg",
+          "targetAnnotatedFilename": "SDX-13_STATdx_annotated_e2c598d8.jpg"
+        },
+        {
+          "masterImageId": "SDX-14",
+          "displayLabel": "STATdx image 14",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 14,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-14_STATdx_plain_0ef36644.jpg",
+          "targetAnnotatedFilename": "SDX-14_STATdx_annotated_0ef36644.jpg"
+        },
+        {
+          "masterImageId": "SDX-15",
+          "displayLabel": "STATdx image 15",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 15,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-15_STATdx_plain_13e37550.jpg",
+          "targetAnnotatedFilename": "SDX-15_STATdx_annotated_13e37550.jpg"
+        },
+        {
+          "masterImageId": "SDX-16",
+          "displayLabel": "STATdx image 16",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 16,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-16_STATdx_plain_f5aba22b.jpg",
+          "targetAnnotatedFilename": "SDX-16_STATdx_annotated_f5aba22b.jpg"
+        },
+        {
+          "masterImageId": "SDX-17",
+          "displayLabel": "STATdx image 17",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 17,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-17_STATdx_plain_4d89fcb5.jpg",
+          "targetAnnotatedFilename": "SDX-17_STATdx_annotated_4d89fcb5.jpg"
+        },
+        {
+          "masterImageId": "SDX-18",
+          "displayLabel": "STATdx image 18",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 18,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-18_STATdx_plain_58f9b8d1.jpg",
+          "targetAnnotatedFilename": "SDX-18_STATdx_annotated_58f9b8d1.jpg"
+        },
+        {
+          "masterImageId": "SDX-19",
+          "displayLabel": "STATdx image 19",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 19,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-19_STATdx_plain_cc11ebc8.jpg",
+          "targetAnnotatedFilename": "SDX-19_STATdx_annotated_cc11ebc8.jpg"
+        },
+        {
+          "masterImageId": "SDX-20",
+          "displayLabel": "STATdx image 20",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 20,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-20_STATdx_plain_3ecd123c.jpg",
+          "targetAnnotatedFilename": "SDX-20_STATdx_annotated_3ecd123c.jpg"
+        },
+        {
+          "masterImageId": "SDX-21",
+          "displayLabel": "STATdx image 21",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 21,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-21_STATdx_plain_2de321ce.jpg",
+          "targetAnnotatedFilename": "SDX-21_STATdx_annotated_2de321ce.jpg"
+        },
+        {
+          "masterImageId": "SDX-22",
+          "displayLabel": "STATdx image 22",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 22,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-22_STATdx_plain_cd601687.jpg",
+          "targetAnnotatedFilename": "SDX-22_STATdx_annotated_cd601687.jpg"
+        }
+      ],
+      "archiveOptionalDownloads": [
+        {
+          "masterImageId": "RP-01",
+          "displayLabel": "RadPrimer image 1",
+          "duplicateOf": "SDX-01",
+          "duplicateOfDisplayLabel": "STATdx image 1",
+          "targetPlainFilename": "RP-01_RadPrimer_plain_dd33f12a.jpg",
+          "targetAnnotatedFilename": "RP-01_RadPrimer_annotated_dd33f12a.jpg"
+        },
+        {
+          "masterImageId": "RP-02",
+          "displayLabel": "RadPrimer image 2",
+          "duplicateOf": "SDX-04",
+          "duplicateOfDisplayLabel": "STATdx image 4",
+          "targetPlainFilename": "RP-02_RadPrimer_plain_b943a537.jpg",
+          "targetAnnotatedFilename": "RP-02_RadPrimer_annotated_b943a537.jpg"
+        },
+        {
+          "masterImageId": "RP-03",
+          "displayLabel": "RadPrimer image 3",
+          "duplicateOf": "SDX-05",
+          "duplicateOfDisplayLabel": "STATdx image 5",
+          "targetPlainFilename": "RP-03_RadPrimer_plain_609b0fc7.jpg",
+          "targetAnnotatedFilename": "RP-03_RadPrimer_annotated_609b0fc7.jpg"
+        },
+        {
+          "masterImageId": "RP-04",
+          "displayLabel": "RadPrimer image 4",
+          "duplicateOf": "SDX-06",
+          "duplicateOfDisplayLabel": "STATdx image 6",
+          "targetPlainFilename": "RP-04_RadPrimer_plain_d56b5c7e.jpg",
+          "targetAnnotatedFilename": "RP-04_RadPrimer_annotated_d56b5c7e.jpg"
+        },
+        {
+          "masterImageId": "RP-05",
+          "displayLabel": "RadPrimer image 5",
+          "duplicateOf": "SDX-07",
+          "duplicateOfDisplayLabel": "STATdx image 7",
+          "targetPlainFilename": "RP-05_RadPrimer_plain_4c827181.jpg",
+          "targetAnnotatedFilename": "RP-05_RadPrimer_annotated_4c827181.jpg"
+        },
+        {
+          "masterImageId": "RP-06",
+          "displayLabel": "RadPrimer image 6",
+          "duplicateOf": "SDX-08",
+          "duplicateOfDisplayLabel": "STATdx image 8",
+          "targetPlainFilename": "RP-06_RadPrimer_plain_63693af8.jpg",
+          "targetAnnotatedFilename": "RP-06_RadPrimer_annotated_63693af8.jpg"
+        },
+        {
+          "masterImageId": "RP-07",
+          "displayLabel": "RadPrimer image 7",
+          "duplicateOf": "SDX-09",
+          "duplicateOfDisplayLabel": "STATdx image 9",
+          "targetPlainFilename": "RP-07_RadPrimer_plain_d0679796.jpg",
+          "targetAnnotatedFilename": "RP-07_RadPrimer_annotated_d0679796.jpg"
+        },
+        {
+          "masterImageId": "RP-08",
+          "displayLabel": "RadPrimer image 8",
+          "duplicateOf": "SDX-12",
+          "duplicateOfDisplayLabel": "STATdx image 12",
+          "targetPlainFilename": "RP-08_RadPrimer_plain_748ace18.jpg",
+          "targetAnnotatedFilename": "RP-08_RadPrimer_annotated_748ace18.jpg"
+        },
+        {
+          "masterImageId": "RP-09",
+          "displayLabel": "RadPrimer image 9",
+          "duplicateOf": "SDX-13",
+          "duplicateOfDisplayLabel": "STATdx image 13",
+          "targetPlainFilename": "RP-09_RadPrimer_plain_e2c598d8.jpg",
+          "targetAnnotatedFilename": "RP-09_RadPrimer_annotated_e2c598d8.jpg"
+        },
+        {
+          "masterImageId": "RP-10",
+          "displayLabel": "RadPrimer image 10",
+          "duplicateOf": "SDX-16",
+          "duplicateOfDisplayLabel": "STATdx image 16",
+          "targetPlainFilename": "RP-10_RadPrimer_plain_f5aba22b.jpg",
+          "targetAnnotatedFilename": "RP-10_RadPrimer_annotated_f5aba22b.jpg"
+        },
+        {
+          "masterImageId": "RP-11",
+          "displayLabel": "RadPrimer image 11",
+          "duplicateOf": "SDX-17",
+          "duplicateOfDisplayLabel": "STATdx image 17",
+          "targetPlainFilename": "RP-11_RadPrimer_plain_4d89fcb5.jpg",
+          "targetAnnotatedFilename": "RP-11_RadPrimer_annotated_4d89fcb5.jpg"
+        },
+        {
+          "masterImageId": "RP-12",
+          "displayLabel": "RadPrimer image 12",
+          "duplicateOf": "SDX-18",
+          "duplicateOfDisplayLabel": "STATdx image 18",
+          "targetPlainFilename": "RP-12_RadPrimer_plain_58f9b8d1.jpg",
+          "targetAnnotatedFilename": "RP-12_RadPrimer_annotated_58f9b8d1.jpg"
+        },
+        {
+          "masterImageId": "RP-13",
+          "displayLabel": "RadPrimer image 13",
+          "duplicateOf": "SDX-19",
+          "duplicateOfDisplayLabel": "STATdx image 19",
+          "targetPlainFilename": "RP-13_RadPrimer_plain_cc11ebc8.jpg",
+          "targetAnnotatedFilename": "RP-13_RadPrimer_annotated_cc11ebc8.jpg"
+        },
+        {
+          "masterImageId": "RP-14",
+          "displayLabel": "RadPrimer image 14",
+          "duplicateOf": "SDX-20",
+          "duplicateOfDisplayLabel": "STATdx image 20",
+          "targetPlainFilename": "RP-14_RadPrimer_plain_3ecd123c.jpg",
+          "targetAnnotatedFilename": "RP-14_RadPrimer_annotated_3ecd123c.jpg"
+        },
+        {
+          "masterImageId": "RP-15",
+          "displayLabel": "RadPrimer image 15",
+          "duplicateOf": "SDX-21",
+          "duplicateOfDisplayLabel": "STATdx image 21",
+          "targetPlainFilename": "RP-15_RadPrimer_plain_2de321ce.jpg",
+          "targetAnnotatedFilename": "RP-15_RadPrimer_annotated_2de321ce.jpg"
+        },
+        {
+          "masterImageId": "RP-16",
+          "displayLabel": "RadPrimer image 16",
+          "duplicateOf": "SDX-22",
+          "duplicateOfDisplayLabel": "STATdx image 22",
+          "targetPlainFilename": "RP-16_RadPrimer_plain_cd601687.jpg",
+          "targetAnnotatedFilename": "RP-16_RadPrimer_annotated_cd601687.jpg"
+        }
+      ],
+      "filenamePolicy": "Use source-qualified filenames such as SDX-04_STATdx_plain_b943a537.jpg and RP-05_RadPrimer_plain_4c827181.jpg. Narrative prose should use clean labels such as STATdx image 4 or RadPrimer image 5."
+    },
+    "generatorInstructions": [
+      "Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.",
+      "Use clean source-qualified labels in prose, such as STATdx image 7; keep RP-05/SDX-07 codes in registry, filenames, traceability fields, and import JSON.",
+      "Download only selectedPrimaryImageIds by default; archiveOptionalImageIds are available for recovery/review and should not drive default cards or lectures.",
+      "Use canonicalHierarchy exactly as copied from metadata.json for deckPath and any IMAIOS breadcrumb routing.",
+      "Do not fabricate Core Radiology support; no auditable Core pages were supplied or retrieved in this source bundle."
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 NUCLEAR MEDICINE APPEARANCE ENCODING RULE (MANDATORY WHEN SOURCE SUPPORTS)
 
 If the provided Core/RadPrimer/STATdx source explicitly describes nuclear medicine appearance
-(for example tracer uptake or non-uptake, photopenia, warm-versus-cold behavior, scintigraphic distribution, PET avidity, tracer-specific discriminator behavior, or source-named nuclear medicine pivots):
+(for example tracer uptake or non-uptake, photopenia, warm-versus-cold behavior, scintigraphic distribution, PET avidity, retention, washout, excretion, phase/timing, biodistribution, tracer-specific discriminator behavior, or source-named nuclear medicine pivots):
 
 You MUST generate at least ONE dedicated High-Yield card encoding that nuclear medicine appearance.
 
@@ -10,7 +10,8 @@ You MUST generate at least ONE dedicated High-Yield card encoding that nuclear m
 Rules:
 - Nuclear medicine details may be included ONLY if explicitly stated in the source.
 - Include the tracer or exam name exactly as written when possible.
-- Do NOT infer uptake, photopenia, avidity, washout, or physiologic distribution unless source-supported.
+- Include uptake, photopenia, avidity, retention, washout, excretion, phase/timing, or physiologic biodistribution only if source-supported.
+- Do NOT infer uptake, photopenia, avidity, washout, retention, excretion, timing, or physiologic distribution unless source-supported.
 - Do NOT generalize one tracer's behavior to another tracer.
 - Do NOT convert source silence into a negative finding.
 - Keep the card tight: 2-6 short lines max.
@@ -18,12 +19,14 @@ Rules:
 Recommended format:
 
 High_Yield_Q:
-"For [ENTITY], what nuclear medicine appearance is expected (as stated in source)?"
+"For [ENTITY], what tracer-specific nuclear medicine or PET/SPECT pattern should be recognized?"
 
 High_Yield_A:
 - Tracer / exam: [source-stated tracer or study]
-- Appearance: [source-stated uptake, photopenia, or other behavior]
-- Exam pivot: [one line: why this helps recognize or discriminate]
+- Appearance: [source-stated uptake, photopenia, avidity, retention, washout, excretion, distribution, or other behavior]
+- Timing / phase: [only if explicitly stated]
+- Imaging specificity: [Diagnostic / Strongly suggestive / Nonspecific / Requires correlation, only when relevant]
+- Recognition pivot: [one line: why this helps recognize or discriminate]
 
 If the nuclear medicine description is too long:
 - Split into multiple High-Yield cards ONLY if each card is its own distinct exam pivot.

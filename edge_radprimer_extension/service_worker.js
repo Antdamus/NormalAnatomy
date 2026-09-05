@@ -530,7 +530,7 @@ async function getImaiosChunkLibraryTargetUrl(library) {
   const explicitUrl = chunks
     .map((chunk) => String(chunk?.modalityUrl || chunk?.url || "").trim())
     .find((url) => /^https:\/\/(www\.)?imaios\.com\/.+/i.test(url));
-  if (explicitUrl) return explicitUrl;
+  if (explicitUrl) return normalizeImaiosAutomationUrl(explicitUrl);
 
   const modules = await loadImaiosModuleCatalog();
   const query = getImaiosChunkRouteQuery(library);
@@ -539,17 +539,31 @@ async function getImaiosChunkLibraryTargetUrl(library) {
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score);
 
-  if (scored[0]?.module?.url && scored[0].score >= 35) return scored[0].module.url;
+  if (scored[0]?.module?.url && scored[0].score >= 35) return normalizeImaiosAutomationUrl(scored[0].module.url);
   return "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone";
 }
 
+function normalizeImaiosAutomationUrl(rawUrl) {
+  const fallback = "https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone";
+  try {
+    const url = new URL(String(rawUrl || fallback));
+    if (!/^https?:$/i.test(url.protocol) || !/(^|\.)imaios\.com$/i.test(url.hostname)) return fallback;
+    url.hash = "";
+    url.searchParams.delete("ul");
+    return url.toString();
+  } catch (_error) {
+    return fallback;
+  }
+}
+
 async function openOrFocusImaiosTab(targetUrl) {
+  const safeTargetUrl = normalizeImaiosAutomationUrl(targetUrl);
   const tabs = await chrome.tabs.query({ url: ["https://imaios.com/*", "https://www.imaios.com/*"] });
   let tab = tabs?.[0];
   if (tab?.id) {
-    tab = await chrome.tabs.update(tab.id, { active: true, url: targetUrl });
+    tab = await chrome.tabs.update(tab.id, { active: true, url: safeTargetUrl });
   } else {
-    tab = await chrome.tabs.create({ url: targetUrl, active: true });
+    tab = await chrome.tabs.create({ url: safeTargetUrl, active: true });
   }
   await waitForTabComplete(tab.id, 60000, "IMAIOS");
   return tab;
@@ -3179,6 +3193,106 @@ function summarizeCachedComparisonSources(cache) {
     .join(", ");
 }
 
+function buildSourceCompareRuntimeSource({ pending, bundle }) {
+  const metadata = bundle?.metadata || {};
+  const sourceKind = normalizeSourceCompareKind(
+    metadata.sourceKind || pending?.extractionMeta?.sourceKind,
+    metadata.sourceLabel || metadata.primarySourceLabel || pending?.extractionMeta?.primarySourceLabel
+  );
+  const sourceLabel = metadata.sourceLabel || metadata.primarySourceLabel || sourceKind;
+  const sourcePackage = pending?.sourcePackage || "";
+  return {
+    sourceKind,
+    sourceLabel,
+    primarySourceLabel: metadata.primarySourceLabel || sourceLabel,
+    articleTitle: metadata.articleTitle || pending?.articleTitle || pending?.extractionMeta?.title || "",
+    sourcePairingKey: metadata.sourcePairingKey || "",
+    sourceUrl: metadata.sourceUrl || pending?.radPrimerUrl || "",
+    sourcePackage,
+    metadata,
+    imageRegistry: Array.isArray(metadata.imageRegistry)
+      ? metadata.imageRegistry
+      : buildSourceImageRegistryFromPending(pending),
+    downloadFiles: Array.isArray(metadata.downloadFiles) ? metadata.downloadFiles : pending?.downloadFiles || [],
+    files: bundle?.files || {},
+    downloadFolder: bundle?.downloadFolder || "",
+    fileBaseName: bundle?.fileBaseName || "",
+    cachedAt: new Date().toISOString(),
+    outputChars: String(sourcePackage).length
+  };
+}
+
+function buildSourceCompareStorageSource(source) {
+  const metadata = source?.metadata || {};
+  return {
+    sourceKind: source?.sourceKind || "",
+    sourceLabel: sourceCompareDisplayLabel(source),
+    primarySourceLabel: source?.primarySourceLabel || sourceCompareDisplayLabel(source),
+    articleTitle: source?.articleTitle || "",
+    sourcePairingKey: source?.sourcePairingKey || "",
+    sourceUrl: source?.sourceUrl || "",
+    sourcePackage: "",
+    metadata: {
+      articleTitle: metadata.articleTitle || source?.articleTitle || "",
+      sourceKind: metadata.sourceKind || source?.sourceKind || "",
+      sourceLabel: metadata.sourceLabel || source?.sourceLabel || "",
+      primarySourceLabel: metadata.primarySourceLabel || source?.primarySourceLabel || "",
+      sourcePairingKey: metadata.sourcePairingKey || source?.sourcePairingKey || "",
+      sourcePairingFolder: metadata.sourcePairingFolder || "",
+      sourceComparisonFolder: metadata.sourceComparisonFolder || "",
+      sourceComparisonFileBase: metadata.sourceComparisonFileBase || "",
+      breadcrumbTrail: Array.isArray(metadata.breadcrumbTrail) ? metadata.breadcrumbTrail : [],
+      imageCount: Array.isArray(source?.imageRegistry) ? source.imageRegistry.length : 0
+    },
+    imageRegistry: [],
+    downloadFiles: [],
+    files: source?.files || {},
+    downloadFolder: source?.downloadFolder || "",
+    fileBaseName: source?.fileBaseName || "",
+    cachedAt: source?.cachedAt || new Date().toISOString(),
+    outputChars: source?.outputChars ?? 0,
+    storageLightweight: true
+  };
+}
+
+function isQuotaExceededError(error) {
+  const text = String(error?.message || error || "").toLowerCase();
+  return error?.name === "QuotaExceededError" || text.includes("quota") || text.includes("quotabytes");
+}
+
+async function clearSourceCompareStorageCaches() {
+  const stored = await chrome.storage.local.get(null);
+  const keys = Object.keys(stored).filter((key) => key.startsWith(SOURCE_COMPARE_CACHE_PREFIX));
+  if (keys.length) await chrome.storage.local.remove(keys);
+  return keys.length;
+}
+
+async function clearMasterSourceStorageCaches() {
+  const stored = await chrome.storage.local.get(null);
+  const keys = Object.keys(stored).filter(
+    (key) =>
+      key === MASTER_SOURCE_CACHE_KEY ||
+      key.startsWith(MASTER_SOURCE_CACHE_PREFIX) ||
+      key.startsWith(SOURCE_COMPARE_CACHE_PREFIX) ||
+      key.startsWith(PENDING_GROUPING_PREFIX) ||
+      key.startsWith(PENDING_CARD_AUDIT_PREFIX)
+  );
+  if (keys.length) await chrome.storage.local.remove(keys);
+  return keys.length;
+}
+
+async function clearPendingAndSourceCompareStorageCaches() {
+  const stored = await chrome.storage.local.get(null);
+  const keys = Object.keys(stored).filter(
+    (key) =>
+      key.startsWith(SOURCE_COMPARE_CACHE_PREFIX) ||
+      key.startsWith(PENDING_GROUPING_PREFIX) ||
+      key.startsWith(PENDING_CARD_AUDIT_PREFIX)
+  );
+  if (keys.length) await chrome.storage.local.remove(keys);
+  return keys.length;
+}
+
 async function cacheSourceCompareBundle({ pending, bundle }) {
   const metadata = bundle?.metadata || {};
   const title = metadata.articleTitle || pending?.articleTitle || pending?.extractionMeta?.title || "";
@@ -3186,11 +3300,8 @@ async function cacheSourceCompareBundle({ pending, bundle }) {
   const key = getSourceCompareCacheKeyFromPairingKey(sourcePairingKey);
   if (!key) return null;
 
-  const sourceKind = normalizeSourceCompareKind(
-    metadata.sourceKind || pending?.extractionMeta?.sourceKind,
-    metadata.sourceLabel || metadata.primarySourceLabel || pending?.extractionMeta?.primarySourceLabel
-  );
-  const sourceLabel = metadata.sourceLabel || metadata.primarySourceLabel || sourceKind;
+  const source = buildSourceCompareRuntimeSource({ pending, bundle });
+  const sourceKind = source.sourceKind;
   const stored = await chrome.storage.local.get(key);
   const cache = stored[key] || {
     articleTitle: title,
@@ -3217,26 +3328,21 @@ async function cacheSourceCompareBundle({ pending, bundle }) {
   cache.updatedAt = new Date().toISOString();
   cache.sources = {
     ...(cache.sources || {}),
-    [sourceKind]: {
-      sourceKind,
-      sourceLabel,
-      primarySourceLabel: metadata.primarySourceLabel || sourceLabel,
-      articleTitle: title,
-      sourcePairingKey,
-      sourceUrl: metadata.sourceUrl || pending?.radPrimerUrl || "",
-      sourcePackage: pending?.sourcePackage || "",
-      metadata,
-      imageRegistry: Array.isArray(metadata.imageRegistry) ? metadata.imageRegistry : buildSourceImageRegistryFromPending(pending),
-      downloadFiles: Array.isArray(metadata.downloadFiles) ? metadata.downloadFiles : pending?.downloadFiles || [],
-      files: bundle?.files || {},
-      downloadFolder: bundle?.downloadFolder || "",
-      fileBaseName: bundle?.fileBaseName || "",
-      cachedAt: new Date().toISOString(),
-      outputChars: String(pending?.sourcePackage || "").length
-    }
+    [sourceKind]: buildSourceCompareStorageSource(source)
   };
 
-  await chrome.storage.local.set({ [key]: cache });
+  try {
+    await chrome.storage.local.set({ [key]: cache });
+  } catch (error) {
+    if (!isQuotaExceededError(error)) throw error;
+    console.warn("[RadPrimer] Source-comparison cache quota exceeded; clearing old comparison caches and retrying lightweight cache.", error);
+    try {
+      await clearSourceCompareStorageCaches();
+      await chrome.storage.local.set({ [key]: cache });
+    } catch (retryError) {
+      console.warn("[RadPrimer] Source-comparison cache skipped after quota cleanup.", retryError);
+    }
+  }
   return cache;
 }
 
@@ -4364,6 +4470,7 @@ async function stageSourceCompareBundle({ pending }) {
   const metadataFilename = `${downloadPlan.fileBaseName}_metadata.json`;
   const instructionsFilename = `${downloadPlan.fileBaseName}_source_compare_instructions.md`;
   const evidenceFilename = `${downloadPlan.fileBaseName}_image_evidence_manifest.json`;
+  const wakeMessageFilename = `${downloadPlan.fileBaseName}_codex_wake_message.txt`;
   const markerFilename = `${downloadPlan.fileBaseName}_source_compare_bundle.txt`;
 
   await downloadSourceCompareTextFile(downloadPlan.articleFolderName, sourcePackageFilename, pending.sourcePackage || "");
@@ -4385,13 +4492,8 @@ async function stageSourceCompareBundle({ pending }) {
     JSON.stringify(metadata.imageEvidence, null, 2),
     "application/json;charset=utf-8"
   );
-  await downloadSourceCompareTextFile(
-    downloadPlan.articleFolderName,
-    markerFilename,
-    `sourceCompare=true\ncreatedAt=${createdAt}\narticleTitle=${title}\nsourceLabel=${sourceLabel}\nsourcePairingKey=${metadata.sourcePairingKey || ""}\nsourcePairingFolder=${metadata.sourcePairingFolder || ""}\n`
-  );
 
-  return {
+  const bundle = {
     folderName: downloadPlan.articleFolderName,
     fileBaseName: downloadPlan.fileBaseName,
     downloadFolder: `Downloads\\${SOURCE_COMPARE_SUBFOLDER}\\${downloadPlan.articleFolderName}`,
@@ -4400,10 +4502,25 @@ async function stageSourceCompareBundle({ pending }) {
       metadata: metadataFilename,
       instructions: instructionsFilename,
       imageEvidence: evidenceFilename,
+      codexWakeMessage: wakeMessageFilename,
       marker: markerFilename
     },
     metadata
   };
+
+  await downloadSourceCompareTextFile(
+    downloadPlan.articleFolderName,
+    wakeMessageFilename,
+    buildSourceCompareWakeMessage(bundle)
+  );
+
+  await downloadSourceCompareTextFile(
+    downloadPlan.articleFolderName,
+    markerFilename,
+    `sourceCompare=true\ncreatedAt=${createdAt}\narticleTitle=${title}\nsourceLabel=${sourceLabel}\nsourcePairingKey=${metadata.sourcePairingKey || ""}\nsourcePairingFolder=${metadata.sourcePairingFolder || ""}\n`
+  );
+
+  return bundle;
 }
 
 async function stageMasterSourceRequestBundle({
@@ -4490,6 +4607,7 @@ async function stageMasterSourceRequestBundle({
   const metadataFilename = "metadata.json";
   const instructionsFilename = "master_source_request.md";
   const evidenceFilename = "image_evidence_manifest.json";
+  const wakeMessageFilename = "codex_wake_message.txt";
   const markerFilename = "_master_source_request_complete.txt";
 
   await downloadMasterSourceTextFile(
@@ -4531,13 +4649,7 @@ async function stageMasterSourceRequestBundle({
     );
   }
 
-  await downloadMasterSourceTextFile(
-    folderName,
-    markerFilename,
-    `masterSourceRequest=true\ncreatedAt=${createdAt}\narticleTitle=${title}\nsources=${sourceList.map(sourceCompareDisplayLabel).join(", ")}\n`
-  );
-
-  return {
+  const bundle = {
     folderName,
     fileBaseName: downloadPlan.fileBaseName,
     downloadFolder: `Downloads\\${MASTER_SOURCE_SUBFOLDER}\\${folderName}`,
@@ -4545,10 +4657,25 @@ async function stageMasterSourceRequestBundle({
       metadata: metadataFilename,
       request: instructionsFilename,
       imageEvidence: evidenceFilename,
+      codexWakeMessage: wakeMessageFilename,
       marker: markerFilename
     },
     metadata
   };
+
+  await downloadMasterSourceTextFile(
+    folderName,
+    wakeMessageFilename,
+    buildMasterSourceWakeMessage(bundle)
+  );
+
+  await downloadMasterSourceTextFile(
+    folderName,
+    markerFilename,
+    `masterSourceRequest=true\ncreatedAt=${createdAt}\narticleTitle=${title}\nsources=${sourceList.map(sourceCompareDisplayLabel).join(", ")}\n`
+  );
+
+  return bundle;
 }
 
 function parseJsonMaybe(text, fallback = null) {
@@ -4687,18 +4814,37 @@ function buildMasterSourceCacheFromFiles(files = []) {
 
 async function storeMasterSourceCache(cache) {
   const finalCache = normalizeMasterSourceCache(cache);
-  const titleKey = getMasterSourceCacheKey(finalCache.articleTitle);
   const payload = {
     [MASTER_SOURCE_CACHE_KEY]: finalCache
   };
-  if (titleKey) payload[titleKey] = finalCache;
-  await chrome.storage.local.set(payload);
+  try {
+    finalCache.storageArea = "local";
+    await chrome.storage.local.set(payload);
+  } catch (error) {
+    if (!isQuotaExceededError(error)) throw error;
+    console.warn("[RadPrimer] Master-source import quota exceeded; clearing old master/source caches and retrying.", error);
+    await clearMasterSourceStorageCaches();
+    try {
+      finalCache.storageArea = "local";
+      await chrome.storage.local.set(payload);
+    } catch (retryError) {
+      if (!isQuotaExceededError(retryError) || !chrome.storage?.session) throw retryError;
+      console.warn("[RadPrimer] Master-source import using session storage after local quota retry failed.", retryError);
+      finalCache.storageArea = "session";
+      await chrome.storage.session.set(payload);
+    }
+  }
   return finalCache;
 }
 
 async function getLatestMasterSourceCache() {
   const stored = await chrome.storage.local.get(MASTER_SOURCE_CACHE_KEY);
-  return stored[MASTER_SOURCE_CACHE_KEY] || null;
+  if (stored[MASTER_SOURCE_CACHE_KEY]) return stored[MASTER_SOURCE_CACHE_KEY];
+  if (chrome.storage?.session) {
+    const sessionStored = await chrome.storage.session.get(MASTER_SOURCE_CACHE_KEY);
+    if (sessionStored[MASTER_SOURCE_CACHE_KEY]) return sessionStored[MASTER_SOURCE_CACHE_KEY];
+  }
+  return null;
 }
 
 function buildMasterSourcePromptPackage(settings, promptText, masterSource) {
@@ -5315,31 +5461,65 @@ function parseGroupingAudit(text) {
 }
 
 async function savePendingGroupingRun(pendingId, payload) {
-  await chrome.storage.local.set({ [`${PENDING_GROUPING_PREFIX}${pendingId}`]: payload });
+  return saveQuotaSafeStorageItem(`${PENDING_GROUPING_PREFIX}${pendingId}`, payload, "Pending grouping run");
 }
 
 async function takePendingGroupingRun(pendingId) {
   const key = `${PENDING_GROUPING_PREFIX}${pendingId}`;
   const stored = await chrome.storage.local.get(key);
-  return stored[key] || null;
+  if (stored[key]) return stored[key];
+  if (chrome.storage?.session) {
+    const sessionStored = await chrome.storage.session.get(key);
+    if (sessionStored[key]) return sessionStored[key];
+  }
+  return null;
 }
 
 async function clearPendingGroupingRun(pendingId) {
-  await chrome.storage.local.remove(`${PENDING_GROUPING_PREFIX}${pendingId}`);
+  const key = `${PENDING_GROUPING_PREFIX}${pendingId}`;
+  await chrome.storage.local.remove(key);
+  if (chrome.storage?.session) await chrome.storage.session.remove(key);
+}
+
+async function saveQuotaSafeStorageItem(key, payload, label, cleanup = clearPendingAndSourceCompareStorageCaches) {
+  try {
+    await chrome.storage.local.set({ [key]: payload });
+    return "local";
+  } catch (error) {
+    if (!isQuotaExceededError(error)) throw error;
+    console.warn(`[RadPrimer] ${label} local storage quota exceeded; clearing old pending/source caches and retrying.`, error);
+    await cleanup();
+    try {
+      await chrome.storage.local.set({ [key]: payload });
+      return "local";
+    } catch (retryError) {
+      if (!isQuotaExceededError(retryError) || !chrome.storage?.session) throw retryError;
+      console.warn(`[RadPrimer] ${label} using session storage after local quota retry failed.`, retryError);
+      await chrome.storage.session.set({ [key]: payload });
+      return "session";
+    }
+  }
 }
 
 async function savePendingCardAuditRun(pendingId, payload) {
-  await chrome.storage.local.set({ [`${PENDING_CARD_AUDIT_PREFIX}${pendingId}`]: payload });
+  return saveQuotaSafeStorageItem(`${PENDING_CARD_AUDIT_PREFIX}${pendingId}`, payload, "Pending card audit run");
 }
 
 async function takePendingCardAuditRun(pendingId) {
   const key = `${PENDING_CARD_AUDIT_PREFIX}${pendingId}`;
   const stored = await chrome.storage.local.get(key);
-  return stored[key] || null;
+  if (stored[key]) return stored[key];
+  if (chrome.storage?.session) {
+    const sessionStored = await chrome.storage.session.get(key);
+    if (sessionStored[key]) return sessionStored[key];
+  }
+  return null;
 }
 
 async function clearPendingCardAuditRun(pendingId) {
-  await chrome.storage.local.remove(`${PENDING_CARD_AUDIT_PREFIX}${pendingId}`);
+  const key = `${PENDING_CARD_AUDIT_PREFIX}${pendingId}`;
+  await chrome.storage.local.remove(key);
+  if (chrome.storage?.session) await chrome.storage.session.remove(key);
 }
 
 function normalizeAuditMatchText(value) {
@@ -5390,7 +5570,12 @@ function uniqueAuditLabels(values) {
 
 async function getAllPendingCardAuditRuns() {
   const stored = await chrome.storage.local.get(null);
-  return Object.entries(stored)
+  const sessionStored = chrome.storage?.session ? await chrome.storage.session.get(null) : {};
+  const combined = {
+    ...sessionStored,
+    ...stored
+  };
+  return Object.entries(combined)
     .filter(([key, value]) => key.startsWith(PENDING_CARD_AUDIT_PREFIX) && value)
     .map(([key, pending]) => ({
       pendingId: key.slice(PENDING_CARD_AUDIT_PREFIX.length),
@@ -5894,19 +6079,20 @@ async function exportRadPrimerAuditSourceOnly(tab) {
     createdAt: Date.now(),
     manualTsvCapture: true
   };
-  await savePendingCardAuditRun(pendingId, pending);
+  const storageArea = await savePendingCardAuditRun(pendingId, pending);
 
   await sendPageStatus(
     tab.id,
     "Audit TSV Ready",
-    `Prepared ${pending.articleTitle || "this topic"} for TSV capture. Open the finished ChatGPT cards response and click Capture TSV.`,
+    `Prepared ${pending.articleTitle || "this topic"} for TSV capture. Open the finished ChatGPT cards response and click Capture TSV. Storage: ${storageArea === "session" ? "browser session fallback" : "browser local cache"}.`,
     { done: true }
   );
 
   return {
     pendingId,
     articleTitle: pending.articleTitle || "",
-    message: `Prepared ${pending.articleTitle || "this topic"} for TSV capture. Open the finished ChatGPT cards response and click Capture TSV.`
+    storageArea,
+    message: `Prepared ${pending.articleTitle || "this topic"} for TSV capture. Open the finished ChatGPT cards response and click Capture TSV. Storage: ${storageArea === "session" ? "browser session fallback" : "browser local cache"}.`
   };
 }
 
@@ -5945,6 +6131,7 @@ async function exportArticleSourceComparison(tab, options = {}) {
     createdAt: Date.now()
   };
   const bundle = await stageSourceCompareBundle({ pending });
+  const sourceRecord = buildSourceCompareRuntimeSource({ pending, bundle });
   const cache = await cacheSourceCompareBundle({ pending, bundle });
   const clipboardText = buildSourceCompareWakeMessage(bundle);
   const cacheMessage = cache
@@ -5961,7 +6148,9 @@ async function exportArticleSourceComparison(tab, options = {}) {
   return {
     bundle,
     cache,
+    sourceRecord,
     clipboardText,
+    codexWakeMessage: clipboardText,
     message: `Saved comparison source bundle: ${bundle.downloadFolder}.${cacheMessage}`
   };
 }
@@ -6030,7 +6219,12 @@ async function runMasterSourceFromPage(tab, options = {}) {
   const companionExport = await exportArticleSourceComparison(companionChoice.tab, { settingsOverride });
 
   let cache = (sourcePairingKey && (await getSourceCompareCacheByPairingKey(sourcePairingKey))) || currentExport.cache || companionExport.cache;
-  let pair = getMasterSourcePairFromCache(cache);
+  const runtimeSourcesByKind = {};
+  for (const source of [currentExport.sourceRecord, companionExport.sourceRecord]) {
+    if (source?.sourceKind) runtimeSourcesByKind[source.sourceKind] = source;
+  }
+  let pair = [runtimeSourcesByKind.radprimer, runtimeSourcesByKind.statdx].filter(Boolean);
+  if (pair.length < 2) pair = getMasterSourcePairFromCache(cache);
   let sourcePairingMatch = titlesMatch
     ? null
     : {
@@ -6062,13 +6256,14 @@ async function runMasterSourceFromPage(tab, options = {}) {
   const matchNote = sourcePairingMatch
     ? ` Shared title: "${canonicalTitle}".`
     : ` Pairing key: ${sourcePairingKey || "article title"}.`;
-  const message = `Prepared Codex master-source request bundle: ${bundle.downloadFolder}.${matchNote} Wake-up message copied to clipboard.`;
+  const message = `Prepared Codex master-source request bundle: ${bundle.downloadFolder}.${matchNote} Wake-up message saved as codex_wake_message.txt and sent to the UI for copy/paste.`;
   await sendPageStatus(tab.id, "Master Source Ready", message, { done: true });
 
   return {
     message,
     bundle,
     clipboardText,
+    codexWakeMessage: clipboardText,
     sourcePairingKey,
     sourcePairingMatch,
     cachedSources: pair.map(sourceCompareDisplayLabel),
@@ -6317,7 +6512,8 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
           importedAt: stored.importedAt,
           outputChars: stored.outputChars,
           imageCount: stored.imageRegistry.length,
-          downloadFileCount: stored.downloadFiles.length
+          downloadFileCount: stored.downloadFiles.length,
+          storageArea: stored.storageArea || "local"
         }
       });
     })().catch((error) => {
@@ -6338,7 +6534,8 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
               importedAt: stored.importedAt,
               outputChars: stored.outputChars,
               imageCount: stored.imageRegistry?.length || 0,
-              downloadFileCount: stored.downloadFiles?.length || 0
+              downloadFileCount: stored.downloadFiles?.length || 0,
+              storageArea: stored.storageArea || "local"
             }
           : null
       });

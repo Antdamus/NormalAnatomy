@@ -41,7 +41,9 @@ AUTO_FILE_PREFIX_FROM_TITLE = False
 
 CHATGPT_AUTONOMOUS_PROMPT = r"""# Autonomous Execution Override
 
-For this run, operate in autonomous batch mode.
+Operate autonomously for this generation task.
+
+This operational instruction is never card content and must never appear in any TSV field.
 
 Do not stop to ask for user permission between section previews, audits, repairs, or export steps after the Core Validation Gate is satisfied.
 
@@ -55,7 +57,7 @@ Once the Core Validation Gate is satisfied, continue autonomously.
 
 If the embedded prompt says to wait for user approval, explicit "approved," "next section," or re-approval after revision, treat that requirement as pre-authorized for this run.
 
-In autonomous batch mode:
+In autonomous generation mode:
 - section previews are internal validation checkpoints unless a hard stop or major repair explanation must be shown
 - do not output user-facing section-by-section previews by default
 - "approved preview set" means the most recent internally validated section or full-deck snapshot that passed automatic checks
@@ -282,7 +284,7 @@ Do not emit TSV.
 ### E. Stop for approval if human approval is part of the workflow
 
 If the workflow requires user approval, stop after preview.
-If operating in autonomous batch mode, continue only after passing all automatic checks.
+If operating in autonomous generation mode, continue only after passing all automatic checks.
 
 ### F. Repair failures immediately
 

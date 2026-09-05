@@ -1,0 +1,2871 @@
+{
+  "version": 1,
+  "articleTitle": "Cystic Hepatic Mass",
+  "createdAt": "2026-09-04T11:39:43Z",
+  "packageText": "=== MASTER SOURCE PACKAGE ===\nTITLE: Cystic Hepatic Mass\nSOURCE SYNTHESIS: RadPrimer canonical hierarchy/backbone with STATdx supplemental depth and curated STATdx primary image set\n\n=== CANONICAL HIERARCHY ===\nAll Categories > Basic > Gastrointestinal > Liver > Cystic Hepatic Mass\nCanonical deck path: Corebook::GI::Liver::Cystic Hepatic Mass\nRouting note: canonicalHierarchy is copied exactly from metadata.json; STATdx breadcrumbs were not used for deck routing or IMAIOS/packageText routing.\n\n=== SOURCE ATTRIBUTION RULES ===\n- [Both] = supported by both RadPrimer and STATdx source packages.\n- [RadPrimer] = RadPrimer-only or RadPrimer-preferred canonical hierarchy/detail.\n- [STATdx] = supplemental STATdx image example, caption detail, modality variant, follow-up/procedure context, or curated primary image rendering.\n\n=== IMAGE COVERAGE GATE ===\nSTATdx fully covers the RadPrimer image set: all 16 RadPrimer images have matching STATdx images with the same stable source image IDs, and visual inspection of staged image_evidence files/contact sheet shows the same source images/slices/screenshots with only source rendering/resolution differences. The curated default download set is therefore STATdx images 1-22, preserving the full STATdx sequence and 6 additional STATdx-only teaching images; RadPrimer images 1-16 are retained as archive-optional exact duplicates for traceability.\n- RadPrimer image 1: exactDuplicate; related STATdx image: STATdx image 1. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 2: exactDuplicate; related STATdx image: STATdx image 4. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 3: exactDuplicate; related STATdx image: STATdx image 5. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 4: exactDuplicate; related STATdx image: STATdx image 6. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 5: exactDuplicate; related STATdx image: STATdx image 7. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 6: exactDuplicate; related STATdx image: STATdx image 8. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 7: exactDuplicate; related STATdx image: STATdx image 9. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 8: exactDuplicate; related STATdx image: STATdx image 12. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 9: exactDuplicate; related STATdx image: STATdx image 13. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 10: exactDuplicate; related STATdx image: STATdx image 16. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 11: exactDuplicate; related STATdx image: STATdx image 17. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 12: exactDuplicate; related STATdx image: STATdx image 18. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 13: exactDuplicate; related STATdx image: STATdx image 19. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 14: exactDuplicate; related STATdx image: STATdx image 20. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 15: exactDuplicate; related STATdx image: STATdx image 21. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n- RadPrimer image 16: exactDuplicate; related STATdx image: STATdx image 22. STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery.\n\n=== DIFFERENTIAL DIAGNOSIS ===\n- [RadPrimer] Common: Hepatic cyst; autosomal dominant polycystic disease, liver; hepatic pyogenic abscess; biliary hamartomas; hepatic metastases; hepatic amebic abscess; biloma/seroma; steatosis/fatty liver mimic.\n- [RadPrimer] Less common: Hepatic candidiasis; hepatic hydatid cyst; biliary cystadenoma/carcinoma; biliary intraductal papillary mucinous neoplasm; hepatocellular carcinoma; Caroli disease; undifferentiated hepatic sarcoma; intrahepatic pseudocyst; hepatic inflammatory pseudotumor; ciliated hepatic foregut cyst.\n\n=== HIGH-YIELD DISCRIMINATORS ===\n- [Both] Mural nodularity, enhancing wall/septa, internal debris, high-attenuation blood, bile-duct communication, and interval change are the main discriminators for cystic hepatic masses.\n- [Both] Compare with prior studies: simple cysts change size slowly, abscesses can change quickly, and treated tumors such as GIST metastases may become cystic and simulate benign cysts.\n- [Both] Multiplanar review matters: coronal and sagittal imaging can reveal morphology, true lesion number, biliary communication, daughter cysts, or surgical/traumatic context.\n- [Both] A lesion that looks cystic but has a mural nodule, solid component, arterial hyperenhancement/washout, enhancing septa, or ductal surface nodularity should be treated as tumor until proven otherwise.\n- [Both] Clinical setting is decisive for infection and collections: fever/immunosuppression suggests abscess/candidiasis; trauma, surgery, ablation, or transplant suggests biloma/seroma; endemic exposure plus serology supports hydatid or amebic disease.\n- [Both] Steatosis is an important mimic: focal fat can approach water attenuation on noncontrast CT, but US echogenicity and opposed-phase MR signal dropout distinguish it from a true cystic mass.\n\n=== DIAGNOSIS-SPECIFIC SYNTHESIS ===\n- [Both] Hepatic cyst: Water attenuation, no visible wall, no enhancement, no mural nodularity, very bright T2/dark T1 signal, and sonolucent US with acoustic enhancement. One or two thin septa may occur. Hemorrhage can make a benign cyst difficult to separate from cystic neoplasm. Use STATdx images 1-3 for uncomplicated, obstructing, and hemorrhagic cyst variants.\n- [Both] Autosomal dominant polycystic disease of the liver: Numerous cysts of varying size can produce massive hepatomegaly but rarely impair liver function. Diagnosis is not made from liver cysts alone; look for cysts in other organs, family history, or genetic testing. Use STATdx image 4 for the core pattern.\n- [Both] Hepatic pyogenic abscess: Multiloculated/multiseptate complex cyst cluster with enhancing wall or septa; peripheral lesions near the diaphragm may have adjacent atelectasis or pleural effusion. Etiologies include surgery/trauma, cholecystitis/cholangitis, or hematogenous spread from colon. Use STATdx image 5 for complex abscess with aspiration/drainage context.\n- [Both] Biliary hamartomas: Innumerable small low-attenuation lesions that mimic cysts on CT/MR, often 1-1.5 cm, sometimes with echogenic or enhancing wall nodules. Lack of larger cystic lesions and lack of extrahepatic cysts helps distinguish them from polycystic liver disease. Use STATdx images 6-8 as a CT/US/MRCP multimodality cluster.\n- [Both] Hepatic metastases: Cystic metastases may arise from cystic primaries such as ovarian tumor, squamous cell metastases, mucinous adenocarcinoma, sarcomas, or treated GIST. Mural nodularity on CT, US, or MR is a key clue. Use STATdx image 9 for a cystic thyroid metastasis with mural nodule and STATdx images 10-11 as an atomic gastric GIST treatment-response cluster.\n- [Both] Hepatic amebic abscess: Typically solitary, peripheral, round or ovoid, and diagnosis usually rests on imaging plus clinical presentation and serology. Use STATdx image 12 for the classic shaggy encapsulated cystic mass.\n- [Both] Biloma/seroma: Occurs after trauma, partial liver resection, or radiofrequency ablation; uninfected collections may not require drainage and may take weeks to months to resolve. In a liver allograft, biloma from hepatic artery thrombosis with biliary necrosis is ominous. Use STATdx image 13 for posttraumatic biloma/seroma and STATdx images 14-15 as the transplant hepatic-artery-thrombosis cluster.\n- [Both] Hepatic candidiasis: Innumerable microabscesses, often less than 1 cm, with target or wheel appearance in immunocompromised patients; fungal and mycobacterial opportunistic infection may overlap. Use STATdx image 16.\n- [Both] Hepatic hydatid cyst: Solitary or multiple cysts with discrete peripheral wall with or without calcification; mother cyst contains hydatid matrix/sand and daughter cysts or scolices. Use STATdx image 17.\n- [Both] Biliary cystadenoma/carcinoma: Usually a solitary, large, multiseptate mass with enhancing wall and septa, classically in middle-aged women. Complete resection is essential to prevent recurrence. Use STATdx image 18.\n- [Both] Biliary intraductal papillary mucinous neoplasm: Bile-duct tumor can produce mucin that distends ducts and simulates a cystic mass; nodular enhancing components raise concern for cholangiocarcinoma. Use STATdx image 19.\n- [Both] Hepatocellular carcinoma: Spontaneous or treatment necrosis can simulate a cystic mass; solid arterial hyperenhancing components and delayed washout point back to HCC. No selected source image uniquely illustrates HCC in this bundle, so retain as a text differential.\n- [Both] Caroli disease: Cystic intrahepatic bile-duct dilation communicates with bile ducts; MRCP or ERCP is recommended, and central dot sign reflects dilated ducts around portal vein radicles. Use STATdx image 20.\n- [Both] Undifferentiated hepatic sarcoma: Rare aggressive primary hepatic tumor, usually a very large solitary encapsulated mass with peripheral hypervascular solid component, complex cystic spaces, focal hemorrhage, and possible paradoxical solid US/cystic CT-MR appearance from myxoid stroma. Use STATdx image 21.\n- [Both] Intrahepatic pseudocyst and hepatic inflammatory pseudotumor: Pseudocyst can dissect along portal triads and should prompt search for pancreatitis or adjacent pancreatic cyst; inflammatory pseudotumor more often mimics cholangiocarcinoma with delayed enhancement but rarely appears multiseptate/cystic. Retain as text differentials unless later images are supplied.\n- [Both] Ciliated hepatic foregut cyst: Rare congenital cyst, typically small and in segment IV, that may appear complex or solid on US. Use STATdx image 22.\n\n=== SELECTED PRIMARY IMAGE SET ===\n- STATdx image 1: Axial CECT in a 79-year-old woman shows a spherical liver mass <img src=\"arrow_WS.png\"> with water density, homogeneous contents. No internal debris or wall irregularities are present. Used for: simpleHepaticCyst, waterDensity, noWallNodularity, recognitionReinforcement, axialCECT.\n- STATdx image 2: Axial CECT shows an unusually large, simple hepatic cyst that caused compression and obstruction of the intrahepatic bile ducts <img src=\"arrow_WS.png\">. Used for: largeSimpleHepaticCyst, biliaryObstruction, STATdxSupplementalImage, recognitionReinforcement, axialCECT.\n- STATdx image 3: Axial T2 FS MR shows several large, contiguous hepatic cysts. Hemorrhage within the cysts accounts for decreased signal intensity within portions of the cysts <img src=\"arrow_WS.png\">. Used for: hemorrhagicHepaticCysts, T2SignalComplexity, STATdxSupplementalImage, recognitionReinforcement, axialT2FSMR.\n- STATdx image 4: Axial CECT shows innumerable hepatic cysts of water attenuation and varying size, causing hepatomegaly. Only a few small renal cysts are present, and renal function is normal. Used for: autosomalDominantPolycysticLiverDisease, hepatomegaly, multifocalWaterAttenuationCysts, recognitionReinforcement, axialCECT.\n- STATdx image 5: Axial CECT shows a liver mass with innumerable septa and slightly higher than water density contents <img src=\"arrow_WS.png\">. Needle aspiration yielded a small quantity of pus, and a catheter was inserted for drainage. The etiology was subacute diverticulitis. Used for: hepaticPyogenicAbscess, multiloculatedAbscess, septa, drainageContext, recognitionReinforcement, axialCECT.\n- STATdx image 6: Axial CECT in a 53-year-old man shows innumerable small, cystic lesions <img src=\"arrow_WS.png\"> throughout the liver, ranging in size from 2-15 mm. The lesions are often not perfectly spherical, and many have visible nodular enhancement within their walls. Used for: biliaryHamartomas, innumerableSmallCysticLesions, nodularWallEnhancement, recognitionReinforcement, axialCECT.\n- STATdx image 7: US shows only the lesions > 10 mm as cystic structures <img src=\"arrow_WS.png\">, while the smaller lesions are hyperechoic <img src=\"arrow_WC.png\"> to background liver. All are typical features of biliary hamartomas. Used for: biliaryHamartomas, ultrasoundVariant, smallHyperechoicLesions, recognitionReinforcement, US.\n- STATdx image 8: Coronal MRCP shows innumerable small, T2-hyperintense lesions that do not communicate with the biliary tree. Used for: biliaryHamartomas, MRCPVariant, noncommunicatingT2HyperintenseLesions, recognitionReinforcement, coronalMRCP.\n- STATdx image 9: Axial CECT shows several hypodense hepatic masses, including 1 cystic lesion <img src=\"arrow_WO.png\">. The subtle mural nodule <img src=\"arrow_BS.png\"> is the clue that this is a neoplasm (metastatic thyroid cancer). Used for: cysticHepaticMetastases, muralNodule, thyroidCancerMetastasis, recognitionReinforcement, axialCECT.\n- STATdx image 10: Axial CECT shows a heterogeneous, solid mass in the left lobe (that subsequently underwent cystic necrosis with treatment). This was found to be metastatic gastric GIST. Used for: gastricGISTMetastasis, pretreatmentSolidMass, samePatientFollowUpCluster, STATdxSupplementalImage, recognitionReinforcement, axialCECT.\n- STATdx image 11: Axial CECT shows a cystic lesion in the left lobe. This is a metastatic gastric GIST that responded to Gleevec therapy with complete necrosis. Used for: gastricGISTMetastasis, treatmentNecrosis, GleevecResponse, samePatientFollowUpCluster, STATdxSupplementalImage, recognitionReinforcement, axialCECT.\n- STATdx image 12: Axial CECT shows a shaggy, encapsulated, solitary cystic mass <img src=\"arrow_WS.png\"> with nonenhancing contents, representing a typical amebic abscess. The imaging appearance, clinical presentation, and serology usually suffice for diagnosis. Used for: hepaticAmebicAbscess, shaggyEncapsulatedCysticMass, clinicalSerologyCorrelation, recognitionReinforcement, axialCECT.\n- STATdx image 13: Axial CECT 3 weeks after a blunt traumatic liver laceration shows a lobulated, cystic lesion <img src=\"arrow_WS.png\"> that represents a combination of walled-off bile and blood, also known, respectively, as biloma and seroma. Clinical history and comparison with prior CT scans provide confident diagnosis. Used for: bilomaSeroma, postTraumaticLiverLaceration, walledOffBileBlood, historyComparison, recognitionReinforcement, axialCECT.\n- STATdx image 14: Axial CECT shows an irregular cystic lesion within a transplanted liver. This is a biloma with biliary necrosis as a result of hepatic artery thrombosis. Used for: transplantBiloma, hepaticArteryThrombosis, biliaryNecrosis, sameProcessCluster, STATdxSupplementalImage, recognitionReinforcement, axialCECT.\n- STATdx image 15: Axial CECT shows dilated bile ducts, peribiliary hepatic fluid, and a cystic biloma in a liver allograft, as a result of hepatic artery thrombosis. Used for: transplantBiloma, peribiliaryFluid, hepaticArteryThrombosis, sameProcessCluster, STATdxSupplementalImage, recognitionReinforcement, axialCECT.\n- STATdx image 16: Axial CECT in a febrile, immune-suppressed patient shows innumerable small, hypodense lesions in the liver with irregular walls. Other opportunistic hepatic infections may have a similar appearance. Used for: hepaticCandidiasis, microabscesses, immunosuppressedPatient, recognitionReinforcement, axialCECT.\n- STATdx image 17: Coronal CECT in immigrant from Middle East shows 2 large, multiseptate, cystic masses <img src=\"arrow_WS.png\">. Within outer pericyst are multiple daughter cysts or scolices. Imaging appearance, coupled with serology, is usually sufficient for diagnosis. Used for: hepaticHydatidCyst, daughterCysts, scolices, endemicTravelImmigrantContext, recognitionReinforcement, coronalCECT.\n- STATdx image 18: Coronal CECT in a middle-aged woman shows complex, cystic mass, lobulated margins, enhancing wall and septa <img src=\"arrow_WS.png\">. These findings with no other known tumor could be considered sufficiently diagnostic of biliary cystadenoma to warrant resection without further evaluation. Used for: biliaryCystadenomaCarcinoma, enhancingWallSepta, middleAgedWoman, resectionManagement, recognitionReinforcement, coronalCECT.\n- STATdx image 19: Axial CECT of biliary IPMN with cholangiocarcinoma shows dilated intrahepatic bile ducts and a cystic mass <img src=\"arrow_WO.png\">. ERCP showed opacification of the cyst with contrast and the presence of surface nodularity within the bile ducts. Used for: biliaryIPMN, cholangiocarcinomaConcern, bileDuctCommunication, surfaceNodularity, recognitionReinforcement, axialCECT.\n- STATdx image 20: Axial CECT in a woman with portal hypertension due to congenital hepatic fibrosis and Caroli disease shows splenomegaly, varices <img src=\"arrow_CC.png\">, and multiple hepatic cysts. These represent dilated intrahepatic bile ducts, draped around the central dot of accompanying portal veins <img src=\"arrow_CS.png\">. Used for: CaroliDisease, centralDotSign, portalHypertension, dilatedIntrahepaticBileDucts, recognitionReinforcement, axialCECT.\n- STATdx image 21: Coronal CECT in a man with RUQ pain shows a huge, multiseptate, cystic mass <img src=\"arrow_WS.png\"> with enhancing peripheral components. Intraperitoneal blood <img src=\"arrow_WC.png\"> was due to capsular rupture of this undifferentiated primary hepatic sarcoma. Used for: undifferentiatedHepaticSarcoma, hugeMultiseptateCysticMass, capsularRuptureHemoperitoneum, recognitionReinforcement, coronalCECT.\n- STATdx image 22: Axial T2 MR in a 29-year-old woman with a solid-appearing mass on US shows a complex, cystic-appearing mass in segment 4 that had no enhancement on other sequences. Resection proved ciliated hepatic foregut cyst. Used for: ciliatedHepaticForegutCyst, segment4ComplexCyst, T2MRVariant, resectionProof, recognitionReinforcement, axialT2MR.\n\n=== ARCHIVE-OPTIONAL DUPLICATE IMAGES ===\n- RadPrimer image 1: archiveOptionalDuplicate. Exact duplicate of STATdx image 1 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 2: archiveOptionalDuplicate. Exact duplicate of STATdx image 4 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 3: archiveOptionalDuplicate. Exact duplicate of STATdx image 5 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 4: archiveOptionalDuplicate. Exact duplicate of STATdx image 6 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 5: archiveOptionalDuplicate. Exact duplicate of STATdx image 7 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 6: archiveOptionalDuplicate. Exact duplicate of STATdx image 8 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 7: archiveOptionalDuplicate. Exact duplicate of STATdx image 9 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 8: archiveOptionalDuplicate. Exact duplicate of STATdx image 12 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 9: archiveOptionalDuplicate. Exact duplicate of STATdx image 13 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 10: archiveOptionalDuplicate. Exact duplicate of STATdx image 16 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 11: archiveOptionalDuplicate. Exact duplicate of STATdx image 17 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 12: archiveOptionalDuplicate. Exact duplicate of STATdx image 18 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 13: archiveOptionalDuplicate. Exact duplicate of STATdx image 19 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 14: archiveOptionalDuplicate. Exact duplicate of STATdx image 20 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 15: archiveOptionalDuplicate. Exact duplicate of STATdx image 21 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n- RadPrimer image 16: archiveOptionalDuplicate. Exact duplicate of STATdx image 22 based on shared stable source image ID, staged visual evidence review, and same source image/slice/screenshot; retained for RadPrimer traceability/recovery only.\n\n=== CASE CLUSTER NOTES ===\n- No source case cluster was intentionally split.\n- STATdx image 1, STATdx image 2, STATdx image 3: Simple hepatic cyst spectrum: uncomplicated water-density cyst, unusually large obstructing cyst, and hemorrhagic/complex T2 cyst appearance.\n- STATdx image 4: Innumerable water-attenuation cysts with hepatomegaly; few renal cysts and normal renal function in caption keep diagnosis nuanced.\n- STATdx image 6, STATdx image 7, STATdx image 8: CT, US, and MRCP examples of biliary hamartomas should remain together as multimodality recognition reinforcement.\n- STATdx image 10, STATdx image 11: STATdx-only gastric GIST metastasis pair shows pretreatment solid metastasis and post-Gleevec cystic necrosis; preserve as an atomic follow-up/treatment-response cluster.\n- STATdx image 13: Trauma-history biloma/seroma example depends on interval context and comparison with prior CT scans.\n- STATdx image 14, STATdx image 15: STATdx-only transplant biloma examples both teach hepatic artery thrombosis with biliary necrosis/peribiliary fluid and should remain together.\n- STATdx image 17: Large multiseptate cysts with daughter cysts/scolices and endemic/immigrant context.\n- STATdx image 18, STATdx image 19: Biliary cystadenoma/carcinoma and biliary IPMN/cholangiocarcinoma concern both hinge on enhancing wall/septa, duct communication, or nodularity.\n- STATdx image 20, STATdx image 21, STATdx image 22: Caroli disease central-dot sign, undifferentiated hepatic sarcoma, and ciliated hepatic foregut cyst cover key less-common mimics that should remain selected.\n- RadPrimer duplicate renderings were archived only because the equivalent STATdx source-image sequence was selected as the complete curated primary set.\n\n=== GENERATOR INSTRUCTIONS ===\n- Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.\n- Use clean source-qualified labels in prose, such as STATdx image 7; keep RP-05/SDX-07 codes in registry, filenames, traceability fields, and import JSON.\n- Download only selectedPrimaryImageIds by default; archiveOptionalImageIds are available for recovery/review and should not drive default cards or lectures.\n- Use canonicalHierarchy exactly as copied from metadata.json for deckPath and any IMAIOS breadcrumb routing.\n- Do not fabricate Core Radiology support; no auditable Core pages were supplied or retrieved in this source bundle.\n\n=== MACHINE-READABLE IMAGE SETS ===\nselectedPrimaryImageIds: SDX-01, SDX-02, SDX-03, SDX-04, SDX-05, SDX-06, SDX-07, SDX-08, SDX-09, SDX-10, SDX-11, SDX-12, SDX-13, SDX-14, SDX-15, SDX-16, SDX-17, SDX-18, SDX-19, SDX-20, SDX-21, SDX-22\narchiveOptionalImageIds: RP-01, RP-02, RP-03, RP-04, RP-05, RP-06, RP-07, RP-08, RP-09, RP-10, RP-11, RP-12, RP-13, RP-14, RP-15, RP-16\n",
+  "manifest": {
+    "articleTitle": "Cystic Hepatic Mass",
+    "canonicalHierarchy": [
+      "All Categories",
+      "Basic",
+      "Gastrointestinal",
+      "Liver",
+      "Cystic Hepatic Mass"
+    ],
+    "canonicalHierarchySource": "metadata.json canonicalHierarchy",
+    "canonicalDeckPath": "Corebook::GI::Liver::Cystic Hepatic Mass",
+    "sourcePriority": [
+      "RadPrimer canonical",
+      "STATdx supplemental"
+    ],
+    "sourceCoverage": {
+      "textCoverage": "RadPrimer and STATdx substantially overlap in essential article text. RadPrimer supplies the canonical hierarchy, deck routing, and explicit differential category list; STATdx supplies supplemental image depth, treatment/follow-up context, and six non-RadPrimer teaching images.",
+      "imageCoverageSummary": "STATdx fully covers the RadPrimer image set: all 16 RadPrimer images have matching STATdx images with the same stable source image IDs, and visual inspection of staged image_evidence files/contact sheet shows the same source images/slices/screenshots with only source rendering/resolution differences. The curated default download set is therefore STATdx images 1-22, preserving the full STATdx sequence and 6 additional STATdx-only teaching images; RadPrimer images 1-16 are retained as archive-optional exact duplicates for traceability.",
+      "radPrimerImageCoverageBySTATdx": [
+        {
+          "radPrimerImageId": "RP-01",
+          "radPrimerImageLabel": "RadPrimer image 1",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-01"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 1"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-02",
+          "radPrimerImageLabel": "RadPrimer image 2",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-04"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 4"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-03",
+          "radPrimerImageLabel": "RadPrimer image 3",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-05"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 5"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-04",
+          "radPrimerImageLabel": "RadPrimer image 4",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-06"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 6"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-05",
+          "radPrimerImageLabel": "RadPrimer image 5",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-07"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 7"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-06",
+          "radPrimerImageLabel": "RadPrimer image 6",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-08"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 8"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-07",
+          "radPrimerImageLabel": "RadPrimer image 7",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-09"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 9"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-08",
+          "radPrimerImageLabel": "RadPrimer image 8",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-12"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 12"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-09",
+          "radPrimerImageLabel": "RadPrimer image 9",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-13"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 13"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-10",
+          "radPrimerImageLabel": "RadPrimer image 10",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-16"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 16"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-11",
+          "radPrimerImageLabel": "RadPrimer image 11",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-17"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 17"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-12",
+          "radPrimerImageLabel": "RadPrimer image 12",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-18"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 18"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-13",
+          "radPrimerImageLabel": "RadPrimer image 13",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-19"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 19"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-14",
+          "radPrimerImageLabel": "RadPrimer image 14",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-20"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 20"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-15",
+          "radPrimerImageLabel": "RadPrimer image 15",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-21"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 21"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        },
+        {
+          "radPrimerImageId": "RP-16",
+          "radPrimerImageLabel": "RadPrimer image 16",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-22"
+          ],
+          "relatedSTATdxImageLabels": [
+            "STATdx image 22"
+          ],
+          "decision": "archiveOptionalDuplicate",
+          "notes": "STATdx contains the same stable source image ID, and visual review of the staged image_evidence contact sheet/files shows the same source image/slice/screenshot with only source rendering or resolution differences. The STATdx rendering is selected for default download so the complete STATdx sequence remains contiguous; the RadPrimer rendering is archive-optional for traceability/recovery."
+        }
+      ],
+      "statDxOnlyPrimaryImageIds": [
+        "SDX-02",
+        "SDX-03",
+        "SDX-10",
+        "SDX-11",
+        "SDX-14",
+        "SDX-15"
+      ]
+    },
+    "imageCountBySource": {
+      "RadPrimer": 16,
+      "STATdx": 22,
+      "selectedPrimary": 22,
+      "archiveOptional": 16
+    },
+    "sourceAttributionRules": {
+      "Both": "supported by both RadPrimer and STATdx source packages",
+      "RadPrimer": "RadPrimer-only or RadPrimer-preferred canonical hierarchy/detail",
+      "STATdx": "supplemental STATdx image example, caption detail, modality variant, follow-up/procedure context, or curated primary image rendering"
+    },
+    "selectedPrimaryImageIds": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22"
+    ],
+    "archiveOptionalImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "RP-11",
+      "RP-12",
+      "RP-13",
+      "RP-14",
+      "RP-15",
+      "RP-16"
+    ],
+    "sourceSelectionPlan": {
+      "textBackbone": "Use RadPrimer as the canonical article hierarchy/backbone and preserve metadata.json canonicalHierarchy exactly for routing. Use STATdx as supplemental depth where it adds image examples, caption nuance, modality reinforcement, treatment/follow-up context, or management implications.",
+      "radPrimerKeep": [
+        "canonical hierarchy from metadata.json canonicalHierarchy",
+        "canonical deck path from metadata.json canonicalDeckPath",
+        "explicit differential category hierarchy: common and less common diagnoses",
+        "core article ordering and discriminating imaging clues",
+        "RadPrimer captions as source-traceable duplicate references in image_registry.json"
+      ],
+      "statDxKeep": [
+        "all 22 STATdx images as the curated primary download/rendering set",
+        "STATdx-only examples of giant obstructing simple cyst, hemorrhagic cysts, gastric GIST before/after treatment necrosis, and transplant biloma due to hepatic artery thrombosis",
+        "source captions that reinforce modality-specific cyst behavior, mural nodularity, bile-duct communication, procedure/history context, transplant risk, and resection/drainage management implications"
+      ],
+      "downweightOrSkip": [
+        "STATdx breadcrumb/deck routing because RadPrimer metadata is canonical for this bundle",
+        "RadPrimer duplicate image renderings for default download because each RadPrimer image is exactly covered by a STATdx image with the same stable source image ID and visually matched evidence file",
+        "unsupported Core Radiology claims; no auditable Core source text/pages were supplied or retrieved in this bundle",
+        "the unrelated IMAIOS label repository export block from both source packages; later IMAIOS routing should use metadata.json canonicalHierarchy plus local chunk context"
+      ],
+      "primaryImageDownloadUseSet": [
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22"
+      ],
+      "archiveDuplicateImageIds": [
+        "RP-01",
+        "RP-02",
+        "RP-03",
+        "RP-04",
+        "RP-05",
+        "RP-06",
+        "RP-07",
+        "RP-08",
+        "RP-09",
+        "RP-10",
+        "RP-11",
+        "RP-12",
+        "RP-13",
+        "RP-14",
+        "RP-15",
+        "RP-16"
+      ],
+      "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate same-disease examples, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+      "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+      "caseClusterGuardrails": {
+        "policy": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, pathology-correlation, and time-lapse clusters are atomic unless an explicit documented split is safe.",
+        "intentionalClusterSplits": [],
+        "clusterNotes": [
+          {
+            "clusterId": "simple-cyst-spectrum",
+            "imageIds": [
+              "SDX-01",
+              "SDX-02",
+              "SDX-03"
+            ],
+            "reason": "Simple hepatic cyst spectrum: uncomplicated water-density cyst, unusually large obstructing cyst, and hemorrhagic/complex T2 cyst appearance."
+          },
+          {
+            "clusterId": "polycystic-liver-disease",
+            "imageIds": [
+              "SDX-04"
+            ],
+            "reason": "Innumerable water-attenuation cysts with hepatomegaly; few renal cysts and normal renal function in caption keep diagnosis nuanced."
+          },
+          {
+            "clusterId": "biliary-hamartomas-multimodality",
+            "imageIds": [
+              "SDX-06",
+              "SDX-07",
+              "SDX-08"
+            ],
+            "reason": "CT, US, and MRCP examples of biliary hamartomas should remain together as multimodality recognition reinforcement."
+          },
+          {
+            "clusterId": "gist-treatment-follow-up",
+            "imageIds": [
+              "SDX-10",
+              "SDX-11"
+            ],
+            "reason": "STATdx-only gastric GIST metastasis pair shows pretreatment solid metastasis and post-Gleevec cystic necrosis; preserve as an atomic follow-up/treatment-response cluster."
+          },
+          {
+            "clusterId": "posttraumatic-biloma-seroma",
+            "imageIds": [
+              "SDX-13"
+            ],
+            "reason": "Trauma-history biloma/seroma example depends on interval context and comparison with prior CT scans."
+          },
+          {
+            "clusterId": "transplant-biloma-hat",
+            "imageIds": [
+              "SDX-14",
+              "SDX-15"
+            ],
+            "reason": "STATdx-only transplant biloma examples both teach hepatic artery thrombosis with biliary necrosis/peribiliary fluid and should remain together."
+          },
+          {
+            "clusterId": "hydatid-cyst",
+            "imageIds": [
+              "SDX-17"
+            ],
+            "reason": "Large multiseptate cysts with daughter cysts/scolices and endemic/immigrant context."
+          },
+          {
+            "clusterId": "biliary-neoplasm-spectrum",
+            "imageIds": [
+              "SDX-18",
+              "SDX-19"
+            ],
+            "reason": "Biliary cystadenoma/carcinoma and biliary IPMN/cholangiocarcinoma concern both hinge on enhancing wall/septa, duct communication, or nodularity."
+          },
+          {
+            "clusterId": "rare-primary-and-congenital",
+            "imageIds": [
+              "SDX-20",
+              "SDX-21",
+              "SDX-22"
+            ],
+            "reason": "Caroli disease central-dot sign, undifferentiated hepatic sarcoma, and ciliated hepatic foregut cyst cover key less-common mimics that should remain selected."
+          }
+        ],
+        "reportStatement": "No source case cluster was intentionally split. RadPrimer duplicate renderings were archived only because the complete equivalent STATdx source-image set was selected."
+      },
+      "imageDownloadPlan": {
+        "downloadOnly": "selectedPrimaryImageIds",
+        "primaryDownloads": [
+          {
+            "masterImageId": "SDX-01",
+            "displayLabel": "STATdx image 1",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 1,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-01_STATdx_plain_dd33f12a.jpg",
+            "targetAnnotatedFilename": "SDX-01_STATdx_annotated_dd33f12a.jpg"
+          },
+          {
+            "masterImageId": "SDX-02",
+            "displayLabel": "STATdx image 2",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 2,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-02_STATdx_plain_82d6f7d6.jpg",
+            "targetAnnotatedFilename": "SDX-02_STATdx_annotated_82d6f7d6.jpg"
+          },
+          {
+            "masterImageId": "SDX-03",
+            "displayLabel": "STATdx image 3",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 3,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-03_STATdx_plain_5702a8fd.jpg",
+            "targetAnnotatedFilename": "SDX-03_STATdx_annotated_5702a8fd.jpg"
+          },
+          {
+            "masterImageId": "SDX-04",
+            "displayLabel": "STATdx image 4",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 4,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-04_STATdx_plain_b943a537.jpg",
+            "targetAnnotatedFilename": "SDX-04_STATdx_annotated_b943a537.jpg"
+          },
+          {
+            "masterImageId": "SDX-05",
+            "displayLabel": "STATdx image 5",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 5,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-05_STATdx_plain_609b0fc7.jpg",
+            "targetAnnotatedFilename": "SDX-05_STATdx_annotated_609b0fc7.jpg"
+          },
+          {
+            "masterImageId": "SDX-06",
+            "displayLabel": "STATdx image 6",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 6,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-06_STATdx_plain_d56b5c7e.jpg",
+            "targetAnnotatedFilename": "SDX-06_STATdx_annotated_d56b5c7e.jpg"
+          },
+          {
+            "masterImageId": "SDX-07",
+            "displayLabel": "STATdx image 7",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 7,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-07_STATdx_plain_4c827181.jpg",
+            "targetAnnotatedFilename": "SDX-07_STATdx_annotated_4c827181.jpg"
+          },
+          {
+            "masterImageId": "SDX-08",
+            "displayLabel": "STATdx image 8",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 8,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-08_STATdx_plain_63693af8.jpg",
+            "targetAnnotatedFilename": "SDX-08_STATdx_annotated_63693af8.jpg"
+          },
+          {
+            "masterImageId": "SDX-09",
+            "displayLabel": "STATdx image 9",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 9,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-09_STATdx_plain_d0679796.jpg",
+            "targetAnnotatedFilename": "SDX-09_STATdx_annotated_d0679796.jpg"
+          },
+          {
+            "masterImageId": "SDX-10",
+            "displayLabel": "STATdx image 10",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 10,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-10_STATdx_plain_6ff00975.jpg",
+            "targetAnnotatedFilename": "SDX-10_STATdx_annotated_6ff00975.jpg"
+          },
+          {
+            "masterImageId": "SDX-11",
+            "displayLabel": "STATdx image 11",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 11,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-11_STATdx_plain_646611f8.jpg",
+            "targetAnnotatedFilename": "SDX-11_STATdx_annotated_646611f8.jpg"
+          },
+          {
+            "masterImageId": "SDX-12",
+            "displayLabel": "STATdx image 12",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 12,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-12_STATdx_plain_748ace18.jpg",
+            "targetAnnotatedFilename": "SDX-12_STATdx_annotated_748ace18.jpg"
+          },
+          {
+            "masterImageId": "SDX-13",
+            "displayLabel": "STATdx image 13",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 13,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-13_STATdx_plain_e2c598d8.jpg",
+            "targetAnnotatedFilename": "SDX-13_STATdx_annotated_e2c598d8.jpg"
+          },
+          {
+            "masterImageId": "SDX-14",
+            "displayLabel": "STATdx image 14",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 14,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-14_STATdx_plain_0ef36644.jpg",
+            "targetAnnotatedFilename": "SDX-14_STATdx_annotated_0ef36644.jpg"
+          },
+          {
+            "masterImageId": "SDX-15",
+            "displayLabel": "STATdx image 15",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 15,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-15_STATdx_plain_13e37550.jpg",
+            "targetAnnotatedFilename": "SDX-15_STATdx_annotated_13e37550.jpg"
+          },
+          {
+            "masterImageId": "SDX-16",
+            "displayLabel": "STATdx image 16",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 16,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-16_STATdx_plain_f5aba22b.jpg",
+            "targetAnnotatedFilename": "SDX-16_STATdx_annotated_f5aba22b.jpg"
+          },
+          {
+            "masterImageId": "SDX-17",
+            "displayLabel": "STATdx image 17",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 17,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-17_STATdx_plain_4d89fcb5.jpg",
+            "targetAnnotatedFilename": "SDX-17_STATdx_annotated_4d89fcb5.jpg"
+          },
+          {
+            "masterImageId": "SDX-18",
+            "displayLabel": "STATdx image 18",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 18,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-18_STATdx_plain_58f9b8d1.jpg",
+            "targetAnnotatedFilename": "SDX-18_STATdx_annotated_58f9b8d1.jpg"
+          },
+          {
+            "masterImageId": "SDX-19",
+            "displayLabel": "STATdx image 19",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 19,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-19_STATdx_plain_cc11ebc8.jpg",
+            "targetAnnotatedFilename": "SDX-19_STATdx_annotated_cc11ebc8.jpg"
+          },
+          {
+            "masterImageId": "SDX-20",
+            "displayLabel": "STATdx image 20",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 20,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-20_STATdx_plain_3ecd123c.jpg",
+            "targetAnnotatedFilename": "SDX-20_STATdx_annotated_3ecd123c.jpg"
+          },
+          {
+            "masterImageId": "SDX-21",
+            "displayLabel": "STATdx image 21",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 21,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-21_STATdx_plain_2de321ce.jpg",
+            "targetAnnotatedFilename": "SDX-21_STATdx_annotated_2de321ce.jpg"
+          },
+          {
+            "masterImageId": "SDX-22",
+            "displayLabel": "STATdx image 22",
+            "sourceKind": "statdx",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 22,
+            "plainUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?size=1000&quality=90",
+            "annotatedUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?annotated=true&size=1000&quality=90",
+            "targetPlainFilename": "SDX-22_STATdx_plain_cd601687.jpg",
+            "targetAnnotatedFilename": "SDX-22_STATdx_annotated_cd601687.jpg"
+          }
+        ],
+        "archiveOptionalDownloads": [
+          {
+            "masterImageId": "RP-01",
+            "displayLabel": "RadPrimer image 1",
+            "duplicateOf": "SDX-01",
+            "duplicateOfDisplayLabel": "STATdx image 1",
+            "targetPlainFilename": "RP-01_RadPrimer_plain_dd33f12a.jpg",
+            "targetAnnotatedFilename": "RP-01_RadPrimer_annotated_dd33f12a.jpg"
+          },
+          {
+            "masterImageId": "RP-02",
+            "displayLabel": "RadPrimer image 2",
+            "duplicateOf": "SDX-04",
+            "duplicateOfDisplayLabel": "STATdx image 4",
+            "targetPlainFilename": "RP-02_RadPrimer_plain_b943a537.jpg",
+            "targetAnnotatedFilename": "RP-02_RadPrimer_annotated_b943a537.jpg"
+          },
+          {
+            "masterImageId": "RP-03",
+            "displayLabel": "RadPrimer image 3",
+            "duplicateOf": "SDX-05",
+            "duplicateOfDisplayLabel": "STATdx image 5",
+            "targetPlainFilename": "RP-03_RadPrimer_plain_609b0fc7.jpg",
+            "targetAnnotatedFilename": "RP-03_RadPrimer_annotated_609b0fc7.jpg"
+          },
+          {
+            "masterImageId": "RP-04",
+            "displayLabel": "RadPrimer image 4",
+            "duplicateOf": "SDX-06",
+            "duplicateOfDisplayLabel": "STATdx image 6",
+            "targetPlainFilename": "RP-04_RadPrimer_plain_d56b5c7e.jpg",
+            "targetAnnotatedFilename": "RP-04_RadPrimer_annotated_d56b5c7e.jpg"
+          },
+          {
+            "masterImageId": "RP-05",
+            "displayLabel": "RadPrimer image 5",
+            "duplicateOf": "SDX-07",
+            "duplicateOfDisplayLabel": "STATdx image 7",
+            "targetPlainFilename": "RP-05_RadPrimer_plain_4c827181.jpg",
+            "targetAnnotatedFilename": "RP-05_RadPrimer_annotated_4c827181.jpg"
+          },
+          {
+            "masterImageId": "RP-06",
+            "displayLabel": "RadPrimer image 6",
+            "duplicateOf": "SDX-08",
+            "duplicateOfDisplayLabel": "STATdx image 8",
+            "targetPlainFilename": "RP-06_RadPrimer_plain_63693af8.jpg",
+            "targetAnnotatedFilename": "RP-06_RadPrimer_annotated_63693af8.jpg"
+          },
+          {
+            "masterImageId": "RP-07",
+            "displayLabel": "RadPrimer image 7",
+            "duplicateOf": "SDX-09",
+            "duplicateOfDisplayLabel": "STATdx image 9",
+            "targetPlainFilename": "RP-07_RadPrimer_plain_d0679796.jpg",
+            "targetAnnotatedFilename": "RP-07_RadPrimer_annotated_d0679796.jpg"
+          },
+          {
+            "masterImageId": "RP-08",
+            "displayLabel": "RadPrimer image 8",
+            "duplicateOf": "SDX-12",
+            "duplicateOfDisplayLabel": "STATdx image 12",
+            "targetPlainFilename": "RP-08_RadPrimer_plain_748ace18.jpg",
+            "targetAnnotatedFilename": "RP-08_RadPrimer_annotated_748ace18.jpg"
+          },
+          {
+            "masterImageId": "RP-09",
+            "displayLabel": "RadPrimer image 9",
+            "duplicateOf": "SDX-13",
+            "duplicateOfDisplayLabel": "STATdx image 13",
+            "targetPlainFilename": "RP-09_RadPrimer_plain_e2c598d8.jpg",
+            "targetAnnotatedFilename": "RP-09_RadPrimer_annotated_e2c598d8.jpg"
+          },
+          {
+            "masterImageId": "RP-10",
+            "displayLabel": "RadPrimer image 10",
+            "duplicateOf": "SDX-16",
+            "duplicateOfDisplayLabel": "STATdx image 16",
+            "targetPlainFilename": "RP-10_RadPrimer_plain_f5aba22b.jpg",
+            "targetAnnotatedFilename": "RP-10_RadPrimer_annotated_f5aba22b.jpg"
+          },
+          {
+            "masterImageId": "RP-11",
+            "displayLabel": "RadPrimer image 11",
+            "duplicateOf": "SDX-17",
+            "duplicateOfDisplayLabel": "STATdx image 17",
+            "targetPlainFilename": "RP-11_RadPrimer_plain_4d89fcb5.jpg",
+            "targetAnnotatedFilename": "RP-11_RadPrimer_annotated_4d89fcb5.jpg"
+          },
+          {
+            "masterImageId": "RP-12",
+            "displayLabel": "RadPrimer image 12",
+            "duplicateOf": "SDX-18",
+            "duplicateOfDisplayLabel": "STATdx image 18",
+            "targetPlainFilename": "RP-12_RadPrimer_plain_58f9b8d1.jpg",
+            "targetAnnotatedFilename": "RP-12_RadPrimer_annotated_58f9b8d1.jpg"
+          },
+          {
+            "masterImageId": "RP-13",
+            "displayLabel": "RadPrimer image 13",
+            "duplicateOf": "SDX-19",
+            "duplicateOfDisplayLabel": "STATdx image 19",
+            "targetPlainFilename": "RP-13_RadPrimer_plain_cc11ebc8.jpg",
+            "targetAnnotatedFilename": "RP-13_RadPrimer_annotated_cc11ebc8.jpg"
+          },
+          {
+            "masterImageId": "RP-14",
+            "displayLabel": "RadPrimer image 14",
+            "duplicateOf": "SDX-20",
+            "duplicateOfDisplayLabel": "STATdx image 20",
+            "targetPlainFilename": "RP-14_RadPrimer_plain_3ecd123c.jpg",
+            "targetAnnotatedFilename": "RP-14_RadPrimer_annotated_3ecd123c.jpg"
+          },
+          {
+            "masterImageId": "RP-15",
+            "displayLabel": "RadPrimer image 15",
+            "duplicateOf": "SDX-21",
+            "duplicateOfDisplayLabel": "STATdx image 21",
+            "targetPlainFilename": "RP-15_RadPrimer_plain_2de321ce.jpg",
+            "targetAnnotatedFilename": "RP-15_RadPrimer_annotated_2de321ce.jpg"
+          },
+          {
+            "masterImageId": "RP-16",
+            "displayLabel": "RadPrimer image 16",
+            "duplicateOf": "SDX-22",
+            "duplicateOfDisplayLabel": "STATdx image 22",
+            "targetPlainFilename": "RP-16_RadPrimer_plain_cd601687.jpg",
+            "targetAnnotatedFilename": "RP-16_RadPrimer_annotated_cd601687.jpg"
+          }
+        ],
+        "filenamePolicy": "Use source-qualified filenames such as SDX-04_STATdx_plain_b943a537.jpg and RP-05_RadPrimer_plain_4c827181.jpg. Narrative prose should use clean labels such as STATdx image 4 or RadPrimer image 5."
+      },
+      "generatorInstructions": [
+        "Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.",
+        "Use clean source-qualified labels in prose, such as STATdx image 7; keep RP-05/SDX-07 codes in registry, filenames, traceability fields, and import JSON.",
+        "Download only selectedPrimaryImageIds by default; archiveOptionalImageIds are available for recovery/review and should not drive default cards or lectures.",
+        "Use canonicalHierarchy exactly as copied from metadata.json for deckPath and any IMAIOS breadcrumb routing.",
+        "Do not fabricate Core Radiology support; no auditable Core pages were supplied or retrieved in this source bundle."
+      ]
+    }
+  },
+  "imageRegistry": [
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "imageId": "dd33f12a-c92e-44ca-9a42-e3ed0b27eb91",
+      "baseName": "Cystic_Hepatic_Mass1",
+      "caption": "Axial CECT in a 79-year-old woman shows a spherical liver mass <img src=\"arrow_WS.png\"> with water density, homogeneous contents. No internal debris or wall irregularities are present.",
+      "plainFilename": "Cystic_Hepatic_Mass1.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?style=xlarge&annotated=true",
+      "masterImageId": "RP-01",
+      "filename": "Cystic_Hepatic_Mass1.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_dd33f12a.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "09CDE9D346769B1F735697EB1949B92B0842477D5055806F06745C765BCFC5D6"
+      },
+      "displayLabel": "RadPrimer image 1",
+      "targetPlainFilename": "RP-01_RadPrimer_plain_dd33f12a.jpg",
+      "targetAnnotatedFilename": "RP-01_RadPrimer_annotated_dd33f12a.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-01",
+        "duplicateOfDisplayLabel": "STATdx image 1",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "imageId": "b943a537-1ccb-4be7-bdce-5d72e77dda82",
+      "baseName": "Cystic_Hepatic_Mass2",
+      "caption": "Axial CECT shows innumerable hepatic cysts of water attenuation and varying size, causing hepatomegaly. Only a few small renal cysts are present, and renal function is normal.",
+      "plainFilename": "Cystic_Hepatic_Mass2.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b943a537-1ccb-4be7-bdce-5d72e77dda82?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/b943a537-1ccb-4be7-bdce-5d72e77dda82?style=xlarge&annotated=true",
+      "masterImageId": "RP-02",
+      "filename": "Cystic_Hepatic_Mass2.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_b943a537.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/b943a537-1ccb-4be7-bdce-5d72e77dda82?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "5A9BF6D18CA3785D3BEF7C0B118F1A59F9FB0217A41EA80C86FDE2B22942E921"
+      },
+      "displayLabel": "RadPrimer image 2",
+      "targetPlainFilename": "RP-02_RadPrimer_plain_b943a537.jpg",
+      "targetAnnotatedFilename": "RP-02_RadPrimer_annotated_b943a537.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-04",
+        "duplicateOfDisplayLabel": "STATdx image 4",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "imageId": "609b0fc7-bda1-4325-877d-fad336154ed5",
+      "baseName": "Cystic_Hepatic_Mass3",
+      "caption": "Axial CECT shows a liver mass with innumerable septa and slightly higher than water density contents <img src=\"arrow_WS.png\">. Needle aspiration yielded a small quantity of pus, and a catheter was inserted for drainage. The etiology was subacute diverticulitis.",
+      "plainFilename": "Cystic_Hepatic_Mass3.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/609b0fc7-bda1-4325-877d-fad336154ed5?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/609b0fc7-bda1-4325-877d-fad336154ed5?style=xlarge&annotated=true",
+      "masterImageId": "RP-03",
+      "filename": "Cystic_Hepatic_Mass3.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_609b0fc7.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/609b0fc7-bda1-4325-877d-fad336154ed5?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "D90430A287889C672DB887661A3C0621169267E0ED1DC832E82D694F3B8C5B50"
+      },
+      "displayLabel": "RadPrimer image 3",
+      "targetPlainFilename": "RP-03_RadPrimer_plain_609b0fc7.jpg",
+      "targetAnnotatedFilename": "RP-03_RadPrimer_annotated_609b0fc7.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-05",
+        "duplicateOfDisplayLabel": "STATdx image 5",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "imageId": "d56b5c7e-ff28-4ec0-a465-65a3045c595e",
+      "baseName": "Cystic_Hepatic_Mass4",
+      "caption": "Axial CECT in a 53-year-old man shows innumerable small, cystic lesions <img src=\"arrow_WS.png\"> throughout the liver, ranging in size from 2-15 mm. The lesions are often not perfectly spherical, and many have visible nodular enhancement within their walls.",
+      "plainFilename": "Cystic_Hepatic_Mass4.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/d56b5c7e-ff28-4ec0-a465-65a3045c595e?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/d56b5c7e-ff28-4ec0-a465-65a3045c595e?style=xlarge&annotated=true",
+      "masterImageId": "RP-04",
+      "filename": "Cystic_Hepatic_Mass4.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_d56b5c7e.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/d56b5c7e-ff28-4ec0-a465-65a3045c595e?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "CFF5D09852BBE03F9F56E4108724789A5520D5FC75DC280B93E2CD2BA6AF3236"
+      },
+      "displayLabel": "RadPrimer image 4",
+      "targetPlainFilename": "RP-04_RadPrimer_plain_d56b5c7e.jpg",
+      "targetAnnotatedFilename": "RP-04_RadPrimer_annotated_d56b5c7e.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-06",
+        "duplicateOfDisplayLabel": "STATdx image 6",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 5,
+      "imageId": "4c827181-4c48-439c-a5cd-a7e79d02ce5b",
+      "baseName": "Cystic_Hepatic_Mass5",
+      "caption": "US shows only the lesions > 10 mm as cystic structures <img src=\"arrow_WS.png\">, while the smaller lesions are hyperechoic <img src=\"arrow_WC.png\"> to background liver. All are typical features of biliary hamartomas.",
+      "plainFilename": "Cystic_Hepatic_Mass5.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/4c827181-4c48-439c-a5cd-a7e79d02ce5b?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/4c827181-4c48-439c-a5cd-a7e79d02ce5b?style=xlarge&annotated=true",
+      "masterImageId": "RP-05",
+      "filename": "Cystic_Hepatic_Mass5.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_4c827181.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/4c827181-4c48-439c-a5cd-a7e79d02ce5b?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "6B359F555633796F7695F4C6533E00B87E20D9955955C8956AB857C6D8029C17"
+      },
+      "displayLabel": "RadPrimer image 5",
+      "targetPlainFilename": "RP-05_RadPrimer_plain_4c827181.jpg",
+      "targetAnnotatedFilename": "RP-05_RadPrimer_annotated_4c827181.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-07",
+        "duplicateOfDisplayLabel": "STATdx image 7",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 6,
+      "imageId": "63693af8-d44e-47fe-9e86-610fa74624ed",
+      "baseName": "Cystic_Hepatic_Mass6",
+      "caption": "Coronal MRCP shows innumerable small, T2-hyperintense lesions that do not communicate with the biliary tree.",
+      "plainFilename": "Cystic_Hepatic_Mass6.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/63693af8-d44e-47fe-9e86-610fa74624ed?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/63693af8-d44e-47fe-9e86-610fa74624ed?style=xlarge&annotated=true",
+      "masterImageId": "RP-06",
+      "filename": "Cystic_Hepatic_Mass6.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_63693af8.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/63693af8-d44e-47fe-9e86-610fa74624ed?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "E6E6B8BC87620DC1E770A73E26CA1DE1EBAFD2DBF5BEA295796B7F86A5332256"
+      },
+      "displayLabel": "RadPrimer image 6",
+      "targetPlainFilename": "RP-06_RadPrimer_plain_63693af8.jpg",
+      "targetAnnotatedFilename": "RP-06_RadPrimer_annotated_63693af8.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-08",
+        "duplicateOfDisplayLabel": "STATdx image 8",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 7,
+      "imageId": "d0679796-e152-437e-92ad-489baa2acd92",
+      "baseName": "Cystic_Hepatic_Mass7",
+      "caption": "Axial CECT shows several hypodense hepatic masses, including 1 cystic lesion <img src=\"arrow_WO.png\">. The subtle mural nodule <img src=\"arrow_BS.png\"> is the clue that this is a neoplasm (metastatic thyroid cancer).",
+      "plainFilename": "Cystic_Hepatic_Mass7.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/d0679796-e152-437e-92ad-489baa2acd92?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/d0679796-e152-437e-92ad-489baa2acd92?style=xlarge&annotated=true",
+      "masterImageId": "RP-07",
+      "filename": "Cystic_Hepatic_Mass7.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_d0679796.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/d0679796-e152-437e-92ad-489baa2acd92?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "7E4E02D4910ADFD8177E5EE3A7F3504541078E7046DD507FBCAC568F462CCFBC"
+      },
+      "displayLabel": "RadPrimer image 7",
+      "targetPlainFilename": "RP-07_RadPrimer_plain_d0679796.jpg",
+      "targetAnnotatedFilename": "RP-07_RadPrimer_annotated_d0679796.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-09",
+        "duplicateOfDisplayLabel": "STATdx image 9",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 8,
+      "imageId": "748ace18-9b51-4f93-86a7-56fcd9dd9f6c",
+      "baseName": "Cystic_Hepatic_Mass8",
+      "caption": "Axial CECT shows a shaggy, encapsulated, solitary cystic mass <img src=\"arrow_WS.png\"> with nonenhancing contents, representing a typical amebic abscess. The imaging appearance, clinical presentation, and serology usually suffice for diagnosis.",
+      "plainFilename": "Cystic_Hepatic_Mass8.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?style=xlarge&annotated=true",
+      "masterImageId": "RP-08",
+      "filename": "Cystic_Hepatic_Mass8.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_748ace18.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "FBE105C3AE89CC5EE3B7EA15A7E29EEF9F9DC2FDEF222DE7149C186EEBA9A365"
+      },
+      "displayLabel": "RadPrimer image 8",
+      "targetPlainFilename": "RP-08_RadPrimer_plain_748ace18.jpg",
+      "targetAnnotatedFilename": "RP-08_RadPrimer_annotated_748ace18.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-12",
+        "duplicateOfDisplayLabel": "STATdx image 12",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 9,
+      "imageId": "e2c598d8-be13-4f77-b3c9-3fbdd2089d27",
+      "baseName": "Cystic_Hepatic_Mass9",
+      "caption": "Axial CECT 3 weeks after a blunt traumatic liver laceration shows a lobulated, cystic lesion <img src=\"arrow_WS.png\"> that represents a combination of walled-off bile and blood, also known, respectively, as biloma and seroma. Clinical history and comparison with prior CT scans provide confident diagnosis.",
+      "plainFilename": "Cystic_Hepatic_Mass9.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass9_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?style=xlarge&annotated=true",
+      "masterImageId": "RP-09",
+      "filename": "Cystic_Hepatic_Mass9.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_e2c598d8.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "A317370798CE314B8088CD80E767A328532422CB37CFF09626BA3F946F43C58B"
+      },
+      "displayLabel": "RadPrimer image 9",
+      "targetPlainFilename": "RP-09_RadPrimer_plain_e2c598d8.jpg",
+      "targetAnnotatedFilename": "RP-09_RadPrimer_annotated_e2c598d8.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-13",
+        "duplicateOfDisplayLabel": "STATdx image 13",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 10,
+      "imageId": "f5aba22b-6c6b-43c5-84e1-e61c2171a1fc",
+      "baseName": "Cystic_Hepatic_Mass10",
+      "caption": "Axial CECT in a febrile, immune-suppressed patient shows innumerable small, hypodense lesions in the liver with irregular walls. Other opportunistic hepatic infections may have a similar appearance.",
+      "plainFilename": "Cystic_Hepatic_Mass10.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass10_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?style=xlarge&annotated=true",
+      "masterImageId": "RP-10",
+      "filename": "Cystic_Hepatic_Mass10.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_f5aba22b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "5C964CAD3AD551A8273330B89BE96E40D874BF1928E221472CC82AB50D795FD2"
+      },
+      "displayLabel": "RadPrimer image 10",
+      "targetPlainFilename": "RP-10_RadPrimer_plain_f5aba22b.jpg",
+      "targetAnnotatedFilename": "RP-10_RadPrimer_annotated_f5aba22b.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-16",
+        "duplicateOfDisplayLabel": "STATdx image 16",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 11,
+      "imageId": "4d89fcb5-0600-4c83-acba-93f29a424d36",
+      "baseName": "Cystic_Hepatic_Mass11",
+      "caption": "Coronal CECT in immigrant from Middle East shows 2 large, multiseptate, cystic masses <img src=\"arrow_WS.png\">. Within outer pericyst are multiple daughter cysts or scolices. Imaging appearance, coupled with serology, is usually sufficient for diagnosis.",
+      "plainFilename": "Cystic_Hepatic_Mass11.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass11_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/4d89fcb5-0600-4c83-acba-93f29a424d36?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/4d89fcb5-0600-4c83-acba-93f29a424d36?style=xlarge&annotated=true",
+      "masterImageId": "RP-11",
+      "filename": "Cystic_Hepatic_Mass11.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_4d89fcb5.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/4d89fcb5-0600-4c83-acba-93f29a424d36?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "B655E464CA4FF4526EA08E750DF1D23AC97E34178C37FCBD6DE0CFD37E56F151"
+      },
+      "displayLabel": "RadPrimer image 11",
+      "targetPlainFilename": "RP-11_RadPrimer_plain_4d89fcb5.jpg",
+      "targetAnnotatedFilename": "RP-11_RadPrimer_annotated_4d89fcb5.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-17",
+        "duplicateOfDisplayLabel": "STATdx image 17",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 12,
+      "imageId": "58f9b8d1-ef81-400c-9592-97d498592f12",
+      "baseName": "Cystic_Hepatic_Mass12",
+      "caption": "Coronal CECT in a middle-aged woman shows complex, cystic mass, lobulated margins, enhancing wall and septa <img src=\"arrow_WS.png\">. These findings with no other known tumor could be considered sufficiently diagnostic of biliary cystadenoma to warrant resection without further evaluation.",
+      "plainFilename": "Cystic_Hepatic_Mass12.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass12_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/58f9b8d1-ef81-400c-9592-97d498592f12?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/58f9b8d1-ef81-400c-9592-97d498592f12?style=xlarge&annotated=true",
+      "masterImageId": "RP-12",
+      "filename": "Cystic_Hepatic_Mass12.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_58f9b8d1.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/58f9b8d1-ef81-400c-9592-97d498592f12?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "BCB35E5CB8FC18C0A0084E3AE0A2F2C445F698860147A5D957BEE62EDAC12C60"
+      },
+      "displayLabel": "RadPrimer image 12",
+      "targetPlainFilename": "RP-12_RadPrimer_plain_58f9b8d1.jpg",
+      "targetAnnotatedFilename": "RP-12_RadPrimer_annotated_58f9b8d1.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-18",
+        "duplicateOfDisplayLabel": "STATdx image 18",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 13,
+      "imageId": "cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b",
+      "baseName": "Cystic_Hepatic_Mass13",
+      "caption": "Axial CECT of biliary IPMN with cholangiocarcinoma shows dilated intrahepatic bile ducts and a cystic mass <img src=\"arrow_WO.png\">. ERCP showed opacification of the cyst with contrast and the presence of surface nodularity within the bile ducts.",
+      "plainFilename": "Cystic_Hepatic_Mass13.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass13_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?style=xlarge&annotated=true",
+      "masterImageId": "RP-13",
+      "filename": "Cystic_Hepatic_Mass13.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_cc11ebc8.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "B66D16FDEAA6B586570FB970A9CA2291F99556C9F272DB15CC67465D7EBBFBA8"
+      },
+      "displayLabel": "RadPrimer image 13",
+      "targetPlainFilename": "RP-13_RadPrimer_plain_cc11ebc8.jpg",
+      "targetAnnotatedFilename": "RP-13_RadPrimer_annotated_cc11ebc8.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-19",
+        "duplicateOfDisplayLabel": "STATdx image 19",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 14,
+      "imageId": "3ecd123c-87be-4556-94e3-50a90ab28330",
+      "baseName": "Cystic_Hepatic_Mass14",
+      "caption": "Axial CECT in a woman with portal hypertension due to congenital hepatic fibrosis and Caroli disease shows splenomegaly, varices <img src=\"arrow_CC.png\">, and multiple hepatic cysts. These represent dilated intrahepatic bile ducts, draped around the central dot of accompanying portal veins <img src=\"arrow_CS.png\">.",
+      "plainFilename": "Cystic_Hepatic_Mass14.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass14_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3ecd123c-87be-4556-94e3-50a90ab28330?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/3ecd123c-87be-4556-94e3-50a90ab28330?style=xlarge&annotated=true",
+      "masterImageId": "RP-14",
+      "filename": "Cystic_Hepatic_Mass14.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_3ecd123c.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/3ecd123c-87be-4556-94e3-50a90ab28330?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "27B1CE44625D7F24F7D335FA215C5AEACF363B0C266FB46D96556A6BA853AE83"
+      },
+      "displayLabel": "RadPrimer image 14",
+      "targetPlainFilename": "RP-14_RadPrimer_plain_3ecd123c.jpg",
+      "targetAnnotatedFilename": "RP-14_RadPrimer_annotated_3ecd123c.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-20",
+        "duplicateOfDisplayLabel": "STATdx image 20",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 15,
+      "imageId": "2de321ce-02c1-4194-a1fd-df149db9c199",
+      "baseName": "Cystic_Hepatic_Mass15",
+      "caption": "Coronal CECT in a man with RUQ pain shows a huge, multiseptate, cystic mass <img src=\"arrow_WS.png\"> with enhancing peripheral components. Intraperitoneal blood <img src=\"arrow_WC.png\"> was due to capsular rupture of this undifferentiated primary hepatic sarcoma.",
+      "plainFilename": "Cystic_Hepatic_Mass15.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass15_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/2de321ce-02c1-4194-a1fd-df149db9c199?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/2de321ce-02c1-4194-a1fd-df149db9c199?style=xlarge&annotated=true",
+      "masterImageId": "RP-15",
+      "filename": "Cystic_Hepatic_Mass15.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-15_RadPrimer_image_15_plain_2de321ce.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/2de321ce-02c1-4194-a1fd-df149db9c199?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "FFC01199A9BDB25383C814B2A0292EF2E2C0D589D4638B7038F3D3D675025C09"
+      },
+      "displayLabel": "RadPrimer image 15",
+      "targetPlainFilename": "RP-15_RadPrimer_plain_2de321ce.jpg",
+      "targetAnnotatedFilename": "RP-15_RadPrimer_annotated_2de321ce.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-21",
+        "duplicateOfDisplayLabel": "STATdx image 21",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 16,
+      "imageId": "cd601687-99c5-447c-a59c-5ffde7a5d349",
+      "baseName": "Cystic_Hepatic_Mass16",
+      "caption": "Axial T2 MR in a 29-year-old woman with a solid-appearing mass on US shows a complex, cystic-appearing mass in segment 4 that had no enhancement on other sequences. Resection proved ciliated hepatic foregut cyst.",
+      "plainFilename": "Cystic_Hepatic_Mass16.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass16_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/cd601687-99c5-447c-a59c-5ffde7a5d349?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/cd601687-99c5-447c-a59c-5ffde7a5d349?style=xlarge&annotated=true",
+      "masterImageId": "RP-16",
+      "filename": "Cystic_Hepatic_Mass16.jpg",
+      "group": "",
+      "usedFor": [
+        "archiveOptionalExactDuplicate",
+        "sourceTraceability"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-16_RadPrimer_image_16_plain_cd601687.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/cd601687-99c5-447c-a59c-5ffde7a5d349?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "21E9D3B30F8C03A3EC0A7494C3493DFF644F009F463AA91D348CB1195D4DDAE0"
+      },
+      "displayLabel": "RadPrimer image 16",
+      "targetPlainFilename": "RP-16_RadPrimer_plain_cd601687.jpg",
+      "targetAnnotatedFilename": "RP-16_RadPrimer_annotated_cd601687.jpg",
+      "duplicateClassification": {
+        "classification": "exactDuplicate",
+        "duplicateOf": "SDX-22",
+        "duplicateOfDisplayLabel": "STATdx image 22",
+        "evidenceBasis": [
+          "same stable source imageId",
+          "visual inspection of staged image_evidence files/contact sheet",
+          "same source image/slice/screenshot with source-rendering size differences only"
+        ],
+        "decision": "archiveOptionalDuplicate"
+      }
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 1,
+      "imageId": "dd33f12a-c92e-44ca-9a42-e3ed0b27eb91",
+      "baseName": "Cystic_Hepatic_Mass1",
+      "caption": "Axial CECT in a 79-year-old woman shows a spherical liver mass <img src=\"arrow_WS.png\"> with water density, homogeneous contents. No internal debris or wall irregularities are present.",
+      "plainFilename": "Cystic_Hepatic_Mass1.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass1_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-01",
+      "filename": "Cystic_Hepatic_Mass1.jpg",
+      "group": "",
+      "usedFor": [
+        "simpleHepaticCyst",
+        "waterDensity",
+        "noWallNodularity",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_dd33f12a.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "649C4B7BB9535156E05F0CF1F576DB3AD2492F26C2F282B13D82E1540996D391"
+      },
+      "displayLabel": "STATdx image 1",
+      "targetPlainFilename": "SDX-01_STATdx_plain_dd33f12a.jpg",
+      "targetAnnotatedFilename": "SDX-01_STATdx_annotated_dd33f12a.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 2,
+      "imageId": "82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94",
+      "baseName": "Cystic_Hepatic_Mass2",
+      "caption": "Axial CECT shows an unusually large, simple hepatic cyst that caused compression and obstruction of the intrahepatic bile ducts <img src=\"arrow_WS.png\">.",
+      "plainFilename": "Cystic_Hepatic_Mass2.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass2_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-02",
+      "filename": "Cystic_Hepatic_Mass2.jpg",
+      "group": "",
+      "usedFor": [
+        "largeSimpleHepaticCyst",
+        "biliaryObstruction",
+        "STATdxSupplementalImage",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_82d6f7d6.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "0A35B9F236FF5DAE3F118B3859766159FE90BA5CAD9F6E2B5B771489CF0629D2"
+      },
+      "displayLabel": "STATdx image 2",
+      "targetPlainFilename": "SDX-02_STATdx_plain_82d6f7d6.jpg",
+      "targetAnnotatedFilename": "SDX-02_STATdx_annotated_82d6f7d6.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 3,
+      "imageId": "5702a8fd-e272-450e-a43b-5ec776ffb921",
+      "baseName": "Cystic_Hepatic_Mass3",
+      "caption": "Axial T2 FS MR shows several large, contiguous hepatic cysts. Hemorrhage within the cysts accounts for decreased signal intensity within portions of the cysts <img src=\"arrow_WS.png\">.",
+      "plainFilename": "Cystic_Hepatic_Mass3.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass3_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-03",
+      "filename": "Cystic_Hepatic_Mass3.jpg",
+      "group": "",
+      "usedFor": [
+        "hemorrhagicHepaticCysts",
+        "T2SignalComplexity",
+        "STATdxSupplementalImage",
+        "recognitionReinforcement",
+        "axialT2FSMR"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_5702a8fd.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "1B4E1F4E233B57D4EC4DABD174BAD935BFE475F6604E9156EADFF3D2FBA08AB0"
+      },
+      "displayLabel": "STATdx image 3",
+      "targetPlainFilename": "SDX-03_STATdx_plain_5702a8fd.jpg",
+      "targetAnnotatedFilename": "SDX-03_STATdx_annotated_5702a8fd.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 4,
+      "imageId": "b943a537-1ccb-4be7-bdce-5d72e77dda82",
+      "baseName": "Cystic_Hepatic_Mass4",
+      "caption": "Axial CECT shows innumerable hepatic cysts of water attenuation and varying size, causing hepatomegaly. Only a few small renal cysts are present, and renal function is normal.",
+      "plainFilename": "Cystic_Hepatic_Mass4.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass4_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-04",
+      "filename": "Cystic_Hepatic_Mass4.jpg",
+      "group": "",
+      "usedFor": [
+        "autosomalDominantPolycysticLiverDisease",
+        "hepatomegaly",
+        "multifocalWaterAttenuationCysts",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_b943a537.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "635EE69A7D2B0950406791711E7CEE065BAA63B616D4D5F45FAE14DE2B97DE19"
+      },
+      "displayLabel": "STATdx image 4",
+      "targetPlainFilename": "SDX-04_STATdx_plain_b943a537.jpg",
+      "targetAnnotatedFilename": "SDX-04_STATdx_annotated_b943a537.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 5,
+      "imageId": "609b0fc7-bda1-4325-877d-fad336154ed5",
+      "baseName": "Cystic_Hepatic_Mass5",
+      "caption": "Axial CECT shows a liver mass with innumerable septa and slightly higher than water density contents <img src=\"arrow_WS.png\">. Needle aspiration yielded a small quantity of pus, and a catheter was inserted for drainage. The etiology was subacute diverticulitis.",
+      "plainFilename": "Cystic_Hepatic_Mass5.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass5_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-05",
+      "filename": "Cystic_Hepatic_Mass5.jpg",
+      "group": "",
+      "usedFor": [
+        "hepaticPyogenicAbscess",
+        "multiloculatedAbscess",
+        "septa",
+        "drainageContext",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_609b0fc7.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "392B8F9E507BF3CE88BBD32A8A71CFF74D0B6BD8661B5DED637B8EA6F9183A11"
+      },
+      "displayLabel": "STATdx image 5",
+      "targetPlainFilename": "SDX-05_STATdx_plain_609b0fc7.jpg",
+      "targetAnnotatedFilename": "SDX-05_STATdx_annotated_609b0fc7.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 6,
+      "imageId": "d56b5c7e-ff28-4ec0-a465-65a3045c595e",
+      "baseName": "Cystic_Hepatic_Mass6",
+      "caption": "Axial CECT in a 53-year-old man shows innumerable small, cystic lesions <img src=\"arrow_WS.png\"> throughout the liver, ranging in size from 2-15 mm. The lesions are often not perfectly spherical, and many have visible nodular enhancement within their walls.",
+      "plainFilename": "Cystic_Hepatic_Mass6.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass6_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-06",
+      "filename": "Cystic_Hepatic_Mass6.jpg",
+      "group": "",
+      "usedFor": [
+        "biliaryHamartomas",
+        "innumerableSmallCysticLesions",
+        "nodularWallEnhancement",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_d56b5c7e.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "230A92868A43E0BF6C3EF77151D31036C6437CCC933267AC8313A4D8CFBBFFE5"
+      },
+      "displayLabel": "STATdx image 6",
+      "targetPlainFilename": "SDX-06_STATdx_plain_d56b5c7e.jpg",
+      "targetAnnotatedFilename": "SDX-06_STATdx_annotated_d56b5c7e.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 7,
+      "imageId": "4c827181-4c48-439c-a5cd-a7e79d02ce5b",
+      "baseName": "Cystic_Hepatic_Mass7",
+      "caption": "US shows only the lesions > 10 mm as cystic structures <img src=\"arrow_WS.png\">, while the smaller lesions are hyperechoic <img src=\"arrow_WC.png\"> to background liver. All are typical features of biliary hamartomas.",
+      "plainFilename": "Cystic_Hepatic_Mass7.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass7_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-07",
+      "filename": "Cystic_Hepatic_Mass7.jpg",
+      "group": "",
+      "usedFor": [
+        "biliaryHamartomas",
+        "ultrasoundVariant",
+        "smallHyperechoicLesions",
+        "recognitionReinforcement",
+        "US"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_4c827181.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "10611887B260A42DE4792F019D2268255AA543DAF752AABD1F47D26C593DD873"
+      },
+      "displayLabel": "STATdx image 7",
+      "targetPlainFilename": "SDX-07_STATdx_plain_4c827181.jpg",
+      "targetAnnotatedFilename": "SDX-07_STATdx_annotated_4c827181.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 8,
+      "imageId": "63693af8-d44e-47fe-9e86-610fa74624ed",
+      "baseName": "Cystic_Hepatic_Mass8",
+      "caption": "Coronal MRCP shows innumerable small, T2-hyperintense lesions that do not communicate with the biliary tree.",
+      "plainFilename": "Cystic_Hepatic_Mass8.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass8_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-08",
+      "filename": "Cystic_Hepatic_Mass8.jpg",
+      "group": "",
+      "usedFor": [
+        "biliaryHamartomas",
+        "MRCPVariant",
+        "noncommunicatingT2HyperintenseLesions",
+        "recognitionReinforcement",
+        "coronalMRCP"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_63693af8.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "F916B99A5E002D8D5BE0E921A3B267C3EC4212F14548FC3F16EEA04C503AF651"
+      },
+      "displayLabel": "STATdx image 8",
+      "targetPlainFilename": "SDX-08_STATdx_plain_63693af8.jpg",
+      "targetAnnotatedFilename": "SDX-08_STATdx_annotated_63693af8.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 9,
+      "imageId": "d0679796-e152-437e-92ad-489baa2acd92",
+      "baseName": "Cystic_Hepatic_Mass9",
+      "caption": "Axial CECT shows several hypodense hepatic masses, including 1 cystic lesion <img src=\"arrow_WO.png\">. The subtle mural nodule <img src=\"arrow_BS.png\"> is the clue that this is a neoplasm (metastatic thyroid cancer).",
+      "plainFilename": "Cystic_Hepatic_Mass9.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass9_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-09",
+      "filename": "Cystic_Hepatic_Mass9.jpg",
+      "group": "",
+      "usedFor": [
+        "cysticHepaticMetastases",
+        "muralNodule",
+        "thyroidCancerMetastasis",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_d0679796.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "C8AA223A0BB277E6FCCD38E4015128CEC89A034B68214AC5CD78FDC293F2827D"
+      },
+      "displayLabel": "STATdx image 9",
+      "targetPlainFilename": "SDX-09_STATdx_plain_d0679796.jpg",
+      "targetAnnotatedFilename": "SDX-09_STATdx_annotated_d0679796.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 10,
+      "imageId": "6ff00975-474d-448d-84ac-f60fe7007846",
+      "baseName": "Cystic_Hepatic_Mass10",
+      "caption": "Axial CECT shows a heterogeneous, solid mass in the left lobe (that subsequently underwent cystic necrosis with treatment). This was found to be metastatic gastric GIST.",
+      "plainFilename": "Cystic_Hepatic_Mass10.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass10_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-10",
+      "filename": "Cystic_Hepatic_Mass10.jpg",
+      "group": "",
+      "usedFor": [
+        "gastricGISTMetastasis",
+        "pretreatmentSolidMass",
+        "samePatientFollowUpCluster",
+        "STATdxSupplementalImage",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_6ff00975.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "248DADA36E6A3B5C1F611D2FA840306835E393090B6CCCAFBA206D408242C204"
+      },
+      "displayLabel": "STATdx image 10",
+      "targetPlainFilename": "SDX-10_STATdx_plain_6ff00975.jpg",
+      "targetAnnotatedFilename": "SDX-10_STATdx_annotated_6ff00975.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 11,
+      "imageId": "646611f8-4391-42ad-b5b8-7368e4c4cef8",
+      "baseName": "Cystic_Hepatic_Mass11",
+      "caption": "Axial CECT shows a cystic lesion in the left lobe. This is a metastatic gastric GIST that responded to Gleevec therapy with complete necrosis.",
+      "plainFilename": "Cystic_Hepatic_Mass11.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass11_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-11",
+      "filename": "Cystic_Hepatic_Mass11.jpg",
+      "group": "",
+      "usedFor": [
+        "gastricGISTMetastasis",
+        "treatmentNecrosis",
+        "GleevecResponse",
+        "samePatientFollowUpCluster",
+        "STATdxSupplementalImage",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_646611f8.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "E33BC2F72CA86356B476071361CFE31D9A06852EFEBBA646514C029D5921E058"
+      },
+      "displayLabel": "STATdx image 11",
+      "targetPlainFilename": "SDX-11_STATdx_plain_646611f8.jpg",
+      "targetAnnotatedFilename": "SDX-11_STATdx_annotated_646611f8.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 12,
+      "imageId": "748ace18-9b51-4f93-86a7-56fcd9dd9f6c",
+      "baseName": "Cystic_Hepatic_Mass12",
+      "caption": "Axial CECT shows a shaggy, encapsulated, solitary cystic mass <img src=\"arrow_WS.png\"> with nonenhancing contents, representing a typical amebic abscess. The imaging appearance, clinical presentation, and serology usually suffice for diagnosis.",
+      "plainFilename": "Cystic_Hepatic_Mass12.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass12_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-12",
+      "filename": "Cystic_Hepatic_Mass12.jpg",
+      "group": "",
+      "usedFor": [
+        "hepaticAmebicAbscess",
+        "shaggyEncapsulatedCysticMass",
+        "clinicalSerologyCorrelation",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_748ace18.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "B08A20A93D1F129C80E41B856F1CE22F11F27381677729943FCF18125E022F9A"
+      },
+      "displayLabel": "STATdx image 12",
+      "targetPlainFilename": "SDX-12_STATdx_plain_748ace18.jpg",
+      "targetAnnotatedFilename": "SDX-12_STATdx_annotated_748ace18.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 13,
+      "imageId": "e2c598d8-be13-4f77-b3c9-3fbdd2089d27",
+      "baseName": "Cystic_Hepatic_Mass13",
+      "caption": "Axial CECT 3 weeks after a blunt traumatic liver laceration shows a lobulated, cystic lesion <img src=\"arrow_WS.png\"> that represents a combination of walled-off bile and blood, also known, respectively, as biloma and seroma. Clinical history and comparison with prior CT scans provide confident diagnosis.",
+      "plainFilename": "Cystic_Hepatic_Mass13.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass13_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-13",
+      "filename": "Cystic_Hepatic_Mass13.jpg",
+      "group": "",
+      "usedFor": [
+        "bilomaSeroma",
+        "postTraumaticLiverLaceration",
+        "walledOffBileBlood",
+        "historyComparison",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_e2c598d8.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "36F9AD9AC3DD8C8D18C10E58843EB3AA3EEB1FC79F0912028A461ECC12F05235"
+      },
+      "displayLabel": "STATdx image 13",
+      "targetPlainFilename": "SDX-13_STATdx_plain_e2c598d8.jpg",
+      "targetAnnotatedFilename": "SDX-13_STATdx_annotated_e2c598d8.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 14,
+      "imageId": "0ef36644-27ee-48b5-8a55-7763edd1a4c9",
+      "baseName": "Cystic_Hepatic_Mass14",
+      "caption": "Axial CECT shows an irregular cystic lesion within a transplanted liver. This is a biloma with biliary necrosis as a result of hepatic artery thrombosis.",
+      "plainFilename": "Cystic_Hepatic_Mass14.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass14_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-14",
+      "filename": "Cystic_Hepatic_Mass14.jpg",
+      "group": "",
+      "usedFor": [
+        "transplantBiloma",
+        "hepaticArteryThrombosis",
+        "biliaryNecrosis",
+        "sameProcessCluster",
+        "STATdxSupplementalImage",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_0ef36644.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "B5D24300616A567012B3534100251E9DCCA4EB60FE820FBE29C2F9F4AC0D95DC"
+      },
+      "displayLabel": "STATdx image 14",
+      "targetPlainFilename": "SDX-14_STATdx_plain_0ef36644.jpg",
+      "targetAnnotatedFilename": "SDX-14_STATdx_annotated_0ef36644.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 15,
+      "imageId": "13e37550-13c8-467b-a0cf-93b2f09ada05",
+      "baseName": "Cystic_Hepatic_Mass15",
+      "caption": "Axial CECT shows dilated bile ducts, peribiliary hepatic fluid, and a cystic biloma in a liver allograft, as a result of hepatic artery thrombosis.",
+      "plainFilename": "Cystic_Hepatic_Mass15.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass15_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-15",
+      "filename": "Cystic_Hepatic_Mass15.jpg",
+      "group": "",
+      "usedFor": [
+        "transplantBiloma",
+        "peribiliaryFluid",
+        "hepaticArteryThrombosis",
+        "sameProcessCluster",
+        "STATdxSupplementalImage",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_13e37550.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "F098FF158CDA9488BE07037D58BBD242204F1313ACAC20E1BCF9A89D6C4670A8"
+      },
+      "displayLabel": "STATdx image 15",
+      "targetPlainFilename": "SDX-15_STATdx_plain_13e37550.jpg",
+      "targetAnnotatedFilename": "SDX-15_STATdx_annotated_13e37550.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 16,
+      "imageId": "f5aba22b-6c6b-43c5-84e1-e61c2171a1fc",
+      "baseName": "Cystic_Hepatic_Mass16",
+      "caption": "Axial CECT in a febrile, immune-suppressed patient shows innumerable small, hypodense lesions in the liver with irregular walls. Other opportunistic hepatic infections may have a similar appearance.",
+      "plainFilename": "Cystic_Hepatic_Mass16.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass16_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-16",
+      "filename": "Cystic_Hepatic_Mass16.jpg",
+      "group": "",
+      "usedFor": [
+        "hepaticCandidiasis",
+        "microabscesses",
+        "immunosuppressedPatient",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_f5aba22b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "4BEC3AAAE423F29859F0B8EF23063E714FDA32DD0E51DF4A3585C110D7391A17"
+      },
+      "displayLabel": "STATdx image 16",
+      "targetPlainFilename": "SDX-16_STATdx_plain_f5aba22b.jpg",
+      "targetAnnotatedFilename": "SDX-16_STATdx_annotated_f5aba22b.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 17,
+      "imageId": "4d89fcb5-0600-4c83-acba-93f29a424d36",
+      "baseName": "Cystic_Hepatic_Mass17",
+      "caption": "Coronal CECT in immigrant from Middle East shows 2 large, multiseptate, cystic masses <img src=\"arrow_WS.png\">. Within outer pericyst are multiple daughter cysts or scolices. Imaging appearance, coupled with serology, is usually sufficient for diagnosis.",
+      "plainFilename": "Cystic_Hepatic_Mass17.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass17_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-17",
+      "filename": "Cystic_Hepatic_Mass17.jpg",
+      "group": "",
+      "usedFor": [
+        "hepaticHydatidCyst",
+        "daughterCysts",
+        "scolices",
+        "endemicTravelImmigrantContext",
+        "recognitionReinforcement",
+        "coronalCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_4d89fcb5.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "5ED1BF411160979754B1853DB999C4744BA1A2F36D997A51EF2FBE1E41D32F4E"
+      },
+      "displayLabel": "STATdx image 17",
+      "targetPlainFilename": "SDX-17_STATdx_plain_4d89fcb5.jpg",
+      "targetAnnotatedFilename": "SDX-17_STATdx_annotated_4d89fcb5.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 18,
+      "imageId": "58f9b8d1-ef81-400c-9592-97d498592f12",
+      "baseName": "Cystic_Hepatic_Mass18",
+      "caption": "Coronal CECT in a middle-aged woman shows complex, cystic mass, lobulated margins, enhancing wall and septa <img src=\"arrow_WS.png\">. These findings with no other known tumor could be considered sufficiently diagnostic of biliary cystadenoma to warrant resection without further evaluation.",
+      "plainFilename": "Cystic_Hepatic_Mass18.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass18_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-18",
+      "filename": "Cystic_Hepatic_Mass18.jpg",
+      "group": "",
+      "usedFor": [
+        "biliaryCystadenomaCarcinoma",
+        "enhancingWallSepta",
+        "middleAgedWoman",
+        "resectionManagement",
+        "recognitionReinforcement",
+        "coronalCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_58f9b8d1.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "E915F74072B079A6AC2C84B6D17001C1915A7F6AEF3257670FB96A0E641F9B42"
+      },
+      "displayLabel": "STATdx image 18",
+      "targetPlainFilename": "SDX-18_STATdx_plain_58f9b8d1.jpg",
+      "targetAnnotatedFilename": "SDX-18_STATdx_annotated_58f9b8d1.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 19,
+      "imageId": "cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b",
+      "baseName": "Cystic_Hepatic_Mass19",
+      "caption": "Axial CECT of biliary IPMN with cholangiocarcinoma shows dilated intrahepatic bile ducts and a cystic mass <img src=\"arrow_WO.png\">. ERCP showed opacification of the cyst with contrast and the presence of surface nodularity within the bile ducts.",
+      "plainFilename": "Cystic_Hepatic_Mass19.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass19_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-19",
+      "filename": "Cystic_Hepatic_Mass19.jpg",
+      "group": "",
+      "usedFor": [
+        "biliaryIPMN",
+        "cholangiocarcinomaConcern",
+        "bileDuctCommunication",
+        "surfaceNodularity",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_cc11ebc8.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "1D51FE06A0C57329E6CF621CA7068EE5EB9C211C157ACDC652857197EFE59761"
+      },
+      "displayLabel": "STATdx image 19",
+      "targetPlainFilename": "SDX-19_STATdx_plain_cc11ebc8.jpg",
+      "targetAnnotatedFilename": "SDX-19_STATdx_annotated_cc11ebc8.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 20,
+      "imageId": "3ecd123c-87be-4556-94e3-50a90ab28330",
+      "baseName": "Cystic_Hepatic_Mass20",
+      "caption": "Axial CECT in a woman with portal hypertension due to congenital hepatic fibrosis and Caroli disease shows splenomegaly, varices <img src=\"arrow_CC.png\">, and multiple hepatic cysts. These represent dilated intrahepatic bile ducts, draped around the central dot of accompanying portal veins <img src=\"arrow_CS.png\">.",
+      "plainFilename": "Cystic_Hepatic_Mass20.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass20_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-20",
+      "filename": "Cystic_Hepatic_Mass20.jpg",
+      "group": "",
+      "usedFor": [
+        "CaroliDisease",
+        "centralDotSign",
+        "portalHypertension",
+        "dilatedIntrahepaticBileDucts",
+        "recognitionReinforcement",
+        "axialCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_3ecd123c.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "818B33DC23F07D52F48A49A3C9455E2CECECC8D2DD31982A832EDAB1D680BEA6"
+      },
+      "displayLabel": "STATdx image 20",
+      "targetPlainFilename": "SDX-20_STATdx_plain_3ecd123c.jpg",
+      "targetAnnotatedFilename": "SDX-20_STATdx_annotated_3ecd123c.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 21,
+      "imageId": "2de321ce-02c1-4194-a1fd-df149db9c199",
+      "baseName": "Cystic_Hepatic_Mass21",
+      "caption": "Coronal CECT in a man with RUQ pain shows a huge, multiseptate, cystic mass <img src=\"arrow_WS.png\"> with enhancing peripheral components. Intraperitoneal blood <img src=\"arrow_WC.png\"> was due to capsular rupture of this undifferentiated primary hepatic sarcoma.",
+      "plainFilename": "Cystic_Hepatic_Mass21.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass21_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-21",
+      "filename": "Cystic_Hepatic_Mass21.jpg",
+      "group": "",
+      "usedFor": [
+        "undifferentiatedHepaticSarcoma",
+        "hugeMultiseptateCysticMass",
+        "capsularRuptureHemoperitoneum",
+        "recognitionReinforcement",
+        "coronalCECT"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_2de321ce.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "20F1FB167301C396DE0415957D8D8FCAF236E1C01A0E07CA7EDB24816298E176"
+      },
+      "displayLabel": "STATdx image 21",
+      "targetPlainFilename": "SDX-21_STATdx_plain_2de321ce.jpg",
+      "targetAnnotatedFilename": "SDX-21_STATdx_annotated_2de321ce.jpg"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 22,
+      "imageId": "cd601687-99c5-447c-a59c-5ffde7a5d349",
+      "baseName": "Cystic_Hepatic_Mass22",
+      "caption": "Axial T2 MR in a 29-year-old woman with a solid-appearing mass on US shows a complex, cystic-appearing mass in segment 4 that had no enhancement on other sequences. Resection proved ciliated hepatic foregut cyst.",
+      "plainFilename": "Cystic_Hepatic_Mass22.jpg",
+      "annotatedFilename": "Cystic_Hepatic_Mass22_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-22",
+      "filename": "Cystic_Hepatic_Mass22.jpg",
+      "group": "",
+      "usedFor": [
+        "ciliatedHepaticForegutCyst",
+        "segment4ComplexCyst",
+        "T2MRVariant",
+        "resectionProof",
+        "recognitionReinforcement",
+        "axialT2MR"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_cd601687.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "sha256": "992F22B5668C481FB31EF113FD36D982AF72BDEBEB99DDB01D56CB5358AEDFFA"
+      },
+      "displayLabel": "STATdx image 22",
+      "targetPlainFilename": "SDX-22_STATdx_plain_cd601687.jpg",
+      "targetAnnotatedFilename": "SDX-22_STATdx_annotated_cd601687.jpg"
+    }
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical article hierarchy/backbone and preserve metadata.json canonicalHierarchy exactly for routing. Use STATdx as supplemental depth where it adds image examples, caption nuance, modality reinforcement, treatment/follow-up context, or management implications.",
+    "radPrimerKeep": [
+      "canonical hierarchy from metadata.json canonicalHierarchy",
+      "canonical deck path from metadata.json canonicalDeckPath",
+      "explicit differential category hierarchy: common and less common diagnoses",
+      "core article ordering and discriminating imaging clues",
+      "RadPrimer captions as source-traceable duplicate references in image_registry.json"
+    ],
+    "statDxKeep": [
+      "all 22 STATdx images as the curated primary download/rendering set",
+      "STATdx-only examples of giant obstructing simple cyst, hemorrhagic cysts, gastric GIST before/after treatment necrosis, and transplant biloma due to hepatic artery thrombosis",
+      "source captions that reinforce modality-specific cyst behavior, mural nodularity, bile-duct communication, procedure/history context, transplant risk, and resection/drainage management implications"
+    ],
+    "downweightOrSkip": [
+      "STATdx breadcrumb/deck routing because RadPrimer metadata is canonical for this bundle",
+      "RadPrimer duplicate image renderings for default download because each RadPrimer image is exactly covered by a STATdx image with the same stable source image ID and visually matched evidence file",
+      "unsupported Core Radiology claims; no auditable Core source text/pages were supplied or retrieved in this bundle",
+      "the unrelated IMAIOS label repository export block from both source packages; later IMAIOS routing should use metadata.json canonicalHierarchy plus local chunk context"
+    ],
+    "primaryImageDownloadUseSet": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22"
+    ],
+    "archiveDuplicateImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "RP-11",
+      "RP-12",
+      "RP-13",
+      "RP-14",
+      "RP-15",
+      "RP-16"
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate same-disease examples, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, pathology-correlation, and time-lapse clusters are atomic unless an explicit documented split is safe.",
+      "intentionalClusterSplits": [],
+      "clusterNotes": [
+        {
+          "clusterId": "simple-cyst-spectrum",
+          "imageIds": [
+            "SDX-01",
+            "SDX-02",
+            "SDX-03"
+          ],
+          "reason": "Simple hepatic cyst spectrum: uncomplicated water-density cyst, unusually large obstructing cyst, and hemorrhagic/complex T2 cyst appearance."
+        },
+        {
+          "clusterId": "polycystic-liver-disease",
+          "imageIds": [
+            "SDX-04"
+          ],
+          "reason": "Innumerable water-attenuation cysts with hepatomegaly; few renal cysts and normal renal function in caption keep diagnosis nuanced."
+        },
+        {
+          "clusterId": "biliary-hamartomas-multimodality",
+          "imageIds": [
+            "SDX-06",
+            "SDX-07",
+            "SDX-08"
+          ],
+          "reason": "CT, US, and MRCP examples of biliary hamartomas should remain together as multimodality recognition reinforcement."
+        },
+        {
+          "clusterId": "gist-treatment-follow-up",
+          "imageIds": [
+            "SDX-10",
+            "SDX-11"
+          ],
+          "reason": "STATdx-only gastric GIST metastasis pair shows pretreatment solid metastasis and post-Gleevec cystic necrosis; preserve as an atomic follow-up/treatment-response cluster."
+        },
+        {
+          "clusterId": "posttraumatic-biloma-seroma",
+          "imageIds": [
+            "SDX-13"
+          ],
+          "reason": "Trauma-history biloma/seroma example depends on interval context and comparison with prior CT scans."
+        },
+        {
+          "clusterId": "transplant-biloma-hat",
+          "imageIds": [
+            "SDX-14",
+            "SDX-15"
+          ],
+          "reason": "STATdx-only transplant biloma examples both teach hepatic artery thrombosis with biliary necrosis/peribiliary fluid and should remain together."
+        },
+        {
+          "clusterId": "hydatid-cyst",
+          "imageIds": [
+            "SDX-17"
+          ],
+          "reason": "Large multiseptate cysts with daughter cysts/scolices and endemic/immigrant context."
+        },
+        {
+          "clusterId": "biliary-neoplasm-spectrum",
+          "imageIds": [
+            "SDX-18",
+            "SDX-19"
+          ],
+          "reason": "Biliary cystadenoma/carcinoma and biliary IPMN/cholangiocarcinoma concern both hinge on enhancing wall/septa, duct communication, or nodularity."
+        },
+        {
+          "clusterId": "rare-primary-and-congenital",
+          "imageIds": [
+            "SDX-20",
+            "SDX-21",
+            "SDX-22"
+          ],
+          "reason": "Caroli disease central-dot sign, undifferentiated hepatic sarcoma, and ciliated hepatic foregut cyst cover key less-common mimics that should remain selected."
+        }
+      ],
+      "reportStatement": "No source case cluster was intentionally split. RadPrimer duplicate renderings were archived only because the complete equivalent STATdx source-image set was selected."
+    },
+    "imageDownloadPlan": {
+      "downloadOnly": "selectedPrimaryImageIds",
+      "primaryDownloads": [
+        {
+          "masterImageId": "SDX-01",
+          "displayLabel": "STATdx image 1",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 1,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-01_STATdx_plain_dd33f12a.jpg",
+          "targetAnnotatedFilename": "SDX-01_STATdx_annotated_dd33f12a.jpg"
+        },
+        {
+          "masterImageId": "SDX-02",
+          "displayLabel": "STATdx image 2",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 2,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-02_STATdx_plain_82d6f7d6.jpg",
+          "targetAnnotatedFilename": "SDX-02_STATdx_annotated_82d6f7d6.jpg"
+        },
+        {
+          "masterImageId": "SDX-03",
+          "displayLabel": "STATdx image 3",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 3,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-03_STATdx_plain_5702a8fd.jpg",
+          "targetAnnotatedFilename": "SDX-03_STATdx_annotated_5702a8fd.jpg"
+        },
+        {
+          "masterImageId": "SDX-04",
+          "displayLabel": "STATdx image 4",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 4,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-04_STATdx_plain_b943a537.jpg",
+          "targetAnnotatedFilename": "SDX-04_STATdx_annotated_b943a537.jpg"
+        },
+        {
+          "masterImageId": "SDX-05",
+          "displayLabel": "STATdx image 5",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 5,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-05_STATdx_plain_609b0fc7.jpg",
+          "targetAnnotatedFilename": "SDX-05_STATdx_annotated_609b0fc7.jpg"
+        },
+        {
+          "masterImageId": "SDX-06",
+          "displayLabel": "STATdx image 6",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 6,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-06_STATdx_plain_d56b5c7e.jpg",
+          "targetAnnotatedFilename": "SDX-06_STATdx_annotated_d56b5c7e.jpg"
+        },
+        {
+          "masterImageId": "SDX-07",
+          "displayLabel": "STATdx image 7",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 7,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-07_STATdx_plain_4c827181.jpg",
+          "targetAnnotatedFilename": "SDX-07_STATdx_annotated_4c827181.jpg"
+        },
+        {
+          "masterImageId": "SDX-08",
+          "displayLabel": "STATdx image 8",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 8,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-08_STATdx_plain_63693af8.jpg",
+          "targetAnnotatedFilename": "SDX-08_STATdx_annotated_63693af8.jpg"
+        },
+        {
+          "masterImageId": "SDX-09",
+          "displayLabel": "STATdx image 9",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 9,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-09_STATdx_plain_d0679796.jpg",
+          "targetAnnotatedFilename": "SDX-09_STATdx_annotated_d0679796.jpg"
+        },
+        {
+          "masterImageId": "SDX-10",
+          "displayLabel": "STATdx image 10",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-10_STATdx_plain_6ff00975.jpg",
+          "targetAnnotatedFilename": "SDX-10_STATdx_annotated_6ff00975.jpg"
+        },
+        {
+          "masterImageId": "SDX-11",
+          "displayLabel": "STATdx image 11",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-11_STATdx_plain_646611f8.jpg",
+          "targetAnnotatedFilename": "SDX-11_STATdx_annotated_646611f8.jpg"
+        },
+        {
+          "masterImageId": "SDX-12",
+          "displayLabel": "STATdx image 12",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 12,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-12_STATdx_plain_748ace18.jpg",
+          "targetAnnotatedFilename": "SDX-12_STATdx_annotated_748ace18.jpg"
+        },
+        {
+          "masterImageId": "SDX-13",
+          "displayLabel": "STATdx image 13",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 13,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-13_STATdx_plain_e2c598d8.jpg",
+          "targetAnnotatedFilename": "SDX-13_STATdx_annotated_e2c598d8.jpg"
+        },
+        {
+          "masterImageId": "SDX-14",
+          "displayLabel": "STATdx image 14",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 14,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-14_STATdx_plain_0ef36644.jpg",
+          "targetAnnotatedFilename": "SDX-14_STATdx_annotated_0ef36644.jpg"
+        },
+        {
+          "masterImageId": "SDX-15",
+          "displayLabel": "STATdx image 15",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 15,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-15_STATdx_plain_13e37550.jpg",
+          "targetAnnotatedFilename": "SDX-15_STATdx_annotated_13e37550.jpg"
+        },
+        {
+          "masterImageId": "SDX-16",
+          "displayLabel": "STATdx image 16",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 16,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-16_STATdx_plain_f5aba22b.jpg",
+          "targetAnnotatedFilename": "SDX-16_STATdx_annotated_f5aba22b.jpg"
+        },
+        {
+          "masterImageId": "SDX-17",
+          "displayLabel": "STATdx image 17",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 17,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-17_STATdx_plain_4d89fcb5.jpg",
+          "targetAnnotatedFilename": "SDX-17_STATdx_annotated_4d89fcb5.jpg"
+        },
+        {
+          "masterImageId": "SDX-18",
+          "displayLabel": "STATdx image 18",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 18,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-18_STATdx_plain_58f9b8d1.jpg",
+          "targetAnnotatedFilename": "SDX-18_STATdx_annotated_58f9b8d1.jpg"
+        },
+        {
+          "masterImageId": "SDX-19",
+          "displayLabel": "STATdx image 19",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 19,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-19_STATdx_plain_cc11ebc8.jpg",
+          "targetAnnotatedFilename": "SDX-19_STATdx_annotated_cc11ebc8.jpg"
+        },
+        {
+          "masterImageId": "SDX-20",
+          "displayLabel": "STATdx image 20",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 20,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-20_STATdx_plain_3ecd123c.jpg",
+          "targetAnnotatedFilename": "SDX-20_STATdx_annotated_3ecd123c.jpg"
+        },
+        {
+          "masterImageId": "SDX-21",
+          "displayLabel": "STATdx image 21",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 21,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-21_STATdx_plain_2de321ce.jpg",
+          "targetAnnotatedFilename": "SDX-21_STATdx_annotated_2de321ce.jpg"
+        },
+        {
+          "masterImageId": "SDX-22",
+          "displayLabel": "STATdx image 22",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 22,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-22_STATdx_plain_cd601687.jpg",
+          "targetAnnotatedFilename": "SDX-22_STATdx_annotated_cd601687.jpg"
+        }
+      ],
+      "archiveOptionalDownloads": [
+        {
+          "masterImageId": "RP-01",
+          "displayLabel": "RadPrimer image 1",
+          "duplicateOf": "SDX-01",
+          "duplicateOfDisplayLabel": "STATdx image 1",
+          "targetPlainFilename": "RP-01_RadPrimer_plain_dd33f12a.jpg",
+          "targetAnnotatedFilename": "RP-01_RadPrimer_annotated_dd33f12a.jpg"
+        },
+        {
+          "masterImageId": "RP-02",
+          "displayLabel": "RadPrimer image 2",
+          "duplicateOf": "SDX-04",
+          "duplicateOfDisplayLabel": "STATdx image 4",
+          "targetPlainFilename": "RP-02_RadPrimer_plain_b943a537.jpg",
+          "targetAnnotatedFilename": "RP-02_RadPrimer_annotated_b943a537.jpg"
+        },
+        {
+          "masterImageId": "RP-03",
+          "displayLabel": "RadPrimer image 3",
+          "duplicateOf": "SDX-05",
+          "duplicateOfDisplayLabel": "STATdx image 5",
+          "targetPlainFilename": "RP-03_RadPrimer_plain_609b0fc7.jpg",
+          "targetAnnotatedFilename": "RP-03_RadPrimer_annotated_609b0fc7.jpg"
+        },
+        {
+          "masterImageId": "RP-04",
+          "displayLabel": "RadPrimer image 4",
+          "duplicateOf": "SDX-06",
+          "duplicateOfDisplayLabel": "STATdx image 6",
+          "targetPlainFilename": "RP-04_RadPrimer_plain_d56b5c7e.jpg",
+          "targetAnnotatedFilename": "RP-04_RadPrimer_annotated_d56b5c7e.jpg"
+        },
+        {
+          "masterImageId": "RP-05",
+          "displayLabel": "RadPrimer image 5",
+          "duplicateOf": "SDX-07",
+          "duplicateOfDisplayLabel": "STATdx image 7",
+          "targetPlainFilename": "RP-05_RadPrimer_plain_4c827181.jpg",
+          "targetAnnotatedFilename": "RP-05_RadPrimer_annotated_4c827181.jpg"
+        },
+        {
+          "masterImageId": "RP-06",
+          "displayLabel": "RadPrimer image 6",
+          "duplicateOf": "SDX-08",
+          "duplicateOfDisplayLabel": "STATdx image 8",
+          "targetPlainFilename": "RP-06_RadPrimer_plain_63693af8.jpg",
+          "targetAnnotatedFilename": "RP-06_RadPrimer_annotated_63693af8.jpg"
+        },
+        {
+          "masterImageId": "RP-07",
+          "displayLabel": "RadPrimer image 7",
+          "duplicateOf": "SDX-09",
+          "duplicateOfDisplayLabel": "STATdx image 9",
+          "targetPlainFilename": "RP-07_RadPrimer_plain_d0679796.jpg",
+          "targetAnnotatedFilename": "RP-07_RadPrimer_annotated_d0679796.jpg"
+        },
+        {
+          "masterImageId": "RP-08",
+          "displayLabel": "RadPrimer image 8",
+          "duplicateOf": "SDX-12",
+          "duplicateOfDisplayLabel": "STATdx image 12",
+          "targetPlainFilename": "RP-08_RadPrimer_plain_748ace18.jpg",
+          "targetAnnotatedFilename": "RP-08_RadPrimer_annotated_748ace18.jpg"
+        },
+        {
+          "masterImageId": "RP-09",
+          "displayLabel": "RadPrimer image 9",
+          "duplicateOf": "SDX-13",
+          "duplicateOfDisplayLabel": "STATdx image 13",
+          "targetPlainFilename": "RP-09_RadPrimer_plain_e2c598d8.jpg",
+          "targetAnnotatedFilename": "RP-09_RadPrimer_annotated_e2c598d8.jpg"
+        },
+        {
+          "masterImageId": "RP-10",
+          "displayLabel": "RadPrimer image 10",
+          "duplicateOf": "SDX-16",
+          "duplicateOfDisplayLabel": "STATdx image 16",
+          "targetPlainFilename": "RP-10_RadPrimer_plain_f5aba22b.jpg",
+          "targetAnnotatedFilename": "RP-10_RadPrimer_annotated_f5aba22b.jpg"
+        },
+        {
+          "masterImageId": "RP-11",
+          "displayLabel": "RadPrimer image 11",
+          "duplicateOf": "SDX-17",
+          "duplicateOfDisplayLabel": "STATdx image 17",
+          "targetPlainFilename": "RP-11_RadPrimer_plain_4d89fcb5.jpg",
+          "targetAnnotatedFilename": "RP-11_RadPrimer_annotated_4d89fcb5.jpg"
+        },
+        {
+          "masterImageId": "RP-12",
+          "displayLabel": "RadPrimer image 12",
+          "duplicateOf": "SDX-18",
+          "duplicateOfDisplayLabel": "STATdx image 18",
+          "targetPlainFilename": "RP-12_RadPrimer_plain_58f9b8d1.jpg",
+          "targetAnnotatedFilename": "RP-12_RadPrimer_annotated_58f9b8d1.jpg"
+        },
+        {
+          "masterImageId": "RP-13",
+          "displayLabel": "RadPrimer image 13",
+          "duplicateOf": "SDX-19",
+          "duplicateOfDisplayLabel": "STATdx image 19",
+          "targetPlainFilename": "RP-13_RadPrimer_plain_cc11ebc8.jpg",
+          "targetAnnotatedFilename": "RP-13_RadPrimer_annotated_cc11ebc8.jpg"
+        },
+        {
+          "masterImageId": "RP-14",
+          "displayLabel": "RadPrimer image 14",
+          "duplicateOf": "SDX-20",
+          "duplicateOfDisplayLabel": "STATdx image 20",
+          "targetPlainFilename": "RP-14_RadPrimer_plain_3ecd123c.jpg",
+          "targetAnnotatedFilename": "RP-14_RadPrimer_annotated_3ecd123c.jpg"
+        },
+        {
+          "masterImageId": "RP-15",
+          "displayLabel": "RadPrimer image 15",
+          "duplicateOf": "SDX-21",
+          "duplicateOfDisplayLabel": "STATdx image 21",
+          "targetPlainFilename": "RP-15_RadPrimer_plain_2de321ce.jpg",
+          "targetAnnotatedFilename": "RP-15_RadPrimer_annotated_2de321ce.jpg"
+        },
+        {
+          "masterImageId": "RP-16",
+          "displayLabel": "RadPrimer image 16",
+          "duplicateOf": "SDX-22",
+          "duplicateOfDisplayLabel": "STATdx image 22",
+          "targetPlainFilename": "RP-16_RadPrimer_plain_cd601687.jpg",
+          "targetAnnotatedFilename": "RP-16_RadPrimer_annotated_cd601687.jpg"
+        }
+      ],
+      "filenamePolicy": "Use source-qualified filenames such as SDX-04_STATdx_plain_b943a537.jpg and RP-05_RadPrimer_plain_4c827181.jpg. Narrative prose should use clean labels such as STATdx image 4 or RadPrimer image 5."
+    },
+    "generatorInstructions": [
+      "Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.",
+      "Use clean source-qualified labels in prose, such as STATdx image 7; keep RP-05/SDX-07 codes in registry, filenames, traceability fields, and import JSON.",
+      "Download only selectedPrimaryImageIds by default; archiveOptionalImageIds are available for recovery/review and should not drive default cards or lectures.",
+      "Use canonicalHierarchy exactly as copied from metadata.json for deckPath and any IMAIOS breadcrumb routing.",
+      "Do not fabricate Core Radiology support; no auditable Core pages were supplied or retrieved in this source bundle."
+    ]
+  },
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-13",
+    "RP-14",
+    "RP-15",
+    "RP-16"
+  ]
+}

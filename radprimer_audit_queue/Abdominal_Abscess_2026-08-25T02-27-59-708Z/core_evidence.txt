@@ -1,0 +1,20 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: junzi-shi-core-radiology-a-visual-approach-to.pdf; Gastrointestinal Imaging, including hepatic infection/pyogenic abscess pp. 116-118, pancreatitis complications pp. 150-151, splenic infection pp. 167-168, Crohn disease complications pp. 205-207, appendicitis pp. 210-211, diverticulitis pp. 218-219; Interventional Radiology drainage material including pp. 648-649.
+CORE_FACTS_USED:
+
+* Hepatic pyogenic abscess may arise from bowel processes including diverticulitis, appendicitis, Crohn disease, and bowel surgery; E. coli is the most common causative organism in that Core section.
+* Hepatic abscess may mimic metastasis as a ring-enhancing mass; MRI may show central T2 hyperintensity and restricted diffusion; ultrasound can evolve from ill-defined phlegmon to a well-defined hypoechoic collection with internal echoes.
+* Appendicitis can progress to gangrenous/perforated appendicitis with abscess; periappendicular abscess is a secondary ultrasound finding.
+* Crohn disease may be complicated by abscess and fistula formation.
+* Diverticulitis is complicated when abscess is present, and abscesses may undergo percutaneous drainage.
+* Pancreatitis-related collections may become infected; gas suggests infection but absence of gas does not exclude it.
+* Splenic bacterial abscesses may have an irregular enhancing wall; gas is highly specific when present. Fungal splenic abscesses are typically small, multiple, and occur in immunocompromised patients.
+* Core IR material was used to cross-check drainage-related concepts and catheter management.
+CORE_DERIVED_CARDS:
+* PRIMARY UNKNOWN cards involving hepatic, splenic, appendiceal, Crohn-related, diverticular, and pancreatitis-related abscesses.
+* Mechanism cards for perforated appendicitis and diverticulitis progressing to localized abscess.
+* Epidemiology card testing E. coli as the most common organism in Core's hepatic pyogenic abscess section.
+* High-Yield CT/MRI/ultrasound and drainage cards, plus the shared Core + RadPrimer + STATdx summary field.
+CORE_LIMITATIONS:
+* Core Radiology does not present a single dedicated general "Abdominal Abscess" entity section matching the fused RadPrimer/STATdx article; relevant Core coverage is distributed across multiple GI and IR subsections.
+* RadPrimer/STATdx supplied the general abdominal-abscess definition, broad multimodality framework, detailed drainage thresholds, approximately 80% drainage success statement, and several specific mimic/case details not stated as a unified framework in Core.

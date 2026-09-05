@@ -1,0 +1,398 @@
+﻿{
+    "articleTitle":  "Functional Ovarian Cyst",
+    "createdAt":  "2026-08-06T03:45:00Z",
+    "canonicalHierarchy":  [
+                               "All Categories",
+                               "Basic",
+                               "Ultrasound",
+                               "Female Pelvis Basic",
+                               "Functional Ovarian Cyst"
+                           ],
+    "canonicalDeckPath":  "Corebook::Ultrasound::Female Pelvis Basic::Functional Ovarian Cyst",
+    "sourcePriority":  [
+                           "RadPrimer",
+                           "STATdx"
+                       ],
+    "sourceCoverage":  {
+                           "RadPrimer":  {
+                                             "role":  "Canonical hierarchy/backbone and base Functional Ovarian Cyst article.",
+                                             "keptText":  [
+                                                              "definitions of follicle, follicular cyst, corpus luteum, and corpus luteum cyst",
+                                                              "US appearance of simple/follicular and corpus luteum/hemorrhagic cysts",
+                                                              "CT/MR overview",
+                                                              "differential diagnosis against ectopic pregnancy, heterotopic pregnancy, and ovarian neoplasm",
+                                                              "pathology, pregnancy behavior, clinical presentation, and management"
+                                                          ],
+                                             "limitations":  [
+                                                                 "Only four images; all four are also present in STATdx as exact duplicate source assets."
+                                                             ]
+                                         },
+                           "STATdx":  {
+                                          "role":  "Supplemental depth and expanded image-recognition set.",
+                                          "keptText":  [
+                                                           "O-RADS 2022 wording for selected follow-up thresholds",
+                                                           "pitfall emphasis that ring of fire is not specific for ectopic pregnancy",
+                                                           "additional examples of hemorrhagic cyst, crenulated corpus luteum, rupture/free fluid, large cysts, and resolving debris-level cysts"
+                                                       ],
+                                          "limitations":  [
+                                                              "STATdx breadcrumb is not used for canonical hierarchy because RadPrimer is present. STATdx images 1-4 duplicate RadPrimer images 1-4 and are archived by default."
+                                                          ]
+                                      }
+                       },
+    "imageCountBySource":  {
+                               "RadPrimer":  4,
+                               "STATdx":  14
+                           },
+    "sourceAttributionRules":  {
+                                   "default":  "Tag factual blocks as [RadPrimer], [STATdx], or [Both] where source distinction matters.",
+                                   "humanFacingImages":  "Use labels like RadPrimer image 4 or STATdx image 11 in prose.",
+                                   "traceability":  "Use masterImageId values only in registry/import/report metadata."
+                               },
+    "selectedPrimaryImageIds":  [
+                                    "RP-01",
+                                    "RP-02",
+                                    "RP-03",
+                                    "RP-04",
+                                    "SDX-05",
+                                    "SDX-06",
+                                    "SDX-07",
+                                    "SDX-08",
+                                    "SDX-09",
+                                    "SDX-10",
+                                    "SDX-11",
+                                    "SDX-12",
+                                    "SDX-13",
+                                    "SDX-14"
+                                ],
+    "archiveOptionalImageIds":  [
+                                    "SDX-01",
+                                    "SDX-02",
+                                    "SDX-03",
+                                    "SDX-04"
+                                ],
+    "sourceSelectionPlan":  {
+                                "textBackbone":  {
+                                                     "primary":  "RadPrimer supplies the canonical hierarchy/backbone, core terminology, ultrasound appearance, differential, pathology/clinical framing, and SRU/O-RADS management structure.",
+                                                     "supplement":  "STATdx is nearly concordant for the base article and adds the explicit O-RADS 2022 simple-cyst follow-up nuance plus the richer image set for hemorrhagic cyst, corpus luteum, ring-of-fire pitfalls, rupture/free fluid, large cysts, and resolving/debris-level variants.",
+                                                     "downweight":  "Do not use the STATdx breadcrumb for deck routing. Do not label the package Core-supported; Core evidence was requested but not supplied in the bundle."
+                                                 },
+                                "imageCurationPolicy":  "Exact duplicates may be archived. Near duplicates, alternate patients, alternate same-disease examples, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+                                "duplicateEvidencePolicy":  "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is insufficient.",
+                                "radprimerImageCoverageGate":  {
+                                                                   "statdxFullyCoversRadPrimerImageSet":  true,
+                                                                   "coverage":  [
+                                                                                    {
+                                                                                        "radprimerImageId":  "RP-01",
+                                                                                        "classification":  "exactDuplicate",
+                                                                                        "coveredBy":  [
+                                                                                                          "SDX-01"
+                                                                                                      ],
+                                                                                        "evidence":  "Same stable source image ID and visual match on duplicate_pair_contact_sheet.jpg."
+                                                                                    },
+                                                                                    {
+                                                                                        "radprimerImageId":  "RP-02",
+                                                                                        "classification":  "exactDuplicate",
+                                                                                        "coveredBy":  [
+                                                                                                          "SDX-02"
+                                                                                                      ],
+                                                                                        "evidence":  "Same stable source image ID and visual match on duplicate_pair_contact_sheet.jpg."
+                                                                                    },
+                                                                                    {
+                                                                                        "radprimerImageId":  "RP-03",
+                                                                                        "classification":  "exactDuplicate",
+                                                                                        "coveredBy":  [
+                                                                                                          "SDX-03"
+                                                                                                      ],
+                                                                                        "evidence":  "Same stable source image ID and visual match on duplicate_pair_contact_sheet.jpg."
+                                                                                    },
+                                                                                    {
+                                                                                        "radprimerImageId":  "RP-04",
+                                                                                        "classification":  "exactDuplicate",
+                                                                                        "coveredBy":  [
+                                                                                                          "SDX-04"
+                                                                                                      ],
+                                                                                        "evidence":  "Same stable source image ID and visual match on duplicate_pair_contact_sheet.jpg."
+                                                                                    }
+                                                                                ],
+                                                                   "action":  "Keep the RadPrimer copies as canonical primary images; archive the STATdx duplicate copies so the extension downloads one curated copy of each duplicated teaching image."
+                                                               },
+                                "primaryImageDownloadUseSet":  [
+                                                                   "RP-01",
+                                                                   "RP-02",
+                                                                   "RP-03",
+                                                                   "RP-04",
+                                                                   "SDX-05",
+                                                                   "SDX-06",
+                                                                   "SDX-07",
+                                                                   "SDX-08",
+                                                                   "SDX-09",
+                                                                   "SDX-10",
+                                                                   "SDX-11",
+                                                                   "SDX-12",
+                                                                   "SDX-13",
+                                                                   "SDX-14"
+                                                               ],
+                                "archiveDuplicateIds":  [
+                                                            "SDX-01",
+                                                            "SDX-02",
+                                                            "SDX-03",
+                                                            "SDX-04"
+                                                        ],
+                                "imageDownloadPlan":  [
+                                                          {
+                                                              "masterImageId":  "RP-01",
+                                                              "displayLabel":  "RadPrimer image 1",
+                                                              "sourceLabel":  "RadPrimer",
+                                                              "sourceImageNumber":  1,
+                                                              "plainUrl":  "https://app.radprimer.com/images/cadaedf7-498e-4aed-86ee-9eb3e5baa8b7?style=xlarge\u0026annotated=false",
+                                                              "annotatedUrl":  "https://app.radprimer.com/images/cadaedf7-498e-4aed-86ee-9eb3e5baa8b7?style=xlarge\u0026annotated=true",
+                                                              "sourceQualifiedPlainFilename":  "RP-01_RadPrimer_plain_Functional_Ovarian_Cyst1.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "RP-01_RadPrimer_annotated_Functional_Ovarian_Cyst1_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "canonicalBackbone",
+                                                                                   "exophyticOvarianOrigin",
+                                                                                   "bridgingOvarianParenchyma",
+                                                                                   "graphicOverview"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "RP-02",
+                                                              "displayLabel":  "RadPrimer image 2",
+                                                              "sourceLabel":  "RadPrimer",
+                                                              "sourceImageNumber":  2,
+                                                              "plainUrl":  "https://app.radprimer.com/images/05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363?style=xlarge\u0026annotated=false",
+                                                              "annotatedUrl":  "https://app.radprimer.com/images/05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363?style=xlarge\u0026annotated=true",
+                                                              "sourceQualifiedPlainFilename":  "RP-02_RadPrimer_plain_Functional_Ovarian_Cyst2.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "RP-02_RadPrimer_annotated_Functional_Ovarian_Cyst2_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "canonicalBackbone",
+                                                                                   "corpusLuteumCyst",
+                                                                                   "exophyticCyst",
+                                                                                   "hemorrhageRetractedClot"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "RP-03",
+                                                              "displayLabel":  "RadPrimer image 3",
+                                                              "sourceLabel":  "RadPrimer",
+                                                              "sourceImageNumber":  3,
+                                                              "plainUrl":  "https://app.radprimer.com/images/4ef6d3cb-714a-4372-a858-aacaaa10db9a?style=xlarge\u0026annotated=false",
+                                                              "annotatedUrl":  "https://app.radprimer.com/images/4ef6d3cb-714a-4372-a858-aacaaa10db9a?style=xlarge\u0026annotated=true",
+                                                              "sourceQualifiedPlainFilename":  "RP-03_RadPrimer_plain_Functional_Ovarian_Cyst3.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "RP-03_RadPrimer_annotated_Functional_Ovarian_Cyst3_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "canonicalBackbone",
+                                                                                   "simpleFunctionalCyst",
+                                                                                   "intraovarianLocation",
+                                                                                   "surroundingFollicles"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "RP-04",
+                                                              "displayLabel":  "RadPrimer image 4",
+                                                              "sourceLabel":  "RadPrimer",
+                                                              "sourceImageNumber":  4,
+                                                              "plainUrl":  "https://app.radprimer.com/images/a6f0c599-6202-46ee-8f5f-456d723751da?style=xlarge\u0026annotated=false",
+                                                              "annotatedUrl":  "https://app.radprimer.com/images/a6f0c599-6202-46ee-8f5f-456d723751da?style=xlarge\u0026annotated=true",
+                                                              "sourceQualifiedPlainFilename":  "RP-04_RadPrimer_plain_Functional_Ovarian_Cyst4.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "RP-04_RadPrimer_annotated_Functional_Ovarian_Cyst4_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "canonicalBackbone",
+                                                                                   "ringOfFire",
+                                                                                   "corpusLuteumCyst",
+                                                                                   "hemorrhagicInternalEchoes"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-05",
+                                                              "displayLabel":  "STATdx image 5",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  5,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/3d95fca5-dd10-4c58-afa6-c03f6d4cb69a?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/3d95fca5-dd10-4c58-afa6-c03f6d4cb69a?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-05_STATdx_plain_Functional_Ovarian_Cyst5.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-05_STATdx_annotated_Functional_Ovarian_Cyst5_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "hemorrhagicCyst",
+                                                                                   "laceLikeReticularEchoes",
+                                                                                   "noInternalFlow",
+                                                                                   "recognitionReinforcement"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-06",
+                                                              "displayLabel":  "STATdx image 6",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  6,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/924bcbda-6f24-4761-934a-76a5db7168b6?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/924bcbda-6f24-4761-934a-76a5db7168b6?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-06_STATdx_plain_Functional_Ovarian_Cyst6.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-06_STATdx_annotated_Functional_Ovarian_Cyst6_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "ringOfFire",
+                                                                                   "normalCorpusLuteumPitfall",
+                                                                                   "hemorrhage",
+                                                                                   "recognitionReinforcement"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-07",
+                                                              "displayLabel":  "STATdx image 7",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  7,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/0680af11-c2ab-420c-994e-9314026b6613?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/0680af11-c2ab-420c-994e-9314026b6613?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-07_STATdx_plain_Functional_Ovarian_Cyst7.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-07_STATdx_annotated_Functional_Ovarian_Cyst7_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "crenulatedCorpusLuteum",
+                                                                                   "grayscaleVariant",
+                                                                                   "recognitionReinforcement"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-08",
+                                                              "displayLabel":  "STATdx image 8",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  8,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/5a262472-51eb-449b-9aae-567abf5402dd?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/5a262472-51eb-449b-9aae-567abf5402dd?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-08_STATdx_plain_Functional_Ovarian_Cyst8.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-08_STATdx_annotated_Functional_Ovarian_Cyst8_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "peripheralFlow",
+                                                                                   "expectedVascularity",
+                                                                                   "recognitionReinforcement"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-09",
+                                                              "displayLabel":  "STATdx image 9",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  9,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/f453aa70-778b-42d2-a8ea-dfdd026b1f5c?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/f453aa70-778b-42d2-a8ea-dfdd026b1f5c?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-09_STATdx_plain_Functional_Ovarian_Cyst9.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-09_STATdx_annotated_Functional_Ovarian_Cyst9_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "vascularMarginPitfall",
+                                                                                   "solidComponentMimic",
+                                                                                   "corpusLuteumHemorrhage",
+                                                                                   "recognitionReinforcement"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-10",
+                                                              "displayLabel":  "STATdx image 10",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  10,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/94c0d8b8-3097-460a-a5f2-4b8ff2259820?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/94c0d8b8-3097-460a-a5f2-4b8ff2259820?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-10_STATdx_plain_Functional_Ovarian_Cyst10.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-10_STATdx_annotated_Functional_Ovarian_Cyst10_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "follicularCyst",
+                                                                                   "fertilityTreatmentContext",
+                                                                                   "dominantFollicle",
+                                                                                   "caseContext"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-11",
+                                                              "displayLabel":  "STATdx image 11",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  11,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/8cbcba30-01f8-4b37-b9b5-f4273c50a2d5?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/8cbcba30-01f8-4b37-b9b5-f4273c50a2d5?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-11_STATdx_plain_Functional_Ovarian_Cyst11.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-11_STATdx_annotated_Functional_Ovarian_Cyst11_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "rupturedHemorrhagicCyst",
+                                                                                   "freeFluid",
+                                                                                   "complicationVariant"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-12",
+                                                              "displayLabel":  "STATdx image 12",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  12,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/f4b5db96-e547-4f3c-b312-8d86557ce89f?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/f4b5db96-e547-4f3c-b312-8d86557ce89f?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-12_STATdx_plain_Functional_Ovarian_Cyst12.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-12_STATdx_annotated_Functional_Ovarian_Cyst12_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "largeFunctionalCyst",
+                                                                                   "compressedOvarianRim",
+                                                                                   "torsionEvaluation",
+                                                                                   "recognitionReinforcement"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-13",
+                                                              "displayLabel":  "STATdx image 13",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  13,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/e7f04bcd-a56f-49d9-9839-826350c3bf72?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/e7f04bcd-a56f-49d9-9839-826350c3bf72?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-13_STATdx_plain_Functional_Ovarian_Cyst13.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-13_STATdx_annotated_Functional_Ovarian_Cyst13_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "resolvingHemorrhagicCyst",
+                                                                                   "fluidDebrisLevel",
+                                                                                   "recognitionReinforcement"
+                                                                               ]
+                                                          },
+                                                          {
+                                                              "masterImageId":  "SDX-14",
+                                                              "displayLabel":  "STATdx image 14",
+                                                              "sourceLabel":  "STATdx",
+                                                              "sourceImageNumber":  14,
+                                                              "plainUrl":  "https://app.statdx.com/image/thumbnail/5df8af25-eea9-441b-ac56-bf3ad0aee179?size=1000\u0026quality=90",
+                                                              "annotatedUrl":  "https://app.statdx.com/image/thumbnail/5df8af25-eea9-441b-ac56-bf3ad0aee179?annotated=true\u0026size=1000\u0026quality=90",
+                                                              "sourceQualifiedPlainFilename":  "SDX-14_STATdx_plain_Functional_Ovarian_Cyst14.jpg",
+                                                              "sourceQualifiedAnnotatedFilename":  "SDX-14_STATdx_annotated_Functional_Ovarian_Cyst14_annot.jpg",
+                                                              "teachingRole":  [
+                                                                                   "primaryTeachingSet",
+                                                                                   "supplementalDepth",
+                                                                                   "solidAppearingCorpusLuteum",
+                                                                                   "ringOfFirePitfall",
+                                                                                   "recognitionReinforcement"
+                                                                               ]
+                                                          }
+                                                      ],
+                                "caseClusterGuardrails":  {
+                                                              "atomicClusterRule":  "Keep same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse clusters together unless an explicit documented split is safe.",
+                                                              "observedClusters":  "No explicit same-patient or follow-up clusters were identified in this Functional Ovarian Cyst bundle. STATdx images 5-14 are separate supplemental examples by caption/context.",
+                                                              "intentionalSplits":  "No source case cluster was intentionally split."
+                                                          },
+                                "generatorInstructions":  [
+                                                              "Use metadata.json canonicalHierarchy and canonicalDeckPath exactly for routing.",
+                                                              "Use clean human-facing labels such as RadPrimer image 4 or STATdx image 11 in prose; keep RP-04 and SDX-11 for registry/import traceability.",
+                                                              "When generating cards later, prefer RadPrimer images 1-4 for canonical backbone examples and STATdx images 5-14 for reinforcement/pitfalls/complications.",
+                                                              "Do not generate cards or a lecture from this synthesis step."
+                                                          ]
+                            }
+}

@@ -11,6 +11,7 @@ OUTPUT_FILE = PROMPT_DIR / "FULL_PROMPT.txt"
 ORDER = [
     "0_systemrules.txt",
     "0B_entitydefinitionrules.txt",
+    "0C_radiologistcardvision.txt",
     "1_notetypestructure.txt",
     "2_corevalidationgate.txt",
     "2B_wholesourcecoverageaudit.txt",
@@ -33,6 +34,7 @@ ORDER = [
 LABELS = {
     "0_systemrules.txt": "SYSTEM RULES",
     "0B_entitydefinitionrules.txt": "ENTITY DEFINITION RULES",
+    "0C_radiologistcardvision.txt": "RADIOLOGIST CARD GENERATION SCHEMA",
     "1_notetypestructure.txt": "NOTE TYPE STRUCTURE",
     "2_corevalidationgate.txt": "CORE VALIDATION GATE",
     "2B_wholesourcecoverageaudit.txt": "WHOLE SOURCE COVERAGE AUDIT",

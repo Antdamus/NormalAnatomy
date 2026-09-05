@@ -1,0 +1,102 @@
+# Hydronephrosis
+
+Canonical hierarchy: All Categories > Basic > Nuclear Medicine > Genitourinary Basic > Hydronephrosis
+Canonical deck path: Corebook::Nuclear Medicine::Genitourinary Basic::Hydronephrosis
+Primary source posture: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth and the default source-preferred image replacements when the same image appears in both sources.
+Core evidence: no auditable Core Radiology source was supplied in this bundle, so Core-specific support is not asserted.
+
+## Source Coverage And Image Gate
+
+The staged image_evidence files were inspected before duplicate classification. STATdx exactly duplicates 20 of the 22 RadPrimer images as same screenshot/graphic/case-correlation content, usually with a larger 1000 px evidence export versus the 900 px RadPrimer export. Those exact RadPrimer duplicates are archive-optional, while their STATdx counterparts are selected for default teaching/download. STATdx does not cover RadPrimer images 13-14; that same-patient bone-scan/CT correlation cluster remains selected.
+
+- RadPrimer image 1 -> STATdx image 20: exact duplicate; Same unilateral UPJ obstruction graphic; STATdx version is selected as the source-qualified duplicate replacement.
+- RadPrimer image 2 -> STATdx image 23: exact duplicate; Same right UPJ obstruction renogram screenshot with dilated pelvis and calyces.
+- RadPrimer image 3 -> STATdx image 21: exact duplicate; Same composite renogram example of horseshoe kidney, ileal conduit, duplicated system, and obstructed upper moiety/ureterocele.
+- RadPrimer image 4 -> STATdx image 22: exact duplicate; Same 6-week-old left UPJ obstruction MAG3 renogram.
+- RadPrimer image 5 -> STATdx image 2: exact duplicate; Same normal symmetric MAG3 uptake/excretion renogram.
+- RadPrimer image 6 -> STATdx image 3: exact duplicate; Same high-grade/complete left obstruction renogram with persistent collecting-system activity after furosemide.
+- RadPrimer image 7 -> STATdx image 4: exact duplicate; Same bilateral partial obstruction renogram with delayed washout after furosemide.
+- RadPrimer image 8 -> STATdx image 5: exact duplicate; Same dilated but unobstructed/patulous left collecting-system renogram with post-furosemide normalization.
+- RadPrimer image 9 -> STATdx image 6: exact duplicate; Same VUR/nonfunctioning right kidney renogram; STATdx caption adds motion artifact as a possible mimic.
+- RadPrimer image 10 -> STATdx image 7: exact duplicate; Same renal artery stenosis example with small delayed right kidney and low relative function.
+- RadPrimer image 11 -> STATdx image 8: exact duplicate; Same prostate-cancer bone scan showing right collecting-system tracer retention.
+- RadPrimer image 12 -> STATdx image 9: exact duplicate; Same same-patient coronal CECT/MIP stone correlation for the right distal ureter obstruction.
+- RadPrimer image 13: not covered by STATdx; No STATdx counterpart on visual inspection; keep as primary because it begins a unique same-patient bone-scan/CT correlation for duplicated left collecting system/parapelvic cyst.
+- RadPrimer image 14: not covered by STATdx; No STATdx counterpart on visual inspection; keep with RadPrimer image 13 as the atomic CT correlation for duplicated collecting system and parapelvic cyst.
+- RadPrimer image 15 -> STATdx image 12: exact duplicate; Same marked left renal retention example from clinically significant renal artery stenosis.
+- RadPrimer image 16 -> STATdx image 13: exact duplicate; Same ectopic right ureter/clamped nephrostomy high-grade obstruction renogram.
+- RadPrimer image 17 -> STATdx image 14: exact duplicate; Same urinary-diversion/patulous unobstructed collecting-systems postprocessing image.
+- RadPrimer image 18 -> STATdx image 15: exact duplicate; Same same-patient coronal CECT correlation for urinary diversion/patulous fullness.
+- RadPrimer image 19 -> STATdx image 16: exact duplicate; Same poor initial uptake and delayed/persistent left nephrogram; STATdx caption adds renal vein thrombosis mimic.
+- RadPrimer image 20 -> STATdx image 17: exact duplicate; Same transplant delayed nephrogram/minimal excretion example from acute tubular necrosis.
+- RadPrimer image 21 -> STATdx image 18: exact duplicate; Same pediatric reflux/nonfunctioning right kidney renogram.
+- RadPrimer image 22 -> STATdx image 19: exact duplicate; Same F-18 FDG PET/CT malignant extrinsic obstruction example; STATdx caption calls high-grade obstruction.
+
+## Fused Teaching Backbone
+
+### Definition And Purpose
+
+- [Both] Hydronephrosis is dilation of the renal collecting system, often with renal enlargement, due to impaired urinary outflow; the cause may be mechanical/anatomic or functional.
+- [Both] Mechanical causes include ectopic ureter, ureteral stenosis, UPJ stenosis, nephrolithiasis, urothelial or pelvic mass, prostate/bladder outlet pathology, ureterocele, posterior urethral valve, retroperitoneal fibrosis, and extrinsic adenopathy or mass.
+- [Both] Functional or nonobstructive dilation can reflect abnormal peristalsis, patulous collecting systems after prior obstruction, urinary diversion, or persistent hydronephrosis after an obstruction has resolved.
+- [Both] Tc-99m MAG3 renal scintigraphy characterizes hydronephrosis as obstructed versus dilated but nonobstructed and estimates differential renal function.
+- [STATdx] Curves must be correlated with the raw images because duplicated collecting systems, ROI placement over bladder/diaper activity, motion, and anatomy can make curve-only interpretation misleading.
+
+### Protocol And Measurement
+
+- [Both] Patient preparation includes hydration, voiding before the study, and avoidance of furosemide/diuretics on the day of the exam; full bladder, incomplete voiding, bladder outlet obstruction, or reflux can complicate interpretation.
+- [STATdx] Catheterization should be considered when voiding is unreliable, such as non-potty-trained children or neurogenic bladder.
+- [Both] MAG3 is preferred for hydronephrosis evaluation because tubular extraction preserves image quality even with reduced GFR; DTPA is less robust in low GFR and is usually reserved for GFR calculations.
+- [Both] Typical acquisition includes posterior supine flow images, dynamic imaging for 20-30 minutes, furosemide after the collecting system fills, and additional postfurosemide imaging for 20-30 minutes.
+- [Both] Adults commonly receive 40 mg IV furosemide with normal creatinine; azotemia may require higher doses, and pediatric dosing is weight based.
+- [Both] Differential renal function is normally about 45-55% per kidney. Reported values should be trended over time because loss of relative function can be more important than a single borderline value.
+- [STATdx] Each exam offers three opportunities to clear a kidney or moiety: prefurosemide washout, postfurosemide washout, and gravity-assisted drainage/postvoid imaging. Once a kidney or moiety clears, later t1/2 values add little.
+
+### Renogram Pattern Categories
+
+- [Both] Normal: prompt uptake, cortical peak around 2-3 minutes, calyceal activity by about 5 minutes, bladder activity by 10-15 minutes, spontaneous washout before furosemide, and t1/2 <= 10 minutes.
+- [Both] Dilated but unobstructed: collecting-system activity may rise until furosemide or GAD, then washes out normally; differential renal function is usually normal unless prior obstruction caused damage.
+- [STATdx] GAD supports nonobstruction when clearance is > 50% and supports obstruction when clearance is < 50%; adding GAD improves specificity for furosemide renography.
+- [Both] Partial obstruction: excretion is delayed and may improve but not normalize after furosemide or GAD; t1/2 is indeterminate at 10-20 minutes and obstructed when > 20 minutes, with higher t1/2 suggesting higher-grade obstruction.
+- [Both] High-grade or complete obstruction: delayed/asymmetric flow, delayed or absent collecting-system visualization, low differential function, progressive collecting-system activity despite furosemide/GAD, and very high or unmeasurable t1/2.
+- [Both] Severely dilated but nonobstructed systems may need a more permissive t1/2 cutoff around 15 minutes depending on the clinical scenario.
+
+### Mimics, Pitfalls, And Differential
+
+- [Both] Vesicoureteral reflux can mimic obstruction, especially if the bladder is not catheterized; reflux and obstruction can coexist.
+- [Both] Acute tubular necrosis may show delayed nephrogram and minimal excretion, especially in transplant kidneys, but is not a collecting-system obstruction.
+- [Both] Renal artery stenosis can cause asymmetric reduced flow, delayed nephrogram, smaller kidney, and low relative function while washout may remain normal.
+- [STATdx] Renal vein thrombosis can mimic high-grade obstruction with reduced flow, delayed nephrogram, and poor collecting-system visualization.
+- [STATdx] Low GFR, dehydration, poor response to furosemide, full bladder, immature kidneys, and atonic/severely dilated systems can create false-positive or indeterminate scans; many improve with GAD.
+- [Both] CT, MR urography, ultrasound, and bone scan/PET examples provide anatomic or incidental correlation; anatomic dilation can persist after relief of obstruction, so functional assessment may still be needed.
+
+### Clinical Course And Management
+
+- [Both] High-grade obstruction requires treatment to avoid renal functional impairment. Mechanical relief options include stent, nephrostomy, pyeloplasty, urinary diversion, and lithotripsy depending on cause.
+- [Both] Low-grade or partial obstruction is often followed with serial renograms to evaluate resolution and monitor for decreasing differential renal function.
+- [STATdx] If GAD clearance is > 50% and function is stable, conservative management is supported; if clearance remains < 50% or differential renal function declines, obstruction is more likely clinically significant.
+
+## Selected Image Atlas For Future Generation
+
+Use the following primary images by default. Archive-optional RadPrimer images are retained for audit/completeness only because they are exact duplicate exports of selected STATdx images.
+
+- STATdx image 1: interpretive curve graphic for normal, dilated-unobstructed, partial obstruction, and high-grade obstruction patterns.
+- STATdx image 2: normal symmetric MAG3 uptake and excretion.
+- STATdx images 3-5: MAG3 pattern set for high-grade obstruction, bilateral partial obstruction, and dilated but unobstructed/patulous system.
+- STATdx image 6: vesicoureteral reflux/nonfunctioning right kidney example, with motion artifact also noted as a possible mimic.
+- STATdx image 7: renal artery stenosis mimic with small delayed right kidney and reduced relative function.
+- STATdx images 8-9: atomic bone-scan/CECT stone-obstruction cluster in the same patient.
+- STATdx images 10-11: atomic persistent-dilation/indeterminate-washout cluster in the same patient, favoring low GFR or dehydration rather than active obstruction.
+- STATdx images 12-13: renal artery stenosis retention and ectopic ureter/clamped nephrostomy high-grade obstruction examples.
+- STATdx images 14-15: atomic urinary-diversion/patulous nonobstructed collecting-system cluster with CT correlation.
+- STATdx images 16-19: complete obstruction/renal vein thrombosis mimic, transplant ATN, reflux hydronephrosis, and malignant extrinsic obstruction examples.
+- STATdx images 20-23: selected exact replacements for RadPrimer UPJ obstruction graphic, composite anomaly renogram, 6-week-old left UPJ obstruction renogram, and right UPJ obstruction renogram.
+- STATdx image 24: sparse-caption Gallbladder Activity source image retained for source completeness and possible pitfall review; downweight for routine generators unless specifically relevant.
+- RadPrimer images 13-14: unique same-patient bone-scan/CT correlation showing a duplicated left collecting system with dilated upper pole moiety and parapelvic cyst explanation; keep as an atomic cluster.
+
+## Downstream Use Notes
+
+- Use selectedPrimaryImageIds for default image download and teaching.
+- Treat archiveOptionalImageIds as audit/completeness records, not as default card or lecture images.
+- Preserve atomic case clusters listed in the manifest when generating future narrative or cards.
+- Keep human-facing prose labels clean, such as STATdx image 4 or RadPrimer image 14. Use short IDs such as SDX-04 and RP-14 only in registry, filenames, and traceability fields.

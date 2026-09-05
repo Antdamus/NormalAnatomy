@@ -1,0 +1,11 @@
+﻿Source image set:
+- Clean and annotated multi-sequence MRI case by Hellerhoff.
+- Description: right-sided sinus thrombosis, mainly involving the transverse sinus, shown on T2, T1, DWI, FLAIR, and post-contrast T1 axial/coronal MRI.
+- Clean file: https://commons.wikimedia.org/wiki/File:Sinusthrombose_rechts_Sinus_transversalis_76W_-_MR_-_001.jpg
+- Annotated file: https://commons.wikimedia.org/wiki/File:Sinusthrombose_rechts_Sinus_transversalis_76W_-_MR_-_001_-_Annotation.jpg
+- License: CC BY-SA 4.0.
+- Teaching reference: https://pacs.de/term/dural-sinus-thrombosis
+
+Derived files in this folder:
+- brain_mri_multisequence_01_no_arrows.jpg
+- brain_mri_multisequence_01_arrow.jpg

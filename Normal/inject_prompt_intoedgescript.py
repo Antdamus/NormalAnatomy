@@ -41,13 +41,15 @@ AUTO_FILE_PREFIX_FROM_TITLE = False
 
 CHATGPT_AUTONOMOUS_PROMPT = r"""# Autonomous Execution Override
 
-For this run, operate in autonomous batch mode.
+Operate autonomously for this generation task.
+
+This operational instruction is never card content and must never appear in any TSV field.
 
 Do not stop to ask for user permission between internal audits, repairs, section progression, or export steps after the initial source package has been provided.
 
 If the embedded prompt suggests staged generation, previews, or manual pauses, treat those as internal validation checkpoints unless a true hard-stop failure or missing-source problem requires user clarification.
 
-In autonomous batch mode:
+In autonomous generation mode:
 - do not output user-facing section-by-section previews by default
 - perform the required internal audits before export
 - repair fixable structural failures before moving on
@@ -91,6 +93,7 @@ Therefore:
 - do not fabricate image-based cases
 - do not create NORMAL UNKNOWN cards
 - proceed using only the article text and the standard NORMAL-engine rules for non-image card families
+- route all generated Anki deck paths under the Corebook root, not RadprimerNormal
 
 Zero NORMAL UNKNOWN cards is expected in this mode.
 """

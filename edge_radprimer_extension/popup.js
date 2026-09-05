@@ -881,6 +881,70 @@ async function copyText(text) {
   await navigator.clipboard.writeText(text);
 }
 
+async function tryCopyText(text) {
+  if (!text) return false;
+  try {
+    await copyText(text);
+    return true;
+  } catch (error) {
+    console.warn("[RadPrimer Runner] Clipboard copy failed.", error);
+    return false;
+  }
+}
+
+function getCodexWakeMessage(response) {
+  return String(response?.codexWakeMessage || response?.clipboardText || "").trim();
+}
+
+function logCodexWakeMessage(text) {
+  if (!text) return;
+  console.log(
+    [
+      "----- BEGIN CODEX WAKE-UP MESSAGE -----",
+      text,
+      "----- END CODEX WAKE-UP MESSAGE -----"
+    ].join("\n")
+  );
+}
+
+async function logCodexWakeMessageToTab(tabId, text) {
+  if (!tabId || !text) return;
+  try {
+    await chrome.scripting.executeScript({
+      target: { tabId },
+      func: (message) => {
+        console.log(
+          [
+            "----- BEGIN CODEX WAKE-UP MESSAGE -----",
+            message,
+            "----- END CODEX WAKE-UP MESSAGE -----"
+          ].join("\n")
+        );
+      },
+      args: [text]
+    });
+  } catch (error) {
+    console.warn("[RadPrimer Runner] Could not mirror wake-up message into the page console.", error);
+  }
+}
+
+function showMasterWakeFallback(response, wakeMessage, copied) {
+  const panel = $("masterWakeFallback");
+  const textarea = $("masterWakeText");
+  const hint = $("masterWakeHint");
+  if (!panel || !textarea || !wakeMessage) return;
+  textarea.value = wakeMessage;
+  const downloadFolder = response?.bundle?.downloadFolder || "the master-source bundle";
+  const filename = response?.bundle?.files?.codexWakeMessage || "codex_wake_message.txt";
+  hint.textContent = [
+    copied
+      ? "Clipboard copy was attempted successfully, but Remote Desktop may still block transfer to your local clipboard."
+      : "Clipboard copy failed or was blocked.",
+    `Manual fallback: copy from this box, the page console, or ${downloadFolder}\\${filename}.`
+  ].join(" ");
+  panel.classList.remove("hidden");
+}
+
 async function run() {
   const button = $("run");
   button.disabled = true;
@@ -1186,14 +1250,23 @@ async function buildMasterSource() {
     }
     if (!response?.ok) throw new Error(response?.error || "Master source build failed.");
 
-    if (response.clipboardText) await copyText(response.clipboardText);
+    const wakeMessage = getCodexWakeMessage(response);
+    const copied = await tryCopyText(wakeMessage);
+    logCodexWakeMessage(wakeMessage);
+    await logCodexWakeMessageToTab(tab.id, wakeMessage);
+    showMasterWakeFallback(response, wakeMessage, copied);
     setStatus(
       [
         response.message || "Master source request bundle prepared.",
         response.bundle?.downloadFolder ? `Bundle: ${response.bundle.downloadFolder}` : "",
+        response.bundle?.files?.codexWakeMessage ? `Fallback file: ${response.bundle.files.codexWakeMessage}` : "",
         response.exportedSources?.length ? `Exported: ${response.exportedSources.join(", ")}` : "",
         response.cachedSources?.length ? `Sources: ${response.cachedSources.join(", ")}` : "",
-        response.clipboardText ? "Codex wake-up message copied to clipboard." : ""
+        wakeMessage
+          ? copied
+            ? "Codex wake-up message copied, shown below, and printed to the console."
+            : "Codex wake-up message shown below and printed to the console because clipboard copy failed."
+          : "No Codex wake-up message was returned."
       ].filter(Boolean).join("\n")
     );
   } catch (error) {
@@ -1223,6 +1296,7 @@ async function importMasterSource() {
         `Images: ${source.imageCount ?? 0}`,
         `Downloadable image files: ${source.downloadFileCount ?? 0}`,
         `Characters: ${source.outputChars ?? 0}`,
+        source.storageArea === "session" ? "Storage: browser session fallback." : "Storage: browser local cache.",
         "Use imported master source is now enabled."
       ].join("\n")
     );
@@ -1321,6 +1395,17 @@ async function init() {
   $("buildMasterSource").addEventListener("click", buildMasterSource);
   $("importMasterSource").addEventListener("click", importMasterSource);
   $("showMasterSource").addEventListener("click", showMasterSource);
+  $("copyMasterWake").addEventListener("click", async () => {
+    const text = $("masterWakeText").value;
+    const copied = await tryCopyText(text);
+    setStatus(copied ? "Wake-up message copied again." : "Clipboard copy failed. Use Select message, then copy manually.");
+  });
+  $("selectMasterWake").addEventListener("click", () => {
+    const textarea = $("masterWakeText");
+    textarea.focus();
+    textarea.select();
+    setStatus("Wake-up message selected. Copy it manually if Remote Desktop blocks automatic clipboard transfer.");
+  });
   $("refreshPrompts").addEventListener("click", checkPrompts);
 }
 

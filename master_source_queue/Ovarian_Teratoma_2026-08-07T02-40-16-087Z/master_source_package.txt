@@ -1,0 +1,114 @@
+TITLE: Ovarian Teratoma
+
+SOURCE STATUS
+- [Both] This fused master source combines RadPrimer Ovarian Teratoma with STATdx Ovarian Teratoma.
+- [RadPrimer] Canonical hierarchy: All Categories > Basic > Ultrasound > Female Pelvis Basic > Ovarian Teratoma
+- [RadPrimer] Canonical deck path: Corebook::Ultrasound::Female Pelvis Basic::Ovarian Teratoma
+- [Both] Core Radiology evidence was requested but not supplied in this browser bundle; do not label later output as Core-supported unless a later run provides auditable Core text.
+
+MASTER SUMMARY
+- [Both] Ovarian teratoma includes mature cystic teratoma, immature teratoma, and monodermal teratoma. Mature cystic teratoma is the dermoid cyst and is the common pattern for radiology recognition.
+- [Both] The central recognition pattern is an ovarian/adnexal mass containing fat, hair, sebaceous material, or calcified tooth/bone elements. On ultrasound, a shadowing echogenic Rokitansky nodule/dermoid plug is diagnostic when present.
+- [Both] Mature cystic teratomas are usually benign and often incidental. They are common ovarian tumors, can be bilateral in 10-20%, may act as a lead point for torsion, and rarely rupture or undergo malignant degeneration.
+- [Both] Immature teratoma is a malignant germ cell tumor in younger patients and tends to be large, more solid, irregular, and heterogeneous, with small fat foci and coarse calcification rather than a classic benign dermoid plug.
+
+ULTRASOUND RECOGNITION
+- [Both] Ultrasound is the best first-line diagnostic tool. Mature cystic teratoma has a wide range of appearances: heterogeneous cystic mass with echogenic component, highly echogenic fat, fat-fluid level, shadowing mural nodule, tooth-like echogenic foci, hair echoes, and tip-of-iceberg shadowing.
+- [Both] Hair can appear as punctate echoes in one plane and linear echoes in an orthogonal plane; mobile hair in fluid can produce the dot-dash-dot appearance.
+- [Both] Teeth or calcified elements appear as highly echogenic foci with posterior acoustic shadowing. Fat and sebaceous material can attenuate sound so much that only the leading edge is visible, preventing accurate size measurement.
+- [Both] Color Doppler usually shows no flow in the internal dermoid contents. Apparent Doppler signal in calcified components can be twinkling artifact, so pulsed Doppler confirmation is important.
+- [RadPrimer] RadPrimer image 1 shows mostly cystic dermoid with floating linear hair echoes and an echogenic shadowing Rokitansky nodule.
+- [RadPrimer] RadPrimer image 2 shows a cystic lesion with a fat-containing Rokitansky nodule, reinforcing that mature cystic teratoma can contain tissue from all 3 embryologic germ layers.
+- [RadPrimer] RadPrimer image 3 and RadPrimer image 4 show fat-fluid levels, including an endovaginal example where the level is not perfectly horizontal.
+- [RadPrimer] RadPrimer image 5 shows an echogenic fat-containing lesion with posterior enhancement from cystic contents and shadowing that obscures deeper structures.
+- [RadPrimer] RadPrimer image 6 shows the Doppler rule: dermoid contents usually lack internal flow; flow in a solid component should prompt further CT or MR evaluation for malignant transformation.
+
+CT AND MR RECOGNITION
+- [Both] CT diagnosis is straightforward when an adnexal mass contains macroscopic fat. Teeth/calcification are present in a substantial minority of mature cystic teratomas and strongly support the diagnosis.
+- [RadPrimer] RadPrimer image 7 shows a CT dermoid with fat-density components and a tooth-like calcification.
+- [Both] MR confirms fat by high T1 signal that suppresses on fat-saturated images. Loss of high T1 signal with fat saturation supports macroscopic fat rather than hemorrhagic blood products; out-of-phase signal dropout supports microscopic fat.
+- [RadPrimer] RadPrimer images 8-10 form a useful ultrasound-to-MR characterization cluster: a heterogeneous mixed solid-cystic mass without internal flow is further characterized by MR, where T2 and fat-suppressed images confirm macroscopic fat.
+- [STATdx] STATdx images 21-23 add a same-patient MR cluster showing T1 hyperintense adnexal fat, signal loss on fat saturation, and T2 context. STATdx image 24 adds another T1 example of high internal fat signal.
+
+COMPLICATIONS AND VARIANTS
+- [Both] Rupture is uncommon but can produce low-density fat-containing intraperitoneal fluid and chemical peritonitis with mesenteric stranding or peritoneal surface thickening.
+- [Both] Mature cystic teratoma can serve as a lead point for adnexal torsion. Any acute pain presentation should trigger evaluation for ovarian enlargement, abnormal position, twisted pedicle, edema, and abnormal venous/arterial flow.
+- [STATdx] STATdx image 15 shows CT edema of intraperitoneal fat adjacent to a mature cystic teratoma in a surgically confirmed torsion case.
+- [STATdx] STATdx image 18 shows a transvaginal ultrasound example of torsed teratoma with echogenic plug, cystic component, acute pain, and no demonstrable wall flow.
+- [STATdx] STATdx image 17 shows a thick-walled NECT teratoma with surrounding inflammatory change, internal fat, and flecks of calcification.
+- [STATdx] STATdx image 26 shows bilateral dermoids in the same patient, reinforcing the 10-20% bilateral rate.
+- [Both] Mature cystic teratoma can rarely associate with anti-NMDA receptor encephalitis and paraneoplastic symptoms. Functional monodermal tumors may produce endocrine syndromes: struma ovarii can cause hyperthyroidism, and carcinoid tumor can produce carcinoid syndrome.
+
+IMMATURE AND MONODERMAL TERATOMA
+- [Both] Immature teratoma is typically a large mass with irregular enhancing solid components, few cystic areas, small fat foci, coarse or widespread calcification, and hemorrhage. It may have ascites or gliomatosis peritonei.
+- [Both] Omental caking or peritoneal nodules in the setting of a fat-containing ovarian mass should raise concern for immature teratoma and glial tissue implantation.
+- [Both] Immature teratoma and malignant components may show increased FDG uptake and higher SUVmax than mature cystic teratoma.
+- [Both] Struma ovarii is a monodermal teratoma composed predominantly of thyroid tissue. It may present as a cystic lesion with comet-tail artifacts and typically has no significant fat; colloid material can be hypointense on T1WI and T2WI.
+
+DIFFERENTIAL DIAGNOSIS
+- [Both] Hemorrhagic cyst: fine fibrin strands and posterior enhancement favor hemorrhagic cyst, while fat content, shadowing dermoid plug, tooth/calcification, hair echoes, or fat-fluid level favor teratoma.
+- [Both] Endometrioma: homogeneous low-level internal echoes, chronic cyclic pain/endometriosis history, and absence of Rokitansky nodule favor endometrioma.
+- [Both] Torsion: enlarged ovary with decreased or abnormal flow can coexist with any adnexal mass, including dermoid. Torsion is a complication rather than a mutually exclusive diagnosis.
+- [Both] Abscess: pain, fever, inflammatory change, or appendicolith-associated abscess can mimic teratoma. Infarcted dermoid can become infected.
+- [Both] Bowel: echogenic feces in large bowel can mimic teratoma. Lack of small-bowel type peristalsis, transvaginal evaluation, repeat exam, or MR can help clarify.
+
+PATHOLOGY
+- [Both] Mature cystic teratoma contains mature tissues from endodermal, mesodermal, and ectodermal origin. It is often unilocular, and its fat content is liquid at body temperature but semisolid at room temperature.
+- [Both] The Rokitansky nodule protrudes into the cyst cavity; most hair arises from the nodule, and teeth or bone, when present, are typically located in this protuberance.
+- [Both] Mature cystic teratoma usually has scant mitotic activity and no cytologic atypia. Malignant degeneration is rare and most often squamous cell carcinoma, with malignant melanoma or sarcoma less common.
+- [STATdx] STATdx images 27-29 provide gross pathology correlation for Rokitansky nodule, hair, fat, twisted pedicle, and resected specimen appearance.
+
+CLINICAL COURSE AND MANAGEMENT
+- [Both] Mature cystic teratoma is the most common ovarian germ cell tumor and a common excised ovarian neoplasm. It often presents in children and reproductive-age women, with mean mature cystic teratoma presentation around age 30 years.
+- [Both] Immature teratoma usually presents from childhood through young adulthood and is a common malignant ovarian germ cell neoplasm.
+- [Both] Mature cystic teratomas often grow slowly. Follow-up may be used to record size in selected patients, but definitive treatment is surgical resection when diagnosis, symptoms, size, torsion risk, or complication risk warrants it.
+- [Both] Treatment is usually ovarian cystectomy by laparoscopy or laparotomy. Surgical care aims to avoid rupture; if rupture occurs, copious irrigation helps reduce chemical peritonitis.
+- [Both] Malignant degeneration risk is higher in older patients, large tumors greater than about 10 cm, and rapidly growing lesions.
+
+IMAGE CURATION SUMMARY
+- [Both] Actual image_evidence files were inspected with all-image and candidate-pair contact sheets before duplicate classification.
+- [Both] STATdx fully covers the RadPrimer image set as exact one-for-one duplicate/resolution variants for images 1-10, supported by same stable source image IDs and direct visual review.
+- [RadPrimer] RadPrimer images 1-10 remain selected primary images because RadPrimer is the canonical hierarchy/backbone.
+- [STATdx] STATdx images 1-10 are archived as optional exact duplicates of RadPrimer images 1-10.
+- [STATdx] STATdx images 11-29 remain selected primary images as distinct supplemental examples, modality variants, same-patient companion clusters, complication examples, bilateral disease examples, or gross pathology correlations.
+
+PRIMARY IMAGE APPENDIX
+- RadPrimer image 1: Mostly cystic dermoid with floating linear hair echoes and peripheral shadowing Rokitansky nodule. Teaching role: dot-dash hair and dermoid plug.
+- RadPrimer image 2: Cystic lesion with echogenic fat-containing Rokitansky nodule. Teaching role: classic mature cystic teratoma.
+- RadPrimer image 3: Fat-fluid level in a mature cystic teratoma. Teaching role: macroscopic fat-fluid recognition.
+- RadPrimer image 4: Endovaginal fat-fluid level that may not appear horizontal. Teaching role: probe-orientation pitfall.
+- RadPrimer image 5: Echogenic fat-containing lesion with posterior enhancement and shadowing. Teaching role: mixed cystic/fat/shadowing appearance.
+- RadPrimer image 6: Color Doppler without internal dermoid-content flow. Teaching role: flow as a warning sign for solid component/malignant transformation evaluation.
+- RadPrimer image 7: CT fat-containing dermoid with tooth-like calcification. Teaching role: CT diagnosis by fat and calcium.
+- RadPrimer image 8: Heterogeneous mixed solid-cystic ultrasound mass without internal flow. Teaching role: when MR helps characterize a heterogeneous dermoid.
+- RadPrimer image 9: T2 MR showing multiloculated hyperintense cystic and solid components. Teaching role: MR characterization cluster.
+- RadPrimer image 10: Fat-suppressed MR showing signal loss in cystic and solid components. Teaching role: macroscopic fat confirmation.
+- STATdx image 11: CT macroscopic fat-containing mature cystic teratoma with tooth-like calcification. Teaching role: alternate CT tooth example.
+- STATdx image 12: Transabdominal ultrasound showing echogenic fat component. Teaching role: alternate ultrasound fat example.
+- STATdx image 13: CECT dermoid posterior to uterus with fat and calcium. Teaching role: CT location and composition.
+- STATdx image 14: CECT with complex internal fatty architecture and anterior solid portion. Teaching role: CT complexity variant.
+- STATdx image 15: CECT peritoneal fat edema adjacent to teratoma with surgically confirmed torsion. Teaching role: torsion complication.
+- STATdx image 16: Transvaginal ultrasound showing echogenic left ovarian mass typical of mature cystic teratoma. Teaching role: straightforward ultrasound recognition.
+- STATdx image 17: NECT thick-walled mass with surrounding inflammation, internal fat, and small calcifications. Teaching role: inflammatory/infected dermoid variant.
+- STATdx image 18: Transvaginal ultrasound echogenic plug and cystic component with acute pain and no demonstrable wall flow. Teaching role: torsed teratoma.
+- STATdx image 19: Transabdominal ultrasound with linear hair echoes superior to uterus. Teaching role: hair echoes.
+- STATdx image 20: Corresponding transvaginal ultrasound with echogenic fatty component and linear hair echoes. Teaching role: companion view for hair/fat.
+- STATdx image 21: T1 MR high-signal right adnexal mass. Teaching role: MR fat signal.
+- STATdx image 22: T1 fat-suppressed MR from same case showing signal loss. Teaching role: fat confirmation.
+- STATdx image 23: T2 MR from same patient showing high signal mass and pelvic anatomy context. Teaching role: same-patient MR sequence cluster.
+- STATdx image 24: T1 MR with high internal fat signal. Teaching role: alternate MR fat example.
+- STATdx image 25: Axial CECT showing calcified tooth and markedly hypodense dermoid fat. Teaching role: tooth and fat-density comparison.
+- STATdx image 26: Axial CECT from same patient showing layering fat and bilateral dermoids. Teaching role: bilateral disease and CT layering.
+- STATdx image 27: Gross pathology showing Rokitansky nodule and hair. Teaching role: pathology correlation.
+- STATdx image 28: Gross pathology resected specimen with twisted pedicle, solid nodule, and hair. Teaching role: torsion/pathology correlation.
+- STATdx image 29: Gross pathology showing fat within mature cystic teratoma. Teaching role: gross fat correlation.
+
+ARCHIVED DUPLICATE IMAGE NOTES
+- STATdx images 1-10 are exact duplicates/resolution variants of RadPrimer images 1-10 by same stable source image IDs and direct inspection of the staged image_evidence files. Archive STATdx images 1-10 by default and use RadPrimer images 1-10 as the canonical copies.
+
+GENERATOR NOTES
+- Use RadPrimer hierarchy/deck routing exactly as supplied in metadata.json.
+- Use source labels in later prose when a detail is source-specific.
+- Use clean image labels such as RadPrimer image 5 or STATdx image 4 in narrative-facing text; keep short IDs only in traceability metadata.
+- Download only selectedPrimaryImageIds by default using sourceSelectionPlan.imageDownloadPlan.
+- Do not generate cards or a lecture from this package yet.

@@ -1,0 +1,206 @@
+{
+  "articleTitle": "Spigelian Hernia",
+  "sourceComparisonFolder": "RadPrimerSourceComparison/Spigelian_Hernia",
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Gastrointestinal",
+      "Peritoneum, Mesentery, and Abdominal Wall",
+      "Spigelian Hernia"
+    ],
+    "deckParts": [
+      "Corebook",
+      "GI",
+      "Peritoneum, Mesentery, and Abdominal Wall",
+      "Spigelian Hernia"
+    ],
+    "deckName": "Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Spigelian Hernia",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Gastrointestinal",
+    "Peritoneum, Mesentery, and Abdominal Wall",
+    "Spigelian Hernia"
+  ],
+  "imageRegistry": [
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "imageId": "8a4b1b58-6a5a-4eb0-84fa-18e83c14d622",
+      "baseName": "Spigelian_Hernia1",
+      "caption": "Axial CECT shows herniation of the colon <img src=\"arrow_WS.png\"> into an intermuscular space between the internal oblique and transverse abdominal muscles <img src=\"arrow_WO.png\"> (deep) and the external oblique muscle and fascia <img src=\"arrow_WC.png\"> (superficial).",
+      "plainFilename": "Spigelian_Hernia1.jpg",
+      "annotatedFilename": "Spigelian_Hernia1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/8a4b1b58-6a5a-4eb0-84fa-18e83c14d622?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/8a4b1b58-6a5a-4eb0-84fa-18e83c14d622?style=xlarge&annotated=true",
+      "masterImageId": "RP-01",
+      "filename": "Spigelian_Hernia1.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_8a4b1b58.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/8a4b1b58-6a5a-4eb0-84fa-18e83c14d622?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "imageId": "d53d9767-dcbb-4d95-843d-9277bb4486ca",
+      "baseName": "Spigelian_Hernia2",
+      "caption": "Axial CECT more caudal in the same patient shows the defect <img src=\"arrow_WO.png\"> in the Spigelian aponeurosis. Note the hernia sac covered by intact aponeurosis of external oblique muscle <img src=\"arrow_WC.png\">  and the hernia caudal to the umbilicus and just lateral to the rectus sheath.",
+      "plainFilename": "Spigelian_Hernia2.jpg",
+      "annotatedFilename": "Spigelian_Hernia2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/d53d9767-dcbb-4d95-843d-9277bb4486ca?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/d53d9767-dcbb-4d95-843d-9277bb4486ca?style=xlarge&annotated=true",
+      "masterImageId": "RP-02",
+      "filename": "Spigelian_Hernia2.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_d53d9767.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/d53d9767-dcbb-4d95-843d-9277bb4486ca?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "imageId": "e8bbde2b-1792-46d7-a0eb-eee9bbcad747",
+      "baseName": "Spigelian_Hernia3",
+      "caption": "Axial NECT demonstrates a small Spigelian hernia in the left lower quadrant, inferior and lateral to the umbilicus. Note the layer of the external oblique muscle <img src=\"arrow_WC.png\"> overlying the hernia sac.",
+      "plainFilename": "Spigelian_Hernia3.jpg",
+      "annotatedFilename": "Spigelian_Hernia3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e8bbde2b-1792-46d7-a0eb-eee9bbcad747?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/e8bbde2b-1792-46d7-a0eb-eee9bbcad747?style=xlarge&annotated=true",
+      "masterImageId": "RP-03",
+      "filename": "Spigelian_Hernia3.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_e8bbde2b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/e8bbde2b-1792-46d7-a0eb-eee9bbcad747?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "imageId": "90c67e06-65f5-4991-81f4-7db0dfe7c379",
+      "baseName": "Spigelian_Hernia4",
+      "caption": "Axial CECT shows a small bowel obstruction and a Spigelian hernia  <img src=\"arrow_WS.png\">. A segment of small bowel herniates through the defect, resulting in obstruction and dilatation of the upstream bowel <img src=\"arrow_WC.png\">.",
+      "plainFilename": "Spigelian_Hernia4.jpg",
+      "annotatedFilename": "Spigelian_Hernia4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/90c67e06-65f5-4991-81f4-7db0dfe7c379?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/90c67e06-65f5-4991-81f4-7db0dfe7c379?style=xlarge&annotated=true",
+      "masterImageId": "RP-04",
+      "filename": "Spigelian_Hernia4.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_90c67e06.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/90c67e06-65f5-4991-81f4-7db0dfe7c379?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    }
+  ],
+  "imageEvidence": {
+    "folder": "image_evidence/RadPrimer",
+    "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+    "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+    "entries": [
+      {
+        "masterImageId": "RP-01",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "imageId": "8a4b1b58-6a5a-4eb0-84fa-18e83c14d622",
+        "baseName": "Spigelian_Hernia1",
+        "caption": "Axial CECT shows herniation of the colon <img src=\"arrow_WS.png\"> into an intermuscular space between the internal oblique and transverse abdominal muscles <img src=\"arrow_WO.png\"> (deep) and the external oblique muscle and fascia <img src=\"arrow_WC.png\"> (superficial).",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/8a4b1b58-6a5a-4eb0-84fa-18e83c14d622?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_8a4b1b58.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "imageId": "d53d9767-dcbb-4d95-843d-9277bb4486ca",
+        "baseName": "Spigelian_Hernia2",
+        "caption": "Axial CECT more caudal in the same patient shows the defect <img src=\"arrow_WO.png\"> in the Spigelian aponeurosis. Note the hernia sac covered by intact aponeurosis of external oblique muscle <img src=\"arrow_WC.png\">  and the hernia caudal to the umbilicus and just lateral to the rectus sheath.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/d53d9767-dcbb-4d95-843d-9277bb4486ca?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_d53d9767.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "imageId": "e8bbde2b-1792-46d7-a0eb-eee9bbcad747",
+        "baseName": "Spigelian_Hernia3",
+        "caption": "Axial NECT demonstrates a small Spigelian hernia in the left lower quadrant, inferior and lateral to the umbilicus. Note the layer of the external oblique muscle <img src=\"arrow_WC.png\"> overlying the hernia sac.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/e8bbde2b-1792-46d7-a0eb-eee9bbcad747?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_e8bbde2b.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "imageId": "90c67e06-65f5-4991-81f4-7db0dfe7c379",
+        "baseName": "Spigelian_Hernia4",
+        "caption": "Axial CECT shows a small bowel obstruction and a Spigelian hernia  <img src=\"arrow_WS.png\">. A segment of small bowel herniates through the defect, resulting in obstruction and dilatation of the upstream bowel <img src=\"arrow_WC.png\">.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/90c67e06-65f5-4991-81f4-7db0dfe7c379?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_90c67e06.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      }
+    ]
+  }
+}

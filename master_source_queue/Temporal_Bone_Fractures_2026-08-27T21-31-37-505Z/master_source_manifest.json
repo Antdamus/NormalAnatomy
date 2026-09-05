@@ -1,0 +1,1173 @@
+{
+  "articleTitle": "Temporal Bone Fractures",
+  "createdAt": "2026-08-27T21:39:22.324Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Neuroradiology",
+    "Head and Neck",
+    "Facial Trauma and Other H&N Emergencies",
+    "Temporal Bone Fractures"
+  ],
+  "canonicalDeckPath": "Corebook::Neuro::Head and Neck::Facial Trauma and Other H&N Emergencies::Temporal Bone Fractures",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "role": "canonicalBackbone",
+      "textCoverage": "primary article/differential backbone",
+      "imageCoverage": "10 primary images retained",
+      "breadcrumbUsed": true
+    },
+    "STATdx": {
+      "role": "supplementalDepth",
+      "textCoverage": "overlapping article text with extensive supplemental image examples",
+      "imageCoverage": "48 total images: 38 selected supplemental, 10 archive-optional exact duplicates",
+      "breadcrumbUsed": false
+    },
+    "imageEvidenceReviewed": true,
+    "statdxFullyCoversRadPrimerImageSet": true
+  },
+  "imageCountBySource": {
+    "RadPrimer": {
+      "total": 10,
+      "primaryTeachingSet": 10,
+      "archiveOptionalDuplicate": 0
+    },
+    "STATdx": {
+      "total": 48,
+      "primaryTeachingSet": 38,
+      "archiveOptionalDuplicate": 10
+    }
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer] for canonical differential structure, deck routing, and retained RadPrimer images.",
+    "Use [STATdx] for supplemental images and any added image-specific detail.",
+    "Use [Both] for shared article claims present in both source packages.",
+    "Do not cite Core Radiology support unless auditable Core evidence is supplied later."
+  ],
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-27",
+    "SDX-28",
+    "SDX-29",
+    "SDX-30",
+    "SDX-31",
+    "SDX-32",
+    "SDX-33",
+    "SDX-34",
+    "SDX-35",
+    "SDX-36",
+    "SDX-37",
+    "SDX-38",
+    "SDX-39",
+    "SDX-40",
+    "SDX-41",
+    "SDX-42",
+    "SDX-43",
+    "SDX-44",
+    "SDX-45",
+    "SDX-46",
+    "SDX-47",
+    "SDX-48"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and differential backbone. The STATdx article text substantially overlaps the RadPrimer source; keep RadPrimer ordering and add STATdx mainly for supplemental image depth and image-specific complications.",
+    "keepFromRadPrimer": [
+      "Canonical hierarchy and deck routing from metadata.json canonicalHierarchy/canonicalDeckPath.",
+      "Core classification backbone: otic-capsule-violating versus otic-capsule-sparing, and longitudinal/transverse/oblique orientation as a secondary descriptor.",
+      "Systematic search pattern: CNVII canal, otic capsule, tegmen, carotid canal, ossicles, intracranial contents, and cervical spine injuries.",
+      "RadPrimer images 1-10 as the canonical primary image set and primary same-patient clusters."
+    ],
+    "keepFromSTATdx": [
+      "STATdx images 11-48 as distinct supplemental recognition examples covering additional OCS/OCV patterns, ossicular injuries, carotid injury, pseudofracture pitfalls, MR correlation, chronic complications, and cephalocele.",
+      "Source-qualified captions and URLs for all retained STATdx supplemental images.",
+      "No replacement of RadPrimer hierarchy or deck path."
+    ],
+    "downweightOrSkip": [
+      "Do not use STATdx breadcrumb for routing.",
+      "Do not download STATdx images 1-10 by default because they are exact duplicate copies of RadPrimer images 1-10.",
+      "Do not generate Core Radiology claims unless a later run supplies auditable Core evidence."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate same-disease examples, modality variants, adjacent slices, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "Exact duplicate decisions require actual image_evidence review, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "radPrimerCoverageBySTATdx": {
+      "fullyCoversRadPrimerImageSet": true,
+      "method": "All 10 RadPrimer images have matching STATdx images 1-10 with the same stable source image IDs and matching staged image_evidence visual appearance.",
+      "gate": [
+        {
+          "radPrimerImageId": "RP-01",
+          "radPrimerLabel": "RadPrimer image 1",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-01",
+          "statdxLabel": "STATdx image 1",
+          "stableImageId": "92c68de7-04f3-4f8e-b980-b78fa79c5e74",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        },
+        {
+          "radPrimerImageId": "RP-02",
+          "radPrimerLabel": "RadPrimer image 2",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-02",
+          "statdxLabel": "STATdx image 2",
+          "stableImageId": "d0275cfa-6f43-471a-af68-f34a7d8fed86",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        },
+        {
+          "radPrimerImageId": "RP-03",
+          "radPrimerLabel": "RadPrimer image 3",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-03",
+          "statdxLabel": "STATdx image 3",
+          "stableImageId": "c256d9ac-ac4b-457e-a838-b5da2b0a00e8",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        },
+        {
+          "radPrimerImageId": "RP-04",
+          "radPrimerLabel": "RadPrimer image 4",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-04",
+          "statdxLabel": "STATdx image 4",
+          "stableImageId": "3d69f220-2c21-4295-abf6-e292e4fbfa37",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        },
+        {
+          "radPrimerImageId": "RP-05",
+          "radPrimerLabel": "RadPrimer image 5",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-05",
+          "statdxLabel": "STATdx image 5",
+          "stableImageId": "0328996c-84dd-4ab9-8416-f7fa78a8a94c",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        },
+        {
+          "radPrimerImageId": "RP-06",
+          "radPrimerLabel": "RadPrimer image 6",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-06",
+          "statdxLabel": "STATdx image 6",
+          "stableImageId": "dca24ea5-3411-43d1-8e63-db37fb22e4b4",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        },
+        {
+          "radPrimerImageId": "RP-07",
+          "radPrimerLabel": "RadPrimer image 7",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-07",
+          "statdxLabel": "STATdx image 7",
+          "stableImageId": "5dd4b7bc-d44e-4fd8-8052-bef4b53ba56d",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        },
+        {
+          "radPrimerImageId": "RP-08",
+          "radPrimerLabel": "RadPrimer image 8",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-08",
+          "statdxLabel": "STATdx image 8",
+          "stableImageId": "0c96180e-3077-4d6a-b35a-1d0d7504a7b4",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        },
+        {
+          "radPrimerImageId": "RP-09",
+          "radPrimerLabel": "RadPrimer image 9",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-09",
+          "statdxLabel": "STATdx image 9",
+          "stableImageId": "026d1f61-db1d-4a98-b3da-264d3190ee49",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        },
+        {
+          "radPrimerImageId": "RP-10",
+          "radPrimerLabel": "RadPrimer image 10",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-10",
+          "statdxLabel": "STATdx image 10",
+          "stableImageId": "2502debd-74b4-42c3-b3ed-8521cbf63888",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image_evidence appearance on visual review."
+        }
+      ]
+    },
+    "caseClusterGuardrails": {
+      "policy": "Treat same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse image groups as atomic. Do not split a cluster unless the report documents why the split is safe.",
+      "observedClusters": [
+        {
+          "clusterId": "longitudinal_ocs_carotid_canal_assessment_cluster",
+          "primaryKept": [
+            "RP-01",
+            "RP-02"
+          ],
+          "duplicateArchived": [
+            "SDX-01",
+            "SDX-02"
+          ],
+          "split": "no",
+          "reason": "Same-patient longitudinal fracture continuation and carotid canal/CTA context retained as RadPrimer primary; equivalent STATdx duplicate cluster archived intact."
+        },
+        {
+          "clusterId": "transverse_ocv_vestibule_cochlea_cluster",
+          "primaryKept": [
+            "RP-05",
+            "RP-06"
+          ],
+          "duplicateArchived": [
+            "SDX-05",
+            "SDX-06"
+          ],
+          "split": "no",
+          "reason": "Same-patient transverse OCV vestibule/round-window/cochlea sequence retained intact as RadPrimer primary."
+        },
+        {
+          "clusterId": "eac_tegmen_intracranial_mr_correlation_cluster",
+          "primaryKept": [
+            "RP-07",
+            "RP-08",
+            "RP-09",
+            "RP-10"
+          ],
+          "duplicateArchived": [
+            "SDX-07",
+            "SDX-08",
+            "SDX-09",
+            "SDX-10"
+          ],
+          "split": "no",
+          "reason": "Same-patient CT/MR cluster linking EAC/tegmen/facial nerve findings with intracranial complications retained intact as RadPrimer primary."
+        },
+        {
+          "clusterId": "statdx_longitudinal_ossicular_cluster",
+          "primaryKept": [
+            "SDX-20",
+            "SDX-21"
+          ],
+          "duplicateArchived": [],
+          "split": "no",
+          "reason": "Same-patient longitudinal OCS fracture with posterior continuation and malleus subluxation retained intact."
+        },
+        {
+          "clusterId": "statdx_medial_transverse_jugular_foramen_cluster",
+          "primaryKept": [
+            "SDX-22",
+            "SDX-23"
+          ],
+          "duplicateArchived": [],
+          "split": "no",
+          "reason": "Same-patient medial transverse OCV fracture with inferior jugular-foramen/round-window continuation retained intact."
+        },
+        {
+          "clusterId": "statdx_chronic_ocv_labyrinthitis_cluster",
+          "primaryKept": [
+            "SDX-25",
+            "SDX-26"
+          ],
+          "duplicateArchived": [],
+          "split": "no",
+          "reason": "Same-child chronic/complication context with labyrinthitis ossificans and pneumolabyrinth retained intact."
+        },
+        {
+          "clusterId": "statdx_oblique_mva_facial_nerve_cluster",
+          "primaryKept": [
+            "SDX-38",
+            "SDX-39",
+            "SDX-45"
+          ],
+          "duplicateArchived": [],
+          "split": "no",
+          "reason": "Same-patient oblique reformat/axial/ossicular views retained together to preserve reformat and adjacent-slice context."
+        },
+        {
+          "clusterId": "statdx_fall_ocs_ossicular_tegmen_cluster",
+          "primaryKept": [
+            "SDX-40",
+            "SDX-41"
+          ],
+          "duplicateArchived": [],
+          "split": "no",
+          "reason": "Same-patient axial/sagittal fall trauma sequence retained intact."
+        },
+        {
+          "clusterId": "statdx_lateral_scc_ct_mr_cluster",
+          "primaryKept": [
+            "SDX-42",
+            "SDX-44"
+          ],
+          "duplicateArchived": [],
+          "split": "no",
+          "reason": "Same-patient CT and CISS MR lateral SCC injury correlation retained intact."
+        },
+        {
+          "clusterId": "statdx_delayed_cephalocele_ct_mr_cluster",
+          "primaryKept": [
+            "SDX-46",
+            "SDX-47"
+          ],
+          "duplicateArchived": [],
+          "split": "no",
+          "reason": "Delayed posttraumatic cephalocele CT/MR confirmation retained intact."
+        }
+      ],
+      "intentionalSplits": []
+    },
+    "imageDownloadPlan": {
+      "primaryTeachingSet": [
+        {
+          "masterImageId": "RP-01",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 1,
+          "plainFilename": "RP-01_RadPrimer_plain_Temporal_Bone_Fractures1.jpg",
+          "annotatedFilename": "RP-01_RadPrimer_annotated_Temporal_Bone_Fractures1_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/92c68de7-04f3-4f8e-b980-b78fa79c5e74?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/92c68de7-04f3-4f8e-b980-b78fa79c5e74?style=xlarge&annotated=true",
+          "usedFor": [
+            "longitudinalOticCapsuleSparingFracture",
+            "incudostapedialWidening",
+            "epitympanumExtension",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "plainFilename": "RP-02_RadPrimer_plain_Temporal_Bone_Fractures2.jpg",
+          "annotatedFilename": "RP-02_RadPrimer_annotated_Temporal_Bone_Fractures2_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/d0275cfa-6f43-471a-af68-f34a7d8fed86?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/d0275cfa-6f43-471a-af68-f34a7d8fed86?style=xlarge&annotated=true",
+          "usedFor": [
+            "longitudinalFractureInferiorContinuation",
+            "tmjFossaEustachianTubeCarotidCanalAssessment",
+            "vascularRiskTriage",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "plainFilename": "RP-03_RadPrimer_plain_Temporal_Bone_Fractures3.jpg",
+          "annotatedFilename": "RP-03_RadPrimer_annotated_Temporal_Bone_Fractures3_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/c256d9ac-ac4b-457e-a838-b5da2b0a00e8?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/c256d9ac-ac4b-457e-a838-b5da2b0a00e8?style=xlarge&annotated=true",
+          "usedFor": [
+            "oticCapsuleViolatingFracture",
+            "semicircularCanalInvolvement",
+            "normalContralateralComparison",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-04",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 4,
+          "plainFilename": "RP-04_RadPrimer_plain_Temporal_Bone_Fractures4.jpg",
+          "annotatedFilename": "RP-04_RadPrimer_annotated_Temporal_Bone_Fractures4_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/3d69f220-2c21-4295-abf6-e292e4fbfa37?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/3d69f220-2c21-4295-abf6-e292e4fbfa37?style=xlarge&annotated=true",
+          "usedFor": [
+            "penetratingOssicularInjury",
+            "incudostapedialDisruption",
+            "tympanicFacialNerveCanalFragment",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 5,
+          "plainFilename": "RP-05_RadPrimer_plain_Temporal_Bone_Fractures5.jpg",
+          "annotatedFilename": "RP-05_RadPrimer_annotated_Temporal_Bone_Fractures5_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/0328996c-84dd-4ab9-8416-f7fa78a8a94c?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/0328996c-84dd-4ab9-8416-f7fa78a8a94c?style=xlarge&annotated=true",
+          "usedFor": [
+            "transverseOticCapsuleViolatingFracture",
+            "vestibularInvolvement",
+            "tympanicFacialNerveSegment",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 6,
+          "plainFilename": "RP-06_RadPrimer_plain_Temporal_Bone_Fractures6.jpg",
+          "annotatedFilename": "RP-06_RadPrimer_annotated_Temporal_Bone_Fractures6_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/dca24ea5-3411-43d1-8e63-db37fb22e4b4?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/dca24ea5-3411-43d1-8e63-db37fb22e4b4?style=xlarge&annotated=true",
+          "usedFor": [
+            "transverseOticCapsuleViolatingFracture",
+            "roundWindowNiche",
+            "basalCochlearTurn",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "RP-07",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 7,
+          "plainFilename": "RP-07_RadPrimer_plain_Temporal_Bone_Fractures7.jpg",
+          "annotatedFilename": "RP-07_RadPrimer_annotated_Temporal_Bone_Fractures7_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/5dd4b7bc-d44e-4fd8-8052-bef4b53ba56d?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/5dd4b7bc-d44e-4fd8-8052-bef4b53ba56d?style=xlarge&annotated=true",
+          "usedFor": [
+            "externalAuditoryCanalFracture",
+            "tegmenMastoideumBreach",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 8,
+          "plainFilename": "RP-08_RadPrimer_plain_Temporal_Bone_Fractures8.jpg",
+          "annotatedFilename": "RP-08_RadPrimer_annotated_Temporal_Bone_Fractures8_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/0c96180e-3077-4d6a-b35a-1d0d7504a7b4?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/0c96180e-3077-4d6a-b35a-1d0d7504a7b4?style=xlarge&annotated=true",
+          "usedFor": [
+            "facialNerveGenuFracture",
+            "tegmenTympaniFracture",
+            "normalContralateralComparison",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "RP-09",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 9,
+          "plainFilename": "RP-09_RadPrimer_plain_Temporal_Bone_Fractures9.jpg",
+          "annotatedFilename": "RP-09_RadPrimer_annotated_Temporal_Bone_Fractures9_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/026d1f61-db1d-4a98-b3da-264d3190ee49?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/026d1f61-db1d-4a98-b3da-264d3190ee49?style=xlarge&annotated=true",
+          "usedFor": [
+            "intracranialComplications",
+            "subduralSubarachnoidHemorrhage",
+            "frontalContusion",
+            "mrCorrelation"
+          ]
+        },
+        {
+          "masterImageId": "RP-10",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 10,
+          "plainFilename": "RP-10_RadPrimer_plain_Temporal_Bone_Fractures10.jpg",
+          "annotatedFilename": "RP-10_RadPrimer_annotated_Temporal_Bone_Fractures10_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/2502debd-74b4-42c3-b3ed-8521cbf63888?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/2502debd-74b4-42c3-b3ed-8521cbf63888?style=xlarge&annotated=true",
+          "usedFor": [
+            "facialNerveInternalAuditoryCanalSignal",
+            "reactiveDuralEnhancement",
+            "mrCorrelation",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "plainFilename": "SDX-11_STATdx_plain_Temporal_Bone_Fractures11.jpg",
+          "annotatedFilename": "SDX-11_STATdx_annotated_Temporal_Bone_Fractures11_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/96f0b910-6898-4e46-8f43-fe19ab06ab30?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/96f0b910-6898-4e46-8f43-fe19ab06ab30?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "bilateralOticCapsuleSparingFractures",
+            "malleoincudalDislocation",
+            "supplementalDepth",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-12",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 12,
+          "plainFilename": "SDX-12_STATdx_plain_Temporal_Bone_Fractures12.jpg",
+          "annotatedFilename": "SDX-12_STATdx_annotated_Temporal_Bone_Fractures12_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b0876b86-4472-46cc-93f9-f04ac308fc65?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b0876b86-4472-46cc-93f9-f04ac308fc65?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "transverseOticCapsuleViolatingFracture",
+            "internalAuditoryCanalCrossing",
+            "cochlearPneumolabyrinth",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-13",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 13,
+          "plainFilename": "SDX-13_STATdx_plain_Temporal_Bone_Fractures13.jpg",
+          "annotatedFilename": "SDX-13_STATdx_annotated_Temporal_Bone_Fractures13_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/91a9c031-b7eb-40a0-834e-9718c03be24f?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/91a9c031-b7eb-40a0-834e-9718c03be24f?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "longitudinalOticCapsuleViolatingFracture",
+            "malleoincudalDisruption",
+            "hemotympanum",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-14",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 14,
+          "plainFilename": "SDX-14_STATdx_plain_Temporal_Bone_Fractures14.jpg",
+          "annotatedFilename": "SDX-14_STATdx_annotated_Temporal_Bone_Fractures14_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/428f03f7-fd0d-4b1c-9995-fa69db16f81b?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/428f03f7-fd0d-4b1c-9995-fa69db16f81b?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "transverseFractureFundusIAC",
+            "cochlearNerveTransection",
+            "acuteCompleteHearingLoss",
+            "highConsequenceExample"
+          ]
+        },
+        {
+          "masterImageId": "SDX-15",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 15,
+          "plainFilename": "SDX-15_STATdx_plain_Temporal_Bone_Fractures15.jpg",
+          "annotatedFilename": "SDX-15_STATdx_annotated_Temporal_Bone_Fractures15_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e4e5a8a9-e93c-4798-929d-8e45d235fb24?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e4e5a8a9-e93c-4798-929d-8e45d235fb24?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "transverseOticCapsuleViolatingFracture",
+            "vestibularInvolvement",
+            "perilymphaticFistula",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-16",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 16,
+          "plainFilename": "SDX-16_STATdx_plain_Temporal_Bone_Fractures16.jpg",
+          "annotatedFilename": "SDX-16_STATdx_annotated_Temporal_Bone_Fractures16_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/dbd13bee-ee33-4683-be14-670cf52c67de?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/dbd13bee-ee33-4683-be14-670cf52c67de?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "completeIncusDislocation",
+            "externalAuditoryCanalIncusFragment",
+            "tympanicMembraneRupture",
+            "ossicularInjury"
+          ]
+        },
+        {
+          "masterImageId": "SDX-17",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 17,
+          "plainFilename": "SDX-17_STATdx_plain_Temporal_Bone_Fractures17.jpg",
+          "annotatedFilename": "SDX-17_STATdx_annotated_Temporal_Bone_Fractures17_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e2fea3c3-6ff5-4471-9012-013e067657a7?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e2fea3c3-6ff5-4471-9012-013e067657a7?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "malleoincudalDislocation",
+            "persistentConductiveHearingLoss",
+            "subtleOssicularInjury",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-18",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 18,
+          "plainFilename": "SDX-18_STATdx_plain_Temporal_Bone_Fractures18.jpg",
+          "annotatedFilename": "SDX-18_STATdx_annotated_Temporal_Bone_Fractures18_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/37386796-8d2a-4c73-b8b9-def565aeb9eb?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/37386796-8d2a-4c73-b8b9-def565aeb9eb?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "carotidCanalInvolvement",
+            "internalCarotidArteryOcclusion",
+            "CTAComplication",
+            "vascularTriage"
+          ]
+        },
+        {
+          "masterImageId": "SDX-19",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 19,
+          "plainFilename": "SDX-19_STATdx_plain_Temporal_Bone_Fractures19.jpg",
+          "annotatedFilename": "SDX-19_STATdx_annotated_Temporal_Bone_Fractures19_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/59439f2d-6e11-43b5-a2c3-a9038a3eff24?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/59439f2d-6e11-43b5-a2c3-a9038a3eff24?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "incusFracture",
+            "subtleOssicularInjury",
+            "persistentConductiveHearingLoss",
+            "surgicalCorrelation"
+          ]
+        },
+        {
+          "masterImageId": "SDX-20",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 20,
+          "plainFilename": "SDX-20_STATdx_plain_Temporal_Bone_Fractures20.jpg",
+          "annotatedFilename": "SDX-20_STATdx_annotated_Temporal_Bone_Fractures20_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/57826f3c-ce98-49b1-b341-585b8a34f1f7?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/57826f3c-ce98-49b1-b341-585b8a34f1f7?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "longitudinalOticCapsuleSparingFracture",
+            "pediatricYoungPatientTrauma",
+            "samePatientCluster",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-21",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 21,
+          "plainFilename": "SDX-21_STATdx_plain_Temporal_Bone_Fractures21.jpg",
+          "annotatedFilename": "SDX-21_STATdx_annotated_Temporal_Bone_Fractures21_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/17ad4493-b6b3-41c1-9b23-a9f222a66ff7?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/17ad4493-b6b3-41c1-9b23-a9f222a66ff7?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "posteriorLongitudinalFracture",
+            "malleusHeadSubluxation",
+            "ossicularDislocation",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-22",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 22,
+          "plainFilename": "SDX-22_STATdx_plain_Temporal_Bone_Fractures22.jpg",
+          "annotatedFilename": "SDX-22_STATdx_annotated_Temporal_Bone_Fractures22_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b85838cc-39f5-41f6-86da-83f547bde978?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b85838cc-39f5-41f6-86da-83f547bde978?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "medialTransverseOticCapsuleViolatingFracture",
+            "vestibule",
+            "tympanicFacialNerveCanal",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-23",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 23,
+          "plainFilename": "SDX-23_STATdx_plain_Temporal_Bone_Fractures23.jpg",
+          "annotatedFilename": "SDX-23_STATdx_annotated_Temporal_Bone_Fractures23_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d2492228-8e07-42da-86aa-a508b4c76b59?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/d2492228-8e07-42da-86aa-a508b4c76b59?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "jugularForamenExtension",
+            "roundWindowNiche",
+            "inferiorFractureContinuation",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-24",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 24,
+          "plainFilename": "SDX-24_STATdx_plain_Temporal_Bone_Fractures24.jpg",
+          "annotatedFilename": "SDX-24_STATdx_annotated_Temporal_Bone_Fractures24_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e9641ba4-04a6-40c9-bc65-f8dfba2eabf3?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e9641ba4-04a6-40c9-bc65-f8dfba2eabf3?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "labyrinthineFacialNerveCanal",
+            "vestibularFracture",
+            "permanentSNHLFacialPalsyRisk",
+            "highConsequenceExample"
+          ]
+        },
+        {
+          "masterImageId": "SDX-25",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 25,
+          "plainFilename": "SDX-25_STATdx_plain_Temporal_Bone_Fractures25.jpg",
+          "annotatedFilename": "SDX-25_STATdx_annotated_Temporal_Bone_Fractures25_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/38d0df0a-96a0-46a7-8890-1057dffd8821?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/38d0df0a-96a0-46a7-8890-1057dffd8821?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "chronicTransverseOticCapsuleFracture",
+            "basalCochlearTurn",
+            "labyrinthitisOssificans",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-26",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 26,
+          "plainFilename": "SDX-26_STATdx_plain_Temporal_Bone_Fractures26.jpg",
+          "annotatedFilename": "SDX-26_STATdx_annotated_Temporal_Bone_Fractures26_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/79b8b2aa-0cc9-40c3-adff-80ec0f2ce176?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/79b8b2aa-0cc9-40c3-adff-80ec0f2ce176?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "subtleLongitudinalFracture",
+            "incudomalleolarWidening",
+            "vestibularCochlearPneumolabyrinth",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-27",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 27,
+          "plainFilename": "SDX-27_STATdx_plain_Temporal_Bone_Fractures27.jpg",
+          "annotatedFilename": "SDX-27_STATdx_annotated_Temporal_Bone_Fractures27_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/353649cf-6ca6-4dc3-abcc-94744986d5ab?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/353649cf-6ca6-4dc3-abcc-94744986d5ab?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "tegmenTympaniDefect",
+            "acquiredCephalocele",
+            "CSFOtorrheaRisk",
+            "coronalCT"
+          ]
+        },
+        {
+          "masterImageId": "SDX-28",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 28,
+          "plainFilename": "SDX-28_STATdx_plain_Temporal_Bone_Fractures28.jpg",
+          "annotatedFilename": "SDX-28_STATdx_annotated_Temporal_Bone_Fractures28_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/8535c795-c5e6-44a0-b1ef-ff419563fb52?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/8535c795-c5e6-44a0-b1ef-ff419563fb52?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "pseudofractureMimic",
+            "singularCanal",
+            "pneumolabyrinth",
+            "contralateralComparisonPearl"
+          ]
+        },
+        {
+          "masterImageId": "SDX-29",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 29,
+          "plainFilename": "SDX-29_STATdx_plain_Temporal_Bone_Fractures29.jpg",
+          "annotatedFilename": "SDX-29_STATdx_annotated_Temporal_Bone_Fractures29_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/efee03c7-a29a-4add-b4dd-51e3e7441e11?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/efee03c7-a29a-4add-b4dd-51e3e7441e11?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "longitudinalOticCapsuleSparingFracture",
+            "tegmenTympaniCSFLeakRisk",
+            "incudomalleolarWidening",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-30",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 30,
+          "plainFilename": "SDX-30_STATdx_plain_Temporal_Bone_Fractures30.jpg",
+          "annotatedFilename": "SDX-30_STATdx_annotated_Temporal_Bone_Fractures30_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/bde57e3f-5846-443f-a000-a46b9b4d163c?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/bde57e3f-5846-443f-a000-a46b9b4d163c?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "transverseOticCapsuleViolatingFracture",
+            "fundusIACVestibule",
+            "middleEarFluidBloodOrPerilymph",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-31",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 31,
+          "plainFilename": "SDX-31_STATdx_plain_Temporal_Bone_Fractures31.jpg",
+          "annotatedFilename": "SDX-31_STATdx_annotated_Temporal_Bone_Fractures31_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/8a3f819e-295d-498e-852a-72e991f322bd?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/8a3f819e-295d-498e-852a-72e991f322bd?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "mallealIncudalDislocation",
+            "iceCreamConeRelationship",
+            "resolvingHemotympanum",
+            "ossicularInjury"
+          ]
+        },
+        {
+          "masterImageId": "SDX-32",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 32,
+          "plainFilename": "SDX-32_STATdx_plain_Temporal_Bone_Fractures32.jpg",
+          "annotatedFilename": "SDX-32_STATdx_annotated_Temporal_Bone_Fractures32_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/bea12755-a9c3-48f6-b721-c264fb37ac4c?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/bea12755-a9c3-48f6-b721-c264fb37ac4c?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "longitudinalOticCapsuleViolatingFracture",
+            "ovalWindowPneumolabyrinth",
+            "mastoidMiddleEarDebris",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-33",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 33,
+          "plainFilename": "SDX-33_STATdx_plain_Temporal_Bone_Fractures33.jpg",
+          "annotatedFilename": "SDX-33_STATdx_annotated_Temporal_Bone_Fractures33_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/77db9b61-bcca-4984-84fd-c07aaf7641ce?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/77db9b61-bcca-4984-84fd-c07aaf7641ce?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "longitudinalOticCapsuleViolatingFracture",
+            "malleusSubluxation",
+            "pneumolabyrinthPerilymphFistula",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-34",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 34,
+          "plainFilename": "SDX-34_STATdx_plain_Temporal_Bone_Fractures34.jpg",
+          "annotatedFilename": "SDX-34_STATdx_annotated_Temporal_Bone_Fractures34_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/8cc44435-b1ab-48df-ae01-7d2884354a35?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/8cc44435-b1ab-48df-ae01-7d2884354a35?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "completeIncusDislocation",
+            "externalAuditoryCanalDisplacement",
+            "ossicularChainDisruption",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-35",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 35,
+          "plainFilename": "SDX-35_STATdx_plain_Temporal_Bone_Fractures35.jpg",
+          "annotatedFilename": "SDX-35_STATdx_annotated_Temporal_Bone_Fractures35_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/888dfc87-0fd0-4b8e-bc46-c6cefd3ae034?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/888dfc87-0fd0-4b8e-bc46-c6cefd3ae034?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "transverseFractureJugularBulbRoundWindow",
+            "stapediovestibularDisruption",
+            "ossicularComplication",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-36",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 36,
+          "plainFilename": "SDX-36_STATdx_plain_Temporal_Bone_Fractures36.jpg",
+          "annotatedFilename": "SDX-36_STATdx_annotated_Temporal_Bone_Fractures36_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0118b189-e551-4164-accb-6341ea06ace6?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/0118b189-e551-4164-accb-6341ea06ace6?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "chronicFracture",
+            "IACFundusExtension",
+            "midtympanicCNVIICanal",
+            "incudomalleolarWidening"
+          ]
+        },
+        {
+          "masterImageId": "SDX-37",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 37,
+          "plainFilename": "SDX-37_STATdx_plain_Temporal_Bone_Fractures37.jpg",
+          "annotatedFilename": "SDX-37_STATdx_annotated_Temporal_Bone_Fractures37_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/26ed9b3b-fb89-496a-a4cd-7b3ddce12727?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/26ed9b3b-fb89-496a-a4cd-7b3ddce12727?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "tympanosquamousFissureMimic",
+            "glenoidFossaTrueFracture",
+            "pseudofracturePitfall",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-38",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 38,
+          "plainFilename": "SDX-38_STATdx_plain_Temporal_Bone_Fractures38.jpg",
+          "annotatedFilename": "SDX-38_STATdx_annotated_Temporal_Bone_Fractures38_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/c388a0d9-4fbf-496f-a854-f5664126950a?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/c388a0d9-4fbf-496f-a854-f5664126950a?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "obliqueReformat",
+            "transverseFractureFacialNerveGenu",
+            "samePatientCluster",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-39",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 39,
+          "plainFilename": "SDX-39_STATdx_plain_Temporal_Bone_Fractures39.jpg",
+          "annotatedFilename": "SDX-39_STATdx_annotated_Temporal_Bone_Fractures39_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/47b9dbcd-4ea1-42bf-8b18-762cf23577f8?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/47b9dbcd-4ea1-42bf-8b18-762cf23577f8?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "vestibularExtension",
+            "middleEarMastoidOpacification",
+            "adjacentSliceContext",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-40",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 40,
+          "plainFilename": "SDX-40_STATdx_plain_Temporal_Bone_Fractures40.jpg",
+          "annotatedFilename": "SDX-40_STATdx_annotated_Temporal_Bone_Fractures40_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/fe5d053e-9254-4313-b335-3ecfc0092b28?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/fe5d053e-9254-4313-b335-3ecfc0092b28?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "longitudinalOticCapsuleSparingFracture",
+            "mastoidComplexFracture",
+            "incudomalleolarWidening",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-41",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 41,
+          "plainFilename": "SDX-41_STATdx_plain_Temporal_Bone_Fractures41.jpg",
+          "annotatedFilename": "SDX-41_STATdx_annotated_Temporal_Bone_Fractures41_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/de79ff98-0a08-403a-adc0-76958fd2f149?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/de79ff98-0a08-403a-adc0-76958fd2f149?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "sagittalReformat",
+            "malleusIncusSeparation",
+            "tegmenTympaniDisruption",
+            "EACTMJExtension"
+          ]
+        },
+        {
+          "masterImageId": "SDX-42",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 42,
+          "plainFilename": "SDX-42_STATdx_plain_Temporal_Bone_Fractures42.jpg",
+          "annotatedFilename": "SDX-42_STATdx_annotated_Temporal_Bone_Fractures42_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/17628b8d-e762-4fc8-ad0a-2f861c7073c5?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/17628b8d-e762-4fc8-ad0a-2f861c7073c5?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "lateralSemicircularCanalFracture",
+            "delayedHearingLoss",
+            "coronalCT",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-43",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 43,
+          "plainFilename": "SDX-43_STATdx_plain_Temporal_Bone_Fractures43.jpg",
+          "annotatedFilename": "SDX-43_STATdx_annotated_Temporal_Bone_Fractures43_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/aa4f2cd4-ba57-4f4c-ab7e-c06e2ddcdfbe?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/aa4f2cd4-ba57-4f4c-ab7e-c06e2ddcdfbe?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "pediatricTemporalBoneFracture",
+            "subtleLongitudinalFracture",
+            "vestibularPneumolabyrinth",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-44",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 44,
+          "plainFilename": "SDX-44_STATdx_plain_Temporal_Bone_Fractures44.jpg",
+          "annotatedFilename": "SDX-44_STATdx_annotated_Temporal_Bone_Fractures44_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/cc4c5ec0-509e-412c-9f69-e48c5949d4d6?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/cc4c5ec0-509e-412c-9f69-e48c5949d4d6?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "CISSMRCorrelation",
+            "lateralSemicircularCanalSignalLoss",
+            "hemolabyrinthOrLabyrinthitisOssificans",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-45",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 45,
+          "plainFilename": "SDX-45_STATdx_plain_Temporal_Bone_Fractures45.jpg",
+          "annotatedFilename": "SDX-45_STATdx_annotated_Temporal_Bone_Fractures45_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/55d031b9-1264-4a81-b657-81ece3b764f6?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/55d031b9-1264-4a81-b657-81ece3b764f6?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "obliqueReformat",
+            "malleoincudalSeparation",
+            "ossicularMalrotation",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-46",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 46,
+          "plainFilename": "SDX-46_STATdx_plain_Temporal_Bone_Fractures46.jpg",
+          "annotatedFilename": "SDX-46_STATdx_annotated_Temporal_Bone_Fractures46_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/a69b7f18-4a58-4ccd-8e0e-4944a12028f8?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/a69b7f18-4a58-4ccd-8e0e-4944a12028f8?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "delayedPosttraumaticCephalocele",
+            "tegmenTympaniDefect",
+            "ossicleDisplacement",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-47",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 47,
+          "plainFilename": "SDX-47_STATdx_plain_Temporal_Bone_Fractures47.jpg",
+          "annotatedFilename": "SDX-47_STATdx_annotated_Temporal_Bone_Fractures47_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/5b16af28-4ae6-4280-8bec-ec90e43b051d?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/5b16af28-4ae6-4280-8bec-ec90e43b051d?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "T2MRConfirmation",
+            "temporalLobeHerniation",
+            "posttraumaticCephalocele",
+            "samePatientCluster"
+          ]
+        },
+        {
+          "masterImageId": "SDX-48",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 48,
+          "plainFilename": "SDX-48_STATdx_plain_Temporal_Bone_Fractures48.jpg",
+          "annotatedFilename": "SDX-48_STATdx_annotated_Temporal_Bone_Fractures48_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e82332b9-47f5-4725-a2e2-bcdfb02c0823?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e82332b9-47f5-4725-a2e2-bcdfb02c0823?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "medialTransverseOticCapsuleViolatingFracture",
+            "petrousRidge",
+            "basalCochlearTurn",
+            "recognitionReinforcement"
+          ]
+        }
+      ],
+      "archiveOptionalDuplicates": [
+        {
+          "masterImageId": "SDX-01",
+          "duplicateOf": "RP-01",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-01_STATdx_plain_Temporal_Bone_Fractures1.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/92c68de7-04f3-4f8e-b980-b78fa79c5e74?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-02",
+          "duplicateOf": "RP-02",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-02_STATdx_plain_Temporal_Bone_Fractures2.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d0275cfa-6f43-471a-af68-f34a7d8fed86?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-03",
+          "duplicateOf": "RP-03",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-03_STATdx_plain_Temporal_Bone_Fractures3.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/c256d9ac-ac4b-457e-a838-b5da2b0a00e8?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-04",
+          "duplicateOf": "RP-04",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-04_STATdx_plain_Temporal_Bone_Fractures4.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3d69f220-2c21-4295-abf6-e292e4fbfa37?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-05",
+          "duplicateOf": "RP-05",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-05_STATdx_plain_Temporal_Bone_Fractures5.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0328996c-84dd-4ab9-8416-f7fa78a8a94c?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-06",
+          "duplicateOf": "RP-06",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-06_STATdx_plain_Temporal_Bone_Fractures6.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/dca24ea5-3411-43d1-8e63-db37fb22e4b4?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-07",
+          "duplicateOf": "RP-07",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-07_STATdx_plain_Temporal_Bone_Fractures7.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/5dd4b7bc-d44e-4fd8-8052-bef4b53ba56d?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-08",
+          "duplicateOf": "RP-08",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-08_STATdx_plain_Temporal_Bone_Fractures8.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0c96180e-3077-4d6a-b35a-1d0d7504a7b4?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-09",
+          "duplicateOf": "RP-09",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-09_STATdx_plain_Temporal_Bone_Fractures9.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/026d1f61-db1d-4a98-b3da-264d3190ee49?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-10",
+          "duplicateOf": "RP-10",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-10_STATdx_plain_Temporal_Bone_Fractures10.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/2502debd-74b4-42c3-b3ed-8521cbf63888?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged image_evidence review showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        }
+      ],
+      "generatorInstruction": "Download only selectedPrimaryImageIds by default using source-qualified filenames. Keep archiveOptionalImageIds available only for audit/recovery, not routine cards or lecture."
+    },
+    "generatorInstructions": [
+      "Use source-qualified human labels in narrative prose, such as RadPrimer image 5 or STATdx image 38.",
+      "Keep short IDs such as RP-05 and SDX-38 in registry, manifest, filenames, and traceability fields.",
+      "Preserve same-patient and adjacent-slice/procedure context for grouped images.",
+      "Use images for recognition reinforcement; do not archive distinct examples merely because they teach the same diagnosis.",
+      "Do not create cards or lecture content from this package yet."
+    ]
+  }
+}

@@ -1,0 +1,2154 @@
+{
+  "version": "master-source-import-v1",
+  "articleTitle": "Hydronephrosis",
+  "createdAt": "2026-07-24T02:17:12Z",
+  "packageText": "# Hydronephrosis\n\nCanonical hierarchy: All Categories > Basic > Nuclear Medicine > Genitourinary Basic > Hydronephrosis\nCanonical deck path: Corebook::Nuclear Medicine::Genitourinary Basic::Hydronephrosis\nPrimary source posture: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth and the default source-preferred image replacements when the same image appears in both sources.\nCore evidence: no auditable Core Radiology source was supplied in this bundle, so Core-specific support is not asserted.\n\n## Source Coverage And Image Gate\n\nThe staged image_evidence files were inspected before duplicate classification. STATdx exactly duplicates 20 of the 22 RadPrimer images as same screenshot/graphic/case-correlation content, usually with a larger 1000 px evidence export versus the 900 px RadPrimer export. Those exact RadPrimer duplicates are archive-optional, while their STATdx counterparts are selected for default teaching/download. STATdx does not cover RadPrimer images 13-14; that same-patient bone-scan/CT correlation cluster remains selected.\n\n- RadPrimer image 1 -> STATdx image 20: exact duplicate; Same unilateral UPJ obstruction graphic; STATdx version is selected as the source-qualified duplicate replacement.\n- RadPrimer image 2 -> STATdx image 23: exact duplicate; Same right UPJ obstruction renogram screenshot with dilated pelvis and calyces.\n- RadPrimer image 3 -> STATdx image 21: exact duplicate; Same composite renogram example of horseshoe kidney, ileal conduit, duplicated system, and obstructed upper moiety/ureterocele.\n- RadPrimer image 4 -> STATdx image 22: exact duplicate; Same 6-week-old left UPJ obstruction MAG3 renogram.\n- RadPrimer image 5 -> STATdx image 2: exact duplicate; Same normal symmetric MAG3 uptake/excretion renogram.\n- RadPrimer image 6 -> STATdx image 3: exact duplicate; Same high-grade/complete left obstruction renogram with persistent collecting-system activity after furosemide.\n- RadPrimer image 7 -> STATdx image 4: exact duplicate; Same bilateral partial obstruction renogram with delayed washout after furosemide.\n- RadPrimer image 8 -> STATdx image 5: exact duplicate; Same dilated but unobstructed/patulous left collecting-system renogram with post-furosemide normalization.\n- RadPrimer image 9 -> STATdx image 6: exact duplicate; Same VUR/nonfunctioning right kidney renogram; STATdx caption adds motion artifact as a possible mimic.\n- RadPrimer image 10 -> STATdx image 7: exact duplicate; Same renal artery stenosis example with small delayed right kidney and low relative function.\n- RadPrimer image 11 -> STATdx image 8: exact duplicate; Same prostate-cancer bone scan showing right collecting-system tracer retention.\n- RadPrimer image 12 -> STATdx image 9: exact duplicate; Same same-patient coronal CECT/MIP stone correlation for the right distal ureter obstruction.\n- RadPrimer image 13: not covered by STATdx; No STATdx counterpart on visual inspection; keep as primary because it begins a unique same-patient bone-scan/CT correlation for duplicated left collecting system/parapelvic cyst.\n- RadPrimer image 14: not covered by STATdx; No STATdx counterpart on visual inspection; keep with RadPrimer image 13 as the atomic CT correlation for duplicated collecting system and parapelvic cyst.\n- RadPrimer image 15 -> STATdx image 12: exact duplicate; Same marked left renal retention example from clinically significant renal artery stenosis.\n- RadPrimer image 16 -> STATdx image 13: exact duplicate; Same ectopic right ureter/clamped nephrostomy high-grade obstruction renogram.\n- RadPrimer image 17 -> STATdx image 14: exact duplicate; Same urinary-diversion/patulous unobstructed collecting-systems postprocessing image.\n- RadPrimer image 18 -> STATdx image 15: exact duplicate; Same same-patient coronal CECT correlation for urinary diversion/patulous fullness.\n- RadPrimer image 19 -> STATdx image 16: exact duplicate; Same poor initial uptake and delayed/persistent left nephrogram; STATdx caption adds renal vein thrombosis mimic.\n- RadPrimer image 20 -> STATdx image 17: exact duplicate; Same transplant delayed nephrogram/minimal excretion example from acute tubular necrosis.\n- RadPrimer image 21 -> STATdx image 18: exact duplicate; Same pediatric reflux/nonfunctioning right kidney renogram.\n- RadPrimer image 22 -> STATdx image 19: exact duplicate; Same F-18 FDG PET/CT malignant extrinsic obstruction example; STATdx caption calls high-grade obstruction.\n\n## Fused Teaching Backbone\n\n### Definition And Purpose\n\n- [Both] Hydronephrosis is dilation of the renal collecting system, often with renal enlargement, due to impaired urinary outflow; the cause may be mechanical/anatomic or functional.\n- [Both] Mechanical causes include ectopic ureter, ureteral stenosis, UPJ stenosis, nephrolithiasis, urothelial or pelvic mass, prostate/bladder outlet pathology, ureterocele, posterior urethral valve, retroperitoneal fibrosis, and extrinsic adenopathy or mass.\n- [Both] Functional or nonobstructive dilation can reflect abnormal peristalsis, patulous collecting systems after prior obstruction, urinary diversion, or persistent hydronephrosis after an obstruction has resolved.\n- [Both] Tc-99m MAG3 renal scintigraphy characterizes hydronephrosis as obstructed versus dilated but nonobstructed and estimates differential renal function.\n- [STATdx] Curves must be correlated with the raw images because duplicated collecting systems, ROI placement over bladder/diaper activity, motion, and anatomy can make curve-only interpretation misleading.\n\n### Protocol And Measurement\n\n- [Both] Patient preparation includes hydration, voiding before the study, and avoidance of furosemide/diuretics on the day of the exam; full bladder, incomplete voiding, bladder outlet obstruction, or reflux can complicate interpretation.\n- [STATdx] Catheterization should be considered when voiding is unreliable, such as non-potty-trained children or neurogenic bladder.\n- [Both] MAG3 is preferred for hydronephrosis evaluation because tubular extraction preserves image quality even with reduced GFR; DTPA is less robust in low GFR and is usually reserved for GFR calculations.\n- [Both] Typical acquisition includes posterior supine flow images, dynamic imaging for 20-30 minutes, furosemide after the collecting system fills, and additional postfurosemide imaging for 20-30 minutes.\n- [Both] Adults commonly receive 40 mg IV furosemide with normal creatinine; azotemia may require higher doses, and pediatric dosing is weight based.\n- [Both] Differential renal function is normally about 45-55% per kidney. Reported values should be trended over time because loss of relative function can be more important than a single borderline value.\n- [STATdx] Each exam offers three opportunities to clear a kidney or moiety: prefurosemide washout, postfurosemide washout, and gravity-assisted drainage/postvoid imaging. Once a kidney or moiety clears, later t1/2 values add little.\n\n### Renogram Pattern Categories\n\n- [Both] Normal: prompt uptake, cortical peak around 2-3 minutes, calyceal activity by about 5 minutes, bladder activity by 10-15 minutes, spontaneous washout before furosemide, and t1/2 <= 10 minutes.\n- [Both] Dilated but unobstructed: collecting-system activity may rise until furosemide or GAD, then washes out normally; differential renal function is usually normal unless prior obstruction caused damage.\n- [STATdx] GAD supports nonobstruction when clearance is > 50% and supports obstruction when clearance is < 50%; adding GAD improves specificity for furosemide renography.\n- [Both] Partial obstruction: excretion is delayed and may improve but not normalize after furosemide or GAD; t1/2 is indeterminate at 10-20 minutes and obstructed when > 20 minutes, with higher t1/2 suggesting higher-grade obstruction.\n- [Both] High-grade or complete obstruction: delayed/asymmetric flow, delayed or absent collecting-system visualization, low differential function, progressive collecting-system activity despite furosemide/GAD, and very high or unmeasurable t1/2.\n- [Both] Severely dilated but nonobstructed systems may need a more permissive t1/2 cutoff around 15 minutes depending on the clinical scenario.\n\n### Mimics, Pitfalls, And Differential\n\n- [Both] Vesicoureteral reflux can mimic obstruction, especially if the bladder is not catheterized; reflux and obstruction can coexist.\n- [Both] Acute tubular necrosis may show delayed nephrogram and minimal excretion, especially in transplant kidneys, but is not a collecting-system obstruction.\n- [Both] Renal artery stenosis can cause asymmetric reduced flow, delayed nephrogram, smaller kidney, and low relative function while washout may remain normal.\n- [STATdx] Renal vein thrombosis can mimic high-grade obstruction with reduced flow, delayed nephrogram, and poor collecting-system visualization.\n- [STATdx] Low GFR, dehydration, poor response to furosemide, full bladder, immature kidneys, and atonic/severely dilated systems can create false-positive or indeterminate scans; many improve with GAD.\n- [Both] CT, MR urography, ultrasound, and bone scan/PET examples provide anatomic or incidental correlation; anatomic dilation can persist after relief of obstruction, so functional assessment may still be needed.\n\n### Clinical Course And Management\n\n- [Both] High-grade obstruction requires treatment to avoid renal functional impairment. Mechanical relief options include stent, nephrostomy, pyeloplasty, urinary diversion, and lithotripsy depending on cause.\n- [Both] Low-grade or partial obstruction is often followed with serial renograms to evaluate resolution and monitor for decreasing differential renal function.\n- [STATdx] If GAD clearance is > 50% and function is stable, conservative management is supported; if clearance remains < 50% or differential renal function declines, obstruction is more likely clinically significant.\n\n## Selected Image Atlas For Future Generation\n\nUse the following primary images by default. Archive-optional RadPrimer images are retained for audit/completeness only because they are exact duplicate exports of selected STATdx images.\n\n- STATdx image 1: interpretive curve graphic for normal, dilated-unobstructed, partial obstruction, and high-grade obstruction patterns.\n- STATdx image 2: normal symmetric MAG3 uptake and excretion.\n- STATdx images 3-5: MAG3 pattern set for high-grade obstruction, bilateral partial obstruction, and dilated but unobstructed/patulous system.\n- STATdx image 6: vesicoureteral reflux/nonfunctioning right kidney example, with motion artifact also noted as a possible mimic.\n- STATdx image 7: renal artery stenosis mimic with small delayed right kidney and reduced relative function.\n- STATdx images 8-9: atomic bone-scan/CECT stone-obstruction cluster in the same patient.\n- STATdx images 10-11: atomic persistent-dilation/indeterminate-washout cluster in the same patient, favoring low GFR or dehydration rather than active obstruction.\n- STATdx images 12-13: renal artery stenosis retention and ectopic ureter/clamped nephrostomy high-grade obstruction examples.\n- STATdx images 14-15: atomic urinary-diversion/patulous nonobstructed collecting-system cluster with CT correlation.\n- STATdx images 16-19: complete obstruction/renal vein thrombosis mimic, transplant ATN, reflux hydronephrosis, and malignant extrinsic obstruction examples.\n- STATdx images 20-23: selected exact replacements for RadPrimer UPJ obstruction graphic, composite anomaly renogram, 6-week-old left UPJ obstruction renogram, and right UPJ obstruction renogram.\n- STATdx image 24: sparse-caption Gallbladder Activity source image retained for source completeness and possible pitfall review; downweight for routine generators unless specifically relevant.\n- RadPrimer images 13-14: unique same-patient bone-scan/CT correlation showing a duplicated left collecting system with dilated upper pole moiety and parapelvic cyst explanation; keep as an atomic cluster.\n\n## Downstream Use Notes\n\n- Use selectedPrimaryImageIds for default image download and teaching.\n- Treat archiveOptionalImageIds as audit/completeness records, not as default card or lecture images.\n- Preserve atomic case clusters listed in the manifest when generating future narrative or cards.\n- Keep human-facing prose labels clean, such as STATdx image 4 or RadPrimer image 14. Use short IDs such as SDX-04 and RP-14 only in registry, filenames, and traceability fields.\n",
+  "manifest": {
+    "version": "master-source-manifest-v1",
+    "articleTitle": "Hydronephrosis",
+    "createdAt": "2026-07-24T02:17:12Z",
+    "sourceBundleName": "Hydronephrosis_2026-07-24T02-11-00-882Z",
+    "canonicalHierarchy": [
+      "All Categories",
+      "Basic",
+      "Nuclear Medicine",
+      "Genitourinary Basic",
+      "Hydronephrosis"
+    ],
+    "canonicalHierarchySource": {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceFile": "RadPrimer_metadata.json",
+      "field": "breadcrumbTrail",
+      "policy": "RadPrimer breadcrumbTrail is the canonical hierarchy/backbone."
+    },
+    "canonicalDeckPath": "Corebook::Nuclear Medicine::Genitourinary Basic::Hydronephrosis",
+    "sourcePriority": [
+      "RadPrimer",
+      "STATdx"
+    ],
+    "sourceCoverage": {
+      "radprimerPresent": true,
+      "statdxPresent": true,
+      "radprimerImageCount": 22,
+      "statdxImageCount": 24,
+      "statdxRadPrimerImageCoverageSummary": "STATdx exactly duplicates 20 of 22 RadPrimer images by visual inspection of actual image_evidence files. STATdx does not cover RadPrimer images 13-14, so that RadPrimer same-patient bone-scan/CT correlation cluster remains selected.",
+      "radprimerCoverageCounts": {
+        "exactDuplicate": 20,
+        "nearDuplicate": 0,
+        "conceptualReplacement": 0,
+        "notCovered": 2
+      },
+      "coreEvidence": "No auditable Core Radiology source supplied in this bundle."
+    },
+    "imageCountBySource": {
+      "RadPrimer": 22,
+      "STATdx": 24
+    },
+    "sourceAttributionRules": [
+      "Use [RadPrimer], [STATdx], or [Both] when attribution matters.",
+      "Use clean human-facing labels such as RadPrimer image 5 and STATdx image 4 in prose.",
+      "Keep RP-05 and SDX-04 style IDs in registry, filenames, manifest, and traceability fields."
+    ],
+    "selectedPrimaryImageIds": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "RP-13",
+      "RP-14"
+    ],
+    "archiveOptionalImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "RP-11",
+      "RP-12",
+      "RP-15",
+      "RP-16",
+      "RP-17",
+      "RP-18",
+      "RP-19",
+      "RP-20",
+      "RP-21",
+      "RP-22"
+    ],
+    "sourceSelectionPlan": {
+      "sourcePriority": [
+        "RadPrimer canonical hierarchy/backbone",
+        "STATdx supplemental depth and source-preferred duplicate image replacements"
+      ],
+      "textPlan": {
+        "keepFromRadPrimer": [
+          "metadata.json canonicalHierarchy exactly",
+          "metadata.json canonicalDeckPath exactly",
+          "RadPrimer nuclear medicine scaffold for renogram definitions, acquisition, furosemide/GAD interpretation, differential diagnosis, and management",
+          "RadPrimer images 13-14 as a unique primary same-patient bone-scan/CT correlation not covered by STATdx"
+        ],
+        "keepFromSTATdx": [
+          "three-opportunity clearance framing: prefurosemide, postfurosemide, and gravity-assisted drainage",
+          "GAD clearance > 50% as nonobstructed/conservative-management support and < 50% as obstruction support",
+          "expanded protocol details for catheterization scenarios, pediatric MAG3 dosing, DTPA limitations with low GFR, and full-bladder/dehydration pitfalls",
+          "pitfall examples including duplicated collecting-system ROI errors, urinary bladder/diaper contamination, motion artifact, renal vein thrombosis mimic, low GFR/dehydration, and immature kidneys",
+          "all STATdx images 1-24 as the default curated STATdx primary set, including exact duplicate replacements and supplemental examples"
+        ],
+        "downweightOrSkip": [
+          "Do not use STATdx breadcrumbTrail for routing because metadata.json canonicalHierarchy is authoritative.",
+          "Do not invent Core Radiology validation because no auditable Core Radiology source is supplied.",
+          "Do not overuse STATdx image 24 in generators unless a later prompt specifically wants sparse-caption source-completeness/pitfall material."
+        ]
+      },
+      "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable. Download only selectedPrimaryImageIds by default.",
+      "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate and kept primary.",
+      "caseClusterGuardrails": {
+        "rule": "Same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse clusters are atomic teaching clusters.",
+        "intentionalSplits": [],
+        "note": "No source case cluster was intentionally split. RadPrimer images 13-14 remain together because STATdx does not cover that duplicated left collecting-system/parapelvic cyst correlation cluster; STATdx images 10-11 remain together as a separate same-patient persistent-dilation/indeterminate-washout cluster."
+      },
+      "imageDownloadPlan": {
+        "primaryTeachingSet": {
+          "statdxDefaultPrimaryImages": [
+            "SDX-01",
+            "SDX-02",
+            "SDX-03",
+            "SDX-04",
+            "SDX-05",
+            "SDX-06",
+            "SDX-07",
+            "SDX-08",
+            "SDX-09",
+            "SDX-10",
+            "SDX-11",
+            "SDX-12",
+            "SDX-13",
+            "SDX-14",
+            "SDX-15",
+            "SDX-16",
+            "SDX-17",
+            "SDX-18",
+            "SDX-19",
+            "SDX-20",
+            "SDX-21",
+            "SDX-22",
+            "SDX-23",
+            "SDX-24"
+          ],
+          "radprimerUniquePrimaryImages": [
+            "RP-13",
+            "RP-14"
+          ]
+        },
+        "archiveOptionalDuplicates": {
+          "radprimerExactDuplicateExports": [
+            "RP-01",
+            "RP-02",
+            "RP-03",
+            "RP-04",
+            "RP-05",
+            "RP-06",
+            "RP-07",
+            "RP-08",
+            "RP-09",
+            "RP-10",
+            "RP-11",
+            "RP-12",
+            "RP-15",
+            "RP-16",
+            "RP-17",
+            "RP-18",
+            "RP-19",
+            "RP-20",
+            "RP-21",
+            "RP-22"
+          ]
+        },
+        "downloadOnlySelectedPrimaryImageIdsByDefault": true,
+        "sourceQualifiedFilenamePolicy": "Use the registry downloadFilenameStem/plainFilename values, preserving RP-05 and SDX-04 style IDs in filenames while using clean labels such as RadPrimer image 5 or STATdx image 4 in narrative prose."
+      },
+      "generatorInstructions": [
+        "Use clean source-qualified image labels in narrative prose, such as RadPrimer image 14 or STATdx image 11.",
+        "Keep RP-14 and SDX-11 style IDs in traceability fields, filenames, registries, and manifest metadata rather than crowding narrative prose with both labels.",
+        "Preserve atomic same-patient clusters: RadPrimer images 11-12, RadPrimer images 13-14, RadPrimer images 17-18, STATdx images 8-9, STATdx images 10-11, and STATdx images 14-15.",
+        "Do not generate cards or lecture content from this package until a later explicit request."
+      ]
+    }
+  },
+  "imageRegistry": [
+    {
+      "masterImageId": "RP-01",
+      "humanLabel": "RadPrimer image 1",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "sourceImageId": "85a13426-62fa-4302-a4b0-89e0378fca75",
+      "caption": "Graphic shows unilateral dilated calyces <img src=\"arrow_BS.png\"> and dilated, corkscrew renal pelvis <img src=\"arrow_WS.png\"> to the level of the ureteropelvic junction (UPJ), consistent with UPJ obstruction.",
+      "cleanCaption": "Graphic shows unilateral dilated calyces and dilated, corkscrew renal pelvis to the level of the ureteropelvic junction (UPJ), consistent with UPJ obstruction.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-20"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-20"
+      ],
+      "relatedImageIds": [
+        "SDX-20"
+      ],
+      "curationRationale": "Same unilateral UPJ obstruction graphic; STATdx version is selected as the source-qualified duplicate replacement.",
+      "plainFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_85a13426.jpg",
+      "annotatedFilename": "Hydronephrosis1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/85a13426-62fa-4302-a4b0-89e0378fca75?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/85a13426-62fa-4302-a4b0-89e0378fca75?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_85a13426.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/85a13426-62fa-4302-a4b0-89e0378fca75?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "f5c5336075284943ec9daed6c1eb52686b5730b589c702939b90aec3b8d1c5ae",
+        "evidenceBytes": 75945
+      },
+      "downloadFilenameStem": "RP-01_RadPrimer_image_01_plain_85a13426"
+    },
+    {
+      "masterImageId": "RP-02",
+      "humanLabel": "RadPrimer image 2",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "sourceImageId": "32e28dae-d200-4c71-bce5-8217cc61fe2d",
+      "caption": "Renogram shows the UPJ obstruction with a dilated right renal pelvis <img src=\"arrow_WS.png\"> and calyces at the level of the UPJ.",
+      "cleanCaption": "Renogram shows the UPJ obstruction with a dilated right renal pelvis and calyces at the level of the UPJ.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-23"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-23"
+      ],
+      "relatedImageIds": [
+        "SDX-23"
+      ],
+      "curationRationale": "Same right UPJ obstruction renogram screenshot with dilated pelvis and calyces.",
+      "plainFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_32e28dae.jpg",
+      "annotatedFilename": "Hydronephrosis2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/32e28dae-d200-4c71-bce5-8217cc61fe2d?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/32e28dae-d200-4c71-bce5-8217cc61fe2d?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_32e28dae.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/32e28dae-d200-4c71-bce5-8217cc61fe2d?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "873002cced3e51ab0710a958357e7aca64966ab5acc2b9a561fb560818c9eb4c",
+        "evidenceBytes": 31747
+      },
+      "downloadFilenameStem": "RP-02_RadPrimer_image_02_plain_32e28dae"
+    },
+    {
+      "masterImageId": "RP-03",
+      "humanLabel": "RadPrimer image 3",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "sourceImageId": "3057fc23-6e01-485f-bff6-1aefaa155a9b",
+      "caption": "Renograms show a horseshoe kidney <img src=\"arrow_WO.png\">, a right ileal conduit with tracer in bowel <img src=\"arrow_WS.png\">, a right duplicated system (upper <img src=\"arrow_CC.png\"> and lower <img src=\"arrow_WC.png\"> moiety), and a duplicated right system with upper pole retention due to obstruction <img src=\"arrow_CS.png\">. Note photopenic ureterocele <img src=\"arrow_CO.png\"> in bladder.",
+      "cleanCaption": "Renograms show a horseshoe kidney , a right ileal conduit with tracer in bowel , a right duplicated system (upper and lower moiety), and a duplicated right system with upper pole retention due to obstruction . Note photopenic ureterocele in bladder.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-21"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-21"
+      ],
+      "relatedImageIds": [
+        "SDX-21"
+      ],
+      "curationRationale": "Same composite renogram example of horseshoe kidney, ileal conduit, duplicated system, and obstructed upper moiety/ureterocele.",
+      "plainFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_3057fc23.jpg",
+      "annotatedFilename": "Hydronephrosis3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3057fc23-6e01-485f-bff6-1aefaa155a9b?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/3057fc23-6e01-485f-bff6-1aefaa155a9b?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_3057fc23.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/3057fc23-6e01-485f-bff6-1aefaa155a9b?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "e24db5466d840b3a81560b41c15c796bdd218142dadcd762a567735f27d7612a",
+        "evidenceBytes": 65353
+      },
+      "downloadFilenameStem": "RP-03_RadPrimer_image_03_plain_3057fc23"
+    },
+    {
+      "masterImageId": "RP-04",
+      "humanLabel": "RadPrimer image 4",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "sourceImageId": "c5d347ae-4c72-4412-a406-f2b685bdd4cd",
+      "caption": "Tc-99m MAG3 renogram in a 6 week old with left hydronephrosis <img src=\"arrow_BS.png\"> shows retention of radiotracer despite furosemide administration. This study is positive for left UPJ obstruction <img src=\"arrow_BO.png\">.",
+      "cleanCaption": "Tc-99m MAG3 renogram in a 6 week old with left hydronephrosis shows retention of radiotracer despite furosemide administration. This study is positive for left UPJ obstruction .",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-22"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-22"
+      ],
+      "relatedImageIds": [
+        "SDX-22"
+      ],
+      "curationRationale": "Same 6-week-old left UPJ obstruction MAG3 renogram.",
+      "plainFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_c5d347ae.jpg",
+      "annotatedFilename": "Hydronephrosis4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/c5d347ae-4c72-4412-a406-f2b685bdd4cd?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/c5d347ae-4c72-4412-a406-f2b685bdd4cd?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_c5d347ae.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/c5d347ae-4c72-4412-a406-f2b685bdd4cd?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "04e8aa73c3ddc3b1c84142df27f93c5555252136b6116f1fcfad6690b60aa4c7",
+        "evidenceBytes": 55241
+      },
+      "downloadFilenameStem": "RP-04_RadPrimer_image_04_plain_c5d347ae"
+    },
+    {
+      "masterImageId": "RP-05",
+      "humanLabel": "RadPrimer image 5",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 5,
+      "sourceImageId": "4d30529e-1aff-4816-b1d4-f9ea7f6b3012",
+      "caption": "Tc-99m MAG3 renogram shows normal, symmetric bilateral renal uptake  <img src=\"arrow_CS.png\"> and excretion  <img src=\"arrow_CO.png\">  without evidence of obstruction.",
+      "cleanCaption": "Tc-99m MAG3 renogram shows normal, symmetric bilateral renal uptake and excretion without evidence of obstruction.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-02"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-02"
+      ],
+      "relatedImageIds": [
+        "SDX-02"
+      ],
+      "curationRationale": "Same normal symmetric MAG3 uptake/excretion renogram.",
+      "plainFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_4d30529e.jpg",
+      "annotatedFilename": "Hydronephrosis5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/4d30529e-1aff-4816-b1d4-f9ea7f6b3012?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/4d30529e-1aff-4816-b1d4-f9ea7f6b3012?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_4d30529e.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/4d30529e-1aff-4816-b1d4-f9ea7f6b3012?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "42d3cf2e9d992920187f34c37f68c2146b6a1be02a7f2b50fe5e62986e28f6e9",
+        "evidenceBytes": 87146
+      },
+      "downloadFilenameStem": "RP-05_RadPrimer_image_05_plain_4d30529e"
+    },
+    {
+      "masterImageId": "RP-06",
+      "humanLabel": "RadPrimer image 6",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 6,
+      "sourceImageId": "598ce988-2f39-4f83-b088-5c92a2cf6b7f",
+      "caption": "Normal renogram of the right kidney <img src=\"arrow_CO.png\"> shows no obstruction. The left kidney <img src=\"arrow_CC.png\"> shows complete obstruction with progressive rise in activity <img src=\"arrow_CS.png\"> in the collecting system, even after furosemide.",
+      "cleanCaption": "Normal renogram of the right kidney shows no obstruction. The left kidney shows complete obstruction with progressive rise in activity in the collecting system, even after furosemide.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-03"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-03"
+      ],
+      "relatedImageIds": [
+        "SDX-03"
+      ],
+      "curationRationale": "Same high-grade/complete left obstruction renogram with persistent collecting-system activity after furosemide.",
+      "plainFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_598ce988.jpg",
+      "annotatedFilename": "Hydronephrosis6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/598ce988-2f39-4f83-b088-5c92a2cf6b7f?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/598ce988-2f39-4f83-b088-5c92a2cf6b7f?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_598ce988.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/598ce988-2f39-4f83-b088-5c92a2cf6b7f?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "430caa4491ec508adaac15ac6e9379632325479fe24dd5e88f9e125b7ed6a9ba",
+        "evidenceBytes": 85938
+      },
+      "downloadFilenameStem": "RP-06_RadPrimer_image_06_plain_598ce988"
+    },
+    {
+      "masterImageId": "RP-07",
+      "humanLabel": "RadPrimer image 7",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 7,
+      "sourceImageId": "157e4041-f225-4a8f-b7f8-b877f1ccdae9",
+      "caption": "Tc-99m MAG3 renogram shows bilateral partial obstruction: Activity continues to rise until furosemide is administered, but washout curve remains delayed <img src=\"arrow_CS.png\">. Note minimal bladder activity  <img src=\"arrow_CO.png\">.",
+      "cleanCaption": "Tc-99m MAG3 renogram shows bilateral partial obstruction: Activity continues to rise until furosemide is administered, but washout curve remains delayed . Note minimal bladder activity .",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-04"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-04"
+      ],
+      "relatedImageIds": [
+        "SDX-04"
+      ],
+      "curationRationale": "Same bilateral partial obstruction renogram with delayed washout after furosemide.",
+      "plainFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_157e4041.jpg",
+      "annotatedFilename": "Hydronephrosis7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/157e4041-f225-4a8f-b7f8-b877f1ccdae9?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/157e4041-f225-4a8f-b7f8-b877f1ccdae9?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_157e4041.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/157e4041-f225-4a8f-b7f8-b877f1ccdae9?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "a06e626244f0ef2be100bd558d8010e9e20867a2a15c0713d95d4f1c0f0492de",
+        "evidenceBytes": 81657
+      },
+      "downloadFilenameStem": "RP-07_RadPrimer_image_07_plain_157e4041"
+    },
+    {
+      "masterImageId": "RP-08",
+      "humanLabel": "RadPrimer image 8",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 8,
+      "sourceImageId": "05a995f1-efa1-4fdf-9d97-c5f6d97a4cb1",
+      "caption": "Left kidney shows patulous renal collecting system <img src=\"arrow_CS.png\"> with delayed spontaneous excretion <img src=\"arrow_CC.png\">, which normalizes after furosemide <img src=\"arrow_CO.png\">. The right kidney shows normal excretion curve <img src=\"arrow_WS.png\">.",
+      "cleanCaption": "Left kidney shows patulous renal collecting system with delayed spontaneous excretion , which normalizes after furosemide . The right kidney shows normal excretion curve .",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-05"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-05"
+      ],
+      "relatedImageIds": [
+        "SDX-05"
+      ],
+      "curationRationale": "Same dilated but unobstructed/patulous left collecting-system renogram with post-furosemide normalization.",
+      "plainFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_05a995f1.jpg",
+      "annotatedFilename": "Hydronephrosis8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/05a995f1-efa1-4fdf-9d97-c5f6d97a4cb1?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/05a995f1-efa1-4fdf-9d97-c5f6d97a4cb1?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_05a995f1.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/05a995f1-efa1-4fdf-9d97-c5f6d97a4cb1?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "bf7b743b50fa4b1e34d114948190762ce5f529dc8088f0e42f49ebca3b22704f",
+        "evidenceBytes": 83506
+      },
+      "downloadFilenameStem": "RP-08_RadPrimer_image_08_plain_05a995f1"
+    },
+    {
+      "masterImageId": "RP-09",
+      "humanLabel": "RadPrimer image 9",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 9,
+      "sourceImageId": "7f953b3e-ef44-4a9d-8d57-a85ee08aa86f",
+      "caption": "Renogram shows nonfunctioning right kidney with no appreciable uptake <img src=\"arrow_CS.png\">. Left renal excretion curve  <img src=\"arrow_CO.png\">  shows increasing activity in the kidney region of interest, consistent with vesicoureteral reflux.",
+      "cleanCaption": "Renogram shows nonfunctioning right kidney with no appreciable uptake . Left renal excretion curve shows increasing activity in the kidney region of interest, consistent with vesicoureteral reflux.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-06"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-06"
+      ],
+      "relatedImageIds": [
+        "SDX-06"
+      ],
+      "curationRationale": "Same VUR/nonfunctioning right kidney renogram; STATdx caption adds motion artifact as a possible mimic.",
+      "plainFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_7f953b3e.jpg",
+      "annotatedFilename": "Hydronephrosis9_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/7f953b3e-ef44-4a9d-8d57-a85ee08aa86f?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/7f953b3e-ef44-4a9d-8d57-a85ee08aa86f?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_7f953b3e.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/7f953b3e-ef44-4a9d-8d57-a85ee08aa86f?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "cf9179d43155c9a653228e6ca31cffaccb5208d08cf6e8d949ddc9ded4fe00a9",
+        "evidenceBytes": 82219
+      },
+      "downloadFilenameStem": "RP-09_RadPrimer_image_09_plain_7f953b3e"
+    },
+    {
+      "masterImageId": "RP-10",
+      "humanLabel": "RadPrimer image 10",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 10,
+      "sourceImageId": "b2afd07e-d8b0-4a5b-9848-7e11c259d506",
+      "caption": "Tc-99m MAG3 renogram in a patient with right renal artery stenosis shows smaller right kidney with delayed time to peak and normal washout <img src=\"arrow_CS.png\">. The relative functioning renal mass of the right kidney is low at 38%.",
+      "cleanCaption": "Tc-99m MAG3 renogram in a patient with right renal artery stenosis shows smaller right kidney with delayed time to peak and normal washout . The relative functioning renal mass of the right kidney is low at 38%.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-07"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-07"
+      ],
+      "relatedImageIds": [
+        "SDX-07"
+      ],
+      "curationRationale": "Same renal artery stenosis example with small delayed right kidney and low relative function.",
+      "plainFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_b2afd07e.jpg",
+      "annotatedFilename": "Hydronephrosis10_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b2afd07e-d8b0-4a5b-9848-7e11c259d506?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/b2afd07e-d8b0-4a5b-9848-7e11c259d506?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_b2afd07e.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/b2afd07e-d8b0-4a5b-9848-7e11c259d506?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "ed635dea1e87bd0b3bad27d77571548668c128daf2d1337d1aa06397225131c2",
+        "evidenceBytes": 86914
+      },
+      "downloadFilenameStem": "RP-10_RadPrimer_image_10_plain_b2afd07e"
+    },
+    {
+      "masterImageId": "RP-11",
+      "humanLabel": "RadPrimer image 11",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 11,
+      "sourceImageId": "4e0b1f3d-57b0-48eb-97d3-a03fa4ee7b00",
+      "caption": "Tc-99m MDP bone scan in a patient with prostate cancer and back pain shows no metastatic lesions. Note retention of radiotracer  <img src=\"arrow_CS.png\">  in the right renal collecting system.",
+      "cleanCaption": "Tc-99m MDP bone scan in a patient with prostate cancer and back pain shows no metastatic lesions. Note retention of radiotracer in the right renal collecting system.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-08"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-08"
+      ],
+      "relatedImageIds": [
+        "SDX-08"
+      ],
+      "curationRationale": "Same prostate-cancer bone scan showing right collecting-system tracer retention.",
+      "plainFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_4e0b1f3d.jpg",
+      "annotatedFilename": "Hydronephrosis11_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/4e0b1f3d-57b0-48eb-97d3-a03fa4ee7b00?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/4e0b1f3d-57b0-48eb-97d3-a03fa4ee7b00?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_4e0b1f3d.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/4e0b1f3d-57b0-48eb-97d3-a03fa4ee7b00?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "5d2226fa415ee165b7df5d7fe8ea6d710870c7acddf439e79878bed49e3032ef",
+        "evidenceBytes": 77146
+      },
+      "downloadFilenameStem": "RP-11_RadPrimer_image_11_plain_4e0b1f3d"
+    },
+    {
+      "masterImageId": "RP-12",
+      "humanLabel": "RadPrimer image 12",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 12,
+      "sourceImageId": "45823adb-ec53-4117-a5a9-c4a49768fb7a",
+      "caption": "Coronal CECT in the same patient shows 2 calculi <img src=\"arrow_WO.png\"> in the dilated distal right ureter <img src=\"arrow_CS.png\">, which caused the urinary retention of radiotracer on bone scan.",
+      "cleanCaption": "Coronal CECT in the same patient shows 2 calculi in the dilated distal right ureter , which caused the urinary retention of radiotracer on bone scan.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-09"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-09"
+      ],
+      "relatedImageIds": [
+        "SDX-09"
+      ],
+      "curationRationale": "Same same-patient coronal CECT/MIP stone correlation for the right distal ureter obstruction.",
+      "plainFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_45823adb.jpg",
+      "annotatedFilename": "Hydronephrosis12_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/45823adb-ec53-4117-a5a9-c4a49768fb7a?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/45823adb-ec53-4117-a5a9-c4a49768fb7a?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_45823adb.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/45823adb-ec53-4117-a5a9-c4a49768fb7a?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "41c82937f81c54a28ac2fe3f25b2c51a8f551b8a00248526591fa75c535fbff3",
+        "evidenceBytes": 133724
+      },
+      "downloadFilenameStem": "RP-12_RadPrimer_image_12_plain_45823adb"
+    },
+    {
+      "masterImageId": "RP-13",
+      "humanLabel": "RadPrimer image 13",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 13,
+      "sourceImageId": "384df9d3-76ce-4a02-99f0-cd43e8e65761",
+      "caption": "Tc-99m MDP bone scan in a patient with prostate cancer shows retention of radiotracer in the superior left renal collecting system <img src=\"arrow_CO.png\"> with minimal tracer in the region of the inferior pole <img src=\"arrow_CC.png\">.",
+      "cleanCaption": "Tc-99m MDP bone scan in a patient with prostate cancer shows retention of radiotracer in the superior left renal collecting system with minimal tracer in the region of the inferior pole .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "samePatientCluster",
+        "notCoveredBySTATdx"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "notCovered",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [],
+      "curationRationale": "No STATdx counterpart on visual inspection; keep as primary because it begins a unique same-patient bone-scan/CT correlation for duplicated left collecting system/parapelvic cyst.",
+      "plainFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_384df9d3.jpg",
+      "annotatedFilename": "Hydronephrosis13_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/384df9d3-76ce-4a02-99f0-cd43e8e65761?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/384df9d3-76ce-4a02-99f0-cd43e8e65761?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_384df9d3.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/384df9d3-76ce-4a02-99f0-cd43e8e65761?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "7141e11d5bd2e733cd91e61198bbd15fd858c5914527ca19a58b92903d1579e0",
+        "evidenceBytes": 71796
+      },
+      "downloadFilenameStem": "RP-13_RadPrimer_image_13_plain_384df9d3"
+    },
+    {
+      "masterImageId": "RP-14",
+      "humanLabel": "RadPrimer image 14",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 14,
+      "sourceImageId": "0aa7f10a-d6e8-45fb-a697-4f37ca329087",
+      "caption": "MIP CECT in the same patient shows a duplicated left renal collecting system with dilated upper pole moiety <img src=\"arrow_WS.png\">. A large parapelvic cyst of the lower pole moiety without obstruction <img src=\"arrow_CO.png\"> explains the radiotracer pattern on bone scan.",
+      "cleanCaption": "MIP CECT in the same patient shows a duplicated left renal collecting system with dilated upper pole moiety . A large parapelvic cyst of the lower pole moiety without obstruction explains the radiotracer pattern on bone scan.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "samePatientCluster",
+        "notCoveredBySTATdx"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "notCovered",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [],
+      "curationRationale": "No STATdx counterpart on visual inspection; keep with RadPrimer image 13 as the atomic CT correlation for duplicated collecting system and parapelvic cyst.",
+      "plainFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_0aa7f10a.jpg",
+      "annotatedFilename": "Hydronephrosis14_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/0aa7f10a-d6e8-45fb-a697-4f37ca329087?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/0aa7f10a-d6e8-45fb-a697-4f37ca329087?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_0aa7f10a.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/0aa7f10a-d6e8-45fb-a697-4f37ca329087?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "c2be43ba652f00446017118b78e4aa0b3a2e6010b73dc30e0c09cfb2981e8e31",
+        "evidenceBytes": 140279
+      },
+      "downloadFilenameStem": "RP-14_RadPrimer_image_14_plain_0aa7f10a"
+    },
+    {
+      "masterImageId": "RP-15",
+      "humanLabel": "RadPrimer image 15",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 15,
+      "sourceImageId": "fc90490a-ba9b-4330-97b4-f53a419bebdb",
+      "caption": "Tc-99m MAG3 renogram shows marked renal retention in the left kidney <img src=\"arrow_BS.png\"> in a patient with clinically significant renal artery stenosis.",
+      "cleanCaption": "Tc-99m MAG3 renogram shows marked renal retention in the left kidney in a patient with clinically significant renal artery stenosis.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-12"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-12"
+      ],
+      "relatedImageIds": [
+        "SDX-12"
+      ],
+      "curationRationale": "Same marked left renal retention example from clinically significant renal artery stenosis.",
+      "plainFilename": "image_evidence/RadPrimer/RP-15_RadPrimer_image_15_plain_fc90490a.jpg",
+      "annotatedFilename": "Hydronephrosis15_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/fc90490a-ba9b-4330-97b4-f53a419bebdb?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/fc90490a-ba9b-4330-97b4-f53a419bebdb?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-15_RadPrimer_image_15_plain_fc90490a.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/fc90490a-ba9b-4330-97b4-f53a419bebdb?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "a0a74c0e5c83e252c780c61fbe5bfc9803f91247f3f3f765ec5408b7e7f381bd",
+        "evidenceBytes": 82706
+      },
+      "downloadFilenameStem": "RP-15_RadPrimer_image_15_plain_fc90490a"
+    },
+    {
+      "masterImageId": "RP-16",
+      "humanLabel": "RadPrimer image 16",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 16,
+      "sourceImageId": "984dcc6f-e81f-4699-8587-056ca1307438",
+      "caption": "Tc-99m MAG3 renogram in a patient with ectopic insertion of the right ureter and a clamped right percutaneous nephrostomy tube shows minimal excretion after furosemide administration, suggesting obstruction <img src=\"arrow_CS.png\">.",
+      "cleanCaption": "Tc-99m MAG3 renogram in a patient with ectopic insertion of the right ureter and a clamped right percutaneous nephrostomy tube shows minimal excretion after furosemide administration, suggesting obstruction .",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-13"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-13"
+      ],
+      "relatedImageIds": [
+        "SDX-13"
+      ],
+      "curationRationale": "Same ectopic right ureter/clamped nephrostomy high-grade obstruction renogram.",
+      "plainFilename": "image_evidence/RadPrimer/RP-16_RadPrimer_image_16_plain_984dcc6f.jpg",
+      "annotatedFilename": "Hydronephrosis16_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/984dcc6f-e81f-4699-8587-056ca1307438?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/984dcc6f-e81f-4699-8587-056ca1307438?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-16_RadPrimer_image_16_plain_984dcc6f.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/984dcc6f-e81f-4699-8587-056ca1307438?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "7266b80182153d97d8e73847c025c9195730faa7eef1225d3a88ce9994b9d7eb",
+        "evidenceBytes": 95210
+      },
+      "downloadFilenameStem": "RP-16_RadPrimer_image_16_plain_984dcc6f"
+    },
+    {
+      "masterImageId": "RP-17",
+      "humanLabel": "RadPrimer image 17",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 17,
+      "sourceImageId": "e71fea81-a58d-4d45-af1d-b5d37c020da0",
+      "caption": "Postprocessing of Tc-99m MAG3 renogram is shown in a patient with history of urinary diversion <img src=\"arrow_BC.png\"> and question of obstruction on anatomic imaging. Prompt response to furosemide <img src=\"arrow_CS.png\"> bilaterally is consistent with patulous, nonobstructed collecting systems.",
+      "cleanCaption": "Postprocessing of Tc-99m MAG3 renogram is shown in a patient with history of urinary diversion and question of obstruction on anatomic imaging. Prompt response to furosemide bilaterally is consistent with patulous, nonobstructed collecting systems.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-14"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-14"
+      ],
+      "relatedImageIds": [
+        "SDX-14"
+      ],
+      "curationRationale": "Same urinary-diversion/patulous unobstructed collecting-systems postprocessing image.",
+      "plainFilename": "image_evidence/RadPrimer/RP-17_RadPrimer_image_17_plain_e71fea81.jpg",
+      "annotatedFilename": "Hydronephrosis17_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e71fea81-a58d-4d45-af1d-b5d37c020da0?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/e71fea81-a58d-4d45-af1d-b5d37c020da0?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-17_RadPrimer_image_17_plain_e71fea81.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/e71fea81-a58d-4d45-af1d-b5d37c020da0?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "f81f63b81405b2a74cb4f6c7f735d3bbf7b0071c4173874b3552e2a9c53209a7",
+        "evidenceBytes": 67589
+      },
+      "downloadFilenameStem": "RP-17_RadPrimer_image_17_plain_e71fea81"
+    },
+    {
+      "masterImageId": "RP-18",
+      "humanLabel": "RadPrimer image 18",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 18,
+      "sourceImageId": "1957d7c0-5107-4bb3-a1dc-4063826b1023",
+      "caption": "Coronal CECT in the same patient shows mild fullness of the bilateral renal collecting systems <img src=\"arrow_CO.png\">. Right lower quadrant ileostomy with parastomal hernia containing bowel <img src=\"arrow_WS.png\">  is also evident.",
+      "cleanCaption": "Coronal CECT in the same patient shows mild fullness of the bilateral renal collecting systems . Right lower quadrant ileostomy with parastomal hernia containing bowel is also evident.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-15"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-15"
+      ],
+      "relatedImageIds": [
+        "SDX-15"
+      ],
+      "curationRationale": "Same same-patient coronal CECT correlation for urinary diversion/patulous fullness.",
+      "plainFilename": "image_evidence/RadPrimer/RP-18_RadPrimer_image_18_plain_1957d7c0.jpg",
+      "annotatedFilename": "Hydronephrosis18_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/1957d7c0-5107-4bb3-a1dc-4063826b1023?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/1957d7c0-5107-4bb3-a1dc-4063826b1023?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-18_RadPrimer_image_18_plain_1957d7c0.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/1957d7c0-5107-4bb3-a1dc-4063826b1023?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "bb69b619a486fd942d92810d76717aed7def02fd81f5f9d62fa8a1453f8757b1",
+        "evidenceBytes": 104713
+      },
+      "downloadFilenameStem": "RP-18_RadPrimer_image_18_plain_1957d7c0"
+    },
+    {
+      "masterImageId": "RP-19",
+      "humanLabel": "RadPrimer image 19",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 19,
+      "sourceImageId": "15947d1e-bc5b-4969-9f4b-d3516a83c0d9",
+      "caption": "Posterior Tc-99m MAG3 renogram shows poor initial uptake <img src=\"arrow_WO.png\"> with delayed/persistent left nephrogram <img src=\"arrow_WS.png\">, concerning for complete left renal obstruction.",
+      "cleanCaption": "Posterior Tc-99m MAG3 renogram shows poor initial uptake with delayed/persistent left nephrogram , concerning for complete left renal obstruction.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-16"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-16"
+      ],
+      "relatedImageIds": [
+        "SDX-16"
+      ],
+      "curationRationale": "Same poor initial uptake and delayed/persistent left nephrogram; STATdx caption adds renal vein thrombosis mimic.",
+      "plainFilename": "image_evidence/RadPrimer/RP-19_RadPrimer_image_19_plain_15947d1e.jpg",
+      "annotatedFilename": "Hydronephrosis19_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/15947d1e-bc5b-4969-9f4b-d3516a83c0d9?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/15947d1e-bc5b-4969-9f4b-d3516a83c0d9?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-19_RadPrimer_image_19_plain_15947d1e.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/15947d1e-bc5b-4969-9f4b-d3516a83c0d9?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "958150fb50030d6f528a3b2412616ba4cb68d61df23fafb14969ebf0423e4b4d",
+        "evidenceBytes": 69877
+      },
+      "downloadFilenameStem": "RP-19_RadPrimer_image_19_plain_15947d1e"
+    },
+    {
+      "masterImageId": "RP-20",
+      "humanLabel": "RadPrimer image 20",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 20,
+      "sourceImageId": "77480575-2a19-440c-b290-50f2cbb72f59",
+      "caption": "Anterior Tc-99m MAG3 renogram of a right lower quadrant renal transplant shows delayed nephrogram  <img src=\"arrow_CS.png\">  with minimal urinary excretion in a patient with acute tubular necrosis.",
+      "cleanCaption": "Anterior Tc-99m MAG3 renogram of a right lower quadrant renal transplant shows delayed nephrogram with minimal urinary excretion in a patient with acute tubular necrosis.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-17"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-17"
+      ],
+      "relatedImageIds": [
+        "SDX-17"
+      ],
+      "curationRationale": "Same transplant delayed nephrogram/minimal excretion example from acute tubular necrosis.",
+      "plainFilename": "image_evidence/RadPrimer/RP-20_RadPrimer_image_20_plain_77480575.jpg",
+      "annotatedFilename": "Hydronephrosis20_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/77480575-2a19-440c-b290-50f2cbb72f59?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/77480575-2a19-440c-b290-50f2cbb72f59?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-20_RadPrimer_image_20_plain_77480575.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/77480575-2a19-440c-b290-50f2cbb72f59?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "e0fb6b8a10488124d82cfb5ecc5f80d17f9d3df73b6cf7233b979107cb5404f6",
+        "evidenceBytes": 105706
+      },
+      "downloadFilenameStem": "RP-20_RadPrimer_image_20_plain_77480575"
+    },
+    {
+      "masterImageId": "RP-21",
+      "humanLabel": "RadPrimer image 21",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 21,
+      "sourceImageId": "187a930b-0bf2-4732-860b-315d876a7c4f",
+      "caption": "Posterior Tc-99m MAG3 renogram shows vesicoureteral reflux <img src=\"arrow_BS.png\"> in a pediatric patient with right hydronephrosis and resulting nonfunctioning right kidney <img src=\"arrow_CS.png\">.",
+      "cleanCaption": "Posterior Tc-99m MAG3 renogram shows vesicoureteral reflux in a pediatric patient with right hydronephrosis and resulting nonfunctioning right kidney .",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-18"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-18"
+      ],
+      "relatedImageIds": [
+        "SDX-18"
+      ],
+      "curationRationale": "Same pediatric reflux/nonfunctioning right kidney renogram.",
+      "plainFilename": "image_evidence/RadPrimer/RP-21_RadPrimer_image_21_plain_187a930b.jpg",
+      "annotatedFilename": "Hydronephrosis21_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/187a930b-0bf2-4732-860b-315d876a7c4f?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/187a930b-0bf2-4732-860b-315d876a7c4f?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-21_RadPrimer_image_21_plain_187a930b.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/187a930b-0bf2-4732-860b-315d876a7c4f?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "a74cd06f31140057ed0f00acc6605a8931c310eb8af05ca4610916da3ec717fc",
+        "evidenceBytes": 118924
+      },
+      "downloadFilenameStem": "RP-21_RadPrimer_image_21_plain_187a930b"
+    },
+    {
+      "masterImageId": "RP-22",
+      "humanLabel": "RadPrimer image 22",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 22,
+      "sourceImageId": "0be18d65-bdbf-4102-ad0e-e5edf2b71d4a",
+      "caption": "F-18 FDG PET/CT in a patient with colon adenocarcinoma shows new right hydronephrosis <img src=\"arrow_CS.png\"> due to retroperitoneal adenopathy <img src=\"arrow_WS.png\">. Absence of radiotracer excretion <img src=\"arrow_BO.png\"> into the dilated collecting system suggests obstruction.",
+      "cleanCaption": "F-18 FDG PET/CT in a patient with colon adenocarcinoma shows new right hydronephrosis due to retroperitoneal adenopathy . Absence of radiotracer excretion into the dilated collecting system suggests obstruction.",
+      "usedFor": [
+        "archiveRecovery",
+        "exactDuplicateAudit"
+      ],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "coveredByImageIds": [
+        "SDX-19"
+      ],
+      "duplicateOfImageIds": [
+        "SDX-19"
+      ],
+      "relatedImageIds": [
+        "SDX-19"
+      ],
+      "curationRationale": "Same F-18 FDG PET/CT malignant extrinsic obstruction example; STATdx caption calls high-grade obstruction.",
+      "plainFilename": "image_evidence/RadPrimer/RP-22_RadPrimer_image_22_plain_0be18d65.jpg",
+      "annotatedFilename": "Hydronephrosis22_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/0be18d65-bdbf-4102-ad0e-e5edf2b71d4a?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/0be18d65-bdbf-4102-ad0e-e5edf2b71d4a?style=xlarge&annotated=true",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-22_RadPrimer_image_22_plain_0be18d65.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.radprimer.com/images/0be18d65-bdbf-4102-ad0e-e5edf2b71d4a?style=xlarge&annotated=false",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "b8af9adb4d420e2f5cf77f53d8126385953fe98a0261195874ca3a7edc4be01e",
+        "evidenceBytes": 114425
+      },
+      "downloadFilenameStem": "RP-22_RadPrimer_image_22_plain_0be18d65"
+    },
+    {
+      "masterImageId": "SDX-01",
+      "humanLabel": "STATdx image 1",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 1,
+      "sourceImageId": "d282e940-4cb2-4757-9da3-224ddc568602",
+      "caption": "Graphic shows potential activity curves in a Tc-99m MAG3 exam done for the evaluation of hydronephrosis. The red curve represents normal biexponential excretion. Green represents a dilated, but unobstructed, system that clears after the administration of furosemide. Blue represents a system that is partially obstructed as demonstrated by partial response to furosemide. Yellow represents high-grade obstruction. In reality, not all cases fall neatly into 1 of these categories and should be assessed for anatomic variants, such as duplicated systems. Always correlate graph with raw images to corroborate findings and exclude technical error.",
+      "cleanCaption": "Graphic shows potential activity curves in a Tc-99m MAG3 exam done for the evaluation of hydronephrosis. The red curve represents normal biexponential excretion. Green represents a dilated, but unobstructed, system that clears after the administration of furosemide. Blue represents a system that is partially obstructed as demonstrated by partial response to furosemide. Yellow represents high-grade obstruction. In reality, not all cases fall neatly into 1 of these categories and should be assessed for anatomic variants, such as duplicated systems. Always correlate graph with raw images to corroborate findings and exclude technical error.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "curveSchema",
+        "interpretiveFramework"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "supplementalPrimary",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [],
+      "curationRationale": "STATdx-only summary curve graphic showing normal, dilated-unobstructed, partial obstruction, and high-grade obstruction patterns.",
+      "plainFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_d282e940.jpg",
+      "annotatedFilename": "Hydronephrosis1_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d282e940-4cb2-4757-9da3-224ddc568602?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d282e940-4cb2-4757-9da3-224ddc568602?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_d282e940.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d282e940-4cb2-4757-9da3-224ddc568602?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "c2716d7bce54bb3b85696c85c5a480ce18277ceb423215c4cbf46bd7dbaa8949",
+        "evidenceBytes": 106236
+      },
+      "downloadFilenameStem": "SDX-01_STATdx_image_01_plain_d282e940"
+    },
+    {
+      "masterImageId": "SDX-02",
+      "humanLabel": "STATdx image 2",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 2,
+      "sourceImageId": "b69cde23-f44e-4c4e-9d63-8527f7cd5410",
+      "caption": "Tc-99m MAG3 renogram shows normal, symmetric bilateral renal uptake <img src=\"arrow_CS.png\"> and excretion <img src=\"arrow_CO.png\"> without evidence of obstruction.",
+      "cleanCaption": "Tc-99m MAG3 renogram shows normal, symmetric bilateral renal uptake and excretion without evidence of obstruction.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-05"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-05.",
+      "plainFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_b69cde23.jpg",
+      "annotatedFilename": "Hydronephrosis2_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/b69cde23-f44e-4c4e-9d63-8527f7cd5410?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/b69cde23-f44e-4c4e-9d63-8527f7cd5410?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_b69cde23.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/b69cde23-f44e-4c4e-9d63-8527f7cd5410?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "c86e9f20359d23361920bb64af9c5445dfb4a718c1a8490d10994894d0d5bcc2",
+        "evidenceBytes": 110165
+      },
+      "downloadFilenameStem": "SDX-02_STATdx_image_02_plain_b69cde23"
+    },
+    {
+      "masterImageId": "SDX-03",
+      "humanLabel": "STATdx image 3",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 3,
+      "sourceImageId": "76278271-f777-4750-995a-07e0b1fda79e",
+      "caption": "Normal Tc-99m MAG3 renogram of the right kidney <img src=\"arrow_CO.png\"> shows no obstruction. The left kidney <img src=\"arrow_CC.png\"> shows high-grade obstruction with progressive rise in activity <img src=\"arrow_CS.png\"> in the collecting system, even after furosemide.",
+      "cleanCaption": "Normal Tc-99m MAG3 renogram of the right kidney shows no obstruction. The left kidney shows high-grade obstruction with progressive rise in activity in the collecting system, even after furosemide.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-06"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-06.",
+      "plainFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_76278271.jpg",
+      "annotatedFilename": "Hydronephrosis3_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/76278271-f777-4750-995a-07e0b1fda79e?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/76278271-f777-4750-995a-07e0b1fda79e?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_76278271.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/76278271-f777-4750-995a-07e0b1fda79e?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "92bdd3d3282bbcd0245f470cceeb0e12bdd47c7f91d5f4cb85ac3f4cc9e9fbe7",
+        "evidenceBytes": 103714
+      },
+      "downloadFilenameStem": "SDX-03_STATdx_image_03_plain_76278271"
+    },
+    {
+      "masterImageId": "SDX-04",
+      "humanLabel": "STATdx image 4",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 4,
+      "sourceImageId": "90ae82db-6988-4e85-952b-2df93d6faceb",
+      "caption": "Tc-99m MAG3 renogram shows bilateral partial obstruction: Activity continues to rise until furosemide is administered, but washout curve remains delayed <img src=\"arrow_CS.png\">. Note minimal bladder activity <img src=\"arrow_CO.png\">.",
+      "cleanCaption": "Tc-99m MAG3 renogram shows bilateral partial obstruction: Activity continues to rise until furosemide is administered, but washout curve remains delayed . Note minimal bladder activity .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-07"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-07.",
+      "plainFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_90ae82db.jpg",
+      "annotatedFilename": "Hydronephrosis4_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/90ae82db-6988-4e85-952b-2df93d6faceb?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/90ae82db-6988-4e85-952b-2df93d6faceb?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_90ae82db.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/90ae82db-6988-4e85-952b-2df93d6faceb?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "bb8da1edb1f35dcec979fb8323aba89c541eeec8b643fd8b6dca13d181afb704",
+        "evidenceBytes": 102314
+      },
+      "downloadFilenameStem": "SDX-04_STATdx_image_04_plain_90ae82db"
+    },
+    {
+      "masterImageId": "SDX-05",
+      "humanLabel": "STATdx image 5",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 5,
+      "sourceImageId": "f02ebf14-e755-461d-b488-a9557a9ddcdb",
+      "caption": "Tc-99m MAG3 shows left kidney <img src=\"arrow_CS.png\"> demonstrating delayed spontaneous excretion <img src=\"arrow_CC.png\">, which normalizes after furosemide <img src=\"arrow_CO.png\">, representing a dilated but unobstructed system. The right kidney shows normal excretion curve <img src=\"arrow_WS.png\">.",
+      "cleanCaption": "Tc-99m MAG3 shows left kidney demonstrating delayed spontaneous excretion , which normalizes after furosemide , representing a dilated but unobstructed system. The right kidney shows normal excretion curve .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-08"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-08.",
+      "plainFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_f02ebf14.jpg",
+      "annotatedFilename": "Hydronephrosis5_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/f02ebf14-e755-461d-b488-a9557a9ddcdb?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/f02ebf14-e755-461d-b488-a9557a9ddcdb?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_f02ebf14.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/f02ebf14-e755-461d-b488-a9557a9ddcdb?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "8cdcffe7494d1c688b604b3fe52353e7af9a77f4a51b10c14d3d5f3888c39a4a",
+        "evidenceBytes": 99817
+      },
+      "downloadFilenameStem": "SDX-05_STATdx_image_05_plain_f02ebf14"
+    },
+    {
+      "masterImageId": "SDX-06",
+      "humanLabel": "STATdx image 6",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 6,
+      "sourceImageId": "496ad256-ea47-46b4-ae3d-4ecb0e6fec8f",
+      "caption": "Tc-99m MAG3 renogram shows nonfunctioning right kidney with no uptake <img src=\"arrow_CS.png\">. Left renal excretion curve <img src=\"arrow_CO.png\"> shows subsequent increasing activity in the kidney region of interest, consistent with vesicoureteral reflux. Motion artifact could also have this appearance.",
+      "cleanCaption": "Tc-99m MAG3 renogram shows nonfunctioning right kidney with no uptake . Left renal excretion curve shows subsequent increasing activity in the kidney region of interest, consistent with vesicoureteral reflux. Motion artifact could also have this appearance.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-09"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-09.",
+      "plainFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_496ad256.jpg",
+      "annotatedFilename": "Hydronephrosis6_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/496ad256-ea47-46b4-ae3d-4ecb0e6fec8f?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/496ad256-ea47-46b4-ae3d-4ecb0e6fec8f?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_496ad256.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/496ad256-ea47-46b4-ae3d-4ecb0e6fec8f?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "ce59a330105a3e8a4c4a653ee5b8b3b98962d7b0d2f7d4b53e94e1e6131d09f1",
+        "evidenceBytes": 99035
+      },
+      "downloadFilenameStem": "SDX-06_STATdx_image_06_plain_496ad256"
+    },
+    {
+      "masterImageId": "SDX-07",
+      "humanLabel": "STATdx image 7",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 7,
+      "sourceImageId": "751dec5e-68a6-4876-9549-8998b353b251",
+      "caption": "Tc-99m MAG3 renogram in a patient with right renal artery stenosis shows smaller right kidney with delayed time to peak and normal washout <img src=\"arrow_CS.png\">. The relative functioning renal mass of the right kidney is low at 38%.",
+      "cleanCaption": "Tc-99m MAG3 renogram in a patient with right renal artery stenosis shows smaller right kidney with delayed time to peak and normal washout . The relative functioning renal mass of the right kidney is low at 38%.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-10"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-10.",
+      "plainFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_751dec5e.jpg",
+      "annotatedFilename": "Hydronephrosis7_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/751dec5e-68a6-4876-9549-8998b353b251?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/751dec5e-68a6-4876-9549-8998b353b251?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_751dec5e.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/751dec5e-68a6-4876-9549-8998b353b251?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "6d7e50cbc0efbe5a1aa36c86f45e37d65369efea5e613173afccef946dcccecf",
+        "evidenceBytes": 105068
+      },
+      "downloadFilenameStem": "SDX-07_STATdx_image_07_plain_751dec5e"
+    },
+    {
+      "masterImageId": "SDX-08",
+      "humanLabel": "STATdx image 8",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 8,
+      "sourceImageId": "c6b5eb2b-be01-4589-8dc9-4810ada1e134",
+      "caption": "Tc-99m MDP bone scan in a patient with prostate cancer and back pain shows no metastatic lesions. Note retention of radiotracer <img src=\"arrow_CS.png\"> in the right renal collecting system.",
+      "cleanCaption": "Tc-99m MDP bone scan in a patient with prostate cancer and back pain shows no metastatic lesions. Note retention of radiotracer in the right renal collecting system.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-11"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-11.",
+      "plainFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_c6b5eb2b.jpg",
+      "annotatedFilename": "Hydronephrosis8_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/c6b5eb2b-be01-4589-8dc9-4810ada1e134?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/c6b5eb2b-be01-4589-8dc9-4810ada1e134?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_c6b5eb2b.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/c6b5eb2b-be01-4589-8dc9-4810ada1e134?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "033cec59a023ca855171f5588edfb939187b1baea3e0a2a53f208f08569c25fe",
+        "evidenceBytes": 98405
+      },
+      "downloadFilenameStem": "SDX-08_STATdx_image_08_plain_c6b5eb2b"
+    },
+    {
+      "masterImageId": "SDX-09",
+      "humanLabel": "STATdx image 9",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 9,
+      "sourceImageId": "89df0801-9346-4eb7-94e9-abb6b2c4bab9",
+      "caption": "Coronal CECT MIP in the same patient shows 2 calculi <img src=\"arrow_WO.png\"> in the dilated distal right ureter <img src=\"arrow_CS.png\">, which caused the urinary retention of radiotracer on bone scan.",
+      "cleanCaption": "Coronal CECT MIP in the same patient shows 2 calculi in the dilated distal right ureter , which caused the urinary retention of radiotracer on bone scan.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-12"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-12.",
+      "plainFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_89df0801.jpg",
+      "annotatedFilename": "Hydronephrosis9_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/89df0801-9346-4eb7-94e9-abb6b2c4bab9?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/89df0801-9346-4eb7-94e9-abb6b2c4bab9?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_89df0801.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/89df0801-9346-4eb7-94e9-abb6b2c4bab9?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "9552cb6b996855d4d6ccaee1aad38ea085ad8a1f5c507b2f24e70a58936903e6",
+        "evidenceBytes": 155684
+      },
+      "downloadFilenameStem": "SDX-09_STATdx_image_09_plain_89df0801"
+    },
+    {
+      "masterImageId": "SDX-10",
+      "humanLabel": "STATdx image 10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 10,
+      "sourceImageId": "1a9d5dbb-863d-4d82-b089-34da4ce9d625",
+      "caption": "Coronal CECT shows a 58-year-old woman with prior neoplastic right obstructive uropathy with persistent collecting system dilation <img src=\"arrow_CO.png\"> on anatomic imaging even after removal of the offending mass. Left kidney is normal <img src=\"arrow_CS.png\"> by CECT.",
+      "cleanCaption": "Coronal CECT shows a 58-year-old woman with prior neoplastic right obstructive uropathy with persistent collecting system dilation on anatomic imaging even after removal of the offending mass. Left kidney is normal by CECT.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "anatomicCorrelation",
+        "alternateExample",
+        "samePatientCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "supplementalPrimary",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [],
+      "curationRationale": "STATdx-only same-patient cluster: persistent right collecting-system dilation after prior neoplastic obstruction, then indeterminate symmetric residual activity favoring low GFR/dehydration rather than obstruction.",
+      "plainFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_1a9d5dbb.jpg",
+      "annotatedFilename": "Hydronephrosis10_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/1a9d5dbb-863d-4d82-b089-34da4ce9d625?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/1a9d5dbb-863d-4d82-b089-34da4ce9d625?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_1a9d5dbb.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/1a9d5dbb-863d-4d82-b089-34da4ce9d625?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "a679c7aa4cf5d358abe80e1f55e26ffc1bc3d9a863e0f6ef07b8b02ab6cbb1f5",
+        "evidenceBytes": 108482
+      },
+      "downloadFilenameStem": "SDX-10_STATdx_image_10_plain_1a9d5dbb"
+    },
+    {
+      "masterImageId": "SDX-11",
+      "humanLabel": "STATdx image 11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 11,
+      "sourceImageId": "e75f192a-559f-4b40-ac08-015411e9b490",
+      "caption": "Tc-99m MAG3 renogram shows the same patient with indeterminate t1/2 slopes (10-20 min) on both the normal left <img src=\"arrow_WS.png\"> and the dilated right <img src=\"arrow_WC.png\">. Because residual activity is symmetric at the conclusion of the study <img src=\"arrow_WO.png\">, poor excretion is favored to be due to low GFR or dehydration (42).",
+      "cleanCaption": "Tc-99m MAG3 renogram shows the same patient with indeterminate t1/2 slopes (10-20 min) on both the normal left and the dilated right . Because residual activity is symmetric at the conclusion of the study , poor excretion is favored to be due to low GFR or dehydration (42).",
+      "usedFor": [
+        "primaryTeachingSet",
+        "falsePositivePitfall",
+        "samePatientCluster",
+        "GFRHydrationPitfall"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "supplementalPrimary",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [],
+      "curationRationale": "STATdx-only same-patient cluster: persistent right collecting-system dilation after prior neoplastic obstruction, then indeterminate symmetric residual activity favoring low GFR/dehydration rather than obstruction.",
+      "plainFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_e75f192a.jpg",
+      "annotatedFilename": "Hydronephrosis11_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e75f192a-559f-4b40-ac08-015411e9b490?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e75f192a-559f-4b40-ac08-015411e9b490?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_e75f192a.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e75f192a-559f-4b40-ac08-015411e9b490?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "29f2bfeb428603b44ccea5a82864fff6d2deeaf76461f0a934cb9258039dca8a",
+        "evidenceBytes": 206467
+      },
+      "downloadFilenameStem": "SDX-11_STATdx_image_11_plain_e75f192a"
+    },
+    {
+      "masterImageId": "SDX-12",
+      "humanLabel": "STATdx image 12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 12,
+      "sourceImageId": "ae93274f-01b3-4ec3-8b40-9bbcbff65679",
+      "caption": "Tc-99m MAG3 renogram shows marked renal retention in the left kidney <img src=\"arrow_BS.png\"> in a patient with clinically significant renal artery stenosis.",
+      "cleanCaption": "Tc-99m MAG3 renogram shows marked renal retention in the left kidney in a patient with clinically significant renal artery stenosis.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-15"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-15.",
+      "plainFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_ae93274f.jpg",
+      "annotatedFilename": "Hydronephrosis12_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/ae93274f-01b3-4ec3-8b40-9bbcbff65679?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/ae93274f-01b3-4ec3-8b40-9bbcbff65679?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_ae93274f.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/ae93274f-01b3-4ec3-8b40-9bbcbff65679?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "abfaaacef65bbcaa7d0872477c5c0c0a8a22513e701889eb89ccb227d624c815",
+        "evidenceBytes": 96822
+      },
+      "downloadFilenameStem": "SDX-12_STATdx_image_12_plain_ae93274f"
+    },
+    {
+      "masterImageId": "SDX-13",
+      "humanLabel": "STATdx image 13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 13,
+      "sourceImageId": "ced0dade-032f-42a7-85d5-2eb35f7b033d",
+      "caption": "Tc-99m MAG3 renogram in a patient with ectopic insertion of the right ureter and a clamped right percutaneous nephrostomy tube shows minimal excretion after furosemide administration, consistent with high-grade obstruction <img src=\"arrow_CS.png\">.",
+      "cleanCaption": "Tc-99m MAG3 renogram in a patient with ectopic insertion of the right ureter and a clamped right percutaneous nephrostomy tube shows minimal excretion after furosemide administration, consistent with high-grade obstruction .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-16"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-16.",
+      "plainFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_ced0dade.jpg",
+      "annotatedFilename": "Hydronephrosis13_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/ced0dade-032f-42a7-85d5-2eb35f7b033d?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/ced0dade-032f-42a7-85d5-2eb35f7b033d?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_ced0dade.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/ced0dade-032f-42a7-85d5-2eb35f7b033d?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "4ea5e84910d9b72f9dba087c4aef02e2826c724b908a262a5d9176dc11284819",
+        "evidenceBytes": 120267
+      },
+      "downloadFilenameStem": "SDX-13_STATdx_image_13_plain_ced0dade"
+    },
+    {
+      "masterImageId": "SDX-14",
+      "humanLabel": "STATdx image 14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 14,
+      "sourceImageId": "bc9723cb-c4a0-41e0-a15e-a0f28359d442",
+      "caption": "Tc-99m MAG3 renogram is shown in a patient with history of urinary diversion <img src=\"arrow_BC.png\"> and question of obstruction on anatomic imaging. Prompt response to furosemide <img src=\"arrow_CS.png\"> bilaterally is consistent with patulous, unobstructed collecting systems.",
+      "cleanCaption": "Tc-99m MAG3 renogram is shown in a patient with history of urinary diversion and question of obstruction on anatomic imaging. Prompt response to furosemide bilaterally is consistent with patulous, unobstructed collecting systems.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-17"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-17.",
+      "plainFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_bc9723cb.jpg",
+      "annotatedFilename": "Hydronephrosis14_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/bc9723cb-c4a0-41e0-a15e-a0f28359d442?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/bc9723cb-c4a0-41e0-a15e-a0f28359d442?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_bc9723cb.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/bc9723cb-c4a0-41e0-a15e-a0f28359d442?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "b147b6797e01bd34e1bafb125ba03f411d6b8a997d7344ec07691d31fb5683fc",
+        "evidenceBytes": 81193
+      },
+      "downloadFilenameStem": "SDX-14_STATdx_image_14_plain_bc9723cb"
+    },
+    {
+      "masterImageId": "SDX-15",
+      "humanLabel": "STATdx image 15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 15,
+      "sourceImageId": "c5561a07-8127-437a-b594-ba4b1be52a86",
+      "caption": "Coronal CECT in the same patient shows mild fullness of the bilateral renal collecting systems <img src=\"arrow_CO.png\">. Right lower quadrant ileostomy with parastomal hernia containing bowel <img src=\"arrow_WS.png\">  is also evident.",
+      "cleanCaption": "Coronal CECT in the same patient shows mild fullness of the bilateral renal collecting systems . Right lower quadrant ileostomy with parastomal hernia containing bowel is also evident.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-18"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-18.",
+      "plainFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_c5561a07.jpg",
+      "annotatedFilename": "Hydronephrosis15_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/c5561a07-8127-437a-b594-ba4b1be52a86?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/c5561a07-8127-437a-b594-ba4b1be52a86?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_c5561a07.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/c5561a07-8127-437a-b594-ba4b1be52a86?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "6a9c6da070e8d14a656c1227a378b73204924398d785eccca9ae145b8569d45d",
+        "evidenceBytes": 121489
+      },
+      "downloadFilenameStem": "SDX-15_STATdx_image_15_plain_c5561a07"
+    },
+    {
+      "masterImageId": "SDX-16",
+      "humanLabel": "STATdx image 16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 16,
+      "sourceImageId": "d0362658-5f23-41f6-af68-e8755df1f911",
+      "caption": "Tc-99m MAG3 renogram shows poor initial uptake <img src=\"arrow_WO.png\"> with delayed/persistent left nephrogram <img src=\"arrow_WS.png\">, concerning for complete left renal obstruction. Renal vein thrombosis could also have this appearance.",
+      "cleanCaption": "Tc-99m MAG3 renogram shows poor initial uptake with delayed/persistent left nephrogram , concerning for complete left renal obstruction. Renal vein thrombosis could also have this appearance.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-19"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-19.",
+      "plainFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_d0362658.jpg",
+      "annotatedFilename": "Hydronephrosis16_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d0362658-5f23-41f6-af68-e8755df1f911?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d0362658-5f23-41f6-af68-e8755df1f911?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_d0362658.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d0362658-5f23-41f6-af68-e8755df1f911?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "7c2a141e7fea5df091074b7dba9298d4afe84a9622fbe857cd2bf0d0cef4dc06",
+        "evidenceBytes": 80019
+      },
+      "downloadFilenameStem": "SDX-16_STATdx_image_16_plain_d0362658"
+    },
+    {
+      "masterImageId": "SDX-17",
+      "humanLabel": "STATdx image 17",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 17,
+      "sourceImageId": "dac2ad80-7ec2-4372-b0f6-acdc0c1642d0",
+      "caption": "Anterior Tc-99m MAG3 renogram of a right lower quadrant renal transplant shows delayed nephrogram <img src=\"arrow_CS.png\"> with minimal urinary excretion in a patient with diagnosed acute tubular necrosis.",
+      "cleanCaption": "Anterior Tc-99m MAG3 renogram of a right lower quadrant renal transplant shows delayed nephrogram with minimal urinary excretion in a patient with diagnosed acute tubular necrosis.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-20"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-20.",
+      "plainFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_dac2ad80.jpg",
+      "annotatedFilename": "Hydronephrosis17_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/dac2ad80-7ec2-4372-b0f6-acdc0c1642d0?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/dac2ad80-7ec2-4372-b0f6-acdc0c1642d0?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_dac2ad80.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/dac2ad80-7ec2-4372-b0f6-acdc0c1642d0?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "85d1ba01f44b05eb65bb5ed1cf6081c21047f84f205df83e3a894aa756d4199f",
+        "evidenceBytes": 118287
+      },
+      "downloadFilenameStem": "SDX-17_STATdx_image_17_plain_dac2ad80"
+    },
+    {
+      "masterImageId": "SDX-18",
+      "humanLabel": "STATdx image 18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 18,
+      "sourceImageId": "864e397a-9562-40ca-939e-95101617947b",
+      "caption": "Tc-99m MAG3 renogram shows vesicoureteral reflux <img src=\"arrow_BS.png\"> in a pediatric patient with right hydronephrosis and resulting nonfunctioning right kidney <img src=\"arrow_CS.png\">.",
+      "cleanCaption": "Tc-99m MAG3 renogram shows vesicoureteral reflux in a pediatric patient with right hydronephrosis and resulting nonfunctioning right kidney .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-21"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-21.",
+      "plainFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_864e397a.jpg",
+      "annotatedFilename": "Hydronephrosis18_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/864e397a-9562-40ca-939e-95101617947b?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/864e397a-9562-40ca-939e-95101617947b?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_864e397a.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/864e397a-9562-40ca-939e-95101617947b?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "e77dec33ceb2d87d9d1e52bef0409e0e9fb803459ecf1ca212d78a5ab0a0fb70",
+        "evidenceBytes": 135988
+      },
+      "downloadFilenameStem": "SDX-18_STATdx_image_18_plain_864e397a"
+    },
+    {
+      "masterImageId": "SDX-19",
+      "humanLabel": "STATdx image 19",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 19,
+      "sourceImageId": "7119a132-b6d8-42b0-9af6-22a4745ed9f5",
+      "caption": "F-18 FDG PET/CT in a patient with colon adenocarcinoma shows new right hydronephrosis <img src=\"arrow_CS.png\"> due to retroperitoneal adenopathy <img src=\"arrow_WS.png\">. Absence of radiotracer excretion <img src=\"arrow_BO.png\"> into the dilated collecting system suggests high-grade obstruction.",
+      "cleanCaption": "F-18 FDG PET/CT in a patient with colon adenocarcinoma shows new right hydronephrosis due to retroperitoneal adenopathy . Absence of radiotracer excretion into the dilated collecting system suggests high-grade obstruction.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-22"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-22.",
+      "plainFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_7119a132.jpg",
+      "annotatedFilename": "Hydronephrosis19_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/7119a132-b6d8-42b0-9af6-22a4745ed9f5?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/7119a132-b6d8-42b0-9af6-22a4745ed9f5?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_7119a132.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/7119a132-b6d8-42b0-9af6-22a4745ed9f5?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "04ed74186c8ac34ae38f6358e6156075f553306bd8f63a75f75c4f7e1297f85d",
+        "evidenceBytes": 148743
+      },
+      "downloadFilenameStem": "SDX-19_STATdx_image_19_plain_7119a132"
+    },
+    {
+      "masterImageId": "SDX-20",
+      "humanLabel": "STATdx image 20",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 20,
+      "sourceImageId": "8f38f921-729e-40a2-be64-bd0f99205810",
+      "caption": "Graphic shows unilateral dilated calyces <img src=\"arrow_BS.png\"> and dilated, corkscrew renal pelvis <img src=\"arrow_WS.png\"> to the level of the ureteropelvic junction (UPJ), consistent with UPJ obstruction.",
+      "cleanCaption": "Graphic shows unilateral dilated calyces and dilated, corkscrew renal pelvis to the level of the ureteropelvic junction (UPJ), consistent with UPJ obstruction.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-01"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-01.",
+      "plainFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_8f38f921.jpg",
+      "annotatedFilename": "Hydronephrosis20_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/8f38f921-729e-40a2-be64-bd0f99205810?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/8f38f921-729e-40a2-be64-bd0f99205810?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_8f38f921.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/8f38f921-729e-40a2-be64-bd0f99205810?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "d7d1a2f19fcaf9e7f248596aa6669554188e33545031bc7c6e783b7a014a5150",
+        "evidenceBytes": 87649
+      },
+      "downloadFilenameStem": "SDX-20_STATdx_image_20_plain_8f38f921"
+    },
+    {
+      "masterImageId": "SDX-21",
+      "humanLabel": "STATdx image 21",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 21,
+      "sourceImageId": "e625962e-3dad-498b-8fa1-fe3c40f0aaae",
+      "caption": "Renograms show a horseshoe kidney <img src=\"arrow_WO.png\">, a right ileal conduit with tracer in bowel <img src=\"arrow_WS.png\">, a right duplicated system (upper <img src=\"arrow_CC.png\"> and lower <img src=\"arrow_WC.png\"> moiety), and a duplicated right system with upper pole retention due to obstruction <img src=\"arrow_CS.png\">. Note photopenic ureterocele <img src=\"arrow_CO.png\"> in bladder.",
+      "cleanCaption": "Renograms show a horseshoe kidney , a right ileal conduit with tracer in bowel , a right duplicated system (upper and lower moiety), and a duplicated right system with upper pole retention due to obstruction . Note photopenic ureterocele in bladder.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-03"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-03.",
+      "plainFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_e625962e.jpg",
+      "annotatedFilename": "Hydronephrosis21_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e625962e-3dad-498b-8fa1-fe3c40f0aaae?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e625962e-3dad-498b-8fa1-fe3c40f0aaae?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_e625962e.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e625962e-3dad-498b-8fa1-fe3c40f0aaae?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "02fa24b3b3c93c65b8faa10abb5946a072f977fcd52ca2ecdaed0503edb93368",
+        "evidenceBytes": 71717
+      },
+      "downloadFilenameStem": "SDX-21_STATdx_image_21_plain_e625962e"
+    },
+    {
+      "masterImageId": "SDX-22",
+      "humanLabel": "STATdx image 22",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 22,
+      "sourceImageId": "e104033e-7485-4b2f-88af-bd89c57f0754",
+      "caption": "Tc-99m MAG3 renogram in a 6-week-old patient with left hydronephrosis <img src=\"arrow_BS.png\"> shows retention of radiotracer despite furosemide administration. This study is positive for left UPJ obstruction <img src=\"arrow_BO.png\">.",
+      "cleanCaption": "Tc-99m MAG3 renogram in a 6-week-old patient with left hydronephrosis shows retention of radiotracer despite furosemide administration. This study is positive for left UPJ obstruction .",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-04"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-04.",
+      "plainFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_e104033e.jpg",
+      "annotatedFilename": "Hydronephrosis22_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e104033e-7485-4b2f-88af-bd89c57f0754?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e104033e-7485-4b2f-88af-bd89c57f0754?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_e104033e.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e104033e-7485-4b2f-88af-bd89c57f0754?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "a5a6c3c6da28572575f1b3e205f05e8f981572bd176a78c67d7a5ddf69a6255b",
+        "evidenceBytes": 62388
+      },
+      "downloadFilenameStem": "SDX-22_STATdx_image_22_plain_e104033e"
+    },
+    {
+      "masterImageId": "SDX-23",
+      "humanLabel": "STATdx image 23",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 23,
+      "sourceImageId": "53c9073f-758f-4048-96d0-a96a6e862b30",
+      "caption": "Renogram shows the UPJ obstruction with a dilated right renal pelvis <img src=\"arrow_WS.png\"> and calyces at the level of the UPJ.",
+      "cleanCaption": "Renogram shows the UPJ obstruction with a dilated right renal pelvis and calyces at the level of the UPJ.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "duplicateReplacement",
+        "sourcePreferredImage"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "selectedDuplicateReplacement",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [
+        "RP-02"
+      ],
+      "curationRationale": "Selected as the default source-qualified replacement for exact RadPrimer duplicate(s): RP-02.",
+      "plainFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_53c9073f.jpg",
+      "annotatedFilename": "Hydronephrosis23_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/53c9073f-758f-4048-96d0-a96a6e862b30?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/53c9073f-758f-4048-96d0-a96a6e862b30?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_53c9073f.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/53c9073f-758f-4048-96d0-a96a6e862b30?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "c173a49bb8008e527539c05fa14129b0f6ff2ab1fc02063d611695aba22edf59",
+        "evidenceBytes": 36704
+      },
+      "downloadFilenameStem": "SDX-23_STATdx_image_23_plain_53c9073f"
+    },
+    {
+      "masterImageId": "SDX-24",
+      "humanLabel": "STATdx image 24",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 24,
+      "sourceImageId": "8823d2de-6385-488b-888d-6b47a19d81a3",
+      "caption": "Gallbladder Activity",
+      "cleanCaption": "Gallbladder Activity",
+      "usedFor": [
+        "primaryTeachingSet",
+        "sourceCompleteness",
+        "limitedCaptionPitfall"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "supplementalPrimary",
+      "coveredByImageIds": [],
+      "duplicateOfImageIds": [],
+      "relatedImageIds": [],
+      "curationRationale": "STATdx-only source image labeled Gallbladder Activity; retained for source completeness and possible pitfall review, but downweighted for future generators because the caption is sparse.",
+      "plainFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_8823d2de.jpg",
+      "annotatedFilename": "Hydronephrosis24_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/8823d2de-6385-488b-888d-6b47a19d81a3?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/8823d2de-6385-488b-888d-6b47a19d81a3?annotated=true&size=1000&quality=90",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_8823d2de.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/8823d2de-6385-488b-888d-6b47a19d81a3?size=1000&quality=90",
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "c11659a333bab76425cd9c1188872ddc6631bd2f7a1d72bb72b1804cd0ffb8d1",
+        "evidenceBytes": 66397
+      },
+      "downloadFilenameStem": "SDX-24_STATdx_image_24_plain_8823d2de"
+    }
+  ],
+  "sourceSelectionPlan": {
+    "sourcePriority": [
+      "RadPrimer canonical hierarchy/backbone",
+      "STATdx supplemental depth and source-preferred duplicate image replacements"
+    ],
+    "textPlan": {
+      "keepFromRadPrimer": [
+        "metadata.json canonicalHierarchy exactly",
+        "metadata.json canonicalDeckPath exactly",
+        "RadPrimer nuclear medicine scaffold for renogram definitions, acquisition, furosemide/GAD interpretation, differential diagnosis, and management",
+        "RadPrimer images 13-14 as a unique primary same-patient bone-scan/CT correlation not covered by STATdx"
+      ],
+      "keepFromSTATdx": [
+        "three-opportunity clearance framing: prefurosemide, postfurosemide, and gravity-assisted drainage",
+        "GAD clearance > 50% as nonobstructed/conservative-management support and < 50% as obstruction support",
+        "expanded protocol details for catheterization scenarios, pediatric MAG3 dosing, DTPA limitations with low GFR, and full-bladder/dehydration pitfalls",
+        "pitfall examples including duplicated collecting-system ROI errors, urinary bladder/diaper contamination, motion artifact, renal vein thrombosis mimic, low GFR/dehydration, and immature kidneys",
+        "all STATdx images 1-24 as the default curated STATdx primary set, including exact duplicate replacements and supplemental examples"
+      ],
+      "downweightOrSkip": [
+        "Do not use STATdx breadcrumbTrail for routing because metadata.json canonicalHierarchy is authoritative.",
+        "Do not invent Core Radiology validation because no auditable Core Radiology source is supplied.",
+        "Do not overuse STATdx image 24 in generators unless a later prompt specifically wants sparse-caption source-completeness/pitfall material."
+      ]
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable. Download only selectedPrimaryImageIds by default.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "rule": "Same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse clusters are atomic teaching clusters.",
+      "intentionalSplits": [],
+      "note": "No source case cluster was intentionally split. RadPrimer images 13-14 remain together because STATdx does not cover that duplicated left collecting-system/parapelvic cyst correlation cluster; STATdx images 10-11 remain together as a separate same-patient persistent-dilation/indeterminate-washout cluster."
+    },
+    "imageDownloadPlan": {
+      "primaryTeachingSet": {
+        "statdxDefaultPrimaryImages": [
+          "SDX-01",
+          "SDX-02",
+          "SDX-03",
+          "SDX-04",
+          "SDX-05",
+          "SDX-06",
+          "SDX-07",
+          "SDX-08",
+          "SDX-09",
+          "SDX-10",
+          "SDX-11",
+          "SDX-12",
+          "SDX-13",
+          "SDX-14",
+          "SDX-15",
+          "SDX-16",
+          "SDX-17",
+          "SDX-18",
+          "SDX-19",
+          "SDX-20",
+          "SDX-21",
+          "SDX-22",
+          "SDX-23",
+          "SDX-24"
+        ],
+        "radprimerUniquePrimaryImages": [
+          "RP-13",
+          "RP-14"
+        ]
+      },
+      "archiveOptionalDuplicates": {
+        "radprimerExactDuplicateExports": [
+          "RP-01",
+          "RP-02",
+          "RP-03",
+          "RP-04",
+          "RP-05",
+          "RP-06",
+          "RP-07",
+          "RP-08",
+          "RP-09",
+          "RP-10",
+          "RP-11",
+          "RP-12",
+          "RP-15",
+          "RP-16",
+          "RP-17",
+          "RP-18",
+          "RP-19",
+          "RP-20",
+          "RP-21",
+          "RP-22"
+        ]
+      },
+      "downloadOnlySelectedPrimaryImageIdsByDefault": true,
+      "sourceQualifiedFilenamePolicy": "Use the registry downloadFilenameStem/plainFilename values, preserving RP-05 and SDX-04 style IDs in filenames while using clean labels such as RadPrimer image 5 or STATdx image 4 in narrative prose."
+    },
+    "generatorInstructions": [
+      "Use clean source-qualified image labels in narrative prose, such as RadPrimer image 14 or STATdx image 11.",
+      "Keep RP-14 and SDX-11 style IDs in traceability fields, filenames, registries, and manifest metadata rather than crowding narrative prose with both labels.",
+      "Preserve atomic same-patient clusters: RadPrimer images 11-12, RadPrimer images 13-14, RadPrimer images 17-18, STATdx images 8-9, STATdx images 10-11, and STATdx images 14-15.",
+      "Do not generate cards or lecture content from this package until a later explicit request."
+    ]
+  },
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "RP-13",
+    "RP-14"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-15",
+    "RP-16",
+    "RP-17",
+    "RP-18",
+    "RP-19",
+    "RP-20",
+    "RP-21",
+    "RP-22"
+  ]
+}

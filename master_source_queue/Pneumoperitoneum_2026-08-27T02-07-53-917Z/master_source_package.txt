@@ -1,0 +1,93 @@
+=== MASTER SOURCE PACKAGE ===
+TITLE: Pneumoperitoneum
+CANONICAL HIERARCHY: All Categories > Basic > Gastrointestinal > Peritoneum, Mesentery, and Abdominal Wall > Pneumoperitoneum
+CANONICAL DECK PATH: Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Pneumoperitoneum
+SOURCE BASIS: [RadPrimer] canonical backbone and hierarchy; [STATdx] supplemental depth and distinct image examples.
+CORE STATUS: No auditable Core Radiology source pages were provided in this bundle. Do not generate Core-specific claims from this package alone.
+
+=== SOURCE SYNTHESIS NOTES ===
+[Both] RadPrimer and STATdx share the core pneumoperitoneum differential text and key teaching points. RadPrimer is retained as the canonical hierarchy/backbone because metadata.json canonicalHierarchy is RadPrimer-derived and must be used exactly for routing.
+[STATdx] contributes four distinct primary supplemental images: STATdx image 3 for thoracic barotrauma route, STATdx image 7 for radiographic feeding-tube/free-air appearance, and STATdx images 10 and 11 as alternate perforated duodenal-ulcer examples.
+[RadPrimer] RadPrimer images 1-14 remain the primary canonical image set. STATdx exact duplicate copies with the same stable source image IDs are archived for audit/recovery rather than downloaded by default.
+
+=== DIFFERENTIAL DIAGNOSIS BACKBONE ===
+[RadPrimer]
+Common:
+- Normal postoperative pneumoperitoneum.
+- Barotrauma.
+- Iatrogenic injuries or complications, including feeding-tube injury and bowel anastomotic leak.
+- Perforated ulcer, including duodenal and gastric ulcer.
+- Diverticulitis.
+- Intestinal trauma.
+- Appendicitis.
+- Thoracic mimics, including pneumothorax, subsegmental atelectasis, and cystic lung disease.
+- Colonic interposition mimic.
+- Subphrenic fat mimic.
+
+Less common:
+- Other causes of bowel perforation, including ileus/volvulus/obstruction, ischemia, vasculitis, infection/inflammatory bowel disease, malignancy, ingested foreign body, radiation therapy, fecal impaction, chemotherapy/steroids, and penetrating trauma.
+- Peritonitis.
+- Abdominal abscess.
+- Pneumatosis cystoides intestinalis.
+- Retrograde gas passage from the female genital tract.
+- Small bowel diverticula.
+- Foreign body perforation.
+
+Alternative approach:
+- Free intraperitoneal air in a neonate: necrotizing enterocolitis, cystic fibrosis-related GI disease, duodenal atresia/stenosis, and Hirschsprung disease.
+
+=== ESSENTIAL TEACHING POINTS ===
+[Both] CT is substantially more sensitive than plain radiographs for pneumoperitoneum and should be the test of choice when hollow viscus perforation is suspected.
+[Both] Upright or decubitus radiographs are more sensitive than supine radiographs. Supine portable films often make free intraperitoneal gas subtle or difficult to see.
+[Both] In unexplained free air, use the amount and location of gas to narrow the cause. Gas often localizes near the perforation site.
+[Both] Gastric and duodenal perforations tend to produce upper abdominal free air above the transverse mesocolon. Jejunal, ileal, and colonic perforations tend to produce gas below the transverse mesocolon.
+[Both] Small bowel perforation often produces only a small pneumoperitoneum, while gastric perforation, colonic perforation, and misplaced feeding tubes may produce large or massive free air.
+[Both] Incidental free intraperitoneal air in an asymptomatic patient should prompt consideration of benign causes, especially postoperative air and benign pneumatosis-related rupture.
+
+=== CAUSE-SPECIFIC CLUES ===
+[Both] Normal postoperative pneumoperitoneum: a small amount of free air is expected after laparotomy or invasive peritoneal procedures such as peritoneal dialysis or gastrostomy-tube placement. It is seen on CT in nearly 90% of patients at 3 days and about 50% at 6 days. It usually resolves in 7-10 days but can persist longer after prior surgery or peritonitis. Large or massive postoperative free air is abnormal and should raise concern for anastomotic leak or perforation.
+[Both] Barotrauma: positive-pressure ventilation can cause alveolar rupture, pneumothorax, pneumomediastinum, subcutaneous emphysema, pneumatosis, and pneumoperitoneum. Pleural or mediastinal gas may dissect into the retroperitoneum or peritoneum. Suspect this when pneumothorax and pneumoperitoneum coexist in a ventilated patient.
+[Both] Iatrogenic injury: endoscopy, feeding-tube placement, and postoperative bowel anastomoses are key contexts. Endoscopy may produce free air even without frank perforation if the bowel becomes markedly distended. Anastomotic leak appears as greater-than-expected postoperative free air, often with peritonitis or abscess.
+[Both] Perforated ulcer: gastroduodenal ulcers are the most common cause of GI tract perforation. Duodenal perforation usually causes gas, fluid, and fat stranding near the duodenal bulb and may involve both intraperitoneal and anterior pararenal spaces. Gastric ulcer perforation often involves the lesser sac, with gas/fluid/contrast posterior to the stomach and spread through the foramen of Winslow.
+[Both] Diverticulitis: a common pelvic cause. Because the omentum often walls off the perforation, the amount of free air is usually small and adjacent to the inflamed sigmoid colon. Large pneumoperitoneum and generalized peritonitis can occur, especially in older adults or steroid users.
+[Both] Intestinal trauma: pneumoperitoneum after blunt trauma indicates intestinal perforation until proven otherwise, with the duodenum and proximal jejunum important sites. Look for mesenteric hematoma and bowel wall thickening. Diagnostic peritoneal lavage can itself introduce intraperitoneal air and fluid.
+[Both] Appendicitis: rupture usually produces only a small amount of free air, often with free fluid or abscess.
+[Both] Thoracic mimics on radiographs: basal pneumothorax, plate-like subsegmental atelectasis, and cystic/bullous lung disease near the diaphragm may simulate pneumoperitoneum.
+[Both] Colonic interposition: Chilaiditi configuration places colon between liver and right hemidiaphragm and may be mistaken for free air.
+[Both] Subphrenic fat: radiolucent subxiphoid or perihepatic fat can mimic free air on radiographs.
+[Both] Peritonitis and abscess: gas-forming pyogenic infection can produce intraperitoneal gas/fluid; look for peritoneal thickening/enhancement or abscess. A gas-containing subphrenic abscess can simulate free abdominal gas on upright radiograph.
+[Both] Pneumatosis cystoides intestinalis: benign cystic intramural gas, often associated with scleroderma/collagen vascular disease or steroid/immunosuppressive therapy, can rupture and produce pneumoperitoneum despite a clinically well patient.
+[Both] Female genital tract: gas may pass retrograde into the peritoneum after sexual intercourse, pelvic examination, or water sports.
+[Both] Small bowel diverticula: duodenal or small-intestinal diverticula can perforate spontaneously or after feeding-tube placement. They usually produce very little free air and may not require surgery if contained and clinically mild.
+[Both] Foreign body perforation: ingested bone, toothpick, pin, or similar objects tend to perforate at the ileum, ileocecal region, or rectosigmoid.
+
+=== PRIMARY IMAGE SET FOR FUTURE GENERATION ===
+[RadPrimer] RadPrimer image 1: axial CECT after abdominal surgery with a thin crescent of nondependent pneumoperitoneum, a normal postoperative finding.
+[RadPrimer] RadPrimer image 2: axial NECT in a ventilated patient with barotrauma, showing gas dissecting into the retroperitoneal and intraperitoneal spaces.
+[RadPrimer] RadPrimer images 3 and 4: atomic postoperative rectal-anastomotic leak cluster. RadPrimer image 3 shows greater-than-expected postoperative pneumoperitoneum; RadPrimer image 4 shows focal ectopic gas near the rectal anastomosis and documents surgical revision.
+[RadPrimer] RadPrimer image 5: axial CECT after ERCP with gas tracking from the duodenum into peritoneal, retroperitoneal, and subcutaneous spaces, consistent with duodenal perforation.
+[RadPrimer] RadPrimer image 6: axial CECT with enteric contrast extravasation from the duodenum, free intraperitoneal air, and ascites containing oral contrast, consistent with perforated duodenal ulcer.
+[RadPrimer] RadPrimer image 7: axial CECT with lesser-curvature gastric wall edema/thickening and free intraperitoneal air, consistent with perforated gastric ulcer.
+[RadPrimer] RadPrimer image 8: coronal CECT with gas and enteric contrast tracking upward from inflamed sigmoid colon, consistent with perforated sigmoid diverticulitis.
+[RadPrimer] RadPrimer image 9: axial NECT with massively dilated cecum, pneumatosis, and free air, consistent with colonic ischemia and perforation.
+[RadPrimer] RadPrimer image 10: axial CECT after stab wounds with free air plus ectopic gas and enteric contrast along the colon, with colonic injury found at surgery.
+[RadPrimer] RadPrimer image 11: axial NECT in a clinically well patient with bubbly right-colon pneumatosis and adjacent free air, supporting benign pneumatosis.
+[RadPrimer] RadPrimer image 12: coronal CECT in an asymptomatic steroid-treated patient with extensive benign right-colon pneumatosis and small adjacent free air.
+[RadPrimer] RadPrimer image 13: axial CECT with inflamed contrast-filled small-bowel diverticulum and tiny adjacent ectopic gas, compatible with small-bowel diverticulitis.
+[RadPrimer] RadPrimer image 14: axial CECT showing an intentionally ingested pin perforating small bowel into the abdominal wall, requiring surgery.
+[STATdx] STATdx image 3: axial CECT showing pleural and mediastinal gas in a ventilated patient, retained as supplemental barotrauma-route context for pneumoperitoneum.
+[STATdx] STATdx image 7: frontal radiograph with gastrostomy tube and massive free intraperitoneal gas outlining bowel, retained as radiographic modality reinforcement for iatrogenic/feeding-tube context.
+[STATdx] STATdx image 10: axial CECT with free intraperitoneal gas and fluid from perforated duodenal ulcer, retained as an alternate ulcer-perforation example.
+[STATdx] STATdx image 11: axial CECT with free intraperitoneal gas and a gas bubble adjacent to the duodenal bulb, retained as an alternate duodenal-ulcer perforation example.
+
+=== IMAGE COVERAGE GATE ===
+[Both] STATdx fully covers the RadPrimer image set: RadPrimer images 1-14 each have an exact STATdx duplicate copy with the same stable source image ID and matching staged visual evidence. Because RadPrimer is the canonical backbone, RadPrimer copies remain primary and the duplicate STATdx copies are archive-optional.
+[Both] Exact duplicate pairs: RadPrimer image 1 = STATdx image 1; RadPrimer image 2 = STATdx image 2; RadPrimer image 3 = STATdx image 4; RadPrimer image 4 = STATdx image 5; RadPrimer image 5 = STATdx image 6; RadPrimer image 6 = STATdx image 8; RadPrimer image 7 = STATdx image 9; RadPrimer image 8 = STATdx image 12; RadPrimer image 9 = STATdx image 13; RadPrimer image 10 = STATdx image 14; RadPrimer image 11 = STATdx image 15; RadPrimer image 12 = STATdx image 16; RadPrimer image 13 = STATdx image 17; RadPrimer image 14 = STATdx image 18.
+[STATdx] Supplemental distinct images retained primary: STATdx images 3, 7, 10, and 11.
+
+=== GENERATOR ROUTING INSTRUCTIONS ===
+Use the canonicalHierarchy exactly as: ["All Categories","Basic","Gastrointestinal","Peritoneum, Mesentery, and Abdominal Wall","Pneumoperitoneum"].
+Use the deck path exactly as: Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Pneumoperitoneum.
+Use human-facing labels such as RadPrimer image 5 and STATdx image 10 in narrative prose. Keep RP-05 and SDX-10 for registry, filenames, manifest, and traceability fields.
+Download only selectedPrimaryImageIds by default. ArchiveOptionalImageIds are exact duplicate/recovery copies and should not drive routine cards or lecture.
+Do not create cards or lecture content from this package yet.

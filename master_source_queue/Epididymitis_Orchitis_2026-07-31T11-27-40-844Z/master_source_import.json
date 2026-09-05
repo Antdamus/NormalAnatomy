@@ -1,0 +1,2601 @@
+{
+  "version": 1,
+  "articleTitle": "Epididymitis/Orchitis",
+  "createdAt": "2026-07-31T11:34:44.938014Z",
+  "packageText": "# Master Source Package: Epididymitis/Orchitis\n\n## Routing and Source Control\n- Canonical hierarchy: All Categories > Basic > Ultrasound > Scrotum Basic > Epididymitis/Orchitis\n- Canonical deck path: Corebook::Ultrasound::Scrotum Basic::Epididymitis/Orchitis\n- Source priority: RadPrimer backbone with STATdx supplemental depth.\n- Source titles: RadPrimer = Epididymitis/Orchitis; STATdx = Epididymoorchitis.\n- Core Radiology support: no auditable Core Radiology source was supplied in this bundle, so no Core-only claims were added.\n- IMAIOS/package routing: use the canonical hierarchy above exactly; do not substitute the STATdx pediatric breadcrumb.\n\n## Image Coverage Gate\nSTATdx does not fully cover the RadPrimer image set. No RadPrimer image was proven to be an exact duplicate of a STATdx image after reviewing the staged image_evidence files, source image IDs, dimensions, and hashes. All RadPrimer and STATdx images remain in the primary teaching set.\n\n- RadPrimer image 1: conceptualReplacement versus STATdx comparators SDX-01. Keep RadPrimer image 1 and STATdx image 1 primary. Basis: Both are epididymitis illustrations, but the staged files show different artwork/composition and different source image IDs/hashes. Not an exact duplicate.\n- RadPrimer image 2: notCovered versus STATdx comparators none. Keep RadPrimer image 2 primary. Basis: RadPrimer image 2 uniquely illustrates cystic liquefaction/necrosis in an enlarged epididymis; no STATdx image shows the same graphic or same teaching point.\n- RadPrimer image 3: nearDuplicate versus STATdx comparators SDX-13, SDX-21, SDX-26. Keep all compared images primary as recognition reinforcement. Basis: These are visually distinct ultrasound examples of hyperemic epididymitis with different layouts/patients/source IDs; no same slice or screenshot was seen.\n- RadPrimer image 4: nearDuplicate versus STATdx comparators SDX-04, SDX-15. Keep all compared images primary as comparison-view reinforcement. Basis: STATdx has side-by-side Doppler comparison examples, but staged files are different images and different cases/source IDs.\n- RadPrimer image 5: nearDuplicate versus STATdx comparators SDX-16, SDX-17, SDX-22, SDX-24. Keep RadPrimer image 5 and STATdx grayscale epididymal examples primary. Basis: The STATdx images reinforce heterogeneous enlarged epididymis patterns but are different views/patients and not exact duplicates.\n- RadPrimer image 6: nearDuplicate versus STATdx comparators SDX-02, SDX-12, SDX-18. Keep all compared orchitis/epididymoorchitis Doppler examples primary. Basis: Same general hyperemic testis teaching point, but distinct appearance and source IDs/hashes.\n- RadPrimer image 7: notCovered versus STATdx comparators none. Keep RadPrimer image 7 primary. Basis: The focal orchitis image with a round intratesticular hypoechoic hyperemic focus is not represented by STATdx evidence files.\n- RadPrimer image 8: notCovered versus STATdx comparators none. Keep RadPrimer image 8 primary. Basis: STATdx text discusses complications, but no staged STATdx image duplicates or replaces the testicular infarction example.\n- RadPrimer image 9: notCovered versus STATdx comparators none. Keep RadPrimer image 9 primary. Basis: No STATdx image shows the same epididymal abscess pattern with central hypoechoic lesion.\n- RadPrimer image 10: notCovered versus STATdx comparators none. Keep RadPrimer image 10 primary. Basis: No STATdx image duplicates the intratesticular abscess example.\n\n## Fused Key Facts\n- [Both] Epididymitis/orchitis is infectious or inflammatory involvement of the epididymis, testis, or both. Orchitis alone is less common; secondary orchitis occurs by contiguous spread from epididymitis.\n- [RadPrimer] Epididymitis often begins in the epididymal tail, progresses through the body, and may extend to the testis. Orchitis complicates roughly 20-40% of epididymitis.\n- [Both] Color Doppler ultrasound with a high-frequency linear transducer is the test of choice. The core imaging clue is enlargement plus hyperemia of the epididymis and/or testis, ideally compared with the contralateral side.\n- [RadPrimer] Acute epididymitis is typically enlarged, relatively hypoechoic, and coarse/heterogeneous from edema and hemorrhage; chronic epididymitis may become enlarged and hyperechoic.\n- [STATdx] Pediatric cases often show a reactive hydrocele, scrotal wall thickening, and whole-hemiscrotum inflammatory change. In infants and younger children, consider underlying GU anomalies.\n- [RadPrimer] Severe epididymoorchitis can compromise venous outflow and produce ischemia, infarction, pyocele, epididymal abscess, testicular abscess, or later testicular atrophy.\n- [Both] Management is usually antibiotics plus supportive care; follow-up imaging is important if symptoms do not improve or abscess is suspected.\n\n## Terminology\n- [RadPrimer] Synonyms include acute scrotum, orchitis, and epididymoorchitis.\n- [STATdx] Epididymoorchitis is infectious inflammation of the epididymis, testicle, or both; isolated orchitis is much less common.\n- [Both] In future narrative, keep the RadPrimer title Epididymitis/Orchitis for deck routing while noting STATdx uses Epididymoorchitis.\n\n## Imaging Synthesis\n### Ultrasound Protocol\n- [Both] Use a high-frequency linear transducer and color/power Doppler. Compare symptomatic and asymptomatic sides, especially when increased vascularity is subtle.\n- [STATdx] Transverse side-by-side Doppler views are especially useful for overall size, symmetry, flow, and echotexture comparison.\n- [STATdx] Supporting the scrotum on towels may help; testicular flow can be difficult to demonstrate in very young males but becomes easier in inflammatory hyperemia.\n\n### Grayscale Ultrasound\n- [RadPrimer] Epididymitis: focal tail enlargement or diffuse epididymal enlargement; acute disease is often hypoechoic/coarse/heterogeneous.\n- [RadPrimer] Orchitis: focal hypoechoic intratesticular areas adjacent to an enlarged epididymis or diffuse testicular enlargement/heterogeneity; severe infection can thicken the tunica albuginea.\n- [Both] Reactive hydrocele is common; complex low-level echoes, septa, tunical thickening, scrotal skin edema, and periorchitis support inflammation.\n- [STATdx] Scrotal wall thickening and whole-hemiscrotal inflammatory change are common pediatric clues.\n\n### Doppler Ultrasound\n- [Both] Hyperemia of the epididymis, testis, or both is the central discriminator from torsion, but intermittent torsion can occasionally appear hyperemic.\n- [RadPrimer] Low-resistance arterial flow is expected in inflammation; testicular RI below 0.5 supports inflammation relative to normal RI at or above 0.5.\n- [RadPrimer] Focal avascular regions within hyperemic tissue suggest focal infarction. Reversal of arterial diastolic flow is an ominous sign associated with venous infarction.\n- [STATdx] Power Doppler may make markedly increased flow more conspicuous.\n\n### Additional Modalities\n- [RadPrimer] Tc-99m scintigraphy historically helps differentiate torsion from epididymitis; epididymitis shows increased flow/perfusion and curvilinear activity in the hemiscrotum.\n- [STATdx] Nuclear scintigraphy is now mostly historical because ultrasound has replaced it, but technique matters when used: secure the penis out of the field, support the scrotum, use pinhole collimation when possible, and image flow plus delayed phases.\n- [STATdx] VCUG may be performed in infants and nonsexually active boys to evaluate ectopic ureter, reflux, urethral abnormality with reflux into the vas deferens, or high-pressure voiding patterns.\n- [STATdx] MR urography may help if complex GU anomalies remain unclear after ultrasound and VCUG; MRI can also reveal hemiscrotal inflammatory edema in confusing presentations.\n\n## Differential Diagnosis\n- [Both] Testicular torsion: absent or diminished unilateral flow, possible twisted spermatic cord, surgical emergency. Epididymis may enlarge but lacks expected inflammatory vascularity.\n- [STATdx] Intermittent torsion can be tricky because hyperemia may occur after detorsion; look for abnormal lie, bell-clapper hydrocele pattern, and high-resistance waveforms when pain has improved.\n- [STATdx] Torsion of appendage testis/epididymis: nodular avascular appendage adjacent to testis with surrounding hyperemia; common pediatric acute scrotum mimic and may trigger reactive epididymal hyperemia.\n- [RadPrimer] Testicular lymphoma: often large, heterogeneous, bilateral or disseminated, with epididymal/spermatic cord involvement; hemorrhage and necrosis are rare.\n- [Both] Trauma/rupture: history of trauma, focal heterogeneity or avascular injury, contour deformity, tunica interruption, hematocele.\n- [STATdx] Scrotal cellulitis: wall thickening/hyperemia with normal testis and epididymis.\n- [STATdx] Hernia: bowel or abdominal contents continuous with the inguinal canal, with bowel wall signature/peristalsis and displacement of scrotal structures.\n- [STATdx] Leukemia: unilateral or bilateral testicular enlargement, diffuse hypoechoic parenchyma, and palisading vessels.\n\n## Pathology and Mechanism\n- [Both] Young sexually active males commonly have ascending infection from Neisseria gonorrhoeae or Chlamydia trachomatis.\n- [RadPrimer] Prepubertal boys, men older than 35, and men who practice anal intercourse more often have enteric organisms such as E. coli; other causes include Pseudomonas, Klebsiella, Proteus, Staphylococcus aureus, tuberculosis, and mumps.\n- [STATdx] Pediatric disease may reflect direct seeding in GU anomalies or hematogenous spread; consider ectopic ureter, ectopic vas deferens, prostatic utricle, urethral duplication, posterior urethral valves, urethrorectal fistula, vesicoureteral reflux, neurogenic bladder, and anorectal malformation.\n- [STATdx] Viral mumps orchitis may follow parotiditis by 3-5 days; mumps outbreaks can occur despite MMR vaccination, and epididymal-head swelling may predominate.\n- [RadPrimer] Traumatic, chemical, post-exertional, and post-surgical epididymitis can mimic infectious epididymitis; traumatic epididymitis should not be treated as infectious disease when the clinical context supports trauma.\n\n## Clinical Issues and Management\n- [Both] Typical presentation: gradual or acute scrotal pain, swelling, erythema, fever, dysuria, urinary symptoms, or urethral discharge.\n- [RadPrimer] Prehn sign may help clinically: epididymitis pain often improves with scrotal elevation, while torsion pain may worsen or not improve. Do not use this sign to replace urgent Doppler evaluation.\n- [RadPrimer] Pyuria is common; elevated C-reactive protein can help distinguish epididymoorchitis from torsion in the cited RadPrimer summary.\n- [STATdx] Instrumentation, indwelling catheters, clean intermittent catheterization, urethritis, or prostatitis can coexist or predispose.\n- [Both] Treat with antibiotics when bacterial infection is suspected or proven, plus bed rest, scrotal support/elevation, analgesics, anti-inflammatory agents, and ice packs when appropriate.\n- [STATdx] In pediatric culture-negative cases, viral etiology may be presumed and antibiotic use may be selective.\n- [Both] Work up GU anomalies in younger children and recurrent cases. Surgical exploration is reserved for unresolved torsion concern or complications such as abscess, pyocele, or infarction.\n- [RadPrimer] Follow-up scans are indicated if the patient does not improve, especially to exclude abscess.\n\n## Diagnostic Checklist\n- [Both] First decide whether torsion is safely excluded; low or absent testicular flow remains torsion until proven otherwise.\n- [Both] Look for enlarged epididymis/testis plus hyperemia, low-resistance flow, reactive hydrocele, scrotal wall thickening, and contralateral asymmetry.\n- [RadPrimer] Search for complications: focal avascular regions, reversed diastolic flow, abscess, pyocele, infarction, and late atrophy.\n- [STATdx] In young children and recurrent cases, search beyond the scrotum for GU anomaly risk.\n\n## Curated Image Set\nAll images are selected for primary teaching/download. There are no archive-optional exact duplicates.\n\n- RadPrimer image 1: Graphic shows an enlarged and inflamed epididymis enveloping the testis posteriorly. Note that the testis appears normal in size and configuration. Used for: conceptualAnchor, anatomyMechanism.\n- RadPrimer image 2: Graphic shows an irregularly enlarged epididymis with focal cystic areas , indicating early liquefaction and necrosis. Used for: complicationMechanism, earlyLiquefaction.\n- RadPrimer image 3: Color Doppler US of the bilateral epididymal tail in a 24-year-old man with acute right testicular pain reveals enlargement and marked hyperemia of the right epididymal tail, consistent with acute epididymitis. Used for: acuteEpididymitis, hyperemia, recognitionReinforcement.\n- RadPrimer image 4: Color Doppler US of the bilateral epididymis in a 20-year-old man with acute right scrotal pain reveals enlargement and marked hyperemia of the right epididymal head compared to the left , consistent with acute epididymitis. Used for: acuteEpididymitis, comparisonView, recognitionReinforcement.\n- RadPrimer image 5: Sagittal grayscale US of the right testis and epididymis in a 23-year-old man with acute scrotal pain shows an enlarged epididymal tail with diffuse heterogeneity and \"mass-like\" appearance , which is a typical appearance for acute epididymitis. Used for: grayscalePattern, massLikeEpididymalTail, recognitionReinforcement.\n- RadPrimer image 6: Side-by-side color Doppler US of the testicles bilaterally shows the left testicle is markedly hyperemic in comparison to the right, consistent with left-sided orchitis. Used for: orchitis, comparisonView, recognitionReinforcement.\n- RadPrimer image 7: Color Doppler US reveals a round, focal, hypoechoic region within the right testicle with increased vascularity . Normal testicular parenchyma can be seen adjacent to this area . This was a case of focal orchitis. Used for: focalOrchitis, tumorMimic.\n- RadPrimer image 8: Color Doppler US of bilateral testes demonstrates heterogenous echogenicity and decreased vascularity within the left testicle , consistent with testicular infarction. This was the sequela of venous thrombosis secondary to orchitis. Used for: testicularInfarction, vascularComplication.\n- RadPrimer image 9: Color Doppler US of the left epididymis reveals a markedly hyperemic tail with a heterogenous hypoechoic lesion centrally . The findings are consistent with epididymitis complicated by an epididymal abscess. Used for: epididymalAbscess, complication.\n- RadPrimer image 10: Color Doppler US of the right testis in a patient who presented with acute epididymoorchitis reveals a hypoechoic, thick-walled lesion within the testicle with peripheral hyperemia, consistent with a testicular abscess. Used for: testicularAbscess, complication.\n- STATdx image 1: Graphic shows epididymitis with an inflamed, hyperemic epididymal body draped over a normal-appearing testicle. In epididymoorchitis, the testicle would also be inflamed. Used for: conceptualAnchor, anatomyMechanism, recognitionReinforcement.\n- STATdx image 2: Longitudinal oblique color Doppler US shows marked hyperemia of the left testis and epididymis in a teenager with acute pain, consistent with epididymoorchitis. Used for: epididymoorchitis, hyperemia, recognitionReinforcement.\n- STATdx image 3: Transverse grayscale US in a 5-year-old boy with acute right scrotal swelling shows asymmetric enlargement and heterogeneous echotexture of the epididymis . The testicle has normal echotexture but was larger than the contralateral side. A small, simple hydrocele is also present. Used for: pediatricExample, grayscalePattern, caseCluster.\n- STATdx image 4: Color Doppler US in the same patient shows marked hyperemia of the right epididymis, testicle, and surrounding scrotal tissues, consistent with epididymoorchitis. Used for: pediatricExample, dopplerConfirmation, caseCluster.\n- STATdx image 5: Anterior 5-minute image from a Tc-99m pertechnetate scan in a 17-year-old with left scrotal pain demonstrates ↑ radiotracer uptake at the left testicle compared to the right , which can be seen with epididymoorchitis. Used for: nuclearMedicineVariant, modalityVariant.\n- STATdx image 6: Coronal T2 FS MR in a 12-year-old with 1 week of right hip pain shows marked high signal intensity throughout the right hemiscrotum , suspicious for epididymoorchitis or subacute torsion given the duration of his symptoms. Used for: MRVariant, torsionMimicContext, caseCluster.\n- STATdx image 7: Transverse side-by-side US performed following the MR shows an enlarged right testicle , enlarged heterogeneous epididymis , hydrocele , and right-sided scrotal wall thickening. Used for: ultrasoundFollowUp, grayscalePattern, caseCluster.\n- STATdx image 8: Transverse side-by-side color Doppler US in the same patient shows hyperemia in all of the right-sided scrotal structures compared to the left, confirming right epididymoorchitis. There was no evidence of testicular torsion. Used for: dopplerConfirmation, caseCluster.\n- STATdx image 9: Transverse US in a 6-year-old boy who had marked scrotal swelling on the left shows a hydrocele , enlarged heterogeneous epididymis , and scrotal wall thickening . Used for: pediatricExample, hydrocele, caseCluster.\n- STATdx image 10: Transverse side-by-side color Doppler US in the same patient shows marked hyperemia of all the left-sided scrotal contents, consistent with epididymoorchitis. Used for: dopplerConfirmation, caseCluster.\n- STATdx image 11: Longitudinal color Doppler US of the inguinal canal in a 2-year-old boy shows hyperemia of the spermatic cord , epididymis , and testis , along with hydrocele fluid, consistent with epididymoorchitis. Used for: spermaticCordHyperemia, hydrocele, pediatricExample.\n- STATdx image 12: Transverse side-by-side color Doppler US of the testes is very useful to assess overall size/symmetry of testes, blood flow, and echotexture. Although the left testis is not dramatically hyperemic , it is larger than the right and has a surrounding hydrocele , suggesting orchitis. Used for: orchitis, comparisonView, recognitionReinforcement.\n- STATdx image 13: Sagittal color Doppler US shows dramatic hyperemia throughout an enlarged epididymis in a patient with epididymitis but no orchitis. Used for: isolatedEpididymitis, powerDoppler, recognitionReinforcement.\n- STATdx image 14: Transverse US in a young patient shows right-sided scrotal wall thickening , a hydrocele, and an enlarged heterogeneous epididymis . The right testicle is also larger than the left. Used for: pediatricExample, scrotalWallThickening, caseCluster.\n- STATdx image 15: Transverse power Doppler US in the same patient shows hyperemia in the right testicle and epididymis , confirming epididymoorchitis. The side-by-side transverse view is helpful to compare blood flow in the scrotal structures. Used for: dopplerConfirmation, comparisonView, caseCluster.\n- STATdx image 16: Transverse US shows a whorled appearance of thickened, heterogeneous epididymis in a teenager with several days of pain, suggesting epididymitis. In such cases, it is critical to confirm that the whorled heterogeneous structures do not represent a twisted spermatic cord. Confirmation of increased low-resistance flow is also helpful to confirm epididymoorchitis. Used for: whorledEpididymis, torsionMimicContext, recognitionReinforcement.\n- STATdx image 17: Longitudinal oblique US of the epididymal head in a teenager with focal pain on the left side shows a small hydrocele and an enlarged left epididymal head . The findings are suspicious for epididymitis. Used for: epididymalHead, hydrocele, recognitionReinforcement.\n- STATdx image 18: Sagittal color Doppler US shows abundant color signal in this mildly enlarged testicle and epididymis . There is also a small hydrocele on the symptomatic side in this patient with epididymoorchitis. Used for: epididymoorchitis, hydrocele, caseCluster.\n- STATdx image 19: Sagittal color Doppler US of the same patient's contralateral testis shows normal blood flow on the boy's asymptomatic side. Used for: contralateralComparison, caseCluster.\n- STATdx image 20: Transverse US shows a very echogenic testicle medially and an enlarged hypoechoic epididymis with hydrocele laterally. Note the posterior shadowing from the testicular microlithiasis. Used for: microlithiasisContext, hydrocele, caseCluster.\n- STATdx image 21: Transverse color Doppler US in the same patient shows hyperemia involving only the epididymis with normal flow in the testicle, consistent with isolated epididymitis. Used for: isolatedEpididymitis, dopplerConfirmation, caseCluster.\n- STATdx image 22: Sagittal US shows a swirled, heterogeneous echotexture in a dramatically enlarged epididymis with a surrounding anechoic hydrocele in a case of isolated epididymitis without associated orchitis. It is critical in such patients to confirm that the structures above the testicle do not represent a twisted spermatic cord. Used for: isolatedEpididymitis, whorledEpididymis, torsionMimicContext.\n- STATdx image 23: Sagittal US shows a heterogeneous, mostly echogenic, enlarged epididymis , enlarged testicle , and small anechoic reactive hydrocele in this boy with epididymoorchitis (as confirmed by hyperemic flow to the epididymis and testicle on color Doppler imaging, not shown). It is critical in such patients to confirm that the structures above the testicle do not represent a twisted spermatic cord. Demonstrating ↑ low-resistance arterial flow in the testicle can help confirm an inflammatory cause for this appearance. Used for: pediatricExample, grayscalePattern, hydrocele.\n- STATdx image 24: Grayscale US in a 5-year-old boy with acute left scrotal swelling shows marked enlargement and heterogeneous echotexture of the epididymis . The testicle has a normal echotexture but was larger than the contralateral side. Used for: pediatricExample, grayscalePattern, caseCluster.\n- STATdx image 25: Longitudinal color Doppler US of the same 5-year-old boy with left scrotal swelling shows enlargement of the epididymis and testis with ↑ blood flow and a surrounding hydrocele, consistent with epididymoorchitis. Used for: pediatricExample, dopplerConfirmation, caseCluster.\n- STATdx image 26: Longitudinal oblique color Doppler US shows a thickened, hyperemic, and heterogeneous epididymis in a teenager with several days of pain, consistent with epididymitis. Used for: isolatedEpididymitis, hyperemia, recognitionReinforcement.\n\n## Case Cluster Preservation\nSame-patient and comparison clusters from STATdx are atomic teaching clusters. No source case cluster was intentionally split.\n\n- SDX-03-04: SDX-03, SDX-04; same 5-year-old patient; grayscale then Doppler confirmation.\n- SDX-06-08: SDX-06, SDX-07, SDX-08; same patient; MR concern followed by ultrasound confirmation.\n- SDX-09-10: SDX-09, SDX-10; same 6-year-old patient; grayscale then Doppler.\n- SDX-14-15: SDX-14, SDX-15; same young patient; grayscale then power Doppler.\n- SDX-18-19: SDX-18, SDX-19; symptomatic side plus contralateral comparison.\n- SDX-20-21: SDX-20, SDX-21; same patient; grayscale microlithiasis/hydrocele context plus Doppler isolated epididymitis.\n- SDX-24-25: SDX-24, SDX-25; same 5-year-old patient; grayscale then Doppler.\n\n## Generator Notes for Future Narrative or Cards\n- Use RadPrimer as the section backbone and routing source.\n- Use STATdx to enrich pediatric, modality, differential, and management nuance.\n- Use human-facing labels such as RadPrimer image 5 or STATdx image 4 in prose. Keep RP-05 and SDX-04 in registry, filenames, and traceability metadata.\n- Near duplicates and conceptual replacements remain recognition reinforcement; only literal same-image/same-slice/same-screenshot duplicates should be archived.\n",
+  "manifest": {
+    "articleTitle": "Epididymitis/Orchitis",
+    "createdAt": "2026-07-31T11:34:44.938014Z",
+    "canonicalHierarchy": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Epididymitis/Orchitis"
+    ],
+    "canonicalDeckPath": "Corebook::Ultrasound::Scrotum Basic::Epididymitis/Orchitis",
+    "sourcePriority": [
+      "RadPrimer",
+      "STATdx"
+    ],
+    "sourceCoverage": {
+      "radprimer": {
+        "articleRole": "canonicalBackbone",
+        "textCoverage": "core adult/adolescent ultrasound article, complications, differential, and treatment/follow-up",
+        "imageCount": 10,
+        "radPrimerImageCoverageBySTATdx": [
+          {
+            "radPrimerImageId": "RP-01",
+            "radPrimerDisplayLabel": "RadPrimer image 1",
+            "classification": "conceptualReplacement",
+            "statdxComparators": [
+              "SDX-01"
+            ],
+            "decision": "Keep RadPrimer image 1 and STATdx image 1 primary.",
+            "visualEvidenceBasis": "Both are epididymitis illustrations, but the staged files show different artwork/composition and different source image IDs/hashes. Not an exact duplicate."
+          },
+          {
+            "radPrimerImageId": "RP-02",
+            "radPrimerDisplayLabel": "RadPrimer image 2",
+            "classification": "notCovered",
+            "statdxComparators": [],
+            "decision": "Keep RadPrimer image 2 primary.",
+            "visualEvidenceBasis": "RadPrimer image 2 uniquely illustrates cystic liquefaction/necrosis in an enlarged epididymis; no STATdx image shows the same graphic or same teaching point."
+          },
+          {
+            "radPrimerImageId": "RP-03",
+            "radPrimerDisplayLabel": "RadPrimer image 3",
+            "classification": "nearDuplicate",
+            "statdxComparators": [
+              "SDX-13",
+              "SDX-21",
+              "SDX-26"
+            ],
+            "decision": "Keep all compared images primary as recognition reinforcement.",
+            "visualEvidenceBasis": "These are visually distinct ultrasound examples of hyperemic epididymitis with different layouts/patients/source IDs; no same slice or screenshot was seen."
+          },
+          {
+            "radPrimerImageId": "RP-04",
+            "radPrimerDisplayLabel": "RadPrimer image 4",
+            "classification": "nearDuplicate",
+            "statdxComparators": [
+              "SDX-04",
+              "SDX-15"
+            ],
+            "decision": "Keep all compared images primary as comparison-view reinforcement.",
+            "visualEvidenceBasis": "STATdx has side-by-side Doppler comparison examples, but staged files are different images and different cases/source IDs."
+          },
+          {
+            "radPrimerImageId": "RP-05",
+            "radPrimerDisplayLabel": "RadPrimer image 5",
+            "classification": "nearDuplicate",
+            "statdxComparators": [
+              "SDX-16",
+              "SDX-17",
+              "SDX-22",
+              "SDX-24"
+            ],
+            "decision": "Keep RadPrimer image 5 and STATdx grayscale epididymal examples primary.",
+            "visualEvidenceBasis": "The STATdx images reinforce heterogeneous enlarged epididymis patterns but are different views/patients and not exact duplicates."
+          },
+          {
+            "radPrimerImageId": "RP-06",
+            "radPrimerDisplayLabel": "RadPrimer image 6",
+            "classification": "nearDuplicate",
+            "statdxComparators": [
+              "SDX-02",
+              "SDX-12",
+              "SDX-18"
+            ],
+            "decision": "Keep all compared orchitis/epididymoorchitis Doppler examples primary.",
+            "visualEvidenceBasis": "Same general hyperemic testis teaching point, but distinct appearance and source IDs/hashes."
+          },
+          {
+            "radPrimerImageId": "RP-07",
+            "radPrimerDisplayLabel": "RadPrimer image 7",
+            "classification": "notCovered",
+            "statdxComparators": [],
+            "decision": "Keep RadPrimer image 7 primary.",
+            "visualEvidenceBasis": "The focal orchitis image with a round intratesticular hypoechoic hyperemic focus is not represented by STATdx evidence files."
+          },
+          {
+            "radPrimerImageId": "RP-08",
+            "radPrimerDisplayLabel": "RadPrimer image 8",
+            "classification": "notCovered",
+            "statdxComparators": [],
+            "decision": "Keep RadPrimer image 8 primary.",
+            "visualEvidenceBasis": "STATdx text discusses complications, but no staged STATdx image duplicates or replaces the testicular infarction example."
+          },
+          {
+            "radPrimerImageId": "RP-09",
+            "radPrimerDisplayLabel": "RadPrimer image 9",
+            "classification": "notCovered",
+            "statdxComparators": [],
+            "decision": "Keep RadPrimer image 9 primary.",
+            "visualEvidenceBasis": "No STATdx image shows the same epididymal abscess pattern with central hypoechoic lesion."
+          },
+          {
+            "radPrimerImageId": "RP-10",
+            "radPrimerDisplayLabel": "RadPrimer image 10",
+            "classification": "notCovered",
+            "statdxComparators": [],
+            "decision": "Keep RadPrimer image 10 primary.",
+            "visualEvidenceBasis": "No STATdx image duplicates the intratesticular abscess example."
+          }
+        ],
+        "fullyCoveredBySTATdx": false
+      },
+      "statdx": {
+        "articleRole": "supplementalDepth",
+        "textCoverage": "pediatric/genitourinary anomaly work-up, broader differentials, additional modality details, and extensive image reinforcement",
+        "imageCount": 26
+      },
+      "coreRadiology": {
+        "articleRole": "notUsed",
+        "reason": "No auditable Core Radiology source was present in the supplied bundle."
+      }
+    },
+    "imageCountBySource": {
+      "RadPrimer": 10,
+      "STATdx": 26
+    },
+    "sourceAttributionRules": [
+      "Use [RadPrimer], [STATdx], or [Both] for factual provenance in source-derived text.",
+      "Use RadPrimer title and metadata.json canonicalHierarchy for routing.",
+      "Use STATdx as supplemental depth; do not replace canonical hierarchy with STATdx breadcrumb.",
+      "Do not add Core Radiology claims unless auditable Core evidence is later supplied."
+    ],
+    "selectedPrimaryImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26"
+    ],
+    "archiveOptionalImageIds": [],
+    "sourceSelectionPlan": {
+      "textBackbone": "Use RadPrimer as the canonical hierarchy and article backbone.",
+      "keepFromRadPrimer": [
+        "canonical title Epididymitis/Orchitis and the exact metadata.json hierarchy",
+        "adult/adolescent acute scrotum framing, early epididymal-tail spread, high-frequency Doppler protocol, RI detail, infarction warning signs, abscess complications, and treatment/follow-up points",
+        "all 10 RadPrimer images because none is a proven exact duplicate or unusable"
+      ],
+      "keepFromSTATdx": [
+        "pediatric emphasis, GU anomaly work-up, VCUG/MR/nuclear medicine context, pediatric differential diagnoses, mumps detail, and broader management nuance",
+        "all 26 STATdx images as alternate examples, modality variants, pediatric clusters, and recognition reinforcement"
+      ],
+      "downweightOrSkip": [
+        "STATdx breadcrumb for routing, because metadata.json canonicalHierarchy controls routing",
+        "unrelated IMAIOS/anatomy repository text embedded after the article section in both source packages",
+        "Core Radiology claims, because no auditable Core source was present in the bundle"
+      ],
+      "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+      "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate and kept primary.",
+      "radPrimerImageCoverageGate": [
+        {
+          "radPrimerImageId": "RP-01",
+          "radPrimerDisplayLabel": "RadPrimer image 1",
+          "classification": "conceptualReplacement",
+          "statdxComparators": [
+            "SDX-01"
+          ],
+          "decision": "Keep RadPrimer image 1 and STATdx image 1 primary.",
+          "visualEvidenceBasis": "Both are epididymitis illustrations, but the staged files show different artwork/composition and different source image IDs/hashes. Not an exact duplicate."
+        },
+        {
+          "radPrimerImageId": "RP-02",
+          "radPrimerDisplayLabel": "RadPrimer image 2",
+          "classification": "notCovered",
+          "statdxComparators": [],
+          "decision": "Keep RadPrimer image 2 primary.",
+          "visualEvidenceBasis": "RadPrimer image 2 uniquely illustrates cystic liquefaction/necrosis in an enlarged epididymis; no STATdx image shows the same graphic or same teaching point."
+        },
+        {
+          "radPrimerImageId": "RP-03",
+          "radPrimerDisplayLabel": "RadPrimer image 3",
+          "classification": "nearDuplicate",
+          "statdxComparators": [
+            "SDX-13",
+            "SDX-21",
+            "SDX-26"
+          ],
+          "decision": "Keep all compared images primary as recognition reinforcement.",
+          "visualEvidenceBasis": "These are visually distinct ultrasound examples of hyperemic epididymitis with different layouts/patients/source IDs; no same slice or screenshot was seen."
+        },
+        {
+          "radPrimerImageId": "RP-04",
+          "radPrimerDisplayLabel": "RadPrimer image 4",
+          "classification": "nearDuplicate",
+          "statdxComparators": [
+            "SDX-04",
+            "SDX-15"
+          ],
+          "decision": "Keep all compared images primary as comparison-view reinforcement.",
+          "visualEvidenceBasis": "STATdx has side-by-side Doppler comparison examples, but staged files are different images and different cases/source IDs."
+        },
+        {
+          "radPrimerImageId": "RP-05",
+          "radPrimerDisplayLabel": "RadPrimer image 5",
+          "classification": "nearDuplicate",
+          "statdxComparators": [
+            "SDX-16",
+            "SDX-17",
+            "SDX-22",
+            "SDX-24"
+          ],
+          "decision": "Keep RadPrimer image 5 and STATdx grayscale epididymal examples primary.",
+          "visualEvidenceBasis": "The STATdx images reinforce heterogeneous enlarged epididymis patterns but are different views/patients and not exact duplicates."
+        },
+        {
+          "radPrimerImageId": "RP-06",
+          "radPrimerDisplayLabel": "RadPrimer image 6",
+          "classification": "nearDuplicate",
+          "statdxComparators": [
+            "SDX-02",
+            "SDX-12",
+            "SDX-18"
+          ],
+          "decision": "Keep all compared orchitis/epididymoorchitis Doppler examples primary.",
+          "visualEvidenceBasis": "Same general hyperemic testis teaching point, but distinct appearance and source IDs/hashes."
+        },
+        {
+          "radPrimerImageId": "RP-07",
+          "radPrimerDisplayLabel": "RadPrimer image 7",
+          "classification": "notCovered",
+          "statdxComparators": [],
+          "decision": "Keep RadPrimer image 7 primary.",
+          "visualEvidenceBasis": "The focal orchitis image with a round intratesticular hypoechoic hyperemic focus is not represented by STATdx evidence files."
+        },
+        {
+          "radPrimerImageId": "RP-08",
+          "radPrimerDisplayLabel": "RadPrimer image 8",
+          "classification": "notCovered",
+          "statdxComparators": [],
+          "decision": "Keep RadPrimer image 8 primary.",
+          "visualEvidenceBasis": "STATdx text discusses complications, but no staged STATdx image duplicates or replaces the testicular infarction example."
+        },
+        {
+          "radPrimerImageId": "RP-09",
+          "radPrimerDisplayLabel": "RadPrimer image 9",
+          "classification": "notCovered",
+          "statdxComparators": [],
+          "decision": "Keep RadPrimer image 9 primary.",
+          "visualEvidenceBasis": "No STATdx image shows the same epididymal abscess pattern with central hypoechoic lesion."
+        },
+        {
+          "radPrimerImageId": "RP-10",
+          "radPrimerDisplayLabel": "RadPrimer image 10",
+          "classification": "notCovered",
+          "statdxComparators": [],
+          "decision": "Keep RadPrimer image 10 primary.",
+          "visualEvidenceBasis": "No STATdx image duplicates the intratesticular abscess example."
+        }
+      ],
+      "caseClusterGuardrails": {
+        "policy": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse clusters are atomic teaching clusters unless an explicit documented split is safe.",
+        "identifiedClusters": [
+          {
+            "clusterId": "SDX-03-04",
+            "imageIds": [
+              "SDX-03",
+              "SDX-04"
+            ],
+            "source": "STATdx",
+            "context": "same 5-year-old patient; grayscale then Doppler confirmation"
+          },
+          {
+            "clusterId": "SDX-06-08",
+            "imageIds": [
+              "SDX-06",
+              "SDX-07",
+              "SDX-08"
+            ],
+            "source": "STATdx",
+            "context": "same patient; MR concern followed by ultrasound confirmation"
+          },
+          {
+            "clusterId": "SDX-09-10",
+            "imageIds": [
+              "SDX-09",
+              "SDX-10"
+            ],
+            "source": "STATdx",
+            "context": "same 6-year-old patient; grayscale then Doppler"
+          },
+          {
+            "clusterId": "SDX-14-15",
+            "imageIds": [
+              "SDX-14",
+              "SDX-15"
+            ],
+            "source": "STATdx",
+            "context": "same young patient; grayscale then power Doppler"
+          },
+          {
+            "clusterId": "SDX-18-19",
+            "imageIds": [
+              "SDX-18",
+              "SDX-19"
+            ],
+            "source": "STATdx",
+            "context": "symptomatic side plus contralateral comparison"
+          },
+          {
+            "clusterId": "SDX-20-21",
+            "imageIds": [
+              "SDX-20",
+              "SDX-21"
+            ],
+            "source": "STATdx",
+            "context": "same patient; grayscale microlithiasis/hydrocele context plus Doppler isolated epididymitis"
+          },
+          {
+            "clusterId": "SDX-24-25",
+            "imageIds": [
+              "SDX-24",
+              "SDX-25"
+            ],
+            "source": "STATdx",
+            "context": "same 5-year-old patient; grayscale then Doppler"
+          }
+        ],
+        "intentionalSplits": [],
+        "splitSummary": "No source case cluster was intentionally split."
+      },
+      "primaryImageDownloadUseSet": [
+        "RP-01",
+        "RP-02",
+        "RP-03",
+        "RP-04",
+        "RP-05",
+        "RP-06",
+        "RP-07",
+        "RP-08",
+        "RP-09",
+        "RP-10",
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22",
+        "SDX-23",
+        "SDX-24",
+        "SDX-25",
+        "SDX-26"
+      ],
+      "archiveDuplicateSet": [],
+      "imageDownloadPlan": [
+        {
+          "masterImageId": "RP-01",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 1,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-01_RadPrimer_plain_EpididymitisOrchitis1.jpg",
+          "annotatedFilename": "RP-01_RadPrimer_annotated_EpididymitisOrchitis1_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/0b69e726-9ead-4b84-acf4-e7c3c21d8d79?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/0b69e726-9ead-4b84-acf4-e7c3c21d8d79?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_0b69e726.jpg"
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-02_RadPrimer_plain_EpididymitisOrchitis2.jpg",
+          "annotatedFilename": "RP-02_RadPrimer_annotated_EpididymitisOrchitis2_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/641453ec-2ce6-4e00-add0-aa1e4034610e?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/641453ec-2ce6-4e00-add0-aa1e4034610e?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_641453ec.jpg"
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-03_RadPrimer_plain_EpididymitisOrchitis3.jpg",
+          "annotatedFilename": "RP-03_RadPrimer_annotated_EpididymitisOrchitis3_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/c76a2d01-7a5e-4769-a0ae-932d3f0b45c7?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/c76a2d01-7a5e-4769-a0ae-932d3f0b45c7?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_c76a2d01.jpg"
+        },
+        {
+          "masterImageId": "RP-04",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 4,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-04_RadPrimer_plain_EpididymitisOrchitis4.jpg",
+          "annotatedFilename": "RP-04_RadPrimer_annotated_EpididymitisOrchitis4_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/7ae9e77f-a776-47e0-a772-fca2c327c064?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/7ae9e77f-a776-47e0-a772-fca2c327c064?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_7ae9e77f.jpg"
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 5,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-05_RadPrimer_plain_EpididymitisOrchitis5.jpg",
+          "annotatedFilename": "RP-05_RadPrimer_annotated_EpididymitisOrchitis5_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/899df482-5a0d-40c7-9d92-1b3191abb4ec?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/899df482-5a0d-40c7-9d92-1b3191abb4ec?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_899df482.jpg"
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 6,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-06_RadPrimer_plain_EpididymitisOrchitis6.jpg",
+          "annotatedFilename": "RP-06_RadPrimer_annotated_EpididymitisOrchitis6_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/b4c567a8-c94e-404f-8ac5-e497e50a49f2?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/b4c567a8-c94e-404f-8ac5-e497e50a49f2?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_b4c567a8.jpg"
+        },
+        {
+          "masterImageId": "RP-07",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 7,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-07_RadPrimer_plain_EpididymitisOrchitis7.jpg",
+          "annotatedFilename": "RP-07_RadPrimer_annotated_EpididymitisOrchitis7_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/7f1b2d78-cd34-4762-88f4-3e4d3b98c87c?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/7f1b2d78-cd34-4762-88f4-3e4d3b98c87c?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_7f1b2d78.jpg"
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 8,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-08_RadPrimer_plain_EpididymitisOrchitis8.jpg",
+          "annotatedFilename": "RP-08_RadPrimer_annotated_EpididymitisOrchitis8_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/9a3fc3f4-6a50-48da-a15f-7fd1ed4664ed?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/9a3fc3f4-6a50-48da-a15f-7fd1ed4664ed?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_9a3fc3f4.jpg"
+        },
+        {
+          "masterImageId": "RP-09",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 9,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-09_RadPrimer_plain_EpididymitisOrchitis9.jpg",
+          "annotatedFilename": "RP-09_RadPrimer_annotated_EpididymitisOrchitis9_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/9c2c47a7-62ca-4c71-9e8a-88a63ac24fce?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/9c2c47a7-62ca-4c71-9e8a-88a63ac24fce?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_9c2c47a7.jpg"
+        },
+        {
+          "masterImageId": "RP-10",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 10,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "RP-10_RadPrimer_plain_EpididymitisOrchitis10.jpg",
+          "annotatedFilename": "RP-10_RadPrimer_annotated_EpididymitisOrchitis10_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/9f6e10e3-8e57-49ff-b184-b617df4ef648?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/9f6e10e3-8e57-49ff-b184-b617df4ef648?style=xlarge&annotated=true",
+          "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_9f6e10e3.jpg"
+        },
+        {
+          "masterImageId": "SDX-01",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 1,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-01_STATdx_plain_Epididymoorchitis1.jpg",
+          "annotatedFilename": "SDX-01_STATdx_annotated_Epididymoorchitis1_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/26f44f73-9dd9-4263-9aa5-d7bc9a755c58?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/26f44f73-9dd9-4263-9aa5-d7bc9a755c58?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_26f44f73.jpg"
+        },
+        {
+          "masterImageId": "SDX-02",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 2,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-02_STATdx_plain_Epididymoorchitis2.jpg",
+          "annotatedFilename": "SDX-02_STATdx_annotated_Epididymoorchitis2_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/8c4f76c9-ea72-41a6-9376-2ace096de9a3?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/8c4f76c9-ea72-41a6-9376-2ace096de9a3?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_8c4f76c9.jpg"
+        },
+        {
+          "masterImageId": "SDX-03",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 3,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-03_STATdx_plain_Epididymoorchitis3.jpg",
+          "annotatedFilename": "SDX-03_STATdx_annotated_Epididymoorchitis3_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/847733bf-8328-48be-84d8-ecf0e2f5f1c7?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/847733bf-8328-48be-84d8-ecf0e2f5f1c7?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_847733bf.jpg"
+        },
+        {
+          "masterImageId": "SDX-04",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 4,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-04_STATdx_plain_Epididymoorchitis4.jpg",
+          "annotatedFilename": "SDX-04_STATdx_annotated_Epididymoorchitis4_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/568d7e33-9862-42d3-828a-223c3cab6c2d?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/568d7e33-9862-42d3-828a-223c3cab6c2d?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_568d7e33.jpg"
+        },
+        {
+          "masterImageId": "SDX-05",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 5,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-05_STATdx_plain_Epididymoorchitis5.jpg",
+          "annotatedFilename": "SDX-05_STATdx_annotated_Epididymoorchitis5_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f71981d7-e2ab-4f3a-b132-4dc50c78dc1a?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/f71981d7-e2ab-4f3a-b132-4dc50c78dc1a?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_f71981d7.jpg"
+        },
+        {
+          "masterImageId": "SDX-06",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 6,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-06_STATdx_plain_Epididymoorchitis6.jpg",
+          "annotatedFilename": "SDX-06_STATdx_annotated_Epididymoorchitis6_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/67458161-9c82-4d45-86be-43bd9c566840?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/67458161-9c82-4d45-86be-43bd9c566840?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_67458161.jpg"
+        },
+        {
+          "masterImageId": "SDX-07",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 7,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-07_STATdx_plain_Epididymoorchitis7.jpg",
+          "annotatedFilename": "SDX-07_STATdx_annotated_Epididymoorchitis7_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d040780b-3785-462a-8e1a-2bab2d7acb80?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/d040780b-3785-462a-8e1a-2bab2d7acb80?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_d040780b.jpg"
+        },
+        {
+          "masterImageId": "SDX-08",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 8,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-08_STATdx_plain_Epididymoorchitis8.jpg",
+          "annotatedFilename": "SDX-08_STATdx_annotated_Epididymoorchitis8_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/238762c8-5f2d-416e-b8d0-29f2964556ac?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/238762c8-5f2d-416e-b8d0-29f2964556ac?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_238762c8.jpg"
+        },
+        {
+          "masterImageId": "SDX-09",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 9,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-09_STATdx_plain_Epididymoorchitis9.jpg",
+          "annotatedFilename": "SDX-09_STATdx_annotated_Epididymoorchitis9_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/08c0879c-5552-405e-9abd-797e0fb09572?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/08c0879c-5552-405e-9abd-797e0fb09572?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_08c0879c.jpg"
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-10_STATdx_plain_Epididymoorchitis10.jpg",
+          "annotatedFilename": "SDX-10_STATdx_annotated_Epididymoorchitis10_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/73003b7c-56f7-4654-a821-d1919007217c?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/73003b7c-56f7-4654-a821-d1919007217c?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_73003b7c.jpg"
+        },
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-11_STATdx_plain_Epididymoorchitis11.jpg",
+          "annotatedFilename": "SDX-11_STATdx_annotated_Epididymoorchitis11_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/767db8b4-9c4b-43f4-9946-eccb2de8be71?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/767db8b4-9c4b-43f4-9946-eccb2de8be71?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_767db8b4.jpg"
+        },
+        {
+          "masterImageId": "SDX-12",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 12,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-12_STATdx_plain_Epididymoorchitis12.jpg",
+          "annotatedFilename": "SDX-12_STATdx_annotated_Epididymoorchitis12_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/14d6dfbe-0cab-4b46-b1ab-521eacbc2672?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/14d6dfbe-0cab-4b46-b1ab-521eacbc2672?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_14d6dfbe.jpg"
+        },
+        {
+          "masterImageId": "SDX-13",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 13,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-13_STATdx_plain_Epididymoorchitis13.jpg",
+          "annotatedFilename": "SDX-13_STATdx_annotated_Epididymoorchitis13_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/8fca4486-5932-43f2-9cd3-b24c5b492625?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/8fca4486-5932-43f2-9cd3-b24c5b492625?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_8fca4486.jpg"
+        },
+        {
+          "masterImageId": "SDX-14",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 14,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-14_STATdx_plain_Epididymoorchitis14.jpg",
+          "annotatedFilename": "SDX-14_STATdx_annotated_Epididymoorchitis14_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/9e56abad-7a8c-4e95-8a93-52bba3015e15?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/9e56abad-7a8c-4e95-8a93-52bba3015e15?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_9e56abad.jpg"
+        },
+        {
+          "masterImageId": "SDX-15",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 15,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-15_STATdx_plain_Epididymoorchitis15.jpg",
+          "annotatedFilename": "SDX-15_STATdx_annotated_Epididymoorchitis15_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/bcdb47b2-fef0-4173-bc30-e627588da511?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/bcdb47b2-fef0-4173-bc30-e627588da511?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_bcdb47b2.jpg"
+        },
+        {
+          "masterImageId": "SDX-16",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 16,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-16_STATdx_plain_Epididymoorchitis16.jpg",
+          "annotatedFilename": "SDX-16_STATdx_annotated_Epididymoorchitis16_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/734f1311-3a72-41f0-b522-7b8019f94ce5?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/734f1311-3a72-41f0-b522-7b8019f94ce5?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_734f1311.jpg"
+        },
+        {
+          "masterImageId": "SDX-17",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 17,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-17_STATdx_plain_Epididymoorchitis17.jpg",
+          "annotatedFilename": "SDX-17_STATdx_annotated_Epididymoorchitis17_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/35abc68a-64de-49c1-abf2-e5297430f57c?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/35abc68a-64de-49c1-abf2-e5297430f57c?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_35abc68a.jpg"
+        },
+        {
+          "masterImageId": "SDX-18",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 18,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-18_STATdx_plain_Epididymoorchitis18.jpg",
+          "annotatedFilename": "SDX-18_STATdx_annotated_Epididymoorchitis18_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b3450432-82d8-49fa-a979-f863a8b4ccd9?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b3450432-82d8-49fa-a979-f863a8b4ccd9?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_b3450432.jpg"
+        },
+        {
+          "masterImageId": "SDX-19",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 19,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-19_STATdx_plain_Epididymoorchitis19.jpg",
+          "annotatedFilename": "SDX-19_STATdx_annotated_Epididymoorchitis19_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b560725a-bc71-445c-9212-42892d889864?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b560725a-bc71-445c-9212-42892d889864?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_b560725a.jpg"
+        },
+        {
+          "masterImageId": "SDX-20",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 20,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-20_STATdx_plain_Epididymoorchitis20.jpg",
+          "annotatedFilename": "SDX-20_STATdx_annotated_Epididymoorchitis20_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4ed627d7-2858-4de2-9fa7-46365364f909?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/4ed627d7-2858-4de2-9fa7-46365364f909?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_4ed627d7.jpg"
+        },
+        {
+          "masterImageId": "SDX-21",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 21,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-21_STATdx_plain_Epididymoorchitis21.jpg",
+          "annotatedFilename": "SDX-21_STATdx_annotated_Epididymoorchitis21_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e84eae30-7fb2-48f1-aeb1-20c0dbe0c574?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e84eae30-7fb2-48f1-aeb1-20c0dbe0c574?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_e84eae30.jpg"
+        },
+        {
+          "masterImageId": "SDX-22",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 22,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-22_STATdx_plain_Epididymoorchitis22.jpg",
+          "annotatedFilename": "SDX-22_STATdx_annotated_Epididymoorchitis22_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/a91e213c-d6cf-496a-b0f5-c47ea3f04831?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/a91e213c-d6cf-496a-b0f5-c47ea3f04831?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_a91e213c.jpg"
+        },
+        {
+          "masterImageId": "SDX-23",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 23,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-23_STATdx_plain_Epididymoorchitis23.jpg",
+          "annotatedFilename": "SDX-23_STATdx_annotated_Epididymoorchitis23_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/34e7c70f-d6ec-4a38-abeb-38d146e0a818?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/34e7c70f-d6ec-4a38-abeb-38d146e0a818?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_34e7c70f.jpg"
+        },
+        {
+          "masterImageId": "SDX-24",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 24,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-24_STATdx_plain_Epididymoorchitis24.jpg",
+          "annotatedFilename": "SDX-24_STATdx_annotated_Epididymoorchitis24_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b091f89d-2f03-428e-b50e-d2c6fff03a7c?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b091f89d-2f03-428e-b50e-d2c6fff03a7c?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_b091f89d.jpg"
+        },
+        {
+          "masterImageId": "SDX-25",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 25,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-25_STATdx_plain_Epididymoorchitis25.jpg",
+          "annotatedFilename": "SDX-25_STATdx_annotated_Epididymoorchitis25_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f5de8f5e-2860-4606-99ba-abab20ead868?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/f5de8f5e-2860-4606-99ba-abab20ead868?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_f5de8f5e.jpg"
+        },
+        {
+          "masterImageId": "SDX-26",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 26,
+          "downloadRecommendation": "primaryTeachingSet",
+          "plainFilename": "SDX-26_STATdx_plain_Epididymoorchitis26.jpg",
+          "annotatedFilename": "SDX-26_STATdx_annotated_Epididymoorchitis26_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/1a4d8600-cdf3-422e-9f00-c40af1663667?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/1a4d8600-cdf3-422e-9f00-c40af1663667?annotated=true&size=1000&quality=90",
+          "evidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_1a4d8600.jpg"
+        }
+      ],
+      "generatorInstructions": [
+        "Use source-qualified human-facing labels such as RadPrimer image 5 and STATdx image 4 in prose.",
+        "Keep master IDs such as RP-05 and SDX-04 in traceability fields, registry entries, filenames, and metadata.",
+        "Do not generate cards or lecture content from this step; this is the master source package only.",
+        "Preserve STATdx same-patient clusters when selecting images for future cards or narrative."
+      ]
+    }
+  },
+  "imageRegistry": [
+    {
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "displayLabel": "RadPrimer image 1",
+      "caption": "Graphic shows an enlarged and inflamed epididymis enveloping the testis posteriorly. Note that the testis appears normal in size and configuration.",
+      "usedFor": [
+        "conceptualAnchor",
+        "anatomyMechanism"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-01_RadPrimer_plain_EpididymitisOrchitis1.jpg",
+      "annotatedFilename": "RP-01_RadPrimer_annotated_EpididymitisOrchitis1_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis1.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/0b69e726-9ead-4b84-acf4-e7c3c21d8d79?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/0b69e726-9ead-4b84-acf4-e7c3c21d8d79?style=xlarge&annotated=true",
+      "sourceImageId": "0b69e726-9ead-4b84-acf4-e7c3c21d8d79",
+      "sourceBaseName": "EpididymitisOrchitis1",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_0b69e726.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "211a056cd13de785d16c7bada52d89dcdb6aba36d6e1627d03e2aa5510fc2ec2",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "displayLabel": "RadPrimer image 2",
+      "caption": "Graphic shows an irregularly enlarged epididymis with focal cystic areas , indicating early liquefaction and necrosis.",
+      "usedFor": [
+        "complicationMechanism",
+        "earlyLiquefaction"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-02_RadPrimer_plain_EpididymitisOrchitis2.jpg",
+      "annotatedFilename": "RP-02_RadPrimer_annotated_EpididymitisOrchitis2_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis2.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/641453ec-2ce6-4e00-add0-aa1e4034610e?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/641453ec-2ce6-4e00-add0-aa1e4034610e?style=xlarge&annotated=true",
+      "sourceImageId": "641453ec-2ce6-4e00-add0-aa1e4034610e",
+      "sourceBaseName": "EpididymitisOrchitis2",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_641453ec.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "3eb2f60c23b9d01b6664a1c70004fe009ae954887819b4695225feb71fe3d36a",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "displayLabel": "RadPrimer image 3",
+      "caption": "Color Doppler US of the bilateral epididymal tail in a 24-year-old man with acute right testicular pain reveals enlargement and marked hyperemia of the right epididymal tail, consistent with acute epididymitis.",
+      "usedFor": [
+        "acuteEpididymitis",
+        "hyperemia",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-03_RadPrimer_plain_EpididymitisOrchitis3.jpg",
+      "annotatedFilename": "RP-03_RadPrimer_annotated_EpididymitisOrchitis3_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis3.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/c76a2d01-7a5e-4769-a0ae-932d3f0b45c7?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/c76a2d01-7a5e-4769-a0ae-932d3f0b45c7?style=xlarge&annotated=true",
+      "sourceImageId": "c76a2d01-7a5e-4769-a0ae-932d3f0b45c7",
+      "sourceBaseName": "EpididymitisOrchitis3",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_c76a2d01.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "5a665365ff2008fd3b6e3c988d2967ce4b596577863f61202dddea146971b551",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "displayLabel": "RadPrimer image 4",
+      "caption": "Color Doppler US of the bilateral epididymis in a 20-year-old man with acute right scrotal pain reveals enlargement and marked hyperemia of the right epididymal head compared to the left , consistent with acute epididymitis.",
+      "usedFor": [
+        "acuteEpididymitis",
+        "comparisonView",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-04_RadPrimer_plain_EpididymitisOrchitis4.jpg",
+      "annotatedFilename": "RP-04_RadPrimer_annotated_EpididymitisOrchitis4_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis4.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/7ae9e77f-a776-47e0-a772-fca2c327c064?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/7ae9e77f-a776-47e0-a772-fca2c327c064?style=xlarge&annotated=true",
+      "sourceImageId": "7ae9e77f-a776-47e0-a772-fca2c327c064",
+      "sourceBaseName": "EpididymitisOrchitis4",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_7ae9e77f.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "b33c36e63f579a196b2ea80010b8a8f9205632f739abb4fe813e0ea3006e2819",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "RP-05",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 5,
+      "displayLabel": "RadPrimer image 5",
+      "caption": "Sagittal grayscale US of the right testis and epididymis in a 23-year-old man with acute scrotal pain shows an enlarged epididymal tail with diffuse heterogeneity and \"mass-like\" appearance , which is a typical appearance for acute epididymitis.",
+      "usedFor": [
+        "grayscalePattern",
+        "massLikeEpididymalTail",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-05_RadPrimer_plain_EpididymitisOrchitis5.jpg",
+      "annotatedFilename": "RP-05_RadPrimer_annotated_EpididymitisOrchitis5_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis5.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/899df482-5a0d-40c7-9d92-1b3191abb4ec?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/899df482-5a0d-40c7-9d92-1b3191abb4ec?style=xlarge&annotated=true",
+      "sourceImageId": "899df482-5a0d-40c7-9d92-1b3191abb4ec",
+      "sourceBaseName": "EpididymitisOrchitis5",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_899df482.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "0511e79e749253f50a8bc4a1f3a2bf71f2c51083880cc479f0fb519b739c03a4",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "RP-06",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 6,
+      "displayLabel": "RadPrimer image 6",
+      "caption": "Side-by-side color Doppler US of the testicles bilaterally shows the left testicle is markedly hyperemic in comparison to the right, consistent with left-sided orchitis.",
+      "usedFor": [
+        "orchitis",
+        "comparisonView",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-06_RadPrimer_plain_EpididymitisOrchitis6.jpg",
+      "annotatedFilename": "RP-06_RadPrimer_annotated_EpididymitisOrchitis6_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis6.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b4c567a8-c94e-404f-8ac5-e497e50a49f2?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/b4c567a8-c94e-404f-8ac5-e497e50a49f2?style=xlarge&annotated=true",
+      "sourceImageId": "b4c567a8-c94e-404f-8ac5-e497e50a49f2",
+      "sourceBaseName": "EpididymitisOrchitis6",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_b4c567a8.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "4da0d3e8b3b7ba034e4250f2b39b59799040ce8d01ae8b6ba5c44770c78dd5e3",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "RP-07",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 7,
+      "displayLabel": "RadPrimer image 7",
+      "caption": "Color Doppler US reveals a round, focal, hypoechoic region within the right testicle with increased vascularity . Normal testicular parenchyma can be seen adjacent to this area . This was a case of focal orchitis.",
+      "usedFor": [
+        "focalOrchitis",
+        "tumorMimic"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-07_RadPrimer_plain_EpididymitisOrchitis7.jpg",
+      "annotatedFilename": "RP-07_RadPrimer_annotated_EpididymitisOrchitis7_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis7.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/7f1b2d78-cd34-4762-88f4-3e4d3b98c87c?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/7f1b2d78-cd34-4762-88f4-3e4d3b98c87c?style=xlarge&annotated=true",
+      "sourceImageId": "7f1b2d78-cd34-4762-88f4-3e4d3b98c87c",
+      "sourceBaseName": "EpididymitisOrchitis7",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_7f1b2d78.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "f32a5a592afdd51b1bc44c4190ed34f778df07b5a8fe2ea48801028fd1262e1b",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "RP-08",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 8,
+      "displayLabel": "RadPrimer image 8",
+      "caption": "Color Doppler US of bilateral testes demonstrates heterogenous echogenicity and decreased vascularity within the left testicle , consistent with testicular infarction. This was the sequela of venous thrombosis secondary to orchitis.",
+      "usedFor": [
+        "testicularInfarction",
+        "vascularComplication"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-08_RadPrimer_plain_EpididymitisOrchitis8.jpg",
+      "annotatedFilename": "RP-08_RadPrimer_annotated_EpididymitisOrchitis8_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis8.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/9a3fc3f4-6a50-48da-a15f-7fd1ed4664ed?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/9a3fc3f4-6a50-48da-a15f-7fd1ed4664ed?style=xlarge&annotated=true",
+      "sourceImageId": "9a3fc3f4-6a50-48da-a15f-7fd1ed4664ed",
+      "sourceBaseName": "EpididymitisOrchitis8",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_9a3fc3f4.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "f5d17bdd39945b09cb8f2735c2c8769b0781301ec1b9d254c84bb57083e1840b",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "RP-09",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 9,
+      "displayLabel": "RadPrimer image 9",
+      "caption": "Color Doppler US of the left epididymis reveals a markedly hyperemic tail with a heterogenous hypoechoic lesion centrally . The findings are consistent with epididymitis complicated by an epididymal abscess.",
+      "usedFor": [
+        "epididymalAbscess",
+        "complication"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-09_RadPrimer_plain_EpididymitisOrchitis9.jpg",
+      "annotatedFilename": "RP-09_RadPrimer_annotated_EpididymitisOrchitis9_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis9.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis9_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/9c2c47a7-62ca-4c71-9e8a-88a63ac24fce?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/9c2c47a7-62ca-4c71-9e8a-88a63ac24fce?style=xlarge&annotated=true",
+      "sourceImageId": "9c2c47a7-62ca-4c71-9e8a-88a63ac24fce",
+      "sourceBaseName": "EpididymitisOrchitis9",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_9c2c47a7.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "6876f0d8033a26eaf2c0bf537caee0d8208dab460b01263fbf31d7d0456aaa22",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "RP-10",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 10,
+      "displayLabel": "RadPrimer image 10",
+      "caption": "Color Doppler US of the right testis in a patient who presented with acute epididymoorchitis reveals a hypoechoic, thick-walled lesion within the testicle with peripheral hyperemia, consistent with a testicular abscess.",
+      "usedFor": [
+        "testicularAbscess",
+        "complication"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "RP-10_RadPrimer_plain_EpididymitisOrchitis10.jpg",
+      "annotatedFilename": "RP-10_RadPrimer_annotated_EpididymitisOrchitis10_annot.jpg",
+      "originalPlainFilename": "EpididymitisOrchitis10.jpg",
+      "originalAnnotatedFilename": "EpididymitisOrchitis10_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/9f6e10e3-8e57-49ff-b184-b617df4ef648?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/9f6e10e3-8e57-49ff-b184-b617df4ef648?style=xlarge&annotated=true",
+      "sourceImageId": "9f6e10e3-8e57-49ff-b184-b617df4ef648",
+      "sourceBaseName": "EpididymitisOrchitis10",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_9f6e10e3.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "a8ddc315f2481307965a30380d4381bfd82bbee4d16369c95dc5543c5cfe6641",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 1,
+      "displayLabel": "STATdx image 1",
+      "caption": "Graphic shows epididymitis with an inflamed, hyperemic epididymal body draped over a normal-appearing testicle. In epididymoorchitis, the testicle would also be inflamed.",
+      "usedFor": [
+        "conceptualAnchor",
+        "anatomyMechanism",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-01_STATdx_plain_Epididymoorchitis1.jpg",
+      "annotatedFilename": "SDX-01_STATdx_annotated_Epididymoorchitis1_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis1.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis1_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/26f44f73-9dd9-4263-9aa5-d7bc9a755c58?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/26f44f73-9dd9-4263-9aa5-d7bc9a755c58?annotated=true&size=1000&quality=90",
+      "sourceImageId": "26f44f73-9dd9-4263-9aa5-d7bc9a755c58",
+      "sourceBaseName": "Epididymoorchitis1",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_26f44f73.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "ceafb0604d2335efd8e7b9235d44ca13dd27e0115fb4222d64def85efb836a28",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 2,
+      "displayLabel": "STATdx image 2",
+      "caption": "Longitudinal oblique color Doppler US shows marked hyperemia of the left testis and epididymis in a teenager with acute pain, consistent with epididymoorchitis.",
+      "usedFor": [
+        "epididymoorchitis",
+        "hyperemia",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-02_STATdx_plain_Epididymoorchitis2.jpg",
+      "annotatedFilename": "SDX-02_STATdx_annotated_Epididymoorchitis2_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis2.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis2_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/8c4f76c9-ea72-41a6-9376-2ace096de9a3?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/8c4f76c9-ea72-41a6-9376-2ace096de9a3?annotated=true&size=1000&quality=90",
+      "sourceImageId": "8c4f76c9-ea72-41a6-9376-2ace096de9a3",
+      "sourceBaseName": "Epididymoorchitis2",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_8c4f76c9.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "712b608abd159406ccce0952cfce246b0da5702b48e014b84fad783c33752341",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 3,
+      "displayLabel": "STATdx image 3",
+      "caption": "Transverse grayscale US in a 5-year-old boy with acute right scrotal swelling shows asymmetric enlargement and heterogeneous echotexture of the epididymis . The testicle has normal echotexture but was larger than the contralateral side. A small, simple hydrocele is also present.",
+      "usedFor": [
+        "pediatricExample",
+        "grayscalePattern",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-03_STATdx_plain_Epididymoorchitis3.jpg",
+      "annotatedFilename": "SDX-03_STATdx_annotated_Epididymoorchitis3_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis3.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis3_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/847733bf-8328-48be-84d8-ecf0e2f5f1c7?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/847733bf-8328-48be-84d8-ecf0e2f5f1c7?annotated=true&size=1000&quality=90",
+      "sourceImageId": "847733bf-8328-48be-84d8-ecf0e2f5f1c7",
+      "sourceBaseName": "Epididymoorchitis3",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_847733bf.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "8121a8359a216728ff4c3fad0150efb634fb1b4e276b6e3702e0960c6784b302",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 4,
+      "displayLabel": "STATdx image 4",
+      "caption": "Color Doppler US in the same patient shows marked hyperemia of the right epididymis, testicle, and surrounding scrotal tissues, consistent with epididymoorchitis.",
+      "usedFor": [
+        "pediatricExample",
+        "dopplerConfirmation",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-04_STATdx_plain_Epididymoorchitis4.jpg",
+      "annotatedFilename": "SDX-04_STATdx_annotated_Epididymoorchitis4_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis4.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis4_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/568d7e33-9862-42d3-828a-223c3cab6c2d?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/568d7e33-9862-42d3-828a-223c3cab6c2d?annotated=true&size=1000&quality=90",
+      "sourceImageId": "568d7e33-9862-42d3-828a-223c3cab6c2d",
+      "sourceBaseName": "Epididymoorchitis4",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_568d7e33.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "ff1ac3fe8a9dc841c5fea043fa6183712f8b1377164f11d7629bd3d5cf8da4f8",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 5,
+      "displayLabel": "STATdx image 5",
+      "caption": "Anterior 5-minute image from a Tc-99m pertechnetate scan in a 17-year-old with left scrotal pain demonstrates ↑ radiotracer uptake at the left testicle compared to the right , which can be seen with epididymoorchitis.",
+      "usedFor": [
+        "nuclearMedicineVariant",
+        "modalityVariant"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-05_STATdx_plain_Epididymoorchitis5.jpg",
+      "annotatedFilename": "SDX-05_STATdx_annotated_Epididymoorchitis5_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis5.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis5_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/f71981d7-e2ab-4f3a-b132-4dc50c78dc1a?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/f71981d7-e2ab-4f3a-b132-4dc50c78dc1a?annotated=true&size=1000&quality=90",
+      "sourceImageId": "f71981d7-e2ab-4f3a-b132-4dc50c78dc1a",
+      "sourceBaseName": "Epididymoorchitis5",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_f71981d7.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "c71be265d7ad0ec29b5586b5de1cf9f20f47c8e0a75b403d6dcd01da03bcd349",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 6,
+      "displayLabel": "STATdx image 6",
+      "caption": "Coronal T2 FS MR in a 12-year-old with 1 week of right hip pain shows marked high signal intensity throughout the right hemiscrotum , suspicious for epididymoorchitis or subacute torsion given the duration of his symptoms.",
+      "usedFor": [
+        "MRVariant",
+        "torsionMimicContext",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-06_STATdx_plain_Epididymoorchitis6.jpg",
+      "annotatedFilename": "SDX-06_STATdx_annotated_Epididymoorchitis6_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis6.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis6_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/67458161-9c82-4d45-86be-43bd9c566840?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/67458161-9c82-4d45-86be-43bd9c566840?annotated=true&size=1000&quality=90",
+      "sourceImageId": "67458161-9c82-4d45-86be-43bd9c566840",
+      "sourceBaseName": "Epididymoorchitis6",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_67458161.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "f96e3f035afdc46652805edf6f8a3f5bab6b640195375a753c63a9160f5d78fe",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 7,
+      "displayLabel": "STATdx image 7",
+      "caption": "Transverse side-by-side US performed following the MR shows an enlarged right testicle , enlarged heterogeneous epididymis , hydrocele , and right-sided scrotal wall thickening.",
+      "usedFor": [
+        "ultrasoundFollowUp",
+        "grayscalePattern",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-07_STATdx_plain_Epididymoorchitis7.jpg",
+      "annotatedFilename": "SDX-07_STATdx_annotated_Epididymoorchitis7_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis7.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis7_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d040780b-3785-462a-8e1a-2bab2d7acb80?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d040780b-3785-462a-8e1a-2bab2d7acb80?annotated=true&size=1000&quality=90",
+      "sourceImageId": "d040780b-3785-462a-8e1a-2bab2d7acb80",
+      "sourceBaseName": "Epididymoorchitis7",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_d040780b.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "cdb13df7f04b1ebf809f0f41ce043a1a1d344a6c9bd4e2d501ee63696a26a0b4",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 8,
+      "displayLabel": "STATdx image 8",
+      "caption": "Transverse side-by-side color Doppler US in the same patient shows hyperemia in all of the right-sided scrotal structures compared to the left, confirming right epididymoorchitis. There was no evidence of testicular torsion.",
+      "usedFor": [
+        "dopplerConfirmation",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-08_STATdx_plain_Epididymoorchitis8.jpg",
+      "annotatedFilename": "SDX-08_STATdx_annotated_Epididymoorchitis8_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis8.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis8_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/238762c8-5f2d-416e-b8d0-29f2964556ac?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/238762c8-5f2d-416e-b8d0-29f2964556ac?annotated=true&size=1000&quality=90",
+      "sourceImageId": "238762c8-5f2d-416e-b8d0-29f2964556ac",
+      "sourceBaseName": "Epididymoorchitis8",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_238762c8.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "d18db55c478a254d5f4313ae8e5a18dbb84e5447b9de7343368d494d3c153333",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 9,
+      "displayLabel": "STATdx image 9",
+      "caption": "Transverse US in a 6-year-old boy who had marked scrotal swelling on the left shows a hydrocele , enlarged heterogeneous epididymis , and scrotal wall thickening .",
+      "usedFor": [
+        "pediatricExample",
+        "hydrocele",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-09_STATdx_plain_Epididymoorchitis9.jpg",
+      "annotatedFilename": "SDX-09_STATdx_annotated_Epididymoorchitis9_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis9.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis9_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/08c0879c-5552-405e-9abd-797e0fb09572?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/08c0879c-5552-405e-9abd-797e0fb09572?annotated=true&size=1000&quality=90",
+      "sourceImageId": "08c0879c-5552-405e-9abd-797e0fb09572",
+      "sourceBaseName": "Epididymoorchitis9",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_08c0879c.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "b0e34ba297a111141f1f5e10258ed7e880f53b07256a51d591b846b8dbf60611",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 10,
+      "displayLabel": "STATdx image 10",
+      "caption": "Transverse side-by-side color Doppler US in the same patient shows marked hyperemia of all the left-sided scrotal contents, consistent with epididymoorchitis.",
+      "usedFor": [
+        "dopplerConfirmation",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-10_STATdx_plain_Epididymoorchitis10.jpg",
+      "annotatedFilename": "SDX-10_STATdx_annotated_Epididymoorchitis10_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis10.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis10_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/73003b7c-56f7-4654-a821-d1919007217c?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/73003b7c-56f7-4654-a821-d1919007217c?annotated=true&size=1000&quality=90",
+      "sourceImageId": "73003b7c-56f7-4654-a821-d1919007217c",
+      "sourceBaseName": "Epididymoorchitis10",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_73003b7c.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "93ecd92ac49213058a641ab8a5cf72cbf0b142abb75fbf688cb95aca7698766a",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 11,
+      "displayLabel": "STATdx image 11",
+      "caption": "Longitudinal color Doppler US of the inguinal canal in a 2-year-old boy shows hyperemia of the spermatic cord , epididymis , and testis , along with hydrocele fluid, consistent with epididymoorchitis.",
+      "usedFor": [
+        "spermaticCordHyperemia",
+        "hydrocele",
+        "pediatricExample"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-11_STATdx_plain_Epididymoorchitis11.jpg",
+      "annotatedFilename": "SDX-11_STATdx_annotated_Epididymoorchitis11_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis11.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis11_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/767db8b4-9c4b-43f4-9946-eccb2de8be71?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/767db8b4-9c4b-43f4-9946-eccb2de8be71?annotated=true&size=1000&quality=90",
+      "sourceImageId": "767db8b4-9c4b-43f4-9946-eccb2de8be71",
+      "sourceBaseName": "Epididymoorchitis11",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_767db8b4.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "23319ff6bd73daee1ba540d96f7c078b773e2f54344cfb46bd7b69d140add97e",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 12,
+      "displayLabel": "STATdx image 12",
+      "caption": "Transverse side-by-side color Doppler US of the testes is very useful to assess overall size/symmetry of testes, blood flow, and echotexture. Although the left testis is not dramatically hyperemic , it is larger than the right and has a surrounding hydrocele , suggesting orchitis.",
+      "usedFor": [
+        "orchitis",
+        "comparisonView",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-12_STATdx_plain_Epididymoorchitis12.jpg",
+      "annotatedFilename": "SDX-12_STATdx_annotated_Epididymoorchitis12_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis12.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis12_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/14d6dfbe-0cab-4b46-b1ab-521eacbc2672?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/14d6dfbe-0cab-4b46-b1ab-521eacbc2672?annotated=true&size=1000&quality=90",
+      "sourceImageId": "14d6dfbe-0cab-4b46-b1ab-521eacbc2672",
+      "sourceBaseName": "Epididymoorchitis12",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_14d6dfbe.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "451c53cd2bcb351ab3edf3f79e31d5957c0d3fa25320618b8e510d73f2edd8e1",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 13,
+      "displayLabel": "STATdx image 13",
+      "caption": "Sagittal color Doppler US shows dramatic hyperemia throughout an enlarged epididymis in a patient with epididymitis but no orchitis.",
+      "usedFor": [
+        "isolatedEpididymitis",
+        "powerDoppler",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-13_STATdx_plain_Epididymoorchitis13.jpg",
+      "annotatedFilename": "SDX-13_STATdx_annotated_Epididymoorchitis13_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis13.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis13_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/8fca4486-5932-43f2-9cd3-b24c5b492625?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/8fca4486-5932-43f2-9cd3-b24c5b492625?annotated=true&size=1000&quality=90",
+      "sourceImageId": "8fca4486-5932-43f2-9cd3-b24c5b492625",
+      "sourceBaseName": "Epididymoorchitis13",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_8fca4486.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "28fbfcdc062fd8d6cb71c3a5b398315374ff88d7e6bf0f5c7525a33cccd295c6",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 14,
+      "displayLabel": "STATdx image 14",
+      "caption": "Transverse US in a young patient shows right-sided scrotal wall thickening , a hydrocele, and an enlarged heterogeneous epididymis . The right testicle is also larger than the left.",
+      "usedFor": [
+        "pediatricExample",
+        "scrotalWallThickening",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-14_STATdx_plain_Epididymoorchitis14.jpg",
+      "annotatedFilename": "SDX-14_STATdx_annotated_Epididymoorchitis14_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis14.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis14_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/9e56abad-7a8c-4e95-8a93-52bba3015e15?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/9e56abad-7a8c-4e95-8a93-52bba3015e15?annotated=true&size=1000&quality=90",
+      "sourceImageId": "9e56abad-7a8c-4e95-8a93-52bba3015e15",
+      "sourceBaseName": "Epididymoorchitis14",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_9e56abad.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "2368c81dbe521f712fa4a31e968a198baaa6df1d2c9d26a26b23fe5d87e0f14d",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 15,
+      "displayLabel": "STATdx image 15",
+      "caption": "Transverse power Doppler US in the same patient shows hyperemia in the right testicle and epididymis , confirming epididymoorchitis. The side-by-side transverse view is helpful to compare blood flow in the scrotal structures.",
+      "usedFor": [
+        "dopplerConfirmation",
+        "comparisonView",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-15_STATdx_plain_Epididymoorchitis15.jpg",
+      "annotatedFilename": "SDX-15_STATdx_annotated_Epididymoorchitis15_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis15.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis15_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/bcdb47b2-fef0-4173-bc30-e627588da511?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/bcdb47b2-fef0-4173-bc30-e627588da511?annotated=true&size=1000&quality=90",
+      "sourceImageId": "bcdb47b2-fef0-4173-bc30-e627588da511",
+      "sourceBaseName": "Epididymoorchitis15",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_bcdb47b2.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "80da0072d9f1ef3df8787d6a14dc997703c42601af93e6bada9ac0f1368d1709",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 16,
+      "displayLabel": "STATdx image 16",
+      "caption": "Transverse US shows a whorled appearance of thickened, heterogeneous epididymis in a teenager with several days of pain, suggesting epididymitis. In such cases, it is critical to confirm that the whorled heterogeneous structures do not represent a twisted spermatic cord. Confirmation of increased low-resistance flow is also helpful to confirm epididymoorchitis.",
+      "usedFor": [
+        "whorledEpididymis",
+        "torsionMimicContext",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-16_STATdx_plain_Epididymoorchitis16.jpg",
+      "annotatedFilename": "SDX-16_STATdx_annotated_Epididymoorchitis16_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis16.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis16_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/734f1311-3a72-41f0-b522-7b8019f94ce5?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/734f1311-3a72-41f0-b522-7b8019f94ce5?annotated=true&size=1000&quality=90",
+      "sourceImageId": "734f1311-3a72-41f0-b522-7b8019f94ce5",
+      "sourceBaseName": "Epididymoorchitis16",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_734f1311.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "56a77b9255888b7d10548e736fb97c6c161b225bb7265d70496d181481426ec5",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-17",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 17,
+      "displayLabel": "STATdx image 17",
+      "caption": "Longitudinal oblique US of the epididymal head in a teenager with focal pain on the left side shows a small hydrocele and an enlarged left epididymal head . The findings are suspicious for epididymitis.",
+      "usedFor": [
+        "epididymalHead",
+        "hydrocele",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-17_STATdx_plain_Epididymoorchitis17.jpg",
+      "annotatedFilename": "SDX-17_STATdx_annotated_Epididymoorchitis17_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis17.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis17_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/35abc68a-64de-49c1-abf2-e5297430f57c?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/35abc68a-64de-49c1-abf2-e5297430f57c?annotated=true&size=1000&quality=90",
+      "sourceImageId": "35abc68a-64de-49c1-abf2-e5297430f57c",
+      "sourceBaseName": "Epididymoorchitis17",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_35abc68a.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "c736dad1f0d27c030409437c64d79604a7aa1c1d2db35cbdd3e5e22c61e03aca",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 18,
+      "displayLabel": "STATdx image 18",
+      "caption": "Sagittal color Doppler US shows abundant color signal in this mildly enlarged testicle and epididymis . There is also a small hydrocele on the symptomatic side in this patient with epididymoorchitis.",
+      "usedFor": [
+        "epididymoorchitis",
+        "hydrocele",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-18_STATdx_plain_Epididymoorchitis18.jpg",
+      "annotatedFilename": "SDX-18_STATdx_annotated_Epididymoorchitis18_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis18.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis18_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/b3450432-82d8-49fa-a979-f863a8b4ccd9?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/b3450432-82d8-49fa-a979-f863a8b4ccd9?annotated=true&size=1000&quality=90",
+      "sourceImageId": "b3450432-82d8-49fa-a979-f863a8b4ccd9",
+      "sourceBaseName": "Epididymoorchitis18",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_b3450432.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "5a479e2f612b88b094b9e23300c2cd7613a20bdb13f3bc2c6f79a853d0e06f1c",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-19",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 19,
+      "displayLabel": "STATdx image 19",
+      "caption": "Sagittal color Doppler US of the same patient's contralateral testis shows normal blood flow on the boy's asymptomatic side.",
+      "usedFor": [
+        "contralateralComparison",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-19_STATdx_plain_Epididymoorchitis19.jpg",
+      "annotatedFilename": "SDX-19_STATdx_annotated_Epididymoorchitis19_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis19.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis19_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/b560725a-bc71-445c-9212-42892d889864?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/b560725a-bc71-445c-9212-42892d889864?annotated=true&size=1000&quality=90",
+      "sourceImageId": "b560725a-bc71-445c-9212-42892d889864",
+      "sourceBaseName": "Epididymoorchitis19",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_b560725a.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "74e53e8afb15b16e0be68299dc0082c3672b8f7a5c6f5871132b1a2bb1ab6b3a",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-20",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 20,
+      "displayLabel": "STATdx image 20",
+      "caption": "Transverse US shows a very echogenic testicle medially and an enlarged hypoechoic epididymis with hydrocele laterally. Note the posterior shadowing from the testicular microlithiasis.",
+      "usedFor": [
+        "microlithiasisContext",
+        "hydrocele",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-20_STATdx_plain_Epididymoorchitis20.jpg",
+      "annotatedFilename": "SDX-20_STATdx_annotated_Epididymoorchitis20_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis20.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis20_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/4ed627d7-2858-4de2-9fa7-46365364f909?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/4ed627d7-2858-4de2-9fa7-46365364f909?annotated=true&size=1000&quality=90",
+      "sourceImageId": "4ed627d7-2858-4de2-9fa7-46365364f909",
+      "sourceBaseName": "Epididymoorchitis20",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_4ed627d7.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "d50ce9fed36bc94b3f60f45e340a608ef54c174c748e8e9689542efcf6bcef27",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-21",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 21,
+      "displayLabel": "STATdx image 21",
+      "caption": "Transverse color Doppler US in the same patient shows hyperemia involving only the epididymis with normal flow in the testicle, consistent with isolated epididymitis.",
+      "usedFor": [
+        "isolatedEpididymitis",
+        "dopplerConfirmation",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-21_STATdx_plain_Epididymoorchitis21.jpg",
+      "annotatedFilename": "SDX-21_STATdx_annotated_Epididymoorchitis21_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis21.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis21_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e84eae30-7fb2-48f1-aeb1-20c0dbe0c574?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e84eae30-7fb2-48f1-aeb1-20c0dbe0c574?annotated=true&size=1000&quality=90",
+      "sourceImageId": "e84eae30-7fb2-48f1-aeb1-20c0dbe0c574",
+      "sourceBaseName": "Epididymoorchitis21",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_e84eae30.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "b3feae1bd36e7d492ab06aed4773495b218ef5c361aff2212a6c9c0c2f2497d1",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-22",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 22,
+      "displayLabel": "STATdx image 22",
+      "caption": "Sagittal US shows a swirled, heterogeneous echotexture in a dramatically enlarged epididymis with a surrounding anechoic hydrocele in a case of isolated epididymitis without associated orchitis. It is critical in such patients to confirm that the structures above the testicle do not represent a twisted spermatic cord.",
+      "usedFor": [
+        "isolatedEpididymitis",
+        "whorledEpididymis",
+        "torsionMimicContext"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-22_STATdx_plain_Epididymoorchitis22.jpg",
+      "annotatedFilename": "SDX-22_STATdx_annotated_Epididymoorchitis22_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis22.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis22_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/a91e213c-d6cf-496a-b0f5-c47ea3f04831?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/a91e213c-d6cf-496a-b0f5-c47ea3f04831?annotated=true&size=1000&quality=90",
+      "sourceImageId": "a91e213c-d6cf-496a-b0f5-c47ea3f04831",
+      "sourceBaseName": "Epididymoorchitis22",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_a91e213c.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "beec7f6ccdf2b02f360ba9dadfaaee1c2c3110542c373430a6503399a1f0adab",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-23",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 23,
+      "displayLabel": "STATdx image 23",
+      "caption": "Sagittal US shows a heterogeneous, mostly echogenic, enlarged epididymis , enlarged testicle , and small anechoic reactive hydrocele in this boy with epididymoorchitis (as confirmed by hyperemic flow to the epididymis and testicle on color Doppler imaging, not shown). It is critical in such patients to confirm that the structures above the testicle do not represent a twisted spermatic cord. Demonstrating ↑ low-resistance arterial flow in the testicle can help confirm an inflammatory cause for this appearance.",
+      "usedFor": [
+        "pediatricExample",
+        "grayscalePattern",
+        "hydrocele"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-23_STATdx_plain_Epididymoorchitis23.jpg",
+      "annotatedFilename": "SDX-23_STATdx_annotated_Epididymoorchitis23_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis23.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis23_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/34e7c70f-d6ec-4a38-abeb-38d146e0a818?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/34e7c70f-d6ec-4a38-abeb-38d146e0a818?annotated=true&size=1000&quality=90",
+      "sourceImageId": "34e7c70f-d6ec-4a38-abeb-38d146e0a818",
+      "sourceBaseName": "Epididymoorchitis23",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_34e7c70f.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "0c68894b08b5e54e406305f1c5daf5992974e07f142d763d9d599680372bcd76",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-24",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 24,
+      "displayLabel": "STATdx image 24",
+      "caption": "Grayscale US in a 5-year-old boy with acute left scrotal swelling shows marked enlargement and heterogeneous echotexture of the epididymis . The testicle has a normal echotexture but was larger than the contralateral side.",
+      "usedFor": [
+        "pediatricExample",
+        "grayscalePattern",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-24_STATdx_plain_Epididymoorchitis24.jpg",
+      "annotatedFilename": "SDX-24_STATdx_annotated_Epididymoorchitis24_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis24.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis24_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/b091f89d-2f03-428e-b50e-d2c6fff03a7c?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/b091f89d-2f03-428e-b50e-d2c6fff03a7c?annotated=true&size=1000&quality=90",
+      "sourceImageId": "b091f89d-2f03-428e-b50e-d2c6fff03a7c",
+      "sourceBaseName": "Epididymoorchitis24",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_b091f89d.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "f1e191ca8baa668358fb6017575bc9b827c8fc75f88954803fcc7f08a325fc4b",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-25",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 25,
+      "displayLabel": "STATdx image 25",
+      "caption": "Longitudinal color Doppler US of the same 5-year-old boy with left scrotal swelling shows enlargement of the epididymis and testis with ↑ blood flow and a surrounding hydrocele, consistent with epididymoorchitis.",
+      "usedFor": [
+        "pediatricExample",
+        "dopplerConfirmation",
+        "caseCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-25_STATdx_plain_Epididymoorchitis25.jpg",
+      "annotatedFilename": "SDX-25_STATdx_annotated_Epididymoorchitis25_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis25.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis25_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/f5de8f5e-2860-4606-99ba-abab20ead868?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/f5de8f5e-2860-4606-99ba-abab20ead868?annotated=true&size=1000&quality=90",
+      "sourceImageId": "f5de8f5e-2860-4606-99ba-abab20ead868",
+      "sourceBaseName": "Epididymoorchitis25",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_f5de8f5e.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "f05128ff3478d51d468efb8b4e0a5a6f31056332aa51b895dfb5ce5fc284cb1b",
+        "width": 1000,
+        "height": 1000
+      }
+    },
+    {
+      "masterImageId": "SDX-26",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 26,
+      "displayLabel": "STATdx image 26",
+      "caption": "Longitudinal oblique color Doppler US shows a thickened, hyperemic, and heterogeneous epididymis in a teenager with several days of pain, consistent with epididymitis.",
+      "usedFor": [
+        "isolatedEpididymitis",
+        "hyperemia",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "plainFilename": "SDX-26_STATdx_plain_Epididymoorchitis26.jpg",
+      "annotatedFilename": "SDX-26_STATdx_annotated_Epididymoorchitis26_annot.jpg",
+      "originalPlainFilename": "Epididymoorchitis26.jpg",
+      "originalAnnotatedFilename": "Epididymoorchitis26_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/1a4d8600-cdf3-422e-9f00-c40af1663667?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/1a4d8600-cdf3-422e-9f00-c40af1663667?annotated=true&size=1000&quality=90",
+      "sourceImageId": "1a4d8600-cdf3-422e-9f00-c40af1663667",
+      "sourceBaseName": "Epididymoorchitis26",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_1a4d8600.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "sha256": "31944cc8e2599f88f3cce6019f9d4b42ba6546ff764a579c714acaf04ab3c0e1",
+        "width": 1000,
+        "height": 1000
+      }
+    }
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and article backbone.",
+    "keepFromRadPrimer": [
+      "canonical title Epididymitis/Orchitis and the exact metadata.json hierarchy",
+      "adult/adolescent acute scrotum framing, early epididymal-tail spread, high-frequency Doppler protocol, RI detail, infarction warning signs, abscess complications, and treatment/follow-up points",
+      "all 10 RadPrimer images because none is a proven exact duplicate or unusable"
+    ],
+    "keepFromSTATdx": [
+      "pediatric emphasis, GU anomaly work-up, VCUG/MR/nuclear medicine context, pediatric differential diagnoses, mumps detail, and broader management nuance",
+      "all 26 STATdx images as alternate examples, modality variants, pediatric clusters, and recognition reinforcement"
+    ],
+    "downweightOrSkip": [
+      "STATdx breadcrumb for routing, because metadata.json canonicalHierarchy controls routing",
+      "unrelated IMAIOS/anatomy repository text embedded after the article section in both source packages",
+      "Core Radiology claims, because no auditable Core source was present in the bundle"
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate and kept primary.",
+    "radPrimerImageCoverageGate": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerDisplayLabel": "RadPrimer image 1",
+        "classification": "conceptualReplacement",
+        "statdxComparators": [
+          "SDX-01"
+        ],
+        "decision": "Keep RadPrimer image 1 and STATdx image 1 primary.",
+        "visualEvidenceBasis": "Both are epididymitis illustrations, but the staged files show different artwork/composition and different source image IDs/hashes. Not an exact duplicate."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerDisplayLabel": "RadPrimer image 2",
+        "classification": "notCovered",
+        "statdxComparators": [],
+        "decision": "Keep RadPrimer image 2 primary.",
+        "visualEvidenceBasis": "RadPrimer image 2 uniquely illustrates cystic liquefaction/necrosis in an enlarged epididymis; no STATdx image shows the same graphic or same teaching point."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerDisplayLabel": "RadPrimer image 3",
+        "classification": "nearDuplicate",
+        "statdxComparators": [
+          "SDX-13",
+          "SDX-21",
+          "SDX-26"
+        ],
+        "decision": "Keep all compared images primary as recognition reinforcement.",
+        "visualEvidenceBasis": "These are visually distinct ultrasound examples of hyperemic epididymitis with different layouts/patients/source IDs; no same slice or screenshot was seen."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerDisplayLabel": "RadPrimer image 4",
+        "classification": "nearDuplicate",
+        "statdxComparators": [
+          "SDX-04",
+          "SDX-15"
+        ],
+        "decision": "Keep all compared images primary as comparison-view reinforcement.",
+        "visualEvidenceBasis": "STATdx has side-by-side Doppler comparison examples, but staged files are different images and different cases/source IDs."
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "radPrimerDisplayLabel": "RadPrimer image 5",
+        "classification": "nearDuplicate",
+        "statdxComparators": [
+          "SDX-16",
+          "SDX-17",
+          "SDX-22",
+          "SDX-24"
+        ],
+        "decision": "Keep RadPrimer image 5 and STATdx grayscale epididymal examples primary.",
+        "visualEvidenceBasis": "The STATdx images reinforce heterogeneous enlarged epididymis patterns but are different views/patients and not exact duplicates."
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "radPrimerDisplayLabel": "RadPrimer image 6",
+        "classification": "nearDuplicate",
+        "statdxComparators": [
+          "SDX-02",
+          "SDX-12",
+          "SDX-18"
+        ],
+        "decision": "Keep all compared orchitis/epididymoorchitis Doppler examples primary.",
+        "visualEvidenceBasis": "Same general hyperemic testis teaching point, but distinct appearance and source IDs/hashes."
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "radPrimerDisplayLabel": "RadPrimer image 7",
+        "classification": "notCovered",
+        "statdxComparators": [],
+        "decision": "Keep RadPrimer image 7 primary.",
+        "visualEvidenceBasis": "The focal orchitis image with a round intratesticular hypoechoic hyperemic focus is not represented by STATdx evidence files."
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "radPrimerDisplayLabel": "RadPrimer image 8",
+        "classification": "notCovered",
+        "statdxComparators": [],
+        "decision": "Keep RadPrimer image 8 primary.",
+        "visualEvidenceBasis": "STATdx text discusses complications, but no staged STATdx image duplicates or replaces the testicular infarction example."
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "radPrimerDisplayLabel": "RadPrimer image 9",
+        "classification": "notCovered",
+        "statdxComparators": [],
+        "decision": "Keep RadPrimer image 9 primary.",
+        "visualEvidenceBasis": "No STATdx image shows the same epididymal abscess pattern with central hypoechoic lesion."
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "radPrimerDisplayLabel": "RadPrimer image 10",
+        "classification": "notCovered",
+        "statdxComparators": [],
+        "decision": "Keep RadPrimer image 10 primary.",
+        "visualEvidenceBasis": "No STATdx image duplicates the intratesticular abscess example."
+      }
+    ],
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse clusters are atomic teaching clusters unless an explicit documented split is safe.",
+      "identifiedClusters": [
+        {
+          "clusterId": "SDX-03-04",
+          "imageIds": [
+            "SDX-03",
+            "SDX-04"
+          ],
+          "source": "STATdx",
+          "context": "same 5-year-old patient; grayscale then Doppler confirmation"
+        },
+        {
+          "clusterId": "SDX-06-08",
+          "imageIds": [
+            "SDX-06",
+            "SDX-07",
+            "SDX-08"
+          ],
+          "source": "STATdx",
+          "context": "same patient; MR concern followed by ultrasound confirmation"
+        },
+        {
+          "clusterId": "SDX-09-10",
+          "imageIds": [
+            "SDX-09",
+            "SDX-10"
+          ],
+          "source": "STATdx",
+          "context": "same 6-year-old patient; grayscale then Doppler"
+        },
+        {
+          "clusterId": "SDX-14-15",
+          "imageIds": [
+            "SDX-14",
+            "SDX-15"
+          ],
+          "source": "STATdx",
+          "context": "same young patient; grayscale then power Doppler"
+        },
+        {
+          "clusterId": "SDX-18-19",
+          "imageIds": [
+            "SDX-18",
+            "SDX-19"
+          ],
+          "source": "STATdx",
+          "context": "symptomatic side plus contralateral comparison"
+        },
+        {
+          "clusterId": "SDX-20-21",
+          "imageIds": [
+            "SDX-20",
+            "SDX-21"
+          ],
+          "source": "STATdx",
+          "context": "same patient; grayscale microlithiasis/hydrocele context plus Doppler isolated epididymitis"
+        },
+        {
+          "clusterId": "SDX-24-25",
+          "imageIds": [
+            "SDX-24",
+            "SDX-25"
+          ],
+          "source": "STATdx",
+          "context": "same 5-year-old patient; grayscale then Doppler"
+        }
+      ],
+      "intentionalSplits": [],
+      "splitSummary": "No source case cluster was intentionally split."
+    },
+    "primaryImageDownloadUseSet": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26"
+    ],
+    "archiveDuplicateSet": [],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-01_RadPrimer_plain_EpididymitisOrchitis1.jpg",
+        "annotatedFilename": "RP-01_RadPrimer_annotated_EpididymitisOrchitis1_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/0b69e726-9ead-4b84-acf4-e7c3c21d8d79?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/0b69e726-9ead-4b84-acf4-e7c3c21d8d79?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_0b69e726.jpg"
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-02_RadPrimer_plain_EpididymitisOrchitis2.jpg",
+        "annotatedFilename": "RP-02_RadPrimer_annotated_EpididymitisOrchitis2_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/641453ec-2ce6-4e00-add0-aa1e4034610e?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/641453ec-2ce6-4e00-add0-aa1e4034610e?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_641453ec.jpg"
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-03_RadPrimer_plain_EpididymitisOrchitis3.jpg",
+        "annotatedFilename": "RP-03_RadPrimer_annotated_EpididymitisOrchitis3_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/c76a2d01-7a5e-4769-a0ae-932d3f0b45c7?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/c76a2d01-7a5e-4769-a0ae-932d3f0b45c7?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_c76a2d01.jpg"
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-04_RadPrimer_plain_EpididymitisOrchitis4.jpg",
+        "annotatedFilename": "RP-04_RadPrimer_annotated_EpididymitisOrchitis4_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/7ae9e77f-a776-47e0-a772-fca2c327c064?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/7ae9e77f-a776-47e0-a772-fca2c327c064?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_7ae9e77f.jpg"
+      },
+      {
+        "masterImageId": "RP-05",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 5,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-05_RadPrimer_plain_EpididymitisOrchitis5.jpg",
+        "annotatedFilename": "RP-05_RadPrimer_annotated_EpididymitisOrchitis5_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/899df482-5a0d-40c7-9d92-1b3191abb4ec?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/899df482-5a0d-40c7-9d92-1b3191abb4ec?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_899df482.jpg"
+      },
+      {
+        "masterImageId": "RP-06",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 6,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-06_RadPrimer_plain_EpididymitisOrchitis6.jpg",
+        "annotatedFilename": "RP-06_RadPrimer_annotated_EpididymitisOrchitis6_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/b4c567a8-c94e-404f-8ac5-e497e50a49f2?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/b4c567a8-c94e-404f-8ac5-e497e50a49f2?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_b4c567a8.jpg"
+      },
+      {
+        "masterImageId": "RP-07",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 7,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-07_RadPrimer_plain_EpididymitisOrchitis7.jpg",
+        "annotatedFilename": "RP-07_RadPrimer_annotated_EpididymitisOrchitis7_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/7f1b2d78-cd34-4762-88f4-3e4d3b98c87c?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/7f1b2d78-cd34-4762-88f4-3e4d3b98c87c?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_7f1b2d78.jpg"
+      },
+      {
+        "masterImageId": "RP-08",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 8,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-08_RadPrimer_plain_EpididymitisOrchitis8.jpg",
+        "annotatedFilename": "RP-08_RadPrimer_annotated_EpididymitisOrchitis8_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/9a3fc3f4-6a50-48da-a15f-7fd1ed4664ed?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9a3fc3f4-6a50-48da-a15f-7fd1ed4664ed?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_9a3fc3f4.jpg"
+      },
+      {
+        "masterImageId": "RP-09",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 9,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-09_RadPrimer_plain_EpididymitisOrchitis9.jpg",
+        "annotatedFilename": "RP-09_RadPrimer_annotated_EpididymitisOrchitis9_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/9c2c47a7-62ca-4c71-9e8a-88a63ac24fce?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9c2c47a7-62ca-4c71-9e8a-88a63ac24fce?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_9c2c47a7.jpg"
+      },
+      {
+        "masterImageId": "RP-10",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 10,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "RP-10_RadPrimer_plain_EpididymitisOrchitis10.jpg",
+        "annotatedFilename": "RP-10_RadPrimer_annotated_EpididymitisOrchitis10_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/9f6e10e3-8e57-49ff-b184-b617df4ef648?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9f6e10e3-8e57-49ff-b184-b617df4ef648?style=xlarge&annotated=true",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_9f6e10e3.jpg"
+      },
+      {
+        "masterImageId": "SDX-01",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 1,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-01_STATdx_plain_Epididymoorchitis1.jpg",
+        "annotatedFilename": "SDX-01_STATdx_annotated_Epididymoorchitis1_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/26f44f73-9dd9-4263-9aa5-d7bc9a755c58?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/26f44f73-9dd9-4263-9aa5-d7bc9a755c58?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_26f44f73.jpg"
+      },
+      {
+        "masterImageId": "SDX-02",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 2,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-02_STATdx_plain_Epididymoorchitis2.jpg",
+        "annotatedFilename": "SDX-02_STATdx_annotated_Epididymoorchitis2_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8c4f76c9-ea72-41a6-9376-2ace096de9a3?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8c4f76c9-ea72-41a6-9376-2ace096de9a3?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_8c4f76c9.jpg"
+      },
+      {
+        "masterImageId": "SDX-03",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 3,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-03_STATdx_plain_Epididymoorchitis3.jpg",
+        "annotatedFilename": "SDX-03_STATdx_annotated_Epididymoorchitis3_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/847733bf-8328-48be-84d8-ecf0e2f5f1c7?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/847733bf-8328-48be-84d8-ecf0e2f5f1c7?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_847733bf.jpg"
+      },
+      {
+        "masterImageId": "SDX-04",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 4,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-04_STATdx_plain_Epididymoorchitis4.jpg",
+        "annotatedFilename": "SDX-04_STATdx_annotated_Epididymoorchitis4_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/568d7e33-9862-42d3-828a-223c3cab6c2d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/568d7e33-9862-42d3-828a-223c3cab6c2d?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_568d7e33.jpg"
+      },
+      {
+        "masterImageId": "SDX-05",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 5,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-05_STATdx_plain_Epididymoorchitis5.jpg",
+        "annotatedFilename": "SDX-05_STATdx_annotated_Epididymoorchitis5_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/f71981d7-e2ab-4f3a-b132-4dc50c78dc1a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/f71981d7-e2ab-4f3a-b132-4dc50c78dc1a?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_f71981d7.jpg"
+      },
+      {
+        "masterImageId": "SDX-06",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 6,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-06_STATdx_plain_Epididymoorchitis6.jpg",
+        "annotatedFilename": "SDX-06_STATdx_annotated_Epididymoorchitis6_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/67458161-9c82-4d45-86be-43bd9c566840?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/67458161-9c82-4d45-86be-43bd9c566840?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_67458161.jpg"
+      },
+      {
+        "masterImageId": "SDX-07",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 7,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-07_STATdx_plain_Epididymoorchitis7.jpg",
+        "annotatedFilename": "SDX-07_STATdx_annotated_Epididymoorchitis7_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/d040780b-3785-462a-8e1a-2bab2d7acb80?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/d040780b-3785-462a-8e1a-2bab2d7acb80?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_d040780b.jpg"
+      },
+      {
+        "masterImageId": "SDX-08",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 8,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-08_STATdx_plain_Epididymoorchitis8.jpg",
+        "annotatedFilename": "SDX-08_STATdx_annotated_Epididymoorchitis8_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/238762c8-5f2d-416e-b8d0-29f2964556ac?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/238762c8-5f2d-416e-b8d0-29f2964556ac?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_238762c8.jpg"
+      },
+      {
+        "masterImageId": "SDX-09",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 9,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-09_STATdx_plain_Epididymoorchitis9.jpg",
+        "annotatedFilename": "SDX-09_STATdx_annotated_Epididymoorchitis9_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/08c0879c-5552-405e-9abd-797e0fb09572?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/08c0879c-5552-405e-9abd-797e0fb09572?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_08c0879c.jpg"
+      },
+      {
+        "masterImageId": "SDX-10",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 10,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-10_STATdx_plain_Epididymoorchitis10.jpg",
+        "annotatedFilename": "SDX-10_STATdx_annotated_Epididymoorchitis10_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/73003b7c-56f7-4654-a821-d1919007217c?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/73003b7c-56f7-4654-a821-d1919007217c?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_73003b7c.jpg"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 11,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-11_STATdx_plain_Epididymoorchitis11.jpg",
+        "annotatedFilename": "SDX-11_STATdx_annotated_Epididymoorchitis11_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/767db8b4-9c4b-43f4-9946-eccb2de8be71?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/767db8b4-9c4b-43f4-9946-eccb2de8be71?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_767db8b4.jpg"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 12,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-12_STATdx_plain_Epididymoorchitis12.jpg",
+        "annotatedFilename": "SDX-12_STATdx_annotated_Epididymoorchitis12_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/14d6dfbe-0cab-4b46-b1ab-521eacbc2672?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/14d6dfbe-0cab-4b46-b1ab-521eacbc2672?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_14d6dfbe.jpg"
+      },
+      {
+        "masterImageId": "SDX-13",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 13,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-13_STATdx_plain_Epididymoorchitis13.jpg",
+        "annotatedFilename": "SDX-13_STATdx_annotated_Epididymoorchitis13_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8fca4486-5932-43f2-9cd3-b24c5b492625?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8fca4486-5932-43f2-9cd3-b24c5b492625?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_8fca4486.jpg"
+      },
+      {
+        "masterImageId": "SDX-14",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 14,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-14_STATdx_plain_Epididymoorchitis14.jpg",
+        "annotatedFilename": "SDX-14_STATdx_annotated_Epididymoorchitis14_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9e56abad-7a8c-4e95-8a93-52bba3015e15?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9e56abad-7a8c-4e95-8a93-52bba3015e15?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_9e56abad.jpg"
+      },
+      {
+        "masterImageId": "SDX-15",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 15,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-15_STATdx_plain_Epididymoorchitis15.jpg",
+        "annotatedFilename": "SDX-15_STATdx_annotated_Epididymoorchitis15_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/bcdb47b2-fef0-4173-bc30-e627588da511?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/bcdb47b2-fef0-4173-bc30-e627588da511?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_bcdb47b2.jpg"
+      },
+      {
+        "masterImageId": "SDX-16",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 16,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-16_STATdx_plain_Epididymoorchitis16.jpg",
+        "annotatedFilename": "SDX-16_STATdx_annotated_Epididymoorchitis16_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/734f1311-3a72-41f0-b522-7b8019f94ce5?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/734f1311-3a72-41f0-b522-7b8019f94ce5?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_734f1311.jpg"
+      },
+      {
+        "masterImageId": "SDX-17",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 17,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-17_STATdx_plain_Epididymoorchitis17.jpg",
+        "annotatedFilename": "SDX-17_STATdx_annotated_Epididymoorchitis17_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/35abc68a-64de-49c1-abf2-e5297430f57c?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/35abc68a-64de-49c1-abf2-e5297430f57c?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_35abc68a.jpg"
+      },
+      {
+        "masterImageId": "SDX-18",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 18,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-18_STATdx_plain_Epididymoorchitis18.jpg",
+        "annotatedFilename": "SDX-18_STATdx_annotated_Epididymoorchitis18_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b3450432-82d8-49fa-a979-f863a8b4ccd9?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b3450432-82d8-49fa-a979-f863a8b4ccd9?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_b3450432.jpg"
+      },
+      {
+        "masterImageId": "SDX-19",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 19,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-19_STATdx_plain_Epididymoorchitis19.jpg",
+        "annotatedFilename": "SDX-19_STATdx_annotated_Epididymoorchitis19_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b560725a-bc71-445c-9212-42892d889864?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b560725a-bc71-445c-9212-42892d889864?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_b560725a.jpg"
+      },
+      {
+        "masterImageId": "SDX-20",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 20,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-20_STATdx_plain_Epididymoorchitis20.jpg",
+        "annotatedFilename": "SDX-20_STATdx_annotated_Epididymoorchitis20_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/4ed627d7-2858-4de2-9fa7-46365364f909?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/4ed627d7-2858-4de2-9fa7-46365364f909?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_4ed627d7.jpg"
+      },
+      {
+        "masterImageId": "SDX-21",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 21,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-21_STATdx_plain_Epididymoorchitis21.jpg",
+        "annotatedFilename": "SDX-21_STATdx_annotated_Epididymoorchitis21_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e84eae30-7fb2-48f1-aeb1-20c0dbe0c574?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e84eae30-7fb2-48f1-aeb1-20c0dbe0c574?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_e84eae30.jpg"
+      },
+      {
+        "masterImageId": "SDX-22",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 22,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-22_STATdx_plain_Epididymoorchitis22.jpg",
+        "annotatedFilename": "SDX-22_STATdx_annotated_Epididymoorchitis22_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a91e213c-d6cf-496a-b0f5-c47ea3f04831?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a91e213c-d6cf-496a-b0f5-c47ea3f04831?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_a91e213c.jpg"
+      },
+      {
+        "masterImageId": "SDX-23",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 23,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-23_STATdx_plain_Epididymoorchitis23.jpg",
+        "annotatedFilename": "SDX-23_STATdx_annotated_Epididymoorchitis23_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/34e7c70f-d6ec-4a38-abeb-38d146e0a818?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/34e7c70f-d6ec-4a38-abeb-38d146e0a818?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_34e7c70f.jpg"
+      },
+      {
+        "masterImageId": "SDX-24",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 24,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-24_STATdx_plain_Epididymoorchitis24.jpg",
+        "annotatedFilename": "SDX-24_STATdx_annotated_Epididymoorchitis24_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b091f89d-2f03-428e-b50e-d2c6fff03a7c?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b091f89d-2f03-428e-b50e-d2c6fff03a7c?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_b091f89d.jpg"
+      },
+      {
+        "masterImageId": "SDX-25",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 25,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-25_STATdx_plain_Epididymoorchitis25.jpg",
+        "annotatedFilename": "SDX-25_STATdx_annotated_Epididymoorchitis25_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/f5de8f5e-2860-4606-99ba-abab20ead868?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/f5de8f5e-2860-4606-99ba-abab20ead868?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_f5de8f5e.jpg"
+      },
+      {
+        "masterImageId": "SDX-26",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 26,
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainFilename": "SDX-26_STATdx_plain_Epididymoorchitis26.jpg",
+        "annotatedFilename": "SDX-26_STATdx_annotated_Epididymoorchitis26_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1a4d8600-cdf3-422e-9f00-c40af1663667?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1a4d8600-cdf3-422e-9f00-c40af1663667?annotated=true&size=1000&quality=90",
+        "evidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_1a4d8600.jpg"
+      }
+    ],
+    "generatorInstructions": [
+      "Use source-qualified human-facing labels such as RadPrimer image 5 and STATdx image 4 in prose.",
+      "Keep master IDs such as RP-05 and SDX-04 in traceability fields, registry entries, filenames, and metadata.",
+      "Do not generate cards or lecture content from this step; this is the master source package only.",
+      "Preserve STATdx same-patient clusters when selecting images for future cards or narrative."
+    ]
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26"
+  ],
+  "archiveOptionalImageIds": []
+}

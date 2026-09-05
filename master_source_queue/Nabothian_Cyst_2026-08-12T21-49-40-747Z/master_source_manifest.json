@@ -1,0 +1,340 @@
+{
+  "articleTitle": "Nabothian Cyst",
+  "createdAt": "2026-08-12T21:49:40.747Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Female Pelvis Basic",
+    "Nabothian Cyst"
+  ],
+  "canonicalDeckPath": "Corebook::Ultrasound::Female Pelvis Basic::Nabothian Cyst",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "role": "Canonical hierarchy/backbone, canonical deck routing, ultrasound-first recognition structure, and primary differential/checklist framework.",
+      "keptText": [
+        "definition as mucus-filled dilatation of endocervical glands and tunnel cluster subtype",
+        "endovaginal ultrasound as first-line imaging with simple superficial cervical cyst morphology",
+        "cervical-canal relationship, internal debris, posterior enhancement, avascularity, and separate-ovary pitfall",
+        "broad differential including adenoma malignum, endocervical hyperplasia, cervicitis, cystic endometrial polyp, cervical cancer, cervical ectopic pregnancy, and abortion in progress",
+        "management/checklist warnings: solid component, deep invasion, copious discharge, or pregnancy-related cervical concerns warrant further evaluation"
+      ],
+      "limitations": [
+        "STATdx supplies more cross-sectional CT/MR examples and prevalence/pathology detail.",
+        "No auditable Core Radiology source text was supplied in the bundle."
+      ]
+    },
+    "STATdx": {
+      "role": "Supplemental depth for CT/MR findings, power Doppler, tunnel clusters, prevalence, squamous-cell differential, and expanded image examples.",
+      "keptText": [
+        "CT: isodense/hypodense or complicated hyperdense lesion; CECT nonenhancing hypodense cervical lesion",
+        "MRI: T1 intermediate-to-hyperintense mucinous contents, T2 hyperintense lesions, and no enhancement after contrast",
+        "power Doppler helps distinguish deep nabothian cysts from adenoma malignum because nabothian cysts show no flow",
+        "tunnel clusters and clinical profile in multigravid women older than 30 years, with prevalence increasing with age",
+        "treatment usually unnecessary, with drainage, cryosurgery, or conization only for selected symptomatic chronic cervicitis cases"
+      ],
+      "limitations": [
+        "STATdx breadcrumb is not used for canonical hierarchy because RadPrimer is present.",
+        "STATdx does not fully cover the RadPrimer lateral-margin ovarian-follicle mimic pitfall image."
+      ]
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 4,
+    "STATdx": 15
+  },
+  "sourceAttributionRules": {
+    "default": "Tag factual blocks as [RadPrimer], [STATdx], or [Both] where source distinction matters.",
+    "humanFacingImages": "Use labels like RadPrimer image 2 or STATdx image 10 in prose.",
+    "traceability": "Use masterImageId values only in registry fields, filenames, manifest, and traceability notes."
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15"
+  ],
+  "archiveOptionalImageIds": [],
+  "sourceSelectionPlan": {
+    "textBackbone": {
+      "primary": "RadPrimer supplies the canonical hierarchy/backbone, canonical deck routing, ultrasound-first article structure, cervical-canal localization pitfall, and differential breadth for pregnancy/cervical ectopic/abortion mimics.",
+      "supplement": "STATdx is used for stronger CT/MR characterization, power Doppler distinction from carcinoma, tunnel-cluster detail, prevalence, squamous-cell carcinoma differential detail, and expanded CT/MR/US image examples.",
+      "downweight": "Do not use STATdx breadcrumbTrail for canonical hierarchy or deck routing. Do not claim Core Radiology support because no auditable Core source text was supplied in this bundle. Exclude unrelated IMAIOS label-repository text from the fused master package."
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate patients, alternate same-disease examples, modality variants, stage/severity variants, same-patient companion images, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is insufficient; uncertain or merely similar images stay primary.",
+    "caseClusterGuardrails": {
+      "rule": "Treat same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse groups as atomic teaching clusters unless a documented split is safe.",
+      "intentionalSplits": [],
+      "preservedClusters": [
+        "STATdx CT/TVUS same-patient localization pair",
+        "STATdx axial T2/postcontrast T1 same-patient MRI pair",
+        "STATdx transverse US/sagittal T2/coronal oblique T2 deep-stroma cluster",
+        "STATdx large hemorrhagic nabothian cyst ultrasound/biopsy-confirmed pair",
+        "STATdx post-uterine-artery-embolization CT/MR cluster"
+      ]
+    },
+    "radprimerImageCoverageGate": {
+      "statdxFullyCoversRadPrimerImageSet": false,
+      "summary": "STATdx supplements but does not fully cover the RadPrimer image set. Actual staged image_evidence files were reviewed in a contact sheet, stable source image IDs were compared, and SHA-256 hashes were unique across all 19 evidence files. No image was proven to be an exact duplicate, same slice, same screenshot, or unusable.",
+      "coverage": [
+        {
+          "radprimerImageId": "RP-01",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-02",
+            "SDX-05",
+            "SDX-11"
+          ],
+          "evidence": "Actual evidence files show visually distinct ultrasound screenshots and unique source IDs/hashes. STATdx supplies close alternate examples of clustered/ovoid cervical cysts adjacent to the endocervical canal, but no same image, slice, or screenshot.",
+          "action": "Keep RadPrimer image 1 primary; use STATdx ultrasound examples as recognition reinforcement."
+        },
+        {
+          "radprimerImageId": "RP-02",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-09",
+            "SDX-10",
+            "SDX-11"
+          ],
+          "evidence": "STATdx covers debris/hemorrhagic content and posterior enhancement with different ultrasound cases. Visual evidence and hashes do not support exact duplication.",
+          "action": "Keep RadPrimer image 2 primary for internal echoes/debris and posterior enhancement; keep the STATdx hemorrhagic pair primary."
+        },
+        {
+          "radprimerImageId": "RP-03",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-02",
+            "SDX-05"
+          ],
+          "evidence": "STATdx has alternate transvaginal ultrasound clusters of anechoic cysts around/within the cervix, but the staged images differ in plane, patient, and appearance; no matching image ID or hash.",
+          "action": "Keep RadPrimer image 3 primary because multiple cysts obscuring the cervical canal is an important recognition pattern."
+        },
+        {
+          "radprimerImageId": "RP-04",
+          "classification": "notCovered",
+          "coveredBy": [],
+          "evidence": "STATdx includes simple cervical cyst examples, but no staged STATdx image reproduces the RadPrimer lateral-margin pitfall of a nabothian cyst mimicking an ovarian follicle with explicit need to identify a separate ovary.",
+          "action": "Keep RadPrimer image 4 primary for the adnexal/ovarian-follicle mimic pitfall."
+        }
+      ]
+    },
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 1",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/84b1fba1-ba5f-4ab9-803d-3a8dd89a98b0?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/84b1fba1-ba5f-4ab9-803d-3a8dd89a98b0?style=xlarge&annotated=true",
+        "plainFilename": "RP-01_RadPrimer_plain_Nabothian_Cyst1.jpg",
+        "annotatedFilename": "RP-01_RadPrimer_annotated_Nabothian_Cyst1_annot.jpg"
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 2",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/fc2d1f01-28b2-4357-9cc8-911734d01fbd?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/fc2d1f01-28b2-4357-9cc8-911734d01fbd?style=xlarge&annotated=true",
+        "plainFilename": "RP-02_RadPrimer_plain_Nabothian_Cyst2.jpg",
+        "annotatedFilename": "RP-02_RadPrimer_annotated_Nabothian_Cyst2_annot.jpg"
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 3",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/94f469a5-19d7-4482-9071-ee58f9ddf2d8?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/94f469a5-19d7-4482-9071-ee58f9ddf2d8?style=xlarge&annotated=true",
+        "plainFilename": "RP-03_RadPrimer_plain_Nabothian_Cyst3.jpg",
+        "annotatedFilename": "RP-03_RadPrimer_annotated_Nabothian_Cyst3_annot.jpg"
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 4",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/6da02576-8185-41e1-9ce1-a1a6a8a11afb?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/6da02576-8185-41e1-9ce1-a1a6a8a11afb?style=xlarge&annotated=true",
+        "plainFilename": "RP-04_RadPrimer_plain_Nabothian_Cyst4.jpg",
+        "annotatedFilename": "RP-04_RadPrimer_annotated_Nabothian_Cyst4_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-01",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 1",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a77b0c30-9aaa-46d4-8e1c-f7aed2ab02c5?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a77b0c30-9aaa-46d4-8e1c-f7aed2ab02c5?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-01_STATdx_plain_Nabothian_Cysts1.jpg",
+        "annotatedFilename": "SDX-01_STATdx_annotated_Nabothian_Cysts1_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-02",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 2",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/db783a58-ab13-4f23-a907-683e2ce4b60f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/db783a58-ab13-4f23-a907-683e2ce4b60f?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-02_STATdx_plain_Nabothian_Cysts2.jpg",
+        "annotatedFilename": "SDX-02_STATdx_annotated_Nabothian_Cysts2_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-03",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 3",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/4e257033-8ba1-4d4c-bf8c-c361dbe461c2?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/4e257033-8ba1-4d4c-bf8c-c361dbe461c2?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-03_STATdx_plain_Nabothian_Cysts3.jpg",
+        "annotatedFilename": "SDX-03_STATdx_annotated_Nabothian_Cysts3_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-04",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 4",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/98b7d934-f4ac-4aae-9ea0-a5835ccec476?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/98b7d934-f4ac-4aae-9ea0-a5835ccec476?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-04_STATdx_plain_Nabothian_Cysts4.jpg",
+        "annotatedFilename": "SDX-04_STATdx_annotated_Nabothian_Cysts4_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-05",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 5",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/10734869-4d35-4303-9629-1f8e0d87d3e1?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/10734869-4d35-4303-9629-1f8e0d87d3e1?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-05_STATdx_plain_Nabothian_Cysts5.jpg",
+        "annotatedFilename": "SDX-05_STATdx_annotated_Nabothian_Cysts5_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-06",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 6",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ea17972a-9a0e-4576-97ee-756d9ccd5965?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ea17972a-9a0e-4576-97ee-756d9ccd5965?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-06_STATdx_plain_Nabothian_Cysts6.jpg",
+        "annotatedFilename": "SDX-06_STATdx_annotated_Nabothian_Cysts6_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-07",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 7",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3481b9d9-eb87-4b7f-adad-00b9579d184b?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3481b9d9-eb87-4b7f-adad-00b9579d184b?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-07_STATdx_plain_Nabothian_Cysts7.jpg",
+        "annotatedFilename": "SDX-07_STATdx_annotated_Nabothian_Cysts7_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-08",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 8",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/239f1ee7-e19b-45c6-a619-271e6d986455?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/239f1ee7-e19b-45c6-a619-271e6d986455?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-08_STATdx_plain_Nabothian_Cysts8.jpg",
+        "annotatedFilename": "SDX-08_STATdx_annotated_Nabothian_Cysts8_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-09",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 9",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ba539338-8f81-4972-8479-1efe5ec47161?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ba539338-8f81-4972-8479-1efe5ec47161?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-09_STATdx_plain_Nabothian_Cysts9.jpg",
+        "annotatedFilename": "SDX-09_STATdx_annotated_Nabothian_Cysts9_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-10",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 10",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/fde52f84-9d1f-4df9-80fd-c09ec326088e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/fde52f84-9d1f-4df9-80fd-c09ec326088e?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-10_STATdx_plain_Nabothian_Cysts10.jpg",
+        "annotatedFilename": "SDX-10_STATdx_annotated_Nabothian_Cysts10_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 11",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/811049e9-d1aa-477b-883f-75689f62a9c9?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/811049e9-d1aa-477b-883f-75689f62a9c9?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-11_STATdx_plain_Nabothian_Cysts11.jpg",
+        "annotatedFilename": "SDX-11_STATdx_annotated_Nabothian_Cysts11_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 12",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/16aa1488-7b60-413b-be2c-dc39b638199e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/16aa1488-7b60-413b-be2c-dc39b638199e?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-12_STATdx_plain_Nabothian_Cysts12.jpg",
+        "annotatedFilename": "SDX-12_STATdx_annotated_Nabothian_Cysts12_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-13",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 13",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/6d6557a4-14cf-464f-bc2b-cd8d35145054?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/6d6557a4-14cf-464f-bc2b-cd8d35145054?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-13_STATdx_plain_Nabothian_Cysts13.jpg",
+        "annotatedFilename": "SDX-13_STATdx_annotated_Nabothian_Cysts13_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-14",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 14",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/035bf1dd-d901-4097-bb98-b6338d258fb9?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/035bf1dd-d901-4097-bb98-b6338d258fb9?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-14_STATdx_plain_Nabothian_Cysts14.jpg",
+        "annotatedFilename": "SDX-14_STATdx_annotated_Nabothian_Cysts14_annot.jpg"
+      },
+      {
+        "masterImageId": "SDX-15",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 15",
+        "downloadRecommendation": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1108ae8d-46f9-4122-9b6e-b4cc906c23ea?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1108ae8d-46f9-4122-9b6e-b4cc906c23ea?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-15_STATdx_plain_Nabothian_Cysts15.jpg",
+        "annotatedFilename": "SDX-15_STATdx_annotated_Nabothian_Cysts15_annot.jpg"
+      }
+    ],
+    "generatorInstructions": [
+      "Use metadata.json canonicalHierarchy exactly for routing and any later IMAIOS/deck-path decisions.",
+      "Use human-facing image labels such as RadPrimer image 2 and STATdx image 10 in prose; reserve RP-02 and SDX-10 for registries, filenames, manifest fields, and traceability.",
+      "Download/use selectedPrimaryImageIds by default; archiveOptionalImageIds is empty for this bundle.",
+      "Preserve same-patient STATdx clusters when later generating narrative, cards, or lecture material."
+    ]
+  }
+}

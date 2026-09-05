@@ -1,0 +1,8 @@
+CORE_EVIDENCE_STATUS: NOT_PROVIDED
+CORE_SOURCE_BASIS: No Core evidence block was found in the captured ChatGPT response.
+CORE_FACTS_USED:
+- None auditable from ChatGPT output.
+CORE_DERIVED_CARDS:
+- Unknown; audit should treat Core-specific claims as unverified unless source_package.txt contains direct Core text.
+CORE_LIMITATIONS:
+- ChatGPT may have used project files, but this bundle did not capture evidence for Codex verification.

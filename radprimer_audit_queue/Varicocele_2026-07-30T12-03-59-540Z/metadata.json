@@ -1,0 +1,1579 @@
+{
+  "createdAt": "2026-07-30T12:03:59.540Z",
+  "articleTitle": "Varicocele",
+  "sourceUrl": "https://app.radprimer.com/document/89100e84-8c96-41b4-a8c8-e71462738946/lesson/0aa7b41a-2f4f-4b33-9967-ce22837b27e1",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "masterImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18"
+  ],
+  "sourceQualifiedImages": [
+    {
+      "caption": "Graphic shows dilated, tortuous varicose veins of the pampiniform plexus <img src=\"arrow_WS.png\"> in the spermatic cord and along the posterosuperior aspect of the testis <img src=\"arrow_WC.png\">.",
+      "label": "RP-01",
+      "masterImageId": "RP-01",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Oblique grayscale ultrasound through the cord, in supine position with normal respiration, shows a dilated, tortuous principal vein <img src=\"arrow_WC.png\"> in the pampiniform plexus measuring 7.5 mm in caliber.",
+      "label": "RP-02",
+      "masterImageId": "RP-02",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Longitudinal color Doppler ultrasound of the  scrotum in a 24-year-old man shows flow <img src=\"arrow_WC.png\"> in several dilated veins during Valsalva, indicative of moderate varicocele. Blood flow in the varicocele is slow and may be detected only with low Doppler settings.",
+      "label": "RP-03",
+      "masterImageId": "RP-03",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Catheter venogram demonstrates a prominent left gonadal vein extending into the left hemiscrotum in this patient with varicocele and infertility. Varicocele resolved after coil embolization.",
+      "label": "RP-04",
+      "masterImageId": "RP-04",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Transverse US of the left scrotum with the patient at rest in supine position shows multiple anechoic, tubular structures <img src=\"arrow_WS.png\"> medial to the testis, consistent with varicocele.",
+      "label": "SDX-01",
+      "masterImageId": "SDX-01",
+      "sourceImageNumber": 1,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Longitudinal color Doppler US in the same patient during Valsalva shows flow throughout the varicocele due to reflux.",
+      "label": "SDX-02",
+      "masterImageId": "SDX-02",
+      "sourceImageNumber": 2,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Longitudinal color Doppler US shows dilated veins with minimal flow at rest <img src=\"arrow_WS.png\">. With Valsalva <img src=\"arrow_WO.png\">, aliasing is seen due to increased velocity of retrograde blood flow exceeding the low Doppler scale.",
+      "label": "SDX-03",
+      "masterImageId": "SDX-03",
+      "sourceImageNumber": 3,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Graphic shows normal pampiniform plexus veins <img src=\"arrow_WS.png\"> compared to abnormally dilated veins in a varicocele <img src=\"arrow_WO.png\">.",
+      "label": "SDX-04",
+      "masterImageId": "SDX-04",
+      "sourceImageNumber": 4,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transverse US inferior to the testis shows a large, right-sided varicocele <img src=\"arrow_WS.png\">. Some of the veins are echogenic <img src=\"arrow_WC.png\"> due to slow flow (mobile in real time). The patient underwent CT, which was negative. Right-sided varicoceles, without other symptoms of malignancy, are rarely associated with an underlying malignancy.",
+      "label": "SDX-05",
+      "masterImageId": "SDX-05",
+      "sourceImageNumber": 5,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Longitudinal US of the spermatic cord just superior to the testis <img src=\"arrow_WS.png\"> in a patient with palpable, painful area shows a thrombosed varicocele vein as a echogenic, expanded vein <img src=\"arrow_WC.png\"> without color flow.",
+      "label": "SDX-06",
+      "masterImageId": "SDX-06",
+      "sourceImageNumber": 6,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Coronal CECT in a patient with history of severe necrotizing pancreatitis shows large, dilated veins in the left hemiscrotum <img src=\"arrow_WS.png\">, consistent with varicocele. These communicate with the spermatic (gonadal) vein <img src=\"arrow_WO.png\">.",
+      "label": "SDX-07",
+      "masterImageId": "SDX-07",
+      "sourceImageNumber": 7,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Coronal CECT in the same patient shows a dilated spermatic vein  <img src=\"arrow_WS.png\">  entering a small left renal vein  <img src=\"arrow_WO.png\">.",
+      "label": "SDX-08",
+      "masterImageId": "SDX-08",
+      "sourceImageNumber": 8,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial CECT in the same patient shows chronic thrombosis of the left renal vein <img src=\"arrow_WS.png\">  due to past pancreatitis. Rarely, secondary causes of varicocele include vascular thromboses, iatrogenic causes, and tumor compression/venous invasion.",
+      "label": "SDX-09",
+      "masterImageId": "SDX-09",
+      "sourceImageNumber": 9,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Longitudinal color Doppler US of the left scrotum in a 20-year-old symptomatic patient shows dilated vessels with scattered Doppler signal at rest.",
+      "label": "SDX-10",
+      "masterImageId": "SDX-10",
+      "sourceImageNumber": 10,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Longitudinal color Doppler US in the same patient with Valsalva shows increased size of vessels and marked increase in flow due to retrograde flow in the pampiniform plexus.",
+      "label": "SDX-11",
+      "masterImageId": "SDX-11",
+      "sourceImageNumber": 11,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Anterior projection venogram in the same patient after coil embolization of the varicocele shows lack of reflux caudal to the coil mass  <img src=\"arrow_WS.png\">.",
+      "label": "SDX-12",
+      "masterImageId": "SDX-12",
+      "sourceImageNumber": 12,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transverse color Doppler US shows tortuous, hypoechoic structures <img src=\"arrow_WS.png\"> in the testis at the mediastinum with minimal flow. Rarely, a varicocele extends into or occurs primarily in the testis. This should not be confused with dilation of the rete testis.",
+      "label": "SDX-13",
+      "masterImageId": "SDX-13",
+      "sourceImageNumber": 13,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transverse US of both testes shows multiple hypoechoic, tubular structures <img src=\"arrow_WS.png\"> along the medial aspect of the left testis.",
+      "label": "SDX-14",
+      "masterImageId": "SDX-14",
+      "sourceImageNumber": 14,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Longitudinal US of the left scrotum in the same patient shows the tubular and serpiginous nature of the lesion <img src=\"arrow_WS.png\">.",
+      "label": "SDX-15",
+      "masterImageId": "SDX-15",
+      "sourceImageNumber": 15,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Color Doppler US in the same patient with Valsalva shows marked blood flow <img src=\"arrow_WS.png\">, consistent with a moderate-sized varicocele.",
+      "label": "SDX-16",
+      "masterImageId": "SDX-16",
+      "sourceImageNumber": 16,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Longitudinal US of the right scrotum in the setting of a palpable mass shows an isolated, right-sided varicocele <img src=\"arrow_WS.png\">. Further work-up showed no malignancy. In the past, this was thought to be highly associated with malignancy; however, more recent experience shows that isolated, right-sided varicocele is rarely associated with malignancy. When it does occur in the setting of malignancy, there are often other concerning symptoms.",
+      "label": "SDX-17",
+      "masterImageId": "SDX-17",
+      "sourceImageNumber": 17,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Color Doppler US in an older man with scrotal discomfort shows a huge left varicocele. The late onset prompted imaging of the retroperitoneum, which showed marked dilatation of the cava and renal veins due to severe right heart dysfunction.",
+      "label": "SDX-18",
+      "masterImageId": "SDX-18",
+      "sourceImageNumber": 18,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    }
+  ],
+  "cases": [],
+  "totalImagesOnPage": 22,
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Varicocele"
+  ],
+  "outputChars": 324927,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Varicocele Anki Export\n\nCore validation used the uploaded Core Radiology, Second Edition: GU pages 291–292, Vascular page 573, and IR page 626. These sections support the ultrasound findings, epidemiology, primary-versus-secondary framework, treatment indications, and embolization content.\n\nThe validated export contains 39 cards, exactly 39 physical TSV lines, and 22 columns per line. All 22 source images are accounted for across 15 atomic case blocks, with no exclusions. Caption-verbatim, trigger-integrity, cardinality, source-coverage, and deck-balance audits passed.\n\nThe RadPrimer and STATdx image binaries were not present locally and are therefore not embedded in the ZIP. The manifest preserves their exact RP-/SDX-qualified filenames, source URLs, case clusters, and verbatim captions for retrieval with source-platform access.",
+  "coreEvidence": {
+    "status": "NOT_PROVIDED",
+    "provided": false,
+    "chars": 435,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Varicocele"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Varicocele"
+    ],
+    "deckName": "Corebook::Ultrasound::Scrotum Basic::Varicocele",
+    "hierarchySource": "RadPrimer + STATdx master source",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [
+    {
+      "filename": "RP-01_RadPrimer_plain_85dbcd36.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-01_RadPrimer_annotated_85dbcd36.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-02_RadPrimer_plain_79b86b56.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-02_RadPrimer_annotated_79b86b56.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-03_RadPrimer_plain_e6dd629b.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-03_RadPrimer_annotated_e6dd629b.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-04_RadPrimer_plain_61bd7426.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-04_RadPrimer_annotated_61bd7426.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "SDX-01_STATdx_plain_ce1b8a96.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/ce1b8a96-c36a-44ee-b0b1-de3dc26a18d4?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-01_STATdx_annotated_ce1b8a96.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/ce1b8a96-c36a-44ee-b0b1-de3dc26a18d4?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-02_STATdx_plain_4d839186.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/4d839186-3110-4a20-82e3-8c8b4d3076ab?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-02_STATdx_annotated_4d839186.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/4d839186-3110-4a20-82e3-8c8b4d3076ab?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-03_STATdx_plain_e0f90cd7.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/e0f90cd7-472e-4d2d-ad74-1f492817aa3d?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-03_STATdx_annotated_e0f90cd7.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/e0f90cd7-472e-4d2d-ad74-1f492817aa3d?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-04_STATdx_plain_7fec7e0a.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/7fec7e0a-6731-4f40-a5f0-73f07635a396?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-04_STATdx_annotated_7fec7e0a.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/7fec7e0a-6731-4f40-a5f0-73f07635a396?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-05_STATdx_plain_9e4049fe.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/9e4049fe-19f4-4a81-bfa0-3388450be325?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-05_STATdx_annotated_9e4049fe.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/9e4049fe-19f4-4a81-bfa0-3388450be325?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-06_STATdx_plain_eb9e94db.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/eb9e94db-ae30-4d1e-99d7-2d37315bee84?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-06_STATdx_annotated_eb9e94db.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/eb9e94db-ae30-4d1e-99d7-2d37315bee84?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-07_STATdx_plain_bd79a82c.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/bd79a82c-990e-494c-a920-47e534d0415e?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-07_STATdx_annotated_bd79a82c.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/bd79a82c-990e-494c-a920-47e534d0415e?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-08_STATdx_plain_ff91f591.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/ff91f591-233c-4de2-9c62-2b6084c74f0e?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-08_STATdx_annotated_ff91f591.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/ff91f591-233c-4de2-9c62-2b6084c74f0e?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-09_STATdx_plain_e4b932ff.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/e4b932ff-3e23-4ce0-863f-dea615269d92?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-09_STATdx_annotated_e4b932ff.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/e4b932ff-3e23-4ce0-863f-dea615269d92?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-10_STATdx_plain_2cc0e05a.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/2cc0e05a-1550-4b67-987d-2c2997792943?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-10_STATdx_annotated_2cc0e05a.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/2cc0e05a-1550-4b67-987d-2c2997792943?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-11_STATdx_plain_dbf22f26.jpg",
+      "label": "",
+      "imageNumber": 11,
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/dbf22f26-2886-4fa3-bef1-61ecfcf9cc18?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-11_STATdx_annotated_dbf22f26.jpg",
+      "label": "",
+      "imageNumber": 11,
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/dbf22f26-2886-4fa3-bef1-61ecfcf9cc18?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-12_STATdx_plain_7bf96703.jpg",
+      "label": "",
+      "imageNumber": 12,
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/7bf96703-ab80-4292-8333-6bd33a35f7e5?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-12_STATdx_annotated_7bf96703.jpg",
+      "label": "",
+      "imageNumber": 12,
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/7bf96703-ab80-4292-8333-6bd33a35f7e5?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-13_STATdx_plain_a6f64236.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/a6f64236-303d-4774-beac-dcb29b23128c?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-13_STATdx_annotated_a6f64236.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/a6f64236-303d-4774-beac-dcb29b23128c?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-14_STATdx_plain_e089ca5f.jpg",
+      "label": "",
+      "imageNumber": 14,
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/e089ca5f-da6d-4ec0-8ab5-38c91e79b505?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-14_STATdx_annotated_e089ca5f.jpg",
+      "label": "",
+      "imageNumber": 14,
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/e089ca5f-da6d-4ec0-8ab5-38c91e79b505?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-15_STATdx_plain_28d82145.jpg",
+      "label": "",
+      "imageNumber": 15,
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/28d82145-ef7c-4ad4-872b-161d10f155b3?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-15_STATdx_annotated_28d82145.jpg",
+      "label": "",
+      "imageNumber": 15,
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/28d82145-ef7c-4ad4-872b-161d10f155b3?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-16_STATdx_plain_c641b5a3.jpg",
+      "label": "",
+      "imageNumber": 16,
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/c641b5a3-a308-458d-8e33-a4223f98856d?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-16_STATdx_annotated_c641b5a3.jpg",
+      "label": "",
+      "imageNumber": 16,
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/c641b5a3-a308-458d-8e33-a4223f98856d?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-17_STATdx_plain_26e07fdd.jpg",
+      "label": "",
+      "imageNumber": 17,
+      "masterImageId": "SDX-17",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/26e07fdd-21f4-4e41-8669-8448be5a7451?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-17_STATdx_annotated_26e07fdd.jpg",
+      "label": "",
+      "imageNumber": 17,
+      "masterImageId": "SDX-17",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/26e07fdd-21f4-4e41-8669-8448be5a7451?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-18_STATdx_plain_d4634fab.jpg",
+      "label": "",
+      "imageNumber": 18,
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/d4634fab-b60f-44b3-92a9-da15dcedc98a?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-18_STATdx_annotated_d4634fab.jpg",
+      "label": "",
+      "imageNumber": 18,
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/d4634fab-b60f-44b3-92a9-da15dcedc98a?annotated=true&size=1000&quality=90"
+    }
+  ],
+  "imageRegistry": [
+    {
+      "annotatedFilename": "RP-01_RadPrimer_annotated_85dbcd36.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=true",
+      "baseName": "Varicocele1",
+      "caption": "Graphic shows dilated, tortuous varicose veins of the pampiniform plexus <img src=\"arrow_WS.png\"> in the spermatic cord and along the posterosuperior aspect of the testis <img src=\"arrow_WC.png\">.",
+      "caseClusterId": "",
+      "displayLabel": "RadPrimer image 1",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "RP-01_RadPrimer_plain_85dbcd36.jpg",
+      "group": "",
+      "masterImageId": "RP-01",
+      "originalAnnotatedFilename": "Varicocele1_annot.jpg",
+      "originalPlainFilename": "Varicocele1.jpg",
+      "plainFilename": "RP-01_RadPrimer_plain_85dbcd36.jpg",
+      "plainUrl": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=false",
+      "relatedRadPrimerImageIds": [],
+      "sourceImageId": "85dbcd36-49cc-4235-b0ff-8cee94ebf66c",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [
+        "canonicalRadPrimerBackbone",
+        "anatomyGraphic",
+        "pampiniformPlexusConcept"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_85dbcd36.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "sha256": "a97772e5bd2a6e9fcfe469524ed1b3a8acc21f444e91cb0233639e0258bbff7c"
+      }
+    },
+    {
+      "annotatedFilename": "RP-02_RadPrimer_annotated_79b86b56.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=true",
+      "baseName": "Varicocele2",
+      "caption": "Oblique grayscale ultrasound through the cord, in supine position with normal respiration, shows a dilated, tortuous principal vein <img src=\"arrow_WC.png\"> in the pampiniform plexus measuring 7.5 mm in caliber.",
+      "caseClusterId": "",
+      "displayLabel": "RadPrimer image 2",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "RP-02_RadPrimer_plain_79b86b56.jpg",
+      "group": "",
+      "masterImageId": "RP-02",
+      "originalAnnotatedFilename": "Varicocele2_annot.jpg",
+      "originalPlainFilename": "Varicocele2.jpg",
+      "plainFilename": "RP-02_RadPrimer_plain_79b86b56.jpg",
+      "plainUrl": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=false",
+      "relatedRadPrimerImageIds": [],
+      "sourceImageId": "79b86b56-d34e-4364-975f-4548c865d8b9",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [
+        "canonicalRadPrimerBackbone",
+        "grayscaleDiagnosis",
+        "veinCaliberMeasurement",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_79b86b56.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "sha256": "e82d262d01c190405779787fae77975aec682ba1c3ec3e0a66e6b345aa525d25"
+      }
+    },
+    {
+      "annotatedFilename": "RP-03_RadPrimer_annotated_e6dd629b.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=true",
+      "baseName": "Varicocele3",
+      "caption": "Longitudinal color Doppler ultrasound of the  scrotum in a 24-year-old man shows flow <img src=\"arrow_WC.png\"> in several dilated veins during Valsalva, indicative of moderate varicocele. Blood flow in the varicocele is slow and may be detected only with low Doppler settings.",
+      "caseClusterId": "",
+      "displayLabel": "RadPrimer image 3",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "RP-03_RadPrimer_plain_e6dd629b.jpg",
+      "group": "",
+      "masterImageId": "RP-03",
+      "originalAnnotatedFilename": "Varicocele3_annot.jpg",
+      "originalPlainFilename": "Varicocele3.jpg",
+      "plainFilename": "RP-03_RadPrimer_plain_e6dd629b.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=false",
+      "relatedRadPrimerImageIds": [],
+      "sourceImageId": "e6dd629b-676e-4635-abc3-8dd6a372ebad",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [
+        "canonicalRadPrimerBackbone",
+        "colorDopplerValsalva",
+        "slowFlowSettings",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_e6dd629b.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "sha256": "96a37a494bae27e5e7b878dfd9d0433f53990f4556fbf9db55f13cdfe7314edb"
+      }
+    },
+    {
+      "annotatedFilename": "RP-04_RadPrimer_annotated_61bd7426.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=true",
+      "baseName": "Varicocele4",
+      "caption": "Catheter venogram demonstrates a prominent left gonadal vein extending into the left hemiscrotum in this patient with varicocele and infertility. Varicocele resolved after coil embolization.",
+      "caseClusterId": "",
+      "displayLabel": "RadPrimer image 4",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "RP-04_RadPrimer_plain_61bd7426.jpg",
+      "group": "",
+      "masterImageId": "RP-04",
+      "originalAnnotatedFilename": "Varicocele4_annot.jpg",
+      "originalPlainFilename": "Varicocele4.jpg",
+      "plainFilename": "RP-04_RadPrimer_plain_61bd7426.jpg",
+      "plainUrl": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=false",
+      "relatedRadPrimerImageIds": [],
+      "sourceImageId": "61bd7426-0bfb-4239-941e-f7dad196a8bb",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [
+        "canonicalRadPrimerBackbone",
+        "catheterVenography",
+        "treatmentOutcomeContext"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_61bd7426.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=false",
+        "evidenceVariant": "plain",
+        "sha256": "8741420ce5ab43f44589ef69838d6db1b223ddadb2d0726eee7a7718780af877"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-01_STATdx_annotated_ce1b8a96.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/ce1b8a96-c36a-44ee-b0b1-de3dc26a18d4?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele1",
+      "caption": "Transverse US of the left scrotum with the patient at rest in supine position shows multiple anechoic, tubular structures <img src=\"arrow_WS.png\"> medial to the testis, consistent with varicocele.",
+      "caseClusterId": "SDX-01-02",
+      "displayLabel": "STATdx image 1",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-01_STATdx_plain_ce1b8a96.jpg",
+      "group": "",
+      "masterImageId": "SDX-01",
+      "originalAnnotatedFilename": "Varicocele1_annot.jpg",
+      "originalPlainFilename": "Varicocele1.jpg",
+      "plainFilename": "SDX-01_STATdx_plain_ce1b8a96.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/ce1b8a96-c36a-44ee-b0b1-de3dc26a18d4?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-02"
+      ],
+      "sourceImageId": "ce1b8a96-c36a-44ee-b0b1-de3dc26a18d4",
+      "sourceImageNumber": 1,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "grayscaleDiagnosis",
+        "alternateExample",
+        "recognitionReinforcement",
+        "caseCluster:SDX-01-02"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_ce1b8a96.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/ce1b8a96-c36a-44ee-b0b1-de3dc26a18d4?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "1d5f2dcdafc6699663a937bc1b88b2c2a4e5b807eaad563a4f5f2eab9dbc3aa7"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-02_STATdx_annotated_4d839186.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/4d839186-3110-4a20-82e3-8c8b4d3076ab?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele2",
+      "caption": "Longitudinal color Doppler US in the same patient during Valsalva shows flow throughout the varicocele due to reflux.",
+      "caseClusterId": "SDX-01-02",
+      "displayLabel": "STATdx image 2",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-02_STATdx_plain_4d839186.jpg",
+      "group": "",
+      "masterImageId": "SDX-02",
+      "originalAnnotatedFilename": "Varicocele2_annot.jpg",
+      "originalPlainFilename": "Varicocele2.jpg",
+      "plainFilename": "SDX-02_STATdx_plain_4d839186.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/4d839186-3110-4a20-82e3-8c8b4d3076ab?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-03"
+      ],
+      "sourceImageId": "4d839186-3110-4a20-82e3-8c8b4d3076ab",
+      "sourceImageNumber": 2,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "colorDopplerValsalva",
+        "refluxDemonstration",
+        "recognitionReinforcement",
+        "caseCluster:SDX-01-02"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_4d839186.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/4d839186-3110-4a20-82e3-8c8b4d3076ab?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "afe574397f0ec4fd2b2257252e1c1ca023147552646d36f603dd1419759a3de3"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-03_STATdx_annotated_e0f90cd7.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e0f90cd7-472e-4d2d-ad74-1f492817aa3d?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele3",
+      "caption": "Longitudinal color Doppler US shows dilated veins with minimal flow at rest <img src=\"arrow_WS.png\">. With Valsalva <img src=\"arrow_WO.png\">, aliasing is seen due to increased velocity of retrograde blood flow exceeding the low Doppler scale.",
+      "caseClusterId": "",
+      "displayLabel": "STATdx image 3",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-03_STATdx_plain_e0f90cd7.jpg",
+      "group": "",
+      "masterImageId": "SDX-03",
+      "originalAnnotatedFilename": "Varicocele3_annot.jpg",
+      "originalPlainFilename": "Varicocele3.jpg",
+      "plainFilename": "SDX-03_STATdx_plain_e0f90cd7.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e0f90cd7-472e-4d2d-ad74-1f492817aa3d?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-03"
+      ],
+      "sourceImageId": "e0f90cd7-472e-4d2d-ad74-1f492817aa3d",
+      "sourceImageNumber": 3,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "restVsValsalvaComposite",
+        "aliasingWithLowScale",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_e0f90cd7.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e0f90cd7-472e-4d2d-ad74-1f492817aa3d?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "26966e9396130f857efd804094c1e6b37770f31139a918888eb556e9bcbec502"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-04_STATdx_annotated_7fec7e0a.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/7fec7e0a-6731-4f40-a5f0-73f07635a396?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele4",
+      "caption": "Graphic shows normal pampiniform plexus veins <img src=\"arrow_WS.png\"> compared to abnormally dilated veins in a varicocele <img src=\"arrow_WO.png\">.",
+      "caseClusterId": "",
+      "displayLabel": "STATdx image 4",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-04_STATdx_plain_7fec7e0a.jpg",
+      "group": "",
+      "masterImageId": "SDX-04",
+      "originalAnnotatedFilename": "Varicocele4_annot.jpg",
+      "originalPlainFilename": "Varicocele4.jpg",
+      "plainFilename": "SDX-04_STATdx_plain_7fec7e0a.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/7fec7e0a-6731-4f40-a5f0-73f07635a396?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-01"
+      ],
+      "sourceImageId": "7fec7e0a-6731-4f40-a5f0-73f07635a396",
+      "sourceImageNumber": 4,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "anatomyGraphic",
+        "normalVsDilatedComparison",
+        "conceptualReplacement",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_7fec7e0a.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/7fec7e0a-6731-4f40-a5f0-73f07635a396?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "8522c9537c6ee5dcd9b9bfd856279fe133dec9f9cb1c97ceb641b001ac0b881a"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-05_STATdx_annotated_9e4049fe.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/9e4049fe-19f4-4a81-bfa0-3388450be325?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele5",
+      "caption": "Transverse US inferior to the testis shows a large, right-sided varicocele <img src=\"arrow_WS.png\">. Some of the veins are echogenic <img src=\"arrow_WC.png\"> due to slow flow (mobile in real time). The patient underwent CT, which was negative. Right-sided varicoceles, without other symptoms of malignancy, are rarely associated with an underlying malignancy.",
+      "caseClusterId": "",
+      "displayLabel": "STATdx image 5",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-05_STATdx_plain_9e4049fe.jpg",
+      "group": "",
+      "masterImageId": "SDX-05",
+      "originalAnnotatedFilename": "Varicocele5_annot.jpg",
+      "originalPlainFilename": "Varicocele5.jpg",
+      "plainFilename": "SDX-05_STATdx_plain_9e4049fe.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/9e4049fe-19f4-4a81-bfa0-3388450be325?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-02"
+      ],
+      "sourceImageId": "9e4049fe-19f4-4a81-bfa0-3388450be325",
+      "sourceImageNumber": 5,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "rightSidedVaricocele",
+        "slowFlowMimicsThrombus",
+        "severityVariant",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_9e4049fe.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/9e4049fe-19f4-4a81-bfa0-3388450be325?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "fc4d68ecb811a3896cb9deb41843a51604968e56d555f27e9565ddd318c7d57a"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-06_STATdx_annotated_eb9e94db.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/eb9e94db-ae30-4d1e-99d7-2d37315bee84?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele6",
+      "caption": "Longitudinal US of the spermatic cord just superior to the testis <img src=\"arrow_WS.png\"> in a patient with palpable, painful area shows a thrombosed varicocele vein as a echogenic, expanded vein <img src=\"arrow_WC.png\"> without color flow.",
+      "caseClusterId": "",
+      "displayLabel": "STATdx image 6",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-06_STATdx_plain_eb9e94db.jpg",
+      "group": "",
+      "masterImageId": "SDX-06",
+      "originalAnnotatedFilename": "Varicocele6_annot.jpg",
+      "originalPlainFilename": "Varicocele6.jpg",
+      "plainFilename": "SDX-06_STATdx_plain_eb9e94db.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/eb9e94db-ae30-4d1e-99d7-2d37315bee84?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [],
+      "sourceImageId": "eb9e94db-ae30-4d1e-99d7-2d37315bee84",
+      "sourceImageNumber": 6,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "thrombosedVaricocele",
+        "complicationVariant",
+        "dopplerPitfall"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_eb9e94db.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/eb9e94db-ae30-4d1e-99d7-2d37315bee84?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "da4a17f91732945644f81a6d1aab698964db8c892c059a81cdb6ed5d9a64ad14"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-07_STATdx_annotated_bd79a82c.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/bd79a82c-990e-494c-a920-47e534d0415e?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele7",
+      "caption": "Coronal CECT in a patient with history of severe necrotizing pancreatitis shows large, dilated veins in the left hemiscrotum <img src=\"arrow_WS.png\">, consistent with varicocele. These communicate with the spermatic (gonadal) vein <img src=\"arrow_WO.png\">.",
+      "caseClusterId": "SDX-07-09",
+      "displayLabel": "STATdx image 7",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-07_STATdx_plain_bd79a82c.jpg",
+      "group": "",
+      "masterImageId": "SDX-07",
+      "originalAnnotatedFilename": "Varicocele7_annot.jpg",
+      "originalPlainFilename": "Varicocele7.jpg",
+      "plainFilename": "SDX-07_STATdx_plain_bd79a82c.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/bd79a82c-990e-494c-a920-47e534d0415e?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [],
+      "sourceImageId": "bd79a82c-990e-494c-a920-47e534d0415e",
+      "sourceImageNumber": 7,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "CTSecondaryCauseCluster",
+        "scrotalVaricoceleOnCT",
+        "caseCluster:SDX-07-09"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_bd79a82c.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/bd79a82c-990e-494c-a920-47e534d0415e?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "b5a0a1678be360caf15aaa1e0ba9e2c8f937c5d7e79ea7aa299c1de17d0e27b2"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-08_STATdx_annotated_ff91f591.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/ff91f591-233c-4de2-9c62-2b6084c74f0e?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele8",
+      "caption": "Coronal CECT in the same patient shows a dilated spermatic vein  <img src=\"arrow_WS.png\">  entering a small left renal vein  <img src=\"arrow_WO.png\">.",
+      "caseClusterId": "SDX-07-09",
+      "displayLabel": "STATdx image 8",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-08_STATdx_plain_ff91f591.jpg",
+      "group": "",
+      "masterImageId": "SDX-08",
+      "originalAnnotatedFilename": "Varicocele8_annot.jpg",
+      "originalPlainFilename": "Varicocele8.jpg",
+      "plainFilename": "SDX-08_STATdx_plain_ff91f591.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/ff91f591-233c-4de2-9c62-2b6084c74f0e?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [],
+      "sourceImageId": "ff91f591-233c-4de2-9c62-2b6084c74f0e",
+      "sourceImageNumber": 8,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "CTSecondaryCauseCluster",
+        "gonadalVeinToRenalVein",
+        "caseCluster:SDX-07-09"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_ff91f591.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/ff91f591-233c-4de2-9c62-2b6084c74f0e?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "d08c73022ec6c12fb4397d97cd308ce97c3f0542f638a210fc70eb3f03e75767"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-09_STATdx_annotated_e4b932ff.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e4b932ff-3e23-4ce0-863f-dea615269d92?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele9",
+      "caption": "Axial CECT in the same patient shows chronic thrombosis of the left renal vein <img src=\"arrow_WS.png\">  due to past pancreatitis. Rarely, secondary causes of varicocele include vascular thromboses, iatrogenic causes, and tumor compression/venous invasion.",
+      "caseClusterId": "SDX-07-09",
+      "displayLabel": "STATdx image 9",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-09_STATdx_plain_e4b932ff.jpg",
+      "group": "",
+      "masterImageId": "SDX-09",
+      "originalAnnotatedFilename": "Varicocele9_annot.jpg",
+      "originalPlainFilename": "Varicocele9.jpg",
+      "plainFilename": "SDX-09_STATdx_plain_e4b932ff.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e4b932ff-3e23-4ce0-863f-dea615269d92?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [],
+      "sourceImageId": "e4b932ff-3e23-4ce0-863f-dea615269d92",
+      "sourceImageNumber": 9,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "CTSecondaryCauseCluster",
+        "renalVeinThrombosisCause",
+        "caseCluster:SDX-07-09"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_e4b932ff.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e4b932ff-3e23-4ce0-863f-dea615269d92?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "032fc2c1534ce916801676a02704e49f43a8c999bf366efe45d0fbedc87353cd"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-10_STATdx_annotated_2cc0e05a.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/2cc0e05a-1550-4b67-987d-2c2997792943?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele10",
+      "caption": "Longitudinal color Doppler US of the left scrotum in a 20-year-old symptomatic patient shows dilated vessels with scattered Doppler signal at rest.",
+      "caseClusterId": "SDX-10-12",
+      "displayLabel": "STATdx image 10",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-10_STATdx_plain_2cc0e05a.jpg",
+      "group": "",
+      "masterImageId": "SDX-10",
+      "originalAnnotatedFilename": "Varicocele10_annot.jpg",
+      "originalPlainFilename": "Varicocele10.jpg",
+      "plainFilename": "SDX-10_STATdx_plain_2cc0e05a.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/2cc0e05a-1550-4b67-987d-2c2997792943?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-03"
+      ],
+      "sourceImageId": "2cc0e05a-1550-4b67-987d-2c2997792943",
+      "sourceImageNumber": 10,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "preValsalvaDoppler",
+        "symptomaticPatientCluster",
+        "caseCluster:SDX-10-12"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_2cc0e05a.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/2cc0e05a-1550-4b67-987d-2c2997792943?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "dddd9e20870f04b6b528798eb784fa15f561b13cf23fe5f50d4c2ca024c30487"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-11_STATdx_annotated_dbf22f26.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/dbf22f26-2886-4fa3-bef1-61ecfcf9cc18?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele11",
+      "caption": "Longitudinal color Doppler US in the same patient with Valsalva shows increased size of vessels and marked increase in flow due to retrograde flow in the pampiniform plexus.",
+      "caseClusterId": "SDX-10-12",
+      "displayLabel": "STATdx image 11",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-11_STATdx_plain_dbf22f26.jpg",
+      "group": "",
+      "masterImageId": "SDX-11",
+      "originalAnnotatedFilename": "Varicocele11_annot.jpg",
+      "originalPlainFilename": "Varicocele11.jpg",
+      "plainFilename": "SDX-11_STATdx_plain_dbf22f26.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/dbf22f26-2886-4fa3-bef1-61ecfcf9cc18?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-03"
+      ],
+      "sourceImageId": "dbf22f26-2886-4fa3-bef1-61ecfcf9cc18",
+      "sourceImageNumber": 11,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "ValsalvaDopplerIncrease",
+        "symptomaticPatientCluster",
+        "caseCluster:SDX-10-12"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_dbf22f26.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/dbf22f26-2886-4fa3-bef1-61ecfcf9cc18?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "534b5b95df6ba50d056439dbe65a61e77964d119e0e87009fa9203c96083b4e8"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-12_STATdx_annotated_7bf96703.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/7bf96703-ab80-4292-8333-6bd33a35f7e5?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele12",
+      "caption": "Anterior projection venogram in the same patient after coil embolization of the varicocele shows lack of reflux caudal to the coil mass  <img src=\"arrow_WS.png\">.",
+      "caseClusterId": "SDX-10-12",
+      "displayLabel": "STATdx image 12",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-12_STATdx_plain_7bf96703.jpg",
+      "group": "",
+      "masterImageId": "SDX-12",
+      "originalAnnotatedFilename": "Varicocele12_annot.jpg",
+      "originalPlainFilename": "Varicocele12.jpg",
+      "plainFilename": "SDX-12_STATdx_plain_7bf96703.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/7bf96703-ab80-4292-8333-6bd33a35f7e5?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-04"
+      ],
+      "sourceImageId": "7bf96703-ab80-4292-8333-6bd33a35f7e5",
+      "sourceImageNumber": 12,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "postEmbolizationVenogram",
+        "procedureFollowup",
+        "caseCluster:SDX-10-12"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_7bf96703.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/7bf96703-ab80-4292-8333-6bd33a35f7e5?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "4f93612b51a95bf2f8893cf0b783b2f2bf762bc7071fae6fce33134f45cd9314"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-13_STATdx_annotated_a6f64236.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/a6f64236-303d-4774-beac-dcb29b23128c?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele13",
+      "caption": "Transverse color Doppler US shows tortuous, hypoechoic structures <img src=\"arrow_WS.png\"> in the testis at the mediastinum with minimal flow. Rarely, a varicocele extends into or occurs primarily in the testis. This should not be confused with dilation of the rete testis.",
+      "caseClusterId": "",
+      "displayLabel": "STATdx image 13",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-13_STATdx_plain_a6f64236.jpg",
+      "group": "",
+      "masterImageId": "SDX-13",
+      "originalAnnotatedFilename": "Varicocele13_annot.jpg",
+      "originalPlainFilename": "Varicocele13.jpg",
+      "plainFilename": "SDX-13_STATdx_plain_a6f64236.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/a6f64236-303d-4774-beac-dcb29b23128c?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [],
+      "sourceImageId": "a6f64236-303d-4774-beac-dcb29b23128c",
+      "sourceImageNumber": 13,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "intratesticularVaricocele",
+        "differentialPitfall",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_a6f64236.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/a6f64236-303d-4774-beac-dcb29b23128c?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "1e29efaa24e6f323cebf00667e771632a320214bb93599ee359b951479b1cb6e"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-14_STATdx_annotated_e089ca5f.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e089ca5f-da6d-4ec0-8ab5-38c91e79b505?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele14",
+      "caption": "Transverse US of both testes shows multiple hypoechoic, tubular structures <img src=\"arrow_WS.png\"> along the medial aspect of the left testis.",
+      "caseClusterId": "SDX-14-16",
+      "displayLabel": "STATdx image 14",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-14_STATdx_plain_e089ca5f.jpg",
+      "group": "",
+      "masterImageId": "SDX-14",
+      "originalAnnotatedFilename": "Varicocele14_annot.jpg",
+      "originalPlainFilename": "Varicocele14.jpg",
+      "plainFilename": "SDX-14_STATdx_plain_e089ca5f.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e089ca5f-da6d-4ec0-8ab5-38c91e79b505?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-02"
+      ],
+      "sourceImageId": "e089ca5f-da6d-4ec0-8ab5-38c91e79b505",
+      "sourceImageNumber": 14,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "bilateralComparison",
+        "grayscalePattern",
+        "caseCluster:SDX-14-16"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_e089ca5f.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e089ca5f-da6d-4ec0-8ab5-38c91e79b505?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "925f01358bac93765d411a2cf260f47b46e5687a44c59d2d65628a2e6b0846ba"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-15_STATdx_annotated_28d82145.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/28d82145-ef7c-4ad4-872b-161d10f155b3?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele15",
+      "caption": "Longitudinal US of the left scrotum in the same patient shows the tubular and serpiginous nature of the lesion <img src=\"arrow_WS.png\">.",
+      "caseClusterId": "SDX-14-16",
+      "displayLabel": "STATdx image 15",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-15_STATdx_plain_28d82145.jpg",
+      "group": "",
+      "masterImageId": "SDX-15",
+      "originalAnnotatedFilename": "Varicocele15_annot.jpg",
+      "originalPlainFilename": "Varicocele15.jpg",
+      "plainFilename": "SDX-15_STATdx_plain_28d82145.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/28d82145-ef7c-4ad4-872b-161d10f155b3?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-02"
+      ],
+      "sourceImageId": "28d82145-ef7c-4ad4-872b-161d10f155b3",
+      "sourceImageNumber": 15,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "longitudinalSerpiginousPattern",
+        "caseCluster:SDX-14-16"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_28d82145.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/28d82145-ef7c-4ad4-872b-161d10f155b3?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "12ec10e32dd790df876f5e4d63fde3ef08f0842a8e2d51f4a00489803bb3c5b1"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-16_STATdx_annotated_c641b5a3.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/c641b5a3-a308-458d-8e33-a4223f98856d?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele16",
+      "caption": "Color Doppler US in the same patient with Valsalva shows marked blood flow <img src=\"arrow_WS.png\">, consistent with a moderate-sized varicocele.",
+      "caseClusterId": "SDX-14-16",
+      "displayLabel": "STATdx image 16",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-16_STATdx_plain_c641b5a3.jpg",
+      "group": "",
+      "masterImageId": "SDX-16",
+      "originalAnnotatedFilename": "Varicocele16_annot.jpg",
+      "originalPlainFilename": "Varicocele16.jpg",
+      "plainFilename": "SDX-16_STATdx_plain_c641b5a3.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/c641b5a3-a308-458d-8e33-a4223f98856d?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-03"
+      ],
+      "sourceImageId": "c641b5a3-a308-458d-8e33-a4223f98856d",
+      "sourceImageNumber": 16,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "ValsalvaColorDoppler",
+        "moderateVaricocele",
+        "caseCluster:SDX-14-16"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_c641b5a3.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/c641b5a3-a308-458d-8e33-a4223f98856d?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "351a807ceca3ad0d9c8e543bf20675664a43a028e004d8317b0ed88a6dafeeda"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-17_STATdx_annotated_26e07fdd.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/26e07fdd-21f4-4e41-8669-8448be5a7451?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele17",
+      "caption": "Longitudinal US of the right scrotum in the setting of a palpable mass shows an isolated, right-sided varicocele <img src=\"arrow_WS.png\">. Further work-up showed no malignancy. In the past, this was thought to be highly associated with malignancy; however, more recent experience shows that isolated, right-sided varicocele is rarely associated with malignancy. When it does occur in the setting of malignancy, there are often other concerning symptoms.",
+      "caseClusterId": "",
+      "displayLabel": "STATdx image 17",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-17_STATdx_plain_26e07fdd.jpg",
+      "group": "",
+      "masterImageId": "SDX-17",
+      "originalAnnotatedFilename": "Varicocele17_annot.jpg",
+      "originalPlainFilename": "Varicocele17.jpg",
+      "plainFilename": "SDX-17_STATdx_plain_26e07fdd.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/26e07fdd-21f4-4e41-8669-8448be5a7451?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-02"
+      ],
+      "sourceImageId": "26e07fdd-21f4-4e41-8669-8448be5a7451",
+      "sourceImageNumber": 17,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "isolatedRightSidedVaricocele",
+        "modernMalignancyCaution",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_26e07fdd.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/26e07fdd-21f4-4e41-8669-8448be5a7451?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "6ad45367a817bbfa4719d8651317ccfd09117cc81a8feb294bcada2b6ddd7e0b"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-18_STATdx_annotated_d4634fab.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d4634fab-b60f-44b3-92a9-da15dcedc98a?annotated=true&size=1000&quality=90",
+      "baseName": "Varicocele18",
+      "caption": "Color Doppler US in an older man with scrotal discomfort shows a huge left varicocele. The late onset prompted imaging of the retroperitoneum, which showed marked dilatation of the cava and renal veins due to severe right heart dysfunction.",
+      "caseClusterId": "",
+      "displayLabel": "STATdx image 18",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "noneExact; retainedPrimary",
+      "duplicateDecisionBasis": "Reviewed downloaded image_evidence file; no same source image ID, hash, same screenshot, or documented same-slice duplicate was found.",
+      "filename": "SDX-18_STATdx_plain_d4634fab.jpg",
+      "group": "",
+      "masterImageId": "SDX-18",
+      "originalAnnotatedFilename": "Varicocele18_annot.jpg",
+      "originalPlainFilename": "Varicocele18.jpg",
+      "plainFilename": "SDX-18_STATdx_plain_d4634fab.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d4634fab-b60f-44b3-92a9-da15dcedc98a?size=1000&quality=90",
+      "relatedRadPrimerImageIds": [
+        "RP-03"
+      ],
+      "sourceImageId": "d4634fab-b60f-44b3-92a9-da15dcedc98a",
+      "sourceImageNumber": 18,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "usedFor": [
+        "largeLateOnsetVaricocele",
+        "systemicVenousCause",
+        "severityVariant",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_d4634fab.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d4634fab-b60f-44b3-92a9-da15dcedc98a?size=1000&quality=90",
+        "evidenceVariant": "plain",
+        "sha256": "8171dce1e4f1830c711716deed8ec2e9c52fb8c2ad9dabdb5ca042959ba836e1"
+      }
+    }
+  ],
+  "masterSource": {
+    "createdAt": "2026-07-28T03:25:06Z",
+    "importedAt": "2026-07-30T11:00:06.691Z",
+    "sourceLabel": "RadPrimer + STATdx master source"
+  },
+  "settings": {
+    "include": "all",
+    "caseMap": "",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "effectiveAnkiNormalRoot": "",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "Varicocele_image_download_manifest.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_0000000021c881f5b51a7128a7ccf9f7&ts=495948&p=fs&cid=1&sig=c0c0ba7c6d2e577918a83dec65ad17b5336d9d1bad529f5b656bfa0ef7856c42&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_0000000021c881f5b51a7128a7ccf9f7&ts=495948&p=fs&cid=1&sig=c0c0ba7c6d2e577918a83dec65ad17b5336d9d1bad529f5b656bfa0ef7856c42&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 7737,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Varicocele_2026-07-30T12-03-59-540Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}

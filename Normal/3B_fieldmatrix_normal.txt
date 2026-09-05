@@ -23,7 +23,7 @@ If a trigger field for another card type is populated by accident, the note is s
 
 Trigger fields are:
 - Question together with Image -> NORMAL UNKNOWN
-- Differentials -> NORMAL DIFFERENTIAL DRILL
+- Differential_Q -> NORMAL DIFFERENTIAL DRILL
 - Mechanism -> NORMAL MECHANISM
 - Boards_Trap -> NORMAL BOARDS TRAP
 - High_Yield_Q -> NORMAL HIGH-YIELD
@@ -82,17 +82,18 @@ Required:
 Conditionally allowed:
 - Image_Annotated
 - Entity_Label
+- Differentials
 - Imaging_Differentiation
 - Original_Caption
 - summary when required by source hierarchy
 
 Back-side use note:
 - Imaging_Differentiation is the preferred place for concise visibility-status and localization support when needed
+- Differentials may be used here for realistic mimics, normal variants, pseudolesions, or nearby confusions that should appear on the UNKNOWN back
 
 Forbidden:
 - Most_Likely_Diagnosis
 - Differential_Q
-- Differentials
 - Mechanism_Q
 - Mechanism
 - Boards_Trap_Q
@@ -139,7 +140,8 @@ Forbidden:
 - Radiopaedia_Case_Differential
 
 Isolation rule:
-- If Differentials is populated, Question must be blank, Differential_Q must be the only front-driving prompt family, and no other trigger field may be populated.
+- If Differential_Q is populated, Question must be blank, Differential_Q must be the only front-driving prompt family, and no other trigger field may be populated.
+- Differentials without Differential_Q may be populated only on NORMAL UNKNOWN as back-side support.
 
 -----------------------------------------------------
 
@@ -267,13 +269,15 @@ Annotated-only image notes are not supported by this engine.
 DUAL-TRIGGER BLOCKER
 
 The following combinations are forbidden on one note:
-- Differentials + Mechanism
-- Differentials + Boards_Trap
-- Differentials + High_Yield_Q
+- Differential_Q + Mechanism
+- Differential_Q + Boards_Trap
+- Differential_Q + High_Yield_Q
 - Mechanism + Boards_Trap
 - Mechanism + High_Yield_Q
 - Boards_Trap + High_Yield_Q
 - Question + any non-UNKNOWN trigger field
+
+Question + Differentials is allowed for NORMAL UNKNOWN back-side support when Differential_Q is blank.
 
 If any forbidden combination appears:
 - clear the unintended field(s)

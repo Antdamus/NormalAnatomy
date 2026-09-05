@@ -1,0 +1,901 @@
+{
+  "articleTitle": "Tuboovarian Abscess",
+  "createdAt": "2026-08-09T21:10:00Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Female Pelvis Basic",
+    "Tuboovarian Abscess"
+  ],
+  "canonicalDeckPath": "Corebook::Ultrasound::Female Pelvis Basic::Tuboovarian Abscess",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "role": "Canonical hierarchy/backbone, canonical deck routing, and primary Tuboovarian Abscess structure.",
+      "keptText": [
+        "terminology separating PID, pyosalpinx, TOC, and TOA",
+        "ultrasound-first recognition features including cogwheel, incomplete septa, pyosalpinx, hyperemia, TOA, endometritis, and complex pelvic fluid",
+        "CT/MR role for diffuse symptoms, extensive disease, equivocal ultrasound, and full extent assessment",
+        "differential diagnosis, pathology, clinical issues, treatment, and diagnostic checklist"
+      ],
+      "limitations": [
+        "STATdx supplies broader PID-spectrum complication and MR/DWI depth.",
+        "No Core Radiology source text was supplied in the bundle."
+      ]
+    },
+    "STATdx": {
+      "role": "Supplemental depth for PID-spectrum imaging, complications, differentials, management, and image-recognition reinforcement.",
+      "keptText": [
+        "expanded CT/MR/DWI feature detail and sensitivity/specificity notes",
+        "Fitz-Hugh-Curtis syndrome and upper abdominal spread imaging",
+        "secondary pelvic infection examples including diverticulitis",
+        "drainage route and catheter-removal details",
+        "large supplemental same-patient image clusters"
+      ],
+      "limitations": [
+        "STATdx breadcrumb is not used for canonical hierarchy because RadPrimer is present.",
+        "STATdx title is Pelvic Inflammatory Disease, so later output should stay centered on Tuboovarian Abscess while using PID-spectrum details when they support TOA recognition."
+      ]
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 48
+  },
+  "sourceAttributionRules": {
+    "default": "Tag factual blocks as [RadPrimer], [STATdx], or [Both] where source distinction matters.",
+    "humanFacingImages": "Use labels like RadPrimer image 5 or STATdx image 4 in prose.",
+    "traceability": "Use masterImageId values only in registry fields, filenames, import metadata, and traceability notes."
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-27",
+    "SDX-28",
+    "SDX-29",
+    "SDX-30",
+    "SDX-31",
+    "SDX-32",
+    "SDX-33",
+    "SDX-34",
+    "SDX-35",
+    "SDX-36",
+    "SDX-37",
+    "SDX-38",
+    "SDX-39",
+    "SDX-40",
+    "SDX-41",
+    "SDX-42",
+    "SDX-43",
+    "SDX-44",
+    "SDX-45",
+    "SDX-46",
+    "SDX-47",
+    "SDX-48"
+  ],
+  "archiveOptionalImageIds": [],
+  "sourceSelectionPlan": {
+    "textBackbone": {
+      "primary": "RadPrimer supplies the canonical hierarchy/backbone, deck routing, and Tuboovarian Abscess article structure.",
+      "supplement": "STATdx contributes broader PID-spectrum depth, complication imaging, CT/MR/DWI detail, Fitz-Hugh-Curtis syndrome, secondary pelvic infection pathways, drainage planning, and supplemental image clusters.",
+      "downweight": "Do not use the STATdx breadcrumb for canonical hierarchy or deck routing. Do not claim Core Radiology support because no auditable Core text was supplied in this bundle."
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate patients, alternate same-disease examples, modality variants, same-patient companion images, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is insufficient.",
+    "caseClusterGuardrails": {
+      "rule": "Treat same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse groups as atomic teaching clusters unless a documented split is safe.",
+      "intentionalSplits": [],
+      "preservedClusters": [
+        "RadPrimer post-D&C TOA ultrasound/CT same-patient pair",
+        "RadPrimer pyosalpinx ultrasound/MR same-patient pair",
+        "RadPrimer salpingitis grayscale/color Doppler same-patient pair",
+        "STATdx CT pyosalpinx axial/coronal same-patient pair",
+        "STATdx TOA with Fitz-Hugh-Curtis same-patient CT pair",
+        "STATdx TOA with RUQ spread same-patient CT pair",
+        "STATdx TOA/endometrioma differential multiparametric MR same-patient cluster",
+        "STATdx US/CT/MR TOA same-patient cluster",
+        "STATdx bilateral pyosalpinx/endometritis CT same-patient pair",
+        "STATdx diverticulitis-related ovarian abscess same-patient CT pair",
+        "STATdx large TOA CT axial/coronal same-patient pair",
+        "STATdx renal-transplant left ovarian abscess multiparametric MR same-patient cluster",
+        "STATdx right ovarian abscess US/MR multiparametric same-patient cluster",
+        "STATdx severe PID/Fitz-Hugh-Curtis CT same-patient pair",
+        "STATdx unilocular ovarian abscess multiparametric MR same-patient cluster"
+      ]
+    },
+    "radprimerImageCoverageGate": {
+      "statdxFullyCoversRadPrimerImageSet": false,
+      "summary": "STATdx substantially supplements the RadPrimer image set but does not fully cover it by exact duplicate or equivalent same-patient clusters. Actual staged image_evidence files were reviewed with all-source and candidate-pair contact sheets.",
+      "coverage": [
+        {
+          "radprimerImageId": "RP-01",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-11",
+            "SDX-48"
+          ],
+          "evidence": "STATdx has distinct ultrasound examples of complex adnexal/pelvic abscess patterns, but not the same left tubo-ovarian complex with separate ovary.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        },
+        {
+          "radprimerImageId": "RP-02",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-02",
+            "SDX-11"
+          ],
+          "evidence": "STATdx includes pyosalpinx/TOA ultrasound examples, but the actual images are different anatomy and screenshots.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        },
+        {
+          "radprimerImageId": "RP-03",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-02"
+          ],
+          "evidence": "Both teach grayscale salpingitis/pyosalpinx with thickened tube/endosalpingeal folds, but visual review shows different images and different stable IDs/hashes.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        },
+        {
+          "radprimerImageId": "RP-04",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-01",
+            "SDX-05"
+          ],
+          "evidence": "Both teach color Doppler hyperemia in salpingitis, but candidate-pair review shows distinct images rather than the same screenshot or slice.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        },
+        {
+          "radprimerImageId": "RP-05",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-02"
+          ],
+          "evidence": "Both teach pyosalpinx with debris/folds, but visual review shows different probes/views and different source image IDs.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        },
+        {
+          "radprimerImageId": "RP-06",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-17",
+            "SDX-23",
+            "SDX-35"
+          ],
+          "evidence": "STATdx has multiple MR abscess/TOA examples, but none duplicates the sagittal T2 pyosalpinx-with-fibroids RadPrimer image.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        },
+        {
+          "radprimerImageId": "RP-07",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-10",
+            "SDX-48"
+          ],
+          "evidence": "STATdx covers endometritis/indefinite uterus sign by CT and pelvic abscess ultrasound, but not the same coronal transvaginal uterine ultrasound image.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        },
+        {
+          "radprimerImageId": "RP-08",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-41"
+          ],
+          "evidence": "Both show multiloculated abscess on ultrasound with vascularity, but focused pair review shows distinct case appearance and no same image/slice evidence.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        },
+        {
+          "radprimerImageId": "RP-09",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-41"
+          ],
+          "evidence": "Both are ultrasound examples of complex TOA, but the RadPrimer image is a post-D&C transabdominal Doppler case and STATdx image 41 is a different multilocular right ovarian mass.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        },
+        {
+          "radprimerImageId": "RP-10",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-16",
+            "SDX-30",
+            "SDX-34"
+          ],
+          "evidence": "STATdx has coronal CT examples of TOA extent/inflammation, but none duplicates the RadPrimer same-patient post-D&C coronal CECT image by visual review or stable ID/hash.",
+          "action": "Keep the RadPrimer image primary and keep STATdx examples primary as recognition reinforcement; archive nothing."
+        }
+      ],
+      "action": "Keep all RadPrimer images as canonical primary images. Keep all STATdx images as selected primary supplemental recognition/modality/complication examples. Archive no images by default."
+    },
+    "primaryImageDownloadUseSet": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26",
+      "SDX-27",
+      "SDX-28",
+      "SDX-29",
+      "SDX-30",
+      "SDX-31",
+      "SDX-32",
+      "SDX-33",
+      "SDX-34",
+      "SDX-35",
+      "SDX-36",
+      "SDX-37",
+      "SDX-38",
+      "SDX-39",
+      "SDX-40",
+      "SDX-41",
+      "SDX-42",
+      "SDX-43",
+      "SDX-44",
+      "SDX-45",
+      "SDX-46",
+      "SDX-47",
+      "SDX-48"
+    ],
+    "archiveOptionalDuplicateIds": [],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "displayLabel": "RadPrimer image 1",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-01_RadPrimer_plain_Tuboovarian_Abscess1.jpg",
+        "annotatedFilename": "RP-01_RadPrimer_annotated_Tuboovarian_Abscess1_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/ef534e62-2673-4aae-9a4e-6ba7b84c4f8e?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/ef534e62-2673-4aae-9a4e-6ba7b84c4f8e?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "RP-02",
+        "displayLabel": "RadPrimer image 2",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-02_RadPrimer_plain_Tuboovarian_Abscess2.jpg",
+        "annotatedFilename": "RP-02_RadPrimer_annotated_Tuboovarian_Abscess2_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/e7c65619-f5f8-4c9c-b6bb-0fd3d0fc9222?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/e7c65619-f5f8-4c9c-b6bb-0fd3d0fc9222?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "RP-03",
+        "displayLabel": "RadPrimer image 3",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-03_RadPrimer_plain_Tuboovarian_Abscess3.jpg",
+        "annotatedFilename": "RP-03_RadPrimer_annotated_Tuboovarian_Abscess3_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/255f4e15-ecb2-4307-929f-73a27bc6bcb8?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/255f4e15-ecb2-4307-929f-73a27bc6bcb8?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "RP-04",
+        "displayLabel": "RadPrimer image 4",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-04_RadPrimer_plain_Tuboovarian_Abscess4.jpg",
+        "annotatedFilename": "RP-04_RadPrimer_annotated_Tuboovarian_Abscess4_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/dcb81349-dc98-4f10-aea4-cd9060bfa396?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/dcb81349-dc98-4f10-aea4-cd9060bfa396?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "RP-05",
+        "displayLabel": "RadPrimer image 5",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-05_RadPrimer_plain_Tuboovarian_Abscess5.jpg",
+        "annotatedFilename": "RP-05_RadPrimer_annotated_Tuboovarian_Abscess5_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/54c28f34-b007-4efd-8e8f-6c62ff2e0351?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/54c28f34-b007-4efd-8e8f-6c62ff2e0351?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "RP-06",
+        "displayLabel": "RadPrimer image 6",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-06_RadPrimer_plain_Tuboovarian_Abscess6.jpg",
+        "annotatedFilename": "RP-06_RadPrimer_annotated_Tuboovarian_Abscess6_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/464866e5-7048-45c1-9dbd-fcddd39644f3?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/464866e5-7048-45c1-9dbd-fcddd39644f3?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "RP-07",
+        "displayLabel": "RadPrimer image 7",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-07_RadPrimer_plain_Tuboovarian_Abscess7.jpg",
+        "annotatedFilename": "RP-07_RadPrimer_annotated_Tuboovarian_Abscess7_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/af343d03-26e2-4aaa-b05f-8290f3e0877a?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/af343d03-26e2-4aaa-b05f-8290f3e0877a?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "RP-08",
+        "displayLabel": "RadPrimer image 8",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-08_RadPrimer_plain_Tuboovarian_Abscess8.jpg",
+        "annotatedFilename": "RP-08_RadPrimer_annotated_Tuboovarian_Abscess8_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/a4d61814-572c-4f47-9df7-75d557551bcc?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/a4d61814-572c-4f47-9df7-75d557551bcc?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "RP-09",
+        "displayLabel": "RadPrimer image 9",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-09_RadPrimer_plain_Tuboovarian_Abscess9.jpg",
+        "annotatedFilename": "RP-09_RadPrimer_annotated_Tuboovarian_Abscess9_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/700925cf-6ee6-4540-9306-c7535ef3e609?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/700925cf-6ee6-4540-9306-c7535ef3e609?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "RP-10",
+        "displayLabel": "RadPrimer image 10",
+        "sourceLabel": "RadPrimer",
+        "plainFilename": "RP-10_RadPrimer_plain_Tuboovarian_Abscess10.jpg",
+        "annotatedFilename": "RP-10_RadPrimer_annotated_Tuboovarian_Abscess10_annot.jpg",
+        "plainUrl": "https://app.radprimer.com/images/64ba5923-67fd-4bef-af20-123737098e89?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/64ba5923-67fd-4bef-af20-123737098e89?style=xlarge&annotated=true",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-01",
+        "displayLabel": "STATdx image 1",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-01_STATdx_plain_Pelvic_Inflammatory_Disease1.jpg",
+        "annotatedFilename": "SDX-01_STATdx_annotated_Pelvic_Inflammatory_Disease1_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/200d1fa3-f7ff-4e15-9195-fe5849407443?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/200d1fa3-f7ff-4e15-9195-fe5849407443?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-02",
+        "displayLabel": "STATdx image 2",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-02_STATdx_plain_Pelvic_Inflammatory_Disease2.jpg",
+        "annotatedFilename": "SDX-02_STATdx_annotated_Pelvic_Inflammatory_Disease2_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/6d120663-2348-4d73-916f-daf4ed750e50?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/6d120663-2348-4d73-916f-daf4ed750e50?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-03",
+        "displayLabel": "STATdx image 3",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-03_STATdx_plain_Pelvic_Inflammatory_Disease3.jpg",
+        "annotatedFilename": "SDX-03_STATdx_annotated_Pelvic_Inflammatory_Disease3_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9cabbdff-4522-4b2d-8455-ee9b1d532e98?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9cabbdff-4522-4b2d-8455-ee9b1d532e98?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-04",
+        "displayLabel": "STATdx image 4",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-04_STATdx_plain_Pelvic_Inflammatory_Disease4.jpg",
+        "annotatedFilename": "SDX-04_STATdx_annotated_Pelvic_Inflammatory_Disease4_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8fb529c8-2383-424d-9089-c3c0ad5abbd7?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8fb529c8-2383-424d-9089-c3c0ad5abbd7?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-05",
+        "displayLabel": "STATdx image 5",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-05_STATdx_plain_Pelvic_Inflammatory_Disease5.jpg",
+        "annotatedFilename": "SDX-05_STATdx_annotated_Pelvic_Inflammatory_Disease5_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/41653fae-fbf4-4893-ab36-4a47292735a8?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/41653fae-fbf4-4893-ab36-4a47292735a8?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-06",
+        "displayLabel": "STATdx image 6",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-06_STATdx_plain_Pelvic_Inflammatory_Disease6.jpg",
+        "annotatedFilename": "SDX-06_STATdx_annotated_Pelvic_Inflammatory_Disease6_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/2bb2f383-e777-407f-88bd-9c05f2145155?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/2bb2f383-e777-407f-88bd-9c05f2145155?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-07",
+        "displayLabel": "STATdx image 7",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-07_STATdx_plain_Pelvic_Inflammatory_Disease7.jpg",
+        "annotatedFilename": "SDX-07_STATdx_annotated_Pelvic_Inflammatory_Disease7_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/0215a513-bd1f-42fe-9e08-02bd2fb45092?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/0215a513-bd1f-42fe-9e08-02bd2fb45092?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-08",
+        "displayLabel": "STATdx image 8",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-08_STATdx_plain_Pelvic_Inflammatory_Disease8.jpg",
+        "annotatedFilename": "SDX-08_STATdx_annotated_Pelvic_Inflammatory_Disease8_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8d5fef9a-6f46-41e8-9948-b644f35cc945?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8d5fef9a-6f46-41e8-9948-b644f35cc945?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-09",
+        "displayLabel": "STATdx image 9",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-09_STATdx_plain_Pelvic_Inflammatory_Disease9.jpg",
+        "annotatedFilename": "SDX-09_STATdx_annotated_Pelvic_Inflammatory_Disease9_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/f375550f-2410-4a95-858b-3e2b4328ba6e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/f375550f-2410-4a95-858b-3e2b4328ba6e?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-10",
+        "displayLabel": "STATdx image 10",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-10_STATdx_plain_Pelvic_Inflammatory_Disease10.jpg",
+        "annotatedFilename": "SDX-10_STATdx_annotated_Pelvic_Inflammatory_Disease10_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e0f0575b-2762-4735-9b62-38ee2439e8e5?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e0f0575b-2762-4735-9b62-38ee2439e8e5?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "displayLabel": "STATdx image 11",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-11_STATdx_plain_Pelvic_Inflammatory_Disease11.jpg",
+        "annotatedFilename": "SDX-11_STATdx_annotated_Pelvic_Inflammatory_Disease11_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1caa9421-dde0-4591-8524-57d057ae9bbc?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1caa9421-dde0-4591-8524-57d057ae9bbc?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "displayLabel": "STATdx image 12",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-12_STATdx_plain_Pelvic_Inflammatory_Disease12.jpg",
+        "annotatedFilename": "SDX-12_STATdx_annotated_Pelvic_Inflammatory_Disease12_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/0a1e1adb-ac29-46c1-9a6c-b0a5b3b8935e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/0a1e1adb-ac29-46c1-9a6c-b0a5b3b8935e?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-13",
+        "displayLabel": "STATdx image 13",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-13_STATdx_plain_Pelvic_Inflammatory_Disease13.jpg",
+        "annotatedFilename": "SDX-13_STATdx_annotated_Pelvic_Inflammatory_Disease13_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/349f817a-36f5-4898-9ad6-3f0ea527700a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/349f817a-36f5-4898-9ad6-3f0ea527700a?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-14",
+        "displayLabel": "STATdx image 14",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-14_STATdx_plain_Pelvic_Inflammatory_Disease14.jpg",
+        "annotatedFilename": "SDX-14_STATdx_annotated_Pelvic_Inflammatory_Disease14_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/792f1ae1-ca47-4552-84b5-de9b905f5e10?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/792f1ae1-ca47-4552-84b5-de9b905f5e10?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-15",
+        "displayLabel": "STATdx image 15",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-15_STATdx_plain_Pelvic_Inflammatory_Disease15.jpg",
+        "annotatedFilename": "SDX-15_STATdx_annotated_Pelvic_Inflammatory_Disease15_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/47710725-4463-490e-a98f-62803fb7161f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/47710725-4463-490e-a98f-62803fb7161f?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-16",
+        "displayLabel": "STATdx image 16",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-16_STATdx_plain_Pelvic_Inflammatory_Disease16.jpg",
+        "annotatedFilename": "SDX-16_STATdx_annotated_Pelvic_Inflammatory_Disease16_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/42f2a7f7-d5d5-4dd7-9812-a78a4500047b?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/42f2a7f7-d5d5-4dd7-9812-a78a4500047b?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-17",
+        "displayLabel": "STATdx image 17",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-17_STATdx_plain_Pelvic_Inflammatory_Disease17.jpg",
+        "annotatedFilename": "SDX-17_STATdx_annotated_Pelvic_Inflammatory_Disease17_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/60cf17ac-5641-4309-8ee6-8c88eb764e35?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/60cf17ac-5641-4309-8ee6-8c88eb764e35?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-18",
+        "displayLabel": "STATdx image 18",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-18_STATdx_plain_Pelvic_Inflammatory_Disease18.jpg",
+        "annotatedFilename": "SDX-18_STATdx_annotated_Pelvic_Inflammatory_Disease18_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/42d933d4-b05e-4be8-8f36-bcfef3cd1383?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/42d933d4-b05e-4be8-8f36-bcfef3cd1383?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-19",
+        "displayLabel": "STATdx image 19",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-19_STATdx_plain_Pelvic_Inflammatory_Disease19.jpg",
+        "annotatedFilename": "SDX-19_STATdx_annotated_Pelvic_Inflammatory_Disease19_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a7f87e27-bac2-44f6-ab9c-3e1e6c246005?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a7f87e27-bac2-44f6-ab9c-3e1e6c246005?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-20",
+        "displayLabel": "STATdx image 20",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-20_STATdx_plain_Pelvic_Inflammatory_Disease20.jpg",
+        "annotatedFilename": "SDX-20_STATdx_annotated_Pelvic_Inflammatory_Disease20_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/74641635-0489-4486-b92f-95d343d3682d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/74641635-0489-4486-b92f-95d343d3682d?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-21",
+        "displayLabel": "STATdx image 21",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-21_STATdx_plain_Pelvic_Inflammatory_Disease21.jpg",
+        "annotatedFilename": "SDX-21_STATdx_annotated_Pelvic_Inflammatory_Disease21_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/082ea83f-fb73-4e32-a784-5cf1fa9d9314?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/082ea83f-fb73-4e32-a784-5cf1fa9d9314?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-22",
+        "displayLabel": "STATdx image 22",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-22_STATdx_plain_Pelvic_Inflammatory_Disease22.jpg",
+        "annotatedFilename": "SDX-22_STATdx_annotated_Pelvic_Inflammatory_Disease22_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/6f7ea9c0-f42f-4ecc-bd48-e9274db789d3?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/6f7ea9c0-f42f-4ecc-bd48-e9274db789d3?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-23",
+        "displayLabel": "STATdx image 23",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-23_STATdx_plain_Pelvic_Inflammatory_Disease23.jpg",
+        "annotatedFilename": "SDX-23_STATdx_annotated_Pelvic_Inflammatory_Disease23_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7a69ca38-f87e-4b08-bc87-bfa14513afcc?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7a69ca38-f87e-4b08-bc87-bfa14513afcc?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-24",
+        "displayLabel": "STATdx image 24",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-24_STATdx_plain_Pelvic_Inflammatory_Disease24.jpg",
+        "annotatedFilename": "SDX-24_STATdx_annotated_Pelvic_Inflammatory_Disease24_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/d56041de-247f-4f9c-9f36-3dc74ef6c02a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/d56041de-247f-4f9c-9f36-3dc74ef6c02a?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-25",
+        "displayLabel": "STATdx image 25",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-25_STATdx_plain_Pelvic_Inflammatory_Disease25.jpg",
+        "annotatedFilename": "SDX-25_STATdx_annotated_Pelvic_Inflammatory_Disease25_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/bef90a5f-8056-41ac-89ae-61f34c19782b?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/bef90a5f-8056-41ac-89ae-61f34c19782b?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-26",
+        "displayLabel": "STATdx image 26",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-26_STATdx_plain_Pelvic_Inflammatory_Disease26.jpg",
+        "annotatedFilename": "SDX-26_STATdx_annotated_Pelvic_Inflammatory_Disease26_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ec8fb357-bc4c-47e0-a581-a7df3031cd02?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ec8fb357-bc4c-47e0-a581-a7df3031cd02?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-27",
+        "displayLabel": "STATdx image 27",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-27_STATdx_plain_Pelvic_Inflammatory_Disease27.jpg",
+        "annotatedFilename": "SDX-27_STATdx_annotated_Pelvic_Inflammatory_Disease27_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b87341d2-1499-4e3f-85a3-cf08aefbc7a1?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b87341d2-1499-4e3f-85a3-cf08aefbc7a1?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-28",
+        "displayLabel": "STATdx image 28",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-28_STATdx_plain_Pelvic_Inflammatory_Disease28.jpg",
+        "annotatedFilename": "SDX-28_STATdx_annotated_Pelvic_Inflammatory_Disease28_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/74cbb939-eb83-41df-a9e7-bd11f8d1bc66?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/74cbb939-eb83-41df-a9e7-bd11f8d1bc66?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-29",
+        "displayLabel": "STATdx image 29",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-29_STATdx_plain_Pelvic_Inflammatory_Disease29.jpg",
+        "annotatedFilename": "SDX-29_STATdx_annotated_Pelvic_Inflammatory_Disease29_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a15e763d-2e09-4645-86a5-8170453302bf?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a15e763d-2e09-4645-86a5-8170453302bf?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-30",
+        "displayLabel": "STATdx image 30",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-30_STATdx_plain_Pelvic_Inflammatory_Disease30.jpg",
+        "annotatedFilename": "SDX-30_STATdx_annotated_Pelvic_Inflammatory_Disease30_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/abdf2b99-2012-4039-b167-643b70d0b012?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/abdf2b99-2012-4039-b167-643b70d0b012?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-31",
+        "displayLabel": "STATdx image 31",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-31_STATdx_plain_Pelvic_Inflammatory_Disease31.jpg",
+        "annotatedFilename": "SDX-31_STATdx_annotated_Pelvic_Inflammatory_Disease31_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e43592cf-9ba4-4af7-ae0f-85217e4328cd?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e43592cf-9ba4-4af7-ae0f-85217e4328cd?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-32",
+        "displayLabel": "STATdx image 32",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-32_STATdx_plain_Pelvic_Inflammatory_Disease32.jpg",
+        "annotatedFilename": "SDX-32_STATdx_annotated_Pelvic_Inflammatory_Disease32_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/590421ed-10d1-4218-a41a-e02c987fc991?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/590421ed-10d1-4218-a41a-e02c987fc991?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-33",
+        "displayLabel": "STATdx image 33",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-33_STATdx_plain_Pelvic_Inflammatory_Disease33.jpg",
+        "annotatedFilename": "SDX-33_STATdx_annotated_Pelvic_Inflammatory_Disease33_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1f53a942-9862-4bbe-8a7c-849479f7036f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1f53a942-9862-4bbe-8a7c-849479f7036f?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-34",
+        "displayLabel": "STATdx image 34",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-34_STATdx_plain_Pelvic_Inflammatory_Disease34.jpg",
+        "annotatedFilename": "SDX-34_STATdx_annotated_Pelvic_Inflammatory_Disease34_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ec96993c-5327-463e-b968-9d83ae82dbed?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ec96993c-5327-463e-b968-9d83ae82dbed?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-35",
+        "displayLabel": "STATdx image 35",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-35_STATdx_plain_Pelvic_Inflammatory_Disease35.jpg",
+        "annotatedFilename": "SDX-35_STATdx_annotated_Pelvic_Inflammatory_Disease35_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9212c44d-5257-4297-96db-75349d235f05?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9212c44d-5257-4297-96db-75349d235f05?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-36",
+        "displayLabel": "STATdx image 36",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-36_STATdx_plain_Pelvic_Inflammatory_Disease36.jpg",
+        "annotatedFilename": "SDX-36_STATdx_annotated_Pelvic_Inflammatory_Disease36_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/2355e2e9-6bd8-4c21-8341-69c70dada700?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/2355e2e9-6bd8-4c21-8341-69c70dada700?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-37",
+        "displayLabel": "STATdx image 37",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-37_STATdx_plain_Pelvic_Inflammatory_Disease37.jpg",
+        "annotatedFilename": "SDX-37_STATdx_annotated_Pelvic_Inflammatory_Disease37_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/616e8ea7-81da-4a1a-b878-5684ec703bce?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/616e8ea7-81da-4a1a-b878-5684ec703bce?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-38",
+        "displayLabel": "STATdx image 38",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-38_STATdx_plain_Pelvic_Inflammatory_Disease38.jpg",
+        "annotatedFilename": "SDX-38_STATdx_annotated_Pelvic_Inflammatory_Disease38_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b0802c27-760a-403f-ab3f-94361c030143?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b0802c27-760a-403f-ab3f-94361c030143?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-39",
+        "displayLabel": "STATdx image 39",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-39_STATdx_plain_Pelvic_Inflammatory_Disease39.jpg",
+        "annotatedFilename": "SDX-39_STATdx_annotated_Pelvic_Inflammatory_Disease39_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/42fc9088-5140-40eb-bae3-bff7b64932e2?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/42fc9088-5140-40eb-bae3-bff7b64932e2?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-40",
+        "displayLabel": "STATdx image 40",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-40_STATdx_plain_Pelvic_Inflammatory_Disease40.jpg",
+        "annotatedFilename": "SDX-40_STATdx_annotated_Pelvic_Inflammatory_Disease40_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/c35c8683-6ac6-4f04-8cfe-dd32ec40b934?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/c35c8683-6ac6-4f04-8cfe-dd32ec40b934?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-41",
+        "displayLabel": "STATdx image 41",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-41_STATdx_plain_Pelvic_Inflammatory_Disease41.jpg",
+        "annotatedFilename": "SDX-41_STATdx_annotated_Pelvic_Inflammatory_Disease41_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7d7cd573-8e9e-4ced-b443-dc49dc1b942d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7d7cd573-8e9e-4ced-b443-dc49dc1b942d?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-42",
+        "displayLabel": "STATdx image 42",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-42_STATdx_plain_Pelvic_Inflammatory_Disease42.jpg",
+        "annotatedFilename": "SDX-42_STATdx_annotated_Pelvic_Inflammatory_Disease42_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/68114303-0a20-4647-977e-804e4a437e16?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/68114303-0a20-4647-977e-804e4a437e16?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-43",
+        "displayLabel": "STATdx image 43",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-43_STATdx_plain_Pelvic_Inflammatory_Disease43.jpg",
+        "annotatedFilename": "SDX-43_STATdx_annotated_Pelvic_Inflammatory_Disease43_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/32d90ee3-4de0-4b99-a69e-f09b0609632d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/32d90ee3-4de0-4b99-a69e-f09b0609632d?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-44",
+        "displayLabel": "STATdx image 44",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-44_STATdx_plain_Pelvic_Inflammatory_Disease44.jpg",
+        "annotatedFilename": "SDX-44_STATdx_annotated_Pelvic_Inflammatory_Disease44_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e23321f2-84fd-4fc0-9c53-b047666e22a4?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e23321f2-84fd-4fc0-9c53-b047666e22a4?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-45",
+        "displayLabel": "STATdx image 45",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-45_STATdx_plain_Pelvic_Inflammatory_Disease45.jpg",
+        "annotatedFilename": "SDX-45_STATdx_annotated_Pelvic_Inflammatory_Disease45_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/5c2d1736-930b-4e0a-bca2-5b5d5a8adebb?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/5c2d1736-930b-4e0a-bca2-5b5d5a8adebb?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-46",
+        "displayLabel": "STATdx image 46",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-46_STATdx_plain_Pelvic_Inflammatory_Disease46.jpg",
+        "annotatedFilename": "SDX-46_STATdx_annotated_Pelvic_Inflammatory_Disease46_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/d449cda8-7af3-43bf-bbdf-0d28c0555055?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/d449cda8-7af3-43bf-bbdf-0d28c0555055?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-47",
+        "displayLabel": "STATdx image 47",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-47_STATdx_plain_Pelvic_Inflammatory_Disease47.jpg",
+        "annotatedFilename": "SDX-47_STATdx_annotated_Pelvic_Inflammatory_Disease47_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9bca17ae-c1ce-49ce-b71a-a1c6dcf04d67?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9bca17ae-c1ce-49ce-b71a-a1c6dcf04d67?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      },
+      {
+        "masterImageId": "SDX-48",
+        "displayLabel": "STATdx image 48",
+        "sourceLabel": "STATdx",
+        "plainFilename": "SDX-48_STATdx_plain_Pelvic_Inflammatory_Disease48.jpg",
+        "annotatedFilename": "SDX-48_STATdx_annotated_Pelvic_Inflammatory_Disease48_annot.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/eb0c0b30-e2b9-4c91-8a64-405fa21846d4?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/eb0c0b30-e2b9-4c91-8a64-405fa21846d4?annotated=true&size=1000&quality=90",
+        "downloadRecommendation": "primaryTeachingSet"
+      }
+    ],
+    "generatorInstructions": [
+      "Use RadPrimer hierarchy/deck routing exactly as supplied in metadata.json.",
+      "Use source-qualified human-facing labels such as RadPrimer image 5 or STATdx image 4 in narrative text.",
+      "Keep RP-05 and SDX-04 style IDs in registry, filenames, traceability fields, and import metadata.",
+      "Download only selectedPrimaryImageIds by default through sourceSelectionPlan.imageDownloadPlan.",
+      "Preserve same-patient clusters and procedure/follow-up context when generating later cards or lecture.",
+      "Do not generate cards or a lecture from this package yet."
+    ]
+  }
+}

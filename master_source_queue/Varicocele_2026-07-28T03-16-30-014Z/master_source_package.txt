@@ -1,0 +1,113 @@
+TITLE: Varicocele
+
+CANONICAL ROUTING
+- Canonical hierarchy: All Categories > Basic > Ultrasound > Scrotum Basic > Varicocele
+- Canonical deck path: Corebook::Ultrasound::Scrotum Basic::Varicocele
+- Hierarchy source: metadata.json canonicalHierarchy copied from RadPrimer breadcrumbTrail.
+- IMAIOS/package routing: derive any breadcrumb, deckPath, or tags from the canonical hierarchy above; do not substitute STATdx breadcrumbs.
+
+SOURCE BASIS
+- [RadPrimer] Canonical article backbone and hierarchy.
+- [STATdx] Supplemental diagnostic depth, image variants, complications, differential detail, and treatment nuance.
+- No auditable Core Radiology passage was present in the supplied bundle, so no Core-specific claims are added.
+
+IMAGE COVERAGE GATE
+- Actual downloaded image_evidence files were inspected before duplicate classification.
+- No RadPrimer image is a proven exact duplicate of a STATdx image. There are no matching stable source image IDs, no matching image hashes, and no visually identical same-slice/same-screenshot pairs in the evidence set.
+- STATdx conceptually covers the RadPrimer image set, but the overlap is useful reinforcement rather than duplicate waste.
+- RadPrimer image 1: conceptual replacement by STATdx image 4; both retained because the graphics are visually different and complementary.
+- RadPrimer image 2: near duplicate/conceptual overlap with STATdx grayscale examples, especially STATdx images 1, 14, 15, and 17; all retained because views and cases differ.
+- RadPrimer image 3: near duplicate/conceptual overlap with STATdx Doppler/Valsalva examples, especially STATdx images 2, 3, 10, 11, 16, and 18; all retained as distinct Doppler recognition examples.
+- RadPrimer image 4: conceptual replacement/procedure complement by STATdx image 12; both retained because RadPrimer shows a prominent gonadal vein/varicocele venogram context and STATdx shows post-coil lack of reflux.
+- Archive decision: no images archived by default; all 22 source images remain in the primary teaching set.
+
+MASTER IMAGE SET
+- Primary teaching images: all RadPrimer images 1-4 and all STATdx images 1-18.
+- Archive optional images: none.
+- Preserve source case clusters: STATdx images 1-2, 7-9, 10-12, and 14-16.
+
+KEY FACTS
+- [Both] Varicocele is dilation and tortuosity of veins of the pampiniform plexus, classically greater than 3 mm, caused by venous congestion and retrograde flow in the internal spermatic/testicular vein.
+- [Both] Best imaging clue: dilated, serpiginous/tubular veins adjacent to or behind the superior pole of the testis, with increased color Doppler flow or reflux during Valsalva.
+- [RadPrimer] Distribution: left sided is most common, right sided is uncommon, and bilateral disease is less common than isolated left-sided disease.
+- [STATdx] Isolated right-sided varicocele is uncommon but is rarely associated with malignancy when no other concerning symptoms are present; retroperitoneal imaging may be unnecessary in otherwise reassuring adult cases, though US retroperitoneal assessment can be considered during the same exam.
+- [Both] Valsalva is essential for small varicoceles; exam should include rest and Valsalva color Doppler.
+- [STATdx] ESUR-style protocol: evaluate with and without Valsalva, supine and standing; measure the largest vein regardless of location; 3 mm or greater is diagnostic; report testicular volume when relevant.
+- [Both] Varicocele is a frequent/treatable cause of male infertility, but many patients have normal semen parameters.
+
+TERMINOLOGY
+- [Both] Definition: dilation of pampiniform plexus veins greater than 3 mm due to retrograde flow in the testicular/internal spermatic vein.
+- [STATdx] Dilated veins may involve the pampiniform plexus, cremasteric plexus, vein of vas deferens, and testicular/spermatic vein.
+- [Both] Intratesticular varicocele is rare and involves dilated veins at the mediastinum testis; it must be distinguished from tubular ectasia of the rete testis.
+
+IMAGING
+- [Both] Ultrasound with color Doppler is the best diagnostic tool. Use high-frequency scrotal US with supine and standing assessment when possible.
+- [Both] Grayscale US shows hypoechoic, tubular, serpiginous vessels superior/posterior/lateral to the testis; they may extend along the spermatic cord.
+- [Both] Diagnostic size threshold: multiple pampiniform plexus veins greater than or equal to 3 mm, especially upright or during Valsalva.
+- [Both] Color Doppler shows distention and increased flow/reflux with Valsalva. Slow flow can be missed unless low Doppler settings are used.
+- [STATdx] If the Doppler scale is set appropriately, retrograde flow is directed toward the testis; reflux longer than 2 seconds during Valsalva is diagnostic of significant reflux.
+- [STATdx] Slow venous flow can appear echogenic and mobile in real time and should not be mistaken for thrombus; true thrombosis is echogenic material in a noncompressible lumen without flow during Valsalva.
+- [RadPrimer] MRI is usually incidental and shows serpiginous enhancing channels; slow flow can be intermediate T1 and high T2 signal, while higher velocity flow may create signal voids.
+- [Both] Catheter venography demonstrates dilated venous channels and can document gonadal/testicular vein reflux; treatment may be catheter embolization.
+- [STATdx] CT or MR may show enhancing tubular structures or reveal secondary venous causes such as renal vein thrombosis, retroperitoneal tumor, fibrosis, or systemic venous congestion.
+- [RadPrimer] Scan the retroperitoneum for mass when clinical context suggests a secondary cause, especially recent-onset varicocele in an older patient.
+
+DIFFERENTIAL DIAGNOSIS
+- [STATdx] Hernia: echogenic fat or bowel displaces the testis, may accentuate with Valsalva, shows gut signature/peristalsis, and has minimal bowel-content Doppler flow.
+- [Both] Epididymitis: enlarged heterogeneous epididymis with increased Doppler flow, separate from the pampiniform plexus, and without Valsalva-dependent varicocele reflux behavior.
+- [Both] Tubular ectasia of the rete testis: avascular dilated tubules in the mediastinum testis; no Doppler flow, unlike intratesticular varicocele.
+- [STATdx] Spermatocele/epididymal cyst: one or more anechoic or hypoechoic cysts without Doppler flow.
+- [STATdx] Rare vascular lesions: testicular AVM, hemangioma, or high-flow extratesticular mass.
+- [RadPrimer] Testicular torsion: enlarged hypoechoic testis with absent or decreased intratesticular flow.
+
+PATHOLOGY AND MECHANISM
+- [Both] Primary varicocele is related to venous valve incompetence and reflux, classically near the left renal vein/IVC junction.
+- [Both] Left-sided predominance is explained by the longer left testicular vein and its perpendicular drainage into the left renal vein; the right testicular vein drains more directly into the IVC.
+- [Both] Secondary causes include obstruction or compression of testicular venous drainage by renal/adrenal tumor, retroperitoneal nodes, lymphoma, RCC, retroperitoneal fibrosis, renal vein thrombosis, or nutcracker-type SMA compression.
+- [Both] Potential fertility injury mechanisms include increased scrotal/testicular heat, oxidative stress, stagnant blood/ischemia, increased venous pressure with decreased arterial inflow, catecholamine reflux, and androgen deprivation.
+- [RadPrimer] Clinical grading: small is palpable only with Valsalva, moderate is palpable with standing, and large is visible through scrotal skin and palpable while standing.
+
+CLINICAL ISSUES
+- [Both] Many varicoceles are asymptomatic and detected on physical exam or infertility work-up.
+- [Both] Typical symptoms are vague scrotal discomfort, pressure, or heaviness, usually worse while standing.
+- [Both] Varicocele is common in the general male population and more common among infertile men, but many men with varicocele have normal fertility and normal semen parameters.
+- [STATdx] In adults, repair is generally considered for men trying to conceive who have palpable varicocele and abnormal semen parameters, or for scrotal pain.
+- [STATdx] There is no indication to treat subclinical varicoceles found only by imaging; men with azoospermia may not benefit. Adolescent treatment is controversial and may use testicular volume discrepancy.
+- [Both] Treatment options include catheter embolization/sclerotherapy and surgical ligation. STATdx notes that varicocelectomy is a misnomer because veins are ligated rather than removed.
+
+DIAGNOSTIC CHECKLIST
+- [Both] Perform Valsalva; small varicoceles may be occult without it.
+- [Both] Confirm venous structure, diameter, and reflux rather than relying on gray-scale serpiginous appearance alone.
+- [STATdx] Use Doppler settings sensitive enough for slow flow and reflux; avoid mistaking very slow flow for thrombosis.
+- [RadPrimer] In an older man with new-onset varicocele, consider left renal vein occlusion or retroperitoneal/renal/adrenal tumor.
+- [STATdx] In adults with isolated right-sided varicocele and no other malignancy symptoms, recent experience does not support frequent cancer association; in children younger than 9 years, look for tumor.
+- [Both] Measure/report testicular volume when fertility or adolescent testicular function is part of the question.
+
+IMAGE CATALOG FOR FUTURE GENERATION
+- RadPrimer image 1: Graphic shows dilated, tortuous varicose veins of the pampiniform plexus <img src="arrow_WS.png"> in the spermatic cord and along the posterosuperior aspect of the testis <img src="arrow_WC.png">.
+- RadPrimer image 2: Oblique grayscale ultrasound through the cord, in supine position with normal respiration, shows a dilated, tortuous principal vein <img src="arrow_WC.png"> in the pampiniform plexus measuring 7.5 mm in caliber.
+- RadPrimer image 3: Longitudinal color Doppler ultrasound of the  scrotum in a 24-year-old man shows flow <img src="arrow_WC.png"> in several dilated veins during Valsalva, indicative of moderate varicocele. Blood flow in the varicocele is slow and may be detected only with low Doppler settings.
+- RadPrimer image 4: Catheter venogram demonstrates a prominent left gonadal vein extending into the left hemiscrotum in this patient with varicocele and infertility. Varicocele resolved after coil embolization.
+- STATdx image 1: Transverse US of the left scrotum with the patient at rest in supine position shows multiple anechoic, tubular structures <img src="arrow_WS.png"> medial to the testis, consistent with varicocele.
+- STATdx image 2: Longitudinal color Doppler US in the same patient during Valsalva shows flow throughout the varicocele due to reflux.
+- STATdx image 3: Longitudinal color Doppler US shows dilated veins with minimal flow at rest <img src="arrow_WS.png">. With Valsalva <img src="arrow_WO.png">, aliasing is seen due to increased velocity of retrograde blood flow exceeding the low Doppler scale.
+- STATdx image 4: Graphic shows normal pampiniform plexus veins <img src="arrow_WS.png"> compared to abnormally dilated veins in a varicocele <img src="arrow_WO.png">.
+- STATdx image 5: Transverse US inferior to the testis shows a large, right-sided varicocele <img src="arrow_WS.png">. Some of the veins are echogenic <img src="arrow_WC.png"> due to slow flow (mobile in real time). The patient underwent CT, which was negative. Right-sided varicoceles, without other symptoms of malignancy, are rarely associated with an underlying malignancy.
+- STATdx image 6: Longitudinal US of the spermatic cord just superior to the testis <img src="arrow_WS.png"> in a patient with palpable, painful area shows a thrombosed varicocele vein as a echogenic, expanded vein <img src="arrow_WC.png"> without color flow.
+- STATdx image 7: Coronal CECT in a patient with history of severe necrotizing pancreatitis shows large, dilated veins in the left hemiscrotum <img src="arrow_WS.png">, consistent with varicocele. These communicate with the spermatic (gonadal) vein <img src="arrow_WO.png">.
+- STATdx image 8: Coronal CECT in the same patient shows a dilated spermatic vein  <img src="arrow_WS.png">  entering a small left renal vein  <img src="arrow_WO.png">.
+- STATdx image 9: Axial CECT in the same patient shows chronic thrombosis of the left renal vein <img src="arrow_WS.png">  due to past pancreatitis. Rarely, secondary causes of varicocele include vascular thromboses, iatrogenic causes, and tumor compression/venous invasion.
+- STATdx image 10: Longitudinal color Doppler US of the left scrotum in a 20-year-old symptomatic patient shows dilated vessels with scattered Doppler signal at rest.
+- STATdx image 11: Longitudinal color Doppler US in the same patient with Valsalva shows increased size of vessels and marked increase in flow due to retrograde flow in the pampiniform plexus.
+- STATdx image 12: Anterior projection venogram in the same patient after coil embolization of the varicocele shows lack of reflux caudal to the coil mass  <img src="arrow_WS.png">.
+- STATdx image 13: Transverse color Doppler US shows tortuous, hypoechoic structures <img src="arrow_WS.png"> in the testis at the mediastinum with minimal flow. Rarely, a varicocele extends into or occurs primarily in the testis. This should not be confused with dilation of the rete testis.
+- STATdx image 14: Transverse US of both testes shows multiple hypoechoic, tubular structures <img src="arrow_WS.png"> along the medial aspect of the left testis.
+- STATdx image 15: Longitudinal US of the left scrotum in the same patient shows the tubular and serpiginous nature of the lesion <img src="arrow_WS.png">.
+- STATdx image 16: Color Doppler US in the same patient with Valsalva shows marked blood flow <img src="arrow_WS.png">, consistent with a moderate-sized varicocele.
+- STATdx image 17: Longitudinal US of the right scrotum in the setting of a palpable mass shows an isolated, right-sided varicocele <img src="arrow_WS.png">. Further work-up showed no malignancy. In the past, this was thought to be highly associated with malignancy; however, more recent experience shows that isolated, right-sided varicocele is rarely associated with malignancy. When it does occur in the setting of malignancy, there are often other concerning symptoms.
+- STATdx image 18: Color Doppler US in an older man with scrotal discomfort shows a huge left varicocele. The late onset prompted imaging of the retroperitoneum, which showed marked dilatation of the cava and renal veins due to severe right heart dysfunction.
+
+TRACEABILITY NOTES
+- Human-facing prose should use labels such as RadPrimer image 2 or STATdx image 11.
+- Registry IDs and source-qualified filenames retain RP-/SDX-style traceability codes for import, download, and audit fields.
+- The selectedPrimaryImageIds and sourceSelectionPlan.imageDownloadPlan fields in the JSON outputs define the curated image download set.

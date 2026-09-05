@@ -1,0 +1,773 @@
+{
+  "articleTitle": "Ovarian Teratoma",
+  "createdAt": "2026-08-07T02:48:48Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Female Pelvis Basic",
+    "Ovarian Teratoma"
+  ],
+  "canonicalDeckPath": "Corebook::Ultrasound::Female Pelvis Basic::Ovarian Teratoma",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "role": "Canonical hierarchy/backbone and canonical primary image copy for duplicated images.",
+      "keptText": [
+        "terminology for mature cystic teratoma/dermoid, immature teratoma, and monodermal teratoma",
+        "ultrasound recognition features including Rokitansky nodule, hair/dot-dash echoes, fat-fluid level, teeth/calcification, and tip-of-iceberg sign",
+        "CT/MR fat-confirmation principles and immature teratoma pattern",
+        "differential diagnosis, pathology, clinical course, malignant degeneration risk factors, and treatment overview"
+      ],
+      "limitations": [
+        "STATdx contains more supplemental image examples, including complications, bilateral disease, and gross pathology.",
+        "RadPrimer images are mirrored in STATdx, but kept as canonical because RadPrimer is the requested hierarchy/backbone."
+      ]
+    },
+    "STATdx": {
+      "role": "Supplemental image depth and caption-level reinforcement.",
+      "keptText": [
+        "expanded supplemental image set for CT, MR, ultrasound, torsion/inflammatory variants, bilateral disease, and gross pathology",
+        "same-patient companion clusters for ultrasound views, MR sequences, and CT bilateral dermoids",
+        "gross pathology correlations for Rokitansky nodule, hair, fat, and torsed specimen"
+      ],
+      "limitations": [
+        "STATdx breadcrumb is not used for canonical hierarchy because RadPrimer is present.",
+        "STATdx images 1-10 duplicate RadPrimer images 1-10 and are archived by default."
+      ]
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 29
+  },
+  "sourceAttributionRules": {
+    "default": "Tag factual blocks as [RadPrimer], [STATdx], or [Both] where source distinction matters.",
+    "humanFacingImages": "Use labels like RadPrimer image 5 or STATdx image 4 in prose.",
+    "traceability": "Use masterImageId values only in registry fields, filenames, import metadata, and traceability notes."
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-27",
+    "SDX-28",
+    "SDX-29"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": {
+      "primary": "RadPrimer supplies the canonical hierarchy/backbone, deck routing, and article structure for ovarian teratoma.",
+      "supplement": "STATdx contributes a larger image set and richer caption-level examples for CT, MR, torsion/inflammation complications, bilateral disease, and gross pathology correlation.",
+      "downweight": "Do not use the STATdx breadcrumb for canonical hierarchy or deck routing. Do not claim Core Radiology support because no auditable Core text was supplied in this bundle."
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate patients, alternate same-disease examples, modality variants, same-patient companion images, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is insufficient.",
+    "caseClusterGuardrails": {
+      "rule": "Treat same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse groups as atomic teaching clusters unless a documented split is safe.",
+      "intentionalSplits": [
+        {
+          "cluster": "STATdx images 1-10 duplicate RadPrimer images 1-10 one-for-one.",
+          "reason": "Splitting is safe because each archived STATdx image is an exact duplicate/resolution variant of a retained RadPrimer canonical image with the same stable source image ID and same visual content. No unique companion context is lost."
+        }
+      ],
+      "preservedClusters": [
+        "RadPrimer images 8-10 are retained together as an ultrasound-to-MR characterization cluster.",
+        "STATdx images 13-14 are retained together as CT examples of fat/calcium and complex internal architecture.",
+        "STATdx images 19-20 are retained together as a transabdominal/transvaginal ultrasound pair for hair/linear echoes.",
+        "STATdx images 21-23 are retained together as a same-patient T1, T1 fat-suppressed, and T2 MR cluster.",
+        "STATdx images 25-26 are retained together as same-patient CECT images showing tooth/fat and bilateral dermoids."
+      ]
+    },
+    "radprimerImageCoverageGate": {
+      "statdxFullyCoversRadPrimerImageSet": true,
+      "summary": "STATdx fully covers the RadPrimer image set by exact one-for-one stable source image IDs and matching visual content for images 1-10. RadPrimer copies are retained as canonical primaries; STATdx duplicates 1-10 are archived by default.",
+      "coverage": [
+        {
+          "radprimerImageId": "RP-01",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-01"
+          ],
+          "evidence": "Same stable source imageId 0f51e322-4447-4a8e-b2bd-88b7a586f35a appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-01 as canonical RadPrimer primary image; archive SDX-01 as optional exact duplicate."
+        },
+        {
+          "radprimerImageId": "RP-02",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-02"
+          ],
+          "evidence": "Same stable source imageId f541b9c5-6970-4497-b43d-574a5e2fb106 appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-02 as canonical RadPrimer primary image; archive SDX-02 as optional exact duplicate."
+        },
+        {
+          "radprimerImageId": "RP-03",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-03"
+          ],
+          "evidence": "Same stable source imageId b11aa3f5-3aee-49f4-8388-7e2625238855 appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-03 as canonical RadPrimer primary image; archive SDX-03 as optional exact duplicate."
+        },
+        {
+          "radprimerImageId": "RP-04",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-04"
+          ],
+          "evidence": "Same stable source imageId 96a76e65-2a4c-47de-84d1-e0cee32cfee9 appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-04 as canonical RadPrimer primary image; archive SDX-04 as optional exact duplicate."
+        },
+        {
+          "radprimerImageId": "RP-05",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-05"
+          ],
+          "evidence": "Same stable source imageId b0c8375f-815d-414e-abf7-3abf26822eda appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-05 as canonical RadPrimer primary image; archive SDX-05 as optional exact duplicate."
+        },
+        {
+          "radprimerImageId": "RP-06",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-06"
+          ],
+          "evidence": "Same stable source imageId 9c10405d-6543-4e47-b3c6-97cf943654ef appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-06 as canonical RadPrimer primary image; archive SDX-06 as optional exact duplicate."
+        },
+        {
+          "radprimerImageId": "RP-07",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-07"
+          ],
+          "evidence": "Same stable source imageId 68b5b702-ac6f-4ec6-8b8c-6992680195b4 appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-07 as canonical RadPrimer primary image; archive SDX-07 as optional exact duplicate."
+        },
+        {
+          "radprimerImageId": "RP-08",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-08"
+          ],
+          "evidence": "Same stable source imageId 3af90e85-c5b4-466d-b209-67dd9971e8b7 appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-08 as canonical RadPrimer primary image; archive SDX-08 as optional exact duplicate."
+        },
+        {
+          "radprimerImageId": "RP-09",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-09"
+          ],
+          "evidence": "Same stable source imageId 6a857c11-3495-463a-bb6f-ffc03853978f appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-09 as canonical RadPrimer primary image; archive SDX-09 as optional exact duplicate."
+        },
+        {
+          "radprimerImageId": "RP-10",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-10"
+          ],
+          "evidence": "Same stable source imageId 9ecc3324-e0e4-45d9-b5bb-cb904f583741 appears in both sources. Visual review shows the same image/screenshot content; RadPrimer evidence is 900x900 and STATdx evidence is 1000x1000, with different file hashes from source resizing.",
+          "action": "Keep RP-10 as canonical RadPrimer primary image; archive SDX-10 as optional exact duplicate."
+        }
+      ],
+      "action": "Keep all RadPrimer images as canonical primary images. Archive STATdx images 1-10 as optional exact duplicates. Keep STATdx images 11-29 as selected primary supplemental images."
+    },
+    "primaryImageDownloadUseSet": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26",
+      "SDX-27",
+      "SDX-28",
+      "SDX-29"
+    ],
+    "archiveDuplicateIds": [
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10"
+    ],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "displayLabel": "RadPrimer image 1",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "plainUrl": "https://app.radprimer.com/images/0f51e322-4447-4a8e-b2bd-88b7a586f35a?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/0f51e322-4447-4a8e-b2bd-88b7a586f35a?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-01_RadPrimer_plain_Ovarian_Teratoma1.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-01_RadPrimer_annotated_Ovarian_Teratoma1_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "ultrasoundDotDashHair",
+          "rokitanskyNodule",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "RP-02",
+        "displayLabel": "RadPrimer image 2",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "plainUrl": "https://app.radprimer.com/images/f541b9c5-6970-4497-b43d-574a5e2fb106?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f541b9c5-6970-4497-b43d-574a5e2fb106?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-02_RadPrimer_plain_Ovarian_Teratoma2.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-02_RadPrimer_annotated_Ovarian_Teratoma2_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "cysticDermoid",
+          "rokitanskyNodule",
+          "embryonicLayerTeaching",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "RP-03",
+        "displayLabel": "RadPrimer image 3",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "plainUrl": "https://app.radprimer.com/images/b11aa3f5-3aee-49f4-8388-7e2625238855?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/b11aa3f5-3aee-49f4-8388-7e2625238855?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-03_RadPrimer_plain_Ovarian_Teratoma3.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-03_RadPrimer_annotated_Ovarian_Teratoma3_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "fatFluidLevel",
+          "gradedFatContents",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "RP-04",
+        "displayLabel": "RadPrimer image 4",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "plainUrl": "https://app.radprimer.com/images/96a76e65-2a4c-47de-84d1-e0cee32cfee9?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/96a76e65-2a4c-47de-84d1-e0cee32cfee9?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-04_RadPrimer_plain_Ovarian_Teratoma4.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-04_RadPrimer_annotated_Ovarian_Teratoma4_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "endovaginalFatFluidLevel",
+          "nonhorizontalLevel",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "RP-05",
+        "displayLabel": "RadPrimer image 5",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 5,
+        "plainUrl": "https://app.radprimer.com/images/b0c8375f-815d-414e-abf7-3abf26822eda?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/b0c8375f-815d-414e-abf7-3abf26822eda?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-05_RadPrimer_plain_Ovarian_Teratoma5.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-05_RadPrimer_annotated_Ovarian_Teratoma5_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "echogenicFatContainingLesion",
+          "posteriorEnhancement",
+          "shadowing",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "RP-06",
+        "displayLabel": "RadPrimer image 6",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 6,
+        "plainUrl": "https://app.radprimer.com/images/9c10405d-6543-4e47-b3c6-97cf943654ef?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9c10405d-6543-4e47-b3c6-97cf943654ef?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-06_RadPrimer_plain_Ovarian_Teratoma6.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-06_RadPrimer_annotated_Ovarian_Teratoma6_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "colorDopplerNoInternalFlow",
+          "malignantTransformationTrigger",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "RP-07",
+        "displayLabel": "RadPrimer image 7",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 7,
+        "plainUrl": "https://app.radprimer.com/images/68b5b702-ac6f-4ec6-8b8c-6992680195b4?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/68b5b702-ac6f-4ec6-8b8c-6992680195b4?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-07_RadPrimer_plain_Ovarian_Teratoma7.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-07_RadPrimer_annotated_Ovarian_Teratoma7_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "ctMacroscopicFat",
+          "toothCalcification",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "RP-08",
+        "displayLabel": "RadPrimer image 8",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 8,
+        "plainUrl": "https://app.radprimer.com/images/3af90e85-c5b4-466d-b209-67dd9971e8b7?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/3af90e85-c5b4-466d-b209-67dd9971e8b7?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-08_RadPrimer_plain_Ovarian_Teratoma8.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-08_RadPrimer_annotated_Ovarian_Teratoma8_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "heterogeneousUS",
+          "noInternalFlow",
+          "MRCharacterizationTrigger",
+          "atomicClusterRP08RP10",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "RP-09",
+        "displayLabel": "RadPrimer image 9",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 9,
+        "plainUrl": "https://app.radprimer.com/images/6a857c11-3495-463a-bb6f-ffc03853978f?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/6a857c11-3495-463a-bb6f-ffc03853978f?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-09_RadPrimer_plain_Ovarian_Teratoma9.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-09_RadPrimer_annotated_Ovarian_Teratoma9_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "T2MRMultiloculatedMass",
+          "solidComponent",
+          "atomicClusterRP08RP10",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "RP-10",
+        "displayLabel": "RadPrimer image 10",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 10,
+        "plainUrl": "https://app.radprimer.com/images/9ecc3324-e0e4-45d9-b5bb-cb904f583741?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/9ecc3324-e0e4-45d9-b5bb-cb904f583741?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-10_RadPrimer_plain_Ovarian_Teratoma10.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-10_RadPrimer_annotated_Ovarian_Teratoma10_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "T1FatSuppressedMR",
+          "macroscopicFatConfirmation",
+          "atomicClusterRP08RP10",
+          "exactDuplicateCanonicalCopy"
+        ]
+      },
+      {
+        "masterImageId": "SDX-11",
+        "displayLabel": "STATdx image 11",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 11,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/68ddcb5b-8c65-4f48-bd81-f99f94f1a37e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/68ddcb5b-8c65-4f48-bd81-f99f94f1a37e?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-11_STATdx_plain_Ovarian_Teratoma11.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-11_STATdx_annotated_Ovarian_Teratoma11_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "ctMacroscopicFat",
+          "toothCalcification",
+          "alternateExample"
+        ]
+      },
+      {
+        "masterImageId": "SDX-12",
+        "displayLabel": "STATdx image 12",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 12,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9bcc3e1a-77b2-414d-89f2-ba7ef943c3b6?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9bcc3e1a-77b2-414d-89f2-ba7ef943c3b6?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-12_STATdx_plain_Ovarian_Teratoma12.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-12_STATdx_annotated_Ovarian_Teratoma12_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "transabdominalUS",
+          "echogenicFatComponent",
+          "alternateExample"
+        ]
+      },
+      {
+        "masterImageId": "SDX-13",
+        "displayLabel": "STATdx image 13",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 13,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a44bda20-ca97-4772-8c57-9a191833917d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a44bda20-ca97-4772-8c57-9a191833917d?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-13_STATdx_plain_Ovarian_Teratoma13.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-13_STATdx_annotated_Ovarian_Teratoma13_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "ctFatAndCalcium",
+          "posteriorToUterus",
+          "atomicClusterSDX13SDX14"
+        ]
+      },
+      {
+        "masterImageId": "SDX-14",
+        "displayLabel": "STATdx image 14",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 14,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/75d29f58-216b-4ba1-9043-610742ef4da6?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/75d29f58-216b-4ba1-9043-610742ef4da6?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-14_STATdx_plain_Ovarian_Teratoma14.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-14_STATdx_annotated_Ovarian_Teratoma14_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "ctComplexInternalArchitecture",
+          "solidPortion",
+          "atomicClusterSDX13SDX14"
+        ]
+      },
+      {
+        "masterImageId": "SDX-15",
+        "displayLabel": "STATdx image 15",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 15,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1924dc6f-6fb6-4461-b68b-bbc0a3982097?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1924dc6f-6fb6-4461-b68b-bbc0a3982097?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-15_STATdx_plain_Ovarian_Teratoma15.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-15_STATdx_annotated_Ovarian_Teratoma15_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "complication",
+          "torsion",
+          "ctPeritonealFatEdema",
+          "acutePain"
+        ]
+      },
+      {
+        "masterImageId": "SDX-16",
+        "displayLabel": "STATdx image 16",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 16,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a55f90d5-ac7e-4595-8a5f-2609d602d25b?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a55f90d5-ac7e-4595-8a5f-2609d602d25b?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-16_STATdx_plain_Ovarian_Teratoma16.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-16_STATdx_annotated_Ovarian_Teratoma16_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "classicTransvaginalUS",
+          "echogenicOvarianMass",
+          "alternateExample"
+        ]
+      },
+      {
+        "masterImageId": "SDX-17",
+        "displayLabel": "STATdx image 17",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 17,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a0b959f0-8aa8-4141-9204-06601fd4158d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a0b959f0-8aa8-4141-9204-06601fd4158d?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-17_STATdx_plain_Ovarian_Teratoma17.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-17_STATdx_annotated_Ovarian_Teratoma17_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "complication",
+          "infectedOrInflamedDermoid",
+          "NECT",
+          "thickWallInflammation"
+        ]
+      },
+      {
+        "masterImageId": "SDX-18",
+        "displayLabel": "STATdx image 18",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 18,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/c94cc226-767e-400c-8181-e089f53a7091?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/c94cc226-767e-400c-8181-e089f53a7091?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-18_STATdx_plain_Ovarian_Teratoma18.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-18_STATdx_annotated_Ovarian_Teratoma18_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "complication",
+          "torsion",
+          "transvaginalUS",
+          "noWallFlow"
+        ]
+      },
+      {
+        "masterImageId": "SDX-19",
+        "displayLabel": "STATdx image 19",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 19,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/0ab0d993-b7cb-4111-99da-4b8466860e05?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/0ab0d993-b7cb-4111-99da-4b8466860e05?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-19_STATdx_plain_Ovarian_Teratoma19.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-19_STATdx_annotated_Ovarian_Teratoma19_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX19SDX20",
+          "transabdominalUS",
+          "linearEchoesHair",
+          "recognitionReinforcement"
+        ]
+      },
+      {
+        "masterImageId": "SDX-20",
+        "displayLabel": "STATdx image 20",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 20,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/37cbf860-c393-42b7-bb93-ab5ec8d81a04?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/37cbf860-c393-42b7-bb93-ab5ec8d81a04?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-20_STATdx_plain_Ovarian_Teratoma20.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-20_STATdx_annotated_Ovarian_Teratoma20_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX19SDX20",
+          "transvaginalUS",
+          "linearEchoesHair",
+          "recognitionReinforcement"
+        ]
+      },
+      {
+        "masterImageId": "SDX-21",
+        "displayLabel": "STATdx image 21",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 21,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1f439933-b0f3-4983-bee9-3b8e02373d52?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1f439933-b0f3-4983-bee9-3b8e02373d52?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-21_STATdx_plain_Ovarian_Teratoma21.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-21_STATdx_annotated_Ovarian_Teratoma21_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX21SDX23",
+          "MRIT1",
+          "highSignalFat",
+          "modalityVariant"
+        ]
+      },
+      {
+        "masterImageId": "SDX-22",
+        "displayLabel": "STATdx image 22",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 22,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/f4ee210e-4f56-48b1-bc64-3ef177d939cc?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/f4ee210e-4f56-48b1-bc64-3ef177d939cc?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-22_STATdx_plain_Ovarian_Teratoma22.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-22_STATdx_annotated_Ovarian_Teratoma22_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX21SDX23",
+          "MRIT1FatSaturation",
+          "signalDropout",
+          "fatConfirmation"
+        ]
+      },
+      {
+        "masterImageId": "SDX-23",
+        "displayLabel": "STATdx image 23",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 23,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/80e20f2b-ab90-4e34-b056-276724cfc093?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/80e20f2b-ab90-4e34-b056-276724cfc093?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-23_STATdx_plain_Ovarian_Teratoma23.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-23_STATdx_annotated_Ovarian_Teratoma23_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX21SDX23",
+          "MRIT2",
+          "uterusCervixContext",
+          "modalityVariant"
+        ]
+      },
+      {
+        "masterImageId": "SDX-24",
+        "displayLabel": "STATdx image 24",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 24,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/56a79387-6c9e-4e80-9565-c936f5c99cee?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/56a79387-6c9e-4e80-9565-c936f5c99cee?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-24_STATdx_plain_Ovarian_Teratoma24.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-24_STATdx_annotated_Ovarian_Teratoma24_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "MRIT1",
+          "fatSignal",
+          "recognitionReinforcement",
+          "alternateExample"
+        ]
+      },
+      {
+        "masterImageId": "SDX-25",
+        "displayLabel": "STATdx image 25",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 25,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3271bf49-aabe-442a-9cd7-afd0dfcfc7f4?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3271bf49-aabe-442a-9cd7-afd0dfcfc7f4?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-25_STATdx_plain_Ovarian_Teratoma25.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-25_STATdx_annotated_Ovarian_Teratoma25_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX25SDX26",
+          "CECTTooth",
+          "fatDensity",
+          "recognitionReinforcement"
+        ]
+      },
+      {
+        "masterImageId": "SDX-26",
+        "displayLabel": "STATdx image 26",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 26,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/70129c94-7f90-414c-b50a-f28a992f7274?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/70129c94-7f90-414c-b50a-f28a992f7274?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-26_STATdx_plain_Ovarian_Teratoma26.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-26_STATdx_annotated_Ovarian_Teratoma26_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX25SDX26",
+          "CECTBilateralDermoids",
+          "fatLayering",
+          "IUDContext"
+        ]
+      },
+      {
+        "masterImageId": "SDX-27",
+        "displayLabel": "STATdx image 27",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 27,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e11921ed-9060-41b8-83f1-4d852b365d62?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e11921ed-9060-41b8-83f1-4d852b365d62?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-27_STATdx_plain_Ovarian_Teratoma27.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-27_STATdx_annotated_Ovarian_Teratoma27_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "grossPathology",
+          "rokitanskyNodule",
+          "hair",
+          "pathologyCorrelation"
+        ]
+      },
+      {
+        "masterImageId": "SDX-28",
+        "displayLabel": "STATdx image 28",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 28,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/5420c4eb-d1fb-4a09-9375-8e59a700b2c2?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/5420c4eb-d1fb-4a09-9375-8e59a700b2c2?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-28_STATdx_plain_Ovarian_Teratoma28.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-28_STATdx_annotated_Ovarian_Teratoma28_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "grossPathology",
+          "torsedPedicle",
+          "solidNodule",
+          "hair",
+          "pathologyCorrelation"
+        ]
+      },
+      {
+        "masterImageId": "SDX-29",
+        "displayLabel": "STATdx image 29",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 29,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/67a5da7b-0a50-461c-964e-4a88e941f8f9?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/67a5da7b-0a50-461c-964e-4a88e941f8f9?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-29_STATdx_plain_Ovarian_Teratoma29.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-29_STATdx_annotated_Ovarian_Teratoma29_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "grossPathology",
+          "fatContent",
+          "pathologyCorrelation"
+        ]
+      }
+    ],
+    "clusterPolicyNotes": [
+      "No RadPrimer image is discarded; RadPrimer remains the canonical image backbone.",
+      "STATdx images 1-10 are archived only because actual image evidence and source image IDs show they duplicate RadPrimer images 1-10.",
+      "STATdx images 11-29 remain selected primary images as additional examples, modality variants, complication examples, same-patient companion clusters, or gross pathology correlations."
+    ],
+    "generatorInstructions": [
+      "Use the canonicalHierarchy exactly as copied from metadata.json.",
+      "Use source-qualified image labels such as RadPrimer image 5 and STATdx image 4 in narrative-facing prose.",
+      "Keep RP-05 and SDX-04 style identifiers in registry fields, filenames, import metadata, and traceability notes.",
+      "Download only selectedPrimaryImageIds by default using sourceSelectionPlan.imageDownloadPlan.",
+      "Do not generate cards or a lecture from this package yet."
+    ]
+  }
+}

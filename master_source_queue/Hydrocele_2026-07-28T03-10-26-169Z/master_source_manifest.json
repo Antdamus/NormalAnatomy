@@ -1,0 +1,140 @@
+{
+  "version": "master-source-manifest-v1",
+  "articleTitle": "Hydrocele",
+  "createdAt": "2026-07-28T03:16:36Z",
+  "sourceBundleName": "Hydrocele_2026-07-28T03-10-26-169Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Hydrocele"
+  ],
+  "canonicalHierarchySource": {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceFile": "RadPrimer_metadata.json",
+    "field": "breadcrumbTrail",
+    "policy": "RadPrimer breadcrumbTrail is the canonical hierarchy/backbone."
+  },
+  "canonicalDeckPath": "Corebook::Ultrasound::Scrotum Basic::Hydrocele",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "radprimerPresent": true,
+    "statdxPresent": true,
+    "radprimerImageCount": 4,
+    "statdxImageCount": 11,
+    "statdxRadPrimerImageCoverageSummary": "STATdx exactly duplicates all 4 RadPrimer images by stable source image ID and visual inspection of actual image_evidence files, and adds 7 distinct supplemental hydrocele examples.",
+    "radprimerCoverageCounts": {
+      "exactDuplicate": 4,
+      "nearDuplicate": 0,
+      "conceptualReplacement": 0,
+      "notCovered": 0
+    },
+    "coreEvidence": "No auditable Core Radiology source supplied in this bundle."
+  },
+  "imageCountBySource": {
+    "RadPrimer": 4,
+    "STATdx": 11
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer], [STATdx], or [Both] when attribution matters.",
+    "Use clean human-facing labels such as RadPrimer image 2 and STATdx image 6 in prose.",
+    "Keep RP-02 and SDX-06 style IDs in registry, filenames, manifest, and traceability fields."
+  ],
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04"
+  ],
+  "sourceSelectionPlan": {
+    "sourcePriority": [
+      "RadPrimer canonical hierarchy/backbone",
+      "STATdx supplemental depth and source-preferred duplicate image replacements"
+    ],
+    "textPlan": {
+      "keepFromRadPrimer": [
+        "metadata.json canonicalHierarchy exactly",
+        "metadata.json canonicalDeckPath exactly",
+        "RadPrimer article scaffold for definition, ultrasound anatomy, pathology, differential diagnosis, clinical course, and treatment"
+      ],
+      "keepFromSTATdx": [
+        "all STATdx images 1-11 as the curated primary image set, including source-preferred exact duplicate replacements for RadPrimer images 1-4",
+        "expanded image examples of minimally complex/inflammatory hydrocele, longitudinal simple hydrocele, encysted spermatic cord hydrocele, chronic hydrocele with echoes, MR severity variants, bilateral septated hydroceles, and testicular compression",
+        "STATdx captions when they add modality-specific or clinical context for selected images"
+      ],
+      "downweightOrSkip": [
+        "Do not use STATdx breadcrumbTrail for routing because metadata.json canonicalHierarchy is authoritative.",
+        "Do not invent Core Radiology validation because no auditable Core Radiology source is supplied.",
+        "Do not use RadPrimer images 1-4 as default downloads because they are exact duplicate 900 px counterparts of selected STATdx images 1-4."
+      ]
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable. Download only selectedPrimaryImageIds by default.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "rule": "Same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse clusters are atomic teaching clusters.",
+      "intentionalSplits": [],
+      "note": "No source case cluster was intentionally split. RadPrimer images 1-4 are archived only as whole exact-duplicate counterparts of selected STATdx images 1-4. STATdx image 4 preserves its single-image aspiration/sclerotherapy procedure context."
+    },
+    "imageDownloadPlan": {
+      "primaryTeachingSet": {
+        "statdxDefaultPrimaryImages": [
+          "SDX-01",
+          "SDX-02",
+          "SDX-03",
+          "SDX-04",
+          "SDX-05",
+          "SDX-06",
+          "SDX-07",
+          "SDX-08",
+          "SDX-09",
+          "SDX-10",
+          "SDX-11"
+        ],
+        "radprimerUniquePrimaryImages": [],
+        "recognitionReinforcementImages": [
+          "SDX-05",
+          "SDX-06",
+          "SDX-07",
+          "SDX-08",
+          "SDX-09",
+          "SDX-10",
+          "SDX-11"
+        ]
+      },
+      "archiveOptionalDuplicates": {
+        "radprimerExactDuplicateExports": [
+          "RP-01",
+          "RP-02",
+          "RP-03",
+          "RP-04"
+        ]
+      },
+      "downloadOnlySelectedPrimaryImageIdsByDefault": true,
+      "sourceQualifiedFilenamePolicy": "Use the registry downloadFilenameStem/plainFilename values, preserving RP-02 and SDX-06 style IDs in filenames while using clean labels such as RadPrimer image 2 or STATdx image 6 in narrative prose."
+    },
+    "generatorInstructions": [
+      "Use clean source-qualified image labels in narrative prose, such as STATdx image 6 or RadPrimer image 2.",
+      "Keep RP-02 and SDX-06 style IDs in traceability fields, filenames, registries, and manifest metadata rather than crowding narrative prose with both labels.",
+      "Do not archive near duplicates, alternate examples, modality variants, or severity variants by default; keep them as recognition reinforcement.",
+      "Do not generate cards or lecture content from this package until a later explicit request."
+    ]
+  }
+}

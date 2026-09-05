@@ -1,0 +1,1474 @@
+[
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 1,
+    "imageId": "dd33f12a-c92e-44ca-9a42-e3ed0b27eb91",
+    "baseName": "Cystic_Hepatic_Mass1",
+    "caption": "Axial CECT in a 79-year-old woman shows a spherical liver mass <img src=\"arrow_WS.png\"> with water density, homogeneous contents. No internal debris or wall irregularities are present.",
+    "plainFilename": "Cystic_Hepatic_Mass1.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass1_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?style=xlarge&annotated=true",
+    "masterImageId": "RP-01",
+    "filename": "Cystic_Hepatic_Mass1.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_dd33f12a.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "09CDE9D346769B1F735697EB1949B92B0842477D5055806F06745C765BCFC5D6"
+    },
+    "displayLabel": "RadPrimer image 1",
+    "targetPlainFilename": "RP-01_RadPrimer_plain_dd33f12a.jpg",
+    "targetAnnotatedFilename": "RP-01_RadPrimer_annotated_dd33f12a.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-01",
+      "duplicateOfDisplayLabel": "STATdx image 1",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 2,
+    "imageId": "b943a537-1ccb-4be7-bdce-5d72e77dda82",
+    "baseName": "Cystic_Hepatic_Mass2",
+    "caption": "Axial CECT shows innumerable hepatic cysts of water attenuation and varying size, causing hepatomegaly. Only a few small renal cysts are present, and renal function is normal.",
+    "plainFilename": "Cystic_Hepatic_Mass2.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass2_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/b943a537-1ccb-4be7-bdce-5d72e77dda82?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/b943a537-1ccb-4be7-bdce-5d72e77dda82?style=xlarge&annotated=true",
+    "masterImageId": "RP-02",
+    "filename": "Cystic_Hepatic_Mass2.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_b943a537.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/b943a537-1ccb-4be7-bdce-5d72e77dda82?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "5A9BF6D18CA3785D3BEF7C0B118F1A59F9FB0217A41EA80C86FDE2B22942E921"
+    },
+    "displayLabel": "RadPrimer image 2",
+    "targetPlainFilename": "RP-02_RadPrimer_plain_b943a537.jpg",
+    "targetAnnotatedFilename": "RP-02_RadPrimer_annotated_b943a537.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-04",
+      "duplicateOfDisplayLabel": "STATdx image 4",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 3,
+    "imageId": "609b0fc7-bda1-4325-877d-fad336154ed5",
+    "baseName": "Cystic_Hepatic_Mass3",
+    "caption": "Axial CECT shows a liver mass with innumerable septa and slightly higher than water density contents <img src=\"arrow_WS.png\">. Needle aspiration yielded a small quantity of pus, and a catheter was inserted for drainage. The etiology was subacute diverticulitis.",
+    "plainFilename": "Cystic_Hepatic_Mass3.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass3_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/609b0fc7-bda1-4325-877d-fad336154ed5?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/609b0fc7-bda1-4325-877d-fad336154ed5?style=xlarge&annotated=true",
+    "masterImageId": "RP-03",
+    "filename": "Cystic_Hepatic_Mass3.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_609b0fc7.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/609b0fc7-bda1-4325-877d-fad336154ed5?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "D90430A287889C672DB887661A3C0621169267E0ED1DC832E82D694F3B8C5B50"
+    },
+    "displayLabel": "RadPrimer image 3",
+    "targetPlainFilename": "RP-03_RadPrimer_plain_609b0fc7.jpg",
+    "targetAnnotatedFilename": "RP-03_RadPrimer_annotated_609b0fc7.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-05",
+      "duplicateOfDisplayLabel": "STATdx image 5",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 4,
+    "imageId": "d56b5c7e-ff28-4ec0-a465-65a3045c595e",
+    "baseName": "Cystic_Hepatic_Mass4",
+    "caption": "Axial CECT in a 53-year-old man shows innumerable small, cystic lesions <img src=\"arrow_WS.png\"> throughout the liver, ranging in size from 2-15 mm. The lesions are often not perfectly spherical, and many have visible nodular enhancement within their walls.",
+    "plainFilename": "Cystic_Hepatic_Mass4.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass4_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/d56b5c7e-ff28-4ec0-a465-65a3045c595e?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/d56b5c7e-ff28-4ec0-a465-65a3045c595e?style=xlarge&annotated=true",
+    "masterImageId": "RP-04",
+    "filename": "Cystic_Hepatic_Mass4.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_d56b5c7e.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/d56b5c7e-ff28-4ec0-a465-65a3045c595e?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "CFF5D09852BBE03F9F56E4108724789A5520D5FC75DC280B93E2CD2BA6AF3236"
+    },
+    "displayLabel": "RadPrimer image 4",
+    "targetPlainFilename": "RP-04_RadPrimer_plain_d56b5c7e.jpg",
+    "targetAnnotatedFilename": "RP-04_RadPrimer_annotated_d56b5c7e.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-06",
+      "duplicateOfDisplayLabel": "STATdx image 6",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 5,
+    "imageId": "4c827181-4c48-439c-a5cd-a7e79d02ce5b",
+    "baseName": "Cystic_Hepatic_Mass5",
+    "caption": "US shows only the lesions > 10 mm as cystic structures <img src=\"arrow_WS.png\">, while the smaller lesions are hyperechoic <img src=\"arrow_WC.png\"> to background liver. All are typical features of biliary hamartomas.",
+    "plainFilename": "Cystic_Hepatic_Mass5.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass5_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/4c827181-4c48-439c-a5cd-a7e79d02ce5b?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/4c827181-4c48-439c-a5cd-a7e79d02ce5b?style=xlarge&annotated=true",
+    "masterImageId": "RP-05",
+    "filename": "Cystic_Hepatic_Mass5.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_4c827181.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/4c827181-4c48-439c-a5cd-a7e79d02ce5b?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "6B359F555633796F7695F4C6533E00B87E20D9955955C8956AB857C6D8029C17"
+    },
+    "displayLabel": "RadPrimer image 5",
+    "targetPlainFilename": "RP-05_RadPrimer_plain_4c827181.jpg",
+    "targetAnnotatedFilename": "RP-05_RadPrimer_annotated_4c827181.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-07",
+      "duplicateOfDisplayLabel": "STATdx image 7",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 6,
+    "imageId": "63693af8-d44e-47fe-9e86-610fa74624ed",
+    "baseName": "Cystic_Hepatic_Mass6",
+    "caption": "Coronal MRCP shows innumerable small, T2-hyperintense lesions that do not communicate with the biliary tree.",
+    "plainFilename": "Cystic_Hepatic_Mass6.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass6_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/63693af8-d44e-47fe-9e86-610fa74624ed?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/63693af8-d44e-47fe-9e86-610fa74624ed?style=xlarge&annotated=true",
+    "masterImageId": "RP-06",
+    "filename": "Cystic_Hepatic_Mass6.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_63693af8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/63693af8-d44e-47fe-9e86-610fa74624ed?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "E6E6B8BC87620DC1E770A73E26CA1DE1EBAFD2DBF5BEA295796B7F86A5332256"
+    },
+    "displayLabel": "RadPrimer image 6",
+    "targetPlainFilename": "RP-06_RadPrimer_plain_63693af8.jpg",
+    "targetAnnotatedFilename": "RP-06_RadPrimer_annotated_63693af8.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-08",
+      "duplicateOfDisplayLabel": "STATdx image 8",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 7,
+    "imageId": "d0679796-e152-437e-92ad-489baa2acd92",
+    "baseName": "Cystic_Hepatic_Mass7",
+    "caption": "Axial CECT shows several hypodense hepatic masses, including 1 cystic lesion <img src=\"arrow_WO.png\">. The subtle mural nodule <img src=\"arrow_BS.png\"> is the clue that this is a neoplasm (metastatic thyroid cancer).",
+    "plainFilename": "Cystic_Hepatic_Mass7.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass7_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/d0679796-e152-437e-92ad-489baa2acd92?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/d0679796-e152-437e-92ad-489baa2acd92?style=xlarge&annotated=true",
+    "masterImageId": "RP-07",
+    "filename": "Cystic_Hepatic_Mass7.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_d0679796.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/d0679796-e152-437e-92ad-489baa2acd92?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "7E4E02D4910ADFD8177E5EE3A7F3504541078E7046DD507FBCAC568F462CCFBC"
+    },
+    "displayLabel": "RadPrimer image 7",
+    "targetPlainFilename": "RP-07_RadPrimer_plain_d0679796.jpg",
+    "targetAnnotatedFilename": "RP-07_RadPrimer_annotated_d0679796.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-09",
+      "duplicateOfDisplayLabel": "STATdx image 9",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 8,
+    "imageId": "748ace18-9b51-4f93-86a7-56fcd9dd9f6c",
+    "baseName": "Cystic_Hepatic_Mass8",
+    "caption": "Axial CECT shows a shaggy, encapsulated, solitary cystic mass <img src=\"arrow_WS.png\"> with nonenhancing contents, representing a typical amebic abscess. The imaging appearance, clinical presentation, and serology usually suffice for diagnosis.",
+    "plainFilename": "Cystic_Hepatic_Mass8.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass8_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?style=xlarge&annotated=true",
+    "masterImageId": "RP-08",
+    "filename": "Cystic_Hepatic_Mass8.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_748ace18.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "FBE105C3AE89CC5EE3B7EA15A7E29EEF9F9DC2FDEF222DE7149C186EEBA9A365"
+    },
+    "displayLabel": "RadPrimer image 8",
+    "targetPlainFilename": "RP-08_RadPrimer_plain_748ace18.jpg",
+    "targetAnnotatedFilename": "RP-08_RadPrimer_annotated_748ace18.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-12",
+      "duplicateOfDisplayLabel": "STATdx image 12",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 9,
+    "imageId": "e2c598d8-be13-4f77-b3c9-3fbdd2089d27",
+    "baseName": "Cystic_Hepatic_Mass9",
+    "caption": "Axial CECT 3 weeks after a blunt traumatic liver laceration shows a lobulated, cystic lesion <img src=\"arrow_WS.png\"> that represents a combination of walled-off bile and blood, also known, respectively, as biloma and seroma. Clinical history and comparison with prior CT scans provide confident diagnosis.",
+    "plainFilename": "Cystic_Hepatic_Mass9.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass9_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?style=xlarge&annotated=true",
+    "masterImageId": "RP-09",
+    "filename": "Cystic_Hepatic_Mass9.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_e2c598d8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "A317370798CE314B8088CD80E767A328532422CB37CFF09626BA3F946F43C58B"
+    },
+    "displayLabel": "RadPrimer image 9",
+    "targetPlainFilename": "RP-09_RadPrimer_plain_e2c598d8.jpg",
+    "targetAnnotatedFilename": "RP-09_RadPrimer_annotated_e2c598d8.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-13",
+      "duplicateOfDisplayLabel": "STATdx image 13",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 10,
+    "imageId": "f5aba22b-6c6b-43c5-84e1-e61c2171a1fc",
+    "baseName": "Cystic_Hepatic_Mass10",
+    "caption": "Axial CECT in a febrile, immune-suppressed patient shows innumerable small, hypodense lesions in the liver with irregular walls. Other opportunistic hepatic infections may have a similar appearance.",
+    "plainFilename": "Cystic_Hepatic_Mass10.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass10_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?style=xlarge&annotated=true",
+    "masterImageId": "RP-10",
+    "filename": "Cystic_Hepatic_Mass10.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_f5aba22b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "5C964CAD3AD551A8273330B89BE96E40D874BF1928E221472CC82AB50D795FD2"
+    },
+    "displayLabel": "RadPrimer image 10",
+    "targetPlainFilename": "RP-10_RadPrimer_plain_f5aba22b.jpg",
+    "targetAnnotatedFilename": "RP-10_RadPrimer_annotated_f5aba22b.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-16",
+      "duplicateOfDisplayLabel": "STATdx image 16",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 11,
+    "imageId": "4d89fcb5-0600-4c83-acba-93f29a424d36",
+    "baseName": "Cystic_Hepatic_Mass11",
+    "caption": "Coronal CECT in immigrant from Middle East shows 2 large, multiseptate, cystic masses <img src=\"arrow_WS.png\">. Within outer pericyst are multiple daughter cysts or scolices. Imaging appearance, coupled with serology, is usually sufficient for diagnosis.",
+    "plainFilename": "Cystic_Hepatic_Mass11.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass11_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/4d89fcb5-0600-4c83-acba-93f29a424d36?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/4d89fcb5-0600-4c83-acba-93f29a424d36?style=xlarge&annotated=true",
+    "masterImageId": "RP-11",
+    "filename": "Cystic_Hepatic_Mass11.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_4d89fcb5.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/4d89fcb5-0600-4c83-acba-93f29a424d36?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "B655E464CA4FF4526EA08E750DF1D23AC97E34178C37FCBD6DE0CFD37E56F151"
+    },
+    "displayLabel": "RadPrimer image 11",
+    "targetPlainFilename": "RP-11_RadPrimer_plain_4d89fcb5.jpg",
+    "targetAnnotatedFilename": "RP-11_RadPrimer_annotated_4d89fcb5.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-17",
+      "duplicateOfDisplayLabel": "STATdx image 17",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 12,
+    "imageId": "58f9b8d1-ef81-400c-9592-97d498592f12",
+    "baseName": "Cystic_Hepatic_Mass12",
+    "caption": "Coronal CECT in a middle-aged woman shows complex, cystic mass, lobulated margins, enhancing wall and septa <img src=\"arrow_WS.png\">. These findings with no other known tumor could be considered sufficiently diagnostic of biliary cystadenoma to warrant resection without further evaluation.",
+    "plainFilename": "Cystic_Hepatic_Mass12.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass12_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/58f9b8d1-ef81-400c-9592-97d498592f12?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/58f9b8d1-ef81-400c-9592-97d498592f12?style=xlarge&annotated=true",
+    "masterImageId": "RP-12",
+    "filename": "Cystic_Hepatic_Mass12.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_58f9b8d1.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/58f9b8d1-ef81-400c-9592-97d498592f12?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "BCB35E5CB8FC18C0A0084E3AE0A2F2C445F698860147A5D957BEE62EDAC12C60"
+    },
+    "displayLabel": "RadPrimer image 12",
+    "targetPlainFilename": "RP-12_RadPrimer_plain_58f9b8d1.jpg",
+    "targetAnnotatedFilename": "RP-12_RadPrimer_annotated_58f9b8d1.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-18",
+      "duplicateOfDisplayLabel": "STATdx image 18",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 13,
+    "imageId": "cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b",
+    "baseName": "Cystic_Hepatic_Mass13",
+    "caption": "Axial CECT of biliary IPMN with cholangiocarcinoma shows dilated intrahepatic bile ducts and a cystic mass <img src=\"arrow_WO.png\">. ERCP showed opacification of the cyst with contrast and the presence of surface nodularity within the bile ducts.",
+    "plainFilename": "Cystic_Hepatic_Mass13.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass13_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?style=xlarge&annotated=true",
+    "masterImageId": "RP-13",
+    "filename": "Cystic_Hepatic_Mass13.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_cc11ebc8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "B66D16FDEAA6B586570FB970A9CA2291F99556C9F272DB15CC67465D7EBBFBA8"
+    },
+    "displayLabel": "RadPrimer image 13",
+    "targetPlainFilename": "RP-13_RadPrimer_plain_cc11ebc8.jpg",
+    "targetAnnotatedFilename": "RP-13_RadPrimer_annotated_cc11ebc8.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-19",
+      "duplicateOfDisplayLabel": "STATdx image 19",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 14,
+    "imageId": "3ecd123c-87be-4556-94e3-50a90ab28330",
+    "baseName": "Cystic_Hepatic_Mass14",
+    "caption": "Axial CECT in a woman with portal hypertension due to congenital hepatic fibrosis and Caroli disease shows splenomegaly, varices <img src=\"arrow_CC.png\">, and multiple hepatic cysts. These represent dilated intrahepatic bile ducts, draped around the central dot of accompanying portal veins <img src=\"arrow_CS.png\">.",
+    "plainFilename": "Cystic_Hepatic_Mass14.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass14_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/3ecd123c-87be-4556-94e3-50a90ab28330?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/3ecd123c-87be-4556-94e3-50a90ab28330?style=xlarge&annotated=true",
+    "masterImageId": "RP-14",
+    "filename": "Cystic_Hepatic_Mass14.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_3ecd123c.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/3ecd123c-87be-4556-94e3-50a90ab28330?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "27B1CE44625D7F24F7D335FA215C5AEACF363B0C266FB46D96556A6BA853AE83"
+    },
+    "displayLabel": "RadPrimer image 14",
+    "targetPlainFilename": "RP-14_RadPrimer_plain_3ecd123c.jpg",
+    "targetAnnotatedFilename": "RP-14_RadPrimer_annotated_3ecd123c.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-20",
+      "duplicateOfDisplayLabel": "STATdx image 20",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 15,
+    "imageId": "2de321ce-02c1-4194-a1fd-df149db9c199",
+    "baseName": "Cystic_Hepatic_Mass15",
+    "caption": "Coronal CECT in a man with RUQ pain shows a huge, multiseptate, cystic mass <img src=\"arrow_WS.png\"> with enhancing peripheral components. Intraperitoneal blood <img src=\"arrow_WC.png\"> was due to capsular rupture of this undifferentiated primary hepatic sarcoma.",
+    "plainFilename": "Cystic_Hepatic_Mass15.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass15_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/2de321ce-02c1-4194-a1fd-df149db9c199?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/2de321ce-02c1-4194-a1fd-df149db9c199?style=xlarge&annotated=true",
+    "masterImageId": "RP-15",
+    "filename": "Cystic_Hepatic_Mass15.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-15_RadPrimer_image_15_plain_2de321ce.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/2de321ce-02c1-4194-a1fd-df149db9c199?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "FFC01199A9BDB25383C814B2A0292EF2E2C0D589D4638B7038F3D3D675025C09"
+    },
+    "displayLabel": "RadPrimer image 15",
+    "targetPlainFilename": "RP-15_RadPrimer_plain_2de321ce.jpg",
+    "targetAnnotatedFilename": "RP-15_RadPrimer_annotated_2de321ce.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-21",
+      "duplicateOfDisplayLabel": "STATdx image 21",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 16,
+    "imageId": "cd601687-99c5-447c-a59c-5ffde7a5d349",
+    "baseName": "Cystic_Hepatic_Mass16",
+    "caption": "Axial T2 MR in a 29-year-old woman with a solid-appearing mass on US shows a complex, cystic-appearing mass in segment 4 that had no enhancement on other sequences. Resection proved ciliated hepatic foregut cyst.",
+    "plainFilename": "Cystic_Hepatic_Mass16.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass16_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/cd601687-99c5-447c-a59c-5ffde7a5d349?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/cd601687-99c5-447c-a59c-5ffde7a5d349?style=xlarge&annotated=true",
+    "masterImageId": "RP-16",
+    "filename": "Cystic_Hepatic_Mass16.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-16_RadPrimer_image_16_plain_cd601687.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/cd601687-99c5-447c-a59c-5ffde7a5d349?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "21E9D3B30F8C03A3EC0A7494C3493DFF644F009F463AA91D348CB1195D4DDAE0"
+    },
+    "displayLabel": "RadPrimer image 16",
+    "targetPlainFilename": "RP-16_RadPrimer_plain_cd601687.jpg",
+    "targetAnnotatedFilename": "RP-16_RadPrimer_annotated_cd601687.jpg",
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-22",
+      "duplicateOfDisplayLabel": "STATdx image 22",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files/contact sheet",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 1,
+    "imageId": "dd33f12a-c92e-44ca-9a42-e3ed0b27eb91",
+    "baseName": "Cystic_Hepatic_Mass1",
+    "caption": "Axial CECT in a 79-year-old woman shows a spherical liver mass <img src=\"arrow_WS.png\"> with water density, homogeneous contents. No internal debris or wall irregularities are present.",
+    "plainFilename": "Cystic_Hepatic_Mass1.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass1_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-01",
+    "filename": "Cystic_Hepatic_Mass1.jpg",
+    "group": "",
+    "usedFor": [
+      "simpleHepaticCyst",
+      "waterDensity",
+      "noWallNodularity",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_dd33f12a.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/dd33f12a-c92e-44ca-9a42-e3ed0b27eb91?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "649C4B7BB9535156E05F0CF1F576DB3AD2492F26C2F282B13D82E1540996D391"
+    },
+    "displayLabel": "STATdx image 1",
+    "targetPlainFilename": "SDX-01_STATdx_plain_dd33f12a.jpg",
+    "targetAnnotatedFilename": "SDX-01_STATdx_annotated_dd33f12a.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 2,
+    "imageId": "82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94",
+    "baseName": "Cystic_Hepatic_Mass2",
+    "caption": "Axial CECT shows an unusually large, simple hepatic cyst that caused compression and obstruction of the intrahepatic bile ducts <img src=\"arrow_WS.png\">.",
+    "plainFilename": "Cystic_Hepatic_Mass2.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass2_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-02",
+    "filename": "Cystic_Hepatic_Mass2.jpg",
+    "group": "",
+    "usedFor": [
+      "largeSimpleHepaticCyst",
+      "biliaryObstruction",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_82d6f7d6.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/82d6f7d6-a8a8-4c54-9bd4-ba7ec1366d94?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "0A35B9F236FF5DAE3F118B3859766159FE90BA5CAD9F6E2B5B771489CF0629D2"
+    },
+    "displayLabel": "STATdx image 2",
+    "targetPlainFilename": "SDX-02_STATdx_plain_82d6f7d6.jpg",
+    "targetAnnotatedFilename": "SDX-02_STATdx_annotated_82d6f7d6.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 3,
+    "imageId": "5702a8fd-e272-450e-a43b-5ec776ffb921",
+    "baseName": "Cystic_Hepatic_Mass3",
+    "caption": "Axial T2 FS MR shows several large, contiguous hepatic cysts. Hemorrhage within the cysts accounts for decreased signal intensity within portions of the cysts <img src=\"arrow_WS.png\">.",
+    "plainFilename": "Cystic_Hepatic_Mass3.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass3_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-03",
+    "filename": "Cystic_Hepatic_Mass3.jpg",
+    "group": "",
+    "usedFor": [
+      "hemorrhagicHepaticCysts",
+      "T2SignalComplexity",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement",
+      "axialT2FSMR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_5702a8fd.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/5702a8fd-e272-450e-a43b-5ec776ffb921?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "1B4E1F4E233B57D4EC4DABD174BAD935BFE475F6604E9156EADFF3D2FBA08AB0"
+    },
+    "displayLabel": "STATdx image 3",
+    "targetPlainFilename": "SDX-03_STATdx_plain_5702a8fd.jpg",
+    "targetAnnotatedFilename": "SDX-03_STATdx_annotated_5702a8fd.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 4,
+    "imageId": "b943a537-1ccb-4be7-bdce-5d72e77dda82",
+    "baseName": "Cystic_Hepatic_Mass4",
+    "caption": "Axial CECT shows innumerable hepatic cysts of water attenuation and varying size, causing hepatomegaly. Only a few small renal cysts are present, and renal function is normal.",
+    "plainFilename": "Cystic_Hepatic_Mass4.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass4_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-04",
+    "filename": "Cystic_Hepatic_Mass4.jpg",
+    "group": "",
+    "usedFor": [
+      "autosomalDominantPolycysticLiverDisease",
+      "hepatomegaly",
+      "multifocalWaterAttenuationCysts",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_b943a537.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/b943a537-1ccb-4be7-bdce-5d72e77dda82?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "635EE69A7D2B0950406791711E7CEE065BAA63B616D4D5F45FAE14DE2B97DE19"
+    },
+    "displayLabel": "STATdx image 4",
+    "targetPlainFilename": "SDX-04_STATdx_plain_b943a537.jpg",
+    "targetAnnotatedFilename": "SDX-04_STATdx_annotated_b943a537.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 5,
+    "imageId": "609b0fc7-bda1-4325-877d-fad336154ed5",
+    "baseName": "Cystic_Hepatic_Mass5",
+    "caption": "Axial CECT shows a liver mass with innumerable septa and slightly higher than water density contents <img src=\"arrow_WS.png\">. Needle aspiration yielded a small quantity of pus, and a catheter was inserted for drainage. The etiology was subacute diverticulitis.",
+    "plainFilename": "Cystic_Hepatic_Mass5.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass5_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-05",
+    "filename": "Cystic_Hepatic_Mass5.jpg",
+    "group": "",
+    "usedFor": [
+      "hepaticPyogenicAbscess",
+      "multiloculatedAbscess",
+      "septa",
+      "drainageContext",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_609b0fc7.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/609b0fc7-bda1-4325-877d-fad336154ed5?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "392B8F9E507BF3CE88BBD32A8A71CFF74D0B6BD8661B5DED637B8EA6F9183A11"
+    },
+    "displayLabel": "STATdx image 5",
+    "targetPlainFilename": "SDX-05_STATdx_plain_609b0fc7.jpg",
+    "targetAnnotatedFilename": "SDX-05_STATdx_annotated_609b0fc7.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 6,
+    "imageId": "d56b5c7e-ff28-4ec0-a465-65a3045c595e",
+    "baseName": "Cystic_Hepatic_Mass6",
+    "caption": "Axial CECT in a 53-year-old man shows innumerable small, cystic lesions <img src=\"arrow_WS.png\"> throughout the liver, ranging in size from 2-15 mm. The lesions are often not perfectly spherical, and many have visible nodular enhancement within their walls.",
+    "plainFilename": "Cystic_Hepatic_Mass6.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass6_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-06",
+    "filename": "Cystic_Hepatic_Mass6.jpg",
+    "group": "",
+    "usedFor": [
+      "biliaryHamartomas",
+      "innumerableSmallCysticLesions",
+      "nodularWallEnhancement",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_d56b5c7e.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/d56b5c7e-ff28-4ec0-a465-65a3045c595e?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "230A92868A43E0BF6C3EF77151D31036C6437CCC933267AC8313A4D8CFBBFFE5"
+    },
+    "displayLabel": "STATdx image 6",
+    "targetPlainFilename": "SDX-06_STATdx_plain_d56b5c7e.jpg",
+    "targetAnnotatedFilename": "SDX-06_STATdx_annotated_d56b5c7e.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 7,
+    "imageId": "4c827181-4c48-439c-a5cd-a7e79d02ce5b",
+    "baseName": "Cystic_Hepatic_Mass7",
+    "caption": "US shows only the lesions > 10 mm as cystic structures <img src=\"arrow_WS.png\">, while the smaller lesions are hyperechoic <img src=\"arrow_WC.png\"> to background liver. All are typical features of biliary hamartomas.",
+    "plainFilename": "Cystic_Hepatic_Mass7.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass7_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-07",
+    "filename": "Cystic_Hepatic_Mass7.jpg",
+    "group": "",
+    "usedFor": [
+      "biliaryHamartomas",
+      "ultrasoundVariant",
+      "smallHyperechoicLesions",
+      "recognitionReinforcement",
+      "US"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_4c827181.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/4c827181-4c48-439c-a5cd-a7e79d02ce5b?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "10611887B260A42DE4792F019D2268255AA543DAF752AABD1F47D26C593DD873"
+    },
+    "displayLabel": "STATdx image 7",
+    "targetPlainFilename": "SDX-07_STATdx_plain_4c827181.jpg",
+    "targetAnnotatedFilename": "SDX-07_STATdx_annotated_4c827181.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 8,
+    "imageId": "63693af8-d44e-47fe-9e86-610fa74624ed",
+    "baseName": "Cystic_Hepatic_Mass8",
+    "caption": "Coronal MRCP shows innumerable small, T2-hyperintense lesions that do not communicate with the biliary tree.",
+    "plainFilename": "Cystic_Hepatic_Mass8.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass8_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-08",
+    "filename": "Cystic_Hepatic_Mass8.jpg",
+    "group": "",
+    "usedFor": [
+      "biliaryHamartomas",
+      "MRCPVariant",
+      "noncommunicatingT2HyperintenseLesions",
+      "recognitionReinforcement",
+      "coronalMRCP"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_63693af8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/63693af8-d44e-47fe-9e86-610fa74624ed?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "F916B99A5E002D8D5BE0E921A3B267C3EC4212F14548FC3F16EEA04C503AF651"
+    },
+    "displayLabel": "STATdx image 8",
+    "targetPlainFilename": "SDX-08_STATdx_plain_63693af8.jpg",
+    "targetAnnotatedFilename": "SDX-08_STATdx_annotated_63693af8.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 9,
+    "imageId": "d0679796-e152-437e-92ad-489baa2acd92",
+    "baseName": "Cystic_Hepatic_Mass9",
+    "caption": "Axial CECT shows several hypodense hepatic masses, including 1 cystic lesion <img src=\"arrow_WO.png\">. The subtle mural nodule <img src=\"arrow_BS.png\"> is the clue that this is a neoplasm (metastatic thyroid cancer).",
+    "plainFilename": "Cystic_Hepatic_Mass9.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass9_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-09",
+    "filename": "Cystic_Hepatic_Mass9.jpg",
+    "group": "",
+    "usedFor": [
+      "cysticHepaticMetastases",
+      "muralNodule",
+      "thyroidCancerMetastasis",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_d0679796.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/d0679796-e152-437e-92ad-489baa2acd92?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "C8AA223A0BB277E6FCCD38E4015128CEC89A034B68214AC5CD78FDC293F2827D"
+    },
+    "displayLabel": "STATdx image 9",
+    "targetPlainFilename": "SDX-09_STATdx_plain_d0679796.jpg",
+    "targetAnnotatedFilename": "SDX-09_STATdx_annotated_d0679796.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 10,
+    "imageId": "6ff00975-474d-448d-84ac-f60fe7007846",
+    "baseName": "Cystic_Hepatic_Mass10",
+    "caption": "Axial CECT shows a heterogeneous, solid mass in the left lobe (that subsequently underwent cystic necrosis with treatment). This was found to be metastatic gastric GIST.",
+    "plainFilename": "Cystic_Hepatic_Mass10.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass10_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-10",
+    "filename": "Cystic_Hepatic_Mass10.jpg",
+    "group": "",
+    "usedFor": [
+      "gastricGISTMetastasis",
+      "pretreatmentSolidMass",
+      "samePatientFollowUpCluster",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_6ff00975.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/6ff00975-474d-448d-84ac-f60fe7007846?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "248DADA36E6A3B5C1F611D2FA840306835E393090B6CCCAFBA206D408242C204"
+    },
+    "displayLabel": "STATdx image 10",
+    "targetPlainFilename": "SDX-10_STATdx_plain_6ff00975.jpg",
+    "targetAnnotatedFilename": "SDX-10_STATdx_annotated_6ff00975.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 11,
+    "imageId": "646611f8-4391-42ad-b5b8-7368e4c4cef8",
+    "baseName": "Cystic_Hepatic_Mass11",
+    "caption": "Axial CECT shows a cystic lesion in the left lobe. This is a metastatic gastric GIST that responded to Gleevec therapy with complete necrosis.",
+    "plainFilename": "Cystic_Hepatic_Mass11.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass11_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-11",
+    "filename": "Cystic_Hepatic_Mass11.jpg",
+    "group": "",
+    "usedFor": [
+      "gastricGISTMetastasis",
+      "treatmentNecrosis",
+      "GleevecResponse",
+      "samePatientFollowUpCluster",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_646611f8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/646611f8-4391-42ad-b5b8-7368e4c4cef8?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "E33BC2F72CA86356B476071361CFE31D9A06852EFEBBA646514C029D5921E058"
+    },
+    "displayLabel": "STATdx image 11",
+    "targetPlainFilename": "SDX-11_STATdx_plain_646611f8.jpg",
+    "targetAnnotatedFilename": "SDX-11_STATdx_annotated_646611f8.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 12,
+    "imageId": "748ace18-9b51-4f93-86a7-56fcd9dd9f6c",
+    "baseName": "Cystic_Hepatic_Mass12",
+    "caption": "Axial CECT shows a shaggy, encapsulated, solitary cystic mass <img src=\"arrow_WS.png\"> with nonenhancing contents, representing a typical amebic abscess. The imaging appearance, clinical presentation, and serology usually suffice for diagnosis.",
+    "plainFilename": "Cystic_Hepatic_Mass12.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass12_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-12",
+    "filename": "Cystic_Hepatic_Mass12.jpg",
+    "group": "",
+    "usedFor": [
+      "hepaticAmebicAbscess",
+      "shaggyEncapsulatedCysticMass",
+      "clinicalSerologyCorrelation",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_748ace18.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/748ace18-9b51-4f93-86a7-56fcd9dd9f6c?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "B08A20A93D1F129C80E41B856F1CE22F11F27381677729943FCF18125E022F9A"
+    },
+    "displayLabel": "STATdx image 12",
+    "targetPlainFilename": "SDX-12_STATdx_plain_748ace18.jpg",
+    "targetAnnotatedFilename": "SDX-12_STATdx_annotated_748ace18.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 13,
+    "imageId": "e2c598d8-be13-4f77-b3c9-3fbdd2089d27",
+    "baseName": "Cystic_Hepatic_Mass13",
+    "caption": "Axial CECT 3 weeks after a blunt traumatic liver laceration shows a lobulated, cystic lesion <img src=\"arrow_WS.png\"> that represents a combination of walled-off bile and blood, also known, respectively, as biloma and seroma. Clinical history and comparison with prior CT scans provide confident diagnosis.",
+    "plainFilename": "Cystic_Hepatic_Mass13.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass13_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-13",
+    "filename": "Cystic_Hepatic_Mass13.jpg",
+    "group": "",
+    "usedFor": [
+      "bilomaSeroma",
+      "postTraumaticLiverLaceration",
+      "walledOffBileBlood",
+      "historyComparison",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_e2c598d8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/e2c598d8-be13-4f77-b3c9-3fbdd2089d27?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "36F9AD9AC3DD8C8D18C10E58843EB3AA3EEB1FC79F0912028A461ECC12F05235"
+    },
+    "displayLabel": "STATdx image 13",
+    "targetPlainFilename": "SDX-13_STATdx_plain_e2c598d8.jpg",
+    "targetAnnotatedFilename": "SDX-13_STATdx_annotated_e2c598d8.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 14,
+    "imageId": "0ef36644-27ee-48b5-8a55-7763edd1a4c9",
+    "baseName": "Cystic_Hepatic_Mass14",
+    "caption": "Axial CECT shows an irregular cystic lesion within a transplanted liver. This is a biloma with biliary necrosis as a result of hepatic artery thrombosis.",
+    "plainFilename": "Cystic_Hepatic_Mass14.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass14_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-14",
+    "filename": "Cystic_Hepatic_Mass14.jpg",
+    "group": "",
+    "usedFor": [
+      "transplantBiloma",
+      "hepaticArteryThrombosis",
+      "biliaryNecrosis",
+      "sameProcessCluster",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_0ef36644.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/0ef36644-27ee-48b5-8a55-7763edd1a4c9?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "B5D24300616A567012B3534100251E9DCCA4EB60FE820FBE29C2F9F4AC0D95DC"
+    },
+    "displayLabel": "STATdx image 14",
+    "targetPlainFilename": "SDX-14_STATdx_plain_0ef36644.jpg",
+    "targetAnnotatedFilename": "SDX-14_STATdx_annotated_0ef36644.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 15,
+    "imageId": "13e37550-13c8-467b-a0cf-93b2f09ada05",
+    "baseName": "Cystic_Hepatic_Mass15",
+    "caption": "Axial CECT shows dilated bile ducts, peribiliary hepatic fluid, and a cystic biloma in a liver allograft, as a result of hepatic artery thrombosis.",
+    "plainFilename": "Cystic_Hepatic_Mass15.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass15_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-15",
+    "filename": "Cystic_Hepatic_Mass15.jpg",
+    "group": "",
+    "usedFor": [
+      "transplantBiloma",
+      "peribiliaryFluid",
+      "hepaticArteryThrombosis",
+      "sameProcessCluster",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_13e37550.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/13e37550-13c8-467b-a0cf-93b2f09ada05?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "F098FF158CDA9488BE07037D58BBD242204F1313ACAC20E1BCF9A89D6C4670A8"
+    },
+    "displayLabel": "STATdx image 15",
+    "targetPlainFilename": "SDX-15_STATdx_plain_13e37550.jpg",
+    "targetAnnotatedFilename": "SDX-15_STATdx_annotated_13e37550.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 16,
+    "imageId": "f5aba22b-6c6b-43c5-84e1-e61c2171a1fc",
+    "baseName": "Cystic_Hepatic_Mass16",
+    "caption": "Axial CECT in a febrile, immune-suppressed patient shows innumerable small, hypodense lesions in the liver with irregular walls. Other opportunistic hepatic infections may have a similar appearance.",
+    "plainFilename": "Cystic_Hepatic_Mass16.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass16_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-16",
+    "filename": "Cystic_Hepatic_Mass16.jpg",
+    "group": "",
+    "usedFor": [
+      "hepaticCandidiasis",
+      "microabscesses",
+      "immunosuppressedPatient",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_f5aba22b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/f5aba22b-6c6b-43c5-84e1-e61c2171a1fc?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "4BEC3AAAE423F29859F0B8EF23063E714FDA32DD0E51DF4A3585C110D7391A17"
+    },
+    "displayLabel": "STATdx image 16",
+    "targetPlainFilename": "SDX-16_STATdx_plain_f5aba22b.jpg",
+    "targetAnnotatedFilename": "SDX-16_STATdx_annotated_f5aba22b.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 17,
+    "imageId": "4d89fcb5-0600-4c83-acba-93f29a424d36",
+    "baseName": "Cystic_Hepatic_Mass17",
+    "caption": "Coronal CECT in immigrant from Middle East shows 2 large, multiseptate, cystic masses <img src=\"arrow_WS.png\">. Within outer pericyst are multiple daughter cysts or scolices. Imaging appearance, coupled with serology, is usually sufficient for diagnosis.",
+    "plainFilename": "Cystic_Hepatic_Mass17.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass17_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-17",
+    "filename": "Cystic_Hepatic_Mass17.jpg",
+    "group": "",
+    "usedFor": [
+      "hepaticHydatidCyst",
+      "daughterCysts",
+      "scolices",
+      "endemicTravelImmigrantContext",
+      "recognitionReinforcement",
+      "coronalCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_4d89fcb5.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/4d89fcb5-0600-4c83-acba-93f29a424d36?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "5ED1BF411160979754B1853DB999C4744BA1A2F36D997A51EF2FBE1E41D32F4E"
+    },
+    "displayLabel": "STATdx image 17",
+    "targetPlainFilename": "SDX-17_STATdx_plain_4d89fcb5.jpg",
+    "targetAnnotatedFilename": "SDX-17_STATdx_annotated_4d89fcb5.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 18,
+    "imageId": "58f9b8d1-ef81-400c-9592-97d498592f12",
+    "baseName": "Cystic_Hepatic_Mass18",
+    "caption": "Coronal CECT in a middle-aged woman shows complex, cystic mass, lobulated margins, enhancing wall and septa <img src=\"arrow_WS.png\">. These findings with no other known tumor could be considered sufficiently diagnostic of biliary cystadenoma to warrant resection without further evaluation.",
+    "plainFilename": "Cystic_Hepatic_Mass18.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass18_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-18",
+    "filename": "Cystic_Hepatic_Mass18.jpg",
+    "group": "",
+    "usedFor": [
+      "biliaryCystadenomaCarcinoma",
+      "enhancingWallSepta",
+      "middleAgedWoman",
+      "resectionManagement",
+      "recognitionReinforcement",
+      "coronalCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_58f9b8d1.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/58f9b8d1-ef81-400c-9592-97d498592f12?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "E915F74072B079A6AC2C84B6D17001C1915A7F6AEF3257670FB96A0E641F9B42"
+    },
+    "displayLabel": "STATdx image 18",
+    "targetPlainFilename": "SDX-18_STATdx_plain_58f9b8d1.jpg",
+    "targetAnnotatedFilename": "SDX-18_STATdx_annotated_58f9b8d1.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 19,
+    "imageId": "cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b",
+    "baseName": "Cystic_Hepatic_Mass19",
+    "caption": "Axial CECT of biliary IPMN with cholangiocarcinoma shows dilated intrahepatic bile ducts and a cystic mass <img src=\"arrow_WO.png\">. ERCP showed opacification of the cyst with contrast and the presence of surface nodularity within the bile ducts.",
+    "plainFilename": "Cystic_Hepatic_Mass19.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass19_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-19",
+    "filename": "Cystic_Hepatic_Mass19.jpg",
+    "group": "",
+    "usedFor": [
+      "biliaryIPMN",
+      "cholangiocarcinomaConcern",
+      "bileDuctCommunication",
+      "surfaceNodularity",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_cc11ebc8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/cc11ebc8-9f37-4524-be5b-8c5c4eab1d6b?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "1D51FE06A0C57329E6CF621CA7068EE5EB9C211C157ACDC652857197EFE59761"
+    },
+    "displayLabel": "STATdx image 19",
+    "targetPlainFilename": "SDX-19_STATdx_plain_cc11ebc8.jpg",
+    "targetAnnotatedFilename": "SDX-19_STATdx_annotated_cc11ebc8.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 20,
+    "imageId": "3ecd123c-87be-4556-94e3-50a90ab28330",
+    "baseName": "Cystic_Hepatic_Mass20",
+    "caption": "Axial CECT in a woman with portal hypertension due to congenital hepatic fibrosis and Caroli disease shows splenomegaly, varices <img src=\"arrow_CC.png\">, and multiple hepatic cysts. These represent dilated intrahepatic bile ducts, draped around the central dot of accompanying portal veins <img src=\"arrow_CS.png\">.",
+    "plainFilename": "Cystic_Hepatic_Mass20.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass20_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-20",
+    "filename": "Cystic_Hepatic_Mass20.jpg",
+    "group": "",
+    "usedFor": [
+      "CaroliDisease",
+      "centralDotSign",
+      "portalHypertension",
+      "dilatedIntrahepaticBileDucts",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_3ecd123c.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/3ecd123c-87be-4556-94e3-50a90ab28330?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "818B33DC23F07D52F48A49A3C9455E2CECECC8D2DD31982A832EDAB1D680BEA6"
+    },
+    "displayLabel": "STATdx image 20",
+    "targetPlainFilename": "SDX-20_STATdx_plain_3ecd123c.jpg",
+    "targetAnnotatedFilename": "SDX-20_STATdx_annotated_3ecd123c.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 21,
+    "imageId": "2de321ce-02c1-4194-a1fd-df149db9c199",
+    "baseName": "Cystic_Hepatic_Mass21",
+    "caption": "Coronal CECT in a man with RUQ pain shows a huge, multiseptate, cystic mass <img src=\"arrow_WS.png\"> with enhancing peripheral components. Intraperitoneal blood <img src=\"arrow_WC.png\"> was due to capsular rupture of this undifferentiated primary hepatic sarcoma.",
+    "plainFilename": "Cystic_Hepatic_Mass21.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass21_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-21",
+    "filename": "Cystic_Hepatic_Mass21.jpg",
+    "group": "",
+    "usedFor": [
+      "undifferentiatedHepaticSarcoma",
+      "hugeMultiseptateCysticMass",
+      "capsularRuptureHemoperitoneum",
+      "recognitionReinforcement",
+      "coronalCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_2de321ce.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/2de321ce-02c1-4194-a1fd-df149db9c199?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "20F1FB167301C396DE0415957D8D8FCAF236E1C01A0E07CA7EDB24816298E176"
+    },
+    "displayLabel": "STATdx image 21",
+    "targetPlainFilename": "SDX-21_STATdx_plain_2de321ce.jpg",
+    "targetAnnotatedFilename": "SDX-21_STATdx_annotated_2de321ce.jpg"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 22,
+    "imageId": "cd601687-99c5-447c-a59c-5ffde7a5d349",
+    "baseName": "Cystic_Hepatic_Mass22",
+    "caption": "Axial T2 MR in a 29-year-old woman with a solid-appearing mass on US shows a complex, cystic-appearing mass in segment 4 that had no enhancement on other sequences. Resection proved ciliated hepatic foregut cyst.",
+    "plainFilename": "Cystic_Hepatic_Mass22.jpg",
+    "annotatedFilename": "Cystic_Hepatic_Mass22_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-22",
+    "filename": "Cystic_Hepatic_Mass22.jpg",
+    "group": "",
+    "usedFor": [
+      "ciliatedHepaticForegutCyst",
+      "segment4ComplexCyst",
+      "T2MRVariant",
+      "resectionProof",
+      "recognitionReinforcement",
+      "axialT2MR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_cd601687.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/cd601687-99c5-447c-a59c-5ffde7a5d349?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "992F22B5668C481FB31EF113FD36D982AF72BDEBEB99DDB01D56CB5358AEDFFA"
+    },
+    "displayLabel": "STATdx image 22",
+    "targetPlainFilename": "SDX-22_STATdx_plain_cd601687.jpg",
+    "targetAnnotatedFilename": "SDX-22_STATdx_annotated_cd601687.jpg"
+  }
+]

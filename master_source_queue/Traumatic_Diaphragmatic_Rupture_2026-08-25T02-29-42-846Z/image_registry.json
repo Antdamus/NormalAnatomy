@@ -1,0 +1,1152 @@
+[
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 1,
+    "imageId": "d55c47b1-3b4f-4247-934c-6cf89b623a7e",
+    "baseName": "Traumatic_Diaphragmatic_Rupture1",
+    "caption": "Chest x-ray in a young man following a motor vehicle crash (MVC) shows a pneumothorax, chest tube, and nasogastric (NG) tube <img src=\"arrow_BO.png\"> that is curved up toward the chest.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture1.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture1_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/d55c47b1-3b4f-4247-934c-6cf89b623a7e?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/d55c47b1-3b4f-4247-934c-6cf89b623a7e?style=xlarge&annotated=true",
+    "masterImageId": "RP-01",
+    "filename": "Traumatic_Diaphragmatic_Rupture1.jpg",
+    "group": "",
+    "usedFor": [
+      "radiographPattern",
+      "ngTubeInChest",
+      "initialTraumaRadiograph",
+      "exactDuplicateAnchor"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_d55c47b1.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/d55c47b1-3b4f-4247-934c-6cf89b623a7e?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "be9bbb4ddb3c0bee1cb1d7f27d8f672bf4297d61e5faeb52827c3714c2b45a18"
+    },
+    "downloadFilename": "RP-01_RadPrimer_image_01_plain_d55c47b1.jpg",
+    "sourceImageId": "d55c47b1-3b4f-4247-934c-6cf89b623a7e",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture1.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture1_annot.jpg",
+    "radPrimerCoverageBySTATdx": "exactDuplicate",
+    "coverageNotes": "STATdx image 1 is the same chest radiograph showing the upward-curving NG tube after MVC; archive the STATdx repeat and keep the RadPrimer image as the canonical primary image.",
+    "relatedImageIds": [
+      "SDX-01"
+    ]
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 2,
+    "imageId": "ef4bb434-2653-4190-b2ba-696ec5360484",
+    "baseName": "Traumatic_Diaphragmatic_Rupture2",
+    "caption": "Axial CT in the same patient shows the typical signs of diaphragmatic injury, including the fallen viscus sign. The stomach <img src=\"arrow_WS.png\"> lies in the chest. Note that it has \"fallen\" medially and posteriorly to lie against the posteromedial chest wall. The stomach appears pinched <img src=\"arrow_WC.png\"> as it traverses the defect in the diaphragm (collar sign).",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture2.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture2_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/ef4bb434-2653-4190-b2ba-696ec5360484?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/ef4bb434-2653-4190-b2ba-696ec5360484?style=xlarge&annotated=true",
+    "masterImageId": "RP-02",
+    "filename": "Traumatic_Diaphragmatic_Rupture2.jpg",
+    "group": "",
+    "usedFor": [
+      "ctPattern",
+      "fallenViscusSign",
+      "collarSign",
+      "stomachHerniation",
+      "samePatientCluster",
+      "exactDuplicateAnchor"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_ef4bb434.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/ef4bb434-2653-4190-b2ba-696ec5360484?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "65c1fb17d909130a6b002bb3a0cd9cd1dd2868327c6e37bfa94ae78ba4e74c2f"
+    },
+    "downloadFilename": "RP-02_RadPrimer_image_02_plain_ef4bb434.jpg",
+    "sourceImageId": "ef4bb434-2653-4190-b2ba-696ec5360484",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture2.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture2_annot.jpg",
+    "radPrimerCoverageBySTATdx": "exactDuplicate",
+    "coverageNotes": "STATdx image 2 is the same axial CT slice with fallen viscus and collar signs. STATdx images 3 and 4 are same-patient complementary axial/sagittal CT images and remain selected.",
+    "relatedImageIds": [
+      "SDX-02",
+      "SDX-03",
+      "SDX-04"
+    ]
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 3,
+    "imageId": "d39db41c-2444-4b3f-8536-1819a20fd4ce",
+    "baseName": "Traumatic_Diaphragmatic_Rupture3",
+    "caption": "Axial CECT shows the stomach in the thorax; it has \"fallen\" through the diaphragmatic defect to lie against the posteromedial chest wall. The anterior wall of the stomach <img src=\"arrow_WO.png\"> directly abuts the lung and is not confined by the diaphragm.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture3.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture3_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/d39db41c-2444-4b3f-8536-1819a20fd4ce?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/d39db41c-2444-4b3f-8536-1819a20fd4ce?style=xlarge&annotated=true",
+    "masterImageId": "RP-03",
+    "filename": "Traumatic_Diaphragmatic_Rupture3.jpg",
+    "group": "",
+    "usedFor": [
+      "ctPattern",
+      "fallenViscusSign",
+      "intrathoracicStomach",
+      "samePatientCluster",
+      "exactDuplicateAnchor"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_d39db41c.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/d39db41c-2444-4b3f-8536-1819a20fd4ce?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "01acaeaf6861e127bbc5c743075f3b3f1f8635ea97bdd7fac9b4429403c0e362"
+    },
+    "downloadFilename": "RP-03_RadPrimer_image_03_plain_d39db41c.jpg",
+    "sourceImageId": "d39db41c-2444-4b3f-8536-1819a20fd4ce",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture3.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture3_annot.jpg",
+    "radPrimerCoverageBySTATdx": "exactDuplicate",
+    "coverageNotes": "STATdx image 15 is the same axial CT slice/content as RadPrimer image 3, with only source crop/encoding differences. STATdx image 3 is an adjacent same-patient CT image and remains selected.",
+    "relatedImageIds": [
+      "SDX-15",
+      "SDX-03"
+    ]
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 4,
+    "imageId": "fb12b471-e8c8-4c5c-9dd5-bfea3e8c9101",
+    "baseName": "Traumatic_Diaphragmatic_Rupture4",
+    "caption": "Coronal CECT in the same patient demonstrates the stomach <img src=\"arrow_WS.png\"> extending upward through a diaphragmatic defect.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture4.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture4_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/fb12b471-e8c8-4c5c-9dd5-bfea3e8c9101?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/fb12b471-e8c8-4c5c-9dd5-bfea3e8c9101?style=xlarge&annotated=true",
+    "masterImageId": "RP-04",
+    "filename": "Traumatic_Diaphragmatic_Rupture4.jpg",
+    "group": "",
+    "usedFor": [
+      "multiplanarReformat",
+      "coronalCT",
+      "diaphragmaticDefect",
+      "samePatientCluster",
+      "exactDuplicateAnchor"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_fb12b471.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/fb12b471-e8c8-4c5c-9dd5-bfea3e8c9101?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "f9df610de15c8faedab018a07e5bb8c1d992ee5583cd7eeeb0e6b7da8d7d42f8"
+    },
+    "downloadFilename": "RP-04_RadPrimer_image_04_plain_fb12b471.jpg",
+    "sourceImageId": "fb12b471-e8c8-4c5c-9dd5-bfea3e8c9101",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture4.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture4_annot.jpg",
+    "radPrimerCoverageBySTATdx": "exactDuplicate",
+    "coverageNotes": "STATdx image 16 is the same coronal CT/reformatted image of stomach herniation through the left diaphragmatic defect. STATdx image 4 is a different sagittal companion image and remains selected.",
+    "relatedImageIds": [
+      "SDX-16",
+      "SDX-04"
+    ]
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 5,
+    "imageId": "19a071dc-daa3-4f2c-a76e-3f43571659f0",
+    "baseName": "Traumatic_Diaphragmatic_Rupture5",
+    "caption": "Axial CECT in a patient following a MVC shows the stomach <img src=\"arrow_WS.png\"> lying too far medial, posterior, and superior, indicating herniation through the diaphragm. This is the fallen viscus sign.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture5.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture5_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/19a071dc-daa3-4f2c-a76e-3f43571659f0?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/19a071dc-daa3-4f2c-a76e-3f43571659f0?style=xlarge&annotated=true",
+    "masterImageId": "RP-05",
+    "filename": "Traumatic_Diaphragmatic_Rupture5.jpg",
+    "group": "",
+    "usedFor": [
+      "fallenViscusSign",
+      "mvc",
+      "alternateExample",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_19a071dc.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/19a071dc-daa3-4f2c-a76e-3f43571659f0?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "701c9aa2d313307b361f769e366f1ae383b9d7a3f0bce1f92f7ed9fec3b42c1c"
+    },
+    "downloadFilename": "RP-05_RadPrimer_image_05_plain_19a071dc.jpg",
+    "sourceImageId": "19a071dc-daa3-4f2c-a76e-3f43571659f0",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture5.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture5_annot.jpg",
+    "radPrimerCoverageBySTATdx": "conceptualReplacement",
+    "coverageNotes": "STATdx images 19 and 20 provide a separate radiograph/CT MVC cluster with an NG tube and fallen viscus sign, but they are not the same axial CT image as RadPrimer image 5.",
+    "relatedImageIds": [
+      "SDX-19",
+      "SDX-20"
+    ]
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 6,
+    "imageId": "e8ab9be1-ce0a-40db-a8e7-1c2414b94385",
+    "baseName": "Traumatic_Diaphragmatic_Rupture6",
+    "caption": "Axial CECT in a patient after a stab wound demonstrates a splenic laceration <img src=\"arrow_BC.png\"> with hematoma, left hemothorax <img src=\"arrow_BS.png\">, and subcutaneous emphysema <img src=\"arrow_WO.png\">. The presence of hematoma above and below the left diaphragm was concerning for diaphragmatic injury, subsequently confirmed at surgery.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture6.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture6_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/e8ab9be1-ce0a-40db-a8e7-1c2414b94385?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/e8ab9be1-ce0a-40db-a8e7-1c2414b94385?style=xlarge&annotated=true",
+    "masterImageId": "RP-06",
+    "filename": "Traumatic_Diaphragmatic_Rupture6.jpg",
+    "group": "",
+    "usedFor": [
+      "penetratingTrauma",
+      "contiguousInjury",
+      "hemothoraxHemoperitoneumConcern",
+      "exactDuplicateAnchor"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_e8ab9be1.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/e8ab9be1-ce0a-40db-a8e7-1c2414b94385?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "23569361cbaaaee83212a7a49d086f913398861ebab6248a0a245966eca1ffb8"
+    },
+    "downloadFilename": "RP-06_RadPrimer_image_06_plain_e8ab9be1.jpg",
+    "sourceImageId": "e8ab9be1-ce0a-40db-a8e7-1c2414b94385",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture6.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture6_annot.jpg",
+    "radPrimerCoverageBySTATdx": "exactDuplicate",
+    "coverageNotes": "STATdx image 9 is the same axial CT slice/content after stab wound showing splenic laceration, hemothorax, and subcutaneous emphysema; archive the STATdx repeat.",
+    "relatedImageIds": [
+      "SDX-09"
+    ]
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 7,
+    "imageId": "fc86edcd-37d0-4213-9eab-3570f0e05f29",
+    "baseName": "Traumatic_Diaphragmatic_Rupture7",
+    "caption": "Coronal CECT in a trauma patient demonstrates a gap in the left hemidiaphragm with the colon <img src=\"arrow_WC.png\"> protruding into the thorax. Note the extensive enteric contrast material <img src=\"arrow_WS.png\"> throughout the left thorax due to colonic perforation.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture7.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture7_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/fc86edcd-37d0-4213-9eab-3570f0e05f29?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/fc86edcd-37d0-4213-9eab-3570f0e05f29?style=xlarge&annotated=true",
+    "masterImageId": "RP-07",
+    "filename": "Traumatic_Diaphragmatic_Rupture7.jpg",
+    "group": "",
+    "usedFor": [
+      "colonHerniation",
+      "diaphragmGap",
+      "colonicPerforation",
+      "coronalCT",
+      "exactDuplicateAnchor"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_fc86edcd.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/fc86edcd-37d0-4213-9eab-3570f0e05f29?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "8ee70c332f9ac439f77bede3a641a106c4e5d7aa82d495411ee72234f2bf7075"
+    },
+    "downloadFilename": "RP-07_RadPrimer_image_07_plain_fc86edcd.jpg",
+    "sourceImageId": "fc86edcd-37d0-4213-9eab-3570f0e05f29",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture7.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture7_annot.jpg",
+    "radPrimerCoverageBySTATdx": "exactDuplicate",
+    "coverageNotes": "STATdx image 7 is the same coronal CT image of left hemidiaphragm defect with colon in the thorax and enteric contrast from colonic perforation; archive the STATdx repeat.",
+    "relatedImageIds": [
+      "SDX-07"
+    ]
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 8,
+    "imageId": "db9893a3-a430-4def-82a0-2611ae49e894",
+    "baseName": "Traumatic_Diaphragmatic_Rupture8",
+    "caption": "Sagittal T2 MR demonstrates diaphragmatic injury due to surgical error. A tear is seen in the left hemidiaphragm with the stomach <img src=\"arrow_WS.png\"> herniating into the chest. The diaphragm is identified as a low-signal curvilinear structure <img src=\"arrow_WC.png\"> with a central gap.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture8.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture8_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/db9893a3-a430-4def-82a0-2611ae49e894?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/db9893a3-a430-4def-82a0-2611ae49e894?style=xlarge&annotated=true",
+    "masterImageId": "RP-08",
+    "filename": "Traumatic_Diaphragmatic_Rupture8.jpg",
+    "group": "",
+    "usedFor": [
+      "mriPattern",
+      "iatrogenicInjury",
+      "diaphragmGap",
+      "modalityVariant",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_db9893a3.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/db9893a3-a430-4def-82a0-2611ae49e894?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "fa55f8b7b5c33a2af4626874cf584780c6d5648c48f749f563255d9cdb4ae918"
+    },
+    "downloadFilename": "RP-08_RadPrimer_image_08_plain_db9893a3.jpg",
+    "sourceImageId": "db9893a3-a430-4def-82a0-2611ae49e894",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture8.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture8_annot.jpg",
+    "radPrimerCoverageBySTATdx": "nearDuplicate",
+    "coverageNotes": "STATdx image 10 covers the same surgical-error MR teaching point but is a different plane/appearance, so both remain selected for recognition reinforcement.",
+    "relatedImageIds": [
+      "SDX-10"
+    ]
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 9,
+    "imageId": "904132c2-2d5e-469c-b9c7-5270af8bc5f3",
+    "baseName": "Traumatic_Diaphragmatic_Rupture9",
+    "caption": "Axial CECT in a trauma patient demonstrates that the stomach is \"pinched\" <img src=\"arrow_WS.png\"> as it traverses a defect in the left diaphragm. Another sign of diaphragmatic rupture is abdominal fat <img src=\"arrow_WO.png\"> outside the confines of the diaphragm <img src=\"arrow_WC.png\"> (in the thorax).",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture9.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture9_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/904132c2-2d5e-469c-b9c7-5270af8bc5f3?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/904132c2-2d5e-469c-b9c7-5270af8bc5f3?style=xlarge&annotated=true",
+    "masterImageId": "RP-09",
+    "filename": "Traumatic_Diaphragmatic_Rupture9.jpg",
+    "group": "",
+    "usedFor": [
+      "collarSign",
+      "thoracicAbdominalFat",
+      "axialCT",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_904132c2.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/904132c2-2d5e-469c-b9c7-5270af8bc5f3?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "1ffa6d6b2c0fe291d43169929c533ce6e61f3c3c08acefc81ed3a276eafb27a5"
+    },
+    "downloadFilename": "RP-09_RadPrimer_image_09_plain_904132c2.jpg",
+    "sourceImageId": "904132c2-2d5e-469c-b9c7-5270af8bc5f3",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture9.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture9_annot.jpg",
+    "radPrimerCoverageBySTATdx": "conceptualReplacement",
+    "coverageNotes": "STATdx includes several dependent-viscus/collar-sign CT examples, but none is the same axial CT slice showing the pinched stomach and thoracic abdominal fat from RadPrimer image 9.",
+    "relatedImageIds": [
+      "SDX-12",
+      "SDX-13",
+      "SDX-17",
+      "SDX-20"
+    ]
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 10,
+    "imageId": "de04adb8-05c1-4f07-9be4-a2343665f9c9",
+    "baseName": "Traumatic_Diaphragmatic_Rupture10",
+    "caption": "Coronal CECT after trauma demonstrates splenic injury with active extravasation <img src=\"arrow_WS.png\">, left-sided hemothorax <img src=\"arrow_WO.png\">, and lung contusion <img src=\"arrow_BS.png\">. Injuries above and below the diaphragm raise concern for diaphragmatic injury, as evidenced by a small defect in the left diaphragm <img src=\"arrow_WC.png\">.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture10.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture10_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/de04adb8-05c1-4f07-9be4-a2343665f9c9?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/de04adb8-05c1-4f07-9be4-a2343665f9c9?style=xlarge&annotated=true",
+    "masterImageId": "RP-10",
+    "filename": "Traumatic_Diaphragmatic_Rupture10.jpg",
+    "group": "",
+    "usedFor": [
+      "contiguousInjury",
+      "splenicInjury",
+      "hemothorax",
+      "smallDiaphragmDefect",
+      "exactDuplicateAnchor"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_de04adb8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/de04adb8-05c1-4f07-9be4-a2343665f9c9?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "2579f8de48d921dda785413c4e9a055898b0005c69b02e7d572e3d9a26352b10"
+    },
+    "downloadFilename": "RP-10_RadPrimer_image_10_plain_de04adb8.jpg",
+    "sourceImageId": "de04adb8-05c1-4f07-9be4-a2343665f9c9",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture10.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture10_annot.jpg",
+    "radPrimerCoverageBySTATdx": "exactDuplicate",
+    "coverageNotes": "STATdx image 8 is the same coronal CT image of splenic injury, hemothorax, lung contusion, and small diaphragmatic defect; archive the STATdx repeat.",
+    "relatedImageIds": [
+      "SDX-08"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 1,
+    "imageId": "e8ff2e4d-28b8-4d1a-b48f-87f06c99e29e",
+    "baseName": "Traumatic_Diaphragmatic_Rupture1",
+    "caption": "Chest x-ray in a young man following a motor vehicle crash (MVC) shows a pneumothorax, chest tube, and nasogastric (NG) tube <img src=\"arrow_BO.png\"> that is curved up toward the chest.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture1.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture1_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/e8ff2e4d-28b8-4d1a-b48f-87f06c99e29e?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/e8ff2e4d-28b8-4d1a-b48f-87f06c99e29e?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-01",
+    "filename": "Traumatic_Diaphragmatic_Rupture1.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicateOfRP-01"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_e8ff2e4d.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/e8ff2e4d-28b8-4d1a-b48f-87f06c99e29e?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "1725ca36b8e1cb3386647856c587c4a3d7729b438afe2959c59e670b1e5a80b3"
+    },
+    "downloadFilename": "SDX-01_STATdx_image_01_plain_e8ff2e4d.jpg",
+    "sourceImageId": "e8ff2e4d-28b8-4d1a-b48f-87f06c99e29e",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture1.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture1_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-01"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 2,
+    "imageId": "b3c93c90-1408-4d14-a31e-57bc6af5fbb9",
+    "baseName": "Traumatic_Diaphragmatic_Rupture2",
+    "caption": "Axial CT in the same patient shows the typical signs of diaphragmatic injury, including the fallen viscus sign. The stomach <img src=\"arrow_WS.png\"> lies in the chest. Note that it has \"fallen\" medially and posteriorly to lie against the posteromedial chest wall. The stomach appears pinched <img src=\"arrow_WC.png\"> as it traverses the defect in the diaphragm (collar sign).",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture2.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture2_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/b3c93c90-1408-4d14-a31e-57bc6af5fbb9?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/b3c93c90-1408-4d14-a31e-57bc6af5fbb9?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-02",
+    "filename": "Traumatic_Diaphragmatic_Rupture2.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicateOfRP-02"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_b3c93c90.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/b3c93c90-1408-4d14-a31e-57bc6af5fbb9?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "d83a509348bd5d0d7feae5ca7b99391a12611f17c3808bea73b5c6ef6c19d885"
+    },
+    "downloadFilename": "SDX-02_STATdx_image_02_plain_b3c93c90.jpg",
+    "sourceImageId": "b3c93c90-1408-4d14-a31e-57bc6af5fbb9",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture2.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture2_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-02"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 3,
+    "imageId": "ee63630b-7efc-447b-a348-a701198c320f",
+    "baseName": "Traumatic_Diaphragmatic_Rupture3",
+    "caption": "Axial CECT shows the stomach in the thorax, which has \"fallen\" through the diaphragmatic defect to lie against the posteromedial chest wall <img src=\"arrow_WS.png\">. The anterior wall of the stomach <img src=\"arrow_WO.png\"> directly abuts the lung and is not confined by the diaphragm.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture3.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture3_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/ee63630b-7efc-447b-a348-a701198c320f?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/ee63630b-7efc-447b-a348-a701198c320f?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-03",
+    "filename": "Traumatic_Diaphragmatic_Rupture3.jpg",
+    "group": "",
+    "usedFor": [
+      "adjacentSlice",
+      "samePatientCluster",
+      "fallenViscusSign",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_ee63630b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/ee63630b-7efc-447b-a348-a701198c320f?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "bbb95628ad69e718877784d3dd86f25d511eaff889aa2fa25112667598c93a06"
+    },
+    "downloadFilename": "SDX-03_STATdx_image_03_plain_ee63630b.jpg",
+    "sourceImageId": "ee63630b-7efc-447b-a348-a701198c320f",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture3.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture3_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-02",
+      "RP-03"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 4,
+    "imageId": "628f5a14-b515-4eca-b936-22de443e4091",
+    "baseName": "Traumatic_Diaphragmatic_Rupture4",
+    "caption": "Sagittal CECT in the same patient demonstrates the stomach <img src=\"arrow_WS.png\"> extending upward through a diaphragmatic defect. The anterior wall of the stomach <img src=\"arrow_WO.png\"> directly contacts the lung, confirming the presence of a traumatic diaphragmatic hernia.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture4.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture4_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/628f5a14-b515-4eca-b936-22de443e4091?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/628f5a14-b515-4eca-b936-22de443e4091?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-04",
+    "filename": "Traumatic_Diaphragmatic_Rupture4.jpg",
+    "group": "",
+    "usedFor": [
+      "sagittalCT",
+      "samePatientCluster",
+      "diaphragmaticHernia",
+      "modalityPlaneVariant"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_628f5a14.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/628f5a14-b515-4eca-b936-22de443e4091?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "636b825e7bf77dccce5bc94ce99e8029b7929346119d8856154a082787ae7fb2"
+    },
+    "downloadFilename": "SDX-04_STATdx_image_04_plain_628f5a14.jpg",
+    "sourceImageId": "628f5a14-b515-4eca-b936-22de443e4091",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture4.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture4_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-02",
+      "RP-04"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 5,
+    "imageId": "71c6d97e-c467-4491-bfb7-f9d350a329ca",
+    "baseName": "Traumatic_Diaphragmatic_Rupture5",
+    "caption": "Axial CECT in a trauma patient demonstrates a loop of bowel <img src=\"arrow_WO.png\"> extending upward and directly contacting the heart.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture5.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture5_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/71c6d97e-c467-4491-bfb7-f9d350a329ca?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/71c6d97e-c467-4491-bfb7-f9d350a329ca?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-05",
+    "filename": "Traumatic_Diaphragmatic_Rupture5.jpg",
+    "group": "",
+    "usedFor": [
+      "rightSidedInjury",
+      "intrapericardialHerniationCluster",
+      "alternateExample"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_71c6d97e.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/71c6d97e-c467-4491-bfb7-f9d350a329ca?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "9fd69ad80b39f98f6183b960d8b3c52a639b228dfadf65a2aea7f020f4605e7f"
+    },
+    "downloadFilename": "SDX-05_STATdx_image_05_plain_71c6d97e.jpg",
+    "sourceImageId": "71c6d97e-c467-4491-bfb7-f9d350a329ca",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture5.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture5_annot.jpg",
+    "relatedRadPrimerImageIds": []
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 6,
+    "imageId": "8f9f4389-efc0-4b16-9a77-24fbe1686f50",
+    "baseName": "Traumatic_Diaphragmatic_Rupture6",
+    "caption": "Coronal CECT in the same patient demonstrates the intact left hemidiaphragm <img src=\"arrow_WS.png\">, while the right diaphragm is disrupted with omental fat <img src=\"arrow_WC.png\"> and bowel <img src=\"arrow_WO.png\"> extending upward adjacent to the heart. At surgery, the duodenum and omental fat were found within the pericardial sac, herniating through a defect in the diaphragm and pericardium.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture6.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture6_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/8f9f4389-efc0-4b16-9a77-24fbe1686f50?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/8f9f4389-efc0-4b16-9a77-24fbe1686f50?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-06",
+    "filename": "Traumatic_Diaphragmatic_Rupture6.jpg",
+    "group": "",
+    "usedFor": [
+      "rightSidedInjury",
+      "intrapericardialHerniationCluster",
+      "pericardialDefect",
+      "mechanism"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_8f9f4389.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/8f9f4389-efc0-4b16-9a77-24fbe1686f50?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "a295456c5977e379095add64501881f4d4490951c2e495ae7b249593065af497"
+    },
+    "downloadFilename": "SDX-06_STATdx_image_06_plain_8f9f4389.jpg",
+    "sourceImageId": "8f9f4389-efc0-4b16-9a77-24fbe1686f50",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture6.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture6_annot.jpg",
+    "relatedRadPrimerImageIds": []
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 7,
+    "imageId": "cbf926dd-7500-419a-9a05-08c892bcaa83",
+    "baseName": "Traumatic_Diaphragmatic_Rupture7",
+    "caption": "Coronal CECT in a trauma patient demonstrates a gap in the left hemidiaphragm with the colon <img src=\"arrow_WC.png\"> protruding into the thorax. Note the extensive enteric contrast material <img src=\"arrow_WS.png\"> throughout the left thorax due to colonic perforation.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture7.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture7_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/cbf926dd-7500-419a-9a05-08c892bcaa83?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/cbf926dd-7500-419a-9a05-08c892bcaa83?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-07",
+    "filename": "Traumatic_Diaphragmatic_Rupture7.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicateOfRP-07"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_cbf926dd.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/cbf926dd-7500-419a-9a05-08c892bcaa83?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "5126640f94becc3445fb20553f301c48a2ca7e8bf64e06b1648647bb29c17dd2"
+    },
+    "downloadFilename": "SDX-07_STATdx_image_07_plain_cbf926dd.jpg",
+    "sourceImageId": "cbf926dd-7500-419a-9a05-08c892bcaa83",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture7.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture7_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-07"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 8,
+    "imageId": "8edfc92d-d916-4582-886e-900e9a0dda5d",
+    "baseName": "Traumatic_Diaphragmatic_Rupture8",
+    "caption": "Coronal CECT after trauma demonstrates splenic injury with active extravasation <img src=\"arrow_WS.png\">, left-sided hemothorax <img src=\"arrow_WO.png\">, and lung contusion <img src=\"arrow_BS.png\">. Injuries above and below the diaphragm raise concern for diaphragmatic injury, as evidenced by a small defect in the left diaphragm <img src=\"arrow_WC.png\">.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture8.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture8_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/8edfc92d-d916-4582-886e-900e9a0dda5d?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/8edfc92d-d916-4582-886e-900e9a0dda5d?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-08",
+    "filename": "Traumatic_Diaphragmatic_Rupture8.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicateOfRP-10"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_8edfc92d.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/8edfc92d-d916-4582-886e-900e9a0dda5d?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "e25cdf42489f746065db7756c68d9605fee7158ea705b70a5a3a2a4fb259629f"
+    },
+    "downloadFilename": "SDX-08_STATdx_image_08_plain_8edfc92d.jpg",
+    "sourceImageId": "8edfc92d-d916-4582-886e-900e9a0dda5d",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture8.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture8_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-10"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 9,
+    "imageId": "693845fe-50df-46e8-89fe-c9fb2f699ffa",
+    "baseName": "Traumatic_Diaphragmatic_Rupture9",
+    "caption": "Axial CECT after a stab wound demonstrates a splenic laceration <img src=\"arrow_BC.png\">, hemothorax <img src=\"arrow_BS.png\">, and subcutaneous emphysema <img src=\"arrow_WO.png\">. The presence of hematoma above and below the diaphragm was concerning for diaphragmatic injury, subsequently confirmed at surgery.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture9.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture9_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/693845fe-50df-46e8-89fe-c9fb2f699ffa?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/693845fe-50df-46e8-89fe-c9fb2f699ffa?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-09",
+    "filename": "Traumatic_Diaphragmatic_Rupture9.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicateOfRP-06"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_693845fe.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/693845fe-50df-46e8-89fe-c9fb2f699ffa?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "5db1a07842919aed777c48214a0d2e94e0aed6d367db42b50e776aa84ebf47a3"
+    },
+    "downloadFilename": "SDX-09_STATdx_image_09_plain_693845fe.jpg",
+    "sourceImageId": "693845fe-50df-46e8-89fe-c9fb2f699ffa",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture9.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture9_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-06"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 10,
+    "imageId": "ecd70974-42d8-40de-9596-5114ce7c17b9",
+    "baseName": "Traumatic_Diaphragmatic_Rupture10",
+    "caption": "Coronal T2 MR demonstrates diaphragmatic injury due to surgical error. A tear is seen in the left hemidiaphragm with the stomach <img src=\"arrow_WS.png\"> herniating into the chest. The diaphragm is identified as a low-signal curvilinear structure <img src=\"arrow_WC.png\"> with a central gap.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture10.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture10_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/ecd70974-42d8-40de-9596-5114ce7c17b9?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/ecd70974-42d8-40de-9596-5114ce7c17b9?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-10",
+    "filename": "Traumatic_Diaphragmatic_Rupture10.jpg",
+    "group": "",
+    "usedFor": [
+      "mriPattern",
+      "sameConceptDifferentPlane",
+      "modalityVariant",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_ecd70974.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/ecd70974-42d8-40de-9596-5114ce7c17b9?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "6acd72f5ea80d1e019ed39c213ff0b6937534a8968ef41ad5c3e9159f0ca9af7"
+    },
+    "downloadFilename": "SDX-10_STATdx_image_10_plain_ecd70974.jpg",
+    "sourceImageId": "ecd70974-42d8-40de-9596-5114ce7c17b9",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture10.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture10_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-08"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 11,
+    "imageId": "53289f96-68d1-4fc3-91cd-0c6d0d1b6a63",
+    "baseName": "Traumatic_Diaphragmatic_Rupture11",
+    "caption": "Axial CECT at lung windows shows splenic flexure of the colon <img src=\"arrow_BS.png\"> abutting the lung and pneumothorax.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture11.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture11_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/53289f96-68d1-4fc3-91cd-0c6d0d1b6a63?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/53289f96-68d1-4fc3-91cd-0c6d0d1b6a63?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-11",
+    "filename": "Traumatic_Diaphragmatic_Rupture11.jpg",
+    "group": "",
+    "usedFor": [
+      "lungWindowCT",
+      "splenicFlexureAgainstLung",
+      "pneumothorax",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_53289f96.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/53289f96-68d1-4fc3-91cd-0c6d0d1b6a63?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "00edc758c05bca20baefa2e5816515c34625beae17efac7e252dc034126b57d7"
+    },
+    "downloadFilename": "SDX-11_STATdx_image_11_plain_53289f96.jpg",
+    "sourceImageId": "53289f96-68d1-4fc3-91cd-0c6d0d1b6a63",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture11.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture11_annot.jpg",
+    "relatedRadPrimerImageIds": []
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 12,
+    "imageId": "990a0827-c05e-48da-bd26-8ee332a65ac0",
+    "baseName": "Traumatic_Diaphragmatic_Rupture12",
+    "caption": "Axial CECT shows the spleen in a dependent position and abdominal fat lateral to the diaphragm <img src=\"arrow_WS.png\">.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture12.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture12_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/990a0827-c05e-48da-bd26-8ee332a65ac0?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/990a0827-c05e-48da-bd26-8ee332a65ac0?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-12",
+    "filename": "Traumatic_Diaphragmatic_Rupture12.jpg",
+    "group": "",
+    "usedFor": [
+      "dependentViscusSign",
+      "abdominalFatLateralToDiaphragm",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_990a0827.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/990a0827-c05e-48da-bd26-8ee332a65ac0?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "f0f2a8cb5d186ca5ed8f3dd139fbaac8b70d03bbd21e61daef9b42f544ab85a4"
+    },
+    "downloadFilename": "SDX-12_STATdx_image_12_plain_990a0827.jpg",
+    "sourceImageId": "990a0827-c05e-48da-bd26-8ee332a65ac0",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture12.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture12_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-09"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 13,
+    "imageId": "9e65fe78-ba42-40bb-9ada-704924f65f3d",
+    "baseName": "Traumatic_Diaphragmatic_Rupture13",
+    "caption": "Axial CECT shows the dependent viscus with the colon and abdominal fat lying lateral to the diaphragm <img src=\"arrow_WS.png\">, indicating the thoracic position.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture13.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture13_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/9e65fe78-ba42-40bb-9ada-704924f65f3d?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/9e65fe78-ba42-40bb-9ada-704924f65f3d?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-13",
+    "filename": "Traumatic_Diaphragmatic_Rupture13.jpg",
+    "group": "",
+    "usedFor": [
+      "dependentViscusSign",
+      "colonAndFatLateralToDiaphragm",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_9e65fe78.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/9e65fe78-ba42-40bb-9ada-704924f65f3d?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "937c471245a244d2523de7ae30d515b698e179897973bd29a5704bc97f89c72b"
+    },
+    "downloadFilename": "SDX-13_STATdx_image_13_plain_9e65fe78.jpg",
+    "sourceImageId": "9e65fe78-ba42-40bb-9ada-704924f65f3d",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture13.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture13_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-09"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 14,
+    "imageId": "1409cdb0-0829-4bf2-ab6d-d4a7bc1d4d5b",
+    "baseName": "Traumatic_Diaphragmatic_Rupture14",
+    "caption": "Chest radiograph shows an \"elevated,\" distorted diaphragm and the high position of the NG tube <img src=\"arrow_BS.png\">.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture14.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture14_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/1409cdb0-0829-4bf2-ab6d-d4a7bc1d4d5b?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/1409cdb0-0829-4bf2-ab6d-d4a7bc1d4d5b?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-14",
+    "filename": "Traumatic_Diaphragmatic_Rupture14.jpg",
+    "group": "",
+    "usedFor": [
+      "radiographPattern",
+      "elevatedDistortedDiaphragm",
+      "ngTubeHighPosition",
+      "alternateExample"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_1409cdb0.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/1409cdb0-0829-4bf2-ab6d-d4a7bc1d4d5b?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "2a5bbb127d4d20d8d66edcf9dd2115b73375dd6b36e0ef23a71bd82145c481e0"
+    },
+    "downloadFilename": "SDX-14_STATdx_image_14_plain_1409cdb0.jpg",
+    "sourceImageId": "1409cdb0-0829-4bf2-ab6d-d4a7bc1d4d5b",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture14.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture14_annot.jpg",
+    "relatedRadPrimerImageIds": []
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 15,
+    "imageId": "c0425aec-1a4a-42c5-9f5a-b4f2cfbbd328",
+    "baseName": "Traumatic_Diaphragmatic_Rupture15",
+    "caption": "Axial CECT shows the \"dependent viscus\" sign as the stomach abuts the posterior ribs.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture15.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture15_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/c0425aec-1a4a-42c5-9f5a-b4f2cfbbd328?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/c0425aec-1a4a-42c5-9f5a-b4f2cfbbd328?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-15",
+    "filename": "Traumatic_Diaphragmatic_Rupture15.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicateOfRP-03"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_c0425aec.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/c0425aec-1a4a-42c5-9f5a-b4f2cfbbd328?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "29bb46e8d8245d0deb109380aae9241a2ba62f23cc7f9bcfee1acaa55e14bbc3"
+    },
+    "downloadFilename": "SDX-15_STATdx_image_15_plain_c0425aec.jpg",
+    "sourceImageId": "c0425aec-1a4a-42c5-9f5a-b4f2cfbbd328",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture15.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture15_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-03"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 16,
+    "imageId": "cab98795-2abd-46c2-9744-880e523fa27d",
+    "baseName": "Traumatic_Diaphragmatic_Rupture16",
+    "caption": "Coronal reformation from an axial CECT shows herniation of the abdominal contents into the left thorax. Note the constriction of the stomach <img src=\"arrow_WS.png\"> at the site of the tear.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture16.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture16_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/cab98795-2abd-46c2-9744-880e523fa27d?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/cab98795-2abd-46c2-9744-880e523fa27d?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-16",
+    "filename": "Traumatic_Diaphragmatic_Rupture16.jpg",
+    "group": "",
+    "usedFor": [
+      "archiveOptionalDuplicate",
+      "exactDuplicateOfRP-04"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_cab98795.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/cab98795-2abd-46c2-9744-880e523fa27d?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "d4e1d205d0d3e84f823c63b43882cc3a31f598faad404c85a72b40a39fc4e74b"
+    },
+    "downloadFilename": "SDX-16_STATdx_image_16_plain_cab98795.jpg",
+    "sourceImageId": "cab98795-2abd-46c2-9744-880e523fa27d",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture16.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture16_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-04"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 17,
+    "imageId": "673eb787-228d-4fcd-8b64-a9dd5d081b01",
+    "baseName": "Traumatic_Diaphragmatic_Rupture17",
+    "caption": "Axial CECT shows the \"dependent\" viscus sign with the spleen and bowel abutting the posterior ribs.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture17.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture17_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/673eb787-228d-4fcd-8b64-a9dd5d081b01?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/673eb787-228d-4fcd-8b64-a9dd5d081b01?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-17",
+    "filename": "Traumatic_Diaphragmatic_Rupture17.jpg",
+    "group": "",
+    "usedFor": [
+      "dependentViscusSign",
+      "spleenAndBowelAgainstPosteriorRibs",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_673eb787.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/673eb787-228d-4fcd-8b64-a9dd5d081b01?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "e4e280d0cdd9dcfe7580510e910ee3708522721648cee852a9294c0d5ffe8288"
+    },
+    "downloadFilename": "SDX-17_STATdx_image_17_plain_673eb787.jpg",
+    "sourceImageId": "673eb787-228d-4fcd-8b64-a9dd5d081b01",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture17.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture17_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-09"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 18,
+    "imageId": "b8ff441e-1735-46dc-8f7c-4d700fe09487",
+    "baseName": "Traumatic_Diaphragmatic_Rupture18",
+    "caption": "Chest radiograph shows an \"elevated\" and indistinct left hemidiaphragm. The tip <img src=\"arrow_BS.png\"> of the NG tube is pointed up.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture18.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture18_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/b8ff441e-1735-46dc-8f7c-4d700fe09487?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/b8ff441e-1735-46dc-8f7c-4d700fe09487?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-18",
+    "filename": "Traumatic_Diaphragmatic_Rupture18.jpg",
+    "group": "",
+    "usedFor": [
+      "radiographPattern",
+      "indistinctHemidiaphragm",
+      "ngTubeTipUp",
+      "alternateExample"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_b8ff441e.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/b8ff441e-1735-46dc-8f7c-4d700fe09487?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "3cec7d1930bf60e55eb2c8b59f04595e670b7c60337c5349b9e550d95e80f003"
+    },
+    "downloadFilename": "SDX-18_STATdx_image_18_plain_b8ff441e.jpg",
+    "sourceImageId": "b8ff441e-1735-46dc-8f7c-4d700fe09487",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture18.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture18_annot.jpg",
+    "relatedRadPrimerImageIds": []
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 19,
+    "imageId": "1a4f9ac3-9647-4d53-a7f0-31781381b45c",
+    "baseName": "Traumatic_Diaphragmatic_Rupture19",
+    "caption": "Chest radiograph in a 66-year-old man following an MVC shows a high and distorted left hemidiaphragm, or abnormal intrathoracic contents, with the NG tube <img src=\"arrow_BC.png\"> curled back up, indicating a high position of the stomach.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture19.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture19_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/1a4f9ac3-9647-4d53-a7f0-31781381b45c?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/1a4f9ac3-9647-4d53-a7f0-31781381b45c?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-19",
+    "filename": "Traumatic_Diaphragmatic_Rupture19.jpg",
+    "group": "",
+    "usedFor": [
+      "radiographPattern",
+      "mvc",
+      "ngTubeCurledBackUp",
+      "samePatientCluster"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_1a4f9ac3.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/1a4f9ac3-9647-4d53-a7f0-31781381b45c?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "cc1125a42a7ca6e0763705b26ecc8067a2111b5a500c2e6c4ed62609d54e2916"
+    },
+    "downloadFilename": "SDX-19_STATdx_image_19_plain_1a4f9ac3.jpg",
+    "sourceImageId": "1a4f9ac3-9647-4d53-a7f0-31781381b45c",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture19.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture19_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-05"
+    ]
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 20,
+    "imageId": "27941996-2691-4368-9410-ab91f4980e82",
+    "baseName": "Traumatic_Diaphragmatic_Rupture20",
+    "caption": "Axial CT in the same patient shows the fallen viscus sign with the stomach <img src=\"arrow_WS.png\"> lying adjacent to the spine and posterior chest wall, instead of being suspended by the left hemidiaphragm. Note the NG tube <img src=\"arrow_WC.png\">.",
+    "plainFilename": "Traumatic_Diaphragmatic_Rupture20.jpg",
+    "annotatedFilename": "Traumatic_Diaphragmatic_Rupture20_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/27941996-2691-4368-9410-ab91f4980e82?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/27941996-2691-4368-9410-ab91f4980e82?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-20",
+    "filename": "Traumatic_Diaphragmatic_Rupture20.jpg",
+    "group": "",
+    "usedFor": [
+      "ctCorrelation",
+      "fallenViscusSign",
+      "ngTube",
+      "samePatientCluster"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_27941996.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/27941996-2691-4368-9410-ab91f4980e82?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "19e04ee708b2fecc97036a3bca75f24a561bd301cdc1f43cbcb8aabf7c232240"
+    },
+    "downloadFilename": "SDX-20_STATdx_image_20_plain_27941996.jpg",
+    "sourceImageId": "27941996-2691-4368-9410-ab91f4980e82",
+    "sourcePlainFilename": "Traumatic_Diaphragmatic_Rupture20.jpg",
+    "sourceAnnotatedFilename": "Traumatic_Diaphragmatic_Rupture20_annot.jpg",
+    "relatedRadPrimerImageIds": [
+      "RP-05",
+      "RP-09"
+    ]
+  }
+]

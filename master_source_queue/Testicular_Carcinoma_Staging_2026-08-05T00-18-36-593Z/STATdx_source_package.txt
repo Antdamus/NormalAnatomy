@@ -1,0 +1,3745 @@
+=== TOPIC ===
+PRIMARY TOPIC: Testicular Carcinoma Staging
+CENTERING TOPIC FOR THIS CHAT: Testicular Carcinoma Staging
+USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: Testicular Carcinoma Staging
+
+=== STATDX BREADCRUMB ===
+Genitourinary > Diagnosis > Testes > Neoplasms > Testicular Carcinoma Staging
+
+
+
+=== CORE VALIDATION INPUT ===
+Pathway A - Core Radiology cross-check available or requested.
+Core section/chapter/pages: it might be in multiple regions of the book so you are going to have to look through it
+Use Core information only if it is actually supplied in this prompt/user context or retrievable from ChatGPT project/source files in the current run.
+If ChatGPT can find the relevant Core pages/section in project/source files, it may use them without asking the user to provide page numbers; it must state the retrieved Core source basis when visible.
+If Core cannot be retrieved, proceed from the provided article only and label the deck RadPrimer-only/STATdx-only; do not fabricate Core details or Core + article synthesis.
+
+=== PROMPT ===
+Source-comparison extraction only.
+Do not generate a narrative or cards from this package.
+Preserve article hierarchy, source text, image filenames, selected image captions, arrows/annotations, source attribution, Core evidence if present, and Anki/breadcrumb metadata when available.
+
+=== ARTICLE ===
+TITLE: Testicular Carcinoma Staging
+
+OVERVIEW
+- General Comments
+  - Tumors staged using American Joint Committee on Cancer (AJCC) staging system include postpubertal germ cell tumor (GCT) and malignant sex cord-stromal tumor
+  - Tumors not staged using AJCC system
+    - Spermatocytic tumor
+    - Nonmalignant sex cord-stromal tumor
+    - Prepubertal GCT
+    - Hematolymphoid tumor
+    - Paratesticular neoplasm
+- Classification
+  - GCT (~ 95% of all testicular tumors)
+    - Seminoma (~ 50% of GCT)
+      - Most common pure cell histology of all tumors
+    - Nonseminomatous GCT (NSGCT) (~ 50% of GCT)
+      - Mixed GCT (~ 33%)
+        - Contains elements of multiple subtypes of GCT, including NSGCT and seminoma
+      - Embryonal carcinoma (~ 10%)
+      - Teratoma (~ 4%)
+      - Yolk sac tumor (~ 1%)
+      - Choriocarcinoma (~ 0.3%)
+      - Polyembryoma
+  - Sex cord and stromal tumors (~ 5% of all testicular tumors)
+    - Leydig cell tumor
+    - Sertoli cell tumor
+    - Granulosa cell tumor
+    - Fibroma-thecoma
+  - Tumors with both sex cord and stromal cells and germ cells
+    - Gonadoblastoma
+
+PATHOLOGY
+- Routes of Spread
+  - Direct extension
+    - Major route for local extension is through hilum (mediastinum testis)
+      - Tunica albuginea is absent
+      - Mediastinum is composed of fibroadipose tissue, lymphatics, and blood vessels
+    - Through tunica albuginea with involvement of scrotal skin is rare and late finding
+  - Lymphatic spread
+    - Most GCT spread 1st via lymphatics rather than hematogenously
+    - Retroperitoneal lymph nodes are most common site for metastatic disease, and lymphatic involvement occurs in predictable, stepwise fashion
+      - Primary landing zone for tumors of right testis is interaortocaval nodal group inferior to renal hilar vessels, followed by precaval and preaortic nodes
+      - Primary landing zone for tumors of left testis is paraaortic and preaortic lymph nodes, followed by interaortocaval nodes
+    - In absence of bulky ipsilateral adenopathy, contralateral spread is unusual
+      - If seen as only site of metastasis, histologic proof of tumor involvement should be sought prior to instituting therapy
+    - Pelvic adenopathy is uncommon in absence of bulky disease elsewhere
+    - Inguinal lymph node metastases from testicular tumors are reported in 2% of cases, primarily to ipsilateral inguinal nodes
+      - Pattern is seen in 2 groups of patients
+        - Lymphatic disruption from prior scrotal or inguinal surgery
+        - Tumor-contaminated scrotum
+      - If patient did not have scrotal or inguinal surgery nor scrotal invasion or contamination
+        - Inguinal nodes are then considered nonregional (M1 disease)
+    - Nodal disease superior to level of renal hila occurs via direct spread
+      - With seminoma, spread of disease above diaphragm may occur via thoracic duct into posterior mediastinum
+      - With NSGCT, spread is more random, involving anterior mediastinum, aortopulmonary window, and hilar, supraclavicular, and neck lymph nodes
+        - Excludes posterior mediastinum and subcarinal regions
+  - Hematogenous spread
+    - Occurs late, except in case of choriocarcinoma
+      - Choriocarcinoma is notorious for early hematogenous spread
+    - Lung is most common location (89%)
+      - Other sites include liver (73%), brain (31%), bone (30%), kidney (30%), and adrenal (29%)
+- General Features
+  - Comments
+    - Cell type of these tumors is important for estimating risk of metastases and response to chemotherapy
+  - Etiology
+    - Well-established associations include
+      - Prior testicular tumor
+        - 20x increased risk of contralateral tumor
+      - Positive family history
+        - 6x increased risk with 1st-degree relative with testicular carcinoma
+      - Cryptorchidism
+        - Present in 3.5-14.5% of patients with testicular carcinoma
+      - Infertility
+        - Testis biopsies in subfertile men show 0.4-1.1% prevalence of intratubular germ cell neoplasia, excluding cases of cryptorchidism
+    - Microlithiasis remains somewhat controversial as risk factor
+      - US definition of at least 5 microliths on 1 image
+      - 2-20x increased relative risk of testicular carcinoma in setting of microlithiasis
+      - In setting of microlithiasis without mass, majority of current recommendations are for monthly self exams without routine US screening
+    - Small increased relative risk of testicular carcinoma has been reported in patients with history of mumps orchitis
+  - Epidemiology & cancer incidence
+    - Most common nonhematologic malignancy in men aged 15-49 years
+      - 9,310 estimated new cases in USA in 2018
+    - Age-adjusted death rate: 0.3/100,000
+      - 400 estimated deaths in USA in 2018
+    - 4.5x more common in White patients than in Black patients
+    - Median age at diagnosis: 34 years
+      - Testicular tumor subtypes commonly present by age group
+        - Yolk sac: 0-10 years
+        - Choriocarcinoma: 20-30 years
+        - Embryonal and teratoma: 25-30 years
+        - Seminoma: 30-40 years
+- Gross Pathology & Surgical Features
+  - Burned-out tumor describes regressed occult gonadal GCT with primary metastases
+    - Primary testicular tumor is reduced to fibrotic scar, sometimes with intratubular cancerous germ cells
+    - May account for many of apparently primary retroperitoneal GCT
+- Microscopic Features
+  - H&E
+    - Seminoma
+      - Uniform cellular morphology resembling primitive germ cells
+    - Embryonal cell carcinoma
+      - Papillary tumor with primitive anaplastic epithelial cells resembling early embryonic cells
+    - Teratoma
+      - Variable appearance with possible ciliated epithelial-lined cysts, densely staining bone and cartilage, and mucin-producing glandular structures
+    - Choriocarcinoma
+      - Pale-staining cytotrophoblasts surrounded by syncytiotrophoblasts
+    - Burned-out GCT
+      - Scarring with homogeneous, sparsely cellular collagen
+  - Special stains
+    - Yolk sac tumor
+      - AFP positive with brownish deposits within tumor cells
+
+IMAGING FINDINGS
+- Detection
+  - US
+    - Primary imaging modality for evaluation of testicular lesions
+    - Nearly 100% sensitivity for identification of scrotal masses; can almost always differentiate intratesticular from extratesticular mass
+    - Cannot reliably differentiate tumor subtypes, and orchiectomy is required for detailed pathologic evaluation of tumor
+    - Most testicular tumors are hypoechoic to surrounding normal parenchyma
+      - Some tumors can be heterogeneous with cystic areas and calcifications
+      - Larger tumors tend to be more vascular
+    - US appearance of different histologic types
+      - Seminoma
+        - Most commonly uniformly hypoechoic; if larger, can be heterogeneous and may be lobulated or multinodular
+        - Densely echogenic areas or calcifications and cystic spaces are relatively uncommon, seen in 30% and 10%, respectively
+        - Can be large enough to replace entire testis
+        - May be multifocal &/or bilateral (1-3%), almost always metachronous
+        - On Doppler US, seminoma demonstrates increased vascularity compared with adjacent normal testis
+      - Embryonal cell carcinoma
+        - More heterogeneous and ill defined than seminoma; can hemorrhage and have cystic areas of necrosis
+      - Teratoma
+        - Complex, heterogeneous lesions often with multiple cystic areas and multiple echogenic foci made up of cartilage, calcification, and fibrosis
+      - Yolk sac tumor
+        - Rarely in pure form in adults, although accounts for 80% of childhood tumors (most before age 2)
+        - Pure forms in childhood have nonspecific imaging findings, sometimes testicular enlargement without focal mass
+      - Choriocarcinoma
+        - Small, echogenic mass; can hemorrhage and have areas of necrosis or calcification
+        - Often present with widely metastatic disease
+      - Mixed GCT
+        - Imaging variable depending on tumor components
+      - Leydig cell tumor
+        - Variable sonographic appearance without distinguishing features from GCT
+      - Sertoli cell tumor
+        - Often multiple bilateral masses with large calcifications
+    - Burned-out GCT
+      - Primary testicular GCT may be small or involute in setting of widespread metastatic disease
+      - Small mass, cystic area ± focal calcification
+  - CECT
+    - Insensitive for undiagnosed testicular lesion
+      - Difficult to distinguish intratesticular from extratesticular lesions
+    - Retroperitoneal mass discovered on CT in setting of unknown primary in appropriate patient population warrants further investigation with testicular US
+  - MR
+    - Not typically used for initial testicular evaluation
+      - Useful in complicated cases in which US cannot accurately differentiate intratesticular from extratesticular mass
+    - MR allows accurate distinction between seminoma and NSGCT
+      - Seminomas appear as multinodular, sharply defined, homogeneous tumors of low signal on T2WI
+        - Areas of signal heterogeneity related to hemorrhage or necrosis may be seen
+        - Characteristic feature in seminoma is presence of fibrovascular septa, which demonstrate low signal on T2WI and enhance more than background tumor on postcontrast T1WI
+        - ± low-signal halo (correlates histologically with fibrous capsule)
+      - NSGCTs appear as ill-defined masses, more heterogeneous with areas of cystic changes and calcifications
+        - MR does not allow reliable differentiation among NSGCT subtypes
+  - FDG PET
+    - Not typically used for initial testicular evaluation
+    - Sensitivity/specificity for seminoma is 100%/80%
+    - SUV > 3 used as cut-off for suspicion of malignancy in primary testicular tumor
+- Staging
+  - Primary tumor staging
+    - Imaging is not used for T staging
+    - After identification of intratesticular mass, radical orchiectomy with detailed pathologic evaluation is used for staging
+      - In addition to determining extent of tumor invasion, tumor subtype is reported with percentage of each subtype present
+    - MR can provide useful information in initial staging of testicular mass but is of little clinical value as standard of care dictates orchiectomy and detailed pathologic assessment of tumor
+      - Best imaging modality for evaluating invasion of tunica albuginea/vaginalis, spermatic cord, and scrotum
+  - Regional lymph node staging
+    - CT of abdomen and pelvis indicated for initial staging of regional adenopathy
+      - Evaluation for adenopathy, including retroperitoneal, pelvic, and inguinal
+        - Low-attenuating, poorly enhancing lymph nodes in typical retroperitoneal locations, even when small, are concerning for metastatic disease
+        - Size criterion of 8 mm in short axis in typical retroperitoneal locations has high specificity but low sensitivity
+        - Differentiating stage I from stage II disease can be impossible; up to 25-30% of patients harbor microscopic metastases that cannot be detected by CT
+    - Location of nodal metastases
+      - Right testis → right-sided nodes around inferior vena cava (most commonly lower retroperitoneal, aortocaval, or paracaval)
+      - Left testis → left paraaortic nodes in area bounded by renal vein, aorta, ureter, and inferior mesenteric artery
+    - Size and number of lymph nodes determine clinical nodal staging
+      - N1: Single or multiple nodes ≤ 2 cm in short axis
+      - N2: Single or multiple nodes > 2 cm but ≤ 5 cm in short axis
+      - N3: Single or multiple nodes > 5 cm in short axis
+  - Distant metastatic disease
+    - Staging work-up
+      - Abdominal/pelvic CT
+      - Chest x-ray
+      - Chest CT
+        - Indicated when metastatic disease of thorax is suspected, including if abdominal/pelvic CT is positive for metastatic disease or chest x-ray is abnormal
+      - Brain MR, if clinically indicated
+      - Bone scan, if clinically indicated
+    - Nonregional nodes or pulmonary metastasis defines M1a disease
+      - Including inguinal nodes if patient did not have scrotal or inguinal surgery
+    - Other distant metastasis defines M1b disease
+      - Most commonly liver, brain, bone, kidney, or adrenal glands
+  - MR
+    - Indicated for evaluation of brain metastasis in appropriate clinical setting
+    - Can be useful for detection of bone and liver metastasis, although CT is primary imaging modality
+    - Offers no advantage over CT in evaluating adenopathy as MR has same limitations in distinguishing reactive from malignant nodes
+  - PET/CT
+    - Good sensitivity and specificity for seminoma metastatic lesions (92% and 84%, respectively), but lower sensitivity for NSGCT (sensitivity and specificity of 77% and 95%, respectively)
+    - FDG PET has positive predictive value (PPV) of 91% and negative predictive value (NPV) of 62% in differentiating tumor from nontumor in NSGCT
+      - Negative study does not exclude presence of disease, mostly due to teratoma
+      - Masses with negative FDG PET still usually require resection
+    - FDG PET is not useful in cases of elevated tumor markers and disease diagnosed with CT
+  - Bone scan
+    - Evaluate bony metastatic disease, if clinically indicated
+- Restaging
+  - Seminoma stage IA or IB using surveillance
+    - Abdominal/pelvic CT and chest x-ray every 4 months for first 3 years, every 6 months for next 3 years, then annually for additional 4 years
+  - Seminoma stage IA or IB using subdiaphragmatic radiation therapy or single-agent carboplatin; stage IS using radiation therapy
+    - Chest x-ray every 3-4 months for year 1, every 6 months for year 2, then annually
+    - Pelvic CT annually for 3 years in radiation therapy-only patients
+  - Seminoma stage IIA or IIB status post radiation therapy
+    - Abdominal CT at month 4 of year 1
+    - Chest x-ray every 3-4 months for years 1-3, every 6 months for year 4, then annually
+  - Seminoma stage IIB, IIC, and III status post chemotherapy
+    - Chest, abdominal, and pelvic CT at least 4 weeks post treatment
+      - If negative and tumor marker normal → surveillance
+      - If residual mass and normal tumor markers → FDG PET
+        - PET negative → surveillance
+        - PET positive → surgery with biopsy, or biopsy and salvage therapy, or radiation therapy
+        - If FDG PET not available, evaluate residual retroperitoneal mass on CT; if > 3 cm, consider surgery or radiation therapy; if < 3 cm, then surveillance
+      - Progressive disease (growing mass or increasing tumor markers)
+        - Salvage therapy (includes chemotherapy &/or radiation therapy)
+      - Surveillance
+        - Chest x-ray every 2 months for year 1, every 3 months for year 2, every 4 months for year 3, every 6 months for year 4, then annually
+        - Abdominal/pelvic CT at month 4 status post surgery or every 3 months until stable if no surgery option is used
+        - FDG PET as indicated
+  - NSGCT stage IA and IB surveillance
+    - Chest x-ray every 1-2 months for year 1, every 2 months for year 2, every 3 months for year 3, every 4 months for year 4, every 6 months for year 5, then annually
+    - Abdominal/pelvic CT every 2-3 months for year 1, every 3-4 months for year 2, every 4 months for year 3, every 6 months for year 4, then annually
+  - NSGCT any stage after complete response to chemotherapy &/or retroperitoneal lymph node dissection (RPLND)
+    - Chest x-ray every 2-3 months for year 1, every 2-3 months for year 2, every 4 months for years 3 and 4, every 6 months for year 5, then annually
+    - Abdominal/pelvic CT baseline postsurgical scan in setting of RPLND
+    - Abdominal/pelvic CT status post chemotherapy every 6 months for year 1, every 6-12 months for year 2, every 12 months for years 3-5, then every 12-24 months thereafter
+  - CECT
+    - Restaging 4 weeks after chemotherapy treatment
+      - Lesions > 3 cm have 30% chance of harboring residual tumor
+  - FDG PET/CT used for restaging and evaluation of response to therapy
+    - Tumor marker elevation in absence of CT findings should prompt FDG PET evaluation for salvage surgery
+    - FDG PET is best predictor of viable seminoma in residual masses after chemotherapy; may be useful in NSGCT
+    - Masses with residual malignancy may remain negative on PET for up to 10-14 days after chemotherapy, known as "stunned" tumor
+    - Difficult to differentiate mature teratoma vs. scar as both have low FDG uptake
+    - In multirelapse seminoma patients, FDG PET has been shown to change treatment in 57% of cases
+
+CLINICAL ISSUES
+- Presentation
+  - Majority of patients present with painless, unilateral testicular mass
+  - ~ 15% of patients have pain and mass; can be mistaken for epididymoorchitis
+  - Nearly 1/3 of patients are initially misdiagnosed with epididymitis, orchitis, or hydrocele
+  - At initial diagnosis, ~ 20% of patients will have metastatic disease and may present with abdominal or back pain, malaise, or lethargy
+  - 2-3% of testicular tumors are bilateral (synchronous or metachronous)
+- Cancer Natural History & Prognosis
+  - Testicular carcinoma is highly treatable, often curable, cancer
+    - 5-year survival rate from 2008-2014 was 95.3%
+  - NSGCT
+    - Good prognosis: All of following
+      - AFP < 1,000 ng/mL and hCG < 5,000 IU/L (1,000 ng/mL) and lactate dehydrogenase (LDH) < 1.5x upper limit of normal (N)
+      - Nonmediastinal primary
+      - No nonpulmonary visceral metastases (NPVM)
+      - 5-year progression-free survival (PFS) of 89%, 5-year survival of 92-94%
+    - Intermediate prognosis: All of following
+      - AFP 1,000-10,000 ng/mL, or hCG 5,000-50,000 IU/L, or LDH 1.5-10x N
+      - Nonmediastinal primary site
+      - No NPVM
+      - 5-year PFS of 75%, 5-year survival of 80-83%
+    - Poor prognosis: Any of following
+      - AFP > 10,000 ng/mL or hCG > 50,000 IU/L or LDH > 10x N
+      - Mediastinal primary site
+      - NPVM
+      - 5-year PFS of 41%, 5-year survival of 71%
+  - Seminoma
+    - Good prognosis
+      - Normal AFP, any hCG, any LDH
+      - No NPVM
+      - Any primary site
+      - 5-year PFS of 82%, 5-year survival of 86%
+    - Intermediate prognosis
+      - NPVM present
+      - 5-year PFS of 67%, 5-year survival of 72%
+    - Poor prognosis
+      - No seminomas are considered poor prognosis
+- Treatment Options
+  - Major treatment alternatives
+    - Seminoma is extremely radiosensitive tumor, whereas NSGCT responds better to surgical and chemotherapeutic approaches
+  - Options by stage
+    - Stage I seminoma
+      - Radical inguinal orchiectomy (RIO) with no retroperitoneal node radiation therapy followed by frequent determination of serum markers, chest x-rays, and CT surveillance
+        - Large primary tumor (> 4 cm) and rete testis invasion have been controversially identified as risk factors for relapse
+      - RIO followed by single-dose carboplatin adjuvant therapy or radiation therapy
+    - Stage I nonseminoma
+      - RIO followed (in adults) by RPLND
+      - RIO with no RPLND followed by regular history (e.g., every 1-2 months), physical examination, determination of serum markers, and, during 1st year, abdominal CT surveillance
+    - Stage II seminoma
+      - Nonbulky disease (retroperitoneal lymph nodes < 5 cm): RIO followed by radiation to retroperitoneal and ipsilateral pelvic lymph nodes
+      - Bulky disease (retroperitoneal lymph nodes > 5 cm): RIO followed by combination chemotherapy (with cisplatin-based regime) or radiation to retroperitoneal and pelvic lymph nodes
+    - Stage II nonseminoma
+      - Mixed tumors treated as NSGCT even in presence of seminomatous components
+      - RIO with RPLND followed by monthly physical exam, chest x-ray, and serum markers
+      - RIO with RPLND followed by chemotherapy and monthly check-ups
+      - RIO followed by chemotherapy and delayed surgery for removal of residual lymph node masses (if present) and monthly check-ups
+    - Stage III seminoma
+      - RIO with multidrug chemotherapy regime
+        - Some advocate resection of residual masses > 3 cm or empiric radiation
+        - Viable alternative is serial serum markers and CT exam
+    - Stage III nonseminoma
+      - RIO with multidrug chemotherapy regime
+
+REPORTING CHECKLIST
+- T Staging
+  - Intratesticular mass vs. extratesticular mass
+    - US used to differentiate
+  - Invasion of tunica albuginea/vaginalis, spermatic cord, and scrotum
+    - MR may be helpful
+      - Little clinical relevance as appropriate management requires orchiectomy with detailed pathologic analysis
+- N Staging
+  - Particularly retroperitoneal nodes, including left paraaortic and right paracaval and aortocaval
+  - Inguinal adenopathy in setting of prior lymphatic disruption from scrotal or inguinal surgery
+  - Size of nodes is important in staging, number of nodes is not
+- M Staging
+  - Common sites include lung, liver, brain, bone, kidney, and adrenal glands
+  - Inguinal adenopathy without history of lymphatic disruption from scrotal or inguinal surgery or scrotal tumor invasion
+
+=== IMAIOS LABEL REPOSITORY ===
+
+Use this as the available IMaios label universe for the IMaios anatomy output.
+
+Choose exact labels from these lists when possible. If a needed anatomy concept has no usable exact/synonym/component match, put it in the gap-review block instead of inventing a label.
+
+
+
+MODULE = Petrous bone CT: normal anatomy
+MODULE_KEY = head-and-neck-ct-temporal-bone
+URL = https://www.imaios.com/en/e-anatomy/head-and-neck/ct-temporal-bone
+MATCH_SCORE = 22
+AVAILABLE_LABELS:
+Aditus to mastoid antrum
+Anterior bony ampulla
+Anterior limb of stapes
+Anterior process of malleus
+Anterior semicircular canal
+Anterior surface of petrous part
+Antitragus
+Apex of petrous part
+Apical half turn of cochlea
+Arcuate eminence
+Articular tubercle
+Auditory ossicles
+Auditory tube
+Auricle
+Basal turn of cochlea
+Base of cochlea
+Base of stapes; Footplate
+Body of incus
+Body of sphenoid bone
+Bones of cranium
+Bony external acoustic meatus
+Bony external acoustic opening
+Bony labyrinth
+Carotid canal
+Cavity of concha
+Chorda tympani
+Cochlea
+Cochlear area
+Cochlear canaliculus
+Cochlear cupula
+Cochlear nerve
+Cochlear recess
+Cochlear window
+Common bony limb
+Concha of auricle
+Condylar process
+Continue without accepting
+Cranial nerves
+Crest of cochlear window
+Crus of helix
+Ear
+Elliptical recess
+Epitympanic recess
+Epitympanum
+External acoustic meatus
+External ear
+External surface of cranial base
+Extratemporal segment of facial nerve
+Facial area
+Facial canal
+Facial nerve [VII]
+Facial nerve segments
+Fissula ante fenestram
+Foramen lacerum
+Foramen ovale
+Foramen singulare
+Foramen spinosum
+Fossa of cochlear window
+Fossa of vestibular window
+Fundus of internal acoustic meatus
+Geniculate ganglion
+Geniculum of facial canal
+Glossopharyngeal nerve [IX]
+Greater petrosal nerve
+Greater tympanic spine
+Greater wing
+Groove for greater petrosal nerve
+Groove for lesser petrosal nerve
+Groove for sigmoid sinus
+Groove for superior petrosal sinus
+Handle of malleus
+Head of malleus
+Head of stapes
+Helix
+Hypoglossal canal
+Hypotympanum
+Incus
+Inferior branch of vestibular nerve
+Inferior surface of petrous part
+Inferior tympanic canaliculus
+Inferior vestibular area
+Internal acoustic meatus
+Internal acoustic opening
+Internal ear
+Jugular foramen
+Jugular fossa
+Jugular wall of tympanic cavity
+Labyrinthine segment of facial nerve [F3]
+Labyrinthine wall of tympanic cavity
+Labyrinthine wall; Medial wall
+Lateral bony ampulla
+Lateral part of occipital bone
+Lateral process of malleus
+Lateral semicircular canal
+Lenticular process of incus
+Lesser tympanic spine
+Lobule of auricle
+Long limb of incus
+Malleus
+Mandible
+Mandibular fossa
+Mastoid antrum
+Mastoid canaliculus
+Mastoid cells
+Mastoid process
+Mastoid segment of facial nerve [F5]
+Mastoid wall of tympanic cavity
+Mesotympanum
+Middle ear
+Middle turn of cochlea
+Modiolus of cochlea
+Muscles of auditory ossicles
+Neck of malleus
+Nerve to stapedius muscle
+Neurocranial part of head
+Occipital bone
+Opening of cochlear canaliculus
+Opening of vestibular canaliculus
+Perilymphatic ducts
+Petromastoid canal
+Petrosal fossula
+Petrosquamous fissure
+Petrotympanic fissure
+Petrous part
+Petrous part of temporal bone
+Petrous ridge
+Posterior bony ampulla
+Posterior geniculum of facial nerve
+Posterior limb of stapes
+Posterior semicircular canal
+Posterior surface of petrous part
+Posterior tympanic canaliculus
+privacy policy
+Prominence of facial canal
+Prominence of lateral semicircular canal
+Promontory of tympanic cavity
+Protympanum
+Pyramidal eminence
+Ramus of mandible
+Scutum
+Semicircular canals
+Sense organs
+Sensory root of facial nerve
+Short limb of incus
+Sinus tympani
+Sphenoid bone
+Spherical recess
+Spine of sphenoid bone
+Squamous part of temporal bone
+Stapedius muscle
+Stapes
+Styloid process of temporal bone
+Stylomastoid foramen
+Subarcuate fossa
+Superior part of vestibular nerve
+Superior vestibular area
+Tegmen tympani
+Temporal bone
+Tensor tympani
+Tractus spiralis foraminosus
+Tragus
+Transverse crest
+Trigeminal impression
+Turns of cochlea
+Tympanic cavity
+Tympanic cavity proper
+Tympanic cells
+Tympanic membrane
+Tympanic nerve
+Tympanic notch
+Tympanic part
+Tympanic part of temporal bone
+Tympanic ring
+Tympanic segment of facial nerve [F4]
+Tympanic sulcus
+Tympanomastoid fissure
+Tympanosquamous fissure
+Vertical crest
+Vestibular canaliculus
+Vestibular crest
+Vestibular ganglion
+Vestibular nerve
+Vestibular window
+Vestibule
+Vestibulocochlear nerve [VIII]
+Walls of cochlea
+Walls of tympanic cavity
+Walls of vestibule
+Zygomatic process of temporal bone
+
+MODULE = lumbar spine: normal anatomy
+MODULE_KEY = spine-ct-lumbar-spine
+URL = https://www.imaios.com/en/e-anatomy/spine/ct-lumbar-spine
+MATCH_SCORE = 22
+AVAILABLE_LABELS:
+Abdominal aorta
+Accessory process
+Acetabular fossa
+Acetabular labrum
+Acetabular margin
+Acetabular notch
+Acetabulum
+Adductor brevis
+Adductor longus
+Ala of ilium
+Ala of sacrum
+Anal canal
+Annular epiphysis
+Anorectal venous plexus
+Anterior gluteal line
+Anterior inferior iliac spine
+Anterior layer of thoracolumbar fascia
+Anterior longitudinal ligament
+Anterior sacral foramina
+Anterior sacrococcygeal ligament
+Anterior sacroiliac ligament
+Anulus fibrosus
+Aortic bifurcationBifurcatio aortae
+Apex of coccyx
+Apex of sacrum
+Arcuate line of ilium
+Articular facet of head of rib
+Articular facet of tubercle of rib
+Ascending colon
+Auricular surface of ilium
+Auricular surface of sacrum
+Base of coccyx
+Base of sacrum
+Body of ilium
+Body of ischium
+Body of pancreas
+Body of pubis
+Body of rib
+Body of stomach
+Bursa of piriformis muscle
+Cardia
+Cauda equina
+Caudate lobe
+Celiac trunk
+Coccygeal horn
+Coccygeal nerve [Co]
+Coccyx
+Common hepatic artery
+Common iliac artery
+Common iliac vein
+Conus medullaris
+Costal facet
+Costal part of transverse process
+Costotransverse foramen
+Costotransverse joint
+Costotransverse ligament
+Crest of neck of rib
+Deep circumflex iliac artery
+Deep posterior sacrococcygeal ligament
+Descending colon
+Descending part of iliofemoral ligament
+Dorsal surface of sacrum
+Erector spinae
+Erector spinae aponeurosis
+External abdominal oblique muscle
+External iliac artery
+External iliac vein
+External intercostal muscles
+Fascia lata
+Femoral artery
+Femoral nerve
+Femoral vein
+Femur
+Fibrous capsule of kidney
+Filum terminale externum
+Filum terminale internum
+Fovea for ligament of head of femur
+Fundus of stomach
+Gallbladder
+Gastroduodenal artery
+Genitofemoral nerve
+Gluteal aponeurosis
+Gluteal region
+Gluteal surface of ilium
+Gluteus maximus muscle
+Gluteus medius muscle
+Gluteus minimus muscle
+Great saphenous vein
+Greater sciatic foramen
+Greater sciatic notch
+Head of femur
+Head of pancreas
+Head of rib
+Hepatic portal vein
+Hilum of kidney
+Hip bone
+Hip joint
+Horizontal part of duodenum [D3]
+Ileum
+Iliac crest
+Iliac fossa
+Iliac tuberosity
+Iliacus muscle
+Iliocostalis lumborum muscle
+Iliocostalis muscles
+Iliohypogastric nerve
+Ilioinguinal nerve
+Iliolumbar ligament
+Iliopsoas muscle
+Iliopubic eminence
+Ilium
+Inferior articular facet of vertebra
+Inferior articular process of vertebra
+Inferior epigastric artery
+Inferior epigastric vein
+Inferior gemellus muscle
+Inferior gluteal artery
+Inferior gluteal veins
+Inferior lobe of right lung
+Inferior mesenteric artery
+Inferior mesenteric vein
+Inferior phrenic artery
+Inferior pubic ramus
+Inferior vena cava
+Inferior vertebral notch
+Infrascapular region
+Innermost intercostal muscles
+Intercostal space
+Intermediate hepatic vein
+Intermediate sacral crest
+Internal abdominal oblique muscle
+Internal iliac artery
+Internal iliac vein
+Internal intercostal muscles
+Internal pudendal artery
+Internal pudendal vein
+Interosseous sacroiliac ligament
+Interpubic disc
+Interspinales lumborum muscles
+Interspinous ligaments
+Intertransverse ligaments
+Intervertebral disc
+Intervertebral foramen
+Intervertebral foramina
+Intervertebral surface
+Intervertebral symphysis
+Intraarticular ligament of head of rib
+Ischial spine
+Ischiofemoral ligament
+Ischium
+Jejunum
+Joint of head of rib
+Kidney
+Lamina of vertebral arch
+Lateral intertransversarii lumborum muscles
+Lateral part of sacrum
+Lateral part of transverse process
+Lateral sacral arteries
+Lateral sacral crest
+Lateral sacral veins
+Lateral sacrococcygeal ligament
+Left colic artery
+Left gastric artery
+Left hepatic vein
+Left lobe of liver
+Left renal artery
+Left renal vein
+Left testicular vein
+Lesser curvature of stomach
+Lesser sciatic foramen
+Lesser sciatic notch
+Ligament of head of femur
+Ligamenta flava
+Linea alba
+Liver
+Longissimus thoracis muscle
+Lumbar arteries
+Lumbar cistern
+Lumbar plexus
+Lumbar region
+Lumbosacral symphysis
+Lunate surface
+Male urethra
+Mammillary process
+Median sacral artery
+Median sacral crest
+Middle layer of thoracolumbar fascia
+Multifidus muscles
+Neck of femur
+Neck of pancreas
+Neck of rib
+Nucleus pulposus
+Obturator artery
+Obturator canal
+Obturator crest
+Obturator externus
+Obturator foramen
+Obturator groove
+Obturator internus
+Obturator membrane
+Obturator nerve
+Obturator veins
+Pancreas
+Pars interarticularis of vertebral arch
+Pecten pubis
+Pedicle of vertebral arch
+Pelvic surface of sacrum
+Piriformis muscle
+Posterior gluteal line
+Posterior inferior iliac spine
+Posterior intercostal arteries
+Posterior layer of thoracolumbar fascia
+Posterior longitudinal ligament
+Posterior sacral foramina
+Posterior sacroiliac ligament
+Posterior superior iliac spine
+Promontory
+Proper hepatic artery
+Prostate
+Psoas major
+Pubic crest
+Pubic symphysis
+Pubic tubercle
+Pubis
+Pubofemoral ligament
+Pudendal nerve
+Pylorus
+Quadrate lobe
+Quadratus femoris muscle
+Quadratus lumborum muscle
+Radiate ligament of head of rib
+Rectum
+Rectus abdominis muscle
+Rectus femoris muscle
+Renal cortex
+Renal medulla
+Rib 10
+Rib 11
+Rib 12
+Right hepatic vein
+Right lobe of liver
+Right renal artery
+Right renal vein
+Rotatores lumborum
+Sacral canal
+Sacral hiatus
+Sacral horn
+Sacral plexus
+Sacral region
+Sacral tuberosity
+Sacral venous plexus
+Sacrococcygeal joint
+Sacroiliac joint
+Sacropelvic surface of ilium
+Sacrospinous ligament
+Sacrotuberous ligament
+Sacrum
+Sartorius muscle
+Sciatic bursa of obturator internus
+Sciatic nerve
+Sigmoid arteries
+Sigmoid colon
+Spinal branch of posterior intercostal artery
+Spinal cord
+Spinal dura
+Spinal epidural space
+Spinal nerve Co
+Spinal nerve L1
+Spinal nerve L2
+Spinal nerve L3
+Spinal nerve L4
+Spinal nerve L5
+Spinal nerve S1
+Spinal nerve S2
+Spinal nerve S3
+Spinal nerve S4
+Spinal nerve S5
+Spinal nerve T11
+Spinal nerve T12
+Spinalis thoracis muscle
+Spinous process
+Spinous process Sacrum
+Spleen
+Splenic artery
+Splenic vein
+Stomach
+Superficial posterior sacrococcygeal ligament
+Superior anorectal artery
+Superior articular facet of vertebra
+Superior articular process of sacrum
+Superior articular process of vertebra
+Superior gemellus muscle
+Superior gluteal artery
+Superior gluteal cutaneous nerves
+Superior gluteal veins
+Superior lobe of left lung
+Superior mesenteric artery
+Superior mesenteric vein
+Superior part of duodenum [D1]
+Superior pubic ligament
+Superior pubic ramus
+Superior vertebral notch
+Supraspinous ligament
+Symphyseal surface of pubis
+Tail of pancreas
+Tendinous intersections
+Testicular artery
+Thoracic aorta
+Transverse acetabular ligament
+Transverse colon
+Transverse costal facet
+Transverse ligaments
+Transverse process
+Transverse ridges
+Transversospinal muscles
+Transversus abdominis muscle
+Tubercle of rib
+Umbilical artery
+Ureter
+Urinary bladder
+Vastus intermedius muscle
+Vertebra L1
+Vertebra L2
+Vertebra L3
+Vertebra L4
+Vertebra L5
+Vertebra S1
+Vertebra S2
+Vertebra S3
+Vertebra S4
+Vertebra S5
+Vertebra T10
+Vertebra T11
+Vertebra T12
+Vertebral arch
+Vertebral body
+Vertebral canal
+Vertebral foramen
+Vertebral region
+Zygapophyseal joints
+
+MODULE = Anatomy of the lumbar vertebrae: normal anatomy
+MODULE_KEY = spine-mri-lumbar-spine
+URL = https://www.imaios.com/en/e-anatomy/spine/mri-lumbar-spine
+MATCH_SCORE = 21
+AVAILABLE_LABELS:
+Abdominal aorta
+Accessory process
+Ala of ilium
+Ala of sacrum
+Annular epiphysis
+Anterior external vertebral venous plexus
+Anterior internal vertebral venous plexus
+Anterior layer of thoracolumbar fascia
+Anterior longitudinal ligament
+Anterior rami of thoracic nerves
+Anterior sacral foramina
+Anterior sacroiliac ligament
+Anulus fibrosus
+Aortic bifurcationBifurcatio aortae
+Apex of sacrum
+Ascending lumbar vein
+Auricular surface of ilium
+Auricular surface of sacrum
+Azygos vein
+Base of sacrum
+Basivertebral veins
+Body of ilium
+Body of rib
+Cauda equina
+Common iliac artery
+Common iliac vein
+Conus medullaris
+Costal process
+Costotransverse foramen
+Costotransverse joint
+Costotransverse ligament
+Costovertebral joints
+Descending aorta
+Diaphragm
+Erector spinae
+Erector spinae aponeurosis
+Esophagus
+External abdominal oblique muscle
+External iliac artery
+External iliac vein
+External intercostal muscles
+Femoral nerve
+Filum terminale externum
+Filum terminale internum
+Genitofemoral nerve
+Gluteal region
+Gluteus maximus muscle
+Gluteus medius muscle
+Gluteus minimus muscle
+Greater sciatic foramen
+Head of rib
+Hip bone
+Iliac crest
+Iliac tuberosity
+Iliacus muscle
+Iliocostalis lumborum muscle
+Iliohypogastric nerve
+Ilioinguinal nerve
+Iliolumbar artery
+Iliolumbar ligament
+Iliolumbar vein
+Inferior articular process of vertebra
+Inferior vena cava
+Inferior vertebral notch
+Infrascapular region
+Intermediate sacral crest
+Internal abdominal oblique muscle
+Internal iliac artery
+Internal iliac vein
+Internal intercostal muscles
+Interosseous sacroiliac ligament
+Interspinales lumborum muscles
+Interspinales thoracis muscles
+Interspinous ligaments
+Intertransversarii muscles
+Intertransverse ligaments
+Intervertebral disc
+Intervertebral foramen
+Intervertebral foramina
+Intervertebral surface
+Intraarticular ligament of head of rib
+Joint of head of rib
+Lamina of vertebral arch
+Lateral arcuate ligament
+Lateral costotransverse ligament
+Lateral femoral cutaneous nerve
+Lateral part of sacrum
+Lateral region of abdomen
+Lateral sacral arteries
+Lateral sacral crest
+Lateral sacral veins
+Latissimus dorsi muscle
+Left crus of diaphragm
+Left kidney
+Left lung
+Left renal artery
+Left renal vein
+Left ureter
+Ligamenta flava
+Liver
+Longissimus thoracis muscle
+Lumbar arteries
+Lumbar cistern
+Lumbar lordosis
+Lumbar plexus
+Lumbar region
+Lumbar veins
+Lumbar vertebrae
+Lumbocostal ligament
+Lumbosacral enlargement
+Lumbosacral symphysis
+Lumbosacral trunk
+Mammillary process
+Medial arcuate ligament
+Median arcuate ligament
+Median sacral artery
+Median sacral crest
+Median sacral vein
+Middle layer of thoracolumbar fascia
+Multifidus lumborum muscle
+Neck of rib
+Nucleus pulposus
+Obturator nerve
+Pedicle of vertebral arch
+Pelvic surface of sacrum
+Piriformis muscle
+Posterior external vertebral venous plexus
+Posterior gluteal line
+Posterior inferior iliac spine
+Posterior intercostal arteries
+Posterior intercostal veins
+Posterior internal vertebral venous plexus
+Posterior layer of thoracolumbar fascia
+Posterior longitudinal ligament
+Posterior rami of thoracic nerves
+Posterior sacral foramina
+Posterior sacroiliac ligament
+Posterior superior iliac spine
+Promontory
+Psoas major
+Quadratus lumborum muscle
+Radiate ligament of head of rib
+Rib 10
+Rib 11
+Rib 12
+Rib 9
+Right crus of diaphragm
+Right kidney
+Right lung
+Right renal artery
+Right renal vein
+Right ureter
+Rotatores lumborum
+Rotatores thoracis
+Sacral canal
+Sacral kyphosis
+Sacral plexus
+Sacral region
+Sacral tuberosity
+Sacral venous plexus
+Sacroiliac joint
+Sacrospinous ligament
+Sacrotuberous ligament
+Sacrum
+Serratus anterior muscle
+Serratus posterior inferior muscle
+Sigmoid colon
+Small intestine
+Spinal cord
+Spinal dura
+Spinal epidural space
+Spinal nerve Co
+Spinal nerve L1
+Spinal nerve L2
+Spinal nerve L3
+Spinal nerve L4
+Spinal nerve L5
+Spinal nerve S1
+Spinal nerve S2
+Spinal nerve S3
+Spinal nerve S4
+Spinal nerve S5
+Spinal nerve T10
+Spinal nerve T11
+Spinal nerve T12
+Spinal nerve T9
+Spinal part of filum terminale
+Spinalis thoracis muscle
+Spinous process
+Spleen
+Stomach
+Subarachnoid space
+Subcostal artery
+Subcostal nerve
+Subcostal vein
+Superior articular process of sacrum
+Superior articular process of vertebra
+Superior costal facet
+Superior costotransverse ligament
+Superior vertebral notch
+Supraspinous ligament
+Terminal ventricle
+Thoracic kyphosis
+Thoracic vertebrae
+Thoracolumbar fascia
+Transverse costal facet
+Transverse ligaments
+Transverse process
+Transverse ridges
+Transversus abdominis muscle
+Trapezius muscle
+Tubercle of rib
+Vertebra L1
+Vertebra L2
+Vertebra L3
+Vertebra L4
+Vertebra L5
+Vertebra S1
+Vertebra S2
+Vertebra S3
+Vertebra S4
+Vertebra S5
+Vertebra T10
+Vertebra T11
+Vertebra T12
+Vertebra T9
+Vertebral arch
+Vertebral body
+Vertebral canal
+Vertebral region
+Zygapophyseal joints
+
+MODULE = CT scan of head and neck: normal anatomy
+MODULE_KEY = head-and-neck-ct-head-and-neck
+URL = https://www.imaios.com/en/e-anatomy/head-and-neck/ct-head-and-neck?ul=true
+MATCH_SCORE = 19
+AVAILABLE_LABELS:
+Abducens nerve [VI]
+Accessory branch of middle meningeal artery
+Accessory nasal cartilages
+Accessory nerve [XI]
+Accessory parotid gland
+Accessory vertebral vein
+Acromial branch of thoracoacromial artery
+Agger nasi
+Ala of crista galli
+Ala of vomer
+Alar ligaments
+Alar part of nasalis muscle
+Alveolar arch of mandible
+Alveolar arch of maxilla
+Alveolar canals
+Alveolar foramina
+Alveolar part of mandible
+Alveolar process of maxilla
+Alveolar recess of the maxillary sinus
+Alveolar yokes of mandible
+Alveolar yokes of maxilla
+Ambient cistern
+Angle of mandible
+Angle of mouth
+Angle of rib
+Angular artery
+Angular vein
+Annular epiphysis
+Annular ligaments of trachea
+Anterior arch of atlas
+Anterior articular facet of dens axis
+Anterior atlantooccipital ligament
+Anterior atlantooccipital membrane
+Anterior auricular branches of superficial temporal artery
+Anterior auricular veins
+Anterior belly of digastric muscle
+Anterior cells of ethmoid bone
+Anterior cerebral artery
+Anterior cerebral artery: Postcommunicating part; A2 segment
+Anterior cerebral vein
+Anterior chamber of eyeball
+Anterior choroidal artery
+Anterior clinoid process
+Anterior communicating artery
+Anterior cranial fossa
+Anterior deep temporal artery
+Anterior division of retromandibular vein
+Anterior ethmoidal artery
+Anterior ethmoidal cells
+Anterior ethmoidal foramen
+Anterior ethmoidal nerve
+Anterior external vertebral venous plexus
+Anterior glandular branch of superior thyroid artery
+Anterior inferior cerebellar artery
+Anterior inferior jugular nodes
+Anterior intercavernous sinus
+Anterior internal vertebral venous plexus
+Anterior intertransversarii colli muscles
+Anterior jugular vein
+Anterior lacrimal crest
+Anterior ligament of auricle
+Anterior longitudinal ligament
+Anterior nasal spine
+Anterior notch of auricle
+Anterior part of tongue
+Anterior pole of eyeball
+Anterior rami of thoracic nerves
+Anterior region of neck
+Anterior segment of eyeball
+Anterior semicircular canal
+Anterior spinal artery
+Anterior spinal veins
+Anterior sternoclavicular ligament
+Anterior superior alveolar artery
+Anterior superior jugular node
+Anterior surface of maxilla
+Anterior surface of petrous part
+Anterior temporal diploic vein
+Anterior tubercle of atlas
+Anterior tubercle of transverse process
+Anterior vertebral vein
+Anterior wall of the maxillary sinus
+Anterolateral medullary vein
+Anterolateral pontine vein
+Anteromedian medullary vein
+Anteromedian pontine vein
+Antihelix
+Antitragus
+Aortic archArcus aortae
+Apex of arytenoid cartilage
+Apex of cusp
+Apex of dens axis
+Apex of nose
+Apex of petrous part
+Apex of tongue
+Apical axillary nodes
+Apical ligament of dens
+Approximal surface of tooth
+Arch of cricoid cartilage
+Arcuate eminence
+Artery of pterygoid canal
+Articular disc of sternoclavicular joint
+Articular disc of temporomandibular joint
+Articular eminence
+Articular facet of head of rib
+Articular facet of tubercle of rib
+Articular surface of arytenoid cartilage
+Articular surface of mandibular fossa
+Articular veins
+Aryepiglottic fold
+Aryepiglottic part of oblique arytenoid muscle
+Arytenoid articular surface
+Arytenoid cartilage
+Ascending branch of transverse cervical artery
+Ascending cervical artery
+Ascending palatine artery
+Ascending part of trapezius muscle
+Ascending pharyngeal artery
+Asterion
+Atlantic part of vertebral artery (V3 Segment)
+Atlantooccipital joint
+Atlas
+Atrium of middle meatus
+Auditory ossicles
+Auditory tube
+Auricle
+Auricular branch of posterior auricular artery
+Auricular region
+Auricular tubercle
+Auricularis anterior muscle
+Auricularis posterior muscle
+Auricularis superior muscle
+Auriculotemporal nerve
+Axilla
+Axillary artery
+Axillary vein
+Axis
+Back
+Basal vein
+Base of mandible
+Basilar artery
+Basilar part of occipital bone
+Basilar venous plexus
+Basion
+Basivertebral veins
+Body of clavicle
+Body of hyoid bone
+Body of mandible
+Body of maxilla
+Body of rib
+Body of sphenoid bone
+Body of sternum
+Body of tongue
+Bony ethmoidal bulla
+Bony ethmoidal infundibulum
+Bony external acoustic meatus
+Bony external acoustic opening
+Bony labyrinth
+Bony middle nasal concha
+Bony palate
+Bony part of nasal septum - (Cranium)
+Bony semilunar hiatus
+Bony superior nasal concha
+Bony supreme nasal concha
+Bony tympanic cavity
+Brachial plexus
+Brachiocephalic nodes
+Brachiocephalic trunk
+Brain
+Buccal artery
+Buccal cusp
+Buccal fat pad
+Buccal nerve
+Buccal region
+Buccal root
+Buccal space
+Buccal surface of tooth
+Buccinator node
+Buccopharyngeal fascia
+Bucinator
+Canine fossa
+Canine tooth
+Capsule of cricothyroid joint
+Carotid bifurcation
+Carotid body
+Carotid canal
+Carotid sheath
+Carotid sinus
+Carotid siphon
+Carotid space
+Carotid sulcus
+Carotid tubercle
+Cartilage of external acoustic meatus - (Cartilages of ear)
+Cartilaginous part of nasal septum
+Cavernous part of internal carotid artery
+Cavernous segment (C4)
+Cavernous sinus
+Cavity of concha
+Central retinal artery
+Central retinal vein
+Cephalic vein
+Ceratocricoid ligament
+Ceratocricoid muscle
+Cerebellar fossa
+Cerebellar peduncles
+Cerebellum
+Cerebral fossa
+Cerebral part of internal carotid artery
+Cerebral peduncle
+Cerebral surface of greater wing
+Cerebral surface of squamous part of temporal bone
+Cervical part of esophagus
+Cervical part of trachea
+Cervical part of vertebral artery (V2 Segment) [V2]
+Cervical plexus
+Cervical segment (C1)
+Cervicothoracic ganglion
+Cheek - (Face)
+Chiasmatic cistern
+Chiasmatic sulcus
+Chin
+Choana
+Choana of cranium
+Chorda tympani
+Choroid
+Choroid plexus of lateral ventricle
+Ciliary body
+Ciliary ganglion
+Cistern of lateral cerebral fossa
+Clavicle
+Clavicular branch of thoracoacromial artery
+Clavicular notch
+Clavipectoral fascia
+Clinoid segment (C5)
+Clivus - (Basilar part)
+Cochlea
+Cochlear canaliculus
+Common facial vein
+Common nasal meatus
+Common nasal meatus of cranium
+Common tendinous ring
+Communicating (terminal) segment (C7)
+Concha of auricle
+Conchal crest of maxilla
+Conchal crest of palatine bone
+Condylar canal
+Condylar emissary vein
+Condylar fossa
+Condylar process
+Confluence of sinuses
+Contact area
+Conus elasticus
+Cornea
+Corniculate cartilage
+Coronoid process of mandible
+Corrugator supercilii
+Costal cartilage
+Costal crest
+Costal groove
+Costal notches
+Costal surface of scapula
+Costocervical trunk
+Costochondral joints
+Costoclavicular ligament
+Costosternal synchondrosis
+Costotransverse foramen
+Costotransverse joint
+Costotransverse ligament
+Costovertebral joints
+Cranial cavity
+Cranioorbital foramen
+Crest of head of rib
+Crest of neck of rib
+Cribriform foramina
+Cribriform plate
+Cricoarytenoid joint
+Cricoarytenoid ligament
+Cricoid cartilage
+Cricopharyngeal ligament
+Cricothyroid branch of superior thyroid artery
+Cricothyroid joint
+Cricothyroid muscle
+Cricotracheal ligament
+Crista galli
+Crown of tooth
+Cruciform eminence
+Cruciform ligament
+Crura of antihelix
+Crus of helix
+Cuneiform part of vomer
+Cusp of tooth
+Cymba conchae
+Danger space
+Deep auricular artery
+Deep cervical artery
+Deep cervical vein
+Deep facial vein
+Deep layer of temporal fascia
+Deep lingual vein
+Deep middle cerebral vein
+Deep part of masseter
+Deep part of parotid gland
+Deep temporal nerves
+Deep temporal veins
+Deltoid branch of thoracoacromial artery
+Deltoid tubercle
+Dens axis
+Dental alveoli of mandible
+Dental alveoli of maxilla
+Depressor anguli oris
+Depressor labii inferioris
+Depressor septi nasi
+Depressor supercilii
+Descending branch of occipital artery
+Descending branch of transverse cervical artery
+Descending palatine artery
+Descending part of trapezius muscle
+Diaphragma sellae
+Diencephalon
+Digastric fossa
+Diploe
+Diploic canals
+Distal cusp
+Distal root
+Distal surface of tooth
+Distobuccal cusp
+Distobuccal root
+Distolingual cusp
+Distopalatal cusp
+Dorsal branch of second posterior intercostal artery
+Dorsal lingual branches of lingual artery
+Dorsal lingual veins
+Dorsal medullary veins
+Dorsal nasal artery
+Dorsal scapular artery
+Dorsal scapular nerve
+Dorsal scapular vein
+Dorsum of nose
+Dorsum sellae
+Ear
+Eminentia conchae
+Eminentia fossae triangularis
+Eminentia scaphae
+Endothoracic fascia
+Epicranial aponeurosis
+Epiglottic cartilage
+Epiglottic tubercle
+Epiglottic vallecula
+Epiglottis
+Erector spinae aponeurosis
+Esophageal branches of inferior thyroid artery
+Ethmoid bone
+Ethmoidal bulla
+Ethmoidal crest of maxilla
+Ethmoidal crest of palatine bone
+Ethmoidal groove
+Ethmoidal infundibulum
+Ethmoidal labyrinth
+Ethmoidal notch
+Ethmoidal process
+Ethmoidal veins
+Ethmoidolacrimal suture
+Ethmoidomaxillary suture
+External acoustic meatus
+External acoustic pore
+External carotid artery
+External intercostal muscles
+External jugular vein
+External nasal veins
+External nose
+External occipital crest
+External occipital protuberance
+External opening of carotid canal
+External palatine vein
+External surface of parietal bone
+External table of calvaria
+Eye
+Eyeball
+Face
+Facet for dens
+Facial artery
+Facial canal
+Facial nerve [VII]
+Facial vein
+Falx cerebelli
+Falx cerebri
+Fascial sheath of eyeball
+Fauces
+First posterior intercostal artery
+First rib
+Floor of orbit
+Fold of superior laryngeal nerve
+Foramen cecum of tongue
+Foramen lacerum
+Foramen magnum
+Foramen ovale
+Foramen rotundum
+Foramen spinosum
+Foramen transversarium
+Foramen venosum
+Forehead
+Forehead of cranium
+Fornix of lacrimal sac
+Fossa antihelica
+Fossa for lacrimal gland
+Fossa for lacrimal sac
+Fourth ventricle
+Frontal bone
+Frontal branch of superficial temporal artery
+Frontal crest
+Frontal lobe
+Frontal nerve
+Frontal part of orbital margin
+Frontal process of maxilla
+Frontal process of zygomatic bone
+Frontal region
+Frontal sinus
+Frontal veins
+Frontalis muscle
+Frontalis muscleFrontal belly of epicranius muscle
+Frontoethmoidal suture
+Frontolacrimal suture
+Frontomaxillary suture
+Frontonasal suture
+Frontopolar vein
+Frontozygomatic suture
+Geniculate ganglion
+Geniculum of facial canal
+Genioglossus muscle
+Geniohyoid muscle
+Gingiva; Gum
+Glabella
+Glandular branches of facial artery
+Glandular branches of inferior thyroid artery
+Glossopharyngeal nerve [IX]
+Gonion
+Great auricular nerve
+Great cerebral vein
+Greater horn of hyoid bone
+Greater occipital nerve
+Greater palatine artery
+Greater palatine canal
+Greater palatine foramen
+Greater palatine groove of maxilla
+Greater palatine groove of palatine bone
+Greater palatine nerve
+Greater petrosal nerve
+Greater supraclavicular fossa
+Greater tympanic spine
+Greater wing
+Groove for inferior petrosal sinus - (Basilar part)
+Groove for marginal sinus
+Groove for occipital artery
+Groove for occipital sinus
+Groove for sigmoid sinus - (Petrous part)
+Groove for spinal nerve
+Groove for subclavian artery
+Groove for subclavian vein
+Groove for subclavius muscle
+Groove for superior petrosal sinus
+Groove for superior sagittal sinus - (Internal surface)
+Groove for transverse sinus
+Groove for vertebral artery
+Groove of pterygoid hamulus
+Hard palate
+Head of rib
+Helix
+Hiatus of maxilla
+Highest nasal concha
+Horizontal plate of palatine bone
+Hyoepiglottic ligament
+Hyoglossus muscle
+Hyoid bone
+Hypoglossal canal
+Hypoglossal nerve [XII]
+Hypophyseal fossa
+Hypophysis
+Impression for costoclavicular ligament
+Incisal margin
+Incisive canals
+Incisive foramina
+Incisive fossa
+Incisive papilla
+Incisor tooth
+Inferior alveolar artery
+Inferior alveolar foramen
+Inferior alveolar nerve
+Inferior articular facet of vertebra
+Inferior articular process of vertebra
+Inferior articular surface of atlas
+Inferior belly of omohyoid muscle
+Inferior bulb of internal jugular vein
+Inferior choroidal vein
+Inferior costal facet
+Inferior head of lateral pterygoid muscle
+Inferior horn of thyroid cartilage
+Inferior labial artery
+Inferior labial veins
+Inferior laryngeal artery
+Inferior laryngeal vein
+Inferior longitudinal lingual muscle
+Inferior mental spine
+Inferior nasal concha
+Inferior nasal concha bone
+Inferior nasal meatus
+Inferior nasal meatus of cranium
+Inferior nuchal line
+Inferior oblique muscle
+Inferior ophthalmic vein
+Inferior orbital fissure
+Inferior palpebral veins
+Inferior petrosal sinus
+Inferior pharyngeal constrictor
+Inferior rectus muscle
+Inferior surface of petrous part
+Inferior surface of tongue
+Inferior thyroid artery
+Inferior thyroid notch
+Inferior thyroid tubercle
+Inferior thyroid vein
+Inferior tympanic artery
+Inferior vein of vermis
+Inferior ventricular vein
+Inferior vertebral notch
+Inferior wall of the maxillary sinus
+Infraauricular nodes
+Infraclavicular fossa
+Infraglottic cavity
+Infrahyoid branch of superior thyroid artery
+Infrahyoid nodes
+Infraorbital artery
+Infraorbital canal
+Infraorbital ethmoidal air cell; Maxilloeethomoidal cell
+Infraorbital foramen
+Infraorbital groove
+Infraorbital margin
+Infraorbital nerve
+Infraorbital recess of the maxillary sinus
+Infraorbital region
+Infraorbital space; Canine space
+Infrapalpebral sulcus
+Infraspinatus fascia
+Infraspinatus muscle
+Infraspinous fossa
+Infratemporal crest
+Infratemporal fossa
+Infratemporal surface of greater wing
+Infratemporal surface of maxilla
+Infratrochlear nerve
+Inion
+Innermost intercostal muscles
+Insula
+Interalveolar septa of mandible
+Interalveolar septa of maxilla
+Interarytenoid notch
+Interclavicular ligament
+Intercostal nodes
+Intercostal space
+Intermaxillary suture
+Internal acoustic meatus
+Internal acoustic opening
+Internal carotid artery
+Internal carotid venous plexus
+Internal cerebral vein
+Internal intercostal membrane
+Internal intercostal muscles
+Internal occipital crest
+Internal occipital protuberance
+Internal opening of carotid canal
+Internal surface of parietal bone
+Internal table of calvaria
+Internal thoracic artery
+Internal thoracic veins
+Internasal suture
+Interpeduncular cistern
+Interpeduncular fossa
+Interpeduncular veins
+Interradicular septa of mandible
+Interradicular septa of maxilla
+Interspinales colli muscles
+Interspinales thoracis muscles
+Interspinous ligaments
+Intertragic incisure
+Intertransverse ligaments
+Intervertebral disc
+Intervertebral foramen
+Intervertebral surface
+Intervertebral symphysis
+Intraarticular ligament of head of rib
+Intracanalicular part of optic nerve
+Intracranial part of optic nerve
+Intracranial part of vertebral artery (V4 Segment)
+Intraglandular parotid nodes
+Intrajugular process of occipital bone
+Intrajugular process of temporal bone
+Intraocular part of optic nerve
+Isthmus of cartilaginous auricle
+Isthmus of fauces
+Isthmus of thyroid gland
+Joint of head of rib
+Jugular foramen
+Jugular fossa
+Jugular notch of occipital bone
+Jugular notch of sternum
+Jugular notch of temporal bone
+Jugular process
+Jugular tubercle
+Jugulodigastric node
+Juguloomohyoid node
+Labial commissure
+Labial surface of tooth
+Lacerum segment (C3)
+Lacrimal artery
+Lacrimal bone
+Lacrimal fold
+Lacrimal gland
+Lacrimal groove
+Lacrimal groove of lacrimal bone
+Lacrimal groove of maxilla
+Lacrimal hamulus
+Lacrimal nerve
+Lacrimal notch
+Lacrimal process
+Lacrimal sac
+Lacrimal vein
+Lacrimoconchal suture
+Lacrimomaxillary suture
+Lambdoid suture
+Lamina (Thyroid cartilage)
+Lamina of cricoid cartilage
+Lamina of vertebral arch
+Laryngeal inlet
+Laryngeal prominence
+Laryngeal ventricle
+Laryngeal vestibule
+Laryngopharynx
+Lateral angle of eye
+Lateral atlantoaxial joint
+Lateral atlantooccipital ligament
+Lateral costotransverse ligament
+Lateral cricoarytenoid muscle
+Lateral crus of major alar cartilage
+Lateral glossoepiglottic fold
+Lateral inferior jugular node
+Lateral margin of orbit
+Lateral mass of atlas
+Lateral nasal branch of facial artery
+Lateral palpebral commissure
+Lateral part of occipital bone
+Lateral pectoral nerve
+Lateral posterior intertransversarii colli muscles
+Lateral process of nasal septal cartilage
+Lateral pterygoid plate
+Lateral rectus muscle
+Lateral region of neck
+Lateral semicircular canal
+Lateral superior jugular node
+Lateral surface of zygomatic bone
+Lateral temporomandibular ligament
+Lateral thoracic vein
+Lateral thyrohyoid ligament
+Lateral vein of lateral ventricle
+Lateral wall of orbit
+Left brachiocephalic vein
+Left common carotid artery
+Left internal jugular vein
+left lobe of thyroid gland
+Left lung
+Left subclavian artery
+Left subclavian vein
+Lens
+Lesser horn of hyoid bone
+Lesser occipital nerve
+Lesser palatine arteries
+Lesser palatine canals
+Lesser palatine foramina - (External surface of cranial base)
+Lesser palatine nerves
+Lesser petrosal nerve
+Lesser supraclavicular fossa
+Lesser tympanic spine
+Lesser wing
+Levator anguli oris
+Levator labii superioris
+Levator nasolabialis
+Levator palpebrae superioris
+Levator scapulae
+Levator veli palatini
+Levatores costarum
+Level Ia
+Level Ib
+Level IIa
+Level IIb
+Level III
+Level IV
+Level Va
+Level Vb
+Level VI
+Level VII
+Ligamenta flava
+Limbus of sphenoid
+Limen nasi
+Lingual artery
+Lingual cusp
+Lingual nerve
+Lingual nodes
+Lingual septum
+Lingual surface of tooth
+Lingual tonsil
+Lingual vein
+Lingula of mandibule
+Lobule of auricle
+Long thoracic nerve
+Longissimus capitis muscle
+Longissimus colli muscle
+Longus capitis muscle
+Longus colli muscle
+Lower eyelid
+Lower lip
+Malar node
+Mandible
+Mandibular canal
+Mandibular condyle
+Mandibular dental arch
+Mandibular fossa
+Mandibular nerve [V3]
+Mandibular node
+Mandibular notch
+Mandibular torus
+Manubriosternal joint
+Manubrium of sternum
+Margin of tongue
+Marginal sinus
+Marginal tubercle
+Masseteric artery
+Masseteric fascia
+Masseteric nerve
+Maxillary part of orbital margin
+Maxillary process of inferior nasal concha
+Maxillary sinus
+Maxillary surface of greater wing
+Maxillary tuberosity
+Maxillary veins
+Medial angle of eye
+Medial border of scapula
+Medial crus of major alar cartilage
+Medial margin of orbit
+Medial palpebral commissure
+Medial pectoral nerve
+Medial pterygoid muscle
+Medial pterygoid plate
+Medial rectus muscle
+Medial temporomandibular ligament
+Medial vein of lateral ventricle
+Medial wall of orbit
+Medial wall of the maxillary sinus
+Median atlantoaxial joint
+Median cricothyroid ligament
+Median glossoepiglottic fold
+Median palatine suture
+Median sulcus of tongue
+Median thyrohyoid ligament
+Medulla oblongata
+Membranous part of nasal septum
+Membranous wall of trachea
+Meningeal branch of mandibular nerve
+Mental foramen
+Mental nerve
+Mental protuberance
+Mental region
+Mental tubercle
+Mentalis muscle
+Mentolabial sulcus
+Mesial root
+Mesial surface of tooth
+Mesiobuccal cusp
+Mesiobuccal root
+Mesiolingual cusp
+Mesiolingual root
+Mesiopalatal cusp
+Middle cells of ethmoid bone
+Middle cerebral artery
+Middle cerebral artery: Inferior terminal branches; Inferior cortical branches; M2 segment
+Middle cerebral artery: Insular part; M2 segment
+Middle cerebral artery: Sphenoid part; Horizontal part; M1 segment
+Middle cerebral artery: Superior terminal branches; Superior cortical branches; M2 segment
+Middle cervical ganglion
+Middle cranial fossa
+Middle ethmoidal cells
+Middle meningeal artery
+Middle meningeal veins
+Middle nasal concha
+Middle nasal meatus
+Middle nasal meatus of cranium
+Middle pharyngeal constrictor
+Middle temporal artery
+Middle temporal vein
+Middle thyroid vein
+Minor alar cartilages
+Mobile part of nasal septum
+Modiolus of angulus oris
+Molar tooth
+Mouth
+Mucosal pharyngeal space
+Muscular process
+Musculotubal canal
+Musculus uvulae
+Mylohyoid groove
+Mylohyoid line
+Mylohyoid muscle
+Nasal bone
+Nasal cavity of cranium
+Nasal crest of maxilla
+Nasal crest of palatine bone
+Nasal notch
+Nasal part of frontal bone
+Nasal region
+Nasal septal branch of superior labial artery
+Nasal septal cartilage
+Nasal spine of frontal bone
+Nasal surface of maxilla
+Nasal vestibule
+Nasion
+Nasociliary nerve
+Nasofrontal vein
+Nasolabial node
+Nasolabial sulcus
+Nasolacrimal canal
+Nasolacrimal duct
+Nasomaxillary suture
+Nasopalatine nerve
+Nasopharyngeal meatus
+Nasopharyngeal meatus of cranium
+Nasopharynx
+Neck of mandible
+Neck of rib
+Neck of tooth
+Nerve of pterygoid canal
+Nerve to lateral pterygoid muscle
+Nerve to medial pterygoid muscle
+Nerve to mylohyoid muscle
+Nerve to tensor veli palatini
+Nose piercing
+Nostril
+Nuchal fascia
+Nuchal ligament
+Oblique arytenoid muscle
+Oblique line of mandible
+Oblique line of thyroid cartilage
+Obliquus inferior capitis muscle
+Obliquus superior capitis muscle
+Occipital artery
+Occipital bone
+Occipital branch of posterior auricular artery
+Occipital branches of occipital artery
+Occipital condyle
+Occipital lobe
+Occipital nodes
+Occipital plane
+Occipital region
+Occipital sinus
+Occipital vein
+Occipital veins
+Occipitalis muscle
+Occipitomastoid suture
+Occiput
+Occiput of cranium
+Occlusal fossa
+Occlusal surface of tooth
+Oculomotor nerve [III]
+Olfactory nerve [I]
+Olfactory part of nasal mucosa
+Opening of cochlear canaliculus
+Opening of frontal sinus
+Opening of nasolacrimal canal
+Opening of nasolacrimal duct
+Opening of sinus of sphenoidal bone
+Opening of vestibular canaliculus
+Ophthalmic (supraclinoid) segment (C6)
+Ophthalmic artery
+Ophthalmic nerve [V1]
+Opisthion
+Optic canal
+Optic nerve [II]
+Oral cavity proper
+Oral opening
+Oral region
+Oral vestibule
+Orbicularis oris muscle
+Orbit
+Orbital cavity
+Orbital fat body
+Orbital opening
+Orbital part of frontal bone
+Orbital part of optic nerve
+Orbital part of orbicularis oculi
+Orbital plate of ethmoidal labyrinth
+Orbital process
+Orbital region
+Orbital septum
+Orbital surface of greater wing
+Orbital surface of maxilla
+Orbital surface of zygomatic bone
+Orbital tubercle
+Orbitalis muscle
+Oropharynx
+Otic ganglion
+Palatal cusp
+Palatal root
+Palatal surface of tooth
+Palatin recess of the maxillary sinus
+Palatine aponeurosis
+Palatine bone
+Palatine grooves
+Palatine process
+Palatine raphe
+Palatine spines
+Palatine tonsil
+Palatine torus
+Palatoethmoidal suture
+Palatoglossal arch
+Palatoglossus muscle
+Palatomaxillary suture
+Palatopharyngeal arch
+Palatopharyngeus muscle
+Palatovaginal canal
+Palatovaginal groove
+Palpebral fissure
+Palpebral part of orbicularis oculi
+Paranasal sinuses
+Parapharyngeal space
+Paraspinal part of perivertebral space
+Parasternal nodes
+Parathyroid glands
+Paratracheal cervical nodes
+Paratracheal thoracic nodes
+Parietal bone
+Parietal branch of superficial temporal artery
+Parietal region
+Parietal veins
+Parietomastoid suture
+Parotid branch of posterior auricular artery
+Parotid branch of superficial temporal artery
+Parotid duct
+Parotid fascia
+Parotid gland
+Parotid plexus
+Parotid space
+Parotideomasseteric region
+Pectoral branches of thoracoacromial artery
+Pectoral fascia
+Pectoral region
+Pectoral veins
+Pectoralis major muscle
+Pectoralis minor muscle
+Pedicle of vertebral arch
+Perpendicular plate of ethmoid bone
+Perpendicular plate of palatine bone
+Petrooccipital fissure
+Petrosal fossula
+Petrosal vein
+Petrosquamous fissure
+Petrotympanic fissure
+Petrous part of internal carotid artery
+Petrous part of temporal bone
+Petrous ridge
+Petrous segment (C2)
+Pharyngeal branches of ascending pharyngeal artery
+Pharyngeal branches of inferior thyroid artery
+Pharyngeal bursa
+Pharyngeal nerve
+Pharyngeal opening of auditory tube - (Nasopharynx)
+Pharyngeal raphe
+Pharyngeal recess
+Pharyngeal tonsil
+Pharyngeal tubercle
+Pharyngeal veins
+Pharyngeal venous plexus
+Pharyngobasilar fascia
+Pharyngoesophageal constriction
+Philtrum
+Phrenic nerve
+Piriform aperture
+Piriform recess
+Platysma
+Pons
+Pontocerebellar cistern
+Pontomesencephalic vein
+Posterior arch of atlas
+Posterior articular facet of dens axis
+Posterior atlantooccipital membrane
+Posterior auricular artery
+Posterior auricular groove
+Posterior auricular nerve
+Posterior auricular vein
+Posterior axillary nodes
+Posterior belly of digastric muscle
+Posterior border of petrous part
+Posterior cells of ethmoid bone
+Posterior cerebral artery
+Posterior cerebral artery: P3 segment
+Posterior cerebral artery: Postcommunicating part; P2 segment
+Posterior cervical space
+Posterior chamber of eyeball
+Posterior circumflex humeral vein
+Posterior clinoid process
+Posterior cranial fossa
+Posterior cricoarytentoid muscle
+Posterior deep temporal artery
+Posterior division of retromandibular vein
+Posterior ethmoidal artery
+Posterior ethmoidal cells
+Posterior ethmoidal foramen
+Posterior ethmoidal nerve
+Posterior external vertebral venous plexus
+Posterior inferior cerebellar artery
+Posterior intercavernous sinus
+Posterior internal vertebral venous plexus
+Posterior lacrimal crest
+Posterior layer of thoracolumbar fascia
+Posterior ligament of auricle
+Posterior longitudinal ligament
+Posterior meningeal artery
+Posterior nasal spine
+Posterior parotid veins
+Posterior part of tongue
+Posterior pole of eyeball
+Posterior process of nasal septal cartilage
+Posterior region of neck
+Posterior segment of eyeball
+Posterior semicircular canal
+Posterior spinal veins
+Posterior sternoclavicular ligament
+Posterior superior alveolar artery
+Posterior surface of petrous part
+Posterior temporal diploic vein
+Posterior tubercle of atlas
+Posterior tubercle of transverse process
+Posterior wall of the maxillary sinus
+Posteromedian medullary vein
+Postremal chamber of eyeball
+Pre-epiglottic fat body
+Preauricular nodes
+Precommunicating part of anterior cerebral artery [A1]
+Precommunicating part of posterior cerebral artery
+Prelaryngeal nodes
+Premolar tooth
+Presternal region
+Pretracheal fascia
+Pretracheal nodes
+Prevertebral fascia
+Prevertebral nodes
+Prevertebral part of perivertebral space
+Prevertebral part of vertebral artery (V1 Segment)
+Procerus muscle
+Pterygoid branches of posterior deep temporal artery
+Pterygoid canal
+Pterygoid fossa
+Pterygoid fovea
+Pterygoid hamulus
+Pterygoid notch
+Pterygoid process
+Pterygoid tuberosity
+Pterygoid venous plexusPterygoid plexus
+Pterygomandibular raphe
+Pterygomaxillary fissure
+Pterygopalatine fossa
+Pterygopalatine ganglion
+Pterygospinous ligament
+Pyramidal process
+Quadrangular membrane
+Quadrigeminal cistern
+Radiate ligament of head of rib
+Ramus of mandible
+Rectus anterior capitis muscle
+Rectus lateralis capitis muscle
+Rectus posterior major capitis muscle
+Rectus posterior minor capitis muscle
+Recurrent laryngeal nerve
+Retina
+Retromandibular vein
+Retromolar fossa
+Retromolar triangle
+Retropharyngeal nodes
+Retropharyngeal space
+Rhomboid major muscle
+Rhomboid minor muscle
+Rib 3
+Rib 4
+Right brachiocephalic vein
+Right common carotid artery
+Right internal jugular vein
+Right lobe of thyroid gland
+Right lung
+Right subclavian artery
+Right subclavian vein
+Rima glottidis
+Rima vestibuli
+Risorius muscle
+Roof of orbit
+Root apex
+Root of nose
+Root of tongue
+Root of tooth
+Rotatores colli
+Rotatores thoracis
+Salpingopalatine fold
+Salpingopharyngeal fold
+Salpingopharyngeus muscle
+Scalene tubercle
+Scalenus anterior muscle
+Scalenus medius muscle
+Scalenus posterior muscle
+Scapha
+Scaphoid fossa
+Scapula
+Scapular region
+Sclera
+Scutum
+Second posterior intercostal artery
+Second rib
+Sella turcica
+Semilunar hiatus
+Semispinalis capitis muscle
+Semispinalis colli muscle
+Semispinalis thoracis muscle
+Septum of frontal sinuses
+Septum of sphenoidal sinuses
+Serratus anterior muscle
+Serratus posterior superior muscle
+Sheath of styloid process
+Shoulder
+Sigmoid sinus
+Sinus of frontal bone
+Sinus of maxilla
+Sinus of sphenoid bone
+Soft palate - (Palate)
+Sphenoethmoidal recess
+Sphenoethmoidal recess of cranium
+Sphenoethmoidal suture
+Sphenofrontal suture
+Sphenoidal concha
+Sphenoidal crest
+Sphenoidal lingula
+Sphenoidal process
+Sphenoidal rostrum
+Sphenoidal sinus
+Sphenoidal yoke
+Sphenomandibular ligament
+Sphenomaxillary suture
+Sphenooccipital synchondrosis
+Sphenopalatine artery
+Sphenopalatine foramen
+Sphenopalatine notch
+Sphenoparietal sinus
+Sphenoparietal suture
+Sphenopetrosal fissure
+Sphenopetrosal synchondrosis
+Sphenosquamous suture
+Sphenovomerine suture
+Sphenozygomatic suture
+Spinal branches of ascending cervical artery
+Spinal cord
+Spinal nerve C1
+Spinal nerve C2
+Spinal nerve C3
+Spinal nerve C4
+Spinal nerve C5
+Spinal nerve C6
+Spinal nerve C7
+Spinal nerve C8
+Spinal nerve T1
+Spinal nerve T2
+Spinal nerve T3
+Spinalis colli muscle
+Spinalis thoracis muscle
+Spine of helix
+Spine of scapula
+Spine of sphenoid bone
+Spinous process
+Splenius capitis muscle
+Splenius colli muscle
+Squamomastoid suture
+Squamous part of frontal bone
+Squamous part of occipital bone
+Squamous part of temporal bone
+Squamous suture
+Stalk of epiglottis
+Sternal articular surface
+Sternal end
+Sternal membrane
+Sternochondral synchondrosis of first rib
+Sternoclavicular joint
+Sternocleidomastoid branch of superior thyroid artery
+Sternocleidomastoid branches of occipital artery
+Sternocleidomastoid muscle
+Sternocleidomastoid region
+Sternocleidomastoid vein
+Sternohyoid muscle
+Sternothyroid muscle
+Sternum
+Straight sinus
+Styloglossus muscle
+Stylohyoid ligament
+Stylohyoid muscle
+Styloid process of temporal bone
+Stylomandibular ligament
+Stylomastoid artery
+Stylomastoid foramen
+Stylomastoid vein
+Stylopharyngeus muscle
+Subarcuate fossa
+Subclavian nerve
+Subclavius muscle
+Sublingual artery
+Sublingual fossa
+Sublingual gland
+Sublingual nerve
+Sublingual space
+Sublingual vein
+Submandibular duct
+Submandibular fossa
+Submandibular ganglion
+Submandibular gland
+Submandibular nodes
+Submandibular space
+Submental artery
+Submental nodes
+Submental space
+Submental vein
+Suboccipital nerve
+Suboccipital venous plexus
+Subscapular branches of axillary artery
+Subscapular fossa
+Subscapular nerves
+Subscapular vein
+Subscapularis muscle
+Sulcus of auditory tube
+Superciliary arch
+Superficial anterior cervical nodes
+Superficial investing cervical fascia
+Superficial lateral cervical nodes
+Superficial layer of temporal fascia
+Superficial middle cerebral vein
+Superficial parotid nodes
+Superficial part of masseter
+Superficial part of parotid gland
+Superficial temporal artery
+Superficial temporal branches of auriculotemporal nerve
+Superficial temporal veins
+Superior alveolar nerves
+Superior anastomotic vein
+Superior angle of scapula
+Superior articular facet of vertebra
+Superior articular process of vertebra
+Superior articular surface of atlas
+Superior border of scapula
+Superior bulb of internal jugular vein
+Superior cerebellar artery
+Superior cervical ganglion
+Superior costal facet
+Superior costotransverse ligament
+Superior head of lateral pterygoid muscle
+Superior horn of thyroid cartilage
+Superior labial artery
+Superior labial vein
+Superior laryngeal artery
+Superior laryngeal nerve
+Superior laryngeal vein
+Superior ligament of auricle
+Superior longitudinal lingual muscle
+Superior mental spine
+Superior nasal concha
+Superior nasal meatus
+Superior nasal meatus of cranium
+Superior nuchal line
+Superior oblique muscle
+Superior ophthalmic vein
+Superior orbital fissure - (Orbit)
+Superior palpebral veins
+Superior petrosal sinus
+Superior pharyngeal constrictor
+Superior rectus muscle
+Superior sagittal sinus
+Superior thoracic aperture
+Superior thoracic artery
+Superior thyroid artery
+Superior thyroid notch
+Superior thyroid tubercle
+Superior thyroid vein
+Superior vein of vermis
+Superior veins of cerebellar hemisphere
+Superior vena cava
+Superior vertebral notch
+Superior wall of the maxillary sinus
+Supraclavicular nerves
+Supraclavicular nodes
+Suprahyoid branch of lingual artery
+Supramastoid crest
+Suprameatal fovea
+Suprameatal spine
+Supraorbital artery
+Supraorbital margin
+Supraorbital nerve
+Supraorbital notch
+Supraorbital vein
+Suprapalpebral sulcus
+Suprascapular artery
+Suprascapular nerve
+Suprascapular vein
+Supraspinatus fascia
+Supraspinatus muscle
+Supraspinous fossa
+Supraspinous ligament
+Suprasternal space
+Supratonsillar fossa
+Supratrochlear artery
+Supratrochlear veins
+Supreme intercostal artery
+Supreme intercostal vein
+Suspensory ligament of thyroid gland
+Sympathetic trunk
+Tail of helix
+Tectorial membrane of cervical vertebral column
+Tegmen tympani
+Tela choroidea of fourth ventricle
+Temple
+Temporal bone
+Temporal crest
+Temporal fascia
+Temporal fossa
+Temporal lobe
+Temporal process of zygomatic bone
+Temporal region
+Temporal surface of frontal bone
+Temporal surface of greater wing
+Temporal surface of temporal bone
+Temporal surface of zygomatic bone
+Temporal veins
+Temporalis muscle
+Temporomandibular joint
+Temporoparietal fascia
+Temporoparietalis muscle
+Temporozygomatic suture
+Tensor tympani
+Tensor veli palatini
+Tentorium cerebelli
+Terminal notch of auricle
+Terminal sulcus of tongue
+Third molar tooth
+Third occipital nerve
+Third ventricle
+Thoracic part of esophagus
+Thoracic part of trachea
+Thoracoacromial artery
+Thoracoacromial vein
+Thoracodorsal nerve
+Thorax
+Thyroarytenoid muscle
+Thyrocervical trunk
+Thyroepiglottic ligament
+Thyroepiglottic part of thyroarytenoid muscle
+Thyrohyoid membrane
+Thyrohyoid muscle
+Thyroid articular surface
+Thyroid cartilage
+Thyroid gland
+Thyroid nodes
+Tongue
+Tonsillar branch of facial artery
+Tonsillar fossa
+Tooth - 11
+Tooth - 12
+Tooth - 13
+Tooth - 14
+Tooth - 15
+Tooth - 16
+Tooth - 17
+Tooth - 18
+Tooth - 21
+Tooth - 22
+Tooth - 23
+Tooth - 24
+Tooth - 25
+Tooth - 26
+Tooth - 27
+Tooth - 28
+Tooth - 31
+Tooth - 32
+Tooth - 33
+Tooth - 34
+Tooth - 35
+Tooth - 36
+Tooth - 37
+Tooth - 38
+Tooth - 41
+Tooth - 42
+Tooth - 43
+Tooth - 44
+Tooth - 45
+Tooth - 46
+Tooth - 47
+Tooth - 48
+Torus levatorius
+Torus tubarius
+Tracheal branches of inferior thyroid artery
+Tracheal cartilages
+Tragal lamina
+Tragus
+Transverse arytenoid muscle
+Transverse cervical artery
+Transverse cervical nerve
+Transverse cervical veins
+Transverse costal facet
+Transverse facial artery
+Transverse facial vein
+Transverse palatine folds
+Transverse palatine suture
+Transverse part of nasalis muscle
+Transverse part of trapezius muscle
+Transverse pontine veins
+Transverse process
+Transverse sinus
+Transversus linguae muscle
+Transversus menti muscle
+Transversus nuchae muscle
+Triangular fossa
+Trigeminal cave
+Trigeminal ganglion
+Trigeminal impression
+Trigeminal nerve [V]
+Triticeal cartilage
+Trochlea of superior oblique muscle
+Trochlear fovea
+Trochlear nerve [IV]
+Trochlear spine
+Tubercle of rib
+Tubercle of upper lip
+Tuberculum sellae
+Tuberosity for serratus anterior muscle
+Tympanic cavity
+Tympanic membrane
+Tympanic opening of auditory tube
+Tympanic part of temporal bone
+Tympanic ring
+Tympanomastoid fissure
+Tympanosquamous fissure
+Uncinate process of ethmoid bone
+Uncinate process of first thoracic vertebra
+Uncinate process of vertebra
+Uncovertebral joints
+Unpaired thyroid venous plexus
+Upper eyelid
+Upper lip
+Uvula of palate
+Vaginal process of sphenoid bone
+Vagus nerve [X]
+Vault of pharynx
+Vein of cerebellomedullary cistern
+Vein of lateral recess of fourth ventricle
+Vein of pterygoid canal
+Vena comitans of hypoglossal nerve
+Venous plexus of foramen ovale
+Venous plexus of hypoglossal canal
+Vertebra C1
+Vertebra C2
+Vertebra C3
+Vertebra C4
+Vertebra C5
+Vertebra C6
+Vertebra C7
+Vertebra prominens
+Vertebra T1
+Vertebra T2
+Vertebra T3
+Vertebra T4
+Vertebral arch
+Vertebral artery
+Vertebral body
+Vertebral canal
+Vertebral foramen
+Vertebral ganglion
+Vertebral region
+Vertebral vein
+Verticalis linguae muscle
+Vestibular canaliculus
+Vestibular fold
+Vestibular surface of tooth
+Vestibule
+Vestibulocochlear nerve [VIII]
+Visceral space of the neck
+Vocal fold
+Vocal ligament
+Vocal process
+Vocalis muscle
+Vomer
+Vomerine crest of choana
+Vomeronasal cartilage
+Vomeronasal organ
+Vomerorostral canal
+Vomerovaginal canal
+Vomerovaginal groove
+Vorticose veins
+Wing of nose
+Zygapophyseal joints
+Zygomatic arch
+Zygomatic bone
+Zygomatic nerve
+Zygomatic process of frontal bone
+Zygomatic process of maxilla
+Zygomatic process of temporal bone
+Zygomatic recess of the maxillary sinus
+Zygomatic region
+Zygomaticofacial foramen
+Zygomaticofacial nerve
+Zygomaticomaxillary suture
+Zygomaticoorbital artery
+Zygomaticoorbital foramen
+Zygomaticotemporal foramen
+Zygomaticotemporal nerve
+Zygomaticus major muscle
+Zygomaticus minor muscle
+
+MODULE = Cervical spine MRI: normal anatomy
+MODULE_KEY = spine-mri-cervical-spine
+URL = https://www.imaios.com/en/e-anatomy/spine/mri-cervical-spine
+MATCH_SCORE = 16
+AVAILABLE_LABELS:
+Alar ligaments
+Anterior arch of atlas
+Anterior articular facet
+Anterior longitudinal ligament
+Anterior median fissure; Ventral median fissure
+Anterior root; Motor root; Ventral root
+Anular epiphysis
+Anulus fibrosus
+Apex of dens
+Apical ligament of dens
+Arachnoid mater
+Articular facet of the head of the rib
+Atlantooccipital joint
+Atlas [C I]
+Basion
+Basivertebral veins
+Buccopharyngeal fascia
+C1
+C2
+C3
+C4
+C5
+C6
+C7
+Canal for vertebral artery
+Carotid sheath
+Carotid tubercle
+Cerebellar nuclei
+Cerebellar tentorium
+Cerebellum
+Cerebrospinal fluid
+Cervical fascia
+Cervical lordosis
+Cervical part; Cervical segments [1-8]
+Clivus
+Costovertebral joints
+Cranial dura mater
+Cranial pia mater
+Crest of the head of the rib
+Crest of the neck of the rib
+Deep cervical vein
+Dens of axis
+Epidural space
+External carotid artery
+Facet for dens
+Falx cerebelli; Cerebellar falx
+Flocculus [H X]
+Foramen magnum
+Foramen transversarium
+Groove for spinal nerve
+Groove for vertebral artery
+Head of the rib
+Hyoid bone
+Hypoglossal canal
+Inferior articular facet
+Inferior articular process
+Inferior articular surface
+Inferior cerebellar peduncle
+Inferior costal facet
+Inferior vertebral notch
+Internal carotid artery
+Interspinales
+Interspinales cervicis
+Interspinous ligaments
+Intervertebral disc
+Intervertebral foramen
+Intervertebral surface
+Lamina of vertebral arch
+Lateral atlantoaxial joint
+Lateral cerebellomedullary cistern
+Lateral mass of atlas
+Left common carotid artery
+Left lung
+Ligamenta flava
+Longissimus
+Longitudinal bands
+Longus capitis
+Longus colli
+Median atlantoaxial joint
+Multifidus cervicis
+Neck of the rib
+Nuchal fascia
+Nuchal ligament
+Nucleus pulposus
+Obliquus capitis inferior
+Occipital bone
+Occipital sinus
+Oesophagus
+Opisthion
+Pedicle of vertebral arch
+Posterior arch of atlas
+Posterior articular facet
+Posterior cerebellomedullary cistern; Cisterna magna
+Posterior intercostal arteries
+Posterior intercostal veins
+Posterior longitudinal ligament
+Posterior root; Sensory root; Dorsal root
+Posterior tubercle
+Rectus capitis posterior major
+Rectus capitis posterior minor
+Regions of back
+Regions of neck
+Rib [I]
+Rib [II]
+Rib [III]
+Right common carotid artery
+Right lung
+Rotatores
+Semispinalis
+Spinal cord
+Spinal dura mater
+Spinal nerve C1
+Spinal nerve C2
+Spinal nerve C3
+Spinal nerve C4
+Spinal nerve C5
+Spinal nerve C6
+Spinal nerve C7
+Spinal nerve C8
+Spinal nerve T1
+Spinal nerve T2
+Spinal pia mater
+Spinalis
+Spinous process
+Splenius
+Splenius capitis
+Splenius cervicis
+Subarachnoid space; Leptomeningeal space
+Subcostal artery
+Superior articular facet
+Superior articular process
+Superior articular surface
+Superior costal facet
+Superior vertebral notch
+Supraspinous ligament
+T1
+T2
+Tectorial membrane
+Thoracic part; Thoracic segments [1-12]
+Thyroid gland
+Tonsil of cerebellum
+Trachea
+Transverse costal facet
+Transverse ligament of atlas
+Transverse process
+Trapezius
+Uncus of body of first thoracic vertebra; Uncinate process of first thoracic vertebra
+Uncus of body; Uncinate process
+Vertebra
+Vertebra prominens [C VII]
+Vertebral arch
+Vertebral artery
+Vertebral body
+Vertebral canal
+Vertebral foramen
+Vertebral vein
+Zygapophysial joints
+
+MODULE = Brain MRI 3D: normal anatomy
+MODULE_KEY = brain-mri-brain
+URL = https://www.imaios.com/en/e-anatomy/brain/mri-brain
+MATCH_SCORE = 14
+AVAILABLE_LABELS:
+Abducent nerve; Abducens nerve [VI]
+Accessory nerve [XI]
+Accessory nucleus of oculomotor nerve [III]
+Alveus
+Ambient cistern
+Amygdaloclaustral area
+Amygdalohippocampal area
+Amygdaloid body
+Amygdalopiriform transition area
+Angular gyrus
+Anterior amygdaloid area
+Anterior cerebral artery
+Anterior cerebral vein
+Anterior choroidal artery
+Anterior cochlear nucleus [VIII]
+Anterior commissure
+Anterior communicating artery
+Anterior inferior cerebellar artery
+Anterior intercavernous sinus
+Anterior limb of internal capsule
+Anterior lobe of cerebellum
+Anterior median fissure of medulla oblongata
+Anterior paracentral gyrus
+Anterior perforated substance
+Anterior quadrangular lobule
+Anterior ramus of lateral sulcus
+Anterior temporal artery
+Anterior temporal diploic vein
+Anterolateral medullary vein
+Anterolateral pontine vein
+Anterolateral sulcus of medulla oblongata
+Anteromedian medullary vein
+Anteromedian pontine vein
+Aqueduct of midbrain
+Arachnoid
+Arachnoid granulations
+Arbor vitae
+Area 10 - Anterior prefrontal cortex
+Area 11 - Prefrontal area
+Area 12 - Orbitofrontal area
+Area 13 - Insular cortex
+Area 17 - Primary visual cortex (V1)
+Area 18 - Secondary visual cortex (V2)
+Area 19 - Associative visual cortex (V3)
+Area 20 - Inferior temporal gyrus
+Area 21 - Middle temporal gyrus
+Area 22 - Superior temporal gyrus
+Area 23 - Ventral Posterior cingulate cortex
+Area 24 - Ventral Anterior cingulate cortex
+Area 25 - Subgenual cortex
+Area 26 - Ectosplenial area
+Area 28 - Posterior Entorhinal Cortex
+Area 29 - Retrosplenial cingulate cortex
+Area 30 - Part of cingulate cortex
+Area 31 - Dorsal Posterior cingulate cortex
+Area 32 - Dorsal anterior cingulate cortex
+Area 33 - Part of anterior cingulate cortex
+Area 34 - Anterior entorhinal cortex
+Area 35 - Perirhinal cortex
+Area 36 - Parahippocampal cortex
+Area 37 - Fusiform gyrus
+Area 38 - Temporopolar area
+Area 39 - Angular gyrus
+Area 4 - Primary motor cortex
+Area 40 - Supramarginal gyrus
+Area 41 - Primary auditory cortex
+Area 42 - Primary auditory cortex
+Area 43 - Subcentral area
+Area 44 - Pars opercularis
+Area 45 - Pars triangularis
+Area 46 - Dorsolateral prefrontal cortex
+Area 47 - Inferior prefrontal gyrus
+Area 48 - Retrosubicular area
+Area 5 - Somatosensory Association Cortex
+Area 52 - Parainsular area
+Area 6 - Premotor cortex
+Area 7 - Somatosensory Association Cortex
+Area 8 - Premotor/associative cortex
+Area 9 - Dorsolateral prefrontal cortex
+Areas 1-2-3 - Primary Somatosensory Cortex
+Arteries of brain
+Ascending ramus of lateral sulcus
+Atlantic part of vertebral artery (V3 Segment)
+Basal vein
+Basilar artery
+Basilar part of pons
+Basilar sulcus
+Basilar venous plexus
+Body of caudate nucleus
+Body of corpus callosum
+Body of fornix
+Body of lateral ventricle
+Brachium of inferior colliculus
+Brachium of superior colliculus
+Brainstem
+Bulb of occipital horn
+Calcarine spur
+Calcarine sulcus
+Callosomarginal artery
+Carotid cistern
+Carotid siphon
+Caudal fibres
+Caudatolenticular gray bridges
+Cave of septum pellucidum
+Cavernous part
+Cavernous sinus
+Central canal
+Central lobule [II-III]
+Central sulcus
+Central sulcus of insula
+Cerebellar commissure
+Cerebellar veins
+Cerebellopontine angle
+Cerebellum
+Cerebral arterial circle
+Cerebral cortex
+Cerebral gyri
+Cerebral hemisphere
+Cerebral lobes
+Cerebral peduncle
+Cerebrum
+Cervical part
+Cervical part of vertebral artery (V2 Segment) [V2]
+Chiasmatic cistern
+Choroid enlargement
+Choroid fissure
+Choroid plexus
+Choroid plexus of lateral ventricle
+Choroid plexus of third ventricle
+Cingulate gyrus
+Cingulate sulcus
+Cingulum
+Circular sulcus of insula
+Cistern of central sulcus
+Cistern of lamina terminalis
+Cistern of lateral cerebral fossa
+Cistern of transverse fissure
+Claustrum
+Collateral eminence
+Collateral sulcus
+Collateral trigone
+Column of fornix
+Commissural fibers of telencephalon
+Condylar emissary vein
+Confluence of sinuses
+Corona radiata
+Corpus striatum
+Cortical vascular watershed zone
+Cranial dura
+Cranial pia
+Cranial subarachnoid cisterns
+Crus cerebri
+Crus of fornix
+Culmen [IV-V]
+Cuneate fasciculus
+Cuneate tubercle
+Cuneus
+Cuneus fibres
+Declive [VI]
+Deep cerebral veins
+Deep middle cerebral vein
+Deep white matter vascular watershed zone
+Dentate gyrus
+Dentate nucleus
+Descending occipital gyrus
+Diagonal band
+Diaphragma sellae
+Diencephalon
+Diploic veins
+Dorsal medullary veins
+Dural venous sinuses
+Emissary veins
+Epithalamus
+External capsule
+Extradural space; Epidural space (virtual)
+Extreme capsule
+Facial nerve [VII]
+Falx cerebelli
+Falx cerebri
+Fasciolar gyrus
+Fastigium
+Fimbria of hippocampus
+Fimbriodentate sulcus
+Flocculonodular lobe
+Flocculus [H X]
+Folium of vermis [VIIA]
+Fornix
+Fourth ventricle
+Frenulum veli
+Frontal diploic vein
+Frontal forceps
+Frontal horn
+Frontal lobe
+Frontal operculum
+Frontal pole
+Frontal veins
+Frontopolar vein
+Genu of corpus callosum
+Genu of internal capsule
+Glossopharyngeal nerve [IX]
+Gracile fasciculus
+Gracile lobule [H VIIB]
+Gracile tubercle
+Great cerebral vein
+Habenula
+Habenular commissure
+Habenular sulcus
+Habenular trigone
+Head of caudate nucleus
+Hemisphere of cerebellum
+Hippocampal commissure
+Hippocampal sulcus
+Hippocampus
+Horizontal fissure
+Hypophyseal fossa
+Hypophysial cistern
+Hypophysis
+Hypothalamic sulcus
+Hypothalamus
+Inferior anastomotic vein
+Inferior cerebellar peduncle
+Inferior colliculus
+Inferior fovea
+Inferior frontal gyrus
+Inferior frontal sulcus
+Inferior longitudinal fasciculus
+Inferior medullary velum
+Inferior occipital gyrus
+Inferior parietal lobule
+Inferior petrosal sinus
+Inferior sagittal sinus
+Inferior salivatory nucleus
+Inferior semilunar lobule
+Inferior temporal gyrus
+Inferior temporal sulcus
+Inferior vein of vermis
+Inferior veins of cerebellar hemisphere
+Inferior vestibular nucleus
+Infundibular recess
+Infundibular stalk
+Insula
+Insular part; M2 segment
+Internal carotid artery
+Internal carotid venous plexus
+Internal cerebral vein
+Internal jugular vein
+Interpeduncular cistern
+Interpeduncular fossa
+Interpeduncular veins
+Interthalamic adhesion
+Interventricular foramen
+Intrabiventral fissure; Anterior inferior fissure
+Intracranial part of vertebral artery (V4 Segment)
+Intraculminate fissure
+Intraparietal sulcus
+Isthmus of cingulate gyrus
+Lacrimal nucleus
+Lamina affixa
+Lamina terminalis
+Laminae of septum pellucidum
+Lateral aperture of fourth ventricle
+Lateral cerebellomedullary cistern
+Lateral cerebral fossa
+Lateral fibres
+Lateral geniculate body
+Lateral groove of midbrain
+Lateral medullary lamina of lentiform nucleus
+Lateral mesencephalic vein
+Lateral occipital artery; P3 segment
+Lateral occipitotemporal gyrus
+Lateral olfactory gyrus
+Lateral olfactory stria
+Lateral part; Pars copularis [H VIII A]
+Lateral recess of fourth ventricle
+Lateral segment of globus pallidus
+Lateral sulcus
+Lateral ventricle
+Lateral vestibular nucleus [VIII]
+Lentiform nucleus
+Limbic lobe
+Limen insulae
+Lingual fibres
+Lingual gyrus
+Lingula of cerebellum
+Lobule II of vermis [II]
+Lobule III of vermis [III]
+Lobule IV of cerebellar hemisphere [H IV]
+Lobule IV of vermis [IV]
+Lobule V of cerebellar hemisphere [H V]
+Lobule V of vermis [V]
+Long gyrus of insula
+Longitudinal cerebral fissure
+Lunogracile fissure; Ansoparamedian fissure
+Mammillary body
+Mandibular nerve [Vc; V3]
+Marginal branch of cingulate sulcus
+Marginal sinus
+Mastoid emissary vein
+Maxillary nerve [Vb; V2]
+Medial eminence
+Medial frontal gyrus
+Medial geniculate body
+Medial medullary lamina
+Medial occipital artery; P4 segment
+Medial occipitotemporal gyrus
+Medial olfactory gyrus
+Medial olfactory stria
+Medial Part; Dorsal parafloccularis H VIII B
+Medial segment of globus pallidus
+Medial vestibular nucleus
+Median aperture of fourth ventricle
+Median sulcus of rhomboid fossa
+Medulla oblongata
+Medullopontine sulcus
+Mesencephalic nucleus of trigeminal nerve [V]
+Metathalamus
+Midbrain
+Middle cerebellar peduncle
+Middle cerebral artery
+Middle frontal gyrus
+Middle occipital gyrus
+Middle temporal gyrus
+Motor nucleus of facial nerve [VII]
+Motor nucleus of trigeminal nerve [V]
+Neurohypophysis
+Nodule of vermis [X]
+Nucleus ambiguus
+Nucleus of abducens nerve [VI]
+Nucleus of accessory nerve
+Nucleus of hypoglossal nerve [XII]
+Nucleus of oculomotor nerve [III]
+Nucleus of solitary tract
+Nucleus of trochlear nerve [IV]
+Obex
+Occipital diploic vein
+Occipital emissary vein
+Occipital forceps
+Occipital horn
+Occipital lobe
+Occipital pole
+Occipital sinus
+Occipital veins
+Occipitotemporal sulcus
+Oculomotor nerve [III]
+Oculomotor sulcus
+Olfactory bulb
+Olfactory nerve [I]
+Olfactory sulcus
+Olfactory tract
+Olfactory trigone
+Olive
+Opercular part of inferior frontal gyrus
+Ophthalmic artery
+Ophthalmic nerve [Va; V1]
+Optic chiasm
+Optic nerve [II]
+Optic tract
+Orbital gyri
+Orbital part of inferior frontal gyrus
+Orbital sulci
+Orbitofrontal branches of anterior cerebral artery
+Pallium
+Paracentral lobule
+Paracentral sulcus
+Parahippocampal gyrus
+Paraolfactory area
+Paraolfactory gyri
+Paraolfactory sulci
+Paraterminal gyrus
+Parietal emissary vein
+Parietal lobe
+Parietal operculum
+Parietal veins
+Parietooccipital sulcus
+Peduncle of flocculus
+Pericallosal artery
+Pericallosal cistern
+Pes hippocampi
+Petrosal vein
+Petrous part
+Pineal gland
+Pineal recess
+Polar frontal artery
+Polar temporal artery
+Pons
+Pontocerebellar cistern
+Pontomesencephalic vein
+Postcentral gyrus
+Postcentral sulcus
+Postcommunicating part; A2 segment
+Postcommunicating part; P2 segment
+Posterior cerebellomedullary cistern
+Posterior cerebral artery
+Posterior cochlear nucleus [VIII]
+Posterior commissure
+Posterior communicating artery
+Posterior inferior cerebellar artery
+Posterior intercavernous sinus
+Posterior limb of internal capsule
+Posterior lobe of cerebellum
+Posterior median sulcus of medulla oblongata
+Posterior nucleus of vagus nerve [X]
+Posterior paracentral gyrus
+Posterior quadrangular lobule [H VI]
+Posterior ramus of lateral sulcus
+Posterior superior fissure; Postclival fissure
+Posterior temporal diploic vein
+Posterolateral fissure
+Posterolateral sulcus of medulla oblongata
+Posteromedian medullary vein
+Prebiventral fissure; Prepyramidal fissure
+Precentral cerebellar vein
+Precentral fissure; Postlingual fissure
+Precentral gyrus
+Precentral sulcus
+Precommunicating part of anterior cerebral artery [A1]
+Precommunicating part of posterior cerebral artery
+Preculminate fissure; Postcentral fissure
+Precuneus
+Premedullary cistern
+Preoccipital notch
+Preolivary groove
+Preoptic area
+Prepontine cistern
+Primary fissure
+Principal sensory nucleus of trigeminal nerve [V]
+Pulvinar
+Putamen
+Pyramid of medulla oblongata
+Pyramis of vermis [VIII]
+Quadrigeminal cistern
+Raphe of pons
+Rhinal sulcus
+Rhombencephalon; Hindbrain
+Rhomboid fossa
+Roof of fourth ventricle
+Rostrum of corpus callosum
+Secondary fissure; Postpyramidal fissure
+Septum pellucidum
+Short gyri of insula
+Sigmoid sinus
+Simple lobule [H VI and VI]
+Sphenoid part; Horizontal part; M1 segment
+Sphenoparietal sinus
+Spinal cord
+Spinal nucleus of trigeminal nerve
+Splenium of corpus callosum
+Straight gyrus
+Straight sinus
+Stria medullaris thalami
+Stria terminalis
+Subarachnoid space
+Subcallosal area
+Subdural space (virtual)
+Subparietal sulcus
+Substantia nigra
+Subthalamus; Ventral thalamus
+Sulcus limitans
+Sulcus of corpus callosum
+Superficial cerebral veins
+Superficial middle cerebral vein
+Superior anastomotic vein
+Superior cerebellar artery
+Superior cerebellar cistern
+Superior cerebellar peduncle
+Superior cerebellar vein
+Superior colliculus
+Superior fovea
+Superior frontal gyrus
+Superior frontal sulcus
+Superior longitudinal fasciculus
+Superior margin of cerebral hemisphere
+Superior medullary velum
+Superior occipital gyrus
+Superior occipitofrontal fasciculus
+Superior opening of aqueduct of midbrain
+Superior parietal lobule
+Superior petrosal sinus
+Superior sagittal sinus
+Superior salivatory nucleus
+Superior semilunar lobule
+Superior temporal gyrus
+Superior temporal sulcus
+Superior thalamostriate vein
+Superior vein of vermis
+Superior veins of cerebellar hemisphere
+Superior vestibular nucleus [VIII]
+Supramarginal gyrus
+Supraoptic recess
+Suprapineal recess
+Tail of caudate nucleus
+Tapetum
+Tectal plate; Quadrigeminal plate
+Tegmentum of midbrain
+Tegmentum of pons
+Tela choroidea of fourth ventricle
+Tela choroidea of third ventricle
+Telencephalon
+Temporal horn
+Temporal lobe
+Temporal operculum
+Temporal plane
+Temporal pole
+Temporal veins
+Tenia choroidea
+Tenia of fornix
+Tenia thalami
+Tentorial notch
+Tentorium cerebelli
+Territory of anterior cerebral artery (cortical branches)
+Territory of anterior choroidal artery (AchA)
+Territory of anterior inferior cerebellar artery (AICA)
+Territory of branches from basilar artery
+Territory of branches from vertebral artery and anterior spinal artery
+Territory of lateral lenticulo-striate arteries (M1-segment of MCA)
+Territory of medial lenticulo-striate arteries and Heubner artery (Deep ACA A1-segment)
+Territory of middle cerebral artery (cortical branches of MCA)
+Territory of posterior cerebral artery
+Territory of posterior communicating artery
+Territory of posterior inferior cerebellar artery (PICA)
+Territory of superior cerebellar artery (SCA)
+Third ventricle
+Tonsil of cerebellum; Ventral paraflocculus [H IX]
+Transverse cerebral fissure
+Transverse occipital fasciculi
+Transverse occipital sulcus
+Transverse sinus
+Transverse temporal gyri
+Transverse temporal sulcus
+Triangular part of inferior frontal gyrus
+Trigeminal cave
+Trigeminal ganglion
+Trigeminal nerve [V]
+Trigeminal tubercle
+Trochlear nerve [IV]
+Tuber cinereum
+Tuber of vermis [VIIB]
+Uncinate fasciculus of cerebrum
+Uncus
+Uvula of vermis [IX]
+Vagus nerve [X]
+Vascular territories of the brain
+Vein of lateral recess of fourth ventricle
+Veins of brain
+Venous plexus of foramen ovale
+Venous plexus of hypoglossal canal
+Ventricles of the brain
+Vermis of cerebellum
+Vertebral artery
+Vertical occipital fasciculi
+Vestibulocochlear nerve [VIII]
+White substance of cerebellum
+Wing of central lobule
+
+MODULE = Anatomy of the spine: normal anatomy
+MODULE_KEY = spine-radiography-spine
+URL = https://www.imaios.com/en/e-anatomy/spine/radiography-spine
+MATCH_SCORE = 9
+AVAILABLE_LABELS:
+Acetabulum
+Ala of sacrum
+Annular epiphysis
+Anterior arch of atlas
+Anterior sacral foramina
+Apex of dens axis
+Apex of sacrum
+Atlantooccipital joint
+Auricular surface of sacrum
+Base of sacrum
+Cervical lordosis
+Coccyx
+Costovertebral joints
+Dens axis
+Dorsal surface of sacrum
+False ribs
+First rib
+Floating ribs
+Hip bone
+Inferior articular process of vertebra
+Inferior articular surface of atlas
+Inferior vertebral notch
+Intervertebral foramen
+Intervertebral surface
+Lamina of vertebral arch
+Lateral atlantoaxial joint
+Lateral mass of atlas
+Lateral part of sacrum
+Lateral sacral crest
+Lumbar lordosis
+Lumbosacral symphysis
+Median atlantoaxial joint
+Median sacral crest
+Occipital bone
+Pedicle of vertebral arch
+Pelvic surface of sacrum
+Posterior arch of atlas
+Posterior tubercle of atlas
+Promontory
+Sacral canal
+Sacral hiatus
+Sacral horn
+Sacral kyphosis
+Sacrococcygeal joint
+Sacroiliac joint
+Spinous process
+Superior articular process of sacrum
+Superior articular process of vertebra
+Superior vertebral notch
+Thoracic kyphosis
+Transverse process
+True ribs
+Uncinate process of vertebra
+Vertebra prominens
+Vertebral body
+Zygapophyseal joints
+
+
+=== IMAGES (selected; original numbering preserved) ===
+
+IMAGE_01: 1
+  Testicular_Carcinoma_Staging1
+    Image: Testicular_Carcinoma_Staging1.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging1_annot.jpg
+    Caption: Graphic shows T1 disease. The primary tumor is limited to the testis (including rete testis invasion) without lymphovascular invasion. For pure seminoma, pT1 is subdivided into pT1a when the tumor is < 3 cm in size and pT1b when the tumor is ≥ 3 cm in size.
+
+IMAGE_02: 2
+  Testicular_Carcinoma_Staging2
+    Image: Testicular_Carcinoma_Staging2.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging2_annot.jpg
+    Caption: Graphic shows T2 disease. The primary tumor is limited to the testis (including rete testis invasion) with lymphovascular invasion <img src="arrow_WS.png"> or tumor invading hilar soft tissue or the epididymis <img src="arrow_WO.png"> or penetrating visceral mesothelial layer covering external surface of the tunica albuginea <img src="arrow_WC.png"> ± lymphovascular invasion.
+
+IMAGE_03: 3
+  Testicular_Carcinoma_Staging3
+    Image: Testicular_Carcinoma_Staging3.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging3_annot.jpg
+    Caption: Graphic shows T3 disease. The primary tumor invades the spermatic cord ± lymphovascular invasion.
+
+IMAGE_04: 4
+  Testicular_Carcinoma_Staging4
+    Image: Testicular_Carcinoma_Staging4.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging4_annot.jpg
+    Caption: Graphic shows T4 disease. The primary tumor invades the scrotum ± lymphovascular invasion.
+
+IMAGE_05: 5
+  Testicular_Carcinoma_Staging5
+    Image: Testicular_Carcinoma_Staging5.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging5_annot.jpg
+    Caption: Right testicular nodal spread initially involves the aortocaval and paracaval nodes (dotted white line). Inguinal or pelvic nodes are considered regional lymph nodes if there has been disruption of lymphatics from prior scrotal or inguinal surgery <img src="arrow_WS.png">. The size of the nodes determines N stage: N1 < 2 cm, N2 2-5 cm, N3 > 5 cm.
+
+IMAGE_06: 6
+  Testicular_Carcinoma_Staging6
+    Image: Testicular_Carcinoma_Staging6.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging6_annot.jpg
+    Caption: Left testicular spread involves a retroperitoneal area bounded by the renal vein, aorta, ureter, and inferior vena cava (dotted white line). Inguinal or pelvic nodes are considered regional lymph nodes if there has been disruption of lymphatics from prior scrotal or inguinal surgery <img src="arrow_WS.png">.
+
+IMAGE_07: 7
+  Testicular_Carcinoma_Staging7
+    Image: Testicular_Carcinoma_Staging7.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging7_annot.jpg
+    Caption: Text not available.
+
+IMAGE_08: 8
+  Testicular_Carcinoma_Staging8
+    Image: Testicular_Carcinoma_Staging8.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging8_annot.jpg
+    Caption: Longitudinal US in a 22-year-old man who presented with testicular discomfort shows a small, solid, hypoechoic, homogeneous intratesticular mass <img src="arrow_WS.png">. A few scattered microcalcifications <img src="arrow_WO.png"> are present within the testis.
+
+IMAGE_09: 9
+  Testicular_Carcinoma_Staging9
+    Image: Testicular_Carcinoma_Staging9.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging9_annot.jpg
+    Caption: Color Doppler US in the same patient shows increased vascularity in the testicular mass <img src="arrow_WS.png">. There is no elevation of tumor markers.
+
+IMAGE_10: 10
+  Testicular_Carcinoma_Staging10
+    Image: Testicular_Carcinoma_Staging10.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging10_annot.jpg
+    Caption: Axial T2 MR in the same patient shows a 7-mm left testicular mass <img src="arrow_WS.png">, well seen against the high signal of normal parenchyma. Linear low signal  <img src="arrow_WO.png"> represents the mediastinum testis.
+
+IMAGE_11: 11
+  Testicular_Carcinoma_Staging11
+    Image: Testicular_Carcinoma_Staging11.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging11_annot.jpg
+    Caption: Axial T1 C+ FS MR in the same patient shows an enhancing, 7-mm left testicular mass <img src="arrow_WS.png">. Pathologic examination following orchiectomy revealed a 7-mm seminoma. For a pure seminoma, tumor < 3 cm in size is staged as pT1a.
+
+IMAGE_12: 12
+  Testicular_Carcinoma_Staging12
+    Image: Testicular_Carcinoma_Staging12.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging12_annot.jpg
+    Caption: Coronal T2 MR shows a circumscribed, homogeneous, hypointense mass in the left testicle <img src="arrow_WS.png">. Although imaging is not used for T staging of testicular tumors, MR is the best imaging modality to evaluate for tunica <img src="arrow_WO.png"> and spermatic cord <img src="arrow_WC.png"> involvement, neither of which were involved in this case. Pathology revealed seminoma.
+
+IMAGE_13: 13
+  Testicular_Carcinoma_Staging13
+    Image: Testicular_Carcinoma_Staging13.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging13_annot.jpg
+    Caption: Axial T1 C+ MR in the same patient shows homogeneous enhancement in the left testicular mass <img src="arrow_WS.png"> with sparing of the low-signal tunica <img src="arrow_WC.png">.
+
+IMAGE_14: 14
+  Testicular_Carcinoma_Staging14
+    Image: Testicular_Carcinoma_Staging14.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging14_annot.jpg
+    Caption: Grayscale US in a 44-year-old man who presented with testicular swelling shows a solid, hypoechoic, heterogeneous intratesticular mass <img src="arrow_WS.png">.
+
+IMAGE_15: 15
+  Testicular_Carcinoma_Staging15
+    Image: Testicular_Carcinoma_Staging15.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging15_annot.jpg
+    Caption: Color Doppler US in the same patient shows increased vascularity of the testicular mass <img src="arrow_WS.png">. There is no elevation of tumor markers. Pathologic examination following orchiectomy revealed a mixed germ cell tumor limited to the testis with involvement of the hilar structures.
+
+IMAGE_16: 16
+  Testicular_Carcinoma_Staging16
+    Image: Testicular_Carcinoma_Staging16.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging16_annot.jpg
+    Caption: Axial T2 MR shows a heterogeneous, hypointense mass <img src="arrow_WS.png"> replacing the majority of normal testicular tissue of the left side of the undescended testicle. The tunica vaginalis has been invaded <img src="arrow_WC.png">.
+
+IMAGE_17: 17
+  Testicular_Carcinoma_Staging17
+    Image: Testicular_Carcinoma_Staging17.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging17_annot.jpg
+    Caption: Sagittal T2 MR in the same patient shows a large, hypointense mass <img src="arrow_WS.png"> replacing the majority of normal testicular tissue in the undescended testicle. Disruption of the tunica vaginalis is again shown  <img src="arrow_WO.png">.
+
+IMAGE_18: 18
+  Testicular_Carcinoma_Staging18
+    Image: Testicular_Carcinoma_Staging18.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging18_annot.jpg
+    Caption: Axial T2 MR shows a large, heterogeneous, predominantly isointense mass <img src="arrow_WS.png"> replacing the majority of the normal right testicle. The tunica vaginalis is invaded <img src="arrow_WO.png">.
+
+IMAGE_19: 19
+  Testicular_Carcinoma_Staging19
+    Image: Testicular_Carcinoma_Staging19.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging19_annot.jpg
+    Caption: Gross pathology from the same patient correlates to imaging findings with the mass <img src="arrow_WS.png"> replacing the majority of testicular tissue as well as invasion through the tunica vaginalis <img src="arrow_WO.png">.
+
+IMAGE_20: 20
+  Testicular_Carcinoma_Staging20
+    Image: Testicular_Carcinoma_Staging20.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging20_annot.jpg
+    Caption: Grayscale US in a 46-year-old man who presented with testicular swelling shows a solid, hypoechoic, heterogeneous left intratesticular mass <img src="arrow_WS.png"> with small foci of calcifications <img src="arrow_WO.png">.
+
+IMAGE_21: 21
+  Testicular_Carcinoma_Staging21
+    Image: Testicular_Carcinoma_Staging21.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging21_annot.jpg
+    Caption: Axial CECT in the same patient shows a 1.8-cm left paraaortic lymph node <img src="arrow_WS.png">. Testicular masses, regardless of pT staging, with < 5 nodes measuring < 2 cm each (N1), are designated stage IIA.
+
+IMAGE_22: 22
+  Testicular_Carcinoma_Staging22
+    Image: Testicular_Carcinoma_Staging22.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging22_annot.jpg
+    Caption: Color Doppler US in a 34-year-old man shows an enlarged, hypoechoic left testis <img src="arrow_WS.png"> with increased vascularity. There is no elevation of tumor markers. Pathologic examination following orchiectomy revealed mixed germ cell tumor involving the hilum.
+
+IMAGE_23: 23
+  Testicular_Carcinoma_Staging23
+    Image: Testicular_Carcinoma_Staging23.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging23_annot.jpg
+    Caption: Axial CECT in the same patient shows a 3.5-cm left paraaortic lymph node <img src="arrow_WS.png">. Testicular masses, regardless of pT staging, with < 5 nodes measuring > 2 cm but < 5 cm (N2), are designated stage IIB.
+
+IMAGE_24: 24
+  Testicular_Carcinoma_Staging24
+    Image: Testicular_Carcinoma_Staging24.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging24_annot.jpg
+    Caption: Axial CECT in a 30-year-old man shows a 7.2-cm left paraaortic necrotic mass <img src="arrow_WS.png">.
+
+IMAGE_25: 25
+  Testicular_Carcinoma_Staging25
+    Image: Testicular_Carcinoma_Staging25.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging25_annot.jpg
+    Caption: Grayscale US in the same patient shows a small, hypoechoic intratesticular mass <img src="arrow_WS.png"> with a small area of calcification <img src="arrow_WO.png">. Varicocele is noted  <img src="arrow_WC.png">  posterior to the mass. This case represents an example of a burned-out germ cell tumor where the primary testicular germ cell tumor may be small or involute in the setting of widespread metastatic disease and appears as a small mass with a cystic area ± focal calcification.
+
+IMAGE_26: 26
+  Testicular_Carcinoma_Staging26
+    Image: Testicular_Carcinoma_Staging26.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging26_annot.jpg
+    Caption: US in a 28-year-old man who presented with scrotal swelling shows an enlarged, heterogeneous left testis <img src="arrow_WS.png"> and left hydrocele <img src="arrow_WO.png">. Compare the echogenicity of the left testis to that of the normal right testis <img src="arrow_WC.png">.
+
+IMAGE_27: 27
+  Testicular_Carcinoma_Staging27
+    Image: Testicular_Carcinoma_Staging27.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging27_annot.jpg
+    Caption: US in the same patient shows an enlarged, heterogeneous left testis <img src="arrow_WS.png"> and complex left hydrocele <img src="arrow_WO.png"> with low-level echoes, likely due to hemorrhage.
+
+IMAGE_28: 28
+  Testicular_Carcinoma_Staging28
+    Image: Testicular_Carcinoma_Staging28.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging28_annot.jpg
+    Caption: Left inguinal color Doppler US in the same patient shows an enlarged, heterogeneous, minimally vascularized left spermatic cord <img src="arrow_WS.png">.
+
+IMAGE_29: 29
+  Testicular_Carcinoma_Staging29
+    Image: Testicular_Carcinoma_Staging29.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging29_annot.jpg
+    Caption: Axial CECT in the same patient shows an enlarged left spermatic cord <img src="arrow_WS.png">. Although imaging is usually not adequate for T staging of testicular tumors, in this case, the presence of spermatic cord enlargement continuous with the testicular mass is highly suggestive of T3 tumor, which was confirmed on pathologic examination following orchiectomy.
+
+IMAGE_30: 30
+  Testicular_Carcinoma_Staging30
+    Image: Testicular_Carcinoma_Staging30.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging30_annot.jpg
+    Caption: Axial CECT in the same patient shows a large, mixed solid and cystic left testicular mass <img src="arrow_WS.png">.
+
+IMAGE_31: 31
+  Testicular_Carcinoma_Staging31
+    Image: Testicular_Carcinoma_Staging31.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging31_annot.jpg
+    Caption: Coronal CECT in the same patient shows a left testicular mass <img src="arrow_WS.png">, an enlarged left spermatic cord <img src="arrow_WO.png">, and a large retroperitoneal nodal mass <img src="arrow_WC.png"> with a mixed solid and cystic appearance, similar to the primary testicular mass. AFP level was 2,355 ng/mL, consistent with S2.
+
+IMAGE_32: 32
+  Testicular_Carcinoma_Staging32
+    Image: Testicular_Carcinoma_Staging32.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging32_annot.jpg
+    Caption: Color Doppler US of the right testis in a 21-year-old man who presented with testicular discomfort shows a heavily calcified mass <img src="arrow_WS.png"> with posterior shadowing. There is a small hydrocele <img src="arrow_WO.png">.
+
+IMAGE_33: 33
+  Testicular_Carcinoma_Staging33
+    Image: Testicular_Carcinoma_Staging33.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging33_annot.jpg
+    Caption: Longitudinal US in the same patient shows a separate solid, hypoechoic intratesticular mass <img src="arrow_WS.png">.
+
+IMAGE_34: 34
+  Testicular_Carcinoma_Staging34
+    Image: Testicular_Carcinoma_Staging34.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging34_annot.jpg
+    Caption: Axial CECT in the same patient shows a 9-cm retroperitoneal aortocaval nodal mass <img src="arrow_WS.png"> that appears to encase the inferior vena cava <img src="arrow_WO.png"> and abut the aorta  <img src="arrow_WC.png">.
+
+IMAGE_35: 35
+  Testicular_Carcinoma_Staging35
+    Image: Testicular_Carcinoma_Staging35.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging35_annot.jpg
+    Caption: Coronal CECT in the same patient shows the retroperitoneal mass <img src="arrow_WS.png"> actually invading the inferior vena cava <img src="arrow_WO.png">. Biopsy revealed a yolk sac tumor. AFP level was 6,411 ng/mL, consistent with S2. Orchiectomy revealed pT2 disease.
+
+IMAGE_36: 36
+  Testicular_Carcinoma_Staging36
+    Image: Testicular_Carcinoma_Staging36.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging36_annot.jpg
+    Caption: Axial CECT in the same patient shows an enlarged left supraclavicular lymph node <img src="arrow_WS.png">.
+
+IMAGE_37: 37
+  Testicular_Carcinoma_Staging37
+    Image: Testicular_Carcinoma_Staging37.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging37_annot.jpg
+    Caption: Coronal CECT in the same patient shows an enlarged left supraclavicular lymph node <img src="arrow_WS.png"> as well as a pulmonary metastatic lesion <img src="arrow_WO.png">. Nonretroperitoneal nodal or pulmonary metastases constitute M1a disease.
+
+IMAGE_38: 38
+  Testicular_Carcinoma_Staging38
+    Image: Testicular_Carcinoma_Staging38.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging38_annot.jpg
+    Caption: Sagittal T1 C+ MR shows mild, irregular, heterogeneous enhancement <img src="arrow_WS.png"> throughout an enlarged left testicle. No focal mass lesion is identified. Note the normal appearance of the left spermatic cord <img src="arrow_WO.png">.
+
+IMAGE_39: 39
+  Testicular_Carcinoma_Staging39
+    Image: Testicular_Carcinoma_Staging39.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging39_annot.jpg
+    Caption: Axial T1 C+ MR in the same patient shows an enlarged, heterogeneous, poorly enhancing left testicle <img src="arrow_WS.png"> compared to a normal right testicle <img src="arrow_WO.png">.
+
+IMAGE_40: 40
+  Testicular_Carcinoma_Staging40
+    Image: Testicular_Carcinoma_Staging40.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging40_annot.jpg
+    Caption: Axial T1 in-phase MR in the same patient shows a heterogeneous retroperitoneal mass <img src="arrow_WC.png">. The left psoas muscle is invaded <img src="arrow_WS.png">.
+
+IMAGE_41: 41
+  Testicular_Carcinoma_Staging41
+    Image: Testicular_Carcinoma_Staging41.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging41_annot.jpg
+    Caption: Axial T1 opposed-phase MR in the same patient shows a heterogeneous retroperitoneal mass. Signal drop on opposed-phase  <img src="arrow_WS.png">  compared to in-phase sequence corresponds to fat elements in the mass, indicating the presence of a teratomatous element.
+
+IMAGE_42: 42
+  Testicular_Carcinoma_Staging42
+    Image: Testicular_Carcinoma_Staging42.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging42_annot.jpg
+    Caption: Axial CECT in the same patient shows a large, heterogeneous retroperitoneal mass  <img src="arrow_CC.png">  displacing the aorta <img src="arrow_WO.png"> and invading the left psoas muscle <img src="arrow_WC.png">. A lytic lesion is seen in the L3 vertebral body <img src="arrow_WS.png">.
+
+IMAGE_43: 43
+  Testicular_Carcinoma_Staging43
+    Image: Testicular_Carcinoma_Staging43.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging43_annot.jpg
+    Caption: Coronal bone scan in the same patient shows uptake in the L3 vertebral lytic lesion <img src="arrow_WC.png">, consistent with metastatic disease. Nonpulmonary visceral metastases are consistent with M1b (stage IIIC) disease.
+
+IMAGE_44: 44
+  Testicular_Carcinoma_Staging44
+    Image: Testicular_Carcinoma_Staging44.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging44_annot.jpg
+    Caption: Longitudinal US shows a heterogeneous intratesticular mass <img src="arrow_WS.png"> with foci of calcifications <img src="arrow_WO.png"> in the setting of microlithiasis <img src="arrow_WC.png">. Pathology revealed teratoma isolated to the testicle without tunica or spermatic cord invasion.
+
+IMAGE_45: 45
+  Testicular_Carcinoma_Staging45
+    Image: Testicular_Carcinoma_Staging45.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging45_annot.jpg
+    Caption: Axial CECT in the same patient shows a large, heterogeneous, cystic and solid left paraaortic mass <img src="arrow_WS.png"> with calcified foci <img src="arrow_WO.png">.
+
+IMAGE_46: 46
+  Testicular_Carcinoma_Staging46
+    Image: Testicular_Carcinoma_Staging46.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging46_annot.jpg
+    Caption: Chest x-ray in the same patient shows multiple pulmonary metastatic lesions.
+
+IMAGE_47: 47
+  Testicular_Carcinoma_Staging47
+    Image: Testicular_Carcinoma_Staging47.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging47_annot.jpg
+    Caption: Axial NECT in the same patient further characterizes multiple pulmonary metastatic lesions, some of which show central cavitation <img src="arrow_WS.png">.
+
+IMAGE_48: 48
+  Testicular_Carcinoma_Staging48
+    Image: Testicular_Carcinoma_Staging48.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging48_annot.jpg
+    Caption: Axial FLAIR MR in the same patient shows an intraaxial metastatic lesion in the right posterior parietal lobe <img src="arrow_WS.png"> with surrounding vasogenic edema <img src="arrow_WO.png">.
+
+IMAGE_49: 49
+  Testicular_Carcinoma_Staging49
+    Image: Testicular_Carcinoma_Staging49.jpg
+    Image_Annotated: Testicular_Carcinoma_Staging49_annot.jpg
+    Caption: Coronal T1 C+ MR in the same patient shows an intraaxial metastatic lesion in the right parietal lobe with peripheral enhancement <img src="arrow_WS.png">.
+
+=== SOURCE ATTRIBUTION ===
+Primary source label: STATdx
+Core cross-check: it might be in multiple regions of the book so you are going to have to look through it

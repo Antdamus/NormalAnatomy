@@ -25,6 +25,23 @@ If the main teaching point is topographic localization of a structure that is no
 
 -----------------------------------------------------
 
+MULTI-IMAGE FRONT LABEL RULE
+
+Multi-image NORMAL UNKNOWN cards MUST visibly label image position on the front:
+
+<b>Image 1/N</b><br><img src="FILE1.ext"><br>
+<b>Image 2/N</b><br><img src="FILE2.ext"><br>
+
+Rules:
+- use this numbering for every multi-image NORMAL UNKNOWN stack
+- the number labels must be non-diagnostic
+- the labels exist only so the learner knows to scroll through all images
+- do not place source captions on the front
+- do not replace source captions with these labels
+- single-image NORMAL UNKNOWN cards may omit "Image 1/1" unless consistent local formatting is desired
+
+-----------------------------------------------------
+
 IMAGE IDENTIFICATION SAFETY RULE
 
 Do not generate image-identification cards that ask the learner to identify a structure as though it were clearly visible if the structure is usually topographically inferred.
@@ -113,7 +130,7 @@ When the workflow context says captions are being extracted as supplemental sour
 - do not expect image files
 - do not create image-based UNKNOWN cards by default
 - mine captions for supportable pearls
-- route useful caption content into existing card families such as NORMAL HIGH-YIELD, NORMAL BOARDS TRAP, NORMAL MECHANISM, NORMAL DIFFERENTIAL DRILL, and explanatory back-side fields
+- route useful caption content into existing card families such as NORMAL HIGH-YIELD, NORMAL BOARDS TRAP, NORMAL MECHANISM, and explanatory back-side fields; use NORMAL DIFFERENTIAL DRILL only when explicitly requested
 - do not treat caption presence alone as justification for an image card
 
 -----------------------------------------------------
@@ -161,10 +178,12 @@ Do not break:
 - filename handling
 - image ordering
 - import compatibility
+- complete image reference names on the back
 
 If multiple images are used:
 - preserve source order exactly
 - preserve annotated and non-annotated pairing exactly
+- include one complete image reference name per image in source/display order
 
 If the extracted input labels image blocks as `CASE_##`:
 - treat each provided case block as an explicit input unit
@@ -177,6 +196,34 @@ Before export, every selected image or explicit CASE block must be accounted for
 - intentionally omitted as redundant, non-contributory, or not genuinely visible
 
 Do not silently skip selected teaching graphics, normal comparators, modality comparators, pitfall images, pseudolesion examples, or workflow diagrams. If they are not UNKNOWN-worthy, route their useful teaching point into a high-yield, boards-trap, mechanism, localization, or differential-discriminator card when source-supported.
+
+-----------------------------------------------------
+
+COMPLETE IMAGE REFERENCE NAME RULE
+
+Every image-containing NORMAL card must include the complete image reference name on the back.
+
+Use the best available exact reference:
+- source figure number
+- source image title
+- RadPrimer / STATdx / Radiopaedia image label
+- source filename
+- downloaded media filename
+- exact local media filename if no better source identifier exists
+
+Rules:
+- if the validation package, source package, extracted image block, case ledger, or media table lists image filenames, those exact filenames are authoritative and must be used
+- do not truncate the reference name
+- do not paraphrase or normalize the reference name
+- do not replace the reference name with a generic label such as "case image" or "figure"
+- for multi-image stacks, include one reference name per image in the same order as Image
+- keep image reference names separate from verbatim captions
+- if reference names are not included inside Image_Annotated, include them in Imaging_Differentiation using:
+  Image references: REF1<br>REF2<br>REF3
+
+If the complete image reference name cannot be determined:
+- use the exact local media filename
+- do not leave the image reference absent
 
 -----------------------------------------------------
 

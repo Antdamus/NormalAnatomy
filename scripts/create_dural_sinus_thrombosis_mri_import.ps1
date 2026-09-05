@@ -1,0 +1,76 @@
+$ErrorActionPreference = "Stop"
+
+$OutDir = "C:\Users\josem.000\NormalAnatomy\anki_dural_sinus_thrombosis_mri"
+$OutFile = Join-Path $OutDir "anki_dural_sinus_thrombosis_mri.tsv"
+$DeckPath = "Corebook::Neuro::Brain::Vascular Disorders::Dural Venous Sinus Thrombosis"
+
+$ImageReference = "Hellerhoff, multi-sequence MRI case, CC BY-SA 4.0. Clean image: https://commons.wikimedia.org/wiki/File:Sinusthrombose_rechts_Sinus_transversalis_76W_-_MR_-_001.jpg Annotated image: https://commons.wikimedia.org/wiki/File:Sinusthrombose_rechts_Sinus_transversalis_76W_-_MR_-_001_-_Annotation.jpg"
+$TeachingReference = "Teaching reference: PACS/Radiopaedia-derived dural sinus thrombosis article. MRI may show absent normal flow void; acute clot can be T1 iso-/hypointense and T2 hypointense, mimicking a flow void; SWI/GRE and contrast-enhanced T1/MRV help confirm. https://pacs.de/term/dural-sinus-thrombosis"
+$Reference = "$ImageReference $TeachingReference"
+
+function New-ImageDiagnosisRow {
+    param(
+        [string]$ClinicalContext,
+        [string]$Image,
+        [string]$AnnotatedImage,
+        [string]$Question,
+        [string]$MostLikelyDiagnosis,
+        [string]$EntityLabel,
+        [string]$ImagingDifferentiation,
+        [string]$Caption,
+        [string]$Reference
+    )
+
+    $fields = @(
+        $ClinicalContext,
+        "<img src=""$Image""><br>",
+        "<div class=""stackItem""><img src=""$AnnotatedImage""><div class=""stackCap"">$Caption<br>Reference: $Reference</div></div>",
+        $Question,
+        $MostLikelyDiagnosis,
+        $EntityLabel,
+        "",
+        "",
+        "$ImagingDifferentiation<br><br>Reference: $Reference",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    )
+
+    if ($fields.Count -ne 22) {
+        throw "Expected 22 fields, got $($fields.Count)"
+    }
+
+    return ($fields -join "`t")
+}
+
+$rows = @(
+    New-ImageDiagnosisRow `
+        -ClinicalContext "76-year-old with persistent headache. Brain MRI multi-sequence panel NEUROHEAD01" `
+        -Image "brain_mri_multisequence_01_no_arrows.jpg" `
+        -AnnotatedImage "brain_mri_multisequence_01_arrow.jpg" `
+        -Question "Most likely diagnosis?" `
+        -MostLikelyDiagnosis "Dural venous sinus thrombosis involving the right transverse/sigmoid sinus.<br><br>Caption-derived keyword findings:<br>Abnormal right transverse/sigmoid sinus signal across T2, T1, DWI, FLAIR, and post-contrast T1 images.<br>Post-contrast images show abnormal non-opacified/filling-defect appearance in the involved sinus.<br><br>Tight reasoning:<br>The key is an anatomic-throughline: the same right transverse/sigmoid dural venous channel is abnormal on every sequence and remains abnormal after contrast. A normal flow void can be dark on spin-echo MRI, but it should behave like flowing blood rather than a fixed intraluminal structure that persists across T1/T2/FLAIR/DWI and becomes a post-contrast filling defect.<br><br>Why each sequence helps:<br>T2: acute thrombus can be T2 hypointense because deoxygenated blood products shorten T2, so it may imitate a normal venous flow void. The danger is stopping here.<br>T1: thrombus signal changes with clot age; subacute clot often becomes T1 bright from methemoglobin, while acute clot may be iso- or hypointense. Abnormal intrinsic sinus signal supports clot when it matches the same venous segment.<br>DWI: thrombus can show high signal/restricted diffusion from compact clot and reduced water motion. Linear or tubular DWI signal following a sinus is a clot clue, not an arterial-territory infarct pattern.<br>FLAIR: slow or thrombosed blood can become visible as abnormal intraluminal signal rather than disappearing like a clean flow void. This helps confirm that the dark/bright finding is in the sinus itself.<br>Post-contrast T1: normal venous sinus should opacify/enhance as flowing blood fills the lumen. Thrombus appears as non-opacification or a filling defect, sometimes with peripheral dural/sinus wall enhancement.<br>Coronal post-contrast T1: gives the cross-sectional check of the involved transverse/sigmoid sinus and helps separate true filling defect from asymmetric anatomy or partial volume." `
+        -EntityLabel "Right transverse/sigmoid dural venous sinus thrombosis" `
+        -ImagingDifferentiation "Pitfall logic: normal venous flow void is a flow phenomenon; thrombus is intraluminal material. If a suspected sinus abnormality has a fixed shape in the same venous segment across sequences, especially with lack of expected post-contrast opacification, treat it as thrombus until proven otherwise. Acute thrombus can be T2 dark and therefore can masquerade as normal flow; contrast-enhanced T1, MRV/CTV, and SWI/GRE help by testing for actual flow/opacification or blood-product susceptibility. Also compare sinus caliber and the contralateral side, because hypoplastic transverse sinus or asymmetric slow flow can mimic thrombosis." `
+        -Caption "Right transverse/sigmoid sinus thrombus shown across T2, T1, DWI, FLAIR, and post-contrast T1 axial/coronal images." `
+        -Reference $Reference
+)
+
+$content = @(
+    "#separator:tab",
+    "#html:true",
+    "#notetype:core_rad_notetype_v2",
+    "#deck:$DeckPath"
+) + $rows
+
+Set-Content -LiteralPath $OutFile -Value $content -Encoding UTF8

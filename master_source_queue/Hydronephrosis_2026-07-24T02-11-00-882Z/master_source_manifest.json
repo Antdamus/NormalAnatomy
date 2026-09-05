@@ -1,0 +1,197 @@
+{
+  "version": "master-source-manifest-v1",
+  "articleTitle": "Hydronephrosis",
+  "createdAt": "2026-07-24T02:17:12Z",
+  "sourceBundleName": "Hydronephrosis_2026-07-24T02-11-00-882Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Nuclear Medicine",
+    "Genitourinary Basic",
+    "Hydronephrosis"
+  ],
+  "canonicalHierarchySource": {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceFile": "RadPrimer_metadata.json",
+    "field": "breadcrumbTrail",
+    "policy": "RadPrimer breadcrumbTrail is the canonical hierarchy/backbone."
+  },
+  "canonicalDeckPath": "Corebook::Nuclear Medicine::Genitourinary Basic::Hydronephrosis",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "radprimerPresent": true,
+    "statdxPresent": true,
+    "radprimerImageCount": 22,
+    "statdxImageCount": 24,
+    "statdxRadPrimerImageCoverageSummary": "STATdx exactly duplicates 20 of 22 RadPrimer images by visual inspection of actual image_evidence files. STATdx does not cover RadPrimer images 13-14, so that RadPrimer same-patient bone-scan/CT correlation cluster remains selected.",
+    "radprimerCoverageCounts": {
+      "exactDuplicate": 20,
+      "nearDuplicate": 0,
+      "conceptualReplacement": 0,
+      "notCovered": 2
+    },
+    "coreEvidence": "No auditable Core Radiology source supplied in this bundle."
+  },
+  "imageCountBySource": {
+    "RadPrimer": 22,
+    "STATdx": 24
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer], [STATdx], or [Both] when attribution matters.",
+    "Use clean human-facing labels such as RadPrimer image 5 and STATdx image 4 in prose.",
+    "Keep RP-05 and SDX-04 style IDs in registry, filenames, manifest, and traceability fields."
+  ],
+  "selectedPrimaryImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "RP-13",
+    "RP-14"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-15",
+    "RP-16",
+    "RP-17",
+    "RP-18",
+    "RP-19",
+    "RP-20",
+    "RP-21",
+    "RP-22"
+  ],
+  "sourceSelectionPlan": {
+    "sourcePriority": [
+      "RadPrimer canonical hierarchy/backbone",
+      "STATdx supplemental depth and source-preferred duplicate image replacements"
+    ],
+    "textPlan": {
+      "keepFromRadPrimer": [
+        "metadata.json canonicalHierarchy exactly",
+        "metadata.json canonicalDeckPath exactly",
+        "RadPrimer nuclear medicine scaffold for renogram definitions, acquisition, furosemide/GAD interpretation, differential diagnosis, and management",
+        "RadPrimer images 13-14 as a unique primary same-patient bone-scan/CT correlation not covered by STATdx"
+      ],
+      "keepFromSTATdx": [
+        "three-opportunity clearance framing: prefurosemide, postfurosemide, and gravity-assisted drainage",
+        "GAD clearance > 50% as nonobstructed/conservative-management support and < 50% as obstruction support",
+        "expanded protocol details for catheterization scenarios, pediatric MAG3 dosing, DTPA limitations with low GFR, and full-bladder/dehydration pitfalls",
+        "pitfall examples including duplicated collecting-system ROI errors, urinary bladder/diaper contamination, motion artifact, renal vein thrombosis mimic, low GFR/dehydration, and immature kidneys",
+        "all STATdx images 1-24 as the default curated STATdx primary set, including exact duplicate replacements and supplemental examples"
+      ],
+      "downweightOrSkip": [
+        "Do not use STATdx breadcrumbTrail for routing because metadata.json canonicalHierarchy is authoritative.",
+        "Do not invent Core Radiology validation because no auditable Core Radiology source is supplied.",
+        "Do not overuse STATdx image 24 in generators unless a later prompt specifically wants sparse-caption source-completeness/pitfall material."
+      ]
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable. Download only selectedPrimaryImageIds by default.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "rule": "Same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse clusters are atomic teaching clusters.",
+      "intentionalSplits": [],
+      "note": "No source case cluster was intentionally split. RadPrimer images 13-14 remain together because STATdx does not cover that duplicated left collecting-system/parapelvic cyst correlation cluster; STATdx images 10-11 remain together as a separate same-patient persistent-dilation/indeterminate-washout cluster."
+    },
+    "imageDownloadPlan": {
+      "primaryTeachingSet": {
+        "statdxDefaultPrimaryImages": [
+          "SDX-01",
+          "SDX-02",
+          "SDX-03",
+          "SDX-04",
+          "SDX-05",
+          "SDX-06",
+          "SDX-07",
+          "SDX-08",
+          "SDX-09",
+          "SDX-10",
+          "SDX-11",
+          "SDX-12",
+          "SDX-13",
+          "SDX-14",
+          "SDX-15",
+          "SDX-16",
+          "SDX-17",
+          "SDX-18",
+          "SDX-19",
+          "SDX-20",
+          "SDX-21",
+          "SDX-22",
+          "SDX-23",
+          "SDX-24"
+        ],
+        "radprimerUniquePrimaryImages": [
+          "RP-13",
+          "RP-14"
+        ]
+      },
+      "archiveOptionalDuplicates": {
+        "radprimerExactDuplicateExports": [
+          "RP-01",
+          "RP-02",
+          "RP-03",
+          "RP-04",
+          "RP-05",
+          "RP-06",
+          "RP-07",
+          "RP-08",
+          "RP-09",
+          "RP-10",
+          "RP-11",
+          "RP-12",
+          "RP-15",
+          "RP-16",
+          "RP-17",
+          "RP-18",
+          "RP-19",
+          "RP-20",
+          "RP-21",
+          "RP-22"
+        ]
+      },
+      "downloadOnlySelectedPrimaryImageIdsByDefault": true,
+      "sourceQualifiedFilenamePolicy": "Use the registry downloadFilenameStem/plainFilename values, preserving RP-05 and SDX-04 style IDs in filenames while using clean labels such as RadPrimer image 5 or STATdx image 4 in narrative prose."
+    },
+    "generatorInstructions": [
+      "Use clean source-qualified image labels in narrative prose, such as RadPrimer image 14 or STATdx image 11.",
+      "Keep RP-14 and SDX-11 style IDs in traceability fields, filenames, registries, and manifest metadata rather than crowding narrative prose with both labels.",
+      "Preserve atomic same-patient clusters: RadPrimer images 11-12, RadPrimer images 13-14, RadPrimer images 17-18, STATdx images 8-9, STATdx images 10-11, and STATdx images 14-15.",
+      "Do not generate cards or lecture content from this package until a later explicit request."
+    ]
+  }
+}

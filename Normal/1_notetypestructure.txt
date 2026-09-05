@@ -94,7 +94,7 @@ Boards_Trap
 - including what visible landmarks prevent a mistaken lesion call
 
 High_Yield_Q / High_Yield_A
-- compact definition, landmark rule, approach rule, checklist, modality anchor, measurement rule, or variant anchor
+- landmark rule, approach rule, checklist, modality anchor, measurement rule, variant anchor, or definition card only when explicitly requested
 - orientation-anchor and localization-rule content when image recognition is not the main task
 
 Radiopaedia fields
@@ -124,7 +124,7 @@ GLOBAL COMPANION-FIELD DISCIPLINE
 Companion fields must not appear alone.
 
 Therefore:
-- Differential_Q must be blank unless Differentials is populated
+- Differential_Q must be blank unless the user explicitly requested a separate NORMAL DIFFERENTIAL DRILL and Differentials is populated
 - Mechanism_Q must be blank unless Mechanism is populated
 - Boards_Trap_Q must be blank unless Boards_Trap is populated
 - High_Yield_A must be blank unless High_Yield_Q is populated
@@ -190,10 +190,10 @@ High-value field in this engine.
 Use a concise target entity, not an essay.
 
 7) Differential_Q
-Conditionally allowed only when Differentials is populated.
+Conditionally allowed only when the user explicitly requested a separate NORMAL DIFFERENTIAL DRILL and Differentials is populated.
 
 8) Differentials
-Populate only when intentionally creating NORMAL DIFFERENTIAL DRILL.
+Populate on NORMAL UNKNOWN as back-side mimic/confusion support, or on NORMAL DIFFERENTIAL DRILL only when Differential_Q is explicitly requested.
 
 9) Imaging_Differentiation
 Conditionally allowed when the card type explicitly permits it.

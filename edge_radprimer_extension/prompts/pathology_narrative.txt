@@ -49,10 +49,10 @@ Think of this as:
 You will receive an extracted block that may contain sections such as:
 
 * `=== TOPIC ===`
-* `=== CORE VALIDATION INPUT ===`
 * `=== PROMPT ===`
 * `=== ARTICLE ===`
 * `=== IMAGES (selected; original numbering preserved) ===`
+* `=== NARRATIVE SOURCE MODE ===`
 
 The article section contains the structured content outline.
 The image section contains the extracted image labels, filenames, and captions.
@@ -180,6 +180,25 @@ Do **not** pretend uncertain image grouping is definite.
 
 ---
 
+## ARTICLE-ONLY QUALITY PARITY RULE
+
+If the source package is built from the current article rather than from a fused master source, the narrative must still meet the same craft standard expected from a master-source narration.
+
+Article-only means fewer source inputs, not lower quality.
+
+In article-only mode:
+
+* perform a full pass over the provided article outline before choosing the teaching structure
+* use the article's own hierarchy, emphasis, captions, and image set as the source-selection plan
+* preserve small source-emphasized details when they improve diagnosis, discrimination, mechanism, staging, reporting, or image recognition
+* do not let the output become a generic disease overview or a caption-only tour
+* do not add outside reference material, project-file memory, or book-derived background just to make the lecture feel fuller
+* if the article is thin, acknowledge the limitation through concise source-faithful teaching rather than padding
+
+The finished lecture should be judged by the same standard as a fused-source lecture for organization, image completeness, source fidelity, spoken flow, and teaching value. The difference is only the evidence base.
+
+---
+
 ## IMAGE COMPLETENESS RULE
 
 If an image section is provided, every provided image must be accounted for.
@@ -195,6 +214,31 @@ This is mandatory.
 * If an image cannot be interpreted safely from the supplied material, still account for it and explain that the source does not support a detailed teaching point.
 
 Only omit an image if the user explicitly says to exclude it.
+
+---
+
+## REPETITIVE / DUPLICATE IMAGE NARRATION RULE
+
+Some fused-source packages intentionally keep near-duplicate, recognition-reinforcement, alternate-patient, or alternate-modality images in the primary image set.
+
+These images must still be accounted for, but the spoken lecture must not make the learner hear the same mini-lecture repeatedly.
+
+When the image registry, manifest, source-selection plan, captions, or visual similarity suggests that several images teach the same basic finding:
+
+* first name the shared teaching bucket once
+* then walk the learner through the repeated images as a comparison set
+* explicitly state what is new, different, or confirmatory about each image
+* if there is no meaningful new finding, say briefly that the image is included as recognition reinforcement and move on
+* do not repeat the same disease definition, staging rule, differential, or management explanation for each repeated image
+* do not omit any retained primary image solely because it is repetitive
+
+If the source-selection plan says an image is an exact duplicate or `archiveOptionalDuplicate`, do not give it a full spoken walkthrough unless the user specifically asks for archived/recovery images.
+Instead, mention once that exact duplicate/archive images were not used for the main lecture and keep them out of the main image arc.
+
+If the image is retained as `primaryTeachingSet`, `nearDuplicate`, `recognitionReinforcement`, `alternateExample`, `stageVariant`, `severityVariant`, or `modalityVariant`, it belongs in the lecture, but its narration should be compact and contrastive rather than repetitive.
+
+Before finalizing, scan the narrative for back-to-back image paragraphs that say essentially the same thing.
+Repair them by merging into one comparison paragraph that names every image and preserves the unique arrow/callout details for each image.
 
 ---
 
@@ -233,6 +277,8 @@ Rules:
 * If multiple arrows are present, describe them in the order that best supports image inspection: usually primary finding first, then associated findings, complications, anatomy, or comparison points.
 * If the caption has arrow tags but the surrounding caption text does not clearly state what an arrow marks, do not invent a finding. Use cautious language such as "the marked callout corresponds to the caption-described finding."
 * If an image has arrows, the local image explanation should usually name what each arrow/callout is showing before moving on to broader article facts.
+* If repetitive images are grouped together, still verbalize each image's caption-supported arrows/callouts before compressing the shared teaching point.
+* If the caption contains one or more `<img src="arrow_...">` tags and the draft narrative does not include a speech-friendly arrow/callout phrase for that image or grouped run, the output is incomplete and must be repaired before finalizing.
 
 The goal is that during audio playback the learner hears exactly how the arrows connect to the visual findings.
 
@@ -1078,11 +1124,13 @@ Create a **guided image mastery narrative** that:
 * is source-faithful
 * forces visual inspection of the images
 * walks through every provided image without skipping any image
+* compresses repetitive or near-duplicate primary images into contrastive comparison sets instead of repeating the same mini-lecture
 * infers and uses the strongest organizing spine supported by the source
 * integrates cases into that structure instead of presenting them as isolated stops
 * keeps the opening brief so the learner reaches the visual material quickly
 * uses speech-friendly image references in the narrative, such as `image one` or `images five through ten`, rather than underscore-based labels
 * uses only one spoken source-qualified reference per fused-source image, such as `STATdx image thirty five`, without also reading `SDX thirty five`
+* verbalizes every caption-supported arrow or callout in speech-friendly language; any image with arrow tags must have its arrows/callouts named locally
 * uses controlled grouping inference when appropriate
 * clearly labels inferred grouping when used
 * preserves the main educational content of the article
@@ -1093,7 +1141,7 @@ Create a **guided image mastery narrative** that:
 * avoids repetitive local inference disclaimers after the initial grouping note unless truly needed
 * prepares the learner for later deeper retrieval practice in Anki
 
-Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that the article has been rebuilt around a clear organizing framework, that the ending still follows that framework, that inferred case links are not overstated, and that the major image teaching points plus the major and smaller source-emphasized non-image facts were both incorporated into the narrative.
+Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that every caption-supported arrow/callout has been verbalized when arrow tags are present, that repetitive retained images have been grouped into compact contrastive comparison sets rather than repeated as separate mini-lectures, that exact duplicate/archive images are not over-narrated unless explicitly requested, that the article has been rebuilt around a clear organizing framework, that the ending still follows that framework, that inferred case links are not overstated, and that the major image teaching points plus the major and smaller source-emphasized non-image facts were both incorporated into the narrative.
 
 Do not ask for clarification unless the input is structurally unusable.
 When uncertain, be transparent rather than overconfident.

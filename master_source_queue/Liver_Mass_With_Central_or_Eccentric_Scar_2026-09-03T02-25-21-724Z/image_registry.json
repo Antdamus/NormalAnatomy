@@ -1,0 +1,1867 @@
+[
+  {
+    "masterImageId": "RP-01",
+    "displayLabel": "RadPrimer image 1",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 1,
+    "imageId": "83eccf99-ba93-448a-bfe9-db3e7a5f888c",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar1",
+    "caption": "Axial arterial-phase CECT shows a homogeneously and brightly enhancing mass <img src=\"arrow_WS.png\"> with a central scar <img src=\"arrow_BC.png\">. The mass became isodense with liver on portal venous phase.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar1.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar1_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/83eccf99-ba93-448a-bfe9-db3e7a5f888c?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/83eccf99-ba93-448a-bfe9-db3e7a5f888c?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-01_RadPrimer_plain_83eccf99.jpg",
+    "targetAnnotatedFilename": "RP-01_RadPrimer_annotated_83eccf99.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_83eccf99.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/83eccf99-ba93-448a-bfe9-db3e7a5f888c?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "C6A125708747CBD61E71A3295D27FFBC75108F8EED55FBC7B2A2FE3A7EFF9113"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-01",
+      "duplicateOfDisplayLabel": "STATdx image 1",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-02",
+    "displayLabel": "RadPrimer image 2",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 2,
+    "imageId": "436b694a-f410-474f-a977-9006e9a3ceee",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar2",
+    "caption": "Axial 20-minute delayed T1 MR shows a large mass <img src=\"arrow_WS.png\"> that retains contrast more than underlying liver. The central scar <img src=\"arrow_WC.png\"> does not take up or retain gadoxetate.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar2.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar2_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/436b694a-f410-474f-a977-9006e9a3ceee?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/436b694a-f410-474f-a977-9006e9a3ceee?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-02_RadPrimer_plain_436b694a.jpg",
+    "targetAnnotatedFilename": "RP-02_RadPrimer_annotated_436b694a.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_436b694a.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/436b694a-f410-474f-a977-9006e9a3ceee?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "BA51680AD6889140D29FC67F0F48E54CF4ADBC3636ED58710F3B4160523339C0"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-02",
+      "duplicateOfDisplayLabel": "STATdx image 2",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-03",
+    "displayLabel": "RadPrimer image 3",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 3,
+    "imageId": "4209b847-2705-4657-9e6c-26885c1492a1",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar3",
+    "caption": "Axial CECT shows a large mass with peripheral nodular enhancement <img src=\"arrow_WS.png\"> isodense to vessels. A central scar <img src=\"arrow_WO.png\">, with a small focus of calcification, did not fill in on delayed imaging. These are typical features of giant hemangiomas.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar3.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar3_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/4209b847-2705-4657-9e6c-26885c1492a1?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/4209b847-2705-4657-9e6c-26885c1492a1?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-03_RadPrimer_plain_4209b847.jpg",
+    "targetAnnotatedFilename": "RP-03_RadPrimer_annotated_4209b847.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_4209b847.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/4209b847-2705-4657-9e6c-26885c1492a1?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "C00FD920FC18AF699DBA441DE3F877640EFCD8242FFF8F6995978CBFC80E96FD"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-04",
+      "duplicateOfDisplayLabel": "STATdx image 4",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-04",
+    "displayLabel": "RadPrimer image 4",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 4,
+    "imageId": "2c8082bf-509a-48c2-a437-c35efdeceab8",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar4",
+    "caption": "Axial T2 MR shows a large, hyperintense mass with a central scar <img src=\"arrow_BC.png\"> that is very bright, typical of a large hemangioma with progressive nodular enhancement on arterial <img src=\"arrow_WS.png\">, venous <img src=\"arrow_WO.png\">, and delayed <img src=\"arrow_BS.png\"> phases.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar4.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar4_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/2c8082bf-509a-48c2-a437-c35efdeceab8?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/2c8082bf-509a-48c2-a437-c35efdeceab8?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-04_RadPrimer_plain_2c8082bf.jpg",
+    "targetAnnotatedFilename": "RP-04_RadPrimer_annotated_2c8082bf.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_2c8082bf.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/2c8082bf-509a-48c2-a437-c35efdeceab8?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "EE4031D6E21ED9CBFBC299C58120D80D52F41357B2EEB7D94906E16D615E3DFE"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-05",
+      "duplicateOfDisplayLabel": "STATdx image 5",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-05",
+    "displayLabel": "RadPrimer image 5",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 5,
+    "imageId": "ac436c57-08da-4319-af2f-346cdd9e7bea",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar5",
+    "caption": "Axial arterial-phase CECT in an older woman shows a large, heterogeneous, hypervascular mass <img src=\"arrow_WS.png\"> with foci of necrosis, giving it a mottled or mosaic appearance. The age of the patient and absence of calcification favored conventional hepatocellular carcinoma (HCC), as opposed to fibrolamellar HCC, confirmed on biopsy.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar5.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar5_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/ac436c57-08da-4319-af2f-346cdd9e7bea?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/ac436c57-08da-4319-af2f-346cdd9e7bea?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-05_RadPrimer_plain_ac436c57.jpg",
+    "targetAnnotatedFilename": "RP-05_RadPrimer_annotated_ac436c57.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_ac436c57.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/ac436c57-08da-4319-af2f-346cdd9e7bea?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "451373851CA5255178AACFDFBDBEAD74BB41EDA3E943AC3A96F18137DC8C98CF"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-07",
+      "duplicateOfDisplayLabel": "STATdx image 7",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-06",
+    "displayLabel": "RadPrimer image 6",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 6,
+    "imageId": "259a152d-a94e-4884-8c23-c115e9e6816e",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar6",
+    "caption": "Axial CECT shows a large mass with an eccentric scar <img src=\"arrow_WC.png\"> or necrotic area. Tumor invasion of portal vein <img src=\"arrow_WS.png\"> helps to identify this as HCC.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar6.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar6_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/259a152d-a94e-4884-8c23-c115e9e6816e?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/259a152d-a94e-4884-8c23-c115e9e6816e?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-06_RadPrimer_plain_259a152d.jpg",
+    "targetAnnotatedFilename": "RP-06_RadPrimer_annotated_259a152d.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_259a152d.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/259a152d-a94e-4884-8c23-c115e9e6816e?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "6A37ECEE2E997F3EBA87997988C600F0EBB3ABED500BD634E5DFCD42F5A52983"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-08",
+      "duplicateOfDisplayLabel": "STATdx image 8",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-07",
+    "displayLabel": "RadPrimer image 7",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 7,
+    "imageId": "457cad22-665f-41b9-a500-eda905b10d07",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar7",
+    "caption": "Axial NECT shows a heterogeneous mass in the left lobe. At resection, the focus of high attenuation <img src=\"arrow_WO.png\"> was hemorrhage, and the lower density foci <img src=\"arrow_WC.png\"> were necrosis and fibrosis.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar7.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar7_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/457cad22-665f-41b9-a500-eda905b10d07?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/457cad22-665f-41b9-a500-eda905b10d07?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-07_RadPrimer_plain_457cad22.jpg",
+    "targetAnnotatedFilename": "RP-07_RadPrimer_annotated_457cad22.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_457cad22.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/457cad22-665f-41b9-a500-eda905b10d07?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "7B39968756BF0F24CFB7712A1E21333EB2F36A2CC1BB99977CCCE3E9BDC72C74"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-09",
+      "duplicateOfDisplayLabel": "STATdx image 9",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-08",
+    "displayLabel": "RadPrimer image 8",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 8,
+    "imageId": "a277c472-397d-4012-97b0-b8459b4ed0a0",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar8",
+    "caption": "Axial venous-phase T1 C+ MR shows a large, enhancing mass <img src=\"arrow_WS.png\"> with a central nonenhancing scar <img src=\"arrow_WC.png\">.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar8.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar8_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/a277c472-397d-4012-97b0-b8459b4ed0a0?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/a277c472-397d-4012-97b0-b8459b4ed0a0?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-08_RadPrimer_plain_a277c472.jpg",
+    "targetAnnotatedFilename": "RP-08_RadPrimer_annotated_a277c472.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_a277c472.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/a277c472-397d-4012-97b0-b8459b4ed0a0?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "F1A3B1C90FACEDDD077DFD7F9BECDA8786E799357372444325CBD2D695604473"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-10",
+      "duplicateOfDisplayLabel": "STATdx image 10",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-09",
+    "displayLabel": "RadPrimer image 9",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 9,
+    "imageId": "6128ca71-6c2d-4fe5-b42e-23ecaa021fd8",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar9",
+    "caption": "Axial NECT in this older patient with colon cancer shows shows multiple lesions with faint central calcification <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar9.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar9_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/6128ca71-6c2d-4fe5-b42e-23ecaa021fd8?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/6128ca71-6c2d-4fe5-b42e-23ecaa021fd8?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-09_RadPrimer_plain_6128ca71.jpg",
+    "targetAnnotatedFilename": "RP-09_RadPrimer_annotated_6128ca71.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_6128ca71.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/6128ca71-6c2d-4fe5-b42e-23ecaa021fd8?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "A34196761D69B5A01D22B9F621C52345F05CD45AD5E12E31F7971CDE62743FA3"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-11",
+      "duplicateOfDisplayLabel": "STATdx image 11",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-10",
+    "displayLabel": "RadPrimer image 10",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 10,
+    "imageId": "d6a187cd-2228-48ee-91d9-10157bd31c0a",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar10",
+    "caption": "Axial portal venous-phase CECT in this older patient with colon cancer shows multiple metastases <img src=\"arrow_CS.png\"> with central, low-density necrosis or fibrosis. The faint calcification is more difficult to recognize on contrast-enhanced imaging.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar10.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar10_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/d6a187cd-2228-48ee-91d9-10157bd31c0a?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/d6a187cd-2228-48ee-91d9-10157bd31c0a?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-10_RadPrimer_plain_d6a187cd.jpg",
+    "targetAnnotatedFilename": "RP-10_RadPrimer_annotated_d6a187cd.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_d6a187cd.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/d6a187cd-2228-48ee-91d9-10157bd31c0a?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "AC0AD9DF31D0D7A9549F51A6688A8391F8A76AF13FCC957DBDDDF4B6539C6F11"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-12",
+      "duplicateOfDisplayLabel": "STATdx image 12",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-11",
+    "displayLabel": "RadPrimer image 11",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 11,
+    "imageId": "3504e3b3-d533-4864-9283-d9d2ef9ccf58",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar11",
+    "caption": "Axial CECT in a 22-year-old man shows a heterogeneous, hypervascular mass with a large, calcified central scar <img src=\"arrow_WC.png\">. Note the similar enhancement of tumor in a cardiophrenic node <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar11.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar11_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/3504e3b3-d533-4864-9283-d9d2ef9ccf58?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/3504e3b3-d533-4864-9283-d9d2ef9ccf58?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-11_RadPrimer_plain_3504e3b3.jpg",
+    "targetAnnotatedFilename": "RP-11_RadPrimer_annotated_3504e3b3.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_3504e3b3.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/3504e3b3-d533-4864-9283-d9d2ef9ccf58?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "90BAEA455C49A773C2F68081C373D52C1AD159D92DEDFFBB31467FC0A294CE2F"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-13",
+      "duplicateOfDisplayLabel": "STATdx image 13",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-12",
+    "displayLabel": "RadPrimer image 12",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 12,
+    "imageId": "8d2ba71b-ff78-44b3-8955-373160fb9f2d",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar12",
+    "caption": "Axial T1 C+ FS MR in a young woman with a large, heterogeneously enhancing left hepatic lobe fibrolamellar HCC shows a central necrotic scar <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar12.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar12_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/8d2ba71b-ff78-44b3-8955-373160fb9f2d?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/8d2ba71b-ff78-44b3-8955-373160fb9f2d?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-12_RadPrimer_plain_8d2ba71b.jpg",
+    "targetAnnotatedFilename": "RP-12_RadPrimer_annotated_8d2ba71b.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_8d2ba71b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/8d2ba71b-ff78-44b3-8955-373160fb9f2d?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "A51CD368B273D454AB20600CBA231ED646D240EAF1ADCD9320A0385CF8F25247"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-14",
+      "duplicateOfDisplayLabel": "STATdx image 14",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-13",
+    "displayLabel": "RadPrimer image 13",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 13,
+    "imageId": "13f445fb-5d90-44f4-98c1-525087a09eca",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar13",
+    "caption": "Axial CECT shows a large hepatic mass with foci of scar or necrosis <img src=\"arrow_WC.png\">. Capsular retraction and occlusion of the portal vein <img src=\"arrow_WS.png\"> and bile duct <img src=\"arrow_BS.png\"> help confirm cholangiocarcinoma.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar13.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar13_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/13f445fb-5d90-44f4-98c1-525087a09eca?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/13f445fb-5d90-44f4-98c1-525087a09eca?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-13_RadPrimer_plain_13f445fb.jpg",
+    "targetAnnotatedFilename": "RP-13_RadPrimer_annotated_13f445fb.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_13f445fb.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/13f445fb-5d90-44f4-98c1-525087a09eca?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "15A99AA21286BCB30211340FDB76B77DD124062DDBC64A44CDFEAAAB4CAD8E9E"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-16",
+      "duplicateOfDisplayLabel": "STATdx image 16",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-14",
+    "displayLabel": "RadPrimer image 14",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 14,
+    "imageId": "5aabe2fa-d7db-4203-bd9b-b055c72826fe",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar14",
+    "caption": "Axial T1 C+ FS MR shows a large, hypointense mass <img src=\"arrow_WS.png\"> with progressive enhancement on arterial <img src=\"arrow_WO.png\">, portal venous <img src=\"arrow_WC.png\">, and delayed <img src=\"arrow_BS.png\"> phases due to fibrotic changes and a nonenhancing central scar <img src=\"arrow_CS.png\">.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar14.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar14_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/5aabe2fa-d7db-4203-bd9b-b055c72826fe?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/5aabe2fa-d7db-4203-bd9b-b055c72826fe?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-14_RadPrimer_plain_5aabe2fa.jpg",
+    "targetAnnotatedFilename": "RP-14_RadPrimer_annotated_5aabe2fa.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_5aabe2fa.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/5aabe2fa-d7db-4203-bd9b-b055c72826fe?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "C6A1867C779E5841140D75A8B0BE2162D04C32BB0096FFD8D09DD2C1237484BC"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-17",
+      "duplicateOfDisplayLabel": "STATdx image 17",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-15",
+    "displayLabel": "RadPrimer image 15",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 15,
+    "imageId": "fdf945d6-a5cd-4316-8af9-7f072ec21fde",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar15",
+    "caption": "Axial CECT in a young woman shows multiple peripheral hypovascular lesions with a target appearance. The subcapsular lesions are associated with retraction of the overlying liver capsule <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar15.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar15_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/fdf945d6-a5cd-4316-8af9-7f072ec21fde?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/fdf945d6-a5cd-4316-8af9-7f072ec21fde?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-15_RadPrimer_plain_fdf945d6.jpg",
+    "targetAnnotatedFilename": "RP-15_RadPrimer_annotated_fdf945d6.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-15_RadPrimer_image_15_plain_fdf945d6.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/fdf945d6-a5cd-4316-8af9-7f072ec21fde?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "D7340F51552EB1E82CCB0AA0B82861CB49BBB85FBE131D65A9A8CCBDAEEA33FE"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-18",
+      "duplicateOfDisplayLabel": "STATdx image 18",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-16",
+    "displayLabel": "RadPrimer image 16",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 16,
+    "imageId": "d8288460-1e2f-4b06-ade1-b6de04fd67c1",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar16",
+    "caption": "Axial T2 FS MR in a young woman shows multiple peripheral and confluent masses <img src=\"arrow_WS.png\">, many with hyperintense central necrosis or scar <img src=\"arrow_WC.png\">. These are typical features of hepatic epithelial hemangioendothelioma.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar16.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar16_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/d8288460-1e2f-4b06-ade1-b6de04fd67c1?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/d8288460-1e2f-4b06-ade1-b6de04fd67c1?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-16_RadPrimer_plain_d8288460.jpg",
+    "targetAnnotatedFilename": "RP-16_RadPrimer_annotated_d8288460.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-16_RadPrimer_image_16_plain_d8288460.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/d8288460-1e2f-4b06-ade1-b6de04fd67c1?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "B92454D906D42A1CB34FD0510F2E6B2CE12EFFD332A808FECA24C4C059D6037A"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-19",
+      "duplicateOfDisplayLabel": "STATdx image 19",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-17",
+    "displayLabel": "RadPrimer image 17",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 17,
+    "imageId": "bcdf6be8-68aa-499b-9d86-a3a96af4fb36",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar17",
+    "caption": "Axial arterial-phase T1 C+ MR in a hypercoagulable patient shows multiple hypervascular foci <img src=\"arrow_WS.png\">. Some of the lesions seem to have a hypointense rim, while others have a hypointense central scar <img src=\"arrow_CS.png\">.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar17.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar17_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/bcdf6be8-68aa-499b-9d86-a3a96af4fb36?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/bcdf6be8-68aa-499b-9d86-a3a96af4fb36?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-17_RadPrimer_plain_bcdf6be8.jpg",
+    "targetAnnotatedFilename": "RP-17_RadPrimer_annotated_bcdf6be8.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-17_RadPrimer_image_17_plain_bcdf6be8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/bcdf6be8-68aa-499b-9d86-a3a96af4fb36?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "AED867C098CDB5FDBC2979428A444DD26CD5BAF97250B6F727D9DCF0EB9317F6"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-20",
+      "duplicateOfDisplayLabel": "STATdx image 20",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-18",
+    "displayLabel": "RadPrimer image 18",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 18,
+    "imageId": "28f83787-9e48-4777-afdf-10d1656e94f0",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar18",
+    "caption": "Axial T1 C+ MR in a hypercoagulable patient 2 hours after IV administration of gadobenate dimeglumine shows persistent uptake and retention of the agent within the nodules <img src=\"arrow_BS.png\">, indicating functional hepatocytes and deficient biliary ducts within the lesions.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar18.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar18_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/28f83787-9e48-4777-afdf-10d1656e94f0?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/28f83787-9e48-4777-afdf-10d1656e94f0?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-18_RadPrimer_plain_28f83787.jpg",
+    "targetAnnotatedFilename": "RP-18_RadPrimer_annotated_28f83787.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-18_RadPrimer_image_18_plain_28f83787.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/28f83787-9e48-4777-afdf-10d1656e94f0?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "E95C32AF22A707488A46CBD924F15D5432810E6C717AD9740143E77F8F319EE0"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-21",
+      "duplicateOfDisplayLabel": "STATdx image 21",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-19",
+    "displayLabel": "RadPrimer image 19",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 19,
+    "imageId": "7d721323-def8-49db-80d3-8d9731b93625",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar19",
+    "caption": "Axial T1 C+ MR in a patient with Budd-Chiari syndrome shows multiple hypervascular nodules <img src=\"arrow_WS.png\">, some of which have a central scar <img src=\"arrow_WC.png\">. These multiple large, regenerative nodules (nodular regenerative hyperplasia) confirmed transplantation.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar19.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar19_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/7d721323-def8-49db-80d3-8d9731b93625?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/7d721323-def8-49db-80d3-8d9731b93625?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-19_RadPrimer_plain_7d721323.jpg",
+    "targetAnnotatedFilename": "RP-19_RadPrimer_annotated_7d721323.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-19_RadPrimer_image_19_plain_7d721323.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/7d721323-def8-49db-80d3-8d9731b93625?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "246FDB8B335C9B4690556B095EC6A1CD59986AAD229652329497BE5596F297CA"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-22",
+      "duplicateOfDisplayLabel": "STATdx image 22",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "RP-20",
+    "displayLabel": "RadPrimer image 20",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 20,
+    "imageId": "0729e563-2ab1-48be-9ba3-96411f999087",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar20",
+    "caption": "Axial CECT in a patient with Budd-Chiari syndrome and nodular regenerative hyperplasia shows a central scar <img src=\"arrow_WS.png\"> and doughnut-like enhancement. Transjugular intrahepatic portosystemic shunt (TIPS) is also seen <img src=\"arrow_WC.png\">.",
+    "usedFor": [
+      "archiveOptionalExactDuplicate",
+      "sourceTraceability"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar20.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar20_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/0729e563-2ab1-48be-9ba3-96411f999087?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/0729e563-2ab1-48be-9ba3-96411f999087?style=xlarge&annotated=true",
+    "targetPlainFilename": "RP-20_RadPrimer_plain_0729e563.jpg",
+    "targetAnnotatedFilename": "RP-20_RadPrimer_annotated_0729e563.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-20_RadPrimer_image_20_plain_0729e563.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/0729e563-2ab1-48be-9ba3-96411f999087?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "FABDA215C5FA0DA8E9E392C57E4A6D25B7266B4054A39497384E7768441674F7"
+    },
+    "duplicateClassification": {
+      "classification": "exactDuplicate",
+      "duplicateOf": "SDX-23",
+      "duplicateOfDisplayLabel": "STATdx image 23",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files",
+        "same source image/slice/screenshot with source-rendering size differences only"
+      ],
+      "decision": "archiveOptionalDuplicate"
+    }
+  },
+  {
+    "masterImageId": "SDX-01",
+    "displayLabel": "STATdx image 1",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 1,
+    "imageId": "83eccf99-ba93-448a-bfe9-db3e7a5f888c",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar1",
+    "caption": "Axial arterial-phase CECT shows a homogeneously and brightly enhancing mass <img src=\"arrow_WS.png\"> with a central scar <img src=\"arrow_BC.png\">. The mass became isodense with liver on portal venous phase.",
+    "usedFor": [
+      "focalNodularHyperplasia",
+      "arterialHyperenhancement",
+      "centralScar",
+      "recognitionReinforcement",
+      "axialArterialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar1.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar1_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/83eccf99-ba93-448a-bfe9-db3e7a5f888c?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/83eccf99-ba93-448a-bfe9-db3e7a5f888c?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-01_STATdx_plain_83eccf99.jpg",
+    "targetAnnotatedFilename": "SDX-01_STATdx_annotated_83eccf99.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_83eccf99.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/83eccf99-ba93-448a-bfe9-db3e7a5f888c?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "FC3C2483AB0396A495E527F4175441B678C0A505C3FE8F3640E29661AEFB17E4"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-01",
+      "duplicateSourceDisplayLabel": "RadPrimer image 1",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-02",
+    "displayLabel": "STATdx image 2",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 2,
+    "imageId": "436b694a-f410-474f-a977-9006e9a3ceee",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar2",
+    "caption": "Axial 20-minute delayed T1 MR shows a large mass <img src=\"arrow_WS.png\"> that retains contrast more than underlying liver. The central scar <img src=\"arrow_WC.png\"> does not take up or retain gadoxetate.",
+    "usedFor": [
+      "focalNodularHyperplasia",
+      "hepatobiliaryContrast",
+      "gadoxetateScarNonretention",
+      "recognitionReinforcement",
+      "delayedT1MR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar2.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar2_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/436b694a-f410-474f-a977-9006e9a3ceee?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/436b694a-f410-474f-a977-9006e9a3ceee?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-02_STATdx_plain_436b694a.jpg",
+    "targetAnnotatedFilename": "SDX-02_STATdx_annotated_436b694a.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_436b694a.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/436b694a-f410-474f-a977-9006e9a3ceee?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "A20FD85CF070DBB5C0F2C95BE3B6E8CE2A42F6FE8EA80EF8D8B3C3A8E2A55868"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-02",
+      "duplicateSourceDisplayLabel": "RadPrimer image 2",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-03",
+    "displayLabel": "STATdx image 3",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 3,
+    "imageId": "5f3ecdc2-af0e-4143-b47e-6ccbc92fb967",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar3",
+    "caption": "Axial T1 C+ FS MR shows a brightly and homogeneously enhancing mass with a central scar <img src=\"arrow_BC.png\">; this is classic FNH.",
+    "usedFor": [
+      "focalNodularHyperplasia",
+      "classicHomogeneousEnhancement",
+      "centralScar",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement",
+      "axialT1PostContrastMR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar3.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar3_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/5f3ecdc2-af0e-4143-b47e-6ccbc92fb967?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/5f3ecdc2-af0e-4143-b47e-6ccbc92fb967?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-03_STATdx_plain_5f3ecdc2.jpg",
+    "targetAnnotatedFilename": "SDX-03_STATdx_annotated_5f3ecdc2.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_5f3ecdc2.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/5f3ecdc2-af0e-4143-b47e-6ccbc92fb967?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "78140F063EE2B4C754AAEC3CB9F5E64DC89C48D25C97B16AECFA7672012CFA4B"
+    },
+    "duplicateClassification": {
+      "classification": "STATdxSupplementalNonRadPrimerImage",
+      "duplicateSourceImageId": null,
+      "evidenceBasis": [
+        "no matching RadPrimer stable source imageId",
+        "visual inspection shows distinct additional teaching image"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-04",
+    "displayLabel": "STATdx image 4",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 4,
+    "imageId": "4209b847-2705-4657-9e6c-26885c1492a1",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar4",
+    "caption": "Axial CECT shows a large mass with peripheral nodular enhancement <img src=\"arrow_WS.png\"> isodense to vessels. A central scar <img src=\"arrow_WO.png\">, with a small focus of calcification, did not fill in on delayed imaging. These are typical features of giant hemangiomas.",
+    "usedFor": [
+      "giantHemangioma",
+      "peripheralNodularEnhancement",
+      "calcifiedCentralScar",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar4.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar4_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/4209b847-2705-4657-9e6c-26885c1492a1?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/4209b847-2705-4657-9e6c-26885c1492a1?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-04_STATdx_plain_4209b847.jpg",
+    "targetAnnotatedFilename": "SDX-04_STATdx_annotated_4209b847.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_4209b847.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/4209b847-2705-4657-9e6c-26885c1492a1?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "7690A2900B2DAA16995BB845B5D990962ECEA30AA6F9C80251436D27A6FE023D"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-03",
+      "duplicateSourceDisplayLabel": "RadPrimer image 3",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-05",
+    "displayLabel": "STATdx image 5",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 5,
+    "imageId": "2c8082bf-509a-48c2-a437-c35efdeceab8",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar5",
+    "caption": "Axial T2 MR shows a large, hyperintense mass with a central scar <img src=\"arrow_BC.png\"> that is very bright, typical of a large hemangioma with progressive nodular enhancement on arterial <img src=\"arrow_WS.png\">, venous <img src=\"arrow_WO.png\">, and delayed <img src=\"arrow_BS.png\"> phases.",
+    "usedFor": [
+      "giantHemangioma",
+      "veryBrightT2Scar",
+      "multiphasicProgressiveEnhancement",
+      "atomicMultipanelCluster",
+      "recognitionReinforcement",
+      "axialT2MR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar5.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar5_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/2c8082bf-509a-48c2-a437-c35efdeceab8?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/2c8082bf-509a-48c2-a437-c35efdeceab8?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-05_STATdx_plain_2c8082bf.jpg",
+    "targetAnnotatedFilename": "SDX-05_STATdx_annotated_2c8082bf.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_2c8082bf.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/2c8082bf-509a-48c2-a437-c35efdeceab8?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "AE1CD92559CCC5A75BA9CC630CE9A627BCCA73FA91BA4030B44F52ABB9CCA91A"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-04",
+      "duplicateSourceDisplayLabel": "RadPrimer image 4",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-06",
+    "displayLabel": "STATdx image 6",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 6,
+    "imageId": "e0ae3067-00fd-49ec-9933-08a00c4b9613",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar6",
+    "caption": "Axial T2 MR shows a large mass <img src=\"arrow_WS.png\"> that is very bright and well defined. A central scar <img src=\"arrow_BC.png\"> is even more intense, typical of large cavernous hemangioma.",
+    "usedFor": [
+      "cavernousHemangioma",
+      "veryBrightT2Mass",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement",
+      "axialT2MR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar6.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar6_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/e0ae3067-00fd-49ec-9933-08a00c4b9613?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/e0ae3067-00fd-49ec-9933-08a00c4b9613?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-06_STATdx_plain_e0ae3067.jpg",
+    "targetAnnotatedFilename": "SDX-06_STATdx_annotated_e0ae3067.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_e0ae3067.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/e0ae3067-00fd-49ec-9933-08a00c4b9613?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "B95B986B4131AF3D439DF82C7538F5715D3072088B683EA3EEF1E68369EB140E"
+    },
+    "duplicateClassification": {
+      "classification": "STATdxSupplementalNonRadPrimerImage",
+      "duplicateSourceImageId": null,
+      "evidenceBasis": [
+        "no matching RadPrimer stable source imageId",
+        "visual inspection shows distinct additional teaching image"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-07",
+    "displayLabel": "STATdx image 7",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 7,
+    "imageId": "ac436c57-08da-4319-af2f-346cdd9e7bea",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar7",
+    "caption": "Axial arterial-phase CECT in an older woman shows a large, heterogeneous, hypervascular mass <img src=\"arrow_WS.png\"> with foci of necrosis, giving it a mottled or mosaic appearance. The age of the patient and absence of calcification favored conventional hepatocellular carcinoma (HCC), as opposed to fibrolamellar HCC, confirmed on biopsy.",
+    "usedFor": [
+      "conventionalHCC",
+      "mosaicMottledEnhancement",
+      "necrosis",
+      "olderPatient",
+      "recognitionReinforcement",
+      "axialArterialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar7.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar7_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/ac436c57-08da-4319-af2f-346cdd9e7bea?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/ac436c57-08da-4319-af2f-346cdd9e7bea?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-07_STATdx_plain_ac436c57.jpg",
+    "targetAnnotatedFilename": "SDX-07_STATdx_annotated_ac436c57.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_ac436c57.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/ac436c57-08da-4319-af2f-346cdd9e7bea?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "6C296C4608DA0A832262CC872326A64ABD30D4F8B24D0539485CA41365F35EFB"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-05",
+      "duplicateSourceDisplayLabel": "RadPrimer image 5",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-08",
+    "displayLabel": "STATdx image 8",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 8,
+    "imageId": "259a152d-a94e-4884-8c23-c115e9e6816e",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar8",
+    "caption": "Axial CECT shows a large mass with an eccentric scar <img src=\"arrow_WC.png\"> or necrotic area. Tumor invasion of portal vein <img src=\"arrow_WS.png\"> helps to identify this as HCC.",
+    "usedFor": [
+      "hepatocellularCarcinoma",
+      "eccentricScarOrNecrosis",
+      "portalVeinTumorInvasion",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar8.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar8_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/259a152d-a94e-4884-8c23-c115e9e6816e?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/259a152d-a94e-4884-8c23-c115e9e6816e?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-08_STATdx_plain_259a152d.jpg",
+    "targetAnnotatedFilename": "SDX-08_STATdx_annotated_259a152d.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_259a152d.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/259a152d-a94e-4884-8c23-c115e9e6816e?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "A19390603EB59BD600A463241430A3DCB065B3FD2552874A92587A69F20227E3"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-06",
+      "duplicateSourceDisplayLabel": "RadPrimer image 6",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-09",
+    "displayLabel": "STATdx image 9",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 9,
+    "imageId": "457cad22-665f-41b9-a500-eda905b10d07",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar9",
+    "caption": "Axial NECT shows a heterogeneous mass in the left lobe. At resection, the focus of high attenuation <img src=\"arrow_WO.png\"> was hemorrhage, and the lower density foci <img src=\"arrow_WC.png\"> were necrosis and fibrosis.",
+    "usedFor": [
+      "hepaticAdenomaPattern",
+      "hemorrhageNecrosisFibrosis",
+      "leftLobeMass",
+      "recognitionReinforcement",
+      "axialNECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar9.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar9_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/457cad22-665f-41b9-a500-eda905b10d07?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/457cad22-665f-41b9-a500-eda905b10d07?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-09_STATdx_plain_457cad22.jpg",
+    "targetAnnotatedFilename": "SDX-09_STATdx_annotated_457cad22.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_457cad22.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/457cad22-665f-41b9-a500-eda905b10d07?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "0D084BD7DEBB8888AC410FE3BB2DF39581F2942B2AD9899ED8A6E5DA73B4D4F7"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-07",
+      "duplicateSourceDisplayLabel": "RadPrimer image 7",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-10",
+    "displayLabel": "STATdx image 10",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 10,
+    "imageId": "a277c472-397d-4012-97b0-b8459b4ed0a0",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar10",
+    "caption": "Axial venous-phase T1 C+ MR shows a large, enhancing mass <img src=\"arrow_WS.png\"> with a central nonenhancing scar <img src=\"arrow_WC.png\">.",
+    "usedFor": [
+      "hepaticAdenomaPattern",
+      "enhancingMassWithNonenhancingScar",
+      "MRVariant",
+      "recognitionReinforcement",
+      "venousPhaseT1PostContrastMR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar10.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar10_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/a277c472-397d-4012-97b0-b8459b4ed0a0?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/a277c472-397d-4012-97b0-b8459b4ed0a0?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-10_STATdx_plain_a277c472.jpg",
+    "targetAnnotatedFilename": "SDX-10_STATdx_annotated_a277c472.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_a277c472.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/a277c472-397d-4012-97b0-b8459b4ed0a0?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "71D89146F270FA50C39EEF0418FF66A766E0171D236B5C2F8E96A7455DB10400"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-08",
+      "duplicateSourceDisplayLabel": "RadPrimer image 8",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-11",
+    "displayLabel": "STATdx image 11",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 11,
+    "imageId": "6128ca71-6c2d-4fe5-b42e-23ecaa021fd8",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar11",
+    "caption": "Axial NECT in this older patient with colon cancer shows shows multiple lesions with faint central calcification <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "mucinousColonMetastases",
+      "centralCalcification",
+      "noncontrastDetection",
+      "samePatientCluster",
+      "recognitionReinforcement",
+      "axialNECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar11.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar11_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/6128ca71-6c2d-4fe5-b42e-23ecaa021fd8?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/6128ca71-6c2d-4fe5-b42e-23ecaa021fd8?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-11_STATdx_plain_6128ca71.jpg",
+    "targetAnnotatedFilename": "SDX-11_STATdx_annotated_6128ca71.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_6128ca71.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/6128ca71-6c2d-4fe5-b42e-23ecaa021fd8?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "2B87DFD3B032BE775A4CF8E5269AA03BAB755E60E58D5644CFE7CA29F16914FA"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-09",
+      "duplicateSourceDisplayLabel": "RadPrimer image 9",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-12",
+    "displayLabel": "STATdx image 12",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 12,
+    "imageId": "d6a187cd-2228-48ee-91d9-10157bd31c0a",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar12",
+    "caption": "Axial portal venous-phase CECT in this older patient with colon cancer shows multiple metastases <img src=\"arrow_CS.png\"> with central, low-density necrosis or fibrosis. The faint calcification is more difficult to recognize on contrast-enhanced imaging.",
+    "usedFor": [
+      "mucinousColonMetastases",
+      "centralNecrosisOrFibrosis",
+      "contrastPhaseComparison",
+      "samePatientCluster",
+      "recognitionReinforcement",
+      "portalVenousCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar12.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar12_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/d6a187cd-2228-48ee-91d9-10157bd31c0a?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/d6a187cd-2228-48ee-91d9-10157bd31c0a?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-12_STATdx_plain_d6a187cd.jpg",
+    "targetAnnotatedFilename": "SDX-12_STATdx_annotated_d6a187cd.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_d6a187cd.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/d6a187cd-2228-48ee-91d9-10157bd31c0a?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "9CF7386F204075EC38BD4B1F44526FEA6B270A4D71C6B8EA5476A2EB8F31785B"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-10",
+      "duplicateSourceDisplayLabel": "RadPrimer image 10",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-13",
+    "displayLabel": "STATdx image 13",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 13,
+    "imageId": "3504e3b3-d533-4864-9283-d9d2ef9ccf58",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar13",
+    "caption": "Axial CECT in a 22-year-old man shows a heterogeneous, hypervascular mass with a large, calcified central scar <img src=\"arrow_WC.png\">. Note the similar enhancement of tumor in a cardiophrenic node <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "fibrolamellarHCC",
+      "calcifiedCentralScar",
+      "hypervascularTumor",
+      "cardiophrenicNodeMetastasis",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar13.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar13_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/3504e3b3-d533-4864-9283-d9d2ef9ccf58?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/3504e3b3-d533-4864-9283-d9d2ef9ccf58?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-13_STATdx_plain_3504e3b3.jpg",
+    "targetAnnotatedFilename": "SDX-13_STATdx_annotated_3504e3b3.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_3504e3b3.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/3504e3b3-d533-4864-9283-d9d2ef9ccf58?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "DF84E791164049255453BDC649F3DB4BAC4E0B041867665FCDE398ED4357FF79"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-11",
+      "duplicateSourceDisplayLabel": "RadPrimer image 11",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-14",
+    "displayLabel": "STATdx image 14",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 14,
+    "imageId": "8d2ba71b-ff78-44b3-8955-373160fb9f2d",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar14",
+    "caption": "Axial T1 C+ FS MR in a young woman with a large, heterogeneously enhancing left hepatic lobe fibrolamellar HCC shows a central necrotic scar <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "fibrolamellarHCC",
+      "necroticCentralScar",
+      "youngWoman",
+      "MRVariant",
+      "recognitionReinforcement",
+      "T1PostContrastFSMR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar14.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar14_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/8d2ba71b-ff78-44b3-8955-373160fb9f2d?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/8d2ba71b-ff78-44b3-8955-373160fb9f2d?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-14_STATdx_plain_8d2ba71b.jpg",
+    "targetAnnotatedFilename": "SDX-14_STATdx_annotated_8d2ba71b.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_8d2ba71b.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/8d2ba71b-ff78-44b3-8955-373160fb9f2d?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "DA39DCA6F1DE738328D856C390172B9A954D0948E121B0DF2B48F6902AA07219"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-12",
+      "duplicateSourceDisplayLabel": "RadPrimer image 12",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-15",
+    "displayLabel": "STATdx image 15",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 15,
+    "imageId": "c4d3f74a-58fd-41ae-ad39-96fb7d3724fb",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar15",
+    "caption": "Axial CECT shows a large mass that fills the left lobe with low density <img src=\"arrow_BC.png\"> and calcified <img src=\"arrow_BS.png\"> portions of the scar.",
+    "usedFor": [
+      "fibrolamellarHCC",
+      "calcifiedScar",
+      "largeLeftLobeMass",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar15.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar15_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/c4d3f74a-58fd-41ae-ad39-96fb7d3724fb?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/c4d3f74a-58fd-41ae-ad39-96fb7d3724fb?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-15_STATdx_plain_c4d3f74a.jpg",
+    "targetAnnotatedFilename": "SDX-15_STATdx_annotated_c4d3f74a.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_c4d3f74a.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/c4d3f74a-58fd-41ae-ad39-96fb7d3724fb?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "D3935948EA05FA657CE04A6AC12EE610D34F4B289F7C9F04930D68F827810B85"
+    },
+    "duplicateClassification": {
+      "classification": "STATdxSupplementalNonRadPrimerImage",
+      "duplicateSourceImageId": null,
+      "evidenceBasis": [
+        "no matching RadPrimer stable source imageId",
+        "visual inspection shows distinct additional teaching image"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-16",
+    "displayLabel": "STATdx image 16",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 16,
+    "imageId": "13f445fb-5d90-44f4-98c1-525087a09eca",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar16",
+    "caption": "Axial CECT shows a large hepatic mass with foci of scar or necrosis <img src=\"arrow_WC.png\">. Capsular retraction and occlusion of the portal vein <img src=\"arrow_WS.png\"> and bile duct <img src=\"arrow_BS.png\"> help confirm cholangiocarcinoma.",
+    "usedFor": [
+      "cholangiocarcinoma",
+      "capsularRetraction",
+      "portalVeinOcclusion",
+      "bileDuctOcclusion",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar16.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar16_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/13f445fb-5d90-44f4-98c1-525087a09eca?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/13f445fb-5d90-44f4-98c1-525087a09eca?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-16_STATdx_plain_13f445fb.jpg",
+    "targetAnnotatedFilename": "SDX-16_STATdx_annotated_13f445fb.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_13f445fb.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/13f445fb-5d90-44f4-98c1-525087a09eca?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "B0CAAE7930B62AF4B0FBDDE58DBC5759167FA7B95BCFECBF66E29D6F9760DABD"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-13",
+      "duplicateSourceDisplayLabel": "RadPrimer image 13",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-17",
+    "displayLabel": "STATdx image 17",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 17,
+    "imageId": "5aabe2fa-d7db-4203-bd9b-b055c72826fe",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar17",
+    "caption": "Axial T1 C+ FS MR shows a large, hypointense mass <img src=\"arrow_WS.png\"> with progressive enhancement on arterial <img src=\"arrow_WO.png\">, portal venous <img src=\"arrow_WC.png\">, and delayed <img src=\"arrow_BS.png\"> phases due to fibrotic changes and a nonenhancing central scar <img src=\"arrow_CS.png\">.",
+    "usedFor": [
+      "cholangiocarcinoma",
+      "progressiveFibroticEnhancement",
+      "nonenhancingCentralScar",
+      "atomicMultipanelCluster",
+      "recognitionReinforcement",
+      "T1PostContrastFSMR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar17.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar17_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/5aabe2fa-d7db-4203-bd9b-b055c72826fe?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/5aabe2fa-d7db-4203-bd9b-b055c72826fe?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-17_STATdx_plain_5aabe2fa.jpg",
+    "targetAnnotatedFilename": "SDX-17_STATdx_annotated_5aabe2fa.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_5aabe2fa.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/5aabe2fa-d7db-4203-bd9b-b055c72826fe?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "2F0001D3386017A3CD8F042834052955F0ACDA5F4C006BF2F26D3BECC647A49A"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-14",
+      "duplicateSourceDisplayLabel": "RadPrimer image 14",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-18",
+    "displayLabel": "STATdx image 18",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 18,
+    "imageId": "fdf945d6-a5cd-4316-8af9-7f072ec21fde",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar18",
+    "caption": "Axial CECT in a young woman shows multiple peripheral hypovascular lesions with a target appearance. The subcapsular lesions are associated with retraction of the overlying liver capsule <img src=\"arrow_WS.png\">.",
+    "usedFor": [
+      "epithelioidHemangioendothelioma",
+      "targetAppearance",
+      "subcapsularCapsularRetraction",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar18.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar18_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/fdf945d6-a5cd-4316-8af9-7f072ec21fde?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/fdf945d6-a5cd-4316-8af9-7f072ec21fde?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-18_STATdx_plain_fdf945d6.jpg",
+    "targetAnnotatedFilename": "SDX-18_STATdx_annotated_fdf945d6.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_fdf945d6.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/fdf945d6-a5cd-4316-8af9-7f072ec21fde?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "130A540A0CE29FE5F24BB186F120CD8C5F7F82AA4FA8720266E280C76229AC2B"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-15",
+      "duplicateSourceDisplayLabel": "RadPrimer image 15",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-19",
+    "displayLabel": "STATdx image 19",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 19,
+    "imageId": "d8288460-1e2f-4b06-ade1-b6de04fd67c1",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar19",
+    "caption": "Axial T2 FS MR in a young woman shows multiple peripheral and confluent masses <img src=\"arrow_WS.png\">, many with hyperintense central necrosis or scar <img src=\"arrow_WC.png\">. These are typical features of hepatic epithelial hemangioendothelioma.",
+    "usedFor": [
+      "epithelioidHemangioendothelioma",
+      "multifocalPeripheralConfluentMasses",
+      "T2CentralNecrosisOrScar",
+      "recognitionReinforcement",
+      "T2FSMR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar19.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar19_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/d8288460-1e2f-4b06-ade1-b6de04fd67c1?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/d8288460-1e2f-4b06-ade1-b6de04fd67c1?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-19_STATdx_plain_d8288460.jpg",
+    "targetAnnotatedFilename": "SDX-19_STATdx_annotated_d8288460.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_d8288460.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/d8288460-1e2f-4b06-ade1-b6de04fd67c1?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "BE951C3388DBF1C3FF22DB170E047A8B4A97ECBE796317E6AB7B37229658B0C5"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-16",
+      "duplicateSourceDisplayLabel": "RadPrimer image 16",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-20",
+    "displayLabel": "STATdx image 20",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 20,
+    "imageId": "bcdf6be8-68aa-499b-9d86-a3a96af4fb36",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar20",
+    "caption": "Axial arterial-phase T1 C+ MR in a hypercoagulable patient shows multiple hypervascular foci <img src=\"arrow_WS.png\">. Some of the lesions seem to have a hypointense rim, while others have a hypointense central scar <img src=\"arrow_CS.png\">.",
+    "usedFor": [
+      "nodularRegenerativeHyperplasia",
+      "BuddChiari",
+      "hypervascularNodules",
+      "centralScar",
+      "samePatientCluster",
+      "recognitionReinforcement",
+      "arterialT1PostContrastMR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar20.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar20_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/bcdf6be8-68aa-499b-9d86-a3a96af4fb36?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/bcdf6be8-68aa-499b-9d86-a3a96af4fb36?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-20_STATdx_plain_bcdf6be8.jpg",
+    "targetAnnotatedFilename": "SDX-20_STATdx_annotated_bcdf6be8.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_bcdf6be8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/bcdf6be8-68aa-499b-9d86-a3a96af4fb36?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "2A45EED6A40EF0A5F4F4E03635E0CADDB2BC8F7AD37B02644FE1AD0D0697D9F1"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-17",
+      "duplicateSourceDisplayLabel": "RadPrimer image 17",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-21",
+    "displayLabel": "STATdx image 21",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 21,
+    "imageId": "28f83787-9e48-4777-afdf-10d1656e94f0",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar21",
+    "caption": "Axial T1 C+ MR in a hypercoagulable patient 2 hours after IV administration of gadobenate dimeglumine shows persistent uptake and retention of the agent within the nodules <img src=\"arrow_BS.png\">, indicating functional hepatocytes and deficient biliary ducts within the lesions.",
+    "usedFor": [
+      "nodularRegenerativeHyperplasia",
+      "BuddChiari",
+      "hepatobiliaryAgentRetention",
+      "functionalHepatocytes",
+      "samePatientCluster",
+      "recognitionReinforcement",
+      "delayedT1PostContrastMR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar21.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar21_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/28f83787-9e48-4777-afdf-10d1656e94f0?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/28f83787-9e48-4777-afdf-10d1656e94f0?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-21_STATdx_plain_28f83787.jpg",
+    "targetAnnotatedFilename": "SDX-21_STATdx_annotated_28f83787.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_28f83787.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/28f83787-9e48-4777-afdf-10d1656e94f0?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "D400F231F3E72121D1BEDF50DA996E292224783215BA93CC55D4CF35B0B2784F"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-18",
+      "duplicateSourceDisplayLabel": "RadPrimer image 18",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-22",
+    "displayLabel": "STATdx image 22",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 22,
+    "imageId": "7d721323-def8-49db-80d3-8d9731b93625",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar22",
+    "caption": "Axial T1 C+ MR in a patient with Budd-Chiari syndrome shows multiple hypervascular nodules <img src=\"arrow_WS.png\">, some of which have a central scar <img src=\"arrow_WC.png\">. These multiple large, regenerative nodules (nodular regenerative hyperplasia) confirmed transplantation.",
+    "usedFor": [
+      "nodularRegenerativeHyperplasia",
+      "BuddChiari",
+      "multipleLargeRegenerativeNodules",
+      "transplantConfirmation",
+      "recognitionReinforcement",
+      "T1PostContrastMR"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar22.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar22_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/7d721323-def8-49db-80d3-8d9731b93625?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/7d721323-def8-49db-80d3-8d9731b93625?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-22_STATdx_plain_7d721323.jpg",
+    "targetAnnotatedFilename": "SDX-22_STATdx_annotated_7d721323.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_7d721323.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/7d721323-def8-49db-80d3-8d9731b93625?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "6CC16E920A7D940F68A4B1C3FB0829103115738BA04FA5EB10D0051BCB78238C"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-19",
+      "duplicateSourceDisplayLabel": "RadPrimer image 19",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-23",
+    "displayLabel": "STATdx image 23",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 23,
+    "imageId": "0729e563-2ab1-48be-9ba3-96411f999087",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar23",
+    "caption": "Axial CECT in a patient with Budd-Chiari syndrome and nodular regenerative hyperplasia shows a central scar <img src=\"arrow_WS.png\"> and doughnut-like enhancement. Transjugular intrahepatic portosystemic shunt (TIPS) is also seen <img src=\"arrow_WC.png\">.",
+    "usedFor": [
+      "nodularRegenerativeHyperplasia",
+      "BuddChiari",
+      "doughnutEnhancement",
+      "TIPSContext",
+      "recognitionReinforcement",
+      "axialCECT"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar23.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar23_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/0729e563-2ab1-48be-9ba3-96411f999087?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/0729e563-2ab1-48be-9ba3-96411f999087?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-23_STATdx_plain_0729e563.jpg",
+    "targetAnnotatedFilename": "SDX-23_STATdx_annotated_0729e563.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_0729e563.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/0729e563-2ab1-48be-9ba3-96411f999087?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "EB20FD20AE3DA83BC9A1B3ADEA54389E6170A27C3BF23ACDE3E7AF7D2699D655"
+    },
+    "duplicateClassification": {
+      "classification": "curatedPrimaryForExactDuplicatePair",
+      "duplicateSourceImageId": "RP-20",
+      "duplicateSourceDisplayLabel": "RadPrimer image 20",
+      "evidenceBasis": [
+        "same stable source imageId",
+        "visual inspection of staged image_evidence files"
+      ],
+      "decision": "selectedPrimary"
+    }
+  },
+  {
+    "masterImageId": "SDX-24",
+    "displayLabel": "STATdx image 24",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 24,
+    "imageId": "11b97d70-0550-4b12-ab69-0112a6f0c26c",
+    "baseName": "Liver_Mass_With_Central_or_Eccentric_Scar24",
+    "caption": "In this patient with Budd-Chiari syndrome and multiple hypervascular nodules, trichrome stain shows green staining of the central scar <img src=\"arrow_WC.png\"> and the capsule <img src=\"arrow_WS.png\"> of the nodule, typical features of the macroscopic form of nodular regenerative hyperplasia or large regenerative nodules.",
+    "usedFor": [
+      "nodularRegenerativeHyperplasia",
+      "BuddChiari",
+      "histologyCorrelation",
+      "trichromeCentralScar",
+      "STATdxSupplementalImage",
+      "recognitionReinforcement"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "plainFilename": "Liver_Mass_With_Central_or_Eccentric_Scar24.jpg",
+    "annotatedFilename": "Liver_Mass_With_Central_or_Eccentric_Scar24_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/11b97d70-0550-4b12-ab69-0112a6f0c26c?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/11b97d70-0550-4b12-ab69-0112a6f0c26c?annotated=true&size=1000&quality=90",
+    "targetPlainFilename": "SDX-24_STATdx_plain_11b97d70.jpg",
+    "targetAnnotatedFilename": "SDX-24_STATdx_annotated_11b97d70.jpg",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_11b97d70.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/11b97d70-0550-4b12-ab69-0112a6f0c26c?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "sha256": "B5B95D5E14F759A5BBBD2B50DC1FDF2E3D1CEC22DD252A5722DC7C2319A1998C"
+    },
+    "duplicateClassification": {
+      "classification": "STATdxSupplementalNonRadPrimerImage",
+      "duplicateSourceImageId": null,
+      "evidenceBasis": [
+        "no matching RadPrimer stable source imageId",
+        "visual inspection shows distinct additional teaching image"
+      ],
+      "decision": "selectedPrimary"
+    }
+  }
+]

@@ -1,0 +1,206 @@
+{
+  "articleTitle": "Varicocele",
+  "sourceComparisonFolder": "RadPrimerSourceComparison/Varicocele",
+  "anki": {
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Varicocele"
+    ],
+    "configuredNormalRoot": "RadprimerNormal",
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckName": "Corebook::Ultrasound::Scrotum Basic::Varicocele",
+    "deckParts": [
+      "Corebook",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Varicocele"
+    ],
+    "deckRoot": "Corebook",
+    "hierarchySource": "RadPrimer",
+    "importFilename": "corrected_cards_anki_import.tsv",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "normalRoot": "RadprimerNormal",
+    "noteType": "core_rad_notetype_v2",
+    "pathologyRoot": "Corebook"
+  },
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Varicocele"
+  ],
+  "imageRegistry": [
+    {
+      "annotatedFilename": "Varicocele1_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=true",
+      "baseName": "Varicocele1",
+      "caption": "Graphic shows dilated, tortuous varicose veins of the pampiniform plexus <img src=\"arrow_WS.png\"> in the spermatic cord and along the posterosuperior aspect of the testis <img src=\"arrow_WC.png\">.",
+      "downloadRecommendation": "",
+      "filename": "Varicocele1.jpg",
+      "group": "",
+      "imageId": "85dbcd36-49cc-4235-b0ff-8cee94ebf66c",
+      "masterImageId": "RP-01",
+      "plainFilename": "Varicocele1.jpg",
+      "plainUrl": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=false",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_85dbcd36.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "annotatedFilename": "Varicocele2_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=true",
+      "baseName": "Varicocele2",
+      "caption": "Oblique grayscale ultrasound through the cord, in supine position with normal respiration, shows a dilated, tortuous principal vein <img src=\"arrow_WC.png\"> in the pampiniform plexus measuring 7.5 mm in caliber.",
+      "downloadRecommendation": "",
+      "filename": "Varicocele2.jpg",
+      "group": "",
+      "imageId": "79b86b56-d34e-4364-975f-4548c865d8b9",
+      "masterImageId": "RP-02",
+      "plainFilename": "Varicocele2.jpg",
+      "plainUrl": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=false",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_79b86b56.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "annotatedFilename": "Varicocele3_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=true",
+      "baseName": "Varicocele3",
+      "caption": "Longitudinal color Doppler ultrasound of the  scrotum in a 24-year-old man shows flow <img src=\"arrow_WC.png\"> in several dilated veins during Valsalva, indicative of moderate varicocele. Blood flow in the varicocele is slow and may be detected only with low Doppler settings.",
+      "downloadRecommendation": "",
+      "filename": "Varicocele3.jpg",
+      "group": "",
+      "imageId": "e6dd629b-676e-4635-abc3-8dd6a372ebad",
+      "masterImageId": "RP-03",
+      "plainFilename": "Varicocele3.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=false",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_e6dd629b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "annotatedFilename": "Varicocele4_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=true",
+      "baseName": "Varicocele4",
+      "caption": "Catheter venogram demonstrates a prominent left gonadal vein extending into the left hemiscrotum in this patient with varicocele and infertility. Varicocele resolved after coil embolization.",
+      "downloadRecommendation": "",
+      "filename": "Varicocele4.jpg",
+      "group": "",
+      "imageId": "61bd7426-0bfb-4239-941e-f7dad196a8bb",
+      "masterImageId": "RP-04",
+      "plainFilename": "Varicocele4.jpg",
+      "plainUrl": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=false",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_61bd7426.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    }
+  ],
+  "imageEvidence": {
+    "folder": "image_evidence/RadPrimer",
+    "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+    "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+    "entries": [
+      {
+        "masterImageId": "RP-01",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "imageId": "85dbcd36-49cc-4235-b0ff-8cee94ebf66c",
+        "baseName": "Varicocele1",
+        "caption": "Graphic shows dilated, tortuous varicose veins of the pampiniform plexus <img src=\"arrow_WS.png\"> in the spermatic cord and along the posterosuperior aspect of the testis <img src=\"arrow_WC.png\">.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/85dbcd36-49cc-4235-b0ff-8cee94ebf66c?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_85dbcd36.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "imageId": "79b86b56-d34e-4364-975f-4548c865d8b9",
+        "baseName": "Varicocele2",
+        "caption": "Oblique grayscale ultrasound through the cord, in supine position with normal respiration, shows a dilated, tortuous principal vein <img src=\"arrow_WC.png\"> in the pampiniform plexus measuring 7.5 mm in caliber.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/79b86b56-d34e-4364-975f-4548c865d8b9?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_79b86b56.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "imageId": "e6dd629b-676e-4635-abc3-8dd6a372ebad",
+        "baseName": "Varicocele3",
+        "caption": "Longitudinal color Doppler ultrasound of the  scrotum in a 24-year-old man shows flow <img src=\"arrow_WC.png\"> in several dilated veins during Valsalva, indicative of moderate varicocele. Blood flow in the varicocele is slow and may be detected only with low Doppler settings.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/e6dd629b-676e-4635-abc3-8dd6a372ebad?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_e6dd629b.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "imageId": "61bd7426-0bfb-4239-941e-f7dad196a8bb",
+        "baseName": "Varicocele4",
+        "caption": "Catheter venogram demonstrates a prominent left gonadal vein extending into the left hemiscrotum in this patient with varicocele and infertility. Varicocele resolved after coil embolization.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/61bd7426-0bfb-4239-941e-f7dad196a8bb?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_61bd7426.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      }
+    ]
+  }
+}

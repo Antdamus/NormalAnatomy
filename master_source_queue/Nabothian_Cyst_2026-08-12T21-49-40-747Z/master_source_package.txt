@@ -1,0 +1,114 @@
+# Master Source Package: Nabothian Cyst
+
+## Routing and Source Scope
+- Article title: Nabothian Cyst
+- Canonical hierarchy: All Categories > Basic > Ultrasound > Female Pelvis Basic > Nabothian Cyst
+- Canonical deck path: Corebook::Ultrasound::Female Pelvis Basic::Nabothian Cyst
+- Source priority: RadPrimer first for hierarchy/backbone; STATdx second for supplemental depth.
+- Source evidence reviewed: RadPrimer_source_package.txt, STATdx_source_package.txt, RadPrimer_metadata.json, STATdx_metadata.json, metadata.json, master_source_request.md, image_evidence_manifest.json, and staged image_evidence files.
+- Core Radiology: no auditable Core text was supplied in this bundle; do not claim Core support.
+- IMAIOS/deck routing: use metadata.json canonicalHierarchy exactly. Do not substitute STATdx breadcrumbs.
+
+## Image Coverage Gate
+[Both] STATdx does not fully cover the RadPrimer image set. The staged evidence images were visually reviewed in a contact sheet, stable source image IDs were compared, and SHA-256 hashes were unique across all 19 evidence files. No image was proven to be an exact duplicate, same slice, same screenshot, or unusable. Therefore every RadPrimer and STATdx image remains in the primary teaching set; archiveOptionalImageIds is empty.
+
+### RadPrimer Image Coverage by STATdx
+- RadPrimer image 1: nearDuplicate; covered by STATdx image 2, STATdx image 5, STATdx image 11. Actual evidence files show visually distinct ultrasound screenshots and unique source IDs/hashes. STATdx supplies close alternate examples of clustered/ovoid cervical cysts adjacent to the endocervical canal, but no same image, slice, or screenshot. Keep RadPrimer image 1 primary; use STATdx ultrasound examples as recognition reinforcement.
+- RadPrimer image 2: conceptualReplacement; covered by STATdx image 9, STATdx image 10, STATdx image 11. STATdx covers debris/hemorrhagic content and posterior enhancement with different ultrasound cases. Visual evidence and hashes do not support exact duplication. Keep RadPrimer image 2 primary for internal echoes/debris and posterior enhancement; keep the STATdx hemorrhagic pair primary.
+- RadPrimer image 3: nearDuplicate; covered by STATdx image 2, STATdx image 5. STATdx has alternate transvaginal ultrasound clusters of anechoic cysts around/within the cervix, but the staged images differ in plane, patient, and appearance; no matching image ID or hash. Keep RadPrimer image 3 primary because multiple cysts obscuring the cervical canal is an important recognition pattern.
+- RadPrimer image 4: notCovered; covered by none. STATdx includes simple cervical cyst examples, but no staged STATdx image reproduces the RadPrimer lateral-margin pitfall of a nabothian cyst mimicking an ovarian follicle with explicit need to identify a separate ovary. Keep RadPrimer image 4 primary for the adnexal/ovarian-follicle mimic pitfall.
+
+## Fused Teaching Backbone
+
+### Key Facts
+- [Both] Nabothian cysts are mucus-filled dilatations of obstructed endocervical glands. STATdx emphasizes obstruction by squamous epithelial overgrowth at the gland neck; RadPrimer frames the same process as mucus retention within endocervical glands.
+- [Both] Tunnel clusters are a subtype of nabothian cyst with complex multicystic dilatation of endocervical glands; they are classically associated with pregnancy/multigravidity and may penetrate deeper into the cervical stroma.
+- [Both] Most nabothian cysts are benign, incidental, and asymptomatic. They are among the most common benign pathologic processes of the cervix.
+- [Both] Typical imaging shows circumscribed, usually superficial, round/oval or unilocular cysts in the cervical wall along the endocervical canal or ectocervix. They are often multiple and usually small, but can enlarge the cervix or mimic a mass.
+- [RadPrimer] Endovaginal/transvaginal ultrasound is the first-line imaging study. The key ultrasound task is to prove the lesion is within the cervix, define its relationship to the endocervical canal, and identify the separate ovary when a lateral cyst mimics an ovarian follicle.
+- [STATdx] CT and MRI are supplemental characterization tools: CT shows nonenhancing low-attenuation cervical lesions, and MRI shows T2-hyperintense cysts with variable T1 mucinous signal and no postcontrast enhancement.
+- [Both] Concerning features include solid components, irregular enhancement or flow, deep stromal invasion, large/multiloculated mass-like morphology, or copious watery vaginal discharge.
+
+### Terminology and Pathophysiology
+- [Both] Synonyms include endocervical gland cyst, retention cyst/mucus retention cyst, epithelial inclusion cyst, cervical cyst, ovula nabothi, and nabothian follicle.
+- [Both] Nabothian cysts form when endocervical glands are covered or obstructed by squamous epithelium during healing/chronic cervicitis; columnar epithelium continues to secrete mucus, causing gland dilation.
+- [RadPrimer] They may be associated with chronic cervicitis, postpartum/cervical healing, and progestogenic therapy with failure of normal cyclic mucus flow.
+- [STATdx] Grossly they are yellow or white cysts on the cervical surface, frequently multiple, and filled with clear fluid. Microscopically, they are lined by low columnar mucin-producing epithelium.
+- [Both] Tunnel clusters include type A small nondilated tunnels and type B cystically dilated tunnels; type B produces the gross cystic abnormality.
+
+## Imaging Features
+
+### Ultrasound
+- [Both] Transvaginal/endovaginal ultrasound usually shows a well-defined anechoic cervical cyst with thin wall and posterior acoustic enhancement.
+- [Both] Cysts may be single or multiple; multiple cysts can obscure the endocervical canal and mimic a cervical/adnexal cystic mass.
+- [RadPrimer] Debris or internal echoes are common and benign, especially with proteinaceous or hemorrhagic content.
+- [RadPrimer] Large cysts can displace the endocervical canal, rarely contribute to cervical stenosis, and mimic cervical os dilatation in pregnancy.
+- [Both] Nabothian cysts should be avascular. Use color or power Doppler if a cyst appears solid or complex.
+- [STATdx] Power Doppler is useful because adenoma malignum may show flow within the wall or cystic portion, whereas nabothian cysts show no flow.
+
+### MRI
+- [Both] MRI is helpful when ultrasound is technically limited, the lesion is large/complex/deep, or malignant mimic is a concern.
+- [Both] T2-weighted MRI shows circumscribed hyperintense cervical cysts; deep tunnel clusters may appear as complex multicystic lesions penetrating the cervical stroma.
+- [Both] T1 signal is variable and may be intermediate to hyperintense because of mucinous, proteinaceous, or hemorrhagic contents.
+- [Both] Postcontrast T1-weighted MRI shows no internal enhancement; enhancement of solid elements should prompt concern for neoplasm.
+- [RadPrimer] DWI may show diffusion restriction, so diffusion signal alone should not override the morphology and enhancement pattern.
+
+### CT
+- [Both] CT is not the preferred characterization study but may show a single or multicystic nonenhancing hypodense cervical lesion.
+- [STATdx] On noncontrast CT, nabothian cysts may be isodense or hypodense to the cervix and can be hyperdense if complicated.
+- [STATdx] Large or complex cysts on CT may mimic endocervical gland tumor and should be triaged to ultrasound/MRI correlation when needed.
+
+## Differential Diagnosis
+- [Both] Adenoma malignum/minimal deviation adenocarcinoma: low-grade mucinous carcinoma of deep endocervical glands; multilocular cystic cervical mass with deep stromal penetration, enhancing solid components or wall flow, and classic copious watery discharge. RadPrimer notes association with Peutz-Jeghers syndrome.
+- [Both] Endocervical/cervical glandular hyperplasia: superficial inner-cervical mucosal thickening with possible cystic change; associated with pregnancy/peripartum state or progestational agents and can overlap with adenoma malignum.
+- [RadPrimer] Uterine cervicitis: tenacious yellow/turbid jelly-like discharge and pelvic pressure; can appear as cervical retention cysts.
+- [RadPrimer] Cystic endometrial polyp: cyst-containing endocavitary mass that may arise from or prolapse into the cervix, but is not centered in cervical stroma and may have a vascular stalk.
+- [Both] Cervical cancer/squamous cell carcinoma: predominantly solid cervical mass, sometimes necrotic, with irregular enhancement or solid elements. RadPrimer notes bulky cervix, cervical stenosis with endometrial fluid, and mucin-producing carcinoma as a mimic.
+- [RadPrimer] Cervical ectopic pregnancy: thick-walled cystic cervical stromal mass with vascular echogenic ring, high-velocity low-resistance trophoblastic flow, and possible yolk sac/embryo/cardiac activity; avoid dilation and curettage.
+- [RadPrimer] Abortion in progress: teardrop-shaped gestational sac in the cervical canal, often without trophoblastic flow when nonviable; living embryo requires exclusion of cervical ectopic pregnancy.
+
+## Clinical Issues and Management
+- [Both] Most are incidental and asymptomatic; superficial cysts may be seen on speculum/colposcopic exam, while deeper cysts are found on imaging.
+- [Both] Prevalence increases with age; STATdx reports about 8% of adult women and 13% of postmenopausal women.
+- [Both] They are more common in women who have had children. Tunnel clusters are classically seen in multigravid women older than 30 years and often during pregnancy.
+- [Both] Symptoms are uncommon but can occur from mass effect, infection, enlarged cervix, cervical stenosis, palpable large cyst, or chronic cervicitis.
+- [Both] The great majority need no treatment. Symptomatic cases may be treated with drainage, cryotherapy/cryosurgery, electrocautery, or conization depending on clinical context.
+
+## Source Image Teaching Set
+
+### RadPrimer Images
+- RadPrimer image 1: Sagittal imaging through the cervix shows multiple superficial nabothian cysts in close association with the endocervical canal. A separate echogenic line [arrow: arrow_WS.png] depicts the canal. Cine views (not shown) better delineate this separation. C-section scar is present [arrow: arrow_CC.png]. Used for canonicalBackbone, recognitionReinforcement, transvaginalUltrasound, multipleSuperficialCysts, endocervicalCanalRelationship, cSectionScarContext.
+- RadPrimer image 2: Sagittal endovaginal image through the cervix shows multiple Nabothian cysts [arrow: arrow_WS.png]. Internal echoes are present within the larger cysts [arrow: arrow_CC.png], consistent with hemorrhage or debris. Posterior acoustic enhancement is also present [arrow: arrow_WO.png]. Used for canonicalBackbone, recognitionReinforcement, transvaginalUltrasound, internalDebrisOrHemorrhage, posteriorAcousticEnhancement, multipleCysts.
+- RadPrimer image 3: Longitudinal US of a retroverted uterus shows multiple simple nabothian cysts [arrow: arrow_WS.png]. As in this case, multiple cysts can make visualization of the cervical canal [arrow: arrow_CS.png] difficult. Used for canonicalBackbone, recognitionReinforcement, transvaginalUltrasound, multipleSimpleCysts, cervicalCanalObscuration, retrovertedUterus.
+- RadPrimer image 4: Transverse transvaginal US shows a simple nabothian cyst [arrow: arrow_WS.png] at the lateral margin of the cervix. Real-time imaging helped confirm the location within the cervical stroma; however, this image demonstrates the potential for misdiagnosis as an ovarian follicle. Visualization of a separate ovary is essential. Used for canonicalBackbone, recognitionReinforcement, transvaginalUltrasound, lateralCervicalStromalCyst, adnexalMimicPitfall, separateOvaryRequirement.
+
+### STATdx Images
+- STATdx image 1: Axial CECT shows multiple partially coalescent, hypodense lesions [arrow: arrow_WS.png] arising from the cervix that are suboptimally characterized on CT. Used for supplementalDepth, ctVariant, hypodenseCervicalLesions, crossSectionalLocalization, caseClusterPreserved.
+- STATdx image 2: Transvaginal US in the same patient confirms a cluster of anechoic cysts [arrow: arrow_WS.png] within the cervix, compatible with nabothian cysts. Used for recognitionReinforcement, transvaginalUltrasound, anechoicCluster, samePatientCTUSCorrelation, caseClusterPreserved.
+- STATdx image 3: Axial T2WI FSE MR shows innumerable cysts of variable size throughout the cervical stroma [arrow: arrow_WS.png]. Used for supplementalDepth, mriVariant, axialT2, innumerableCysts, deepCervicalStroma, caseClusterPreserved.
+- STATdx image 4: Axial T1WI C+ FS MR in the same patient shows multiple nonenhancing, hypointense cysts [arrow: arrow_WS.png] throughout the cervical stroma. Used for supplementalDepth, mriVariant, postContrastT1FatSat, nonenhancement, caseClusterPreserved.
+- STATdx image 5: Transverse transvaginal US of the cervix shows anechoic cysts [arrow: arrow_WS.png] surrounding the endocervical canal, consistent with nabothian cysts. Used for recognitionReinforcement, transverseTransvaginalUltrasound, anechoicCystsAroundCanal, caseClusterPreserved.
+- STATdx image 6: Sagittal T2WI FSE MR in the same patient shows multiple partially coalescent, hyperintense lesions [arrow: arrow_WS.png] surrounding the endocervical canal that likewise deeply penetrate in the cervical stroma. Used for supplementalDepth, mriVariant, sagittalT2, deepStromalPenetration, multicysticCluster, caseClusterPreserved.
+- STATdx image 7: Coronal oblique T2WI FSE MR short-axis view of the cervix in the same patient shows near-total cystic replacement [arrow: arrow_WS.png] of the deep cervical stroma. Used for supplementalDepth, mriVariant, coronalObliqueT2, nearTotalCysticReplacement, deepStroma, caseClusterPreserved.
+- STATdx image 8: Sagittal T1WI FS C+ MR shows multiple nonenhancing, hypointense cysts [arrow: arrow_WS.png] throughout the cervical stroma. Used for supplementalDepth, mriVariant, sagittalT1ContrastFatSat, nonenhancement, alternateMRExample.
+- STATdx image 9: Longitudinal transvaginal US shows a very large, unilocular cystic lesion [arrow: arrow_WS.png] arising from the cervix containing low-level echoes that measure 3.1 cm. Used for recognitionReinforcement, largeCystVariant, transvaginalUltrasound, lowLevelEchoes, hemorrhagicOrDebrisContent, caseClusterPreserved.
+- STATdx image 10: Transverse transvaginal US in the same patient shows a hypoechoic lesion [arrow: arrow_WS.png] adjacent to the endocervical canal [arrow: arrow_WO.png]. The lesion was felt to represent a hemorrhagic nabothian cyst given the presence of low-level echoes that was later confirmed by transvaginal biopsy. Used for recognitionReinforcement, hemorrhagicNabothianCyst, biopsyConfirmed, adjacentEndocervicalCanal, caseClusterPreserved.
+- STATdx image 11: Sagittal transvaginal US shows an ovoid nabothian cyst [arrow: arrow_WS.png] paralleling the endocervical canal. Note the posterior acoustic enhancement [arrow: arrow_WO.png]. Used for recognitionReinforcement, transvaginalUltrasound, ovoidCystParallelToCanal, posteriorAcousticEnhancement.
+- STATdx image 12: Sagittal transvaginal US shows an ovoid anechoic cyst [arrow: arrow_WS.png] in the anterior cervix. Used for recognitionReinforcement, transvaginalUltrasound, simpleAnteriorCervicalCyst, alternateExample.
+- STATdx image 13: Axial CECT shows 2 round, low-attenuation cysts [arrow: arrow_WS.png] within the cervix in a patient post uterine artery embolization. Note the partially infarcted leiomyoma [arrow: arrow_BS.png]. Used for supplementalDepth, ctVariant, postUterineArteryEmbolizationContext, lowAttenuationCervicalCysts, caseClusterPreserved.
+- STATdx image 14: Coronal T2WI MR shows multiple high signal intensity foci [arrow: arrow_WS.png] within the cervix. Used for supplementalDepth, mriVariant, coronalT2, highSignalCervicalFoci, caseClusterPreserved.
+- STATdx image 15: Sagittal T1WI C+ FS MR in the same patient shows that the foci do not enhance [arrow: arrow_BS.png], consistent with cervical nabothian cysts. Also note the low signal intensity embolized leiomyoma [arrow: arrow_WS.png]. Used for supplementalDepth, mriVariant, sagittalPostContrastT1FatSat, nonenhancement, embolizedLeiomyomaContext, caseClusterPreserved.
+
+## Image Curation Summary
+- selectedPrimaryImageIds: RP-01, RP-02, RP-03, RP-04, SDX-01, SDX-02, SDX-03, SDX-04, SDX-05, SDX-06, SDX-07, SDX-08, SDX-09, SDX-10, SDX-11, SDX-12, SDX-13, SDX-14, SDX-15
+- archiveOptionalImageIds: none
+- Human-facing image labels: use RadPrimer image N and STATdx image N in prose.
+- Traceability labels: use RP-## and SDX-## only in registries, filenames, manifests, and traceability fields.
+- Filename policy: source-qualified filenames are provided in image_registry.json; the extension should download selected primary images only.
+- Cluster policy: no source case cluster was intentionally split. Same-patient clusters listed in the manifest should remain atomic unless a later explicit review documents a safe split.
+
+## Generator Notes for Later Narrative/Card Creation
+- Preserve RadPrimer hierarchy and route all later outputs to Corebook::Ultrasound::Female Pelvis Basic::Nabothian Cyst.
+- Use RadPrimer as the structural article backbone and STATdx as supplemental CT/MR, Doppler, pathology, epidemiology, and image-depth support.
+- Keep the central pitfalls prominent: localize the cyst to the cervix, separate it from the endocervical canal and ovary, do not overcall benign internal debris, and evaluate solid/enhancing/vascular components for malignancy.
+- Do not archive near duplicates or alternate examples. They are recognition reinforcement unless proven exact duplicate or unusable.

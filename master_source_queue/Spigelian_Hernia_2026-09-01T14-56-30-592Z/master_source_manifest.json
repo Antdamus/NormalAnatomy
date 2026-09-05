@@ -1,0 +1,362 @@
+{
+  "articleTitle": "Spigelian Hernia",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Gastrointestinal",
+    "Peritoneum, Mesentery, and Abdominal Wall",
+    "Spigelian Hernia"
+  ],
+  "canonicalHierarchySource": "metadata.json canonicalHierarchy",
+  "canonicalDeckPath": "Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Spigelian Hernia",
+  "sourcePriority": [
+    "RadPrimer canonical",
+    "STATdx supplemental"
+  ],
+  "sourceCoverage": {
+    "textCoverage": "RadPrimer and STATdx substantially overlap. RadPrimer is the canonical article backbone; STATdx adds supplemental differential nuance, recurrence/side notes, and expanded image examples.",
+    "imageCoverageSummary": "STATdx does not fully cover the RadPrimer image set as exact duplicates. Visual review of staged image_evidence files shows exact duplicate coverage for RadPrimer images 2 and 3 only; RadPrimer image 4 has a near-duplicate/adjacent-slice STATdx companion; RadPrimer image 1 has conceptual STATdx reinforcement but no same-slice duplicate. All RadPrimer images remain selected primary.",
+    "radPrimerImageCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerImageLabel": "RadPrimer image 1",
+        "classification": "conceptualReplacement",
+        "relatedSTATdxImageIds": [
+          "SDX-03",
+          "SDX-07",
+          "SDX-08"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 3",
+          "STATdx image 7",
+          "STATdx image 8"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx includes colon-containing Spigelian hernia examples, but visual review shows no same-slice or same-screenshot match for the RadPrimer image. The RadPrimer image remains primary because it best demonstrates the intermuscular course deep to the external oblique layer."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerImageLabel": "RadPrimer image 2",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-05"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 5"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "Visual review of staged image_evidence files shows the same CT slice/screenshot with only source rendering/crop differences. The RadPrimer image remains the canonical primary image; the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerImageLabel": "RadPrimer image 3",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-02"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 2"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "Visual review of staged image_evidence files shows the same NECT slice/screenshot. The RadPrimer image remains the canonical primary image; the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerImageLabel": "RadPrimer image 4",
+        "classification": "nearDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-04"
+        ],
+        "relatedSTATdxImageLabels": [
+          "STATdx image 4"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "Both images show the same obstructing Spigelian hernia teaching point and likely the same case, but the staged evidence shows a different adjacent slice/crop. Because it is not a literal same-slice duplicate, both images remain primary as an atomic obstruction cluster."
+      }
+    ]
+  },
+  "imageCountBySource": {
+    "RadPrimer": 4,
+    "STATdx": 13,
+    "selectedPrimary": 15,
+    "archiveOptional": 2
+  },
+  "sourceAttributionRules": {
+    "Both": "supported by both RadPrimer and STATdx source packages",
+    "RadPrimer": "RadPrimer-only or RadPrimer-preferred canonical detail",
+    "STATdx": "supplemental STATdx image example, caption detail, modality variant, or differential nuance"
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "SDX-01",
+    "SDX-03",
+    "SDX-04",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-02",
+    "SDX-05"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy/backbone and preserve its article ordering. Use STATdx as supplemental depth where it adds differential nuance, recurrence/side notes, stronger captions, modality variants, or additional complication examples.",
+    "radPrimerKeep": [
+      "canonical hierarchy from metadata.json canonicalHierarchy",
+      "RadPrimer breadcrumb/deck routing",
+      "core terminology and definition",
+      "location/anatomic mechanism and CT/US imaging checklist",
+      "all RadPrimer images as the canonical primary backbone"
+    ],
+    "statDxKeep": [
+      "supplemental differential items: subcutaneous/intramuscular lipoma and fluid collection/hematoma mimics",
+      "minor clinical nuance: possible slight left-sided predominance and low recurrence after mesh repair",
+      "STATdx-only or nonduplicate images showing partial obstruction, incidental colon-containing cases, rare appendix and epiploic appendagitis contents, and MR modality variant",
+      "caption details when they add surgical confirmation or complication context"
+    ],
+    "downweightOrSkip": [
+      "STATdx breadcrumb/deck routing",
+      "STATdx image 2 because it is an exact duplicate of RadPrimer image 3",
+      "STATdx image 5 because it is an exact duplicate of RadPrimer image 2",
+      "unsupported Core Radiology claims; no auditable Core source was supplied or retrieved in this bundle"
+    ],
+    "primaryImageDownloadUseSet": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "SDX-01",
+      "SDX-03",
+      "SDX-04",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13"
+    ],
+    "archiveDuplicateImageIds": [
+      "SDX-02",
+      "SDX-05"
+    ],
+    "imageDownloadPlan": {
+      "downloadOnly": "selectedPrimaryImageIds",
+      "primaryDownloads": [
+        {
+          "masterImageId": "RP-01",
+          "displayLabel": "RadPrimer image 1",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 1,
+          "plainUrl": "https://app.radprimer.com/images/8a4b1b58-6a5a-4eb0-84fa-18e83c14d622?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/8a4b1b58-6a5a-4eb0-84fa-18e83c14d622?style=xlarge&annotated=true",
+          "targetPlainFilename": "RP-01_RadPrimer_plain_8a4b1b58.jpg",
+          "targetAnnotatedFilename": "RP-01_RadPrimer_annotated_8a4b1b58.jpg"
+        },
+        {
+          "masterImageId": "RP-02",
+          "displayLabel": "RadPrimer image 2",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "plainUrl": "https://app.radprimer.com/images/d53d9767-dcbb-4d95-843d-9277bb4486ca?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/d53d9767-dcbb-4d95-843d-9277bb4486ca?style=xlarge&annotated=true",
+          "targetPlainFilename": "RP-02_RadPrimer_plain_d53d9767.jpg",
+          "targetAnnotatedFilename": "RP-02_RadPrimer_annotated_d53d9767.jpg"
+        },
+        {
+          "masterImageId": "RP-03",
+          "displayLabel": "RadPrimer image 3",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "plainUrl": "https://app.radprimer.com/images/e8bbde2b-1792-46d7-a0eb-eee9bbcad747?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/e8bbde2b-1792-46d7-a0eb-eee9bbcad747?style=xlarge&annotated=true",
+          "targetPlainFilename": "RP-03_RadPrimer_plain_e8bbde2b.jpg",
+          "targetAnnotatedFilename": "RP-03_RadPrimer_annotated_e8bbde2b.jpg"
+        },
+        {
+          "masterImageId": "RP-04",
+          "displayLabel": "RadPrimer image 4",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 4,
+          "plainUrl": "https://app.radprimer.com/images/90c67e06-65f5-4991-81f4-7db0dfe7c379?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/90c67e06-65f5-4991-81f4-7db0dfe7c379?style=xlarge&annotated=true",
+          "targetPlainFilename": "RP-04_RadPrimer_plain_90c67e06.jpg",
+          "targetAnnotatedFilename": "RP-04_RadPrimer_annotated_90c67e06.jpg"
+        },
+        {
+          "masterImageId": "SDX-01",
+          "displayLabel": "STATdx image 1",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 1,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/94407542-524f-49c5-9f97-6434bb7818b8?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/94407542-524f-49c5-9f97-6434bb7818b8?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-01_STATdx_plain_94407542.jpg",
+          "targetAnnotatedFilename": "SDX-01_STATdx_annotated_94407542.jpg"
+        },
+        {
+          "masterImageId": "SDX-03",
+          "displayLabel": "STATdx image 3",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 3,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/94280700-6734-48c7-9595-d780b4a5cdab?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/94280700-6734-48c7-9595-d780b4a5cdab?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-03_STATdx_plain_94280700.jpg",
+          "targetAnnotatedFilename": "SDX-03_STATdx_annotated_94280700.jpg"
+        },
+        {
+          "masterImageId": "SDX-04",
+          "displayLabel": "STATdx image 4",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 4,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e308a95d-5b1b-4bc5-b508-c51a2161620d?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e308a95d-5b1b-4bc5-b508-c51a2161620d?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-04_STATdx_plain_e308a95d.jpg",
+          "targetAnnotatedFilename": "SDX-04_STATdx_annotated_e308a95d.jpg"
+        },
+        {
+          "masterImageId": "SDX-06",
+          "displayLabel": "STATdx image 6",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 6,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/aea296e9-e9c8-4fed-8026-8b7255780022?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/aea296e9-e9c8-4fed-8026-8b7255780022?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-06_STATdx_plain_aea296e9.jpg",
+          "targetAnnotatedFilename": "SDX-06_STATdx_annotated_aea296e9.jpg"
+        },
+        {
+          "masterImageId": "SDX-07",
+          "displayLabel": "STATdx image 7",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 7,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/a1418b86-dbd2-4ce6-b83f-f24e682ed351?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/a1418b86-dbd2-4ce6-b83f-f24e682ed351?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-07_STATdx_plain_a1418b86.jpg",
+          "targetAnnotatedFilename": "SDX-07_STATdx_annotated_a1418b86.jpg"
+        },
+        {
+          "masterImageId": "SDX-08",
+          "displayLabel": "STATdx image 8",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 8,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b22000bb-348c-4d6f-b98c-f82d74b4a8b8?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b22000bb-348c-4d6f-b98c-f82d74b4a8b8?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-08_STATdx_plain_b22000bb.jpg",
+          "targetAnnotatedFilename": "SDX-08_STATdx_annotated_b22000bb.jpg"
+        },
+        {
+          "masterImageId": "SDX-09",
+          "displayLabel": "STATdx image 9",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 9,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/adb1f8a6-ed71-4a7a-b050-94f87d4b0e08?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/adb1f8a6-ed71-4a7a-b050-94f87d4b0e08?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-09_STATdx_plain_adb1f8a6.jpg",
+          "targetAnnotatedFilename": "SDX-09_STATdx_annotated_adb1f8a6.jpg"
+        },
+        {
+          "masterImageId": "SDX-10",
+          "displayLabel": "STATdx image 10",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0add62c4-a7c7-486a-852a-2b2712ca5af6?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/0add62c4-a7c7-486a-852a-2b2712ca5af6?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-10_STATdx_plain_0add62c4.jpg",
+          "targetAnnotatedFilename": "SDX-10_STATdx_annotated_0add62c4.jpg"
+        },
+        {
+          "masterImageId": "SDX-11",
+          "displayLabel": "STATdx image 11",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/802242d9-1be5-4003-b9be-a5ed30d28c8e?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/802242d9-1be5-4003-b9be-a5ed30d28c8e?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-11_STATdx_plain_802242d9.jpg",
+          "targetAnnotatedFilename": "SDX-11_STATdx_annotated_802242d9.jpg"
+        },
+        {
+          "masterImageId": "SDX-12",
+          "displayLabel": "STATdx image 12",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 12,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/ff003b33-ef31-41dd-bdab-8c0034414e04?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/ff003b33-ef31-41dd-bdab-8c0034414e04?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-12_STATdx_plain_ff003b33.jpg",
+          "targetAnnotatedFilename": "SDX-12_STATdx_annotated_ff003b33.jpg"
+        },
+        {
+          "masterImageId": "SDX-13",
+          "displayLabel": "STATdx image 13",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 13,
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b0ec8392-2c37-4a86-aefc-fea11eca4388?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b0ec8392-2c37-4a86-aefc-fea11eca4388?annotated=true&size=1000&quality=90",
+          "targetPlainFilename": "SDX-13_STATdx_plain_b0ec8392.jpg",
+          "targetAnnotatedFilename": "SDX-13_STATdx_annotated_b0ec8392.jpg"
+        }
+      ],
+      "archiveOptionalDuplicates": [
+        {
+          "masterImageId": "SDX-02",
+          "displayLabel": "STATdx image 2",
+          "duplicateOf": "RP-03",
+          "reason": "Exact duplicate of RadPrimer image 3 based on visual inspection of the staged NECT evidence files; archived as the duplicate STATdx rendering.",
+          "targetPlainFilename": "SDX-02_STATdx_plain_5942dfe6.jpg",
+          "targetAnnotatedFilename": "SDX-02_STATdx_annotated_5942dfe6.jpg"
+        },
+        {
+          "masterImageId": "SDX-05",
+          "displayLabel": "STATdx image 5",
+          "duplicateOf": "RP-02",
+          "reason": "Exact duplicate of RadPrimer image 2 based on visual inspection of the staged CECT evidence files; archived as the duplicate STATdx rendering.",
+          "targetPlainFilename": "SDX-05_STATdx_plain_3796692d.jpg",
+          "targetAnnotatedFilename": "SDX-05_STATdx_annotated_3796692d.jpg"
+        }
+      ],
+      "filenamePolicy": "Use source-qualified filenames with RP/SDX traceability IDs for downloads; use clean labels such as RadPrimer image 3 in narrative prose."
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, adjacent slices, alternate same-disease examples, conceptual replacements, and modality variants remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked nearDuplicate or conceptualReplacement and kept primary.",
+    "caseClusterGuardrails": {
+      "policy": "Treat same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse clusters as atomic teaching units.",
+      "intentionalSplits": [],
+      "retainedClusters": [
+        "RadPrimer images 1 and 2: same patient at different axial levels; retained together.",
+        "RadPrimer image 4 and STATdx image 4: obstruction case/adjacent-slice cluster; retained together because it is not exact duplicate evidence.",
+        "STATdx images 3 and 8: incidental ascending-colon Spigelian hernia with aneurysm context; retained together.",
+        "STATdx images 9 and 10: appendix within Spigelian hernia cluster; retained together.",
+        "STATdx images 12 and 13: epiploic appendagitis within Spigelian hernia cluster; retained together."
+      ],
+      "splitReport": "No source case cluster was intentionally split. Only isolated cross-source duplicate renderings were archived."
+    },
+    "generatorInstructions": [
+      "Do not generate cards or a lecture during this synthesis step.",
+      "Use source-qualified image labels in human-facing prose, such as RadPrimer image 2 and STATdx image 11.",
+      "Keep RP-02 and SDX-05 style IDs in registry, filenames, manifest, and traceability fields.",
+      "Use canonicalHierarchy exactly as copied from metadata.json for deckPath and any IMAIOS breadcrumb routing."
+    ]
+  }
+}

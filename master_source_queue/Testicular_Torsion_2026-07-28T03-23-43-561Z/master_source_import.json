@@ -1,0 +1,3049 @@
+{
+  "version": "1.0",
+  "articleTitle": "Testicular Torsion",
+  "createdAt": "2026-07-28T03:29:23Z",
+  "packageText": "=== MASTER SOURCE PACKAGE ===\nTITLE: Testicular Torsion\nSOURCE STATUS: RadPrimer + STATdx fused master source; no Core Radiology source was available in this bundle.\nCANONICAL HIERARCHY: All Categories > Basic > Ultrasound > Scrotum Basic > Testicular Torsion/Infarction\nCANONICAL DECK PATH: Corebook::Ultrasound::Scrotum Basic::Testicular Torsion/Infarction::Testicular Torsion\n\nSOURCE USE RULES\n- [RadPrimer] is the canonical hierarchy/backbone and baseline organization.\n- [STATdx] supplements with stronger detail for whirlpool sign, viability prediction, CEUS, intermittent torsion, pediatric atypical presentation, management nuance, and image case clusters.\n- [Both] supports shared core facts: torsion is twisting of testis/spermatic cord causing vascular occlusion; US with color/power Doppler is first-line; absent or decreased flow and the whirlpool sign are key; viability depends on duration and degree of torsion.\n- Human-facing image prose should use clean labels such as RadPrimer image 5 and STATdx image 4. Trace codes live in the registry/manifest/filenames.\n\nKEY FACTS\n- [Both] Testicular torsion is spontaneous or traumatic twisting of the testis and spermatic cord within the scrotum, causing venous obstruction first and then arterial compromise with ischemia or infarction.\n- [Both] The best diagnostic clue is absent, decreased, or asymmetric testicular blood flow on color Doppler US; comparison with the contralateral testis is mandatory.\n- [Both] The whirlpool sign is spiral twisting of the spermatic cord cranial to the testis and epididymis, producing a torsion knot or concentric-layer pattern.\n- [STATdx] Heterogeneous diffuse or patchy hypoechoic parenchyma predicts nonviability. Testicular fragmentation reflects hemorrhage between lobules; testicular patching reflects islands of necrosis.\n- [Both] Normal grayscale and even normal Doppler flow do not exclude early, partial, or intermittent torsion when clinical suspicion remains high.\n- [Both] Testicular salvage depends on time and degree of twist. Most testes are viable when treated within 6 hours; salvage falls sharply after 12 hours and is essentially absent after more than 24 hours.\n- [STATdx] CEUS or MR can help in equivocal cases, but imaging must not delay prompt surgical management.\n\nTERMINOLOGY\n- [Both] Spermatic cord torsion/testicular torsion means twisting of the testis and spermatic cord with vascular occlusion and possible infarction.\n- [RadPrimer] Torsion may be complete or incomplete and is unilateral in about 95% of patients.\n\nIMAGING\nGeneral approach\n- [Both] Use high-frequency linear transducer ultrasound with grayscale plus color/power Doppler; compare both testes for echogenicity, size, lie, color flow, and waveforms.\n- [Both] Optimize Doppler for slow flow with low pulse repetition frequency, low wall filter, and high Doppler gain.\n- [STATdx] Pulsed/spectral Doppler has a limited but useful adjunctive role in partial torsion; side-to-side waveform shape and velocity comparison may expose equivocal asymmetry.\n\nGrayscale ultrasound\n- [Both] Early torsion may have normal grayscale echogenicity; this appearance favors viability if absent flow is present and symptoms are short.\n- [Both] Enlarged heterogeneous testis and epididymis, scrotal wall edema, secondary hydrocele, hemorrhage, necrosis, and fragmentation suggest longer duration or missed torsion.\n- [RadPrimer] At around 24 hours, congestion, hemorrhage, and infarction become evident.\n- [STATdx] Chronic torsion may show an atrophic hypoechoic testis with relatively enlarged echogenic epididymis.\n\nColor and power Doppler\n- [Both] Absent or decreased intratesticular flow is central for diagnosis. In acute torsion, Doppler sensitivity is about 80-90%, and early/partial torsion may be falsely normal.\n- [RadPrimer] In partial torsion of 360 degrees or less, spectral Doppler may show diminished diastolic arterial flow.\n- [STATdx] Partial/intermittent torsion may show normal, decreased, or absent flow during pain and hyperemia after detorsion, potentially mimicking orchitis.\n- [Both] Subacute or missed torsion may show no intratesticular flow with increased flow in paratesticular tissues, epididymis-cord complex, dartos fascia, tunica, or scrotal wall.\n\nWhirlpool sign and spermatic cord\n- [Both] Directly seeing a twisted spermatic cord is highly specific for torsion and is especially helpful when intratesticular flow is equivocal or preserved.\n- [STATdx] In transverse plane, the torsion knot can look like a pseudomass or concentric knot; in longitudinal plane, the cord appears angulated or knot-like rather than smooth and linear.\n- [STATdx] High-resistance flow may be seen in the spermatic cord proximal to the twist, and the ultrasound appearance may help guide manual detorsion direction.\n\nCEUS, MR, and nuclear medicine\n- [STATdx] CEUS: normal testes enhance quickly and avidly; complete torsion lacks enhancement; partial torsion enhances slowly or less than the contralateral side. CEUS can also identify segmental or global infarction from nontorsion causes.\n- [Both] MR can show decreased perfusion and a whirlpool pattern but should be rare problem-solving only and should not delay surgery.\n- [RadPrimer] Tc-99m pertechnetate can show reduced/absent flow, a rounded cold area, and dartos halo, but [STATdx] notes nuclear medicine has fallen out of favor and is not recommended by ACR appropriateness guidance when US is available.\n\nDIFFERENTIAL DIAGNOSIS\n- [Both] Torsion of appendix testis/epididymis: common in prepubertal boys; blue-dot sign; hyperechoic appendage with central hypoechoic area, reactive hydrocele, skin thickening, and peripheral hyperemia.\n- [STATdx] Testicular infarction: can lack flow like torsion but lacks whirlpool sign; may be global or segmental and is often treated conservatively rather than surgically.\n- [Both] Epididymoorchitis/abscess: enlarged hypoechoic epididymis with increased flow, thick-walled hypoechoic focus with internal echoes, and possible segmental/global venous infarction that can mimic torsion.\n- [Both] Trauma: hematocele, rupture/irregular contour, heterogeneous parenchyma, and avascular fracture plane; trauma can rarely precipitate torsion.\n- [Both] Tumor: focal hypoechoic heterogeneous mass, usually less painful, with abnormal vascularity rather than complete avascularity.\n\nPATHOLOGY\n- [Both] Most torsion is spontaneous; traumatic torsion is rare.\n- [Both] Bell clapper deformity reflects deficient posterior fixation by the tunica vaginalis/gubernaculum, allowing the testis to rotate within the scrotum.\n- [RadPrimer] Intravaginal torsion is the common pubertal type, with the knot within the tunica vaginalis; extravaginal torsion occurs outside the tunica vaginalis and is neonatal/perinatal.\n- [STATdx] Bell clapper deformity is often bilateral, and contralateral orchiopexy is performed because the opposite testis is also at risk.\n- [Both] Pathology ranges from venous congestion and edema to hemorrhage, ischemic necrosis, fibrosis, and a purple/black infarcted testis.\n\nCLINICAL ISSUES AND MANAGEMENT\n- [Both] Classic presentation is an adolescent or infant boy with acute scrotal/inguinal pain, swollen erythematous hemiscrotum, pain not relieved by elevation, absent cremasteric reflex, and abnormal testis lie.\n- [STATdx] Younger prepubertal children may present atypically with groin or lower abdominal pain only, increasing misdiagnosis and risk of testis loss.\n- [Both] Torsion is a surgical emergency. Treatment is surgical exploration, detorsion, and orchiopexy if viable; nonviable testis is removed.\n- [STATdx] Contralateral orchiopexy is always performed because a similar anatomic predisposition is likely.\n- [Both] Salvage rates: approximately 80-100% when treated before 6 hours, 76% at 6-12 hours, 20% at 12-24 hours, and 0% after 24 hours.\n\nDIAGNOSTIC CHECKLIST\n- [Both] Do not dismiss torsion because grayscale US is normal, especially in early, partial, or intermittent torsion.\n- [Both] Search directly for the spermatic cord whirlpool sign above the testis when Doppler findings are equivocal.\n- [Both] Always compare with the contralateral testis and optimize Doppler settings for low flow.\n- [STATdx] Hyperemia after detorsion can mimic orchitis; correlate with intermittent pain history and symptom change.\n\nPRIMARY IMAGE TEACHING SET\nRadPrimer retained images\n- RadPrimer image 2: Power Doppler ultrasound of the right testicle with prior history of torsion shows an avascular area at the superior portion <img src=\"arrow_CC.png\"> with hypoechoic areas suggestive of partial infarction of the testis.\n- RadPrimer image 3: Transverse color Doppler ultrasound of both testes in this patient with acute left testicular pain shows heterogeneous, avascular left testis, consistent with hemorrhagic infarction <img src=\"arrow_CS.png\">.\n- RadPrimer image 5: Longitudinal color Doppler ultrasound of the left testis in a 20-year-old man with acute testicular pain shows absence of flow with no grayscale changes, suggestive of acute torsion (< 4 hours).\n- RadPrimer image 7: Sagittal color Doppler ultrasound of the left testis shows an enlarged, heterogeneous, avascular testis <img src=\"arrow_CS.png\"> with multiple hyperechoic areas <img src=\"arrow_WC.png\">. Pathology confirmed it to be a hemorrhagic infarction of the testis with torsion > 360°.\n- RadPrimer image 8: Sagittal grayscale ultrasound of the right testis shows an enlarged, heterogeneous right testis <img src=\"arrow_CS.png\"> with a striated appearance, suggestive of partial infarcts. The patient had a history of partial testicular torsion.\n- RadPrimer image 10: Avascular, heterogeneous testis with foci of air <img src=\"arrow_WO.png\"> in and outside the testis is shown. Peripheral hyperemia <img src=\"arrow_CO.png\"> and skin thickening <img src=\"arrow_CC.png\"> are also seen. This mimics torsion but is actually venous infarct from epididymoorchitis.\n\nSTATdx retained images\n- STATdx image 1: Transverse Doppler US in 15-year-old boy with 5 hours of pain shows absent flow in the left testicle <img src=\"arrow_WS.png\"> and normal flow in the right. A viable testicle was found in the OR and orchiopexy was done.\n- STATdx image 2: Longitudinal color Doppler US in a 12-year-old boy with 24 hours of pain shows a hypoechoic, heterogeneous testis with absent parenchymal flow and preserved peripheral flow. The altered grayscale appearance of the testis correlates strongly with testis nonviability.\n- STATdx image 3: Transverse Doppler US in an 11-year-old boy with left testicular pain shows an enlarged and slightly hyperechoic left testis with absent flow <img src=\"arrow_WS.png\">.\n- STATdx image 4: Transverse US in the same patient superior to the testis, over the spermatic cord, demonstrates the whirlpool sign <img src=\"arrow_WS.png\"> due to twisting of the cord. This feature is specific for torsion and is particularly helpful if there is an equivocal color Doppler US. Keep with its same-patient companion image(s).\n- STATdx image 5: Graphic shows spiral twist <img src=\"arrow_WC.png\"> of the spermatic cord in torsion, leading to venous congestion and compromised blood supply to the testis <img src=\"arrow_WS.png\">. Note the knot-like configuration of the twist, known as the whirlpool sign.\n- STATdx image 6: Longitudinal US of the spermatic cord and epididymis shows the whirlpool sign in a patient with torsion as a knot-like area of twisting <img src=\"arrow_WS.png\">.\n- STATdx image 7: Transverse color Doppler US in 6-year-old boy with lower abdominal pain shows an enlarged, hyperechoic left testis <img src=\"arrow_WS.png\"> (compared to right <img src=\"arrow_WO.png\">) with ↑ peripheral flow and irregular central flow <img src=\"arrow_WC.png\"> (likely motion artifact). Imaging diagnosis was orchitis. Keep with its same-patient companion image(s).\n- STATdx image 8: Longitudinal Doppler US in the same patient 3 days later, after worsening of symptoms, shows a nonviable testis with necrosis <img src=\"arrow_WS.png\">. Peripheral flow <img src=\"arrow_WC.png\"> may be present in the tunica and scrotal wall and should not be mistaken for viability. Keep with its same-patient companion image(s).\n- STATdx image 9: Transverse Doppler US in a 14-year-old boy with acute, right-sided pain shows decreased flow in the right testis <img src=\"arrow_WS.png\"> compared to the left. Partial or intermittent torsion was suspected. Keep with its same-patient companion image(s).\n- STATdx image 10: Transverse Doppler US in the same patient after manual detorsion shows improved right-sided flow, which is now symmetric. Patient went on to orchiopexy and was found to have bell clapper deformities. It is important to compare color Doppler images of both testes side-by-side in order to detect subtle decreases, such as in this case. Keep with its same-patient companion image(s).\n- STATdx image 11: Color Doppler US in a young male with acute scrotal pain shows no flow within a relatively enlarged left testis <img src=\"arrow_WS.png\">. Doppler parameters should be optimized to detect slow flow, and comparison to the contralateral (asymptomatic) testis is critical. Keep with its same-patient companion image(s).\n- STATdx image 12: US above the left testis in the same patient shows the whirlpool sign <img src=\"arrow_WO.png\"> due to twisting of the spermatic cord. Direct visualization of the twisted cord is very specific for torsion and can help in cases of partial or intermittent torsion when testis flow is seen. Keep with its same-patient companion image(s).\n- STATdx image 13: Longitudinal Doppler US in a 15-year-old boy with 48 hours of pain shows absent flow and very heterogeneous parenchyma with hypoechoic foci of \"testicular patching.\" Keep with its same-patient companion image(s).\n- STATdx image 14: Longitudinal power Doppler US in the same patient, slightly more superiorly, shows the whirlpool sign. Notice the angulated and nonlinear appearance of the spermatic cord <img src=\"arrow_WO.png\"> with blood flow proximal to the twist <img src=\"arrow_WS.png\"> and no flow distally <img src=\"arrow_WC.png\"> or within the testicle <img src=\"arrow_CS.png\">. Keep with its same-patient companion image(s).\n- STATdx image 15: Longitudinal color Doppler US in a 12-year-old boy with 48 hours of pain shows a hypoechoic, heterogeneous testis with absent parenchymal flow and increased peripheral flow. The altered grayscale appearance of the testis correlates strongly with nonviability.\n- STATdx image 16: Sagittal color Doppler US of both testes in a young male with right testicular pain shows an asymmetric blood flow with reduced flow to the right testis <img src=\"arrow_CS.png\">, as seen on color flow and spectral waveform <img src=\"arrow_WC.png\">. This was surgically confirmed to be partial (180°) right testicular torsion.\n- STATdx image 17: Color Doppler US in a patient with right scrotal pain lasting over 24 hours shows an enlarged, heterogeneous, and avascular right testis <img src=\"arrow_CS.png\">. As expected, the testis was not viable, and an orchiectomy was performed.\n- STATdx image 18: Transverse CEUS of the testes unequivocally demonstrates the absence of enhancement throughout the testicular parenchyma of a global right testicular infarct <img src=\"arrow_WS.png\"> in this case of missed torsion. Note normal enhancement in the unaffected left testicle <img src=\"arrow_CC.png\">.\n- STATdx image 19: Sagittal color Doppler US superior to the left testis in a young male with acute painful scrotum shows a whirlpool sign <img src=\"arrow_CS.png\"> secondary to a twisted spermatic cord. The testis was manually detorsed and definitive orchiopexy was performed thereafter.\n- STATdx image 20: Transverse color Doppler US in a young male with acute painful scrotum for 48 hours shows a heterogeneous, avascular testis <img src=\"arrow_CS.png\"> with multiple hypoechoic areas <img src=\"arrow_WC.png\"> otherwise known as \"testicular patching.\" The time course and US features indicate frank necrosis and a nonviable testis.\n- STATdx image 21: Sagittal power Doppler US of the left testis in a young male with intermittent symptoms of left testicular pain demonstrates a large, focal, avascular heterogeneous area <img src=\"arrow_CS.png\">, consistent with infarct, that is likely secondary to intermittent torsion.\n- STATdx image 22: Longitudinal color Doppler US shows a torsion knot or whirlpool pattern <img src=\"arrow_WS.png\"> of the spermatic cord immediately cranial to the testis <img src=\"arrow_WC.png\">. Spectral waveform shows no diastolic flow <img src=\"arrow_WO.png\">. Keep with its same-patient companion image(s).\n- STATdx image 23: Transverse color Doppler US in the same patient shows an enlarged, hypoechoic spermatic cord <img src=\"arrow_WS.png\"> immediately proximal to the torsion knot. Note the absent flow in cord vessels <img src=\"arrow_WC.png\">. Keep with its same-patient companion image(s).\n- STATdx image 24: Color Doppler US of the left testis in a patient with 2 hours of acute scrotal pain shows completely absent intratesticular flow. Note the normal grayscale appearance of the testis. The time course and grayscale appearance suggest a likely viable testis, confirmed at orchiopexy.\n- STATdx image 25: Oblique US shows well-demarcated, hypoechoic foci <img src=\"arrow_WC.png\"> in a testis with previous vascular insult due to partial torsion. Features suggest testicular infarct.\n\nARCHIVE OPTIONAL DUPLICATES\n- RadPrimer image 1 is visually the same torsion graphic as STATdx image 5; retain STATdx image 5 as the primary graphic because its caption adds the knot-like whirlpool teaching point.\n- RadPrimer image 4 is the same whirlpool/spectral screenshot as STATdx image 19; retain STATdx image 19 as the primary copy.\n- RadPrimer image 6 is the same right-sided delayed avascular heterogeneous testis screenshot as STATdx image 17; retain STATdx image 17 as the primary copy.\n- RadPrimer image 9 is the same partial right torsion Doppler/spectral screenshot as STATdx image 16; retain STATdx image 16 as the primary copy.\n\nRADPRIMER IMAGE COVERAGE GATE\n- RadPrimer image 1: exactDuplicate; STATdx match(es): STATdx image 5; selected primary: false.\n- RadPrimer image 2: nearDuplicate; STATdx match(es): STATdx image 21; selected primary: true.\n- RadPrimer image 3: conceptualReplacement; STATdx match(es): STATdx image 1, STATdx image 3, STATdx image 11; selected primary: true.\n- RadPrimer image 4: exactDuplicate; STATdx match(es): STATdx image 19; selected primary: false.\n- RadPrimer image 5: nearDuplicate; STATdx match(es): STATdx image 24; selected primary: true.\n- RadPrimer image 6: exactDuplicate; STATdx match(es): STATdx image 17; selected primary: false.\n- RadPrimer image 7: nearDuplicate; STATdx match(es): STATdx image 20; selected primary: true.\n- RadPrimer image 8: nearDuplicate; STATdx match(es): STATdx image 25; selected primary: true.\n- RadPrimer image 9: exactDuplicate; STATdx match(es): STATdx image 16; selected primary: false.\n- RadPrimer image 10: notCovered; STATdx match(es): none; selected primary: true.\n\nCASE CLUSTER RULES\n- STATdx images 3 and 4 are one same-patient absent-flow plus whirlpool-sign cluster.\n- STATdx images 7 and 8 are a same-patient follow-up/time-lapse cluster from misleading orchitis-like imaging to nonviable necrotic testis.\n- STATdx images 9 and 10 are a same-patient pre/post manual detorsion cluster.\n- STATdx images 11 and 12 are a same-patient absent-flow plus whirlpool-sign cluster.\n- STATdx images 13 and 14 are a same-patient nonviable testicular patching plus cord whirlpool/spectral cluster.\n- STATdx images 22 and 23 are a same-patient spermatic cord torsion knot cluster.\n",
+  "manifest": {
+    "version": "1.0",
+    "articleTitle": "Testicular Torsion",
+    "createdAt": "2026-07-28T03:29:23Z",
+    "sourceBundle": "C:\\Users\\josem.000\\NormalAnatomy\\master_source_queue\\Testicular_Torsion_2026-07-28T03-23-43-561Z",
+    "canonicalHierarchy": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Testicular Torsion/Infarction"
+    ],
+    "canonicalDeckPath": "Corebook::Ultrasound::Scrotum Basic::Testicular Torsion/Infarction::Testicular Torsion",
+    "sourcePriority": [
+      "RadPrimer",
+      "STATdx"
+    ],
+    "sourceCoverage": {
+      "RadPrimer": "Canonical hierarchy/backbone and baseline source package for Testicular Torsion/Infarction.",
+      "STATdx": "Supplemental depth for mechanism, imaging signs, modality nuance, management, differential pitfalls, and a larger case-image atlas.",
+      "CoreRadiology": "No auditable Core Radiology content was included in this bundle; Core-specific claims were not added."
+    },
+    "imageCountBySource": {
+      "RadPrimer": 10,
+      "STATdx": 25,
+      "selectedPrimaryBySource": {
+        "RadPrimer": 6,
+        "STATdx": 25
+      },
+      "archiveOptionalBySource": {
+        "RadPrimer": 4,
+        "STATdx": 0
+      }
+    },
+    "sourceAttributionRules": {
+      "text": "Use [RadPrimer], [STATdx], or [Both] where a statement is source-specific or jointly supported.",
+      "images": "Use one clean display label in human-facing prose, for example RadPrimer image 5 or STATdx image 4. Preserve RP-/SDX- codes in registry, manifest, filenames, and traceability fields.",
+      "hierarchy": "Canonical hierarchy and deck routing are copied exactly from metadata.json canonicalHierarchy and canonicalDeckPath."
+    },
+    "selectedPrimaryImageIds": [
+      "RP-02",
+      "RP-03",
+      "RP-05",
+      "RP-07",
+      "RP-08",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25"
+    ],
+    "archiveOptionalImageIds": [
+      "RP-01",
+      "RP-04",
+      "RP-06",
+      "RP-09"
+    ],
+    "sourceSelectionPlan": {
+      "textBackbone": "Use RadPrimer as the canonical hierarchy and baseline article structure; keep terminology, imaging, differential, pathology, clinical issues, treatment, and diagnostic checklist from RadPrimer unless STATdx adds clearer or more detailed content.",
+      "statdxSupplementalUse": "Use STATdx for stronger detail on whirlpool sign specificity, grayscale viability prediction, testicular patching/fragmentation, CEUS, intermittent torsion, atypical pediatric abdominal pain, epidemiology, contralateral orchiopexy, and image-based case clusters.",
+      "downweightOrSkip": [
+        "Do not carry unrelated IMAIOS label repository dumps into generated narrative/cards.",
+        "Do not invent Core Radiology support; no auditable Core source was present in this bundle.",
+        "Do not use STATdx breadcrumbs for deck routing when RadPrimer metadata canonicalHierarchy is present."
+      ],
+      "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+      "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate and kept primary.",
+      "caseClusterGuardrails": {
+        "policy": "Same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse groups are atomic teaching clusters. If one image from a cluster is selected, include its companion images unless an explicit documented split is safe.",
+        "selectedAtomicClusters": [
+          {
+            "clusterId": "SDX-03-04",
+            "imageIds": [
+              "SDX-03",
+              "SDX-04"
+            ],
+            "context": "Same patient: left testis absent flow plus superior cord whirlpool sign."
+          },
+          {
+            "clusterId": "SDX-07-08",
+            "imageIds": [
+              "SDX-07",
+              "SDX-08"
+            ],
+            "context": "Same patient: misleading orchitis-like first exam followed by necrotic nonviable testis 3 days later."
+          },
+          {
+            "clusterId": "SDX-09-10",
+            "imageIds": [
+              "SDX-09",
+              "SDX-10"
+            ],
+            "context": "Same patient: decreased right testis flow before manual detorsion and restored symmetric flow afterward."
+          },
+          {
+            "clusterId": "SDX-11-12",
+            "imageIds": [
+              "SDX-11",
+              "SDX-12"
+            ],
+            "context": "Same patient: absent left intratesticular flow plus whirlpool sign above the testis."
+          },
+          {
+            "clusterId": "SDX-13-14",
+            "imageIds": [
+              "SDX-13",
+              "SDX-14"
+            ],
+            "context": "Same patient: testicular patching/nonviability plus superior cord whirlpool and spectral Doppler."
+          },
+          {
+            "clusterId": "SDX-22-23",
+            "imageIds": [
+              "SDX-22",
+              "SDX-23"
+            ],
+            "context": "Same patient: longitudinal torsion knot/spectral waveform plus transverse enlarged hypoechoic cord with absent cord flow."
+          }
+        ],
+        "intentionalSplits": []
+      },
+      "radPrimerImageCoverageBySTATdx": {
+        "RP-01": {
+          "status": "exactDuplicate",
+          "statdxMatches": [
+            "SDX-05"
+          ],
+          "selected": false
+        },
+        "RP-02": {
+          "status": "nearDuplicate",
+          "statdxMatches": [
+            "SDX-21"
+          ],
+          "selected": true
+        },
+        "RP-03": {
+          "status": "conceptualReplacement",
+          "statdxMatches": [
+            "SDX-01",
+            "SDX-03",
+            "SDX-11"
+          ],
+          "selected": true
+        },
+        "RP-04": {
+          "status": "exactDuplicate",
+          "statdxMatches": [
+            "SDX-19"
+          ],
+          "selected": false
+        },
+        "RP-05": {
+          "status": "nearDuplicate",
+          "statdxMatches": [
+            "SDX-24"
+          ],
+          "selected": true
+        },
+        "RP-06": {
+          "status": "exactDuplicate",
+          "statdxMatches": [
+            "SDX-17"
+          ],
+          "selected": false
+        },
+        "RP-07": {
+          "status": "nearDuplicate",
+          "statdxMatches": [
+            "SDX-20"
+          ],
+          "selected": true
+        },
+        "RP-08": {
+          "status": "nearDuplicate",
+          "statdxMatches": [
+            "SDX-25"
+          ],
+          "selected": true
+        },
+        "RP-09": {
+          "status": "exactDuplicate",
+          "statdxMatches": [
+            "SDX-16"
+          ],
+          "selected": false
+        },
+        "RP-10": {
+          "status": "notCovered",
+          "statdxMatches": [],
+          "selected": true
+        }
+      },
+      "primaryImageDownloadUseSet": [
+        "RP-02",
+        "RP-03",
+        "RP-05",
+        "RP-07",
+        "RP-08",
+        "RP-10",
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22",
+        "SDX-23",
+        "SDX-24",
+        "SDX-25"
+      ],
+      "archiveOptionalDuplicates": [
+        "RP-01",
+        "RP-04",
+        "RP-06",
+        "RP-09"
+      ],
+      "imageDownloadPlan": [
+        {
+          "masterImageId": "RP-02",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "displayLabel": "RadPrimer image 2",
+          "plainUrl": "https://app.radprimer.com/images/d92c2f57-ceba-425e-b2ea-2429f4468d7d?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/d92c2f57-ceba-425e-b2ea-2429f4468d7d?style=xlarge&annotated=true",
+          "plainDownloadFilename": "RP-02_RadPrimer_plain_Testicular_TorsionInfarction2.jpg",
+          "annotatedDownloadFilename": "RP-02_RadPrimer_annotated_Testicular_TorsionInfarction2_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "recognitionReinforcement",
+            "alternateExample",
+            "partialInfarction"
+          ]
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "displayLabel": "RadPrimer image 3",
+          "plainUrl": "https://app.radprimer.com/images/2b39671b-ed1f-43cb-8494-f3fce4b2e7dd?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/2b39671b-ed1f-43cb-8494-f3fce4b2e7dd?style=xlarge&annotated=true",
+          "plainDownloadFilename": "RP-03_RadPrimer_plain_Testicular_TorsionInfarction3.jpg",
+          "annotatedDownloadFilename": "RP-03_RadPrimer_annotated_Testicular_TorsionInfarction3_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "recognitionReinforcement",
+            "hemorrhagicInfarction",
+            "bilateralComparison"
+          ]
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 5,
+          "displayLabel": "RadPrimer image 5",
+          "plainUrl": "https://app.radprimer.com/images/99a11ea2-99b5-41ee-ba7b-1c57e021912a?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/99a11ea2-99b5-41ee-ba7b-1c57e021912a?style=xlarge&annotated=true",
+          "plainDownloadFilename": "RP-05_RadPrimer_plain_Testicular_TorsionInfarction5.jpg",
+          "annotatedDownloadFilename": "RP-05_RadPrimer_annotated_Testicular_TorsionInfarction5_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "stageVariant",
+            "earlyTorsion",
+            "viableTestis"
+          ]
+        },
+        {
+          "masterImageId": "RP-07",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 7,
+          "displayLabel": "RadPrimer image 7",
+          "plainUrl": "https://app.radprimer.com/images/b578395c-8dc2-4f0a-92ea-700da844cde3?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/b578395c-8dc2-4f0a-92ea-700da844cde3?style=xlarge&annotated=true",
+          "plainDownloadFilename": "RP-07_RadPrimer_plain_Testicular_TorsionInfarction7.jpg",
+          "annotatedDownloadFilename": "RP-07_RadPrimer_annotated_Testicular_TorsionInfarction7_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "recognitionReinforcement",
+            "hemorrhagicInfarction",
+            "delayedTorsion"
+          ]
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 8,
+          "displayLabel": "RadPrimer image 8",
+          "plainUrl": "https://app.radprimer.com/images/6035d2f9-d8fe-4d23-a54a-6367f1424fb6?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/6035d2f9-d8fe-4d23-a54a-6367f1424fb6?style=xlarge&annotated=true",
+          "plainDownloadFilename": "RP-08_RadPrimer_plain_Testicular_TorsionInfarction8.jpg",
+          "annotatedDownloadFilename": "RP-08_RadPrimer_annotated_Testicular_TorsionInfarction8_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "recognitionReinforcement",
+            "partialInfarction",
+            "grayscaleVariant"
+          ]
+        },
+        {
+          "masterImageId": "RP-10",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 10,
+          "displayLabel": "RadPrimer image 10",
+          "plainUrl": "https://app.radprimer.com/images/90672b97-a2cd-462d-96ee-b6d76a3c16ce?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/90672b97-a2cd-462d-96ee-b6d76a3c16ce?style=xlarge&annotated=true",
+          "plainDownloadFilename": "RP-10_RadPrimer_plain_Testicular_TorsionInfarction10.jpg",
+          "annotatedDownloadFilename": "RP-10_RadPrimer_annotated_Testicular_TorsionInfarction10_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "differentialMimicker",
+            "epididymoorchitisVenousInfarct"
+          ]
+        },
+        {
+          "masterImageId": "SDX-01",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 1,
+          "displayLabel": "STATdx image 1",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/cfcd9c51-98b0-4bd6-a76d-5e4e5326472a?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/cfcd9c51-98b0-4bd6-a76d-5e4e5326472a?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-01_STATdx_plain_Testicular_Torsion1.jpg",
+          "annotatedDownloadFilename": "SDX-01_STATdx_annotated_Testicular_Torsion1_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "earlyTorsion",
+            "viableTestis",
+            "bilateralComparison"
+          ]
+        },
+        {
+          "masterImageId": "SDX-02",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 2,
+          "displayLabel": "STATdx image 2",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e218a82d-2e22-4e70-8156-b34cbd833c01?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e218a82d-2e22-4e70-8156-b34cbd833c01?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-02_STATdx_plain_Testicular_Torsion2.jpg",
+          "annotatedDownloadFilename": "SDX-02_STATdx_annotated_Testicular_Torsion2_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "nonviableTestis",
+            "delayedTorsion",
+            "peripheralFlowPitfall"
+          ]
+        },
+        {
+          "masterImageId": "SDX-03",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 3,
+          "displayLabel": "STATdx image 3",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e4c38fc3-1b82-406d-9597-44f6e3bb4e82?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/e4c38fc3-1b82-406d-9597-44f6e3bb4e82?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-03_STATdx_plain_Testicular_Torsion3.jpg",
+          "annotatedDownloadFilename": "SDX-03_STATdx_annotated_Testicular_Torsion3_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "acuteTorsion",
+            "bilateralComparison"
+          ]
+        },
+        {
+          "masterImageId": "SDX-04",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 4,
+          "displayLabel": "STATdx image 4",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/fd9cbd67-0725-48e6-ac05-2f168a867a74?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/fd9cbd67-0725-48e6-ac05-2f168a867a74?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-04_STATdx_plain_Testicular_Torsion4.jpg",
+          "annotatedDownloadFilename": "SDX-04_STATdx_annotated_Testicular_Torsion4_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "whirlpoolSign",
+            "samePatientCluster:SDX-03-04"
+          ]
+        },
+        {
+          "masterImageId": "SDX-05",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 5,
+          "displayLabel": "STATdx image 5",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/820db922-7f7c-4c5e-a0ae-6bf116f03c13?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/820db922-7f7c-4c5e-a0ae-6bf116f03c13?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-05_STATdx_plain_Testicular_Torsion5.jpg",
+          "annotatedDownloadFilename": "SDX-05_STATdx_annotated_Testicular_Torsion5_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "mechanismGraphic",
+            "exactDuplicateRetained"
+          ]
+        },
+        {
+          "masterImageId": "SDX-06",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 6,
+          "displayLabel": "STATdx image 6",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3072f8ea-4dba-4e95-b709-2e0b864eefd1?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/3072f8ea-4dba-4e95-b709-2e0b864eefd1?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-06_STATdx_plain_Testicular_Torsion6.jpg",
+          "annotatedDownloadFilename": "SDX-06_STATdx_annotated_Testicular_Torsion6_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "whirlpoolSign",
+            "cordEpididymisVariant"
+          ]
+        },
+        {
+          "masterImageId": "SDX-07",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 7,
+          "displayLabel": "STATdx image 7",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b8832664-3a5c-455c-8713-a0b13487ee8e?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/b8832664-3a5c-455c-8713-a0b13487ee8e?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-07_STATdx_plain_Testicular_Torsion7.jpg",
+          "annotatedDownloadFilename": "SDX-07_STATdx_annotated_Testicular_Torsion7_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-07-08",
+            "pitfall",
+            "atypicalPresentation"
+          ]
+        },
+        {
+          "masterImageId": "SDX-08",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 8,
+          "displayLabel": "STATdx image 8",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/9313eaf8-76ec-4481-8d4b-163bf20e2138?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/9313eaf8-76ec-4481-8d4b-163bf20e2138?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-08_STATdx_plain_Testicular_Torsion8.jpg",
+          "annotatedDownloadFilename": "SDX-08_STATdx_annotated_Testicular_Torsion8_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-07-08",
+            "followUp",
+            "nonviableTestis"
+          ]
+        },
+        {
+          "masterImageId": "SDX-09",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 9,
+          "displayLabel": "STATdx image 9",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/769e6841-fcc8-46be-bbca-0edc195b66ca?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/769e6841-fcc8-46be-bbca-0edc195b66ca?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-09_STATdx_plain_Testicular_Torsion9.jpg",
+          "annotatedDownloadFilename": "SDX-09_STATdx_annotated_Testicular_Torsion9_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-09-10",
+            "partialIntermittentTorsion",
+            "preDetorsion"
+          ]
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "displayLabel": "STATdx image 10",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/570bcd2d-c253-4a95-b576-17ee12598877?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/570bcd2d-c253-4a95-b576-17ee12598877?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-10_STATdx_plain_Testicular_Torsion10.jpg",
+          "annotatedDownloadFilename": "SDX-10_STATdx_annotated_Testicular_Torsion10_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-09-10",
+            "postDetorsion",
+            "timeLapse"
+          ]
+        },
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "displayLabel": "STATdx image 11",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/87d54837-3352-4e58-ac13-2820dd058a1f?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/87d54837-3352-4e58-ac13-2820dd058a1f?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-11_STATdx_plain_Testicular_Torsion11.jpg",
+          "annotatedDownloadFilename": "SDX-11_STATdx_annotated_Testicular_Torsion11_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-11-12",
+            "acuteTorsion",
+            "dopplerOptimization"
+          ]
+        },
+        {
+          "masterImageId": "SDX-12",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 12,
+          "displayLabel": "STATdx image 12",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/7a0c8f88-a3b8-401b-ae39-c88dd7c004bd?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/7a0c8f88-a3b8-401b-ae39-c88dd7c004bd?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-12_STATdx_plain_Testicular_Torsion12.jpg",
+          "annotatedDownloadFilename": "SDX-12_STATdx_annotated_Testicular_Torsion12_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-11-12",
+            "whirlpoolSign"
+          ]
+        },
+        {
+          "masterImageId": "SDX-13",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 13,
+          "displayLabel": "STATdx image 13",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/518f4215-19b6-4a1a-8a4c-8420d339f9a3?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/518f4215-19b6-4a1a-8a4c-8420d339f9a3?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-13_STATdx_plain_Testicular_Torsion13.jpg",
+          "annotatedDownloadFilename": "SDX-13_STATdx_annotated_Testicular_Torsion13_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-13-14",
+            "testicularPatching",
+            "nonviableTestis"
+          ]
+        },
+        {
+          "masterImageId": "SDX-14",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 14,
+          "displayLabel": "STATdx image 14",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/a1a63b2b-74d9-44b5-8204-32508c6f8541?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/a1a63b2b-74d9-44b5-8204-32508c6f8541?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-14_STATdx_plain_Testicular_Torsion14.jpg",
+          "annotatedDownloadFilename": "SDX-14_STATdx_annotated_Testicular_Torsion14_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-13-14",
+            "whirlpoolSign",
+            "spectralDoppler"
+          ]
+        },
+        {
+          "masterImageId": "SDX-15",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 15,
+          "displayLabel": "STATdx image 15",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/ad9e53f3-b1ad-406d-a2c0-46ae1a079afe?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/ad9e53f3-b1ad-406d-a2c0-46ae1a079afe?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-15_STATdx_plain_Testicular_Torsion15.jpg",
+          "annotatedDownloadFilename": "SDX-15_STATdx_annotated_Testicular_Torsion15_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "nonviableTestis",
+            "peripheralFlowPitfall"
+          ]
+        },
+        {
+          "masterImageId": "SDX-16",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 16,
+          "displayLabel": "STATdx image 16",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/48dad9ed-cb9f-4cd3-a73c-ab95b350ebc0?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/48dad9ed-cb9f-4cd3-a73c-ab95b350ebc0?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-16_STATdx_plain_Testicular_Torsion16.jpg",
+          "annotatedDownloadFilename": "SDX-16_STATdx_annotated_Testicular_Torsion16_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "partialTorsion",
+            "exactDuplicateRetained"
+          ]
+        },
+        {
+          "masterImageId": "SDX-17",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 17,
+          "displayLabel": "STATdx image 17",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4523c75a-3963-4ff9-9ee5-c68322720554?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/4523c75a-3963-4ff9-9ee5-c68322720554?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-17_STATdx_plain_Testicular_Torsion17.jpg",
+          "annotatedDownloadFilename": "SDX-17_STATdx_annotated_Testicular_Torsion17_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "delayedTorsion",
+            "exactDuplicateRetained"
+          ]
+        },
+        {
+          "masterImageId": "SDX-18",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 18,
+          "displayLabel": "STATdx image 18",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/58bef16b-bd15-4a7e-9c78-3b63d1e4f2bb?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/58bef16b-bd15-4a7e-9c78-3b63d1e4f2bb?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-18_STATdx_plain_Testicular_Torsion18.jpg",
+          "annotatedDownloadFilename": "SDX-18_STATdx_annotated_Testicular_Torsion18_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "modalityVariant",
+            "CEUS",
+            "globalInfarction"
+          ]
+        },
+        {
+          "masterImageId": "SDX-19",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 19,
+          "displayLabel": "STATdx image 19",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0b452e61-3a57-42f4-b3a6-60bc689c7d17?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/0b452e61-3a57-42f4-b3a6-60bc689c7d17?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-19_STATdx_plain_Testicular_Torsion19.jpg",
+          "annotatedDownloadFilename": "SDX-19_STATdx_annotated_Testicular_Torsion19_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "whirlpoolSign",
+            "exactDuplicateRetained"
+          ]
+        },
+        {
+          "masterImageId": "SDX-20",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 20,
+          "displayLabel": "STATdx image 20",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3f786989-c8b0-4c34-95cc-6ec8cb27d8d7?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/3f786989-c8b0-4c34-95cc-6ec8cb27d8d7?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-20_STATdx_plain_Testicular_Torsion20.jpg",
+          "annotatedDownloadFilename": "SDX-20_STATdx_annotated_Testicular_Torsion20_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "testicularPatching",
+            "nonviableTestis"
+          ]
+        },
+        {
+          "masterImageId": "SDX-21",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 21,
+          "displayLabel": "STATdx image 21",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4766ac32-64cd-49ac-9d79-9a21adfc15d6?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/4766ac32-64cd-49ac-9d79-9a21adfc15d6?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-21_STATdx_plain_Testicular_Torsion21.jpg",
+          "annotatedDownloadFilename": "SDX-21_STATdx_annotated_Testicular_Torsion21_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "intermittentTorsion",
+            "focalInfarct"
+          ]
+        },
+        {
+          "masterImageId": "SDX-22",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 22,
+          "displayLabel": "STATdx image 22",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/85366e20-b177-45dc-9246-ded5e36dfa78?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/85366e20-b177-45dc-9246-ded5e36dfa78?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-22_STATdx_plain_Testicular_Torsion22.jpg",
+          "annotatedDownloadFilename": "SDX-22_STATdx_annotated_Testicular_Torsion22_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-22-23",
+            "whirlpoolSign",
+            "spectralDoppler"
+          ]
+        },
+        {
+          "masterImageId": "SDX-23",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 23,
+          "displayLabel": "STATdx image 23",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/7ecda1dd-26ce-4917-9a71-737d14de1a4b?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/7ecda1dd-26ce-4917-9a71-737d14de1a4b?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-23_STATdx_plain_Testicular_Torsion23.jpg",
+          "annotatedDownloadFilename": "SDX-23_STATdx_annotated_Testicular_Torsion23_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "samePatientCluster:SDX-22-23",
+            "cordVariant",
+            "absentCordFlow"
+          ]
+        },
+        {
+          "masterImageId": "SDX-24",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 24,
+          "displayLabel": "STATdx image 24",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/bda1efca-eff9-4871-a401-15ed6472cc3a?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/bda1efca-eff9-4871-a401-15ed6472cc3a?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-24_STATdx_plain_Testicular_Torsion24.jpg",
+          "annotatedDownloadFilename": "SDX-24_STATdx_annotated_Testicular_Torsion24_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "earlyTorsion",
+            "viableTestis",
+            "normalGrayscale"
+          ]
+        },
+        {
+          "masterImageId": "SDX-25",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 25,
+          "displayLabel": "STATdx image 25",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/1176e5b5-b2cb-4624-bd5b-979a0c883509?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/1176e5b5-b2cb-4624-bd5b-979a0c883509?annotated=true&size=1000&quality=90",
+          "plainDownloadFilename": "SDX-25_STATdx_plain_Testicular_Torsion25.jpg",
+          "annotatedDownloadFilename": "SDX-25_STATdx_annotated_Testicular_Torsion25_annot.jpg",
+          "downloadRecommendation": "primaryTeachingSet",
+          "usedFor": [
+            "primaryTeachingSet",
+            "partialInfarction",
+            "alternateExample"
+          ]
+        }
+      ],
+      "generatorInstructions": [
+        "Build future narrative/cards from this packageText only; do not generate cards in this master-source step.",
+        "Use clean human-facing image labels such as RadPrimer image 5 and STATdx image 4 in prose.",
+        "Keep short trace codes such as RP-05 and SDX-04 in registry, manifest, filenames, and traceability fields.",
+        "When teaching image recognition, keep near duplicates and alternate same-disease examples as reinforcement rather than pruning them."
+      ]
+    }
+  },
+  "imageRegistry": [
+    {
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "displayLabel": "RadPrimer image 1",
+      "caption": "Graphic shows spiral twist <img src=\"arrow_WC.png\"> of the spermatic cord with torsion, leading to venous congestion and compromised blood supply to the testis <img src=\"arrow_WS.png\">.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "archiveReason": "same torsion graphic by visual evidence; aHash match; STATdx version retained",
+      "plainFilename": "Testicular_TorsionInfarction1.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/58494cc0-8a7a-4e12-b065-8a7939209931?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/58494cc0-8a7a-4e12-b065-8a7939209931?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-01_RadPrimer_plain_Testicular_TorsionInfarction1.jpg",
+        "annotated": "RP-01_RadPrimer_annotated_Testicular_TorsionInfarction1_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_58494cc0.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "97bff19a7476b923c0afe7e97e093b210f10b4bf07f7729460fc73b5746bdf5c"
+      },
+      "traceability": {
+        "sourceImageId": "58494cc0-8a7a-4e12-b065-8a7939209931",
+        "baseName": "Testicular_TorsionInfarction1",
+        "originalSourceFilename": "Testicular_TorsionInfarction1.jpg"
+      },
+      "duplicateClassification": "exactDuplicateArchived",
+      "duplicateRelationship": {
+        "coveredBy": [
+          "SDX-05"
+        ],
+        "basis": "same torsion graphic by visual evidence; aHash match; STATdx version retained"
+      },
+      "radPrimerCoverageBySTATdx": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-05"
+        ],
+        "selected": false
+      }
+    },
+    {
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "displayLabel": "RadPrimer image 2",
+      "caption": "Power Doppler ultrasound of the right testicle with prior history of torsion shows an avascular area at the superior portion <img src=\"arrow_CC.png\"> with hypoechoic areas suggestive of partial infarction of the testis.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "alternateExample",
+        "partialInfarction"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_TorsionInfarction2.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/d92c2f57-ceba-425e-b2ea-2429f4468d7d?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/d92c2f57-ceba-425e-b2ea-2429f4468d7d?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-02_RadPrimer_plain_Testicular_TorsionInfarction2.jpg",
+        "annotated": "RP-02_RadPrimer_annotated_Testicular_TorsionInfarction2_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_d92c2f57.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "735515a665ee9e6de1b67ea0592b9f64c60164174d17c26ef87f3588926b481c"
+      },
+      "traceability": {
+        "sourceImageId": "d92c2f57-ceba-425e-b2ea-2429f4468d7d",
+        "baseName": "Testicular_TorsionInfarction2",
+        "originalSourceFilename": "Testicular_TorsionInfarction2.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {},
+      "radPrimerCoverageBySTATdx": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-21"
+        ],
+        "selected": true
+      }
+    },
+    {
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "displayLabel": "RadPrimer image 3",
+      "caption": "Transverse color Doppler ultrasound of both testes in this patient with acute left testicular pain shows heterogeneous, avascular left testis, consistent with hemorrhagic infarction <img src=\"arrow_CS.png\">.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "hemorrhagicInfarction",
+        "bilateralComparison"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_TorsionInfarction3.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/2b39671b-ed1f-43cb-8494-f3fce4b2e7dd?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/2b39671b-ed1f-43cb-8494-f3fce4b2e7dd?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-03_RadPrimer_plain_Testicular_TorsionInfarction3.jpg",
+        "annotated": "RP-03_RadPrimer_annotated_Testicular_TorsionInfarction3_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_2b39671b.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "04299b6ec3109afc95af581c65ebd3c63ee80075002ee7b81bf748fe19400ffd"
+      },
+      "traceability": {
+        "sourceImageId": "2b39671b-ed1f-43cb-8494-f3fce4b2e7dd",
+        "baseName": "Testicular_TorsionInfarction3",
+        "originalSourceFilename": "Testicular_TorsionInfarction3.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {},
+      "radPrimerCoverageBySTATdx": {
+        "status": "conceptualReplacement",
+        "statdxMatches": [
+          "SDX-01",
+          "SDX-03",
+          "SDX-11"
+        ],
+        "selected": true
+      }
+    },
+    {
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "displayLabel": "RadPrimer image 4",
+      "caption": "Sagittal color Doppler ultrasound superior to the left testis in a young male with an acute painful scrotum shows a whirlpool sign <img src=\"arrow_CS.png\"> secondary to a twisted spermatic cord. Patient was manually detorsed followed by bilateral orchidopexy.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "archiveReason": "same whirlpool/spectral screenshot by visual evidence; STATdx version has broader labeled frame",
+      "plainFilename": "Testicular_TorsionInfarction4.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/7c9e71bf-ad5d-46dd-890f-15c19e2ec373?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/7c9e71bf-ad5d-46dd-890f-15c19e2ec373?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-04_RadPrimer_plain_Testicular_TorsionInfarction4.jpg",
+        "annotated": "RP-04_RadPrimer_annotated_Testicular_TorsionInfarction4_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_7c9e71bf.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "cf4b0318330422aa2bfc3484e44a961bd2ec61e4280f609387c063314dfe5641"
+      },
+      "traceability": {
+        "sourceImageId": "7c9e71bf-ad5d-46dd-890f-15c19e2ec373",
+        "baseName": "Testicular_TorsionInfarction4",
+        "originalSourceFilename": "Testicular_TorsionInfarction4.jpg"
+      },
+      "duplicateClassification": "exactDuplicateArchived",
+      "duplicateRelationship": {
+        "coveredBy": [
+          "SDX-19"
+        ],
+        "basis": "same whirlpool/spectral screenshot by visual evidence; STATdx version has broader labeled frame"
+      },
+      "radPrimerCoverageBySTATdx": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-19"
+        ],
+        "selected": false
+      }
+    },
+    {
+      "masterImageId": "RP-05",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 5,
+      "displayLabel": "RadPrimer image 5",
+      "caption": "Longitudinal color Doppler ultrasound of the left testis in a 20-year-old man with acute testicular pain shows absence of flow with no grayscale changes, suggestive of acute torsion (< 4 hours).",
+      "usedFor": [
+        "primaryTeachingSet",
+        "stageVariant",
+        "earlyTorsion",
+        "viableTestis"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_TorsionInfarction5.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/99a11ea2-99b5-41ee-ba7b-1c57e021912a?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/99a11ea2-99b5-41ee-ba7b-1c57e021912a?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-05_RadPrimer_plain_Testicular_TorsionInfarction5.jpg",
+        "annotated": "RP-05_RadPrimer_annotated_Testicular_TorsionInfarction5_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_99a11ea2.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "f4b25d94f8d984d461c87d846fffbeff754af8d55cc7c9fe806ff29d3d752e1f"
+      },
+      "traceability": {
+        "sourceImageId": "99a11ea2-99b5-41ee-ba7b-1c57e021912a",
+        "baseName": "Testicular_TorsionInfarction5",
+        "originalSourceFilename": "Testicular_TorsionInfarction5.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {},
+      "radPrimerCoverageBySTATdx": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-24"
+        ],
+        "selected": true
+      }
+    },
+    {
+      "masterImageId": "RP-06",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 6,
+      "displayLabel": "RadPrimer image 6",
+      "caption": "Transverse color Doppler ultrasound of both testes shows an enlarged, heterogeneous, avascular right testis <img src=\"arrow_CS.png\"> with an abnormal lie. Patient was symptomatic for 24 hours; testis could not be salvaged after detorsion.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "archiveReason": "same right-sided 24-hour avascular heterogeneous testis screenshot by visual evidence; STATdx version retained",
+      "plainFilename": "Testicular_TorsionInfarction6.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/e355de85-d204-4879-8e13-df9d58fa7c5a?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/e355de85-d204-4879-8e13-df9d58fa7c5a?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-06_RadPrimer_plain_Testicular_TorsionInfarction6.jpg",
+        "annotated": "RP-06_RadPrimer_annotated_Testicular_TorsionInfarction6_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_e355de85.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "4348a48c6467369e887b6aa03fcbe3f0e6acf653ccf5a5b8df065713d772aac1"
+      },
+      "traceability": {
+        "sourceImageId": "e355de85-d204-4879-8e13-df9d58fa7c5a",
+        "baseName": "Testicular_TorsionInfarction6",
+        "originalSourceFilename": "Testicular_TorsionInfarction6.jpg"
+      },
+      "duplicateClassification": "exactDuplicateArchived",
+      "duplicateRelationship": {
+        "coveredBy": [
+          "SDX-17"
+        ],
+        "basis": "same right-sided 24-hour avascular heterogeneous testis screenshot by visual evidence; STATdx version retained"
+      },
+      "radPrimerCoverageBySTATdx": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-17"
+        ],
+        "selected": false
+      }
+    },
+    {
+      "masterImageId": "RP-07",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 7,
+      "displayLabel": "RadPrimer image 7",
+      "caption": "Sagittal color Doppler ultrasound of the left testis shows an enlarged, heterogeneous, avascular testis <img src=\"arrow_CS.png\"> with multiple hyperechoic areas <img src=\"arrow_WC.png\">. Pathology confirmed it to be a hemorrhagic infarction of the testis with torsion > 360°.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "hemorrhagicInfarction",
+        "delayedTorsion"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_TorsionInfarction7.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b578395c-8dc2-4f0a-92ea-700da844cde3?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/b578395c-8dc2-4f0a-92ea-700da844cde3?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-07_RadPrimer_plain_Testicular_TorsionInfarction7.jpg",
+        "annotated": "RP-07_RadPrimer_annotated_Testicular_TorsionInfarction7_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_b578395c.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "94f62c52a850ecb34be581375125a3b32066d104fbefa34024ed45a9ba64416a"
+      },
+      "traceability": {
+        "sourceImageId": "b578395c-8dc2-4f0a-92ea-700da844cde3",
+        "baseName": "Testicular_TorsionInfarction7",
+        "originalSourceFilename": "Testicular_TorsionInfarction7.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {},
+      "radPrimerCoverageBySTATdx": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-20"
+        ],
+        "selected": true
+      }
+    },
+    {
+      "masterImageId": "RP-08",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 8,
+      "displayLabel": "RadPrimer image 8",
+      "caption": "Sagittal grayscale ultrasound of the right testis shows an enlarged, heterogeneous right testis <img src=\"arrow_CS.png\"> with a striated appearance, suggestive of partial infarcts. The patient had a history of partial testicular torsion.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "partialInfarction",
+        "grayscaleVariant"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_TorsionInfarction8.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/6035d2f9-d8fe-4d23-a54a-6367f1424fb6?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/6035d2f9-d8fe-4d23-a54a-6367f1424fb6?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-08_RadPrimer_plain_Testicular_TorsionInfarction8.jpg",
+        "annotated": "RP-08_RadPrimer_annotated_Testicular_TorsionInfarction8_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_6035d2f9.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "7934d774bebfa75b2440da2123ee3a8f3fe573a1138e3ec532f799806b6b21bd"
+      },
+      "traceability": {
+        "sourceImageId": "6035d2f9-d8fe-4d23-a54a-6367f1424fb6",
+        "baseName": "Testicular_TorsionInfarction8",
+        "originalSourceFilename": "Testicular_TorsionInfarction8.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {},
+      "radPrimerCoverageBySTATdx": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-25"
+        ],
+        "selected": true
+      }
+    },
+    {
+      "masterImageId": "RP-09",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 9,
+      "displayLabel": "RadPrimer image 9",
+      "caption": "Sagittal color Doppler ultrasound of both testes in a young male with right testicular pain shows an asymmetric blood flow with reduced flow to the right testis <img src=\"arrow_CS.png\">, as seen on color flow and spectral waveform <img src=\"arrow_WC.png\">. This was surgically confirmed to be partial right testicular torsion of 180°.",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "archiveReason": "same partial 180-degree torsion Doppler/spectral screenshot by visual evidence; aHash match; STATdx version retained",
+      "plainFilename": "Testicular_TorsionInfarction9.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction9_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/bec53ae6-4529-47a0-80fe-632735021cc7?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/bec53ae6-4529-47a0-80fe-632735021cc7?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-09_RadPrimer_plain_Testicular_TorsionInfarction9.jpg",
+        "annotated": "RP-09_RadPrimer_annotated_Testicular_TorsionInfarction9_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_bec53ae6.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "093c91b0957c0edf868589ca0c8b25794f3a1ca2d1476311a61adba2c8abe58a"
+      },
+      "traceability": {
+        "sourceImageId": "bec53ae6-4529-47a0-80fe-632735021cc7",
+        "baseName": "Testicular_TorsionInfarction9",
+        "originalSourceFilename": "Testicular_TorsionInfarction9.jpg"
+      },
+      "duplicateClassification": "exactDuplicateArchived",
+      "duplicateRelationship": {
+        "coveredBy": [
+          "SDX-16"
+        ],
+        "basis": "same partial 180-degree torsion Doppler/spectral screenshot by visual evidence; aHash match; STATdx version retained"
+      },
+      "radPrimerCoverageBySTATdx": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-16"
+        ],
+        "selected": false
+      }
+    },
+    {
+      "masterImageId": "RP-10",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 10,
+      "displayLabel": "RadPrimer image 10",
+      "caption": "Avascular, heterogeneous testis with foci of air <img src=\"arrow_WO.png\"> in and outside the testis is shown. Peripheral hyperemia <img src=\"arrow_CO.png\"> and skin thickening <img src=\"arrow_CC.png\"> are also seen. This mimics torsion but is actually venous infarct from epididymoorchitis.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "differentialMimicker",
+        "epididymoorchitisVenousInfarct"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_TorsionInfarction10.jpg",
+      "annotatedFilename": "Testicular_TorsionInfarction10_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/90672b97-a2cd-462d-96ee-b6d76a3c16ce?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/90672b97-a2cd-462d-96ee-b6d76a3c16ce?style=xlarge&annotated=true",
+      "downloadFilenames": {
+        "plain": "RP-10_RadPrimer_plain_Testicular_TorsionInfarction10.jpg",
+        "annotated": "RP-10_RadPrimer_annotated_Testicular_TorsionInfarction10_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_90672b97.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 900,
+          "height": 900
+        },
+        "sha256": "bd42ec616f513c8941c779a2294c394fc216443bcc0bd5d917e92b4280632507"
+      },
+      "traceability": {
+        "sourceImageId": "90672b97-a2cd-462d-96ee-b6d76a3c16ce",
+        "baseName": "Testicular_TorsionInfarction10",
+        "originalSourceFilename": "Testicular_TorsionInfarction10.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {},
+      "radPrimerCoverageBySTATdx": {
+        "status": "notCovered",
+        "statdxMatches": [],
+        "selected": true
+      }
+    },
+    {
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 1,
+      "displayLabel": "STATdx image 1",
+      "caption": "Transverse Doppler US in 15-year-old boy with 5 hours of pain shows absent flow in the left testicle <img src=\"arrow_WS.png\"> and normal flow in the right. A viable testicle was found in the OR and orchiopexy was done.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "earlyTorsion",
+        "viableTestis",
+        "bilateralComparison"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion1.jpg",
+      "annotatedFilename": "Testicular_Torsion1_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/cfcd9c51-98b0-4bd6-a76d-5e4e5326472a?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/cfcd9c51-98b0-4bd6-a76d-5e4e5326472a?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-01_STATdx_plain_Testicular_Torsion1.jpg",
+        "annotated": "SDX-01_STATdx_annotated_Testicular_Torsion1_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_cfcd9c51.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "db70df3aa6df8568292d17b87ed61e0d9c25c84609f4647eafdccfa0721c8175"
+      },
+      "traceability": {
+        "sourceImageId": "cfcd9c51-98b0-4bd6-a76d-5e4e5326472a",
+        "baseName": "Testicular_Torsion1",
+        "originalSourceFilename": "Testicular_Torsion1.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 2,
+      "displayLabel": "STATdx image 2",
+      "caption": "Longitudinal color Doppler US in a 12-year-old boy with 24 hours of pain shows a hypoechoic, heterogeneous testis with absent parenchymal flow and preserved peripheral flow. The altered grayscale appearance of the testis correlates strongly with testis nonviability.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "nonviableTestis",
+        "delayedTorsion",
+        "peripheralFlowPitfall"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion2.jpg",
+      "annotatedFilename": "Testicular_Torsion2_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e218a82d-2e22-4e70-8156-b34cbd833c01?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e218a82d-2e22-4e70-8156-b34cbd833c01?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-02_STATdx_plain_Testicular_Torsion2.jpg",
+        "annotated": "SDX-02_STATdx_annotated_Testicular_Torsion2_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_e218a82d.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "5d38bfb59c962887e7cb7f5979ca169e77b781bab8ded5b67916648f902b2952"
+      },
+      "traceability": {
+        "sourceImageId": "e218a82d-2e22-4e70-8156-b34cbd833c01",
+        "baseName": "Testicular_Torsion2",
+        "originalSourceFilename": "Testicular_Torsion2.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 3,
+      "displayLabel": "STATdx image 3",
+      "caption": "Transverse Doppler US in an 11-year-old boy with left testicular pain shows an enlarged and slightly hyperechoic left testis with absent flow <img src=\"arrow_WS.png\">.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "acuteTorsion",
+        "bilateralComparison"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion3.jpg",
+      "annotatedFilename": "Testicular_Torsion3_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e4c38fc3-1b82-406d-9597-44f6e3bb4e82?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e4c38fc3-1b82-406d-9597-44f6e3bb4e82?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-03_STATdx_plain_Testicular_Torsion3.jpg",
+        "annotated": "SDX-03_STATdx_annotated_Testicular_Torsion3_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_e4c38fc3.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "cad00dd869e9bd10712b63e1d1c6df3c5004ad5a7aa25b93a6e9bc95a9b5b6b9"
+      },
+      "traceability": {
+        "sourceImageId": "e4c38fc3-1b82-406d-9597-44f6e3bb4e82",
+        "baseName": "Testicular_Torsion3",
+        "originalSourceFilename": "Testicular_Torsion3.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 4,
+      "displayLabel": "STATdx image 4",
+      "caption": "Transverse US in the same patient superior to the testis, over the spermatic cord, demonstrates the whirlpool sign <img src=\"arrow_WS.png\"> due to twisting of the cord. This feature is specific for torsion and is particularly helpful if there is an equivocal color Doppler US.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "whirlpoolSign",
+        "samePatientCluster:SDX-03-04"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion4.jpg",
+      "annotatedFilename": "Testicular_Torsion4_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/fd9cbd67-0725-48e6-ac05-2f168a867a74?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/fd9cbd67-0725-48e6-ac05-2f168a867a74?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-04_STATdx_plain_Testicular_Torsion4.jpg",
+        "annotated": "SDX-04_STATdx_annotated_Testicular_Torsion4_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_fd9cbd67.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "9f368f2fc749f275ca117c8e3d22cd0e5a0182550784ce1301e244a4c537f7b5"
+      },
+      "traceability": {
+        "sourceImageId": "fd9cbd67-0725-48e6-ac05-2f168a867a74",
+        "baseName": "Testicular_Torsion4",
+        "originalSourceFilename": "Testicular_Torsion4.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 5,
+      "displayLabel": "STATdx image 5",
+      "caption": "Graphic shows spiral twist <img src=\"arrow_WC.png\"> of the spermatic cord in torsion, leading to venous congestion and compromised blood supply to the testis <img src=\"arrow_WS.png\">. Note the knot-like configuration of the twist, known as the whirlpool sign.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "mechanismGraphic",
+        "exactDuplicateRetained"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion5.jpg",
+      "annotatedFilename": "Testicular_Torsion5_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/820db922-7f7c-4c5e-a0ae-6bf116f03c13?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/820db922-7f7c-4c5e-a0ae-6bf116f03c13?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-05_STATdx_plain_Testicular_Torsion5.jpg",
+        "annotated": "SDX-05_STATdx_annotated_Testicular_Torsion5_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_820db922.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "a71967434b76ca0c5ef74ea55c21c8fb4c15013c48bceb603f758fe7ccf20a6b"
+      },
+      "traceability": {
+        "sourceImageId": "820db922-7f7c-4c5e-a0ae-6bf116f03c13",
+        "baseName": "Testicular_Torsion5",
+        "originalSourceFilename": "Testicular_Torsion5.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 6,
+      "displayLabel": "STATdx image 6",
+      "caption": "Longitudinal US of the spermatic cord and epididymis shows the whirlpool sign in a patient with torsion as a knot-like area of twisting <img src=\"arrow_WS.png\">.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "whirlpoolSign",
+        "cordEpididymisVariant"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion6.jpg",
+      "annotatedFilename": "Testicular_Torsion6_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/3072f8ea-4dba-4e95-b709-2e0b864eefd1?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/3072f8ea-4dba-4e95-b709-2e0b864eefd1?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-06_STATdx_plain_Testicular_Torsion6.jpg",
+        "annotated": "SDX-06_STATdx_annotated_Testicular_Torsion6_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_3072f8ea.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "d0b251d8ecb5b58499563003bcbb1d7af498843df3fbb625cb570fcd1c919393"
+      },
+      "traceability": {
+        "sourceImageId": "3072f8ea-4dba-4e95-b709-2e0b864eefd1",
+        "baseName": "Testicular_Torsion6",
+        "originalSourceFilename": "Testicular_Torsion6.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 7,
+      "displayLabel": "STATdx image 7",
+      "caption": "Transverse color Doppler US in 6-year-old boy with lower abdominal pain shows an enlarged, hyperechoic left testis <img src=\"arrow_WS.png\"> (compared to right <img src=\"arrow_WO.png\">) with ↑ peripheral flow and irregular central flow <img src=\"arrow_WC.png\"> (likely motion artifact). Imaging diagnosis was orchitis.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-07-08",
+        "pitfall",
+        "atypicalPresentation"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion7.jpg",
+      "annotatedFilename": "Testicular_Torsion7_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/b8832664-3a5c-455c-8713-a0b13487ee8e?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/b8832664-3a5c-455c-8713-a0b13487ee8e?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-07_STATdx_plain_Testicular_Torsion7.jpg",
+        "annotated": "SDX-07_STATdx_annotated_Testicular_Torsion7_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_b8832664.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "6d3713d3c6aab10c5ae18860072bc94ec7e2de2c391a0b92bd5d8c5cc883756f"
+      },
+      "traceability": {
+        "sourceImageId": "b8832664-3a5c-455c-8713-a0b13487ee8e",
+        "baseName": "Testicular_Torsion7",
+        "originalSourceFilename": "Testicular_Torsion7.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 8,
+      "displayLabel": "STATdx image 8",
+      "caption": "Longitudinal Doppler US in the same patient 3 days later, after worsening of symptoms, shows a nonviable testis with necrosis <img src=\"arrow_WS.png\">. Peripheral flow <img src=\"arrow_WC.png\"> may be present in the tunica and scrotal wall and should not be mistaken for viability.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-07-08",
+        "followUp",
+        "nonviableTestis"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion8.jpg",
+      "annotatedFilename": "Testicular_Torsion8_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/9313eaf8-76ec-4481-8d4b-163bf20e2138?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/9313eaf8-76ec-4481-8d4b-163bf20e2138?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-08_STATdx_plain_Testicular_Torsion8.jpg",
+        "annotated": "SDX-08_STATdx_annotated_Testicular_Torsion8_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_9313eaf8.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "52fded9a72e8075531a1a358f7cd23409c9d5a6fda5efc96d54a27c87e23adc3"
+      },
+      "traceability": {
+        "sourceImageId": "9313eaf8-76ec-4481-8d4b-163bf20e2138",
+        "baseName": "Testicular_Torsion8",
+        "originalSourceFilename": "Testicular_Torsion8.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 9,
+      "displayLabel": "STATdx image 9",
+      "caption": "Transverse Doppler US in a 14-year-old boy with acute, right-sided pain shows decreased flow in the right testis <img src=\"arrow_WS.png\"> compared to the left. Partial or intermittent torsion was suspected.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-09-10",
+        "partialIntermittentTorsion",
+        "preDetorsion"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion9.jpg",
+      "annotatedFilename": "Testicular_Torsion9_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/769e6841-fcc8-46be-bbca-0edc195b66ca?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/769e6841-fcc8-46be-bbca-0edc195b66ca?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-09_STATdx_plain_Testicular_Torsion9.jpg",
+        "annotated": "SDX-09_STATdx_annotated_Testicular_Torsion9_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_769e6841.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "a6cb353b7ba2cb1e40dcde28a8708795551c07296240d58de01cc2221eaf24d1"
+      },
+      "traceability": {
+        "sourceImageId": "769e6841-fcc8-46be-bbca-0edc195b66ca",
+        "baseName": "Testicular_Torsion9",
+        "originalSourceFilename": "Testicular_Torsion9.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 10,
+      "displayLabel": "STATdx image 10",
+      "caption": "Transverse Doppler US in the same patient after manual detorsion shows improved right-sided flow, which is now symmetric. Patient went on to orchiopexy and was found to have bell clapper deformities. It is important to compare color Doppler images of both testes side-by-side in order to detect subtle decreases, such as in this case.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-09-10",
+        "postDetorsion",
+        "timeLapse"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion10.jpg",
+      "annotatedFilename": "Testicular_Torsion10_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/570bcd2d-c253-4a95-b576-17ee12598877?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/570bcd2d-c253-4a95-b576-17ee12598877?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-10_STATdx_plain_Testicular_Torsion10.jpg",
+        "annotated": "SDX-10_STATdx_annotated_Testicular_Torsion10_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_570bcd2d.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "6260ff9acc8eda1501bd3f7fd5a7a23047120241980d6ebd7bf562b306168619"
+      },
+      "traceability": {
+        "sourceImageId": "570bcd2d-c253-4a95-b576-17ee12598877",
+        "baseName": "Testicular_Torsion10",
+        "originalSourceFilename": "Testicular_Torsion10.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 11,
+      "displayLabel": "STATdx image 11",
+      "caption": "Color Doppler US in a young male with acute scrotal pain shows no flow within a relatively enlarged left testis <img src=\"arrow_WS.png\">. Doppler parameters should be optimized to detect slow flow, and comparison to the contralateral (asymptomatic) testis is critical.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-11-12",
+        "acuteTorsion",
+        "dopplerOptimization"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion11.jpg",
+      "annotatedFilename": "Testicular_Torsion11_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/87d54837-3352-4e58-ac13-2820dd058a1f?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/87d54837-3352-4e58-ac13-2820dd058a1f?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-11_STATdx_plain_Testicular_Torsion11.jpg",
+        "annotated": "SDX-11_STATdx_annotated_Testicular_Torsion11_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_87d54837.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "0387c0befa624c73508379c38f54890c837ec8691e27214b45a71ff3fa3fb57a"
+      },
+      "traceability": {
+        "sourceImageId": "87d54837-3352-4e58-ac13-2820dd058a1f",
+        "baseName": "Testicular_Torsion11",
+        "originalSourceFilename": "Testicular_Torsion11.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 12,
+      "displayLabel": "STATdx image 12",
+      "caption": "US above the left testis in the same patient shows the whirlpool sign <img src=\"arrow_WO.png\"> due to twisting of the spermatic cord. Direct visualization of the twisted cord is very specific for torsion and can help in cases of partial or intermittent torsion when testis flow is seen.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-11-12",
+        "whirlpoolSign"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion12.jpg",
+      "annotatedFilename": "Testicular_Torsion12_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/7a0c8f88-a3b8-401b-ae39-c88dd7c004bd?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/7a0c8f88-a3b8-401b-ae39-c88dd7c004bd?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-12_STATdx_plain_Testicular_Torsion12.jpg",
+        "annotated": "SDX-12_STATdx_annotated_Testicular_Torsion12_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_7a0c8f88.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "63ae78f80b243db432e4252bd8f7dd8b357de09bcd32d91eeb05c25908e14414"
+      },
+      "traceability": {
+        "sourceImageId": "7a0c8f88-a3b8-401b-ae39-c88dd7c004bd",
+        "baseName": "Testicular_Torsion12",
+        "originalSourceFilename": "Testicular_Torsion12.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 13,
+      "displayLabel": "STATdx image 13",
+      "caption": "Longitudinal Doppler US in a 15-year-old boy with 48 hours of pain shows absent flow and very heterogeneous parenchyma with hypoechoic foci of \"testicular patching.\"",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-13-14",
+        "testicularPatching",
+        "nonviableTestis"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion13.jpg",
+      "annotatedFilename": "Testicular_Torsion13_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/518f4215-19b6-4a1a-8a4c-8420d339f9a3?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/518f4215-19b6-4a1a-8a4c-8420d339f9a3?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-13_STATdx_plain_Testicular_Torsion13.jpg",
+        "annotated": "SDX-13_STATdx_annotated_Testicular_Torsion13_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_518f4215.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "d1436272ad0738adb642dbe1d87cb68e96a4a6e6fc5c7356548011916dc35060"
+      },
+      "traceability": {
+        "sourceImageId": "518f4215-19b6-4a1a-8a4c-8420d339f9a3",
+        "baseName": "Testicular_Torsion13",
+        "originalSourceFilename": "Testicular_Torsion13.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 14,
+      "displayLabel": "STATdx image 14",
+      "caption": "Longitudinal power Doppler US in the same patient, slightly more superiorly, shows the whirlpool sign. Notice the angulated and nonlinear appearance of the spermatic cord <img src=\"arrow_WO.png\"> with blood flow proximal to the twist <img src=\"arrow_WS.png\"> and no flow distally <img src=\"arrow_WC.png\"> or within the testicle <img src=\"arrow_CS.png\">.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-13-14",
+        "whirlpoolSign",
+        "spectralDoppler"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion14.jpg",
+      "annotatedFilename": "Testicular_Torsion14_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/a1a63b2b-74d9-44b5-8204-32508c6f8541?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/a1a63b2b-74d9-44b5-8204-32508c6f8541?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-14_STATdx_plain_Testicular_Torsion14.jpg",
+        "annotated": "SDX-14_STATdx_annotated_Testicular_Torsion14_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_a1a63b2b.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "aeca03bd31932a09e9d3b2919718417670d863978ce94762f1bacb7735eb528d"
+      },
+      "traceability": {
+        "sourceImageId": "a1a63b2b-74d9-44b5-8204-32508c6f8541",
+        "baseName": "Testicular_Torsion14",
+        "originalSourceFilename": "Testicular_Torsion14.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 15,
+      "displayLabel": "STATdx image 15",
+      "caption": "Longitudinal color Doppler US in a 12-year-old boy with 48 hours of pain shows a hypoechoic, heterogeneous testis with absent parenchymal flow and increased peripheral flow. The altered grayscale appearance of the testis correlates strongly with nonviability.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "nonviableTestis",
+        "peripheralFlowPitfall"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion15.jpg",
+      "annotatedFilename": "Testicular_Torsion15_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/ad9e53f3-b1ad-406d-a2c0-46ae1a079afe?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/ad9e53f3-b1ad-406d-a2c0-46ae1a079afe?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-15_STATdx_plain_Testicular_Torsion15.jpg",
+        "annotated": "SDX-15_STATdx_annotated_Testicular_Torsion15_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_ad9e53f3.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "56ae233a14b9d6efc50d5dae2ab11754bd064a1bf1600a39c60e3ffa148998ca"
+      },
+      "traceability": {
+        "sourceImageId": "ad9e53f3-b1ad-406d-a2c0-46ae1a079afe",
+        "baseName": "Testicular_Torsion15",
+        "originalSourceFilename": "Testicular_Torsion15.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 16,
+      "displayLabel": "STATdx image 16",
+      "caption": "Sagittal color Doppler US of both testes in a young male with right testicular pain shows an asymmetric blood flow with reduced flow to the right testis <img src=\"arrow_CS.png\">, as seen on color flow and spectral waveform <img src=\"arrow_WC.png\">. This was surgically confirmed to be partial (180°) right testicular torsion.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "partialTorsion",
+        "exactDuplicateRetained"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion16.jpg",
+      "annotatedFilename": "Testicular_Torsion16_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/48dad9ed-cb9f-4cd3-a73c-ab95b350ebc0?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/48dad9ed-cb9f-4cd3-a73c-ab95b350ebc0?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-16_STATdx_plain_Testicular_Torsion16.jpg",
+        "annotated": "SDX-16_STATdx_annotated_Testicular_Torsion16_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_48dad9ed.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "64de55c285371ce7f5d2287214ea579ebfda3cbe11ead5bb4a6f25fb00ec5f04"
+      },
+      "traceability": {
+        "sourceImageId": "48dad9ed-cb9f-4cd3-a73c-ab95b350ebc0",
+        "baseName": "Testicular_Torsion16",
+        "originalSourceFilename": "Testicular_Torsion16.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-17",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 17,
+      "displayLabel": "STATdx image 17",
+      "caption": "Color Doppler US in a patient with right scrotal pain lasting over 24 hours shows an enlarged, heterogeneous, and avascular right testis <img src=\"arrow_CS.png\">. As expected, the testis was not viable, and an orchiectomy was performed.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "delayedTorsion",
+        "exactDuplicateRetained"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion17.jpg",
+      "annotatedFilename": "Testicular_Torsion17_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/4523c75a-3963-4ff9-9ee5-c68322720554?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/4523c75a-3963-4ff9-9ee5-c68322720554?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-17_STATdx_plain_Testicular_Torsion17.jpg",
+        "annotated": "SDX-17_STATdx_annotated_Testicular_Torsion17_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_4523c75a.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "a3bc3dfcf38c0b4893078bb59f7c6f8c1b3a69ec88b3a4b8860f031f2b9d6e0e"
+      },
+      "traceability": {
+        "sourceImageId": "4523c75a-3963-4ff9-9ee5-c68322720554",
+        "baseName": "Testicular_Torsion17",
+        "originalSourceFilename": "Testicular_Torsion17.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 18,
+      "displayLabel": "STATdx image 18",
+      "caption": "Transverse CEUS of the testes unequivocally demonstrates the absence of enhancement throughout the testicular parenchyma of a global right testicular infarct <img src=\"arrow_WS.png\"> in this case of missed torsion. Note normal enhancement in the unaffected left testicle <img src=\"arrow_CC.png\">.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "modalityVariant",
+        "CEUS",
+        "globalInfarction"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion18.jpg",
+      "annotatedFilename": "Testicular_Torsion18_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/58bef16b-bd15-4a7e-9c78-3b63d1e4f2bb?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/58bef16b-bd15-4a7e-9c78-3b63d1e4f2bb?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-18_STATdx_plain_Testicular_Torsion18.jpg",
+        "annotated": "SDX-18_STATdx_annotated_Testicular_Torsion18_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_58bef16b.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "de507929066111c80edecc1c10c00f5519c1a61f232d23e976101101e5c35124"
+      },
+      "traceability": {
+        "sourceImageId": "58bef16b-bd15-4a7e-9c78-3b63d1e4f2bb",
+        "baseName": "Testicular_Torsion18",
+        "originalSourceFilename": "Testicular_Torsion18.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-19",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 19,
+      "displayLabel": "STATdx image 19",
+      "caption": "Sagittal color Doppler US superior to the left testis in a young male with acute painful scrotum shows a whirlpool sign <img src=\"arrow_CS.png\"> secondary to a twisted spermatic cord. The testis was manually detorsed and definitive orchiopexy was performed thereafter.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "whirlpoolSign",
+        "exactDuplicateRetained"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion19.jpg",
+      "annotatedFilename": "Testicular_Torsion19_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/0b452e61-3a57-42f4-b3a6-60bc689c7d17?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/0b452e61-3a57-42f4-b3a6-60bc689c7d17?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-19_STATdx_plain_Testicular_Torsion19.jpg",
+        "annotated": "SDX-19_STATdx_annotated_Testicular_Torsion19_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_0b452e61.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "7a2a8be9190e9325b184d169b395d7ea5d504905fbb8a5aaa6e2efdaec6ea732"
+      },
+      "traceability": {
+        "sourceImageId": "0b452e61-3a57-42f4-b3a6-60bc689c7d17",
+        "baseName": "Testicular_Torsion19",
+        "originalSourceFilename": "Testicular_Torsion19.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-20",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 20,
+      "displayLabel": "STATdx image 20",
+      "caption": "Transverse color Doppler US in a young male with acute painful scrotum for 48 hours shows a heterogeneous, avascular testis <img src=\"arrow_CS.png\"> with multiple hypoechoic areas <img src=\"arrow_WC.png\"> otherwise known as \"testicular patching.\" The time course and US features indicate frank necrosis and a nonviable testis.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "testicularPatching",
+        "nonviableTestis"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion20.jpg",
+      "annotatedFilename": "Testicular_Torsion20_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/3f786989-c8b0-4c34-95cc-6ec8cb27d8d7?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/3f786989-c8b0-4c34-95cc-6ec8cb27d8d7?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-20_STATdx_plain_Testicular_Torsion20.jpg",
+        "annotated": "SDX-20_STATdx_annotated_Testicular_Torsion20_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_3f786989.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "ca276d8f6b0620982fb0f7a5d72d94889951637c188dca2ceb6d3a96442e4b7e"
+      },
+      "traceability": {
+        "sourceImageId": "3f786989-c8b0-4c34-95cc-6ec8cb27d8d7",
+        "baseName": "Testicular_Torsion20",
+        "originalSourceFilename": "Testicular_Torsion20.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-21",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 21,
+      "displayLabel": "STATdx image 21",
+      "caption": "Sagittal power Doppler US of the left testis in a young male with intermittent symptoms of left testicular pain demonstrates a large, focal, avascular heterogeneous area <img src=\"arrow_CS.png\">, consistent with infarct, that is likely secondary to intermittent torsion.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "intermittentTorsion",
+        "focalInfarct"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion21.jpg",
+      "annotatedFilename": "Testicular_Torsion21_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/4766ac32-64cd-49ac-9d79-9a21adfc15d6?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/4766ac32-64cd-49ac-9d79-9a21adfc15d6?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-21_STATdx_plain_Testicular_Torsion21.jpg",
+        "annotated": "SDX-21_STATdx_annotated_Testicular_Torsion21_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_4766ac32.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "8ccf4213784ea7e44c8bd8e72c3e0f88bc2b39382f69d7169a33511e39f9a919"
+      },
+      "traceability": {
+        "sourceImageId": "4766ac32-64cd-49ac-9d79-9a21adfc15d6",
+        "baseName": "Testicular_Torsion21",
+        "originalSourceFilename": "Testicular_Torsion21.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-22",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 22,
+      "displayLabel": "STATdx image 22",
+      "caption": "Longitudinal color Doppler US shows a torsion knot or whirlpool pattern <img src=\"arrow_WS.png\"> of the spermatic cord immediately cranial to the testis <img src=\"arrow_WC.png\">. Spectral waveform shows no diastolic flow <img src=\"arrow_WO.png\">.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-22-23",
+        "whirlpoolSign",
+        "spectralDoppler"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion22.jpg",
+      "annotatedFilename": "Testicular_Torsion22_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/85366e20-b177-45dc-9246-ded5e36dfa78?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/85366e20-b177-45dc-9246-ded5e36dfa78?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-22_STATdx_plain_Testicular_Torsion22.jpg",
+        "annotated": "SDX-22_STATdx_annotated_Testicular_Torsion22_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_85366e20.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "96acd38f2d2f030786cba5261d40d38bb1a2354daf828123e5d0681262a0b6f1"
+      },
+      "traceability": {
+        "sourceImageId": "85366e20-b177-45dc-9246-ded5e36dfa78",
+        "baseName": "Testicular_Torsion22",
+        "originalSourceFilename": "Testicular_Torsion22.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-23",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 23,
+      "displayLabel": "STATdx image 23",
+      "caption": "Transverse color Doppler US in the same patient shows an enlarged, hypoechoic spermatic cord <img src=\"arrow_WS.png\"> immediately proximal to the torsion knot. Note the absent flow in cord vessels <img src=\"arrow_WC.png\">.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientCluster:SDX-22-23",
+        "cordVariant",
+        "absentCordFlow"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion23.jpg",
+      "annotatedFilename": "Testicular_Torsion23_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/7ecda1dd-26ce-4917-9a71-737d14de1a4b?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/7ecda1dd-26ce-4917-9a71-737d14de1a4b?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-23_STATdx_plain_Testicular_Torsion23.jpg",
+        "annotated": "SDX-23_STATdx_annotated_Testicular_Torsion23_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_7ecda1dd.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "993e51d741affa8cce0dc948c1e1bd28b7ae082a91e9352466589bfa064ea77e"
+      },
+      "traceability": {
+        "sourceImageId": "7ecda1dd-26ce-4917-9a71-737d14de1a4b",
+        "baseName": "Testicular_Torsion23",
+        "originalSourceFilename": "Testicular_Torsion23.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-24",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 24,
+      "displayLabel": "STATdx image 24",
+      "caption": "Color Doppler US of the left testis in a patient with 2 hours of acute scrotal pain shows completely absent intratesticular flow. Note the normal grayscale appearance of the testis. The time course and grayscale appearance suggest a likely viable testis, confirmed at orchiopexy.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "earlyTorsion",
+        "viableTestis",
+        "normalGrayscale"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion24.jpg",
+      "annotatedFilename": "Testicular_Torsion24_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/bda1efca-eff9-4871-a401-15ed6472cc3a?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/bda1efca-eff9-4871-a401-15ed6472cc3a?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-24_STATdx_plain_Testicular_Torsion24.jpg",
+        "annotated": "SDX-24_STATdx_annotated_Testicular_Torsion24_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_bda1efca.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "783ce9dce027d439fbde8336448c56f57d8e0af9feaea70c412cde4ab2743db3"
+      },
+      "traceability": {
+        "sourceImageId": "bda1efca-eff9-4871-a401-15ed6472cc3a",
+        "baseName": "Testicular_Torsion24",
+        "originalSourceFilename": "Testicular_Torsion24.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    },
+    {
+      "masterImageId": "SDX-25",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 25,
+      "displayLabel": "STATdx image 25",
+      "caption": "Oblique US shows well-demarcated, hypoechoic foci <img src=\"arrow_WC.png\"> in a testis with previous vascular insult due to partial torsion. Features suggest testicular infarct.",
+      "usedFor": [
+        "primaryTeachingSet",
+        "partialInfarction",
+        "alternateExample"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "archiveReason": "",
+      "plainFilename": "Testicular_Torsion25.jpg",
+      "annotatedFilename": "Testicular_Torsion25_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/1176e5b5-b2cb-4624-bd5b-979a0c883509?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/1176e5b5-b2cb-4624-bd5b-979a0c883509?annotated=true&size=1000&quality=90",
+      "downloadFilenames": {
+        "plain": "SDX-25_STATdx_plain_Testicular_Torsion25.jpg",
+        "annotated": "SDX-25_STATdx_annotated_Testicular_Torsion25_annot.jpg"
+      },
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_1176e5b5.jpg",
+        "evidenceVariant": "plain",
+        "downloaded": true,
+        "downloadError": "",
+        "pixelSize": {
+          "width": 1000,
+          "height": 1000
+        },
+        "sha256": "29b37aebef866838c0be603c0f98b18a520da694cbda1c58e38793b6f81d81bd"
+      },
+      "traceability": {
+        "sourceImageId": "1176e5b5-b2cb-4624-bd5b-979a0c883509",
+        "baseName": "Testicular_Torsion25",
+        "originalSourceFilename": "Testicular_Torsion25.jpg"
+      },
+      "duplicateClassification": "selectedUniqueOrReinforcement",
+      "duplicateRelationship": {}
+    }
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and baseline article structure; keep terminology, imaging, differential, pathology, clinical issues, treatment, and diagnostic checklist from RadPrimer unless STATdx adds clearer or more detailed content.",
+    "statdxSupplementalUse": "Use STATdx for stronger detail on whirlpool sign specificity, grayscale viability prediction, testicular patching/fragmentation, CEUS, intermittent torsion, atypical pediatric abdominal pain, epidemiology, contralateral orchiopexy, and image-based case clusters.",
+    "downweightOrSkip": [
+      "Do not carry unrelated IMAIOS label repository dumps into generated narrative/cards.",
+      "Do not invent Core Radiology support; no auditable Core source was present in this bundle.",
+      "Do not use STATdx breadcrumbs for deck routing when RadPrimer metadata canonicalHierarchy is present."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse groups are atomic teaching clusters. If one image from a cluster is selected, include its companion images unless an explicit documented split is safe.",
+      "selectedAtomicClusters": [
+        {
+          "clusterId": "SDX-03-04",
+          "imageIds": [
+            "SDX-03",
+            "SDX-04"
+          ],
+          "context": "Same patient: left testis absent flow plus superior cord whirlpool sign."
+        },
+        {
+          "clusterId": "SDX-07-08",
+          "imageIds": [
+            "SDX-07",
+            "SDX-08"
+          ],
+          "context": "Same patient: misleading orchitis-like first exam followed by necrotic nonviable testis 3 days later."
+        },
+        {
+          "clusterId": "SDX-09-10",
+          "imageIds": [
+            "SDX-09",
+            "SDX-10"
+          ],
+          "context": "Same patient: decreased right testis flow before manual detorsion and restored symmetric flow afterward."
+        },
+        {
+          "clusterId": "SDX-11-12",
+          "imageIds": [
+            "SDX-11",
+            "SDX-12"
+          ],
+          "context": "Same patient: absent left intratesticular flow plus whirlpool sign above the testis."
+        },
+        {
+          "clusterId": "SDX-13-14",
+          "imageIds": [
+            "SDX-13",
+            "SDX-14"
+          ],
+          "context": "Same patient: testicular patching/nonviability plus superior cord whirlpool and spectral Doppler."
+        },
+        {
+          "clusterId": "SDX-22-23",
+          "imageIds": [
+            "SDX-22",
+            "SDX-23"
+          ],
+          "context": "Same patient: longitudinal torsion knot/spectral waveform plus transverse enlarged hypoechoic cord with absent cord flow."
+        }
+      ],
+      "intentionalSplits": []
+    },
+    "radPrimerImageCoverageBySTATdx": {
+      "RP-01": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-05"
+        ],
+        "selected": false
+      },
+      "RP-02": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-21"
+        ],
+        "selected": true
+      },
+      "RP-03": {
+        "status": "conceptualReplacement",
+        "statdxMatches": [
+          "SDX-01",
+          "SDX-03",
+          "SDX-11"
+        ],
+        "selected": true
+      },
+      "RP-04": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-19"
+        ],
+        "selected": false
+      },
+      "RP-05": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-24"
+        ],
+        "selected": true
+      },
+      "RP-06": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-17"
+        ],
+        "selected": false
+      },
+      "RP-07": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-20"
+        ],
+        "selected": true
+      },
+      "RP-08": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-25"
+        ],
+        "selected": true
+      },
+      "RP-09": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-16"
+        ],
+        "selected": false
+      },
+      "RP-10": {
+        "status": "notCovered",
+        "statdxMatches": [],
+        "selected": true
+      }
+    },
+    "primaryImageDownloadUseSet": [
+      "RP-02",
+      "RP-03",
+      "RP-05",
+      "RP-07",
+      "RP-08",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25"
+    ],
+    "archiveOptionalDuplicates": [
+      "RP-01",
+      "RP-04",
+      "RP-06",
+      "RP-09"
+    ],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-02",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "displayLabel": "RadPrimer image 2",
+        "plainUrl": "https://app.radprimer.com/images/d92c2f57-ceba-425e-b2ea-2429f4468d7d?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/d92c2f57-ceba-425e-b2ea-2429f4468d7d?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-02_RadPrimer_plain_Testicular_TorsionInfarction2.jpg",
+        "annotatedDownloadFilename": "RP-02_RadPrimer_annotated_Testicular_TorsionInfarction2_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "alternateExample",
+          "partialInfarction"
+        ]
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "displayLabel": "RadPrimer image 3",
+        "plainUrl": "https://app.radprimer.com/images/2b39671b-ed1f-43cb-8494-f3fce4b2e7dd?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/2b39671b-ed1f-43cb-8494-f3fce4b2e7dd?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-03_RadPrimer_plain_Testicular_TorsionInfarction3.jpg",
+        "annotatedDownloadFilename": "RP-03_RadPrimer_annotated_Testicular_TorsionInfarction3_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "hemorrhagicInfarction",
+          "bilateralComparison"
+        ]
+      },
+      {
+        "masterImageId": "RP-05",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 5,
+        "displayLabel": "RadPrimer image 5",
+        "plainUrl": "https://app.radprimer.com/images/99a11ea2-99b5-41ee-ba7b-1c57e021912a?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/99a11ea2-99b5-41ee-ba7b-1c57e021912a?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-05_RadPrimer_plain_Testicular_TorsionInfarction5.jpg",
+        "annotatedDownloadFilename": "RP-05_RadPrimer_annotated_Testicular_TorsionInfarction5_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "stageVariant",
+          "earlyTorsion",
+          "viableTestis"
+        ]
+      },
+      {
+        "masterImageId": "RP-07",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 7,
+        "displayLabel": "RadPrimer image 7",
+        "plainUrl": "https://app.radprimer.com/images/b578395c-8dc2-4f0a-92ea-700da844cde3?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/b578395c-8dc2-4f0a-92ea-700da844cde3?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-07_RadPrimer_plain_Testicular_TorsionInfarction7.jpg",
+        "annotatedDownloadFilename": "RP-07_RadPrimer_annotated_Testicular_TorsionInfarction7_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "hemorrhagicInfarction",
+          "delayedTorsion"
+        ]
+      },
+      {
+        "masterImageId": "RP-08",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 8,
+        "displayLabel": "RadPrimer image 8",
+        "plainUrl": "https://app.radprimer.com/images/6035d2f9-d8fe-4d23-a54a-6367f1424fb6?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/6035d2f9-d8fe-4d23-a54a-6367f1424fb6?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-08_RadPrimer_plain_Testicular_TorsionInfarction8.jpg",
+        "annotatedDownloadFilename": "RP-08_RadPrimer_annotated_Testicular_TorsionInfarction8_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "partialInfarction",
+          "grayscaleVariant"
+        ]
+      },
+      {
+        "masterImageId": "RP-10",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 10,
+        "displayLabel": "RadPrimer image 10",
+        "plainUrl": "https://app.radprimer.com/images/90672b97-a2cd-462d-96ee-b6d76a3c16ce?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/90672b97-a2cd-462d-96ee-b6d76a3c16ce?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-10_RadPrimer_plain_Testicular_TorsionInfarction10.jpg",
+        "annotatedDownloadFilename": "RP-10_RadPrimer_annotated_Testicular_TorsionInfarction10_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "differentialMimicker",
+          "epididymoorchitisVenousInfarct"
+        ]
+      },
+      {
+        "masterImageId": "SDX-01",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 1,
+        "displayLabel": "STATdx image 1",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/cfcd9c51-98b0-4bd6-a76d-5e4e5326472a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/cfcd9c51-98b0-4bd6-a76d-5e4e5326472a?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-01_STATdx_plain_Testicular_Torsion1.jpg",
+        "annotatedDownloadFilename": "SDX-01_STATdx_annotated_Testicular_Torsion1_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "earlyTorsion",
+          "viableTestis",
+          "bilateralComparison"
+        ]
+      },
+      {
+        "masterImageId": "SDX-02",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 2,
+        "displayLabel": "STATdx image 2",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e218a82d-2e22-4e70-8156-b34cbd833c01?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e218a82d-2e22-4e70-8156-b34cbd833c01?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-02_STATdx_plain_Testicular_Torsion2.jpg",
+        "annotatedDownloadFilename": "SDX-02_STATdx_annotated_Testicular_Torsion2_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "nonviableTestis",
+          "delayedTorsion",
+          "peripheralFlowPitfall"
+        ]
+      },
+      {
+        "masterImageId": "SDX-03",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 3,
+        "displayLabel": "STATdx image 3",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e4c38fc3-1b82-406d-9597-44f6e3bb4e82?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e4c38fc3-1b82-406d-9597-44f6e3bb4e82?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-03_STATdx_plain_Testicular_Torsion3.jpg",
+        "annotatedDownloadFilename": "SDX-03_STATdx_annotated_Testicular_Torsion3_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "acuteTorsion",
+          "bilateralComparison"
+        ]
+      },
+      {
+        "masterImageId": "SDX-04",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 4,
+        "displayLabel": "STATdx image 4",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/fd9cbd67-0725-48e6-ac05-2f168a867a74?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/fd9cbd67-0725-48e6-ac05-2f168a867a74?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-04_STATdx_plain_Testicular_Torsion4.jpg",
+        "annotatedDownloadFilename": "SDX-04_STATdx_annotated_Testicular_Torsion4_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "whirlpoolSign",
+          "samePatientCluster:SDX-03-04"
+        ]
+      },
+      {
+        "masterImageId": "SDX-05",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 5,
+        "displayLabel": "STATdx image 5",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/820db922-7f7c-4c5e-a0ae-6bf116f03c13?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/820db922-7f7c-4c5e-a0ae-6bf116f03c13?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-05_STATdx_plain_Testicular_Torsion5.jpg",
+        "annotatedDownloadFilename": "SDX-05_STATdx_annotated_Testicular_Torsion5_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "mechanismGraphic",
+          "exactDuplicateRetained"
+        ]
+      },
+      {
+        "masterImageId": "SDX-06",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 6,
+        "displayLabel": "STATdx image 6",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3072f8ea-4dba-4e95-b709-2e0b864eefd1?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3072f8ea-4dba-4e95-b709-2e0b864eefd1?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-06_STATdx_plain_Testicular_Torsion6.jpg",
+        "annotatedDownloadFilename": "SDX-06_STATdx_annotated_Testicular_Torsion6_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "whirlpoolSign",
+          "cordEpididymisVariant"
+        ]
+      },
+      {
+        "masterImageId": "SDX-07",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 7,
+        "displayLabel": "STATdx image 7",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b8832664-3a5c-455c-8713-a0b13487ee8e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b8832664-3a5c-455c-8713-a0b13487ee8e?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-07_STATdx_plain_Testicular_Torsion7.jpg",
+        "annotatedDownloadFilename": "SDX-07_STATdx_annotated_Testicular_Torsion7_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-07-08",
+          "pitfall",
+          "atypicalPresentation"
+        ]
+      },
+      {
+        "masterImageId": "SDX-08",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 8,
+        "displayLabel": "STATdx image 8",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9313eaf8-76ec-4481-8d4b-163bf20e2138?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9313eaf8-76ec-4481-8d4b-163bf20e2138?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-08_STATdx_plain_Testicular_Torsion8.jpg",
+        "annotatedDownloadFilename": "SDX-08_STATdx_annotated_Testicular_Torsion8_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-07-08",
+          "followUp",
+          "nonviableTestis"
+        ]
+      },
+      {
+        "masterImageId": "SDX-09",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 9,
+        "displayLabel": "STATdx image 9",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/769e6841-fcc8-46be-bbca-0edc195b66ca?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/769e6841-fcc8-46be-bbca-0edc195b66ca?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-09_STATdx_plain_Testicular_Torsion9.jpg",
+        "annotatedDownloadFilename": "SDX-09_STATdx_annotated_Testicular_Torsion9_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-09-10",
+          "partialIntermittentTorsion",
+          "preDetorsion"
+        ]
+      },
+      {
+        "masterImageId": "SDX-10",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 10,
+        "displayLabel": "STATdx image 10",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/570bcd2d-c253-4a95-b576-17ee12598877?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/570bcd2d-c253-4a95-b576-17ee12598877?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-10_STATdx_plain_Testicular_Torsion10.jpg",
+        "annotatedDownloadFilename": "SDX-10_STATdx_annotated_Testicular_Torsion10_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-09-10",
+          "postDetorsion",
+          "timeLapse"
+        ]
+      },
+      {
+        "masterImageId": "SDX-11",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 11,
+        "displayLabel": "STATdx image 11",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/87d54837-3352-4e58-ac13-2820dd058a1f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/87d54837-3352-4e58-ac13-2820dd058a1f?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-11_STATdx_plain_Testicular_Torsion11.jpg",
+        "annotatedDownloadFilename": "SDX-11_STATdx_annotated_Testicular_Torsion11_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-11-12",
+          "acuteTorsion",
+          "dopplerOptimization"
+        ]
+      },
+      {
+        "masterImageId": "SDX-12",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 12,
+        "displayLabel": "STATdx image 12",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7a0c8f88-a3b8-401b-ae39-c88dd7c004bd?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7a0c8f88-a3b8-401b-ae39-c88dd7c004bd?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-12_STATdx_plain_Testicular_Torsion12.jpg",
+        "annotatedDownloadFilename": "SDX-12_STATdx_annotated_Testicular_Torsion12_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-11-12",
+          "whirlpoolSign"
+        ]
+      },
+      {
+        "masterImageId": "SDX-13",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 13,
+        "displayLabel": "STATdx image 13",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/518f4215-19b6-4a1a-8a4c-8420d339f9a3?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/518f4215-19b6-4a1a-8a4c-8420d339f9a3?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-13_STATdx_plain_Testicular_Torsion13.jpg",
+        "annotatedDownloadFilename": "SDX-13_STATdx_annotated_Testicular_Torsion13_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-13-14",
+          "testicularPatching",
+          "nonviableTestis"
+        ]
+      },
+      {
+        "masterImageId": "SDX-14",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 14,
+        "displayLabel": "STATdx image 14",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a1a63b2b-74d9-44b5-8204-32508c6f8541?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a1a63b2b-74d9-44b5-8204-32508c6f8541?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-14_STATdx_plain_Testicular_Torsion14.jpg",
+        "annotatedDownloadFilename": "SDX-14_STATdx_annotated_Testicular_Torsion14_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-13-14",
+          "whirlpoolSign",
+          "spectralDoppler"
+        ]
+      },
+      {
+        "masterImageId": "SDX-15",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 15,
+        "displayLabel": "STATdx image 15",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ad9e53f3-b1ad-406d-a2c0-46ae1a079afe?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ad9e53f3-b1ad-406d-a2c0-46ae1a079afe?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-15_STATdx_plain_Testicular_Torsion15.jpg",
+        "annotatedDownloadFilename": "SDX-15_STATdx_annotated_Testicular_Torsion15_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "nonviableTestis",
+          "peripheralFlowPitfall"
+        ]
+      },
+      {
+        "masterImageId": "SDX-16",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 16,
+        "displayLabel": "STATdx image 16",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/48dad9ed-cb9f-4cd3-a73c-ab95b350ebc0?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/48dad9ed-cb9f-4cd3-a73c-ab95b350ebc0?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-16_STATdx_plain_Testicular_Torsion16.jpg",
+        "annotatedDownloadFilename": "SDX-16_STATdx_annotated_Testicular_Torsion16_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "partialTorsion",
+          "exactDuplicateRetained"
+        ]
+      },
+      {
+        "masterImageId": "SDX-17",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 17,
+        "displayLabel": "STATdx image 17",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/4523c75a-3963-4ff9-9ee5-c68322720554?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/4523c75a-3963-4ff9-9ee5-c68322720554?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-17_STATdx_plain_Testicular_Torsion17.jpg",
+        "annotatedDownloadFilename": "SDX-17_STATdx_annotated_Testicular_Torsion17_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "delayedTorsion",
+          "exactDuplicateRetained"
+        ]
+      },
+      {
+        "masterImageId": "SDX-18",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 18,
+        "displayLabel": "STATdx image 18",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/58bef16b-bd15-4a7e-9c78-3b63d1e4f2bb?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/58bef16b-bd15-4a7e-9c78-3b63d1e4f2bb?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-18_STATdx_plain_Testicular_Torsion18.jpg",
+        "annotatedDownloadFilename": "SDX-18_STATdx_annotated_Testicular_Torsion18_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "modalityVariant",
+          "CEUS",
+          "globalInfarction"
+        ]
+      },
+      {
+        "masterImageId": "SDX-19",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 19,
+        "displayLabel": "STATdx image 19",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/0b452e61-3a57-42f4-b3a6-60bc689c7d17?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/0b452e61-3a57-42f4-b3a6-60bc689c7d17?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-19_STATdx_plain_Testicular_Torsion19.jpg",
+        "annotatedDownloadFilename": "SDX-19_STATdx_annotated_Testicular_Torsion19_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "whirlpoolSign",
+          "exactDuplicateRetained"
+        ]
+      },
+      {
+        "masterImageId": "SDX-20",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 20,
+        "displayLabel": "STATdx image 20",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3f786989-c8b0-4c34-95cc-6ec8cb27d8d7?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3f786989-c8b0-4c34-95cc-6ec8cb27d8d7?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-20_STATdx_plain_Testicular_Torsion20.jpg",
+        "annotatedDownloadFilename": "SDX-20_STATdx_annotated_Testicular_Torsion20_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "testicularPatching",
+          "nonviableTestis"
+        ]
+      },
+      {
+        "masterImageId": "SDX-21",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 21,
+        "displayLabel": "STATdx image 21",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/4766ac32-64cd-49ac-9d79-9a21adfc15d6?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/4766ac32-64cd-49ac-9d79-9a21adfc15d6?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-21_STATdx_plain_Testicular_Torsion21.jpg",
+        "annotatedDownloadFilename": "SDX-21_STATdx_annotated_Testicular_Torsion21_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "intermittentTorsion",
+          "focalInfarct"
+        ]
+      },
+      {
+        "masterImageId": "SDX-22",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 22,
+        "displayLabel": "STATdx image 22",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/85366e20-b177-45dc-9246-ded5e36dfa78?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/85366e20-b177-45dc-9246-ded5e36dfa78?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-22_STATdx_plain_Testicular_Torsion22.jpg",
+        "annotatedDownloadFilename": "SDX-22_STATdx_annotated_Testicular_Torsion22_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-22-23",
+          "whirlpoolSign",
+          "spectralDoppler"
+        ]
+      },
+      {
+        "masterImageId": "SDX-23",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 23,
+        "displayLabel": "STATdx image 23",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7ecda1dd-26ce-4917-9a71-737d14de1a4b?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7ecda1dd-26ce-4917-9a71-737d14de1a4b?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-23_STATdx_plain_Testicular_Torsion23.jpg",
+        "annotatedDownloadFilename": "SDX-23_STATdx_annotated_Testicular_Torsion23_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-22-23",
+          "cordVariant",
+          "absentCordFlow"
+        ]
+      },
+      {
+        "masterImageId": "SDX-24",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 24,
+        "displayLabel": "STATdx image 24",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/bda1efca-eff9-4871-a401-15ed6472cc3a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/bda1efca-eff9-4871-a401-15ed6472cc3a?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-24_STATdx_plain_Testicular_Torsion24.jpg",
+        "annotatedDownloadFilename": "SDX-24_STATdx_annotated_Testicular_Torsion24_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "earlyTorsion",
+          "viableTestis",
+          "normalGrayscale"
+        ]
+      },
+      {
+        "masterImageId": "SDX-25",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 25,
+        "displayLabel": "STATdx image 25",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1176e5b5-b2cb-4624-bd5b-979a0c883509?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1176e5b5-b2cb-4624-bd5b-979a0c883509?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-25_STATdx_plain_Testicular_Torsion25.jpg",
+        "annotatedDownloadFilename": "SDX-25_STATdx_annotated_Testicular_Torsion25_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "partialInfarction",
+          "alternateExample"
+        ]
+      }
+    ],
+    "generatorInstructions": [
+      "Build future narrative/cards from this packageText only; do not generate cards in this master-source step.",
+      "Use clean human-facing image labels such as RadPrimer image 5 and STATdx image 4 in prose.",
+      "Keep short trace codes such as RP-05 and SDX-04 in registry, manifest, filenames, and traceability fields.",
+      "When teaching image recognition, keep near duplicates and alternate same-disease examples as reinforcement rather than pruning them."
+    ]
+  },
+  "selectedPrimaryImageIds": [
+    "RP-02",
+    "RP-03",
+    "RP-05",
+    "RP-07",
+    "RP-08",
+    "RP-10",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-04",
+    "RP-06",
+    "RP-09"
+  ]
+}

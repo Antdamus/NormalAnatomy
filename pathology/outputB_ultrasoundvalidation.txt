@@ -9,6 +9,7 @@ If ultrasound appearance is discussed anywhere in the build:
 - Do NOT invent compressibility.
 - Do NOT invent wall layering or stratification.
 - Do NOT invent mobility or maneuver findings.
+- Do NOT invent contrast-enhanced ultrasound enhancement or washout behavior.
 - Do NOT invent twinkle, ring-down, comet-tail, reverberation, sludge/debris behavior, or any other ultrasound-specific artifact/sign.
 
 All ultrasound content must remain explicitly source-supported.
@@ -24,7 +25,7 @@ If no such card exists:
 - Output: "TSV export blocked - ultrasound appearance described in source but not encoded."
 - Then generate the missing ultrasound appearance High-Yield card(s) in SECTION G and re-preview.
 
-If an autonomous batch mode override is present:
+If an autonomous generation override is present:
 - "approved preview set" means the most recent automatically validated section or full-deck snapshot.
 - "re-preview" means internally re-validate after repair, not pause for user approval.
 
@@ -41,5 +42,6 @@ Ultrasound appearance may include, when explicitly source-supported:
 - source-stated sonographic signs or artifacts
 - ultrasound-specific discriminator features
 - ultrasound-specific exam pivots
+- contrast-enhanced ultrasound enhancement phase or washout behavior
 
 These details must not be generalized beyond the source.

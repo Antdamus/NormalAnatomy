@@ -1,0 +1,587 @@
+[
+  {
+    "masterImageId": "RP-01",
+    "humanLabel": "RadPrimer image 1",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 1,
+    "sourceImageId": "3b5ce8d6-a140-4273-bae9-63bb99af3f6e",
+    "caption": "Diagrammatic illustration shows the location of the hydrocele <img src=\"arrow_CO.png\"> with respect to the testis <img src=\"arrow_WC.png\">.",
+    "cleanCaption": "Diagrammatic illustration shows the location of the hydrocele with respect to the testis.",
+    "usedFor": [
+      "archiveRecovery",
+      "exactDuplicateAudit"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "duplicateClassification": "exactDuplicate",
+    "coveredByImageIds": [
+      "SDX-01"
+    ],
+    "duplicateOfImageIds": [
+      "SDX-01"
+    ],
+    "relatedImageIds": [
+      "SDX-01"
+    ],
+    "curationRationale": "Same diagrammatic hydrocele/testis illustration; same stable source image ID and visually identical content, with STATdx selected as the larger source-qualified export.",
+    "plainFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_3b5ce8d6.jpg",
+    "annotatedFilename": "Hydrocele1_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?style=xlarge&annotated=true",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_3b5ce8d6.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.radprimer.com/images/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?style=xlarge&annotated=false",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "0dc7c689c50b1bb13edfde30bb671eea16c04a775783e34f6673f77fe38da580",
+      "evidenceBytes": 78897
+    },
+    "downloadFilenameStem": "RP-01_RadPrimer_image_01_plain_3b5ce8d6"
+  },
+  {
+    "masterImageId": "RP-02",
+    "humanLabel": "RadPrimer image 2",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 2,
+    "sourceImageId": "3f7c082f-c45d-4da7-b78f-4036dc212fcf",
+    "caption": "Transverse color Doppler ultrasound shows simple-appearing fluid <img src=\"arrow_CS.png\"> in a small hydrocele. Note that the fluid does not surround the testicle along the bare area <img src=\"arrow_WO.png\"> where the tunica vaginalis does not cover the testicle and is attached to the epididymis.",
+    "cleanCaption": "Transverse color Doppler ultrasound shows simple-appearing fluid in a small hydrocele. Note that the fluid does not surround the testicle along the bare area where the tunica vaginalis does not cover the testicle and is attached to the epididymis.",
+    "usedFor": [
+      "archiveRecovery",
+      "exactDuplicateAudit"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "duplicateClassification": "exactDuplicate",
+    "coveredByImageIds": [
+      "SDX-02"
+    ],
+    "duplicateOfImageIds": [
+      "SDX-02"
+    ],
+    "relatedImageIds": [
+      "SDX-02"
+    ],
+    "curationRationale": "Same transverse color Doppler small hydrocele image demonstrating simple fluid and the posterior bare area; same stable source image ID and visually identical content.",
+    "plainFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_3f7c082f.jpg",
+    "annotatedFilename": "Hydrocele2_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/3f7c082f-c45d-4da7-b78f-4036dc212fcf?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/3f7c082f-c45d-4da7-b78f-4036dc212fcf?style=xlarge&annotated=true",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_3f7c082f.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.radprimer.com/images/3f7c082f-c45d-4da7-b78f-4036dc212fcf?style=xlarge&annotated=false",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "97d4fed52c7fa96c25e6fcecfa53efa834e417a8fa9822c81c05f83ae60db2d1",
+      "evidenceBytes": 172387
+    },
+    "downloadFilenameStem": "RP-02_RadPrimer_image_02_plain_3f7c082f"
+  },
+  {
+    "masterImageId": "RP-03",
+    "humanLabel": "RadPrimer image 3",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 3,
+    "sourceImageId": "7db2618b-2363-4d3a-8eae-da7a1c10fc54",
+    "caption": "MR can sometimes further evaluate the extent of the hydrocele. This patient with recent history of inguinal hernia repair has a large spermatic cord hematoma <img src=\"arrow_CS.png\"> and a small hydrocele <img src=\"arrow_CO.png\">.",
+    "cleanCaption": "MR can sometimes further evaluate the extent of the hydrocele. This patient with recent history of inguinal hernia repair has a large spermatic cord hematoma and a small hydrocele.",
+    "usedFor": [
+      "archiveRecovery",
+      "exactDuplicateAudit"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "duplicateClassification": "exactDuplicate",
+    "coveredByImageIds": [
+      "SDX-03"
+    ],
+    "duplicateOfImageIds": [
+      "SDX-03"
+    ],
+    "relatedImageIds": [
+      "SDX-03"
+    ],
+    "curationRationale": "Same MR image from a post-inguinal-hernia-repair patient showing spermatic cord hematoma and small hydrocele; same stable source image ID and visually identical content.",
+    "plainFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_7db2618b.jpg",
+    "annotatedFilename": "Hydrocele3_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/7db2618b-2363-4d3a-8eae-da7a1c10fc54?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/7db2618b-2363-4d3a-8eae-da7a1c10fc54?style=xlarge&annotated=true",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_7db2618b.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.radprimer.com/images/7db2618b-2363-4d3a-8eae-da7a1c10fc54?style=xlarge&annotated=false",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "7cac3a6fa8e94b03d7697716e8ebf2a5ed5e000063da34fe59973ade715cd8ee",
+      "evidenceBytes": 52222
+    },
+    "downloadFilenameStem": "RP-03_RadPrimer_image_03_plain_7db2618b"
+  },
+  {
+    "masterImageId": "RP-04",
+    "humanLabel": "RadPrimer image 4",
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 4,
+    "sourceImageId": "199a2e01-451d-49a2-becb-583368748676",
+    "caption": "Grayscale ultrasound of the right scrotum in this 36-year-old patient with recurrent large hydroceles was treated with aspiration  (needle <img src=\"arrow_CS.png\">) and sclerotherapy.",
+    "cleanCaption": "Grayscale ultrasound of the right scrotum in this 36-year-old patient with recurrent large hydroceles was treated with aspiration (needle ) and sclerotherapy.",
+    "usedFor": [
+      "archiveRecovery",
+      "exactDuplicateAudit"
+    ],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "duplicateClassification": "exactDuplicate",
+    "coveredByImageIds": [
+      "SDX-04"
+    ],
+    "duplicateOfImageIds": [
+      "SDX-04"
+    ],
+    "relatedImageIds": [
+      "SDX-04"
+    ],
+    "curationRationale": "Same grayscale aspiration/sclerotherapy ultrasound for recurrent large hydrocele; same stable source image ID and visually identical content.",
+    "plainFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_199a2e01.jpg",
+    "annotatedFilename": "Hydrocele4_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/199a2e01-451d-49a2-becb-583368748676?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/199a2e01-451d-49a2-becb-583368748676?style=xlarge&annotated=true",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_199a2e01.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.radprimer.com/images/199a2e01-451d-49a2-becb-583368748676?style=xlarge&annotated=false",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "8aacd084a2f0b4ff6bbd7d358990c871d154f844032dca23a52c5b0503177531",
+      "evidenceBytes": 66469
+    },
+    "downloadFilenameStem": "RP-04_RadPrimer_image_04_plain_199a2e01"
+  },
+  {
+    "masterImageId": "SDX-01",
+    "humanLabel": "STATdx image 1",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 1,
+    "sourceImageId": "3b5ce8d6-a140-4273-bae9-63bb99af3f6e",
+    "caption": "Diagrammatic illustration shows the location of the hydrocele <img src=\"arrow_CO.png\"> with respect to the testis <img src=\"arrow_WC.png\">.",
+    "cleanCaption": "Diagrammatic illustration shows the location of the hydrocele with respect to the testis.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "duplicateReplacement",
+      "anatomicDiagram"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "sourcePreferredExactDuplicateReplacement",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [
+      "RP-01"
+    ],
+    "relatedImageIds": [
+      "RP-01"
+    ],
+    "curationRationale": "Selected as the source-preferred exact duplicate replacement for the RadPrimer anatomic diagram.",
+    "plainFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_3b5ce8d6.jpg",
+    "annotatedFilename": "Hydrocele1_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_3b5ce8d6.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "b5e37476ee9c4b67743eb81d576e56e91b31955f5bf3ccd7a86e9faf575957de",
+      "evidenceBytes": 92952
+    },
+    "downloadFilenameStem": "SDX-01_STATdx_image_01_plain_3b5ce8d6"
+  },
+  {
+    "masterImageId": "SDX-02",
+    "humanLabel": "STATdx image 2",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 2,
+    "sourceImageId": "3f7c082f-c45d-4da7-b78f-4036dc212fcf",
+    "caption": "Transverse color Doppler ultrasound shows simple-appearing fluid <img src=\"arrow_CS.png\"> in a small hydrocele. Note that the fluid does not surround the testicle along the bare area <img src=\"arrow_WO.png\"> where the tunica vaginalis does not cover the testicle and is attached to the epididymis.",
+    "cleanCaption": "Transverse color Doppler ultrasound shows simple-appearing fluid in a small hydrocele. Note that the fluid does not surround the testicle along the bare area where the tunica vaginalis does not cover the testicle and is attached to the epididymis.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "duplicateReplacement",
+      "ultrasoundPattern",
+      "bareAreaAnatomy"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "sourcePreferredExactDuplicateReplacement",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [
+      "RP-02"
+    ],
+    "relatedImageIds": [
+      "RP-02"
+    ],
+    "curationRationale": "Selected as the source-preferred exact duplicate replacement for the RadPrimer color Doppler bare-area example.",
+    "plainFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_3f7c082f.jpg",
+    "annotatedFilename": "Hydrocele2_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/3f7c082f-c45d-4da7-b78f-4036dc212fcf?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/3f7c082f-c45d-4da7-b78f-4036dc212fcf?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_3f7c082f.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/3f7c082f-c45d-4da7-b78f-4036dc212fcf?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "6dfa4ccb43edb92eb6a442b2c5ff8025dd6d2e090e144771808728792a0b37a5",
+      "evidenceBytes": 217766
+    },
+    "downloadFilenameStem": "SDX-02_STATdx_image_02_plain_3f7c082f"
+  },
+  {
+    "masterImageId": "SDX-03",
+    "humanLabel": "STATdx image 3",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 3,
+    "sourceImageId": "7db2618b-2363-4d3a-8eae-da7a1c10fc54",
+    "caption": "MR can sometimes further evaluate the extent of the hydrocele. This patient with recent history of inguinal hernia repair has a large spermatic cord hematoma <img src=\"arrow_CS.png\"> and a small hydrocele <img src=\"arrow_CO.png\">.",
+    "cleanCaption": "MR can sometimes further evaluate the extent of the hydrocele. This patient with recent history of inguinal hernia repair has a large spermatic cord hematoma and a small hydrocele.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "duplicateReplacement",
+      "modalityVariant",
+      "postoperativeComplication"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "sourcePreferredExactDuplicateReplacement",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [
+      "RP-03"
+    ],
+    "relatedImageIds": [
+      "RP-03"
+    ],
+    "curationRationale": "Selected as the source-preferred exact duplicate replacement for the RadPrimer MR postoperative hematoma/small hydrocele example.",
+    "plainFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_7db2618b.jpg",
+    "annotatedFilename": "Hydrocele3_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/7db2618b-2363-4d3a-8eae-da7a1c10fc54?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/7db2618b-2363-4d3a-8eae-da7a1c10fc54?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_7db2618b.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/7db2618b-2363-4d3a-8eae-da7a1c10fc54?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "af06aa2ef15e26dfe462517721bf74a74f4c9ee3b7312512ceb1dd6521cc536c",
+      "evidenceBytes": 62777
+    },
+    "downloadFilenameStem": "SDX-03_STATdx_image_03_plain_7db2618b"
+  },
+  {
+    "masterImageId": "SDX-04",
+    "humanLabel": "STATdx image 4",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 4,
+    "sourceImageId": "199a2e01-451d-49a2-becb-583368748676",
+    "caption": "Grayscale ultrasound of the right scrotum in this 36-year-old patient with recurrent large hydroceles was treated with aspiration  (needle <img src=\"arrow_CS.png\">) and sclerotherapy.",
+    "cleanCaption": "Grayscale ultrasound of the right scrotum in this 36-year-old patient with recurrent large hydroceles was treated with aspiration (needle ) and sclerotherapy.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "duplicateReplacement",
+      "procedureContext"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "sourcePreferredExactDuplicateReplacement",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [
+      "RP-04"
+    ],
+    "relatedImageIds": [
+      "RP-04"
+    ],
+    "curationRationale": "Selected as the source-preferred exact duplicate replacement for the RadPrimer aspiration/sclerotherapy procedure example.",
+    "plainFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_199a2e01.jpg",
+    "annotatedFilename": "Hydrocele4_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/199a2e01-451d-49a2-becb-583368748676?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/199a2e01-451d-49a2-becb-583368748676?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_199a2e01.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/199a2e01-451d-49a2-becb-583368748676?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "50818d24e516a4aaf5288891e43a5d851855eb84148c51dd4c767c6cf5535374",
+      "evidenceBytes": 77611
+    },
+    "downloadFilenameStem": "SDX-04_STATdx_image_04_plain_199a2e01"
+  },
+  {
+    "masterImageId": "SDX-05",
+    "humanLabel": "STATdx image 5",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 5,
+    "sourceImageId": "3e0f740a-723e-4008-ac3f-ba313ead2ce5",
+    "caption": "Thin septations <img src=\"arrow_WC.png\"> are shown within a minimally complex hydrocele in a patient with epididymo-orchitis.",
+    "cleanCaption": "Thin septations are shown within a minimally complex hydrocele in a patient with epididymo-orchitis.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "complexHydrocele",
+      "infectionAssociated"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "supplementalPrimary",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [],
+    "relatedImageIds": [],
+    "curationRationale": "STATdx-only minimally complex hydrocele with thin septations in epididymo-orchitis; keep as recognition reinforcement for complex/inflammatory fluid.",
+    "plainFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_3e0f740a.jpg",
+    "annotatedFilename": "Hydrocele5_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/3e0f740a-723e-4008-ac3f-ba313ead2ce5?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/3e0f740a-723e-4008-ac3f-ba313ead2ce5?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_3e0f740a.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/3e0f740a-723e-4008-ac3f-ba313ead2ce5?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "cc7773e9e15afc12eeb7677bfcd9e8c2a157e0d86ee2d0e51d32467e36d241d9",
+      "evidenceBytes": 163674
+    },
+    "downloadFilenameStem": "SDX-05_STATdx_image_05_plain_3e0f740a"
+  },
+  {
+    "masterImageId": "SDX-06",
+    "humanLabel": "STATdx image 6",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 6,
+    "sourceImageId": "fd0b6228-3396-418e-b495-6475594587c6",
+    "caption": "Longitudinal grayscale ultrasound of a scrotum shows anechoic fluid <img src=\"arrow_WS.png\"> within the tunica vaginalis indicative of simple hydrocele. Note testis <img src=\"arrow_WC.png\"> is attached to tunica vaginalis posteriorly.",
+    "cleanCaption": "Longitudinal grayscale ultrasound of a scrotum shows anechoic fluid within the tunica vaginalis indicative of simple hydrocele. Note testis is attached to tunica vaginalis posteriorly.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "simpleHydrocele",
+      "bareAreaAnatomy"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "supplementalPrimary",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [],
+    "relatedImageIds": [],
+    "curationRationale": "STATdx-only longitudinal simple hydrocele example showing anechoic tunica vaginalis fluid and posterior attachment; keep as recognition reinforcement.",
+    "plainFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_fd0b6228.jpg",
+    "annotatedFilename": "Hydrocele6_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/fd0b6228-3396-418e-b495-6475594587c6?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/fd0b6228-3396-418e-b495-6475594587c6?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_fd0b6228.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/fd0b6228-3396-418e-b495-6475594587c6?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "b99ab03274a33935a41066feefdc584bb22485c542c1c4d9fbd47d116dd4a258",
+      "evidenceBytes": 133726
+    },
+    "downloadFilenameStem": "SDX-06_STATdx_image_06_plain_fd0b6228"
+  },
+  {
+    "masterImageId": "SDX-07",
+    "humanLabel": "STATdx image 7",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 7,
+    "sourceImageId": "f1fd42a6-af90-4286-b1c9-4cabfdda826d",
+    "caption": "Longitudinal ultrasound at the inguinal canal shows encysted hydrocele of cord <img src=\"arrow_WS.png\"> due to patent processus vaginalis in an infant. Note small amount of associated ascites <img src=\"arrow_WC.png\">.",
+    "cleanCaption": "Longitudinal ultrasound at the inguinal canal shows encysted hydrocele of cord due to patent processus vaginalis in an infant. Note small amount of associated ascites.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "pediatricVariant",
+      "spermaticCordHydrocele"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "supplementalPrimary",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [],
+    "relatedImageIds": [],
+    "curationRationale": "STATdx-only pediatric encysted hydrocele of the spermatic cord with patent processus vaginalis/ascites context; keep as a pediatric/anatomic variant.",
+    "plainFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_f1fd42a6.jpg",
+    "annotatedFilename": "Hydrocele7_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/f1fd42a6-af90-4286-b1c9-4cabfdda826d?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/f1fd42a6-af90-4286-b1c9-4cabfdda826d?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_f1fd42a6.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/f1fd42a6-af90-4286-b1c9-4cabfdda826d?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "6974acde070ff87374807453f92380b26d310ab493a15268b6f11372423e43f0",
+      "evidenceBytes": 146548
+    },
+    "downloadFilenameStem": "SDX-07_STATdx_image_07_plain_f1fd42a6"
+  },
+  {
+    "masterImageId": "SDX-08",
+    "humanLabel": "STATdx image 8",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 8,
+    "sourceImageId": "ece2f780-8c0b-49f7-91b8-580e7c90bb23",
+    "caption": "Transverse ultrasound shows large, chronic hydrocele with multiple fine, diffuse echoes <img src=\"arrow_WS.png\"> suggestive of cholesterol crystals. Note thickening of tunica vaginalis <img src=\"arrow_WC.png\">.",
+    "cleanCaption": "Transverse ultrasound shows large, chronic hydrocele with multiple fine, diffuse echoes suggestive of cholesterol crystals. Note thickening of tunica vaginalis.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "chronicHydrocele",
+      "internalEchoes"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "supplementalPrimary",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [],
+    "relatedImageIds": [],
+    "curationRationale": "STATdx-only chronic hydrocele with diffuse low-level echoes/cholesterol-crystal pattern and thickened tunica; keep as chronic-complex reinforcement.",
+    "plainFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_ece2f780.jpg",
+    "annotatedFilename": "Hydrocele8_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/ece2f780-8c0b-49f7-91b8-580e7c90bb23?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/ece2f780-8c0b-49f7-91b8-580e7c90bb23?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_ece2f780.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/ece2f780-8c0b-49f7-91b8-580e7c90bb23?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "a601d9342d448c141fad033fb14aa1872e8cb23294b6b6619ca25ea4c53dbbae",
+      "evidenceBytes": 176966
+    },
+    "downloadFilenameStem": "SDX-08_STATdx_image_08_plain_ece2f780"
+  },
+  {
+    "masterImageId": "SDX-09",
+    "humanLabel": "STATdx image 9",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 9,
+    "sourceImageId": "99a7c9d2-b192-44c7-8bb1-16094b348ac8",
+    "caption": "Axial T2-weighted image through the scrotum shows a massive hydrocele encasing the testis <img src=\"arrow_CS.png\">.",
+    "cleanCaption": "Axial T2-weighted image through the scrotum shows a massive hydrocele encasing the testis.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "modalityVariant",
+      "massiveHydrocele"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "supplementalPrimary",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [],
+    "relatedImageIds": [],
+    "curationRationale": "STATdx-only axial T2 MR example of massive hydrocele encasing the testis; keep as an MR/severity variant.",
+    "plainFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_99a7c9d2.jpg",
+    "annotatedFilename": "Hydrocele9_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/99a7c9d2-b192-44c7-8bb1-16094b348ac8?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/99a7c9d2-b192-44c7-8bb1-16094b348ac8?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_99a7c9d2.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/99a7c9d2-b192-44c7-8bb1-16094b348ac8?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "cd9750d7403fb38892bbc968cd96d07dea8271ee0b52f2a3e3db1e1824d9b59c",
+      "evidenceBytes": 77951
+    },
+    "downloadFilenameStem": "SDX-09_STATdx_image_09_plain_99a7c9d2"
+  },
+  {
+    "masterImageId": "SDX-10",
+    "humanLabel": "STATdx image 10",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 10,
+    "sourceImageId": "f1c1d053-6651-4540-8fc7-bef1908667af",
+    "caption": "Coronal MR through the scrotum shows bilateral hydroceles with multiple septations <img src=\"arrow_CS.png\"> on both sides suggestive of chronic hydrocele.",
+    "cleanCaption": "Coronal MR through the scrotum shows bilateral hydroceles with multiple septations on both sides suggestive of chronic hydrocele.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "modalityVariant",
+      "septatedHydrocele"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "supplementalPrimary",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [],
+    "relatedImageIds": [],
+    "curationRationale": "STATdx-only coronal MR example of bilateral septated chronic hydroceles; keep as an MR/septated variant.",
+    "plainFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_f1c1d053.jpg",
+    "annotatedFilename": "Hydrocele10_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/f1c1d053-6651-4540-8fc7-bef1908667af?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/f1c1d053-6651-4540-8fc7-bef1908667af?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_f1c1d053.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/f1c1d053-6651-4540-8fc7-bef1908667af?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "6c2e0197bb2f2d9af3890652c67b7364c32f58f3975e6df2914b2ec8df33e621",
+      "evidenceBytes": 60003
+    },
+    "downloadFilenameStem": "SDX-10_STATdx_image_10_plain_f1c1d053"
+  },
+  {
+    "masterImageId": "SDX-11",
+    "humanLabel": "STATdx image 11",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 11,
+    "sourceImageId": "b9bfc859-f5c1-46d7-88d2-0ae5199ee270",
+    "caption": "Massive simple hydrocele in a 90-year-old man compresses the right testis <img src=\"arrow_CC.png\"> along the scrotal wall. The left testis <img src=\"arrow_WC.png\"> is also visible in this image.",
+    "cleanCaption": "Massive simple hydrocele in a 90-year-old man compresses the right testis along the scrotal wall. The left testis is also visible in this image.",
+    "usedFor": [
+      "primaryTeachingSet",
+      "recognitionReinforcement",
+      "severeExample",
+      "testicularCompression"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "duplicateClassification": "supplementalPrimary",
+    "coveredByImageIds": [],
+    "duplicateOfImageIds": [],
+    "relatedImageIds": [],
+    "curationRationale": "STATdx-only massive simple hydrocele compressing the right testis; keep as a severe ultrasound example.",
+    "plainFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_b9bfc859.jpg",
+    "annotatedFilename": "Hydrocele11_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/b9bfc859-f5c1-46d7-88d2-0ae5199ee270?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/b9bfc859-f5c1-46d7-88d2-0ae5199ee270?annotated=true&size=1000&quality=90",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_b9bfc859.jpg",
+      "evidenceVariant": "plain",
+      "downloaded": true,
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/b9bfc859-f5c1-46d7-88d2-0ae5199ee270?size=1000&quality=90",
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "evidenceSha256": "8598acc5bbc230a609fef2568c2c02036ffdca9eaa808df646ee104b45c75669",
+      "evidenceBytes": 101771
+    },
+    "downloadFilenameStem": "SDX-11_STATdx_image_11_plain_b9bfc859"
+  }
+]

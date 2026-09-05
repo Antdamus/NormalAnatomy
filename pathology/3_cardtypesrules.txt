@@ -11,6 +11,18 @@ No other card types allowed.
 
 -----------------------------------------------------
 
+Default Card Economy (User Preference):
+
+- For image-based pathology generation, default to ONE PRIMARY UNKNOWN note per useful case.
+- The PRIMARY UNKNOWN back should carry the most likely diagnosis, the logic behind the imaging findings, the realistic differential, and the differentiating imaging clues.
+- Every source-supported disease entity should also receive separate entity-level imaging-pattern recall cards for modality appearances that matter, even when the UNKNOWN images demonstrate the pattern.
+- Entity-level imaging-pattern recall cards must be independent TSV rows using the High-Yield card family, not sibling cards on an UNKNOWN note.
+- Report-critical / management-pivot cards must be independent TSV rows using the High-Yield card family when a source-supported finding changes reporting, urgency, intervention, staging, prognosis, follow-up, or outcome.
+- Do NOT auto-generate standalone DIFFERENTIAL DRILL notes. Generate them only when the user explicitly asks for separate differential drill cards.
+- Do NOT auto-generate definition-only cards. Generate definition cards only when the user explicitly asks for definition cards.
+
+-----------------------------------------------------
+
 Card-Type Trigger Rules (Field -> Card Type Mapping):
 
 - UNKNOWN is generated ONLY when BOTH:
@@ -18,7 +30,8 @@ Card-Type Trigger Rules (Field -> Card Type Mapping):
     AND
     - Question field is populated.
 
-- DIFFERENTIAL DRILL is generated when the Differentials field is populated.
+- DIFFERENTIAL DRILL is generated when the Differential_Q field is populated.
+  Differentials may be populated on a PRIMARY UNKNOWN note as back-side support without creating/requesting a standalone drill.
 
 - MECHANISM is generated when the Mechanism field is populated.
 
@@ -38,8 +51,14 @@ Trigger Safety Enforcement:
 - Any non-UNKNOWN card that includes Image MUST keep Question empty.
 
 - Fields must NOT be populated unless that card type is intentionally being created.
+  Exception: Differentials and Imaging_Differentiation may be populated on a PRIMARY UNKNOWN note as back-side support when they help the learner compare the most likely diagnosis against realistic mimics.
 
 - No unintended card types may be generated.
+
+- One learning target must occupy one TSV row and trigger only one card family.
+  Do not create sibling cards for separate learning targets on the same note.
+
+- If an imaging-pattern recall card or report-critical card is needed, create a separate High-Yield row with its own Clinical_Context code and keep Question, Differential_Q, Mechanism_Q, and Boards_Trap_Q blank.
 
 -----------------------------------------------------
 

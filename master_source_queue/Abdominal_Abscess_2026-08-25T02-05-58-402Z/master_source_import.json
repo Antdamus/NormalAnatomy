@@ -1,0 +1,2742 @@
+{
+  "version": 1,
+  "articleTitle": "Abdominal Abscess",
+  "createdAt": "2026-08-25T02:15:38Z",
+  "packageText": "=== MASTER SOURCE PACKAGE ===\nTITLE: Abdominal Abscess\nSOURCE SYNTHESIS: RadPrimer canonical backbone with STATdx supplemental depth\n\n=== CANONICAL HIERARCHY ===\nAll Categories > Basic > Gastrointestinal > Peritoneum, Mesentery, and Abdominal Wall > Abdominal Abscess\nCanonical deck path: Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Abdominal Abscess\nRouting note: canonicalHierarchy is copied exactly from metadata.json; STATdx breadcrumbs were not used for deck routing.\n\n=== SOURCE ATTRIBUTION RULES ===\n- [Both] = supported by both RadPrimer and STATdx source packages.\n- [RadPrimer] = RadPrimer-only or RadPrimer-preferred canonical detail.\n- [STATdx] = supplemental STATdx detail, image example, or wording nuance.\n\n=== IMAGE COVERAGE GATE ===\nSTATdx does not fully cover the RadPrimer image set. RadPrimer image 2 has exact STATdx duplicates; RadPrimer images 8 and 9 have near-duplicate/same-concept reinforcement; RadPrimer image 10 is not covered.\n- RadPrimer image 1: conceptualReplacement; related STATdx images: STATdx image 12, STATdx image 18. STATdx includes postoperative abscess examples, but no exact duplicate of this rounded gas-containing postoperative collection.\n- RadPrimer image 2: exactDuplicate; related STATdx images: STATdx image 11, STATdx image 17, STATdx image 12, STATdx image 18. STATdx images 11 and 17 are the same axial CT slice/content; STATdx images 12 and 18 are adjacent/same-patient reinforcement rather than duplicates.\n- RadPrimer image 3: conceptualReplacement; related STATdx images: STATdx image 5, STATdx image 6, STATdx image 10. STATdx has pelvic abscess examples, especially MR/CT pelvic cases, but not the same post-hysterectomy CT image.\n- RadPrimer image 4: conceptualReplacement; related STATdx images: STATdx image 2, STATdx image 26. STATdx includes drainage catheter follow-up examples, but not this transgluteal drainage image.\n- RadPrimer image 5: conceptualReplacement; related STATdx images: STATdx image 3, STATdx image 13, STATdx image 15, STATdx image 16. STATdx covers perforation-related abscess and gas-forming collections but does not exactly reproduce this free intraperitoneal gas image.\n- RadPrimer image 6: conceptualReplacement; related STATdx images: STATdx image 3, STATdx image 13, STATdx image 15, STATdx image 16. STATdx provides diverticulitis/perforation abscess cases, but this same-patient sigmoid diverticulosis/abscess slice is not duplicated.\n- RadPrimer image 7: conceptualReplacement; related STATdx images: STATdx image 8, STATdx image 13. STATdx includes gas-forming/retroperitoneal or lesser sac infected collections, but not the ERCP duodenal perforation case.\n- RadPrimer image 8: nearDuplicate; related STATdx images: STATdx image 4. STATdx image 4 is the same GIST mimic teaching concept and likely same case family, but it is a different CT slice/image, so both remain primary.\n- RadPrimer image 9: nearDuplicate; related STATdx images: STATdx image 9, STATdx image 10. STATdx images 9 and 10 provide tuboovarian abscess ultrasound/CT reinforcement; the ultrasound appearance is visually distinct and not an exact duplicate.\n- RadPrimer image 10: notCovered; related STATdx images: none. No STATdx staged image shows the same right psoas/Crohn-related MR abscess teaching point.\n\n=== KEY FACTS ===\n- [Both] Abdominal abscess is a localized abdominal collection of pus or infected fluid.\n- [Both] Best CT clue: low-density, loculated, encapsulated fluid collection with peripheral rim enhancement, with or without gas bubbles or an air-fluid level.\n- [Both] Internal gas without recent intervention is highly suspicious for infection, though gas can also reflect bowel communication.\n- [Both] Use the term abscess for a discrete, drainable collection; separate this from ill-defined inflammatory phlegmon or nondrainable fluid.\n- [Both] Adjacent fat stranding, edema, fascial thickening, and low-density parenchymal edema around intraparenchymal abscesses support infection.\n- [Both] Ultrasound shows a complex fluid collection with low-level echoes, membranes, septations, avascular center, and peripheral hyperemia.\n- [Both] Abscesses are common in postoperative, diabetic, and immunocompromised patients and may follow enteric perforation, bacteremia, or trauma.\n- [Both] Differentiating abscess from noninfected postoperative collection can require symptoms, labs, aspiration, or follow-up.\n\n=== TERMINOLOGY ===\n- [Both] Definition: localized abdominal collection of pus or infected fluid.\n\n=== IMAGING ===\n- [Both] General feature: loculated, encapsulated fluid collection with peripheral rim enhancement on contrast-enhanced CT.\n- [RadPrimer] Size is highly variable, often 2-15 cm, with microabscesses smaller than 2 cm.\n- [STATdx] Tiny microabscesses can be smaller than 1 cm, and small abscesses can be technically difficult to drain.\n- [Both] Location can be intraperitoneal, extraperitoneal, or intraparenchymal.\n- [Both] CT: simple fluid attenuation or mildly hyperdense content; surrounding inflammatory change is common.\n- [Both] CT: intraparenchymal abscesses in liver, kidney, spleen, and other organs often have surrounding low-density edema.\n- [RadPrimer] About half of abscesses contain internal gas; absence of gas does not exclude abscess.\n- [Both] MR: central low T1/high T2 fluid signal, peripheral rim enhancement on contrast-enhanced T1, and often restricted diffusion with low ADC.\n- [STATdx] Surrounding edema is especially conspicuous on fat-saturated sequences, particularly T2 fat-saturated imaging.\n- [Both] US: internal debris, septations, low-level echoes, variable through transmission, avascular center, peripheral hyperemia, and echogenic inflamed fat.\n- [Both] US gas clue: echogenic foci with ring-down artifact or dirty posterior acoustic shadowing.\n- [Both] Radiography may show a soft-tissue mass/density, loss of fat interface, ectopic gas or air-fluid levels, focal ileus, and subphrenic-related pleural effusion/atelectasis.\n- [Both] Abscess sinogram after drainage can assess residual cavity, catheter position, and fistulization to bowel, pancreas, or biliary tree.\n- [Both] Nuclear medicine options include labeled white blood cell imaging, gallium, and FDG PET, with PET sensitive but nonspecific.\n- [Both] Best imaging tool: contrast-enhanced CT.\n\n=== DIFFERENTIAL DIAGNOSIS ===\n- [Both] Postoperative lymphocele: lymph node dissection history; simple fluid along lymphatic drainage pathways near clips; no enhancing rim or gas.\n- [Both] Biloma: collection near biliary tree after biliary/hepatic surgery; usually simple unless infected.\n- [Both] Postoperative seroma: simple fluid, sometimes loculated or with recent postoperative gas; may be indistinguishable from abscess without clinical correlation.\n- [Both] Loculated ascites: minimal mass effect, no rim enhancement, no internal gas, often in cirrhosis or chronic systemic disease.\n- [Both] Pancreatic pseudocyst: pancreatitis history or stigmata; pseudocapsule generally develops over weeks.\n- [Both] Hematoma: attenuation varies with age; acute clot is often high attenuation and may weakly enhance peripherally during evolution.\n- [Both] Retained oxidized cellulose/Surgicel: postoperative gas collection with little fluid and no discrete drainable collection.\n- [Both] Cystic or necrotic neoplasm can mimic abscess, especially without fever, leukocytosis, or other infection history.\n\n=== PATHOLOGY ===\n- [Both] Etiologies include enteric perforation, postoperative infection, generalized bacteremia, and trauma.\n- [Both] Postoperative abscesses often occur in dependent intraperitoneal spaces such as cul-de-sac, Morison pouch, or subphrenic spaces.\n- [Both] Diabetic patients have increased risk for gas-forming abscesses; immunocompromised patients can develop fungal microabscesses.\n- [RadPrimer] Associated pathology includes pus, peripheral fibrocapillary capsule, and often polymicrobial enteric organisms.\n- [RadPrimer] Classification can be by organism, organ of origin, intra-/extraperitoneal location, or communication with bowel, biliary tree, or pancreatic duct.\n\n=== CLINICAL ISSUES ===\n- [Both] Presentation: fever, chills, abdominal pain, tachycardia, hypotension in sepsis, leukocytosis, positive blood cultures, or elevated ESR.\n- [Both] Older and immunocompromised patients may lack fever or elevated white blood cell count.\n- [Both] Prognosis is generally excellent with appropriate treatment but depends on abscess burden, immune status, and comorbidities.\n- [RadPrimer] Percutaneous abscess drainage has approximately 80% success with proper patient selection.\n- [Both] Ideal percutaneous drainage target: well-defined, encapsulated, fluid-filled abscess larger than 3 cm with safe catheter access.\n- [Both] CT or US guidance can support transcutaneous, transgluteal, transrectal, or transvaginal drainage approaches.\n- [Both] Complex multiseptated abscesses or abscesses with enteric fistula may require weeks to months; most drain in 10-14 days.\n- [Both] Catheter removal is considered when output is less than 10 cc per shift or the cavity resolves on imaging.\n- [Both] Patient-related drainage contraindications include coagulopathy, elevated INR, and platelets below 50,000/uL, using institution-specific thresholds.\n- [Both] Abscess-related drainage contraindications include phlegmon, no safe route, gas-forming infection such as emphysematous pancreatitis, echinococcal cyst, infected necrosis, multiseptated collection, or superinfected necrotic tumor.\n- [Both] Surgery may be needed for extensive intraperitoneal abscesses, debridement of necrotic infected tissue, or failed percutaneous drainage.\n- [Both] Small abscesses, usually smaller than 3 cm, may be treated with antibiotics alone; STATdx notes technical difficulty placing catheters in small abscesses.\n\n=== DIAGNOSTIC CHECKLIST ===\n- [Both] Correlate imaging with clinical signs, labs, aspiration, and postoperative timing when infected and noninfected collections overlap.\n- [Both] Do not require gas for diagnosis; an enhancing rim, mass effect, and inflammatory change can be highly suggestive in the right clinical context.\n- [Both] Avoid labeling nondrainable phlegmon as abscess when no discrete collection exists.\n\n=== SELECTED PRIMARY IMAGE SET ===\n- RadPrimer image 1: Axial CECT in an older postoperative patient demonstrates a rounded complex fluid collection <img src=\"arrow_WS.png\"> with gas bubbles <img src=\"arrow_WC.png\"> and an enhancing capsule <img src=\"arrow_WO.png\">, findings diagnostic for an abdominal abscess. Used for: primaryPattern, postoperativeAbscess, rimEnhancement, internalGas.\n- RadPrimer image 2: Axial CECT in an older postoperative patient demonstrates multiple loculated fluid collections <img src=\"arrow_WS.png\"> with prominently enhancing capsules <img src=\"arrow_WC.png\"> and mass effect on adjacent structures, representing abdominal abscesses. Note the air-fluid level <img src=\"arrow_WO.png\"> within one of the abscesses. Used for: primaryPattern, multipleAbscesses, airFluidLevel, exactDuplicateAnchor.\n- RadPrimer image 3: Axial CECT shows a large pelvic abscess <img src=\"arrow_WS.png\"> following a hysterectomy. Note the presence of a discrete enhancing rim and mass effect on adjacent loops of bowel and the bladder. Used for: pelvicAbscess, postoperativeAbscess, massEffect.\n- RadPrimer image 4: Axial CECT shows placement of a percutaneous drainage catheter <img src=\"arrow_WS.png\"> using a transgluteal approach. The abscess has almost completely resolved following drainage. Used for: drainageFollowUp, transglutealApproach, procedureContext.\n- RadPrimer image 5: Axial CECT in a woman who presented with lower abdominal pain, fever, and tenderness shows extensive free intraperitoneal gas <img src=\"arrow_WS.png\">. Used for: samePatientCluster, entericPerforation, freeIntraperitonealGas.\n- RadPrimer image 6: Axial CECT in the same patient shows a loculated abscess <img src=\"arrow_WC.png\"> immediately adjacent to a segment of sigmoid colon with extensive diverticulosis <img src=\"arrow_WO.png\">, which proved to be the source of the free air and abscesses. Used for: samePatientCluster, diverticularAbscess, sourceOfFreeAir.\n- RadPrimer image 7: Axial CECT after ERCP shows a large collection of gas and fluid <img src=\"arrow_WS.png\"> dissecting through the retroperitoneal spaces, especially the anterior pararenal space and the interfascial plane <img src=\"arrow_WC.png\">. These findings were due to perforation of the duodenum at the papillotomy site. Used for: retroperitonealAbscess, duodenalPerforation, postERCPComplication.\n- RadPrimer image 8: Axial CECT demonstrates a large cystic mass <img src=\"arrow_WS.png\"> with internal complexity. The mass was thought to represent an abscess and underwent unsuccessful drainage but was ultimately found to represent a gastrointestinal stromal tumor (GIST). Used for: abscessMimic, cysticNeoplasm, GIST, recognitionReinforcement.\n- RadPrimer image 9: Ultrasound demonstrates a complex cystic mass <img src=\"arrow_WS.png\"> with internal septations and multiple areas of higher echogenicity located in the right adnexa, representing a large tuboovarian abscess in this patient with pelvic inflammatory disease (PID). Used for: ultrasoundPattern, tuboovarianAbscess, internalSeptations.\n- RadPrimer image 10: Axial T1 C+ FS MR demonstrates a rim-enhancing abscess <img src=\"arrow_WS.png\"> in the right psoas muscle. Note the phlegmonous change and enhancement <img src=\"arrow_WC.png\"> around the margins of the abscess, partially attributable to inflammation from the patient's Crohn disease. Used for: mriPattern, psoasAbscess, CrohnDisease, phlegmon.\n- STATdx image 1: Axial CECT demonstrates a loculated fluid collection <img src=\"arrow_WS.png\"> with prominent rim enhancement and surrounding soft tissue edema in the right lower quadrant, compatible with an abscess. The patient's appendix <img src=\"arrow_WC.png\"> is partly visualized in the midst of this collection, compatible with perforated appendicitis. Used for: appendicealAbscess, alternateExample, recognitionReinforcement, samePatientCluster.\n- STATdx image 2: Axial CECT shows placement of a percutaneous drainage catheter <img src=\"arrow_WS.png\">  into the abscess with a significant decrease in the size of the abscess following drainage. Used for: drainageFollowUp, appendicealAbscess, procedureContext, duplicateAnchor.\n- STATdx image 3: Axial CECT in a patient with pelvic pain and fever demonstrates a thick-walled enhancing fluid collection <img src=\"arrow_WC.png\"> abutting the adjacent inflamed sigmoid colon <img src=\"arrow_WS.png\">, representing a peridiverticular abscess related to perforated diverticulitis. Used for: diverticulitisAbscess, alternateExample, recognitionReinforcement.\n- STATdx image 4: Axial CECT demonstrates a peripherally enhancing \"fluid collection\"  <img src=\"arrow_WC.png\">  abutting the left colon and small bowel. This was thought to be an abscess and even underwent unsuccessful drainage, but was ultimately found to represent a gastrointestinal stromal tumor (GIST). Used for: abscessMimic, GIST, nearDuplicate, recognitionReinforcement.\n- STATdx image 5: Axial T1 C+ FS MR in a young female patient in septic shock demonstrates thick-walled, peripherally enhancing fluid collections <img src=\"arrow_WS.png\"> in the pelvis, compatible with abscesses. Used for: mriPattern, pelvicAbscess, samePatientCluster.\n- STATdx image 6: Sagittal T2 MR in the same patient demonstrates the more anterior fluid collection <img src=\"arrow_WS.png\"> is directly contiguous with the patient's C-section scar <img src=\"arrow_WC.png\">, compatible with uterine rupture as the cause for these abscesses. Note the presence of another large fluid collection <img src=\"arrow_WO.png\"> more posteriorly between the uterus and rectum. Used for: mriPattern, uterineRupture, samePatientCluster, mechanism.\n- STATdx image 7: Axial CECT demonstrates a large, rim-enhancing abscess  <img src=\"arrow_WS.png\">  in the perineum secondary to traumatic Foley catheter <img src=\"arrow_WC.png\"> placement and urethral perforation. Used for: perinealAbscess, traumaticFoley, unusualCause.\n- STATdx image 8: Axial CECT demonstrates a large, loculated fluid collection <img src=\"arrow_WC.png\"> in the lesser sac with rim-enhancement and internal gas <img src=\"arrow_WO.png\">, representing an abscess with gas-forming infection. This infected collection was secondary to necrotizing pancreatitis. Used for: lesserSacAbscess, necrotizingPancreatitis, gasFormingInfection.\n- STATdx image 9: Transverse color Doppler US in a young female patient with pelvic pain and fever demonstrates a complex cystic adnexal mass <img src=\"arrow_WS.png\"> without substantial color flow vascularity. Used for: ultrasoundPattern, tuboovarianAbscess, samePatientCluster, recognitionReinforcement.\n- STATdx image 10: Axial CECT in the same patient demonstrates a large fluid collection <img src=\"arrow_WS.png\"> with rim enhancement and surrounding fat stranding (corresponding to the US finding), ultimately found to represent a tuboovarian abscess. Notice how the complexity in this collection is much more evident on US compared to CT. Used for: ctCorrelation, tuboovarianAbscess, samePatientCluster.\n- STATdx image 12: Axial CECT in the same patient shows ectopic gas bubbles within abscess in pelvis <img src=\"arrow_WS.png\">. Used for: samePatientCluster, postoperativeAbscess, adjacentSlice, internalGas.\n- STATdx image 13: Axial CECT of gas-forming retrocecal abscess from perforated diverticulum. Note ectopic gas collection from posterior to cecum <img src=\"arrow_WS.png\">, cecal thickening, and adjacent fat stranding <img src=\"arrow_WO.png\">. Used for: gasFormingAbscess, retrocecalAbscess, perforatedDiverticulum.\n- STATdx image 14: Transverse transabdominal US of a postoperative abscess found on a grayscale image is shown. Note the hypoechoic fluid collection <img src=\"arrow_WS.png\"> with fluid-fluid level <img src=\"arrow_WO.png\">. Used for: ultrasoundPattern, postoperativeAbscess, fluidFluidLevel.\n- STATdx image 15: Axial CECT shows intramural abscess of the sigmoid from diverticulitis. Note the long segment of the markedly thickened sigmoid <img src=\"arrow_WS.png\"> and an ill-defined adjacent fluid collection <img src=\"arrow_WO.png\">. Used for: samePatientCluster, intramuralSigmoidAbscess, diverticulitis.\n- STATdx image 16: Axial CECT in the same patient shows more discreet abscess collections on a lower plane of the section <img src=\"arrow_WS.png\">. Used for: samePatientCluster, intramuralSigmoidAbscess, adjacentSlice.\n- STATdx image 18: Axial CECT shows pyogenic postoperative abscess after bowel resection. Note multiple fluid collections with enhancing rims. Gas is noted in pelvic abscess <img src=\"arrow_WS.png\">  but not in other collections. Used for: samePatientCluster, postoperativeAbscess, adjacentSlice, internalGas.\n- STATdx image 19: Axial CECT demonstrates a gas-forming pyogenic liver abscess in a diabetic patient. Note air-fluid level within the abscess cavity <img src=\"arrow_BS.png\">. Used for: liverAbscess, gasFormingInfection, diabetes, ctPattern.\n- STATdx image 20: Axial US shows a liver abscess demonstrating linear high-amplitude echoes with \"dirty\" distal acoustic shadowing representing gas <img src=\"arrow_WS.png\">. Used for: liverAbscess, ultrasoundPattern, dirtyShadowing, gas.\n- STATdx image 21: Axial CECT shows an amebic abscess. Note peripheral low-attenuation zone of edema <img src=\"arrow_BS.png\"> surrounding the abscess. Used for: amebicAbscess, ctPattern, perilesionalEdema.\n- STATdx image 22: Sagittal US shows amebic abscess. Note low-level echoes <img src=\"arrow_WS.png\"> within the hypoechoic mass, and the lack of distal acoustic enhancement. Used for: amebicAbscess, ultrasoundPattern, lowLevelEchoes.\n- STATdx image 23: Sagittal US shows fungal microabscesses due to systemic candidiasis. Note multiple target lesions <img src=\"arrow_WS.png\">. Used for: fungalMicroabscesses, immunocompromised, ultrasoundPattern.\n- STATdx image 24: Sagittal US of the spleen demonstrates an abscess with low-level echoes <img src=\"arrow_WS.png\">. Used for: splenicAbscess, ultrasoundPattern.\n- STATdx image 25: Axial CECT shows an encapsulated fluid collection <img src=\"arrow_WS.png\"> with peripheral rim enhancement in the right lower quadrant. In the midst of the fluid collection is a tubular structure <img src=\"arrow_WC.png\">, representing a ruptured appendix. Used for: appendicealAbscess, nearDuplicate, samePatientCluster, recognitionReinforcement.\n- STATdx image 27: Axial CECT in a patient who underwent a cholecystectomy shows a collection of gas <img src=\"arrow_WS.png\">  but very little fluid, in the cholecystectomy bed. Surgical clips <img src=\"arrow_WC.png\"> are also seen. This represents oxidized cellulose (Surgicel), which was placed for hemostasis at surgery, and not an abscess. Used for: abscessMimic, Surgicel, postoperativeDifferential.\n\n=== ARCHIVE-OPTIONAL DUPLICATE IMAGES ===\n- STATdx image 11: archiveOptionalDuplicate. Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences.\n- STATdx image 17: archiveOptionalDuplicate. Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences.\n- STATdx image 26: archiveOptionalDuplicate. Visual inspection of staged image_evidence files shows the same appendiceal abscess drainage catheter CT image as STATdx image 2.\n\n=== CASE CLUSTER NOTES ===\n- RadPrimer images 5 and 6 are a same-patient free-air/diverticular abscess cluster and both remain selected.\n- STATdx image 12 and STATdx image 18 are adjacent/same-patient reinforcement images and remain selected even though their paired duplicate opening slices are archived.\n- STATdx image 2 preserves catheter follow-up context for the appendiceal abscess cluster after STATdx image 26 is archived as an exact duplicate.\n\n=== GENERATOR INSTRUCTIONS ===\n- Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.\n- Use clean source-qualified labels in prose, such as RadPrimer image 5 and STATdx image 4.\n- Use registry IDs, source image IDs, hashes, and filenames for traceability and download routing.\n",
+  "manifest": {
+    "articleTitle": "Abdominal Abscess",
+    "canonicalHierarchy": [
+      "All Categories",
+      "Basic",
+      "Gastrointestinal",
+      "Peritoneum, Mesentery, and Abdominal Wall",
+      "Abdominal Abscess"
+    ],
+    "canonicalHierarchySource": "metadata.json canonicalHierarchy",
+    "canonicalDeckPath": "Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Abdominal Abscess",
+    "sourcePriority": [
+      "RadPrimer",
+      "STATdx supplemental"
+    ],
+    "sourceCoverage": {
+      "textCoverage": "RadPrimer and STATdx substantially overlap in core article text; STATdx adds supplemental wording and image breadth.",
+      "imageCoverageSummary": "STATdx does not fully cover the RadPrimer image set. Only RadPrimer image 2 has exact STATdx duplicates; RadPrimer images 8 and 9 have near-duplicate/same-concept reinforcement; RadPrimer image 10 is not covered.",
+      "radPrimerImageCoverageBySTATdx": [
+        {
+          "radPrimerImageId": "RP-01",
+          "radPrimerImageLabel": "RadPrimer image 1",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-12",
+            "SDX-18"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx includes postoperative abscess examples, but no exact duplicate of this rounded gas-containing postoperative collection."
+        },
+        {
+          "radPrimerImageId": "RP-02",
+          "radPrimerImageLabel": "RadPrimer image 2",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-11",
+            "SDX-17",
+            "SDX-12",
+            "SDX-18"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx images 11 and 17 are the same axial CT slice/content; STATdx images 12 and 18 are adjacent/same-patient reinforcement rather than duplicates."
+        },
+        {
+          "radPrimerImageId": "RP-03",
+          "radPrimerImageLabel": "RadPrimer image 3",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-05",
+            "SDX-06",
+            "SDX-10"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx has pelvic abscess examples, especially MR/CT pelvic cases, but not the same post-hysterectomy CT image."
+        },
+        {
+          "radPrimerImageId": "RP-04",
+          "radPrimerImageLabel": "RadPrimer image 4",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-02",
+            "SDX-26"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx includes drainage catheter follow-up examples, but not this transgluteal drainage image."
+        },
+        {
+          "radPrimerImageId": "RP-05",
+          "radPrimerImageLabel": "RadPrimer image 5",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-03",
+            "SDX-13",
+            "SDX-15",
+            "SDX-16"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx covers perforation-related abscess and gas-forming collections but does not exactly reproduce this free intraperitoneal gas image."
+        },
+        {
+          "radPrimerImageId": "RP-06",
+          "radPrimerImageLabel": "RadPrimer image 6",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-03",
+            "SDX-13",
+            "SDX-15",
+            "SDX-16"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx provides diverticulitis/perforation abscess cases, but this same-patient sigmoid diverticulosis/abscess slice is not duplicated."
+        },
+        {
+          "radPrimerImageId": "RP-07",
+          "radPrimerImageLabel": "RadPrimer image 7",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-08",
+            "SDX-13"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx includes gas-forming/retroperitoneal or lesser sac infected collections, but not the ERCP duodenal perforation case."
+        },
+        {
+          "radPrimerImageId": "RP-08",
+          "radPrimerImageLabel": "RadPrimer image 8",
+          "classification": "nearDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-04"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx image 4 is the same GIST mimic teaching concept and likely same case family, but it is a different CT slice/image, so both remain primary."
+        },
+        {
+          "radPrimerImageId": "RP-09",
+          "radPrimerImageLabel": "RadPrimer image 9",
+          "classification": "nearDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-09",
+            "SDX-10"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx images 9 and 10 provide tuboovarian abscess ultrasound/CT reinforcement; the ultrasound appearance is visually distinct and not an exact duplicate."
+        },
+        {
+          "radPrimerImageId": "RP-10",
+          "radPrimerImageLabel": "RadPrimer image 10",
+          "classification": "notCovered",
+          "relatedSTATdxImageIds": [],
+          "decision": "selectedPrimary",
+          "notes": "No STATdx staged image shows the same right psoas/Crohn-related MR abscess teaching point."
+        }
+      ]
+    },
+    "imageCountBySource": {
+      "RadPrimer": {
+        "total": 10,
+        "primaryTeachingSet": 10,
+        "archiveOptionalDuplicate": 0
+      },
+      "STATdx": {
+        "total": 27,
+        "primaryTeachingSet": 24,
+        "archiveOptionalDuplicate": 3
+      },
+      "allSources": {
+        "total": 37,
+        "primaryTeachingSet": 34,
+        "archiveOptionalDuplicate": 3
+      }
+    },
+    "sourceAttributionRules": [
+      "Use [Both] for facts present in both RadPrimer and STATdx.",
+      "Use [RadPrimer] for canonical hierarchy, RadPrimer-only measurements, and PAD success details.",
+      "Use [STATdx] for supplemental cases, small-abscess technical nuance, and source-specific image examples."
+    ],
+    "selectedPrimaryImageIds": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-27"
+    ],
+    "archiveOptionalImageIds": [
+      "SDX-11",
+      "SDX-17",
+      "SDX-26"
+    ],
+    "sourceSelectionPlan": {
+      "textBackbone": "Use RadPrimer as the canonical hierarchy and article backbone; STATdx is used as supplemental depth where it adds modality-specific language, mechanisms, management nuance, differential mimics, or stronger image examples.",
+      "keepFromRadPrimer": [
+        "Canonical hierarchy and deck routing.",
+        "Core imaging definition and CT/US/MR/radiographic/fluoroscopic/nuclear medicine structure.",
+        "Differential diagnosis list and PAD success/patient-selection details.",
+        "All RadPrimer images as selected primary images."
+      ],
+      "keepFromSTATdx": [
+        "Small-abscess drainage nuance and fat-saturated MR edema emphasis.",
+        "Additional etiologic image examples: appendicitis, diverticulitis, uterine rupture, traumatic Foley, pancreatitis, liver/amebic/fungal/splenic abscesses, and Surgicel mimic.",
+        "All nonduplicate STATdx images as recognition reinforcement or supplemental cases."
+      ],
+      "downweightOrSkip": [
+        "Do not repeat source-identical article prose twice.",
+        "Do not use STATdx breadcrumb/deck path for routing.",
+        "Archive only visually exact duplicate STATdx images 11, 17, and 26 by default."
+      ],
+      "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+      "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+      "caseClusterGuardrails": {
+        "atomicClusterRule": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse clusters should remain together unless the archived member is a visually exact duplicate and the selected retained image preserves the teaching context.",
+        "intentionalClusterSplits": [
+          {
+            "cluster": "STATdx images 11-12 postoperative abscess",
+            "selected": [
+              "SDX-12",
+              "RP-02"
+            ],
+            "archived": [
+              "SDX-11"
+            ],
+            "reason": "STATdx image 11 is an exact duplicate of RadPrimer image 2; STATdx image 12 is an adjacent same-patient slice with gas and remains selected."
+          },
+          {
+            "cluster": "STATdx images 17-18 postoperative abscess",
+            "selected": [
+              "SDX-18",
+              "RP-02"
+            ],
+            "archived": [
+              "SDX-17"
+            ],
+            "reason": "STATdx image 17 is an exact duplicate of RadPrimer image 2; STATdx image 18 is an adjacent same-patient slice and remains selected."
+          },
+          {
+            "cluster": "STATdx images 25-26 appendiceal abscess/drainage",
+            "selected": [
+              "SDX-25",
+              "SDX-02"
+            ],
+            "archived": [
+              "SDX-26"
+            ],
+            "reason": "STATdx image 26 is an exact duplicate of STATdx image 2; the catheter follow-up context is preserved by selecting STATdx image 2."
+          }
+        ],
+        "radPrimerClustersPreserved": [
+          {
+            "cluster": "RadPrimer images 5-6 free air and diverticular abscess",
+            "selected": [
+              "RP-05",
+              "RP-06"
+            ],
+            "archived": []
+          }
+        ]
+      },
+      "radPrimerCoverageBySTATdx": [
+        {
+          "radPrimerImageId": "RP-01",
+          "radPrimerImageLabel": "RadPrimer image 1",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-12",
+            "SDX-18"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx includes postoperative abscess examples, but no exact duplicate of this rounded gas-containing postoperative collection."
+        },
+        {
+          "radPrimerImageId": "RP-02",
+          "radPrimerImageLabel": "RadPrimer image 2",
+          "classification": "exactDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-11",
+            "SDX-17",
+            "SDX-12",
+            "SDX-18"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx images 11 and 17 are the same axial CT slice/content; STATdx images 12 and 18 are adjacent/same-patient reinforcement rather than duplicates."
+        },
+        {
+          "radPrimerImageId": "RP-03",
+          "radPrimerImageLabel": "RadPrimer image 3",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-05",
+            "SDX-06",
+            "SDX-10"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx has pelvic abscess examples, especially MR/CT pelvic cases, but not the same post-hysterectomy CT image."
+        },
+        {
+          "radPrimerImageId": "RP-04",
+          "radPrimerImageLabel": "RadPrimer image 4",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-02",
+            "SDX-26"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx includes drainage catheter follow-up examples, but not this transgluteal drainage image."
+        },
+        {
+          "radPrimerImageId": "RP-05",
+          "radPrimerImageLabel": "RadPrimer image 5",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-03",
+            "SDX-13",
+            "SDX-15",
+            "SDX-16"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx covers perforation-related abscess and gas-forming collections but does not exactly reproduce this free intraperitoneal gas image."
+        },
+        {
+          "radPrimerImageId": "RP-06",
+          "radPrimerImageLabel": "RadPrimer image 6",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-03",
+            "SDX-13",
+            "SDX-15",
+            "SDX-16"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx provides diverticulitis/perforation abscess cases, but this same-patient sigmoid diverticulosis/abscess slice is not duplicated."
+        },
+        {
+          "radPrimerImageId": "RP-07",
+          "radPrimerImageLabel": "RadPrimer image 7",
+          "classification": "conceptualReplacement",
+          "relatedSTATdxImageIds": [
+            "SDX-08",
+            "SDX-13"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx includes gas-forming/retroperitoneal or lesser sac infected collections, but not the ERCP duodenal perforation case."
+        },
+        {
+          "radPrimerImageId": "RP-08",
+          "radPrimerImageLabel": "RadPrimer image 8",
+          "classification": "nearDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-04"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx image 4 is the same GIST mimic teaching concept and likely same case family, but it is a different CT slice/image, so both remain primary."
+        },
+        {
+          "radPrimerImageId": "RP-09",
+          "radPrimerImageLabel": "RadPrimer image 9",
+          "classification": "nearDuplicate",
+          "relatedSTATdxImageIds": [
+            "SDX-09",
+            "SDX-10"
+          ],
+          "decision": "selectedPrimary",
+          "notes": "STATdx images 9 and 10 provide tuboovarian abscess ultrasound/CT reinforcement; the ultrasound appearance is visually distinct and not an exact duplicate."
+        },
+        {
+          "radPrimerImageId": "RP-10",
+          "radPrimerImageLabel": "RadPrimer image 10",
+          "classification": "notCovered",
+          "relatedSTATdxImageIds": [],
+          "decision": "selectedPrimary",
+          "notes": "No STATdx staged image shows the same right psoas/Crohn-related MR abscess teaching point."
+        }
+      ],
+      "primaryImageDownloadUseSet": [
+        "RP-01",
+        "RP-02",
+        "RP-03",
+        "RP-04",
+        "RP-05",
+        "RP-06",
+        "RP-07",
+        "RP-08",
+        "RP-09",
+        "RP-10",
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22",
+        "SDX-23",
+        "SDX-24",
+        "SDX-25",
+        "SDX-27"
+      ],
+      "archiveOptionalDuplicates": [
+        "SDX-11",
+        "SDX-17",
+        "SDX-26"
+      ],
+      "imageDownloadPlan": {
+        "defaultBehavior": "Download only primaryTeachingSet images by default, using selectedPrimaryImageIds and the source-qualified downloadFilename values below.",
+        "primaryTeachingSet": [
+          {
+            "masterImageId": "RP-01",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 1,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-01_RadPrimer_image_01_plain_846d8abc.jpg",
+            "plainUrl": "https://app.radprimer.com/images/846d8abc-fd05-45f4-a05f-e56c61128017?style=xlarge&annotated=false",
+            "reason": "primaryPattern; postoperativeAbscess; rimEnhancement; internalGas"
+          },
+          {
+            "masterImageId": "RP-02",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 2,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-02_RadPrimer_image_02_plain_f7df9c10.jpg",
+            "plainUrl": "https://app.radprimer.com/images/f7df9c10-bf49-4750-9fd7-dd337600c02f?style=xlarge&annotated=false",
+            "reason": "primaryPattern; multipleAbscesses; airFluidLevel; exactDuplicateAnchor"
+          },
+          {
+            "masterImageId": "RP-03",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 3,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-03_RadPrimer_image_03_plain_6554093d.jpg",
+            "plainUrl": "https://app.radprimer.com/images/6554093d-f7e5-4995-bf3a-26bfc2376012?style=xlarge&annotated=false",
+            "reason": "pelvicAbscess; postoperativeAbscess; massEffect"
+          },
+          {
+            "masterImageId": "RP-04",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 4,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-04_RadPrimer_image_04_plain_81ebd4a0.jpg",
+            "plainUrl": "https://app.radprimer.com/images/81ebd4a0-6856-4a69-b163-a695ebb4c18d?style=xlarge&annotated=false",
+            "reason": "drainageFollowUp; transglutealApproach; procedureContext"
+          },
+          {
+            "masterImageId": "RP-05",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 5,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-05_RadPrimer_image_05_plain_42eea53b.jpg",
+            "plainUrl": "https://app.radprimer.com/images/42eea53b-5d58-40d3-80b5-9903cca36a71?style=xlarge&annotated=false",
+            "reason": "samePatientCluster; entericPerforation; freeIntraperitonealGas"
+          },
+          {
+            "masterImageId": "RP-06",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 6,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-06_RadPrimer_image_06_plain_a276a1f4.jpg",
+            "plainUrl": "https://app.radprimer.com/images/a276a1f4-e439-41a6-8dde-1e83f4f0103d?style=xlarge&annotated=false",
+            "reason": "samePatientCluster; diverticularAbscess; sourceOfFreeAir"
+          },
+          {
+            "masterImageId": "RP-07",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 7,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-07_RadPrimer_image_07_plain_dd8891e9.jpg",
+            "plainUrl": "https://app.radprimer.com/images/dd8891e9-cbd4-478c-b5fd-3762da948056?style=xlarge&annotated=false",
+            "reason": "retroperitonealAbscess; duodenalPerforation; postERCPComplication"
+          },
+          {
+            "masterImageId": "RP-08",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 8,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-08_RadPrimer_image_08_plain_5e0e3eb5.jpg",
+            "plainUrl": "https://app.radprimer.com/images/5e0e3eb5-8b60-4588-9ca6-d2fd13968e2a?style=xlarge&annotated=false",
+            "reason": "abscessMimic; cysticNeoplasm; GIST; recognitionReinforcement"
+          },
+          {
+            "masterImageId": "RP-09",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 9,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-09_RadPrimer_image_09_plain_4a1dc1d0.jpg",
+            "plainUrl": "https://app.radprimer.com/images/4a1dc1d0-71a4-46eb-8423-1900bb760eb5?style=xlarge&annotated=false",
+            "reason": "ultrasoundPattern; tuboovarianAbscess; internalSeptations"
+          },
+          {
+            "masterImageId": "RP-10",
+            "sourceLabel": "RadPrimer",
+            "sourceImageNumber": 10,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "RP-10_RadPrimer_image_10_plain_7daa6ea6.jpg",
+            "plainUrl": "https://app.radprimer.com/images/7daa6ea6-03d7-46bf-8a7e-d30306e58d20?style=xlarge&annotated=false",
+            "reason": "mriPattern; psoasAbscess; CrohnDisease; phlegmon"
+          },
+          {
+            "masterImageId": "SDX-01",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 1,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-01_STATdx_image_01_plain_f6d35c95.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/f6d35c95-77c7-436e-9b8e-ccd078a8d40d?size=1000&quality=90",
+            "reason": "appendicealAbscess; alternateExample; recognitionReinforcement; samePatientCluster"
+          },
+          {
+            "masterImageId": "SDX-02",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 2,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-02_STATdx_image_02_plain_6a98e0ab.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/6a98e0ab-3144-4860-bae6-5892bdf3b557?size=1000&quality=90",
+            "reason": "drainageFollowUp; appendicealAbscess; procedureContext; duplicateAnchor"
+          },
+          {
+            "masterImageId": "SDX-03",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 3,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-03_STATdx_image_03_plain_8cd67bfa.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/8cd67bfa-bf05-4125-a192-9489d77e14e6?size=1000&quality=90",
+            "reason": "diverticulitisAbscess; alternateExample; recognitionReinforcement"
+          },
+          {
+            "masterImageId": "SDX-04",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 4,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-04_STATdx_image_04_plain_9611c81c.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/9611c81c-bb12-43a9-b117-8c819a020d15?size=1000&quality=90",
+            "reason": "abscessMimic; GIST; nearDuplicate; recognitionReinforcement"
+          },
+          {
+            "masterImageId": "SDX-05",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 5,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-05_STATdx_image_05_plain_39e02a5b.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/39e02a5b-5604-480c-9e77-742337eca633?size=1000&quality=90",
+            "reason": "mriPattern; pelvicAbscess; samePatientCluster"
+          },
+          {
+            "masterImageId": "SDX-06",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 6,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-06_STATdx_image_06_plain_fb463b38.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/fb463b38-f9ff-4c57-8f3e-0c4bec4bcebb?size=1000&quality=90",
+            "reason": "mriPattern; uterineRupture; samePatientCluster; mechanism"
+          },
+          {
+            "masterImageId": "SDX-07",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 7,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-07_STATdx_image_07_plain_283d7e4e.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/283d7e4e-78c0-447e-be43-b1b2224fe52c?size=1000&quality=90",
+            "reason": "perinealAbscess; traumaticFoley; unusualCause"
+          },
+          {
+            "masterImageId": "SDX-08",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 8,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-08_STATdx_image_08_plain_1bbcbb4f.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/1bbcbb4f-7db2-43e4-9d4d-d34c7a41d0b4?size=1000&quality=90",
+            "reason": "lesserSacAbscess; necrotizingPancreatitis; gasFormingInfection"
+          },
+          {
+            "masterImageId": "SDX-09",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 9,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-09_STATdx_image_09_plain_f164be32.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/f164be32-66a4-4edf-a0ed-55ce2411bd4c?size=1000&quality=90",
+            "reason": "ultrasoundPattern; tuboovarianAbscess; samePatientCluster; recognitionReinforcement"
+          },
+          {
+            "masterImageId": "SDX-10",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 10,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-10_STATdx_image_10_plain_7d277c1c.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/7d277c1c-5070-446e-bf1c-f48a6a6ef5f8?size=1000&quality=90",
+            "reason": "ctCorrelation; tuboovarianAbscess; samePatientCluster"
+          },
+          {
+            "masterImageId": "SDX-12",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 12,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-12_STATdx_image_12_plain_b293dd85.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/b293dd85-2687-4f52-8f51-f01cf26080af?size=1000&quality=90",
+            "reason": "samePatientCluster; postoperativeAbscess; adjacentSlice; internalGas"
+          },
+          {
+            "masterImageId": "SDX-13",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 13,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-13_STATdx_image_13_plain_0e0a0ff8.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/0e0a0ff8-af6e-43f2-9b14-9f34d74a888f?size=1000&quality=90",
+            "reason": "gasFormingAbscess; retrocecalAbscess; perforatedDiverticulum"
+          },
+          {
+            "masterImageId": "SDX-14",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 14,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-14_STATdx_image_14_plain_aa4958f9.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/aa4958f9-b938-49a6-b407-3ebfef257898?size=1000&quality=90",
+            "reason": "ultrasoundPattern; postoperativeAbscess; fluidFluidLevel"
+          },
+          {
+            "masterImageId": "SDX-15",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 15,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-15_STATdx_image_15_plain_afcb5d1c.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/afcb5d1c-2606-4c98-a7a8-ca50086147da?size=1000&quality=90",
+            "reason": "samePatientCluster; intramuralSigmoidAbscess; diverticulitis"
+          },
+          {
+            "masterImageId": "SDX-16",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 16,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-16_STATdx_image_16_plain_59c7aab4.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/59c7aab4-cea0-4d4b-9e88-992c036dfb21?size=1000&quality=90",
+            "reason": "samePatientCluster; intramuralSigmoidAbscess; adjacentSlice"
+          },
+          {
+            "masterImageId": "SDX-18",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 18,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-18_STATdx_image_18_plain_4fa541bd.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/4fa541bd-3356-4d09-93f1-2c19e989242f?size=1000&quality=90",
+            "reason": "samePatientCluster; postoperativeAbscess; adjacentSlice; internalGas"
+          },
+          {
+            "masterImageId": "SDX-19",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 19,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-19_STATdx_image_19_plain_741c67e9.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/741c67e9-4988-4c0a-95a9-70ea820636fa?size=1000&quality=90",
+            "reason": "liverAbscess; gasFormingInfection; diabetes; ctPattern"
+          },
+          {
+            "masterImageId": "SDX-20",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 20,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-20_STATdx_image_20_plain_e3c0f7c4.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/e3c0f7c4-4ff5-4331-aafc-464de3e19c44?size=1000&quality=90",
+            "reason": "liverAbscess; ultrasoundPattern; dirtyShadowing; gas"
+          },
+          {
+            "masterImageId": "SDX-21",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 21,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-21_STATdx_image_21_plain_fc5dfc81.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/fc5dfc81-dd50-4e82-ac14-3670312a4a1f?size=1000&quality=90",
+            "reason": "amebicAbscess; ctPattern; perilesionalEdema"
+          },
+          {
+            "masterImageId": "SDX-22",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 22,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-22_STATdx_image_22_plain_6a267c0b.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/6a267c0b-aeaf-486c-b49d-c6859155cfbd?size=1000&quality=90",
+            "reason": "amebicAbscess; ultrasoundPattern; lowLevelEchoes"
+          },
+          {
+            "masterImageId": "SDX-23",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 23,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-23_STATdx_image_23_plain_9bd6e718.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/9bd6e718-2f02-4a07-8188-ae5b8a113655?size=1000&quality=90",
+            "reason": "fungalMicroabscesses; immunocompromised; ultrasoundPattern"
+          },
+          {
+            "masterImageId": "SDX-24",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 24,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-24_STATdx_image_24_plain_622d7b45.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/622d7b45-976f-4915-95a3-2ade49c3c3fe?size=1000&quality=90",
+            "reason": "splenicAbscess; ultrasoundPattern"
+          },
+          {
+            "masterImageId": "SDX-25",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 25,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-25_STATdx_image_25_plain_3b819c57.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/3b819c57-cb71-4b29-b40f-3caa21c0fac7?size=1000&quality=90",
+            "reason": "appendicealAbscess; nearDuplicate; samePatientCluster; recognitionReinforcement"
+          },
+          {
+            "masterImageId": "SDX-27",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 27,
+            "downloadRecommendation": "primaryTeachingSet",
+            "downloadFilename": "SDX-27_STATdx_image_27_plain_5e5f3a9d.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/5e5f3a9d-f509-4289-a26f-b83ec6d01f3c?size=1000&quality=90",
+            "reason": "abscessMimic; Surgicel; postoperativeDifferential"
+          }
+        ],
+        "archiveOptionalDuplicates": [
+          {
+            "masterImageId": "SDX-11",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 11,
+            "downloadRecommendation": "archiveOptionalDuplicate",
+            "downloadFilename": "SDX-11_STATdx_image_11_plain_dbad4316.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/dbad4316-5b01-4b25-9955-1f76bff9408e?size=1000&quality=90",
+            "reason": "Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences."
+          },
+          {
+            "masterImageId": "SDX-17",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 17,
+            "downloadRecommendation": "archiveOptionalDuplicate",
+            "downloadFilename": "SDX-17_STATdx_image_17_plain_8bad69da.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/8bad69da-b103-4157-aebf-ac1a19526b9f?size=1000&quality=90",
+            "reason": "Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences."
+          },
+          {
+            "masterImageId": "SDX-26",
+            "sourceLabel": "STATdx",
+            "sourceImageNumber": 26,
+            "downloadRecommendation": "archiveOptionalDuplicate",
+            "downloadFilename": "SDX-26_STATdx_image_26_plain_081a030b.jpg",
+            "plainUrl": "https://app.statdx.com/image/thumbnail/081a030b-22a5-4f4c-804d-ddb36ec88ba8?size=1000&quality=90",
+            "reason": "Visual inspection of staged image_evidence files shows the same appendiceal abscess drainage catheter CT image as STATdx image 2."
+          }
+        ]
+      },
+      "generatorInstructions": [
+        "Use source-qualified human labels in narrative-facing text, such as RadPrimer image 5 or STATdx image 4.",
+        "Keep short IDs such as RP-05 and SDX-04 in registry, manifest, filenames, and traceability fields.",
+        "Do not generate cards or a lecture from this synthesis step."
+      ]
+    }
+  },
+  "imageRegistry": [
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "imageId": "846d8abc-fd05-45f4-a05f-e56c61128017",
+      "baseName": "Abdominal_Abscess1",
+      "caption": "Axial CECT in an older postoperative patient demonstrates a rounded complex fluid collection <img src=\"arrow_WS.png\"> with gas bubbles <img src=\"arrow_WC.png\"> and an enhancing capsule <img src=\"arrow_WO.png\">, findings diagnostic for an abdominal abscess.",
+      "plainFilename": "RP-01_RadPrimer_image_01_plain_846d8abc.jpg",
+      "annotatedFilename": "RP-01_RadPrimer_annotated_Abdominal_Abscess1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/846d8abc-fd05-45f4-a05f-e56c61128017?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/846d8abc-fd05-45f4-a05f-e56c61128017?style=xlarge&annotated=true",
+      "masterImageId": "RP-01",
+      "filename": "Abdominal_Abscess1.jpg",
+      "group": "",
+      "usedFor": [
+        "primaryPattern",
+        "postoperativeAbscess",
+        "rimEnhancement",
+        "internalGas"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_846d8abc.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/846d8abc-fd05-45f4-a05f-e56c61128017?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "b7eb3eaf4fd120b6101386edf4398dcb1c83a295a9492c3fd3d4aea372464235"
+      },
+      "sourceImageId": "846d8abc-fd05-45f4-a05f-e56c61128017",
+      "sourcePlainFilename": "Abdominal_Abscess1.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess1_annot.jpg",
+      "downloadFilename": "RP-01_RadPrimer_image_01_plain_846d8abc.jpg",
+      "radPrimerCoverageBySTATdx": "conceptualReplacement",
+      "coverageNotes": "STATdx includes postoperative abscess examples, but no exact duplicate of this rounded gas-containing postoperative collection.",
+      "relatedImageIds": [
+        "SDX-12",
+        "SDX-18"
+      ]
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "imageId": "f7df9c10-bf49-4750-9fd7-dd337600c02f",
+      "baseName": "Abdominal_Abscess2",
+      "caption": "Axial CECT in an older postoperative patient demonstrates multiple loculated fluid collections <img src=\"arrow_WS.png\"> with prominently enhancing capsules <img src=\"arrow_WC.png\"> and mass effect on adjacent structures, representing abdominal abscesses. Note the air-fluid level <img src=\"arrow_WO.png\"> within one of the abscesses.",
+      "plainFilename": "RP-02_RadPrimer_image_02_plain_f7df9c10.jpg",
+      "annotatedFilename": "RP-02_RadPrimer_annotated_Abdominal_Abscess2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/f7df9c10-bf49-4750-9fd7-dd337600c02f?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/f7df9c10-bf49-4750-9fd7-dd337600c02f?style=xlarge&annotated=true",
+      "masterImageId": "RP-02",
+      "filename": "Abdominal_Abscess2.jpg",
+      "group": "",
+      "usedFor": [
+        "primaryPattern",
+        "multipleAbscesses",
+        "airFluidLevel",
+        "exactDuplicateAnchor"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_f7df9c10.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/f7df9c10-bf49-4750-9fd7-dd337600c02f?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "0b4282a194b0f1eaa0c4ba77cd406a66405aa739a5766b1240889c8dd109dc82"
+      },
+      "sourceImageId": "f7df9c10-bf49-4750-9fd7-dd337600c02f",
+      "sourcePlainFilename": "Abdominal_Abscess2.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess2_annot.jpg",
+      "downloadFilename": "RP-02_RadPrimer_image_02_plain_f7df9c10.jpg",
+      "radPrimerCoverageBySTATdx": "exactDuplicate",
+      "coverageNotes": "STATdx images 11 and 17 are the same axial CT slice/content; STATdx images 12 and 18 are adjacent/same-patient reinforcement rather than duplicates.",
+      "relatedImageIds": [
+        "SDX-11",
+        "SDX-17",
+        "SDX-12",
+        "SDX-18"
+      ]
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "imageId": "6554093d-f7e5-4995-bf3a-26bfc2376012",
+      "baseName": "Abdominal_Abscess3",
+      "caption": "Axial CECT shows a large pelvic abscess <img src=\"arrow_WS.png\"> following a hysterectomy. Note the presence of a discrete enhancing rim and mass effect on adjacent loops of bowel and the bladder.",
+      "plainFilename": "RP-03_RadPrimer_image_03_plain_6554093d.jpg",
+      "annotatedFilename": "RP-03_RadPrimer_annotated_Abdominal_Abscess3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/6554093d-f7e5-4995-bf3a-26bfc2376012?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/6554093d-f7e5-4995-bf3a-26bfc2376012?style=xlarge&annotated=true",
+      "masterImageId": "RP-03",
+      "filename": "Abdominal_Abscess3.jpg",
+      "group": "",
+      "usedFor": [
+        "pelvicAbscess",
+        "postoperativeAbscess",
+        "massEffect"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_6554093d.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/6554093d-f7e5-4995-bf3a-26bfc2376012?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "68f49381f33c80a67f0ba04e607f3cec19c01f99c7b9e83399aacae1dee29c62"
+      },
+      "sourceImageId": "6554093d-f7e5-4995-bf3a-26bfc2376012",
+      "sourcePlainFilename": "Abdominal_Abscess3.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess3_annot.jpg",
+      "downloadFilename": "RP-03_RadPrimer_image_03_plain_6554093d.jpg",
+      "radPrimerCoverageBySTATdx": "conceptualReplacement",
+      "coverageNotes": "STATdx has pelvic abscess examples, especially MR/CT pelvic cases, but not the same post-hysterectomy CT image.",
+      "relatedImageIds": [
+        "SDX-05",
+        "SDX-06",
+        "SDX-10"
+      ]
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "imageId": "81ebd4a0-6856-4a69-b163-a695ebb4c18d",
+      "baseName": "Abdominal_Abscess4",
+      "caption": "Axial CECT shows placement of a percutaneous drainage catheter <img src=\"arrow_WS.png\"> using a transgluteal approach. The abscess has almost completely resolved following drainage.",
+      "plainFilename": "RP-04_RadPrimer_image_04_plain_81ebd4a0.jpg",
+      "annotatedFilename": "RP-04_RadPrimer_annotated_Abdominal_Abscess4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/81ebd4a0-6856-4a69-b163-a695ebb4c18d?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/81ebd4a0-6856-4a69-b163-a695ebb4c18d?style=xlarge&annotated=true",
+      "masterImageId": "RP-04",
+      "filename": "Abdominal_Abscess4.jpg",
+      "group": "",
+      "usedFor": [
+        "drainageFollowUp",
+        "transglutealApproach",
+        "procedureContext"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_81ebd4a0.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/81ebd4a0-6856-4a69-b163-a695ebb4c18d?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "0210a70ced2c2d3cfef68442d564b89b2f046468a75ef981d43647d69a4d0445"
+      },
+      "sourceImageId": "81ebd4a0-6856-4a69-b163-a695ebb4c18d",
+      "sourcePlainFilename": "Abdominal_Abscess4.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess4_annot.jpg",
+      "downloadFilename": "RP-04_RadPrimer_image_04_plain_81ebd4a0.jpg",
+      "radPrimerCoverageBySTATdx": "conceptualReplacement",
+      "coverageNotes": "STATdx includes drainage catheter follow-up examples, but not this transgluteal drainage image.",
+      "relatedImageIds": [
+        "SDX-02",
+        "SDX-26"
+      ]
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 5,
+      "imageId": "42eea53b-5d58-40d3-80b5-9903cca36a71",
+      "baseName": "Abdominal_Abscess5",
+      "caption": "Axial CECT in a woman who presented with lower abdominal pain, fever, and tenderness shows extensive free intraperitoneal gas <img src=\"arrow_WS.png\">.",
+      "plainFilename": "RP-05_RadPrimer_image_05_plain_42eea53b.jpg",
+      "annotatedFilename": "RP-05_RadPrimer_annotated_Abdominal_Abscess5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/42eea53b-5d58-40d3-80b5-9903cca36a71?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/42eea53b-5d58-40d3-80b5-9903cca36a71?style=xlarge&annotated=true",
+      "masterImageId": "RP-05",
+      "filename": "Abdominal_Abscess5.jpg",
+      "group": "",
+      "usedFor": [
+        "samePatientCluster",
+        "entericPerforation",
+        "freeIntraperitonealGas"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_42eea53b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/42eea53b-5d58-40d3-80b5-9903cca36a71?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "b73dea5190ee4a8e65e235d397372ba3a8afbca12817bf075a6225a159c6111e"
+      },
+      "sourceImageId": "42eea53b-5d58-40d3-80b5-9903cca36a71",
+      "sourcePlainFilename": "Abdominal_Abscess5.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess5_annot.jpg",
+      "downloadFilename": "RP-05_RadPrimer_image_05_plain_42eea53b.jpg",
+      "radPrimerCoverageBySTATdx": "conceptualReplacement",
+      "coverageNotes": "STATdx covers perforation-related abscess and gas-forming collections but does not exactly reproduce this free intraperitoneal gas image.",
+      "relatedImageIds": [
+        "SDX-03",
+        "SDX-13",
+        "SDX-15",
+        "SDX-16"
+      ]
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 6,
+      "imageId": "a276a1f4-e439-41a6-8dde-1e83f4f0103d",
+      "baseName": "Abdominal_Abscess6",
+      "caption": "Axial CECT in the same patient shows a loculated abscess <img src=\"arrow_WC.png\"> immediately adjacent to a segment of sigmoid colon with extensive diverticulosis <img src=\"arrow_WO.png\">, which proved to be the source of the free air and abscesses.",
+      "plainFilename": "RP-06_RadPrimer_image_06_plain_a276a1f4.jpg",
+      "annotatedFilename": "RP-06_RadPrimer_annotated_Abdominal_Abscess6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/a276a1f4-e439-41a6-8dde-1e83f4f0103d?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/a276a1f4-e439-41a6-8dde-1e83f4f0103d?style=xlarge&annotated=true",
+      "masterImageId": "RP-06",
+      "filename": "Abdominal_Abscess6.jpg",
+      "group": "",
+      "usedFor": [
+        "samePatientCluster",
+        "diverticularAbscess",
+        "sourceOfFreeAir"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_a276a1f4.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/a276a1f4-e439-41a6-8dde-1e83f4f0103d?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "65db1bf42fd6a2b745af3b5ddbbed4767367a8253bc3b63fa1ed5bf29f759c21"
+      },
+      "sourceImageId": "a276a1f4-e439-41a6-8dde-1e83f4f0103d",
+      "sourcePlainFilename": "Abdominal_Abscess6.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess6_annot.jpg",
+      "downloadFilename": "RP-06_RadPrimer_image_06_plain_a276a1f4.jpg",
+      "radPrimerCoverageBySTATdx": "conceptualReplacement",
+      "coverageNotes": "STATdx provides diverticulitis/perforation abscess cases, but this same-patient sigmoid diverticulosis/abscess slice is not duplicated.",
+      "relatedImageIds": [
+        "SDX-03",
+        "SDX-13",
+        "SDX-15",
+        "SDX-16"
+      ]
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 7,
+      "imageId": "dd8891e9-cbd4-478c-b5fd-3762da948056",
+      "baseName": "Abdominal_Abscess7",
+      "caption": "Axial CECT after ERCP shows a large collection of gas and fluid <img src=\"arrow_WS.png\"> dissecting through the retroperitoneal spaces, especially the anterior pararenal space and the interfascial plane <img src=\"arrow_WC.png\">. These findings were due to perforation of the duodenum at the papillotomy site.",
+      "plainFilename": "RP-07_RadPrimer_image_07_plain_dd8891e9.jpg",
+      "annotatedFilename": "RP-07_RadPrimer_annotated_Abdominal_Abscess7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/dd8891e9-cbd4-478c-b5fd-3762da948056?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/dd8891e9-cbd4-478c-b5fd-3762da948056?style=xlarge&annotated=true",
+      "masterImageId": "RP-07",
+      "filename": "Abdominal_Abscess7.jpg",
+      "group": "",
+      "usedFor": [
+        "retroperitonealAbscess",
+        "duodenalPerforation",
+        "postERCPComplication"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_dd8891e9.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/dd8891e9-cbd4-478c-b5fd-3762da948056?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "53bd4065d11916de4431cb9a991a9682333bb70def07fbadd5948519070f210b"
+      },
+      "sourceImageId": "dd8891e9-cbd4-478c-b5fd-3762da948056",
+      "sourcePlainFilename": "Abdominal_Abscess7.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess7_annot.jpg",
+      "downloadFilename": "RP-07_RadPrimer_image_07_plain_dd8891e9.jpg",
+      "radPrimerCoverageBySTATdx": "conceptualReplacement",
+      "coverageNotes": "STATdx includes gas-forming/retroperitoneal or lesser sac infected collections, but not the ERCP duodenal perforation case.",
+      "relatedImageIds": [
+        "SDX-08",
+        "SDX-13"
+      ]
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 8,
+      "imageId": "5e0e3eb5-8b60-4588-9ca6-d2fd13968e2a",
+      "baseName": "Abdominal_Abscess8",
+      "caption": "Axial CECT demonstrates a large cystic mass <img src=\"arrow_WS.png\"> with internal complexity. The mass was thought to represent an abscess and underwent unsuccessful drainage but was ultimately found to represent a gastrointestinal stromal tumor (GIST).",
+      "plainFilename": "RP-08_RadPrimer_image_08_plain_5e0e3eb5.jpg",
+      "annotatedFilename": "RP-08_RadPrimer_annotated_Abdominal_Abscess8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/5e0e3eb5-8b60-4588-9ca6-d2fd13968e2a?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/5e0e3eb5-8b60-4588-9ca6-d2fd13968e2a?style=xlarge&annotated=true",
+      "masterImageId": "RP-08",
+      "filename": "Abdominal_Abscess8.jpg",
+      "group": "",
+      "usedFor": [
+        "abscessMimic",
+        "cysticNeoplasm",
+        "GIST",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_5e0e3eb5.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/5e0e3eb5-8b60-4588-9ca6-d2fd13968e2a?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "c18e5875869211fdff816456176deef55f38a092f4cdcdddf513918a3379a7e7"
+      },
+      "sourceImageId": "5e0e3eb5-8b60-4588-9ca6-d2fd13968e2a",
+      "sourcePlainFilename": "Abdominal_Abscess8.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess8_annot.jpg",
+      "downloadFilename": "RP-08_RadPrimer_image_08_plain_5e0e3eb5.jpg",
+      "radPrimerCoverageBySTATdx": "nearDuplicate",
+      "coverageNotes": "STATdx image 4 is the same GIST mimic teaching concept and likely same case family, but it is a different CT slice/image, so both remain primary.",
+      "relatedImageIds": [
+        "SDX-04"
+      ]
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 9,
+      "imageId": "4a1dc1d0-71a4-46eb-8423-1900bb760eb5",
+      "baseName": "Abdominal_Abscess9",
+      "caption": "Ultrasound demonstrates a complex cystic mass <img src=\"arrow_WS.png\"> with internal septations and multiple areas of higher echogenicity located in the right adnexa, representing a large tuboovarian abscess in this patient with pelvic inflammatory disease (PID).",
+      "plainFilename": "RP-09_RadPrimer_image_09_plain_4a1dc1d0.jpg",
+      "annotatedFilename": "RP-09_RadPrimer_annotated_Abdominal_Abscess9_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/4a1dc1d0-71a4-46eb-8423-1900bb760eb5?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/4a1dc1d0-71a4-46eb-8423-1900bb760eb5?style=xlarge&annotated=true",
+      "masterImageId": "RP-09",
+      "filename": "Abdominal_Abscess9.jpg",
+      "group": "",
+      "usedFor": [
+        "ultrasoundPattern",
+        "tuboovarianAbscess",
+        "internalSeptations"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_4a1dc1d0.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/4a1dc1d0-71a4-46eb-8423-1900bb760eb5?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "43e47f5bc3919cffff0385118136578b06242af843acf7a68f9c912215397ba9"
+      },
+      "sourceImageId": "4a1dc1d0-71a4-46eb-8423-1900bb760eb5",
+      "sourcePlainFilename": "Abdominal_Abscess9.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess9_annot.jpg",
+      "downloadFilename": "RP-09_RadPrimer_image_09_plain_4a1dc1d0.jpg",
+      "radPrimerCoverageBySTATdx": "nearDuplicate",
+      "coverageNotes": "STATdx images 9 and 10 provide tuboovarian abscess ultrasound/CT reinforcement; the ultrasound appearance is visually distinct and not an exact duplicate.",
+      "relatedImageIds": [
+        "SDX-09",
+        "SDX-10"
+      ]
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 10,
+      "imageId": "7daa6ea6-03d7-46bf-8a7e-d30306e58d20",
+      "baseName": "Abdominal_Abscess10",
+      "caption": "Axial T1 C+ FS MR demonstrates a rim-enhancing abscess <img src=\"arrow_WS.png\"> in the right psoas muscle. Note the phlegmonous change and enhancement <img src=\"arrow_WC.png\"> around the margins of the abscess, partially attributable to inflammation from the patient's Crohn disease.",
+      "plainFilename": "RP-10_RadPrimer_image_10_plain_7daa6ea6.jpg",
+      "annotatedFilename": "RP-10_RadPrimer_annotated_Abdominal_Abscess10_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/7daa6ea6-03d7-46bf-8a7e-d30306e58d20?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/7daa6ea6-03d7-46bf-8a7e-d30306e58d20?style=xlarge&annotated=true",
+      "masterImageId": "RP-10",
+      "filename": "Abdominal_Abscess10.jpg",
+      "group": "",
+      "usedFor": [
+        "mriPattern",
+        "psoasAbscess",
+        "CrohnDisease",
+        "phlegmon"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_7daa6ea6.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/7daa6ea6-03d7-46bf-8a7e-d30306e58d20?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "b8f3512d3f4b062e2c11b0b519a098fe8b41713e08f558c829bc418e4e3d9536"
+      },
+      "sourceImageId": "7daa6ea6-03d7-46bf-8a7e-d30306e58d20",
+      "sourcePlainFilename": "Abdominal_Abscess10.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess10_annot.jpg",
+      "downloadFilename": "RP-10_RadPrimer_image_10_plain_7daa6ea6.jpg",
+      "radPrimerCoverageBySTATdx": "notCovered",
+      "coverageNotes": "No STATdx staged image shows the same right psoas/Crohn-related MR abscess teaching point.",
+      "relatedImageIds": []
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 1,
+      "imageId": "f6d35c95-77c7-436e-9b8e-ccd078a8d40d",
+      "baseName": "Abdominal_Abscess1",
+      "caption": "Axial CECT demonstrates a loculated fluid collection <img src=\"arrow_WS.png\"> with prominent rim enhancement and surrounding soft tissue edema in the right lower quadrant, compatible with an abscess. The patient's appendix <img src=\"arrow_WC.png\"> is partly visualized in the midst of this collection, compatible with perforated appendicitis.",
+      "plainFilename": "SDX-01_STATdx_image_01_plain_f6d35c95.jpg",
+      "annotatedFilename": "SDX-01_STATdx_annotated_Abdominal_Abscess1_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/f6d35c95-77c7-436e-9b8e-ccd078a8d40d?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/f6d35c95-77c7-436e-9b8e-ccd078a8d40d?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-01",
+      "filename": "Abdominal_Abscess1.jpg",
+      "group": "",
+      "usedFor": [
+        "appendicealAbscess",
+        "alternateExample",
+        "recognitionReinforcement",
+        "samePatientCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_f6d35c95.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/f6d35c95-77c7-436e-9b8e-ccd078a8d40d?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "7b14bc7d3f24c1bfee89b08039bc92da613a2b997a18b37d5396adbc4bd5c4da"
+      },
+      "sourceImageId": "f6d35c95-77c7-436e-9b8e-ccd078a8d40d",
+      "sourcePlainFilename": "Abdominal_Abscess1.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess1_annot.jpg",
+      "downloadFilename": "SDX-01_STATdx_image_01_plain_f6d35c95.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 2,
+      "imageId": "6a98e0ab-3144-4860-bae6-5892bdf3b557",
+      "baseName": "Abdominal_Abscess2",
+      "caption": "Axial CECT shows placement of a percutaneous drainage catheter <img src=\"arrow_WS.png\">  into the abscess with a significant decrease in the size of the abscess following drainage.",
+      "plainFilename": "SDX-02_STATdx_image_02_plain_6a98e0ab.jpg",
+      "annotatedFilename": "SDX-02_STATdx_annotated_Abdominal_Abscess2_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/6a98e0ab-3144-4860-bae6-5892bdf3b557?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/6a98e0ab-3144-4860-bae6-5892bdf3b557?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-02",
+      "filename": "Abdominal_Abscess2.jpg",
+      "group": "",
+      "usedFor": [
+        "drainageFollowUp",
+        "appendicealAbscess",
+        "procedureContext",
+        "duplicateAnchor"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_6a98e0ab.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/6a98e0ab-3144-4860-bae6-5892bdf3b557?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "4d3898c88cae4aa905625e85fd6dd3888a1f5a49b933ac299f5999ec00b764d8"
+      },
+      "sourceImageId": "6a98e0ab-3144-4860-bae6-5892bdf3b557",
+      "sourcePlainFilename": "Abdominal_Abscess2.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess2_annot.jpg",
+      "downloadFilename": "SDX-02_STATdx_image_02_plain_6a98e0ab.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 3,
+      "imageId": "8cd67bfa-bf05-4125-a192-9489d77e14e6",
+      "baseName": "Abdominal_Abscess3",
+      "caption": "Axial CECT in a patient with pelvic pain and fever demonstrates a thick-walled enhancing fluid collection <img src=\"arrow_WC.png\"> abutting the adjacent inflamed sigmoid colon <img src=\"arrow_WS.png\">, representing a peridiverticular abscess related to perforated diverticulitis.",
+      "plainFilename": "SDX-03_STATdx_image_03_plain_8cd67bfa.jpg",
+      "annotatedFilename": "SDX-03_STATdx_annotated_Abdominal_Abscess3_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/8cd67bfa-bf05-4125-a192-9489d77e14e6?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/8cd67bfa-bf05-4125-a192-9489d77e14e6?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-03",
+      "filename": "Abdominal_Abscess3.jpg",
+      "group": "",
+      "usedFor": [
+        "diverticulitisAbscess",
+        "alternateExample",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_8cd67bfa.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/8cd67bfa-bf05-4125-a192-9489d77e14e6?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "ad3ace0fded358339e9e3dc6d07c98d4684e06126a45cff111e8fa62e4fce701"
+      },
+      "sourceImageId": "8cd67bfa-bf05-4125-a192-9489d77e14e6",
+      "sourcePlainFilename": "Abdominal_Abscess3.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess3_annot.jpg",
+      "downloadFilename": "SDX-03_STATdx_image_03_plain_8cd67bfa.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 4,
+      "imageId": "9611c81c-bb12-43a9-b117-8c819a020d15",
+      "baseName": "Abdominal_Abscess4",
+      "caption": "Axial CECT demonstrates a peripherally enhancing \"fluid collection\"  <img src=\"arrow_WC.png\">  abutting the left colon and small bowel. This was thought to be an abscess and even underwent unsuccessful drainage, but was ultimately found to represent a gastrointestinal stromal tumor (GIST).",
+      "plainFilename": "SDX-04_STATdx_image_04_plain_9611c81c.jpg",
+      "annotatedFilename": "SDX-04_STATdx_annotated_Abdominal_Abscess4_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/9611c81c-bb12-43a9-b117-8c819a020d15?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/9611c81c-bb12-43a9-b117-8c819a020d15?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-04",
+      "filename": "Abdominal_Abscess4.jpg",
+      "group": "",
+      "usedFor": [
+        "abscessMimic",
+        "GIST",
+        "nearDuplicate",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_9611c81c.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/9611c81c-bb12-43a9-b117-8c819a020d15?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "b653e8bff99542072cee93b5fa1561942596ca25215dd9fa7eda2ad3b0f0ab8e"
+      },
+      "sourceImageId": "9611c81c-bb12-43a9-b117-8c819a020d15",
+      "sourcePlainFilename": "Abdominal_Abscess4.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess4_annot.jpg",
+      "downloadFilename": "SDX-04_STATdx_image_04_plain_9611c81c.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 5,
+      "imageId": "39e02a5b-5604-480c-9e77-742337eca633",
+      "baseName": "Abdominal_Abscess5",
+      "caption": "Axial T1 C+ FS MR in a young female patient in septic shock demonstrates thick-walled, peripherally enhancing fluid collections <img src=\"arrow_WS.png\"> in the pelvis, compatible with abscesses.",
+      "plainFilename": "SDX-05_STATdx_image_05_plain_39e02a5b.jpg",
+      "annotatedFilename": "SDX-05_STATdx_annotated_Abdominal_Abscess5_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/39e02a5b-5604-480c-9e77-742337eca633?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/39e02a5b-5604-480c-9e77-742337eca633?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-05",
+      "filename": "Abdominal_Abscess5.jpg",
+      "group": "",
+      "usedFor": [
+        "mriPattern",
+        "pelvicAbscess",
+        "samePatientCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_39e02a5b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/39e02a5b-5604-480c-9e77-742337eca633?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "1ae240fc036c214fe81c484843d497722541a4b251748a2d3c318a474b078f23"
+      },
+      "sourceImageId": "39e02a5b-5604-480c-9e77-742337eca633",
+      "sourcePlainFilename": "Abdominal_Abscess5.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess5_annot.jpg",
+      "downloadFilename": "SDX-05_STATdx_image_05_plain_39e02a5b.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 6,
+      "imageId": "fb463b38-f9ff-4c57-8f3e-0c4bec4bcebb",
+      "baseName": "Abdominal_Abscess6",
+      "caption": "Sagittal T2 MR in the same patient demonstrates the more anterior fluid collection <img src=\"arrow_WS.png\"> is directly contiguous with the patient's C-section scar <img src=\"arrow_WC.png\">, compatible with uterine rupture as the cause for these abscesses. Note the presence of another large fluid collection <img src=\"arrow_WO.png\"> more posteriorly between the uterus and rectum.",
+      "plainFilename": "SDX-06_STATdx_image_06_plain_fb463b38.jpg",
+      "annotatedFilename": "SDX-06_STATdx_annotated_Abdominal_Abscess6_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/fb463b38-f9ff-4c57-8f3e-0c4bec4bcebb?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/fb463b38-f9ff-4c57-8f3e-0c4bec4bcebb?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-06",
+      "filename": "Abdominal_Abscess6.jpg",
+      "group": "",
+      "usedFor": [
+        "mriPattern",
+        "uterineRupture",
+        "samePatientCluster",
+        "mechanism"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_fb463b38.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/fb463b38-f9ff-4c57-8f3e-0c4bec4bcebb?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "ab80417029444f54e7e3c50f4e88ca644adf3220d1622ce9f64b478ef834f5be"
+      },
+      "sourceImageId": "fb463b38-f9ff-4c57-8f3e-0c4bec4bcebb",
+      "sourcePlainFilename": "Abdominal_Abscess6.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess6_annot.jpg",
+      "downloadFilename": "SDX-06_STATdx_image_06_plain_fb463b38.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 7,
+      "imageId": "283d7e4e-78c0-447e-be43-b1b2224fe52c",
+      "baseName": "Abdominal_Abscess7",
+      "caption": "Axial CECT demonstrates a large, rim-enhancing abscess  <img src=\"arrow_WS.png\">  in the perineum secondary to traumatic Foley catheter <img src=\"arrow_WC.png\"> placement and urethral perforation.",
+      "plainFilename": "SDX-07_STATdx_image_07_plain_283d7e4e.jpg",
+      "annotatedFilename": "SDX-07_STATdx_annotated_Abdominal_Abscess7_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/283d7e4e-78c0-447e-be43-b1b2224fe52c?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/283d7e4e-78c0-447e-be43-b1b2224fe52c?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-07",
+      "filename": "Abdominal_Abscess7.jpg",
+      "group": "",
+      "usedFor": [
+        "perinealAbscess",
+        "traumaticFoley",
+        "unusualCause"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_283d7e4e.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/283d7e4e-78c0-447e-be43-b1b2224fe52c?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "817b585acca00580fc4a81478af4e9cef1e8987620604559448224e625b4593b"
+      },
+      "sourceImageId": "283d7e4e-78c0-447e-be43-b1b2224fe52c",
+      "sourcePlainFilename": "Abdominal_Abscess7.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess7_annot.jpg",
+      "downloadFilename": "SDX-07_STATdx_image_07_plain_283d7e4e.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 8,
+      "imageId": "1bbcbb4f-7db2-43e4-9d4d-d34c7a41d0b4",
+      "baseName": "Abdominal_Abscess8",
+      "caption": "Axial CECT demonstrates a large, loculated fluid collection <img src=\"arrow_WC.png\"> in the lesser sac with rim-enhancement and internal gas <img src=\"arrow_WO.png\">, representing an abscess with gas-forming infection. This infected collection was secondary to necrotizing pancreatitis.",
+      "plainFilename": "SDX-08_STATdx_image_08_plain_1bbcbb4f.jpg",
+      "annotatedFilename": "SDX-08_STATdx_annotated_Abdominal_Abscess8_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/1bbcbb4f-7db2-43e4-9d4d-d34c7a41d0b4?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/1bbcbb4f-7db2-43e4-9d4d-d34c7a41d0b4?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-08",
+      "filename": "Abdominal_Abscess8.jpg",
+      "group": "",
+      "usedFor": [
+        "lesserSacAbscess",
+        "necrotizingPancreatitis",
+        "gasFormingInfection"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_1bbcbb4f.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/1bbcbb4f-7db2-43e4-9d4d-d34c7a41d0b4?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "96b59d8b2b643b12735cbd30a3a201a4200bd6951a8c1927d1f87ea13c5af97a"
+      },
+      "sourceImageId": "1bbcbb4f-7db2-43e4-9d4d-d34c7a41d0b4",
+      "sourcePlainFilename": "Abdominal_Abscess8.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess8_annot.jpg",
+      "downloadFilename": "SDX-08_STATdx_image_08_plain_1bbcbb4f.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 9,
+      "imageId": "f164be32-66a4-4edf-a0ed-55ce2411bd4c",
+      "baseName": "Abdominal_Abscess9",
+      "caption": "Transverse color Doppler US in a young female patient with pelvic pain and fever demonstrates a complex cystic adnexal mass <img src=\"arrow_WS.png\"> without substantial color flow vascularity.",
+      "plainFilename": "SDX-09_STATdx_image_09_plain_f164be32.jpg",
+      "annotatedFilename": "SDX-09_STATdx_annotated_Abdominal_Abscess9_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/f164be32-66a4-4edf-a0ed-55ce2411bd4c?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/f164be32-66a4-4edf-a0ed-55ce2411bd4c?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-09",
+      "filename": "Abdominal_Abscess9.jpg",
+      "group": "",
+      "usedFor": [
+        "ultrasoundPattern",
+        "tuboovarianAbscess",
+        "samePatientCluster",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_f164be32.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/f164be32-66a4-4edf-a0ed-55ce2411bd4c?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "72b357345790763071499b97e613da486c404147ba04cc064a8a05575a5ce623"
+      },
+      "sourceImageId": "f164be32-66a4-4edf-a0ed-55ce2411bd4c",
+      "sourcePlainFilename": "Abdominal_Abscess9.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess9_annot.jpg",
+      "downloadFilename": "SDX-09_STATdx_image_09_plain_f164be32.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 10,
+      "imageId": "7d277c1c-5070-446e-bf1c-f48a6a6ef5f8",
+      "baseName": "Abdominal_Abscess10",
+      "caption": "Axial CECT in the same patient demonstrates a large fluid collection <img src=\"arrow_WS.png\"> with rim enhancement and surrounding fat stranding (corresponding to the US finding), ultimately found to represent a tuboovarian abscess. Notice how the complexity in this collection is much more evident on US compared to CT.",
+      "plainFilename": "SDX-10_STATdx_image_10_plain_7d277c1c.jpg",
+      "annotatedFilename": "SDX-10_STATdx_annotated_Abdominal_Abscess10_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/7d277c1c-5070-446e-bf1c-f48a6a6ef5f8?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/7d277c1c-5070-446e-bf1c-f48a6a6ef5f8?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-10",
+      "filename": "Abdominal_Abscess10.jpg",
+      "group": "",
+      "usedFor": [
+        "ctCorrelation",
+        "tuboovarianAbscess",
+        "samePatientCluster"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_7d277c1c.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/7d277c1c-5070-446e-bf1c-f48a6a6ef5f8?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "2b61c3ea6a6cb52982c22264fc3608927123b16a5a7e852c0f47c3fb5eb834a3"
+      },
+      "sourceImageId": "7d277c1c-5070-446e-bf1c-f48a6a6ef5f8",
+      "sourcePlainFilename": "Abdominal_Abscess10.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess10_annot.jpg",
+      "downloadFilename": "SDX-10_STATdx_image_10_plain_7d277c1c.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 11,
+      "imageId": "dbad4316-5b01-4b25-9955-1f76bff9408e",
+      "baseName": "Abdominal_Abscess11",
+      "caption": "Axial CECT shows multiple postoperative abscesses. Note fluid collections with enhancing rims and mass effect <img src=\"arrow_WS.png\">.",
+      "plainFilename": "SDX-11_STATdx_image_11_plain_dbad4316.jpg",
+      "annotatedFilename": "SDX-11_STATdx_annotated_Abdominal_Abscess11_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/dbad4316-5b01-4b25-9955-1f76bff9408e?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/dbad4316-5b01-4b25-9955-1f76bff9408e?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-11",
+      "filename": "Abdominal_Abscess11.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_dbad4316.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/dbad4316-5b01-4b25-9955-1f76bff9408e?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "bf7f757549b899e5e7f349af38f230d0188c5ca5b7710868a6a26de976f40016"
+      },
+      "sourceImageId": "dbad4316-5b01-4b25-9955-1f76bff9408e",
+      "sourcePlainFilename": "Abdominal_Abscess11.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess11_annot.jpg",
+      "downloadFilename": "SDX-11_STATdx_image_11_plain_dbad4316.jpg",
+      "duplicateClassification": "exactDuplicate",
+      "duplicateOf": "RP-02",
+      "archiveReason": "Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences."
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 12,
+      "imageId": "b293dd85-2687-4f52-8f51-f01cf26080af",
+      "baseName": "Abdominal_Abscess12",
+      "caption": "Axial CECT in the same patient shows ectopic gas bubbles within abscess in pelvis <img src=\"arrow_WS.png\">.",
+      "plainFilename": "SDX-12_STATdx_image_12_plain_b293dd85.jpg",
+      "annotatedFilename": "SDX-12_STATdx_annotated_Abdominal_Abscess12_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/b293dd85-2687-4f52-8f51-f01cf26080af?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/b293dd85-2687-4f52-8f51-f01cf26080af?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-12",
+      "filename": "Abdominal_Abscess12.jpg",
+      "group": "",
+      "usedFor": [
+        "samePatientCluster",
+        "postoperativeAbscess",
+        "adjacentSlice",
+        "internalGas"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_b293dd85.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/b293dd85-2687-4f52-8f51-f01cf26080af?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "f5ae46d84b3b9bd3dadc37bae148f1d95163f218eb202982196fc76613b9dabd"
+      },
+      "sourceImageId": "b293dd85-2687-4f52-8f51-f01cf26080af",
+      "sourcePlainFilename": "Abdominal_Abscess12.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess12_annot.jpg",
+      "downloadFilename": "SDX-12_STATdx_image_12_plain_b293dd85.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 13,
+      "imageId": "0e0a0ff8-af6e-43f2-9b14-9f34d74a888f",
+      "baseName": "Abdominal_Abscess13",
+      "caption": "Axial CECT of gas-forming retrocecal abscess from perforated diverticulum. Note ectopic gas collection from posterior to cecum <img src=\"arrow_WS.png\">, cecal thickening, and adjacent fat stranding <img src=\"arrow_WO.png\">.",
+      "plainFilename": "SDX-13_STATdx_image_13_plain_0e0a0ff8.jpg",
+      "annotatedFilename": "SDX-13_STATdx_annotated_Abdominal_Abscess13_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/0e0a0ff8-af6e-43f2-9b14-9f34d74a888f?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/0e0a0ff8-af6e-43f2-9b14-9f34d74a888f?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-13",
+      "filename": "Abdominal_Abscess13.jpg",
+      "group": "",
+      "usedFor": [
+        "gasFormingAbscess",
+        "retrocecalAbscess",
+        "perforatedDiverticulum"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_0e0a0ff8.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/0e0a0ff8-af6e-43f2-9b14-9f34d74a888f?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "a8c996f5d680f43923aa8a0efa6b9b40c1d798ee2360082414206cb9581419d3"
+      },
+      "sourceImageId": "0e0a0ff8-af6e-43f2-9b14-9f34d74a888f",
+      "sourcePlainFilename": "Abdominal_Abscess13.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess13_annot.jpg",
+      "downloadFilename": "SDX-13_STATdx_image_13_plain_0e0a0ff8.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 14,
+      "imageId": "aa4958f9-b938-49a6-b407-3ebfef257898",
+      "baseName": "Abdominal_Abscess14",
+      "caption": "Transverse transabdominal US of a postoperative abscess found on a grayscale image is shown. Note the hypoechoic fluid collection <img src=\"arrow_WS.png\"> with fluid-fluid level <img src=\"arrow_WO.png\">.",
+      "plainFilename": "SDX-14_STATdx_image_14_plain_aa4958f9.jpg",
+      "annotatedFilename": "SDX-14_STATdx_annotated_Abdominal_Abscess14_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/aa4958f9-b938-49a6-b407-3ebfef257898?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/aa4958f9-b938-49a6-b407-3ebfef257898?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-14",
+      "filename": "Abdominal_Abscess14.jpg",
+      "group": "",
+      "usedFor": [
+        "ultrasoundPattern",
+        "postoperativeAbscess",
+        "fluidFluidLevel"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_aa4958f9.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/aa4958f9-b938-49a6-b407-3ebfef257898?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "fac1eb404d5e9c8dc7ef27ea44b229bf35cbf935d7e3b14ad2ca8c019c29f794"
+      },
+      "sourceImageId": "aa4958f9-b938-49a6-b407-3ebfef257898",
+      "sourcePlainFilename": "Abdominal_Abscess14.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess14_annot.jpg",
+      "downloadFilename": "SDX-14_STATdx_image_14_plain_aa4958f9.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 15,
+      "imageId": "afcb5d1c-2606-4c98-a7a8-ca50086147da",
+      "baseName": "Abdominal_Abscess15",
+      "caption": "Axial CECT shows intramural abscess of the sigmoid from diverticulitis. Note the long segment of the markedly thickened sigmoid <img src=\"arrow_WS.png\"> and an ill-defined adjacent fluid collection <img src=\"arrow_WO.png\">.",
+      "plainFilename": "SDX-15_STATdx_image_15_plain_afcb5d1c.jpg",
+      "annotatedFilename": "SDX-15_STATdx_annotated_Abdominal_Abscess15_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/afcb5d1c-2606-4c98-a7a8-ca50086147da?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/afcb5d1c-2606-4c98-a7a8-ca50086147da?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-15",
+      "filename": "Abdominal_Abscess15.jpg",
+      "group": "",
+      "usedFor": [
+        "samePatientCluster",
+        "intramuralSigmoidAbscess",
+        "diverticulitis"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_afcb5d1c.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/afcb5d1c-2606-4c98-a7a8-ca50086147da?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "aa91ac8c8fdbe5da56ff02182869264a61b1e57905e337e4af2f123943c0d1ae"
+      },
+      "sourceImageId": "afcb5d1c-2606-4c98-a7a8-ca50086147da",
+      "sourcePlainFilename": "Abdominal_Abscess15.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess15_annot.jpg",
+      "downloadFilename": "SDX-15_STATdx_image_15_plain_afcb5d1c.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 16,
+      "imageId": "59c7aab4-cea0-4d4b-9e88-992c036dfb21",
+      "baseName": "Abdominal_Abscess16",
+      "caption": "Axial CECT in the same patient shows more discreet abscess collections on a lower plane of the section <img src=\"arrow_WS.png\">.",
+      "plainFilename": "SDX-16_STATdx_image_16_plain_59c7aab4.jpg",
+      "annotatedFilename": "SDX-16_STATdx_annotated_Abdominal_Abscess16_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/59c7aab4-cea0-4d4b-9e88-992c036dfb21?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/59c7aab4-cea0-4d4b-9e88-992c036dfb21?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-16",
+      "filename": "Abdominal_Abscess16.jpg",
+      "group": "",
+      "usedFor": [
+        "samePatientCluster",
+        "intramuralSigmoidAbscess",
+        "adjacentSlice"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_59c7aab4.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/59c7aab4-cea0-4d4b-9e88-992c036dfb21?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "82f956491e495669e91ff086ade2dcdd583e9d3de715aa33fe68a6888ccedb4d"
+      },
+      "sourceImageId": "59c7aab4-cea0-4d4b-9e88-992c036dfb21",
+      "sourcePlainFilename": "Abdominal_Abscess16.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess16_annot.jpg",
+      "downloadFilename": "SDX-16_STATdx_image_16_plain_59c7aab4.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 17,
+      "imageId": "8bad69da-b103-4157-aebf-ac1a19526b9f",
+      "baseName": "Abdominal_Abscess17",
+      "caption": "Axial CECT shows pyogenic postoperative abscess <img src=\"arrow_WS.png\"> after bowel resection. Note multiple fluid collections with enhancing rims; gas is seen only in pelvic abscess <img src=\"arrow_WO.png\">.",
+      "plainFilename": "SDX-17_STATdx_image_17_plain_8bad69da.jpg",
+      "annotatedFilename": "SDX-17_STATdx_annotated_Abdominal_Abscess17_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/8bad69da-b103-4157-aebf-ac1a19526b9f?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/8bad69da-b103-4157-aebf-ac1a19526b9f?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-17",
+      "filename": "Abdominal_Abscess17.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_8bad69da.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/8bad69da-b103-4157-aebf-ac1a19526b9f?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "4996ae7db737bd481a65f3e1bb253557f8325e33761228020ae7164b6bd2a5c4"
+      },
+      "sourceImageId": "8bad69da-b103-4157-aebf-ac1a19526b9f",
+      "sourcePlainFilename": "Abdominal_Abscess17.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess17_annot.jpg",
+      "downloadFilename": "SDX-17_STATdx_image_17_plain_8bad69da.jpg",
+      "duplicateClassification": "exactDuplicate",
+      "duplicateOf": "RP-02",
+      "archiveReason": "Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences."
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 18,
+      "imageId": "4fa541bd-3356-4d09-93f1-2c19e989242f",
+      "baseName": "Abdominal_Abscess18",
+      "caption": "Axial CECT shows pyogenic postoperative abscess after bowel resection. Note multiple fluid collections with enhancing rims. Gas is noted in pelvic abscess <img src=\"arrow_WS.png\">  but not in other collections.",
+      "plainFilename": "SDX-18_STATdx_image_18_plain_4fa541bd.jpg",
+      "annotatedFilename": "SDX-18_STATdx_annotated_Abdominal_Abscess18_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/4fa541bd-3356-4d09-93f1-2c19e989242f?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/4fa541bd-3356-4d09-93f1-2c19e989242f?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-18",
+      "filename": "Abdominal_Abscess18.jpg",
+      "group": "",
+      "usedFor": [
+        "samePatientCluster",
+        "postoperativeAbscess",
+        "adjacentSlice",
+        "internalGas"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_4fa541bd.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/4fa541bd-3356-4d09-93f1-2c19e989242f?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "37ec1ae49de2f1433482a55e21d1b88cc9aae1b659d976019ff384c3fefa60d6"
+      },
+      "sourceImageId": "4fa541bd-3356-4d09-93f1-2c19e989242f",
+      "sourcePlainFilename": "Abdominal_Abscess18.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess18_annot.jpg",
+      "downloadFilename": "SDX-18_STATdx_image_18_plain_4fa541bd.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 19,
+      "imageId": "741c67e9-4988-4c0a-95a9-70ea820636fa",
+      "baseName": "Abdominal_Abscess19",
+      "caption": "Axial CECT demonstrates a gas-forming pyogenic liver abscess in a diabetic patient. Note air-fluid level within the abscess cavity <img src=\"arrow_BS.png\">.",
+      "plainFilename": "SDX-19_STATdx_image_19_plain_741c67e9.jpg",
+      "annotatedFilename": "SDX-19_STATdx_annotated_Abdominal_Abscess19_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/741c67e9-4988-4c0a-95a9-70ea820636fa?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/741c67e9-4988-4c0a-95a9-70ea820636fa?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-19",
+      "filename": "Abdominal_Abscess19.jpg",
+      "group": "",
+      "usedFor": [
+        "liverAbscess",
+        "gasFormingInfection",
+        "diabetes",
+        "ctPattern"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_741c67e9.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/741c67e9-4988-4c0a-95a9-70ea820636fa?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "cfb954d634a7b29bc3da729d29e3f6c21b9027f99d7f03673867a0172b74d744"
+      },
+      "sourceImageId": "741c67e9-4988-4c0a-95a9-70ea820636fa",
+      "sourcePlainFilename": "Abdominal_Abscess19.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess19_annot.jpg",
+      "downloadFilename": "SDX-19_STATdx_image_19_plain_741c67e9.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 20,
+      "imageId": "e3c0f7c4-4ff5-4331-aafc-464de3e19c44",
+      "baseName": "Abdominal_Abscess20",
+      "caption": "Axial US shows a liver abscess demonstrating linear high-amplitude echoes with \"dirty\" distal acoustic shadowing representing gas <img src=\"arrow_WS.png\">.",
+      "plainFilename": "SDX-20_STATdx_image_20_plain_e3c0f7c4.jpg",
+      "annotatedFilename": "SDX-20_STATdx_annotated_Abdominal_Abscess20_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e3c0f7c4-4ff5-4331-aafc-464de3e19c44?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e3c0f7c4-4ff5-4331-aafc-464de3e19c44?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-20",
+      "filename": "Abdominal_Abscess20.jpg",
+      "group": "",
+      "usedFor": [
+        "liverAbscess",
+        "ultrasoundPattern",
+        "dirtyShadowing",
+        "gas"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_e3c0f7c4.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e3c0f7c4-4ff5-4331-aafc-464de3e19c44?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "01e019d27ba3fb1c16457f3eaa79f53b3aa3ca3c9e3cd2230de336e077de1350"
+      },
+      "sourceImageId": "e3c0f7c4-4ff5-4331-aafc-464de3e19c44",
+      "sourcePlainFilename": "Abdominal_Abscess20.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess20_annot.jpg",
+      "downloadFilename": "SDX-20_STATdx_image_20_plain_e3c0f7c4.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 21,
+      "imageId": "fc5dfc81-dd50-4e82-ac14-3670312a4a1f",
+      "baseName": "Abdominal_Abscess21",
+      "caption": "Axial CECT shows an amebic abscess. Note peripheral low-attenuation zone of edema <img src=\"arrow_BS.png\"> surrounding the abscess.",
+      "plainFilename": "SDX-21_STATdx_image_21_plain_fc5dfc81.jpg",
+      "annotatedFilename": "SDX-21_STATdx_annotated_Abdominal_Abscess21_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/fc5dfc81-dd50-4e82-ac14-3670312a4a1f?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/fc5dfc81-dd50-4e82-ac14-3670312a4a1f?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-21",
+      "filename": "Abdominal_Abscess21.jpg",
+      "group": "",
+      "usedFor": [
+        "amebicAbscess",
+        "ctPattern",
+        "perilesionalEdema"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_fc5dfc81.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/fc5dfc81-dd50-4e82-ac14-3670312a4a1f?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "11e2ea6c4fb50bbd3ec47e4fc45c20676bcb4cf93b70a6d3778674158ffc6a9f"
+      },
+      "sourceImageId": "fc5dfc81-dd50-4e82-ac14-3670312a4a1f",
+      "sourcePlainFilename": "Abdominal_Abscess21.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess21_annot.jpg",
+      "downloadFilename": "SDX-21_STATdx_image_21_plain_fc5dfc81.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 22,
+      "imageId": "6a267c0b-aeaf-486c-b49d-c6859155cfbd",
+      "baseName": "Abdominal_Abscess22",
+      "caption": "Sagittal US shows amebic abscess. Note low-level echoes <img src=\"arrow_WS.png\"> within the hypoechoic mass, and the lack of distal acoustic enhancement.",
+      "plainFilename": "SDX-22_STATdx_image_22_plain_6a267c0b.jpg",
+      "annotatedFilename": "SDX-22_STATdx_annotated_Abdominal_Abscess22_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/6a267c0b-aeaf-486c-b49d-c6859155cfbd?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/6a267c0b-aeaf-486c-b49d-c6859155cfbd?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-22",
+      "filename": "Abdominal_Abscess22.jpg",
+      "group": "",
+      "usedFor": [
+        "amebicAbscess",
+        "ultrasoundPattern",
+        "lowLevelEchoes"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_6a267c0b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/6a267c0b-aeaf-486c-b49d-c6859155cfbd?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "10b6f3433f742fb348f4e0b14ded1455200bbfef3d72cfe7d821aee695d750bf"
+      },
+      "sourceImageId": "6a267c0b-aeaf-486c-b49d-c6859155cfbd",
+      "sourcePlainFilename": "Abdominal_Abscess22.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess22_annot.jpg",
+      "downloadFilename": "SDX-22_STATdx_image_22_plain_6a267c0b.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 23,
+      "imageId": "9bd6e718-2f02-4a07-8188-ae5b8a113655",
+      "baseName": "Abdominal_Abscess23",
+      "caption": "Sagittal US shows fungal microabscesses due to systemic candidiasis. Note multiple target lesions <img src=\"arrow_WS.png\">.",
+      "plainFilename": "SDX-23_STATdx_image_23_plain_9bd6e718.jpg",
+      "annotatedFilename": "SDX-23_STATdx_annotated_Abdominal_Abscess23_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/9bd6e718-2f02-4a07-8188-ae5b8a113655?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/9bd6e718-2f02-4a07-8188-ae5b8a113655?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-23",
+      "filename": "Abdominal_Abscess23.jpg",
+      "group": "",
+      "usedFor": [
+        "fungalMicroabscesses",
+        "immunocompromised",
+        "ultrasoundPattern"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_9bd6e718.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/9bd6e718-2f02-4a07-8188-ae5b8a113655?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "a69a61558c891561119f19c5fe7dfecb6cf8f415c221ab121f50c132831d3d19"
+      },
+      "sourceImageId": "9bd6e718-2f02-4a07-8188-ae5b8a113655",
+      "sourcePlainFilename": "Abdominal_Abscess23.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess23_annot.jpg",
+      "downloadFilename": "SDX-23_STATdx_image_23_plain_9bd6e718.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 24,
+      "imageId": "622d7b45-976f-4915-95a3-2ade49c3c3fe",
+      "baseName": "Abdominal_Abscess24",
+      "caption": "Sagittal US of the spleen demonstrates an abscess with low-level echoes <img src=\"arrow_WS.png\">.",
+      "plainFilename": "SDX-24_STATdx_image_24_plain_622d7b45.jpg",
+      "annotatedFilename": "SDX-24_STATdx_annotated_Abdominal_Abscess24_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/622d7b45-976f-4915-95a3-2ade49c3c3fe?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/622d7b45-976f-4915-95a3-2ade49c3c3fe?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-24",
+      "filename": "Abdominal_Abscess24.jpg",
+      "group": "",
+      "usedFor": [
+        "splenicAbscess",
+        "ultrasoundPattern"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_622d7b45.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/622d7b45-976f-4915-95a3-2ade49c3c3fe?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "cbae6d519f13a702b2f314d3cf4821c8fbdeaec1880186434211dcde53906532"
+      },
+      "sourceImageId": "622d7b45-976f-4915-95a3-2ade49c3c3fe",
+      "sourcePlainFilename": "Abdominal_Abscess24.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess24_annot.jpg",
+      "downloadFilename": "SDX-24_STATdx_image_24_plain_622d7b45.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 25,
+      "imageId": "3b819c57-cb71-4b29-b40f-3caa21c0fac7",
+      "baseName": "Abdominal_Abscess25",
+      "caption": "Axial CECT shows an encapsulated fluid collection <img src=\"arrow_WS.png\"> with peripheral rim enhancement in the right lower quadrant. In the midst of the fluid collection is a tubular structure <img src=\"arrow_WC.png\">, representing a ruptured appendix.",
+      "plainFilename": "SDX-25_STATdx_image_25_plain_3b819c57.jpg",
+      "annotatedFilename": "SDX-25_STATdx_annotated_Abdominal_Abscess25_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/3b819c57-cb71-4b29-b40f-3caa21c0fac7?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/3b819c57-cb71-4b29-b40f-3caa21c0fac7?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-25",
+      "filename": "Abdominal_Abscess25.jpg",
+      "group": "",
+      "usedFor": [
+        "appendicealAbscess",
+        "nearDuplicate",
+        "samePatientCluster",
+        "recognitionReinforcement"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-25_STATdx_image_25_plain_3b819c57.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/3b819c57-cb71-4b29-b40f-3caa21c0fac7?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "32e2d92a16b48da05838ca4f4c108d548b7746f98cdb14fd39c02be708b1d34d"
+      },
+      "sourceImageId": "3b819c57-cb71-4b29-b40f-3caa21c0fac7",
+      "sourcePlainFilename": "Abdominal_Abscess25.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess25_annot.jpg",
+      "downloadFilename": "SDX-25_STATdx_image_25_plain_3b819c57.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 26,
+      "imageId": "081a030b-22a5-4f4c-804d-ddb36ec88ba8",
+      "baseName": "Abdominal_Abscess26",
+      "caption": "Axial CECT in the same patient demonstrates a pigtail catheter <img src=\"arrow_WO.png\"> placed percutaneously in the collection, with near resolution of the fluid within the abscess.",
+      "plainFilename": "SDX-26_STATdx_image_26_plain_081a030b.jpg",
+      "annotatedFilename": "SDX-26_STATdx_annotated_Abdominal_Abscess26_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/081a030b-22a5-4f4c-804d-ddb36ec88ba8?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/081a030b-22a5-4f4c-804d-ddb36ec88ba8?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-26",
+      "filename": "Abdominal_Abscess26.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-26_STATdx_image_26_plain_081a030b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/081a030b-22a5-4f4c-804d-ddb36ec88ba8?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "c8fd65c9e93cf0292cfe16c8eac634df6073a2bba231302b861d589bf3c5f641"
+      },
+      "sourceImageId": "081a030b-22a5-4f4c-804d-ddb36ec88ba8",
+      "sourcePlainFilename": "Abdominal_Abscess26.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess26_annot.jpg",
+      "downloadFilename": "SDX-26_STATdx_image_26_plain_081a030b.jpg",
+      "duplicateClassification": "exactDuplicate",
+      "duplicateOf": "SDX-02",
+      "archiveReason": "Visual inspection of staged image_evidence files shows the same appendiceal abscess drainage catheter CT image as STATdx image 2."
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceImageNumber": 27,
+      "imageId": "5e5f3a9d-f509-4289-a26f-b83ec6d01f3c",
+      "baseName": "Abdominal_Abscess27",
+      "caption": "Axial CECT in a patient who underwent a cholecystectomy shows a collection of gas <img src=\"arrow_WS.png\">  but very little fluid, in the cholecystectomy bed. Surgical clips <img src=\"arrow_WC.png\"> are also seen. This represents oxidized cellulose (Surgicel), which was placed for hemostasis at surgery, and not an abscess.",
+      "plainFilename": "SDX-27_STATdx_image_27_plain_5e5f3a9d.jpg",
+      "annotatedFilename": "SDX-27_STATdx_annotated_Abdominal_Abscess27_annot.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/5e5f3a9d-f509-4289-a26f-b83ec6d01f3c?size=1000&quality=90",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/5e5f3a9d-f509-4289-a26f-b83ec6d01f3c?annotated=true&size=1000&quality=90",
+      "masterImageId": "SDX-27",
+      "filename": "Abdominal_Abscess27.jpg",
+      "group": "",
+      "usedFor": [
+        "abscessMimic",
+        "Surgicel",
+        "postoperativeDifferential"
+      ],
+      "downloadRecommendation": "primaryTeachingSet",
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/STATdx/SDX-27_STATdx_image_27_plain_5e5f3a9d.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/5e5f3a9d-f509-4289-a26f-b83ec6d01f3c?size=1000&quality=90",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceSha256": "531829ba36069fd4e308e08cac750afa9ea1f5e5d159075350dc336f1f330673"
+      },
+      "sourceImageId": "5e5f3a9d-f509-4289-a26f-b83ec6d01f3c",
+      "sourcePlainFilename": "Abdominal_Abscess27.jpg",
+      "sourceAnnotatedFilename": "Abdominal_Abscess27_annot.jpg",
+      "downloadFilename": "SDX-27_STATdx_image_27_plain_5e5f3a9d.jpg",
+      "duplicateClassification": "uniqueOrSupplemental"
+    }
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and article backbone; STATdx is used as supplemental depth where it adds modality-specific language, mechanisms, management nuance, differential mimics, or stronger image examples.",
+    "keepFromRadPrimer": [
+      "Canonical hierarchy and deck routing.",
+      "Core imaging definition and CT/US/MR/radiographic/fluoroscopic/nuclear medicine structure.",
+      "Differential diagnosis list and PAD success/patient-selection details.",
+      "All RadPrimer images as selected primary images."
+    ],
+    "keepFromSTATdx": [
+      "Small-abscess drainage nuance and fat-saturated MR edema emphasis.",
+      "Additional etiologic image examples: appendicitis, diverticulitis, uterine rupture, traumatic Foley, pancreatitis, liver/amebic/fungal/splenic abscesses, and Surgicel mimic.",
+      "All nonduplicate STATdx images as recognition reinforcement or supplemental cases."
+    ],
+    "downweightOrSkip": [
+      "Do not repeat source-identical article prose twice.",
+      "Do not use STATdx breadcrumb/deck path for routing.",
+      "Archive only visually exact duplicate STATdx images 11, 17, and 26 by default."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "atomicClusterRule": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse clusters should remain together unless the archived member is a visually exact duplicate and the selected retained image preserves the teaching context.",
+      "intentionalClusterSplits": [
+        {
+          "cluster": "STATdx images 11-12 postoperative abscess",
+          "selected": [
+            "SDX-12",
+            "RP-02"
+          ],
+          "archived": [
+            "SDX-11"
+          ],
+          "reason": "STATdx image 11 is an exact duplicate of RadPrimer image 2; STATdx image 12 is an adjacent same-patient slice with gas and remains selected."
+        },
+        {
+          "cluster": "STATdx images 17-18 postoperative abscess",
+          "selected": [
+            "SDX-18",
+            "RP-02"
+          ],
+          "archived": [
+            "SDX-17"
+          ],
+          "reason": "STATdx image 17 is an exact duplicate of RadPrimer image 2; STATdx image 18 is an adjacent same-patient slice and remains selected."
+        },
+        {
+          "cluster": "STATdx images 25-26 appendiceal abscess/drainage",
+          "selected": [
+            "SDX-25",
+            "SDX-02"
+          ],
+          "archived": [
+            "SDX-26"
+          ],
+          "reason": "STATdx image 26 is an exact duplicate of STATdx image 2; the catheter follow-up context is preserved by selecting STATdx image 2."
+        }
+      ],
+      "radPrimerClustersPreserved": [
+        {
+          "cluster": "RadPrimer images 5-6 free air and diverticular abscess",
+          "selected": [
+            "RP-05",
+            "RP-06"
+          ],
+          "archived": []
+        }
+      ]
+    },
+    "radPrimerCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerImageLabel": "RadPrimer image 1",
+        "classification": "conceptualReplacement",
+        "relatedSTATdxImageIds": [
+          "SDX-12",
+          "SDX-18"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx includes postoperative abscess examples, but no exact duplicate of this rounded gas-containing postoperative collection."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerImageLabel": "RadPrimer image 2",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-11",
+          "SDX-17",
+          "SDX-12",
+          "SDX-18"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx images 11 and 17 are the same axial CT slice/content; STATdx images 12 and 18 are adjacent/same-patient reinforcement rather than duplicates."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerImageLabel": "RadPrimer image 3",
+        "classification": "conceptualReplacement",
+        "relatedSTATdxImageIds": [
+          "SDX-05",
+          "SDX-06",
+          "SDX-10"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx has pelvic abscess examples, especially MR/CT pelvic cases, but not the same post-hysterectomy CT image."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerImageLabel": "RadPrimer image 4",
+        "classification": "conceptualReplacement",
+        "relatedSTATdxImageIds": [
+          "SDX-02",
+          "SDX-26"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx includes drainage catheter follow-up examples, but not this transgluteal drainage image."
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "radPrimerImageLabel": "RadPrimer image 5",
+        "classification": "conceptualReplacement",
+        "relatedSTATdxImageIds": [
+          "SDX-03",
+          "SDX-13",
+          "SDX-15",
+          "SDX-16"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx covers perforation-related abscess and gas-forming collections but does not exactly reproduce this free intraperitoneal gas image."
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "radPrimerImageLabel": "RadPrimer image 6",
+        "classification": "conceptualReplacement",
+        "relatedSTATdxImageIds": [
+          "SDX-03",
+          "SDX-13",
+          "SDX-15",
+          "SDX-16"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx provides diverticulitis/perforation abscess cases, but this same-patient sigmoid diverticulosis/abscess slice is not duplicated."
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "radPrimerImageLabel": "RadPrimer image 7",
+        "classification": "conceptualReplacement",
+        "relatedSTATdxImageIds": [
+          "SDX-08",
+          "SDX-13"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx includes gas-forming/retroperitoneal or lesser sac infected collections, but not the ERCP duodenal perforation case."
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "radPrimerImageLabel": "RadPrimer image 8",
+        "classification": "nearDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-04"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx image 4 is the same GIST mimic teaching concept and likely same case family, but it is a different CT slice/image, so both remain primary."
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "radPrimerImageLabel": "RadPrimer image 9",
+        "classification": "nearDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-09",
+          "SDX-10"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx images 9 and 10 provide tuboovarian abscess ultrasound/CT reinforcement; the ultrasound appearance is visually distinct and not an exact duplicate."
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "radPrimerImageLabel": "RadPrimer image 10",
+        "classification": "notCovered",
+        "relatedSTATdxImageIds": [],
+        "decision": "selectedPrimary",
+        "notes": "No STATdx staged image shows the same right psoas/Crohn-related MR abscess teaching point."
+      }
+    ],
+    "primaryImageDownloadUseSet": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-27"
+    ],
+    "archiveOptionalDuplicates": [
+      "SDX-11",
+      "SDX-17",
+      "SDX-26"
+    ],
+    "imageDownloadPlan": {
+      "defaultBehavior": "Download only primaryTeachingSet images by default, using selectedPrimaryImageIds and the source-qualified downloadFilename values below.",
+      "primaryTeachingSet": [
+        {
+          "masterImageId": "RP-01",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 1,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-01_RadPrimer_image_01_plain_846d8abc.jpg",
+          "plainUrl": "https://app.radprimer.com/images/846d8abc-fd05-45f4-a05f-e56c61128017?style=xlarge&annotated=false",
+          "reason": "primaryPattern; postoperativeAbscess; rimEnhancement; internalGas"
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-02_RadPrimer_image_02_plain_f7df9c10.jpg",
+          "plainUrl": "https://app.radprimer.com/images/f7df9c10-bf49-4750-9fd7-dd337600c02f?style=xlarge&annotated=false",
+          "reason": "primaryPattern; multipleAbscesses; airFluidLevel; exactDuplicateAnchor"
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-03_RadPrimer_image_03_plain_6554093d.jpg",
+          "plainUrl": "https://app.radprimer.com/images/6554093d-f7e5-4995-bf3a-26bfc2376012?style=xlarge&annotated=false",
+          "reason": "pelvicAbscess; postoperativeAbscess; massEffect"
+        },
+        {
+          "masterImageId": "RP-04",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 4,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-04_RadPrimer_image_04_plain_81ebd4a0.jpg",
+          "plainUrl": "https://app.radprimer.com/images/81ebd4a0-6856-4a69-b163-a695ebb4c18d?style=xlarge&annotated=false",
+          "reason": "drainageFollowUp; transglutealApproach; procedureContext"
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 5,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-05_RadPrimer_image_05_plain_42eea53b.jpg",
+          "plainUrl": "https://app.radprimer.com/images/42eea53b-5d58-40d3-80b5-9903cca36a71?style=xlarge&annotated=false",
+          "reason": "samePatientCluster; entericPerforation; freeIntraperitonealGas"
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 6,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-06_RadPrimer_image_06_plain_a276a1f4.jpg",
+          "plainUrl": "https://app.radprimer.com/images/a276a1f4-e439-41a6-8dde-1e83f4f0103d?style=xlarge&annotated=false",
+          "reason": "samePatientCluster; diverticularAbscess; sourceOfFreeAir"
+        },
+        {
+          "masterImageId": "RP-07",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 7,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-07_RadPrimer_image_07_plain_dd8891e9.jpg",
+          "plainUrl": "https://app.radprimer.com/images/dd8891e9-cbd4-478c-b5fd-3762da948056?style=xlarge&annotated=false",
+          "reason": "retroperitonealAbscess; duodenalPerforation; postERCPComplication"
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 8,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-08_RadPrimer_image_08_plain_5e0e3eb5.jpg",
+          "plainUrl": "https://app.radprimer.com/images/5e0e3eb5-8b60-4588-9ca6-d2fd13968e2a?style=xlarge&annotated=false",
+          "reason": "abscessMimic; cysticNeoplasm; GIST; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "RP-09",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 9,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-09_RadPrimer_image_09_plain_4a1dc1d0.jpg",
+          "plainUrl": "https://app.radprimer.com/images/4a1dc1d0-71a4-46eb-8423-1900bb760eb5?style=xlarge&annotated=false",
+          "reason": "ultrasoundPattern; tuboovarianAbscess; internalSeptations"
+        },
+        {
+          "masterImageId": "RP-10",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 10,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-10_RadPrimer_image_10_plain_7daa6ea6.jpg",
+          "plainUrl": "https://app.radprimer.com/images/7daa6ea6-03d7-46bf-8a7e-d30306e58d20?style=xlarge&annotated=false",
+          "reason": "mriPattern; psoasAbscess; CrohnDisease; phlegmon"
+        },
+        {
+          "masterImageId": "SDX-01",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 1,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-01_STATdx_image_01_plain_f6d35c95.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f6d35c95-77c7-436e-9b8e-ccd078a8d40d?size=1000&quality=90",
+          "reason": "appendicealAbscess; alternateExample; recognitionReinforcement; samePatientCluster"
+        },
+        {
+          "masterImageId": "SDX-02",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 2,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-02_STATdx_image_02_plain_6a98e0ab.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/6a98e0ab-3144-4860-bae6-5892bdf3b557?size=1000&quality=90",
+          "reason": "drainageFollowUp; appendicealAbscess; procedureContext; duplicateAnchor"
+        },
+        {
+          "masterImageId": "SDX-03",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 3,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-03_STATdx_image_03_plain_8cd67bfa.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/8cd67bfa-bf05-4125-a192-9489d77e14e6?size=1000&quality=90",
+          "reason": "diverticulitisAbscess; alternateExample; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-04",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 4,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-04_STATdx_image_04_plain_9611c81c.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/9611c81c-bb12-43a9-b117-8c819a020d15?size=1000&quality=90",
+          "reason": "abscessMimic; GIST; nearDuplicate; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-05",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 5,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-05_STATdx_image_05_plain_39e02a5b.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/39e02a5b-5604-480c-9e77-742337eca633?size=1000&quality=90",
+          "reason": "mriPattern; pelvicAbscess; samePatientCluster"
+        },
+        {
+          "masterImageId": "SDX-06",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 6,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-06_STATdx_image_06_plain_fb463b38.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/fb463b38-f9ff-4c57-8f3e-0c4bec4bcebb?size=1000&quality=90",
+          "reason": "mriPattern; uterineRupture; samePatientCluster; mechanism"
+        },
+        {
+          "masterImageId": "SDX-07",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 7,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-07_STATdx_image_07_plain_283d7e4e.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/283d7e4e-78c0-447e-be43-b1b2224fe52c?size=1000&quality=90",
+          "reason": "perinealAbscess; traumaticFoley; unusualCause"
+        },
+        {
+          "masterImageId": "SDX-08",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 8,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-08_STATdx_image_08_plain_1bbcbb4f.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/1bbcbb4f-7db2-43e4-9d4d-d34c7a41d0b4?size=1000&quality=90",
+          "reason": "lesserSacAbscess; necrotizingPancreatitis; gasFormingInfection"
+        },
+        {
+          "masterImageId": "SDX-09",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 9,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-09_STATdx_image_09_plain_f164be32.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f164be32-66a4-4edf-a0ed-55ce2411bd4c?size=1000&quality=90",
+          "reason": "ultrasoundPattern; tuboovarianAbscess; samePatientCluster; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-10_STATdx_image_10_plain_7d277c1c.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/7d277c1c-5070-446e-bf1c-f48a6a6ef5f8?size=1000&quality=90",
+          "reason": "ctCorrelation; tuboovarianAbscess; samePatientCluster"
+        },
+        {
+          "masterImageId": "SDX-12",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 12,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-12_STATdx_image_12_plain_b293dd85.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b293dd85-2687-4f52-8f51-f01cf26080af?size=1000&quality=90",
+          "reason": "samePatientCluster; postoperativeAbscess; adjacentSlice; internalGas"
+        },
+        {
+          "masterImageId": "SDX-13",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 13,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-13_STATdx_image_13_plain_0e0a0ff8.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0e0a0ff8-af6e-43f2-9b14-9f34d74a888f?size=1000&quality=90",
+          "reason": "gasFormingAbscess; retrocecalAbscess; perforatedDiverticulum"
+        },
+        {
+          "masterImageId": "SDX-14",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 14,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-14_STATdx_image_14_plain_aa4958f9.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/aa4958f9-b938-49a6-b407-3ebfef257898?size=1000&quality=90",
+          "reason": "ultrasoundPattern; postoperativeAbscess; fluidFluidLevel"
+        },
+        {
+          "masterImageId": "SDX-15",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 15,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-15_STATdx_image_15_plain_afcb5d1c.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/afcb5d1c-2606-4c98-a7a8-ca50086147da?size=1000&quality=90",
+          "reason": "samePatientCluster; intramuralSigmoidAbscess; diverticulitis"
+        },
+        {
+          "masterImageId": "SDX-16",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 16,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-16_STATdx_image_16_plain_59c7aab4.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/59c7aab4-cea0-4d4b-9e88-992c036dfb21?size=1000&quality=90",
+          "reason": "samePatientCluster; intramuralSigmoidAbscess; adjacentSlice"
+        },
+        {
+          "masterImageId": "SDX-18",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 18,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-18_STATdx_image_18_plain_4fa541bd.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4fa541bd-3356-4d09-93f1-2c19e989242f?size=1000&quality=90",
+          "reason": "samePatientCluster; postoperativeAbscess; adjacentSlice; internalGas"
+        },
+        {
+          "masterImageId": "SDX-19",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 19,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-19_STATdx_image_19_plain_741c67e9.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/741c67e9-4988-4c0a-95a9-70ea820636fa?size=1000&quality=90",
+          "reason": "liverAbscess; gasFormingInfection; diabetes; ctPattern"
+        },
+        {
+          "masterImageId": "SDX-20",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 20,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-20_STATdx_image_20_plain_e3c0f7c4.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e3c0f7c4-4ff5-4331-aafc-464de3e19c44?size=1000&quality=90",
+          "reason": "liverAbscess; ultrasoundPattern; dirtyShadowing; gas"
+        },
+        {
+          "masterImageId": "SDX-21",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 21,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-21_STATdx_image_21_plain_fc5dfc81.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/fc5dfc81-dd50-4e82-ac14-3670312a4a1f?size=1000&quality=90",
+          "reason": "amebicAbscess; ctPattern; perilesionalEdema"
+        },
+        {
+          "masterImageId": "SDX-22",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 22,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-22_STATdx_image_22_plain_6a267c0b.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/6a267c0b-aeaf-486c-b49d-c6859155cfbd?size=1000&quality=90",
+          "reason": "amebicAbscess; ultrasoundPattern; lowLevelEchoes"
+        },
+        {
+          "masterImageId": "SDX-23",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 23,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-23_STATdx_image_23_plain_9bd6e718.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/9bd6e718-2f02-4a07-8188-ae5b8a113655?size=1000&quality=90",
+          "reason": "fungalMicroabscesses; immunocompromised; ultrasoundPattern"
+        },
+        {
+          "masterImageId": "SDX-24",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 24,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-24_STATdx_image_24_plain_622d7b45.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/622d7b45-976f-4915-95a3-2ade49c3c3fe?size=1000&quality=90",
+          "reason": "splenicAbscess; ultrasoundPattern"
+        },
+        {
+          "masterImageId": "SDX-25",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 25,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-25_STATdx_image_25_plain_3b819c57.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3b819c57-cb71-4b29-b40f-3caa21c0fac7?size=1000&quality=90",
+          "reason": "appendicealAbscess; nearDuplicate; samePatientCluster; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-27",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 27,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-27_STATdx_image_27_plain_5e5f3a9d.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/5e5f3a9d-f509-4289-a26f-b83ec6d01f3c?size=1000&quality=90",
+          "reason": "abscessMimic; Surgicel; postoperativeDifferential"
+        }
+      ],
+      "archiveOptionalDuplicates": [
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-11_STATdx_image_11_plain_dbad4316.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/dbad4316-5b01-4b25-9955-1f76bff9408e?size=1000&quality=90",
+          "reason": "Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences."
+        },
+        {
+          "masterImageId": "SDX-17",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 17,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-17_STATdx_image_17_plain_8bad69da.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/8bad69da-b103-4157-aebf-ac1a19526b9f?size=1000&quality=90",
+          "reason": "Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences."
+        },
+        {
+          "masterImageId": "SDX-26",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 26,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-26_STATdx_image_26_plain_081a030b.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/081a030b-22a5-4f4c-804d-ddb36ec88ba8?size=1000&quality=90",
+          "reason": "Visual inspection of staged image_evidence files shows the same appendiceal abscess drainage catheter CT image as STATdx image 2."
+        }
+      ]
+    },
+    "generatorInstructions": [
+      "Use source-qualified human labels in narrative-facing text, such as RadPrimer image 5 or STATdx image 4.",
+      "Keep short IDs such as RP-05 and SDX-04 in registry, manifest, filenames, and traceability fields.",
+      "Do not generate cards or a lecture from this synthesis step."
+    ]
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-27"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-11",
+    "SDX-17",
+    "SDX-26"
+  ]
+}

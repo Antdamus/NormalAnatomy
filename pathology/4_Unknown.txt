@@ -50,10 +50,14 @@ Back (Required)
 â€¢ Image_Annotated (preferred) OR fallback to Image
 â€¢ summary (REQUIRED if RadPrimer/STATdx-derived; must follow the global Summary Field Rule)
 
+Back (Recommended / Conditionally Allowed)
+â€¢ Differentials (2-4 realistic mimics for the same imaging problem)
+â€¢ Imaging_Differentiation (why the shown findings favor the answer over those mimics)
+â€¢ Original_Caption when image workflow requires it
+
 FIELDS THAT MUST REMAIN BLANK FOR UNKNOWN
 (To prevent accidental generation of other card types)
 â€¢ Differential_Q
-â€¢ Differentials
 â€¢ Mechanism_Q
 â€¢ Mechanism
 â€¢ Boards_Trap_Q
@@ -63,7 +67,8 @@ FIELDS THAT MUST REMAIN BLANK FOR UNKNOWN
 â€¢ Entity_Label
 â€¢ Any standalone drill fields
 
-UNKNOWN must remain structurally isolated.
+UNKNOWN must remain structurally isolated from sibling front-driving prompts.
+Differential_Q must stay blank unless the user explicitly asks for a separate Differential Drill card.
 
 â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 SOURCE HIERARCHY (MANDATORY)
@@ -257,13 +262,26 @@ Question must NEVER include:
 â€¢ â€œComplication ofâ€¦â€
 â€¢ â€œCause ofâ€¦â€
 â€¢ Etiologic hints
+â€¢ Workflow or metadata wording
+â€¢ Source-review wording
+â€¢ Batch wording
 
 When uncertain â†’ use default question.
+
+Forbidden question shapes include:
+â€¢ "What should be known for this batch?"
+â€¢ "What did the source review support encoding?"
+â€¢ "What did extraction identify?"
+â€¢ "What does the prompt require?"
+â€¢ "What information was included?"
+â€¢ Any similar process/meta question
+
+If a draft question has this shape, convert it into a direct radiology image-recognition, modality-appearance, discriminator, or report-critical question. If no useful target remains, omit the card.
 
 â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 IMAGE FIELD RULES (FRONT)
 
-Plain images only:
+Image tags plus non-diagnostic position labels only:
 <img src="FILE1.ext"><br>
 <img src="FILE2.ext"><br>
 
@@ -275,8 +293,44 @@ Allowed:
 Order must match Image_Annotated.
 No captions on front.
 
+Multi-image UNKNOWN cards MUST include non-diagnostic front labels:
+<b>Image 1/N</b><br><img src="FILE1.ext"><br>
+<b>Image 2/N</b><br><img src="FILE2.ext"><br>
+
+These labels:
+â€¢ Tell the learner to scroll through the full stack
+â€¢ Must not reveal diagnosis, sign, anatomy, or finding
+â€¢ Must not replace source captions
+â€¢ Are required when N is greater than 1
+
 â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 BACK-SIDE CONTENT RULES
+
+Rendered Back Priority (MANDATORY)
+
+The rendered UNKNOWN back must put the clinically useful interpretation first:
+
+1) Diagnosis
+2) Differential
+3) Key differentiators
+4) Source caption/readout, verbatim if available
+5) How to read the image(s)
+6) Typical source-supported imaging appearance by modality
+7) Report-critical findings, when relevant
+8) Complete image reference name(s)
+9) Reference/link, when available
+
+Map this into existing fields without creating new fields:
+â€¢ Most_Likely_Diagnosis starts with the diagnosis and concise case reasoning.
+â€¢ Differentials contains the realistic mimics.
+â€¢ Imaging_Differentiation begins with "Key differentiators:" and includes the case-specific separator logic, modality-specific appearance checklist when useful, and report-critical findings when relevant.
+â€¢ Original_Caption or Image_Annotated stackCap contains verbatim caption text only.
+â€¢ Complete image reference names must appear in a separate back-side line/block, never by modifying verbatim caption text.
+
+If imaging cannot confidently separate two entities:
+â€¢ State that directly.
+â€¢ State what is needed instead, such as pathology, biopsy, cultures, labs, clinical context, operative correlation, or follow-up, only when source-supported or clinically necessary.
+â€¢ Do not pretend imaging specificity is higher than the source supports.
 
 Most_Likely_Diagnosis (REQUIRED â€” STRICT ORDER)
 
@@ -306,31 +360,28 @@ Safety filter:
 â€¢ No management thresholds unless explicitly supported
 â€¢ Must reflect full-source review, not digest-only reasoning
 
-4) Mini-Differential â€” REQUIRED (VERTICAL FORMAT)
-Append exactly:
-<br><br>Differential:<br>
+4) Differential Field â€” RECOMMENDED WHEN USEFUL
+Populate the Differentials field with:
 DxA<br>
 DxB<br>
 DxC
 
 Rules:
-â€¢ Must be separated from reasoning by <br><br>
 â€¢ Must use <br> between items
 â€¢ 2â€“4 realistic mimics only
-â€¢ Diagnosis names only
-â€¢ No explanations
-â€¢ Must remain inside Most_Likely_Diagnosis
-â€¢ Do NOT populate Differentials field
+â€¢ Diagnosis names or very short mimic labels only
+â€¢ No long explanations in Differentials
+â€¢ Keep Differential_Q blank unless the user explicitly requested a standalone Differential Drill
 
 If none listed explicitly in Core/RadPrimer/STATdx, you MAY include a short model-inferred list ONLY if it clearly follows from the caption-described imaging pattern.
 
 In that case, the mini-differential header MUST be:
 
-<br><br>Differential (Model-inferred; not listed in Core/RadPrimer/STATdx):<br>
+Differential (model-inferred; not listed in Core/RadPrimer/STATdx):
 
 Otherwise, use:
 
-<br><br>Differential:<br>(none listed in source)
+Leave Differentials blank rather than writing filler.
 
 Rules (for model-inferred differentials):
 â€¢ 2â€“4 items only
@@ -338,7 +389,8 @@ Rules (for model-inferred differentials):
 â€¢ No rare entities unless the caption specifically implies them
 â€¢ No explanatory textâ€”diagnosis names only
 
-This mini-differential does NOT trigger a Differential Drill.
+Differentials on an UNKNOWN card does NOT trigger a Differential Drill.
+Only Differential_Q requests a standalone Differential Drill.
 
 Imaging_Differentiation (OPTIONAL)
 Populate only if:
@@ -347,15 +399,32 @@ Populate only if:
 â€¢ It does not duplicate reasoning
 â€¢ It does not become a second essay
 
+For pathology UNKNOWN cards, Imaging_Differentiation is strongly preferred whenever realistic mimics exist.
+
+Start with:
+Key differentiators:
+
+Then include, when supported:
+â€¢ Why the shown case favors the diagnosis over each practical mimic
+â€¢ Imaging specificity label: Diagnostic, Strongly suggestive, Nonspecific, or Requires correlation
+â€¢ If imaging cannot reliably distinguish entities, state that directly and name what is needed instead only when source-supported or clinically necessary
+â€¢ Typical modality appearance checklist for the disease entity when it helps connect the case image to the memorized entity pattern
+â€¢ Report-critical findings when a finding changes urgency, management, staging, prognosis, follow-up, or outcome
+â€¢ Image references: complete source image reference name(s), one per image, in display order, unless already included as a separate image-reference block in Image_Annotated
+
 Image_Annotated (BACK DISPLAY)
 Preferred format:
 <div class="stackItem"><img src="FILE_annot.ext"><div class="stackCap">VERBATIM CAPTION</div></div>
+
+Allowed expanded format when image reference names are available:
+<div class="stackItem"><img src="FILE_annot.ext"><div class="imgRef">Image reference: FULL_SOURCE_IMAGE_REFERENCE_NAME</div><div class="stackCap">VERBATIM CAPTION</div></div>
 
 Rules:
 â€¢ Caption must be verbatim
 â€¢ One caption per image
 â€¢ Order matches Image field
 â€¢ No interpretation inside stackCap
+â€¢ Image reference text must be outside stackCap and must not alter the caption
 
 If no annotated images:
 â€¢ Back will display Image automatically (template fallback)

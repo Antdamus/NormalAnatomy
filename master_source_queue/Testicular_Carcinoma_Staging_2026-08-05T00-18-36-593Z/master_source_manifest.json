@@ -1,0 +1,303 @@
+{
+  "articleTitle": "Testicular Carcinoma Staging",
+  "createdAt": "2026-08-05T00:24:16Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Testicular Carcinoma"
+  ],
+  "canonicalDeckPath": "Corebook::Ultrasound::Scrotum Basic::Testicular Carcinoma::Testicular Carcinoma Staging",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "role": "Canonical hierarchy and base testicular carcinoma article.",
+      "keptText": [
+        "US diagnosis and histology-pattern appearance",
+        "basic CT/MR/PET staging role",
+        "differential diagnosis",
+        "clinical presentation/prognosis/treatment overview"
+      ],
+      "limitations": [
+        "Less granular AJCC/TNM staging and fewer metastatic case examples than STATdx."
+      ]
+    },
+    "STATdx": {
+      "role": "Staging-focused supplement.",
+      "keptText": [
+        "AJCC inclusion/exclusion",
+        "T/N/M/S stage definitions",
+        "nodal drainage pathways",
+        "metastatic work-up",
+        "restaging and management detail",
+        "risk category/prognostic staging"
+      ],
+      "limitations": [
+        "STATdx breadcrumb is not used for deck hierarchy because RadPrimer is present."
+      ]
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 8,
+    "STATdx": 49
+  },
+  "sourceAttributionRules": {
+    "default": "Tag factual blocks as [RadPrimer], [STATdx], or [Both] where the distinction matters.",
+    "humanFacingImages": "Use labels like RadPrimer image 5 or STATdx image 24 in prose.",
+    "traceability": "Use masterImageId values only in registry/import/report metadata."
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-27",
+    "SDX-28",
+    "SDX-29",
+    "SDX-30",
+    "SDX-31",
+    "SDX-32",
+    "SDX-33",
+    "SDX-34",
+    "SDX-35",
+    "SDX-36",
+    "SDX-37",
+    "SDX-38",
+    "SDX-39",
+    "SDX-40",
+    "SDX-41",
+    "SDX-42",
+    "SDX-43",
+    "SDX-44",
+    "SDX-45",
+    "SDX-46",
+    "SDX-47",
+    "SDX-48",
+    "SDX-49"
+  ],
+  "archiveOptionalImageIds": [],
+  "sourceSelectionPlan": {
+    "textBackbone": {
+      "primary": "RadPrimer supplies the canonical disease article backbone, sonographic appearance by histology, baseline differential, and original hierarchy.",
+      "supplement": "STATdx supplies the staging-focused TNM/AJCC framework, nodal drainage maps, metastatic work-up, risk/prognostic staging, restaging/surveillance detail, and richer multimodality examples.",
+      "downweight": "Do not treat either source as Core Radiology. No Core evidence was supplied in this bundle."
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate patients, alternate modality examples, stage variants, and conceptual replacements remain in the primaryTeachingSet as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "Exact duplicate calls require visual evidence from image_evidence files, matching source image IDs, image hashes, or explicit source/manual confirmation. Caption-only or topic-only similarity is insufficient.",
+    "radprimerCoverageByStatdx": {
+      "RP-01": [
+        "conceptualReplacement",
+        [
+          "SDX-01",
+          "SDX-02",
+          "SDX-03",
+          "SDX-04"
+        ],
+        "RadPrimer graphic teaches mass replacement; STATdx T-stage graphics teach invasion extent rather than the same graphic."
+      ],
+      "RP-02": [
+        "nearDuplicate",
+        [
+          "SDX-08",
+          "SDX-09",
+          "SDX-14",
+          "SDX-15"
+        ],
+        "Same seminoma/solid hypoechoic vascular mass teaching need, but different ultrasound images/patients."
+      ],
+      "RP-03": [
+        "nearDuplicate",
+        [
+          "SDX-08",
+          "SDX-09",
+          "SDX-33"
+        ],
+        "Small hypoechoic vascular testicular mass concept is covered, but not by the same image."
+      ],
+      "RP-04": [
+        "nearDuplicate",
+        [
+          "SDX-25",
+          "SDX-32",
+          "SDX-44"
+        ],
+        "Cystic/calcified nonseminomatous tumor and burned-out/microlithiasis examples overlap conceptually, but images are visually distinct."
+      ],
+      "RP-05": [
+        "nearDuplicate",
+        [
+          "SDX-18",
+          "SDX-26",
+          "SDX-27",
+          "SDX-30",
+          "SDX-31"
+        ],
+        "Tunica/extratesticular invasion and mixed tumor concept overlaps, but the visual examples are different."
+      ],
+      "RP-06": [
+        "nearDuplicate",
+        [
+          "SDX-14",
+          "SDX-18",
+          "SDX-20",
+          "SDX-26",
+          "SDX-27"
+        ],
+        "Large heterogeneous mass teaching is reinforced by STATdx, but no same image/slice is present."
+      ],
+      "RP-07": [
+        "nearDuplicate",
+        [
+          "SDX-20",
+          "SDX-22",
+          "SDX-26",
+          "SDX-27",
+          "SDX-44"
+        ],
+        "Ill-defined heterogeneous invasive tumor concept is reinforced, but source images are different."
+      ],
+      "RP-08": [
+        "nearDuplicate",
+        [
+          "SDX-21",
+          "SDX-23",
+          "SDX-24",
+          "SDX-34",
+          "SDX-35",
+          "SDX-42",
+          "SDX-45"
+        ],
+        "Retroperitoneal nodal metastasis is extensively covered by STATdx; CT slices/cases are distinct."
+      ]
+    },
+    "imageDownloadPlan": {
+      "primaryTeachingSet": {
+        "RadPrimer": [
+          "RP-01",
+          "RP-02",
+          "RP-03",
+          "RP-04",
+          "RP-05",
+          "RP-06",
+          "RP-07",
+          "RP-08"
+        ],
+        "STATdx": [
+          "SDX-01",
+          "SDX-02",
+          "SDX-03",
+          "SDX-04",
+          "SDX-05",
+          "SDX-06",
+          "SDX-07",
+          "SDX-08",
+          "SDX-09",
+          "SDX-10",
+          "SDX-11",
+          "SDX-12",
+          "SDX-13",
+          "SDX-14",
+          "SDX-15",
+          "SDX-16",
+          "SDX-17",
+          "SDX-18",
+          "SDX-19",
+          "SDX-20",
+          "SDX-21",
+          "SDX-22",
+          "SDX-23",
+          "SDX-24",
+          "SDX-25",
+          "SDX-26",
+          "SDX-27",
+          "SDX-28",
+          "SDX-29",
+          "SDX-30",
+          "SDX-31",
+          "SDX-32",
+          "SDX-33",
+          "SDX-34",
+          "SDX-35",
+          "SDX-36",
+          "SDX-37",
+          "SDX-38",
+          "SDX-39",
+          "SDX-40",
+          "SDX-41",
+          "SDX-42",
+          "SDX-43",
+          "SDX-44",
+          "SDX-45",
+          "SDX-46",
+          "SDX-47",
+          "SDX-48",
+          "SDX-49"
+        ]
+      },
+      "archiveOptionalDuplicates": {
+        "RadPrimer": [],
+        "STATdx": []
+      }
+    },
+    "caseClusterGuardrails": {
+      "policy": "Same-patient and stage-demonstration clusters should stay atomic when used in narrative/card generation.",
+      "intentionalSplits": [],
+      "clustersToPreserve": [
+        "STATdx MR seminoma same-patient cluster",
+        "STATdx N1 stage IIA cluster",
+        "STATdx N2 stage IIB cluster",
+        "STATdx N3/burned-out tumor cluster",
+        "STATdx T-stage graphics",
+        "STATdx bulky nodal and M1a cluster",
+        "STATdx heterogeneous seminoma US same-patient cluster",
+        "STATdx nodal drainage graphics",
+        "STATdx small seminoma US/MR same-patient cluster",
+        "STATdx spermatic-cord/local-extension cluster",
+        "STATdx teratomatous M1b cluster",
+        "STATdx tunica invasion pathology cluster",
+        "STATdx undescended-testis tumor MR cluster",
+        "STATdx widespread metastatic cluster"
+      ]
+    },
+    "generatorInstructions": [
+      "Use source-qualified human-facing labels such as RadPrimer image 5 and STATdx image 24.",
+      "Keep short IDs such as RP-05 and SDX-24 in traceability fields, filenames, and registry metadata.",
+      "For cards, separate primary tumor recognition, TNM staging, nodal pathways, serum markers, and metastatic-risk groups rather than mixing them into overloaded prompts.",
+      "Do not generate unsupported Core cross-check statements from this master source."
+    ]
+  }
+}

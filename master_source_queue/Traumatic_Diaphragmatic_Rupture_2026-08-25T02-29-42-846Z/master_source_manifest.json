@@ -1,0 +1,535 @@
+{
+  "articleTitle": "Traumatic Diaphragmatic Rupture",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Gastrointestinal",
+    "Peritoneum, Mesentery, and Abdominal Wall",
+    "Traumatic Diaphragmatic Rupture"
+  ],
+  "canonicalHierarchySource": "metadata.json canonicalHierarchy",
+  "canonicalDeckPath": "Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Traumatic Diaphragmatic Rupture",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx supplemental"
+  ],
+  "sourceCoverage": {
+    "textCoverage": "RadPrimer and STATdx substantially overlap in core article text. STATdx adds supplemental language on discontinuous diaphragm terminology, contiguous injuries across the diaphragm, pleural fluid tracking, intrapericardial herniation, tension gastrothorax, diaphragmatic paralysis, delayed-diagnosis mortality, and rare conservative management of small right-sided injuries.",
+    "imageCoverageSummary": "STATdx substantially covers the RadPrimer image set but does not fully exact-duplicate it. STATdx exact duplicates RadPrimer images 1, 2, 3, 4, 6, 7, and 10; RadPrimer images 5, 8, and 9 remain nonduplicate primary recognition examples.",
+    "radPrimerImageCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerImageLabel": "RadPrimer image 1",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-01"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx image 1 is the same chest radiograph showing the upward-curving NG tube after MVC; archive the STATdx repeat and keep the RadPrimer image as the canonical primary image."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerImageLabel": "RadPrimer image 2",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-02",
+          "SDX-03",
+          "SDX-04"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx image 2 is the same axial CT slice with fallen viscus and collar signs. STATdx images 3 and 4 are same-patient complementary axial/sagittal CT images and remain selected."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerImageLabel": "RadPrimer image 3",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-15",
+          "SDX-03"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx image 15 is the same axial CT slice/content as RadPrimer image 3, with only source crop/encoding differences. STATdx image 3 is an adjacent same-patient CT image and remains selected."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerImageLabel": "RadPrimer image 4",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-16",
+          "SDX-04"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx image 16 is the same coronal CT/reformatted image of stomach herniation through the left diaphragmatic defect. STATdx image 4 is a different sagittal companion image and remains selected."
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "radPrimerImageLabel": "RadPrimer image 5",
+        "classification": "conceptualReplacement",
+        "relatedSTATdxImageIds": [
+          "SDX-19",
+          "SDX-20"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx images 19 and 20 provide a separate radiograph/CT MVC cluster with an NG tube and fallen viscus sign, but they are not the same axial CT image as RadPrimer image 5."
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "radPrimerImageLabel": "RadPrimer image 6",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-09"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx image 9 is the same axial CT slice/content after stab wound showing splenic laceration, hemothorax, and subcutaneous emphysema; archive the STATdx repeat."
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "radPrimerImageLabel": "RadPrimer image 7",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-07"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx image 7 is the same coronal CT image of left hemidiaphragm defect with colon in the thorax and enteric contrast from colonic perforation; archive the STATdx repeat."
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "radPrimerImageLabel": "RadPrimer image 8",
+        "classification": "nearDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-10"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx image 10 covers the same surgical-error MR teaching point but is a different plane/appearance, so both remain selected for recognition reinforcement."
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "radPrimerImageLabel": "RadPrimer image 9",
+        "classification": "conceptualReplacement",
+        "relatedSTATdxImageIds": [
+          "SDX-12",
+          "SDX-13",
+          "SDX-17",
+          "SDX-20"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx includes several dependent-viscus/collar-sign CT examples, but none is the same axial CT slice showing the pinched stomach and thoracic abdominal fat from RadPrimer image 9."
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "radPrimerImageLabel": "RadPrimer image 10",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-08"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx image 8 is the same coronal CT image of splenic injury, hemothorax, lung contusion, and small diaphragmatic defect; archive the STATdx repeat."
+      }
+    ]
+  },
+  "imageCountBySource": {
+    "RadPrimer": {
+      "total": 10,
+      "primaryTeachingSet": 10,
+      "archiveOptionalDuplicate": 0
+    },
+    "STATdx": {
+      "total": 20,
+      "primaryTeachingSet": 13,
+      "archiveOptionalDuplicate": 7
+    },
+    "allSources": {
+      "total": 30,
+      "primaryTeachingSet": 23,
+      "archiveOptionalDuplicate": 7
+    }
+  },
+  "sourceAttributionRules": [
+    "Use [Both] for facts present in both RadPrimer and STATdx.",
+    "Use [RadPrimer] for canonical hierarchy, RadPrimer article backbone, RadPrimer-specific percentages, and RadPrimer primary images.",
+    "Use [STATdx] for supplemental wording, extra complications, right-sided/intrapericardial cases, and source-specific images."
+  ],
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-15",
+    "SDX-16"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and article backbone; STATdx is used as supplemental depth where it adds stronger terminology, mechanism, complication, management, or image examples.",
+    "keepFromRadPrimer": [
+      "Canonical hierarchy and deck routing.",
+      "Core article organization: key facts, terminology, imaging, differential diagnosis, pathology, clinical issues, and diagnostic checklist.",
+      "Left-sided predominance, blunt versus penetrating tear-size pattern, CT sign list, radiograph/fluoroscopy/MR sections, and all RadPrimer primary images."
+    ],
+    "keepFromSTATdx": [
+      "Discontinuous diaphragm wording as a named CT sign.",
+      "Pleural fluid tracking and contiguous injuries above and below the diaphragm as suspicion-raising secondary signs.",
+      "Intrapericardial herniation case and management/complication nuance including tension gastrothorax, diaphragmatic paralysis, delayed-diagnosis mortality, and rare conservative treatment of small right-sided injuries.",
+      "All nonduplicate STATdx images as supplemental recognition reinforcement."
+    ],
+    "downweightOrSkip": [
+      "Do not repeat source-identical article prose twice.",
+      "Do not use STATdx breadcrumb/deck path for routing.",
+      "Archive only visually exact duplicate STATdx images 1, 2, 7, 8, 9, 15, and 16 by default."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "atomicClusterRule": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse clusters should remain together unless the archived member is a visually exact duplicate and the selected retained image preserves the teaching context.",
+      "intentionalClusterSplits": [
+        {
+          "cluster": "Opening MVC radiograph and CT fallen-viscus cluster",
+          "selected": [
+            "RP-01",
+            "RP-02",
+            "RP-03",
+            "RP-04",
+            "SDX-03",
+            "SDX-04"
+          ],
+          "archived": [
+            "SDX-01",
+            "SDX-02",
+            "SDX-15",
+            "SDX-16"
+          ],
+          "reason": "Archived STATdx images are exact same-image/same-slice repeats of RadPrimer images; adjacent or different-plane STATdx companion views remain selected."
+        },
+        {
+          "cluster": "Penetrating trauma contiguous-injury examples",
+          "selected": [
+            "RP-06"
+          ],
+          "archived": [
+            "SDX-09"
+          ],
+          "reason": "STATdx image 9 is the same axial CT slice/content as RadPrimer image 6; the retained RadPrimer image preserves the teaching point."
+        },
+        {
+          "cluster": "Colonic herniation with colonic perforation",
+          "selected": [
+            "RP-07"
+          ],
+          "archived": [
+            "SDX-07"
+          ],
+          "reason": "STATdx image 7 is the same coronal CT image/content as RadPrimer image 7."
+        },
+        {
+          "cluster": "Splenic injury, hemothorax, lung contusion, small diaphragm defect",
+          "selected": [
+            "RP-10"
+          ],
+          "archived": [
+            "SDX-08"
+          ],
+          "reason": "STATdx image 8 is the same coronal CT image/content as RadPrimer image 10."
+        }
+      ],
+      "radPrimerClustersPreserved": [
+        "RadPrimer images 1-4 remain together as the opening radiograph/CT same-patient teaching cluster.",
+        "RadPrimer images 6 and 10 remain as selected contiguous-injury examples even when STATdx exact repeats are archived."
+      ],
+      "statdxClustersPreserved": [
+        "STATdx images 5 and 6 remain together as an intrapericardial/right diaphragmatic rupture cluster.",
+        "STATdx images 19 and 20 remain together as an MVC radiograph/CT correlation cluster.",
+        "STATdx adjacent and different-plane companion views 3, 4, 10-14, 17, and 18 remain selected as recognition reinforcement."
+      ]
+    },
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 1",
+        "downloadFilename": "RP-01_RadPrimer_image_01_plain_d55c47b1.jpg",
+        "plainUrl": "https://app.radprimer.com/images/d55c47b1-3b4f-4247-934c-6cf89b623a7e?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/d55c47b1-3b4f-4247-934c-6cf89b623a7e?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_d55c47b1.jpg"
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 2",
+        "downloadFilename": "RP-02_RadPrimer_image_02_plain_ef4bb434.jpg",
+        "plainUrl": "https://app.radprimer.com/images/ef4bb434-2653-4190-b2ba-696ec5360484?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/ef4bb434-2653-4190-b2ba-696ec5360484?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_ef4bb434.jpg"
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 3",
+        "downloadFilename": "RP-03_RadPrimer_image_03_plain_d39db41c.jpg",
+        "plainUrl": "https://app.radprimer.com/images/d39db41c-2444-4b3f-8536-1819a20fd4ce?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/d39db41c-2444-4b3f-8536-1819a20fd4ce?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_d39db41c.jpg"
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 4",
+        "downloadFilename": "RP-04_RadPrimer_image_04_plain_fb12b471.jpg",
+        "plainUrl": "https://app.radprimer.com/images/fb12b471-e8c8-4c5c-9dd5-bfea3e8c9101?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/fb12b471-e8c8-4c5c-9dd5-bfea3e8c9101?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_fb12b471.jpg"
+      },
+      {
+        "masterImageId": "RP-05",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 5",
+        "downloadFilename": "RP-05_RadPrimer_image_05_plain_19a071dc.jpg",
+        "plainUrl": "https://app.radprimer.com/images/19a071dc-daa3-4f2c-a76e-3f43571659f0?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/19a071dc-daa3-4f2c-a76e-3f43571659f0?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_19a071dc.jpg"
+      },
+      {
+        "masterImageId": "RP-06",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 6",
+        "downloadFilename": "RP-06_RadPrimer_image_06_plain_e8ab9be1.jpg",
+        "plainUrl": "https://app.radprimer.com/images/e8ab9be1-ce0a-40db-a8e7-1c2414b94385?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/e8ab9be1-ce0a-40db-a8e7-1c2414b94385?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_e8ab9be1.jpg"
+      },
+      {
+        "masterImageId": "RP-07",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 7",
+        "downloadFilename": "RP-07_RadPrimer_image_07_plain_fc86edcd.jpg",
+        "plainUrl": "https://app.radprimer.com/images/fc86edcd-37d0-4213-9eab-3570f0e05f29?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/fc86edcd-37d0-4213-9eab-3570f0e05f29?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_fc86edcd.jpg"
+      },
+      {
+        "masterImageId": "RP-08",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 8",
+        "downloadFilename": "RP-08_RadPrimer_image_08_plain_db9893a3.jpg",
+        "plainUrl": "https://app.radprimer.com/images/db9893a3-a430-4def-82a0-2611ae49e894?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/db9893a3-a430-4def-82a0-2611ae49e894?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_db9893a3.jpg"
+      },
+      {
+        "masterImageId": "RP-09",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 9",
+        "downloadFilename": "RP-09_RadPrimer_image_09_plain_904132c2.jpg",
+        "plainUrl": "https://app.radprimer.com/images/904132c2-2d5e-469c-b9c7-5270af8bc5f3?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/904132c2-2d5e-469c-b9c7-5270af8bc5f3?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_904132c2.jpg"
+      },
+      {
+        "masterImageId": "RP-10",
+        "sourceLabel": "RadPrimer",
+        "displayLabel": "RadPrimer image 10",
+        "downloadFilename": "RP-10_RadPrimer_image_10_plain_de04adb8.jpg",
+        "plainUrl": "https://app.radprimer.com/images/de04adb8-05c1-4f07-9be4-a2343665f9c9?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/de04adb8-05c1-4f07-9be4-a2343665f9c9?style=xlarge&annotated=true",
+        "visualEvidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_de04adb8.jpg"
+      },
+      {
+        "masterImageId": "SDX-03",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 3",
+        "downloadFilename": "SDX-03_STATdx_image_03_plain_ee63630b.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ee63630b-7efc-447b-a348-a701198c320f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ee63630b-7efc-447b-a348-a701198c320f?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_ee63630b.jpg"
+      },
+      {
+        "masterImageId": "SDX-04",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 4",
+        "downloadFilename": "SDX-04_STATdx_image_04_plain_628f5a14.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/628f5a14-b515-4eca-b936-22de443e4091?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/628f5a14-b515-4eca-b936-22de443e4091?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_628f5a14.jpg"
+      },
+      {
+        "masterImageId": "SDX-05",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 5",
+        "downloadFilename": "SDX-05_STATdx_image_05_plain_71c6d97e.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/71c6d97e-c467-4491-bfb7-f9d350a329ca?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/71c6d97e-c467-4491-bfb7-f9d350a329ca?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_71c6d97e.jpg"
+      },
+      {
+        "masterImageId": "SDX-06",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 6",
+        "downloadFilename": "SDX-06_STATdx_image_06_plain_8f9f4389.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8f9f4389-efc0-4b16-9a77-24fbe1686f50?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8f9f4389-efc0-4b16-9a77-24fbe1686f50?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_8f9f4389.jpg"
+      },
+      {
+        "masterImageId": "SDX-10",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 10",
+        "downloadFilename": "SDX-10_STATdx_image_10_plain_ecd70974.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ecd70974-42d8-40de-9596-5114ce7c17b9?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ecd70974-42d8-40de-9596-5114ce7c17b9?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_ecd70974.jpg"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 11",
+        "downloadFilename": "SDX-11_STATdx_image_11_plain_53289f96.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/53289f96-68d1-4fc3-91cd-0c6d0d1b6a63?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/53289f96-68d1-4fc3-91cd-0c6d0d1b6a63?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_53289f96.jpg"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 12",
+        "downloadFilename": "SDX-12_STATdx_image_12_plain_990a0827.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/990a0827-c05e-48da-bd26-8ee332a65ac0?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/990a0827-c05e-48da-bd26-8ee332a65ac0?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_990a0827.jpg"
+      },
+      {
+        "masterImageId": "SDX-13",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 13",
+        "downloadFilename": "SDX-13_STATdx_image_13_plain_9e65fe78.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9e65fe78-ba42-40bb-9ada-704924f65f3d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9e65fe78-ba42-40bb-9ada-704924f65f3d?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_9e65fe78.jpg"
+      },
+      {
+        "masterImageId": "SDX-14",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 14",
+        "downloadFilename": "SDX-14_STATdx_image_14_plain_1409cdb0.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1409cdb0-0829-4bf2-ab6d-d4a7bc1d4d5b?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1409cdb0-0829-4bf2-ab6d-d4a7bc1d4d5b?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_1409cdb0.jpg"
+      },
+      {
+        "masterImageId": "SDX-17",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 17",
+        "downloadFilename": "SDX-17_STATdx_image_17_plain_673eb787.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/673eb787-228d-4fcd-8b64-a9dd5d081b01?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/673eb787-228d-4fcd-8b64-a9dd5d081b01?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_673eb787.jpg"
+      },
+      {
+        "masterImageId": "SDX-18",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 18",
+        "downloadFilename": "SDX-18_STATdx_image_18_plain_b8ff441e.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b8ff441e-1735-46dc-8f7c-4d700fe09487?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b8ff441e-1735-46dc-8f7c-4d700fe09487?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_b8ff441e.jpg"
+      },
+      {
+        "masterImageId": "SDX-19",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 19",
+        "downloadFilename": "SDX-19_STATdx_image_19_plain_1a4f9ac3.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1a4f9ac3-9647-4d53-a7f0-31781381b45c?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1a4f9ac3-9647-4d53-a7f0-31781381b45c?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_1a4f9ac3.jpg"
+      },
+      {
+        "masterImageId": "SDX-20",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 20",
+        "downloadFilename": "SDX-20_STATdx_image_20_plain_27941996.jpg",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/27941996-2691-4368-9410-ab91f4980e82?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/27941996-2691-4368-9410-ab91f4980e82?annotated=true&size=1000&quality=90",
+        "visualEvidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_27941996.jpg"
+      }
+    ],
+    "archivePlan": [
+      {
+        "masterImageId": "SDX-01",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 1",
+        "reason": "Exact duplicate of RadPrimer image 1 based on visual inspection of the staged chest radiograph evidence.",
+        "retainedEquivalentImageId": "RP-01"
+      },
+      {
+        "masterImageId": "SDX-02",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 2",
+        "reason": "Exact duplicate of RadPrimer image 2 based on visual inspection of the staged axial CT evidence.",
+        "retainedEquivalentImageId": "RP-02"
+      },
+      {
+        "masterImageId": "SDX-07",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 7",
+        "reason": "Exact duplicate of RadPrimer image 7 based on visual inspection of the staged coronal CT evidence.",
+        "retainedEquivalentImageId": "RP-07"
+      },
+      {
+        "masterImageId": "SDX-08",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 8",
+        "reason": "Exact duplicate of RadPrimer image 10 based on visual inspection of the staged coronal CT evidence.",
+        "retainedEquivalentImageId": "RP-10"
+      },
+      {
+        "masterImageId": "SDX-09",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 9",
+        "reason": "Exact duplicate of RadPrimer image 6 based on visual inspection of the staged axial CT evidence.",
+        "retainedEquivalentImageId": "RP-06"
+      },
+      {
+        "masterImageId": "SDX-15",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 15",
+        "reason": "Exact duplicate of RadPrimer image 3 based on visual inspection of the staged axial CT evidence.",
+        "retainedEquivalentImageId": "RP-03"
+      },
+      {
+        "masterImageId": "SDX-16",
+        "sourceLabel": "STATdx",
+        "displayLabel": "STATdx image 16",
+        "reason": "Exact duplicate of RadPrimer image 4 based on visual inspection of the staged coronal CT evidence.",
+        "retainedEquivalentImageId": "RP-04"
+      }
+    ],
+    "generatorInstructions": [
+      "Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.",
+      "Use clean source-qualified labels in prose, such as RadPrimer image 5 and STATdx image 4.",
+      "Keep RP-05 and SDX-04 identifiers in registry fields, filenames, metadata, and traceability fields.",
+      "Download/use only selectedPrimaryImageIds by default; leave archiveOptionalImageIds available for audit or recovery."
+    ]
+  }
+}

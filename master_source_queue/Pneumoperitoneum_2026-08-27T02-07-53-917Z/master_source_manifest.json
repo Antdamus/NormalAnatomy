@@ -1,0 +1,653 @@
+{
+  "articleTitle": "Pneumoperitoneum",
+  "createdAt": "2026-08-27T02:14:17.254Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Gastrointestinal",
+    "Peritoneum, Mesentery, and Abdominal Wall",
+    "Pneumoperitoneum"
+  ],
+  "canonicalDeckPath": "Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Pneumoperitoneum",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "role": "canonicalBackbone",
+      "textCoverage": "primary article/differential backbone",
+      "imageCoverage": "14 primary images retained",
+      "breadcrumbUsed": true
+    },
+    "STATdx": {
+      "role": "supplementalDepth",
+      "textCoverage": "overlapping article text with supplemental image examples",
+      "imageCoverage": "18 total images: 4 selected supplemental, 14 archive-optional exact duplicates",
+      "breadcrumbUsed": false
+    },
+    "imageEvidenceReviewed": true,
+    "statdxFullyCoversRadPrimerImageSet": true
+  },
+  "imageCountBySource": {
+    "RadPrimer": {
+      "total": 14,
+      "primaryTeachingSet": 14,
+      "archiveOptionalDuplicate": 0
+    },
+    "STATdx": {
+      "total": 18,
+      "primaryTeachingSet": 4,
+      "archiveOptionalDuplicate": 14
+    }
+  },
+  "sourceAttributionRules": [
+    "Use [RadPrimer] for canonical differential structure, deck routing, and retained RadPrimer images.",
+    "Use [STATdx] for supplemental images and any added image-specific detail.",
+    "Use [Both] for shared article claims present in both source packages.",
+    "Do not cite Core Radiology support unless auditable Core evidence is supplied later."
+  ],
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-13",
+    "RP-14",
+    "SDX-03",
+    "SDX-07",
+    "SDX-10",
+    "SDX-11"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-01",
+    "SDX-02",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-08",
+    "SDX-09",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and differential backbone. The article text in STATdx substantially overlaps the RadPrimer source; keep RadPrimer ordering and add STATdx only where it adds image depth or supplemental examples.",
+    "keepFromRadPrimer": [
+      "Canonical hierarchy and deck routing from metadata.json canonicalHierarchy/canonicalDeckPath.",
+      "Differential structure: common causes, less common causes, mimics, and neonatal alternative approach.",
+      "Core teaching facts for CT/radiograph sensitivity, amount/location of air, postoperative time course, and cause-specific clues.",
+      "RadPrimer images 1-14 as the primary canonical teaching set."
+    ],
+    "keepFromSTATdx": [
+      "Four distinct supplemental images: STATdx image 3 for thoracic barotrauma route, STATdx image 7 for radiographic feeding-tube/free-air example, STATdx images 10 and 11 as alternate perforated duodenal-ulcer examples.",
+      "Source-qualified captions and URLs for the supplemental images.",
+      "No replacement of RadPrimer hierarchy or deck path."
+    ],
+    "downweightOrSkip": [
+      "Do not use STATdx breadcrumb for routing.",
+      "Do not duplicate STATdx copies that share the same stable source image IDs as RadPrimer primary images in default downloads.",
+      "Do not generate Core Radiology claims unless a later run supplies auditable Core evidence."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "Exact duplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "radPrimerCoverageBySTATdx": {
+      "fullyCoversRadPrimerImageSet": true,
+      "method": "All 14 RadPrimer images have matching STATdx images with the same stable source image IDs and matching staged visual evidence.",
+      "gate": [
+        {
+          "radPrimerImageId": "RP-01",
+          "radPrimerLabel": "RadPrimer image 1",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-01",
+          "statdxLabel": "STATdx image 1",
+          "stableImageId": "3bdc6efb-08bd-4ee8-b0e7-c8fceae11151",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-02",
+          "radPrimerLabel": "RadPrimer image 2",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-02",
+          "statdxLabel": "STATdx image 2",
+          "stableImageId": "3c2fc85d-36fc-4621-9129-51517f3e3da8",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-03",
+          "radPrimerLabel": "RadPrimer image 3",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-04",
+          "statdxLabel": "STATdx image 4",
+          "stableImageId": "2eb653ec-dd8b-4b46-9a54-d9d68e49f834",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-04",
+          "radPrimerLabel": "RadPrimer image 4",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-05",
+          "statdxLabel": "STATdx image 5",
+          "stableImageId": "d806197e-e738-411a-abf6-d003275a8230",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-05",
+          "radPrimerLabel": "RadPrimer image 5",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-06",
+          "statdxLabel": "STATdx image 6",
+          "stableImageId": "81c0321d-8a31-42e6-9e7d-0f23b9361ce1",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-06",
+          "radPrimerLabel": "RadPrimer image 6",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-08",
+          "statdxLabel": "STATdx image 8",
+          "stableImageId": "6cc1bbb6-6d07-493d-8612-db4536549489",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-07",
+          "radPrimerLabel": "RadPrimer image 7",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-09",
+          "statdxLabel": "STATdx image 9",
+          "stableImageId": "692aaad2-3b27-47e0-a45d-636af4eba94a",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-08",
+          "radPrimerLabel": "RadPrimer image 8",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-12",
+          "statdxLabel": "STATdx image 12",
+          "stableImageId": "10da93a6-8a29-4534-9e3c-1940a670b0d9",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-09",
+          "radPrimerLabel": "RadPrimer image 9",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-13",
+          "statdxLabel": "STATdx image 13",
+          "stableImageId": "a2b81fb5-19fb-43d5-a608-d146c6779038",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-10",
+          "radPrimerLabel": "RadPrimer image 10",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-14",
+          "statdxLabel": "STATdx image 14",
+          "stableImageId": "37365f1a-18a1-4a8d-971c-a1d2adab4117",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-11",
+          "radPrimerLabel": "RadPrimer image 11",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-15",
+          "statdxLabel": "STATdx image 15",
+          "stableImageId": "01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-12",
+          "radPrimerLabel": "RadPrimer image 12",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-16",
+          "statdxLabel": "STATdx image 16",
+          "stableImageId": "e5b4c65e-d5b3-4d72-9f89-4f9684cf1486",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-13",
+          "radPrimerLabel": "RadPrimer image 13",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-17",
+          "statdxLabel": "STATdx image 17",
+          "stableImageId": "062587c0-791f-4f37-a124-d7b9f8269da3",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        },
+        {
+          "radPrimerImageId": "RP-14",
+          "radPrimerLabel": "RadPrimer image 14",
+          "statdxCoverage": "exactDuplicate",
+          "statdxImageId": "SDX-18",
+          "statdxLabel": "STATdx image 18",
+          "stableImageId": "d00cf77d-30e3-4630-bea7-27f5e8bc7a91",
+          "decision": "Keep RadPrimer image primary; archive the STATdx duplicate copy.",
+          "evidence": "Same stable source image ID, matching caption/case context, and matching staged image evidence appearance."
+        }
+      ]
+    },
+    "caseClusterGuardrails": {
+      "policy": "Treat same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse image groups as atomic. Do not split a cluster unless the report documents why the split is safe.",
+      "observedClusters": [
+        {
+          "clusterId": "postoperative_rectal_anastomotic_leak_cluster",
+          "primaryKept": [
+            "RP-03",
+            "RP-04"
+          ],
+          "duplicateArchived": [
+            "SDX-04",
+            "SDX-05"
+          ],
+          "split": "no",
+          "reason": "The RadPrimer cluster was retained intact and the equivalent STATdx duplicate cluster was archived intact."
+        }
+      ],
+      "intentionalSplits": []
+    },
+    "imageDownloadPlan": {
+      "primaryTeachingSet": [
+        {
+          "masterImageId": "RP-01",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 1,
+          "plainFilename": "RP-01_RadPrimer_plain_Pneumoperitoneum1.jpg",
+          "annotatedFilename": "RP-01_RadPrimer_annotated_Pneumoperitoneum1_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?style=xlarge&annotated=true",
+          "usedFor": [
+            "postoperativeNormal",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "plainFilename": "RP-02_RadPrimer_plain_Pneumoperitoneum2.jpg",
+          "annotatedFilename": "RP-02_RadPrimer_annotated_Pneumoperitoneum2_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/3c2fc85d-36fc-4621-9129-51517f3e3da8?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/3c2fc85d-36fc-4621-9129-51517f3e3da8?style=xlarge&annotated=true",
+          "usedFor": [
+            "barotrauma",
+            "retroperitonealAndIntraperitonealGas",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "plainFilename": "RP-03_RadPrimer_plain_Pneumoperitoneum3.jpg",
+          "annotatedFilename": "RP-03_RadPrimer_annotated_Pneumoperitoneum3_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?style=xlarge&annotated=true",
+          "usedFor": [
+            "anastomoticLeakCluster",
+            "greaterThanExpectedPostoperativeFreeAir",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-04",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 4,
+          "plainFilename": "RP-04_RadPrimer_plain_Pneumoperitoneum4.jpg",
+          "annotatedFilename": "RP-04_RadPrimer_annotated_Pneumoperitoneum4_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/d806197e-e738-411a-abf6-d003275a8230?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/d806197e-e738-411a-abf6-d003275a8230?style=xlarge&annotated=true",
+          "usedFor": [
+            "anastomoticLeakCluster",
+            "focalPerianastomoticGas",
+            "procedureContext"
+          ]
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 5,
+          "plainFilename": "RP-05_RadPrimer_plain_Pneumoperitoneum5.jpg",
+          "annotatedFilename": "RP-05_RadPrimer_annotated_Pneumoperitoneum5_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?style=xlarge&annotated=true",
+          "usedFor": [
+            "duodenalPerforationAfterERCP",
+            "peritonealRetroperitonealSubcutaneousGas",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 6,
+          "plainFilename": "RP-06_RadPrimer_plain_Pneumoperitoneum6.jpg",
+          "annotatedFilename": "RP-06_RadPrimer_annotated_Pneumoperitoneum6_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/6cc1bbb6-6d07-493d-8612-db4536549489?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/6cc1bbb6-6d07-493d-8612-db4536549489?style=xlarge&annotated=true",
+          "usedFor": [
+            "perforatedDuodenalUlcer",
+            "entericContrastLeak",
+            "freeAirAndAscites",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-07",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 7,
+          "plainFilename": "RP-07_RadPrimer_plain_Pneumoperitoneum7.jpg",
+          "annotatedFilename": "RP-07_RadPrimer_annotated_Pneumoperitoneum7_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/692aaad2-3b27-47e0-a45d-636af4eba94a?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/692aaad2-3b27-47e0-a45d-636af4eba94a?style=xlarge&annotated=true",
+          "usedFor": [
+            "perforatedGastricUlcer",
+            "lesserCurvatureInflammation",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 8,
+          "plainFilename": "RP-08_RadPrimer_plain_Pneumoperitoneum8.jpg",
+          "annotatedFilename": "RP-08_RadPrimer_annotated_Pneumoperitoneum8_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/10da93a6-8a29-4534-9e3c-1940a670b0d9?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/10da93a6-8a29-4534-9e3c-1940a670b0d9?style=xlarge&annotated=true",
+          "usedFor": [
+            "perforatedSigmoidDiverticulitis",
+            "coronalPattern",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-09",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 9,
+          "plainFilename": "RP-09_RadPrimer_plain_Pneumoperitoneum9.jpg",
+          "annotatedFilename": "RP-09_RadPrimer_annotated_Pneumoperitoneum9_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/a2b81fb5-19fb-43d5-a608-d146c6779038?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/a2b81fb5-19fb-43d5-a608-d146c6779038?style=xlarge&annotated=true",
+          "usedFor": [
+            "colonicIschemiaWithPerforation",
+            "pneumatosis",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-10",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 10,
+          "plainFilename": "RP-10_RadPrimer_plain_Pneumoperitoneum10.jpg",
+          "annotatedFilename": "RP-10_RadPrimer_annotated_Pneumoperitoneum10_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/37365f1a-18a1-4a8d-971c-a1d2adab4117?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/37365f1a-18a1-4a8d-971c-a1d2adab4117?style=xlarge&annotated=true",
+          "usedFor": [
+            "penetratingTraumaColonInjury",
+            "ectopicEntericContrast",
+            "coreRecognition"
+          ]
+        },
+        {
+          "masterImageId": "RP-11",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 11,
+          "plainFilename": "RP-11_RadPrimer_plain_Pneumoperitoneum11.jpg",
+          "annotatedFilename": "RP-11_RadPrimer_annotated_Pneumoperitoneum11_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?style=xlarge&annotated=true",
+          "usedFor": [
+            "benignPneumatosis",
+            "incidentalFreeAir",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "RP-12",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 12,
+          "plainFilename": "RP-12_RadPrimer_plain_Pneumoperitoneum12.jpg",
+          "annotatedFilename": "RP-12_RadPrimer_annotated_Pneumoperitoneum12_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?style=xlarge&annotated=true",
+          "usedFor": [
+            "benignPneumatosisSteroidUse",
+            "coronalPattern",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "RP-13",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 13,
+          "plainFilename": "RP-13_RadPrimer_plain_Pneumoperitoneum13.jpg",
+          "annotatedFilename": "RP-13_RadPrimer_annotated_Pneumoperitoneum13_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/062587c0-791f-4f37-a124-d7b9f8269da3?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/062587c0-791f-4f37-a124-d7b9f8269da3?style=xlarge&annotated=true",
+          "usedFor": [
+            "smallBowelDiverticulitis",
+            "tinyAdjacentEctopicGas",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "RP-14",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 14,
+          "plainFilename": "RP-14_RadPrimer_plain_Pneumoperitoneum14.jpg",
+          "annotatedFilename": "RP-14_RadPrimer_annotated_Pneumoperitoneum14_annot.jpg",
+          "plainUrl": "https://app.radprimer.com/images/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?style=xlarge&annotated=false",
+          "annotatedUrl": "https://app.radprimer.com/images/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?style=xlarge&annotated=true",
+          "usedFor": [
+            "foreignBodyPerforation",
+            "surgicalFinding",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-03",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 3,
+          "plainFilename": "SDX-03_STATdx_plain_Pneumoperitoneum3.jpg",
+          "annotatedFilename": "SDX-03_STATdx_annotated_Pneumoperitoneum3_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/5546fa86-dd9e-4177-9767-dace234f980e?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/5546fa86-dd9e-4177-9767-dace234f980e?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "barotraumaThoracicRoute",
+            "pneumothoraxPneumomediastinumContext",
+            "supplementalDepth",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-07",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 7,
+          "plainFilename": "SDX-07_STATdx_plain_Pneumoperitoneum7.jpg",
+          "annotatedFilename": "SDX-07_STATdx_annotated_Pneumoperitoneum7_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/569a51bb-bc2f-45fb-9dc4-8d2d23f37713?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/569a51bb-bc2f-45fb-9dc4-8d2d23f37713?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "feedingTubeComplication",
+            "radiographMassiveFreeAir",
+            "modalityVariant",
+            "supplementalDepth"
+          ]
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "plainFilename": "SDX-10_STATdx_plain_Pneumoperitoneum10.jpg",
+          "annotatedFilename": "SDX-10_STATdx_annotated_Pneumoperitoneum10_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/6ae4d72b-13b3-4471-8942-e6cd181ab84c?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/6ae4d72b-13b3-4471-8942-e6cd181ab84c?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "perforatedDuodenalUlcer",
+            "alternateExample",
+            "severityVariant",
+            "recognitionReinforcement"
+          ]
+        },
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "plainFilename": "SDX-11_STATdx_plain_Pneumoperitoneum11.jpg",
+          "annotatedFilename": "SDX-11_STATdx_annotated_Pneumoperitoneum11_annot.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/92c3735f-76cf-49ba-8ac1-2a63c6c12d79?size=1000&quality=90",
+          "annotatedUrl": "https://app.statdx.com/image/thumbnail/92c3735f-76cf-49ba-8ac1-2a63c6c12d79?annotated=true&size=1000&quality=90",
+          "usedFor": [
+            "perforatedDuodenalUlcer",
+            "alternateExample",
+            "adjacentDuodenalBulbGas",
+            "recognitionReinforcement"
+          ]
+        }
+      ],
+      "archiveOptionalDuplicates": [
+        {
+          "masterImageId": "SDX-01",
+          "duplicateOf": "RP-01",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-01_STATdx_plain_Pneumoperitoneum1.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3bdc6efb-08bd-4ee8-b0e7-c8fceae11151?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-02",
+          "duplicateOf": "RP-02",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-02_STATdx_plain_Pneumoperitoneum2.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3c2fc85d-36fc-4621-9129-51517f3e3da8?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-04",
+          "duplicateOf": "RP-03",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-04_STATdx_plain_Pneumoperitoneum4.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/2eb653ec-dd8b-4b46-9a54-d9d68e49f834?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-05",
+          "duplicateOf": "RP-04",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-05_STATdx_plain_Pneumoperitoneum5.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d806197e-e738-411a-abf6-d003275a8230?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-06",
+          "duplicateOf": "RP-05",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-06_STATdx_plain_Pneumoperitoneum6.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/81c0321d-8a31-42e6-9e7d-0f23b9361ce1?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-08",
+          "duplicateOf": "RP-06",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-08_STATdx_plain_Pneumoperitoneum8.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/6cc1bbb6-6d07-493d-8612-db4536549489?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-09",
+          "duplicateOf": "RP-07",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-09_STATdx_plain_Pneumoperitoneum9.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/692aaad2-3b27-47e0-a45d-636af4eba94a?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-12",
+          "duplicateOf": "RP-08",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-12_STATdx_plain_Pneumoperitoneum12.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/10da93a6-8a29-4534-9e3c-1940a670b0d9?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-13",
+          "duplicateOf": "RP-09",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-13_STATdx_plain_Pneumoperitoneum13.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/a2b81fb5-19fb-43d5-a608-d146c6779038?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-14",
+          "duplicateOf": "RP-10",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-14_STATdx_plain_Pneumoperitoneum14.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/37365f1a-18a1-4a8d-971c-a1d2adab4117?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-15",
+          "duplicateOf": "RP-11",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-15_STATdx_plain_Pneumoperitoneum15.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/01b4ac15-d6f9-4fe6-b32a-a5f63cc629e7?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-16",
+          "duplicateOf": "RP-12",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-16_STATdx_plain_Pneumoperitoneum16.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e5b4c65e-d5b3-4d72-9f89-4f9684cf1486?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-17",
+          "duplicateOf": "RP-13",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-17_STATdx_plain_Pneumoperitoneum17.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/062587c0-791f-4f37-a124-d7b9f8269da3?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        },
+        {
+          "masterImageId": "SDX-18",
+          "duplicateOf": "RP-14",
+          "sourceLabel": "STATdx",
+          "plainFilename": "SDX-18_STATdx_plain_Pneumoperitoneum18.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d00cf77d-30e3-4630-bea7-27f5e8bc7a91?size=1000&quality=90",
+          "reason": "Same stable source image ID appears in RadPrimer and the staged evidence contact sheet showed matching visual content. STATdx copy archived to avoid duplicate default downloads."
+        }
+      ],
+      "generatorInstruction": "Download only selectedPrimaryImageIds by default using source-qualified filenames. Keep archiveOptionalImageIds available only for audit/recovery, not routine cards or lecture."
+    },
+    "generatorInstructions": [
+      "Use source-qualified human labels in narrative prose, such as RadPrimer image 5 or STATdx image 10.",
+      "Keep short IDs such as RP-05 and SDX-10 in registry, manifest, filenames, and traceability fields.",
+      "Preserve procedure and cluster context, especially the postoperative anastomotic leak pair and the duodenal-ulcer alternate examples.",
+      "Use images for recognition reinforcement; do not archive distinct examples merely because they teach the same diagnosis."
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+CORE_EVIDENCE_STATUS: CORE_GAP
+CORE_SOURCE_BASIS: Core Radiology, Second Edition — junzi-shi-core-radiology-a-visual-approach-to.pdf; Core was searched for traumatic diaphragmatic rupture and related terminology, but no explicit entity-level coverage was confirmed. User explicitly declared: “Core GAP: not covered in Core Radiology.”
+CORE_FACTS_USED:
+
+* None.
+CORE_DERIVED_CARDS:
+* None; all exported cards were derived from the provided RadPrimer + STATdx master source package.
+CORE_LIMITATIONS:
+* No Core-derived imaging findings, differentials, mechanisms, thresholds, epidemiology, management rules, or summary content were used.
+* Source basis for the exported deck is RadPrimer + STATdx synthesis under the user-declared Core GAP pathway.

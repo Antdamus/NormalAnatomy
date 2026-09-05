@@ -1,0 +1,206 @@
+{
+  "articleTitle": "Hydrocele",
+  "sourceComparisonFolder": "RadPrimerSourceComparison/Hydrocele",
+  "anki": {
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Hydrocele"
+    ],
+    "configuredNormalRoot": "RadprimerNormal",
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckName": "Corebook::Ultrasound::Scrotum Basic::Hydrocele",
+    "deckParts": [
+      "Corebook",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Hydrocele"
+    ],
+    "deckRoot": "Corebook",
+    "hierarchySource": "RadPrimer",
+    "importFilename": "corrected_cards_anki_import.tsv",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "normalRoot": "RadprimerNormal",
+    "noteType": "core_rad_notetype_v2",
+    "pathologyRoot": "Corebook"
+  },
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Hydrocele"
+  ],
+  "imageRegistry": [
+    {
+      "annotatedFilename": "Hydrocele1_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?style=xlarge&annotated=true",
+      "baseName": "Hydrocele1",
+      "caption": "Diagrammatic illustration shows the location of the hydrocele <img src=\"arrow_CO.png\"> with respect to the testis <img src=\"arrow_WC.png\">.",
+      "downloadRecommendation": "",
+      "filename": "Hydrocele1.jpg",
+      "group": "",
+      "imageId": "3b5ce8d6-a140-4273-bae9-63bb99af3f6e",
+      "masterImageId": "RP-01",
+      "plainFilename": "Hydrocele1.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?style=xlarge&annotated=false",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_3b5ce8d6.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "annotatedFilename": "Hydrocele2_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/3f7c082f-c45d-4da7-b78f-4036dc212fcf?style=xlarge&annotated=true",
+      "baseName": "Hydrocele2",
+      "caption": "Transverse color Doppler ultrasound shows simple-appearing fluid <img src=\"arrow_CS.png\"> in a small hydrocele. Note that the fluid does not surround the testicle along the bare area <img src=\"arrow_WO.png\"> where the tunica vaginalis does not cover the testicle and is attached to the epididymis.",
+      "downloadRecommendation": "",
+      "filename": "Hydrocele2.jpg",
+      "group": "",
+      "imageId": "3f7c082f-c45d-4da7-b78f-4036dc212fcf",
+      "masterImageId": "RP-02",
+      "plainFilename": "Hydrocele2.jpg",
+      "plainUrl": "https://app.radprimer.com/images/3f7c082f-c45d-4da7-b78f-4036dc212fcf?style=xlarge&annotated=false",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_3f7c082f.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/3f7c082f-c45d-4da7-b78f-4036dc212fcf?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "annotatedFilename": "Hydrocele3_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/7db2618b-2363-4d3a-8eae-da7a1c10fc54?style=xlarge&annotated=true",
+      "baseName": "Hydrocele3",
+      "caption": "MR can sometimes further evaluate the extent of the hydrocele. This patient with recent history of inguinal hernia repair has a large spermatic cord hematoma <img src=\"arrow_CS.png\"> and a small hydrocele <img src=\"arrow_CO.png\">.",
+      "downloadRecommendation": "",
+      "filename": "Hydrocele3.jpg",
+      "group": "",
+      "imageId": "7db2618b-2363-4d3a-8eae-da7a1c10fc54",
+      "masterImageId": "RP-03",
+      "plainFilename": "Hydrocele3.jpg",
+      "plainUrl": "https://app.radprimer.com/images/7db2618b-2363-4d3a-8eae-da7a1c10fc54?style=xlarge&annotated=false",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_7db2618b.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/7db2618b-2363-4d3a-8eae-da7a1c10fc54?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "annotatedFilename": "Hydrocele4_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/199a2e01-451d-49a2-becb-583368748676?style=xlarge&annotated=true",
+      "baseName": "Hydrocele4",
+      "caption": "Grayscale ultrasound of the right scrotum in this 36-year-old patient with recurrent large hydroceles was treated with aspiration  (needle <img src=\"arrow_CS.png\">) and sclerotherapy.",
+      "downloadRecommendation": "",
+      "filename": "Hydrocele4.jpg",
+      "group": "",
+      "imageId": "199a2e01-451d-49a2-becb-583368748676",
+      "masterImageId": "RP-04",
+      "plainFilename": "Hydrocele4.jpg",
+      "plainUrl": "https://app.radprimer.com/images/199a2e01-451d-49a2-becb-583368748676?style=xlarge&annotated=false",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_199a2e01.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/199a2e01-451d-49a2-becb-583368748676?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    }
+  ],
+  "imageEvidence": {
+    "folder": "image_evidence/RadPrimer",
+    "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+    "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+    "entries": [
+      {
+        "masterImageId": "RP-01",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "imageId": "3b5ce8d6-a140-4273-bae9-63bb99af3f6e",
+        "baseName": "Hydrocele1",
+        "caption": "Diagrammatic illustration shows the location of the hydrocele <img src=\"arrow_CO.png\"> with respect to the testis <img src=\"arrow_WC.png\">.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/3b5ce8d6-a140-4273-bae9-63bb99af3f6e?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_3b5ce8d6.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "imageId": "3f7c082f-c45d-4da7-b78f-4036dc212fcf",
+        "baseName": "Hydrocele2",
+        "caption": "Transverse color Doppler ultrasound shows simple-appearing fluid <img src=\"arrow_CS.png\"> in a small hydrocele. Note that the fluid does not surround the testicle along the bare area <img src=\"arrow_WO.png\"> where the tunica vaginalis does not cover the testicle and is attached to the epididymis.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/3f7c082f-c45d-4da7-b78f-4036dc212fcf?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_3f7c082f.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "imageId": "7db2618b-2363-4d3a-8eae-da7a1c10fc54",
+        "baseName": "Hydrocele3",
+        "caption": "MR can sometimes further evaluate the extent of the hydrocele. This patient with recent history of inguinal hernia repair has a large spermatic cord hematoma <img src=\"arrow_CS.png\"> and a small hydrocele <img src=\"arrow_CO.png\">.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/7db2618b-2363-4d3a-8eae-da7a1c10fc54?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_7db2618b.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "imageId": "199a2e01-451d-49a2-becb-583368748676",
+        "baseName": "Hydrocele4",
+        "caption": "Grayscale ultrasound of the right scrotum in this 36-year-old patient with recurrent large hydroceles was treated with aspiration  (needle <img src=\"arrow_CS.png\">) and sclerotherapy.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/199a2e01-451d-49a2-becb-583368748676?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_199a2e01.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      }
+    ]
+  }
+}

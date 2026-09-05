@@ -1,0 +1,663 @@
+﻿[
+    {
+        "masterImageId":  "RP-01",
+        "sourceKind":  "radprimer",
+        "sourceLabel":  "RadPrimer",
+        "sourceImageNumber":  1,
+        "imageId":  "cadaedf7-498e-4aed-86ee-9eb3e5baa8b7",
+        "caption":  "Graphic shows a functional ovarian cyst \u003cimg src=\"arrow_CO.png\"\u003e arising exophytically from the ovary \u003cimg src=\"arrow_WC.png\"\u003e. Note bridging ovarian parenchyma \u003cimg src=\"arrow_WS.png\"\u003e between the ovary and ovarian cyst, which is a helpful clue that this is indeed a cyst arising from the ovary rather than from an adjacent structure.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "canonicalBackbone",
+                        "exophyticOvarianOrigin",
+                        "bridgingOvarianParenchyma",
+                        "graphicOverview"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst1.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst1_annot.jpg",
+        "plainUrl":  "https://app.radprimer.com/images/cadaedf7-498e-4aed-86ee-9eb3e5baa8b7?style=xlarge\u0026annotated=false",
+        "annotatedUrl":  "https://app.radprimer.com/images/cadaedf7-498e-4aed-86ee-9eb3e5baa8b7?style=xlarge\u0026annotated=true",
+        "sourceQualifiedPlainFilename":  "RP-01_RadPrimer_plain_Functional_Ovarian_Cyst1.jpg",
+        "sourceQualifiedAnnotatedFilename":  "RP-01_RadPrimer_annotated_Functional_Ovarian_Cyst1_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_cadaedf7.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.radprimer.com/images/cadaedf7-498e-4aed-86ee-9eb3e5baa8b7?style=xlarge\u0026annotated=false",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "exactDuplicate",
+                                    "statdxCoverageCandidates":  [
+                                                                     "SDX-01"
+                                                                 ],
+                                    "rationale":  "Same stable source image ID cadaedf7-498e-4aed-86ee-9eb3e5baa8b7 and visual contact-sheet match; STATdx image 1 is the same exophytic functional cyst graphic.",
+                                    "exactDuplicate":  true
+                                }
+    },
+    {
+        "masterImageId":  "RP-02",
+        "sourceKind":  "radprimer",
+        "sourceLabel":  "RadPrimer",
+        "sourceImageNumber":  2,
+        "imageId":  "05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363",
+        "caption":  "Corpus luteum cyst (CLC) can be exophytic from the ovary \u003cimg src=\"arrow_WS.png\"\u003e; look for the bridging ovarian parenchyma \u003cimg src=\"arrow_WO.png\"\u003e. Hemorrhage and retracted clot can also be present within a CLC \u003cimg src=\"arrow_CS.png\"\u003e.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "canonicalBackbone",
+                        "corpusLuteumCyst",
+                        "exophyticCyst",
+                        "hemorrhageRetractedClot"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst2.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst2_annot.jpg",
+        "plainUrl":  "https://app.radprimer.com/images/05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363?style=xlarge\u0026annotated=false",
+        "annotatedUrl":  "https://app.radprimer.com/images/05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363?style=xlarge\u0026annotated=true",
+        "sourceQualifiedPlainFilename":  "RP-02_RadPrimer_plain_Functional_Ovarian_Cyst2.jpg",
+        "sourceQualifiedAnnotatedFilename":  "RP-02_RadPrimer_annotated_Functional_Ovarian_Cyst2_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_05d6b46d.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.radprimer.com/images/05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363?style=xlarge\u0026annotated=false",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "exactDuplicate",
+                                    "statdxCoverageCandidates":  [
+                                                                     "SDX-02"
+                                                                 ],
+                                    "rationale":  "Same stable source image ID 05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363 and visual contact-sheet match; STATdx image 2 is the same exophytic corpus luteum/hemorrhage ultrasound.",
+                                    "exactDuplicate":  true
+                                }
+    },
+    {
+        "masterImageId":  "RP-03",
+        "sourceKind":  "radprimer",
+        "sourceLabel":  "RadPrimer",
+        "sourceImageNumber":  3,
+        "imageId":  "4ef6d3cb-714a-4372-a858-aacaaa10db9a",
+        "caption":  "Typical appearance of a simple functional ovarian cyst \u003cimg src=\"arrow_WS.png\"\u003e is shown. The peripheral follicles within the surrounding parenchyma \u003cimg src=\"arrow_WC.png\"\u003e confirm this is an intraovarian cyst.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "canonicalBackbone",
+                        "simpleFunctionalCyst",
+                        "intraovarianLocation",
+                        "surroundingFollicles"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst3.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst3_annot.jpg",
+        "plainUrl":  "https://app.radprimer.com/images/4ef6d3cb-714a-4372-a858-aacaaa10db9a?style=xlarge\u0026annotated=false",
+        "annotatedUrl":  "https://app.radprimer.com/images/4ef6d3cb-714a-4372-a858-aacaaa10db9a?style=xlarge\u0026annotated=true",
+        "sourceQualifiedPlainFilename":  "RP-03_RadPrimer_plain_Functional_Ovarian_Cyst3.jpg",
+        "sourceQualifiedAnnotatedFilename":  "RP-03_RadPrimer_annotated_Functional_Ovarian_Cyst3_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_4ef6d3cb.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.radprimer.com/images/4ef6d3cb-714a-4372-a858-aacaaa10db9a?style=xlarge\u0026annotated=false",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "exactDuplicate",
+                                    "statdxCoverageCandidates":  [
+                                                                     "SDX-03"
+                                                                 ],
+                                    "rationale":  "Same stable source image ID 4ef6d3cb-714a-4372-a858-aacaaa10db9a and visual contact-sheet match; STATdx image 3 is the same simple intraovarian cyst ultrasound.",
+                                    "exactDuplicate":  true
+                                }
+    },
+    {
+        "masterImageId":  "RP-04",
+        "sourceKind":  "radprimer",
+        "sourceLabel":  "RadPrimer",
+        "sourceImageNumber":  4,
+        "imageId":  "a6f0c599-6202-46ee-8f5f-456d723751da",
+        "caption":  "The ring of fire appearance \u003cimg src=\"arrow_WO.png\"\u003e results from marked peripheral vascular flow around the CLC wall on Doppler. The CLC demonstrates typical crenulated walls \u003cimg src=\"arrow_WS.png\"\u003e and internal echoes due to internal hemorrhage \u003cimg src=\"arrow_CS.png\"\u003e.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "canonicalBackbone",
+                        "ringOfFire",
+                        "corpusLuteumCyst",
+                        "hemorrhagicInternalEchoes"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst4.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst4_annot.jpg",
+        "plainUrl":  "https://app.radprimer.com/images/a6f0c599-6202-46ee-8f5f-456d723751da?style=xlarge\u0026annotated=false",
+        "annotatedUrl":  "https://app.radprimer.com/images/a6f0c599-6202-46ee-8f5f-456d723751da?style=xlarge\u0026annotated=true",
+        "sourceQualifiedPlainFilename":  "RP-04_RadPrimer_plain_Functional_Ovarian_Cyst4.jpg",
+        "sourceQualifiedAnnotatedFilename":  "RP-04_RadPrimer_annotated_Functional_Ovarian_Cyst4_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_a6f0c599.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.radprimer.com/images/a6f0c599-6202-46ee-8f5f-456d723751da?style=xlarge\u0026annotated=false",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "exactDuplicate",
+                                    "statdxCoverageCandidates":  [
+                                                                     "SDX-04"
+                                                                 ],
+                                    "rationale":  "Same stable source image ID a6f0c599-6202-46ee-8f5f-456d723751da and visual contact-sheet match; STATdx image 4 is the same Doppler corpus luteum/ring-of-fire image.",
+                                    "exactDuplicate":  true
+                                }
+    },
+    {
+        "masterImageId":  "SDX-01",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  1,
+        "imageId":  "cadaedf7-498e-4aed-86ee-9eb3e5baa8b7",
+        "caption":  "Graphic shows a functional ovarian cyst \u003cimg src=\"arrow_CO.png\"\u003e arising exophytically from the ovary \u003cimg src=\"arrow_WC.png\"\u003e. Note bridging ovarian parenchyma \u003cimg src=\"arrow_WS.png\"\u003e between the ovary and ovarian cyst, which is a helpful clue that this is indeed a cyst arising from the ovary rather than from an adjacent structure.",
+        "usedFor":  [
+                        "archiveOptionalDuplicate",
+                        "exactDuplicateOfRadPrimer",
+                        "completeSourceReview"
+                    ],
+        "downloadRecommendation":  "archiveOptionalDuplicate",
+        "plainFilename":  "Functional_Ovarian_Cyst1.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst1_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/cadaedf7-498e-4aed-86ee-9eb3e5baa8b7?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/cadaedf7-498e-4aed-86ee-9eb3e5baa8b7?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-01_STATdx_plain_Functional_Ovarian_Cyst1.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-01_STATdx_annotated_Functional_Ovarian_Cyst1_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_cadaedf7.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/cadaedf7-498e-4aed-86ee-9eb3e5baa8b7?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "exactDuplicateOfRadPrimer",
+                                    "duplicateOf":  "RP-01",
+                                    "rationale":  "Same stable source image ID and visual evidence file match as the corresponding RadPrimer image; archived to prevent duplicate default downloads while retaining traceability.",
+                                    "exactDuplicate":  true
+                                }
+    },
+    {
+        "masterImageId":  "SDX-02",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  2,
+        "imageId":  "05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363",
+        "caption":  "Corpus luteum cyst (CLC) can be exophytic from the ovary \u003cimg src=\"arrow_WS.png\"\u003e; look for the bridging ovarian parenchyma \u003cimg src=\"arrow_WO.png\"\u003e. Hemorrhage and retracted clot can also be present within a CLC \u003cimg src=\"arrow_CS.png\"\u003e.",
+        "usedFor":  [
+                        "archiveOptionalDuplicate",
+                        "exactDuplicateOfRadPrimer",
+                        "completeSourceReview"
+                    ],
+        "downloadRecommendation":  "archiveOptionalDuplicate",
+        "plainFilename":  "Functional_Ovarian_Cyst2.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst2_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-02_STATdx_plain_Functional_Ovarian_Cyst2.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-02_STATdx_annotated_Functional_Ovarian_Cyst2_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_05d6b46d.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/05d6b46d-ca11-4f2f-8b1e-ccf1aa3ca363?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "exactDuplicateOfRadPrimer",
+                                    "duplicateOf":  "RP-02",
+                                    "rationale":  "Same stable source image ID and visual evidence file match as the corresponding RadPrimer image; archived to prevent duplicate default downloads while retaining traceability.",
+                                    "exactDuplicate":  true
+                                }
+    },
+    {
+        "masterImageId":  "SDX-03",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  3,
+        "imageId":  "4ef6d3cb-714a-4372-a858-aacaaa10db9a",
+        "caption":  "Typical appearance of a simple functional ovarian cyst \u003cimg src=\"arrow_WS.png\"\u003e is shown. The peripheral follicles within the surrounding parenchyma \u003cimg src=\"arrow_WC.png\"\u003e confirm this is an intraovarian cyst.",
+        "usedFor":  [
+                        "archiveOptionalDuplicate",
+                        "exactDuplicateOfRadPrimer",
+                        "completeSourceReview"
+                    ],
+        "downloadRecommendation":  "archiveOptionalDuplicate",
+        "plainFilename":  "Functional_Ovarian_Cyst3.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst3_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/4ef6d3cb-714a-4372-a858-aacaaa10db9a?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/4ef6d3cb-714a-4372-a858-aacaaa10db9a?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-03_STATdx_plain_Functional_Ovarian_Cyst3.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-03_STATdx_annotated_Functional_Ovarian_Cyst3_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_4ef6d3cb.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/4ef6d3cb-714a-4372-a858-aacaaa10db9a?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "exactDuplicateOfRadPrimer",
+                                    "duplicateOf":  "RP-03",
+                                    "rationale":  "Same stable source image ID and visual evidence file match as the corresponding RadPrimer image; archived to prevent duplicate default downloads while retaining traceability.",
+                                    "exactDuplicate":  true
+                                }
+    },
+    {
+        "masterImageId":  "SDX-04",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  4,
+        "imageId":  "a6f0c599-6202-46ee-8f5f-456d723751da",
+        "caption":  "The ring of fire appearance \u003cimg src=\"arrow_WO.png\"\u003e results from marked peripheral vascular flow around the CLC wall on Doppler. The CLC demonstrates typical crenulated walls \u003cimg src=\"arrow_WS.png\"\u003e and internal echoes due to internal hemorrhage \u003cimg src=\"arrow_CS.png\"\u003e.",
+        "usedFor":  [
+                        "archiveOptionalDuplicate",
+                        "exactDuplicateOfRadPrimer",
+                        "completeSourceReview"
+                    ],
+        "downloadRecommendation":  "archiveOptionalDuplicate",
+        "plainFilename":  "Functional_Ovarian_Cyst4.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst4_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/a6f0c599-6202-46ee-8f5f-456d723751da?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/a6f0c599-6202-46ee-8f5f-456d723751da?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-04_STATdx_plain_Functional_Ovarian_Cyst4.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-04_STATdx_annotated_Functional_Ovarian_Cyst4_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_a6f0c599.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/a6f0c599-6202-46ee-8f5f-456d723751da?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "exactDuplicateOfRadPrimer",
+                                    "duplicateOf":  "RP-04",
+                                    "rationale":  "Same stable source image ID and visual evidence file match as the corresponding RadPrimer image; archived to prevent duplicate default downloads while retaining traceability.",
+                                    "exactDuplicate":  true
+                                }
+    },
+    {
+        "masterImageId":  "SDX-05",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  5,
+        "imageId":  "3d95fca5-dd10-4c58-afa6-c03f6d4cb69a",
+        "caption":  "Characteristic lace-like or reticular internal echoes \u003cimg src=\"arrow_WC.png\"\u003e are seen with this hemorrhagic cyst \u003cimg src=\"arrow_WO.png\"\u003e. No internal vascularity is demonstrated.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "hemorrhagicCyst",
+                        "laceLikeReticularEchoes",
+                        "noInternalFlow",
+                        "recognitionReinforcement"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst5.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst5_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/3d95fca5-dd10-4c58-afa6-c03f6d4cb69a?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/3d95fca5-dd10-4c58-afa6-c03f6d4cb69a?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-05_STATdx_plain_Functional_Ovarian_Cyst5.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-05_STATdx_annotated_Functional_Ovarian_Cyst5_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_3d95fca5.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/3d95fca5-dd10-4c58-afa6-c03f6d4cb69a?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    },
+    {
+        "masterImageId":  "SDX-06",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  6,
+        "imageId":  "924bcbda-6f24-4761-934a-76a5db7168b6",
+        "caption":  "Color Doppler US shows prominent flow \u003cimg src=\"arrow_WS.png\"\u003e in the ovary surrounding the corpus luteum. The normal corpus luteum is one of the causes of the ring of fire sign; hence, it is not a specific sign of ectopic pregnancy. Hemorrhage is seen within the CLC \u003cimg src=\"arrow_WO.png\"\u003e.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "ringOfFire",
+                        "normalCorpusLuteumPitfall",
+                        "hemorrhage",
+                        "recognitionReinforcement"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst6.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst6_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/924bcbda-6f24-4761-934a-76a5db7168b6?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/924bcbda-6f24-4761-934a-76a5db7168b6?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-06_STATdx_plain_Functional_Ovarian_Cyst6.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-06_STATdx_annotated_Functional_Ovarian_Cyst6_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_924bcbda.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/924bcbda-6f24-4761-934a-76a5db7168b6?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    },
+    {
+        "masterImageId":  "SDX-07",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  7,
+        "imageId":  "0680af11-c2ab-420c-994e-9314026b6613",
+        "caption":  "Grayscale US shows the characteristic thick-walled, crenulated \u003cimg src=\"arrow_WS.png\"\u003e appearance of a corpus luteum. Crenulated appearance is related to collapse of the cyst wall after ovulation.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "crenulatedCorpusLuteum",
+                        "grayscaleVariant",
+                        "recognitionReinforcement"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst7.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst7_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/0680af11-c2ab-420c-994e-9314026b6613?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/0680af11-c2ab-420c-994e-9314026b6613?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-07_STATdx_plain_Functional_Ovarian_Cyst7.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-07_STATdx_annotated_Functional_Ovarian_Cyst7_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_0680af11.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/0680af11-c2ab-420c-994e-9314026b6613?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    },
+    {
+        "masterImageId":  "SDX-08",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  8,
+        "imageId":  "5a262472-51eb-449b-9aae-567abf5402dd",
+        "caption":  "Flow  \u003cimg src=\"arrow_WS.png\"\u003e   is present at the periphery of the lesion, which is an expected finding.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "peripheralFlow",
+                        "expectedVascularity",
+                        "recognitionReinforcement"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst8.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst8_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/5a262472-51eb-449b-9aae-567abf5402dd?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/5a262472-51eb-449b-9aae-567abf5402dd?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-08_STATdx_plain_Functional_Ovarian_Cyst8.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-08_STATdx_annotated_Functional_Ovarian_Cyst8_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_5a262472.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/5a262472-51eb-449b-9aae-567abf5402dd?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    },
+    {
+        "masterImageId":  "SDX-09",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  9,
+        "imageId":  "f453aa70-778b-42d2-a8ea-dfdd026b1f5c",
+        "caption":  "Corpus luteum with crenulated margin \u003cimg src=\"arrow_WC.png\"\u003e and internal hemorrhage \u003cimg src=\"arrow_WS.png\"\u003e is seen. The margin can appear very vascular \u003cimg src=\"arrow_CS.png\"\u003e and should not be misinterpreted as solid components suspicious for malignancy. Increased flow is expected, given the hormonal role of the corpus luteum.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "vascularMarginPitfall",
+                        "solidComponentMimic",
+                        "corpusLuteumHemorrhage",
+                        "recognitionReinforcement"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst9.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst9_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/f453aa70-778b-42d2-a8ea-dfdd026b1f5c?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/f453aa70-778b-42d2-a8ea-dfdd026b1f5c?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-09_STATdx_plain_Functional_Ovarian_Cyst9.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-09_STATdx_annotated_Functional_Ovarian_Cyst9_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_f453aa70.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/f453aa70-778b-42d2-a8ea-dfdd026b1f5c?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    },
+    {
+        "masterImageId":  "SDX-10",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  10,
+        "imageId":  "94c0d8b8-3097-460a-a5f2-4b8ff2259820",
+        "caption":  "Longitudinal transvaginal US shows dominant cystic structure (calipers) measuring 2.55 cm in a patient undergoing ovarian suppression prior to superovulation for assisted reproduction. This is a follicular cyst.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "follicularCyst",
+                        "fertilityTreatmentContext",
+                        "dominantFollicle",
+                        "caseContext"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst10.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst10_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/94c0d8b8-3097-460a-a5f2-4b8ff2259820?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/94c0d8b8-3097-460a-a5f2-4b8ff2259820?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-10_STATdx_plain_Functional_Ovarian_Cyst10.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-10_STATdx_annotated_Functional_Ovarian_Cyst10_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_94c0d8b8.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/94c0d8b8-3097-460a-a5f2-4b8ff2259820?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    },
+    {
+        "masterImageId":  "SDX-11",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  11,
+        "imageId":  "8cbcba30-01f8-4b37-b9b5-f4273c50a2d5",
+        "caption":  "Hemorrhagic cyst with internal reticular echogenicity \u003cimg src=\"arrow_WO.png\"\u003e is identified along with moderate pelvic free fluid \u003cimg src=\"arrow_CS.png\"\u003e  from ruptured hemorrhagic cyst. Free fluid extended up to the Morrison pouch (not shown).",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "rupturedHemorrhagicCyst",
+                        "freeFluid",
+                        "complicationVariant"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst11.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst11_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/8cbcba30-01f8-4b37-b9b5-f4273c50a2d5?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/8cbcba30-01f8-4b37-b9b5-f4273c50a2d5?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-11_STATdx_plain_Functional_Ovarian_Cyst11.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-11_STATdx_annotated_Functional_Ovarian_Cyst11_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_8cbcba30.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/8cbcba30-01f8-4b37-b9b5-f4273c50a2d5?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    },
+    {
+        "masterImageId":  "SDX-12",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  12,
+        "imageId":  "f4b5db96-e547-4f3c-b312-8d86557ce89f",
+        "caption":  "Functional ovarian cysts can become large and the surrounding parenchyma compressed to a thin rim \u003cimg src=\"arrow_WC.png\"\u003e. When presenting with pelvic pain, pulse Doppler should be used to confirm arterial and venous waveforms.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "largeFunctionalCyst",
+                        "compressedOvarianRim",
+                        "torsionEvaluation",
+                        "recognitionReinforcement"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst12.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst12_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/f4b5db96-e547-4f3c-b312-8d86557ce89f?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/f4b5db96-e547-4f3c-b312-8d86557ce89f?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-12_STATdx_plain_Functional_Ovarian_Cyst12.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-12_STATdx_annotated_Functional_Ovarian_Cyst12_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_f4b5db96.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/f4b5db96-e547-4f3c-b312-8d86557ce89f?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    },
+    {
+        "masterImageId":  "SDX-13",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  13,
+        "imageId":  "e7f04bcd-a56f-49d9-9839-826350c3bf72",
+        "caption":  "In this CLC, careful evaluation of the posterior cyst wall reveals a fluid-debris level \u003cimg src=\"arrow_WO.png\"\u003e. The appearance is consistent with a resolving hemorrhagic cyst.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "resolvingHemorrhagicCyst",
+                        "fluidDebrisLevel",
+                        "recognitionReinforcement"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst13.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst13_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/e7f04bcd-a56f-49d9-9839-826350c3bf72?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/e7f04bcd-a56f-49d9-9839-826350c3bf72?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-13_STATdx_plain_Functional_Ovarian_Cyst13.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-13_STATdx_annotated_Functional_Ovarian_Cyst13_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_e7f04bcd.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/e7f04bcd-a56f-49d9-9839-826350c3bf72?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    },
+    {
+        "masterImageId":  "SDX-14",
+        "sourceKind":  "statdx",
+        "sourceLabel":  "STATdx",
+        "sourceImageNumber":  14,
+        "imageId":  "5df8af25-eea9-441b-ac56-bf3ad0aee179",
+        "caption":  "Color Doppler US shows the solid-appearing CLC has increased vascularity, similar in appearance to the ring of fire.",
+        "usedFor":  [
+                        "primaryTeachingSet",
+                        "supplementalDepth",
+                        "solidAppearingCorpusLuteum",
+                        "ringOfFirePitfall",
+                        "recognitionReinforcement"
+                    ],
+        "downloadRecommendation":  "primaryTeachingSet",
+        "plainFilename":  "Functional_Ovarian_Cyst14.jpg",
+        "annotatedFilename":  "Functional_Ovarian_Cyst14_annot.jpg",
+        "plainUrl":  "https://app.statdx.com/image/thumbnail/5df8af25-eea9-441b-ac56-bf3ad0aee179?size=1000\u0026quality=90",
+        "annotatedUrl":  "https://app.statdx.com/image/thumbnail/5df8af25-eea9-441b-ac56-bf3ad0aee179?annotated=true\u0026size=1000\u0026quality=90",
+        "sourceQualifiedPlainFilename":  "SDX-14_STATdx_plain_Functional_Ovarian_Cyst14.jpg",
+        "sourceQualifiedAnnotatedFilename":  "SDX-14_STATdx_annotated_Functional_Ovarian_Cyst14_annot.jpg",
+        "group":  "",
+        "visualEvidence":  {
+                               "evidenceFilename":  "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_5df8af25.jpg",
+                               "evidenceVariant":  "plain",
+                               "evidenceUrl":  "https://app.statdx.com/image/thumbnail/5df8af25-eea9-441b-ac56-bf3ad0aee179?size=1000\u0026quality=90",
+                               "downloaded":  true,
+                               "downloadError":  "",
+                               "duplicateEvidenceRole":  "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+                           },
+        "duplicateAssessment":  {
+                                    "status":  "supplementalDistinct",
+                                    "rationale":  "Visual evidence shows a distinct STATdx-only image or case example; retained as supplemental depth/recognition reinforcement rather than archived.",
+                                    "exactDuplicate":  false
+                                }
+    }
+]

@@ -17,6 +17,7 @@ Apply this module when the source explicitly describes or demonstrates ultrasoun
 - posterior acoustic behavior
 - Doppler flow pattern or vascularity
 - compressibility, mobility, reducibility, peristalsis, or dynamic maneuver
+- contrast-enhanced ultrasound behavior when source-supported
 - probe position, plane, sweep, window, or graded-compression approach
 - normal variant or physiologic appearance on ultrasound
 - artifact or pseudolesion that may be mistaken for disease
@@ -38,6 +39,7 @@ NORMAL HIGH-YIELD
 - first-pass ultrasound landmark or sweep rule
 - compact checklist for finding a structure
 - Doppler or dynamic maneuver rule when the source supports it
+- contrast-enhanced ultrasound pattern when the source supports it
 
 NORMAL MECHANISM
 - why a normal structure has a specific echogenicity, shadowing, enhancement, Doppler pattern, or dynamic behavior
@@ -63,6 +65,7 @@ When source-supported, include:
 - posterior acoustic feature
 - Doppler feature
 - dynamic behavior or maneuver
+- contrast-enhanced ultrasound enhancement or washout behavior
 - probe plane, window, or sweep
 - one practical interpretation pivot
 
@@ -70,6 +73,7 @@ Do not infer ultrasound properties from anatomy alone.
 
 Do NOT infer:
 - Doppler flow
+- contrast-enhanced ultrasound enhancement, washout, or vascularity
 - compressibility
 - mobility
 - posterior enhancement
@@ -89,6 +93,7 @@ Prefer direct, modality-specific fronts:
 - "What probe sweep or plane best confirms [relationship]?"
 - "Which ultrasound feature prevents overcalling [normal variant/pseudolesion] as pathology?"
 - "What Doppler or dynamic feature supports the normal interpretation?"
+- "What CEUS pattern supports the normal interpretation?"
 
 Avoid vague fronts:
 - "What does ultrasound show?"
@@ -105,6 +110,7 @@ Recommended structure:
 - Anchor: [first visible structure or interface]
 - Appearance: [source-stated echogenicity/texture/wall/lumen/layer feature]
 - Maneuver / Doppler / acoustic feature: [only if source-supported]
+- CEUS behavior: [only if source-supported]
 - Interpretation pivot: [how this helps identify normal anatomy or avoid overcall]
 
 For dynamic ultrasound, preserve the action:

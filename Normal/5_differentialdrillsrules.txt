@@ -4,16 +4,17 @@ SECTION PURPOSE
 
 This card type teaches true discrimination.
 It is not the default output for normal-anatomy material.
+Standalone NORMAL DIFFERENTIAL DRILL generation is OFF by default; create it only when the user explicitly asks for separate differential drill cards.
 
 -----------------------------------------------------
 
 TRIGGER CONDITION
 
 NORMAL DIFFERENTIAL DRILL exists only when:
-- Differentials is populated
+- Differential_Q is populated
 
-If Differentials is populated, the note must also contain:
-- Differential_Q
+If Differential_Q is populated, the note must also contain:
+- Differentials
 - Imaging_Differentiation
 
 Question must remain blank.
@@ -129,8 +130,8 @@ If there is no meaningful discriminator:
 DIFFERENTIAL SAFETY CHECK
 
 Before export, confirm:
-- Differentials is populated intentionally
-- Differential_Q is populated
+- Differential_Q is populated intentionally
+- Differentials is populated
 - Differential_Q is the only front-driving prompt family
 - Imaging_Differentiation is populated
 - Question is blank

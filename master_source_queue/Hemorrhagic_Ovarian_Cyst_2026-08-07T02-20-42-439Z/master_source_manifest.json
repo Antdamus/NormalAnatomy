@@ -1,0 +1,776 @@
+{
+  "articleTitle": "Hemorrhagic Ovarian Cyst",
+  "createdAt": "2026-08-07T02:28:45Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Female Pelvis Basic",
+    "Hemorrhagic Cyst"
+  ],
+  "canonicalDeckPath": "Corebook::Ultrasound::Female Pelvis Basic::Hemorrhagic Cyst::Hemorrhagic Ovarian Cyst",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "role": "Canonical hierarchy/backbone and base Hemorrhagic Cyst article.",
+      "keptText": [
+        "definition of hemorrhage into an ovarian cystic space, most often hemorrhagic corpus luteum",
+        "core ultrasound signs: lace-like fibrin strands, retracting avascular clot, posterior enhancement, and claw sign",
+        "need to assess pelvic and upper-abdominal hemoperitoneum after rupture",
+        "CT/MR overview including high-attenuation blood, fluid-fluid level, and T1 fat-suppressed blood products",
+        "differential against endometrioma, solid ovarian mass, torsion, ectopic pregnancy, and pelvic abscess",
+        "natural history and SRU management thresholds"
+      ],
+      "limitations": [
+        "Fewer STATdx-style modality variants and less detail on MR signal variability.",
+        "Only one RadPrimer image is exactly duplicated in STATdx; RadPrimer images should remain canonical primary images."
+      ]
+    },
+    "STATdx": {
+      "role": "Supplemental depth and expanded image-recognition set.",
+      "keptText": [
+        "four classic US appearances based on blood-product age",
+        "CT detail for sentinel clot sign, ruptured collapsed cyst, wall defect, and high-attenuation hemoperitoneum",
+        "MR signal variability by hematocrit, protein concentration, hemoglobin form, and clot formation/retraction",
+        "differential additions including dermoid cyst, tuboovarian abscess, and ovarian cancer",
+        "same-patient MR/US clusters and additional fishnet, retracting-clot, rupture, and ring-of-fire examples"
+      ],
+      "limitations": [
+        "STATdx breadcrumb is not used for canonical hierarchy because RadPrimer is present.",
+        "STATdx image 17 duplicates RadPrimer image 10 and is archived by default."
+      ]
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 24
+  },
+  "sourceAttributionRules": {
+    "default": "Tag factual blocks as [RadPrimer], [STATdx], or [Both] where source distinction matters.",
+    "humanFacingImages": "Use labels like RadPrimer image 5 or STATdx image 4 in prose.",
+    "traceability": "Use masterImageId values only in registry/import/report metadata."
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-17"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": {
+      "primary": "RadPrimer supplies the canonical hierarchy/backbone, core definition, ultrasound-first recognition pattern, differential framing, clinical course, and SRU management thresholds.",
+      "supplement": "STATdx strengthens the master source with the four classic sonographic patterns, CT sentinel-clot/wall-defect details, broader MR signal-variability explanation, dermoid/ovarian cancer differential details, and richer multimodality image examples.",
+      "downweight": "Do not use the STATdx breadcrumb for deck routing. Do not label the package Core-supported because no auditable Core Radiology text was supplied in this bundle."
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate patients, alternate same-disease examples, modality variants, same-patient companion images, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is insufficient.",
+    "radprimerImageCoverageGate": {
+      "statdxFullyCoversRadPrimerImageSet": false,
+      "summary": "STATdx does not fully cover the RadPrimer image set. It exactly duplicates only RadPrimer image 10; several other RadPrimer images have near or conceptual STATdx reinforcement, and RadPrimer images 4, 6, and 7 are not covered.",
+      "coverage": [
+        {
+          "radprimerImageId": "RP-01",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-10",
+            "SDX-12",
+            "SDX-23"
+          ],
+          "evidence": "STATdx contains visually similar reticular/fishnet hemorrhagic cyst examples, but actual evidence images show different screenshots/patients and no shared stable image ID."
+        },
+        {
+          "radprimerImageId": "RP-02",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-02",
+            "SDX-19"
+          ],
+          "evidence": "STATdx has avascular Doppler hemorrhagic cyst examples, but visual review shows different images; RadPrimer uniquely includes the claw-sign/parenchymal-flow and venous-waveform teaching combination."
+        },
+        {
+          "radprimerImageId": "RP-03",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-20"
+          ],
+          "evidence": "STATdx includes pelvic hemoperitoneum from ruptured HOC, but the staged images are visibly different and do not duplicate the RadPrimer cul-de-sac fluid image."
+        },
+        {
+          "radprimerImageId": "RP-04",
+          "classification": "notCovered",
+          "coveredBy": [],
+          "evidence": "RadPrimer surgical/laparoscopy correlation is not represented in STATdx image evidence."
+        },
+        {
+          "radprimerImageId": "RP-05",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-06"
+          ],
+          "evidence": "STATdx image 6 teaches the same ring-of-fire/hemorrhagic corpus luteum pitfall, but the visual evidence is a different Doppler image and source ID."
+        },
+        {
+          "radprimerImageId": "RP-06",
+          "classification": "notCovered",
+          "coveredBy": [],
+          "evidence": "The bilateral enlarged/kissing ovaries example after stopping birth control is not covered by STATdx image evidence."
+        },
+        {
+          "radprimerImageId": "RP-07",
+          "classification": "notCovered",
+          "coveredBy": [],
+          "evidence": "STATdx discusses hemoperitoneum but does not provide an upper-abdominal/hepatorenal fossa ultrasound image matching this RadPrimer teaching point."
+        },
+        {
+          "radprimerImageId": "RP-08",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-21",
+            "SDX-22"
+          ],
+          "evidence": "STATdx CT images show ruptured hemorrhagic cyst with high-attenuation pelvic fluid/sentinel clot, but not the same upper-abdominal axial CT image."
+        },
+        {
+          "radprimerImageId": "RP-09",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-21",
+            "SDX-22"
+          ],
+          "evidence": "STATdx provides CT rupture cases, but none duplicate the RadPrimer coronal CT showing active bleeding and large upper-abdominal hemoperitoneum."
+        },
+        {
+          "radprimerImageId": "RP-10",
+          "classification": "exactDuplicate",
+          "coveredBy": [
+            "SDX-17"
+          ],
+          "evidence": "Actual image_evidence review shows the same axial T1 fat-suppressed MR screenshot/content in RadPrimer image 10 and STATdx image 17, with only source/resolution/crop differences."
+        }
+      ],
+      "action": "Keep all RadPrimer images as canonical primary images. Archive only STATdx image 17 as an optional exact duplicate of RadPrimer image 10. Keep all other STATdx images as primary recognition reinforcement or companion cluster images."
+    },
+    "primaryImageDownloadUseSet": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24"
+    ],
+    "archiveDuplicateIds": [
+      "SDX-17"
+    ],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "displayLabel": "RadPrimer image 1",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "plainUrl": "https://app.radprimer.com/images/91c0414a-8cde-488a-9da4-2fccda0f097e?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/91c0414a-8cde-488a-9da4-2fccda0f097e?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-01_RadPrimer_plain_Hemorrhagic_Cyst1.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-01_RadPrimer_annotated_Hemorrhagic_Cyst1_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "reticularFibrinStrands",
+          "posteriorEnhancement",
+          "recognitionReinforcement"
+        ]
+      },
+      {
+        "masterImageId": "RP-02",
+        "displayLabel": "RadPrimer image 2",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "plainUrl": "https://app.radprimer.com/images/f8f3c643-7bc9-46d3-8f3c-7adaee7938d0?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f8f3c643-7bc9-46d3-8f3c-7adaee7938d0?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-02_RadPrimer_plain_Hemorrhagic_Cyst2.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-02_RadPrimer_annotated_Hemorrhagic_Cyst2_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "avascularClot",
+          "dopplerClawSign",
+          "venousWaveform"
+        ]
+      },
+      {
+        "masterImageId": "RP-03",
+        "displayLabel": "RadPrimer image 3",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "plainUrl": "https://app.radprimer.com/images/05b8755f-da3d-47ea-92fe-64ffb3385a37?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/05b8755f-da3d-47ea-92fe-64ffb3385a37?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-03_RadPrimer_plain_Hemorrhagic_Cyst3.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-03_RadPrimer_annotated_Hemorrhagic_Cyst3_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "pelvicHemoperitoneum",
+          "ruptureComplication"
+        ]
+      },
+      {
+        "masterImageId": "RP-04",
+        "displayLabel": "RadPrimer image 4",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "plainUrl": "https://app.radprimer.com/images/b7deb503-fded-4345-ae92-6005467af931?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/b7deb503-fded-4345-ae92-6005467af931?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-04_RadPrimer_plain_Hemorrhagic_Cyst4.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-04_RadPrimer_annotated_Hemorrhagic_Cyst4_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "laparoscopyCorrelation",
+          "ruptureComplication",
+          "atomicClusterRP04RP05"
+        ]
+      },
+      {
+        "masterImageId": "RP-05",
+        "displayLabel": "RadPrimer image 5",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 5,
+        "plainUrl": "https://app.radprimer.com/images/f60e44cf-9b70-49eb-92ea-93a52e07c82c?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/f60e44cf-9b70-49eb-92ea-93a52e07c82c?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-05_RadPrimer_plain_Hemorrhagic_Cyst5.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-05_RadPrimer_annotated_Hemorrhagic_Cyst5_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "hemorrhagicCorpusLuteum",
+          "ringOfFirePitfall",
+          "atomicClusterRP04RP05"
+        ]
+      },
+      {
+        "masterImageId": "RP-06",
+        "displayLabel": "RadPrimer image 6",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 6,
+        "plainUrl": "https://app.radprimer.com/images/2e77b8c2-57a1-406b-94f0-d92b6224cb20?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/2e77b8c2-57a1-406b-94f0-d92b6224cb20?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-06_RadPrimer_plain_Hemorrhagic_Cyst6.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-06_RadPrimer_annotated_Hemorrhagic_Cyst6_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "bilateralKissingOvaries",
+          "ovulationSuppressionContext",
+          "recognitionReinforcement"
+        ]
+      },
+      {
+        "masterImageId": "RP-07",
+        "displayLabel": "RadPrimer image 7",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 7,
+        "plainUrl": "https://app.radprimer.com/images/65bee9eb-6c26-4cea-8542-adf8ed932cb4?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/65bee9eb-6c26-4cea-8542-adf8ed932cb4?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-07_RadPrimer_plain_Hemorrhagic_Cyst7.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-07_RadPrimer_annotated_Hemorrhagic_Cyst7_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "upperAbdominalHemoperitoneumUS",
+          "ruptureComplication"
+        ]
+      },
+      {
+        "masterImageId": "RP-08",
+        "displayLabel": "RadPrimer image 8",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 8,
+        "plainUrl": "https://app.radprimer.com/images/a0c9c560-41de-4b3c-8613-ba06c8b92972?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/a0c9c560-41de-4b3c-8613-ba06c8b92972?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-08_RadPrimer_plain_Hemorrhagic_Cyst8.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-08_RadPrimer_annotated_Hemorrhagic_Cyst8_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "upperAbdominalHemoperitoneumCT",
+          "ruptureComplication"
+        ]
+      },
+      {
+        "masterImageId": "RP-09",
+        "displayLabel": "RadPrimer image 9",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 9,
+        "plainUrl": "https://app.radprimer.com/images/7bda457a-1eca-439c-b032-153cc7132880?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/7bda457a-1eca-439c-b032-153cc7132880?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-09_RadPrimer_plain_Hemorrhagic_Cyst9.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-09_RadPrimer_annotated_Hemorrhagic_Cyst9_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "activeBleedingCT",
+          "largeHemoperitoneum",
+          "coronalCT"
+        ]
+      },
+      {
+        "masterImageId": "RP-10",
+        "displayLabel": "RadPrimer image 10",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 10,
+        "plainUrl": "https://app.radprimer.com/images/1948187a-993b-4785-bb83-71ec04752205?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/1948187a-993b-4785-bb83-71ec04752205?style=xlarge&annotated=true",
+        "sourceQualifiedPlainFilename": "RP-10_RadPrimer_plain_Hemorrhagic_Cyst10.jpg",
+        "sourceQualifiedAnnotatedFilename": "RP-10_RadPrimer_annotated_Hemorrhagic_Cyst10_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "canonicalBackbone",
+          "T1FSMRBloodProducts",
+          "canonicalExactDuplicateCopy",
+          "atomicClusterWithSDX18"
+        ]
+      },
+      {
+        "masterImageId": "SDX-01",
+        "displayLabel": "STATdx image 1",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 1,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/d42e1bbc-702d-4654-83b3-52dc1ffa377d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/d42e1bbc-702d-4654-83b3-52dc1ffa377d?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-01_STATdx_plain_Hemorrhagic_Ovarian_Cyst1.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-01_STATdx_annotated_Hemorrhagic_Ovarian_Cyst1_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "diffuselyEchogenicHOC",
+          "dermoidMimic",
+          "followupResolution"
+        ]
+      },
+      {
+        "masterImageId": "SDX-02",
+        "displayLabel": "STATdx image 2",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 2,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3dc29caf-e6f3-4657-acdf-97cbe7423f8b?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3dc29caf-e6f3-4657-acdf-97cbe7423f8b?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-02_STATdx_plain_Hemorrhagic_Ovarian_Cyst2.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-02_STATdx_annotated_Hemorrhagic_Ovarian_Cyst2_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "reticularPattern",
+          "avascularDoppler",
+          "nearDuplicateCandidate"
+        ]
+      },
+      {
+        "masterImageId": "SDX-03",
+        "displayLabel": "STATdx image 3",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 3,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/4ed173d8-e3b5-498b-b97d-9b908aec0f9f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/4ed173d8-e3b5-498b-b97d-9b908aec0f9f?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-03_STATdx_plain_Hemorrhagic_Ovarian_Cyst3.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-03_STATdx_annotated_Hemorrhagic_Ovarian_Cyst3_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "reticularMeshwork",
+          "retractingClot"
+        ]
+      },
+      {
+        "masterImageId": "SDX-04",
+        "displayLabel": "STATdx image 4",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 4,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/f17024bd-fc09-4a38-ae1b-d08f62b5a8ba?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/f17024bd-fc09-4a38-ae1b-d08f62b5a8ba?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-04_STATdx_plain_Hemorrhagic_Ovarian_Cyst4.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-04_STATdx_annotated_Hemorrhagic_Ovarian_Cyst4_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "retractedAvascularClot",
+          "dopplerPitfall"
+        ]
+      },
+      {
+        "masterImageId": "SDX-05",
+        "displayLabel": "STATdx image 5",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 5,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/2042d19a-399f-4f5f-b70f-bebe52b3eadc?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/2042d19a-399f-4f5f-b70f-bebe52b3eadc?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-05_STATdx_plain_Hemorrhagic_Ovarian_Cyst5.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-05_STATdx_annotated_Hemorrhagic_Ovarian_Cyst5_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "fishnetAppearance"
+        ]
+      },
+      {
+        "masterImageId": "SDX-06",
+        "displayLabel": "STATdx image 6",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 6,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b38dfd1c-58fe-4605-bd34-58ac40cc84da?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b38dfd1c-58fe-4605-bd34-58ac40cc84da?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-06_STATdx_plain_Hemorrhagic_Ovarian_Cyst6.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-06_STATdx_annotated_Hemorrhagic_Ovarian_Cyst6_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "hemorrhagicCorpusLuteum",
+          "ringOfFirePregnancyPitfall"
+        ]
+      },
+      {
+        "masterImageId": "SDX-07",
+        "displayLabel": "STATdx image 7",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 7,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/d2f6890b-3ee6-4ea7-bd91-25835b0ed260?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/d2f6890b-3ee6-4ea7-bd91-25835b0ed260?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-07_STATdx_plain_Hemorrhagic_Ovarian_Cyst7.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-07_STATdx_annotated_Hemorrhagic_Ovarian_Cyst7_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX07SDX10",
+          "MRIT1SignalVariant"
+        ]
+      },
+      {
+        "masterImageId": "SDX-08",
+        "displayLabel": "STATdx image 8",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 8,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/42740d67-c6d2-4ecc-8dc4-c869c5867faf?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/42740d67-c6d2-4ecc-8dc4-c869c5867faf?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-08_STATdx_plain_Hemorrhagic_Ovarian_Cyst8.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-08_STATdx_annotated_Hemorrhagic_Ovarian_Cyst8_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX07SDX10",
+          "MRIT1FSSignalVariant",
+          "fatExclusion"
+        ]
+      },
+      {
+        "masterImageId": "SDX-09",
+        "displayLabel": "STATdx image 9",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 9,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/89f49455-9f16-4505-8aa9-076cbb15a580?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/89f49455-9f16-4505-8aa9-076cbb15a580?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-09_STATdx_plain_Hemorrhagic_Ovarian_Cyst9.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-09_STATdx_annotated_Hemorrhagic_Ovarian_Cyst9_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX07SDX10",
+          "MRIT2SignalVariant"
+        ]
+      },
+      {
+        "masterImageId": "SDX-10",
+        "displayLabel": "STATdx image 10",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 10,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/cc059eeb-e554-47bd-aee1-85854f714a7c?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/cc059eeb-e554-47bd-aee1-85854f714a7c?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-10_STATdx_plain_Hemorrhagic_Ovarian_Cyst10.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-10_STATdx_annotated_Hemorrhagic_Ovarian_Cyst10_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX07SDX10",
+          "USCorrelation",
+          "reticularPattern",
+          "posteriorEnhancement"
+        ]
+      },
+      {
+        "masterImageId": "SDX-11",
+        "displayLabel": "STATdx image 11",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 11,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/575e30de-b1b5-4e33-a166-a83d9f613baa?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/575e30de-b1b5-4e33-a166-a83d9f613baa?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-11_STATdx_plain_Hemorrhagic_Ovarian_Cyst11.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-11_STATdx_annotated_Hemorrhagic_Ovarian_Cyst11_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "fishnetAppearance",
+          "retractingClot"
+        ]
+      },
+      {
+        "masterImageId": "SDX-12",
+        "displayLabel": "STATdx image 12",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 12,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a72d1e93-242f-4a60-855b-e46e3f0737f5?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a72d1e93-242f-4a60-855b-e46e3f0737f5?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-12_STATdx_plain_Hemorrhagic_Ovarian_Cyst12.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-12_STATdx_annotated_Hemorrhagic_Ovarian_Cyst12_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "fibrinousStrands",
+          "retractingClot"
+        ]
+      },
+      {
+        "masterImageId": "SDX-13",
+        "displayLabel": "STATdx image 13",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 13,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/bb452350-6265-4e10-9ac1-2fc2cbea43ad?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/bb452350-6265-4e10-9ac1-2fc2cbea43ad?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-13_STATdx_plain_Hemorrhagic_Ovarian_Cyst13.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-13_STATdx_annotated_Hemorrhagic_Ovarian_Cyst13_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX13SDX16",
+          "MRIT1FluidFluidLevel",
+          "signalVariability"
+        ]
+      },
+      {
+        "masterImageId": "SDX-14",
+        "displayLabel": "STATdx image 14",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 14,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/54dcf9cb-6086-4810-b11d-0765d8400234?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/54dcf9cb-6086-4810-b11d-0765d8400234?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-14_STATdx_plain_Hemorrhagic_Ovarian_Cyst14.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-14_STATdx_annotated_Hemorrhagic_Ovarian_Cyst14_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX13SDX16",
+          "MRContrastWallEnhancement",
+          "noInternalEnhancement"
+        ]
+      },
+      {
+        "masterImageId": "SDX-15",
+        "displayLabel": "STATdx image 15",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 15,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e73bc4b1-64cb-4ec1-b172-2198bff69b81?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e73bc4b1-64cb-4ec1-b172-2198bff69b81?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-15_STATdx_plain_Hemorrhagic_Ovarian_Cyst15.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-15_STATdx_annotated_Hemorrhagic_Ovarian_Cyst15_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX13SDX16",
+          "MRIT2FluidFluidLevel"
+        ]
+      },
+      {
+        "masterImageId": "SDX-16",
+        "displayLabel": "STATdx image 16",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 16,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/8e85dfe1-b806-42c3-823e-00630adf5714?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/8e85dfe1-b806-42c3-823e-00630adf5714?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-16_STATdx_plain_Hemorrhagic_Ovarian_Cyst16.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-16_STATdx_annotated_Hemorrhagic_Ovarian_Cyst16_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX13SDX16",
+          "USRetractingClotCorrelation"
+        ]
+      },
+      {
+        "masterImageId": "SDX-18",
+        "displayLabel": "STATdx image 18",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 18,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/09d94a0e-b515-4e34-a7f6-6e025154f654?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/09d94a0e-b515-4e34-a7f6-6e025154f654?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-18_STATdx_plain_Hemorrhagic_Ovarian_Cyst18.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-18_STATdx_annotated_Hemorrhagic_Ovarian_Cyst18_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX17SDX18",
+          "T2MRClotCompanion",
+          "atomicClusterWithRP10"
+        ]
+      },
+      {
+        "masterImageId": "SDX-19",
+        "displayLabel": "STATdx image 19",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 19,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/384d8173-66f2-4f06-a2cf-a6bffc4d9b71?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/384d8173-66f2-4f06-a2cf-a6bffc4d9b71?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-19_STATdx_plain_Hemorrhagic_Ovarian_Cyst19.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-19_STATdx_annotated_Hemorrhagic_Ovarian_Cyst19_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX19SDX20",
+          "rupturedHOC",
+          "pelvicHemoperitoneum",
+          "doppler"
+        ]
+      },
+      {
+        "masterImageId": "SDX-20",
+        "displayLabel": "STATdx image 20",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 20,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/6931100c-a0f1-40b4-9dd3-88323cdea5ec?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/6931100c-a0f1-40b4-9dd3-88323cdea5ec?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-20_STATdx_plain_Hemorrhagic_Ovarian_Cyst20.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-20_STATdx_annotated_Hemorrhagic_Ovarian_Cyst20_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "samePatientClusterSDX19SDX20",
+          "pelvicHemoperitoneumUS",
+          "ruptureComplication"
+        ]
+      },
+      {
+        "masterImageId": "SDX-21",
+        "displayLabel": "STATdx image 21",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 21,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/0a42fbe8-1b10-485c-8f22-3b5dab7aa20d?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/0a42fbe8-1b10-485c-8f22-3b5dab7aa20d?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-21_STATdx_plain_Hemorrhagic_Ovarian_Cyst21.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-21_STATdx_annotated_Hemorrhagic_Ovarian_Cyst21_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "CTSentinelClot",
+          "rupturedRightHOC"
+        ]
+      },
+      {
+        "masterImageId": "SDX-22",
+        "displayLabel": "STATdx image 22",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 22,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ad2f11a3-c4ea-44a3-a237-eefe33c0c0d1?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ad2f11a3-c4ea-44a3-a237-eefe33c0c0d1?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-22_STATdx_plain_Hemorrhagic_Ovarian_Cyst22.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-22_STATdx_annotated_Hemorrhagic_Ovarian_Cyst22_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "CTWallDefect",
+          "rupturedLeftHOC"
+        ]
+      },
+      {
+        "masterImageId": "SDX-23",
+        "displayLabel": "STATdx image 23",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 23,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/62a6396e-87bb-437d-ba0e-6c391fd1a9f3?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/62a6396e-87bb-437d-ba0e-6c391fd1a9f3?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-23_STATdx_plain_Hemorrhagic_Ovarian_Cyst23.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-23_STATdx_annotated_Hemorrhagic_Ovarian_Cyst23_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "fishnetUS",
+          "alternateExample"
+        ]
+      },
+      {
+        "masterImageId": "SDX-24",
+        "displayLabel": "STATdx image 24",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 24,
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e99560f4-1646-4c18-b465-61b8d83a015c?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e99560f4-1646-4c18-b465-61b8d83a015c?annotated=true&size=1000&quality=90",
+        "sourceQualifiedPlainFilename": "SDX-24_STATdx_plain_Hemorrhagic_Ovarian_Cyst24.jpg",
+        "sourceQualifiedAnnotatedFilename": "SDX-24_STATdx_annotated_Hemorrhagic_Ovarian_Cyst24_annot.jpg",
+        "teachingRole": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "retractingClotSign",
+          "alternateExample"
+        ]
+      }
+    ],
+    "clusterPolicyNotes": [
+      "STATdx images 7-10 are a same-patient MR/US cluster and remain selected together.",
+      "STATdx images 13-16 are a same-patient MR/US fluid-fluid/retracting-clot cluster and remain selected together.",
+      "STATdx images 19-20 are a same-patient rupture/hemoperitoneum cluster and remain selected together.",
+      "STATdx image 17 is archived only because RadPrimer image 10 is the same T1 FS image; STATdx image 18 remains selected as the T2 companion, so the MR teaching cluster is preserved through RadPrimer image 10 plus STATdx image 18.",
+      "RadPrimer images 4-5 appear to form a rupture/hemorrhagic corpus luteum teaching cluster and both remain selected."
+    ],
+    "generatorInstructions": [
+      "Use the canonicalHierarchy exactly as copied from metadata.json.",
+      "Use source-qualified image labels such as RadPrimer image 5 and STATdx image 4 in narrative-facing prose.",
+      "Keep RP-05 and SDX-04 style identifiers in registry fields, filenames, import metadata, and traceability notes.",
+      "Do not generate cards or a lecture from this package yet."
+    ]
+  }
+}

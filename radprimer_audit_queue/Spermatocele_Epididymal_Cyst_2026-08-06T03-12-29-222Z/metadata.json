@@ -1,0 +1,1271 @@
+{
+  "createdAt": "2026-08-06T03:12:29.222Z",
+  "articleTitle": "Spermatocele/Epididymal Cyst",
+  "sourceUrl": "https://app.radprimer.com/document/82182494-840b-421d-b52d-5745f7389ea8/lesson/0aa7b41a-2f4f-4b33-9967-ce22837b27e1",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    13
+  ],
+  "masterImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-13"
+  ],
+  "sourceQualifiedImages": [
+    {
+      "caption": "Graphic of a scrotum shows a multiloculated cystic structure <img src=\"arrow_CO.png\"> superior to the testis in the region of the epididymal head, suggestive of a spermatocele.",
+      "label": "RP-01",
+      "masterImageId": "RP-01",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Typical appearance of an incidentally discovered and clinically unimportant epididymal cyst is shown. Note the well-circumscribed, anechoic, avascular lesion <img src=\"arrow_CC.png\"> in the epididymal head.",
+      "label": "RP-02",
+      "masterImageId": "RP-02",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Large spermatocele <img src=\"arrow_CC.png\"> superior to right testis contains punctate low-level echoes with corresponding Doppler artifact <img src=\"arrow_BS.png\">, referred to as the falling snow sign due to acoustic streaming. These punctate foci were mobile in real time.",
+      "label": "RP-03",
+      "masterImageId": "RP-03",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Longitudinal grayscale US demonstrates a complex, multiseptate, cystic mass with numerous locules containing debris <img src=\"arrow_WS.png\">, characteristic findings for a spermatocele.",
+      "label": "RP-04",
+      "masterImageId": "RP-04",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Sagittal US shows a simple <img src=\"arrow_CS.png\"> epididymal cyst arising from the epididymal body <img src=\"arrow_WS.png\">. Cysts such as this are often palpable and are one of the most common reasons for patients presenting with a palpable scrotal mass.",
+      "label": "SDX-01",
+      "masterImageId": "SDX-01",
+      "sourceImageNumber": 1,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Longitudinal US of the epididymal tail shows an anechoic, cystic structure <img src=\"arrow_CS.png\">. The location within the epididymal tail supports the diagnosis of epididymal cyst.",
+      "label": "SDX-02",
+      "masterImageId": "SDX-02",
+      "sourceImageNumber": 2,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transverse US of the epididymal head shows a spermatocele <img src=\"arrow_CS.png\"> with internal floating debris  <img src=\"arrow_WC.png\">  and associated dilated rete testis <img src=\"arrow_WS.png\">.",
+      "label": "SDX-03",
+      "masterImageId": "SDX-03",
+      "sourceImageNumber": 3,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Coronal T1 C+ FS MR shows a nonenhancing, septated <img src=\"arrow_WS.png\">, cystic structure <img src=\"arrow_CS.png\"> superior to the right testis representing a spermatocele or an epididymal cyst.",
+      "label": "SDX-04",
+      "masterImageId": "SDX-04",
+      "sourceImageNumber": 4,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Coronal T2 FS MR shows a hyperintense cyst <img src=\"arrow_WS.png\"> superior to the right testis <img src=\"arrow_WC.png\">, consistent with an epididymal cyst.",
+      "label": "SDX-05",
+      "masterImageId": "SDX-05",
+      "sourceImageNumber": 5,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transverse US of the epididymal head shows a septated, cystic structure representing either an epididymal head cyst or a spermatocele <img src=\"arrow_CS.png\">. The presence of dilated rete testis <img src=\"arrow_WC.png\"> supports the diagnosis of spermatocele.",
+      "label": "SDX-06",
+      "masterImageId": "SDX-06",
+      "sourceImageNumber": 6,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Large spermatocele <img src=\"arrow_CC.png\"> superior to right testis <img src=\"arrow_WO.png\"> contains punctate, low-level echoes with corresponding Doppler artifact <img src=\"arrow_WS.png\">. These punctate foci were mobile in real time.",
+      "label": "SDX-07",
+      "masterImageId": "SDX-07",
+      "sourceImageNumber": 7,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Sagittal US shows a spermatocele <img src=\"arrow_CS.png\"> with mobile, low-level echoes arising from the epididymal head <img src=\"arrow_WS.png\"> superior to the testis <img src=\"arrow_WC.png\">.",
+      "label": "SDX-08",
+      "masterImageId": "SDX-08",
+      "sourceImageNumber": 8,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Sagittal and transverse US of the epididymal head <img src=\"arrow_WS.png\"> show a multiseptated, cystic structure representing either an epididymal head cyst or spermatocele <img src=\"arrow_CS.png\">  superior to the testis <img src=\"arrow_WC.png\">.",
+      "label": "SDX-09",
+      "masterImageId": "SDX-09",
+      "sourceImageNumber": 9,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Large epididymal cyst (calipers) is shown with a single thin septation <img src=\"arrow_CS.png\"> in the right hemiscrotum displacing the testis <img src=\"arrow_WC.png\"> inferiorly. Note that a curved-array transducer rather than a high-frequency linear transducer was needed to capture this large lesion.",
+      "label": "SDX-10",
+      "masterImageId": "SDX-10",
+      "sourceImageNumber": 10,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Sagittal US of the testicle shows a large spermatocele <img src=\"arrow_WO.png\"> arising from the epididymal head containing tiny foci of debris <img src=\"arrow_CS.png\">, which were mobile in real time.",
+      "label": "SDX-13",
+      "masterImageId": "SDX-13",
+      "sourceImageNumber": 13,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    }
+  ],
+  "cases": [],
+  "totalImagesOnPage": 17,
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Spermatocele/Epididymal Cyst"
+  ],
+  "outputChars": 308334,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Core validation passed\n\nCore Radiology, Second Edition, Genitourinary Imaging — “Scrotum and testicle,” GU pages 285 and 291–292 (PDF pages 297, 303–304) was reviewed. Core confirms that:\n\n- A spermatocele is a sperm-containing cystic dilation of the epididymis, usually in the epididymal head.\n- Internal low-level mobile echoes are the classic sonographic clue.\n- Ultrasound cannot reliably distinguish a simple epididymal cyst from a spermatocele.\n- Epididymal obstruction may produce associated tubular ectasia of the rete testis.\n- Adult extratesticular masses are usually benign, while vascularized soft tissue still requires caution.\n\nWhole-source coverage audit completed from the full relevant Core pages and the fused RadPrimer/STATdx package. Card generation used full-source review, not the validation digest or summary field.\n\nExport results\n\nTotal cards exported: 37\nExpected TSV lines: 37\nActual TSV lines: 37\nColumns per line: 22\n\nCard distribution: 14 UNKNOWN, 4 Differential Drills, 2 Definitions, 2 Mechanisms, 3 Boards Traps, 2 Epidemiology, and 10 High-Yield cards.\n\nAll 14 eligible cases produced exactly one PRIMARY UNKNOWN. The 15 selected images were fully accounted for, with STATdx images 4 and 5 retained together as one atomic MR case. Caption-verbatim, image-order, trigger-integrity, blank-Tags, modality-coverage, summary-identity, and deck-balance audits passed.\n\n-\n-\n-\n-\n-\n\nThe RadPrimer and STATdx image endpoints required authenticated access and returned HTML rather than image binaries in this environment. Therefore, the images are not embedded in the ZIP; all source-qualified filenames, captions, image IDs, and authenticated download URLs are preserved in the media manifest.",
+  "coreEvidence": {
+    "status": "NOT_PROVIDED",
+    "provided": false,
+    "chars": 435,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Spermatocele/Epididymal Cyst"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Spermatocele/Epididymal Cyst"
+    ],
+    "deckName": "Corebook::Ultrasound::Scrotum Basic::Spermatocele/Epididymal Cyst",
+    "hierarchySource": "RadPrimer + STATdx master source",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [
+    {
+      "filename": "RP-01_RadPrimer_plain_SpermatoceleEpididymal_Cyst1.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-01_RadPrimer_annotated_SpermatoceleEpididymal_Cyst1_annot.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-02_RadPrimer_plain_SpermatoceleEpididymal_Cyst2.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-02_RadPrimer_annotated_SpermatoceleEpididymal_Cyst2_annot.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-03_RadPrimer_plain_SpermatoceleEpididymal_Cyst3.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-03_RadPrimer_annotated_SpermatoceleEpididymal_Cyst3_annot.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-04_RadPrimer_plain_SpermatoceleEpididymal_Cyst4.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-04_RadPrimer_annotated_SpermatoceleEpididymal_Cyst4_annot.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "SDX-01_STATdx_plain_SpermatoceleEpididymal_Cyst1.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/29a40dee-8d5f-4231-9814-60c60f2e8ef6?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-01_STATdx_annotated_SpermatoceleEpididymal_Cyst1_annot.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/29a40dee-8d5f-4231-9814-60c60f2e8ef6?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-02_STATdx_plain_SpermatoceleEpididymal_Cyst2.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/3d49bb33-254c-4c18-8e20-b4418d51599e?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-02_STATdx_annotated_SpermatoceleEpididymal_Cyst2_annot.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/3d49bb33-254c-4c18-8e20-b4418d51599e?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-03_STATdx_plain_SpermatoceleEpididymal_Cyst3.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/03737e51-29f0-4aba-a906-7b54bcf06047?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-03_STATdx_annotated_SpermatoceleEpididymal_Cyst3_annot.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/03737e51-29f0-4aba-a906-7b54bcf06047?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-04_STATdx_plain_SpermatoceleEpididymal_Cyst4.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/1f3dd919-3d18-4864-b16a-afc76cb2a161?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-04_STATdx_annotated_SpermatoceleEpididymal_Cyst4_annot.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/1f3dd919-3d18-4864-b16a-afc76cb2a161?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-05_STATdx_plain_SpermatoceleEpididymal_Cyst5.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/6a0d1472-ebe3-4eb5-b38e-7fec7e3ec666?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-05_STATdx_annotated_SpermatoceleEpididymal_Cyst5_annot.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/6a0d1472-ebe3-4eb5-b38e-7fec7e3ec666?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-06_STATdx_plain_SpermatoceleEpididymal_Cyst6.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/d479ffb1-1764-4ade-974d-7cf4fa76830e?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-06_STATdx_annotated_SpermatoceleEpididymal_Cyst6_annot.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/d479ffb1-1764-4ade-974d-7cf4fa76830e?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-07_STATdx_plain_SpermatoceleEpididymal_Cyst7.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/971b39c2-3c65-4359-8e8a-98f030fd2d7f?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-07_STATdx_annotated_SpermatoceleEpididymal_Cyst7_annot.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/971b39c2-3c65-4359-8e8a-98f030fd2d7f?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-08_STATdx_plain_SpermatoceleEpididymal_Cyst8.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/ebc9221b-c767-455b-ac6f-98eef50665bb?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-08_STATdx_annotated_SpermatoceleEpididymal_Cyst8_annot.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/ebc9221b-c767-455b-ac6f-98eef50665bb?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-09_STATdx_plain_SpermatoceleEpididymal_Cyst9.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/cb6cadbf-f09a-47e8-b51b-bcffc436dad4?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-09_STATdx_annotated_SpermatoceleEpididymal_Cyst9_annot.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/cb6cadbf-f09a-47e8-b51b-bcffc436dad4?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-10_STATdx_plain_SpermatoceleEpididymal_Cyst10.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/ee4abab5-c492-4445-9c82-3177f2dc2ded?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-10_STATdx_annotated_SpermatoceleEpididymal_Cyst10_annot.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/ee4abab5-c492-4445-9c82-3177f2dc2ded?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-13_STATdx_plain_SpermatoceleEpididymal_Cyst13.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/1f80e69a-d581-41e0-baa3-7948876b4b14?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-13_STATdx_annotated_SpermatoceleEpididymal_Cyst13_annot.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/1f80e69a-d581-41e0-baa3-7948876b4b14?annotated=true&size=1000&quality=90"
+    }
+  ],
+  "imageRegistry": [
+    {
+      "annotatedFilename": "RP-01_RadPrimer_annotated_SpermatoceleEpididymal_Cyst1_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Graphic of a scrotum shows a multiloculated cystic structure <img src=\"arrow_CO.png\"> superior to the testis in the region of the epididymal head, suggestive of a spermatocele.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "RP-01_RadPrimer_plain_SpermatoceleEpididymal_Cyst1.jpg",
+      "group": "",
+      "masterImageId": "RP-01",
+      "plainFilename": "RP-01_RadPrimer_plain_SpermatoceleEpididymal_Cyst1.jpg",
+      "plainUrl": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=false",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst1_annot.jpg",
+      "sourceDisplayLabel": "RadPrimer image 1",
+      "sourceImageId": "ae5ba119-6704-42af-b411-6db2ee121e53",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst1.jpg",
+      "traceability": {
+        "humanFacingLabel": "RadPrimer image 1",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst1",
+        "shortCode": "RP-01",
+        "sourcePackage": "RadPrimer_source_package.txt"
+      },
+      "usedFor": [
+        "anatomySchematic",
+        "conceptualOverview",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_ae5ba119.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "RP-02_RadPrimer_annotated_SpermatoceleEpididymal_Cyst2_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Typical appearance of an incidentally discovered and clinically unimportant epididymal cyst is shown. Note the well-circumscribed, anechoic, avascular lesion <img src=\"arrow_CC.png\"> in the epididymal head.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "RP-02_RadPrimer_plain_SpermatoceleEpididymal_Cyst2.jpg",
+      "group": "",
+      "masterImageId": "RP-02",
+      "plainFilename": "RP-02_RadPrimer_plain_SpermatoceleEpididymal_Cyst2.jpg",
+      "plainUrl": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=false",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst2_annot.jpg",
+      "sourceDisplayLabel": "RadPrimer image 2",
+      "sourceImageId": "aab959e0-27e9-4497-983c-fe2cd1eba93a",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst2.jpg",
+      "traceability": {
+        "humanFacingLabel": "RadPrimer image 2",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst2",
+        "shortCode": "RP-02",
+        "sourcePackage": "RadPrimer_source_package.txt"
+      },
+      "usedFor": [
+        "simpleEpididymalHeadCyst",
+        "avascularCyst",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_aab959e0.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "RP-03_RadPrimer_annotated_SpermatoceleEpididymal_Cyst3_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Large spermatocele <img src=\"arrow_CC.png\"> superior to right testis contains punctate low-level echoes with corresponding Doppler artifact <img src=\"arrow_BS.png\">, referred to as the falling snow sign due to acoustic streaming. These punctate foci were mobile in real time.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "RP-03_RadPrimer_plain_SpermatoceleEpididymal_Cyst3.jpg",
+      "group": "",
+      "masterImageId": "RP-03",
+      "plainFilename": "RP-03_RadPrimer_plain_SpermatoceleEpididymal_Cyst3.jpg",
+      "plainUrl": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=false",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst3_annot.jpg",
+      "sourceDisplayLabel": "RadPrimer image 3",
+      "sourceImageId": "fd710f26-3d2f-43f3-b507-307c2580f161",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst3.jpg",
+      "traceability": {
+        "humanFacingLabel": "RadPrimer image 3",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst3",
+        "shortCode": "RP-03",
+        "sourcePackage": "RadPrimer_source_package.txt"
+      },
+      "usedFor": [
+        "spermatocele",
+        "fallingSnowSign",
+        "acousticStreaming",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_fd710f26.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "RP-04_RadPrimer_annotated_SpermatoceleEpididymal_Cyst4_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Longitudinal grayscale US demonstrates a complex, multiseptate, cystic mass with numerous locules containing debris <img src=\"arrow_WS.png\">, characteristic findings for a spermatocele.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "RP-04_RadPrimer_plain_SpermatoceleEpididymal_Cyst4.jpg",
+      "group": "",
+      "masterImageId": "RP-04",
+      "plainFilename": "RP-04_RadPrimer_plain_SpermatoceleEpididymal_Cyst4.jpg",
+      "plainUrl": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=false",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst4_annot.jpg",
+      "sourceDisplayLabel": "RadPrimer image 4",
+      "sourceImageId": "0a90e76a-77ff-441a-9765-cf0b13d32bee",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst4.jpg",
+      "traceability": {
+        "humanFacingLabel": "RadPrimer image 4",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst4",
+        "shortCode": "RP-04",
+        "sourcePackage": "RadPrimer_source_package.txt"
+      },
+      "usedFor": [
+        "complexMultiseptatedSpermatocele",
+        "internalDebris",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_0a90e76a.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-01_STATdx_annotated_SpermatoceleEpididymal_Cyst1_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/29a40dee-8d5f-4231-9814-60c60f2e8ef6?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Sagittal US shows a simple <img src=\"arrow_CS.png\"> epididymal cyst arising from the epididymal body <img src=\"arrow_WS.png\">. Cysts such as this are often palpable and are one of the most common reasons for patients presenting with a palpable scrotal mass.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-01_STATdx_plain_SpermatoceleEpididymal_Cyst1.jpg",
+      "group": "",
+      "masterImageId": "SDX-01",
+      "plainFilename": "SDX-01_STATdx_plain_SpermatoceleEpididymal_Cyst1.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/29a40dee-8d5f-4231-9814-60c60f2e8ef6?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst1_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 1",
+      "sourceImageId": "29a40dee-8d5f-4231-9814-60c60f2e8ef6",
+      "sourceImageNumber": 1,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst1.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 1",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst1",
+        "shortCode": "SDX-01",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "simpleEpididymalCyst",
+        "palpableMassCorrelation",
+        "recognitionReinforcement",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_29a40dee.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/29a40dee-8d5f-4231-9814-60c60f2e8ef6?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-02_STATdx_annotated_SpermatoceleEpididymal_Cyst2_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/3d49bb33-254c-4c18-8e20-b4418d51599e?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Longitudinal US of the epididymal tail shows an anechoic, cystic structure <img src=\"arrow_CS.png\">. The location within the epididymal tail supports the diagnosis of epididymal cyst.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-02_STATdx_plain_SpermatoceleEpididymal_Cyst2.jpg",
+      "group": "",
+      "masterImageId": "SDX-02",
+      "plainFilename": "SDX-02_STATdx_plain_SpermatoceleEpididymal_Cyst2.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/3d49bb33-254c-4c18-8e20-b4418d51599e?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst2_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 2",
+      "sourceImageId": "3d49bb33-254c-4c18-8e20-b4418d51599e",
+      "sourceImageNumber": 2,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst2.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 2",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst2",
+        "shortCode": "SDX-02",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "epididymalTailCyst",
+        "locationVariant",
+        "recognitionReinforcement",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_3d49bb33.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/3d49bb33-254c-4c18-8e20-b4418d51599e?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-03_STATdx_annotated_SpermatoceleEpididymal_Cyst3_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/03737e51-29f0-4aba-a906-7b54bcf06047?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transverse US of the epididymal head shows a spermatocele <img src=\"arrow_CS.png\"> with internal floating debris  <img src=\"arrow_WC.png\">  and associated dilated rete testis <img src=\"arrow_WS.png\">.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-03_STATdx_plain_SpermatoceleEpididymal_Cyst3.jpg",
+      "group": "",
+      "masterImageId": "SDX-03",
+      "plainFilename": "SDX-03_STATdx_plain_SpermatoceleEpididymal_Cyst3.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/03737e51-29f0-4aba-a906-7b54bcf06047?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst3_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 3",
+      "sourceImageId": "03737e51-29f0-4aba-a906-7b54bcf06047",
+      "sourceImageNumber": 3,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst3.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 3",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst3",
+        "shortCode": "SDX-03",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "spermatoceleWithDebris",
+        "dilatedReteTestis",
+        "recognitionReinforcement",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_03737e51.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/03737e51-29f0-4aba-a906-7b54bcf06047?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-04_STATdx_annotated_SpermatoceleEpididymal_Cyst4_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/1f3dd919-3d18-4864-b16a-afc76cb2a161?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Coronal T1 C+ FS MR shows a nonenhancing, septated <img src=\"arrow_WS.png\">, cystic structure <img src=\"arrow_CS.png\"> superior to the right testis representing a spermatocele or an epididymal cyst.",
+      "caseClusterHandling": "atomic paired MR cluster retained together",
+      "caseClusterId": "SDX-MR-01",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-04_STATdx_plain_SpermatoceleEpididymal_Cyst4.jpg",
+      "group": "",
+      "masterImageId": "SDX-04",
+      "plainFilename": "SDX-04_STATdx_plain_SpermatoceleEpididymal_Cyst4.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/1f3dd919-3d18-4864-b16a-afc76cb2a161?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst4_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 4",
+      "sourceImageId": "1f3dd919-3d18-4864-b16a-afc76cb2a161",
+      "sourceImageNumber": 4,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst4.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 4",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst4",
+        "shortCode": "SDX-04",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "MRVariant",
+        "nonenhancingSeptatedCyst",
+        "caseCluster:SDX-MR-01",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_1f3dd919.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/1f3dd919-3d18-4864-b16a-afc76cb2a161?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-05_STATdx_annotated_SpermatoceleEpididymal_Cyst5_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/6a0d1472-ebe3-4eb5-b38e-7fec7e3ec666?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Coronal T2 FS MR shows a hyperintense cyst <img src=\"arrow_WS.png\"> superior to the right testis <img src=\"arrow_WC.png\">, consistent with an epididymal cyst.",
+      "caseClusterHandling": "atomic paired MR cluster retained together",
+      "caseClusterId": "SDX-MR-01",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-05_STATdx_plain_SpermatoceleEpididymal_Cyst5.jpg",
+      "group": "",
+      "masterImageId": "SDX-05",
+      "plainFilename": "SDX-05_STATdx_plain_SpermatoceleEpididymal_Cyst5.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/6a0d1472-ebe3-4eb5-b38e-7fec7e3ec666?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst5_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 5",
+      "sourceImageId": "6a0d1472-ebe3-4eb5-b38e-7fec7e3ec666",
+      "sourceImageNumber": 5,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst5.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 5",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst5",
+        "shortCode": "SDX-05",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "MRVariant",
+        "T2HyperintenseCyst",
+        "caseCluster:SDX-MR-01",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_6a0d1472.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/6a0d1472-ebe3-4eb5-b38e-7fec7e3ec666?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-06_STATdx_annotated_SpermatoceleEpididymal_Cyst6_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d479ffb1-1764-4ade-974d-7cf4fa76830e?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transverse US of the epididymal head shows a septated, cystic structure representing either an epididymal head cyst or a spermatocele <img src=\"arrow_CS.png\">. The presence of dilated rete testis <img src=\"arrow_WC.png\"> supports the diagnosis of spermatocele.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "conceptualReplacementFor:RP-01",
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-06_STATdx_plain_SpermatoceleEpididymal_Cyst6.jpg",
+      "group": "",
+      "masterImageId": "SDX-06",
+      "plainFilename": "SDX-06_STATdx_plain_SpermatoceleEpididymal_Cyst6.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d479ffb1-1764-4ade-974d-7cf4fa76830e?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst6_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 6",
+      "sourceImageId": "d479ffb1-1764-4ade-974d-7cf4fa76830e",
+      "sourceImageNumber": 6,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst6.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 6",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst6",
+        "shortCode": "SDX-06",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "septatedEpididymalHeadCyst",
+        "dilatedReteTestis",
+        "recognitionReinforcement",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_d479ffb1.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d479ffb1-1764-4ade-974d-7cf4fa76830e?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-07_STATdx_annotated_SpermatoceleEpididymal_Cyst7_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/971b39c2-3c65-4359-8e8a-98f030fd2d7f?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Large spermatocele <img src=\"arrow_CC.png\"> superior to right testis <img src=\"arrow_WO.png\"> contains punctate, low-level echoes with corresponding Doppler artifact <img src=\"arrow_WS.png\">. These punctate foci were mobile in real time.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "nearDuplicateConceptReinforcementOf:RP-03",
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-07_STATdx_plain_SpermatoceleEpididymal_Cyst7.jpg",
+      "group": "",
+      "masterImageId": "SDX-07",
+      "plainFilename": "SDX-07_STATdx_plain_SpermatoceleEpididymal_Cyst7.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/971b39c2-3c65-4359-8e8a-98f030fd2d7f?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst7_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 7",
+      "sourceImageId": "971b39c2-3c65-4359-8e8a-98f030fd2d7f",
+      "sourceImageNumber": 7,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst7.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 7",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst7",
+        "shortCode": "SDX-07",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "fallingSnowSign",
+        "alternateExample",
+        "recognitionReinforcement",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_971b39c2.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/971b39c2-3c65-4359-8e8a-98f030fd2d7f?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-08_STATdx_annotated_SpermatoceleEpididymal_Cyst8_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/ebc9221b-c767-455b-ac6f-98eef50665bb?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Sagittal US shows a spermatocele <img src=\"arrow_CS.png\"> with mobile, low-level echoes arising from the epididymal head <img src=\"arrow_WS.png\"> superior to the testis <img src=\"arrow_WC.png\">.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-08_STATdx_plain_SpermatoceleEpididymal_Cyst8.jpg",
+      "group": "",
+      "masterImageId": "SDX-08",
+      "plainFilename": "SDX-08_STATdx_plain_SpermatoceleEpididymal_Cyst8.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/ebc9221b-c767-455b-ac6f-98eef50665bb?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst8_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 8",
+      "sourceImageId": "ebc9221b-c767-455b-ac6f-98eef50665bb",
+      "sourceImageNumber": 8,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst8.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 8",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst8",
+        "shortCode": "SDX-08",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "mobileLowLevelEchoes",
+        "epididymalHeadSpermatocele",
+        "recognitionReinforcement",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_ebc9221b.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/ebc9221b-c767-455b-ac6f-98eef50665bb?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-09_STATdx_annotated_SpermatoceleEpididymal_Cyst9_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/cb6cadbf-f09a-47e8-b51b-bcffc436dad4?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Sagittal and transverse US of the epididymal head <img src=\"arrow_WS.png\"> show a multiseptated, cystic structure representing either an epididymal head cyst or spermatocele <img src=\"arrow_CS.png\">  superior to the testis <img src=\"arrow_WC.png\">.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "conceptualReplacementFor:RP-01",
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-09_STATdx_plain_SpermatoceleEpididymal_Cyst9.jpg",
+      "group": "",
+      "masterImageId": "SDX-09",
+      "plainFilename": "SDX-09_STATdx_plain_SpermatoceleEpididymal_Cyst9.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/cb6cadbf-f09a-47e8-b51b-bcffc436dad4?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst9_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 9",
+      "sourceImageId": "cb6cadbf-f09a-47e8-b51b-bcffc436dad4",
+      "sourceImageNumber": 9,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst9.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 9",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst9",
+        "shortCode": "SDX-09",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "multiseptatedCyst",
+        "pairedSagittalTransverseComposite",
+        "recognitionReinforcement",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_cb6cadbf.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/cb6cadbf-f09a-47e8-b51b-bcffc436dad4?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-10_STATdx_annotated_SpermatoceleEpididymal_Cyst10_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/ee4abab5-c492-4445-9c82-3177f2dc2ded?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Large epididymal cyst (calipers) is shown with a single thin septation <img src=\"arrow_CS.png\"> in the right hemiscrotum displacing the testis <img src=\"arrow_WC.png\"> inferiorly. Note that a curved-array transducer rather than a high-frequency linear transducer was needed to capture this large lesion.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": null,
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-10_STATdx_plain_SpermatoceleEpididymal_Cyst10.jpg",
+      "group": "",
+      "masterImageId": "SDX-10",
+      "plainFilename": "SDX-10_STATdx_plain_SpermatoceleEpididymal_Cyst10.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/ee4abab5-c492-4445-9c82-3177f2dc2ded?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst10_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 10",
+      "sourceImageId": "ee4abab5-c492-4445-9c82-3177f2dc2ded",
+      "sourceImageNumber": 10,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst10.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 10",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst10",
+        "shortCode": "SDX-10",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "largeEpididymalCyst",
+        "thinSeptation",
+        "largeLesionTechnique",
+        "recognitionReinforcement",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_ee4abab5.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/ee4abab5-c492-4445-9c82-3177f2dc2ded?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-11_STATdx_annotated_SpermatoceleEpididymal_Cyst11_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/52c72834-8793-432e-93cf-e058a36e8dcc?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Typical appearance of an incidentally discovered and clinically unimportant epididymal cyst is shown. Note the well-circumscribed, anechoic, avascular lesion <img src=\"arrow_CC.png\"> in the epididymal head.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "duplicateOfMasterImageId": "RP-02",
+      "filename": "SDX-11_STATdx_plain_SpermatoceleEpididymal_Cyst11.jpg",
+      "group": "",
+      "masterImageId": "SDX-11",
+      "plainFilename": "SDX-11_STATdx_plain_SpermatoceleEpididymal_Cyst11.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/52c72834-8793-432e-93cf-e058a36e8dcc?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst11_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 11",
+      "sourceImageId": "52c72834-8793-432e-93cf-e058a36e8dcc",
+      "sourceImageNumber": 11,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst11.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 11",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst11",
+        "shortCode": "SDX-11",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicateOf:RP-02"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_52c72834.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/52c72834-8793-432e-93cf-e058a36e8dcc?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-12_STATdx_annotated_SpermatoceleEpididymal_Cyst12_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/33bb4b8b-73d7-43c2-b278-f1ee48bba9b2?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Longitudinal US shows a complex, multiseptate, cystic mass with numerous locules containing debris <img src=\"arrow_WS.png\">, characteristic findings for a spermatocele.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateClassification": "exactDuplicate",
+      "duplicateOfMasterImageId": "RP-04",
+      "filename": "SDX-12_STATdx_plain_SpermatoceleEpididymal_Cyst12.jpg",
+      "group": "",
+      "masterImageId": "SDX-12",
+      "plainFilename": "SDX-12_STATdx_plain_SpermatoceleEpididymal_Cyst12.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/33bb4b8b-73d7-43c2-b278-f1ee48bba9b2?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst12_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 12",
+      "sourceImageId": "33bb4b8b-73d7-43c2-b278-f1ee48bba9b2",
+      "sourceImageNumber": 12,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst12.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 12",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst12",
+        "shortCode": "SDX-12",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicateOf:RP-04"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_33bb4b8b.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/33bb4b8b-73d7-43c2-b278-f1ee48bba9b2?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "SDX-13_STATdx_annotated_SpermatoceleEpididymal_Cyst13_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/1f80e69a-d581-41e0-baa3-7948876b4b14?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Sagittal US of the testicle shows a large spermatocele <img src=\"arrow_WO.png\"> arising from the epididymal head containing tiny foci of debris <img src=\"arrow_CS.png\">, which were mobile in real time.",
+      "caseClusterHandling": null,
+      "caseClusterId": null,
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateClassification": "nearDuplicateConceptReinforcementOf:RP-03",
+      "duplicateOfMasterImageId": null,
+      "filename": "SDX-13_STATdx_plain_SpermatoceleEpididymal_Cyst13.jpg",
+      "group": "",
+      "masterImageId": "SDX-13",
+      "plainFilename": "SDX-13_STATdx_plain_SpermatoceleEpididymal_Cyst13.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/1f80e69a-d581-41e0-baa3-7948876b4b14?size=1000&quality=90",
+      "sourceAnnotatedFilename": "SpermatoceleEpididymal_Cyst13_annot.jpg",
+      "sourceDisplayLabel": "STATdx image 13",
+      "sourceImageId": "1f80e69a-d581-41e0-baa3-7948876b4b14",
+      "sourceImageNumber": 13,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourcePlainFilename": "SpermatoceleEpididymal_Cyst13.jpg",
+      "traceability": {
+        "humanFacingLabel": "STATdx image 13",
+        "originalBaseName": "SpermatoceleEpididymal_Cyst13",
+        "shortCode": "SDX-13",
+        "sourcePackage": "STATdx_source_package.txt"
+      },
+      "usedFor": [
+        "largeSpermatocele",
+        "mobileDebris",
+        "alternateExample",
+        "recognitionReinforcement",
+        "primaryTeachingSet"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_1f80e69a.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/1f80e69a-d581-41e0-baa3-7948876b4b14?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    }
+  ],
+  "masterSource": {
+    "createdAt": "2026-08-01T23:02:41Z",
+    "importedAt": "2026-08-06T03:04:50.387Z",
+    "sourceLabel": "RadPrimer + STATdx master source"
+  },
+  "settings": {
+    "include": "all",
+    "caseMap": "",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "effectiveAnkiNormalRoot": "",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "Spermatocele_Epididymal_Cyst_core_rad_notetype.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000c810822f9e6f1b7aac0e52ec&fn=Spermatocele_Epididymal_Cyst_core_rad_notetype.tsv&cd=attachment&ts=496107&p=fs&cid=1&sig=12f3ad0be9c50779248201d35b5c2afad0e057bdca729d531c4c25c8f0b0b070&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000c810822f9e6f1b7aac0e52ec&fn=Spermatocele_Epididymal_Cyst_core_rad_notetype.tsv&cd=attachment&ts=496107&p=fs&cid=1&sig=12f3ad0be9c50779248201d35b5c2afad0e057bdca729d531c4c25c8f0b0b070&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 8508,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Spermatocele_Epididymal_Cyst_2026-08-06T03-12-29-222Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}

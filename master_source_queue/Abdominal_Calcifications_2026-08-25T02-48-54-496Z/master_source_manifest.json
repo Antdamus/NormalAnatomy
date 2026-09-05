@@ -1,0 +1,1501 @@
+{
+  "articleTitle": "Abdominal Calcifications",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Gastrointestinal",
+    "Peritoneum, Mesentery, and Abdominal Wall",
+    "Abdominal Calcifications"
+  ],
+  "canonicalHierarchySource": "metadata.json canonicalHierarchy",
+  "canonicalDeckPath": "Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Abdominal Calcifications",
+  "sourcePriority": [
+    "RadPrimer canonical",
+    "STATdx supplemental"
+  ],
+  "sourceCoverage": {
+    "textCoverage": "RadPrimer and STATdx substantially overlap in the core article text. RadPrimer preserves the formal differential hierarchy and is used as the backbone; STATdx contributes supplemental image breadth and source-specific captions.",
+    "imageCoverageSummary": "STATdx fully covers the RadPrimer image set as exact duplicate renderings by stable source image ID and visual review, while adding 29 STATdx-only supplemental images. RadPrimer images remain selected primary; duplicate STATdx renderings are archive-optional.",
+    "radPrimerImageCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerImageLabel": "RadPrimer image 1",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-01"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerImageLabel": "RadPrimer image 2",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-05"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerImageLabel": "RadPrimer image 3",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-07"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerImageLabel": "RadPrimer image 4",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-09"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "radPrimerImageLabel": "RadPrimer image 5",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-11"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "radPrimerImageLabel": "RadPrimer image 6",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-12"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "radPrimerImageLabel": "RadPrimer image 7",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-14"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "radPrimerImageLabel": "RadPrimer image 8",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-15"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "radPrimerImageLabel": "RadPrimer image 9",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-17"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "radPrimerImageLabel": "RadPrimer image 10",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-18"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-11",
+        "radPrimerImageLabel": "RadPrimer image 11",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-19"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-12",
+        "radPrimerImageLabel": "RadPrimer image 12",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-21"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-13",
+        "radPrimerImageLabel": "RadPrimer image 13",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-27"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-14",
+        "radPrimerImageLabel": "RadPrimer image 14",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-31"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-15",
+        "radPrimerImageLabel": "RadPrimer image 15",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-33"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-16",
+        "radPrimerImageLabel": "RadPrimer image 16",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-34"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-17",
+        "radPrimerImageLabel": "RadPrimer image 17",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-35"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-18",
+        "radPrimerImageLabel": "RadPrimer image 18",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-38"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-19",
+        "radPrimerImageLabel": "RadPrimer image 19",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-39"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-20",
+        "radPrimerImageLabel": "RadPrimer image 20",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-41"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-21",
+        "radPrimerImageLabel": "RadPrimer image 21",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-42"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-22",
+        "radPrimerImageLabel": "RadPrimer image 22",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-43"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-23",
+        "radPrimerImageLabel": "RadPrimer image 23",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-47"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-24",
+        "radPrimerImageLabel": "RadPrimer image 24",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-49"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-25",
+        "radPrimerImageLabel": "RadPrimer image 25",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-50"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-26",
+        "radPrimerImageLabel": "RadPrimer image 26",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-55"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      }
+    ]
+  },
+  "imageCountBySource": {
+    "RadPrimer": {
+      "total": 26,
+      "primaryTeachingSet": 26,
+      "archiveOptionalDuplicate": 0
+    },
+    "STATdx": {
+      "total": 55,
+      "primaryTeachingSet": 29,
+      "archiveOptionalDuplicate": 26
+    },
+    "allSources": {
+      "total": 81,
+      "primaryTeachingSet": 55,
+      "archiveOptionalDuplicate": 26
+    }
+  },
+  "sourceAttributionRules": [
+    "Use [Both] for facts present in both RadPrimer and STATdx.",
+    "Use [RadPrimer] for canonical hierarchy, differential hierarchy, and RadPrimer primary images.",
+    "Use [STATdx] for supplemental image examples, modality variants, and source-specific caption nuance."
+  ],
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "RP-11",
+    "RP-12",
+    "RP-13",
+    "RP-14",
+    "RP-15",
+    "RP-16",
+    "RP-17",
+    "RP-18",
+    "RP-19",
+    "RP-20",
+    "RP-21",
+    "RP-22",
+    "RP-23",
+    "RP-24",
+    "RP-25",
+    "RP-26",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-06",
+    "SDX-08",
+    "SDX-10",
+    "SDX-13",
+    "SDX-16",
+    "SDX-20",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25",
+    "SDX-26",
+    "SDX-28",
+    "SDX-29",
+    "SDX-30",
+    "SDX-32",
+    "SDX-36",
+    "SDX-37",
+    "SDX-40",
+    "SDX-44",
+    "SDX-45",
+    "SDX-46",
+    "SDX-48",
+    "SDX-51",
+    "SDX-52",
+    "SDX-53",
+    "SDX-54"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-01",
+    "SDX-05",
+    "SDX-07",
+    "SDX-09",
+    "SDX-11",
+    "SDX-12",
+    "SDX-14",
+    "SDX-15",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-21",
+    "SDX-27",
+    "SDX-31",
+    "SDX-33",
+    "SDX-34",
+    "SDX-35",
+    "SDX-38",
+    "SDX-39",
+    "SDX-41",
+    "SDX-42",
+    "SDX-43",
+    "SDX-47",
+    "SDX-49",
+    "SDX-50",
+    "SDX-55"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and article backbone. STATdx article text is largely overlapping and is used mainly to reinforce mechanism categories and broaden image examples.",
+    "keepFromRadPrimer": [
+      "Canonical hierarchy, deck routing, and formal differential diagnosis hierarchy.",
+      "Mechanism taxonomy: metastatic, dystrophic, ossification, concretion, conduit-wall, cystic-wall, and solid-mass calcification patterns.",
+      "All RadPrimer images as selected primary images because they define the canonical teaching backbone."
+    ],
+    "keepFromSTATdx": [
+      "STATdx-only supplemental image examples and modality variants: radiographic gallstones/porcelain gallbladder, hepatic/splenic granulomas, renal/adrenal/TB cases, bladder stone variants, fibroid/dermoid radiographs, vascular examples, appendicoliths, and peritoneal/mesenteric variants.",
+      "Source-specific captions that add stronger recognition hooks, such as concretion/surface calcification, eggshell calcification, daughter cysts, jackstone/river stones, putty kidney, Monckeberg arterial calcification, and small-bowel encasement in sclerosing peritonitis."
+    ],
+    "downweightOrSkip": [
+      "Do not repeat source-identical article prose twice.",
+      "Do not use STATdx breadcrumb/deck path for routing.",
+      "Archive only the STATdx renderings that are exact duplicates of selected RadPrimer images by stable source image ID and visual evidence."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived; near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity must be marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "atomicClusterRule": "Same-patient, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse clusters should remain together unless the archived member is a visually exact duplicate and the selected retained image preserves the teaching context.",
+      "intentionalClusterSplits": [],
+      "notes": "No source case cluster was intentionally split. Archived STATdx images are one-for-one duplicate renderings of selected RadPrimer images; STATdx-only companion examples remain selected."
+    },
+    "radPrimerCoverageBySTATdx": [
+      {
+        "radPrimerImageId": "RP-01",
+        "radPrimerImageLabel": "RadPrimer image 1",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-01"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-02",
+        "radPrimerImageLabel": "RadPrimer image 2",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-05"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-03",
+        "radPrimerImageLabel": "RadPrimer image 3",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-07"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-04",
+        "radPrimerImageLabel": "RadPrimer image 4",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-09"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-05",
+        "radPrimerImageLabel": "RadPrimer image 5",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-11"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-06",
+        "radPrimerImageLabel": "RadPrimer image 6",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-12"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-07",
+        "radPrimerImageLabel": "RadPrimer image 7",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-14"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-08",
+        "radPrimerImageLabel": "RadPrimer image 8",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-15"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-09",
+        "radPrimerImageLabel": "RadPrimer image 9",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-17"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-10",
+        "radPrimerImageLabel": "RadPrimer image 10",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-18"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-11",
+        "radPrimerImageLabel": "RadPrimer image 11",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-19"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-12",
+        "radPrimerImageLabel": "RadPrimer image 12",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-21"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-13",
+        "radPrimerImageLabel": "RadPrimer image 13",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-27"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-14",
+        "radPrimerImageLabel": "RadPrimer image 14",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-31"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-15",
+        "radPrimerImageLabel": "RadPrimer image 15",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-33"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-16",
+        "radPrimerImageLabel": "RadPrimer image 16",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-34"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-17",
+        "radPrimerImageLabel": "RadPrimer image 17",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-35"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-18",
+        "radPrimerImageLabel": "RadPrimer image 18",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-38"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-19",
+        "radPrimerImageLabel": "RadPrimer image 19",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-39"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-20",
+        "radPrimerImageLabel": "RadPrimer image 20",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-41"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-21",
+        "radPrimerImageLabel": "RadPrimer image 21",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-42"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-22",
+        "radPrimerImageLabel": "RadPrimer image 22",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-43"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-23",
+        "radPrimerImageLabel": "RadPrimer image 23",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-47"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-24",
+        "radPrimerImageLabel": "RadPrimer image 24",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-49"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-25",
+        "radPrimerImageLabel": "RadPrimer image 25",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-50"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      },
+      {
+        "radPrimerImageId": "RP-26",
+        "radPrimerImageLabel": "RadPrimer image 26",
+        "classification": "exactDuplicate",
+        "relatedSTATdxImageIds": [
+          "SDX-55"
+        ],
+        "decision": "selectedPrimary",
+        "notes": "STATdx contains the same stable source image ID and visual review of the staged evidence confirms the same case/image rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional."
+      }
+    ],
+    "primaryImageDownloadUseSet": [
+      "RP-01",
+      "RP-02",
+      "RP-03",
+      "RP-04",
+      "RP-05",
+      "RP-06",
+      "RP-07",
+      "RP-08",
+      "RP-09",
+      "RP-10",
+      "RP-11",
+      "RP-12",
+      "RP-13",
+      "RP-14",
+      "RP-15",
+      "RP-16",
+      "RP-17",
+      "RP-18",
+      "RP-19",
+      "RP-20",
+      "RP-21",
+      "RP-22",
+      "RP-23",
+      "RP-24",
+      "RP-25",
+      "RP-26",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-06",
+      "SDX-08",
+      "SDX-10",
+      "SDX-13",
+      "SDX-16",
+      "SDX-20",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25",
+      "SDX-26",
+      "SDX-28",
+      "SDX-29",
+      "SDX-30",
+      "SDX-32",
+      "SDX-36",
+      "SDX-37",
+      "SDX-40",
+      "SDX-44",
+      "SDX-45",
+      "SDX-46",
+      "SDX-48",
+      "SDX-51",
+      "SDX-52",
+      "SDX-53",
+      "SDX-54"
+    ],
+    "archiveOptionalDuplicates": [
+      "SDX-01",
+      "SDX-05",
+      "SDX-07",
+      "SDX-09",
+      "SDX-11",
+      "SDX-12",
+      "SDX-14",
+      "SDX-15",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-21",
+      "SDX-27",
+      "SDX-31",
+      "SDX-33",
+      "SDX-34",
+      "SDX-35",
+      "SDX-38",
+      "SDX-39",
+      "SDX-41",
+      "SDX-42",
+      "SDX-43",
+      "SDX-47",
+      "SDX-49",
+      "SDX-50",
+      "SDX-55"
+    ],
+    "imageDownloadPlan": {
+      "defaultBehavior": "Download only primaryTeachingSet images by default, using selectedPrimaryImageIds and the source-qualified downloadFilename values below.",
+      "primaryTeachingSet": [
+        {
+          "masterImageId": "RP-01",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 1,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-01_RadPrimer_image_01_plain_661c93d3.jpg",
+          "plainUrl": "https://app.radprimer.com/images/661c93d3-7f62-47c0-a644-358bc401e0aa?style=xlarge&annotated=false",
+          "reason": "gallstones; ctPattern; biliaryCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-02_RadPrimer_image_02_plain_1dd68e89.jpg",
+          "plainUrl": "https://app.radprimer.com/images/1dd68e89-bbc5-4a33-83b4-e8c932579dc0?style=xlarge&annotated=false",
+          "reason": "porcelainGallbladder; ctPattern; gallbladderWallCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-03_RadPrimer_image_03_plain_b15bcdf5.jpg",
+          "plainUrl": "https://app.radprimer.com/images/b15bcdf5-b700-4faf-baf5-42333433257d?style=xlarge&annotated=false",
+          "reason": "mucinousMetastases; hepaticMassCalcification; calcifiedLymphNode; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-04",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 4,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-04_RadPrimer_image_04_plain_090102a6.jpg",
+          "plainUrl": "https://app.radprimer.com/images/090102a6-44d9-4df8-ac8a-cdda6da47d56?style=xlarge&annotated=false",
+          "reason": "splenicGranulomas; punctateCalcification; healedGranulomatousDisease; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 5,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-05_RadPrimer_image_05_plain_60b50249.jpg",
+          "plainUrl": "https://app.radprimer.com/images/60b50249-c2cf-4bca-9793-3a5541e7a06d?style=xlarge&annotated=false",
+          "reason": "splenicCyst; peripheralWallCalcification; cysticCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 6,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-06_RadPrimer_image_06_plain_62ffe572.jpg",
+          "plainUrl": "https://app.radprimer.com/images/62ffe572-7441-4344-8c99-ef092a66963e?style=xlarge&annotated=false",
+          "reason": "echinococcalCyst; whorledCalcification; hepaticCysticCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-07",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 7,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-07_RadPrimer_image_07_plain_d84910e3.jpg",
+          "plainUrl": "https://app.radprimer.com/images/d84910e3-ad05-46af-98a4-314ff48a4547?style=xlarge&annotated=false",
+          "reason": "ischemiaInfarct; liverTransplant; dystrophicCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 8,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-08_RadPrimer_image_08_plain_f0d4e9f3.jpg",
+          "plainUrl": "https://app.radprimer.com/images/f0d4e9f3-eb89-45f5-a754-d76c88569af0?style=xlarge&annotated=false",
+          "reason": "chronicPancreatitis; pancreaticCalcification; ctPattern; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-09",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 9,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-09_RadPrimer_image_09_plain_43cdcc61.jpg",
+          "plainUrl": "https://app.radprimer.com/images/43cdcc61-720e-4e39-aa45-89e08134ff68?style=xlarge&annotated=false",
+          "reason": "pancreaticNeuroendocrineTumor; coarseCalcification; solidMassCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-10",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 10,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-10_RadPrimer_image_10_plain_85f62e19.jpg",
+          "plainUrl": "https://app.radprimer.com/images/85f62e19-295a-4e59-bc32-2693612388cc?style=xlarge&annotated=false",
+          "reason": "solidPseudopapillaryNeoplasm; centralCoarseCalcification; pancreaticMass; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-11",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 11,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-11_RadPrimer_image_11_plain_d3336cd3.jpg",
+          "plainUrl": "https://app.radprimer.com/images/d3336cd3-9a51-4ffb-b467-46bed5205bd1?style=xlarge&annotated=false",
+          "reason": "staghornCalculus; urolithiasis; renalCollectingSystem; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-12",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 12,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-12_RadPrimer_image_12_plain_c0e29a18.jpg",
+          "plainUrl": "https://app.radprimer.com/images/c0e29a18-8544-449f-814b-ada2c85fff69?style=xlarge&annotated=false",
+          "reason": "chromophobeRCC; calcifiedRenalMass; coronalCT; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-13",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 13,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-13_RadPrimer_image_13_plain_3f4c2545.jpg",
+          "plainUrl": "https://app.radprimer.com/images/3f4c2545-3f21-4c47-bdc2-010d95e682b7?style=xlarge&annotated=false",
+          "reason": "bladderCalculus; urolithiasis; ctPattern; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-14",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 14,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-14_RadPrimer_image_14_plain_a57f8b3e.jpg",
+          "plainUrl": "https://app.radprimer.com/images/a57f8b3e-68d3-4317-bdf3-ff7a8078be08?style=xlarge&annotated=false",
+          "reason": "dermoidCyst; fatFluidLevel; toothBoneCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-15",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 15,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-15_RadPrimer_image_15_plain_6b3f684f.jpg",
+          "plainUrl": "https://app.radprimer.com/images/6b3f684f-c1c0-4973-8f07-14dab5d7f5de?style=xlarge&annotated=false",
+          "reason": "ovarianCancer; cysticPelvicMass; calcifiedOvarianNeoplasm; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-16",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 16,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-16_RadPrimer_image_16_plain_d4bcc4da.jpg",
+          "plainUrl": "https://app.radprimer.com/images/d4bcc4da-91f4-48a2-8ef2-b973c067185e?style=xlarge&annotated=false",
+          "reason": "ovarianMalignancy; peritonealImplants; calcifiedTumor; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-17",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 17,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-17_RadPrimer_image_17_plain_75a2d9f3.jpg",
+          "plainUrl": "https://app.radprimer.com/images/75a2d9f3-2d41-4429-83a2-044e6c8fcc56?style=xlarge&annotated=false",
+          "reason": "injectionGranulomas; softTissueCalcification; buttockSubcutaneousFat; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-18",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 18,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-18_RadPrimer_image_18_plain_db6d1a2e.jpg",
+          "plainUrl": "https://app.radprimer.com/images/db6d1a2e-6472-4251-b5bf-a09153e3375a?style=xlarge&annotated=false",
+          "reason": "ossifiedScar; midlineIncision; abdominalWallCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-19",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 19,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-19_RadPrimer_image_19_plain_a6df85b2.jpg",
+          "plainUrl": "https://app.radprimer.com/images/a6df85b2-305e-4c9a-b0d1-a2056106349d?style=xlarge&annotated=false",
+          "reason": "scleroderma; calcinosisSyndrome; softTissueCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-20",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 20,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-20_RadPrimer_image_20_plain_1f70d901.jpg",
+          "plainUrl": "https://app.radprimer.com/images/1f70d901-24c3-48bb-860c-3061f67907cf?style=xlarge&annotated=false",
+          "reason": "arterialCalcification; endStageRenalDisease; tramTrackCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-21",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 21,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-21_RadPrimer_image_21_plain_1432fef6.jpg",
+          "plainUrl": "https://app.radprimer.com/images/1432fef6-8eae-43f7-9168-e042b1de99c4?style=xlarge&annotated=false",
+          "reason": "phleboliths; pelvicRadiograph; centralLucency; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-22",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 22,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-22_RadPrimer_image_22_plain_36083b76.jpg",
+          "plainUrl": "https://app.radprimer.com/images/36083b76-a291-4d16-82b1-e7952ac5b3c5?style=xlarge&annotated=false",
+          "reason": "chronicDeepVenousThrombosis; venousCalcification; ivcIliacVeinCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-23",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 23,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-23_RadPrimer_image_23_plain_df32671b.jpg",
+          "plainUrl": "https://app.radprimer.com/images/df32671b-4f32-4572-9384-36eb2ce9e373?style=xlarge&annotated=false",
+          "reason": "appendicealMucocele; curvilinearWallCalcification; bowelCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-24",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 24,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-24_RadPrimer_image_24_plain_e821f782.jpg",
+          "plainUrl": "https://app.radprimer.com/images/e821f782-71db-4a5a-b807-1130a234038c?style=xlarge&annotated=false",
+          "reason": "treatedLymphoma; calcifiedMesentericMass; calcifiedLymphNode; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-25",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 25,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-25_RadPrimer_image_25_plain_c7b9fea8.jpg",
+          "plainUrl": "https://app.radprimer.com/images/c7b9fea8-2a21-4d5e-abcb-79cf163653be?style=xlarge&annotated=false",
+          "reason": "sclerosingPeritonitis; peritonealDialysis; peritonealCalcification; primaryPattern"
+        },
+        {
+          "masterImageId": "RP-26",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 26,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "RP-26_RadPrimer_image_26_plain_0b177694.jpg",
+          "plainUrl": "https://app.radprimer.com/images/0b177694-6282-48ab-9894-8483c7d9e928?style=xlarge&annotated=false",
+          "reason": "sclerosingMesenteritis; mesentericCalcification; tetheredBowel; primaryPattern"
+        },
+        {
+          "masterImageId": "SDX-02",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 2,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-02_STATdx_image_02_plain_c6a70b68.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/c6a70b68-0c40-4f05-97cc-2866b8f7f0ad?size=1000&quality=90",
+          "reason": "gallstoneConcretion; surfaceCalcification; alternateExample; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-03",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 3,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-03_STATdx_image_03_plain_f42eb392.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f42eb392-5097-4a89-8056-8bb916cd1295?size=1000&quality=90",
+          "reason": "gallstones; radiographPattern; obstructedGallbladderNeck; modalityVariant"
+        },
+        {
+          "masterImageId": "SDX-04",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 4,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-04_STATdx_image_04_plain_81e107d1.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/81e107d1-d7ce-45ea-88a0-0271ac9c074f?size=1000&quality=90",
+          "reason": "rimCalcifiedGallstone; eggshellCalcification; radiographPattern; modalityVariant"
+        },
+        {
+          "masterImageId": "SDX-06",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 6,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-06_STATdx_image_06_plain_4eba2fdd.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4eba2fdd-eebb-4773-81ee-ed5737612107?size=1000&quality=90",
+          "reason": "porcelainGallbladder; radiographPattern; eggshellCalcification; modalityVariant"
+        },
+        {
+          "masterImageId": "SDX-08",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 8,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-08_STATdx_image_08_plain_0e4b2b9b.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0e4b2b9b-88ab-462d-91c7-9f84ba517b10?size=1000&quality=90",
+          "reason": "mucinousColonMetastases; hepaticMassCalcification; alternateExample; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-10_STATdx_image_10_plain_7c4de1b9.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/7c4de1b9-9503-438a-8bba-9da116f323d4?size=1000&quality=90",
+          "reason": "hepaticSplenicGranulomas; histoplasmosis; alternateExample; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-13",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 13,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-13_STATdx_image_13_plain_b6821644.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b6821644-e74e-4e67-9a85-ec9082d349b4?size=1000&quality=90",
+          "reason": "hydatidCyst; daughterCysts; rimCalcification; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-16",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 16,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-16_STATdx_image_16_plain_aab5b781.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/aab5b781-64d1-4150-ae50-ceeb66537be3?size=1000&quality=90",
+          "reason": "chronicPancreatitis; pancreaticAtrophy; calcifiedConcretions; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-20",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 20,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-20_STATdx_image_20_plain_45350316.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/45350316-5ccb-43cc-ad6c-4d1c34fde32b?size=1000&quality=90",
+          "reason": "renalCalculi; staghornCalculus; radiographPattern; modalityVariant"
+        },
+        {
+          "masterImageId": "SDX-22",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 22,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-22_STATdx_image_22_plain_4c959b93.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4c959b93-d8e5-4a66-b06d-eb71d6d0ecd0?size=1000&quality=90",
+          "reason": "multilocularCysticNephromaMimic; calcifiedRenalMass; calcifiedSepta; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-23",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 23,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-23_STATdx_image_23_plain_c77ab050.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/c77ab050-ce59-488e-b538-bb47df98da70?size=1000&quality=90",
+          "reason": "polycysticKidneyDisease; calcifiedRenalCysts; alternateExample; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-24",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 24,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-24_STATdx_image_24_plain_026fbb43.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/026fbb43-1e28-44fd-b29a-9ad8390d2691?size=1000&quality=90",
+          "reason": "adrenalCalcification; tuberculosis; granulomatousDisease; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-25",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 25,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-25_STATdx_image_25_plain_07148026.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/07148026-a7dd-4e60-ad20-45a8242ca20a?size=1000&quality=90",
+          "reason": "puttyKidney; renalTuberculosis; adrenalAndNodeCalcifications; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-26",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 26,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-26_STATdx_image_26_plain_e9cd4001.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e9cd4001-8c6d-4bb9-865e-77b16e7b3d00?size=1000&quality=90",
+          "reason": "adrenalCyst; eggshellCalcification; cysticCalcification; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-28",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 28,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-28_STATdx_image_28_plain_ff0ad706.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/ff0ad706-7f0e-4309-badb-36f0442404aa?size=1000&quality=90",
+          "reason": "bladderCalculi; riverStones; radiographPattern; modalityVariant"
+        },
+        {
+          "masterImageId": "SDX-29",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 29,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-29_STATdx_image_29_plain_230e67b1.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/230e67b1-fc74-4bf9-8d6e-e40da2aa3b69?size=1000&quality=90",
+          "reason": "jackstoneBladderCalculus; spiculatedStone; alternateExample; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-30",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 30,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-30_STATdx_image_30_plain_9fa640ba.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/9fa640ba-9049-4a69-a666-a35a8df5e64b?size=1000&quality=90",
+          "reason": "uterineFibroid; popcornCalcification; radiographPattern; modalityVariant"
+        },
+        {
+          "masterImageId": "SDX-32",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 32,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-32_STATdx_image_32_plain_f366c5d0.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f366c5d0-809b-4354-9ca8-d6e00ae05513?size=1000&quality=90",
+          "reason": "dermoidCyst; toothLikeCalcification; radiographPattern; modalityVariant"
+        },
+        {
+          "masterImageId": "SDX-36",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 36,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-36_STATdx_image_36_plain_805a409e.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/805a409e-d52c-414d-a5a0-7b18f7b22652?size=1000&quality=90",
+          "reason": "injectionGranulomas; radiographPattern; softTissueMimic; modalityVariant"
+        },
+        {
+          "masterImageId": "SDX-37",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 37,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-37_STATdx_image_37_plain_dd6895eb.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/dd6895eb-a74c-45f1-ab4c-aa7287957f7d?size=1000&quality=90",
+          "reason": "ossifiedScar; corticalMedullaryBone; alternateExample; recognitionReinforcement"
+        },
+        {
+          "masterImageId": "SDX-40",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 40,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-40_STATdx_image_40_plain_1941312d.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/1941312d-d6b6-449a-a798-575221c0f760?size=1000&quality=90",
+          "reason": "dermatomyositis; calcinosisSyndrome; softTissueCalcification; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-44",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 44,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-44_STATdx_image_44_plain_8e87e173.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/8e87e173-cb9e-484c-b75b-5346de4fd773?size=1000&quality=90",
+          "reason": "MonckebergCalcification; renalFailure; diffuseArterialCalcification; radiographPattern"
+        },
+        {
+          "masterImageId": "SDX-45",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 45,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-45_STATdx_image_45_plain_5c97f5a8.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/5c97f5a8-d410-41ec-afac-7c8edc5af7a5?size=1000&quality=90",
+          "reason": "commonIliacArteryAneurysm; eggshellVascularCalcification; radiographPattern; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-46",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 46,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-46_STATdx_image_46_plain_0e378673.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0e378673-e1fd-47c9-945b-77e94d80bb50?size=1000&quality=90",
+          "reason": "appendicoliths; dilatedAppendix; bowelCalcification; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-48",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 48,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-48_STATdx_image_48_plain_2144c115.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/2144c115-4a84-4d0d-b869-7c863d15ec39?size=1000&quality=90",
+          "reason": "appendicealMucocele; axialCT; curvilinearWallCalcification; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-51",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 51,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-51_STATdx_image_51_plain_4f6d84c5.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/4f6d84c5-164b-445c-bfc6-d58f4a80d2f4?size=1000&quality=90",
+          "reason": "sclerosingPeritonitis; smallBowelEncasement; partialObstruction; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-52",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 52,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-52_STATdx_image_52_plain_7518922b.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/7518922b-3f4e-4576-9642-0e495026dcdb?size=1000&quality=90",
+          "reason": "loculatedSubphrenicFluid; punctateCurvilinearCalcification; peritonealCalcification; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-53",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 53,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-53_STATdx_image_53_plain_f2d6f834.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f2d6f834-f7ea-4c16-b5b2-a9a06a60630a?size=1000&quality=90",
+          "reason": "adrenalMass; necrosisCalcification; solidMassCalcification; alternateExample"
+        },
+        {
+          "masterImageId": "SDX-54",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 54,
+          "downloadRecommendation": "primaryTeachingSet",
+          "downloadFilename": "SDX-54_STATdx_image_54_plain_0ef4f0c9.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0ef4f0c9-f1d9-4a13-b8b6-4ecdb727e12e?size=1000&quality=90",
+          "reason": "lymphangiomaPattern; calcifiedSepta; mesentericCysticMass; alternateExample"
+        }
+      ],
+      "archiveOptionalDuplicates": [
+        {
+          "masterImageId": "SDX-01",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 1,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-01_STATdx_image_01_plain_661c93d3.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/661c93d3-7f62-47c0-a644-358bc401e0aa?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 1 based on the same stable source image ID (661c93d3-7f62-47c0-a644-358bc401e0aa) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-05",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 5,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-05_STATdx_image_05_plain_1dd68e89.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/1dd68e89-bbc5-4a33-83b4-e8c932579dc0?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 2 based on the same stable source image ID (1dd68e89-bbc5-4a33-83b4-e8c932579dc0) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-07",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 7,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-07_STATdx_image_07_plain_b15bcdf5.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/b15bcdf5-b700-4faf-baf5-42333433257d?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 3 based on the same stable source image ID (b15bcdf5-b700-4faf-baf5-42333433257d) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-09",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 9,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-09_STATdx_image_09_plain_090102a6.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/090102a6-44d9-4df8-ac8a-cdda6da47d56?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 4 based on the same stable source image ID (090102a6-44d9-4df8-ac8a-cdda6da47d56) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-11",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 11,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-11_STATdx_image_11_plain_60b50249.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/60b50249-c2cf-4bca-9793-3a5541e7a06d?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 5 based on the same stable source image ID (60b50249-c2cf-4bca-9793-3a5541e7a06d) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-12",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 12,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-12_STATdx_image_12_plain_62ffe572.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/62ffe572-7441-4344-8c99-ef092a66963e?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 6 based on the same stable source image ID (62ffe572-7441-4344-8c99-ef092a66963e) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-14",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 14,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-14_STATdx_image_14_plain_d84910e3.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d84910e3-ad05-46af-98a4-314ff48a4547?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 7 based on the same stable source image ID (d84910e3-ad05-46af-98a4-314ff48a4547) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-15",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 15,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-15_STATdx_image_15_plain_f0d4e9f3.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/f0d4e9f3-eb89-45f5-a754-d76c88569af0?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 8 based on the same stable source image ID (f0d4e9f3-eb89-45f5-a754-d76c88569af0) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-17",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 17,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-17_STATdx_image_17_plain_43cdcc61.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/43cdcc61-720e-4e39-aa45-89e08134ff68?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 9 based on the same stable source image ID (43cdcc61-720e-4e39-aa45-89e08134ff68) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-18",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 18,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-18_STATdx_image_18_plain_85f62e19.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/85f62e19-295a-4e59-bc32-2693612388cc?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 10 based on the same stable source image ID (85f62e19-295a-4e59-bc32-2693612388cc) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-19",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 19,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-19_STATdx_image_19_plain_d3336cd3.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d3336cd3-9a51-4ffb-b467-46bed5205bd1?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 11 based on the same stable source image ID (d3336cd3-9a51-4ffb-b467-46bed5205bd1) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-21",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 21,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-21_STATdx_image_21_plain_c0e29a18.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/c0e29a18-8544-449f-814b-ada2c85fff69?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 12 based on the same stable source image ID (c0e29a18-8544-449f-814b-ada2c85fff69) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-27",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 27,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-27_STATdx_image_27_plain_3f4c2545.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/3f4c2545-3f21-4c47-bdc2-010d95e682b7?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 13 based on the same stable source image ID (3f4c2545-3f21-4c47-bdc2-010d95e682b7) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-31",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 31,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-31_STATdx_image_31_plain_a57f8b3e.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/a57f8b3e-68d3-4317-bdf3-ff7a8078be08?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 14 based on the same stable source image ID (a57f8b3e-68d3-4317-bdf3-ff7a8078be08) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-33",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 33,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-33_STATdx_image_33_plain_6b3f684f.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/6b3f684f-c1c0-4973-8f07-14dab5d7f5de?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 15 based on the same stable source image ID (6b3f684f-c1c0-4973-8f07-14dab5d7f5de) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-34",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 34,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-34_STATdx_image_34_plain_d4bcc4da.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/d4bcc4da-91f4-48a2-8ef2-b973c067185e?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 16 based on the same stable source image ID (d4bcc4da-91f4-48a2-8ef2-b973c067185e) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-35",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 35,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-35_STATdx_image_35_plain_75a2d9f3.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/75a2d9f3-2d41-4429-83a2-044e6c8fcc56?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 17 based on the same stable source image ID (75a2d9f3-2d41-4429-83a2-044e6c8fcc56) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-38",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 38,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-38_STATdx_image_38_plain_db6d1a2e.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/db6d1a2e-6472-4251-b5bf-a09153e3375a?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 18 based on the same stable source image ID (db6d1a2e-6472-4251-b5bf-a09153e3375a) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-39",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 39,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-39_STATdx_image_39_plain_a6df85b2.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/a6df85b2-305e-4c9a-b0d1-a2056106349d?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 19 based on the same stable source image ID (a6df85b2-305e-4c9a-b0d1-a2056106349d) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-41",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 41,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-41_STATdx_image_41_plain_1f70d901.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/1f70d901-24c3-48bb-860c-3061f67907cf?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 20 based on the same stable source image ID (1f70d901-24c3-48bb-860c-3061f67907cf) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-42",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 42,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-42_STATdx_image_42_plain_1432fef6.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/1432fef6-8eae-43f7-9168-e042b1de99c4?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 21 based on the same stable source image ID (1432fef6-8eae-43f7-9168-e042b1de99c4) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-43",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 43,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-43_STATdx_image_43_plain_36083b76.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/36083b76-a291-4d16-82b1-e7952ac5b3c5?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 22 based on the same stable source image ID (36083b76-a291-4d16-82b1-e7952ac5b3c5) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-47",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 47,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-47_STATdx_image_47_plain_df32671b.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/df32671b-4f32-4572-9384-36eb2ce9e373?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 23 based on the same stable source image ID (df32671b-4f32-4572-9384-36eb2ce9e373) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-49",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 49,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-49_STATdx_image_49_plain_e821f782.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/e821f782-71db-4a5a-b807-1130a234038c?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 24 based on the same stable source image ID (e821f782-71db-4a5a-b807-1130a234038c) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-50",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 50,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-50_STATdx_image_50_plain_c7b9fea8.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/c7b9fea8-2a21-4d5e-abcb-79cf163653be?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 25 based on the same stable source image ID (c7b9fea8-2a21-4d5e-abcb-79cf163653be) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        },
+        {
+          "masterImageId": "SDX-55",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 55,
+          "downloadRecommendation": "archiveOptionalDuplicate",
+          "downloadFilename": "SDX-55_STATdx_image_55_plain_0b177694.jpg",
+          "plainUrl": "https://app.statdx.com/image/thumbnail/0b177694-6282-48ab-9894-8483c7d9e928?size=1000&quality=90",
+          "reason": "Exact duplicate of RadPrimer image 26 based on the same stable source image ID (0b177694-6282-48ab-9894-8483c7d9e928) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected."
+        }
+      ]
+    },
+    "generatorInstructions": [
+      "Use source-qualified human labels in narrative-facing text, such as RadPrimer image 5 or STATdx image 4.",
+      "Keep short IDs such as RP-05 and SDX-04 in registry, manifest, filenames, and traceability fields.",
+      "Do not generate cards or a lecture from this synthesis step."
+    ]
+  }
+}

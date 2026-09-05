@@ -191,6 +191,16 @@
         <p class="muted">Use the same source pairing key for RadPrimer and STATdx when their titles differ. Best import is <code>master_source_import.json</code>. Separate <code>master_source_package.txt</code>, <code>master_source_manifest.json</code>, and <code>image_registry.json</code> also work.</p>
       </section>
 
+      <section id="masterWakeFallback" class="panel hidden">
+        <label>
+          Codex wake-up message
+          <textarea id="masterWakeText" rows="9" readonly spellcheck="false"></textarea>
+        </label>
+        <button id="copyMasterWake" class="secondary" type="button">Copy wake-up message</button>
+        <button id="selectMasterWake" class="secondary" type="button">Select message</button>
+        <p id="masterWakeHint" class="muted">This is also saved in the master-source bundle as <code>codex_wake_message.txt</code>.</p>
+      </section>
+
       <button id="run">Run selected workflow</button>
       <button id="downloadImagesOnly" class="secondary" hidden>Download images only</button>
       <button id="buildIoQueue" class="secondary" hidden>Build IO queue</button>

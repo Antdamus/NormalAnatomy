@@ -94,7 +94,9 @@
     {
       "matches": ["https://imaios.com/*", "https://www.imaios.com/*"],
       "js": ["imaios-cine-tools.js"],
-      "run_at": "document_idle"
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_about_blank": true
     }
   ]
 }

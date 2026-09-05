@@ -1,0 +1,2267 @@
+{
+  "createdAt": "2026-09-04T04:52:59.971Z",
+  "articleTitle": "Hemorrhagic Ovarian Cyst",
+  "sourceUrl": "https://app.radprimer.com/document/70e19786-9de6-47cf-9844-3d314f09de62/lesson/e204a865-778a-4a5c-b188-50488d4748f9",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "masterImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24"
+  ],
+  "sourceQualifiedImages": [
+    {
+      "caption": "Longitudinal grayscale endovaginal US shows a complex right ovarian cyst <img src=\"arrow_CS.png\"> with thin, echogenic, lace-like internal echoes <img src=\"arrow_WS.png\">, representing fibrin strands. Note subtle posterior acoustic enhancement <img src=\"arrow_BO.png\">.",
+      "label": "RP-01",
+      "masterImageId": "RP-01",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Longitudinal Doppler US shows an avascular complex right ovarian cyst <img src=\"arrow_CS.png\"> containing thin, echogenic reticular echoes <img src=\"arrow_WS.png\">, signifying an HOC. The surrounding ovarian parenchyma displaced along the periphery of the HOC (claw sign) shows internal blood flow <img src=\"arrow_BC.png\"> with venous waveform <img src=\"arrow_WO.png\">.",
+      "label": "RP-02",
+      "masterImageId": "RP-02",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Longitudinal grayscale transvaginal US shows complex pelvic fluid with diffuse low-level echoes <img src=\"arrow_CS.png\"> along the left aspect of the cul-de-sac, signifying hemoperitoneum related to a left HOC (not shown).",
+      "label": "RP-03",
+      "masterImageId": "RP-03",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Clinical photograph during laparoscopy shows blood in the cul-de-sac <img src=\"arrow_WS.png\"> behind the uterus <img src=\"arrow_BS.png\"> secondary to a ruptured hemorrhagic ovarian cyst. Blood clot <img src=\"arrow_CS.png\"> is seen adherent to the ovarian capsule.",
+      "label": "RP-04",
+      "masterImageId": "RP-04",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "In the adnexa of the same patient, an HCL with thick wall and peripheral blood flow is seen on this color Doppler US. This should not be mistaken for the ring of fire associated with tubal ectopic pregnancies. With HCL, the cyst is clearly within the ovarian parenchyma.",
+      "label": "RP-05",
+      "masterImageId": "RP-05",
+      "sourceImageNumber": 5,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Transverse transabdominal US shows bilateral enlarged ovaries <img src=\"arrow_WS.png\"> \"kissing\" posterior to the uterus in this patient who recently stopped birth control pills. Both ovaries contain cysts with echoes  <img src=\"arrow_WC.png\">.",
+      "label": "RP-06",
+      "masterImageId": "RP-06",
+      "sourceImageNumber": 6,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Longitudinal grayscale US in a patient with a hemorrhagic cyst and complex pelvic fluid (not shown) demonstrates extension of fluid into the hepatorenal fossa <img src=\"arrow_CS.png\">, signifying moderate to large hemoperitoneum.",
+      "label": "RP-07",
+      "masterImageId": "RP-07",
+      "sourceImageNumber": 7,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Axial CECT shows high-attenuation fluid in the upper abdomen, specifically the perihepatic space <img src=\"arrow_WS.png\"> and hepatorenal fossa <img src=\"arrow_CS.png\">, representing large volume hemoperitoneum secondary to an HOC in the pelvis (not shown).",
+      "label": "RP-08",
+      "masterImageId": "RP-08",
+      "sourceImageNumber": 8,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Coronal CECT shows large hemoperitoneum secondary to a right ovarian HOC. Active bleeding can be seen in the right adnexal region <img src=\"arrow_CS.png\">. High-density fluid signifying blood extends into the upper abdomen, including the right paracolic gutter <img src=\"arrow_BS.png\">, hepatorenal fossa <img src=\"arrow_WS.png\">, and perisplenic region <img src=\"arrow_WO.png\">.",
+      "label": "RP-09",
+      "masterImageId": "RP-09",
+      "sourceImageNumber": 9,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Axial T1WI FS MR shows that the mass <img src=\"arrow_WS.png\"> remains high signal, indicating that it does not contain fat and must therefore contain blood products as the source of high signal.",
+      "label": "RP-10",
+      "masterImageId": "RP-10",
+      "sourceImageNumber": 10,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer"
+    },
+    {
+      "caption": "Transvaginal color Doppler US shows a hemorrhagic cyst <img src=\"arrow_WO.png\"> with diffuse, increased echogenicity resembling a mature cystic teratoma. Follow-up US revealed complete resolution.",
+      "label": "SDX-01",
+      "masterImageId": "SDX-01",
+      "sourceImageNumber": 1,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transvaginal color Doppler US shows an avascular hemorrhagic cyst  <img src=\"arrow_WS.png\">  with fibrin strands creating a reticular pattern described as lace-like, fishnet, or cobweb appearance. Septations are incomplete in contrast to septations within ovarian neoplasms.",
+      "label": "SDX-02",
+      "masterImageId": "SDX-02",
+      "sourceImageNumber": 2,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transvaginal color Doppler US shows a hemorrhagic cyst with a fine reticular meshwork of fibrin strands and a straight edge along the retracting clot <img src=\"arrow_WO.png\">.",
+      "label": "SDX-03",
+      "masterImageId": "SDX-03",
+      "sourceImageNumber": 3,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transvaginal color Doppler US shows a hemorrhagic cyst <img src=\"arrow_WO.png\"> with a retracted avascular clot <img src=\"arrow_WS.png\">.",
+      "label": "SDX-04",
+      "masterImageId": "SDX-04",
+      "sourceImageNumber": 4,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transvaginal color Doppler US shows a fishnet appearance, a common appearance of hemorrhagic cyst.",
+      "label": "SDX-05",
+      "masterImageId": "SDX-05",
+      "sourceImageNumber": 5,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transvaginal color Doppler US shows a hemorrhagic corpus luteal cyst in a pregnant woman with pelvic pain. It is filled with low-level echoes <img src=\"arrow_WC.png\"> and has peripheral increased vascularity, \"ring of fire\" <img src=\"arrow_WO.png\">. This can be confused with an ectopic pregnancy, but most ectopics are located in the fallopian tube and can be separated from the ovary by exerting gentle pressure with the probe.",
+      "label": "SDX-06",
+      "masterImageId": "SDX-06",
+      "sourceImageNumber": 6,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T1WI MR shows an intermediate to slightly high signal intensity right ovarian cystic mass <img src=\"arrow_WS.png\">.",
+      "label": "SDX-07",
+      "masterImageId": "SDX-07",
+      "sourceImageNumber": 7,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T1WI FS MR should always be performed, as it increases lesion conspicuity <img src=\"arrow_WS.png\"> and rules out a fat-containing lesion. Hemorrhagic cysts are quite variable in signal intensity, reflecting both the age and concentration of blood products.",
+      "label": "SDX-08",
+      "masterImageId": "SDX-08",
+      "sourceImageNumber": 8,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T2WI MR in the same patient shows that the lesion <img src=\"arrow_WS.png\"> remains high signal.",
+      "label": "SDX-09",
+      "masterImageId": "SDX-09",
+      "sourceImageNumber": 9,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transvaginal US in the same patient shows low-level echoes with a slight reticular pattern typical of a hemorrhagic cyst <img src=\"arrow_WS.png\">. Note the posterior acoustic enhancement <img src=\"arrow_WO.png\">. In the reproductive age group, hemorrhagic cysts with a classic appearance do not require follow-up unless > 5 cm.",
+      "label": "SDX-10",
+      "masterImageId": "SDX-10",
+      "sourceImageNumber": 10,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Color Doppler US shows a classic fishnet appearance created by fibrinous strands <img src=\"arrow_WO.png\">. In addition, there is a retracting clot <img src=\"arrow_WC.png\"> adherent to the cyst wall.",
+      "label": "SDX-11",
+      "masterImageId": "SDX-11",
+      "sourceImageNumber": 11,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transvaginal US shows a typical case of a hemorrhagic cyst with fibrinous strands <img src=\"arrow_WO.png\"> and a retracting clot <img src=\"arrow_WC.png\">.",
+      "label": "SDX-12",
+      "masterImageId": "SDX-12",
+      "sourceImageNumber": 12,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T1WI MR shows a predominately hypointense left ovarian cyst with a vague, hyperintense fluid-fluid level posteriorly <img src=\"arrow_WS.png\">. While the classic teaching is that hemorrhagic cysts are hyperintense on T1WI, they are actually quite variable, with many being hypointense, the result of a small amount of hemorrhage in a relatively larger amount of fluid within the cyst.",
+      "label": "SDX-13",
+      "masterImageId": "SDX-13",
+      "sourceImageNumber": 13,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T1WI C+ MR shows enhancement of the thin surrounding cyst wall <img src=\"arrow_WS.png\">  but no enhancement of internal components.",
+      "label": "SDX-14",
+      "masterImageId": "SDX-14",
+      "sourceImageNumber": 14,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T2WI MR in the same patient best shows the fluid-fluid level with a separation of the clot <img src=\"arrow_BO.png\"> from the larger serous component.",
+      "label": "SDX-15",
+      "masterImageId": "SDX-15",
+      "sourceImageNumber": 15,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Sagittal transvaginal US in the same patient shows the smooth edge of the retracting clot <img src=\"arrow_WO.png\">.",
+      "label": "SDX-16",
+      "masterImageId": "SDX-16",
+      "sourceImageNumber": 16,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial T2WI MR shows the low-signal clot <img src=\"arrow_WO.png\"> to better advantage. This is another appearance of hemorrhage on MR. A follow-up US was performed in this case. The clot had retracted with near-complete involution of the cyst by 6 weeks.",
+      "label": "SDX-18",
+      "masterImageId": "SDX-18",
+      "sourceImageNumber": 18,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transvaginal color Doppler US in a 29-year-old woman who presented with acute pelvic pain shows an avascular adnexal structure <img src=\"arrow_WS.png\">, representing a hemorrhagic cyst. The margins of the ovary are obscured, and there is variable echogenicity, ill-defined material within the pelvis <img src=\"arrow_WO.png\">, representing clotted and unclotted blood.",
+      "label": "SDX-19",
+      "masterImageId": "SDX-19",
+      "sourceImageNumber": 19,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Transvaginal Doppler US in the same patient shows variable echogenicity, ill-defined material surrounding the uterus <img src=\"arrow_WO.png\"> and within the cul-de-sac <img src=\"arrow_WS.png\"> due to hemoperitoneum.",
+      "label": "SDX-20",
+      "masterImageId": "SDX-20",
+      "sourceImageNumber": 20,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial CECT in a 38-year-old woman who presented with acute pelvic pain shows a ruptured, collapsed hemorrhagic right ovarian cyst <img src=\"arrow_WS.png\">  with surrounding high-attenuation free fluid <img src=\"arrow_WO.png\">. Note higher attenuation of fluid around the ovary compared to fluid away from it (sentinel clot sign).",
+      "label": "SDX-21",
+      "masterImageId": "SDX-21",
+      "sourceImageNumber": 21,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Axial CECT in a 25-year-old woman who presented with acute pelvic pain shows a ruptured hemorrhagic left ovarian cyst <img src=\"arrow_WS.png\">  with surrounding high-attenuation free fluid <img src=\"arrow_WO.png\">. Note the defect in the cyst wall <img src=\"arrow_CS.png\">.",
+      "label": "SDX-22",
+      "masterImageId": "SDX-22",
+      "sourceImageNumber": 22,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Sagittal transvaginal US of a hemorrhagic cyst demonstrates a hypoechoic mass with low-level and linear echoes (fishnet appearance) <img src=\"arrow_WS.png\">.",
+      "label": "SDX-23",
+      "masterImageId": "SDX-23",
+      "sourceImageNumber": 23,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    },
+    {
+      "caption": "Sagittal endovaginal US shows retracting clot sign. Note the straight margin of the clot <img src=\"arrow_WS.png\">.",
+      "label": "SDX-24",
+      "masterImageId": "SDX-24",
+      "sourceImageNumber": 24,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx"
+    }
+  ],
+  "cases": [],
+  "totalImagesOnPage": 34,
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Female Pelvis Basic",
+    "Hemorrhagic Cyst"
+  ],
+  "outputChars": 357366,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Completed the full autonomous build for Liver Mass With Central or Eccentric Scar.\n\nCore Validation Pathway A passed using the uploaded Core Radiology, Second Edition, Gastrointestinal Imaging → Liver. Relevant coverage spans approximately GI 105–122, with the central-scar pattern explicitly summarized on GI 119: FNH, fibrolamellar HCC, and giant hemangioma. The surrounding Core sections provide the additional HCC, adenoma, metastasis, cholangiocarcinoma, epithelioid hemangioendothelioma, and Budd-Chiari/regenerative-nodule discriminators used in the synthesis.\n\nThe final deck contains 40 cards / 40 TSV lines: 9 Primary UNKNOWNs covering all 9 atomic STATdx teaching clusters and all 24 selected primary images, 6 Mechanism cards, 5 Boards Trap cards, 4 Epidemiology High-Yield cards, and 16 other High-Yield cards. Differential Drill and Definition sections were correctly omitted because they were not explicitly requested. The 22-column audit, unique Clinical_Context-code audit, trigger-isolation audit, blank Tags-column audit, summary-identity audit, Section A cardinality audit, and supplied-caption verbatim audit all passed.\n\nThe supplied STATdx URLs could not be authenticated/downloaded from this runtime, so I did not falsely claim that the image binaries were retrieved. The TSV instead preserves the exact source-qualified SDX-##_STATdx_plain_...jpg / SDX-##_STATdx_annotated_...jpg references and the supplied captions.",
+  "coreEvidence": {
+    "status": "NOT_PROVIDED",
+    "provided": false,
+    "chars": 435,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Female Pelvis Basic",
+      "Hemorrhagic Cyst"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Ultrasound",
+      "Female Pelvis Basic",
+      "Hemorrhagic Cyst",
+      "Hemorrhagic Ovarian Cyst"
+    ],
+    "deckName": "Corebook::Ultrasound::Female Pelvis Basic::Hemorrhagic Cyst::Hemorrhagic Ovarian Cyst",
+    "hierarchySource": "RadPrimer + STATdx master source",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [
+    {
+      "filename": "RP-01_RadPrimer_plain_Hemorrhagic_Cyst1.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/91c0414a-8cde-488a-9da4-2fccda0f097e?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-01_RadPrimer_annotated_Hemorrhagic_Cyst1_annot.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "RP-01",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/91c0414a-8cde-488a-9da4-2fccda0f097e?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-02_RadPrimer_plain_Hemorrhagic_Cyst2.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/f8f3c643-7bc9-46d3-8f3c-7adaee7938d0?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-02_RadPrimer_annotated_Hemorrhagic_Cyst2_annot.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "RP-02",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/f8f3c643-7bc9-46d3-8f3c-7adaee7938d0?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-03_RadPrimer_plain_Hemorrhagic_Cyst3.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/05b8755f-da3d-47ea-92fe-64ffb3385a37?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-03_RadPrimer_annotated_Hemorrhagic_Cyst3_annot.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "RP-03",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/05b8755f-da3d-47ea-92fe-64ffb3385a37?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-04_RadPrimer_plain_Hemorrhagic_Cyst4.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/b7deb503-fded-4345-ae92-6005467af931?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-04_RadPrimer_annotated_Hemorrhagic_Cyst4_annot.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "RP-04",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/b7deb503-fded-4345-ae92-6005467af931?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-05_RadPrimer_plain_Hemorrhagic_Cyst5.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "RP-05",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/f60e44cf-9b70-49eb-92ea-93a52e07c82c?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-05_RadPrimer_annotated_Hemorrhagic_Cyst5_annot.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "RP-05",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/f60e44cf-9b70-49eb-92ea-93a52e07c82c?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-06_RadPrimer_plain_Hemorrhagic_Cyst6.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "RP-06",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/2e77b8c2-57a1-406b-94f0-d92b6224cb20?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-06_RadPrimer_annotated_Hemorrhagic_Cyst6_annot.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "RP-06",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/2e77b8c2-57a1-406b-94f0-d92b6224cb20?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-07_RadPrimer_plain_Hemorrhagic_Cyst7.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "RP-07",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/65bee9eb-6c26-4cea-8542-adf8ed932cb4?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-07_RadPrimer_annotated_Hemorrhagic_Cyst7_annot.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "RP-07",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/65bee9eb-6c26-4cea-8542-adf8ed932cb4?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-08_RadPrimer_plain_Hemorrhagic_Cyst8.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "RP-08",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/a0c9c560-41de-4b3c-8613-ba06c8b92972?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-08_RadPrimer_annotated_Hemorrhagic_Cyst8_annot.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "RP-08",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/a0c9c560-41de-4b3c-8613-ba06c8b92972?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-09_RadPrimer_plain_Hemorrhagic_Cyst9.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "RP-09",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/7bda457a-1eca-439c-b032-153cc7132880?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-09_RadPrimer_annotated_Hemorrhagic_Cyst9_annot.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "RP-09",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/7bda457a-1eca-439c-b032-153cc7132880?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "RP-10_RadPrimer_plain_Hemorrhagic_Cyst10.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "RP-10",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/1948187a-993b-4785-bb83-71ec04752205?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "RP-10_RadPrimer_annotated_Hemorrhagic_Cyst10_annot.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "RP-10",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/1948187a-993b-4785-bb83-71ec04752205?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "SDX-01_STATdx_plain_Hemorrhagic_Ovarian_Cyst1.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/d42e1bbc-702d-4654-83b3-52dc1ffa377d?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-01_STATdx_annotated_Hemorrhagic_Ovarian_Cyst1_annot.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "SDX-01",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/d42e1bbc-702d-4654-83b3-52dc1ffa377d?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-02_STATdx_plain_Hemorrhagic_Ovarian_Cyst2.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/3dc29caf-e6f3-4657-acdf-97cbe7423f8b?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-02_STATdx_annotated_Hemorrhagic_Ovarian_Cyst2_annot.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "SDX-02",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/3dc29caf-e6f3-4657-acdf-97cbe7423f8b?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-03_STATdx_plain_Hemorrhagic_Ovarian_Cyst3.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/4ed173d8-e3b5-498b-b97d-9b908aec0f9f?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-03_STATdx_annotated_Hemorrhagic_Ovarian_Cyst3_annot.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "SDX-03",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/4ed173d8-e3b5-498b-b97d-9b908aec0f9f?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-04_STATdx_plain_Hemorrhagic_Ovarian_Cyst4.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/f17024bd-fc09-4a38-ae1b-d08f62b5a8ba?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-04_STATdx_annotated_Hemorrhagic_Ovarian_Cyst4_annot.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "SDX-04",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/f17024bd-fc09-4a38-ae1b-d08f62b5a8ba?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-05_STATdx_plain_Hemorrhagic_Ovarian_Cyst5.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/2042d19a-399f-4f5f-b70f-bebe52b3eadc?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-05_STATdx_annotated_Hemorrhagic_Ovarian_Cyst5_annot.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "SDX-05",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/2042d19a-399f-4f5f-b70f-bebe52b3eadc?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-06_STATdx_plain_Hemorrhagic_Ovarian_Cyst6.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/b38dfd1c-58fe-4605-bd34-58ac40cc84da?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-06_STATdx_annotated_Hemorrhagic_Ovarian_Cyst6_annot.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "SDX-06",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/b38dfd1c-58fe-4605-bd34-58ac40cc84da?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-07_STATdx_plain_Hemorrhagic_Ovarian_Cyst7.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/d2f6890b-3ee6-4ea7-bd91-25835b0ed260?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-07_STATdx_annotated_Hemorrhagic_Ovarian_Cyst7_annot.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "SDX-07",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/d2f6890b-3ee6-4ea7-bd91-25835b0ed260?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-08_STATdx_plain_Hemorrhagic_Ovarian_Cyst8.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/42740d67-c6d2-4ecc-8dc4-c869c5867faf?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-08_STATdx_annotated_Hemorrhagic_Ovarian_Cyst8_annot.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "SDX-08",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/42740d67-c6d2-4ecc-8dc4-c869c5867faf?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-09_STATdx_plain_Hemorrhagic_Ovarian_Cyst9.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/89f49455-9f16-4505-8aa9-076cbb15a580?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-09_STATdx_annotated_Hemorrhagic_Ovarian_Cyst9_annot.jpg",
+      "label": "",
+      "imageNumber": 9,
+      "masterImageId": "SDX-09",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/89f49455-9f16-4505-8aa9-076cbb15a580?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-10_STATdx_plain_Hemorrhagic_Ovarian_Cyst10.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/cc059eeb-e554-47bd-aee1-85854f714a7c?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-10_STATdx_annotated_Hemorrhagic_Ovarian_Cyst10_annot.jpg",
+      "label": "",
+      "imageNumber": 10,
+      "masterImageId": "SDX-10",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/cc059eeb-e554-47bd-aee1-85854f714a7c?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-11_STATdx_plain_Hemorrhagic_Ovarian_Cyst11.jpg",
+      "label": "",
+      "imageNumber": 11,
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/575e30de-b1b5-4e33-a166-a83d9f613baa?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-11_STATdx_annotated_Hemorrhagic_Ovarian_Cyst11_annot.jpg",
+      "label": "",
+      "imageNumber": 11,
+      "masterImageId": "SDX-11",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/575e30de-b1b5-4e33-a166-a83d9f613baa?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-12_STATdx_plain_Hemorrhagic_Ovarian_Cyst12.jpg",
+      "label": "",
+      "imageNumber": 12,
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/a72d1e93-242f-4a60-855b-e46e3f0737f5?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-12_STATdx_annotated_Hemorrhagic_Ovarian_Cyst12_annot.jpg",
+      "label": "",
+      "imageNumber": 12,
+      "masterImageId": "SDX-12",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/a72d1e93-242f-4a60-855b-e46e3f0737f5?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-13_STATdx_plain_Hemorrhagic_Ovarian_Cyst13.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/bb452350-6265-4e10-9ac1-2fc2cbea43ad?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-13_STATdx_annotated_Hemorrhagic_Ovarian_Cyst13_annot.jpg",
+      "label": "",
+      "imageNumber": 13,
+      "masterImageId": "SDX-13",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/bb452350-6265-4e10-9ac1-2fc2cbea43ad?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-14_STATdx_plain_Hemorrhagic_Ovarian_Cyst14.jpg",
+      "label": "",
+      "imageNumber": 14,
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/54dcf9cb-6086-4810-b11d-0765d8400234?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-14_STATdx_annotated_Hemorrhagic_Ovarian_Cyst14_annot.jpg",
+      "label": "",
+      "imageNumber": 14,
+      "masterImageId": "SDX-14",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/54dcf9cb-6086-4810-b11d-0765d8400234?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-15_STATdx_plain_Hemorrhagic_Ovarian_Cyst15.jpg",
+      "label": "",
+      "imageNumber": 15,
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/e73bc4b1-64cb-4ec1-b172-2198bff69b81?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-15_STATdx_annotated_Hemorrhagic_Ovarian_Cyst15_annot.jpg",
+      "label": "",
+      "imageNumber": 15,
+      "masterImageId": "SDX-15",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/e73bc4b1-64cb-4ec1-b172-2198bff69b81?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-16_STATdx_plain_Hemorrhagic_Ovarian_Cyst16.jpg",
+      "label": "",
+      "imageNumber": 16,
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/8e85dfe1-b806-42c3-823e-00630adf5714?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-16_STATdx_annotated_Hemorrhagic_Ovarian_Cyst16_annot.jpg",
+      "label": "",
+      "imageNumber": 16,
+      "masterImageId": "SDX-16",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/8e85dfe1-b806-42c3-823e-00630adf5714?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-18_STATdx_plain_Hemorrhagic_Ovarian_Cyst18.jpg",
+      "label": "",
+      "imageNumber": 18,
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/09d94a0e-b515-4e34-a7f6-6e025154f654?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-18_STATdx_annotated_Hemorrhagic_Ovarian_Cyst18_annot.jpg",
+      "label": "",
+      "imageNumber": 18,
+      "masterImageId": "SDX-18",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/09d94a0e-b515-4e34-a7f6-6e025154f654?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-19_STATdx_plain_Hemorrhagic_Ovarian_Cyst19.jpg",
+      "label": "",
+      "imageNumber": 19,
+      "masterImageId": "SDX-19",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/384d8173-66f2-4f06-a2cf-a6bffc4d9b71?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-19_STATdx_annotated_Hemorrhagic_Ovarian_Cyst19_annot.jpg",
+      "label": "",
+      "imageNumber": 19,
+      "masterImageId": "SDX-19",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/384d8173-66f2-4f06-a2cf-a6bffc4d9b71?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-20_STATdx_plain_Hemorrhagic_Ovarian_Cyst20.jpg",
+      "label": "",
+      "imageNumber": 20,
+      "masterImageId": "SDX-20",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/6931100c-a0f1-40b4-9dd3-88323cdea5ec?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-20_STATdx_annotated_Hemorrhagic_Ovarian_Cyst20_annot.jpg",
+      "label": "",
+      "imageNumber": 20,
+      "masterImageId": "SDX-20",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/6931100c-a0f1-40b4-9dd3-88323cdea5ec?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-21_STATdx_plain_Hemorrhagic_Ovarian_Cyst21.jpg",
+      "label": "",
+      "imageNumber": 21,
+      "masterImageId": "SDX-21",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/0a42fbe8-1b10-485c-8f22-3b5dab7aa20d?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-21_STATdx_annotated_Hemorrhagic_Ovarian_Cyst21_annot.jpg",
+      "label": "",
+      "imageNumber": 21,
+      "masterImageId": "SDX-21",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/0a42fbe8-1b10-485c-8f22-3b5dab7aa20d?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-22_STATdx_plain_Hemorrhagic_Ovarian_Cyst22.jpg",
+      "label": "",
+      "imageNumber": 22,
+      "masterImageId": "SDX-22",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/ad2f11a3-c4ea-44a3-a237-eefe33c0c0d1?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-22_STATdx_annotated_Hemorrhagic_Ovarian_Cyst22_annot.jpg",
+      "label": "",
+      "imageNumber": 22,
+      "masterImageId": "SDX-22",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/ad2f11a3-c4ea-44a3-a237-eefe33c0c0d1?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-23_STATdx_plain_Hemorrhagic_Ovarian_Cyst23.jpg",
+      "label": "",
+      "imageNumber": 23,
+      "masterImageId": "SDX-23",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/62a6396e-87bb-437d-ba0e-6c391fd1a9f3?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-23_STATdx_annotated_Hemorrhagic_Ovarian_Cyst23_annot.jpg",
+      "label": "",
+      "imageNumber": 23,
+      "masterImageId": "SDX-23",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/62a6396e-87bb-437d-ba0e-6c391fd1a9f3?annotated=true&size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-24_STATdx_plain_Hemorrhagic_Ovarian_Cyst24.jpg",
+      "label": "",
+      "imageNumber": 24,
+      "masterImageId": "SDX-24",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "plain",
+      "url": "https://app.statdx.com/image/thumbnail/e99560f4-1646-4c18-b465-61b8d83a015c?size=1000&quality=90"
+    },
+    {
+      "filename": "SDX-24_STATdx_annotated_Hemorrhagic_Ovarian_Cyst24_annot.jpg",
+      "label": "",
+      "imageNumber": 24,
+      "masterImageId": "SDX-24",
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "variant": "annotated",
+      "url": "https://app.statdx.com/image/thumbnail/e99560f4-1646-4c18-b465-61b8d83a015c?annotated=true&size=1000&quality=90"
+    }
+  ],
+  "imageRegistry": [
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst1_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/91c0414a-8cde-488a-9da4-2fccda0f097e?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Longitudinal grayscale endovaginal US shows a complex right ovarian cyst <img src=\"arrow_CS.png\"> with thin, echogenic, lace-like internal echoes <img src=\"arrow_WS.png\">, representing fibrin strands. Note subtle posterior acoustic enhancement <img src=\"arrow_BO.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": false,
+        "rationale": "STATdx contains visually similar reticular/fishnet hemorrhagic cyst examples, but actual evidence images show different screenshots/patients and no shared stable image ID.",
+        "statdxCoverageCandidates": [
+          "SDX-10",
+          "SDX-12",
+          "SDX-23"
+        ],
+        "status": "nearDuplicate"
+      },
+      "filename": "Hemorrhagic_Cyst1.jpg",
+      "group": "",
+      "imageId": "91c0414a-8cde-488a-9da4-2fccda0f097e",
+      "masterImageId": "RP-01",
+      "plainFilename": "Hemorrhagic_Cyst1.jpg",
+      "plainUrl": "https://app.radprimer.com/images/91c0414a-8cde-488a-9da4-2fccda0f097e?style=xlarge&annotated=false",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-01_RadPrimer_annotated_Hemorrhagic_Cyst1_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-01_RadPrimer_plain_Hemorrhagic_Cyst1.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "reticularFibrinStrands",
+        "posteriorEnhancement",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_91c0414a.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/91c0414a-8cde-488a-9da4-2fccda0f097e?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst2_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/f8f3c643-7bc9-46d3-8f3c-7adaee7938d0?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Longitudinal Doppler US shows an avascular complex right ovarian cyst <img src=\"arrow_CS.png\"> containing thin, echogenic reticular echoes <img src=\"arrow_WS.png\">, signifying an HOC. The surrounding ovarian parenchyma displaced along the periphery of the HOC (claw sign) shows internal blood flow <img src=\"arrow_BC.png\"> with venous waveform <img src=\"arrow_WO.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": false,
+        "rationale": "STATdx has avascular Doppler hemorrhagic cyst examples, but visual review shows different images; RadPrimer uniquely includes the claw-sign/parenchymal-flow and venous-waveform teaching combination.",
+        "statdxCoverageCandidates": [
+          "SDX-02",
+          "SDX-19"
+        ],
+        "status": "nearDuplicate"
+      },
+      "filename": "Hemorrhagic_Cyst2.jpg",
+      "group": "",
+      "imageId": "f8f3c643-7bc9-46d3-8f3c-7adaee7938d0",
+      "masterImageId": "RP-02",
+      "plainFilename": "Hemorrhagic_Cyst2.jpg",
+      "plainUrl": "https://app.radprimer.com/images/f8f3c643-7bc9-46d3-8f3c-7adaee7938d0?style=xlarge&annotated=false",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-02_RadPrimer_annotated_Hemorrhagic_Cyst2_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-02_RadPrimer_plain_Hemorrhagic_Cyst2.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "avascularClot",
+        "dopplerClawSign",
+        "venousWaveform"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_f8f3c643.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/f8f3c643-7bc9-46d3-8f3c-7adaee7938d0?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst3_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/05b8755f-da3d-47ea-92fe-64ffb3385a37?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Longitudinal grayscale transvaginal US shows complex pelvic fluid with diffuse low-level echoes <img src=\"arrow_CS.png\"> along the left aspect of the cul-de-sac, signifying hemoperitoneum related to a left HOC (not shown).",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": false,
+        "rationale": "STATdx includes pelvic hemoperitoneum from ruptured HOC, but the staged images are visibly different and do not duplicate the RadPrimer cul-de-sac fluid image.",
+        "statdxCoverageCandidates": [
+          "SDX-20"
+        ],
+        "status": "conceptualReplacement"
+      },
+      "filename": "Hemorrhagic_Cyst3.jpg",
+      "group": "",
+      "imageId": "05b8755f-da3d-47ea-92fe-64ffb3385a37",
+      "masterImageId": "RP-03",
+      "plainFilename": "Hemorrhagic_Cyst3.jpg",
+      "plainUrl": "https://app.radprimer.com/images/05b8755f-da3d-47ea-92fe-64ffb3385a37?style=xlarge&annotated=false",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-03_RadPrimer_annotated_Hemorrhagic_Cyst3_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-03_RadPrimer_plain_Hemorrhagic_Cyst3.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "pelvicHemoperitoneum",
+        "ruptureComplication"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_05b8755f.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/05b8755f-da3d-47ea-92fe-64ffb3385a37?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst4_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/b7deb503-fded-4345-ae92-6005467af931?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Clinical photograph during laparoscopy shows blood in the cul-de-sac <img src=\"arrow_WS.png\"> behind the uterus <img src=\"arrow_BS.png\"> secondary to a ruptured hemorrhagic ovarian cyst. Blood clot <img src=\"arrow_CS.png\"> is seen adherent to the ovarian capsule.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": false,
+        "rationale": "RadPrimer surgical/laparoscopy correlation is not represented in STATdx image evidence.",
+        "statdxCoverageCandidates": [],
+        "status": "notCovered"
+      },
+      "filename": "Hemorrhagic_Cyst4.jpg",
+      "group": "",
+      "imageId": "b7deb503-fded-4345-ae92-6005467af931",
+      "masterImageId": "RP-04",
+      "plainFilename": "Hemorrhagic_Cyst4.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b7deb503-fded-4345-ae92-6005467af931?style=xlarge&annotated=false",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-04_RadPrimer_annotated_Hemorrhagic_Cyst4_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-04_RadPrimer_plain_Hemorrhagic_Cyst4.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "laparoscopyCorrelation",
+        "ruptureComplication",
+        "atomicClusterRP04RP05"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_b7deb503.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/b7deb503-fded-4345-ae92-6005467af931?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst5_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/f60e44cf-9b70-49eb-92ea-93a52e07c82c?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "In the adnexa of the same patient, an HCL with thick wall and peripheral blood flow is seen on this color Doppler US. This should not be mistaken for the ring of fire associated with tubal ectopic pregnancies. With HCL, the cyst is clearly within the ovarian parenchyma.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": false,
+        "rationale": "STATdx image 6 teaches the same ring-of-fire/hemorrhagic corpus luteum pitfall, but the visual evidence is a different Doppler image and source ID.",
+        "statdxCoverageCandidates": [
+          "SDX-06"
+        ],
+        "status": "nearDuplicate"
+      },
+      "filename": "Hemorrhagic_Cyst5.jpg",
+      "group": "",
+      "imageId": "f60e44cf-9b70-49eb-92ea-93a52e07c82c",
+      "masterImageId": "RP-05",
+      "plainFilename": "Hemorrhagic_Cyst5.jpg",
+      "plainUrl": "https://app.radprimer.com/images/f60e44cf-9b70-49eb-92ea-93a52e07c82c?style=xlarge&annotated=false",
+      "sourceImageNumber": 5,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-05_RadPrimer_annotated_Hemorrhagic_Cyst5_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-05_RadPrimer_plain_Hemorrhagic_Cyst5.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "hemorrhagicCorpusLuteum",
+        "ringOfFirePitfall",
+        "atomicClusterRP04RP05"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_f60e44cf.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/f60e44cf-9b70-49eb-92ea-93a52e07c82c?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst6_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/2e77b8c2-57a1-406b-94f0-d92b6224cb20?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Transverse transabdominal US shows bilateral enlarged ovaries <img src=\"arrow_WS.png\"> \"kissing\" posterior to the uterus in this patient who recently stopped birth control pills. Both ovaries contain cysts with echoes  <img src=\"arrow_WC.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": false,
+        "rationale": "The bilateral enlarged/kissing ovaries example after stopping birth control is not covered by STATdx image evidence.",
+        "statdxCoverageCandidates": [],
+        "status": "notCovered"
+      },
+      "filename": "Hemorrhagic_Cyst6.jpg",
+      "group": "",
+      "imageId": "2e77b8c2-57a1-406b-94f0-d92b6224cb20",
+      "masterImageId": "RP-06",
+      "plainFilename": "Hemorrhagic_Cyst6.jpg",
+      "plainUrl": "https://app.radprimer.com/images/2e77b8c2-57a1-406b-94f0-d92b6224cb20?style=xlarge&annotated=false",
+      "sourceImageNumber": 6,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-06_RadPrimer_annotated_Hemorrhagic_Cyst6_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-06_RadPrimer_plain_Hemorrhagic_Cyst6.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "bilateralKissingOvaries",
+        "ovulationSuppressionContext",
+        "recognitionReinforcement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_2e77b8c2.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/2e77b8c2-57a1-406b-94f0-d92b6224cb20?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst7_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/65bee9eb-6c26-4cea-8542-adf8ed932cb4?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Longitudinal grayscale US in a patient with a hemorrhagic cyst and complex pelvic fluid (not shown) demonstrates extension of fluid into the hepatorenal fossa <img src=\"arrow_CS.png\">, signifying moderate to large hemoperitoneum.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": false,
+        "rationale": "STATdx discusses hemoperitoneum but does not provide an upper-abdominal/hepatorenal fossa ultrasound image matching this RadPrimer teaching point.",
+        "statdxCoverageCandidates": [],
+        "status": "notCovered"
+      },
+      "filename": "Hemorrhagic_Cyst7.jpg",
+      "group": "",
+      "imageId": "65bee9eb-6c26-4cea-8542-adf8ed932cb4",
+      "masterImageId": "RP-07",
+      "plainFilename": "Hemorrhagic_Cyst7.jpg",
+      "plainUrl": "https://app.radprimer.com/images/65bee9eb-6c26-4cea-8542-adf8ed932cb4?style=xlarge&annotated=false",
+      "sourceImageNumber": 7,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-07_RadPrimer_annotated_Hemorrhagic_Cyst7_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-07_RadPrimer_plain_Hemorrhagic_Cyst7.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "upperAbdominalHemoperitoneumUS",
+        "ruptureComplication"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_65bee9eb.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/65bee9eb-6c26-4cea-8542-adf8ed932cb4?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst8_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/a0c9c560-41de-4b3c-8613-ba06c8b92972?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Axial CECT shows high-attenuation fluid in the upper abdomen, specifically the perihepatic space <img src=\"arrow_WS.png\"> and hepatorenal fossa <img src=\"arrow_CS.png\">, representing large volume hemoperitoneum secondary to an HOC in the pelvis (not shown).",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": false,
+        "rationale": "STATdx CT images show ruptured hemorrhagic cyst with high-attenuation pelvic fluid/sentinel clot, but not the same upper-abdominal axial CT image.",
+        "statdxCoverageCandidates": [
+          "SDX-21",
+          "SDX-22"
+        ],
+        "status": "conceptualReplacement"
+      },
+      "filename": "Hemorrhagic_Cyst8.jpg",
+      "group": "",
+      "imageId": "a0c9c560-41de-4b3c-8613-ba06c8b92972",
+      "masterImageId": "RP-08",
+      "plainFilename": "Hemorrhagic_Cyst8.jpg",
+      "plainUrl": "https://app.radprimer.com/images/a0c9c560-41de-4b3c-8613-ba06c8b92972?style=xlarge&annotated=false",
+      "sourceImageNumber": 8,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-08_RadPrimer_annotated_Hemorrhagic_Cyst8_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-08_RadPrimer_plain_Hemorrhagic_Cyst8.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "upperAbdominalHemoperitoneumCT",
+        "ruptureComplication"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_a0c9c560.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/a0c9c560-41de-4b3c-8613-ba06c8b92972?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst9_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/7bda457a-1eca-439c-b032-153cc7132880?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Coronal CECT shows large hemoperitoneum secondary to a right ovarian HOC. Active bleeding can be seen in the right adnexal region <img src=\"arrow_CS.png\">. High-density fluid signifying blood extends into the upper abdomen, including the right paracolic gutter <img src=\"arrow_BS.png\">, hepatorenal fossa <img src=\"arrow_WS.png\">, and perisplenic region <img src=\"arrow_WO.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": false,
+        "rationale": "STATdx provides CT rupture cases, but none duplicate the RadPrimer coronal CT showing active bleeding and large upper-abdominal hemoperitoneum.",
+        "statdxCoverageCandidates": [
+          "SDX-21",
+          "SDX-22"
+        ],
+        "status": "conceptualReplacement"
+      },
+      "filename": "Hemorrhagic_Cyst9.jpg",
+      "group": "",
+      "imageId": "7bda457a-1eca-439c-b032-153cc7132880",
+      "masterImageId": "RP-09",
+      "plainFilename": "Hemorrhagic_Cyst9.jpg",
+      "plainUrl": "https://app.radprimer.com/images/7bda457a-1eca-439c-b032-153cc7132880?style=xlarge&annotated=false",
+      "sourceImageNumber": 9,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-09_RadPrimer_annotated_Hemorrhagic_Cyst9_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-09_RadPrimer_plain_Hemorrhagic_Cyst9.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "activeBleedingCT",
+        "largeHemoperitoneum",
+        "coronalCT"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_7bda457a.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/7bda457a-1eca-439c-b032-153cc7132880?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Cyst10_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/1948187a-993b-4785-bb83-71ec04752205?style=xlarge&annotated=true",
+      "baseName": "",
+      "caption": "Axial T1WI FS MR shows that the mass <img src=\"arrow_WS.png\"> remains high signal, indicating that it does not contain fat and must therefore contain blood products as the source of high signal.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "duplicateAssessment": {
+        "exactDuplicate": true,
+        "rationale": "Actual image_evidence review shows the same axial T1 fat-suppressed MR screenshot/content in RadPrimer image 10 and STATdx image 17, with only source/resolution/crop differences.",
+        "statdxCoverageCandidates": [
+          "SDX-17"
+        ],
+        "status": "exactDuplicate"
+      },
+      "filename": "Hemorrhagic_Cyst10.jpg",
+      "group": "",
+      "imageId": "1948187a-993b-4785-bb83-71ec04752205",
+      "masterImageId": "RP-10",
+      "plainFilename": "Hemorrhagic_Cyst10.jpg",
+      "plainUrl": "https://app.radprimer.com/images/1948187a-993b-4785-bb83-71ec04752205?style=xlarge&annotated=false",
+      "sourceImageNumber": 10,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceQualifiedAnnotatedFilename": "RP-10_RadPrimer_annotated_Hemorrhagic_Cyst10_annot.jpg",
+      "sourceQualifiedPlainFilename": "RP-10_RadPrimer_plain_Hemorrhagic_Cyst10.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "canonicalBackbone",
+        "T1FSMRBloodProducts",
+        "canonicalExactDuplicateCopy",
+        "atomicClusterWithSDX18"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_1948187a.jpg",
+        "evidenceUrl": "https://app.radprimer.com/images/1948187a-993b-4785-bb83-71ec04752205?style=xlarge&annotated=false",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst1_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d42e1bbc-702d-4654-83b3-52dc1ffa377d?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal color Doppler US shows a hemorrhagic cyst <img src=\"arrow_WO.png\"> with diffuse, increased echogenicity resembling a mature cystic teratoma. Follow-up US revealed complete resolution.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst1.jpg",
+      "group": "",
+      "imageId": "d42e1bbc-702d-4654-83b3-52dc1ffa377d",
+      "masterImageId": "SDX-01",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst1.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d42e1bbc-702d-4654-83b3-52dc1ffa377d?size=1000&quality=90",
+      "sourceImageNumber": 1,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-01_STATdx_annotated_Hemorrhagic_Ovarian_Cyst1_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-01_STATdx_plain_Hemorrhagic_Ovarian_Cyst1.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "diffuselyEchogenicHOC",
+        "dermoidMimic",
+        "followupResolution"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_d42e1bbc.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d42e1bbc-702d-4654-83b3-52dc1ffa377d?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst2_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/3dc29caf-e6f3-4657-acdf-97cbe7423f8b?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal color Doppler US shows an avascular hemorrhagic cyst  <img src=\"arrow_WS.png\">  with fibrin strands creating a reticular pattern described as lace-like, fishnet, or cobweb appearance. Septations are incomplete in contrast to septations within ovarian neoplasms.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst2.jpg",
+      "group": "",
+      "imageId": "3dc29caf-e6f3-4657-acdf-97cbe7423f8b",
+      "masterImageId": "SDX-02",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst2.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/3dc29caf-e6f3-4657-acdf-97cbe7423f8b?size=1000&quality=90",
+      "sourceImageNumber": 2,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-02_STATdx_annotated_Hemorrhagic_Ovarian_Cyst2_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-02_STATdx_plain_Hemorrhagic_Ovarian_Cyst2.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "reticularPattern",
+        "avascularDoppler",
+        "nearDuplicateCandidate"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_3dc29caf.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/3dc29caf-e6f3-4657-acdf-97cbe7423f8b?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst3_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/4ed173d8-e3b5-498b-b97d-9b908aec0f9f?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal color Doppler US shows a hemorrhagic cyst with a fine reticular meshwork of fibrin strands and a straight edge along the retracting clot <img src=\"arrow_WO.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst3.jpg",
+      "group": "",
+      "imageId": "4ed173d8-e3b5-498b-b97d-9b908aec0f9f",
+      "masterImageId": "SDX-03",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst3.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/4ed173d8-e3b5-498b-b97d-9b908aec0f9f?size=1000&quality=90",
+      "sourceImageNumber": 3,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-03_STATdx_annotated_Hemorrhagic_Ovarian_Cyst3_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-03_STATdx_plain_Hemorrhagic_Ovarian_Cyst3.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "reticularMeshwork",
+        "retractingClot"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_4ed173d8.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/4ed173d8-e3b5-498b-b97d-9b908aec0f9f?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst4_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/f17024bd-fc09-4a38-ae1b-d08f62b5a8ba?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal color Doppler US shows a hemorrhagic cyst <img src=\"arrow_WO.png\"> with a retracted avascular clot <img src=\"arrow_WS.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst4.jpg",
+      "group": "",
+      "imageId": "f17024bd-fc09-4a38-ae1b-d08f62b5a8ba",
+      "masterImageId": "SDX-04",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst4.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/f17024bd-fc09-4a38-ae1b-d08f62b5a8ba?size=1000&quality=90",
+      "sourceImageNumber": 4,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-04_STATdx_annotated_Hemorrhagic_Ovarian_Cyst4_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-04_STATdx_plain_Hemorrhagic_Ovarian_Cyst4.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "retractedAvascularClot",
+        "dopplerPitfall"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_f17024bd.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/f17024bd-fc09-4a38-ae1b-d08f62b5a8ba?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst5_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/2042d19a-399f-4f5f-b70f-bebe52b3eadc?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal color Doppler US shows a fishnet appearance, a common appearance of hemorrhagic cyst.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst5.jpg",
+      "group": "",
+      "imageId": "2042d19a-399f-4f5f-b70f-bebe52b3eadc",
+      "masterImageId": "SDX-05",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst5.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/2042d19a-399f-4f5f-b70f-bebe52b3eadc?size=1000&quality=90",
+      "sourceImageNumber": 5,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-05_STATdx_annotated_Hemorrhagic_Ovarian_Cyst5_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-05_STATdx_plain_Hemorrhagic_Ovarian_Cyst5.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "fishnetAppearance"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_2042d19a.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/2042d19a-399f-4f5f-b70f-bebe52b3eadc?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst6_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/b38dfd1c-58fe-4605-bd34-58ac40cc84da?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal color Doppler US shows a hemorrhagic corpus luteal cyst in a pregnant woman with pelvic pain. It is filled with low-level echoes <img src=\"arrow_WC.png\"> and has peripheral increased vascularity, \"ring of fire\" <img src=\"arrow_WO.png\">. This can be confused with an ectopic pregnancy, but most ectopics are located in the fallopian tube and can be separated from the ovary by exerting gentle pressure with the probe.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst6.jpg",
+      "group": "",
+      "imageId": "b38dfd1c-58fe-4605-bd34-58ac40cc84da",
+      "masterImageId": "SDX-06",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst6.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/b38dfd1c-58fe-4605-bd34-58ac40cc84da?size=1000&quality=90",
+      "sourceImageNumber": 6,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-06_STATdx_annotated_Hemorrhagic_Ovarian_Cyst6_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-06_STATdx_plain_Hemorrhagic_Ovarian_Cyst6.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "hemorrhagicCorpusLuteum",
+        "ringOfFirePregnancyPitfall"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_b38dfd1c.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/b38dfd1c-58fe-4605-bd34-58ac40cc84da?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst7_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/d2f6890b-3ee6-4ea7-bd91-25835b0ed260?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial T1WI MR shows an intermediate to slightly high signal intensity right ovarian cystic mass <img src=\"arrow_WS.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst7.jpg",
+      "group": "",
+      "imageId": "d2f6890b-3ee6-4ea7-bd91-25835b0ed260",
+      "masterImageId": "SDX-07",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst7.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/d2f6890b-3ee6-4ea7-bd91-25835b0ed260?size=1000&quality=90",
+      "sourceImageNumber": 7,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-07_STATdx_annotated_Hemorrhagic_Ovarian_Cyst7_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-07_STATdx_plain_Hemorrhagic_Ovarian_Cyst7.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX07SDX10",
+        "MRIT1SignalVariant"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_d2f6890b.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/d2f6890b-3ee6-4ea7-bd91-25835b0ed260?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst8_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/42740d67-c6d2-4ecc-8dc4-c869c5867faf?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial T1WI FS MR should always be performed, as it increases lesion conspicuity <img src=\"arrow_WS.png\"> and rules out a fat-containing lesion. Hemorrhagic cysts are quite variable in signal intensity, reflecting both the age and concentration of blood products.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst8.jpg",
+      "group": "",
+      "imageId": "42740d67-c6d2-4ecc-8dc4-c869c5867faf",
+      "masterImageId": "SDX-08",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst8.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/42740d67-c6d2-4ecc-8dc4-c869c5867faf?size=1000&quality=90",
+      "sourceImageNumber": 8,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-08_STATdx_annotated_Hemorrhagic_Ovarian_Cyst8_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-08_STATdx_plain_Hemorrhagic_Ovarian_Cyst8.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX07SDX10",
+        "MRIT1FSSignalVariant",
+        "fatExclusion"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_42740d67.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/42740d67-c6d2-4ecc-8dc4-c869c5867faf?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst9_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/89f49455-9f16-4505-8aa9-076cbb15a580?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial T2WI MR in the same patient shows that the lesion <img src=\"arrow_WS.png\"> remains high signal.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst9.jpg",
+      "group": "",
+      "imageId": "89f49455-9f16-4505-8aa9-076cbb15a580",
+      "masterImageId": "SDX-09",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst9.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/89f49455-9f16-4505-8aa9-076cbb15a580?size=1000&quality=90",
+      "sourceImageNumber": 9,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-09_STATdx_annotated_Hemorrhagic_Ovarian_Cyst9_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-09_STATdx_plain_Hemorrhagic_Ovarian_Cyst9.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX07SDX10",
+        "MRIT2SignalVariant"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_89f49455.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/89f49455-9f16-4505-8aa9-076cbb15a580?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst10_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/cc059eeb-e554-47bd-aee1-85854f714a7c?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal US in the same patient shows low-level echoes with a slight reticular pattern typical of a hemorrhagic cyst <img src=\"arrow_WS.png\">. Note the posterior acoustic enhancement <img src=\"arrow_WO.png\">. In the reproductive age group, hemorrhagic cysts with a classic appearance do not require follow-up unless > 5 cm.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst10.jpg",
+      "group": "",
+      "imageId": "cc059eeb-e554-47bd-aee1-85854f714a7c",
+      "masterImageId": "SDX-10",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst10.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/cc059eeb-e554-47bd-aee1-85854f714a7c?size=1000&quality=90",
+      "sourceImageNumber": 10,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-10_STATdx_annotated_Hemorrhagic_Ovarian_Cyst10_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-10_STATdx_plain_Hemorrhagic_Ovarian_Cyst10.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX07SDX10",
+        "USCorrelation",
+        "reticularPattern",
+        "posteriorEnhancement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_cc059eeb.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/cc059eeb-e554-47bd-aee1-85854f714a7c?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst11_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/575e30de-b1b5-4e33-a166-a83d9f613baa?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Color Doppler US shows a classic fishnet appearance created by fibrinous strands <img src=\"arrow_WO.png\">. In addition, there is a retracting clot <img src=\"arrow_WC.png\"> adherent to the cyst wall.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst11.jpg",
+      "group": "",
+      "imageId": "575e30de-b1b5-4e33-a166-a83d9f613baa",
+      "masterImageId": "SDX-11",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst11.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/575e30de-b1b5-4e33-a166-a83d9f613baa?size=1000&quality=90",
+      "sourceImageNumber": 11,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-11_STATdx_annotated_Hemorrhagic_Ovarian_Cyst11_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-11_STATdx_plain_Hemorrhagic_Ovarian_Cyst11.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "fishnetAppearance",
+        "retractingClot"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_575e30de.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/575e30de-b1b5-4e33-a166-a83d9f613baa?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst12_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/a72d1e93-242f-4a60-855b-e46e3f0737f5?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal US shows a typical case of a hemorrhagic cyst with fibrinous strands <img src=\"arrow_WO.png\"> and a retracting clot <img src=\"arrow_WC.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst12.jpg",
+      "group": "",
+      "imageId": "a72d1e93-242f-4a60-855b-e46e3f0737f5",
+      "masterImageId": "SDX-12",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst12.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/a72d1e93-242f-4a60-855b-e46e3f0737f5?size=1000&quality=90",
+      "sourceImageNumber": 12,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-12_STATdx_annotated_Hemorrhagic_Ovarian_Cyst12_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-12_STATdx_plain_Hemorrhagic_Ovarian_Cyst12.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "fibrinousStrands",
+        "retractingClot"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_a72d1e93.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/a72d1e93-242f-4a60-855b-e46e3f0737f5?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst13_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/bb452350-6265-4e10-9ac1-2fc2cbea43ad?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial T1WI MR shows a predominately hypointense left ovarian cyst with a vague, hyperintense fluid-fluid level posteriorly <img src=\"arrow_WS.png\">. While the classic teaching is that hemorrhagic cysts are hyperintense on T1WI, they are actually quite variable, with many being hypointense, the result of a small amount of hemorrhage in a relatively larger amount of fluid within the cyst.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst13.jpg",
+      "group": "",
+      "imageId": "bb452350-6265-4e10-9ac1-2fc2cbea43ad",
+      "masterImageId": "SDX-13",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst13.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/bb452350-6265-4e10-9ac1-2fc2cbea43ad?size=1000&quality=90",
+      "sourceImageNumber": 13,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-13_STATdx_annotated_Hemorrhagic_Ovarian_Cyst13_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-13_STATdx_plain_Hemorrhagic_Ovarian_Cyst13.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX13SDX16",
+        "MRIT1FluidFluidLevel",
+        "signalVariability"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_bb452350.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/bb452350-6265-4e10-9ac1-2fc2cbea43ad?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst14_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/54dcf9cb-6086-4810-b11d-0765d8400234?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial T1WI C+ MR shows enhancement of the thin surrounding cyst wall <img src=\"arrow_WS.png\">  but no enhancement of internal components.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst14.jpg",
+      "group": "",
+      "imageId": "54dcf9cb-6086-4810-b11d-0765d8400234",
+      "masterImageId": "SDX-14",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst14.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/54dcf9cb-6086-4810-b11d-0765d8400234?size=1000&quality=90",
+      "sourceImageNumber": 14,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-14_STATdx_annotated_Hemorrhagic_Ovarian_Cyst14_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-14_STATdx_plain_Hemorrhagic_Ovarian_Cyst14.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX13SDX16",
+        "MRContrastWallEnhancement",
+        "noInternalEnhancement"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_54dcf9cb.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/54dcf9cb-6086-4810-b11d-0765d8400234?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst15_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e73bc4b1-64cb-4ec1-b172-2198bff69b81?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial T2WI MR in the same patient best shows the fluid-fluid level with a separation of the clot <img src=\"arrow_BO.png\"> from the larger serous component.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst15.jpg",
+      "group": "",
+      "imageId": "e73bc4b1-64cb-4ec1-b172-2198bff69b81",
+      "masterImageId": "SDX-15",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst15.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e73bc4b1-64cb-4ec1-b172-2198bff69b81?size=1000&quality=90",
+      "sourceImageNumber": 15,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-15_STATdx_annotated_Hemorrhagic_Ovarian_Cyst15_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-15_STATdx_plain_Hemorrhagic_Ovarian_Cyst15.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX13SDX16",
+        "MRIT2FluidFluidLevel"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_e73bc4b1.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e73bc4b1-64cb-4ec1-b172-2198bff69b81?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst16_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/8e85dfe1-b806-42c3-823e-00630adf5714?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Sagittal transvaginal US in the same patient shows the smooth edge of the retracting clot <img src=\"arrow_WO.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst16.jpg",
+      "group": "",
+      "imageId": "8e85dfe1-b806-42c3-823e-00630adf5714",
+      "masterImageId": "SDX-16",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst16.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/8e85dfe1-b806-42c3-823e-00630adf5714?size=1000&quality=90",
+      "sourceImageNumber": 16,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-16_STATdx_annotated_Hemorrhagic_Ovarian_Cyst16_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-16_STATdx_plain_Hemorrhagic_Ovarian_Cyst16.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX13SDX16",
+        "USRetractingClotCorrelation"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_8e85dfe1.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/8e85dfe1-b806-42c3-823e-00630adf5714?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst17_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/74f8a855-3c12-454d-9788-7a90f97f1750?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial T1WI FS MR shows a high signal intensity cyst with a lobular area of low signal intensity <img src=\"arrow_WO.png\">, representing an area of forming clot.",
+      "downloadRecommendation": "archiveOptionalDuplicate",
+      "duplicateAssessment": {
+        "duplicates": [
+          "RP-10"
+        ],
+        "exactDuplicate": true,
+        "rationale": "Same visual image as RadPrimer image 10; RadPrimer copy is retained as canonical because RadPrimer supplies the hierarchy/backbone. Splitting the STATdx 17-18 MR pair is safe because RadPrimer image 10 substitutes the same T1 FS image while STATdx image 18 remains selected as the T2 companion.",
+        "status": "archiveOptionalDuplicate"
+      },
+      "filename": "Hemorrhagic_Ovarian_Cyst17.jpg",
+      "group": "",
+      "imageId": "74f8a855-3c12-454d-9788-7a90f97f1750",
+      "masterImageId": "SDX-17",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst17.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/74f8a855-3c12-454d-9788-7a90f97f1750?size=1000&quality=90",
+      "sourceImageNumber": 17,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-17_STATdx_annotated_Hemorrhagic_Ovarian_Cyst17_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-17_STATdx_plain_Hemorrhagic_Ovarian_Cyst17.jpg",
+      "usedFor": [
+        "archiveOptionalDuplicate",
+        "exactDuplicateOfRadPrimer",
+        "sameImageAsRP10",
+        "completeSourceReview"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_74f8a855.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/74f8a855-3c12-454d-9788-7a90f97f1750?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst18_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/09d94a0e-b515-4e34-a7f6-6e025154f654?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial T2WI MR shows the low-signal clot <img src=\"arrow_WO.png\"> to better advantage. This is another appearance of hemorrhage on MR. A follow-up US was performed in this case. The clot had retracted with near-complete involution of the cyst by 6 weeks.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst18.jpg",
+      "group": "",
+      "imageId": "09d94a0e-b515-4e34-a7f6-6e025154f654",
+      "masterImageId": "SDX-18",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst18.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/09d94a0e-b515-4e34-a7f6-6e025154f654?size=1000&quality=90",
+      "sourceImageNumber": 18,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-18_STATdx_annotated_Hemorrhagic_Ovarian_Cyst18_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-18_STATdx_plain_Hemorrhagic_Ovarian_Cyst18.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX17SDX18",
+        "T2MRClotCompanion",
+        "atomicClusterWithRP10"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_09d94a0e.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/09d94a0e-b515-4e34-a7f6-6e025154f654?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst19_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/384d8173-66f2-4f06-a2cf-a6bffc4d9b71?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal color Doppler US in a 29-year-old woman who presented with acute pelvic pain shows an avascular adnexal structure <img src=\"arrow_WS.png\">, representing a hemorrhagic cyst. The margins of the ovary are obscured, and there is variable echogenicity, ill-defined material within the pelvis <img src=\"arrow_WO.png\">, representing clotted and unclotted blood.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst19.jpg",
+      "group": "",
+      "imageId": "384d8173-66f2-4f06-a2cf-a6bffc4d9b71",
+      "masterImageId": "SDX-19",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst19.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/384d8173-66f2-4f06-a2cf-a6bffc4d9b71?size=1000&quality=90",
+      "sourceImageNumber": 19,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-19_STATdx_annotated_Hemorrhagic_Ovarian_Cyst19_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-19_STATdx_plain_Hemorrhagic_Ovarian_Cyst19.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX19SDX20",
+        "rupturedHOC",
+        "pelvicHemoperitoneum",
+        "doppler"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_384d8173.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/384d8173-66f2-4f06-a2cf-a6bffc4d9b71?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst20_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/6931100c-a0f1-40b4-9dd3-88323cdea5ec?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Transvaginal Doppler US in the same patient shows variable echogenicity, ill-defined material surrounding the uterus <img src=\"arrow_WO.png\"> and within the cul-de-sac <img src=\"arrow_WS.png\"> due to hemoperitoneum.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst20.jpg",
+      "group": "",
+      "imageId": "6931100c-a0f1-40b4-9dd3-88323cdea5ec",
+      "masterImageId": "SDX-20",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst20.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/6931100c-a0f1-40b4-9dd3-88323cdea5ec?size=1000&quality=90",
+      "sourceImageNumber": 20,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-20_STATdx_annotated_Hemorrhagic_Ovarian_Cyst20_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-20_STATdx_plain_Hemorrhagic_Ovarian_Cyst20.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "samePatientClusterSDX19SDX20",
+        "pelvicHemoperitoneumUS",
+        "ruptureComplication"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_6931100c.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/6931100c-a0f1-40b4-9dd3-88323cdea5ec?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst21_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/0a42fbe8-1b10-485c-8f22-3b5dab7aa20d?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial CECT in a 38-year-old woman who presented with acute pelvic pain shows a ruptured, collapsed hemorrhagic right ovarian cyst <img src=\"arrow_WS.png\">  with surrounding high-attenuation free fluid <img src=\"arrow_WO.png\">. Note higher attenuation of fluid around the ovary compared to fluid away from it (sentinel clot sign).",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst21.jpg",
+      "group": "",
+      "imageId": "0a42fbe8-1b10-485c-8f22-3b5dab7aa20d",
+      "masterImageId": "SDX-21",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst21.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/0a42fbe8-1b10-485c-8f22-3b5dab7aa20d?size=1000&quality=90",
+      "sourceImageNumber": 21,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-21_STATdx_annotated_Hemorrhagic_Ovarian_Cyst21_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-21_STATdx_plain_Hemorrhagic_Ovarian_Cyst21.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "CTSentinelClot",
+        "rupturedRightHOC"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_0a42fbe8.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/0a42fbe8-1b10-485c-8f22-3b5dab7aa20d?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst22_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/ad2f11a3-c4ea-44a3-a237-eefe33c0c0d1?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Axial CECT in a 25-year-old woman who presented with acute pelvic pain shows a ruptured hemorrhagic left ovarian cyst <img src=\"arrow_WS.png\">  with surrounding high-attenuation free fluid <img src=\"arrow_WO.png\">. Note the defect in the cyst wall <img src=\"arrow_CS.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst22.jpg",
+      "group": "",
+      "imageId": "ad2f11a3-c4ea-44a3-a237-eefe33c0c0d1",
+      "masterImageId": "SDX-22",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst22.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/ad2f11a3-c4ea-44a3-a237-eefe33c0c0d1?size=1000&quality=90",
+      "sourceImageNumber": 22,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-22_STATdx_annotated_Hemorrhagic_Ovarian_Cyst22_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-22_STATdx_plain_Hemorrhagic_Ovarian_Cyst22.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "CTWallDefect",
+        "rupturedLeftHOC"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_ad2f11a3.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/ad2f11a3-c4ea-44a3-a237-eefe33c0c0d1?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst23_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/62a6396e-87bb-437d-ba0e-6c391fd1a9f3?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Sagittal transvaginal US of a hemorrhagic cyst demonstrates a hypoechoic mass with low-level and linear echoes (fishnet appearance) <img src=\"arrow_WS.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst23.jpg",
+      "group": "",
+      "imageId": "62a6396e-87bb-437d-ba0e-6c391fd1a9f3",
+      "masterImageId": "SDX-23",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst23.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/62a6396e-87bb-437d-ba0e-6c391fd1a9f3?size=1000&quality=90",
+      "sourceImageNumber": 23,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-23_STATdx_annotated_Hemorrhagic_Ovarian_Cyst23_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-23_STATdx_plain_Hemorrhagic_Ovarian_Cyst23.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "fishnetUS",
+        "alternateExample"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_62a6396e.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/62a6396e-87bb-437d-ba0e-6c391fd1a9f3?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    },
+    {
+      "annotatedFilename": "Hemorrhagic_Ovarian_Cyst24_annot.jpg",
+      "annotatedUrl": "https://app.statdx.com/image/thumbnail/e99560f4-1646-4c18-b465-61b8d83a015c?annotated=true&size=1000&quality=90",
+      "baseName": "",
+      "caption": "Sagittal endovaginal US shows retracting clot sign. Note the straight margin of the clot <img src=\"arrow_WS.png\">.",
+      "downloadRecommendation": "primaryTeachingSet",
+      "filename": "Hemorrhagic_Ovarian_Cyst24.jpg",
+      "group": "",
+      "imageId": "e99560f4-1646-4c18-b465-61b8d83a015c",
+      "masterImageId": "SDX-24",
+      "plainFilename": "Hemorrhagic_Ovarian_Cyst24.jpg",
+      "plainUrl": "https://app.statdx.com/image/thumbnail/e99560f4-1646-4c18-b465-61b8d83a015c?size=1000&quality=90",
+      "sourceImageNumber": 24,
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceQualifiedAnnotatedFilename": "SDX-24_STATdx_annotated_Hemorrhagic_Ovarian_Cyst24_annot.jpg",
+      "sourceQualifiedPlainFilename": "SDX-24_STATdx_plain_Hemorrhagic_Ovarian_Cyst24.jpg",
+      "usedFor": [
+        "primaryTeachingSet",
+        "recognitionReinforcement",
+        "retractingClotSign",
+        "alternateExample"
+      ],
+      "visualEvidence": {
+        "downloadError": "",
+        "downloaded": true,
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "evidenceFilename": "image_evidence/STATdx/SDX-24_STATdx_image_24_plain_e99560f4.jpg",
+        "evidenceUrl": "https://app.statdx.com/image/thumbnail/e99560f4-1646-4c18-b465-61b8d83a015c?size=1000&quality=90",
+        "evidenceVariant": "plain"
+      }
+    }
+  ],
+  "masterSource": {
+    "createdAt": "2026-08-07T02:28:45Z",
+    "importedAt": "2026-08-16T02:07:45.297Z",
+    "sourceLabel": "RadPrimer + STATdx master source"
+  },
+  "settings": {
+    "include": "all",
+    "caseMap": "",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "effectiveAnkiNormalRoot": "",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "Liver_Mass_With_Central_or_Eccentric_Scar_Anki.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_000000002f54822f87a348e80430f8d9&fn=Liver_Mass_With_Central_or_Eccentric_Scar_Anki.tsv&cd=attachment&ts=496804&p=fs&cid=1&sig=e33c7a2ef4e9b0898c5b3fd770dfc3d7e30102eaf066bf402a3abefc64d6a232&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_000000002f54822f87a348e80430f8d9&fn=Liver_Mass_With_Central_or_Eccentric_Scar_Anki.tsv&cd=attachment&ts=496804&p=fs&cid=1&sig=e33c7a2ef4e9b0898c5b3fd770dfc3d7e30102eaf066bf402a3abefc64d6a232&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 11124,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Hemorrhagic_Ovarian_Cyst_2026-09-04T04-52-59-971Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}

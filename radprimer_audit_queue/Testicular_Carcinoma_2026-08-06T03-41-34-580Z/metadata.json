@@ -1,0 +1,418 @@
+{
+  "createdAt": "2026-08-06T03:41:34.580Z",
+  "articleTitle": "Testicular Carcinoma",
+  "sourceUrl": "https://app.radprimer.com/document/f807717a-37f2-427e-96c5-c0ee30c19338/lesson/0aa7b41a-2f4f-4b33-9967-ce22837b27e1",
+  "engine": "pathology",
+  "mode": "chatgpt_cards",
+  "selectedImages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "masterImageIds": [],
+  "sourceQualifiedImages": [],
+  "cases": [
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7
+    ],
+    [
+      8
+    ]
+  ],
+  "totalImagesOnPage": 8,
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Testicular Carcinoma"
+  ],
+  "outputChars": 254499,
+  "generatedChars": null,
+  "generatedRawChars": null,
+  "generatedViaDownload": true,
+  "sourceOnlyBundle": false,
+  "downloadSentinel": "Completed the autonomous build using the uploaded Core Radiology, Second Edition PDF, specifically the Genitourinary Imaging section on scrotal and testicular masses, plus the fused RadPrimer + STATdx master source.\n\nExport: 48 cards across 48 TSV lines, with 22 columns per line.\n\n-\n-\n-\n-\n\nCard composition:\n\n- 20 Primary UNKNOWN\n- 4 Differential Drills\n- 1 Definition\n- 2 Mechanism\n- 2 Boards Traps\n- 3 Epidemiology\n- 16 High-Yield\n\nAll 57 source image blocks were accounted for. RadPrimer images 1–8 and STATdx images 8–49 were incorporated into preserved recognition cases; STATdx staging graphics 1–6 were reserved for staging-framework cards; STATdx image 7 was explicitly excluded because its caption was unavailable.",
+  "coreEvidence": {
+    "status": "NOT_PROVIDED",
+    "provided": false,
+    "chars": 435,
+    "filename": "core_evidence.txt"
+  },
+  "anki": {
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckRoot": "Corebook",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "pathologyRoot": "Corebook",
+    "normalRoot": "RadprimerNormal",
+    "configuredNormalRoot": "RadprimerNormal",
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Testicular Carcinoma"
+    ],
+    "deckParts": [
+      "Corebook",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Testicular Carcinoma"
+    ],
+    "deckName": "Corebook::Ultrasound::Scrotum Basic::Testicular Carcinoma",
+    "hierarchySource": "RadPrimer",
+    "noteType": "core_rad_notetype_v2",
+    "importFilename": "corrected_cards_anki_import.tsv"
+  },
+  "downloadFiles": [
+    {
+      "filename": "Testicular_Carcinoma1.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/686c4371-348a-4701-9b7c-ef1abad434ee?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Testicular_Carcinoma1_annot.jpg",
+      "label": "",
+      "imageNumber": 1,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/686c4371-348a-4701-9b7c-ef1abad434ee?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Testicular_Carcinoma2.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/98aacd69-83dc-4151-9253-e60a7e97d556?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Testicular_Carcinoma2_annot.jpg",
+      "label": "",
+      "imageNumber": 2,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/98aacd69-83dc-4151-9253-e60a7e97d556?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Testicular_Carcinoma3.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/b86f77f2-03c9-4a72-8ae8-0a646dbd2c01?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Testicular_Carcinoma3_annot.jpg",
+      "label": "",
+      "imageNumber": 3,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/b86f77f2-03c9-4a72-8ae8-0a646dbd2c01?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Testicular_Carcinoma4.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/6a228ac9-1535-469b-bcc6-7d0d44580803?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Testicular_Carcinoma4_annot.jpg",
+      "label": "",
+      "imageNumber": 4,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/6a228ac9-1535-469b-bcc6-7d0d44580803?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Testicular_Carcinoma5.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/c2169a1f-c04f-49c7-94ac-4b6fffd8b013?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Testicular_Carcinoma5_annot.jpg",
+      "label": "",
+      "imageNumber": 5,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/c2169a1f-c04f-49c7-94ac-4b6fffd8b013?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Testicular_Carcinoma6.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/75ac99a4-0758-4c6f-adf3-aac414a1d4ee?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Testicular_Carcinoma6_annot.jpg",
+      "label": "",
+      "imageNumber": 6,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/75ac99a4-0758-4c6f-adf3-aac414a1d4ee?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Testicular_Carcinoma7.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/75908bdf-6e53-49ad-b152-56da6d767aa2?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Testicular_Carcinoma7_annot.jpg",
+      "label": "",
+      "imageNumber": 7,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/75908bdf-6e53-49ad-b152-56da6d767aa2?style=xlarge&annotated=true"
+    },
+    {
+      "filename": "Testicular_Carcinoma8.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "plain",
+      "url": "https://app.radprimer.com/images/2066dbb3-4131-45bf-8c69-100cb4cf24f0?style=xlarge&annotated=false"
+    },
+    {
+      "filename": "Testicular_Carcinoma8_annot.jpg",
+      "label": "",
+      "imageNumber": 8,
+      "masterImageId": "",
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "variant": "annotated",
+      "url": "https://app.radprimer.com/images/2066dbb3-4131-45bf-8c69-100cb4cf24f0?style=xlarge&annotated=true"
+    }
+  ],
+  "imageRegistry": [
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 1,
+      "imageId": "686c4371-348a-4701-9b7c-ef1abad434ee",
+      "baseName": "Testicular_Carcinoma1",
+      "caption": "Graphic shows a multilobulated testicular mass <img src=\"arrow_WC.png\">. Note the compressed and near complete replacement of normal testicular parenchyma <img src=\"arrow_WS.png\">.",
+      "plainFilename": "Testicular_Carcinoma1.jpg",
+      "annotatedFilename": "Testicular_Carcinoma1_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/686c4371-348a-4701-9b7c-ef1abad434ee?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/686c4371-348a-4701-9b7c-ef1abad434ee?style=xlarge&annotated=true",
+      "masterImageId": "RP-01",
+      "filename": "Testicular_Carcinoma1.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 2,
+      "imageId": "98aacd69-83dc-4151-9253-e60a7e97d556",
+      "baseName": "Testicular_Carcinoma2",
+      "caption": "Longitudinal color Doppler ultrasound shows a solid, homogeneous, hypoechoic testicular mass <img src=\"arrow_WS.png\"> with increased peripheral vascularity <img src=\"arrow_WC.png\">. Features suggest testicular seminoma.",
+      "plainFilename": "Testicular_Carcinoma2.jpg",
+      "annotatedFilename": "Testicular_Carcinoma2_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/98aacd69-83dc-4151-9253-e60a7e97d556?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/98aacd69-83dc-4151-9253-e60a7e97d556?style=xlarge&annotated=true",
+      "masterImageId": "RP-02",
+      "filename": "Testicular_Carcinoma2.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 3,
+      "imageId": "b86f77f2-03c9-4a72-8ae8-0a646dbd2c01",
+      "baseName": "Testicular_Carcinoma3",
+      "caption": "Longitudinal power Doppler ultrasound shows a small, well-defined, hypoechoic vascular testicular mass <img src=\"arrow_WC.png\"> suggestive of small testicular seminoma.",
+      "plainFilename": "Testicular_Carcinoma3.jpg",
+      "annotatedFilename": "Testicular_Carcinoma3_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/b86f77f2-03c9-4a72-8ae8-0a646dbd2c01?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/b86f77f2-03c9-4a72-8ae8-0a646dbd2c01?style=xlarge&annotated=true",
+      "masterImageId": "RP-03",
+      "filename": "Testicular_Carcinoma3.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 4,
+      "imageId": "6a228ac9-1535-469b-bcc6-7d0d44580803",
+      "baseName": "Testicular_Carcinoma4",
+      "caption": "Longitudinal ultrasound shows a multilocular cystic <img src=\"arrow_WS.png\"> testicular mass, with cysts of varying echogenicity in a cystic teratoma. Note calcific foci <img src=\"arrow_WC.png\"> with posterior acoustic shadowing.",
+      "plainFilename": "Testicular_Carcinoma4.jpg",
+      "annotatedFilename": "Testicular_Carcinoma4_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/6a228ac9-1535-469b-bcc6-7d0d44580803?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/6a228ac9-1535-469b-bcc6-7d0d44580803?style=xlarge&annotated=true",
+      "masterImageId": "RP-04",
+      "filename": "Testicular_Carcinoma4.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 5,
+      "imageId": "c2169a1f-c04f-49c7-94ac-4b6fffd8b013",
+      "baseName": "Testicular_Carcinoma5",
+      "caption": "Transverse ultrasound shows an isoechoic area of choriocarcinoma <img src=\"arrow_WS.png\"> invading the tunica albuginea <img src=\"arrow_WC.png\"> & adjacent hypoechoic mixed germ cell tumor <img src=\"arrow_WO.png\">.",
+      "plainFilename": "Testicular_Carcinoma5.jpg",
+      "annotatedFilename": "Testicular_Carcinoma5_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/c2169a1f-c04f-49c7-94ac-4b6fffd8b013?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/c2169a1f-c04f-49c7-94ac-4b6fffd8b013?style=xlarge&annotated=true",
+      "masterImageId": "RP-05",
+      "filename": "Testicular_Carcinoma5.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 6,
+      "imageId": "75ac99a4-0758-4c6f-adf3-aac414a1d4ee",
+      "baseName": "Testicular_Carcinoma6",
+      "caption": "Transverse ultrasound of the testis shows a mixed germ cell tumor seen as a large, irregular, heterogeneous mass <img src=\"arrow_WS.png\"> invading tunica albuginea <img src=\"arrow_WC.png\">.",
+      "plainFilename": "Testicular_Carcinoma6.jpg",
+      "annotatedFilename": "Testicular_Carcinoma6_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/75ac99a4-0758-4c6f-adf3-aac414a1d4ee?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/75ac99a4-0758-4c6f-adf3-aac414a1d4ee?style=xlarge&annotated=true",
+      "masterImageId": "RP-06",
+      "filename": "Testicular_Carcinoma6.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 7,
+      "imageId": "75908bdf-6e53-49ad-b152-56da6d767aa2",
+      "baseName": "Testicular_Carcinoma7",
+      "caption": "Oblique ultrasound shows an ill-defined, irregular, hypoechoic, heterogeneous mass <img src=\"arrow_WS.png\"> invading the tunica albuginea <img src=\"arrow_WC.png\">. Final diagnosis: Embryonal cell carcinoma.",
+      "plainFilename": "Testicular_Carcinoma7.jpg",
+      "annotatedFilename": "Testicular_Carcinoma7_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/75908bdf-6e53-49ad-b152-56da6d767aa2?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/75908bdf-6e53-49ad-b152-56da6d767aa2?style=xlarge&annotated=true",
+      "masterImageId": "RP-07",
+      "filename": "Testicular_Carcinoma7.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    },
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceImageNumber": 8,
+      "imageId": "2066dbb3-4131-45bf-8c69-100cb4cf24f0",
+      "baseName": "Testicular_Carcinoma8",
+      "caption": "Transverse CECT shows a conglomerate of metastatic para-aortic and retroperitoneal lymph nodes <img src=\"arrow_WC.png\"> in patient with testicular cancer.",
+      "plainFilename": "Testicular_Carcinoma8.jpg",
+      "annotatedFilename": "Testicular_Carcinoma8_annot.jpg",
+      "plainUrl": "https://app.radprimer.com/images/2066dbb3-4131-45bf-8c69-100cb4cf24f0?style=xlarge&annotated=false",
+      "annotatedUrl": "https://app.radprimer.com/images/2066dbb3-4131-45bf-8c69-100cb4cf24f0?style=xlarge&annotated=true",
+      "masterImageId": "RP-08",
+      "filename": "Testicular_Carcinoma8.jpg",
+      "group": "",
+      "usedFor": [],
+      "downloadRecommendation": ""
+    }
+  ],
+  "masterSource": null,
+  "settings": {
+    "include": "all",
+    "caseMap": "",
+    "coreGap": false,
+    "coreSection": "it might be in multiple regions of the book so you are going to have to look through it",
+    "corePages": "",
+    "sourceNote": "",
+    "coreNote": "",
+    "createAnkiImportFile": true,
+    "ankiDeckMode": "auto",
+    "ankiPathologyRoot": "Corebook",
+    "ankiNormalRoot": "RadprimerNormal",
+    "effectiveAnkiNormalRoot": "",
+    "ankiDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "preferRadPrimerHierarchyForStatdx": true,
+    "ankiNoteType": "core_rad_notetype_v2"
+  },
+  "generatedDownload": {
+    "originalFilename": "Testicular_Carcinoma_Staging.tsv",
+    "originalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000e5e081f7a178a20c8a0ba31b&fn=Testicular_Carcinoma_Staging.tsv&cd=attachment&ts=496107&p=fs&cid=1&sig=1f8a01fc49d74e419a1e3c13d8703f4cbca821a5ef9c87a216c2c8ac3f230842&v=0",
+    "originalFinalUrl": "https://chatgpt.com/backend-api/estuary/content?id=file_00000000e5e081f7a178a20c8a0ba31b&fn=Testicular_Carcinoma_Staging.tsv&cd=attachment&ts=496107&p=fs&cid=1&sig=1f8a01fc49d74e419a1e3c13d8703f4cbca821a5ef9c87a216c2c8ac3f230842&v=0",
+    "mime": "text/tab-separated-values",
+    "downloadId": 8572,
+    "routedFilename": "C:\\Users\\josem.000\\Downloads\\RadPrimerAudit\\Testicular_Carcinoma_2026-08-06T03-41-34-580Z\\generated_cards.tsv",
+    "reroutedDownloadId": null
+  }
+}

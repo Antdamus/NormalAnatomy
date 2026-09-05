@@ -24,7 +24,7 @@ If any other trigger field or front-driving prompt family is populated:
 WHEN TO USE NORMAL HIGH-YIELD
 
 Use it for compact, source-supported teaching points such as:
-- anatomy definitions
+- anatomy definitions only when the user explicitly requests definition cards
 - landmark rules
 - normal appearance anchors
 - approach rules
@@ -43,6 +43,20 @@ Use it for compact, source-supported teaching points such as:
 This is the preferred home for exam-approach content when image recognition is not the primary task.
 
 It is also the main bridge between source anatomy content and practical radiology identification when the card does not need an image front.
+
+Source-supported modality appearance anchors may be NORMAL HIGH-YIELD cards when they should be memorized independently from an image card.
+
+Examples:
+- expected CT contrast-phase relationship for a normal vessel, duct, space, or pseudolesion
+- MRI sequence or plane that best demonstrates a normal structure or relationship
+- ultrasound grayscale, Doppler, dynamic, or CEUS behavior that prevents overcall
+- nuclear medicine / PET / SPECT physiologic uptake, excretion, biodistribution, or tracer-specific pitfall
+
+These must be independent TSV rows, not sibling triggers on NORMAL UNKNOWN notes.
+
+Report/localization consequence cards may be NORMAL HIGH-YIELD cards only when the source-supported fact changes practical localization, overcall prevention, reporting, procedural relevance, or clinical interpretation.
+
+Do not generate generic "what should you report" cards.
 
 -----------------------------------------------------
 
@@ -125,7 +139,7 @@ HIGH-YIELD ANSWER RULE
 High_Yield_A should be compact, structured, and operational.
 
 Good content forms:
-- one-sentence definition
+- one-sentence definition only when the user explicitly requests definition cards
 - short checklist
 - short ordered review sequence
 - compact modality anchor

@@ -1,0 +1,108 @@
+=== MASTER SOURCE PACKAGE ===
+TITLE: Spigelian Hernia
+SOURCE SYNTHESIS: RadPrimer canonical backbone with STATdx supplemental depth
+
+=== CANONICAL HIERARCHY ===
+All Categories > Basic > Gastrointestinal > Peritoneum, Mesentery, and Abdominal Wall > Spigelian Hernia
+Canonical deck path: Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Spigelian Hernia
+Routing note: canonicalHierarchy is copied exactly from metadata.json; STATdx breadcrumbs were not used for deck routing.
+
+=== SOURCE ATTRIBUTION RULES ===
+- [Both] = supported by both RadPrimer and STATdx source packages.
+- [RadPrimer] = RadPrimer-only or RadPrimer-preferred canonical detail.
+- [STATdx] = supplemental STATdx image example, caption detail, modality variant, or differential nuance.
+
+=== IMAGE COVERAGE GATE ===
+STATdx does not fully cover the RadPrimer image set as exact duplicates. Visual review of staged image_evidence files shows exact duplicate coverage for RadPrimer images 2 and 3 only; RadPrimer image 4 has a near-duplicate/adjacent-slice STATdx companion; RadPrimer image 1 has conceptual STATdx reinforcement but no same-slice duplicate. All RadPrimer images remain selected primary.
+- RadPrimer image 1: conceptualReplacement; related STATdx images: STATdx image 3, STATdx image 7, STATdx image 8. STATdx includes colon-containing Spigelian hernia examples, but visual review shows no same-slice or same-screenshot match for the RadPrimer image. The RadPrimer image remains primary because it best demonstrates the intermuscular course deep to the external oblique layer.
+- RadPrimer image 2: exactDuplicate; related STATdx images: STATdx image 5. Visual review of staged image_evidence files shows the same CT slice/screenshot with only source rendering/crop differences. The RadPrimer image remains the canonical primary image; the matching STATdx rendering is archive-optional.
+- RadPrimer image 3: exactDuplicate; related STATdx images: STATdx image 2. Visual review of staged image_evidence files shows the same NECT slice/screenshot. The RadPrimer image remains the canonical primary image; the matching STATdx rendering is archive-optional.
+- RadPrimer image 4: nearDuplicate; related STATdx images: STATdx image 4. Both images show the same obstructing Spigelian hernia teaching point and likely the same case, but the staged evidence shows a different adjacent slice/crop. Because it is not a literal same-slice duplicate, both images remain primary as an atomic obstruction cluster.
+
+=== KEY FACTS ===
+- [Both] Spigelian hernia is a hernia through a defect in the aponeurosis of the internal oblique and transversus abdominis muscles, also called the Spigelian aponeurosis.
+- [Both] The sac typically lies along the lateral margin of the rectus abdominis, inferior and lateral to the umbilicus, near the arcuate line.
+- [Both] The external oblique aponeurosis and muscle usually remain intact over the sac, so most Spigelian hernias are interstitial/interparietal rather than visibly subcutaneous.
+- [Both] About 90% occur within the Spigelian belt of Spangen, a 6-cm transverse band above the line joining the anterior superior iliac spines.
+- [Both] Common contents include greater omentum, small bowel, or colon; rare contents include appendix, bladder, and other abdominal or pelvic structures.
+- [Both] Most defects are small, often < 2 cm, creating a narrow neck with high incarceration and strangulation risk.
+- [RadPrimer] Spigelian hernia accounts for 1-2% of anterior abdominal hernias.
+- [STATdx] May show slight left-sided predominance, although the reason is uncertain.
+
+=== TERMINOLOGY ===
+- [Both] Abbreviation: SH.
+- [Both] Synonyms: lateral ventral hernia, anterolateral hernia, hernia through conjoint tendon.
+- [Both] Interstitial/interparietal Spigelian hernia is located among abdominal wall muscle layers and accounts for the great majority of cases.
+- [Both] Subcutaneous Spigelian hernia crosses the major oblique aponeurosis and becomes superficial; this is rare.
+
+=== IMAGING ===
+- [Both] Best diagnostic clue: hernia lateral to the rectus muscle, caudal/lateral to the umbilicus, covered by intact external oblique muscle or fascia.
+- [Both] CT shows the defect in the transversus abdominis/internal oblique aponeurosis, herniation of omentum and/or bowel, and any obstruction or ischemic complication.
+- [Both] CECT is the best imaging tool when the question is acute pain, obstruction, incarceration, strangulation, or surgical planning.
+- [Both] Ultrasound can evaluate the linea semilunaris dynamically; cough/Valsalva and targeted scanning from the lateral rectus margin inferiorly can increase conspicuity.
+- [RadPrimer] Identification of the inferior epigastric artery while scanning inferior from the umbilicus can help localize the relevant abdominal wall anatomy.
+- [STATdx] MRI may show the same anatomic relationship and is useful as a modality variant when incidentally encountered.
+
+=== DIFFERENTIAL DIAGNOSIS ===
+- [Both] Ventral hernia: usually through the midline aponeurosis; off-midline incisional hernias can mimic Spigelian hernia but lack an intact external oblique layer over the sac.
+- [Both] Umbilical hernia: bowel, fat, or ascites protrudes through a midline umbilical defect, while Spigelian hernia is inferior/lateral to the umbilicus.
+- [Both] Laparoscopy port hernia: usually a smaller defect and may be medial or lateral to the classic Spigelian site.
+- [Both] Rectus sheath hematoma: cylindrical heterogeneous mass within the sheath without a true fascial defect or hernia; CT should distinguish it.
+- [STATdx] Subcutaneous or intramuscular lipoma can mimic a wall mass but should be separable from hernia on CT because there is no true fascial defect or bowel/omentum-containing sac.
+- [STATdx] Subcutaneous masses, fluid collections, or hematoma are broader nonhernia mimics to keep in mind when a palpable wall abnormality is present.
+
+=== PATHOLOGY AND RISK FACTORS ===
+- [Both] Etiology is probably multifactorial, including congenital weakness of the Spigelian fascia and acquired weakness in adults.
+- [Both] The abdominal wall is intrinsically weak near the arcuate line because of absent posterior rectus sheath support.
+- [Both] Children usually have congenital defects; adults usually have acquired defects.
+- [Both] Major adult risk factors are prior abdominal surgery and obesity; additional risks include multiple pregnancies, rapid weight loss, COPD, and trauma.
+- [Both] Pediatric associations include ipsilateral undescended testis and other anterior abdominal wall defects such as omphalocele, bladder exstrophy, and prune belly.
+- [Both] Coexisting ventral, inguinal, or umbilical hernias may be present.
+
+=== CLINICAL AND MANAGEMENT ===
+- [Both] Presentation ranges from asymptomatic to pain, palpable bulge/mass most apparent when standing, and bowel obstruction symptoms.
+- [Both] Clinical diagnosis can be difficult because the sac is deep, especially in obese patients.
+- [Both] Typical adult age range is 40-70 years. Pediatric cases have male predominance; adult sex distribution is roughly equal.
+- [Both] A tight narrow neck makes strangulation common; RadPrimer reports 20% at presentation and STATdx reports 24% at presentation.
+- [Both] Surgical treatment is indicated or recommended in virtually all patients because of high incarceration and strangulation risk.
+- [Both] Repair may be open or laparoscopic, with laparoscopic repair now preferred; treatment commonly uses primary mesh repair or mesh reinforcement.
+- [STATdx] Recurrence rates after mesh repair are low.
+- [Both] Preoperative or intraoperative ultrasound localization can reduce unnecessary dissection, especially in obese patients.
+
+=== SELECTED PRIMARY IMAGE SET ===
+- RadPrimer image 1: Axial CECT shows herniation of the colon <img src="arrow_WS.png"> into an intermuscular space between the internal oblique and transverse abdominal muscles <img src="arrow_WO.png"> (deep) and the external oblique muscle and fascia <img src="arrow_WC.png"> (superficial). Used for: canonicalRadPrimerBackbone, intermuscularSpigelianHernia, colonContainingHernia, externalObliqueCover, axialCECT.
+- RadPrimer image 2: Axial CECT more caudal in the same patient shows the defect <img src="arrow_WO.png"> in the Spigelian aponeurosis. Note the hernia sac covered by intact aponeurosis of external oblique muscle <img src="arrow_WC.png"> and the hernia caudal to the umbilicus and just lateral to the rectus sheath. Used for: canonicalRadPrimerBackbone, spigelianAponeurosisDefect, externalObliqueCover, samePatientCaudalSlice, axialCECT.
+- RadPrimer image 3: Axial NECT demonstrates a small Spigelian hernia in the left lower quadrant, inferior and lateral to the umbilicus. Note the layer of the external oblique muscle <img src="arrow_WC.png"> overlying the hernia sac. Used for: canonicalRadPrimerBackbone, smallLeftLowerQuadrantHernia, externalObliqueCover, axialNECT.
+- RadPrimer image 4: Axial CECT shows a small bowel obstruction and a Spigelian hernia <img src="arrow_WS.png">. A segment of small bowel herniates through the defect, resulting in obstruction and dilatation of the upstream bowel <img src="arrow_WC.png">. Used for: canonicalRadPrimerBackbone, smallBowelObstruction, incarcerationRisk, adjacentSliceCluster, axialCECT.
+- STATdx image 1: Axial CECT demonstrates a Spigelian hernia <img src="arrow_WC.png"> arising just lateral to the rectus muscle. A segment of small bowel herniates through the defect, resulting in partial obstruction. The hernia and obstruction were confirmed and corrected at surgery. Used for: partialSmallBowelObstruction, surgeryConfirmed, alternateExample, recognitionReinforcement, axialCECT.
+- STATdx image 3: Axial NECT in a patient being imaged for iliac aneurysms <img src="arrow_WC.png"> demonstrates an incidental spigelian hernia. The hernia <img src="arrow_WO.png"> contains a segment of ascending colon, but there is no sign of bowel obstruction. Used for: incidentalSpigelianHernia, ascendingColonContainingHernia, noObstruction, aneurysmContext, samePatientCluster, recognitionReinforcement, axialNECT.
+- STATdx image 4: Axial CECT shows a small bowel obstruction and a Spigelian hernia <img src="arrow_WS.png">. A segment of small bowel herniates through the defect, resulting in obstruction and dilatation of the upstream bowel <img src="arrow_WC.png">. Used for: smallBowelObstruction, adjacentSliceCluster, nearDuplicateReinforcement, recognitionReinforcement, axialCECT.
+- STATdx image 6: Axial CECT shows a left Spigelian hernia <img src="arrow_WC.png">. Used for: simpleLeftSpigelianHernia, alternateExample, recognitionReinforcement, axialCECT.
+- STATdx image 7: Axial NECT shows a loop of large intestine <img src="arrow_WS.png"> herniating lateral to the rectus abdominis muscle, consistent with a Spigelian hernia. Used for: largeIntestineContainingHernia, alternateExample, recognitionReinforcement, axialNECT.
+- STATdx image 8: Axial NECT shows aortic and iliac aneurysms and an incidental Spigelian hernia <img src="arrow_WC.png">. The hernia contains a segment of ascending colon, but there is no sign of bowel obstruction. Used for: incidentalSpigelianHernia, ascendingColonContainingHernia, noObstruction, aneurysmContext, samePatientCluster, recognitionReinforcement, axialNECT.
+- STATdx image 9: Axial CECT shows a Spigelian hernia <img src="arrow_WC.png"> with herniation of omental fat through a defect in the aponeurosis of the transverse abdominal and internal oblique muscles, covered by an intact aponeurosis of the external oblique muscle. Also present within the hernia is a thick-walled tubular structure <img src="arrow_WS.png"> (inflamed appendix) seen arising from the tip of the cecum. Used for: appendixInSpigelianHernia, inflamedAppendix, rareContent, samePatientCluster, recognitionReinforcement, axialCECT.
+- STATdx image 10: Axial CECT shows a Spigelian hernia <img src="arrow_WC.png"> with herniation of omental fat through a defect in the aponeurosis of the transverse abdominal and internal oblique muscles, covered by an intact aponeurosis of the external oblique muscle. Also present within the hernia is a thick-walled tubular structure <img src="arrow_WS.png"> (inflamed appendix) seen arising from the tip of the cecum. Used for: appendixInSpigelianHernia, inflamedAppendix, rareContent, samePatientCluster, recognitionReinforcement, axialCECT.
+- STATdx image 11: Axial T2 MR demonstrates a Spigelian hernia in the left lower quadrant, inferior and lateral to the umbilicus. Note the layer of the external oblique muscle <img src="arrow_WC.png"> overlying the hernia sac. Used for: MRModalityVariant, leftLowerQuadrantHernia, externalObliqueCover, recognitionReinforcement, axialT2MR.
+- STATdx image 12: Axial CECT in a patient with left lower quadrant pain demonstrates a Spigelian hernia containing a fat-containing lesion <img src="arrow_WS.png">, which extends from the surface of the colon with adjacent fat stranding or inflammation. This represents epiploic appendagitis within a Spigelian hernia. Used for: epiploicAppendagitisInHernia, fatContainingLesion, samePatientCluster, complicationVariant, recognitionReinforcement, axialCECT.
+- STATdx image 13: Axial CECT demonstrates a Spigelian hernia containing a fat-containing lesion <img src="arrow_WS.png">, which extends from the surface of the colon with adjacent fat stranding or inflammation. This represents epiploic appendagitis within a Spigelian hernia. Used for: epiploicAppendagitisInHernia, fatContainingLesion, samePatientCluster, complicationVariant, recognitionReinforcement, axialCECT.
+
+=== ARCHIVE-OPTIONAL DUPLICATE IMAGES ===
+- STATdx image 2: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 3 based on visual inspection of the staged NECT evidence files; archived as the duplicate STATdx rendering.
+- STATdx image 5: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 2 based on visual inspection of the staged CECT evidence files; archived as the duplicate STATdx rendering.
+
+=== CASE CLUSTER NOTES ===
+- No source case cluster was intentionally split.
+- RadPrimer images 1 and 2 are retained together as same-patient different-level CT images.
+- RadPrimer image 4 and STATdx image 4 are retained together as an obstruction/adjacent-slice cluster because the STATdx image is not the same slice/screenshot.
+- STATdx images 3 and 8 are retained together as an incidental colon-containing Spigelian hernia with aneurysm context.
+- STATdx images 9 and 10 are retained together as an appendix-within-Spigelian-hernia cluster.
+- STATdx images 12 and 13 are retained together as an epiploic-appendagitis-within-Spigelian-hernia cluster.
+- Only STATdx image 2 and STATdx image 5 are archive-optional, because staged visual evidence showed literal duplicate/same-slice renderings of RadPrimer images.
+
+=== GENERATOR INSTRUCTIONS ===
+- Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.
+- Use clean source-qualified labels in prose, such as RadPrimer image 2 and STATdx image 11.
+- Use registry IDs, source image IDs, evidence filenames, source-qualified filenames, selectedPrimaryImageIds, and archiveOptionalImageIds for traceability and download routing.
+- Download only selectedPrimaryImageIds by default; archiveOptionalImageIds are available for recovery/review but should not drive default cards or lectures.
+- Use canonicalHierarchy exactly as copied from metadata.json for deckPath and any IMAIOS breadcrumb routing.
+- Do not fabricate Core Radiology support; no auditable Core pages were supplied or retrieved in this source bundle.

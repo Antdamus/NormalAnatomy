@@ -206,6 +206,25 @@ Do not let one catchy figure dominate the narrative if the article teaches much 
 
 ---
 
+## ARTICLE-ONLY QUALITY PARITY RULE
+
+If the source package is built from the current article rather than from a fused master source, the narrative must still meet the same craft standard expected from a master-source narration.
+
+Article-only means fewer source inputs, not lower quality.
+
+In article-only mode:
+
+* perform a full pass over the provided article outline before choosing the normal-anatomy teaching structure
+* use the article's own hierarchy, emphasis, captions, and image set as the source-selection plan
+* preserve small source-emphasized details when they improve localization, modality recognition, normal-variant discrimination, overcall prevention, or scan review
+* do not let the output become a generic anatomy overview or a caption-only tour
+* do not add outside reference material, project-file memory, or book-derived background just to make the lecture feel fuller
+* if the article is thin, acknowledge the limitation through concise source-faithful teaching rather than padding
+
+The finished lecture should be judged by the same standard as a fused-source lecture for organization, image completeness, source fidelity, spoken flow, and teaching value. The difference is only the evidence base.
+
+---
+
 ## ORGANIZING SPINE RULE
 
 Before writing the narrative, infer the article's best teaching structure.
@@ -282,6 +301,31 @@ This is mandatory.
 * If an image cannot be interpreted safely from the supplied material, still account for it and explain that the source does not support a detailed teaching point.
 
 Only omit an image if the user explicitly says to exclude it.
+
+---
+
+## REPETITIVE / DUPLICATE IMAGE NARRATION RULE
+
+Some fused-source packages intentionally keep near-duplicate, recognition-reinforcement, alternate-plane, alternate-sequence, alternate-patient, or alternate-modality images in the primary image set.
+
+These images must still be accounted for, but the spoken lecture must not make the learner hear the same mini-lecture repeatedly.
+
+When the image registry, manifest, source-selection plan, captions, or visual similarity suggests that several images teach the same normal landmark, relationship, variant, pitfall, or review step:
+
+* first name the shared anatomy bucket or review maneuver once
+* then walk the learner through the repeated images as a comparison set or run
+* explicitly state what is new, different, confirmatory, or plane/sequence-specific about each image
+* if there is no meaningful new finding, say briefly that the image is included as recognition reinforcement and move on
+* do not repeat the same anatomy definition, modality rule, or localization explanation for each repeated image
+* do not omit any retained primary image solely because it is repetitive
+
+If the source-selection plan says an image is an exact duplicate or `archiveOptionalDuplicate`, do not give it a full spoken walkthrough unless the user specifically asks for archived/recovery images.
+Instead, mention once that exact duplicate/archive images were not used for the main lecture and keep them out of the main image arc.
+
+If the image is retained as `primaryTeachingSet`, `nearDuplicate`, `recognitionReinforcement`, `alternateExample`, `modalityVariant`, `planeVariant`, or `sequenceVariant`, it belongs in the lecture, but its narration should be compact and contrastive rather than repetitive.
+
+Before finalizing, scan the narrative for back-to-back image paragraphs that say essentially the same thing.
+Repair them by merging into one comparison paragraph that names every image and preserves the unique arrow/callout details for each image.
 
 ---
 
@@ -394,6 +438,8 @@ Rules:
 * If multiple arrows are present, describe them in the order that best supports image inspection: usually orientation landmark first, then the target structure, then related boundaries or pitfalls.
 * If the caption has arrow tags but the surrounding caption text does not clearly state what an arrow marks, do not invent a structure. Use cautious language such as "the marked callout corresponds to the caption-described landmark."
 * If an image has arrows, the local image explanation should usually name what each arrow/callout is showing before moving on to broader anatomy facts.
+* If repetitive images are grouped together, still verbalize each image's caption-supported arrows/callouts before compressing the shared teaching point.
+* If the caption contains one or more `<img src="arrow_...">` tags and the draft narrative does not include a speech-friendly arrow/callout phrase for that image or grouped run, the output is incomplete and must be repaired before finalizing.
 
 The goal is that during audio playback the learner hears exactly how the arrows connect to the visible landmarks.
 
@@ -1107,10 +1153,11 @@ If images are provided but the article is mostly a broad approach, classificatio
 
 ---
 
-## IMAIOS ANATOMY LABEL OUTPUT
+## IMAIOS ANATOMY LABEL OUTPUT - DEFERRED SECOND PASS
 
-After the Speechify narrative and image grouping audit, also produce organized IMaios anatomy label blocks.
-These blocks are for the user's IMaios engine, so each code block must be copy-paste ready.
+Do not produce IMaios anatomy label blocks or `imaios-chunk-library` JSON in this first-pass narrative output.
+The extension provides a separate **Build IMaios chunks** action after the narrative is complete.
+The rules below define that separate IMaios-only second pass, not the initial narrative response.
 
 Core rules:
 
@@ -1153,10 +1200,17 @@ If an `IMAIOS LABEL REPOSITORY` section is provided in the user/source input:
 
 If no `IMAIOS LABEL REPOSITORY` section is provided:
 
-* output the best candidate IMaios-style labels from anatomy knowledge and source context
-* still keep the blocks copy-paste ready
-* do not claim repository verification
-* add a final gap-review code block only if there are obvious synonym or availability uncertainties
+* do not output candidate IMaios-style labels from anatomy knowledge
+* do not create any copy-paste IMaios label block
+* output one plain warning code block instead:
+
+```text
+IMAIOS_REPOSITORY_REQUIRED
+No verified IMaios label repository was provided, so no IMaios labels were selected.
+```
+
+* the final `imaios-chunk-library` JSON must still be valid, but it must use `chunks: []`, `repositoryMissing: true`, and `unmatchedConcepts` for the important anatomy concepts that need repository matching later
+* never mark any label as `verified` unless it was copied exactly from the provided repository
 
 The optional gap-review block, when needed, must use this plain format:
 
@@ -1187,6 +1241,9 @@ The extension-import JSON must use this shape:
   "version": 1,
   "topic": "article or anatomy topic",
   "source": "normal narrative output",
+  "breadcrumb": ["source breadcrumb or article hierarchy when available"],
+  "deckPath": "Anki deck path using :: separators when available",
+  "tags": ["source-supported tag", "module-or-region tag"],
   "chunks": [
     {
       "id": "stable-kebab-case-id",
@@ -1194,6 +1251,9 @@ The extension-import JSON must use this shape:
       "parentGroup": "larger anatomical region when this is a subchunk",
       "modality": "best IMaios modality or atlas name",
       "modalityUrl": "optional IMaios URL if known",
+      "breadcrumb": ["same source breadcrumb, optionally refined by parentGroup and chunk title"],
+      "deckPath": "same or refined Anki deck path using :: separators",
+      "tags": ["source-supported tag", "chunk-specific tag"],
       "learningOrder": 1,
       "labels": [
         {
@@ -1224,6 +1284,9 @@ The extension-import JSON must use this shape:
 For the JSON block:
 
 * make each JSON chunk correspond to one human IMaios label code block
+* preserve source/article breadcrumb metadata when it is available; use top-level `breadcrumb`, `deckPath`, and `tags`
+* repeat or refine `breadcrumb`, `deckPath`, and `tags` inside each chunk when a chunk has a more specific parentGroup or destination
+* do not invent unsupported breadcrumb or deck hierarchy; if the source does not provide it, use the article/topic and IMaios module context conservatively
 * if a large anatomy region was split, set `parentGroup` to the larger region for each subchunk
 * keep `preferredLabel` identical to the label used in the matching human paste block whenever it is repository verified
 * when a repository is provided, every `preferredLabel` with `status: "verified"` must be copied exactly from the available repository labels
@@ -1284,24 +1347,10 @@ CASE_MAP = []
 * inferred groupings must still obey the controlled grouping inference rule
 * do not pretend uncertain groups are certain inside the narrative; but the second code block should still reflect the final grouping decision used to organize the walkthrough
 
-### Code blocks 3+ — IMaios anatomy label chunks
+### No IMaios chunks in the first-pass narrative
 
-After the grouping audit, output separate IMaios anatomy blocks.
-
-For each block:
-
-* use a short section label outside the code block, for example `IMaios block 1 - Temporal bone framework`
-* inside the code block, output only labels, one per line
-* each block should be small enough to paste into the IMaios engine as a focused learning task
-* order blocks by learning sequence, not alphabetically
-* for normal anatomy topics, include both the core normal structures and the review landmarks needed to understand the article
-* if modality-specific label availability is provided, include the modality in the outside block title, not inside the code block
-* if no useful IMaios anatomy targets exist, output one code block containing `IMAIOS_LABELS = []`
-
-### Final code block - IMaios extension chunk JSON
-
-Output one final `json` code block containing the `imaios-chunk-library` object described above.
-This block should collect the same chunks as the human IMaios paste blocks, with aliases and modality guidance preserved for the extension.
+Do not output IMaios anatomy label chunks, IMaios paste blocks, gap-review blocks, or `imaios-chunk-library` JSON in this narrative response.
+Those belong only to the separate Build IMaios chunks second pass.
 
 ## WHAT TO DO IF EXPLICIT CASE GROUPING IS MISSING
 
@@ -1326,6 +1375,7 @@ Create a **guided normal anatomy mastery narrative** that:
 * clearly distinguishes normal, variant, mimic, and abnormal
 * walks through every provided image without skipping any image
 * verbalizes caption-supported arrows and callouts in speech-friendly language
+* compresses repetitive or near-duplicate primary images into contrastive comparison sets instead of repeating the same mini-lecture
 * organizes images intelligently and may reorder them when that improves the teaching spine
 * uses only one spoken source-qualified reference per fused-source image, such as `STATdx image thirty five`, without also reading `SDX thirty five`
 * uses controlled grouping inference when appropriate
@@ -1333,7 +1383,7 @@ Create a **guided normal anatomy mastery narrative** that:
 * integrates important non-image article facts seamlessly at the point where they matter
 * prepares the learner for later Anki reinforcement
 
-Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that arrows/callouts have been verbalized when captions support them, that source-qualified images are named cleanly in the audio, that the article has been rebuilt around a clear organizing framework, and that inferred image links are not overstated.
+Before finishing, verify that every provided image appears in the narrative and in the final `INCLUDE` array, that every caption-supported arrow/callout has been verbalized when arrow tags are present, that repetitive retained images have been grouped into compact contrastive comparison sets rather than repeated as separate mini-lectures, that exact duplicate/archive images are not over-narrated unless explicitly requested, that source-qualified images are named cleanly in the audio, that the article has been rebuilt around a clear organizing framework, and that inferred image links are not overstated.
 
 Do not ask for clarification unless the input is structurally unusable.
 When uncertain, be transparent rather than overconfident.

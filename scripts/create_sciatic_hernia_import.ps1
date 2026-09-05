@@ -1,0 +1,151 @@
+$ErrorActionPreference = 'Stop'
+
+$outDir = Join-Path (Get-Location) 'anki_sciatic_hernia'
+$tsvPath = Join-Path $outDir 'anki_sciatic_hernia.tsv'
+
+$deck = 'Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Defect in Abdominal Wall (Hernia)'
+$headers = @(
+  '#separator:tab',
+  '#html:true',
+  '#notetype:core_rad_notetype_v2',
+  "#deck:$deck"
+)
+
+function Clean-Field {
+  param([string]$Value)
+  if ($null -eq $Value) { return '' }
+  return ($Value -replace "`r?`n", '<br>' -replace "`t", ' ')
+}
+
+function Make-Row {
+  param([string[]]$Fields)
+  if ($Fields.Count -ne 22) {
+    throw "Expected 22 fields, got $($Fields.Count)"
+  }
+  return (($Fields | ForEach-Object { Clean-Field $_ }) -join "`t")
+}
+
+$refHattori = 'Reference: Hattori K, Nakashima S, Sakamoto R, et al. Laparoscopic Repair of a Sciatic Hernia Using a Self-Fixating Mesh: A Case Report. Surgical Case Reports. PMCID: PMC12920148. https://pmc.ncbi.nlm.nih.gov/articles/PMC12920148/'
+$refAlazazzi = 'Reference: Alazazzi H, Ziade G, Ali B, et al. The Hidden Hernia: A Rare Sciatic Hernia Masquerading as Gluteal Pain in an Elderly Woman. Cureus. PMCID: PMC12518056. https://pmc.ncbi.nlm.nih.gov/articles/PMC12518056/'
+$refDong = 'Reference: Dong ZP, She JJ, Sun XJ, Zheng JB. Sciatic hernia led to strangulated ileum and ipsilateral ovary: A case report and review of literature. Heliyon. PMCID: PMC9982031. https://pmc.ncbi.nlm.nih.gov/articles/PMC9982031/'
+$refFujimoto = 'Reference: Fujimoto M, Miguchi M, Mitsuta H, et al. Laparoscopic repair of sciatic hernia recognizing the ureterohypogastric nerve fascia and vesicohypogastric fascia: a case report. Surgical Case Reports. PMCID: PMC8752626. https://pmc.ncbi.nlm.nih.gov/articles/PMC8752626/'
+
+$capHattoriCt = 'Source caption/readout: CT axial and coronal views show small bowel herniating through the right sciatic foramen, marked by source arrowheads, without obstruction or ischemia.'
+$capHattoriMri = 'Source caption/readout: MRI shows the hernia orifice cranial to the sacrospinous ligament, consistent with a greater sciatic foramen route; source arrowheads are present.'
+$capAlazazziAx = 'Source caption/readout: Axial CT shows a small left-sided sciatic hernia protruding through the greater sciatic foramen.'
+$capAlazazziCor = 'Source caption/readout: Coronal CT shows the same left-sided sciatic hernia with a maximum dimension of about 21 mm.'
+$capDongCt = 'Source caption/readout: CT panel shows seroperitoneum, pneumoperitoneum, low intestinal obstruction, and left sciatic hernia containing small bowel; source color arrows identify the findings.'
+$capFujimotoDiagram = 'Source caption/readout: Diagram shows the greater sciatic foramen, lesser sciatic foramen, sacrospinous and sacrotuberous ligaments, and piriformis subdivision into suprapiriform and infrapiriform routes.'
+
+$overview = '<div style="border:1px solid #bbb; padding:8px; border-radius:6px;"><b>Sciatic Hernia</b><br>A sciatic hernia is protrusion of abdominal or pelvic contents through the greater or lesser sciatic foramen. The high-yield clinical clue is deep gluteal/buttock pain or mass, sometimes with posterior thigh numbness/neuralgia from sciatic nerve proximity.</div>'
+
+$rows = @()
+
+# Card 1: unknown/image diagnosis card only.
+$rows += Make-Row @(
+  '78-year-old woman with intermittent right thigh numbness and no abdominal obstruction symptoms. CT and pelvic MRI panel PELVFOR01A',
+  '<img src="pelvic_ct_foramen_01_source.jpg"><br><img src="pelvic_mri_foramen_02_source.jpg"><br>',
+  "<div class=""stackItem""><img src=""pelvic_ct_foramen_01_source.jpg""><div class=""stackCap"">$capHattoriCt<br>How to read it: the source arrowheads mark bowel extending through a deep posterior pelvic foramen rather than through an anterior groin or medial thigh canal. No extra arrows were added.</div></div><br><div class=""stackItem""><img src=""pelvic_mri_foramen_02_source.jpg""><div class=""stackCap"">$capHattoriMri<br>How to read it: MRI confirms the ligament relationship and deep pelvic route.<br>$refHattori</div></div>",
+  'What is the rare pelvic-floor hernia shown, and what is the defining route?',
+  "Sciatic hernia.<br><br>Defining route: abdominal or pelvic contents protrude through the greater or lesser sciatic foramen, most commonly the greater sciatic foramen. Greater-foramen hernias are further described by their relationship to the piriformis muscle: suprapiriform or infrapiriform.<br><br>In this source case, CT showed small bowel through the right sciatic foramen and MRI showed the orifice cranial to the sacrospinous ligament, supporting a greater sciatic foramen route.<br><br>$refHattori",
+  'Sciatic hernia: pelvic-floor hernia through the sciatic foramen',
+  '',
+  '',
+  '',
+  "$capHattoriCt<br>$capHattoriMri<br>$refHattori",
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  'https://pmc.ncbi.nlm.nih.gov/articles/PMC12920148/',
+  '78-year-old woman with intermittent right thigh numbness; CT showed small bowel through the right sciatic foramen and MRI localized the orifice cranial to the sacrospinous ligament.',
+  'CT and MRI correlation demonstrating the sciatic-foramen route.',
+  '',
+  $overview,
+  'GI Hernia PelvicFloor SciaticHernia SciaticForamen GreaterSciaticForamen MRI CT'
+)
+
+# Card 2: route/symptom mechanism card only.
+$rows += Make-Row @(
+  '68-year-old frail woman with vague left iliac fossa pain and focal left gluteal discomfort. CT abdomen/pelvis panel PELVGLUT02B',
+  '<img src="pelvic_ct_gluteal_03_source.jpg"><br><img src="pelvic_ct_gluteal_04_source.jpg"><br>',
+  "<div class=""stackItem""><img src=""pelvic_ct_gluteal_03_source.jpg""><div class=""stackCap"">$capAlazazziAx<br>How to read it: the axial image shows the deep posterior pelvic/gluteal location. No extra arrows were added.</div></div><br><div class=""stackItem""><img src=""pelvic_ct_gluteal_04_source.jpg""><div class=""stackCap"">$capAlazazziCor<br>How to read it: the coronal image helps show bowel projecting through the deep pelvic foramen into the gluteal region. The source case had no obstruction or ischemia.<br>$refAlazazzi</div></div>",
+  '',
+  '',
+  'Sciatic hernia symptom clue: deep gluteal pain or posterior thigh symptoms',
+  '',
+  '',
+  '',
+  "$capAlazazziAx<br>$capAlazazziCor<br>$refAlazazzi",
+  'Why can this posterior pelvic hernia cause buttock pain or posterior thigh numbness?',
+  "Because the hernia exits through the sciatic foramen, a deep posterior pelvic route closely related to the piriformis region, gluteal neurovascular structures, and sciatic nerve. Herniated bowel or another organ can cause mechanical traction or compression in the deep gluteal region, producing buttock/gluteal pain, a deep mass, or sciatica-like posterior thigh pain/numbness.<br><br>Symptom clue: unexplained gluteal pain or buttock mass, especially with posterior thigh radiation or numbness, should prompt review of the sciatic foramen on CT/MRI.<br><br>$refAlazazzi",
+  '',
+  '',
+  '',
+  '',
+  'https://pmc.ncbi.nlm.nih.gov/articles/PMC12518056/',
+  'Frail older woman with vague abdominal and gluteal pain; CT showed bowel loops through the greater sciatic foramen without obstruction or ischemia.',
+  'CT example of a nonobstructed sciatic hernia presenting with gluteal discomfort.',
+  '',
+  $overview,
+  'GI Hernia PelvicFloor SciaticHernia GlutealPain ButtockMass PosteriorThigh CT'
+)
+
+# Card 3: differential card only.
+$rows += Make-Row @(
+  'Older adult with unilateral deep gluteal pain and bowel or pelvic-organ tissue projecting through a posterior pelvic foramen on CT/MRI. Panel PELVDIFF03C',
+  '<img src="pelvic_anatomy_foramen_06_source.jpg"><br>',
+  "<div class=""stackItem""><img src=""pelvic_anatomy_foramen_06_source.jpg""><div class=""stackCap"">$capFujimotoDiagram<br>How to read it: this anatomy diagram explains why posterior pelvic-foramen hernias can mimic gluteal or nerve-related disease. It is placed on the back because its labels would over-help the front.<br>$refFujimoto</div></div>",
+  '',
+  '',
+  'Sciatic hernia differential: posterior pelvic foramen route',
+  'What are the key mimics, and how do you distinguish this posterior pelvic-foramen hernia from them?',
+  "Differential/mimics: obturator hernia, femoral hernia, inguinal hernia, perineal hernia, gluteal abscess or hematoma, deep gluteal syndrome, lumbar radiculopathy, pelvic mass, and ureteral obstruction from another cause.<br><br>How to distinguish: trace the hernia neck. Sciatic hernia passes through the greater or lesser sciatic foramen into the deep gluteal region. Obturator hernia passes through the obturator canal between obturator/pectineus muscles. Femoral/inguinal hernias are anterior groin defects. Perineal hernia extends through the pelvic floor/perineum rather than the sciatic notch. Abscess/hematoma lacks bowel or organ continuity through a defined foramen.<br><br>$refFujimoto",
+  '',
+  "$capFujimotoDiagram<br>$refFujimoto",
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  'https://pmc.ncbi.nlm.nih.gov/articles/PMC8752626/',
+  'Anatomy reference diagram for distinguishing greater/lesser sciatic foramen routes from other pelvic and groin hernias.',
+  'Back-side anatomy support for the differential card.',
+  'Obturator hernia; femoral/inguinal hernia; perineal hernia; lumbar radiculopathy; deep gluteal syndrome; gluteal abscess/hematoma.',
+  $overview,
+  'GI Hernia PelvicFloor SciaticHernia Differential ObturatorHernia FemoralHernia Anatomy'
+)
+
+# Card 4: complications card only.
+$rows += Make-Row @(
+  '45-year-old woman with acute crampy hypogastric pain radiating down the posterior left thigh, vomiting, and a painful nonreducible left buttock mass. CT abdomen/pelvis panel PELVCOMP04D',
+  '<img src="pelvic_ct_complication_05_source.jpg"><br>',
+  "<div class=""stackItem""><img src=""pelvic_ct_complication_05_source.jpg""><div class=""stackCap"">$capDongCt<br>How to read it: source color arrows identify obstruction/peritoneal complication findings and the posterior pelvic hernia containing small bowel. No extra arrows were added.<br>$refDong</div></div>",
+  '',
+  '',
+  'Complicated sciatic hernia: incarceration/strangulation',
+  '',
+  '',
+  '',
+  "$capDongCt<br>$refDong",
+  '',
+  '',
+  '',
+  '',
+  'What complications and hernia contents should be anticipated for this posterior pelvic-foramen hernia pattern?',
+  "Contents: small bowel, colon, ureter, bladder, ovary/adnexa, omentum, appendix, and rarely tumor.<br><br>Complications: incarceration, bowel obstruction, strangulation/ischemia, necrosis, perforation, peritonitis/sepsis, ureteral obstruction or hydronephrosis, urinary sepsis, and recurrence.<br><br>Image logic: after identifying the route through the sciatic foramen, assess the content. Bowel content requires a search for upstream bowel dilatation, transition at the hernia neck, decreased enhancement, mesenteric edema/fluid, pneumatosis, free air, abscess, or peritoneal fluid. Ureteral content requires assessment for a ureteral loop, hydronephrosis, delayed nephrogram, or infection risk.<br><br>$refDong",
+  'https://pmc.ncbi.nlm.nih.gov/articles/PMC9982031/',
+  'Middle-aged woman with acute abdominal pain radiating down the posterior thigh, vomiting, and painful nonreducible buttock mass.',
+  'CT complication panel showing obstruction/peritoneal complication findings with left sciatic-foramen herniation containing small bowel.',
+  'Obturator hernia with SBO; femoral hernia with SBO; gluteal abscess; pelvic mass; lumbar radiculopathy with unrelated abdominal symptoms.',
+  $overview,
+  'GI Hernia PelvicFloor SciaticHernia Incarceration Strangulation SmallBowelObstruction Perforation CT'
+)
+
+[System.IO.Directory]::CreateDirectory($outDir) | Out-Null
+[System.IO.File]::WriteAllLines($tsvPath, $headers + $rows, [System.Text.UTF8Encoding]::new($false))
+Write-Host $tsvPath
+Write-Host "rows=$($rows.Count)"

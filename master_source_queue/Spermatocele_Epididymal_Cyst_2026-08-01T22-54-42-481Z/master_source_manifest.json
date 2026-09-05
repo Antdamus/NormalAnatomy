@@ -1,0 +1,344 @@
+{
+  "version": "1.0",
+  "articleTitle": "Spermatocele/Epididymal Cyst",
+  "createdAt": "2026-08-01T23:02:41Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Spermatocele/Epididymal Cyst"
+  ],
+  "canonicalDeckPath": "Corebook::Ultrasound::Scrotum Basic::Spermatocele/Epididymal Cyst",
+  "canonicalHierarchySource": "metadata.json canonicalHierarchy copied exactly from imported request bundle",
+  "sourcePriority": [
+    "RadPrimer canonical hierarchy/backbone",
+    "STATdx supplemental depth"
+  ],
+  "sourceCoverage": {
+    "radPrimerImageSetFullyCoveredByStatDx": false,
+    "summary": "STATdx contains exact duplicate coverage for RadPrimer images 2 and 4, near/same-concept reinforcement for RadPrimer image 3, and conceptual real-case alternatives for the RadPrimer graphic image 1. It does not fully cover the RadPrimer set with nonredundant exact replacements.",
+    "radPrimerImageCoverage": {
+      "RP-01": {
+        "radPrimerCoverageByStatDx": "conceptualReplacement",
+        "relatedStatDxImageIds": [
+          "SDX-06",
+          "SDX-09"
+        ],
+        "evidence": "RadPrimer image 1 is a graphic/anatomic illustration. STATdx provides real US examples of septated/multiloculated epididymal-region cystic lesions, but no same graphic or same source image.",
+        "decision": "Keep RadPrimer image 1 primary."
+      },
+      "RP-02": {
+        "radPrimerCoverageByStatDx": "exactDuplicate",
+        "relatedStatDxImageIds": [
+          "SDX-11"
+        ],
+        "evidence": "Visual inspection of staged evidence files shows the same Doppler US screenshot/content as STATdx image 11 after source resizing/recompression; captions also match. File hashes differ because source wrappers/resolution differ.",
+        "decision": "Keep RadPrimer image 2 primary and archive STATdx image 11 as optional duplicate."
+      },
+      "RP-03": {
+        "radPrimerCoverageByStatDx": "nearDuplicate",
+        "relatedStatDxImageIds": [
+          "SDX-07",
+          "SDX-13"
+        ],
+        "evidence": "STATdx images 7 and 13 teach the same falling-snow/mobile-debris concept but are visually different images/slices from the staged RadPrimer evidence.",
+        "decision": "Keep RadPrimer image 3 and the STATdx alternate examples primary for recognition reinforcement."
+      },
+      "RP-04": {
+        "radPrimerCoverageByStatDx": "exactDuplicate",
+        "relatedStatDxImageIds": [
+          "SDX-12"
+        ],
+        "evidence": "Visual inspection of staged evidence files shows the same grayscale multiseptated cyst screenshot/content as STATdx image 12 after source resizing/recompression; captions also match. File hashes differ because source wrappers/resolution differ.",
+        "decision": "Keep RadPrimer image 4 primary and archive STATdx image 12 as optional duplicate."
+      }
+    },
+    "textCoverage": {
+      "radPrimer": "Complete article backbone with US-centered diagnosis, differential, pathology, clinical issues, and management.",
+      "statDx": "Highly overlapping article with useful supplemental location, MR/CT, scanning-over-palpable-area, pathology, and differential nuances."
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 4,
+    "STATdx": 13,
+    "selectedPrimaryTeachingSet": 15,
+    "archiveOptionalDuplicate": 2
+  },
+  "sourceAttributionRules": {
+    "text": "Attribute fused statements as [RadPrimer], [STATdx], or [Both] in the package text.",
+    "images": "Use source-qualified human labels in prose; preserve RP/SDX short codes in registry and traceability.",
+    "hierarchy": "Use RadPrimer/metadata canonicalHierarchy exactly; do not substitute STATdx breadcrumb."
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-13"
+  ],
+  "archiveOptionalImageIds": [
+    "SDX-11",
+    "SDX-12"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and main outline/backbone; merge STATdx only where it adds specificity or supplemental modality/detail.",
+    "radPrimerKeep": [
+      "Canonical breadcrumb/hierarchy and deck routing.",
+      "Core definitions, US findings, falling snow sign mechanism, benign-extratesticular-lesion pearl, management including observation/spermatocelectomy and optional alcohol sclerotherapy note.",
+      "All four RadPrimer images remain selected as the canonical source-backed teaching set."
+    ],
+    "statDxKeep": [
+      "Epididymal cyst definition as serous/lymphatic fluid and spermatocele as retention cyst containing nonviable spermatozoa.",
+      "Location nuance: epididymal cysts can occur anywhere in the epididymis; spermatoceles classically arise in the head.",
+      "MR appearance: low T1, high T2, no enhancement; CT as a well-circumscribed uni- or multilocular superior-pole cystic lesion when encountered.",
+      "Palpable-complaint scanning instruction and differential refinements including hydrocele surrounding testis and pyocele hyperemic rim.",
+      "STATdx supplemental images that are visually distinct or provide MR, location, size, rete testis, and recognition-reinforcement examples."
+    ],
+    "downweightOrSkip": [
+      "Do not import STATdx breadcrumb as the canonical hierarchy.",
+      "Do not use unrelated IMAIOS label repository text embedded after the article sections as disease content.",
+      "Archive STATdx images 11 and 12 by default because staged evidence shows they are source-resized copies of RadPrimer images 2 and 4."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is uncertain/nearDuplicate and remains primary.",
+    "caseClusterGuardrails": {
+      "atomicClusterRule": "Same-patient, companion sequence, follow-up, adjacent-slice, procedure, comparison-view, and time-lapse image clusters should stay together unless an explicit documented split is safe.",
+      "identifiedClusters": [
+        {
+          "caseClusterId": "SDX-MR-01",
+          "imageIds": [
+            "SDX-04",
+            "SDX-05"
+          ],
+          "handling": "Retained together as paired MR T1 postcontrast and T2 fat-suppressed examples."
+        }
+      ],
+      "intentionalSplits": [],
+      "splitStatement": "No source case cluster was intentionally split."
+    },
+    "generatorInstructions": [
+      "Use clean human-facing labels in prose, e.g. RadPrimer image 3 or STATdx image 4.",
+      "Keep RP/SDX short codes in registry, manifest, traceability fields, and filenames rather than forcing them into narrative prose.",
+      "For future cards/lecture, download only selectedPrimaryImageIds by default; keep archiveOptionalImageIds available for audit/recovery."
+    ],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-01",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=true",
+        "plainFilename": "RP-01_RadPrimer_plain_SpermatoceleEpididymal_Cyst1.jpg",
+        "annotatedFilename": "RP-01_RadPrimer_annotated_SpermatoceleEpididymal_Cyst1_annot.jpg",
+        "humanFacingLabel": "RadPrimer image 1"
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=true",
+        "plainFilename": "RP-02_RadPrimer_plain_SpermatoceleEpididymal_Cyst2.jpg",
+        "annotatedFilename": "RP-02_RadPrimer_annotated_SpermatoceleEpididymal_Cyst2_annot.jpg",
+        "humanFacingLabel": "RadPrimer image 2"
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=true",
+        "plainFilename": "RP-03_RadPrimer_plain_SpermatoceleEpididymal_Cyst3.jpg",
+        "annotatedFilename": "RP-03_RadPrimer_annotated_SpermatoceleEpididymal_Cyst3_annot.jpg",
+        "humanFacingLabel": "RadPrimer image 3"
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=true",
+        "plainFilename": "RP-04_RadPrimer_plain_SpermatoceleEpididymal_Cyst4.jpg",
+        "annotatedFilename": "RP-04_RadPrimer_annotated_SpermatoceleEpididymal_Cyst4_annot.jpg",
+        "humanFacingLabel": "RadPrimer image 4"
+      },
+      {
+        "masterImageId": "SDX-01",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 1,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/29a40dee-8d5f-4231-9814-60c60f2e8ef6?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/29a40dee-8d5f-4231-9814-60c60f2e8ef6?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-01_STATdx_plain_SpermatoceleEpididymal_Cyst1.jpg",
+        "annotatedFilename": "SDX-01_STATdx_annotated_SpermatoceleEpididymal_Cyst1_annot.jpg",
+        "humanFacingLabel": "STATdx image 1"
+      },
+      {
+        "masterImageId": "SDX-02",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 2,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3d49bb33-254c-4c18-8e20-b4418d51599e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3d49bb33-254c-4c18-8e20-b4418d51599e?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-02_STATdx_plain_SpermatoceleEpididymal_Cyst2.jpg",
+        "annotatedFilename": "SDX-02_STATdx_annotated_SpermatoceleEpididymal_Cyst2_annot.jpg",
+        "humanFacingLabel": "STATdx image 2"
+      },
+      {
+        "masterImageId": "SDX-03",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 3,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/03737e51-29f0-4aba-a906-7b54bcf06047?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/03737e51-29f0-4aba-a906-7b54bcf06047?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-03_STATdx_plain_SpermatoceleEpididymal_Cyst3.jpg",
+        "annotatedFilename": "SDX-03_STATdx_annotated_SpermatoceleEpididymal_Cyst3_annot.jpg",
+        "humanFacingLabel": "STATdx image 3"
+      },
+      {
+        "masterImageId": "SDX-04",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 4,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1f3dd919-3d18-4864-b16a-afc76cb2a161?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1f3dd919-3d18-4864-b16a-afc76cb2a161?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-04_STATdx_plain_SpermatoceleEpididymal_Cyst4.jpg",
+        "annotatedFilename": "SDX-04_STATdx_annotated_SpermatoceleEpididymal_Cyst4_annot.jpg",
+        "humanFacingLabel": "STATdx image 4"
+      },
+      {
+        "masterImageId": "SDX-05",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 5,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/6a0d1472-ebe3-4eb5-b38e-7fec7e3ec666?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/6a0d1472-ebe3-4eb5-b38e-7fec7e3ec666?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-05_STATdx_plain_SpermatoceleEpididymal_Cyst5.jpg",
+        "annotatedFilename": "SDX-05_STATdx_annotated_SpermatoceleEpididymal_Cyst5_annot.jpg",
+        "humanFacingLabel": "STATdx image 5"
+      },
+      {
+        "masterImageId": "SDX-06",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 6,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/d479ffb1-1764-4ade-974d-7cf4fa76830e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/d479ffb1-1764-4ade-974d-7cf4fa76830e?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-06_STATdx_plain_SpermatoceleEpididymal_Cyst6.jpg",
+        "annotatedFilename": "SDX-06_STATdx_annotated_SpermatoceleEpididymal_Cyst6_annot.jpg",
+        "humanFacingLabel": "STATdx image 6"
+      },
+      {
+        "masterImageId": "SDX-07",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 7,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/971b39c2-3c65-4359-8e8a-98f030fd2d7f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/971b39c2-3c65-4359-8e8a-98f030fd2d7f?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-07_STATdx_plain_SpermatoceleEpididymal_Cyst7.jpg",
+        "annotatedFilename": "SDX-07_STATdx_annotated_SpermatoceleEpididymal_Cyst7_annot.jpg",
+        "humanFacingLabel": "STATdx image 7"
+      },
+      {
+        "masterImageId": "SDX-08",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 8,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ebc9221b-c767-455b-ac6f-98eef50665bb?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ebc9221b-c767-455b-ac6f-98eef50665bb?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-08_STATdx_plain_SpermatoceleEpididymal_Cyst8.jpg",
+        "annotatedFilename": "SDX-08_STATdx_annotated_SpermatoceleEpididymal_Cyst8_annot.jpg",
+        "humanFacingLabel": "STATdx image 8"
+      },
+      {
+        "masterImageId": "SDX-09",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 9,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/cb6cadbf-f09a-47e8-b51b-bcffc436dad4?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/cb6cadbf-f09a-47e8-b51b-bcffc436dad4?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-09_STATdx_plain_SpermatoceleEpididymal_Cyst9.jpg",
+        "annotatedFilename": "SDX-09_STATdx_annotated_SpermatoceleEpididymal_Cyst9_annot.jpg",
+        "humanFacingLabel": "STATdx image 9"
+      },
+      {
+        "masterImageId": "SDX-10",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 10,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ee4abab5-c492-4445-9c82-3177f2dc2ded?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ee4abab5-c492-4445-9c82-3177f2dc2ded?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-10_STATdx_plain_SpermatoceleEpididymal_Cyst10.jpg",
+        "annotatedFilename": "SDX-10_STATdx_annotated_SpermatoceleEpididymal_Cyst10_annot.jpg",
+        "humanFacingLabel": "STATdx image 10"
+      },
+      {
+        "masterImageId": "SDX-13",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 13,
+        "download": true,
+        "downloadSet": "primaryTeachingSet",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1f80e69a-d581-41e0-baa3-7948876b4b14?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1f80e69a-d581-41e0-baa3-7948876b4b14?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-13_STATdx_plain_SpermatoceleEpididymal_Cyst13.jpg",
+        "annotatedFilename": "SDX-13_STATdx_annotated_SpermatoceleEpididymal_Cyst13_annot.jpg",
+        "humanFacingLabel": "STATdx image 13"
+      },
+      {
+        "masterImageId": "SDX-11",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 11,
+        "download": false,
+        "downloadSet": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/52c72834-8793-432e-93cf-e058a36e8dcc?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/52c72834-8793-432e-93cf-e058a36e8dcc?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-11_STATdx_plain_SpermatoceleEpididymal_Cyst11.jpg",
+        "annotatedFilename": "SDX-11_STATdx_annotated_SpermatoceleEpididymal_Cyst11_annot.jpg",
+        "humanFacingLabel": "STATdx image 11",
+        "reason": "exactDuplicate"
+      },
+      {
+        "masterImageId": "SDX-12",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 12,
+        "download": false,
+        "downloadSet": "archiveOptionalDuplicate",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/33bb4b8b-73d7-43c2-b278-f1ee48bba9b2?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/33bb4b8b-73d7-43c2-b278-f1ee48bba9b2?annotated=true&size=1000&quality=90",
+        "plainFilename": "SDX-12_STATdx_plain_SpermatoceleEpididymal_Cyst12.jpg",
+        "annotatedFilename": "SDX-12_STATdx_annotated_SpermatoceleEpididymal_Cyst12_annot.jpg",
+        "humanFacingLabel": "STATdx image 12",
+        "reason": "exactDuplicate"
+      }
+    ]
+  }
+}

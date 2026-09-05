@@ -237,6 +237,402 @@
     }
     return result;
   };
+  const runNativeCineRange = async () => {
+    const capture = window.__IMAIOS_CINE_TOOLS_NATIVE_VIEWER__;
+    const viewer = capture?.viewer || null;
+    const ids = uniqueNumericIds(options.ids || options.nativeIds || []);
+    const sourceName = cap(options.source || "codex-live-drill-cine-range", 80);
+    const moduleSlug = cap(options.moduleSlug || "", 80);
+    const result = {
+      kind: "imaios-native-cine-range-page-context",
+      version: 1,
+      href: location.href,
+      title: document.title,
+      requestedIds: ids,
+      bulkCalls: [],
+      perId: [],
+      errors: [],
+      viewer: summarizeCapturedNativeViewer(),
+      bounds: getTimelineSliceBounds()
+    };
+    if (!viewer || typeof viewer.getSliceWithIsolatedStructure !== "function") {
+      return {
+        ...result,
+        ok: false,
+        reason: "Captured IMAIOS viewer with getSliceWithIsolatedStructure was not available."
+      };
+    }
+
+    const allSlices = new Set();
+    const callGetter = (signature, args) => {
+      try {
+        const raw = viewer.getSliceWithIsolatedStructure.apply(viewer, args);
+        const slices = collectNativeSliceNumbers(raw, result.bounds);
+        slices.forEach((slice) => allSlices.add(slice));
+        return {
+          signature,
+          ok: true,
+          rawType: typeOf(raw),
+          sliceCount: slices.length,
+          slices: slices.slice(0, 80),
+          rawSummary: summarizeNativeRangeRaw(raw)
+        };
+      } catch (error) {
+        return { signature, ok: false, error: cap(error?.message || error, 600) };
+      }
+    };
+
+    const bulkCalls = [
+      ["no-args", []],
+      ["source", [sourceName]],
+      ["ids-array", [ids]],
+      ["string-ids-array", [ids.map(String)]],
+      ["source-ids-array", [sourceName, ids]],
+      ["object-ids", [{ ids, nativeIds: ids, moduleSlug, source: sourceName }]]
+    ];
+    if (moduleSlug) {
+      bulkCalls.push(
+        ["module-ids-array", [moduleSlug, ids]],
+        ["source-module-ids-array", [sourceName, moduleSlug, ids]]
+      );
+    }
+    result.bulkCalls = bulkCalls.map(([signature, args]) => callGetter(signature, args));
+
+    for (const id of ids) {
+      const calls = [
+        callGetter("id", [id]),
+        callGetter("string-id", [String(id)]),
+        callGetter("array-id", [[id]]),
+        callGetter("source-id", [sourceName, id]),
+        callGetter("source-string-id", [sourceName, String(id)]),
+        callGetter("object-id", [{ id }]),
+        callGetter("object-structure-id", [{ structureId: id }])
+      ];
+      if (moduleSlug) {
+        calls.push(
+          callGetter("module-id", [moduleSlug, id]),
+          callGetter("source-module-id", [sourceName, moduleSlug, id])
+        );
+      }
+      result.perId.push({ id, calls });
+    }
+
+    if (!allSlices.size) {
+      result.allIsolatedCall = callGetter("no-args", []);
+    }
+    if (!allSlices.size) {
+      result.stateScan = collectSlicesNearNativeIds(viewer, ids, result.bounds);
+      (result.stateScan.slices || []).forEach((slice) => allSlices.add(slice));
+    }
+
+    const slices = Array.from(allSlices).sort((a, b) => a - b);
+    if (!slices.length) {
+      return {
+        ...result,
+        ok: false,
+        reason: "No slice numbers were returned for the isolated structure IDs."
+      };
+    }
+
+    result.range = {
+      startSlice: slices[0],
+      endSlice: slices[slices.length - 1],
+      frameCount: slices[slices.length - 1] - slices[0] + 1,
+      slices: slices.slice(0, 240)
+    };
+    result.ok = true;
+    return result;
+  };
+  const getTimelineSliceBounds = () => {
+    const values = Array.from(document.querySelectorAll(".slice[sort_order], [sort_order][slice_id]"))
+      .map((element) => {
+        const text = String(element.getAttribute("sort_order") ?? "").trim();
+        return text ? Number(text) : null;
+      })
+      .filter(Number.isFinite);
+    if (values.length) {
+      return {
+        min: Math.min(...values),
+        max: Math.max(...values),
+        count: values.length,
+        source: "timeline"
+      };
+    }
+    const inputBounds = getSliceInputBounds();
+    const domSliceCount = Array.from(document.querySelectorAll(".slice"))
+      .filter((element) => isElementVisible(element))
+      .length;
+    if (domSliceCount) {
+      const base = getDomTimelineSliceBase(domSliceCount, inputBounds);
+      return {
+        min: base,
+        max: base + domSliceCount - 1,
+        count: domSliceCount,
+        source: "dom-slice-order",
+        current: Number.isFinite(inputBounds?.value) ? inputBounds.value : null
+      };
+    }
+    if (inputBounds) {
+      const min = Number.isFinite(inputBounds.min) ? inputBounds.min : 0;
+      return {
+        min,
+        max: inputBounds.max,
+        count: inputBounds.max - min + 1,
+        source: "slice-input",
+        current: Number.isFinite(inputBounds.value) ? inputBounds.value : null
+      };
+    }
+    return {
+      min: null,
+      max: null,
+      count: 0,
+      source: "none"
+    };
+  };
+  const getSliceInputBounds = () => Array.from(document.querySelectorAll("input[type='number'], input"))
+      .map((input) => {
+        const min = Number(String(input.getAttribute("min") || input.min || "").trim());
+        const max = Number(String(input.getAttribute("max") || input.max || "").trim());
+        const value = Number(String(input.value || "").trim());
+        return { min, max, value };
+      })
+      .filter((entry) => Number.isFinite(entry.max) && entry.max > 10 && entry.max <= 10000)
+      .sort((a, b) => ((Number.isFinite(a.min) ? a.min : 0) - (Number.isFinite(b.min) ? b.min : 0)) || (a.max - b.max))[0] || null;
+  const getDomTimelineSliceBase = (sliceCount, inputBounds = null) => {
+    const min = Number(inputBounds?.min);
+    const max = Number(inputBounds?.max);
+    if (Number.isFinite(min) && Number.isFinite(max)) {
+      if ((max - min + 1) === sliceCount) return min;
+      if ((max - min) === sliceCount) return min + 1;
+    }
+    if (Number.isFinite(max) && max === sliceCount) return 1;
+    return Number.isFinite(min) ? min : 0;
+  };
+  const isElementVisible = (element) => {
+    if (!element || element.nodeType !== Node.ELEMENT_NODE) return false;
+    const rect = element.getBoundingClientRect();
+    const style = window.getComputedStyle(element);
+    return rect.width > 0 && rect.height > 0 && style.visibility !== "hidden" && style.display !== "none";
+  };
+  const collectNativeSliceNumbers = (value, bounds, path = "", output = new Set(), seen = new WeakSet()) => {
+    if (value == null) return [];
+    const keySuggestsSlice = /(?:slice|sort[_-]?order|range|start|end|min|max|\[\])$/i.test(path);
+    if (typeof value === "number" || typeof value === "string") {
+      if (keySuggestsSlice) {
+        const slice = normalizeNativeSliceNumber(value, bounds);
+        if (Number.isFinite(slice)) output.add(slice);
+      }
+      return Array.from(output).sort((a, b) => a - b);
+    }
+    if (value instanceof Set) {
+      value.forEach((item) => collectNativeSliceNumbers(item, bounds, `${path}[]`, output, seen));
+      return Array.from(output).sort((a, b) => a - b);
+    }
+    if (Array.isArray(value)) {
+      value.forEach((item) => collectNativeSliceNumbers(item, bounds, `${path}[]`, output, seen));
+      return Array.from(output).sort((a, b) => a - b);
+    }
+    if (typeof value !== "object") return Array.from(output).sort((a, b) => a - b);
+    if (seen.has(value)) return Array.from(output).sort((a, b) => a - b);
+    seen.add(value);
+
+    for (const [key, item] of Object.entries(value)) {
+      const childPath = path ? `${path}.${key}` : key;
+      if (/^(slice|slices|sliceId|slice_id|sliceIndex|slice_index|sliceNumber|slice_number|sortOrder|sort_order|range|start|end|min|max)$/i.test(key)) {
+        collectNativeSliceNumbers(item, bounds, childPath, output, seen);
+      } else if (item && typeof item === "object") {
+        collectNativeSliceNumbers(item, bounds, childPath, output, seen);
+      }
+    }
+    return Array.from(output).sort((a, b) => a - b);
+  };
+  const normalizeNativeSliceNumber = (value, bounds = {}) => {
+    const text = String(value ?? "").trim();
+    if (!/^-?\d+(?:\.\d+)?$/.test(text)) return null;
+    const number = Math.round(Number(text));
+    if (!Number.isFinite(number)) return null;
+    const min = Number(bounds?.min);
+    const max = Number(bounds?.max);
+    if (Number.isFinite(min) && Number.isFinite(max)) {
+      return number >= min && number <= max ? number : null;
+    }
+    return number >= 0 && number <= 5000 ? number : null;
+  };
+  const summarizeNativeRangeRaw = (raw) => {
+    const type = typeOf(raw);
+    if (raw == null || type === "number" || type === "string" || type === "boolean") {
+      return { type, value: raw == null ? null : cap(raw, 220) };
+    }
+    if (type === "function") return { type, name: raw.name || "" };
+    let keys = [];
+    try {
+      keys = Object.keys(raw).slice(0, 24);
+    } catch (_) {
+      keys = [];
+    }
+    const summary = { type, keyCount: keys.length, keys };
+    if (Array.isArray(raw)) summary.length = raw.length;
+    const sliceLikeKeys = keys.filter((key) => /slice|sort|range|start|end|min|max|image|frame/i.test(key)).slice(0, 12);
+    if (sliceLikeKeys.length) {
+      summary.sliceLike = {};
+      for (const key of sliceLikeKeys) {
+        try {
+          summary.sliceLike[key] = cap(raw[key], 180);
+        } catch (_) {
+          summary.sliceLike[key] = "[unreadable]";
+        }
+      }
+    }
+    return summary;
+  };
+  const collectSlicesNearNativeIds = (root, ids, bounds = {}) => {
+    const requested = new Set(uniqueNumericIds(ids).map(String));
+    const result = {
+      sliceCount: 0,
+      slices: [],
+      hitCount: 0,
+      hits: [],
+      visitedNodes: 0,
+      truncated: false
+    };
+    if (!root || !requested.size) return result;
+
+    const slices = new Set();
+    const seen = new WeakSet();
+    const maxNodes = Number(options.scanMaxNodes || 12000);
+    const maxDepth = Number(options.scanMaxDepth || 9);
+    const idKeyPattern = /(?:^|_)(?:id|ids|structureid|structure_id|labelid|label_id|nativeid|native_id|anatomicalstructureid|anatomical_structure_id)$/i;
+    const idContextPattern = /structure|label|annotation|anatom/i;
+    const sliceKeyPattern = /^(?:slice|slices|sliceid|slice_id|sliceindex|slice_index|slicenumber|slice_number|sortorder|sort_order|imageindex|image_index|imagenumber|image_number|frame|frames|framenumber|frame_number|start|end|min|max)$/i;
+    const sliceContextPattern = /slice|image|frame|sort[_-]?order/i;
+    const addSlice = (value, reason, path) => {
+      const slice = normalizeNativeSliceNumber(value, bounds);
+      if (!Number.isFinite(slice)) return;
+      slices.add(slice);
+      if (result.hits.length < 80) {
+        result.hits.push({ reason, path: cap(path, 260), slice });
+      }
+    };
+    const extractId = (value) => {
+      if (typeof value === "number" || typeof value === "string") {
+        const number = Number.parseInt(String(value).trim(), 10);
+        return Number.isFinite(number) && number > 0 ? String(number) : "";
+      }
+      if (value && typeof value === "object") {
+        for (const key of ["id", "nativeId", "native_id", "structureId", "structure_id", "labelId", "label_id", "value"]) {
+          try {
+            const id = extractId(value[key]);
+            if (id) return id;
+          } catch (_) {
+            // Ignore unreadable properties in page-owned objects.
+          }
+        }
+      }
+      return "";
+    };
+    const valueMatchesRequestedId = (key, value) => {
+      if (!idKeyPattern.test(String(key || "")) && !idContextPattern.test(String(key || ""))) return false;
+      if (Array.isArray(value) || value instanceof Set) {
+        const items = Array.from(value).slice(0, 500);
+        return items.some((item) => requested.has(extractId(item)));
+      }
+      return requested.has(extractId(value));
+    };
+    const collectOwnSliceFields = (value, path) => {
+      if (!value || typeof value !== "object") return;
+      let keys = [];
+      try {
+        keys = Object.keys(value).slice(0, 500);
+      } catch (_) {
+        return;
+      }
+      for (const key of keys) {
+        let item;
+        try {
+          item = value[key];
+        } catch (_) {
+          continue;
+        }
+        if (sliceKeyPattern.test(key) || (/^(?:index|order|number|position)$/i.test(key) && sliceContextPattern.test(path))) {
+          collectNativeSliceNumbers(item, bounds, key).forEach((slice) => addSlice(slice, `field:${key}`, `${path}.${key}`));
+        }
+      }
+    };
+    const collectPathSliceSegments = (path) => {
+      const parts = String(path || "").split(".");
+      for (let index = 0; index < parts.length; index += 1) {
+        const part = parts[index];
+        if (!/^\d+$/.test(part)) continue;
+        const context = parts.slice(Math.max(0, index - 2), index).join(".");
+        if (sliceContextPattern.test(context)) addSlice(part, "path-index", parts.slice(0, index + 1).join("."));
+      }
+    };
+    const collectContextSlices = (path, value, ancestors) => {
+      result.hitCount += 1;
+      collectOwnSliceFields(value, path);
+      collectPathSliceSegments(path);
+      for (let index = ancestors.length - 1; index >= 0 && index >= ancestors.length - 4; index -= 1) {
+        const ancestor = ancestors[index];
+        collectOwnSliceFields(ancestor.value, ancestor.path);
+        collectPathSliceSegments(ancestor.path);
+      }
+    };
+    const shouldSkipObject = (value) => {
+      if (!value || typeof value !== "object") return false;
+      try {
+        if (value === window || value === document || value === document.documentElement) return true;
+        if (typeof Node !== "undefined" && value instanceof Node) return true;
+        if (typeof Window !== "undefined" && value instanceof Window) return true;
+      } catch (_) {
+        return true;
+      }
+      return false;
+    };
+    const visit = (value, path, depth, ancestors) => {
+      if (result.visitedNodes >= maxNodes) {
+        result.truncated = true;
+        return;
+      }
+      if (value == null || depth > maxDepth) return;
+      const type = typeof value;
+      if (type !== "object" && type !== "function") {
+        const key = path.split(".").pop() || "";
+        if (valueMatchesRequestedId(key, value)) collectContextSlices(path, value, ancestors);
+        return;
+      }
+      if (shouldSkipObject(value)) return;
+      if (seen.has(value)) return;
+      seen.add(value);
+      result.visitedNodes += 1;
+
+      let keys = [];
+      try {
+        keys = Object.keys(value);
+      } catch (_) {
+        return;
+      }
+      for (const key of keys.slice(0, 700)) {
+        let item;
+        try {
+          item = value[key];
+        } catch (_) {
+          continue;
+        }
+        const childPath = path ? `${path}.${key}` : key;
+        if (valueMatchesRequestedId(key, item)) collectContextSlices(childPath, item, [...ancestors, { path, value }]);
+        const childType = typeof item;
+        if (item && (childType === "object" || childType === "function")) {
+          visit(item, childPath, depth + 1, [...ancestors, { path, value }]);
+        }
+        if (result.truncated) break;
+      }
+    };
+
+    visit(root, "viewer", 0, []);
+    result.slices = Array.from(slices).sort((a, b) => a - b);
+    result.sliceCount = result.slices.length;
+    return result;
+  };
   const runNativeClearIsolate = async () => {
     const capture = window.__IMAIOS_CINE_TOOLS_NATIVE_VIEWER__;
     const viewer = capture?.viewer || null;
@@ -900,6 +1296,18 @@
     }
     if (mode === "native-direct-isolate") {
       runNativeDirectIsolate().then((payload) => {
+        window.postMessage({ source, nonce, payload }, "*");
+      }).catch((error) => {
+        window.postMessage({
+          source,
+          nonce,
+          payload: { ok: false, mode, error: cap(error?.stack || error, 1800) }
+        }, "*");
+      });
+      return;
+    }
+    if (mode === "native-cine-range") {
+      runNativeCineRange().then((payload) => {
         window.postMessage({ source, nonce, payload }, "*");
       }).catch((error) => {
         window.postMessage({

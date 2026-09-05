@@ -1,0 +1,138 @@
+# Master Source Package: Adnexal/Ovarian Torsion
+
+## Routing and Source Scope
+- Article title: Adnexal/Ovarian Torsion
+- Canonical hierarchy: All Categories > Basic > Ultrasound > Female Pelvis Basic > Adnexal/Ovarian Torsion
+- Canonical deck path: Corebook::Ultrasound::Female Pelvis Basic::Adnexal/Ovarian Torsion
+- Source priority: RadPrimer first for hierarchy/backbone; STATdx second for supplemental depth.
+- Source evidence reviewed: RadPrimer_source_package.txt, STATdx_source_package.txt, RadPrimer_metadata.json, STATdx_metadata.json, metadata.json, master_source_request.md, image_evidence_manifest.json, and staged image_evidence files.
+- Core Radiology: no auditable Core text was supplied in this bundle; do not claim Core support.
+- IMAIOS/deck routing: use metadata.json canonicalHierarchy exactly. Do not substitute STATdx breadcrumbs.
+
+## Image Coverage Gate
+[Both] STATdx does not fully cover the RadPrimer image set. The staged evidence images were visually reviewed in a contact sheet, source image IDs were compared, and SHA-256 hashes were unique across all 32 evidence files. No image was proven to be an exact duplicate, same slice, same screenshot, or unusable. Therefore all RadPrimer and STATdx images remain in the primary teaching set; archiveOptionalImageIds is empty.
+
+### RadPrimer Image Coverage by STATdx
+- RadPrimer image 1: nearDuplicate; covered by STATdx image 1, STATdx image 13. Actual evidence images show different ultrasound screenshots/patients, but STATdx has close grayscale examples of enlarged edematous ovary with peripheral follicles. Hashes/source image IDs differ; no exact duplicate evidence. Keep RadPrimer image 1 and STATdx images primary as recognition reinforcement.
+- RadPrimer image 2: nearDuplicate; covered by STATdx image 2, STATdx image 7, STATdx image 8. STATdx covers Doppler pitfalls and absent/abnormal flow, but the staged images are visually distinct and not the same slice/screenshot. Keep RadPrimer image 2 primary; use STATdx Doppler examples as supplemental reinforcement.
+- RadPrimer image 3: conceptualReplacement; covered by STATdx image 5, STATdx image 9, STATdx image 10, STATdx image 16. STATdx supplies twisted-pedicle and lead-point examples, but the RadPrimer image is a distinct acute-pain case with cystic lead point and color Doppler pedicle; no identical evidence file or image ID. Keep RadPrimer image 3 primary and preserve it with RadPrimer image 4 as an atomic same-patient cluster.
+- RadPrimer image 4: conceptualReplacement; covered by STATdx image 6. STATdx image 6 is another laparoscopic confirmation of torsion, but visual review shows a different operative photograph, not a duplicate of RadPrimer image 4. Keep RadPrimer image 4 primary as operative correlation for RadPrimer image 3.
+- RadPrimer image 5: nearDuplicate; covered by STATdx image 3, STATdx image 19. STATdx has avascular enlarged ovary examples on power/color Doppler, but the images are distinct in acquisition, patient, and appearance. Keep RadPrimer image 5 primary; keep STATdx necrosis/avascularity examples primary.
+- RadPrimer image 6: nearDuplicate; covered by STATdx image 4, STATdx image 20, STATdx image 22. STATdx includes CT examples of midline/displaced enlarged necrotic ovary; visual review shows different CT slices/cases and unique hashes. Keep RadPrimer image 6 primary and use STATdx CT images for CT pattern range.
+- RadPrimer image 7: conceptualReplacement; covered by STATdx image 14, STATdx image 17. STATdx has MRI examples of enlarged edematous/midline ovary and twisted pedicle, but does not duplicate the RadPrimer 33-week gravid hemorrhagic torsion T2 image. Keep RadPrimer image 7 primary as part of the gravid MRI cluster.
+- RadPrimer image 8: notCovered; covered by none. No STATdx staged image reproduces the RadPrimer T1 fat-suppressed hemorrhagic torsion appearance adjacent to a 33-week gravid uterus. Keep RadPrimer image 8 primary and preserve with RadPrimer image 7.
+- RadPrimer image 9: conceptualReplacement; covered by STATdx image 9, STATdx image 10, STATdx image 15, STATdx image 16. STATdx contributes cystadenoma and dermoid lead-point clusters, but RadPrimer image 9 is a distinct large unilocular cyst/teratoma lead-point example. Keep RadPrimer image 9 primary for adult lead-point mass recognition.
+- RadPrimer image 10: notCovered; covered by none. The RadPrimer isolated fallopian tube torsion image shows a dilated thick-walled tube discrete from a normal ovary; STATdx discusses isolated tubal torsion but no staged STATdx image provides the same visual teaching target. Keep RadPrimer image 10 primary.
+
+## Fused Teaching Backbone
+
+### Key Facts
+- [Both] Adnexal torsion is the more precise term because the fallopian tube is usually involved along with the ovary; isolated fallopian tube torsion is rare but important.
+- [Both] The core mechanism is rotation of the ovary/adnexa on its vascular pedicle, causing venous and lymphatic congestion first, then arterial compromise, ischemia, hemorrhagic infarction, and necrosis if untreated.
+- [Both] The most consistent imaging clue is an enlarged, edematous, abnormally positioned ovary, often with peripheralized follicles and variable Doppler flow.
+- [Both] Normal arterial or even venous flow does not exclude torsion. Venous outflow is usually affected earliest; preserved central venous flow can suggest viability.
+- [Both] The twisted vascular pedicle/whirlpool sign is highly specific, but it is not always seen; CT reports it in fewer than one third of cases, and ultrasound visualization depends on technique, degree of twist, and residual intrapedicular flow.
+- [Both] Adult torsion commonly has a benign lead point, especially a physiologic follicular/corpus luteum cyst, dermoid/mature teratoma, paraovarian cyst, or other benign ovarian mass.
+- [Both] Treatment is urgent surgery with detorsion when viable and salpingo-oophorectomy when necrotic/infarcted; remove any mass serving as the lead point.
+
+### Terminology and Pathophysiology
+- [RadPrimer] Adnexal torsion is more accurate than ovarian torsion because torsion usually includes the fallopian tube; isolated tubal torsion may occur.
+- [STATdx] The pedicle twists around the infundibulopelvic and utero-ovarian ligament axis, causing venous/lymphatic congestion before arterial obstruction.
+- [Both] Torsion of both ovary and fallopian tube is most commonly found at surgery. The twist may range from partial/incomplete torsion to multiple rotations.
+- [RadPrimer] Sequential venous, lymphatic, and arterial obstruction produces central edema and microscopic hemorrhage early, peripheral displacement of follicles, and late hemorrhagic infarction.
+- [STATdx] Necrotic ovaries are friable and may lose normal architecture; edematous or hemorrhagic ovaries may still be viable.
+
+### Clinical Setting
+- [Both] Classic presentation is acute severe pelvic pain, often sharp and unremitting, with nausea/vomiting; pain may be intermittent with torsion-detorsion.
+- [Both] Torsion accounts for about 2-3% of gynecologic emergencies and is most common in reproductive-age patients.
+- [RadPrimer] Risk increases during pregnancy, especially before 20 weeks, with ovarian stimulation, and after prior abdominopelvic surgery.
+- [STATdx] Up to 20% of cases may occur in pregnant women; patients may be misdiagnosed clinically as appendicitis or nephrolithiasis.
+- [Both] Fever can occur when the ovary is infarcted. A palpable adnexal mass may or may not be present.
+
+## Imaging Features
+
+### Ultrasound
+- [Both] Best initial test: transvaginal/endovaginal ultrasound with grayscale and color Doppler. Compare both ovaries on grayscale and Doppler.
+- [Both] Enlarged ovary: greater than 4 cm in longest dimension or greater than 20 cm3 in premenopausal patients; greater than 10 cm3 in postmenopausal patients. Torsed ovaries average about 28 times normal volume.
+- [Both] Grayscale findings: enlarged rounded ovary, heterogeneous/hyperechoic edematous stroma, peripheral fluid-filled follicles, thickened echogenic follicle walls/follicular ring sign, probe tenderness, free fluid, and an underlying cystic or solid lead-point mass.
+- [Both] Position: torsed ovary may be displaced midline, anterior/superior to the uterine fundus, cephalad, or into the cul-de-sac.
+- [Both] Twisted pedicle signs: whirlpool sign on dynamic sweep/cine clip, target sign with concentric hypoechoic stripes, beaked twisted fallopian tube, or a heterogeneous tubular edematous tube.
+- [RadPrimer] Isolated fallopian tube torsion may show an adnexal cyst separate from a normal ovary and a dilated/tender tube.
+- [STATdx] Cine clips of the adnexa help identify the twisted vascular pedicle; the pedicle may be harder to see with less than 360 degrees of twist or when intrapedicular vessels no longer flow.
+
+### Doppler Pitfalls and Viability
+- [Both] Doppler findings vary with acuity and degree of obstruction. Normal arterial and venous waveforms may be present in acute or incomplete torsion.
+- [Both] Venous flow is usually affected first; absent venous flow in an enlarged echogenic ovary with peripheral follicles is an early reliable sign.
+- [Both] Dual ovarian arterial supply means arterial flow can persist; normal arterial flow does not exclude torsion.
+- [STATdx] Absent or reversed arterial diastolic flow and low-velocity/parvus-tardus arterial waveforms have been described.
+- [Both] Absence of flow in the vascular pedicle or absent ovarian enhancement raises concern for necrosis/infarction; central venous flow favors viability.
+
+### CT
+- [Both] CT can suggest torsion when an enlarged, displaced ovary is seen, especially with midline/superior location, deviation of the uterus toward the torsed side, hypodense edematous stroma, peripheral cysts, free fluid, or an associated lead-point lesion.
+- [Both] The twisted vascular pedicle is the most specific CT sign but is seen in fewer than one third of cases; use sagittal/coronal multiplanar reformations.
+- [RadPrimer] Noncontrast CT can show ovarian hematoma or hematosalpinx greater than 50 HU.
+- [Both] Heterogeneous, minimal, or absent enhancement indicates progression from ischemia to infarction/necrosis.
+
+### MRI
+- [Both] MRI can confirm torsion and evaluate underlying mass or infarction when ultrasound is equivocal or when CT/MR is obtained for acute abdomen/pelvic pain.
+- [Both] T1-weighted images: stromal edema is low signal; T1 hyperintensity suggests hemorrhagic infarction, hematosalpinx, or hemorrhagic lead-point lesion.
+- [Both] T2-weighted images: edematous stroma is high signal with peripheral hyperintense follicles; dark signal may indicate infarcted/nonviable tissue.
+- [Both] Contrast-enhanced T1: enhancement varies with chronicity and infarction; absent stromal enhancement supports infarction. MRI can show the twisted pedicle and relationship to the uterus/adnexa.
+
+## Differential Diagnosis
+- [Both] Hemorrhagic corpus luteum/cyst: most common false positive. Look for an otherwise normal ovary with preserved vascularity, reticular/fishnet fibrin strands, retractile clot, fluid-fluid or fluid-debris level, and rim flow.
+- [Both] Ectopic pregnancy: positive beta-hCG, no intrauterine pregnancy, adnexal mass separate from ovary, tubal ring/ring of fire, yolk sac/embryo when visible, and hemoperitoneum when ruptured.
+- [Both] Pelvic inflammatory disease: thickened dilated tubes, pyosalpinx with low-level echoes/fluid-fluid level, hyperemia, enlarged ovaries from oophoritis, tubo-ovarian abscess, complex adnexal inflammatory mass, and possible indefinite uterus sign.
+- [Both] Isolated fallopian tube torsion: dilated thick-walled tube with internal debris/hemorrhage and normal ovaries; whirlpool sign can still be present.
+
+## Source Image Teaching Set
+
+### RadPrimer Images
+- RadPrimer image 1: Transvaginal longitudinal US shows an enlarged, 6-cm, edematous right ovary [arrow: arrow_WS.png]. Notice the echogenic, thickened follicle walls [arrow: arrow_CC.png]. Used for recognitionReinforcement, enlargedEdematousOvary, echogenicFollicleWalls, transvaginalUltrasound.
+- RadPrimer image 2: Transvaginal longitudinal color Doppler US shows no visible blood flow within the inferior half over the enlarged right ovary. Aphasic waveform is present with artifact that should not be confused for venous waveform [arrow: arrow_WS.png]. Notice the peripheralized follicles with echogenic, thickened walls [arrow: arrow_CS.png]. Trace-free fluid is present in the right adnexal region [arrow: arrow_CO.png]. Used for recognitionReinforcement, absentVenousFlow, peripheralFollicles, colorDoppler, freeFluid.
+- RadPrimer image 3: Endovaginal longitudinal US in a woman with acute pelvic pain shows a large cyst in the ovary with adjacent edematous parenchyma [arrow: arrow_WS.png] with no color Doppler signal. Alternating red and blue color signal [arrow: arrow_WO.png] represents a twisted vascular pedicle, which is best seen during real time. Used for recognitionReinforcement, twistedPedicle, leadPointCyst, absentFlow, caseClusterPreserved.
+- RadPrimer image 4: Intraoperative photo in the same patient looking caudally confirms torsion and shows a dusky, infarcted right ovary [arrow: arrow_WO.png] and twisted vascular pedicle [arrow: arrow_WS.png]. Used for recognitionReinforcement, operativeCorrelation, twistedPedicle, infarctedOvary, caseClusterPreserved.
+- RadPrimer image 5: Transabdominal longitudinal color Doppler US shows no blood flow within an enlarged right ovary [arrow: arrow_WS.png], which was torsed. Used for recognitionReinforcement, transabdominalUltrasound, absentFlow, enlargedOvary.
+- RadPrimer image 6: Axial CECT shows an enlarged right ovary [arrow: arrow_CS.png] displaced in to the right upper pelvis, superior and lateral to the partially seen uterine fundus [arrow: arrow_WO.png], consistent with adnexal torsion. Used for recognitionReinforcement, ctVariant, enlargedDisplacedOvary, upperPelvis.
+- RadPrimer image 7: Axial T2 FS MR shows an enlarged, heterogeneous right ovary [arrow: arrow_CS.png] displaced in the right midabdomen, adjacent to a 33-week gravid uterus [arrow: arrow_WS.png]. Surgical pathology confirmed hemorrhagic right ovarian torsion. Used for recognitionReinforcement, mriVariant, pregnancy, hemorrhagicTorsion, caseClusterPreserved.
+- RadPrimer image 8: Axial T1 FS MR shows an enlarged right ovary [arrow: arrow_CS.png] displaced in the right midabdomen, adjacent to a 33-week gravid uterus [arrow: arrow_WS.png]. Areas of increased T1 signal in the right ovary signify hemorrhage. Surgical pathology confirmed hemorrhagic ovarian torsion. Used for recognitionReinforcement, mriVariant, t1Hemorrhage, pregnancy, caseClusterPreserved.
+- RadPrimer image 9: Endovaginal longitudinal US shows an 11-cm, unilocular adnexal cyst with low-level internal echoes. Torsed ovary from mature cystic teratoma was found at surgery. Underlying mass serving as a lead point exists in many cases of adult adnexal torsion. Used for recognitionReinforcement, leadPointMass, matureCysticTeratoma, largeAdnexalCyst.
+- RadPrimer image 10: Transverse endovaginal US shows a large, thick-walled, fluid-filled structure [arrow: arrow_WS.png] along the broad ligament, discrete from the normal left ovary [arrow: arrow_WO.png]. Fallopian tube torsion was confirmed at surgery. Used for recognitionReinforcement, isolatedFallopianTubeTorsion, normalOvary, dilatedTube.
+
+### STATdx Images
+- STATdx image 1: Longitudinal US shows an abnormally enlarged left ovary with edematous central stroma [arrow: arrow_CO.png] and a peripheral location of the follicles [arrow: arrow_CS.png] compared to a normal-sized right ovary [arrow: arrow_WO.png] with randomly distributed follicles. Used for recognitionReinforcement, enlargedEdematousOvary, peripheralFollicles, normalContralateralOvary, caseClusterPreserved.
+- STATdx image 2: Corresponding transverse color Doppler US of the left ovary shows complete absence of vascularity, confirming ovarian torsion. Used for recognitionReinforcement, absentVascularity, colorDoppler, caseClusterPreserved.
+- STATdx image 3: Transverse power Doppler US of the right adnexa shows an avascular, enlarged ovary with multiple complex cystic areas [arrow: arrow_CS.png] within, pathologically proven to be necrosis in a torsed ovary. Used for recognitionReinforcement, necrosis, powerDoppler, avascularOvary, caseClusterPreserved.
+- STATdx image 4: Corresponding CECT of the pelvis in the same patient shows a midline location of the enlarged ovary [arrow: arrow_CS.png] with no enhancement and internal heterogeneity corresponding to areas of necrosis. Used for recognitionReinforcement, ctVariant, necrosis, absentEnhancement, caseClusterPreserved.
+- STATdx image 5: Transverse US of the adnexa adjacent to an enlarged ovary (not shown) demonstrates a twisted pedicle [arrow: arrow_CS.png], compatible with ovarian torsion. Used for recognitionReinforcement, twistedPedicle, ultrasound, caseClusterPreserved.
+- STATdx image 6: Corresponding laparoscopic image of the adnexa confirms a twisted pedicle [arrow: arrow_CS.png] and an associated enlarged, torsed ovary [arrow: arrow_WC.png]. Used for recognitionReinforcement, operativeCorrelation, twistedPedicle, caseClusterPreserved.
+- STATdx image 7: Spectral Doppler US shows an enlarged right ovary with peripheral follicles suggestive of torsion. There is presence of arterial flow within the ovary, which does not preclude the diagnosis of ovarian torsion. Used for recognitionReinforcement, arterialFlowPresent, falseNegativeDopplerPitfall.
+- STATdx image 8: Transverse spectral Doppler US of the left ovary (suspected to be torsed clinically and on grayscale US) shows an abnormal parvus-tardus arterial waveform, suspicious for torsion. Used for recognitionReinforcement, parvusTardusWaveform, spectralDoppler.
+- STATdx image 9: Longitudinal color Doppler US of the right ovary shows an enlarged ovary with a large, cystic lesion [arrow: arrow_CS.png] (proven to be cystadenoma) and absent vascularity in the ovarian stroma [arrow: arrow_WO.png]. Also seen is minimal free fluid [arrow: arrow_WC.png]. Used for recognitionReinforcement, leadPointMass, cystadenoma, absentStromalFlow, caseClusterPreserved.
+- STATdx image 10: Color Doppler US of the same ovary shows an abnormal edematous ovarian stroma [arrow: arrow_CS.png] with no vascularity. This was surgically confirmed to be ovarian torsion with a cystadenoma, acting as the lead point. Used for recognitionReinforcement, edematousStroma, absentVascularity, leadPointMass, caseClusterPreserved.
+- STATdx image 11: Longitudinal color Doppler US of the left lower quadrant in a 2-week-old girl diagnosed with an abdominal mass antenatally shows a heterogeneous mass with no internal vascularity [arrow: arrow_CS.png]. Used for recognitionReinforcement, pediatricVariant, neonatalTorsion, antenatalMass, caseClusterPreserved.
+- STATdx image 12: Corresponding coronal T2 MR shows a large, hyperintense mass [arrow: arrow_CS.png] in the left lower quadrant/adnexa, which was separate from the left kidney. Left ovary was not separately identified. This was surgically confirmed as left ovarian torsion with hemorrhage and necrosis. Used for recognitionReinforcement, pediatricVariant, mriVariant, hemorrhageNecrosis, caseClusterPreserved.
+- STATdx image 13: Transverse endovaginal US shows an enlarged left ovary [arrow: arrow_CS.png] with peripheral distribution of follicles [arrow: arrow_WC.png] and an edematous central stroma. Used for recognitionReinforcement, enlargedOvary, peripheralFollicles, edematousStroma, caseClusterPreserved.
+- STATdx image 14: Corresponding T2 MR confirms an enlarged edematous left ovary [arrow: arrow_CS.png] with midline location and peripheral distribution of follicles. Right ovary [arrow: arrow_CO.png] is normal in location and morphology. Used for recognitionReinforcement, mriVariant, midlineOvary, contralateralComparison, caseClusterPreserved.
+- STATdx image 15: Transverse US in a young woman with acute pelvic pain shows a large right ovary with a heterogeneous, echogenic (fatty) mass [arrow: arrow_CS.png] with linear specular reflectors [arrow: arrow_WS.png]. Used for recognitionReinforcement, dermoidLeadPoint, echogenicFattyMass, caseClusterPreserved.
+- STATdx image 16: Corresponding US of the right adnexa shows a twisted pedicle [arrow: arrow_CS.png], confirming ovarian torsion with ovarian dermoid as the lead point. Used for recognitionReinforcement, twistedPedicle, dermoidLeadPoint, caseClusterPreserved.
+- STATdx image 17: Sagittal T2 MR shows an enlarged, edematous ovary [arrow: arrow_CS.png] with an associated twisted pedicle [arrow: arrow_CO.png], confirming ovarian torsion. Used for recognitionReinforcement, mriVariant, twistedPedicle, caseClusterPreserved.
+- STATdx image 18: Corresponding axial T2 MR of the pelvis shows absence of ovarian stromal enhancement [arrow: arrow_CS.png], consistent with infarcted ovary secondary to torsion. Used for recognitionReinforcement, mriVariant, absentEnhancement, infarctedOvary, caseClusterPreserved.
+- STATdx image 19: Transverse power Doppler US of the right adnexa shows an enlarged ovary [arrow: arrow_CS.png] with central cystic/necrotic areas [arrow: arrow_CC.png] and complete absence of vascularity. Used for recognitionReinforcement, powerDoppler, centralNecrosis, absentVascularity, caseClusterPreserved.
+- STATdx image 20: Corresponding coronal CECT shows the midline location of the enlarged right ovary [arrow: arrow_CS.png], located superior to the uterus [arrow: arrow_CO.png], surgically confirmed to be ovarian torsion with necrosis. Used for recognitionReinforcement, ctVariant, midlineOvary, necrosis, caseClusterPreserved.
+- STATdx image 21: Transverse color Doppler US of the pelvis in a young woman with acute pelvic pain shows an enlarged, heterogeneous lesion with a central cystic area [arrow: arrow_CS.png] containing echogenic foci with reverberation artifact [arrow: arrow_CO.png] suggestive of air from necrosis. There is no vascularity within the surrounding soft tissues. Used for recognitionReinforcement, necroticOvary, airArtifact, absentVascularity, caseClusterPreserved.
+- STATdx image 22: Corresponding CECT shows a midline heterogeneous mass [arrow: arrow_CS.png], posterior to the uterus [arrow: arrow_CO.png], corresponding to the torsed necrotic ovary. Used for recognitionReinforcement, ctVariant, necroticOvary, posteriorToUterus, caseClusterPreserved.
+
+## Image Curation Summary
+- selectedPrimaryImageIds: RP-01, RP-02, RP-03, RP-04, RP-05, RP-06, RP-07, RP-08, RP-09, RP-10, SDX-01, SDX-02, SDX-03, SDX-04, SDX-05, SDX-06, SDX-07, SDX-08, SDX-09, SDX-10, SDX-11, SDX-12, SDX-13, SDX-14, SDX-15, SDX-16, SDX-17, SDX-18, SDX-19, SDX-20, SDX-21, SDX-22
+- archiveOptionalImageIds: none
+- Human-facing image labels: use RadPrimer image N and STATdx image N in prose.
+- Traceability labels: use RP-## and SDX-## only in registries, filenames, manifests, and traceability fields.
+- Filename policy: source-qualified filenames are provided in image_registry.json; the extension should download selected primary images only.
+- Cluster policy: no source case cluster was intentionally split. Same-patient or procedure clusters listed in the manifest should remain atomic unless a later explicit review documents a safe split.
+
+## Generator Notes for Later Narrative/Card Creation
+- Preserve RadPrimer hierarchy and route all later outputs to Corebook::Ultrasound::Female Pelvis Basic::Adnexal/Ovarian Torsion.
+- Use RadPrimer as the structural article backbone and STATdx as supplemental detail.
+- Keep the central pitfalls prominent: normal flow does not exclude torsion; venous loss comes first; look for the twisted pedicle; always assess for a lead-point mass; urgent surgery is required.
+- Do not archive near duplicates or alternate examples. They are recognition reinforcement unless proven exact duplicate or unusable.

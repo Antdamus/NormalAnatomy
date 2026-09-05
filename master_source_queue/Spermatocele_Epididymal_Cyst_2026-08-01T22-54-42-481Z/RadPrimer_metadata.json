@@ -1,0 +1,206 @@
+{
+  "articleTitle": "Spermatocele/Epididymal Cyst",
+  "sourceComparisonFolder": "RadPrimerSourceComparison/Spermatocele_Epididymal_Cyst",
+  "anki": {
+    "breadcrumbTrail": [
+      "All Categories",
+      "Basic",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Spermatocele/Epididymal Cyst"
+    ],
+    "configuredNormalRoot": "RadprimerNormal",
+    "createImportFile": true,
+    "deckMode": "auto",
+    "deckName": "Corebook::Ultrasound::Scrotum Basic::Spermatocele/Epididymal Cyst",
+    "deckParts": [
+      "Corebook",
+      "Ultrasound",
+      "Scrotum Basic",
+      "Spermatocele/Epididymal Cyst"
+    ],
+    "deckRoot": "Corebook",
+    "hierarchySource": "RadPrimer",
+    "importFilename": "corrected_cards_anki_import.tsv",
+    "manualDeckRoot": "Corebook::MSK::Trauma::Introduction to Osseous Trauma",
+    "normalRoot": "RadprimerNormal",
+    "noteType": "core_rad_notetype_v2",
+    "pathologyRoot": "Corebook"
+  },
+  "breadcrumbTrail": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Spermatocele/Epididymal Cyst"
+  ],
+  "imageRegistry": [
+    {
+      "annotatedFilename": "SpermatoceleEpididymal_Cyst1_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=true",
+      "baseName": "SpermatoceleEpididymal_Cyst1",
+      "caption": "Graphic of a scrotum shows a multiloculated cystic structure <img src=\"arrow_CO.png\"> superior to the testis in the region of the epididymal head, suggestive of a spermatocele.",
+      "downloadRecommendation": "",
+      "filename": "SpermatoceleEpididymal_Cyst1.jpg",
+      "group": "",
+      "imageId": "ae5ba119-6704-42af-b411-6db2ee121e53",
+      "masterImageId": "RP-01",
+      "plainFilename": "SpermatoceleEpididymal_Cyst1.jpg",
+      "plainUrl": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=false",
+      "sourceImageNumber": 1,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_ae5ba119.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "annotatedFilename": "SpermatoceleEpididymal_Cyst2_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=true",
+      "baseName": "SpermatoceleEpididymal_Cyst2",
+      "caption": "Typical appearance of an incidentally discovered and clinically unimportant epididymal cyst is shown. Note the well-circumscribed, anechoic, avascular lesion <img src=\"arrow_CC.png\"> in the epididymal head.",
+      "downloadRecommendation": "",
+      "filename": "SpermatoceleEpididymal_Cyst2.jpg",
+      "group": "",
+      "imageId": "aab959e0-27e9-4497-983c-fe2cd1eba93a",
+      "masterImageId": "RP-02",
+      "plainFilename": "SpermatoceleEpididymal_Cyst2.jpg",
+      "plainUrl": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=false",
+      "sourceImageNumber": 2,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_aab959e0.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "annotatedFilename": "SpermatoceleEpididymal_Cyst3_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=true",
+      "baseName": "SpermatoceleEpididymal_Cyst3",
+      "caption": "Large spermatocele <img src=\"arrow_CC.png\"> superior to right testis contains punctate low-level echoes with corresponding Doppler artifact <img src=\"arrow_BS.png\">, referred to as the falling snow sign due to acoustic streaming. These punctate foci were mobile in real time.",
+      "downloadRecommendation": "",
+      "filename": "SpermatoceleEpididymal_Cyst3.jpg",
+      "group": "",
+      "imageId": "fd710f26-3d2f-43f3-b507-307c2580f161",
+      "masterImageId": "RP-03",
+      "plainFilename": "SpermatoceleEpididymal_Cyst3.jpg",
+      "plainUrl": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=false",
+      "sourceImageNumber": 3,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_fd710f26.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    },
+    {
+      "annotatedFilename": "SpermatoceleEpididymal_Cyst4_annot.jpg",
+      "annotatedUrl": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=true",
+      "baseName": "SpermatoceleEpididymal_Cyst4",
+      "caption": "Longitudinal grayscale US demonstrates a complex, multiseptate, cystic mass with numerous locules containing debris <img src=\"arrow_WS.png\">, characteristic findings for a spermatocele.",
+      "downloadRecommendation": "",
+      "filename": "SpermatoceleEpididymal_Cyst4.jpg",
+      "group": "",
+      "imageId": "0a90e76a-77ff-441a-9765-cf0b13d32bee",
+      "masterImageId": "RP-04",
+      "plainFilename": "SpermatoceleEpididymal_Cyst4.jpg",
+      "plainUrl": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=false",
+      "sourceImageNumber": 4,
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "usedFor": [],
+      "visualEvidence": {
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_0a90e76a.jpg",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=false",
+        "downloaded": true,
+        "downloadError": "",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image."
+      }
+    }
+  ],
+  "imageEvidence": {
+    "folder": "image_evidence/RadPrimer",
+    "purpose": "Visual evidence for duplicate detection. Use these image files before deciding that source images are exact duplicates.",
+    "duplicateClassificationRule": "Archive only images proven to be exact/same-slice/same-screenshot duplicates or unusable. Caption-only similarity is not enough; uncertain or merely similar images stay primary as recognition reinforcement.",
+    "entries": [
+      {
+        "masterImageId": "RP-01",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 1,
+        "imageId": "ae5ba119-6704-42af-b411-6db2ee121e53",
+        "baseName": "SpermatoceleEpididymal_Cyst1",
+        "caption": "Graphic of a scrotum shows a multiloculated cystic structure <img src=\"arrow_CO.png\"> superior to the testis in the region of the epididymal head, suggestive of a spermatocele.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/ae5ba119-6704-42af-b411-6db2ee121e53?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_ae5ba119.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-02",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "imageId": "aab959e0-27e9-4497-983c-fe2cd1eba93a",
+        "baseName": "SpermatoceleEpididymal_Cyst2",
+        "caption": "Typical appearance of an incidentally discovered and clinically unimportant epididymal cyst is shown. Note the well-circumscribed, anechoic, avascular lesion <img src=\"arrow_CC.png\"> in the epididymal head.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/aab959e0-27e9-4497-983c-fe2cd1eba93a?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_aab959e0.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "imageId": "fd710f26-3d2f-43f3-b507-307c2580f161",
+        "baseName": "SpermatoceleEpididymal_Cyst3",
+        "caption": "Large spermatocele <img src=\"arrow_CC.png\"> superior to right testis contains punctate low-level echoes with corresponding Doppler artifact <img src=\"arrow_BS.png\">, referred to as the falling snow sign due to acoustic streaming. These punctate foci were mobile in real time.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/fd710f26-3d2f-43f3-b507-307c2580f161?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_fd710f26.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      },
+      {
+        "masterImageId": "RP-04",
+        "sourceKind": "radprimer",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 4,
+        "imageId": "0a90e76a-77ff-441a-9765-cf0b13d32bee",
+        "baseName": "SpermatoceleEpididymal_Cyst4",
+        "caption": "Longitudinal grayscale US demonstrates a complex, multiseptate, cystic mass with numerous locules containing debris <img src=\"arrow_WS.png\">, characteristic findings for a spermatocele.",
+        "evidenceVariant": "plain",
+        "evidenceUrl": "https://app.radprimer.com/images/0a90e76a-77ff-441a-9765-cf0b13d32bee?style=xlarge&annotated=false",
+        "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_0a90e76a.jpg",
+        "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+        "downloaded": true,
+        "downloadError": ""
+      }
+    ]
+  }
+}

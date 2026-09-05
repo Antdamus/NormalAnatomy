@@ -302,9 +302,27 @@
     ].join("\n");
   };
 
+  const isNarrativeMode = (config) =>
+    config?.mode === "narrative" || config?.mode === "narrative_with_images";
+
+  const buildNarrativeSourceModeBlock = (config) => {
+    if (!isNarrativeMode(config)) return "";
+    return [
+      "=== NARRATIVE SOURCE MODE ===",
+      "Build this lecture from the current article outline and selected image captions as the authoritative source material.",
+      "Hold the article-only narrative to the same craft standard as a fused-source narrative: full source review, image-complete walkthrough, clean organizing spine, source-faithful synthesis, and no unsupported filler.",
+      "If the source is thin, be concise and transparent rather than padding the lecture with outside facts."
+    ].join("\n");
+  };
+
   const buildSourceAttributionBlock = (config) => {
     const lines = ["=== SOURCE ATTRIBUTION ==="];
     lines.push(`Primary source label: ${config.primarySourceLabel || "RadPrimer"}`);
+
+    if (isNarrativeMode(config)) {
+      if (cleanText(config.sourceNote)) lines.push(`Source note: ${cleanText(config.sourceNote)}`);
+      return lines.join("\n");
+    }
 
     if (config.engine === "pathology") {
       if (!config.coreGap && (cleanText(config.coreSection) || cleanText(config.corePages))) {
@@ -327,7 +345,9 @@
   const buildWorkflowContext = (config, hasImagesOnPage, selectedCount) => {
     const lines = ["=== WORKFLOW CONTEXT ==="];
     if (cleanText(config.sourceNote)) lines.push(`Source note: ${cleanText(config.sourceNote)}`);
-    if (cleanText(config.coreNote)) lines.push(`Optional Core note: ${cleanText(config.coreNote)}`);
+    if (!isNarrativeMode(config) && cleanText(config.coreNote)) {
+      lines.push(`Optional Core note: ${cleanText(config.coreNote)}`);
+    }
 
     if (config.mode === "captions_only") {
       lines.push(
@@ -505,6 +525,8 @@
 
       output = `${headerBlock}
 
+${buildNarrativeSourceModeBlock(config)}
+
 ${buildWorkflowContext(config, allImages.length > 0, selectedImages.length)}
 
 === PROMPT ===
@@ -522,7 +544,9 @@ ${buildSourceAttributionBlock(config)}
       const coreValidationBlock =
         config.mode === "narrative" ? "" : `\n\n=== CORE VALIDATION INPUT ===\n${buildCoreGatePreamble(config)}`;
 
-      output = `${headerBlock}${coreValidationBlock}
+      output = `${headerBlock}
+
+${buildNarrativeSourceModeBlock(config)}${coreValidationBlock}
 
 === PROMPT ===
 ${config.promptText}

@@ -1,0 +1,106 @@
+=== MASTER SOURCE PACKAGE ===
+TITLE: Defect in Abdominal Wall (Hernia)
+SOURCE SYNTHESIS: RadPrimer canonical backbone with STATdx supplemental depth
+
+=== CANONICAL HIERARCHY ===
+All Categories > Basic > Gastrointestinal > Peritoneum, Mesentery, and Abdominal Wall > Defect in Abdominal Wall (Hernia)
+Canonical deck path: Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Defect in Abdominal Wall (Hernia)
+Routing note: canonicalHierarchy is copied exactly from metadata.json; STATdx breadcrumbs were not used for deck routing.
+
+=== SOURCE ATTRIBUTION RULES ===
+- [Both] = supported by both RadPrimer and STATdx source packages.
+- [RadPrimer] = RadPrimer-only or RadPrimer-preferred canonical detail.
+- [STATdx] = supplemental STATdx image example, caption detail, or modality variant.
+
+=== IMAGE COVERAGE GATE ===
+STATdx fully covers the RadPrimer image set as exact duplicate renderings by stable source image ID and visual inspection of staged image_evidence files. RadPrimer images remain selected as the canonical primary set; the matching STATdx renderings are archive-optional. STATdx images 10 and 11 are STATdx-only supplemental mimic/complication examples and remain selected for recognition reinforcement.
+- RadPrimer image 1: exactDuplicate; related STATdx images: STATdx image 1. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 2: exactDuplicate; related STATdx images: STATdx image 2. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 3: exactDuplicate; related STATdx images: STATdx image 3. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 4: exactDuplicate; related STATdx images: STATdx image 4. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 5: exactDuplicate; related STATdx images: STATdx image 5. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 6: exactDuplicate; related STATdx images: STATdx image 6. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 7: exactDuplicate; related STATdx images: STATdx image 7. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 8: exactDuplicate; related STATdx images: STATdx image 8. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 9: exactDuplicate; related STATdx images: STATdx image 9. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 10: exactDuplicate; related STATdx images: STATdx image 12. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 11: exactDuplicate; related STATdx images: STATdx image 13. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 12: exactDuplicate; related STATdx images: STATdx image 14. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 13: exactDuplicate; related STATdx images: STATdx image 15. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+- RadPrimer image 14: exactDuplicate; related STATdx images: STATdx image 16. STATdx contains the same stable source image ID and staged image_evidence visual review confirms the same image/slice rendering; the RadPrimer image remains selected as the canonical primary image and the matching STATdx rendering is archive-optional.
+
+=== DIFFERENTIAL DIAGNOSIS BACKBONE ===
+- [RadPrimer] Common: inguinal hernia; femoral hernia; ventral hernia including epigastric, hypogastric, and incisional hernias; spigelian hernia; lumbar hernia; umbilical hernia; subcutaneous abdominal wall mass mimics; enterocutaneous fistula mimic.
+- [RadPrimer] Less common: obturator hernia; traumatic abdominal wall hernia; sciatic hernia; perineal hernia; spermatic cord lipoma or liposarcoma mimic.
+- [STATdx] Supplemental mimic depth: abdominal wall abscess near a repair site and abdominal wall metastasis near a colostomy can mimic or complicate abdominal wall hernia evaluation.
+
+=== KEY FACTS ===
+- [Both] CT is the most accurate modality for diagnosing abdominal wall hernias and complications.
+- [Both] US can help in nonurgent outpatient evaluation, especially for reducibility and transient hernias when upright positioning or Valsalva can elicit the defect.
+- [Both] CT should be first-line when the presentation is acute or there is concern for bowel involvement, obstruction, ischemia, incarceration, or strangulation.
+- [Both] Every hernia should be assessed for contents, neck, reducibility when available, bowel obstruction, bowel wall compromise, and ischemia.
+- [Both] Interparietal or interstitial hernia means the sac lies between abdominal wall muscle/fascial planes without entering subcutaneous tissues.
+- [Both] Richter hernia involves only part of the bowel circumference, typically the antimesenteric border, so obstruction may be absent despite strangulation risk.
+
+=== COMMON DIAGNOSIS CLUES ===
+- [Both] Inguinal hernia is the most common external hernia, about 80% of cases. It lies in the groin anterior to the horizontal plane of the pubic tubercle and does not compress the femoral vessels. Direct hernias arise anteromedial to the inferior epigastric vessels; indirect hernias arise superomedial to them, are more common, and have more complications.
+- [Both] Femoral hernia extends into the femoral canal medial to the femoral vein and inferior to the inferior epigastric vessels. The sac is posterior and lateral to the pubic tubercle, often compresses the femoral vein, and carries high incarceration/strangulation risk.
+- [Both] Ventral hernia is a broad category for anterior or lateral abdominal wall hernias. Epigastric hernias pass through the linea alba above the umbilicus; hypogastric hernias occur below it; incisional and parastomal hernias occur at surgical defects.
+- [Both] Ventral hernias often enlarge over time, so even asymptomatic cases may become surgical problems as complication risk rises.
+- [Both] Spigelian hernia passes through the aponeurosis of the internal oblique and transversus abdominis along the lateral rectus margin, often near the arcuate line; strangulation/incarceration risk is high.
+- [Both] Lumbar hernia passes through lumbar muscle or thoracolumbar fascia, often between the 12th rib and iliac crest. Most are acquired after surgery, especially renal surgery, and large necks make incarceration less common.
+- [Both] Umbilical hernia passes through the umbilical ring. Congenital cases often resolve in childhood; acquired cases are associated with obesity, multiparity, and ascites.
+- [Both] Subcutaneous abdominal wall mass mimics include hematoma, abscess, lymphadenopathy, soft tissue neoplasm, cryptorchidism, hydrocele, and varicocele; imaging should show no true fascial defect.
+- [Both] Enterocutaneous fistula can simulate a hernia when gas or enteric contrast tracks from bowel into the abdominal wall, but careful imaging shows a tract rather than a true hernia sac.
+
+=== LESS COMMON DIAGNOSIS CLUES ===
+- [Both] Obturator hernia passes through the obturator foramen/canal and is classically seen in older or multiparous women; it has high incarceration, strangulation, and mortality risk.
+- [Both] Traumatic abdominal wall hernia follows focal trauma, commonly lower abdominal or iliac crest injury, including pediatric handlebar injury and adult high-energy trauma.
+- [Both] Sciatic hernia passes through the greater sciatic foramen into the subgluteal region and can cause sciatica from sciatic nerve compression.
+- [Both] Perineal hernia extends through the urogenital diaphragm or between levator ani and coccygeus, often in older women with pelvic surgery, pregnancies, obesity, or ascites.
+- [Both] Spermatic cord lipoma/liposarcoma is a fat-containing inguinal canal or scrotal mass mimic. Liposarcoma tends to look expansile or mass-like, may have nonfat soft-tissue components, and can be hyperechoic on ultrasound.
+
+=== SELECTED PRIMARY IMAGE SET ===
+- RadPrimer image 1: Axial CECT shows a large right inguinal hernia <img src="arrow_WS.png"> containing multiple loops of small bowel without evidence of obstruction. Inguinal hernias account for the vast majority of external hernias. Used for: inguinalHernia, smallBowelContainingHernia, axialCECT, noObstruction.
+- RadPrimer image 2: Coronal NECT shows a classic right inguinal hernia <img src="arrow_WS.png"> containing loops of small bowel <img src="arrow_WC.png"> without evidence of obstruction. Used for: inguinalHernia, coronalNECT, bowelContainingHernia, noObstruction.
+- RadPrimer image 3: Axial CECT shows a herniated bowel loop <img src="arrow_WS.png"> in the left groin. Note the close relationship of the hernia to the femoral vessels at the level of the symphysis pubis, characteristic of a femoral hernia. Used for: femoralHernia, groinHernia, femoralVesselRelationship, axialCECT.
+- RadPrimer image 4: Sagittal volume-rendered CECT shows a ventral hernia containing loops of small bowel <img src="arrow_WS.png">. The small bowel proximal to the hernia sac is dilated <img src="arrow_WC.png">, compatible with small bowel obstruction. Used for: ventralHernia, smallBowelObstruction, sagittalCECT, complication.
+- RadPrimer image 5: Axial CECT in a patient with a history of prior thoracic surgery shows a fat-containing ventral hernia <img src="arrow_WS.png"> arising in the upper abdomen. Ventral hernias occurring above the umbilicus, as in this case, are termed epigastric hernias. Used for: epigastricHernia, fatContainingHernia, ventralHernia, axialCECT.
+- RadPrimer image 6: Axial CECT shows a left abdominal spigelian hernia <img src="arrow_WS.png"> with multiple dilated loops of small bowel <img src="arrow_WC.png">, compatible with small bowel obstruction. Used for: spigelianHernia, smallBowelObstruction, axialCECT, complication.
+- RadPrimer image 7: Axial NECT shows a large lumbar hernia <img src="arrow_WS.png"> in the right flank containing a portion of the right kidney <img src="arrow_WC.png">. Used for: lumbarHernia, kidneyContainingHernia, axialNECT.
+- RadPrimer image 8: Coronal CECT shows a large lumbar hernia containing colon <img src="arrow_WS.png">, small bowel <img src="arrow_WO.png">, as well as a portion of the right hepatic lobe <img src="arrow_WC.png">. Lumbar hernias are often secondary to prior surgical incisions and are particularly common after renal surgeries. Used for: lumbarHernia, colonSmallBowelLiverContainingHernia, coronalCECT, recognitionReinforcement.
+- RadPrimer image 9: Sagittal CECT shows an umbilical hernia containing ascites <img src="arrow_WC.png"> in a patient with cirrhosis and portal hypertension. Used for: umbilicalHernia, ascites, cirrhosis, sagittalCECT.
+- RadPrimer image 10: Axial CECT shows an enterocutaneous fistula with enteric contrast directly extending from the small bowel into the anterior abdominal wall <img src="arrow_WS.png">. Used for: enterocutaneousFistulaMimic, contrastTract, axialCECT.
+- RadPrimer image 11: Axial CECT shows a loop of small bowel <img src="arrow_WC.png"> lying between the obturator externus and pectineus muscles, compatible with an obturator hernia. Used for: obturatorHernia, pelvicHernia, axialCECT, highRiskHernia.
+- RadPrimer image 12: Axial CECT in a trauma patient shows disruption of the musculofascial plane <img src="arrow_WO.png"> near the insertion into the iliac crest and thoracolumbar fascia. Note the presence of adjacent subcutaneous hematoma. The spleen was also lacerated (not shown). These findings are compatible with a traumatic hernia. Used for: traumaticAbdominalWallHernia, musculofascialDisruption, hematoma, axialCECT.
+- RadPrimer image 13: Axial T1 MR shows a large mass with fat signal <img src="arrow_WS.png"> extending through the inguinal canal into the left scrotum. This was found to be a spermatic cord liposarcoma at resection. Used for: spermaticCordLiposarcomaMimic, fatSignalMass, MR, samePatientCluster.
+- RadPrimer image 14: Sagittal US in the same patient shows that the mass <img src="arrow_WS.png"> is very echogenic as a result of its fatty component, a fairly common appearance for these lesions, and extends down to just above the testicle <img src="arrow_WC.png">. Used for: spermaticCordLiposarcomaMimic, ultrasoundVariant, samePatientCluster.
+- STATdx image 10: Axial CECT shows a loculated fluid collection <img src="arrow_WS.png"> in the subcutaneous tissue adjacent to the site of incisional hernia repair <img src="arrow_WC.png">  (abdominal wall abscess). Used for: subcutaneousAbscessMimic, postRepairComplication, alternateExample, recognitionReinforcement.
+- STATdx image 11: Axial CECT shows a partly calcified mass <img src="arrow_WS.png"> in the abdominal wall adjacent to a descending colostomy (metastatic colonic carcinoma). Used for: abdominalWallMetastasisMimic, calcifiedMass, stomaAdjacentMass, alternateExample, recognitionReinforcement.
+
+=== ARCHIVE-OPTIONAL DUPLICATE IMAGES ===
+- STATdx image 1: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 1 based on the same stable source image ID (3583367b-c798-433a-97ec-20c5a8439f86) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 2: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 2 based on the same stable source image ID (eb4d3e58-8633-4409-9ae5-aee00cfcf14b) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 3: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 3 based on the same stable source image ID (cbb6be6d-ef60-4c59-8381-050546a2abeb) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 4: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 4 based on the same stable source image ID (7ffd9022-789c-42bd-b223-d1b4d6e554f1) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 5: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 5 based on the same stable source image ID (5dd4e9d7-2e6d-43cf-baab-b1545d2834af) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 6: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 6 based on the same stable source image ID (d74d0103-b3f6-4ad4-8b34-1b44b388214f) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 7: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 7 based on the same stable source image ID (1708fe45-dfcb-410a-8c90-14621c81b27b) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 8: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 8 based on the same stable source image ID (8846334e-e8af-4d7b-aee2-abb493d1b4a0) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 9: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 9 based on the same stable source image ID (3d150139-0c6b-4425-b159-4ecede4fd324) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 12: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 10 based on the same stable source image ID (bb6e2124-d143-4d1f-aa40-2385883b9279) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 13: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 11 based on the same stable source image ID (f6e92a2e-7ae0-49a3-bd09-af98daeda5fb) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 14: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 12 based on the same stable source image ID (580fe71b-0f2b-4eb1-9a73-4de7858abd85) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 15: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 13 based on the same stable source image ID (4aac9712-88a8-4394-8177-0461d0ebe6be) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+- STATdx image 16: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 14 based on the same stable source image ID (3a9cd923-24be-4513-aea3-737eb8011503) plus visual inspection of staged image_evidence files; archived as a duplicate STATdx rendering while the RadPrimer primary remains selected.
+
+=== CASE CLUSTER NOTES ===
+- No source case cluster was intentionally split.
+- RadPrimer images 13 and 14 are a same-patient MR/US spermatic cord liposarcoma mimic cluster and remain selected together.
+- Exact duplicate STATdx renderings were archived only where the same stable source image ID and staged visual evidence confirmed the same image; the corresponding RadPrimer image remains selected.
+- STATdx-only mimic/complication examples remain selected for image-recognition learning.
+
+=== GENERATOR INSTRUCTIONS ===
+- Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.
+- Use clean source-qualified labels in prose, such as RadPrimer image 5 and STATdx image 4.
+- Use registry IDs, source image IDs, evidence filenames, and source-qualified filenames for traceability and download routing.

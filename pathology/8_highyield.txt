@@ -45,7 +45,7 @@ Do NOT create:
 
 High-Yield fields remain reserved for true board pivots
 (thresholds, staging, management triggers, classification pivots, structural subtype/framework pivots, “most common” pivots),
-EXCEPT the single allowed Definition card per new entity.
+EXCEPT definition cards explicitly requested by the user.
 -----------------------------------------------------
 
 SYNDROME ENCODING RULE (MANDATORY — HIGH-YIELD):
@@ -82,6 +82,39 @@ They are NOT for:
 • Trivia
 • Low-impact epidemiology
 • Reworded textbook sentences
+
+-----------------------------------------------------
+
+ENTITY-LEVEL IMAGING APPEARANCE CARD RULE
+
+Entity-level imaging-pattern recall is mandatory when the source supports it.
+
+For each disease entity:
+• Build an internal modality matrix before SECTION G.
+• Generate separate High-Yield rows for source-supported modality appearance patterns that are worth memorizing.
+• Generate these cards even when UNKNOWN case images already demonstrate the same pattern.
+• Create the card per disease entity, not per image.
+• Keep each card as an independent TSV row with only High_Yield_Q / High_Yield_A as the front-driving family.
+• Do not attach appearance recall as a sibling trigger to an UNKNOWN note.
+
+The modality matrix must consider:
+• CT noncontrast and CT contrast phases, including arterial, portal venous, delayed, CTA, oral/enteric/rectal contrast when relevant.
+• MRI sequences and planes, including T1, T2, FLAIR, DWI/ADC, GRE/SWI, MRCP, and other source-stated sequences.
+• MRI contrast behavior, including dynamic gadolinium phases, delayed phase, hepatobiliary phase, and extracellular versus hepatobiliary contrast agent implications when source-supported.
+• Ultrasound grayscale, Doppler, dynamic maneuvers, and contrast-enhanced ultrasound.
+• Nuclear medicine / PET / SPECT, including exact radiotracer, uptake, photopenia, avidity, retention, washout, excretion, phase, timing, biodistribution, and tracer-specific discriminator.
+
+Question quality:
+• Ask for the specific modality pattern, phase, contrast agent, sequence, or tracer behavior.
+• Do not use the phrase "as stated in source" in the learner-facing question.
+• Do not ask "What is the imaging appearance?" if a tighter modality/phase/sequence/tracer question is possible.
+• Do not create a card for an unsupported modality.
+
+Answer quality:
+• Include only source-supported appearance details.
+• Preserve contrast agent, phase, sequence, Doppler, CEUS, or radiotracer specificity.
+• Include one "Recognition pivot:" or "Exam pivot:" line explaining why the pattern matters.
+• Add an imaging specificity label when relevant: Diagnostic, Strongly suggestive, Nonspecific, or Requires correlation.
 
 -----------------------------------------------------
 
@@ -271,12 +304,14 @@ Rules:
 Recommended format:
 
 High_Yield_Q:
-"For [ENTITY], what MRI signal and enhancement pattern is expected (as stated in source)?"
+"For [ENTITY], what MRI signal, sequence, and enhancement pattern should be recognized?"
 
 High_Yield_A:
 - Sequence: [source-stated sequence] -> [source-stated appearance]
 - Repeat for other sequences only if source states them.
-- Exam pivot: [one line: why this helps discriminate or recognize]
+- Contrast / phase behavior: [dynamic gadolinium, delayed, hepatobiliary, or other source-stated behavior only]
+- Imaging specificity: [Diagnostic / Strongly suggestive / Nonspecific / Requires correlation, only when relevant]
+- Recognition pivot: [one line: why this helps discriminate or recognize]
 
 If the MRI description is too long:
 - Split into multiple High-Yield cards ONLY if each card is its own distinct pivot.
@@ -301,13 +336,14 @@ Rules:
 Recommended format:
 
 High_Yield_Q:
-"For [ENTITY], what CT attenuation and enhancement pattern is expected (as stated in source)?"
+"For [ENTITY], what CT attenuation and contrast-phase pattern should be recognized?"
 
 High_Yield_A:
 - Noncontrast CT: [source-stated appearance]
-- Postcontrast / phase behavior: [source-stated appearance]
+- Contrast / phase behavior: [arterial, portal venous, delayed, CTA, oral/enteric/rectal contrast, or other source-stated behavior only]
 - Additional CT clue: [calcification / hemorrhage / capsule / necrosis only if source-stated]
-- Exam pivot: [one line: why this helps recognize or discriminate]
+- Imaging specificity: [Diagnostic / Strongly suggestive / Nonspecific / Requires correlation, only when relevant]
+- Recognition pivot: [one line: why this helps recognize or discriminate]
 
 If the CT description is too long:
 - Split into multiple High-Yield cards ONLY if each card is its own distinct pivot.
@@ -349,7 +385,7 @@ Do NOT generate comparison cards that are merely interesting descriptive contras
 Recommended format:
 
 High_Yield_Q:
-“For [ENTITY], what is the key diagnostic/risk framework (as stated in source)?”
+“For [ENTITY], what diagnostic/risk framework changes recognition or management?”
 
 High_Yield_A:
 • [Bucket / subtype / branch 1] → [1-line discriminator or risk pivot]
@@ -361,6 +397,49 @@ High_Yield_A:
 If the framework is larger than 5 branches:
 • compress it to the highest-yield source-supported branches only, if that remains faithful
 • otherwise do NOT generate the framework card
+
+-----------------------------------------------------
+
+REPORT-CRITICAL / MANAGEMENT-PIVOT CARD RULE
+
+Generate a report-critical High-Yield card only when a source-supported finding changes what the radiologist must inspect, report, recommend, communicate, or escalate.
+
+This card type is for actionable interpretation, not generic reporting advice.
+
+Generate a separate independent High-Yield TSV row when the finding changes:
+• urgency or acuity
+• immediate communication
+• treatment versus conservative management
+• surgery, drainage, embolization, anticoagulation, or other intervention
+• operative planning
+• staging or resectability
+• prognosis or risk stratification
+• follow-up interval or surveillance pathway
+• complication status
+• required report elements for clinically useful interpretation
+
+Do NOT generate a report-critical card for generic statements such as:
+• "report the location"
+• "describe the lesion"
+• "mention complications"
+• "correlate clinically"
+
+unless the source names a specific finding whose presence changes management, outcome, staging, urgency, or follow-up.
+
+Recommended question forms:
+• "In [ENTITY], which imaging finding should be reported because it changes [management/staging/urgency/follow-up]?"
+• "For [ENTITY], what must be inspected on imaging because [specific consequence]?"
+• "In suspected [ENTITY], which findings support urgent [intervention/escalation]?"
+
+Avoid:
+• "What should you report for this disease?"
+• "What is important about this topic?"
+• "What management facts were included in the source?"
+
+High_Yield_A should include:
+• Report-critical finding: [source-supported feature]
+• Consequence: [what changes clinically]
+• Imaging specificity / limitation: [if the finding is nonspecific or needs correlation]
 
 -----------------------------------------------------
 

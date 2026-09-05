@@ -1,0 +1,265 @@
+{
+  "articleTitle": "Adnexal/Ovarian Torsion",
+  "createdAt": "2026-08-12T21:32:19.812Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Female Pelvis Basic",
+    "Adnexal/Ovarian Torsion"
+  ],
+  "canonicalDeckPath": "Corebook::Ultrasound::Female Pelvis Basic::Adnexal/Ovarian Torsion",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": {
+      "role": "Canonical hierarchy/backbone, canonical deck routing, and primary adnexal/ovarian torsion article structure.",
+      "keptText": [
+        "adnexal terminology and isolated fallopian tube torsion caveat",
+        "ultrasound-first recognition features including enlarged echogenic ovary, peripheral follicles, thickened follicle walls, whirlpool/target/beaked pedicle signs, and absent venous flow",
+        "CT and MRI findings including displaced ovary, pedicle specificity, hemorrhage, and enhancement changes",
+        "lead-point pathology, clinical presentation, treatment, and diagnostic checklist"
+      ],
+      "limitations": [
+        "STATdx supplies added Doppler nuance, ACR/protocol language, and more variant images.",
+        "No Core Radiology source text was supplied in the bundle."
+      ]
+    },
+    "STATdx": {
+      "role": "Supplemental depth for Doppler pitfalls, modality-specific detail, viability, management, and expanded recognition examples.",
+      "keptText": [
+        "presence of arterial/venous flow does not exclude torsion and central venous flow suggests viability",
+        "ACR usually appropriate initial ultrasound language and cine clip/pedicle protocol advice",
+        "parvus-tardus/reversed diastolic arterial waveform detail",
+        "CT/MR necrosis and infarction features, pediatric/neonatal torsion, dermoid/cystadenoma lead points, and operative correlation"
+      ],
+      "limitations": [
+        "STATdx breadcrumb is not used for canonical hierarchy because RadPrimer is present.",
+        "STATdx image set does not fully cover RadPrimer pregnancy MRI hemorrhagic torsion or isolated fallopian tube torsion examples."
+      ]
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 22
+  },
+  "sourceAttributionRules": {
+    "default": "Tag factual blocks as [RadPrimer], [STATdx], or [Both] where source distinction matters.",
+    "humanFacingImages": "Use labels like RadPrimer image 5 or STATdx image 4 in prose.",
+    "traceability": "Use masterImageId values only in registry fields, filenames, manifest, and traceability notes."
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-04",
+    "RP-05",
+    "RP-06",
+    "RP-07",
+    "RP-08",
+    "RP-09",
+    "RP-10",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22"
+  ],
+  "archiveOptionalImageIds": [],
+  "sourceSelectionPlan": {
+    "textBackbone": {
+      "primary": "RadPrimer supplies the canonical hierarchy/backbone, canonical deck routing, and base article structure for adnexal/ovarian torsion.",
+      "supplement": "STATdx is used for stronger Doppler nuance, ACR initial-imaging wording, cine-clip protocol advice, viability indicators, CT/MR detail, pediatric/neonatal and lead-point variants, and additional recognition examples.",
+      "downweight": "Do not use STATdx breadcrumbTrail for canonical hierarchy or deck routing. Do not claim Core Radiology support because no auditable Core text was supplied in this bundle. Exclude unrelated IMAIOS anatomy label-library text from the fused master package."
+    },
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates, alternate patients, alternate same-disease examples, modality variants, stage/severity variants, same-patient companion images, and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is insufficient; uncertain or merely similar images stay primary.",
+    "caseClusterGuardrails": {
+      "rule": "Treat same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse groups as atomic teaching clusters unless a documented split is safe.",
+      "intentionalSplits": [],
+      "preservedClusters": [
+        "RadPrimer 33-week pregnancy hemorrhagic torsion MRI same-patient pair",
+        "RadPrimer acute pelvic pain cystic lead-point ultrasound/laparoscopy same-patient pair",
+        "STATdx cystadenoma lead-point torsion same-ovary ultrasound pair",
+        "STATdx dermoid lead-point torsion ultrasound/pedicle same-patient pair",
+        "STATdx enlarged left ovary grayscale/color Doppler same-patient pair",
+        "STATdx enlarged left ovary ultrasound/MRI same-patient pair",
+        "STATdx infarcted ovarian torsion MRI same-patient pair",
+        "STATdx necrotic torsed ovary with air ultrasound/CECT same-patient pair",
+        "STATdx necrotic torsed right ovary ultrasound/CECT same-patient pair",
+        "STATdx neonatal ovarian torsion ultrasound/MRI same-patient pair",
+        "STATdx twisted pedicle ultrasound/laparoscopy same-patient pair"
+      ]
+    },
+    "radprimerImageCoverageGate": {
+      "statdxFullyCoversRadPrimerImageSet": false,
+      "summary": "STATdx substantially supplements the RadPrimer image set but does not fully cover it. Actual staged image_evidence files and hashes were reviewed; no exact duplicate, same-slice, or same-screenshot matches were identified.",
+      "coverage": [
+        {
+          "radprimerImageId": "RP-01",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-01",
+            "SDX-13"
+          ],
+          "evidence": "Actual evidence images show different ultrasound screenshots/patients, but STATdx has close grayscale examples of enlarged edematous ovary with peripheral follicles. Hashes/source image IDs differ; no exact duplicate evidence.",
+          "action": "Keep RadPrimer image 1 and STATdx images primary as recognition reinforcement."
+        },
+        {
+          "radprimerImageId": "RP-02",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-02",
+            "SDX-07",
+            "SDX-08"
+          ],
+          "evidence": "STATdx covers Doppler pitfalls and absent/abnormal flow, but the staged images are visually distinct and not the same slice/screenshot.",
+          "action": "Keep RadPrimer image 2 primary; use STATdx Doppler examples as supplemental reinforcement."
+        },
+        {
+          "radprimerImageId": "RP-03",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-05",
+            "SDX-09",
+            "SDX-10",
+            "SDX-16"
+          ],
+          "evidence": "STATdx supplies twisted-pedicle and lead-point examples, but the RadPrimer image is a distinct acute-pain case with cystic lead point and color Doppler pedicle; no identical evidence file or image ID.",
+          "action": "Keep RadPrimer image 3 primary and preserve it with RadPrimer image 4 as an atomic same-patient cluster."
+        },
+        {
+          "radprimerImageId": "RP-04",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-06"
+          ],
+          "evidence": "STATdx image 6 is another laparoscopic confirmation of torsion, but visual review shows a different operative photograph, not a duplicate of RadPrimer image 4.",
+          "action": "Keep RadPrimer image 4 primary as operative correlation for RadPrimer image 3."
+        },
+        {
+          "radprimerImageId": "RP-05",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-03",
+            "SDX-19"
+          ],
+          "evidence": "STATdx has avascular enlarged ovary examples on power/color Doppler, but the images are distinct in acquisition, patient, and appearance.",
+          "action": "Keep RadPrimer image 5 primary; keep STATdx necrosis/avascularity examples primary."
+        },
+        {
+          "radprimerImageId": "RP-06",
+          "classification": "nearDuplicate",
+          "coveredBy": [
+            "SDX-04",
+            "SDX-20",
+            "SDX-22"
+          ],
+          "evidence": "STATdx includes CT examples of midline/displaced enlarged necrotic ovary; visual review shows different CT slices/cases and unique hashes.",
+          "action": "Keep RadPrimer image 6 primary and use STATdx CT images for CT pattern range."
+        },
+        {
+          "radprimerImageId": "RP-07",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-14",
+            "SDX-17"
+          ],
+          "evidence": "STATdx has MRI examples of enlarged edematous/midline ovary and twisted pedicle, but does not duplicate the RadPrimer 33-week gravid hemorrhagic torsion T2 image.",
+          "action": "Keep RadPrimer image 7 primary as part of the gravid MRI cluster."
+        },
+        {
+          "radprimerImageId": "RP-08",
+          "classification": "notCovered",
+          "coveredBy": [],
+          "evidence": "No STATdx staged image reproduces the RadPrimer T1 fat-suppressed hemorrhagic torsion appearance adjacent to a 33-week gravid uterus.",
+          "action": "Keep RadPrimer image 8 primary and preserve with RadPrimer image 7."
+        },
+        {
+          "radprimerImageId": "RP-09",
+          "classification": "conceptualReplacement",
+          "coveredBy": [
+            "SDX-09",
+            "SDX-10",
+            "SDX-15",
+            "SDX-16"
+          ],
+          "evidence": "STATdx contributes cystadenoma and dermoid lead-point clusters, but RadPrimer image 9 is a distinct large unilocular cyst/teratoma lead-point example.",
+          "action": "Keep RadPrimer image 9 primary for adult lead-point mass recognition."
+        },
+        {
+          "radprimerImageId": "RP-10",
+          "classification": "notCovered",
+          "coveredBy": [],
+          "evidence": "The RadPrimer isolated fallopian tube torsion image shows a dilated thick-walled tube discrete from a normal ovary; STATdx discusses isolated tubal torsion but no staged STATdx image provides the same visual teaching target.",
+          "action": "Keep RadPrimer image 10 primary."
+        }
+      ]
+    },
+    "imageDownloadPlan": {
+      "downloadOnly": "selectedPrimaryImageIds",
+      "primaryTeachingSet": [
+        "RP-01",
+        "RP-02",
+        "RP-03",
+        "RP-04",
+        "RP-05",
+        "RP-06",
+        "RP-07",
+        "RP-08",
+        "RP-09",
+        "RP-10",
+        "SDX-01",
+        "SDX-02",
+        "SDX-03",
+        "SDX-04",
+        "SDX-05",
+        "SDX-06",
+        "SDX-07",
+        "SDX-08",
+        "SDX-09",
+        "SDX-10",
+        "SDX-11",
+        "SDX-12",
+        "SDX-13",
+        "SDX-14",
+        "SDX-15",
+        "SDX-16",
+        "SDX-17",
+        "SDX-18",
+        "SDX-19",
+        "SDX-20",
+        "SDX-21",
+        "SDX-22"
+      ],
+      "archiveOptionalDuplicates": [],
+      "filenamePolicy": "Use source-qualified filenames from image_registry.json, for example RP-05_RadPrimer_plain_<original>.jpg and SDX-04_STATdx_plain_<original>.jpg. Human-facing prose should use clean labels such as RadPrimer image 5 or STATdx image 4.",
+      "includeAnnotatedWhenAvailable": true,
+      "excludeByDefault": []
+    },
+    "generatorInstructions": {
+      "narrativeAndCards": "Use this fused package later as the source article. Do not generate cards or a lecture during this import step.",
+      "imageLabels": "Use clean human-facing labels such as RadPrimer image 5 and STATdx image 4. Keep RP-05 and SDX-04 for registry, filenames, manifest, and traceability fields.",
+      "sourceAttribution": "Preserve [RadPrimer], [STATdx], and [Both] tags where source distinction matters."
+    }
+  }
+}

@@ -17,17 +17,21 @@ It is a discrimination engine — NOT a diagnosis card.
 
 # CARD-TYPE TRIGGER RULE (STRICT)
 
+Standalone Differential Drill generation is OFF by default.
+Generate this card type ONLY when the user explicitly asks for separate differential drill cards.
+
 Differential Drill is generated ONLY when:
 
-• `Differentials` field is populated.
+• `Differential_Q` field is populated.
 
 Therefore:
 
-• NEVER populate `Differentials` unless intentionally generating a Differential Drill.
+• NEVER populate `Differential_Q` unless intentionally generating a Differential Drill.
+• `Differentials` may be populated on an UNKNOWN card as back-side support without generating a drill.
 
-If `Differentials` is populated:
+If `Differential_Q` is populated:
 
-• `Differential_Q` MUST be populated  
+• `Differentials` MUST be populated
 • `Imaging_Differentiation` MUST be populated  
 • `Question` field MUST remain blank  
 
@@ -41,7 +45,7 @@ Failure of any = structural error.
 
 • Clinical_Context  
 • Differential_Q  
-• Differentials  (TRIGGER FIELD)  
+• Differentials
 • Imaging_Differentiation  
 
 ## Conditionally Required
@@ -310,10 +314,12 @@ Those belong ONLY to UNKNOWN cards.
 
 ---
 
-# MODE 2 — STANDALONE DIFFERENTIAL DRILL (RARE)
+# MODE 2 — STANDALONE DIFFERENTIAL DRILL (RARE, EXPLICIT ONLY)
 
 Allowed ONLY if:
 
+• The user explicitly requested separate differential drill cards
+AND either:
 • No specific image case exists  
 OR  
 • Intentionally building concept-level discrimination engine  
@@ -362,7 +368,7 @@ Otherwise leave blank.
 
 # OUTPUT DISCIPLINE
 
-Before TSV:
+Before TSV for an explicitly requested standalone Differential Drill:
 
 Confirm:
 

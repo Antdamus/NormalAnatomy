@@ -3,7 +3,15 @@
   window.__IMAIOS_CINE_TOOLS_LOADED__ = true;
 
   const APP_ID = "imaios-cine-tools";
-  const DEBUG_BUILD_TAG = "2026-06-21-native-direct-isolate-v1";
+  const IS_TOP_LEVEL_FRAME = (() => {
+    try {
+      return window.top === window;
+    } catch (_error) {
+      return true;
+    }
+  })();
+  const FRAME_HOTKEY_MESSAGE_TYPE = "IMAIOS_CINE_TOOLS_FRAME_HOTKEY";
+  const DEBUG_BUILD_TAG = "2026-08-28-native-cine-range-state-scan-v1";
   const PAGE_STORAGE_KEY = `${APP_ID}:page:${location.origin}${location.pathname}`;
   const PREFS_STORAGE_KEY = `${APP_ID}:prefs`;
   const CHUNK_LIBRARY_STORAGE_KEY = `${APP_ID}:chunk-library`;
@@ -118,6 +126,7 @@
     quickPanelMode: "normal",
     searchRunning: false,
     cancelSearch: false,
+    moduleBatchRunning: false,
     searchPrimeAt: 0,
     searchPrimeModuleKey: "",
     statusTimer: 0,
@@ -152,6 +161,9 @@
     lastRestoredDrillHash: "",
     lastLiveDrillCardSource: null,
     liveDrillCardBatch: { ...EMPTY_LIVE_DRILL_CARD_BATCH },
+    currentLiveDrillPayload: null,
+    currentLiveDrillCineRangeFallback: null,
+    lastCineRangeNativeProbe: null,
     lastLiveDrillRestoreDebug: null,
     studyShield: null,
     liveDrillRestoreRunning: false,
@@ -185,10 +197,18 @@
   };
 
   async function init() {
+    if (!IS_TOP_LEVEL_FRAME) {
+      initFrameHotkeyRelay();
+      return;
+    }
+
+    loadSavedState();
+    bindGlobalHotkeyListeners();
+    setTimeout(() => focusPageForHotkeys(), 250);
+
     const viewerReady = await waitFor(() => shouldMountOnThisPage(), 12000, 250);
     if (!viewerReady) return;
 
-    loadSavedState();
     writePinModePreference(true);
     syncLabelRepositoryToExtensionStorage();
     syncLabelDetailRepositoryToExtensionStorage();
@@ -196,10 +216,6 @@
     refreshPanel();
     window.addEventListener("fullscreenchange", remount);
     window.addEventListener("resize", keepPanelInViewport);
-    window.addEventListener("keydown", onKeyDown, true);
-    window.addEventListener("keyup", onKeyUp, true);
-    document.addEventListener("keydown", onKeyDown, true);
-    document.addEventListener("keyup", onKeyUp, true);
     window.addEventListener("hashchange", () => {
       restoreLiveDrillFromUrl({ reason: "hashchange" }).catch((error) => {
         setStatus(`Live drill restore failed: ${error?.message || error}`, 9000);
@@ -221,6 +237,16 @@
         startAnkiReviewBridge({ silent: true });
       }, 1500);
     }
+  }
+
+  function bindGlobalHotkeyListeners() {
+    if (state.globalHotkeyListenersBound) return;
+    state.globalHotkeyListenersBound = true;
+    window.addEventListener("keydown", onKeyDown, true);
+    window.addEventListener("keyup", onKeyUp, true);
+    window.addEventListener("message", onFrameHotkeyRelayMessage, true);
+    document.addEventListener("keydown", onKeyDown, true);
+    document.addEventListener("keyup", onKeyUp, true);
   }
 
   function loadSavedState() {
@@ -338,7 +364,15 @@
 
   function shouldMountOnThisPage() {
     if (/\/e-anatomy\/anatomical-structures\//i.test(location.pathname)) return false;
-    return Boolean(findModuleSearchInput() || document.querySelector("#anatomy-canvas,.viewer,[data-name='image-canvas']"));
+    return Boolean(isLikelyImaiosViewerRoute() || findModuleSearchInput() || document.querySelector("#anatomy-canvas,.viewer,[data-name='image-canvas']"));
+  }
+
+  function isLikelyImaiosViewerRoute() {
+    const parts = location.pathname.split("/").map((part) => part.trim()).filter(Boolean);
+    const index = parts.findIndex((part) => part.toLowerCase() === "e-anatomy");
+    if (index < 0) return false;
+    const routeParts = parts.slice(index + 1);
+    return routeParts.length >= 2 && routeParts[0].toLowerCase() !== "anatomical-structures";
   }
 
   function buildMarkup() {
@@ -959,7 +993,8 @@
 
         .quick-card-actions .primary,
         .quick-card-actions button[data-action="toggle-paired-answer"],
-        .quick-card-actions button[data-action="add-module-chunks-to-batch"] {
+        .quick-card-actions button[data-action="add-module-chunks-to-batch"],
+        .quick-card-actions button[data-action="stop-module-batch"] {
           grid-column: 1 / -1;
         }
 
@@ -1593,7 +1628,8 @@
               <button class="primary" type="button" data-action="run-live-drill-smart-card-automation">Create Anki cards based on batch</button>
               <button type="button" data-action="add-current-live-drill-to-batch">Add current plane</button>
               <button type="button" data-action="add-live-drill-to-batch">Add selected planes</button>
-              <button type="button" data-action="add-module-chunks-to-batch" title="Add every chunk in this module across the selected card planes">Add all module chunks</button>
+              <button type="button" data-action="add-module-chunks-to-batch" data-default-label="Add all module chunks" title="Add every chunk in this module across the selected card planes">Add all module chunks</button>
+              <button class="danger support-hidden" type="button" data-action="stop-module-batch" title="Stop the current module batch after the active label finishes">Stop module batch</button>
             </div>
             <div class="quick-panel-note" data-role="status"></div>
           </div>
@@ -1687,7 +1723,10 @@
             <div class="row three">
               <button type="button" data-action="add-current-live-drill-to-batch">Add current</button>
               <button type="button" data-action="add-live-drill-to-batch">Add selected</button>
-              <button type="button" data-action="add-module-chunks-to-batch">Add module</button>
+              <button type="button" data-action="add-module-chunks-to-batch" data-default-label="Add module">Add module</button>
+            </div>
+            <div class="row">
+              <button class="danger support-hidden" type="button" data-action="stop-module-batch" title="Stop the current module batch after the active label finishes">Stop module batch</button>
             </div>
             <div class="row">
               <button type="button" data-action="open-batch-cart-modal">Manage batch</button>
@@ -1992,8 +2031,7 @@
       applyStructures(names, "Custom list");
     });
     root.querySelector("[data-action='stop-search']").addEventListener("click", () => {
-      state.cancelSearch = true;
-      setStatus("Stopping after current step.");
+      requestStopSearchWorkflow();
     });
     root.querySelector("[data-action='set-pins']").addEventListener("click", async () => {
       const result = await resetQuietPinsByCyclingPins();
@@ -2100,6 +2138,11 @@
     });
     root.querySelectorAll("[data-action='add-module-chunks-to-batch']").forEach((button) => {
       button.addEventListener("click", addCurrentModuleChunksToCardBatch);
+    });
+    root.querySelectorAll("[data-action='stop-module-batch']").forEach((button) => {
+      button.addEventListener("click", () => {
+        requestStopSearchWorkflow("Stopping module batch after the current label.");
+      });
     });
     root.querySelectorAll("[data-action='open-batch-cart-modal']").forEach((button) => {
       button.addEventListener("click", openBatchCartModal);
@@ -2282,6 +2325,15 @@
       pairedAnswerButton.disabled = false;
     }
     if (batchSummary) batchSummary.textContent = getLiveDrillCardBatchSummaryText();
+    const moduleBatchRunning = Boolean(state.moduleBatchRunning);
+    root.querySelectorAll("[data-action='add-module-chunks-to-batch']").forEach((button) => {
+      button.textContent = moduleBatchRunning ? "Adding module chunks..." : (button.getAttribute("data-default-label") || "Add all module chunks");
+      button.disabled = moduleBatchRunning || state.searchRunning || state.liveDrillRestoreRunning;
+    });
+    root.querySelectorAll("[data-action='stop-module-batch']").forEach((button) => {
+      button.classList.toggle("support-hidden", !moduleBatchRunning);
+      button.disabled = !moduleBatchRunning;
+    });
     cineSpeed.value = String(state.rangeCineSpeed);
     cineSpeedValue.textContent = `${Math.round(1000 / state.rangeCineIntervalMs)} fps`;
     keyModal.classList.toggle("hidden", !state.keyEditorOpen);
@@ -3162,6 +3214,8 @@
     }
     state.customListText = chunkToPreferredLabelText(chunk);
     state.selectedStructures = targets.map((target) => target.preferredLabel);
+    state.currentLiveDrillPayload = null;
+    state.currentLiveDrillCineRangeFallback = null;
     savePageState();
     refreshPanel();
     await applyChunkTargets(targets, chunk.title, options);
@@ -3173,7 +3227,7 @@
       return;
     }
     state.searchRunning = true;
-    state.cancelSearch = false;
+    if (!options.preserveCancelSearch) state.cancelSearch = false;
     const fast = Boolean(options.fast);
     const variantMissDelayMs = options.variantMissDelayMs ?? (fast ? 40 : 120);
     const perLabelDelayMs = options.perLabelDelayMs ?? (fast ? 260 : 650);
@@ -3194,6 +3248,7 @@
       setStatus(`${sourceLabel}: trying native ID restore for ${requestedStructures.length} labels...`, 0);
       const nativeResult = await applyLiveDrillNativeRestore(nativePlan, requestedStructures);
       if (nativeResult.ok) {
+        releaseModuleSearchFocusForHotkeys();
         state.searchRunning = false;
         const pinsResult = await resetQuietPinsByCyclingPins();
         const pinsSuffix = pinsResult.ok ? " Quiet pins on." : " Could not restore quiet pins.";
@@ -3209,6 +3264,7 @@
       const primed = await primeModuleSearch();
       if (!primed.ok) {
         setStatus(primed.reason);
+        releaseModuleSearchFocusForHotkeys();
         state.searchRunning = false;
         return;
       }
@@ -3252,6 +3308,7 @@
       await delay(perLabelDelayMs);
     }
 
+    releaseModuleSearchFocusForHotkeys();
     state.searchRunning = false;
     if (options.skipFinalLockedCheck) {
       const missSuffix = missedNames.length ? ` Missed ${missedNames.length}.` : "";
@@ -3284,6 +3341,7 @@
     const primed = await primeModuleSearch();
     if (!primed.ok) {
       setStatus(primed.reason);
+      releaseModuleSearchFocusForHotkeys();
       state.searchRunning = false;
       return;
     }
@@ -3300,6 +3358,7 @@
       await delay(650);
     }
 
+    releaseModuleSearchFocusForHotkeys();
     state.searchRunning = false;
     setStatus("Checking locked structures...");
     await delay(650);
@@ -3322,7 +3381,10 @@
     });
     const input = availability.input;
     if (!availability.ok) {
-      if (options.allowFallback === false || !input) return availability;
+      if (options.allowFallback === false || !input) {
+        releaseModuleSearchFocusForHotkeys(input);
+        return availability;
+      }
       pressSearchKey(input, "ArrowDown");
       await delay(120);
       pressSearchKey(input, "Enter");
@@ -3330,17 +3392,33 @@
         await delay(180);
         await closeStructureDetailPanel();
       }
+      releaseModuleSearchFocusForHotkeys(input);
       return { ok: true, fallback: true };
     }
 
     input.focus();
     await delay(80);
-    clickElement(availability.result);
+    const lockedCountBeforeClick = getLockedStructureCount();
+    const click = await clickSearchResultWithoutDefinitionNavigation(availability.result, {
+      afterClickDelayMs: options.afterClickDelayMs ?? 80,
+      purpose: "apply-structure"
+    });
+    const lockedCountAfterClick = getLockedStructureCount();
     if (options.closeDetailPanelAfterClick) {
       await delay(180);
       await closeStructureDetailPanel();
     }
-    return { ok: true, selectedText: availability.selectedText };
+    if (click.method === "guarded-definition-link-click" && lockedCountAfterClick <= lockedCountBeforeClick) {
+      releaseModuleSearchFocusForHotkeys(input);
+      return {
+        ok: false,
+        selectedText: availability.selectedText,
+        click,
+        reason: "The search result was an anatomical-structure page link, so navigation was blocked and no new locked structure appeared."
+      };
+    }
+    releaseModuleSearchFocusForHotkeys(input);
+    return { ok: true, selectedText: availability.selectedText, click };
   }
 
   async function searchStructureAvailability(structureName, options = {}) {
@@ -3546,6 +3624,292 @@
 
   function clickElement(element) {
     clickElementAt(element, 0.5, 0.5);
+  }
+
+  async function clickSearchResultForDetailProbe(element, options = {}) {
+    return clickSearchResultWithoutDefinitionNavigation(element, {
+      xRatio: options.xRatio ?? 0.5,
+      yRatio: options.yRatio ?? 0.5,
+      afterClickDelayMs: options.afterClickDelayMs ?? 80,
+      purpose: "detail-probe"
+    });
+  }
+
+  async function clickSearchResultWithoutDefinitionNavigation(element, options = {}) {
+    if (!element) return { ok: false, method: "missing-element" };
+    const definitionAnchor = findImaiosDefinitionNavigationAnchor(element);
+    const definitionHref = definitionAnchor?.href || definitionAnchor?.getAttribute?.("href") || "";
+
+    const beforeUrl = location.href;
+    let preventedNavigation = false;
+    const guard = (event) => {
+      const anchor = event.target?.closest ? event.target.closest("a[href]") : null;
+      const targetHref = anchor?.href || anchor?.getAttribute?.("href") || "";
+      const eventIsInsideGuardedResult = Boolean(definitionHref && event.composedPath?.().includes(element));
+      if (!eventIsInsideGuardedResult && (!anchor || !isImaiosDefinitionNavigationHref(targetHref))) return;
+      preventedNavigation = true;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    };
+
+    const guardedEvents = ["pointerdown", "mousedown", "pointerup", "mouseup", "click", "auxclick"];
+    guardedEvents.forEach((type) => document.addEventListener(type, guard, true));
+    try {
+      dispatchElementPointerMouseSequence(element, options.xRatio ?? 0.5, options.yRatio ?? 0.5);
+      await delay(options.afterClickDelayMs ?? 80);
+    } finally {
+      guardedEvents.forEach((type) => document.removeEventListener(type, guard, true));
+    }
+
+    return {
+      ok: true,
+      method: definitionHref ? "guarded-definition-link-click" : "synthetic-no-navigation",
+      preventedNavigation,
+      href: cleanText(definitionHref),
+      beforeUrl,
+      afterUrl: location.href,
+      navigated: location.href !== beforeUrl
+    };
+  }
+
+  function dispatchElementPointerMouseSequence(element, xRatio = 0.5, yRatio = 0.5) {
+    element.scrollIntoView({ block: "center", inline: "nearest" });
+    const rect = element.getBoundingClientRect();
+    const eventInit = {
+      bubbles: true,
+      cancelable: true,
+      clientX: rect.left + rect.width * xRatio,
+      clientY: rect.top + rect.height * yRatio,
+      view: window
+    };
+    element.dispatchEvent(new PointerEvent("pointerover", eventInit));
+    element.dispatchEvent(new MouseEvent("mouseover", eventInit));
+    element.dispatchEvent(new PointerEvent("pointermove", eventInit));
+    element.dispatchEvent(new MouseEvent("mousemove", eventInit));
+    element.dispatchEvent(new PointerEvent("pointerdown", eventInit));
+    element.dispatchEvent(new MouseEvent("mousedown", eventInit));
+    element.dispatchEvent(new PointerEvent("pointerup", eventInit));
+    element.dispatchEvent(new MouseEvent("mouseup", eventInit));
+    element.dispatchEvent(new MouseEvent("click", eventInit));
+  }
+
+  function findImaiosDefinitionNavigationAnchor(element) {
+    if (!element) return null;
+    const ownAnchor = element.matches?.("a[href]") ? element : null;
+    const ancestorAnchor = element.closest?.("a[href]") || null;
+    const descendantAnchor = element.querySelector?.("a[href]") || null;
+    return [ownAnchor, ancestorAnchor, descendantAnchor].find((anchor) => (
+      anchor && isImaiosDefinitionNavigationHref(anchor.href || anchor.getAttribute("href") || "")
+    )) || null;
+  }
+
+  function isImaiosDefinitionNavigationHref(href) {
+    try {
+      const parsed = new URL(href, location.href);
+      return /\/(?:e-anatomy\/)?anatomical-structures\//i.test(parsed.pathname || "");
+    } catch (_error) {
+      return /\/(?:e-anatomy\/)?anatomical-structures\//i.test(String(href || ""));
+    }
+  }
+
+  function getDefinitionNavigationHref(value = {}) {
+    const href = cleanText(value.href || value.url || "");
+    if (!href || !isImaiosDefinitionNavigationHref(href)) return "";
+    try {
+      return new URL(href, location.href).href;
+    } catch (_error) {
+      return href;
+    }
+  }
+
+  async function captureDefinitionDetailFromNavigationLink(label, clickResult = {}) {
+    const href = getDefinitionNavigationHref(clickResult);
+    if (!href) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "definition-page-fetch-failed",
+        source: "definition-page-fetch",
+        reason: "Search result would navigate to a definition page, but no URL was available to fetch."
+      };
+    }
+
+    const fetched = await fetchImaiosDefinitionPageDetail(href, label);
+    if (!fetched.ok) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "definition-page-fetch-failed",
+        source: "definition-page-fetch",
+        href: fetched.href || href,
+        reason: fetched.reason || "Could not fetch the IMAIOS definition page without navigating."
+      };
+    }
+
+    return {
+      label,
+      normalizedLabel: normalizeText(label),
+      status: "captured",
+      source: "definition-page-fetch",
+      selectedText: fetched.detail?.title || label,
+      href: fetched.href || href,
+      detail: fetched.detail
+    };
+  }
+
+  async function fetchImaiosDefinitionPageDetail(href, expectedLabel = "") {
+    let url = "";
+    try {
+      url = new URL(href, location.href).href;
+      const response = await fetch(url, {
+        credentials: "include",
+        cache: "force-cache"
+      });
+      if (!response.ok) {
+        return {
+          ok: false,
+          href: url,
+          reason: `Definition page fetch failed with HTTP ${response.status}.`
+        };
+      }
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const detail = extractImaiosDefinitionDocumentInfo(doc, expectedLabel, url);
+      if (!hasUsableFetchedDefinitionDetail(detail)) {
+        return {
+          ok: false,
+          href: url,
+          reason: "Fetched definition page did not contain usable definition or structure-detail content."
+        };
+      }
+      return { ok: true, href: url, detail };
+    } catch (error) {
+      return {
+        ok: false,
+        href: url || href,
+        reason: error?.message || String(error)
+      };
+    }
+  }
+
+  function hasUsableFetchedDefinitionDetail(detail = {}) {
+    const definition = cleanText(detail.definition || "");
+    const summary = cleanText(detail.summary || "");
+    if (definition || summary) return true;
+    const rawText = cleanText(detail.rawText || "");
+    const title = cleanText(detail.title || "");
+    if (!rawText || !title) return false;
+    const withoutTitle = rawText.replace(new RegExp(escapeRegExpLiteral(title), "ig"), "").trim();
+    return withoutTitle.length >= 80 && /(Latin synonym|Synonym|Acronym|Related terms|Anatomical hierarchy|In this module)/i.test(rawText);
+  }
+
+  function escapeRegExpLiteral(value) {
+    return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function extractImaiosDefinitionDocumentInfo(doc, expectedLabel = "", href = "") {
+    const root = doc.querySelector(
+      "#structure-details-id,.structure-details,#definition-viewer-preview,[class*='structure-detail'],main,article"
+    ) || doc.body || doc.documentElement;
+    const text = getReadableParsedNodeText(root);
+    const lines = text.split(/\n+/).map(cleanText).filter(Boolean);
+    const title = cleanText(
+      root.querySelector?.(".structure-name")?.textContent ||
+      doc.querySelector("h1")?.textContent ||
+      doc.querySelector("meta[property='og:title']")?.getAttribute("content") ||
+      expectedLabel
+    );
+    const alternateTitle = cleanText(
+      root.querySelector?.(".structure-card-subtitle-latin")?.textContent ||
+      root.querySelector?.("[class*='latin']")?.textContent ||
+      getStructureDetailAlternateTitle(lines, title)
+    );
+    const definition = getStructuredDefinitionText(root) ||
+      extractPanelSection(lines, "Definition", [
+        /^This definition incorporates/i,
+        /^See more$/i,
+        /^In this module$/i,
+        /^Translations$/i,
+        /^Related/i,
+        /^References$/i,
+        /^Bibliography$/i,
+        /^Anatomical hierarchy$/i
+      ]) ||
+      extractImaiosJsonLdDescription(doc, title);
+    const summary = extractPanelLineBlock(lines, /^To summarize:/i, [
+      /^In this module$/i,
+      /^Translations$/i,
+      /^Related/i,
+      /^References$/i
+    ]);
+
+    return {
+      title,
+      alternateTitle,
+      definition,
+      definitionSource: getStructuredDefinitionSource(root),
+      summary,
+      chips: getStructureDetailChipsFromDocument(root, title),
+      hierarchy: getStructureDetailHierarchy(root),
+      moduleImageCount: root.querySelectorAll?.(".structure-gallery-item-image")?.length || 0,
+      rawText: text.slice(0, 6000),
+      panel: {
+        source: "definition-page-fetch",
+        url: href
+      }
+    };
+  }
+
+  function getReadableParsedNodeText(node) {
+    if (!node) return "";
+    const clone = node.cloneNode(true);
+    clone.querySelectorAll?.("script,style,svg,noscript,header,footer,nav").forEach((child) => child.remove());
+    const text = clone.innerText || clone.textContent || "";
+    return String(text)
+      .replace(/\r/g, "\n")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function extractImaiosJsonLdDescription(doc, title = "") {
+    const expected = normalizeText(title);
+    const scripts = Array.from(doc.querySelectorAll("script[type='application/ld+json']"));
+    for (const script of scripts) {
+      try {
+        const parsed = JSON.parse(script.textContent || "null");
+        const candidates = flattenJsonLdCandidates(parsed);
+        for (const item of candidates) {
+          const name = normalizeText(item?.name || item?.headline || item?.title || "");
+          const description = cleanText(item?.description || item?.articleBody || "");
+          if (description && (!expected || !name || name === expected || name.includes(expected) || expected.includes(name))) {
+            return description;
+          }
+        }
+      } catch (_error) {
+        // Ignore malformed structured data; visible-page extraction is the primary path.
+      }
+    }
+    return "";
+  }
+
+  function flattenJsonLdCandidates(value) {
+    if (Array.isArray(value)) return value.flatMap((item) => flattenJsonLdCandidates(item));
+    if (!value || typeof value !== "object") return [];
+    const graph = Array.isArray(value["@graph"]) ? value["@graph"].flatMap((item) => flattenJsonLdCandidates(item)) : [];
+    return [value, ...graph];
+  }
+
+  function getStructureDetailChipsFromDocument(root, title) {
+    const blocked = new Set(["lock", "hide", "see more", "menu", "definition", normalizeText(title)]);
+    return Array.from(root.querySelectorAll?.("a[href],button,.chip,[class*='chip'],[class*='term']") || [])
+      .map((item) => ({
+        label: cleanText(item.textContent || item.getAttribute?.("title") || ""),
+        href: cleanText(item.href || item.getAttribute?.("href") || ""),
+        className: cleanText(item.className || "")
+      }))
+      .filter((item) => item.label && !blocked.has(normalizeText(item.label)))
+      .slice(0, 40);
   }
 
   function clickElementAt(element, xRatio, yRatio) {
@@ -4819,6 +5183,10 @@
       setStatus("No label-bearing chunks are available for this module.", 8000);
       return;
     }
+    if (state.moduleBatchRunning) {
+      requestStopSearchWorkflow("Stopping module batch after the current label.");
+      return;
+    }
     if (state.searchRunning) {
       setStatus("Search is already running.");
       return;
@@ -4835,9 +5203,25 @@
     const originalClearFirst = state.applyChunkClearFirst;
     const added = [];
     const skipped = [];
+    const plannedPlaneSets = chunks.length * seriesTargets.length;
+    const plannedLabels = chunks.reduce((sum, chunk) => sum + getChunkLabelTargets(chunk).length, 0) * seriesTargets.length;
+    const confirmMessage = [
+      "Add all module chunks to the Anki batch?",
+      "",
+      `This will apply labels for ${chunks.length} chunk${chunks.length === 1 ? "" : "s"} across ${seriesTargets.length} plane/series target${seriesTargets.length === 1 ? "" : "s"}.`,
+      `Up to ${plannedPlaneSets} drill${plannedPlaneSets === 1 ? "" : "s"} and about ${plannedLabels} label selection${plannedLabels === 1 ? "" : "s"} may be processed.`,
+      "",
+      "Use Stop module batch or Esc to stop after the current label."
+    ].join("\n");
+    if (typeof window.confirm === "function" && !window.confirm(confirmMessage)) {
+      setStatus("Add all module chunks cancelled.", 5000);
+      return;
+    }
+    state.moduleBatchRunning = true;
     state.cancelSearch = false;
     state.applyChunkClearFirst = true;
     savePageState();
+    refreshPanel();
 
     try {
       const primed = await primeModuleSearch();
@@ -4868,6 +5252,7 @@
           if (!labelsAppliedForChunk) {
             await applyActiveChunk({
               fast: true,
+              preserveCancelSearch: true,
               skipPrime: true,
               skipFinalLockedCheck: true,
               perLabelDelayMs: 240,
@@ -4883,6 +5268,7 @@
           if (!result.ok && labelsAppliedForChunk) {
             await applyActiveChunk({
               fast: true,
+              preserveCancelSearch: true,
               skipPrime: true,
               skipFinalLockedCheck: true,
               perLabelDelayMs: 260,
@@ -4904,6 +5290,7 @@
         }
       }
     } finally {
+      state.moduleBatchRunning = false;
       state.applyChunkClearFirst = originalClearFirst;
       if (originalSeries) {
         await switchSeriesByName(originalSeries, { quiet: true });
@@ -7265,6 +7652,7 @@
 
   function buildLiveDrillUrl(payload) {
     const url = new URL(payload?.module?.url || location.href);
+    url.searchParams.delete("ul");
     url.hash = `imaiosDrill=${base64UrlEncode(JSON.stringify(payload))}`;
     return url.toString();
   }
@@ -7399,16 +7787,21 @@
   }
 
   function onLiveDrillStudyShieldKeyDown(event) {
+    handleLiveDrillStudyShieldHotkey(event);
+  }
+
+  function handleLiveDrillStudyShieldHotkey(event) {
     const host = document.getElementById("imaios-live-drill-study-shield");
     if (!host) {
       document.removeEventListener("keydown", onLiveDrillStudyShieldKeyDown, true);
-      return;
+      return false;
     }
     const ready = host.classList.contains("ready") || host.classList.contains("error");
     const revealKey = event.key === "Enter" || event.key === "Escape" || event.key === " " || event.code === "Space";
-    event.preventDefault();
-    event.stopPropagation();
+    if (ready && !revealKey) return false;
+    markKeyboardEventHandled(event);
     if (ready && revealKey) hideLiveDrillStudyShield();
+    return true;
   }
 
   function markLiveDrillStudyShieldReady(payload) {
@@ -8072,6 +8465,13 @@
       throw new Error(`This drill belongs to ${payload?.module?.name || expectedModuleKey}, not the current module.`);
     }
 
+    state.currentLiveDrillPayload = payload;
+    state.currentLiveDrillCineRangeFallback = getLiveDrillPayloadCineRangeFallback(payload);
+    state.selectedStructures = labels;
+    state.customListText = labels.join("\n");
+    savePageState();
+    refreshPanel();
+
     const restoreDebug = createLiveDrillRestoreDebug(payload, labels, options);
     state.lastLiveDrillRestoreDebug = restoreDebug;
     addLiveDrillRestoreDebugStep(restoreDebug, "start", {
@@ -8211,6 +8611,7 @@
       await closeStructureDetailPanel();
       await clearLiveDrillTransientViewerState();
       await resetQuietPinsByCyclingPins();
+      await refreshCurrentLiveDrillCineRangeFallback(payload, nativePlan);
       await closeStructureDetailPanel();
       await clearLiveDrillTransientViewerState();
       const missSuffix = restoreResult.missing.length ? ` Missing: ${restoreResult.missing.join(", ")}.` : "";
@@ -8334,7 +8735,7 @@
       return { locked: [], missing: labels, attempted: [], reason: "Search is already running." };
     }
     state.searchRunning = true;
-    state.cancelSearch = false;
+    if (!options.preserveCancelSearch) state.cancelSearch = false;
     const requested = unique(labels);
     const attempted = [];
     try {
@@ -8386,6 +8787,7 @@
 
       return { locked, missing, attempted };
     } finally {
+      releaseModuleSearchFocusForHotkeys();
       state.searchRunning = false;
     }
   }
@@ -8557,6 +8959,13 @@
   }
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+    if (!IS_TOP_LEVEL_FRAME) return false;
+
+    if (message?.type === "RADPRIMER_RESTORE_PAGE_KEYBOARD_FOCUS") {
+      sendResponse({ ok: true, focused: focusPageForHotkeys() });
+      return true;
+    }
+
     if (message?.type === "GET_IMAIOS_LABEL_REPOSITORY") {
       sendResponse({
         ok: true,
@@ -8682,6 +9091,7 @@
             : ` Backup failed: ${result.backup?.error || "unknown error"}`;
           setStatus(`Imported ${result.chunkCount} chunks from ChatGPT. Saved ${labelExport.labels.length} module labels.${backupText}`, 12000);
         }
+        releaseModuleSearchFocusForHotkeys();
         sendResponse({
           ok: true,
           ...result,
@@ -10251,6 +10661,7 @@
   function getCurrentUrlWithoutHash() {
     const url = new URL(location.href);
     url.hash = "";
+    url.searchParams.delete("ul");
     return url.toString();
   }
 
@@ -10351,8 +10762,12 @@
   }
 
   async function copyCineRangeText() {
-    const range = getSuggestedCineRange();
-    if (!range.startSlice || !range.endSlice) {
+    let range = getSuggestedCineRange();
+    if (!Number.isFinite(range.startSlice) || !Number.isFinite(range.endSlice)) {
+      await refreshCineRangeFallbackForCurrentSelection();
+      range = getSuggestedCineRange();
+    }
+    if (!Number.isFinite(range.startSlice) || !Number.isFinite(range.endSlice)) {
       setStatus("No colored cine range found.");
       return;
     }
@@ -10367,13 +10782,22 @@
   }
 
   async function copyCineRangeJson() {
-    const range = getSuggestedCineRange();
-    await writeClipboard(JSON.stringify(range, null, 2));
-    setStatus(range.startSlice ? `Range JSON copied: ${range.startSlice}-${range.endSlice}.` : "Range JSON copied.");
+    let range = getSuggestedCineRange();
+    if (!Number.isFinite(range.startSlice) || !Number.isFinite(range.endSlice)) {
+      await refreshCineRangeFallbackForCurrentSelection();
+      range = getSuggestedCineRange();
+    }
+    await writeClipboard(JSON.stringify(buildCineRangeDebugReport(range), null, 2));
+    setStatus(Number.isFinite(range.startSlice) ? `Range JSON copied: ${range.startSlice}-${range.endSlice}.` : "Range JSON copied.");
   }
 
   async function copyCurrentAnkiVideoHtml() {
-    const range = getSuggestedCineRange();
+    const rangeResult = await getValidCineRangeAsync();
+    if (!rangeResult.ok) {
+      setStatus(rangeResult.reason, 7000);
+      return;
+    }
+    const range = rangeResult.range;
     const pinsMeta = buildCineRecordingMetadata(range, "pins");
     const labelsMeta = buildCineRecordingMetadata(range, "labels");
     await writeClipboard(buildAnkiVideoPairHtml(pinsMeta.filename, labelsMeta.filename));
@@ -10385,7 +10809,7 @@
       setStatus("Cine recording is already running.");
       return;
     }
-    const result = getValidCineRange();
+    const result = await getValidCineRangeAsync();
     if (!result.ok) {
       setStatus(`${result.reason} Apply/lock a chunk first, then record.`, 8000);
       return;
@@ -10429,7 +10853,7 @@
           await delay(700);
         }
 
-        const planeRangeResult = getValidCineRange();
+        const planeRangeResult = await getValidCineRangeAsync();
         if (!planeRangeResult.ok) {
           skipped.push(`${planeLabel}: ${planeRangeResult.reason}`);
           continue;
@@ -10909,7 +11333,7 @@
   }
 
   async function goToRangeStart() {
-    const result = getValidCineRange();
+    const result = await getValidCineRangeAsync();
     if (!result.ok) {
       setStatus(result.reason);
       return;
@@ -10934,7 +11358,7 @@
       return;
     }
 
-    const result = getValidCineRange();
+    const result = await getValidCineRangeAsync();
     if (!result.ok) {
       setStatus(result.reason);
       return;
@@ -10959,7 +11383,7 @@
   }
 
   async function startRangeCine() {
-    const result = getValidCineRange();
+    const result = await getValidCineRangeAsync();
     if (!result.ok) {
       setStatus(result.reason);
       return;
@@ -11096,6 +11520,19 @@
     return { ok: true, range };
   }
 
+  async function getValidCineRangeAsync() {
+    let result = getValidCineRange();
+    if (result.ok) return result;
+    setStatus("Looking up the selected-card cine range...", 0);
+    await refreshCineRangeFallbackForCurrentSelection();
+    result = getValidCineRange();
+    if (result.ok) return result;
+    return {
+      ...result,
+      debug: buildCineRangeDebugReport(result.range || getSuggestedCineRange())
+    };
+  }
+
   async function setViewerSlice(slice) {
     const targetSlice = Math.round(slice);
     const input = findViewerSliceInput();
@@ -11123,8 +11560,9 @@
   }
 
   function findTimelineSliceElement(slice) {
-    return Array.from(document.querySelectorAll(".slice[sort_order], [sort_order][slice_id]"))
-      .find((element) => parseNumber(element.getAttribute("sort_order")) === slice) || null;
+    return getTimelineSliceEntries()
+      .find((entry) => entry.sortOrder === slice)
+      ?.element || null;
   }
 
   function pressInputKey(input, key) {
@@ -11681,7 +12119,10 @@
     const input = availability.input || findModuleSearchInput();
     if (input) input.focus();
     await delay(options.beforeClickDelayMs ?? 60);
-    clickElement(availability.result);
+    const click = await clickSearchResultWithoutDefinitionNavigation(availability.result, {
+      afterClickDelayMs: 0,
+      purpose: "native-id-map"
+    });
     if (options.closeDetailPanelAfterClick !== false) {
       await delay(options.closeDelayMs ?? 180);
       await closeStructureDetailPanel();
@@ -11700,6 +12141,7 @@
       searchOk: true,
       selectedText: cleanText(availability.selectedText || label),
       reason,
+      click,
       beforeIds: beforeNative.ids,
       afterIds: afterNative.ids,
       addedIds
@@ -12137,7 +12579,7 @@
           }
           const label = labelList[index];
           setStatus(`${options.statusVerb || profile.label} ${index + 1}/${labelList.length}: ${label}`, 0);
-          const result = await captureLockedLabelDetailViaSearchPin(label, profile);
+          const result = await captureLockedLabelDetailViaSearchPin(label, profile, { sourcePayload });
           results.push(result);
           await delay(result.status === "captured" ? profile.afterCapturedMs : profile.afterMissMs);
           await closeStructureDetailPanel();
@@ -12150,6 +12592,7 @@
     } catch (error) {
       workflowError = error?.message || String(error);
     } finally {
+      releaseModuleSearchFocusForHotkeys();
       state.searchRunning = false;
     }
 
@@ -12244,7 +12687,10 @@
     };
   }
 
-  async function captureLockedLabelDetailViaSearchPin(label, profile = getSearchPinProbeProfile()) {
+  async function captureLockedLabelDetailViaSearchPin(label, profile = getSearchPinProbeProfile(), options = {}) {
+    const nativeAttempt = await captureLockedLabelDetailViaNativeId(label, options.sourcePayload, profile);
+    if (nativeAttempt?.status === "captured") return nativeAttempt;
+
     const availability = await searchStructureAvailability(label, {
       exact: true,
       timeoutMs: profile.searchTimeoutMs,
@@ -12257,12 +12703,13 @@
         label,
         normalizedLabel: normalizeText(label),
         status: "no-search-result",
-        reason: availability.reason || "No exact module-search result matched this locked label."
+        reason: availability.reason || "No exact module-search result matched this locked label.",
+        nativeAttempt
       };
     }
 
     const searchResult = elementProbe(availability.result);
-    const click = await realMouseClick(availability.result, 0.5, 0.5);
+    const click = await clickSearchResultForDetailProbe(availability.result);
     const selectedText = availability.selectedText || label;
     await delay(profile.afterSearchClickMs);
 
@@ -12285,6 +12732,22 @@
 
     const visiblePin = await waitFor(() => findVisibleStructureLabelElement(label), profile.visiblePinWaitMs, profile.visiblePinIntervalMs);
     if (!visiblePin) {
+      const fetched = getDefinitionNavigationHref(click)
+        ? await captureDefinitionDetailFromNavigationLink(label, click)
+        : null;
+      if (fetched?.status === "captured") {
+        return {
+          ...fetched,
+          selectedText,
+          searchResult,
+          searchClick: click,
+          nativeAttempt,
+          drawerFallback: {
+            status: "search-result-found-but-no-visible-pin-on-current-slice",
+            reason: "The guarded search-result click did not expose a matching in-module drawer or visible pin, so the definition page was fetched without navigating."
+          }
+        };
+      }
       return {
         label,
         normalizedLabel: normalizeText(label),
@@ -12293,7 +12756,9 @@
         selectedText,
         searchResult,
         searchClick: click,
-        lockedCountAfterSearch: getLockedStructureCount()
+        lockedCountAfterSearch: getLockedStructureCount(),
+        nativeAttempt,
+        definitionPageFallback: fetched
       };
     }
 
@@ -12301,6 +12766,27 @@
       labelClickWaitMs: profile.labelClickWaitMs
     });
     if (!detailClick.panel) {
+      const fetched = getDefinitionNavigationHref(click)
+        ? await captureDefinitionDetailFromNavigationLink(label, click)
+        : null;
+      if (fetched?.status === "captured") {
+        return {
+          ...fetched,
+          selectedText,
+          searchResult,
+          searchClick: click,
+          visiblePin: visiblePin.probe,
+          matchScore: visiblePin.score,
+          click: detailClick.click,
+          clickAttempts: detailClick.attempts,
+          visiblePanelAfterClick: detailClick.visiblePanelAfterClick || null,
+          nativeAttempt,
+          drawerFallback: {
+            status: "visible-pin-clicked-no-detail",
+            reason: "The visible pin click did not expose a matching drawer, so the definition page was fetched without navigating."
+          }
+        };
+      }
       return {
         label,
         normalizedLabel: normalizeText(label),
@@ -12313,7 +12799,9 @@
         matchScore: visiblePin.score,
         click: detailClick.click,
         clickAttempts: detailClick.attempts,
-        visiblePanelAfterClick: detailClick.visiblePanelAfterClick || null
+        visiblePanelAfterClick: detailClick.visiblePanelAfterClick || null,
+        nativeAttempt,
+        definitionPageFallback: fetched
       };
     }
 
@@ -12329,7 +12817,159 @@
       matchScore: visiblePin.score,
       click: detailClick.click,
       clickAttempts: detailClick.attempts,
+      nativeAttempt,
       detail: extractStructureDetailPanelInfo(detailClick.panel, label)
+    };
+  }
+
+  async function captureLockedLabelDetailViaNativeId(label, sourcePayload = null, profile = getSearchPinProbeProfile()) {
+    const nativePlan = buildNativeRestorePlanForLabelDetailHarvest(label, sourcePayload);
+    if (!nativePlan.complete) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "native-id-unavailable",
+        source: "native-id",
+        nativePlan
+      };
+    }
+
+    const directResult = await runImaiosPageContextProbe("native-direct-isolate", {
+      ids: nativePlan.ids,
+      moduleSlug: nativePlan.moduleSlug,
+      labels: [label],
+      source: "codex-definition-harvest",
+      clearFirst: true,
+      waitMs: profile.nativeDirectWaitMs ?? 220
+    }, profile.nativeDirectTimeoutMs ?? 4500);
+
+    let acknowledged = directResult?.ok
+      ? await waitFor(() => (getLockedStructureCount() >= 1 ? true : null), profile.nativeAckWaitMs ?? 1100, 80)
+      : null;
+    let writeResult = null;
+    if (!acknowledged) {
+      writeResult = writeNativeLockedStructureIds(nativePlan.moduleSlug, nativePlan.ids);
+      if (writeResult.ok) {
+        acknowledged = await waitFor(() => (getLockedStructureCount() >= 1 ? true : null), profile.nativeAckWaitMs ?? 1100, 80);
+      }
+    }
+
+    const nativeContext = {
+      nativePlan,
+      directResult,
+      writeResult,
+      acknowledged: Boolean(acknowledged),
+      lockedCount: getLockedStructureCount()
+    };
+
+    const alreadyOpenPanel = findStructureDetailPanelForLabel(label);
+    if (alreadyOpenPanel) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "captured",
+        source: "native-id-auto-panel",
+        nativeContext,
+        detail: extractStructureDetailPanelInfo(alreadyOpenPanel, label)
+      };
+    }
+
+    let visiblePin = await waitFor(
+      () => findVisibleStructureLabelElement(label),
+      profile.nativeVisiblePinWaitMs ?? Math.min(1400, profile.visiblePinWaitMs || 1400),
+      profile.visiblePinIntervalMs ?? 60
+    );
+
+    let labelModeResult = null;
+    if (!visiblePin && acknowledged) {
+      labelModeResult = await setPinsMode(false, { openPanel: true }).catch((error) => ({
+        ok: false,
+        reason: error?.message || String(error)
+      }));
+      await delay(180);
+      visiblePin = await waitFor(
+        () => findVisibleStructureLabelElement(label),
+        profile.nativeVisiblePinWaitMs ?? Math.min(1400, profile.visiblePinWaitMs || 1400),
+        profile.visiblePinIntervalMs ?? 60
+      );
+    }
+
+    if (!visiblePin) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: acknowledged ? "native-id-locked-no-visible-pin" : "native-id-not-acknowledged",
+        source: "native-id",
+        reason: acknowledged
+          ? "The label was isolated by native ID, but no visible label/pin was found on the current viewer state."
+          : directResult?.reason || writeResult?.reason || "IMAIOS did not acknowledge the native ID isolate.",
+        nativeContext: {
+          ...nativeContext,
+          labelModeResult
+        }
+      };
+    }
+
+    const detailClick = await clickVisibleStructureLabelForDetail(visiblePin, label, {
+      labelClickWaitMs: profile.labelClickWaitMs
+    });
+    if (!detailClick.panel) {
+      return {
+        label,
+        normalizedLabel: normalizeText(label),
+        status: "native-id-visible-pin-clicked-no-detail",
+        source: "native-id",
+        reason: "Native ID isolation produced a visible label/pin, but clicking it did not open a matching definition drawer.",
+        nativeContext: {
+          ...nativeContext,
+          labelModeResult
+        },
+        visiblePin: visiblePin.probe,
+        matchScore: visiblePin.score,
+        click: detailClick.click,
+        clickAttempts: detailClick.attempts,
+        visiblePanelAfterClick: detailClick.visiblePanelAfterClick || null
+      };
+    }
+
+    return {
+      label,
+      normalizedLabel: normalizeText(label),
+      status: "captured",
+      source: "native-id-visible-label",
+      nativeContext: {
+        ...nativeContext,
+        labelModeResult
+      },
+      visiblePin: visiblePin.probe,
+      matchScore: visiblePin.score,
+      click: detailClick.click,
+      clickAttempts: detailClick.attempts,
+      detail: extractStructureDetailPanelInfo(detailClick.panel, label)
+    };
+  }
+
+  function buildNativeRestorePlanForLabelDetailHarvest(label, sourcePayload = null) {
+    const module = sourcePayload?.module || getCurrentModuleInfo();
+    const moduleKey = cleanText(module?.key || getCurrentModuleKey());
+    const target = normalizeText(label);
+    const payloadEntry = (Array.isArray(sourcePayload?.labels) ? sourcePayload.labels : [])
+      .find((entry) => normalizeText(entry?.preferredLabel || entry?.label || "") === target) || {};
+    const nativeMatch = getNativeIdsForLabel(label, moduleKey);
+    const ids = uniqueNativeIds([
+      ...(Array.isArray(payloadEntry.nativeIds) ? payloadEntry.nativeIds : []),
+      payloadEntry.nativeId,
+      ...(nativeMatch.ids || [])
+    ]);
+    const moduleSlug = cleanText(payloadEntry.nativeModuleSlug || nativeMatch.moduleSlug || getSavedModuleNativeSlug(moduleKey) || "");
+    return {
+      storageKey: "im_viewer_locked_structures",
+      moduleSlug,
+      ids,
+      labelCount: 1,
+      mappedLabelCount: ids.length ? 1 : 0,
+      complete: Boolean(moduleSlug && ids.length),
+      source: ids.length ? "native-lock-id-map" : ""
     };
   }
 
@@ -12337,7 +12977,30 @@
     const input = findModuleSearchInput();
     if (!input) return { ok: false, reason: "Could not find module search input." };
     await clearSearchInput(input);
+    releaseModuleSearchFocusForHotkeys(input);
     return { ok: true };
+  }
+
+  function releaseModuleSearchFocusForHotkeys(input = findModuleSearchInput()) {
+    if (input && document.activeElement === input) {
+      try {
+        input.blur();
+      } catch (_error) {}
+    }
+    return focusPageForHotkeys();
+  }
+
+  function focusPageForHotkeys() {
+    if (isEditableTarget(document.activeElement)) return false;
+    try {
+      if (document.body && typeof document.body.focus === "function") {
+        if (!document.body.hasAttribute("tabindex")) document.body.setAttribute("tabindex", "-1");
+        document.body.focus({ preventScroll: true });
+      }
+      return true;
+    } catch (_error) {
+      return false;
+    }
   }
 
   async function restoreLockedLabelsAfterSearchPinProbe(labels) {
@@ -12532,7 +13195,7 @@
       };
     }
 
-    const click = await realMouseClick(availability.result, 0.5, 0.5);
+    const click = await clickSearchResultForDetailProbe(availability.result);
     const selectedLabel = availability.selectedText || label;
     const searchProbe = elementProbe(availability.result);
     const panel = await waitFor(() => (
@@ -12541,6 +13204,21 @@
     ), 3000, 120);
 
     if (!panel) {
+      const fetched = getDefinitionNavigationHref(click)
+        ? await captureDefinitionDetailFromNavigationLink(label, click)
+        : null;
+      if (fetched?.status === "captured") {
+        return {
+          ...fetched,
+          selectedText: selectedLabel,
+          searchResult: searchProbe,
+          click,
+          drawerFallback: {
+            status: "search-clicked-no-panel",
+            reason: "The guarded search-result click did not expose a matching drawer, so the definition page was fetched without navigating."
+          }
+        };
+      }
       return {
         label,
         normalizedLabel: normalizeText(label),
@@ -12549,7 +13227,8 @@
         source: "module-search",
         selectedText: selectedLabel,
         searchResult: searchProbe,
-        click
+        click,
+        definitionPageFallback: fetched
       };
     }
 
@@ -12942,48 +13621,362 @@
   }
 
   function getTimelineInfo(includeElements) {
-    const slices = Array.from(document.querySelectorAll(".slice[sort_order], [sort_order][slice_id]"));
-    const entries = slices.map((element) => ({
-      sortOrder: parseNumber(element.getAttribute("sort_order")),
-      sliceId: element.getAttribute("slice_id") || "",
-      className: String(element.className || ""),
-      style: element.getAttribute("style") || ""
-    })).filter((entry) => Number.isFinite(entry.sortOrder) || entry.sliceId);
+    const entries = getTimelineSliceEntries();
 
     const sortOrders = entries.map((entry) => entry.sortOrder).filter(Number.isFinite);
-    const styledEntries = entries.filter((entry) => entry.style && entry.style.trim());
+    const styledEntries = entries.filter((entry) => {
+      if (!entry.style || !entry.style.trim()) return false;
+      if (entry.sortOrderSource === "dom-order") return isHighlightedDomTimelineEntry(entry);
+      return true;
+    });
+    const publicEntry = (entry) => {
+      const { element: _element, ...serializableEntry } = entry;
+      return serializableEntry;
+    };
+    const highlightedSortOrders = styledEntries
+      .map((entry) => entry.sortOrder)
+      .filter(Number.isFinite)
+      .sort((a, b) => a - b);
+    const highlightedEnvelope = highlightedSortOrders.length
+      ? [highlightedSortOrders[0], highlightedSortOrders[highlightedSortOrders.length - 1]]
+      : [];
+
     return {
       count: entries.length,
       firstSortOrder: sortOrders.length ? Math.min(...sortOrders) : null,
       lastSortOrder: sortOrders.length ? Math.max(...sortOrders) : null,
       styledCount: styledEntries.length,
+      highlightedSortOrders,
+      highlightedEnvelope,
+      rangeMode: highlightedEnvelope.length ? "continuous-envelope" : "",
       styledRanges: numberRanges(styledEntries.map((entry) => entry.sortOrder).filter(Number.isFinite)),
       colorRanges: getTimelineColorRanges(styledEntries),
-      currentCandidates: entries.filter((entry) => /active|current|selected/i.test(`${entry.className} ${entry.style}`)).slice(0, 20),
-      entries: includeElements ? entries.slice(0, 1200) : undefined
+      currentCandidates: entries.filter((entry) => /active|current|selected/i.test(`${entry.className} ${entry.style}`)).map(publicEntry).slice(0, 20),
+      entries: includeElements ? entries.map(publicEntry).slice(0, 1200) : undefined
     };
+  }
+
+  function getTimelineSliceEntries() {
+    const explicit = Array.from(document.querySelectorAll(".slice[sort_order], [sort_order][slice_id]"));
+    const fallback = Array.from(document.querySelectorAll(".slice"));
+    const elements = uniqueElements([...explicit, ...fallback]).filter((element) => isVisible(element));
+    const base = getDomTimelineSliceBase(elements.length);
+    return elements.map((element, index) => {
+      const explicitSortOrder = parseOptionalNumber(element.getAttribute("sort_order"));
+      const sortOrder = Number.isFinite(explicitSortOrder) ? explicitSortOrder : base + index;
+      return {
+        sortOrder,
+        sortOrderSource: Number.isFinite(explicitSortOrder) ? "sort_order" : "dom-order",
+        sliceId: element.getAttribute("slice_id") || "",
+        className: String(element.className || ""),
+        style: element.getAttribute("style") || "",
+        element
+      };
+    }).filter((entry) => Number.isFinite(entry.sortOrder) || entry.sliceId);
+  }
+
+  function uniqueElements(elements) {
+    const seen = new Set();
+    return elements.filter((element) => {
+      if (!element || seen.has(element)) return false;
+      seen.add(element);
+      return true;
+    });
+  }
+
+  function getDomTimelineSliceBase(sliceCount) {
+    const info = getSliceInfo();
+    const min = Number(info.min);
+    const max = Number(info.max);
+    if (Number.isFinite(min) && Number.isFinite(max)) {
+      if ((max - min + 1) === sliceCount) return min;
+      if ((max - min) === sliceCount) return min + 1;
+    }
+    if (Number.isFinite(max) && max === sliceCount) return 1;
+    return Number.isFinite(min) ? min : 0;
+  }
+
+  function isHighlightedDomTimelineEntry(entry) {
+    const style = String(entry?.style || "");
+    if (!style.trim()) return false;
+    if (/active|current|selected|highlight|isolated/i.test(`${entry.className || ""} ${style}`)) return true;
+    const colorCount = unique(extractRgbColors(style)).length;
+    if (colorCount > 1) return true;
+    return colorCount > 0 && hasActiveTimelineSelectionContext();
+  }
+
+  function hasActiveTimelineSelectionContext() {
+    if (getLockedStructureCount() > 0) return true;
+    if (Array.isArray(state.selectedStructures) && state.selectedStructures.length > 0) return true;
+    return parseCustomList().length > 0;
   }
 
   function getSuggestedCineRange(timeline = null) {
     const timelineInfo = timeline || getTimelineInfo(false);
+    const envelope = Array.isArray(timelineInfo.highlightedEnvelope) ? timelineInfo.highlightedEnvelope : [];
     const styledRanges = Array.isArray(timelineInfo.styledRanges) ? timelineInfo.styledRanges : [];
     const firstRange = styledRanges[0] || [];
     const lastRange = styledRanges[styledRanges.length - 1] || [];
-    const startSlice = Number.isFinite(firstRange[0]) ? firstRange[0] : null;
-    const endSlice = Number.isFinite(lastRange[1]) ? lastRange[1] : null;
+    let startSlice = Number.isFinite(envelope[0])
+      ? envelope[0]
+      : Number.isFinite(firstRange[0]) ? firstRange[0] : null;
+    let endSlice = Number.isFinite(envelope[1])
+      ? envelope[1]
+      : Number.isFinite(lastRange[1]) ? lastRange[1] : null;
+    let basis = "continuous envelope from earliest to latest highlighted timeline tag";
 
     const colorSummary = Object.entries(timelineInfo.colorRanges || {}).map(([color, ranges]) => ({
       color,
       ranges
     }));
 
+    const savedCardRange = getCurrentLiveDrillCineRangeFallback();
+    if ((!Number.isFinite(startSlice) || !Number.isFinite(endSlice)) && savedCardRange) {
+      startSlice = savedCardRange.startSlice;
+      endSlice = savedCardRange.endSlice;
+      basis = savedCardRange.basis;
+    }
+
     return {
       series: getSeriesInfo().selectedPlane || "Current series",
       startSlice,
       endSlice,
       frameCount: Number.isFinite(startSlice) && Number.isFinite(endSlice) ? endSlice - startSlice + 1 : null,
-      basis: "union of colored timeline slice markers for the currently locked/highlighted structures",
+      basis,
       colorSummary
+    };
+  }
+
+  function getCurrentLiveDrillCineRangeFallback() {
+    const payload = state.currentLiveDrillPayload;
+    if (payload?.kind === "imaios-live-drill" && !liveDrillPayloadMatchesCurrentViewer(payload)) return null;
+
+    const fallback = state.currentLiveDrillCineRangeFallback || getLiveDrillPayloadCineRangeFallback(payload);
+    if (!fallback || !cineRangeFallbackMatchesCurrentSelection(fallback, payload)) return null;
+
+    return fallback;
+  }
+
+  function liveDrillPayloadMatchesCurrentViewer(payload) {
+    const expectedModuleKey = normalizeModuleKey(payload?.module?.key || payload?.module?.pathname || payload?.module?.url || "");
+    const currentModuleKey = getCurrentModuleKey();
+    if (expectedModuleKey && currentModuleKey && expectedModuleKey !== currentModuleKey) return false;
+    const series = getSeriesInfo();
+    const expectedSeries = cleanText(payload?.viewer?.selectedSeries || "");
+    const currentSeries = cleanText(series.selectedSeries || "");
+    if (expectedSeries && currentSeries && normalizeText(expectedSeries) !== normalizeText(currentSeries)) return false;
+    const expectedPlane = normalizePlaneName(payload?.viewer?.plane || "");
+    const currentPlane = normalizePlaneName(series.selectedPlane || "") || inferSelectedPlaneFromDom();
+    if (expectedPlane && currentPlane && expectedPlane !== currentPlane) return false;
+    return true;
+  }
+
+  function cineRangeFallbackMatchesCurrentSelection(fallback, payload = null) {
+    const fallbackModuleKey = normalizeModuleKey(fallback?.moduleKey || fallback?.module?.key || "");
+    const currentModuleKey = getCurrentModuleKey();
+    if (fallbackModuleKey && currentModuleKey && fallbackModuleKey !== currentModuleKey) return false;
+    const fallbackSeries = cleanText(fallback?.selectedSeries || "");
+    const currentSeries = cleanText(getSeriesInfo().selectedSeries || "");
+    if (fallbackSeries && currentSeries && normalizeText(fallbackSeries) !== normalizeText(currentSeries)) return false;
+    const fallbackPlane = normalizePlaneName(fallback?.plane || "");
+    const currentPlane = normalizePlaneName(getSeriesInfo().selectedPlane || "") || inferSelectedPlaneFromDom();
+    if (fallbackPlane && currentPlane && fallbackPlane !== currentPlane) return false;
+    const fallbackLabels = unique(fallback?.labels || []);
+    if (!fallbackLabels.length && !payload) return true;
+    const payloadLabels = getLiveDrillRestoreLabels(payload);
+    const selectedKeys = new Set(unique([
+      ...(state.selectedStructures || []),
+      ...getLockedStructureNames()
+    ]).map(normalizeText));
+    const labelsToMatch = fallbackLabels.length ? fallbackLabels : payloadLabels;
+    const hasMatchingLabels = labelsToMatch.length
+      ? labelsToMatch.some((label) => selectedKeys.has(normalizeText(label)))
+      : true;
+    return !(selectedKeys.size && !hasMatchingLabels);
+  }
+
+  function getLiveDrillPayloadCineRangeFallback(payload) {
+    if (!payload) return null;
+    const range = payload?.viewer?.range || {};
+    return normalizeCineRangeFallback(range, "saved live-drill card cine range; colored timeline markers were not visible", {
+      moduleKey: payload?.module?.key || "",
+      plane: payload?.viewer?.plane || "",
+      selectedSeries: payload?.viewer?.selectedSeries || "",
+      labels: getLiveDrillRestoreLabels(payload),
+      source: "live-drill-payload"
+    });
+  }
+
+  function normalizeCineRangeFallback(range, basis, extra = {}) {
+    const startSlice = parseNumber(range?.startSlice ?? range?.start);
+    const endSlice = parseNumber(range?.endSlice ?? range?.end);
+    if (!Number.isFinite(startSlice) || !Number.isFinite(endSlice) || endSlice < startSlice) return null;
+    return {
+      startSlice,
+      endSlice,
+      frameCount: endSlice - startSlice + 1,
+      basis: cleanText(basis || range?.basis || "fallback cine range"),
+      source: cleanText(extra.source || range?.source || ""),
+      moduleKey: cleanText(extra.moduleKey || range?.moduleKey || ""),
+      plane: normalizePlaneName(extra.plane || range?.plane || ""),
+      selectedSeries: cleanText(extra.selectedSeries || range?.selectedSeries || ""),
+      labels: unique(extra.labels || range?.labels || [])
+    };
+  }
+
+  async function refreshCineRangeFallbackForCurrentSelection() {
+    if (state.currentLiveDrillPayload?.kind === "imaios-live-drill") {
+      return refreshCurrentLiveDrillCineRangeFallback(state.currentLiveDrillPayload);
+    }
+    const labels = getCurrentCineRangeLabelSet();
+    if (!labels.length) return null;
+    const module = getCurrentModuleInfo();
+    const plan = buildNativeRestorePlanForLabelNames(labels, module);
+    if (!plan.complete) return null;
+    const nativeRange = await getNativeCineRangeFallback(plan, labels, "current-selection-native");
+    if (nativeRange) state.currentLiveDrillCineRangeFallback = nativeRange;
+    return state.currentLiveDrillCineRangeFallback;
+  }
+
+  function getCurrentCineRangeLabelSet() {
+    const selected = unique([
+      ...(state.selectedStructures || []),
+      ...parseCustomList(),
+      ...getLockedStructureNames()
+    ]);
+    if (selected.length) return selected;
+    const chunk = getActiveChunk();
+    if (!chunk || !chunkMatchesCurrentModule(chunk)) return [];
+    const availableMap = getCurrentAvailableLabelMap();
+    return unique(getChunkLabelTargets(chunk).map((target) => chooseBestChunkLabel(target, availableMap)));
+  }
+
+  async function refreshCurrentLiveDrillCineRangeFallback(payload, nativePlan = null) {
+    state.currentLiveDrillCineRangeFallback = getLiveDrillPayloadCineRangeFallback(payload);
+    const plan = nativePlan?.complete ? nativePlan : getLiveDrillNativeRestorePlan(payload);
+    if (!plan?.complete) return state.currentLiveDrillCineRangeFallback;
+
+    const nativeRange = await getNativeCineRangeFallback(plan, getLiveDrillRestoreLabels(payload), "live-drill-native");
+    if (nativeRange) {
+      state.currentLiveDrillCineRangeFallback = nativeRange;
+    }
+    return state.currentLiveDrillCineRangeFallback;
+  }
+
+  async function getNativeCineRangeFallback(plan, labels = [], source = "native") {
+    const native = await runImaiosPageContextProbe("native-cine-range", {
+      ids: plan.ids,
+      moduleSlug: plan.moduleSlug,
+      source: "codex-live-drill-cine-range"
+    }, 3500).catch((error) => ({ ok: false, reason: error?.message || String(error) }));
+    state.lastCineRangeNativeProbe = summarizeNativeCineRangeProbe(native);
+    return native?.ok
+      ? normalizeCineRangeFallback(native.range, "native IMAIOS isolated-structure slice range; colored timeline markers were not visible", {
+        moduleKey: getCurrentModuleKey(),
+        plane: getSeriesInfo().selectedPlane || inferSelectedPlaneFromDom() || "",
+        selectedSeries: getSeriesInfo().selectedSeries || "",
+        labels,
+        source
+      })
+      : null;
+  }
+
+  function buildCineRangeDebugReport(range = getSuggestedCineRange()) {
+    const timeline = getTimelineInfo(false);
+    const labels = getCurrentCineRangeLabelSet();
+    const activeChunk = getActiveChunk();
+    const nativePlan = labels.length ? buildNativeRestorePlanForLabelNames(labels, getCurrentModuleInfo()) : null;
+    const payload = state.currentLiveDrillPayload;
+    return {
+      kind: "imaios-cine-range-debug",
+      version: 1,
+      createdAt: new Date().toISOString(),
+      pageTitle: document.title,
+      url: location.href,
+      module: getCurrentModuleInfo(),
+      series: getSeriesInfo(),
+      slice: getSliceInfo(),
+      range,
+      timeline: {
+        count: timeline.count,
+        firstSortOrder: timeline.firstSortOrder,
+        lastSortOrder: timeline.lastSortOrder,
+        styledCount: timeline.styledCount,
+        highlightedSortOrders: timeline.highlightedSortOrders,
+        highlightedEnvelope: timeline.highlightedEnvelope,
+        rangeMode: timeline.rangeMode,
+        styledRanges: timeline.styledRanges,
+        colorRanges: timeline.colorRanges,
+        currentCandidates: timeline.currentCandidates
+      },
+      selectedStructures: state.selectedStructures,
+      lockedStructures: getLockedStructureNames(),
+      currentRangeLabels: labels,
+      activeChunk: activeChunk ? {
+        id: activeChunk.id || "",
+        title: activeChunk.title || "",
+        targetCount: getChunkLabelTargets(activeChunk).length,
+        matchesCurrentModule: chunkMatchesCurrentModule(activeChunk)
+      } : null,
+      currentLiveDrillPayload: payload?.kind === "imaios-live-drill" ? {
+        id: payload.id || "",
+        title: payload.title || "",
+        labelCount: getLiveDrillRestoreLabels(payload).length,
+        moduleKey: payload.module?.key || "",
+        viewer: payload.viewer || null,
+        nativeRestore: summarizeNativeRestorePlan(getLiveDrillNativeRestorePlan(payload)),
+        matchesCurrentViewer: liveDrillPayloadMatchesCurrentViewer(payload)
+      } : null,
+      currentLiveDrillCineRangeFallback: state.currentLiveDrillCineRangeFallback,
+      nativePlan: nativePlan ? summarizeNativeRestorePlan(nativePlan) : null,
+      lastNativeRangeProbe: state.lastCineRangeNativeProbe
+    };
+  }
+
+  function summarizeNativeCineRangeProbe(probe = {}) {
+    if (!probe || typeof probe !== "object") return null;
+    const summarizeCall = (call = {}) => ({
+      signature: call.signature,
+      ok: Boolean(call.ok),
+      rawType: cleanText(call.rawType || ""),
+      sliceCount: Number(call.sliceCount || 0),
+      slices: Array.isArray(call.slices) ? call.slices.slice(0, 40) : [],
+      rawSummary: call.rawSummary || null,
+      error: cleanText(call.error || "")
+    });
+    return {
+      ok: Boolean(probe.ok),
+      reason: cleanText(probe.reason || probe.error || ""),
+      requestedIds: Array.isArray(probe.requestedIds) ? probe.requestedIds.slice(0, 120) : [],
+      range: probe.range || null,
+      bounds: probe.bounds || null,
+      viewer: probe.viewer ? {
+        captured: Boolean(probe.viewer.captured),
+        hasIsolateStructure: Boolean(probe.viewer.hasIsolateStructure),
+        hasCleanIsolate: Boolean(probe.viewer.hasCleanIsolate),
+        hasGetSliceWithIsolatedStructure: Boolean(probe.viewer.hasGetSliceWithIsolatedStructure),
+        isolatedIds: Array.isArray(probe.viewer.isolatedIds) ? probe.viewer.isolatedIds.slice(0, 80) : []
+      } : null,
+      bulkCalls: Array.isArray(probe.bulkCalls)
+        ? probe.bulkCalls.map(summarizeCall)
+        : [],
+      allIsolatedCall: probe.allIsolatedCall ? summarizeCall(probe.allIsolatedCall) : null,
+      stateScan: probe.stateScan ? {
+        sliceCount: Number(probe.stateScan.sliceCount || 0),
+        slices: Array.isArray(probe.stateScan.slices) ? probe.stateScan.slices.slice(0, 120) : [],
+        hitCount: Number(probe.stateScan.hitCount || 0),
+        visitedNodes: Number(probe.stateScan.visitedNodes || 0),
+        truncated: Boolean(probe.stateScan.truncated),
+        hits: Array.isArray(probe.stateScan.hits) ? probe.stateScan.hits.slice(0, 30) : []
+      } : null,
+      perId: Array.isArray(probe.perId)
+        ? probe.perId.slice(0, 12).map((entry) => ({
+          id: entry.id,
+          calls: Array.isArray(entry.calls)
+            ? entry.calls.map(summarizeCall)
+            : []
+        }))
+        : []
     };
   }
 
@@ -13904,6 +14897,109 @@
     return action ? action.label : "Shortcut";
   }
 
+  function initFrameHotkeyRelay() {
+    loadHotkeyPrefsOnly();
+    window.addEventListener("keydown", onFrameHotkeyRelayKeyDown, true);
+    window.addEventListener("keyup", onFrameHotkeyRelayKeyUp, true);
+    document.addEventListener("keydown", onFrameHotkeyRelayKeyDown, true);
+    document.addEventListener("keyup", onFrameHotkeyRelayKeyUp, true);
+  }
+
+  function onFrameHotkeyRelayKeyDown(event) {
+    relayFrameHotkeyEvent(event, "keydown");
+  }
+
+  function onFrameHotkeyRelayKeyUp(event) {
+    relayFrameHotkeyEvent(event, "keyup");
+  }
+
+  function relayFrameHotkeyEvent(event, type) {
+    if (!shouldRelayFrameHotkeyEvent(event)) return;
+    try {
+      window.top.postMessage({
+        appId: APP_ID,
+        type: FRAME_HOTKEY_MESSAGE_TYPE,
+        keyboardEventType: type,
+        event: serializeHotkeyEvent(event)
+      }, "*");
+      markKeyboardEventHandled(event);
+    } catch (_error) {
+      // If a frame cannot reach its parent, leave the original page behavior alone.
+    }
+  }
+
+  function shouldRelayFrameHotkeyEvent(event) {
+    if (!event || event.__imaiosCineToolsHandled || event.isComposing) return false;
+    if (isEditableEventTarget(event)) return false;
+    loadHotkeyPrefsOnly();
+    return Boolean(getHotkeyActionForEvent(event) || getAnkiReviewHotkeyActionForEvent(event));
+  }
+
+  function serializeHotkeyEvent(event) {
+    return {
+      key: String(event.key || ""),
+      code: String(event.code || ""),
+      location: Number(event.location || 0),
+      repeat: Boolean(event.repeat),
+      altKey: Boolean(event.altKey),
+      ctrlKey: Boolean(event.ctrlKey),
+      metaKey: Boolean(event.metaKey),
+      shiftKey: Boolean(event.shiftKey)
+    };
+  }
+
+  function onFrameHotkeyRelayMessage(event) {
+    const message = event?.data || {};
+    if (!message || message.appId !== APP_ID || message.type !== FRAME_HOTKEY_MESSAGE_TYPE) return;
+    if (event.source === window || !isTrustedImaiosMessageOrigin(event.origin)) return;
+    const relayedEvent = createRelayedKeyboardEvent(message.keyboardEventType, message.event || {});
+    if (message.keyboardEventType === "keyup") {
+      onKeyUp(relayedEvent);
+    } else {
+      onKeyDown(relayedEvent);
+    }
+  }
+
+  function isTrustedImaiosMessageOrigin(origin) {
+    try {
+      const hostname = new URL(origin).hostname.toLowerCase();
+      return hostname === "imaios.com" || hostname.endsWith(".imaios.com");
+    } catch (_error) {
+      return false;
+    }
+  }
+
+  function createRelayedKeyboardEvent(type, source = {}) {
+    return {
+      type: type || "keydown",
+      key: String(source.key || ""),
+      code: String(source.code || source.key || ""),
+      location: Number(source.location || 0),
+      repeat: Boolean(source.repeat),
+      altKey: Boolean(source.altKey),
+      ctrlKey: Boolean(source.ctrlKey),
+      metaKey: Boolean(source.metaKey),
+      shiftKey: Boolean(source.shiftKey),
+      isComposing: false,
+      target: document.body || document.documentElement,
+      composedPath: () => [document.body || document.documentElement, document, window].filter(Boolean),
+      preventDefault() {},
+      stopPropagation() {},
+      stopImmediatePropagation() {}
+    };
+  }
+
+  function loadHotkeyPrefsOnly() {
+    try {
+      const prefs = JSON.parse(localStorage.getItem(PREFS_STORAGE_KEY) || "{}");
+      if (prefs.hotkeys && typeof prefs.hotkeys === "object") {
+        state.hotkeys = mergeHotkeys(prefs.hotkeys);
+      }
+    } catch (_error) {
+      // Keep the current/default shortcut map if storage is unavailable in this frame.
+    }
+  }
+
   function onKeyDown(event) {
     if (event.__imaiosCineToolsHandled) return;
     if (state.captureHotkeyAction) {
@@ -13929,10 +15025,18 @@
       return;
     }
 
+    if (handleLiveDrillStudyShieldHotkey(event)) return;
+    if (event.key === "Escape" && (state.searchRunning || state.moduleBatchRunning)) {
+      requestStopSearchWorkflow("Stopping label workflow after the current step.");
+      markKeyboardEventHandled(event);
+      return;
+    }
+
     const isEditing = isEditableEventTarget(event);
     if (handleAnkiReviewHotkey(event, isEditing)) return;
     const actionId = getHotkeyActionForEvent(event);
     if (actionId && !isEditing) {
+      ensurePanelMountedForHotkey();
       markKeyboardEventHandled(event);
       executeHotkeyAction(actionId);
       return;
@@ -13993,6 +15097,13 @@
       renderBoxes();
       refreshPanel();
     }
+  }
+
+  function ensurePanelMountedForHotkey() {
+    if (state.host?.isConnected || !shouldMountOnThisPage()) return false;
+    mount();
+    refreshPanel();
+    return true;
   }
 
   async function applyPinsHotkey(enabled) {
@@ -14261,6 +15372,13 @@
     if (typeof event.stopImmediatePropagation === "function") event.stopImmediatePropagation();
   }
 
+  function requestStopSearchWorkflow(message = "Stopping after current step.") {
+    state.cancelSearch = true;
+    releaseModuleSearchFocusForHotkeys();
+    refreshPanel();
+    setStatus(message, 0);
+  }
+
   function setStatus(message, clearAfter = 4500) {
     const statuses = state.shadow ? Array.from(state.shadow.querySelectorAll("[data-role='status']")) : [];
     if (!statuses.length) return;
@@ -14306,6 +15424,13 @@
 
   function parseNumber(value) {
     const number = Number(String(value || "").trim());
+    return Number.isFinite(number) ? number : null;
+  }
+
+  function parseOptionalNumber(value) {
+    const text = String(value ?? "").trim();
+    if (!text) return null;
+    const number = Number(text);
     return Number.isFinite(number) ? number : null;
   }
 

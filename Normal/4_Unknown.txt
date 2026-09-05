@@ -18,6 +18,10 @@ If either is missing:
 If any non-UNKNOWN trigger field or front-driving prompt family is also populated:
 - the note is structurally invalid
 
+Exception:
+- Differentials is allowed on a NORMAL UNKNOWN note only as back-side mimic/confusion support.
+- Differential_Q must remain blank unless the user explicitly requested a separate NORMAL DIFFERENTIAL DRILL.
+
 -----------------------------------------------------
 
 WHEN TO USE NORMAL UNKNOWN
@@ -52,6 +56,7 @@ Required:
 Conditionally allowed:
 - Image_Annotated
 - Entity_Label
+- Differentials
 - Imaging_Differentiation
 - Original_Caption
 - summary when required by source hierarchy
@@ -59,7 +64,6 @@ Conditionally allowed:
 Forbidden:
 - Most_Likely_Diagnosis
 - Differential_Q
-- Differentials
 - Mechanism_Q
 - Mechanism
 - Boards_Trap_Q
@@ -91,6 +95,9 @@ Question must NOT:
 - ask for a broad pathology differential
 - become a multi-step essay prompt
 - ask the learner to name a small nucleus, tract, or subdivision as though it were crisply visible when the real task is topographic inference
+- contain workflow or metadata wording such as "this batch", "source review", "extraction", "prompt", or "what was included"
+
+If a draft question has process/meta shape, convert it into a direct image-recognition, localization, normal-appearance, overcall-prevention, or review-path question. If no useful target remains, omit the card.
 
 -----------------------------------------------------
 
@@ -115,6 +122,24 @@ BACK-SIDE RULE
 
 Entity_Label should hold the target answer or core concept label.
 
+Rendered back priority:
+1) Target structure, relationship, normal variant, or localization answer
+2) Key normal imaging features
+3) Mimics / overcalls / nearby confusions, when useful
+4) Key differentiators or localization rule
+5) Source caption/readout, verbatim if available
+6) How to read the image(s)
+7) Typical source-supported normal appearance by modality
+8) Clinically useful reporting/localization consequence, when relevant
+9) Complete image reference name(s)
+
+Map this into existing fields:
+- Entity_Label holds the target answer.
+- Differentials holds realistic mimics, normal variants, pseudolesions, or nearby confusions.
+- Imaging_Differentiation starts with "Key differentiators:" or "How to localize:" when that is the main teaching move.
+- Original_Caption or Image_Annotated stackCap contains verbatim caption text only.
+- Complete image reference names must appear in a separate back-side line/block, never by modifying verbatim caption text.
+
 Imaging_Differentiation may briefly explain:
 - why it is normal
 - what makes the relationship normal
@@ -122,6 +147,7 @@ Imaging_Differentiation may briefly explain:
 - whether the target is directly visible, variably visible, or mainly inferred
 - which visible landmarks make the localization safe
 - the concise practical localization rule when that materially improves the card
+- complete image reference name(s), one per image, in display order, unless already included as a separate image-reference block in Image_Annotated
 
 Do not turn the back into a long narrative.
 Do not populate forbidden fields to add extra teaching.
@@ -149,6 +175,7 @@ Before export, confirm:
 - Question is the only front-driving prompt family
 - no non-UNKNOWN trigger fields are populated
 - no forbidden fields are populated
+- Differentials, if populated, appears only as back-side support and has no Differential_Q
 - Image_Annotated is blank unless Image is populated
 - Original_Caption is blank unless Image is populated
 - the question does not leak the answer

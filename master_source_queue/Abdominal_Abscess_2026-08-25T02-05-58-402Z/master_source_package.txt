@@ -1,0 +1,143 @@
+=== MASTER SOURCE PACKAGE ===
+TITLE: Abdominal Abscess
+SOURCE SYNTHESIS: RadPrimer canonical backbone with STATdx supplemental depth
+
+=== CANONICAL HIERARCHY ===
+All Categories > Basic > Gastrointestinal > Peritoneum, Mesentery, and Abdominal Wall > Abdominal Abscess
+Canonical deck path: Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Abdominal Abscess
+Routing note: canonicalHierarchy is copied exactly from metadata.json; STATdx breadcrumbs were not used for deck routing.
+
+=== SOURCE ATTRIBUTION RULES ===
+- [Both] = supported by both RadPrimer and STATdx source packages.
+- [RadPrimer] = RadPrimer-only or RadPrimer-preferred canonical detail.
+- [STATdx] = supplemental STATdx detail, image example, or wording nuance.
+
+=== IMAGE COVERAGE GATE ===
+STATdx does not fully cover the RadPrimer image set. RadPrimer image 2 has exact STATdx duplicates; RadPrimer images 8 and 9 have near-duplicate/same-concept reinforcement; RadPrimer image 10 is not covered.
+- RadPrimer image 1: conceptualReplacement; related STATdx images: STATdx image 12, STATdx image 18. STATdx includes postoperative abscess examples, but no exact duplicate of this rounded gas-containing postoperative collection.
+- RadPrimer image 2: exactDuplicate; related STATdx images: STATdx image 11, STATdx image 17, STATdx image 12, STATdx image 18. STATdx images 11 and 17 are the same axial CT slice/content; STATdx images 12 and 18 are adjacent/same-patient reinforcement rather than duplicates.
+- RadPrimer image 3: conceptualReplacement; related STATdx images: STATdx image 5, STATdx image 6, STATdx image 10. STATdx has pelvic abscess examples, especially MR/CT pelvic cases, but not the same post-hysterectomy CT image.
+- RadPrimer image 4: conceptualReplacement; related STATdx images: STATdx image 2, STATdx image 26. STATdx includes drainage catheter follow-up examples, but not this transgluteal drainage image.
+- RadPrimer image 5: conceptualReplacement; related STATdx images: STATdx image 3, STATdx image 13, STATdx image 15, STATdx image 16. STATdx covers perforation-related abscess and gas-forming collections but does not exactly reproduce this free intraperitoneal gas image.
+- RadPrimer image 6: conceptualReplacement; related STATdx images: STATdx image 3, STATdx image 13, STATdx image 15, STATdx image 16. STATdx provides diverticulitis/perforation abscess cases, but this same-patient sigmoid diverticulosis/abscess slice is not duplicated.
+- RadPrimer image 7: conceptualReplacement; related STATdx images: STATdx image 8, STATdx image 13. STATdx includes gas-forming/retroperitoneal or lesser sac infected collections, but not the ERCP duodenal perforation case.
+- RadPrimer image 8: nearDuplicate; related STATdx images: STATdx image 4. STATdx image 4 is the same GIST mimic teaching concept and likely same case family, but it is a different CT slice/image, so both remain primary.
+- RadPrimer image 9: nearDuplicate; related STATdx images: STATdx image 9, STATdx image 10. STATdx images 9 and 10 provide tuboovarian abscess ultrasound/CT reinforcement; the ultrasound appearance is visually distinct and not an exact duplicate.
+- RadPrimer image 10: notCovered; related STATdx images: none. No STATdx staged image shows the same right psoas/Crohn-related MR abscess teaching point.
+
+=== KEY FACTS ===
+- [Both] Abdominal abscess is a localized abdominal collection of pus or infected fluid.
+- [Both] Best CT clue: low-density, loculated, encapsulated fluid collection with peripheral rim enhancement, with or without gas bubbles or an air-fluid level.
+- [Both] Internal gas without recent intervention is highly suspicious for infection, though gas can also reflect bowel communication.
+- [Both] Use the term abscess for a discrete, drainable collection; separate this from ill-defined inflammatory phlegmon or nondrainable fluid.
+- [Both] Adjacent fat stranding, edema, fascial thickening, and low-density parenchymal edema around intraparenchymal abscesses support infection.
+- [Both] Ultrasound shows a complex fluid collection with low-level echoes, membranes, septations, avascular center, and peripheral hyperemia.
+- [Both] Abscesses are common in postoperative, diabetic, and immunocompromised patients and may follow enteric perforation, bacteremia, or trauma.
+- [Both] Differentiating abscess from noninfected postoperative collection can require symptoms, labs, aspiration, or follow-up.
+
+=== TERMINOLOGY ===
+- [Both] Definition: localized abdominal collection of pus or infected fluid.
+
+=== IMAGING ===
+- [Both] General feature: loculated, encapsulated fluid collection with peripheral rim enhancement on contrast-enhanced CT.
+- [RadPrimer] Size is highly variable, often 2-15 cm, with microabscesses smaller than 2 cm.
+- [STATdx] Tiny microabscesses can be smaller than 1 cm, and small abscesses can be technically difficult to drain.
+- [Both] Location can be intraperitoneal, extraperitoneal, or intraparenchymal.
+- [Both] CT: simple fluid attenuation or mildly hyperdense content; surrounding inflammatory change is common.
+- [Both] CT: intraparenchymal abscesses in liver, kidney, spleen, and other organs often have surrounding low-density edema.
+- [RadPrimer] About half of abscesses contain internal gas; absence of gas does not exclude abscess.
+- [Both] MR: central low T1/high T2 fluid signal, peripheral rim enhancement on contrast-enhanced T1, and often restricted diffusion with low ADC.
+- [STATdx] Surrounding edema is especially conspicuous on fat-saturated sequences, particularly T2 fat-saturated imaging.
+- [Both] US: internal debris, septations, low-level echoes, variable through transmission, avascular center, peripheral hyperemia, and echogenic inflamed fat.
+- [Both] US gas clue: echogenic foci with ring-down artifact or dirty posterior acoustic shadowing.
+- [Both] Radiography may show a soft-tissue mass/density, loss of fat interface, ectopic gas or air-fluid levels, focal ileus, and subphrenic-related pleural effusion/atelectasis.
+- [Both] Abscess sinogram after drainage can assess residual cavity, catheter position, and fistulization to bowel, pancreas, or biliary tree.
+- [Both] Nuclear medicine options include labeled white blood cell imaging, gallium, and FDG PET, with PET sensitive but nonspecific.
+- [Both] Best imaging tool: contrast-enhanced CT.
+
+=== DIFFERENTIAL DIAGNOSIS ===
+- [Both] Postoperative lymphocele: lymph node dissection history; simple fluid along lymphatic drainage pathways near clips; no enhancing rim or gas.
+- [Both] Biloma: collection near biliary tree after biliary/hepatic surgery; usually simple unless infected.
+- [Both] Postoperative seroma: simple fluid, sometimes loculated or with recent postoperative gas; may be indistinguishable from abscess without clinical correlation.
+- [Both] Loculated ascites: minimal mass effect, no rim enhancement, no internal gas, often in cirrhosis or chronic systemic disease.
+- [Both] Pancreatic pseudocyst: pancreatitis history or stigmata; pseudocapsule generally develops over weeks.
+- [Both] Hematoma: attenuation varies with age; acute clot is often high attenuation and may weakly enhance peripherally during evolution.
+- [Both] Retained oxidized cellulose/Surgicel: postoperative gas collection with little fluid and no discrete drainable collection.
+- [Both] Cystic or necrotic neoplasm can mimic abscess, especially without fever, leukocytosis, or other infection history.
+
+=== PATHOLOGY ===
+- [Both] Etiologies include enteric perforation, postoperative infection, generalized bacteremia, and trauma.
+- [Both] Postoperative abscesses often occur in dependent intraperitoneal spaces such as cul-de-sac, Morison pouch, or subphrenic spaces.
+- [Both] Diabetic patients have increased risk for gas-forming abscesses; immunocompromised patients can develop fungal microabscesses.
+- [RadPrimer] Associated pathology includes pus, peripheral fibrocapillary capsule, and often polymicrobial enteric organisms.
+- [RadPrimer] Classification can be by organism, organ of origin, intra-/extraperitoneal location, or communication with bowel, biliary tree, or pancreatic duct.
+
+=== CLINICAL ISSUES ===
+- [Both] Presentation: fever, chills, abdominal pain, tachycardia, hypotension in sepsis, leukocytosis, positive blood cultures, or elevated ESR.
+- [Both] Older and immunocompromised patients may lack fever or elevated white blood cell count.
+- [Both] Prognosis is generally excellent with appropriate treatment but depends on abscess burden, immune status, and comorbidities.
+- [RadPrimer] Percutaneous abscess drainage has approximately 80% success with proper patient selection.
+- [Both] Ideal percutaneous drainage target: well-defined, encapsulated, fluid-filled abscess larger than 3 cm with safe catheter access.
+- [Both] CT or US guidance can support transcutaneous, transgluteal, transrectal, or transvaginal drainage approaches.
+- [Both] Complex multiseptated abscesses or abscesses with enteric fistula may require weeks to months; most drain in 10-14 days.
+- [Both] Catheter removal is considered when output is less than 10 cc per shift or the cavity resolves on imaging.
+- [Both] Patient-related drainage contraindications include coagulopathy, elevated INR, and platelets below 50,000/uL, using institution-specific thresholds.
+- [Both] Abscess-related drainage contraindications include phlegmon, no safe route, gas-forming infection such as emphysematous pancreatitis, echinococcal cyst, infected necrosis, multiseptated collection, or superinfected necrotic tumor.
+- [Both] Surgery may be needed for extensive intraperitoneal abscesses, debridement of necrotic infected tissue, or failed percutaneous drainage.
+- [Both] Small abscesses, usually smaller than 3 cm, may be treated with antibiotics alone; STATdx notes technical difficulty placing catheters in small abscesses.
+
+=== DIAGNOSTIC CHECKLIST ===
+- [Both] Correlate imaging with clinical signs, labs, aspiration, and postoperative timing when infected and noninfected collections overlap.
+- [Both] Do not require gas for diagnosis; an enhancing rim, mass effect, and inflammatory change can be highly suggestive in the right clinical context.
+- [Both] Avoid labeling nondrainable phlegmon as abscess when no discrete collection exists.
+
+=== SELECTED PRIMARY IMAGE SET ===
+- RadPrimer image 1: Axial CECT in an older postoperative patient demonstrates a rounded complex fluid collection <img src="arrow_WS.png"> with gas bubbles <img src="arrow_WC.png"> and an enhancing capsule <img src="arrow_WO.png">, findings diagnostic for an abdominal abscess. Used for: primaryPattern, postoperativeAbscess, rimEnhancement, internalGas.
+- RadPrimer image 2: Axial CECT in an older postoperative patient demonstrates multiple loculated fluid collections <img src="arrow_WS.png"> with prominently enhancing capsules <img src="arrow_WC.png"> and mass effect on adjacent structures, representing abdominal abscesses. Note the air-fluid level <img src="arrow_WO.png"> within one of the abscesses. Used for: primaryPattern, multipleAbscesses, airFluidLevel, exactDuplicateAnchor.
+- RadPrimer image 3: Axial CECT shows a large pelvic abscess <img src="arrow_WS.png"> following a hysterectomy. Note the presence of a discrete enhancing rim and mass effect on adjacent loops of bowel and the bladder. Used for: pelvicAbscess, postoperativeAbscess, massEffect.
+- RadPrimer image 4: Axial CECT shows placement of a percutaneous drainage catheter <img src="arrow_WS.png"> using a transgluteal approach. The abscess has almost completely resolved following drainage. Used for: drainageFollowUp, transglutealApproach, procedureContext.
+- RadPrimer image 5: Axial CECT in a woman who presented with lower abdominal pain, fever, and tenderness shows extensive free intraperitoneal gas <img src="arrow_WS.png">. Used for: samePatientCluster, entericPerforation, freeIntraperitonealGas.
+- RadPrimer image 6: Axial CECT in the same patient shows a loculated abscess <img src="arrow_WC.png"> immediately adjacent to a segment of sigmoid colon with extensive diverticulosis <img src="arrow_WO.png">, which proved to be the source of the free air and abscesses. Used for: samePatientCluster, diverticularAbscess, sourceOfFreeAir.
+- RadPrimer image 7: Axial CECT after ERCP shows a large collection of gas and fluid <img src="arrow_WS.png"> dissecting through the retroperitoneal spaces, especially the anterior pararenal space and the interfascial plane <img src="arrow_WC.png">. These findings were due to perforation of the duodenum at the papillotomy site. Used for: retroperitonealAbscess, duodenalPerforation, postERCPComplication.
+- RadPrimer image 8: Axial CECT demonstrates a large cystic mass <img src="arrow_WS.png"> with internal complexity. The mass was thought to represent an abscess and underwent unsuccessful drainage but was ultimately found to represent a gastrointestinal stromal tumor (GIST). Used for: abscessMimic, cysticNeoplasm, GIST, recognitionReinforcement.
+- RadPrimer image 9: Ultrasound demonstrates a complex cystic mass <img src="arrow_WS.png"> with internal septations and multiple areas of higher echogenicity located in the right adnexa, representing a large tuboovarian abscess in this patient with pelvic inflammatory disease (PID). Used for: ultrasoundPattern, tuboovarianAbscess, internalSeptations.
+- RadPrimer image 10: Axial T1 C+ FS MR demonstrates a rim-enhancing abscess <img src="arrow_WS.png"> in the right psoas muscle. Note the phlegmonous change and enhancement <img src="arrow_WC.png"> around the margins of the abscess, partially attributable to inflammation from the patient's Crohn disease. Used for: mriPattern, psoasAbscess, CrohnDisease, phlegmon.
+- STATdx image 1: Axial CECT demonstrates a loculated fluid collection <img src="arrow_WS.png"> with prominent rim enhancement and surrounding soft tissue edema in the right lower quadrant, compatible with an abscess. The patient's appendix <img src="arrow_WC.png"> is partly visualized in the midst of this collection, compatible with perforated appendicitis. Used for: appendicealAbscess, alternateExample, recognitionReinforcement, samePatientCluster.
+- STATdx image 2: Axial CECT shows placement of a percutaneous drainage catheter <img src="arrow_WS.png">  into the abscess with a significant decrease in the size of the abscess following drainage. Used for: drainageFollowUp, appendicealAbscess, procedureContext, duplicateAnchor.
+- STATdx image 3: Axial CECT in a patient with pelvic pain and fever demonstrates a thick-walled enhancing fluid collection <img src="arrow_WC.png"> abutting the adjacent inflamed sigmoid colon <img src="arrow_WS.png">, representing a peridiverticular abscess related to perforated diverticulitis. Used for: diverticulitisAbscess, alternateExample, recognitionReinforcement.
+- STATdx image 4: Axial CECT demonstrates a peripherally enhancing "fluid collection"  <img src="arrow_WC.png">  abutting the left colon and small bowel. This was thought to be an abscess and even underwent unsuccessful drainage, but was ultimately found to represent a gastrointestinal stromal tumor (GIST). Used for: abscessMimic, GIST, nearDuplicate, recognitionReinforcement.
+- STATdx image 5: Axial T1 C+ FS MR in a young female patient in septic shock demonstrates thick-walled, peripherally enhancing fluid collections <img src="arrow_WS.png"> in the pelvis, compatible with abscesses. Used for: mriPattern, pelvicAbscess, samePatientCluster.
+- STATdx image 6: Sagittal T2 MR in the same patient demonstrates the more anterior fluid collection <img src="arrow_WS.png"> is directly contiguous with the patient's C-section scar <img src="arrow_WC.png">, compatible with uterine rupture as the cause for these abscesses. Note the presence of another large fluid collection <img src="arrow_WO.png"> more posteriorly between the uterus and rectum. Used for: mriPattern, uterineRupture, samePatientCluster, mechanism.
+- STATdx image 7: Axial CECT demonstrates a large, rim-enhancing abscess  <img src="arrow_WS.png">  in the perineum secondary to traumatic Foley catheter <img src="arrow_WC.png"> placement and urethral perforation. Used for: perinealAbscess, traumaticFoley, unusualCause.
+- STATdx image 8: Axial CECT demonstrates a large, loculated fluid collection <img src="arrow_WC.png"> in the lesser sac with rim-enhancement and internal gas <img src="arrow_WO.png">, representing an abscess with gas-forming infection. This infected collection was secondary to necrotizing pancreatitis. Used for: lesserSacAbscess, necrotizingPancreatitis, gasFormingInfection.
+- STATdx image 9: Transverse color Doppler US in a young female patient with pelvic pain and fever demonstrates a complex cystic adnexal mass <img src="arrow_WS.png"> without substantial color flow vascularity. Used for: ultrasoundPattern, tuboovarianAbscess, samePatientCluster, recognitionReinforcement.
+- STATdx image 10: Axial CECT in the same patient demonstrates a large fluid collection <img src="arrow_WS.png"> with rim enhancement and surrounding fat stranding (corresponding to the US finding), ultimately found to represent a tuboovarian abscess. Notice how the complexity in this collection is much more evident on US compared to CT. Used for: ctCorrelation, tuboovarianAbscess, samePatientCluster.
+- STATdx image 12: Axial CECT in the same patient shows ectopic gas bubbles within abscess in pelvis <img src="arrow_WS.png">. Used for: samePatientCluster, postoperativeAbscess, adjacentSlice, internalGas.
+- STATdx image 13: Axial CECT of gas-forming retrocecal abscess from perforated diverticulum. Note ectopic gas collection from posterior to cecum <img src="arrow_WS.png">, cecal thickening, and adjacent fat stranding <img src="arrow_WO.png">. Used for: gasFormingAbscess, retrocecalAbscess, perforatedDiverticulum.
+- STATdx image 14: Transverse transabdominal US of a postoperative abscess found on a grayscale image is shown. Note the hypoechoic fluid collection <img src="arrow_WS.png"> with fluid-fluid level <img src="arrow_WO.png">. Used for: ultrasoundPattern, postoperativeAbscess, fluidFluidLevel.
+- STATdx image 15: Axial CECT shows intramural abscess of the sigmoid from diverticulitis. Note the long segment of the markedly thickened sigmoid <img src="arrow_WS.png"> and an ill-defined adjacent fluid collection <img src="arrow_WO.png">. Used for: samePatientCluster, intramuralSigmoidAbscess, diverticulitis.
+- STATdx image 16: Axial CECT in the same patient shows more discreet abscess collections on a lower plane of the section <img src="arrow_WS.png">. Used for: samePatientCluster, intramuralSigmoidAbscess, adjacentSlice.
+- STATdx image 18: Axial CECT shows pyogenic postoperative abscess after bowel resection. Note multiple fluid collections with enhancing rims. Gas is noted in pelvic abscess <img src="arrow_WS.png">  but not in other collections. Used for: samePatientCluster, postoperativeAbscess, adjacentSlice, internalGas.
+- STATdx image 19: Axial CECT demonstrates a gas-forming pyogenic liver abscess in a diabetic patient. Note air-fluid level within the abscess cavity <img src="arrow_BS.png">. Used for: liverAbscess, gasFormingInfection, diabetes, ctPattern.
+- STATdx image 20: Axial US shows a liver abscess demonstrating linear high-amplitude echoes with "dirty" distal acoustic shadowing representing gas <img src="arrow_WS.png">. Used for: liverAbscess, ultrasoundPattern, dirtyShadowing, gas.
+- STATdx image 21: Axial CECT shows an amebic abscess. Note peripheral low-attenuation zone of edema <img src="arrow_BS.png"> surrounding the abscess. Used for: amebicAbscess, ctPattern, perilesionalEdema.
+- STATdx image 22: Sagittal US shows amebic abscess. Note low-level echoes <img src="arrow_WS.png"> within the hypoechoic mass, and the lack of distal acoustic enhancement. Used for: amebicAbscess, ultrasoundPattern, lowLevelEchoes.
+- STATdx image 23: Sagittal US shows fungal microabscesses due to systemic candidiasis. Note multiple target lesions <img src="arrow_WS.png">. Used for: fungalMicroabscesses, immunocompromised, ultrasoundPattern.
+- STATdx image 24: Sagittal US of the spleen demonstrates an abscess with low-level echoes <img src="arrow_WS.png">. Used for: splenicAbscess, ultrasoundPattern.
+- STATdx image 25: Axial CECT shows an encapsulated fluid collection <img src="arrow_WS.png"> with peripheral rim enhancement in the right lower quadrant. In the midst of the fluid collection is a tubular structure <img src="arrow_WC.png">, representing a ruptured appendix. Used for: appendicealAbscess, nearDuplicate, samePatientCluster, recognitionReinforcement.
+- STATdx image 27: Axial CECT in a patient who underwent a cholecystectomy shows a collection of gas <img src="arrow_WS.png">  but very little fluid, in the cholecystectomy bed. Surgical clips <img src="arrow_WC.png"> are also seen. This represents oxidized cellulose (Surgicel), which was placed for hemostasis at surgery, and not an abscess. Used for: abscessMimic, Surgicel, postoperativeDifferential.
+
+=== ARCHIVE-OPTIONAL DUPLICATE IMAGES ===
+- STATdx image 11: archiveOptionalDuplicate. Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences.
+- STATdx image 17: archiveOptionalDuplicate. Visual inspection of staged image_evidence files shows the same axial CT slice/content as RadPrimer image 2, with only source encoding/crop differences.
+- STATdx image 26: archiveOptionalDuplicate. Visual inspection of staged image_evidence files shows the same appendiceal abscess drainage catheter CT image as STATdx image 2.
+
+=== CASE CLUSTER NOTES ===
+- RadPrimer images 5 and 6 are a same-patient free-air/diverticular abscess cluster and both remain selected.
+- STATdx image 12 and STATdx image 18 are adjacent/same-patient reinforcement images and remain selected even though their paired duplicate opening slices are archived.
+- STATdx image 2 preserves catheter follow-up context for the appendiceal abscess cluster after STATdx image 26 is archived as an exact duplicate.
+
+=== GENERATOR INSTRUCTIONS ===
+- Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.
+- Use clean source-qualified labels in prose, such as RadPrimer image 5 and STATdx image 4.
+- Use registry IDs, source image IDs, hashes, and filenames for traceability and download routing.

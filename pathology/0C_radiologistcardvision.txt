@@ -1,0 +1,230 @@
+RADIOLOGIST CARD GENERATION SCHEMA
+
+This module is mandatory for pathology card generation.
+
+The deck is built for radiology recognition, interpretation, and reporting.
+Cards must train the learner to:
+- recognize the imaging pattern
+- know source-supported modality-specific appearance for the disease entity
+- compare the case against realistic mimics
+- know what must be reported because it changes management, staging, urgency, prognosis, follow-up, or outcome
+
+Cards must not train prompt workflow, source bookkeeping, extraction audit, or generator decisions.
+
+-----------------------------------------------------
+
+ONE LEARNING TARGET = ONE TSV ROW
+
+Each independent learning target must be exported as its own TSV row.
+
+Do not rely on sibling cards from the same note for separate learning targets.
+Do not populate more than one front-driving prompt family on the same note.
+
+Allowed examples:
+- one UNKNOWN image-recognition row for a case
+- one CT appearance High-Yield row for the entity
+- one MRI appearance High-Yield row for the entity
+- one report-critical High-Yield row for a management-changing finding
+
+Forbidden:
+- one note that creates both an UNKNOWN card and a High-Yield appearance card
+- one note that creates both an UNKNOWN card and a Differential Drill
+- one note that hides a separate management-pivot card inside another trigger family
+
+Reason:
+If Anki creates sibling cards from one note, deleting one card can affect the rest of that note family.
+Separate learning targets must therefore live in separate TSV rows.
+
+-----------------------------------------------------
+
+DEFAULT PATHOLOGY OUTPUT
+
+For each disease entity, the default output is:
+
+1) UNKNOWN image-recognition cards
+- one independent row per usable case or case group
+- all usable images from the selected case must be included
+- the front must not reveal the diagnosis
+- the back must put diagnosis, differential, and key differentiators near the top
+
+2) Entity imaging-pattern recall cards
+- separate independent High-Yield rows
+- required for every source-supported modality pattern
+- generated per disease entity, not per individual image
+- include contrast agent, contrast phase, sequence, Doppler, CEUS, or radiotracer behavior inside the relevant modality bucket
+
+3) Report-critical / management-pivot cards
+- separate independent High-Yield rows
+- generated only when a source-supported finding changes reporting, urgency, intervention, staging, prognosis, follow-up, or outcome
+
+Do not generate standalone definition cards unless the user explicitly asks for definition cards.
+Do not generate standalone Differential Drill cards unless the user explicitly asks for separate differential drill cards.
+
+-----------------------------------------------------
+
+ENTITY MODALITY MATRIX
+
+Before generating pathology cards for a disease entity, internally create an entity modality matrix.
+
+Audit these buckets:
+- CT noncontrast
+- CT contrast phases: arterial, portal venous, delayed, CTA, oral/enteric/rectal contrast when relevant
+- MRI sequences: T1, T2, FLAIR, DWI/ADC, GRE/SWI, MRCP, and other source-stated sequences
+- MRI contrast behavior: dynamic gadolinium phases, delayed phase, hepatobiliary phase, extracellular versus hepatobiliary contrast agent implications when source-supported
+- Ultrasound grayscale
+- Ultrasound Doppler
+- Contrast-enhanced ultrasound
+- Nuclear medicine / PET / SPECT: exact radiotracer, uptake, photopenia, avidity, retention, washout, excretion, phase, timing, biodistribution, and tracer-specific discriminator
+
+Generation rules:
+- generate appearance cards only from source-supported matrix cells
+- if multiple cells form one inseparable recognition pattern, combine them into one focused card
+- if cells test different recognition moves, split them into separate independent TSV rows
+- do not generate cards for empty matrix cells
+- do not generalize one contrast agent, phase, sequence, or tracer to another unless the source explicitly supports that generalization
+
+The modality matrix is an internal planning tool.
+It must not become a card by itself.
+
+-----------------------------------------------------
+
+UNKNOWN IMAGE CARD BACK STRUCTURE
+
+Every pathology UNKNOWN image-card back should render the important interpretation logic early.
+
+Use this order across the rendered back fields:
+
+1) Diagnosis
+2) Differential
+3) Key differentiators
+4) Source caption/readout, verbatim if available
+5) How to read the image(s)
+6) Typical imaging appearance by modality, using only source-supported facts
+7) Report-critical findings, when relevant
+8) Complete image reference name(s)
+9) Reference/link, when available
+
+If the template renders these as separate fields, preserve the same order by field use:
+- Most_Likely_Diagnosis starts with the diagnosis and concise case reasoning
+- Differentials contains the realistic mimics
+- Imaging_Differentiation starts with "Key differentiators:" and explains how to separate the diagnosis from mimics
+- Original_Caption or stackCap contains exact verbatim captions only
+- Complete image reference names should appear in a separate back-side line or block, never by modifying the verbatim caption text
+
+If imaging cannot confidently separate two entities:
+- state that directly
+- state what is needed instead, such as pathology, biopsy, cultures, labs, clinical context, operative correlation, or follow-up, only when source-supported or clinically necessary
+
+Do not pretend imaging specificity is higher than the source supports.
+
+-----------------------------------------------------
+
+IMAGING SPECIFICITY LABEL
+
+When relevant, UNKNOWN backs and entity appearance cards should state how specific the imaging appearance is.
+
+Use one practical label when supported:
+- Diagnostic: imaging findings are sufficiently characteristic in the right context
+- Strongly suggestive: imaging favors the diagnosis, but mimics remain plausible
+- Nonspecific: imaging pattern overlaps substantially with other entities
+- Requires correlation: final distinction depends on pathology, biopsy, cultures, labs, clinical history, operative findings, interval follow-up, or other non-imaging data
+
+Do not overstate certainty.
+
+-----------------------------------------------------
+
+MULTI-IMAGE STACK LABELS
+
+All multi-image UNKNOWN cards must visibly label image position on the front:
+- Image 1/N
+- Image 2/N
+- Image 3/N
+
+The label must be non-diagnostic and must not replace the caption.
+Captions remain off the front.
+
+Use image-position labels so the learner knows to keep scrolling through the image stack.
+
+Single-image cards may omit "Image 1/1" unless the local template benefits from consistent labels.
+
+-----------------------------------------------------
+
+COMPLETE IMAGE REFERENCE NAME RULE
+
+Every image-containing pathology card must include the complete image reference name on the back.
+
+Use the best available exact source identifier:
+- source figure number
+- source image title
+- RadPrimer / STATdx / Radiopaedia case image label
+- source filename
+- downloaded media filename
+- local media filename, if no better source identifier exists
+
+Rules:
+- When a validation package, source package, extracted image block, case ledger, or media table lists image filenames, those filenames are authoritative image reference names and must be copied exactly.
+- do not truncate the image reference name
+- do not paraphrase or normalize the image reference name
+- for multi-image stacks, include one complete image reference name per image in source/display order
+- keep reference names separate from verbatim captions
+- do not insert reference names into stackCap text if stackCap is reserved for the exact caption
+- if no source-provided identifier exists, use the exact local media filename
+
+-----------------------------------------------------
+
+REPORT-CRITICAL / MANAGEMENT-PIVOT CARDS
+
+Use High_Yield_Q / High_Yield_A for report-critical and management-pivot cards.
+
+Each such card must be its own independent TSV row.
+
+Generate only when the source-supported finding changes:
+- urgency or acuity
+- immediate communication
+- treatment versus conservative management
+- surgery, drainage, embolization, anticoagulation, or other intervention
+- operative planning
+- staging or resectability
+- prognosis or risk stratification
+- follow-up interval or surveillance pathway
+- complication status
+- what must be explicitly stated in the report
+
+Good question design:
+- ask for the specific actionable imaging feature
+- ask what must be inspected or reported for that entity
+- ask what downstream consequence follows if the finding is present
+- keep the prompt concrete and reportable
+
+Bad question design:
+- "What should you report for this disease?"
+- "What is important about this topic?"
+- "What management facts were included in the source?"
+
+UNKNOWN backs may include a short "Report-critical findings:" section when relevant.
+Important report-critical pivots that must be memorized independently still require a separate TSV row.
+
+-----------------------------------------------------
+
+QUESTION QUALITY FILTER
+
+Every exported card must pass at least one test:
+- Does this help me recognize the image?
+- Does this help me distinguish the diagnosis from realistic mimics?
+- Does this teach source-supported modality-specific appearance?
+- Does this teach what must be inspected or reported because it changes management, staging, urgency, prognosis, follow-up, or outcome?
+
+If a card does not pass at least one test, omit it.
+
+Banned front wording includes:
+- "this batch"
+- "source review"
+- "extraction"
+- "prompt"
+- "what was included"
+- "what did the source support encoding"
+- "what did the generator decide"
+
+If a draft question has workflow or metadata shape, convert it into a direct radiology question or omit it.
+
+Blank fields are better than filler.

@@ -1,0 +1,76 @@
+# Hydrocele
+
+Canonical hierarchy: All Categories > Basic > Ultrasound > Scrotum Basic > Hydrocele
+Canonical deck path: Corebook::Ultrasound::Scrotum Basic::Hydrocele
+Primary source posture: RadPrimer supplies the canonical hierarchy/backbone; STATdx supplies supplemental depth and the default source-preferred image replacements when the same image appears in both sources.
+Core evidence: no auditable Core Radiology source was supplied in this bundle, so Core-specific support is not asserted.
+
+## Source Coverage And Image Gate
+
+The staged image_evidence files were inspected before duplicate classification. STATdx fully covers the RadPrimer image set: RadPrimer images 1-4 are exact duplicates of STATdx images 1-4 by stable source image ID and visual inspection of the actual image files. The STATdx copies are selected as the default source-qualified primary images because they preserve the same content in 1000 px exports, while the RadPrimer 900 px counterparts are archive-optional. STATdx images 5-11 add distinct hydrocele examples and remain selected as recognition reinforcement.
+
+- RadPrimer image 1 -> STATdx image 1: exact duplicate; same source image ID and same anatomic hydrocele/testis diagram on visual inspection.
+- RadPrimer image 2 -> STATdx image 2: exact duplicate; same source image ID and same transverse color Doppler small hydrocele/bare-area image on visual inspection.
+- RadPrimer image 3 -> STATdx image 3: exact duplicate; same source image ID and same MR postoperative spermatic cord hematoma plus small hydrocele image on visual inspection.
+- RadPrimer image 4 -> STATdx image 4: exact duplicate; same source image ID and same aspiration/sclerotherapy ultrasound image on visual inspection.
+
+## Fused Teaching Backbone
+
+### Definition And Anatomic Location
+
+- [Both] Hydrocele is congenital or acquired serous fluid contained within the layers of the scrotal tunica vaginalis.
+- [Both] The fluid is intrascrotal, external to the testis and epididymis, and not within the scrotal wall.
+- [Both] The key anatomic clue is fluid surrounding the testis except at the posterior bare area, where the tunica vaginalis does not cover the testis and is attached to the epididymis.
+- [Both] The specific location is the tunica vaginalis; simple hydrocele appears as avascular fluid, while chronic or complicated hydrocele may have echoes, debris, septations, or thickened tunica.
+
+### Imaging Approach
+
+- [Both] High-resolution scrotal ultrasound with a 9-15 MHz transducer is the modality of choice.
+- [Both] Acute hydrocele usually appears as crescentic anechoic fluid surrounding the anterolateral testis, often displacing the testis posteromedially.
+- [Both] Chronic hydrocele can show low-level mobile echoes, presumed cholesterol crystals, inflammatory debris, diffuse scrotal wall thickening, parietal calcifications, scrotoliths, and avascular septations.
+- [Both] Color or power Doppler should show no vascularity within the hydrocele fluid or septations; power Doppler may demonstrate movement of internal debris and can help avoid mistaking debris artifact for flow.
+- [Both] MRI is a problem-solving tool when extent or associated postoperative/complex findings need clarification: simple fluid is low signal on T1-weighted images, high signal on T2-weighted images, and nonenhancing; chronic or complex fluid may be intermediate on T2-weighted images.
+
+### Etiology And Pathology
+
+- [Both] Congenital or communicating hydrocele results from failure of the processus vaginalis to close.
+- [Both] Acquired hydrocele can follow epididymitis, torsion, trauma, surgery, or rarely tumor; secondary hydroceles in adults should prompt attention to the underlying cause.
+- [Both] Simple hydrocele is a fluid collection within the tunica vaginalis. Chronic cases may develop thickened tunica and septations, and acute infection or postinfectious change can make the fluid complex.
+- [Both] Scrotal hematoma may resolve slowly and can appear as a complex collection that overlaps the imaging differential.
+
+### Differential Diagnosis
+
+- [Both] Pyocele: septated fluid with low-level internal echoes, usually with epididymitis, intrascrotal abscess, and clinical inflammatory signs.
+- [Both] Hematocele: complex echogenic fluid in the tunica vaginalis, usually associated with trauma, torsion, or infarct.
+- [Both] Scrotal hernia: peristalsing bowel or echogenic omentum within the scrotum rather than avascular fluid in the tunica vaginalis.
+- [STATdx] The expanded image set reinforces practical recognition variants: thin septations with epididymo-orchitis, chronic low-level echoes/cholesterol-crystal appearance, encysted spermatic cord hydrocele, massive hydrocele, bilateral septated chronic hydroceles, and testicular compression.
+
+### Clinical Issues And Treatment
+
+- [Both] The typical presentation is an asymptomatic, painless scrotal mass or enlargement.
+- [Both] Congenital hydroceles usually resolve by 18 months of age.
+- [Both] About 25-50% of acquired hydroceles are associated with trauma, and about 10% of testicular tumors have an associated hydrocele.
+- [Both] Treatment options include surgical hydrocelectomy, with open drainage and oversewing of hydrocele sac edges, or aspiration and sclerotherapy, which is less invasive but has a slightly higher recurrence risk.
+
+## Selected Image Atlas For Future Generation
+
+Use the following primary images by default. Archive-optional RadPrimer images are retained for audit/completeness only because they are exact duplicate exports of selected STATdx images.
+
+- STATdx image 1: anatomic diagram showing hydrocele fluid in relation to the testis and tunica vaginalis.
+- STATdx image 2: transverse color Doppler ultrasound showing simple fluid in a small hydrocele and the posterior bare area.
+- STATdx image 3: MR example after inguinal hernia repair showing spermatic cord hematoma with a small hydrocele.
+- STATdx image 4: grayscale ultrasound procedure example of aspiration and sclerotherapy for recurrent large hydrocele.
+- STATdx image 5: minimally complex hydrocele with thin septations in epididymo-orchitis.
+- STATdx image 6: longitudinal simple hydrocele showing anechoic fluid within the tunica vaginalis and posterior testicular attachment.
+- STATdx image 7: pediatric encysted hydrocele of the spermatic cord related to patent processus vaginalis, with associated ascites.
+- STATdx image 8: chronic hydrocele with fine diffuse echoes suggestive of cholesterol crystals and thickened tunica vaginalis.
+- STATdx image 9: axial T2 MR example of massive hydrocele encasing the testis.
+- STATdx image 10: coronal MR example of bilateral septated chronic hydroceles.
+- STATdx image 11: massive simple hydrocele compressing the right testis, with the left testis also visible.
+
+## Downstream Use Notes
+
+- Use selectedPrimaryImageIds for default image download and teaching.
+- Treat archiveOptionalImageIds as audit/completeness records, not as default card or lecture images.
+- No source case cluster was intentionally split; no multi-image same-patient/time-lapse/procedure cluster requires atomic preservation beyond the single-image procedure context in STATdx image 4.
+- Keep human-facing prose labels clean, such as STATdx image 6 or RadPrimer image 2. Use short IDs such as SDX-06 and RP-02 only in registry, filenames, and traceability fields.

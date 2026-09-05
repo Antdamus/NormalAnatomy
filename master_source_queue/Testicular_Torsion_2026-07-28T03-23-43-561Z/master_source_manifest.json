@@ -1,0 +1,777 @@
+{
+  "version": "1.0",
+  "articleTitle": "Testicular Torsion",
+  "createdAt": "2026-07-28T03:29:23Z",
+  "sourceBundle": "C:\\Users\\josem.000\\NormalAnatomy\\master_source_queue\\Testicular_Torsion_2026-07-28T03-23-43-561Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Ultrasound",
+    "Scrotum Basic",
+    "Testicular Torsion/Infarction"
+  ],
+  "canonicalDeckPath": "Corebook::Ultrasound::Scrotum Basic::Testicular Torsion/Infarction::Testicular Torsion",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "RadPrimer": "Canonical hierarchy/backbone and baseline source package for Testicular Torsion/Infarction.",
+    "STATdx": "Supplemental depth for mechanism, imaging signs, modality nuance, management, differential pitfalls, and a larger case-image atlas.",
+    "CoreRadiology": "No auditable Core Radiology content was included in this bundle; Core-specific claims were not added."
+  },
+  "imageCountBySource": {
+    "RadPrimer": 10,
+    "STATdx": 25,
+    "selectedPrimaryBySource": {
+      "RadPrimer": 6,
+      "STATdx": 25
+    },
+    "archiveOptionalBySource": {
+      "RadPrimer": 4,
+      "STATdx": 0
+    }
+  },
+  "sourceAttributionRules": {
+    "text": "Use [RadPrimer], [STATdx], or [Both] where a statement is source-specific or jointly supported.",
+    "images": "Use one clean display label in human-facing prose, for example RadPrimer image 5 or STATdx image 4. Preserve RP-/SDX- codes in registry, manifest, filenames, and traceability fields.",
+    "hierarchy": "Canonical hierarchy and deck routing are copied exactly from metadata.json canonicalHierarchy and canonicalDeckPath."
+  },
+  "selectedPrimaryImageIds": [
+    "RP-02",
+    "RP-03",
+    "RP-05",
+    "RP-07",
+    "RP-08",
+    "RP-10",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-04",
+    "SDX-05",
+    "SDX-06",
+    "SDX-07",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10",
+    "SDX-11",
+    "SDX-12",
+    "SDX-13",
+    "SDX-14",
+    "SDX-15",
+    "SDX-16",
+    "SDX-17",
+    "SDX-18",
+    "SDX-19",
+    "SDX-20",
+    "SDX-21",
+    "SDX-22",
+    "SDX-23",
+    "SDX-24",
+    "SDX-25"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-01",
+    "RP-04",
+    "RP-06",
+    "RP-09"
+  ],
+  "sourceSelectionPlan": {
+    "textBackbone": "Use RadPrimer as the canonical hierarchy and baseline article structure; keep terminology, imaging, differential, pathology, clinical issues, treatment, and diagnostic checklist from RadPrimer unless STATdx adds clearer or more detailed content.",
+    "statdxSupplementalUse": "Use STATdx for stronger detail on whirlpool sign specificity, grayscale viability prediction, testicular patching/fragmentation, CEUS, intermittent torsion, atypical pediatric abdominal pain, epidemiology, contralateral orchiopexy, and image-based case clusters.",
+    "downweightOrSkip": [
+      "Do not carry unrelated IMAIOS label repository dumps into generated narrative/cards.",
+      "Do not invent Core Radiology support; no auditable Core source was present in this bundle.",
+      "Do not use STATdx breadcrumbs for deck routing when RadPrimer metadata canonicalHierarchy is present."
+    ],
+    "imageCurationPolicy": "Exact duplicates may be archived. Near duplicates and conceptual replacements remain selected as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "ExactDuplicate decisions require visual evidence from image_evidence files, same stable source image ID, image hashes, or explicit manual/source confirmation. Caption-only or topic-only similarity is marked uncertain/nearDuplicate and kept primary.",
+    "caseClusterGuardrails": {
+      "policy": "Same-patient, follow-up, procedure, adjacent-slice, comparison-view, and time-lapse groups are atomic teaching clusters. If one image from a cluster is selected, include its companion images unless an explicit documented split is safe.",
+      "selectedAtomicClusters": [
+        {
+          "clusterId": "SDX-03-04",
+          "imageIds": [
+            "SDX-03",
+            "SDX-04"
+          ],
+          "context": "Same patient: left testis absent flow plus superior cord whirlpool sign."
+        },
+        {
+          "clusterId": "SDX-07-08",
+          "imageIds": [
+            "SDX-07",
+            "SDX-08"
+          ],
+          "context": "Same patient: misleading orchitis-like first exam followed by necrotic nonviable testis 3 days later."
+        },
+        {
+          "clusterId": "SDX-09-10",
+          "imageIds": [
+            "SDX-09",
+            "SDX-10"
+          ],
+          "context": "Same patient: decreased right testis flow before manual detorsion and restored symmetric flow afterward."
+        },
+        {
+          "clusterId": "SDX-11-12",
+          "imageIds": [
+            "SDX-11",
+            "SDX-12"
+          ],
+          "context": "Same patient: absent left intratesticular flow plus whirlpool sign above the testis."
+        },
+        {
+          "clusterId": "SDX-13-14",
+          "imageIds": [
+            "SDX-13",
+            "SDX-14"
+          ],
+          "context": "Same patient: testicular patching/nonviability plus superior cord whirlpool and spectral Doppler."
+        },
+        {
+          "clusterId": "SDX-22-23",
+          "imageIds": [
+            "SDX-22",
+            "SDX-23"
+          ],
+          "context": "Same patient: longitudinal torsion knot/spectral waveform plus transverse enlarged hypoechoic cord with absent cord flow."
+        }
+      ],
+      "intentionalSplits": []
+    },
+    "radPrimerImageCoverageBySTATdx": {
+      "RP-01": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-05"
+        ],
+        "selected": false
+      },
+      "RP-02": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-21"
+        ],
+        "selected": true
+      },
+      "RP-03": {
+        "status": "conceptualReplacement",
+        "statdxMatches": [
+          "SDX-01",
+          "SDX-03",
+          "SDX-11"
+        ],
+        "selected": true
+      },
+      "RP-04": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-19"
+        ],
+        "selected": false
+      },
+      "RP-05": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-24"
+        ],
+        "selected": true
+      },
+      "RP-06": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-17"
+        ],
+        "selected": false
+      },
+      "RP-07": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-20"
+        ],
+        "selected": true
+      },
+      "RP-08": {
+        "status": "nearDuplicate",
+        "statdxMatches": [
+          "SDX-25"
+        ],
+        "selected": true
+      },
+      "RP-09": {
+        "status": "exactDuplicate",
+        "statdxMatches": [
+          "SDX-16"
+        ],
+        "selected": false
+      },
+      "RP-10": {
+        "status": "notCovered",
+        "statdxMatches": [],
+        "selected": true
+      }
+    },
+    "primaryImageDownloadUseSet": [
+      "RP-02",
+      "RP-03",
+      "RP-05",
+      "RP-07",
+      "RP-08",
+      "RP-10",
+      "SDX-01",
+      "SDX-02",
+      "SDX-03",
+      "SDX-04",
+      "SDX-05",
+      "SDX-06",
+      "SDX-07",
+      "SDX-08",
+      "SDX-09",
+      "SDX-10",
+      "SDX-11",
+      "SDX-12",
+      "SDX-13",
+      "SDX-14",
+      "SDX-15",
+      "SDX-16",
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-21",
+      "SDX-22",
+      "SDX-23",
+      "SDX-24",
+      "SDX-25"
+    ],
+    "archiveOptionalDuplicates": [
+      "RP-01",
+      "RP-04",
+      "RP-06",
+      "RP-09"
+    ],
+    "imageDownloadPlan": [
+      {
+        "masterImageId": "RP-02",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 2,
+        "displayLabel": "RadPrimer image 2",
+        "plainUrl": "https://app.radprimer.com/images/d92c2f57-ceba-425e-b2ea-2429f4468d7d?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/d92c2f57-ceba-425e-b2ea-2429f4468d7d?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-02_RadPrimer_plain_Testicular_TorsionInfarction2.jpg",
+        "annotatedDownloadFilename": "RP-02_RadPrimer_annotated_Testicular_TorsionInfarction2_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "alternateExample",
+          "partialInfarction"
+        ]
+      },
+      {
+        "masterImageId": "RP-03",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 3,
+        "displayLabel": "RadPrimer image 3",
+        "plainUrl": "https://app.radprimer.com/images/2b39671b-ed1f-43cb-8494-f3fce4b2e7dd?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/2b39671b-ed1f-43cb-8494-f3fce4b2e7dd?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-03_RadPrimer_plain_Testicular_TorsionInfarction3.jpg",
+        "annotatedDownloadFilename": "RP-03_RadPrimer_annotated_Testicular_TorsionInfarction3_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "hemorrhagicInfarction",
+          "bilateralComparison"
+        ]
+      },
+      {
+        "masterImageId": "RP-05",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 5,
+        "displayLabel": "RadPrimer image 5",
+        "plainUrl": "https://app.radprimer.com/images/99a11ea2-99b5-41ee-ba7b-1c57e021912a?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/99a11ea2-99b5-41ee-ba7b-1c57e021912a?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-05_RadPrimer_plain_Testicular_TorsionInfarction5.jpg",
+        "annotatedDownloadFilename": "RP-05_RadPrimer_annotated_Testicular_TorsionInfarction5_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "stageVariant",
+          "earlyTorsion",
+          "viableTestis"
+        ]
+      },
+      {
+        "masterImageId": "RP-07",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 7,
+        "displayLabel": "RadPrimer image 7",
+        "plainUrl": "https://app.radprimer.com/images/b578395c-8dc2-4f0a-92ea-700da844cde3?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/b578395c-8dc2-4f0a-92ea-700da844cde3?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-07_RadPrimer_plain_Testicular_TorsionInfarction7.jpg",
+        "annotatedDownloadFilename": "RP-07_RadPrimer_annotated_Testicular_TorsionInfarction7_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "hemorrhagicInfarction",
+          "delayedTorsion"
+        ]
+      },
+      {
+        "masterImageId": "RP-08",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 8,
+        "displayLabel": "RadPrimer image 8",
+        "plainUrl": "https://app.radprimer.com/images/6035d2f9-d8fe-4d23-a54a-6367f1424fb6?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/6035d2f9-d8fe-4d23-a54a-6367f1424fb6?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-08_RadPrimer_plain_Testicular_TorsionInfarction8.jpg",
+        "annotatedDownloadFilename": "RP-08_RadPrimer_annotated_Testicular_TorsionInfarction8_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "recognitionReinforcement",
+          "partialInfarction",
+          "grayscaleVariant"
+        ]
+      },
+      {
+        "masterImageId": "RP-10",
+        "sourceLabel": "RadPrimer",
+        "sourceImageNumber": 10,
+        "displayLabel": "RadPrimer image 10",
+        "plainUrl": "https://app.radprimer.com/images/90672b97-a2cd-462d-96ee-b6d76a3c16ce?style=xlarge&annotated=false",
+        "annotatedUrl": "https://app.radprimer.com/images/90672b97-a2cd-462d-96ee-b6d76a3c16ce?style=xlarge&annotated=true",
+        "plainDownloadFilename": "RP-10_RadPrimer_plain_Testicular_TorsionInfarction10.jpg",
+        "annotatedDownloadFilename": "RP-10_RadPrimer_annotated_Testicular_TorsionInfarction10_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "differentialMimicker",
+          "epididymoorchitisVenousInfarct"
+        ]
+      },
+      {
+        "masterImageId": "SDX-01",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 1,
+        "displayLabel": "STATdx image 1",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/cfcd9c51-98b0-4bd6-a76d-5e4e5326472a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/cfcd9c51-98b0-4bd6-a76d-5e4e5326472a?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-01_STATdx_plain_Testicular_Torsion1.jpg",
+        "annotatedDownloadFilename": "SDX-01_STATdx_annotated_Testicular_Torsion1_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "earlyTorsion",
+          "viableTestis",
+          "bilateralComparison"
+        ]
+      },
+      {
+        "masterImageId": "SDX-02",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 2,
+        "displayLabel": "STATdx image 2",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e218a82d-2e22-4e70-8156-b34cbd833c01?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e218a82d-2e22-4e70-8156-b34cbd833c01?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-02_STATdx_plain_Testicular_Torsion2.jpg",
+        "annotatedDownloadFilename": "SDX-02_STATdx_annotated_Testicular_Torsion2_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "nonviableTestis",
+          "delayedTorsion",
+          "peripheralFlowPitfall"
+        ]
+      },
+      {
+        "masterImageId": "SDX-03",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 3,
+        "displayLabel": "STATdx image 3",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/e4c38fc3-1b82-406d-9597-44f6e3bb4e82?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/e4c38fc3-1b82-406d-9597-44f6e3bb4e82?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-03_STATdx_plain_Testicular_Torsion3.jpg",
+        "annotatedDownloadFilename": "SDX-03_STATdx_annotated_Testicular_Torsion3_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "acuteTorsion",
+          "bilateralComparison"
+        ]
+      },
+      {
+        "masterImageId": "SDX-04",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 4,
+        "displayLabel": "STATdx image 4",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/fd9cbd67-0725-48e6-ac05-2f168a867a74?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/fd9cbd67-0725-48e6-ac05-2f168a867a74?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-04_STATdx_plain_Testicular_Torsion4.jpg",
+        "annotatedDownloadFilename": "SDX-04_STATdx_annotated_Testicular_Torsion4_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "whirlpoolSign",
+          "samePatientCluster:SDX-03-04"
+        ]
+      },
+      {
+        "masterImageId": "SDX-05",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 5,
+        "displayLabel": "STATdx image 5",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/820db922-7f7c-4c5e-a0ae-6bf116f03c13?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/820db922-7f7c-4c5e-a0ae-6bf116f03c13?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-05_STATdx_plain_Testicular_Torsion5.jpg",
+        "annotatedDownloadFilename": "SDX-05_STATdx_annotated_Testicular_Torsion5_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "mechanismGraphic",
+          "exactDuplicateRetained"
+        ]
+      },
+      {
+        "masterImageId": "SDX-06",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 6,
+        "displayLabel": "STATdx image 6",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3072f8ea-4dba-4e95-b709-2e0b864eefd1?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3072f8ea-4dba-4e95-b709-2e0b864eefd1?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-06_STATdx_plain_Testicular_Torsion6.jpg",
+        "annotatedDownloadFilename": "SDX-06_STATdx_annotated_Testicular_Torsion6_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "whirlpoolSign",
+          "cordEpididymisVariant"
+        ]
+      },
+      {
+        "masterImageId": "SDX-07",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 7,
+        "displayLabel": "STATdx image 7",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/b8832664-3a5c-455c-8713-a0b13487ee8e?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/b8832664-3a5c-455c-8713-a0b13487ee8e?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-07_STATdx_plain_Testicular_Torsion7.jpg",
+        "annotatedDownloadFilename": "SDX-07_STATdx_annotated_Testicular_Torsion7_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-07-08",
+          "pitfall",
+          "atypicalPresentation"
+        ]
+      },
+      {
+        "masterImageId": "SDX-08",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 8,
+        "displayLabel": "STATdx image 8",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/9313eaf8-76ec-4481-8d4b-163bf20e2138?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/9313eaf8-76ec-4481-8d4b-163bf20e2138?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-08_STATdx_plain_Testicular_Torsion8.jpg",
+        "annotatedDownloadFilename": "SDX-08_STATdx_annotated_Testicular_Torsion8_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-07-08",
+          "followUp",
+          "nonviableTestis"
+        ]
+      },
+      {
+        "masterImageId": "SDX-09",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 9,
+        "displayLabel": "STATdx image 9",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/769e6841-fcc8-46be-bbca-0edc195b66ca?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/769e6841-fcc8-46be-bbca-0edc195b66ca?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-09_STATdx_plain_Testicular_Torsion9.jpg",
+        "annotatedDownloadFilename": "SDX-09_STATdx_annotated_Testicular_Torsion9_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-09-10",
+          "partialIntermittentTorsion",
+          "preDetorsion"
+        ]
+      },
+      {
+        "masterImageId": "SDX-10",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 10,
+        "displayLabel": "STATdx image 10",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/570bcd2d-c253-4a95-b576-17ee12598877?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/570bcd2d-c253-4a95-b576-17ee12598877?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-10_STATdx_plain_Testicular_Torsion10.jpg",
+        "annotatedDownloadFilename": "SDX-10_STATdx_annotated_Testicular_Torsion10_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-09-10",
+          "postDetorsion",
+          "timeLapse"
+        ]
+      },
+      {
+        "masterImageId": "SDX-11",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 11,
+        "displayLabel": "STATdx image 11",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/87d54837-3352-4e58-ac13-2820dd058a1f?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/87d54837-3352-4e58-ac13-2820dd058a1f?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-11_STATdx_plain_Testicular_Torsion11.jpg",
+        "annotatedDownloadFilename": "SDX-11_STATdx_annotated_Testicular_Torsion11_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-11-12",
+          "acuteTorsion",
+          "dopplerOptimization"
+        ]
+      },
+      {
+        "masterImageId": "SDX-12",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 12,
+        "displayLabel": "STATdx image 12",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7a0c8f88-a3b8-401b-ae39-c88dd7c004bd?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7a0c8f88-a3b8-401b-ae39-c88dd7c004bd?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-12_STATdx_plain_Testicular_Torsion12.jpg",
+        "annotatedDownloadFilename": "SDX-12_STATdx_annotated_Testicular_Torsion12_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-11-12",
+          "whirlpoolSign"
+        ]
+      },
+      {
+        "masterImageId": "SDX-13",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 13,
+        "displayLabel": "STATdx image 13",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/518f4215-19b6-4a1a-8a4c-8420d339f9a3?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/518f4215-19b6-4a1a-8a4c-8420d339f9a3?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-13_STATdx_plain_Testicular_Torsion13.jpg",
+        "annotatedDownloadFilename": "SDX-13_STATdx_annotated_Testicular_Torsion13_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-13-14",
+          "testicularPatching",
+          "nonviableTestis"
+        ]
+      },
+      {
+        "masterImageId": "SDX-14",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 14,
+        "displayLabel": "STATdx image 14",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/a1a63b2b-74d9-44b5-8204-32508c6f8541?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/a1a63b2b-74d9-44b5-8204-32508c6f8541?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-14_STATdx_plain_Testicular_Torsion14.jpg",
+        "annotatedDownloadFilename": "SDX-14_STATdx_annotated_Testicular_Torsion14_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-13-14",
+          "whirlpoolSign",
+          "spectralDoppler"
+        ]
+      },
+      {
+        "masterImageId": "SDX-15",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 15,
+        "displayLabel": "STATdx image 15",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/ad9e53f3-b1ad-406d-a2c0-46ae1a079afe?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/ad9e53f3-b1ad-406d-a2c0-46ae1a079afe?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-15_STATdx_plain_Testicular_Torsion15.jpg",
+        "annotatedDownloadFilename": "SDX-15_STATdx_annotated_Testicular_Torsion15_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "nonviableTestis",
+          "peripheralFlowPitfall"
+        ]
+      },
+      {
+        "masterImageId": "SDX-16",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 16,
+        "displayLabel": "STATdx image 16",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/48dad9ed-cb9f-4cd3-a73c-ab95b350ebc0?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/48dad9ed-cb9f-4cd3-a73c-ab95b350ebc0?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-16_STATdx_plain_Testicular_Torsion16.jpg",
+        "annotatedDownloadFilename": "SDX-16_STATdx_annotated_Testicular_Torsion16_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "partialTorsion",
+          "exactDuplicateRetained"
+        ]
+      },
+      {
+        "masterImageId": "SDX-17",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 17,
+        "displayLabel": "STATdx image 17",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/4523c75a-3963-4ff9-9ee5-c68322720554?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/4523c75a-3963-4ff9-9ee5-c68322720554?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-17_STATdx_plain_Testicular_Torsion17.jpg",
+        "annotatedDownloadFilename": "SDX-17_STATdx_annotated_Testicular_Torsion17_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "delayedTorsion",
+          "exactDuplicateRetained"
+        ]
+      },
+      {
+        "masterImageId": "SDX-18",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 18,
+        "displayLabel": "STATdx image 18",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/58bef16b-bd15-4a7e-9c78-3b63d1e4f2bb?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/58bef16b-bd15-4a7e-9c78-3b63d1e4f2bb?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-18_STATdx_plain_Testicular_Torsion18.jpg",
+        "annotatedDownloadFilename": "SDX-18_STATdx_annotated_Testicular_Torsion18_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "modalityVariant",
+          "CEUS",
+          "globalInfarction"
+        ]
+      },
+      {
+        "masterImageId": "SDX-19",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 19,
+        "displayLabel": "STATdx image 19",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/0b452e61-3a57-42f4-b3a6-60bc689c7d17?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/0b452e61-3a57-42f4-b3a6-60bc689c7d17?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-19_STATdx_plain_Testicular_Torsion19.jpg",
+        "annotatedDownloadFilename": "SDX-19_STATdx_annotated_Testicular_Torsion19_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "whirlpoolSign",
+          "exactDuplicateRetained"
+        ]
+      },
+      {
+        "masterImageId": "SDX-20",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 20,
+        "displayLabel": "STATdx image 20",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/3f786989-c8b0-4c34-95cc-6ec8cb27d8d7?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/3f786989-c8b0-4c34-95cc-6ec8cb27d8d7?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-20_STATdx_plain_Testicular_Torsion20.jpg",
+        "annotatedDownloadFilename": "SDX-20_STATdx_annotated_Testicular_Torsion20_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "testicularPatching",
+          "nonviableTestis"
+        ]
+      },
+      {
+        "masterImageId": "SDX-21",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 21,
+        "displayLabel": "STATdx image 21",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/4766ac32-64cd-49ac-9d79-9a21adfc15d6?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/4766ac32-64cd-49ac-9d79-9a21adfc15d6?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-21_STATdx_plain_Testicular_Torsion21.jpg",
+        "annotatedDownloadFilename": "SDX-21_STATdx_annotated_Testicular_Torsion21_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "intermittentTorsion",
+          "focalInfarct"
+        ]
+      },
+      {
+        "masterImageId": "SDX-22",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 22,
+        "displayLabel": "STATdx image 22",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/85366e20-b177-45dc-9246-ded5e36dfa78?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/85366e20-b177-45dc-9246-ded5e36dfa78?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-22_STATdx_plain_Testicular_Torsion22.jpg",
+        "annotatedDownloadFilename": "SDX-22_STATdx_annotated_Testicular_Torsion22_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-22-23",
+          "whirlpoolSign",
+          "spectralDoppler"
+        ]
+      },
+      {
+        "masterImageId": "SDX-23",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 23,
+        "displayLabel": "STATdx image 23",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/7ecda1dd-26ce-4917-9a71-737d14de1a4b?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/7ecda1dd-26ce-4917-9a71-737d14de1a4b?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-23_STATdx_plain_Testicular_Torsion23.jpg",
+        "annotatedDownloadFilename": "SDX-23_STATdx_annotated_Testicular_Torsion23_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "samePatientCluster:SDX-22-23",
+          "cordVariant",
+          "absentCordFlow"
+        ]
+      },
+      {
+        "masterImageId": "SDX-24",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 24,
+        "displayLabel": "STATdx image 24",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/bda1efca-eff9-4871-a401-15ed6472cc3a?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/bda1efca-eff9-4871-a401-15ed6472cc3a?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-24_STATdx_plain_Testicular_Torsion24.jpg",
+        "annotatedDownloadFilename": "SDX-24_STATdx_annotated_Testicular_Torsion24_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "earlyTorsion",
+          "viableTestis",
+          "normalGrayscale"
+        ]
+      },
+      {
+        "masterImageId": "SDX-25",
+        "sourceLabel": "STATdx",
+        "sourceImageNumber": 25,
+        "displayLabel": "STATdx image 25",
+        "plainUrl": "https://app.statdx.com/image/thumbnail/1176e5b5-b2cb-4624-bd5b-979a0c883509?size=1000&quality=90",
+        "annotatedUrl": "https://app.statdx.com/image/thumbnail/1176e5b5-b2cb-4624-bd5b-979a0c883509?annotated=true&size=1000&quality=90",
+        "plainDownloadFilename": "SDX-25_STATdx_plain_Testicular_Torsion25.jpg",
+        "annotatedDownloadFilename": "SDX-25_STATdx_annotated_Testicular_Torsion25_annot.jpg",
+        "downloadRecommendation": "primaryTeachingSet",
+        "usedFor": [
+          "primaryTeachingSet",
+          "partialInfarction",
+          "alternateExample"
+        ]
+      }
+    ],
+    "generatorInstructions": [
+      "Build future narrative/cards from this packageText only; do not generate cards in this master-source step.",
+      "Use clean human-facing image labels such as RadPrimer image 5 and STATdx image 4 in prose.",
+      "Keep short trace codes such as RP-05 and SDX-04 in registry, manifest, filenames, and traceability fields.",
+      "When teaching image recognition, keep near duplicates and alternate same-disease examples as reinforcement rather than pruning them."
+    ]
+  }
+}

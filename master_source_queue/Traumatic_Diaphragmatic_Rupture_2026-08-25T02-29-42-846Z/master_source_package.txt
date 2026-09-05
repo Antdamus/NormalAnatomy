@@ -1,0 +1,141 @@
+=== MASTER SOURCE PACKAGE ===
+TITLE: Traumatic Diaphragmatic Rupture
+SOURCE SYNTHESIS: RadPrimer canonical backbone with STATdx supplemental depth
+
+=== CANONICAL HIERARCHY ===
+All Categories > Basic > Gastrointestinal > Peritoneum, Mesentery, and Abdominal Wall > Traumatic Diaphragmatic Rupture
+Canonical deck path: Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Traumatic Diaphragmatic Rupture
+Routing note: canonicalHierarchy is copied exactly from metadata.json; STATdx breadcrumbs were not used for deck routing.
+
+=== SOURCE ATTRIBUTION RULES ===
+- [Both] = supported by both RadPrimer and STATdx source packages.
+- [RadPrimer] = RadPrimer-only or RadPrimer-preferred canonical detail.
+- [STATdx] = supplemental STATdx detail, image example, or wording nuance.
+
+=== IMAGE COVERAGE GATE ===
+STATdx substantially covers the RadPrimer image set but does not fully exact-duplicate it. STATdx exact duplicates RadPrimer images 1, 2, 3, 4, 6, 7, and 10; RadPrimer images 5, 8, and 9 remain nonduplicate primary recognition examples.
+- RadPrimer image 1: exactDuplicate; related STATdx images: STATdx image 1. STATdx image 1 is the same chest radiograph showing the upward-curving NG tube after MVC; archive the STATdx repeat and keep the RadPrimer image as the canonical primary image.
+- RadPrimer image 2: exactDuplicate; related STATdx images: STATdx image 2, STATdx image 3, STATdx image 4. STATdx image 2 is the same axial CT slice with fallen viscus and collar signs. STATdx images 3 and 4 are same-patient complementary axial/sagittal CT images and remain selected.
+- RadPrimer image 3: exactDuplicate; related STATdx images: STATdx image 15, STATdx image 3. STATdx image 15 is the same axial CT slice/content as RadPrimer image 3, with only source crop/encoding differences. STATdx image 3 is an adjacent same-patient CT image and remains selected.
+- RadPrimer image 4: exactDuplicate; related STATdx images: STATdx image 16, STATdx image 4. STATdx image 16 is the same coronal CT/reformatted image of stomach herniation through the left diaphragmatic defect. STATdx image 4 is a different sagittal companion image and remains selected.
+- RadPrimer image 5: conceptualReplacement; related STATdx images: STATdx image 19, STATdx image 20. STATdx images 19 and 20 provide a separate radiograph/CT MVC cluster with an NG tube and fallen viscus sign, but they are not the same axial CT image as RadPrimer image 5.
+- RadPrimer image 6: exactDuplicate; related STATdx images: STATdx image 9. STATdx image 9 is the same axial CT slice/content after stab wound showing splenic laceration, hemothorax, and subcutaneous emphysema; archive the STATdx repeat.
+- RadPrimer image 7: exactDuplicate; related STATdx images: STATdx image 7. STATdx image 7 is the same coronal CT image of left hemidiaphragm defect with colon in the thorax and enteric contrast from colonic perforation; archive the STATdx repeat.
+- RadPrimer image 8: nearDuplicate; related STATdx images: STATdx image 10. STATdx image 10 covers the same surgical-error MR teaching point but is a different plane/appearance, so both remain selected for recognition reinforcement.
+- RadPrimer image 9: conceptualReplacement; related STATdx images: STATdx image 12, STATdx image 13, STATdx image 17, STATdx image 20. STATdx includes several dependent-viscus/collar-sign CT examples, but none is the same axial CT slice showing the pinched stomach and thoracic abdominal fat from RadPrimer image 9.
+- RadPrimer image 10: exactDuplicate; related STATdx images: STATdx image 8. STATdx image 8 is the same coronal CT image of splenic injury, hemothorax, lung contusion, and small diaphragmatic defect; archive the STATdx repeat.
+
+=== KEY FACTS ===
+- [Both] Traumatic diaphragmatic rupture is diaphragmatic disruption, with or without herniation of abdominal contents into the thorax.
+- [Both] Most cases are left-sided, usually posterolateral and medial to the spleen; RadPrimer gives 90-98%, while STATdx summarizes this as greater than 90%.
+- [Both] About 75% are caused by blunt trauma and 25% by penetrating trauma.
+- [Both] Blunt tears are usually large, often greater than 10 cm, while stab wounds usually create shorter lacerations around 1-2 cm and are more likely to be delayed or missed.
+- [Both] Best CT clue: hemidiaphragm discontinuity with fallen/dependent viscus sign.
+- [Both] Major CT signs include focal diaphragmatic defect, dangling diaphragm sign, absent diaphragm sign, organ herniation, collar sign, fallen/dependent viscus sign, abdominal contents lateral to the diaphragm, and secondary thoracoabdominal injury signs.
+- [STATdx] Presence of contiguous injury on both sides of the diaphragm should raise concern even when a discrete defect is not visible.
+- [Both] CECT with multiplanar reformations is the best imaging tool; reformats are critical because the diaphragm is often parallel to the axial plane.
+- [Both] Surgical repair is indicated for essentially all diaphragmatic injuries, even small injuries; STATdx notes very rare conservative management of selected small right-sided injuries.
+
+=== TERMINOLOGY ===
+- [Both] Synonym: traumatic diaphragmatic hernia.
+- [Both] Definition: traumatic rupture of the diaphragm with or without abdominal visceral herniation into the chest.
+
+=== IMAGING ===
+- [Both] Location: 90-98% occur on the left, usually posterolateral, because the left pleuroperitoneal membrane is weaker and the right hemidiaphragm is protected by the liver.
+- [Both] Most ruptures originate posterolaterally and spread centrally.
+- [Both] Herniated organs include stomach more often than omentum, colon, small bowel, spleen, or liver.
+- [Both] Segmental/discontinuous diaphragm sign: focal hemidiaphragm discontinuity; the free edge may be thickened or hypoenhancing from retraction or hemorrhage.
+- [Both] Dangling diaphragm sign: the free edge of torn diaphragm curls inward on axial images instead of paralleling the chest wall.
+- [Both] Absent diaphragm sign: the diaphragm is absent in the expected location without a discrete visible tear.
+- [Both] Collar sign: waist-like narrowing of a herniated structure where it traverses the tear; it is often easier on coronal multiplanar reformats.
+- [Both] Fallen/dependent viscus sign: herniated stomach, bowel, spleen, or other viscera fall dependently against posterior ribs or thoracic wall without intervening lung.
+- [RadPrimer] Secondary CT signs include simultaneous pneumothorax and pneumoperitoneum, hemothorax and hemoperitoneum, active extravasation in or near the diaphragm, asymmetric diaphragmatic elevation, and injury to organs near the diaphragm.
+- [STATdx] Pleural fluid tracking into the upper abdomen and surrounding abdominal structures is an additional secondary clue.
+- [STATdx] Intrapericardial herniation is a very rare form in which bowel or fat herniates through the central tendon into the pericardial sac and can compress the heart.
+- [Both] CT sensitivity and specificity vary; reported sensitivity can be as low as 73% and specificity as low as 50%, particularly when the diaphragm contacts liver, pleural fluid, or another structure.
+- [Both] MR shows the diaphragm as a continuous low-signal band on T1- and T2-weighted imaging; MR signs parallel CT but MR is usually reserved for stable patients, not acute trauma.
+- [Both] Radiographs are less sensitive than CT but may show nonvisualized/elevated hemidiaphragm, lower thoracic soft tissue or gas density, herniated stomach/bowel, air-fluid levels, mediastinal shift, ipsilateral thoracic injuries, or a high NG tube.
+- [Both] A nasogastric tube above the left hemidiaphragm with an abnormal U-shaped course or tip directed toward the left shoulder is a classic radiographic clue.
+- [Both] Fluoroscopic upper GI or barium enema can show a collar sign in delayed hernia but is rarely needed acutely and is mostly supplanted by CT.
+
+=== DIFFERENTIAL DIAGNOSIS ===
+- [Both] Bochdalek or Morgagni congenital hernia: lacks trauma history and adjacent traumatic secondary signs.
+- [Both] Diaphragmatic eventration: thinned diaphragm remains continuous and attached to the costal margin; no focal defect, collar sign, or fallen viscus sign.
+- [Both] Paralyzed diaphragm: elevated but intact diaphragm from neurologic, phrenic nerve, neuromuscular junction, or muscle abnormality; no focal tear or herniation signs.
+- [Both] Pleural effusion or pulmonary/extrapleural mass can mimic traumatic diaphragmatic hernia on radiographs but should separate on CT.
+
+=== PATHOLOGY ===
+- [Both] Blunt trauma is most often from MVC; other mechanisms include fall from height and crushing injury.
+- [Both] Lateral impact causes shear injury, while frontal impact increases intraabdominal pressure and can rupture the diaphragm.
+- [Both] Penetrating trauma is most often gunshot or stab wound; iatrogenic injury can occur after surgery near the diaphragm.
+- [Both] Diaphragmatic rupture is strongly associated with polytrauma and major associated injuries, reported in 52-100% of cases.
+- [Both] Left-sided blunt injuries are most associated with splenic injury; right-sided injuries are associated with liver, right kidney, aortic, cardiac, pelvic, rib, and spine injuries.
+- [Both] Thoracic injuries such as pneumothorax, rib fractures, pleural effusion, hemothorax, and pulmonary contusion are frequent; isolated injury is uncommon.
+
+=== CLINICAL ISSUES ===
+- [Both] Presentation may include dyspnea, upper abdominal pain, chest pain, hypotension, tachycardia, and other signs of severe polytrauma.
+- [Both] Physical exam may reveal bowel sounds in the chest, decreased breath sounds, chest wall asymmetry, or dullness to percussion.
+- [Both] Incidence is 1-5% among patients with substantial blunt abdominal or thoracic trauma; true incidence is probably underestimated.
+- [Both] Diaphragmatic injuries are missed in 7-66% of cases, and right-sided injuries are more likely to be missed.
+- [Both] Complications include obstruction or ischemia of herniated bowel, torsion/devascularization/ischemia of herniated solid organs, respiratory complications, and central venous obstruction from mass effect.
+- [STATdx] Tension gastrothorax can occur when an intrathoracic stomach distends with gas, causing ipsilateral lung collapse and mediastinal shift.
+- [STATdx] Diaphragmatic paralysis can occur if the phrenic nerve region is injured, although this often improves over time.
+- [Both] Traumatic hernias account for only about 5% of all diaphragmatic hernias, but most strangulated diaphragmatic hernias are trauma-related.
+- [Both] Patients have high mortality mainly from associated severe injuries; RadPrimer reports 12-42%.
+- [STATdx] Delayed diagnosis and repair carry particularly poor prognosis, with mortality reported at 30-60%.
+- [Both] Diaphragmatic injuries do not heal spontaneously because of constant diaphragmatic motion and the pressure gradient across the diaphragm.
+- [Both] If abdominal contents do not herniate immediately, they often eventually herniate due to negative intrapleural pressure; positive-pressure ventilation can temporarily mask herniation.
+
+=== DIAGNOSTIC CHECKLIST ===
+- [Both] Always inspect the diaphragm on trauma CT, especially when there are more obvious visceral injuries.
+- [Both] Use multiplanar reformations to identify subtle defects, collar sign, and organ herniation.
+- [Both] Look for fallen/dependent viscus sign when a herniated viscus is no longer supported posteriorly by the diaphragm.
+- [Both] Remember that contusion, pneumothorax, pleural effusion, atelectasis, and phrenic nerve palsy can mask injury.
+- [STATdx] Contiguous injuries immediately above and below the diaphragm can be the clue even if the tear itself is occult.
+
+=== SELECTED PRIMARY IMAGE SET ===
+- RadPrimer image 1: Chest x-ray in a young man following a motor vehicle crash (MVC) shows a pneumothorax, chest tube, and nasogastric (NG) tube <img src="arrow_BO.png"> that is curved up toward the chest. Used for: radiographPattern, ngTubeInChest, initialTraumaRadiograph, exactDuplicateAnchor.
+- RadPrimer image 2: Axial CT in the same patient shows the typical signs of diaphragmatic injury, including the fallen viscus sign. The stomach <img src="arrow_WS.png"> lies in the chest. Note that it has "fallen" medially and posteriorly to lie against the posteromedial chest wall. The stomach appears pinched <img src="arrow_WC.png"> as it traverses the defect in the diaphragm (collar sign). Used for: ctPattern, fallenViscusSign, collarSign, stomachHerniation, samePatientCluster, exactDuplicateAnchor.
+- RadPrimer image 3: Axial CECT shows the stomach in the thorax; it has "fallen" through the diaphragmatic defect to lie against the posteromedial chest wall. The anterior wall of the stomach <img src="arrow_WO.png"> directly abuts the lung and is not confined by the diaphragm. Used for: ctPattern, fallenViscusSign, intrathoracicStomach, samePatientCluster, exactDuplicateAnchor.
+- RadPrimer image 4: Coronal CECT in the same patient demonstrates the stomach <img src="arrow_WS.png"> extending upward through a diaphragmatic defect. Used for: multiplanarReformat, coronalCT, diaphragmaticDefect, samePatientCluster, exactDuplicateAnchor.
+- RadPrimer image 5: Axial CECT in a patient following a MVC shows the stomach <img src="arrow_WS.png"> lying too far medial, posterior, and superior, indicating herniation through the diaphragm. This is the fallen viscus sign. Used for: fallenViscusSign, mvc, alternateExample, recognitionReinforcement.
+- RadPrimer image 6: Axial CECT in a patient after a stab wound demonstrates a splenic laceration <img src="arrow_BC.png"> with hematoma, left hemothorax <img src="arrow_BS.png">, and subcutaneous emphysema <img src="arrow_WO.png">. The presence of hematoma above and below the left diaphragm was concerning for diaphragmatic injury, subsequently confirmed at surgery. Used for: penetratingTrauma, contiguousInjury, hemothoraxHemoperitoneumConcern, exactDuplicateAnchor.
+- RadPrimer image 7: Coronal CECT in a trauma patient demonstrates a gap in the left hemidiaphragm with the colon <img src="arrow_WC.png"> protruding into the thorax. Note the extensive enteric contrast material <img src="arrow_WS.png"> throughout the left thorax due to colonic perforation. Used for: colonHerniation, diaphragmGap, colonicPerforation, coronalCT, exactDuplicateAnchor.
+- RadPrimer image 8: Sagittal T2 MR demonstrates diaphragmatic injury due to surgical error. A tear is seen in the left hemidiaphragm with the stomach <img src="arrow_WS.png"> herniating into the chest. The diaphragm is identified as a low-signal curvilinear structure <img src="arrow_WC.png"> with a central gap. Used for: mriPattern, iatrogenicInjury, diaphragmGap, modalityVariant, recognitionReinforcement.
+- RadPrimer image 9: Axial CECT in a trauma patient demonstrates that the stomach is "pinched" <img src="arrow_WS.png"> as it traverses a defect in the left diaphragm. Another sign of diaphragmatic rupture is abdominal fat <img src="arrow_WO.png"> outside the confines of the diaphragm <img src="arrow_WC.png"> (in the thorax). Used for: collarSign, thoracicAbdominalFat, axialCT, recognitionReinforcement.
+- RadPrimer image 10: Coronal CECT after trauma demonstrates splenic injury with active extravasation <img src="arrow_WS.png">, left-sided hemothorax <img src="arrow_WO.png">, and lung contusion <img src="arrow_BS.png">. Injuries above and below the diaphragm raise concern for diaphragmatic injury, as evidenced by a small defect in the left diaphragm <img src="arrow_WC.png">. Used for: contiguousInjury, splenicInjury, hemothorax, smallDiaphragmDefect, exactDuplicateAnchor.
+- STATdx image 3: Axial CECT shows the stomach in the thorax, which has "fallen" through the diaphragmatic defect to lie against the posteromedial chest wall <img src="arrow_WS.png">. The anterior wall of the stomach <img src="arrow_WO.png"> directly abuts the lung and is not confined by the diaphragm. Used for: adjacentSlice, samePatientCluster, fallenViscusSign, recognitionReinforcement.
+- STATdx image 4: Sagittal CECT in the same patient demonstrates the stomach <img src="arrow_WS.png"> extending upward through a diaphragmatic defect. The anterior wall of the stomach <img src="arrow_WO.png"> directly contacts the lung, confirming the presence of a traumatic diaphragmatic hernia. Used for: sagittalCT, samePatientCluster, diaphragmaticHernia, modalityPlaneVariant.
+- STATdx image 5: Axial CECT in a trauma patient demonstrates a loop of bowel <img src="arrow_WO.png"> extending upward and directly contacting the heart. Used for: rightSidedInjury, intrapericardialHerniationCluster, alternateExample.
+- STATdx image 6: Coronal CECT in the same patient demonstrates the intact left hemidiaphragm <img src="arrow_WS.png">, while the right diaphragm is disrupted with omental fat <img src="arrow_WC.png"> and bowel <img src="arrow_WO.png"> extending upward adjacent to the heart. At surgery, the duodenum and omental fat were found within the pericardial sac, herniating through a defect in the diaphragm and pericardium. Used for: rightSidedInjury, intrapericardialHerniationCluster, pericardialDefect, mechanism.
+- STATdx image 10: Coronal T2 MR demonstrates diaphragmatic injury due to surgical error. A tear is seen in the left hemidiaphragm with the stomach <img src="arrow_WS.png"> herniating into the chest. The diaphragm is identified as a low-signal curvilinear structure <img src="arrow_WC.png"> with a central gap. Used for: mriPattern, sameConceptDifferentPlane, modalityVariant, recognitionReinforcement.
+- STATdx image 11: Axial CECT at lung windows shows splenic flexure of the colon <img src="arrow_BS.png"> abutting the lung and pneumothorax. Used for: lungWindowCT, splenicFlexureAgainstLung, pneumothorax, recognitionReinforcement.
+- STATdx image 12: Axial CECT shows the spleen in a dependent position and abdominal fat lateral to the diaphragm <img src="arrow_WS.png">. Used for: dependentViscusSign, abdominalFatLateralToDiaphragm, recognitionReinforcement.
+- STATdx image 13: Axial CECT shows the dependent viscus with the colon and abdominal fat lying lateral to the diaphragm <img src="arrow_WS.png">, indicating the thoracic position. Used for: dependentViscusSign, colonAndFatLateralToDiaphragm, recognitionReinforcement.
+- STATdx image 14: Chest radiograph shows an "elevated," distorted diaphragm and the high position of the NG tube <img src="arrow_BS.png">. Used for: radiographPattern, elevatedDistortedDiaphragm, ngTubeHighPosition, alternateExample.
+- STATdx image 17: Axial CECT shows the "dependent" viscus sign with the spleen and bowel abutting the posterior ribs. Used for: dependentViscusSign, spleenAndBowelAgainstPosteriorRibs, recognitionReinforcement.
+- STATdx image 18: Chest radiograph shows an "elevated" and indistinct left hemidiaphragm. The tip <img src="arrow_BS.png"> of the NG tube is pointed up. Used for: radiographPattern, indistinctHemidiaphragm, ngTubeTipUp, alternateExample.
+- STATdx image 19: Chest radiograph in a 66-year-old man following an MVC shows a high and distorted left hemidiaphragm, or abnormal intrathoracic contents, with the NG tube <img src="arrow_BC.png"> curled back up, indicating a high position of the stomach. Used for: radiographPattern, mvc, ngTubeCurledBackUp, samePatientCluster.
+- STATdx image 20: Axial CT in the same patient shows the fallen viscus sign with the stomach <img src="arrow_WS.png"> lying adjacent to the spine and posterior chest wall, instead of being suspended by the left hemidiaphragm. Note the NG tube <img src="arrow_WC.png">. Used for: ctCorrelation, fallenViscusSign, ngTube, samePatientCluster.
+
+=== ARCHIVE-OPTIONAL DUPLICATE IMAGES ===
+- STATdx image 1: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 1 based on visual inspection of the staged chest radiograph evidence.
+- STATdx image 2: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 2 based on visual inspection of the staged axial CT evidence.
+- STATdx image 7: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 7 based on visual inspection of the staged coronal CT evidence.
+- STATdx image 8: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 10 based on visual inspection of the staged coronal CT evidence.
+- STATdx image 9: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 6 based on visual inspection of the staged axial CT evidence.
+- STATdx image 15: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 3 based on visual inspection of the staged axial CT evidence.
+- STATdx image 16: archiveOptionalDuplicate. Exact duplicate of RadPrimer image 4 based on visual inspection of the staged coronal CT evidence.
+
+=== CASE CLUSTER NOTES ===
+- RadPrimer images 1-4 form the opening MVC radiograph/CT same-patient cluster and remain selected as the canonical teaching sequence.
+- STATdx images 3 and 4 are adjacent/different-plane companions to the opening CT cluster and remain selected even though STATdx same-image repeats 1, 2, 15, and 16 are archived.
+- STATdx images 5 and 6 form a rare right-sided/intrapericardial herniation cluster and both remain selected.
+- STATdx images 19 and 20 form a radiograph/CT correlation cluster and both remain selected.
+- No RadPrimer source case cluster was intentionally split in a way that removes unique teaching context; archived STATdx members are exact duplicates with retained RadPrimer equivalents.
+
+=== GENERATOR INSTRUCTIONS ===
+- Use this package as source material for later narrative/cards, but do not generate cards or lecture output during this synthesis step.
+- Use clean source-qualified labels in prose, such as RadPrimer image 5 and STATdx image 4.
+- Use registry IDs, source image IDs, hashes, and filenames for traceability and download routing.
+- Download/use only selectedPrimaryImageIds by default; archiveOptionalImageIds are for audit/recovery.

@@ -81,14 +81,15 @@ A) Trigger integrity
 - NORMAL UNKNOWN requires Image and Question
 - if Image is populated but Question is blank, the note must not be treated as NORMAL UNKNOWN
 - any non-NORMAL-UNKNOWN note with Image must keep Question blank
-- NORMAL DIFFERENTIAL DRILL exists only when Differentials is populated
+- NORMAL DIFFERENTIAL DRILL exists only when Differential_Q is populated
+- Differentials alone may be populated on a NORMAL UNKNOWN note as back-side differential/mimic support
 - NORMAL MECHANISM exists only when Mechanism is populated
 - NORMAL BOARDS TRAP exists only when Boards_Trap is populated
 - NORMAL HIGH-YIELD exists only when High_Yield_Q is populated
 - no dual-trigger note may be exported
 
 B) Forward dependency integrity
-- if Differentials is populated, Differential_Q and Imaging_Differentiation must be populated
+- if Differential_Q is populated, Differentials and Imaging_Differentiation must be populated
 - if Mechanism is populated, Mechanism_Q and Entity_Label must be populated
 - if Boards_Trap is populated, Boards_Trap_Q and Entity_Label must be populated
 - if High_Yield_Q is populated, High_Yield_A must be populated
@@ -112,7 +113,7 @@ D) Single-front-family integrity
 - if more than one is populated, split the content into separate notes
 
 E) Forbidden-field integrity
-- UNKNOWN must leave all non-UNKNOWN trigger fields and front-driving prompt families blank
+- UNKNOWN must leave all non-UNKNOWN trigger fields and front-driving prompt families blank, except Differentials as back-side support with Differential_Q blank
 - DIFFERENTIAL DRILL must leave Question, Mechanism_Q, Mechanism, Boards_Trap_Q, Boards_Trap, High_Yield_Q, and High_Yield_A blank
 - MECHANISM must leave Question, Most_Likely_Diagnosis, Differential_Q, Differentials, Boards_Trap_Q, Boards_Trap, High_Yield_Q, and High_Yield_A blank
 - BOARDS TRAP must leave Question, Differential_Q, Differentials, Mechanism_Q, Mechanism, High_Yield_Q, and High_Yield_A blank
@@ -182,6 +183,40 @@ G5B) Radiology-identification integrity
 - synthesis cards should remain few and operational, not summary-like or bloated
 - standalone trivia that does not improve reading skill or judgment should be omitted
 
+G5B2) Normal modality matrix integrity
+- for each structure, space, relationship, normal variant, or pseudolesion, internally review which modality-specific facts are source-supported
+- the matrix should consider CT noncontrast/contrast phase, MRI sequence/plane/contrast behavior, ultrasound grayscale/Doppler/CEUS, and nuclear medicine/PET/SPECT tracer-specific behavior when relevant
+- source-supported modality appearance anchors that improve recognition or localization should be encoded in independent NORMAL HIGH-YIELD rows when they are worth memorizing separately
+- do not generate cards for unsupported modality cells
+- do not generalize one contrast agent, phase, sequence, Doppler behavior, CEUS pattern, or radiotracer to another unless source-supported
+
+G5B3) Multi-image stack label integrity
+- every multi-image NORMAL UNKNOWN Image field must include visible non-diagnostic labels in the form "Image 1/N", "Image 2/N", etc.
+- N must equal the number of images in the stack
+- labels must not reveal the answer, finding, or anatomy
+- labels must not replace captions
+- captions must remain off the front
+
+G5B3B) Complete image reference name integrity
+- every image-containing NORMAL note must include the complete image reference name on the back
+- use the full source-provided identifier when available: figure number, image title, RadPrimer / STATdx / Radiopaedia image label, source filename, downloaded media filename, or exact local media filename
+- if the validation package, source package, extracted image block, case ledger, or media table lists image filenames, those exact filenames are authoritative and must be used
+- do not truncate, paraphrase, normalize, or replace the reference name with generic wording
+- multi-image notes must include one complete image reference name per image, in the same order as Image
+- image reference names must remain separate from verbatim captions
+- if no source-provided reference exists, the exact local media filename satisfies this requirement
+- allowed locations include a separate imgRef block inside Image_Annotated stackItem, an Imaging_Differentiation line beginning with "Image references:", or another visible back-side reference line that does not modify caption text
+- if any image-containing note lacks complete image reference names, stop and repair before TSV export
+
+G5B4) Normal report/localization consequence integrity
+- generate report/localization consequence cards only when the source-supported fact changes practical localization, overcall prevention, reporting, procedural relevance, clinical interpretation, or downstream consequence
+- such cards must be independent NORMAL HIGH-YIELD rows
+- do not create generic "what should you report" cards
+
+G5B5) Hard quality filter
+- every exported NORMAL card must help recognize/localize a structure or relationship, avoid overcall, teach source-supported modality-specific normal appearance, teach a practical review path, or teach a clinically useful localization/reporting consequence
+- if a card does not pass at least one of those tests, omit it rather than exporting filler
+
 G5C) Atomic retrieval integrity
 - each card must have one primary retrieval target
 - routine cards should not combine boundaries/location, contents, imaging localization, modality appearance, pitfall, and clinical relevance into one overloaded answer
@@ -216,7 +251,7 @@ G5F) External mechanism/development provenance integrity
 
 G5G) Normal mimic and disease-mimic integrity
 - if the source names disease mimics or pathology overcalls, encode them when they materially improve normal-vs-abnormal discrimination or pitfall resistance
-- route true separator tasks to NORMAL DIFFERENTIAL DRILL
+- route true separator tasks to the NORMAL UNKNOWN back via Differentials and Imaging_Differentiation; use NORMAL DIFFERENTIAL DRILL only when explicitly requested
 - route overcall-prevention/pseudolesion traps to NORMAL BOARDS TRAP
 - do not inflate into broad pathology differential lists
 - the card must remain anchored to normal anatomy, normal appearance, variant recognition, or pseudolesion recognition
@@ -257,8 +292,9 @@ If any gate fails:
 
 NORMAL DIFFERENTIAL DRILL ENFORCEMENT
 
-For every note where Differentials is populated:
-- Differential_Q must be populated
+For every note where Differential_Q is populated:
+- Differential_Q must be intentionally requested for a standalone drill
+- Differentials must be populated
 - Imaging_Differentiation must be populated
 - Question must be blank
 - Mechanism_Q and Mechanism must be blank

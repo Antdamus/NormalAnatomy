@@ -5,6 +5,7 @@ If nuclear medicine appearance is discussed anywhere in the build:
 - Do NOT invent tracer uptake.
 - Do NOT invent photopenia or warm uptake.
 - Do NOT invent PET avidity.
+- Do NOT invent retention, washout, excretion, timing, or phase behavior.
 - Do NOT invent source-specific scintigraphic patterns.
 - Do NOT infer one tracer's behavior from another tracer's behavior.
 
@@ -21,7 +22,7 @@ If no such card exists:
 - Output: "TSV export blocked - nuclear medicine appearance described in source but not encoded."
 - Then generate the missing nuclear medicine appearance High-Yield card(s) in SECTION G and re-preview.
 
-If an autonomous batch mode override is present:
+If an autonomous generation override is present:
 - "approved preview set" means the most recent automatically validated section or full-deck snapshot.
 - "re-preview" means internally re-validate after repair, not pause for user approval.
 
@@ -33,6 +34,8 @@ Nuclear medicine appearance may include, when explicitly source-supported:
 - photopenic versus warm behavior
 - PET avidity
 - source-stated scintigraphic distribution
+- source-stated retention, washout, excretion, timing, or phase behavior
+- physiologic biodistribution that creates a pitfall
 - tracer-specific discriminator features
 - nuclear medicine-specific exam pivots
 

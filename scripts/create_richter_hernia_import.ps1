@@ -1,0 +1,149 @@
+$ErrorActionPreference = 'Stop'
+
+$outDir = Join-Path (Get-Location) 'anki_richter_hernia'
+$tsvPath = Join-Path $outDir 'anki_richter_hernia.tsv'
+
+$deck = 'Corebook::GI::Peritoneum, Mesentery, and Abdominal Wall::Defect in Abdominal Wall (Hernia)'
+$headers = @(
+  '#separator:tab',
+  '#html:true',
+  '#notetype:core_rad_notetype_v2',
+  "#deck:$deck"
+)
+
+function Clean-Field {
+  param([string]$Value)
+  if ($null -eq $Value) { return '' }
+  return ($Value -replace "`r?`n", '<br>' -replace "`t", ' ')
+}
+
+function Make-Row {
+  param([string[]]$Fields)
+  if ($Fields.Count -ne 22) {
+    throw "Expected 22 fields, got $($Fields.Count)"
+  }
+  return (($Fields | ForEach-Object { Clean-Field $_ }) -join "`t")
+}
+
+$refStatPearls = 'Reference: Patel PJ, Pfeifer C. Richter Hernia. StatPearls/NCBI Bookshelf, updated 2026 Apr 20. Figure: Richter Hernia on Computed Tomography, contributed by S Bhimji, MD. https://www.ncbi.nlm.nih.gov/books/NBK537227/'
+$refSmith = 'Reference: Smith CR, Chatzikonstantinou M. Early surgical intervention is critical for strangulated Richter hernia. Journal of Surgical Case Reports. 2024; PMCID: PMC11469642. https://pmc.ncbi.nlm.nih.gov/articles/PMC11469642/'
+$refYumen = 'Reference: Yumen AV, Wright AK, Moses HP, Douthit NT. Richter Hernia Unveiled: The Danger of High Pain Tolerance and Lack of Systemic Symptoms. Cureus. 2024; PMCID: PMC11416916. https://pmc.ncbi.nlm.nih.gov/articles/PMC11416916/'
+$refSchmuter = 'Reference: Schmuter G, Narula N, Mukherjee I. Rare Presentation of Incarcerated Incisional Richter Hernia of the Cecum. Cureus. 2021; PMCID: PMC8423117. https://pmc.ncbi.nlm.nih.gov/articles/PMC8423117/'
+
+$capStatPearls = 'Source caption/readout: Richter Hernia on Computed Tomography. The arrow shows a Richter hernia following laparoscopy. Contributed by S Bhimji, MD.'
+$capSmithOp = 'Source caption/readout: Intraoperative photographs show strangulated small bowel and the delivered affected segment, demonstrating that only the anti-mesenteric portion of small bowel was entrapped, consistent with a Richter hernia.'
+$capYumenOp = 'Source caption/readout: Operative close-up shows a Richter hernia with an ischemic outer segment and viable inner segment.'
+$capSchmuterCt = 'Source caption/readout: Preoperative CT shows a 1 cm by 1 cm outpouching of hypervascularity through the anterior abdominal wall.'
+
+$overview = '<div style="border:1px solid #bbb; padding:8px; border-radius:6px;"><b>Richter Hernia</b><br>A Richter hernia is partial-circumference entrapment of bowel wall, usually the antimesenteric border, through a small rigid defect. It is dangerous because the lumen may stay partly open while the trapped wall becomes ischemic.</div>'
+
+$rows = @()
+
+# Card 1: unknown/image diagnosis card only.
+$rows += Make-Row @(
+  'Adult after recent laparoscopy with focal abdominal-wall pain. CT abdomen/pelvis panel ABDWALL01A',
+  '<img src="abd_ct_wall_01_source.jpg"><br>',
+  "<div class=""stackItem""><img src=""abd_ct_wall_01_source.jpg""><div class=""stackCap"">$capStatPearls<br>How to read it: the source arrow is already present in the original image. The key finding is a small focal abdominal-wall defect involving bowel wall rather than a broad full-loop external hernia. No new arrows or crops were added.<br>$refStatPearls</div></div>",
+  'What is the diagnosis and key danger in this small focal abdominal-wall bowel abnormality?',
+  "Richter hernia.<br><br>Key danger: it can strangulate without complete bowel obstruction because only part of the bowel circumference, classically the antimesenteric wall, is trapped. The remaining lumen can stay patent enough for gas or stool to pass.<br><br>Look for: focal bowel-wall involvement at a small rigid defect, mural thickening or hypoenhancement, adjacent fluid/fat stranding, pneumatosis, free air, or worsening focal pain/nonreducibility.<br><br>$refStatPearls",
+  'Richter hernia: partial-circumference bowel-wall hernia with strangulation risk',
+  '',
+  '',
+  '',
+  "$capStatPearls<br>$refStatPearls",
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  'https://www.ncbi.nlm.nih.gov/books/NBK537227/',
+  'Adult after laparoscopy with focal abdominal-wall pain; CT shows a small abdominal-wall defect marked by the source arrow.',
+  'Classic CT teaching image for Richter hernia following laparoscopy.',
+  '',
+  $overview,
+  'GI Hernia AbdominalWall SmallBowel RichterHernia CT'
+)
+
+# Card 2: mechanism card only.
+$rows += Make-Row @(
+  'Man in his 70s with painful irreducible left groin swelling, vomiting, and continued bowel movements. Operative correlation panel ABDGROIN02B',
+  '<img src="abd_op_bowel_03_source.jpg"><br>',
+  "<div class=""stackItem""><img src=""abd_op_bowel_03_source.jpg""><div class=""stackCap"">$capSmithOp<br>How to read it: this shows the defining anatomy: a partial wall segment is compromised while the whole bowel lumen is not necessarily occluded. No extra arrows were added.<br>$refSmith</div></div>",
+  '',
+  '',
+  'Richter hernia mechanism: partial antimesenteric wall entrapment',
+  '',
+  '',
+  '',
+  "$capSmithOp<br>$refSmith",
+  'Why can this type of hernia strangulate without causing complete bowel obstruction?',
+  "Because the hernia traps only part of the bowel circumference, usually the antimesenteric border. The hernia neck can obstruct venous drainage and then arterial inflow to that wall segment, causing edema, ischemia, gangrene, and perforation. Since the whole circumference is not kinked or occluded, the lumen can remain partly open and classic obstruction may be absent, delayed, or incomplete.<br><br>Board pivot: continued bowel movements, mild obstruction, or normal early labs do not exclude bowel-wall strangulation.<br><br>$refSmith",
+  '',
+  '',
+  '',
+  '',
+  'https://pmc.ncbi.nlm.nih.gov/articles/PMC11469642/',
+  'Operative correlation in a painful irreducible left groin hernia with continued bowel movements.',
+  'Only the anti-mesenteric portion of small bowel was entrapped, explaining the no-obstruction pitfall.',
+  '',
+  $overview,
+  'GI Hernia RichterHernia Strangulation Mechanism BowelObstructionPitfall'
+)
+
+# Card 3: differential/reporting card only.
+$rows += Make-Row @(
+  '39-year-old with focal right lower quadrant pain and nodularity near a prior incision. CT abdomen panel ABDWALL05C',
+  '<img src="abd_ct_wall_05_source.jpg"><br>',
+  "<div class=""stackItem""><img src=""abd_ct_wall_05_source.jpg""><div class=""stackCap"">$capSchmuterCt<br>How to read it: a tiny enhancing bowel-wall outpouching projects through the anterior abdominal wall in the source case. No extra arrows were added.<br>$refSchmuter</div></div>",
+  '',
+  '',
+  'Occult/incisional Richter-type bowel-wall outpouching',
+  'What diagnoses and mimics should be considered for a tiny painful postoperative abdominal-wall outpouching on CT?',
+  "Consider Richter/incisional hernia when a small focal bowel-wall knuckle passes through a rigid fascial defect, even if it is nonobstructing.<br><br>Differential/mimics: hematoma, small abscess, scar nodularity, fat necrosis, lymph node, abdominal-wall tumor, uncomplicated fat-containing incisional hernia, and appendiceal/cecal inflammatory process.<br><br>How to separate them: trace continuity with bowel, identify the fascial defect/neck, assess reducibility clinically, and search for wall enhancement changes, inflammatory stranding, fluid, pneumatosis, free air, or abscess/fistula.<br><br>$refSchmuter",
+  '',
+  "$capSchmuterCt<br>$refSchmuter",
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  'https://pmc.ncbi.nlm.nih.gov/articles/PMC8423117/',
+  '39-year-old with focal RLQ nodularity near prior incision; CT showed a 1 cm by 1 cm outpouching arising from cecum and protruding through the anterior abdominal wall.',
+  'Rare cecal/incisional example emphasizing that Richter-type entrapment can be small, subtle, and nonobstructing.',
+  'Hematoma; abscess; scar nodularity; fat necrosis; lymph node; uncomplicated incisional hernia.',
+  $overview,
+  'GI Hernia AbdominalWall IncisionalHernia RichterHernia Cecum CT Differential'
+)
+
+# Card 4: complications/management card only.
+$rows += Make-Row @(
+  'Older adult with focal groin pain, minimal systemic symptoms, and operative bowel inspection panel ABDOP03D',
+  '<img src="abd_op_bowel_04_source.jpg"><br>',
+  "<div class=""stackItem""><img src=""abd_op_bowel_04_source.jpg""><div class=""stackCap"">$capYumenOp<br>How to read it: the dark outer segment is ischemic while the adjacent bowel remains viable, showing how the clinical picture can understate severity. No extra arrows were added.<br>$refYumen</div></div>",
+  '',
+  '',
+  'Richter hernia complication: focal bowel-wall ischemia',
+  '',
+  '',
+  '',
+  "$capYumenOp<br>$refYumen",
+  '',
+  '',
+  '',
+  '',
+  'What complications should be searched for when a small-neck abdominal-wall or groin defect contains bowel wall but obstruction is absent or mild?',
+  "Complications: venous congestion and edema, bowel-wall ischemia, necrosis/gangrene, perforation, peritonitis/sepsis, abdominal-wall or groin abscess mimic, enterocutaneous/fecal fistula, need for bowel resection, and possible ostomy depending on contamination and bowel viability.<br><br>Management implication: painful or nonreducible suspected Richter hernia is urgent. CT helps with anatomy and complication search, but operative inspection may be the definitive viability assessment.<br><br>$refYumen",
+  'https://pmc.ncbi.nlm.nih.gov/articles/PMC11416916/',
+  'Older adult with femoral/groin hernia concern and minimal systemic signs; operative image shows ischemic outer bowel segment with viable inner segment.',
+  'Operative correlation showing partial-circumference ischemia.',
+  'Full-loop strangulated hernia; closed-loop obstruction; ischemic enteritis from another cause; abdominal wall abscess or fistula.',
+  $overview,
+  'GI Hernia RichterHernia Strangulation Ischemia Necrosis Gangrene Perforation Fistula Surgery'
+)
+
+[System.IO.Directory]::CreateDirectory($outDir) | Out-Null
+[System.IO.File]::WriteAllLines($tsvPath, $headers + $rows, [System.Text.UTF8Encoding]::new($false))
+Write-Host $tsvPath
+Write-Host "rows=$($rows.Count)"

@@ -1,9 +1,21 @@
 Image field (Front):
-• Plain image tags only
-• One per line
+• Plain image tags plus non-diagnostic image-position labels only
+• One image per display block
 • Include file extension exactly (.jpg, .jpeg, .png)
 • No captions
-• No wrapper divs
+• No diagnostic labels
+• No source figure legends on the front
+
+Multi-image UNKNOWN cards MUST visibly label image position on the front:
+<b>Image 1/N</b><br><img src="FILE1.ext"><br>
+<b>Image 2/N</b><br><img src="FILE2.ext"><br>
+
+Rules:
+• Use this numbering for every multi-image UNKNOWN stack.
+• The number labels must be non-diagnostic.
+• The labels exist only so the learner knows to scroll through all images.
+• Do not replace source captions with these labels.
+• Single-image UNKNOWN cards may omit "Image 1/1" unless consistent local formatting is desired.
 
 Image_Annotated field (Back) — CONDITIONAL
 
@@ -11,10 +23,16 @@ Image_Annotated field (Back) — CONDITIONAL
 • If Image_Annotated is populated, it MUST use stackItem/stackCap blocks.
 • Captions must be verbatim.
 • Order must match the Image field exactly.
+• Complete image reference names may be included in a separate non-caption block inside the same stackItem.
+• Do NOT add reference names inside stackCap if stackCap contains the verbatim caption.
+
+Allowed expanded stackItem format:
+<div class="stackItem"><img src="FILE_annot.ext"><div class="imgRef">Image reference: FULL_SOURCE_IMAGE_REFERENCE_NAME</div><div class="stackCap">VERBATIM CAPTION</div></div>
 
 If Image_Annotated is empty/unavailable:
 • UNKNOWN cards may rely on template fallback to Image.
 • Case-bundled drills/traps must reuse Image_Annotated ONLY when it exists in the associated UNKNOWN.
+• Complete image reference names must still appear elsewhere on the back, usually in Imaging_Differentiation under "Image references:".
 
 For Differential_Q:
 • Must specify image modality (CT, BE, MRI, US)
@@ -64,6 +82,34 @@ If the provided caption text cannot be preserved exactly as given:
 
 -----------------------------------------------------
 
+COMPLETE IMAGE REFERENCE NAME ENFORCEMENT
+
+Every image-containing card must include the complete image reference name on the back.
+
+Use the best available exact reference:
+• Source figure number
+• Source image title
+• RadPrimer / STATdx / Radiopaedia image label
+• Source filename
+• Downloaded media filename
+• Exact local media filename if no better source identifier exists
+
+Rules:
+• If the validation package, source package, extracted image block, case ledger, or media table lists image filenames, those exact filenames are authoritative and must be used.
+• Do not truncate the reference name.
+• Do not paraphrase or normalize the reference name.
+• Do not replace the reference name with a generic label such as "case image" or "figure."
+• For multi-image stacks, include one reference name per image in the same order as Image.
+• Keep image reference names separate from verbatim captions.
+• If reference names are not included inside Image_Annotated, include them in Imaging_Differentiation using:
+  Image references: REF1<br>REF2<br>REF3
+
+If the complete image reference name cannot be determined:
+• Use the exact local media filename.
+• Do not leave the image reference absent.
+
+-----------------------------------------------------
+
 SELECTED IMAGE / CASE COVERAGE AUDIT
 
 Before TSV export, account for every selected image block or explicit CASE block supplied in the input.
@@ -76,6 +122,13 @@ For each selected image or grouped case, mark it as one of:
 Do not silently skip a selected image or case. If a selected image is a teaching graphic, flowchart, site map, gross/pathology photo, normal comparator, modality comparator, or pitfall image, it may deserve a high-yield or mechanism-style card even when it is not a classic "most likely diagnosis" case.
 
 If any selected image/case is unaccounted for, stop and repair the deck before TSV export.
+
+For every multi-image UNKNOWN card:
+• confirm all included front images have visible Image X/N position labels
+• confirm N equals the number of images in the displayed stack
+• confirm the labels do not reveal the diagnosis or finding
+• confirm one complete image reference name exists on the back for each front image
+• confirm image order matches source order and Image_Annotated order when Image_Annotated is populated
 
 During TSV export:
 If any caption differs by even ONE character from the originally provided text:

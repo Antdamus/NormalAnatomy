@@ -1,0 +1,20 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Core Radiology, Second Edition — Gastrointestinal Imaging, including GI pp. 108, 117–119, 152, 162–163, and 172–173; Genitourinary material was also reviewed where relevant.
+CORE_FACTS_USED:
+
+* Chronic pancreatitis classically shows an atrophic pancreas with diffuse calcifications and a dilated/beaded duct; calcifications in the pancreatic duct distribution are described as pathognomonic.
+* Calcified hepatic metastases include mucinous cancers, osteosarcoma, and treated lymphoma.
+* Treated or prior fungal/granulomatous infection may leave punctate hepatic calcifications/granulomas.
+* Hepatic echinococcal cysts may contain daughter cysts or floating membranes and may demonstrate peripheral calcification.
+* Splenic calcification differential includes granulomatous disease, remote infarct, hematoma, calcified splenic artery aneurysm, and cystic splenic lesions.
+* Cortical nephrocalcinosis is dystrophic cortical calcification associated with diffuse cortical injury.
+CORE_DERIVED_CARDS:
+* High-Yield: chronic pancreatitis appearance
+* High-Yield: calcified hepatic metastases
+* High-Yield: splenic calcification differential
+* High-Yield: hepatic hydatid cyst
+* Differential Drill: pancreatic calcification versus splenic artery calcification
+* Master Summary synthesis
+CORE_LIMITATIONS:
+* Core Radiology does not present “Abdominal Calcifications” as one unified entity matching the RadPrimer/STATdx article hierarchy; relevant Core facts were retrieved across organ-specific GI/GU sections.
+* Source-specific appearances not explicitly supported by Core were retained from the RadPrimer + STATdx master source rather than attributed to Core.

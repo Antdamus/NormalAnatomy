@@ -1,0 +1,19 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Core Radiology: A Visual Approach to Diagnostic Imaging, Second Edition, Gastrointestinal Imaging — Liver, principally GI pages 108–121, with biliary/Caroli coverage on GI pages 139–140. The uploaded Core PDF was directly searched and retrieved in this run.
+CORE_FACTS_USED:
+
+* Simple hepatic cyst: round/oval, thin or nearly imperceptible wall; US anechoic with posterior enhancement and no internal Doppler flow; CT 0–20 HU without enhancement; MRI low T1/high T2 without enhancement.
+* Biliary hamartomas are small benign cystic lesions that do not communicate with the biliary tree; they are smaller/more irregular than simple cysts and may be echogenic when small. ADPLD produces innumerable nonenhancing simple cysts, and Core states that 40% of ADPKD patients have associated liver disease.
+* Pyogenic abscess may mimic metastasis with ring enhancement; Core describes central T2 hyperintensity/restricted diffusion and the ultrasound evolution from altered echogenicity to a hypoechoic lesion with internal echoes. Hepatic fungal infection produces punctate microabscesses, and candidiasis commonly seeds liver and spleen in immunocompromised patients.
+* Hydatid disease: floating membrane/daughter cysts, possible peripheral calcification, peripheral daughter cysts on ultrasound, water-lily sign, and hydatid sand. Amebic abscess is imaging-indistinguishable from pyogenic abscess; Core states pain occurs in 99% and the right hepatic dome is the most common location.
+* Core explicitly lists ovarian cystadenocarcinoma and gastrointestinal sarcoma as causes of cystic hepatic metastases.
+* Caroli disease is type V choledochal cyst disease with saccular intrahepatic bile-duct dilatation; the central-dot sign reflects portal/hepatic arterial branches within the dilated ducts. Choledochal cysts communicate with the biliary tree and carry cholangiocarcinoma risk stated as high as 25%.
+* In liver transplantation, hepatic artery thrombosis is the most common vascular complication; biliary leaks are recognized transplant complications. Core also notes that suspected traumatic biliary injury may require HIDA to demonstrate active bile leak, with hepatobiliary-agent MRI as another option.
+CORE_DERIVED_CARDS:
+* PRIMARY UNKNOWN reasoning/discriminators for simple cyst, biliary hamartomas, ADPLD, pyogenic abscess, candidiasis, hydatid disease, amebic abscess, cystic metastases, Caroli disease, and transplant biloma cases.
+* Mechanism cards for biliary hamartomas, Caroli disease, transplant biliary injury, and focal-fat mimic discrimination.
+* Epidemiology cards for ADPLD/ADPKD association, amebic abscess presentation, and hepatic artery thrombosis after transplant.
+* High-Yield cards covering simple-cyst CT/MRI/US appearance, abscess MRI/US appearance, hydatid imaging, Caroli disease, cystic metastases, choledochal-cyst malignancy risk, and HIDA/Eovist assessment of bile leak.
+CORE_LIMITATIONS:
+* Core was not used to fabricate coverage for source-specific examples not established in the retrieved Core sections, including the selected ciliated hepatic foregut cyst, undifferentiated hepatic sarcoma, treatment-response GIST pair, and detailed STATdx-specific biliary IPMN case; those portions remain RadPrimer/STATdx-derived.
+* No external diagnostic-performance literature was added.

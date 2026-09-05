@@ -1,0 +1,141 @@
+=== MASTER SOURCE PACKAGE ===
+TITLE: Testicular Torsion
+SOURCE STATUS: RadPrimer + STATdx fused master source; no Core Radiology source was available in this bundle.
+CANONICAL HIERARCHY: All Categories > Basic > Ultrasound > Scrotum Basic > Testicular Torsion/Infarction
+CANONICAL DECK PATH: Corebook::Ultrasound::Scrotum Basic::Testicular Torsion/Infarction::Testicular Torsion
+
+SOURCE USE RULES
+- [RadPrimer] is the canonical hierarchy/backbone and baseline organization.
+- [STATdx] supplements with stronger detail for whirlpool sign, viability prediction, CEUS, intermittent torsion, pediatric atypical presentation, management nuance, and image case clusters.
+- [Both] supports shared core facts: torsion is twisting of testis/spermatic cord causing vascular occlusion; US with color/power Doppler is first-line; absent or decreased flow and the whirlpool sign are key; viability depends on duration and degree of torsion.
+- Human-facing image prose should use clean labels such as RadPrimer image 5 and STATdx image 4. Trace codes live in the registry/manifest/filenames.
+
+KEY FACTS
+- [Both] Testicular torsion is spontaneous or traumatic twisting of the testis and spermatic cord within the scrotum, causing venous obstruction first and then arterial compromise with ischemia or infarction.
+- [Both] The best diagnostic clue is absent, decreased, or asymmetric testicular blood flow on color Doppler US; comparison with the contralateral testis is mandatory.
+- [Both] The whirlpool sign is spiral twisting of the spermatic cord cranial to the testis and epididymis, producing a torsion knot or concentric-layer pattern.
+- [STATdx] Heterogeneous diffuse or patchy hypoechoic parenchyma predicts nonviability. Testicular fragmentation reflects hemorrhage between lobules; testicular patching reflects islands of necrosis.
+- [Both] Normal grayscale and even normal Doppler flow do not exclude early, partial, or intermittent torsion when clinical suspicion remains high.
+- [Both] Testicular salvage depends on time and degree of twist. Most testes are viable when treated within 6 hours; salvage falls sharply after 12 hours and is essentially absent after more than 24 hours.
+- [STATdx] CEUS or MR can help in equivocal cases, but imaging must not delay prompt surgical management.
+
+TERMINOLOGY
+- [Both] Spermatic cord torsion/testicular torsion means twisting of the testis and spermatic cord with vascular occlusion and possible infarction.
+- [RadPrimer] Torsion may be complete or incomplete and is unilateral in about 95% of patients.
+
+IMAGING
+General approach
+- [Both] Use high-frequency linear transducer ultrasound with grayscale plus color/power Doppler; compare both testes for echogenicity, size, lie, color flow, and waveforms.
+- [Both] Optimize Doppler for slow flow with low pulse repetition frequency, low wall filter, and high Doppler gain.
+- [STATdx] Pulsed/spectral Doppler has a limited but useful adjunctive role in partial torsion; side-to-side waveform shape and velocity comparison may expose equivocal asymmetry.
+
+Grayscale ultrasound
+- [Both] Early torsion may have normal grayscale echogenicity; this appearance favors viability if absent flow is present and symptoms are short.
+- [Both] Enlarged heterogeneous testis and epididymis, scrotal wall edema, secondary hydrocele, hemorrhage, necrosis, and fragmentation suggest longer duration or missed torsion.
+- [RadPrimer] At around 24 hours, congestion, hemorrhage, and infarction become evident.
+- [STATdx] Chronic torsion may show an atrophic hypoechoic testis with relatively enlarged echogenic epididymis.
+
+Color and power Doppler
+- [Both] Absent or decreased intratesticular flow is central for diagnosis. In acute torsion, Doppler sensitivity is about 80-90%, and early/partial torsion may be falsely normal.
+- [RadPrimer] In partial torsion of 360 degrees or less, spectral Doppler may show diminished diastolic arterial flow.
+- [STATdx] Partial/intermittent torsion may show normal, decreased, or absent flow during pain and hyperemia after detorsion, potentially mimicking orchitis.
+- [Both] Subacute or missed torsion may show no intratesticular flow with increased flow in paratesticular tissues, epididymis-cord complex, dartos fascia, tunica, or scrotal wall.
+
+Whirlpool sign and spermatic cord
+- [Both] Directly seeing a twisted spermatic cord is highly specific for torsion and is especially helpful when intratesticular flow is equivocal or preserved.
+- [STATdx] In transverse plane, the torsion knot can look like a pseudomass or concentric knot; in longitudinal plane, the cord appears angulated or knot-like rather than smooth and linear.
+- [STATdx] High-resistance flow may be seen in the spermatic cord proximal to the twist, and the ultrasound appearance may help guide manual detorsion direction.
+
+CEUS, MR, and nuclear medicine
+- [STATdx] CEUS: normal testes enhance quickly and avidly; complete torsion lacks enhancement; partial torsion enhances slowly or less than the contralateral side. CEUS can also identify segmental or global infarction from nontorsion causes.
+- [Both] MR can show decreased perfusion and a whirlpool pattern but should be rare problem-solving only and should not delay surgery.
+- [RadPrimer] Tc-99m pertechnetate can show reduced/absent flow, a rounded cold area, and dartos halo, but [STATdx] notes nuclear medicine has fallen out of favor and is not recommended by ACR appropriateness guidance when US is available.
+
+DIFFERENTIAL DIAGNOSIS
+- [Both] Torsion of appendix testis/epididymis: common in prepubertal boys; blue-dot sign; hyperechoic appendage with central hypoechoic area, reactive hydrocele, skin thickening, and peripheral hyperemia.
+- [STATdx] Testicular infarction: can lack flow like torsion but lacks whirlpool sign; may be global or segmental and is often treated conservatively rather than surgically.
+- [Both] Epididymoorchitis/abscess: enlarged hypoechoic epididymis with increased flow, thick-walled hypoechoic focus with internal echoes, and possible segmental/global venous infarction that can mimic torsion.
+- [Both] Trauma: hematocele, rupture/irregular contour, heterogeneous parenchyma, and avascular fracture plane; trauma can rarely precipitate torsion.
+- [Both] Tumor: focal hypoechoic heterogeneous mass, usually less painful, with abnormal vascularity rather than complete avascularity.
+
+PATHOLOGY
+- [Both] Most torsion is spontaneous; traumatic torsion is rare.
+- [Both] Bell clapper deformity reflects deficient posterior fixation by the tunica vaginalis/gubernaculum, allowing the testis to rotate within the scrotum.
+- [RadPrimer] Intravaginal torsion is the common pubertal type, with the knot within the tunica vaginalis; extravaginal torsion occurs outside the tunica vaginalis and is neonatal/perinatal.
+- [STATdx] Bell clapper deformity is often bilateral, and contralateral orchiopexy is performed because the opposite testis is also at risk.
+- [Both] Pathology ranges from venous congestion and edema to hemorrhage, ischemic necrosis, fibrosis, and a purple/black infarcted testis.
+
+CLINICAL ISSUES AND MANAGEMENT
+- [Both] Classic presentation is an adolescent or infant boy with acute scrotal/inguinal pain, swollen erythematous hemiscrotum, pain not relieved by elevation, absent cremasteric reflex, and abnormal testis lie.
+- [STATdx] Younger prepubertal children may present atypically with groin or lower abdominal pain only, increasing misdiagnosis and risk of testis loss.
+- [Both] Torsion is a surgical emergency. Treatment is surgical exploration, detorsion, and orchiopexy if viable; nonviable testis is removed.
+- [STATdx] Contralateral orchiopexy is always performed because a similar anatomic predisposition is likely.
+- [Both] Salvage rates: approximately 80-100% when treated before 6 hours, 76% at 6-12 hours, 20% at 12-24 hours, and 0% after 24 hours.
+
+DIAGNOSTIC CHECKLIST
+- [Both] Do not dismiss torsion because grayscale US is normal, especially in early, partial, or intermittent torsion.
+- [Both] Search directly for the spermatic cord whirlpool sign above the testis when Doppler findings are equivocal.
+- [Both] Always compare with the contralateral testis and optimize Doppler settings for low flow.
+- [STATdx] Hyperemia after detorsion can mimic orchitis; correlate with intermittent pain history and symptom change.
+
+PRIMARY IMAGE TEACHING SET
+RadPrimer retained images
+- RadPrimer image 2: Power Doppler ultrasound of the right testicle with prior history of torsion shows an avascular area at the superior portion <img src="arrow_CC.png"> with hypoechoic areas suggestive of partial infarction of the testis.
+- RadPrimer image 3: Transverse color Doppler ultrasound of both testes in this patient with acute left testicular pain shows heterogeneous, avascular left testis, consistent with hemorrhagic infarction <img src="arrow_CS.png">.
+- RadPrimer image 5: Longitudinal color Doppler ultrasound of the left testis in a 20-year-old man with acute testicular pain shows absence of flow with no grayscale changes, suggestive of acute torsion (< 4 hours).
+- RadPrimer image 7: Sagittal color Doppler ultrasound of the left testis shows an enlarged, heterogeneous, avascular testis <img src="arrow_CS.png"> with multiple hyperechoic areas <img src="arrow_WC.png">. Pathology confirmed it to be a hemorrhagic infarction of the testis with torsion > 360°.
+- RadPrimer image 8: Sagittal grayscale ultrasound of the right testis shows an enlarged, heterogeneous right testis <img src="arrow_CS.png"> with a striated appearance, suggestive of partial infarcts. The patient had a history of partial testicular torsion.
+- RadPrimer image 10: Avascular, heterogeneous testis with foci of air <img src="arrow_WO.png"> in and outside the testis is shown. Peripheral hyperemia <img src="arrow_CO.png"> and skin thickening <img src="arrow_CC.png"> are also seen. This mimics torsion but is actually venous infarct from epididymoorchitis.
+
+STATdx retained images
+- STATdx image 1: Transverse Doppler US in 15-year-old boy with 5 hours of pain shows absent flow in the left testicle <img src="arrow_WS.png"> and normal flow in the right. A viable testicle was found in the OR and orchiopexy was done.
+- STATdx image 2: Longitudinal color Doppler US in a 12-year-old boy with 24 hours of pain shows a hypoechoic, heterogeneous testis with absent parenchymal flow and preserved peripheral flow. The altered grayscale appearance of the testis correlates strongly with testis nonviability.
+- STATdx image 3: Transverse Doppler US in an 11-year-old boy with left testicular pain shows an enlarged and slightly hyperechoic left testis with absent flow <img src="arrow_WS.png">.
+- STATdx image 4: Transverse US in the same patient superior to the testis, over the spermatic cord, demonstrates the whirlpool sign <img src="arrow_WS.png"> due to twisting of the cord. This feature is specific for torsion and is particularly helpful if there is an equivocal color Doppler US. Keep with its same-patient companion image(s).
+- STATdx image 5: Graphic shows spiral twist <img src="arrow_WC.png"> of the spermatic cord in torsion, leading to venous congestion and compromised blood supply to the testis <img src="arrow_WS.png">. Note the knot-like configuration of the twist, known as the whirlpool sign.
+- STATdx image 6: Longitudinal US of the spermatic cord and epididymis shows the whirlpool sign in a patient with torsion as a knot-like area of twisting <img src="arrow_WS.png">.
+- STATdx image 7: Transverse color Doppler US in 6-year-old boy with lower abdominal pain shows an enlarged, hyperechoic left testis <img src="arrow_WS.png"> (compared to right <img src="arrow_WO.png">) with ↑ peripheral flow and irregular central flow <img src="arrow_WC.png"> (likely motion artifact). Imaging diagnosis was orchitis. Keep with its same-patient companion image(s).
+- STATdx image 8: Longitudinal Doppler US in the same patient 3 days later, after worsening of symptoms, shows a nonviable testis with necrosis <img src="arrow_WS.png">. Peripheral flow <img src="arrow_WC.png"> may be present in the tunica and scrotal wall and should not be mistaken for viability. Keep with its same-patient companion image(s).
+- STATdx image 9: Transverse Doppler US in a 14-year-old boy with acute, right-sided pain shows decreased flow in the right testis <img src="arrow_WS.png"> compared to the left. Partial or intermittent torsion was suspected. Keep with its same-patient companion image(s).
+- STATdx image 10: Transverse Doppler US in the same patient after manual detorsion shows improved right-sided flow, which is now symmetric. Patient went on to orchiopexy and was found to have bell clapper deformities. It is important to compare color Doppler images of both testes side-by-side in order to detect subtle decreases, such as in this case. Keep with its same-patient companion image(s).
+- STATdx image 11: Color Doppler US in a young male with acute scrotal pain shows no flow within a relatively enlarged left testis <img src="arrow_WS.png">. Doppler parameters should be optimized to detect slow flow, and comparison to the contralateral (asymptomatic) testis is critical. Keep with its same-patient companion image(s).
+- STATdx image 12: US above the left testis in the same patient shows the whirlpool sign <img src="arrow_WO.png"> due to twisting of the spermatic cord. Direct visualization of the twisted cord is very specific for torsion and can help in cases of partial or intermittent torsion when testis flow is seen. Keep with its same-patient companion image(s).
+- STATdx image 13: Longitudinal Doppler US in a 15-year-old boy with 48 hours of pain shows absent flow and very heterogeneous parenchyma with hypoechoic foci of "testicular patching." Keep with its same-patient companion image(s).
+- STATdx image 14: Longitudinal power Doppler US in the same patient, slightly more superiorly, shows the whirlpool sign. Notice the angulated and nonlinear appearance of the spermatic cord <img src="arrow_WO.png"> with blood flow proximal to the twist <img src="arrow_WS.png"> and no flow distally <img src="arrow_WC.png"> or within the testicle <img src="arrow_CS.png">. Keep with its same-patient companion image(s).
+- STATdx image 15: Longitudinal color Doppler US in a 12-year-old boy with 48 hours of pain shows a hypoechoic, heterogeneous testis with absent parenchymal flow and increased peripheral flow. The altered grayscale appearance of the testis correlates strongly with nonviability.
+- STATdx image 16: Sagittal color Doppler US of both testes in a young male with right testicular pain shows an asymmetric blood flow with reduced flow to the right testis <img src="arrow_CS.png">, as seen on color flow and spectral waveform <img src="arrow_WC.png">. This was surgically confirmed to be partial (180°) right testicular torsion.
+- STATdx image 17: Color Doppler US in a patient with right scrotal pain lasting over 24 hours shows an enlarged, heterogeneous, and avascular right testis <img src="arrow_CS.png">. As expected, the testis was not viable, and an orchiectomy was performed.
+- STATdx image 18: Transverse CEUS of the testes unequivocally demonstrates the absence of enhancement throughout the testicular parenchyma of a global right testicular infarct <img src="arrow_WS.png"> in this case of missed torsion. Note normal enhancement in the unaffected left testicle <img src="arrow_CC.png">.
+- STATdx image 19: Sagittal color Doppler US superior to the left testis in a young male with acute painful scrotum shows a whirlpool sign <img src="arrow_CS.png"> secondary to a twisted spermatic cord. The testis was manually detorsed and definitive orchiopexy was performed thereafter.
+- STATdx image 20: Transverse color Doppler US in a young male with acute painful scrotum for 48 hours shows a heterogeneous, avascular testis <img src="arrow_CS.png"> with multiple hypoechoic areas <img src="arrow_WC.png"> otherwise known as "testicular patching." The time course and US features indicate frank necrosis and a nonviable testis.
+- STATdx image 21: Sagittal power Doppler US of the left testis in a young male with intermittent symptoms of left testicular pain demonstrates a large, focal, avascular heterogeneous area <img src="arrow_CS.png">, consistent with infarct, that is likely secondary to intermittent torsion.
+- STATdx image 22: Longitudinal color Doppler US shows a torsion knot or whirlpool pattern <img src="arrow_WS.png"> of the spermatic cord immediately cranial to the testis <img src="arrow_WC.png">. Spectral waveform shows no diastolic flow <img src="arrow_WO.png">. Keep with its same-patient companion image(s).
+- STATdx image 23: Transverse color Doppler US in the same patient shows an enlarged, hypoechoic spermatic cord <img src="arrow_WS.png"> immediately proximal to the torsion knot. Note the absent flow in cord vessels <img src="arrow_WC.png">. Keep with its same-patient companion image(s).
+- STATdx image 24: Color Doppler US of the left testis in a patient with 2 hours of acute scrotal pain shows completely absent intratesticular flow. Note the normal grayscale appearance of the testis. The time course and grayscale appearance suggest a likely viable testis, confirmed at orchiopexy.
+- STATdx image 25: Oblique US shows well-demarcated, hypoechoic foci <img src="arrow_WC.png"> in a testis with previous vascular insult due to partial torsion. Features suggest testicular infarct.
+
+ARCHIVE OPTIONAL DUPLICATES
+- RadPrimer image 1 is visually the same torsion graphic as STATdx image 5; retain STATdx image 5 as the primary graphic because its caption adds the knot-like whirlpool teaching point.
+- RadPrimer image 4 is the same whirlpool/spectral screenshot as STATdx image 19; retain STATdx image 19 as the primary copy.
+- RadPrimer image 6 is the same right-sided delayed avascular heterogeneous testis screenshot as STATdx image 17; retain STATdx image 17 as the primary copy.
+- RadPrimer image 9 is the same partial right torsion Doppler/spectral screenshot as STATdx image 16; retain STATdx image 16 as the primary copy.
+
+RADPRIMER IMAGE COVERAGE GATE
+- RadPrimer image 1: exactDuplicate; STATdx match(es): STATdx image 5; selected primary: false.
+- RadPrimer image 2: nearDuplicate; STATdx match(es): STATdx image 21; selected primary: true.
+- RadPrimer image 3: conceptualReplacement; STATdx match(es): STATdx image 1, STATdx image 3, STATdx image 11; selected primary: true.
+- RadPrimer image 4: exactDuplicate; STATdx match(es): STATdx image 19; selected primary: false.
+- RadPrimer image 5: nearDuplicate; STATdx match(es): STATdx image 24; selected primary: true.
+- RadPrimer image 6: exactDuplicate; STATdx match(es): STATdx image 17; selected primary: false.
+- RadPrimer image 7: nearDuplicate; STATdx match(es): STATdx image 20; selected primary: true.
+- RadPrimer image 8: nearDuplicate; STATdx match(es): STATdx image 25; selected primary: true.
+- RadPrimer image 9: exactDuplicate; STATdx match(es): STATdx image 16; selected primary: false.
+- RadPrimer image 10: notCovered; STATdx match(es): none; selected primary: true.
+
+CASE CLUSTER RULES
+- STATdx images 3 and 4 are one same-patient absent-flow plus whirlpool-sign cluster.
+- STATdx images 7 and 8 are a same-patient follow-up/time-lapse cluster from misleading orchitis-like imaging to nonviable necrotic testis.
+- STATdx images 9 and 10 are a same-patient pre/post manual detorsion cluster.
+- STATdx images 11 and 12 are a same-patient absent-flow plus whirlpool-sign cluster.
+- STATdx images 13 and 14 are a same-patient nonviable testicular patching plus cord whirlpool/spectral cluster.
+- STATdx images 22 and 23 are a same-patient spermatic cord torsion knot cluster.
