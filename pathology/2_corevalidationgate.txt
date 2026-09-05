@@ -39,6 +39,23 @@ Confirm any available chapter/source file, subsection/topic heading, and page nu
 Step 0B â€” Provide:
 â€¢ 2â€“6 bullet validation digest of board-relevant content from Core
 
+Step 0B2 - Preserve Core evidence for browser capture:
+
+If any Core Radiology content is retrieved or used, the final export response MUST include a machine-readable Core evidence block wrapped exactly as:
+
+CORE_EVIDENCE_FILE_BEGIN
+CORE_EVIDENCE_STATUS: USED | NOT_USED | CORE_GAP | CLARIFICATION_NEEDED
+CORE_SOURCE_BASIS: visible Core source/file/chapter/section/page range when available; if page numbers are not visible, say so.
+CORE_FACTS_USED:
+- concise bullet facts from Core that affected cards, summaries, mechanisms, differentials, or management.
+CORE_DERIVED_CARDS:
+- card questions/IDs or card types that used the Core facts.
+CORE_LIMITATIONS:
+- anything not found, not retrievable, or inferred from non-Core sources.
+CORE_EVIDENCE_FILE_END
+
+A human-readable "CORE VALIDATION REPORT" or "Core Validation Gate passed" statement is not sufficient for TSV/audit capture unless the same Core facts are also present inside the wrapper above.
+
 Step 0C â€” If topic is NOT clearly covered in the retrieved/supplied Core content:
 STOP.
 Ask for clarification.

@@ -663,7 +663,22 @@
 
   const looksLikeCardTsvDownloadReady = (text) => {
     const value = String(text || "");
-    return value.includes(CARD_AUDIT_DOWNLOAD_SENTINEL);
+    if (value.includes(CARD_AUDIT_DOWNLOAD_SENTINEL)) return true;
+    try {
+      if (findCardTsvDownloadButton()) return true;
+    } catch {}
+
+    const hasTsvDownload =
+      /\bDownload\b[\s\S]{0,160}\bTSV\b/i.test(value) ||
+      /\bradprimer[_-]?cards\.tsv\b/i.test(value) ||
+      /\bcompleted\s+Anki\s+TSV\b/i.test(value);
+    const hasAuditSignals =
+      /\bCORE VALIDATION REPORT\b/i.test(value) ||
+      /\bPRE-TSV AUDIT\b/i.test(value) ||
+      /\bExpected TSV lines?\s*:\s*\d+/i.test(value) ||
+      /\bAll rows contain exactly 22 TSV columns\b/i.test(value);
+
+    return hasTsvDownload && hasAuditSignals;
   };
 
   const parseImaiosLiveDrillCardPlan = (text) => {
@@ -704,7 +719,7 @@
 
   const expectedOutputMessage = (expectedOutputKind) => {
     if (expectedOutputKind === "card_tsv_download") {
-      return "Assistant responded, but it has not shown the TSV download sentinel yet. Waiting for the final card export...";
+      return "Assistant responded, but it has not shown the TSV download/sentinel yet. Waiting for the final card export...";
     }
     if (expectedOutputKind === "card_tsv") {
       return "Assistant responded, but it is not inline TSV yet. Waiting for the final card export...";

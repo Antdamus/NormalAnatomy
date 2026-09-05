@@ -76,6 +76,8 @@ Do not skip audits.
 Do not silently export through a failed gate.
 
 If all gates pass, continue autonomously through final TSV export in the same response.
+
+At final TSV export, if Core Radiology was used or explicitly reviewed, include the exact machine-readable CORE_EVIDENCE_FILE_BEGIN / CORE_EVIDENCE_FILE_END block required by the embedded rules. A standalone "CORE VALIDATION REPORT" is not enough for browser TSV/audit capture.
 """
 
 CODEX_WORKFLOW_PROMPT = r"""# Codex Master Workflow Prompt for Sectioned Anki Card Generation

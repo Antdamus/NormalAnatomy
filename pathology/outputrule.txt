@@ -10,6 +10,7 @@ When Pathway A (standard Core validation) is active, the assistant MUST:
 â€¢ Complete the Whole-Source Coverage Audit required by Section 2B before SECTION A
 â€¢ Provide the Core Summary required by Section 2C before SECTION A
 â€¢ Confirm that card generation will use full-source review, not digest summary
+â€¢ At final export, include the exact CORE_EVIDENCE_FILE_BEGIN / CORE_EVIDENCE_FILE_END block so browser capture can write core_evidence.txt
 
 If Core coverage is not clearly confirmed:
 â€¢ STOP
@@ -372,6 +373,7 @@ B) Source Coverage + Non-Fabrication
 â€¢ All high-value non-overlapping article content needed for durable mastery is represented when article-based generation is being used.
 â€¢ Whole-Source Coverage Audit requirements were completed before section generation.
 â€¢ If Pathway A was used, Core Summary requirements were completed before SECTION A.
+â€¢ If Pathway A was used, the final response contains the exact CORE_EVIDENCE_FILE_BEGIN / CORE_EVIDENCE_FILE_END block with Core source basis, Core facts used, derived card coverage, and limitations.
 â€¢ No fabricated:
   imaging findings
   MRI signal/sequence behavior

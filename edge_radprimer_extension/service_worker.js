@@ -53,7 +53,8 @@ const CARD_AUDIT_DOWNLOAD_OUTPUT_INSTRUCTION = [
   "If any Core Radiology content was used, you must also print a compact Core evidence block outside the TSV download. This block is for the audit bundle only and must not be included inside the TSV file.",
   "If no Core content was actually retrieved/used, still print the block with CORE_EVIDENCE_STATUS: NOT_USED.",
   "The TSV is not audit-complete until this Core evidence block is printed. If any TSV field or summary says Core-only, Core + RadPrimer, Core + STATdx, or otherwise relies on Core, CORE_EVIDENCE_STATUS must be USED and the block must list the concrete Core facts used.",
-  "A prose sentence such as 'Core Validation Gate passed' is not a substitute for the Core evidence block and will be treated as unauditable.",
+  "A prose sentence such as 'Core Validation Gate passed' or a standalone 'CORE VALIDATION REPORT' is not a substitute for the Core evidence block.",
+  "If you also write a human-readable Core validation report, repeat its source basis and Core facts inside the wrapper below so the browser capture can save core_evidence.txt.",
   "Print the Core evidence block and the RADPRIMER_CARD_TSV_DOWNLOAD_READY sentinel in the same final assistant message after the downloadable TSV link/button is created.",
   "If Core Radiology was retrieved from uploaded ChatGPT project/source files, list the specific retrieved chapter/section/page range plus the concrete facts that changed or supported the cards.",
   "If the source package says no auditable Core pages were supplied or retrieved, do not claim Core validation unless you independently retrieved Core project/source-file content in this run and can document it in the block.",
@@ -98,7 +99,7 @@ const DEFAULTS = {
   downloadAnnotated: true,
   keepCaptionHtml: true,
   autoGroupNonNarrative: true,
-  captureCardAuditBundle: false,
+  captureCardAuditBundle: true,
   openChatGPT: false,
   autoSubmitChatGPT: false,
   chatgptUrl: "https://chatgpt.com/g/g-p-69e5418624448191a7a74b18f607688b-pediatrics/project",
@@ -3955,6 +3956,9 @@ function extractCoreEvidenceBlock(text) {
   const value = String(text || "");
   const begin = value.indexOf(CORE_EVIDENCE_BEGIN);
   if (begin < 0) {
+    const recoveredCoreReport = extractUnwrappedCoreValidationReport(value);
+    if (recoveredCoreReport) return recoveredCoreReport;
+
     const unstructuredCoreClaim = extractUnstructuredCoreClaim(value);
     if (unstructuredCoreClaim) {
       return {
@@ -4008,6 +4012,69 @@ function extractCoreEvidenceBlock(text) {
   };
 }
 
+function findUnwrappedCoreValidationReportRange(text) {
+  const value = String(text || "");
+  const startMatch = value.match(/\bCORE VALIDATION REPORT\b/i);
+  if (!startMatch) return null;
+
+  const start = startMatch.index || 0;
+  const afterStart = start + startMatch[0].length;
+  const endCandidates = [
+    value.indexOf(CARD_AUDIT_DOWNLOAD_SENTINEL, afterStart),
+    value.search(/\n\s*RADPRIMER_CARD_TSV_DOWNLOAD_READY\b/i),
+    value.search(/\n\s*```(?:tsv|csv)?\s*\S[^\n]*\t/i)
+  ]
+    .filter((index) => index > afterStart)
+    .sort((a, b) => a - b);
+
+  const end = endCandidates.length ? endCandidates[0] : value.length;
+  return { start, end };
+}
+
+function extractUnwrappedCoreValidationReport(text) {
+  const value = String(text || "");
+  const range = findUnwrappedCoreValidationReportRange(value);
+  if (!range) return null;
+
+  const raw = value
+    .slice(range.start, range.end)
+    .replace(/```(?:text|markdown|md)?/gi, "")
+    .replace(/```/g, "")
+    .trim();
+  if (!raw) return null;
+
+  const looksLikeUsableReport =
+    /\bCORE VALIDATION REPORT\b/i.test(raw) &&
+    /\bSource\s*:|\bRelevant (?:chapter|pages?)\b|\bValidation digest\b|\bCORE SUMMARY\b/i.test(raw) &&
+    /\bCore\b/i.test(raw);
+  if (!looksLikeUsableReport) return null;
+
+  const sourceBasis = raw
+    .split(/\r?\n/)
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter((line) => /^(?:Source|Relevant chapter|Relevant pages reviewed)\s*:/i.test(line))
+    .slice(0, 6)
+    .join(" | ");
+
+  return {
+    text: [
+      "CORE_EVIDENCE_STATUS: USED",
+      `CORE_SOURCE_BASIS: ${sourceBasis || "Recovered from unwrapped CORE VALIDATION REPORT in the ChatGPT final response."}`,
+      "CORE_FACTS_USED:",
+      "- See CORE_VALIDATION_REPORT_RAW below. The browser recovered this report because the exact CORE_EVIDENCE_FILE_BEGIN / CORE_EVIDENCE_FILE_END wrapper was missing.",
+      "CORE_DERIVED_CARDS:",
+      "- See CORE_VALIDATION_REPORT_RAW below for the reported card coverage and Core-supported facts.",
+      "CORE_LIMITATIONS:",
+      "- Recovered from an unwrapped Core validation report. Future runs should emit the exact Core evidence wrapper for cleaner capture.",
+      "CORE_VALIDATION_REPORT_RAW:",
+      raw
+    ].join("\n"),
+    status: "USED",
+    provided: true,
+    recoveredFromUnwrappedReport: true
+  };
+}
+
 function extractUnstructuredCoreClaim(text) {
   const value = String(text || "");
   const hasCoreClaim = [
@@ -4037,11 +4104,22 @@ function extractUnstructuredCoreClaim(text) {
 function stripCoreEvidenceBlock(text) {
   const value = String(text || "");
   const begin = value.indexOf(CORE_EVIDENCE_BEGIN);
-  if (begin < 0) return value;
+  if (begin < 0) {
+    const range = findUnwrappedCoreValidationReportRange(value);
+    if (!range) return value;
+    return `${value.slice(0, range.start)}\n${value.slice(range.end)}`.trim();
+  }
   const contentStart = begin + CORE_EVIDENCE_BEGIN.length;
   const end = value.indexOf(CORE_EVIDENCE_END, contentStart);
   const removeEnd = end >= 0 ? end + CORE_EVIDENCE_END.length : value.length;
   return `${value.slice(0, begin)}\n${value.slice(removeEnd)}`.trim();
+}
+
+function stripCardAuditDownloadSentinelBlock(text) {
+  const value = String(text || "");
+  const begin = value.indexOf(CARD_AUDIT_DOWNLOAD_SENTINEL);
+  if (begin < 0) return value;
+  return value.slice(0, begin).trim();
 }
 
 function buildAuditInstructions(metadata) {
@@ -4066,6 +4144,7 @@ function buildAuditInstructions(metadata) {
     "- Check image-based cards against the selected image list and grouped cases in `metadata.json`.",
     "- Keep source attribution on the back of cards when the note type supports it.",
     "- Treat Core-specific claims as auditable only if supported by `core_evidence.txt` or direct Core text inside `source_package.txt`.",
+    "- If `metadata.json` marks `coreEvidence.recoveredFromUnwrappedReport: true` and `core_evidence.txt` says `CORE_EVIDENCE_STATUS: USED`, treat the recovered Core validation report as usable audit evidence while noting that it came from the fallback parser.",
     "- If `core_evidence.txt` says NOT_PROVIDED, EMPTY, or CLARIFICATION_NEEDED, remove or relabel Core-only claims unless independently supported by the visible bundle files.",
     "- Do not remove or penalize the article-level summary field merely because it is repeated across rows; the user's Anki template may hide it by default. Correct the summary only when it is inaccurate, source-contaminated, overcompressed, missing important article structure, or inconsistent with the auditable source basis.",
     "- If the summary or any card says Core + article synthesis but `core_evidence.txt` is missing/not provided, downgrade the source basis to article-only and remove unsupported Core-only details unless direct Core text is visible in `source_package.txt`.",
@@ -4350,6 +4429,7 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
     coreEvidence: {
       status: generated.coreEvidenceStatus || "",
       provided: Boolean(generated.coreEvidenceProvided),
+      recoveredFromUnwrappedReport: Boolean(generated.coreEvidenceRecovered),
       chars: generated.coreEvidenceChars ?? null,
       filename: generated.coreEvidenceFilename || "core_evidence.txt"
     },
@@ -4410,13 +4490,16 @@ async function stageCardAuditBundle({ pending, assistantText }) {
   const title = pending.articleTitle || pending.extractionMeta?.title || "radprimer_cards";
   const folderName = `${sanitizeDownloadPathPart(title)}_${createdAt.replace(/[:.]/g, "-")}`;
   const coreEvidence = extractCoreEvidenceBlock(assistantText);
-  const generatedCards = stripOuterCodeFence(stripCoreEvidenceBlock(assistantText));
+  const generatedCards = stripOuterCodeFence(
+    stripCardAuditDownloadSentinelBlock(stripCoreEvidenceBlock(assistantText))
+  );
   validateGeneratedCardsMatchPending(pending, generatedCards);
   const metadata = createCardAuditMetadata(pending, createdAt, {
     generatedChars: generatedCards.length,
     generatedRawChars: String(assistantText || "").length,
     coreEvidenceStatus: coreEvidence.status,
     coreEvidenceProvided: coreEvidence.provided,
+    coreEvidenceRecovered: Boolean(coreEvidence.recoveredFromUnwrappedReport),
     coreEvidenceChars: coreEvidence.text.length
   });
 
@@ -5060,6 +5143,7 @@ async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "", ch
     downloadSentinel: sentinelText,
     coreEvidenceStatus: coreEvidence.status,
     coreEvidenceProvided: coreEvidence.provided,
+    coreEvidenceRecovered: Boolean(coreEvidence.recoveredFromUnwrappedReport),
     coreEvidenceChars: coreEvidence.text.length
   });
 

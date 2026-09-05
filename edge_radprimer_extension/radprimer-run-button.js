@@ -33,7 +33,7 @@
     downloadAnnotated: true,
     keepCaptionHtml: true,
     autoGroupNonNarrative: true,
-    captureCardAuditBundle: false,
+    captureCardAuditBundle: true,
     openChatGPT: true,
     autoSubmitChatGPT: true,
     chatgptUrl: "https://chatgpt.com/g/g-p-69e5418624448191a7a74b18f607688b-pediatrics/project",
@@ -1204,6 +1204,9 @@
       applyNoPictureModeDefaults(host);
       return;
     }
+    field(host, "captureCardAuditBundle").checked = true;
+    field(host, "openChatGPT").checked = true;
+    field(host, "autoSubmitChatGPT").checked = true;
     if (host.__radprimerCardModeDownloadImagesDisabled) return;
     const downloadImages = field(host, "downloadImages");
     if (downloadImages) downloadImages.checked = true;
