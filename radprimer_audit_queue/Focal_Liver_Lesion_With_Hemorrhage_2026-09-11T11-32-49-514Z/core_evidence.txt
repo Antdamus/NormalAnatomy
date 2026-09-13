@@ -1,0 +1,22 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: junzi-shi-core-radiology-a-visual-approach-to.pdf; Gastrointestinal Imaging, Liver section, pp. 105-120, with additional Nuclear and Molecular Imaging liver/spleen scintigraphy coverage around pp. 462-463.
+CORE_FACTS_USED:
+
+- HCC progression from regenerative nodule to dysplastic nodule to HCC, with increasing neovascularity; classic arterial enhancement, portal venous/delayed washout, capsule, T2 hyperintensity, possible diffusion restriction, and tumor-in-vein assessment.
+- Hepatic adenoma has a relatively high hemorrhage risk; arterial hyperenhancement with iso-/hypoenhancement on portal venous/delayed phases; variable ultrasound appearance; usually photopenic sulfur-colloid appearance and paucity of HIDA uptake; adenomas >5 cm are usually resected.
+- Simple hepatic cysts are thin-walled and nonenhancing; ultrasound is anechoic with posterior enhancement and no internal Doppler flow; CT attenuation is 0-20 HU; MRI is low T1/high T2. ADPLD produces innumerable nonenhancing simple hepatic cysts.
+- Most hepatic metastases are hypovascular and best appreciated on portal venous CT; metastases are generally T1 hypointense/T2 hyperintense, while blood products or melanin may be T1 hyperintense; ultrasound may show a target sign.
+- Core identifies adenoma, HCC, and metastases among hemorrhagic hepatic lesion patterns.
+- Core liver-trauma coverage supplies the CT-based AAST liver injury framework, including subcapsular hematoma, laceration depth, vascular injury/active bleeding, intraperitoneal extension, and major hepatic venous injury.
+CORE_DERIVED_CARDS:
+- HCC CT, MRI, ultrasound/Doppler, sulfur-colloid, tumor-in-vein, clinical-prior, and mechanism cards.
+- Hepatic adenoma CT, MRI, ultrasound, nuclear medicine, >5-cm management, clinical-prior, mechanism, and hemorrhage-versus-fat trap cards.
+- Hemorrhagic hepatic cyst CT, MRI, ultrasound, and clot-versus-tumor trap cards.
+- ADPLD imaging and ADPKD-association cards.
+- Hepatic metastasis CT, MRI, ultrasound, and hemorrhagic-metastasis discriminator cards.
+- Hepatic trauma CT and AAST liver-injury framework cards.
+CORE_LIMITATIONS:
+- HELLP-specific hepatic hemorrhage/infarction and coagulopathic hepatic hemorrhage details used in the deck were derived from the RadPrimer/STATdx source package rather than retrieved Core coverage.
+- The 35-HU melanoma hemoperitoneum example and the >60-HU general NECT hemorrhage statement were preserved as separate RadPrimer/STATdx contexts rather than generalized.
+- Coil embolization and anticoagulant-withdrawal outcomes were retained only as case-specific source statements, not universal management algorithms.
+- No external medical literature was used.

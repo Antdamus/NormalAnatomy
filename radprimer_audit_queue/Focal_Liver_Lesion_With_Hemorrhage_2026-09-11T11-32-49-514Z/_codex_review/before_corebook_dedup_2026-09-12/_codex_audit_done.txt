@@ -1,0 +1,24 @@
+DONE
+auditComplete=true
+topic: Focal Liver Lesion With Hemorrhage
+completedAt: 2026-09-11T11:52:20.700644+00:00
+validation: passed
+inputNotes: 54
+correctedNotes: 57
+retainedOriginalIds: 51
+deletedInputRows: 31, 52, 53
+addedNotes: 6
+schemaColumns: 22
+imageGroupsPreserved: 17
+sourceCaptionsPreservedExactly: 23
+diagnosticMediaVerified: 46
+auxiliaryIconsRecovered: 8
+missingMedia: none
+AnkiDeck: Corebook::GI::Liver::Focal Liver Lesion With Hemorrhage
+AnkiNoteType: core_rad_notetype_v2
+DifferentialDrillTriggers: blank
+liveAnkiImportPerformed: false
+validationReport: _codex_review/validation_results.json
+corrected_cards.tsv SHA256: 8b947a8b143b13c286522c974146781c567c48d59a87026d0e06c125b46a8cc9
+corrected_cards_anki_import.tsv SHA256: 7104987ae1ae5baacb3aa5c20a0554ce7cbd424faaed0972eda62fc5b3c24356
+audit_report.md SHA256: e8e446a06a34169c1aed7afebdc4e8f63c37b678208a295f387829047e57164f

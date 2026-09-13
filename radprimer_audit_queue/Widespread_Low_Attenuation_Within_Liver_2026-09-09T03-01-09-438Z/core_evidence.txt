@@ -1,0 +1,29 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Core Radiology, Second Edition, Gastrointestinal Imaging, Liver section, principally GI pages 97–100, 102–109, 116–117, and 121–123. Retrieved from `junzi-shi-core-radiology-a-visual-approach-to.pdf`.
+CORE_FACTS_USED:
+
+* Hepatic steatosis may be diffuse, focal, geographic, or nodular; focal fat lacks mass effect and characteristically permits vessels to traverse it.
+* Steatosis shows increased hepatic echogenicity on ultrasound and opposed-phase signal loss on MRI; Core explains the fat-water cancellation mechanism.
+* Core gives attenuation criteria of at least 10 HU below spleen on unenhanced CT and at least 25 HU below spleen on portal-venous-phase CT, while noting lower reliability after contrast.
+* Viral hepatitis is commonly normal on imaging; when abnormal, periportal edema and gallbladder wall edema are characteristic.
+* Most hepatic metastases are hypovascular and best seen on portal venous phase; MRI and ultrasound appearances and the melanoma exception were used.
+* Hepatic lymphoma may be infiltrative, hypoenhancing, diffusion-restricting, hypoechoic, and associated with splenomegaly/lymphadenopathy.
+* HCC arterial enhancement, washout, local vascular invasion, and tumor-in-vein criteria supported the infiltrative-HCC discriminator and vascular report-pivot card.
+* Budd-Chiari findings include absent hepatic venous flow/contrast, hepatic-vein or IVC thrombus, collateralization, caudate sparing/hypertrophy, and peripheral hepatic injury.
+* Cardiac hepatopathy/passive congestion findings include enlarged hepatic veins/IVC, refluxed contrast, mottled “nutmeg” enhancement, hepatomegaly, and ascites.
+* Core hepatic fungal infection findings supported the microabscess appearance card.
+CORE_DERIVED_CARDS:
+* Hepatic steatosis CT, MRI, ultrasound, and distribution High-Yield cards.
+* Hepatic steatosis opposed-phase mechanism card.
+* Acute hepatitis imaging High-Yield card.
+* Passive hepatic congestion High-Yield card.
+* Hepatic metastases CT, MRI, and ultrasound High-Yield cards.
+* Hepatic lymphoma CT/MRI and ultrasound High-Yield cards.
+* Opportunistic hepatic infection High-Yield card.
+* Infiltrative HCC discriminator and tumor-in-vein report-pivot cards.
+* Budd-Chiari CT, Doppler, and caudate-hypertrophy mechanism cards.
+CORE_LIMITATIONS:
+* Core does not contain a dedicated “Widespread Low Attenuation Within Liver” subsection matching the RadPrimer/STATdx article; relevant Core material is distributed across the liver chapter.
+* Core describes Wilson disease/copper overload and glycogen excess as causes of increased hepatic attenuation, conflicting with the supplied article package’s low-attenuation framing. Those conflicting general appearance claims were not encoded as direct recall cards.
+* Radiation hepatitis and the case-specific acetaminophen-toxicity/explant material were derived from the supplied RadPrimer/STATdx source package rather than Core.
+* No unsupported stiffness cutoff, nuclear-medicine protocol, or general transplant criterion was added.

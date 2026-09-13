@@ -1,0 +1,38 @@
+DONE
+auditComplete=true
+topic: Focal Liver Lesion With Hemorrhage
+completedAt: 2026-09-13T02:04:57.363193+00:00
+validation: passed
+corebookValidation: passed
+sourceMediaValidation: passed
+originalGeneratedNotes: 54
+previousCorrectedNotes: 57
+correctedNotes: 31
+repetitiveTextNotesRemovedThisPass: 26
+coveredByCurrentAnki: 23
+coveredWithinBundle: 3
+retainedImageGroups: 17
+retainedConceptualNotes: 14
+newNotesThisPass: 0
+retainedFieldsChanged: 0
+schemaColumns: 22
+sourceCaptionsPreservedExactly: 23
+diagnosticMediaVerified: 46
+auxiliaryIconsVerified: 8
+missingBundleMedia: none
+AnkiDeck: Corebook::GI::Liver::Focal Liver Lesion With Hemorrhage
+AnkiNoteType: core_rad_notetype_v2
+currentCorebookCardsCompared: 3144
+snapshotId: 717a1b11e6850f5a76cda8c75c0760589870c1541d61d128a02f10346831e1d7
+DifferentialDrillTriggers: blank
+liveAnkiImportPerformed: false
+ankiModified: false
+validationReport: _codex_review/dedup_validation_results.json
+overlapReview: card_overlap_review.json
+liveBankGate: corebook_validation.json
+previousVersion: _codex_review/before_corebook_dedup_2026-09-12/
+corrected_cards.tsv SHA256: dc7453042fd1228c503f7e5d173e93910c226c3b1a6332ee37baf96e63b60aed
+corrected_cards_anki_import.tsv SHA256: c8ed344bd98ed6df9e732c40f046b68146f44f15158459f82fedcfce62b23fb0
+audit_report.md SHA256: 76cb9ea28d9604c59c5ab7280deb3dca450a83a3c4f7d551a9b40d5f6f6d8ed8
+card_overlap_review.json SHA256: 33356084014bbd256633187b7536682727fb9deede94485843aee92a17319055
+corebook_validation.json SHA256: e7e3634e6dda6e95153897fb0b235158dee2634e85efb2cf03e7e7044d1a5441

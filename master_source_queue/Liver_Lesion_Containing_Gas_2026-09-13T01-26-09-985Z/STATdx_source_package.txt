@@ -1,0 +1,230 @@
+=== TOPIC ===
+PRIMARY TOPIC: Liver Lesion Containing Gas
+CENTERING TOPIC FOR THIS CHAT: Liver Lesion Containing Gas
+USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: Liver Lesion Containing Gas
+
+=== STATDX BREADCRUMB ===
+Gastrointestinal > Differential Diagnosis > Liver > Generic Imaging Patterns > Liver Lesion Containing Gas
+
+
+
+=== CORE VALIDATION INPUT ===
+Pathway A - Core Radiology cross-check available or requested.
+Core section/chapter/pages: it might be in multiple regions of the book so you are going to have to look through it
+Use Core information only if it is actually supplied in this prompt/user context or retrievable from ChatGPT project/source files in the current run.
+If ChatGPT can find the relevant Core pages/section in project/source files, it may use them without asking the user to provide page numbers; it must state the retrieved Core source basis when visible.
+If Core cannot be retrieved, proceed from the provided article only and label the deck RadPrimer-only/STATdx-only; do not fabricate Core details or Core + article synthesis.
+
+=== PROMPT ===
+Source-comparison extraction only.
+Do not generate a narrative or cards from this package.
+Preserve article hierarchy, source text, image filenames, selected image captions, arrows/annotations, source attribution, Core evidence if present, and Anki/breadcrumb metadata when available.
+
+=== ARTICLE ===
+TITLE: Liver Lesion Containing Gas
+
+ESSENTIAL INFORMATION
+- Key Differential Diagnosis Issues
+  - 5 pathways to developing gas
+    - Infection by gas-forming organism
+    - Infarction of liver or lesion
+    - Open wound or surgical drain
+    - Reflux of gas into lesion from biliary tree
+    - Gas within portal veins
+- Helpful Clues for Common Diagnoses
+  - Hepatic Pyogenic Abscess
+    - 4 major routes for bacteria to liver
+      - Portal vein thrombophlebitis
+        - Most often due to subacute diverticulitis or (less commonly) appendicitis
+      - Ascending cholangitis
+        - Usually associated with choledocholithiasis, ± incompetence of sphincter of Oddi
+        - Surgical biliary-enteric anastomosis also predisposes to ascending cholangitis
+      - Direct extension
+        - e.g., perforated ulcer or diverticulitis of colonic hepatic flexure
+      - Traumatic
+        - Usually penetrating or iatrogenic (hepatic or biliary surgery)
+    - Multiseptate or cluster of grapes appearance of abscess
+    - Gas is present in ~ 20% of pyogenic abscesses
+      - Gas-producing organisms (Escherichia coli and Klebsiella pneumoniae most common)
+    - Present in small foci or as gas-fluid level
+    - Often accompanied by transient hepatic attenuation difference (THAD) due to hyperemia and thrombophlebitis of portal vein branch
+    - CT: Double target sign
+      - Low-attenuation central zone (liquefied necrotic tissue/pus)
+      - High-attenuation inner rim (pyogenic membrane)
+      - Low-attenuation outer layer (edema of liver parenchyma)
+    - Rim, capsule, and septal enhancement
+      - May be multiseptate or cluster of smaller abscesses
+    - MR findings
+      - T1: Hypointense to hyperintense mass
+      - T2: Variably hyperintense mass, high signal intensity perilesional edema
+      - T1 C+: Hypointense pus in center, rim or capsule enhancement; small abscesses < 1 cm may show homogeneous enhancement
+      - DWI: Restriction
+  - Hepatic Infarction
+    - Uncommon due to dual blood supply
+      - Usually requires interruption of both portal venous and hepatic arterial supply
+    - Etiologies
+      - Iatrogenic (cholecystectomy, hepatobiliary surgery, transjugular intrahepatic portosystemic shunt, Whipple)
+      - Liver transplantation (hepatic artery stenosis or thrombosis)
+      - Blunt trauma
+      - Hypercoagulable states and vasculitis
+    - Wedge-shaped, rounded, ovoid, or irregularly shaped low-attenuation areas parallel to bile ducts
+    - More conspicuous after enhancement (as perfusion defects)
+    - Bile lakes seen as late sequela
+      - Especially in liver transplant setting
+      - Hepatic artery thrombosis → biliary and hepatic necrosis
+  - Hepatic Tumor Following Treatment
+    - Any treatment that results in sudden death of substantial amount of tissue (benign or malignant)
+      - Chemoembolization
+      - Radiofrequency or cryoablation
+      - Chemotherapy, especially transarterial chemoembolization
+      - Surgical ligation of hepatic arterial branch
+    - Imaging, symptoms, and laboratory signs closely mimic hepatic abscess
+      - Fever, leukocytosis, and pain are common
+    - Presence of hepatic gas immediately following surgery does not necessarily imply infection
+    - Injection of ethanol for ablation may mimic or cause intrahepatic gas
+      - Ethanol is of near-gas attenuation
+  - Gas in Bile Ducts or Gallbladder
+    - Many potential causes
+    - Pneumobilia, incompetent sphincter of Oddi, emphysematous cholecystitis, sphincterotomy, etc.
+    - Gas collects in central bile ducts near porta hepatis
+  - Portal Venous Gas
+    - Mesenteric ischemia, bowel necrosis, and other causes
+    - Branching pattern favoring periphery of liver
+    - Look for bowel wall pneumatosis, mesenteric vascular thrombosis, and related findings
+- Helpful Clues for Less Common Diagnoses
+  - Retained Foreign Body
+    - Retained surgical sponge: Will have opaque stripe
+      - Retained sponge (gossypiboma) often leads to abscess
+      - Sponge is often surrounded by larger collection of fluid with enhancing rim
+    - Oxidized surgical gelatin (Surgicel): Used for intraoperative hemostasis
+      - Multifocal gas without fluid component
+      - May have linear or curvilinear collections of gas
+      - Does not imply infection
+  - Hepatic Transplantation
+    - Biliary gas may be expected following biliary-enteric anastomosis
+    - Portal venous gas in early posttransplant period (< 9 days) is often insignificant
+    - Hepatic artery thrombosis (HAT) or stenosis may cause biliary necrosis
+      - Typical appearance is branching fluid collections paralleling portal triads
+      - Usually no gas within these collections unless there is biliary gas (as with biliary-enteric anastomosis)
+        - Bacterial superinfection of infarcted tissue may release gas
+    - Less commonly, allograft parenchymal infarction may result from HAT
+      - Gas may be found within hepatic allograft itself
+  - Biloma
+    - Communication with bile ducts may allow gas to enter biloma
+    - Infection of biloma by gas-forming organisms may release gas
+    - HAT → biliary and hepatic necrosis
+  - Hepatic Amebic Abscess
+    - Usually solitary
+    - Often has capsule
+    - Right lobe (70-80%), usually peripheral; associated right-sided atelectasis and pleural effusion
+    - Uncommonly septate
+    - Gas is rare unless abscess becomes superinfected with bacteria or ruptures into GI tract
+    - Often see THAD due to thrombophlebitis of portal vein and hyperemia of abscess capsule
+  - Hepatic Hydatid Cyst
+    - Usually large
+    - Multiseptate
+    - Often has calcified wall
+    - Rarely has gas unless superinfected or communicating with gut
+    - Mother cyst contains hydatid matrix/sand + daughter cysts
+    - T2 MR: Daughter cysts: Bright, increased intensity relative to matrix
+    - US: Multiseptate cyst with daughter cysts and echogenic material between cysts
+  - Hepatic Trauma
+    - Gas may be found in hepatic or portal veins or liver parenchyma
+    - Often transient and of little significance
+    - Larger areas of parenchymal gas may follow traumatic hepatic infarction
+      - Due to devascularization of affected segment
+  - Hepatic Venous Gas
+    - Usually iatrogenic, introduced through air in IV infusion lines
+      - More common with femoral vein catheterization
+      - More common with aggressive, rapid IV infusions
+
+
+=== IMAGES (selected; original numbering preserved) ===
+
+IMAGE_01: 1
+  Liver_Lesion_Containing_Gas1
+    Image: Liver_Lesion_Containing_Gas1.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas1_annot.jpg
+    Caption: Axial CECT shows a liver abscess with fluid and gas. Note the percutaneously placed drainage catheter <img src="arrow_WC.png">.
+
+IMAGE_02: 2
+  Liver_Lesion_Containing_Gas2
+    Image: Liver_Lesion_Containing_Gas2.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas2_annot.jpg
+    Caption: Axial CECT shows 2 abscesses <img src="arrow_WS.png">, one of which contains gas. This patient has ascending cholangitis, and gas may enter the abscesses from gas-containing ducts <img src="arrow_WC.png"> or result from infection itself.
+
+IMAGE_03: 3
+  Liver_Lesion_Containing_Gas3
+    Image: Liver_Lesion_Containing_Gas3.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas3_annot.jpg
+    Caption: Axial CECT shows nonenhancement of the left lobe <img src="arrow_WS.png"> with portal venous gas <img src="arrow_WC.png">; infarction followed attempted resection of peripheral cholangiocarcinoma.
+
+IMAGE_04: 4
+  Liver_Lesion_Containing_Gas4
+    Image: Liver_Lesion_Containing_Gas4.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas4_annot.jpg
+    Caption: Axial CECT shows devascularization of the right lobe from blunt trauma. The hepatic artery and veins to the right lobe were avulsed. The gas bubble <img src="arrow_WS.png"> is due to infarction, not infection.
+
+IMAGE_05: 5
+  Liver_Lesion_Containing_Gas5
+    Image: Liver_Lesion_Containing_Gas5.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas5_annot.jpg
+    Caption: Axial CECT in a colon cancer patient shows metastases <img src="arrow_WS.png">, some of which have been treated with radiofrequency ablation. One of these has gas within it as well as surgical clips <img src="arrow_WC.png">, the latter the result of bleeding after ablation that required intervention. Gas bubbles are not the result of infection but rather infarction of hepatic tissue (or tumor).
+
+IMAGE_06: 6
+  Liver_Lesion_Containing_Gas6
+    Image: Liver_Lesion_Containing_Gas6.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas6_annot.jpg
+    Caption: Axial CECT shows 2 large hepatic masses <img src="arrow_WS.png"> (metastatic breast cancer). The larger lesion has gas due to tumor infarction as a result of chemotherapy; there was no infection.
+
+IMAGE_07: 7
+  Liver_Lesion_Containing_Gas7
+    Image: Liver_Lesion_Containing_Gas7.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas7_annot.jpg
+    Caption: Axial T2 MR in a 63-year-old man with pancreatic cancer and right upper quadrant pain shows fluid and air <img src="arrow_WS.png"> corresponding to T1-hyper- and hypointense signal, respectively, on T1 pre- <img src="arrow_WO.png">, arterial- <img src="arrow_WC.png">, and venous- <img src="arrow_BS.png"> phase images with absence of enhancement, representing a gas-containing abscess.
+
+IMAGE_08: 8
+  Liver_Lesion_Containing_Gas8
+    Image: Liver_Lesion_Containing_Gas8.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas8_annot.jpg
+    Caption: Coronal CECT shows extensive bowel pneumatosis <img src="arrow_WO.png"> from ischemia and portal venous gas in the periphery of the liver <img src="arrow_WS.png">.
+
+IMAGE_09: 9
+  Liver_Lesion_Containing_Gas9
+    Image: Liver_Lesion_Containing_Gas9.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas9_annot.jpg
+    Caption: US in a woman with cirrhosis and acute abdominal pain following a hypotensive episode shows bubbles of gas <img src="arrow_WS.png"> within the portal veins. CT showed pneumatosis within bowel walls and luminal distention with fluid due to bowel infarction.
+
+IMAGE_10: 10
+  Liver_Lesion_Containing_Gas10
+    Image: Liver_Lesion_Containing_Gas10.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas10_annot.jpg
+    Caption: Axial CECT shows a surgical clip and collection of gas <img src="arrow_WS.png"> in or adjacent to the liver. This is oxidized surgical gelatin (Surgicel) that was used as a hemostatic device and left in place. Note the relative absence of fluid within the collection.
+
+IMAGE_11: 11
+  Liver_Lesion_Containing_Gas11
+    Image: Liver_Lesion_Containing_Gas11.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas11_annot.jpg
+    Caption: Axial CECT shows a large postoperative abscess <img src="arrow_WS.png">. Within the abscess, there is a tightly packed collection of gas bubbles <img src="arrow_WC.png"> that represents oxidized surgical cellulose (Surgicel) that had been placed to control bleeding at surgery.
+
+IMAGE_12: 12
+  Liver_Lesion_Containing_Gas12
+    Image: Liver_Lesion_Containing_Gas12.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas12_annot.jpg
+    Caption: Axial CECT in a patient with hepatic allograft malfunction shows a wedge-shaped collection of fluid and gas <img src="arrow_WS.png">, representing an infected biloma due to hepatic artery thrombosis.
+
+IMAGE_13: 13
+  Liver_Lesion_Containing_Gas13
+    Image: Liver_Lesion_Containing_Gas13.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas13_annot.jpg
+    Caption: Axial CECT in a patient with acute dysfunction of a hepatic allograft shows a collection of gas and fluid <img src="arrow_WS.png"> in the left hepatic lobe, strongly suggestive of an infected biloma due to hepatic artery stenosis or thrombosis. Arterial thrombosis was subsequently confirmed.
+
+IMAGE_14: 14
+  Liver_Lesion_Containing_Gas14
+    Image: Liver_Lesion_Containing_Gas14.jpg
+    Image_Annotated: Liver_Lesion_Containing_Gas14_annot.jpg
+    Caption: Axial CECT shows a focal collection of fluid and gas  <img src="arrow_WS.png">  that was the result of a deep liver laceration several days prior.
+
+=== SOURCE ATTRIBUTION ===
+Primary source label: STATdx
+Core cross-check: it might be in multiple regions of the book so you are going to have to look through it

@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "validatedAt": "2026-09-09T02:52:25.554Z",
+  "checks": [
+    {
+      "name": "Import contract and independently serialized artifacts agree",
+      "passed": true
+    },
+    {
+      "name": "Exact canonical RadPrimer hierarchy and supplied routing preserved",
+      "passed": true
+    },
+    {
+      "name": "All source records, captions, URLs, stable IDs and evidence preserved",
+      "passed": true
+    },
+    {
+      "name": "Source and embedded metadata, image manifests and captions agree",
+      "passed": true
+    },
+    {
+      "name": "Primary/archive partitions are exhaustive and archives have exact evidence",
+      "passed": true
+    },
+    {
+      "name": "Every RadPrimer entry has an evidence-backed image coverage decision",
+      "passed": true
+    },
+    {
+      "name": "Atomic source clusters preserved and only redundant same-slice split documented",
+      "passed": true
+    },
+    {
+      "name": "Curated source library uses clean source-qualified display labels",
+      "passed": true
+    },
+    {
+      "name": "Actual extension single-JSON import accepts all artifacts and selection fields",
+      "passed": true
+    },
+    {
+      "name": "Actual extension download filter emits exactly 46 curated source-qualified files",
+      "passed": true
+    },
+    {
+      "name": "Actual extension separate-file import preserves the same curated set",
+      "passed": true
+    },
+    {
+      "name": "Staged files verified",
+      "passed": true,
+      "fileCount": 53
+    },
+    {
+      "name": "Imported browser files are byte-identical and latest pointer targets this bundle",
+      "passed": true
+    }
+  ],
+  "totals": {
+    "registryEntries": 44,
+    "selectedPrimaryImages": 23,
+    "archiveOptionalImages": 21,
+    "primaryVariantDownloads": 46,
+    "caseClusters": 18
+  },
+  "extensionHelpersTested": [
+    "parseJsonMaybe",
+    "pickNamedFile",
+    "normalizeMasterSourceCache",
+    "collectMasterImageIdsFromPlan",
+    "getMasterSourcePrimaryImageIds",
+    "getMasterSourceArchiveImageIds",
+    "buildMasterSourceCacheFromFiles",
+    "normalizeImageRegistryEntry",
+    "normalizeImageRegistrySourceKind",
+    "normalizeSourceCompareKind",
+    "flattenRegistryToDownloadFiles",
+    "shouldUseRegistryEntryForMasterDownload",
+    "buildSourceQualifiedImageFilename",
+    "getDownloadBasename",
+    "getSourceFilenameLabel",
+    "normalizeArticleSourceKind",
+    "sanitizeDownloadPathPart",
+    "normalizeArticleTitleKey",
+    "sanitizeAnkiDeckPart"
+  ],
+  "extensionSourceSha256": "4dc84bb008119ba160b68c4022bb88a6e15556032e680340e08e7ff9af00d22d",
+  "scope": "Artifact integrity, preserved sources, image evidence, clusters and actual extension import/download helpers. No live browser import or remote image download performed."
+}

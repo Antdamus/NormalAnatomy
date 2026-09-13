@@ -1,0 +1,246 @@
+{
+  "repairedAt": "2026-09-09T22:50:53.107907+00:00",
+  "scope": {
+    "scope": "Only Image_Annotated and Original_Caption on the 26 image notes",
+    "sourceCaptionBlocksPreservedExactly": 40,
+    "nonImageNotesUnchanged": 38,
+    "arrowReferencesRestored": 122,
+    "captionIconFiles": 7
+  },
+  "notes": [
+    {
+      "clinicalContext": "Adult patient XEY35OPVHDWV",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient TA6KW5MFZV23",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 3,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Young woman 6EBAJPBUBUH5",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Young woman 4TPXY4M32JMY",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient GWQ72FOTK5NR",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient QQ7JFHMGTL6Q",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient 3QTL2B7CXPPI",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient K5WIDGLHOA3I",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient YIGLBI4LS7L5",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient UYK2CTHPDSKP",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult man XTSJZC266LNH",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult man UEJ5Q5SKXULD",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient RTO2Y5PTRA3X",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient ZZHFSGWBBJGC",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult man LO72HBE7EYZG",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient MQHS5MZNCDEL",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Young woman LN3AUCN7WS6Z",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Middle-aged man NJG24I4TQXGA",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient XGAIYZPY6G42",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient RWFL2ZH3Z7NS",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "22-year-old man GY3KMMWRAZKV",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "67-year-old woman 27KKCD7T2XYK",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient 436MHQJOFNCJ",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient NUOFRO23U5F4",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 1,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "60-year-old woman RTE577M2VRWZ",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    },
+    {
+      "clinicalContext": "Adult patient 4PREBW2WPELY",
+      "changedFields": [
+        "Image_Annotated",
+        "Original_Caption"
+      ],
+      "captionBlocks": 2,
+      "rawSourceCaptionEquality": true
+    }
+  ]
+}

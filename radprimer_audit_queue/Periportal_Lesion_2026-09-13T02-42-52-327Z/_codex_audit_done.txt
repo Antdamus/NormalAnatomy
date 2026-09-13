@@ -1,0 +1,12 @@
+AUDIT_STATUS: PASSED
+Completed UTC: 2026-09-13T03:01:49.104528+00:00
+Final notes: 45 (35 image; 10 text)
+Selected source images: 47; retained multi-image groups: 11
+Corebook validation: passed
+Source/media validation: passed
+Missing referenced media: none
+Anki modified: false
+corrected_cards.tsv SHA256: 7e7afdeddf6835aaa4b2c4ba8ca6dc84f853c2e3a0753f46cc1babdf12a225a9
+corrected_cards_anki_import.tsv SHA256: 9a10180b45b68b6bfb3d873ec05aa5c5da7ab788b38d5ca91dd3ae0df6b9672e
+card_overlap_review.json SHA256: 6ae555ac3483c1e9bdac08450b4cad8bb0a2938cb3ffbdc18121ec0f044d4727
+audit_report.md SHA256: 4f4a0716d27d7c05808e6013559ba629478d9fb71aae729abd3d48be4b53d6d3

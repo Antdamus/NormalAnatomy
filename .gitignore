@@ -1,2 +1,9 @@
 __pycache__/
 *.py[cod]
+
+# Reinstallable dependencies used by local review tools
+node_modules/
+
+# Local Anki question snapshots and installation backups
+corebook_card_registry/data/
+corebook_card_registry/install_backup/

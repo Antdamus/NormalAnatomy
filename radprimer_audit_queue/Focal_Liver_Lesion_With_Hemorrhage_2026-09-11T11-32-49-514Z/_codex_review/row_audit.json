@@ -1,0 +1,1090 @@
+[
+  {
+    "inputRow": 1,
+    "clinicalContext": "Adult patient with acute abdominal pain P6U3ZC749QSS",
+    "id": "P6U3ZC749QSS",
+    "action": "revised",
+    "outputRow": 1,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Clarified vascular grading versus hemoperitoneum and the possibility of a higher injury grade.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 2,
+    "clinicalContext": "Adult patient with falling hematocrit 01F7ECE0HT2F",
+    "id": "01F7ECE0HT2F",
+    "action": "revised",
+    "outputRow": 2,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Removed the image-retention audit rationale while retaining necessary chronology limits.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 3,
+    "clinicalContext": "Young woman with sudden abdominal pain 94NKB48FPYCU",
+    "id": "94NKB48FPYCU",
+    "action": "revised",
+    "outputRow": 3,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 4,
+    "clinicalContext": "Young woman with acute abdominal pain 4UNPI0YWY2H3",
+    "id": "4UNPI0YWY2H3",
+    "action": "revised",
+    "outputRow": 4,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Removed generator/recognition-variant commentary from the learner explanation.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 5,
+    "clinicalContext": "Young woman with abdominal pain XV8CWALHFNPU",
+    "id": "XV8CWALHFNPU",
+    "action": "revised",
+    "outputRow": 5,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved source diagnoses while removing an overgeneralized T2-brightness discriminator.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 6,
+    "clinicalContext": "Man with sudden right upper quadrant pain H5JC7OQIM6IB",
+    "id": "H5JC7OQIM6IB",
+    "action": "revised",
+    "outputRow": 6,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 7,
+    "clinicalContext": "60-year-old man with sudden right upper quadrant pain G8BOVE29C1A4",
+    "id": "G8BOVE29C1A4",
+    "action": "revised",
+    "outputRow": 7,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 8,
+    "clinicalContext": "Woman with sudden right upper quadrant pain RHF5995BLY3U",
+    "id": "RHF5995BLY3U",
+    "action": "revised",
+    "outputRow": 8,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 9,
+    "clinicalContext": "Adult patient with abdominal pain 2UMO2MK6416M",
+    "id": "2UMO2MK6416M",
+    "action": "revised",
+    "outputRow": 9,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 10,
+    "clinicalContext": "Adult patient with abdominal pain JQZK4K7ZUUK5",
+    "id": "JQZK4K7ZUUK5",
+    "action": "revised",
+    "outputRow": 10,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 11,
+    "clinicalContext": "Adult patient with abdominal pain 16YMITT7SW01",
+    "id": "16YMITT7SW01",
+    "action": "revised",
+    "outputRow": 11,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 12,
+    "clinicalContext": "Adult patient with abdominal fullness 4BLVZYITV0KF",
+    "id": "4BLVZYITV0KF",
+    "action": "revised",
+    "outputRow": 12,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 13,
+    "clinicalContext": "Adult patient with falling hematocrit YJO5DF2SJSQB",
+    "id": "YJO5DF2SJSQB",
+    "action": "revised",
+    "outputRow": 13,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 14,
+    "clinicalContext": "Adult patient with abdominal pain and anemia FOB7NGISI4E8",
+    "id": "FOB7NGISI4E8",
+    "action": "revised",
+    "outputRow": 14,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 15,
+    "clinicalContext": "Adult patient with acute abdominal pain LPTNY1H295EJ",
+    "id": "LPTNY1H295EJ",
+    "action": "revised",
+    "outputRow": 15,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 16,
+    "clinicalContext": "Adult patient with acute right upper quadrant pain HUYWVLLKGNIJ",
+    "id": "HUYWVLLKGNIJ",
+    "action": "revised",
+    "outputRow": 16,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 17,
+    "clinicalContext": "Young woman with acute right upper quadrant pain AD206G7X95MC",
+    "id": "AD206G7X95MC",
+    "action": "revised",
+    "outputRow": 17,
+    "changedFields": [
+      "Differentials",
+      "Imaging_Differentiation",
+      "summary"
+    ],
+    "reasons": [
+      "Moved mini-differential to the UNKNOWN back and cleared legacy drill trigger.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "image recognition",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 18,
+    "clinicalContext": "XNE1SOAHSDJD",
+    "id": "XNE1SOAHSDJD",
+    "action": "revised",
+    "outputRow": 18,
+    "changedFields": [
+      "Mechanism",
+      "summary"
+    ],
+    "reasons": [
+      "Focused the mechanism on neovascularization and preserved the high-grade dysplasia overlap.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "mechanism",
+    "sourceBasis": "Core GI:105-107",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 19,
+    "clinicalContext": "XE86CU19DAVN",
+    "id": "XE86CU19DAVN",
+    "action": "revised",
+    "outputRow": 19,
+    "changedFields": [
+      "Mechanism_Q",
+      "Mechanism",
+      "summary"
+    ],
+    "reasons": [
+      "Separated Kupffer-cell/sulfur-colloid physiology from the HIDA behavior card.",
+      "Explained the tissue-to-tracer mechanism and reconciled the textbook's absolute versus qualified Kupffer-cell wording.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "mechanism",
+    "sourceBasis": "Core GI:114-115; Nucs:462,463,465",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 20,
+    "clinicalContext": "C7SA4S5CCRN1",
+    "id": "C7SA4S5CCRN1",
+    "action": "revised",
+    "outputRow": 20,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "pitfall",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 21,
+    "clinicalContext": "YFX8C00ICT1N",
+    "id": "YFX8C00ICT1N",
+    "action": "revised",
+    "outputRow": 21,
+    "changedFields": [
+      "Boards_Trap",
+      "summary"
+    ],
+    "reasons": [
+      "Corrected the fat-versus-blood pitfall without changing any raw source caption.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "pitfall",
+    "sourceBasis": "Core GI:98,114-115; source MRI captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 22,
+    "clinicalContext": "KYIB813MZYVH",
+    "id": "KYIB813MZYVH",
+    "action": "revised",
+    "outputRow": 22,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "pitfall",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": null,
+    "highYieldGate": null
+  },
+  {
+    "inputRow": 23,
+    "clinicalContext": "77Q4HKLE15FM",
+    "id": "77Q4HKLE15FM",
+    "action": "revised",
+    "outputRow": 23,
+    "changedFields": [
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Qualified the source's likelihood shorthand while retaining the actionable pretest clue.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "pretest clue",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "In a young woman without cirrhosis, how should spontaneous bleeding within or around a hepatic mass change the differential?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 24,
+    "clinicalContext": "B3KO4PXTGL50",
+    "id": "B3KO4PXTGL50",
+    "action": "revised",
+    "outputRow": 24,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Replaced an absolute HCC-until-proven-otherwise slogan with a supported risk-plus-pattern discriminator.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "pretest clue/differential",
+    "sourceBasis": "Core GI:105-107",
+    "highYieldQuestion": "How does cirrhosis or chronic hepatitis change the interpretation of a hypervascular hepatic mass?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 25,
+    "clinicalContext": "L2BBYNQD8ES5",
+    "id": "L2BBYNQD8ES5",
+    "action": "revised",
+    "outputRow": 25,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Replaced right/left-lobe percentage trivia with an image morphology discriminator.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "modality appearance/pitfall",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "What is the right-versus-left lobe distribution of hepatic traumatic injury in the article?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 26,
+    "clinicalContext": "OW4NWP86YRPZ",
+    "id": "OW4NWP86YRPZ",
+    "action": "revised",
+    "outputRow": 26,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Replaced 40-percent recall with a pretest/imaging-association clue.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "pretest clue",
+    "sourceBasis": "Core GI:119",
+    "highYieldQuestion": "What proportion of patients with ADPKD have autosomal dominant polycystic liver disease?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 27,
+    "clinicalContext": "6MOOO9SM2ANH",
+    "id": "6MOOO9SM2ANH",
+    "action": "revised",
+    "outputRow": 27,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Focused an overloaded CT/MRI/extension list on the source-supported attenuation pitfall.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "attenuation pitfall",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "For suspected hepatic hemorrhage, what NECT and MRI appearances of blood are described in the article?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 28,
+    "clinicalContext": "TAAVL99UU6YV",
+    "id": "TAAVL99UU6YV",
+    "action": "revised",
+    "outputRow": 28,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Separated protocol choice from morphology and labeled the phase detail from the original AAST publication.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "modality/protocol",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "For hepatic trauma, what CT morphology and protocol should be recognized in a hemodynamically stable patient?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 29,
+    "clinicalContext": "A9D0ZA3FZCXI",
+    "id": "A9D0ZA3FZCXI",
+    "action": "revised",
+    "outputRow": 29,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Split the five-grade list into focused grading questions; kept this original ID for the bleeding-compartment question.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "report-critical grading",
+    "sourceBasis": "Core GI:120; AAST 2018",
+    "highYieldQuestion": "On CT, what imaging findings define the AAST liver injury grades I-V in Core Radiology?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 30,
+    "clinicalContext": "3L66QBRNK7PW",
+    "id": "3L66QBRNK7PW",
+    "action": "revised",
+    "outputRow": 35,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "contrast behavior",
+    "sourceBasis": "Core GI:115",
+    "highYieldQuestion": "For hepatic adenoma, what CT contrast-phase pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 31,
+    "clinicalContext": "AHR2X45B9KLV",
+    "id": "AHR2X45B9KLV",
+    "action": "deleted",
+    "outputRow": null,
+    "changedFields": [],
+    "reasons": [
+      "Near-identical text-only blood-versus-fat recall duplicates the corrected Boards Trap in original row 21; no image or unique discriminator is lost."
+    ],
+    "usefulnessCategory": null,
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "For hepatic adenoma, what MRI findings help distinguish hemorrhage from intracellular fat?",
+    "highYieldGate": "removed"
+  },
+  {
+    "inputRow": 32,
+    "clinicalContext": "I5T9GOWFVBFY",
+    "id": "I5T9GOWFVBFY",
+    "action": "revised",
+    "outputRow": 36,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "ultrasound specificity",
+    "sourceBasis": "Core GI:115",
+    "highYieldQuestion": "For hepatic adenoma, what ultrasound appearance should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 33,
+    "clinicalContext": "A8IG59X2BTPW",
+    "id": "A8IG59X2BTPW",
+    "action": "revised",
+    "outputRow": 37,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Separated HIDA from sulfur-colloid recall and corrected the implied site of tracer uptake.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "tracer behavior",
+    "sourceBasis": "Captured Core GI:114-115 topic support; explicitly labeled outside physiology clarification from direct Core Nucs:465 check",
+    "highYieldQuestion": "For hepatic adenoma, what nuclear medicine pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 34,
+    "clinicalContext": "MDP12TTKU0VC",
+    "id": "MDP12TTKU0VC",
+    "action": "revised",
+    "outputRow": 38,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Retained the source-supported size pivot while labeling current management qualifications.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "management/reporting",
+    "sourceBasis": "Core GI:115 plus labeled ACG 2024 clarification",
+    "highYieldQuestion": "For hepatic adenoma, which size threshold changes management in Core Radiology?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 35,
+    "clinicalContext": "E29QWJL6RZ0M",
+    "id": "E29QWJL6RZ0M",
+    "action": "revised",
+    "outputRow": 39,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "contrast behavior",
+    "sourceBasis": "Core GI:106-107",
+    "highYieldQuestion": "For HCC, what multiphasic CT pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 36,
+    "clinicalContext": "2RMOZ7HOK9HG",
+    "id": "2RMOZ7HOK9HG",
+    "action": "revised",
+    "outputRow": 40,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "MRI appearance",
+    "sourceBasis": "Core GI:106",
+    "highYieldQuestion": "For HCC, what MRI signal and diffusion pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 37,
+    "clinicalContext": "LU6AHZFMFA8S",
+    "id": "LU6AHZFMFA8S",
+    "action": "revised",
+    "outputRow": 41,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "ultrasound/Doppler appearance",
+    "sourceBasis": "Core GI:106",
+    "highYieldQuestion": "For HCC, what ultrasound and Doppler pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 38,
+    "clinicalContext": "7TAV94OFKJDW",
+    "id": "7TAV94OFKJDW",
+    "action": "revised",
+    "outputRow": 42,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "tracer behavior/pitfall",
+    "sourceBasis": "Core Nucs:462",
+    "highYieldQuestion": "For HCC, what sulfur-colloid scintigraphic pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 39,
+    "clinicalContext": "KXAJJDEJ2IWU",
+    "id": "KXAJJDEJ2IWU",
+    "action": "revised",
+    "outputRow": 43,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "staging/reporting",
+    "sourceBasis": "Core GI:106",
+    "highYieldQuestion": "In HCC, what vascular finding must be inspected and reported because it changes staging and management?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 40,
+    "clinicalContext": "4CO5S2SYIMYD",
+    "id": "4CO5S2SYIMYD",
+    "action": "revised",
+    "outputRow": 44,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "contrast behavior/pitfall",
+    "sourceBasis": "Core GI:118 plus source cyst caption",
+    "highYieldQuestion": "For a hemorrhagic hepatic cyst on CT, what pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 41,
+    "clinicalContext": "3LXQC513RIAR",
+    "id": "3LXQC513RIAR",
+    "action": "revised",
+    "outputRow": 45,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "ultrasound appearance",
+    "sourceBasis": "Core GI:118-119 plus source ultrasound caption",
+    "highYieldQuestion": "For a hemorrhagic hepatic cyst on ultrasound, what pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 42,
+    "clinicalContext": "FXOCVY8V64NL",
+    "id": "FXOCVY8V64NL",
+    "action": "revised",
+    "outputRow": 46,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "MRI appearance",
+    "sourceBasis": "Core GI:118 plus source T2 caption",
+    "highYieldQuestion": "For a hemorrhagic hepatic cyst on MRI, what blood-product pattern is described?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 43,
+    "clinicalContext": "X0G1PQ1F38PZ",
+    "id": "X0G1PQ1F38PZ",
+    "action": "revised",
+    "outputRow": 47,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "MRI appearance",
+    "sourceBasis": "Core GI:119 plus source polycystic-liver caption",
+    "highYieldQuestion": "For autosomal dominant polycystic liver disease with hemorrhagic cysts, what MRI pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 44,
+    "clinicalContext": "213ETV5FI4A8",
+    "id": "213ETV5FI4A8",
+    "action": "revised",
+    "outputRow": 48,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "differential discriminator",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "For coagulopathic hepatic hemorrhage, what CT features should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 45,
+    "clinicalContext": "WVR04BCTU1TW",
+    "id": "WVR04BCTU1TW",
+    "action": "revised",
+    "outputRow": 49,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Reframed a most-common list as a pretest clue that changes interpretation.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "pretest clue",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "Which metastatic liver lesions are most associated with hemorrhage in the article?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 46,
+    "clinicalContext": "4S0TOUNAVFLX",
+    "id": "4S0TOUNAVFLX",
+    "action": "revised",
+    "outputRow": 50,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "contrast phase",
+    "sourceBasis": "Core GI:98,108",
+    "highYieldQuestion": "For hepatic metastases, what CT phase behavior should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 47,
+    "clinicalContext": "J5ZD3JJUVEQJ",
+    "id": "J5ZD3JJUVEQJ",
+    "action": "revised",
+    "outputRow": 51,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "MRI appearance/pitfall",
+    "sourceBasis": "Core GI:108",
+    "highYieldQuestion": "For hepatic metastases, what MRI signal pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 48,
+    "clinicalContext": "GZGKTBWIBJ7U",
+    "id": "GZGKTBWIBJ7U",
+    "action": "revised",
+    "outputRow": 52,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "ultrasound appearance",
+    "sourceBasis": "Core GI:108",
+    "highYieldQuestion": "For hepatic metastases, what ultrasound pattern should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 49,
+    "clinicalContext": "IL1HHSBZ3LJB",
+    "id": "IL1HHSBZ3LJB",
+    "action": "revised",
+    "outputRow": 53,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "report-critical appearance",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "For HELLP-related hepatic injury, what CT findings should be recognized?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 50,
+    "clinicalContext": "FEI64JCH6HQ5",
+    "id": "FEI64JCH6HQ5",
+    "action": "revised",
+    "outputRow": 54,
+    "changedFields": [
+      "summary"
+    ],
+    "reasons": [
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "procedure/management",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "In HELLP with spontaneous hepatic bleeding, what can selective hepatic arteriography demonstrate?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 51,
+    "clinicalContext": "5KM7625KQP5K",
+    "id": "5KM7625KQP5K",
+    "action": "revised",
+    "outputRow": 55,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Made the syndrome question test interpretation rather than isolated acronym recall.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "pretest clue",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "For HELLP syndrome, what is the typical presentation encoded by the syndrome name and hepatic imaging complication in this source?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": 52,
+    "clinicalContext": "GUJ81D3K2X2D",
+    "id": "GUJ81D3K2X2D",
+    "action": "deleted",
+    "outputRow": null,
+    "changedFields": [],
+    "reasons": [
+      "Reverse HELLP-acronym recall duplicates the interpretation-focused HELLP card in original row 51."
+    ],
+    "usefulnessCategory": null,
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "Named syndrome: hemolysis, elevated liver enzymes, and low platelets, with possible subcapsular hepatic hematoma or infarction. What is the syndrome?",
+    "highYieldGate": "removed"
+  },
+  {
+    "inputRow": 53,
+    "clinicalContext": "JP9CM9926VGC",
+    "id": "JP9CM9926VGC",
+    "action": "deleted",
+    "outputRow": null,
+    "changedFields": [],
+    "reasons": [
+      "Amyloidosis rarity ranking does not provide a useful hemorrhage discriminator; nonspecific hypoattenuation adds little. Amyloidosis remains in the article-level summary/differential."
+    ],
+    "usefulnessCategory": null,
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "How should hepatic amyloidosis rank in the differential of focal liver hemorrhage?",
+    "highYieldGate": "removed"
+  },
+  {
+    "inputRow": 54,
+    "clinicalContext": "MHBGZIYLB62D",
+    "id": "MHBGZIYLB62D",
+    "action": "revised",
+    "outputRow": 56,
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A",
+      "summary"
+    ],
+    "reasons": [
+      "Kept a deliberate structured comparison and qualified overlapping imaging signs.",
+      "Preserved the repeated article summary; corrected only the HIDA mechanism and T2 blood/fat overgeneralization."
+    ],
+    "usefulnessCategory": "structured differential comparison",
+    "sourceBasis": "RadPrimer/STATdx article and source image captions",
+    "highYieldQuestion": "When a hemorrhagic hepatic mass is hypervascular, what source-supported clues favor adenoma versus HCC?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": null,
+    "id": "0NUHYSPRQ6RC",
+    "action": "added",
+    "outputRow": 30,
+    "reasons": [
+      "Focused split from the overloaded original grading card."
+    ],
+    "sourceBasis": "Core GI:120; AAST 2018 Table 2",
+    "usefulnessCategory": "report-critical grading",
+    "highYieldQuestion": "How does subcapsular hepatic hematoma extent affect AAST CT grading?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": null,
+    "id": "VA6JDWXNSKQM",
+    "action": "added",
+    "outputRow": 31,
+    "reasons": [
+      "Focused split from the overloaded original grading card; restored the AAST length qualifier omitted by Core."
+    ],
+    "sourceBasis": "Core GI:120; AAST 2018 Table 2",
+    "usefulnessCategory": "report-critical grading",
+    "highYieldQuestion": "How does hepatic laceration depth affect AAST grades I-III?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": null,
+    "id": "1WIP6OPFOHVH",
+    "action": "added",
+    "outputRow": 32,
+    "reasons": [
+      "Preserved the intraparenchymal size criterion from the original overloaded note and supplied the labeled grade-III completion."
+    ],
+    "sourceBasis": "Core GI:120; AAST 2018 Table 2",
+    "usefulnessCategory": "report-critical grading",
+    "highYieldQuestion": "How does intraparenchymal hepatic hematoma size affect AAST CT grading?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": null,
+    "id": "T3C97WEC4HKH",
+    "action": "added",
+    "outputRow": 33,
+    "reasons": [
+      "Focused high-grade injury split; preserves major venous-injury assessment."
+    ],
+    "sourceBasis": "Core GI:120",
+    "usefulnessCategory": "report-critical grading",
+    "highYieldQuestion": "Which hepatic disruption or venous-injury findings define AAST grades IV and V?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": null,
+    "id": "WPOHO1BAYUJW",
+    "action": "added",
+    "outputRow": 34,
+    "reasons": [
+      "Preserves the original multiple-injury rule as one grading pitfall."
+    ],
+    "sourceBasis": "Core GI:120; AAST 2018 explanatory text",
+    "usefulnessCategory": "report-critical pitfall",
+    "highYieldQuestion": "How should multiple hepatic injuries be combined into a final AAST grade?",
+    "highYieldGate": "passed"
+  },
+  {
+    "inputRow": null,
+    "id": "FD56GT5MFGS8",
+    "action": "added",
+    "outputRow": 57,
+    "reasons": [
+      "Adds a missing standalone localization question already supported by several image captions."
+    ],
+    "sourceBasis": "STATdx images 8-11 and 20; RadPrimer equivalents",
+    "usefulnessCategory": "report-critical localization",
+    "highYieldQuestion": "What does a sentinel clot immediately adjacent to a hepatic mass contribute when hemoperitoneum is present?",
+    "highYieldGate": "passed"
+  }
+]

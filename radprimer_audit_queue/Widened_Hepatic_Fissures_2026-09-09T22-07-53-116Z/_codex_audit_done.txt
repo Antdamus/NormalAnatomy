@@ -1,0 +1,21 @@
+DONE
+validation: passed
+articleTitle: Widened Hepatic Fissures
+completedAt: 2026-09-09T22:18:21+00:00
+originalNotes: 23
+correctedNotes: 27
+unknownNotes: 8
+boardsTrapNotes: 2
+highYieldNotes: 17
+cleanTsvColumns: 22
+selectedImages: 11
+verifiedMediaFiles: 27
+deck: Corebook::GI::Liver::Widened Hepatic Fissures
+differentialDrillSuppressed: true; Differential_Q and Differentials blank; mini-differentials on UNKNOWN backs
+automaticDeckCreationFile: corrected_cards_anki_create_deck.tsv
+corrected_cards.tsv SHA256: 1d287d94a24492e7c243b5ed003456b28662e10707c1acce6f7f5d859857ffce
+corrected_cards_anki_import.tsv SHA256: 3cd0cff10e430638000362ca6dffdc1f6fe473fae8c9ed16718f72bf310a1e2d
+corrected_cards_anki_create_deck.tsv SHA256: 1b377755a419d600c62659936ea209b0306d488a2fbccb60083226f3a1cb0150
+audit_report.md SHA256: e3d05cb8a206c5a8962a24ccfac818b46f9a0604e76176be27e9a83595ee4ed6
+validationReport: _codex_review/validation_results.json
+No live Anki import or note-type modification performed.

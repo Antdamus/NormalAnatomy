@@ -1,0 +1,24 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: junzi-shi-core-radiology-a-visual-approach-to.pdf; Gastrointestinal Imaging; Liver and Biliary Imaging; GI pages 103-104, 109, 119, and 143-144.
+CORE_FACTS_USED:
+
+* Cirrhosis produces segmental atrophy and hypertrophy with nodular morphology; Core specifically describes right-lobe and segment IV atrophy with caudate/lateral left-lobe hypertrophy, enlarged periportal spaces, expanded gallbladder fossa, and portal-hypertension manifestations.
+* Core describes the typical cirrhotic MRI morphology as nodular contour with left-lobe hypertrophy, right-lobe atrophy, widened periportal space, and right posterior hepatic notch; ultrasound shows coarse heterogeneous echotexture with nodular contour.
+* Core identifies pseudocirrhosis as a macronodular contour caused by scirrhous hepatic metastases with capsular retraction and notes treated breast cancer as the most common cause of this appearance.
+* Core lists confluent hepatic fibrosis as wedge-shaped fibrosis seen in cirrhosis and as a cause of hepatic capsular retraction.
+* Core describes Caroli disease as saccular dilatation of the intrahepatic bile ducts.
+* Core describes PSC as irregular/beaded involvement of the common and intrahepatic bile ducts and notes progression to cirrhosis, often with prominent caudate hypertrophy.
+CORE_DERIVED_CARDS:
+* Cirrhosis PRIMARY UNKNOWN reasoning.
+* Metastatic pseudocirrhosis PRIMARY UNKNOWN reasoning.
+* Primary sclerosing cholangitis PRIMARY UNKNOWN reasoning.
+* Cirrhosis CT/morphology High-Yield card.
+* Cirrhosis MRI High-Yield card.
+* Cirrhosis ultrasound High-Yield card.
+* Metastatic pseudocirrhosis CT High-Yield card.
+* Primary sclerosing cholangitis High-Yield card.
+* Shared summary field across exported notes incorporates the Core facts above.
+CORE_LIMITATIONS:
+* Core does not contain a dedicated entity section titled "Widened Hepatic Fissures"; validation required synthesis across relevant liver and biliary sections.
+* The RadPrimer/STATdx-specific 90% segment-distribution and 80% venous-phase isoattenuation figures for focal confluent fibrosis were not independently supplied by Core and remain article-derived.
+* Senescent change, congenital segment absence, the supplied congenital hepatic fibrosis/Caroli CT examples, and hepatic schistosomiasis pattern details were retained from the RadPrimer/STATdx master source where Core did not provide equivalent topic-specific coverage.

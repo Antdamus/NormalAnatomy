@@ -7,7 +7,9 @@
   const IDLE_POLL_MS = 2500;
   const HOVER_WAKE_MS = 120000;
   const COMMAND_WAKE_MS = 30 * 60 * 1000;
-  const SHORTCUT_STORAGE_KEY = location.hostname.includes("statdx.com")
+  const IS_TOP_FRAME = window.top === window;
+  const PAGE_HOSTNAME = getPageHostname();
+  const SHORTCUT_STORAGE_KEY = isStatDxHost(PAGE_HOSTNAME)
     ? "statdxZoomShortcutSettings"
     : "radprimerZoomShortcutSettings";
   const DEFAULT_PLAYER_SHORTCUTS = {
@@ -23,6 +25,27 @@
   let pollActiveUntil = 0;
   let remoteNoticeTimer = null;
   let playerShortcutSettings = { ...DEFAULT_PLAYER_SHORTCUTS };
+  let lastMouseButtonShortcut = { button: -1, at: 0 };
+
+  function isStatDxHost(hostname) {
+    const host = String(hostname || "").toLowerCase();
+    return host === "statdx.com" || host.endsWith(".statdx.com");
+  }
+
+  function isRadPrimerHost(hostname) {
+    const host = String(hostname || "").toLowerCase();
+    return host === "app.radprimer.com" || host.endsWith(".radprimer.com");
+  }
+
+  function getPageHostname() {
+    const currentHost = String(location.hostname || "").toLowerCase();
+    if (isStatDxHost(currentHost) || isRadPrimerHost(currentHost)) return currentHost;
+    try {
+      const topHost = String(window.top?.location?.hostname || "").toLowerCase();
+      if (topHost) return topHost;
+    } catch {}
+    return currentHost;
+  }
 
   function normalizeShortcutKey(value) {
     const raw = String(value || "");
@@ -50,6 +73,7 @@
   }
 
   function ensureHost() {
+    if (!IS_TOP_FRAME) return null;
     let host = document.getElementById(HOST_ID);
     if (host?.shadowRoot) return host;
 
@@ -320,7 +344,10 @@
     `;
 
     shadow.querySelectorAll("[data-action]").forEach((button) => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation?.();
         button.blur();
         if (button.dataset.action !== "focus") restorePageKeyboardFocus();
         handleAction(host, button.dataset.action);
@@ -334,7 +361,10 @@
     });
 
     shadow.querySelectorAll("[data-speed]").forEach((button) => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation?.();
         button.blur();
         restorePageKeyboardFocus();
         handleAction(host, "setSpeed", button.dataset.speed);
@@ -400,8 +430,9 @@
   }
 
   function getCurrentPageSourceKind() {
-    if (/app\.statdx\.com$/i.test(location.hostname)) return "statdx";
-    if (/app\.radprimer\.com$/i.test(location.hostname)) return "radprimer";
+    const hostname = getPageHostname();
+    if (isStatDxHost(hostname)) return "statdx";
+    if (isRadPrimerHost(hostname)) return "radprimer";
     return "";
   }
 
@@ -500,6 +531,7 @@
   }
 
   function renderState(host, state, errorMessage = "") {
+    if (!host?.shadowRoot) return;
     const shadow = host.shadowRoot;
     const root = shadow.querySelector(".root");
     const title = shadow.querySelector(".title");
@@ -550,6 +582,7 @@
   }
 
   async function refreshState({ quiet = false } = {}) {
+    if (!IS_TOP_FRAME) return;
     const host = ensureHost();
     try {
       const state = await sendRemoteMessage({ action: "state" });
@@ -564,6 +597,7 @@
   }
 
   function scheduleNextRefresh() {
+    if (!IS_TOP_FRAME) return;
     clearTimeout(pollTimer);
     if (document.visibilityState !== "visible" || Date.now() > pollActiveUntil) return;
     const delayMs = lastState?.isPlaying ? ACTIVE_POLL_MS : IDLE_POLL_MS;
@@ -575,6 +609,7 @@
   }
 
   function activateRemotePolling(durationMs = HOVER_WAKE_MS, { immediate = true } = {}) {
+    if (!IS_TOP_FRAME) return;
     pollActiveUntil = Math.max(pollActiveUntil, Date.now() + durationMs);
     if (document.visibilityState !== "visible") return;
     if (immediate) refreshState({ quiet: true });
@@ -637,6 +672,7 @@
   }
 
   async function handleAction(host, action, speed = "") {
+    const uiHost = host || ensureHost();
     activateRemotePolling(COMMAND_WAKE_MS, { immediate: false });
     const previousState = lastState;
     if (action === "playPause" && lastState?.available) {
@@ -647,18 +683,18 @@
       };
     }
     busy = true;
-    renderState(host, lastState);
+    renderState(uiHost, lastState);
 
     try {
       const state = await sendRemoteMessage({ action, speed });
       lastState = state;
-      renderState(host, state);
+      renderState(uiHost, state);
     } catch (error) {
       if (previousState) lastState = previousState;
-      renderState(host, lastState, String(error?.message || error));
+      renderState(uiHost, lastState, String(error?.message || error));
     } finally {
       busy = false;
-      renderState(host, lastState);
+      renderState(uiHost, lastState);
       if (shouldRestoreKeyboardFocusAfterAction(action)) restorePageKeyboardFocus();
     }
   }
@@ -682,7 +718,7 @@
 
     if (shortcutMatches(event, "playerBack10")) action = "back10";
     else if (shortcutMatches(event, "playerForward10")) action = "forward10";
-    else if (shortcutMatches(event, "playerJumpImage")) action = "jumpImage";
+    else if (IS_TOP_FRAME && shortcutMatches(event, "playerJumpImage")) action = "jumpImage";
     else if (shortcutMatches(event, "playerPlayPause") || key === "mediaplaypause") {
       action = "playPause";
     }
@@ -694,10 +730,32 @@
     else handleAction(ensureHost(), action);
   }
 
-  ensureHost();
-  registerCurrentSourceTab("load");
+  function handleMouseButtonShortcuts(event) {
+    if (event.defaultPrevented) return;
+    if (document.documentElement.dataset.radprimerShortcutCapture === "true") return;
+    if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+    if (isEditableTarget(event.target)) return;
+
+    const button = Number(event.button);
+    if (button !== 3 && button !== 4) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation?.();
+
+    const now = Date.now();
+    if (
+      lastMouseButtonShortcut.button === button &&
+      now - lastMouseButtonShortcut.at < 450
+    ) {
+      return;
+    }
+    lastMouseButtonShortcut = { button, at: now };
+
+    handleAction(ensureHost(), button === 3 ? "back10" : "forward10");
+  }
+
   loadPlayerShortcutSettings();
-  activateRemotePolling(COMMAND_WAKE_MS);
   chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName !== "local" || !changes[SHORTCUT_STORAGE_KEY]) return;
     loadPlayerShortcutSettings();
@@ -714,13 +772,23 @@
     }
     return false;
   });
-  window.addEventListener("focus", () => registerCurrentSourceTab("window-focus"));
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") registerCurrentSourceTab("visible");
-  });
-  document.addEventListener("pointerdown", () => registerCurrentSourceTab("pointer"), true);
-  document.addEventListener("keydown", () => registerCurrentSourceTab("keydown"), true);
+  if (IS_TOP_FRAME) {
+    ensureHost();
+    registerCurrentSourceTab("load");
+    activateRemotePolling(COMMAND_WAKE_MS);
+    window.addEventListener("focus", () => registerCurrentSourceTab("window-focus"));
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") registerCurrentSourceTab("visible");
+    });
+    document.addEventListener("pointerdown", () => registerCurrentSourceTab("pointer"), true);
+    document.addEventListener("keydown", () => registerCurrentSourceTab("keydown"), true);
+  }
+  window.addEventListener("keydown", handleKeyboardShortcuts, true);
   document.addEventListener("keydown", handleKeyboardShortcuts, true);
+  window.addEventListener("mousedown", handleMouseButtonShortcuts, true);
+  document.addEventListener("mousedown", handleMouseButtonShortcuts, true);
+  window.addEventListener("auxclick", handleMouseButtonShortcuts, true);
+  document.addEventListener("auxclick", handleMouseButtonShortcuts, true);
   document.addEventListener("radprimer-speechify-jump-current-image", () => {
     jumpToCurrentImage();
   });

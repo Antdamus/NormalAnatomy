@@ -1,0 +1,533 @@
+{
+  "originalNoteCount": 38,
+  "correctedNoteCount": 43,
+  "removedOriginalRows": [
+    27
+  ],
+  "splitAddedNotes": 1,
+  "newImageRecognitionNotes": 4,
+  "newHighYieldNotes": 1,
+  "fields": [
+    "Clinical_Context",
+    "Image",
+    "Image_Annotated",
+    "Question",
+    "Most_Likely_Diagnosis",
+    "Entity_Label",
+    "Differential_Q",
+    "Differentials",
+    "Imaging_Differentiation",
+    "Original_Caption",
+    "Mechanism_Q",
+    "Mechanism",
+    "Boards_Trap_Q",
+    "Boards_Trap",
+    "High_Yield_Q",
+    "High_Yield_A",
+    "Radiopaedia_Link",
+    "Radiopaedia_Case_Context",
+    "Radiopaedia_Case_Summary",
+    "Radiopaedia_Case_Differential",
+    "summary",
+    "Tags"
+  ],
+  "rows": [
+    {
+      "originalRow": 1,
+      "context": "Adult patient 7QK4M9X2T6PL",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 2,
+      "context": "Adult patient J8R2V5N7C4YA",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 3,
+      "context": "Adult patient M3T9K6P2W8QF",
+      "disposition": "revised",
+      "reason": "Distinguish the displayed opposed-phase image from the normal in-phase image described but not staged.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 4,
+      "context": "Adult patient H7L4X9C2V6BN",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 5,
+      "context": "Adult patient R5D8K2M7Q4TZ",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 6,
+      "context": "63-year-old man with right upper quadrant pain P9W3L6X2C8AF",
+      "disposition": "revised",
+      "reason": "Preserve the pancreatic-cancer case context without changing the first-field identifier.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 7,
+      "context": "Young man V4N7Q2K9M5RY",
+      "disposition": "revised",
+      "reason": "Separate the case-established exposure from the nonspecific imaging appearance.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 8,
+      "context": "Adult patient C8T2H6P4X9LW",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 9,
+      "context": "Adult with abnormal liver function tests K6M3R8V2Q7YD",
+      "disposition": "revised",
+      "reason": "Remove the claim that ultrasound alone definitively establishes melanoma metastases.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 10,
+      "context": "Adult patient N4X9P2T6L8KC",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 11,
+      "context": "Adult patient F7Q3W9M2V5RA",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 12,
+      "context": "Adult patient T2L8C4N9Q6XP",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 13,
+      "context": "Adult patient Y5R2K7M4V9DG",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 14,
+      "context": "Adult patient B9P3X6T2Q8LN",
+      "disposition": "revised",
+      "reason": "Retained the imaging target and case group; moved mini-differential to UNKNOWN back and cleaned caption punctuation.",
+      "sourceBasis": "STATdx selected image captions and shared article interpretation"
+    },
+    {
+      "originalRow": 15,
+      "context": "Q7M2X9L4V6KP",
+      "disposition": "revised",
+      "reason": "Clarify that opposed-phase cancellation occurs when fat and water coexist in the same voxel.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 16,
+      "context": "L4V8Q2M7T9XR",
+      "disposition": "revised",
+      "reason": "The captured Core report lists caudate sparing but not the drainage anatomy. Verify and label the mechanism as outside clarification; make sparing conditional.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 17,
+      "context": "Z8K3M6Q2V9LT",
+      "disposition": "retained",
+      "reason": "Passes source support and single-target review.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 18,
+      "context": "C4R9T2M7X6QK",
+      "disposition": "revised",
+      "reason": "Split noncontrast attenuation assessment from the independent portal-phase criterion; remove the uncaptured 1-HU claim.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 19,
+      "context": "M8Q2V5L9R4TX",
+      "disposition": "retained",
+      "reason": "Passes source support and single-target review.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 20,
+      "context": "P6T3K9X2M7QV",
+      "disposition": "revised",
+      "reason": "Remove uncaptured renal-cortex comparison, sound-attenuation and deep-visualization elaborations.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 21,
+      "context": "R2V7M4Q9X6LK",
+      "disposition": "revised",
+      "reason": "Use the article-supported fissural/hepatic-vein distribution rather than an uncaptured list of focal-fat locations.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 22,
+      "context": "T9K4X2Q7M6RV",
+      "disposition": "revised",
+      "reason": "Remove starry-sky ultrasound appearance, which is not explicitly stated in the captured evidence.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 23,
+      "context": "V6M2R9Q4K7TX",
+      "disposition": "retained",
+      "reason": "Passes source support and single-target review.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 24,
+      "context": "X4Q8M2T7R9KV",
+      "disposition": "retained",
+      "reason": "Passes source support and single-target review.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 25,
+      "context": "K2V9R5M7Q4TX",
+      "disposition": "retained",
+      "reason": "Passes source support and single-target review.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 26,
+      "context": "N7Q3T9M2X6RV",
+      "disposition": "revised",
+      "reason": "Keep the useful portal-phase detection fact and remove a separate unsupported list of hypervascular metastatic primaries.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 27,
+      "context": "B4M8Q2V7T9RK",
+      "disposition": "deleted",
+      "reason": "Delete the generic metastasis-MRI signal card: T1-low/T2-high, melanin and blood-product details are not explicitly given in the captured Core facts or article. A statement that MRI appearances were used is not fact-level evidence. The supported CT/US metastatic recognition teaching remains.",
+      "sourceBasis": "No explicit fact-level evidence in supplied article or captured Core report."
+    },
+    {
+      "originalRow": 28,
+      "context": "D9T2R6M4Q8VX",
+      "disposition": "revised",
+      "reason": "Remove the uncaptured generic target-sign assertion; retain the directly documented melanoma ultrasound discriminator.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 29,
+      "context": "F3Q8V2M9T6RK",
+      "disposition": "retained",
+      "reason": "Passes source support and single-target review.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 30,
+      "context": "H8M2Q6V9R4TK",
+      "disposition": "revised",
+      "reason": "Keep captured hypoechoic lymphoma appearance and remove the uncaptured target sign.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 31,
+      "context": "J5R9M2Q7V4TX",
+      "disposition": "retained",
+      "reason": "Passes source support and single-target review.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 32,
+      "context": "L9Q4V2M8T6RK",
+      "disposition": "revised",
+      "reason": "Constrain this card to the explicit article microabscess pattern; remove uncaptured fungal diffusion and ultrasound details.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 33,
+      "context": "Q2M7T9V4R6KX",
+      "disposition": "revised",
+      "reason": "Keep HCC contrast discriminators while distinguishing them from an unconfirmed case diagnosis and unstaged ADC verification.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 34,
+      "context": "S7V2Q9M4T6RK",
+      "disposition": "retained",
+      "reason": "Passes source support and single-target review.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 35,
+      "context": "U4M9Q2R7V6TX",
+      "disposition": "revised",
+      "reason": "Remove the uncaptured acute edematous-mottled timeline; retain direct outflow obstruction and the documented parenchymal pattern.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 36,
+      "context": "W8Q3M6T2V9RK",
+      "disposition": "revised",
+      "reason": "Avoid a cross-modality binary rule or treating nonvisualized Doppler flow as sufficient in isolation.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 37,
+      "context": "A4V9M2Q7T6RK",
+      "disposition": "revised",
+      "reason": "Narrow the card to the contrast-imaging vascular discriminator and label the exact diagnostic definition as outside clarification.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": 38,
+      "context": "E7M3Q9V2T6RK",
+      "disposition": "retained",
+      "reason": "Passes source support and single-target review.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED and shared RadPrimer/STATdx article; bounded outside clarification where labeled"
+    },
+    {
+      "originalRow": null,
+      "context": "JE4AYQ6DIY2V",
+      "disposition": "split",
+      "reason": "Split from original row 18 so a portal-phase threshold is not confused with the unenhanced criterion.",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED; explicit 25-HU portal criterion and reduced reliability after contrast.",
+      "key": "portal_attenuation"
+    },
+    {
+      "originalRow": null,
+      "context": "36-year-old man with elevated liver enzymes U3ODR250RQMH",
+      "disposition": "added",
+      "reason": "Restore the omitted CT/MR pair without assigning an unsupported infectious or granulomatous diagnosis.",
+      "sourceBasis": "STATdx images 17-18; explicit same-patient captions and master-source uncertainty note.",
+      "key": "nodules_pair"
+    },
+    {
+      "originalRow": null,
+      "context": "Adult patient 9L7DC5QNH2NT",
+      "disposition": "added",
+      "reason": "Restore the omitted hepatosplenic granulomatous example; retain diagnostic uncertainty.",
+      "sourceBasis": "Shared article: Hepatic Sarcoidosis; STATdx image 19 and caption.",
+      "key": "granulomas"
+    },
+    {
+      "originalRow": null,
+      "context": "Adult patient EFSI8OOIIBY6",
+      "disposition": "added",
+      "reason": "Restore the omitted multipanel tumor-pattern example without asserting a caption-confirmed HCC or inventing an ADC panel.",
+      "sourceBasis": "STATdx image 20; shared article infiltrative HCC differential.",
+      "key": "infiltrative_composite"
+    },
+    {
+      "originalRow": null,
+      "context": "28-year-old man with type IV glycogen storage disease 588L3I3HFY8J",
+      "disposition": "added",
+      "reason": "Restore the omitted focal-mass example within the diffusely abnormal liver; do not test an unsupported universal glycogen-storage attenuation rule.",
+      "sourceBasis": "STATdx image 24: explicitly documented type IV glycogen-storage case and hepatic adenoma.",
+      "key": "glycogen_mass"
+    },
+    {
+      "originalRow": null,
+      "context": "LD7SVXIS2TNR",
+      "disposition": "added",
+      "reason": "Add the missing treatment-history clue because it changes the ranking of new low attenuation versus tumor infiltration.",
+      "sourceBasis": "Shared article: Steatosis, after chemotherapy or partial/complete pancreatic resection.",
+      "key": "treatment_fat"
+    }
+  ],
+  "highYieldGate": [
+    {
+      "originalRow": 17,
+      "context": "Z8K3M6Q2V9LT",
+      "gate": "differential discriminator",
+      "sourceBasis": "Both article: mass effect and traversing vessels"
+    },
+    {
+      "originalRow": 18,
+      "context": "C4R9T2M7X6QK",
+      "gate": "modality appearance / interpretation threshold",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED: unenhanced liver-spleen difference of at least 10 HU"
+    },
+    {
+      "originalRow": 19,
+      "context": "M8Q2V5L9R4TX",
+      "gate": "modality appearance",
+      "sourceBasis": "Both article and Core: opposed-phase signal loss"
+    },
+    {
+      "originalRow": 20,
+      "context": "P6T3K9X2M7QV",
+      "gate": "modality appearance / discriminator",
+      "sourceBasis": "Core: increased echogenicity; STATdx images 12-13"
+    },
+    {
+      "originalRow": 21,
+      "context": "R2V7M4Q9X6LK",
+      "gate": "differential discriminator",
+      "sourceBasis": "Both article: fissures/hepatic veins, no mass effect"
+    },
+    {
+      "originalRow": 22,
+      "context": "T9K4X2Q7M6RV",
+      "gate": "modality appearance / pitfall",
+      "sourceBasis": "Both article and Core: hepatitis can be normal; edema and massive-necrosis caveat"
+    },
+    {
+      "originalRow": 23,
+      "context": "V6M2R9Q4K7TX",
+      "gate": "contrast behavior",
+      "sourceBasis": "Both article and Core: early reflux, dilated veins and nutmeg enhancement"
+    },
+    {
+      "originalRow": 24,
+      "context": "X4Q8M2T7R9KV",
+      "gate": "modality appearance",
+      "sourceBasis": "STATdx image 8: Doppler and wedge-shaped CT infarcts"
+    },
+    {
+      "originalRow": 25,
+      "context": "K2V9R5M7Q4TX",
+      "gate": "pitfall",
+      "sourceBasis": "Both article; STATdx images 9-11: toxic injury can mimic fat"
+    },
+    {
+      "originalRow": 26,
+      "context": "N7Q3T9M2X6RV",
+      "gate": "contrast behavior",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED: most metastases hypovascular and best on portal venous phase"
+    },
+    {
+      "originalRow": 28,
+      "context": "D9T2R6M4Q8VX",
+      "gate": "modality appearance / discriminator",
+      "sourceBasis": "STATdx images 12-13: melanoma CT/US pair"
+    },
+    {
+      "originalRow": 29,
+      "context": "F3Q8V2M9T6RK",
+      "gate": "modality appearance / discriminator",
+      "sourceBasis": "Core explicit hypoenhancement/diffusion restriction; article lymphoma"
+    },
+    {
+      "originalRow": 30,
+      "context": "H8M2Q6V9R4TK",
+      "gate": "modality appearance",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED: hypoechoic hepatic lymphoma"
+    },
+    {
+      "originalRow": 31,
+      "context": "J5R9M2Q7V4TX",
+      "gate": "differential discriminator",
+      "sourceBasis": "Both article: sarcoidosis with liver/spleen granulomas and nodes"
+    },
+    {
+      "originalRow": 32,
+      "context": "L9Q4V2M8T6RK",
+      "gate": "pretest clue / modality appearance",
+      "sourceBasis": "Both article: immunocompromised host, hypodense CT/T2-bright microabscess-like lesions"
+    },
+    {
+      "originalRow": 33,
+      "context": "Q2M7T9V4R6KX",
+      "gate": "contrast behavior / pitfall",
+      "sourceBasis": "Both article infiltrative HCC and Core arterial enhancement/washout"
+    },
+    {
+      "originalRow": 34,
+      "context": "S7V2Q9M4T6RK",
+      "gate": "differential discriminator",
+      "sourceBasis": "Both article; STATdx image 22: radiation-field boundary"
+    },
+    {
+      "originalRow": 35,
+      "context": "U4M9Q2R7V6TX",
+      "gate": "modality appearance",
+      "sourceBasis": "Both article and Core: Budd-Chiari obstruction, caudate and peripheral injury"
+    },
+    {
+      "originalRow": 36,
+      "context": "W8Q3M6T2V9RK",
+      "gate": "modality appearance",
+      "sourceBasis": "Core: absent hepatic venous flow; article outflow obstruction"
+    },
+    {
+      "originalRow": 37,
+      "context": "A4V9M2Q7T6RK",
+      "gate": "report-critical discriminator",
+      "sourceBasis": "Core vascular invasion; labeled ACR LI-RADS outside clarification"
+    },
+    {
+      "originalRow": 38,
+      "context": "E7M3Q9V2T6RK",
+      "gate": "report-critical pivot",
+      "sourceBasis": "STATdx image 6: capsular retraction and ascites in fulminant hepatitis"
+    },
+    {
+      "originalRow": null,
+      "context": "JE4AYQ6DIY2V",
+      "gate": "contrast-phase interpretation pitfall",
+      "sourceBasis": "Captured Core evidence: core_evidence.txt, CORE_FACTS_USED: 25-HU portal criterion and reduced contrast reliability"
+    },
+    {
+      "originalRow": null,
+      "context": "LD7SVXIS2TNR",
+      "gate": "pretest clue that changes interpretation",
+      "sourceBasis": "Both article: chemotherapy and pancreatic-resection association with steatosis"
+    }
+  ],
+  "newIds": {
+    "portal_attenuation": "JE4AYQ6DIY2V",
+    "nodules_pair": "U3ODR250RQMH",
+    "granulomas": "9L7DC5QNH2NT",
+    "infiltrative_composite": "EFSI8OOIIBY6",
+    "glycogen_mass": "588L3I3HFY8J",
+    "treatment_fat": "LD7SVXIS2TNR"
+  },
+  "imageCoverage": {
+    "originalUsedImages": 18,
+    "correctedUsedImages": 23,
+    "restoredImageIds": [
+      "SDX-17",
+      "SDX-18",
+      "SDX-19",
+      "SDX-20",
+      "SDX-24"
+    ]
+  },
+  "coreEvidence": {
+    "accepted": true,
+    "status": "USED",
+    "recoveredFromUnwrappedReport": false,
+    "basis": "Named textbook file, liver chapter page ranges and explicit captured fact list; underlying PDF not independently reopened."
+  },
+  "ankiTemplateCheck": {
+    "installedTemplatesVerified": false,
+    "reason": "Local service on 8765 is the review-only bridge (modelTemplates returned HTTP 404); profile directory read was denied.",
+    "safeFallback": "Differentials and Differential_Q blank; mini-differentials moved to top of Imaging_Differentiation.",
+    "modifiedInstalledNoteType": false
+  },
+  "outsideClarifications": [
+    {
+      "originalRow": 16,
+      "url": "https://karger.com/ddi/article/44/2/192/945160/Ultrasound-Characteristics-of-Budd-Chiari-Syndrome",
+      "claim": "Separate caudate venous drainage and conditional relative preservation/hypertrophy."
+    },
+    {
+      "originalRow": 37,
+      "url": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/LI-RADS/LI-RADS-CT-MRI-2018-Core.pdf",
+      "claim": "Definite enhancing intravascular soft tissue establishes tumor in vein; occlusion alone does not."
+    }
+  ]
+}

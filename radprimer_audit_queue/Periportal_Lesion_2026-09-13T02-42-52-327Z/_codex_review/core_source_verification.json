@@ -1,0 +1,22 @@
+{
+  "status": "verified",
+  "capturedEvidenceStatus": "USED",
+  "sourceFile": "C:\\Users\\josem.000\\Downloads\\junzi-shi-core-radiology-a-visual-approach-to.pdf",
+  "sha256": "adff4e9c022c84a5f7398de4d53f763efb50550279ac776f839898f278321cee",
+  "sourceBasis": "Core Radiology, Second Edition, 2021; printed GI pages",
+  "pageChecks": {
+    "100": "Chemical-shift signal loss supports hepatic fat, verifying the existing image-back clarification.",
+    "103": "Peribiliary cysts and recanalized paraumbilical vein in cirrhosis.",
+    "109": "Lymphoma may preserve vasculature and appear hypoechoic/hypoenhancing.",
+    "116": "Nonspecific starry-sky ultrasound, periportal edema and gallbladder wall edema in hepatitis; imaging may be normal.",
+    "121": "Periportal edema is an expected postoperative liver-transplant finding.",
+    "122": "Cardiac hepatopathy with enlarged hepatic veins/IVC and contrast reflux. This corrects the broad page-range attribution in the staged report.",
+    "125": "Portal vein thrombosis/cavernous transformation and characteristic portal-venous spectral spikes with gas.",
+    "142": "Visually verified two-column gas table: pneumobilia central, portal venous gas peripheral; spiky Doppler waveform belongs to the portal venous gas column.",
+    "143": "Ascending cholangitis wall thickening/hyperenhancement/debris; imaging may be normal; PSC beading.",
+    "144": "AIDS/PSC overlap and papillary-stenosis distinction; recurrent pyogenic cholangitis pattern."
+  },
+  "originalEvidenceFileUnchanged": true,
+  "outsideClarificationsAdded": false,
+  "visualEvidence": "_codex_review/core_table_p142.png"
+}

@@ -1,0 +1,544 @@
+[
+  {
+    "originalRow": 1,
+    "clinicalContext": "Patient with abdominal pain YSZ11B51D8NN",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-01"
+    ]
+  },
+  {
+    "originalRow": 2,
+    "clinicalContext": "Patient ZNEQUNWIEBNW",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-02"
+    ]
+  },
+  {
+    "originalRow": 3,
+    "clinicalContext": "Patient K5F9BLBSHUT6",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-03"
+    ]
+  },
+  {
+    "originalRow": 4,
+    "clinicalContext": "Patient UAD7IQRK2H08",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-04"
+    ]
+  },
+  {
+    "originalRow": 5,
+    "clinicalContext": "Patient AV435JM3XPIJ",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Most_Likely_Diagnosis",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-05"
+    ]
+  },
+  {
+    "originalRow": 6,
+    "clinicalContext": "Patient BVU90JGULFTJ",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-06"
+    ]
+  },
+  {
+    "originalRow": 7,
+    "clinicalContext": "Patient with abdominal pain S39A2OYNUG87",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-07"
+    ]
+  },
+  {
+    "originalRow": 8,
+    "clinicalContext": "Patient 7GU19CMY90GV",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-08"
+    ]
+  },
+  {
+    "originalRow": 9,
+    "clinicalContext": "Patient C52SRF2PKLGO",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-09"
+    ]
+  },
+  {
+    "originalRow": 10,
+    "clinicalContext": "Patient HJSSTWTYEZI5",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-10"
+    ]
+  },
+  {
+    "originalRow": 11,
+    "clinicalContext": "Patient with abdominal pain 1HRN10NAFN83",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-11",
+      "RP-12"
+    ]
+  },
+  {
+    "originalRow": 12,
+    "clinicalContext": "Patient PA6G6941AWTE",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-13"
+    ]
+  },
+  {
+    "originalRow": 13,
+    "clinicalContext": "Patient ODLA63W5B8FO",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "RP-14"
+    ]
+  },
+  {
+    "originalRow": 14,
+    "clinicalContext": "Patient with abdominal pain 8MEZFIXCI4HW",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Most_Likely_Diagnosis",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-01"
+    ]
+  },
+  {
+    "originalRow": 15,
+    "clinicalContext": "Patient 8SC3OOI9VFAR",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Most_Likely_Diagnosis",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-02"
+    ]
+  },
+  {
+    "originalRow": 16,
+    "clinicalContext": "22-year-old woman after trauma DC7GET1J3RHH",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-03"
+    ]
+  },
+  {
+    "originalRow": 17,
+    "clinicalContext": "18-year-old male after trauma HOVKCLOH8G2Q",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-04",
+      "SDX-05"
+    ]
+  },
+  {
+    "originalRow": 18,
+    "clinicalContext": "78-year-old woman DGFYUL8D7EF5",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-06",
+      "SDX-07"
+    ]
+  },
+  {
+    "originalRow": 19,
+    "clinicalContext": "35-year-old man Q45L75DA3MF8",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Most_Likely_Diagnosis",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-08",
+      "SDX-09"
+    ]
+  },
+  {
+    "originalRow": 20,
+    "clinicalContext": "Patient R1R1CIQAYY27",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-10",
+      "SDX-11"
+    ]
+  },
+  {
+    "originalRow": 21,
+    "clinicalContext": "Patient with fever RJ89XAB3JLM0",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-12",
+      "SDX-13"
+    ]
+  },
+  {
+    "originalRow": 22,
+    "clinicalContext": "60-year-old man 87GZ09NSQX24",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-14",
+      "SDX-15",
+      "SDX-16"
+    ]
+  },
+  {
+    "originalRow": 23,
+    "clinicalContext": "Older woman E7HW7EV8ZTP0",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-17",
+      "SDX-18"
+    ]
+  },
+  {
+    "originalRow": 24,
+    "clinicalContext": "45-year-old woman with fever GAGFOGH8XE7A",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-19"
+    ]
+  },
+  {
+    "originalRow": 25,
+    "clinicalContext": "Patient with right upper quadrant pain D3QNL44OEAYD",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-20"
+    ]
+  },
+  {
+    "originalRow": 26,
+    "clinicalContext": "Patient IJEY0QNZSOYE",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-21",
+      "SDX-22"
+    ]
+  },
+  {
+    "originalRow": 27,
+    "clinicalContext": "Patient VYZ9SRJ36V6E",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Most_Likely_Diagnosis",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-23"
+    ]
+  },
+  {
+    "originalRow": 28,
+    "clinicalContext": "Patient 672OQYYRB8YB",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-24"
+    ]
+  },
+  {
+    "originalRow": 29,
+    "clinicalContext": "20-year-old woman after trauma PSNUNEMWTFW3",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-25"
+    ]
+  },
+  {
+    "originalRow": 30,
+    "clinicalContext": "45-year-old woman 70XSHVUDCKVC",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-26",
+      "SDX-27"
+    ]
+  },
+  {
+    "originalRow": 31,
+    "clinicalContext": "58-year-old woman 1DWHFP1VWJX2",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-28",
+      "SDX-29"
+    ]
+  },
+  {
+    "originalRow": 32,
+    "clinicalContext": "Patient 75CO9JJAKUOS",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-30"
+    ]
+  },
+  {
+    "originalRow": 33,
+    "clinicalContext": "Patient 7T73CQKV293H",
+    "changedFields": [
+      "Image_Annotated",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-31"
+    ]
+  },
+  {
+    "originalRow": 34,
+    "clinicalContext": "Patient with jaundice IA8HCLDDWBZT",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Most_Likely_Diagnosis",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-32"
+    ]
+  },
+  {
+    "originalRow": 36,
+    "clinicalContext": "Patient 1VWE5KICWC3Y",
+    "changedFields": [
+      "Image_Annotated",
+      "Question",
+      "Most_Likely_Diagnosis",
+      "Imaging_Differentiation",
+      "Original_Caption"
+    ],
+    "masterImageIds": [
+      "SDX-34"
+    ]
+  },
+  {
+    "originalRow": 37,
+    "clinicalContext": "2DU8JRJBAVAU",
+    "changedFields": [
+      "Mechanism"
+    ],
+    "masterImageIds": []
+  },
+  {
+    "originalRow": 38,
+    "clinicalContext": "TZSY9OZW5E6C",
+    "changedFields": [
+      "Mechanism"
+    ],
+    "masterImageIds": []
+  },
+  {
+    "originalRow": 39,
+    "clinicalContext": "C69RDTN36AKT",
+    "changedFields": [
+      "Mechanism"
+    ],
+    "masterImageIds": []
+  },
+  {
+    "originalRow": 41,
+    "clinicalContext": "WDZ4T1W12FW6",
+    "changedFields": [
+      "Mechanism"
+    ],
+    "masterImageIds": []
+  },
+  {
+    "originalRow": 42,
+    "clinicalContext": "HDQ9RQYNW9RA",
+    "changedFields": [
+      "Mechanism"
+    ],
+    "masterImageIds": []
+  },
+  {
+    "originalRow": 47,
+    "clinicalContext": "4A08OLNLBD8N",
+    "changedFields": [
+      "Boards_Trap"
+    ],
+    "masterImageIds": []
+  },
+  {
+    "originalRow": 51,
+    "clinicalContext": "NUA4L22UPYDQ",
+    "changedFields": [
+      "High_Yield_Q",
+      "High_Yield_A"
+    ],
+    "masterImageIds": []
+  },
+  {
+    "originalRow": 52,
+    "clinicalContext": "2WUUKNEXTZH8",
+    "changedFields": [
+      "High_Yield_A"
+    ],
+    "masterImageIds": []
+  },
+  {
+    "originalRow": 54,
+    "clinicalContext": "F364K8TXP67K",
+    "changedFields": [
+      "High_Yield_A"
+    ],
+    "masterImageIds": []
+  },
+  {
+    "originalRow": 62,
+    "clinicalContext": "3XG65H8QPFCS",
+    "changedFields": [
+      "High_Yield_A"
+    ],
+    "masterImageIds": []
+  }
+]

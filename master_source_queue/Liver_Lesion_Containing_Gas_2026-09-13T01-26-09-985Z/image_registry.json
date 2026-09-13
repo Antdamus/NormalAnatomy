@@ -1,0 +1,2494 @@
+[
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 1,
+    "imageId": "68061f4e-052c-4acf-8fc2-0e6f8d88395d",
+    "baseName": "Liver_Lesion_Containing_Gas1",
+    "caption": "Axial CECT shows a liver abscess with fluid and gas. Note the percutaneously placed drainage catheter <img src=\"arrow_WC.png\">.",
+    "plainFilename": "RP-01_RadPrimer_plain_Liver_Lesion_Containing_Gas1.jpg",
+    "annotatedFilename": "RP-01_RadPrimer_annotated_Liver_Lesion_Containing_Gas1_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/68061f4e-052c-4acf-8fc2-0e6f8d88395d?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/68061f4e-052c-4acf-8fc2-0e6f8d88395d?style=xlarge&annotated=true",
+    "masterImageId": "RP-01",
+    "filename": "RP-01_RadPrimer_plain_Liver_Lesion_Containing_Gas1.jpg",
+    "group": "GAS-CASE-01",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_68061f4e.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/68061f4e-052c-4acf-8fc2-0e6f8d88395d?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "623bd0f18f2cd6c02c3b9501076a2c282bdbf78fb961559c0813d59b10dcaeca",
+      "rgbSha256": "8dc2da8988e7162c1c80d49d6d95c6c5adc980e4fe0b6dbcd443a3f1f5c8025f",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "visualObservation": "Same axial CT slice, right hepatic gas-fluid cavity, three bright portions of the drainage catheter, rib profiles and vertebra.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 1",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas1.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas1_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-01",
+    "panelCount": 1,
+    "caseContext": "Keep the percutaneous drainage catheter in view. Gas in this treated cavity is not proof of the original route of gas entry.",
+    "teachingTopic": "Drained pyogenic abscess",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-01",
+    "equivalentImageIds": [
+      "SDX-01"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "68061f4e-052c-4acf-8fc2-0e6f8d88395d",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_68061f4e.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_68061f4e.jpg",
+      "radPrimerSha256": "623bd0f18f2cd6c02c3b9501076a2c282bdbf78fb961559c0813d59b10dcaeca",
+      "statdxSha256": "1d82f4a520ff45ff9c2935502e96f8e6653b18ef6b4da3d144fc4e480414735f",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-01; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT shows a liver abscess with fluid and gas. Note the percutaneously placed drainage catheter <img src=\"arrow_WC.png\">.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 2,
+    "imageId": "4305b0b0-5332-4498-babe-231c7af5ef56",
+    "baseName": "Liver_Lesion_Containing_Gas2",
+    "caption": "Axial CECT shows 2 abscesses <img src=\"arrow_WS.png\">, one of which contains gas. This patient has ascending cholangitis, and gas may enter the abscesses from gas-containing ducts <img src=\"arrow_WC.png\"> or result from infection itself.",
+    "plainFilename": "RP-02_RadPrimer_plain_Liver_Lesion_Containing_Gas2.jpg",
+    "annotatedFilename": "RP-02_RadPrimer_annotated_Liver_Lesion_Containing_Gas2_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/4305b0b0-5332-4498-babe-231c7af5ef56?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/4305b0b0-5332-4498-babe-231c7af5ef56?style=xlarge&annotated=true",
+    "masterImageId": "RP-02",
+    "filename": "RP-02_RadPrimer_plain_Liver_Lesion_Containing_Gas2.jpg",
+    "group": "GAS-CASE-02",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_4305b0b0.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/4305b0b0-5332-4498-babe-231c7af5ef56?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "421099f076de2b20ed67971604c2e1865e5a00370d76c72ec5f8825d95d73877",
+      "rgbSha256": "ee3d479d6a943be5172a57a5b097e1e1a2f438d78885e692aa47ab9fcba903e8",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "visualObservation": "Same cropped axial CT slice, two low-attenuation foci, small posterior gas pocket, hilar vascular configuration and vertebral level.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 2",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas2.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas2_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-02",
+    "panelCount": 1,
+    "caseContext": "Two abscesses occur with ascending cholangitis. Preserve the caption's alternatives: gas may reflux from the ducts or arise from infection.",
+    "teachingTopic": "Cholangitis-associated abscesses",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-02",
+    "equivalentImageIds": [
+      "SDX-02"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "4305b0b0-5332-4498-babe-231c7af5ef56",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_4305b0b0.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_4305b0b0.jpg",
+      "radPrimerSha256": "421099f076de2b20ed67971604c2e1865e5a00370d76c72ec5f8825d95d73877",
+      "statdxSha256": "90e2eb641add6c0778647c0b1014edf82809332cd12a98ec1c30eb6eb1721154",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-02; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT shows 2 abscesses <img src=\"arrow_WS.png\">, one of which contains gas. This patient has ascending cholangitis, and gas may enter the abscesses from gas-containing ducts <img src=\"arrow_WC.png\"> or result from infection itself.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 3,
+    "imageId": "b6ccde39-d343-4672-81bc-2318aeeab324",
+    "baseName": "Liver_Lesion_Containing_Gas3",
+    "caption": "Axial CECT shows nonenhancement of the left lobe <img src=\"arrow_WS.png\"> with portal venous gas <img src=\"arrow_WC.png\">; infarction followed attempted resection of peripheral cholangiocarcinoma.",
+    "plainFilename": "RP-03_RadPrimer_plain_Liver_Lesion_Containing_Gas3.jpg",
+    "annotatedFilename": "RP-03_RadPrimer_annotated_Liver_Lesion_Containing_Gas3_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/b6ccde39-d343-4672-81bc-2318aeeab324?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/b6ccde39-d343-4672-81bc-2318aeeab324?style=xlarge&annotated=true",
+    "masterImageId": "RP-03",
+    "filename": "RP-03_RadPrimer_plain_Liver_Lesion_Containing_Gas3.jpg",
+    "group": "GAS-CASE-03",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_b6ccde39.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/b6ccde39-d343-4672-81bc-2318aeeab324?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "97b32d3c58be1d3687acb43fefff636e71e3e34555a4fea1076c5beebac269cc",
+      "rgbSha256": "d55d8b0444b3ee823aba02e51b74c1dfd5beb31fe5af7445044fd141fc74f071",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "visualObservation": "Same axial CT slice, nonenhancing left lobe with identical branching gas, bright operative material and right-lobe perfusion pattern.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 3",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas3.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas3_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-03",
+    "panelCount": 1,
+    "caseContext": "Infarction followed attempted peripheral cholangiocarcinoma resection; retain the nonenhancing left lobe and portal gas together.",
+    "teachingTopic": "Postoperative hepatic infarction",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-03",
+    "equivalentImageIds": [
+      "SDX-03"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "b6ccde39-d343-4672-81bc-2318aeeab324",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_b6ccde39.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_b6ccde39.jpg",
+      "radPrimerSha256": "97b32d3c58be1d3687acb43fefff636e71e3e34555a4fea1076c5beebac269cc",
+      "statdxSha256": "88ea58da613783b242de9dc73c3ed36b3fea351cdd608f55deb15ad5a83e4d97",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-03; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT shows nonenhancement of the left lobe <img src=\"arrow_WS.png\"> with portal venous gas <img src=\"arrow_WC.png\">; infarction followed attempted resection of peripheral cholangiocarcinoma.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 4,
+    "imageId": "952227a7-8776-44c9-9e51-dbea48502822",
+    "baseName": "Liver_Lesion_Containing_Gas4",
+    "caption": "Axial CECT shows devascularization of the right lobe from blunt trauma. The hepatic artery and veins to the right lobe were avulsed. The gas bubble <img src=\"arrow_WS.png\"> is due to infarction, not infection.",
+    "plainFilename": "RP-04_RadPrimer_plain_Liver_Lesion_Containing_Gas4.jpg",
+    "annotatedFilename": "RP-04_RadPrimer_annotated_Liver_Lesion_Containing_Gas4_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/952227a7-8776-44c9-9e51-dbea48502822?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/952227a7-8776-44c9-9e51-dbea48502822?style=xlarge&annotated=true",
+    "masterImageId": "RP-04",
+    "filename": "RP-04_RadPrimer_plain_Liver_Lesion_Containing_Gas4.jpg",
+    "group": "GAS-CASE-04",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_952227a7.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/952227a7-8776-44c9-9e51-dbea48502822?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "306bfa4abfed85c9a17015369b5c2d28e0db142dc52beb183710e30f30531ab3",
+      "rgbSha256": "12c4908d60eb3922f8195f573ad21fe5bce2267635a43ecba4cd65493bfe68ef",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "visualObservation": "Same axial CT slice, large devascularized right-lobe region, isolated tiny gas bubble, contrast-filled stomach and pleural fluid.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 4",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas4.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas4_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-04",
+    "panelCount": 1,
+    "caseContext": "Blunt trauma avulsed the right-lobe hepatic artery and veins. The source attributes gas to infarction without infection in this case.",
+    "teachingTopic": "Traumatic devascularization",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-04",
+    "equivalentImageIds": [
+      "SDX-04"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "952227a7-8776-44c9-9e51-dbea48502822",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_952227a7.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_952227a7.jpg",
+      "radPrimerSha256": "306bfa4abfed85c9a17015369b5c2d28e0db142dc52beb183710e30f30531ab3",
+      "statdxSha256": "4f5e240beef55db7bfa3b233512b78c84eb44b8305cbeedd3ed77be227be352f",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-04; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT shows devascularization of the right lobe from blunt trauma. The hepatic artery and veins to the right lobe were avulsed. The gas bubble <img src=\"arrow_WS.png\"> is due to infarction, not infection.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 5,
+    "imageId": "fc0bbfed-ac5c-4f44-9baa-2299f6ec3218",
+    "baseName": "Liver_Lesion_Containing_Gas5",
+    "caption": "Axial CECT in a colon cancer patient shows metastases <img src=\"arrow_WS.png\">, some of which have been treated with radiofrequency ablation. One of these has gas within it as well as surgical clips <img src=\"arrow_WC.png\">, the latter the result of bleeding after ablation that required intervention. Gas bubbles are not the result of infection but rather infarction of hepatic tissue (or tumor).",
+    "plainFilename": "RP-05_RadPrimer_plain_Liver_Lesion_Containing_Gas5.jpg",
+    "annotatedFilename": "RP-05_RadPrimer_annotated_Liver_Lesion_Containing_Gas5_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/fc0bbfed-ac5c-4f44-9baa-2299f6ec3218?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/fc0bbfed-ac5c-4f44-9baa-2299f6ec3218?style=xlarge&annotated=true",
+    "masterImageId": "RP-05",
+    "filename": "RP-05_RadPrimer_plain_Liver_Lesion_Containing_Gas5.jpg",
+    "group": "GAS-CASE-05",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_fc0bbfed.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/fc0bbfed-ac5c-4f44-9baa-2299f6ec3218?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "060d3c8d1fe3c81d6a2b702737cbb4e16887e92cc1e23eab0c1f369f7662a9b1",
+      "rgbSha256": "5d7a24d7fecce4630c11994b515db36420c84ad8428ef6189bbebca18235a13c",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "visualObservation": "Same axial CT slice, clustered gas in the treated right-lobe lesion, bright clip, adjacent low-attenuation lesion and hilar vessels.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 5",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas5.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas5_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-05",
+    "panelCount": 1,
+    "caseContext": "Colon-cancer metastases after radiofrequency ablation; clips reflect intervention for post-ablation bleeding. Keep treated and other visible lesions together.",
+    "teachingTopic": "Tumor following radiofrequency ablation",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-05",
+    "equivalentImageIds": [
+      "SDX-05"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "fc0bbfed-ac5c-4f44-9baa-2299f6ec3218",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_fc0bbfed.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_fc0bbfed.jpg",
+      "radPrimerSha256": "060d3c8d1fe3c81d6a2b702737cbb4e16887e92cc1e23eab0c1f369f7662a9b1",
+      "statdxSha256": "021fd003b894493ee3207912c9c33957bcc66c8ce969e65e64527611873e2bfd",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-05; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT in a colon cancer patient shows metastases <img src=\"arrow_WS.png\">, some of which have been treated with radiofrequency ablation. One of these has gas within it as well as surgical clips <img src=\"arrow_WC.png\">, the latter the result of bleeding after ablation that required intervention. Gas bubbles are not the result of infection but rather infarction of hepatic tissue (or tumor).",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 6,
+    "imageId": "368cb6d8-9580-4e83-bcb0-3d45eadd4a29",
+    "baseName": "Liver_Lesion_Containing_Gas6",
+    "caption": "Axial CECT shows 2 large hepatic masses <img src=\"arrow_WS.png\"> (metastatic breast cancer). The larger lesion has gas due to tumor infarction as a result of chemotherapy; there was no infection.",
+    "plainFilename": "RP-06_RadPrimer_plain_Liver_Lesion_Containing_Gas6.jpg",
+    "annotatedFilename": "RP-06_RadPrimer_annotated_Liver_Lesion_Containing_Gas6_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/368cb6d8-9580-4e83-bcb0-3d45eadd4a29?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/368cb6d8-9580-4e83-bcb0-3d45eadd4a29?style=xlarge&annotated=true",
+    "masterImageId": "RP-06",
+    "filename": "RP-06_RadPrimer_plain_Liver_Lesion_Containing_Gas6.jpg",
+    "group": "GAS-CASE-06",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_368cb6d8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/368cb6d8-9580-4e83-bcb0-3d45eadd4a29?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "27e880488519cc6e9765b8a0032f0b900c611a27307f5b7b705671fd15ec4252",
+      "rgbSha256": "d4f0a7d3ba57df13759b5746ca2cc663e9be1a652597a617d63174d0c0c517b2",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "visualObservation": "Same axial CT slice, very large gas-filled right hepatic mass, smaller heterogeneous left-sided mass and spleen outline.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 6",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas6.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas6_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-06",
+    "panelCount": 1,
+    "caseContext": "Breast-cancer metastases after chemotherapy; the source states that gas reflects tumor infarction without infection in this case.",
+    "teachingTopic": "Tumor following chemotherapy",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-06",
+    "equivalentImageIds": [
+      "SDX-06"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "368cb6d8-9580-4e83-bcb0-3d45eadd4a29",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_368cb6d8.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_368cb6d8.jpg",
+      "radPrimerSha256": "27e880488519cc6e9765b8a0032f0b900c611a27307f5b7b705671fd15ec4252",
+      "statdxSha256": "d0af83d109cf4efe231d63d68303d0d810dae203afc8b70f2462ff3ca04e7908",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-06; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT shows 2 large hepatic masses <img src=\"arrow_WS.png\"> (metastatic breast cancer). The larger lesion has gas due to tumor infarction as a result of chemotherapy; there was no infection.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 7,
+    "imageId": "cd5b7588-9841-4592-b34c-ce6f5cda6518",
+    "baseName": "Liver_Lesion_Containing_Gas7",
+    "caption": "Axial T2 MR in a 63-year-old man with pancreatic cancer and right upper quadrant pain shows fluid and air <img src=\"arrow_WS.png\"> corresponding to T1-hyper- and hypointense signal, respectively, on T1 pre- <img src=\"arrow_WO.png\">, arterial- <img src=\"arrow_WC.png\">, and venous- <img src=\"arrow_BS.png\"> phase images with absence of enhancement, representing a gas-containing abscess.",
+    "plainFilename": "RP-07_RadPrimer_plain_Liver_Lesion_Containing_Gas7.jpg",
+    "annotatedFilename": "RP-07_RadPrimer_annotated_Liver_Lesion_Containing_Gas7_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/cd5b7588-9841-4592-b34c-ce6f5cda6518?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/cd5b7588-9841-4592-b34c-ce6f5cda6518?style=xlarge&annotated=true",
+    "masterImageId": "RP-07",
+    "filename": "RP-07_RadPrimer_plain_Liver_Lesion_Containing_Gas7.jpg",
+    "group": "GAS-CASE-07",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_cd5b7588.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/cd5b7588-9841-4592-b34c-ce6f5cda6518?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "f20c716d7037c58461e48d8d88e98b0a7da2a6b237e374e677da71d4c4d1f899",
+      "rgbSha256": "c173dda982274099e9a225cc983829810c415beeebba3293265d59489ccd2585",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "visualObservation": "Same four-panel MR composite in the same arrangement; matching gas-fluid focus, liver contours and vessels in every panel.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 7",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas7.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas7_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-07",
+    "panelCount": 4,
+    "caseContext": "Atomic four-panel MR composite in a 63-year-old man with pancreatic cancer and right upper quadrant pain: T2, precontrast T1, arterial and venous phase images. Keep all panels; absence of enhancement refers to the depicted contents, not a rule that abscess walls never enhance.",
+    "teachingTopic": "Gas-containing abscess MR composite",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-07",
+    "equivalentImageIds": [
+      "SDX-07"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "cd5b7588-9841-4592-b34c-ce6f5cda6518",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_cd5b7588.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_cd5b7588.jpg",
+      "radPrimerSha256": "f20c716d7037c58461e48d8d88e98b0a7da2a6b237e374e677da71d4c4d1f899",
+      "statdxSha256": "d9901e6277b99227ae85ed085ec37d27b99ffd2b79968057ac1821b2b689a842",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-07; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial T2 MR in a 63-year-old man with pancreatic cancer and right upper quadrant pain shows fluid and air <img src=\"arrow_WS.png\"> corresponding to T1-hyper- and hypointense signal, respectively, on T1 pre- <img src=\"arrow_WO.png\">, arterial- <img src=\"arrow_WC.png\">, and venous- <img src=\"arrow_BS.png\"> phase images with absence of enhancement, representing a gas-containing abscess.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WO.png",
+      "arrow_WC.png",
+      "arrow_BS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 8,
+    "imageId": "76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e",
+    "baseName": "Liver_Lesion_Containing_Gas8",
+    "caption": "Coronal CECT shows extensive bowel pneumatosis <img src=\"arrow_WO.png\"> from ischemia and portal venous gas in the periphery of the liver <img src=\"arrow_WS.png\">.",
+    "plainFilename": "RP-08_RadPrimer_plain_Liver_Lesion_Containing_Gas8.jpg",
+    "annotatedFilename": "RP-08_RadPrimer_annotated_Liver_Lesion_Containing_Gas8_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e?style=xlarge&annotated=true",
+    "masterImageId": "RP-08",
+    "filename": "RP-08_RadPrimer_plain_Liver_Lesion_Containing_Gas8.jpg",
+    "group": "GAS-CASE-08",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_76abb8fe.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "1d6e07ff37672ff560f99b4e48756fdda6e50b0be422b91cb0db7ef89a35d928",
+      "rgbSha256": "60c093ee3543a276c7fde11d0e3ad1e3390f7c2ce788c36e8e834ae266f71fb3",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "visualObservation": "Same coronal CT reconstruction, peripheral branching hepatic gas, extensive bowel pneumatosis, distended stomach and aortic calcification.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 8",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas8.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas8_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-08",
+    "panelCount": 1,
+    "caseContext": "Keep the coronal liver-and-bowel field together to show peripheral portal gas and pneumatosis. No same-patient link to the separate ultrasound example is documented.",
+    "teachingTopic": "Portal gas and bowel pneumatosis on CT",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-08",
+    "equivalentImageIds": [
+      "SDX-08"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_76abb8fe.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_76abb8fe.jpg",
+      "radPrimerSha256": "1d6e07ff37672ff560f99b4e48756fdda6e50b0be422b91cb0db7ef89a35d928",
+      "statdxSha256": "2920f34264e90fe7922c5129898d029b08097d64ad5d87912ee48611fcd6714c",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-08; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Coronal CECT shows extensive bowel pneumatosis <img src=\"arrow_WO.png\"> from ischemia and portal venous gas in the periphery of the liver <img src=\"arrow_WS.png\">.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WO.png",
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 9,
+    "imageId": "11137402-c39b-4866-8cc4-defaea348d11",
+    "baseName": "Liver_Lesion_Containing_Gas9",
+    "caption": "US in a woman with cirrhosis and acute abdominal pain following a hypotensive episode shows bubbles of gas <img src=\"arrow_WS.png\"> within the portal veins. CT showed pneumatosis within bowel walls and luminal distention with fluid due to bowel infarction.",
+    "plainFilename": "RP-09_RadPrimer_plain_Liver_Lesion_Containing_Gas9.jpg",
+    "annotatedFilename": "RP-09_RadPrimer_annotated_Liver_Lesion_Containing_Gas9_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/11137402-c39b-4866-8cc4-defaea348d11?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/11137402-c39b-4866-8cc4-defaea348d11?style=xlarge&annotated=true",
+    "masterImageId": "RP-09",
+    "filename": "RP-09_RadPrimer_plain_Liver_Lesion_Containing_Gas9.jpg",
+    "group": "GAS-CASE-09",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_11137402.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/11137402-c39b-4866-8cc4-defaea348d11?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "80409f55902075c314b16561a3084a3d9309fca64f8b1a93ae5b73062a45053e",
+      "rgbSha256": "b2bffbd680f3944f080f8f7dfbc4171be02c3129ce21cf495f308263ffe46c31",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "visualObservation": "Same two-panel ultrasound composite with identical portal branching, echogenic gas foci and speckle configuration in each panel.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 9",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas9.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas9_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-09",
+    "panelCount": 2,
+    "caseContext": "Atomic two-panel ultrasound composite in a woman with cirrhosis after hypotension. CT findings are caption-only in this case; the actual CT is not supplied. Panel timing/order is not documented; do not invent a cine sequence or link to STATdx image 8.",
+    "teachingTopic": "Portal venous gas ultrasound composite",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-09",
+    "equivalentImageIds": [
+      "SDX-09"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "11137402-c39b-4866-8cc4-defaea348d11",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_11137402.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_11137402.jpg",
+      "radPrimerSha256": "80409f55902075c314b16561a3084a3d9309fca64f8b1a93ae5b73062a45053e",
+      "statdxSha256": "76bc4a6165b27a5714e55b9496f0c9314efff4261fccc850e81c9ece87b1d1e6",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-09; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "US in a woman with cirrhosis and acute abdominal pain following a hypotensive episode shows bubbles of gas <img src=\"arrow_WS.png\"> within the portal veins. CT showed pneumatosis within bowel walls and luminal distention with fluid due to bowel infarction.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 10,
+    "imageId": "10f9567c-360a-42e0-9a48-704af9fc4d65",
+    "baseName": "Liver_Lesion_Containing_Gas10",
+    "caption": "Axial CECT shows a surgical clip and collection of gas <img src=\"arrow_WS.png\"> in or adjacent to the liver. This is oxidized surgical gelatin (Surgicel) that was used as a hemostatic device and left in place. Note the relative absence of fluid within the collection.",
+    "plainFilename": "RP-10_RadPrimer_plain_Liver_Lesion_Containing_Gas10.jpg",
+    "annotatedFilename": "RP-10_RadPrimer_annotated_Liver_Lesion_Containing_Gas10_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/10f9567c-360a-42e0-9a48-704af9fc4d65?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/10f9567c-360a-42e0-9a48-704af9fc4d65?style=xlarge&annotated=true",
+    "masterImageId": "RP-10",
+    "filename": "RP-10_RadPrimer_plain_Liver_Lesion_Containing_Gas10.jpg",
+    "group": "GAS-CASE-10",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_10f9567c.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/10f9567c-360a-42e0-9a48-704af9fc4d65?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "ed4256ea6151cce9b98248b9c47ebcc2cb4af4b218ca81324d20b10f42e67f25",
+      "rgbSha256": "cc866bda1d7860719632083b35a421fe1699c252b057c80f008486ea06a33a6b",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "visualObservation": "Same axial upper-abdominal CT slice, tightly packed gas adjacent to a bright clip, little local fluid and identical kidney/vessel contours.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 10",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas10.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas10_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-10",
+    "panelCount": 1,
+    "caseContext": "Gas-containing hemostatic material near the liver with relatively little local fluid. Use the verified material name, oxidized regenerated cellulose (Surgicel). No documented follow-up relationship to the pelvic example.",
+    "teachingTopic": "Postoperative hemostatic material",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-10",
+    "equivalentImageIds": [
+      "SDX-10"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "10f9567c-360a-42e0-9a48-704af9fc4d65",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_10f9567c.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_10f9567c.jpg",
+      "radPrimerSha256": "ed4256ea6151cce9b98248b9c47ebcc2cb4af4b218ca81324d20b10f42e67f25",
+      "statdxSha256": "3157459ba11801ad41bbbe3af8773ab1e8b4c7922ab01d563bde118599b2a365",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-10; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT shows a surgical clip and collection of gas <img src=\"arrow_WS.png\"> in or adjacent to the liver. This is oxidized regenerated cellulose (Surgicel) that was used as a hemostatic device and left in place. Note the relative absence of fluid within the collection.",
+    "captionCorrectionIds": [
+      "SRC-01"
+    ],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 11,
+    "imageId": "1a508a83-d36c-4f9d-8241-7eb45d3b5a5a",
+    "baseName": "Liver_Lesion_Containing_Gas11",
+    "caption": "Axial CECT shows a large postoperative abscess <img src=\"arrow_WS.png\">. Within the abscess, there is a tightly packed collection of gas bubbles <img src=\"arrow_WC.png\"> that represents oxidized surgical cellulose (Surgicel) that had been placed to control bleeding at surgery.",
+    "plainFilename": "RP-11_RadPrimer_plain_Liver_Lesion_Containing_Gas11.jpg",
+    "annotatedFilename": "RP-11_RadPrimer_annotated_Liver_Lesion_Containing_Gas11_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/1a508a83-d36c-4f9d-8241-7eb45d3b5a5a?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/1a508a83-d36c-4f9d-8241-7eb45d3b5a5a?style=xlarge&annotated=true",
+    "masterImageId": "RP-11",
+    "filename": "RP-11_RadPrimer_plain_Liver_Lesion_Containing_Gas11.jpg",
+    "group": "GAS-CASE-11",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_1a508a83.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/1a508a83-d36c-4f9d-8241-7eb45d3b5a5a?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "9a079a267a33765e94df165d7f682ed3f8ae6f2da6a0a2a92a840cd859e55d8a",
+      "rgbSha256": "8846aa816bc4992a7d82d0236e7ee85352caac64b7ffbb4a6a9c6406dddc834a",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "visualObservation": "Same axial pelvic CT slice, large fluid collection, compact cluster of gas bubbles, bright focus and identical pelvic bones; liver is not shown.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 11",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas11.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas11_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-11",
+    "panelCount": 1,
+    "caseContext": "This is a pelvic CT example, not a hepatic abscess image. Retain it as the source's visual analogy: tightly packed gas in hemostatic material can coexist with a larger postoperative abscess. Do not relabel its anatomy or identify it as follow-up to STATdx image 10.",
+    "teachingTopic": "Hemostatic material within postoperative abscess",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-11",
+    "equivalentImageIds": [
+      "SDX-11"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "1a508a83-d36c-4f9d-8241-7eb45d3b5a5a",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_1a508a83.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_1a508a83.jpg",
+      "radPrimerSha256": "9a079a267a33765e94df165d7f682ed3f8ae6f2da6a0a2a92a840cd859e55d8a",
+      "statdxSha256": "439ecf41dd568db3ed040b7df65db1faa1bcbb24a4120edd5ab7c7b72d7853d1",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-11; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT shows a large postoperative abscess <img src=\"arrow_WS.png\">. Within the abscess, there is a tightly packed collection of gas bubbles <img src=\"arrow_WC.png\"> that represents oxidized surgical cellulose (Surgicel) that had been placed to control bleeding at surgery.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 12,
+    "imageId": "482f4b42-24e6-4cb0-8d97-6e004daf575b",
+    "baseName": "Liver_Lesion_Containing_Gas12",
+    "caption": "Axial CECT in a patient with hepatic allograft malfunction shows a wedge-shaped collection of fluid and gas <img src=\"arrow_WS.png\">, representing an infected biloma due to hepatic artery thrombosis.",
+    "plainFilename": "RP-12_RadPrimer_plain_Liver_Lesion_Containing_Gas12.jpg",
+    "annotatedFilename": "RP-12_RadPrimer_annotated_Liver_Lesion_Containing_Gas12_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/482f4b42-24e6-4cb0-8d97-6e004daf575b?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/482f4b42-24e6-4cb0-8d97-6e004daf575b?style=xlarge&annotated=true",
+    "masterImageId": "RP-12",
+    "filename": "RP-12_RadPrimer_plain_Liver_Lesion_Containing_Gas12.jpg",
+    "group": "GAS-CASE-12",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_482f4b42.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/482f4b42-24e6-4cb0-8d97-6e004daf575b?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "1ef3df42ee21b5847a889f1e4b1bf4ff5e110de4908842f101ca87fd517b6ed7",
+      "rgbSha256": "f64ca344530fc41537e83ee19cc42e9dab3f1a9f82beba3790923704ad9eeb43",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "visualObservation": "Same axial CT slice, wedge-shaped gas/fluid collection, branching gas, portal structures, kidneys and enlarged spleen.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 12",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas12.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas12_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-12",
+    "panelCount": 1,
+    "caseContext": "Allograft malfunction with infected biloma attributed to hepatic artery thrombosis. Preserve wedge morphology and the transplant context.",
+    "teachingTopic": "Allograft infected biloma, wedge-shaped example",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-12",
+    "equivalentImageIds": [
+      "SDX-12"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "482f4b42-24e6-4cb0-8d97-6e004daf575b",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_482f4b42.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_482f4b42.jpg",
+      "radPrimerSha256": "1ef3df42ee21b5847a889f1e4b1bf4ff5e110de4908842f101ca87fd517b6ed7",
+      "statdxSha256": "3e33b06af09eea27907ded40fe9388547045183cc3aaca1f32c024d667121080",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-12; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT in a patient with hepatic allograft malfunction shows a wedge-shaped collection of fluid and gas <img src=\"arrow_WS.png\">, representing an infected biloma due to hepatic artery thrombosis.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 13,
+    "imageId": "0b886111-8057-4150-9b2d-d1b3899128d0",
+    "baseName": "Liver_Lesion_Containing_Gas13",
+    "caption": "Axial CECT in a patient with acute dysfunction of a hepatic allograft shows a collection of gas and fluid <img src=\"arrow_WS.png\"> in the left hepatic lobe, strongly suggestive of an infected biloma due to hepatic artery stenosis or thrombosis. Arterial thrombosis was subsequently confirmed.",
+    "plainFilename": "RP-13_RadPrimer_plain_Liver_Lesion_Containing_Gas13.jpg",
+    "annotatedFilename": "RP-13_RadPrimer_annotated_Liver_Lesion_Containing_Gas13_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/0b886111-8057-4150-9b2d-d1b3899128d0?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/0b886111-8057-4150-9b2d-d1b3899128d0?style=xlarge&annotated=true",
+    "masterImageId": "RP-13",
+    "filename": "RP-13_RadPrimer_plain_Liver_Lesion_Containing_Gas13.jpg",
+    "group": "GAS-CASE-13",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_0b886111.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/0b886111-8057-4150-9b2d-d1b3899128d0?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "b80c2aff832f758a607e918ca478a98a8a63e4c00d56192f78292e3d37689e07",
+      "rgbSha256": "65639c1715f27ddb69c6594fda64e0a4d2f82f04f8aef7fcc0ac183b5ca5332b",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_13_14.jpg",
+      "visualObservation": "Same axial CT slice, left-lobe fluid/gas cavity, adjacent surgical material, stomach and splenic contours.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 13",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas13.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas13_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-13",
+    "panelCount": 1,
+    "caseContext": "Acute allograft dysfunction with left-lobe infected biloma; arterial thrombosis was subsequently confirmed. This is a distinct supplied image from STATdx image 12; patient identity or follow-up linkage between them is not established.",
+    "teachingTopic": "Allograft infected biloma, left-lobe example",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-13",
+    "equivalentImageIds": [
+      "SDX-13"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "0b886111-8057-4150-9b2d-d1b3899128d0",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_0b886111.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_0b886111.jpg",
+      "radPrimerSha256": "b80c2aff832f758a607e918ca478a98a8a63e4c00d56192f78292e3d37689e07",
+      "statdxSha256": "a588662fb69801ae5114812257d6fb5b14461299adaf4a9973e30bf5c9e5fd44",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_13_14.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-13; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT in a patient with acute dysfunction of a hepatic allograft shows a collection of gas and fluid <img src=\"arrow_WS.png\"> in the left hepatic lobe, strongly suggestive of an infected biloma due to hepatic artery stenosis or thrombosis. Arterial thrombosis was subsequently confirmed.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceImageNumber": 14,
+    "imageId": "0eb23a20-df0b-4916-b002-3c3b5f86cbb1",
+    "baseName": "Liver_Lesion_Containing_Gas14",
+    "caption": "Axial CECT shows a focal collection of fluid and gas  <img src=\"arrow_WS.png\">  that was the result of a deep liver laceration several days prior.",
+    "plainFilename": "RP-14_RadPrimer_plain_Liver_Lesion_Containing_Gas14.jpg",
+    "annotatedFilename": "RP-14_RadPrimer_annotated_Liver_Lesion_Containing_Gas14_annot.jpg",
+    "plainUrl": "https://app.radprimer.com/images/0eb23a20-df0b-4916-b002-3c3b5f86cbb1?style=xlarge&annotated=false",
+    "annotatedUrl": "https://app.radprimer.com/images/0eb23a20-df0b-4916-b002-3c3b5f86cbb1?style=xlarge&annotated=true",
+    "masterImageId": "RP-14",
+    "filename": "RP-14_RadPrimer_plain_Liver_Lesion_Containing_Gas14.jpg",
+    "group": "GAS-CASE-14",
+    "usedFor": [],
+    "downloadRecommendation": "archiveOptionalDuplicate",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_0eb23a20.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.radprimer.com/images/0eb23a20-df0b-4916-b002-3c3b5f86cbb1?style=xlarge&annotated=false",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "e4604f110f66974af8fc0b35d0c2b17078a145fe18d6bfb7916f6027f6b455e4",
+      "rgbSha256": "db74528317d52f46ca88247cb04ca30d07765e2d04b1f33c4edb996b64d7b5ca",
+      "dimensions": [
+        900,
+        900
+      ],
+      "contactSheet": "_codex_review/comparison_13_14.jpg",
+      "visualObservation": "Same axial CT slice, rounded subcapsular fluid collection with one gas pocket and identical diaphragm, spleen and vertebra.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "RadPrimer image 14",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas14.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas14_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-14",
+    "panelCount": 1,
+    "caseContext": "The scan was obtained several days after deep liver laceration. The prior trauma image is not supplied; do not invent an earlier study or assume infection from gas alone.",
+    "teachingTopic": "Fluid and gas after deep liver laceration",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": "SDX-14",
+    "equivalentImageIds": [
+      "SDX-14"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "0eb23a20-df0b-4916-b002-3c3b5f86cbb1",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_0eb23a20.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_0eb23a20.jpg",
+      "radPrimerSha256": "e4604f110f66974af8fc0b35d0c2b17078a145fe18d6bfb7916f6027f6b455e4",
+      "statdxSha256": "ea305d3dc1f15dce3c9efa6e2499bb66a485e63b260a61e8485585eb066af721",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_13_14.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "",
+    "archiveReason": "Exact duplicate: same stable source image UUID and visually verified same slice/composite as SDX-14; trivial size/encoding variant. Entire image and all panels are retained in STATdx.",
+    "teachingCaption": "Axial CECT shows a focal collection of fluid and gas  <img src=\"arrow_WS.png\">  that was the result of a deep liver laceration several days prior.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "RadPrimer_metadata.json",
+    "sourcePackageFile": "RadPrimer_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 1,
+    "imageId": "68061f4e-052c-4acf-8fc2-0e6f8d88395d",
+    "baseName": "Liver_Lesion_Containing_Gas1",
+    "caption": "Axial CECT shows a liver abscess with fluid and gas. Note the percutaneously placed drainage catheter <img src=\"arrow_WC.png\">.",
+    "plainFilename": "SDX-01_STATdx_plain_Liver_Lesion_Containing_Gas1.jpg",
+    "annotatedFilename": "SDX-01_STATdx_annotated_Liver_Lesion_Containing_Gas1_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/68061f4e-052c-4acf-8fc2-0e6f8d88395d?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/68061f4e-052c-4acf-8fc2-0e6f8d88395d?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-01",
+    "filename": "SDX-01_STATdx_plain_Liver_Lesion_Containing_Gas1.jpg",
+    "group": "GAS-CASE-01",
+    "usedFor": [
+      "imageRecognition",
+      "procedureContext",
+      "gasFluidLevel"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_68061f4e.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/68061f4e-052c-4acf-8fc2-0e6f8d88395d?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "1d82f4a520ff45ff9c2935502e96f8e6653b18ef6b4da3d144fc4e480414735f",
+      "rgbSha256": "8169530611168846819a2374c3429d7fd901ade88d19273cc46b011617e631c9",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "visualObservation": "Same axial CT slice, right hepatic gas-fluid cavity, three bright portions of the drainage catheter, rib profiles and vertebra.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 1",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas1.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas1_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-01",
+    "panelCount": 1,
+    "caseContext": "Keep the percutaneous drainage catheter in view. Gas in this treated cavity is not proof of the original route of gas entry.",
+    "teachingTopic": "Drained pyogenic abscess",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-01"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "68061f4e-052c-4acf-8fc2-0e6f8d88395d",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_68061f4e.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_68061f4e.jpg",
+      "radPrimerSha256": "623bd0f18f2cd6c02c3b9501076a2c282bdbf78fb961559c0813d59b10dcaeca",
+      "statdxSha256": "1d82f4a520ff45ff9c2935502e96f8e6653b18ef6b4da3d144fc4e480414735f",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT shows a liver abscess with fluid and gas. Note the percutaneously placed drainage catheter <img src=\"arrow_WC.png\">.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 2,
+    "imageId": "4305b0b0-5332-4498-babe-231c7af5ef56",
+    "baseName": "Liver_Lesion_Containing_Gas2",
+    "caption": "Axial CECT shows 2 abscesses <img src=\"arrow_WS.png\">, one of which contains gas. This patient has ascending cholangitis, and gas may enter the abscesses from gas-containing ducts <img src=\"arrow_WC.png\"> or result from infection itself.",
+    "plainFilename": "SDX-02_STATdx_plain_Liver_Lesion_Containing_Gas2.jpg",
+    "annotatedFilename": "SDX-02_STATdx_annotated_Liver_Lesion_Containing_Gas2_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/4305b0b0-5332-4498-babe-231c7af5ef56?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/4305b0b0-5332-4498-babe-231c7af5ef56?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-02",
+    "filename": "SDX-02_STATdx_plain_Liver_Lesion_Containing_Gas2.jpg",
+    "group": "GAS-CASE-02",
+    "usedFor": [
+      "imageRecognition",
+      "recognitionReinforcement",
+      "alternateExample",
+      "mechanismComparison"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_4305b0b0.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/4305b0b0-5332-4498-babe-231c7af5ef56?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "90e2eb641add6c0778647c0b1014edf82809332cd12a98ec1c30eb6eb1721154",
+      "rgbSha256": "de0d3e39d655f139f0efc120abab220cf69d348565ac2cae723218b031f519a8",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "visualObservation": "Same cropped axial CT slice, two low-attenuation foci, small posterior gas pocket, hilar vascular configuration and vertebral level.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 2",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas2.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas2_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-02",
+    "panelCount": 1,
+    "caseContext": "Two abscesses occur with ascending cholangitis. Preserve the caption's alternatives: gas may reflux from the ducts or arise from infection.",
+    "teachingTopic": "Cholangitis-associated abscesses",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-02"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "4305b0b0-5332-4498-babe-231c7af5ef56",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_4305b0b0.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_4305b0b0.jpg",
+      "radPrimerSha256": "421099f076de2b20ed67971604c2e1865e5a00370d76c72ec5f8825d95d73877",
+      "statdxSha256": "90e2eb641add6c0778647c0b1014edf82809332cd12a98ec1c30eb6eb1721154",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT shows 2 abscesses <img src=\"arrow_WS.png\">, one of which contains gas. This patient has ascending cholangitis, and gas may enter the abscesses from gas-containing ducts <img src=\"arrow_WC.png\"> or result from infection itself.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 3,
+    "imageId": "b6ccde39-d343-4672-81bc-2318aeeab324",
+    "baseName": "Liver_Lesion_Containing_Gas3",
+    "caption": "Axial CECT shows nonenhancement of the left lobe <img src=\"arrow_WS.png\"> with portal venous gas <img src=\"arrow_WC.png\">; infarction followed attempted resection of peripheral cholangiocarcinoma.",
+    "plainFilename": "SDX-03_STATdx_plain_Liver_Lesion_Containing_Gas3.jpg",
+    "annotatedFilename": "SDX-03_STATdx_annotated_Liver_Lesion_Containing_Gas3_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/b6ccde39-d343-4672-81bc-2318aeeab324?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/b6ccde39-d343-4672-81bc-2318aeeab324?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-03",
+    "filename": "SDX-03_STATdx_plain_Liver_Lesion_Containing_Gas3.jpg",
+    "group": "GAS-CASE-03",
+    "usedFor": [
+      "imageRecognition",
+      "vascularPattern",
+      "postoperativeContext"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_b6ccde39.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/b6ccde39-d343-4672-81bc-2318aeeab324?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "88ea58da613783b242de9dc73c3ed36b3fea351cdd608f55deb15ad5a83e4d97",
+      "rgbSha256": "c50c0dc9b851bb3b391d0b9da456dd31a895efdad30d67ff066e38cc31279448",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "visualObservation": "Same axial CT slice, nonenhancing left lobe with identical branching gas, bright operative material and right-lobe perfusion pattern.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 3",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas3.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas3_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-03",
+    "panelCount": 1,
+    "caseContext": "Infarction followed attempted peripheral cholangiocarcinoma resection; retain the nonenhancing left lobe and portal gas together.",
+    "teachingTopic": "Postoperative hepatic infarction",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-03"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "b6ccde39-d343-4672-81bc-2318aeeab324",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_b6ccde39.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_b6ccde39.jpg",
+      "radPrimerSha256": "97b32d3c58be1d3687acb43fefff636e71e3e34555a4fea1076c5beebac269cc",
+      "statdxSha256": "88ea58da613783b242de9dc73c3ed36b3fea351cdd608f55deb15ad5a83e4d97",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_01_03.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT shows nonenhancement of the left lobe <img src=\"arrow_WS.png\"> with portal venous gas <img src=\"arrow_WC.png\">; infarction followed attempted resection of peripheral cholangiocarcinoma.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 4,
+    "imageId": "952227a7-8776-44c9-9e51-dbea48502822",
+    "baseName": "Liver_Lesion_Containing_Gas4",
+    "caption": "Axial CECT shows devascularization of the right lobe from blunt trauma. The hepatic artery and veins to the right lobe were avulsed. The gas bubble <img src=\"arrow_WS.png\"> is due to infarction, not infection.",
+    "plainFilename": "SDX-04_STATdx_plain_Liver_Lesion_Containing_Gas4.jpg",
+    "annotatedFilename": "SDX-04_STATdx_annotated_Liver_Lesion_Containing_Gas4_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/952227a7-8776-44c9-9e51-dbea48502822?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/952227a7-8776-44c9-9e51-dbea48502822?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-04",
+    "filename": "SDX-04_STATdx_plain_Liver_Lesion_Containing_Gas4.jpg",
+    "group": "GAS-CASE-04",
+    "usedFor": [
+      "imageRecognition",
+      "recognitionReinforcement",
+      "alternateExample",
+      "traumaContext"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_952227a7.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/952227a7-8776-44c9-9e51-dbea48502822?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "4f5e240beef55db7bfa3b233512b78c84eb44b8305cbeedd3ed77be227be352f",
+      "rgbSha256": "47d8012de19493e1647ddc65cc254b3621a7542bd4db7240e05872a5e1d402fb",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "visualObservation": "Same axial CT slice, large devascularized right-lobe region, isolated tiny gas bubble, contrast-filled stomach and pleural fluid.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 4",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas4.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas4_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-04",
+    "panelCount": 1,
+    "caseContext": "Blunt trauma avulsed the right-lobe hepatic artery and veins. The source attributes gas to infarction without infection in this case.",
+    "teachingTopic": "Traumatic devascularization",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-04"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "952227a7-8776-44c9-9e51-dbea48502822",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_952227a7.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_952227a7.jpg",
+      "radPrimerSha256": "306bfa4abfed85c9a17015369b5c2d28e0db142dc52beb183710e30f30531ab3",
+      "statdxSha256": "4f5e240beef55db7bfa3b233512b78c84eb44b8305cbeedd3ed77be227be352f",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT shows devascularization of the right lobe from blunt trauma. The hepatic artery and veins to the right lobe were avulsed. The gas bubble <img src=\"arrow_WS.png\"> is due to infarction, not infection.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 5,
+    "imageId": "fc0bbfed-ac5c-4f44-9baa-2299f6ec3218",
+    "baseName": "Liver_Lesion_Containing_Gas5",
+    "caption": "Axial CECT in a colon cancer patient shows metastases <img src=\"arrow_WS.png\">, some of which have been treated with radiofrequency ablation. One of these has gas within it as well as surgical clips <img src=\"arrow_WC.png\">, the latter the result of bleeding after ablation that required intervention. Gas bubbles are not the result of infection but rather infarction of hepatic tissue (or tumor).",
+    "plainFilename": "SDX-05_STATdx_plain_Liver_Lesion_Containing_Gas5.jpg",
+    "annotatedFilename": "SDX-05_STATdx_annotated_Liver_Lesion_Containing_Gas5_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/fc0bbfed-ac5c-4f44-9baa-2299f6ec3218?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/fc0bbfed-ac5c-4f44-9baa-2299f6ec3218?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-05",
+    "filename": "SDX-05_STATdx_plain_Liver_Lesion_Containing_Gas5.jpg",
+    "group": "GAS-CASE-05",
+    "usedFor": [
+      "imageRecognition",
+      "procedureContext",
+      "treatmentEffect"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_fc0bbfed.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/fc0bbfed-ac5c-4f44-9baa-2299f6ec3218?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "021fd003b894493ee3207912c9c33957bcc66c8ce969e65e64527611873e2bfd",
+      "rgbSha256": "032bb459a7efd423db972d0798afbdbca344c4656dc03e3518e9cbee1199948e",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "visualObservation": "Same axial CT slice, clustered gas in the treated right-lobe lesion, bright clip, adjacent low-attenuation lesion and hilar vessels.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 5",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas5.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas5_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-05",
+    "panelCount": 1,
+    "caseContext": "Colon-cancer metastases after radiofrequency ablation; clips reflect intervention for post-ablation bleeding. Keep treated and other visible lesions together.",
+    "teachingTopic": "Tumor following radiofrequency ablation",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-05"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "fc0bbfed-ac5c-4f44-9baa-2299f6ec3218",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_fc0bbfed.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_fc0bbfed.jpg",
+      "radPrimerSha256": "060d3c8d1fe3c81d6a2b702737cbb4e16887e92cc1e23eab0c1f369f7662a9b1",
+      "statdxSha256": "021fd003b894493ee3207912c9c33957bcc66c8ce969e65e64527611873e2bfd",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT in a colon cancer patient shows metastases <img src=\"arrow_WS.png\">, some of which have been treated with radiofrequency ablation. One of these has gas within it as well as surgical clips <img src=\"arrow_WC.png\">, the latter the result of bleeding after ablation that required intervention. Gas bubbles are not the result of infection but rather infarction of hepatic tissue (or tumor).",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 6,
+    "imageId": "368cb6d8-9580-4e83-bcb0-3d45eadd4a29",
+    "baseName": "Liver_Lesion_Containing_Gas6",
+    "caption": "Axial CECT shows 2 large hepatic masses <img src=\"arrow_WS.png\"> (metastatic breast cancer). The larger lesion has gas due to tumor infarction as a result of chemotherapy; there was no infection.",
+    "plainFilename": "SDX-06_STATdx_plain_Liver_Lesion_Containing_Gas6.jpg",
+    "annotatedFilename": "SDX-06_STATdx_annotated_Liver_Lesion_Containing_Gas6_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/368cb6d8-9580-4e83-bcb0-3d45eadd4a29?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/368cb6d8-9580-4e83-bcb0-3d45eadd4a29?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-06",
+    "filename": "SDX-06_STATdx_plain_Liver_Lesion_Containing_Gas6.jpg",
+    "group": "GAS-CASE-06",
+    "usedFor": [
+      "imageRecognition",
+      "recognitionReinforcement",
+      "alternateExample",
+      "treatmentEffect"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_368cb6d8.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/368cb6d8-9580-4e83-bcb0-3d45eadd4a29?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "d0af83d109cf4efe231d63d68303d0d810dae203afc8b70f2462ff3ca04e7908",
+      "rgbSha256": "fe9f7335d14b8fc6e3aaf50d1d174a9a583394f279223a4b7a9891bda029ce6e",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "visualObservation": "Same axial CT slice, very large gas-filled right hepatic mass, smaller heterogeneous left-sided mass and spleen outline.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 6",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas6.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas6_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-06",
+    "panelCount": 1,
+    "caseContext": "Breast-cancer metastases after chemotherapy; the source states that gas reflects tumor infarction without infection in this case.",
+    "teachingTopic": "Tumor following chemotherapy",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-06"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "368cb6d8-9580-4e83-bcb0-3d45eadd4a29",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_368cb6d8.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_368cb6d8.jpg",
+      "radPrimerSha256": "27e880488519cc6e9765b8a0032f0b900c611a27307f5b7b705671fd15ec4252",
+      "statdxSha256": "d0af83d109cf4efe231d63d68303d0d810dae203afc8b70f2462ff3ca04e7908",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_04_06.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT shows 2 large hepatic masses <img src=\"arrow_WS.png\"> (metastatic breast cancer). The larger lesion has gas due to tumor infarction as a result of chemotherapy; there was no infection.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 7,
+    "imageId": "cd5b7588-9841-4592-b34c-ce6f5cda6518",
+    "baseName": "Liver_Lesion_Containing_Gas7",
+    "caption": "Axial T2 MR in a 63-year-old man with pancreatic cancer and right upper quadrant pain shows fluid and air <img src=\"arrow_WS.png\"> corresponding to T1-hyper- and hypointense signal, respectively, on T1 pre- <img src=\"arrow_WO.png\">, arterial- <img src=\"arrow_WC.png\">, and venous- <img src=\"arrow_BS.png\"> phase images with absence of enhancement, representing a gas-containing abscess.",
+    "plainFilename": "SDX-07_STATdx_plain_Liver_Lesion_Containing_Gas7.jpg",
+    "annotatedFilename": "SDX-07_STATdx_annotated_Liver_Lesion_Containing_Gas7_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/cd5b7588-9841-4592-b34c-ce6f5cda6518?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/cd5b7588-9841-4592-b34c-ce6f5cda6518?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-07",
+    "filename": "SDX-07_STATdx_plain_Liver_Lesion_Containing_Gas7.jpg",
+    "group": "GAS-CASE-07",
+    "usedFor": [
+      "imageRecognition",
+      "recognitionReinforcement",
+      "modalityVariant",
+      "multiphaseComparison"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_cd5b7588.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/cd5b7588-9841-4592-b34c-ce6f5cda6518?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "d9901e6277b99227ae85ed085ec37d27b99ffd2b79968057ac1821b2b689a842",
+      "rgbSha256": "c70ed702c44184ce8bcf57e9cd1936c08f96f580eb4f9900e22e0df8dc8044a5",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "visualObservation": "Same four-panel MR composite in the same arrangement; matching gas-fluid focus, liver contours and vessels in every panel.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 7",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas7.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas7_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-07",
+    "panelCount": 4,
+    "caseContext": "Atomic four-panel MR composite in a 63-year-old man with pancreatic cancer and right upper quadrant pain: T2, precontrast T1, arterial and venous phase images. Keep all panels; absence of enhancement refers to the depicted contents, not a rule that abscess walls never enhance.",
+    "teachingTopic": "Gas-containing abscess MR composite",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-07"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "cd5b7588-9841-4592-b34c-ce6f5cda6518",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_cd5b7588.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_cd5b7588.jpg",
+      "radPrimerSha256": "f20c716d7037c58461e48d8d88e98b0a7da2a6b237e374e677da71d4c4d1f899",
+      "statdxSha256": "d9901e6277b99227ae85ed085ec37d27b99ffd2b79968057ac1821b2b689a842",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial T2 MR in a 63-year-old man with pancreatic cancer and right upper quadrant pain shows fluid and air <img src=\"arrow_WS.png\"> corresponding to T1-hyper- and hypointense signal, respectively, on T1 pre- <img src=\"arrow_WO.png\">, arterial- <img src=\"arrow_WC.png\">, and venous- <img src=\"arrow_BS.png\"> phase images with absence of enhancement, representing a gas-containing abscess.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WO.png",
+      "arrow_WC.png",
+      "arrow_BS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 8,
+    "imageId": "76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e",
+    "baseName": "Liver_Lesion_Containing_Gas8",
+    "caption": "Coronal CECT shows extensive bowel pneumatosis <img src=\"arrow_WO.png\"> from ischemia and portal venous gas in the periphery of the liver <img src=\"arrow_WS.png\">.",
+    "plainFilename": "SDX-08_STATdx_plain_Liver_Lesion_Containing_Gas8.jpg",
+    "annotatedFilename": "SDX-08_STATdx_annotated_Liver_Lesion_Containing_Gas8_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-08",
+    "filename": "SDX-08_STATdx_plain_Liver_Lesion_Containing_Gas8.jpg",
+    "group": "GAS-CASE-08",
+    "usedFor": [
+      "imageRecognition",
+      "vascularPattern",
+      "bowelContext"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_76abb8fe.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "2920f34264e90fe7922c5129898d029b08097d64ad5d87912ee48611fcd6714c",
+      "rgbSha256": "58878995b6f2fd3edd5f1fb1041930e18a66ecb72fd1ebd398a339a460c6effb",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "visualObservation": "Same coronal CT reconstruction, peripheral branching hepatic gas, extensive bowel pneumatosis, distended stomach and aortic calcification.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 8",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas8.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas8_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-08",
+    "panelCount": 1,
+    "caseContext": "Keep the coronal liver-and-bowel field together to show peripheral portal gas and pneumatosis. No same-patient link to the separate ultrasound example is documented.",
+    "teachingTopic": "Portal gas and bowel pneumatosis on CT",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-08"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "76abb8fe-5c9f-40e6-831f-d0bc7dbfd71e",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_76abb8fe.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_76abb8fe.jpg",
+      "radPrimerSha256": "1d6e07ff37672ff560f99b4e48756fdda6e50b0be422b91cb0db7ef89a35d928",
+      "statdxSha256": "2920f34264e90fe7922c5129898d029b08097d64ad5d87912ee48611fcd6714c",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Coronal CECT shows extensive bowel pneumatosis <img src=\"arrow_WO.png\"> from ischemia and portal venous gas in the periphery of the liver <img src=\"arrow_WS.png\">.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WO.png",
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 9,
+    "imageId": "11137402-c39b-4866-8cc4-defaea348d11",
+    "baseName": "Liver_Lesion_Containing_Gas9",
+    "caption": "US in a woman with cirrhosis and acute abdominal pain following a hypotensive episode shows bubbles of gas <img src=\"arrow_WS.png\"> within the portal veins. CT showed pneumatosis within bowel walls and luminal distention with fluid due to bowel infarction.",
+    "plainFilename": "SDX-09_STATdx_plain_Liver_Lesion_Containing_Gas9.jpg",
+    "annotatedFilename": "SDX-09_STATdx_annotated_Liver_Lesion_Containing_Gas9_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/11137402-c39b-4866-8cc4-defaea348d11?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/11137402-c39b-4866-8cc4-defaea348d11?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-09",
+    "filename": "SDX-09_STATdx_plain_Liver_Lesion_Containing_Gas9.jpg",
+    "group": "GAS-CASE-09",
+    "usedFor": [
+      "imageRecognition",
+      "recognitionReinforcement",
+      "modalityVariant",
+      "comparisonViews"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_11137402.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/11137402-c39b-4866-8cc4-defaea348d11?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "76bc4a6165b27a5714e55b9496f0c9314efff4261fccc850e81c9ece87b1d1e6",
+      "rgbSha256": "778cf4c3b4ecd48fd75c8879426da439c99d6fd4cb3f47d77ab4bb3f28bb8775",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "visualObservation": "Same two-panel ultrasound composite with identical portal branching, echogenic gas foci and speckle configuration in each panel.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 9",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas9.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas9_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-09",
+    "panelCount": 2,
+    "caseContext": "Atomic two-panel ultrasound composite in a woman with cirrhosis after hypotension. CT findings are caption-only in this case; the actual CT is not supplied. Panel timing/order is not documented; do not invent a cine sequence or link to STATdx image 8.",
+    "teachingTopic": "Portal venous gas ultrasound composite",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-09"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "11137402-c39b-4866-8cc4-defaea348d11",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_11137402.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_11137402.jpg",
+      "radPrimerSha256": "80409f55902075c314b16561a3084a3d9309fca64f8b1a93ae5b73062a45053e",
+      "statdxSha256": "76bc4a6165b27a5714e55b9496f0c9314efff4261fccc850e81c9ece87b1d1e6",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_07_09.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "US in a woman with cirrhosis and acute abdominal pain following a hypotensive episode shows bubbles of gas <img src=\"arrow_WS.png\"> within the portal veins. CT showed pneumatosis within bowel walls and luminal distention with fluid due to bowel infarction.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 10,
+    "imageId": "10f9567c-360a-42e0-9a48-704af9fc4d65",
+    "baseName": "Liver_Lesion_Containing_Gas10",
+    "caption": "Axial CECT shows a surgical clip and collection of gas <img src=\"arrow_WS.png\"> in or adjacent to the liver. This is oxidized surgical gelatin (Surgicel) that was used as a hemostatic device and left in place. Note the relative absence of fluid within the collection.",
+    "plainFilename": "SDX-10_STATdx_plain_Liver_Lesion_Containing_Gas10.jpg",
+    "annotatedFilename": "SDX-10_STATdx_annotated_Liver_Lesion_Containing_Gas10_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/10f9567c-360a-42e0-9a48-704af9fc4d65?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/10f9567c-360a-42e0-9a48-704af9fc4d65?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-10",
+    "filename": "SDX-10_STATdx_plain_Liver_Lesion_Containing_Gas10.jpg",
+    "group": "GAS-CASE-10",
+    "usedFor": [
+      "imageRecognition",
+      "postoperativeContext",
+      "mimicComparison"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_10f9567c.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/10f9567c-360a-42e0-9a48-704af9fc4d65?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "3157459ba11801ad41bbbe3af8773ab1e8b4c7922ab01d563bde118599b2a365",
+      "rgbSha256": "c54185f56c3519741eeb48ec5097a3fc3d3ae147c6f27c1fbd890a75b8208ff1",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "visualObservation": "Same axial upper-abdominal CT slice, tightly packed gas adjacent to a bright clip, little local fluid and identical kidney/vessel contours.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 10",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas10.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas10_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-10",
+    "panelCount": 1,
+    "caseContext": "Gas-containing hemostatic material near the liver with relatively little local fluid. Use the verified material name, oxidized regenerated cellulose (Surgicel). No documented follow-up relationship to the pelvic example.",
+    "teachingTopic": "Postoperative hemostatic material",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-10"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "10f9567c-360a-42e0-9a48-704af9fc4d65",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_10f9567c.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_10f9567c.jpg",
+      "radPrimerSha256": "ed4256ea6151cce9b98248b9c47ebcc2cb4af4b218ca81324d20b10f42e67f25",
+      "statdxSha256": "3157459ba11801ad41bbbe3af8773ab1e8b4c7922ab01d563bde118599b2a365",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT shows a surgical clip and collection of gas <img src=\"arrow_WS.png\"> in or adjacent to the liver. This is oxidized regenerated cellulose (Surgicel) that was used as a hemostatic device and left in place. Note the relative absence of fluid within the collection.",
+    "captionCorrectionIds": [
+      "SRC-01"
+    ],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 11,
+    "imageId": "1a508a83-d36c-4f9d-8241-7eb45d3b5a5a",
+    "baseName": "Liver_Lesion_Containing_Gas11",
+    "caption": "Axial CECT shows a large postoperative abscess <img src=\"arrow_WS.png\">. Within the abscess, there is a tightly packed collection of gas bubbles <img src=\"arrow_WC.png\"> that represents oxidized surgical cellulose (Surgicel) that had been placed to control bleeding at surgery.",
+    "plainFilename": "SDX-11_STATdx_plain_Liver_Lesion_Containing_Gas11.jpg",
+    "annotatedFilename": "SDX-11_STATdx_annotated_Liver_Lesion_Containing_Gas11_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/1a508a83-d36c-4f9d-8241-7eb45d3b5a5a?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/1a508a83-d36c-4f9d-8241-7eb45d3b5a5a?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-11",
+    "filename": "SDX-11_STATdx_plain_Liver_Lesion_Containing_Gas11.jpg",
+    "group": "GAS-CASE-11",
+    "usedFor": [
+      "imageRecognition",
+      "recognitionReinforcement",
+      "alternateExample",
+      "crossAnatomicAnalogy"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_1a508a83.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/1a508a83-d36c-4f9d-8241-7eb45d3b5a5a?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "439ecf41dd568db3ed040b7df65db1faa1bcbb24a4120edd5ab7c7b72d7853d1",
+      "rgbSha256": "c2a548e19691f0466d5451c4605b61a792464dab67d257b5f96b4adb13e60ad4",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "visualObservation": "Same axial pelvic CT slice, large fluid collection, compact cluster of gas bubbles, bright focus and identical pelvic bones; liver is not shown.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 11",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas11.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas11_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-11",
+    "panelCount": 1,
+    "caseContext": "This is a pelvic CT example, not a hepatic abscess image. Retain it as the source's visual analogy: tightly packed gas in hemostatic material can coexist with a larger postoperative abscess. Do not relabel its anatomy or identify it as follow-up to STATdx image 10.",
+    "teachingTopic": "Hemostatic material within postoperative abscess",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-11"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "1a508a83-d36c-4f9d-8241-7eb45d3b5a5a",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_1a508a83.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_1a508a83.jpg",
+      "radPrimerSha256": "9a079a267a33765e94df165d7f682ed3f8ae6f2da6a0a2a92a840cd859e55d8a",
+      "statdxSha256": "439ecf41dd568db3ed040b7df65db1faa1bcbb24a4120edd5ab7c7b72d7853d1",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT shows a large postoperative abscess <img src=\"arrow_WS.png\">. Within the abscess, there is a tightly packed collection of gas bubbles <img src=\"arrow_WC.png\"> that represents oxidized surgical cellulose (Surgicel) that had been placed to control bleeding at surgery.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png",
+      "arrow_WC.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 12,
+    "imageId": "482f4b42-24e6-4cb0-8d97-6e004daf575b",
+    "baseName": "Liver_Lesion_Containing_Gas12",
+    "caption": "Axial CECT in a patient with hepatic allograft malfunction shows a wedge-shaped collection of fluid and gas <img src=\"arrow_WS.png\">, representing an infected biloma due to hepatic artery thrombosis.",
+    "plainFilename": "SDX-12_STATdx_plain_Liver_Lesion_Containing_Gas12.jpg",
+    "annotatedFilename": "SDX-12_STATdx_annotated_Liver_Lesion_Containing_Gas12_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/482f4b42-24e6-4cb0-8d97-6e004daf575b?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/482f4b42-24e6-4cb0-8d97-6e004daf575b?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-12",
+    "filename": "SDX-12_STATdx_plain_Liver_Lesion_Containing_Gas12.jpg",
+    "group": "GAS-CASE-12",
+    "usedFor": [
+      "imageRecognition",
+      "transplantContext",
+      "vascularComplication"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_482f4b42.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/482f4b42-24e6-4cb0-8d97-6e004daf575b?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "3e33b06af09eea27907ded40fe9388547045183cc3aaca1f32c024d667121080",
+      "rgbSha256": "4bcf2cf6809ba4ce28940fbe0b0fbac4045919a443d0f84de3e60baed87a37d3",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "visualObservation": "Same axial CT slice, wedge-shaped gas/fluid collection, branching gas, portal structures, kidneys and enlarged spleen.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 12",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas12.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas12_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-12",
+    "panelCount": 1,
+    "caseContext": "Allograft malfunction with infected biloma attributed to hepatic artery thrombosis. Preserve wedge morphology and the transplant context.",
+    "teachingTopic": "Allograft infected biloma, wedge-shaped example",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-12"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "482f4b42-24e6-4cb0-8d97-6e004daf575b",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_482f4b42.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_482f4b42.jpg",
+      "radPrimerSha256": "1ef3df42ee21b5847a889f1e4b1bf4ff5e110de4908842f101ca87fd517b6ed7",
+      "statdxSha256": "3e33b06af09eea27907ded40fe9388547045183cc3aaca1f32c024d667121080",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_10_12.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT in a patient with hepatic allograft malfunction shows a wedge-shaped collection of fluid and gas <img src=\"arrow_WS.png\">, representing an infected biloma due to hepatic artery thrombosis.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 13,
+    "imageId": "0b886111-8057-4150-9b2d-d1b3899128d0",
+    "baseName": "Liver_Lesion_Containing_Gas13",
+    "caption": "Axial CECT in a patient with acute dysfunction of a hepatic allograft shows a collection of gas and fluid <img src=\"arrow_WS.png\"> in the left hepatic lobe, strongly suggestive of an infected biloma due to hepatic artery stenosis or thrombosis. Arterial thrombosis was subsequently confirmed.",
+    "plainFilename": "SDX-13_STATdx_plain_Liver_Lesion_Containing_Gas13.jpg",
+    "annotatedFilename": "SDX-13_STATdx_annotated_Liver_Lesion_Containing_Gas13_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/0b886111-8057-4150-9b2d-d1b3899128d0?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/0b886111-8057-4150-9b2d-d1b3899128d0?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-13",
+    "filename": "SDX-13_STATdx_plain_Liver_Lesion_Containing_Gas13.jpg",
+    "group": "GAS-CASE-13",
+    "usedFor": [
+      "imageRecognition",
+      "recognitionReinforcement",
+      "alternateExample",
+      "transplantContext"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_0b886111.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/0b886111-8057-4150-9b2d-d1b3899128d0?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "a588662fb69801ae5114812257d6fb5b14461299adaf4a9973e30bf5c9e5fd44",
+      "rgbSha256": "4fd5c667fa804a3dd84614c1208b877a2633354b2c726071161a67d73506635c",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_13_14.jpg",
+      "visualObservation": "Same axial CT slice, left-lobe fluid/gas cavity, adjacent surgical material, stomach and splenic contours.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 13",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas13.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas13_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-13",
+    "panelCount": 1,
+    "caseContext": "Acute allograft dysfunction with left-lobe infected biloma; arterial thrombosis was subsequently confirmed. This is a distinct supplied image from STATdx image 12; patient identity or follow-up linkage between them is not established.",
+    "teachingTopic": "Allograft infected biloma, left-lobe example",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-13"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "0b886111-8057-4150-9b2d-d1b3899128d0",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_0b886111.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_0b886111.jpg",
+      "radPrimerSha256": "b80c2aff832f758a607e918ca478a98a8a63e4c00d56192f78292e3d37689e07",
+      "statdxSha256": "a588662fb69801ae5114812257d6fb5b14461299adaf4a9973e30bf5c9e5fd44",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_13_14.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT in a patient with acute dysfunction of a hepatic allograft shows a collection of gas and fluid <img src=\"arrow_WS.png\"> in the left hepatic lobe, strongly suggestive of an infected biloma due to hepatic artery stenosis or thrombosis. Arterial thrombosis was subsequently confirmed.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  },
+  {
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "sourceImageNumber": 14,
+    "imageId": "0eb23a20-df0b-4916-b002-3c3b5f86cbb1",
+    "baseName": "Liver_Lesion_Containing_Gas14",
+    "caption": "Axial CECT shows a focal collection of fluid and gas  <img src=\"arrow_WS.png\">  that was the result of a deep liver laceration several days prior.",
+    "plainFilename": "SDX-14_STATdx_plain_Liver_Lesion_Containing_Gas14.jpg",
+    "annotatedFilename": "SDX-14_STATdx_annotated_Liver_Lesion_Containing_Gas14_annot.jpg",
+    "plainUrl": "https://app.statdx.com/image/thumbnail/0eb23a20-df0b-4916-b002-3c3b5f86cbb1?size=1000&quality=90",
+    "annotatedUrl": "https://app.statdx.com/image/thumbnail/0eb23a20-df0b-4916-b002-3c3b5f86cbb1?annotated=true&size=1000&quality=90",
+    "masterImageId": "SDX-14",
+    "filename": "SDX-14_STATdx_plain_Liver_Lesion_Containing_Gas14.jpg",
+    "group": "GAS-CASE-14",
+    "usedFor": [
+      "imageRecognition",
+      "recognitionReinforcement",
+      "alternateExample",
+      "traumaContext"
+    ],
+    "downloadRecommendation": "primaryTeachingSet",
+    "visualEvidence": {
+      "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_0eb23a20.jpg",
+      "evidenceVariant": "plain",
+      "evidenceUrl": "https://app.statdx.com/image/thumbnail/0eb23a20-df0b-4916-b002-3c3b5f86cbb1?size=1000&quality=90",
+      "downloaded": true,
+      "downloadError": "",
+      "duplicateEvidenceRole": "Use this plain/unannotated preview for visual duplicate classification before archiving any image.",
+      "visuallyInspected": true,
+      "sha256": "ea305d3dc1f15dce3c9efa6e2499bb66a485e63b260a61e8485585eb066af721",
+      "rgbSha256": "94267b8dff98e0958bc56cb9bd22a2ab49c1d298ddf2b7f67af19a4bf011c186",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "contactSheet": "_codex_review/comparison_13_14.jpg",
+      "visualObservation": "Same axial CT slice, rounded subcapsular fluid collection with one gas pocket and identical diaphragm, spleen and vertebra.",
+      "reviewedAt": "2026-09-13T01:37:21Z"
+    },
+    "displayLabel": "STATdx image 14",
+    "originalPlainFilename": "Liver_Lesion_Containing_Gas14.jpg",
+    "originalAnnotatedFilename": "Liver_Lesion_Containing_Gas14_annot.jpg",
+    "originalGroup": "",
+    "originalGroupNumbers": [],
+    "caseClusterId": "GAS-CASE-14",
+    "panelCount": 1,
+    "caseContext": "The scan was obtained several days after deep liver laceration. The prior trauma image is not supplied; do not invent an earlier study or assume infection from gas alone.",
+    "teachingTopic": "Fluid and gas after deep liver laceration",
+    "duplicateClassification": "exactDuplicate",
+    "duplicateOf": null,
+    "equivalentImageIds": [
+      "RP-14"
+    ],
+    "duplicateEvidence": {
+      "sameStableSourceImageId": "0eb23a20-df0b-4916-b002-3c3b5f86cbb1",
+      "visualReviewCompleted": true,
+      "reviewMethod": "Manual inspection of paired renders of the actual staged files; stable source UUID corroborates the same slice or composite.",
+      "radPrimerEvidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_0eb23a20.jpg",
+      "statdxEvidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_0eb23a20.jpg",
+      "radPrimerSha256": "e4604f110f66974af8fc0b35d0c2b17078a145fe18d6bfb7916f6027f6b455e4",
+      "statdxSha256": "ea305d3dc1f15dce3c9efa6e2499bb66a485e63b260a61e8485585eb066af721",
+      "radPrimerDimensions": [
+        900,
+        900
+      ],
+      "statdxDimensions": [
+        1000,
+        1000
+      ],
+      "byteIdentical": false,
+      "rgbPixelIdentical": false,
+      "contactSheet": "_codex_review/comparison_13_14.jpg",
+      "sameSliceOrComposite": true,
+      "hashInterpretation": "Different encoding/dimensions produce different file and RGB hashes; exactDuplicate means the same source visual content, not byte equality."
+    },
+    "selectionReason": "Retain the same source visual in the larger staged 1000 x 1000 encoding; no claim that it adds new anatomy.",
+    "archiveReason": "",
+    "teachingCaption": "Axial CECT shows a focal collection of fluid and gas  <img src=\"arrow_WS.png\">  that was the result of a deep liver laceration several days prior.",
+    "captionCorrectionIds": [],
+    "sourceAnnotationTokens": [
+      "arrow_WS.png"
+    ],
+    "annotationAssets": {
+      "captionHtmlPreserved": true,
+      "plainEvidenceInspected": true,
+      "annotatedVariantDownloadedInBundle": false,
+      "captionIconFilesSupplied": false
+    },
+    "sourceMetadataFile": "STATdx_metadata.json",
+    "sourcePackageFile": "STATdx_source_package.txt"
+  }
+]

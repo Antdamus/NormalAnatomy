@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "validatedAt": "2026-09-13T01:44:45.892Z",
+  "checks": [
+    {
+      "name": "Import object, serialized artifacts and package hash agree",
+      "passed": true
+    },
+    {
+      "name": "Canonical hierarchy, deck route and RadPrimer diagnosis ordering preserved",
+      "passed": true
+    },
+    {
+      "name": "All source records, original captions/icons, URLs and image IDs preserved",
+      "passed": true
+    },
+    {
+      "name": "Packages, source metadata and evidence manifest agree",
+      "passed": true
+    },
+    {
+      "name": "48 actual evidence files, per-image review and hash records are valid",
+      "passed": true
+    },
+    {
+      "name": "Every RadPrimer image has a documented pre-merge coverage decision",
+      "passed": true
+    },
+    {
+      "name": "Selection plan exhaustively retains useful images with no archive defaults",
+      "passed": true
+    },
+    {
+      "name": "All 36 atomic groups cover the registry once; 11 companion groups remain intact",
+      "passed": true
+    },
+    {
+      "name": "Human-facing labels are clean and every caption/filename is in the image library",
+      "passed": true
+    },
+    {
+      "name": "Installed extension accepts the single-file import and retains all primary IDs",
+      "passed": true
+    },
+    {
+      "name": "Installed extension emits exactly 96 planned source-qualified variant downloads",
+      "passed": true
+    },
+    {
+      "name": "Installed extension separate-file import produces the identical selection and filenames",
+      "passed": true
+    },
+    {
+      "name": "Imported browser files remain byte-identical; newest-bundle pointer targets this folder",
+      "passed": true
+    }
+  ],
+  "totals": {
+    "registryEntries": 48,
+    "selectedPrimaryImages": 48,
+    "archiveOptionalImages": 0,
+    "primaryVariantDownloads": 96,
+    "radPrimerImages": 14,
+    "statdxImages": 34,
+    "atomicGroups": 36,
+    "multiImageGroups": 11,
+    "stagedFilesVerified": 57
+  },
+  "extensionHelpersTested": [
+    "parseJsonMaybe",
+    "pickNamedFile",
+    "normalizeMasterSourceCache",
+    "collectMasterImageIdsFromPlan",
+    "getMasterSourcePrimaryImageIds",
+    "getMasterSourceArchiveImageIds",
+    "buildMasterSourceCacheFromFiles",
+    "normalizeImageRegistryEntry",
+    "normalizeImageRegistrySourceKind",
+    "normalizeSourceCompareKind",
+    "flattenRegistryToDownloadFiles",
+    "shouldUseRegistryEntryForMasterDownload",
+    "buildSourceQualifiedImageFilename",
+    "getDownloadBasename",
+    "getSourceFilenameLabel",
+    "normalizeArticleSourceKind",
+    "sanitizeDownloadPathPart",
+    "normalizeArticleTitleKey",
+    "sanitizeAnkiDeckPart"
+  ],
+  "extensionSourceSha256": "6c9bd78baee521aa304dae366ff3cf66dad6892f356d5382fe88d50887774791",
+  "scope": "Source fidelity, media-evidence integrity, canonical routing, coverage decisions, atomic groups and installed extension import/download helper compatibility. No live browser import, remote download or card audit was performed."
+}

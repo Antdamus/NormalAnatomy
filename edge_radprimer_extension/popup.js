@@ -157,6 +157,11 @@ function buildSpeechifyFolderUrl(folderId) {
   return url.toString();
 }
 
+function isSpeechifyHost(hostname) {
+  const host = String(hostname || "").toLowerCase();
+  return host === "speechify.com" || host.endsWith(".speechify.com");
+}
+
 function parseSpeechifyFolderUrl(rawValue) {
   const raw = String(rawValue || "").trim();
   if (!raw) {
@@ -167,8 +172,8 @@ function parseSpeechifyFolderUrl(rawValue) {
   }
 
   const url = new URL(raw);
-  if (url.hostname !== "app.speechify.com") {
-    throw new Error("Speechify folder link must start with https://app.speechify.com/");
+  if (!isSpeechifyHost(url.hostname)) {
+    throw new Error("Speechify folder link must be a Speechify link.");
   }
 
   const id = url.searchParams.get("folder") || "";
@@ -727,6 +732,113 @@ function waitForTabComplete(tabId) {
   });
 }
 
+function parseChatGptProjectRoute(rawUrl) {
+  try {
+    const parsed = new URL(rawUrl);
+    const host = parsed.hostname.toLowerCase();
+    if (host !== "chatgpt.com" && host !== "chat.openai.com") return null;
+
+    const parts = parsed.pathname.split("/").filter(Boolean);
+    const gIndex = parts.indexOf("g");
+    const projectSegment = gIndex >= 0 ? parts[gIndex + 1] || "" : "";
+    const match = projectSegment.match(/^(g-p-[a-z0-9]+)(?:-(.+))?$/i);
+    if (!match) return null;
+
+    return {
+      origin: parsed.origin,
+      projectId: match[1].toLowerCase(),
+      projectSegment,
+      projectNameHint: (match[2] || "").replace(/-/g, " ").trim()
+    };
+  } catch {
+    return null;
+  }
+}
+
+function normalizeChatGptProjectText(value) {
+  return String(value || "")
+    .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function formatChatGptProjectName(route) {
+  const name = String(route?.projectNameHint || "").trim();
+  if (!name) return "the ChatGPT project";
+  return name.replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function scoreReusableChatGptProjectTab(tab, route, configuredUrl) {
+  if (!tab?.id || !route?.projectId) return 0;
+  const url = String(tab.url || "");
+  const title = String(tab.title || "");
+  const lowerUrl = url.toLowerCase();
+  if (!lowerUrl.includes(route.projectId)) return 0;
+
+  const projectName = normalizeChatGptProjectText(route.projectNameHint);
+  const normalizedTitle = normalizeChatGptProjectText(title);
+  if (projectName && !normalizedTitle.includes(projectName)) return 0;
+
+  let score = 0;
+
+  if (url === configuredUrl) score += 40;
+  if (lowerUrl.includes("/project")) score += 80;
+  if (projectName && normalizedTitle.includes(projectName)) score += 120;
+  if (tab.status === "complete") score += 10;
+  if (lowerUrl.includes("/c/")) score -= 80;
+  if (/^chatgpt$/i.test(title.trim())) score -= 220;
+  if (/try again/i.test(title)) score -= 220;
+
+  return score;
+}
+
+async function findReusableChatGptProjectTab(configuredUrl) {
+  const route = parseChatGptProjectRoute(configuredUrl);
+  if (!route) return null;
+
+  let tabs = [];
+  try {
+    tabs = await chrome.tabs.query({
+      url: ["https://chatgpt.com/*", "https://chat.openai.com/*"]
+    });
+  } catch {
+    return null;
+  }
+
+  const scored = tabs
+    .map((tab) => ({ tab, score: scoreReusableChatGptProjectTab(tab, route, configuredUrl) }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  return scored[0]?.tab || null;
+}
+
+async function openChatGptAutomationTab(url) {
+  const reusable = await findReusableChatGptProjectTab(url);
+  if (reusable?.id) return reusable;
+
+  const route = parseChatGptProjectRoute(url);
+  return chrome.tabs.create({ url: route ? `${route.origin}/` : url, active: false });
+}
+
+function makeChatGptProjectOpenError(error, url, fallbackMessage) {
+  const message = error?.message || String(error || "");
+  const route = parseChatGptProjectRoute(url);
+  const looksLikeColdProjectFailure =
+    route &&
+    /composer|receiving end|connection|timed out|could not fill|could not start|login required/i.test(message);
+
+  if (!looksLikeColdProjectFailure) {
+    return error instanceof Error ? error : new Error(message || fallbackMessage);
+  }
+
+  const projectName = formatChatGptProjectName(route);
+  return new Error(
+    `Could not open ${projectName} from ChatGPT home. Make sure you are logged in and ${projectName} is visible in the ChatGPT sidebar, then run the automation again.`
+  );
+}
+
 function sendChatGptFillMessage(tabId, text, settings, articleTitle) {
   const shouldWaitForNarrative = settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings);
   const speechifyPayload =
@@ -751,7 +863,10 @@ function sendChatGptFillMessage(tabId, text, settings, articleTitle) {
         autoSubmit: Boolean(settings.autoSubmitChatGPT),
         waitForResult: Boolean(shouldWaitForNarrative),
         timeoutMs: Math.max(30, parseInt(settings.chatgptTimeoutSec || "900", 10) || 900) * 1000,
-        speechify: speechifyPayload
+        speechify: speechifyPayload,
+        targetProjectUrl: parseChatGptProjectRoute(settings.chatgptUrl || DEFAULTS.chatgptUrl)
+          ? settings.chatgptUrl || DEFAULTS.chatgptUrl
+          : ""
       },
       (response) => {
         const err = chrome.runtime.lastError;
@@ -820,18 +935,26 @@ async function openChatGptAndFill(settings, packageText, articleTitle = "") {
     settings.chatgptInstruction || DEFAULTS.chatgptInstruction;
   const composerText = `${instruction}\n\n${packageText}`;
 
-  const tab = await chrome.tabs.create({ url, active: false });
-  await waitForTabComplete(tab.id);
-  await installChatGptDraftQuotaGuard(tab.id);
-  await chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    files: ["chatgpt-paster.js"]
-  });
-
-  const response = await sendChatGptFillMessage(tab.id, composerText, settings, articleTitle);
+  const tab = await openChatGptAutomationTab(url);
+  let response;
+  try {
+    await waitForTabComplete(tab.id);
+    await installChatGptDraftQuotaGuard(tab.id);
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ["chatgpt-paster.js"]
+    });
+    response = await sendChatGptFillMessage(tab.id, composerText, settings, articleTitle);
+  } catch (error) {
+    throw makeChatGptProjectOpenError(error, url, "Could not fill ChatGPT composer.");
+  }
 
   if (!response?.ok) {
-    throw new Error(response?.error || "Could not fill ChatGPT composer.");
+    throw makeChatGptProjectOpenError(
+      new Error(response?.error || "Could not fill ChatGPT composer."),
+      url,
+      "Could not fill ChatGPT composer."
+    );
   }
 
   return response;
@@ -985,7 +1108,7 @@ async function run() {
     await ensureContentScript(tab.id);
 
     setStatus(`Extracting ${getArticleSourceFromUrl(tab.url)?.label || "article"} article...`);
-    const response = await sendExtractMessage(tab.id, {
+    let response = await sendExtractMessage(tab.id, {
       ...settings,
       promptText,
       forceCaseLabels: settings.engine === "normal" && settings.mode === "chatgpt_cards"
@@ -993,6 +1116,9 @@ async function run() {
 
     if (!response?.ok) throw new Error(response?.error || "Extraction failed.");
 
+    setStatus("Checking the questions you keep in Corebook...");
+    response = await chrome.runtime.sendMessage({type:"PREPARE_COREBOOK_CARD_CONTEXT", settings, extraction:response});
+    if (!response?.ok) throw new Error(response?.error || "Corebook comparison is unavailable.");
     setStatus("Copying package to clipboard...");
     await copyText(response.output);
 

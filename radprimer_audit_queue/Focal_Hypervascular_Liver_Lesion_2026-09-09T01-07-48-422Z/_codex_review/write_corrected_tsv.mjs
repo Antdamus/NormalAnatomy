@@ -1,0 +1,32 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import assert from 'node:assert/strict';
+import {Workbook} from '@oai/artifact-tool';
+
+const review=path.dirname(fileURLToPath(import.meta.url));
+const bundle=path.dirname(review);
+const data=JSON.parse(await fs.readFile(path.join(review,'correction_data.json'),'utf8'));
+const metadata=JSON.parse(await fs.readFile(path.join(bundle,'metadata.json'),'utf8'));
+const matrix=data.rows.map(row=>data.fields.map(field=>row[field]));
+const workbook=Workbook.create();
+const sheet=workbook.worksheets.add('Cards');
+const range=sheet.getRange(`A1:V${matrix.length}`);
+range.setNumberFormat('@');
+range.values=matrix;
+workbook.recalculate();
+const values=range.values.map(row=>row.map(value=>value??''));
+assert.deepEqual(values,matrix);
+const inspect=await workbook.inspect({kind:'table',range:'Cards!K27:P31',include:'values',tableMaxRows:5,tableMaxCols:6,tableMaxCellChars:100,maxChars:2000});
+await fs.writeFile(path.join(review,'artifact_grid_check.ndjson'),inspect.ndjson,'utf8');
+// The required output is Anki TSV, not a styled XLSX workbook. Preserve conventional CSV-style quote escaping.
+const escape=value=>/[\t\r\n"]/.test(value)?`"${value.replaceAll('"','""')}"`:value;
+const tsv=values.map(row=>row.map(escape).join('\t')).join('\n')+'\n';
+await fs.writeFile(path.join(bundle,'corrected_cards.tsv'),tsv,'utf8');
+const headers=['#separator:tab','#html:true',`#notetype:${metadata.anki.noteType}`,`#deck:${metadata.anki.deckName}`,'#tags column:22'];
+await fs.writeFile(path.join(bundle,'corrected_cards_anki_import.tsv'),headers.join('\n')+'\n'+tsv,'utf8');
+const imageRows=values.filter(row=>row[data.fields.indexOf('Image')]);
+assert.equal(imageRows.length,26);
+const imageTsv=imageRows.map(row=>row.map(escape).join('\t')).join('\n')+'\n';
+await fs.writeFile(path.join(bundle,'corrected_image_cards_anki_import.tsv'),headers.join('\n')+'\n'+imageTsv,'utf8');
+console.log(JSON.stringify({notes:matrix.length,columns:22,targetDeck:metadata.anki.deckName,artifactGridRoundTrip:'passed'}));

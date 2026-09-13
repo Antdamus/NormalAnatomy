@@ -1,0 +1,135 @@
+=== TOPIC ===
+PRIMARY TOPIC: Widened Hepatic Fissures
+CENTERING TOPIC FOR THIS CHAT: Widened Hepatic Fissures
+USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: Widened Hepatic Fissures
+
+=== RADPRIMER BREADCRUMB ===
+All Categories > Basic > Gastrointestinal > Liver > Widened Hepatic Fissures
+
+
+
+=== CORE VALIDATION INPUT ===
+Pathway A - Core Radiology cross-check available or requested.
+Core section/chapter/pages: it might be in multiple regions of the book so you are going to have to look through it
+Use Core information only if it is actually supplied in this prompt/user context or retrievable from ChatGPT project/source files in the current run.
+If ChatGPT can find the relevant Core pages/section in project/source files, it may use them without asking the user to provide page numbers; it must state the retrieved Core source basis when visible.
+If Core cannot be retrieved, proceed from the provided article only and label the deck RadPrimer-only/STATdx-only; do not fabricate Core details or Core + article synthesis.
+
+=== PROMPT ===
+Source-comparison extraction only.
+Do not generate a narrative or cards from this package.
+Preserve article hierarchy, source text, image filenames, selected image captions, arrows/annotations, source attribution, Core evidence if present, and Anki/breadcrumb metadata when available.
+
+=== ARTICLE ===
+TITLE: Widened Hepatic Fissures
+
+DIFFERENTIAL DIAGNOSIS
+- Common
+  - Cirrhosis
+  - Focal Confluent Fibrosis
+  - Senescent Change
+  - Postsurgical (Mimic)
+- Less Common
+  - Congenital Absence of Hepatic Segments
+  - Liver Metastases
+  - Primary Sclerosing Cholangitis
+  - Congenital Hepatic Fibrosis
+  - Schistosomiasis
+
+ESSENTIAL INFORMATION
+- Key Differential Diagnosis Issues
+  - Widened fissures: Congenital, acquired, or iatrogenic loss of hepatic parenchyma
+- Helpful Clues for Common Diagnoses
+  - Cirrhosis
+    - Widening of fissures indicates fibrosis and volume loss; sensitive sign of cirrhosis
+    - Look for enlarged caudate and signs of portal hypertension (splenomegaly, varices, ascites)
+  - Focal Confluent Fibrosis
+    - Common in advanced cirrhosis
+    - 90% of cases involve medial segment of left lobe &/or anterior segment of right lobe (segments 8 and 4) with sparing of caudate and lateral segments
+    - Lesions are isoattenuating to adjacent liver parenchyma on venous-phase CECT (80%)
+    - May show delayed, persistent enhancement like other fibrotic liver lesions
+    - Does not wash out (↓ in enhancement) unlike hepatocellular carcinoma (HCC)
+  - Senescent Change
+    - Older adults (> 70 years) often have asymptomatic volume loss of liver and widened fissures
+    - Do not label older patient as cirrhotic without clinical correlation
+  - Postsurgical (Mimic)
+    - Liver segments may be resected, or tumors may have been ablated
+- Helpful Clues for Less Common Diagnoses
+  - Congenital Absence of Hepatic Segments
+    - Most commonly affects anterior and medial segments
+    - Look for deep gallbladder fossa, absence of signs of portal hypertension
+  - Liver Metastases
+    - Some cancers (e.g., breast) induce fibrosis and volume loss de novo (pseudocirrhosis)
+    - Tumor volume loss and hepatic fibrosis may result from IV or arterial chemoembolization
+  - Primary Sclerosing Cholangitis
+    - Results in liver volume loss even before true cirrhosis has developed
+    - Liver has rounded contours due to atrophy of peripheral segments of liver and hypertrophy of deep right and caudate lobes
+    - Look for irregular dilation and strictures of bile ducts
+    - Check for history of inflammatory bowel disease
+  - Congenital Hepatic Fibrosis
+    - Part of spectrum of congenital fibropolycystic liver disease
+    - Leads to portal hypertension; may simulate or develop into cirrhosis
+    - Look for associated biliary or renal abnormalities
+      - Caroli disease; recessive or dominant polycystic disease
+    - Hepatic arteries are enlarged and tortuous
+    - Differentiating feature of congenital hepatic fibrosis
+      - Normal or ↑ medial segment vs. small medial segment in viral or alcoholic cirrhosis
+  - Schistosomiasis
+    - Saccharina japonica causes extensive fibrosis of liver
+    - Look for periportal and pericapsular septal calcifications
+    - Tortoise shell appearance
+
+
+=== IMAGES (selected; original numbering preserved) ===
+
+IMAGE_01: 1
+  Widened_Hepatic_Fissures1
+    Image: Widened_Hepatic_Fissures1.jpg
+    Image_Annotated: Widened_Hepatic_Fissures1_annot.jpg
+    Caption: Axial CECT shows a dysmorphic liver with signs of cirrhosis (wide fissures <img src="arrow_WS.png">, caudate hypertrophy <img src="arrow_WO.png">, nodular surface <img src="arrow_WC.png">) and stigmata of portal hypertension (splenomegaly <img src="arrow_CS.png">).
+
+IMAGE_02: 2
+  Widened_Hepatic_Fissures2
+    Image: Widened_Hepatic_Fissures2.jpg
+    Image_Annotated: Widened_Hepatic_Fissures2_annot.jpg
+    Caption: Pre- (A) and postcontrast images in a patient with cirrhosis show an area of decreased T1 signal <img src="arrow_WO.png"> and progressive enhancement <img src="arrow_WS.png"> through the arterial (B), venous (C), and delayed (D) phases, indicative of a fibrotic process that is consistent with confluent fibrosis.
+
+IMAGE_03: 3
+  Widened_Hepatic_Fissures3
+    Image: Widened_Hepatic_Fissures3.jpg
+    Image_Annotated: Widened_Hepatic_Fissures3_annot.jpg
+    Caption: Axial CT shows a small medial segment with the gallbladder lying deep within the liver and a relatively wide fissure for the falciform ligament. These findings would be suggestive of cirrhosis in a younger patient but may be normal, especially in older adults. This man had no clinical evidence of liver disease.
+
+IMAGE_04: 4
+  Widened_Hepatic_Fissures4
+    Image: Widened_Hepatic_Fissures4.jpg
+    Image_Annotated: Widened_Hepatic_Fissures4_annot.jpg
+    Caption: Axial CECT shows absence of the medial segment with omental fat and colon herniating into the space between the right lobe and lateral segment. The gallbladder <img src="arrow_BS.png"> marks the interlobar plane.
+
+IMAGE_05: 5
+  Widened_Hepatic_Fissures5
+    Image: Widened_Hepatic_Fissures5.jpg
+    Image_Annotated: Widened_Hepatic_Fissures5_annot.jpg
+    Caption: Axial CECT in a woman with known hepatic metastases from breast cancer shows a dysmorphic liver with widened fissures, a lobulated and nodular contour <img src="arrow_WS.png"> that closely simulates cirrhosis. Subtle hypodense lesions <img src="arrow_BS.png"> indicate widespread mets.
+
+IMAGE_06: 6
+  Widened_Hepatic_Fissures6
+    Image: Widened_Hepatic_Fissures6.jpg
+    Image_Annotated: Widened_Hepatic_Fissures6_annot.jpg
+    Caption: Axial CECT shows a cirrhotic liver with beaded intrahepatic biliary ductal dilatation <img src="arrow_WS.png"> of primary sclerosing cholangitis. Liver is small with varices <img src="arrow_WC.png">, widened fissures, and rounded contours due to peripheral hepatic scarring and hypertrophy of the more central segments.
+
+IMAGE_07: 7
+  Widened_Hepatic_Fissures7
+    Image: Widened_Hepatic_Fissures7.jpg
+    Image_Annotated: Widened_Hepatic_Fissures7_annot.jpg
+    Caption: Axial CECT shows a dysmorphic liver with widened fissures and dilated, ectatic bile ducts <img src="arrow_WS.png"> due to Caroli disease and congenital hepatic fibrosis.
+
+IMAGE_08: 8
+  Widened_Hepatic_Fissures8
+    Image: Widened_Hepatic_Fissures8.jpg
+    Image_Annotated: Widened_Hepatic_Fissures8_annot.jpg
+    Caption: Axial CECT shows signs of cirrhosis and portal hypertension, including large varices <img src="arrow_WC.png">. Note the extraordinarily widened hepatic fissures deeply dividing the segments of the liver along the portal vein branches. This is a characteristic feature of hepatic schistosomiasis.
+
+=== SOURCE ATTRIBUTION ===
+Primary source label: RadPrimer
+Core cross-check: it might be in multiple regions of the book so you are going to have to look through it

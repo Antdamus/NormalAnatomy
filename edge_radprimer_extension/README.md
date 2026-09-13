@@ -96,3 +96,31 @@ This mode is best-effort because ChatGPT's web UI can change. The ChatGPT page a
 - If ChatGPT handoff is enabled, the package is also inserted into the configured `https://chatgpt.com/...` page.
 - It uses your packaged prompt files. Re-run `build_prompts.py` after editing prompt modules.
 - This first version automates extraction, prompt packaging, copying, image downloads, and best-effort ChatGPT project composer filling.
+
+## Avoiding repeated Corebook questions
+
+Corebook card runs now require the updated Anki bridge and a fresh retained-card
+snapshot. This covers page-runner, grouped/master-source, popup-copy and Codex
+card modes. Narrative/source-comparison/image-only workflows are unaffected.
+Keep Anki open. If it cannot be read, generation stops instead of assuming the
+collection is empty. Reload this unpacked extension after updating it.
+
+Large-bank comparisons keep every card in the target scope and matching organ
+deck labels across specialties. Global caption matches require uncommon terms
+within the same caption, so generic caption words do not pull in almost the
+entire collection. Large prompts factor out repeated field names and deck paths
+without shortening questions/answers or dropping selected cards. If the packed
+comparison still exceeds the limit, a local review is required. Deck routing
+does not change to make a comparison fit.
+
+Prompts compare question/answer learning objectives across related topics and
+card categories. Current Anki cards are authoritative; generated TSVs are never
+recorded as accepted. Removal history prevents previously observed deleted or
+revised questions from being recreated automatically. Distinct useful image
+examples, caption HTML/icons, atomic groups and repeated summaries are preserved.
+
+Audit bundles include `corebook_snapshot.json` and `corebook_context.txt`, or an
+explicit refresh-required status if Anki closed while generation was running.
+The audit must refresh again and write `card_overlap_review.json`, then pass
+`tools/corebook_card_guard.py validate` before the completion marker. Full setup,
+limitations and commands are in `../corebook_card_registry/README.md`.

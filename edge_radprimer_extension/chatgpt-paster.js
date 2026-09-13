@@ -19,6 +19,12 @@
       'div#prompt-textarea[contenteditable="true"], div#prompt-textarea[contenteditable="true"][role="textbox"], [role="textbox"][contenteditable="true"][aria-multiline="true"], .ProseMirror[contenteditable="true"]',
     fallbackTextarea: 'textarea[name="prompt-textarea"]',
     composerForm: 'form[data-type="unified-composer"], form:has(#prompt-textarea)',
+    chatSurfaceGroup: '[role="radiogroup"][aria-label="Select chat surface"]',
+    chatSurfaceChatButton: '[role="radio"][data-tpp-toggle-value="chatgpt"]',
+    chatSurfaceWorkButton: '[role="radio"][data-tpp-toggle-value="work"]',
+    chatHistory: 'nav[aria-label="Chat history"]',
+    sidebarProjectItem: '[data-sidebar-item="true"][role="button"], [data-sidebar-item="true"]',
+    projectHomeButton: 'button[aria-label="Open project home"]',
     sendButton:
       'button#composer-submit-button[data-testid="send-button"], button[data-testid="send-button"], button[aria-label="Send prompt"], button[aria-label="Send message"], button[aria-label="Send"], button#composer-submit-button, form[data-type="unified-composer"] button[type="submit"], form:has(#prompt-textarea) button[type="submit"]',
     stopButton:
@@ -26,8 +32,10 @@
   };
 
   const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
-  const MULTIPART_PROMPT_THRESHOLD_CHARS = 30000;
-  const MULTIPART_PROMPT_PART_CHARS = 24000;
+  // Large chunks reduce fragile multipart handoffs while staying below sizes
+  // where the ChatGPT web composer is more likely to stall or reject input.
+  const MULTIPART_PROMPT_THRESHOLD_CHARS = 100000;
+  const MULTIPART_PROMPT_PART_CHARS = 90000;
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -264,6 +272,59 @@
     return (hasStart && (hasEnd || lengthRatio > 0.7)) || actual.length > 2000;
   };
 
+  const parseChatGptProjectRoute = (rawUrl) => {
+    try {
+      const parsed = new URL(rawUrl);
+      const host = parsed.hostname.toLowerCase();
+      if (host !== "chatgpt.com" && host !== "chat.openai.com") return null;
+      const parts = parsed.pathname.split("/").filter(Boolean);
+      const gIndex = parts.indexOf("g");
+      const projectSegment = gIndex >= 0 ? parts[gIndex + 1] || "" : "";
+      const match = projectSegment.match(/^(g-p-[a-z0-9]+)(?:-(.+))?$/i);
+      if (!match) return null;
+      return {
+        origin: parsed.origin,
+        projectId: match[1].toLowerCase(),
+        projectSegment,
+        projectNameHint: (match[2] || "").replace(/-/g, " ").trim()
+      };
+    } catch {
+      return null;
+    }
+  };
+
+  const normalizeProjectText = (value) => {
+    return String(value || "")
+      .replace(/[-_]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+  };
+
+  const isCurrentProjectHome = (route) => {
+    if (!route?.projectId) return false;
+    try {
+      const path = new URL(location.href).pathname.toLowerCase();
+      return path.includes(route.projectId) && path.endsWith("/project");
+    } catch {
+      return false;
+    }
+  };
+
+  const getVisibleProjectHomeComposer = (route) => {
+    const editor = getComposerEditor();
+    if (!editor) return null;
+    const projectName = normalizeProjectText(route?.projectNameHint || "");
+    if (!projectName) return editor;
+    const label = normalizeProjectText(
+      editor.getAttribute?.("aria-label") ||
+        editor.getAttribute?.("placeholder") ||
+        editor.textContent ||
+        ""
+    );
+    return label.includes(projectName) ? editor : null;
+  };
+
   const getSendButton = () => {
     return Array.from(document.querySelectorAll(SELECTORS.sendButton)).find(
       (button) =>
@@ -322,6 +383,135 @@
         })
       );
     }
+  };
+
+  const isRadioSelected = (button) => {
+    return (
+      button?.getAttribute?.("aria-checked") === "true" ||
+      button?.getAttribute?.("data-state") === "on"
+    );
+  };
+
+  const getVisibleChatSurfaceButton = (selector) => {
+    const groups = Array.from(document.querySelectorAll(SELECTORS.chatSurfaceGroup)).filter(
+      isVisible
+    );
+    for (const group of groups) {
+      const button = Array.from(group.querySelectorAll(selector)).find(isVisible);
+      if (button) return button;
+    }
+    return null;
+  };
+
+  const ensureNormalChatSurface = async (compactProgress = false) => {
+    const chatButton = getVisibleChatSurfaceButton(SELECTORS.chatSurfaceChatButton);
+    const workButton = getVisibleChatSurfaceButton(SELECTORS.chatSurfaceWorkButton);
+    if (!chatButton) return true;
+    if (isRadioSelected(chatButton) && !isRadioSelected(workButton)) return true;
+
+    sendProgress(
+      "SELECTING_CHAT",
+      "Switching project composer from Work to Chat...",
+      compactProgress
+    );
+
+    try {
+      clickLikeUser(chatButton);
+    } catch {
+      try {
+        chatButton.click();
+      } catch {}
+    }
+
+    const selected = await waitFor(() => {
+      const freshChatButton = getVisibleChatSurfaceButton(SELECTORS.chatSurfaceChatButton);
+      const freshWorkButton = getVisibleChatSurfaceButton(SELECTORS.chatSurfaceWorkButton);
+      return freshChatButton &&
+        isRadioSelected(freshChatButton) &&
+        !isRadioSelected(freshWorkButton)
+        ? freshChatButton
+        : null;
+    }, 6000);
+
+    if (selected) await waitFor(() => getComposerEditor(), 6000);
+    return Boolean(selected);
+  };
+
+  const findSidebarProjectRow = (route) => {
+    const projectName = normalizeProjectText(route?.projectNameHint || "");
+    if (!projectName) return null;
+
+    const projectItem = Array.from(document.querySelectorAll(SELECTORS.sidebarProjectItem)).find(
+      (el) => normalizeProjectText(el.innerText || el.textContent || "") === projectName
+    );
+    if (projectItem) return projectItem.closest("li") || projectItem;
+
+    return (
+      Array.from(document.querySelectorAll("li")).find((li) => {
+        const text = normalizeProjectText(li.innerText || li.textContent || "");
+        return text === projectName || text.startsWith(`${projectName} `);
+      }) || null
+    );
+  };
+
+  const clickProjectHomeFromSidebar = (route) => {
+    const row = findSidebarProjectRow(route);
+    if (!row) return false;
+    const homeButton = Array.from(row.querySelectorAll(SELECTORS.projectHomeButton)).find(
+      isVisible
+    );
+    const target = homeButton || row.querySelector(SELECTORS.sidebarProjectItem) || row;
+
+    try {
+      clickLikeUser(target);
+    } catch {
+      try {
+        target.click();
+      } catch {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const ensureChatGptProjectTarget = async (targetProjectUrl, compactProgress = false) => {
+    const route = parseChatGptProjectRoute(targetProjectUrl);
+    if (!route) return true;
+
+    const homeComposer = isCurrentProjectHome(route)
+      ? getVisibleProjectHomeComposer(route)
+      : null;
+    if (homeComposer) return true;
+
+    sendProgress(
+      "OPENING_PROJECT",
+      `Opening ${route.projectNameHint || "ChatGPT project"} inside ChatGPT...`,
+      compactProgress
+    );
+
+    await waitFor(
+      () => document.querySelector(SELECTORS.chatHistory) || getComposerEditor(),
+      30000
+    );
+
+    if (!clickProjectHomeFromSidebar(route)) {
+      throw new Error(
+        `Could not find ${route.projectNameHint || "the ChatGPT project"} in the loaded ChatGPT sidebar. Open ChatGPT home once, make sure the project is visible in the sidebar, then rerun.`
+      );
+    }
+
+    const editor = await waitFor(() => {
+      if (!isCurrentProjectHome(route)) return null;
+      return getVisibleProjectHomeComposer(route);
+    }, 20000);
+
+    if (!editor) {
+      throw new Error(
+        `Could not open the ${route.projectNameHint || "ChatGPT project"} composer from ChatGPT home.`
+      );
+    }
+
+    return true;
   };
 
   const clickDownloadLikeUser = (el) => {
@@ -2110,7 +2300,8 @@
     speechify,
     preserveAuditBlock,
     expectedOutputKind,
-    completionPayload
+    completionPayload,
+    targetProjectUrl = ""
   }) => {
     const parts = splitPromptParts(promptText);
     const sessionId = makeMultipartSessionId();
@@ -2135,6 +2326,7 @@
       preserveAuditBlock: true,
       expectedOutputKind: "",
       completionPayload: null,
+      targetProjectUrl,
       disableMultipart: true,
       suppressResultSideEffects: true
     });
@@ -2196,6 +2388,7 @@
     preserveAuditBlock,
     expectedOutputKind,
     completionPayload,
+    targetProjectUrl = "",
     disableMultipart = false,
     suppressResultSideEffects = false
   }) => {
@@ -2208,11 +2401,14 @@
         speechify,
         preserveAuditBlock,
         expectedOutputKind,
-        completionPayload
+        completionPayload,
+        targetProjectUrl
       });
     }
 
     const compactProgress = Boolean(autoSubmit && !waitForResult);
+    await ensureChatGptProjectTarget(targetProjectUrl, compactProgress);
+    await ensureNormalChatSurface(compactProgress);
     sendProgress("WAITING_FOR_COMPOSER", "Waiting for ChatGPT composer...", compactProgress);
     const editor = await waitForComposerEditor();
     if (!editor) throw new Error("Login required or ChatGPT composer not available.");
@@ -2418,7 +2614,8 @@
         speechify: message.speechify || null,
         preserveAuditBlock: Boolean(message.preserveAuditBlock),
         expectedOutputKind: String(message.expectedOutputKind || ""),
-        completionPayload: message.completionPayload || null
+        completionPayload: message.completionPayload || null,
+        targetProjectUrl: String(message.targetProjectUrl || "")
       })
         .then((result) => {
           if (!result?.suppressCompletionMessage) {
@@ -2448,7 +2645,8 @@
         speechify: message.speechify || null,
         preserveAuditBlock: Boolean(message.preserveAuditBlock),
         expectedOutputKind: String(message.expectedOutputKind || ""),
-        completionPayload: message.completionPayload || null
+        completionPayload: message.completionPayload || null,
+        targetProjectUrl: String(message.targetProjectUrl || "")
       });
       sendResponse({ ok: true, ...result });
     })().catch((error) => {

@@ -14,6 +14,7 @@ from urllib.parse import urlparse
 from aqt import gui_hooks, mw
 from aqt.qt import QAction, QTimer
 from aqt.utils import tooltip
+from . import corebook_registry
 
 HOST = "127.0.0.1"
 PORT = 8765
@@ -23,6 +24,8 @@ _state_lock = threading.RLock()
 _server: ThreadingHTTPServer | None = None
 _server_thread: threading.Thread | None = None
 _server_error = ""
+_corebook_lock = threading.Lock()
+_corebook_refresh_pending = False
 _sequence = 0
 _skull_locator_sequence = 0
 _skull_locator_state: dict[str, Any] = {
@@ -694,7 +697,7 @@ class BridgeHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         path = urlparse(self.path).path
         if path == "/health":
-            _json_response(self, 200, {"ok": True, "name": ADDON_NAME, "serverTime": time.time()})
+            _json_response(self, 200, {"ok": True, "name": ADDON_NAME, "capabilities": ["corebookSnapshot"], "serverTime": time.time()})
             return
         if path == "/radiopaedia-skull/obs":
             _html_response(self, 200, SKULL_LOCATOR_OBS_HTML)
@@ -722,6 +725,16 @@ class BridgeHandler(BaseHTTPRequestHandler):
         path = urlparse(self.path).path
         body = _read_json_body(self)
         try:
+            if path == "/corebook/snapshot":
+                origin = self.headers.get("Origin", "")
+                host = self.headers.get("Host", "")
+                if host not in {"127.0.0.1:8765", "localhost:8765"} or (origin and not origin.startswith("chrome-extension://")):
+                    _json_response(self, 403, {"ok": False, "error": "Corebook reads require a local client or browser extension."})
+                    return
+                with _corebook_lock:
+                    bank = _run_on_main_sync(_refresh_corebook_on_main, timeout=45.0)
+                _json_response(self, 200, {"ok": True, "bank": bank})
+                return
             if path == "/show-answer":
                 state = _run_on_main_sync(_show_answer_on_main, timeout=8.0)
                 _json_response(self, 200, {"ok": True, "state": state})
@@ -783,6 +796,45 @@ def _install_hooks() -> None:
                 pass
 
 
+def _refresh_corebook_on_main() -> dict[str, Any]:
+    config_path = Path(__file__).with_name("corebook_config.json")
+    if not config_path.exists():
+        raise RuntimeError("Install the updated bridge with its Corebook registry configuration, then restart Anki.")
+    config = json.loads(config_path.read_text(encoding="utf-8-sig"))
+    registry_path = Path(config["registryPath"])
+    if not registry_path.is_absolute():
+        raise RuntimeError("Corebook registryPath must be absolute.")
+    if not getattr(mw, "col", None):
+        raise RuntimeError("Open your Anki profile before checking Corebook.")
+    return corebook_registry.refresh(mw.col, mw.pm.profileFolder(), registry_path)
+
+
+def _schedule_corebook_refresh(*_args: Any) -> None:
+    global _corebook_refresh_pending
+    if _corebook_refresh_pending:
+        return
+    _corebook_refresh_pending = True
+
+    def run() -> None:
+        global _corebook_refresh_pending
+        _corebook_refresh_pending = False
+        if not getattr(mw, "col", None):
+            return
+        try:
+            _refresh_corebook_on_main()
+        except Exception as error:
+            # Failed reads never reset the previous snapshot or deletion history.
+            print(f"[Corebook registry] Refresh deferred: {error}")
+
+    QTimer.singleShot(2000, run)
+
+
+def _on_corebook_operation(changes: Any, _handler: Any = None) -> None:
+    # Note edits/imports/deletions trigger a refresh; ordinary review answers do not.
+    if any(getattr(changes, flag, False) for flag in ("note", "notetype", "deck")):
+        _schedule_corebook_refresh()
+
+
 def _show_bridge_status() -> None:
     snapshot = _refresh_snapshot(None)
     status = "running" if _server else f"not running: {_server_error or 'unknown error'}"
@@ -798,5 +850,12 @@ def _add_menu_item() -> None:
 
 
 _install_hooks()
+for _hook_name, _callback in [("profile_did_open", _schedule_corebook_refresh),
+                               ("sync_did_finish", _schedule_corebook_refresh),
+                               ("operation_did_execute", _on_corebook_operation)]:
+    _hook = getattr(gui_hooks, _hook_name, None)
+    if _hook is not None:
+        _hook.append(_callback)
 QTimer.singleShot(1200, _start_server)
 QTimer.singleShot(1600, _add_menu_item)
+QTimer.singleShot(3000, _schedule_corebook_refresh)

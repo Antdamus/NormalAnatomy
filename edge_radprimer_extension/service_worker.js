@@ -1,3 +1,5 @@
+importScripts("corebook-card-guard.js", "corebook-card-guard-runtime.js");
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const PROMPT_FILES = {
@@ -39,6 +41,12 @@ const IMAIOS_LABEL_DETAIL_REPOSITORY_STORAGE_KEY = "imaios-cine-tools:label-deta
 const IMAIOS_LIVE_DRILL_PAIRS_STORAGE_KEY = "imaios-cine-tools:live-drill-pairs";
 const IMAIOS_LIVE_DRILL_PAIR_INPUT_SYNC_ENABLED = false;
 const ANKI_LIVE_DRILL_BRIDGE_BASE_URL = "http://127.0.0.1:8765";
+const SPEECHIFY_APP_BASE_URL = "https://app.speechify.com/";
+const SPEECHIFY_TAB_URL_PATTERNS = [
+  "https://app.speechify.com/*",
+  "https://speechify.com/*",
+  "https://*.speechify.com/*"
+];
 const CARD_AUDIT_DOWNLOAD_SENTINEL = "RADPRIMER_CARD_TSV_DOWNLOAD_READY";
 const CORE_EVIDENCE_BEGIN = "CORE_EVIDENCE_FILE_BEGIN";
 const CORE_EVIDENCE_END = "CORE_EVIDENCE_FILE_END";
@@ -142,9 +150,18 @@ let lastArticleSourceTab = null;
 const pendingImageDownloadFilenames = new Map();
 
 function buildSpeechifyFolderUrl(folderId) {
-  const url = new URL("https://app.speechify.com/");
+  const url = new URL(SPEECHIFY_APP_BASE_URL);
   if (folderId) url.searchParams.set("folder", folderId);
   return url.toString();
+}
+
+function isSpeechifyHost(hostname) {
+  const host = String(hostname || "").toLowerCase();
+  return host === "speechify.com" || host.endsWith(".speechify.com");
+}
+
+async function querySpeechifyTabs() {
+  return chrome.tabs.query({ url: SPEECHIFY_TAB_URL_PATTERNS });
 }
 
 async function requestAnkiLiveDrillBridge(path, options = {}) {
@@ -189,8 +206,8 @@ function parseSpeechifyFolderUrl(rawValue) {
   const raw = String(rawValue || "").trim();
   if (!raw) return { url: DEFAULTS.speechifyFolderUrl, id: DEFAULTS.speechifyFolderId };
   const url = new URL(raw);
-  if (url.hostname !== "app.speechify.com") {
-    throw new Error("Speechify folder link must start with https://app.speechify.com/");
+  if (!isSpeechifyHost(url.hostname)) {
+    throw new Error("Speechify folder link must be a Speechify link.");
   }
   const id = url.searchParams.get("folder") || "";
   if (!id) throw new Error("Speechify folder link must include a ?folder=... value.");
@@ -398,9 +415,116 @@ function waitForTabComplete(tabId, timeoutMs = 60000, label = "tab") {
   });
 }
 
+function parseChatGptProjectRoute(rawUrl) {
+  try {
+    const parsed = new URL(rawUrl);
+    const host = parsed.hostname.toLowerCase();
+    if (host !== "chatgpt.com" && host !== "chat.openai.com") return null;
+
+    const parts = parsed.pathname.split("/").filter(Boolean);
+    const gIndex = parts.indexOf("g");
+    const projectSegment = gIndex >= 0 ? parts[gIndex + 1] || "" : "";
+    const match = projectSegment.match(/^(g-p-[a-z0-9]+)(?:-(.+))?$/i);
+    if (!match) return null;
+
+    return {
+      origin: parsed.origin,
+      projectId: match[1].toLowerCase(),
+      projectSegment,
+      projectNameHint: (match[2] || "").replace(/-/g, " ").trim()
+    };
+  } catch {
+    return null;
+  }
+}
+
+function normalizeChatGptProjectText(value) {
+  return String(value || "")
+    .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function formatChatGptProjectName(route) {
+  const name = String(route?.projectNameHint || "").trim();
+  if (!name) return "the ChatGPT project";
+  return name.replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function scoreReusableChatGptProjectTab(tab, route, configuredUrl) {
+  if (!tab?.id || !route?.projectId) return 0;
+  const url = String(tab.url || "");
+  const title = String(tab.title || "");
+  const lowerUrl = url.toLowerCase();
+  if (!lowerUrl.includes(route.projectId)) return 0;
+
+  const projectName = normalizeChatGptProjectText(route.projectNameHint);
+  const normalizedTitle = normalizeChatGptProjectText(title);
+  if (projectName && !normalizedTitle.includes(projectName)) return 0;
+
+  let score = 0;
+
+  if (url === configuredUrl) score += 40;
+  if (lowerUrl.includes("/project")) score += 80;
+  if (projectName && normalizedTitle.includes(projectName)) score += 120;
+  if (tab.status === "complete") score += 10;
+  if (lowerUrl.includes("/c/")) score -= 80;
+  if (/^chatgpt$/i.test(title.trim())) score -= 220;
+  if (/try again/i.test(title)) score -= 220;
+
+  return score;
+}
+
+async function findReusableChatGptProjectTab(configuredUrl) {
+  const route = parseChatGptProjectRoute(configuredUrl);
+  if (!route) return null;
+
+  let tabs = [];
+  try {
+    tabs = await chrome.tabs.query({
+      url: ["https://chatgpt.com/*", "https://chat.openai.com/*"]
+    });
+  } catch {
+    return null;
+  }
+
+  const scored = tabs
+    .map((tab) => ({ tab, score: scoreReusableChatGptProjectTab(tab, route, configuredUrl) }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  return scored[0]?.tab || null;
+}
+
+async function openChatGptAutomationTab(url) {
+  const reusable = await findReusableChatGptProjectTab(url);
+  if (reusable?.id) return reusable;
+
+  const route = parseChatGptProjectRoute(url);
+  return chrome.tabs.create({ url: route ? `${route.origin}/` : url, active: false });
+}
+
+function makeChatGptProjectOpenError(error, url, fallbackMessage) {
+  const message = error?.message || String(error || "");
+  const route = parseChatGptProjectRoute(url);
+  const looksLikeColdProjectFailure =
+    route &&
+    /composer|receiving end|connection|timed out|could not fill|could not start|login required/i.test(message);
+
+  if (!looksLikeColdProjectFailure) {
+    return error instanceof Error ? error : new Error(message || fallbackMessage);
+  }
+
+  const projectName = formatChatGptProjectName(route);
+  return new Error(
+    `Could not open ${projectName} from ChatGPT home. Make sure you are logged in and ${projectName} is visible in the ChatGPT sidebar, then run the automation again.`
+  );
+}
+
 async function openOrFocusSpeechifyTab(folderId) {
   const targetUrl = buildSpeechifyFolderUrl(folderId);
-  const tabs = await chrome.tabs.query({ url: ["https://app.speechify.com/*"] });
+  const tabs = await querySpeechifyTabs();
   let tab = tabs?.[0];
 
   if (tab?.id) {
@@ -920,11 +1044,11 @@ chrome.tabs.onRemoved.addListener((tabId) => {
 });
 
 async function getSpeechifyTab({ focus = false, createIfMissing = false } = {}) {
-  const tabs = await chrome.tabs.query({ url: ["https://app.speechify.com/*"] });
+  const tabs = await querySpeechifyTabs();
   let tab = tabs.find((candidate) => candidate.active) || tabs[0] || null;
 
   if (!tab && createIfMissing) {
-    tab = await chrome.tabs.create({ url: "https://app.speechify.com/", active: focus });
+    tab = await chrome.tabs.create({ url: SPEECHIFY_APP_BASE_URL, active: focus });
   }
 
   if (!tab?.id) {
@@ -1082,7 +1206,7 @@ async function ensureSpeechifyAwakeWindow(tab, senderTab = null) {
 async function sendSpeechifyPlayerRemote(payload = {}, senderTab = null) {
   rememberArticleSourceTab(senderTab, "", "speechify-player-remote");
   const action = String(payload.action || "state");
-  const tabs = await chrome.tabs.query({ url: ["https://app.speechify.com/*"] });
+  const tabs = await querySpeechifyTabs();
 
   if (action === "focus") {
     const { states } = await getSpeechifyPlayerStates(tabs);
@@ -4130,6 +4254,8 @@ function buildAuditInstructions(metadata) {
     "",
     "Audit goal: compare `generated_cards.tsv` against `source_package.txt` and `core_evidence.txt` when present, then produce a corrected, higher-yield TSV when needed.",
     "",
+    corebookAuditInstructions(metadata),
+    "",
     "Checklist:",
     "- Preserve the existing TSV schema and column order.",
     "- Remove cards that test prompt metadata, source-review bookkeeping, generator decisions, or vague audit statements.",
@@ -4145,6 +4271,8 @@ function buildAuditInstructions(metadata) {
     "- Differential lists should stay on the UNKNOWN back. Do not create or preserve standalone Differential Drill cards unless `Differential_Q` is populated by explicit user request.",
     "- If the installed Anki note type still creates Differential Drill cards from `Differentials` alone, either patch the note type before import or leave `Differentials` blank and put the mini-differential at the top of `Imaging_Differentiation`.",
     "- Check image-based cards against the selected image list and grouped cases in `metadata.json`.",
+    "- Preserve each original caption character-for-character in `Original_Caption` and `Image_Annotated` stackCap, including HTML, spacing, punctuation, and every inline `<img src=\"arrow_XX.png\">` tag. Arrow icons are meaningful source annotations, never bookkeeping; do not delete them, flatten the HTML, or replace them with generic `(arrow)` text. Put explanations outside the original caption.",
+    "- Validate caption icons as auxiliary media separately from diagnostic images. An icon missing from `downloadFiles` or the selected-image registry is not permission to remove its tag. Recover its exact asset from bundle/source media or existing Anki `collection.media`; if unavailable, retain the original tag and report the missing filename without claiming complete media integrity. Verify raw caption equality, not only rendered text. Caption-only repairs must preserve IDs, image grouping/order, and all unaffected fields and notes.",
     "- Verify image media integrity by checking exact `<img src>` filenames against the bundle/media list; do not preserve visible image-reference/source-URL bookkeeping in learner-facing card fields.",
     "- Remove visible `Image reference:`, `Image references:`, `Source image link(s):`, source URL, thumbnail URL, or local-media filename-list blocks from card fields while preserving actual images and useful captions.",
     "- Treat Core-specific claims as auditable only if supported by `core_evidence.txt` or direct Core text inside `source_package.txt`.",
@@ -4192,10 +4320,11 @@ function buildAuditWakeMessage(bundle) {
     "1. From C:\\Users\\josem.000\\NormalAnatomy, import the newest complete bundle by running or emulating edge_radprimer_extension\\tools\\import-latest-radprimer-audit-bundle.ps1.",
     "2. Read C:\\Users\\josem.000\\NormalAnatomy\\radprimer_audit_queue\\_latest_radprimer_audit_bundle.txt.",
     "3. In that bundle, compare source_package.txt, generated_cards.tsv, metadata.json, audit_instructions.md, and core_evidence.txt if present.",
+    "Before correcting cards, refresh the retained Corebook bank with python tools/corebook_card_guard.py prepare --bundle <imported bundle path>. Compare existing and removed questions by learning objective across categories and topics. Follow the required Corebook overlap review in audit_instructions.md, write card_overlap_review.json, and run the validate command before writing the completion marker. Generated TSVs are not accepted cards.",
     "4. Write corrected_cards.tsv, audit_report.md, and _codex_audit_done.txt in the same bundle folder.",
     "5. If metadata.json contains an Anki deck target, also write corrected_cards_anki_import.tsv with Anki import headers so Anki can create/select the target subdeck automatically.",
     "",
-    "Preserve the TSV schema and column order. Remove metadata/bookkeeping cards, split overloaded cards, and audit High-Yield rows using the radiologist-usefulness gate: each High-Yield card must teach a source-supported modality appearance, contrast/tracer behavior, differential discriminator, pitfall, report-critical/management pivot, or pretest clue that changes interpretation. Delete or rewrite generic trivia, including broad 'most common' facts, unless the answer states the radiology pivot. Preserve short non-diagnostic random-looking unique IDs in Clinical_Context, but repair missing or counter-style IDs; do not accept sequential IDs such as Q00000000001, Q00000000002, CASE000000001, or row-number-derived IDs. Differential lists belong on the UNKNOWN back; do not create or preserve standalone Differential Drill cards unless Differential_Q is populated by explicit user request. Verify image media integrity through exact <img src> filenames and bundle/media metadata, but remove visible Image reference:, Image references:, Source image link(s):, source URL, thumbnail URL, and local-media filename-list bookkeeping from learner-facing fields while preserving actual images and useful captions. If the installed Anki note type still creates Differential Drill cards from Differentials alone, either patch the note type before import or leave Differentials blank and put the mini-differential at the top of Imaging_Differentiation. Add missing source-supported high-yield cards only when they pass this usefulness gate, and improve unclear mechanism or histology explanations while labeling any outside clarification. Treat Core-specific claims as verified only when core_evidence.txt or source_package.txt contains auditable Core support. Do not remove the article-level summary field just because it is repeated; the user's Anki template can hide it. Only correct the summary when it is inaccurate, source-contaminated, overcompressed, or inconsistent with the auditable source basis."
+    "Preserve the TSV schema and column order. Remove metadata/bookkeeping cards, split overloaded cards, and audit High-Yield rows using the radiologist-usefulness gate: each High-Yield card must teach a source-supported modality appearance, contrast/tracer behavior, differential discriminator, pitfall, report-critical/management pivot, or pretest clue that changes interpretation. Delete or rewrite generic trivia, including broad 'most common' facts, unless the answer states the radiology pivot. Preserve short non-diagnostic random-looking unique IDs in Clinical_Context, but repair missing or counter-style IDs; do not accept sequential IDs such as Q00000000001, Q00000000002, CASE000000001, or row-number-derived IDs. Differential lists belong on the UNKNOWN back; do not create or preserve standalone Differential Drill cards unless Differential_Q is populated by explicit user request. Verify image media integrity through exact <img src> filenames and bundle/media metadata, but remove visible Image reference:, Image references:, Source image link(s):, source URL, thumbnail URL, and local-media filename-list bookkeeping from learner-facing fields while preserving actual images and useful captions. Preserve Original_Caption and each Image_Annotated stackCap character-for-character, including original HTML, spacing, punctuation, and every inline arrow image tag such as arrow_WS.png. Arrow icons are meaningful source annotations, never bookkeeping; do not strip them, flatten the HTML, or substitute generic (arrow) text. Check raw caption equality against the original source. Validate caption icons separately as auxiliary media: absence from downloadFiles or the selected-image registry is not permission to remove them. Recover exact assets from bundle/source media or existing Anki collection.media; otherwise retain the tags and report missing filenames without claiming complete media integrity. Caption-only repairs must preserve note IDs, image grouping/order, and all unaffected fields and notes. If the installed Anki note type still creates Differential Drill cards from Differentials alone, either patch the note type before import or leave Differentials blank and put the mini-differential at the top of Imaging_Differentiation. Add missing source-supported high-yield cards only when they pass this usefulness gate, and improve unclear mechanism or histology explanations while labeling any outside clarification. Treat Core-specific claims as verified only when core_evidence.txt or source_package.txt contains auditable Core support. Do not remove the article-level summary field just because it is repeated; the user's Anki template can hide it. Only correct the summary when it is inaccurate, source-contaminated, overcompressed, or inconsistent with the auditable source basis."
   ].join("\n");
 }
 
@@ -4424,6 +4553,7 @@ function createCardAuditMetadata(pending, createdAt, generated = {}) {
     cases: pending.extractionMeta?.cases || [],
     totalImagesOnPage: pending.extractionMeta?.totalImagesOnPage ?? null,
     breadcrumbTrail: pending.extractionMeta?.breadcrumbTrail || [],
+    corebookGuard: pending.extractionMeta?.corebookGuard || null,
     outputChars: pending.sourcePackage?.length || 0,
     generatedChars: generated.generatedChars ?? null,
     generatedRawChars: generated.generatedRawChars ?? null,
@@ -4507,6 +4637,7 @@ async function stageCardAuditBundle({ pending, assistantText }) {
     coreEvidenceChars: coreEvidence.text.length
   });
 
+  await stageCorebookAuditContext(pending, metadata, folderName);
   await downloadAuditTextFile(folderName, "source_package.txt", pending.sourcePackage || "");
   await downloadAuditTextFile(folderName, "generated_cards.tsv", generatedCards);
   await downloadAuditTextFile(folderName, "core_evidence.txt", coreEvidence.text);
@@ -4541,6 +4672,7 @@ async function stageCardAuditSourceOnlyBundle({ pending, sourceLabel = "source_o
     sourceOnlyBundle: true
   });
 
+  await stageCorebookAuditContext(pending, metadata, folderName);
   await downloadAuditTextFile(folderName, "source_package.txt", pending.sourcePackage || "");
   await downloadAuditTextFile(
     folderName,
@@ -5157,6 +5289,7 @@ async function prepareCardAuditDownloadBundle({ pendingId, sentinelText = "", ch
     "Preparing audit bundle and waiting for ChatGPT TSV download..."
   );
 
+  await stageCorebookAuditContext(pending, metadata, folderName);
   await downloadAuditTextFile(folderName, "source_package.txt", pending.sourcePackage || "");
   await downloadAuditTextFile(folderName, "core_evidence.txt", coreEvidence.text);
   await downloadAuditTextFile(
@@ -5457,28 +5590,40 @@ async function openChatGptAndStart(settings, packageText, articleTitle, options 
   }
 
   const composerText = buildChatGptComposerText(settings, packageText, options);
-  const tab = await chrome.tabs.create({ url, active: false });
+  const tab = await openChatGptAutomationTab(url);
+  let response;
 
-  await waitForTabComplete(tab.id, 45000, "ChatGPT");
-  await ensureChatGptPaster(tab.id);
+  try {
+    await waitForTabComplete(tab.id, 45000, "ChatGPT");
+    await ensureChatGptPaster(tab.id);
 
-  const response = await sendTabMessage(tab.id, {
-    type: "CHATGPT_FILL_COMPOSER",
-    text: composerText,
-    autoSubmit: Boolean(settings.autoSubmitChatGPT),
-    waitForResult: Boolean(
-      options.waitForResult ?? (settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings))
-    ),
-    timeoutMs: options.timeoutMs || timeoutMsFromSeconds(settings.chatgptTimeoutSec, 900, 30),
-    speechify: options.speechify === undefined ? buildSpeechifyPayload(settings, articleTitle) : options.speechify,
-    backgroundRun: options.backgroundRun !== false,
-    preserveAuditBlock: Boolean(options.preserveAuditBlock),
-    expectedOutputKind: options.expectedOutputKind || "",
-    completionMessageType: options.completionMessageType,
-    completionPayload: options.completionPayload || null
-  });
+    response = await sendTabMessage(tab.id, {
+      type: "CHATGPT_FILL_COMPOSER",
+      text: composerText,
+      autoSubmit: Boolean(settings.autoSubmitChatGPT),
+      waitForResult: Boolean(
+        options.waitForResult ?? (settings.autoSubmitChatGPT && isNarrativeSpeechifyMode(settings))
+      ),
+      timeoutMs: options.timeoutMs || timeoutMsFromSeconds(settings.chatgptTimeoutSec, 900, 30),
+      speechify: options.speechify === undefined ? buildSpeechifyPayload(settings, articleTitle) : options.speechify,
+      backgroundRun: options.backgroundRun !== false,
+      preserveAuditBlock: Boolean(options.preserveAuditBlock),
+      expectedOutputKind: options.expectedOutputKind || "",
+      completionMessageType: options.completionMessageType,
+      completionPayload: options.completionPayload || null,
+      targetProjectUrl: parseChatGptProjectRoute(url) ? url : ""
+    });
+  } catch (error) {
+    throw makeChatGptProjectOpenError(error, url, "Could not start ChatGPT workflow.");
+  }
 
-  if (!response?.ok) throw new Error(response?.error || "Could not start ChatGPT workflow.");
+  if (!response?.ok) {
+    throw makeChatGptProjectOpenError(
+      new Error(response?.error || "Could not start ChatGPT workflow."),
+      url,
+      "Could not start ChatGPT workflow."
+    );
+  }
   return response;
 }
 
@@ -5828,6 +5973,7 @@ async function choosePendingCardAuditRunForChatContext(context = {}) {
 }
 
 async function openFinalCardPrompt(settings, extraction, tab, statusPrefix = "card prompt") {
+  extraction = await attachCorebookCardContext(settings, extraction);
   const articleTitle = extraction.meta?.title || "";
 
   if (!shouldCaptureCardAuditBundle(settings)) {
@@ -5959,6 +6105,9 @@ async function runRadPrimerFromPage(tab) {
   }
   const willRunGroupingPreflight =
     shouldRunGroupingPreflight(settings) && extraction.meta?.totalImagesOnPage > 1;
+  if (!willRunGroupingPreflight && !shouldCaptureCardAuditBundle(settings)) {
+    extraction = await attachCorebookCardContext(settings, extraction);
+  }
 
   if (!willRunGroupingPreflight && settings.downloadImages && extraction.downloadFiles?.length) {
     await sendPageStatus(tab.id, "Images", "Downloading selected image files...");
@@ -6515,6 +6664,13 @@ async function dispatchTabKeyPress(tabId, key, code) {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === "PREPARE_COREBOOK_CARD_CONTEXT") {
+    attachCorebookCardContext(message.settings || {}, message.extraction || {})
+      .then((extraction) => sendResponse({ok:true, ...extraction}))
+      .catch((error) => sendResponse({ok:false, error:error.message}));
+    return true;
+  }
+
   if (message?.type === "RADIOPAEDIA_SKULL_LOCATOR_STATE") {
     requestAnkiLiveDrillBridge("/radiopaedia-skull/state", {
       method: "POST",

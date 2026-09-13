@@ -1,0 +1,807 @@
+[
+  {
+    "filename": "SDX-01_STATdx_plain_Widespread_Low_Attenuation_Within_Liver1.jpg",
+    "label": "",
+    "imageNumber": 1,
+    "masterImageId": "SDX-01",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/88bc928d-f102-433b-b096-48cf7b650c37?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-01_STATdx_plain_Widespread_Low_Attenuation_Within_Liver1.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "3786cae0e38cc182ac6a0a9e9d9cd58be07c93cc25213bc3edacc136249ebd85",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-01_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver1_annot.jpg",
+    "label": "",
+    "imageNumber": 1,
+    "masterImageId": "SDX-01",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/88bc928d-f102-433b-b096-48cf7b650c37?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-01_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver1_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "3786cae0e38cc182ac6a0a9e9d9cd58be07c93cc25213bc3edacc136249ebd85",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-02_STATdx_plain_Widespread_Low_Attenuation_Within_Liver2.jpg",
+    "label": "",
+    "imageNumber": 2,
+    "masterImageId": "SDX-02",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/764a62b0-1866-465c-a53d-127243881d41?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-02_STATdx_plain_Widespread_Low_Attenuation_Within_Liver2.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "496c927be778b2925a968d1cb1f0e8e7a63fb47a16a284d6815b79123b57e262",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-02_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver2_annot.jpg",
+    "label": "",
+    "imageNumber": 2,
+    "masterImageId": "SDX-02",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/764a62b0-1866-465c-a53d-127243881d41?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-02_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver2_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "54709e925d7f35f89404f9cb595fdf9f146e19cf3dddeec02a9d80377916f8c6",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-03_STATdx_plain_Widespread_Low_Attenuation_Within_Liver3.jpg",
+    "label": "",
+    "imageNumber": 3,
+    "masterImageId": "SDX-03",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/181d58e7-92a8-467a-a390-00c4b7c4da7b?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-03_STATdx_plain_Widespread_Low_Attenuation_Within_Liver3.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "064526a66b9d907f2c5c34de12657b6ae4b703e362ae69773205ad630f11cef2",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-03_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver3_annot.jpg",
+    "label": "",
+    "imageNumber": 3,
+    "masterImageId": "SDX-03",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/181d58e7-92a8-467a-a390-00c4b7c4da7b?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-03_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver3_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "b3e3b48a4fcf663058d8b43ca902cfefd3ef5b1cd130d608fec45010c73cd568",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-04_STATdx_plain_Widespread_Low_Attenuation_Within_Liver4.jpg",
+    "label": "",
+    "imageNumber": 4,
+    "masterImageId": "SDX-04",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/ddd5df64-ab21-485d-b892-4628b759a575?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-04_STATdx_plain_Widespread_Low_Attenuation_Within_Liver4.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "13e23de8b5a1542c9606aef784e880913630e602c5195c5d5da71711c4dff1f2",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-04_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver4_annot.jpg",
+    "label": "",
+    "imageNumber": 4,
+    "masterImageId": "SDX-04",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/ddd5df64-ab21-485d-b892-4628b759a575?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-04_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver4_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "dd9a3dee424288efa96597dd575de009b7876372e669a3790458dfd2670dd59d",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-06_STATdx_plain_Widespread_Low_Attenuation_Within_Liver6.jpg",
+    "label": "",
+    "imageNumber": 6,
+    "masterImageId": "SDX-06",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/9f389211-8a38-48a2-94ab-d007b83ae67a?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-06_STATdx_plain_Widespread_Low_Attenuation_Within_Liver6.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "ab5635f0083484b53dc44264547241c6e8ded31c059a885c7a5240fe7915ee81",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-06_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver6_annot.jpg",
+    "label": "",
+    "imageNumber": 6,
+    "masterImageId": "SDX-06",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/9f389211-8a38-48a2-94ab-d007b83ae67a?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-06_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver6_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "956245fb33c766f228984f021b313e413620c974613e7335df20bd2c83678781",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-07_STATdx_plain_Widespread_Low_Attenuation_Within_Liver7.jpg",
+    "label": "",
+    "imageNumber": 7,
+    "masterImageId": "SDX-07",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/35fa680d-73b3-4f12-941c-96580dfb9209?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-07_STATdx_plain_Widespread_Low_Attenuation_Within_Liver7.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "90d3cb668a064958cff44e22a6ca3e97884e58b6f106448b8e643c831015f98f",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-07_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver7_annot.jpg",
+    "label": "",
+    "imageNumber": 7,
+    "masterImageId": "SDX-07",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/35fa680d-73b3-4f12-941c-96580dfb9209?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-07_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver7_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "759c81cda3c241e22b4089e2bdb369eccfd0ce8659407fa4e31fd0f37535f587",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-08_STATdx_plain_Widespread_Low_Attenuation_Within_Liver8.jpg",
+    "label": "",
+    "imageNumber": 8,
+    "masterImageId": "SDX-08",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/08dd2325-3585-49c2-a95b-5c34b88e7bd5?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-08_STATdx_plain_Widespread_Low_Attenuation_Within_Liver8.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "eb8dbd01d45f2b2868026c9b3ef4569e60a0fb35c8f48624aaee924ce617a34f",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-08_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver8_annot.jpg",
+    "label": "",
+    "imageNumber": 8,
+    "masterImageId": "SDX-08",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/08dd2325-3585-49c2-a95b-5c34b88e7bd5?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-08_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver8_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "a63636eb7dc0cb5b43f3101c6e7f410e51f51b2eee37e166547470c9a6238c95",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-09_STATdx_plain_Widespread_Low_Attenuation_Within_Liver9.jpg",
+    "label": "",
+    "imageNumber": 9,
+    "masterImageId": "SDX-09",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/4f507c27-397d-4127-90ab-b7dd6c628105?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-09_STATdx_plain_Widespread_Low_Attenuation_Within_Liver9.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "0338ceaa81784d1f0a24c3f85bf71b77b71a7c8cca5db8459da39350e2dd8026",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-09_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver9_annot.jpg",
+    "label": "",
+    "imageNumber": 9,
+    "masterImageId": "SDX-09",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/4f507c27-397d-4127-90ab-b7dd6c628105?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-09_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver9_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "0338ceaa81784d1f0a24c3f85bf71b77b71a7c8cca5db8459da39350e2dd8026",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-10_STATdx_plain_Widespread_Low_Attenuation_Within_Liver10.jpg",
+    "label": "",
+    "imageNumber": 10,
+    "masterImageId": "SDX-10",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/24e746ab-b91f-4d75-906f-3b63ee020db4?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-10_STATdx_plain_Widespread_Low_Attenuation_Within_Liver10.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "15d645c9e3752b1960f5155d2fcdf300f4a310255433ad99cd6d77e83fc2c8b7",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-10_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver10_annot.jpg",
+    "label": "",
+    "imageNumber": 10,
+    "masterImageId": "SDX-10",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/24e746ab-b91f-4d75-906f-3b63ee020db4?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-10_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver10_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "15d645c9e3752b1960f5155d2fcdf300f4a310255433ad99cd6d77e83fc2c8b7",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-11_STATdx_plain_Widespread_Low_Attenuation_Within_Liver11.jpg",
+    "label": "",
+    "imageNumber": 11,
+    "masterImageId": "SDX-11",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/e60705f0-575e-4ba4-86a2-cc6a9b2b1347?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-11_STATdx_plain_Widespread_Low_Attenuation_Within_Liver11.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "21356b6aab17c1bada6658d8fb3cb271642ecb86a24ac4d5dcdf7bbc7574c722",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-11_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver11_annot.jpg",
+    "label": "",
+    "imageNumber": 11,
+    "masterImageId": "SDX-11",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/e60705f0-575e-4ba4-86a2-cc6a9b2b1347?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-11_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver11_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "21356b6aab17c1bada6658d8fb3cb271642ecb86a24ac4d5dcdf7bbc7574c722",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-12_STATdx_plain_Widespread_Low_Attenuation_Within_Liver12.jpg",
+    "label": "",
+    "imageNumber": 12,
+    "masterImageId": "SDX-12",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/f5375663-9423-4a9a-9e13-7303f49aa7b9?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-12_STATdx_plain_Widespread_Low_Attenuation_Within_Liver12.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "3b6fa217255be24759ffce3e4df0bd64d891563c4ab88c668f3727e9cf14e3e5",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-12_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver12_annot.jpg",
+    "label": "",
+    "imageNumber": 12,
+    "masterImageId": "SDX-12",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/f5375663-9423-4a9a-9e13-7303f49aa7b9?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-12_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver12_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "a1005a19add4d0544fb1236d02dafb29dfcabf85488e269249b78a699c52de4c",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-13_STATdx_plain_Widespread_Low_Attenuation_Within_Liver13.jpg",
+    "label": "",
+    "imageNumber": 13,
+    "masterImageId": "SDX-13",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/7ffc3c77-bb9d-4e8a-883f-e97c86705e0a?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-13_STATdx_plain_Widespread_Low_Attenuation_Within_Liver13.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "d12bdcfc347a1b1df0c13cd9aa61ff5400c39746076230d0615db8e537e97bbf",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-13_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver13_annot.jpg",
+    "label": "",
+    "imageNumber": 13,
+    "masterImageId": "SDX-13",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/7ffc3c77-bb9d-4e8a-883f-e97c86705e0a?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-13_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver13_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "f3a2277ed95c592dd75386e8fe28db3b4623579979c9fd4ae96121e07708550b",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-14_STATdx_plain_Widespread_Low_Attenuation_Within_Liver14.jpg",
+    "label": "",
+    "imageNumber": 14,
+    "masterImageId": "SDX-14",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/c8c08bdc-f463-456e-bd96-75a61f44b24f?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-14_STATdx_plain_Widespread_Low_Attenuation_Within_Liver14.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "d80acae76d844bde84a294d111cab1f2cb8fc3319394caa9182a43ecaf2efbb3",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-14_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver14_annot.jpg",
+    "label": "",
+    "imageNumber": 14,
+    "masterImageId": "SDX-14",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/c8c08bdc-f463-456e-bd96-75a61f44b24f?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-14_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver14_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "d80acae76d844bde84a294d111cab1f2cb8fc3319394caa9182a43ecaf2efbb3",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-15_STATdx_plain_Widespread_Low_Attenuation_Within_Liver15.jpg",
+    "label": "",
+    "imageNumber": 15,
+    "masterImageId": "SDX-15",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/a374ccc7-6754-45db-b2f4-0b98b3f26b54?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-15_STATdx_plain_Widespread_Low_Attenuation_Within_Liver15.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "4a0e74db8fbb1abf597cee2aeba4028557c614aaf05c556c967c523a3789824b",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-15_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver15_annot.jpg",
+    "label": "",
+    "imageNumber": 15,
+    "masterImageId": "SDX-15",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/a374ccc7-6754-45db-b2f4-0b98b3f26b54?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-15_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver15_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "4a0e74db8fbb1abf597cee2aeba4028557c614aaf05c556c967c523a3789824b",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-16_STATdx_plain_Widespread_Low_Attenuation_Within_Liver16.jpg",
+    "label": "",
+    "imageNumber": 16,
+    "masterImageId": "SDX-16",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/957cd938-b4f1-4b98-86af-2b1fabb4b7bb?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-16_STATdx_plain_Widespread_Low_Attenuation_Within_Liver16.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "6cfc8abbc3ab143d14858a1270ea7919f0e38888cf0b3e7dbc870e0e88e3ce95",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-16_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver16_annot.jpg",
+    "label": "",
+    "imageNumber": 16,
+    "masterImageId": "SDX-16",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/957cd938-b4f1-4b98-86af-2b1fabb4b7bb?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-16_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver16_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "6cfc8abbc3ab143d14858a1270ea7919f0e38888cf0b3e7dbc870e0e88e3ce95",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-17_STATdx_plain_Widespread_Low_Attenuation_Within_Liver17.jpg",
+    "label": "",
+    "imageNumber": 17,
+    "masterImageId": "SDX-17",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/72157884-8a84-43b7-8b4c-9b21053a1432?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-17_STATdx_plain_Widespread_Low_Attenuation_Within_Liver17.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "63daf25b8291ee4232f3722f4178b448c01226acd66c3a775811e443c3eb3a9e",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-17_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver17_annot.jpg",
+    "label": "",
+    "imageNumber": 17,
+    "masterImageId": "SDX-17",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/72157884-8a84-43b7-8b4c-9b21053a1432?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-17_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver17_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "85cf5d51bd65b4f7f7a6e7d7532d0c518401d5705bd03f4f83581b50621aa49f",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-18_STATdx_plain_Widespread_Low_Attenuation_Within_Liver18.jpg",
+    "label": "",
+    "imageNumber": 18,
+    "masterImageId": "SDX-18",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/c1d7ae52-1bb9-4dbd-b257-f6b17c5aa87c?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-18_STATdx_plain_Widespread_Low_Attenuation_Within_Liver18.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "6322dcc8f311850c8482f67fce359e5dcef8eebbb0435b808f44d96b47150515",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-18_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver18_annot.jpg",
+    "label": "",
+    "imageNumber": 18,
+    "masterImageId": "SDX-18",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/c1d7ae52-1bb9-4dbd-b257-f6b17c5aa87c?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-18_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver18_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "6322dcc8f311850c8482f67fce359e5dcef8eebbb0435b808f44d96b47150515",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-19_STATdx_plain_Widespread_Low_Attenuation_Within_Liver19.jpg",
+    "label": "",
+    "imageNumber": 19,
+    "masterImageId": "SDX-19",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/0028382d-b2dd-4d2f-8f7f-bedb03e48bcc?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-19_STATdx_plain_Widespread_Low_Attenuation_Within_Liver19.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "48d9d6fa09f1a52d8712ad1cab4f72b06add9405d3fe772d0f575bc6be8593f6",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-19_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver19_annot.jpg",
+    "label": "",
+    "imageNumber": 19,
+    "masterImageId": "SDX-19",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/0028382d-b2dd-4d2f-8f7f-bedb03e48bcc?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-19_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver19_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "0d7e157c974dd739ff1d3f5f2132a6c7ad1e451972643382105bf6d3282cc9a9",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-20_STATdx_plain_Widespread_Low_Attenuation_Within_Liver20.jpg",
+    "label": "",
+    "imageNumber": 20,
+    "masterImageId": "SDX-20",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/a0f237fa-ad44-40e9-914d-20658970de97?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-20_STATdx_plain_Widespread_Low_Attenuation_Within_Liver20.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "889fb879dcae8cc4c52c9b0bfdfb5f2e3405b34c4ec2cdbbc24a6d09c81277e9",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-20_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver20_annot.jpg",
+    "label": "",
+    "imageNumber": 20,
+    "masterImageId": "SDX-20",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/a0f237fa-ad44-40e9-914d-20658970de97?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-20_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver20_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "910133b42d93f7c5419856985852f50c5d2a5cfebee139247de1360e6bf195e4",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-21_STATdx_plain_Widespread_Low_Attenuation_Within_Liver21.jpg",
+    "label": "",
+    "imageNumber": 21,
+    "masterImageId": "SDX-21",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/dd4fd43d-9e94-4de4-990a-e9d549b666b5?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-21_STATdx_plain_Widespread_Low_Attenuation_Within_Liver21.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "8082665cfa1db393a8d0c2b55e6fd082ac7f0bbd48e0ddc8cccc6488505bfee7",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-21_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver21_annot.jpg",
+    "label": "",
+    "imageNumber": 21,
+    "masterImageId": "SDX-21",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/dd4fd43d-9e94-4de4-990a-e9d549b666b5?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-21_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver21_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "a604eec95b40149b94b84f935d564b6585fe0d22746198d7869e37f5045bc397",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-22_STATdx_plain_Widespread_Low_Attenuation_Within_Liver22.jpg",
+    "label": "",
+    "imageNumber": 22,
+    "masterImageId": "SDX-22",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/896d4462-25fb-4c58-b8a5-1eb0d00ae465?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-22_STATdx_plain_Widespread_Low_Attenuation_Within_Liver22.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "e537f04a75d8a26edc814d3f89fe1d8895706998cc76e999d56d3038f4ee69b0",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-22_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver22_annot.jpg",
+    "label": "",
+    "imageNumber": 22,
+    "masterImageId": "SDX-22",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/896d4462-25fb-4c58-b8a5-1eb0d00ae465?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-22_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver22_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "3101f37d3446e80f820f3b97febd1cbadcf6400771a9a750f9d3344d95da437e",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-23_STATdx_plain_Widespread_Low_Attenuation_Within_Liver23.jpg",
+    "label": "",
+    "imageNumber": 23,
+    "masterImageId": "SDX-23",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/082d4293-0a6d-44ee-b6d1-fce8a119d857?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-23_STATdx_plain_Widespread_Low_Attenuation_Within_Liver23.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "86433ff7a49c14ad2d86ef9951183aed98728e441f66f01134332c89c3bf5bcc",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-23_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver23_annot.jpg",
+    "label": "",
+    "imageNumber": 23,
+    "masterImageId": "SDX-23",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/082d4293-0a6d-44ee-b6d1-fce8a119d857?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-23_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver23_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "bab79fb512e712f65bd2ce64cddea0d97aec983eaa39db6869eead5d682a050e",
+    "decoded": true
+  },
+  {
+    "filename": "SDX-24_STATdx_plain_Widespread_Low_Attenuation_Within_Liver24.jpg",
+    "label": "",
+    "imageNumber": 24,
+    "masterImageId": "SDX-24",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "plain",
+    "url": "https://app.statdx.com/image/thumbnail/e022c402-69fa-4025-887d-b8cf9549391f?size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-24_STATdx_plain_Widespread_Low_Attenuation_Within_Liver24.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "574b166a79d1f3454f8d218c129a98bce1e6b907a97530a6b9be3dbcda915bf5",
+    "decoded": true,
+    "matchesReviewedMasterEvidence": true
+  },
+  {
+    "filename": "SDX-24_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver24_annot.jpg",
+    "label": "",
+    "imageNumber": 24,
+    "masterImageId": "SDX-24",
+    "sourceKind": "statdx",
+    "sourceLabel": "STATdx",
+    "variant": "annotated",
+    "url": "https://app.statdx.com/image/thumbnail/e022c402-69fa-4025-887d-b8cf9549391f?annotated=true&size=1000&quality=90",
+    "localPath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-24_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver24_annot.jpg",
+    "size": [
+      1000,
+      1000
+    ],
+    "sha256": "a6fe07dc19654e038f5777f187fcd55421ece92aafc6a844c8745b094df255fe",
+    "decoded": true
+  }
+]

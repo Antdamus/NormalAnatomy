@@ -1,0 +1,31 @@
+{
+  "input_rows": 59,
+  "output_rows": 60,
+  "unknown": 18,
+  "mechanism": 5,
+  "boards_trap": 4,
+  "high_yield": 33,
+  "deleted_original_rows": {
+    "24": "Duplicates the treated-GIST mechanism and image comparison (original rows 6 and 20).",
+    "39": "Repeats the same treated-GIST interval-necrosis pivot (rows 6 and 20).",
+    "51": "Repeats the central-dot sign already taught by the image case and mechanism (rows 14 and 18).",
+    "52": "Repeats the Caroli-versus-hamartoma communication comparison (row 37).",
+    "54": "Duplicates the foregut-cyst US/MRI discrepancy retained in row 55 and image row 16.",
+    "56": "Duplicates the focal-fat multimodality pitfall retained in row 22."
+  },
+  "new_ids": {
+    "cyst_obstruction": "J1UBJQY7BPAJ",
+    "cyst_hemorrhage": "T54TODH2T9ZF",
+    "abscess_mri": "98CNLHZN9A3H",
+    "hydatid_sand": "5AQCR8F5VCCY",
+    "sarcoma_myxoid": "YNBOMN89RPJV",
+    "pseudocyst_pancreatitis": "FNSPFM5VHGQH",
+    "collection_course": "3GW9EK3RRIS6"
+  },
+  "retained_original_ids": 53,
+  "clinical_media_files": 44,
+  "caption_icon_files": 6,
+  "total_media_files": 50,
+  "differential_trigger_fields_populated": 0,
+  "summary_populated_rows": 60
+}

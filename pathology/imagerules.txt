@@ -57,6 +57,14 @@ This includes preserving exactly:
 • En dashes vs hyphens
 • All numeric formatting
 • Abbreviations exactly as written
+• Original caption HTML, including every inline <img src="arrow_XX.png"> tag and its exact filename
+• Arrow color, shape, direction, and solid/open/curved distinctions; these are meaningful source annotations
+
+These requirements apply during both card generation and card-quality audits. Caption HTML is immutable source content, not image-reference bookkeeping. Never delete an arrow tag, replace it with generic "(arrow)" text, or flatten the caption to plain text. Apply cleanup only outside the original caption; put explanations or corrections in separate answer fields.
+
+Caption icons are auxiliary media and may be absent from the diagnostic image registry or downloadFiles list. That absence does not authorize changing the caption. Verify each exact icon filename separately against bundle media, source assets, or the existing Anki collection.media files. Recover missing assets unchanged when available; otherwise preserve the tags and report the specific missing files. Never report media validation as passed while referenced assets are unresolved.
+
+Before export, compare each Image_Annotated stackCap and Original_Caption against the corresponding original source caption character-for-character, including HTML, spacing, and image tags. A rendered-text-only comparison is insufficient. For a caption repair, preserve note IDs, image grouping, image order, and all unaffected fields and notes.
 
 The assistant MUST NOT:
 

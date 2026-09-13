@@ -1,0 +1,19 @@
+DONE
+validation: passed
+articleTitle: Widespread Low Attenuation Within Liver
+completedAt: 2026-09-10T00:35:57Z
+originalNotes: 38
+correctedNotes: 43
+selectedImages: 23
+verifiedMediaFiles: 46
+deck: Corebook::GI::Liver::Widespread Low Attenuation Within Liver
+differentialDrillSuppressed: true; Differentials and Differential_Q blank; mini-differentials on UNKNOWN backs
+captionRepair: 18 image notes; 23 exact original captions; 29 arrows per caption field; 25 non-image notes unchanged
+corrected_cards.tsv SHA256: 0f07591fd11fd6eb939730b175cb18b3b929cb64733986cab1f099f682269132
+corrected_cards_anki_import.tsv SHA256: 8e3d2e828ab5a66f7fdaf799f7d8b1d45394b5c09ff5e282670920a9cc590abb
+corrected_image_cards.tsv SHA256: 056ac08a83f59b13ebcf140cc380b38b11024043573921cf3afa4978e1871115
+corrected_image_cards_anki_import.tsv SHA256: e0aff49665a6d2e269c199ce2980d44c159e9a86e80d2dcc2d40a27ed6cd40bc
+audit_report.md SHA256: 4200e840fc6cdde640da4ae5c1e8e15cedd450d37de0b96643ffdbc7f296405a
+caption_repair_report.md SHA256: f011ac12c3444cf491464dc06ef1c7b9bf404e41288a1e14a97f41f9efce5312
+validationReport: _codex_review/validation_results.json
+No live Anki import or note-type modification performed.

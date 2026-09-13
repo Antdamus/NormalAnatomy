@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "validatedAt": "2026-09-13T01:37:22.608Z",
+  "checks": [
+    {
+      "name": "Complete import contract and separately serialized artifacts agree",
+      "passed": true
+    },
+    {
+      "name": "Exact RadPrimer canonical hierarchy and provided deck path preserved",
+      "passed": true
+    },
+    {
+      "name": "All original records, captions, URLs, stable IDs and evidence preserved",
+      "passed": true
+    },
+    {
+      "name": "Source metadata, source captions, image evidence and input hashes agree",
+      "passed": true
+    },
+    {
+      "name": "Primary/archive partition retains every unique image and archives only exact copies",
+      "passed": true
+    },
+    {
+      "name": "Every RadPrimer coverage decision is supported by actual files and matching UUIDs",
+      "passed": true
+    },
+    {
+      "name": "Whole-case replacements and composite panels are complete without invented follow-up",
+      "passed": true
+    },
+    {
+      "name": "Clean source labels, caption correction, anatomical caution and no false Core attribution",
+      "passed": true
+    },
+    {
+      "name": "Installed extension single-file JSON import accepts the source package",
+      "passed": true
+    },
+    {
+      "name": "Installed extension download filter emits exactly 28 intended source-qualified files",
+      "passed": true
+    },
+    {
+      "name": "Installed extension separate-file import produces the same curated set",
+      "passed": true
+    },
+    {
+      "name": "Every staged file was imported byte-for-byte into the explicitly requested bundle",
+      "passed": true
+    }
+  ],
+  "importObservation": {
+    "initialLatestPointerRead": "C:\\Users\\josem.000\\NormalAnatomy\\master_source_queue\\Liver_Lesion_Containing_Gas_2026-09-13T01-26-09-985Z",
+    "latestPointerAtValidation": "C:\\Users\\josem.000\\NormalAnatomy\\master_source_queue\\Periportal_Lesion_2026-09-13T01-30-56-923Z",
+    "pointerAdvancedDuringSynthesis": true,
+    "handling": "The initial importer result and pointer read matched the user-named bundle. The shared pointer may advance due to other work; validation continues against the explicit requested bundle without overwriting that pointer."
+  },
+  "totals": {
+    "registryEntries": 28,
+    "selectedPrimaryImages": 14,
+    "archiveOptionalImages": 14,
+    "primaryVariantDownloads": 28,
+    "caseClusters": 14,
+    "stagedFilesVerified": 37
+  },
+  "extensionHelpersTested": [
+    "parseJsonMaybe",
+    "pickNamedFile",
+    "normalizeMasterSourceCache",
+    "collectMasterImageIdsFromPlan",
+    "getMasterSourcePrimaryImageIds",
+    "getMasterSourceArchiveImageIds",
+    "buildMasterSourceCacheFromFiles",
+    "normalizeImageRegistryEntry",
+    "normalizeImageRegistrySourceKind",
+    "normalizeSourceCompareKind",
+    "flattenRegistryToDownloadFiles",
+    "shouldUseRegistryEntryForMasterDownload",
+    "buildSourceQualifiedImageFilename",
+    "getDownloadBasename",
+    "getSourceFilenameLabel",
+    "normalizeArticleSourceKind",
+    "sanitizeDownloadPathPart",
+    "normalizeArticleTitleKey",
+    "sanitizeAnkiDeckPart"
+  ],
+  "extensionSourceSha256": "6c9bd78baee521aa304dae366ff3cf66dad6892f356d5382fe88d50887774791",
+  "scope": "Source-copy fidelity, artifact integrity, recorded visual evidence, whole-case/composite preservation and real extension helper import/download compatibility. No live browser import or remote image download performed."
+}

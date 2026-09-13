@@ -1,0 +1,83 @@
+{
+  "status": "preliminary_bundle_only",
+  "checkedAt": "2026-09-13T01:51:17.273400+00:00",
+  "sourceFile": "corrected_cards.tsv",
+  "sourceSha256": "8b947a8b143b13c286522c974146781c567c48d59a87026d0e06c125b46a8cc9",
+  "notes": 57,
+  "imageNotes": 17,
+  "textNotes": 40,
+  "findings": [
+    {
+      "rows": [
+        20,
+        44
+      ],
+      "ids": [
+        "C7SA4S5CCRN1",
+        "4CO5S2SYIMYD"
+      ],
+      "sharedObjective": "Distinguish intracystic clot from enhancing solid tumor.",
+      "provisionalAction": "Keep the focused pitfall card; the CT card repeats its answer with baseline simple-cyst facts."
+    },
+    {
+      "rows": [
+        22,
+        25,
+        48
+      ],
+      "ids": [
+        "KYIB813MZYVH",
+        "L2BBYNQD8ES5",
+        "213ETV5FI4A8"
+      ],
+      "sharedObjective": "Avoid calling fracture-like coagulopathic defects traumatic laceration; use history and multisite bleeding.",
+      "provisionalAction": "Consolidate around the focused pitfall. Preserve a separate morphology or hematocrit question only if its distinct objective is not already owned."
+    },
+    {
+      "rows": [
+        23,
+        24,
+        56
+      ],
+      "ids": [
+        "77Q4HKLE15FM",
+        "B3KO4PXTGL50",
+        "MHBGZIYLB62D"
+      ],
+      "sharedObjective": "Use young noncirrhotic versus cirrhotic/chronic-hepatitis substrate to rank adenoma versus HCC.",
+      "provisionalAction": "Keep one structured comparison if not already owned; omit its two overlapping component questions."
+    },
+    {
+      "rows": [
+        53,
+        55
+      ],
+      "ids": [
+        "IL1HHSBZ3LJB",
+        "5KM7625KQP5K"
+      ],
+      "sharedObjective": "Connect HELLP clinical/laboratory context with hepatic hematoma, active hemorrhage and infarcts.",
+      "provisionalAction": "Keep the interpretation-focused clinical question; the imaging list is already in that answer. Angiography/treatment question remains a distinct objective."
+    },
+    {
+      "rows": [
+        18,
+        24,
+        39,
+        40,
+        56
+      ],
+      "ids": [
+        "XNE1SOAHSDJD",
+        "B3KO4PXTGL50",
+        "E29QWJL6RZ0M",
+        "2RMOZ7HOK9HG",
+        "MHBGZIYLB62D"
+      ],
+      "sharedObjective": "Several answers repeat HCC arterialization, washout and capsule.",
+      "provisionalAction": "Review ownership across liver topics. Mechanism and MRI diffusion/signal can be distinct, but repeated general enhancement-pattern recall should not be regenerated."
+    }
+  ],
+  "corebookComparison": "Pending a fresh live Anki snapshot; no retained-card matches or deletions inferred from generated bundles.",
+  "finalFilesChanged": false
+}

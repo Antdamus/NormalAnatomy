@@ -1,0 +1,928 @@
+{
+  "version": 1,
+  "articleTitle": "Widened Hepatic Fissures",
+  "createdAt": "2026-09-09T03:27:28.532Z",
+  "bundleCreatedAt": "2026-09-09T03:19:12.738Z",
+  "canonicalHierarchy": [
+    "All Categories",
+    "Basic",
+    "Gastrointestinal",
+    "Liver",
+    "Widened Hepatic Fissures"
+  ],
+  "canonicalHierarchySource": {
+    "sourceKind": "radprimer",
+    "sourceLabel": "RadPrimer",
+    "sourceFile": "RadPrimer_metadata.json",
+    "field": "breadcrumbTrail",
+    "policy": "RadPrimer breadcrumbTrail is the canonical hierarchy/backbone."
+  },
+  "canonicalDeckPath": "Corebook::GI::Liver::Widened Hepatic Fissures",
+  "sourcePriority": [
+    "RadPrimer",
+    "STATdx"
+  ],
+  "sourceCoverage": {
+    "text": "RadPrimer differential grouping retained; identical essential information fused once; STATdx contributes three distinct image/caption additions.",
+    "imageCoverageGate": {
+      "performedBeforeMerge": true,
+      "completedAt": "2026-09-09T03:27:28.529Z",
+      "statdxFullyCoversRadPrimerImageSet": true,
+      "radPrimerImageCount": 8,
+      "coveredRadPrimerImageCount": 8,
+      "classificationCounts": {
+        "exactDuplicate": 8,
+        "nearDuplicate": 0,
+        "conceptualReplacement": 0,
+        "notCovered": 0
+      },
+      "radPrimerImageCoverage": [
+        {
+          "radPrimerImageId": "RP-01",
+          "statdxImageIds": [
+            "SDX-01"
+          ],
+          "replacementImageId": "SDX-01",
+          "classification": "exactDuplicate",
+          "confidence": "high",
+          "selectedRepresentativeId": "RP-01",
+          "radPrimerDisposition": "primaryTeachingSet",
+          "visualObservation": "Same axial slice: identical caudate contour, fissure geometry, portal branching, right kidney, spleen and vertebral landmarks; only export size/compression differs.",
+          "evidence": {
+            "sameStableSourceImageId": "193526f8-a615-402b-bef9-5e275cdd6ba3",
+            "visualReviewCompleted": true,
+            "evidenceFiles": [
+              "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_193526f8.jpg",
+              "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_193526f8.jpg"
+            ],
+            "sha256ByImageId": {
+              "RP-01": "6241915f4e684a9af371da978a85ef2affae7f6eb9263b959dc3fc692f06dad4",
+              "SDX-01": "c1d68a2249b13a8beb92b9d0ad91546401cb870b8c5bdde540df0105353ec659"
+            },
+            "byteIdentical": false,
+            "interpretation": "Exact same source image/slice/montage, with different server export dimensions/compression; exactDuplicate does not mean identical file bytes."
+          }
+        },
+        {
+          "radPrimerImageId": "RP-02",
+          "statdxImageIds": [
+            "SDX-02"
+          ],
+          "replacementImageId": "SDX-02",
+          "classification": "exactDuplicate",
+          "confidence": "high",
+          "selectedRepresentativeId": "RP-02",
+          "radPrimerDisposition": "primaryTeachingSet",
+          "visualObservation": "Same complete A–D MRI montage: identical precontrast, arterial, venous and delayed panels, letter positions, dividers and fibrotic region. No panel or phase is missing.",
+          "evidence": {
+            "sameStableSourceImageId": "f8ca9bbb-4ec9-4603-ac11-4528fe411e21",
+            "visualReviewCompleted": true,
+            "evidenceFiles": [
+              "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_f8ca9bbb.jpg",
+              "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_f8ca9bbb.jpg"
+            ],
+            "sha256ByImageId": {
+              "RP-02": "c34fec8aa5a2a1b55a89914b4920b4f0b4361e2da69d89381982329aed7d6fba",
+              "SDX-02": "2930e4dbf0910b50ceca83ba42b967634e496eb2731132d1b7c07b4db2585956"
+            },
+            "byteIdentical": false,
+            "interpretation": "Exact same source image/slice/montage, with different server export dimensions/compression; exactDuplicate does not mean identical file bytes."
+          }
+        },
+        {
+          "radPrimerImageId": "RP-03",
+          "statdxImageIds": [
+            "SDX-03"
+          ],
+          "replacementImageId": "SDX-03",
+          "classification": "exactDuplicate",
+          "confidence": "high",
+          "selectedRepresentativeId": "RP-03",
+          "radPrimerDisposition": "primaryTeachingSet",
+          "visualObservation": "Same axial CT crop: identical medial segment, deep gallbladder, falciform fissure, aortic calcification and rib/vertebral landmarks.",
+          "evidence": {
+            "sameStableSourceImageId": "e51aad9f-0f16-4ee0-907f-c4d8b6104e41",
+            "visualReviewCompleted": true,
+            "evidenceFiles": [
+              "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_e51aad9f.jpg",
+              "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_e51aad9f.jpg"
+            ],
+            "sha256ByImageId": {
+              "RP-03": "0f7e07cf510302eb42235ee37ef4a95f0208d516d34c9297a901bede8078bb09",
+              "SDX-03": "468f5bb732ce57e4a88adab66652c55e5c6314865b892047e0f65b392efa0823"
+            },
+            "byteIdentical": false,
+            "interpretation": "Exact same source image/slice/montage, with different server export dimensions/compression; exactDuplicate does not mean identical file bytes."
+          }
+        },
+        {
+          "radPrimerImageId": "RP-04",
+          "statdxImageIds": [
+            "SDX-04"
+          ],
+          "replacementImageId": "SDX-04",
+          "classification": "exactDuplicate",
+          "confidence": "high",
+          "selectedRepresentativeId": "SDX-04",
+          "radPrimerDisposition": "archiveOptionalDuplicate",
+          "visualObservation": "Same axial CECT slice: identical gallbladder, interposed colon and omental fat, portal branching, liver margin and vertebral outline.",
+          "evidence": {
+            "sameStableSourceImageId": "f3cac1ad-be9f-4a61-bb50-430e43004826",
+            "visualReviewCompleted": true,
+            "evidenceFiles": [
+              "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_f3cac1ad.jpg",
+              "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_f3cac1ad.jpg"
+            ],
+            "sha256ByImageId": {
+              "RP-04": "36c1c433f64498d6fe17f30307efd2e783a0111cccc6728a909e4e75b194f486",
+              "SDX-04": "79b942f9d127bc495672ad5329dcc10c7dd3dd9899c918578d599d49cfdfe26d"
+            },
+            "byteIdentical": false,
+            "interpretation": "Exact same source image/slice/montage, with different server export dimensions/compression; exactDuplicate does not mean identical file bytes."
+          }
+        },
+        {
+          "radPrimerImageId": "RP-05",
+          "statdxImageIds": [
+            "SDX-06"
+          ],
+          "replacementImageId": "SDX-06",
+          "classification": "exactDuplicate",
+          "confidence": "high",
+          "selectedRepresentativeId": "RP-05",
+          "radPrimerDisposition": "primaryTeachingSet",
+          "visualObservation": "Same axial CECT slice: identical lobulated contour, hypodense foci, stomach gas, left-lobe outline and posterior vertebral landmarks.",
+          "evidence": {
+            "sameStableSourceImageId": "eec6a545-10c7-4ff8-bd8e-228865171de2",
+            "visualReviewCompleted": true,
+            "evidenceFiles": [
+              "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_eec6a545.jpg",
+              "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_eec6a545.jpg"
+            ],
+            "sha256ByImageId": {
+              "RP-05": "78702dc425cc94a78793e9aca7af5e09d22b2a5d0dac23b152506c5486404f5a",
+              "SDX-06": "21494ed39a3ec98dce05ef349781a1624cc4b862bd2455761881c46f76f49bb8"
+            },
+            "byteIdentical": false,
+            "interpretation": "Exact same source image/slice/montage, with different server export dimensions/compression; exactDuplicate does not mean identical file bytes."
+          }
+        },
+        {
+          "radPrimerImageId": "RP-06",
+          "statdxImageIds": [
+            "SDX-07"
+          ],
+          "replacementImageId": "SDX-07",
+          "classification": "exactDuplicate",
+          "confidence": "high",
+          "selectedRepresentativeId": "RP-06",
+          "radPrimerDisposition": "primaryTeachingSet",
+          "visualObservation": "Same axial CECT slice: identical beaded duct pattern, peripheral hepatic contour, fissure, gastric/variceal structures and thoracic cross-section.",
+          "evidence": {
+            "sameStableSourceImageId": "d1971896-af8e-4d62-96e8-03dcf9326629",
+            "visualReviewCompleted": true,
+            "evidenceFiles": [
+              "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_d1971896.jpg",
+              "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_d1971896.jpg"
+            ],
+            "sha256ByImageId": {
+              "RP-06": "dad48918297ae41ec4b98a5337908b38c21bc0766f79d8bc54020a597f30acf0",
+              "SDX-07": "511076a43828a0cb759265f668026f0cb2acea03425fd7c38ab3679e96a6f252"
+            },
+            "byteIdentical": false,
+            "interpretation": "Exact same source image/slice/montage, with different server export dimensions/compression; exactDuplicate does not mean identical file bytes."
+          }
+        },
+        {
+          "radPrimerImageId": "RP-07",
+          "statdxImageIds": [
+            "SDX-08"
+          ],
+          "replacementImageId": "SDX-08",
+          "classification": "exactDuplicate",
+          "confidence": "high",
+          "selectedRepresentativeId": "SDX-08",
+          "radPrimerDisposition": "archiveOptionalDuplicate",
+          "visualObservation": "Same axial CECT slice: identical ectatic duct distribution, caudate/IVC configuration, stomach, spleen and rib/vertebral landmarks.",
+          "evidence": {
+            "sameStableSourceImageId": "a790b2a5-c70a-44b7-910f-80e7a0b8ad4e",
+            "visualReviewCompleted": true,
+            "evidenceFiles": [
+              "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_a790b2a5.jpg",
+              "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_a790b2a5.jpg"
+            ],
+            "sha256ByImageId": {
+              "RP-07": "23a162802082cb190d0a6d824a74a11c7afb072eb0c90f60085115131f7c233d",
+              "SDX-08": "36aba2ceab1896ed9ec8b3fcc7e8252cbbe99d8f8dda9493029f929b753481e8"
+            },
+            "byteIdentical": false,
+            "interpretation": "Exact same source image/slice/montage, with different server export dimensions/compression; exactDuplicate does not mean identical file bytes."
+          }
+        },
+        {
+          "radPrimerImageId": "RP-08",
+          "statdxImageIds": [
+            "SDX-11"
+          ],
+          "replacementImageId": "SDX-11",
+          "classification": "exactDuplicate",
+          "confidence": "high",
+          "selectedRepresentativeId": "RP-08",
+          "radPrimerDisposition": "primaryTeachingSet",
+          "visualObservation": "Same axial CECT slice: identical deeply branching fissures, portal structures, large perigastric varices, spleen and vertebral landmarks.",
+          "evidence": {
+            "sameStableSourceImageId": "2845d5ee-9dc9-4e1a-9cb8-3cd219320af4",
+            "visualReviewCompleted": true,
+            "evidenceFiles": [
+              "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_2845d5ee.jpg",
+              "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_2845d5ee.jpg"
+            ],
+            "sha256ByImageId": {
+              "RP-08": "b4b5416f7de0883fc5b6a4a686470ea527ebd954bfd5f47fb6ea936469229f01",
+              "SDX-11": "798512b564efa0e618dd19dafab9543774e45a1d3c842d67d9570c7025c40b8b"
+            },
+            "byteIdentical": false,
+            "interpretation": "Exact same source image/slice/montage, with different server export dimensions/compression; exactDuplicate does not mean identical file bytes."
+          }
+        }
+      ],
+      "distinctSupplementalStatdxImageIds": [
+        "SDX-05",
+        "SDX-09",
+        "SDX-10"
+      ],
+      "sourceImagesVisuallyInspected": 19,
+      "limitation": "Only staged plain images were inspected; annotated URLs are preserved for later extension download."
+    }
+  },
+  "imageCountBySource": {
+    "RadPrimer": 8,
+    "STATdx": 11
+  },
+  "selectedImageCountBySource": {
+    "RadPrimer": 6,
+    "STATdx": 5
+  },
+  "archiveImageCountBySource": {
+    "RadPrimer": 2,
+    "STATdx": 6
+  },
+  "totalSourceImageCount": 19,
+  "selectedPrimaryImageCount": 11,
+  "archiveOptionalImageCount": 8,
+  "sourceAttributionRules": [
+    "Use [RadPrimer], [STATdx] and [Both] accurately.",
+    "Use source-qualified clean display labels for prose; stable short IDs for traceability and filenames.",
+    "External verification supports ERR-01 only, not an additional radiology source.",
+    "No supplied auditable Core Radiology evidence."
+  ],
+  "sources": [
+    {
+      "sourceKind": "radprimer",
+      "sourceLabel": "RadPrimer",
+      "sourceUrl": "https://app.radprimer.com/document/7aaa83d3-f945-4be0-8146-e9f49e381e7e/lesson/705cb353-308b-41a9-83be-1bc952b3885e",
+      "cachedAt": "2026-09-09T03:19:02.886Z"
+    },
+    {
+      "sourceKind": "statdx",
+      "sourceLabel": "STATdx",
+      "sourceUrl": "https://app.statdx.com/document/widened-hepatic-fissures/7aaa83d3-f945-4be0-8146-e9f49e381e7e?term=Widened%20Hepatic%20Fissures&searchType=documents&category=All&documentTypeFilters=all",
+      "cachedAt": "2026-09-09T03:19:12.685Z"
+    }
+  ],
+  "sourceBreadcrumbsForAuditOnly": {
+    "RadPrimer": [
+      "All Categories",
+      "Basic",
+      "Gastrointestinal",
+      "Liver",
+      "Widened Hepatic Fissures"
+    ],
+    "STATdx": [
+      "Gastrointestinal",
+      "Differential Diagnosis",
+      "Liver",
+      "Generic Imaging Patterns",
+      "Widened Hepatic Fissures"
+    ]
+  },
+  "selectedPrimaryImageIds": [
+    "RP-01",
+    "RP-02",
+    "RP-03",
+    "RP-05",
+    "RP-06",
+    "RP-08",
+    "SDX-04",
+    "SDX-05",
+    "SDX-08",
+    "SDX-09",
+    "SDX-10"
+  ],
+  "archiveOptionalImageIds": [
+    "RP-04",
+    "RP-07",
+    "SDX-01",
+    "SDX-02",
+    "SDX-03",
+    "SDX-06",
+    "SDX-07",
+    "SDX-11"
+  ],
+  "sourceSelectionPlan": {
+    "textSelection": {
+      "RadPrimer": {
+        "role": "canonical hierarchy and article backbone",
+        "keep": [
+          "Common / Less Common differential grouping and order",
+          "All essential-information mechanisms, recognition clues and differential distinctions, with ERR-01 corrected",
+          "Original captions, phase labels and source traceability"
+        ],
+        "downweightOrSkip": [
+          "Extraction/chat instructions",
+          "Stale manual MSK deck setting",
+          "Unverified Core cross-check request",
+          "Incorrect organism phrase documented in ERR-01"
+        ]
+      },
+      "STATdx": {
+        "role": "supplemental visual examples and caption detail",
+        "keep": [
+          "Three distinct added CT images: SDX-05, SDX-09, SDX-10",
+          "Whole conservative SDX-04/05 and SDX-08/09/10 teaching clusters",
+          "Caption-specific age, diagnosis and anatomical detail"
+        ],
+        "downweightOrSkip": [
+          "Verbatim repeated essential-information text",
+          "Eight redundant source-image copies after representative selection",
+          "STATdx navigation breadcrumb for routing"
+        ]
+      }
+    },
+    "imageCurationPolicy": "Archive only proven exact/same-image/same-slice/same-screenshot duplicates or unusable images. Near duplicates, alternate examples and conceptual replacements remain primary as recognition reinforcement unless visually identical or unusable.",
+    "duplicateEvidencePolicy": "Exact duplicate decisions require actual staged visual evidence, same stable source image ID, image hashes or explicit source/manual confirmation. Caption/topic similarity alone is insufficient; uncertain matches stay primary. Here all eight duplicate relationships were visually checked and share stable IDs; byte hashes differ across export variants.",
+    "caseClusterGuardrails": {
+      "rule": "Same-patient, follow-up, adjacent-slice, procedure, comparison and time-lapse groups are atomic. Replace an entire equivalent cluster or document an explicitly safe split. Never infer chronology from image number.",
+      "intentionalSplits": [],
+      "summary": "No source case cluster was intentionally split. Retain whole MRI montage, both SDX-04/05 views and all SDX-08/09/10 views. Archive equivalent complete RP-04 and RP-07 singleton representatives; preserve all standalone canonical representatives elsewhere.",
+      "caseIdentityUncertainty": "SDX-04/05 are a possible companion group. SDX-09/10 are caption-implied companions. SDX-08 is not asserted to be the same patient as SDX-09/10."
+    },
+    "imageDownloadPlan": {
+      "mode": "curatedPrimaryOnly",
+      "primaryTeachingSet": {
+        "RadPrimer": [
+          "RP-01",
+          "RP-02",
+          "RP-03",
+          "RP-05",
+          "RP-06",
+          "RP-08"
+        ],
+        "STATdx": [
+          "SDX-04",
+          "SDX-05",
+          "SDX-08",
+          "SDX-09",
+          "SDX-10"
+        ]
+      },
+      "archiveOptionalDuplicates": {
+        "RadPrimer": [
+          "RP-04",
+          "RP-07"
+        ],
+        "STATdx": [
+          "SDX-01",
+          "SDX-02",
+          "SDX-03",
+          "SDX-06",
+          "SDX-07",
+          "SDX-11"
+        ]
+      },
+      "defaultImageCount": 11,
+      "defaultVariantFileCount": 22,
+      "variants": [
+        "plain",
+        "annotated"
+      ],
+      "filenamePolicy": "<masterImageId>_<sourceLabel>_<variant>_<originalFilename>",
+      "files": [
+        {
+          "masterImageId": "RP-01",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 1,
+          "variant": "plain",
+          "filename": "RP-01_RadPrimer_plain_Widened_Hepatic_Fissures1.jpg",
+          "url": "https://app.radprimer.com/images/193526f8-a615-402b-bef9-5e275cdd6ba3?style=xlarge&annotated=false",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-01",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 1,
+          "variant": "annotated",
+          "filename": "RP-01_RadPrimer_annotated_Widened_Hepatic_Fissures1_annot.jpg",
+          "url": "https://app.radprimer.com/images/193526f8-a615-402b-bef9-5e275cdd6ba3?style=xlarge&annotated=true",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "variant": "plain",
+          "filename": "RP-02_RadPrimer_plain_Widened_Hepatic_Fissures2.jpg",
+          "url": "https://app.radprimer.com/images/f8ca9bbb-4ec9-4603-ac11-4528fe411e21?style=xlarge&annotated=false",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-02",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 2,
+          "variant": "annotated",
+          "filename": "RP-02_RadPrimer_annotated_Widened_Hepatic_Fissures2_annot.jpg",
+          "url": "https://app.radprimer.com/images/f8ca9bbb-4ec9-4603-ac11-4528fe411e21?style=xlarge&annotated=true",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "variant": "plain",
+          "filename": "RP-03_RadPrimer_plain_Widened_Hepatic_Fissures3.jpg",
+          "url": "https://app.radprimer.com/images/e51aad9f-0f16-4ee0-907f-c4d8b6104e41?style=xlarge&annotated=false",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-03",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 3,
+          "variant": "annotated",
+          "filename": "RP-03_RadPrimer_annotated_Widened_Hepatic_Fissures3_annot.jpg",
+          "url": "https://app.radprimer.com/images/e51aad9f-0f16-4ee0-907f-c4d8b6104e41?style=xlarge&annotated=true",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 5,
+          "variant": "plain",
+          "filename": "RP-05_RadPrimer_plain_Widened_Hepatic_Fissures5.jpg",
+          "url": "https://app.radprimer.com/images/eec6a545-10c7-4ff8-bd8e-228865171de2?style=xlarge&annotated=false",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-05",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 5,
+          "variant": "annotated",
+          "filename": "RP-05_RadPrimer_annotated_Widened_Hepatic_Fissures5_annot.jpg",
+          "url": "https://app.radprimer.com/images/eec6a545-10c7-4ff8-bd8e-228865171de2?style=xlarge&annotated=true",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 6,
+          "variant": "plain",
+          "filename": "RP-06_RadPrimer_plain_Widened_Hepatic_Fissures6.jpg",
+          "url": "https://app.radprimer.com/images/d1971896-af8e-4d62-96e8-03dcf9326629?style=xlarge&annotated=false",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-06",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 6,
+          "variant": "annotated",
+          "filename": "RP-06_RadPrimer_annotated_Widened_Hepatic_Fissures6_annot.jpg",
+          "url": "https://app.radprimer.com/images/d1971896-af8e-4d62-96e8-03dcf9326629?style=xlarge&annotated=true",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 8,
+          "variant": "plain",
+          "filename": "RP-08_RadPrimer_plain_Widened_Hepatic_Fissures8.jpg",
+          "url": "https://app.radprimer.com/images/2845d5ee-9dc9-4e1a-9cb8-3cd219320af4?style=xlarge&annotated=false",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "RP-08",
+          "sourceKind": "radprimer",
+          "sourceLabel": "RadPrimer",
+          "sourceImageNumber": 8,
+          "variant": "annotated",
+          "filename": "RP-08_RadPrimer_annotated_Widened_Hepatic_Fissures8_annot.jpg",
+          "url": "https://app.radprimer.com/images/2845d5ee-9dc9-4e1a-9cb8-3cd219320af4?style=xlarge&annotated=true",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-04",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 4,
+          "variant": "plain",
+          "filename": "SDX-04_STATdx_plain_Widened_Hepatic_Fissures4.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/f3cac1ad-be9f-4a61-bb50-430e43004826?size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-04",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 4,
+          "variant": "annotated",
+          "filename": "SDX-04_STATdx_annotated_Widened_Hepatic_Fissures4_annot.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/f3cac1ad-be9f-4a61-bb50-430e43004826?annotated=true&size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-05",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 5,
+          "variant": "plain",
+          "filename": "SDX-05_STATdx_plain_Widened_Hepatic_Fissures5.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/7fea5a86-8f18-49e9-a7ee-db4c629e504f?size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-05",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 5,
+          "variant": "annotated",
+          "filename": "SDX-05_STATdx_annotated_Widened_Hepatic_Fissures5_annot.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/7fea5a86-8f18-49e9-a7ee-db4c629e504f?annotated=true&size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-08",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 8,
+          "variant": "plain",
+          "filename": "SDX-08_STATdx_plain_Widened_Hepatic_Fissures8.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/a790b2a5-c70a-44b7-910f-80e7a0b8ad4e?size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-08",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 8,
+          "variant": "annotated",
+          "filename": "SDX-08_STATdx_annotated_Widened_Hepatic_Fissures8_annot.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/a790b2a5-c70a-44b7-910f-80e7a0b8ad4e?annotated=true&size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-09",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 9,
+          "variant": "plain",
+          "filename": "SDX-09_STATdx_plain_Widened_Hepatic_Fissures9.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/712cb6d4-d7f1-45a6-b174-a044aded8807?size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-09",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 9,
+          "variant": "annotated",
+          "filename": "SDX-09_STATdx_annotated_Widened_Hepatic_Fissures9_annot.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/712cb6d4-d7f1-45a6-b174-a044aded8807?annotated=true&size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "variant": "plain",
+          "filename": "SDX-10_STATdx_plain_Widened_Hepatic_Fissures10.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/e9e64657-aea9-44e3-a3e1-b6b6c9db64ce?size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        },
+        {
+          "masterImageId": "SDX-10",
+          "sourceKind": "statdx",
+          "sourceLabel": "STATdx",
+          "sourceImageNumber": 10,
+          "variant": "annotated",
+          "filename": "SDX-10_STATdx_annotated_Widened_Hepatic_Fissures10_annot.jpg",
+          "url": "https://app.statdx.com/image/thumbnail/e9e64657-aea9-44e3-a3e1-b6b6c9db64ce?annotated=true&size=1000&quality=90",
+          "downloadRecommendation": "primaryTeachingSet"
+        }
+      ],
+      "evidenceFilesAreAuditInputs": true,
+      "downloadState": "Plan only; source URLs retained, no new remote image download performed."
+    },
+    "generatorInstructions": [
+      "This deliverable is source material only; do not generate cards or a lecture now.",
+      "Use only selectedPrimaryImageIds by default; archives are duplicate recovery, not additional teaching examples.",
+      "Use one clean human-facing source label such as RadPrimer image 5 or STATdx image 4. Keep short codes in registry, filenames and traceability fields.",
+      "Use metadata.json canonicalHierarchy exactly; retain its supplied canonicalDeckPath. Corebook is a routing label, not evidence that Core Radiology was checked.",
+      "If a later IMAIOS library is requested, derive routing from the exact canonical hierarchy plus only the local parent group; no IMAIOS library is created here.",
+      "Teach repeated mechanisms once; retain visually distinct examples for recognition. Keep phase labels and companion views intact.",
+      "Preserve original caption attribution. Source arrow filenames are markers, not independently downloaded assets; do not imply plain images contain arrow overlays.",
+      "Apply ERR-01. Preserve source-reported frequency figures as attributed source claims; do not invent page citations, sensitivity estimates, histology examples, modality findings or management protocols.",
+      "The supplied HCC comparison is a pattern discriminator; do not turn absence of washout into a universal exclusion rule. No Core evidence was provided."
+    ]
+  },
+  "caseClusters": [
+    {
+      "clusterId": "C01",
+      "label": "Cirrhosis",
+      "atomic": true,
+      "sourceMembers": {
+        "RadPrimer": [
+          "RP-01"
+        ],
+        "STATdx": [
+          "SDX-01"
+        ]
+      },
+      "selectedImageIds": [
+        "RP-01"
+      ],
+      "archiveImageIds": [
+        "SDX-01"
+      ],
+      "context": "Single axial CT; no supplied temporal relationship.",
+      "intentionalSplit": false,
+      "replacementMappings": [
+        {
+          "archivedImageId": "SDX-01",
+          "selectedImageId": "RP-01"
+        }
+      ]
+    },
+    {
+      "clusterId": "C02",
+      "label": "Confluent fibrosis MRI phases",
+      "atomic": true,
+      "sourceMembers": {
+        "RadPrimer": [
+          "RP-02"
+        ],
+        "STATdx": [
+          "SDX-02"
+        ]
+      },
+      "selectedImageIds": [
+        "RP-02"
+      ],
+      "archiveImageIds": [
+        "SDX-02"
+      ],
+      "context": "Within-image A–D multiphase series is explicitly one patient. Preserve A precontrast, B arterial, C venous and D delayed, all in one composite.",
+      "intentionalSplit": false,
+      "replacementMappings": [
+        {
+          "archivedImageId": "SDX-02",
+          "selectedImageId": "RP-02"
+        }
+      ]
+    },
+    {
+      "clusterId": "C03",
+      "label": "Senescent change",
+      "atomic": true,
+      "sourceMembers": {
+        "RadPrimer": [
+          "RP-03"
+        ],
+        "STATdx": [
+          "SDX-03"
+        ]
+      },
+      "selectedImageIds": [
+        "RP-03"
+      ],
+      "archiveImageIds": [
+        "SDX-03"
+      ],
+      "context": "Single axial CT; no supplied temporal relationship.",
+      "intentionalSplit": false,
+      "replacementMappings": [
+        {
+          "archivedImageId": "SDX-03",
+          "selectedImageId": "RP-03"
+        }
+      ]
+    },
+    {
+      "clusterId": "C04",
+      "label": "Absent medial segment",
+      "atomic": true,
+      "sourceMembers": {
+        "RadPrimer": [
+          "RP-04"
+        ],
+        "STATdx": [
+          "SDX-04",
+          "SDX-05"
+        ]
+      },
+      "selectedImageIds": [
+        "SDX-04",
+        "SDX-05"
+      ],
+      "archiveImageIds": [
+        "RP-04"
+      ],
+      "context": "SDX-04/05 are visually distinct CT views of the same pattern. Treat as a possible companion cluster conservatively; same patient and interval are not explicitly confirmed.",
+      "intentionalSplit": false,
+      "replacementMappings": [
+        {
+          "archivedImageId": "RP-04",
+          "selectedImageId": "SDX-04"
+        }
+      ]
+    },
+    {
+      "clusterId": "C05",
+      "label": "Metastatic pseudocirrhosis",
+      "atomic": true,
+      "sourceMembers": {
+        "RadPrimer": [
+          "RP-05"
+        ],
+        "STATdx": [
+          "SDX-06"
+        ]
+      },
+      "selectedImageIds": [
+        "RP-05"
+      ],
+      "archiveImageIds": [
+        "SDX-06"
+      ],
+      "context": "Single CT in a woman with breast cancer metastases. No pre/posttherapy sequence or treatment history is supplied for this image.",
+      "intentionalSplit": false,
+      "replacementMappings": [
+        {
+          "archivedImageId": "SDX-06",
+          "selectedImageId": "RP-05"
+        }
+      ]
+    },
+    {
+      "clusterId": "C06",
+      "label": "Primary sclerosing cholangitis",
+      "atomic": true,
+      "sourceMembers": {
+        "RadPrimer": [
+          "RP-06"
+        ],
+        "STATdx": [
+          "SDX-07"
+        ]
+      },
+      "selectedImageIds": [
+        "RP-06"
+      ],
+      "archiveImageIds": [
+        "SDX-07"
+      ],
+      "context": "Single axial CT; no supplied temporal relationship.",
+      "intentionalSplit": false,
+      "replacementMappings": [
+        {
+          "archivedImageId": "SDX-07",
+          "selectedImageId": "RP-06"
+        }
+      ]
+    },
+    {
+      "clusterId": "C07",
+      "label": "Congenital hepatic fibrosis and Caroli disease",
+      "atomic": true,
+      "sourceMembers": {
+        "RadPrimer": [
+          "RP-07"
+        ],
+        "STATdx": [
+          "SDX-08",
+          "SDX-09",
+          "SDX-10"
+        ]
+      },
+      "selectedImageIds": [
+        "SDX-08",
+        "SDX-09",
+        "SDX-10"
+      ],
+      "archiveImageIds": [
+        "RP-07"
+      ],
+      "context": "SDX-09/10 captions imply a companion case in a 22-year-old man; keep both levels together. SDX-08 is a distinct same-disease example with no explicit link to that patient; all three retained as a conservative teaching cluster, not an assertion of shared patient identity.",
+      "intentionalSplit": false,
+      "replacementMappings": [
+        {
+          "archivedImageId": "RP-07",
+          "selectedImageId": "SDX-08"
+        }
+      ]
+    },
+    {
+      "clusterId": "C08",
+      "label": "Hepatic schistosomiasis",
+      "atomic": true,
+      "sourceMembers": {
+        "RadPrimer": [
+          "RP-08"
+        ],
+        "STATdx": [
+          "SDX-11"
+        ]
+      },
+      "selectedImageIds": [
+        "RP-08"
+      ],
+      "archiveImageIds": [
+        "SDX-11"
+      ],
+      "context": "Single axial CT; no supplied temporal relationship.",
+      "intentionalSplit": false,
+      "replacementMappings": [
+        {
+          "archivedImageId": "SDX-11",
+          "selectedImageId": "RP-08"
+        }
+      ]
+    }
+  ],
+  "editorialCorrections": [
+    {
+      "id": "ERR-01",
+      "sourceFiles": [
+        "RadPrimer_source_package.txt",
+        "STATdx_source_package.txt"
+      ],
+      "section": "ESSENTIAL INFORMATION > Helpful Clues for Less Common Diagnoses > Schistosomiasis",
+      "originalText": "Saccharina japonica causes extensive fibrosis of liver",
+      "correctedText": "Schistosoma japonicum infection can cause hepatic fibrosis and portal hypertension.",
+      "status": "Editorial organism-name correction; intended replacement inferred from schistosomiasis context and verified against CDC taxonomy/clinical effects.",
+      "verificationSource": {
+        "title": "CDC — Clinical Overview of Schistosomiasis",
+        "url": "https://www.cdc.gov/schistosomiasis/hcp/clinical-overview/index.html",
+        "publishedAt": "2024-03-11",
+        "accessedAt": "2026-09-09T03:27:28.530Z",
+        "supportedClaim": "S. japonicum is a schistosome associated with hepatic involvement; heavy infections can lead to liver fibrosis and portal hypertension."
+      },
+      "originalSourceFilesModified": false
+    }
+  ],
+  "coreValidation": {
+    "suppliedAuditableCoreEvidence": false,
+    "status": "Not verified; no Core-specific teaching claim added."
+  },
+  "inputFiles": [
+    {
+      "filename": "RadPrimer_source_package.txt",
+      "sha256": "e93754df3e2c6021c45f4bbb61d5682b2d95217593d17318f61d8c030fd0fea6"
+    },
+    {
+      "filename": "STATdx_source_package.txt",
+      "sha256": "4dd2ff972eaf7438c6c5e14ff4ffeb3fb7f8fc3a635f4f5f97ff293d64a34e90"
+    },
+    {
+      "filename": "RadPrimer_metadata.json",
+      "sha256": "840df69e817289bba9340b0d3f7cdbb9e095fff9df5c543118d291377b781582"
+    },
+    {
+      "filename": "STATdx_metadata.json",
+      "sha256": "3968a023283e8d65af5c176fd38ce4e9397c77fe332a198a558ac9de2e0881fc"
+    },
+    {
+      "filename": "metadata.json",
+      "sha256": "8f0a9b0f25a9e1c2038ffb7db08189fa064a366653535dc2160825918e515d80"
+    },
+    {
+      "filename": "master_source_request.md",
+      "sha256": "8cfd6b933cfd0f1e62bb872fe62bb8722eabd3f8381d656a7aca900f17170181"
+    },
+    {
+      "filename": "image_evidence_manifest.json",
+      "sha256": "056c2a46c41e64e3e685fc8dcda7025fdcce36ca9e360760ad6b3bb4db496044"
+    }
+  ],
+  "packageSha256": "37fdd109770eae13a374a506bb688dc0981818f19fad34f5a803ef1470a1cafb",
+  "scope": "Master source synthesis only; no cards, lecture, IMAIOS library or live extension import."
+}

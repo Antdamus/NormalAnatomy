@@ -1,0 +1,2607 @@
+{
+  "assets": [
+    {
+      "filename": "RP-01_RadPrimer_plain_Periportal_Lesion1.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-01_RadPrimer_plain_Periportal_Lesion1.jpg",
+      "sha256": "9bf9b955ec3404a7e522b2e3f436c0c06744a7f61525b8c28fb3785f2d778840",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-01"
+    },
+    {
+      "filename": "RP-01_RadPrimer_annotated_Periportal_Lesion1_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-01_RadPrimer_annotated_Periportal_Lesion1_annot.jpg",
+      "sha256": "75d73e042f5833c4fb7c4c1339e5b5d366fceb8ac2f51caaeef3015ed70d5660",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-01"
+    },
+    {
+      "filename": "RP-02_RadPrimer_plain_Periportal_Lesion2.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-02_RadPrimer_plain_Periportal_Lesion2.jpg",
+      "sha256": "f9f8e120e4517ab50feb9b9d76fcd3e70bcd8bac7b5583bbe0b4b07f14c6e135",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-02"
+    },
+    {
+      "filename": "RP-02_RadPrimer_annotated_Periportal_Lesion2_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-02_RadPrimer_annotated_Periportal_Lesion2_annot.jpg",
+      "sha256": "83ba4399d2e6fb16b5cf2f7d1a53a5302e97e09e8eecdfe2283d8c3ae3787a99",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-02"
+    },
+    {
+      "filename": "RP-03_RadPrimer_plain_Periportal_Lesion3.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-03_RadPrimer_plain_Periportal_Lesion3.jpg",
+      "sha256": "ee56a6ad45d235aebdbc328dd52f3244861a6c3490ced92b1577df0fcf8a977b",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-03"
+    },
+    {
+      "filename": "RP-03_RadPrimer_annotated_Periportal_Lesion3_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-03_RadPrimer_annotated_Periportal_Lesion3_annot.jpg",
+      "sha256": "210aea4fbf251bec67946f74ed5bc1968d2716c5ec06a54f1b61a494148edbc2",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-03"
+    },
+    {
+      "filename": "RP-04_RadPrimer_plain_Periportal_Lesion4.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-04_RadPrimer_plain_Periportal_Lesion4.jpg",
+      "sha256": "c43c28171ade187817aa0e77c0a4085747cdf564356f2781ea23e5e62ae3e792",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-04"
+    },
+    {
+      "filename": "RP-04_RadPrimer_annotated_Periportal_Lesion4_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-04_RadPrimer_annotated_Periportal_Lesion4_annot.jpg",
+      "sha256": "c281829003a27b862f19ce93be29f532dbe3cb33be6981485bfcb0e3d6351b47",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-04"
+    },
+    {
+      "filename": "RP-05_RadPrimer_plain_Periportal_Lesion5.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-05_RadPrimer_plain_Periportal_Lesion5.jpg",
+      "sha256": "cedd5b45661abe5333948c7c53ed5397d1f4d1f3e6939bf8db2096d0f596d5e2",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-05"
+    },
+    {
+      "filename": "RP-05_RadPrimer_annotated_Periportal_Lesion5_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-05_RadPrimer_annotated_Periportal_Lesion5_annot.jpg",
+      "sha256": "e174162665eb869d149ed2977b7c57e69370b7196599182ac9d897629b9fb9cf",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-05"
+    },
+    {
+      "filename": "RP-06_RadPrimer_plain_Periportal_Lesion6.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-06_RadPrimer_plain_Periportal_Lesion6.jpg",
+      "sha256": "bcb982a57ac59dd176d6825a3e8f873178f328ecf4dedc8ba3203e8ac8520e77",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-06"
+    },
+    {
+      "filename": "RP-06_RadPrimer_annotated_Periportal_Lesion6_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-06_RadPrimer_annotated_Periportal_Lesion6_annot.jpg",
+      "sha256": "71c955335a7be6b252a2b06f986c2f7ad9f55359febc10f7d8184bac2f22e3a3",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-06"
+    },
+    {
+      "filename": "RP-07_RadPrimer_plain_Periportal_Lesion7.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-07_RadPrimer_plain_Periportal_Lesion7.jpg",
+      "sha256": "5c5a0be52f1c72a90b3e47061992ba2dc3a1b889829fb4687100e05fd25e7366",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-07"
+    },
+    {
+      "filename": "RP-07_RadPrimer_annotated_Periportal_Lesion7_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-07_RadPrimer_annotated_Periportal_Lesion7_annot.jpg",
+      "sha256": "beb17d3f5f6ce8164495819485ac9feae0626d1e730da4afdcb97020badb9caa",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-07"
+    },
+    {
+      "filename": "RP-08_RadPrimer_plain_Periportal_Lesion8.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-08_RadPrimer_plain_Periportal_Lesion8.jpg",
+      "sha256": "86e638963abd2edbbfd859fd8434ba9f8b1d00737c57d257d3c4c21e409761a8",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-08"
+    },
+    {
+      "filename": "RP-08_RadPrimer_annotated_Periportal_Lesion8_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-08_RadPrimer_annotated_Periportal_Lesion8_annot.jpg",
+      "sha256": "236780385e2bf455f039ad17c9f06ebf765002598253934ea54ed2dcebb1ef94",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-08"
+    },
+    {
+      "filename": "RP-09_RadPrimer_plain_Periportal_Lesion9.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-09_RadPrimer_plain_Periportal_Lesion9.jpg",
+      "sha256": "c66ac6b58e299145cb28ee227bda64cf055ab5a5c0056669ddd9aef201d3a064",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-09"
+    },
+    {
+      "filename": "RP-09_RadPrimer_annotated_Periportal_Lesion9_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-09_RadPrimer_annotated_Periportal_Lesion9_annot.jpg",
+      "sha256": "853ba5e678b44cf7cea7ac17cfebe79f1e792369f3df2cb1e59c12b068fa7feb",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-09"
+    },
+    {
+      "filename": "RP-10_RadPrimer_plain_Periportal_Lesion10.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-10_RadPrimer_plain_Periportal_Lesion10.jpg",
+      "sha256": "ff13911d8725e4ef0a867d5dea98fcaa2c80b7c6a673bae9aeae5207ad8c1b74",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-10"
+    },
+    {
+      "filename": "RP-10_RadPrimer_annotated_Periportal_Lesion10_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-10_RadPrimer_annotated_Periportal_Lesion10_annot.jpg",
+      "sha256": "f220f3cfb283bdc5b32a730a848d4effff6a66f56df7d5e1a389673a9f7095e2",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-10"
+    },
+    {
+      "filename": "RP-11_RadPrimer_plain_Periportal_Lesion11.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-11_RadPrimer_plain_Periportal_Lesion11.jpg",
+      "sha256": "71a1c7113a70643427ac17b50cc420aac4767c2801f4ea5aab2e64bf8a2e2dc7",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-11"
+    },
+    {
+      "filename": "RP-11_RadPrimer_annotated_Periportal_Lesion11_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-11_RadPrimer_annotated_Periportal_Lesion11_annot.jpg",
+      "sha256": "305d4b039ba621d32049ae5329300826081fc94d4284f2f3abf05fc4020280bf",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-11"
+    },
+    {
+      "filename": "RP-12_RadPrimer_plain_Periportal_Lesion12.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-12_RadPrimer_plain_Periportal_Lesion12.jpg",
+      "sha256": "de97a11888df907d528ac4fb0791092e1a5f9e429a792de08548db18d53e1fc7",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-12"
+    },
+    {
+      "filename": "RP-12_RadPrimer_annotated_Periportal_Lesion12_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-12_RadPrimer_annotated_Periportal_Lesion12_annot.jpg",
+      "sha256": "1a48c2f6cfe342293a65f9eceeb49d90f09e0b843a4fe7365ddcd22c4c9e0703",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-12"
+    },
+    {
+      "filename": "RP-13_RadPrimer_plain_Periportal_Lesion13.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-13_RadPrimer_plain_Periportal_Lesion13.jpg",
+      "sha256": "1ca23bb10ec1c75242aeb6069b594c109fc2e8a191c992f59f16d13f879d561a",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-13"
+    },
+    {
+      "filename": "RP-13_RadPrimer_annotated_Periportal_Lesion13_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-13_RadPrimer_annotated_Periportal_Lesion13_annot.jpg",
+      "sha256": "87a26f9dbf456a80d55e823f9e88b54edb9abc0564620fa16a2155ef54faa5c9",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-13"
+    },
+    {
+      "filename": "RP-14_RadPrimer_plain_Periportal_Lesion14.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-14_RadPrimer_plain_Periportal_Lesion14.jpg",
+      "sha256": "776b2d126ae80bda3adb41a0060f2edc3b50bd0ff8e8c5e270c8009f6702c76a",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "RP-14"
+    },
+    {
+      "filename": "RP-14_RadPrimer_annotated_Periportal_Lesion14_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\RP-14_RadPrimer_annotated_Periportal_Lesion14_annot.jpg",
+      "sha256": "3f6398617a3759a7ae4c8dfb156e8fb9f2760cd57751c497dac9c446a346af9c",
+      "dimensions": [
+        900,
+        900
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "RP-14"
+    },
+    {
+      "filename": "SDX-01_STATdx_plain_Periportal_Lucency_or_Edema1.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-01_STATdx_plain_Periportal_Lucency_or_Edema1.jpg",
+      "sha256": "da8d5d8ba6dadb5ec601dd6661ecc02e3149ac134c4924407ea99c78400b6348",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-01"
+    },
+    {
+      "filename": "SDX-01_STATdx_annotated_Periportal_Lucency_or_Edema1_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-01_STATdx_annotated_Periportal_Lucency_or_Edema1_annot.jpg",
+      "sha256": "d354a513595fb7ed7b1f7a6ae6ea3f164b4dd50c09a9c8a30c36b532e5f29f10",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-01"
+    },
+    {
+      "filename": "SDX-02_STATdx_plain_Periportal_Lucency_or_Edema2.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-02_STATdx_plain_Periportal_Lucency_or_Edema2.jpg",
+      "sha256": "f43f6e74bbd4802d834d1a2f39d140fcbad81f0d3c0a4a94d67b8391b57cb876",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-02"
+    },
+    {
+      "filename": "SDX-02_STATdx_annotated_Periportal_Lucency_or_Edema2_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-02_STATdx_annotated_Periportal_Lucency_or_Edema2_annot.jpg",
+      "sha256": "60351590888f23833a721ffbafcb7c312fe6b045986b541ff7c5073706e40f22",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-02"
+    },
+    {
+      "filename": "SDX-03_STATdx_plain_Periportal_Lucency_or_Edema3.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-03_STATdx_plain_Periportal_Lucency_or_Edema3.jpg",
+      "sha256": "77d57de7449599eccf965f1076ecbe910750ee8ae972171e4f10cc176ddebcf2",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-03"
+    },
+    {
+      "filename": "SDX-03_STATdx_annotated_Periportal_Lucency_or_Edema3_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-03_STATdx_annotated_Periportal_Lucency_or_Edema3_annot.jpg",
+      "sha256": "effedf2740448b6648fc18b61a60fb1ab26e50eca55d73fe83882e434ec246e4",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-03"
+    },
+    {
+      "filename": "SDX-04_STATdx_plain_Periportal_Lucency_or_Edema4.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-04_STATdx_plain_Periportal_Lucency_or_Edema4.jpg",
+      "sha256": "c168466e83d5db7d645205b6b74553323d436d771a152c25223c7142fb017419",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-04"
+    },
+    {
+      "filename": "SDX-04_STATdx_annotated_Periportal_Lucency_or_Edema4_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-04_STATdx_annotated_Periportal_Lucency_or_Edema4_annot.jpg",
+      "sha256": "f56ea4fad64819c8e5a386d6dd5ae9615c1df479557bb5bbcdc5ca270d07033e",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-04"
+    },
+    {
+      "filename": "SDX-05_STATdx_plain_Periportal_Lucency_or_Edema5.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-05_STATdx_plain_Periportal_Lucency_or_Edema5.jpg",
+      "sha256": "c643a5128dfcbddeb94a1ca23bef20b70c456571f98b60228c98c441100196a5",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-05"
+    },
+    {
+      "filename": "SDX-05_STATdx_annotated_Periportal_Lucency_or_Edema5_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-05_STATdx_annotated_Periportal_Lucency_or_Edema5_annot.jpg",
+      "sha256": "b30d7a27b5f66692da5e882f4019ec2e321ee4f52205ec67624c19d7ae58d0c9",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-05"
+    },
+    {
+      "filename": "SDX-06_STATdx_plain_Periportal_Lucency_or_Edema6.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-06_STATdx_plain_Periportal_Lucency_or_Edema6.jpg",
+      "sha256": "e40a1efdebcaf9c933bc2f58a725deaa8adbb7081a7fd27b3c752e83fb6ee49f",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-06"
+    },
+    {
+      "filename": "SDX-06_STATdx_annotated_Periportal_Lucency_or_Edema6_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-06_STATdx_annotated_Periportal_Lucency_or_Edema6_annot.jpg",
+      "sha256": "2eee72b6e69b8a486b87b050c859398e57b26c42451bca97d1a0981b2a28c5cd",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-06"
+    },
+    {
+      "filename": "SDX-07_STATdx_plain_Periportal_Lucency_or_Edema7.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-07_STATdx_plain_Periportal_Lucency_or_Edema7.jpg",
+      "sha256": "a2dc83181a651891de2857e6960919051e73d826e86b21952970cdab7408e69d",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-07"
+    },
+    {
+      "filename": "SDX-07_STATdx_annotated_Periportal_Lucency_or_Edema7_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-07_STATdx_annotated_Periportal_Lucency_or_Edema7_annot.jpg",
+      "sha256": "b706a70e54c9ab9b570a41d7f3c3ace204d71954c4c9ba0632b293625cd63cf7",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-07"
+    },
+    {
+      "filename": "SDX-08_STATdx_plain_Periportal_Lucency_or_Edema8.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-08_STATdx_plain_Periportal_Lucency_or_Edema8.jpg",
+      "sha256": "92e7ab2f54060461e67ac37c8654e53a0b413a0c95dabeabd5a396e402d63a29",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-08"
+    },
+    {
+      "filename": "SDX-08_STATdx_annotated_Periportal_Lucency_or_Edema8_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-08_STATdx_annotated_Periportal_Lucency_or_Edema8_annot.jpg",
+      "sha256": "664e0a666fa17737330db3a65e1c213db423b5c99f91c983f3fb125cfb527b3b",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-08"
+    },
+    {
+      "filename": "SDX-09_STATdx_plain_Periportal_Lucency_or_Edema9.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-09_STATdx_plain_Periportal_Lucency_or_Edema9.jpg",
+      "sha256": "ba4923eb91ec3bc284274ab91d81a86708ff46ea0692abded8a9aba0be26827e",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-09"
+    },
+    {
+      "filename": "SDX-09_STATdx_annotated_Periportal_Lucency_or_Edema9_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-09_STATdx_annotated_Periportal_Lucency_or_Edema9_annot.jpg",
+      "sha256": "42c539b997e327b2a5ecf3fccaa786163c1cdace2b42e3ba97f92975ea411806",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-09"
+    },
+    {
+      "filename": "SDX-10_STATdx_plain_Periportal_Lucency_or_Edema10.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-10_STATdx_plain_Periportal_Lucency_or_Edema10.jpg",
+      "sha256": "87692d955051d7ff2385b310b632c63a0a2cc1bac47e3a2cdaae1b88045b5aff",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-10"
+    },
+    {
+      "filename": "SDX-10_STATdx_annotated_Periportal_Lucency_or_Edema10_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-10_STATdx_annotated_Periportal_Lucency_or_Edema10_annot.jpg",
+      "sha256": "eb19902203637961c86d6fbd5e76eedf21171d9e7ec6254befc1f93b3317ac6e",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-10"
+    },
+    {
+      "filename": "SDX-11_STATdx_plain_Periportal_Lucency_or_Edema11.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-11_STATdx_plain_Periportal_Lucency_or_Edema11.jpg",
+      "sha256": "e32f97ba0cbfac90f74bc81cff54143c2bc82b4d041f32100b2064ff9cc77542",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-11"
+    },
+    {
+      "filename": "SDX-11_STATdx_annotated_Periportal_Lucency_or_Edema11_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-11_STATdx_annotated_Periportal_Lucency_or_Edema11_annot.jpg",
+      "sha256": "0655f504aa82b11dd64b81c1eb51084b1781eff543e6d13ea612ab79830d3d48",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-11"
+    },
+    {
+      "filename": "SDX-12_STATdx_plain_Periportal_Lucency_or_Edema12.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-12_STATdx_plain_Periportal_Lucency_or_Edema12.jpg",
+      "sha256": "ecce58db11ac9cb7579215f64ed077bad24044690118c1d68d24872ba880e70f",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-12"
+    },
+    {
+      "filename": "SDX-12_STATdx_annotated_Periportal_Lucency_or_Edema12_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-12_STATdx_annotated_Periportal_Lucency_or_Edema12_annot.jpg",
+      "sha256": "1fd673458268aeafec8ab31274592f7eb3ce0b001ff1a3ea2b549cba8d6ebb39",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-12"
+    },
+    {
+      "filename": "SDX-13_STATdx_plain_Periportal_Lucency_or_Edema13.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-13_STATdx_plain_Periportal_Lucency_or_Edema13.jpg",
+      "sha256": "23732071dcb84f4ee00b6e89655f7c8e8eb3fbf03ed962daf71b147c5509572a",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-13"
+    },
+    {
+      "filename": "SDX-13_STATdx_annotated_Periportal_Lucency_or_Edema13_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-13_STATdx_annotated_Periportal_Lucency_or_Edema13_annot.jpg",
+      "sha256": "cc5888764859a63cb690f5c6b05dd603d64ad49f3a491007bfb75e88129ae786",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-13"
+    },
+    {
+      "filename": "SDX-14_STATdx_plain_Periportal_Lucency_or_Edema14.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-14_STATdx_plain_Periportal_Lucency_or_Edema14.jpg",
+      "sha256": "d40182265189d22102901be59c902bfa443698c5b3c8544874fbed1545b26a6b",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-14"
+    },
+    {
+      "filename": "SDX-14_STATdx_annotated_Periportal_Lucency_or_Edema14_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-14_STATdx_annotated_Periportal_Lucency_or_Edema14_annot.jpg",
+      "sha256": "28f97ce7cb910412afb3f6da46b595d8c9ccfaf599ff85b383952e3c163248a0",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-14"
+    },
+    {
+      "filename": "SDX-15_STATdx_plain_Periportal_Lucency_or_Edema15.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-15_STATdx_plain_Periportal_Lucency_or_Edema15.jpg",
+      "sha256": "35539b12075903bdc0538d03590c7adc2b16d7329df07ba5566f6f131475ad11",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-15"
+    },
+    {
+      "filename": "SDX-15_STATdx_annotated_Periportal_Lucency_or_Edema15_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-15_STATdx_annotated_Periportal_Lucency_or_Edema15_annot.jpg",
+      "sha256": "23303a85d57cddd54166dca3fb2920291d7cd2d23bae110613c6b956d35a9017",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-15"
+    },
+    {
+      "filename": "SDX-16_STATdx_plain_Periportal_Lucency_or_Edema16.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-16_STATdx_plain_Periportal_Lucency_or_Edema16.jpg",
+      "sha256": "90db45f7a6635099f6f4cbd3b09bbf097b983d0372ca8646b3b33b01d52b40a1",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-16"
+    },
+    {
+      "filename": "SDX-16_STATdx_annotated_Periportal_Lucency_or_Edema16_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-16_STATdx_annotated_Periportal_Lucency_or_Edema16_annot.jpg",
+      "sha256": "5b21bb8e0db9fa75e1e4642ad84c22830c7c71cce42ab82cc7c2c400bd8603f3",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-16"
+    },
+    {
+      "filename": "SDX-17_STATdx_plain_Periportal_Lucency_or_Edema17.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-17_STATdx_plain_Periportal_Lucency_or_Edema17.jpg",
+      "sha256": "b7498a04fad23fbf04d60a61bc9a87b18ee1d7a8ea18edb09ae65a5a60862557",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-17"
+    },
+    {
+      "filename": "SDX-17_STATdx_annotated_Periportal_Lucency_or_Edema17_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-17_STATdx_annotated_Periportal_Lucency_or_Edema17_annot.jpg",
+      "sha256": "40a7ef00220b69a1681178cba77dba70ab8a086f5f0980b2cdc680574a4bd240",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-17"
+    },
+    {
+      "filename": "SDX-18_STATdx_plain_Periportal_Lucency_or_Edema18.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-18_STATdx_plain_Periportal_Lucency_or_Edema18.jpg",
+      "sha256": "f698b9b88f96fb9edfbe87a68a7132c973aad3911159eb370961b242c505db48",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-18"
+    },
+    {
+      "filename": "SDX-18_STATdx_annotated_Periportal_Lucency_or_Edema18_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-18_STATdx_annotated_Periportal_Lucency_or_Edema18_annot.jpg",
+      "sha256": "4ae6f28d95a03eeb189419f70779fc1bb3ca4fbb3bed88fe52e905e30e026333",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-18"
+    },
+    {
+      "filename": "SDX-19_STATdx_plain_Periportal_Lucency_or_Edema19.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-19_STATdx_plain_Periportal_Lucency_or_Edema19.jpg",
+      "sha256": "cac90f18a46c9073411a194a632e9eb5af7482c8c06d7708c6c3c4cdd739dc7c",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-19"
+    },
+    {
+      "filename": "SDX-19_STATdx_annotated_Periportal_Lucency_or_Edema19_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-19_STATdx_annotated_Periportal_Lucency_or_Edema19_annot.jpg",
+      "sha256": "1feffd96ed5755aa069f082dc1c4b3edfa8e346f3b49977efb2ea5f4c4790031",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-19"
+    },
+    {
+      "filename": "SDX-20_STATdx_plain_Periportal_Lucency_or_Edema20.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-20_STATdx_plain_Periportal_Lucency_or_Edema20.jpg",
+      "sha256": "d38817641494370579f0beb02048ee6abcd41437bb627536278d2498356b1801",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-20"
+    },
+    {
+      "filename": "SDX-20_STATdx_annotated_Periportal_Lucency_or_Edema20_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-20_STATdx_annotated_Periportal_Lucency_or_Edema20_annot.jpg",
+      "sha256": "78d2e525676143de90730999d5824c5822b2d638c5ebf08cbfbba1d2566f48d2",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-20"
+    },
+    {
+      "filename": "SDX-21_STATdx_plain_Periportal_Lucency_or_Edema21.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-21_STATdx_plain_Periportal_Lucency_or_Edema21.jpg",
+      "sha256": "e5918367ccae68310931098ff6ceb696081ccad59b6a9fda88a2fed5f2d21d8b",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-21"
+    },
+    {
+      "filename": "SDX-21_STATdx_annotated_Periportal_Lucency_or_Edema21_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-21_STATdx_annotated_Periportal_Lucency_or_Edema21_annot.jpg",
+      "sha256": "434b76a818d85ded3368a86fd79e68122bded5cfcf0b8ec222f2948a891d2830",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-21"
+    },
+    {
+      "filename": "SDX-22_STATdx_plain_Periportal_Lucency_or_Edema22.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-22_STATdx_plain_Periportal_Lucency_or_Edema22.jpg",
+      "sha256": "9838ad0555b934c9caffda474de350d7b54fe0d49d34371b4bc87bafe611f21d",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-22"
+    },
+    {
+      "filename": "SDX-22_STATdx_annotated_Periportal_Lucency_or_Edema22_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-22_STATdx_annotated_Periportal_Lucency_or_Edema22_annot.jpg",
+      "sha256": "88636b66c906132460d129b5f43540979a9b3e545421a6b0a8db81232edaa940",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-22"
+    },
+    {
+      "filename": "SDX-23_STATdx_plain_Periportal_Lucency_or_Edema23.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-23_STATdx_plain_Periportal_Lucency_or_Edema23.jpg",
+      "sha256": "a7a67ac0cfe71aaacc3b16b1c47a99121875e2b1485a3f56fe82070db2f2a11f",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-23"
+    },
+    {
+      "filename": "SDX-23_STATdx_annotated_Periportal_Lucency_or_Edema23_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-23_STATdx_annotated_Periportal_Lucency_or_Edema23_annot.jpg",
+      "sha256": "00a7ebbd66f07bcf893ea222508bf50baa3179c6607548ccd6c63ff330813e21",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-23"
+    },
+    {
+      "filename": "SDX-24_STATdx_plain_Periportal_Lucency_or_Edema24.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-24_STATdx_plain_Periportal_Lucency_or_Edema24.jpg",
+      "sha256": "7bf273bb28ae10b90bcd205d7dc3a73945c94697b0165ce14b683689722d16ae",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-24"
+    },
+    {
+      "filename": "SDX-24_STATdx_annotated_Periportal_Lucency_or_Edema24_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-24_STATdx_annotated_Periportal_Lucency_or_Edema24_annot.jpg",
+      "sha256": "7bf273bb28ae10b90bcd205d7dc3a73945c94697b0165ce14b683689722d16ae",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-24"
+    },
+    {
+      "filename": "SDX-25_STATdx_plain_Periportal_Lucency_or_Edema25.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-25_STATdx_plain_Periportal_Lucency_or_Edema25.jpg",
+      "sha256": "b1a35cf551227f0c471ede8bd8e58abb7e1746bcd8c6da4ef71348b5abfb3ed6",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-25"
+    },
+    {
+      "filename": "SDX-25_STATdx_annotated_Periportal_Lucency_or_Edema25_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-25_STATdx_annotated_Periportal_Lucency_or_Edema25_annot.jpg",
+      "sha256": "ca4164d0dc99fd5daae83a9f583f6f56235a4f19e3c151a5edb6f06712a1485c",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-25"
+    },
+    {
+      "filename": "SDX-26_STATdx_plain_Periportal_Lucency_or_Edema26.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-26_STATdx_plain_Periportal_Lucency_or_Edema26.jpg",
+      "sha256": "617eec523299cb3267ef52265fb31d8c7f7abdec425a6475393012568859e7b8",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-26"
+    },
+    {
+      "filename": "SDX-26_STATdx_annotated_Periportal_Lucency_or_Edema26_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-26_STATdx_annotated_Periportal_Lucency_or_Edema26_annot.jpg",
+      "sha256": "18646238f7bf1c69614205c886b5a65bbeabcba35c4f57368b8c5c5175945813",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-26"
+    },
+    {
+      "filename": "SDX-27_STATdx_plain_Periportal_Lucency_or_Edema27.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-27_STATdx_plain_Periportal_Lucency_or_Edema27.jpg",
+      "sha256": "5592cf438c970a84498a804535331b698ab35e101b5900003ea35baefe4e3f6c",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-27"
+    },
+    {
+      "filename": "SDX-27_STATdx_annotated_Periportal_Lucency_or_Edema27_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-27_STATdx_annotated_Periportal_Lucency_or_Edema27_annot.jpg",
+      "sha256": "5592cf438c970a84498a804535331b698ab35e101b5900003ea35baefe4e3f6c",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-27"
+    },
+    {
+      "filename": "SDX-28_STATdx_plain_Periportal_Lucency_or_Edema28.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-28_STATdx_plain_Periportal_Lucency_or_Edema28.jpg",
+      "sha256": "af61a764df46a7c046c303dae172c072c580ea5d054d359f7ab391041c98e24e",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-28"
+    },
+    {
+      "filename": "SDX-28_STATdx_annotated_Periportal_Lucency_or_Edema28_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-28_STATdx_annotated_Periportal_Lucency_or_Edema28_annot.jpg",
+      "sha256": "475ef753405752d90a248165ce1afd6474a4531816a311f39624f600566cc68b",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-28"
+    },
+    {
+      "filename": "SDX-29_STATdx_plain_Periportal_Lucency_or_Edema29.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-29_STATdx_plain_Periportal_Lucency_or_Edema29.jpg",
+      "sha256": "ea7c041da329bee304a028777dffb6e7bcfbdcc4057241a7b9f3c7cf2d094ba6",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-29"
+    },
+    {
+      "filename": "SDX-29_STATdx_annotated_Periportal_Lucency_or_Edema29_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-29_STATdx_annotated_Periportal_Lucency_or_Edema29_annot.jpg",
+      "sha256": "e2c7c7ff95d612a6703acfded3767e7f05feee55fd868758f48339f23b39da2b",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-29"
+    },
+    {
+      "filename": "SDX-30_STATdx_plain_Periportal_Lucency_or_Edema30.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-30_STATdx_plain_Periportal_Lucency_or_Edema30.jpg",
+      "sha256": "4c6d84ec861d937652c9013fccb4b409ca550eb7a2816768a7dd38aabba60f48",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-30"
+    },
+    {
+      "filename": "SDX-30_STATdx_annotated_Periportal_Lucency_or_Edema30_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-30_STATdx_annotated_Periportal_Lucency_or_Edema30_annot.jpg",
+      "sha256": "4c6d84ec861d937652c9013fccb4b409ca550eb7a2816768a7dd38aabba60f48",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-30"
+    },
+    {
+      "filename": "SDX-31_STATdx_plain_Periportal_Lucency_or_Edema31.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-31_STATdx_plain_Periportal_Lucency_or_Edema31.jpg",
+      "sha256": "b46372ded89a23730a25fa062bbae4c67a5124269962616c3522151b22a20c5b",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-31"
+    },
+    {
+      "filename": "SDX-31_STATdx_annotated_Periportal_Lucency_or_Edema31_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-31_STATdx_annotated_Periportal_Lucency_or_Edema31_annot.jpg",
+      "sha256": "5045bde5790c885d120e37de5106a51e211fb27239f7a999f51369c0a29e911e",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-31"
+    },
+    {
+      "filename": "SDX-32_STATdx_plain_Periportal_Lucency_or_Edema32.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-32_STATdx_plain_Periportal_Lucency_or_Edema32.jpg",
+      "sha256": "57e9bb9aa9421282fd7bb5c7b736426b1e5b3835d081ddedf2fbce1dea0a3075",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-32"
+    },
+    {
+      "filename": "SDX-32_STATdx_annotated_Periportal_Lucency_or_Edema32_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-32_STATdx_annotated_Periportal_Lucency_or_Edema32_annot.jpg",
+      "sha256": "4a4389772f7ef698fa9c820cfc212f708219c87de373d9ee1aaa07f03462989e",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-32"
+    },
+    {
+      "filename": "SDX-33_STATdx_plain_Periportal_Lucency_or_Edema33.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-33_STATdx_plain_Periportal_Lucency_or_Edema33.jpg",
+      "sha256": "da3b304188284c5cc5105560a32e86c210a2e45bc3419ff4e19399bd263b28fa",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-33"
+    },
+    {
+      "filename": "SDX-33_STATdx_annotated_Periportal_Lucency_or_Edema33_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-33_STATdx_annotated_Periportal_Lucency_or_Edema33_annot.jpg",
+      "sha256": "34b73c1f5ba86160512cf5c3c157c63a32fc71b1546bcfc20116c601b658fb35",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-33"
+    },
+    {
+      "filename": "SDX-34_STATdx_plain_Periportal_Lucency_or_Edema34.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-34_STATdx_plain_Periportal_Lucency_or_Edema34.jpg",
+      "sha256": "1ee0d9082fa01bdd60991471684d28364869fc0759093ebdce00916e94707b03",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "plain",
+      "masterImageId": "SDX-34"
+    },
+    {
+      "filename": "SDX-34_STATdx_annotated_Periportal_Lucency_or_Edema34_annot.jpg",
+      "source": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-34_STATdx_annotated_Periportal_Lucency_or_Edema34_annot.jpg",
+      "sha256": "c4b33dbb8db2f3de35e9390a59eafa15e2fa00232f829e5589ddc41b177d5d58",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "decoded": true,
+      "role": "annotated",
+      "masterImageId": "SDX-34"
+    },
+    {
+      "filename": "arrow_BC.png",
+      "source": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_BC.png",
+      "sha256": "e5975033289c9f5eeefb6f30851f2e6f85312a45235f375f5a23ef6cdbbf80ba",
+      "dimensions": [
+        16,
+        16
+      ],
+      "decoded": true,
+      "role": "auxiliaryCaptionIcon"
+    },
+    {
+      "filename": "arrow_BO.png",
+      "source": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_BO.png",
+      "sha256": "db8cdb16f2b3e502bd1e276f2fd2c93d61a61b4050a7b2fb7d0a207d38c6f98e",
+      "dimensions": [
+        16,
+        16
+      ],
+      "decoded": true,
+      "role": "auxiliaryCaptionIcon"
+    },
+    {
+      "filename": "arrow_BS.png",
+      "source": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_BS.png",
+      "sha256": "38a54de980739ce7812f830c8f00bcb948e317665c06bbb0e8210b292bc378c9",
+      "dimensions": [
+        16,
+        16
+      ],
+      "decoded": true,
+      "role": "auxiliaryCaptionIcon"
+    },
+    {
+      "filename": "arrow_CC.png",
+      "source": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_CC.png",
+      "sha256": "b259f83e1d117202e41f44cee262964f9de6f8e1f86574a97c081e8f037df3a1",
+      "dimensions": [
+        16,
+        16
+      ],
+      "decoded": true,
+      "role": "auxiliaryCaptionIcon"
+    },
+    {
+      "filename": "arrow_CO.png",
+      "source": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_CO.png",
+      "sha256": "5ea04b2c9a9e721df0bebd2e61667995691fa6504cbe6ced0dbc195f6e0d71cb",
+      "dimensions": [
+        16,
+        16
+      ],
+      "decoded": true,
+      "role": "auxiliaryCaptionIcon"
+    },
+    {
+      "filename": "arrow_CS.png",
+      "source": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_CS.png",
+      "sha256": "d180be252c1c250d82f803b6721817abdf3b924d807ad910f6d3b884ed02ae3e",
+      "dimensions": [
+        16,
+        16
+      ],
+      "decoded": true,
+      "role": "auxiliaryCaptionIcon"
+    },
+    {
+      "filename": "arrow_WC.png",
+      "source": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_WC.png",
+      "sha256": "06b8711689fda5d345a0c70d6ba533e20acd0387df56f0aeb30e6a864e0b5f3e",
+      "dimensions": [
+        16,
+        16
+      ],
+      "decoded": true,
+      "role": "auxiliaryCaptionIcon"
+    },
+    {
+      "filename": "arrow_WO.png",
+      "source": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_WO.png",
+      "sha256": "3bef0e607f892e60c6e3e2f669bdb818fc7bf254413f0253c75d96fd6103aae8",
+      "dimensions": [
+        16,
+        16
+      ],
+      "decoded": true,
+      "role": "auxiliaryCaptionIcon"
+    },
+    {
+      "filename": "arrow_WS.png",
+      "source": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_WS.png",
+      "sha256": "143f942bc894ba06b3b59a83119b7e85ca323e43d42ac4f79588c3992be4b5cb",
+      "dimensions": [
+        16,
+        16
+      ],
+      "decoded": true,
+      "role": "auxiliaryCaptionIcon"
+    }
+  ],
+  "missingCaptionIcons": [],
+  "diagnosticCount": 96,
+  "iconCount": 9,
+  "nearestLiveComparisons": [
+    {
+      "masterImageId": "RP-01",
+      "filename": "RP-01_RadPrimer_plain_Periportal_Lesion1.jpg",
+      "nearest": [
+        {
+          "filename": "Child_Abuse,_Metaphyseal_Fracture6.jpg",
+          "entryIds": [
+            "1777895397964"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 72
+        },
+        {
+          "filename": "USCirrhosis4.jpg",
+          "entryIds": [
+            "1774312720966"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 73
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-02",
+      "filename": "RP-02_RadPrimer_plain_Periportal_Lesion2.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-04_STATdx_plain_SDX-04_STATdx_image_04_plain_81e107d1.jpg",
+          "entryIds": [
+            "1787797120397"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 87
+        },
+        {
+          "filename": "Hepatic_Adenoma26.jpg",
+          "entryIds": [
+            "1777601408274"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 88
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-03",
+      "filename": "RP-03_RadPrimer_plain_Periportal_Lesion3.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-48_STATdx_plain_Pelvic_Inflammatory_Disease48.jpg",
+          "entryIds": [
+            "1786844880610"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 85
+        },
+        {
+          "filename": "RP-03_RadPrimer_plain_AdnexalOvarian_Torsion3.jpg",
+          "entryIds": [
+            "1786843853199"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 90
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-04",
+      "filename": "RP-04_RadPrimer_plain_Periportal_Lesion4.jpg",
+      "nearest": [
+        {
+          "filename": "USacuteCholecystitis2.jpg",
+          "entryIds": [
+            "1773630899142"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 79
+        },
+        {
+          "filename": "Stress_Fracture,_Ankle_and_Foot3.jpg",
+          "entryIds": [
+            "1780190727688"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 84
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-05",
+      "filename": "RP-05_RadPrimer_plain_Periportal_Lesion5.jpg",
+      "nearest": [
+        {
+          "filename": "USacuteCholecystitis5.jpg",
+          "entryIds": [
+            "1773630899140"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 72
+        },
+        {
+          "filename": "SDX-09_STATdx_plain_Scalp_and_Skull_Injuries9.jpg",
+          "entryIds": [
+            "1782779858263"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 74
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-06",
+      "filename": "RP-06_RadPrimer_plain_Periportal_Lesion6.jpg",
+      "nearest": [
+        {
+          "filename": "USbiliaryductaldilation4.jpg",
+          "entryIds": [
+            "1774265241592"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 85
+        },
+        {
+          "filename": "SDX-10_STATdx_plain_Scalp_and_Skull_Injuries10.jpg",
+          "entryIds": [
+            "1782779858263"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 85
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-07",
+      "filename": "RP-07_RadPrimer_plain_Periportal_Lesion7.jpg",
+      "nearest": [
+        {
+          "filename": "USCirrhosis7.jpg",
+          "entryIds": [
+            "1774312720968"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 94
+        },
+        {
+          "filename": "paste-90845fbe6bcfda2e9183fadf10cc570552253a74.jpg",
+          "entryIds": [
+            "1776907757557"
+          ],
+          "dimensions": [
+            553,
+            365
+          ],
+          "dhashDistance": 101
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-08",
+      "filename": "RP-08_RadPrimer_plain_Periportal_Lesion8.jpg",
+      "nearest": [
+        {
+          "filename": "RP-04_RadPrimer_plain_Ovarian_Teratoma4.jpg",
+          "entryIds": [
+            "1786845451684"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 88
+        },
+        {
+          "filename": "RP-04_RadPrimer_plain_Hemorrhagic_Cyst4.jpg",
+          "entryIds": [
+            "1786846399486"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 88
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-09",
+      "filename": "RP-09_RadPrimer_plain_Periportal_Lesion9.jpg",
+      "nearest": [
+        {
+          "filename": "pancreatitisandcomplications9.jpg",
+          "entryIds": [
+            "1772920587007"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 82
+        },
+        {
+          "filename": "USHepatocellularCarcinoma17.jpg",
+          "entryIds": [
+            "1774483006793"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 85
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-10",
+      "filename": "RP-10_RadPrimer_plain_Periportal_Lesion10.jpg",
+      "nearest": [
+        {
+          "filename": "USPancreas4.jpg",
+          "entryIds": [
+            "1774313276030"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 80
+        },
+        {
+          "filename": "USUrolithiasis2.jpg",
+          "entryIds": [
+            "1774303848332"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 81
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-11",
+      "filename": "RP-11_RadPrimer_plain_Periportal_Lesion11.jpg",
+      "nearest": [
+        {
+          "filename": "Hepatic_Adenoma26.jpg",
+          "entryIds": [
+            "1777601408274"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 72
+        },
+        {
+          "filename": "USbiliaryductaldilation2.jpg",
+          "entryIds": [
+            "1774265241590"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 74
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-12",
+      "filename": "RP-12_RadPrimer_plain_Periportal_Lesion12.jpg",
+      "nearest": [
+        {
+          "filename": "Fracture_Healing19.jpg",
+          "entryIds": [
+            "1780009335027"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 72
+        },
+        {
+          "filename": "Child_Abuse,_Metaphyseal_Fracture7.jpg",
+          "entryIds": [
+            "1777895397960"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 75
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-13",
+      "filename": "RP-13_RadPrimer_plain_Periportal_Lesion13.jpg",
+      "nearest": [
+        {
+          "filename": "Pelvis_Stress_Fractures16.jpg",
+          "entryIds": [
+            "1780245428851"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 68
+        },
+        {
+          "filename": "RP-09_RadPrimer_plain_Hemorrhagic_Cyst9.jpg",
+          "entryIds": [
+            "1786846399490"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 77
+        }
+      ]
+    },
+    {
+      "masterImageId": "RP-14",
+      "filename": "RP-14_RadPrimer_plain_Periportal_Lesion14.jpg",
+      "nearest": [
+        {
+          "filename": "Child_Abuse,_Metaphyseal_Fracture6.jpg",
+          "entryIds": [
+            "1777895397964"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 71
+        },
+        {
+          "filename": "Child_Abuse,_Metaphyseal_Fracture5.jpg",
+          "entryIds": [
+            "1777895397963"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 79
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-01",
+      "filename": "SDX-01_STATdx_plain_Periportal_Lucency_or_Edema1.jpg",
+      "nearest": [
+        {
+          "filename": "Transient_Hepatic_Attenuation_or_Intensity_Difference_(THADs_and_THIDs)3.jpg",
+          "entryIds": [
+            "1777778693786"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 99
+        },
+        {
+          "filename": "appendicitis7.jpg",
+          "entryIds": [
+            "1771904372296",
+            "1771904372297"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 100
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-02",
+      "filename": "SDX-02_STATdx_plain_Periportal_Lucency_or_Edema2.jpg",
+      "nearest": [
+        {
+          "filename": "USPancreas1.jpg",
+          "entryIds": [
+            "1774313276027"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 85
+        },
+        {
+          "filename": "SDX-26_STATdx_plain_Focal_Hypervascular_Liver_Lesion26.jpg",
+          "entryIds": [
+            "1788919341887"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 86
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-03",
+      "filename": "SDX-03_STATdx_plain_Periportal_Lucency_or_Edema3.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-08_STATdx_plain_259a152d.jpg",
+          "entryIds": [
+            "1788581475645"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 69
+        },
+        {
+          "filename": "SDX-02_STATdx_plain_Cystic_Hepatic_Mass2.jpg",
+          "entryIds": [
+            "1788912163436"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 71
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-04",
+      "filename": "SDX-04_STATdx_plain_Periportal_Lucency_or_Edema4.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-11_STATdx_plain_Acute_Subdural_Hematoma11.jpg",
+          "entryIds": [
+            "1782785304771"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 87
+        },
+        {
+          "filename": "Hepatic_Adenoma6.jpg",
+          "entryIds": [
+            "1777601408270"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 92
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-05",
+      "filename": "SDX-05_STATdx_plain_Periportal_Lucency_or_Edema5.jpg",
+      "nearest": [
+        {
+          "filename": "Pelvis_Stress_Fractures16.jpg",
+          "entryIds": [
+            "1780245428851"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 84
+        },
+        {
+          "filename": "Child_Abuse,_Metaphyseal_Fracture7.jpg",
+          "entryIds": [
+            "1777895397960"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 90
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-06",
+      "filename": "SDX-06_STATdx_plain_Periportal_Lucency_or_Edema6.jpg",
+      "nearest": [
+        {
+          "filename": "USPancreas3.jpg",
+          "entryIds": [
+            "1774313276029"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 89
+        },
+        {
+          "filename": "SDX-01_STATdx_plain_Cystic_Hepatic_Mass1.jpg",
+          "entryIds": [
+            "1788912163435"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 89
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-07",
+      "filename": "SDX-07_STATdx_plain_Periportal_Lucency_or_Edema7.jpg",
+      "nearest": [
+        {
+          "filename": "Hepatic_Adenoma28.jpg",
+          "entryIds": [
+            "1777601408275"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 84
+        },
+        {
+          "filename": "SDX-28_STATdx_plain_Ovarian_Teratoma28.jpg",
+          "entryIds": [
+            "1786845451701"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 92
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-08",
+      "filename": "SDX-08_STATdx_plain_Periportal_Lucency_or_Edema8.jpg",
+      "nearest": [
+        {
+          "filename": "diverticulitis19.jpg",
+          "entryIds": [
+            "1772797354893"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 57
+        },
+        {
+          "filename": "diverticulitis18.jpg",
+          "entryIds": [
+            "1772797354893"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 69
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-09",
+      "filename": "SDX-09_STATdx_plain_Periportal_Lucency_or_Edema9.jpg",
+      "nearest": [
+        {
+          "filename": "diverticulitis19.jpg",
+          "entryIds": [
+            "1772797354893"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 61
+        },
+        {
+          "filename": "diverticulitis17.jpg",
+          "entryIds": [
+            "1772797354893"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 71
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-10",
+      "filename": "SDX-10_STATdx_plain_Periportal_Lucency_or_Edema10.jpg",
+      "nearest": [
+        {
+          "filename": "RP-02_RadPrimer_plain_Testicular_TorsionInfarction2.jpg",
+          "entryIds": [
+            "1785987020183"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 66
+        },
+        {
+          "filename": "SDX-19_STATdx_plain_d8288460.jpg",
+          "entryIds": [
+            "1788581475651"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 66
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-11",
+      "filename": "SDX-11_STATdx_plain_Periportal_Lucency_or_Edema11.jpg",
+      "nearest": [
+        {
+          "filename": "Fracture_Healing16.jpg",
+          "entryIds": [
+            "1780009335025"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 68
+        },
+        {
+          "filename": "Child_Abuse,_Metaphyseal_Fracture4.jpg",
+          "entryIds": [
+            "1777895397959"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 70
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-12",
+      "filename": "SDX-12_STATdx_plain_Periportal_Lucency_or_Edema12.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-28_STATdx_plain_Pelvic_Inflammatory_Disease28.jpg",
+          "entryIds": [
+            "1786844880603"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 94
+        },
+        {
+          "filename": "SDX-03_STATdx_plain_Epidural_Hematoma,_Classic3.jpg",
+          "entryIds": [
+            "1782779140013"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 95
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-13",
+      "filename": "SDX-13_STATdx_plain_Periportal_Lucency_or_Edema13.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-12_STATdx_plain_Cystic_Hepatic_Mass12.jpg",
+          "entryIds": [
+            "1788912163443"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 80
+        },
+        {
+          "filename": "appendicitis17.jpg",
+          "entryIds": [
+            "1771904372311",
+            "1771904372312"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 91
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-14",
+      "filename": "SDX-14_STATdx_plain_Periportal_Lucency_or_Edema14.jpg",
+      "nearest": [
+        {
+          "filename": "ColIleusOlgi9.jpg",
+          "entryIds": [
+            "1772287219957"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 95
+        },
+        {
+          "filename": "USacuteCholecystitis6.jpg",
+          "entryIds": [
+            "1773630899140"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 96
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-15",
+      "filename": "SDX-15_STATdx_plain_Periportal_Lucency_or_Edema15.jpg",
+      "nearest": [
+        {
+          "filename": "Child_Abuse,_Metaphyseal_Fracture9.jpg",
+          "entryIds": [
+            "1777895397965"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 75
+        },
+        {
+          "filename": "diverticulitis19.jpg",
+          "entryIds": [
+            "1772797354893"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 76
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-16",
+      "filename": "SDX-16_STATdx_plain_Periportal_Lucency_or_Edema16.jpg",
+      "nearest": [
+        {
+          "filename": "Physeal_Fractures5.jpg",
+          "entryIds": [
+            "1777949113581",
+            "1778066038500"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 88
+        },
+        {
+          "filename": "Fracture_Healing19.jpg",
+          "entryIds": [
+            "1780009335027"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 88
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-17",
+      "filename": "SDX-17_STATdx_plain_Periportal_Lucency_or_Edema17.jpg",
+      "nearest": [
+        {
+          "filename": "PancreaticDuctalCarcinoma22.jpg",
+          "entryIds": [
+            "1774793677461"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 88
+        },
+        {
+          "filename": "SDX-18_STATdx_plain_Ovarian_Teratoma18.jpg",
+          "entryIds": [
+            "1786845451695"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 94
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-18",
+      "filename": "SDX-18_STATdx_plain_Periportal_Lucency_or_Edema18.jpg",
+      "nearest": [
+        {
+          "filename": "ColIleusOlgi1.jpg",
+          "entryIds": [
+            "1772287219958"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 84
+        },
+        {
+          "filename": "smallbowelobstruction22.jpg",
+          "entryIds": [
+            "1772454074521"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 86
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-19",
+      "filename": "SDX-19_STATdx_plain_Periportal_Lucency_or_Edema19.jpg",
+      "nearest": [
+        {
+          "filename": "RP-02_RadPrimer_plain_Spigelian_Hernia2.jpg",
+          "entryIds": [
+            "1788402002825"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 93
+        },
+        {
+          "filename": "appendicitis12_annot.jpg",
+          "entryIds": [
+            "1771904372305"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 95
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-20",
+      "filename": "SDX-20_STATdx_plain_Periportal_Lucency_or_Edema20.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-20_STATdx_plain_Testicular_Torsion20.jpg",
+          "entryIds": [
+            "1785987020203"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 95
+        },
+        {
+          "filename": "SDX-08_STATdx_plain_Ovarian_Torsion8.jpg",
+          "entryIds": [
+            "1786843853209"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 97
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-21",
+      "filename": "SDX-21_STATdx_plain_Periportal_Lucency_or_Edema21.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-15_STATdx_plain_Testicular_Torsion15.jpg",
+          "entryIds": [
+            "1785987020198"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 96
+        },
+        {
+          "filename": "smallbowelobstruction7.jpg",
+          "entryIds": [
+            "1772454074524"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 97
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-22",
+      "filename": "SDX-22_STATdx_plain_Periportal_Lucency_or_Edema22.jpg",
+      "nearest": [
+        {
+          "filename": "HepaticMetastasesandLymphoma17.jpg",
+          "entryIds": [
+            "1773604534750"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 97
+        },
+        {
+          "filename": "SDX-11_STATdx_plain_Focal_Hypervascular_Liver_Lesion11.jpg",
+          "entryIds": [
+            "1788919341875"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 97
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-23",
+      "filename": "SDX-23_STATdx_plain_Periportal_Lucency_or_Edema23.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-15_STATdx_plain_Cystic_Hepatic_Mass15.jpg",
+          "entryIds": [
+            "1788912163445"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 95
+        },
+        {
+          "filename": "diverticulitis19.jpg",
+          "entryIds": [
+            "1772797354893"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 97
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-24",
+      "filename": "SDX-24_STATdx_plain_Periportal_Lucency_or_Edema24.jpg",
+      "nearest": [
+        {
+          "filename": "RenalCyst10.jpg",
+          "entryIds": [
+            "1775211606421"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 90
+        },
+        {
+          "filename": "SDX-06_STATdx_plain_Acute_Subdural_Hematoma6.jpg",
+          "entryIds": [
+            "1782785304768"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 90
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-25",
+      "filename": "SDX-25_STATdx_plain_Periportal_Lucency_or_Edema25.jpg",
+      "nearest": [
+        {
+          "filename": "diverticulitis19.jpg",
+          "entryIds": [
+            "1772797354893"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 59
+        },
+        {
+          "filename": "diverticulitis18.jpg",
+          "entryIds": [
+            "1772797354893"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 69
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-26",
+      "filename": "SDX-26_STATdx_plain_Periportal_Lucency_or_Edema26.jpg",
+      "nearest": [
+        {
+          "filename": "Transient_Hepatic_Attenuation_or_Intensity_Difference_(THADs_and_THIDs)3.jpg",
+          "entryIds": [
+            "1777778693786"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 95
+        },
+        {
+          "filename": "USacuteCholecystitis2.jpg",
+          "entryIds": [
+            "1773630899142"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 96
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-27",
+      "filename": "SDX-27_STATdx_plain_Periportal_Lucency_or_Edema27.jpg",
+      "nearest": [
+        {
+          "filename": "RP-01_RadPrimer_plain_Widened_Hepatic_Fissures1.jpg",
+          "entryIds": [
+            "1789039972725"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 90
+        },
+        {
+          "filename": "SDX-14_STATdx_plain_Scalp_and_Skull_Injuries14.jpg",
+          "entryIds": [
+            "1782779858265"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 91
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-28",
+      "filename": "SDX-28_STATdx_plain_Periportal_Lucency_or_Edema28.jpg",
+      "nearest": [
+        {
+          "filename": "Pneumoperitoneum3.jpg",
+          "entryIds": [
+            "1772324204686"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 86
+        },
+        {
+          "filename": "SDX-08_STATdx_plain_Focal_Liver_Lesion_With_Hemorrhage8.jpg",
+          "entryIds": [
+            "1789265176684"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 86
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-29",
+      "filename": "SDX-29_STATdx_plain_Periportal_Lucency_or_Edema29.jpg",
+      "nearest": [
+        {
+          "filename": "hepatocellularCarcinoma4.jpg",
+          "entryIds": [
+            "1772927802568"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 81
+        },
+        {
+          "filename": "SDX-08_STATdx_plain_259a152d.jpg",
+          "entryIds": [
+            "1788581475645"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 83
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-30",
+      "filename": "SDX-30_STATdx_plain_Periportal_Lucency_or_Edema30.jpg",
+      "nearest": [
+        {
+          "filename": "SDX-27_STATdx_plain_Focal_Hypervascular_Liver_Lesion27.jpg",
+          "entryIds": [
+            "1788919341887"
+          ],
+          "dimensions": [
+            1000,
+            1000
+          ],
+          "dhashDistance": 87
+        },
+        {
+          "filename": "HepaticMetastasesandLymphoma23.jpg",
+          "entryIds": [
+            "1773604534757"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 92
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-31",
+      "filename": "SDX-31_STATdx_plain_Periportal_Lucency_or_Edema31.jpg",
+      "nearest": [
+        {
+          "filename": "Skull_Base_Trauma10.jpg",
+          "entryIds": [
+            "1776907757559"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 93
+        },
+        {
+          "filename": "paste-bcc92fc056f367529908a95417f31c651085aedf.png",
+          "entryIds": [
+            "1774922740627"
+          ],
+          "dimensions": [
+            1281,
+            1074
+          ],
+          "dhashDistance": 94
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-32",
+      "filename": "SDX-32_STATdx_plain_Periportal_Lucency_or_Edema32.jpg",
+      "nearest": [
+        {
+          "filename": "hepatocellularCarcinoma9.jpg",
+          "entryIds": [
+            "1772927802563"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 100
+        },
+        {
+          "filename": "HepaticMetastasesandLymphoma31.jpg",
+          "entryIds": [
+            "1773604534754"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 100
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-33",
+      "filename": "SDX-33_STATdx_plain_Periportal_Lucency_or_Edema33.jpg",
+      "nearest": [
+        {
+          "filename": "HepaticMetastasesandLymphoma25.jpg",
+          "entryIds": [
+            "1773604534753"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 11
+        },
+        {
+          "filename": "Hepatic_Adenoma13.jpg",
+          "entryIds": [
+            "1777601408271"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 92
+        }
+      ]
+    },
+    {
+      "masterImageId": "SDX-34",
+      "filename": "SDX-34_STATdx_plain_Periportal_Lucency_or_Edema34.jpg",
+      "nearest": [
+        {
+          "filename": "Hepatic_Adenoma6.jpg",
+          "entryIds": [
+            "1777601408270"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 89
+        },
+        {
+          "filename": "USCirrhosis7.jpg",
+          "entryIds": [
+            "1774312720968"
+          ],
+          "dimensions": [
+            900,
+            900
+          ],
+          "dhashDistance": 90
+        }
+      ]
+    }
+  ]
+}

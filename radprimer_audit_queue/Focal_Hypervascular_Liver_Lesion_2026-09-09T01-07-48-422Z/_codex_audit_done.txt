@@ -1,0 +1,22 @@
+DONE
+articleTitle: Focal Hypervascular Liver Lesion
+completedAt: 2026-09-09T22:53:38+00:00
+validation: passed
+captionRepair: exact original captions and arrow tags restored
+correctedNotes: 64
+imageOnlyRepairNotes: 26
+nonImageNotesUnchanged: 38
+sourceCaptionsVerified: 40
+captionArrowReferences: 122
+verifiedMediaFiles: 87
+columnCount: 22
+targetDeck: Corebook::GI::Liver::Focal Hypervascular Liver Lesion
+liveAnkiImportPerformed: false
+validationReport: _codex_review/validation_results.json
+corrected_cards.tsv SHA256: 0a19f97516ae1880f7a0138026826adfe6eb1ec95a3e3239b1482436b0674ed6
+corrected_cards_anki_import.tsv SHA256: e77e84c0e1dd38911377859639636ea9de24ecd9de6da9f689722d694962f4cb
+corrected_image_cards_anki_import.tsv SHA256: b0121718055a55f913534e22dfa994062bccf4d7184fb92f362fb6734d398d3c
+audit_report.md SHA256: 4f18c3b948e2cd959ecadc3aec3ed9d95e54c40a5c63cd567c2bd30014a3b76d
+caption_repair_report.md SHA256: dd9eab33631b0d15f30d28f95b01a1bd393ccbef4f459e46f33d6ac1adf7eceb
+caption_icon_integrity.json SHA256: a86f049166904c3f6ad00ad7f0d3454b7d551b5935c20cdfe9c99e6f9ce60327
+media_integrity.json SHA256: fd54cb248aac74173f0b1baaafe0d447cd8efaa7f823f9a0002a0704c10da78e

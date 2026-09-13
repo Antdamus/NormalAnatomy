@@ -1,0 +1,309 @@
+=== TOPIC ===
+PRIMARY TOPIC: Widespread Low Attenuation Within Liver
+SOURCE BASIS: RadPrimer + STATdx master source
+Purpose: curated upstream source package for later image-recognition learning. No cards or lecture are generated.
+
+=== CANONICAL RADPRIMER HIERARCHY ===
+All Categories > Basic > Gastrointestinal > Liver > Widespread Low Attenuation Within Liver
+deckPath: Corebook::GI::Liver::Widespread Low Attenuation Within Liver
+Routing is copied from metadata.json. Corebook is a deck root, not a claim of Core Radiology verification.
+
+=== SOURCE SELECTION ===
+[RadPrimer] Canonical hierarchy, ranked differential and article backbone.
+[Both] Essential Information is identical in the two extracts and is retained once.
+[STATdx] Selected image renditions cover the entire RadPrimer image set, with the same publisher IDs and visually matching images. Three distinct additional entries retain the CT-to-explant toxicity case and an alternate lymphoma example.
+23 images are selected; 21 literal duplicate renditions remain in the optional recovery registry. Each whole RadPrimer case group has an equivalent selected STATdx group.
+
+=== DIFFERENTIAL DIAGNOSIS [RadPrimer] ===
+- Common
+  - Steatosis (Fatty Liver)
+- Less Common
+  - Hepatitis
+  - Passive Hepatic Congestion
+  - Hepatic Infarction
+  - Toxic Hepatic Injury
+  - Hepatic Metastases and Lymphoma
+  - Hepatic Sarcoidosis
+  - Opportunistic Infections, Hepatic
+  - Hepatocellular Carcinoma (Infiltrative)
+  - Wilson Disease
+  - Radiation Hepatitis
+  - Budd-Chiari Syndrome
+  - Glycogen Storage Disease
+
+=== ESSENTIAL INFORMATION [Both] ===
+- Key Differential Diagnosis Issues
+  - Look for mass effect, usually absent in steatosis, present in neoplastic etiologies
+- Helpful Clues for Common Diagnoses
+  - Steatosis (Fatty Liver)
+    - Diffuse, geographic, or multifocal low attenuation
+    - Localizes around fissures and hepatic veins
+    - Blood vessels traverse low-density focus without mass effect
+    - Loss of signal intensity on opposed-phase GRE MR is best sign
+    - Can be seen after chemotherapy, postpartial or complete pancreatic resection
+- Helpful Clues for Less Common Diagnoses
+  - Hepatitis
+    - Viral and autoimmune hepatitis usually do not alter attenuation of liver unless there is sudden, massive hepatic necrosis
+      - Associated findings: Periportal edema, gallbladder wall edema
+      - Necrosis accompanied by ascites is bad prognostic sign
+  - Passive Hepatic Congestion
+    - Dilated and early enhancement (due to reflux) of inferior vena cava (IVC) and hepatic veins
+    - Heterogeneous, mottled, reticulated, mosaic hepatic parenchymal pattern (nutmeg liver)
+    - Hepatomegaly and ascites
+  - Toxic Hepatic Injury
+    - Ingestion of poisonous mushrooms, carbon tetrachloride, or excess of certain medications (e.g., acetaminophen)
+    - Can cause steatosis &/or necrosis
+  - Hepatic Metastases and Lymphoma
+    - Lymphoma commonly causes diffuse hepatic infiltration
+      - Other findings: Splenomegaly, subtle focal masses in liver and spleen, lymphadenopathy
+    - Breast, lung, and melanoma are particularly likely to cause diffuse metastases
+  - Hepatic Sarcoidosis
+    - Low-density, enlarged liver or innumerable small, hypodense granulomas
+      - Hepatic and splenic granulomas (focal hypodense lesions)
+    - Look for thoracic and abdominal lymphadenopathy
+  - Opportunistic Infections, Hepatic
+    - Viral, mycobacterial, etc., in AIDS patients or transplant recipients
+    - Usually small, discrete, hypodense or T2-hyperintense lesions representing microabscesses
+  - Hepatocellular Carcinoma (Infiltrative)
+    - May simulate steatosis on NECT
+    - Heterogeneity, hypervascular foci, and mass effect usually evident on CECT
+  - Wilson Disease
+    - Causes low, not high, attenuation
+  - Radiation Hepatitis
+    - Corresponding to field of external beam or distribution of radioactive embolic beads
+    - Sharply demarcated boundary
+  - Budd-Chiari Syndrome
+    - Areas of hepatocellular necrosis, usually in periphery
+    - Other findings: Occlusion of IVC &/or hepatic veins, caudate hypertrophy, collateral vessels
+
+=== INTEGRATED IMAGE-INTERPRETATION NOTES ===
+[Both] Steatosis: prioritize geographic/perivascular distribution, vessels passing without displacement and opposed-phase signal loss. STATdx images 1-4 retain different patterns and CT/MR confirmation. The arterial/venous comparison in STATdx image 2 shows transient adjacent enhancement.
+[Both] Hepatitis/toxicity: diffuse low attenuation alone can resemble steatosis; retain edema, ascites, volume loss and exposure context. STATdx image 6 illustrates fulminant hepatitis and image 9 the separate fatal alcohol/acetaminophen case.
+[STATdx] STATdx images 10-11 add a different patient whose CT appearance was indistinguishable from steatosis but whose explant showed massive hemorrhagic necrosis and acute inflammation. Subsequent ascites/liver failure and urgent transplantation are this case's clinical course. Preserve CT and gross specimen together.
+[Both] Vascular clues: distinguish early reflux into dilated hepatic veins/IVC and mottled congestion in STATdx image 7 from the flow defect and wedge-shaped infarcts in STATdx image 8. STATdx image 23 preserves the thrombosed hepatic veins, narrowed IVC, enlarged caudate and peripheral injury pattern.
+[Both] Infiltration can mimic fat on CT: the melanoma CT/US pair is STATdx images 12-13, and the noncontrast/contrast lymphoma pair is STATdx images 14-15. Their companion examinations expose focal lesions. [STATdx] Retain image 16 as a distinct lymphoma recognition example.
+[Both] Granulomatous and infectious considerations: the article describes hepatic/splenic granulomas and nodes for sarcoidosis, and microabscess-like lesions in immunocompromised patients. STATdx image 19 supplies granulomas/nodal context. Images 17-18 are a same-patient CT/MR nodules pair with no definite cause named in the supplied captions; preserve that uncertainty.
+[Both] The infiltrative-HCC differential includes heterogeneity, hypervascular foci and mass effect on contrast imaging. STATdx image 20 contributes a CT/diffusion/arterial/venous composite; restricted diffusion is caption-reported, and no ADC panel is supplied. Its caption does not explicitly confirm HCC.
+[Both] Wilson disease is listed as a low-attenuation differential. STATdx image 21 shows caption-supported severe steatosis/cirrhosis and an elastogram, but the caption leaves the disease unnamed. Treat a Wilson association as article context, not proven case identification.
+[Both] A sharply demarcated radiation field helps distinguish radiation hepatitis; STATdx image 22 preserves the post-treatment context. The type IV glycogen-storage case in STATdx image 24 explicitly includes an adenoma; keep that statement case-specific.
+
+=== MODALITY AND EVIDENCE LIMITS ===
+[Both] NECT may show fat-like low attenuation in steatosis, lymphoma and other infiltrative processes. Contrast imaging, ultrasound and MR provide the specific comparisons staged here.
+[Both] Ultrasound material comprises Doppler infarction assessment and the melanoma metastasis comparison. MR material includes chemical shift, T2 fat suppression, diffusion, enhancement phases and elastography. No numerical MR stiffness cutoff is supplied.
+[STATdx] Pathology support is a gross explant photograph and caption-described necrosis/inflammation; microscopic histology is not supplied. The source gives a transplant outcome, not general transplant criteria.
+No auditable Core Radiology evidence, nuclear-medicine protocol or formal management algorithm is supplied. Do not add unsupported mechanisms, histology, thresholds or treatment advice.
+
+=== ATOMIC CASE AND COMPOSITE GROUPS ===
+[STATdx] STATdx image 1: Preserve the geographic low attenuation and vessels crossing without mass effect. The repeated standalone view adds no phase, slice, or follow-up.
+[STATdx] STATdx image 2: Keep all four panels together: fat on NECT, opposed-phase dropout, arterial enhancement and venous blending.
+[STATdx] STATdx image 3, STATdx image 4: Same patient: CT foci surround undisplaced vessels; opposed-phase MR shows dropout. Normal in-phase MR is described but not separately staged.
+[STATdx] STATdx image 6: Preserve low attenuation, left-lobe volume loss, capsular retraction and ascites in the source case.
+[STATdx] STATdx image 7: Preserve early retrograde contrast in dilated hepatic veins/IVC and heterogeneous hepatic enhancement.
+[STATdx] STATdx image 8: Keep all four panels and the 63-year-old pancreatic-cancer/RUQ-pain context. Preserve absent Doppler flow, portal filling defect and arterial/venous wedge-shaped infarcts.
+[STATdx] STATdx image 9: Retain the fatal source case with hepatomegaly, heterogeneous low attenuation, periportal edema and ascites; do not conflate it with the separate transplant case.
+[STATdx] STATdx image 10, STATdx image 11: Same patient: CT mimicked steatosis; later ascites/liver failure led to urgent transplantation. Keep CT with the explanted liver demonstrating hemorrhagic necrosis. This is a case outcome, not a general treatment rule.
+[STATdx] STATdx image 12, STATdx image 13: Same patient: CT resembles steatosis but contains subtle lesions; US confirms numerous focal hypoechoic metastases without the expected diffuse increased echogenicity of steatosis.
+[STATdx] STATdx image 14, STATdx image 15: Same patient: NECT mimics fatty liver; CECT reveals numerous liver/splenic lesions. Biopsy-confirmed lymphoma belongs to this pair.
+[STATdx] STATdx image 16: Retain the distinct low-attenuation liver-and-spleen example for recognition reinforcement. No same-patient or follow-up relationship to images 14-15 is documented.
+[STATdx] STATdx image 17, STATdx image 18: Same 36-year-old patient with elevated liver enzymes: innumerable CT nodules and T2-bright MR nodules. Preserve the pair without asserting a proven infectious or granulomatous cause.
+[STATdx] STATdx image 19: Preserve small hepatic and larger splenic granulomas plus lymphadenopathy. This supports the article sarcoidosis differential; no biopsy confirmation is supplied.
+[STATdx] STATdx image 20: Keep all four panels: hypodense CT regions, caption-reported diffusion restriction, arterial heterogeneity and venous washout. HCC is an article-level interpretation, not an explicit case diagnosis in this caption.
+[STATdx] STATdx image 21: Keep all four panels. Caption supports severe steatosis and cirrhosis; the phrase the disease is unnamed. Do not claim independently confirmed Wilson disease or invent stiffness thresholds.
+[STATdx] STATdx image 22: Preserve straight field-boundary demarcation after radiotherapy for cholangiocarcinoma.
+[STATdx] STATdx image 23: Preserve thrombosed major hepatic veins, narrowed IVC, caudate hypertrophy and peripheral volume/attenuation loss from steatosis and necrosis.
+[STATdx] STATdx image 24: Retain the 28-year-old source case with hepatomegaly, low attenuation and a caption-labeled hepatic adenoma. Do not generalize the association or attenuation pattern to all glycogen storage diseases.
+
+=== SELECTED IMAGE LIBRARY ===
+Source-qualified filenames are download targets; source arrow-icon markup is preserved in the registry raw captions. Plain staged images were reviewed; annotated URLs are retained for later downloads.
+
+STATdx image 1 [STATdx]
+  Teaching group: Geographic steatosis
+  Image: SDX-01_STATdx_plain_Widespread_Low_Attenuation_Within_Liver1.jpg
+  Image_Annotated: SDX-01_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver1_annot.jpg
+  Caption: Axial CECT shows a geographic area of low attenuation throughout the anterior and medial segments. Note that hepatic vessels course through the low-density lesions without being displaced or occluded.
+  Context: Preserve the geographic low attenuation and vessels crossing without mass effect. The repeated standalone view adds no phase, slice, or follow-up.
+
+STATdx image 2 [STATdx]
+  Teaching group: Crescentic fat with transient adjacent enhancement
+  Image: SDX-02_STATdx_plain_Widespread_Low_Attenuation_Within_Liver2.jpg
+  Image_Annotated: SDX-02_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver2_annot.jpg
+  Caption: Axial NECT shows crescentic areas of fatty attenuation with signal dropout on out-of-phase image . Hypervascularity in the adjacent liver on arterial phase blends in on venous phase , consistent with transient hepatic intensity difference.
+  Context: Keep all four panels together: fat on NECT, opposed-phase dropout, arterial enhancement and venous blending.
+
+STATdx image 3 [STATdx]
+  Teaching group: Perivascular steatosis
+  Image: SDX-03_STATdx_plain_Widespread_Low_Attenuation_Within_Liver3.jpg
+  Image_Annotated: SDX-03_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver3_annot.jpg
+  Caption: Axial CECT shows multifocal, hypodense lesions that predominantly lie in a perivascular distribution, surrounding hepatic vessels . The vessels are not narrowed or displaced by the hypodense lesions.
+  Context: Same patient: CT foci surround undisplaced vessels; opposed-phase MR shows dropout. Normal in-phase MR is described but not separately staged.
+
+STATdx image 4 [STATdx]
+  Teaching group: Perivascular steatosis
+  Image: SDX-04_STATdx_plain_Widespread_Low_Attenuation_Within_Liver4.jpg
+  Image_Annotated: SDX-04_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver4_annot.jpg
+  Caption: Axial in-phase GRE MR in the same patient as STATdx image 3 was normal, while opposed-phase GRE MR shows signal dropout from each perivascular foci of steatosis , making this a confident diagnosis.
+  Context: Same patient: CT foci surround undisplaced vessels; opposed-phase MR shows dropout. Normal in-phase MR is described but not separately staged.
+
+STATdx image 6 [STATdx]
+  Teaching group: Acute fulminant hepatitis
+  Image: SDX-06_STATdx_plain_Widespread_Low_Attenuation_Within_Liver6.jpg
+  Image_Annotated: SDX-06_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver6_annot.jpg
+  Caption: Axial CECT shows low attenuation and volume loss of the left lobe in this patient with acute fulminant hepatitis. Note capsular retraction and ascites, both poor prognostic signs.
+  Context: Preserve low attenuation, left-lobe volume loss, capsular retraction and ascites in the source case.
+
+STATdx image 7 [STATdx]
+  Teaching group: Passive hepatic congestion
+  Image: SDX-07_STATdx_plain_Widespread_Low_Attenuation_Within_Liver7.jpg
+  Image_Annotated: SDX-07_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver7_annot.jpg
+  Caption: Axial arterial-phase CECT shows early retrograde opacification of dilated hepatic veins and the inferior vena cava due to reflux of injected contrast medium through the heart, a sign of impaired antegrade hepatic venous drainage. Heterogeneous enhancement of the liver is due to passive congestion.
+  Context: Preserve early retrograde contrast in dilated hepatic veins/IVC and heterogeneous hepatic enhancement.
+
+STATdx image 8 [STATdx]
+  Teaching group: Hepatic infarction
+  Image: SDX-08_STATdx_plain_Widespread_Low_Attenuation_Within_Liver8.jpg
+  Image_Annotated: SDX-08_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver8_annot.jpg
+  Caption: Doppler US in a 63-year-old man with pancreatic cancer and right upper quadrant pain shows absence of flow in a hypoechoic area . A new small filling defect in the portal vein and wedge-shaped areas on the arterial and venous CT phases represent infarcts.
+  Context: Keep all four panels and the 63-year-old pancreatic-cancer/RUQ-pain context. Preserve absent Doppler flow, portal filling defect and arterial/venous wedge-shaped infarcts.
+
+STATdx image 9 [STATdx]
+  Teaching group: Acute alcohol and acetaminophen toxicity
+  Image: SDX-09_STATdx_plain_Widespread_Low_Attenuation_Within_Liver9.jpg
+  Image_Annotated: SDX-09_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver9_annot.jpg
+  Caption: Axial CECT in a young man who died due to acute alcohol and acetaminophen toxicity shows diffuse hepatomegaly with heterogeneous low attenuation throughout. Periportal edema and ascites were also noted.
+  Context: Retain the fatal source case with hepatomegaly, heterogeneous low attenuation, periportal edema and ascites; do not conflate it with the separate transplant case.
+
+STATdx image 10 [STATdx]
+  Teaching group: Acetaminophen toxicity with massive hepatocellular necrosis
+  Image: SDX-10_STATdx_plain_Widespread_Low_Attenuation_Within_Liver10.jpg
+  Image_Annotated: SDX-10_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver10_annot.jpg
+  Caption: Axial CECT shows diffuse low attenuation throughout the liver due to acute massive hepatocellular necrosis, rather than steatosis, although imaging features are indistinguishable. This patient went on to develop ascites and signs of liver failure and required urgent liver transplantation. The explanted liver showed signs of massive hepatocellular necrosis and acute inflammation. Acetaminophen overdose is a relatively common cause of toxic hepatitis and can be fatal.
+  Context: Same patient: CT mimicked steatosis; later ascites/liver failure led to urgent transplantation. Keep CT with the explanted liver demonstrating hemorrhagic necrosis. This is a case outcome, not a general treatment rule.
+
+STATdx image 11 [STATdx]
+  Teaching group: Acetaminophen toxicity with massive hepatocellular necrosis
+  Image: SDX-11_STATdx_plain_Widespread_Low_Attenuation_Within_Liver11.jpg
+  Image_Annotated: SDX-11_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver11_annot.jpg
+  Caption: Gross photograph of explanted liver from the same patient as STATdx image 10 shows widespread hemorrhagic necrosis of hepatic parenchyma due to acute acetaminophen toxicity overdose, which is a relatively common cause of toxic hepatitis and can be fatal.
+  Context: Same patient: CT mimicked steatosis; later ascites/liver failure led to urgent transplantation. Keep CT with the explanted liver demonstrating hemorrhagic necrosis. This is a case outcome, not a general treatment rule.
+
+STATdx image 12 [STATdx]
+  Teaching group: Diffuse melanoma metastases
+  Image: SDX-12_STATdx_plain_Widespread_Low_Attenuation_Within_Liver12.jpg
+  Image_Annotated: SDX-12_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver12_annot.jpg
+  Caption: Axial CECT in a patient with melanoma and abnormal liver function tests shows diffuse low attenuation throughout the liver, suggestive of steatosis. In addition, there are several poorly defined, hypodense lesions .
+  Context: Same patient: CT resembles steatosis but contains subtle lesions; US confirms numerous focal hypoechoic metastases without the expected diffuse increased echogenicity of steatosis.
+
+STATdx image 13 [STATdx]
+  Teaching group: Diffuse melanoma metastases
+  Image: SDX-13_STATdx_plain_Widespread_Low_Attenuation_Within_Liver13.jpg
+  Image_Annotated: SDX-13_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver13_annot.jpg
+  Caption: Transverse US in the same patient as STATdx image 12 confirms innumerable focal, hypoechoic metastases with no evidence of the diffusely ↑ echogenicity that would be expected for steatosis. This represents diffuse hepatic melanoma metastases.
+  Context: Same patient: CT resembles steatosis but contains subtle lesions; US confirms numerous focal hypoechoic metastases without the expected diffuse increased echogenicity of steatosis.
+
+STATdx image 14 [STATdx]
+  Teaching group: Non-Hodgkin lymphoma
+  Image: SDX-14_STATdx_plain_Widespread_Low_Attenuation_Within_Liver14.jpg
+  Image_Annotated: SDX-14_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver14_annot.jpg
+  Caption: Axial NECT shows a large, diffusely low-attenuation liver that might be misinterpreted as being due to steatosis.
+  Context: Same patient: NECT mimics fatty liver; CECT reveals numerous liver/splenic lesions. Biopsy-confirmed lymphoma belongs to this pair.
+
+STATdx image 15 [STATdx]
+  Teaching group: Non-Hodgkin lymphoma
+  Image: SDX-15_STATdx_plain_Widespread_Low_Attenuation_Within_Liver15.jpg
+  Image_Annotated: SDX-15_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver15_annot.jpg
+  Caption: Axial CECT in the same patient as STATdx image 14 shows innumerable focal lesions in the liver and spleen. Liver biopsy confirmed non-Hodgkin lymphoma.
+  Context: Same patient: NECT mimics fatty liver; CECT reveals numerous liver/splenic lesions. Biopsy-confirmed lymphoma belongs to this pair.
+
+STATdx image 16 [STATdx]
+  Teaching group: Non-Hodgkin lymphoma, additional example
+  Image: SDX-16_STATdx_plain_Widespread_Low_Attenuation_Within_Liver16.jpg
+  Image_Annotated: SDX-16_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver16_annot.jpg
+  Caption: Axial NECT shows diffuse low attenuation of the liver and spleen due to non-Hodgkin lymphoma.
+  Context: Retain the distinct low-attenuation liver-and-spleen example for recognition reinforcement. No same-patient or follow-up relationship to images 14-15 is documented.
+
+STATdx image 17 [STATdx]
+  Teaching group: Multiple hepatic nodules: etiology not specified in captions
+  Image: SDX-17_STATdx_plain_Widespread_Low_Attenuation_Within_Liver17.jpg
+  Image_Annotated: SDX-17_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver17_annot.jpg
+  Caption: Axial NECT in a 36-year-old man with elevated liver enzymes shows hepatomegaly and innumerable small, hypoattenuating nodules throughout the liver.
+  Context: Same 36-year-old patient with elevated liver enzymes: innumerable CT nodules and T2-bright MR nodules. Preserve the pair without asserting a proven infectious or granulomatous cause.
+
+STATdx image 18 [STATdx]
+  Teaching group: Multiple hepatic nodules: etiology not specified in captions
+  Image: SDX-18_STATdx_plain_Widespread_Low_Attenuation_Within_Liver18.jpg
+  Image_Annotated: SDX-18_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver18_annot.jpg
+  Caption: Axial T2 FS MR in the same patient as STATdx image 17 shows multiple small, hyperintense nodules.
+  Context: Same 36-year-old patient with elevated liver enzymes: innumerable CT nodules and T2-bright MR nodules. Preserve the pair without asserting a proven infectious or granulomatous cause.
+
+STATdx image 19 [STATdx]
+  Teaching group: Hepatic/splenic granulomas with lymphadenopathy
+  Image: SDX-19_STATdx_plain_Widespread_Low_Attenuation_Within_Liver19.jpg
+  Image_Annotated: SDX-19_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver19_annot.jpg
+  Caption: Axial CECT shows diffuse low attenuation of the liver with subtle, very small granulomas in the liver and much larger, low-density granulomas in the spleen, + lymphadenopathy .
+  Context: Preserve small hepatic and larger splenic granulomas plus lymphadenopathy. This supports the article sarcoidosis differential; no biopsy confirmation is supplied.
+
+STATdx image 20 [STATdx]
+  Teaching group: Infiltrative tumor pattern: HCC in the article differential
+  Image: SDX-20_STATdx_plain_Widespread_Low_Attenuation_Within_Liver20.jpg
+  Image_Annotated: SDX-20_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver20_annot.jpg
+  Caption: Axial arterial-phase CT shows diffuse, hypodense areas in the liver . This area shows restricted diffusion on DWI MR , heterogeneous enhancement on arterial-phase C+ MR , and washout on venous-phase C+ MR .
+  Context: Keep all four panels: hypodense CT regions, caption-reported diffusion restriction, arterial heterogeneity and venous washout. HCC is an article-level interpretation, not an explicit case diagnosis in this caption.
+
+STATdx image 21 [STATdx]
+  Teaching group: Severe steatosis and cirrhosis; Wilson disease in article context
+  Image: SDX-21_STATdx_plain_Widespread_Low_Attenuation_Within_Liver21.jpg
+  Image_Annotated: SDX-21_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver21_annot.jpg
+  Caption: Axial NECT shows a diffusely hypodense liver . Axial in-phase MR shows slight nodular contour of the liver due to cirrhosis. There is signal dropout on out-of-phase MR , confirming severe steatosis, a common finding in the disease. MR elastogram shows ↑ stiffness in the liver, consistent with cirrhosis .
+  Context: Keep all four panels. Caption supports severe steatosis and cirrhosis; the phrase the disease is unnamed. Do not claim independently confirmed Wilson disease or invent stiffness thresholds.
+
+STATdx image 22 [STATdx]
+  Teaching group: Radiation hepatitis
+  Image: SDX-22_STATdx_plain_Widespread_Low_Attenuation_Within_Liver22.jpg
+  Image_Annotated: SDX-22_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver22_annot.jpg
+  Caption: Coronal CECT shows a broad zone of low attenuation through the inferior portion of the liver, sparing the superior region, with straight line demarcation following radiation therapy for cholangiocarcinoma.
+  Context: Preserve straight field-boundary demarcation after radiotherapy for cholangiocarcinoma.
+
+STATdx image 23 [STATdx]
+  Teaching group: Budd-Chiari pattern
+  Image: SDX-23_STATdx_plain_Widespread_Low_Attenuation_Within_Liver23.jpg
+  Image_Annotated: SDX-23_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver23_annot.jpg
+  Caption: Axial CECT shows hypertrophy of the caudate of liver, which is normal in attenuation (as compared with the spleen). The peripheral portions of the liver are ↓ in volume and attenuation due to a combination of steatosis and hepatocellular necrosis. The major hepatic veins are thrombosed , and the inferior vena cava is narrowed .
+  Context: Preserve thrombosed major hepatic veins, narrowed IVC, caudate hypertrophy and peripheral volume/attenuation loss from steatosis and necrosis.
+
+STATdx image 24 [STATdx]
+  Teaching group: Type IV glycogen storage disease
+  Image: SDX-24_STATdx_plain_Widespread_Low_Attenuation_Within_Liver24.jpg
+  Image_Annotated: SDX-24_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver24_annot.jpg
+  Caption: Coronal CECT in a 28-year-old man with type IV glycogen storage disease shows liver enlargement and diffusely low attenuation. Hepatic adenoma is noted.
+  Context: Retain the 28-year-old source case with hepatomegaly, low attenuation and a caption-labeled hepatic adenoma. Do not generalize the association or attenuation pattern to all glycogen storage diseases.
+
+=== OPTIONAL DUPLICATE RECOVERY INDEX ===
+RadPrimer image 1: same image as STATdx image 1; retained in the registry for recovery.
+RadPrimer image 2: same image as STATdx image 2; retained in the registry for recovery.
+RadPrimer image 3: same image as STATdx image 3; retained in the registry for recovery.
+RadPrimer image 4: same image as STATdx image 4; retained in the registry for recovery.
+RadPrimer image 5: same image as STATdx image 6; retained in the registry for recovery.
+RadPrimer image 6: same image as STATdx image 7; retained in the registry for recovery.
+RadPrimer image 7: same image as STATdx image 8; retained in the registry for recovery.
+RadPrimer image 8: same image as STATdx image 9; retained in the registry for recovery.
+RadPrimer image 9: same image as STATdx image 12; retained in the registry for recovery.
+RadPrimer image 10: same image as STATdx image 13; retained in the registry for recovery.
+RadPrimer image 11: same image as STATdx image 14; retained in the registry for recovery.
+RadPrimer image 12: same image as STATdx image 15; retained in the registry for recovery.
+RadPrimer image 13: same image as STATdx image 17; retained in the registry for recovery.
+RadPrimer image 14: same image as STATdx image 18; retained in the registry for recovery.
+RadPrimer image 15: same image as STATdx image 19; retained in the registry for recovery.
+RadPrimer image 16: same image as STATdx image 20; retained in the registry for recovery.
+RadPrimer image 17: same image as STATdx image 21; retained in the registry for recovery.
+RadPrimer image 18: same image as STATdx image 22; retained in the registry for recovery.
+RadPrimer image 19: same image as STATdx image 23; retained in the registry for recovery.
+RadPrimer image 20: same image as STATdx image 24; retained in the registry for recovery.
+STATdx image 5: same CT slice as STATdx image 1; the selected rendition preserves all teaching content.
+
+=== GENERATION GUARDRAILS ===
+Use only the selected library by default. Retain distinct same-disease images as reinforcement and keep companions/composite panels together. Use clean labels such as STATdx image 10 in prose; exact filenames and short IDs stay in traceability fields. Route future material through the canonical RadPrimer hierarchy above. No cards or lecture are part of this package.
+
+=== SOURCE ATTRIBUTION ===
+RadPrimer: https://app.radprimer.com/document/7825b51a-c690-4d68-b456-4d9ae4214f45/lesson/705cb353-308b-41a9-83be-1bc952b3885e
+STATdx: https://app.statdx.com/document/widespread-low-attenuation-within--/7825b51a-c690-4d68-b456-4d9ae4214f45?term=Widespread%20Low%20Attenuation%20Within%20Liver&searchType=documents&category=All&documentTypeFilters=all
+[Both] means the provided extracts agree; shared images are not independent confirmation. Core cross-check: not verified from supplied evidence.

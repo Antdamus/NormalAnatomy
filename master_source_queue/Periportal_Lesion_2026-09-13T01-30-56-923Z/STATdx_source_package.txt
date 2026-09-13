@@ -1,0 +1,337 @@
+=== TOPIC ===
+PRIMARY TOPIC: Periportal Lucency or Edema
+CENTERING TOPIC FOR THIS CHAT: Periportal Lucency or Edema
+USE THIS AS THE CHAT TITLE / WORKING TOPIC LABEL: Periportal Lucency or Edema
+
+=== STATDX BREADCRUMB ===
+Gastrointestinal > Differential Diagnosis > Liver > Generic Imaging Patterns > Periportal Lucency or Edema
+
+
+
+=== CORE VALIDATION INPUT ===
+Pathway A - Core Radiology cross-check available or requested.
+Core section/chapter/pages: it might be in multiple regions of the book so you are going to have to look through it
+Use Core information only if it is actually supplied in this prompt/user context or retrievable from ChatGPT project/source files in the current run.
+If ChatGPT can find the relevant Core pages/section in project/source files, it may use them without asking the user to provide page numbers; it must state the retrieved Core source basis when visible.
+If Core cannot be retrieved, proceed from the provided article only and label the deck RadPrimer-only/STATdx-only; do not fabricate Core details or Core + article synthesis.
+
+=== PROMPT ===
+Source-comparison extraction only.
+Do not generate a narrative or cards from this package.
+Preserve article hierarchy, source text, image filenames, selected image captions, arrows/annotations, source attribution, Core evidence if present, and Anki/breadcrumb metadata when available.
+
+=== ARTICLE ===
+TITLE: Periportal Lucency or Edema
+
+ESSENTIAL INFORMATION
+- Key Differential Diagnosis Issues
+  - Any process that increases production of hepatic extracellular fluid, or impairs capacity for lymphatics to carry this away, will result in periportal lymphedema
+    - Loose areolar tissue in portal triads is easily distended by fluid
+    - Common pathway for spread of fluid
+      - Fluid may be lymph, bile, or blood
+  - Common pitfalls
+    - Mistaking periportal fluid for dilated bile ducts
+    - Mistaking clotted portal vein branches for dilated ducts
+  - MRCP or ERCP best tool for distinguishing among etiologies for branching, nonenhancing structures
+- Helpful Clues for Common Diagnoses
+  - Dilated Bile Ducts (Mimic)
+    - Lie on only 1 side of portal triad
+    - Periportal lucency, by definition, surrounds portal triad on all sides
+    - Biliary obstruction may also cause periportal edema
+    - Intrahepatic bile ducts should be > 1/2 diameter of adjacent portal vein branch
+  - Systemic Hypervolemia
+    - Overhydration, as in rapid fluid resuscitation of trauma patients
+    - Liver produces lymph faster than lymphatics can carry it away
+    - Look for distention of inferior vena cava (IVC)
+  - Passive Hepatic Congestion
+    - e.g., congestive heart failure, constrictive pericarditis, tricuspid valve incompetence
+    - Results in periportal lymphedema
+    - Look for distention and reflux of vascular contrast medium into hepatic veins and IVC on arterial-phase CECT
+  - Hepatitis (Acute)
+    - Any cause (alcohol, viral, toxic)
+    - Often results in striking periportal edema &/or gallbladder wall edema
+      - Any or all of these may cause or simulate periportal edema
+  - Cholangitis
+    - Any form (ascending, primary sclerosing, recurrent pyogenic, AIDS, chemotherapy)
+    - Bile duct wall thickening, periductal edema, and possibly ductal obstruction
+    - Ascending cholangitis
+      - Caused by passage of common duct stone
+      - Or other etiology for incompetence of sphincter of Oddi
+      - Allows reflux of duodenal contents into common bile duct (CBD)
+      - Bile duct walls appear thickened on T1 and T2 MR with progressive hyperenhancement of duct walls on T1 C+ MR
+    - Primary sclerosing cholangitis
+      - Causes irregular strictures and upstream dilation of intra- and extrahepatic ducts
+        - Multifocal "beaded" strictures of intra- and extrahepatic ducts with intervening sites of dilated and normal ducts
+      - Biliary dilation may simulate or cause periportal edema
+      - Bile duct wall thickening and periportal edema are often striking on US
+      - Usually associated with ulcerative colitis
+    - Recurrent pyogenic cholangitis
+      - Typically encountered in malnourished patients from Asia
+      - Intra- and extrahepatic bile ducts grossly distended with pus and calculi
+      - Periportal edema may coexist with biliary ductal dilation
+    - AIDS-related cholangitis
+      - Caused by opportunistic infection of bile ducts
+      - Imaging findings may simulate primary sclerosis cholangitis
+      - Papillary stenosis with tapered narrowing of distal CBD and proximal CBD dilatation
+      - Dilated intrahepatic ducts with CBD thickening and periductal hyper-/hypoechoic areas on US
+      - MR/MRCP very sensitive (85-100%) and specific (92-100%)
+    - Chemotherapy-induced cholangitis
+      - Findings similar to primary sclerosing cholangitis with stenosis or complete obstruction of involved ducts
+      - Affected bile ducts may show periductal edema, mural thickening, and enhancement with adjacent fat stranding in hepatoduodenal ligament
+      - Usually limited to patients receiving chemotherapy through direct hepatic artery catheterization and infusion
+  - Posttransplant Liver
+    - Lymphatics are severed during transplantation
+      - Lymphatics reform connections, but this takes some time
+      - Periportal lymphedema is common and may persist for weeks; not sign of rejection
+    - Biliary necrosis may occur as complication of transplantation
+      - Bile ducts receive only arterial supply; hepatic arterial stenosis or thrombosis causes biliary necrosis before hepatic infarction
+      - Often takes form of intrahepatic fluid collections paralleling bile ducts; may be branching or spherical
+  - Hepatic Trauma
+    - Blood may spread along portal tracts in branching pattern
+      - May be mistaken for dilated bile ducts or deep parenchymal laceration
+      - Periportal blood is almost never only sign of hepatic trauma; usually limited to lobe of liver with intrahepatic hematoma or laceration
+- Helpful Clues for Less Common Diagnoses
+  - Porta Hepatis Lymphadenopathy
+    - May result in lymphedema
+  - Cirrhosis
+    - May cause periportal edema &/or simulate periportal edema
+      - May cause peribiliary cysts (dilated peribiliary glands)
+    - May cause portal vein obstruction
+      - Look for nonenhancing branching structures in expected path of portal vein branches
+      - Cavernous transformation of portal vein (collaterals) may also be mistaken for edema on NECT (but enhance like other vessels on CECT)
+  - Portal Vein Thrombosis
+    - Portal vein branches that do not enhance on CECT are likely to be misinterpreted as dilated bile ducts or periportal edema
+    - Thrombosis may result from cirrhosis (portal hypertension), hypercoagulable condition, or portal vein thrombophlebitis (e.g., from diverticulitis)
+  - Steatosis (Fatty Liver)
+    - May have perivascular distribution, simulate edema
+      - More likely to be mistaken on CT; steatosis should not be mistaken for fluid on US or MR
+    - Often appears spherical when sectioned in short axis in dome of liver
+  - Hepatocellular Carcinoma
+    - May result in nonspecific lymphedema &/or invade or obstruct bile ducts or portal vein
+    - Prone to invade portal vein
+      - Look for distention of portal vein, enhancing tumor thrombus, contiguity with parenchymal tumor
+  - Cholangiocarcinoma
+    - Peripheral or hilar
+    - Possible etiologies of branching, nonenhancing structures
+      - Dilated bile ducts
+      - Periportal edema
+      - Thickened bile duct walls
+  - Hepatic Metastases and Lymphoma
+    - Any hepatic malignancy may result in excess lymphatic output, periportal edema
+    - Vascular or biliary encasement by periportal hepatic mass without vascular occlusion or thrombosis may occur
+    - Tumors may also obstruct intrahepatic bile ducts, which may be difficult to distinguish from periportal edema in some cases
+  - Hepatic Inflammatory Pseudotumor
+    - Small mass in hepatic hilum appearing identical to Klatskin tumor (short-segment stricture with dilation of ducts upstream) (lymphoplasmacytic type)
+    - Look for imaging, clinical, and laboratory (serum IgG4 levels) evidence of IgG4-related sclerosing disease
+    - Often multisystem disorder (e.g., autoimmune pancreatitis, cholangitis, pneumonitis, etc.)
+
+
+=== IMAGES (selected; original numbering preserved) ===
+
+IMAGE_01: 1
+  Periportal_Lucency_or_Edema1
+    Image: Periportal_Lucency_or_Edema1.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema1_annot.jpg
+    Caption: Axial T2 FS MR shows dilated intrahepatic bile ducts <img src="arrow_WS.png"> running parallel to, and on one side only of, the portal venous branches <img src="arrow_WC.png"> in a patient with an obstructing ductal stone.
+
+IMAGE_02: 2
+  Periportal_Lucency_or_Edema2
+    Image: Periportal_Lucency_or_Edema2.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema2_annot.jpg
+    Caption: Axial CECT shows dilated intrahepatic bile ducts <img src="arrow_WS.png">  due to carcinoma of the pancreatic head. The ducts lie on only one side (usually anteromedial) of the portal vein <img src="arrow_WC.png"> branches.
+
+IMAGE_03: 3
+  Periportal_Lucency_or_Edema3
+    Image: Periportal_Lucency_or_Edema3.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema3_annot.jpg
+    Caption: Axial CECT in a healthy 22-year-old woman shows a collar of low-density edema <img src="arrow_BS.png"> surrounding portal venous branches caused by overhydration following motor vehicle crash. Note distended inferior vena cava (IVC), also due to hypervolemia.
+
+IMAGE_04: 4
+  Periportal_Lucency_or_Edema4
+    Image: Periportal_Lucency_or_Edema4.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema4_annot.jpg
+    Caption: Axial CECT shows a collar of low-density lymphedema <img src="arrow_BS.png"> surrounding portal venous branches due to IV hydration in an 18-year-old boy following trauma. Note distended IVC <img src="arrow_BC.png"> as an additional sign of overhydration and hypervolemia.
+
+IMAGE_05: 5
+  Periportal_Lucency_or_Edema5
+    Image: Periportal_Lucency_or_Edema5.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema5_annot.jpg
+    Caption: Axial CECT shows a collar of low density <img src="arrow_BS.png"> surrounding the portal venous branches in a healthy 18-year-old boy who had aggressive IV fluid resuscitation following a motor vehicle crash.
+
+IMAGE_06: 6
+  Periportal_Lucency_or_Edema6
+    Image: Periportal_Lucency_or_Edema6.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema6_annot.jpg
+    Caption: Axial CECT in a 78-year-old woman with congestive heart failure shows periportal edema <img src="arrow_WS.png"> and a distended IVC <img src="arrow_WC.png">.
+
+IMAGE_07: 7
+  Periportal_Lucency_or_Edema7
+    Image: Periportal_Lucency_or_Edema7.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema7_annot.jpg
+    Caption: Axial CECT shows distention of the hepatic veins <img src="arrow_BS.png"> and IVC with perivascular edema in this 78-year-old woman with congestive heart failure.
+
+IMAGE_08: 8
+  Periportal_Lucency_or_Edema8
+    Image: Periportal_Lucency_or_Edema8.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema8_annot.jpg
+    Caption: Axial CECT in a 35-year-old man shows a collar of periportal lymphedema <img src="arrow_BS.png"> and porta hepatic lymphadenopathy <img src="arrow_BO.png"> due to acute viral hepatitis.
+
+IMAGE_09: 9
+  Periportal_Lucency_or_Edema9
+    Image: Periportal_Lucency_or_Edema9.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema9_annot.jpg
+    Caption: Axial CECT in the same patient shows marked gallbladder wall edema <img src="arrow_BC.png"> and a small amount of ascites.
+
+IMAGE_10: 10
+  Periportal_Lucency_or_Edema10
+    Image: Periportal_Lucency_or_Edema10.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema10_annot.jpg
+    Caption: Axial CECT shows multiple hepatic abscesses <img src="arrow_WS.png"> with contrast-opacified walls. The abscesses were in communication with pus-filled ducts from ascending cholangitis.
+
+IMAGE_11: 11
+  Periportal_Lucency_or_Edema11
+    Image: Periportal_Lucency_or_Edema11.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema11_annot.jpg
+    Caption: AP transhepatic cholangiography shows markedly irregular contour and arborization of the intrahepatic ducts and partial filling of abscess cavities <img src="arrow_WS.png">.
+
+IMAGE_12: 12
+  Periportal_Lucency_or_Edema12
+    Image: Periportal_Lucency_or_Edema12.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema12_annot.jpg
+    Caption: Axial CECT shows periportal edema <img src="arrow_WS.png">, mild dilation of ducts <img src="arrow_WC.png">, and a pyogenic abscess <img src="arrow_WO.png">, all due to ascending cholangitis following Whipple resection for pancreatic carcinoma.
+
+IMAGE_13: 13
+  Periportal_Lucency_or_Edema13
+    Image: Periportal_Lucency_or_Edema13.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema13_annot.jpg
+    Caption: Axial CECT shows periportal lymphedema <img src="arrow_WS.png"> and gas within mildly dilated ducts <img src="arrow_WC.png">, plus a liver abscess <img src="arrow_WO.png">, all due to ascending cholangitis following Whipple resection for pancreatic carcinoma.
+
+IMAGE_14: 14
+  Periportal_Lucency_or_Edema14
+    Image: Periportal_Lucency_or_Edema14.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema14_annot.jpg
+    Caption: Coronal MRCP shows irregular arborization of the intrahepatic ducts with a beaded appearance of some segments. In this 60-year-old man with ulcerative colitis and primary sclerosing cholangitis, portions of the left hepatic ducts <img src="arrow_WS.png"> are more dilated than the common duct.
+
+IMAGE_15: 15
+  Periportal_Lucency_or_Edema15
+    Image: Periportal_Lucency_or_Edema15.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema15_annot.jpg
+    Caption: Axial T1 FS MR in the same patient shows low-intensity fibrosis <img src="arrow_BS.png"> paralleling the portal veins and mimicking dilated bile ducts.
+
+IMAGE_16: 16
+  Periportal_Lucency_or_Edema16
+    Image: Periportal_Lucency_or_Edema16.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema16_annot.jpg
+    Caption: ERCP shows abnormal arborization of intrahepatic ducts that terminate abruptly <img src="arrow_WS.png">. The common duct is dilated due to a stricture of the distal common bile duct  <img src="arrow_WC.png">.
+
+IMAGE_17: 17
+  Periportal_Lucency_or_Edema17
+    Image: Periportal_Lucency_or_Edema17.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema17_annot.jpg
+    Caption: Coronal T2 MR shows dilated bile ducts <img src="arrow_WS.png"> with the left lobe ducts dilated out of proportion to the right lobe. Within the dilated left lobe ducts, there are numerous and large filling defects, representing calculi <img src="arrow_WC.png">.
+
+IMAGE_18: 18
+  Periportal_Lucency_or_Edema18
+    Image: Periportal_Lucency_or_Edema18.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema18_annot.jpg
+    Caption: Axial T2 FS MR in an older Asian woman shows dilated intrahepatic bile ducts <img src="arrow_WS.png"> containing innumerable calculi <img src="arrow_WC.png">. Recurrent pyogenic cholangitis can cause periportal edema in addition to massively dilated bile ducts.
+
+IMAGE_19: 19
+  Periportal_Lucency_or_Edema19
+    Image: Periportal_Lucency_or_Edema19.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema19_annot.jpg
+    Caption: Axial CECT in a 45-year-old Asian woman with recurrent bouts of cholangitis and sepsis shows grossly dilated bile ducts <img src="arrow_WS.png">, some of which contain gas <img src="arrow_WC.png">, plus a hepatic abscess <img src="arrow_WO.png">.
+
+IMAGE_20: 20
+  Periportal_Lucency_or_Edema20
+    Image: Periportal_Lucency_or_Edema20.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema20_annot.jpg
+    Caption: Coronal oblique MRCP shows dilation and irregular arborization of the bile ducts and a stricture <img src="arrow_WS.png"> of the distal common bile duct due to AIDS-related cholangiopathy. Similar findings could be seen with primary sclerosing cholangitis.
+
+IMAGE_21: 21
+  Periportal_Lucency_or_Edema21
+    Image: Periportal_Lucency_or_Edema21.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema21_annot.jpg
+    Caption: Axial CECT shows surgical clips <img src="arrow_BO.png"> from right hepatic lobectomy (for metastases). Irregular dilation of intrahepatic ducts <img src="arrow_BC.png"> is the result of hepatic intraarterial chemotherapy.
+
+IMAGE_22: 22
+  Periportal_Lucency_or_Edema22
+    Image: Periportal_Lucency_or_Edema22.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema22_annot.jpg
+    Caption: Axial CECT shows moderate, irregular dilation of intrahepatic ducts <img src="arrow_BS.png"> from prior hepatic arterial chemotherapy.
+
+IMAGE_23: 23
+  Periportal_Lucency_or_Edema23
+    Image: Periportal_Lucency_or_Edema23.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema23_annot.jpg
+    Caption: Axial CECT shows dilated intrahepatic ducts with indistinct walls <img src="arrow_WS.png"> due to biliary necrosis. Intrahepatic bilomas <img src="arrow_WC.png"> and ascites are also noted. These are classic signs of hepatic artery stenosis or thrombosis following liver transplantation.
+
+IMAGE_24: 24
+  Periportal_Lucency_or_Edema24
+    Image: Periportal_Lucency_or_Edema24.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema24_annot.jpg
+    Caption: Axial CECT shows classic periportal edema that surrounds the portal venous branches. This is a common finding in recent liver transplant recipients and does not imply injury to the allograft.
+
+IMAGE_25: 25
+  Periportal_Lucency_or_Edema25
+    Image: Periportal_Lucency_or_Edema25.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema25_annot.jpg
+    Caption: Axial CECT in a 20-year-old woman injured in a motor vehicle crash shows the left lobe irregular laceration/hematoma with some blood <img src="arrow_WC.png"> tracking along portal vein branches.
+
+IMAGE_26: 26
+  Periportal_Lucency_or_Edema26
+    Image: Periportal_Lucency_or_Edema26.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema26_annot.jpg
+    Caption: Axial CECT in a 45-year-old woman with advanced cirrhosis shows cystic and tubular water-density structures <img src="arrow_WS.png"> that parallel the portal veins. These are biliary cysts, not dilated ducts.
+
+IMAGE_27: 27
+  Periportal_Lucency_or_Edema27
+    Image: Periportal_Lucency_or_Edema27.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema27_annot.jpg
+    Caption: Axial T2 FS MR in the same patient shows another view of the cystic and tubular water-intensity lesions that parallel the portal veins and mimic dilated ducts.
+
+IMAGE_28: 28
+  Periportal_Lucency_or_Edema28
+    Image: Periportal_Lucency_or_Edema28.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema28_annot.jpg
+    Caption: Axial CECT shows low-density, branching structures <img src="arrow_WS.png"> that mimic dilated bile ducts but represent occluded portal vein branches. Note collateral veins <img src="arrow_WC.png"> in this 58-year-old woman who had an autologous bone marrow transplantation prior to becoming hypercoagulable.
+
+IMAGE_29: 29
+  Periportal_Lucency_or_Edema29
+    Image: Periportal_Lucency_or_Edema29.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema29_annot.jpg
+    Caption: Axial CECT in the same patient shows a thrombosed right portal vein <img src="arrow_WS.png"> that might be mistaken for a dilated duct. Again, note collateral veins <img src="arrow_WC.png">.
+
+IMAGE_30: 30
+  Periportal_Lucency_or_Edema30
+    Image: Periportal_Lucency_or_Edema30.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema30_annot.jpg
+    Caption: Axial CECT shows mottled lucency in the liver, mostly in a perivascular distribution due to steatosis (fatty liver). Steatosis often favors the perivascular planes and "spares" the liver adjacent to the gallbladder fossa.
+
+IMAGE_31: 31
+  Periportal_Lucency_or_Edema31
+    Image: Periportal_Lucency_or_Edema31.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema31_annot.jpg
+    Caption: Axial arterial-phase CECT shows an enhancing tumor thrombus <img src="arrow_BC.png"> distending the main portal vein. Note the thrombosed right portal vein <img src="arrow_BS.png"> simulating dilated ducts and the enhancing hepatocellular carcinoma <img src="arrow_WS.png">.
+
+IMAGE_32: 32
+  Periportal_Lucency_or_Edema32
+    Image: Periportal_Lucency_or_Edema32.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema32_annot.jpg
+    Caption: Axial MRCP shows dilation of intrahepatic ducts <img src="arrow_WS.png"> with obstruction near the confluence of the right and left main ducts due to cholangiocarcinoma <img src="arrow_WC.png">. Malignant biliary obstruction may mimic or cause periportal edema.
+
+IMAGE_33: 33
+  Periportal_Lucency_or_Edema33
+    Image: Periportal_Lucency_or_Edema33.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema33_annot.jpg
+    Caption: Axial T2 FS MR in a 66-year-old man with chronic lymphocytic leukemia (CLL) shows an infiltrative mass with intermediate signal intensity in a periportal distribution <img src="arrow_WS.png"> without venous invasion.
+
+IMAGE_34: 34
+  Periportal_Lucency_or_Edema34
+    Image: Periportal_Lucency_or_Edema34.jpg
+    Image_Annotated: Periportal_Lucency_or_Edema34_annot.jpg
+    Caption: Axial CECT in the portal venous-parenchymal phase shows periportal hypoattenuation <img src="arrow_WS.png"> that encases and narrows the right portal vein. This was interpreted as cholangiocarcinoma, but surgical resection (right hepatectomy) showed only inflammatory pseudotumor of the liver and bile ducts.
+
+=== SOURCE ATTRIBUTION ===
+Primary source label: STATdx
+Core cross-check: it might be in multiple regions of the book so you are going to have to look through it

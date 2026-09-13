@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-09-10T00:32:53Z",
+  "totalNotes": 43,
+  "imageNotesRepaired": 18,
+  "nonImageNotesUnchanged": 25,
+  "originalCaptionsVerified": 23,
+  "captionArrowReferencesPerField": 29,
+  "captionArrowReferencesTotal": 58,
+  "originalIconFiles": 4,
+  "diagnosticFiles": 46,
+  "allNonCaptionFieldsUnchanged": true,
+  "source": "Raw STATdx caption strings; source and audit metadata agree."
+}

@@ -1,0 +1,710 @@
+[
+  {
+    "filename": "arrow_BS.png",
+    "role": "originalCaptionAnnotation",
+    "sourcePath": "C:\\Users\\josem.000\\NormalAnatomy\\radprimer_audit_queue\\Focal_Hypervascular_Liver_Lesion_2026-09-09T01-07-48-422Z\\media\\arrow_BS.png",
+    "originalAssetProvenance": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_BS.png",
+    "bundlePath": "media/arrow_BS.png",
+    "sha256": "38a54de980739ce7812f830c8f00bcb948e317665c06bbb0e8210b292bc378c9",
+    "dimensions": [
+      16,
+      16
+    ],
+    "bytes": 546,
+    "referenceCountPerCaptionField": 5,
+    "referenceCountInFullTSV": 10,
+    "modified": false
+  },
+  {
+    "filename": "arrow_WC.png",
+    "role": "originalCaptionAnnotation",
+    "sourcePath": "C:\\Users\\josem.000\\NormalAnatomy\\radprimer_audit_queue\\Focal_Hypervascular_Liver_Lesion_2026-09-09T01-07-48-422Z\\media\\arrow_WC.png",
+    "originalAssetProvenance": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_WC.png",
+    "bundlePath": "media/arrow_WC.png",
+    "sha256": "06b8711689fda5d345a0c70d6ba533e20acd0387df56f0aeb30e6a864e0b5f3e",
+    "dimensions": [
+      16,
+      16
+    ],
+    "bytes": 642,
+    "referenceCountPerCaptionField": 5,
+    "referenceCountInFullTSV": 10,
+    "modified": false
+  },
+  {
+    "filename": "arrow_WO.png",
+    "role": "originalCaptionAnnotation",
+    "sourcePath": "C:\\Users\\josem.000\\NormalAnatomy\\radprimer_audit_queue\\Focal_Hypervascular_Liver_Lesion_2026-09-09T01-07-48-422Z\\media\\arrow_WO.png",
+    "originalAssetProvenance": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_WO.png",
+    "bundlePath": "media/arrow_WO.png",
+    "sha256": "3bef0e607f892e60c6e3e2f669bdb818fc7bf254413f0253c75d96fd6103aae8",
+    "dimensions": [
+      16,
+      16
+    ],
+    "bytes": 708,
+    "referenceCountPerCaptionField": 7,
+    "referenceCountInFullTSV": 14,
+    "modified": false
+  },
+  {
+    "filename": "arrow_WS.png",
+    "role": "originalCaptionAnnotation",
+    "sourcePath": "C:\\Users\\josem.000\\NormalAnatomy\\radprimer_audit_queue\\Focal_Hypervascular_Liver_Lesion_2026-09-09T01-07-48-422Z\\media\\arrow_WS.png",
+    "originalAssetProvenance": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\arrow_WS.png",
+    "bundlePath": "media/arrow_WS.png",
+    "sha256": "143f942bc894ba06b3b59a83119b7e85ca323e43d42ac4f79588c3992be4b5cb",
+    "dimensions": [
+      16,
+      16
+    ],
+    "bytes": 522,
+    "referenceCountPerCaptionField": 12,
+    "referenceCountInFullTSV": 24,
+    "modified": false
+  },
+  {
+    "filename": "SDX-01_STATdx_plain_Widespread_Low_Attenuation_Within_Liver1.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-01",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-01_STATdx_plain_Widespread_Low_Attenuation_Within_Liver1.jpg",
+    "bundlePath": "media/SDX-01_STATdx_plain_Widespread_Low_Attenuation_Within_Liver1.jpg",
+    "sha256": "3786cae0e38cc182ac6a0a9e9d9cd58be07c93cc25213bc3edacc136249ebd85",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-01_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver1_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-01",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-01_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver1_annot.jpg",
+    "bundlePath": "media/SDX-01_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver1_annot.jpg",
+    "sha256": "3786cae0e38cc182ac6a0a9e9d9cd58be07c93cc25213bc3edacc136249ebd85",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-02_STATdx_plain_Widespread_Low_Attenuation_Within_Liver2.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-02",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-02_STATdx_plain_Widespread_Low_Attenuation_Within_Liver2.jpg",
+    "bundlePath": "media/SDX-02_STATdx_plain_Widespread_Low_Attenuation_Within_Liver2.jpg",
+    "sha256": "496c927be778b2925a968d1cb1f0e8e7a63fb47a16a284d6815b79123b57e262",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-02_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver2_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-02",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-02_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver2_annot.jpg",
+    "bundlePath": "media/SDX-02_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver2_annot.jpg",
+    "sha256": "54709e925d7f35f89404f9cb595fdf9f146e19cf3dddeec02a9d80377916f8c6",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-03_STATdx_plain_Widespread_Low_Attenuation_Within_Liver3.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-03",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-03_STATdx_plain_Widespread_Low_Attenuation_Within_Liver3.jpg",
+    "bundlePath": "media/SDX-03_STATdx_plain_Widespread_Low_Attenuation_Within_Liver3.jpg",
+    "sha256": "064526a66b9d907f2c5c34de12657b6ae4b703e362ae69773205ad630f11cef2",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-03_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver3_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-03",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-03_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver3_annot.jpg",
+    "bundlePath": "media/SDX-03_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver3_annot.jpg",
+    "sha256": "b3e3b48a4fcf663058d8b43ca902cfefd3ef5b1cd130d608fec45010c73cd568",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-04_STATdx_plain_Widespread_Low_Attenuation_Within_Liver4.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-04",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-04_STATdx_plain_Widespread_Low_Attenuation_Within_Liver4.jpg",
+    "bundlePath": "media/SDX-04_STATdx_plain_Widespread_Low_Attenuation_Within_Liver4.jpg",
+    "sha256": "13e23de8b5a1542c9606aef784e880913630e602c5195c5d5da71711c4dff1f2",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-04_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver4_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-04",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-04_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver4_annot.jpg",
+    "bundlePath": "media/SDX-04_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver4_annot.jpg",
+    "sha256": "dd9a3dee424288efa96597dd575de009b7876372e669a3790458dfd2670dd59d",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-06_STATdx_plain_Widespread_Low_Attenuation_Within_Liver6.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-06",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-06_STATdx_plain_Widespread_Low_Attenuation_Within_Liver6.jpg",
+    "bundlePath": "media/SDX-06_STATdx_plain_Widespread_Low_Attenuation_Within_Liver6.jpg",
+    "sha256": "ab5635f0083484b53dc44264547241c6e8ded31c059a885c7a5240fe7915ee81",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-06_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver6_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-06",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-06_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver6_annot.jpg",
+    "bundlePath": "media/SDX-06_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver6_annot.jpg",
+    "sha256": "956245fb33c766f228984f021b313e413620c974613e7335df20bd2c83678781",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-07_STATdx_plain_Widespread_Low_Attenuation_Within_Liver7.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-07",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-07_STATdx_plain_Widespread_Low_Attenuation_Within_Liver7.jpg",
+    "bundlePath": "media/SDX-07_STATdx_plain_Widespread_Low_Attenuation_Within_Liver7.jpg",
+    "sha256": "90d3cb668a064958cff44e22a6ca3e97884e58b6f106448b8e643c831015f98f",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-07_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver7_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-07",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-07_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver7_annot.jpg",
+    "bundlePath": "media/SDX-07_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver7_annot.jpg",
+    "sha256": "759c81cda3c241e22b4089e2bdb369eccfd0ce8659407fa4e31fd0f37535f587",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-08_STATdx_plain_Widespread_Low_Attenuation_Within_Liver8.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-08",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-08_STATdx_plain_Widespread_Low_Attenuation_Within_Liver8.jpg",
+    "bundlePath": "media/SDX-08_STATdx_plain_Widespread_Low_Attenuation_Within_Liver8.jpg",
+    "sha256": "eb8dbd01d45f2b2868026c9b3ef4569e60a0fb35c8f48624aaee924ce617a34f",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-08_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver8_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-08",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-08_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver8_annot.jpg",
+    "bundlePath": "media/SDX-08_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver8_annot.jpg",
+    "sha256": "a63636eb7dc0cb5b43f3101c6e7f410e51f51b2eee37e166547470c9a6238c95",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-09_STATdx_plain_Widespread_Low_Attenuation_Within_Liver9.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-09",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-09_STATdx_plain_Widespread_Low_Attenuation_Within_Liver9.jpg",
+    "bundlePath": "media/SDX-09_STATdx_plain_Widespread_Low_Attenuation_Within_Liver9.jpg",
+    "sha256": "0338ceaa81784d1f0a24c3f85bf71b77b71a7c8cca5db8459da39350e2dd8026",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-09_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver9_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-09",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-09_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver9_annot.jpg",
+    "bundlePath": "media/SDX-09_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver9_annot.jpg",
+    "sha256": "0338ceaa81784d1f0a24c3f85bf71b77b71a7c8cca5db8459da39350e2dd8026",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-10_STATdx_plain_Widespread_Low_Attenuation_Within_Liver10.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-10",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-10_STATdx_plain_Widespread_Low_Attenuation_Within_Liver10.jpg",
+    "bundlePath": "media/SDX-10_STATdx_plain_Widespread_Low_Attenuation_Within_Liver10.jpg",
+    "sha256": "15d645c9e3752b1960f5155d2fcdf300f4a310255433ad99cd6d77e83fc2c8b7",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-10_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver10_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-10",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-10_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver10_annot.jpg",
+    "bundlePath": "media/SDX-10_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver10_annot.jpg",
+    "sha256": "15d645c9e3752b1960f5155d2fcdf300f4a310255433ad99cd6d77e83fc2c8b7",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-11_STATdx_plain_Widespread_Low_Attenuation_Within_Liver11.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-11",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-11_STATdx_plain_Widespread_Low_Attenuation_Within_Liver11.jpg",
+    "bundlePath": "media/SDX-11_STATdx_plain_Widespread_Low_Attenuation_Within_Liver11.jpg",
+    "sha256": "21356b6aab17c1bada6658d8fb3cb271642ecb86a24ac4d5dcdf7bbc7574c722",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-11_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver11_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-11",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-11_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver11_annot.jpg",
+    "bundlePath": "media/SDX-11_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver11_annot.jpg",
+    "sha256": "21356b6aab17c1bada6658d8fb3cb271642ecb86a24ac4d5dcdf7bbc7574c722",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-12_STATdx_plain_Widespread_Low_Attenuation_Within_Liver12.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-12",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-12_STATdx_plain_Widespread_Low_Attenuation_Within_Liver12.jpg",
+    "bundlePath": "media/SDX-12_STATdx_plain_Widespread_Low_Attenuation_Within_Liver12.jpg",
+    "sha256": "3b6fa217255be24759ffce3e4df0bd64d891563c4ab88c668f3727e9cf14e3e5",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-12_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver12_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-12",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-12_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver12_annot.jpg",
+    "bundlePath": "media/SDX-12_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver12_annot.jpg",
+    "sha256": "a1005a19add4d0544fb1236d02dafb29dfcabf85488e269249b78a699c52de4c",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-13_STATdx_plain_Widespread_Low_Attenuation_Within_Liver13.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-13",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-13_STATdx_plain_Widespread_Low_Attenuation_Within_Liver13.jpg",
+    "bundlePath": "media/SDX-13_STATdx_plain_Widespread_Low_Attenuation_Within_Liver13.jpg",
+    "sha256": "d12bdcfc347a1b1df0c13cd9aa61ff5400c39746076230d0615db8e537e97bbf",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-13_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver13_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-13",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-13_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver13_annot.jpg",
+    "bundlePath": "media/SDX-13_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver13_annot.jpg",
+    "sha256": "f3a2277ed95c592dd75386e8fe28db3b4623579979c9fd4ae96121e07708550b",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-14_STATdx_plain_Widespread_Low_Attenuation_Within_Liver14.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-14",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-14_STATdx_plain_Widespread_Low_Attenuation_Within_Liver14.jpg",
+    "bundlePath": "media/SDX-14_STATdx_plain_Widespread_Low_Attenuation_Within_Liver14.jpg",
+    "sha256": "d80acae76d844bde84a294d111cab1f2cb8fc3319394caa9182a43ecaf2efbb3",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-14_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver14_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-14",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-14_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver14_annot.jpg",
+    "bundlePath": "media/SDX-14_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver14_annot.jpg",
+    "sha256": "d80acae76d844bde84a294d111cab1f2cb8fc3319394caa9182a43ecaf2efbb3",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-15_STATdx_plain_Widespread_Low_Attenuation_Within_Liver15.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-15",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-15_STATdx_plain_Widespread_Low_Attenuation_Within_Liver15.jpg",
+    "bundlePath": "media/SDX-15_STATdx_plain_Widespread_Low_Attenuation_Within_Liver15.jpg",
+    "sha256": "4a0e74db8fbb1abf597cee2aeba4028557c614aaf05c556c967c523a3789824b",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-15_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver15_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-15",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-15_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver15_annot.jpg",
+    "bundlePath": "media/SDX-15_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver15_annot.jpg",
+    "sha256": "4a0e74db8fbb1abf597cee2aeba4028557c614aaf05c556c967c523a3789824b",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-16_STATdx_plain_Widespread_Low_Attenuation_Within_Liver16.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-16",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-16_STATdx_plain_Widespread_Low_Attenuation_Within_Liver16.jpg",
+    "bundlePath": "media/SDX-16_STATdx_plain_Widespread_Low_Attenuation_Within_Liver16.jpg",
+    "sha256": "6cfc8abbc3ab143d14858a1270ea7919f0e38888cf0b3e7dbc870e0e88e3ce95",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-16_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver16_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-16",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-16_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver16_annot.jpg",
+    "bundlePath": "media/SDX-16_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver16_annot.jpg",
+    "sha256": "6cfc8abbc3ab143d14858a1270ea7919f0e38888cf0b3e7dbc870e0e88e3ce95",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-17_STATdx_plain_Widespread_Low_Attenuation_Within_Liver17.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-17",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-17_STATdx_plain_Widespread_Low_Attenuation_Within_Liver17.jpg",
+    "bundlePath": "media/SDX-17_STATdx_plain_Widespread_Low_Attenuation_Within_Liver17.jpg",
+    "sha256": "63daf25b8291ee4232f3722f4178b448c01226acd66c3a775811e443c3eb3a9e",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-17_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver17_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-17",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-17_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver17_annot.jpg",
+    "bundlePath": "media/SDX-17_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver17_annot.jpg",
+    "sha256": "85cf5d51bd65b4f7f7a6e7d7532d0c518401d5705bd03f4f83581b50621aa49f",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-18_STATdx_plain_Widespread_Low_Attenuation_Within_Liver18.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-18",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-18_STATdx_plain_Widespread_Low_Attenuation_Within_Liver18.jpg",
+    "bundlePath": "media/SDX-18_STATdx_plain_Widespread_Low_Attenuation_Within_Liver18.jpg",
+    "sha256": "6322dcc8f311850c8482f67fce359e5dcef8eebbb0435b808f44d96b47150515",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-18_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver18_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-18",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-18_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver18_annot.jpg",
+    "bundlePath": "media/SDX-18_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver18_annot.jpg",
+    "sha256": "6322dcc8f311850c8482f67fce359e5dcef8eebbb0435b808f44d96b47150515",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-19_STATdx_plain_Widespread_Low_Attenuation_Within_Liver19.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-19",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-19_STATdx_plain_Widespread_Low_Attenuation_Within_Liver19.jpg",
+    "bundlePath": "media/SDX-19_STATdx_plain_Widespread_Low_Attenuation_Within_Liver19.jpg",
+    "sha256": "48d9d6fa09f1a52d8712ad1cab4f72b06add9405d3fe772d0f575bc6be8593f6",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-19_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver19_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-19",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-19_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver19_annot.jpg",
+    "bundlePath": "media/SDX-19_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver19_annot.jpg",
+    "sha256": "0d7e157c974dd739ff1d3f5f2132a6c7ad1e451972643382105bf6d3282cc9a9",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-20_STATdx_plain_Widespread_Low_Attenuation_Within_Liver20.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-20",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-20_STATdx_plain_Widespread_Low_Attenuation_Within_Liver20.jpg",
+    "bundlePath": "media/SDX-20_STATdx_plain_Widespread_Low_Attenuation_Within_Liver20.jpg",
+    "sha256": "889fb879dcae8cc4c52c9b0bfdfb5f2e3405b34c4ec2cdbbc24a6d09c81277e9",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-20_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver20_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-20",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-20_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver20_annot.jpg",
+    "bundlePath": "media/SDX-20_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver20_annot.jpg",
+    "sha256": "910133b42d93f7c5419856985852f50c5d2a5cfebee139247de1360e6bf195e4",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-21_STATdx_plain_Widespread_Low_Attenuation_Within_Liver21.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-21",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-21_STATdx_plain_Widespread_Low_Attenuation_Within_Liver21.jpg",
+    "bundlePath": "media/SDX-21_STATdx_plain_Widespread_Low_Attenuation_Within_Liver21.jpg",
+    "sha256": "8082665cfa1db393a8d0c2b55e6fd082ac7f0bbd48e0ddc8cccc6488505bfee7",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-21_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver21_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-21",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-21_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver21_annot.jpg",
+    "bundlePath": "media/SDX-21_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver21_annot.jpg",
+    "sha256": "a604eec95b40149b94b84f935d564b6585fe0d22746198d7869e37f5045bc397",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-22_STATdx_plain_Widespread_Low_Attenuation_Within_Liver22.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-22",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-22_STATdx_plain_Widespread_Low_Attenuation_Within_Liver22.jpg",
+    "bundlePath": "media/SDX-22_STATdx_plain_Widespread_Low_Attenuation_Within_Liver22.jpg",
+    "sha256": "e537f04a75d8a26edc814d3f89fe1d8895706998cc76e999d56d3038f4ee69b0",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-22_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver22_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-22",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-22_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver22_annot.jpg",
+    "bundlePath": "media/SDX-22_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver22_annot.jpg",
+    "sha256": "3101f37d3446e80f820f3b97febd1cbadcf6400771a9a750f9d3344d95da437e",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-23_STATdx_plain_Widespread_Low_Attenuation_Within_Liver23.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-23",
+    "sourcePath": "C:\\Users\\josem.000\\Downloads\\RadPrimer\\SDX-23_STATdx_plain_Widespread_Low_Attenuation_Within_Liver23.jpg",
+    "bundlePath": "media/SDX-23_STATdx_plain_Widespread_Low_Attenuation_Within_Liver23.jpg",
+    "sha256": "86433ff7a49c14ad2d86ef9951183aed98728e441f66f01134332c89c3bf5bcc",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-23_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver23_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-23",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-23_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver23_annot.jpg",
+    "bundlePath": "media/SDX-23_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver23_annot.jpg",
+    "sha256": "bab79fb512e712f65bd2ce64cddea0d97aec983eaa39db6869eead5d682a050e",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-24_STATdx_plain_Widespread_Low_Attenuation_Within_Liver24.jpg",
+    "role": "diagnosticImage",
+    "variant": "plain",
+    "masterImageId": "SDX-24",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-24_STATdx_plain_Widespread_Low_Attenuation_Within_Liver24.jpg",
+    "bundlePath": "media/SDX-24_STATdx_plain_Widespread_Low_Attenuation_Within_Liver24.jpg",
+    "sha256": "574b166a79d1f3454f8d218c129a98bce1e6b907a97530a6b9be3dbcda915bf5",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  },
+  {
+    "filename": "SDX-24_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver24_annot.jpg",
+    "role": "diagnosticImage",
+    "variant": "annotated",
+    "masterImageId": "SDX-24",
+    "sourcePath": "C:\\Users\\josem.000\\AppData\\Roaming\\Anki2\\User 1\\collection.media\\SDX-24_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver24_annot.jpg",
+    "bundlePath": "media/SDX-24_STATdx_annotated_Widespread_Low_Attenuation_Within_Liver24_annot.jpg",
+    "sha256": "a6fe07dc19654e038f5777f187fcd55421ece92aafc6a844c8745b094df255fe",
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "modified": false
+  }
+]

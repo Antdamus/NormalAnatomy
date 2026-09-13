@@ -1,0 +1,97 @@
+{
+  "status": "passed",
+  "validatedAt": "2026-09-10T00:35:57Z",
+  "checks": [
+    {
+      "name": "43 no-header rows preserve the 22-field schema and round-trip exactly",
+      "passed": true
+    },
+    {
+      "name": "Anki import directives match metadata and the body equals corrected TSV",
+      "passed": true
+    },
+    {
+      "name": "All 37 retained original first fields remain unchanged and six new IDs are unique",
+      "passed": true
+    },
+    {
+      "name": "One card family per note; all 23 High-Yield notes have a gate and source basis",
+      "passed": true
+    },
+    {
+      "name": "HTML is balanced, diagnostic media remain and visible bookkeeping is absent",
+      "passed": true
+    },
+    {
+      "name": "All 23 raw captions, 46 diagnostic references, original arrows and unchanged non-caption fields verified",
+      "passed": true
+    },
+    {
+      "name": "Full repeated summary retained with supported criteria and source-gap corrections",
+      "passed": true
+    },
+    {
+      "name": "All six imported source files are unchanged and article equals the reviewed master",
+      "passed": true
+    }
+  ],
+  "totals": {
+    "originalNotes": 38,
+    "correctedNotes": 43,
+    "unknown": 18,
+    "mechanism": 2,
+    "highYield": 23,
+    "mediaFiles": 46,
+    "selectedImages": 23
+  },
+  "scope": "Static schema, content, HTML and actual staged media verification; installed Anki template rendering/import not performed.",
+  "inputHashes": {
+    "source_package.txt": "cef468144ddcbf552d805c08894ef3b8a855aa196e5127adea8a53778c9b2dd5",
+    "generated_cards.tsv": "db06ae67036edd959e93f894deb3c7da92f6d685b52a6a3200e7804f71a7b7ce",
+    "metadata.json": "ec71ac7030e595a3788e25e0064d4d68fee322ffaf439f3dcfafc19822540f85",
+    "audit_instructions.md": "ef98056bdc329393eba4e6a967c5654281824cfcccddfd01f43ee1e619d4be47",
+    "core_evidence.txt": "f83b97dd882a365694869b3fdf95e0c57a53785028399a6255bcaad58c632a3f"
+  },
+  "captionRepair": {
+    "status": "passed",
+    "checkedAt": "2026-09-10T00:32:53Z",
+    "totalNotes": 43,
+    "imageNotesRepaired": 18,
+    "nonImageNotesUnchanged": 25,
+    "originalCaptionsVerified": 23,
+    "captionArrowReferencesPerField": 29,
+    "captionArrowReferencesTotal": 58,
+    "originalIconFiles": 4,
+    "diagnosticFiles": 46,
+    "allNonCaptionFieldsUnchanged": true,
+    "source": "Raw STATdx caption strings; source and audit metadata agree."
+  },
+  "captionPreview": {
+    "status": "passed",
+    "renderedImageNotes": 18,
+    "loadedImageReferences": 104,
+    "diagnosticImageReferences": 46,
+    "inlineCaptionIcons": 29,
+    "originalCaptionIcons": 29,
+    "allImagesLoaded": true,
+    "iconDimensions": [
+      16,
+      16
+    ],
+    "screenshots": [
+      2,
+      3,
+      6,
+      14
+    ],
+    "method": "Local HTML artifact preview; installed Anki templates not modified or rendered."
+  },
+  "outputHashes": {
+    "corrected_cards.tsv": "0f07591fd11fd6eb939730b175cb18b3b929cb64733986cab1f099f682269132",
+    "corrected_cards_anki_import.tsv": "8e3d2e828ab5a66f7fdaf799f7d8b1d45394b5c09ff5e282670920a9cc590abb",
+    "corrected_image_cards.tsv": "056ac08a83f59b13ebcf140cc380b38b11024043573921cf3afa4978e1871115",
+    "corrected_image_cards_anki_import.tsv": "e0aff49665a6d2e269c199ce2980d44c159e9a86e80d2dcc2d40a27ed6cd40bc",
+    "audit_report.md": "4200e840fc6cdde640da4ae5c1e8e15cedd450d37de0b96643ffdbc7f296405a",
+    "caption_repair_report.md": "f011ac12c3444cf491464dc06ef1c7b9bf404e41288a1e14a97f41f9efce5312"
+  }
+}

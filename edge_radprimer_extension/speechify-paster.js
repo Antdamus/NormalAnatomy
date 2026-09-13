@@ -16,9 +16,32 @@
     textTextarea:
       'textarea#textImportText, [data-testid="library-text-import-editor"][contenteditable="true"], [role="textbox"][contenteditable="true"][aria-label="Type or paste text here"]',
     saveButton: 'button[data-testid="add-text-save-button"]',
-    playerPlayButton: 'button[data-testid="player-play-button"]',
-    playerBackwardButton: 'button[data-testid="player-backward-button"]',
-    playerForwardButton: 'button[data-testid="player-forward-button"]',
+    playerPlayButton: [
+      'button[data-testid="player-play-button"]',
+      '[data-testid*="player"] button[aria-label^="Play"]',
+      '[data-testid*="player"] button[aria-label^="Pause"]',
+      '[data-testid*="player"] button[aria-label^="Resume"]',
+      'button[data-testid*="play"][aria-label^="Play"]',
+      'button[data-testid*="play"][aria-label^="Pause"]',
+      'button[data-testid*="play"][aria-label^="Resume"]'
+    ].join(","),
+    playerBackwardButton: [
+      'button[data-testid="player-backward-button"]',
+      'button[data-testid="player-rewind-button"]',
+      'button[data-testid="player-replay-button"]',
+      '[data-testid*="player"] button[aria-label*="skip back" i]',
+      '[data-testid*="player"] button[aria-label*="rewind" i]',
+      '[data-testid*="player"] button[aria-label*="replay" i]',
+      'button[data-testid*="backward" i]',
+      'button[data-testid*="rewind" i]',
+      'button[data-testid*="replay" i]'
+    ].join(","),
+    playerForwardButton: [
+      'button[data-testid="player-forward-button"]',
+      '[data-testid*="player"] button[aria-label*="skip forward" i]',
+      '[data-testid*="player"] button[aria-label*="forward" i]',
+      'button[data-testid*="forward" i]'
+    ].join(","),
     playerSpeedButton: 'button[data-testid="player-speed-button"]',
     playerVoiceButton: 'button[data-testid="player-voice-button"]',
     progressBar: '[role="progressbar"][aria-label="Listening progress"]',
@@ -1324,14 +1347,97 @@
       .toLowerCase();
   };
 
-  const clickVisible = (selector, label) => {
+  const clampNumber = (value, min, max) => {
+    return Math.min(max, Math.max(min, value));
+  };
+
+  const clickVisibleIfPresent = (selector, label) => {
     const el = firstVisible(selector);
-    if (!el) throw new Error(`Speechify ${label} button was not found.`);
+    if (!el) return null;
     if (el.disabled || el.getAttribute("aria-disabled") === "true") {
       throw new Error(`Speechify ${label} button is disabled.`);
     }
     el.click();
     return el;
+  };
+
+  const clickVisible = (selector, label) => {
+    const el = clickVisibleIfPresent(selector, label);
+    if (!el) throw new Error(`Speechify ${label} button was not found.`);
+    return el;
+  };
+
+  const getElementActionLabel = (el) => {
+    return cleanDisplayText(
+      [
+        el?.getAttribute?.("aria-label"),
+        el?.getAttribute?.("title"),
+        el?.getAttribute?.("data-testid"),
+        el?.innerText,
+        el?.textContent
+      ]
+        .filter(Boolean)
+        .join(" ")
+    ).toLowerCase();
+  };
+
+  const isSpeechifyAudioSeekButton = (el, direction) => {
+    const label = getElementActionLabel(el);
+    if (!label) return false;
+    const testId = String(el?.getAttribute?.("data-testid") || "").toLowerCase();
+
+    if (direction === "back") {
+      if (label === "back" || label === "go back" || label === "previous") return false;
+      return (
+        /player-(backward|rewind|replay)/i.test(testId) ||
+        /\b(skip\s*back|skip\s*backward|rewind|replay)\b/i.test(label) ||
+        /\bback(?:ward)?\b.*\b(5|10|15|30)\s*(?:s|sec|secs|second|seconds)\b/i.test(label)
+      );
+    }
+
+    return (
+      /player-forward/i.test(testId) ||
+      /\b(skip\s*forward|forward)\b/i.test(label) ||
+      /\bforward\b.*\b(5|10|15|30)\s*(?:s|sec|secs|second|seconds)\b/i.test(label)
+    );
+  };
+
+  const clickSpeechifyAudioSeekButton = (direction, label) => {
+    const selector =
+      direction === "back"
+        ? SPEECHIFY_SELECTORS.playerBackwardButton
+        : SPEECHIFY_SELECTORS.playerForwardButton;
+    const candidates = Array.from(document.querySelectorAll(selector));
+    const el =
+      candidates.find((candidate) => isVisible(candidate) && isSpeechifyAudioSeekButton(candidate, direction)) ||
+      candidates.find((candidate) => isSpeechifyAudioSeekButton(candidate, direction));
+    if (!el) return null;
+    if (el.disabled || el.getAttribute("aria-disabled") === "true") {
+      throw new Error(`Speechify ${label} button is disabled.`);
+    }
+    el.click();
+    return el;
+  };
+
+  const setActiveMediaPlayback = async (shouldPlay) => {
+    const media = getActiveMediaElement();
+    if (!media) return false;
+    if (shouldPlay) {
+      await media.play();
+    } else {
+      media.pause();
+    }
+    return true;
+  };
+
+  const seekActiveMediaBy = (deltaSeconds) => {
+    const media = getActiveMediaElement();
+    if (!media || !Number.isFinite(media.currentTime)) return false;
+    const duration = Number.isFinite(media.duration) && media.duration > 0 ? media.duration : null;
+    const max = duration ?? Number.MAX_SAFE_INTEGER;
+    media.currentTime = clampNumber(media.currentTime + deltaSeconds, 0, max);
+    media.dispatchEvent(new Event("timeupdate", { bubbles: true }));
+    return true;
   };
 
   const waitUntil = async (predicate, timeoutMs, errorMessage) => {
@@ -1582,7 +1688,7 @@
     const labelSaysPlay = /^(play|resume)\b/i.test(playLabel);
 
     return {
-      available: Boolean(playButton),
+      available: Boolean(playButton || media),
       playLabel,
       isPlaying: labelSaysPause || (!labelSaysPlay && (mediaIsPlaying || Boolean(tabAudible)))
     };
@@ -1626,7 +1732,7 @@
     });
 
     return {
-      available: Boolean(playButton),
+      available: Boolean(playButton || media),
       isPlaying,
       tabAudible: Boolean(tabAudible),
       playLabel,
@@ -1731,15 +1837,29 @@
 
     if (normalizedAction === "playPause") {
       const before = getSpeechifyPlayState(stateOptions);
-      clickVisible(SPEECHIFY_SELECTORS.playerPlayButton, "play/pause");
-      if (before.available) await waitForSpeechifyPlayStateFlip(before.isPlaying, stateOptions);
-      else await sleep(120);
+      const clicked = clickVisibleIfPresent(SPEECHIFY_SELECTORS.playerPlayButton, "play/pause");
+      if (clicked) {
+        if (before.available) await waitForSpeechifyPlayStateFlip(before.isPlaying, stateOptions);
+        else await sleep(120);
+      } else if (!(await setActiveMediaPlayback(!before.isPlaying))) {
+        clickVisible(SPEECHIFY_SELECTORS.playerPlayButton, "play/pause");
+      } else {
+        await sleep(120);
+      }
     } else if (normalizedAction === "back10") {
-      clickVisible(SPEECHIFY_SELECTORS.playerBackwardButton, "back 10 seconds");
+      if (!seekActiveMediaBy(-10)) {
+        if (!clickSpeechifyAudioSeekButton("back", "back 10 seconds")) {
+          throw new Error("Speechify back 10 seconds button was not found.");
+        }
+      }
       adjustPlayerClock(-10);
       await sleep(220);
     } else if (normalizedAction === "forward10") {
-      clickVisible(SPEECHIFY_SELECTORS.playerForwardButton, "forward 10 seconds");
+      if (!seekActiveMediaBy(10)) {
+        if (!clickSpeechifyAudioSeekButton("forward", "forward 10 seconds")) {
+          throw new Error("Speechify forward 10 seconds button was not found.");
+        }
+      }
       adjustPlayerClock(10);
       await sleep(220);
     } else if (normalizedAction === "speed") {

@@ -1,0 +1,24 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Core Radiology, Second Edition; Gastrointestinal Imaging, Liver/Biliary sections, including GI pages 100, 108-109, 115-121, and 139-140.
+CORE_FACTS_USED:
+
+* Simple hepatic cyst: thin/nearly imperceptible wall; CT 0-20 HU without enhancement; MRI low T1/high T2 without enhancement; ultrasound anechoic with posterior enhancement and no internal Doppler flow.
+* Biliary hamartomas are small benign cystic lesions caused by abnormal bile-duct development, do not communicate with the biliary tree, and may appear echogenic on ultrasound.
+* ADPLD produces innumerable nonenhancing hepatic cysts; 40% of patients with ADPKD have the hepatic disease process.
+* Pyogenic abscess may ring-enhance, show central T2 hyperintensity/restricted diffusion, and evolve to a hypoechoic lesion with internal echoes on ultrasound.
+* Hepatic fungal infection produces tiny hypoenhancing microabscesses; lesions may be T2 hyperintense/restrict diffusion and appear hypoechoic on ultrasound.
+* Hydatid cyst may contain daughter cysts or a floating membrane; ultrasound may show daughter cysts, hydatid sand, and the water-lily sign.
+* Amebic abscess may be indistinguishable from pyogenic abscess on imaging.
+* Biliary cystadenoma/cystadenocarcinoma is typically multiseptated; mural nodules increase concern for malignant transformation.
+* Caroli disease is saccular intrahepatic bile-duct dilatation with biliary communication; portal-tract branches create the central-dot sign.
+* Cystic hepatic metastases include ovarian cystadenocarcinoma and gastrointestinal sarcoma; focal fat is distinguished by vessels traversing the region and opposed-phase signal loss.
+* Hepatic artery thrombosis is the most common vascular complication of liver transplantation, supporting the transplant-biloma reporting pivot.
+CORE_DERIVED_CARDS:
+* PRIMARY UNKNOWN cards for simple hepatic cyst, ADPLD, pyogenic abscess, biliary hamartomas, candidiasis, hydatid disease, amebic abscess, biliary cystadenoma, and Caroli disease.
+* Mechanism cards for biliary hamartomas, Caroli disease, and pyogenic abscess.
+* High-Yield CT/MRI/ultrasound appearance cards for simple cyst, abscess, biliary hamartomas, fungal microabscesses, hydatid disease, cystadenoma, Caroli disease, focal fat, and cystic metastasis discrimination.
+* Epidemiology High-Yield card encoding the 40% ADPKD-to-ADPLD association.
+* Report-critical transplant card linking biloma/biliary necrosis with evaluation of hepatic arterial patency.
+CORE_LIMITATIONS:
+* STATdx/RadPrimer supplied supplemental cystic-mass examples and details not established from the retrieved Core sections, including treated gastric GIST cystic necrosis, biliary IPMN imaging example, undifferentiated hepatic sarcoma, ciliated hepatic foregut cyst, and detailed posttraumatic/transplant biloma examples.
+* No unsupported diagnostic-performance statistics were added.

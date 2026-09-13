@@ -1,0 +1,28 @@
+CORE_EVIDENCE_STATUS: USED
+CORE_SOURCE_BASIS: Core Radiology, Second Edition, Gastrointestinal Imaging - Liver; relevant retrieved coverage includes GI pages 105-115, 119-122, and cholangiocarcinoma coverage on GI page 146 from junzi-shi-core-radiology-a-visual-approach-to.pdf.
+CORE_FACTS_USED:
+
+* FNH: arterial hyperenhancement, later isoattenuation/isointensity, T2-hyperintense central scar, delayed scar enhancement with extracellular contrast, hepatobiliary contrast retention by the lesion but not the scar, spoke-wheel Doppler pattern, and sulfur-colloid/HIDA behavior.
+* Cavernous hemangioma: peripheral discontinuous blood-pool nodular enhancement with progressive centripetal fill-in, T2 hyperintensity, and possible central nonenhancing degeneration in giant lesions.
+* Hepatic adenoma: arterial hyperenhancement, later iso-/hypoenhancement, fat/hemorrhage-related heterogeneity, out-of-phase signal loss when intracellular lipid is present, lack of bile ducts/HIDA uptake, and the >5 cm resection threshold.
+* Conventional HCC: arterial enhancement, nonperipheral washout, capsule/pseudocapsule, mosaic architecture, fat/blood products, and tumor-in-vein as an invasive feature.
+* Fibrolamellar HCC: young noncirrhotic patient profile, large heterogeneous mass, fibrotic T1/T2-hypointense central scar, and possible capsular retraction.
+* Metastases: most are hypovascular and best seen on portal venous phase; MRI is generally T1 hypointense/T2 hyperintense; mucinous metastases may calcify.
+* Epithelioid hemangioendothelioma: multiple peripheral/subcapsular masses, target/halo appearance, T1-low/T2-high signal, coalescence, and capsular retraction.
+* Mass-forming cholangiocarcinoma: delayed/progressive enhancement, peripheral biliary dilatation, capsular retraction, and obstructive/atrophic changes.
+* Budd-Chiari: hepatic venous outflow obstruction with chronic caudate hypertrophy, peripheral atrophy, and prominent regenerative nodules; acute disease may show mottled liver and flip-flop enhancement.
+CORE_DERIVED_CARDS:
+* FNH CT, MRI/hepatobiliary, ultrasound/Doppler, and nuclear-medicine High-Yield cards.
+* Hemangioma CT/MRI, T2, and ultrasound High-Yield cards.
+* Conventional HCC multiphasic imaging and tumor-in-vein report-pivot cards.
+* Hepatic adenoma CT/MRI, chemical-shift, nuclear-medicine, and >5 cm management cards.
+* Metastatic liver disease CT-phase, MRI, ultrasound, and calcification cards.
+* Fibrolamellar HCC MRI-scar, CT-scar, patient-profile, and capsular-retraction cards.
+* Cholangiocarcinoma enhancement and report-critical obstruction/retraction cards.
+* EHE CT/MRI and capsular-retraction cards.
+* Budd-Chiari/regenerative-nodule morphology and hepatobiliary-retention cards.
+* Mechanism and Boards Trap cards that use the above Core-supported discriminators.
+CORE_LIMITATIONS:
+* The RadPrimer/STATdx fused source supplied the selected primary image set, exact captions, source-qualified image identifiers, and several case-specific discriminators not present verbatim in Core.
+* No external medical literature was required or used.
+* RadPrimer images 1-20 were not separately carded because the supplied master package classified them as exact duplicates of the selected STATdx renderings; all selected STATdx images 1-24 are accounted for.

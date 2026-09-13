@@ -1,0 +1,327 @@
+{
+  "status": "PASS",
+  "originalNotes": 23,
+  "correctedNotes": 27,
+  "removedNotes": 3,
+  "addedNotes": 7,
+  "retainedOriginalIdentities": 20,
+  "columns": 22,
+  "unknown": 8,
+  "boardsTrap": 2,
+  "highYield": 17,
+  "mechanism": 0,
+  "differentialDrill": 0,
+  "uniqueImgSources": 27,
+  "imageTagOccurrences": 37,
+  "allOriginalImageTagsPreserved": true,
+  "allSelectedImagesPreserved": true,
+  "allDifferentialFieldsBlank": true,
+  "allArticleSummariesPreservedAndCorrected": true,
+  "sourceBasis": "Article + explicitly enumerated captured Core evidence; no independently opened Core PDF",
+  "cleanImportColumns": 22,
+  "autoCreateWrapperColumns": 23,
+  "autoCreateColumn": "Deck transport control only; original 22 columns unchanged",
+  "fields": [
+    "Clinical_Context",
+    "Image",
+    "Image_Annotated",
+    "Question",
+    "Most_Likely_Diagnosis",
+    "Entity_Label",
+    "Differential_Q",
+    "Differentials",
+    "Imaging_Differentiation",
+    "Original_Caption",
+    "Mechanism_Q",
+    "Mechanism",
+    "Boards_Trap_Q",
+    "Boards_Trap",
+    "High_Yield_Q",
+    "High_Yield_A",
+    "Radiopaedia_Link",
+    "Radiopaedia_Case_Context",
+    "Radiopaedia_Case_Summary",
+    "Radiopaedia_Case_Differential",
+    "summary",
+    "Tags"
+  ],
+  "removed": [
+    {
+      "row": 11,
+      "id": "B6N1Q8T4W9KC",
+      "reason": "Redundant age-recall card; source-supported interpretive safeguard merged into Boards Trap row 9."
+    },
+    {
+      "row": 12,
+      "id": "X7C2M9L4Q1PV",
+      "reason": "Generic four-domain checklist lacked a concrete discriminator; retained as article-summary framework rather than an independent High-Yield card."
+    },
+    {
+      "row": 18,
+      "id": "C4M9V2K7T1RX",
+      "reason": "CT senescent-change pitfall duplicates row 9; unique wording consolidated there."
+    }
+  ],
+  "rowAudit": [
+    {
+      "originalRow": 1,
+      "id": "A7K2M9Q4T1XZ",
+      "action": "revise/retain",
+      "reason": "Move mini-differential to the back; clarify the source-supported fibrosis-to-volume-loss mechanism.",
+      "source": "source_package.txt, fused article lines 5003-5066; core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report)",
+      "gate": ""
+    },
+    {
+      "originalRow": 2,
+      "id": "H3P8L2N6R5YW",
+      "action": "revise/retain",
+      "reason": "Retain complete A-D series and qualify the enhancement discriminator.",
+      "source": "source_package.txt, fused article lines 5003-5066; source_package.txt lines 5076-5081",
+      "gate": ""
+    },
+    {
+      "originalRow": 3,
+      "id": "M8R4V1K7Q2PL",
+      "action": "revise/retain",
+      "reason": "Do not imply that nonspecific CT morphology proves senescence or that the image establishes absent portal hypertension.",
+      "source": "source_package.txt, fused article lines 5003-5066; RP-03 caption",
+      "gate": ""
+    },
+    {
+      "originalRow": 4,
+      "id": "Q6T1B9M3X8CZ",
+      "action": "revise/retain",
+      "reason": "Keep SDX-04 and SDX-05 together without claiming one patient.",
+      "source": "source_package.txt, fused article lines 5003-5066; SDX-04/05 caseContext",
+      "gate": ""
+    },
+    {
+      "originalRow": 5,
+      "id": "N4Y8C2P7L5WK",
+      "action": "revise/retain",
+      "reason": "Separate general Core treatment associations from this image history.",
+      "source": "source_package.txt, fused article lines 5003-5066; RP-05 caption; core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report)",
+      "gate": ""
+    },
+    {
+      "originalRow": 6,
+      "id": "C9L3W7R2F6MX",
+      "action": "revise/retain",
+      "reason": "Explain the remodeling mechanism and distinguish image findings from general duct distribution.",
+      "source": "source_package.txt, fused article lines 5003-5066; RP-06 caption; core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report)",
+      "gate": ""
+    },
+    {
+      "originalRow": 7,
+      "id": "V2K7D9Q4M1HT",
+      "action": "revise/retain",
+      "reason": "Preserve all three views while distinguishing SDX-08 from the SDX-09/10 companion case.",
+      "source": "source_package.txt, fused article lines 5003-5066; SDX-08/09/10 caseContext",
+      "gate": ""
+    },
+    {
+      "originalRow": 8,
+      "id": "T5X9P2R7K4BN",
+      "action": "revise/retain",
+      "reason": "Keep general calcification clues separate from what this image demonstrates.",
+      "source": "source_package.txt, fused article lines 5003-5066; RP-08 caption",
+      "gate": ""
+    },
+    {
+      "originalRow": 9,
+      "id": "J8Q2V5M9C1RL",
+      "action": "revise/retain",
+      "reason": "Merge redundant original High-Yield rows 11 and 18 into one imaging pitfall; avoid an absolute age rule.",
+      "source": "source_package.txt, fused article lines 5003-5066",
+      "gate": "Pitfall"
+    },
+    {
+      "originalRow": 10,
+      "id": "R4M7K2X9P6DV",
+      "action": "revise/retain",
+      "reason": "Retain a focused differential pitfall and make lack of portal hypertension a supportive clue, not a requirement.",
+      "source": "source_package.txt, fused article lines 5003-5066",
+      "gate": "Pitfall"
+    },
+    {
+      "originalRow": 13,
+      "id": "P3V8K1M7T5QX",
+      "action": "revise/retain",
+      "reason": "Retain one structured morphology-recognition target.",
+      "source": "core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report); source_package.txt, fused article lines 5003-5066",
+      "gate": "CT appearance / discriminator"
+    },
+    {
+      "originalRow": 14,
+      "id": "K9R2F6W4M8CZ",
+      "action": "revise/retain",
+      "reason": "Remove unsupported T2 sequence specificity while retaining captured Core-supported MRI morphology.",
+      "source": "core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report)",
+      "gate": "MRI appearance"
+    },
+    {
+      "originalRow": 15,
+      "id": "D5Q8L2V7N1MX",
+      "action": "revise/retain",
+      "reason": "Retain source-supported ultrasound appearance with appropriate nonspecificity qualifier.",
+      "source": "core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report)",
+      "gate": "Ultrasound appearance"
+    },
+    {
+      "originalRow": 16,
+      "id": "M2T7C9Q4L6VK",
+      "action": "revise/retain",
+      "reason": "Keep an integrated signal-and-enhancement pattern; reinforce nonabsolute HCC distinction.",
+      "source": "source_package.txt, fused article lines 5003-5066; RP-02 caption",
+      "gate": "MRI signal / contrast behavior"
+    },
+    {
+      "originalRow": 17,
+      "id": "Q1W6P8R3K9MX",
+      "action": "revise/retain",
+      "reason": "Split location from the independent venous-phase fact; preserve original ID for the location target.",
+      "source": "source_package.txt, fused article lines 5003-5066 lines 5019-5023",
+      "gate": "Distribution / differential discriminator"
+    },
+    {
+      "originalRow": 19,
+      "id": "V8L3Q1M6P9KT",
+      "action": "revise/retain",
+      "reason": "Replace absolute \"should be absent\" with a probabilistic discriminator.",
+      "source": "source_package.txt, fused article lines 5003-5066",
+      "gate": "CT appearance / discriminator"
+    },
+    {
+      "originalRow": 20,
+      "id": "T2K8N5R1Q7MC",
+      "action": "revise/retain",
+      "reason": "Retain metastatic-setting CT morphology; capsular retraction is general Core support, not a new claim about RP-05.",
+      "source": "core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report); source_package.txt, fused article lines 5003-5066",
+      "gate": "CT appearance / pretest context"
+    },
+    {
+      "originalRow": 21,
+      "id": "L6P1X9C4M8QV",
+      "action": "revise/retain",
+      "reason": "Tie beading to strictures and clarify CT example versus general duct distribution.",
+      "source": "source_package.txt, fused article lines 5003-5066; core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report)",
+      "gate": "CT duct appearance / discriminator"
+    },
+    {
+      "originalRow": 22,
+      "id": "R9C5M2V7K1QX",
+      "action": "revise/retain",
+      "reason": "Make the duct discriminator clearer without implying CT proves congenital fibrosis histology.",
+      "source": "source_package.txt, fused article lines 5003-5066; SDX-08/09/10 captions; core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report)",
+      "gate": "CT appearance / duct discriminator"
+    },
+    {
+      "originalRow": 23,
+      "id": "N7Q3T8L1P5KV",
+      "action": "revise/retain",
+      "reason": "Split independent calcification recognition into a separate card.",
+      "source": "source_package.txt, fused article lines 5003-5066; RP-08 caption",
+      "gate": "CT distribution / discriminator"
+    },
+    {
+      "originalRow": 11,
+      "id": "B6N1Q8T4W9KC",
+      "action": "remove/merge",
+      "reason": "Redundant age-recall card; source-supported interpretive safeguard merged into Boards Trap row 9.",
+      "source": "source_package.txt, fused article lines 5003-5066",
+      "gate": "Redundant or insufficient standalone radiologist usefulness"
+    },
+    {
+      "originalRow": 12,
+      "id": "X7C2M9L4Q1PV",
+      "action": "remove/merge",
+      "reason": "Generic four-domain checklist lacked a concrete discriminator; retained as article-summary framework rather than an independent High-Yield card.",
+      "source": "source_package.txt, fused article lines 5003-5066",
+      "gate": "Redundant or insufficient standalone radiologist usefulness"
+    },
+    {
+      "originalRow": 18,
+      "id": "C4M9V2K7T1RX",
+      "action": "remove/merge",
+      "reason": "CT senescent-change pitfall duplicates row 9; unique wording consolidated there.",
+      "source": "source_package.txt, fused article lines 5003-5066",
+      "gate": "Redundant or insufficient standalone radiologist usefulness"
+    },
+    {
+      "originalRow": null,
+      "id": "BRACWPRK88OA",
+      "action": "add",
+      "reason": "Separate the second retrieval target from original row 17.",
+      "source": "source_package.txt, fused article lines 5003-5066 lines 5021-5023",
+      "gate": "CT contrast behavior / pitfall"
+    },
+    {
+      "originalRow": null,
+      "id": "5RMN6RVPAEK2",
+      "action": "add",
+      "reason": "Separate calcification recognition from the fissural-distribution card.",
+      "source": "source_package.txt, fused article lines 5003-5066 lines 5058-5061",
+      "gate": "CT appearance / discriminator"
+    },
+    {
+      "originalRow": null,
+      "id": "H7BPCNER4R7B",
+      "action": "add",
+      "reason": "Add an omitted, explicit source discriminator.",
+      "source": "source_package.txt, fused article lines 5003-5066 lines 5050-5055",
+      "gate": "Volume-distribution discriminator"
+    },
+    {
+      "originalRow": null,
+      "id": "IEX6ASV1A4HI",
+      "action": "add",
+      "reason": "Add an omitted clinical-to-imaging discriminator, without asserting an IBD history in the source image.",
+      "source": "source_package.txt, fused article lines 5003-5066 lines 5044-5048",
+      "gate": "Pretest clue that changes differential ranking"
+    },
+    {
+      "originalRow": null,
+      "id": "L8LYDADRQ61J",
+      "action": "add",
+      "reason": "Give the article-listed postsurgical mimic a focused interpretive card; no procedural images or follow-up are invented.",
+      "source": "source_package.txt, fused article lines 5003-5066 lines 5029-5032",
+      "gate": "Pretest / reporting pitfall"
+    },
+    {
+      "originalRow": null,
+      "id": "V6LWGFWV88CC",
+      "action": "add",
+      "reason": "Add omitted wedge-shape/capsular-retraction support from the captured Core report.",
+      "source": "core_evidence.txt, CORE_FACTS_USED; GI pp. 103-104, 109, 119, 143-144 (captured report); source_package.txt, fused article lines 5003-5066",
+      "gate": "Morphology / differential discriminator"
+    },
+    {
+      "originalRow": null,
+      "id": "ZEVKQP6RLLRX",
+      "action": "add",
+      "reason": "Add source-supported cross-organ clue without asserting unshown renal findings.",
+      "source": "source_package.txt, fused article lines 5003-5066 lines 5050-5053",
+      "gate": "Associated imaging / pretest discriminator"
+    }
+  ],
+  "generatedAt": "2026-09-09T22:15:46.460Z",
+  "independentValidation": "PASS",
+  "sourceFilesUnchanged": true,
+  "sourceSha256": {
+    "source_package.txt": "b94c4a8a6f35ca359729c9d5ce2ef3ac8de316ac802b7d462b96ed43dd8b37f2",
+    "generated_cards.tsv": "8e2a13b79d0cc8e4688be1ef02c028f844462b7f2870732f60b17fab2f51c1a3",
+    "metadata.json": "aabe50a4422eeca48e59e9bda81c01482a1b67e677df3336f2b5edcf346e2043",
+    "audit_instructions.md": "7996acbe144d59ba9a169b869e80d8ca24602ba3b8c40d595f0f486457366871",
+    "core_evidence.txt": "b44eb9e8a8c5f838ed665c3248252f338720d025ae891b79134a179f767483d3",
+    "_bundle_complete.txt": "a6f97e16183d8b8fc30f84f6a3598811ed2f418f15d1f3e45d82f642fabaa6b1"
+  },
+  "verifiedMediaFiles": 27,
+  "scanFilesMatchingAnki": 22,
+  "plainFilesMatchingRegistry": 11,
+  "allImageFilesDecode": true,
+  "htmlBalanced": true,
+  "originalImageTagOccurrencesPreserved": 37,
+  "imageVisualReview": "All 11 plain and 11 annotated images viewed in separate contact sheets; exact scan filenames and hashes checked.",
+  "importRowsEqualCleanRows": true,
+  "finalizedAt": "2026-09-09T22:18:21+00:00"
+}

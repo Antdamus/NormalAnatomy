@@ -1,0 +1,731 @@
+{
+  "metadataConsistency": "passed",
+  "files": [
+    {
+      "masterImageId": "RP-01",
+      "imageId": "9eb7f242-5e3e-4e79-a870-5d9ff10a76d5",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-01_RadPrimer_image_01_plain_9eb7f242.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 132913,
+      "sha256": "83d122a47ae33d90f942091aa7aa911ed6e66b326da4488845e4fc5ba4ae98b3",
+      "rgbPixelSha256": "77e635083aa9e0dba101a81ec84d785d95018da86edf343db169bb3795ab52df",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-02",
+      "imageId": "ed74d38e-8785-4a8f-9a12-8981eeaeff39",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-02_RadPrimer_image_02_plain_ed74d38e.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 78960,
+      "sha256": "32b17fa75e2a7ca3fe8391f57092e9000a74d698643745e700397f3f16ecc98c",
+      "rgbPixelSha256": "c558ee926ec0fb8153eb3c159103de3d9ba60140e0e36d18918274046e0cdd00",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-03",
+      "imageId": "6157b1ff-79dc-4bd9-8b91-dbcd72bc05ce",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-03_RadPrimer_image_03_plain_6157b1ff.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 156799,
+      "sha256": "5102b0fa16421ecb9fcd62f82c25c804492b7fef56814da07650fec2378fe63f",
+      "rgbPixelSha256": "42b1b31b256169de6cd69f8ed11ea6a4e1f4484f80b727a8f132d02bb0b7593a",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-04",
+      "imageId": "d2328e73-60b8-4e78-977f-01dac06d4531",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-04_RadPrimer_image_04_plain_d2328e73.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 116231,
+      "sha256": "d149abbadeecece794ff947d268d1e50f9214fd47f582f806c13570ee5e88b1f",
+      "rgbPixelSha256": "c9fd5a94262ca1227e8e0309325e07b1ec521385e53d0e7c0b1da5dc8ce465ef",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-05",
+      "imageId": "1cf033db-b1ca-4c4a-b4c7-11e17310af43",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-05_RadPrimer_image_05_plain_1cf033db.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 87687,
+      "sha256": "35af8386be31f19613fcafdceb4dc2db5a2983c76b64f9637f9de3e92cd773f8",
+      "rgbPixelSha256": "7dc9eab1c0fb1707955e91e84b0a215cc3afeb0f050f60da9ec4c40ece797bf6",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-06",
+      "imageId": "a5e6ae2f-bc56-4c97-a4bf-9695fbad9913",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-06_RadPrimer_image_06_plain_a5e6ae2f.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 132413,
+      "sha256": "388e2024d3980c72fa1ab7a5c987665c8983ea3adce71e346daaf8f283da7db4",
+      "rgbPixelSha256": "43602f0adcc9271858292438fa29cc4f267a62995f8f795c3ad0543f829c11c0",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-07",
+      "imageId": "d057904d-d7bf-498b-ae4e-a53469387fe3",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-07_RadPrimer_image_07_plain_d057904d.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 146018,
+      "sha256": "98c1eaaa431621edc19c74627a10599405514e6d55683ee6f4cef0c5679331e2",
+      "rgbPixelSha256": "a7f255784550abb5d4ef8f6d359155fe11eb09ccf96988726d330b0373f743ee",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-08",
+      "imageId": "71cfd466-fcfb-456e-bd27-7cc7351e06a7",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-08_RadPrimer_image_08_plain_71cfd466.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 148194,
+      "sha256": "9b884cb65e387d9e58361021a2b93f89710a923900e9c2e67d6b042567de0506",
+      "rgbPixelSha256": "fb7079e5ecbab95365ded8b166198b2ea5c6b8ac00fde76db2c3fb58db03317f",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-09",
+      "imageId": "2005f8cb-30c2-4c1e-b3f8-8b1a15de8f70",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-09_RadPrimer_image_09_plain_2005f8cb.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 153359,
+      "sha256": "818297f9f2d139176d6c7cb4977bf2ea9681a63625690990559c9b1ae0562d7c",
+      "rgbPixelSha256": "f68ee75bb4d3ed7df021a3505e7e20bdfbdb058aa696be27ab61175b26744167",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-10",
+      "imageId": "15c7ae4e-c15b-44bc-8e63-676ae487bf4e",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-10_RadPrimer_image_10_plain_15c7ae4e.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 99673,
+      "sha256": "76d4d311e65860c06d7e71e14480b0d38542d3f69b64060af319ecfeb7dc7402",
+      "rgbPixelSha256": "592abf9532eb9211e4de8bc424e9ea157f0b96b27d3501a467dd192bb3037bba",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-11",
+      "imageId": "e0a89728-3c6a-40ab-aaef-b00e5b602571",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-11_RadPrimer_image_11_plain_e0a89728.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 118128,
+      "sha256": "483f9d6663b1fe58b34c8b127650a9ca87c935009e438022b0ee4bf47552bbf5",
+      "rgbPixelSha256": "8e1fde8b2d0738e274abd72acfbca4756435aa46b664d391678fc4561322fcd2",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-12",
+      "imageId": "960089dc-f7bc-4de1-9f0a-93cf67c60ab1",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-12_RadPrimer_image_12_plain_960089dc.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 101471,
+      "sha256": "e14ca5a3d55650068da6ccd67f1f7b060b9a6722c50cf58ee448bfe36acf4003",
+      "rgbPixelSha256": "ee7229f972e28d6031c576b556fce0ed3bf3ffc06c2ef02fee67097da645e91b",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-13",
+      "imageId": "43e3b8cd-67cd-4b60-b8fd-6f1896fc9aaf",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-13_RadPrimer_image_13_plain_43e3b8cd.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 105144,
+      "sha256": "e8f9cbd1cfa9fecca23e4e56c749d6376bf881683825d6c12150862b77e24f2d",
+      "rgbPixelSha256": "2fe6c6ececf048ca84ea90c33a721cac373d45edeca0ee37458ad65eadc76e46",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-14",
+      "imageId": "8ee4c117-7d86-4689-914e-061501207fb9",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-14_RadPrimer_image_14_plain_8ee4c117.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 114736,
+      "sha256": "8693effc06397f50a74b5a294a56601a690a31348a8d9ab94787cd76fa11284e",
+      "rgbPixelSha256": "af1084e023cd13ec316bc31fbc93051811b24d023819f6b501f126c482e2aaf1",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-15",
+      "imageId": "9e09f4b2-8416-4643-beb1-e86dccac6f2a",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-15_RadPrimer_image_15_plain_9e09f4b2.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 152083,
+      "sha256": "2e18d28d1b35044b736cd40a04fac2e57dc29716b2ce85bafc5d0c787f06442c",
+      "rgbPixelSha256": "136f4e6f0068c9ee5c64eba9eeb541604ec5ca13bbef9853f04e1efafbce1bc6",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-16",
+      "imageId": "495b5346-5c7c-4f0f-8416-acf26172348f",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-16_RadPrimer_image_16_plain_495b5346.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 97922,
+      "sha256": "31160df928ef15e878b218a26ec3eea824574b84bc16ac00643aa4e4c6f66494",
+      "rgbPixelSha256": "dcba546707d46b2336c65b620130d4db33e14b9beda493b71cd4072821ed9cb3",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-17",
+      "imageId": "2719f1b6-8fd6-45f2-96d9-dc029c182958",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-17_RadPrimer_image_17_plain_2719f1b6.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 148683,
+      "sha256": "ff1811745ff5380b052430925a23880708ad8a5464537144aa559894099df0f2",
+      "rgbPixelSha256": "8c9715583208e9fecfaacfb33fc5cbfd9524c9b4a1489dcb07c88090cd328aa3",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-18",
+      "imageId": "01e5a5d6-1d8e-4148-87bf-11268aba4ea7",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-18_RadPrimer_image_18_plain_01e5a5d6.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 139844,
+      "sha256": "f110fd500b7214a6874ee42cb479377171999132c1f7caae58b84925c8773810",
+      "rgbPixelSha256": "f66f1c590b01cffa42c5592cea0d2523471ed3bd80803da392c709dba2b2a508",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-19",
+      "imageId": "a691859d-7a29-4e2d-bd6c-749e1b250ddf",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-19_RadPrimer_image_19_plain_a691859d.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 125309,
+      "sha256": "27f19fef773e125c493e8ca135c22f55a220fbb2726df7fe7f35d8db64c6007f",
+      "rgbPixelSha256": "66a07007388d9a203214b3d320f0ace7b68d267a8e60f69c1f7f7e7cdea39671",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "RP-20",
+      "imageId": "7f2d9491-4d9b-4ce4-b1b3-b380217a3b82",
+      "evidenceFilename": "image_evidence/RadPrimer/RP-20_RadPrimer_image_20_plain_7f2d9491.jpg",
+      "dimensions": [
+        900,
+        900
+      ],
+      "bytes": 135114,
+      "sha256": "ca60e1fa42783bc8ae03ce9dee061ddae38bd473eeef35d7af0f1565906a6325",
+      "rgbPixelSha256": "b43b994491f0b25da4997bb63163922acd263185358995e74433de18bd406d24",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-01",
+      "imageId": "9eb7f242-5e3e-4e79-a870-5d9ff10a76d5",
+      "evidenceFilename": "image_evidence/STATdx/SDX-01_STATdx_image_01_plain_9eb7f242.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 151078,
+      "sha256": "9febdfafe9e7b5f52b51042dfc812a2f5dd6e7f4dda713d462ba26fdff878298",
+      "rgbPixelSha256": "878a7b1cca6ccff338274119ba9b5b4e0a27a9dd53677f83963525f54c52bea7",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-02",
+      "imageId": "ed74d38e-8785-4a8f-9a12-8981eeaeff39",
+      "evidenceFilename": "image_evidence/STATdx/SDX-02_STATdx_image_02_plain_ed74d38e.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 71678,
+      "sha256": "60d10f26d1d70a134514d48b05394d6e7ac49e2fdf9119262039893c7dc3f7e0",
+      "rgbPixelSha256": "f07a52bae7aa676528a5b0764900a3e1ecf2ac1524660e29e4ca15e80a9d4006",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-03",
+      "imageId": "68f31777-4f02-4770-a1c0-42c46ad2ed72",
+      "evidenceFilename": "image_evidence/STATdx/SDX-03_STATdx_image_03_plain_68f31777.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 74527,
+      "sha256": "4f3966b6ee4914d7afe5efc8768a83452d376f3d1591888aa94bab79d88b0f39",
+      "rgbPixelSha256": "8e2917b56a0374d39efedf3659bd50f7580e696c2c342bf7e036f5a7089e801a",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-04",
+      "imageId": "6157b1ff-79dc-4bd9-8b91-dbcd72bc05ce",
+      "evidenceFilename": "image_evidence/STATdx/SDX-04_STATdx_image_04_plain_6157b1ff.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 179525,
+      "sha256": "34e8fad4797df84124510be3b75da210780a1a741099b1c6556921c5c737b953",
+      "rgbPixelSha256": "7f6641f2692b10cbf1e0c6777d67912da3b96198cac9ae4cdfb935246565bc35",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-05",
+      "imageId": "d2328e73-60b8-4e78-977f-01dac06d4531",
+      "evidenceFilename": "image_evidence/STATdx/SDX-05_STATdx_image_05_plain_d2328e73.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 135124,
+      "sha256": "6c6a06d8346064d87a1e705be3be1be283db4884bb99a4117e75997e888cd831",
+      "rgbPixelSha256": "a5c6d248571f04ee8b181ad330aadf26a91d4ee1047c02a8d3d93859cd690ef4",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-06",
+      "imageId": "1cf033db-b1ca-4c4a-b4c7-11e17310af43",
+      "evidenceFilename": "image_evidence/STATdx/SDX-06_STATdx_image_06_plain_1cf033db.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 73852,
+      "sha256": "082f19ad313e6f4bbb9fbc7741a313a3b7de94e743fda6e9aeaf77bb40c93c04",
+      "rgbPixelSha256": "0da5d4c60c57206c8f0b005093dba414b1bcb17d06374d13374b48385d1f22b5",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-07",
+      "imageId": "627689eb-2b45-41d1-955e-9119957fdd32",
+      "evidenceFilename": "image_evidence/STATdx/SDX-07_STATdx_image_07_plain_627689eb.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 111432,
+      "sha256": "0e2441c29697bfb723fe579c4ab44c15fef350d0a7b9563713e17481ca174fdc",
+      "rgbPixelSha256": "ad5a84586bf2ad112eda5a4df15080739c9599653272cf09ab1a3c5e81cf799e",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-08",
+      "imageId": "a5e6ae2f-bc56-4c97-a4bf-9695fbad9913",
+      "evidenceFilename": "image_evidence/STATdx/SDX-08_STATdx_image_08_plain_a5e6ae2f.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 152844,
+      "sha256": "f96b173796c12b218d971d81bd6bff7388abc0741ff8f24812302a7c930e8135",
+      "rgbPixelSha256": "9496a2530ed880dfcfde81e05f8d00ec80c9ecd1cd499b48d1a4ac915eb4018a",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-09",
+      "imageId": "d057904d-d7bf-498b-ae4e-a53469387fe3",
+      "evidenceFilename": "image_evidence/STATdx/SDX-09_STATdx_image_09_plain_d057904d.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 168919,
+      "sha256": "b7a498410e7e81054e34772eb5e4b87198fc9b6cb17b0baf2d2751863b474ff7",
+      "rgbPixelSha256": "48a85e33dd94a974149843d0cf819f4c5748fc99cd8177dc062d73f282cf7946",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-10",
+      "imageId": "71cfd466-fcfb-456e-bd27-7cc7351e06a7",
+      "evidenceFilename": "image_evidence/STATdx/SDX-10_STATdx_image_10_plain_71cfd466.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 146667,
+      "sha256": "cd305dd5a16b84ef72c54bb72c66fb197e046f3458d7e1bdfd9ee6cd863e6dce",
+      "rgbPixelSha256": "c75ad64fc5e4c2d8ca805f1240c94bffc8ada9f22eaa65b6b904e07dc2415a13",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-11",
+      "imageId": "2005f8cb-30c2-4c1e-b3f8-8b1a15de8f70",
+      "evidenceFilename": "image_evidence/STATdx/SDX-11_STATdx_image_11_plain_2005f8cb.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 174449,
+      "sha256": "c975c05c4161c44dcc47327a2dde7d7cbdf0915183a1357b4dbbc8af15be764f",
+      "rgbPixelSha256": "eaf64302ec12e739e1bc170a82eecb856f657bda89e58b02487947904f8f0ba0",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-12",
+      "imageId": "15c7ae4e-c15b-44bc-8e63-676ae487bf4e",
+      "evidenceFilename": "image_evidence/STATdx/SDX-12_STATdx_image_12_plain_15c7ae4e.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 115577,
+      "sha256": "521813a12599161375d3bbce2b7418ad8faa9232d0a40419c73603759c8464e8",
+      "rgbPixelSha256": "94d749dc0fb8802b89866c949f093364d140b6e39c57fe3cb32457c8ab12292b",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-13",
+      "imageId": "e0a89728-3c6a-40ab-aaef-b00e5b602571",
+      "evidenceFilename": "image_evidence/STATdx/SDX-13_STATdx_image_13_plain_e0a89728.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 147927,
+      "sha256": "9bb4528ff2d898062171c9f4ad5a281381eb0f04106f3a0e779b963155af2187",
+      "rgbPixelSha256": "46a1a714c7ae4875356c2809e5b44440fa9e53d5a6fa679fe2ba781e359584e1",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-14",
+      "imageId": "960089dc-f7bc-4de1-9f0a-93cf67c60ab1",
+      "evidenceFilename": "image_evidence/STATdx/SDX-14_STATdx_image_14_plain_960089dc.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 116691,
+      "sha256": "c5a7d12da9448caaef9917d8b3992e772c45407895a9e23a6d77c6b8c7919609",
+      "rgbPixelSha256": "05732a9555d5b32fc857af52194f26c341cb79d7e446c3047fc75f77e285a04f",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-15",
+      "imageId": "43e3b8cd-67cd-4b60-b8fd-6f1896fc9aaf",
+      "evidenceFilename": "image_evidence/STATdx/SDX-15_STATdx_image_15_plain_43e3b8cd.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 121337,
+      "sha256": "91405577ab23e6410907834d5b0597569dbb35044361937d1ef154da251dee3d",
+      "rgbPixelSha256": "171782414e20f58bdeb091c7a7129ea1b6341a542b1487d7b49a880cf2722191",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-16",
+      "imageId": "8ee4c117-7d86-4689-914e-061501207fb9",
+      "evidenceFilename": "image_evidence/STATdx/SDX-16_STATdx_image_16_plain_8ee4c117.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 129513,
+      "sha256": "a26bbff546220dacbc0df409d8753a1764c9153a7b6f2d3412206c7c4293e497",
+      "rgbPixelSha256": "8548994e8c59f606793f39da8e547740644215d19fe71a75924359022e72013b",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-17",
+      "imageId": "9e09f4b2-8416-4643-beb1-e86dccac6f2a",
+      "evidenceFilename": "image_evidence/STATdx/SDX-17_STATdx_image_17_plain_9e09f4b2.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 156159,
+      "sha256": "fa71fa20e7a511c446dd379e3bfc71aee7f9256d6219676bba5f30eb21c5e719",
+      "rgbPixelSha256": "215830a06af291bf203812e69ed2957360153de874de8ce47c8a997fdf087ebb",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-18",
+      "imageId": "495b5346-5c7c-4f0f-8416-acf26172348f",
+      "evidenceFilename": "image_evidence/STATdx/SDX-18_STATdx_image_18_plain_495b5346.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 112840,
+      "sha256": "df1c476e6b76571b92eaa12f3c8f7c99048e19453799983e3a2ec65fce1bc84e",
+      "rgbPixelSha256": "488883cd1f00d06c9f90e91623d35fc68d4d3789fddb750b721b7260ecc324e8",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-19",
+      "imageId": "2719f1b6-8fd6-45f2-96d9-dc029c182958",
+      "evidenceFilename": "image_evidence/STATdx/SDX-19_STATdx_image_19_plain_2719f1b6.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 142773,
+      "sha256": "1cb6c4438fc63e4f10c05446ab5e55589934464b5c79a872413d258af1cbd8b3",
+      "rgbPixelSha256": "2fab3f14001113bfd30d9ff8fc9dd70399c65d7c45ecdd1332f9ea69b03c9d22",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-20",
+      "imageId": "01e5a5d6-1d8e-4148-87bf-11268aba4ea7",
+      "evidenceFilename": "image_evidence/STATdx/SDX-20_STATdx_image_20_plain_01e5a5d6.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 145140,
+      "sha256": "24fc73a4a94a6898ff876fcf611bdd260ae516ebe42742d12c52cbe3aa3e1e59",
+      "rgbPixelSha256": "8020a3e47d28e88e254deeef4a92008624ef165260621e5cc9186d186cee6aee",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-21",
+      "imageId": "a691859d-7a29-4e2d-bd6c-749e1b250ddf",
+      "evidenceFilename": "image_evidence/STATdx/SDX-21_STATdx_image_21_plain_a691859d.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 142564,
+      "sha256": "f56110d617b156d38f7f8a19e0de90365e933b9a1a6e51a32f8882e1440f8b7a",
+      "rgbPixelSha256": "5135b4c0b4156072f5fc7f43257a6d4311c0d2f977f9b02ab4bf90c6edaeff28",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-22",
+      "imageId": "7f2d9491-4d9b-4ce4-b1b3-b380217a3b82",
+      "evidenceFilename": "image_evidence/STATdx/SDX-22_STATdx_image_22_plain_7f2d9491.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 161014,
+      "sha256": "65c914acf3880417b9cc6f0e884e411beb0517677e1e0b8f552caaa039b53831",
+      "rgbPixelSha256": "4256b5a78b3e1c25bfc3dcf3d5daa1f97925f232b19869d1c6b6e4af422813c5",
+      "decodedSuccessfully": true
+    },
+    {
+      "masterImageId": "SDX-23",
+      "imageId": "7374addb-3b50-4a87-8b56-21467977ed0b",
+      "evidenceFilename": "image_evidence/STATdx/SDX-23_STATdx_image_23_plain_7374addb.jpg",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 153708,
+      "sha256": "5a15e7f85ad30126887c9919f4753484314dfdbd259d81e9044788912d9f2b8e",
+      "rgbPixelSha256": "d117764ea558bb042d105424f37f196594c76ee8c66646e55d73b8d3b8cf88c7",
+      "decodedSuccessfully": true
+    }
+  ],
+  "stableIdCandidatePairs": [
+    {
+      "radPrimerImageId": "RP-01",
+      "statdxImageId": "SDX-01",
+      "stableImageId": "9eb7f242-5e3e-4e79-a870-5d9ff10a76d5",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_01.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-02",
+      "statdxImageId": "SDX-02",
+      "stableImageId": "ed74d38e-8785-4a8f-9a12-8981eeaeff39",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_01.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-03",
+      "statdxImageId": "SDX-04",
+      "stableImageId": "6157b1ff-79dc-4bd9-8b91-dbcd72bc05ce",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_01.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-04",
+      "statdxImageId": "SDX-05",
+      "stableImageId": "d2328e73-60b8-4e78-977f-01dac06d4531",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_01.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-05",
+      "statdxImageId": "SDX-06",
+      "stableImageId": "1cf033db-b1ca-4c4a-b4c7-11e17310af43",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_02.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-06",
+      "statdxImageId": "SDX-08",
+      "stableImageId": "a5e6ae2f-bc56-4c97-a4bf-9695fbad9913",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_02.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-07",
+      "statdxImageId": "SDX-09",
+      "stableImageId": "d057904d-d7bf-498b-ae4e-a53469387fe3",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_02.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-08",
+      "statdxImageId": "SDX-10",
+      "stableImageId": "71cfd466-fcfb-456e-bd27-7cc7351e06a7",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_02.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-09",
+      "statdxImageId": "SDX-11",
+      "stableImageId": "2005f8cb-30c2-4c1e-b3f8-8b1a15de8f70",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_03.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-10",
+      "statdxImageId": "SDX-12",
+      "stableImageId": "15c7ae4e-c15b-44bc-8e63-676ae487bf4e",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_03.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-11",
+      "statdxImageId": "SDX-13",
+      "stableImageId": "e0a89728-3c6a-40ab-aaef-b00e5b602571",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_03.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-12",
+      "statdxImageId": "SDX-14",
+      "stableImageId": "960089dc-f7bc-4de1-9f0a-93cf67c60ab1",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_03.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-13",
+      "statdxImageId": "SDX-15",
+      "stableImageId": "43e3b8cd-67cd-4b60-b8fd-6f1896fc9aaf",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_04.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-14",
+      "statdxImageId": "SDX-16",
+      "stableImageId": "8ee4c117-7d86-4689-914e-061501207fb9",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_04.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-15",
+      "statdxImageId": "SDX-17",
+      "stableImageId": "9e09f4b2-8416-4643-beb1-e86dccac6f2a",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_04.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-16",
+      "statdxImageId": "SDX-18",
+      "stableImageId": "495b5346-5c7c-4f0f-8416-acf26172348f",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_04.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-17",
+      "statdxImageId": "SDX-19",
+      "stableImageId": "2719f1b6-8fd6-45f2-96d9-dc029c182958",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_05.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-18",
+      "statdxImageId": "SDX-20",
+      "stableImageId": "01e5a5d6-1d8e-4148-87bf-11268aba4ea7",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_05.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-19",
+      "statdxImageId": "SDX-21",
+      "stableImageId": "a691859d-7a29-4e2d-bd6c-749e1b250ddf",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_05.jpg"
+    },
+    {
+      "radPrimerImageId": "RP-20",
+      "statdxImageId": "SDX-22",
+      "stableImageId": "7f2d9491-4d9b-4ce4-b1b3-b380217a3b82",
+      "sameFileHash": false,
+      "sameRgbPixelHash": false,
+      "contactSheet": "_codex_review/comparison_05.jpg"
+    }
+  ],
+  "supplementalStatdxImages": [
+    "SDX-03",
+    "SDX-07",
+    "SDX-23"
+  ]
+}

@@ -1,0 +1,392 @@
+{
+  "status": "passed",
+  "validatedAt": "2026-09-13T02:59:33.040267+00:00",
+  "finalNotes": 45,
+  "imageNotes": 35,
+  "textNotes": 10,
+  "selectedDistinctSourceImages": 47,
+  "diagnosticAssetsVerified": 96,
+  "auxiliaryCaptionIconsVerified": 9,
+  "referencedDiagnosticAssets": 94,
+  "missingReferencedMedia": [],
+  "captionChecks": [
+    {
+      "originalRow": 1,
+      "masterImageIds": [
+        "RP-01"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 2,
+      "masterImageIds": [
+        "RP-02"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 3,
+      "masterImageIds": [
+        "RP-03"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 4,
+      "masterImageIds": [
+        "RP-04"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 5,
+      "masterImageIds": [
+        "RP-05"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 6,
+      "masterImageIds": [
+        "RP-06"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 7,
+      "masterImageIds": [
+        "RP-07"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 8,
+      "masterImageIds": [
+        "RP-08"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 9,
+      "masterImageIds": [
+        "RP-09"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 10,
+      "masterImageIds": [
+        "RP-10"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 11,
+      "masterImageIds": [
+        "RP-11",
+        "RP-12"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 12,
+      "masterImageIds": [
+        "RP-13"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 13,
+      "masterImageIds": [
+        "RP-14"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 14,
+      "masterImageIds": [
+        "SDX-01"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 15,
+      "masterImageIds": [
+        "SDX-02"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 16,
+      "masterImageIds": [
+        "SDX-03"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 17,
+      "masterImageIds": [
+        "SDX-04",
+        "SDX-05"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 18,
+      "masterImageIds": [
+        "SDX-06",
+        "SDX-07"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 19,
+      "masterImageIds": [
+        "SDX-08",
+        "SDX-09"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 20,
+      "masterImageIds": [
+        "SDX-10",
+        "SDX-11"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 21,
+      "masterImageIds": [
+        "SDX-12",
+        "SDX-13"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 22,
+      "masterImageIds": [
+        "SDX-14",
+        "SDX-15",
+        "SDX-16"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 23,
+      "masterImageIds": [
+        "SDX-17",
+        "SDX-18"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 24,
+      "masterImageIds": [
+        "SDX-19"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 25,
+      "masterImageIds": [
+        "SDX-20"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 26,
+      "masterImageIds": [
+        "SDX-21",
+        "SDX-22"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 27,
+      "masterImageIds": [
+        "SDX-23"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 28,
+      "masterImageIds": [
+        "SDX-24"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 29,
+      "masterImageIds": [
+        "SDX-25"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 30,
+      "masterImageIds": [
+        "SDX-26",
+        "SDX-27"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 31,
+      "masterImageIds": [
+        "SDX-28",
+        "SDX-29"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 32,
+      "masterImageIds": [
+        "SDX-30"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 33,
+      "masterImageIds": [
+        "SDX-31"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 34,
+      "masterImageIds": [
+        "SDX-32"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    },
+    {
+      "originalRow": 36,
+      "masterImageIds": [
+        "SDX-34"
+      ],
+      "rawOriginalCaptionEqual": true,
+      "rawStackCapEqual": true,
+      "plainImageFieldUnchanged": true,
+      "annotatedOrderMatches": true
+    }
+  ],
+  "all48SourceCaptionsCompared": true,
+  "unchangedSummary": true,
+  "allFinalClinicalContextIdsUnchanged": true,
+  "atomicGroupsSplit": 0,
+  "columns": 22,
+  "standaloneDifferentialDrills": 0,
+  "outputSha256": {
+    "corrected_cards.tsv": "7e7afdeddf6835aaa4b2c4ba8ca6dc84f853c2e3a0753f46cc1babdf12a225a9",
+    "corrected_cards_anki_import.tsv": "9a10180b45b68b6bfb3d873ec05aa5c5da7ab788b38d5ca91dd3ae0df6b9672e",
+    "card_overlap_review.json": "6ae555ac3483c1e9bdac08450b4cad8bb0a2938cb3ffbdc18121ec0f044d4727"
+  },
+  "corebookGate": "passed",
+  "currentCorebookSnapshotId": "d6eed8c905964106a30e710193675e4626f49e252264fe4c0feaa429c821c73d",
+  "all48PlainFilesMatchOriginalStagedEvidence": true,
+  "all105FilesAlreadyMatchAnkiMedia": true,
+  "completedAt": "2026-09-13T03:01:49.104528+00:00"
+}
