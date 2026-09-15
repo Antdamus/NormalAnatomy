@@ -2,6 +2,29 @@
 
 This unpacked Edge extension replaces the manual console-paste step for RadPrimer article extraction.
 
+**Curriculum source library:** on an organ lesson page, use **Download curriculum
+sources** to save Basic, Intermediate, or both under one topic folder. The library
+preserves complete articles, references, captions, and both image versions, with
+resumable downloads and a report of repeated images across articles. See
+[collection and recovery](docs/source-library.md). Reload the extension and
+refresh RadPrimer once to activate the button. Version 4 also adds **Add to source
+collection** on STATdx article pages, using the existing STATdx extractor and
+shared image downloader. Selected supplements live under the same topic folder
+with source-labelled image names. Review requests track missing differentials,
+more image examples, and deeper coverage; Codex review suggestions can be imported
+and linked to the articles you choose.
+Version 5 simplifies collection to one **Download to [topic]** button. STATdx
+links are added and downloaded together; review notes are optional and collapsed,
+and related articles use searchable checkboxes.
+
+**Visual lectures:** choose **Generate visual lecture** to build an English
+pattern map first, followed automatically by a lecture using that map and the
+full source. The study page saves cases, original images and narration together,
+with Speechify playback and live-reader following. The popup also opens the saved
+lecture library. See [setup, behavior and recovery](docs/visual-lectures.md).
+This replaces the older narrative-only instructions below; card workflows retain
+their existing behavior.
+
 ## Build packaged prompts
 
 Run this from the repository root whenever you update prompt files:
@@ -33,7 +56,7 @@ This copies the current Normal and Pathology prompts into `edge_radprimer_extens
 7. Optionally enable `Open ChatGPT project and fill box`.
 8. Click `Extract + copy prompt package`.
 
-The complete prompt package is copied to the clipboard. If image downloads are enabled, selected images are staged under `Downloads\RadPrimer` using the same filename pattern as the old console workflow. Before a new image download run, the extension clears prior `Downloads\RadPrimer` files that Edge still has in download history, then downloads the current selected image set with overwrite behavior.
+The complete prompt package is copied to the clipboard. If image downloads are enabled, selected images are staged under `Downloads\RadPrimer` using the same filename pattern as the old console workflow. Retries preserve existing files. The extension reuses matching completed downloads, then its persistent image cache, and fetches only missing image variants. Source comparison, master-source evidence, card runs and IO queues share this cache. A new bundle can need a local copy under a different filename without fetching the source image again. Plain, annotated and different-resolution URLs remain separate. Status messages distinguish existing files, cached copies and new source downloads. See [image reuse](docs/image-reuse.md).
 
 To mirror images into Anki, start `tools\start-radprimer-anki-watcher.cmd` and leave it open. The watcher copies stable image files from `Downloads\RadPrimer` into `C:\Users\josem.000\AppData\Roaming\Anki2\User 1\collection.media`, matching the manual copy-paste workflow.
 
@@ -86,6 +109,10 @@ If RadPrimer and STATdx use different article titles for the same topic, set the
 
 After Codex finishes the fused source, import `master_source_import.json` from the popup's `Import master source files` control and enable `Use imported RadPrimer + STATdx master source`. Narrative and card runs then use the fused source package instead of the live page extraction, while still preserving the normal prompt format. The master source prompt includes `MASTER IMAGE REGISTRY` and `MASTER SOURCE MANIFEST` blocks so ChatGPT and Codex can distinguish `RP-05`/`RadPrimer image 5` from `SDX-04`/`STATdx image 4`. Audit metadata also keeps `imageRegistry`, `masterImageIds`, and `sourceQualifiedImages`, so mixed-source cards can be traced back to the exact source image.
 
+For a reviewed curriculum with several lectures, import one `master_source_library.json`. The extension stores every complete lecture bundle, activates the library's default lecture, and fills the **Lecture in imported library** menu. Choose a lecture and click **Use selected lecture** before running the visual-schema, narrative, or card workflow. Each bundle still contains whole source articles and its own manifest/image registry; selecting a lecture changes the active master source without re-importing the library. Single `master_source_import.json` imports remain supported.
+
+Curriculum card runs now use an explicit image selection from the illustrated review. Toggle **Selected for cards** or **Not selected for cards** beside each image or in the enlarged viewer, then **Prepare selected images for cards**. All images remain available in the lecture. Only the selected media enters the next card run; saved choices survive narration updates and portable export/import. The runner also offers **Mixed anatomy and pathology** and **Use master bundle recommendation**. Pancreas Foundations recommends Mixed; the other five Pancreas lectures recommend Pathology. See `docs/visual-lectures.md` for the complete review-to-card workflow.
+
 When the Speechify audio pill can identify a source-qualified current image, its jump action is also source-aware. A `RadPrimer image` jump stays in RadPrimer; a `STATdx image` jump focuses an open STATdx article tab and dispatches the image navigation there. Keep the relevant source article tabs open if you want cross-source image jumping during a fused lecture.
 
 This mode is best-effort because ChatGPT's web UI can change. The ChatGPT page also shows a floating status/result box while it waits, clicks the TSV download, and copies the audit wake-up message. Keep the extension popup open when possible. If waiting or scraping fails, the original full prompt package remains on the clipboard.
@@ -108,10 +135,18 @@ collection is empty. Reload this unpacked extension after updating it.
 Large-bank comparisons keep every card in the target scope and matching organ
 deck labels across specialties. Global caption matches require uncommon terms
 within the same caption, so generic caption words do not pull in almost the
-entire collection. Large prompts factor out repeated field names and deck paths
-without shortening questions/answers or dropping selected cards. If the packed
-comparison still exceeds the limit, a local review is required. Deck routing
-does not change to make a comparison fit.
+entire collection. Large prompts factor out repeated field names and deck paths.
+If that layout is still too large, group defaults, identical-ID aliases and a
+table of exactly repeated complete Q/A strings provide a second lossless layout.
+No questions/answers are shortened and no selected cards are dropped. Comparisons
+that still exceed the 350,000-character inline budget are attached as a complete
+JSON file to the configured ChatGPT conversation. The prompt requires reading
+every full Q/A from that file before drafting and stops if it cannot be read.
+The extension waits for the file to finish uploading before sending; failed,
+unfinished or missing uploads stop the send. For multipart source prompts, the
+file accompanies the final generation message. Deck routing stays the same.
+Reload the extension and refresh the ChatGPT page to activate this fallback.
+Clipboard and source packages retain the full comparison for local use.
 
 Prompts compare question/answer learning objectives across related topics and
 card categories. Current Anki cards are authoritative; generated TSVs are never

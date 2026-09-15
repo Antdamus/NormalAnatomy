@@ -432,7 +432,7 @@
     return map;
   };
 
-  const getImageIdsInOrder = () => {
+  const getImageIdsInOrder = (config = {}) => {
     const ids = [];
     const add = (id) => {
       if (!id || ids.includes(id)) return;
@@ -443,7 +443,7 @@
       add(extractIdFromUrl(img.getAttribute("src")));
     });
 
-    document.querySelectorAll("img[src*='/image/thumbnail/'], img[src^='/image/']").forEach((img) => {
+    document.querySelectorAll(config.sourceLibrary ? ".case img[src*='/image/'], .qa-case img[src*='/image/']" : "img[src*='/image/thumbnail/'], img[src^='/image/']").forEach((img) => {
       add(extractIdFromUrl(img.getAttribute("src")));
     });
 
@@ -456,7 +456,7 @@
       ...buildCaptionMapFromMediaCards(config),
       ...buildCaptionMapFromModal(config)
     ]);
-    const ids = getImageIdsInOrder();
+    const ids = getImageIdsInOrder(config);
     const resolvedFilePrefix = slugifyFilePrefix(title);
 
     return {
@@ -653,7 +653,99 @@ ${buildSourceAttributionBlock(config)}
     };
   };
 
+  // Source-library mode uses the same title, breadcrumb, image ordering, Caption
+  // view and full-size image URL helpers as the existing prompt/export workflow.
+  // It adds lossless source HTML and section bookkeeping without Anki rewrites.
+  const buildSourceLibraryCapture = async (metadataOnly = false) => {
+    const header = document.querySelector('h1[data-document-id], .document-header__document-title');
+    const id = header?.getAttribute('data-document-id') || getDocumentId();
+    const title = getArticleTitle();
+    const section = location.pathname.match(/\/(references|cases|anatomy|ddx)\/?$/)?.[1] || 'article';
+    const result = {kind:'article',sourceKind:'statdx',id,title,url:location.href,section,collectedAt:new Date().toISOString(),
+      breadcrumbs:getBreadcrumbTrail(title),authors:[...document.querySelectorAll('.document-header__author-link, .qa-document-author-link')].map(n=>cleanText(n.textContent)),
+      images:[],resources:[],headings:[],relatedArticles:[],errors:[],expectedImages:0};
+    if(!header || !id || !title || document.querySelector('.document-page__content--desktop [role="alert"]')?.textContent.includes('Loading'))return {...result,kind:'unavailable'};
+    if(metadataOnly)return result;
+    const roots = [...document.querySelectorAll(section==='references'?'.selected-references':section==='cases'?'.case-group, .qa-case-group':section==='anatomy'||section==='ddx'?'.document-related':'.sanitized-html.document-text, .document-text')];
+    let root=roots[0];
+    // Case categories can occupy separate sibling groups; archive their common
+    // container so none disappear merely because they are in a later category.
+    if(root)while(!roots.every(n=>root.contains(n)))root=root.parentElement;
+    if(!root)return {...result,kind:'unavailable'};
+    const mainUrl = new URL('/document/v2/'+id,location.origin).href;
+    result.sectionLinks=[...new Map([...document.querySelectorAll('a[href]')].flatMap(a=>{
+      const match=new URL(a.href).pathname.match(new RegExp('^/document/(?:v2/|[^/]+/)?'+id+'/(references|cases|anatomy|ddx)/?$','i'));
+      return match?[[match[1],{section:match[1],url:mainUrl+'/'+match[1],count:Number(cleanText(a.textContent).match(/\((\d+)\)/)?.[1]) || 0}]]:[];
+    })).values()];
+    const resources=new Map();
+    const cleanHtml=html=>{
+      const box=document.createElement('div');box.innerHTML=html;
+      box.querySelectorAll('script,style,noscript,iframe,object,embed,form,input,select,textarea,link,meta,svg,canvas').forEach(n=>n.remove());
+      box.querySelectorAll('button').forEach(n=>n.replaceWith(document.createTextNode(n.textContent)));
+      for(const n of box.querySelectorAll('*')){
+        for(const a of [...n.attributes])if(!['href','src','alt','title','colspan','rowspan','id'].includes(a.name))n.removeAttribute(a.name);
+        if(n.hasAttribute('href')){try{const u=new URL(n.getAttribute('href'),location.href);if(!['http:','https:'].includes(u.protocol))throw Error();n.setAttribute('href',u.href);n.setAttribute('rel','noreferrer');}catch{n.removeAttribute('href');}}
+        if(n.hasAttribute('src')){try{const u=new URL(n.getAttribute('src'),location.href);if(n.tagName!=='IMG'||u.origin!==location.origin||!/^\/(img|image)\//.test(u.pathname))throw Error();n.setAttribute('src',u.href);resources.set(u.href,{url:u.href,alt:n.alt || 'Inline source image'});}catch{n.replaceWith(document.createTextNode('[Source image unavailable]'));}}
+      }
+      return box.innerHTML;
+    };
+    const textOf=html=>{const box=document.createElement('div');box.innerHTML=html;box.querySelectorAll('img').forEach(n=>n.replaceWith(document.createTextNode(' ['+(n.alt || 'image')+'] ')));box.querySelectorAll('li,p,h1,h2,h3,h4,h5,h6,div,tr,br').forEach(n=>{n.prepend('\n');n.append('\n');});return box.textContent.replace(/[ \t]+/g,' ').replace(/ *\n */g,'\n').replace(/\n{3,}/g,'\n\n').trim();};
+    const totals=[...document.querySelectorAll('.gallery-aria-live-announcement')].map(n=>Number(n.textContent.match(/of\s+(\d+)/i)?.[1])).filter(Number.isFinite);
+    if(section==='cases'){
+      for(const c of root.querySelectorAll('.case, .qa-case'))if(!c.querySelector('.case__information'))c.querySelector('.case__toggle-button')?.click();
+      const until=Date.now()+5000;
+      while(Date.now()<until && [...root.querySelectorAll('.case, .qa-case')].some(c=>!c.querySelector('.case__information')))await sleep(100);
+    }
+    if(section==='article'||section==='cases'){
+      const captured=await getImages({keepCaptionHtml:true,sourceLibrary:true},title);
+      const byId=new Map(captured.images.map(i=>[i.imageId,i]));
+      const occurrences=[...document.querySelectorAll(section==='cases'?'.case img[src*="/image/"], .qa-case img[src*="/image/"]':'.media-card img[src*="/image/"], .qa-media-card img[src*="/image/"]')].filter(img=>!img.closest('.document-card') && byId.has(extractIdFromUrl(img.getAttribute('src'))));
+      result.images=occurrences.map((img,index)=>{
+        const i=byId.get(extractIdFromUrl(img.getAttribute('src')));
+        const card=img?.closest('.media-card, .qa-media-card'),c=img?.closest('.case, .qa-case');
+        const caption=card?.querySelector('.qa-media-card__caption, .media-card__caption') || c?.querySelector('.qa-case__data--description .sanitized-html, .qa-case__data--description');
+        const rawCaption=caption?.innerHTML || '',captionHtml=cleanHtml(rawCaption);
+        const group=cleanText(card?.querySelector('.media-card__title')?.textContent || c?.querySelector('.case__name')?.textContent || img?.closest('.media-group, .qa-media-group')?.querySelector('h2,h3,h4')?.textContent);
+        return {number:index+1,id:i.imageId,group,groupImageNumber:Number(img?.alt?.match(/image\s+(\d+)\s+of/i)?.[1]) || index+1,
+          captionScope:c?'case':'image',rawCaption,captionHtml,captionText:textOf(captionHtml),plainUrl:i.plainUrl,annotatedUrl:i.annotUrl};
+      });
+      result.expectedImages=section==='article' && totals.length?totals.reduce((a,b)=>a+b,0):result.images.length;
+      result.countBasis=totals.length&&section==='article'?'native gallery totals':'all image IDs exposed by the source Caption/case view';
+      if(result.images.length!==result.expectedImages)result.errors.push('Gallery count mismatch: '+result.images.length+' of '+result.expectedImages+' images captured.');
+      for(const i of result.images)if(!i.captionText)result.errors.push('Image '+i.number+' has no captured caption.');
+    }
+    const copy=root.cloneNode(true);
+    // Gallery images are saved as full-size pairs below, not inline thumbnails.
+    copy.querySelectorAll('.image-gallery, .media-card, .qa-media-card, .Gallery, .gallery, .document-card img').forEach(n=>n.remove());
+    result.sourceHtml=root.innerHTML;
+    result.articleHtml=cleanHtml(copy.innerHTML);result.articleText=textOf(result.articleHtml);
+    result.headings=[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(n=>({level:Number(n.tagName[1]),text:cleanText(n.textContent)}));
+    if(!result.articleText)result.errors.push('No source text was captured.');
+    if(section==='cases'){
+      const cases=[...root.querySelectorAll('.case, .qa-case')];
+      const expected=result.sectionLinks.find(l=>l.section===section)?.count;
+      if(expected && expected!==cases.length)result.errors.push('Case count mismatch: '+cases.length+' of '+expected+'.');
+      for(const c of cases){const images=[...c.querySelectorAll('img[src*="/image/"]')];const expectedImages=Number(images[0]?.alt?.match(/of\s+(\d+)/)?.[1]);if(expectedImages && expectedImages!==images.length)result.errors.push('Incomplete images for '+cleanText(c.querySelector('.case__name')?.textContent));if(!c.querySelector('.case__information'))result.errors.push('Case details did not open.');}
+    }
+    if(section==='references'){
+      const expected=result.sectionLinks.find(l=>l.section===section)?.count;
+      if(expected && root.querySelectorAll('ol > li').length!==expected)result.errors.push('Reference count mismatch.');
+    }
+    for(const card of root.querySelectorAll('.document-card')){
+      const a=card.querySelector('.document-card__title-link');if(a)result.relatedArticles.push({id:a.getAttribute('data-document-id'),title:cleanText(a.textContent),url:a.href,section,imageCount:Number(card.querySelector('[data-image-count]')?.getAttribute('data-image-count')) || 0});
+    }
+    if(section==='anatomy'||section==='ddx'){
+      const expected=result.sectionLinks.find(l=>l.section===section)?.count;
+      if(expected && expected!==result.relatedArticles.length)result.errors.push('Related article count mismatch.');
+    }
+    result.resources=[...resources.values()];return result;
+  };
+
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+    if(message?.type==='SOURCE_LIBRARY_STATDX_CAPTURE'){
+      buildSourceLibraryCapture(Boolean(message.metadataOnly)).then(result=>sendResponse({ok:true,result})).catch(error=>sendResponse({ok:false,error:error.message}));
+      return true;
+    }
     if (message?.type !== "RADPRIMER_EXTRACT") return false;
 
     (async () => {

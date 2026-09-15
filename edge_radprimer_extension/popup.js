@@ -2,10 +2,12 @@ const WORKFLOW_MODE_OPTIONS = [
   ["io_queue", "Build IO queue"],
   ["no_pictures", "Build cards without images"],
   ["chatgpt_cards", "Build cards with images"],
-  ["narrative", "Narrative mode"]
+  ["narrative", "Generate visual lecture"]
 ];
 
 const MODE_OPTIONS = {
+  auto: WORKFLOW_MODE_OPTIONS,
+  mixed: WORKFLOW_MODE_OPTIONS,
   pathology: WORKFLOW_MODE_OPTIONS,
   normal: WORKFLOW_MODE_OPTIONS
 };
@@ -63,7 +65,7 @@ const DEFAULTS = {
   speechifyAutoSave: false,
   speechifyAutoPlayAfterSave: false,
   speechifyKeepAwake: false,
-  speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
+  speechifyFolderUrl: "https://app.speechify.com/library?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
   speechifyFolderName: "Musculoskeletal",
   speechifyFolderId: "c00e2ad9-89b5-4829-9884-cde0dc8b82a7",
   speechifyFolderChain: [
@@ -79,6 +81,7 @@ const DEFAULTS = {
 };
 
 const $ = (id) => document.getElementById(id);
+document.getElementById("visualLibrary").addEventListener("click", () => chrome.runtime.sendMessage({ type: "VISUAL_LECTURE_OPEN" }));
 
 const fields = [
   "engine",
@@ -147,8 +150,8 @@ function normalizeVisibleMode(engine, mode) {
 
 function syncPanels() {
   const engine = $("engine").value;
-  $("pathologyOptions").classList.toggle("hidden", engine !== "pathology");
-  $("normalOptions").classList.toggle("hidden", engine !== "normal");
+  $("pathologyOptions").classList.toggle("hidden", engine === "normal");
+  $("normalOptions").classList.toggle("hidden", engine === "pathology");
 }
 
 function buildSpeechifyFolderUrl(folderId) {
@@ -195,6 +198,7 @@ function getStoredSpeechifyFolderUrl(values) {
 
 function isNarrativeSpeechifyMode(settings) {
   if (!settings) return false;
+  if (["auto", "mixed"].includes(settings.engine)) return settings.mode === "narrative";
   if (settings.engine === "pathology") return settings.mode === "narrative";
   if (settings.engine === "normal") {
     return settings.mode === "narrative";
@@ -257,7 +261,7 @@ function syncSpeechifyAvailability() {
   const auditEligible = isNonNarrativeMode(engineMode);
   $("autoSendToSpeechify").disabled = !eligible;
   $("speechifyAutoSave").disabled = true;
-  $("speechifyAutoSave").checked = false;
+  $("speechifyAutoSave").checked = eligible;
   $("captureCardAuditBundle").disabled = !auditEligible || forcedAudit;
   if (!eligible) {
     $("autoSendToSpeechify").checked = false;
@@ -279,7 +283,7 @@ function applyNarrativeModeDefaults() {
   $("openChatGPT").checked = true;
   $("autoSubmitChatGPT").checked = true;
   $("autoSendToSpeechify").checked = true;
-  $("speechifyAutoSave").checked = false;
+  $("speechifyAutoSave").checked = true;
   $("downloadImages").checked = shouldNarrativeDownloadImages(engineMode);
 }
 
@@ -413,7 +417,7 @@ function readForm() {
     useMasterSource: $("useMasterSource").checked,
     sourcePairingKey: $("sourcePairingKey").value.trim(),
     autoSendToSpeechify: speechifyEligible ? true : autoSendToSpeechify,
-    speechifyAutoSave: false,
+    speechifyAutoSave: speechifyEligible,
     speechifyAutoPlayAfterSave: false,
     speechifyKeepAwake: $("speechifyKeepAwake").checked,
     speechifyFolderUrl: speechifyFolder.url,
@@ -485,6 +489,17 @@ async function saveForm() {
 }
 
 async function loadPrompt(engine, mode) {
+  if (engine === "auto") {
+    const response = await sendGetMasterSourceMessage();
+    const recommended = response?.masterSource?.teachingFramework?.engine;
+    if (!recommended) throw new Error("Activate a master bundle or choose a teaching framework first.");
+    return loadPrompt(recommended, mode);
+  }
+  if (engine === "mixed") {
+    const response = await fetch(chrome.runtime.getURL("prompts/mixed_framework.txt"));
+    if (!response.ok) throw new Error("Could not load the mixed teaching framework.");
+    return `${await loadPrompt("pathology", mode)}\n\n${await response.text()}`;
+  }
   const file = PROMPT_FILES[engine]?.[mode];
   if (!file) throw new Error(`No packaged prompt for ${engine}/${mode}`);
   const response = await fetch(chrome.runtime.getURL(file));
@@ -599,6 +614,59 @@ function sendGetMasterSourceMessage() {
   });
 }
 
+function sendSetActiveMasterSourceBundleMessage(bundleId) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ type: "SET_ACTIVE_MASTER_SOURCE_BUNDLE", bundleId }, (response) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message));
+      else resolve(response);
+    });
+  });
+}
+
+function populateMasterSourceLibrarySelect(library) {
+  const select = $("masterSourceBundleSelect");
+  const activate = $("activateMasterSourceBundle");
+  if (!select || !activate) return;
+  const bundles = Array.isArray(library?.bundles) ? library.bundles : [];
+  select.replaceChildren();
+  if (!bundles.length) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = "Import a master source library first";
+    select.appendChild(option);
+    select.disabled = true;
+    activate.disabled = true;
+    return;
+  }
+  bundles.forEach((bundle, index) => {
+    const option = document.createElement("option");
+    option.value = bundle.bundleId;
+    option.textContent = `${index + 1}. ${bundle.articleTitle} (${bundle.sourceArticleCount || 0} articles, ${bundle.imageCount || 0} images)`;
+    select.appendChild(option);
+  });
+  select.value = library.activeBundleId || bundles[0].bundleId;
+  select.disabled = false;
+  activate.disabled = false;
+}
+
+async function refreshMasterSourceLibrarySelect() {
+  try {
+    const response = await sendGetMasterSourceMessage();
+    if (response?.ok) {
+      populateMasterSourceLibrarySelect(response.library);
+      showFrameworkRecommendation(response.masterSource);
+    }
+  } catch (error) {
+    console.warn("[RadPrimer] Could not refresh master source library selector.", error);
+  }
+}
+
+function showFrameworkRecommendation(source) {
+  const framework = source?.teachingFramework;
+  $("frameworkRecommendation").textContent = framework ? `Recommended: ${framework.label}. ${framework.reason || ""}` : "Activate a master bundle to see its recommended framework.";
+}
+
 function readFileAsText(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -611,7 +679,7 @@ function readFileAsText(file) {
 async function readMasterSourceFileInput() {
   const input = $("masterSourceFiles");
   const files = Array.from(input?.files || []);
-  if (!files.length) throw new Error("Choose master_source_import.json or the master source files first.");
+  if (!files.length) throw new Error("Choose master_source_library.json, master_source_import.json, or the master source files first.");
   return Promise.all(
     files.map(async (file) => ({
       name: file.name,
@@ -942,7 +1010,7 @@ async function openChatGptAndFill(settings, packageText, articleTitle = "") {
     await installChatGptDraftQuotaGuard(tab.id);
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ["chatgpt-paster.js"]
+      files: ["corebook-chatgpt-attachment.js", "chatgpt-paster.js"]
     });
     response = await sendChatGptFillMessage(tab.id, composerText, settings, articleTitle);
   } catch (error) {
@@ -1077,7 +1145,7 @@ async function run() {
   try {
     const settings = readForm();
     await saveForm();
-    const tab = await getActiveTab();
+    const tab = settings.useMasterSource ? await getActiveBrowserTab() : await getActiveTab();
 
     if (isIoQueueMode(settings)) {
       setStatus("Building image-occlusion queue...");
@@ -1087,9 +1155,11 @@ async function run() {
       return;
     }
 
-    if (settings.useMasterSource || shouldDelegateGroupingPreflight(settings) || shouldCaptureCardAuditBundle(settings)) {
+    if (isNarrativeSpeechifyMode(settings) || settings.useMasterSource || shouldDelegateGroupingPreflight(settings) || shouldCaptureCardAuditBundle(settings)) {
       setStatus(
-        settings.useMasterSource
+        isNarrativeSpeechifyMode(settings)
+          ? "Preparing the visual map and lecture..."
+          : settings.useMasterSource
           ? "Starting master-source run through the page runner..."
           : shouldDelegateGroupingPreflight(settings)
           ? "Starting grouping preflight through the page runner..."
@@ -1127,7 +1197,7 @@ async function run() {
       setStatus("Downloading selected images...");
       const downloadResponse = await sendDownloadMessage(response.downloadFiles, settings);
       if (!downloadResponse?.ok) throw new Error(downloadResponse?.error || "Download failed.");
-      downloadLine = `Downloaded ${downloadResponse.count} file(s) to Downloads\\RadPrimer.`;
+      downloadLine = downloadResponse.message || `Ready: ${downloadResponse.count} image file(s) in Downloads\\RadPrimer.`;
     } else if (settings.downloadImages) {
       downloadLine = "No selected image files to download.";
     }
@@ -1415,12 +1485,20 @@ async function importMasterSource() {
     if (!response?.ok) throw new Error(response?.error || "Master source import failed.");
 
     $("useMasterSource").checked = true;
+    $("engine").value = "auto";
+    populateModes("auto", $("mode").value); syncPanels();
+    showFrameworkRecommendation(response.masterSource);
     await saveForm();
 
     const source = response.masterSource || {};
+    populateMasterSourceLibrarySelect(response.library);
+    const libraryLine = response.library?.bundles?.length
+      ? `Library: ${response.library.libraryTitle} (${response.library.bundles.length} lectures)`
+      : "";
     setStatus(
       [
-        "Imported master source.",
+        response.library ? "Imported master source library." : "Imported master source.",
+        libraryLine,
         `Title: ${source.articleTitle || "[unknown]"}`,
         `Images: ${source.imageCount ?? 0}`,
         `Downloadable image files: ${source.downloadFileCount ?? 0}`,
@@ -1436,11 +1514,45 @@ async function importMasterSource() {
   }
 }
 
+async function activateMasterSourceBundle() {
+  const button = $("activateMasterSourceBundle");
+  const select = $("masterSourceBundleSelect");
+  button.disabled = true;
+  try {
+    const bundleId = select.value;
+    if (!bundleId) throw new Error("Choose a lecture first.");
+    const response = await sendSetActiveMasterSourceBundleMessage(bundleId);
+    if (!response?.ok) throw new Error(response?.error || "Could not activate the selected lecture.");
+    populateMasterSourceLibrarySelect(response.library);
+    $("useMasterSource").checked = true;
+    $("engine").value = "auto";
+    populateModes("auto", $("mode").value); syncPanels();
+    showFrameworkRecommendation(response.masterSource);
+    await saveForm();
+    const source = response.masterSource || {};
+    setStatus(
+      [
+        "Selected lecture is now active.",
+        `Title: ${source.articleTitle || "[unknown]"}`,
+        `Source articles: ${source.sourceArticleCount ?? 0}`,
+        `Images: ${source.imageCount ?? 0}`,
+        "The next visual-schema or card run will use this complete lecture bundle."
+      ].join("\n")
+    );
+  } catch (error) {
+    setStatus(`Master source selection error: ${error?.message || error}`);
+  } finally {
+    button.disabled = !select?.value;
+  }
+}
+
 async function showMasterSource() {
   try {
     const response = await sendGetMasterSourceMessage();
     if (!response?.ok) throw new Error(response?.error || "Could not read imported master source.");
     const source = response.masterSource;
+    populateMasterSourceLibrarySelect(response.library);
+    showFrameworkRecommendation(source);
     if (!source) {
       setStatus("No master source is imported yet.");
       return;
@@ -1448,6 +1560,9 @@ async function showMasterSource() {
     setStatus(
       [
         "Imported master source is available.",
+        response.library?.bundles?.length
+          ? `Library: ${response.library.libraryTitle} (${response.library.bundles.length} lectures)`
+          : "",
         `Title: ${source.articleTitle || "[unknown]"}`,
         `Imported: ${source.importedAt || "[unknown]"}`,
         `Images: ${source.imageCount ?? 0}`,
@@ -1464,6 +1579,7 @@ async function init() {
   const stored = await chrome.storage.local.get("radprimerRunnerSettings");
   applyForm({ ...DEFAULTS, ...(stored.radprimerRunnerSettings || {}) });
   await syncSourceCompareButtons();
+  await refreshMasterSourceLibrarySelect();
 
   $("engine").addEventListener("change", async () => {
     populateModes($("engine").value, $("mode").value);
@@ -1523,6 +1639,7 @@ async function init() {
   $("exportSourceCompare").addEventListener("click", exportSourceCompare);
   $("buildMasterSource").addEventListener("click", buildMasterSource);
   $("importMasterSource").addEventListener("click", importMasterSource);
+  $("activateMasterSourceBundle").addEventListener("click", activateMasterSourceBundle);
   $("showMasterSource").addEventListener("click", showMasterSource);
   $("copyMasterWake").addEventListener("click", async () => {
     const text = $("masterWakeText").value;

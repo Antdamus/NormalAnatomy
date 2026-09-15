@@ -18,6 +18,8 @@
     'Keep IDs/overlap decisions out of learner-facing prose. Anki does not provide medical source evidence; verify new claims against the article/Core evidence.',
     'The selected context includes the complete target scope, matching organ deck labels across specialties, and focused lexical candidates across all Corebook. Retrieval is not a semantic guarantee. A full snapshot is retained for audit.',
     'When format is deck-grouped-rows-v1, every row follows the columns list and inherits its group deck. All selected questions, answers and IDs are present without truncation. Read every row.',
+    'When format is deck-grouped-defaults-v2, start each row with its group defaults, overlay the values in that group\'s columns order, then resolve aliases by copying the named field. When textTable is nonempty, integer question/answer values refer to the zero-based textTable entry; strings are literal. These are exact shared values, not summaries. Read every row with all inherited fields and referenced text.',
+    'When format is entries-file-v1, entries contains the complete selected comparison without packing. When format is attached-entries-v1, load the named JSON attachment using file/code tools and verify its snapshotId, collectionIdentity and selectedCount against the manifest. Read every full question and answer in manageable batches before drafting; search snippets or a sample are not a complete review. If the file is missing, unreadable or incomplete, stop before generation and report the incomplete check.',
   ].join('\n');
   function assertFresh(bank, now = Date.now(), maxAge = 15 * 60 * 1000) {
     if (!bank || bank.schemaVersion !== 1 || bank.complete !== true || bank.scopeRoot !== 'Corebook' ||
@@ -34,6 +36,46 @@
     return new Set(String(value || '').toLowerCase().replace(/<[^>]*>/g, ' ').match(/[a-z0-9]+/g)?.filter(t => t.length > 2 && !stop.has(t)) || []);
   }
   const MAX_CONTEXT_CHARS = 350000;
+  function packContextDefaults(data) {
+    const columns = ['entryId','noteId','cardId','stableId','state','cardType','suspended','imageRecognition','question','answer'];
+    const groups = new Map();
+    const textCounts = new Map();
+    let canReferenceText = true;
+    for (const entry of data.entries) {
+      const row = Object.fromEntries(columns.map(key => [key, entry[key] ?? null]));
+      // Keep removal states apart so a retained ID alias never hides a history ID.
+      const key = JSON.stringify([entry.deck, row.state]);
+      if (!groups.has(key)) groups.set(key, {deck:entry.deck, entries:[]});
+      groups.get(key).entries.push(row);
+      for (const field of ['question','answer']) {
+        const value = row[field];
+        if (value !== null && typeof value !== 'string') canReferenceText = false;
+        if (typeof value === 'string') textCounts.set(value, (textCounts.get(value) || 0) + 1);
+      }
+    }
+    const textTable = [];
+    if (canReferenceText) for (const [value, count] of textCounts) {
+      // Only share complete, exactly equal text. Never paraphrase or split Q/A.
+      const referenceChars = String(textTable.length).length;
+      if (count > 1 && (count - 1) * JSON.stringify(value).length > count * referenceChars + 4) textTable.push(value);
+    }
+    const references = new Map(textTable.map((value, index) => [value,index]));
+    const cell = (key, value) => ['question','answer'].includes(key) && references.has(value) ? references.get(value) : value;
+    const deckGroups = [];
+    for (const group of groups.values()) {
+      const rows = group.entries, first = rows[0];
+      const defaults = {deck:group.deck}, aliases = {}, rowColumns = [];
+      for (const key of columns) {
+        if (rows.every(row => row[key] === first[key])) defaults[key] = cell(key, first[key]);
+        else if (['entryId','noteId'].includes(key) && rows.every(row => row[key] === row.cardId)) aliases[key] = 'cardId';
+        else rowColumns.push(key);
+      }
+      deckGroups.push({defaults, ...(Object.keys(aliases).length ? {aliases} : {}), columns:rowColumns,
+        rows:rows.map(row => rowColumns.map(key => cell(key,row[key])))});
+    }
+    const {entries, ...metadata} = data;
+    return {...metadata, format:'deck-grouped-defaults-v2', textTable, deckGroups};
+  }
   function context(bank, {deckName = '', title = '', captions = []} = {}) {
     assertFresh(bank);
     const parts = deckName.split('::');
@@ -91,9 +133,23 @@
       serialized = JSON.stringify({...metadata, format, columns,
         deckGroups:[...groups].map(([deck, rows]) => ({deck, rows}))});
     }
-    // Do not silently trim the organ bank and then claim it was compared.
-    if (serialized.length > MAX_CONTEXT_CHARS) throw new Error(`The Corebook comparison still contains ${selected.length} related cards (${serialized.length.toLocaleString()} characters after lossless packing). A local review is required before generation; keep the current deck routing.`);
-    return {data, format, serializedChars:serialized.length,
+    if (serialized.length > MAX_CONTEXT_CHARS) {
+      const compact = packContextDefaults(data);
+      const compactText = JSON.stringify(compact);
+      if (compactText.length < serialized.length) {
+        format = compact.format;
+        serialized = compactText;
+      }
+    }
+    // This is an inline transport budget, not a limit on the retained bank.
+    // Files use ordinary complete records so file/code readers need no decoder.
+    const packedChars = serialized.length;
+    const attachmentRequired = packedChars > MAX_CONTEXT_CHARS;
+    if (attachmentRequired) {
+      format = 'entries-file-v1';
+      serialized = JSON.stringify({...data, format});
+    }
+    return {data, format, serializedChars:serialized.length, packedChars, attachmentRequired,
       text: POLICY + '\n\nBEGIN_COREBOOK_CARD_DATA\n' + serialized + '\nEND_COREBOOK_CARD_DATA'};
   }
   function isCardMode(settings) {

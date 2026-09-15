@@ -246,30 +246,46 @@
 
   const normalizeForComposerCheck = (text) => {
     return String(text || "")
-      .replace(/\u00a0/g, " ")
-      .replace(/\r\n/g, "\n")
-      .replace(/[ \t]+/g, " ")
+      // innerText inserts presentation-only newlines between ProseMirror <p>s.
+      // Normalize whitespace for comparison only; never rewrite the prompt.
+      .replace(/\s+/g, " ")
       .trim();
   };
 
   const composerLooksFilled = (editor, text) => {
     const actual = normalizeForComposerCheck(getComposerText(editor));
     const expected = normalizeForComposerCheck(text);
-    if (!actual) return false;
-    if (!expected) return true;
+    return Boolean(actual) && actual === expected;
+  };
 
-    const start = expected.slice(0, Math.min(80, expected.length));
-    const end = expected.slice(Math.max(0, expected.length - 80));
-    const hasStart = !start || actual.includes(start);
-    const hasEnd = !end || actual.includes(end);
-    const lengthRatio = actual.length / expected.length;
+  const waitForCompleteComposer = async (text, timeoutMs = 8000) => {
+    let stableEditor = null, stableSince = 0;
+    return waitFor(() => {
+      // The app can replace the DOM editor after input; never verify a detached
+      // element that still happens to contain our original text.
+      const current = getComposerEditor();
+      if (!current || current.isConnected === false || !composerLooksFilled(current, text)) {
+        stableEditor = null; stableSince = 0; return null;
+      }
+      if (current !== stableEditor) { stableEditor = current; stableSince = Date.now(); }
+      return Date.now() - stableSince >= 600 ? current : null;
+    }, timeoutMs, 150);
+  };
 
-    if (expected.length < 5000) return hasStart && hasEnd;
+  const fillVerifiedComposer = async (editor, text, preferFastSet, onRetry = () => {}) => {
+    await clearAndFillComposer(editor, text, preferFastSet);
+    let ready = await waitForCompleteComposer(text);
+    if (ready) return ready;
 
-    // Long ProseMirror inserts can be visually complete while innerText is still
-    // normalized, virtualized, or delayed. Do not block submission if the editor
-    // clearly contains substantial prompt text.
-    return (hasStart && (hasEnd || lengthRatio > 0.7)) || actual.length > 2000;
+    onRetry();
+    const current = await waitForComposerEditor();
+    if (!current) throw new Error("ChatGPT composer disappeared while preparing the prompt. This message was not sent.");
+    // One bounded recovery through the browser's normal edit events when the
+    // fast DOM update is replaced or only partially retained by the app.
+    await clearAndFillComposer(current, text, false);
+    ready = await waitForCompleteComposer(text);
+    if (ready) return ready;
+    throw new Error("ChatGPT did not retain the complete prompt after retrying. This message was not sent.");
   };
 
   const parseChatGptProjectRoute = (rawUrl) => {
@@ -607,17 +623,19 @@
     editor.dispatchEvent(new KeyboardEvent("keyup", common));
   };
 
-  const submitPrompt = async (editor, compactProgress = false) => {
+  const submitPrompt = async (editor, compactProgress = false, beforeSubmit = () => {}) => {
     const before = getRunSnapshot();
     const sendButton = await waitForSendButtonAfterTextInsertion(20000);
 
     if (sendButton) {
       sendProgress("SENDING", "Trying ChatGPT send button...", compactProgress);
+      beforeSubmit();
       try {
         sendButton.click();
       } catch {}
       if (await waitForGenerationStart(before, 3500)) return true;
 
+      beforeSubmit();
       try {
         clickLikeUser(sendButton);
       } catch {}
@@ -629,6 +647,7 @@
       "Send button did not start generation; trying composer form submit...",
       compactProgress
     );
+    beforeSubmit();
     if (submitComposerForm(editor, sendButton)) {
       if (await waitForGenerationStart(before, 3500)) return true;
     }
@@ -638,6 +657,7 @@
       "Form submit did not start generation; trying Enter key fallback...",
       compactProgress
     );
+    beforeSubmit();
     pressEnterInComposer(editor);
     if (await waitForGenerationStart(before, 5000)) return true;
 
@@ -908,6 +928,7 @@
   };
 
   const expectedOutputMessage = (expectedOutputKind) => {
+    if (expectedOutputKind === "visual_lecture_json") return "Waiting for the complete visual-review response. Your source and images remain saved on the study page.";
     if (expectedOutputKind === "card_tsv_download") {
       return "Assistant responded, but it has not shown the TSV download/sentinel yet. Waiting for the final card export...";
     }
@@ -928,6 +949,12 @@
 
   const outputMatchesExpectation = (text, expectedOutputKind) => {
     if (!expectedOutputKind) return true;
+    if (expectedOutputKind === "visual_lecture_json") {
+      try {
+        const value = JSON.parse(String(text || "").trim().replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, ""));
+        return value?.schemaVersion === 1 && ((Array.isArray(value.patterns) && Array.isArray(value.cases)) || Array.isArray(value.segments));
+      } catch { return false; }
+    }
     if (expectedOutputKind === "card_tsv") return looksLikeInlineCardTsv(text);
     if (expectedOutputKind === "card_tsv_download") return looksLikeCardTsvDownloadReady(text);
     if (expectedOutputKind === "imaios_live_drill_card_plan") return looksLikeImaiosLiveDrillCardPlan(text);
@@ -1282,7 +1309,7 @@
     if (lastText) {
       const cleanedLastText = stripAuditBlock ? stripTrailingImageAuditBlock(lastText) : lastText.trim();
       const deliveryLastText = expectedOutputKind ? cleanedLastText : cleanNarrativeTextForDelivery(cleanedLastText);
-      if (!outputMatchesExpectation(deliveryLastText, expectedOutputKind)) {
+      if (expectedOutputKind !== "visual_lecture_json" && !outputMatchesExpectation(deliveryLastText, expectedOutputKind)) {
         throw new Error(`Timed out waiting for expected ChatGPT output. ${expectedOutputMessage(expectedOutputKind)}`);
       }
       return {
@@ -1357,6 +1384,21 @@
         completionPayload: payload || null,
         result: result || null
       }, async (response) => {
+        if (type === "VISUAL_LECTURE_GENERATED") {
+          const error = chrome.runtime.lastError?.message || (!response?.ok ? response?.error || "No acknowledgement from the extension." : response.result?.error);
+          const ignored = response?.result?.ignored;
+          createOrUpdateOverlay({
+            phase: error ? "VISUAL_REVIEW_NEEDS_ATTENTION" : ignored ? "VISUAL_REVIEW_ALREADY_UPDATED" : "VISUAL_REVIEW_SAVED",
+            message: error
+              ? `The visual review needs attention: ${error} Open the saved visual lecture and choose Resume. If the response was not saved, use Recover a finished ChatGPT response there.`
+              : ignored ? "This response belongs to an earlier step. The current saved lecture has been kept."
+                : response?.result?.preparing
+                  ? `Section ${response.result.completedPasses} of ${response.result.totalPasses} saved. Preparing the next section; all sections will form ONE combined lecture.`
+                  : "Response saved to your visual lecture. Continue on its study page; the next step runs there automatically.",
+            error: error || "", text: result?.assistantText || result?.text || ""
+          });
+          return;
+        }
         if (chrome.runtime.lastError) {
           if (type === "IMAIOS_LIVE_DRILL_CARD_PLAN_DONE") {
             createOrUpdateOverlay({
@@ -1389,7 +1431,11 @@
           text: response.clipboardText
         });
       });
-    } catch {}
+    } catch (error) {
+      if (type === "VISUAL_LECTURE_GENERATED") createOrUpdateOverlay({ phase: "VISUAL_REVIEW_NEEDS_ATTENTION",
+        error: error.message || "The extension connection was lost. Reload it and recover this response on the saved study page.",
+        text: result?.assistantText || result?.text || "" });
+    }
   };
 
   const sendRuntimeRequest = (message) => {
@@ -2301,7 +2347,8 @@
     preserveAuditBlock,
     expectedOutputKind,
     completionPayload,
-    targetProjectUrl = ""
+    targetProjectUrl = "",
+    corebookAttachment = null
   }) => {
     const parts = splitPromptParts(promptText);
     const sessionId = makeMultipartSessionId();
@@ -2366,6 +2413,7 @@
       preserveAuditBlock,
       expectedOutputKind,
       completionPayload,
+      corebookAttachment,
       disableMultipart: true
     });
 
@@ -2389,9 +2437,22 @@
     expectedOutputKind,
     completionPayload,
     targetProjectUrl = "",
+    corebookAttachment = null,
     disableMultipart = false,
     suppressResultSideEffects = false
   }) => {
+    // Transform once, before splitting the source prompt. A multipart run uploads
+    // the complete bank with FINALIZE, never to a disposable acknowledgement turn.
+    if (!disableMultipart) {
+      if (!globalThis.CorebookChatGptAttachment && String(promptText).includes('"format":"entries-file-v1"')) {
+        throw new Error("Reload the extension and ChatGPT page to enable the required Corebook comparison attachment.");
+      }
+      if (globalThis.CorebookChatGptAttachment) {
+        const prepared = CorebookChatGptAttachment.prepare(promptText, crypto.randomUUID());
+        promptText = prepared.promptText;
+        corebookAttachment = prepared.attachment;
+      }
+    }
     if (shouldUseMultipartPrompt({ promptText, autoSubmit, waitForResult, disableMultipart })) {
       return runMultipartPrompt({
         promptText,
@@ -2402,7 +2463,8 @@
         preserveAuditBlock,
         expectedOutputKind,
         completionPayload,
-        targetProjectUrl
+        targetProjectUrl,
+        corebookAttachment
       });
     }
 
@@ -2410,7 +2472,7 @@
     await ensureChatGptProjectTarget(targetProjectUrl, compactProgress);
     await ensureNormalChatSurface(compactProgress);
     sendProgress("WAITING_FOR_COMPOSER", "Waiting for ChatGPT composer...", compactProgress);
-    const editor = await waitForComposerEditor();
+    let editor = await waitForComposerEditor();
     if (!editor) throw new Error("Login required or ChatGPT composer not available.");
 
     try {
@@ -2422,20 +2484,15 @@
       expectedOutputKind === "card_tsv_download" ||
       String(promptText || "").length > 12000;
 
-    sendProgress("FILLING_PROMPT", "Clearing and filling composer...", compactProgress);
-    await clearAndFillComposer(editor, promptText, preferFastComposerFill);
+    sendProgress("FILLING_PROMPT", "Filling the composer and waiting for the complete prompt...", compactProgress);
+    editor = await fillVerifiedComposer(editor, promptText, preferFastComposerFill, () =>
+      sendProgress("VERIFYING_PROMPT", "Waiting for the complete prompt; retrying composer input...", compactProgress));
 
-    sendProgress("VERIFYING_PROMPT", "Verifying prompt was inserted...", compactProgress);
-    if (!composerLooksFilled(editor, promptText)) {
-      const visibleTextLength = normalizeForComposerCheck(getComposerText(editor)).length;
-      if (!visibleTextLength) {
-        throw new Error("Composer appears empty after prompt insertion.");
-      }
-      sendProgress(
-        "VERIFYING_PROMPT",
-        "Exact prompt verification was weak, but composer contains text. Trying Send...",
-        compactProgress
-      );
+    if (corebookAttachment) {
+      sendProgress("COREBOOK_UPLOAD", `Attaching all ${corebookAttachment.selectedCount} Corebook comparison records...`, compactProgress);
+      await CorebookChatGptAttachment.attach(corebookAttachment, {
+        editor, getForm:() => getComposerForm(getComposerEditor()), getSendButton, waitFor
+      });
     }
 
     if (!autoSubmit) {
@@ -2447,9 +2504,22 @@
       return { chars: promptText.length, submitted: false };
     }
 
+    const verifyAttachment = () => {
+      if (!composerLooksFilled(getComposerEditor(), promptText)) {
+        throw new Error(corebookAttachment
+          ? "The prompt changed before it could be sent. This message was not sent; retry to rebuild it with its required comparison."
+          : "ChatGPT did not retain the prepared prompt. Automatic sending stopped. Resume the unfinished step from its saved page.");
+      }
+      if (corebookAttachment && (!CorebookChatGptAttachment.attachmentState(
+        getComposerForm(getComposerEditor()), corebookAttachment.filename
+      ).ready || !getSendButton())) throw new Error("The required Corebook comparison attachment is missing or not ready. No prompt was sent.");
+    };
     sendProgress("SENDING", "Submitting prompt...", compactProgress);
-    await submitPrompt(editor, compactProgress);
+    await submitPrompt(corebookAttachment ? (getComposerEditor() || editor) : editor, compactProgress, verifyAttachment);
     await activateCurrentTab();
+    if (expectedOutputKind === "visual_lecture_json" && completionPayload?.id) {
+      await sendRuntimeRequest({ type: "VISUAL_LECTURE_MODEL_STARTED", completionPayload });
+    }
     if (!waitForResult) {
       createOrUpdateCompactStatus({
         phase: "SENT",
@@ -2481,7 +2551,7 @@
       };
     }
 
-    if (suppressResultSideEffects) {
+    if (suppressResultSideEffects || expectedOutputKind === "visual_lecture_json") {
       return {
         chars: promptText.length,
         submitted: true,

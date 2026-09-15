@@ -20,10 +20,25 @@ matching organ deck labels across specialties, plus focused lexical candidates
 across Corebook; it does not claim perfect semantic retrieval. Title/deck terms
 and uncommon term pairs within individual captions drive global retrieval.
 Common words pooled across all captions must not select the whole collection.
-Large contexts use lossless rows grouped by deck: all selected Q/A text, IDs,
-card types, suspension/image flags and removal states are preserved. The 350,000
-character data limit still applies after packing; no rows or answers are trimmed
-to fit. A complete snapshot is saved for audit even if prompt packing fails.
+Large contexts use lossless rows grouped by deck. If needed, a second layout
+stores repeated group values once, aliases identical ID fields and references
+exactly repeated complete Q/A strings in a text table. Every selected record,
+Q/A string, ID, card type, suspension/image flag and removal state is preserved.
+The 350,000-character budget applies to inline data only. Comparisons that still
+exceed it use `entries-file-v1`: complete, ordinary records in a JSON attachment
+to the configured ChatGPT conversation. The prompt carries the snapshot identity,
+scope and counts and requires reading every full Q/A with file/code tools before
+drafting. No rows or answers are trimmed to fit. The extension verifies the
+attachment has finished uploading before any send attempt; an unavailable upload
+or missing/incomplete file blocks generation. Multipart source prompts attach the
+bank with the final message. Clipboard/source packages keep the full comparison,
+so local readers never depend on an uploaded file. Audit snapshots and comparison
+files are always complete, regardless of the inline budget.
+
+Composer readiness compares the full text while ignoring presentation-only
+whitespace differences from browser paragraphs. It waits for the current live
+editor to remain complete, retries once using native edit events if needed, and
+rechecks before each send attempt. A partial prompt cannot satisfy this check.
 
 ## Installation
 
@@ -57,3 +72,10 @@ deletion or merging of existing Anki notes is performed.
 
 Existing duplicate cards can be identified from the bank during future audits;
 this change prevents new duplication but does not clean the live collection.
+
+## Browser regression fixtures
+
+Run `node corebook_card_registry/tests/browser-fixture-server.cjs`. Open the
+printed local URL for attachment tests and its `/composer` page for prompt
+readiness tests. Both run the production helpers against a local test composer;
+they never upload to ChatGPT or modify Anki. Stop the server after testing.

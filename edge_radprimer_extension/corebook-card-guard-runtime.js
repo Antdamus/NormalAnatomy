@@ -29,7 +29,8 @@ async function attachCorebookCardContext(settings, extraction) {
       removedCount:bank.removedEntries.length, promptCandidateCount:selected.data.selectedCount,
       selection:selected.data.selection, scope:selected.data.scope,
       relatedScopeCount:selected.data.relatedScopeCount, contextFormat:selected.format,
-      contextChars:selected.serializedChars}}};
+      contextChars:selected.serializedChars, packedChars:selected.packedChars,
+      contextTransport:selected.attachmentRequired ? 'attachment' : 'inline'}}};
 }
 
 async function stageCorebookAuditContext(pending, metadata, folderName) {
@@ -40,12 +41,13 @@ async function stageCorebookAuditContext(pending, metadata, folderName) {
   try {
     const bank = await readCurrentCorebook();
     await downloadAuditTextFile(folderName, 'corebook_snapshot.json', JSON.stringify(bank, null, 2), 'application/json;charset=utf-8');
-    // Preserve the complete audit bank even when its prompt projection is too big.
+    // Audit files have no inline prompt budget. Preserve the full comparison too.
     const selected = CorebookCardGuard.context(bank, target);
     await downloadAuditTextFile(folderName, 'corebook_context.txt', selected.text);
     Object.assign(metadata.corebookGuard, {status:'ready', auditSnapshotId:bank.snapshotId,
       capturedAt:bank.capturedAt, collectionIdentity:bank.collectionIdentity,
-      retainedCount:bank.cardCount, removedCount:bank.removedEntries.length});
+      retainedCount:bank.cardCount, removedCount:bank.removedEntries.length,
+      auditContextFormat:selected.format, auditContextChars:selected.serializedChars});
   } catch (error) {
     // Preserve an already-generated TSV even if Anki closed during generation.
     Object.assign(metadata.corebookGuard, {status:'refreshRequired', error:error.message});

@@ -573,6 +573,8 @@
 
     if (errorMessage) {
       status.textContent = errorMessage;
+    } else if (state?.sourceFollowSuppressed) {
+      status.textContent = "Images are following in the visual lecture. Source-page following is paused.";
     } else if (state?.available) {
       const speedText = state.speed ? `${state.speed} speed` : "Connected";
       status.textContent = sectionLabel ? `${speedText} / ${compactSectionDisplay}` : speedText;

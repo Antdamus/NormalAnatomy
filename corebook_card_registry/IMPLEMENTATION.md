@@ -1,8 +1,9 @@
 # Corebook repetition prevention
 
 Implemented and installed. The Anki bridge is active: a fresh live snapshot was
-verified on September 13, 2026 (UTC), with 3,175 retained cards. Reload RadPrimer
-Prompt Runner in Edge to activate the large-context fix described below.
+verified on September 13, 2026 (UTC). The latest check read 3,248 retained cards.
+Reload RadPrimer Prompt Runner in Edge and refresh ChatGPT to activate the
+attachment fallback described at the end of this document.
 No existing Anki notes, cards, decks or review history were modified.
 
 ## Implemented
@@ -80,3 +81,90 @@ lossless round-trip packing, size/freshness gates and audit snapshot preservatio
 It passed alongside the existing guard/routes suites and all 14 Python tests.
 Edge's browser automation policy blocks extension settings, so extension reload
 and a user-facing generation retry remain manual activation steps.
+
+## Additional lossless packing — September 13, 2026 (21:49 UTC)
+
+The live Liver Lesion Containing Gas run reproduced the reported failure exactly:
+599 candidates, including all 571 related-organ records, occupied 375,303
+characters in deck-grouped rows. The bank had grown to 3,218 retained cards and
+two removal-history entries; changing the deck scope was not appropriate.
+
+An additional `deck-grouped-defaults-v2` fallback factors shared group values,
+aliases equal ID fields, and references exactly repeated whole Q/A strings in a
+text table. Prompt instructions specify how to read it. Retained and removed
+states remain separate; no records are merged and no Q/A text is shortened.
+The 350,000-character limit and fresh-snapshot requirements remain in place.
+
+Fresh live verification through the actual master-source extraction and all
+four card modes retained the same 599 candidates in 349,104 characters. An
+independent decoder reconstructed every selected field exactly. The canonical
+Liver Lesion Containing Gas deck and all 14 selected images remained intact.
+The expanded large-context tests cover exact round trips, different answers to
+shared questions, matching ID aliases, removal IDs, and runtime metadata. The
+guard and service-worker route regression suites also pass.
+
+Verification is stored in `data/gas_context_review/verification.json`. This was
+generation-context preparation, not card generation or a semantic card audit.
+Anki notes, cards and decks were not changed. Reload the unpacked extension and
+refresh the RadPrimer page to activate the updated helper.
+
+## File transport for growing comparisons — September 13, 2026 (22:54 UTC)
+
+The Multiple Hypointense Liver Lesions (T2WI) master source reproduced the next
+failure exactly: 643 candidates, including all 601 related-organ records, occupied
+374,576 characters after both lossless packing steps. Further packing alone would
+only postpone recurrence as the collection grows.
+
+The inline budget is now a transport threshold. Above it, `entries-file-v1`
+preserves all selected records as ordinary JSON objects in an attachment, with an
+`attached-entries-v1` manifest in the prompt. The model must verify the snapshot,
+scope and count and read every full Q/A using file/code tools before drafting.
+The complete source/clipboard and local audit comparison remain self-contained.
+Existing Anki freshness and final per-note audit gates are unchanged.
+
+The ChatGPT helper verifies the exact, uniquely named attachment in the composer,
+waits for uploading/processing to finish and Send to become available, and checks
+again before each send fallback. Prompt text mentioning a filename cannot satisfy
+this check. A failed/missing upload prevents submission. Multipart prompts carry
+the attachment with FINALIZE; manual-fill and send-only modes also attach it.
+
+Fresh verification through the real master-source extraction and all four card
+modes retained exactly 643 records in a 504,056-character JSON attachment. All 23
+selected images, their groups, raw source output and canonical Liver deck route
+were preserved. Regression tests cover multi-megabyte bank growth, exact file
+contents, retained/removal identities, malformed data, all send routes and failed
+or removed attachments. Private live results are in
+`data/hypointense_context_review/verification.json`.
+
+All five Corebook JavaScript suites, 14 Python tests and 47 visual-lecture tests
+passed. The local browser fixture in Edge passed real File/DataTransfer delivery,
+progress, failure, missing-control, missing-chip and removed-file checks. The
+live ChatGPT composer exposes the expected file input; a live upload/generation
+retry is still pending activation. Edge's automation interface cannot claim its
+extension settings tab, so extension reload remains a manual step.
+
+This verifies generation preparation and transport, not semantic card review or
+medical source/media auditing. No Anki cards, notes or decks were changed.
+
+## Composer readiness correction — September 13, 2026
+
+The first live attachment run exposed a short-message verification bug at the
+multipart FINALIZE step. Fast insertion creates one paragraph per input line;
+the browser's `innerText` adds paragraph spacing. The old start/end comparison
+preserved those extra newlines and rejected complete short messages. A real Edge
+fixture reproduced this with 226 expected characters rendered as 235 characters.
+This failure occurred before the comparison upload.
+
+Verification now normalizes whitespace for comparison only and checks the entire
+prompt, replacing the old permissive long-text heuristic as well. It reacquires
+the current editor, waits for 600 ms of complete content, and retries once through
+native edit events after an eight-second readiness timeout. A stale/detached
+editor, truncated text or changed text cannot authorize uploading or sending.
+The text is checked again before each submission attempt, including fallbacks.
+
+The Edge fixture now passes the exact paragraph-spacing reproduction, complete
+large text, rejection of truncated/changed text, delayed editor replacement and
+native-input recovery. Six Corebook JavaScript suites, 47 visual-lecture tests
+and 14 Python tests pass. The attachment routing suite also checks that a prompt
+readiness failure never reaches upload/send. Reload the extension and refresh
+ChatGPT to activate; the corrected live ChatGPT generation retry remains pending.

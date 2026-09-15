@@ -3,11 +3,10 @@
   window.__radprimerSpeechifyPasterLoaded = true;
 
   const SPEECHIFY_SELECTORS = {
-    appRoot: "#__next",
     library: '[data-testid="library-v2"]',
     sidebarNewButton: 'button[data-testid="sidebar-import-button"]',
     toolbarAddTextButton: 'button[data-testid="add-text-button"]',
-    breadcrumbItems: 'button[data-testid^="breadcrumb-item-"]',
+    breadcrumbItems: '[data-testid^="breadcrumb-item-"], [data-testid^="content-header-breadcrumb-item-"]',
     folderCards: '[data-testid^="library-grid-folder-"]',
     libraryItemCards: '[role="button"][data-item-id][aria-label]',
     libraryItemTitles: '[data-testid="library-item-title"]',
@@ -18,6 +17,7 @@
     saveButton: 'button[data-testid="add-text-save-button"]',
     playerPlayButton: [
       'button[data-testid="player-play-button"]',
+      'button[data-testid="compact-player-listen-button"]',
       '[data-testid*="player"] button[aria-label^="Play"]',
       '[data-testid*="player"] button[aria-label^="Pause"]',
       '[data-testid*="player"] button[aria-label^="Resume"]',
@@ -1340,6 +1340,18 @@
       : null;
   };
 
+  const getVisualLectureLiveContext = () => {
+    const context = getSimpleLiveReaderContext();
+    if (!context || !Number.isFinite(context.focusTextIndex) || context.focusTextIndex < 0) return null;
+    const end = context.focusTextIndex + Math.max(1, cleanDisplayText(context.highlightText).length);
+    return { live: true, text: String(context.blockText || "").slice(0, end).slice(-1000) };
+  };
+
+  const getVisualLectureReaderSample = () => {
+    // Identity evidence only. Unspoken text must never move the map's cursor.
+    return getLiveReaderBlocks().slice(0, 3).map(block => cleanDisplayText(block.textContent)).join("\n").slice(0, 1800);
+  };
+
   const normalizeSpeedLabel = (value) => {
     return cleanDisplayText(value)
       .replace(/\s+/g, "")
@@ -1685,7 +1697,7 @@
     const playLabel = cleanDisplayText(playButton?.getAttribute("aria-label") || "");
     const mediaIsPlaying = Boolean(media && !media.paused && !media.ended);
     const labelSaysPause = /^pause\b/i.test(playLabel);
-    const labelSaysPlay = /^(play|resume)\b/i.test(playLabel);
+    const labelSaysPlay = /^(play|resume|listen)\b/i.test(playLabel);
 
     return {
       available: Boolean(playButton || media),
@@ -1748,6 +1760,8 @@
           (voiceButton?.getAttribute("aria-label") || "").replace(/^Voice:\s*/i, "")
       ),
       title,
+      readerTextSample: getVisualLectureReaderSample(),
+      liveContext: getVisualLectureLiveContext(),
       lectureSection: inferLectureImageSection({
         title,
         progress: clock.progress,
@@ -1835,6 +1849,13 @@
     const stateOptions = { tabAudible: Boolean(tabAudible) };
     let state = null;
 
+    if (normalizedAction === "play" || normalizedAction === "pause") {
+      const before = getSpeechifyPlayerState(stateOptions);
+      if (!before.available) throw new Error("Open this lecture's Speechify reader first.");
+      if (before.isPlaying === (normalizedAction === "play")) return before;
+      return runSpeechifyPlayerRemote({ action: "playPause", tabAudible });
+    }
+
     if (normalizedAction === "playPause") {
       const before = getSpeechifyPlayState(stateOptions);
       const clicked = clickVisibleIfPresent(SPEECHIFY_SELECTORS.playerPlayButton, "play/pause");
@@ -1879,34 +1900,33 @@
   };
 
   const waitForSpeechifyLibrary = async (timeoutMs = 60000) => {
-    await waitForElement(SPEECHIFY_SELECTORS.library, timeoutMs);
     await waitUntil(
-      () =>
-        !!document.querySelector(SPEECHIFY_SELECTORS.library) &&
-        !!document.querySelector(SPEECHIFY_SELECTORS.appRoot),
+      () => !!firstVisible(SPEECHIFY_SELECTORS.library),
       timeoutMs,
-      "Speechify library not loaded or login required."
+      "Open the Speechify library and sign in if prompted, then retry the audio step. Your map and text are saved."
     );
   };
 
   const isCurrentSpeechifyFolder = (folder) => {
     if (!folder) return false;
-
-    if (folder.id) {
-      const byId = document.querySelector(
-        `button[data-testid="breadcrumb-item-${CSS.escape(folder.id)}"]`
-      );
-      if (byId) {
-        if (!folder.name) return true;
-        if (normalize(byId.innerText) === normalize(folder.name)) return true;
-      }
-    }
-
-    const breadcrumbs = Array.from(
-      document.querySelectorAll(SPEECHIFY_SELECTORS.breadcrumbItems)
-    );
+    const breadcrumbs = Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.breadcrumbItems)).filter(isVisible);
     const last = breadcrumbs.at(-1);
-    return Boolean(folder.name) && normalize(last?.innerText || "") === normalize(folder.name);
+    if (last) {
+      if (folder.id) {
+        const identity = last.getAttribute("data-testid");
+        return [`breadcrumb-item-${folder.id}`, `content-header-breadcrumb-item-${folder.id}`].includes(identity) &&
+          (!folder.name || normalize(last.innerText) === normalize(folder.name));
+      }
+      return Boolean(folder.name) && normalize(last.innerText) === normalize(folder.name);
+    }
+    // Narrow windows replace breadcrumbs and the sidebar with a mobile header/nav.
+    const mobileHeader = firstVisible('[data-testid="mobile-top-nav"]');
+    const heading = mobileHeader?.querySelector('h1, h2, [role="heading"]');
+    const url = new URL(location.href);
+    return Boolean(folder.id && url.pathname === "/library" && url.searchParams.get("folder") === folder.id &&
+      firstVisible(SPEECHIFY_SELECTORS.library) && firstVisible('[data-testid="mobile-top-nav-folder-back"]') &&
+      heading && isVisible(heading) && normalize(heading.innerText) &&
+      (!folder.name || normalize(heading.innerText) === normalize(folder.name)));
   };
 
   const verifySpeechifyFolderOpen = async ({ folderId, folderName, timeoutMs = 30000 }) => {
@@ -1929,6 +1949,9 @@
       if (el && isVisible(el)) return el;
     }
 
+    const titleNode = Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.libraryItemTitles))
+      .find(el => folder.name && normalize(el.innerText) === normalize(folder.name) && isVisible(el));
+    if (titleNode) return titleNode.closest('[role="button"], a, button') || titleNode;
     const candidates = [
       ...document.querySelectorAll(SPEECHIFY_SELECTORS.folderCards),
       ...document.querySelectorAll(SPEECHIFY_SELECTORS.libraryItemCards)
@@ -1987,15 +2010,33 @@
     throw new Error(`Could not find Speechify text import option: ${labels.join(", ")}`);
   };
 
+  const findSpeechifyImportButton = () => {
+    const legacy = firstVisible(SPEECHIFY_SELECTORS.sidebarNewButton);
+    if (legacy) return legacy;
+    const mobile = firstVisible('[data-testid="mobile-bottom-tab-bar"] [data-testid="mobile-tab-add"]');
+    if (mobile) return mobile;
+    // Current Speechify has an unlabeled + menu in the same sidebar as Library
+    // and the profile trigger. Scope to that sidebar; never click an arbitrary menu.
+    const profile = document.querySelector('[data-testid="sidebar-profile-trigger"]');
+    for (let parent = profile?.parentElement; parent && parent !== document.body; parent = parent.parentElement) {
+      if (!parent.querySelector('a[href^="/library"], a[href^="https://app.speechify.com/library"]')) continue;
+      const candidates = Array.from(parent.querySelectorAll('button[aria-haspopup="menu"][data-slot="dropdown-trigger"]'))
+        .filter(button => button !== profile && isVisible(button));
+      return candidates.length === 1 ? candidates[0] : null;
+    }
+    return null;
+  };
+
   const openSpeechifyAddTextModal = async () => {
     const toolbarButton = document.querySelector(SPEECHIFY_SELECTORS.toolbarAddTextButton);
     if (toolbarButton && isVisible(toolbarButton)) {
       toolbarButton.click();
     } else {
-      const newButton = await waitForElement(SPEECHIFY_SELECTORS.sidebarNewButton, 15000);
+      let newButton;
+      await waitUntil(() => Boolean(newButton = findSpeechifyImportButton()), 15000, "Speechify's text import menu was not found in the library.");
       newButton.click();
       await sleep(300);
-      const option = await waitForTextOption(["Paste Text", "Add Text", "Create Note", "Text"], 15000);
+      const option = await waitForTextOption(["Type or Paste Text", "Paste Text", "Add Text", "Create Note"], 15000);
       option.click();
     }
 
@@ -2147,15 +2188,45 @@
     throw new Error("Timed out waiting for Speechify file save completion.");
   };
 
-  const runSpeechifyCreateTextNote = async ({ title, text, folder, autoSave }) => {
+  const openSavedVisualLecture = async (title) => {
+    let clicked = false;
+    await waitUntil(() => {
+      const state = getSpeechifyPlayerState();
+      if (state.available && normalize(state.title) === normalize(title)) return true;
+      if (!clicked) {
+        const card = Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.libraryItemCards))
+          .find(node => normalize(node.getAttribute("aria-label")) === normalize(title));
+        const titleNode = Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.libraryItemTitles))
+          .find(node => normalize(node.innerText) === normalize(title));
+        const target = card || titleNode?.closest('[role="button"], a, button');
+        if (target) { target.click(); clicked = true; }
+      }
+      return false;
+    }, 30000, "The text was saved, but its Speechify reader did not open. Open the saved lecture and press Resume in the study page.");
+    return { readerUrl: location.href, readerReady: true };
+  };
+
+  const runSpeechifyCreateTextNote = async ({ title, text, folder, autoSave, openReader = false }) => {
     if (!text?.trim()) throw new Error("No text was provided to Speechify.");
     const finalTitle = title || makeSpeechifyTitleFromText(text);
+
+    if (openReader) {
+      const current = getSpeechifyPlayerState();
+      if (current.available && normalize(current.title) === normalize(finalTitle)) return { title: finalTitle, folder, autoSaved: true, readerUrl: location.href, readerReady: true, reused: true };
+    }
 
     createOrUpdateSpeechifyOverlay({
       phase: "WAITING_FOR_LIBRARY",
       message: "Waiting for Speechify library..."
     });
     await waitForSpeechifyLibrary();
+
+    if (openReader) {
+      const exists = Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.libraryItemCards))
+        .some(node => normalize(node.getAttribute("aria-label")) === normalize(finalTitle)) ||
+        Array.from(document.querySelectorAll(SPEECHIFY_SELECTORS.libraryItemTitles)).some(node => normalize(node.innerText) === normalize(finalTitle));
+      if (exists) return { title: finalTitle, folder, autoSaved: true, reused: true, ...(await openSavedVisualLecture(finalTitle)) };
+    }
 
     createOrUpdateSpeechifyOverlay({
       phase: "VERIFYING_FOLDER",
@@ -2212,7 +2283,8 @@
       });
     }
 
-    return { title: finalTitle, folder, autoSaved: autoSave === true };
+    const reader = openReader && autoSave === true ? await openSavedVisualLecture(finalTitle) : {};
+    return { title: finalTitle, folder, autoSaved: autoSave === true, ...reader };
   };
 
   loadSourceHotkeyKeys();

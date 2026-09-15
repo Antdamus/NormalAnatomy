@@ -32,7 +32,7 @@ const extraction={output:'Original source <img src="arrow_WS.png">',downloadFile
   assert(context.buildAuditInstructions(meta).includes('prepare --bundle'));
   assert(downloads.some(x=>x[1]==='corebook_snapshot.json'));
   const response=await new Promise(resolve=>{
-    assert.equal(listeners[0]({type:'PREPARE_COREBOOK_CARD_CONTEXT',settings,extraction},{},resolve),true);
+    assert.equal(listeners.some(listener => listener({type:'PREPARE_COREBOOK_CARD_CONTEXT',settings,extraction},{},resolve) === true),true);
   });
   assert(response.ok);assert(response.output.includes('COREBOOK RETAINED CARD CHECK'));
   assert(response.output.endsWith(extraction.output));

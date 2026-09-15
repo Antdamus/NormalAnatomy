@@ -7,3 +7,50 @@ node_modules/
 # Local Anki question snapshots and installation backups
 corebook_card_registry/data/
 corebook_card_registry/install_backup/
+
+# Private original image bytes reused by the extension (not source code).
+edge_radprimer_extension/local-image-cache/
+
+# Personal educational sources, reviews, generated cards and snapshots stay local.
+/master_source_queue/
+/radprimer_audit_queue/
+/source_collection_reviews/
+/anki_*/
+!/anki_io_queue/
+!/anki_live_drill_bridge/
+/anki_io_queue/queue.json
+/imaios_label_repository/labels.json
+/imaios_label_repository/chunks/
+/Normal/memory.md
+/pathology/usedprompts.js
+/scripts/create_*
+/tools/create_hydatid_sand_cards.ps1
+/tools/create_pyosalpinx_cards.py
+/edge_radprimer_extension/tests/fixtures/*-response.json
+
+# Downloaded media and source documents, including locally installed UI images.
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.png
+*.webp
+*.gif
+*.tif
+*.tiff
+*.pdf
+*.apkg
+*.colpkg
+*.anki2
+*.tsv
+*.mp3
+*.mp4
+*.wav
+*.zip
+
+# Local browser inspection files and machine state.
+/.codex/
+.DS_Store
+.env
+.env.*
+!.env.example

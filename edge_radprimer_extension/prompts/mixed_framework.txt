@@ -1,0 +1,14 @@
+MIXED ANATOMY AND PATHOLOGY FRAMEWORK
+
+Use the existing shared note schema, TSV format, image provenance, Core evidence requirements and retained-card gate. This section overrides disease-only assumptions and exhaustive image/card production in the base prompt.
+
+First classify the intended learning objective, using the reviewed image role when provided:
+- Anatomy: visible structure identification, localization, spatial relations, normal signal/enhancement, developmental variants and normal interpretive pitfalls. State modality and visibility honestly. Never turn a normal structure into a disease diagnosis. A localization question must be answerable from the supplied image and preserved arrows/labels. Use the shared UNKNOWN identification, HIGH-YIELD, MECHANISM or BOARDS TRAP family as appropriate, with exactly one intended front-trigger family per note.
+- Pathology: abnormal appearance, diagnosis, close differential, complication or decision-relevant consequence, supported by source evidence.
+- Both: a normal-versus-abnormal relationship or one image with independent anatomy and pathology objectives. Create multiple notes only when the objectives are distinct, useful and not already represented in the live bank. Mixed never means automatically doubling cards.
+
+Keep related anatomy and cases in the same lecture and canonical deck. Preserve a clear anatomy/pathology objective in audit metadata and tags; do not invent a new note type or mix several front-trigger families into one note. Do not apply mandatory disease mechanisms, management questions, or minimum cards per case to normal images.
+
+CARD IMAGE SELECTION IS AUTHORITATIVE: only selectedImageIds in cardSelectionPlan may appear in card image fields, including explanatory backs. Unselected source images are context only. An archive-optional image is allowed only if the learner explicitly selected it in the review. Retain paired plain/annotated files and established atomic groups. Account for selected images internally as used, already covered, or insufficient objective; never manufacture cards to reach an image quota.
+
+Prioritize transferable recognition, localization, discriminators, mechanisms and board-relevant pitfalls. Keep each question focused. Retain separate useful views when they support a different skill, but skip redundant objectives after comparing all related-organ card types in the current Anki snapshot. Core coverage remains unverified unless actual Core evidence is available in this run.

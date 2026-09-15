@@ -18,6 +18,8 @@
         <label>
           Engine
           <select id="engine">
+            <option value="auto">Use master bundle recommendation</option>
+            <option value="mixed">Mixed anatomy and pathology</option>
             <option value="pathology">Pathology / disease</option>
             <option value="normal">Normal anatomy</option>
           </select>
@@ -125,7 +127,7 @@
         </label>
         <label class="check">
           <input id="speechifyAutoSave" type="checkbox">
-          Auto-save Speechify text file (manual save required)
+          Visual lectures automatically save their Speechify text
         </label>
         <label class="check">
           <input id="speechifyKeepAwake" type="checkbox">
@@ -133,7 +135,7 @@
         </label>
         <label>
           Speechify folder link
-          <input id="speechifyFolderUrl" type="text" placeholder="https://app.speechify.com/?folder=...">
+          <input id="speechifyFolderUrl" type="text" placeholder="https://app.speechify.com/library?folder=...">
         </label>
         <p class="muted">Speechify is used only for narrative mode.</p>
       </section>
@@ -187,8 +189,16 @@
           <input id="masterSourceFiles" type="file" multiple accept=".json,.txt,.md">
         </label>
         <button id="importMasterSource" class="secondary">Import master source</button>
+        <label>
+          Lecture in imported library
+          <select id="masterSourceBundleSelect" disabled>
+            <option value="">Import a master source library first</option>
+          </select>
+        </label>
+        <button id="activateMasterSourceBundle" class="secondary" disabled>Use selected lecture</button>
         <button id="showMasterSource" class="secondary">Show imported master source</button>
-        <p class="muted">Use the same source pairing key for RadPrimer and STATdx when their titles differ. Best import is <code>master_source_import.json</code>. Separate <code>master_source_package.txt</code>, <code>master_source_manifest.json</code>, and <code>image_registry.json</code> also work.</p>
+        <p id="frameworkRecommendation" class="muted" role="status"></p>
+        <p class="muted">A <code>master_source_library.json</code> import can hold several complete lecture bundles. Select one lecture before running the visual-schema or card workflow. Single <code>master_source_import.json</code> files still work.</p>
       </section>
 
       <section id="masterWakeFallback" class="panel hidden">
@@ -202,6 +212,7 @@
       </section>
 
       <button id="run">Run selected workflow</button>
+      <button id="visualLibrary" class="secondary">Open saved lectures</button>
       <button id="downloadImagesOnly" class="secondary" hidden>Download images only</button>
       <button id="buildIoQueue" class="secondary" hidden>Build IO queue</button>
       <button id="recoverCardAuditTsv" class="secondary" hidden>Capture latest TSV download</button>

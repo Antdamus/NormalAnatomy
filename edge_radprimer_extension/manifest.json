@@ -10,6 +10,7 @@
     "clipboardWrite",
     "clipboardRead",
     "storage",
+    "unlimitedStorage",
     "tabs",
     "windows",
     "debugger"
@@ -52,7 +53,7 @@
   "content_scripts": [
     {
       "matches": ["https://app.radprimer.com/*"],
-      "js": ["radprimer-run-button.js", "radprimer-image-tools.js"],
+      "js": ["radprimer-run-button.js", "radprimer-image-tools.js", "source-library-button.js"],
       "run_at": "document_idle"
     },
     {
@@ -64,7 +65,7 @@
     },
     {
       "matches": ["https://app.statdx.com/*", "https://statdx.com/*", "https://*.statdx.com/*"],
-      "js": ["radprimer-run-button.js", "statdx-image-tools.js"],
+      "js": ["radprimer-run-button.js", "statdx-image-tools.js", "source-library-button.js"],
       "run_at": "document_idle"
     },
     {
@@ -98,7 +99,7 @@
     },
     {
       "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
-      "js": ["chatgpt-paster.js"],
+      "js": ["corebook-chatgpt-attachment.js", "chatgpt-paster.js"],
       "run_at": "document_idle"
     },
     {

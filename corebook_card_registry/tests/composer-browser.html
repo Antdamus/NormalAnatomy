@@ -1,0 +1,50 @@
+<!doctype html><meta charset="utf-8"><title>Composer verification regression</title>
+<h1>Composer verification regression</h1><pre id="results">Running…</pre>
+<main id="main"><form data-type="unified-composer"><div id="prompt-textarea" contenteditable="true" class="ProseMirror"></div></form></main>
+<script src="/composer-helpers.js"></script>
+<script>
+(async()=>{
+  const output=document.querySelector('#results'), api=ComposerFixture, results=[];
+  const assert=(value,message)=>{if(!value)throw Error(message);};
+  const text=['RADPRIMER_MULTIPART_PROMPT_FINALIZE','','Session: test-session','Parts sent: 6/6',
+    'Expected final output kind: card_tsv_download','','Read the complete source and comparison before generating cards.',
+    'Return only the requested final output.'].join('\n');
+  let editor=document.querySelector('#prompt-textarea');
+  await api.clearAndFillComposer(editor,text,true);
+  const matches=api.composerLooksFilled(editor,text);
+  const reproduction={matches,expectedChars:text.length,renderedChars:api.getComposerText(editor).length,
+    expectedStart:text.slice(0,90),renderedStart:api.getComposerText(editor).slice(0,110)};
+  assert(matches,'Complete short FINALIZE message rejected because of paragraph spacing');
+  results.push('PASS: actual paragraph insertion accepts the complete short FINALIZE message');
+  const long='Complete source <img src="arrow_WS.png"> μ\n'.repeat(3000);
+  await api.fillVerifiedComposer(editor,long,true);
+  assert(api.composerLooksFilled(editor,long),'Full large source mismatch');
+  editor.textContent=long.slice(0,Math.floor(long.length*0.9));
+  assert(!api.composerLooksFilled(editor,long),'Truncated large source passed');
+  editor.textContent=long.replace('source','WRONG');
+  assert(!api.composerLooksFilled(editor,long),'Changed middle text passed');
+  results.push('PASS: full large source preserved; truncated or changed source rejected');
+
+  const original=editor;
+  setTimeout(()=>{
+    const replacement=document.createElement('div');replacement.id='prompt-textarea';replacement.contentEditable='true';
+    replacement.className='ProseMirror';replacement.textContent='Updating…';original.replaceWith(replacement);
+    setTimeout(()=>{replacement.textContent=text;},700);
+  },250);
+  const started=performance.now();
+  editor=await api.fillVerifiedComposer(original,text,true);
+  assert(editor!==original && editor.isConnected,'Detached editor accepted');
+  assert(performance.now()-started>=1400,'Did not wait for replacement to settle');
+  results.push('PASS: waits through delayed editor replacement before returning the ready composer');
+
+  // Simulate an app that discards the first direct DOM update. The recovery must
+  // use actual native edit events and still preserve the complete source.
+  let discarded=false,retries=0;
+  editor.addEventListener('input',()=>{if(!discarded){discarded=true;editor.textContent='Partial app update';}});
+  await api.fillVerifiedComposer(editor,text,true,()=>retries++);
+  assert(retries===1 && api.composerLooksFilled(editor,text),'Native input recovery did not preserve the prompt');
+  results.push('PASS: one native-input retry repairs a discarded fast insertion');
+  output.textContent=results.join('\n')+'\nALL PASSED\n'+JSON.stringify(reproduction,null,2);
+  output.dataset.status='passed';
+})().catch(error=>{document.querySelector('#results').textContent=error.stack;});
+</script>

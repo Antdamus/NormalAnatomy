@@ -1,0 +1,56 @@
+<!doctype html><meta charset="utf-8"><title>Corebook attachment browser regression</title>
+<h1>Corebook attachment browser regression</h1><pre id="results">Running…</pre>
+<div id="fixture"></div>
+<script src="/edge_radprimer_extension/corebook-chatgpt-attachment.js"></script>
+<script>
+(async()=>{
+  const results=[], out=document.querySelector('#results'), fixture=document.querySelector('#fixture');
+  const assert=(value,message)=>{if(!value)throw Error(message);};
+  const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+  const waitFor=async(fn,timeout,interval=25)=>{
+    const end=Date.now()+timeout;
+    while(Date.now()<end){const result=fn();if(result)return result;await pause(interval);}
+    return false;
+  };
+  const file={filename:'corebook_comparison_browser-test.json',text:JSON.stringify({entries:[{question:'μ <img src="arrow_WS.png">',answer:'Exact full answer'.repeat(30000)}]}),mimeType:'application/json'};
+  function setup(mode) {
+    fixture.innerHTML='<form data-type="unified-composer"><div id="prompt-textarea" contenteditable="true"></div><input id="upload-files" type="file" multiple><div id="attachments"></div><button id="send" type="button">Send</button></form>';
+    const form=fixture.querySelector('form'),input=form.querySelector('input'),editor=form.querySelector('#prompt-textarea'),button=form.querySelector('#send');
+    editor.textContent='Source prompt mentions '+file.filename;
+    let uploaded=null;
+    input.addEventListener('change',()=>{
+      uploaded=input.files[0];
+      if(mode==='no-chip')return;
+      const holder=form.querySelector('#attachments'),card=document.createElement('div');
+      const name=document.createElement('span');name.title=uploaded.name;name.textContent='corebook_comparison…json';
+      const remove=document.createElement('button');remove.type='button';remove.setAttribute('aria-label','Remove file');
+      const status=document.createElement('span');status.setAttribute('role','progressbar');status.textContent='Uploading';
+      card.append(name,remove,status);holder.append(card);button.disabled=true;
+      if(mode==='busy')return;
+      setTimeout(()=>{
+        status.removeAttribute('role');status.textContent=mode==='error'?'Upload failed':'JSON';
+        button.disabled=false;
+      },100);
+    });
+    if(mode==='no-input')input.remove();
+    return {form,editor,uploaded:()=>uploaded,getForm:()=>form,getSendButton:()=>button.disabled?null:button,waitFor};
+  }
+  const good=setup('success');
+  await CorebookChatGptAttachment.attach(file,{...good,timeoutMs:3000});
+  assert(await good.uploaded().text()===file.text,'Uploaded File bytes changed');
+  assert(CorebookChatGptAttachment.attachmentState(good.form,file.filename).ready,'Ready chip not recognized');
+  results.push('PASS: real File/DataTransfer change event, full Unicode/HTML payload, truncated filename title, upload progress and ready state');
+  for(const mode of ['error','no-chip','busy','no-input']) {
+    const test=setup(mode);let rejected=false;
+    try {await CorebookChatGptAttachment.attach(file,{...test,timeoutMs:400});}catch(e){rejected=true;}
+    assert(rejected,mode+' did not stop');
+    results.push('PASS: '+mode+' blocks generation');
+  }
+  const removed=setup('success');
+  await CorebookChatGptAttachment.attach(file,{...removed,timeoutMs:3000});
+  removed.form.querySelector('#attachments').replaceChildren();
+  assert(!CorebookChatGptAttachment.attachmentState(removed.form,file.filename).ready,'Prompt text impersonated an attachment');
+  results.push('PASS: removed file cannot be satisfied by the filename in the prompt');
+  out.textContent=results.join('\n')+'\nALL PASSED';out.dataset.status='passed';
+})().catch(error=>{document.querySelector('#results').textContent='FAILED: '+error.stack;document.querySelector('#results').dataset.status='failed';});
+</script>

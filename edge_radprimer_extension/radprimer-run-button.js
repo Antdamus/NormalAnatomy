@@ -9,10 +9,12 @@
     ["io_queue", "Build IO queue"],
     ["no_pictures", "Build cards without images"],
     ["chatgpt_cards", "Build cards with images"],
-    ["narrative", "Narrative mode"]
+    ["narrative", "Generate visual lecture"]
   ];
 
   const MODE_OPTIONS = {
+    auto: WORKFLOW_MODE_OPTIONS,
+    mixed: WORKFLOW_MODE_OPTIONS,
     pathology: WORKFLOW_MODE_OPTIONS,
     normal: WORKFLOW_MODE_OPTIONS
   };
@@ -52,7 +54,7 @@
     autoSendToSpeechify: true,
     speechifyAutoSave: false,
     speechifyKeepAwake: false,
-    speechifyFolderUrl: "https://app.speechify.com/?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7"
+    speechifyFolderUrl: "https://app.speechify.com/library?folder=c00e2ad9-89b5-4829-9884-cde0dc8b82a7"
   };
 
   const getStoredSettings = async () => {
@@ -241,12 +243,15 @@
         }
         .modal-head-actions {
           display: flex;
+          flex-wrap: wrap;
           gap: 10px;
           align-items: flex-start;
           flex: 0 0 auto;
+          max-width: 100%;
         }
         .modal-head > div:first-child {
           min-width: 0;
+          max-width: 100%;
         }
         h2 {
           margin: 0 0 6px;
@@ -326,7 +331,7 @@
           color: #0f172a;
           font-weight: 900;
         }
-        .top-master-source {
+        .top-master-source, .open-saved-lectures {
           border-radius: 999px;
           padding: 10px 14px;
           background: #dbeafe;
@@ -692,6 +697,7 @@
                 </div>
               </div>
               <div class="modal-head-actions">
+                <button class="open-saved-lectures" type="button">Open saved lectures</button>
                 <button class="top-master-source master-source-config" type="button" hidden>Build master source</button>
                 <button class="close" type="button" aria-label="Close">x</button>
               </div>
@@ -708,6 +714,7 @@
                 </div>
                 <div class="grid">
                   <label>Engine<select data-field="engine"></select></label>
+                  <p class="hint wide" data-role="frameworkRecommendation" role="status"></p>
                   <label>Mode<select data-field="mode"></select></label>
                   <label class="check wide"><input data-field="downloadImages" type="checkbox"> Download selected images</label>
                   <label class="wide">ChatGPT project URL<input data-field="chatgptUrl" type="text"></label>
@@ -727,7 +734,7 @@
                   <label class="check"><input data-field="autoSubmitChatGPT" type="checkbox"> Submit automatically</label>
                   <label class="check"><input data-field="captureCardAuditBundle" type="checkbox"> Capture card audit bundle</label>
                   <label class="check"><input data-field="autoSendToSpeechify" type="checkbox"> Send narrative to Speechify</label>
-                  <label class="check"><input data-field="speechifyAutoSave" type="checkbox"> Auto-save Speechify (manual save)</label>
+                  <label class="check"><input data-field="speechifyAutoSave" type="checkbox"> Visual lectures automatically save their Speechify text</label>
                   <label class="check"><input data-field="speechifyKeepAwake" type="checkbox"> Keep Speechify awake</label>
                 </div>
                 <div class="grid spaced">
@@ -752,6 +759,10 @@
                     <button class="ghost import-master-source" type="button">Import master source</button>
                     <button class="ghost show-master-source" type="button">Show imported source</button>
                   </div>
+                  <label class="wide">Lecture in imported library<select class="master-source-bundle-select" disabled><option value="">Import a master source library first</option></select></label>
+                  <div class="wide master-actions">
+                    <button class="ghost activate-master-source" type="button" disabled>Use selected lecture</button>
+                  </div>
                   <div class="wide wake-fallback" data-role="masterWakeFallback" hidden>
                     <label>Codex wake-up message<textarea data-role="masterWakeText" readonly spellcheck="false"></textarea></label>
                     <div class="wake-actions">
@@ -760,7 +771,7 @@
                     </div>
                     <span class="hint" data-role="masterWakeHint">This is also saved in the master-source bundle as codex_wake_message.txt.</span>
                   </div>
-                  <span class="hint wide">Best import is master_source_import.json. Once imported, narrative and card runs use the fused source instead of the live page extraction.</span>
+                  <span class="hint wide">A master_source_library.json file can hold several complete lectures. Select one before a narrative, visual-schema, or card run. Single master_source_import.json files still work.</span>
                 </div>
                 </div>
               </details>
@@ -845,6 +856,7 @@
     shadow.querySelector(".quick-run").addEventListener("click", () => runFromPage(host));
     shadow.querySelector(".image-only").addEventListener("click", () => downloadImagesOnly(host));
     shadow.querySelector(".configure").addEventListener("click", () => openModal(host));
+    shadow.querySelector(".open-saved-lectures").addEventListener("click", () => openSavedLectures(host));
     shadow.querySelector(".status").addEventListener("click", () => dismissStatus(host));
     shadow.querySelector(".modal-status").addEventListener("click", () => dismissStatus(host));
     shadow.querySelector(".close").addEventListener("click", () => closeModal(host));
@@ -928,6 +940,7 @@
       buildMasterSource(host);
     });
     shadow.querySelector(".import-master-source").addEventListener("click", () => importMasterSource(host));
+    shadow.querySelector(".activate-master-source").addEventListener("click", () => activateMasterSourceBundle(host));
     shadow.querySelector(".show-master-source").addEventListener("click", () => showMasterSource(host));
     shadow.querySelector(".copy-master-wake").addEventListener("click", async () => {
       const text = shadow.querySelector('[data-role="masterWakeText"]')?.value || "";
@@ -963,7 +976,7 @@
     const input = host.shadowRoot.querySelector(".master-source-files");
     const files = Array.from(input?.files || []);
     if (!files.length) {
-      throw new Error("Choose master_source_import.json or the master source files first.");
+      throw new Error("Choose master_source_library.json, master_source_import.json, or the master source files first.");
     }
     return Promise.all(
       files.map(async (file) => ({
@@ -993,6 +1006,41 @@
       });
     });
 
+  const sendSetActiveMasterSourceBundleMessage = (bundleId) =>
+    new Promise((resolve, reject) => {
+      chrome.runtime.sendMessage({ type: "SET_ACTIVE_MASTER_SOURCE_BUNDLE", bundleId }, (response) => {
+        const err = chrome.runtime.lastError;
+        if (err) reject(new Error(err.message));
+        else resolve(response);
+      });
+    });
+
+  const populateMasterSourceLibrarySelect = (host, library) => {
+    const select = host.shadowRoot.querySelector(".master-source-bundle-select");
+    const activate = host.shadowRoot.querySelector(".activate-master-source");
+    if (!select || !activate) return;
+    const bundles = Array.isArray(library?.bundles) ? library.bundles : [];
+    select.replaceChildren();
+    if (!bundles.length) {
+      const option = document.createElement("option");
+      option.value = "";
+      option.textContent = "Import a master source library first";
+      select.appendChild(option);
+      select.disabled = true;
+      activate.disabled = true;
+      return;
+    }
+    bundles.forEach((bundle, index) => {
+      const option = document.createElement("option");
+      option.value = bundle.bundleId;
+      option.textContent = `${index + 1}. ${bundle.articleTitle} (${bundle.sourceArticleCount || 0} articles, ${bundle.imageCount || 0} images)`;
+      select.appendChild(option);
+    });
+    select.value = library.activeBundleId || bundles[0].bundleId;
+    select.disabled = false;
+    activate.disabled = false;
+  };
+
   const setMasterSourceBanner = (host, state, message) => {
     const banner = host.shadowRoot.querySelector('[data-role="masterSourceBanner"]');
     if (!banner) return;
@@ -1016,6 +1064,10 @@
         throw new Error(response?.error || "Could not read imported master source.");
       }
       const source = response.masterSource;
+      populateMasterSourceLibrarySelect(host, response.library);
+      const framework = source?.teachingFramework;
+      host.shadowRoot.querySelector('[data-role="frameworkRecommendation"]').textContent = framework
+        ? `Recommended: ${framework.label}. ${framework.reason || ""}` : "Activate a master bundle to see its recommended framework.";
       if (!source) {
         setMasterSourceBanner(
           host,
@@ -1052,6 +1104,8 @@
     select.textContent = "";
     [
       ["pathology", "Pathology / disease"],
+      ["auto", "Use master bundle recommendation"],
+      ["mixed", "Mixed anatomy and pathology"],
       ["normal", "Normal anatomy"]
     ].forEach(([value, label]) => {
       const option = document.createElement("option");
@@ -1088,6 +1142,7 @@
 
   const isNarrativeSpeechifyMode = (values) => {
     if (!values) return false;
+    if (["auto", "mixed"].includes(values.engine)) return values.mode === "narrative";
     if (values.engine === "pathology") return values.mode === "narrative";
     if (values.engine === "normal") {
       return values.mode === "narrative";
@@ -1127,7 +1182,7 @@
 
     autoSend.disabled = !eligible;
     autoSave.disabled = true;
-    autoSave.checked = false;
+    autoSave.checked = eligible;
     if (audit) audit.disabled = !auditEligible || forcedAudit;
     if (!eligible) {
       autoSend.checked = false;
@@ -1153,7 +1208,7 @@
     field(host, "autoSubmitChatGPT").checked = true;
     field(host, "captureCardAuditBundle").checked = false;
     field(host, "autoSendToSpeechify").checked = true;
-    field(host, "speechifyAutoSave").checked = false;
+    field(host, "speechifyAutoSave").checked = true;
     const downloadImages = field(host, "downloadImages");
     if (downloadImages) downloadImages.checked = shouldNarrativeDownloadImages(values);
     host.__radprimerCardModeDownloadImagesDisabled = false;
@@ -1229,6 +1284,20 @@
     host.shadowRoot.querySelector(".backdrop").classList.remove("open");
   };
 
+  const openSavedLectures = async (host) => {
+    const button = host.shadowRoot.querySelector(".open-saved-lectures");
+    button.disabled = true;
+    try {
+      const response = await chrome.runtime.sendMessage({ type: "VISUAL_LECTURE_OPEN" });
+      if (!response?.ok) throw new Error(response?.error || "Could not open saved lectures.");
+      closeModal(host);
+    } catch (error) {
+      setStatus(host, "Saved lectures", error?.message || String(error), true);
+    } finally {
+      button.disabled = false;
+    }
+  };
+
   const statusSurfaces = (host) =>
     Array.from(host.shadowRoot.querySelectorAll(".status, .modal-status"));
 
@@ -1288,7 +1357,7 @@
       values.openChatGPT = true;
       values.autoSubmitChatGPT = true;
       values.autoSendToSpeechify = true;
-      values.speechifyAutoSave = false;
+      values.speechifyAutoSave = true;
       values.captureCardAuditBundle = false;
       values.downloadImages = shouldNarrativeDownloadImages(values);
       values.cardModeDownloadImagesDisabled = false;
@@ -1635,11 +1704,15 @@
       await saveSettings(readModalSettings(host));
 
       const source = response.masterSource || {};
+      populateMasterSourceLibrarySelect(host, response.library);
       setStatus(
         host,
         "Master Source Imported",
         [
-          "Imported master source.",
+          response.library ? "Imported master source library." : "Imported master source.",
+          response.library?.bundles?.length
+            ? `Library: ${response.library.libraryTitle} (${response.library.bundles.length} lectures)`
+            : "",
           `Title: ${source.articleTitle || "[unknown]"}`,
           `Images: ${source.imageCount ?? 0}`,
           `Downloadable image files: ${source.downloadFileCount ?? 0}`,
@@ -1658,6 +1731,45 @@
     }
   };
 
+  const activateMasterSourceBundle = async (host) => {
+    const button = host.shadowRoot.querySelector(".activate-master-source");
+    const select = host.shadowRoot.querySelector(".master-source-bundle-select");
+    const originalText = button.textContent;
+    button.disabled = true;
+    button.textContent = "Selecting...";
+    try {
+      const bundleId = select.value;
+      if (!bundleId) throw new Error("Choose a lecture first.");
+      const response = await sendSetActiveMasterSourceBundleMessage(bundleId);
+      if (!response?.ok) throw new Error(response?.error || "Could not activate the selected lecture.");
+      populateMasterSourceLibrarySelect(host, response.library);
+      field(host, "useMasterSource").checked = true;
+      field(host, "engine").value = "auto";
+      populateModeSelect(host, field(host, "mode").value);
+      field(host, "engine").value = "auto";
+      populateModeSelect(host, field(host, "mode").value);
+      await saveSettings(readModalSettings(host));
+      const source = response.masterSource || {};
+      setStatus(
+        host,
+        "Lecture Selected",
+        [
+          `Title: ${source.articleTitle || "[unknown]"}`,
+          `Source articles: ${source.sourceArticleCount ?? 0}`,
+          `Images: ${source.imageCount ?? 0}`,
+          "The next narrative, visual-schema, or card run will use this complete lecture bundle."
+        ].join("\n")
+      );
+      await refreshMasterSourceBanner(host);
+    } catch (error) {
+      setStatus(host, "Master Source Error", error?.message || String(error), true);
+      await refreshMasterSourceBanner(host);
+    } finally {
+      button.textContent = originalText;
+      button.disabled = !select?.value;
+    }
+  };
+
   const showMasterSource = async (host) => {
     const button = host.shadowRoot.querySelector(".show-master-source");
     const originalText = button.textContent;
@@ -1669,6 +1781,7 @@
         throw new Error(response?.error || "Could not read imported master source.");
       }
       const source = response.masterSource;
+      populateMasterSourceLibrarySelect(host, response.library);
       if (!source) {
         setStatus(host, "Master Source", "No master source is imported yet.");
         await refreshMasterSourceBanner(host);
@@ -1679,6 +1792,9 @@
         "Master Source Ready",
         [
           "Imported master source is available.",
+          response.library?.bundles?.length
+            ? `Library: ${response.library.libraryTitle} (${response.library.bundles.length} lectures)`
+            : "",
           `Title: ${source.articleTitle || "[unknown]"}`,
           `Imported: ${source.importedAt || "[unknown]"}`,
           `Images: ${source.imageCount ?? 0}`,
