@@ -6,7 +6,7 @@ import {createHash} from 'node:crypto';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),source=path.resolve(root,'../edge_radprimer_extension');
 await fs.mkdir(path.join(root,'vendor'),{recursive:true});
 const hashes={};
-for(const name of ['teaching-framework.js','visual-lecture-cine.js','visual-lecture-core.js','visual-lecture-quality.js','visual-lecture-captions.js']){
+for(const name of ['teaching-framework.js','visual-lecture-cine.js','visual-lecture-core.js','visual-lecture-quality.js','visual-lecture-captions.js','lecture-card-review.js','lecture-card-transfer.js']){
   const bytes=await fs.readFile(path.join(source,name));await fs.writeFile(path.join(root,'vendor',name),bytes);hashes[name]=createHash('sha256').update(bytes).digest('hex');
 }
 await fs.writeFile(path.join(root,'vendor','provenance.json'),JSON.stringify({source:'../edge_radprimer_extension',sha256:hashes},null,2)+'\n');

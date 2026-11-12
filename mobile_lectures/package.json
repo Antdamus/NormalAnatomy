@@ -11,6 +11,7 @@
     "test:browser": "node tests/browser.cjs",
     "test:viewer": "node tests/viewer-browser.cjs",
     "test:automatic": "node tests/automatic-browser.cjs",
+    "test:cards": "node tests/card-choices-browser.cjs",
     "pack": "node tools/pack.mjs"
   },
   "dependencies": {

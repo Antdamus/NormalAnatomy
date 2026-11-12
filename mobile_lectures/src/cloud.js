@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { BUCKET, verifyManifest,validateTiming,sha256 } from './contract.js';
 import {validateSubtitles} from './subtitles.js';
+import {validateChoices} from './card-choices.js';
 
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -74,6 +75,16 @@ export async function publishAutomaticTiming(row,result,prepared){
 export async function getProgress(fingerprint) {
   const uid = await owner();
   return checked(await client.from('mobile_progress').select('*').eq('owner_id',uid).eq('fingerprint',fingerprint).maybeSingle());
+}
+export async function getCardChoices(fingerprint){
+  const uid=await owner();return checked(await client.from('mobile_lectures').select('card_choices,card_revision').eq('owner_id',uid).eq('fingerprint',fingerprint).single());
+}
+export async function saveCardChoices(manifest,state,revision){
+  const uid=await owner();validateChoices(state,manifest);
+  const changed=checked(await client.from('mobile_lectures').update({card_choices:state,card_revision:revision+1})
+    .eq('owner_id',uid).eq('fingerprint',manifest.fingerprint).eq('card_revision',revision).select('card_revision'));
+  if(!changed.length)throw new Error('Choices changed on another device. Refresh choices and review them before retrying.');
+  return changed[0].card_revision;
 }
 export async function publishSubtitles(row,subtitles){
   if(row.audio?.subtitles)return false;

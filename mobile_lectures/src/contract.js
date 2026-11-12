@@ -2,6 +2,8 @@ import '../vendor/teaching-framework.js';
 import '../vendor/visual-lecture-cine.js';
 import '../vendor/visual-lecture-core.js';
 import '../vendor/visual-lecture-quality.js';
+import '../vendor/lecture-card-review.js';
+import '../vendor/lecture-card-transfer.js';
 import { unzipSync, strFromU8 } from 'fflate';
 import {validateAutomaticTiming,timingReady} from './automatic-timing.js';
 export {timingReady};
@@ -43,6 +45,7 @@ export async function verifyManifest(manifest) {
   if (manifest?.format !== FORMAT || manifest.version !== 1) fail('Choose a NormalAnatomy mobile lecture package.');
   const fingerprint = await verifyLesson(manifest.lesson);
   if (manifest.fingerprint !== fingerprint || !Array.isArray(manifest.media)) fail('The package identity does not match its approved content.');
+  if (manifest.cardReview) globalThis.LectureCardTransfer.validate(manifest.cardReview,manifest.lesson);
   const registry = new Map(manifest.lesson.registry.map(i => [i.masterImageId, i])), seen = new Set();
   for (const asset of manifest.media) {
     const key = `${asset.imageId}/${asset.variant}`;

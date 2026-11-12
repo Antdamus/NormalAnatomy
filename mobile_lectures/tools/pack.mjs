@@ -34,6 +34,7 @@ export async function pack({snapshot,portable,mediaDirectory,out}) {
     media.push({imageId:image.masterImageId,variant,path:name,sha256:digest,mime:mediaType(bytes),bytes:bytes.length});
   }
   const manifest = {format:FORMAT,version:1,fingerprint,lesson,media};
+  if(input.cardReview)manifest.cardReview=globalThis.LectureCardTransfer.clean(input.cardReview,lesson);
   await verifyManifest(manifest);
   files['manifest.json'] = strToU8(JSON.stringify(manifest));
   await fs.mkdir(path.dirname(out),{recursive:true});

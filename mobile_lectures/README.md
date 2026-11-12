@@ -221,6 +221,38 @@ they are not lecture images. `tools/sync-contracts.mjs` refreshes the vendored
 desktop contracts and records their SHA-256 provenance. Re-run contract tests
 when updating them.
 
+## Image choices and links
+
+Use **Add to cards** under an image or in Study view. Plain and annotated variants
+share the same registry ID. **Link images** opens a full-width picker for other
+images in the same lecture, including other cases. Saving selects every member;
+source atomic groups and source-supported same-patient groups remain indivisible.
+**Remove my link** removes learner links while retaining selections and source
+groups. A user link never establishes patient identity or scan chronology.
+
+Signed-in choices are saved separately from the reviewed manifest in
+`mobile_lectures.card_choices`. Apply migration `202611120002_card_choices.sql`
+after the initial migration. Existing member/owner RLS remains unchanged.
+Conditional revision updates prevent stale devices overwriting each other; the
+foreground library refreshes choices every 15 seconds, or use **Refresh choices**.
+Failed writes remain visibly unsaved. Local previews save on that device only.
+
+The desktop extension has **Export choices for phone** and **Import phone choices**.
+The library's **Card choices** section has the corresponding import/export controls.
+Import existing desktop choices first to bring earlier links and objectives into
+the library. JSON transfers bind the exact approved lecture fingerprint and IDs,
+preserve source captions/media through the unchanged registry, merge unrelated
+edits, and stop on conflicting edits. Receipt tracking makes repeat imports safe
+and supports later removal of a previously transferred link. Transfers contain
+selection metadata, not image binaries. Links across different lectures are not
+supported. Selection never generates cards or changes Anki.
+
+Spoken subtitles are automatically aligned when full Speechify audio is attached
+and the desktop processor/library are running. They use a translucent overlay
+above the playback controls, do not intercept taps, and never change image size
+or reset zoom as phrases change. They can be switched off independently of source
+image captions. The existing manual Speechify export/attachment step is unchanged.
+
 ## Current limits
 
 - Internet is required. Offline downloads and service-worker caching are not

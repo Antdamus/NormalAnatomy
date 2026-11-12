@@ -67,9 +67,17 @@ const assert=require('node:assert/strict'),path=require('node:path'),fs=require(
   await phone.locator('audio').evaluate(a=>{a.currentTime=19;});await phone.waitForFunction(()=>document.querySelector('#subtitle-text').textContent==='');
   await phone.locator('audio').evaluate(a=>{a.currentTime=1;});await phone.waitForFunction(()=>document.querySelector('#subtitle-text').textContent.length>0);
   await phone.locator('#subtitle-toggle').click();assert.equal(await phone.locator('#narration-subtitle').isVisible(),false);await phone.locator('#subtitle-toggle').click();
+  // Phrase changes, pauses and toggles cannot resize the image or reset its zoom.
+  await phone.locator('#viewer-in').click();
+  const geometry=()=>phone.evaluate(()=>{const stage=document.querySelector('.viewer-stage'),image=document.querySelector('#viewer-image');return {height:stage.clientHeight,width:stage.clientWidth,transform:image.style.transform,src:image.getAttribute('src')};});
+  const beforeSubtitles=await geometry();
+  for(const t of [5,8,19,1]){await phone.locator('audio').evaluate((a,t)=>{a.currentTime=t;a.dispatchEvent(new Event('timeupdate'));},t);assert.deepEqual(await geometry(),beforeSubtitles);}
+  await phone.locator('#subtitle-toggle').click();assert.deepEqual(await geometry(),beforeSubtitles);await phone.locator('#subtitle-toggle').click();
+  assert.equal(await phone.locator('#narration-subtitle').evaluate(e=>getComputedStyle(e).pointerEvents),'none');
+  assert.equal(await phone.locator('#subtitle-toggle').evaluate(e=>{const r=e.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===e;}),true,'subtitle toggle stays clickable');
   await fs.mkdir(path.join(root,'test-results'),{recursive:true});
   for(const [name,width,height] of [['iphone',390,844],['small-phone',320,568],['ipad',820,1180],['landscape',844,390]]){
-    await phone.setViewportSize({width,height});const layout=await phone.evaluate(()=>({overflow:document.querySelector('#zoom').scrollHeight>innerHeight+1,stage:document.querySelector('.viewer-stage').getBoundingClientRect().height,captionOverflow:document.querySelector('#narration-subtitle').scrollWidth>document.querySelector('#narration-subtitle').clientWidth}));assert.equal(layout.overflow,false,name);assert.equal(layout.captionOverflow,false,name);assert.ok(layout.stage>50,name+' visible image area');await phone.screenshot({path:path.join(root,'test-results',`subtitles-${safari?'webkit-':''}${name}.png`)});
+    await phone.setViewportSize({width,height});const layout=await phone.evaluate(()=>({overflow:document.querySelector('#zoom').scrollHeight>innerHeight+1,horizontal:document.querySelector('#zoom').scrollWidth>innerWidth+1,stage:document.querySelector('.viewer-stage').getBoundingClientRect().height,captionOverflow:document.querySelector('#narration-subtitle').scrollWidth>document.querySelector('#narration-subtitle').clientWidth}));assert.equal(layout.overflow,false,name);assert.equal(layout.horizontal,false,name+' horizontal');assert.equal(layout.captionOverflow,false,name);assert.ok(layout.stage>50,name+' visible image area');await phone.screenshot({path:path.join(root,'test-results',`subtitles-${safari?'webkit-':''}${name}.png`)});
   }
   await phone.getByRole('button',{name:'Close image ×'}).click();phase='reload';await phone.reload();await phone.waitForFunction(()=>document.querySelector('#follow')?.getAttribute('aria-pressed')==='true');await phone.waitForFunction(()=>document.querySelector('#subtitle-toggle')?.getAttribute('aria-pressed')==='true');
   // Exercise an already-open phone receiving only newly available subtitles.

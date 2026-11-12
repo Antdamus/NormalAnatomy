@@ -6,6 +6,7 @@ import * as cloud from './cloud.js';
 import { createImageViewer } from './image-viewer.js';
 import {createAutomaticSync,desktopProcessorSupported} from './automatic-sync.js';
 import {validateSubtitles,subtitleAt,subtitleText} from './subtitles.js';
+import {createCardControls} from './card-controls.js';
 
 const $ = id => document.getElementById(id), app = $('app');
 let session = null, current = null, localPackage = null, audio = null, stepIndex = 0, variant = 'plain', follow = false;
@@ -15,6 +16,7 @@ const automaticMessages=new Map();let syncer=null,syncUser=null,playbackRefreshi
 const canProcess=desktopProcessorSupported(navigator);
 let captionsShown=false, viewerState=null;
 let subtitlesShown=false;
+let cardControls=null;
 try {captionsShown=localStorage.getItem('na-image-captions')==='true';}catch{}
 try {subtitlesShown=localStorage.getItem('na-spoken-subtitles')==='true';}catch{}
 const viewer=createImageViewer($('zoom'),{navigate:delta=>navigate(stepIndex+delta),variant:setVariant,captions:setCaptions});
@@ -30,6 +32,7 @@ function fileInput(label,accept,action) {
 }
 function downloadJSON(name,value) {const url=objectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download=name;a.click();}
 function dispose() {
+  cardControls?.dispose();cardControls=null;
   viewer.close();viewerState=null;
   resumeAfterReload=null;
   document.body.classList.remove('subtitles-open');
@@ -117,6 +120,8 @@ async function openLecture(row,local,serial) {
   for(const id of lesson.plan.lectureOrder){const c=lesson.plan.cases.find(c=>c.id===id),opt=el('option',c.label);opt.value=id;visual.querySelector('#case-select').append(opt);}
   const side=el('section',undefined,'explanation-column');side.innerHTML='<details id="transcript" open><summary>Case explanation</summary><div id="transcript-body"></div></details><details><summary>Lecture map</summary><p id="orientation"></p><div id="pattern-list"></div></details><details><summary>Review notes</summary><div id="review-notes"></div></details><details id="audio-tools"><summary>Audio & image timing</summary><div id="audio-setup"></div><div id="timing-tools"></div></details>';
   layout.append(visual,side);app.append(layout);
+  const cardArea=el('section');document.querySelector('#image-label').after(cardArea);
+  cardControls=createCardControls({row:current,parent:cardArea,viewerTools:document.querySelector('.viewer-tools'),getImageId:()=>current.steps[stepIndex].imageId,getURL:imageURL,onError:showError});
   $('orientation').textContent=lesson.plan.orientation || '';
   for(const p of lesson.plan.patterns)$('pattern-list').append(el('h3',p.label),el('p',p.cue));
   for(const stage of ['organizer','lecture']){const result=lesson.quality.approvals[stage].result;$('review-notes').append(el('h3',stage==='lecture'?'Lecture review':'Organizer review'),el('p',result.summary));for(const limitation of result.limitations||[])$('review-notes').append(el('p',typeof limitation==='string'?limitation:JSON.stringify(limitation),'muted'));}
@@ -155,6 +160,7 @@ function setCaptions(value){captionsShown=value;try{localStorage.setItem('na-ima
 function navigate(index){if(!current || index<0 || index>=current.steps.length)return;stepIndex=index;follow=false;updateFollow();void renderImage().catch(showError);void persistProgress();}
 async function renderImage(){
   if(!current)return;const serial=++imageVersion,row=current,s=row.steps[stepIndex],lesson=row.manifest.lesson,c=lesson.plan.cases.find(c=>c.id===s.caseId),entry=lesson.registry.find(i=>i.masterImageId===s.imageId);
+  cardControls?.paint();
   $('case-number').textContent=`CASE ${lesson.plan.lectureOrder.indexOf(c.id)+1} / ${lesson.plan.cases.length}`;$('case-title').textContent=c.label;$('case-focus').textContent=c.focus;$('case-select').value=c.id;
   $('image-count').textContent=`${s.index+1} / ${c.imageIds.length}`;
   $('previous-image').disabled=stepIndex===0;$('next-image').disabled=stepIndex===row.steps.length-1;
@@ -312,4 +318,4 @@ if(cloud.client){
 }
 route().catch(showError);
 startAutomaticSync();
-setInterval(()=>{if(!document.hidden){void refreshPlayback();void syncer?.tick();}},15000);
+setInterval(()=>{if(!document.hidden){void refreshPlayback();void syncer?.tick();void cardControls?.refresh();}},15000);
