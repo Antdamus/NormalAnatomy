@@ -50,9 +50,18 @@ list. The original account and global email-confirmation settings remain intact.
 The app now defaults to password sign-in. Account creation is an administrator
 workflow, not public self-enrollment; see the README for the reusable procedure.
 
-Initial lecture upload is pending the desktop password sign-in. The local MP3
-was successfully decoded and tested for playback, seeking, speed changes, and
-image browsing; this is not a full listening audit.
+The owner completed desktop password sign-in. Two reviewed lectures are now in
+the private cloud library: spinal cord/cauda equina/meninges (23 illustrated
+cases, with its 56:07 Speechify recording) and spinal arterial supply/venous
+drainage (19 illustrated cases, images and transcript only). Live desktop checks
+confirmed cloud image loading, plain/annotated switching, audio playback,
+progress saving, and session/audio persistence after reload. The local MP3 also
+passed decoding, seeking, and playback-speed checks.
+
+Automatic image following remains off: the recording has no verified timing
+cues yet. Full listening review, actual iPhone playback and lock-screen behavior
+have not been verified. Future lectures and recordings are added explicitly;
+this deployment does not automatically synchronize the desktop or Speechify.
 
 Private lecture packages and audio verification records are kept under the
 ignored `private/` folder. They are not part of this repository or public app.
