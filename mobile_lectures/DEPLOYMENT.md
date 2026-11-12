@@ -43,15 +43,16 @@ files must remain excluded.
   lock-screen behavior are separate checks; emulation does not prove them.
 
 The default email provider reached its sending quota during initial setup.
-Optional password setup is available under **Account access** on an already
-signed-in member's library. This keeps the verified email and all existing RLS
-rules; it does not disable email confirmation or increase the provider's limit.
+The owner therefore created a separate password account through Supabase's
+administrator **Create new user** form, with confirmation applied to that
+known user only. Its exact confirmed identity was added to the private member
+list. The original account and global email-confirmation settings remain intact.
+The app now defaults to password sign-in. Account creation is an administrator
+workflow, not public self-enrollment; see the README for the reusable procedure.
 
-Initial lecture upload is still pending: the desktop is signed out, and the
-owner later reported losing the iPhone session. A fresh email sign-in must wait
-for the provider quota to recover. No private lecture or recording has been
-uploaded yet. The local MP3 was successfully decoded and tested for playback,
-seeking, speed changes, and image browsing; this is not a full listening audit.
+Initial lecture upload is pending the desktop password sign-in. The local MP3
+was successfully decoded and tested for playback, seeking, speed changes, and
+image browsing; this is not a full listening audit.
 
 Private lecture packages and audio verification records are kept under the
 ignored `private/` folder. They are not part of this repository or public app.

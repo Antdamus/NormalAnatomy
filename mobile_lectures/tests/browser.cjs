@@ -56,7 +56,7 @@ const {chromium}=require('playwright');
       else throw new Error('Unexpected test request: '+url.pathname);
       await route.fulfill({status,contentType:'application/json',body:JSON.stringify(data)});
     });
-    await page.goto(base);await page.getByLabel('Email address',{exact:true}).fill(user.email);await page.getByRole('button',{name:'Email me a sign-in link'}).click();
+    await page.goto(base);assert.equal(await page.getByLabel('Password',{exact:true}).isVisible(),true);await page.getByRole('button',{name:'Use an email link instead'}).click();await page.getByLabel('Email address',{exact:true}).fill(user.email);await page.getByRole('button',{name:'Email me a sign-in link'}).click();
     await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('sending limit'));
     await page.getByRole('button',{name:'Use a password instead'}).click();await page.getByLabel('Password',{exact:true}).fill('fixture-login-only');await page.getByRole('button',{name:'Sign in',exact:true}).click();
     await page.getByText('Account access',{exact:true}).waitFor();await page.getByText('Account access',{exact:true}).click();

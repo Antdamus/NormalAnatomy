@@ -40,15 +40,15 @@ function renderWelcome() {
   hero.innerHTML='<p class="eyebrow">A LITTLE SPACE TO STUDY</p><h1>Your lectures.<br>Your pace.</h1><p class="lede">The explanation, the image, and the moment they connect. Bring your reviewed lectures with you.</p>';
   const card=el('section',undefined,'panel signin');card.append(el('h2','Open your private library'));
   const form=el('form');const label=el('label','Email address');const email=el('input');email.type='email';email.autocomplete='email';email.required=true;email.placeholder='you@example.com';label.append(email);
-  let passwordMode=false;
-  const passwordLabel=el('label','Password'),password=el('input');password.type='password';password.autocomplete='current-password';passwordLabel.append(password);passwordLabel.hidden=true;
-  const submit=el('button','Email me a sign-in link','primary');submit.type='submit';submit.disabled=!cloud.client;
-  const switchMode=button('Use a password instead',()=>{passwordMode=!passwordMode;passwordLabel.hidden=!passwordMode;password.required=passwordMode;password.value='';submit.textContent=passwordMode?'Sign in':'Email me a sign-in link';switchMode.textContent=passwordMode?'Use an email link instead':'Use a password instead';});
+  let passwordMode=true;
+  const passwordLabel=el('label','Password'),password=el('input');password.type='password';password.autocomplete='current-password';password.required=true;passwordLabel.append(password);
+  const submit=el('button','Sign in','primary');submit.type='submit';submit.disabled=!cloud.client;
+  const switchMode=button('Use an email link instead',()=>{passwordMode=!passwordMode;passwordLabel.hidden=!passwordMode;password.required=passwordMode;password.value='';submit.textContent=passwordMode?'Sign in':'Email me a sign-in link';switchMode.textContent=passwordMode?'Use an email link instead':'Use a password instead';});
   form.append(label,passwordLabel,submit);form.onsubmit=async e=>{e.preventDefault();submit.disabled=true;try{
     if(passwordMode){const {error}=await cloud.client.auth.signInWithPassword({email:email.value,password:password.value});if(error)throw error;password.value='';}
     else {const {error}=await cloud.client.auth.signInWithOtp({email:email.value,options:{emailRedirectTo:location.origin+'/'}});if(error)throw error;notice('Check your email and open the sign-in link on this device.');}
   }catch(error){const rateLimited=error.status===429||/rate.limit/i.test(error.message||'');showError(rateLimited?new Error('The email provider has reached its sending limit. Keep any signed-in device open. Use your password if you have set one, or wait before requesting another email.'):error);}finally{submit.disabled=false;}};
-  card.append(form,switchMode,el('p',cloud.client?'Only accounts added to this library can access its lectures. Set an optional password from Account access after signing in.':'Cloud connection is being set up. Local preview is available below.','muted'));
+  card.append(form,switchMode,el('p',cloud.client?'Only accounts added to this private library can access its lectures. Use the password chosen when your account was created.':'Cloud connection is being set up. Local preview is available below.','muted'));
   const local=el('section',undefined,'local-preview');local.append(el('h3','Preview a lecture from this device'),el('p','Open a reviewed .nalecture package. Its images stay on this device until you choose to upload it.','muted'),fileInput('Open local lecture','.nalecture',loadLocal));
   hero.append(card,local);app.append(hero);
 }

@@ -75,6 +75,18 @@ approval invalidation, source/media integrity, path safety, and timing identity.
 
 ## Supabase and Vercel
 
+For a private password account that does not depend on email delivery, the
+project owner can use Supabase **Authentication → Users → Add user → Create new
+user**. The account holder enters their password privately and submits the form
+with **Auto confirm user** checked. This is an administrator action for a known
+user; global email-confirmation settings remain enabled. Add that exact account
+email to `mobile_members` through the SQL editor before signing in to the app.
+If the email already has an account, preserve it and use a different account
+address (for Gmail, a `+lectures` alias reaches the same inbox). Do not delete
+an existing account or overwrite its password to work around the email quota.
+The public app defaults to password sign-in; it does not expose administrator
+credentials or a way for visitors to enroll themselves in the private library.
+
 1. Apply `supabase/migrations/202611120001_mobile_lectures.sql` to a dedicated
    Supabase project. It creates the private bucket and member/owner RLS rules.
 2. In the SQL editor, add the owner's lowercase email to `mobile_members` using
