@@ -1,10 +1,11 @@
 // Synthetic software-test content only. These receipts are never used for real lectures.
 import {zipSync,strToU8} from 'fflate';
 import {FORMAT,sha256} from '../src/contract.js';
-export async function fixture(imageBytes,{inheritedGroup=false}={}){
+export async function fixture(imageBytes,{inheritedGroup=false,imageCount=2}={}){
   const bytes=new Uint8Array(imageBytes||Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/l9sAAAAASUVORK5CYII=','base64')),hash=await sha256(bytes);
-  const registry=[1,2].map(n=>({masterImageId:`TEST-${n}`,sourceLabel:'Synthetic',sourceImageNumber:n,sourceArticleId:'test',sourceKind:'radprimer',caption:`Synthetic software fixture ${n}.`,required:true,plainFile:{sha256:hash},annotatedFile:{sha256:hash}}));
+  const registry=Array.from({length:imageCount},(_,i)=>i+1).map(n=>({masterImageId:`TEST-${n}`,sourceLabel:'Synthetic',sourceImageNumber:n,sourceArticleId:'test',sourceKind:'radprimer',caption:`Synthetic software fixture ${n}.`,required:true,plainFile:{sha256:hash},annotatedFile:{sha256:hash}}));
   const plan={schemaVersion:1,title:'Synthetic software test',orientation:'Software fixture only.',patterns:[{id:'p',label:'Test',cue:'Compare',overviewImageIds:['TEST-1']}],cases:registry.map((r,i)=>({id:`case-${i+1}`,patternId:'p',label:`Test case ${i+1}`,relationship:'single image',imageIds:[r.masterImageId],modalityLabels:{[r.masterImageId]:'Test image'},focus:'Software fixture.',discriminator:'Test difference.',sourceBasis:'Test caption.'})),lectureOrder:['case-1','case-2']};
+  plan.lectureOrder=plan.cases.map(c=>c.id);
   const C=globalThis.VisualLecture,Q=globalThis.VisualLectureQuality;
   const lesson={id:'vl-1234',title:plan.title,sourceText:'Full synthetic software source.',registry,plan,qualityPolicyVersion:1,qualityReviewMode:'chat',quality:{approvals:{}}};
   if(inheritedGroup)lesson.sourceMetadata={masterSource:{manifest:{caseAndComparisonSequences:[{id:'test-collection',originalGroupLabel:'Synthetic source collection',preserveOrderAndPairs:true,imageIds:registry.map(i=>i.masterImageId)}]}}};

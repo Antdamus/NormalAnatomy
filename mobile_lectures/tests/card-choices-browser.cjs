@@ -77,6 +77,32 @@ const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=r
   assert.equal(R.summary(row.card_choices.review,row.manifest.lesson).cards,2);
   assert.equal(JSON.stringify(row.manifest),immutable);assert.deepEqual(errors,[]);
   console.log('PASS inherited source groups, no automatic selections, provenance, unlink/restore across two devices, reload and immutable lecture.');
+  await p.close();await t.close();
+  const long=await fixture(undefined,{imageCount:30});
+  Object.assign(row,{fingerprint:long.manifest.fingerprint,manifest:long.manifest,case_count:30,card_choices:null,card_revision:0});
+  const position=await page();await position.locator('#case-select').selectOption('case-27');await position.locator('#focus-view').click();
+  async function checkPosition(id,name){
+    const item=position.locator(`.card-link-option[data-image="${id}"]`);
+    await position.waitForFunction(id=>{const row=document.querySelector(`.card-link-option[data-image="${id}"]`),header=document.querySelector('.card-link-header'),footer=document.querySelector('.card-link-footer');return row?.getBoundingClientRect().top>=header?.getBoundingClientRect().bottom-1&&row.querySelector('.card-link-current-label').getBoundingClientRect().bottom<footer.getBoundingClientRect().top;},id);
+    const observed=await item.evaluate(e=>{const r=e.getBoundingClientRect(),h=document.querySelector('.card-link-header').getBoundingClientRect(),footer=document.querySelector('.card-link-footer').getBoundingClientRect(),label=e.querySelector('.card-link-current-label').getBoundingClientRect();return {top:r.top,headerBottom:h.bottom,labelBottom:label.bottom,footerTop:footer.top,scroll:document.querySelector('#card-link-dialog').scrollTop,current:e.getAttribute('aria-current'),focused:document.activeElement===e};});
+    assert.equal(observed.current,'true',name);assert.ok(observed.labelBottom<observed.footerTop,name+' current image appears above actions');assert.ok(observed.scroll>1000,name+' opens near the end of the list');assert.equal(observed.focused,true,name+' no automatic keyboard');
+    for(const selector of ['.card-link-search input','#card-link-current','.card-link-heading button','#card-link-save'])assert.equal(await position.locator(selector).evaluate(e=>{const r=e.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===e;}),true,name+' accessible '+selector);
+    assert.equal(await position.locator('#card-link-dialog').evaluate(d=>d.scrollWidth>d.clientWidth+1),false,name+' no horizontal overflow');
+    assert.deepEqual(await position.locator('.card-link-option').evaluateAll(rows=>rows.map(r=>r.dataset.image)),long.manifest.lesson.registry.map(i=>i.masterImageId),'source order stays intact');
+  }
+  for(const [name,width,height] of [['iphone',390,844],['small-phone',320,568],['ipad',820,1180],['landscape',844,390]]){
+    await position.setViewportSize({width,height});await position.locator('#viewer-card-link').click();await checkPosition('TEST-27',name);
+    await position.screenshot({path:path.join(root,'test-results',`card-current-${safari?'webkit-':''}${name}.png`)});
+    await position.getByRole('button',{name:'Cancel',exact:true}).click();
+  }
+  await position.setViewportSize({width:390,height:844});await position.locator('#viewer-next').click();await position.locator('#viewer-card-link').click();await checkPosition('TEST-28','reopened at new image');
+  const search=position.getByLabel('Find images to link');await search.fill('TEST-1');assert.equal(await position.locator('.card-link-option[aria-current=true]').isVisible(),false);
+  await position.locator('#card-link-current').click();assert.equal(await search.inputValue(),'');await checkPosition('TEST-28','return from search');
+  await search.fill('no matching image');await search.fill('');
+  assert.equal(await position.locator('.card-link-option[aria-current=true]').evaluate(e=>{const r=e.getBoundingClientRect();return r.top>=document.querySelector('.card-link-header').getBoundingClientRect().bottom-1&&r.top<document.querySelector('.card-link-footer').getBoundingClientRect().top;}),true,'clearing search returns to current image');
+  assert.equal(await search.evaluate(e=>document.activeElement===e),true,'clearing search does not steal typing focus');
+  assert.equal(row.card_revision,0,'opening, searching and locating do not write choices');assert.equal(row.card_choices,null);assert.deepEqual(errors,[]);
+  console.log('PASS current-image jump in a 30-image list, four layouts, sticky search/actions, reopening at new image, return/clear search and no choice writes.');
   console.log(`PASS ${safari?'WebKit':'Edge'} phone/tablet selections, grouping, paired identity, desktop round trip, stale-device conflicts, failed-save preservation, four picker layouts and reload.`);
  }finally{await browser?.close();server.kill();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

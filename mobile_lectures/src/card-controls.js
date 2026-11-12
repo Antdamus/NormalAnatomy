@@ -60,7 +60,7 @@ export function createCardControls({row,parent,viewerTools,getImageId,getURL,onE
     if(busy||dialog.open)return;
     const openedRevision=revision,openedReview=state.review.revision,locked=new Set(Review.groupFor(lesson,seed,state.review)),selected=new Set(locked),info=Review.linkInfo(lesson,seed,state.review);
     observer?.disconnect();dialog.replaceChildren();
-    const heading=el('div',undefined,'card-link-heading'),close=button('Cancel',()=>dialog.close());heading.append(el('h2','Keep images together'),close);dialog.append(heading);
+    const header=el('div',undefined,'card-link-header'),heading=el('div',undefined,'card-link-heading'),close=button('Cancel',()=>dialog.close());heading.append(el('h2','Keep images together'),close);header.append(heading);dialog.append(header);
     const count=el('p'),message=el('p');message.setAttribute('role','status');
     dialog.append(el('p','Choose other images from this lecture. Saving selects the complete group for cards. Source collections are study groupings; they do not establish a shared patient or scan time.'));
     const provenance=el('div',undefined,'card-link-provenance');provenance.id='card-link-provenance';
@@ -69,13 +69,16 @@ export function createCardControls({row,parent,viewerTools,getImageId,getURL,onE
     if(info.disabled.length)provenance.append(el('p','Some inherited links are off, including links kept off to preserve earlier individual selections. You can restore them below.'));
     if(info.required.length)provenance.append(el('p','Required source groups stay together. Unlinking removes optional study links; original plain/annotated pairs and required groups remain intact.'));
     if(provenance.childElementCount)dialog.append(provenance);
-    const search=el('input');search.type='search';search.placeholder='Find a case, image number or caption';search.setAttribute('aria-label','Find images to link');dialog.append(search,count,message);
+    const search=el('input');search.type='search';search.placeholder='Find a case, image number or caption';search.setAttribute('aria-label','Find images to link');
+    const searchBar=el('div',undefined,'card-link-search'),currentButton=button('Current image',()=>jumpCurrent(true),'card-link-current');searchBar.append(search,currentButton);header.append(searchBar,count,message);
     const list=el('div',undefined,'card-link-list'),rows=[];
     observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){observer.unobserve(entry.target);const img=entry.target,id=img.dataset.image;
       const variant=manifest.media.some(m=>m.imageId===id&&m.variant==='plain')?'plain':'annotated';
       void getURL(id,variant).then(url=>{if(!disposed&&img.isConnected&&url)img.src=url;}).catch(()=>{img.alt='Preview unavailable; original caption below.';});}},{root:dialog,rootMargin:'150px'});
     for(const image of lesson.registry){
       const id=image.masterImageId,option=el('section',undefined,'card-link-option'),label=el('label'),check=el('input');check.type='checkbox';check.dataset.image=id;check.setAttribute('aria-label',`Link ${imageLabel(image)}`);
+      option.dataset.image=id;
+      if(id===seed){option.setAttribute('aria-current','true');option.tabIndex=-1;option.setAttribute('aria-label',`Current image: ${imageLabel(image)}`);option.append(el('span','Current image','card-link-current-label'));}
       label.append(check,el('strong',imageLabel(image)));const img=el('img');img.dataset.image=id;img.alt=imageLabel(image);img.loading='lazy';
       const caption=el('details');caption.append(el('summary','Original caption'),globalThis.VisualLectureCaptions.render(image.captionOriginal||image.captionHtml||image.caption||''));
       const cases=lesson.plan.cases.filter(c=>c.imageIds.includes(id)).map(c=>c.label).join(' · ');
@@ -96,8 +99,17 @@ export function createCardControls({row,parent,viewerTools,getImageId,getURL,onE
     const restore=button('Restore links & select',()=>save('restore'),'card-restore');restore.hidden=!info.disabled.length;
     const saveButton=button('Link and select for cards',()=>save('link'),'card-link-save');footer.append(remove,restore,saveButton);dialog.append(list,footer);
     function draw(){count.textContent=`${selected.size} images together`;for(const r of rows){r.check.checked=selected.has(r.id);r.check.disabled=busy||locked.has(r.id);}saveButton.disabled=busy||selected.size<2;}
-    search.oninput=()=>{const q=search.value.trim().toLocaleLowerCase();for(const r of rows)r.option.hidden=!!q&&!r.search.includes(q);};
-    draw();dialog.showModal();search.focus();
+    const current=rows.find(r=>r.id===seed);
+    function jumpCurrent(focus){
+      if(!dialog.open||!current?.option.isConnected)return;
+      search.value='';for(const r of rows)r.option.hidden=false;
+      // Scroll only this sheet, leaving the lecture/image and playback alone.
+      dialog.scrollTop+=current.option.getBoundingClientRect().top-dialog.getBoundingClientRect().top-header.offsetHeight-8;
+      if(focus)current.option.focus({preventScroll:true});
+    }
+    search.oninput=()=>{const q=search.value.trim().toLocaleLowerCase();for(const r of rows)r.option.hidden=!!q&&!r.search.includes(q);if(!q)jumpCurrent(false);};
+    draw();dialog.showModal();current?.option.focus({preventScroll:true});
+    requestAnimationFrame(()=>jumpCurrent(false));
   }
   dialog.addEventListener('cancel',e=>{if(busy)e.preventDefault();});dialog.addEventListener('close',()=>observer?.disconnect());
   paint();

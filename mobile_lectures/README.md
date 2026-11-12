@@ -241,6 +241,11 @@ Use **Add to cards** under an image or in Study view. Plain and annotated varian
 share the same registry ID. **Link images** opens a full-width picker for other
 images in the same lecture, including other cases. Saving selects every member;
 source atomic groups and source-supported same-patient groups remain indivisible.
+The picker opens at the current image, highlights it, and leaves the keyboard
+closed. Search, Cancel and the save actions stay accessible while scrolling.
+**Current image** clears a search and returns to that image; clearing the search
+also returns there without interrupting typing. Preview space is reserved before
+images load, so their downloads do not shift the current row.
 Saved source collections (`caseAndComparisonSequences`) and explicit companion
 IDs are inherited automatically, alongside desktop manual links included in the
 lecture package. The picker labels their origin. **Unlink for cards** removes
