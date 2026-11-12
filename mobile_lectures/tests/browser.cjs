@@ -67,7 +67,9 @@ const {chromium}=require('playwright');
     assert.equal(authRequests.find(r=>r.path==='/auth/v1/user'&&r.method==='PUT').body.password,'fixture-new-password');
     assert.equal(await page.getByLabel('New password',{exact:true}).inputValue(),'');
     assert.equal(authRequests.filter(r=>r.path==='/rest/v1/mobile_members').length>=2,true);
+    await page.reload();await page.getByText('Account access',{exact:true}).waitFor();
+    assert.equal(await page.getByRole('button',{name:'Sign out',exact:true}).isVisible(),true);
     assert.deepEqual(errors,[]);
-    console.log('PASS mobile images, audio, timing, caption safety, real package rendering, email-limit feedback, password sign-in and member-only password setup.');
+    console.log('PASS mobile images, audio, timing, caption safety, real package rendering, email-limit feedback, password sign-in, member-only password setup and session persistence after reload.');
   }finally{await browser?.close();child.kill();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

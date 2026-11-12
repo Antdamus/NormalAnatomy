@@ -34,7 +34,8 @@ files must remain excluded.
   sanitization.
 - Synthetic authentication checks passed for email-limit feedback, password
   sign-in, matching-password validation, clearing entered passwords after save,
-  and checking membership before updating the account password.
+  checking membership before updating the account password, and preserving the
+  signed-in session after a page reload.
 - Production returned HTTP 200 with the configured CSP and security headers.
 - The live Supabase API rejected anonymous reads of all three application
   tables with HTTP 401/permission denied.
@@ -45,6 +46,12 @@ The default email provider reached its sending quota during initial setup.
 Optional password setup is available under **Account access** on an already
 signed-in member's library. This keeps the verified email and all existing RLS
 rules; it does not disable email confirmation or increase the provider's limit.
+
+Initial lecture upload is still pending: the desktop is signed out, and the
+owner later reported losing the iPhone session. A fresh email sign-in must wait
+for the provider quota to recover. No private lecture or recording has been
+uploaded yet. The local MP3 was successfully decoded and tested for playback,
+seeking, speed changes, and image browsing; this is not a full listening audit.
 
 Private lecture packages and audio verification records are kept under the
 ignored `private/` folder. They are not part of this repository or public app.
