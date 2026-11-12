@@ -7,10 +7,11 @@ import { createImageViewer } from './image-viewer.js';
 import {createAutomaticSync,desktopProcessorSupported} from './automatic-sync.js';
 import {validateSubtitles,subtitleAt,subtitleText} from './subtitles.js';
 import {createCardControls} from './card-controls.js';
+import {createProgressSync} from './progress-sync.js';
 
 const $ = id => document.getElementById(id), app = $('app');
 let session = null, current = null, localPackage = null, audio = null, stepIndex = 0, variant = 'plain', follow = false;
-let routeVersion = 0, imageVersion = 0, audioVersion = 0, lastSave = 0, saveQueue = Promise.resolve(), noticeTimer;
+let routeVersion = 0, imageVersion = 0, audioVersion = 0, lastSave = 0, noticeTimer;
 const urls = new Set(), mediaCache = new Map();
 const automaticMessages=new Map();let syncer=null,syncUser=null,playbackRefreshing=false,resumeAfterReload=null,pageLeaving=false;
 const canProcess=desktopProcessorSupported(navigator);
@@ -32,6 +33,7 @@ function fileInput(label,accept,action) {
 }
 function downloadJSON(name,value) {const url=objectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download=name;a.click();}
 function dispose() {
+  if(current)current.progressReady=false;
   cardControls?.dispose();cardControls=null;
   viewer.close();viewerState=null;
   resumeAfterReload=null;
@@ -103,11 +105,23 @@ async function imageURL(imageId,wanted) {
 }
 async function openLecture(row,local,serial) {
   await verifyManifest(row.manifest);if(serial!==routeVersion)return;
-  current={...row,local,steps:sequence(row.manifest.lesson)};stepIndex=0;variant='plain';follow=false;
+  current={...row,local,steps:sequence(row.manifest.lesson),progressReady:false};stepIndex=0;variant='plain';follow=false;
+  const opened=current;
   const lesson=row.manifest.lesson;
   let progress=null;
-  try {progress=local?JSON.parse(localStorage.getItem(`na-preview:${row.fingerprint}`)||'null'):await cloud.getProgress(row.fingerprint);}catch{/* Content remains usable when progress is unavailable. */}
-  if(!local){try{const saved=JSON.parse(localStorage.getItem(`na-progress:${row.fingerprint}`)||'null');if(saved?.updated_at&&(!progress?.updated_at||saved.updated_at>progress.updated_at))progress=saved;}catch{}}
+  if(local){try{progress=JSON.parse(localStorage.getItem(`na-preview:${row.fingerprint}`)||'null');}catch{}}
+  else{
+    const uid=session.user.id,key=`na-progress:${uid}:${row.fingerprint}`;
+    opened.progressSync=createProgressSync({load:()=>cloud.getProgress(row.fingerprint,uid),save:(value,version)=>cloud.saveProgress(row.fingerprint,value,version,uid),
+      readCache:()=>{try{return JSON.parse(localStorage.getItem(key)||'null');}catch{return null;}},
+      writeCache:value=>{try{localStorage.setItem(key,JSON.stringify(value));}catch{}},
+      isCurrent:()=>current===opened&&session?.user.id===uid,
+      canApply:()=>opened.progressReady&&audio?.paused&&!audio.seeking,
+      apply:value=>applyProgress(opened,value),status:message=>{if(current===opened&&$('progress-state'))$('progress-state').textContent=message;}
+    });
+    progress=await opened.progressSync.start();
+  }
+  if(!validProgress(opened,progress))progress=null;
   if(serial!==routeVersion)return;
   if(progress){const i=current.steps.findIndex(s=>s.caseId===progress.case_id && s.imageId===progress.image_id);if(i>=0)stepIndex=i;}
   const back=el('a','← Library','back-link');back.href='#';app.append(back);
@@ -138,18 +152,19 @@ async function openLecture(row,local,serial) {
   document.querySelector('.caption').ontoggle=()=>setCaptions(document.querySelector('.caption').open);
   setCaptions(captionsShown);
   $('follow').onclick=()=>{follow=!follow;updateFollow();if(follow)onTime();};
-  $('speed').onchange=()=>{audio.defaultPlaybackRate=Number($('speed').value);audio.playbackRate=audio.defaultPlaybackRate;void persistProgress();};
+  $('speed').onchange=()=>{audio.defaultPlaybackRate=Number($('speed').value);audio.playbackRate=audio.defaultPlaybackRate;void persistProgress({intent:true});};
   $('rewind').onclick=()=>{audio.currentTime=Math.max(0,audio.currentTime-10);};$('forward').onclick=()=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.min(audio.duration,audio.currentTime+10);};
-  audio.ontimeupdate=onTime;audio.onpause=()=>{void persistProgress();void refreshPlayback();};audio.onseeked=()=>{onTime();void persistProgress();};
+  audio.ontimeupdate=onTime;audio.onpause=()=>{if(current!==opened||!opened.progressReady)return;void persistProgress().then(refreshProgress);void refreshPlayback();};
+  audio.onseeked=()=>{const restored=Number.isFinite(opened.progressSeekTarget)&&Math.abs(audio.currentTime-opened.progressSeekTarget)<0.1;opened.progressSeekTarget=null;if(restored){updateSubtitles();return;}onTime();void persistProgress({intent:true});};
   audio.onloadedmetadata=()=>{const position=resumeAfterReload??((progress?.audio_sha256===current.audio?.sha256||progress?.audio_sha256===current.audio?.originalExport?.sha256)?progress?.position:null);resumeAfterReload=null;
-    if(Number.isFinite(position))audio.currentTime=Math.min(position,Math.max(0,audio.duration-0.1));
+    if(Number.isFinite(position)){opened.progressSeekTarget=Math.min(position,Math.max(0,audio.duration-0.1));audio.currentTime=opened.progressSeekTarget;}
     if(timingReady(current.timing)&&Math.abs(current.timing.duration-audio.duration)>(current.timing.version===2?0.25:1)){current.timing=null;follow=false;updateFollow();showError(new Error('The saved timing duration does not match this recording. Image following remains off.'));}renderTiming();updateSubtitles();};
   audio.onerror=()=>{$('audio-status').textContent='Audio could not load. Reopen the lecture to renew its link.';};
-  audio.onplay=()=>{if('mediaSession' in navigator)navigator.mediaSession.metadata=new MediaMetadata({title:lesson.title,artist:'NormalAnatomy'});};
+  audio.onplay=()=>{if('mediaSession' in navigator)navigator.mediaSession.metadata=new MediaMetadata({title:lesson.title,artist:'NormalAnatomy'});void persistProgress({intent:true});};
   $('audio-setup').append(el('p','Use the complete MP3 exported from Speechify. Attaching a different recording clears the old timing.','muted'));
   const confirm=el('label',undefined,'check-label');const input=el('input');input.type='checkbox';input.id='audio-confirm';confirm.append(input,document.createTextNode('I checked that this is the full Speechify export of this exact approved narration.'));$('audio-setup').append(confirm,fileInput('Attach Speechify audio','.mp3,.m4a,.wav',attachAudio));
   if(row.audio){await setAudio(row.audio);if(serial!==routeVersion)return;}
-  updateFollow();renderTiming();await renderImage();
+  updateFollow();renderTiming();await renderImage();if(current===opened){opened.progressReady=true;void opened.progressSync?.flush();}
 }
 function setVariant(value){variant=value;void renderImage().catch(showError);}
 function setCaptions(value){captionsShown=value;try{localStorage.setItem('na-image-captions',String(value));}catch{}
@@ -157,7 +172,7 @@ function setCaptions(value){captionsShown=value;try{localStorage.setItem('na-ima
   $('caption-toggle')?.setAttribute('aria-pressed',String(value));
   if(viewerState){viewerState={...viewerState,captions:value};viewer.update(viewerState);}
 }
-function navigate(index){if(!current || index<0 || index>=current.steps.length)return;stepIndex=index;follow=false;updateFollow();void renderImage().catch(showError);void persistProgress();}
+function navigate(index){if(!current || index<0 || index>=current.steps.length)return;stepIndex=index;follow=false;updateFollow();void renderImage().catch(showError);void persistProgress({intent:true});}
 async function renderImage(){
   if(!current)return;const serial=++imageVersion,row=current,s=row.steps[stepIndex],lesson=row.manifest.lesson,c=lesson.plan.cases.find(c=>c.id===s.caseId),entry=lesson.registry.find(i=>i.masterImageId===s.imageId);
   cardControls?.paint();
@@ -244,18 +259,32 @@ async function refreshPlayback(){
 function onTime(){
   if(!current||!audio)return;
   updateSubtitles();
-  if(follow){const cue=cueAt(current.timing,audio.currentTime);if(cue){const i=current.steps.findIndex(s=>s.caseId===cue.caseId&&s.imageId===cue.imageId);if(i>=0&&i!==stepIndex){stepIndex=i;void renderImage().catch(showError);}}}
+  if(follow&&!Number.isFinite(current.progressSeekTarget)){const cue=cueAt(current.timing,audio.currentTime);if(cue){const i=current.steps.findIndex(s=>s.caseId===cue.caseId&&s.imageId===cue.imageId);if(i>=0&&i!==stepIndex){stepIndex=i;void renderImage().catch(showError);}}}
   if($('mark-time'))$('mark-time').textContent=`Mark this image at ${time(audio.currentTime)}`;
-  if(Date.now()-lastSave>5000){lastSave=Date.now();void persistProgress();}
+  if(!audio.paused&&!Number.isFinite(current.progressSeekTarget)&&Date.now()-lastSave>5000){lastSave=Date.now();void persistProgress();}
 }
-async function persistProgress({localOnly=false}={}){
-  if(!current || !audio)return;
+function validProgress(row,value){return !!value&&Number.isFinite(value.position)&&value.position>=0&&value.position<86400&&Number.isFinite(value.rate)&&value.rate>=0.5&&value.rate<=3&&row.steps.some(s=>s.caseId===value.case_id&&s.imageId===value.image_id);}
+async function applyProgress(row,value){
+  if(current!==row||!row.progressReady||!audio?.paused||!validProgress(row,value))return;
+  const index=row.steps.findIndex(s=>s.caseId===value.case_id&&s.imageId===value.image_id);
+  audio.defaultPlaybackRate=value.rate;audio.playbackRate=value.rate;$('speed').value=String(value.rate);
+  if(Number.isFinite(audio.duration)&&(value.audio_sha256===row.audio?.sha256||value.audio_sha256===row.audio?.originalExport?.sha256)){
+    const position=Math.min(value.position,Math.max(0,audio.duration-0.1));
+    if(Math.abs(audio.currentTime-position)>=0.05){row.progressSeekTarget=position;audio.currentTime=position;}
+  }
+  if(index!==stepIndex){stepIndex=index;await renderImage();}updateSubtitles();
+}
+async function refreshProgress(){
+  const row=current;if(pageLeaving||!row?.progressReady||!row.progressSync)return;
+  await row.progressSync.refresh();if(current===row)await row.progressSync.flush();
+}
+async function persistProgress({localOnly=false,intent=false}={}){
+  if(!current?.progressReady || !audio || audio.seeking || Number.isFinite(current.progressSeekTarget)||(current.audio&&!Number.isFinite(audio.duration)))return;
   const row=current,s=row.steps[stepIndex];
-  const value={audio_sha256:row.audio?.sha256||'',position:Number.isFinite(audio.currentTime)?audio.currentTime:0,case_id:s.caseId,image_id:s.imageId,rate:audio.playbackRate,updated_at:new Date().toISOString()};
-  try{localStorage.setItem(`na-${row.local?'preview':'progress'}:${row.fingerprint}`,JSON.stringify(value));}catch{}
-  if(row.local||localOnly||pageLeaving)return;
-  saveQueue=saveQueue.catch(()=>{}).then(()=>cloud.saveProgress(row.fingerprint,value));
-  try{await saveQueue;if(current===row && $('progress-state'))$('progress-state').textContent='Progress saved';}catch{if(current===row&&$('progress-state'))$('progress-state').textContent='Progress not synced · check connection';}
+  const value={audio_sha256:row.audio?.sha256||'',position:Number.isFinite(audio.currentTime)?audio.currentTime:0,case_id:s.caseId,image_id:s.imageId,rate:audio.playbackRate};
+  if(row.local){try{localStorage.setItem(`na-preview:${row.fingerprint}`,JSON.stringify({...value,updated_at:new Date().toISOString()}));}catch{}return;}
+  row.progressSync.record(value,{intent});
+  if(!localOnly&&!pageLeaving)await row.progressSync.flush();
 }
 function validateLoadedTiming(timing){
   validateTiming(timing,current.manifest,current.audio);
@@ -309,13 +338,14 @@ function startAutomaticSync(){
 }
 $('account').onclick=async()=>{await persistProgress();dispose();const {error}=await cloud.client.auth.signOut();if(error){showError(error);return;}session=null;localPackage=null;location.hash='';await route();};
 window.addEventListener('hashchange',()=>route().catch(showError));
-document.addEventListener('visibilitychange',()=>{if(document.hidden)void persistProgress({localOnly:true});else{void persistProgress();void refreshPlayback();void syncer?.tick();}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)void persistProgress({localOnly:true});else{void refreshProgress();void refreshPlayback();void cardControls?.refresh();void syncer?.tick();}});
 window.addEventListener('pagehide',()=>{pageLeaving=true;void persistProgress({localOnly:true});});
-window.addEventListener('pageshow',()=>{pageLeaving=false;});
+window.addEventListener('pageshow',()=>{pageLeaving=false;void refreshProgress();});
+window.addEventListener('focus',()=>{void refreshProgress();void cardControls?.refresh();});
 if(cloud.client){
   const {data,error}=await cloud.client.auth.getSession();if(error)showError(error);session=data.session;
   cloud.client.auth.onAuthStateChange((event,next)=>{const changed=session?.user?.id!==next?.user?.id;session=next;if(changed)setTimeout(()=>{startAutomaticSync();route().catch(showError);},0);});
 }
 route().catch(showError);
 startAutomaticSync();
-setInterval(()=>{if(!document.hidden){void refreshPlayback();void syncer?.tick();void cardControls?.refresh();}},15000);
+setInterval(()=>{if(!document.hidden){void refreshProgress();void refreshPlayback();void syncer?.tick();void cardControls?.refresh();}},15000);

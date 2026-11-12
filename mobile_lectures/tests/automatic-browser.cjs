@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),path=require('node:path'),fs=require(
 (async()=>{
  const root=path.resolve(__dirname,'..'),base='http://127.0.0.1:4178',supabase='http://127.0.0.1:4181',safari=process.env.TEST_BROWSER==='webkit';
  const server=spawn(process.execPath,[path.join(root,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','4178','--strictPort'],{cwd:root,stdio:'pipe',windowsHide:true,env:{...process.env,VITE_SUPABASE_URL:supabase,VITE_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_test'}});
- let desktopBrowser,phoneBrowser,mediaServer;
+ let desktopBrowser,phoneBrowser,mediaServer,savedProgress=null,progressWrites=0;
  try{
   for(let i=0;i<60;i++){try{if((await fetch(base)).ok)break;}catch{}await new Promise(r=>setTimeout(r,150));}
   const {fixture}=await import('./fixture.mjs'),{sha256}=await import('../src/contract.js'),{transcriptAnchors}=await import('../src/timing-anchors.js'),{combineAlignments}=await import('../src/automatic-timing.js'),f=await fixture();
@@ -20,7 +20,13 @@ const assert=require('node:assert/strict'),path=require('node:path'),fs=require(
       if(url.pathname==='/auth/v1/token')data={access_token:token,refresh_token:'fixture',expires_in:3600,token_type:'bearer',user};
       else if(url.pathname==='/auth/v1/user')data=user;
       else if(url.pathname==='/rest/v1/mobile_members')data=[{email:user.email}];
-      else if(url.pathname==='/rest/v1/mobile_progress')data=req.method==='GET'?null:[];
+      else if(url.pathname==='/rest/v1/mobile_progress'){
+        if(req.method==='GET')data=savedProgress;
+        else{const chunks=[];for await(const chunk of req)chunks.push(chunk);const change=JSON.parse(Buffer.concat(chunks));
+          if(req.method==='POST'&&savedProgress){res.writeHead(409,{'Content-Type':'application/json'});res.end(JSON.stringify({code:'23505',message:'Progress already exists'}));return;}
+          if(req.method==='POST'||url.searchParams.get('updated_at')==='eq.'+savedProgress?.updated_at){savedProgress={...savedProgress,...change};progressWrites++;data=savedProgress;}else data=null;
+        }
+      }
       else if(url.pathname==='/rest/v1/mobile_lectures'){
         if(req.method==='PATCH'){assert.equal(/iPhone/.test(req.headers['user-agent']),false);const chunks=[];for await(const chunk of req)chunks.push(chunk);const update=JSON.parse(Buffer.concat(chunks));
           if(update.timing){assert.equal(url.searchParams.get('audio->>sha256'),'eq.'+hash);assert.equal(url.searchParams.get('timing'),'is.null');assert.equal(update.timing.humanVerified,false);row.audio=update.audio;row.timing=update.timing;publishes++;}
@@ -121,6 +127,19 @@ const assert=require('node:assert/strict'),path=require('node:path'),fs=require(
   // Let the current render/save finish before this deliberate reload. WebKit
   // otherwise reports cancelled mock CORS requests as page errors on teardown.
   await phone.waitForLoadState('networkidle');phase='saved-speed-reload';await phone.reload();await phone.waitForFunction(()=>document.querySelector('#follow')?.getAttribute('aria-pressed')==='true');await phone.waitForFunction(()=>document.querySelector('#subtitle-toggle')?.getAttribute('aria-pressed')==='true');await phone.waitForSelector('#study-image:not([hidden])');assert.equal(await phone.locator('audio').evaluate(a=>a.playbackRate),1.25,'speed survives reopening');
+  // Separate browser/device storage: the only shared state is the HTTP service.
+  phase='cross-device-handoff';
+  async function savedAt(position,rate,caseId){for(let i=0;i<100;i++){if(Math.abs(savedProgress?.position-position)<.1&&savedProgress?.rate===rate&&savedProgress?.case_id===caseId)return;await new Promise(r=>setTimeout(r,50));}assert.fail('Expected cloud bookmark '+position+' at '+rate+' in '+caseId+'; got '+JSON.stringify(savedProgress));}
+  await desktop.goto(base+'/#'+row.fingerprint);await desktop.waitForFunction(()=>document.querySelector('audio')?.duration===20);await desktop.waitForSelector('#study-image:not([hidden])');
+  assert.ok(Math.abs(await desktop.locator('audio').evaluate(a=>a.currentTime)-savedProgress.position)<.1,'fresh computer resumes phone cloud bookmark');
+  await desktop.locator('#focus-view').click();await desktop.locator('#viewer-seek').fill('13');await desktop.locator('#viewer-speed').selectOption('1.5');await savedAt(13,1.5,'case-2');
+  const writesBeforeResume=progressWrites;await phone.evaluate(()=>window.dispatchEvent(new Event('focus')));
+  await phone.waitForFunction(()=>Math.abs(document.querySelector('audio').currentTime-13)<.1&&document.querySelector('audio').playbackRate===1.5);await phone.waitForLoadState('networkidle');
+  assert.equal(progressWrites,writesBeforeResume,'foregrounding an idle phone never overwrites the computer');assert.equal(await phone.locator('#case-select').inputValue(),savedProgress.case_id);
+  await phone.locator('#focus-view').click();await phone.locator('#viewer-seek').fill('8');await phone.locator('#viewer-speed').selectOption('0.75');await savedAt(8,.75,'case-1');
+  await desktop.evaluate(()=>window.dispatchEvent(new Event('focus')));await desktop.waitForFunction(()=>Math.abs(document.querySelector('audio').currentTime-8)<.1&&document.querySelector('audio').playbackRate===.75&&document.querySelector('#case-select').value==='case-1');
+  assert.equal(await desktop.locator('#case-select').inputValue(),savedProgress.case_id);
+  await desktop.goto(base);await desktop.locator('.lecture-card').waitFor();
   // Exercise an already-open phone receiving only newly available subtitles.
   // This changes synthetic server data, not a real account or recording.
   await phone.waitForLoadState('networkidle');row.audio={...row.audio};delete row.audio.subtitles;phase='subtitle-backfill-reload';await phone.reload();await phone.waitForFunction(()=>document.querySelector('audio')?.duration===20&&document.querySelector('#subtitle-toggle').disabled);
@@ -128,6 +147,6 @@ const assert=require('node:assert/strict'),path=require('node:path'),fs=require(
   await desktop.reload();await desktop.waitForFunction(()=>document.querySelector('#automatic-library-status')?.textContent.includes('subtitles synced'));
   await phone.waitForFunction(()=>!document.querySelector('#subtitle-toggle').disabled,{timeout:25000});assert.equal(await phone.locator('audio').getAttribute('src'),sourceBefore);assert.ok(await phone.locator('audio').evaluate(a=>a.currentTime>0));assert.equal(subtitlePublishes,2);assert.equal(publishes,1);
   assert.equal(phoneLoopback,0);assert.equal(publishes,1);assert.deepEqual(errors,[]);
-  console.log(`PASS automatic desktop publication -> ${safari?'WebKit':'Edge'} phone cloud playback, rapid skip taps, stable zoom, spoken subtitles on/off, pauses, seeking, independent image captions, five layouts and saved preference after reload; zero phone loopback calls or manual cue imports.`);
+  console.log(`PASS automatic desktop publication -> ${safari?'WebKit':'Edge'} phone cloud playback, two-way device resume without idle writes, rapid skip taps, stable zoom, spoken subtitles on/off, pauses, seeking, independent image captions, five layouts and saved preference after reload; zero phone loopback calls or manual cue imports.`);
  }finally{await desktopBrowser?.close();await phoneBrowser?.close();if(mediaServer)await new Promise(r=>mediaServer.close(r));server.kill();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

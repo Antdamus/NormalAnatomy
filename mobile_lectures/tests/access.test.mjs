@@ -28,6 +28,9 @@ test('Postgres enforces membership, owner isolation and private immutable media'
     const choices={version:1,channel:`mobile-${a}`,review:{lessonId:'test',images:{}},desktopBase:{lessonId:'test'}};
     const saveChoices=()=>db.query('update mobile_lectures set card_choices=$1,card_revision=card_revision+1 where fingerprint=$2 and card_revision=0 returning card_revision',[JSON.stringify(choices),hash]);
     assert.equal((await saveChoices()).rows[0].card_revision,1);assert.equal((await saveChoices()).rows.length,0,'stale device cannot overwrite choices');
+    await db.query('insert into mobile_progress(owner_id,fingerprint,position,updated_at) values($1,$2,10,$3)',[a,hash,'2026-11-12T00:00:00Z']);
+    const saveBookmark=()=>db.query('update mobile_progress set position=30,updated_at=$1 where owner_id=$2 and fingerprint=$3 and updated_at=$4 returning position',['2026-11-12T00:01:00Z',a,hash,'2026-11-12T00:00:00Z']);
+    assert.equal((await saveBookmark()).rows[0].position,30);assert.equal((await saveBookmark()).rows.length,0,'stale bookmark cannot overwrite a newer device position');
     await assert.rejects(db.query('update mobile_lectures set card_choices=$1',[JSON.stringify({...choices,review:{lessonId:'wrong',images:{}}})]),/card_choices_identity/);
     await db.query('update mobile_lectures set audio=$1 where fingerprint=$2',[JSON.stringify({sha256:hash}),hash]);
     const publish=()=>db.query("update mobile_lectures set timing='{\"version\":2}' where fingerprint=$1 and audio->>'sha256'=$2 and timing is null returning fingerprint",[hash,hash]);
@@ -42,6 +45,8 @@ test('Postgres enforces membership, owner isolation and private immutable media'
     await assert.rejects(db.query("insert into mobile_members values('intruder@example.test',now())"),/permission denied/);
     await login(b,'b@example.test');assert.equal((await db.query('select * from mobile_lectures')).rows.length,0);assert.equal((await db.query('select * from storage.objects')).rows.length,0);
     assert.equal((await db.query('update mobile_lectures set card_choices=null returning fingerprint')).rows.length,0,'other users cannot change selections');
+    assert.equal((await db.query('select * from mobile_progress')).rows.length,0,'progress belongs only to its signed-in owner');
+    assert.equal((await db.query('update mobile_progress set position=1 returning *')).rows.length,0);
     await assert.rejects(db.query('insert into storage.objects(bucket_id,name) values($1,$2)',['lecture-media',`${b}/own-file`]),/row-level/);
     await db.exec('reset role; set role anon');await assert.rejects(db.query('select * from mobile_lectures'),/permission denied/);assert.equal((await db.query('select * from storage.objects')).rows.length,0);
     await db.exec('reset role');assert.equal((await db.query("select public from storage.buckets where id='lecture-media'")).rows[0].public,false);

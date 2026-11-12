@@ -72,8 +72,9 @@ export async function publishAutomaticTiming(row,result,prepared){
     .eq('owner_id',uid).eq('fingerprint',row.fingerprint).eq('audio->>sha256',row.audio.sha256).is('timing',null).select('fingerprint'));
   return changed.length===1;
 }
-export async function getProgress(fingerprint) {
+export async function getProgress(fingerprint,expectedOwner) {
   const uid = await owner();
+  if(expectedOwner&&uid!==expectedOwner)throw new Error('The signed-in account changed.');
   return checked(await client.from('mobile_progress').select('*').eq('owner_id',uid).eq('fingerprint',fingerprint).maybeSingle());
 }
 export async function getCardChoices(fingerprint){
@@ -96,7 +97,14 @@ export async function publishSubtitles(row,subtitles){
     .eq('owner_id',uid).eq('fingerprint',row.fingerprint).eq('audio',JSON.stringify(row.audio)).select('fingerprint'));
   return changed.length===1;
 }
-export async function saveProgress(fingerprint,progress) {
+export async function saveProgress(fingerprint,progress,expectedVersion,expectedOwner) {
   const uid = await owner();
-  checked(await client.from('mobile_progress').upsert({owner_id:uid,fingerprint,...progress,updated_at:new Date().toISOString()}));
+  if(uid!==expectedOwner)throw new Error('The signed-in account changed.');
+  if(expectedVersion!==null&&typeof expectedVersion!=='string')throw new Error('A saved progress version is required.');
+  const value={...progress,updated_at:new Date(Math.max(Date.now(),(Date.parse(expectedVersion)||0)+1)).toISOString()};
+  const result=expectedVersion===null
+    ?await client.from('mobile_progress').insert({owner_id:uid,fingerprint,...value}).select('*').maybeSingle()
+    :await client.from('mobile_progress').update(value).eq('owner_id',uid).eq('fingerprint',fingerprint).eq('updated_at',expectedVersion).select('*').maybeSingle();
+  if(result.error?.code==='23505')return null;
+  return checked(result);
 }

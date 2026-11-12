@@ -277,6 +277,31 @@ image captions. The existing manual Speechify export/attachment step is unchange
 
 ## Current limits
 
+### Resuming on another device
+
+Sign into the same account in this web library on both devices. Playback time,
+current image and speed are saved while listening (about every five seconds),
+on pause, and after seeking, changing speed or manually choosing an image.
+Pause before switching devices so the last bookmark can finish syncing.
+A newly opened lecture loads the cloud bookmark. An already-open paused lecture
+checks when it returns to the foreground and every 15 seconds while visible.
+Playing audio is never moved to another device's position mid-sentence.
+
+Reading/restoring a bookmark does not save it again. Conditional timestamp
+updates reject stale-device writes, including first-save races. Local caches are
+account-scoped; an offline draft can retry only if its original cloud version
+is unchanged. When both devices are playing and a conflict occurs, the older
+session continues locally without overwriting the newer bookmark; pausing lets
+it resume the saved position. Explicitly seeking or playing again starts a new
+study action. Existing older app tabs must be refreshed once to use this guard.
+
+Card selections and manually linked groups also sync to the same account and
+are checked on foregrounding. The separate desktop extension and Speechify app
+do not share this web player's bookmark. Card choices for the extension still
+use the documented export/import workflow. Local previews remain device-only.
+
+### Other limitations
+
 - Internet is required. Offline downloads and service-worker caching are not
   implemented.
 - Audio is still exported from Speechify and attached once per lecture. Timing
