@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import { BUCKET, verifyManifest,validateTiming,sha256 } from './contract.js';
 import {validateSubtitles} from './subtitles.js';
 import {validateChoices} from './card-choices.js';
+import {validateExport} from './handoff-contract.js';
 
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -25,8 +26,9 @@ export async function getLecture(fingerprint) {
   await verifyManifest(row.manifest);
   return row;
 }
-export async function uploadPackage({manifest,files},status) {
+export async function uploadPackage({manifest,files},status,expectedOwner) {
   const uid = await owner();
+  if(expectedOwner&&uid!==expectedOwner)throw new Error('The signed-in account changed.');
   await verifyManifest(manifest);
   const exists = checked(await client.from('mobile_lectures').select('fingerprint').eq('owner_id',uid).eq('fingerprint',manifest.fingerprint).maybeSingle());
   if (exists) throw new Error('This reviewed version is already in your library. Open it there; your audio and progress were kept.');
@@ -38,6 +40,24 @@ export async function uploadPackage({manifest,files},status) {
     if (result.error && !['409','Duplicate'].includes(String(result.error.statusCode || result.error.code))) throw result.error;
   }
   checked(await client.from('mobile_lectures').insert({owner_id:uid,fingerprint:manifest.fingerprint,lesson_id:manifest.lesson.id,title:manifest.lesson.title,case_count:manifest.lesson.plan.cases.length,manifest}));
+}
+export async function acceptHandoffPackage(pkg,expectedOwner,status){
+  if(await owner()!==expectedOwner)throw new Error('The signed-in account changed.');
+  const find=async()=>checked(await client.from('mobile_lectures').select('*').eq('owner_id',expectedOwner).eq('fingerprint',pkg.manifest.fingerprint).maybeSingle());
+  let row=await find();
+  if(!row){try{await uploadPackage(pkg,status,expectedOwner);}catch(error){row=await find();if(!row)throw error;}row=await find();}
+  await verifyManifest(row.manifest);return row;
+}
+export async function acceptHandoffAudio(row,bytes,meta,expectedOwner){
+  if(await owner()!==expectedOwner)throw new Error('The signed-in account changed.');
+  await validateExport(meta.exportEvidence,row.manifest);
+  if(meta.path!==`audio/${meta.sha256}`||meta.mime!=='audio/mpeg'||meta.verifiedExport!==true||meta.bytes!==bytes.byteLength||await sha256(bytes)!==meta.sha256)throw new Error('The exported recording failed its integrity check.');
+  if(row.audio){if([row.audio.sha256,row.audio.originalExport?.sha256].includes(meta.sha256))return;throw new Error('A different recording is already saved. It was kept.');}
+  const upload=await client.storage.from(BUCKET).upload(`${expectedOwner}/${row.fingerprint}/${meta.path}`,bytes,{contentType:meta.mime,upsert:false});
+  if(upload.error&&!['409','Duplicate'].includes(String(upload.error.statusCode||upload.error.code)))throw upload.error;
+  if(await owner()!==expectedOwner)throw new Error('The signed-in account changed.');
+  const changed=checked(await client.from('mobile_lectures').update({audio:meta}).eq('owner_id',expectedOwner).eq('fingerprint',row.fingerprint).is('audio',null).is('timing',null).select('fingerprint'));
+  if(!changed.length){const current=await getPlayback(row.fingerprint);if(![current.audio?.sha256,current.audio?.originalExport?.sha256].includes(meta.sha256))throw new Error('Audio or timing changed during the handoff. The saved version was kept.');}
 }
 export async function signedMedia(fingerprint,relativePath) {
   const uid = await owner();

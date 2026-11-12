@@ -7,7 +7,13 @@ import { FORMAT, portableLesson, verifyLesson, verifyManifest, sha256, mediaType
 export async function pack({snapshot,portable,mediaDirectory,out}) {
   if (Boolean(snapshot) === Boolean(portable)) throw new Error('Supply exactly one --snapshot or --portable file.');
   const input = JSON.parse(await fs.readFile(snapshot || portable, 'utf8'));
-  const lesson = portableLesson(portable ? input.lesson : input);
+  const result=await buildPackage(portable?input:{lesson:input},mediaDirectory);
+  await fs.mkdir(path.dirname(out),{recursive:true});
+  await fs.writeFile(out,result.bytes,{flag:'wx'});
+  return {file:path.resolve(out),...result.summary};
+}
+export async function buildPackage(input,mediaDirectory) {
+  const lesson = portableLesson(input.lesson);
   const fingerprint = await verifyLesson(lesson);
   let reviewedMedia = [];
   if (mediaDirectory) reviewedMedia = JSON.parse(await fs.readFile(path.join(mediaDirectory,'media-manifest.json'),'utf8'));
@@ -37,9 +43,7 @@ export async function pack({snapshot,portable,mediaDirectory,out}) {
   if(input.cardReview)manifest.cardReview=globalThis.LectureCardTransfer.clean(input.cardReview,lesson);
   await verifyManifest(manifest);
   files['manifest.json'] = strToU8(JSON.stringify(manifest));
-  await fs.mkdir(path.dirname(out),{recursive:true});
-  await fs.writeFile(out,zipSync(files,{level:0}),{flag:'wx'});
-  return {file:path.resolve(out),fingerprint,cases:lesson.plan.cases.length,variants:media.length,uniqueFiles:Object.keys(files).length-1};
+  return {bytes:zipSync(files,{level:0}),manifest,summary:{fingerprint,cases:lesson.plan.cases.length,variants:media.length,uniqueFiles:Object.keys(files).length-1}};
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   const args = Object.fromEntries(process.argv.slice(2).reduce((all,key,i,a)=> i%2 ? all : [...all,[key.replace(/^--/,''),a[i+1]]],[]));

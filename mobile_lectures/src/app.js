@@ -8,12 +8,14 @@ import {createAutomaticSync,desktopProcessorSupported} from './automatic-sync.js
 import {validateSubtitles,subtitleAt,subtitleText} from './subtitles.js';
 import {createCardControls} from './card-controls.js';
 import {createProgressSync} from './progress-sync.js';
+import {createHandoffSync} from './handoff-sync.js';
 
 const $ = id => document.getElementById(id), app = $('app');
 let session = null, current = null, localPackage = null, audio = null, stepIndex = 0, variant = 'plain', follow = false;
 let routeVersion = 0, imageVersion = 0, audioVersion = 0, lastSave = 0, noticeTimer;
 const urls = new Set(), mediaCache = new Map();
 const automaticMessages=new Map();let syncer=null,syncUser=null,playbackRefreshing=false,resumeAfterReload=null,pageLeaving=false;
+let handoffSync=null,handoffMessage='Checking automatic lecture handoff…';
 const canProcess=desktopProcessorSupported(navigator);
 let captionsShown=false, viewerState=null;
 let subtitlesShown=false;
@@ -79,11 +81,17 @@ async function renderLibrary(serial) {
   }),fileInput('Preview local copy','.nalecture',loadLocal));app.append(tools);
   const rows=await cloud.listLectures();if(serial!==routeVersion)return;
   const grid=el('section',undefined,'lecture-grid');
-  if(!rows.length){const empty=el('div',undefined,'panel empty');empty.append(el('h2','Your first lecture starts here.'),el('p','Add a reviewed mobile package from your computer. It will appear here on your iPhone after you sign in.'));grid.append(empty);}
-  for(const row of rows){const card=el('a',undefined,'lecture-card');card.href='#'+row.fingerprint;card.append(el('span',row.audio?'AUDIO ATTACHED':'IMAGES & TRANSCRIPT','eyebrow'),el('h2',row.title),el('p',`${row.case_count} illustrated cases`,'muted'),el('span','Open lecture ↗','card-action'));grid.append(card);}
+  fillLectureGrid(grid,rows);
   app.append(grid);renderAccountAccess();
-  if(canProcess){const panel=el('section',undefined,'panel');panel.append(el('h3','Automatic image timing'),el('p','With this library and the desktop processor open, attached Speechify recordings are matched to their spoken image references and synced to your phone.','muted'));
+  if(canProcess){const handoff=el('section',undefined,'panel');handoff.append(el('h3','Automatic lecture handoff'),el('p','New desktop lectures arrive here after review and a verified Speechify export. Keep this library signed in until the audio, image timing and subtitles finish.','muted'));
+    const handoffStatus=el('p',handoffMessage,'muted');handoffStatus.id='handoff-status';handoff.append(handoffStatus,button('Sync desktop lectures',()=>handoffSync?.tick()));app.append(handoff);
+    const panel=el('section',undefined,'panel');panel.append(el('h3','Automatic image timing'),el('p','With this library and the desktop processor open, attached Speechify recordings are matched to their spoken image references and synced to your phone.','muted'));
     const status=el('p',automaticMessages.get(null)||'Checking desktop processor…','muted');status.id='automatic-library-status';panel.append(status,button('Check processor',()=>syncer?.tick()));app.append(panel);}
+}
+function fillLectureGrid(grid,rows){
+  grid.replaceChildren();
+  if(!rows.length){const empty=el('div',undefined,'panel empty');empty.append(el('h2','Your first lecture starts here.'),el('p','Your reviewed desktop lectures will appear here after automatic handoff. You can also add a reviewed package.'));grid.append(empty);}
+  for(const row of rows){const card=el('a',undefined,'lecture-card');card.href='#'+row.fingerprint;card.append(el('span',row.audio?'AUDIO ATTACHED':'IMAGES & TRANSCRIPT','eyebrow'),el('h2',row.title),el('p',`${row.case_count} illustrated cases`,'muted'),el('span','Open lecture ↗','card-action'));grid.append(card);}
 }
 function renderAccountAccess(){
   const details=el('details',undefined,'account-access');details.append(el('summary','Account access'),el('p','Set an optional password while signed in. You can then use it on your other devices without requesting an email.','muted'));
@@ -329,16 +337,20 @@ function renderTiming(){
   box.append(button('Export timing backup',()=>downloadJSON('lecture-timing.json',current.timing||{}),'quiet'),fileInput('Import matching timing','.json',async file=>{const timing=validateLoadedTiming(JSON.parse(await file.text()));if(timing.version===2&&timing.transcriptSha256!==await sha256(new TextEncoder().encode(current.manifest.lesson.narration.text)))throw new Error('Transcript hash mismatch.');if(!current.local)await cloud.saveTiming(current.fingerprint,timing);current.timing=timing;follow=timingReady(timing);updateFollow();renderTiming();}));
 }
 function startAutomaticSync(){
-  if(!canProcess||!session){syncer=null;syncUser=null;return;}
+  if(!canProcess||!session){syncer=null;handoffSync=null;syncUser=null;return;}
   const uid=session.user.id;if(syncUser===uid)return;syncUser=uid;
   syncer=createAutomaticSync({cloud,isActive:()=>!pageLeaving&&session?.user?.id===uid,onSaved:()=>void refreshPlayback(),onStatus:(fingerprint,message)=>{
     automaticMessages.set(fingerprint,message);if($('automatic-library-status'))$('automatic-library-status').textContent=message;
     if((current?.fingerprint===fingerprint||(!fingerprint&&!current?.timing))&&$('automatic-timing-status'))$('automatic-timing-status').textContent=message;
-  }});void syncer.tick();
+  }});
+  handoffSync=createHandoffSync({cloud,ownerId:uid,isActive:()=>!pageLeaving&&session?.user?.id===uid,
+    onStatus:message=>{handoffMessage=message;if($('handoff-status'))$('handoff-status').textContent=message;},
+    onSaved:()=>{void syncer?.tick();if(!current&&!location.hash){const grid=app.querySelector('.lecture-grid');void cloud.listLectures().then(rows=>{if(grid?.isConnected&&session?.user?.id===uid)fillLectureGrid(grid,rows);}).catch(showError);}else void refreshPlayback();}});
+  void handoffSync.tick();void syncer.tick();
 }
 $('account').onclick=async()=>{await persistProgress();dispose();const {error}=await cloud.client.auth.signOut();if(error){showError(error);return;}session=null;localPackage=null;location.hash='';await route();};
 window.addEventListener('hashchange',()=>route().catch(showError));
-document.addEventListener('visibilitychange',()=>{if(document.hidden)void persistProgress({localOnly:true});else{void refreshProgress();void refreshPlayback();void cardControls?.refresh();void syncer?.tick();}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)void persistProgress({localOnly:true});else{void refreshProgress();void refreshPlayback();void cardControls?.refresh();void handoffSync?.tick();void syncer?.tick();}});
 window.addEventListener('pagehide',()=>{pageLeaving=true;void persistProgress({localOnly:true});});
 window.addEventListener('pageshow',()=>{pageLeaving=false;void refreshProgress();});
 window.addEventListener('focus',()=>{void refreshProgress();void cardControls?.refresh();});
@@ -348,4 +360,4 @@ if(cloud.client){
 }
 route().catch(showError);
 startAutomaticSync();
-setInterval(()=>{if(!document.hidden){void refreshProgress();void refreshPlayback();void syncer?.tick();void cardControls?.refresh();}},15000);
+setInterval(()=>{if(!document.hidden){void refreshProgress();void refreshPlayback();void cardControls?.refresh();}void handoffSync?.tick();void syncer?.tick();},15000);

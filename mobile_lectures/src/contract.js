@@ -25,7 +25,8 @@ export async function verifyLesson(lesson) {
   if (!lesson?.id || !lesson.plan || !lesson.narration || !lesson.registry?.length) fail('The complete reviewed lecture is required.');
   const Q = globalThis.VisualLectureQuality, C = globalThis.VisualLecture;
   C.validatePlan(structuredClone(lesson.plan), lesson.registry, lesson.sourceText);
-  C.validateNarration(Q.rawNarration(lesson), lesson.plan, lesson.registry, globalThis.VisualLectureCine.options(lesson));
+  const narration=C.validateNarration(Q.rawNarration(lesson), lesson.plan, lesson.registry, globalThis.VisualLectureCine.options(lesson));
+  if(narration.text!==lesson.narration.text)fail('The full transcript differs from its reviewed narration segments; its approval cannot be used.');
   for (const stage of ['organizer','lecture']) {
     if (!await Q.approved(lesson, stage)) fail(`The ${stage} approval does not match this lecture. Finish its existing review before importing.`);
     const request = await Q.bundle(lesson, stage);

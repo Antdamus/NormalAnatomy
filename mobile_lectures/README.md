@@ -7,15 +7,26 @@ rows, not GitHub or Vercel's public build output.
 
 ## Study workflow
 
-1. Finish the existing organizer and narration review gates on the desktop.
-2. Package that exact approved lecture with the command below.
-3. Sign in to the phone library using an allowlisted email. On the computer,
-   choose **Add reviewed lecture** and select the `.nalecture` file.
-4. Export the full document audio from Speechify. Open **Audio & image timing**,
-   check the recording against the approved narration, and attach its MP3.
-5. Open the library on iPhone, sign in, and use Safari's **Share → Add to Home
+1. Create the lecture in the desktop extension. New lectures automatically enroll
+   in phone handoff; existing lectures have **Send to phone library**.
+2. Finish the existing organizer and narration review gates. The extension then
+   saves the approved narration in Speechify and packages its original images.
+3. Keep Edge, Speechify, the desktop processor and the signed-in phone library
+   open. The extension verifies the complete Speechify document and requests its
+   full MP3 export. The library uploads it, then prepares image timing and spoken
+   subtitles automatically. No manual package/audio attachment or cue marking
+   is required on the automatic path.
+4. Open the library on iPhone, sign in, and use Safari's **Share → Add to Home
    Screen**. Images, captions, transcript, audio, and progress are available
    online. Original plain/annotated image pairs remain separate and ordered.
+
+The handoff uses the existing Speechify download allowance and selected export
+voice. It does not buy more quota or change subscriptions. Missing login, an
+unsupported voice, quota exhaustion, missing originals, or a changed/incomplete
+document holds that lecture with a visible explanation. An uncertain export is
+never automatically repeated: its exact completed Edge download is recovered.
+Manual package upload and verified audio attachment remain available as recovery.
+See the [handoff setup and recovery guide](../edge_radprimer_extension/docs/mobile-lecture-handoff.md).
 
 While signed in, **Account access** lets you set an optional password (at least
 12 characters) for signing in on other devices. Enter and confirm it yourself;
@@ -86,8 +97,11 @@ and dynamic time warping, with no neural transcription model or cloud audio API.
 Keep the signed-in desktop library open while jobs are submitted and synced. It
 automatically discovers the processor at `127.0.0.1:8774`. The browser may ask for
 local-network access once. iPhone/iPad never contact this endpoint. The service
-accepts only the exact production origin and loopback Host; it accepts no paths,
-commands, Supabase credentials, or arbitrary remote URLs. It runs one job at a
+accepts only the exact production origin, configured extension identity and
+loopback Host. It accepts no commands, Supabase credentials, or arbitrary remote
+URLs. The extension-only handoff endpoint accepts an exact completed MP3 path
+strictly inside the real Downloads directory and validates its saved export
+receipt and byte count. It runs one alignment job at a
 time and retains exact-hash job states in ignored `private/timing-jobs/`. Jobs
 continue while the browser is closed, then sync when the desktop library reopens.
 

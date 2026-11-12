@@ -10,8 +10,10 @@ import {combineAlignments} from '../../src/automatic-timing.js';
 import {transcriptAnchors} from '../../src/timing-anchors.js';
 import {cleanChunkedMp3} from './mp3.js';
 import {buildSubtitles,validateSubtitles} from '../../src/subtitles.js';
+import {HandoffQueue} from './handoff.mjs';
 
 export const ORIGIN='https://normalanatomy-lectures.vercel.app';
+export const EXTENSION_ORIGIN='chrome-extension://fmdoafmodgecbcabgonodllkoolbafgp';
 const MAX_AUDIO=50*1024*1024,MAX_JSON=8*1024*1024,hashPattern=/^[a-f0-9]{64}$/;
 const readJSON=async p=>JSON.parse(await fs.readFile(p,'utf8'));
 async function atomicJSON(p,value){const tmp=p+'.tmp';await fs.writeFile(tmp,JSON.stringify(value));await fs.rename(tmp,p);}
@@ -120,14 +122,35 @@ async function body(req,max){
   if(Number(req.headers['content-length'])>max)throw new Error('Request is too large.');
   const chunks=[];let length=0;for await(const chunk of req){length+=chunk.length;if(length>max)throw new Error('Request is too large.');chunks.push(chunk);}return Buffer.concat(chunks);
 }
-export function createServer(queue,{origins=[ORIGIN],port=8774}={}){
+export function createServer(queue,{origins=[ORIGIN,EXTENSION_ORIGIN],extensionOrigin=EXTENSION_ORIGIN,port=8774,handoffs}={}){
   return http.createServer(async(req,res)=>{
     const send=(code,value)=>{res.writeHead(code,{'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(value));};
-    if(!origins.includes(req.headers.origin)||req.headers.host!==`127.0.0.1:${port}`){send(403,{error:'Origin or host is not allowed.'});return;}
-    res.setHeader('Access-Control-Allow-Origin',req.headers.origin);res.setHeader('Vary','Origin');
-    if(req.method==='OPTIONS'){res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, OPTIONS');res.setHeader('Access-Control-Allow-Headers','Content-Type');res.setHeader('Access-Control-Allow-Private-Network','true');res.writeHead(204);res.end();return;}
+    // Chromium extension workers omit Origin on some fetches. A web origin can
+    // never substitute this header for its own Origin or use the extension API.
+    const origin=req.headers.origin||((req.headers['x-normalanatomy-extension']===extensionOrigin)?extensionOrigin:'');
+    if(!origins.includes(origin)||req.headers.host!==`127.0.0.1:${port}`){send(403,{error:'Origin or host is not allowed.'});return;}
+    res.setHeader('Access-Control-Allow-Origin',origin);res.setHeader('Vary','Origin');
+    if(req.method==='OPTIONS'){res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, OPTIONS');res.setHeader('Access-Control-Allow-Headers','Content-Type, X-NormalAnatomy-Extension');res.setHeader('Access-Control-Allow-Private-Network','true');res.writeHead(204);res.end();return;}
     try{
-      if(req.method==='GET'&&req.url==='/health'){send(200,{service:'normalanatomy-timing',version:1,subtitlesVersion:1});return;}
+      if(req.method==='GET'&&req.url==='/health'){send(200,{service:'normalanatomy-timing',version:1,subtitlesVersion:1,...(handoffs?{handoffVersion:1,handoffOwner:handoffs.ownerId}: {})});return;}
+      if(handoffs&&req.url.startsWith('/handoffs')){
+        const extension=origin===extensionOrigin;
+        const json=async()=>{if(req.headers['content-type']!=='application/json')throw new Error('JSON content type required.');return JSON.parse((await body(req,req.url==='/handoffs'?360*1024*1024:MAX_JSON)).toString('utf8'));};
+        if(req.url==='/handoffs'&&req.method==='POST'&&extension){send(200,await handoffs.submit(await json()));return;}
+        if(req.url==='/handoffs'&&req.method==='GET'){send(200,[...handoffs.jobs.values()].map(j=>handoffs.public(j)));return;}
+        const route=/^\/handoffs\/([a-f0-9]{64})(?:\/(package|audio|ack|download))?$/.exec(req.url),job=route&&handoffs.jobs.get(route[1]);
+        if(!job){send(404,{error:'Unknown handoff.'});return;}
+        if(req.method==='GET'&&!route[2]){send(200,handoffs.public(job));return;}
+        if(req.method==='POST'&&route[2]==='download'&&extension){send(200,await handoffs.attachDownload(job.id,await json()));return;}
+        if(req.method==='POST'&&route[2]==='ack'&&!extension){send(200,await handoffs.acknowledge(job.id,await json()));return;}
+        if(req.method==='GET'&&['package','audio'].includes(route[2])&&!extension){
+          if(route[2]==='audio'&&!job.audio)throw new Error('Audio is not ready.');
+          const bytes=await fs.readFile(handoffs.location(job.id,route[2]==='package'?'lecture.nalecture':'source.mp3'));
+          res.writeHead(200,{'Content-Type':route[2]==='package'?'application/octet-stream':'audio/mpeg','Content-Length':bytes.length,'Cache-Control':'no-store'});res.end(bytes);return;
+        }
+        send(403,{error:'This handoff operation is not allowed from this origin.'});return;
+      }
+      if(origin===extensionOrigin){send(403,{error:'Only handoff endpoints are available to the extension.'});return;}
       if(req.method==='POST'&&req.url==='/jobs'){
         if(req.headers['content-type']!=='application/json')throw new Error('JSON content type required.');
         const value=JSON.parse((await body(req,MAX_JSON)).toString('utf8'));send(200,await queue.submit(value.manifest,value.audio));return;
@@ -150,7 +173,9 @@ export function createServer(queue,{origins=[ORIGIN],port=8774}={}){
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   const {values}=parseArgs({options:{directory:{type:'string',default:fileURLToPath(new URL('../../private/timing-jobs',import.meta.url))},ffmpeg:{type:'string'}}});
-  const queue=new AlignmentQueue(values.directory,{ffmpeg:values.ffmpeg}),server=createServer(queue);
+  let config={};try{config=await readJSON(fileURLToPath(new URL('../../private/handoff-config.json',import.meta.url)));}catch(error){if(error.code!=='ENOENT')throw error;}
+  const handoffs=await new HandoffQueue(fileURLToPath(new URL('../../private/handoff-jobs',import.meta.url)),config).init();
+  const queue=new AlignmentQueue(values.directory,{ffmpeg:values.ffmpeg}),server=createServer(queue,{handoffs});
   // Bind first: a second service cannot start or resume any work.
   server.listen(8774,'127.0.0.1',async()=>{await queue.init();console.log('NormalAnatomy automatic timing ready at 127.0.0.1:8774');});
   for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>{queue.close();server.close(()=>process.exit());});

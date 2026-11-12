@@ -32,7 +32,10 @@ test('Postgres enforces membership, owner isolation and private immutable media'
     const saveBookmark=()=>db.query('update mobile_progress set position=30,updated_at=$1 where owner_id=$2 and fingerprint=$3 and updated_at=$4 returning position',['2026-11-12T00:01:00Z',a,hash,'2026-11-12T00:00:00Z']);
     assert.equal((await saveBookmark()).rows[0].position,30);assert.equal((await saveBookmark()).rows.length,0,'stale bookmark cannot overwrite a newer device position');
     await assert.rejects(db.query('update mobile_lectures set card_choices=$1',[JSON.stringify({...choices,review:{lessonId:'wrong',images:{}}})]),/card_choices_identity/);
-    await db.query('update mobile_lectures set audio=$1 where fingerprint=$2',[JSON.stringify({sha256:hash}),hash]);
+    const handoffAudio=()=>db.query('update mobile_lectures set audio=$1 where owner_id=$2 and fingerprint=$3 and audio is null and timing is null returning card_revision',[JSON.stringify({sha256:hash}),a,hash]);
+    assert.equal((await handoffAudio()).rows[0].card_revision,1,'handoff preserves card choices');
+    assert.equal((await handoffAudio()).rows.length,0,'handoff cannot replace existing audio');
+    assert.equal((await db.query('select position from mobile_progress')).rows[0].position,30,'handoff preserves the bookmark');
     const publish=()=>db.query("update mobile_lectures set timing='{\"version\":2}' where fingerprint=$1 and audio->>'sha256'=$2 and timing is null returning fingerprint",[hash,hash]);
     assert.equal((await publish()).rows.length,1);assert.equal((await publish()).rows.length,0,'published/manual timing cannot be overwritten');
     await db.query('update mobile_lectures set timing=null,audio=$1',[JSON.stringify({sha256:'b'.repeat(64)})]);assert.equal((await publish()).rows.length,0,'changed recording cannot receive stale timing');
