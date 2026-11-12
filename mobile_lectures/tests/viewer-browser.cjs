@@ -30,10 +30,22 @@ const layoutOnly=process.env.TEST_LAYOUT_ONLY==='1';
     await page.getByLabel('Open local lecture').setInputFiles({name:'viewer.nalecture',mimeType:'application/zip',buffer:Buffer.from(f.encode())});await page.waitForSelector('#study-image:not([hidden])');
     assert.equal(await page.locator('#follow').isEnabled(),false);
     await page.locator('#caption-toggle').click();assert.equal(await page.locator('.caption').evaluate(e=>e.open),true);
+    await page.locator('#focus-view').scrollIntoViewIfNeeded();const originalScroll=await page.evaluate(()=>({x:scrollX,y:scrollY}));
     await page.locator('#focus-view').click();await page.waitForSelector('#viewer-image:not([hidden])');
     assert.equal(await page.locator('#zoom').evaluate(e=>e.open),true);assert.equal(await page.locator('#viewer-caption-body').innerText(),'Synthetic software fixture 1.');
     async function tool(id){await page.locator('#viewer-tools-toggle').click();await page.locator('#'+id).click();await page.locator('#viewer-tools-close').click();}
     const camera=()=>page.locator('#viewer-image').evaluate(e=>{const m=new DOMMatrix(getComputedStyle(e).transform);return {scale:m.a,x:m.e,y:m.f};});
+    // A tap on the controls cancels a pending image tap; it must not close a
+    // sheet or hide navigation just after the user has deliberately opened it.
+    await page.locator('.viewer-stage').tap();await page.locator('#viewer-tools-toggle').tap();await page.waitForTimeout(380);
+    assert.equal(await page.locator('#viewer-options').isVisible(),true,'control touch cancels the deferred image tap');
+    await page.locator('#viewer-tools-close').tap();
+    const beforeControlTaps=await camera();
+    for(let i=0;i<4;i++)await page.locator('#viewer-variant').tap();
+    await page.waitForSelector('#viewer-image:not([hidden])');assert.deepEqual(await camera(),beforeControlTaps,'repeated control taps cannot zoom the image');
+    const lockedPage=await page.evaluate(()=>{const body=document.body.getBoundingClientRect();window.scrollTo(0,300);return {bodyTop:body.top};});
+    await page.waitForTimeout(50);
+    assert.deepEqual(await page.evaluate(()=>({y:scrollY,bodyTop:document.body.getBoundingClientRect().top,dialogTop:document.querySelector('#zoom').getBoundingClientRect().top,scale:visualViewport.scale})),{y:0,bodyTop:lockedPage.bodyTop,dialogTop:0,scale:1},'background cannot scroll the fullscreen viewer out of place');
     await tool('viewer-original');let before=await camera();assert.equal(before.scale,1);
     const stage=await page.locator('.viewer-stage').boundingBox();await page.mouse.move(stage.x+stage.width/2,stage.y+stage.height/2);await page.mouse.down();await page.mouse.move(stage.x+stage.width/2-40,stage.y+stage.height/2-30,{steps:4});await page.mouse.up();
     assert.ok((await camera()).x<before.x);
@@ -53,6 +65,7 @@ const layoutOnly=process.env.TEST_LAYOUT_ONLY==='1';
     assert.equal(await page.locator('#viewer-caption-body').innerText(),'Synthetic software fixture 2.');assert.equal(await page.locator('#viewer-annotated').getAttribute('aria-pressed'),'true');
     await tool('viewer-captions');assert.equal(await page.locator('.viewer-caption').isVisible(),false);assert.equal(await page.locator('#caption-toggle').getAttribute('aria-pressed'),'false');
     await page.getByRole('button',{name:'Close image ×'}).click();await page.waitForFunction(()=>document.querySelector('.player').parentElement.tagName==='MAIN');
+    assert.deepEqual(await page.evaluate(()=>({x:scrollX,y:scrollY})),originalScroll,'closing restores the original page position');
     if(!layoutOnly){await page.locator('#audio-tools summary').click();
     const wav=Buffer.alloc(44+16000*2*20);wav.write('RIFF');wav.writeUInt32LE(wav.length-8,4);wav.write('WAVEfmt ',8);wav.writeUInt32LE(16,16);wav.writeUInt16LE(1,20);wav.writeUInt16LE(1,22);wav.writeUInt32LE(16000,24);wav.writeUInt32LE(32000,28);wav.writeUInt16LE(2,32);wav.writeUInt16LE(16,34);wav.write('data',36);wav.writeUInt32LE(wav.length-44,40);
     // Optional private MP3 covers platforms whose WebKit build cannot decode PCM WAV.

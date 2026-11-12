@@ -6,8 +6,12 @@
 .player button[aria-pressed=true]{background:var(--ink);color:white}
 .narration-subtitle{position:absolute;left:8px;right:8px;bottom:calc(100% + 8px);margin:0;padding:9px 12px;background:rgb(8 25 28 / 65%);color:#fff;border-radius:9px;font-size:16px;line-height:1.4;text-align:center;overflow-wrap:anywhere;text-shadow:0 1px 3px #000;pointer-events:none;z-index:2}
 .narration-subtitle[hidden]{display:none}.narration-subtitle:has(#subtitle-text:empty){visibility:hidden}
-body.viewer-open{overflow:hidden}
-#zoom{padding:0;margin:0;border:0;border-radius:0;max-width:none;max-height:none;width:100%;height:100dvh;overflow:hidden;background:#08191c;color:#e6efec}
+html.viewer-open{overflow:hidden;overscroll-behavior:none}
+body.viewer-open{position:fixed;top:var(--viewer-page-top,0);left:0;right:0;overflow:hidden}
+#zoom{position:fixed;inset:0;padding:0;margin:0;border:0;border-radius:0;max-width:none;max-height:none;width:100%;height:100dvh;overflow:hidden;overscroll-behavior:none;background:#08191c;color:#e6efec}
+/* Rapid skip taps are control input, never browser zoom. Keep this off the
+   scrollable sheets; the image stage handles its own pinch/double-tap zoom. */
+.viewer-header,.viewer-dock,.viewer-timeline{touch-action:none}
 #zoom[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr)}
 #zoom button{background:#193235;border:1px solid #3a5154;color:#e6efec;min-height:44px;padding:7px 10px;border-radius:8px;font-size:12px;white-space:nowrap}
 #zoom button:hover{background:#29494c}#zoom button[aria-pressed=true]{background:#e5ece0;color:#143437;border-color:#e5ece0}
@@ -29,13 +33,15 @@ body.viewer-open{overflow:hidden}
 .viewer-timeline{display:grid;grid-template-columns:38px minmax(0,1fr) 38px 44px;gap:8px;align-items:center;max-width:900px;margin:0 auto 4px;font-size:11px;font-variant-numeric:tabular-nums}
 #viewer-seek{width:100%;min-width:0;height:36px;margin:0;accent-color:#bfd6c7;cursor:pointer}
 #viewer-cc button{width:44px}#zoom #viewer-cc #subtitle-toggle{font-size:0;padding:4px}#viewer-cc #subtitle-toggle::after{content:'CC';font-size:12px}
-.viewer-dock{display:grid;grid-template-columns:44px 44px 44px 58px minmax(98px,1fr) 44px;gap:4px;align-items:center;max-width:420px;margin:auto}
+.viewer-dock{display:grid;grid-template-columns:44px 44px 44px 64px minmax(98px,1fr) 44px;gap:4px;align-items:center;max-width:420px;margin:auto}
 #viewer-card-slot{min-width:0}#viewer-card-slot .card-actions{display:flex;flex-wrap:nowrap;margin:0;gap:4px;min-width:0}
 #zoom #viewer-card-slot button{flex:1;min-width:44px;position:relative;overflow:hidden;text-overflow:ellipsis;padding:4px;font-size:11px}
 #zoom #viewer-card-toggle{min-width:50px}
 #viewer-card-link[data-link-count]:not([data-link-count=""])::after{content:attr(data-link-count);position:absolute;right:2px;top:1px;min-width:12px;border-radius:8px;background:#c8ddce;color:#123b3c;font-size:9px;line-height:12px;padding:0 2px}
 #zoom #viewer-rewind,#zoom #viewer-forward{padding:4px;font-size:12px}
-#viewer-speed{appearance:none;width:58px;min-height:44px;border:1px solid #3a5154;border-radius:8px;color:#e6efec;background:#193235 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='4'%3E%3Cpath d='m1 1 2 2 2-2' fill='none' stroke='%23c8ddce'/%3E%3C/svg%3E") no-repeat right 4px center;padding:4px 12px 4px 4px;font-size:12px;cursor:pointer}
+#viewer-speed{appearance:none;width:64px;min-height:44px;border:1px solid #3a5154;border-radius:8px;color:#e6efec;background:#193235 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='4'%3E%3Cpath d='m1 1 2 2 2-2' fill='none' stroke='%23c8ddce'/%3E%3C/svg%3E") no-repeat right 4px center;padding:4px 12px 4px 4px;font-size:16px;cursor:pointer}
+/* Native form focus must not magnify the page on iPhone. */
+.player-extras select,#zoom .player-extras select,#viewer-seek{font-size:16px}
 #viewer-speed:disabled{opacity:.45;cursor:default}
 #zoom #viewer-play{font-size:19px;background:#d5e5dc;color:#123b3c}#zoom #viewer-controls{padding:4px}
 #zoom #viewer-play-error{font-size:12px;color:#ffd0bd;margin:4px 0 0;padding:0}
@@ -55,6 +61,6 @@ body.viewer-open{overflow:hidden}
 @media(max-width:1100px){.study-layout{display:block}.explanation-column{margin-top:30px}#transcript-body{max-height:420px}.image-stage{height:clamp(340px,58dvh,750px)}}
 @media(max-width:800px){.image-stage{height:45dvh;min-height:290px}.player-heading{gap:6px}.player-heading>span{min-width:115px}#transcript-body{max-height:none}}
 @media(max-width:850px) and (orientation:portrait){.viewer-body{flex-direction:column}.viewer-caption{width:100%;max-height:22dvh;flex-shrink:0;border-left:0;border-top:1px solid #3a5154;padding:10px 14px}}
-@media(max-width:367px){.viewer-dock{grid-template-columns:44px 44px 44px 58px;justify-content:center}.viewer-dock #viewer-card-slot{grid-column:1/4}.viewer-dock #viewer-controls{grid-column:4}.viewer-dock #viewer-card-slot .card-actions{justify-content:center}.viewer-dock #viewer-card-slot button{flex:0 1 65px}}
+@media(max-width:373px){.viewer-dock{grid-template-columns:44px 44px 44px 64px;justify-content:center}.viewer-dock #viewer-card-slot{grid-column:1/4}.viewer-dock #viewer-controls{grid-column:4}.viewer-dock #viewer-card-slot .card-actions{justify-content:center}.viewer-dock #viewer-card-slot button{flex:0 1 65px}}
 @media(max-width:350px){#zoom #viewer-variant{font-size:11px}}
-@media(max-height:500px) and (orientation:landscape){#zoom #viewer-title{display:none}.viewer-header{padding-top:max(4px,env(safe-area-inset-top));padding-bottom:4px}.viewer-caption{width:32%;padding:8px}#viewer-player{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.viewer-timeline{flex:1;margin:0;min-width:160px}.viewer-dock{flex:1;min-width:352px}#zoom.controls-hidden .viewer-dock,#zoom.viewer-no-audio .viewer-dock{max-width:420px;width:100%}#zoom .narration-subtitle{font-size:14px;padding:5px 8px}}
+@media(max-height:500px) and (orientation:landscape){#zoom #viewer-title{display:none}.viewer-header{padding-top:max(4px,env(safe-area-inset-top));padding-bottom:4px}.viewer-caption{width:32%;padding:8px}#viewer-player{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.viewer-timeline{flex:1;margin:0;min-width:160px}.viewer-dock{flex:1;min-width:358px}#zoom.controls-hidden .viewer-dock,#zoom.viewer-no-audio .viewer-dock{max-width:420px;width:100%}#zoom .narration-subtitle{font-size:14px;padding:5px 8px}}

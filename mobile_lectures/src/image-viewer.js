@@ -11,7 +11,7 @@ export function createImageViewer(dialog, actions) {
     <footer id="viewer-player"><div id="viewer-subtitles"></div><div class="viewer-timeline"><span id="viewer-elapsed">0:00</span><input id="viewer-seek" type="range" min="0" max="0" step="0.1" value="0" aria-label="Lecture position"><span id="viewer-duration">0:00</span><span id="viewer-cc"></span></div><div class="viewer-dock"><button id="viewer-rewind" aria-label="Back 5 seconds" disabled>−5s</button><button id="viewer-play" aria-label="Play lecture" disabled>▶</button><button id="viewer-forward" aria-label="Forward 5 seconds" disabled>+5s</button><select id="viewer-speed" aria-label="Playback speed" title="Playback speed" disabled></select><div id="viewer-card-slot"></div><button id="viewer-controls" aria-label="Hide controls" aria-expanded="true">Hide</button></div><p id="viewer-play-error" role="alert" hidden></p></footer>`;
   const $=id=>dialog.querySelector('#'+id),stage=dialog.querySelector('.viewer-stage'),img=$('viewer-image');
   let data={},camera=null,dimensions=null,player=null,placeholder=null,sourceVersion=0,lastTap=null,tapTimer=null,paintedView=null;
-  let controlsShown=true,audioEvents=null,media=null,movedControls=[];
+  let controlsShown=true,audioEvents=null,media=null,movedControls=[],savedPage=null;
   const pointers=new Map();let gesture=null,dragStart=null,moved=false,pressedAt=0;
   const viewport=()=>({width:stage.clientWidth,height:stage.clientHeight});
   const point=e=>{const r=stage.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};};
@@ -23,6 +23,11 @@ export function createImageViewer(dialog, actions) {
   function zoom(scale,anchor={x:stage.clientWidth/2,y:stage.clientHeight/2}){if(!camera)return;camera=zoomAt(camera,scale,anchor,viewport(),dimensions);paint();}
   function doubleTap(p){if(camera)zoom(camera.scale>fit(viewport(),dimensions)*1.1?fit(viewport(),dimensions):camera.scale*2.5,p);}
   function cancelTap(){clearTimeout(tapTimer);tapTimer=null;lastTap=null;}
+  // Controls are a separate gesture surface: a prior image tap must not hide
+  // them or close Tools after a user has already touched a control.
+  dialog.addEventListener('pointerdown',e=>{if(!stage.contains(e.target))cancelTap();},{capture:true});
+  function lockPage(){savedPage={x:window.scrollX,y:window.scrollY};document.body.style.setProperty('--viewer-page-top',`${-savedPage.y}px`);document.documentElement.classList.add('viewer-open');document.body.classList.add('viewer-open');}
+  function unlockPage(){if(!savedPage)return;const position=savedPage;savedPage=null;document.body.classList.remove('viewer-open');document.documentElement.classList.remove('viewer-open');document.body.style.removeProperty('--viewer-page-top');window.scrollTo(position.x,position.y);}
   function showTools(show){$('viewer-options').hidden=!show;$('viewer-tools-toggle').setAttribute('aria-expanded',String(show));}
   function showControls(show){controlsShown=show;showTools(false);dialog.classList.toggle('controls-hidden',!show);
     $('viewer-controls').textContent=show?'Hide':'Show';$('viewer-controls').setAttribute('aria-label',show?'Hide controls':'Show controls');$('viewer-controls').setAttribute('aria-expanded',String(show));
@@ -66,7 +71,7 @@ export function createImageViewer(dialog, actions) {
   function moveControl(id,target){const node=player?.querySelector('#'+id);if(!node)return;const mark=document.createComment(id+' position');node.before(mark);movedControls.push({node,mark});target.append(node);}
   function restore(){cancelTap();audioEvents?.abort();audioEvents=null;
     for(const {node,mark} of movedControls)if(mark.isConnected)mark.replaceWith(node);movedControls=[];
-    if(player&&placeholder?.isConnected)movePlayer(()=>placeholder.replaceWith(player));player=null;placeholder=null;media=null;document.body.classList.remove('viewer-open');pointers.clear();gesture=null;showTools(false);
+    if(player&&placeholder?.isConnected)movePlayer(()=>placeholder.replaceWith(player));player=null;placeholder=null;media=null;unlockPage();pointers.clear();gesture=null;showTools(false);
   }
   dialog.addEventListener('close',()=>{if(!dialog.open)restore();});
   dialog.addEventListener('cancel',e=>{if(!$('viewer-options').hidden){e.preventDefault();showTools(false);$('viewer-tools-toggle').focus();}});
@@ -88,10 +93,10 @@ export function createImageViewer(dialog, actions) {
       img.onerror=()=>{if(serial===sourceVersion)$('viewer-loading').textContent='Image unavailable. Close and reopen the image to retry.';};img.src=next.src;
     }
   }
-  return {update,open(audioPlayer){if(dialog.open)return;player=audioPlayer;placeholder=document.createComment('audio player position');player.before(placeholder);movePlayer(()=>$('viewer-audio-tools').append(player));
+  return {update,open(audioPlayer){if(dialog.open)return;lockPage();player=audioPlayer;placeholder=document.createComment('audio player position');player.before(placeholder);movePlayer(()=>$('viewer-audio-tools').append(player));
     moveControl('subtitle-toggle',$('viewer-cc'));moveControl('narration-subtitle',$('viewer-subtitles'));
     $('viewer-speed').replaceChildren(...[...(player.querySelector('#speed')?.options||[])].map(option=>option.cloneNode(true)));
     media=player.querySelector('audio');audioEvents=new AbortController();for(const event of ['timeupdate','seeking','seeked','ratechange','play','pause','ended','loadedmetadata','durationchange','emptied','error'])media?.addEventListener(event,syncPlayback,{signal:audioEvents.signal});
-    showControls(true);syncPlayback();$('viewer-play-error').hidden=true;dialog.showModal();document.body.classList.add('viewer-open');reset();
+    showControls(true);syncPlayback();$('viewer-play-error').hidden=true;dialog.showModal();reset();
   },close(){if(dialog.open){dialog.close();restore();}},get isOpen(){return dialog.open;}};
 }

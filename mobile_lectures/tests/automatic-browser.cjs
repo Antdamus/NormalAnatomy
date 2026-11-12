@@ -92,6 +92,16 @@ const assert=require('node:assert/strict'),path=require('node:path'),fs=require(
   await phone.locator('#viewer-rewind').click();await phone.waitForFunction(()=>Math.abs(document.querySelector('audio').currentTime-1)<0.1);
   await phone.locator('#viewer-forward').click();await phone.waitForFunction(()=>Math.abs(document.querySelector('audio').currentTime-6)<0.1);
   assert.equal(await phone.locator('audio').evaluate(a=>a.paused),true,'skipping does not start paused audio');assert.equal(await phone.locator('#follow').getAttribute('aria-pressed'),followBeforeSkips);
+  const beforeRapidSkips=await geometry(),viewportBefore=await phone.evaluate(()=>({scale:visualViewport.scale,top:document.querySelector('#zoom').getBoundingClientRect().top,y:scrollY}));
+  await phone.locator('#viewer-forward').tap();await phone.locator('#viewer-forward').tap();await phone.waitForFunction(()=>Math.abs(document.querySelector('audio').currentTime-16)<0.1);
+  await phone.locator('#viewer-rewind').tap();await phone.locator('#viewer-rewind').tap();await phone.waitForFunction(()=>Math.abs(document.querySelector('audio').currentTime-6)<0.1);
+  await phone.waitForTimeout(380);assert.deepEqual(await geometry(),beforeRapidSkips,'rapid skip taps preserve image zoom and position');
+  assert.deepEqual(await phone.evaluate(()=>({scale:visualViewport.scale,top:document.querySelector('#zoom').getBoundingClientRect().top,y:scrollY})),viewportBefore,'rapid skip taps preserve the viewport');
+  assert.equal(await phone.locator('#zoom').evaluate(e=>e.classList.contains('controls-hidden')),false);
+  // Desktop WebKit does not emulate iOS's native double-tap/focus magnification.
+  // Guard the gesture policy and focus-safe type size as well as browser behavior.
+  assert.equal(await phone.locator('.viewer-dock').evaluate(e=>getComputedStyle(e).touchAction),'none');
+  for(const id of ['viewer-speed','speed','viewer-seek'])assert.ok(await phone.locator('#'+id).evaluate(e=>parseFloat(getComputedStyle(e).fontSize)>=16),id+' native focus does not request small-text zoom');
   await phone.locator('#viewer-seek').fill('18');await phone.locator('#viewer-forward').click();await phone.waitForFunction(()=>document.querySelector('audio').currentTime===20);
   await phone.locator('#viewer-seek').fill('2');await phone.locator('#viewer-rewind').click();await phone.waitForFunction(()=>document.querySelector('audio').currentTime===0);
   await phone.locator('#viewer-speed').selectOption('1.75');assert.equal(await phone.locator('audio').evaluate(a=>a.playbackRate),1.75);assert.equal(await phone.locator('#speed').inputValue(),'1.75');
@@ -99,21 +109,25 @@ const assert=require('node:assert/strict'),path=require('node:path'),fs=require(
   await phone.locator('#viewer-speed').selectOption('1.25');await phone.locator('#viewer-play').click();await phone.waitForFunction(()=>document.querySelector('audio').currentTime>0.1);await phone.locator('#viewer-forward').click();assert.equal(await phone.locator('audio').evaluate(a=>a.paused),false,'skip preserves playing state');assert.equal(await phone.locator('audio').evaluate(a=>a.playbackRate),1.25);await phone.locator('#viewer-play').click();
   await fs.mkdir(path.join(root,'test-results'),{recursive:true});
   await phone.locator('audio').evaluate(a=>{a.currentTime=1;a.dispatchEvent(new Event('timeupdate'));});
-  for(const [name,width,height] of [['iphone',390,844],['small-phone',320,568],['ipad',820,1180],['landscape',844,390]]){
+  for(const [name,width,height] of [['iphone',390,844],['narrow-iphone',375,667],['small-phone',320,568],['ipad',820,1180],['landscape',844,390]]){
     await phone.setViewportSize({width,height});const layout=await phone.evaluate(()=>({overflow:document.querySelector('#zoom').scrollHeight>innerHeight+1,horizontal:document.querySelector('#zoom').scrollWidth>innerWidth+1,stage:document.querySelector('.viewer-stage').getBoundingClientRect().height,captionOverflow:document.querySelector('#narration-subtitle').scrollWidth>document.querySelector('#narration-subtitle').clientWidth}));assert.equal(layout.overflow,false,name);assert.equal(layout.horizontal,false,name+' horizontal');assert.equal(layout.captionOverflow,false,name);assert.ok(layout.stage>50,name+' visible image area');await phone.screenshot({path:path.join(root,'test-results',`subtitles-${safari?'webkit-':''}${name}.png`)});
     await phone.locator('#viewer-controls').click();assert.ok(await phone.locator('.viewer-stage').evaluate(e=>e.clientHeight)>height*.8,name+' immersive image area');
     assert.equal(await phone.locator('#narration-subtitle').isVisible(),true,name+' subtitles stay on');
     for(const id of ['viewer-rewind','viewer-play','viewer-forward','viewer-speed','viewer-card-toggle','viewer-card-link','viewer-controls'])assert.equal(await phone.locator('#'+id).evaluate(e=>{const r=e.getBoundingClientRect();return r.width>=44&&r.height>=44&&document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===e;}),true,name+' '+id+' reachable with a full touch target');
+    assert.equal(await phone.locator('#viewer-speed').evaluate(e=>{const style=getComputedStyle(e),context=document.createElement('canvas').getContext('2d');context.font=style.font;return context.measureText('1.75×').width<=e.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);}),true,name+' playback rate fits without clipping');
     await phone.screenshot({path:path.join(root,'test-results',`immersive-${safari?'webkit-':''}${name}.png`)});await phone.locator('#viewer-controls').click();
   }
-  await phone.getByRole('button',{name:'Close image ×'}).click();assert.equal(await phone.locator('#speed').inputValue(),'1.25');phase='reload';await phone.reload();await phone.waitForFunction(()=>document.querySelector('#follow')?.getAttribute('aria-pressed')==='true');await phone.waitForFunction(()=>document.querySelector('#subtitle-toggle')?.getAttribute('aria-pressed')==='true');assert.equal(await phone.locator('audio').evaluate(a=>a.playbackRate),1.25,'speed survives reopening');
+  await phone.getByRole('button',{name:'Close image ×'}).click();assert.equal(await phone.locator('#speed').inputValue(),'1.25');
+  // Let the current render/save finish before this deliberate reload. WebKit
+  // otherwise reports cancelled mock CORS requests as page errors on teardown.
+  await phone.waitForLoadState('networkidle');phase='saved-speed-reload';await phone.reload();await phone.waitForFunction(()=>document.querySelector('#follow')?.getAttribute('aria-pressed')==='true');await phone.waitForFunction(()=>document.querySelector('#subtitle-toggle')?.getAttribute('aria-pressed')==='true');await phone.waitForSelector('#study-image:not([hidden])');assert.equal(await phone.locator('audio').evaluate(a=>a.playbackRate),1.25,'speed survives reopening');
   // Exercise an already-open phone receiving only newly available subtitles.
   // This changes synthetic server data, not a real account or recording.
-  row.audio={...row.audio};delete row.audio.subtitles;await phone.reload();await phone.waitForFunction(()=>document.querySelector('audio')?.duration===20&&document.querySelector('#subtitle-toggle').disabled);
+  await phone.waitForLoadState('networkidle');row.audio={...row.audio};delete row.audio.subtitles;phase='subtitle-backfill-reload';await phone.reload();await phone.waitForFunction(()=>document.querySelector('audio')?.duration===20&&document.querySelector('#subtitle-toggle').disabled);
   const sourceBefore=await phone.locator('audio').getAttribute('src');await phone.locator('audio').evaluate(async a=>{a.currentTime=0;await a.play();});
   await desktop.reload();await desktop.waitForFunction(()=>document.querySelector('#automatic-library-status')?.textContent.includes('subtitles synced'));
   await phone.waitForFunction(()=>!document.querySelector('#subtitle-toggle').disabled,{timeout:25000});assert.equal(await phone.locator('audio').getAttribute('src'),sourceBefore);assert.ok(await phone.locator('audio').evaluate(a=>a.currentTime>0));assert.equal(subtitlePublishes,2);assert.equal(publishes,1);
   assert.equal(phoneLoopback,0);assert.equal(publishes,1);assert.deepEqual(errors,[]);
-  console.log(`PASS automatic desktop publication -> ${safari?'WebKit':'Edge'} phone cloud playback, spoken subtitles on/off, pauses, seeking, independent image captions, four layouts and saved preference after reload; zero phone loopback calls or manual cue imports.`);
+  console.log(`PASS automatic desktop publication -> ${safari?'WebKit':'Edge'} phone cloud playback, rapid skip taps, stable zoom, spoken subtitles on/off, pauses, seeking, independent image captions, five layouts and saved preference after reload; zero phone loopback calls or manual cue imports.`);
  }finally{await desktopBrowser?.close();await phoneBrowser?.close();if(mediaServer)await new Promise(r=>mediaServer.close(r));server.kill();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
