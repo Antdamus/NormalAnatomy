@@ -105,7 +105,7 @@ async function openLecture(row,local,serial) {
   audio.onerror=()=>{$('audio-status').textContent='Audio could not load. Reopen the lecture to renew its link.';};
   audio.onplay=()=>{if('mediaSession' in navigator)navigator.mediaSession.metadata=new MediaMetadata({title:lesson.title,artist:'NormalAnatomy'});};
   $('audio-setup').append(el('p','Use the complete MP3 exported from Speechify. Attaching a different recording clears the old timing.','muted'));
-  const confirm=el('label',undefined,'check-label');const input=el('input');input.type='checkbox';input.id='audio-confirm';confirm.append(input,document.createTextNode('I checked that this recording contains the complete approved narration.'));$('audio-setup').append(confirm,fileInput('Attach Speechify audio','.mp3,.m4a,.wav',attachAudio));
+  const confirm=el('label',undefined,'check-label');const input=el('input');input.type='checkbox';input.id='audio-confirm';confirm.append(input,document.createTextNode('I checked that this is the full Speechify export of this exact approved narration.'));$('audio-setup').append(confirm,fileInput('Attach Speechify audio','.mp3,.m4a,.wav',attachAudio));
   if(row.audio){await setAudio(row.audio);if(serial!==routeVersion)return;}
   renderTiming();await renderImage();
 }
@@ -137,7 +137,7 @@ async function attachAudio(file){
   if(file.size>50*1024*1024)throw new Error('This recording exceeds the current 50 MB storage limit. Export a smaller MP3 before attaching it.');
   const ext=file.name.split('.').pop().toLowerCase(),mime={mp3:'audio/mpeg',m4a:'audio/mp4',wav:'audio/wav'}[ext];
   if(!mime)throw new Error('Use MP3, M4A, or WAV audio.');
-  const row=current,hash=await sha256(await file.arrayBuffer()),meta={sha256:hash,path:`audio/${hash}`,mime,bytes:file.size,verifiedTranscript:true,attachedAt:new Date().toISOString()};
+  const row=current,hash=await sha256(await file.arrayBuffer()),meta={sha256:hash,path:`audio/${hash}`,mime,bytes:file.size,verifiedExport:true,attachedAt:new Date().toISOString()};
   if(!row.local)await cloud.saveAudio(row.fingerprint,file,meta);
   if(current!==row)return;
   current.audio=meta;current.timing=null;current.localAudio=file;follow=false;
