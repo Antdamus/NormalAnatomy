@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#123b3c"><meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Anatomy"><meta name="description" content="Your private illustrated lecture library.">
+  <link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icon.svg">
+  <title>NormalAnatomy · Lectures</title>
+</head>
+<body>
+  <header class="app-header"><a class="brand" href="#"><span class="brand-mark">N<span>·</span>A</span><span>NormalAnatomy<small>YOUR LECTURE LIBRARY</small></span></a><button id="account" class="quiet" hidden>Sign out</button></header>
+  <main id="app"></main>
+  <p id="notice" class="notice" role="status" hidden></p>
+  <dialog id="zoom"><form method="dialog"><button class="close">Close image ×</button></form><div class="zoom-scroll"><img alt=""></div><p></p></dialog>
+  <script type="module" src="/src/app.js"></script>
+</body>
+</html>

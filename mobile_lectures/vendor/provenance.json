@@ -1,0 +1,10 @@
+{
+  "source": "../edge_radprimer_extension",
+  "sha256": {
+    "teaching-framework.js": "0119e7af82b3617bc77360a1bd99ae0cbdc1388cce28a3d069a000dfd603eb2d",
+    "visual-lecture-cine.js": "4e414669cc132c8ee86f103ed01f40a383c13248ca399cca3974cfea1eec91f6",
+    "visual-lecture-core.js": "09df6b00b2031d548b26e33363cd76d7608831b388d25b3994b8a182a4a088a6",
+    "visual-lecture-quality.js": "4b7c982a570d17913035a4fb384f647fb64150706e2f0204d3d997959a08eb06",
+    "visual-lecture-captions.js": "4a59a6ec0cdcea0d7347943d08d17515cd916550516457d6904528e7a5c3350f"
+  }
+}
