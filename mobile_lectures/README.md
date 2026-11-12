@@ -29,6 +29,31 @@ start, and verify the complete sequence. Timing backups are tied to both the
 lecture fingerprint and audio hash. No timing is guessed from word counts.
 Replacing audio clears its previous timing.
 
+### Inspect on phone or tablet
+
+Tap an image or **Study view** for a full-screen workspace. Use **Plain** and
+**Annotated** without leaving it, and the arrows to move through the complete
+ordered image sequence. Pinch or use **+ / −** to zoom; drag to inspect details,
+double-tap to zoom/reset, and use **Fit** to see the entire image. **100%** maps
+one source pixel to one CSS pixel. The original files are never resized or
+recompressed; zoom does not create additional source detail.
+
+**Captions** shows or hides the original caption and source link. The choice is
+remembered on that device, and captions update with the selected image, including
+verified automatic transitions. They are image captions, not timed narration
+subtitles. The same audio player stays available inside study view. Changing an
+image manually pauses automatic following; switching annotations does not.
+
+Portrait tablets use the screen width for images. The full-screen workspace
+places captions below the image in phone/tablet portrait and alongside it in
+landscape. The audio controls occupy their own space without covering the image.
+
+**Audio & image timing** includes **Mark & next image**, **Go to next unmarked
+image**, and **Replay transition** (starting three seconds before the saved cue).
+These assist listening review; they do not estimate or approve timestamps. Every
+image must have a checked cue in approved order, for the exact lecture and audio
+hash, before following can be enabled. The loaded audio duration is checked too.
+
 ## Package a reviewed lecture
 
 From this folder, after `npm ci`:
@@ -72,6 +97,19 @@ The SQL regression test runs the real migration in PGlite with a minimal mock
 of Supabase's auth/storage infrastructure. It checks anonymous access, member
 isolation, object ownership, and the private bucket. Contract tests check
 approval invalidation, source/media integrity, path safety, and timing identity.
+
+`npm run test:viewer` adds full-screen navigation, caption synchronization,
+zoom/pan, Edge touch injection, playback continuity, and phone/tablet portrait
+and landscape checks. Set `TEST_BROWSER=webkit` to run the same checks in an
+installed Playwright WebKit browser (touch injection is Edge-only). On Windows,
+the tested WebKit build rejects local `blob:` audio while loading the same MP3
+over HTTP successfully. Its media tests therefore serve the identical bytes
+from localhost, matching the deployed library's network-media transport; they
+do not certify WebKit local-file preview. Set `TEST_AUDIO_FILE` to an optional
+private MP3 for this run. `TEST_LAYOUT_ONLY=1` explicitly omits audio/timing
+checks and reports that reduced scope. Emulation
+does not certify physical iOS gestures, background playback, or lock-screen
+behavior. Test browser downloads and screenshots remain outside the public app.
 
 ## Supabase and Vercel
 

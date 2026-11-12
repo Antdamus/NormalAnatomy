@@ -1,12 +1,17 @@
 import './style.css';
+import './study-view.css';
 import '../vendor/visual-lecture-captions.js';
 import { readPackage, verifyManifest, sha256, safeLink, sequence, validateTiming, cueAt } from './contract.js';
 import * as cloud from './cloud.js';
+import { createImageViewer } from './image-viewer.js';
 
 const $ = id => document.getElementById(id), app = $('app');
 let session = null, current = null, localPackage = null, audio = null, stepIndex = 0, variant = 'plain', follow = false;
 let routeVersion = 0, imageVersion = 0, audioVersion = 0, lastSave = 0, saveQueue = Promise.resolve(), noticeTimer;
 const urls = new Set(), mediaCache = new Map();
+let captionsShown=false, viewerState=null;
+try {captionsShown=localStorage.getItem('na-image-captions')==='true';}catch{}
+const viewer=createImageViewer($('zoom'),{navigate:delta=>navigate(stepIndex+delta),variant:setVariant,captions:setCaptions});
 const el = (tag, text, cls) => { const n = document.createElement(tag); if(text !== undefined) n.textContent=text; if(cls)n.className=cls; return n; };
 const button = (text, action, cls='') => { const n=el('button',text,cls); n.type='button'; n.onclick=()=>Promise.resolve().then(action).catch(showError); return n; };
 function notice(message, bad=false) { clearTimeout(noticeTimer); $('notice').textContent=message; $('notice').hidden=false; $('notice').classList.toggle('bad',bad); if(!bad)noticeTimer=setTimeout(()=>$('notice').hidden=true,5000); }
@@ -19,6 +24,7 @@ function fileInput(label,accept,action) {
 }
 function downloadJSON(name,value) {const url=objectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download=name;a.click();}
 function dispose() {
+  viewer.close();viewerState=null;
   imageVersion++;audioVersion++;
   if(audio){audio.pause();audio.removeAttribute('src');audio.load();audio=null;}
   for(const url of urls)URL.revokeObjectURL(url);urls.clear();mediaCache.clear();current=null;
@@ -107,19 +113,29 @@ async function openLecture(row,local,serial) {
   audio=$('audio');audio.hidden=!row.audio;audio.playbackRate=progress?.rate || 1;$('speed').value=String(audio.playbackRate);
   $('case-select').onchange=()=>navigate(current.steps.findIndex(s=>s.caseId===$('case-select').value));
   $('previous-image').onclick=()=>navigate(stepIndex-1);$('next-image').onclick=()=>navigate(stepIndex+1);
-  for(const v of ['plain','annotated'])$(v).onclick=()=>{variant=v;void renderImage().catch(showError);};
-  $('image-stage').onclick=()=>{const img=$('study-image');if(!img.src || img.hidden)return;const z=$('zoom');z.querySelector('img').src=img.src;z.querySelector('img').alt=img.alt;z.querySelector('p').textContent=$('image-label').textContent;z.showModal();};
+  for(const v of ['plain','annotated'])$(v).onclick=()=>setVariant(v);
+  $('image-stage').onclick=()=>{if(current)viewer.open(document.querySelector('.player'));};
+  const focus=button('Study view',()=>$('image-stage').click(),'study-view-button');focus.id='focus-view';document.querySelector('.variant-bar').append(focus);
+  const captionToggle=button('Captions',()=>setCaptions(!captionsShown));captionToggle.id='caption-toggle';captionToggle.setAttribute('aria-label','Image captions');document.querySelector('.player-heading').append(captionToggle);
+  document.querySelector('.caption').ontoggle=()=>setCaptions(document.querySelector('.caption').open);
+  setCaptions(captionsShown);
   $('follow').onclick=()=>{follow=!follow;updateFollow();if(follow)onTime();};
   $('speed').onchange=()=>{audio.playbackRate=Number($('speed').value);void persistProgress();};
   $('rewind').onclick=()=>{audio.currentTime=Math.max(0,audio.currentTime-10);};$('forward').onclick=()=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.min(audio.duration,audio.currentTime+10);};
   audio.ontimeupdate=onTime;audio.onpause=()=>void persistProgress();audio.onseeked=()=>{onTime();void persistProgress();};
-  audio.onloadedmetadata=()=>{if(progress?.audio_sha256===current.audio?.sha256 && Number.isFinite(progress.position))audio.currentTime=Math.min(progress.position,Math.max(0,audio.duration-0.1));renderTiming();};
+  audio.onloadedmetadata=()=>{if(progress?.audio_sha256===current.audio?.sha256 && Number.isFinite(progress.position))audio.currentTime=Math.min(progress.position,Math.max(0,audio.duration-0.1));if(current.timing?.verified&&Math.abs(current.timing.duration-audio.duration)>1){current.timing=null;follow=false;updateFollow();showError(new Error('The saved timing duration does not match this recording. Image following remains off.'));}renderTiming();};
   audio.onerror=()=>{$('audio-status').textContent='Audio could not load. Reopen the lecture to renew its link.';};
   audio.onplay=()=>{if('mediaSession' in navigator)navigator.mediaSession.metadata=new MediaMetadata({title:lesson.title,artist:'NormalAnatomy'});};
   $('audio-setup').append(el('p','Use the complete MP3 exported from Speechify. Attaching a different recording clears the old timing.','muted'));
   const confirm=el('label',undefined,'check-label');const input=el('input');input.type='checkbox';input.id='audio-confirm';confirm.append(input,document.createTextNode('I checked that this is the full Speechify export of this exact approved narration.'));$('audio-setup').append(confirm,fileInput('Attach Speechify audio','.mp3,.m4a,.wav',attachAudio));
   if(row.audio){await setAudio(row.audio);if(serial!==routeVersion)return;}
-  renderTiming();await renderImage();
+  updateFollow();renderTiming();await renderImage();
+}
+function setVariant(value){variant=value;void renderImage().catch(showError);}
+function setCaptions(value){captionsShown=value;try{localStorage.setItem('na-image-captions',String(value));}catch{}
+  const details=document.querySelector('.caption');if(details&&details.open!==value)details.open=value;
+  $('caption-toggle')?.setAttribute('aria-pressed',String(value));
+  if(viewerState){viewerState={...viewerState,captions:value};viewer.update(viewerState);}
 }
 function navigate(index){if(!current || index<0 || index>=current.steps.length)return;stepIndex=index;follow=false;updateFollow();void renderImage().catch(showError);void persistProgress();}
 async function renderImage(){
@@ -134,6 +150,10 @@ async function renderImage(){
   $('relationship').textContent=c.relationshipDescription || '';
   $('caption-body').replaceChildren(globalThis.VisualLectureCaptions.render(entry.captionOriginal || entry.captionHtml || entry.caption || 'No source caption supplied.'));
   const source=safeLink(entry.sourceArticleUrl || entry.sourceUrl);$('source-link').hidden=!source;if(source)$('source-link').href=source;
+  viewerState={key:`${s.caseId}/${s.imageId}`,title:c.label,count:`${stepIndex+1} / ${row.steps.length}`,previous:stepIndex>0,next:stepIndex<row.steps.length-1,
+    variant,variants:['plain','annotated'].filter(has),captions:captionsShown,caption:entry.captionOriginal||entry.captionHtml||entry.caption,source,
+    relationship:c.relationshipDescription||'',src:null,alt:`${c.label} — ${variant} image ${s.index+1}`};
+  viewer.update(viewerState);
   $('transcript-body').replaceChildren();const segment=lesson.narration.segments.find(n=>n.caseId===c.id);
   for(const paragraph of (segment?.text || '').split(/\n\s*\n/))$('transcript-body').append(el('p',paragraph));
   const img=$('study-image');img.hidden=true;img.removeAttribute('src');$('image-loading').hidden=false;$('image-loading').textContent='Loading original image…';
@@ -141,7 +161,7 @@ async function renderImage(){
   img.alt=`${c.label} — ${variant} image ${s.index+1}`;
   img.onload=()=>{if(serial===imageVersion){img.hidden=false;$('image-loading').hidden=true;}};
   img.onerror=()=>{if(serial===imageVersion){img.hidden=true;$('image-loading').textContent='Image unavailable. Choose the other variant or reopen this lecture to retry.';}};
-  if(url)img.src=url;else $('image-loading').textContent='This original image is unavailable.';
+  if(url){img.src=url;viewerState={...viewerState,src:url};viewer.update(viewerState);}else $('image-loading').textContent='This original image is unavailable.';
   if($('mark-time'))$('mark-time').textContent=`Mark this image at ${time(audio?.currentTime||0)}`;
 }
 async function attachAudio(file){
@@ -164,7 +184,7 @@ async function setAudio(meta){
   if(row.timing){try{validateTiming(row.timing,row.manifest,meta);follow=row.timing.verified===true;}catch{row.timing=null;showError(new Error('Saved image timing does not match this recording. Manual browsing remains available.'));}}
   updateFollow();
 }
-function updateFollow(){if(!$('follow'))return;$('follow').disabled=!current?.timing?.verified;$('follow').textContent=`Follow images: ${follow?'on':'off'}`;$('follow').setAttribute('aria-pressed',String(follow));}
+function updateFollow(){if(!$('follow'))return;const ready=current?.timing?.verified===true;$('follow').disabled=!ready;$('follow').textContent=ready?`Follow images: ${follow?'on':'off'}`:(current?.audio?'Follow: timing needed':'Follow: no audio');$('follow').title=ready?'Manual image navigation pauses following. Turn this on to return to the recording.':'Image transitions must be checked against this recording in Audio & image timing.';$('follow').setAttribute('aria-pressed',String(follow));}
 function onTime(){
   if(!current||!audio)return;
   if(follow){const cue=cueAt(current.timing,audio.currentTime);if(cue){const i=current.steps.findIndex(s=>s.caseId===cue.caseId&&s.imageId===cue.imageId);if(i>=0&&i!==stepIndex){stepIndex=i;void renderImage().catch(showError);}}}
@@ -180,25 +200,41 @@ async function persistProgress(){
   saveQueue=saveQueue.catch(()=>{}).then(()=>cloud.saveProgress(row.fingerprint,value));
   try{await saveQueue;if(current===row && $('progress-state'))$('progress-state').textContent='Progress saved';}catch{if(current===row&&$('progress-state'))$('progress-state').textContent='Progress not synced · check connection';}
 }
+function validateLoadedTiming(timing){
+  validateTiming(timing,current.manifest,current.audio);
+  if(!Number.isFinite(audio?.duration))throw new Error('Wait for the audio to load before importing or verifying timing.');
+  if(Math.abs(timing.duration-audio.duration)>1)throw new Error('The timing duration does not match this recording.');
+  return timing;
+}
+async function markImageTime(advance){
+  if(!Number.isFinite(audio?.duration)||audio.duration<=0)throw new Error('Wait for the audio to load first.');
+  const row=current,index=stepIndex,s=row.steps[index],other=(row.timing?.cues||[]).filter(c=>c.caseId!==s.caseId||c.imageId!==s.imageId);
+  const next={version:1,fingerprint:row.fingerprint,audioSha256:row.audio.sha256,duration:audio.duration,verified:false,cues:[...other,{caseId:s.caseId,imageId:s.imageId,time:audio.currentTime}].sort((a,b)=>a.time-b.time)};
+  validateTiming(next,row.manifest,row.audio);if(!row.local)await cloud.saveTiming(row.fingerprint,next);if(current!==row)return;
+  row.timing=next;follow=false;updateFollow();renderTiming();if(advance&&stepIndex===index)navigate(index+1);
+}
 function renderTiming(){
   const box=$('timing-tools');if(!box)return;box.replaceChildren();
   if(!current.audio){box.append(el('p','Attach audio before setting image timing.','muted'));return;}
   const cues=current.timing?.cues || [];
   box.append(el('h3','Match images to the recording'),el('p',`${cues.length} of ${current.steps.length} image cues set. Listen, choose the corresponding image, and mark its start. Follow stays off until the full sequence is checked.`,'muted'));
-  const mark=button(`Mark this image at ${time(audio?.currentTime||0)}`,async()=>{
-    if(!Number.isFinite(audio.duration)||audio.duration<=0)throw new Error('Wait for the audio to load first.');
-    const s=current.steps[stepIndex],other=(current.timing?.cues||[]).filter(c=>c.caseId!==s.caseId || c.imageId!==s.imageId);
-    const next={version:1,fingerprint:current.fingerprint,audioSha256:current.audio.sha256,duration:audio.duration,verified:false,cues:[...other,{caseId:s.caseId,imageId:s.imageId,time:audio.currentTime}].sort((a,b)=>a.time-b.time)};
-    validateTiming(next,current.manifest,current.audio);if(!current.local)await cloud.saveTiming(current.fingerprint,next);current.timing=next;follow=false;updateFollow();renderTiming();
-  });mark.id='mark-time';box.append(mark);
-  const list=el('ol',undefined,'cue-list');for(const cue of cues){const li=el('li',`${time(cue.time)} · ${cue.imageId}`);li.append(button('Remove',async()=>{const next={...current.timing,verified:false,cues:current.timing.cues.filter(c=>c!==cue)};if(!current.local)await cloud.saveTiming(current.fingerprint,next);current.timing=next;follow=false;updateFollow();renderTiming();},'quiet'));list.append(li);}box.append(list);
+  const mark=button(`Mark this image at ${time(audio?.currentTime||0)}`,()=>markImageTime(false));mark.id='mark-time';box.append(mark);
+  box.append(button('Mark & next image',()=>markImageTime(true)));
+  const missing=current.steps.findIndex(s=>!cues.some(c=>c.caseId===s.caseId&&c.imageId===s.imageId));
+  if(missing>=0)box.append(button('Go to next unmarked image',()=>navigate(missing),'quiet'));
+  const list=el('ol',undefined,'cue-list');for(const cue of cues){
+    const row=current,index=row.steps.findIndex(s=>s.caseId===cue.caseId&&s.imageId===cue.imageId),step=row.steps[index];
+    const li=el('li',`${time(cue.time)} · ${step.label} · image ${step.index+1}`);
+    li.append(button('Replay transition',()=>{navigate(index);audio.currentTime=Math.max(0,cue.time-3);return audio.play();},'quiet'));
+    li.append(button('Remove',async()=>{const next={...row.timing,verified:false,cues:row.timing.cues.filter(c=>c!==cue)};if(!row.local)await cloud.saveTiming(row.fingerprint,next);if(current!==row)return;row.timing=next;follow=false;updateFollow();renderTiming();},'quiet'));list.append(li);
+  }box.append(list);
   const label=el('label',undefined,'check-label'),check=el('input');check.type='checkbox';label.append(check,document.createTextNode('I checked every image transition against this exact recording.'));box.append(label);
   box.append(button('Enable verified image following',async()=>{
     if(!check.checked)throw new Error('Check the image transitions before enabling automatic following.');
-    const timing={...current.timing,verified:true,verifiedAt:new Date().toISOString()};validateTiming(timing,current.manifest,current.audio);
+    const timing={...current.timing,verified:true,verifiedAt:new Date().toISOString()};validateLoadedTiming(timing);
     if(!current.local)await cloud.saveTiming(current.fingerprint,timing);current.timing=timing;follow=true;updateFollow();notice('Verified image following enabled.');renderTiming();
   },'primary'));
-  box.append(button('Export timing backup',()=>downloadJSON('lecture-timing.json',current.timing||{}),'quiet'),fileInput('Import matching timing','.json',async file=>{const timing=validateTiming(JSON.parse(await file.text()),current.manifest,current.audio);if(!current.local)await cloud.saveTiming(current.fingerprint,timing);current.timing=timing;follow=timing.verified===true;updateFollow();renderTiming();}));
+  box.append(button('Export timing backup',()=>downloadJSON('lecture-timing.json',current.timing||{}),'quiet'),fileInput('Import matching timing','.json',async file=>{const timing=validateLoadedTiming(JSON.parse(await file.text()));if(!current.local)await cloud.saveTiming(current.fingerprint,timing);current.timing=timing;follow=timing.verified===true;updateFollow();renderTiming();}));
 }
 $('account').onclick=async()=>{await persistProgress();dispose();const {error}=await cloud.client.auth.signOut();if(error){showError(error);return;}session=null;localPackage=null;location.hash='';await route();};
 window.addEventListener('hashchange',()=>route().catch(showError));

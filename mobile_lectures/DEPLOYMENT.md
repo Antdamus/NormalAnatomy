@@ -67,3 +67,31 @@ Private lecture packages and audio verification records are kept under the
 ignored `private/` folder. They are not part of this repository or public app.
 Full listening review of exported audio and verified image timing are distinct
 from confirming the identity of its approved source text.
+
+## Phone and tablet study view — 2026-11-12
+
+The study viewer now keeps image navigation, plain/annotated switching, captions,
+zoom, and the existing audio player together in a full-screen workspace. Pinch,
+drag, double-tap, Fit and 100% controls inspect the original-resolution files.
+Captions can stay open as the image changes; annotation switches preserve the
+inspection position when the raster dimensions match. Tablet portrait uses the
+full available width, with a separate caption region that does not cover images.
+
+Nine SQL/contract/geometry tests and the existing browser suite passed. The new
+viewer suite passed at 320×568, 390×844, 820×1180, 1180×820 and 844×390. Edge
+checks include injected touch gestures. WebKit checks include image controls,
+layouts and uninterrupted network-media playback with the actual MP3. The
+Windows Playwright WebKit build rejected `blob:` audio; its tests use the same
+bytes served over localhost HTTP, matching the deployed network-media path.
+WebKit local-file preview, physical iOS gestures and lock-screen playback remain
+unverified. Actual source images and the existing MP3 were also rendered locally.
+
+Verified following now updates the open study viewer and its caption. The timing
+editor adds mark-and-next, next-unmarked-image and transition-replay controls.
+Timing imports must match the loaded recording duration as well as its hash and
+the reviewed lecture fingerprint. No source content or completed approvals changed.
+
+Speechify's inspected download flow offered MP3 export but no timestamp export.
+The spinal cord recording still has zero verified image cues; automatic following
+remains disabled for it. This update does not supply guessed timestamps, timed
+narration subtitles, or a full semantic listening audit.

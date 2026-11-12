@@ -1,8 +1,8 @@
 // Synthetic software-test content only. These receipts are never used for real lectures.
 import {zipSync,strToU8} from 'fflate';
 import {FORMAT,sha256} from '../src/contract.js';
-export async function fixture(){
-  const bytes=new Uint8Array(Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/l9sAAAAASUVORK5CYII=','base64')),hash=await sha256(bytes);
+export async function fixture(imageBytes){
+  const bytes=new Uint8Array(imageBytes||Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/l9sAAAAASUVORK5CYII=','base64')),hash=await sha256(bytes);
   const registry=[1,2].map(n=>({masterImageId:`TEST-${n}`,sourceLabel:'Synthetic',sourceImageNumber:n,sourceArticleId:'test',sourceKind:'radprimer',caption:`Synthetic software fixture ${n}.`,required:true,plainFile:{sha256:hash},annotatedFile:{sha256:hash}}));
   const plan={schemaVersion:1,title:'Synthetic software test',orientation:'Software fixture only.',patterns:[{id:'p',label:'Test',cue:'Compare',overviewImageIds:['TEST-1']}],cases:registry.map((r,i)=>({id:`case-${i+1}`,patternId:'p',label:`Test case ${i+1}`,relationship:'single image',imageIds:[r.masterImageId],modalityLabels:{[r.masterImageId]:'Test image'},focus:'Software fixture.',discriminator:'Test difference.',sourceBasis:'Test caption.'})),lectureOrder:['case-1','case-2']};
   const C=globalThis.VisualLecture,Q=globalThis.VisualLectureQuality;
