@@ -91,7 +91,7 @@ async function renderLibrary(serial) {
 function fillLectureGrid(grid,rows){
   grid.replaceChildren();
   if(!rows.length){const empty=el('div',undefined,'panel empty');empty.append(el('h2','Your first lecture starts here.'),el('p','Your reviewed desktop lectures will appear here after automatic handoff. You can also add a reviewed package.'));grid.append(empty);}
-  for(const row of rows){const card=el('a',undefined,'lecture-card');card.href='#'+row.fingerprint;card.append(el('span',row.audio?'AUDIO ATTACHED':'IMAGES & TRANSCRIPT','eyebrow'),el('h2',row.title),el('p',`${row.case_count} illustrated cases`,'muted'),el('span','Open lecture ↗','card-action'));grid.append(card);}
+  for(const row of rows){const card=el('a',undefined,'lecture-card');card.href='#'+row.fingerprint;card.append(el('span',(row.shared_from_owner_id?'SHARED · ':'')+(row.audio?'AUDIO ATTACHED':'IMAGES & TRANSCRIPT'),'eyebrow'),el('h2',row.title),el('p',`${row.case_count} illustrated cases`,'muted'),el('span','Open lecture ↗','card-action'));grid.append(card);}
 }
 function renderAccountAccess(){
   const details=el('details',undefined,'account-access');details.append(el('summary','Account access'),el('p','Set an optional password while signed in. You can then use it on your other devices without requesting an email.','muted'));
@@ -107,7 +107,7 @@ async function imageURL(imageId,wanted) {
   if(!entry)return null;
   const key=entry.path,cached=mediaCache.get(key);
   if(cached && cached.expires>Date.now())return cached.url;
-  const url=row.local?objectURL(new Blob([localPackage.files[entry.path]],{type:entry.mime})):await cloud.signedMedia(row.fingerprint,entry.path);
+  const url=row.local?objectURL(new Blob([localPackage.files[entry.path]],{type:entry.mime})):await cloud.signedMedia(row.fingerprint,entry.path,row.shared_from_owner_id);
   if(current!==row)return null;
   mediaCache.set(key,{url,expires:Date.now()+90*60*1000});return url;
 }
@@ -133,7 +133,7 @@ async function openLecture(row,local,serial) {
   if(serial!==routeVersion)return;
   if(progress){const i=current.steps.findIndex(s=>s.caseId===progress.case_id && s.imageId===progress.image_id);if(i>=0)stepIndex=i;}
   const back=el('a','← Library','back-link');back.href='#';app.append(back);
-  const heading=el('section',undefined,'lecture-heading');heading.append(el('p',local?'LOCAL PREVIEW · NOT UPLOADED':'YOUR PRIVATE LECTURE','eyebrow'),el('h1',lesson.title));app.append(heading);
+  const heading=el('section',undefined,'lecture-heading');heading.append(el('p',local?'LOCAL PREVIEW · NOT UPLOADED':row.shared_from_owner_id?'SHARED LECTURE · YOUR OWN STUDY PROGRESS':'YOUR PRIVATE LECTURE','eyebrow'),el('h1',lesson.title));app.append(heading);
   if(local && session)heading.append(button('Upload this reviewed lecture',async()=>{await cloud.uploadPackage(localPackage,notice);location.hash=row.fingerprint;},'primary'));
   if((lesson.plan.cineWatchPoints||[]).length)heading.append(el('p','This lecture includes cine passages. This phone version displays the still images and transcript; source video access is not connected.','limitation'));
   const layout=el('div',undefined,'study-layout');
@@ -169,8 +169,11 @@ async function openLecture(row,local,serial) {
     if(timingReady(current.timing)&&Math.abs(current.timing.duration-audio.duration)>(current.timing.version===2?0.25:1)){current.timing=null;follow=false;updateFollow();showError(new Error('The saved timing duration does not match this recording. Image following remains off.'));}renderTiming();updateSubtitles();};
   audio.onerror=()=>{$('audio-status').textContent='Audio could not load. Reopen the lecture to renew its link.';};
   audio.onplay=()=>{if('mediaSession' in navigator)navigator.mediaSession.metadata=new MediaMetadata({title:lesson.title,artist:'NormalAnatomy'});void persistProgress({intent:true});};
-  $('audio-setup').append(el('p','Use the complete MP3 exported from Speechify. Attaching a different recording clears the old timing.','muted'));
-  const confirm=el('label',undefined,'check-label');const input=el('input');input.type='checkbox';input.id='audio-confirm';confirm.append(input,document.createTextNode('I checked that this is the full Speechify export of this exact approved narration.'));$('audio-setup').append(confirm,fileInput('Attach Speechify audio','.mp3,.m4a,.wav',attachAudio));
+  if(row.shared_from_owner_id)$('audio-setup').append(el('p','The lecture owner manages its recording and image timing. Your playback position, card selections and image links are private to your account.','muted'));
+  else{
+    $('audio-setup').append(el('p','Use the complete MP3 exported from Speechify. Attaching a different recording clears the old timing.','muted'));
+    const confirm=el('label',undefined,'check-label');const input=el('input');input.type='checkbox';input.id='audio-confirm';confirm.append(input,document.createTextNode('I checked that this is the full Speechify export of this exact approved narration.'));$('audio-setup').append(confirm,fileInput('Attach Speechify audio','.mp3,.m4a,.wav',attachAudio));
+  }
   if(row.audio){await setAudio(row.audio);if(serial!==routeVersion)return;}
   updateFollow();renderTiming();await renderImage();if(current===opened){opened.progressReady=true;void opened.progressSync?.flush();}
 }
@@ -222,7 +225,7 @@ async function attachAudio(file){
 async function setAudio(meta){
   const row=current,serial=++audioVersion;
   row.subtitles=null;
-  const src=row.local?row.localAudio && objectURL(row.localAudio):await cloud.signedMedia(row.fingerprint,meta.path);
+  const src=row.local?row.localAudio && objectURL(row.localAudio):await cloud.signedMedia(row.fingerprint,meta.path,row.shared_from_owner_id);
   if(current!==row || serial!==audioVersion || !src)return;
   audio.src=src;audio.hidden=false;audio.load();$('rewind').disabled=false;$('forward').disabled=false;
   $('audio-status').textContent='Full lecture audio · browse images as you listen';
@@ -309,6 +312,7 @@ async function markImageTime(advance){
 }
 function renderTiming(){
   const box=$('timing-tools');if(!box)return;box.replaceChildren();
+  if(current.shared_from_owner_id){box.append(el('p',current.audio?'Recording, image timing and spoken subtitles update when the owner publishes them.':'The owner has not attached a recording yet. It will appear here when available.','muted'));return;}
   if(!current.audio){box.append(el('p','Attach audio before setting image timing.','muted'));return;}
   const cues=current.timing?.cues || [];
   const automatic=el('p',automaticMessages.get(current.fingerprint)||(canProcess?'Automatic timing is prepared by the desktop processor and synced to your library.':'Automatic timing is prepared on your computer. It will appear here when synced.'),'muted');automatic.id='automatic-timing-status';box.append(automatic);

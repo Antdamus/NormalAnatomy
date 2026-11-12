@@ -18,6 +18,7 @@ test('Postgres enforces membership, owner isolation and private immutable media'
       grant usage,select on sequence storage.objects_id_seq to anon,authenticated;`);
     await db.exec(await fs.readFile(new URL('../supabase/migrations/202611120001_mobile_lectures.sql',import.meta.url),'utf8'));
     await db.exec(await fs.readFile(new URL('../supabase/migrations/202611120002_card_choices.sql',import.meta.url),'utf8'));
+    await db.exec(await fs.readFile(new URL('../supabase/migrations/202611120003_shared_libraries.sql',import.meta.url),'utf8'));
     const a='11111111-1111-4111-8111-111111111111',b='22222222-2222-4222-8222-222222222222',hash='a'.repeat(64);
     await db.exec(`insert into auth.users values ('${a}'),('${b}');insert into public.mobile_members(email) values('a@example.test');`);
     const login=async(uid,email)=>{await db.exec('reset role');await db.query("select set_config('request.jwt.claim.sub',$1,false),set_config('request.jwt.claim.email',$2,false)",[uid,email]);await db.exec('set role authenticated');};

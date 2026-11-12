@@ -20,7 +20,7 @@ export function createAutomaticSync({cloud,fetcher=fetch,onStatus=()=>{},onSaved
       const rows=await cloud.listLectures();
       for(const summary of rows){
         if(!isActive())return;
-        if(!summary.audio?.verifiedExport||(summary.timing&&summary.audio.subtitles))continue;
+        if(summary.shared_from_owner_id||!summary.audio?.verifiedExport||(summary.timing&&summary.audio.subtitles))continue;
         const key=`${summary.fingerprint}/${summary.audio.sha256}`;
         if(finished.has(key))continue;
         let job=pending.get(key),row;

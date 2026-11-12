@@ -18,7 +18,7 @@ export async function owner() {
 }
 export async function listLectures() {
   const uid = await owner();
-  return checked(await client.from('mobile_lectures').select('fingerprint,title,case_count,audio,timing,created_at').eq('owner_id',uid).order('created_at',{ascending:false}));
+  return checked(await client.from('mobile_lectures').select('fingerprint,title,case_count,audio,timing,created_at,shared_from_owner_id').eq('owner_id',uid).order('created_at',{ascending:false}));
 }
 export async function getLecture(fingerprint) {
   const uid = await owner();
@@ -49,6 +49,7 @@ export async function acceptHandoffPackage(pkg,expectedOwner,status){
   await verifyManifest(row.manifest);return row;
 }
 export async function acceptHandoffAudio(row,bytes,meta,expectedOwner){
+  requireOwnedContent(row);
   if(await owner()!==expectedOwner)throw new Error('The signed-in account changed.');
   await validateExport(meta.exportEvidence,row.manifest);
   if(meta.path!==`audio/${meta.sha256}`||meta.mime!=='audio/mpeg'||meta.verifiedExport!==true||meta.bytes!==bytes.byteLength||await sha256(bytes)!==meta.sha256)throw new Error('The exported recording failed its integrity check.');
@@ -59,20 +60,23 @@ export async function acceptHandoffAudio(row,bytes,meta,expectedOwner){
   const changed=checked(await client.from('mobile_lectures').update({audio:meta}).eq('owner_id',expectedOwner).eq('fingerprint',row.fingerprint).is('audio',null).is('timing',null).select('fingerprint'));
   if(!changed.length){const current=await getPlayback(row.fingerprint);if(![current.audio?.sha256,current.audio?.originalExport?.sha256].includes(meta.sha256))throw new Error('Audio or timing changed during the handoff. The saved version was kept.');}
 }
-export async function signedMedia(fingerprint,relativePath) {
+export async function signedMedia(fingerprint,relativePath,sourceOwner) {
   const uid = await owner();
   if (!/^(media|audio)\/[a-f0-9]{64}$/.test(relativePath)) throw new Error('Invalid media identity.');
-  return checked(await client.storage.from(BUCKET).createSignedUrl(`${uid}/${fingerprint}/${relativePath}`,7200)).signedUrl;
+  if(sourceOwner&&!/^[a-f0-9-]{36}$/.test(sourceOwner))throw new Error('Invalid shared library identity.');
+  return checked(await client.storage.from(BUCKET).createSignedUrl(`${sourceOwner||uid}/${fingerprint}/${relativePath}`,7200)).signedUrl;
 }
+function requireOwnedContent(row){if(row.shared_from_owner_id)throw new Error('This lecture is shared with you. Its owner manages the recording and timing; your progress and card choices are your own.');}
 export async function saveAudio(fingerprint,blob,meta) {
   const uid = await owner();
+  requireOwnedContent(await getLecture(fingerprint));
   const result = await client.storage.from(BUCKET).upload(`${uid}/${fingerprint}/${meta.path}`,blob,{contentType:meta.mime,upsert:false});
   if (result.error && String(result.error.statusCode) !== '409') throw result.error;
   checked(await client.from('mobile_lectures').update({audio:meta,timing:null}).eq('owner_id',uid).eq('fingerprint',fingerprint));
 }
 export async function saveTiming(fingerprint,timing) {
   const uid = await owner();
-  const row=await getLecture(fingerprint);validateTiming(timing,row.manifest,row.audio);
+  const row=await getLecture(fingerprint);requireOwnedContent(row);validateTiming(timing,row.manifest,row.audio);
   const changed=checked(await client.from('mobile_lectures').update({timing}).eq('owner_id',uid).eq('fingerprint',fingerprint).eq('audio->>sha256',row.audio.sha256).select('fingerprint'));
   if(!changed.length)throw new Error('The recording changed. Reopen the lecture before saving timing.');
 }
@@ -80,6 +84,7 @@ export async function getPlayback(fingerprint){
   const uid=await owner();return checked(await client.from('mobile_lectures').select('audio,timing').eq('owner_id',uid).eq('fingerprint',fingerprint).single());
 }
 export async function publishAutomaticTiming(row,result,prepared){
+  requireOwnedContent(row);
   const uid=await owner();await verifyManifest(row.manifest);validateTiming(result.timing,row.manifest,result.audio);
   if(result.timing.version!==2||result.sourceAudioSha256!==row.audio.sha256||result.timing.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Automatic timing identity mismatch.');
   if(prepared){
@@ -108,6 +113,7 @@ export async function saveCardChoices(manifest,state,revision){
   return changed[0].card_revision;
 }
 export async function publishSubtitles(row,subtitles){
+  requireOwnedContent(row);
   if(row.audio?.subtitles)return false;
   const uid=await owner();validateSubtitles(subtitles,row.manifest,row.audio);
   if(subtitles.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Subtitle transcript hash mismatch.');

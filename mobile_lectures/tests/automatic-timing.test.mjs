@@ -80,3 +80,10 @@ test('iPhone and iPad use cloud playback without contacting the desktop processo
   for(const nav of [{platform:'iPhone',userAgent:'iPhone'},{platform:'MacIntel',maxTouchPoints:5,userAgent:'Safari'},{platform:'Linux arm',userAgent:'Android'}])assert.equal(desktopProcessorSupported(nav),false);
   assert.equal(desktopProcessorSupported({platform:'Win32',userAgent:'Edge'}),true);
 });
+
+test('shared lectures never enqueue a second recording job or publish over the owner content',async()=>{
+  const sync=createAutomaticSync({cloud:{listLectures:async()=>[{fingerprint:'a'.repeat(64),shared_from_owner_id:'owner',audio:{verifiedExport:true},timing:null}],getLecture:async()=>{throw new Error('Shared lecture must not be processed');}},fetcher:async url=>{
+    assert.equal(url,PROCESSOR_URL+'/health');return {ok:true,json:async()=>({service:'normalanatomy-timing',version:1})};
+  },onStatus:(_,message)=>assert.ok(!message.includes('Shared lecture must not'))});
+  await sync.tick();
+});

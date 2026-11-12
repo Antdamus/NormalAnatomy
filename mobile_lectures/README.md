@@ -228,6 +228,36 @@ credentials or a way for visitors to enroll themselves in the private library.
    visitors cannot read the records or media, then check an authenticated upload
    and playback on an actual iPhone.
 
+### Sharing a library with another learner
+
+Apply `202611120003_shared_libraries.sql` before deploying the shared-library app.
+An administrator creates the recipient's password account, adds its lowercase
+email to `mobile_members`, and inserts the source and recipient UUIDs into
+`mobile_library_shares`. Grants are administrator-only; app users cannot enroll
+themselves or extend a grant. A grant includes the owner's current and future
+original lectures. Lectures received from somebody else are not reshared.
+
+Each recipient gets an account-owned study row with `shared_from_owner_id`.
+Triggers copy teaching content, current audio and timing when a lecture is added
+or updated. They never copy or reset the owner's or recipient's playback state,
+card selections, manual links or unlink preferences. Initial desktop card-choice
+metadata is omitted from the recipient manifest; reviewed source groups remain.
+An independent copy already owned by the recipient is preserved.
+
+The recipient can read the shared content and edit only their own card choices;
+their bookmark still uses the existing account-scoped progress table. SQL guards
+enforce this independently of the read-only recording/timing UI. Storage permits
+only currently referenced image/audio objects under the granted source owner.
+Media stays private and is not duplicated or made public. The recipient's devices
+sync their study state with each other, separately from the library owner's.
+
+Deleting the administrator grant hides the shared rows and blocks new signed
+media access, retaining the recipient's choices for a possible later regrant.
+Already-issued signed URLs remain valid until their normal expiry (up to two
+hours); downloaded files cannot be recalled. `npm run test:sharing` exercises
+separate owner/reader accounts and reader phone/tablet playback in isolated
+fixtures; `tests/shared-access.test.mjs` tests the actual SQL/RLS protections.
+
 GitHub contains application source only. `.gitignore` excludes private lectures,
 recordings, environment files, dependencies, and test screenshots. Caption UI
 icons in `public/assets/caption-icons/` are copied from the existing extension;
