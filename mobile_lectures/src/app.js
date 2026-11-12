@@ -126,7 +126,7 @@ async function openLecture(row,local,serial) {
   for(const p of lesson.plan.patterns)$('pattern-list').append(el('h3',p.label),el('p',p.cue));
   for(const stage of ['organizer','lecture']){const result=lesson.quality.approvals[stage].result;$('review-notes').append(el('h3',stage==='lecture'?'Lecture review':'Organizer review'),el('p',result.summary));for(const limitation of result.limitations||[])$('review-notes').append(el('p',typeof limitation==='string'?limitation:JSON.stringify(limitation),'muted'));}
   const player=el('section',undefined,'player');player.innerHTML='<div class="player-heading"><span id="audio-status">Attach the Speechify recording to listen here.</span><button id="follow" disabled>Follow images: off</button></div><audio id="audio" controls preload="metadata" playsinline></audio><div class="player-extras"><button id="rewind" disabled>−10 s</button><label>Speed <select id="speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="1.75">1.75×</option><option value="2">2×</option></select></label><button id="forward" disabled>+10 s</button><span id="progress-state">Position saved as you study</span></div>';app.append(player);
-  audio=$('audio');audio.hidden=!row.audio;audio.playbackRate=progress?.rate || 1;$('speed').value=String(audio.playbackRate);
+  audio=$('audio');audio.hidden=!row.audio;audio.defaultPlaybackRate=progress?.rate || 1;audio.playbackRate=audio.defaultPlaybackRate;$('speed').value=String(audio.playbackRate);
   $('case-select').onchange=()=>navigate(current.steps.findIndex(s=>s.caseId===$('case-select').value));
   $('previous-image').onclick=()=>navigate(stepIndex-1);$('next-image').onclick=()=>navigate(stepIndex+1);
   for(const v of ['plain','annotated'])$(v).onclick=()=>setVariant(v);
@@ -138,7 +138,7 @@ async function openLecture(row,local,serial) {
   document.querySelector('.caption').ontoggle=()=>setCaptions(document.querySelector('.caption').open);
   setCaptions(captionsShown);
   $('follow').onclick=()=>{follow=!follow;updateFollow();if(follow)onTime();};
-  $('speed').onchange=()=>{audio.playbackRate=Number($('speed').value);void persistProgress();};
+  $('speed').onchange=()=>{audio.defaultPlaybackRate=Number($('speed').value);audio.playbackRate=audio.defaultPlaybackRate;void persistProgress();};
   $('rewind').onclick=()=>{audio.currentTime=Math.max(0,audio.currentTime-10);};$('forward').onclick=()=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.min(audio.duration,audio.currentTime+10);};
   audio.ontimeupdate=onTime;audio.onpause=()=>{void persistProgress();void refreshPlayback();};audio.onseeked=()=>{onTime();void persistProgress();};
   audio.onloadedmetadata=()=>{const position=resumeAfterReload??((progress?.audio_sha256===current.audio?.sha256||progress?.audio_sha256===current.audio?.originalExport?.sha256)?progress?.position:null);resumeAfterReload=null;

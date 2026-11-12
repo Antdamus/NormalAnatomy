@@ -8,7 +8,7 @@ export function createImageViewer(dialog, actions) {
     <section id="viewer-options" aria-label="Image and playback tools" hidden><div class="viewer-options-heading"><strong>Image & playback</strong><button id="viewer-tools-close" aria-label="Close tools">Done</button></div>
     <p class="viewer-help">Tap the image to hide or show controls. Pinch or double-tap to zoom; drag to inspect.</p><div class="viewer-tools"><div class="viewer-group"><button id="viewer-plain">Plain</button><button id="viewer-annotated">Annotated</button></div><button id="viewer-captions">Image captions</button><div class="viewer-group"><button id="viewer-out" aria-label="Zoom out">−</button><button id="viewer-fit">Fit</button><button id="viewer-original" title="One source pixel per CSS pixel">100%</button><button id="viewer-in" aria-label="Zoom in">+</button></div></div><p id="viewer-resolution"></p><div id="viewer-audio-tools"></div></section>
     <div class="viewer-body"><div class="viewer-image-column"><div class="viewer-stage" tabindex="0" role="group" aria-label="Image inspection: tap to hide controls, pinch to zoom, drag to pan, double-tap to zoom"><img id="viewer-image" alt="" draggable="false"><span id="viewer-loading" role="status">Loading original image…</span></div></div><aside class="viewer-caption" aria-label="Original image caption" hidden><div id="viewer-caption-body"></div><p id="viewer-relationship"></p><a id="viewer-source" target="_blank" rel="noopener noreferrer">Open original source ↗</a></aside></div>
-    <footer id="viewer-player"><div id="viewer-subtitles"></div><div class="viewer-timeline"><span id="viewer-elapsed">0:00</span><input id="viewer-seek" type="range" min="0" max="0" step="0.1" value="0" aria-label="Lecture position"><span id="viewer-duration">0:00</span><span id="viewer-cc"></span></div><div class="viewer-dock"><button id="viewer-play" aria-label="Play lecture" disabled>▶</button><div id="viewer-card-slot"></div><button id="viewer-controls" aria-label="Hide controls" aria-expanded="true">Hide</button></div><p id="viewer-play-error" role="alert" hidden></p></footer>`;
+    <footer id="viewer-player"><div id="viewer-subtitles"></div><div class="viewer-timeline"><span id="viewer-elapsed">0:00</span><input id="viewer-seek" type="range" min="0" max="0" step="0.1" value="0" aria-label="Lecture position"><span id="viewer-duration">0:00</span><span id="viewer-cc"></span></div><div class="viewer-dock"><button id="viewer-rewind" aria-label="Back 5 seconds" disabled>−5s</button><button id="viewer-play" aria-label="Play lecture" disabled>▶</button><button id="viewer-forward" aria-label="Forward 5 seconds" disabled>+5s</button><select id="viewer-speed" aria-label="Playback speed" title="Playback speed" disabled></select><div id="viewer-card-slot"></div><button id="viewer-controls" aria-label="Hide controls" aria-expanded="true">Hide</button></div><p id="viewer-play-error" role="alert" hidden></p></footer>`;
   const $=id=>dialog.querySelector('#'+id),stage=dialog.querySelector('.viewer-stage'),img=$('viewer-image');
   let data={},camera=null,dimensions=null,player=null,placeholder=null,sourceVersion=0,lastTap=null,tapTimer=null,paintedView=null;
   let controlsShown=true,audioEvents=null,media=null,movedControls=[];
@@ -50,7 +50,8 @@ export function createImageViewer(dialog, actions) {
   $('viewer-tools-toggle').onclick=()=>showTools($('viewer-options').hidden);$('viewer-tools-close').onclick=()=>{showTools(false);$('viewer-tools-toggle').focus();};
   const clock=seconds=>Number.isFinite(seconds)?`${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`:'0:00';
   function syncPlayback(){const ready=media&&!media.hidden&&Number.isFinite(media.duration)&&media.duration>0;
-    $('viewer-play').disabled=!ready;$('viewer-seek').disabled=!ready;dialog.classList.toggle('viewer-no-audio',!ready);
+    for(const id of ['viewer-play','viewer-seek','viewer-rewind','viewer-forward','viewer-speed'])$(id).disabled=!ready;dialog.classList.toggle('viewer-no-audio',!ready);
+    if(media){$('viewer-speed').value=String(media.playbackRate);const original=player?.querySelector('#speed');if(original)original.value=String(media.playbackRate);}
     $('viewer-play').textContent=media&&!media.paused?'Ⅱ':'▶';$('viewer-play').setAttribute('aria-label',media&&!media.paused?'Pause lecture':'Play lecture');
     $('viewer-seek').max=String(ready?media.duration:0);$('viewer-seek').value=String(ready?media.currentTime:0);
     $('viewer-seek').setAttribute('aria-valuetext',`${clock(media?.currentTime)} of ${clock(media?.duration)}`);
@@ -58,6 +59,9 @@ export function createImageViewer(dialog, actions) {
   }
   $('viewer-play').onclick=async()=>{if(!media)return;const error=$('viewer-play-error');error.hidden=true;try{if(media.paused)await media.play();else media.pause();}catch(e){error.textContent=e.message||'Playback could not start. Open Tools to retry with the audio controls.';error.hidden=false;}syncPlayback();};
   $('viewer-seek').oninput=()=>{if(media&&Number.isFinite(media.duration)){media.currentTime=Math.max(0,Math.min(media.duration,Number($('viewer-seek').value)));syncPlayback();}};
+  function skip(seconds){if(media&&!media.hidden&&Number.isFinite(media.duration)){media.currentTime=Math.max(0,Math.min(media.duration,media.currentTime+seconds));syncPlayback();}}
+  $('viewer-rewind').onclick=()=>skip(-5);$('viewer-forward').onclick=()=>skip(5);
+  $('viewer-speed').onchange=()=>{const original=player?.querySelector('#speed');if(!original||!media)return;original.value=$('viewer-speed').value;original.dispatchEvent(new Event('change',{bubbles:true}));syncPlayback();};
   function movePlayer(move){const audio=player?.querySelector('audio'),playing=audio&&!audio.paused;move();if(playing)void audio.play().catch(()=>{});}
   function moveControl(id,target){const node=player?.querySelector('#'+id);if(!node)return;const mark=document.createComment(id+' position');node.before(mark);movedControls.push({node,mark});target.append(node);}
   function restore(){cancelTap();audioEvents?.abort();audioEvents=null;
@@ -86,7 +90,8 @@ export function createImageViewer(dialog, actions) {
   }
   return {update,open(audioPlayer){if(dialog.open)return;player=audioPlayer;placeholder=document.createComment('audio player position');player.before(placeholder);movePlayer(()=>$('viewer-audio-tools').append(player));
     moveControl('subtitle-toggle',$('viewer-cc'));moveControl('narration-subtitle',$('viewer-subtitles'));
-    media=player.querySelector('audio');audioEvents=new AbortController();for(const event of ['timeupdate','seeking','seeked','play','pause','ended','loadedmetadata','durationchange','emptied','error'])media?.addEventListener(event,syncPlayback,{signal:audioEvents.signal});
+    $('viewer-speed').replaceChildren(...[...(player.querySelector('#speed')?.options||[])].map(option=>option.cloneNode(true)));
+    media=player.querySelector('audio');audioEvents=new AbortController();for(const event of ['timeupdate','seeking','seeked','ratechange','play','pause','ended','loadedmetadata','durationchange','emptied','error'])media?.addEventListener(event,syncPlayback,{signal:audioEvents.signal});
     showControls(true);syncPlayback();$('viewer-play-error').hidden=true;dialog.showModal();document.body.classList.add('viewer-open');reset();
   },close(){if(dialog.open){dialog.close();restore();}},get isOpen(){return dialog.open;}};
 }

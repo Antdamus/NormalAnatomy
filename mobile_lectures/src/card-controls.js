@@ -27,7 +27,9 @@ export function createCardControls({row,parent,viewerTools,getImageId,getURL,onE
   const dialog=el('dialog',undefined,'card-link-dialog');dialog.setAttribute('aria-label','Keep images together for cards');dialog.id='card-link-dialog';document.body.append(dialog);
   function paint(){
     if(disposed)return;const id=getImageId(),chosen=state.review.images[id]?.decision==='cards',group=Review.groupFor(lesson,id,state.review);
-    for(const {toggle,link} of controls){toggle.textContent=chosen?'✓ For cards':'+ Add to cards';toggle.setAttribute('aria-pressed',String(chosen));toggle.disabled=link.disabled=busy;link.textContent=group.length>1?`${group.length} images linked`:'Link images';}
+    for(const {toggle,link} of controls){const compact=toggle.id==='viewer-card-toggle';toggle.textContent=compact?(chosen?'✓ Cards':'Cards'):(chosen?'✓ For cards':'+ Add to cards');toggle.setAttribute('aria-pressed',String(chosen));toggle.disabled=link.disabled=busy;link.textContent=compact?'Link':group.length>1?`${group.length} images linked`:'Link images';
+      toggle.setAttribute('aria-label',chosen?'Remove from card selection':'Add to cards');link.setAttribute('aria-label',group.length>1?`Link images (${group.length} currently linked)`:'Link images');toggle.title=toggle.getAttribute('aria-label');link.title=link.getAttribute('aria-label');link.dataset.linkCount=compact&&group.length>1?String(group.length):'';
+    }
     summary.textContent=`${Review.summary(state.review,lesson).cards} images selected · ${(state.review.manualGroups||[]).length} links you made`;
     selectedList.replaceChildren();const seen=new Set();
     for(const image of lesson.registry){const id=image.masterImageId;if(state.review.images[id]?.decision!=='cards'||seen.has(id))continue;

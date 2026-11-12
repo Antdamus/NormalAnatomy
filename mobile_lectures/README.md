@@ -251,8 +251,12 @@ Study view uses a compact navigation bar and audio timeline. **Tools** contains
 image captions, explicit zoom/fit buttons, playback speed, follow-image controls,
 skip controls and the native audio player (including its platform audio options).
 Tap the image once or use **Hide** to hide navigation and timeline; tap again or
-use **Show** to restore them. **Play/Pause, Add to cards and Link images remain
-accessible at the bottom in both modes.** Spoken subtitles continue to appear
+use **Show** to restore them. **Back 5 seconds, Play/Pause, Forward 5 seconds,
+playback speed, Cards and Link remain accessible at the bottom in both modes.**
+The shorter Cards/Link labels retain full accessible names and a linked-image
+count badge. All controls keep touch targets of at least 44 pixels; phones narrower
+than 368 pixels use two rows. The speed selector shares the normal player's
+setting and saved progress. Spoken subtitles continue to appear
 and update when controls are hidden if CC is enabled. Source image captions are
 temporarily hidden with the controls and restored with them. Pinch, drag and
 double-tap do not toggle controls. Opening Tools never resizes the image; hiding
