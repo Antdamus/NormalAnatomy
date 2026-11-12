@@ -5,6 +5,7 @@ import { readPackage, verifyManifest, sha256, safeLink, sequence, validateTiming
 import * as cloud from './cloud.js';
 import { createImageViewer } from './image-viewer.js';
 import {createAutomaticSync,desktopProcessorSupported} from './automatic-sync.js';
+import {validateSubtitles,subtitleAt,subtitleText} from './subtitles.js';
 
 const $ = id => document.getElementById(id), app = $('app');
 let session = null, current = null, localPackage = null, audio = null, stepIndex = 0, variant = 'plain', follow = false;
@@ -13,7 +14,9 @@ const urls = new Set(), mediaCache = new Map();
 const automaticMessages=new Map();let syncer=null,syncUser=null,playbackRefreshing=false,resumeAfterReload=null,pageLeaving=false;
 const canProcess=desktopProcessorSupported(navigator);
 let captionsShown=false, viewerState=null;
+let subtitlesShown=false;
 try {captionsShown=localStorage.getItem('na-image-captions')==='true';}catch{}
+try {subtitlesShown=localStorage.getItem('na-spoken-subtitles')==='true';}catch{}
 const viewer=createImageViewer($('zoom'),{navigate:delta=>navigate(stepIndex+delta),variant:setVariant,captions:setCaptions});
 const el = (tag, text, cls) => { const n = document.createElement(tag); if(text !== undefined) n.textContent=text; if(cls)n.className=cls; return n; };
 const button = (text, action, cls='') => { const n=el('button',text,cls); n.type='button'; n.onclick=()=>Promise.resolve().then(action).catch(showError); return n; };
@@ -29,6 +32,7 @@ function downloadJSON(name,value) {const url=objectURL(new Blob([JSON.stringify(
 function dispose() {
   viewer.close();viewerState=null;
   resumeAfterReload=null;
+  document.body.classList.remove('subtitles-open');
   imageVersion++;audioVersion++;
   if(audio){audio.pause();audio.removeAttribute('src');audio.load();audio=null;}
   for(const url of urls)URL.revokeObjectURL(url);urls.clear();mediaCache.clear();current=null;
@@ -123,7 +127,9 @@ async function openLecture(row,local,serial) {
   for(const v of ['plain','annotated'])$(v).onclick=()=>setVariant(v);
   $('image-stage').onclick=()=>{if(current)viewer.open(document.querySelector('.player'));};
   const focus=button('Study view',()=>$('image-stage').click(),'study-view-button');focus.id='focus-view';document.querySelector('.variant-bar').append(focus);
-  const captionToggle=button('Captions',()=>setCaptions(!captionsShown));captionToggle.id='caption-toggle';captionToggle.setAttribute('aria-label','Image captions');document.querySelector('.player-heading').append(captionToggle);
+  const captionToggle=button('Image captions',()=>setCaptions(!captionsShown));captionToggle.id='caption-toggle';captionToggle.setAttribute('aria-label','Image captions');document.querySelector('.player-heading').append(captionToggle);
+  const subtitleToggle=button('CC Subtitles',()=>{subtitlesShown=!subtitlesShown;try{localStorage.setItem('na-spoken-subtitles',String(subtitlesShown));}catch{}updateSubtitles();});subtitleToggle.id='subtitle-toggle';subtitleToggle.setAttribute('aria-label','Spoken narration subtitles');document.querySelector('.player-heading').append(subtitleToggle);
+  const subtitlePanel=el('div',undefined,'narration-subtitle');subtitlePanel.id='narration-subtitle';subtitlePanel.setAttribute('aria-label','Spoken narration subtitles');subtitlePanel.hidden=true;subtitlePanel.append(el('span',''));subtitlePanel.firstChild.id='subtitle-text';audio.before(subtitlePanel);updateSubtitles();
   document.querySelector('.caption').ontoggle=()=>setCaptions(document.querySelector('.caption').open);
   setCaptions(captionsShown);
   $('follow').onclick=()=>{follow=!follow;updateFollow();if(follow)onTime();};
@@ -132,7 +138,7 @@ async function openLecture(row,local,serial) {
   audio.ontimeupdate=onTime;audio.onpause=()=>{void persistProgress();void refreshPlayback();};audio.onseeked=()=>{onTime();void persistProgress();};
   audio.onloadedmetadata=()=>{const position=resumeAfterReload??((progress?.audio_sha256===current.audio?.sha256||progress?.audio_sha256===current.audio?.originalExport?.sha256)?progress?.position:null);resumeAfterReload=null;
     if(Number.isFinite(position))audio.currentTime=Math.min(position,Math.max(0,audio.duration-0.1));
-    if(timingReady(current.timing)&&Math.abs(current.timing.duration-audio.duration)>(current.timing.version===2?0.25:1)){current.timing=null;follow=false;updateFollow();showError(new Error('The saved timing duration does not match this recording. Image following remains off.'));}renderTiming();};
+    if(timingReady(current.timing)&&Math.abs(current.timing.duration-audio.duration)>(current.timing.version===2?0.25:1)){current.timing=null;follow=false;updateFollow();showError(new Error('The saved timing duration does not match this recording. Image following remains off.'));}renderTiming();updateSubtitles();};
   audio.onerror=()=>{$('audio-status').textContent='Audio could not load. Reopen the lecture to renew its link.';};
   audio.onplay=()=>{if('mediaSession' in navigator)navigator.mediaSession.metadata=new MediaMetadata({title:lesson.title,artist:'NormalAnatomy'});};
   $('audio-setup').append(el('p','Use the complete MP3 exported from Speechify. Attaching a different recording clears the old timing.','muted'));
@@ -186,12 +192,30 @@ async function attachAudio(file){
 }
 async function setAudio(meta){
   const row=current,serial=++audioVersion;
+  row.subtitles=null;
   const src=row.local?row.localAudio && objectURL(row.localAudio):await cloud.signedMedia(row.fingerprint,meta.path);
   if(current!==row || serial!==audioVersion || !src)return;
   audio.src=src;audio.hidden=false;audio.load();$('rewind').disabled=false;$('forward').disabled=false;
   $('audio-status').textContent='Full lecture audio · browse images as you listen';
   if(row.timing){try{validateTiming(row.timing,row.manifest,meta);if(row.timing.version===2&&row.timing.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Transcript hash mismatch.');follow=timingReady(row.timing);}catch{row.timing=null;showError(new Error('Saved image timing does not match this recording. Manual browsing remains available.'));}}
+  await loadSubtitles(row);
   updateFollow();
+}
+async function loadSubtitles(row){
+  row.subtitles=null;
+  if(row.audio?.subtitles){try{const track=validateSubtitles(row.audio.subtitles,row.manifest,row.audio);
+    if(track.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Subtitle transcript mismatch.');row.subtitles=track;
+  }catch(error){if(current===row)showError(error);}}
+  if(current===row)updateSubtitles();
+}
+function updateSubtitles(){
+  if(!$('subtitle-toggle'))return;
+  const track=current?.subtitles,ready=!!track&&Number.isFinite(audio?.duration)&&Math.abs(track.duration-audio.duration)<=0.25;
+  const shown=ready&&subtitlesShown,toggle=$('subtitle-toggle'),panel=$('narration-subtitle');toggle.disabled=!ready;toggle.setAttribute('aria-pressed',String(shown));
+  toggle.title=ready?'Show or hide the spoken narration. Automatically aligned to this recording.':'Spoken subtitles become available after automatic processing and sync.';
+  panel.hidden=!shown;document.body.classList.toggle('subtitles-open',shown);
+  const text=shown?subtitleText(current.manifest.lesson.narration.text,subtitleAt(track,audio.currentTime)):'';
+  if($('subtitle-text').textContent!==text)$('subtitle-text').textContent=text;
 }
 function updateFollow(){if(!$('follow'))return;const ready=timingReady(current?.timing);$('follow').disabled=!ready;$('follow').textContent=ready?`Follow images: ${follow?'on':'off'}`:(current?.audio?'Follow: timing pending':'Follow: no audio');$('follow').title=ready?(current.timing.version===2?'Automatic audio alignment. Manual image navigation pauses following.':'Manually checked timing. Manual image navigation pauses following.'):'Timing processes on the computer and syncs to this device.';$('follow').setAttribute('aria-pressed',String(follow));
   if(ready)$('audio-status').textContent=current.timing.version===2?'Full lecture audio · automatic image timing':'Full lecture audio · checked image timing';}
@@ -200,19 +224,20 @@ async function refreshPlayback(){
   playbackRefreshing=true;
   try{
     const saved=await cloud.getPlayback(row.fingerprint);if(current!==row||!saved.audio)return;
-    if(saved.audio.sha256===row.audio?.sha256&&JSON.stringify(saved.timing)===JSON.stringify(row.timing))return;
+    if(saved.audio.sha256===row.audio?.sha256&&JSON.stringify(saved.timing)===JSON.stringify(row.timing)&&JSON.stringify(saved.audio.subtitles)===JSON.stringify(row.audio.subtitles))return;
     if(saved.timing){validateTiming(saved.timing,row.manifest,saved.audio);if(saved.timing.version===2&&saved.timing.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Transcript hash mismatch.');}
     if(current!==row)return;
     if(saved.audio.sha256!==row.audio?.sha256){
       if(!audio.paused){automaticMessages.set(row.fingerprint,'Prepared audio and timing are ready. They will load when you pause.');return;}
       resumeAfterReload=audio.currentTime;row.audio=saved.audio;row.timing=saved.timing;await setAudio(saved.audio);
-    }else{if(saved.timing&&Number.isFinite(audio.duration)&&Math.abs(saved.timing.duration-audio.duration)>(saved.timing.version===2?0.25:1))throw new Error('Timing duration mismatch.');row.timing=saved.timing;follow=timingReady(saved.timing);}
+    }else{if(saved.timing&&Number.isFinite(audio.duration)&&Math.abs(saved.timing.duration-audio.duration)>(saved.timing.version===2?0.25:1))throw new Error('Timing duration mismatch.');const timingChanged=JSON.stringify(row.timing)!==JSON.stringify(saved.timing);row.timing=saved.timing;row.audio=saved.audio;await loadSubtitles(row);if(timingChanged)follow=timingReady(saved.timing);}
     updateFollow();renderTiming();onTime();
   }catch{/* Retry on the next foreground refresh; keep the current audio playing. */}
   finally{playbackRefreshing=false;}
 }
 function onTime(){
   if(!current||!audio)return;
+  updateSubtitles();
   if(follow){const cue=cueAt(current.timing,audio.currentTime);if(cue){const i=current.steps.findIndex(s=>s.caseId===cue.caseId&&s.imageId===cue.imageId);if(i>=0&&i!==stepIndex){stepIndex=i;void renderImage().catch(showError);}}}
   if($('mark-time'))$('mark-time').textContent=`Mark this image at ${time(audio.currentTime)}`;
   if(Date.now()-lastSave>5000){lastSave=Date.now();void persistProgress();}

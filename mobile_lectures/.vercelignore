@@ -1,4 +1,6 @@
 private
+dist
+node_modules
 test-results
 tests
 tools

@@ -46,11 +46,19 @@ double-tap to zoom/reset, and use **Fit** to see the entire image. **100%** maps
 one source pixel to one CSS pixel. The original files are never resized or
 recompressed; zoom does not create additional source detail.
 
-**Captions** shows or hides the original caption and source link. The choice is
+**Image captions** shows or hides the original caption and source link. The choice is
 remembered on that device, and captions update with the selected image, including
 automatic transitions. They are image captions, not timed narration
 subtitles. The same audio player stays available inside study view. Changing an
 image manually pauses automatic following; switching annotations does not.
+
+**CC Subtitles** independently shows or hides the spoken narration in the audio
+player, including inside Study view. It remembers the choice on that device.
+Subtitles use short, automatically timed phrases copied from the exact approved
+transcript. They follow the recording clock when seeking or changing playback
+speed, clear during pauses, and keep following speech when you browse images
+manually. The first use is off; unavailable or mismatched subtitle data cannot be
+enabled. These are automatic timings, not a human transcription review.
 
 Portrait tablets use the screen width for images. The full-screen workspace
 places captions below the image in phone/tablet portrait and alongside it in
@@ -96,6 +104,15 @@ method, removed metadata count and audio-frame count. Unknown or truncated data
 is held rather than discarded. The browser publishes prepared audio and its
 timing atomically only if the original recording is still current and no timing
 has been added in the meantime. Phones refresh pending timing automatically.
+
+The same retained word evidence automatically produces spoken subtitles. Every
+character of the approved narration must be covered in order, and both alignment
+passes must agree on each phrase boundary within 0.75 seconds. Completed jobs can
+add the derived subtitle sidecar without rerunning alignment or changing their
+original evidence. The browser adds subtitles separately to the current audio
+metadata with an exact-value conditional update: existing image timing, recording
+bytes and playback progress are not overwritten. Restart the local processor
+after updating it so already-completed recordings can receive subtitles too.
 
 Speechify's live highlighting alone does not establish timestamps for an exported
 MP3. Synthetic desktop wall-clock estimates are not used. Direct speech-mark

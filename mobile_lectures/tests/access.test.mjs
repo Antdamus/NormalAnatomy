@@ -28,6 +28,10 @@ test('Postgres enforces membership, owner isolation and private immutable media'
     const publish=()=>db.query("update mobile_lectures set timing='{\"version\":2}' where fingerprint=$1 and audio->>'sha256'=$2 and timing is null returning fingerprint",[hash,hash]);
     assert.equal((await publish()).rows.length,1);assert.equal((await publish()).rows.length,0,'published/manual timing cannot be overwritten');
     await db.query('update mobile_lectures set timing=null,audio=$1',[JSON.stringify({sha256:'b'.repeat(64)})]);assert.equal((await publish()).rows.length,0,'changed recording cannot receive stale timing');
+    const before={sha256:'b'.repeat(64)},captionAudio={...before,subtitles:{version:1}};
+    await db.query('update mobile_lectures set timing=$1',[JSON.stringify({manual:'preserved'})]);
+    const addCaption=()=>db.query('update mobile_lectures set audio=$1 where fingerprint=$2 and audio=$3::jsonb returning timing',[JSON.stringify(captionAudio),hash,JSON.stringify(before)]);
+    assert.deepEqual((await addCaption()).rows[0].timing,{manual:'preserved'});assert.equal((await addCaption()).rows.length,0,'caption publication cannot overwrite changed audio metadata');
     await assert.rejects(db.query('insert into storage.objects(bucket_id,name) values($1,$2)',['lecture-media',`${b}/${hash}/media/${hash}`]),/row-level/);
     assert.equal((await db.query("update storage.objects set name='overwritten' returning *")).rows.length,0);
     await assert.rejects(db.query("insert into mobile_members values('intruder@example.test',now())"),/permission denied/);

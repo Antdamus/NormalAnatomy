@@ -9,6 +9,7 @@ import {verifyManifest,sha256} from '../../src/contract.js';
 import {combineAlignments} from '../../src/automatic-timing.js';
 import {transcriptAnchors} from '../../src/timing-anchors.js';
 import {cleanChunkedMp3} from './mp3.js';
+import {buildSubtitles,validateSubtitles} from '../../src/subtitles.js';
 
 export const ORIGIN='https://normalanatomy-lectures.vercel.app';
 const MAX_AUDIO=50*1024*1024,MAX_JSON=8*1024*1024,hashPattern=/^[a-f0-9]{64}$/;
@@ -25,6 +26,9 @@ export class AlignmentQueue {
       if(!hashPattern.test(id))continue;
       try{const job=await readJSON(this.location(id,'job.json'));if(job.id!==id)continue;
         if(job.status==='processing')job.status='queued';this.jobs.set(id,job);
+        if(job.status==='ready'&&!job.result.subtitles&&!job.result.subtitlesError){
+          await this.addSubtitles(job);await this.save(job);
+        }
       }catch{/* An interrupted staging directory has no committed job. */}
     }
     this.pump();return this;
@@ -36,6 +40,10 @@ export class AlignmentQueue {
     if(manifest.lesson.narration.text.length>150000)throw new Error('This transcript exceeds the local alignment limit.');
     if((manifest.lesson.plan.cineWatchPoints||[]).length)throw new Error('Automatic cine timing is not supported.');
     const id=await jobIdentity(manifest,audio);
+    // A metadata-only preparation has a different audio hash. Reuse its retained
+    // word alignment when the library already plays that exact prepared file.
+    const prepared=[...this.jobs.values()].find(j=>j.status==='ready'&&j.fingerprint===manifest.fingerprint&&j.result.audio.sha256===audio.sha256);
+    if(prepared)return this.public(prepared);
     return this.locked(id,async()=>{
       if(this.jobs.has(id))return this.public(this.jobs.get(id));
       if([...this.jobs.values()].filter(j=>!['ready','held'].includes(j.status)).length>=8)throw new Error('The local processing queue is full.');
@@ -74,9 +82,24 @@ export class AlignmentQueue {
         const timing=combineAlignments(results[0],results[1],manifest,audio);
         if(timing.transcriptSha256!==await sha256(new TextEncoder().encode(manifest.lesson.narration.text)))throw new Error('Alignment transcript hash mismatch.');
         job.result={audio,timing,prepared:prepared.changed,sourceAudioSha256:job.audio.sha256};job.status='ready';job.stage='Ready to sync';
+        await this.addSubtitles(job,{manifest,results});
       }catch(error){job.status='held';job.error=String(error.message||error).slice(0,1200);job.stage='Needs attention';}
       await this.save(job);
     }}finally{this.busy=false;}
+  }
+  async addSubtitles(job,retained={}){
+    try{
+      const manifest=retained.manifest||await verifyManifest(await readJSON(this.location(job.id,'manifest.json')));
+      const file=this.location(job.id,'subtitles-v1.json');let subtitles;
+      try{subtitles=validateSubtitles(await readJSON(file),manifest,job.result.audio);}
+      catch(error){if(error.code!=='ENOENT')throw error;
+        const results=retained.results||await Promise.all(['baseline','check'].map(p=>readJSON(this.location(job.id,`${job.attempt}-${p}.json`))));
+        subtitles=buildSubtitles(results[0],results[1],manifest,job.result.audio);
+        if(subtitles.transcriptSha256!==await sha256(new TextEncoder().encode(manifest.lesson.narration.text)))throw new Error('Subtitle transcript hash mismatch.');
+        await fs.writeFile(file,JSON.stringify(subtitles),{flag:'wx'});
+      }
+      job.result.subtitles=subtitles;
+    }catch(error){job.result.subtitlesError=String(error.message||error).slice(0,1200);}
   }
   async runProfile({job,audioFile,profile}){
     const output=this.location(job.id,`${job.attempt}-${profile}.json`),log=createWriteStream(this.location(job.id,`${job.attempt}-${profile}.log`),{flags:'wx'});
@@ -104,7 +127,7 @@ export function createServer(queue,{origins=[ORIGIN],port=8774}={}){
     res.setHeader('Access-Control-Allow-Origin',req.headers.origin);res.setHeader('Vary','Origin');
     if(req.method==='OPTIONS'){res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, OPTIONS');res.setHeader('Access-Control-Allow-Headers','Content-Type');res.setHeader('Access-Control-Allow-Private-Network','true');res.writeHead(204);res.end();return;}
     try{
-      if(req.method==='GET'&&req.url==='/health'){send(200,{service:'normalanatomy-timing',version:1});return;}
+      if(req.method==='GET'&&req.url==='/health'){send(200,{service:'normalanatomy-timing',version:1,subtitlesVersion:1});return;}
       if(req.method==='POST'&&req.url==='/jobs'){
         if(req.headers['content-type']!=='application/json')throw new Error('JSON content type required.');
         const value=JSON.parse((await body(req,MAX_JSON)).toString('utf8'));send(200,await queue.submit(value.manifest,value.audio));return;

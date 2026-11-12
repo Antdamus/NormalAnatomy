@@ -1,4 +1,5 @@
-import {sha256,timingReady,validateTiming} from './contract.js';
+import {sha256,validateTiming} from './contract.js';
+import {validateSubtitles} from './subtitles.js';
 export const PROCESSOR_URL='http://127.0.0.1:8774';
 export const desktopProcessorSupported=nav=>/Win|Linux|Mac/.test(nav.platform||'')&&!(/iPhone|iPad|Android/.test(nav.userAgent||'')||(nav.platform==='MacIntel'&&nav.maxTouchPoints>1));
 
@@ -19,12 +20,12 @@ export function createAutomaticSync({cloud,fetcher=fetch,onStatus=()=>{},onSaved
       const rows=await cloud.listLectures();
       for(const summary of rows){
         if(!isActive())return;
-        if(!summary.audio?.verifiedExport||summary.timing)continue; // Preserve all existing manual drafts and checked timing.
+        if(!summary.audio?.verifiedExport||(summary.timing&&summary.audio.subtitles))continue;
         const key=`${summary.fingerprint}/${summary.audio.sha256}`;
         if(finished.has(key))continue;
         let job=pending.get(key),row;
         if(!job){
-          row=await cloud.getLecture(summary.fingerprint);if(row.timing||row.audio?.sha256!==summary.audio.sha256)continue;
+          row=await cloud.getLecture(summary.fingerprint);if((row.timing&&row.audio.subtitles)||row.audio?.sha256!==summary.audio.sha256)continue;
           job=await(await local('/jobs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({manifest:row.manifest,audio:row.audio})})).json();pending.set(key,job);
         }
         if(job.status==='needs-audio'){
@@ -37,19 +38,34 @@ export function createAutomaticSync({cloud,fetcher=fetch,onStatus=()=>{},onSaved
         }else {job=await(await local(`/jobs/${job.id}`)).json();pending.set(key,job);}
         if(job.status==='held'){onStatus(summary.fingerprint,`Automatic timing held: ${job.error}`);finished.add(key);continue;}
         if(job.status!=='ready'){onStatus(summary.fingerprint,(job.stage||'Queued for automatic timing')+'…');continue;}
-        const result=job.result;row ||= await cloud.getLecture(summary.fingerprint);
-        if(row.timing||row.audio?.sha256!==summary.audio.sha256){pending.delete(key);continue;}
-        if(result.sourceAudioSha256!==row.audio.sha256)throw new Error('Automatic result belongs to a different source recording.');
-        validateTiming(result.timing,row.manifest,result.audio);
-        if(result.timing.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Automatic result belongs to a different transcript.');
-        let prepared=null;
-        if(result.prepared){
-          prepared=await(await local(`/jobs/${job.id}/audio`)).arrayBuffer();
-          if(prepared.byteLength!==result.audio.bytes||await sha256(prepared)!==result.audio.sha256)throw new Error('Prepared recording did not pass its hash check.');
-        }else if(result.audio.sha256!==row.audio.sha256)throw new Error('Automatic timing has an unexplained recording change.');
-        if(!isActive())return;
-        const saved=await cloud.publishAutomaticTiming(row,result,prepared);
-        if(saved){finished.add(key);pending.delete(key);onStatus(summary.fingerprint,'Automatic timing synced to your library.');onSaved(summary.fingerprint);}
+        const result=job.result;row=await cloud.getLecture(summary.fingerprint);
+        if(row.audio?.sha256!==summary.audio.sha256){pending.delete(key);continue;}
+        let saved=false;
+        if(!row.timing){
+          if(result.sourceAudioSha256!==row.audio.sha256&&result.audio.sha256!==row.audio.sha256)throw new Error('Automatic result belongs to a different source recording.');
+          validateTiming(result.timing,row.manifest,result.audio);
+          if(result.timing.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Automatic result belongs to a different transcript.');
+          let prepared=null;
+          if(result.audio.sha256!==row.audio.sha256){
+            if(!result.prepared)throw new Error('Automatic timing has an unexplained recording change.');
+            prepared=await(await local(`/jobs/${job.id}/audio`)).arrayBuffer();
+            if(prepared.byteLength!==result.audio.bytes||await sha256(prepared)!==result.audio.sha256)throw new Error('Prepared recording did not pass its hash check.');
+          }
+          if(!isActive())return;
+          saved=await cloud.publishAutomaticTiming(row,{...result,sourceAudioSha256:row.audio.sha256},prepared);
+          if(saved){onSaved(summary.fingerprint);row=await cloud.getLecture(summary.fingerprint);}
+        }
+        // Existing image timing (including a manual draft) is preserved. Captions
+        // can be added independently when their exact audio is already current.
+        if(result.subtitles&&!row.audio.subtitles&&result.subtitles.audioSha256===row.audio.sha256){
+          validateSubtitles(result.subtitles,row.manifest,row.audio);
+          if(result.subtitles.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Subtitle transcript hash mismatch.');
+          if(!isActive())return;
+          const added=await cloud.publishSubtitles(row,result.subtitles);saved=saved||added;if(added)onSaved(summary.fingerprint);
+        }
+        else if(result.subtitles&&!row.audio.subtitles&&row.timing){onStatus(summary.fingerprint,'Subtitles need the prepared recording. Existing audio and image timing were preserved.');finished.add(key);}
+        if(saved){finished.add(key);pending.delete(key);onStatus(summary.fingerprint,result.subtitles?'Automatic timing and subtitles synced to your library.':'Automatic timing synced to your library.');}
+        if(result.subtitlesError){onStatus(summary.fingerprint,`Image timing is ready. Subtitles held: ${result.subtitlesError}`);finished.add(key);}
       }
     }catch(error){onStatus(null,`Automatic timing: ${error.message}. Keep the desktop processor and this library open to sync.`);}
     finally{running=false;}

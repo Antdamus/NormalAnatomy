@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { BUCKET, verifyManifest,validateTiming,sha256 } from './contract.js';
+import {validateSubtitles} from './subtitles.js';
 
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -73,6 +74,16 @@ export async function publishAutomaticTiming(row,result,prepared){
 export async function getProgress(fingerprint) {
   const uid = await owner();
   return checked(await client.from('mobile_progress').select('*').eq('owner_id',uid).eq('fingerprint',fingerprint).maybeSingle());
+}
+export async function publishSubtitles(row,subtitles){
+  if(row.audio?.subtitles)return false;
+  const uid=await owner();validateSubtitles(subtitles,row.manifest,row.audio);
+  if(subtitles.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Subtitle transcript hash mismatch.');
+  // Update only audio metadata. Exact JSON equality protects any concurrent audio
+  // change; neither image timing nor progress is included in this update.
+  const changed=checked(await client.from('mobile_lectures').update({audio:{...row.audio,subtitles}})
+    .eq('owner_id',uid).eq('fingerprint',row.fingerprint).eq('audio',JSON.stringify(row.audio)).select('fingerprint'));
+  return changed.length===1;
 }
 export async function saveProgress(fingerprint,progress) {
   const uid = await owner();

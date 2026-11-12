@@ -62,7 +62,7 @@ test('loopback bridge rejects foreign origin, absent origin and rebinding Host',
 test('desktop sync publishes completed timing automatically, without sending credentials to loopback',async()=>{
   const {manifest}=await fixture(),audio={sha256:'a'.repeat(64),path:`audio/${'a'.repeat(64)}`,verifiedExport:true},row={fingerprint:manifest.fingerprint,manifest,audio,timing:null};
   const timing=combineAlignments(await evidence(manifest,audio,'baseline'),await evidence(manifest,audio,'check'),manifest,audio),result={sourceAudioSha256:audio.sha256,audio,timing,prepared:false};let saves=0;
-  const cloud={listLectures:async()=>[row],getLecture:async()=>row,publishAutomaticTiming:async(r,v)=>{assert.equal(v,result);saves++;return true;}};
+  const cloud={listLectures:async()=>[row],getLecture:async()=>row,publishAutomaticTiming:async(r,v)=>{assert.deepEqual(v,result);saves++;return true;}};
   const fetcher=async(url,options={})=>{assert.ok(url.startsWith(PROCESSOR_URL));assert.equal(options.credentials,'omit');assert.equal(options.headers?.Authorization,undefined);return {ok:true,json:async()=>url.endsWith('/health')?{service:'normalanatomy-timing',version:1}:{id:'b'.repeat(64),status:'ready',result}};};
   const sync=createAutomaticSync({cloud,fetcher});await sync.tick();await sync.tick();assert.equal(saves,1);
 });
