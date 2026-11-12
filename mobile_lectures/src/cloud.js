@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { BUCKET, verifyManifest } from './contract.js';
+import { BUCKET, verifyManifest,validateTiming,sha256 } from './contract.js';
 
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -15,7 +15,7 @@ export async function owner() {
 }
 export async function listLectures() {
   const uid = await owner();
-  return checked(await client.from('mobile_lectures').select('fingerprint,title,case_count,audio,created_at').eq('owner_id',uid).order('created_at',{ascending:false}));
+  return checked(await client.from('mobile_lectures').select('fingerprint,title,case_count,audio,timing,created_at').eq('owner_id',uid).order('created_at',{ascending:false}));
 }
 export async function getLecture(fingerprint) {
   const uid = await owner();
@@ -50,7 +50,25 @@ export async function saveAudio(fingerprint,blob,meta) {
 }
 export async function saveTiming(fingerprint,timing) {
   const uid = await owner();
-  checked(await client.from('mobile_lectures').update({timing}).eq('owner_id',uid).eq('fingerprint',fingerprint));
+  const row=await getLecture(fingerprint);validateTiming(timing,row.manifest,row.audio);
+  const changed=checked(await client.from('mobile_lectures').update({timing}).eq('owner_id',uid).eq('fingerprint',fingerprint).eq('audio->>sha256',row.audio.sha256).select('fingerprint'));
+  if(!changed.length)throw new Error('The recording changed. Reopen the lecture before saving timing.');
+}
+export async function getPlayback(fingerprint){
+  const uid=await owner();return checked(await client.from('mobile_lectures').select('audio,timing').eq('owner_id',uid).eq('fingerprint',fingerprint).single());
+}
+export async function publishAutomaticTiming(row,result,prepared){
+  const uid=await owner();await verifyManifest(row.manifest);validateTiming(result.timing,row.manifest,result.audio);
+  if(result.timing.version!==2||result.sourceAudioSha256!==row.audio.sha256||result.timing.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Automatic timing identity mismatch.');
+  if(prepared){
+    if(await sha256(prepared)!==result.audio.sha256||prepared.byteLength!==result.audio.bytes||result.audio.originalExport?.sha256!==row.audio.sha256)throw new Error('Prepared recording identity mismatch.');
+    const upload=await client.storage.from(BUCKET).upload(`${uid}/${row.fingerprint}/${result.audio.path}`,prepared,{contentType:result.audio.mime,upsert:false});
+    if(upload.error&&!['409','Duplicate'].includes(String(upload.error.statusCode||upload.error.code)))throw upload.error;
+  }else if(result.audio.sha256!==row.audio.sha256)throw new Error('Prepared audio is missing.');
+  // One conditional update: a newer recording or any manual timing wins the race.
+  const changed=checked(await client.from('mobile_lectures').update({audio:result.audio,timing:result.timing})
+    .eq('owner_id',uid).eq('fingerprint',row.fingerprint).eq('audio->>sha256',row.audio.sha256).is('timing',null).select('fingerprint'));
+  return changed.length===1;
 }
 export async function getProgress(fingerprint) {
   const uid = await owner();

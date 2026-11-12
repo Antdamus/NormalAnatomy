@@ -76,9 +76,21 @@ const layoutOnly=process.env.TEST_LAYOUT_ONLY==='1';
     await page.getByRole('button',{name:'Close image ×'}).click();
     const real=path.join(root,'private','spinal-cord.nalecture');
     try{await fs.access(real);await page.goto(base);await page.getByLabel('Open local lecture').setInputFiles(real);await page.waitForSelector('#study-image:not([hidden])');
-      if(!layoutOnly){try{const report=JSON.parse(await fs.readFile(path.join(root,'private','spinal-cord-audio-check.json'),'utf8'));
+      if(!layoutOnly){try{let report=JSON.parse(await fs.readFile(path.join(root,'private','spinal-cord-audio-check.json'),'utf8'));
+        const autoJob=process.env.TEST_AUTOMATIC_JOB?JSON.parse(await fs.readFile(process.env.TEST_AUTOMATIC_JOB,'utf8')):null;
+        if(autoJob){assert.equal(autoJob.status,'ready');report={file:path.join(path.dirname(process.env.TEST_AUTOMATIC_JOB),'playback.audio'),sha256:autoJob.result.audio.sha256};}
         assert.equal(require('node:crypto').createHash('sha256').update(await fs.readFile(report.file)).digest('hex'),report.sha256);
-        await page.locator('#audio-tools summary').click();await page.locator('#audio-confirm').check();await page.getByLabel('Attach Speechify audio').setInputFiles(report.file);await webkitHTTPMedia(await fs.readFile(report.file),'audio/mpeg');await page.waitForFunction(()=>document.querySelector('audio').duration>3000);
+        await page.locator('#audio-tools summary').click();await page.locator('#audio-confirm').check();await page.getByLabel('Attach Speechify audio').setInputFiles({name:'source.mp3',mimeType:'audio/mpeg',buffer:await fs.readFile(report.file)});await webkitHTTPMedia(await fs.readFile(report.file),'audio/mpeg');await page.waitForFunction(()=>document.querySelector('audio').duration>3000);
+        if(autoJob){
+          const {readPackage,sequence}=await import('../src/contract.js'),pkg=await readPackage(await fs.readFile(real)),steps=sequence(pkg.manifest.lesson),timing=autoJob.result.timing;
+          assert.ok(Math.abs((await page.locator('audio').evaluate(a=>a.duration))-timing.duration)<0.25);
+          await page.getByLabel('Import matching timing').setInputFiles({name:'automatic-test.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(timing))});await page.waitForFunction(()=>document.querySelector('#follow').getAttribute('aria-pressed')==='true');
+          await page.locator('#focus-view').click();
+          for(const cue of timing.cues){const step=steps.find(s=>s.caseId===cue.caseId&&s.imageId===cue.imageId);await page.locator('audio').evaluate((a,t)=>{a.currentTime=t;a.dispatchEvent(new Event('timeupdate'));},cue.time+0.1);
+            await page.waitForFunction(({id,index})=>document.querySelector('#case-select').value===id&&document.querySelector('#image-count').textContent.startsWith(`${index+1} /`),{id:cue.caseId,index:step.index});await page.waitForSelector('#viewer-image:not([hidden])');
+          }
+          await page.getByRole('button',{name:'Close image ×'}).click();console.log(`PASS ${timing.cues.length} actual automatically aligned image transitions against original case/image identities, with the prepared recording clock.`);
+        }
         await page.locator('audio').evaluate(a=>a.play());await page.waitForFunction(()=>document.querySelector('audio').currentTime>0.3);
         await page.locator('#focus-view').click();await page.waitForFunction(()=>!document.querySelector('audio').paused);await page.getByRole('button',{name:'Close image ×'}).click();await page.waitForFunction(()=>!document.querySelector('audio').paused);await page.locator('audio').evaluate(a=>a.pause());
       }catch(e){if(e.code!=='ENOENT')throw e;}}

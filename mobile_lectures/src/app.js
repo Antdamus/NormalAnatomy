@@ -1,14 +1,17 @@
 import './style.css';
 import './study-view.css';
 import '../vendor/visual-lecture-captions.js';
-import { readPackage, verifyManifest, sha256, safeLink, sequence, validateTiming, cueAt } from './contract.js';
+import { readPackage, verifyManifest, sha256, safeLink, sequence, validateTiming, cueAt, timingReady } from './contract.js';
 import * as cloud from './cloud.js';
 import { createImageViewer } from './image-viewer.js';
+import {createAutomaticSync,desktopProcessorSupported} from './automatic-sync.js';
 
 const $ = id => document.getElementById(id), app = $('app');
 let session = null, current = null, localPackage = null, audio = null, stepIndex = 0, variant = 'plain', follow = false;
 let routeVersion = 0, imageVersion = 0, audioVersion = 0, lastSave = 0, saveQueue = Promise.resolve(), noticeTimer;
 const urls = new Set(), mediaCache = new Map();
+const automaticMessages=new Map();let syncer=null,syncUser=null,playbackRefreshing=false,resumeAfterReload=null,pageLeaving=false;
+const canProcess=desktopProcessorSupported(navigator);
 let captionsShown=false, viewerState=null;
 try {captionsShown=localStorage.getItem('na-image-captions')==='true';}catch{}
 const viewer=createImageViewer($('zoom'),{navigate:delta=>navigate(stepIndex+delta),variant:setVariant,captions:setCaptions});
@@ -25,6 +28,7 @@ function fileInput(label,accept,action) {
 function downloadJSON(name,value) {const url=objectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download=name;a.click();}
 function dispose() {
   viewer.close();viewerState=null;
+  resumeAfterReload=null;
   imageVersion++;audioVersion++;
   if(audio){audio.pause();audio.removeAttribute('src');audio.load();audio=null;}
   for(const url of urls)URL.revokeObjectURL(url);urls.clear();mediaCache.clear();current=null;
@@ -69,6 +73,8 @@ async function renderLibrary(serial) {
   if(!rows.length){const empty=el('div',undefined,'panel empty');empty.append(el('h2','Your first lecture starts here.'),el('p','Add a reviewed mobile package from your computer. It will appear here on your iPhone after you sign in.'));grid.append(empty);}
   for(const row of rows){const card=el('a',undefined,'lecture-card');card.href='#'+row.fingerprint;card.append(el('span',row.audio?'AUDIO ATTACHED':'IMAGES & TRANSCRIPT','eyebrow'),el('h2',row.title),el('p',`${row.case_count} illustrated cases`,'muted'),el('span','Open lecture ↗','card-action'));grid.append(card);}
   app.append(grid);renderAccountAccess();
+  if(canProcess){const panel=el('section',undefined,'panel');panel.append(el('h3','Automatic image timing'),el('p','With this library and the desktop processor open, attached Speechify recordings are matched to their spoken image references and synced to your phone.','muted'));
+    const status=el('p',automaticMessages.get(null)||'Checking desktop processor…','muted');status.id='automatic-library-status';panel.append(status,button('Check processor',()=>syncer?.tick()));app.append(panel);}
 }
 function renderAccountAccess(){
   const details=el('details',undefined,'account-access');details.append(el('summary','Account access'),el('p','Set an optional password while signed in. You can then use it on your other devices without requesting an email.','muted'));
@@ -94,6 +100,7 @@ async function openLecture(row,local,serial) {
   const lesson=row.manifest.lesson;
   let progress=null;
   try {progress=local?JSON.parse(localStorage.getItem(`na-preview:${row.fingerprint}`)||'null'):await cloud.getProgress(row.fingerprint);}catch{/* Content remains usable when progress is unavailable. */}
+  if(!local){try{const saved=JSON.parse(localStorage.getItem(`na-progress:${row.fingerprint}`)||'null');if(saved?.updated_at&&(!progress?.updated_at||saved.updated_at>progress.updated_at))progress=saved;}catch{}}
   if(serial!==routeVersion)return;
   if(progress){const i=current.steps.findIndex(s=>s.caseId===progress.case_id && s.imageId===progress.image_id);if(i>=0)stepIndex=i;}
   const back=el('a','← Library','back-link');back.href='#';app.append(back);
@@ -122,8 +129,10 @@ async function openLecture(row,local,serial) {
   $('follow').onclick=()=>{follow=!follow;updateFollow();if(follow)onTime();};
   $('speed').onchange=()=>{audio.playbackRate=Number($('speed').value);void persistProgress();};
   $('rewind').onclick=()=>{audio.currentTime=Math.max(0,audio.currentTime-10);};$('forward').onclick=()=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.min(audio.duration,audio.currentTime+10);};
-  audio.ontimeupdate=onTime;audio.onpause=()=>void persistProgress();audio.onseeked=()=>{onTime();void persistProgress();};
-  audio.onloadedmetadata=()=>{if(progress?.audio_sha256===current.audio?.sha256 && Number.isFinite(progress.position))audio.currentTime=Math.min(progress.position,Math.max(0,audio.duration-0.1));if(current.timing?.verified&&Math.abs(current.timing.duration-audio.duration)>1){current.timing=null;follow=false;updateFollow();showError(new Error('The saved timing duration does not match this recording. Image following remains off.'));}renderTiming();};
+  audio.ontimeupdate=onTime;audio.onpause=()=>{void persistProgress();void refreshPlayback();};audio.onseeked=()=>{onTime();void persistProgress();};
+  audio.onloadedmetadata=()=>{const position=resumeAfterReload??((progress?.audio_sha256===current.audio?.sha256||progress?.audio_sha256===current.audio?.originalExport?.sha256)?progress?.position:null);resumeAfterReload=null;
+    if(Number.isFinite(position))audio.currentTime=Math.min(position,Math.max(0,audio.duration-0.1));
+    if(timingReady(current.timing)&&Math.abs(current.timing.duration-audio.duration)>(current.timing.version===2?0.25:1)){current.timing=null;follow=false;updateFollow();showError(new Error('The saved timing duration does not match this recording. Image following remains off.'));}renderTiming();};
   audio.onerror=()=>{$('audio-status').textContent='Audio could not load. Reopen the lecture to renew its link.';};
   audio.onplay=()=>{if('mediaSession' in navigator)navigator.mediaSession.metadata=new MediaMetadata({title:lesson.title,artist:'NormalAnatomy'});};
   $('audio-setup').append(el('p','Use the complete MP3 exported from Speechify. Attaching a different recording clears the old timing.','muted'));
@@ -173,7 +182,7 @@ async function attachAudio(file){
   if(!row.local)await cloud.saveAudio(row.fingerprint,file,meta);
   if(current!==row)return;
   current.audio=meta;current.timing=null;current.localAudio=file;follow=false;
-  await setAudio(meta);renderTiming();notice(row.local?'Audio attached for this local preview. Upload the lecture first to save audio to your phone library.':'Audio saved. Image timing is ready to set.');
+  await setAudio(meta);renderTiming();notice(row.local?'Audio attached for this local preview. Upload the lecture first to save audio to your phone library.':'Audio saved. Automatic image timing will process on your computer and sync here.');void syncer?.tick();
 }
 async function setAudio(meta){
   const row=current,serial=++audioVersion;
@@ -181,22 +190,39 @@ async function setAudio(meta){
   if(current!==row || serial!==audioVersion || !src)return;
   audio.src=src;audio.hidden=false;audio.load();$('rewind').disabled=false;$('forward').disabled=false;
   $('audio-status').textContent='Full lecture audio · browse images as you listen';
-  if(row.timing){try{validateTiming(row.timing,row.manifest,meta);follow=row.timing.verified===true;}catch{row.timing=null;showError(new Error('Saved image timing does not match this recording. Manual browsing remains available.'));}}
+  if(row.timing){try{validateTiming(row.timing,row.manifest,meta);if(row.timing.version===2&&row.timing.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Transcript hash mismatch.');follow=timingReady(row.timing);}catch{row.timing=null;showError(new Error('Saved image timing does not match this recording. Manual browsing remains available.'));}}
   updateFollow();
 }
-function updateFollow(){if(!$('follow'))return;const ready=current?.timing?.verified===true;$('follow').disabled=!ready;$('follow').textContent=ready?`Follow images: ${follow?'on':'off'}`:(current?.audio?'Follow: timing needed':'Follow: no audio');$('follow').title=ready?'Manual image navigation pauses following. Turn this on to return to the recording.':'Image transitions must be checked against this recording in Audio & image timing.';$('follow').setAttribute('aria-pressed',String(follow));}
+function updateFollow(){if(!$('follow'))return;const ready=timingReady(current?.timing);$('follow').disabled=!ready;$('follow').textContent=ready?`Follow images: ${follow?'on':'off'}`:(current?.audio?'Follow: timing pending':'Follow: no audio');$('follow').title=ready?(current.timing.version===2?'Automatic audio alignment. Manual image navigation pauses following.':'Manually checked timing. Manual image navigation pauses following.'):'Timing processes on the computer and syncs to this device.';$('follow').setAttribute('aria-pressed',String(follow));
+  if(ready)$('audio-status').textContent=current.timing.version===2?'Full lecture audio · automatic image timing':'Full lecture audio · checked image timing';}
+async function refreshPlayback(){
+  const row=current;if(pageLeaving||playbackRefreshing||!session||!row||row.local||!audio)return;
+  playbackRefreshing=true;
+  try{
+    const saved=await cloud.getPlayback(row.fingerprint);if(current!==row||!saved.audio)return;
+    if(saved.audio.sha256===row.audio?.sha256&&JSON.stringify(saved.timing)===JSON.stringify(row.timing))return;
+    if(saved.timing){validateTiming(saved.timing,row.manifest,saved.audio);if(saved.timing.version===2&&saved.timing.transcriptSha256!==await sha256(new TextEncoder().encode(row.manifest.lesson.narration.text)))throw new Error('Transcript hash mismatch.');}
+    if(current!==row)return;
+    if(saved.audio.sha256!==row.audio?.sha256){
+      if(!audio.paused){automaticMessages.set(row.fingerprint,'Prepared audio and timing are ready. They will load when you pause.');return;}
+      resumeAfterReload=audio.currentTime;row.audio=saved.audio;row.timing=saved.timing;await setAudio(saved.audio);
+    }else{if(saved.timing&&Number.isFinite(audio.duration)&&Math.abs(saved.timing.duration-audio.duration)>(saved.timing.version===2?0.25:1))throw new Error('Timing duration mismatch.');row.timing=saved.timing;follow=timingReady(saved.timing);}
+    updateFollow();renderTiming();onTime();
+  }catch{/* Retry on the next foreground refresh; keep the current audio playing. */}
+  finally{playbackRefreshing=false;}
+}
 function onTime(){
   if(!current||!audio)return;
   if(follow){const cue=cueAt(current.timing,audio.currentTime);if(cue){const i=current.steps.findIndex(s=>s.caseId===cue.caseId&&s.imageId===cue.imageId);if(i>=0&&i!==stepIndex){stepIndex=i;void renderImage().catch(showError);}}}
   if($('mark-time'))$('mark-time').textContent=`Mark this image at ${time(audio.currentTime)}`;
   if(Date.now()-lastSave>5000){lastSave=Date.now();void persistProgress();}
 }
-async function persistProgress(){
+async function persistProgress({localOnly=false}={}){
   if(!current || !audio)return;
   const row=current,s=row.steps[stepIndex];
-  const value={audio_sha256:row.audio?.sha256||'',position:Number.isFinite(audio.currentTime)?audio.currentTime:0,case_id:s.caseId,image_id:s.imageId,rate:audio.playbackRate};
+  const value={audio_sha256:row.audio?.sha256||'',position:Number.isFinite(audio.currentTime)?audio.currentTime:0,case_id:s.caseId,image_id:s.imageId,rate:audio.playbackRate,updated_at:new Date().toISOString()};
   try{localStorage.setItem(`na-${row.local?'preview':'progress'}:${row.fingerprint}`,JSON.stringify(value));}catch{}
-  if(row.local)return;
+  if(row.local||localOnly||pageLeaving)return;
   saveQueue=saveQueue.catch(()=>{}).then(()=>cloud.saveProgress(row.fingerprint,value));
   try{await saveQueue;if(current===row && $('progress-state'))$('progress-state').textContent='Progress saved';}catch{if(current===row&&$('progress-state'))$('progress-state').textContent='Progress not synced · check connection';}
 }
@@ -217,6 +243,12 @@ function renderTiming(){
   const box=$('timing-tools');if(!box)return;box.replaceChildren();
   if(!current.audio){box.append(el('p','Attach audio before setting image timing.','muted'));return;}
   const cues=current.timing?.cues || [];
+  const automatic=el('p',automaticMessages.get(current.fingerprint)||(canProcess?'Automatic timing is prepared by the desktop processor and synced to your library.':'Automatic timing is prepared on your computer. It will appear here when synced.'),'muted');automatic.id='automatic-timing-status';box.append(automatic);
+  if(current.timing?.version===2){
+    box.append(el('h3','Automatic image timing'),el('p',`${cues.length} spoken image references matched to this exact recording. Two alignment passes passed the consistency checks. These are automatic estimates, not a human listening review.`,'muted'));
+    if(current.audio.preparation)box.append(el('p','Speechify’s interleaved metadata was removed without re-encoding or removing audio frames. Your original export is retained.','muted'));
+    const list=el('ol',undefined,'cue-list');for(const cue of cues){const index=current.steps.findIndex(s=>s.caseId===cue.caseId&&s.imageId===cue.imageId);const li=el('li',`${time(cue.time)} · ${cue.reference}`);li.append(button('Replay transition',()=>{navigate(index);audio.currentTime=Math.max(0,cue.time-3);return audio.play();},'quiet'));list.append(li);}box.append(list,button('Export timing backup',()=>downloadJSON('lecture-timing.json',current.timing),'quiet'));return;
+  }
   box.append(el('h3','Match images to the recording'),el('p',`${cues.length} of ${current.steps.length} image cues set. Listen, choose the corresponding image, and mark its start. Follow stays off until the full sequence is checked.`,'muted'));
   const mark=button(`Mark this image at ${time(audio?.currentTime||0)}`,()=>markImageTime(false));mark.id='mark-time';box.append(mark);
   box.append(button('Mark & next image',()=>markImageTime(true)));
@@ -234,14 +266,25 @@ function renderTiming(){
     const timing={...current.timing,verified:true,verifiedAt:new Date().toISOString()};validateLoadedTiming(timing);
     if(!current.local)await cloud.saveTiming(current.fingerprint,timing);current.timing=timing;follow=true;updateFollow();notice('Verified image following enabled.');renderTiming();
   },'primary'));
-  box.append(button('Export timing backup',()=>downloadJSON('lecture-timing.json',current.timing||{}),'quiet'),fileInput('Import matching timing','.json',async file=>{const timing=validateLoadedTiming(JSON.parse(await file.text()));if(!current.local)await cloud.saveTiming(current.fingerprint,timing);current.timing=timing;follow=timing.verified===true;updateFollow();renderTiming();}));
+  box.append(button('Export timing backup',()=>downloadJSON('lecture-timing.json',current.timing||{}),'quiet'),fileInput('Import matching timing','.json',async file=>{const timing=validateLoadedTiming(JSON.parse(await file.text()));if(timing.version===2&&timing.transcriptSha256!==await sha256(new TextEncoder().encode(current.manifest.lesson.narration.text)))throw new Error('Transcript hash mismatch.');if(!current.local)await cloud.saveTiming(current.fingerprint,timing);current.timing=timing;follow=timingReady(timing);updateFollow();renderTiming();}));
+}
+function startAutomaticSync(){
+  if(!canProcess||!session){syncer=null;syncUser=null;return;}
+  const uid=session.user.id;if(syncUser===uid)return;syncUser=uid;
+  syncer=createAutomaticSync({cloud,isActive:()=>!pageLeaving&&session?.user?.id===uid,onSaved:()=>void refreshPlayback(),onStatus:(fingerprint,message)=>{
+    automaticMessages.set(fingerprint,message);if($('automatic-library-status'))$('automatic-library-status').textContent=message;
+    if((current?.fingerprint===fingerprint||(!fingerprint&&!current?.timing))&&$('automatic-timing-status'))$('automatic-timing-status').textContent=message;
+  }});void syncer.tick();
 }
 $('account').onclick=async()=>{await persistProgress();dispose();const {error}=await cloud.client.auth.signOut();if(error){showError(error);return;}session=null;localPackage=null;location.hash='';await route();};
 window.addEventListener('hashchange',()=>route().catch(showError));
-document.addEventListener('visibilitychange',()=>{if(document.hidden)void persistProgress();});
-window.addEventListener('pagehide',()=>{void persistProgress();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)void persistProgress({localOnly:true});else{void persistProgress();void refreshPlayback();void syncer?.tick();}});
+window.addEventListener('pagehide',()=>{pageLeaving=true;void persistProgress({localOnly:true});});
+window.addEventListener('pageshow',()=>{pageLeaving=false;});
 if(cloud.client){
   const {data,error}=await cloud.client.auth.getSession();if(error)showError(error);session=data.session;
-  cloud.client.auth.onAuthStateChange((event,next)=>{const changed=session?.user?.id!==next?.user?.id;session=next;if(changed)setTimeout(()=>route().catch(showError),0);});
+  cloud.client.auth.onAuthStateChange((event,next)=>{const changed=session?.user?.id!==next?.user?.id;session=next;if(changed)setTimeout(()=>{startAutomaticSync();route().catch(showError);},0);});
 }
 route().catch(showError);
+startAutomaticSync();
+setInterval(()=>{if(!document.hidden){void refreshPlayback();void syncer?.tick();}},15000);

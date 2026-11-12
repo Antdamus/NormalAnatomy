@@ -3,6 +3,8 @@ import '../vendor/visual-lecture-cine.js';
 import '../vendor/visual-lecture-core.js';
 import '../vendor/visual-lecture-quality.js';
 import { unzipSync, strFromU8 } from 'fflate';
+import {validateAutomaticTiming,timingReady} from './automatic-timing.js';
+export {timingReady};
 
 export const FORMAT = 'normalanatomy-mobile-lecture';
 export const BUCKET = 'lecture-media';
@@ -86,6 +88,7 @@ export function sequence(lesson) {
   });
 }
 export function validateTiming(timing, manifest, audio) {
+  if(timing?.version===2)return validateAutomaticTiming(timing,manifest,audio);
   if (!timing || timing.version !== 1 || timing.fingerprint !== manifest.fingerprint || timing.audioSha256 !== audio?.sha256 ||
       !Number.isFinite(timing.duration) || timing.duration <= 0 || !Array.isArray(timing.cues)) fail('Timing must match this exact lecture and audio file.');
   const steps = sequence(manifest.lesson);
@@ -103,6 +106,6 @@ export function validateTiming(timing, manifest, audio) {
   return timing;
 }
 export function cueAt(timing, seconds) {
-  if (!timing?.verified || !Number.isFinite(seconds)) return null;
-  return timing.cues.findLast(c => c.time <= seconds) || null;
+  if (!timingReady(timing) || !Number.isFinite(seconds)) return null;
+  return timing.cues.findLast(c => c.time <= seconds) || (timing.version===2&&seconds>=0?timing.cues[0]:null) || null;
 }

@@ -1,0 +1,8 @@
+{
+  "name": "normalanatomy-local-timing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local audio/transcript alignment; excluded from the hosted app",
+  "dependencies": { "echogarden": "3.4.0" }
+}

@@ -23,11 +23,19 @@ never share it in a chat or repository. Supabase's default test email service
 has a small sending quota, so keep a signed-in device open if requests become
 rate limited. Password sign-in does not change membership or owner access rules.
 
-Manual image navigation works immediately. Automatic following requires timing
-cues checked against the exact recording: listen, select each image, mark its
-start, and verify the complete sequence. Timing backups are tied to both the
-lecture fingerprint and audio hash. No timing is guessed from word counts.
-Replacing audio clears its previous timing.
+Manual image navigation works immediately. With the desktop processor installed,
+an attached recording is automatically aligned to the exact approved transcript.
+The existing desktop source-qualified image-reference matcher supplies the image
+identities. Two local DTW alignment passes must agree before the result is saved
+to the private library. The phone follows the saved audio clock, including after
+seeking or changing playback speed; it needs neither Speechify nor the computer
+once processing and sync finish. No per-image marking or timing import is needed.
+
+Automatic cues are explicitly labeled as estimates, not a human listening review.
+They are bound to the exact approved lecture, transcript and recording hashes.
+Incomplete references, unstable boundaries, decode failures, or mismatched clocks
+hold the job. Existing manual drafts and human-checked timing are never replaced
+by the automatic queue. Replacing audio clears its previous timing.
 
 ### Inspect on phone or tablet
 
@@ -40,7 +48,7 @@ recompressed; zoom does not create additional source detail.
 
 **Captions** shows or hides the original caption and source link. The choice is
 remembered on that device, and captions update with the selected image, including
-verified automatic transitions. They are image captions, not timed narration
+automatic transitions. They are image captions, not timed narration
 subtitles. The same audio player stays available inside study view. Changing an
 image manually pauses automatic following; switching annotations does not.
 
@@ -50,9 +58,49 @@ landscape. The audio controls occupy their own space without covering the image.
 
 **Audio & image timing** includes **Mark & next image**, **Go to next unmarked
 image**, and **Replay transition** (starting three seconds before the saved cue).
-These assist listening review; they do not estimate or approve timestamps. Every
-image must have a checked cue in approved order, for the exact lecture and audio
-hash, before following can be enabled. The loaded audio duration is checked too.
+These remain an optional manual workflow for recordings without automatic timing.
+The manual verification gate still requires every image in approved order. It is
+separate from the automatic evidence contract. Both check the loaded duration.
+
+### Automatic desktop processor
+
+Install the separate local dependency once (it is excluded from Vercel):
+
+```powershell
+npm ci --prefix tools/alignment --ignore-scripts --omit=optional --no-audit --no-fund
+./tools/alignment/start.ps1
+```
+
+Node and `ffmpeg`/`ffprobe` must be on PATH. The first alignment downloads the
+engine's eSpeak support package. Audio processing is local: eSpeak formant speech
+and dynamic time warping, with no neural transcription model or cloud audio API.
+
+Keep the signed-in desktop library open while jobs are submitted and synced. It
+automatically discovers the processor at `127.0.0.1:8774`. The browser may ask for
+local-network access once. iPhone/iPad never contact this endpoint. The service
+accepts only the exact production origin and loopback Host; it accepts no paths,
+commands, Supabase credentials, or arbitrary remote URLs. It runs one job at a
+time and retains exact-hash job states in ignored `private/timing-jobs/`. Jobs
+continue while the browser is closed, then sync when the desktop library reopens.
+
+To start the processor on future Windows sign-ins, run
+`./tools/alignment/install-startup.ps1`. This creates a named current-user Startup
+shortcut to the hidden processor launcher; it does not open a terminal window or
+launch an AI agent. Remove that shortcut to disable startup.
+
+Some Speechify MP3 exports contain ID3 metadata between audio chunks. The processor
+can remove these metadata blocks without re-encoding or removing audio frames,
+then requires an error-free decode and consistent playback duration. It retains
+the original export in immutable private storage and records the preparation
+method, removed metadata count and audio-frame count. Unknown or truncated data
+is held rather than discarded. The browser publishes prepared audio and its
+timing atomically only if the original recording is still current and no timing
+has been added in the meantime. Phones refresh pending timing automatically.
+
+Speechify's live highlighting alone does not establish timestamps for an exported
+MP3. Synthetic desktop wall-clock estimates are not used. Direct speech-mark
+capture from the current Speechify reader has not been implemented; the tested
+recording alignment supplies the automatic path instead.
 
 ## Package a reviewed lecture
 
@@ -111,6 +159,15 @@ checks and reports that reduced scope. Emulation
 does not certify physical iOS gestures, background playback, or lock-screen
 behavior. Test browser downloads and screenshots remain outside the public app.
 
+`npm run test:automatic` verifies desktop publication and subsequent phone playback
+with synthetic account/services, without manual cue entry/import. It runs in Edge
+or WebKit (`TEST_BROWSER=webkit`). `TEST_AUTOMATIC_JOB` optionally points the viewer
+suite at a private completed real job; it checks every resulting image/case cue
+and the prepared recording duration in local preview. This verifies software
+routing, not a human semantic listening audit. Unit tests cover metadata-only MP3
+cleanup, full-reference coverage, evidence mismatch, durable deduplication,
+failure holds, origin/Host restrictions and preservation of newer/manual work.
+
 ## Supabase and Vercel
 
 For a private password account that does not depend on email delivery, the
@@ -151,8 +208,9 @@ when updating them.
 
 - Internet is required. Offline downloads and service-worker caching are not
   implemented.
-- Audio is exported from Speechify and attached once per lecture. There is no
-  automatic Speechify export or word-highlight timing capture yet.
+- Audio is still exported from Speechify and attached once per lecture. Timing
+  generation and delivery are automatic after attachment; Speechify export itself
+  and mobile package creation/upload are not automated by this processor.
 - Cine passages retain their source references and transcript, but video
   playback is not implemented. They cannot pass automatic image-follow timing.
 - Audio files are limited to 50 MB, matching the initial private bucket limit.
