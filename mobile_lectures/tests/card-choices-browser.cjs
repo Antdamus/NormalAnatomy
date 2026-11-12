@@ -54,6 +54,29 @@ const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=r
   await phone.locator('#card-link').click();await phone.locator('#card-unlink').click();await phone.locator('#card-link-dialog').waitFor({state:'hidden'});assert.equal(row.card_choices.review.manualGroups.length,0);assert.equal(R.summary(row.card_choices.review,f.manifest.lesson).cards,2);
   failNext=true;await phone.locator('#card-toggle').click();await phone.waitForFunction(()=>document.querySelector('#card-choice-status').textContent.includes('Not saved'));assert.equal(await phone.locator('#card-toggle').getAttribute('aria-pressed'),'true');assert.equal(patches,3);
   await phone.reload();await phone.waitForFunction(()=>document.querySelector('#card-choice-count')?.textContent.startsWith('2 images'));assert.deepEqual(errors,[]);
+  await phone.close();await tablet.close();
+  // A new lecture inherits explicit source collections before the first card
+  // choice. Unlink/restore are mutable, synchronized preferences, not edits to
+  // source evidence or to the reviewed lecture.
+  const inherited=await fixture(undefined,{inheritedGroup:true});
+  Object.assign(row,{fingerprint:inherited.manifest.fingerprint,manifest:inherited.manifest,card_choices:null,card_revision:0});
+  const immutable=JSON.stringify(row.manifest),p=await page(),t=await page();
+  assert.equal(await p.locator('#card-link').innerText(),'2 images linked');
+  assert.equal(await p.locator('#card-toggle').getAttribute('aria-pressed'),'false');
+  await p.locator('#card-link').click();assert.match(await p.locator('#card-link-provenance').innerText(),/Inherited source collection: Synthetic source collection/);
+  assert.equal(await p.locator('#card-unlink').isVisible(),true);await p.getByRole('button',{name:'Cancel',exact:true}).click();
+  await p.locator('#card-toggle').click();await p.waitForFunction(()=>document.querySelector('#card-choice-count').textContent.startsWith('2 images'));
+  await t.locator('#card-choices summary').first().click();await t.locator('#card-refresh').click();await t.waitForFunction(()=>document.querySelector('#card-toggle').getAttribute('aria-pressed')==='true');
+  await p.locator('#card-link').click();await p.locator('#card-unlink').click();await p.locator('#card-link-dialog').waitFor({state:'hidden'});
+  await t.locator('#card-refresh').click();await t.waitForFunction(()=>document.querySelector('#card-link').textContent==='Link images');
+  await p.locator('#card-toggle').click();await p.waitForFunction(()=>document.querySelector('#card-choice-count').textContent.startsWith('1 images'));
+  await p.reload();await p.waitForFunction(()=>document.querySelector('#card-link')?.textContent==='Link images');
+  await p.locator('#card-link').click();assert.equal(await p.locator('#card-restore').isVisible(),true);
+  await p.locator('#card-restore').click();await p.locator('#card-link-dialog').waitFor({state:'hidden'});
+  await t.locator('#card-refresh').click();await t.waitForFunction(()=>document.querySelector('#card-link').textContent==='2 images linked');
+  assert.equal(R.summary(row.card_choices.review,row.manifest.lesson).cards,2);
+  assert.equal(JSON.stringify(row.manifest),immutable);assert.deepEqual(errors,[]);
+  console.log('PASS inherited source groups, no automatic selections, provenance, unlink/restore across two devices, reload and immutable lecture.');
   console.log(`PASS ${safari?'WebKit':'Edge'} phone/tablet selections, grouping, paired identity, desktop round trip, stale-device conflicts, failed-save preservation, four picker layouts and reload.`);
  }finally{await browser?.close();server.kill();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -2,13 +2,14 @@ import '../vendor/lecture-card-review.js';
 import '../vendor/lecture-card-transfer.js';
 export const Review=globalThis.LectureCardReview,Transfer=globalThis.LectureCardTransfer;
 export function initialChoices(manifest){
-  const review=Transfer.clean(manifest.cardReview||Review.empty(manifest.lesson.id),manifest.lesson);
+  const review=Review.inherit(Transfer.clean(manifest.cardReview||Review.empty(manifest.lesson.id),manifest.lesson),manifest.lesson);
   Transfer.validate(review,manifest.lesson);
   return {version:1,channel:`mobile-${crypto.randomUUID()}`,review,desktopBase:structuredClone(review)};
 }
 export function validateChoices(state,manifest){
   if(state?.version!==1||!/^mobile-[a-f0-9-]{36}$/.test(state.channel))throw new Error('Invalid saved card choices.');
-  Transfer.validate(state.review,manifest.lesson);Transfer.validate(state.desktopBase,manifest.lesson);return state;
+  const next={...state,review:Review.inherit(state.review,manifest.lesson),desktopBase:Review.inherit(state.desktopBase,manifest.lesson)};
+  Transfer.validate(next.review,manifest.lesson);Transfer.validate(next.desktopBase,manifest.lesson);return next;
 }
 export function importChoices(state,value,manifest){
   Transfer.read(value,manifest.lesson,manifest.fingerprint);

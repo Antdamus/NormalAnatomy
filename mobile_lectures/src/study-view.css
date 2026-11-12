@@ -17,7 +17,7 @@ body.viewer-open{position:fixed;top:var(--viewer-page-top,0);left:0;right:0;over
 #zoom button:hover{background:#29494c}#zoom button[aria-pressed=true]{background:#e5ece0;color:#143437;border-color:#e5ece0}
 .viewer-header{grid-row:1;padding:max(6px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) 6px max(8px,env(safe-area-inset-left));border-bottom:1px solid #3a5154;min-width:0}
 #zoom #viewer-title{margin:0 0 4px;padding:0;font-size:12px;line-height:16px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#bfcfcb}
-.viewer-navigation{display:grid;grid-template-columns:44px 36px 44px minmax(65px,1fr) 48px 44px;gap:4px;align-items:center;max-width:900px;margin:auto}
+.viewer-navigation{display:grid;grid-template-columns:44px 32px 44px minmax(65px,100px) 52px 44px 44px;gap:4px;align-items:center;justify-content:center;max-width:900px;margin:auto}
 #zoom .viewer-navigation button{padding:4px;font-size:12px}#zoom #viewer-close{font-size:24px}
 #viewer-count{font-size:11px;text-align:center;white-space:nowrap}
 .viewer-body{grid-row:2;display:flex;min-height:0;min-width:0}
@@ -62,5 +62,7 @@ body.viewer-open{position:fixed;top:var(--viewer-page-top,0);left:0;right:0;over
 @media(max-width:800px){.image-stage{height:45dvh;min-height:290px}.player-heading{gap:6px}.player-heading>span{min-width:115px}#transcript-body{max-height:none}}
 @media(max-width:850px) and (orientation:portrait){.viewer-body{flex-direction:column}.viewer-caption{width:100%;max-height:22dvh;flex-shrink:0;border-left:0;border-top:1px solid #3a5154;padding:10px 14px}}
 @media(max-width:373px){.viewer-dock{grid-template-columns:44px 44px 44px 64px;justify-content:center}.viewer-dock #viewer-card-slot{grid-column:1/4}.viewer-dock #viewer-controls{grid-column:4}.viewer-dock #viewer-card-slot .card-actions{justify-content:center}.viewer-dock #viewer-card-slot button{flex:0 1 65px}}
-@media(max-width:350px){#zoom #viewer-variant{font-size:11px}}
+/* Move only the counter to the title line on very narrow phones; every button
+   retains a 44px touch target and the controls still occupy one row. */
+@media(max-width:364px){.viewer-header{position:relative}.viewer-navigation{grid-template-columns:44px 44px minmax(44px,1fr) 48px 44px 44px;gap:4px}#viewer-count{position:absolute;right:10px;top:max(6px,env(safe-area-inset-top));line-height:16px}#zoom #viewer-title{padding-right:44px}#zoom #viewer-variant{font-size:10px;padding:1px;overflow:hidden;text-overflow:ellipsis}}
 @media(max-height:500px) and (orientation:landscape){#zoom #viewer-title{display:none}.viewer-header{padding-top:max(4px,env(safe-area-inset-top));padding-bottom:4px}.viewer-caption{width:32%;padding:8px}#viewer-player{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.viewer-timeline{flex:1;margin:0;min-width:160px}.viewer-dock{flex:1;min-width:358px}#zoom.controls-hidden .viewer-dock,#zoom.viewer-no-audio .viewer-dock{max-width:420px;width:100%}#zoom .narration-subtitle{font-size:14px;padding:5px 8px}}

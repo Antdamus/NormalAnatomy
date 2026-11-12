@@ -241,8 +241,20 @@ Use **Add to cards** under an image or in Study view. Plain and annotated varian
 share the same registry ID. **Link images** opens a full-width picker for other
 images in the same lecture, including other cases. Saving selects every member;
 source atomic groups and source-supported same-patient groups remain indivisible.
-**Remove my link** removes learner links while retaining selections and source
-groups. A user link never establishes patient identity or scan chronology.
+Saved source collections (`caseAndComparisonSequences`) and explicit companion
+IDs are inherited automatically, alongside desktop manual links included in the
+lecture package. The picker labels their origin. **Unlink for cards** removes
+optional inherited and learner links while retaining individual selections;
+**Restore links & select** reinstates the saved collection and selects its members.
+Required atomic groups (including named `atomicGroupIds`), confirmed same-patient
+groups, and plain/annotated variants remain intact. Source organization and user
+links never establish patient identity or scan chronology. Gallery labels and
+the broad singular `atomicGroupId` alone do not imply a card group.
+
+Existing individual selections are preserved during the upgrade: a newly
+recognized collection with a mixture of selected/unselected members stays off
+until explicitly restored. These exclusions are mutable preferences in
+`review.inheritedLinks`, separate from the immutable source and approved plan.
 
 Signed-in choices are saved separately from the reviewed manifest in
 `mobile_lectures.card_choices`. Apply migration `202611120002_card_choices.sql`
@@ -253,16 +265,21 @@ Failed writes remain visibly unsaved. Local previews save on that device only.
 
 The desktop extension has **Export choices for phone** and **Import phone choices**.
 The library's **Card choices** section has the corresponding import/export controls.
-Import existing desktop choices first to bring earlier links and objectives into
-the library. JSON transfers bind the exact approved lecture fingerprint and IDs,
+Initial desktop links arrive in the lecture package. Import later desktop choices
+to bring subsequent links and objectives into the library. JSON transfers bind the exact approved lecture fingerprint and IDs,
 preserve source captions/media through the unchanged registry, merge unrelated
 edits, and stop on conflicting edits. Receipt tracking makes repeat imports safe
 and supports later removal of a previously transferred link. Transfers contain
 selection metadata, not image binaries. Links across different lectures are not
-supported. Selection never generates cards or changes Anki.
+supported. Choices with inherited-link preferences use transfer format v2 so
+older extension builds reject them rather than silently losing unlink decisions.
+Reload the updated desktop extension before importing these exports. Selection
+never generates cards or changes Anki.
 
-Study view uses a compact navigation bar and audio timeline. **Tools** contains
-image captions, explicit zoom/fit buttons, playback speed, follow-image controls,
+Study view uses a compact navigation bar and audio timeline. **Caption** is always
+available in the visible top bar beside the smaller Plain/Annotated button;
+it controls original image captions independently of spoken **CC** subtitles.
+**Tools** contains explicit zoom/fit buttons, playback speed, follow-image controls,
 skip controls and the native audio player (including its platform audio options).
 Tap the image once or use **Hide** to hide navigation and timeline; tap again or
 use **Show** to restore them. **Back 5 seconds, Play/Pause, Forward 5 seconds,

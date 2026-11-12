@@ -63,7 +63,7 @@ const layoutOnly=process.env.TEST_LAYOUT_ONLY==='1';
     await page.locator('.viewer-stage').tap();await page.waitForFunction(()=>!document.querySelector('#zoom').classList.contains('controls-hidden'));
     await page.locator('#viewer-next').click();await page.waitForFunction(()=>document.querySelector('#viewer-title').textContent==='Test case 2');await page.waitForSelector('#viewer-image:not([hidden])');
     assert.equal(await page.locator('#viewer-caption-body').innerText(),'Synthetic software fixture 2.');assert.equal(await page.locator('#viewer-annotated').getAttribute('aria-pressed'),'true');
-    await tool('viewer-captions');assert.equal(await page.locator('.viewer-caption').isVisible(),false);assert.equal(await page.locator('#caption-toggle').getAttribute('aria-pressed'),'false');
+    await page.locator('#viewer-captions').click();assert.equal(await page.locator('.viewer-caption').isVisible(),false);assert.equal(await page.locator('#caption-toggle').getAttribute('aria-pressed'),'false');
     await page.getByRole('button',{name:'Close image ×'}).click();await page.waitForFunction(()=>document.querySelector('.player').parentElement.tagName==='MAIN');
     assert.deepEqual(await page.evaluate(()=>({x:scrollX,y:scrollY})),originalScroll,'closing restores the original page position');
     if(!layoutOnly){await page.locator('#audio-tools summary').click();
@@ -81,16 +81,21 @@ const layoutOnly=process.env.TEST_LAYOUT_ONLY==='1';
     await page.getByLabel('Import matching timing').setInputFiles({name:'timing.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(timing))});await page.waitForFunction(()=>document.querySelector('#follow').getAttribute('aria-pressed')==='true');
     await page.evaluate(async()=>{const a=document.querySelector('audio');a.currentTime=0.1;await a.play();});await page.waitForFunction(()=>document.querySelector('audio').currentTime>0.3);
     await page.locator('#focus-view').click();await page.waitForFunction(()=>!document.querySelector('audio').paused);assert.equal(await page.locator('audio').count(),1);
-    await tool('viewer-captions');await page.evaluate(()=>{const a=document.querySelector('audio');a.currentTime=10.2;a.dispatchEvent(new Event('timeupdate'));});await page.waitForFunction(()=>document.querySelector('#viewer-title').textContent==='Test case 2');
+    await page.locator('#viewer-captions').click();await page.evaluate(()=>{const a=document.querySelector('audio');a.currentTime=10.2;a.dispatchEvent(new Event('timeupdate'));});await page.waitForFunction(()=>document.querySelector('#viewer-title').textContent==='Test case 2');
     assert.equal(await page.locator('#viewer-caption-body').innerText(),'Synthetic software fixture 2.');
     await page.getByRole('button',{name:'Close image ×'}).click();await page.waitForFunction(()=>!document.querySelector('audio').paused);await page.evaluate(()=>document.querySelector('audio').pause());
     await page.locator('#focus-view').click();await page.locator('#viewer-previous').click();assert.equal(await page.locator('#follow').getAttribute('aria-pressed'),'false');
-    }else{console.log('LAYOUT ONLY: audio/timing checks explicitly omitted; they are not reported as passing.');await page.locator('#focus-view').click();await tool('viewer-captions');}
+    }else{console.log('LAYOUT ONLY: audio/timing checks explicitly omitted; they are not reported as passing.');await page.locator('#focus-view').click();await page.locator('#viewer-captions').click();}
     await fs.mkdir(results,{recursive:true});
     for(const [name,width,height] of [['phone',390,844],['small-phone',320,568],['ipad-portrait',820,1180],['ipad-landscape',1180,820],['phone-landscape',844,390]]){
       await page.setViewportSize({width,height});await tool('viewer-fit');
       const layout=await page.evaluate(()=>{const stage=document.querySelector('.viewer-stage').getBoundingClientRect(),audio=document.querySelector('#viewer-player').getBoundingClientRect(),dialog=document.querySelector('#zoom');return {overflow:dialog.scrollWidth>innerWidth||dialog.scrollHeight>innerHeight+1,stageHeight:stage.height,stageBottom:stage.bottom,audioTop:audio.top};});
       assert.equal(layout.overflow,false,name+' overflow');assert.ok(layout.stageHeight>90,name+' image area');assert.ok(layout.stageBottom<=layout.audioTop+1,name+' player overlap');
+      for(const id of ['viewer-captions','viewer-variant','viewer-previous','viewer-next','viewer-tools-toggle','viewer-close']){
+        const hit=await page.locator('#'+id).evaluate(e=>{const r=e.getBoundingClientRect();return {w:r.width,h:r.height,inside:r.x>=0&&r.right<=innerWidth,hit:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===e};});
+        assert.ok(hit.w>=44&&hit.h>=44&&hit.inside&&hit.hit,`${name} ${id} accessible`);
+      }
+      assert.ok((await page.locator('#viewer-variant').boundingBox()).width<=100.1,'variant leaves room for top caption button');
       await page.screenshot({path:path.join(results,`viewer-${safari?'webkit-':''}${name}.png`)});
     }
     await page.getByRole('button',{name:'Close image ×'}).click();
