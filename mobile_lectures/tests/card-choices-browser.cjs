@@ -35,13 +35,16 @@ const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=r
   let desktop=R.update(R.empty(f.manifest.lesson.id),f.manifest.lesson,'TEST-1',{decision:'cards',role:'normal',objective:'Existing desktop objective'});
   await phone.locator('#card-choices summary').first().click();await phone.getByLabel('Import desktop choices').setInputFiles({name:'choices.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(T.create(f.manifest.lesson,row.fingerprint,desktop,desktop)))});
   await phone.waitForFunction(()=>document.querySelector('#card-toggle').getAttribute('aria-pressed')==='true');
-  await phone.locator('#focus-view').click();await phone.locator('#viewer-card-link').click();await phone.locator('input[data-image="TEST-2"]').check();
+  await phone.locator('#focus-view').click();await phone.locator('#viewer-controls').click();
+  assert.equal(await phone.locator('#zoom').evaluate(e=>e.classList.contains('controls-hidden')),true);
+  for(const id of ['viewer-card-toggle','viewer-card-link'])assert.equal(await phone.locator('#'+id).evaluate(e=>{const r=e.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===e;}),true,'card controls accessible while other controls are hidden');
+  await phone.locator('#viewer-card-link').click();await phone.locator('input[data-image="TEST-2"]').check();
   for(const [name,width,height] of [['iphone',390,844],['small-phone',320,568],['ipad',820,1180],['landscape',844,390]]){
     await phone.setViewportSize({width,height});assert.equal(await phone.locator('#card-link-dialog').evaluate(d=>d.scrollWidth>d.clientWidth+1),false,name);
     await fs.mkdir(path.join(root,'test-results'),{recursive:true});await phone.screenshot({path:path.join(root,'test-results',`card-links-${safari?'webkit-':''}${name}.png`)});
   }
   await phone.locator('#card-link-save').click();await phone.locator('#card-link-dialog').waitFor({state:'hidden'});assert.equal(row.card_choices.review.manualGroups.length,1);assert.equal(R.summary(row.card_choices.review,f.manifest.lesson).cards,2);
-  await phone.getByRole('button',{name:'Close image ×'}).click();
+  await phone.locator('#viewer-controls').click();await phone.getByRole('button',{name:'Close image ×'}).click();
   // A stale device gets an explicit conflict, preserving every saved choice.
   await tablet.locator('#card-toggle').click();await tablet.waitForFunction(()=>document.querySelector('#notice').textContent.includes('another device'));
   assert.equal(row.card_revision,2);await tablet.locator('#card-choices summary').first().click();await tablet.locator('#card-refresh').click();await tablet.waitForFunction(()=>document.querySelector('#card-choice-count').textContent.startsWith('2 images'));

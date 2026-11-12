@@ -56,28 +56,46 @@ const assert=require('node:assert/strict'),path=require('node:path'),fs=require(
   desktopBrowser=await chromium.launch({channel:'msedge',headless:true});const desktop=await desktopBrowser.newPage();await setup(desktop,false);
   await desktop.waitForFunction(()=>document.querySelector('#automatic-library-status')?.textContent.includes('synced'));assert.equal(publishes,1);assert.equal(subtitlePublishes,1);assert.equal(desktopJobs,1);
   phoneBrowser=await(safari?webkit.launch({headless:true}):chromium.launch({channel:'msedge',headless:true}));const phone=await phoneBrowser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true,userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1'});
+  async function tool(id){await phone.locator('#viewer-tools-toggle').click();await phone.locator('#'+id).click();await phone.locator('#viewer-tools-close').click();}
   await setup(phone,true);await phone.locator('.lecture-card').click().catch(async error=>{console.error({errors,body:await phone.locator('body').innerText()});throw error;});await phone.waitForFunction(()=>document.querySelector('audio')?.duration===20).catch(async error=>{console.error(await phone.locator('audio').evaluate(a=>({duration:a.duration,ready:a.readyState,error:a.error?.message,src:a.currentSrc,notice:document.querySelector('#notice').textContent})));throw error;});await phone.waitForFunction(()=>document.querySelector('#follow')?.getAttribute('aria-pressed')==='true');
   await phone.waitForFunction(()=>!document.querySelector('#subtitle-toggle').disabled);assert.equal(await phone.locator('#narration-subtitle').isVisible(),false);await phone.locator('#subtitle-toggle').click();
-  await phone.locator('#focus-view').click();await phone.locator('#viewer-captions').click();await phone.locator('audio').evaluate(async a=>{a.currentTime=11.2;await a.play();});
+  await phone.locator('#focus-view').click();await tool('viewer-captions');await phone.locator('audio').evaluate(async a=>{a.currentTime=11.2;await a.play();});
   await phone.waitForFunction(()=>document.querySelector('#viewer-title').textContent==='Test case 2');assert.equal(await phone.locator('#viewer-caption-body').innerText(),'Synthetic software fixture 2.');
   await phone.waitForFunction(({track,text})=>{const t=document.querySelector('audio').currentTime,cue=track.cues.find(c=>c[0]<=t&&t<c[1]),expected=cue?text.slice(cue[2],cue[3]).replace(/\s+/g,' ').trim():'';return document.querySelector('#subtitle-text').textContent===expected;},{track:subtitles,text});
-  await phone.locator('#viewer-annotated').click();assert.equal(await phone.locator('#follow').getAttribute('aria-pressed'),'true');
+  await tool('viewer-annotated');assert.equal(await phone.locator('#follow').getAttribute('aria-pressed'),'true');
   await phone.locator('audio').evaluate(a=>{a.playbackRate=1.5;a.currentTime=1.2;});await phone.waitForFunction(()=>document.querySelector('#viewer-title').textContent==='Test case 1');
   await phone.locator('audio').evaluate(a=>a.pause());await phone.locator('#viewer-next').click();assert.equal(await phone.locator('#follow').getAttribute('aria-pressed'),'false');assert.equal(await phone.locator('#subtitle-toggle').getAttribute('aria-pressed'),'true');
   await phone.locator('audio').evaluate(a=>{a.currentTime=19;});await phone.waitForFunction(()=>document.querySelector('#subtitle-text').textContent==='');
   await phone.locator('audio').evaluate(a=>{a.currentTime=1;});await phone.waitForFunction(()=>document.querySelector('#subtitle-text').textContent.length>0);
   await phone.locator('#subtitle-toggle').click();assert.equal(await phone.locator('#narration-subtitle').isVisible(),false);await phone.locator('#subtitle-toggle').click();
   // Phrase changes, pauses and toggles cannot resize the image or reset its zoom.
-  await phone.locator('#viewer-in').click();
+  await tool('viewer-in');
   const geometry=()=>phone.evaluate(()=>{const stage=document.querySelector('.viewer-stage'),image=document.querySelector('#viewer-image');return {height:stage.clientHeight,width:stage.clientWidth,transform:image.style.transform,src:image.getAttribute('src')};});
   const beforeSubtitles=await geometry();
   for(const t of [5,8,19,1]){await phone.locator('audio').evaluate((a,t)=>{a.currentTime=t;a.dispatchEvent(new Event('timeupdate'));},t);assert.deepEqual(await geometry(),beforeSubtitles);}
   await phone.locator('#subtitle-toggle').click();assert.deepEqual(await geometry(),beforeSubtitles);await phone.locator('#subtitle-toggle').click();
   assert.equal(await phone.locator('#narration-subtitle').evaluate(e=>getComputedStyle(e).pointerEvents),'none');
   assert.equal(await phone.locator('#subtitle-toggle').evaluate(e=>{const r=e.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===e;}),true,'subtitle toggle stays clickable');
+  const shownHeight=await phone.locator('.viewer-stage').evaluate(e=>e.clientHeight);
+  await phone.locator('.viewer-stage').tap();await phone.waitForFunction(()=>document.querySelector('#zoom').classList.contains('controls-hidden'));
+  assert.equal(await phone.locator('#narration-subtitle').isVisible(),true,'CC stays visible with controls hidden');
+  assert.ok((await phone.locator('#subtitle-text').textContent()).length>0);
+  const hiddenGeometry=await geometry();await phone.locator('audio').evaluate(a=>{a.currentTime=5;a.dispatchEvent(new Event('timeupdate'));});
+  await phone.waitForFunction(({track,text})=>{const t=document.querySelector('audio').currentTime,cue=track.cues.find(c=>c[0]<=t&&t<c[1]);return cue&&document.querySelector('#subtitle-text').textContent===text.slice(cue[2],cue[3]).replace(/\s+/g,' ').trim();},{track:subtitles,text});
+  assert.equal(await phone.locator('#narration-subtitle').isVisible(),true,'hidden controls keep updating spoken captions');assert.deepEqual(await geometry(),hiddenGeometry);
+  assert.ok(await phone.locator('.viewer-stage').evaluate(e=>e.clientHeight)>shownHeight+100,'hidden controls return space to the image');
+  for(const id of ['viewer-play','viewer-card-toggle','viewer-card-link','viewer-controls'])assert.equal(await phone.locator('#'+id).evaluate(e=>{const r=e.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===e;}),true,id+' stays reachable');
+  await phone.locator('#viewer-play').click();await phone.waitForFunction(()=>!document.querySelector('audio').paused);await phone.locator('#viewer-play').click();assert.equal(await phone.locator('audio').evaluate(a=>a.paused),true);
+  await phone.locator('#viewer-controls').click();await phone.waitForFunction(()=>!document.querySelector('#zoom').classList.contains('controls-hidden'));
+  await phone.locator('#viewer-seek').fill('6');await phone.waitForFunction(()=>Math.abs(document.querySelector('audio').currentTime-6)<0.2);assert.equal(await phone.locator('#viewer-seek').getAttribute('aria-valuetext'),'0:06 of 0:20');
   await fs.mkdir(path.join(root,'test-results'),{recursive:true});
+  await phone.locator('audio').evaluate(a=>{a.currentTime=1;a.dispatchEvent(new Event('timeupdate'));});
   for(const [name,width,height] of [['iphone',390,844],['small-phone',320,568],['ipad',820,1180],['landscape',844,390]]){
     await phone.setViewportSize({width,height});const layout=await phone.evaluate(()=>({overflow:document.querySelector('#zoom').scrollHeight>innerHeight+1,horizontal:document.querySelector('#zoom').scrollWidth>innerWidth+1,stage:document.querySelector('.viewer-stage').getBoundingClientRect().height,captionOverflow:document.querySelector('#narration-subtitle').scrollWidth>document.querySelector('#narration-subtitle').clientWidth}));assert.equal(layout.overflow,false,name);assert.equal(layout.horizontal,false,name+' horizontal');assert.equal(layout.captionOverflow,false,name);assert.ok(layout.stage>50,name+' visible image area');await phone.screenshot({path:path.join(root,'test-results',`subtitles-${safari?'webkit-':''}${name}.png`)});
+    await phone.locator('#viewer-controls').click();assert.ok(await phone.locator('.viewer-stage').evaluate(e=>e.clientHeight)>height*.8,name+' immersive image area');
+    assert.equal(await phone.locator('#narration-subtitle').isVisible(),true,name+' subtitles stay on');
+    for(const id of ['viewer-play','viewer-card-toggle','viewer-card-link','viewer-controls'])assert.equal(await phone.locator('#'+id).evaluate(e=>{const r=e.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===e;}),true,name+' '+id+' reachable');
+    await phone.screenshot({path:path.join(root,'test-results',`immersive-${safari?'webkit-':''}${name}.png`)});await phone.locator('#viewer-controls').click();
   }
   await phone.getByRole('button',{name:'Close image ×'}).click();phase='reload';await phone.reload();await phone.waitForFunction(()=>document.querySelector('#follow')?.getAttribute('aria-pressed')==='true');await phone.waitForFunction(()=>document.querySelector('#subtitle-toggle')?.getAttribute('aria-pressed')==='true');
   // Exercise an already-open phone receiving only newly available subtitles.

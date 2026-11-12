@@ -247,6 +247,17 @@ and supports later removal of a previously transferred link. Transfers contain
 selection metadata, not image binaries. Links across different lectures are not
 supported. Selection never generates cards or changes Anki.
 
+Study view uses a compact navigation bar and audio timeline. **Tools** contains
+image captions, explicit zoom/fit buttons, playback speed, follow-image controls,
+skip controls and the native audio player (including its platform audio options).
+Tap the image once or use **Hide** to hide navigation and timeline; tap again or
+use **Show** to restore them. **Play/Pause, Add to cards and Link images remain
+accessible at the bottom in both modes.** Spoken subtitles continue to appear
+and update when controls are hidden if CC is enabled. Source image captions are
+temporarily hidden with the controls and restored with them. Pinch, drag and
+double-tap do not toggle controls. Opening Tools never resizes the image; hiding
+controls or rotating the device preserves the inspected center when zoomed.
+
 Spoken subtitles are automatically aligned when full Speechify audio is attached
 and the desktop processor/library are running. They use a translucent overlay
 above the playback controls, do not intercept taps, and never change image size

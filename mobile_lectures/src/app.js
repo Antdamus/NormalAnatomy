@@ -121,7 +121,7 @@ async function openLecture(row,local,serial) {
   const side=el('section',undefined,'explanation-column');side.innerHTML='<details id="transcript" open><summary>Case explanation</summary><div id="transcript-body"></div></details><details><summary>Lecture map</summary><p id="orientation"></p><div id="pattern-list"></div></details><details><summary>Review notes</summary><div id="review-notes"></div></details><details id="audio-tools"><summary>Audio & image timing</summary><div id="audio-setup"></div><div id="timing-tools"></div></details>';
   layout.append(visual,side);app.append(layout);
   const cardArea=el('section');document.querySelector('#image-label').after(cardArea);
-  cardControls=createCardControls({row:current,parent:cardArea,viewerTools:document.querySelector('.viewer-tools'),getImageId:()=>current.steps[stepIndex].imageId,getURL:imageURL,onError:showError});
+  cardControls=createCardControls({row:current,parent:cardArea,viewerTools:$('viewer-card-slot'),getImageId:()=>current.steps[stepIndex].imageId,getURL:imageURL,onError:showError});
   $('orientation').textContent=lesson.plan.orientation || '';
   for(const p of lesson.plan.patterns)$('pattern-list').append(el('h3',p.label),el('p',p.cue));
   for(const stage of ['organizer','lecture']){const result=lesson.quality.approvals[stage].result;$('review-notes').append(el('h3',stage==='lecture'?'Lecture review':'Organizer review'),el('p',result.summary));for(const limitation of result.limitations||[])$('review-notes').append(el('p',typeof limitation==='string'?limitation:JSON.stringify(limitation),'muted'));}

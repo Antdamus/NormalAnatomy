@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {fit,constrain,zoomAt} from '../src/zoom.js';
+import {fit,constrain,zoomAt,resizeCamera} from '../src/zoom.js';
 test('fit preserves all source pixels in portrait and landscape without upscaling',()=>{
   for(const view of [{width:350,height:450},{width:1100,height:600}]){
     const image={width:900,height:900},c=constrain({scale:fit(view,image),x:0,y:0},view,image);
@@ -14,4 +14,14 @@ test('zoom keeps the inspected point stable and pan cannot lose the image',()=>{
   assert.equal((point.x-z.x)/z.scale,(point.x-start.x)/start.scale);
   assert.equal((point.y-z.y)/z.scale,(point.y-start.y)/start.scale);
   const edge=constrain({...z,x:9999,y:-9999},view,image);assert.equal(edge.x,0);assert.equal(edge.y,400-900*2);
+});
+test('hiding controls grows fitted images and retains the inspected center when magnified',()=>{
+  const before={width:390,height:300},after={width:390,height:700},image={width:900,height:900};
+  const fitted=constrain({scale:fit(before,image),x:0,y:0},before,image),grown=resizeCamera(fitted,before,after,image);
+  assert.equal(grown.scale,fit(after,image));assert.ok(grown.scale>fitted.scale);
+  const camera={scale:2,x:-900,y:-700},resized=resizeCamera(camera,before,after,image);
+  assert.equal(resized.scale,camera.scale);
+  assert.equal((after.width/2-resized.x)/resized.scale,(before.width/2-camera.x)/camera.scale);
+  assert.equal((after.height/2-resized.y)/resized.scale,(before.height/2-camera.y)/camera.scale);
+  assert.deepEqual(resizeCamera(resized,after,before,image),camera);
 });

@@ -14,3 +14,11 @@ export function zoomAt(camera, scale, point, view, image) {
   const ratio = scale / camera.scale;
   return constrain({scale, x:point.x-(point.x-camera.x)*ratio, y:point.y-(point.y-camera.y)*ratio},view,image);
 }
+// Keep magnified views centered on the same source point when controls collapse.
+export function resizeCamera(camera, previous, next, image) {
+  if (!camera || !previous?.width || !previous?.height || Math.abs(camera.scale-fit(previous,image))<0.0001)
+    return constrain({scale:fit(next,image),x:0,y:0},next,image);
+  const scale=clamp(camera.scale,fit(next,image),Math.max(8*fit(next,image),1));
+  return constrain({scale,x:next.width/2-(previous.width/2-camera.x)*scale/camera.scale,
+    y:next.height/2-(previous.height/2-camera.y)*scale/camera.scale},next,image);
+}

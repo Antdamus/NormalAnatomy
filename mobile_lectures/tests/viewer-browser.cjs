@@ -32,19 +32,26 @@ const layoutOnly=process.env.TEST_LAYOUT_ONLY==='1';
     await page.locator('#caption-toggle').click();assert.equal(await page.locator('.caption').evaluate(e=>e.open),true);
     await page.locator('#focus-view').click();await page.waitForSelector('#viewer-image:not([hidden])');
     assert.equal(await page.locator('#zoom').evaluate(e=>e.open),true);assert.equal(await page.locator('#viewer-caption-body').innerText(),'Synthetic software fixture 1.');
+    async function tool(id){await page.locator('#viewer-tools-toggle').click();await page.locator('#'+id).click();await page.locator('#viewer-tools-close').click();}
     const camera=()=>page.locator('#viewer-image').evaluate(e=>{const m=new DOMMatrix(getComputedStyle(e).transform);return {scale:m.a,x:m.e,y:m.f};});
-    await page.locator('#viewer-original').click();let before=await camera();assert.equal(before.scale,1);
+    await tool('viewer-original');let before=await camera();assert.equal(before.scale,1);
     const stage=await page.locator('.viewer-stage').boundingBox();await page.mouse.move(stage.x+stage.width/2,stage.y+stage.height/2);await page.mouse.down();await page.mouse.move(stage.x+stage.width/2-40,stage.y+stage.height/2-30,{steps:4});await page.mouse.up();
     assert.ok((await camera()).x<before.x);
-    before=await camera();await page.locator('#viewer-annotated').click();await page.waitForSelector('#viewer-image:not([hidden])');assert.deepEqual(await camera(),before);
+    assert.equal(await page.locator('#zoom').evaluate(e=>e.classList.contains('controls-hidden')),false,'dragging does not hide controls');
+    before=await camera();await tool('viewer-annotated');await page.waitForSelector('#viewer-image:not([hidden])');assert.deepEqual(await camera(),before);
     // Real touch events exercise the same pinch/drag handlers used on mobile.
-    if(!safari){await page.locator('#viewer-fit').click();const initial=await camera(),r=await page.locator('.viewer-stage').boundingBox(),cdp=await context.newCDPSession(page),cx=r.x+r.width/2,cy=r.y+r.height/2;
+    if(!safari){await tool('viewer-fit');const initial=await camera(),r=await page.locator('.viewer-stage').boundingBox(),cdp=await context.newCDPSession(page),cx=r.x+r.width/2,cy=r.y+r.height/2;
       const touch=(type,d)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints:type==='touchEnd'?[]:[{x:cx-d,y:cy,id:1},{x:cx+d,y:cy,id:2}]});
       await touch('touchStart',25);await touch('touchMove',65);await touch('touchEnd',0);assert.ok((await camera()).scale>initial.scale*1.8);
     }
+    const beforeHide=await camera();await page.locator('.viewer-stage').tap();await page.waitForFunction(()=>document.querySelector('#zoom').classList.contains('controls-hidden'));assert.equal((await camera()).scale,beforeHide.scale);
+    const rTap=await page.locator('.viewer-stage').boundingBox();await page.touchscreen.tap(rTap.x+rTap.width/2,rTap.y+rTap.height/2);await page.touchscreen.tap(rTap.x+rTap.width/2,rTap.y+rTap.height/2);await page.waitForTimeout(380);
+    assert.equal(await page.locator('#zoom').evaluate(e=>e.classList.contains('controls-hidden')),true,'double-tap zoom does not show controls');
+    assert.ok((await camera()).scale<beforeHide.scale,'double-tap returns magnified image to fit');
+    await page.locator('.viewer-stage').tap();await page.waitForFunction(()=>!document.querySelector('#zoom').classList.contains('controls-hidden'));
     await page.locator('#viewer-next').click();await page.waitForFunction(()=>document.querySelector('#viewer-title').textContent==='Test case 2');await page.waitForSelector('#viewer-image:not([hidden])');
     assert.equal(await page.locator('#viewer-caption-body').innerText(),'Synthetic software fixture 2.');assert.equal(await page.locator('#viewer-annotated').getAttribute('aria-pressed'),'true');
-    await page.locator('#viewer-captions').click();assert.equal(await page.locator('.viewer-caption').isVisible(),false);assert.equal(await page.locator('#caption-toggle').getAttribute('aria-pressed'),'false');
+    await tool('viewer-captions');assert.equal(await page.locator('.viewer-caption').isVisible(),false);assert.equal(await page.locator('#caption-toggle').getAttribute('aria-pressed'),'false');
     await page.getByRole('button',{name:'Close image ×'}).click();await page.waitForFunction(()=>document.querySelector('.player').parentElement.tagName==='MAIN');
     if(!layoutOnly){await page.locator('#audio-tools summary').click();
     const wav=Buffer.alloc(44+16000*2*20);wav.write('RIFF');wav.writeUInt32LE(wav.length-8,4);wav.write('WAVEfmt ',8);wav.writeUInt32LE(16,16);wav.writeUInt16LE(1,20);wav.writeUInt16LE(1,22);wav.writeUInt32LE(16000,24);wav.writeUInt32LE(32000,28);wav.writeUInt16LE(2,32);wav.writeUInt16LE(16,34);wav.write('data',36);wav.writeUInt32LE(wav.length-44,40);
@@ -61,14 +68,14 @@ const layoutOnly=process.env.TEST_LAYOUT_ONLY==='1';
     await page.getByLabel('Import matching timing').setInputFiles({name:'timing.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(timing))});await page.waitForFunction(()=>document.querySelector('#follow').getAttribute('aria-pressed')==='true');
     await page.evaluate(async()=>{const a=document.querySelector('audio');a.currentTime=0.1;await a.play();});await page.waitForFunction(()=>document.querySelector('audio').currentTime>0.3);
     await page.locator('#focus-view').click();await page.waitForFunction(()=>!document.querySelector('audio').paused);assert.equal(await page.locator('audio').count(),1);
-    await page.locator('#viewer-captions').click();await page.evaluate(()=>{const a=document.querySelector('audio');a.currentTime=10.2;a.dispatchEvent(new Event('timeupdate'));});await page.waitForFunction(()=>document.querySelector('#viewer-title').textContent==='Test case 2');
+    await tool('viewer-captions');await page.evaluate(()=>{const a=document.querySelector('audio');a.currentTime=10.2;a.dispatchEvent(new Event('timeupdate'));});await page.waitForFunction(()=>document.querySelector('#viewer-title').textContent==='Test case 2');
     assert.equal(await page.locator('#viewer-caption-body').innerText(),'Synthetic software fixture 2.');
     await page.getByRole('button',{name:'Close image ×'}).click();await page.waitForFunction(()=>!document.querySelector('audio').paused);await page.evaluate(()=>document.querySelector('audio').pause());
     await page.locator('#focus-view').click();await page.locator('#viewer-previous').click();assert.equal(await page.locator('#follow').getAttribute('aria-pressed'),'false');
-    }else{console.log('LAYOUT ONLY: audio/timing checks explicitly omitted; they are not reported as passing.');await page.locator('#focus-view').click();await page.locator('#viewer-captions').click();}
+    }else{console.log('LAYOUT ONLY: audio/timing checks explicitly omitted; they are not reported as passing.');await page.locator('#focus-view').click();await tool('viewer-captions');}
     await fs.mkdir(results,{recursive:true});
     for(const [name,width,height] of [['phone',390,844],['small-phone',320,568],['ipad-portrait',820,1180],['ipad-landscape',1180,820],['phone-landscape',844,390]]){
-      await page.setViewportSize({width,height});await page.locator('#viewer-fit').click();
+      await page.setViewportSize({width,height});await tool('viewer-fit');
       const layout=await page.evaluate(()=>{const stage=document.querySelector('.viewer-stage').getBoundingClientRect(),audio=document.querySelector('#viewer-player').getBoundingClientRect(),dialog=document.querySelector('#zoom');return {overflow:dialog.scrollWidth>innerWidth||dialog.scrollHeight>innerHeight+1,stageHeight:stage.height,stageBottom:stage.bottom,audioTop:audio.top};});
       assert.equal(layout.overflow,false,name+' overflow');assert.ok(layout.stageHeight>90,name+' image area');assert.ok(layout.stageBottom<=layout.audioTop+1,name+' player overlap');
       await page.screenshot({path:path.join(results,`viewer-${safari?'webkit-':''}${name}.png`)});
@@ -95,7 +102,7 @@ const layoutOnly=process.env.TEST_LAYOUT_ONLY==='1';
         await page.locator('#focus-view').click();await page.waitForFunction(()=>!document.querySelector('audio').paused);await page.getByRole('button',{name:'Close image ×'}).click();await page.waitForFunction(()=>!document.querySelector('audio').paused);await page.locator('audio').evaluate(a=>a.pause());
       }catch(e){if(e.code!=='ENOENT')throw e;}}
       for(const [name,width,height] of [['iphone',390,844],['ipad',820,1180]]){
-        await page.setViewportSize({width,height});await page.locator('#focus-view').click();await page.waitForSelector('#viewer-image:not([hidden])');await page.locator('#viewer-annotated').click();await page.waitForSelector('#viewer-image:not([hidden])');
+        await page.setViewportSize({width,height});await page.locator('#focus-view').click();await page.waitForSelector('#viewer-image:not([hidden])');await tool('viewer-annotated');await page.waitForSelector('#viewer-image:not([hidden])');
         await page.screenshot({path:path.join(results,`study-${safari?'webkit-':''}${name}.png`)});await page.getByRole('button',{name:'Close image ×'}).click();
       }
     }catch(e){if(e.code!=='ENOENT')throw e;}
