@@ -32,11 +32,19 @@ files must remain excluded.
 - Isolated mobile browser checks passed for image pairs, navigation, zoom,
   audio attachment, verified timing, manual following override, and caption
   sanitization.
+- Synthetic authentication checks passed for email-limit feedback, password
+  sign-in, matching-password validation, clearing entered passwords after save,
+  and checking membership before updating the account password.
 - Production returned HTTP 200 with the configured CSP and security headers.
 - The live Supabase API rejected anonymous reads of all three application
   tables with HTTP 401/permission denied.
 - The owner reported successful sign-in on iPhone. Full device playback and
   lock-screen behavior are separate checks; emulation does not prove them.
+
+The default email provider reached its sending quota during initial setup.
+Optional password setup is available under **Account access** on an already
+signed-in member's library. This keeps the verified email and all existing RLS
+rules; it does not disable email confirmation or increase the provider's limit.
 
 Private lecture packages and audio verification records are kept under the
 ignored `private/` folder. They are not part of this repository or public app.

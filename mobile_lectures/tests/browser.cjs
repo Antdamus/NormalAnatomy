@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=r
 const {chromium}=require('playwright');
 (async()=>{
   const root=path.resolve(__dirname,'..'),base='http://127.0.0.1:4176';
-  const child=spawn(process.execPath,[path.join(root,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','4176','--strictPort'],{cwd:root,stdio:'pipe',windowsHide:true});
+  const child=spawn(process.execPath,[path.join(root,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','4176','--strictPort'],{cwd:root,stdio:'pipe',windowsHide:true,env:{...process.env,VITE_SUPABASE_URL:'https://mobile-auth-test.supabase.co',VITE_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_test_fixture'}});
   let browser;
   try{
     for(let i=0;i<60;i++){try{if((await fetch(base)).ok)break;}catch{}await new Promise(r=>setTimeout(r,150));}
@@ -42,7 +42,32 @@ const {chromium}=require('playwright');
       await page.screenshot({path:path.join(root,'test-results','spinal-iphone.png'),fullPage:true});
       await page.setViewportSize({width:1280,height:950});await page.screenshot({path:path.join(root,'test-results','spinal-desktop.png'),fullPage:true});
     }catch(e){if(e.code!=='ENOENT')throw e;}
+    // Exercise sign-in and password setup against a synthetic auth server only.
+    const user={id:'11111111-1111-4111-8111-111111111111',email:'fixture@example.com',aud:'authenticated',role:'authenticated',email_confirmed_at:new Date().toISOString(),app_metadata:{},user_metadata:{},created_at:new Date().toISOString()},authRequests=[];
+    const token=['eyJhbGciOiJIUzI1NiJ9',Buffer.from(JSON.stringify({sub:user.id,email:user.email,exp:Math.floor(Date.now()/1000)+3600})).toString('base64url'),'test-signature'].join('.');
+    await page.route('https://mobile-auth-test.supabase.co/**',async route=>{
+      const request=route.request(),url=new URL(request.url()),method=request.method();authRequests.push({path:url.pathname,method,body:request.postDataJSON()});
+      let data={},status=200;
+      if(url.pathname==='/auth/v1/otp'){status=429;data={msg:'email rate limit exceeded',code:'over_email_send_rate_limit'};}
+      else if(url.pathname==='/auth/v1/token')data={access_token:token,refresh_token:'test-only-refresh',expires_in:3600,token_type:'bearer',user};
+      else if(url.pathname==='/auth/v1/user')data=user;
+      else if(url.pathname==='/rest/v1/mobile_members')data=[{email:user.email}];
+      else if(url.pathname==='/rest/v1/mobile_lectures')data=[];
+      else throw new Error('Unexpected test request: '+url.pathname);
+      await route.fulfill({status,contentType:'application/json',body:JSON.stringify(data)});
+    });
+    await page.goto(base);await page.getByLabel('Email address',{exact:true}).fill(user.email);await page.getByRole('button',{name:'Email me a sign-in link'}).click();
+    await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('sending limit'));
+    await page.getByRole('button',{name:'Use a password instead'}).click();await page.getByLabel('Password',{exact:true}).fill('fixture-login-only');await page.getByRole('button',{name:'Sign in',exact:true}).click();
+    await page.getByText('Account access',{exact:true}).waitFor();await page.getByText('Account access',{exact:true}).click();
+    await page.getByLabel('New password',{exact:true}).fill('fixture-new-password');await page.getByLabel('Confirm new password',{exact:true}).fill('fixture-wrong-password');await page.getByRole('button',{name:'Save password'}).click();
+    assert.equal(authRequests.some(r=>r.path==='/auth/v1/user'&&r.method==='PUT'),false);
+    await page.getByLabel('Confirm new password',{exact:true}).fill('fixture-new-password');await page.getByRole('button',{name:'Save password'}).click();
+    await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('Password saved'));
+    assert.equal(authRequests.find(r=>r.path==='/auth/v1/user'&&r.method==='PUT').body.password,'fixture-new-password');
+    assert.equal(await page.getByLabel('New password',{exact:true}).inputValue(),'');
+    assert.equal(authRequests.filter(r=>r.path==='/rest/v1/mobile_members').length>=2,true);
     assert.deepEqual(errors,[]);
-    console.log('PASS mobile layout, paired variants, case navigation, image zoom, recording check, verified audio cues, manual follow override, safe captions and real approved package rendering.');
+    console.log('PASS mobile images, audio, timing, caption safety, real package rendering, email-limit feedback, password sign-in and member-only password setup.');
   }finally{await browser?.close();child.kill();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

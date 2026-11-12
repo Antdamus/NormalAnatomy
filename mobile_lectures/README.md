@@ -17,6 +17,12 @@ rows, not GitHub or Vercel's public build output.
    Screen**. Images, captions, transcript, audio, and progress are available
    online. Original plain/annotated image pairs remain separate and ordered.
 
+While signed in, **Account access** lets you set an optional password (at least
+12 characters) for signing in on other devices. Enter and confirm it yourself;
+never share it in a chat or repository. Supabase's default test email service
+has a small sending quota, so keep a signed-in device open if requests become
+rate limited. Password sign-in does not change membership or owner access rules.
+
 Manual image navigation works immediately. Automatic following requires timing
 cues checked against the exact recording: listen, select each image, mark its
 start, and verify the complete sequence. Timing backups are tied to both the

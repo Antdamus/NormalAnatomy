@@ -40,12 +40,15 @@ function renderWelcome() {
   hero.innerHTML='<p class="eyebrow">A LITTLE SPACE TO STUDY</p><h1>Your lectures.<br>Your pace.</h1><p class="lede">The explanation, the image, and the moment they connect. Bring your reviewed lectures with you.</p>';
   const card=el('section',undefined,'panel signin');card.append(el('h2','Open your private library'));
   const form=el('form');const label=el('label','Email address');const email=el('input');email.type='email';email.autocomplete='email';email.required=true;email.placeholder='you@example.com';label.append(email);
+  let passwordMode=false;
+  const passwordLabel=el('label','Password'),password=el('input');password.type='password';password.autocomplete='current-password';passwordLabel.append(password);passwordLabel.hidden=true;
   const submit=el('button','Email me a sign-in link','primary');submit.type='submit';submit.disabled=!cloud.client;
-  form.append(label,submit);form.onsubmit=async e=>{e.preventDefault();submit.disabled=true;try{
-    const {error}=await cloud.client.auth.signInWithOtp({email:email.value,options:{emailRedirectTo:location.origin+'/'}});if(error)throw error;
-    notice('Check your email and open the sign-in link on this device.');
-  }catch(error){showError(error);}finally{submit.disabled=false;}};
-  card.append(form,el('p',cloud.client?'Only accounts added to this library can access its lectures.':'Cloud connection is being set up. Local preview is available below.','muted'));
+  const switchMode=button('Use a password instead',()=>{passwordMode=!passwordMode;passwordLabel.hidden=!passwordMode;password.required=passwordMode;password.value='';submit.textContent=passwordMode?'Sign in':'Email me a sign-in link';switchMode.textContent=passwordMode?'Use an email link instead':'Use a password instead';});
+  form.append(label,passwordLabel,submit);form.onsubmit=async e=>{e.preventDefault();submit.disabled=true;try{
+    if(passwordMode){const {error}=await cloud.client.auth.signInWithPassword({email:email.value,password:password.value});if(error)throw error;password.value='';}
+    else {const {error}=await cloud.client.auth.signInWithOtp({email:email.value,options:{emailRedirectTo:location.origin+'/'}});if(error)throw error;notice('Check your email and open the sign-in link on this device.');}
+  }catch(error){const rateLimited=error.status===429||/rate.limit/i.test(error.message||'');showError(rateLimited?new Error('The email provider has reached its sending limit. Keep any signed-in device open. Use your password if you have set one, or wait before requesting another email.'):error);}finally{submit.disabled=false;}};
+  card.append(form,switchMode,el('p',cloud.client?'Only accounts added to this library can access its lectures. Set an optional password from Account access after signing in.':'Cloud connection is being set up. Local preview is available below.','muted'));
   const local=el('section',undefined,'local-preview');local.append(el('h3','Preview a lecture from this device'),el('p','Open a reviewed .nalecture package. Its images stay on this device until you choose to upload it.','muted'),fileInput('Open local lecture','.nalecture',loadLocal));
   hero.append(card,local);app.append(hero);
 }
@@ -59,7 +62,16 @@ async function renderLibrary(serial) {
   const grid=el('section',undefined,'lecture-grid');
   if(!rows.length){const empty=el('div',undefined,'panel empty');empty.append(el('h2','Your first lecture starts here.'),el('p','Add a reviewed mobile package from your computer. It will appear here on your iPhone after you sign in.'));grid.append(empty);}
   for(const row of rows){const card=el('a',undefined,'lecture-card');card.href='#'+row.fingerprint;card.append(el('span',row.audio?'AUDIO ATTACHED':'IMAGES & TRANSCRIPT','eyebrow'),el('h2',row.title),el('p',`${row.case_count} illustrated cases`,'muted'),el('span','Open lecture ↗','card-action'));grid.append(card);}
-  app.append(grid);
+  app.append(grid);renderAccountAccess();
+}
+function renderAccountAccess(){
+  const details=el('details',undefined,'account-access');details.append(el('summary','Account access'),el('p','Set an optional password while signed in. You can then use it on your other devices without requesting an email.','muted'));
+  const form=el('form'),firstLabel=el('label','New password'),secondLabel=el('label','Confirm new password'),first=el('input'),second=el('input');
+  for(const field of [first,second]){field.type='password';field.autocomplete='new-password';field.required=true;field.minLength=12;field.maxLength=128;}
+  firstLabel.append(first);secondLabel.append(second);
+  const submit=el('button','Save password','primary');submit.type='submit';form.append(firstLabel,secondLabel,el('p','Use at least 12 characters. Your password is sent only to this library’s authentication service.','muted'),submit);
+  form.onsubmit=async event=>{event.preventDefault();if(first.value!==second.value){showError(new Error('The two passwords do not match.'));return;}submit.disabled=true;try{await cloud.owner();const {error}=await cloud.client.auth.updateUser({password:first.value});if(error)throw error;first.value='';second.value='';notice('Password saved. You can now sign in on your other devices with your email and password.');}catch(error){showError(error);}finally{submit.disabled=false;}};
+  details.append(form);app.append(details);
 }
 async function imageURL(imageId,wanted) {
   const row=current, entry=row.manifest.media.find(m=>m.imageId===imageId && m.variant===wanted);
